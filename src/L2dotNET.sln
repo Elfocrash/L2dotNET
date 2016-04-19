@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Auth", "L2dotNET.Auth\L2dotNET.Auth.csproj", "{960CD325-3EEB-4AAA-9C67-727ECDE884BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Game", "L2dotNET.Game\L2dotNET.Game.csproj", "{991E13B3-EB83-46C1-9F63-6ED3E332F88F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{960CD325-3EEB-4AAA-9C67-727ECDE884BB}.Debug|x86.ActiveCfg = Debug|x86
+		{960CD325-3EEB-4AAA-9C67-727ECDE884BB}.Debug|x86.Build.0 = Debug|x86
+		{960CD325-3EEB-4AAA-9C67-727ECDE884BB}.Release|x86.ActiveCfg = Release|x86
+		{960CD325-3EEB-4AAA-9C67-727ECDE884BB}.Release|x86.Build.0 = Release|x86
+		{991E13B3-EB83-46C1-9F63-6ED3E332F88F}.Debug|x86.ActiveCfg = Debug|x86
+		{991E13B3-EB83-46C1-9F63-6ED3E332F88F}.Debug|x86.Build.0 = Debug|x86
+		{991E13B3-EB83-46C1-9F63-6ED3E332F88F}.Release|x86.ActiveCfg = Release|x86
+		{991E13B3-EB83-46C1-9F63-6ED3E332F88F}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://elfodotnet.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = L2dotNET.Auth\\L2dotNET.Auth.csproj
+		SccProjectName1 = L2dotNET.Auth
+		SccLocalPath1 = L2dotNET.Auth
+		SccProjectUniqueName2 = L2dotNET.Game\\L2dotNET.Game.csproj
+		SccProjectName2 = L2dotNET.Game
+		SccLocalPath2 = L2dotNET.Game
+	EndGlobalSection
+EndGlobal

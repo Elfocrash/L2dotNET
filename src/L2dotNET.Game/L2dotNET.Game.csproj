@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{991E13B3-EB83-46C1-9F63-6ED3E332F88F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>c_game</RootNamespace>
+    <AssemblyName>c_game</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="L2Crypt">
+      <HintPath>..\..\c_auth\c_auth\lib\L2Crypt.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Org.BouncyCastle">
+      <HintPath>..\..\c_auth\c_auth\lib\Org.BouncyCastle.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ai\npcai\aidb_container.cs" />
+    <Compile Include="ai\npcai\black_judge_basic.cs" />
+    <Compile Include="ai\npcai\citizen.cs" />
+    <Compile Include="ai\npcai\guild_master.cs" />
+    <Compile Include="ai\npcai\henna_manager.cs" />
+    <Compile Include="ai\npcai\merchant.cs" />
+    <Compile Include="ai\npcai\monster_parameter.cs" />
+    <Compile Include="ai\template\AI.cs" />
+    <Compile Include="Cfg.cs" />
+    <Compile Include="ClientManager.cs" />
+    <Compile Include="compression\DlcStream.cs" />
+    <Compile Include="ConfigFile.cs" />
+    <Compile Include="controllers\GameTime.cs" />
+    <Compile Include="Crypt.cs" />
+    <Compile Include="crypt\BlowFishKeygen.cs" />
+    <Compile Include="db\SQLjec.cs" />
+    <Compile Include="geo\Geo.cs" />
+    <Compile Include="geo\GeoData.cs" />
+    <Compile Include="geo\Layer.cs" />
+    <Compile Include="geo\Location.cs" />
+    <Compile Include="geo\MByteBuffer.cs" />
+    <Compile Include="logger\CLogger.cs" />
+    <Compile Include="managers\AnnounceManager.cs" />
+    <Compile Include="managers\bbs\BBSManager.cs" />
+    <Compile Include="managers\CastleManager.cs" />
+    <Compile Include="managers\ItemEnchantManager.cs" />
+    <Compile Include="managers\MinigameRankManager.cs" />
+    <Compile Include="managers\PetitionManager.cs" />
+    <Compile Include="managers\ThreadPoolManager.cs" />
+    <Compile Include="managers\TradeManager.cs" />
+    <Compile Include="managers\TransformManager.cs" />
+    <Compile Include="managers\InstanceManager.cs" />
+    <Compile Include="managers\MailManager.cs" />
+    <Compile Include="managers\PartyRoomManager.cs" />
+    <Compile Include="managers\PointCmdManager.cs" />
+    <Compile Include="managers\RqItemManager.cs" />
+    <Compile Include="model\communities\L2Alliance.cs" />
+    <Compile Include="model\communities\L2Clan.cs" />
+    <Compile Include="model\events\MonsterRace.cs" />
+    <Compile Include="model\inventory\InvPet.cs" />
+    <Compile Include="model\inventory\InvRefund.cs" />
+    <Compile Include="model\inventory\InvMail.cs" />
+    <Compile Include="model\inventory\InvTemplate.cs" />
+    <Compile Include="model\inventory\InvPrivateWarehouse.cs" />
+    <Compile Include="model\items\Capsule.cs" />
+    <Compile Include="model\items\cursed\CursedWeapon.cs" />
+    <Compile Include="model\items\cursed\CursedWeapons.cs" />
+    <Compile Include="model\items\effects\BottlesOfSouls.cs" />
+    <Compile Include="model\items\effects\Calculator.cs" />
+    <Compile Include="model\items\effects\EnchantScrolls.cs" />
+    <Compile Include="model\items\effects\TeleportBooks.cs" />
+    <Compile Include="model\items\ItemEffect.cs" />
+    <Compile Include="model\items\ItemHandler.cs" />
+    <Compile Include="model\items\ItemHandlerScript.cs" />
+    <Compile Include="model\npcs\ai\AgitManagerAI.cs" />
+    <Compile Include="model\npcs\ai\AIManager.cs" />
+    <Compile Include="model\npcs\ai\AITemplate.cs" />
+    <Compile Include="model\npcs\ai\broadcasting_tower.cs" />
+    <Compile Include="model\npcs\ai\ex\ai_looser_of_gracia.cs" />
+    <Compile Include="model\npcs\ai\ex\nightshade_01.cs" />
+    <Compile Include="model\npcs\ai\grandmaster_total.cs" />
+    <Compile Include="model\npcs\ai\WarriorAI.cs" />
+    <Compile Include="model\npcs\cubic\Cubic.cs" />
+    <Compile Include="model\npcs\cubic\CubicController.cs" />
+    <Compile Include="model\npcs\cubic\CubicTemplate.cs" />
+    <Compile Include="model\npcs\cubic\data\heal_cubic.cs" />
+    <Compile Include="model\npcs\cubic\data\smart_cubic.cs" />
+    <Compile Include="model\npcs\L2HideoutManager.cs" />
+    <Compile Include="model\npcs\decor\L2PvPSign.cs" />
+    <Compile Include="model\npcs\decor\L2Door.cs" />
+    <Compile Include="model\npcs\decor\L2TownMap.cs" />
+    <Compile Include="model\npcs\decor\L2Chair.cs" />
+    <Compile Include="model\npcs\decor\L2StaticObject.cs" />
+    <Compile Include="model\npcs\L2Doormen.cs" />
+    <Compile Include="model\npcs\L2RaceManager.cs" />
+    <Compile Include="model\npcs\L2Warrior.cs" />
+    <Compile Include="model\playable\L2Pet.cs" />
+    <Compile Include="model\playable\L2Summon.cs" />
+    <Compile Include="model\playable\petai\PA_Standart.cs" />
+    <Compile Include="model\playable\petai\SA_Standart.cs" />
+    <Compile Include="model\playable\petai\StandartAiTemplate.cs" />
+    <Compile Include="model\player\ai\PlayerAI.cs" />
+    <Compile Include="model\player\basic\Formulas.cs" />
+    <Compile Include="model\player\basic\RaceId.cs" />
+    <Compile Include="model\player\basic\SayID.cs" />
+    <Compile Include="model\player\Experience.cs" />
+    <Compile Include="model\player\L2PartyRoom.cs" />
+    <Compile Include="model\player\L2Shortcut.cs" />
+    <Compile Include="model\player\partials\db_InstanceReuse.cs" />
+    <Compile Include="model\player\PlayerTemplate.cs" />
+    <Compile Include="model\player\telebooks\TelBook_Mark.cs" />
+    <Compile Include="model\player\telebooks\TeleportBook.cs" />
+    <Compile Include="model\player\transformation\data\_00001_1.cs" />
+    <Compile Include="model\player\transformation\data\_00260_final_form_air.cs" />
+    <Compile Include="model\player\transformation\data\_00126_treykan.cs" />
+    <Compile Include="model\player\transformation\data\_20003_sujin.cs" />
+    <Compile Include="model\player\transformation\data\_20002_trejuo.cs" />
+    <Compile Include="model\player\transformation\data\_20001_jet_bike.cs" />
+    <Compile Include="model\player\transformation\data\_00009_aurabird_owl.cs" />
+    <Compile Include="model\player\transformation\data\_00125_aqua_elf.cs" />
+    <Compile Include="model\player\transformation\data\_20000_kadomas.cs" />
+    <Compile Include="model\player\transformation\L2Transform.cs" />
+    <Compile Include="model\player\transformation\TransformTemplate.cs" />
+    <Compile Include="model\quests\data\_0002_what_women_want.cs" />
+    <Compile Include="model\quests\data\_0012_Secret_Meeting_With_Varka_Silenos .cs" />
+    <Compile Include="model\quests\data\_0013_Parcel_Deliverys.cs" />
+    <Compile Include="model\quests\data\_0014_Where_abouts_of_the_Archaeologist.cs" />
+    <Compile Include="model\quests\data\_0015_Sweet_Whispers.cs" />
+    <Compile Include="model\quests\data\_0017_Light_And_Darkness.cs" />
+    <Compile Include="model\quests\data\_0018_Meeting_with_the_Golden_Ram.cs" />
+    <Compile Include="model\quests\data\_0019_Go_To_The_Pastureland.cs" />
+    <Compile Include="model\quests\data\_0508_a_clans_reputation.cs" />
+    <Compile Include="model\quests\data\_0606_war_with_varka_silenos.cs" />
+    <Compile Include="model\quests\data\_0605_alliance_with_ketra_orcs.cs" />
+    <Compile Include="model\quests\data\_0005_miners_favor.cs" />
+    <Compile Include="model\quests\data\_0006_step_into_the_future.cs" />
+    <Compile Include="model\quests\data\_0007_a_trip_begins.cs" />
+    <Compile Include="model\quests\data\_0008_an_adventure_begins.cs" />
+    <Compile Include="model\quests\data\_0009_into_the_city_of_humans.cs" />
+    <Compile Include="model\quests\data\_0010_into_the_world.cs" />
+    <Compile Include="model\quests\data\_0011_secret_meeting_with_ketra_orcs.cs" />
+    <Compile Include="model\quests\data\_0246_PossessorOfAPreciousSoul.cs" />
+    <Compile Include="model\quests\data\_0003_will_the_seal_be_broken.cs" />
+    <Compile Include="model\quests\QuestManager.cs" />
+    <Compile Include="model\quests\QuestOrigin.cs" />
+    <Compile Include="model\skills2\conds\can_summon_cubic.cs" />
+    <Compile Include="model\skills2\conds\Cond_EquipWeapon.cs" />
+    <Compile Include="model\skills2\effects\cub_heal.cs" />
+    <Compile Include="model\skills2\effects\i_summon_cubic.cs" />
+    <Compile Include="model\skills2\effects\i_agathion_energy.cs" />
+    <Compile Include="model\skills2\effects\i_remove_soul.cs" />
+    <Compile Include="model\skills2\effects\i_p_attack.cs" />
+    <Compile Include="model\skills2\effects\b_critical_rate.cs" />
+    <Compile Include="model\skills2\effects\b_reg_hp_move.cs" />
+    <Compile Include="model\skills2\effects\p_block_skill_special.cs" />
+    <Compile Include="model\skills2\effects\p_block_spell.cs" />
+    <Compile Include="model\skills2\effects\p_defence_attribute.cs" />
+    <Compile Include="model\skills2\effects\i_target_cancel.cs" />
+    <Compile Include="model\skills2\effects\p_block_skill_physical.cs" />
+    <Compile Include="model\skills2\effects\i_death.cs" />
+    <Compile Include="model\skills2\effects\i_restoration.cs" />
+    <Compile Include="model\skills2\effects\p_speed.cs" />
+    <Compile Include="model\skills2\effects\b_max_hp.cs" />
+    <Compile Include="model\skills2\effects\a_summon.cs" />
+    <Compile Include="model\skills2\effects\b_reg_mp_move.cs" />
+    <Compile Include="model\skills2\effects\b_evasion_move.cs" />
+    <Compile Include="model\skills2\effects\b_reg_hp_sit.cs" />
+    <Compile Include="model\skills2\effects\b_reg_mp_sit.cs" />
+    <Compile Include="model\skills2\effects\p_physical_defence.cs" />
+    <Compile Include="model\skills2\effects\a_transform.cs" />
+    <Compile Include="model\skills2\effects\a_opendoor.cs" />
+    <Compile Include="model\skills2\effects\a_tele_region.cs" />
+    <Compile Include="model\skills2\effects\b_max_mp.cs" />
+    <Compile Include="model\skills2\effects\b_max_cp.cs" />
+    <Compile Include="model\skills2\effects\p_magical_defence.cs" />
+    <Compile Include="model\skills2\effects\b_attack_spd.cs" />
+    <Compile Include="model\skills2\effects\p_physical_attack.cs" />
+    <Compile Include="model\skills2\effects\p_magical_attack.cs" />
+    <Compile Include="model\skills2\effects\p_physical_shield_defence.cs" />
+    <Compile Include="model\skills2\effects\i_fatal_blow.cs" />
+    <Compile Include="model\skills2\effects\b_accuracy_night.cs" />
+    <Compile Include="model\skills2\effects\b_accuracy.cs" />
+    <Compile Include="model\skills2\effects\a_convert_item.cs" />
+    <Compile Include="model\skills2\SkillLevelParam.cs" />
+    <Compile Include="model\skills2\speceffects\b_regen_hp_by_move.cs" />
+    <Compile Include="model\skills2\speceffects\b_regen_mp_by_move.cs" />
+    <Compile Include="model\skills2\speceffects\b_evasion_by_move.cs" />
+    <Compile Include="model\skills2\speceffects\b_regen_hp_by_sit.cs" />
+    <Compile Include="model\skills2\speceffects\b_regen_mp_by_sit.cs" />
+    <Compile Include="model\skills2\speceffects\b_accuracy_by_night.cs" />
+    <Compile Include="model\skills2\SupMethod.cs" />
+    <Compile Include="model\skills2\TAcquireSkill.cs" />
+    <Compile Include="model\skills2\TAcquireSkillsEntry.cs" />
+    <Compile Include="model\skills2\TEffect.cs" />
+    <Compile Include="model\skills2\TEffectRegistrator.cs" />
+    <Compile Include="model\skills2\TEffectResult.cs" />
+    <Compile Include="model\skills2\TEffectType.cs" />
+    <Compile Include="model\skills2\TSkill.cs" />
+    <Compile Include="model\skills2\TSkillCond.cs" />
+    <Compile Include="model\skills2\TSkillCondType.cs" />
+    <Compile Include="model\skills2\TSkillEnchantInfo.cs" />
+    <Compile Include="model\skills2\TSkillOperational.cs" />
+    <Compile Include="model\skills2\TSkillScope.cs" />
+    <Compile Include="model\skills2\TSkillTable.cs" />
+    <Compile Include="model\skills2\TSkillTarget.cs" />
+    <Compile Include="model\skills2\TSpecEffect.cs" />
+    <Compile Include="model\skills\AbnormalEffect.cs" />
+    <Compile Include="GameClient.cs" />
+    <Compile Include="GameServer.cs" />
+    <Compile Include="model\player\L2Party.cs" />
+    <Compile Include="model\player\L2Player.cs" />
+    <Compile Include="model\skills\L2SkillCoolTime.cs" />
+    <Compile Include="model\inventory\InvPC.cs" />
+    <Compile Include="model\items\ItemTemplate.cs" />
+    <Compile Include="model\items\L2Item.cs" />
+    <Compile Include="model\npcs\NpcTemplate.cs" />
+    <Compile Include="model\npcs\L2Citizen.cs" />
+    <Compile Include="model\stats\CStats.cs" />
+    <Compile Include="model\stats\Formulas.cs" />
+    <Compile Include="model\structures\Castle.cs" />
+    <Compile Include="model\structures\ConquerableHideout.cs" />
+    <Compile Include="model\structures\conq\FortressOfTheDead.cs" />
+    <Compile Include="model\structures\Hideout.cs" />
+    <Compile Include="model\structures\StructureTemplate.cs" />
+    <Compile Include="model\templates\TObject.cs" />
+    <Compile Include="model\vehicles\L2Airship.cs" />
+    <Compile Include="model\vehicles\L2Boat.cs" />
+    <Compile Include="model\zones\classes\battle_zone.cs" />
+    <Compile Include="model\zones\classes\monster_race.cs" />
+    <Compile Include="model\zones\classes\hideout_zone.cs" />
+    <Compile Include="model\zones\classes\instant_buff.cs" />
+    <Compile Include="model\zones\classes\instant_skill.cs" />
+    <Compile Include="model\zones\classes\swamp.cs" />
+    <Compile Include="model\zones\classes\ssq_zone.cs" />
+    <Compile Include="model\zones\classes\no_restart.cs" />
+    <Compile Include="model\zones\classes\damage.cs" />
+    <Compile Include="model\zones\classes\poison.cs" />
+    <Compile Include="model\zones\classes\water.cs" />
+    <Compile Include="model\zones\classes\peace_zone.cs" />
+    <Compile Include="model\zones\classes\mother_tree.cs" />
+    <Compile Include="model\zones\forms\ZoneCylinder.cs" />
+    <Compile Include="model\zones\forms\ZoneForm.cs" />
+    <Compile Include="model\zones\forms\ZoneNPoly.cs" />
+    <Compile Include="model\zones\ZoneTemplate.cs" />
+    <Compile Include="model\zones\L2Zone.cs" />
+    <Compile Include="model\zones\ZoneManager.cs" />
+    <Compile Include="network\l2send\ExChangeNicknameNColor.cs" />
+    <Compile Include="network\l2send\ExBrPremiumState.cs" />
+    <Compile Include="network\loginauth\ReceiveAuthPacket.cs" />
+    <Compile Include="network\loginauth\recv\LoginServKickAccount.cs" />
+    <Compile Include="network\loginauth\recv\LoginServAcceptPlayer.cs" />
+    <Compile Include="network\loginauth\recv\LoginServLoginOk.cs" />
+    <Compile Include="network\loginauth\recv\LoginServLoginFail.cs" />
+    <Compile Include="network\loginauth\recv\LoginServPingResponse.cs" />
+    <Compile Include="network\loginauth\send\AccountInGame.cs" />
+    <Compile Include="network\loginauth\send\PremiumStatusUpdate.cs" />
+    <Compile Include="network\loginauth\send\PlayerCount.cs" />
+    <Compile Include="network\loginauth\send\LoginAuth.cs" />
+    <Compile Include="network\PacketHandlerAuth.cs" />
+    <Compile Include="network\l2recv\AuthLogin.cs" />
+    <Compile Include="network\l2recv\CharacterCreate.cs" />
+    <Compile Include="network\l2recv\CharacterSelected.cs" />
+    <Compile Include="network\l2recv\AnswerTradeRequest.cs" />
+    <Compile Include="network\l2recv\CannotMoveAnymore.cs" />
+    <Compile Include="network\l2recv\NetPingResponse.cs" />
+    <Compile Include="network\l2recv\RequestRecordInfo.cs" />
+    <Compile Include="network\l2recv\RequestShowBoard.cs" />
+    <Compile Include="network\l2recv\FinishRotating.cs" />
+    <Compile Include="network\l2recv\StartRotating.cs" />
+    <Compile Include="network\l2recv\RequestRestartPoint.cs" />
+    <Compile Include="network\l2recv\RequestTradeDone.cs" />
+    <Compile Include="network\l2recv\RequestAddTradeItem.cs" />
+    <Compile Include="network\l2recv\RequestStartTrade.cs" />
+    <Compile Include="network\l2recv\RequestAutoSoulShot.cs" />
+    <Compile Include="network\l2recv\VehicleAPI\MoveToLocationInAirShip.cs" />
+    <Compile Include="network\l2recv\VehicleAPI\RequestGetOffVehicle.cs" />
+    <Compile Include="network\l2recv\VehicleAPI\RequestGetOnVehicle.cs" />
+    <Compile Include="network\l2recv\VehicleAPI\RequestMoveToLocationInVehicle.cs" />
+    <Compile Include="network\l2recv\RequestAction.cs" />
+    <Compile Include="network\l2recv\AttackRequest.cs" />
+    <Compile Include="network\l2recv\Appearing.cs" />
+    <Compile Include="network\l2recv\BypassUserCmd.cs" />
+    <Compile Include="network\l2recv\PartyAPI\AnswerPartyLootModification.cs" />
+    <Compile Include="network\l2recv\Logout.cs" />
+    <Compile Include="network\l2recv\PetAPI\RequestPetUseItem.cs" />
+    <Compile Include="network\l2recv\PetAPI\RequestGetItemFromPet.cs" />
+    <Compile Include="network\l2recv\PetAPI\RequestGiveItemToPet.cs" />
+    <Compile Include="network\l2recv\PetAPI\RequestChangePetName.cs" />
+    <Compile Include="network\l2recv\ItemEnchantAPI\RequestExTryToPutEnchantSupportItem.cs" />
+    <Compile Include="network\l2recv\ItemEnchantAPI\RequestEnchantItem.cs" />
+    <Compile Include="network\l2recv\ItemEnchantAPI\RequestExCancelEnchantItem.cs" />
+    <Compile Include="network\l2recv\ItemEnchantAPI\RequestExTryToPutEnchantTargetItem.cs" />
+    <Compile Include="network\l2recv\PartyAPI\RequestOustPartyMember.cs" />
+    <Compile Include="network\l2recv\PartyAPI\RequestWithDrawalParty.cs" />
+    <Compile Include="network\l2recv\PartyAPI\RequestPartyLootModification.cs" />
+    <Compile Include="network\l2recv\PartyAPI\RequestAnswerJoinParty.cs" />
+    <Compile Include="network\l2recv\PartyAPI\RequestJoinParty.cs" />
+    <Compile Include="network\l2recv\RequestDispel.cs" />
+    <Compile Include="network\l2recv\RequestCursedWeaponList.cs" />
+    <Compile Include="network\l2recv\RequestDominionInfo.cs" />
+    <Compile Include="network\l2recv\RequestTeleportBookMark.cs" />
+    <Compile Include="network\l2recv\RequestDeleteBookMarkSlot.cs" />
+    <Compile Include="network\l2recv\RequestModifyBookMarkSlot.cs" />
+    <Compile Include="network\l2recv\RequestSaveBookMarkSlot.cs" />
+    <Compile Include="network\l2recv\RequestBookMarkSlotInfo.cs" />
+    <Compile Include="network\l2recv\ClanAPI\RequestWithdrawalPledge.cs" />
+    <Compile Include="network\l2recv\ClanAPI\RequestExSetPledgeCrestLarge.cs" />
+    <Compile Include="network\l2recv\ClanAPI\RequestSetPledgeCrest.cs" />
+    <Compile Include="network\l2recv\CashShopAPI\RequestBR_RecentProductList.cs" />
+    <Compile Include="network\l2recv\CashShopAPI\RequestBR_BuyProduct.cs" />
+    <Compile Include="network\l2recv\CashShopAPI\RequestBR_ProductInfo.cs" />
+    <Compile Include="network\l2recv\CashShopAPI\RequestBR_ProductList.cs" />
+    <Compile Include="network\l2recv\CashShopAPI\RequestBR_GamePoint.cs" />
+    <Compile Include="network\l2recv\RequestTutorialPassCmdToServer.cs" />
+    <Compile Include="network\l2recv\RequestTutorialLinkHtml.cs" />
+    <Compile Include="network\l2recv\RequestBR_MinigameLoadScores.cs" />
+    <Compile Include="network\l2recv\RequestBR_MinigameInsertScore.cs" />
+    <Compile Include="network\l2recv\MailAPI\RequestSentPost.cs" />
+    <Compile Include="network\l2recv\MailAPI\RequestReceivedPost.cs" />
+    <Compile Include="network\l2recv\MailAPI\RequestSendPost.cs" />
+    <Compile Include="network\l2recv\MailAPI\RequestPostItemList.cs" />
+    <Compile Include="network\l2recv\MailAPI\RequestSentPostList.cs" />
+    <Compile Include="network\l2recv\MailAPI\RequestReceivedPostList.cs" />
+    <Compile Include="network\l2recv\RequestActionUse.cs" />
+    <Compile Include="network\l2recv\RequestExRqItemLink.cs" />
+    <Compile Include="network\l2recv\RequestBuySellUIClose.cs" />
+    <Compile Include="network\l2recv\RequestSaveInventoryOrder.cs" />
+    <Compile Include="network\l2recv\RequestBuyItem.cs" />
+    <Compile Include="network\l2recv\MultiSellChoose.cs" />
+    <Compile Include="network\l2recv\RequestWearItem.cs" />
+    <Compile Include="network\l2recv\ObserverReturn.cs" />
+    <Compile Include="network\l2recv\RequestQuestAbort.cs" />
+    <Compile Include="network\l2recv\RequestAcquireSkill.cs" />
+    <Compile Include="network\l2recv\RequestAcquireSkillInfo.cs" />
+    <Compile Include="network\l2recv\Say2.cs" />
+    <Compile Include="network\l2recv\RequestShortCutDel.cs" />
+    <Compile Include="network\l2recv\RequestShortCutReg.cs" />
+    <Compile Include="network\l2recv\RequestSendMsnChatLog.cs" />
+    <Compile Include="network\l2recv\PartyAPI\RequestPartyMatchList.cs" />
+    <Compile Include="network\l2recv\ClanAPI\RequestPledgeMemberInfo.cs" />
+    <Compile Include="network\l2recv\ClanAPI\RequestPledgeInfo.cs" />
+    <Compile Include="network\l2recv\RecipeAPI\RequestRecipeBookDestroy.cs" />
+    <Compile Include="network\l2recv\RecipeAPI\RequestRecipeBookOpen.cs" />
+    <Compile Include="network\l2recv\RecipeAPI\RequestRecipeItemMakeSelf.cs" />
+    <Compile Include="network\l2recv\RecipeAPI\RequestRecipeItemMakeInfo.cs" />
+    <Compile Include="network\l2recv\ValidatePosition.cs" />
+    <Compile Include="network\l2recv\RequestWarehouseWithdraw.cs" />
+    <Compile Include="network\l2recv\RequestWarehouseDeposit.cs" />
+    <Compile Include="network\l2recv\RequestMagicSkillUse.cs" />
+    <Compile Include="network\l2recv\RequestManorList.cs" />
+    <Compile Include="network\l2recv\RequestShowMiniMap.cs" />
+    <Compile Include="network\l2recv\RequestDestroyItem.cs" />
+    <Compile Include="network\l2recv\RequestRestart.cs" />
+    <Compile Include="network\l2recv\SendBypassBuildCmd.cs" />
+    <Compile Include="network\l2recv\RequestUnEquipItem.cs" />
+    <Compile Include="network\l2recv\RequestSellItem.cs" />
+    <Compile Include="network\l2recv\RequestBypassToServer.cs" />
+    <Compile Include="network\l2recv\RequestTargetCanceld.cs" />
+    <Compile Include="network\l2recv\RequestLinkHtml.cs" />
+    <Compile Include="network\l2recv\RequestUseItem.cs" />
+    <Compile Include="network\l2recv\RequestItemList.cs" />
+    <Compile Include="network\l2recv\MoveBackwardToLocation.cs" />
+    <Compile Include="network\l2recv\EnterWorld.cs" />
+    <Compile Include="network\l2recv\NewCharacter.cs" />
+    <Compile Include="network\l2recv\ProtocolVersion.cs" />
+    <Compile Include="network\l2send\CharacterSelectionInfo.cs" />
+    <Compile Include="network\l2send\CharTemplates.cs" />
+    <Compile Include="network\l2send\CharCreateFail.cs" />
+    <Compile Include="network\l2send\CharCreateOk.cs" />
+    <Compile Include="network\l2send\CharacterSelected.cs" />
+    <Compile Include="network\l2send\CharMoveToLocation.cs" />
+    <Compile Include="network\l2send\Calculator.cs" />
+    <Compile Include="network\l2send\ActionFailed.cs" />
+    <Compile Include="network\l2send\Attack.cs" />
+    <Compile Include="network\l2send\CharInfo.cs" />
+    <Compile Include="network\l2send\AcquireSkillList.cs" />
+    <Compile Include="network\l2send\AcquireSkillInfo.cs" />
+    <Compile Include="network\l2send\AskJoinParty.cs" />
+    <Compile Include="network\l2send\CharFlyToLocation.cs" />
+    <Compile Include="network\l2send\ChooseInventoryItem.cs" />
+    <Compile Include="network\l2send\ChangeWaitType.cs" />
+    <Compile Include="network\l2send\ChairSit.cs" />
+    <Compile Include="network\l2send\AgitDecoInfo.cs" />
+    <Compile Include="network\l2send\CharMoveToLocationMonrace.cs" />
+    <Compile Include="network\l2send\AutoAttackStart.cs" />
+    <Compile Include="network\l2send\AutoAttackStop.cs" />
+    <Compile Include="network\l2send\MultiSellListEx.cs" />
+    <Compile Include="network\l2send\NetPing.cs" />
+    <Compile Include="network\l2send\ShowBoard.cs" />
+    <Compile Include="network\l2send\StopRotation.cs" />
+    <Compile Include="network\l2send\StartRotation.cs" />
+    <Compile Include="network\l2send\Revive.cs" />
+    <Compile Include="network\l2send\TradeDone.cs" />
+    <Compile Include="network\l2send\TradeOtherAdd.cs" />
+    <Compile Include="network\l2send\TradeUpdate.cs" />
+    <Compile Include="network\l2send\TradeOwnAdd.cs" />
+    <Compile Include="network\l2send\TradeStart.cs" />
+    <Compile Include="network\l2send\SendTradeRequest.cs" />
+    <Compile Include="network\l2send\Ride.cs" />
+    <Compile Include="network\l2send\ExAutoSoulShot.cs" />
+    <Compile Include="network\l2send\PartySmallWindowUpdate.cs" />
+    <Compile Include="network\l2send\ExMoveToLocationInAirShip.cs" />
+    <Compile Include="network\l2send\ExGetOnAirShip.cs" />
+    <Compile Include="network\l2send\ExMoveToLocationAirShip.cs" />
+    <Compile Include="network\l2send\ExAirShipInfo.cs" />
+    <Compile Include="network\l2send\VehicleStarted.cs" />
+    <Compile Include="network\l2send\VehicleDeparture.cs" />
+    <Compile Include="network\l2send\GetOffVehicle.cs" />
+    <Compile Include="network\l2send\StopMoveInVehicle.cs" />
+    <Compile Include="network\l2send\GetOnVehicle.cs" />
+    <Compile Include="network\l2send\MoveToLocationInVehicle.cs" />
+    <Compile Include="network\l2send\VehicleInfo.cs" />
+    <Compile Include="network\l2send\NpcInfoMonrace.cs" />
+    <Compile Include="network\l2send\ShowTownMap.cs" />
+    <Compile Include="network\l2send\StaticObject.cs" />
+    <Compile Include="network\l2send\LeaveWorld.cs" />
+    <Compile Include="network\l2send\PetInventoryUpdate.cs" />
+    <Compile Include="network\l2send\PetStatusUpdate.cs" />
+    <Compile Include="network\l2send\TargetSelected.cs" />
+    <Compile Include="network\l2send\PetStatusShow.cs" />
+    <Compile Include="network\l2send\PetDelete.cs" />
+    <Compile Include="network\l2send\ExPartyPetWindowAdd.cs" />
+    <Compile Include="network\l2send\PetInfo.cs" />
+    <Compile Include="network\l2send\ExPutEnchantSupportItemResult.cs" />
+    <Compile Include="network\l2send\EnchantResult.cs" />
+    <Compile Include="network\l2send\ExPutEnchantTargetItemResult.cs" />
+    <Compile Include="network\l2send\PartySpelled.cs" />
+    <Compile Include="network\l2send\ExPartyPetWindowDelete.cs" />
+    <Compile Include="network\l2send\PartySmallWindowDelete.cs" />
+    <Compile Include="network\l2send\PartySmallWindowDeleteAll.cs" />
+    <Compile Include="network\l2send\ExSetPartyLooting.cs" />
+    <Compile Include="network\l2send\ExAskModifyPartyLooting.cs" />
+    <Compile Include="network\l2send\PartySmallWindowAll.cs" />
+    <Compile Include="network\l2send\JoinParty.cs" />
+    <Compile Include="network\l2send\ExCursedWeaponList.cs" />
+    <Compile Include="network\l2send\ExShowOwnthingPos.cs" />
+    <Compile Include="network\l2send\ExReplyDominionInfo.cs" />
+    <Compile Include="network\l2send\ExGetBookMarkInfo.cs" />
+    <Compile Include="network\l2send\SunSet.cs" />
+    <Compile Include="network\l2send\PledgeShowMemberListDeleteAll.cs" />
+    <Compile Include="network\l2send\PledgeReceiveSubPledgeCreated.cs" />
+    <Compile Include="network\l2send\ExBrExtraUserInfo.cs" />
+    <Compile Include="network\l2send\ExPledgeCrestLarge.cs" />
+    <Compile Include="network\l2send\PledgeCrest.cs" />
+    <Compile Include="network\l2send\SunRise.cs" />
+    <Compile Include="network\l2send\ExBR_RecentProductList.cs" />
+    <Compile Include="network\l2send\ExBR_ProductList.cs" />
+    <Compile Include="network\l2send\ExBR_ProductInfo.cs" />
+    <Compile Include="network\l2send\ExBR_BuyProduct.cs" />
+    <Compile Include="network\l2send\ExBR_GamePoint.cs" />
+    <Compile Include="network\l2send\ExRaidCharacterSelected.cs" />
+    <Compile Include="network\l2send\ExQuestItemList.cs" />
+    <Compile Include="network\l2send\ExBR_MinigameLoadScores.cs" />
+    <Compile Include="network\l2send\ExShowPetitionHtml.cs" />
+    <Compile Include="network\l2send\ExBuySellList_Close.cs" />
+    <Compile Include="network\l2send\ExBuySellList_Sell.cs" />
+    <Compile Include="network\l2send\TutorialCloseHtml.cs" />
+    <Compile Include="network\l2send\TutorialShowQuestionMark.cs" />
+    <Compile Include="network\l2send\TutorialShowHtml.cs" />
+    <Compile Include="network\l2send\ExShowSentPost.cs" />
+    <Compile Include="network\l2send\ExChangePostState.cs" />
+    <Compile Include="network\l2send\ExShowReceivedPost.cs" />
+    <Compile Include="network\l2send\ExNoticePostSent.cs" />
+    <Compile Include="network\l2send\ExPostItemList.cs" />
+    <Compile Include="network\l2send\ExShowSentPostList.cs" />
+    <Compile Include="network\l2send\ExShowReceivedPostList.cs" />
+    <Compile Include="network\l2send\ExBasicActionList.cs" />
+    <Compile Include="network\l2send\ExRpItemLink.cs" />
+    <Compile Include="network\l2send\ShopPreviewList.cs" />
+    <Compile Include="network\l2send\ExBuySellList_Buy.cs" />
+    <Compile Include="network\l2send\Die.cs" />
+    <Compile Include="network\l2send\StopMove.cs" />
+    <Compile Include="network\l2send\GetItem.cs" />
+    <Compile Include="network\l2send\DropItem.cs" />
+    <Compile Include="network\l2send\MoveToPawn.cs" />
+    <Compile Include="network\l2send\SpawnItem.cs" />
+    <Compile Include="network\l2send\ObservationReturn.cs" />
+    <Compile Include="network\l2send\ObservationMode.cs" />
+    <Compile Include="network\l2send\ExSetCompassZoneCode.cs" />
+    <Compile Include="network\l2send\CreatureSay.cs" />
+    <Compile Include="network\l2send\ShortCutRegister.cs" />
+    <Compile Include="network\l2send\ShortCutInit.cs" />
+    <Compile Include="network\l2send\FriendList.cs" />
+    <Compile Include="network\l2send\PledgeShowInfoUpdate.cs" />
+    <Compile Include="network\l2send\PledgeReceiveMemberInfo.cs" />
+    <Compile Include="network\l2send\PledgeInfo.cs" />
+    <Compile Include="network\l2send\PledgeShowMemberListAll.cs" />
+    <Compile Include="network\l2send\ExStorageMaxCount.cs" />
+    <Compile Include="network\l2send\RecipeItemMakeInfo.cs" />
+    <Compile Include="network\l2send\RecipeBookItemList.cs" />
+    <Compile Include="network\l2send\TeleportToLocation.cs" />
+    <Compile Include="network\l2send\ValidateLocation.cs" />
+    <Compile Include="network\l2send\DeleteObject.cs" />
+    <Compile Include="network\l2send\WareHouseWithdrawalList.cs" />
+    <Compile Include="network\l2send\WareHouseDepositList.cs" />
+    <Compile Include="network\l2send\PlaySound.cs" />
+    <Compile Include="network\l2send\QuestList.cs" />
+    <Compile Include="network\l2send\SkillCoolTime.cs" />
+    <Compile Include="network\l2send\MagicEffectIcons.cs" />
+    <Compile Include="network\l2send\MagicSkillCanceld.cs" />
+    <Compile Include="network\l2send\MagicSkillLaunched.cs" />
+    <Compile Include="network\l2send\MagicSkillUse.cs" />
+    <Compile Include="network\l2send\ExSendManorList.cs" />
+    <Compile Include="network\l2send\SetupGauge.cs" />
+    <Compile Include="network\l2send\ShowMiniMap.cs" />
+    <Compile Include="network\l2send\RestartResponse.cs" />
+    <Compile Include="network\l2send\SkillList.cs" />
+    <Compile Include="network\l2send\EtcStatusUpdate.cs" />
+    <Compile Include="network\l2send\InventoryUpdate.cs" />
+    <Compile Include="network\l2send\SocialAction.cs" />
+    <Compile Include="network\l2send\SellList.cs" />
+    <Compile Include="network\l2send\NpcInfo.cs" />
+    <Compile Include="network\l2send\TargetUnselected.cs" />
+    <Compile Include="network\l2send\MyTargetSelected.cs" />
+    <Compile Include="network\l2send\NpcHtmlMessage.cs" />
+    <Compile Include="network\l2send\SystemMessage.cs" />
+    <Compile Include="network\l2send\StatusUpdate.cs" />
+    <Compile Include="network\l2send\ItemList.cs" />
+    <Compile Include="network\l2send\UserInfo.cs" />
+    <Compile Include="network\l2send\KeyPacket.cs" />
+    <Compile Include="network\loginauth\AuthThread.cs" />
+    <Compile Include="network\loginauth\send\LoginServPing.cs" />
+    <Compile Include="network\NetworkBlock.cs" />
+    <Compile Include="network\PacketHandler.cs" />
+    <Compile Include="network\GameServerNetworkRequest.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="model\quests\QuestInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="network\GameServerNetworkPacket.cs" />
+    <Compile Include="scripting\ScriptCompiler.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="staticf\ClassIdContainer.cs" />
+    <Compile Include="staticf\pc_parameter.cs" />
+    <Compile Include="tables\AdminAccess.cs" />
+    <Compile Include="tables\admin\AA_actorcount.cs" />
+    <Compile Include="tables\admin\AA_addbookmark.cs" />
+    <Compile Include="tables\admin\AA_allgm.cs" />
+    <Compile Include="tables\admin\AA_announce.cs" />
+    <Compile Include="tables\admin\AA_attack.cs" />
+    <Compile Include="tables\admin\AA_camera.cs" />
+    <Compile Include="tables\admin\AA_char_stop.cs" />
+    <Compile Include="tables\admin\AA_check_bot.cs" />
+    <Compile Include="tables\admin\AA_create_pet.cs" />
+    <Compile Include="tables\admin\AA_declare_clan_war.cs" />
+    <Compile Include="tables\admin\AA_declare_truce.cs" />
+    <Compile Include="tables\admin\AA_defend.cs" />
+    <Compile Include="tables\admin\AA_delannounce.cs" />
+    <Compile Include="tables\admin\AA_delskill.cs" />
+    <Compile Include="tables\admin\AA_diet.cs" />
+    <Compile Include="tables\admin\AA_disband.cs" />
+    <Compile Include="tables\admin\AA_disband2.cs" />
+    <Compile Include="tables\admin\AA_earthquake.cs" />
+    <Compile Include="tables\admin\AA_escape.cs" />
+    <Compile Include="tables\admin\AA_event.cs" />
+    <Compile Include="tables\admin\AA_getbookmark.cs" />
+    <Compile Include="tables\admin\AA_gmliston.cs" />
+    <Compile Include="tables\admin\AA_gmon.cs" />
+    <Compile Include="tables\admin\AA_gmspeed.cs" />
+    <Compile Include="tables\admin\AA_healthy.cs" />
+    <Compile Include="tables\admin\AA_hennaequip.cs" />
+    <Compile Include="tables\admin\AA_hennaunequip.cs" />
+    <Compile Include="tables\admin\AA_hide.cs" />
+    <Compile Include="tables\admin\AA_home.cs" />
+    <Compile Include="tables\admin\AA_kick.cs" />
+    <Compile Include="tables\admin\AA_killme.cs" />
+    <Compile Include="tables\admin\AA_killnpc.cs" />
+    <Compile Include="tables\admin\AA_load_event.cs" />
+    <Compile Include="tables\admin\AA_load_npcsettings.cs" />
+    <Compile Include="tables\admin\AA_npccount.cs" />
+    <Compile Include="tables\admin\AA_ns.cs" />
+    <Compile Include="tables\admin\AA_polymorph.cs" />
+    <Compile Include="tables\admin\AA_qmove.cs" />
+    <Compile Include="tables\admin\AA_quiet.cs" />
+    <Compile Include="tables\admin\AA_recall.cs" />
+    <Compile Include="tables\admin\AA_reset_alliance_name.cs" />
+    <Compile Include="tables\admin\AA_reset_castle_owner.cs" />
+    <Compile Include="tables\admin\AA_reset_clan_leader.cs" />
+    <Compile Include="tables\admin\AA_reset_clan_name.cs" />
+    <Compile Include="tables\admin\AA_reset_skill.cs" />
+    <Compile Include="tables\admin\AA_ride_wyvern.cs" />
+    <Compile Include="tables\admin\AA_sendhome.cs" />
+    <Compile Include="tables\admin\AA_send_gmroom.cs" />
+    <Compile Include="tables\admin\AA_servername.cs" />
+    <Compile Include="tables\admin\AA_serverstat.cs" />
+    <Compile Include="tables\admin\AA_setai.cs" />
+    <Compile Include="tables\admin\AA_setannounce.cs" />
+    <Compile Include="tables\admin\AA_setbuilder.cs" />
+    <Compile Include="tables\admin\AA_setclass.cs" />
+    <Compile Include="tables\admin\AA_setparam.cs" />
+    <Compile Include="tables\admin\AA_setquest.cs" />
+    <Compile Include="tables\admin\AA_setskill.cs" />
+    <Compile Include="tables\admin\AA_set_castle_owner.cs" />
+    <Compile Include="tables\admin\AA_set_door_status.cs" />
+    <Compile Include="tables\admin\AA_set_hero.cs" />
+    <Compile Include="tables\admin\AA_set_interval_announce.cs" />
+    <Compile Include="tables\admin\AA_set_nobless.cs" />
+    <Compile Include="tables\admin\AA_set_pledge_level.cs" />
+    <Compile Include="tables\admin\AA_set_quick_siege.cs" />
+    <Compile Include="tables\admin\AA_set_siege.cs" />
+    <Compile Include="tables\admin\AA_set_siege_end.cs" />
+    <Compile Include="tables\admin\AA_set_siege_period.cs" />
+    <Compile Include="tables\admin\AA_set_skill_all.cs" />
+    <Compile Include="tables\admin\AA_set_zzaga_hero.cs" />
+    <Compile Include="tables\admin\AA_showparty.cs" />
+    <Compile Include="tables\admin\AA_show_castle_info.cs" />
+    <Compile Include="tables\admin\AA_snoop.cs" />
+    <Compile Include="tables\admin\AA_ssq.cs" />
+    <Compile Include="tables\admin\AA_ssq_info.cs" />
+    <Compile Include="tables\admin\AA_stoplogin.cs" />
+    <Compile Include="tables\admin\AA_stopsay.cs" />
+    <Compile Include="tables\admin\AA_summon.cs" />
+    <Compile Include="tables\admin\AA_summon2.cs" />
+    <Compile Include="tables\admin\AA_summon3.cs" />
+    <Compile Include="tables\admin\AA_telbookmark.cs" />
+    <Compile Include="tables\admin\AA_teleport.cs" />
+    <Compile Include="tables\admin\AA_teleportto.cs" />
+    <Compile Include="tables\admin\AA_teleport_to_npc.cs" />
+    <Compile Include="tables\admin\AA_test.cs" />
+    <Compile Include="tables\admin\AA_range.cs" />
+    <Compile Include="tables\admin\AA_tradeoff.cs" />
+    <Compile Include="tables\admin\AA_tradeon.cs" />
+    <Compile Include="tables\admin\AA_undying.cs" />
+    <Compile Include="tables\admin\AA_whisper.cs" />
+    <Compile Include="tables\admin\AA_who.cs" />
+    <Compile Include="tables\admin\AA_spawn.cs" />
+    <Compile Include="tables\admin\AA_transform.cs" />
+    <Compile Include="tables\admin\AA_chat.cs" />
+    <Compile Include="tables\admin\_adminAlias.cs" />
+    <Compile Include="tables\admin_bypass\ABTeleport.cs" />
+    <Compile Include="tables\CashShop.cs" />
+    <Compile Include="tables\ClanTable.cs" />
+    <Compile Include="tables\AllianceTable.cs" />
+    <Compile Include="tables\FString.cs" />
+    <Compile Include="tables\ItemTable.cs" />
+    <Compile Include="tables\L2Territory.cs" />
+    <Compile Include="tables\MapRegionTable.cs" />
+    <Compile Include="tables\multisell\MultiSell.cs" />
+    <Compile Include="tables\ndextend\NDTeleport.cs" />
+    <Compile Include="tables\RegionID.cs" />
+    <Compile Include="tables\SpawnTable.cs" />
+    <Compile Include="tables\StructureTable.cs" />
+    <Compile Include="tables\PClassess.cs" />
+    <Compile Include="tables\NpcData.cs" />
+    <Compile Include="tables\NpcSpawn.cs" />
+    <Compile Include="tables\NpcTable.cs" />
+    <Compile Include="tables\HtmCache.cs" />
+    <Compile Include="tables\IdFactory.cs" />
+    <Compile Include="tables\RecipeTable.cs" />
+    <Compile Include="tables\StaticObjTable.cs" />
+    <Compile Include="tables\ZoneTable.cs" />
+    <Compile Include="tools\Calcs.cs" />
+    <Compile Include="tools\Utilz.cs" />
+    <Compile Include="world\instances\data\_test_instance.cs" />
+    <Compile Include="world\instances\InstanceTemplate.cs" />
+    <Compile Include="world\instances\L2Instance.cs" />
+    <Compile Include="world\L2Character.cs" />
+    <Compile Include="world\L2Object.cs" />
+    <Compile Include="world\L2World.cs" />
+    <Compile Include="world\L2WorldRegion.cs" />
+    <Compile Include="_test\category.cs" />
+    <Compile Include="_test\drop_l2j_to_rcs.cs" />
+    <Compile Include="_test\l2jitem.cs" />
+    <Compile Include="_test\npc_l2j_to_rcs.cs" />
+    <Compile Include="_test\shop_conv.cs" />
+    <Compile Include="_test\test2.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
