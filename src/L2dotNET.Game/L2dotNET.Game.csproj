@@ -8,8 +8,8 @@
     <ProjectGuid>{991E13B3-EB83-46C1-9F63-6ED3E332F88F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>c_game</RootNamespace>
-    <AssemblyName>c_game</AssemblyName>
+    <RootNamespace>L2dotNET.Game</RootNamespace>
+    <AssemblyName>L2dotNET.Game</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
