@@ -14,13 +14,14 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x32);
+            writeC(0x04);
 
             writeD(player.X);
             writeD(player.Y);
             writeD(player.Z);
             writeD(player.VehicleId);
             writeD(player.ObjID);
+
             writeS(player.Name);
 
             writeD(player.BaseClass.race);
@@ -28,9 +29,6 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.BaseClass.id);
             writeD(player.Level);
             writeQ(player.Exp);
-
-            if(player.Gameclient.Protocol > 250)
-                writeF(0.0);
 
             writeD(player.getSTR());
             writeD(player.getDEX());
@@ -47,7 +45,7 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.CurrentWeight);
             writeD(player.CharacterStat.getStat(TEffectType.b_max_weight));
 
-            writeD(0x28); // unknown
+            writeD(player.Inventory.getWeapon() != null ? 40 : 20); // 20 no weapon, 40 weapon equipped
 
             for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
             {
@@ -79,9 +77,39 @@ namespace L2dotNET.Game.network.l2send
 
                 writeD(result);
             }
-
-            writeD(player.TalismanActive);
-            writeD(player.CloakStatus);
+            // c6 new h's
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeD(player.Inventory.getWeaponAugmentation());
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeD(player.Inventory.getWeaponAugmentation());
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
 
             double atkspd = player.CharacterStat.getStat(TEffectType.b_attack_spd);
             writeD(player.CharacterStat.getStat(TEffectType.p_physical_attack));
@@ -113,8 +141,13 @@ namespace L2dotNET.Game.network.l2send
             writeD(0); //?
             writeD(runSpd); //fly run
             writeD(walkSpd); //fly walk ?
-            writeF(anim); //анимация бега
-            writeF(anim2); //анимация атаки
+            writeF(0); //анимация бега
+            writeF(0); //анимация атаки
+
+            writeD(0);
+            writeD(0);
+            writeF(0);
+            writeF(0);
 
             writeF(player.Radius);
             writeF(player.Height);
@@ -122,8 +155,8 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.HairStyle);
             writeD(player.HairColor);
             writeD(player.Face);
-
             writeD(player.Builder);
+
             writeS(player.Title);
 
             writeD(player.ClanId);
@@ -158,7 +191,7 @@ namespace L2dotNET.Game.network.l2send
             if (player.TransformID > 0)
                 flymode = player.Transform.Template.MoveMode;
 
-            writeC(flymode);
+            writeC(0x00);
 
             writeD(player.ClanPrivs);
 
@@ -195,26 +228,7 @@ namespace L2dotNET.Game.network.l2send
 
             writeD(player.getTitleColor());
             writeD(player.CursedWeaponLevel);
-            writeD(player.TransformID);
-
-            writeH(-2);
-            writeH(0);
-            writeH(0);
-            writeH(0);
-            writeH(0);
-            writeH(0);
-            writeH(0);
-            writeH(0);
-
-            writeD(player.AgationID);
-            writeD(player.Fame); 
-            writeD(1); // Minimap on Hellbound
-            writeD(player.Vitality);
-
-            writeD(player.AbnormalBitMaskEx);
-            writeD(0); // CT2.3
-            writeD(0); // CT2.3
-            writeD(0); // CT2.3
+            
         }
     }
 }

@@ -379,8 +379,8 @@ namespace L2dotNET.Game.model.items
             sqb.param("iequip_data", _paperdollSlot);
             sqb.param("ilocation", Location.ToString());
             sqb.param("iloc_data", 0);
-            sqb.param("ict1", CustomType1);
-            sqb.param("ict2", CustomType2);
+            //sqb.param("ict1", CustomType1);
+            //sqb.param("ict2", CustomType2);
             sqb.sql_insert(false);
         }
 
@@ -404,8 +404,8 @@ namespace L2dotNET.Game.model.items
             sqb.param("iequip_data", _paperdollSlot);
             sqb.param("ilocation", Location.ToString());
             sqb.param("iloc_data", SlotLocation);
-            sqb.param("ict1", CustomType1);
-            sqb.param("ict2", CustomType2);
+            //sqb.param("ict1", CustomType1);
+            //sqb.param("ict2", CustomType2);
             sqb.where("iobjectId", ObjID);
             sqb.sql_update(false);
         }

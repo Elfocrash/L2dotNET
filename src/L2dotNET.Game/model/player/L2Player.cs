@@ -130,8 +130,8 @@ namespace L2dotNET.Game
 
                 player.Penalty_ClanCreate = reader.GetString("penalty_clancreate");
                 player.Penalty_ClanJoin = reader.GetString("penalty_clanjoin");
-                player.TelbookLimit = (byte)reader.GetInt16("telbook");
-                player.LastAccountSelection = reader.GetInt16("lastUse");
+                //player.TelbookLimit = (byte)reader.GetInt16("telbook");
+                //player.LastAccountSelection = reader.GetInt16("lastUse");
             }
 
             reader.Close();
@@ -508,8 +508,8 @@ namespace L2dotNET.Game
                         break;
                 }
 
-                item.CustomType1 = reader.GetInt32("ict1");
-                item.CustomType2 = reader.GetInt32("ict2");
+                //item.CustomType1 = reader.GetInt32("ict1");
+                //item.CustomType2 = reader.GetInt32("ict2");
             }
 
             reader.Close();
@@ -1996,7 +1996,7 @@ namespace L2dotNET.Game
             db_restoreRecipes();
             db_restoreInstanceReuse();
             db_restoreTelbooks();
-            db_restoreShortcuts();
+           // db_restoreShortcuts(); elfo to be added
 
             IsRestored = true;
         }

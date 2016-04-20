@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using L2dotNET.Auth.data;
 using MySql.Data.MySqlClient;
+using System;
 
 namespace L2dotNET.Auth.gscommunication
 {
@@ -32,11 +33,15 @@ namespace L2dotNET.Auth.gscommunication
             while (reader.Read())
             {
                 L2Server server = new L2Server();
-                server.id = (byte)reader.GetUInt32("sid");
-                server.info = reader.GetString("info");
-                server.code = reader.GetString("code");
+                try {
+                    server.id = (byte)reader.GetInt32("id");
+                    server.info = reader.GetString("info");
+                    server.code = reader.GetString("code");
 
-                servers.Add(server);
+                    servers.Add(server);
+                }
+                catch(Exception e)
+                { }
             }
 
             reader.Close();

@@ -14,7 +14,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x0b);
+            writeC(0x15);
 
             writeS(player.Name);
             writeD(player.ObjID); 
@@ -48,18 +48,23 @@ namespace L2dotNET.Game.network.l2send
 
             writeD(player.getDEX());
             writeD(player.getWIT());
-            writeD(0);	// in-game time 
-            writeD(0x00);
+            for (int i = 0; i < 30; i++)
+            {
+                writeD(0x00);
+            }
+            writeD(0x00); // c3 work
+            writeD(0x00); // c3 work
 
             writeD(0x00);
-            writeD(0x00);
-            writeD(0x00);
-            writeD(0x00);
 
-            writeD(0x00);
-            writeD(0x00);
-            writeD(0x00);
-            writeD(0x00);
+            writeD(0x00); // c3
+
+            writeD(player.ActiveClass.id);
+
+            writeD(0x00); // c3 InspectorBin
+            writeD(0x00); // c3
+            writeD(0x00); // c3
+            writeD(0x00); // c3
         }
     }
 }

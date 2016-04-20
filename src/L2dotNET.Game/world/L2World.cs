@@ -4,6 +4,7 @@ using L2dotNET.Game.logger;
 using L2dotNET.Game.world.instances;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.network;
+using System.Linq;
 
 namespace L2dotNET.Game.world
 {
@@ -155,19 +156,22 @@ namespace L2dotNET.Game.world
 
         public void realiseEntry(L2Object obj, GameServerNetworkPacket pk, bool pkuse)
         {
-            _allObjects.Add(obj.ObjID, obj);
-
-            if (obj is L2Player)
-                _allPlayers.Add(obj.ObjID, (L2Player)obj);
-
-            L2WorldRegion reg = getRegion(obj.X, obj.Y);
-            obj.CurrentRegion = reg.getName();
-            if (reg != null)
+            if (_allObjects.ContainsKey(obj.ObjID))
             {
-                reg.realiseMe(obj, pk, pkuse);
+                _allObjects.Add(obj.ObjID, obj);
+
+                if (obj is L2Player)
+                    _allPlayers.Add(obj.ObjID, (L2Player)obj);
+
+                L2WorldRegion reg = getRegion(obj.X, obj.Y);
+                obj.CurrentRegion = reg.getName();
+                if (reg != null)
+                {
+                    reg.realiseMe(obj, pk, pkuse);
+                }
+                else
+                    CLogger.warning("l2world: realiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
             }
-            else
-                CLogger.warning("l2world: realiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
         }
 
         public void unrealiseEntry(L2Object obj, bool pkuse)

@@ -8,11 +8,11 @@ namespace L2dotNET.Game.model.inventory
     public class InvPC : InvTemplate
     {
         public const byte EQUIPITEM_Underwear = 0;
-        public const byte EQUIPITEM_REar = 1;
-        public const byte EQUIPITEM_LEar = 2;
+        public const byte EQUIPITEM_LEar = 1;
+        public const byte EQUIPITEM_REar = 2;
         public const byte EQUIPITEM_Neck = 3;
-        public const byte EQUIPITEM_RFinger = 4;
-        public const byte EQUIPITEM_LFinger = 5;
+        public const byte EQUIPITEM_LFinger = 4;
+        public const byte EQUIPITEM_RFinger = 5;
         public const byte EQUIPITEM_Head = 6;
         public const byte EQUIPITEM_RHand = 7; //14 lrhand
         public const byte EQUIPITEM_LHand = 8;
@@ -23,16 +23,7 @@ namespace L2dotNET.Game.model.inventory
         public const byte EQUIPITEM_Cloak = 13;
         public const byte EQUIPITEM_Hair = 15;
         public const byte EQUIPITEM_Hair2 = 16;
-        public const byte EQUIPITEM_LBracelet = 18;
-        public const byte EQUIPITEM_RBracelet = 17;
-        public const byte EQUIPITEM_Deco1 = 19;
-        public const byte EQUIPITEM_Deco2 = 20;
-        public const byte EQUIPITEM_Deco3 = 21;
-        public const byte EQUIPITEM_Deco4 = 22;
-        public const byte EQUIPITEM_Deco5 = 23;
-        public const byte EQUIPITEM_Deco6 = 24;
-        public const byte EQUIPITEM_Waist = 25;
-        public const byte EQUIPITEM_Max = 26;
+        public const byte EQUIPITEM_Max = 17;
 
         public const int SLOT_NONE = 0;
         public const int SBT_UNDERWEAR = 1;
@@ -462,25 +453,7 @@ namespace L2dotNET.Game.model.inventory
                         uiUpdate = 1;
                     }
                     break;
-                case SBT_Deco1:
-                    if (_paperdoll[EQUIPITEM_Deco6][PDOLL_OBJID] > 0)
-                    {
-                        pdollId = EQUIPITEM_Deco6;
-                        unequipAction.Add(new object[] { getByObject(_paperdoll[EQUIPITEM_Deco6][PDOLL_OBJID]), EQUIPITEM_Deco6 });
-                    }
-                    else
-                    {
-                        for (byte a = EQUIPITEM_Deco1; a <= EQUIPITEM_Deco6; a++)
-                        {
-                            if (_paperdoll[a][PDOLL_OBJID] == 0)
-                            {
-                                pdollId = a;
-                                break;
-                            }
-                        }
-                    }
-                    uiUpdate = 2;
-                    break;
+              
                 default:
                     if (_paperdoll[pdollId][PDOLL_OBJID] != 0)
                     {
@@ -593,12 +566,6 @@ namespace L2dotNET.Game.model.inventory
                     return EQUIPITEM_Hair2;
                 case SBT_HAIRALL:
                     return EQUIPITEM_Hair2;
-                case SBT_RBracelet:
-                    return EQUIPITEM_RBracelet;
-                case SBT_LBracelet:
-                    return EQUIPITEM_LBracelet;
-                case SBT_Waist:
-                    return EQUIPITEM_Waist;
             }
 
             return doll;
@@ -660,16 +627,8 @@ namespace L2dotNET.Game.model.inventory
                     }
                     break;
 
-                case ItemTemplate.L2ItemBodypart.lbracelet:
-                    id = EQUIPITEM_LBracelet; break;
-                case ItemTemplate.L2ItemBodypart.rbracelet:
-                    id = EQUIPITEM_RBracelet; break;
-                case ItemTemplate.L2ItemBodypart.deco1:
-                    id = EQUIPITEM_Deco1; break;
                 case ItemTemplate.L2ItemBodypart.back:
                     id = EQUIPITEM_Cloak; break;
-                case ItemTemplate.L2ItemBodypart.waist:
-                    id = EQUIPITEM_Waist; break;
             }
 
             return id;

@@ -19,20 +19,20 @@ namespace L2dotNET.Game.network.l2recv
 
         public override void read()
         {
-            readB(32);
-            readD();
-            readD();
-            readD();
-            readD();
-            readB(32);
-            readD();
+            //readB(32);
+            //readD();
+            //readD();
+            //readD();
+            //readD();
+            //readB(32);
+            //readD();
 
-            for (int i = 0; i < 5; i++)
-            {
-                tracert[i] = new int[4];
-                for (int o = 0; o < 4; o++)
-                    tracert[i][o] = readC();
-            }
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    tracert[i] = new int[4];
+            //    for (int o = 0; o < 4; o++)
+            //        tracert[i][o] = readC();
+            //}
         }
 
         public override void run()
@@ -71,8 +71,8 @@ namespace L2dotNET.Game.network.l2recv
             }
 
             player.StartRegeneration();
-            player.sendItemList(false);
-            player.Vitality = 20000;
+           // player.sendItemList(false);
+            //player.Vitality = 20000;
             player.sendPacket(new FriendList());
             player.sendQuestList();
             player.updateSkillList();
@@ -84,7 +84,7 @@ namespace L2dotNET.Game.network.l2recv
             }
 
             player.sendPacket(new ExStorageMaxCount(player));
-            player.sendPacket(new ExBasicActionList());
+           // player.sendPacket(new ExBasicActionList());
           //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
             player.sendActionFailed();
 
@@ -96,17 +96,12 @@ namespace L2dotNET.Game.network.l2recv
             L2World.getInstance().getRegion(player.X, player.Y).checkZones(player, true);
 
             player.sendPacket(new UserInfo(player));
-            player.sendPacket(new UserInfo(player));
+           // player.sendPacket(new UserInfo(player));
 
-            player.sendPacket(new ShortCutInit(player));
+            //player.sendPacket(new ShortCutInit(player));
             player.StartAI();
 
             player.RequestPing();
-
-            if (player.Gameclient.AccountPremium)
-            {
-                player.sendPacket(new ExBrPremiumState(player.ObjID, 1));
-            }
         }
     }
 }

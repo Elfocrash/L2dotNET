@@ -46,8 +46,8 @@ namespace L2dotNET.Auth.data
                 account.timeend = reader.GetString("timeEnd");
                 account.lastlogin = reader.GetString("lastlogin");
                 account.lastAddress = reader.GetString("lastAddress");
-                account.premium = reader.GetInt16("premium") == 1;
-                account.points = reader.GetInt64("points");
+                //account.premium = reader.GetInt16("premium") == 1;
+               // account.points = reader.GetInt64("points");
                 _accounts.Add(account.name.ToLower(), account);
             }
 

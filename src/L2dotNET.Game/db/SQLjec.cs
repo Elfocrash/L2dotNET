@@ -176,9 +176,9 @@ namespace L2dotNET.Game.db
                 }
             }
 
-            cmd.CommandText = "update " + _table + " set " + str + " where " + where;
-            cmd.CommandType = CommandType.Text;
-            cmd.ExecuteNonQuery();
+            //cmd.CommandText = "update " + _table + " set " + str + " where " + where;
+            //cmd.CommandType = CommandType.Text;
+            //cmd.ExecuteNonQuery();
 
             if (!ex)
                 connection.Close();

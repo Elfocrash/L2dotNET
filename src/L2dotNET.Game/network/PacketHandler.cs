@@ -26,32 +26,48 @@ namespace L2dotNET.Game.network
             switch (id)
             {
                 case 0x00:
-                    msg = new Logout(client, buff);
-                    break;
-                case 0x01:
-                    msg = new AttackRequest(client, buff);
-                    break;
-
-                case 0x0c:
-                    msg = new CharacterCreate(client, buff);
-                    break;
-                case 0x0E:
                     msg = new ProtocolVersion(client, buff);
                     break;
-                case 0x09:
-                    msg = new RequestSetPledgeCrest(client, buff);
+                case 0x08:
+                    msg = new AuthLogin(client, buff);
                     break;
+
+                case 0x09:
+                    msg = new Logout(client, buff);
+                    break;
+                case 0x0b:
+                    msg = new CharacterCreate(client, buff);
+                    break;
+                //case 0x0c:
+                //    msg = new CharacterDelete(client, buff);
+                //    break;
+                case 0x0d:
+                    msg = new CharacterSelected(client, buff);
+                    break;
+                case 0x0e:
+                    msg = new NewCharacter(client, buff);
+                    break;
+                //case 0x62:
+                //    msg = new CharacterRestore(client, buff);
+                //    break;
+                //case 0x68:
+                //    msg = new RequestPledgeCrest(client, buff);
+                //    break;
+
+                //case 0x0c:
+                //    msg = new CharacterCreate(client, buff);
+                //    break;
+                //case 0x00:
+                //    msg = new ProtocolVersion(client, buff);
+                //    break;
+                //case 0x09:
+                //    msg = new RequestSetPledgeCrest(client, buff);
+                //    break;
                 case 0x0F:
                     msg = new MoveBackwardToLocation(client, buff);
                     break;
-                case 0x11:
+                case 0x03:
                     msg = new EnterWorld(client, buff);
-                    break;
-                case 0x12:
-                    msg = new CharacterSelected(client, buff);
-                    break;
-                case 0x13:
-                    msg = new NewCharacter(client, buff);
                     break;
                 case 0x14:
                     msg = new RequestItemList(client, buff);
@@ -262,7 +278,7 @@ namespace L2dotNET.Game.network
                     cninfo = "handlepacket: request unk id2 " + id2.ToString("x2") + " size " + buff.Length;
                     switch (id2)
                     {
-                        case 0x01:
+                        case 0x08:
                             msg = new RequestManorList(client, buff);
                             break;
                         case 0x11:

@@ -132,36 +132,36 @@ namespace L2dotNET.Game.tables
             }
             reader.Close();
 
-            {
-                MySqlConnection connection = SQLjec.getInstance().conn();
-                MySqlCommand cmd = connection.CreateCommand();
+            //{
+            //    MySqlConnection connection = SQLjec.getInstance().conn();
+            //    MySqlCommand cmd = connection.CreateCommand();
 
-                connection.Open();
+            //    connection.Open();
 
-                cmd.CommandText = "SELECT * FROM st_hideouts";
-                cmd.CommandType = CommandType.Text;
+            //    cmd.CommandText = "SELECT * FROM st_hideouts";
+            //    cmd.CommandType = CommandType.Text;
 
 
-                MySqlDataReader msreader = cmd.ExecuteReader();
+            //    MySqlDataReader msreader = cmd.ExecuteReader();
 
-                while (msreader.Read())
-                {
-                    int id = msreader.GetInt32("id");
-                    Hideout hideout = (Hideout)structures[id];
+            //    while (msreader.Read())
+            //    {
+            //        int id = msreader.GetInt32("id");
+            //        Hideout hideout = (Hideout)structures[id];
 
-                    hideout.Name = msreader.GetString("name");
-                    hideout.Descr = msreader.GetString("descr");
-                    //TODO paytime
+            //        hideout.Name = msreader.GetString("name");
+            //        hideout.Descr = msreader.GetString("descr");
+            //        //TODO paytime
 
-                    for (byte a = 1; a <= 12; a++)
-                        hideout.Decoration[a] = msreader.GetInt32("func_" + a);
+            //        for (byte a = 1; a <= 12; a++)
+            //            hideout.Decoration[a] = msreader.GetInt32("func_" + a);
 
-                    hideouts.Add(hideout.ID, hideout);
-                }
+            //        hideouts.Add(hideout.ID, hideout);
+            //    }
 
-                reader.Close();
-                connection.Close();
-            }
+            //    reader.Close();
+            //    connection.Close();
+            //}
 
             CLogger.info("Structs: loaded "+structures.Count+" templates.");
             CLogger.info("Hideouts: " + hideouts.Count + ".");

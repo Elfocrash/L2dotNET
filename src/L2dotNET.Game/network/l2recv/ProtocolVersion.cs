@@ -18,7 +18,7 @@ namespace L2dotNET.Game.network.l2recv
 
         public override void run()
         {
-            if (_protocol != 216 && _protocol != 251)
+            if (_protocol != 746 && _protocol != 251)
             {
                 CLogger.error("protocol fail. "+_protocol);
                 getClient().sendPacket(new KeyPacket(getClient(), 0));

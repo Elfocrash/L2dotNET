@@ -13,7 +13,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x0d);
+            writeC(0x17);
             writeD(_templates.Count);
 
             foreach (pc_parameter t in _templates)

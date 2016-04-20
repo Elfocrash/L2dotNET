@@ -74,16 +74,19 @@ namespace L2dotNET.Game.model.stats
                 if (cc.type != effect.type)
                     continue;
 
-                if (cc.supMethod.Method <= SupMethod.SUB)
+                if (cc.supMethod != null)
                 {
-                    if(arif == null)
-                        arif = new List<TEffect>();
+                    if (cc.supMethod.Method <= SupMethod.SUB)
+                    {
+                        if (arif == null)
+                            arif = new List<TEffect>();
 
-                    arif.Add(cc);
-                    continue;
+                        arif.Add(cc);
+                        continue;
+                    }
+
+                    newvalue = calcSupMethod(newvalue, cc.supMethod);
                 }
-
-                newvalue = calcSupMethod(newvalue, cc.supMethod);
             //    Console.WriteLine("newvalue! #1 " + newvalue + " " + cc.supMethod.Value+" "+cc.type);
             }
 

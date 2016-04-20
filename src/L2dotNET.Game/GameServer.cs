@@ -66,15 +66,15 @@ namespace L2dotNET.Game
             IdFactory.getInstance().init();
 
             L2World.getInstance();
-            MapRegionTable.getInstance();
+           // MapRegionTable.getInstance();
             ZoneTable.getInstance();
 
             NpcTable.getInstance();
             NpcData.getInstance();
-            SpawnTable.getInstance();
+          //  SpawnTable.getInstance();
             StaticObjTable.getInstance().read();
             StructureTable.getInstance().read();
-            TSkillTable.getInstance();
+          //  TSkillTable.getInstance();
             ItemTable.getInstance();
             ItemHandler.getInstance();
             MultiSell.getInstance();
@@ -108,7 +108,7 @@ namespace L2dotNET.Game
             CLogger.info("NpcServer: ");
             StaticObjTable.getInstance().Spawn();
             MonsterRace.getInstance().Spawn();
-            SpawnTable.getInstance().Spawn();
+          //  SpawnTable.getInstance().Spawn();
             StructureTable.getInstance().init();
 
             HtmCache.getInstance();

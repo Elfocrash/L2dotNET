@@ -35,6 +35,7 @@ namespace L2dotNET.Auth.basetemplate
         trial,
         limited,
         normal,
-        ultra
+        ultra,
+        free
     }
 }

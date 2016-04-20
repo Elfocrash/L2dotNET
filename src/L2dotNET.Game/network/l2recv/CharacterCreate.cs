@@ -27,9 +27,9 @@ namespace L2dotNET.Game.network.l2recv
         private int _men;
         private int _dex;
         private int _wit;
-        private int _hairStyle;
-        private int _hairColor;
-        private int _face;
+        private byte _hairStyle;
+        private byte _hairColor;
+        private byte _face;
 
         public override void read()
         {
@@ -43,9 +43,9 @@ namespace L2dotNET.Game.network.l2recv
             _men = readD();
             _dex = readD();
             _wit = readD();
-            _hairStyle = readD();
-            _hairColor = readD();
-            _face = readD();
+            _hairStyle = (byte)readD();
+            _hairColor = (byte)readD();
+            _face = (byte)readD();
         }
 
         public override void run()

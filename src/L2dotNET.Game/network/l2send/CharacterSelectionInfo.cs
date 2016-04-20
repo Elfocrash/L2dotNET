@@ -16,11 +16,11 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x09);
+            writeC(0x13);
             writeD(players.Count);
 
-            writeD(0x07);
-            writeC(0x00);
+            //writeD(0x07);
+            //writeC(0x00);
 
             foreach (L2Player player in players)
             {
@@ -46,18 +46,14 @@ namespace L2dotNET.Game.network.l2send
 
                 writeQ(player.Exp);
 
-                if (player.Gameclient.Protocol > 250)
-                    writeF(0.0); //annivers
-
                 writeD(player.Level);
                 writeD(player.Karma); // karma
-                writeD(0);
+                writeD(0); //pkkills
+                writeD(0);//pvpkills
 
                 writeD(0);
                 writeD(0);
                 writeD(0);
-                writeD(0);
-
                 writeD(0);
                 writeD(0);
                 writeD(0);
@@ -88,20 +84,7 @@ namespace L2dotNET.Game.network.l2send
 
                 writeD(selection); // auto-select char
                 writeC(player.GetEnchantValue());
-                writeH(0x00);
-
-                writeH(0x00);
-                writeD(0x00); //transform
-                writeD(0x00);
-                writeD(0x00);
-
-                writeD(0x00);
-                writeD(0x00);
-                writeF(0.0);
-                writeF(0.0);
-
-                if (player.Gameclient.Protocol > 250)
-                    writeD(0); //anniversary
+                writeD(0x00); // augment
             }
         }
     }

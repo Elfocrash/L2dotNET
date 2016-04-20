@@ -13,7 +13,7 @@ namespace L2dotNET.Game.network.loginauth.send
 
         protected internal override void write()
         {
-            writeC(0xA2);
+            writeC(0x03);
             writeS(account.ToLower());
             writeC(status ? (byte)1 : (byte)0);
         }

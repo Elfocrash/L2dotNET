@@ -191,24 +191,7 @@ namespace L2dotNET.Game.staticf
         doomcryer,
 
         fortune_seeker,
-        maestro,
-
-        female_soldier,
-        warder,
-        female_soulbreaker,
-        arbalester,
-        inspector,
-        female_soulhound,
-
-        male_soldier,
-        trooper,
-        berserker,
-        male_soulbreaker,
-        doombringer,
-        male_soulhound,
-
-        trickster,
-        judicator,
+        maestro
     };
 
     public enum JobLevel
