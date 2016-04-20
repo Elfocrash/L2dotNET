@@ -30,18 +30,7 @@ namespace L2dotNET.Game.network.l2send
                     CType2 = item.CustomType2,
                     Augment = item.AugmentationID,
                     Mana = item.Durability,
-                    TimeLeft = item.LifeTimeEnd(),
-                    AtAttackType = item.AttrAttackType,
-                    AtAttackVal = item.AttrAttackValue,
-                    AtDefenseValFire = item.AttrDefenseValueFire,
-                    AtDefenseValWater = item.AttrDefenseValueWater,
-                    AtDefenseValWind = item.AttrDefenseValueWind,
-                    AtDefenseValEarth = item.AttrDefenseValueEarth,
-                    AtDefenseValHoly = item.AttrDefenseValueHoly,
-                    AtDefenseValUnholy = item.AttrDefenseValueUnholy,
-                    E1 = item.Enchant1,
-                    E2 = item.Enchant2,
-                    E3 = item.Enchant3
+                    TimeLeft = item.LifeTimeEnd()
                 });
 
                 if (item.Blocked)
@@ -51,7 +40,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x11);
+            writeC(0x1b);
             writeH(showWindow ? 1 : 0);
             writeH(items.Count);
 
@@ -69,30 +58,20 @@ namespace L2dotNET.Game.network.l2send
                 writeH(item.CType2);
                 writeD(item.Augment);
                 writeD(item.Mana);
-                writeD(item.TimeLeft);
-                writeH(item.AtAttackType);
-                writeH(item.AtAttackVal);
-                writeH(item.AtDefenseValFire);
-                writeH(item.AtDefenseValWater);
-                writeH(item.AtDefenseValWind);
-                writeH(item.AtDefenseValEarth);
-                writeH(item.AtDefenseValHoly);
-                writeH(item.AtDefenseValUnholy);
-                writeH(item.E1);
-                writeH(item.E2);
-                writeH(item.E3);
+                //writeD(item.TimeLeft);
+                
             }
 
-            writeH(blocked.Count);
-            if (blocked.Count > 0)
-            {
-                writeC(2);
-                foreach (int id in blocked)
-                    writeD(id);
-            }
+            //writeH(blocked.Count);
+            //if (blocked.Count > 0)
+            //{
+            //    writeC(2);
+            //    foreach (int id in blocked)
+            //        writeD(id);
+            //}
 
-            items = null;
-            blocked = null;
+            //items = null;
+            //blocked = null;
         }
     }
 
@@ -111,16 +90,5 @@ namespace L2dotNET.Game.network.l2send
         public int Augment;
         public int Mana;
         public int TimeLeft;
-        public short AtAttackType;
-        public short AtAttackVal;
-        public short AtDefenseValFire;
-        public short AtDefenseValWater;
-        public short AtDefenseValWind;
-        public short AtDefenseValEarth;
-        public short AtDefenseValHoly;
-        public short AtDefenseValUnholy;
-        public short E1;
-        public short E2;
-        public short E3;
     }
 }

@@ -11,7 +11,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0xa7);
+            writeC(0xa1);
             writeD(QuestionID);
         }
     }

@@ -18,7 +18,7 @@ namespace L2dotNET.Game.network.l2recv
         {
             unk1 = readD(); // постоянно 1. в клиенте нет инфы что это
             sID = readD();
-            num = readQ();
+            num = readD();
         }
 
         public override void run()

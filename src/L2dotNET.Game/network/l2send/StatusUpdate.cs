@@ -54,7 +54,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x18);
+            writeC(0x0e);
             writeD(_id);
             writeD(attrs.Count);
 
@@ -62,10 +62,10 @@ namespace L2dotNET.Game.network.l2send
             {
                 int type = (int)d[0];
                 writeD(type);
-                if(type == EXP)
-                    writeQ((long)d[1]);
-                else
-                    writeD((int)d[1]);
+                //if(type == EXP)
+                //    writeQ((long)d[1]);
+                //else
+                writeD((int)d[1]);
             }
         }
     }

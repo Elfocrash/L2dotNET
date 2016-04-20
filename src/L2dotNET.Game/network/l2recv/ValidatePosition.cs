@@ -64,7 +64,7 @@ namespace L2dotNET.Game.network.l2recv
 
             player.validateVisibleObjects(_x, _y, true);
 
-            if (diffSq > 1000000)
+            if (diffSq > 250000)
             {
                 player.sendPacket(new ValidateLocation(player.ObjID, _x, _y, _z, _heading));
             }            

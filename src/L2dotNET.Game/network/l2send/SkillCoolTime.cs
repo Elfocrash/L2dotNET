@@ -12,7 +12,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0xc7);
+            writeC(0xc1);
             writeD(list.Count);
 
             foreach (L2SkillCoolTime ct in list)

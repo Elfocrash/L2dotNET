@@ -19,7 +19,7 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.X);
             writeD(player.Y);
             writeD(player.Z);
-            writeD(player.VehicleId);
+            writeD(player.Heading);
             writeD(player.ObjID);
 
             writeS(player.Name);

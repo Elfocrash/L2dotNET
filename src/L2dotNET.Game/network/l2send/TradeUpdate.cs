@@ -16,14 +16,14 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x81);
+            writeC(0x74);
             writeH(1);
             writeH(action);
 
             writeH(item.Template.Type1());
             writeD(item.ObjID);
             writeD(item.Template.ItemID);
-            writeQ(num);
+            writeD(num);
 
             writeH(item.Template.Type2());
             writeH(0);
@@ -31,20 +31,8 @@ namespace L2dotNET.Game.network.l2send
             writeD(item.Template.BodyPartId());
             writeH(item.Enchant);
             writeH(0x00); // ?
-            writeH(item.CustomType2);
+            writeH(0x00);
 
-            writeH(item.AttrAttackType);
-            writeH(item.AttrAttackValue);
-            writeH(item.AttrDefenseValueFire);
-            writeH(item.AttrDefenseValueWater);
-            writeH(item.AttrDefenseValueWind);
-            writeH(item.AttrDefenseValueEarth);
-            writeH(item.AttrDefenseValueHoly);
-            writeH(item.AttrDefenseValueUnholy);
-
-            writeH(item.Enchant1);
-            writeH(item.Enchant2);
-            writeH(item.Enchant3);
         }
     }
 }

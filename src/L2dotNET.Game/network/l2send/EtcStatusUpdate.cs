@@ -28,15 +28,15 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0xf9);
+            writeC(0xF3);
             writeD(_force);
             writeD(_weight);
             writeD(_whisper);
             writeD(_danger); // 1 = danger area
             writeD(_grade);
             writeD(0); // 1 = charm of courage (no xp loss in siege..)
-            writeD(_death);
-            writeD(_souls);
+            //writeD(_death);
+            //writeD(_souls);
         }
     }
 }

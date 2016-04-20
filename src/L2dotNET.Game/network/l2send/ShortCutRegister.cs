@@ -23,9 +23,6 @@ namespace L2dotNET.Game.network.l2send
                     writeD(cut._id);
                     writeD(cut._characterType);
                     writeD(-1); //getSharedReuseGroup
-                    writeD(0);
-                    writeD(0);
-                    writeD(0); // item augment id
                     break;
                 case L2Shortcut.TYPE_SKILL:
                     writeD(cut._id);

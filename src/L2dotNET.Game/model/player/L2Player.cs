@@ -90,7 +90,7 @@ namespace L2dotNET.Game
             {
                 player.Name = reader.GetString("pname");
                 player.Title = reader.GetString("ptitle");
-
+                player.Level = (byte)reader.GetInt32("plevel");
                 player.CurHP = reader.GetDouble("pCurHp");
                 player.CurMP = reader.GetDouble("pCurMp");
                 player.CurCP = reader.GetDouble("pCurCp");

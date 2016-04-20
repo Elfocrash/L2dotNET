@@ -15,10 +15,10 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x87);
+            writeC(0x81);
             writeD((int)result);
-            writeD(crystal);
-            writeQ(count);
+            //writeD(crystal);
+            //writeQ(count);
         }
     }
 

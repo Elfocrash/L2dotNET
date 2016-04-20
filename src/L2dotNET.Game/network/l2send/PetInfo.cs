@@ -13,7 +13,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0xb2);
+            writeC(0xb1);
             writeD(pet.ObjectSummonType);
             writeD(pet.ObjID);
             int npcId = pet.Template.NpcId;

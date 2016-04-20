@@ -104,7 +104,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x62);
+            writeC(0x64);
             writeD(MessgeID);
             writeD(data.Count);
 

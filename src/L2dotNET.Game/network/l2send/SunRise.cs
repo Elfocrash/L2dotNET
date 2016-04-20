@@ -5,7 +5,7 @@ namespace L2dotNET.Game.network.l2send
     {
         protected internal override void write()
         {
-            writeC(0x12);
+            writeC(0x1c);
         }
     }
 }

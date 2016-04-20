@@ -28,37 +28,20 @@ namespace L2dotNET.Game.network.l2send
 
             foreach (L2Item item in _items) 
             {
+                writeH(item.Template.Type1());
                 writeD(item.ObjID);
                 writeD(item.Template.ItemID);
-                writeD(0);
-                writeQ(item.Count);
-
+                writeD(item.Count);
                 writeH(item.Template.Type2());
-			    writeH(0);
-                writeH(0); 
+                writeH(0);//custom type 1
                 writeD(item.Template.BodyPartId());
-                writeH(0);
                 writeH(item.Enchant);
-
-                writeD(item.AugmentationID);
-                writeD(item.Durability);
-                writeD(item.LifeTimeEnd());
-
-                writeH(item.AttrAttackType);
-                writeH(item.AttrAttackValue);
-                writeH(item.AttrDefenseValueFire);
-                writeH(item.AttrDefenseValueWater);
-                writeH(item.AttrDefenseValueWind);
-                writeH(item.AttrDefenseValueEarth);
-                writeH(item.AttrDefenseValueHoly);
-                writeH(item.AttrDefenseValueUnholy);
-
-                writeH(item.Enchant1);
-                writeH(item.Enchant2);
-                writeH(item.Enchant3);
-
+                writeH(0);//custom type 2
+                writeH(0);
+                //writeD(item.AugmentationID);
                 writeD(item.ObjID);
-		    }
+                writeQ(0x00);
+            }
         }
     }
 }

@@ -15,11 +15,11 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x61);
+            writeC(0x63);
             writeD(sId);
             writeD(degree);
             writeD(speed);
-            writeC(0); // ?
+            writeC(degree);
         }
     }
 }

@@ -9,10 +9,12 @@ namespace L2dotNET.Game.network.l2send
         {
             this.id = character.ObjID;
             this.summonType = character.ObjectSummonType;
+            this.character = character;
         }
 
         List<int[]> _timers = new List<int[]>();
         private int id;
+        private L2Character character;
         private int summonType;
         public void addIcon(int id, int lvl, int duration)
         {
@@ -21,7 +23,10 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0xf4);
+            if (character == null)
+                return;
+
+            writeC(0xee);
             writeD(summonType);
             writeD(id);
             writeD(_timers.Count);

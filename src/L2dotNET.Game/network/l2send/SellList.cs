@@ -25,8 +25,8 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x06);
-            writeQ(_adena);
+            writeC(0x10);
+            writeD(_adena);
             writeD(0);
             writeH(_sells.Count);
 
@@ -34,29 +34,15 @@ namespace L2dotNET.Game.network.l2send
             {
                 writeD(item.ObjID);
                 writeD(item.Template.ItemID);
-                writeD(0x00); // Freya Unknown
                 writeQ(item.Count);
 
                 writeH(item.Template.Type2());
-                writeH(0);
+                writeH(item.Template.Type1());
                 writeD(item.Template.BodyPartId());
 
                 writeH(item.Enchant);
+                writeH(item.Template.Type2());
                 writeH(0x00);
-                writeH(0x00);
-                writeD(0x00); // Freya Unknown
-
-                writeD(item.Durability);
-                writeH(0xD8F1); // Freya Unknown
-                writeH(0xFFFF); // Freya Unknown
-                writeH(0xFEFF);
-
-                for (byte i = 0; i < 6; i++)
-                    writeH(0);
-
-                writeD(0x00); // Freya Unknown
-                writeD(0x00); // Freya Unknown
-
                 writeD((int)(item.Template.Price * 0.5));
             }
         }

@@ -45,7 +45,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x7b);
+            writeC(0x6e);
             writeC(0x01); // c4 1 to show community 00 to hide
             writeS("bypass _bbshome"); // top
             writeS("bypass _bbsgetfav"); // favorite
@@ -54,7 +54,7 @@ namespace L2dotNET.Game.network.l2send
             writeS("bypass _bbsmemo"); // memo
             writeS("bypass _maillist_0_1_0_"); // mail
             writeS("bypass _friendlist_0_"); // friends
-            writeS(""); // add fav.
+            writeS("bypass bbs_add_fav"); // add fav.
 
             string st = id + "\u0008";
             if (!id.Equals("1002"))

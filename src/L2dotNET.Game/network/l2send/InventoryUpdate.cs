@@ -23,7 +23,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x21);
+            writeC(0x27);
             writeH(_update.Count);
 
             foreach (object[] obj in _update) 
@@ -47,20 +47,8 @@ namespace L2dotNET.Game.network.l2send
 
                 writeD(item.AugmentationID);
                 writeD(item.Durability);
-                writeD(item.LifeTimeEnd());
+                //writeD(item.LifeTimeEnd());
 
-                writeH(item.AttrAttackType);
-                writeH(item.AttrAttackValue);
-                writeH(item.AttrDefenseValueFire);
-                writeH(item.AttrDefenseValueWater);
-                writeH(item.AttrDefenseValueWind);
-                writeH(item.AttrDefenseValueEarth);
-                writeH(item.AttrDefenseValueHoly);
-                writeH(item.AttrDefenseValueUnholy);
-
-                writeH(item.Enchant1);
-                writeH(item.Enchant2);
-                writeH(item.Enchant3);
 		    }
         }
     }

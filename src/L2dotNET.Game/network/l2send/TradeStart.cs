@@ -26,41 +26,26 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x14);
+            writeC(0x1E);
             writeD(partnerId);
             writeH(trade.Count);
 
             foreach (L2Item item in trade)
             {
+                writeH(item.Template.Type1());
                 writeD(item.ObjID);
                 writeD(item.Template.ItemID);
-                writeD(0);
-                writeQ(item.Count);
+                writeD(item.Count);
 
                 writeH(item.Template.Type2());
                 writeH(item.CustomType1);
-                writeH(0);
 
                 writeD(item.Template.BodyPartId());
                 writeH(item.Enchant);
                 writeH(item.CustomType2);
 
-                writeD(item.AugmentationID);
-                writeD(item.Durability);
-                writeD(item.LifeTimeEnd());
+                writeH(0x00);
 
-                writeH(item.AttrAttackType);
-                writeH(item.AttrAttackValue);
-                writeH(item.AttrDefenseValueFire);
-                writeH(item.AttrDefenseValueWater);
-                writeH(item.AttrDefenseValueWind);
-                writeH(item.AttrDefenseValueEarth);
-                writeH(item.AttrDefenseValueHoly);
-                writeH(item.AttrDefenseValueUnholy);
-
-                writeH(item.Enchant1);
-                writeH(item.Enchant2);
-                writeH(item.Enchant3);
             }
         }
     }

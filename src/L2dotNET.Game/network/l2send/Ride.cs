@@ -52,14 +52,14 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x8c);
+            writeC(0x86);
             writeD(id);
             writeD(bRide);
             writeD(rideType);
             writeD(npcID);
-            writeD(x);
-            writeD(y);
-            writeD(z);
+            //writeD(x);
+            //writeD(y);
+            //writeD(z);
         }
     }
 }

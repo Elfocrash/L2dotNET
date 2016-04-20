@@ -58,7 +58,13 @@ namespace L2dotNET.Game.network.l2send
             writeD(_x);
             writeD(_y);
             writeD(_z);
-            writeD(_damageSuccess);
+            if (_damageSuccess != 0)
+            {
+                writeD(_damageSuccess);
+                writeH(0x00);
+            }
+            else
+                writeD(0x00);
             writeD(tx);
             writeD(ty);
             writeD(tz);

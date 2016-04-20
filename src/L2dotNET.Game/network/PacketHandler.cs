@@ -63,60 +63,57 @@ namespace L2dotNET.Game.network
                 //case 0x09:
                 //    msg = new RequestSetPledgeCrest(client, buff);
                 //    break;
-                case 0x0F:
+                case 0x01:
                     msg = new MoveBackwardToLocation(client, buff);
                     break;
                 case 0x03:
                     msg = new EnterWorld(client, buff);
                     break;
-                case 0x14:
+                case 0x0f:
                     msg = new RequestItemList(client, buff);
                     break;
-                case 0x16:
+                case 0x11:
                     msg = new RequestUnEquipItem(client, buff);
                     break;
-                case 0x19:
+                case 0x14:
                     msg = new RequestUseItem(client, buff);
                     break;
                 case 0x1A:
                     msg = new RequestStartTrade(client, buff);
                     break;
-                case 0x1B:
+                case 0x16:
                     msg = new RequestAddTradeItem(client, buff);
                     break;
-                case 0x1C:
+                case 0x17:
                     msg = new RequestTradeDone(client, buff);
                     break;
-                case 0x1F:
+                case 0x04:
                     msg = new RequestAction(client, buff);
                     break;
 
-                case 0x22:
+                case 0x20:
                     msg = new RequestLinkHtml(client, buff);
                     break;
-                case 0x23:
+                case 0x21:
                     msg = new RequestBypassToServer(client, buff);
                     break;
-                case 0x28:
+                case 0x26:
                     msg = new RequestWithdrawalPledge(client, buff);
                     break;
-                case 0x2B:
-                    msg = new AuthLogin(client, buff);
-                    break;
-                case 0x2C:
+                case 0x8c:
                     msg = new RequestGetItemFromPet(client, buff);
                     break;
 
-                //case 0x34:
+                //case 0x1b:
                 //    msg = new RequestSocialAction(client, buff);
                 //    break;
-                case 0x37:
+                case 0x1e:
                     msg = new RequestSellItem(client, buff);
                     break;
-                case 0x39:
+                case 0x2f:
                     msg = new RequestMagicSkillUse(client, buff);
                     break;
-                case 0x3A:
+                case 0x30:
                     msg = new Appearing(client, buff);
                     break;
                 case 0x3B:
@@ -125,20 +122,19 @@ namespace L2dotNET.Game.network
                 case 0x3C:
                     msg = new RequestWarehouseWithdraw(client, buff);
                     break;
-                case 0x3D:
+                case 0x33:
                     msg = new RequestShortCutReg(client, buff);
                     break;
-                case 0x3F:
+                case 0x35:
                     msg = new RequestShortCutDel(client, buff);
                     break;
-                case 0x40:
+                case 0x1f:
                     msg = new RequestBuyItem(client, buff);
                     break;
-
-                case 0x42:
+                case 0x29:
                     msg = new RequestJoinParty(client, buff);
                     break;
-                case 0x43:
+                case 0x2a:
                     msg = new RequestAnswerJoinParty(client, buff);
                     break;
                 case 0x44:
@@ -150,7 +146,7 @@ namespace L2dotNET.Game.network
                 case 0x47:
                     msg = new CannotMoveAnymore(client, buff);
                     break;
-                case 0x48:
+                case 0x37:
                     msg = new RequestTargetCanceld(client, buff);
                     break;
                 case 0x49:
@@ -162,16 +158,16 @@ namespace L2dotNET.Game.network
                 case 0x54:
                     msg = new RequestGetOffVehicle(client, buff);
                     break;
-                case 0x55:
+                case 0x15:
                     msg = new AnswerTradeRequest(client, buff);
                     break;
                 case 0x56:
                     msg = new RequestActionUse(client, buff);
                     break;
-                case 0x57:
+                case 0x46:
                     msg = new RequestRestart(client, buff);
                     break;
-                case 0x59:
+                case 0x48:
                     msg = new ValidatePosition(client, buff);
                     break;
 
@@ -197,7 +193,7 @@ namespace L2dotNET.Game.network
                 case 0x65:
                     msg = new RequestPledgeInfo(client, buff);
                     break;
-                case 0x6C:
+                case 0xcd:
                     msg = new RequestShowMiniMap(client, buff);
                     break;
                 case 0x6D:

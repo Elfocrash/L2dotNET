@@ -19,7 +19,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x5f);
+            writeC(0x58);
             writeD(skills.Count);
 
             foreach (TSkill skill in skills)
@@ -52,7 +52,6 @@ namespace L2dotNET.Game.network.l2send
                 }
 
                 writeC(blocked);
-                writeC(skill.EnchantEnabled);
             }
         }
     }

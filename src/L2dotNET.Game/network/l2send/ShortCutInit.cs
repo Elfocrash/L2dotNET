@@ -29,8 +29,7 @@ namespace L2dotNET.Game.network.l2send
                         writeD(-1); //getSharedReuseGroup
                         writeD(0x00);
                         writeD(0x00);
-                        writeH(0x00);
-                        writeH(0x00);
+                        writeD(0x00);
                         break;
                     case L2Shortcut.TYPE_SKILL:
                         writeD(sc._id);

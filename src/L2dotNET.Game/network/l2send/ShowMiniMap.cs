@@ -9,7 +9,7 @@ namespace L2dotNET.Game.network.l2send
     {
         protected internal override void write()
         {
-            writeC(0xa3);
+            writeC(0x9d);
             writeD(1665);
             writeD(0);//SevenSigns.getInstance().getCurrentPeriod());
         }

@@ -12,18 +12,9 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x9f);
+            writeC(0x99);
             writeD(obj.StaticID);
             writeD(obj.ObjID);
-            writeD(obj.Type);
-            writeD(obj.CanBeSelected());
-            writeD(obj.MeshID);
-            writeD(obj.Closed);
-            writeD(obj.Enemy());
-            writeD(obj.CurHP);
-            writeD(obj.MaxHP);
-            writeD(obj.ShowHP());
-            writeD(obj.GetDamage());
         }
     }
 }

@@ -45,7 +45,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x33);
+            writeC(0x05);
 
             writeD(_attackerObjId);
             writeD(_hits[0]._targetId);
@@ -61,9 +61,9 @@ namespace L2dotNET.Game.network.l2send
                 writeD(_hits[i]._damage);
                 writeC(_hits[i]._flags);
             }
-            writeD(tx);
-            writeD(ty);
-            writeD(tz);
+            //writeD(tx);
+            //writeD(ty);
+            //writeD(tz);
         }
     }
 
