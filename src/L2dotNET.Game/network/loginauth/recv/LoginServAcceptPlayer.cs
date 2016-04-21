@@ -1,4 +1,5 @@
-﻿using System;
+﻿using L2dotNET.Models;
+using System;
 
 namespace L2dotNET.Game.network.loginauth.recv
 {
@@ -18,22 +19,17 @@ namespace L2dotNET.Game.network.loginauth.recv
         public override void read()
         {
             account = readS();
-            type = readS();
-            timeEnd = readS();
-            premium = readC() == 1;
-            points = readQ();
-            timeLogIn = readS();
+            //type = readS();
+            //timeEnd = readS();
+            //premium = readC() == 1;
+            //points = readQ();
+            //timeLogIn = readS();
         }
 
         public override void run()
         {
-            LoginSrvTAccount ta = new LoginSrvTAccount();
-            ta.name = account;
-            ta.type = type;
-            ta.timeEnd = timeEnd;
-            ta.premium = premium;
-            ta.points = points;
-            ta.timeLogIn = DateTime.Parse(timeLogIn);
+            AccountModel ta = new AccountModel();
+            ta.Login = account;
 
             AuthThread.getInstance().awaitAccount(ta);
         }

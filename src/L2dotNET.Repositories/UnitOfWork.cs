@@ -15,10 +15,12 @@ namespace L2dotNET.Repositories
         }
 
         public UnitOfWork(
-            IPlayerRepository playerRepository
+            IPlayerRepository playerRepository,
+            IAccountRepository accountRepository
             )
         {
             this.playerRepository = playerRepository;
+            this.accountRepository = accountRepository;
 
         }
 
@@ -43,6 +45,18 @@ namespace L2dotNET.Repositories
                     this.playerRepository = new PlayerRepository();
 
                 return this.playerRepository;
+            }
+        }
+
+        private IAccountRepository accountRepository;
+        public IAccountRepository AccountRepository
+        {
+            get
+            {
+                if (this.accountRepository == null)
+                    this.accountRepository = new AccountRepository();
+
+                return this.accountRepository;
             }
         }
 

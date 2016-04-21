@@ -37,7 +37,7 @@ namespace L2dotNET.Auth.serverpackets
         {
             writeC(0x04);
             writeC((byte)servers.Count);
-            writeC(lc.activeAccount.serverId);
+            writeC((byte)lc.activeAccount.LastServer);
 
             foreach (L2Server server in servers)
             {

@@ -17,7 +17,7 @@ namespace L2dotNET.Repositories
 
         public PlayerRepository()
         {
-            //this.db = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlServerConnectionString"].ToString()); // to be changed
+            this.db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
         }
 
         //DummyMethod

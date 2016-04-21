@@ -42,20 +42,14 @@ namespace L2dotNET.Auth.rcv_l2
             }
             else
             {
-                if (server.gmonly && getClient().activeAccount.builder == 0)
-                {
-                    getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.NO_ACCESS_COUPON));
-                    return;
-                }
+                //ServerThreadPool.getInstance().SendPlayer(serverId, getClient(), DateTime.Now.ToLocalTime().ToString());
 
-                ServerThreadPool.getInstance().SendPlayer(serverId, getClient(), DateTime.Now.ToLocalTime().ToString());
-
-                SQL_Block sqb = new SQL_Block("accounts");
-                sqb.param("serverId", serverId);
-                sqb.param("lastlogin", DateTime.Now.ToLocalTime());
-                sqb.param("lastAddress", getClient()._address);
-                sqb.where("account", getClient().activeAccount.name);
-                sqb.sql_update();
+                //SQL_Block sqb = new SQL_Block("accounts");
+                //sqb.param("serverId", serverId);
+                //sqb.param("lastlogin", DateTime.Now.ToLocalTime());
+                //sqb.param("lastAddress", getClient()._address);
+                //sqb.where("account", getClient().activeAccount.name);
+                //sqb.sql_update();
 
                 getClient().sendPacket(new PlayOk(getClient()));
 

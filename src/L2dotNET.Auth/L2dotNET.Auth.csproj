@@ -72,6 +72,10 @@
       <HintPath>..\packages\MySql.Data.6.8.7\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Org.BouncyCastle, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aacfa057db410d1b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Org.BouncyCastle.dll</HintPath>
@@ -85,7 +89,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepInjectionModule.cs" />
     <Compile Include="gscommunication\ServerThread.cs" />
+    <Compile Include="LoginServer.cs" />
     <Compile Include="managers\NetRedClass.cs" />
     <Compile Include="managers\NetworkRedirect.cs" />
     <Compile Include="model\L2Account.cs" />
@@ -105,7 +111,7 @@
     <Compile Include="network\serverpackets_gs\ServerLoginOk.cs" />
     <Compile Include="network\serverpackets_gs\ServerLoginFail.cs" />
     <Compile Include="network\serverpackets_gs\LoginServPing.cs" />
-    <Compile Include="Programm.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="managers\AccountManager.cs" />
     <Compile Include="managers\NetworkBlock.cs" />
     <Compile Include="data\SQLjec.cs" />
@@ -126,6 +132,7 @@
     <Compile Include="network\serverpackets\SM_LOGIN_OK.cs" />
     <Compile Include="network\serverpackets\SM_AUTH_GG.cs" />
     <Compile Include="network\serverpackets\SM_INIT.cs" />
+    <Compile Include="Utils\L2Security.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\L2Crypt.dll" />
@@ -160,6 +167,23 @@
   <ItemGroup>
     <Folder Include="sqlscripts\Gameserver\" />
     <Folder Include="sqlscripts\Loginserver\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">
+      <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
+      <Name>L2dotNET.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L2dotNET.Repositories\L2dotNET.Repositories.csproj">
+      <Project>{34030afb-511d-4a7a-8711-71e0364e2f64}</Project>
+      <Name>L2dotNET.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L2dotNET.Services\L2dotNET.Services.csproj">
+      <Project>{0a70c676-f9bd-4593-9ef4-b22f8e170aed}</Project>
+      <Name>L2dotNET.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

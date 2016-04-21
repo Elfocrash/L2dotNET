@@ -7,6 +7,7 @@ using L2dotNET.Auth.basetemplate;
 using L2dotNET.Auth.rcv_l2;
 using L2dotNET.Auth.serverpackets;
 using L2Crypt;
+using L2dotNET.Models;
 
 namespace L2dotNET.Auth
 {
@@ -168,6 +169,6 @@ namespace L2dotNET.Auth
             play2 = key2;
         }
 
-        public L2Account activeAccount;
+        public AccountModel activeAccount;
     }
 }

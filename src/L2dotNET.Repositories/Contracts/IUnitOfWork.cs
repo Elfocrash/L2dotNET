@@ -9,6 +9,7 @@ namespace L2dotNET.Repositories.Contracts
     public interface IUnitOfWork : IDisposable
     {
         IPlayerRepository PlayerRepository { get; }
+        IAccountRepository AccountRepository { get; }
 
         void Commit();
     }

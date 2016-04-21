@@ -6,11 +6,18 @@ using L2dotNET.Auth.gscommunication;
 using L2dotNET.Auth.serverpackets;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Engines;
+using L2dotNET.Models;
+using Ninject;
+using L2dotNET.Services.Contracts;
+using L2dotNET.Auth.Utils;
 
 namespace L2dotNET.Auth.rcv_l2
 {
     class RequestAuthLogin : ReceiveBasePacket
     {
+        [Inject]
+        public IAccountService accountService { get { return LoginServer.Kernel.Get<IAccountService>(); } }
+
         public RequestAuthLogin(LoginClient Client, byte[] data)
         {
             base.makeme(Client, data);
@@ -43,13 +50,12 @@ namespace L2dotNET.Auth.rcv_l2
             username = Encoding.ASCII.GetString(decrypt, 0x5e, 14).Replace("\0", "");
             password = Encoding.ASCII.GetString(decrypt, 0x6c, 16).Replace("\0", "");
 
-            AccountManager am = AccountManager.getInstance();
-            L2Account account = am.get(username);
+            AccountModel account = accountService.GetAccountByLogin(username);
 
             if (account == null)
             {
                 if (Cfg.AUTO_ACCOUNTS)
-                    account = am.createAccount(username, password, getClient()._address.ToString());
+                    account = accountService.CreateAccount(username, L2Security.HashPassword(password));
                 else
                 {
                     getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.USER_OR_PASS_WRONG));
@@ -59,7 +65,7 @@ namespace L2dotNET.Auth.rcv_l2
             }
             else
             {
-                if (!account.validatePassword(password))
+                if (!accountService.CheckIfAccountIsCorrect(username, L2Security.HashPassword(password)))
                 {
                     getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.USER_OR_PASS_WRONG));
                     getClient().close();
@@ -73,30 +79,6 @@ namespace L2dotNET.Auth.rcv_l2
                     return;
                 }
             }
-
-            if (!account.type.Equals("free"))
-            {
-                DateTime time; int res = -3;
-                switch (account.type)
-                {
-                    case AccountType.trial:
-                        time = DateTime.Parse(account.timeend);
-                        res = time.CompareTo(DateTime.Now);
-                        break;
-                    case AccountType.limited:
-                        time = DateTime.Parse(account.timeend);
-                        res = time.CompareTo(DateTime.Now);
-                        break;
-                }
-
-                if (res == -1)
-                {
-                    getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.NO_TIME_LEFT));
-                    getClient().close();
-                    return;
-                }
-            }
-
 
             Random rnd = new Random();
 

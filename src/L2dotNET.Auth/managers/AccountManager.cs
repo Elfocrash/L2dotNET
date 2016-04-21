@@ -94,17 +94,5 @@ namespace L2dotNET.Auth.data
             return _accounts[username.ToLower()];
         }
 
-        public void UpdatePremium(string account, byte status, long points)
-        {
-            L2Account acc = _accounts[account];
-            acc.premium = status == 1;
-            acc.points = points;
-
-            SQL_Block sqb = new SQL_Block("accounts");
-            sqb.param("premium", status);
-            sqb.param("points", points);
-            sqb.where("account", account);
-            sqb.sql_update();
-        }
     }
 }

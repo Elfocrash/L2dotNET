@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountRepository.cs" />
+    <Compile Include="Contracts\IAccountRepository.cs" />
     <Compile Include="Contracts\IPlayerRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="PlayerRepository.cs" />
@@ -58,6 +60,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">
+      <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
+      <Name>L2dotNET.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

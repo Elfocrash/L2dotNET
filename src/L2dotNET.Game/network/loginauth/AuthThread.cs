@@ -5,6 +5,7 @@ using L2dotNET.Game.logger;
 using L2dotNET.Game.network.loginauth.recv;
 using L2dotNET.Game.network.loginauth.send;
 using L2dotNET.Game.world;
+using L2dotNET.Models;
 
 namespace L2dotNET.Game.network.loginauth
 {
@@ -169,20 +170,20 @@ namespace L2dotNET.Game.network.loginauth
             sendPacket(new PlayerCount(cnt));
         }
 
-        private SortedList<string, LoginSrvTAccount> awaitingAccounts = new SortedList<string, LoginSrvTAccount>();
-        public void awaitAccount(LoginSrvTAccount ta)
+        private SortedList<string, AccountModel> awaitingAccounts = new SortedList<string, AccountModel>();
+        public void awaitAccount(AccountModel ta)
         {
-            if (awaitingAccounts.ContainsKey(ta.name))
-                awaitingAccounts.Remove(ta.name);
+            if (awaitingAccounts.ContainsKey(ta.Login))
+                awaitingAccounts.Remove(ta.Login);
 
-            awaitingAccounts.Add(ta.name, ta);
+            awaitingAccounts.Add(ta.Login, ta);
         }
 
-        public LoginSrvTAccount getTA(string p)
+        public AccountModel getTA(string p)
         {
             if (awaitingAccounts.ContainsKey(p))
             {
-                LoginSrvTAccount ta = awaitingAccounts[p];
+                AccountModel ta = awaitingAccounts[p];
                 awaitingAccounts.Remove(p);
                 return ta;
             }

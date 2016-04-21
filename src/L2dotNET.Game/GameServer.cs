@@ -20,6 +20,7 @@ using L2dotNET.Game.world;
 using L2dotNET.Game.geo;
 using Ninject;
 using L2dotNET.Services.Contracts;
+using L2dotNET.Models;
 
 namespace L2dotNET.Game
 {
@@ -28,7 +29,7 @@ namespace L2dotNET.Game
         protected TcpListener _listener;
 
         [Inject]
-        public IPlayerService playerService { get; set; }
+        public IAccountService accountService { get; set; }
 
         public GameServer()
         {
@@ -43,7 +44,7 @@ namespace L2dotNET.Game
             Cfg.init("all");
 
             //the line below is a dependancy injection test
-            int id = this.playerService.GetDeviceIdByPlayerName("test");
+            AccountModel id = this.accountService.GetAccountByLogin("elfo");
 
             PClassess.getInstance();
         

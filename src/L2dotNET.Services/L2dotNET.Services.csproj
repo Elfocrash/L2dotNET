@@ -40,11 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountService.cs" />
+    <Compile Include="Contracts\IAccountService.cs" />
     <Compile Include="Contracts\IPlayerService.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">
+      <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
+      <Name>L2dotNET.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\L2dotNET.Repositories\L2dotNET.Repositories.csproj">
       <Project>{34030afb-511d-4a7a-8711-71e0364e2f64}</Project>
       <Name>L2dotNET.Repositories</Name>
