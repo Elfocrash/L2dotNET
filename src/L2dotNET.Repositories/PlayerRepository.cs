@@ -17,13 +17,13 @@ namespace L2dotNET.Repositories
 
         public PlayerRepository()
         {
-            this.db = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlServerConnectionString"].ToString()); // to be changed
+            //this.db = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlServerConnectionString"].ToString()); // to be changed
         }
 
         //DummyMethod
         public int GetDeviceIdByPlayerName(string name)
         {
-            return this.db.Query<int>("SELECT DeviceId FROM Players WHERE Name=@name", new { name = name }).SingleOrDefault();
+            return 1993;// this.db.Query<int>("SELECT DeviceId FROM Players WHERE Name=@name", new { name = name }).SingleOrDefault();
         }
     }
 }
