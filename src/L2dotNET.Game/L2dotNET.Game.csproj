@@ -71,6 +71,10 @@
       <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Org.BouncyCastle">
       <HintPath>..\..\c_auth\c_auth\lib\Org.BouncyCastle.dll</HintPath>
     </Reference>
@@ -100,6 +104,7 @@
     <Compile Include="Crypt.cs" />
     <Compile Include="crypt\BlowFishKeygen.cs" />
     <Compile Include="db\SQLjec.cs" />
+    <Compile Include="DepInjectionModule.cs" />
     <Compile Include="geo\Geo.cs" />
     <Compile Include="geo\GeoData.cs" />
     <Compile Include="geo\Layer.cs" />
@@ -767,6 +772,16 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\L2dotNET.Repositories\L2dotNET.Repositories.csproj">
+      <Project>{34030afb-511d-4a7a-8711-71e0364e2f64}</Project>
+      <Name>L2dotNET.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L2dotNET.Services\L2dotNET.Services.csproj">
+      <Project>{0a70c676-f9bd-4593-9ef4-b22f8e170aed}</Project>
+      <Name>L2dotNET.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
