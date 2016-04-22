@@ -104,9 +104,9 @@ namespace L2dotNET.Game.network
                     msg = new RequestGetItemFromPet(client, buff);
                     break;
 
-                //case 0x1b:
-                //    msg = new RequestSocialAction(client, buff);
-                //    break;
+                case 0x1b:
+                    msg = new RequestSocialAction(client, buff);
+                    break;
                 case 0x1e:
                     msg = new RequestSellItem(client, buff);
                     break;

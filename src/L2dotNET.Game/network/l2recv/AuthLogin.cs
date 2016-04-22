@@ -6,11 +6,16 @@ using L2dotNET.Game.network.loginauth;
 using MySql.Data.MySqlClient;
 using L2dotNET.Game.network.loginauth.recv;
 using L2dotNET.Models;
+using Ninject;
+using L2dotNET.Services.Contracts;
 
 namespace L2dotNET.Game.network.l2recv
 {
     class AuthLogin : GameServerNetworkRequest
     {
+        [Inject]
+        public IAccountService accountService { get { return GameServer.Kernel.Get<IAccountService>(); } }
+
         public AuthLogin(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -37,34 +42,17 @@ namespace L2dotNET.Game.network.l2recv
             {
                 getClient().AccountName = _loginName;
 
-                MySqlConnection connection = SQLjec.getInstance().conn();
-                MySqlCommand cmd = connection.CreateCommand();
-
-                connection.Open();
-
-                cmd.CommandText = "SELECT objId FROM user_data WHERE account = '" + _loginName + "' ORDER BY slotId ASC";
-                cmd.CommandType = CommandType.Text;
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                List<int> users = new List<int>();
-                while (reader.Read())
-                {
-                    users.Add(reader.GetInt32("objId"));
-                }
-
-                reader.Close();
-                connection.Close();
+                List<int> players = accountService.GetPlayerIdsListByAccountName(_loginName);
 
                 int slot = 0;
-                foreach (int id in users)
+                foreach (int id in players)
                 {
-                    L2Player p = L2Player.restore(id, getClient());
+                    L2Player p = new L2Player().restore(id, getClient());
                     p._slotId = slot; slot++;
                     Client._accountChars.Add(p);
                 }
 
-                getClient().sendPacket(new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars));
+                getClient().sendPacket(new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars, getClient()._sessionId));
                 AuthThread.getInstance().setInGameAccount(getClient().AccountName, true);
             }
             else

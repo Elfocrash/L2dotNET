@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Dapper;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using L2dotNET.Models;
 
 namespace L2dotNET.Repositories
 {
@@ -20,10 +21,15 @@ namespace L2dotNET.Repositories
             this.db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
         }
 
-        //DummyMethod
-        public int GetDeviceIdByPlayerName(string name)
+        public PlayerModel GetAccountByLogin(int objId)
         {
-            return 1993;// this.db.Query<int>("SELECT DeviceId FROM Players WHERE Name=@name", new { name = name }).SingleOrDefault();
+            return this.db.Query<PlayerModel>(@"select account_name as AccountName, obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
+               Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,ClanId,base_class as BaseClass, DeleteTime,CanCraft,Title,
+                rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,IsIn7sDungeon,punish_level as PunishLevel,punish_timer as PunishTimer,
+                power_grade as PowerGrade,Nobless,Hero,Subpledge,last_recom_date as LastRecomDate,lvl_joined_academy as LevelJoinedAcademy, Apprentice, Sponsor,
+                varka_ketra_ally as VarkaKetraAlly,clan_join_expiry_time as ClanJoinExpiryTime,clan_create_expiry_time as ClanCreateExpiryTime, death_penalty_level as
+                DeathPenaltyLevel from characters where obj_Id=@id",
+                new { id = objId }).FirstOrDefault();
         }
     }
 }

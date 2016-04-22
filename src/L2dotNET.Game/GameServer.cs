@@ -28,23 +28,19 @@ namespace L2dotNET.Game
     {
         protected TcpListener _listener;
 
-        [Inject]
-        public IAccountService accountService { get; set; }
-
         public GameServer()
         {
            
         }
 
+        public static IKernel Kernel { get; set; }
+
         public void Start()
         {
-            Console.Title = "ct26_p1 216";
+            Console.Title = "L2dotNET Gameserver";
 
             CLogger.form();
             Cfg.init("all");
-
-            //the line below is a dependancy injection test
-            AccountModel id = this.accountService.GetAccountByLogin("elfo");
 
             PClassess.getInstance();
         
@@ -79,10 +75,6 @@ namespace L2dotNET.Game
 
             SQLjec.getInstance();
             ClassIdContainer.init();
-
-
-
-
 
             AdminAccess.getInstance();
 

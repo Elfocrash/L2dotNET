@@ -30,6 +30,9 @@ using L2dotNET.Game.tools;
 using L2dotNET.Game.world;
 using MySql.Data.MySqlClient;
 using L2dotNET.Game.model.npcs.cubic;
+using Ninject;
+using L2dotNET.Services.Contracts;
+using L2dotNET.Models;
 
 namespace L2dotNET.Game
 {
@@ -67,75 +70,59 @@ namespace L2dotNET.Game
         public short LastAccountSelection = 0;
         public List<int> CashShopRecent = new List<int>();
 
+        [Inject]
+        public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
 
-
-        public static L2Player restore(int id, GameClient client)
+        public L2Player restore(int id, GameClient client)
         {
             L2Player player = new L2Player();
             player.ObjID = id;
 
             player.Gameclient = client;
-            MySqlConnection connection = SQLjec.getInstance().conn();
 
-            MySqlCommand cmd = connection.CreateCommand();
+            PlayerModel playerModel = playerService.GetAccountByLogin(id);
 
-            connection.Open();
+            player.Name = playerModel.Name;
+            player.Title = playerModel.Title;
+            player.Level = (byte)playerModel.Level;
+            player.CurHP = playerModel.CurHp;
+            player.CurMP = playerModel.CurMp;
+            player.CurCP = playerModel.CurCp;
 
-            cmd.CommandText = "SELECT * FROM user_data WHERE objId=" + id;
-            cmd.CommandType = CommandType.Text;
+            player.Face = playerModel.Face;
+            player.HairStyle = playerModel.HairStyle;
+            player.HairColor = playerModel.HairColor;
+            player.Sex = (byte)playerModel.Sex;
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            player.X = playerModel.X;
+            player.Y = playerModel.Y;
+            player.Z = playerModel.Z;
+            player.Heading = playerModel.Heading;
 
-            while (reader.Read())
-            {
-                player.Name = reader.GetString("pname");
-                player.Title = reader.GetString("ptitle");
-                player.Level = (byte)reader.GetInt32("plevel");
-                player.CurHP = reader.GetDouble("pCurHp");
-                player.CurMP = reader.GetDouble("pCurMp");
-                player.CurCP = reader.GetDouble("pCurCp");
+            player.Exp = playerModel.Exp;
+            player.ExpOnDeath = playerModel.ExpBeforeDeath;
 
-                player.Face = reader.GetInt32("pface");
-                player.HairStyle = reader.GetInt32("pHairStyle");
-                player.HairColor = reader.GetInt32("pHairColor");
-                player.Sex = (byte)reader.GetInt16("pSex");
+            player.SP = playerModel.Sp;
+            player.Karma = playerModel.Karma;
+            player.PvpCount = playerModel.PvpKills;
+            player.PkCount = playerModel.PkKills;
+            byte bclass = (byte)playerModel.BaseClass;
+            byte aclass = (byte)playerModel.ClassId;
 
-                player.X = reader.GetInt32("locx");
-                player.Y = reader.GetInt32("locy");
-                player.Z = reader.GetInt32("locz");
-                player.Heading = reader.GetInt32("loch");
+            player.BaseClass = PClassess.getInstance().getTemplate(bclass);
+            player.ActiveClass = PClassess.getInstance().getTemplate(aclass);
 
-                player.Exp = reader.GetInt64("pExp");
-                player.ExpOnDeath = reader.GetInt64("pExpDeath");
-                player.Level = Experience.getLevel(player.Exp);
+            player._eval = playerModel.RecLeft;
+            player._recHave = playerModel.RecHave;
 
-                player.SP = reader.GetInt32("sp");
-                player.Karma = reader.GetInt32("karma");
-                player.PvpCount = reader.GetInt32("kill_pvp");
-                player.PkCount = reader.GetInt32("kill_pk");
-                byte bclass = (byte)reader.GetInt16("pBaseClass");
-                byte aclass = (byte)reader.GetInt16("pActiveClass");
+            player._slotId = playerModel.CharSlot;
+            player.death_penalty_level = playerModel.DeathPenaltyLevel;
+            player.ClanId = playerModel.ClanId;
+            player.ClanPrivs = playerModel.ClanPrivs;
 
-                player.BaseClass = PClassess.getInstance().getTemplate(bclass);
-                player.ActiveClass = PClassess.getInstance().getTemplate(aclass);
+            player.Penalty_ClanCreate = playerModel.ClanCreateExpiryTime.ToString();
+            player.Penalty_ClanJoin = playerModel.ClanJoinExpiryTime.ToString();
 
-                player._eval = reader.GetInt32("pRecCur");
-                player._recHave = reader.GetInt32("pRecEval");
-
-                player._slotId = reader.GetInt32("slotId");
-                player.death_penalty_level = reader.GetInt32("penalty_death");
-                player.ClanId = reader.GetInt32("clanId");
-                player.ClanType = reader.GetInt16("clanType");
-                player.ClanPrivs = reader.GetInt32("clanPrivs");
-
-                player.Penalty_ClanCreate = reader.GetString("penalty_clancreate");
-                player.Penalty_ClanJoin = reader.GetString("penalty_clanjoin");
-                //player.TelbookLimit = (byte)reader.GetInt16("telbook");
-                //player.LastAccountSelection = reader.GetInt16("lastUse");
-            }
-
-            reader.Close();
-            connection.Close();
 
             player.Inventory = new InvPC();
             player.Inventory._owner = player;
@@ -1451,17 +1438,17 @@ namespace L2dotNET.Game
 
         public void updateDb()
         {
-            SQL_Block sqb = new SQL_Block("user_data");
-            sqb.param("locx", X);
-            sqb.param("locy", Y);
-            sqb.param("locz", Z);
-            sqb.param("loch", Heading);
-            sqb.param("clanId", ClanId);
-            sqb.param("clanType", ClanType);
-            sqb.param("clanPrivs", ClanPrivs);
+            //SQL_Block sqb = new SQL_Block("user_data");
+            //sqb.param("locx", X);
+            //sqb.param("locy", Y);
+            //sqb.param("locz", Z);
+            //sqb.param("loch", Heading);
+            //sqb.param("clanId", ClanId);
+            //sqb.param("clanType", ClanType);
+            //sqb.param("clanPrivs", ClanPrivs);
 
-            sqb.where("objId", ObjID);
-            sqb.sql_update(false);
+            //sqb.where("objId", ObjID);
+            //sqb.sql_update(false);
         }
 
         public override void onRemObject(L2Object obj)
@@ -1961,10 +1948,10 @@ namespace L2dotNET.Game
 
             if (sql)
             {
-                SQL_Block sqb = new SQL_Block("user_data");
-                sqb.param("penalty_clancreate", Penalty_ClanCreate);
-                sqb.where("objId", ObjID);
-                sqb.sql_update(false);
+                //SQL_Block sqb = new SQL_Block("user_data");
+                //sqb.param("penalty_clancreate", Penalty_ClanCreate);
+                //sqb.where("objId", ObjID);
+                //sqb.sql_update(false);
             }
         }
 
@@ -1977,10 +1964,10 @@ namespace L2dotNET.Game
 
             if (sql)
             {
-                SQL_Block sqb = new SQL_Block("user_data");
-                sqb.param("penalty_clanjoin", Penalty_ClanJoin);
-                sqb.where("objId", ObjID);
-                sqb.sql_update(false);
+                //SQL_Block sqb = new SQL_Block("user_data");
+                //sqb.param("penalty_clanjoin", Penalty_ClanJoin);
+                //sqb.where("objId", ObjID);
+                //sqb.sql_update(false);
             }
         }
 

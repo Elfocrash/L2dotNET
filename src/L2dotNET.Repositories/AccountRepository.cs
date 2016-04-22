@@ -50,5 +50,10 @@ namespace L2dotNET.Repositories
                 new { login = login, pass = password }).SingleOrDefault();
         }
 
+        public List<int> GetPlayerIdsListByAccountName(string login)
+        {
+            return this.db.Query<int>("select obj_Id from characters where account_name=@acc", new { acc = login }).ToList();
+        }
+
     }
 }

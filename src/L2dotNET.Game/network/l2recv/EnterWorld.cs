@@ -39,18 +39,18 @@ namespace L2dotNET.Game.network.l2recv
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player.LastAccountSelection == 0)
-            {
-                SQL_Block sqb = new SQL_Block("user_data");
-                sqb.param("lastUse", 0);
-                sqb.where("account", Client.AccountName);
-                sqb.sql_update(false);
+            //if (player.LastAccountSelection == 0)
+            //{
+            //    SQL_Block sqb = new SQL_Block("user_data");
+            //    sqb.param("lastUse", 0);
+            //    sqb.where("account", Client.AccountName);
+            //    sqb.sql_update(false);
 
-                sqb = new SQL_Block("user_data");
-                sqb.param("lastUse", 1);
-                sqb.where("objId", player.ObjID);
-                sqb.sql_update(false);
-            }
+            //    sqb = new SQL_Block("user_data");
+            //    sqb.param("lastUse", 1);
+            //    sqb.where("objId", player.ObjID);
+            //    sqb.sql_update(false);
+            //}
 
             player.TotalRestore();
 

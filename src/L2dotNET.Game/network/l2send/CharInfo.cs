@@ -14,46 +14,59 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0x31);
+            writeC(0x03);
 
             writeD(player.X);
             writeD(player.Y);
             writeD(player.Z);
-            writeD(0);
+            writeD(player.Heading);
             writeD(player.ObjID);
             writeS(player.Name);
 
             writeD(player.BaseClass.race);
             writeD(player.Sex);
-            writeD(player.BaseClass.id);
+            writeD(player.ActiveClass.id);
 
-            for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
-            {
-                if (id > 0 && id < 6)
-                    continue;
+        
 
-                int result = 0;
-                if (player.Inventory._paperdollVisual[id] > 0)
-                    result = player.Inventory._paperdollVisual[id];
-                else
-                    result = player.Inventory._paperdoll[id][0];
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Hair2][0]);
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Head][0]);
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_RHand][0]);
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_LHand][0]);
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Gloves][0]);
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Chest][0]);
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Legs][0]);
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Feet][0]);
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Cloak][0]);
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_RHand][0]);
+            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Hair][0]);
+            writeD(0x00);//face
 
-                writeD(result);
-            }
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeD(player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeD(player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
+            writeH(0x00);
 
-            for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
-            {
-                if (id > 0 && id < 6)
-                    continue;
-
-                int result = 0;
-                if (player.Inventory._paperdollVisual[id] > 0)
-                    result = player.Inventory._paperdollVisual[id];
-                else
-                    result = player.Inventory._paperdoll[id][2];
-
-                writeD(result);
-            }
+            writeD(player.PvPStatus);
+            writeD(player.Karma);
 
             writeD(0x00);
             writeD(0x01);
@@ -78,14 +91,14 @@ namespace L2dotNET.Game.network.l2send
             writeD(walkSpd);
             writeD(50); // swimspeed
             writeD(50); // swimspeed
-            writeD(0);
-            writeD(0);
+            writeD(runSpd);
+            writeD(walkSpd);
             writeD(0);
             writeD(0);
             writeF(anim); //анимация бега
             writeF(anim2); //анимация атаки
 
-            writeF(player.Radius);
+            writeF(player.Radius);//elfo
             writeF(player.Height);
 
             writeD(player.HairStyle);
@@ -98,6 +111,8 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.ClanCrestId);
             writeD(player.AllianceId);
             writeD(player.AllianceCrestId);
+
+            writeD(0);
 
             writeC(player.isSitting() ? 0 : 1);	// standing = 1  sitting = 0
             writeC(player.IsRunning);
@@ -118,10 +133,9 @@ namespace L2dotNET.Game.network.l2send
 
             writeC(0); //_activeChar.isFlyingMounted() ? 2 : 0);
             writeH(player._recHave);
-
-            writeD(0 + 1000000);//_activeChar.getMountNpcId() + 1000000
             writeD(player.ActiveClass.id);
-            writeD(0);
+
+            writeD(player.CurrentCP);//max cp here
             writeC(player.GetEnchantValue());
             writeC(player.TeamID);
             writeD(player.getClanCrestLargeId());
@@ -146,16 +160,6 @@ namespace L2dotNET.Game.network.l2send
 
             writeD(player.getTitleColor());
             writeD(player.CursedWeaponLevel);
-
-            writeD(player.ClanId > 0 ? player.Clan.ClanNameValue : 0);
-
-            writeD(player.TransformID);
-            writeD(player.AgationID);
-            writeD(1);// Image index ????
-            writeD(player.AbnormalBitMaskEx);
-            writeD(0); // territory Id
-            writeD(0); // is Disguised
-            writeD(0); // territory Id
         }
     }
 }

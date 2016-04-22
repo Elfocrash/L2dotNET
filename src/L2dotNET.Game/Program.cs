@@ -12,9 +12,9 @@ namespace L2dotNET.Game
         
         static void Main(string[] args)
         {
-            var kernel = new StandardKernel(new DepInjectionModule());
-            GameServer server = kernel.Get<GameServer>();
-            server.Start();        
+            GameServer.Kernel = new StandardKernel(new DepInjectionModule());
+            GameServer server = GameServer.Kernel.Get<GameServer>();
+            server.Start();
             Process.GetCurrentProcess().WaitForExit();
         }
     }

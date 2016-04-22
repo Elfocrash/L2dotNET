@@ -315,6 +315,7 @@
     <Compile Include="model\zones\ZoneTemplate.cs" />
     <Compile Include="model\zones\L2Zone.cs" />
     <Compile Include="model\zones\ZoneManager.cs" />
+    <Compile Include="network\l2recv\RequestSocialAction.cs" />
     <Compile Include="network\l2send\ExChangeNicknameNColor.cs" />
     <Compile Include="network\l2send\ExBrPremiumState.cs" />
     <Compile Include="network\loginauth\ReceiveAuthPacket.cs" />

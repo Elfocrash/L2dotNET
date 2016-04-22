@@ -14,5 +14,7 @@ namespace L2dotNET.Services.Contracts
         AccountModel CreateAccount(string login, string password);
 
         bool CheckIfAccountIsCorrect(string login, string password);
+
+        List<int> GetPlayerIdsListByAccountName(string login);
     }
 }

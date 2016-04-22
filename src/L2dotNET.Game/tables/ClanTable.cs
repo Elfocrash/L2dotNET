@@ -96,7 +96,7 @@ namespace L2dotNET.Game.tables
                 MySqlConnection conn2 = sq.conn();
                 MySqlCommand msc_1 = conn2.CreateCommand();
                 conn2.Open();
-                msc_1.CommandText = "SELECT * FROM user_data where clanId=" + clan.ClanID;
+                msc_1.CommandText = "SELECT * FROM characters where clanId=" + clan.ClanID;
                 msc_1.CommandType = CommandType.Text;
 
                 MySqlDataReader members_r = msc_1.ExecuteReader();

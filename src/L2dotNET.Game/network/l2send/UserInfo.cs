@@ -37,9 +37,9 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.getWIT());
             writeD(player.getMEN());
 
-            writeD(player.CharacterStat.getStat(TEffectType.b_max_hp));
+            writeD(player.CurHP);//max hp
             writeD(player.CurHP);
-            writeD(player.CharacterStat.getStat(TEffectType.b_max_mp));
+            writeD(player.CurMP);//max mp
             writeD(player.CurMP);
             writeD(player.SP);
             writeD(player.CurrentWeight);
@@ -92,7 +92,7 @@ namespace L2dotNET.Game.network.l2send
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
-            writeD(player.Inventory.getWeaponAugmentation());
+            writeD(player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
@@ -105,7 +105,7 @@ namespace L2dotNET.Game.network.l2send
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
-            writeD(player.Inventory.getWeaponAugmentation());
+            writeD(player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
@@ -141,13 +141,8 @@ namespace L2dotNET.Game.network.l2send
             writeD(0); //?
             writeD(runSpd); //fly run
             writeD(walkSpd); //fly walk ?
-            writeF(0); //анимация бега
-            writeF(0); //анимация атаки
-
-            writeD(0);
-            writeD(0);
-            writeF(0);
-            writeF(0);
+            writeF(1); //run speed multiplier
+            writeF(1); //atk speed multiplier
 
             writeF(player.Radius);
             writeF(player.Height);
@@ -163,14 +158,7 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.ClanCrestId);
             writeD(player.AllianceId);
             writeD(player.AllianceCrestId);
-            // 0x40 leader rights
-            /*
-             *  128, 640 shield
-                192, 704 crown
-                384, 896 sword blue
-                448 flag leader
-             * */
-            // siege flags: attacker - 0x180 sword over name, defender - 0x80 shield, 0xC0 crown (|leader), 0x1C0 flag (|leader)
+
             writeD(player.sstt); //_relation
             writeC(player.MountType);
             writeC(player.getPrivateStoreType());//
@@ -186,10 +174,10 @@ namespace L2dotNET.Game.network.l2send
 
             writeD(player.AbnormalBitMask);
 
-            byte flymode = 0;
+            //byte flymode = 0;
 
-            if (player.TransformID > 0)
-                flymode = player.Transform.Template.MoveMode;
+            //if (player.TransformID > 0)
+            //    flymode = player.Transform.Template.MoveMode;
 
             writeC(0x00);
 
@@ -202,7 +190,7 @@ namespace L2dotNET.Game.network.l2send
 
             writeD(player.ActiveClass.id);
             writeD(0); // special effects? circles around player...
-            writeD(player.CharacterStat.getStat(TEffectType.b_max_cp));
+            writeD(player.CurCP); //max cp
             writeD(player.CurCP);
             writeC(player.GetEnchantValue());
             writeC(player.TeamID);
@@ -210,9 +198,6 @@ namespace L2dotNET.Game.network.l2send
             writeC(player.Noblesse);
 
             byte hero = player.Heroic;
-            if (player.TransformID != 0)
-                hero = 0;
-
             writeC(hero);
 
             writeC(player.isFishing() ? 0x01 : 0x00); //Fishing Mode

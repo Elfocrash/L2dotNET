@@ -30,12 +30,12 @@ namespace L2dotNET.Game.tables
 
             connection.Open();
 
-            cmd.CommandText = "SELECT objId FROM user_data";
+            cmd.CommandText = "SELECT obj_Id FROM characters";
             cmd.CommandType = CommandType.Text;
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                int dbnum = reader.GetInt32("objId");
+                int dbnum = reader.GetInt32("obj_Id");
 
                 if (dbnum >= currentId)
                     currentId = dbnum++;

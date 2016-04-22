@@ -32,5 +32,10 @@ namespace L2dotNET.Services
         {
             return this.unitOfWork.AccountRepository.CheckIfAccountIsCorrect(login, password);
         }
+
+        public List<int> GetPlayerIdsListByAccountName(string login)
+        {
+            return this.unitOfWork.AccountRepository.GetPlayerIdsListByAccountName(login);
+        }
     }
 }

@@ -154,7 +154,7 @@ namespace L2dotNET.Game.network.l2recv
             player.Gameclient._accountChars.Add(player);
 
             getClient().sendPacket(new CharCreateOk());
-            CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars);
+            CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars, getClient()._sessionId);
             csl.charId = player.ObjID;
             getClient().sendPacket(csl);
         }

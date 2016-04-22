@@ -1,4 +1,5 @@
-﻿using L2dotNET.Repositories.Contracts;
+﻿using L2dotNET.Models;
+using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,9 @@ namespace L2dotNET.Services
             this.unitOfWork = unitOfWork;
         }
 
-        //Dummy method
-        public int GetDeviceIdByPlayerName(string name)
+        public PlayerModel GetAccountByLogin(int objId)
         {
-            return this.unitOfWork.PlayerRepository.GetDeviceIdByPlayerName(name);
+            return this.unitOfWork.PlayerRepository.GetAccountByLogin(objId);
         }
     }
 }
