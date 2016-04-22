@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Ninject;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Net;
-using System.Net.Sockets;
-using L2dotNET.Auth.data;
-using L2dotNET.Auth.gscommunication;
-using L2dotNET.Auth.managers;
-using Ninject;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace L2dotNET.Auth
 {
@@ -18,7 +17,5 @@ namespace L2dotNET.Auth
             server.Start();
             Process.GetCurrentProcess().WaitForExit();
         }
-
-      
     }
 }

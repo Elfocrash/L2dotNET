@@ -22,9 +22,9 @@ namespace L2dotNET.Auth
 
         public void Start()
         {
-            Console.Title = "RCS auth";
+            Console.Title = "L2dotNET Loginserver";
             Cfg.load();
-            ClientManager.getInstance();
+            ClientManager.Instance.Initialize();
 
             SQLjec.getInstance();
 
@@ -39,13 +39,13 @@ namespace L2dotNET.Auth
             while (true)
             {
                 clientSocket = LoginListener.AcceptTcpClient();
-                accept(clientSocket);
+                AcceptClient(clientSocket);
             }
         }
 
-        private void accept(TcpClient client)
+        private void AcceptClient(TcpClient client)
         {
-            ClientManager.getInstance().addClient(client);
+            ClientManager.Instance.addClient(client);
         }
     }
 }
