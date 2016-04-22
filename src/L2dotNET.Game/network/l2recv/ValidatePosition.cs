@@ -15,6 +15,8 @@ namespace L2dotNET.Game.network.l2recv
             base.makeme(client, data);
         }
 
+        private const int SYNCTYPE = 1;
+
         private int _x;
         private int _y;
         private int _z;
@@ -33,41 +35,62 @@ namespace L2dotNET.Game.network.l2recv
         public override void run()
         {
             L2Player player = getClient().CurrentPlayer;
-         //   Console.WriteLine("VP: data " + _data);
             string prevReg = player.CurrentRegion;
+
+            int realX = player.X;
+            int realY = player.Y;
+            int realZ = player.Z;
+
+            int dx, dy, dz;
+            double diffSq;
+
+            dx = _x - realX;
+            dy = _y - realY;
+            dz = _z - realZ;
+            diffSq = (dx * dx + dy * dy);
+
+            if(diffSq < 360000)
+            {
+                if(SYNCTYPE == 1)
+                {
+                    if(!player.isMoving())
+                    {
+                        if (diffSq < 2500)
+                        {
+                            player.X = realX;
+                            player.Y = realY;
+                            player.Z = _z;
+                        }
+                        else
+                        {
+                            player.X = _x;
+                            player.Y = _y;
+                            player.Z = _z;
+                        }
+                    }
+                    return;
+                }
+                else if (diffSq > 250000 || Math.Abs(dz) > 200)
+                {
+                    if (Math.Abs(dz) > 200 && Math.Abs(dz) < 1500 && Math.Abs(_z - player.clientHeading) < 800)
+                    {
+                        player.X = realX;
+                        player.Y = realY;
+                        player.Z = _z;
+                    }
+                    else
+                    {
+                        player.sendPacket(new ValidateLocation(player));
+                    }
+                }
+            }
 
             player.clientPosX = _x;
             player.clientPosY = _y;
             player.clientPosZ = _z;
             player.clientHeading = _heading;
 
-            //todo checks
-
-            double dx = _x - player.X;
-            double dy = _y - player.Y;
-            double diffSq = (dx * dx + dy * dy);
-            byte flymode = 0;
-            if (player.Transform != null)
-                flymode = player.Transform.Template.MoveMode;
-
-            if(flymode == 2)
-            {
-                if (diffSq > 90000) // validate packet, may also cause z bounce if close to land
-                    player.sendPacket(new ValidateLocation(player.ObjID, _x, _y, _z, _heading));
-                return;
-            }
-
-            player.X = _x;
-            player.Y = _y;
-            player.Z = _z;
-            player.Heading = _heading;
-
-            player.validateVisibleObjects(_x, _y, true);
-
-            if (diffSq > 250000)
-            {
-                player.sendPacket(new ValidateLocation(player.ObjID, _x, _y, _z, _heading));
-            }            
+            player.validateVisibleObjects(_x, _y, true);         
         }
     }
 }

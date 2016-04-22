@@ -1,4 +1,6 @@
 ﻿
+using L2dotNET.Game.world;
+
 namespace L2dotNET.Game.network.l2send
 {
     class ValidateLocation : GameServerNetworkPacket
@@ -17,9 +19,18 @@ namespace L2dotNET.Game.network.l2send
             this._heading = _heading;
         }
 
+        public ValidateLocation(L2Character character)
+        {
+            _id = character.ObjID;
+            _x = character.X;
+            _y = character.Y;
+            _z = character.Z;
+            _heading = character.Heading;
+        }
+
         protected internal override void write()
         {
-            writeC(0x73);
+            writeC(0x61);
 
             writeD(_id);
             writeD(_x);

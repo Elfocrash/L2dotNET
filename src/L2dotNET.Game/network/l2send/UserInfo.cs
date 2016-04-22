@@ -50,33 +50,17 @@ namespace L2dotNET.Game.network.l2send
             for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
             {
                 int result = 0;
-                if (player.Inventory._paperdollVisual[id] > 0)
-                    result = player.Inventory._paperdollVisual[id];
-                else
-                    result = player.Inventory._paperdoll[id][1];
-
+                result = player.Inventory._paperdoll[id][0];
                 writeD(result);
             }
 
             for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
             {
                 int result = 0;
-                if (player.Inventory._paperdollVisual[id] > 0)
-                    result = player.Inventory._paperdollVisual[id];
-                else
-                    result = player.Inventory._paperdoll[id][0];
-
+                result = player.Inventory._paperdoll[id][0];
                 writeD(result);
             }
 
-            for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
-            {
-                int result = 0;
-                if (player.Inventory._paperdollVisual[id] == 0)
-                    result = player.Inventory._paperdoll[id][2];
-
-                writeD(result);
-            }
             // c6 new h's
             writeH(0x00);
             writeH(0x00);

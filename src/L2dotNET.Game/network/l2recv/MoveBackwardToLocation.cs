@@ -63,10 +63,14 @@ namespace L2dotNET.Game.network.l2recv
             if (player._obsx != -1)
                 player._obsx = -1;
 
-            //player.X = _originX;
-            //player.Y = _originY;
-            //player.Z = _originZ;
+            double dx = _targetX - _originX;
+            double dy = _targetY - _originY;
 
+            if ((dx * dx + dy * dy) > 98010000) // 9900*9900
+            {
+                player.sendActionFailed();
+                return;
+            }
             player.AICharacter.StopAutoAttack();
             player.MoveTo(_targetX, _targetY, _targetZ);
         }
