@@ -35,8 +35,8 @@ namespace L2dotNET.Auth
 
         public void initializeNetwork()
         {
-            RsaPair = ClientManager.getInstance().getScrambledKeyPair();
-            BlowfishKey = ClientManager.getInstance().getBlowfishKey();
+            RsaPair = ClientManager.Instance.GetScrambledKeyPair();
+            BlowfishKey = ClientManager.Instance.GetBlowfishKey();
             _loginCrypt = new LoginCrypt();
             _loginCrypt.updateKey(BlowfishKey);
 
@@ -98,7 +98,7 @@ namespace L2dotNET.Auth
 
         public void close()
         {
-            ClientManager.getInstance().removeClient(this);
+            ClientManager.Instance.RemoveClient(this);
         }
 
         private void OnReceiveCallback(IAsyncResult result)

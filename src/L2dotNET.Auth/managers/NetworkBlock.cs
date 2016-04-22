@@ -45,7 +45,7 @@ namespace L2dotNET.Auth.data
             CLogger.info("NetworkBlock: " + blocks.Count + " blocks.");
         }
 
-        public bool allowed(string ip)
+        public bool Allowed(string ip)
         {
             if (blocks.Count == 0)
                 return true;
