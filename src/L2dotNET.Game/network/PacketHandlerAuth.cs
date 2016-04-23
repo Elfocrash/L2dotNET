@@ -2,6 +2,7 @@
 using System.Threading;
 using L2dotNET.Game.network.loginauth;
 using L2dotNET.Game.network.loginauth.recv;
+using System.Linq;
 
 namespace L2dotNET.Game.network
 {
@@ -9,7 +10,17 @@ namespace L2dotNET.Game.network
     {
         public static void handlePacket(AuthThread login, byte[] buff)
         {
-            byte id = buff[0];
+            byte id = 0;
+            try
+            {
+               id = buff[0];
+            }
+            catch(IndexOutOfRangeException e)
+            {
+                Console.WriteLine("Something went wrong on PacketHandlerAuth: " + e);
+                goto SkipLabel;
+            }
+
             Console.WriteLine("login>gs: "+id);
             string cninfo = "handlepacket: request " + id.ToString("x2") + " size " + buff.Length;
 
@@ -39,10 +50,8 @@ namespace L2dotNET.Game.network
                 return;
             }
 
-            //if (!login.IsConnected)
-            //    return;
-
             new Thread(new ThreadStart(msg.run)).Start();
+        SkipLabel:;
         }
     }
 }
