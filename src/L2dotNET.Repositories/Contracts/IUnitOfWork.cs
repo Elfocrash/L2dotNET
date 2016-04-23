@@ -10,6 +10,7 @@ namespace L2dotNET.Repositories.Contracts
     {
         IPlayerRepository PlayerRepository { get; }
         IAccountRepository AccountRepository { get; }
+        IServerRepository ServerRepository { get; }
 
         void Commit();
     }

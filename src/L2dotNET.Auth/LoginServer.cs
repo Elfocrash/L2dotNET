@@ -26,8 +26,6 @@ namespace L2dotNET.Auth
             Cfg.load();
             ClientManager.Instance.Initialize();
 
-            SQLjec.getInstance();
-
             ServerThreadPool.getInstance();
             NetworkRedirect.getInstance();
 

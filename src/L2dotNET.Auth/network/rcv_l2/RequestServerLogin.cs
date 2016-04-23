@@ -25,31 +25,26 @@ namespace L2dotNET.Auth.rcv_l2
         {
             if (getClient().login1 != login1 && getClient().login2 != login2)
             {
-                getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.SYSTEM_ERROR));
+                getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_ACCESS_FAILED));
                 return;
             }
 
             L2Server server = ServerThreadPool.getInstance().get(serverId);
             if (server == null)
             {
-                getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.SYSTEM_ERROR));
+                getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_ACCESS_FAILED));
                 return;
             }
 
             if (server.connected == 0)
             {
-                getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.SERVER_MAINTENANCE));
+                getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_SERVER_MAINTENANCE));
             }
             else
             {
-                //ServerThreadPool.getInstance().SendPlayer(serverId, getClient(), DateTime.Now.ToLocalTime().ToString());
+                ServerThreadPool.getInstance().SendPlayer(serverId, getClient(), DateTime.Now.ToLocalTime().ToString());
 
-                //SQL_Block sqb = new SQL_Block("accounts");
-                //sqb.param("serverId", serverId);
-                //sqb.param("lastlogin", DateTime.Now.ToLocalTime());
-                //sqb.param("lastAddress", getClient()._address);
-                //sqb.where("account", getClient().activeAccount.name);
-                //sqb.sql_update();
+                //login updates here
 
                 getClient().sendPacket(new PlayOk(getClient()));
 

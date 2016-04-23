@@ -106,15 +106,14 @@
     <Compile Include="network\SendServerPacket.cs" />
     <Compile Include="network\ReceiveServerPacket.cs" />
     <Compile Include="network\rcv_gs\RequestLoginServPing.cs" />
+    <Compile Include="network\serverpackets\PlayFail.cs" />
     <Compile Include="network\serverpackets_gs\PleaseKickAccount.cs" />
     <Compile Include="network\serverpackets_gs\PleaseAcceptPlayer.cs" />
     <Compile Include="network\serverpackets_gs\ServerLoginOk.cs" />
     <Compile Include="network\serverpackets_gs\ServerLoginFail.cs" />
     <Compile Include="network\serverpackets_gs\LoginServPing.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="managers\AccountManager.cs" />
     <Compile Include="managers\NetworkBlock.cs" />
-    <Compile Include="data\SQLjec.cs" />
     <Compile Include="gscommunication\ServerThreadPool.cs" />
     <Compile Include="model\L2Server.cs" />
     <Compile Include="network\LoginClient.cs" />
@@ -128,10 +127,10 @@
     <Compile Include="network\SendBasePacket.cs" />
     <Compile Include="network\serverpackets\PlayOk.cs" />
     <Compile Include="network\serverpackets\ServerList.cs" />
-    <Compile Include="network\serverpackets\SM_LOGIN_FAIL.cs" />
-    <Compile Include="network\serverpackets\SM_LOGIN_OK.cs" />
-    <Compile Include="network\serverpackets\SM_AUTH_GG.cs" />
-    <Compile Include="network\serverpackets\SM_INIT.cs" />
+    <Compile Include="network\serverpackets\LoginFail.cs" />
+    <Compile Include="network\serverpackets\LoginOk.cs" />
+    <Compile Include="network\serverpackets\GGAuth.cs" />
+    <Compile Include="network\serverpackets\Init.cs" />
     <Compile Include="Utils\L2Security.cs" />
   </ItemGroup>
   <ItemGroup>

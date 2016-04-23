@@ -17,9 +17,11 @@ namespace L2dotNET.Auth
         {
             Bind<IPlayerService>().To<PlayerService>();
             Bind<IAccountService>().To<AccountService>();
+            Bind<IServerService>().To<ServerService>();
 
             Bind<IPlayerRepository>().To<PlayerRepository>();
             Bind<IAccountRepository>().To<AccountRepository>();
+            Bind<IServerRepository>().To<ServerRepository>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
         }
     }

@@ -20,7 +20,7 @@ namespace L2dotNET.Auth.rcv_l2
         {
             if (getClient().login1 != login1 && getClient().login2 != login2)
             {
-                getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.ACCESS_FAILED_TRY_AGAIN));
+                getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_ACCESS_FAILED));
                 return;
             }
 

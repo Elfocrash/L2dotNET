@@ -16,7 +16,7 @@ namespace L2dotNET.Auth.rcv_l2
 
         public override void run()
         {
-            this.getClient().sendPacket(new SM_AUTH_GG(getClient()));
+            this.getClient().sendPacket(new GGAuth(getClient()));
         }
     }
 }

@@ -40,13 +40,13 @@ namespace L2dotNET.Auth
             _loginCrypt = new LoginCrypt();
             _loginCrypt.updateKey(BlowfishKey);
 
-            new System.Threading.Thread(read).Start();
-            new System.Threading.Thread(sendInit).Start();
+            new Thread(read).Start();
+            new Thread(sendInit).Start();
         }
 
         public void sendInit()
         {
-            sendPacket(new SM_INIT(this));
+            sendPacket(new Init(this));
         }
 
         public void sendPacket(SendBasePacket sbp)

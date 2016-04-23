@@ -58,7 +58,7 @@ namespace L2dotNET.Auth.rcv_l2
                     account = accountService.CreateAccount(username, L2Security.HashPassword(password));
                 else
                 {
-                    getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.USER_OR_PASS_WRONG));
+                    getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_USER_OR_PASS_WRONG));
                     getClient().close();
                     return;
                 }
@@ -67,14 +67,14 @@ namespace L2dotNET.Auth.rcv_l2
             {
                 if (!accountService.CheckIfAccountIsCorrect(username, L2Security.HashPassword(password)))
                 {
-                    getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.USER_OR_PASS_WRONG));
+                    getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_USER_OR_PASS_WRONG));
                     getClient().close();
                     return;
                 }
 
                 if(ServerThreadPool.getInstance().LoggedAlready(username.ToLower()))
                 {
-                    getClient().sendPacket(new SM_LOGIN_FAIL(getClient(), SM_LOGIN_FAIL.LoginFailReason.ACCOUNT_IN_USE));
+                    getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_ACCOUNT_IN_USE));
                     getClient().close();
                     return;
                 }
@@ -86,7 +86,7 @@ namespace L2dotNET.Auth.rcv_l2
             getClient().setLoginPair(rnd.Next(), rnd.Next());
             getClient().setPlayPair(rnd.Next(), rnd.Next());
 
-            getClient().sendPacket(new SM_LOGIN_OK(getClient()));
+            getClient().sendPacket(new LoginOk(getClient()));
         }
     }
 }

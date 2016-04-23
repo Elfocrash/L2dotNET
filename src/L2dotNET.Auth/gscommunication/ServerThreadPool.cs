@@ -5,11 +5,17 @@ using System.Net.Sockets;
 using L2dotNET.Auth.data;
 using MySql.Data.MySqlClient;
 using System;
+using Ninject;
+using L2dotNET.Services.Contracts;
+using L2dotNET.Models;
 
 namespace L2dotNET.Auth.gscommunication
 {
     public class ServerThreadPool
     {
+        [Inject]
+        public IServerService serverService { get { return LoginServer.Kernel.Get<IServerService>(); } }
+
         private static ServerThreadPool gsc = new ServerThreadPool();
         public static ServerThreadPool getInstance()
         {
@@ -20,32 +26,16 @@ namespace L2dotNET.Auth.gscommunication
 
         public ServerThreadPool()
         {
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
+            List<ServerModel> serverModels = serverService.GetServerList();
 
-            connection.Open();
-
-            cmd.CommandText = "SELECT * FROM servers";
-            cmd.CommandType = CommandType.Text;
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            foreach(var curServ in serverModels)
             {
                 L2Server server = new L2Server();
-                try {
-                    server.id = (byte)reader.GetInt32("id");
-                    server.info = reader.GetString("info");
-                    server.code = reader.GetString("code");
-
-                    servers.Add(server);
-                }
-                catch(Exception e)
-                { }
+                server.id = (byte)curServ.Id;
+                server.info = curServ.Name;
+                server.code = curServ.Code;
+                servers.Add(server);
             }
-
-            reader.Close();
-            connection.Close();
 
             CLogger.info("GameServerThread: loaded " + servers.Count+" servers");
             
