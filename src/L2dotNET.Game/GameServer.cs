@@ -2,7 +2,6 @@
 using System.Net.Sockets;
 using L2dotNET.Game.controllers;
 using L2dotNET.Game.crypt;
-using L2dotNET.Game.db;
 using L2dotNET.Game.logger;
 using L2dotNET.Game.managers;
 using L2dotNET.Game.model.events;
@@ -47,7 +46,7 @@ namespace L2dotNET.Game
             NetworkBlock.getInstance();
             GameTime.getInstance();
 
-            IdFactory.getInstance().init();
+            IdFactory.Instance.Initialize();
 
             L2World.getInstance();
             // MapRegionTable.getInstance();
@@ -73,7 +72,6 @@ namespace L2dotNET.Game
             BlowFishKeygen.genKey();
             CLogger.info("generated 20 blowfish keys");
 
-            SQLjec.getInstance();
             ClassIdContainer.init();
 
             AdminAccess.getInstance();

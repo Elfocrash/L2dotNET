@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using L2dotNET.Game.model.structures;
 using MySql.Data.MySqlClient;
-using L2dotNET.Game.db;
 using System.Data;
 using L2dotNET.Game.logger;
 

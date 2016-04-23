@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using L2dotNET.Game.db;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.network.loginauth;
 using MySql.Data.MySqlClient;

@@ -6,7 +6,7 @@ namespace L2dotNET.Game.model.npcs.decor
     {
         public L2Chair()
         {
-            ObjID = IdFactory.getInstance().nextId();
+            ObjID = IdFactory.Instance.nextId();
             Closed = 0;
             MaxHP = 0;
             CurHP = 0;

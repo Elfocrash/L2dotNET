@@ -8,7 +8,7 @@ namespace L2dotNET.Game.model.zones.classes
         public structures.Hideout hideout;
         public hideout_zone()
         {
-            ZoneID = IdFactory.getInstance().nextId();
+            ZoneID = IdFactory.Instance.nextId();
             _enabled = true;
         }
 

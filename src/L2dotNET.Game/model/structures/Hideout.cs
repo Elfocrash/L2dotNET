@@ -1,5 +1,4 @@
 ﻿using System;
-using L2dotNET.Game.db;
 using L2dotNET.Game.logger;
 using L2dotNET.Game.model.npcs.ai;
 using L2dotNET.Game.model.zones;
@@ -75,10 +74,10 @@ namespace L2dotNET.Game.model.structures
 
             Decoration[decoId] = level;
 
-            SQL_Block sqb = new SQL_Block("st_hideouts");
-            sqb.param("func_" + decoId, level);
-            sqb.where("id", ID);
-            sqb.sql_update(false);
+            //SQL_Block sqb = new SQL_Block("st_hideouts");
+            //sqb.param("func_" + decoId, level);
+            //sqb.where("id", ID);
+            //sqb.sql_update(false);
 
             return 5;
         }

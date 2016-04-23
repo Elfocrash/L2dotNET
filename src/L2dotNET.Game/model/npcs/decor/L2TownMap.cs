@@ -7,7 +7,7 @@ namespace L2dotNET.Game.model.npcs.decor
     {
         public L2TownMap()
         {
-            ObjID = IdFactory.getInstance().nextId();
+            ObjID = IdFactory.Instance.nextId();
         }
 
         public override void NotifyAction(L2Player player)

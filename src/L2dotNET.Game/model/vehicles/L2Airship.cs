@@ -10,7 +10,7 @@ namespace L2dotNET.Game.model.vehicles
         public int CaptainId;
         public int Speed = 400;
         public int RotationSpeed = 1800;
-        public int HelmId = IdFactory.getInstance().nextId();
+        public int HelmId = IdFactory.Instance.nextId();
         public int ControllerX = 0x16e;
         public int ControllerY;
         public int ControllerZ = 0x6b;

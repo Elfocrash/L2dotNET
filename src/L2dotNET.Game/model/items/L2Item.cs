@@ -1,5 +1,4 @@
 ﻿using System;
-using L2dotNET.Game.db;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.tools;
@@ -40,7 +39,7 @@ namespace L2dotNET.Game.model.items
 
         public L2Item(ItemTemplate template)
         {
-            ObjID = IdFactory.getInstance().nextId();
+            ObjID = IdFactory.Instance.nextId();
             Template = template;
             Count = 1;
             Durability = template.Durability;
@@ -64,7 +63,7 @@ namespace L2dotNET.Game.model.items
 
         public void genId()
         {
-            ObjID = IdFactory.getInstance().nextId();
+            ObjID = IdFactory.Instance.nextId();
         }
 
         public enum L2ItemLocation
@@ -366,48 +365,48 @@ namespace L2dotNET.Game.model.items
 
         public void sql_insert(int id)
         {
-            SQL_Block sqb = new SQL_Block("user_items");
-            sqb.param("ownerId", id);
-            sqb.param("iobjectId", ObjID);
-            sqb.param("itemId", Template.ItemID);
-            sqb.param("icount", Count);
-            sqb.param("ienchant", Enchant);
-            sqb.param("iaugment", AugmentationID);
-            sqb.param("imana", Durability);
-            sqb.param("lifetime", LimitedHourStr());
-            sqb.param("iequipped", _isEquipped);
-            sqb.param("iequip_data", _paperdollSlot);
-            sqb.param("ilocation", Location.ToString());
-            sqb.param("iloc_data", 0);
-            //sqb.param("ict1", CustomType1);
-            //sqb.param("ict2", CustomType2);
-            sqb.sql_insert(false);
+            //SQL_Block sqb = new SQL_Block("user_items");
+            //sqb.param("ownerId", id);
+            //sqb.param("iobjectId", ObjID);
+            //sqb.param("itemId", Template.ItemID);
+            //sqb.param("icount", Count);
+            //sqb.param("ienchant", Enchant);
+            //sqb.param("iaugment", AugmentationID);
+            //sqb.param("imana", Durability);
+            //sqb.param("lifetime", LimitedHourStr());
+            //sqb.param("iequipped", _isEquipped);
+            //sqb.param("iequip_data", _paperdollSlot);
+            //sqb.param("ilocation", Location.ToString());
+            //sqb.param("iloc_data", 0);
+            ////sqb.param("ict1", CustomType1);
+            ////sqb.param("ict2", CustomType2);
+            //sqb.sql_insert(false);
         }
 
         public void sql_delete()
         {
-            SQL_Block sqb = new SQL_Block("user_items");
-            sqb.where("iobjectId", ObjID);
-            sqb.sql_delete(false);
+            //SQL_Block sqb = new SQL_Block("user_items");
+            //sqb.where("iobjectId", ObjID);
+            //sqb.sql_delete(false);
         }
 
         public void sql_update()
         {
-            SQL_Block sqb = new SQL_Block("user_items");
-            sqb.param("itemId", Template.ItemID);
-            sqb.param("icount", Count);
-            sqb.param("ienchant", Enchant);
-            sqb.param("iaugment", AugmentationID);
-            sqb.param("imana", Durability);
-            sqb.param("lifetime", LimitedHourStr());
-            sqb.param("iequipped", _isEquipped);
-            sqb.param("iequip_data", _paperdollSlot);
-            sqb.param("ilocation", Location.ToString());
-            sqb.param("iloc_data", SlotLocation);
-            //sqb.param("ict1", CustomType1);
-            //sqb.param("ict2", CustomType2);
-            sqb.where("iobjectId", ObjID);
-            sqb.sql_update(false);
+            //SQL_Block sqb = new SQL_Block("user_items");
+            //sqb.param("itemId", Template.ItemID);
+            //sqb.param("icount", Count);
+            //sqb.param("ienchant", Enchant);
+            //sqb.param("iaugment", AugmentationID);
+            //sqb.param("imana", Durability);
+            //sqb.param("lifetime", LimitedHourStr());
+            //sqb.param("iequipped", _isEquipped);
+            //sqb.param("iequip_data", _paperdollSlot);
+            //sqb.param("ilocation", Location.ToString());
+            //sqb.param("iloc_data", SlotLocation);
+            ////sqb.param("ict1", CustomType1);
+            ////sqb.param("ict2", CustomType2);
+            //sqb.where("iobjectId", ObjID);
+            //sqb.sql_update(false);
         }
 
         public override string asString()

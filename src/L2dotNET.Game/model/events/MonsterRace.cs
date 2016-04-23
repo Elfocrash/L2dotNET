@@ -460,7 +460,7 @@ namespace L2dotNET.Game.model.events
             this.sys_string = sys_string;
             this.max_speed = max_speed;
             this.min_speed = min_speed;
-            this.id = IdFactory.getInstance().nextId();
+            this.id = IdFactory.Instance.nextId();
         }
 
         public int x, y, z, dx, dy, dz;

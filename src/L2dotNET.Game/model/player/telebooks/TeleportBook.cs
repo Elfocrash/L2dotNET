@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Game.db;
 using L2dotNET.Game.model.items;
 using L2dotNET.Game.network.l2send;
 
@@ -54,16 +53,16 @@ namespace L2dotNET.Game.model.player.telebooks
 
             bookmarks.Add(mark.id, mark);
 
-            SQL_Block sqb = new SQL_Block("user_telbooks");
-            sqb.param("ownerId", player.ObjID);
-            sqb.param("id", mark.id);
-            sqb.param("locx", mark.x);
-            sqb.param("locy", mark.y);
-            sqb.param("locz", mark.z);
-            sqb.param("icon", mark.icon);
-            sqb.param("name", mark.name);
-            sqb.param("tag", mark.tag);
-            sqb.sql_insert(false);
+            //SQL_Block sqb = new SQL_Block("user_telbooks");
+            //sqb.param("ownerId", player.ObjID);
+            //sqb.param("id", mark.id);
+            //sqb.param("locx", mark.x);
+            //sqb.param("locy", mark.y);
+            //sqb.param("locz", mark.z);
+            //sqb.param("icon", mark.icon);
+            //sqb.param("name", mark.name);
+            //sqb.param("tag", mark.tag);
+            //sqb.sql_insert(false);
 
             player.sendPacket(new ExGetBookMarkInfo(player.TelbookLimit, this));
         }
@@ -82,13 +81,13 @@ namespace L2dotNET.Game.model.player.telebooks
             mark.icon = icon;
             mark.tag = tag;
 
-            SQL_Block sqb = new SQL_Block("user_telbooks");
-            sqb.param("name", name);
-            sqb.param("icon", icon);
-            sqb.param("tag", tag);
-            sqb.where("ownerId", player.ObjID);
-            sqb.where("id", id);
-            sqb.sql_update(false);
+            //SQL_Block sqb = new SQL_Block("user_telbooks");
+            //sqb.param("name", name);
+            //sqb.param("icon", icon);
+            //sqb.param("tag", tag);
+            //sqb.where("ownerId", player.ObjID);
+            //sqb.where("id", id);
+            //sqb.sql_update(false);
 
             player.sendPacket(new ExGetBookMarkInfo(player.TelbookLimit, this));
         }
@@ -105,10 +104,10 @@ namespace L2dotNET.Game.model.player.telebooks
             lock (bookmarks)
                 bookmarks.Remove(id);
 
-            SQL_Block sqb = new SQL_Block("user_telbooks");
-            sqb.where("ownerId", player.ObjID);
-            sqb.where("id", id);
-            sqb.sql_delete(false);
+            //SQL_Block sqb = new SQL_Block("user_telbooks");
+            //sqb.where("ownerId", player.ObjID);
+            //sqb.where("id", id);
+            //sqb.sql_delete(false);
 
             player.sendPacket(new ExGetBookMarkInfo(player.TelbookLimit, this));
         }

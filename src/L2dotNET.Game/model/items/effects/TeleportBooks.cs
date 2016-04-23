@@ -1,5 +1,4 @@
-﻿using L2dotNET.Game.db;
-using L2dotNET.Game.model.player.telebooks;
+﻿using L2dotNET.Game.model.player.telebooks;
 using L2dotNET.Game.network.l2send;
 
 namespace L2dotNET.Game.model.items.effects
@@ -32,10 +31,10 @@ namespace L2dotNET.Game.model.items.effects
             if (player.TelbookLimit >= player.TelbookLimitMax)
                 player.TelbookLimit = player.TelbookLimitMax;
 
-            SQL_Block sqb = new SQL_Block("user_data");
-            sqb.param("telbook", player.TelbookLimit);
-            sqb.where("objId", player.ObjID);
-            sqb.sql_update(false);
+            //SQL_Block sqb = new SQL_Block("user_data");
+            //sqb.param("telbook", player.TelbookLimit);
+            //sqb.where("objId", player.ObjID);
+            //sqb.sql_update(false);
 
             player.sendSystemMessage(2409);//The number of My Teleports slots has been increased.
             player.sendPacket(new ExGetBookMarkInfo(player.TelbookLimit, player.Telbook));

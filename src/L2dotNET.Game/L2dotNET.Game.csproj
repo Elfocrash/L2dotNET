@@ -103,7 +103,6 @@
     <Compile Include="controllers\GameTime.cs" />
     <Compile Include="Crypt.cs" />
     <Compile Include="crypt\BlowFishKeygen.cs" />
-    <Compile Include="db\SQLjec.cs" />
     <Compile Include="DepInjectionModule.cs" />
     <Compile Include="geo\Geo.cs" />
     <Compile Include="geo\GeoData.cs" />
@@ -389,7 +388,6 @@
     <Compile Include="network\clientpackets\RequestBR_MinigameInsertScore.cs" />
     <Compile Include="network\clientpackets\MailAPI\RequestSentPost.cs" />
     <Compile Include="network\clientpackets\MailAPI\RequestReceivedPost.cs" />
-    <Compile Include="network\clientpackets\MailAPI\RequestSendPost.cs" />
     <Compile Include="network\clientpackets\MailAPI\RequestPostItemList.cs" />
     <Compile Include="network\clientpackets\MailAPI\RequestSentPostList.cs" />
     <Compile Include="network\clientpackets\MailAPI\RequestReceivedPostList.cs" />
@@ -734,12 +732,6 @@
     <Compile Include="world\L2Object.cs" />
     <Compile Include="world\L2World.cs" />
     <Compile Include="world\L2WorldRegion.cs" />
-    <Compile Include="_test\category.cs" />
-    <Compile Include="_test\drop_l2j_to_rcs.cs" />
-    <Compile Include="_test\l2jitem.cs" />
-    <Compile Include="_test\npc_l2j_to_rcs.cs" />
-    <Compile Include="_test\shop_conv.cs" />
-    <Compile Include="_test\test2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

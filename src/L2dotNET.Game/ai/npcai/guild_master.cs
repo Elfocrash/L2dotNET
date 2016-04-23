@@ -7,7 +7,6 @@ using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.model.communities;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.db;
 using L2dotNET.Game.model.skills2;
 
 namespace L2dotNET.Game.ai.npcai
@@ -440,22 +439,12 @@ namespace L2dotNET.Game.ai.npcai
 
         private void CreateClan(L2Player talker, string name)
         {
-
-
-
-
-
-
-
-
-
-
             L2Clan clan = new L2Clan();
             clan.LeaderID = talker.ObjID;
             clan.ClanMasterName = talker.Name;
             clan.Name = name;
             clan.Level = 0;
-            clan.ClanID = IdFactory.getInstance().nextId();
+            clan.ClanID = IdFactory.Instance.nextId();
 
             clan.addMember(talker, 0);
 
@@ -467,22 +456,22 @@ namespace L2dotNET.Game.ai.npcai
 
             talker.ShowHtm("pl006.htm", myself);
 
-            SQL_Block sqb = new SQL_Block("clan_data");
-            sqb.param("id", clan.ClanID);
-            sqb.param("name", clan.Name);
-            sqb.param("level", clan.Level);
-            sqb.param("leaderId", clan.LeaderID);
-            sqb.param("leaderName", clan.ClanMasterName);
-            sqb.param("crestId", clan.CrestID);
-            sqb.param("crestBigId", clan.LargeCrestID);
-            sqb.param("castleId", clan.CastleID);
-            sqb.param("agitId", clan.HideoutID);
-            sqb.param("fortId", clan.FortressID);
-            sqb.param("dominionId", clan.JoinDominionWarID);
-            sqb.param("allyId", clan.AllianceID);
-            sqb.sql_insert(false);
+            //SQL_Block sqb = new SQL_Block("clan_data");
+            //sqb.param("id", clan.ClanID);
+            //sqb.param("name", clan.Name);
+            //sqb.param("level", clan.Level);
+            //sqb.param("leaderId", clan.LeaderID);
+            //sqb.param("leaderName", clan.ClanMasterName);
+            //sqb.param("crestId", clan.CrestID);
+            //sqb.param("crestBigId", clan.LargeCrestID);
+            //sqb.param("castleId", clan.CastleID);
+            //sqb.param("agitId", clan.HideoutID);
+            //sqb.param("fortId", clan.FortressID);
+            //sqb.param("dominionId", clan.JoinDominionWarID);
+            //sqb.param("allyId", clan.AllianceID);
+            //sqb.sql_insert(false);
 
-            talker.updateDb();
+            //talker.updateDb();
         }
 
         private void ValidateLevelUp1(L2Player talker, int sp, int id, long count, byte lvl)

@@ -9,7 +9,7 @@ namespace L2dotNET.Game.model.npcs.decor
         public HideoutTemplate structure;
         public L2Door()
         {
-            ObjID = IdFactory.getInstance().nextId();
+            ObjID = IdFactory.Instance.nextId();
             Type = 1;
             Closed = 1;
             MeshID = 1;

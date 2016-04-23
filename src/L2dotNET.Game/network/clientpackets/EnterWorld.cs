@@ -3,7 +3,6 @@ using L2dotNET.Game.managers;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.world;
-using L2dotNET.Game.db;
 using L2dotNET.Game.model.items;
 
 namespace L2dotNET.Game.network.l2recv
@@ -38,19 +37,6 @@ namespace L2dotNET.Game.network.l2recv
         public override void run()
         {
             L2Player player = getClient().CurrentPlayer;
-
-            //if (player.LastAccountSelection == 0)
-            //{
-            //    SQL_Block sqb = new SQL_Block("user_data");
-            //    sqb.param("lastUse", 0);
-            //    sqb.where("account", Client.AccountName);
-            //    sqb.sql_update(false);
-
-            //    sqb = new SQL_Block("user_data");
-            //    sqb.param("lastUse", 1);
-            //    sqb.where("objId", player.ObjID);
-            //    sqb.sql_update(false);
-            //}
 
             player.TotalRestore();
 

@@ -352,9 +352,6 @@ namespace L2dotNET.Game.network
                         case 0x65:
                             msg = new RequestPostItemList(client, buff);
                             break;
-                        case 0x66:
-                            msg = new RequestSendPost(client, buff);
-                            break;
                         case 0x67:
                             msg = new RequestReceivedPostList(client, buff);
                             break;

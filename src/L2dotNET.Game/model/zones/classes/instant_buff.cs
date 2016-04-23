@@ -7,7 +7,7 @@ namespace L2dotNET.Game.model.zones.classes
     {
         public instant_buff()
         {
-            ZoneID = IdFactory.getInstance().nextId();
+            ZoneID = IdFactory.Instance.nextId();
         }
 
         public override void onInit()

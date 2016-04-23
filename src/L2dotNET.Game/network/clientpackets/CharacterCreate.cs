@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using L2dotNET.Game.db;
 using L2dotNET.Game.model.inventory;
 using L2dotNET.Game.model.items;
 using L2dotNET.Game.model.player;
@@ -89,8 +88,6 @@ namespace L2dotNET.Game.network.l2recv
             player.AccountName = getClient().AccountName;
             player.Title = "";
             player.Sex = _sex;
-            player.BaseClass = template;
-            player.ActiveClass = template;
 
             player.HairStyle = _hairStyle;
             player.HairColor = _hairColor;
@@ -99,10 +96,17 @@ namespace L2dotNET.Game.network.l2recv
             player.Gameclient = getClient();
 
             player.Exp = 0;
+            
+            //player.MaximumHp = template._hp[player.Level];
+            player.CStatsInit();
+            player.CharacterStat.setTemplate(template);
+
+            player.BaseClass = template;
+            player.ActiveClass = template;
+
             player.CurHP = template._hp[player.Level];
             player.CurMP = template._mp[player.Level];
             player.CurCP = template._cp[player.Level];
-            //player.MaximumHp = template._hp[player.Level];
             player.MaxMp = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
             player.MaxCp = (int)player.CharacterStat.getStat(TEffectType.b_max_cp);
 
@@ -110,8 +114,7 @@ namespace L2dotNET.Game.network.l2recv
             player.Y = 258271;
             player.Z = -3104;
 
-            player.CStatsInit();
-            player.CharacterStat.setTemplate(template);
+            
 
             if (template._items != null)
             {

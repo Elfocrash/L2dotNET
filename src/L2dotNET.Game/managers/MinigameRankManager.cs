@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.Game.db;
 using L2dotNET.Game.network.l2send;
 
 namespace L2dotNET.Game.managers
@@ -73,11 +72,11 @@ namespace L2dotNET.Game.managers
                         m.Score = m_CurrentScore;
                         player.sendMessage("You bet your best score " + m.Score + " with +"+(m_CurrentScore-m.Score)+" points.");
 
-                        SQL_Block sqb = new SQL_Block("minigame_rank");
-                        sqb.param("score", m_CurrentScore);
-                        sqb.param("achived", DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
-                        sqb.where("playerId", player.ObjID);
-                        sqb.sql_update(false);
+                        //SQL_Block sqb = new SQL_Block("minigame_rank");
+                        //sqb.param("score", m_CurrentScore);
+                        //sqb.param("achived", DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+                        //sqb.where("playerId", player.ObjID);
+                        //sqb.sql_update(false);
                     }
                 }
 
@@ -91,11 +90,11 @@ namespace L2dotNET.Game.managers
                 m.Score = m_CurrentScore;
                 _top.Add(m);
 
-                SQL_Block sqb = new SQL_Block("minigame_rank");
-                sqb.param("playerId", player.ObjID);
-                sqb.param("score", m_CurrentScore);
-                sqb.param("achived", DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
-                sqb.sql_insert(false);
+                //SQL_Block sqb = new SQL_Block("minigame_rank");
+                //sqb.param("playerId", player.ObjID);
+                //sqb.param("score", m_CurrentScore);
+                //sqb.param("achived", DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+                //sqb.sql_insert(false);
             }
 
             player.LastMinigameScore = m_CurrentScore;

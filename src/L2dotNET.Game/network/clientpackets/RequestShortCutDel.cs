@@ -1,7 +1,6 @@
 ﻿using L2dotNET.Game.network.l2send;
 using System;
 using L2dotNET.Game.model.player;
-using L2dotNET.Game.db;
 
 namespace L2dotNET.Game.network.l2recv
 {
@@ -46,12 +45,12 @@ namespace L2dotNET.Game.network.l2recv
             {
                 player._shortcuts.Remove(scx);
 
-                SQL_Block sqb = new SQL_Block("user_shortcuts");
-                sqb.where("ownerId", player.ObjID);
-                sqb.where("classId", player.ActiveClass.id);
-                sqb.where("slot", _slot);
-                sqb.where("page", _page);
-                sqb.sql_delete(false);
+                //SQL_Block sqb = new SQL_Block("user_shortcuts");
+                //sqb.where("ownerId", player.ObjID);
+                //sqb.where("classId", player.ActiveClass.id);
+                //sqb.where("slot", _slot);
+                //sqb.where("page", _page);
+                //sqb.sql_delete(false);
             }
             
             player.sendPacket(new ShortCutInit(player));

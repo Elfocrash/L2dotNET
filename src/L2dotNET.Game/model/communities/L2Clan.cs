@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using L2dotNET.Game.db;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.model.structures;
@@ -189,7 +188,7 @@ namespace L2dotNET.Game.model.communities
                     File.Delete(@"crests\c" + CrestID + ".bmp");
 
                 msg = 3140; //The crest was successfully registered.
-                CrestID = IdFactory.getInstance().nextId();
+                CrestID = IdFactory.Instance.nextId();
                 try
                 {
                     FileStream fs = new FileStream(@"crests\c" + CrestID + ".bmp", FileMode.Create, FileAccess.ReadWrite);
@@ -203,18 +202,18 @@ namespace L2dotNET.Game.model.communities
                 }
             }
 
-            SQL_Block sqb = new SQL_Block("clan_data");
-            sqb.param("crestId", CrestID);
-            sqb.where("id", ClanID);
-            sqb.sql_update(false);
+            //SQL_Block sqb = new SQL_Block("clan_data");
+            //sqb.param("crestId", CrestID);
+            //sqb.where("id", ClanID);
+            //sqb.sql_update(false);
 
-            foreach (ClanMember cm in members)
-                if (cm.online == 1)
-                {
-                    cm.Target.sendSystemMessage(msg);
-                    cm.Target.sendPacket(new PledgeCrest(CrestID, picture));
-                    cm.Target.broadcastUserInfo();
-                }
+            //foreach (ClanMember cm in members)
+            //    if (cm.online == 1)
+            //    {
+            //        cm.Target.sendSystemMessage(msg);
+            //        cm.Target.sendPacket(new PledgeCrest(CrestID, picture));
+            //        cm.Target.broadcastUserInfo();
+            //    }
         }
 
         public void updateCrestLarge(int size, byte[] picture)
@@ -235,7 +234,7 @@ namespace L2dotNET.Game.model.communities
                     File.Delete(@"crests\b" + LargeCrestID + ".bmp");
 
                 msg = 3140; //The crest was successfully registered.
-                LargeCrestID = IdFactory.getInstance().nextId();
+                LargeCrestID = IdFactory.Instance.nextId();
                 try
                 {
                     FileStream fs = new FileStream(@"crests\b" + LargeCrestID + ".bmp", FileMode.Create, FileAccess.ReadWrite);
@@ -249,18 +248,18 @@ namespace L2dotNET.Game.model.communities
                 }
             }
 
-            SQL_Block sqb = new SQL_Block("clan_data");
-            sqb.param("crestBigId", LargeCrestID);
-            sqb.where("id", ClanID);
-            sqb.sql_update(false);
+            //SQL_Block sqb = new SQL_Block("clan_data");
+            //sqb.param("crestBigId", LargeCrestID);
+            //sqb.where("id", ClanID);
+            //sqb.sql_update(false);
 
-            foreach (ClanMember cm in members)
-                if (cm.online == 1)
-                {
-                    cm.Target.sendSystemMessage(msg);
-                    cm.Target.sendPacket(new ExPledgeCrestLarge(LargeCrestID, picture));
-                    cm.Target.broadcastUserInfo();
-                }
+            //foreach (ClanMember cm in members)
+            //    if (cm.online == 1)
+            //    {
+            //        cm.Target.sendSystemMessage(msg);
+            //        cm.Target.sendPacket(new ExPledgeCrestLarge(LargeCrestID, picture));
+            //        cm.Target.broadcastUserInfo();
+            //    }
         }
 
         public byte MaxMembers(e_ClanType type)
@@ -343,7 +342,7 @@ namespace L2dotNET.Game.model.communities
             player.setPenalty_ClanJoin(DateTime.Now.AddHours(24), false);
             player.sendSystemMessage(232); //+1day
 
-            player.updateDb();
+           // player.updateDb();
         }
 
         private void broadcastToOnline(GameServerNetworkPacket p)

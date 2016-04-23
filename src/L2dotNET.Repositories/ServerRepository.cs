@@ -25,5 +25,10 @@ namespace L2dotNET.Repositories
         {
             return this.db.Query<ServerModel>("select * from servers").ToList();
         }
+
+        public List<int> GetPlayersObjectIdList()
+        {
+            return this.db.Query<int>("select obj_Id from characters").ToList();
+        }
     }
 }

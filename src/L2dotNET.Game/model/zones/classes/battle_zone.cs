@@ -6,7 +6,7 @@ namespace L2dotNET.Game.model.zones.classes
     {
         public battle_zone()
         {
-            ZoneID = IdFactory.getInstance().nextId();
+            ZoneID = IdFactory.Instance.nextId();
             _enabled = true;
         }
 

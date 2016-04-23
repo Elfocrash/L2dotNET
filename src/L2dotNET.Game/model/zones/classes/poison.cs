@@ -11,7 +11,7 @@ namespace L2dotNET.Game.model.zones.classes
     {
         public poison()
         {
-            ZoneID = IdFactory.getInstance().nextId();
+            ZoneID = IdFactory.Instance.nextId();
         }
 
         public override void onInit()

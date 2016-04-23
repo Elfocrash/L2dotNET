@@ -1,21 +1,47 @@
 ﻿using System;
 using System.Data;
-using L2dotNET.Game.db;
 using MySql.Data.MySqlClient;
+using System.Collections.Generic;
+using Ninject;
+using L2dotNET.Services.Contracts;
+using System.Linq;
 
 namespace L2dotNET.Game.tables
 {
-    class IdFactory
+    sealed class IdFactory
     {
-        private static IdFactory idf = new IdFactory();
+        [Inject]
+        public IServerService serverService { get { return GameServer.Kernel.Get<IServerService>(); } }
 
-        public static IdFactory getInstance()
+        private static volatile IdFactory instance;
+        private static object syncRoot = new object();
+
+        public int id_min = 0x10000000, id_max = 0x7FFFFFFF;
+        private int currentId = 1;
+
+        public static IdFactory Instance
         {
-            return idf;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new IdFactory();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
-        public int id_min = 1, id_max = 0x7FFFFFFF;
-        protected int currentId = 1;
+        public IdFactory()
+        {
+
+        }
 
         public int nextId()
         {
@@ -23,39 +49,9 @@ namespace L2dotNET.Game.tables
             return currentId;
         }
 
-        public void init()
+        public void Initialize()
         {
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
-
-            connection.Open();
-
-            cmd.CommandText = "SELECT obj_Id FROM characters";
-            cmd.CommandType = CommandType.Text;
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                int dbnum = reader.GetInt32("obj_Id");
-
-                if (dbnum >= currentId)
-                    currentId = dbnum++;
-            }
-            reader.Close();
-
-
-            cmd.CommandText = "SELECT iobjectId FROM user_items";
-            cmd.CommandType = CommandType.Text;
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                int dbnum = reader.GetInt32("iobjectId");
-
-                if (dbnum >= currentId)
-                    currentId = dbnum++;
-            }
-            reader.Close();
-
-            connection.Close();
+            currentId = serverService.GetPlayersObjectIdList().Max();
 
             Console.WriteLine("idfactory: used ids " + currentId);
         }

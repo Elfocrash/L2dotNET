@@ -11,7 +11,7 @@ namespace L2dotNET.Game.model.zones.classes
     {
         public instant_skill()
         {
-            ZoneID = IdFactory.getInstance().nextId();
+            ZoneID = IdFactory.Instance.nextId();
         }
 
         public override void onInit()

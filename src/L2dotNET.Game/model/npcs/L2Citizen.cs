@@ -25,7 +25,7 @@ namespace L2dotNET.Game.model.npcs
         public virtual void setTemplate(NpcTemplate template)
         {
             Template = template;
-            ObjID = IdFactory.getInstance().nextId();
+            ObjID = IdFactory.Instance.nextId();
             CStatsInit();
             CharacterStat.setTemplate(template);
             CurHP = CharacterStat.getStat(skills2.TEffectType.b_max_hp);

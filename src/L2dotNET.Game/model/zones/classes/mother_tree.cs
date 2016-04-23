@@ -7,7 +7,7 @@ namespace L2dotNET.Game.model.zones.classes
     {
         public mother_tree()
         {
-            ZoneID = IdFactory.getInstance().nextId();
+            ZoneID = IdFactory.Instance.nextId();
             _enabled = true;
         }
 

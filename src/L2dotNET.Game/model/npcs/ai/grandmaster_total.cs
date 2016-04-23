@@ -1,5 +1,4 @@
-﻿using L2dotNET.Game.db;
-using L2dotNET.Game.model.communities;
+﻿using L2dotNET.Game.model.communities;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.network.l2send;
 

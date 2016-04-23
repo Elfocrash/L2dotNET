@@ -22,7 +22,7 @@ namespace L2dotNET.Game.model.playable
         public L2Summon()
         {
             ObjectSummonType = 1;
-            ObjID = IdFactory.getInstance().nextId();
+            ObjID = IdFactory.Instance.nextId();
         }
 
         public override void onAction(L2Player player)

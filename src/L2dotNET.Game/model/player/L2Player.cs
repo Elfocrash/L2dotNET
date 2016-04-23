@@ -5,7 +5,6 @@ using System.Data;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Timers;
-using L2dotNET.Game.db;
 using L2dotNET.Game.logger;
 using L2dotNET.Game.model.communities;
 using L2dotNET.Game.model.inventory;
@@ -166,7 +165,7 @@ namespace L2dotNET.Game
         public static L2Player create()
         {
             L2Player player = new L2Player();
-            player.ObjID = IdFactory.getInstance().nextId();
+            player.ObjID = IdFactory.Instance.nextId();
 
             player.Inventory = new InvPC();
             player.Inventory._owner = player;
@@ -184,7 +183,7 @@ namespace L2dotNET.Game
                 if (Summon != null)
                     Summon.unSummon();
 
-                updateDb();
+                //updateDb();
                 saveInventory();
 
                 L2World.getInstance().unrealiseEntry(this, true);
@@ -417,73 +416,73 @@ namespace L2dotNET.Game
 
         public static void restoreItems(L2Player player)
         {
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
+            //MySqlConnection connection = SQLjec.getInstance().conn();
+            //MySqlCommand cmd = connection.CreateCommand();
 
-            connection.Open();
+            //connection.Open();
 
-            cmd.CommandText = "SELECT * FROM user_items WHERE ownerId=" + player.ObjID;
-            cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "SELECT * FROM user_items WHERE ownerId=" + player.ObjID;
+            //cmd.CommandType = CommandType.Text;
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            //MySqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                int itemId = reader.GetInt32("itemId");
-                ItemTemplate template = ItemTable.getInstance().getItem(itemId);
-                if (template == null)
-                    continue;
+            //while (reader.Read())
+            //{
+            //    int itemId = reader.GetInt32("itemId");
+            //    ItemTemplate template = ItemTable.getInstance().getItem(itemId);
+            //    if (template == null)
+            //        continue;
 
-                L2Item item = new L2Item(template, true);
-                item.ObjID = reader.GetInt32("iobjectId");
-                item.Count = reader.GetInt32("icount");
-                item.Enchant = reader.GetInt16("ienchant");
-                item.AugmentationID = reader.GetInt32("iaugment");
-                item.Durability = reader.GetInt32("imana");
-                item.SetLimitedHour(reader.GetString("lifetime"));
-                item._isEquipped = reader.GetInt16("iequipped");
-                item._paperdollSlot = reader.GetInt32("iequip_data");
+            //    L2Item item = new L2Item(template, true);
+            //    item.ObjID = reader.GetInt32("iobjectId");
+            //    item.Count = reader.GetInt32("icount");
+            //    item.Enchant = reader.GetInt16("ienchant");
+            //    item.AugmentationID = reader.GetInt32("iaugment");
+            //    item.Durability = reader.GetInt32("imana");
+            //    item.SetLimitedHour(reader.GetString("lifetime"));
+            //    item._isEquipped = reader.GetInt16("iequipped");
+            //    item._paperdollSlot = reader.GetInt32("iequip_data");
 
-                string location = reader.GetString("ilocation");
-                item.Location = (L2Item.L2ItemLocation)Enum.Parse(typeof(L2Item.L2ItemLocation), location);
+            //    string location = reader.GetString("ilocation");
+            //    item.Location = (L2Item.L2ItemLocation)Enum.Parse(typeof(L2Item.L2ItemLocation), location);
 
-                switch (item.Location)
-                {
-                    case L2Item.L2ItemLocation.paperdoll:
-                    case L2Item.L2ItemLocation.inventory:
-                        {
-                            item.SlotLocation = reader.GetInt32("iloc_data");
-                            player.Inventory.Items.Add(item.ObjID, item);
-                            if (item._isEquipped == 1)
-                            {
-                                player.Inventory.setPaperdollDirect(item._paperdollSlot, item);
-                            }
-                        }
-                        break;
-                    case L2Item.L2ItemLocation.warehouse:
-                        {
-                            if (player._warehouse == null)
-                            {
-                                player._warehouse = new InvPrivateWarehouse(player);
-                            }
+            //    switch (item.Location)
+            //    {
+            //        case L2Item.L2ItemLocation.paperdoll:
+            //        case L2Item.L2ItemLocation.inventory:
+            //            {
+            //                item.SlotLocation = reader.GetInt32("iloc_data");
+            //                player.Inventory.Items.Add(item.ObjID, item);
+            //                if (item._isEquipped == 1)
+            //                {
+            //                    player.Inventory.setPaperdollDirect(item._paperdollSlot, item);
+            //                }
+            //            }
+            //            break;
+            //        case L2Item.L2ItemLocation.warehouse:
+            //            {
+            //                if (player._warehouse == null)
+            //                {
+            //                    player._warehouse = new InvPrivateWarehouse(player);
+            //                }
 
-                            player._warehouse.dbLoad(item);
-                        }
-                        break;
-                    case L2Item.L2ItemLocation.pet:
-                        {
-                            item._petId = reader.GetInt32("iloc_data");
-                            player.Inventory.Items.Add(item.ObjID, item);
-                        }
-                        break;
-                }
+            //                player._warehouse.dbLoad(item);
+            //            }
+            //            break;
+            //        case L2Item.L2ItemLocation.pet:
+            //            {
+            //                item._petId = reader.GetInt32("iloc_data");
+            //                player.Inventory.Items.Add(item.ObjID, item);
+            //            }
+            //            break;
+            //    }
 
-                //item.CustomType1 = reader.GetInt32("ict1");
-                //item.CustomType2 = reader.GetInt32("ict2");
-            }
+            //    //item.CustomType1 = reader.GetInt32("ict1");
+            //    //item.CustomType2 = reader.GetInt32("ict2");
+            //}
 
-            reader.Close();
-            connection.Close();
+            //reader.Close();
+            //connection.Close();
         }
 
         public void saveInventory()
@@ -922,10 +921,10 @@ namespace L2dotNET.Game
             sendPacket(new PlaySound("ItemSound.quest_accept"));
             sendQuestList();
 
-            SQL_Block sqb = new SQL_Block("user_quests");
-            sqb.param("ownerId", ObjID);
-            sqb.param("qid", qi.id);
-            sqb.sql_insert(false);
+            //SQL_Block sqb = new SQL_Block("user_quests");
+            //sqb.param("ownerId", ObjID);
+            //sqb.param("qid", qi.id);
+            //sqb.sql_insert(false);
         }
 
         public void ShowHtmPlain(string plain, L2Object o)
@@ -952,11 +951,11 @@ namespace L2dotNET.Game
                     qi.stage = stage;
                     sendPacket(new PlaySound("ItemSound.quest_middle"));
 
-                    SQL_Block sqb = new SQL_Block("user_quests");
-                    sqb.param("qstage", stage);
-                    sqb.where("ownerId", ObjID);
-                    sqb.where("qid", qi.id);
-                    sqb.sql_update(false);
+                    //SQL_Block sqb = new SQL_Block("user_quests");
+                    //sqb.param("qstage", stage);
+                    //sqb.where("ownerId", ObjID);
+                    //sqb.where("qid", qi.id);
+                    //sqb.sql_update(false);
                     break;
                 }
             }
@@ -1012,12 +1011,12 @@ namespace L2dotNET.Game
                         qi.completed = true;
                         qi._template = null;
 
-                        SQL_Block sqb = new SQL_Block("user_quests");
-                        sqb.param("qfin", 1);
-                        sqb.where("ownerId", ObjID);
-                        sqb.where("iclass", ActiveClass.id);
-                        sqb.where("qid", qi.id);
-                        sqb.sql_update(false);
+                        //SQL_Block sqb = new SQL_Block("user_quests");
+                        //sqb.param("qfin", 1);
+                        //sqb.where("ownerId", ObjID);
+                        //sqb.where("iclass", ActiveClass.id);
+                        //sqb.where("qid", qi.id);
+                        //sqb.sql_update(false);
                     }
                     else
                     {
@@ -1035,30 +1034,30 @@ namespace L2dotNET.Game
 
         public void db_restoreSkills()
         {
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
+            //MySqlConnection connection = SQLjec.getInstance().conn();
+            //MySqlCommand cmd = connection.CreateCommand();
 
-            connection.Open();
+            //connection.Open();
 
-            cmd.CommandText = "SELECT * FROM user_skills WHERE ownerId=" + ObjID + " AND iclass=" + ActiveClass.id;
-            cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "SELECT * FROM user_skills WHERE ownerId=" + ObjID + " AND iclass=" + ActiveClass.id;
+            //cmd.CommandType = CommandType.Text;
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            //MySqlDataReader reader = cmd.ExecuteReader();
 
-            TSkillTable st = TSkillTable.getInstance();
-            while (reader.Read())
-            {
-                int id = reader.GetInt32("id");
-                int lvl = reader.GetInt32("lvl");
-                TSkill skill = st.get(id, lvl);
-                if (skill != null)
-                {
-                    addSkill(skill, false, false);
-                }
-            }
+            //TSkillTable st = TSkillTable.getInstance();
+            //while (reader.Read())
+            //{
+            //    int id = reader.GetInt32("id");
+            //    int lvl = reader.GetInt32("lvl");
+            //    TSkill skill = st.get(id, lvl);
+            //    if (skill != null)
+            //    {
+            //        addSkill(skill, false, false);
+            //    }
+            //}
 
-            reader.Close();
-            connection.Close();
+            //reader.Close();
+            //connection.Close();
         }
 
         public override void addSkill(TSkill newsk, bool updDb, bool update)
@@ -1070,12 +1069,12 @@ namespace L2dotNET.Game
 
             if (updDb)
             {
-                SQL_Block sqb = new SQL_Block("user_skills");
-                sqb.param("ownerId", ObjID);
-                sqb.param("id", newsk.skill_id);
-                sqb.param("lvl", newsk.level);
-                sqb.param("iclass", ActiveClass.id);
-                sqb.sql_insert(false);
+                //SQL_Block sqb = new SQL_Block("user_skills");
+                //sqb.param("ownerId", ObjID);
+                //sqb.param("id", newsk.skill_id);
+                //sqb.param("lvl", newsk.level);
+                //sqb.param("iclass", ActiveClass.id);
+                //sqb.sql_insert(false);
             }
         }
 
@@ -1088,11 +1087,11 @@ namespace L2dotNET.Game
 
             if (updDb)
             {
-                SQL_Block sqb = new SQL_Block("user_skills");
-                sqb.where("ownerId", ObjID);
-                sqb.where("id", id);
-                sqb.where("iclass", ActiveClass.id);
-                sqb.sql_delete(false);
+                //SQL_Block sqb = new SQL_Block("user_skills");
+                //sqb.where("ownerId", ObjID);
+                //sqb.where("id", id);
+                //sqb.where("iclass", ActiveClass.id);
+                //sqb.sql_delete(false);
             }
         }
 
@@ -1100,11 +1099,11 @@ namespace L2dotNET.Game
         {
             if (updDb)
             {
-                SQL_Block sqb = new SQL_Block("user_quests");
-                sqb.where("ownerId", ObjID);
-                sqb.where("qid", qi.id);
-                sqb.where("iclass", ActiveClass.id);
-                sqb.sql_delete(false);
+                //SQL_Block sqb = new SQL_Block("user_quests");
+                //sqb.where("ownerId", ObjID);
+                //sqb.where("qid", qi.id);
+                //sqb.where("iclass", ActiveClass.id);
+                //sqb.sql_delete(false);
             }
 
             _quests.Remove(qi);
@@ -1114,28 +1113,28 @@ namespace L2dotNET.Game
         public InvPrivateWarehouse _warehouse;
         public void db_restoreQuests()
         {
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
+            //MySqlConnection connection = SQLjec.getInstance().conn();
+            //MySqlCommand cmd = connection.CreateCommand();
 
-            connection.Open();
+            //connection.Open();
 
-            cmd.CommandText = "SELECT qid,qstage,qfin FROM user_quests WHERE ownerId=" + ObjID + " ORDER BY tact ASC";
-            cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "SELECT qid,qstage,qfin FROM user_quests WHERE ownerId=" + ObjID + " ORDER BY tact ASC";
+            //cmd.CommandType = CommandType.Text;
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            //MySqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                int qid = reader.GetInt32("qid");
-                int stage = reader.GetInt32("qstage");
-                int fin = reader.GetInt32("qfin");
+            //while (reader.Read())
+            //{
+            //    int qid = reader.GetInt32("qid");
+            //    int stage = reader.GetInt32("qstage");
+            //    int fin = reader.GetInt32("qfin");
 
-                QuestInfo qi = new QuestInfo(qid, stage, fin);
-                _quests.Add(qi);
-            }
+            //    QuestInfo qi = new QuestInfo(qid, stage, fin);
+            //    _quests.Add(qi);
+            //}
 
-            reader.Close();
-            connection.Close();
+            //reader.Close();
+            //connection.Close();
         }
 
         public L2Item[] getAllNonQuestItems()
@@ -1225,42 +1224,42 @@ namespace L2dotNET.Game
 
             if (updDb)
             {
-                SQL_Block sqb = new SQL_Block("user_recipes");
-                sqb.param("ownerId", ObjID);
-                sqb.param("recid", newr.RecipeID);
-                sqb.param("iclass", ActiveClass.id);
-                sqb.sql_insert(false);
+                //SQL_Block sqb = new SQL_Block("user_recipes");
+                //sqb.param("ownerId", ObjID);
+                //sqb.param("recid", newr.RecipeID);
+                //sqb.param("iclass", ActiveClass.id);
+                //sqb.sql_insert(false);
             }
         }
 
         public void db_restoreRecipes()
         {
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
+            //MySqlConnection connection = SQLjec.getInstance().conn();
+            //MySqlCommand cmd = connection.CreateCommand();
 
-            connection.Open();
+            //connection.Open();
 
-            cmd.CommandText = "SELECT recid FROM user_recipes WHERE ownerId=" + ObjID + " AND iclass=" + ActiveClass.id + " ORDER BY tact ASC";
-            cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "SELECT recid FROM user_recipes WHERE ownerId=" + ObjID + " AND iclass=" + ActiveClass.id + " ORDER BY tact ASC";
+            //cmd.CommandType = CommandType.Text;
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            //MySqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                int recid = reader.GetInt32("recid");
+            //while (reader.Read())
+            //{
+            //    int recid = reader.GetInt32("recid");
 
-                L2Recipe rec = RecipeTable.getInstance().getById(recid);
-                if (rec != null)
-                {
-                    if (_recipeBook == null)
-                        _recipeBook = new List<L2Recipe>();
+            //    L2Recipe rec = RecipeTable.getInstance().getById(recid);
+            //    if (rec != null)
+            //    {
+            //        if (_recipeBook == null)
+            //            _recipeBook = new List<L2Recipe>();
 
-                    _recipeBook.Add(rec);
-                }
-            }
+            //        _recipeBook.Add(rec);
+            //    }
+            //}
 
-            reader.Close();
-            connection.Close();
+            //reader.Close();
+            //connection.Close();
         }
 
         public void unregisterRecipe(L2Recipe rec, bool updDb)
@@ -1276,22 +1275,22 @@ namespace L2dotNET.Game
                     {
                         if (updDb)
                         {
-                            MySqlConnection connection = SQLjec.getInstance().conn();
-                            MySqlCommand cmd = connection.CreateCommand();
+                            //MySqlConnection connection = SQLjec.getInstance().conn();
+                            //MySqlCommand cmd = connection.CreateCommand();
 
-                            connection.Open();
+                            //connection.Open();
 
-                            string query = string.Format(
-                                "DELETE FROM user_recipes WHERE ownerId='{0}' AND recid='{1}' AND iclass='{2}'",
-                                ObjID,
-                                r.RecipeID,
-                                ActiveClass.id);
+                            //string query = string.Format(
+                            //    "DELETE FROM user_recipes WHERE ownerId='{0}' AND recid='{1}' AND iclass='{2}'",
+                            //    ObjID,
+                            //    r.RecipeID,
+                            //    ActiveClass.id);
 
-                            cmd.CommandText = query;
-                            cmd.CommandType = CommandType.Text;
-                            cmd.ExecuteNonQuery();
+                            //cmd.CommandText = query;
+                            //cmd.CommandType = CommandType.Text;
+                            //cmd.ExecuteNonQuery();
 
-                            connection.Close();
+                            //connection.Close();
                         }
 
                         _recipeBook.Remove(r);
@@ -1332,12 +1331,12 @@ namespace L2dotNET.Game
                     {
                         _shortcuts.Remove(sc);
 
-                        SQL_Block sqb = new SQL_Block("user_shortcuts");
-                        sqb.where("ownerId", ObjID);
-                        sqb.where("classId", ActiveClass.id);
-                        sqb.where("slot", _slot);
-                        sqb.where("page", _page);
-                        sqb.sql_delete(false);
+                        //SQL_Block sqb = new SQL_Block("user_shortcuts");
+                        //sqb.where("ownerId", ObjID);
+                        //sqb.where("classId", ActiveClass.id);
+                        //sqb.where("slot", _slot);
+                        //sqb.where("page", _page);
+                        //sqb.sql_delete(false);
                         break;
                     }
                 }
@@ -1356,16 +1355,16 @@ namespace L2dotNET.Game
 
                 sendPacket(new ShortCutRegister(sc));
 
-                SQL_Block sqb = new SQL_Block("user_shortcuts");
-                sqb.param("ownerId", ObjID);
-                sqb.param("classId", ActiveClass.id);
-                sqb.param("slot", _slot);
-                sqb.param("page", _page);
-                sqb.param("type", _type);
-                sqb.param("id", _id);
-                sqb.param("lvl", _level);
-                sqb.param("cha", _characterType);
-                sqb.sql_insert(false);
+                //SQL_Block sqb = new SQL_Block("user_shortcuts");
+                //sqb.param("ownerId", ObjID);
+                //sqb.param("classId", ActiveClass.id);
+                //sqb.param("slot", _slot);
+                //sqb.param("page", _page);
+                //sqb.param("type", _type);
+                //sqb.param("id", _id);
+                //sqb.param("lvl", _level);
+                //sqb.param("cha", _characterType);
+                //sqb.sql_insert(false);
             }
         }
 
@@ -1417,21 +1416,6 @@ namespace L2dotNET.Game
         public override string asString()
         {
             return "L2Player:" + Name;
-        }
-
-        public void updateDb()
-        {
-            //SQL_Block sqb = new SQL_Block("user_data");
-            //sqb.param("locx", X);
-            //sqb.param("locy", Y);
-            //sqb.param("locz", Z);
-            //sqb.param("loch", Heading);
-            //sqb.param("clanId", ClanId);
-            //sqb.param("clanType", ClanType);
-            //sqb.param("clanPrivs", ClanPrivs);
-
-            //sqb.where("objId", ObjID);
-            //sqb.sql_update(false);
         }
 
         public override void onRemObject(L2Object obj)
@@ -1509,63 +1493,36 @@ namespace L2dotNET.Game
             if (insrestored)
                 return;
 
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
+            //MySqlConnection connection = SQLjec.getInstance().conn();
+            //MySqlCommand cmd = connection.CreateCommand();
 
-            connection.Open();
+            //connection.Open();
 
-            cmd.CommandText = "SELECT * FROM user_instances WHERE ownerId=" + ObjID + "";
-            cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "SELECT * FROM user_instances WHERE ownerId=" + ObjID + "";
+            //cmd.CommandType = CommandType.Text;
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            //MySqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                string name = reader.GetString("name");
-                int id = reader.GetInt32("instanceId");
-                string time = reader.GetString("disabledTo");
+            //while (reader.Read())
+            //{
+            //    string name = reader.GetString("name");
+            //    int id = reader.GetInt32("instanceId");
+            //    string time = reader.GetString("disabledTo");
 
-                DateTime dt = DateTime.Parse(time);
-                if (dt.CompareTo(DateTime.Now) == 1)
-                {
-                    db_InstanceReuse db = new db_InstanceReuse();
-                    db.dt = dt;
-                    db.id = id;
-                    db.name = name;
-                    InstanceReuse.Add(id, db);
-                }
-            }
+            //    DateTime dt = DateTime.Parse(time);
+            //    if (dt.CompareTo(DateTime.Now) == 1)
+            //    {
+            //        db_InstanceReuse db = new db_InstanceReuse();
+            //        db.dt = dt;
+            //        db.id = id;
+            //        db.name = name;
+            //        InstanceReuse.Add(id, db);
+            //    }
+            //}
 
-            reader.Close();
-            connection.Close();
+            //reader.Close();
+            //connection.Close();
             insrestored = true;
-        }
-
-        public void db_saveInstanceReuse()
-        {
-            {
-                SQL_Block sqb = new SQL_Block("user_instances");
-                sqb.where("ownerId", ObjID);
-                sqb.sql_delete(false);
-            }
-
-            {
-                foreach (db_InstanceReuse db in InstanceReuse.Values)
-                {
-                    SQL_Block sqb = new SQL_Block("user_instances");
-                    sqb.on();
-                    if (db.dt.CompareTo(DateTime.Now) == 1)
-                    {
-                        sqb.param("ownerId", ObjID);
-                        sqb.param("name", db.name);
-                        sqb.param("instanceId", db.id);
-                        sqb.param("disabledTo", db.dt.ToString("yyyy-MM-dd HH-mm-ss"));
-                        sqb.sql_insert(true);
-                    }
-
-                    sqb.off();
-                }
-            }
         }
 
         public void ShowHtmAdmin(string val, bool plain)
@@ -1911,10 +1868,7 @@ namespace L2dotNET.Game
 
             if (sql)
             {
-                //SQL_Block sqb = new SQL_Block("user_data");
-                //sqb.param("penalty_clancreate", Penalty_ClanCreate);
-                //sqb.where("objId", ObjID);
-                //sqb.sql_update(false);
+               
             }
         }
 
@@ -1927,10 +1881,7 @@ namespace L2dotNET.Game
 
             if (sql)
             {
-                //SQL_Block sqb = new SQL_Block("user_data");
-                //sqb.param("penalty_clanjoin", Penalty_ClanJoin);
-                //sqb.where("objId", ObjID);
-                //sqb.sql_update(false);
+               
             }
         }
 
@@ -1960,62 +1911,62 @@ namespace L2dotNET.Game
             if (TelbookLimit == 0)
                 return;
 
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
+            //MySqlConnection connection = SQLjec.getInstance().conn();
+            //MySqlCommand cmd = connection.CreateCommand();
 
-            connection.Open();
+            //connection.Open();
 
-            cmd.CommandText = "SELECT * FROM user_telbooks WHERE ownerId=" + ObjID;
-            cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "SELECT * FROM user_telbooks WHERE ownerId=" + ObjID;
+            //cmd.CommandType = CommandType.Text;
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            //MySqlDataReader reader = cmd.ExecuteReader();
 
-            Telbook = new TeleportBook();
-            while (reader.Read())
-            {
-                TelBook_Mark mark = new TelBook_Mark();
-                mark.id = (byte)reader.GetInt16("id");
-                mark.x = reader.GetInt32("locx");
-                mark.y = reader.GetInt32("locy");
-                mark.z = reader.GetInt32("locz");
-                mark.icon = reader.GetInt32("icon");
-                mark.name = reader.GetString("name");
-                mark.tag = reader.GetString("tag");
+            //Telbook = new TeleportBook();
+            //while (reader.Read())
+            //{
+            //    TelBook_Mark mark = new TelBook_Mark();
+            //    mark.id = (byte)reader.GetInt16("id");
+            //    mark.x = reader.GetInt32("locx");
+            //    mark.y = reader.GetInt32("locy");
+            //    mark.z = reader.GetInt32("locz");
+            //    mark.icon = reader.GetInt32("icon");
+            //    mark.name = reader.GetString("name");
+            //    mark.tag = reader.GetString("tag");
 
-                Telbook.bookmarks.Add(mark.id, mark);
-            }
+            //    Telbook.bookmarks.Add(mark.id, mark);
+            //}
 
-            reader.Close();
-            connection.Close();
+            //reader.Close();
+            //connection.Close();
         }
 
         public void db_restoreShortcuts()
         {
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
+            //MySqlConnection connection = SQLjec.getInstance().conn();
+            //MySqlCommand cmd = connection.CreateCommand();
 
-            connection.Open();
+            //connection.Open();
 
-            cmd.CommandText = "SELECT * FROM user_shortcuts WHERE ownerId=" + ObjID + " and classId=" + ActiveClass.id;
-            cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "SELECT * FROM user_shortcuts WHERE ownerId=" + ObjID + " and classId=" + ActiveClass.id;
+            //cmd.CommandType = CommandType.Text;
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            //MySqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                L2Shortcut sc = new L2Shortcut();
-                sc._slot = reader.GetInt32("slot");
-                sc._page = reader.GetInt32("page");
-                sc._type = reader.GetInt32("type");
-                sc._id = reader.GetInt32("id");
-                sc._level = reader.GetInt32("lvl");
-                sc._characterType = reader.GetInt32("cha");
+            //while (reader.Read())
+            //{
+            //    L2Shortcut sc = new L2Shortcut();
+            //    sc._slot = reader.GetInt32("slot");
+            //    sc._page = reader.GetInt32("page");
+            //    sc._type = reader.GetInt32("type");
+            //    sc._id = reader.GetInt32("id");
+            //    sc._level = reader.GetInt32("lvl");
+            //    sc._characterType = reader.GetInt32("cha");
 
-                _shortcuts.Add(sc);
-            }
+            //    _shortcuts.Add(sc);
+            //}
 
-            reader.Close();
-            connection.Close();
+            //reader.Close();
+            //connection.Close();
         }
 
         public void ReduceSouls(byte count)
@@ -2162,7 +2113,7 @@ namespace L2dotNET.Game
             pet.setTemplate(NpcTable.getInstance().getNpcTemplate(PetID));
             pet.setOwner(this);
             pet.ControlItem = PetControlItem;
-            pet.sql_restore();
+           // pet.sql_restore();
             pet.SpawmMe();
 
             petSummonTime.Enabled = false;

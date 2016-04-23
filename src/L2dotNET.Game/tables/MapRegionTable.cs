@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using L2dotNET.Game.db;
 using L2dotNET.Game.logger;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
@@ -26,50 +25,50 @@ namespace L2dotNET.Game.tables
             for (byte a = 0; a < shiftX; a++)
                 RegionMap[a] = new byte[shiftY];
 
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
+            //MySqlConnection connection = SQLjec.getInstance().conn();
+            //MySqlCommand cmd = connection.CreateCommand();
 
-            connection.Open();
+            //connection.Open();
 
-            cmd.CommandText = "SELECT * FROM world_mapregion";
-            cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "SELECT * FROM world_mapregion";
+            //cmd.CommandType = CommandType.Text;
 
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                short region = reader.GetInt16("region");
+            //MySqlDataReader reader = cmd.ExecuteReader();
+            //while (reader.Read())
+            //{
+            //    short region = reader.GetInt16("region");
 
-                for (byte a = 0; a < shiftX; a++)
-                {
-                    short regId = reader.GetInt16("sec" + (a + 11));
-                    RegionMap[a][region - 8] = (byte)regId;
-                }
-            }
+            //    for (byte a = 0; a < shiftX; a++)
+            //    {
+            //        short regId = reader.GetInt16("sec" + (a + 11));
+            //        RegionMap[a][region - 8] = (byte)regId;
+            //    }
+            //}
 
-            reader.Close();
+            //reader.Close();
 
-            _regions = new SortedList<short, RegionID>();
-            cmd = connection.CreateCommand();
+            //_regions = new SortedList<short, RegionID>();
+            //cmd = connection.CreateCommand();
 
-            cmd.CommandText = "SELECT * FROM world_mapid";
-            cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "SELECT * FROM world_mapid";
+            //cmd.CommandType = CommandType.Text;
 
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                RegionID reg = new RegionID();
-                reg.id = reader.GetInt16("regionId");
-                reg.name = reader.GetString("name");
-                reg.sysId = reader.GetInt32("sysId");
-                reg.castleId = reader.GetInt16("districtId");
-                reg.bbsId = reader.GetInt16("bbs");
-                reg.townId = reader.GetInt16("townId");
+            //reader = cmd.ExecuteReader();
+            //while (reader.Read())
+            //{
+            //    RegionID reg = new RegionID();
+            //    reg.id = reader.GetInt16("regionId");
+            //    reg.name = reader.GetString("name");
+            //    reg.sysId = reader.GetInt32("sysId");
+            //    reg.castleId = reader.GetInt16("districtId");
+            //    reg.bbsId = reader.GetInt16("bbs");
+            //    reg.townId = reader.GetInt16("townId");
 
-                _regions.Add(reg.id, reg);
-            }
+            //    _regions.Add(reg.id, reg);
+            //}
 
-            reader.Close();
-            connection.Close();
+            //reader.Close();
+            //connection.Close();
 
             RegionRespawns = new SortedList<short, ZoneRespawn>();
             StreamReader sr = new StreamReader(new FileInfo(@"scripts\zone_respawn.txt").FullName);
