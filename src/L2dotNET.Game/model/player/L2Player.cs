@@ -39,41 +39,68 @@ namespace L2dotNET.Game
     [Synchronization]
     public partial class L2Player : L2Character
     {
-        public ClassId _classId;
-        public L2PartyRoom PartyRoom;
-        public L2Party Party;
-        public byte Sex;
-        public int HairStyle;
-        public int HairColor;
-        public int Face;
-        public bool _whisperBlock = false;
-        public GameClient Gameclient;
-        public long Exp;
-        public long ExpOnDeath = 0;
-        public long ExpAfterLogin = 0;
-        public int SP;
-        public int Karma = 0;
-        public int PvpCount;
-        public int PkCount;
-        public int _eval;
-        public int _recHave;
-        public int _slotId;
-        public int death_penalty_level = 0;
-        public int CurrentWeight = 0;
-        public double _collRadius3;
-        public double _collHeight;
-        public DateTime lastMailTime = DateTime.Now;
-        public int TalismanActive = 0;
-        public int CloakStatus = 1; //debug
-        public int CursedWeaponLevel = 0;
-        public int Vitality = 0;
-        public short LastAccountSelection = 0;
-        public List<int> CashShopRecent = new List<int>();
-
         [Inject]
         public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
 
-        public L2Player restore(int id, GameClient client)
+
+        public string AccountName { get; set; }
+        public ClassId ClassId { get; set; }
+        public L2PartyRoom PartyRoom { get; set; }
+        public L2Party Party { get; set; }
+        public byte Sex { get; set; }
+        public int HairStyle { get; set; }
+        public int HairColor { get; set; }
+        public int Face { get; set; }
+        private bool _whisperBlock = false;
+        public bool WhieperBlock { get { return _whisperBlock; } set { _whisperBlock = value; } }
+        public GameClient Gameclient { get; set; }
+        public long Exp { get; set; }
+        private long expOnDeath = 0;
+        public long ExpOnDeath { get { return expOnDeath; } set { expOnDeath = value; } }
+        private long expAfterLogin = 0;
+        public long ExpAfterLogin { get { return expOnDeath; } set { expOnDeath = value; } }
+        public int SP { get; set; }
+        public int MaxCp { get; set; }
+        public double CurCp { get; set; }
+        public int MaxMp { get; set; }
+        public double CurMp { get; set; }
+        public int Karma = 0;
+        public int PvpKills { get; set; }
+        public int Race { get; set; }
+        public long DeleteTime { get; set; }
+        public int CanCraft { get; set; }
+        public int PkKills { get; set; }
+        public int RecLeft { get; set; }
+        public int RecHave { get; set; }
+        public int AccessLevel { get; set; }
+        public int Online { get; set; }
+        public int OnlineTime { get; set; }
+        public int CharSlot { get; set; }
+        public int DeathPenaltyLevel { get; set; }
+        public int CurrentWeight { get; set; }
+        public double CollRadius { get; set; }
+        public double CollHeight { get; set; }
+        public int CursedWeaponLevel { get; set; }
+        public short LastAccountSelection { get; set; }
+        public long LastAccess { get; set; }
+        public int ClanPrivs { get; set; }
+        public int WantsPeace { get; set; }
+        public int IsIn7sDungeon { get; set; }
+        public int PunishLevel { get; set; }
+        public int PunishTimer { get; set; }
+        public int PowerGrade { get; set; }
+        public int Nobless { get; set; }
+        public int Hero { get; set; }
+        public int Subpledge { get; set; }
+        public long LastRecomDate { get; set; }
+        public int LevelJoinedAcademy { get; set; }
+        public int Apprentice { get; set; }
+        public int Sponsor { get; set; }
+        public int VarkaKetraAlly { get; set; }
+        public long ClanJoinExpiryTime { get; set; }
+        public int ClanCreateExpiryTime { get; set; }
+
+        public L2Player RestorePlayer(int id, GameClient client)
         {
             L2Player player = new L2Player();
             player.ObjID = id;
@@ -104,19 +131,19 @@ namespace L2dotNET.Game
 
             player.SP = playerModel.Sp;
             player.Karma = playerModel.Karma;
-            player.PvpCount = playerModel.PvpKills;
-            player.PkCount = playerModel.PkKills;
+            player.PvpKills = playerModel.PvpKills;
+            player.PkKills = playerModel.PkKills;
             byte bclass = (byte)playerModel.BaseClass;
             byte aclass = (byte)playerModel.ClassId;
 
             player.BaseClass = PClassess.getInstance().getTemplate(bclass);
             player.ActiveClass = PClassess.getInstance().getTemplate(aclass);
 
-            player._eval = playerModel.RecLeft;
-            player._recHave = playerModel.RecHave;
+            player.RecLeft = playerModel.RecLeft;
+            player.RecHave = playerModel.RecHave;
 
-            player._slotId = playerModel.CharSlot;
-            player.death_penalty_level = playerModel.DeathPenaltyLevel;
+            player.CharSlot = playerModel.CharSlot;
+            player.DeathPenaltyLevel = playerModel.DeathPenaltyLevel;
             player.ClanId = playerModel.ClanId;
             player.ClanPrivs = playerModel.ClanPrivs;
 
@@ -162,50 +189,6 @@ namespace L2dotNET.Game
 
                 L2World.getInstance().unrealiseEntry(this, true);
             }
-        }
-
-        public void sql_create()
-        {
-            MySqlConnection connection = SQLjec.getInstance().conn();
-
-            MySqlCommand cmd = connection.CreateCommand();
-
-            connection.Open();
-
-            string query = string.Format(
-                "INSERT INTO user_data (account,objId,pname,ptitle,plevel,pCurHp,pMaxHp,pCurMp,pMaxMp,pCurCp,pMaxCp,pface,pHairStyle,pHairColor,pSex,locx,locy,locz,pBaseClass,pActiveClass,slotId) " +
-                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}','{20}')",
-                Gameclient.AccountName,
-                ObjID,
-                Name,
-                Title,
-                Level,
-                (int)CurHP,
-                (int)CharacterStat.getStat(TEffectType.b_max_hp),
-                (int)CurMP,
-                (int)CharacterStat.getStat(TEffectType.b_max_mp),
-                (int)CurCP,
-                (int)CharacterStat.getStat(TEffectType.b_max_cp),
-                Face,
-                HairStyle,
-                HairColor,
-                Sex,
-                X,
-                Y,
-                Z,
-                BaseClass.id,
-                ActiveClass.id,
-                _slotId);
-
-
-            cmd.CommandText = query;
-            cmd.CommandType = CommandType.Text;
-            cmd.ExecuteNonQuery();
-
-            connection.Close();
-
-
-            Console.WriteLine("l2player: created user " + Name + ".");
         }
 
         public int getPaperdollObjectId(int p)
@@ -1518,7 +1501,6 @@ namespace L2dotNET.Game
         public int TeleportPayID;
         public int LastMinigameScore;
         public short ClanType;
-        public int ClanPrivs;
         public int Fame;
 
 
@@ -1675,25 +1657,6 @@ namespace L2dotNET.Game
                     sendPacket(new EtcStatusUpdate(this));
                 }
             }
-        }
-
-        public void setVitality(int val)
-        {
-            int max_vital = 20000;
-            if (val >= max_vital)
-                val = max_vital;
-
-            Vitality = val;
-        }
-
-        public int VitalityLevel()
-        {
-            if (Vitality > 20000) return 0;
-            else if (Vitality >= 17000) return 4;	//300%
-            else if (Vitality >= 13000) return 3;	//250%
-            else if (Vitality >= 2000) return 2;	//200%
-            else if (Vitality >= 240) return 1;	//150%
-            else return 0;
         }
 
         public bool CheckFreeWeight(int weight)

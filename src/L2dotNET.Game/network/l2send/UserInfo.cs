@@ -147,8 +147,8 @@ namespace L2dotNET.Game.network.l2send
             writeC(player.MountType);
             writeC(player.getPrivateStoreType());//
             writeC(player.p_create_item > 0 ? 1 : 0);
-            writeD(player.PkCount);
-            writeD(player.PvpCount);
+            writeD(player.PkKills);
+            writeD(player.PvpKills);
 
             writeH(player.cubics.Count);
             foreach (Cubic cub in player.cubics)
@@ -167,8 +167,8 @@ namespace L2dotNET.Game.network.l2send
 
             writeD(player.ClanPrivs);
 
-            writeH(player._recHave); //c2  recommendations remaining
-            writeH(player._eval); //c2  recommendations received
+            writeH(player.RecHave); //c2  recommendations remaining
+            writeH(player.RecLeft); //c2  recommendations received
             writeD(player.MountType > 0 ? player.MountedTemplate.NpcId + 1000000 : 0);//moun t npcid
             writeH(player.ItemLimit_Inventory);
 

@@ -54,7 +54,7 @@ namespace L2dotNET.Game.ai.npcai
         {
             if (talker.Level >= minLv && talker.Level <= maxLv)
             {
-                if (talker.death_penalty_level > 0)
+                if (talker.DeathPenaltyLevel > 0)
                 {
                     if (talker.hasItem(@adena, cost))
                     {

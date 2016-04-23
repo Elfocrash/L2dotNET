@@ -76,16 +76,6 @@ namespace L2dotNET.Game.tables
             player.sendPacket(new ExBR_ProductList(_items.Values));
         }
 
-        public void showRecentList(L2Player player)
-        {
-            List<CashShopItem> recent = new List<CashShopItem>();
-            foreach (int id in player.CashShopRecent)
-                if (_items.ContainsKey(id))
-                    recent.Add(_items[id]);
-
-            player.sendPacket(new ExBR_RecentProductList(recent));
-        }
-
         public void requestBuyItem(L2Player player, int clientID, int count)
         {
             if (count > MAX_BUY_COUNT)
@@ -131,8 +121,6 @@ namespace L2dotNET.Game.tables
             player.Inventory.addItem(item.Template.Item, count, 0, true, true);
             sendResult(player, BR_BUY_SUCCESS);
 
-            if (!player.CashShopRecent.Contains(item.Template.ClientID))
-                player.CashShopRecent.Add(item.Template.ClientID);
         }
     }
 

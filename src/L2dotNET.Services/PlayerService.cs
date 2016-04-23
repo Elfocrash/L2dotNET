@@ -22,5 +22,15 @@ namespace L2dotNET.Services
         {
             return this.unitOfWork.PlayerRepository.GetAccountByLogin(objId);
         }
+
+        public bool CheckIfPlayerNameExists(string name)
+        {
+            return this.unitOfWork.PlayerRepository.CheckIfPlayerNameExists(name);
+        }
+
+        public void CreatePlayer(PlayerModel player)
+        {
+            this.unitOfWork.PlayerRepository.CreatePlayer(player);
+        }
     }
 }

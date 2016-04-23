@@ -167,13 +167,6 @@ namespace L2dotNET.Game.network.l2recv
                 return;
             }
 
-            if (player.lastMailTime.CompareTo(DateTime.Now) == 1)
-            {
-                player.sendSystemMessage(2969); //The previous mail was forwarded less than 1 minute ago and this cannot be forwarded.
-                player.sendActionFailed();
-                return;
-            }
-
             long fee = MESSAGE_FEE;
 
             if (player.getAdena() < fee)

@@ -47,8 +47,8 @@ namespace L2dotNET.Game.network.l2recv
                 int slot = 0;
                 foreach (int id in players)
                 {
-                    L2Player p = new L2Player().restore(id, getClient());
-                    p._slotId = slot; slot++;
+                    L2Player p = new L2Player().RestorePlayer(id, getClient());
+                    p.CharSlot = slot; slot++;
                     Client._accountChars.Add(p);
                 }
 

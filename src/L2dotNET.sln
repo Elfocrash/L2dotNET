@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Services", "L2dotN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Models", "L2dotNET.Models\L2dotNET.Models.csproj", "{89E4EEF5-7121-435C-817F-1CD8D595F72A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Tests", "L2dotNET.Tests\L2dotNET.Tests.csproj", "{71C1A938-1600-4A42-9A1C-6D1FBB0F7E16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,14 @@ Global
 		{89E4EEF5-7121-435C-817F-1CD8D595F72A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89E4EEF5-7121-435C-817F-1CD8D595F72A}.Release|x86.ActiveCfg = Release|Any CPU
 		{89E4EEF5-7121-435C-817F-1CD8D595F72A}.Release|x86.Build.0 = Release|Any CPU
+		{71C1A938-1600-4A42-9A1C-6D1FBB0F7E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C1A938-1600-4A42-9A1C-6D1FBB0F7E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C1A938-1600-4A42-9A1C-6D1FBB0F7E16}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{71C1A938-1600-4A42-9A1C-6D1FBB0F7E16}.Debug|x86.Build.0 = Debug|Any CPU
+		{71C1A938-1600-4A42-9A1C-6D1FBB0F7E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C1A938-1600-4A42-9A1C-6D1FBB0F7E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71C1A938-1600-4A42-9A1C-6D1FBB0F7E16}.Release|x86.ActiveCfg = Release|Any CPU
+		{71C1A938-1600-4A42-9A1C-6D1FBB0F7E16}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

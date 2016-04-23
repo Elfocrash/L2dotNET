@@ -230,7 +230,7 @@ namespace L2dotNET.Game.geo
 
         public bool canSeeCoord(L2Player actor, int tx, int ty, int tz, bool debug)
         {
-            return actor != null && canSeeCoord(actor.X, actor.Y, actor.Z + (int)actor._collHeight + 64, tx, ty, tz, debug);
+            return actor != null && canSeeCoord(actor.X, actor.Y, actor.Z + (int)actor.CollHeight + 64, tx, ty, tz, debug);
         }
 
         public bool canSeeCoord(int x, int y, int z, int tx, int ty, int tz, bool debug)

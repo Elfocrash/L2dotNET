@@ -10,5 +10,9 @@ namespace L2dotNET.Services.Contracts
     public interface IPlayerService
     {
         PlayerModel GetAccountByLogin(int objId);
+
+        bool CheckIfPlayerNameExists(string name);
+
+        void CreatePlayer(PlayerModel player);
     }
 }

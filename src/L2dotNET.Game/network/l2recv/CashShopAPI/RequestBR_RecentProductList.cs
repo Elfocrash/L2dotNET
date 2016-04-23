@@ -16,7 +16,7 @@ namespace L2dotNET.Game.network.l2recv
 
         public override void run()
         {
-            CashShop.getInstance().showRecentList(Client.CurrentPlayer);
+           // CashShop.getInstance().showRecentList(Client.CurrentPlayer);
         }
     }
 }

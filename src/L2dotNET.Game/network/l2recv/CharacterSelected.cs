@@ -34,7 +34,7 @@ namespace L2dotNET.Game.network.l2recv
             L2Player pl = null;
             foreach (L2Player player in getClient()._accountChars)
             {
-                if (player._slotId == _charSlot)
+                if (player.CharSlot == _charSlot)
                 {
                     pl = player;
                     break;

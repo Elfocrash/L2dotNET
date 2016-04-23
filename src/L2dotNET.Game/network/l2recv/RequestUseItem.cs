@@ -52,7 +52,7 @@ namespace L2dotNET.Game.network.l2recv
                     {
                         if (item._isEquipped == 0)
                         {
-                            if (!item.Template.canEquipChaotic(player.PkCount))
+                            if (!item.Template.canEquipChaotic(player.PkKills))
                             {
                                 //You are unable to equip this item when your PK count is greater than or equal to one.
                                 player.sendSystemMessage(1685);

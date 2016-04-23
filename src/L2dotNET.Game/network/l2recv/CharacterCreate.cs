@@ -7,11 +7,18 @@ using L2dotNET.Game.model.player;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables;
 using MySql.Data.MySqlClient;
+using L2dotNET.Services.Contracts;
+using Ninject;
+using L2dotNET.Models;
+using L2dotNET.Game.model.skills2;
 
 namespace L2dotNET.Game.network.l2recv
 {
     class CharacterCreate : GameServerNetworkRequest
     {
+        [Inject]
+        public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
+
         public CharacterCreate(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -62,23 +69,7 @@ namespace L2dotNET.Game.network.l2recv
                 return;
             }
 
-            MySqlConnection connection = SQLjec.getInstance().conn();
-            MySqlCommand cmd = connection.CreateCommand();
-
-            connection.Open();
-
-            cmd.CommandText = "SELECT count(*) FROM user_data WHERE pname = '" + _name + "'";
-            cmd.CommandType = CommandType.Text;
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-            bool exists = false;
-            while (reader.Read())
-            {
-                exists = reader.GetInt32(0) > 0;
-            }
-
-            reader.Close();
-            connection.Close();
+            bool exists = playerService.CheckIfPlayerNameExists(_name);
 
             if (exists)
             {
@@ -95,7 +86,8 @@ namespace L2dotNET.Game.network.l2recv
 
             L2Player player = L2Player.create();
             player.Name = _name;
-
+            player.AccountName = getClient().AccountName;
+            player.Title = "";
             player.Sex = _sex;
             player.BaseClass = template;
             player.ActiveClass = template;
@@ -103,13 +95,16 @@ namespace L2dotNET.Game.network.l2recv
             player.HairStyle = _hairStyle;
             player.HairColor = _hairColor;
             player.Face = _face;
-
+            player.Level = 1;
             player.Gameclient = getClient();
 
             player.Exp = 0;
             player.CurHP = template._hp[player.Level];
             player.CurMP = template._mp[player.Level];
             player.CurCP = template._cp[player.Level];
+            //player.MaximumHp = template._hp[player.Level];
+            player.MaxMp = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
+            player.MaxCp = (int)player.CharacterStat.getStat(TEffectType.b_max_cp);
 
             player.X = -71338;
             player.Y = 258271;
@@ -149,10 +144,68 @@ namespace L2dotNET.Game.network.l2recv
                 }
             }
 
-            player._slotId = player.Gameclient._accountChars.Count + 1;
-            player.sql_create();
-            player.Gameclient._accountChars.Add(player);
+            player.CharSlot = player.Gameclient._accountChars.Count + 1;
 
+            PlayerModel playerModel = new PlayerModel()
+            {
+                AccountName = player.AccountName,
+                ObjectId = player.ObjID,
+                Name = player.Name,
+                Level = player.Level,
+                MaxHp = (int)player.MaximumHp,
+                CurHp = (int)player.MaximumHp,
+                MaxCp = player.MaxCp,
+                CurCp = player.MaxCp,
+                MaxMp = player.MaxMp,
+                CurMp = (int)player.CurMp,
+                Face = player.Face,
+                HairStyle = player.HairStyle,
+                HairColor = player.HairColor,
+                Sex = player.Sex,
+                Heading = player.Heading,
+                X = player.X,
+                Y = player.Y,
+                Z = player.Z,
+                Exp = player.Exp,
+                ExpBeforeDeath = player.ExpOnDeath,
+                Sp = player.SP,
+                Karma = player.Karma,
+                PvpKills = player.PvpKills,
+                PkKills = player.PkKills,
+                ClanId = player.ClanId,
+                Race = player.BaseClass.race,
+                ClassId = (int)player.ClassId,
+                BaseClass = player.BaseClass.id,
+                DeleteTime = player.DeleteTime,
+                CanCraft = player.CanCraft,
+                Title = player.Title,
+                RecHave = player.RecHave,
+                RecLeft = player.RecLeft,
+                AccessLevel = player.AccessLevel,
+                Online = player.Online,
+                OnlineTime = player.OnlineTime,
+                CharSlot = player.CharSlot,
+                LastAccess = player.LastAccess,
+                ClanPrivs = player.ClanPrivs,
+                WantsPeace = player.WantsPeace,
+                IsIn7sDungeon = player.IsIn7sDungeon,
+                PunishLevel = player.PunishLevel,
+                PunishTimer = player.PunishTimer,
+                PowerGrade = player.PowerGrade,
+                Nobless = player.Nobless,
+                Hero = player.Hero,
+                Subpledge = player.Subpledge,
+                LastRecomDate = player.LastRecomDate,
+                LevelJoinedAcademy = player.LevelJoinedAcademy,
+                Apprentice = player.Apprentice,
+                Sponsor = player.Sponsor,
+                VarkaKetraAlly = player.VarkaKetraAlly,
+                ClanJoinExpiryTime = player.ClanJoinExpiryTime,
+                ClanCreateExpiryTime = player.ClanCreateExpiryTime,
+                DeathPenaltyLevel = player.DeathPenaltyLevel
+            };
+            playerService.CreatePlayer(playerModel);
+            player.Gameclient._accountChars.Add(player);
             getClient().sendPacket(new CharCreateOk());
             CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars, getClient()._sessionId);
             csl.charId = player.ObjID;

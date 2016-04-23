@@ -130,7 +130,7 @@ namespace L2dotNET.Game.network.l2recv
                         }
                         else
                         {
-                            if (target._whisperBlock)
+                            if (target.WhieperBlock)
                             {
                                 //That person is in message refusal mode.
                                 player.sendSystemMessage(176);

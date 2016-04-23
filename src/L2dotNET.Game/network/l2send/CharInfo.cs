@@ -132,7 +132,7 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.AbnormalBitMask);
 
             writeC(0); //_activeChar.isFlyingMounted() ? 2 : 0);
-            writeH(player._recHave);
+            writeH(player.RecHave);
             writeD(player.ActiveClass.id);
 
             writeD(player.CurrentCP);//max cp here

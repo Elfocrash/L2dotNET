@@ -19,10 +19,10 @@ namespace L2dotNET.Game.network.l2send
         {
             _force = player.getForceIncreased();
             _weight = player._penaltyWeight;
-            _whisper = player._whisperBlock ? 1 : 0;
+            _whisper = player.WhieperBlock ? 1 : 0;
             _danger = player.isInDanger ? 1 : 0;
             _grade = player._penalty_grade;
-            _death = player.death_penalty_level;
+            _death = player.DeathPenaltyLevel;
             _souls = player.Souls;
         }
 

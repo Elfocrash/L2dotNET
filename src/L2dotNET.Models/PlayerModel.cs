@@ -92,7 +92,7 @@ namespace L2dotNET.Models
 
         public int PunishLevel { get; set; }
 
-        public int PunichTimer { get; set; }
+        public int PunishTimer { get; set; }
 
         public int PowerGrade { get; set; }
 

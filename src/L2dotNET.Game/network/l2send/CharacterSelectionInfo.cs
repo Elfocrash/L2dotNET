@@ -53,8 +53,8 @@ namespace L2dotNET.Game.network.l2send
 
                 writeD(player.Level);
                 writeD(player.Karma);
-                writeD(player.PkCount);
-                writeD(player.PvpCount);
+                writeD(player.PkKills);
+                writeD(player.PvpKills);
 
                 writeD(0);
                 writeD(0);
