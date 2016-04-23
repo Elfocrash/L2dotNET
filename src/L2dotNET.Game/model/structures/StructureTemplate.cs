@@ -48,7 +48,7 @@ namespace L2dotNET.Game.model.structures
 
             foreach (L2Citizen npc in npcs.Values)
             {
-                L2World.getInstance().realiseEntry(npc, null, true);
+                L2World.Instance.RealiseEntry(npc, null, true);
                 npc.onSpawn();
             }
         }

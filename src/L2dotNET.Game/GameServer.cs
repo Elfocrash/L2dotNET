@@ -47,7 +47,8 @@ namespace L2dotNET.Game
 
             IdFactory.Instance.Initialize();
 
-            L2World.getInstance();
+            L2World.Instance.Initialize();
+
             // MapRegionTable.getInstance();
             ZoneTable.getInstance();
 

@@ -34,32 +34,6 @@ namespace L2dotNET.Game.managers
                 return;
 
             i.create(player);
-            L2World.getInstance().registerInstance(i);
-        }
-
-        public void join(int instanceId, L2Player player)
-        {
-            L2Instance instance = L2World.getInstance().getInstance(instanceId);
-
-            if (instance == null)
-            {
-                player.sendMessage("Instance id #" + instanceId + " was not initialized");
-                return;
-            }
-
-            if (instance.joinFailed(player))
-                return;
-
-            instance.join(player);
-        }
-
-        public void close(L2Instance instance, L2Player player)
-        {
-            if (instance.closeFailed(player))
-                return;
-
-            instance.close();
-            L2World.getInstance().closeInstance(instance);
         }
     }
 }

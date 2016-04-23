@@ -166,7 +166,7 @@ namespace L2dotNET.Game.network.loginauth
 
         public void UpdatePlayersOnline()
         {
-            short cnt = L2World.getInstance().getPlayerCount();
+            short cnt = L2World.Instance.GetPlayerCount();
             sendPacket(new PlayerCount(cnt));
         }
 

@@ -80,7 +80,7 @@ namespace L2dotNET.Game.network.l2recv
                         switch (Cfg.chat_shout)
                         {
                             case Cfg.chatoptions.Default:
-                                L2World.getInstance().broadcastToRegion(player.InstanceID, player.X, player.Y, cs);
+                                L2World.Instance.BroadcastToRegion(player.InstanceID, player.X, player.Y, cs);
                                 break;
                             case Cfg.chatoptions.Disabled:
                                 {
@@ -89,7 +89,7 @@ namespace L2dotNET.Game.network.l2recv
                                     return;
                                 }
                             case Cfg.chatoptions.Global:
-                                foreach (L2Player p in L2World.getInstance().getAllPlayers())
+                                foreach (L2Player p in L2World.Instance.GetAllPlayers())
                                 {
                                     p.sendPacket(cs);
                                 }
@@ -101,7 +101,7 @@ namespace L2dotNET.Game.network.l2recv
                                 }
                                 else
                                 {
-                                    foreach (L2Player p in L2World.getInstance().getAllPlayers())
+                                    foreach (L2Player p in L2World.Instance.GetAllPlayers())
                                     {
                                         p.sendPacket(cs);
                                     }
@@ -116,7 +116,7 @@ namespace L2dotNET.Game.network.l2recv
                         if (player.Name.Equals(_target))
                             target = player;
                         else
-                            target = L2World.getInstance().getPlayer(_target);
+                            target = L2World.Instance.GetPlayer(_target);
 
                         if (target == null)
                         {
@@ -154,7 +154,7 @@ namespace L2dotNET.Game.network.l2recv
                         switch (Cfg.chat_trade)
                         {
                             case Cfg.chatoptions.Default:
-                                L2World.getInstance().broadcastToRegion(player.InstanceID, player.X, player.Y, cs);
+                                L2World.Instance.BroadcastToRegion(player.InstanceID, player.X, player.Y, cs);
                                 break;
                             case Cfg.chatoptions.Disabled:
                                 {
@@ -163,7 +163,7 @@ namespace L2dotNET.Game.network.l2recv
                                     return;
                                 }
                             case Cfg.chatoptions.Global:
-                                foreach (L2Player p in L2World.getInstance().getAllPlayers())
+                                foreach (L2Player p in L2World.Instance.GetAllPlayers())
                                 {
                                     p.sendPacket(cs);
                                 }
@@ -175,7 +175,7 @@ namespace L2dotNET.Game.network.l2recv
                                 }
                                 else
                                 {
-                                    foreach (L2Player p in L2World.getInstance().getAllPlayers())
+                                    foreach (L2Player p in L2World.Instance.GetAllPlayers())
                                     {
                                         p.sendPacket(cs);
                                     }
@@ -188,7 +188,7 @@ namespace L2dotNET.Game.network.l2recv
                     {
                         if (player.Heroic == 1)
                         {
-                            foreach (L2Player p in L2World.getInstance().getAllPlayers())
+                            foreach (L2Player p in L2World.Instance.GetAllPlayers())
                                 p.sendPacket(cs);
                         }
                         else

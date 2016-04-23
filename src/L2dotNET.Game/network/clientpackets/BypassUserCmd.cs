@@ -31,28 +31,18 @@ namespace L2dotNET.Game.network.l2recv
             {
                 case 0: // [loc]
                     {
-                        if (player.InstanceID != -1)
-                        {
-                            L2Instance inst = L2World.getInstance().getInstance(player.InstanceID);
-                            if (inst != null)
-                                inst.showLocation(player);
-                            else
-                                CLogger.error("player has instanceid but its not exists " + player.InstanceID);
-                        }
+                        int regId = MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
+                        if (regId > 0)
+                            player.sendPacket(new SystemMessage(regId).addNumber(player.X).addNumber(player.Y).addNumber(player.Z));
                         else
-                        {
-                            int regId = MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
-                            if (regId > 0)
-                                player.sendPacket(new SystemMessage(regId).addNumber(player.X).addNumber(player.Y).addNumber(player.Z));
-                            else
-                                player.sendPacket(new SystemMessage(2361).addString("Nowhere"));
+                            player.sendPacket(new SystemMessage(2361).addString("Nowhere"));
 
-                            int x = (player.X >> 15) + 9 + 8;
-                            int y = (player.Y >> 15) + 10 + 11;
-                            player.sendMessage("l2loc: " + x + "_" + y);
-                           // player.sendMessage("geotype " + GeoData.getInstance().nGetType(player.X, player.Y));
-                           // player.sendMessage("geoheight " + GeoData.getInstance().getHeight(player.X, player.Y, player.Z));
-                        }
+                        int x = (player.X >> 15) + 9 + 8;
+                        int y = (player.Y >> 15) + 10 + 11;
+                        player.sendMessage("l2loc: " + x + "_" + y);
+                        // player.sendMessage("geotype " + GeoData.getInstance().nGetType(player.X, player.Y));
+                        // player.sendMessage("geoheight " + GeoData.getInstance().getHeight(player.X, player.Y, player.Z));
+                        
                     }
                     break;
                 case 77: // [time]

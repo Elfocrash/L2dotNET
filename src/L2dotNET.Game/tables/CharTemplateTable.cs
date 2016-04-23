@@ -84,7 +84,7 @@ namespace L2dotNET.Game.tables
 
 
             }
-            Console.WriteLine($"CharTemplateTable: Loaded { templates.Count } character templates.");
+            Log.Info($"Loaded { templates.Count } character templates.");
         }
 
         public PcTemplate GetTemplate(ClassIds classId)

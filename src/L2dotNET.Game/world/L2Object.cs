@@ -96,7 +96,7 @@ namespace L2dotNET.Game.world
 
             StopRegeneration();
 
-            L2World.getInstance().unrealiseEntry(this, true);
+            L2World.Instance.UnrealiseEntry(this, true);
         }
 
         public void clearKnowns(bool deleteMe, params int[] exclude)
@@ -116,7 +116,7 @@ namespace L2dotNET.Game.world
 
         public void getKnowns(int range, int height, bool zones)
         {
-            L2World.getInstance().getKnowns(this, range, height, zones);
+            L2World.Instance.GetKnowns(this, range, height, zones);
         }
 
         private void onClearing(L2Object target, bool deleteMe)
@@ -487,7 +487,7 @@ namespace L2dotNET.Game.world
                 }
             }
 
-            L2World.getInstance().checkToUpdate(this, x, y, range, height, true, zones);
+            L2World.Instance.CheckToUpdate(this, x, y, range, height, true, zones);
         }
 
         public Timer RegenerationMethod_1s, RegenUpdate;

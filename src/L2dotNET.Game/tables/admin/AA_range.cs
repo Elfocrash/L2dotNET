@@ -125,7 +125,7 @@ namespace L2dotNET.Game.tables.admin
                 boat.Y = 261660;
                 boat.Z = -3610;
 
-                L2World.getInstance().realiseEntry(boat, null, true);
+                L2World.Instance.RealiseEntry(boat, null, true);
                 boat.onSpawn();
             }
             else if (s == "13")
@@ -139,7 +139,7 @@ namespace L2dotNET.Game.tables.admin
                 ship.Y = 261660;
                 ship.Z = -2610;
 
-                L2World.getInstance().realiseEntry(ship, null, true);
+                L2World.Instance.RealiseEntry(ship, null, true);
                 ship.onSpawn();
                 admin.Airship = ship;
             }

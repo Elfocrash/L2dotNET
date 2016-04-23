@@ -268,7 +268,7 @@ namespace L2dotNET.Game.model.items
                 killer.addKnownObject(this, pk, true);
             }
 
-            L2World.getInstance().realiseEntry(this, pk, true);
+            L2World.Instance.RealiseEntry(this, pk, true);
         }
 
         public void dropMe(int x, int y, int z)
@@ -293,7 +293,7 @@ namespace L2dotNET.Game.model.items
 
                 player.onPickUp(this);
 
-                L2World.getInstance().unrealiseEntry(this, true);
+                L2World.Instance.UnrealiseEntry(this, true);
             }
             else
             {

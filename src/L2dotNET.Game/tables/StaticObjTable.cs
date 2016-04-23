@@ -101,7 +101,7 @@ namespace L2dotNET.Game.tables
         {
             foreach (L2StaticObject o in objects.Values)
             {
-                L2World.getInstance().realiseEntry(o, null, true);
+                L2World.Instance.RealiseEntry(o, null, true);
                 o.onSpawn();
             }
 

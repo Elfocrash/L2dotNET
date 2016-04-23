@@ -51,7 +51,7 @@ namespace L2dotNET.Game.model.structures
 
             for (int i = 0; i < template._x.Length; i++)
             {
-                L2WorldRegion region = L2World.getInstance().getRegion(template._x[i], template._y[i]);
+                L2WorldRegion region = L2World.Instance.GetRegion(template._x[i], template._y[i]);
                 if (region != null)
                 {
                     region._zoneManager.addZone(zone);

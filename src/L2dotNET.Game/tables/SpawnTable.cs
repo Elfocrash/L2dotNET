@@ -156,7 +156,7 @@ namespace L2dotNET.Game.tables
             o.SpawnY = y;
             o.SpawnZ = z;
 
-            L2World.getInstance().realiseEntry(o, null, true);
+            L2World.Instance.RealiseEntry(o, null, true);
             o.onSpawn();
 
             return o;

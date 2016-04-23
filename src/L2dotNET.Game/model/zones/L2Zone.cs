@@ -86,7 +86,7 @@ namespace L2dotNET.Game.model.zones
 
             ObjectsInside.Clear();
 
-            L2WorldRegion region = L2World.getInstance().getRegion(CylinderCenter[0], CylinderCenter[1]);
+            L2WorldRegion region = L2World.Instance.GetRegion(CylinderCenter[0], CylinderCenter[1]);
             if (region != null)
             {
                 region._zoneManager.remZone(this);

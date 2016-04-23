@@ -186,7 +186,7 @@ namespace L2dotNET.Game
                 //updateDb();
                 saveInventory();
 
-                L2World.getInstance().unrealiseEntry(this, true);
+                L2World.Instance.UnrealiseEntry(this, true);
             }
         }
 

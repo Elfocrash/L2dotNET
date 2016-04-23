@@ -76,10 +76,10 @@ namespace L2dotNET.Game.network.l2recv
 
             GameTime.getInstance().enterWorld(player);
 
-            L2World.getInstance().realiseEntry(player, null, true);
+            L2World.Instance.RealiseEntry(player, null, true);
             player.timer();
 
-            L2World.getInstance().getRegion(player.X, player.Y).checkZones(player, true);
+            L2World.Instance.GetRegion(player.X, player.Y).checkZones(player, true);
 
             player.sendPacket(new UserInfo(player));
            // player.sendPacket(new UserInfo(player));
