@@ -1,4 +1,5 @@
-﻿using L2dotNET.Game.model.player.basic;
+﻿using L2dotNET.Game.Enums;
+using L2dotNET.Game.model.player.basic;
 using L2dotNET.Game.tables;
 
 namespace L2dotNET.Game.model.zones.classes
@@ -27,7 +28,7 @@ namespace L2dotNET.Game.model.zones.classes
                 if (!Template._affect_race.Equals("all"))
                 {
                     if (Template._affect_race.Equals("elf"))
-                        if (p.BaseClass.race != RaceId.elf)
+                        if (p.BaseClass.ClassId.ClassRace != ClassRace.ELF)
                             return;
                 }
 
@@ -52,7 +53,7 @@ namespace L2dotNET.Game.model.zones.classes
                 if (!Template._affect_race.Equals("all"))
                 {
                     if (Template._affect_race.Equals("elf"))
-                        if (p.BaseClass.race != RaceId.elf)
+                        if (p.BaseClass.ClassId.ClassRace != ClassRace.ELF)
                             return;
                 }
 

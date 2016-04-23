@@ -67,6 +67,10 @@
     <Reference Include="L2Crypt">
       <HintPath>..\..\c_auth\c_auth\lib\L2Crypt.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
@@ -104,6 +108,8 @@
     <Compile Include="Crypt.cs" />
     <Compile Include="crypt\BlowFishKeygen.cs" />
     <Compile Include="DepInjectionModule.cs" />
+    <Compile Include="Enums\ClassId.cs" />
+    <Compile Include="Enums\ClassRace.cs" />
     <Compile Include="geo\Geo.cs" />
     <Compile Include="geo\GeoData.cs" />
     <Compile Include="geo\Layer.cs" />
@@ -171,13 +177,11 @@
     <Compile Include="model\playable\petai\StandartAiTemplate.cs" />
     <Compile Include="model\player\ai\PlayerAI.cs" />
     <Compile Include="model\player\basic\Formulas.cs" />
-    <Compile Include="model\player\basic\RaceId.cs" />
     <Compile Include="model\player\basic\SayID.cs" />
     <Compile Include="model\player\Experience.cs" />
     <Compile Include="model\player\L2PartyRoom.cs" />
     <Compile Include="model\player\L2Shortcut.cs" />
     <Compile Include="model\player\partials\db_InstanceReuse.cs" />
-    <Compile Include="model\player\PlayerTemplate.cs" />
     <Compile Include="model\player\telebooks\TelBook_Mark.cs" />
     <Compile Include="model\player\telebooks\TeleportBook.cs" />
     <Compile Include="model\player\transformation\data\_00001_1.cs" />
@@ -604,8 +608,6 @@
     <Compile Include="network\GameServerNetworkPacket.cs" />
     <Compile Include="scripting\ScriptCompiler.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="staticf\ClassIdContainer.cs" />
-    <Compile Include="staticf\pc_parameter.cs" />
     <Compile Include="tables\AdminAccess.cs" />
     <Compile Include="tables\admin\AA_actorcount.cs" />
     <Compile Include="tables\admin\AA_addbookmark.cs" />
@@ -703,6 +705,7 @@
     <Compile Include="tables\admin\_adminAlias.cs" />
     <Compile Include="tables\admin_bypass\ABTeleport.cs" />
     <Compile Include="tables\CashShop.cs" />
+    <Compile Include="tables\CharTemplateTable.cs" />
     <Compile Include="tables\ClanTable.cs" />
     <Compile Include="tables\AllianceTable.cs" />
     <Compile Include="tables\FString.cs" />
@@ -714,7 +717,6 @@
     <Compile Include="tables\RegionID.cs" />
     <Compile Include="tables\SpawnTable.cs" />
     <Compile Include="tables\StructureTable.cs" />
-    <Compile Include="tables\PClassess.cs" />
     <Compile Include="tables\NpcData.cs" />
     <Compile Include="tables\NpcSpawn.cs" />
     <Compile Include="tables\NpcTable.cs" />
@@ -723,6 +725,9 @@
     <Compile Include="tables\RecipeTable.cs" />
     <Compile Include="tables\StaticObjTable.cs" />
     <Compile Include="tables\ZoneTable.cs" />
+    <Compile Include="templates\CharTemplate.cs" />
+    <Compile Include="templates\PcTemplate.cs" />
+    <Compile Include="templates\StatsSet.cs" />
     <Compile Include="tools\Calcs.cs" />
     <Compile Include="tools\Utilz.cs" />
     <Compile Include="world\instances\data\_test_instance.cs" />

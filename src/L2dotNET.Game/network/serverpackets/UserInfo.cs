@@ -24,18 +24,18 @@ namespace L2dotNET.Game.network.l2send
 
             writeS(player.Name);
 
-            writeD(player.BaseClass.race);
+            writeD((int)player.BaseClass.ClassId.ClassRace);
             writeD(player.Sex);
-            writeD(player.BaseClass.id);
+            writeD((int)player.BaseClass.ClassId.Id);
             writeD(player.Level);
             writeQ(player.Exp);
 
-            writeD(player.getSTR());
-            writeD(player.getDEX());
-            writeD(player.getCON());
-            writeD(player.getINT());
-            writeD(player.getWIT());
-            writeD(player.getMEN());
+            writeD(player.STR);
+            writeD(player.DEX);
+            writeD(player.CON);
+            writeD(player.INT);
+            writeD(player.WIT);
+            writeD(player.MEN);
 
             writeD(player.CurHP);//max hp
             writeD(player.CurHP);
@@ -172,7 +172,7 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.MountType > 0 ? player.MountedTemplate.NpcId + 1000000 : 0);//moun t npcid
             writeH(player.ItemLimit_Inventory);
 
-            writeD(player.ActiveClass.id);
+            writeD((int)player.ActiveClass.ClassId.Id);
             writeD(0); // special effects? circles around player...
             writeD(player.CurCP); //max cp
             writeD(player.CurCP);

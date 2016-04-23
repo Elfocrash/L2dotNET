@@ -1,4 +1,5 @@
-﻿using L2dotNET.Game.model.npcs;
+﻿using L2dotNET.Game.Enums;
+using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.model.player.basic;
 
 namespace L2dotNET.Game.model.quests.data
@@ -24,7 +25,7 @@ namespace L2dotNET.Game.model.quests.data
 
         public override void tryAccept(L2Player player, L2Citizen npc)
         {
-            if (player.BaseClass.race == RaceId.human && player.Level >= 3)
+            if (player.BaseClass.ClassId.ClassRace == ClassRace.HUMAN && player.Level >= 3)
                 player.ShowHtm("rapunzel_q0006_0101.htm", npc, questId);
             else
             {

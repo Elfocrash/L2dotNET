@@ -42,27 +42,11 @@ namespace L2dotNET.Game.model.items.effects
             }
             else if (method == rem)
             {
-                if (player.Souls < count)
-                {
-                    if (player.ActiveClass.race == RaceId.kamael)
-                    {
-                        player.sendSystemMessage(2195); //You do not have enough souls.
-                        return;
-                    }
-                }
-                else
-                {
-                    if(!player.CheckFreeSlotsInventory80(reward, 1, true))
-                        return;
-
-                    fin = 1;
-                }
+                if(!player.CheckFreeSlotsInventory80(reward, 1, true))
+                    return;
             }
 
             player.Inventory.destroyItem(item, 1, true, true);
-
-            if (fin == 0 || player.ActiveClass.race != RaceId.kamael)
-               return;
 
             if (reward > 0)
                 player.Inventory.addItem(reward, 1, true, true);

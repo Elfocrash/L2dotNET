@@ -48,8 +48,6 @@ namespace L2dotNET.Game.ai.template
 
         public const int @adena = 57;
 
-        public const byte @race_kamael = 5;
-
         public const string @summon_npc_group = "@summon_npc_group";
 
 

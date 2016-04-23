@@ -36,6 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,8 +53,31 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="EnumTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\L2dotNET.Auth\L2dotNET.Auth.csproj">
+      <Project>{960cd325-3eeb-4aaa-9c67-727ecde884bb}</Project>
+      <Name>L2dotNET.Auth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L2dotNET.Game\L2dotNET.Game.csproj">
+      <Project>{991e13b3-eb83-46c1-9f63-6ed3e332f88f}</Project>
+      <Name>L2dotNET.Game</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">
+      <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
+      <Name>L2dotNET.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L2dotNET.Repositories\L2dotNET.Repositories.csproj">
+      <Project>{34030afb-511d-4a7a-8711-71e0364e2f64}</Project>
+      <Name>L2dotNET.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L2dotNET.Services\L2dotNET.Services.csproj">
+      <Project>{0a70c676-f9bd-4593-9ef4-b22f8e170aed}</Project>
+      <Name>L2dotNET.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -20,7 +20,7 @@ namespace L2dotNET.Game.tables.admin
             }
 
             L2Player target = admin.CurrentTarget as L2Player;
-            TAcquireSkillsEntry skills = TSkillTable.getInstance().getAllRegularSkills(target.ActiveClass.pch);
+            TAcquireSkillsEntry skills = TSkillTable.getInstance().getAllRegularSkills(target.ActiveClass.ClassId.Id);
 
             SortedList<int, TAcquireSkill> avail = new SortedList<int, TAcquireSkill>();
             Dictionary<int, int> updDel = new Dictionary<int, int>();
@@ -75,7 +75,7 @@ namespace L2dotNET.Game.tables.admin
             target.sendPacket(new AcquireSkillList(0, target));
 
             target.updateSkillList();
-            target.sendMessage("gor all skills [" + skills.skills.Count+ "]["+avail.Count+"] for lv" + target.Level + ", class @" + target.ActiveClass.pch.ToString());
+            target.sendMessage("gor all skills [" + skills.skills.Count+ "]["+avail.Count+"] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id.ToString());
         }
     }
 }

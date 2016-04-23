@@ -335,7 +335,7 @@ namespace L2dotNET.Game.model.npcs
                 list = new SortedList<int, TAcquireSkill>();
 
             int nextLvl = 800;
-            foreach (TAcquireSkill e in TSkillTable.getInstance().getAllRegularSkills(player.ActiveClass.pch).skills)
+            foreach (TAcquireSkill e in TSkillTable.getInstance().getAllRegularSkills(player.ActiveClass.ClassId.Id).skills)
             {
                 if (e.get_lv > player.Level)
                 {

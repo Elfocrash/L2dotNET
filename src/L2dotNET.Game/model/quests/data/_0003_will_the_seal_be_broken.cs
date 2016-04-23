@@ -1,4 +1,5 @@
-﻿using L2dotNET.Game.model.npcs;
+﻿using L2dotNET.Game.Enums;
+using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.model.player.basic;
 
 namespace L2dotNET.Game.model.quests.data
@@ -30,7 +31,7 @@ namespace L2dotNET.Game.model.quests.data
 
         public override void tryAccept(L2Player player, L2Citizen npc)
         {
-            if (player.BaseClass.race != RaceId.darkelf)
+            if (player.BaseClass.ClassId.ClassRace != ClassRace.DARK_ELF )
             {
                 player.ShowHtm("redry_q0003_00.htm", npc);
             }

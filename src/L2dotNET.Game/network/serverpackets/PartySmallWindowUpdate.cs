@@ -22,7 +22,7 @@ namespace L2dotNET.Game.network.l2send
             writeD(member.CurMP);
             writeD(member.CharacterStat.getStat(TEffectType.b_max_mp));
             writeD(member.Level);
-            writeD(member.ActiveClass.id);
+            writeD((int)member.ActiveClass.ClassId.Id);
         }
     }
 }

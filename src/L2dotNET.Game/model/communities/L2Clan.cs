@@ -85,7 +85,7 @@ namespace L2dotNET.Game.model.communities
         public void addMember(L2Player player, short type)
         {
             ClanMember cm = new ClanMember();
-            cm.classId = player.ActiveClass.id;
+            cm.classId = (byte)player.ActiveClass.ClassId.Id;
             cm.Level = player.Level;
             cm.Name = player.Name;
             cm.ObjID = player.ObjID;

@@ -112,9 +112,6 @@ namespace L2dotNET.Game.ai.npcai
                 {
                     if (talker.Level > 40 && talker.Level < 46)
                     {
-                        if (talker.BaseClass.race == @race_kamael)
-                            MultiSell.getInstance().showList(talker, myself, 603); //bytime1_kamael
-                        else
                             MultiSell.getInstance().showList(talker, myself, reply);
                     }
                 }
@@ -122,9 +119,6 @@ namespace L2dotNET.Game.ai.npcai
                 {
                     if (talker.Level >= 46 && talker.Level < 52)
                     {
-                        if (talker.BaseClass.race == @race_kamael)
-                            MultiSell.getInstance().showList(talker, myself, 604); //bytime2_kamael
-                        else
                             MultiSell.getInstance().showList(talker, myself, reply);
                     }
                 }
@@ -132,9 +126,6 @@ namespace L2dotNET.Game.ai.npcai
                 {
                     if (talker.Level >= 52)
                     {
-                        if (talker.BaseClass.race == @race_kamael)
-                            MultiSell.getInstance().showList(talker, myself, 605); //bytime3_kamael
-                        else
                             MultiSell.getInstance().showList(talker, myself, reply);
                     }
                 }

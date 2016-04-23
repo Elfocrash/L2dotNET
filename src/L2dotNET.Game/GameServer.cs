@@ -12,7 +12,6 @@ using L2dotNET.Game.model.skills2;
 using L2dotNET.Game.network;
 using L2dotNET.Game.network.loginauth;
 using L2dotNET.Game.network.loginauth.send;
-using L2dotNET.Game.staticf;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.tables.multisell;
 using L2dotNET.Game.world;
@@ -41,8 +40,8 @@ namespace L2dotNET.Game
             CLogger.form();
             Cfg.init("all");
 
-            PClassess.getInstance();
-        
+            CharTemplateTable.Instance.Initialize();
+
             NetworkBlock.getInstance();
             GameTime.getInstance();
 
@@ -71,8 +70,6 @@ namespace L2dotNET.Game
 
             BlowFishKeygen.genKey();
             CLogger.info("generated 20 blowfish keys");
-
-            ClassIdContainer.init();
 
             AdminAccess.getInstance();
 

@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using L2dotNET.Game.staticf;
+﻿using L2dotNET.Game.templates;
+using System.Collections.Generic;
 
 namespace L2dotNET.Game.network.l2send
 {
     class CharTemplates : GameServerNetworkPacket
     {
-        private List<pc_parameter> _templates;
-        public CharTemplates(List<pc_parameter> templates)
+        private List<PcTemplate> _templates;
+        public CharTemplates(List<PcTemplate> templates)
         {
             _templates = templates;
         }
@@ -16,27 +16,30 @@ namespace L2dotNET.Game.network.l2send
             writeC(0x17);
             writeD(_templates.Count);
 
-            foreach (pc_parameter t in _templates)
+            foreach (PcTemplate t in _templates)
             {
-                writeD(t.base_race_id);
-                writeD(t.base_class_id);
+                if (t == null)
+                    break;
+
+                writeD((int)t.ClassId.ClassRace);//race id
+                writeD((int)t.ClassId.Id);
                 writeD(0x46);
-                writeD(t.baseSTR);
+                writeD(t.BaseSTR);
                 writeD(0x0a);
                 writeD(0x46);
-                writeD(t.baseDEX);
+                writeD(t.BaseDEX);
                 writeD(0x0a);
                 writeD(0x46);
-                writeD(t.baseCON);
+                writeD(t.BaseCON);
                 writeD(0x0a);
                 writeD(0x46);
-                writeD(t.baseINT);
+                writeD(t.BaseINT);
                 writeD(0x0a);
                 writeD(0x46);
-                writeD(t.baseWIT);
+                writeD(t.BaseWIT);
                 writeD(0x0a);
                 writeD(0x46);
-                writeD(t.baseMEN);
+                writeD(t.BaseMEN);
                 writeD(0x0a);
             }
         }

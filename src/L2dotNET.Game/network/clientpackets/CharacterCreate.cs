@@ -10,6 +10,7 @@ using L2dotNET.Services.Contracts;
 using Ninject;
 using L2dotNET.Models;
 using L2dotNET.Game.model.skills2;
+using L2dotNET.Game.templates;
 
 namespace L2dotNET.Game.network.l2recv
 {
@@ -76,7 +77,7 @@ namespace L2dotNET.Game.network.l2recv
                 return;
             }
 
-            PlayerTemplate template = PClassess.getInstance().getTemplate((byte)_classId);
+            PcTemplate template = CharTemplateTable.Instance.GetTemplate((byte)_classId);
             if (template == null)
             {
                 getClient().sendPacket(new CharCreateFail(getClient(), CharCreateFail.CharCreateFailReason.CREATION_RESTRICTION));
@@ -104,9 +105,9 @@ namespace L2dotNET.Game.network.l2recv
             player.BaseClass = template;
             player.ActiveClass = template;
 
-            player.CurHP = template._hp[player.Level];
-            player.CurMP = template._mp[player.Level];
-            player.CurCP = template._cp[player.Level];
+            player.CurHP = template.HpTable[player.Level];
+            player.CurMP = template.MpTable[player.Level];
+            player.CurCP = template.CpTable[player.Level];
             player.MaxMp = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
             player.MaxCp = (int)player.CharacterStat.getStat(TEffectType.b_max_cp);
 
@@ -116,35 +117,35 @@ namespace L2dotNET.Game.network.l2recv
 
             
 
-            if (template._items != null)
+            if (template.Items != null)
             {
                 player.Inventory = new InvPC();
                 player.Inventory._owner = player;
 
-                foreach (PC_item i in template._items)
-                {
-                    if (!i.item.isStackable())
-                    {
-                        for (long s = 0; s < i.count; s++)
-                        {
-                            L2Item item = new L2Item(i.item);
-                            item.Enchant = i.enchant;
-                            if (i.lifetime != -1)
-                                item.AddLimitedHour(i.lifetime);
+                //foreach (PC_item i in template._items)
+                //{
+                //    if (!i.item.isStackable())
+                //    {
+                //        for (long s = 0; s < i.count; s++)
+                //        {
+                //            L2Item item = new L2Item(i.item);
+                //            item.Enchant = i.enchant;
+                //            if (i.lifetime != -1)
+                //                item.AddLimitedHour(i.lifetime);
 
-                            item.Location = L2Item.L2ItemLocation.inventory;
-                            player.Inventory.addItem(item, false, false);
+                //            item.Location = L2Item.L2ItemLocation.inventory;
+                //            player.Inventory.addItem(item, false, false);
 
-                            if (i.equip)
-                            {
-                                int pdollId = player.Inventory.getPaperdollId(item.Template);
-                                player.setPaperdoll(pdollId, item, false);
-                            }
-                        }
-                    }
-                    else
-                        player.addItem(i.item.ItemID, i.count);
-                }
+                //            if (i.equip)
+                //            {
+                //                int pdollId = player.Inventory.getPaperdollId(item.Template);
+                //                player.setPaperdoll(pdollId, item, false);
+                //            }
+                //        }
+                //    }
+                //    else
+                //        player.addItem(i.item.ItemID, i.count);
+                //}
             }
 
             player.CharSlot = player.Gameclient._accountChars.Count + 1;
@@ -176,9 +177,9 @@ namespace L2dotNET.Game.network.l2recv
                 PvpKills = player.PvpKills,
                 PkKills = player.PkKills,
                 ClanId = player.ClanId,
-                Race = player.BaseClass.race,
-                ClassId = (int)player.ClassId,
-                BaseClass = player.BaseClass.id,
+                Race = (int)player.BaseClass.ClassId.ClassRace,
+                ClassId = (int)player.ActiveClass.ClassId.Id,
+                BaseClass = (int)player.BaseClass.ClassId.Id,
                 DeleteTime = player.DeleteTime,
                 CanCraft = player.CanCraft,
                 Title = player.Title,

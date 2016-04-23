@@ -23,7 +23,6 @@ using L2dotNET.Game.model.vehicles;
 using L2dotNET.Game.network;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.network.loginauth;
-using L2dotNET.Game.staticf;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.tools;
 using L2dotNET.Game.world;
@@ -32,6 +31,8 @@ using L2dotNET.Game.model.npcs.cubic;
 using Ninject;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Models;
+using L2dotNET.Game.templates;
+using L2dotNET.Game.Enums;
 
 namespace L2dotNET.Game
 {
@@ -65,7 +66,6 @@ namespace L2dotNET.Game
         public double CurMp { get; set; }
         public int Karma = 0;
         public int PvpKills { get; set; }
-        public int Race { get; set; }
         public long DeleteTime { get; set; }
         public int CanCraft { get; set; }
         public int PkKills { get; set; }
@@ -135,8 +135,8 @@ namespace L2dotNET.Game
             byte bclass = (byte)playerModel.BaseClass;
             byte aclass = (byte)playerModel.ClassId;
 
-            player.BaseClass = PClassess.getInstance().getTemplate(bclass);
-            player.ActiveClass = PClassess.getInstance().getTemplate(aclass);
+            player.BaseClass = CharTemplateTable.Instance.GetTemplate(playerModel.BaseClass);
+            player.ActiveClass = CharTemplateTable.Instance.GetTemplate(playerModel.ClassId);
 
             player.RecLeft = playerModel.RecLeft;
             player.RecHave = playerModel.RecHave;
@@ -205,37 +205,17 @@ namespace L2dotNET.Game
             return Inventory.getWeaponAugmentation();
         }
 
+        public int INT { get { return ActiveClass.BaseINT; } }
 
-        public uint getINT()
-        {
-            return ActiveClass._int;
-        }
+        public int STR { get { return ActiveClass.BaseSTR; } }
 
-        public uint getSTR()
-        {
-            return ActiveClass._str;
-        }
+        public int CON { get { return ActiveClass.BaseCON; } }
 
-        public uint getCON()
-        {
-            return ActiveClass._con;
-        }
+        public int MEN { get { return ActiveClass.BaseMEN; } }
 
-        public uint getMEN()
-        {
-            return ActiveClass._men;
-        }
+        public int DEX { get { return ActiveClass.BaseDEX; } }
 
-        public uint getDEX()
-        {
-            return ActiveClass._dex;
-        }
-
-        public uint getWIT()
-        {
-            return ActiveClass._wit;
-        }
-
+        public int WIT { get { return ActiveClass.BaseWIT; } }
 
         public int getPaperdollAugmentationId(int p)
         {
@@ -1373,12 +1353,12 @@ namespace L2dotNET.Game
         public L2Transform Transform;
         public int AgationID;
 
-        public PlayerTemplate BaseClass;
-        public PlayerTemplate ActiveClass;
+        public PcTemplate BaseClass;
+        public PcTemplate ActiveClass;
 
         public bool subActive()
         {
-            return ActiveClass.id != BaseClass.id;
+            return ActiveClass != BaseClass;
         }
 
         public bool isQuestCompleted(int p)
@@ -2521,13 +2501,11 @@ namespace L2dotNET.Game
         {
             get
             {
-                if (TransformID > 0)
-                    return Transform.Template.getRadius(Sex);
 
                 if (MountType > 0)
                     return MountedTemplate.CollisionRadius;
 
-                return BaseClass.getCollRadius(Sex);
+                return Sex == 0 ? BaseClass.CollisionRadius : BaseClass.CollisionRadiusFemale;
             }
         }
 
@@ -2541,7 +2519,7 @@ namespace L2dotNET.Game
                 if (MountType > 0)
                     return MountedTemplate.CollisionHeight;
 
-                return BaseClass.getCollHeight(Sex);
+                return Sex == 0 ? BaseClass.CollisionHeight : BaseClass.CollisionHeightFemale;
             }
         }
 

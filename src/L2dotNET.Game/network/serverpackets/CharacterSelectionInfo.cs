@@ -32,12 +32,12 @@ namespace L2dotNET.Game.network.l2send
                 writeD(0x00); // ??
 
                 writeD(player.Sex);
-                writeD(player.BaseClass.race);
+                writeD((int)player.BaseClass.ClassId.ClassRace);
 
-                if(player.ActiveClass.id == player.BaseClass.id)
-                    writeD(player.ActiveClass.id);
+                if(player.ActiveClass.ClassId.Id == player.BaseClass.ClassId.Id)
+                    writeD((int)player.ActiveClass.ClassId.Id);
                 else
-                    writeD(player.BaseClass.id);
+                    writeD((int)player.BaseClass.ClassId.Id);
 
                 writeD(0x01); // active ??
 
@@ -82,7 +82,7 @@ namespace L2dotNET.Game.network.l2send
                 writeF(player.CurMP); // mp max TODO
                 writeD(0); // days left before TODO
 
-                writeD(player.ActiveClass.id);
+                writeD((int)player.ActiveClass.ClassId.Id);
 
                 int selection = 0;
 

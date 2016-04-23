@@ -1,4 +1,5 @@
-﻿using L2dotNET.Game.model.npcs;
+﻿using L2dotNET.Game.Enums;
+using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.model.player.basic;
 
 namespace L2dotNET.Game.model.quests.data
@@ -24,7 +25,7 @@ namespace L2dotNET.Game.model.quests.data
 
         public override void tryAccept(L2Player player, L2Citizen npc)
         {
-            if (player.BaseClass.race == RaceId.elf && player.Level >= 3)
+            if (player.BaseClass.ClassId.ClassRace == ClassRace.ELF && player.Level >= 3)
                 player.ShowHtm("mint_q0007_0101.htm", npc, questId);
             else
             {

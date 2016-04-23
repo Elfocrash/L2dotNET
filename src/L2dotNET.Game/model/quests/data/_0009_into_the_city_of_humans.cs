@@ -1,4 +1,5 @@
-﻿using L2dotNET.Game.model.npcs;
+﻿using L2dotNET.Game.Enums;
+using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.model.player.basic;
 
 namespace L2dotNET.Game.model.quests.data
@@ -23,7 +24,7 @@ namespace L2dotNET.Game.model.quests.data
 
         public override void tryAccept(L2Player player, L2Citizen npc)
         {
-            if (player.BaseClass.race == RaceId.orc && player.Level >= 3)
+            if (player.BaseClass.ClassId.ClassRace == ClassRace.ORC && player.Level >= 3)
                 player.ShowHtm("centurion_petukai_q0009_0101.htm", npc, questId);
             else
             {

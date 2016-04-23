@@ -1,4 +1,5 @@
 ﻿using L2dotNET.Game;
+using L2dotNET.Game.Enums;
 using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.model.player.basic;
 using L2dotNET.Game.model.quests;
@@ -35,7 +36,7 @@ class _0002_what_women_want : QuestOrigin
             return;
         }
 
-        if (player.BaseClass.race != RaceId.elf && player.BaseClass.race != RaceId.human)
+        if (player.BaseClass.ClassId.ClassRace != ClassRace.ELF && player.BaseClass.ClassId.ClassRace != ClassRace.HUMAN)
         {
             player.ShowHtm("arujien_q0002_00.htm", npc);
             return;

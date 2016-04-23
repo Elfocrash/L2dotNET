@@ -24,9 +24,9 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.ClanId);
             writeD(0x00);  //??
             writeD(player.Sex);
-            writeD(player.BaseClass.race);
+            writeD((int)player.BaseClass.ClassId.ClassRace);
 
-            writeD(player.ActiveClass.id);
+            writeD((int)player.ActiveClass.ClassId.Id);
             writeD(0x01); // active ??
             writeD(player.X);
             writeD(player.Y);
@@ -41,13 +41,13 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.Karma);	// thx evill33t
             writeD(0);	//?
 
-            writeD(player.getINT());
-            writeD(player.getSTR());
-            writeD(player.getCON());
-            writeD(player.getMEN());
+            writeD(player.INT);
+            writeD(player.STR);
+            writeD(player.CON);
+            writeD(player.MEN);
 
-            writeD(player.getDEX());
-            writeD(player.getWIT());
+            writeD(player.DEX);
+            writeD(player.WIT);
             for (int i = 0; i < 30; i++)
             {
                 writeD(0x00);
@@ -59,7 +59,7 @@ namespace L2dotNET.Game.network.l2send
 
             writeD(0x00); // c3
 
-            writeD(player.ActiveClass.id);
+            writeD((int)player.ActiveClass.ClassId.Id);
 
             writeD(0x00); // c3 InspectorBin
             writeD(0x00); // c3

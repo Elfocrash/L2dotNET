@@ -23,9 +23,9 @@ namespace L2dotNET.Game.network.l2send
             writeD(player.ObjID);
             writeS(player.Name);
 
-            writeD(player.BaseClass.race);
+            writeD((int)player.BaseClass.ClassId.ClassRace);
             writeD(player.Sex);
-            writeD(player.ActiveClass.id);
+            writeD((int)player.ActiveClass.ClassId.Id);
 
         
 
@@ -133,7 +133,7 @@ namespace L2dotNET.Game.network.l2send
 
             writeC(0); //_activeChar.isFlyingMounted() ? 2 : 0);
             writeH(player.RecHave);
-            writeD(player.ActiveClass.id);
+            writeD((int)player.ActiveClass.ClassId.Id);
 
             writeD(player.CurrentCP);//max cp here
             writeC(player.GetEnchantValue());

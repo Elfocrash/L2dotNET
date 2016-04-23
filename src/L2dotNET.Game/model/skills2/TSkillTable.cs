@@ -5,8 +5,8 @@ using System.IO.Compression;
 using System.Text;
 using L2dotNET.Game.compression;
 using L2dotNET.Game.logger;
-using L2dotNET.Game.staticf;
 using System.Xml.Linq;
+using L2dotNET.Game.Enums;
 
 namespace L2dotNET.Game.model.skills2
 {
@@ -453,20 +453,20 @@ namespace L2dotNET.Game.model.skills2
             CLogger.info("SkillTable: learnable " + AcquireSkills.Count + " groups, #"+cntTotal+" skills.");
         }
 
-        public TAcquireSkillsEntry getAllRegularSkills(ClassId id)
+        public TAcquireSkillsEntry getAllRegularSkills(ClassIds id)
         {
             return AcquireSkills[id.ToString()];
         }
 
-        public TAcquireSkillsEntry getSharingSkills(ClassId id)
+        public TAcquireSkillsEntry getSharingSkills(ClassIds id)
         {
             switch (id)
             {
-                case ClassId.shillien_elder:
+                case ClassIds.SHILLIEN_ELDER:
                     return AcquireSkills["silen_elder_sharing"];
-                case ClassId.elder:
+                case ClassIds.ELVEN_ELDER:
                     return AcquireSkills["elder_sharing"];
-                case ClassId.bishop:
+                case ClassIds.BISHOP:
                     return AcquireSkills["bishop_sharing"];
 
                 default:

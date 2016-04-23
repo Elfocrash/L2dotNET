@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using L2dotNET.Game.model.player;
 using L2dotNET.Game.model.skills2;
 using L2dotNET.Game.world;
+using L2dotNET.Game.templates;
 
 namespace L2dotNET.Game.model.stats
 {
@@ -204,28 +205,28 @@ namespace L2dotNET.Game.model.stats
             statTemplate.Add(type, value);
         }
 
-        public void setTemplate(PlayerTemplate template)
+        public void setTemplate(PcTemplate template)
         {
-            addTemplate(TEffectType.p_physical_attack, template.patk);
-            addTemplate(TEffectType.p_physical_defense, template.pdef);
-            addTemplate(TEffectType.p_magical_attack, template.matk);
-            addTemplate(TEffectType.p_magical_defense, template.mdef);
+            addTemplate(TEffectType.p_physical_attack, template.BasePAtk);
+            addTemplate(TEffectType.p_physical_defense, template.BasePDef);
+            addTemplate(TEffectType.p_magical_attack, template.BaseMAtk);
+            addTemplate(TEffectType.p_magical_defense, template.BaseMDef);
             addTemplate(TEffectType.p_speed, 700);//template.runspd);
 
             addTemplate(TEffectType.b_max_weight, 2500000.0);
             addTemplate(TEffectType.b_accuracy, 50);
             addTemplate(TEffectType.b_critical_rate, 100);
             addTemplate(TEffectType.b_evasion, 50);
-            addTemplate(TEffectType.b_breath, template.breath);
+            //addTemplate(TEffectType.b_breath, template.B);
 
-            addTemplate(TEffectType.b_attack_spd, template.atkspd);
+            addTemplate(TEffectType.b_attack_spd, template.BasePAtkSpd);
             addTemplate(TEffectType.b_casting_spd, 333);
 
-            addTemplate(TEffectType.b_max_hp, template._hp[owner.Level]);
-            addTemplate(TEffectType.b_reg_hp, template._regHp[8]);
-            addTemplate(TEffectType.b_max_mp, template._mp[owner.Level]);
-            addTemplate(TEffectType.b_reg_mp, template._regMp[8]);
-            addTemplate(TEffectType.b_max_cp, template._cp[owner.Level]);
+            addTemplate(TEffectType.b_max_hp, template.HpTable[owner.Level]);
+            addTemplate(TEffectType.b_reg_hp, template.BaseHpReg);
+            addTemplate(TEffectType.b_max_mp, template.MpTable[owner.Level]);
+            addTemplate(TEffectType.b_reg_mp, template.BaseMpReg);
+            addTemplate(TEffectType.b_max_cp, template.CpTable[owner.Level]);
             addTemplate(TEffectType.b_reg_cp, 50);
         }
 
