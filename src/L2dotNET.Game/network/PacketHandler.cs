@@ -119,7 +119,7 @@ namespace L2dotNET.Game.network
                 case 0x3B:
                     msg = new RequestWarehouseDeposit(client, buff);
                     break;
-                case 0x3C:
+                case 0x32:
                     msg = new RequestWarehouseWithdraw(client, buff);
                     break;
                 case 0x33:
@@ -137,31 +137,31 @@ namespace L2dotNET.Game.network
                 case 0x2a:
                     msg = new RequestAnswerJoinParty(client, buff);
                     break;
-                case 0x44:
+                case 0x2b:
                     msg = new RequestWithDrawalParty(client, buff);
                     break;
-                case 0x45:
+                case 0x2c:
                     msg = new RequestOustPartyMember(client, buff);
                     break;
-                case 0x47:
+                case 0x36:
                     msg = new CannotMoveAnymore(client, buff);
                     break;
                 case 0x37:
                     msg = new RequestTargetCanceld(client, buff);
                     break;
-                case 0x49:
+                case 0x38:
                     msg = new Say2(client, buff);
                     break;
-                case 0x53:
+                case 0x42:
                     msg = new RequestGetOnVehicle(client, buff);
                     break;
-                case 0x54:
+                case 0x43:
                     msg = new RequestGetOffVehicle(client, buff);
                     break;
-                case 0x15:
+                case 0x44:
                     msg = new AnswerTradeRequest(client, buff);
                     break;
-                case 0x56:
+                case 0x45:
                     msg = new RequestActionUse(client, buff);
                     break;
                 case 0x46:
@@ -171,26 +171,26 @@ namespace L2dotNET.Game.network
                     msg = new ValidatePosition(client, buff);
                     break;
 
-                case 0x5B:
+                case 0x4a:
                     msg = new StartRotating(client, buff);
                     break;
-                case 0x5C:
+                case 0x4b:
                     msg = new FinishRotating(client, buff);
                     break;
 
-                case 0x5E:
+                case 0x57:
                     msg = new RequestShowBoard(client, buff);
                     break;
-                case 0x5F:
+                case 0x58:
                     msg = new RequestEnchantItem(client, buff);
                     break;
-                case 0x60:
+                case 0x59:
                     msg = new RequestDestroyItem(client, buff);
                     break;
-                case 0x63:
+                case 0x64:
                     msg = new RequestQuestAbort(client, buff);
                     break;
-                case 0x65:
+                case 0x66:
                     msg = new RequestPledgeInfo(client, buff);
                     break;
                 case 0xcd:
@@ -199,7 +199,7 @@ namespace L2dotNET.Game.network
                 case 0x6D:
                     msg = new RequestSendMsnChatLog(client, buff);
                     break;
-                case 0x6E:
+                case 0xcf:
                     msg = new RequestRecordInfo(client, buff);
                     break;
                 case 0x73:
@@ -274,14 +274,14 @@ namespace L2dotNET.Game.network
                     cninfo = "handlepacket: request unk id2 " + id2.ToString("x2") + " size " + buff.Length;
                     switch (id2)
                     {
-                        case 0x08:
+                        case 8:
                             msg = new RequestManorList(client, buff);
                             break;
                         case 0x11:
                             msg = new RequestExSetPledgeCrestLarge(client, buff);
                             break;
 
-                        case 0x0D:
+                        case 5:
                             msg = new RequestAutoSoulShot(client, buff);
                             break;
 
@@ -304,7 +304,7 @@ namespace L2dotNET.Game.network
                             msg = new RequestSaveInventoryOrder(client, buff);
                             break;
 
-                        case 0x2A:
+                        case 0x22:
                             msg = new RequestCursedWeaponList(client, buff);
                             break;
 
@@ -321,29 +321,29 @@ namespace L2dotNET.Game.network
                             msg = new RequestExCancelEnchantItem(client, buff);
                             break;
 
-                        case 0x51:
-                            byte id3 = buff[3];
-                            cninfo = "handlepacket: request unk id3 " + id3.ToString("x2") + " size " + buff.Length;
+                        //case 0x51:
+                        //    byte id3 = buff[3];
+                        //    cninfo = "handlepacket: request unk id3 " + id3.ToString("x2") + " size " + buff.Length;
 
-                            switch (id3)
-                            {
-                                case 0:
-                                    msg = new RequestBookMarkSlotInfo(client, buff);
-                                    break;
-                                case 1:
-                                    msg = new RequestSaveBookMarkSlot(client, buff);
-                                    break;
-                                case 2:
-                                    msg = new RequestModifyBookMarkSlot(client, buff);
-                                    break;
-                                case 3:
-                                    msg = new RequestDeleteBookMarkSlot(client, buff);
-                                    break;
-                                case 4:
-                                    msg = new RequestTeleportBookMark(client, buff);
-                                    break;
-                            }
-                            break;
+                        //    switch (id3)
+                        //    {
+                        //        case 0:
+                        //            msg = new RequestBookMarkSlotInfo(client, buff);
+                        //            break;
+                        //        case 1:
+                        //            msg = new RequestSaveBookMarkSlot(client, buff);
+                        //            break;
+                        //        case 2:
+                        //            msg = new RequestModifyBookMarkSlot(client, buff);
+                        //            break;
+                        //        case 3:
+                        //            msg = new RequestDeleteBookMarkSlot(client, buff);
+                        //            break;
+                        //        case 4:
+                        //            msg = new RequestTeleportBookMark(client, buff);
+                        //            break;
+                        //    }
+                        //    break;
 
                         case 0x58:
                             msg = new RequestDominionInfo(client, buff);

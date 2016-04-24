@@ -92,7 +92,7 @@ namespace L2dotNET.Game
 
             _accountChars.Clear();
 
-            ClientManager.getInstance().terminate(_address.ToString());
+            ClientManager.Instance.terminate(_address.ToString());
         }
 
         public void read()

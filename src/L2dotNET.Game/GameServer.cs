@@ -107,7 +107,7 @@ namespace L2dotNET.Game
 
         private void accept(TcpClient clientSocket)
         {
-            ClientManager.getInstance().addClient(clientSocket);
+            ClientManager.Instance.addClient(clientSocket);
         }
     }
 }

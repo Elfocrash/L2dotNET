@@ -8,10 +8,31 @@ namespace L2dotNET.Game
 {
     class ClientManager
     {
-        private static ClientManager cm = new ClientManager();
-        public static ClientManager getInstance()
+        private static volatile ClientManager instance;
+        private static object syncRoot = new object();
+
+        public static ClientManager Instance
         {
-            return cm;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new ClientManager();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        public ClientManager()
+        {
+
         }
 
         protected SortedList<string, DateTime> _flood = new SortedList<string, DateTime>();

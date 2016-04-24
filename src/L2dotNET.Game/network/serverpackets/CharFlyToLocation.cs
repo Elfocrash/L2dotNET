@@ -14,7 +14,7 @@ namespace L2dotNET.Game.network.l2send
 
         protected internal override void write()
         {
-            writeC(0xd4);
+            writeC(0xC5);
 
             writeD(obj.ObjID);
 
@@ -32,8 +32,8 @@ namespace L2dotNET.Game.network.l2send
 
     public enum FlyType
 	{
-		throwUp = 0,
-		throwHorizontal = 1,
-		charge = 3
-	}
+        THROW_UP,
+        THROW_HORIZONTAL,
+        DUMMY
+    }
 }
