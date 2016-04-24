@@ -72,7 +72,7 @@ namespace L2dotNET.Game
             BlowFishKeygen.genKey();
             CLogger.info("generated 20 blowfish keys");
 
-            AdminAccess.getInstance();
+            AdminAccess.Instance.Initialize(); ;
 
             QuestManager.getInstance();
 

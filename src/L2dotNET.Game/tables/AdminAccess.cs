@@ -8,47 +8,33 @@ namespace L2dotNET.Game.tables
 {
     public class AdminAccess
     {
-        private static AdminAccess aa = new AdminAccess();
-
-        public static AdminAccess getInstance()
-        {
-            return aa;
-        }
 
         private SortedList<string, _adminAlias> _commands = new SortedList<string, _adminAlias>();
         private ABTeleport Teleports;
 
-        public void request(L2Player admin, string alias)
+        private static volatile AdminAccess instance;
+        private static object syncRoot = new object();
+
+        public static AdminAccess Instance
         {
-            string cmd = alias;
-            if (alias.Contains(" "))
-                cmd = alias.Split(' ')[0];
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new AdminAccess();
+                        }
+                    }
+                }
 
-            if (!_commands.ContainsKey(cmd))
-            {
-                admin.sendMessage("Command " + cmd + " not exists.");
-                admin.sendActionFailed();
-                return;
-            }
-
-            _adminAlias processor = _commands[cmd];
-            try
-            {
-                processor.use(admin, alias);
-            }
-            catch(Exception sss)
-            {
-                admin.sendMessage("Probably syntax eror.");
-                Console.WriteLine(sss);
+                return instance;
             }
         }
 
-        private void register(_adminAlias processor)
-        {
-            _commands.Add(processor.cmd, processor);
-        }
-
-        public AdminAccess()
+        public void Initialize()
         {
             Teleports = new ABTeleport();
 
@@ -146,7 +132,42 @@ namespace L2dotNET.Game.tables
 
             register(new AA_chat());
             register(new AA_spawn());
-            CLogger.info("admin: loaded " + _commands.Count + " commands.");
+            CLogger.info("AdminAccess: loaded " + _commands.Count + " commands.");
+        }
+
+        public void request(L2Player admin, string alias)
+        {
+            string cmd = alias;
+            if (alias.Contains(" "))
+                cmd = alias.Split(' ')[0];
+
+            if (!_commands.ContainsKey(cmd))
+            {
+                admin.sendMessage("Command " + cmd + " not exists.");
+                admin.sendActionFailed();
+                return;
+            }
+
+            _adminAlias processor = _commands[cmd];
+            try
+            {
+                processor.use(admin, alias);
+            }
+            catch(Exception sss)
+            {
+                admin.sendMessage("Probably syntax eror.");
+                Console.WriteLine(sss);
+            }
+        }
+
+        private void register(_adminAlias processor)
+        {
+            _commands.Add(processor.cmd, processor);
+        }
+
+        public AdminAccess()
+        {
+            
         }
 
         public void ProcessBypass(L2Player player, int ask, int reply)

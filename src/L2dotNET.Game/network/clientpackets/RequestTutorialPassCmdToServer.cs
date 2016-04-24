@@ -56,7 +56,7 @@ namespace L2dotNET.Game.network.l2recv
                         return;
                     }
 
-                    AdminAccess.getInstance().ProcessBypassTp(player, x, y, z);
+                    AdminAccess.Instance.ProcessBypassTp(player, x, y, z);
                 }
                 else
                 {
@@ -65,7 +65,7 @@ namespace L2dotNET.Game.network.l2recv
                     int ask = int.Parse(x2[0].Substring(4));
                     int reply = int.Parse(x2[1].Substring(6));
 
-                    AdminAccess.getInstance().ProcessBypass(player, ask, reply);
+                    AdminAccess.Instance.ProcessBypass(player, ask, reply);
                 }
             }
         }

@@ -131,6 +131,7 @@
     <Compile Include="managers\PartyRoomManager.cs" />
     <Compile Include="managers\PointCmdManager.cs" />
     <Compile Include="managers\RqItemManager.cs" />
+    <Compile Include="managers\ZoneManager.cs" />
     <Compile Include="model\communities\L2Alliance.cs" />
     <Compile Include="model\communities\L2Clan.cs" />
     <Compile Include="model\events\MonsterRace.cs" />
