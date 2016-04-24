@@ -16,8 +16,6 @@ namespace L2dotNET.Game.world
             _tileY = pTileY;
         }
 
-        public ZoneManager _zoneManager = new ZoneManager();
-
         public void addSurroundingRegion(L2WorldRegion reg)
         {
             _surroundingRegions.Add(reg);
@@ -73,7 +71,6 @@ namespace L2dotNET.Game.world
 
         public void checkZones(L2Object obj, bool main)
         {
-            _zoneManager.validate(obj, obj.X, obj.Y, obj.Z);
 
             if (main)
                 foreach (L2WorldRegion wrn in _surroundingRegions)
@@ -116,9 +113,6 @@ namespace L2dotNET.Game.world
                     }
                 }
             }
-
-            if(zones)
-                _zoneManager.validate(obj, x, y, obj.Z);
                 
             if (main)
                 foreach (L2WorldRegion wrn in _surroundingRegions)

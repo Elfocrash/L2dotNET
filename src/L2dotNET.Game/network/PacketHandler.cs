@@ -248,7 +248,7 @@ namespace L2dotNET.Game.network
                 case 0xB1:
                     msg = new NetPingResponse(client, buff);
                     break;
-                case 0xB3:
+                case 0xaa:
                     msg = new BypassUserCmd(client, buff);
                     break;
                 case 0xB5:

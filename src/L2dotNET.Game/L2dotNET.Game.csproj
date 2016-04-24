@@ -110,6 +110,7 @@
     <Compile Include="DepInjectionModule.cs" />
     <Compile Include="Enums\ClassId.cs" />
     <Compile Include="Enums\ClassRace.cs" />
+    <Compile Include="Enums\ZoneId.cs" />
     <Compile Include="geo\Geo.cs" />
     <Compile Include="geo\GeoData.cs" />
     <Compile Include="geo\Layer.cs" />
@@ -313,12 +314,15 @@
     <Compile Include="model\zones\classes\water.cs" />
     <Compile Include="model\zones\classes\peace_zone.cs" />
     <Compile Include="model\zones\classes\mother_tree.cs" />
+    <Compile Include="model\zones\forms\L2ZoneForm.cs" />
     <Compile Include="model\zones\forms\ZoneCylinder.cs" />
     <Compile Include="model\zones\forms\ZoneForm.cs" />
     <Compile Include="model\zones\forms\ZoneNPoly.cs" />
+    <Compile Include="model\zones\L2SpawnZone.cs" />
+    <Compile Include="model\zones\L2ZoneType.cs" />
+    <Compile Include="model\zones\Type\L2TownZone.cs" />
     <Compile Include="model\zones\ZoneTemplate.cs" />
     <Compile Include="model\zones\L2Zone.cs" />
-    <Compile Include="model\zones\ZoneManager.cs" />
     <Compile Include="network\clientpackets\RequestSocialAction.cs" />
     <Compile Include="network\serverpackets\ExChangeNicknameNColor.cs" />
     <Compile Include="network\serverpackets\ExBrPremiumState.cs" />
@@ -731,6 +735,12 @@
     <Compile Include="templates\StatsSet.cs" />
     <Compile Include="tools\Calcs.cs" />
     <Compile Include="tools\Utilz.cs" />
+    <Compile Include="Utils\MathHelper.cs" />
+    <Compile Include="Utils\Matrix.cs" />
+    <Compile Include="Utils\Quaternion.cs" />
+    <Compile Include="Utils\Rnd.cs" />
+    <Compile Include="Utils\Vector2.cs" />
+    <Compile Include="Utils\Vector3.cs" />
     <Compile Include="world\instances\data\_test_instance.cs" />
     <Compile Include="world\instances\InstanceTemplate.cs" />
     <Compile Include="world\instances\L2Instance.cs" />

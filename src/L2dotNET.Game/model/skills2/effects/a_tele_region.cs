@@ -21,8 +21,8 @@ namespace L2dotNET.Game.model.skills2.effects
                     loc = player.Clan.hideout.ownerLoc;
             }
 
-            if (loc == null) //в город
-                loc = MapRegionTable.getInstance().getRespawn(target.X, target.Y, ((L2Player)target).Karma);
+            //if (loc == null) //ELFOC
+            //    loc = MapRegionTable.getInstance().getRespawn(target.X, target.Y, ((L2Player)target).Karma);
             
             ((L2Character)target).teleport(loc[0], loc[1], loc[2], -1);
             return nothing;

@@ -8,6 +8,7 @@ using L2dotNET.Game.model.stats;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tools;
 using L2dotNET.Game.model.playable.petai;
+using L2dotNET.Game.Enums;
 
 namespace L2dotNET.Game.world
 {
@@ -20,6 +21,7 @@ namespace L2dotNET.Game.world
         public int SpawnX;
         public int SpawnY;
         public int SpawnZ;
+        private byte[] _zones = new byte[ZoneId.GetZoneCount()];
 
         public byte IsRunning = 1;
 
@@ -126,6 +128,18 @@ namespace L2dotNET.Game.world
 
             if (newsk.OpType == TSkillOperational.P)
                 addStats(newsk, this);
+        }
+
+        public void SetInsisdeZone(ZoneId zone, bool state)
+        {
+            if (state)
+                _zones[(int)zone.Id]++;
+            else
+            {
+                _zones[(int)zone.Id]--;
+                if (_zones[(int)zone.Id] < 0)
+                    _zones[(int)zone.Id] = 0;
+            }
         }
 
         public virtual void removeSkill(int id, bool updDb, bool update)

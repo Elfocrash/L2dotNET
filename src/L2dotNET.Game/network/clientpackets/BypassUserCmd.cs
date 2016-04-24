@@ -31,7 +31,7 @@ namespace L2dotNET.Game.network.l2recv
             {
                 case 0: // [loc]
                     {
-                        int regId = MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
+                        int regId = 0;//MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
                         if (regId > 0)
                             player.sendPacket(new SystemMessage(regId).addNumber(player.X).addNumber(player.Y).addNumber(player.Z));
                         else

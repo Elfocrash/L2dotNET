@@ -89,7 +89,7 @@ namespace L2dotNET.Game.model.zones
             L2WorldRegion region = L2World.Instance.GetRegion(CylinderCenter[0], CylinderCenter[1]);
             if (region != null)
             {
-                region._zoneManager.remZone(this);
+               // region._zoneManager.remZone(this);
             }
         }
     }

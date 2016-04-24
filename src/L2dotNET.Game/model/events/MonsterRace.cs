@@ -279,7 +279,7 @@ namespace L2dotNET.Game.model.events
                 L2WorldRegion region = L2World.Instance.GetRegion(template._x[i], template._y[i]);
                 if (region != null)
                 {
-                    region._zoneManager.addZone(Zone);
+                    //region._zoneManager.addZone(Zone);
                 }
                 else
                 {

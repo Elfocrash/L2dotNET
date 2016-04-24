@@ -162,7 +162,7 @@ namespace L2dotNET.Game.tables
                         if (region != null)
                         {
                             ctx++;
-                            region._zoneManager.addZone(zone);
+                           // region._zoneManager.addZone(zone);
                         }
                         else
                         {
