@@ -1,4 +1,6 @@
 # L2dotNET
+
+[![Join the chat at https://gitter.im/Elfocrash/L2dotNET](https://badges.gitter.im/Elfocrash/L2dotNET.svg)](https://gitter.im/Elfocrash/L2dotNET?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A not so basic server for L2
 
 # What is this?
