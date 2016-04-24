@@ -1436,10 +1436,6 @@ namespace L2dotNET.Game
             {
                 sendPacket(new VehicleInfo((L2Boat)obj));
             }
-            else if (obj is L2Airship)
-            {
-                sendPacket(new ExAirShipInfo((L2Airship)obj));
-            }
         }
 
         public void untransform()
@@ -2217,7 +2213,6 @@ namespace L2dotNET.Game
         public int BoatX;
         public int BoatY;
         public int BoatZ;
-        internal L2Airship Airship;
 
         public void SetChair(L2Chair chair)
         {
@@ -2585,9 +2580,6 @@ namespace L2dotNET.Game
             {
                 if (Boat != null)
                     return Boat.ObjID;
-
-                if (Airship != null)
-                    return Airship.ObjID;
 
                 return 0;
             }

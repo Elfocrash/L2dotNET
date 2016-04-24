@@ -19,13 +19,7 @@ namespace L2dotNET.Game.network.l2recv
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player.Airship != null && player.Airship.CaptainId == player.ObjID)
-            {
-                player.Airship.Heading = degree;
-                player.Airship.broadcastPacket(new StopRotation(player.Airship.ObjID, degree, player.Airship.RotationSpeed));
-            }
-            else
-                player.broadcastPacket(new StopRotation(player.ObjID, degree, 0));
+            player.broadcastPacket(new StopRotation(player.ObjID, degree, 0));
         }
     }
 }

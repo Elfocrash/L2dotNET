@@ -21,10 +21,7 @@ namespace L2dotNET.Game.network.l2recv
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player.Airship != null && player.Airship.CaptainId == player.ObjID)
-                player.Airship.broadcastPacket(new StartRotation(player.Airship.ObjID, degree, side, player.Airship.RotationSpeed));
-            else
-                player.broadcastPacket(new StartRotation(player.ObjID, degree, side, 0));
+            player.broadcastPacket(new StartRotation(player.ObjID, degree, side, 0));
         }
     }
 }

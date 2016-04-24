@@ -293,13 +293,6 @@ namespace L2dotNET.Game.network
                         case 0x1E:
                             msg = new RequestExRqItemLink(client, buff);
                             break;
-
-
-
-                        case 0x20:
-                            msg = new MoveToLocationInAirShip(client, buff);
-                            break;
-
                         case 0x24:
                             msg = new RequestSaveInventoryOrder(client, buff);
                             break;

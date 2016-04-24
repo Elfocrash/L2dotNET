@@ -300,7 +300,6 @@
     <Compile Include="model\structures\Hideout.cs" />
     <Compile Include="model\structures\StructureTemplate.cs" />
     <Compile Include="model\templates\TObject.cs" />
-    <Compile Include="model\vehicles\L2Airship.cs" />
     <Compile Include="model\vehicles\L2Boat.cs" />
     <Compile Include="model\zones\classes\battle_zone.cs" />
     <Compile Include="model\zones\classes\monster_race.cs" />
@@ -353,7 +352,6 @@
     <Compile Include="network\clientpackets\RequestAddTradeItem.cs" />
     <Compile Include="network\clientpackets\RequestStartTrade.cs" />
     <Compile Include="network\clientpackets\RequestAutoSoulShot.cs" />
-    <Compile Include="network\clientpackets\VehicleAPI\MoveToLocationInAirShip.cs" />
     <Compile Include="network\clientpackets\VehicleAPI\RequestGetOffVehicle.cs" />
     <Compile Include="network\clientpackets\VehicleAPI\RequestGetOnVehicle.cs" />
     <Compile Include="network\clientpackets\VehicleAPI\RequestMoveToLocationInVehicle.cs" />
@@ -479,10 +477,6 @@
     <Compile Include="network\serverpackets\Ride.cs" />
     <Compile Include="network\serverpackets\ExAutoSoulShot.cs" />
     <Compile Include="network\serverpackets\PartySmallWindowUpdate.cs" />
-    <Compile Include="network\serverpackets\ExMoveToLocationInAirShip.cs" />
-    <Compile Include="network\serverpackets\ExGetOnAirShip.cs" />
-    <Compile Include="network\serverpackets\ExMoveToLocationAirShip.cs" />
-    <Compile Include="network\serverpackets\ExAirShipInfo.cs" />
     <Compile Include="network\serverpackets\VehicleStarted.cs" />
     <Compile Include="network\serverpackets\VehicleDeparture.cs" />
     <Compile Include="network\serverpackets\GetOffVehicle.cs" />

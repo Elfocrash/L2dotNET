@@ -132,39 +132,6 @@ namespace L2dotNET.Game.tables.admin
             {
                 MonsterRace.getInstance().startRace();
             }
-            else if (s == "14")
-            {
-                L2Airship ship = new L2Airship();
-                ship.X = -96622;
-                ship.Y = 261660;
-                ship.Z = -2610;
-
-                L2World.Instance.RealiseEntry(ship, null, true);
-                ship.onSpawn();
-                admin.Airship = ship;
-            }
-            else if (s == "15")
-            {
-                admin.Airship.destx = -88999;
-                admin.Airship.desty = 257167;
-                admin.Airship.destz = -2610;
-                admin.Airship.OnRoute = true;
-                admin.Airship.broadcastPacket(new ExMoveToLocationAirShip(admin.Airship));
-            }
-            else if (s == "16")
-            {
-               // admin.Airship.CaptainId = admin.ObjID;
-                admin.BoatX = admin.Airship.X - 0x16e;
-                admin.BoatY = admin.Airship.Y;
-                admin.BoatZ = admin.Airship.Z - 0x6b;
-                admin.Airship.CaptainId = admin.ObjID;
-               // admin.Airship.HelmId = admin.Inventory.getWeaponObjId();
-                admin.Airship.broadcastPacket(new ExGetOnAirShip(admin));
-                admin.Airship.broadcastUserInfo();
-               // admin.X = admin.Airship.X;
-               // admin.Y = admin.Airship.Y;
-              //  admin.Z = admin.Airship.Z;
-            }
             else if (s == "17")
             {
                 admin.Mount(NpcTable.getInstance().getNpcTemplate(13146));
