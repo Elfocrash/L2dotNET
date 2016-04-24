@@ -8,6 +8,7 @@ using L2dotNET.Game.world;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.model.communities;
 using L2dotNET.Game.network.l2send;
+using L2dotNET.Game.Managers;
 
 namespace L2dotNET.Game.model.structures
 {
@@ -37,7 +38,7 @@ namespace L2dotNET.Game.model.structures
 
         public void Message(string text)
         {
-            AnnounceManager.getInstance().announce(text);
+            AnnouncementManager.Instance.Announce(text);
         }
 
         List<L2Character> mobActive;

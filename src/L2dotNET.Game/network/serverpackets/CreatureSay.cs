@@ -7,20 +7,20 @@ namespace L2dotNET.Game.network.l2send
         private int _objectId;
         private SayIDList _type;
         private string _charName;
-        public string _text;
+        public string Text { get; set; }
 
         public CreatureSay(int id, SayIDList _type, string name, string _text)
         {
             this._objectId = id;
             this._type = _type;
             this._charName = name;
-            this._text = _text;
+            this.Text = _text;
         }
 
         public CreatureSay(SayIDList _type, string _text = "")
         {
             this._type = _type;
-            this._text = _text;
+            this.Text = _text;
         }
 
         protected internal override void write()
@@ -29,7 +29,7 @@ namespace L2dotNET.Game.network.l2send
             writeD(_objectId);
             writeD((byte)_type);
             writeS(_charName);
-            writeS(_text);
+            writeS(Text);
         }
     }
 }

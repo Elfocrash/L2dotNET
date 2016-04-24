@@ -12,5 +12,7 @@ namespace L2dotNET.Services.Contracts
         List<ServerModel> GetServerList();
 
         List<int> GetPlayersObjectIdList();
+
+        List<AnnouncementModel> GetAnnouncementsList();
     }
 }

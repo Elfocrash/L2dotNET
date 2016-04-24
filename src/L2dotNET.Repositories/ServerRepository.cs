@@ -30,5 +30,10 @@ namespace L2dotNET.Repositories
         {
             return this.db.Query<int>("select obj_Id from characters").ToList();
         }
+
+        public List<AnnouncementModel> GetAnnouncementsList()
+        {
+            return this.db.Query<AnnouncementModel>("select * from announcements").ToList();
+        }
     }
 }

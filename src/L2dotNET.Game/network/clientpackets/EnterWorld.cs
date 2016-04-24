@@ -4,6 +4,7 @@ using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.world;
 using L2dotNET.Game.model.items;
+using L2dotNET.Game.Managers;
 
 namespace L2dotNET.Game.network.l2recv
 {
@@ -42,7 +43,7 @@ namespace L2dotNET.Game.network.l2recv
 
             player.sendPacket(new SystemMessage(34));
 
-            AnnounceManager.getInstance().onEnter(player);
+            AnnouncementManager.Instance.OnEnter(player);
 
             if (player.TelbookLimit > 0)
                 player.sendPacket(new ExGetBookMarkInfo(player.TelbookLimit, player.Telbook));
@@ -82,7 +83,7 @@ namespace L2dotNET.Game.network.l2recv
             L2World.Instance.GetRegion(player.X, player.Y).checkZones(player, true);
 
             player.sendPacket(new UserInfo(player));
-           // player.sendPacket(new UserInfo(player));
+            player.sendPacket(new UserInfo(player));
 
             //player.sendPacket(new ShortCutInit(player));
             player.StartAI();

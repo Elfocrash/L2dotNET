@@ -19,6 +19,7 @@ using L2dotNET.Game.geo;
 using Ninject;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Models;
+using L2dotNET.Game.Managers;
 
 namespace L2dotNET.Game
 {
@@ -76,7 +77,7 @@ namespace L2dotNET.Game
 
             QuestManager.getInstance();
 
-            AnnounceManager.getInstance();
+            AnnouncementManager.Instance.Initialize();
 
             AllianceTable.getInstance();
             ClanTable.getInstance();
