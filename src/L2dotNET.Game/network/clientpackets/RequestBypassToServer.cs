@@ -165,7 +165,7 @@ namespace L2dotNET.Game.network.l2recv
             else if (_alias.StartsWith("_mr"))
             {
                 npc = getNpc();
-                MonsterRace.getInstance().OnBypass(player, npc, _alias);
+                MonsterRace.Instance.OnBypass(player, npc, _alias);
             }
             else
                 CLogger.warning("Unknown bypass '"+_alias+"'");

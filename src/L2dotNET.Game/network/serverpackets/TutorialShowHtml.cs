@@ -40,7 +40,7 @@ namespace L2dotNET.Game.network.l2send
 
         private void render(L2Player player, string file, string back, bool admin)
         {
-            Content = admin ? HtmCache.getInstance().getHtmAdmin(player._locale, file) : HtmCache.getInstance().getHtm(player._locale, file);
+            Content = admin ? HtmCache.Instance.getHtmAdmin(player._locale, file) : HtmCache.Instance.getHtm(player._locale, file);
 
             if (admin)
             {

@@ -43,7 +43,7 @@ namespace L2dotNET.Game
         public void addClient(TcpClient client)
         {
             if(_banned == null)
-                _banned = NetworkBlock.getInstance();
+                _banned = NetworkBlock.Instance;
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
 
@@ -62,7 +62,7 @@ namespace L2dotNET.Game
 
             _flood.Add(ip, DateTime.Now.AddMilliseconds(3000));
 
-            if (!_banned.allowed(ip))
+            if (!_banned.Allowed(ip))
             {
                 client.Close();
                 CLogger.error("NetworkBlock: connection attemp failed. "+ip+" banned.");

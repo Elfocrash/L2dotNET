@@ -157,7 +157,7 @@ namespace L2dotNET.Game.tables
                   //  throw asd;
                 }
 
-            obj = NpcTable.getInstance().spawnNpc(NpcId, sp[0], sp[1], sp[2], (zone == null) ? h : zone.rnd.Next(64000));
+            obj = NpcTable.Instance.spawnNpc(NpcId, sp[0], sp[1], sp[2], (zone == null) ? h : zone.rnd.Next(64000));
 
             if (obj == null)
                 return;

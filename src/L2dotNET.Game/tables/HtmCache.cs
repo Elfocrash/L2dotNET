@@ -10,11 +10,26 @@ namespace L2dotNET.Game.tables
 {
     public class HtmCache
     {
-        private static HtmCache cache = new HtmCache();
+        private static volatile HtmCache instance;
+        private static object syncRoot = new object();
 
-        public static HtmCache getInstance()
+        public static HtmCache Instance
         {
-            return cache;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new HtmCache();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
         private SortedList<string, string> _htms = new SortedList<string, string>();
@@ -24,10 +39,10 @@ namespace L2dotNET.Game.tables
         bool complete = false;
         public HtmCache()
         {
-            load();
+
         }
 
-        public void load()
+        public void Initialize()
         {
             try
             {

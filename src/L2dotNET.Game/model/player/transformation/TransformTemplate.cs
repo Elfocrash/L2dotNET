@@ -27,7 +27,7 @@ namespace L2dotNET.Game.model.player.transformation
         {
             player.TransformID = id;
             player.MountType = MoveMode;
-            player.MountedTemplate = NpcTable.getInstance().getNpcTemplate(npcId);
+            player.MountedTemplate = NpcTable.Instance.getNpcTemplate(npcId);
             player.broadcastUserInfo();
 
             if (_skills != null && _skills.Count > 0)

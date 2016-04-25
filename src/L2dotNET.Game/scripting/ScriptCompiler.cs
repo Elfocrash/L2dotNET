@@ -38,10 +38,11 @@ namespace L2dotNET.Game.scripting
                 CompilerResults result = provider.CompileAssemblyFromFile(cp, fname);
 
                 if (result.Errors.Count > 0)
-                    CLogger.error("ScriptCompiler: Failed to compile " + fname + "\n");
+                    CLogger.error($"ScriptCompiler: Failed to compile { fname }.");
                 else
                     objectList.Add(result.CompiledAssembly.CreateInstance(info.Name.Remove(info.Name.Length - 3)));
             }
+            CLogger.info($"Script Compiler: Compiled {objectList.Count} scripted quests.");
 
             return objectList.ToArray();
         }

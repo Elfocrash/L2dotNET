@@ -11,10 +11,26 @@ namespace L2dotNET.Game.network.loginauth
 {
     public class AuthThread
     {
-        private static AuthThread at = new AuthThread();
-        public static AuthThread getInstance()
+        private static volatile AuthThread instance;
+        private static object syncRoot = new object();
+
+        public static AuthThread Instance
         {
-            return at;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new AuthThread();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
         protected TcpClient lclient;
@@ -28,10 +44,10 @@ namespace L2dotNET.Game.network.loginauth
 
         public AuthThread()
         {
-            connect();
+            
         }
 
-        public void connect()
+        public void Initialize()
         {
             IsConnected = false;
             try
@@ -68,7 +84,7 @@ namespace L2dotNET.Game.network.loginauth
 
         private void ltimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            connect();
+            Initialize();
         }
 
         public void read()
@@ -123,7 +139,7 @@ namespace L2dotNET.Game.network.loginauth
                 return;
 
             CLogger.error("AuthThread: reconnecting...");
-            connect();
+            Initialize();
         }
 
         public void sendPacket(GameServerNetworkPacket pk)

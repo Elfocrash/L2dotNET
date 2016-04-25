@@ -15,10 +15,26 @@ namespace L2dotNET.Game.model.events
 {
     public class MonsterRace
     {
-        private static MonsterRace instance = new MonsterRace();
-        public static MonsterRace getInstance()
+        private static volatile MonsterRace instance;
+        private static object syncRoot = new object();
+
+        public static MonsterRace Instance
         {
-            return instance;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new MonsterRace();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
         public string beginMusic = "S_Race", beginSound = "ItemSound2.race_start", endSound = "ItemSound2.race_end";
@@ -29,6 +45,11 @@ namespace L2dotNET.Game.model.events
         public int TICKET = 4443, TICKET_DOUBLE = 4444;
 
         public MonsterRace()
+        {
+            
+        }
+
+        public void Initialize()
         {
             tracks = new int[8][];
             tracks[0] = new int[] { 14107, 182287, -3586, 12107, 182287, -3586 };
@@ -41,10 +62,10 @@ namespace L2dotNET.Game.model.events
             tracks[7] = new int[] { 14107, 181881, -3586, 12107, 181881, -3586 };
 
             zoneLoc = new List<int[]>();
-            zoneLoc.Add(new int[] { 11296, 181024, -3800, -3300});
-            zoneLoc.Add(new int[] { 14640, 180868, -3800, -3300});
-            zoneLoc.Add(new int[] { 14692, 183332, -3800, -3300});
-            zoneLoc.Add(new int[] { 11304, 183152, -3800, -3300});
+            zoneLoc.Add(new int[] { 11296, 181024, -3800, -3300 });
+            zoneLoc.Add(new int[] { 14640, 180868, -3800, -3300 });
+            zoneLoc.Add(new int[] { 14692, 183332, -3800, -3300 });
+            zoneLoc.Add(new int[] { 11304, 183152, -3800, -3300 });
 
             runners = new MonsterRunner[24];
             runners[0] = new MonsterRunner(31003, 712, 130, 70);
@@ -74,21 +95,18 @@ namespace L2dotNET.Game.model.events
             GenZone();
             GenNpc();
 
-            CLogger.info("MonsterRace loaded.");
-        }
-
-        public void Spawn()
-        {
             L2World.Instance.RealiseEntry(raceManager1, null, true);
             raceManager1.onSpawn();
             L2World.Instance.RealiseEntry(raceManager2, null, true);
             raceManager2.onSpawn();
+
+            CLogger.info("MonsterRace loaded.");
         }
 
         private L2RaceManager raceManager1, raceManager2;
         private void GenNpc()
         {
-            NpcTemplate nt = NpcTable.getInstance().getNpcTemplate(30995);
+            NpcTemplate nt = NpcTable.Instance.getNpcTemplate(30995);
 
             raceManager1 = new L2RaceManager();
             raceManager1.setTemplate(nt);
@@ -456,7 +474,7 @@ namespace L2dotNET.Game.model.events
         public MonsterRunner(int npcId, int sys_string, int max_speed, int min_speed)
         {
             this.npcId = npcId;
-            this.npcTemplate = NpcTable.getInstance().getNpcTemplate(npcId);
+            this.npcTemplate = NpcTable.Instance.getNpcTemplate(npcId);
             this.sys_string = sys_string;
             this.max_speed = max_speed;
             this.min_speed = min_speed;

@@ -20,6 +20,7 @@ using Ninject;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Models;
 using L2dotNET.Game.Managers;
+using System.Net;
 
 namespace L2dotNET.Game
 {
@@ -43,21 +44,20 @@ namespace L2dotNET.Game
 
             CharTemplateTable.Instance.Initialize();
 
-            NetworkBlock.getInstance();
-            GameTime.getInstance();
+            NetworkBlock.Instance.Initialize();
+            GameTime.Instance.Initialize();
 
             IdFactory.Instance.Initialize();
 
             L2World.Instance.Initialize();
 
-            // MapRegionTable.getInstance();
-            ZoneTable.getInstance();
+            MapRegionTable.Instance.Initialize();
+            ZoneTable.Instance.Initialize();
 
-            NpcTable.getInstance();
+            NpcTable.Instance.Initialize();
             NpcData.getInstance();
             //  SpawnTable.getInstance();
-            StaticObjTable.getInstance().read();
-            StructureTable.getInstance().read();
+            
             //  TSkillTable.getInstance();
             ItemTable.getInstance();
             ItemHandler.getInstance();
@@ -65,13 +65,10 @@ namespace L2dotNET.Game
             Capsule.getInstance();
             RecipeTable.getInstance();
 
-            MonsterRace.getInstance();
-
             AIManager.getInstance();
 
-
-            BlowFishKeygen.genKey();
-            CLogger.info("generated 20 blowfish keys");
+            BlowFishKeygen.GenerateKeys();
+            CLogger.info("Generated 20 Blowfish Keys");
 
             AdminAccess.Instance.Initialize(); ;
 
@@ -83,30 +80,30 @@ namespace L2dotNET.Game
             ClanTable.getInstance();
 
             CLogger.info("NpcServer: ");
-            StaticObjTable.getInstance().Spawn();
-            MonsterRace.getInstance().Spawn();
+            StaticObjTable.Instance.Initialize();
+            MonsterRace.Instance.Initialize();
             //  SpawnTable.getInstance().Spawn();
-            StructureTable.getInstance().init();
+            StructureTable.Instance.Initialize();
 
-            HtmCache.getInstance();
+            HtmCache.Instance.Initialize();
 
-            AuthThread.getInstance();
+            AuthThread.Instance.Initialize();
 
             //   GeoData.getInstance();
 
-            CLogger.extra_info("listening game clients on port " + Cfg.SERVER_PORT);
-            _listener = new TcpListener(Cfg.SERVER_PORT);
+            CLogger.extra_info("Listening Gameservers on port " + Cfg.SERVER_PORT);
+            _listener = new TcpListener(IPAddress.Any, Cfg.SERVER_PORT);
             _listener.Start();
 
             TcpClient clientSocket = default(TcpClient);
             while (true)
             {
                 clientSocket = _listener.AcceptTcpClient();
-                accept(clientSocket);
+                Accept(clientSocket);
             }
         }
 
-        private void accept(TcpClient clientSocket)
+        private void Accept(TcpClient clientSocket)
         {
             ClientManager.Instance.addClient(clientSocket);
         }

@@ -13,15 +13,32 @@ namespace L2dotNET.Game.tables
 {
     class NpcTable
     {
-        private static NpcTable it = new NpcTable();
-        public static NpcTable getInstance()
+        private static volatile NpcTable instance;
+        private static object syncRoot = new object();
+
+        public static NpcTable Instance
         {
-            return it;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new NpcTable();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
         public readonly SortedList<int, NpcTemplate> _npcs = new SortedList<int, NpcTemplate>();
         public readonly SortedList<string, NpcVid> npcVids = new SortedList<string, NpcVid>();
-        public void read()
+
+        public void Initialize()
         {
             FileInfo file = new FileInfo(@"scripts\npc_vid.txt");
             using (StreamReader sreader = file.OpenText())
@@ -441,7 +458,7 @@ namespace L2dotNET.Game.tables
 
         public NpcTable()
         {
-            read();
+
         }
 
         public NpcTemplate getNpcTemplate(int id)

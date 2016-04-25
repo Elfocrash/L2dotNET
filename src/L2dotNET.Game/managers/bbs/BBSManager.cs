@@ -11,7 +11,7 @@ namespace L2dotNET.Game.managers.bbs
 
         public void RequestShow(L2Player player, int type)
         {
-            player.ShowHtmBBS("<html><body><br><br><center>Welcome to the community board. Привет</center><br><br></body></html>");
+            player.ShowHtmBBS("<html><body><br><br><center>Welcome to the community board</center><br><br></body></html>");
         }
     }
 }

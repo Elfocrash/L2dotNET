@@ -128,7 +128,7 @@ namespace L2dotNET.Game.tables
 
         public L2Object spawnOne(int id, int x, int y, int z, int h)
         {
-            NpcTemplate template = NpcTable.getInstance().getNpcTemplate(id);
+            NpcTemplate template = NpcTable.Instance.getNpcTemplate(id);
 
             L2Warrior o = new L2Warrior();
             o.setTemplate(template);

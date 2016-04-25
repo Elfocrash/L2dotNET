@@ -52,7 +52,7 @@ namespace L2dotNET.Game.network.l2recv
                 }
 
                 getClient().sendPacket(new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars, getClient()._sessionId));
-                AuthThread.getInstance().setInGameAccount(getClient().AccountName, true);
+                AuthThread.Instance.setInGameAccount(getClient().AccountName, true);
             }
             else
                 getClient().termination();

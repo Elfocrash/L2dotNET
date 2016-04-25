@@ -67,8 +67,8 @@ namespace L2dotNET.Game.tables
                         count++;
                     }
                 }
-
             }
+            CLogger.info($"MapRegionTable: Loaded {count} regions.");
         }
 
         public static int GetMapRegion(int posX, int posY)

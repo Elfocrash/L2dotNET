@@ -7,7 +7,7 @@ namespace L2dotNET.Game.model.npcs
         private MonsterRace monsterRace;
         public L2RaceManager()
         {
-            monsterRace = MonsterRace.getInstance();
+            monsterRace = MonsterRace.Instance;
         }
 
         public override void NotifyAction(L2Player player)

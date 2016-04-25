@@ -10,24 +10,28 @@ namespace L2dotNET.Game.controllers
     [Synchronization]
     public class GameTime
     {
-        private static GameTime instance = new GameTime();
-        public static GameTime getInstance()
+        private static volatile GameTime instance;
+        private static object syncRoot = new object();
+
+        public static GameTime Instance
         {
-            return instance;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new GameTime();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
-        /*
-         * 4ч сутки
-         * 
-         * 3ч день
-         * 1ч ночь
-         * 
-         * 86400 сек в реальных сутках
-         * 14400 сек в сутках игрового времени
-         * 10800 сек игрового на день
-         * 3600 сек игрового на ночь
-         * 600 сек в игровом часе
-         * */
         private int Time;
         private GameServerNetworkPacket DayPk = new SunRise();
         private GameServerNetworkPacket NightPk = new SunSet();
@@ -39,6 +43,11 @@ namespace L2dotNET.Game.controllers
         private const int SEC_SCALE = 1800;
 
         public GameTime()
+        {
+           
+        }
+
+        public void Initialize()
         {
             serverStartUp = DateTime.Now;
             Time = 5800 + 0; // 10800 18:00 вечер
@@ -83,7 +92,7 @@ namespace L2dotNET.Game.controllers
                 p.NotifyDayChange(NightPk);
         }
         
-        public void enterWorld(L2Player p)
+        public void EnterWorld(L2Player p)
         {
             p.NotifyDayChange(Night ? NightPk : DayPk);
         }

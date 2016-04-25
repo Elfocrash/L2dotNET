@@ -75,7 +75,7 @@ namespace L2dotNET.Game.network.l2recv
           //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
             player.sendActionFailed();
 
-            GameTime.getInstance().enterWorld(player);
+            GameTime.Instance.EnterWorld(player);
 
             L2World.Instance.RealiseEntry(player, null, true);
             player.timer();

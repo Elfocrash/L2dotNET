@@ -17,7 +17,7 @@ namespace L2dotNET.Game.network.l2recv
 
         public override void run()
         {
-            AuthThread.getInstance().setInGameAccount(Client.AccountName, false);
+            AuthThread.Instance.setInGameAccount(Client.AccountName, false);
 
             L2Player player = Client.CurrentPlayer;
 

@@ -18,7 +18,7 @@ namespace L2dotNET.Game.model.structures
             if (npcs == null)
                 npcs = new SortedList<int, L2Citizen>();
 
-            NpcTemplate t = NpcTable.getInstance().getNpcTemplate(id);
+            NpcTemplate t = NpcTable.Instance.getNpcTemplate(id);
             L2Citizen npc = null;
             switch (t.NpcId)
             {
@@ -32,7 +32,7 @@ namespace L2dotNET.Game.model.structures
 
             npc.setTemplate(t);
 
-            StructureSpawn ss = StructureTable.getInstance().getSpawn(id);
+            StructureSpawn ss = StructureTable.Instance.GetSpawn(id);
             npc.X = ss.x;
             npc.Y = ss.y;
             npc.Z = ss.z;
@@ -59,7 +59,7 @@ namespace L2dotNET.Game.model.structures
             if (doors == null)
                 doors = new List<L2Door>();
 
-            L2Door door = StaticObjTable.getInstance().getDoor(id);
+            L2Door door = StaticObjTable.Instance.GetDoor(id);
             door.structure = this;
             doors.Add(door);
         }
