@@ -149,7 +149,7 @@ namespace L2dotNET.Game.geo
             return NgetType(x - MAP_MIN_X >> 4, y - MAP_MIN_Y >> 4);
         }
 
-        public int getHeight(Location loc)
+        public int getHeight(GeoLocation loc)
         {
             return getHeight(loc.getX(), loc.getY(), loc.getZ());
         }
@@ -169,52 +169,52 @@ namespace L2dotNET.Game.geo
             return NgetNSWE(x - MAP_MIN_X >> 4, y - MAP_MIN_Y >> 4, z);
         }
 
-        public Location moveCheck(int x, int y, int z, int tx, int ty)
+        public GeoLocation moveCheck(int x, int y, int z, int tx, int ty)
         {
             return moveCheck(x, y, z, tx, ty, false, false, false);
         }
 
-        public Location moveCheck(int x, int y, int z, int tx, int ty, bool returnPrev)
+        public GeoLocation moveCheck(int x, int y, int z, int tx, int ty, bool returnPrev)
         {
             return moveCheck(x, y, z, tx, ty, false, false, returnPrev);
         }
 
-        public Location moveCheckWithCollision(int x, int y, int z, int tx, int ty)
+        public GeoLocation moveCheckWithCollision(int x, int y, int z, int tx, int ty)
         {
             return moveCheck(x, y, z, tx, ty, true, false, false);
         }
 
-        public Location moveCheckWithCollision(int x, int y, int z, int tx, int ty, bool returnPrev)
+        public GeoLocation moveCheckWithCollision(int x, int y, int z, int tx, int ty, bool returnPrev)
         {
             return moveCheck(x, y, z, tx, ty, true, false, returnPrev);
         }
 
-        public Location moveCheckBackward(int x, int y, int z, int tx, int ty)
+        public GeoLocation moveCheckBackward(int x, int y, int z, int tx, int ty)
         {
             return moveCheck(x, y, z, tx, ty, false, true, false);
         }
 
-        public Location moveCheckBackward(int x, int y, int z, int tx, int ty, bool returnPrev)
+        public GeoLocation moveCheckBackward(int x, int y, int z, int tx, int ty, bool returnPrev)
         {
             return moveCheck(x, y, z, tx, ty, false, true, returnPrev);
         }
 
-        public Location moveCheckBackwardWithCollision(int x, int y, int z, int tx, int ty)
+        public GeoLocation moveCheckBackwardWithCollision(int x, int y, int z, int tx, int ty)
         {
             return moveCheck(x, y, z, tx, ty, true, true, false);
         }
 
-        public Location moveCheckBackwardWithCollision(int x, int y, int z, int tx, int ty, bool returnPrev)
+        public GeoLocation moveCheckBackwardWithCollision(int x, int y, int z, int tx, int ty, bool returnPrev)
         {
             return moveCheck(x, y, z, tx, ty, true, true, returnPrev);
         }
 
-        public Location moveInWaterCheck(int x, int y, int z, int tx, int ty, int tz)
+        public GeoLocation moveInWaterCheck(int x, int y, int z, int tx, int ty, int tz)
         {
             return MoveInWaterCheck(x - MAP_MIN_X >> 4, y - MAP_MIN_Y >> 4, z, tx - MAP_MIN_X >> 4, ty - MAP_MIN_Y >> 4, tz);
         }
 
-        public Location moveCheckForAI(Location loc1, Location loc2)
+        public GeoLocation moveCheckForAI(GeoLocation loc1, GeoLocation loc2)
         {
             return moveCheckForAI(loc1.getX() - MAP_MIN_X >> 4, loc1.getY() - MAP_MIN_Y >> 4, loc1.getZ(), loc2.getX() - MAP_MIN_X >> 4, loc2.getY() - MAP_MIN_Y >> 4);
         }
@@ -239,7 +239,7 @@ namespace L2dotNET.Game.geo
             int my = y - MAP_MIN_Y >> 4;
             int tmx = tx - MAP_MIN_X >> 4;
             int tmy = ty - MAP_MIN_Y >> 4;
-            Location result = canSee(mx, my, z, tmx, tmy, tz);
+            GeoLocation result = canSee(mx, my, z, tmx, tmy, tz);
             bool ret = result.equals(tmx, tmy, tz);
             if (debug)
                 Console.WriteLine("cantSee " + ret + " [" + result.h + "]: " + x + "," + y + "," + z + "->" + tx + "," + ty + "," + tz + " | " + result.toXYZString() + " =? " + tmx + "," + tmx + "," + tz);
@@ -377,7 +377,7 @@ namespace L2dotNET.Game.geo
             return ((layer & 0x0F) & directionNSWE) != 0 || (zdiff > -64 /*&& zdiff != 0*/); // пофигу все плоские стенки и заборчики
         }
 
-        public Location canSee(int _x, int _y, int _z, int _tx, int _ty, int _tz)
+        public GeoLocation canSee(int _x, int _y, int _z, int _tx, int _ty, int _tz)
         {
             int diff_x = _tx - _x, diff_y = _ty - _y, diff_z = _tz - _z;
             int dx = Math.Abs(diff_x), dy = Math.Abs(diff_y);
@@ -387,7 +387,7 @@ namespace L2dotNET.Game.geo
             short[] curr_layers = new short[MAX_LAYERS + 1];
             NGetLayers(curr_x, curr_y, curr_layers);
 
-            Location result = new Location(_x, _y, _z, -1);
+            GeoLocation result = new GeoLocation(_x, _y, _z, -1);
 
             if (steps == 0)
             {
@@ -483,7 +483,7 @@ namespace L2dotNET.Game.geo
             return result;
         }
 
-        private Location MoveInWaterCheck(int x, int y, int z, int tx, int ty, int tz)
+        private GeoLocation MoveInWaterCheck(int x, int y, int z, int tx, int ty, int tz)
         {
             int dx = tx - x;
             int dy = ty - y;
@@ -493,7 +493,7 @@ namespace L2dotNET.Game.geo
             dx = Math.Abs(dx);
             dy = Math.Abs(dy);
             if (dx + dy == 0)
-                return new Location(x, y, z).geo2world();
+                return new GeoLocation(x, y, z).geo2world();
             float inc_z_for_x = dx == 0 ? 0 : dz / dx;
             float inc_z_for_y = dy == 0 ? 0 : dz / dy;
             int prev_x;
@@ -530,7 +530,7 @@ namespace L2dotNET.Game.geo
                         next_z += (int)inc_z_for_x;//kid
                     }
                     if (!NLOS_WATER(x, y, z, next_x, next_y, next_z))
-                        return new Location(prev_x, prev_y, prev_z).geo2world();
+                        return new GeoLocation(prev_x, prev_y, prev_z).geo2world();
                 }
             }
             else
@@ -561,10 +561,10 @@ namespace L2dotNET.Game.geo
                         next_z += (int)inc_z_for_y;//kid
                     }
                     if (!NLOS_WATER(x, y, z, next_x, next_y, next_z))
-                        return new Location(prev_x, prev_y, prev_z).geo2world();
+                        return new GeoLocation(prev_x, prev_y, prev_z).geo2world();
                 }
             }
-            return new Location(next_x, next_y, next_z).geo2world();
+            return new GeoLocation(next_x, next_y, next_z).geo2world();
         }
 
         public int canMove(int __x, int __y, int _z, int __tx, int __ty, int _tz, bool withCollision)
@@ -619,7 +619,7 @@ namespace L2dotNET.Game.geo
             return dz > 64 ? dz * 1000 : 0;
         }
 
-        public Location moveCheck(int __x, int __y, int _z, int __tx, int __ty, bool withCollision, bool backwardMove, bool returnPrev)
+        public GeoLocation moveCheck(int __x, int __y, int _z, int __tx, int __ty, bool withCollision, bool backwardMove, bool returnPrev)
         {
             int _x = __x - MAP_MIN_X >> 4;
             int _y = __y - MAP_MIN_Y >> 4;
@@ -630,7 +630,7 @@ namespace L2dotNET.Game.geo
             int dx = Math.Abs(diff_x), dy = Math.Abs(diff_y);
             float steps = Math.Max(dx, dy);
             if (steps == 0)
-                return new Location(__x, __y, _z);
+                return new GeoLocation(__x, __y, _z);
 
             float step_x = diff_x / steps, step_y = diff_y / steps;
             int curr_x = _x, curr_y = _y, curr_z = _z;
@@ -680,12 +680,12 @@ namespace L2dotNET.Game.geo
             }
 
             if (curr_x == _x && curr_y == _y)
-                return new Location(__x, __y, _z);
+                return new GeoLocation(__x, __y, _z);
             //log.info("move" + (backwardMove ? " back" : "") + (withCollision ? " +collision" : "") + ": " + curr_x + " " + curr_y + " " + curr_z + " / xyz: " + __x + " " + __y + " " + _z + " / to xy: " + __tx + " " + __ty + " / geo xy: " + _x + " " + _y + " / geo to xy: " + _tx + " " + _ty);
-            return new Location(curr_x, curr_y, curr_z).geo2world();
+            return new GeoLocation(curr_x, curr_y, curr_z).geo2world();
         }
 
-        private Location moveCheckForAI(int x, int y, int z, int tx, int ty)
+        private GeoLocation moveCheckForAI(int x, int y, int z, int tx, int ty)
         {
             int dx = tx - x;
             int dy = ty - y;
@@ -694,7 +694,7 @@ namespace L2dotNET.Game.geo
             dx = Math.Abs(dx);
             dy = Math.Abs(dy);
             if (dx + dy < 2 || dx == 2 && dy == 0 || dx == 0 && dy == 2)
-                return new Location(x, y, z).geo2world();
+                return new GeoLocation(x, y, z).geo2world();
             int prev_x = x;
             int prev_y = y;
             int prev_z = z;
@@ -720,7 +720,7 @@ namespace L2dotNET.Game.geo
                         next_x += inc_x;
                         next_z = NcanMoveNextForAI(x, y, z, next_x, next_y);
                         if (next_z == 0)
-                            return new Location(prev_x, prev_y, prev_z).geo2world();
+                            return new GeoLocation(prev_x, prev_y, prev_z).geo2world();
                         next_y += inc_y;
                     }
                     else
@@ -730,7 +730,7 @@ namespace L2dotNET.Game.geo
                     }
                     next_z = NcanMoveNextForAI(x, y, z, next_x, next_y);
                     if (next_z == 0)
-                        return new Location(prev_x, prev_y, prev_z).geo2world();
+                        return new GeoLocation(prev_x, prev_y, prev_z).geo2world();
                 }
             }
             else
@@ -752,7 +752,7 @@ namespace L2dotNET.Game.geo
                         next_x += inc_x;
                         next_z = NcanMoveNextForAI(x, y, z, next_x, next_y);
                         if (next_z == 0)
-                            return new Location(prev_x, prev_y, prev_z).geo2world();
+                            return new GeoLocation(prev_x, prev_y, prev_z).geo2world();
                         next_y += inc_y;
                     }
                     else
@@ -762,10 +762,10 @@ namespace L2dotNET.Game.geo
                     }
                     next_z = NcanMoveNextForAI(x, y, z, next_x, next_y);
                     if (next_z == 0)
-                        return new Location(prev_x, prev_y, prev_z).geo2world();
+                        return new GeoLocation(prev_x, prev_y, prev_z).geo2world();
                 }
             }
-            return new Location(next_x, next_y, next_z).geo2world();
+            return new GeoLocation(next_x, next_y, next_z).geo2world();
         }
 
         private bool NcanMoveNextExCheck(int x, int y, int h, int nextx, int nexty, int hexth, short[] temp_layers)

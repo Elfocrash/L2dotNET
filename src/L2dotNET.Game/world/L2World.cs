@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using L2dotNET.Game.logger;
-using L2dotNET.Game.world.instances;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.network;
 using System.Linq;

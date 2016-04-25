@@ -19,9 +19,6 @@ namespace L2dotNET.Game.network
                 str += b.ToString("x2") + " ";
 
             Console.WriteLine(str);
-            //File.WriteAllText("header_" + buff[0].ToString("x2")+".txt", str);
-
-
             GameServerNetworkRequest msg = null;
             switch (id)
             {
@@ -313,53 +310,9 @@ namespace L2dotNET.Game.network
                         case 0x4E:
                             msg = new RequestExCancelEnchantItem(client, buff);
                             break;
-
-                        //case 0x51:
-                        //    byte id3 = buff[3];
-                        //    cninfo = "handlepacket: request unk id3 " + id3.ToString("x2") + " size " + buff.Length;
-
-                        //    switch (id3)
-                        //    {
-                        //        case 0:
-                        //            msg = new RequestBookMarkSlotInfo(client, buff);
-                        //            break;
-                        //        case 1:
-                        //            msg = new RequestSaveBookMarkSlot(client, buff);
-                        //            break;
-                        //        case 2:
-                        //            msg = new RequestModifyBookMarkSlot(client, buff);
-                        //            break;
-                        //        case 3:
-                        //            msg = new RequestDeleteBookMarkSlot(client, buff);
-                        //            break;
-                        //        case 4:
-                        //            msg = new RequestTeleportBookMark(client, buff);
-                        //            break;
-                        //    }
-                        //    break;
-
                         case 0x58:
                             msg = new RequestDominionInfo(client, buff);
                             break;
-
-                        case 0x65:
-                            msg = new RequestPostItemList(client, buff);
-                            break;
-                        case 0x67:
-                            msg = new RequestReceivedPostList(client, buff);
-                            break;
-                        case 0x69:
-                            msg = new RequestReceivedPost(client, buff);
-                            break;
-
-                        case 0x6C:
-                            msg = new RequestSentPostList(client, buff);
-                            break;
-
-                        case 0x6E:
-                            msg = new RequestSentPost(client, buff);
-                            break;
-
                         case 0x76:
                             msg = new RequestBuySellUIClose(client, buff);
                             break;
@@ -370,45 +323,22 @@ namespace L2dotNET.Game.network
                         case 0x79:
                             msg = new AnswerPartyLootModification(client, buff);
                             break;
-
-                        case 0x7F:
-                            msg = new RequestBR_GamePoint(client, buff);
-                            break;
-                        case 0x80:
-                            msg = new RequestBR_ProductList(client, buff);
-                            break;
-                        case 0x81:
-                            msg = new RequestBR_ProductInfo(client, buff);
-                            break;
-                        case 0x82:
-                            msg = new RequestBR_BuyProduct(client, buff);
-                            break;
-                        case 0x83:
-                            msg = new RequestBR_RecentProductList(client, buff);
-                            break;
                         case 0x84:
                             msg = new RequestBR_MinigameLoadScores(client, buff);
                             break;
                         case 0x85:
                             msg = new RequestBR_MinigameInsertScore(client, buff);
                             break;
-
                         default:
-                           // out_debug(2, buff);
                             break;
                     }
                     break;
                 default:
-                  //  out_debug(1, buff);
                     break;
             }
-           // Console.WriteLine(cninfo + ", " + cnt);
             if (msg == null)
             {
                 Console.WriteLine(cninfo + ", " + cnt);
-
-             //   out_debug(0, buff);
-              //  cnt++;
                 return;
             }
 

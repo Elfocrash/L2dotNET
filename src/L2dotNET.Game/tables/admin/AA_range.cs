@@ -105,10 +105,6 @@ namespace L2dotNET.Game.tables.admin
                 admin.destz = admin.Z;
                 admin.sendPacket(new CharMoveToLocation(admin));
             }
-            else if (s == "10")
-            {
-                InstanceManager.getInstance().create(1, admin);
-            }
             else if (s == "11")
             {
                 admin.Boat.destx = -121385;

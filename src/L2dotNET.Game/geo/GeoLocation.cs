@@ -5,7 +5,7 @@ using System.Text;
 
 namespace L2dotNET.Game.geo
 {
-    public class Location
+    public class GeoLocation
     {
         protected int x;
         protected int y;
@@ -13,7 +13,7 @@ namespace L2dotNET.Game.geo
         public int h = 0;
         public int r = 0;
 
-        public Location()
+        public GeoLocation()
         {
             x = 0;
             y = 0;
@@ -21,7 +21,7 @@ namespace L2dotNET.Game.geo
             h = 0;
         }
 
-        public Location(int[] point)
+        public GeoLocation(int[] point)
         {
             h = 0;
             x = point[0];
@@ -30,14 +30,14 @@ namespace L2dotNET.Game.geo
             h = point[3];
         }
 
-        public Location(int locX, int locY, int locZ)
+        public GeoLocation(int locX, int locY, int locZ)
         {
             x = locX;
             y = locY;
             z = locZ;
         }
 
-        public Location(int locX, int locY, int locZ, int heading)
+        public GeoLocation(int locX, int locY, int locZ, int heading)
         {
             x = locX;
             y = locY;
@@ -45,7 +45,7 @@ namespace L2dotNET.Game.geo
             h = heading;
         }
 
-        public bool equals(Location loc)
+        public bool equals(GeoLocation loc)
         {
             return loc.getX() == x && loc.getY() == y && loc.getZ() == z;
         }
@@ -55,43 +55,43 @@ namespace L2dotNET.Game.geo
             return _x == x && _y == y && _z == z;
         }
 
-        public Location changeZ(int zDiff)
+        public GeoLocation changeZ(int zDiff)
         {
             z += zDiff;
             return this;
         }
 
-        public Location setX(int x)
+        public GeoLocation setX(int x)
         {
             this.x = x;
             return this;
         }
 
-        public Location setY(int y)
+        public GeoLocation setY(int y)
         {
             this.y = y;
             return this;
         }
 
-        public Location setZ(int z)
+        public GeoLocation setZ(int z)
         {
             this.z = z;
             return this;
         }
 
-        public Location setH(int h)
+        public GeoLocation setH(int h)
         {
             this.h = h;
             return this;
         }
 
-        public Location setR(int r)
+        public GeoLocation setR(int r)
         {
             this.r = r;
             return this;
         }
 
-        public void set(Location l)
+        public void set(GeoLocation l)
         {
             x = l.getX();
             y = l.getY();
@@ -143,7 +143,7 @@ namespace L2dotNET.Game.geo
             return "Coords(" + x + "," + y + "," + z + "," + h + ")";
         }
 
-        public double distance(Location loc)
+        public double distance(GeoLocation loc)
         {
             return distance(loc.x, loc.y);
         }
@@ -160,7 +160,7 @@ namespace L2dotNET.Game.geo
             return x + "," + y + "," + z;
         }
 
-        public Location geo2world()
+        public GeoLocation geo2world()
         {
             // размер одного блока 16*16 точек, +8*+8 это его средина
             x = (x << 4) + GeoData.MAP_MIN_X + 8;

@@ -5,7 +5,6 @@ using L2dotNET.Game.model.player.partials;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.world;
-using L2dotNET.Game.world.instances;
 using L2dotNET.Game.geo;
 
 namespace L2dotNET.Game.network.l2recv
