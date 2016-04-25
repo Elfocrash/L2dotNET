@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using L2dotNET.Auth.basetemplate;
 using L2dotNET.Auth.data;
 using L2dotNET.Auth.gscommunication;
 using L2dotNET.Auth.serverpackets;
@@ -72,7 +71,7 @@ namespace L2dotNET.Auth.rcv_l2
                     return;
                 }
 
-                if(ServerThreadPool.getInstance().LoggedAlready(username.ToLower()))
+                if(ServerThreadPool.Instance.LoggedAlready(username.ToLower()))
                 {
                     getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_ACCOUNT_IN_USE));
                     getClient().close();
@@ -82,7 +81,7 @@ namespace L2dotNET.Auth.rcv_l2
 
             Random rnd = new Random();
 
-            getClient().activeAccount = account;
+            getClient().ActiveAccount = account;
             getClient().setLoginPair(rnd.Next(), rnd.Next());
             getClient().setPlayPair(rnd.Next(), rnd.Next());
 

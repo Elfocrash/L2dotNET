@@ -94,7 +94,6 @@
     <Compile Include="LoginServer.cs" />
     <Compile Include="managers\NetRedClass.cs" />
     <Compile Include="managers\NetworkRedirect.cs" />
-    <Compile Include="model\L2Account.cs" />
     <Compile Include="Cfg.cs" />
     <Compile Include="managers\ClientManager.cs" />
     <Compile Include="CLogger.cs" />
@@ -166,9 +165,6 @@
   <ItemGroup>
     <Folder Include="sqlscripts\Gameserver\" />
     <Folder Include="sqlscripts\Loginserver\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">

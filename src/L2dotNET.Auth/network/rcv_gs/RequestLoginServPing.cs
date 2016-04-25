@@ -18,7 +18,7 @@ namespace L2dotNET.Auth.network.rcv_gs
 
         public override void run()
         {
-            thread.sendPacket(new LoginServPing());
+            thread.SendPacket(new LoginServPing());
         }
     }
 }

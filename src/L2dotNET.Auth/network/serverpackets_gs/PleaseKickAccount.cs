@@ -1,5 +1,4 @@
-﻿using L2dotNET.Auth.basetemplate;
-
+﻿
 namespace L2dotNET.Auth.network.serverpackets_gs
 {
     class PleaseKickAccount : SendServerPacket

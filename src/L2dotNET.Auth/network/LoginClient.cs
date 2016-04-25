@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using L2dotNET.Auth.basetemplate;
 using L2dotNET.Auth.rcv_l2;
 using L2dotNET.Auth.serverpackets;
 using L2Crypt;
@@ -91,7 +90,7 @@ namespace L2dotNET.Auth
             }
             catch(Exception s)
             {
-                CLogger.warning(_address + " was closed by force."+ s);
+                CLogger.warning(_address + $" was closed by force. { s }");
                 close();
             }
         }
@@ -110,7 +109,7 @@ namespace L2dotNET.Auth
 
             if (!_loginCrypt.decrypt(ref buff, 0, buff.Length))
             {
-                CLogger.error("blowfish failed on " + _address + ". please restart auth server.");
+                CLogger.error($"Blowfish failed on { _address }. Please restart auth server.");
             }
             else
             {
@@ -122,13 +121,6 @@ namespace L2dotNET.Auth
         private void handlePacket(byte[] buff)
         {
             byte id = buff[0];
-
-            //string str = "header: "+buff[0]+"\n";
-            //foreach (byte b in buff)
-            //    str += b.ToString("x2")+" ";
-
-            //Console.WriteLine(str);
-            //File.WriteAllText("header" + buff[0], str);
 
             ReceiveBasePacket msg = null;
             switch (id)
@@ -169,6 +161,6 @@ namespace L2dotNET.Auth
             play2 = key2;
         }
 
-        public AccountModel activeAccount;
+        public AccountModel ActiveAccount { get; set; }
     }
 }

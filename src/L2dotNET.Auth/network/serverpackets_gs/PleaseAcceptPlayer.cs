@@ -1,5 +1,4 @@
-﻿using L2dotNET.Auth.basetemplate;
-using L2dotNET.Models;
+﻿using L2dotNET.Models;
 
 namespace L2dotNET.Auth.network.serverpackets_gs
 {

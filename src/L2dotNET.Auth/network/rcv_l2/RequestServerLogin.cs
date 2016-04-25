@@ -29,20 +29,20 @@ namespace L2dotNET.Auth.rcv_l2
                 return;
             }
 
-            L2Server server = ServerThreadPool.getInstance().get(serverId);
+            L2Server server = ServerThreadPool.Instance.Get(serverId);
             if (server == null)
             {
                 getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_ACCESS_FAILED));
                 return;
             }
 
-            if (server.connected == 0)
+            if (server.Connected == 0)
             {
                 getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_SERVER_MAINTENANCE));
             }
             else
             {
-                ServerThreadPool.getInstance().SendPlayer(serverId, getClient(), DateTime.Now.ToLocalTime().ToString());
+                ServerThreadPool.Instance.SendPlayer(serverId, getClient(), DateTime.Now.ToLocalTime().ToString());
 
                 //login updates here
 

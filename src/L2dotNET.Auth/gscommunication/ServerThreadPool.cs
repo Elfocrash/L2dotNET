@@ -16,35 +16,55 @@ namespace L2dotNET.Auth.gscommunication
         [Inject]
         public IServerService serverService { get { return LoginServer.Kernel.Get<IServerService>(); } }
 
-        private static ServerThreadPool gsc = new ServerThreadPool();
-        public static ServerThreadPool getInstance()
-        {
-            return gsc;
-        }
+        private static volatile ServerThreadPool instance;
+        private static object syncRoot = new object();
 
         public List<L2Server> servers = new List<L2Server>();
 
+        public static ServerThreadPool Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new ServerThreadPool();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+
         public ServerThreadPool()
+        {
+                       
+        }
+
+        public void Initialize()
         {
             List<ServerModel> serverModels = serverService.GetServerList();
 
-            foreach(var curServ in serverModels)
+            foreach (var curServ in serverModels)
             {
                 L2Server server = new L2Server();
-                server.id = (byte)curServ.Id;
-                server.info = curServ.Name;
-                server.code = curServ.Code;
+                server.Id = (byte)curServ.Id;
+                server.Info = curServ.Name;
+                server.Code = curServ.Code;
                 servers.Add(server);
             }
 
-            CLogger.info("GameServerThread: loaded " + servers.Count+" servers");
-            
+            CLogger.info("GameServerThread: loaded " + servers.Count + " servers");
         }
 
-        public L2Server get(short serverId)
+        public L2Server Get(short serverId)
         {
             foreach (L2Server s in servers)
-                if (s.id == serverId)
+                if (s.Id == serverId)
                     return s;
 
             return null;
@@ -52,32 +72,32 @@ namespace L2dotNET.Auth.gscommunication
 
         protected TcpListener listener;
 
-        public void start()
+        public void Start()
         {
             listener = new TcpListener(IPAddress.Parse(Cfg.SERVER_HOST), Cfg.SERVER_PORT_GS);
             listener.Start();
             CLogger.extra_info("Auth server listening gameservers at " + Cfg.SERVER_HOST + ":" + Cfg.SERVER_PORT_GS);
             while (true)
             {
-                verifyClient(listener.AcceptTcpClient());
+                VerifyClient(listener.AcceptTcpClient());
             }
         }
 
-        private void verifyClient(TcpClient client)
+        private void VerifyClient(TcpClient client)
         {
             ServerThread st = new ServerThread();
-            st.readData(client, this);
+            st.ReadData(client, this);
         }
 
-        public void shutdown(byte id)
+        public void Shutdown(byte id)
         {
             foreach (L2Server s in servers)
-                if (s.id == id)
+                if (s.Id == id)
                 {
-                    if(s.thread != null)
-                        s.thread.stop();
+                    if(s.Thread != null)
+                        s.Thread.Stop();
 
-                    s.thread = null;
+                    s.Thread = null;
                     CLogger.warning("ServerThread: #"+id+" shutted down");
                     break;
                 }
@@ -87,10 +107,10 @@ namespace L2dotNET.Auth.gscommunication
         {
             foreach (L2Server srv in servers)
             {
-                if (srv.thread != null)
-                    if (srv.thread.LoggedAlready(account))
+                if (srv.Thread != null)
+                    if (srv.Thread.LoggedAlready(account))
                     {
-                        srv.thread.KickAccount(account);
+                        srv.Thread.KickAccount(account);
                         return true;
                     }
             }
@@ -101,9 +121,9 @@ namespace L2dotNET.Auth.gscommunication
         public void SendPlayer(byte serverId, LoginClient client, string time)
         {
             foreach (L2Server srv in servers)
-                if (srv.id == serverId && srv.thread != null)
+                if (srv.Id == serverId && srv.Thread != null)
                 {
-                    srv.thread.SendPlayer(client, time);
+                    srv.Thread.SendPlayer(client, time);
                     break;
                 }
 

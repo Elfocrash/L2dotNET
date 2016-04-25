@@ -17,7 +17,7 @@ namespace L2dotNET.Auth.network.rcv_gs
 
         public override void run()
         {
-            thread.curp = cnt;
+            thread.Curp = cnt;
         }
     }
 }

@@ -25,14 +25,13 @@ namespace L2dotNET.Auth
             Console.Title = "L2dotNET Loginserver";
             Cfg.load();
             ClientManager.Instance.Initialize();
-
-            ServerThreadPool.getInstance();
-            NetworkRedirect.getInstance();
+            ServerThreadPool.Instance.Initialize();
+            NetworkRedirect.Instance.Initialize();
 
             LoginListener = new TcpListener(IPAddress.Parse(Cfg.SERVER_HOST), Cfg.SERVER_PORT);
             LoginListener.Start();
             CLogger.extra_info("Auth server listening clients at " + Cfg.SERVER_HOST + ":" + Cfg.SERVER_PORT);
-            new System.Threading.Thread(ServerThreadPool.getInstance().start).Start();
+            new System.Threading.Thread(ServerThreadPool.Instance.Start).Start();
             TcpClient clientSocket = default(TcpClient);
             while (true)
             {

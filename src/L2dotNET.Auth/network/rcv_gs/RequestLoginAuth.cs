@@ -34,11 +34,11 @@ namespace L2dotNET.Auth.network.rcv_gs
         public override void run()
         {
             L2Server server = null;
-            foreach (L2Server srv in ServerThreadPool.getInstance().servers)
+            foreach (L2Server srv in ServerThreadPool.Instance.servers)
             {
-                if (srv.code == code)
+                if (srv.Code == code)
                 {
-                    srv.thread = thread;
+                    srv.Thread = thread;
                     server = srv;
                     break;
                 }
@@ -51,17 +51,17 @@ namespace L2dotNET.Auth.network.rcv_gs
                 return;
             }
 
-            thread.id = server.id;
-            thread.info = info;
-            thread.wan = host;
-            thread.port = port;
-            thread.maxp = maxp;
-            thread.gmonly = gmonly == 1;
-            thread.testMode = test == 1;
-            thread.connected = true;
+            thread.Id = server.Id;
+            thread.Info = info;
+            thread.Wan = host;
+            thread.Port = port;
+            thread.Maxp = maxp;
+            thread.GmOnly = gmonly == 1;
+            thread.TestMode = test == 1;
+            thread.Connected = true;
 
-            thread.sendPacket(new ServerLoginOk());
-            CLogger.extra_info("AuthThread: Server #"+server.id+" connected");
+            thread.SendPacket(new ServerLoginOk());
+            CLogger.extra_info($"AuthThread: Server #{server.Id} connected");
         }
     }
 }

@@ -13,25 +13,29 @@ namespace L2dotNET.Auth.gscommunication
         private TcpClient client;
         private byte[] buffer;
 
-        //dynamic
-        public string wan;
-        public short port;
-        public short curp = 0, maxp = 1000;
-        public string info;
-        public bool connected = false;
-        public bool testMode = false;
-        public bool gmonly = false;
-        public byte id;
+        public string Wan { get; set; }
+        public short Port { get; set; }
+        private short curp = 0, maxp = 1000;
+        public short Curp { get { return curp; } set { curp = value; } }
+        public short Maxp { get { return maxp; } set { maxp = value; } }
+        public string Info { get; set; }
+        private bool connected = false;
+        public bool Connected { get; set; }
+        private bool testMode = false;
+        public bool TestMode { get; set; }
+        private bool gmonly = false;
+        public bool GmOnly { get; set; }
+        public byte Id { get; set; }
 
-        public void readData(TcpClient client, ServerThreadPool cn)
+        public void ReadData(TcpClient client, ServerThreadPool cn)
         {
             this.nstream = client.GetStream();
             this.client = client;
 
-            new System.Threading.Thread(read).Start();
+            new Thread(Read).Start();
         }
 
-        public void read()
+        public void Read()
         {
             try
             {
@@ -41,7 +45,7 @@ namespace L2dotNET.Auth.gscommunication
             catch (Exception e)
             {
                 CLogger.error("ServerThread: " + e.Message);
-                termination();
+                Termination();
             }
         }
 
@@ -61,7 +65,7 @@ namespace L2dotNET.Auth.gscommunication
             catch (Exception e)
             {
                 CLogger.error("ServerThread: " + e.Message);
-                termination();
+                Termination();
             }
         }
 
@@ -72,7 +76,7 @@ namespace L2dotNET.Auth.gscommunication
             byte[] buff = new byte[buffer.Length];
             buffer.CopyTo(buff, 0);
             handlePacket(buff);
-            new System.Threading.Thread(read).Start();
+            new Thread(Read).Start();
         }
 
         private void handlePacket(byte[] buff)
@@ -111,12 +115,12 @@ namespace L2dotNET.Auth.gscommunication
             new Thread(new ThreadStart(msg.run)).Start();
         }
 
-        private void termination()
+        private void Termination()
         {
-            ServerThreadPool.getInstance().shutdown(id);
+            ServerThreadPool.Instance.Shutdown(Id);
         }
 
-        public void sendPacket(SendServerPacket pk)
+        public void SendPacket(SendServerPacket pk)
         {
             pk.write();
             List<byte> blist = new List<byte>();
@@ -130,11 +134,11 @@ namespace L2dotNET.Auth.gscommunication
 
         public void close(SendServerPacket pk)
         {
-            sendPacket(pk);
-            ServerThreadPool.getInstance().shutdown(id);
+            SendPacket(pk);
+            ServerThreadPool.Instance.Shutdown(Id);
         }
 
-        public void stop()
+        public void Stop()
         {
             try
             {
@@ -168,13 +172,13 @@ namespace L2dotNET.Auth.gscommunication
 
         public void SendPlayer(LoginClient client, string time)
         {
-            sendPacket(new PleaseAcceptPlayer(client.activeAccount, time));
+            SendPacket(new PleaseAcceptPlayer(client.ActiveAccount, time));
         }
 
         public void KickAccount(string account)
         {
             activeInGame.Remove(account);
-            sendPacket(new PleaseKickAccount(account));
+            SendPacket(new PleaseKickAccount(account));
         }
     }
 }

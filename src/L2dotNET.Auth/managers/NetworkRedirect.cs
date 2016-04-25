@@ -6,37 +6,59 @@ namespace L2dotNET.Auth.managers
 {
     class NetworkRedirect
     {
-        private static NetworkRedirect nb = new NetworkRedirect();
-        public static NetworkRedirect getInstance()
-        {
-            return nb;
-        }
+        private static volatile NetworkRedirect instance;
+        private static object syncRoot = new object();
 
         protected List<NetRedClass> redirects = new List<NetRedClass>();
-        public NetRedClass GlobalRedirection = null;
+        public NetRedClass GlobalRedirection { get; set; }
+
+        public static NetworkRedirect Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new NetworkRedirect();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
 
         public NetworkRedirect()
         {
-            StreamReader reader = new StreamReader(new FileInfo(@"sq\server_redirect.txt").FullName);
-            while (!reader.EndOfStream)
+           
+        }
+
+        public void Initialize()
+        {
+            using (StreamReader reader = new StreamReader(new FileInfo(@"sq\server_redirect.txt").FullName))
             {
-                string line = reader.ReadLine();
-                if (line.Length == 0 || line.StartsWith("//"))
-                    continue;
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    if (line.Length == 0 || line.StartsWith("//"))
+                        continue;
 
-                NetRedClass i = new NetRedClass();
-                string[] sp = line.Split(' ');
-                i.serverId = short.Parse(sp[0]);
-                i.mask = sp[1];
-                i.setRedirect(sp[2]);
+                    NetRedClass i = new NetRedClass();
+                    string[] sp = line.Split(' ');
+                    i.serverId = short.Parse(sp[0]);
+                    i.mask = sp[1];
+                    i.setRedirect(sp[2]);
 
-                if (i.serverId == -1)
-                    GlobalRedirection = i;
-                else
-                    redirects.Add(i);
+                    if (i.serverId == -1)
+                        GlobalRedirection = i;
+                    else
+                        redirects.Add(i);
+                }
             }
-
-            CLogger.info("NetworkRedirect: " + redirects.Count + " redirects. Global is " + (GlobalRedirection == null ? "disabled":"enabled"));
+            CLogger.info("NetworkRedirect: " + redirects.Count + " redirects. Global is " + (GlobalRedirection == null ? "disabled" : "enabled"));
         }
 
         public byte[] GetRedirect(LoginClient client, short serverId)

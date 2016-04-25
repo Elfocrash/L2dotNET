@@ -4,19 +4,19 @@ namespace L2dotNET.Auth.gscommunication
 {
     public class L2Server
     {
-        public string code;
-        public byte[] DefaultAddress;
-        public ServerThread thread;
-        public string info;
-        public byte id;
+        public string Code { get; set; }
+        public byte[] DefaultAddress { get; set; }
+        public ServerThread Thread { get; set; }
+        public string Info { get; set; }
+        public byte Id { get; set; }
 
         public byte[] GetIP(LoginClient client)
         {
             if (DefaultAddress == null)
             {
                 string ip = "0.0.0.0";
-                if (thread != null)
-                    ip = thread.wan;
+                if (Thread != null)
+                    ip = Thread.Wan;
 
                 DefaultAddress = new byte[4];
                 string[] w = ip.Split('.');
@@ -26,9 +26,9 @@ namespace L2dotNET.Auth.gscommunication
                 DefaultAddress[3] = byte.Parse(w[3]);
             }
 
-            if (thread != null)
+            if (Thread != null)
             {
-                byte[] redirect = NetworkRedirect.getInstance().GetRedirect(client, id);
+                byte[] redirect = NetworkRedirect.Instance.GetRedirect(client, Id);
                 if (redirect != null)
                     return redirect;
             }
@@ -36,34 +36,34 @@ namespace L2dotNET.Auth.gscommunication
             return DefaultAddress;
         }
 
-        public byte connected
+        public byte Connected
         {
-            get { return thread != null ? (thread.connected ? (byte)1 : (byte)0) : (byte)0; } 
+            get { return Thread != null ? (Thread.Connected ? (byte)1 : (byte)0) : (byte)0; } 
         }
 
-        public short CurPlayers
+        public short CurrentPlayers
         {
-            get { return thread != null ? thread.curp : (short)0; } 
+            get { return Thread != null ? Thread.Curp : (short)0; } 
         }
 
         public short MaxPlayers
         {
-            get { return thread != null ? thread.maxp : (short)0; } 
+            get { return Thread != null ? Thread.Maxp : (short)0; } 
         }
 
         public int Port
         {
-            get { return thread != null ? thread.port : 0; } 
+            get { return Thread != null ? Thread.Port : 0; } 
         }
 
-        public bool testMode
+        public bool TestMode
         {
-            get { return thread != null ? thread.testMode : false; } 
+            get { return Thread != null ? Thread.TestMode : false; } 
         }
 
-        public bool gmonly 
+        public bool GmOnly 
         {
-            get { return thread != null ? thread.gmonly :false; } 
+            get { return Thread != null ? Thread.GmOnly :false; } 
         }
     }
 }
