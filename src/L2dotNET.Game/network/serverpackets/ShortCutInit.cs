@@ -18,13 +18,13 @@ namespace L2dotNET.Game.network.l2send
 
             foreach (L2Shortcut sc in _shortcuts)
             {
-                writeD(sc._type);
-                writeD(sc._slot + sc._page * 12);
+                writeD(sc.Type);
+                writeD(sc.Slot + sc.Page * 12);
 
-                switch (sc._type)
+                switch (sc.Type)
                 {
                     case L2Shortcut.TYPE_ITEM:
-                        writeD(sc._id);
+                        writeD(sc.Id);
                         writeD(0x01);
                         writeD(-1); //getSharedReuseGroup
                         writeD(0x00);
@@ -32,13 +32,13 @@ namespace L2dotNET.Game.network.l2send
                         writeD(0x00);
                         break;
                     case L2Shortcut.TYPE_SKILL:
-                        writeD(sc._id);
-                        writeD(sc._level);
+                        writeD(sc.Id);
+                        writeD(sc.Level);
                         writeC(0x00); // C5 
                         writeD(0x01); // C6 
                         break;
                     default:
-                        writeD(sc._id);
+                        writeD(sc.Id);
                         writeD(0x01); // C6 
                         break;
                 }

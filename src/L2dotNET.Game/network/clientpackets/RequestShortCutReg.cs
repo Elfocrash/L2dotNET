@@ -45,7 +45,6 @@ namespace L2dotNET.Game.network.l2recv
                 case L2Shortcut.TYPE_ACTION:
                 case L2Shortcut.TYPE_MACRO:
                 case L2Shortcut.TYPE_RECIPE:
-                case L2Shortcut.TYPE_TELMARK:
                     player.registerShortcut(_slot, _page, _type, _id, _lvl, _characterType);
                     break;
 

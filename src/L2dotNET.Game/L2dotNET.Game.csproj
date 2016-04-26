@@ -110,6 +110,7 @@
     <Compile Include="DepInjectionModule.cs" />
     <Compile Include="Enums\ClassId.cs" />
     <Compile Include="Enums\ClassRace.cs" />
+    <Compile Include="Enums\ShotType.cs" />
     <Compile Include="Enums\ZoneId.cs" />
     <Compile Include="geo\Geo.cs" />
     <Compile Include="geo\GeoData.cs" />

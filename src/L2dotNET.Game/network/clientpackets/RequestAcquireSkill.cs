@@ -86,9 +86,9 @@ namespace L2dotNET.Game.network.l2recv
                 {
                     foreach (L2Shortcut sc in player._shortcuts)
                     {
-                        if (sc._type == L2Shortcut.TYPE_SKILL && sc._id == _id)
+                        if (sc.Type == L2Shortcut.TYPE_SKILL && sc.Id == _id)
                         {
-                            sc._level = _level;
+                            sc.Level = _level;
                             upd = true;
                         }
                     }

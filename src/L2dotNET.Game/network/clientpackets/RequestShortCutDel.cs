@@ -28,7 +28,7 @@ namespace L2dotNET.Game.network.l2recv
             L2Shortcut scx = null;
             foreach (L2Shortcut sc in player._shortcuts)
             {
-                if (sc._slot == _slot && sc._page == _page)
+                if (sc.Slot == _slot && sc.Page == _page)
                 {
                     scx = sc;
                     break;

@@ -1307,7 +1307,7 @@ namespace L2dotNET.Game
             {
                 foreach (L2Shortcut sc in _shortcuts)
                 {
-                    if (sc._slot == _slot && sc._page == _page)
+                    if (sc.Slot == _slot && sc.Page == _page)
                     {
                         _shortcuts.Remove(sc);
 
@@ -1323,14 +1323,7 @@ namespace L2dotNET.Game
             }
 
             {
-                L2Shortcut sc = new L2Shortcut();
-                sc._slot = _slot;
-                sc._page = _page;
-                sc._type = _type;
-                sc._id = _id;
-                sc._level = _level;
-                sc._characterType = _characterType;
-
+                L2Shortcut sc = new L2Shortcut(_slot, _page, _type, _id, _level, _characterType);
                 _shortcuts.Add(sc);
 
                 sendPacket(new ShortCutRegister(sc));

@@ -14,25 +14,25 @@ namespace L2dotNET.Game.network.l2send
         {
             writeC(0x44);
 
-            writeD(cut._type);
-            writeD(cut._slot + cut._page * 12);
+            writeD(cut.Type);
+            writeD(cut.Slot + cut.Page * 12);
 
-            switch (cut._type)
+            switch (cut.Type)
             {
                 case L2Shortcut.TYPE_ITEM:
-                    writeD(cut._id);
-                    writeD(cut._characterType);
+                    writeD(cut.Id);
+                    writeD(cut.CharacterType);
                     writeD(-1); //getSharedReuseGroup
                     break;
                 case L2Shortcut.TYPE_SKILL:
-                    writeD(cut._id);
-                    writeD(cut._level);
+                    writeD(cut.Id);
+                    writeD(cut.Level);
                     writeC(0x00); // C5 
-                    writeD(cut._characterType);
+                    writeD(cut.CharacterType);
                     break;
                 default:
-                    writeD(cut._id);
-                    writeD(cut._characterType);
+                    writeD(cut.Id);
+                    writeD(cut.CharacterType);
                     break;
             }
         }
