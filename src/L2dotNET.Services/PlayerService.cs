@@ -32,5 +32,15 @@ namespace L2dotNET.Services
         {
             this.unitOfWork.PlayerRepository.CreatePlayer(player);
         }
+
+        public void UpdatePlayer(PlayerModel player)
+        {
+            this.unitOfWork.PlayerRepository.UpdatePlayer(player);
+        }
+
+        public PlayerModel GetPlayerModelBySlotId(string accountName, int slotId)
+        {
+            return this.unitOfWork.PlayerRepository.GetPlayerModelBySlotId(accountName, slotId);
+        }
     }
 }

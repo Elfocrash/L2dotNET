@@ -279,6 +279,20 @@ namespace L2dotNET.Game.world
             return null;
         }
 
+        public L2Player GetPlayer(int objId)
+        {
+            lock (_allPlayers)
+            {
+                foreach (L2Player pl in _allPlayers.Values)
+                {
+                    if (pl.ObjID.Equals(objId))
+                        return pl;
+                }
+            }
+
+            return null;
+        }
+
         public IEnumerable<L2Player> GetAllPlayers()
         {
             return _allPlayers.Values;

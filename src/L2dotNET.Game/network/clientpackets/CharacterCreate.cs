@@ -11,6 +11,7 @@ using Ninject;
 using L2dotNET.Models;
 using L2dotNET.Game.model.skills2;
 using L2dotNET.Game.templates;
+using L2dotNET.Game.world;
 
 namespace L2dotNET.Game.network.l2recv
 {
@@ -148,7 +149,7 @@ namespace L2dotNET.Game.network.l2recv
                 //}
             }
 
-            player.CharSlot = player.Gameclient._accountChars.Count + 1;
+            player.CharSlot = player.Gameclient._accountChars.Count;
 
             PlayerModel playerModel = new PlayerModel()
             {
@@ -211,7 +212,8 @@ namespace L2dotNET.Game.network.l2recv
             playerService.CreatePlayer(playerModel);
             player.Gameclient._accountChars.Add(player);
             getClient().sendPacket(new CharCreateOk());
-            CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars, getClient()._sessionId);
+            L2World.Instance.RealiseEntry(player, null, true);
+            CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars, getClient().SessionId);
             csl.charId = player.ObjID;
             getClient().sendPacket(csl);
         }

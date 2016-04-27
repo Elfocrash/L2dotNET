@@ -6,11 +6,18 @@ using L2dotNET.Game.crypt;
 using L2dotNET.Game.logger;
 using L2dotNET.Game.network;
 using L2Crypt;
+using L2dotNET.Models;
+using Ninject;
+using L2dotNET.Services.Contracts;
+using L2dotNET.Game.world;
 
 namespace L2dotNET.Game
 {
     public class GameClient
     {
+        [Inject]
+        public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
+
         public EndPoint _address;
         public TcpClient _client;
         public NetworkStream _stream;
@@ -111,6 +118,19 @@ namespace L2dotNET.Game
             }
         }
 
+        public PlayerModel LoadPlayerInSlot(string accName, int charSlot)
+        {
+            PlayerModel player = playerService.GetPlayerModelBySlotId(accName, charSlot);
+            return player;
+        }
+
+        public L2Player GetPlayer(string accName, int charSlot)
+        {
+            PlayerModel playerModel = LoadPlayerInSlot(accName, charSlot);
+            L2Player player = L2World.Instance.GetPlayer(playerModel.ObjectId);
+            return player;
+        }
+
         private void OnReceiveCallbackStatic(IAsyncResult result)
         {
             int rs = 0;
@@ -147,12 +167,10 @@ namespace L2dotNET.Game
             new System.Threading.Thread(read).Start();
         }
 
-        public string AccountName;
-        public int _sessionId;
-        public string AccountType;
-        public string AccountTimeEnd;
-        public DateTime AccountTimeLogIn;
-        public bool AccountPremium;
-        public long AccountPoints;
+        public string AccountName { get; set; }
+        public int SessionId { get; set; }
+        public string AccountType { get; set; }
+        public string AccountTimeEnd { get; set; }
+        public DateTime AccountTimeLogIn { get; set; }
     }
 }

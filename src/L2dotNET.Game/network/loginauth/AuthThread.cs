@@ -206,10 +206,5 @@ namespace L2dotNET.Game.network.loginauth
             else
                 return null;
         }
-
-        public void UpdatePremiumState(GameClient client)
-        {
-            sendPacket(new PremiumStatusUpdate(client.AccountName.ToLower(), client.AccountPremium ? (byte)1 : (byte)0, client.AccountPoints));
-        }
     }
 }

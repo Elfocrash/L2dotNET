@@ -58,7 +58,7 @@ namespace L2dotNET.Game
         private long expOnDeath = 0;
         public long ExpOnDeath { get { return expOnDeath; } set { expOnDeath = value; } }
         private long expAfterLogin = 0;
-        public long ExpAfterLogin { get { return expOnDeath; } set { expOnDeath = value; } }
+        public long ExpAfterLogin { get { return expAfterLogin; } set { expAfterLogin = value; } }
         public int SP { get; set; }
         public int MaxCp { get; set; }
         public double CurCp { get; set; }
@@ -173,6 +173,59 @@ namespace L2dotNET.Game
             return player;
         }
 
+        public void UpdatePlayer()
+        {
+            PlayerModel playerModel = new PlayerModel()
+            {
+                ObjectId = ObjID,
+                Level = Level,
+                MaxHp = (int)MaximumHp,
+                CurHp = (int)CurHP,
+                MaxCp = (int)MaxCp,
+                CurCp = (int)CurCp,
+                MaxMp = (int)MaxMp,
+                CurMp = (int)CurMp,
+                Face = Face,
+                HairStyle = HairStyle,
+                HairColor = HairColor,
+                Sex = Sex,
+                Heading = Heading,
+                X = X,
+                Y = Y,
+                Z = Z,
+                Exp = Exp,
+                ExpBeforeDeath = ExpOnDeath,
+                Sp = SP,
+                Karma = Karma,
+                PvpKills = PvpKills,
+                PkKills = PkKills,
+                ClanId = ClanId,
+                Race = (int)BaseClass.ClassId.ClassRace,
+                ClassId = (int)ActiveClass.ClassId.Id,
+                BaseClass = (int)BaseClass.ClassId.Id,
+                DeleteTime = DeleteTime,
+                CanCraft = CanCraft,
+                Title = Title,
+                RecHave = RecHave,
+                RecLeft = RecLeft,
+                AccessLevel = AccessLevel,
+                ClanPrivs = ClanPrivs,
+                WantsPeace = WantsPeace,
+                IsIn7sDungeon = IsIn7sDungeon,
+                PunishLevel = PunishLevel,
+                PunishTimer = PunishTimer,
+                PowerGrade = PowerGrade,
+                Nobless = Nobless,
+                Sponsor = Sponsor,
+                VarkaKetraAlly = VarkaKetraAlly,
+                ClanCreateExpiryTime = ClanCreateExpiryTime,
+                ClanJoinExpiryTime = ClanJoinExpiryTime,
+                DeathPenaltyLevel = DeathPenaltyLevel
+            };
+
+            playerService.UpdatePlayer(playerModel);
+        }
+
         public void Termination()
         {
             if (IsRestored)
@@ -183,7 +236,7 @@ namespace L2dotNET.Game
                 if (Summon != null)
                     Summon.unSummon();
 
-                //updateDb();
+                UpdatePlayer();
                 saveInventory();
 
                 L2World.Instance.UnrealiseEntry(this, true);
@@ -797,7 +850,7 @@ namespace L2dotNET.Game
 
         public void onGameInit()
         {
-            CStatsInit();
+            //CStatsInit();
             if (!insrestored)
                 CharacterStat.setTemplate(ActiveClass);
 
@@ -2610,20 +2663,6 @@ namespace L2dotNET.Game
 
             Ping = ms;
             sendMessage("Your connection latency is " + ms);
-        }
-
-        public long ExtraPoints
-        {
-            get
-            {
-                return Gameclient.AccountPoints;
-            }
-
-            set
-            {
-                Gameclient.AccountPoints = value;
-                AuthThread.Instance.UpdatePremiumState(Gameclient);
-            }
         }
 
         public void InstantTeleportWithItem(int x, int y, int z, int id, long cnt)

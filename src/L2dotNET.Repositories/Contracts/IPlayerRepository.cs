@@ -14,5 +14,9 @@ namespace L2dotNET.Repositories.Contracts
         bool CheckIfPlayerNameExists(string name);
 
         void CreatePlayer(PlayerModel player);
+
+        void UpdatePlayer(PlayerModel player);
+
+        PlayerModel GetPlayerModelBySlotId(string accountName, int slotId);
     }
 }

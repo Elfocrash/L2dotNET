@@ -36,7 +36,7 @@ namespace L2dotNET.Game.network.l2recv
             player.Termination();
             player.sendPacket(new RestartResponse());
 
-            CharacterSelectionInfo csl = new CharacterSelectionInfo(Client.AccountName, Client._accountChars, Client._sessionId);
+            CharacterSelectionInfo csl = new CharacterSelectionInfo(Client.AccountName, Client._accountChars, Client.SessionId);
             csl.charId = player.ObjID;
             player.sendPacket(csl);
         }

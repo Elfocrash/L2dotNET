@@ -51,7 +51,7 @@ namespace L2dotNET.Game.network.l2recv
                     Client._accountChars.Add(p);
                 }
 
-                getClient().sendPacket(new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars, getClient()._sessionId));
+                getClient().sendPacket(new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars, getClient().SessionId));
                 AuthThread.Instance.setInGameAccount(getClient().AccountName, true);
             }
             else
