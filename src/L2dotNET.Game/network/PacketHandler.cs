@@ -69,6 +69,9 @@ namespace L2dotNET.Game.network
                 case 0x0f:
                     msg = new RequestItemList(client, buff);
                     break;
+                case 0x0a:
+                    msg = new AttackRequest(client, buff);
+                    break;
                 case 0x11:
                     msg = new RequestUnEquipItem(client, buff);
                     break;
