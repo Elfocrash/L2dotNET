@@ -1,6 +1,5 @@
 ﻿using System;
 using L2dotNET.Game.controllers;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.player.partials;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables;

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Game.logger;
 using L2dotNET.Models;
+using log4net;
 
 namespace L2dotNET.Game.network
 {
     class NetworkBlock
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(NetworkBlock));
         private static volatile NetworkBlock instance;
         private static object syncRoot = new object();
 
@@ -66,7 +67,7 @@ namespace L2dotNET.Game.network
                     }
                 }
             }
-            CLogger.info("NetworkBlock: " + blocks.Count + " blocks.");
+            log.Info($"NetworkBlock: { blocks.Count } blocks.");
         }
 
         public bool Allowed(string ip)

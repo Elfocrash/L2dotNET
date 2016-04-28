@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.items;
 using L2dotNET.Game.model.skills2;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     class ItemTable
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ItemTable));
         private static ItemTable instance = new ItemTable();
         public static ItemTable getInstance()
         {
@@ -314,7 +315,7 @@ namespace L2dotNET.Game.tables
                     item.buildEffect();
                     if (_items.ContainsKey(item.ItemID))
                     {
-                        CLogger.error("itemtable: dublicate " + item.ItemID);
+                        log.Error("itemtable: dublicate " + item.ItemID);
                         _items.Remove(item.ItemID);
                     }
 
@@ -343,14 +344,14 @@ namespace L2dotNET.Game.tables
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            CLogger.info("ItemTable: #" + _items.Count + " items, #" + _sets.Count + " sets, #" + ConvertDataList.Count + " convertable.");
+            log.Info($"ItemTable: #{ _items.Count } items, #{ _sets.Count } sets, #{ ConvertDataList.Count } convertable.");
         }
 
         public ItemTemplate getItem(int id)
         {
             if (!_items.ContainsKey(id))
             {
-                CLogger.error("itemtable: error, cant find item for id " + id);
+                log.Error("itemtable: error, cant find item for id " + id);
                 return null;
             }
 

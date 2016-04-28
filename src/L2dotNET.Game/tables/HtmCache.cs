@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
-using L2dotNET.Game.logger;
 using System.IO.Compression;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     public class HtmCache
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(HtmCache));
         private static volatile HtmCache instance;
         private static object syncRoot = new object();
 
@@ -52,7 +53,7 @@ namespace L2dotNET.Game.tables
             }
             catch (System.Exception)
             {
-                CLogger.error("html_total pack was not found!");
+                log.Error("html_total pack was not found!");
                 return;
             }
 
@@ -65,7 +66,7 @@ namespace L2dotNET.Game.tables
             gz.Read(header, 0, header.Length);
             if (Encoding.UTF8.GetString(header) != versionHeader)
             {
-                CLogger.error("HtmCache: html_total.ht with unknown format");
+                log.Error("HtmCache: html_total.ht with unknown format");
                 return;
             }
 
@@ -92,7 +93,7 @@ namespace L2dotNET.Game.tables
             }
             stream.Close();
             gz.Close();
-            CLogger.info("HtmCache: Reading "+file+" complete. " + files + " files.");
+            log.Info("HtmCache: Reading "+file+" complete. " + files + " files.");
 
             if (complete)
                 return;

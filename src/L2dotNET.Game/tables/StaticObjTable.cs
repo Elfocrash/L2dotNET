@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.npcs.decor;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     class StaticObjTable
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(StaticObjTable));
         private static volatile StaticObjTable instance;
         private static object syncRoot = new object();
 
@@ -124,7 +125,7 @@ namespace L2dotNET.Game.tables
                 o.onSpawn();
             }
 
-            CLogger.info($"StaticObjTable: Spanwed { objects.Count } objects.");
+            log.Info($"StaticObjTable: Spanwed { objects.Count } objects.");
         }
 
         public L2Door GetDoor(int id)

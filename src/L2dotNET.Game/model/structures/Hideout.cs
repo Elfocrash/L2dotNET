@@ -1,15 +1,17 @@
 ﻿using System;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.npcs.ai;
 using L2dotNET.Game.model.zones;
 using L2dotNET.Game.model.zones.classes;
 using L2dotNET.Game.model.zones.forms;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.model.structures
 {
     public class Hideout : HideoutTemplate
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Hideout));
+
         public int RentCost = 5000000;
         public bool NoTeleports = false;
         public DateTime PayTime = new DateTime(2011, 2, 1, 12, 00, 00);
@@ -19,7 +21,7 @@ namespace L2dotNET.Game.model.structures
             GenZone();
             SpawnNpcs();
 
-            CLogger.info("Hideout #"+ID+" ("+Name+") loaded. "+npcs.Count+" npcs.");
+            log.Info("Hideout #"+ID+" ("+Name+") loaded. "+npcs.Count+" npcs.");
         }
 
         public void Banish()
@@ -58,7 +60,7 @@ namespace L2dotNET.Game.model.structures
                 }
                 else
                 {
-                    CLogger.error("AreaTable[hideout]: null region at " + template._x[i] + " " + template._y[i] + " for zone " + zone.Name);
+                    log.Error("AreaTable[hideout]: null region at " + template._x[i] + " " + template._y[i] + " for zone " + zone.Name);
                 }
             }
         }

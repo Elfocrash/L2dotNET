@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.npcs.decor;
 using L2dotNET.Game.model.playable;
 using L2dotNET.Game.tools;

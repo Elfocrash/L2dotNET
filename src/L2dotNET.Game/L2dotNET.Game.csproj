@@ -117,7 +117,6 @@
     <Compile Include="geo\Layer.cs" />
     <Compile Include="geo\GeoLocation.cs" />
     <Compile Include="geo\MByteBuffer.cs" />
-    <Compile Include="logger\CLogger.cs" />
     <Compile Include="Managers\AnnouncementManager.cs" />
     <Compile Include="Managers\bbs\BBSManager.cs" />
     <Compile Include="Managers\CastleManager.cs" />

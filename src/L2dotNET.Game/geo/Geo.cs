@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using L2dotNET.Game.logger;
 
 namespace L2dotNET.Game.geo
 {
@@ -10,7 +9,7 @@ namespace L2dotNET.Game.geo
     {
         public virtual void loadGeo()
         {
-            CLogger.warning("Geodata disabled.");
+            //CLogger.warning("Geodata disabled.");
         }
 
         public virtual short getType(int x, int y)

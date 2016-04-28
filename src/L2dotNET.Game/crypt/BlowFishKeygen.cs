@@ -1,9 +1,11 @@
-﻿using System;
+﻿using log4net;
+using System;
 
 namespace L2dotNET.Game.crypt
 {
     class BlowFishKeygen
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(BlowFishKeygen));
         private const int CRYPT_KEYS_SIZE = 20;
 	    private static byte[][] CRYPT_KEYS = new byte[CRYPT_KEYS_SIZE][];
         private static Random Random = new Random();
@@ -28,6 +30,7 @@ namespace L2dotNET.Game.crypt
                 CRYPT_KEYS[i][14] = (byte)0x31;
                 CRYPT_KEYS[i][15] = (byte)0x97;
             }
+            log.Info("Generated BlowFish Key");
         }
 
         public static byte[] getRandomKey()

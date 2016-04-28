@@ -1,15 +1,16 @@
 ﻿using System;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.playable;
 using L2dotNET.Game.model.skills2;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.model.npcs.decor;
 using L2dotNET.Game.tools;
+using log4net;
 
 namespace L2dotNET.Game.network.l2recv
 {
     class RequestActionUse : GameServerNetworkRequest
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(RequestActionUse));
         private int _actionId;
         private bool _ctrlPressed;
         private bool _shiftPressed;
@@ -239,7 +240,7 @@ namespace L2dotNET.Game.network.l2recv
                 Console.WriteLine("pet cast result " + result);
             }
             else
-                CLogger.error("pet " + npcId + " used null skill " + id + "-" + lv);
+                log.Error("pet " + npcId + " used null skill " + id + "-" + lv);
         }
     }
 }

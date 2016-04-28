@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.items;
 using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.model.zones;
@@ -10,11 +9,13 @@ using L2dotNET.Game.model.zones.forms;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.model.events
 {
     public class MonsterRace
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(MonsterRace));
         private static volatile MonsterRace instance;
         private static object syncRoot = new object();
 
@@ -100,7 +101,7 @@ namespace L2dotNET.Game.model.events
             L2World.Instance.RealiseEntry(raceManager2, null, true);
             raceManager2.onSpawn();
 
-            CLogger.info("MonsterRace loaded.");
+            log.Info("MonsterRace loaded.");
         }
 
         private L2RaceManager raceManager1, raceManager2;
@@ -301,7 +302,7 @@ namespace L2dotNET.Game.model.events
                 }
                 else
                 {
-                    CLogger.error("AreaTable[hideout]: null region at " + template._x[i] + " " + template._y[i] + " for zone " + Zone.Name);
+                    log.Info("AreaTable[hideout]: null region at " + template._x[i] + " " + template._y[i] + " for zone " + Zone.Name);
                 }
             }
         }

@@ -1,10 +1,12 @@
-﻿using L2dotNET.Game.logger;
-using L2dotNET.Game.network.l2send;
+﻿using L2dotNET.Game.network.l2send;
+using log4net;
 
 namespace L2dotNET.Game.network.l2recv
 {
     class ProtocolVersion : GameServerNetworkRequest
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ProtocolVersion));
+
         public ProtocolVersion(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -20,20 +22,20 @@ namespace L2dotNET.Game.network.l2recv
         {
             if (_protocol != 746 && _protocol != 251)
             {
-                CLogger.error("protocol fail. "+_protocol);
+                log.Error("Protocol fail "+_protocol);
                 getClient().sendPacket(new KeyPacket(getClient(), 0));
                 getClient().termination();
                 return;
             }
             else if (_protocol == -1)
             {
-                CLogger.extra_info("ping received " + _protocol);
+                log.Info("Ping received " + _protocol);
                 getClient().sendPacket(new KeyPacket(getClient(), 0));
                 getClient().termination();
                 return;
             }
 
-            CLogger.info("accepted "+_protocol+" client");
+            log.Info($"Accepted { _protocol } client");
 
             getClient().sendPacket(new KeyPacket(getClient(), 1));
             getClient().Protocol = _protocol;

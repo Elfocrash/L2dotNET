@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.items;
 using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.model.templates;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     class NpcTable
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(NpcTable));
         private static volatile NpcTable instance;
         private static object syncRoot = new object();
 
@@ -95,7 +96,7 @@ namespace L2dotNET.Game.tables
                     }
                     catch (Exception)
                     {
-                        CLogger.error("Npc category was not found " + pt[1]);
+                        log.Error("Npc category was not found " + pt[1]);
                         continue;
                     }
 
@@ -453,7 +454,7 @@ namespace L2dotNET.Game.tables
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            CLogger.info("NpcTable: loaded #" + _npcs.Count + " NPC, #"+npcVids.Count+" VIDs, "+dropitems+" drop items.");
+            log.Info("NpcTable: loaded #" + _npcs.Count + " NPC, #"+npcVids.Count+" VIDs, "+dropitems+" drop items.");
         }
 
         public NpcTable()

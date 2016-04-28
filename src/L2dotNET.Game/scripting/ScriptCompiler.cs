@@ -1,8 +1,8 @@
 ﻿using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Game.logger;
 using Microsoft.CSharp;
+using log4net;
 
 namespace L2dotNET.Game.scripting
 {
@@ -11,6 +11,7 @@ namespace L2dotNET.Game.scripting
     /// </summary>
     public class ScriptCompiler
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ScriptCompiler));
         private static ScriptCompiler instance = new ScriptCompiler();
         public static ScriptCompiler getController()
         {
@@ -38,11 +39,11 @@ namespace L2dotNET.Game.scripting
                 CompilerResults result = provider.CompileAssemblyFromFile(cp, fname);
 
                 if (result.Errors.Count > 0)
-                    CLogger.error($"ScriptCompiler: Failed to compile { fname }.");
+                    log.Error($"ScriptCompiler: Failed to compile { fname }.");
                 else
                     objectList.Add(result.CompiledAssembly.CreateInstance(info.Name.Remove(info.Name.Length - 3)));
             }
-            CLogger.info($"Script Compiler: Compiled {objectList.Count} scripted quests.");
+            log.Info($"Script Compiler: Compiled {objectList.Count} scripted quests.");
 
             return objectList.ToArray();
         }

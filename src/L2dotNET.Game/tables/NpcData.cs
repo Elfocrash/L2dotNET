@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.items;
 using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables.admin_bypass;
 using L2dotNET.Game.tables.ndextend;
 using L2dotNET.Game.network;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     class NpcData
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(NpcData));
         private static NpcData it = new NpcData();
         public static NpcData getInstance()
         {
@@ -62,7 +63,7 @@ namespace L2dotNET.Game.tables
                                     slist.items.Add(new ND_shopItem(it));
                                 }
                                 else
-                                    CLogger.error("NpcData: cant find item to trade " + i + " on npc " + shop.id);
+                                    log.Error("NpcData: cant find item to trade " + i + " on npc " + shop.id);
                             }
 
                             shop.lists.Add(slist.id, slist);
@@ -73,7 +74,7 @@ namespace L2dotNET.Game.tables
                 }
             }
 
-            CLogger.info("NpcData: loaded " + _shops.Count + " merchants.");
+            log.Info("NpcData: loaded " + _shops.Count + " merchants.");
             //CLogger.info("NpcData: loaded " + _mults.Count + " multisell lists.");
         }
 
@@ -148,7 +149,7 @@ namespace L2dotNET.Game.tables
             } 
             catch
             {
-                CLogger.error("ND:RequestTeleport cant find teleport group "+type);
+                log.Error("ND:RequestTeleport cant find teleport group "+type);
                 player.sendActionFailed();
                 return;
             }

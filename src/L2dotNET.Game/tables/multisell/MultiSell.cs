@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.items;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.model.npcs;
+using log4net;
 
 namespace L2dotNET.Game.tables.multisell
 {
     public class MultiSell
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(MultiSell));
         private static MultiSell instance = new MultiSell();
         public static MultiSell getInstance()
         {
@@ -142,7 +143,7 @@ namespace L2dotNET.Game.tables.multisell
                 }
             }
 
-            CLogger.info("MultiSell: " + lists.Count + " lists");
+            log.Info($"MultiSell: { lists.Count } lists");
         }
 
         public MultiSellList getList(int listId)

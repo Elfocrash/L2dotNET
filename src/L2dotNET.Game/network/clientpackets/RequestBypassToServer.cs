@@ -4,12 +4,14 @@ using L2dotNET.Game.model.npcs.ai;
 using L2dotNET.Game.model.quests;
 using L2dotNET.Game.model.events;
 using System;
-using L2dotNET.Game.logger;
+using log4net;
 
 namespace L2dotNET.Game.network.l2recv
 {
     class RequestBypassToServer : GameServerNetworkRequest
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(RequestBypassToServer));
+
         public RequestBypassToServer(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -168,7 +170,7 @@ namespace L2dotNET.Game.network.l2recv
                 MonsterRace.Instance.OnBypass(player, npc, _alias);
             }
             else
-                CLogger.warning("Unknown bypass '"+_alias+"'");
+                log.Warn("Unknown bypass '"+_alias+"'");
         }
     }
 }

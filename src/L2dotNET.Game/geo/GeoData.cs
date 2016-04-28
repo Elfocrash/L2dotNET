@@ -1,14 +1,16 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using L2dotNET.Game.logger;
 
 namespace L2dotNET.Game.geo
 {
     public class GeoData : Geo
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(GeoData));
+
         private static GeoData instance = new GeoData();
         public static GeoData getInstance()
         {
@@ -49,17 +51,17 @@ namespace L2dotNET.Game.geo
 
         public override void loadGeo()
         {
-            CLogger.extra_info("Loading geo. 26x26 mapworld");
+            log.Info("Loading geo. 26x26 mapworld");
             foreach (string fname in Directory.GetFiles(@"geo\", "*.l2j"))
             {
                 FileInfo info = new FileInfo(fname);
 
                 string[] stx = info.Name.Split('.')[0].Split('_');
                 byte rxb = byte.Parse(stx[0]), ryb = byte.Parse(stx[1]);
-                CLogger.extra_info("Loading " + fname + ". " + rxb + "_" + ryb);
+                log.Info("Loading " + fname + ". " + rxb + "_" + ryb);
                 if (info.Length < 196608)
                 {
-                    CLogger.error("Unsupported geo file. L2J file cannot be smaller than 196kb. " + fname);
+                    log.Error("Unsupported geo file. L2J file cannot be smaller than 196kb. " + fname);
                     continue;
                 }
 
@@ -123,7 +125,7 @@ namespace L2dotNET.Game.geo
                             blocks[block] = geoBlock;
                             break;
                         default:
-                            CLogger.error("error parsing type " + type);
+                            log.Error("error parsing type " + type);
                             break;
                     }
                 }
@@ -138,7 +140,7 @@ namespace L2dotNET.Game.geo
                 }
                 // geo[rxb][ryb] = blocks;
                 // geob.Add(this.hashId(rxb, ryb), blocks);
-                CLogger.extra_info("Loaded " + info.Name + " " + (info.Length / 1024) + "kb and applied to '" + rxb + "_" + ryb + "'");
+                log.Info("Loaded " + info.Name + " " + (info.Length / 1024) + "kb and applied to '" + rxb + "_" + ryb + "'");
 
             }
 

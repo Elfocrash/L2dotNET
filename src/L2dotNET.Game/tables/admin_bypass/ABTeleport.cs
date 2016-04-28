@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using log4net;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
-using L2dotNET.Game.logger;
 
 namespace L2dotNET.Game.tables.admin_bypass
 {
     public class ABTeleport
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ABTeleport));
         public SortedList<int, ab_teleport_group> _groups = new SortedList<int, ab_teleport_group>();
         public ABTeleport()
         {
@@ -47,7 +48,7 @@ namespace L2dotNET.Game.tables.admin_bypass
                 }
             }
 
-            CLogger.info("AdminPlugin(Teleport): loaded " + _groups.Count + " groups.");
+            log.Info("AdminPlugin(Teleport): loaded " + _groups.Count + " groups.");
         }
 
         public void ShowGroup(L2Player player, int groupId)

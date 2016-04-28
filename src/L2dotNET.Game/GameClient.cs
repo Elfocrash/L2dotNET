@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using L2dotNET.Game.crypt;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.network;
 using L2Crypt;
 using L2dotNET.Models;

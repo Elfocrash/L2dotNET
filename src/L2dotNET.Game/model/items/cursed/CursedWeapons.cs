@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using log4net;
+using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.Game.logger;
 
 namespace L2dotNET.Game.model.items.cursed
 {
     class CursedWeapons
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(CursedWeapons));
         private static CursedWeapons instance = new CursedWeapons();
         public static CursedWeapons getInstance()
         {
@@ -19,7 +20,7 @@ namespace L2dotNET.Game.model.items.cursed
             items.Add(8190, null);
             items.Add(8689, null);
 
-            CLogger.info("CursedWeapons: Loaded "+items.Count+" items.");
+            log.Info($"CursedWeapons: Loaded { items.Count } items.");
         }
 
         public int[] getWeaponIds()

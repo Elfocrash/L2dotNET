@@ -1,15 +1,16 @@
 ﻿using System;
 using System.IO;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.zones;
 using L2dotNET.Game.model.zones.classes;
 using L2dotNET.Game.model.zones.forms;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     class ZoneTable
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ZoneTable));
         private static volatile ZoneTable instance;
         private static object syncRoot = new object();
 
@@ -188,14 +189,14 @@ namespace L2dotNET.Game.tables
                             }
                             else
                             {
-                                CLogger.error("AreaTable: null region at " + template._x[i] + " " + template._y[i] + " for zone " + zone.Name);
+                                log.Error("AreaTable: null region at " + template._x[i] + " " + template._y[i] + " for zone " + zone.Name);
                             }
                         }
                     }
 
                 }
             }
-            CLogger.info("AreaTable: intercepted " + ctx + " regions with " + cta + " zones");
+            log.Info("AreaTable: intercepted " + ctx + " regions with " + cta + " zones");
         }
     }
 }

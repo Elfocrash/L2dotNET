@@ -2,7 +2,6 @@
 using System.Net.Sockets;
 using L2dotNET.Game.controllers;
 using L2dotNET.Game.crypt;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.managers;
 using L2dotNET.Game.model.events;
 using L2dotNET.Game.model.items;
@@ -21,12 +20,14 @@ using L2dotNET.Services.Contracts;
 using L2dotNET.Models;
 using L2dotNET.Game.Managers;
 using System.Net;
+using log4net;
 
 namespace L2dotNET.Game
 {
     class GameServer
     {
         protected TcpListener _listener;
+        private static readonly ILog log = LogManager.GetLogger(typeof(GameServer));
 
         public GameServer()
         {
@@ -39,7 +40,6 @@ namespace L2dotNET.Game
         {
             Console.Title = "L2dotNET Gameserver";
 
-            CLogger.form();
             Cfg.init("all");
 
             CharTemplateTable.Instance.Initialize();
@@ -68,7 +68,6 @@ namespace L2dotNET.Game
             AIManager.getInstance();
 
             BlowFishKeygen.GenerateKeys();
-            CLogger.info("Generated 20 Blowfish Keys");
 
             AdminAccess.Instance.Initialize(); ;
 
@@ -79,7 +78,7 @@ namespace L2dotNET.Game
             AllianceTable.getInstance();
             ClanTable.getInstance();
 
-            CLogger.info("NpcServer: ");
+            log.Info("NpcServer: ");
             StaticObjTable.Instance.Initialize();
             MonsterRace.Instance.Initialize();
             //  SpawnTable.getInstance().Spawn();
@@ -91,7 +90,7 @@ namespace L2dotNET.Game
 
             //   GeoData.getInstance();
 
-            CLogger.extra_info("Listening Gameservers on port " + Cfg.SERVER_PORT);
+            log.Info("Listening Gameservers on port " + Cfg.SERVER_PORT);
             _listener = new TcpListener(IPAddress.Any, Cfg.SERVER_PORT);
             _listener.Start();
 

@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.items;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     class RecipeTable
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(RecipeTable));
         private static RecipeTable it = new RecipeTable();
         public static RecipeTable getInstance()
         {
@@ -81,7 +82,7 @@ namespace L2dotNET.Game.tables
                 }
             }
 
-            CLogger.info("RecipeTable: loaded " + _recipes.Count + " recipes.");
+            log.Info("RecipeTable: loaded " + _recipes.Count + " recipes.");
         }
 
         public L2Recipe getById(int p)

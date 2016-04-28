@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.network;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace L2dotNET.Game.world
 {
     public class L2World
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(L2World));
+        private static readonly ILog log = LogManager.GetLogger(typeof(L2World));
 
         private static volatile L2World instance;
         private static object syncRoot = new object();
@@ -93,7 +92,7 @@ namespace L2dotNET.Game.world
                     }
                 }
             }
-            CLogger.info("L2World: WorldRegion grid (" + REGIONS_X + " by " + REGIONS_Y + ") is now setted up.");
+            log.Info("L2World: WorldRegion grid (" + REGIONS_X + " by " + REGIONS_Y + ") is now setted up.");
         }
 
         public void removeObjects(List<L2Object> list)
@@ -202,7 +201,7 @@ namespace L2dotNET.Game.world
                     reg.realiseMe(obj, pk, pkuse);
                 }
                 else
-                    CLogger.warning("l2world: realiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
+                    log.Warn("l2world: realiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
             }
         }
 
@@ -223,7 +222,7 @@ namespace L2dotNET.Game.world
                 reg.unrealiseMe(obj, pkuse);
             }
             else
-                CLogger.warning("l2world: unrealiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
+                log.Warn("l2world: unrealiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
         }
 
         public void GetKnowns(L2Object obj, int range, int height, bool zones)
@@ -235,7 +234,7 @@ namespace L2dotNET.Game.world
                 reg.showObjects(obj, true, range, height, true, zones);
             }
             else
-                CLogger.warning("l2world: unrealiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
+                log.Warn("l2world: unrealiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
         }
 
         public void CheckToUpdate(L2Object obj, int _x, int _y, int radius, int height, bool delLongest, bool zones)
@@ -246,7 +245,7 @@ namespace L2dotNET.Game.world
                 reg.showObjects(obj, true, radius, height, delLongest, zones);
             }
             else
-                CLogger.warning("l2world: unrealiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
+                log.Warn("l2world: unrealiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
         }
 
         public void BroadcastToRegion(int instanceId, int x, int y, GameServerNetworkPacket pck)
@@ -257,7 +256,7 @@ namespace L2dotNET.Game.world
                 reg.broadcastPacket(instanceId, pck, false);
             }
             else
-                CLogger.warning("l2world: broadcastRegionPacket error, object on unk territory " + x + " " + y);
+                log.Warn("l2world: broadcastRegionPacket error, object on unk territory " + x + " " + y);
         }
 
         public IList<L2Object> GetAllObjects()

@@ -1,15 +1,16 @@
-﻿using L2dotNET.Game.logger;
-using L2dotNET.Game.model.npcs.ai;
+﻿using L2dotNET.Game.model.npcs.ai;
 using L2dotNET.Game.model.npcs.decor;
 using L2dotNET.Game.model.skills2;
 using L2dotNET.Game.model.structures;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables;
+using log4net;
 
 namespace L2dotNET.Game.model.npcs
 {
     class L2HideoutManager : L2Citizen
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(L2HideoutManager));
         private Hideout hideout;
         private AgitManagerAI ai;
         public L2HideoutManager(HideoutTemplate hideout)
@@ -524,7 +525,7 @@ namespace L2dotNET.Game.model.npcs
 
             if (id == 0)
             {
-                CLogger.error("hideout manager has invalid buff request "+reply);
+                log.Error("hideout manager has invalid buff request "+reply);
                 return 1;
             }
 
@@ -532,7 +533,7 @@ namespace L2dotNET.Game.model.npcs
 
             if (skill == null)
             {
-                CLogger.error("hideout manager has null buff skill " + id + "-" + lvl);
+                log.Error("hideout manager has null buff skill " + id + "-" + lvl);
                 return 1;
             }
 

@@ -4,13 +4,13 @@ using System.IO;
 using L2dotNET.Game.model.structures;
 using MySql.Data.MySqlClient;
 using System.Data;
-using L2dotNET.Game.logger;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     class StructureTable
     {
-
+        private static readonly ILog log = LogManager.GetLogger(typeof(StructureTable));
         private static volatile StructureTable instance;
         private static object syncRoot = new object();
 
@@ -147,8 +147,8 @@ namespace L2dotNET.Game.tables
                 }
             }
 
-            CLogger.info("Structs: loaded " + structures.Count + " templates.");
-            CLogger.info("Hideouts: " + hideouts.Count + ".");
+            log.Info("Structs: loaded " + structures.Count + " templates.");
+            log.Info("Hideouts: " + hideouts.Count + ".");
 
             foreach (HideoutTemplate st in structures.Values)
             {

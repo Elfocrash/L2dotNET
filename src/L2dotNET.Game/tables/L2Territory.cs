@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.model.zones.forms;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     public class L2Territory
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(L2Territory));
         public string name;
         public string controller;
         public bool start_active;
@@ -89,7 +90,7 @@ namespace L2dotNET.Game.tables
                     return new int[] { rndx, rndy, territory.getHighZ() };
             }
 
-            CLogger.error("getSpawnLocation failed after 400 tries. omg!");
+            log.Error("getSpawnLocation failed after 400 tries. omg!");
             return null;
         }
 

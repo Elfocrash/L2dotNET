@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     public class SpawnTable
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(SpawnTable));
         private static SpawnTable instance = new SpawnTable();
         public static SpawnTable getInstance()
         {
@@ -23,7 +24,7 @@ namespace L2dotNET.Game.tables
             foreach (string path in Directory.EnumerateFiles(@"scripts\spawn\", "*.xml"))
                 read(path);
 
-            CLogger.info("SpawnTable: Created " + territorries.Count+" territories with "+npcs+" monsters.");
+            log.Info("SpawnTable: Created " + territorries.Count+" territories with "+npcs+" monsters.");
         }
 
         private long npcs = 0;
@@ -97,10 +98,10 @@ namespace L2dotNET.Game.tables
         bool nospawn = true;
         public void Spawn()
         {
-            CLogger.extra_info("NpcServer spawn init.");
+            log.Info("NpcServer spawn init.");
             if (nospawn)
             {
-                CLogger.extra_info("NpcServer spawn done (blocked).");
+                log.Info("NpcServer spawn done (blocked).");
                 return;
             }
             long sp = 0;
@@ -114,7 +115,7 @@ namespace L2dotNET.Game.tables
             foreach (L2Spawn s in spawns)
                 s.init();
 
-            CLogger.extra_info("NpcServer spawn done, #"+sp+" npcs.");
+            log.Info("NpcServer spawn done, #"+sp+" npcs.");
         }
 
         public void SunRise(bool y)

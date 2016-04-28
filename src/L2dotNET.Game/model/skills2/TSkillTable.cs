@@ -4,14 +4,16 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 using L2dotNET.Game.compression;
-using L2dotNET.Game.logger;
 using System.Xml.Linq;
 using L2dotNET.Game.Enums;
+using log4net;
 
 namespace L2dotNET.Game.model.skills2
 {
     class TSkillTable
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(TSkillTable));
+
         private static TSkillTable st = new TSkillTable();
         public static TSkillTable getInstance()
         {
@@ -176,7 +178,7 @@ namespace L2dotNET.Game.model.skills2
                                     catch (Exception)
                                     {
                                         skill.target_type = TSkillTarget.target;
-                                        CLogger.error("skill #" + skill.skill_id + " invalid target " + value);
+                                        log.Error("skill #" + skill.skill_id + " invalid target " + value);
                                     }
                                     break;
                                 case 40://affect_scope
@@ -189,7 +191,7 @@ namespace L2dotNET.Game.model.skills2
                                     catch
                                     {
                                         skill.affect_scope = TSkillScope.single;
-                                        CLogger.error("skill #" + skill.skill_id + " invalid scope " + value);
+                                        log.Error("skill #" + skill.skill_id + " invalid scope " + value);
                                     }
                                     break;
                                 case 49:
@@ -296,7 +298,7 @@ namespace L2dotNET.Game.model.skills2
             //    }
             //}
 
-            CLogger.info("SkillTable: loaded " + _ids.Count + " skills, " + enchantInfo.Count + " enchants.");
+            log.Info("SkillTable: loaded " + _ids.Count + " skills, " + enchantInfo.Count + " enchants.");
         }
 
         #region INITREG
@@ -450,7 +452,7 @@ namespace L2dotNET.Game.model.skills2
             }
 
             dlc.close();
-            CLogger.info("SkillTable: learnable " + AcquireSkills.Count + " groups, #"+cntTotal+" skills.");
+            log.Info("SkillTable: learnable " + AcquireSkills.Count + " groups, #"+cntTotal+" skills.");
         }
 
         public TAcquireSkillsEntry getAllRegularSkills(ClassIds id)

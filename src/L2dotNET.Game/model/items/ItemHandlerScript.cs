@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.playable;
 using L2dotNET.Game.model.skills2;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.tables;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.model.items
 {
     class ItemHandlerScript : ItemEffect
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ItemHandlerScript));
         private int id;
 
         public int EffectID = -1;
@@ -95,7 +96,7 @@ namespace L2dotNET.Game.model.items
 
                 if (skill == null)
                 {
-                    CLogger.error("ItemHandler: item " + id + " with null effect " + EffectID + "/" + EffectLv);
+                    log.Error($"ItemHandler: item { id } with null effect { EffectID }/{ EffectLv }");
                     return;
                 }
 
@@ -112,7 +113,7 @@ namespace L2dotNET.Game.model.items
 
                 if (skill == null)
                 {
-                    CLogger.error("ItemHandler: item " + id + " with null skill " + SkillID + "/" + SkillLv);
+                    log.Error($"ItemHandler: item { id } with null skill { SkillID }/{ SkillLv }");
                     return;
                 }
 

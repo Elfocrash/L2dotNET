@@ -1,11 +1,12 @@
-﻿using L2dotNET.Game.logger;
-using L2dotNET.Game.model.vehicles;
+﻿using L2dotNET.Game.model.vehicles;
 using L2dotNET.Game.network.l2send;
+using log4net;
 
 namespace L2dotNET.Game.network.l2recv
 {
     class RequestMoveToLocationInVehicle : GameServerNetworkRequest
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(RequestMoveToLocationInVehicle));
         private int boatId;
         private int dx;
         private int dy;
@@ -58,7 +59,7 @@ namespace L2dotNET.Game.network.l2recv
 
             if (boat == null)
             {
-                CLogger.error("user requested null boat "+boatId);
+                log.Error("User requested null boat "+boatId);
                 player.sendActionFailed();
                 return;
             }

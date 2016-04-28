@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.network;
+using log4net;
 
 namespace L2dotNET.Game
 {
     class ClientManager
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ClientManager));
+
         private static volatile ClientManager instance;
         private static object syncRoot = new object();
 
@@ -51,7 +53,7 @@ namespace L2dotNET.Game
             {
                 if (_flood[ip].CompareTo(DateTime.Now) == 1)
                 {
-                    CLogger.warning("active flooder " + ip);
+                    log.Warn("Active flooder " + ip);
                     client.Close();
                     return;
                 }
@@ -65,14 +67,14 @@ namespace L2dotNET.Game
             if (!_banned.Allowed(ip))
             {
                 client.Close();
-                CLogger.error("NetworkBlock: connection attemp failed. "+ip+" banned.");
+                log.Error($"NetworkBlock: connection attemp failed. { ip } banned.");
                 return;
             }
 
             GameClient gc = new GameClient(client);
 
             clients.Add(gc._address.ToString(), gc);
-            CLogger.extra_info("NetController: " + clients.Count + " active connections");
+            log.Info($"NetController: { clients.Count } active connections");
         }
 
         public void terminate(string sock)
@@ -80,7 +82,7 @@ namespace L2dotNET.Game
             lock (clients)
                 clients.Remove(sock);
 
-            CLogger.extra_info("NetController: " + clients.Count + " active connections");
+            log.Info($"NetController: { clients.Count } active connections");
         }
     }
 }

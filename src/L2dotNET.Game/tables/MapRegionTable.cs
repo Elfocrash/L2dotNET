@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using L2dotNET.Game.logger;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.IO;
@@ -9,11 +8,13 @@ using L2dotNET.Game.model;
 using L2dotNET.Game.world;
 using L2dotNET.Game.model.zones.Type;
 using L2dotNET.Game.Enums;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     class MapRegionTable
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(MapRegionTable));
         private static volatile MapRegionTable instance;
         private static object syncRoot = new object();
 
@@ -68,7 +69,7 @@ namespace L2dotNET.Game.tables
                     }
                 }
             }
-            CLogger.info($"MapRegionTable: Loaded {count} regions.");
+            log.Info($"MapRegionTable: Loaded {count} regions.");
         }
 
         public static int GetMapRegion(int posX, int posY)
@@ -79,7 +80,7 @@ namespace L2dotNET.Game.tables
             }
             catch (Exception e)
             {
-                CLogger.error("Exception in GetMapRegion: " + e);
+                log.Error("Exception in GetMapRegion: " + e);
                 return 0;
             }
         }

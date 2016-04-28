@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Runtime.Remoting.Contexts;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.network;
 using L2dotNET.Game.network.l2send;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.controllers
 {
     [Synchronization]
     public class GameTime
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(GameTime));
+
         private static volatile GameTime instance;
         private static object syncRoot = new object();
 
@@ -55,7 +57,7 @@ namespace L2dotNET.Game.controllers
             TimeController.Interval = 1000;
             TimeController.Elapsed += new System.Timers.ElapsedEventHandler(ActionTime);
             TimeController.Enabled = true;
-            CLogger.info("GameTime Controller: started 18:00 PM.");
+            log.Info("GameTime Controller: started 18:00 PM.");
         }
 
         private void ActionTime(object sender, System.Timers.ElapsedEventArgs e)

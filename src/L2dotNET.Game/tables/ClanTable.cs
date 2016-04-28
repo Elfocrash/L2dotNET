@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.communities;
 using MySql.Data.MySqlClient;
 

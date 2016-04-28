@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.tables.admin_bypass;
+using log4net;
 
 namespace L2dotNET.Game.tables.ndextend
 {
     class NDTeleport
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(NDTeleport));
         public SortedList<int, ab_teleport_npc> npcs = new SortedList<int, ab_teleport_npc>();
         public NDTeleport()
         {
@@ -56,13 +57,13 @@ namespace L2dotNET.Game.tables.ndextend
                         }
                     }
                     if (npcs.ContainsKey(npc.id))
-                        CLogger.error("NpcData(Teleporter) dublicate npc str " + npc.id);
+                        log.Error("NpcData(Teleporter) dublicate npc str " + npc.id);
                     else
                         npcs.Add(npc.id, npc);
                 }
             }
 
-            CLogger.info("NpcData(Teleporter): loaded " + npcs.Count + " npcs.");
+            log.Info("NpcData(Teleporter): loaded " + npcs.Count + " npcs.");
         }
     }
 

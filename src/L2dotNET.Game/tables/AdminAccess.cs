@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.tables.admin;
 using L2dotNET.Game.tables.admin_bypass;
+using log4net;
 
 namespace L2dotNET.Game.tables
 {
     public class AdminAccess
     {
-
+        private static readonly ILog log = LogManager.GetLogger(typeof(AdminAccess));
         private SortedList<string, _adminAlias> _commands = new SortedList<string, _adminAlias>();
         private ABTeleport Teleports;
 
@@ -132,7 +132,7 @@ namespace L2dotNET.Game.tables
 
             register(new AA_chat());
             register(new AA_spawn());
-            CLogger.info("AdminAccess: loaded " + _commands.Count + " commands.");
+            log.Info("AdminAccess: loaded " + _commands.Count + " commands.");
         }
 
         public void request(L2Player admin, string alias)

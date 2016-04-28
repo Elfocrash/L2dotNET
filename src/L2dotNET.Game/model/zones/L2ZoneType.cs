@@ -1,5 +1,4 @@
-﻿using L2dotNET.Game.logger;
-using L2dotNET.Game.model.zones.forms;
+﻿using L2dotNET.Game.model.zones.forms;
 using L2dotNET.Game.network;
 using L2dotNET.Game.world;
 using System;

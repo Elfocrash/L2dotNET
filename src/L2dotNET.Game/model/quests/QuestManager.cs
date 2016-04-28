@@ -2,13 +2,14 @@
 using System.Text;
 using L2dotNET.Game.model.npcs;
 using L2dotNET.Game.model.quests.data;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.scripting;
+using log4net;
 
 namespace L2dotNET.Game.model.quests
 {
     public class QuestManager
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(QuestManager));
         private static QuestManager qm = new QuestManager();
 
         public static QuestManager getInstance()
@@ -42,7 +43,7 @@ namespace L2dotNET.Game.model.quests
             register(new _0605_alliance_with_ketra_orcs());
             register(new _0606_war_with_varka_silenos());
 
-            CLogger.info("QuestManager: loaded "+_quests.Count+" quests.");
+            log.Info($"QuestManager: loaded { _quests.Count } quests.");
         }
 
         private void register(QuestOrigin qo)

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.model.items
 {
     public class Capsule
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Capsule));
         private static Capsule instance = new Capsule();
         public static Capsule getInstance()
         {
@@ -38,7 +39,7 @@ namespace L2dotNET.Game.model.items
         public Capsule()
         {
             loadXML();
-            CLogger.info("Capsule: Loaded " + items.Count + " items.");
+            log.Info("Capsule: Loaded " + items.Count + " items.");
         }
 
         public void loadXML()

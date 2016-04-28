@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.skills2;
 using L2dotNET.Game.model.zones.forms;
 

@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.network.loginauth.recv;
 using L2dotNET.Game.network.loginauth.send;
 using L2dotNET.Game.world;
 using L2dotNET.Models;
+using log4net;
 
 namespace L2dotNET.Game.network.loginauth
 {
     public class AuthThread
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(AuthThread));
         private static volatile AuthThread instance;
         private static object syncRoot = new object();
 
@@ -57,7 +58,7 @@ namespace L2dotNET.Game.network.loginauth
             }
             catch (SocketException)
             {
-                CLogger.warning("login server is not responding. Retrying");
+                log.Warn("Login server is not responding. Retrying");
                 if (ltimer == null)
                 {
                     ltimer = new System.Timers.Timer();
@@ -96,7 +97,7 @@ namespace L2dotNET.Game.network.loginauth
             }
             catch (Exception e)
             {
-                CLogger.error("AuthThread: " + e.Message);
+                log.Error("AuthThread: " + e.Message);
                 termination();
             }
         }
@@ -116,7 +117,7 @@ namespace L2dotNET.Game.network.loginauth
             }
             catch(Exception e)
             {
-                CLogger.error("AuthThread: " + e.Message);
+                log.Error("AuthThread: " + e.Message);
                 termination();
             }
         }
@@ -138,7 +139,7 @@ namespace L2dotNET.Game.network.loginauth
             if (paused)
                 return;
 
-            CLogger.error("AuthThread: reconnecting...");
+            log.Error("AuthThread: reconnecting...");
             Initialize();
         }
 
@@ -161,7 +162,7 @@ namespace L2dotNET.Game.network.loginauth
         public void loginFail(string code)
         {
             paused = true;
-            CLogger.error("AuthThread: "+code+". Please check configuration, server paused." );
+            log.Error("AuthThread: "+code+". Please check configuration, server paused." );
             try
             {
                 nstream.Close();
@@ -172,7 +173,7 @@ namespace L2dotNET.Game.network.loginauth
 
         public void loginOk(string code)
         {
-            CLogger.extra_info("AuthThread: " + code);
+            log.Info("AuthThread: " + code);
         }
 
         public void setInGameAccount(string account, bool status = false)

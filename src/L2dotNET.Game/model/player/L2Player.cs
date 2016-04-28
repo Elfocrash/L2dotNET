@@ -5,7 +5,6 @@ using System.Data;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Timers;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.communities;
 using L2dotNET.Game.model.inventory;
 using L2dotNET.Game.model.items;
@@ -33,12 +32,15 @@ using L2dotNET.Services.Contracts;
 using L2dotNET.Models;
 using L2dotNET.Game.templates;
 using L2dotNET.Game.Enums;
+using log4net;
 
 namespace L2dotNET.Game
 {
     [Synchronization]
     public partial class L2Player : L2Character
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(L2Player));
+
         [Inject]
         public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
 
@@ -2657,7 +2659,7 @@ namespace L2dotNET.Game
         {
             if (lastPingId != id)
             {
-                CLogger.warning("player fail to ping respond right " + id + " " + lastPingId + " at " + pingTimeout.ToLocalTime());
+                log.Warn("player fail to ping respond right " + id + " " + lastPingId + " at " + pingTimeout.ToLocalTime());
                 return;
             }
 

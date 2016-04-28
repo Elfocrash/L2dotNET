@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.Game.logger;
 using L2dotNET.Game.model.items.effects;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.model.items
 {
     public class ItemHandler
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ItemHandler));
+
         private static ItemHandler instance = new ItemHandler();
         public static ItemHandler getInstance()
         {
@@ -37,7 +39,7 @@ namespace L2dotNET.Game.model.items
             register(new Calculator());
 
             loadXML();
-            CLogger.info("ItemHandler: Loaded " + effects+" effects with "+items.Count+" items.");
+            log.Info($"ItemHandler: Loaded { effects } effects with { items.Count } items.");
         }
 
         short effects = 0;

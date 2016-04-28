@@ -1,11 +1,12 @@
-﻿using L2dotNET.Game.logger;
-using L2dotNET.Game.model.playable;
+﻿using L2dotNET.Game.model.playable;
 using L2dotNET.Game.world;
+using log4net;
 
 namespace L2dotNET.Game.model.items
 {
     public class ItemEffect
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ItemEffect));
         public int[] ids;
         public void Use(L2Character character, L2Item item)
         {
@@ -14,7 +15,7 @@ namespace L2dotNET.Game.model.items
             else if (character is L2Pet)
                 UsePet((L2Pet)character, item);
             else
-                CLogger.warning("unk object "+character.Name+" tried to use "+item.Template.ItemID);
+                log.Warn($"Unk object { character.Name } tried to use { item.Template.ItemID }");
         }
 
         public virtual void UsePlayer(L2Player player, L2Item item) 
