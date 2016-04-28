@@ -9,11 +9,14 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Ninject;
+using log4net;
 
 namespace L2dotNET.Auth
 {
     class LoginServer
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(LoginServer));
+
         public LoginServer()
         { }
             
@@ -23,6 +26,7 @@ namespace L2dotNET.Auth
         public void Start()
         {
             Console.Title = "L2dotNET Loginserver";
+
             Cfg.load();
             ClientManager.Instance.Initialize();
             ServerThreadPool.Instance.Initialize();
@@ -30,7 +34,7 @@ namespace L2dotNET.Auth
 
             LoginListener = new TcpListener(IPAddress.Parse(Cfg.SERVER_HOST), Cfg.SERVER_PORT);
             LoginListener.Start();
-            CLogger.extra_info("Auth server listening clients at " + Cfg.SERVER_HOST + ":" + Cfg.SERVER_PORT);
+            log.Info("Auth server listening clients at " + Cfg.SERVER_HOST + ":" + Cfg.SERVER_PORT);
             new System.Threading.Thread(ServerThreadPool.Instance.Start).Start();
             TcpClient clientSocket = default(TcpClient);
             while (true)

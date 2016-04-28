@@ -1,48 +1,68 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace L2dotNET.Auth.data
 {
-    class NetworkBlock
+    sealed class NetworkBlock
     {
-        private static NetworkBlock nb = new NetworkBlock();
-        public static NetworkBlock getInstance()
+        private static readonly ILog log = LogManager.GetLogger(typeof(NetworkBlock));
+
+        private static volatile NetworkBlock instance;
+        private static object syncRoot = new object();
+
+        public static NetworkBlock Instance
         {
-            return nb;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new NetworkBlock();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
         protected List<NB_interface> blocks = new List<NB_interface>();
 
         public NetworkBlock()
         {
-            StreamReader reader = new StreamReader(new FileInfo(@"sq\blocks.txt").FullName);
-            while (!reader.EndOfStream)
+            using (StreamReader reader = new StreamReader(new FileInfo(@"sq\blocks.txt").FullName))
             {
-                string line = reader.ReadLine();
-                if (line.Length == 0)
-                    continue;
-
-                if (line.StartsWith("//"))
-                    continue;
-
-                if (line.StartsWith("d"))
+                while (!reader.EndOfStream)
                 {
-                    NB_interface i = new NB_interface();
-                    i.directIp = line.Split(' ')[1];
-                    i.forever = line.Split(' ')[2].Equals("0");
-                    blocks.Add(i);
-                }
-                else if (line.StartsWith("m"))
-                {
-                    NB_interface i = new NB_interface();
-                    i.mask = line.Split(' ')[1];
-                    i.forever = line.Split(' ')[2].Equals("0");
-                    blocks.Add(i);
+                    string line = reader.ReadLine();
+                    if (line.Length == 0)
+                        continue;
+
+                    if (line.StartsWith("//"))
+                        continue;
+
+                    if (line.StartsWith("d"))
+                    {
+                        NB_interface i = new NB_interface();
+                        i.directIp = line.Split(' ')[1];
+                        i.forever = line.Split(' ')[2].Equals("0");
+                        blocks.Add(i);
+                    }
+                    else if (line.StartsWith("m"))
+                    {
+                        NB_interface i = new NB_interface();
+                        i.mask = line.Split(' ')[1];
+                        i.forever = line.Split(' ')[2].Equals("0");
+                        blocks.Add(i);
+                    }
                 }
             }
-
-            CLogger.info("NetworkBlock: " + blocks.Count + " blocks.");
+            log.Info("NetworkBlock: " + blocks.Count + " blocks.");
         }
 
         public bool Allowed(string ip)

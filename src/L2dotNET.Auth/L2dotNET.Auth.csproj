@@ -68,6 +68,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\L2Crypt.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.8.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.8.7\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
@@ -96,7 +100,6 @@
     <Compile Include="managers\NetworkRedirect.cs" />
     <Compile Include="Cfg.cs" />
     <Compile Include="managers\ClientManager.cs" />
-    <Compile Include="CLogger.cs" />
     <Compile Include="model\ConfigFile.cs" />
     <Compile Include="network\rcv_gs\RequestUpdatePremiumState.cs" />
     <Compile Include="network\rcv_gs\RequestPlayersOnline.cs" />

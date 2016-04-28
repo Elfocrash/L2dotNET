@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using L2dotNET.Auth.data;
 using L2Crypt;
+using log4net;
 
 namespace L2dotNET.Auth
 {
     sealed class ClientManager
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ClientManager));
+
         private static volatile ClientManager instance;
         private static object syncRoot = new object();
         private int ScrambleCount = 1;
@@ -44,9 +47,9 @@ namespace L2dotNET.Auth
 
         public void Initialize()
         {
-            CLogger.info("Loading client manager.");
+            log.Info("Loading client manager.");
 
-            CLogger.info("Scrambling keypairs.");
+            log.Info("Scrambling keypairs.");
 
             ScrambledPairs = new ScrambledKeyPair[ScrambleCount];
 
@@ -55,8 +58,8 @@ namespace L2dotNET.Auth
                 ScrambledPairs[i] = new ScrambledKeyPair(ScrambledKeyPair.genKeyPair());
             }
 
-            CLogger.info("Scrambled " + ScrambledPairs.Length + " keypairs.");
-            CLogger.info("Randomize blowfish keys.");
+            log.Info($"Scrambled { ScrambledPairs.Length } keypairs.");
+            log.Info("Randomize blowfish keys.");
 
             BlowfishKeys = new Byte[BlowfishCount][];
 
@@ -66,7 +69,7 @@ namespace L2dotNET.Auth
                 new Random().NextBytes(BlowfishKeys[i]);
             }
 
-            CLogger.info("Randomized " + BlowfishKeys.Length + " blowfish keys.");
+            log.Info($"Randomized { BlowfishKeys.Length } blowfish keys.");
         }
 
         private NetworkBlock banned;
@@ -75,15 +78,15 @@ namespace L2dotNET.Auth
         public void addClient(TcpClient client)
         {
             if (banned == null)
-                banned = NetworkBlock.getInstance();
+                banned = NetworkBlock.Instance;
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
-            Console.WriteLine("connected "+ip);
+            Console.WriteLine($"Connected: { ip }");
             if (flood.ContainsKey(ip))
             {
                 if (flood[ip].CompareTo(DateTime.Now) == 1)
                 {
-                    CLogger.warning("active flooder " + ip);
+                    log.Warn($"Active flooder :{ ip }");
                     client.Close();
                     return;
                 }
@@ -99,7 +102,7 @@ namespace L2dotNET.Auth
             if (!banned.Allowed(ip))
             {
                 client.Close();
-                CLogger.error("NetworkBlock: connection attemp failed. " + ip + " banned.");
+                log.Error($"NetworkBlock: connection attemp failed. IP: { ip } banned.");
                 return;
             }
 

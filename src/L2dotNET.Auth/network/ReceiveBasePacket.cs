@@ -1,9 +1,12 @@
-﻿using System;
+﻿using log4net;
+using System;
 
 namespace L2dotNET.Auth
 {
     public abstract class ReceiveBasePacket
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ReceiveBasePacket));
+
         private byte[] _packet;
         private int _offset;
         private LoginClient _Client;
@@ -72,7 +75,7 @@ namespace L2dotNET.Auth
             }
             catch (Exception ex)
             {
-                CLogger.error("while reading string from packet, " + ex.Message + " " + ex.StackTrace);
+                log.Error("while reading string from packet, " + ex.Message + " " + ex.StackTrace);
             }
             return result;
         }

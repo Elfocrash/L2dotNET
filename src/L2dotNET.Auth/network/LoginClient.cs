@@ -7,11 +7,14 @@ using L2dotNET.Auth.rcv_l2;
 using L2dotNET.Auth.serverpackets;
 using L2Crypt;
 using L2dotNET.Models;
+using log4net;
 
 namespace L2dotNET.Auth
 {
     public class LoginClient
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(LoginClient));
+
         public int SessionId;
         public EndPoint _address;
         public TcpClient _client;
@@ -90,7 +93,7 @@ namespace L2dotNET.Auth
             }
             catch(Exception s)
             {
-                CLogger.warning(_address + $" was closed by force. { s }");
+                log.Warn(_address + $" was closed by force. { s }");
                 close();
             }
         }
@@ -109,7 +112,7 @@ namespace L2dotNET.Auth
 
             if (!_loginCrypt.decrypt(ref buff, 0, buff.Length))
             {
-                CLogger.error($"Blowfish failed on { _address }. Please restart auth server.");
+                log.Error($"Blowfish failed on { _address }. Please restart auth server.");
             }
             else
             {
@@ -139,7 +142,7 @@ namespace L2dotNET.Auth
                     break;
 
                 default:
-                    CLogger.warning("LoginClient: received unk request " + id);
+                    log.Warn("LoginClient: received unk request " + id);
                     break;
             }
 

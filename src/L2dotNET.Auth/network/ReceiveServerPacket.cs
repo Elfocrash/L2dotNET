@@ -1,10 +1,13 @@
 ﻿using System;
 using L2dotNET.Auth.gscommunication;
+using log4net;
 
 namespace L2dotNET.Auth
 {
     public abstract class ReceiveServerPacket
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ReceiveServerPacket));
+
         private byte[] _packet;
         private int _offset;
         public ServerThread thread;
@@ -75,7 +78,7 @@ namespace L2dotNET.Auth
             }
             catch (Exception ex)
             {
-                CLogger.error("while reading string from packet, " + ex.Message + " " + ex.StackTrace);
+                log.Error($"Error while reading string from packet, { ex.Message } { ex.StackTrace}");
             }
             return result;
         }

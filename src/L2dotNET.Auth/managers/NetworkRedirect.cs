@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using log4net;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -6,6 +7,7 @@ namespace L2dotNET.Auth.managers
 {
     class NetworkRedirect
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(NetworkRedirect));
         private static volatile NetworkRedirect instance;
         private static object syncRoot = new object();
 
@@ -58,7 +60,7 @@ namespace L2dotNET.Auth.managers
                         redirects.Add(i);
                 }
             }
-            CLogger.info("NetworkRedirect: " + redirects.Count + " redirects. Global is " + (GlobalRedirection == null ? "disabled" : "enabled"));
+            log.Info("NetworkRedirect: " + redirects.Count + " redirects. Global is " + (GlobalRedirection == null ? "disabled" : "enabled"));
         }
 
         public byte[] GetRedirect(LoginClient client, short serverId)
@@ -85,7 +87,7 @@ namespace L2dotNET.Auth.managers
 
                 if (d.Min() == 1)
                 {
-                    CLogger.info("Redirecting client to global " + GlobalRedirection.redirect + " on #" + serverId);
+                    log.Info("Redirecting client to global " + GlobalRedirection.redirect + " on #" + serverId);
                     return GlobalRedirection.redirectBits;
                 }
             }
@@ -118,7 +120,7 @@ namespace L2dotNET.Auth.managers
 
                         if (d.Min() == 1)
                         {
-                            CLogger.info("Redirecting client to " + nr.redirect + " on #" + serverId);
+                            log.Info("Redirecting client to " + nr.redirect + " on #" + serverId);
                             return nr.redirectBits;
                         }
                     }
