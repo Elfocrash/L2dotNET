@@ -4,11 +4,14 @@ using System.Net.Sockets;
 using System.Threading;
 using L2dotNET.Auth.network.rcv_gs;
 using L2dotNET.Auth.network.serverpackets_gs;
+using log4net;
 
 namespace L2dotNET.Auth.gscommunication
 {
     public class ServerThread
     {
+        ILog log = LogManager.GetLogger(typeof(ServerThread));
+
         private NetworkStream nstream;
         private TcpClient client;
         private byte[] buffer;
@@ -19,11 +22,8 @@ namespace L2dotNET.Auth.gscommunication
         public short Curp { get { return curp; } set { curp = value; } }
         public short Maxp { get { return maxp; } set { maxp = value; } }
         public string Info { get; set; }
-        private bool connected = false;
         public bool Connected { get; set; }
-        private bool testMode = false;
         public bool TestMode { get; set; }
-        private bool gmonly = false;
         public bool GmOnly { get; set; }
         public byte Id { get; set; }
 
@@ -44,7 +44,7 @@ namespace L2dotNET.Auth.gscommunication
             }
             catch (Exception e)
             {
-                CLogger.error("ServerThread: " + e.Message);
+                log.Error("ServerThread: " + e.Message);
                 Termination();
             }
         }
@@ -64,7 +64,7 @@ namespace L2dotNET.Auth.gscommunication
             }
             catch (Exception e)
             {
-                CLogger.error("ServerThread: " + e.Message);
+                log.Error("ServerThread: " + e.Message);
                 Termination();
             }
         }

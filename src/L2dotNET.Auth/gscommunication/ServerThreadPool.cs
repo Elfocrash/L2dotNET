@@ -8,11 +8,14 @@ using System;
 using Ninject;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Models;
+using log4net;
 
 namespace L2dotNET.Auth.gscommunication
 {
     public class ServerThreadPool
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ServerThreadPool));
+
         [Inject]
         public IServerService serverService { get { return LoginServer.Kernel.Get<IServerService>(); } }
 
@@ -58,7 +61,7 @@ namespace L2dotNET.Auth.gscommunication
                 servers.Add(server);
             }
 
-            CLogger.info("GameServerThread: loaded " + servers.Count + " servers");
+            log.Info("GameServerThread: loaded " + servers.Count + " servers");
         }
 
         public L2Server Get(short serverId)
@@ -76,7 +79,7 @@ namespace L2dotNET.Auth.gscommunication
         {
             listener = new TcpListener(IPAddress.Parse(Cfg.SERVER_HOST), Cfg.SERVER_PORT_GS);
             listener.Start();
-            CLogger.extra_info("Auth server listening gameservers at " + Cfg.SERVER_HOST + ":" + Cfg.SERVER_PORT_GS);
+            log.Info("Auth server listening gameservers at " + Cfg.SERVER_HOST + ":" + Cfg.SERVER_PORT_GS);
             while (true)
             {
                 VerifyClient(listener.AcceptTcpClient());
@@ -98,7 +101,7 @@ namespace L2dotNET.Auth.gscommunication
                         s.Thread.Stop();
 
                     s.Thread = null;
-                    CLogger.warning("ServerThread: #"+id+" shutted down");
+                    log.Warn($"ServerThread: #{id} shutted down");
                     break;
                 }
         }

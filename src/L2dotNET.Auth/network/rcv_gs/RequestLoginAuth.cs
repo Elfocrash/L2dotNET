@@ -1,10 +1,13 @@
 ﻿using L2dotNET.Auth.gscommunication;
 using L2dotNET.Auth.network.serverpackets_gs;
+using log4net;
 
 namespace L2dotNET.Auth.network.rcv_gs
 {
     class RequestLoginAuth : ReceiveServerPacket
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(RequestLoginAuth));
+
         private short port;
         private string host;
         private string info;
@@ -46,7 +49,7 @@ namespace L2dotNET.Auth.network.rcv_gs
 
             if (server == null)
             {
-                CLogger.error("code '" + code + "' for server was not found. closing");
+                log.Error($"Code '{ code }' for server was not found. Closing");
                 thread.close(new ServerLoginFail("wrong code"));
                 return;
             }
@@ -61,7 +64,7 @@ namespace L2dotNET.Auth.network.rcv_gs
             thread.Connected = true;
 
             thread.SendPacket(new ServerLoginOk());
-            CLogger.extra_info($"AuthThread: Server #{server.Id} connected");
+            log.Info($"AuthThread: Server #{server.Id} connected");
         }
     }
 }
