@@ -727,6 +727,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Datapacks\Auth\authdatapack.rar" />
+    <None Include="Datapacks\Game\gamedatapack.rar" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -771,6 +773,9 @@
       <Project>{0a70c676-f9bd-4593-9ef4-b22f8e170aed}</Project>
       <Name>L2dotNET.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Datapacks\sqlscripts\l2dotnet.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

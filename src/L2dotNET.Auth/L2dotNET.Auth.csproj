@@ -165,10 +165,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="sqlscripts\Gameserver\" />
-    <Folder Include="sqlscripts\Loginserver\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">
       <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
