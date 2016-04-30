@@ -72,7 +72,7 @@ namespace L2dotNET.Game.network.l2recv
             //ObjectId = player.ObjID,
             //player.Name = playerModel.Name;
             player.Level = (byte)playerModel.Level;
-            //player.MaximumHp = playerModel.MaxHp;
+            player.MaxHp = playerModel.MaxHp;
             player.CurHP = playerModel.CurHp;
             player.MaxCp = playerModel.MaxCp;
             player.CurCp = playerModel.CurCp;

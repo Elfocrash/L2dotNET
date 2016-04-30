@@ -852,7 +852,7 @@ namespace L2dotNET.Game
 
         public void onGameInit()
         {
-            //CStatsInit();
+            CStatsInit();
             if (!insrestored)
                 CharacterStat.setTemplate(ActiveClass);
 

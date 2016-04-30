@@ -1670,107 +1670,21 @@ namespace L2dotNET.Game.world
         public virtual int AllianceId { get { return 0; } }
         public virtual int AllianceCrestId { get { return 0; } }
 
-        public double MaxHp
-        {
-            get
-            {
-                return CharacterStat.getStat(TEffectType.b_max_hp);
-            }
-        }
+        public virtual double MaxHp { get; set; }
 
         public override double CurHP
         {
-            get { return CurHP; }
-
-            set
-            {
-                double max = CharacterStat.getStat(TEffectType.b_max_hp);
-                double old = CurHP;
-                CurHP += value;
-                if (CurHP > max)
-                    CurHP = max;
-
-                if (old != CurHP)
-                {
-                    StatusUpdate su = new StatusUpdate(ObjID);
-                    su.add(StatusUpdate.CUR_HP, (int)CurHP);
-                    sendPacket(su);
-
-
-                    if (this is L2Summon)
-                    {
-                        if (((L2Summon)this).Owner != null)
-                            ((L2Summon)this).Owner.sendPacket(new PetStatusUpdate((L2Summon)this));
-                    }
-
-                    if (this is L2Player)
-                    {
-                        if (((L2Player)this).Party != null)
-                            ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                    }
-                }
-            }
+            get; set;
         }
 
         public override double CurMP
         {
-            get { return CurMP; }
-
-            set
-            {
-                double max = CharacterStat.getStat(TEffectType.b_max_mp);
-                double old = CurMP;
-                CurMP += value;
-                if (CurMP > max)
-                    CurMP = max;
-
-                if (old != CurMP)
-                {
-                    StatusUpdate su = new StatusUpdate(ObjID);
-                    su.add(StatusUpdate.CUR_MP, (int)CurMP);
-                    broadcastPacket(su);
-
-
-                    if (this is L2Summon)
-                    {
-                        if (((L2Summon)this).Owner != null)
-                            ((L2Summon)this).Owner.sendPacket(new PetStatusUpdate((L2Summon)this));
-                    }
-
-                    if (this is L2Player)
-                    {
-                        if (((L2Player)this).Party != null)
-                            ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                    }
-                }
-            }
+            get; set;
         }
 
         public override double CurCP
         {
-            get { return CurCP; }
-
-            set
-            {
-                double max = CharacterStat.getStat(TEffectType.b_max_cp);
-                double old = CurCP;
-                CurCP += value;
-                if (CurCP > max)
-                    CurCP = max;
-
-                if (old != CurCP)
-                {
-                    StatusUpdate su = new StatusUpdate(ObjID);
-                    su.add(StatusUpdate.CUR_CP, (int)CurCP);
-                    broadcastPacket(su);
-
-                    if (this is L2Player)
-                    {
-                        if (((L2Player)this).Party != null)
-                            ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                    }
-                }
-            }
+            get; set;
         }
 
         public override string asString()
