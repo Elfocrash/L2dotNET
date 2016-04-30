@@ -1,0 +1,114 @@
+//The	start	the	world-wide	possibility	of	dozing,	the	center	of	world-wide	possibility	lower	part	the	water	which	accomplishes	the	big	unit
+area_begin	name=[mother_tree_start_zone]	map_no={21;19}	type=mother_tree	affect_race=elf	entering_message_no=114	leaving_message_no=115	range={{45889;41890;-3550;-3350};{45277;41672;-3550;-3350};{45028;41478;-3550;-3350};{44809;41230;-3550;-3350};{44522;40689;-3550;-3350};{44501;39970;-3550;-3350};{44725;39407;-3550;-3350};{44930;39145;-3550;-3350};{45447;38764;-3550;-3350};{46073;38618;-3550;-3350};{46710;38716;-3550;-3350};{47255;39049;-3550;-3350};{47743;39834;-3550;-3350};{47772;40568;-3550;-3350};{47545;41125;-3550;-3350};{47108;41599;-3550;-3350};{46531;41868;-3550;-3350}}	area_end
+
+//World-wide	possibility	of	the	village	center,	world-wide	possibility	it	accomplishes	the	unit	lower	part	rightly	and	the	small	water,	the	place	outside	piece	where	the	water	is	becoming	in	outline	of	duplication	it	asks
+area_begin	name=[mother_tree_town]	map_no={21;19}	type=mother_tree	affect_race=elf	entering_message_no=114	leaving_message_no=115	range={{45234;49892;-3121;-2921};{45117;49826;-3121;-2921};{45031;49722;-3121;-2921};{44986;49597;-3121;-2921};{44985;49462;-3121;-2921};{45032;49336;-3121;-2921};{45116;49233;-3121;-2921};{45233;49165;-3121;-2921};{45365;49143;-3121;-2921};{45498;49166;-3121;-2921};{45614;49235;-3121;-2921};{45700;49336;-3121;-2921};{45746;49462;-3121;-2921};{45747;49596;-3121;-2921};{45699;49723;-3121;-2921};{45614;49825;-3121;-2921};{45498;49893;-3121;-2921};{45366;49914;-3121;-2921}}	area_end
+
+//The	blood	su	dozes,	the	island	village	which	it	talks	1	(17_25)
+area_begin	name=[talking_island_town_peace_zone1]	map_no={17;25}	type=peace_zone	range={{-84028;239722;-3966;-3466};{-81007;243210;-3966;-3466};{-81021;243484;-3966;-3466};{-84308;246247;-3966;-3466};{-84552;246239;-3966;-3466};{-87638;242837;-3966;-3466};{-87611;242574;-3966;-3466};{-84305;239649;-3966;-3466}}	area_end
+
+//The	blood	su	dozes,	the	island	village	which	it	talks	2	(17_25)
+area_begin	name=[talking_island_town_peace_zone2]	map_no={17;25}	type=peace_zone	range={{-83428;240398;-3820;-3320};{-82605;241262;-3820;-3320};{-81512;242568;-3820;-3320};{-82035;242583;-3820;-3320};{-83396;241129;-3820;-3320}}	area_end
+
+//The	blood	su	dozes,	the	island	village	which	it	talks	3	(17_25)
+area_begin	name=[talking_island_town_peace_zone3]	map_no={17;25}	type=peace_zone	range={{-86138;243444;-3789;-3289};{-85039;244801;-3789;-3289};{-84811;245977;-3789;-3289};{-86323;244370;-3789;-3289};{-87229;243237;-3789;-3289}}	area_end
+
+//The	blood	su	dozes,	the	island	village	which	it	talks	4	(17_25)
+area_begin	name=[talking_island_town_peace_zone4]	map_no={17;25}	type=peace_zone	range={{-85539;241748;-3846;-3346};{-87612;242572;-3846;-3346};{-87470;242383;-3846;-3346};{-86310;241337;-3846;-3346};{-85622;240814;-3846;-3346}}	area_end
+
+//Magical	school	1,	the	island	which	it	talks	(17_25)
+area_begin	name=[mage_start_peace_1]	map_no={17;25}	type=peace_zone	range={{-90034;248143;-3699;-2699};{-89960;248698;-3699;-2699};{-90520;248847;-3699;-2699};{-91136;248445;-3699;-2699};{-91270;248296;-3699;-2699};{-91328;248092;-3699;-2699};{-91250;247867;-3699;-2699};{-91063;247704;-3699;-2699};{-90863;247676;-3699;-2699};{-90638;247748;-3699;-2699}}	area_end
+
+//Magical	school	2,	the	island	which	it	talks	(17_25)
+area_begin	name=[mage_start_peace_2]	map_no={17;25}	type=peace_zone	range={{-90165;247096;-4043;-3043};{-88576;248162;-4043;-3043};{-89962;250239;-4043;-3043};{-91512;249150;-4043;-3043}}	area_end
+
+//Magical	school	3,	the	island	which	it	talks	(17_25)
+area_begin	name=[mage_start_peace_3]	map_no={17;25}	type=peace_zone	range={{-88457;248867;-3659;-2659};{-88611;249099;-3659;-2659};{-89054;249756;-3659;-2659};{-89279;250048;-3659;-2659};{-89684;250143;-3659;-2659};{-90008;249970;-3659;-2659};{-88864;248209;-3659;-2659};{-88542;248446;-3659;-2659}}	area_end
+
+//Magical	school	4,	the	island	which	it	talks	(17_25)
+area_begin	name=[mage_start_peace_4]	map_no={17;25}	type=peace_zone	range={{-88732;248912;-3659;-2659};{-88418;249116;-3659;-2659};{-89005;249980;-3659;-2659};{-89311;249787;-3659;-2659}}	area_end
+
+//Magical	school	5,	the	island	which	it	talks	(17_25)
+area_begin	name=[mage_start_peace_5]	map_no={17;25}	type=peace_zone	range={{-88612;249461;-3659;-2659};{-88559;249539;-3659;-2659};{-88581;249649;-3659;-2659};{-88680;249708;-3659;-2659};{-88761;249704;-3659;-2659};{-89050;249513;-3659;-2659};{-89073;249332;-3659;-2659};{-88895;249273;-3659;-2659}}	area_end
+
+//Coating	with	paint	1,	the	island	which	it	talks	(17_25)
+area_begin	name=[fighter_start_peace_1]	map_no={17;25}	type=peace_zone	range={{-73436;257725;-3284;-2284};{-71668;256229;-3284;-2284};{-69952;258077;-3284;-2284};{-71896;259701;-3284;-2284}}	area_end
+
+//Coating	with	paint	2,	the	island	which	it	talks	(17_25)
+area_begin	name=[fighter_start_peace_2]	map_no={17;25}	type=peace_zone	range={{-73180;257663;-3272;-2272};{-72460;258619;-3272;-2272};{-72720;258831;-3272;-2272};{-73284;258115;-3272;-2272};{-73260;257855;-3272;-2272}}	area_end
+
+//Coating	with	paint	3,	the	island	which	it	talks	(17_25)
+area_begin	name=[fighter_start_peace_3]	map_no={17;25}	type=peace_zone	range={{-71279;256408;-3272;-2272};{-70679;257116;-3272;-2272};{-70939;257328;-3272;-2272};{-71575;256612;-3272;-2272};{-71634;256392;-3272;-2272}}	area_end
+
+//Coating	with	paint	4,	the	island	which	it	talks	(17_25)
+area_begin	name=[fighter_start_peace_4]	map_no={17;25}	type=peace_zone	range={{-72596;259181;-3306;-2306};{-70363;257272;-3306;-2306};{-70041;257631;-3306;-2306};{-72303;259545;-3306;-2306}}	area_end
+
+//All	khu	El	phu	the	village	(20_18)
+area_begin	name=[darkelf_town_peace_zone]	map_no={20;18}	type=peace_zone	range={{15719;16735;-8507;-1507};{14885;19139;-8507;-1507};{12223;21049;-8507;-1507};{8962;20203;-8507;-1507};{7340;18060;-8507;-1507};{7372;15649;-8507;-1507};{8018;14013;-8507;-1507};{9389;12836;-8507;-1507};{10669;12131;-8507;-1507};{12499;12455;-8507;-1507};{14684;13625;-8507;-1507};{15441;15060;-8507;-1507}}	area_end
+
+//Thread	leyn	before	shoes	1	(20_18)
+area_begin	name=[darkelf_start_peace_1]	map_no={20;18}	type=peace_zone	range={{28422;8936;-4571;-2071};{30282;10670;-4571;-2071};{29952;11744;-4571;-2071};{28457;13117;-4571;-2071};{27730;13126;-4571;-2071};{26435;11893;-4571;-2071};{26450;10146;-4571;-2071};{27792;8929;-4571;-2071}}	area_end
+
+//Thread	leyn	before	shoes	2	(20_18)
+area_begin	name=[darkelf_start_peace_2]	map_no={20;18}	type=peace_zone	range={{29434;10233;-4588;-2088};{31273;10233;-4588;-2088};{31273;11827;-4588;-2088};{29431;11830;-4588;-2088}}	area_end
+
+//Field	world-wide	possibility	(20_19)
+area_begin	name=[20_19_worldtree]	map_no={20;19}	type=mother_tree	affect_race=elf	entering_message_no=114	leaving_message_no=115	range={{21101;50538;-3745;-3545};{21511;50683;-3745;-3545};{21642;51005;-3745;-3545};{21583;51349;-3745;-3545};{21255;51581;-3745;-3545};{20852;51473;-3745;-3545};{20627;51121;-3745;-3545};{20728;50743;-3745;-3545}}	area_end
+
+//Field	world-wide	possibility	(20_20)
+area_begin	name=[20_20_worldtree]	map_no={20;20}	type=mother_tree	affect_race=elf	entering_message_no=114	leaving_message_no=115	range={{25084;81616;-3268;-3068};{25073;81892;-3268;-3068};{24948;81895;-3268;-3068};{24826;81866;-3268;-3068};{24716;81788;-3268;-3068};{24637;81623;-3268;-3068};{24637;81428;-3268;-3068};{25076;81428;-3268;-3068}}	area_end
+
+//Field	world-wide	possibility	(21_20)
+area_begin	name=[21_20_worldtree]	map_no={21;20}	type=mother_tree	affect_race=elf	entering_message_no=114	leaving_message_no=115	range={{57755;85802;-3775;-3575};{57974;86079;-3775;-3575};{57953;86404;-3775;-3575};{57711;86683;-3775;-3575};{57324;86686;-3775;-3575};{57105;86436;-3775;-3575};{57088;86061;-3775;-3575};{57404;85785;-3775;-3575}}	area_end
+
+//El	phu	village	(21_19)
+area_begin	name=[elf_town_peace1]	map_no={21;19}	type=peace_zone	range={{47758;51443;-3511;-2011};{46735;52457;-3511;-2011};{45358;52947;-3511;-2011};{44182;52419;-3511;-2011};{43398;51830;-3511;-2011};{43006;51401;-3511;-2011};{42508;50515;-3511;-2011};{42343;49479;-3511;-2011};{42547;48421;-3511;-2011};{43138;47363;-3511;-2011};{44342;46639;-3511;-2011};{45621;46486;-3511;-2011};{45974;46554;-3511;-2011};{47114;46996;-3511;-2011};{47777;47710;-3511;-2011};{48202;48441;-3511;-2011};{48400;49391;-3511;-2011};{48365;50345;-3511;-2011}}	area_end
+
+//World-wide	possibility,	El	phu	start	1	(21_19)
+area_begin	name=[elf_start_peace1]	map_no={21;19}	type=peace_zone	range={{47987;40688;-4071;-2571};{47644;41254;-4071;-2571};{47139;41756;-4071;-2571};{46576;42051;-4071;-2571};{45590;42006;-4071;-2571};{44823;41489;-4071;-2571};{44355;40860;-4071;-2571};{44168;40397;-4071;-2571};{44319;39900;-4071;-2571};{44723;39030;-4071;-2571};{45366;38626;-4071;-2571};{46511;38446;-4071;-2571};{47292;38808;-4071;-2571};{47736;39330;-4071;-2571};{48079;39911;-4071;-2571}}	area_end
+
+//World-wide	possibility	side	start	point	1,	El	phu	start	2	(21_19)
+area_begin	name=[elf_start_peace2]	map_no={21;19}	type=peace_zone	range={{44215;39803;-4082;-2582};{44497;40504;-4082;-2582};{43643;41416;-4082;-2582};{43398;41419;-4082;-2582};{42884;41191;-4082;-2582};{42475;40529;-4082;-2582};{42466;40285;-4082;-2582};{42762;39658;-4082;-2582};{43311;39336;-4082;-2582};{43546;39327;-4082;-2582}}	area_end
+
+//World-wide	possibility	side	start	point	2,	El	phu	start	3	(21_19)
+area_begin	name=[elf_start_peace3]	map_no={21;19}	type=peace_zone	range={{49799;39991;-4082;-2582};{49812;40226;-4082;-2582};{48958;41201;-4082;-2582};{48724;41204;-4082;-2582};{48096;40759;-4082;-2582};{47883;40159;-4082;-2582};{48123;39481;-4082;-2582};{48636;39123;-4082;-2582};{48885;39121;-4082;-2582};{49368;39360;-4082;-2582}}	area_end
+//The	writing	lwu	tin	duel	market	PvP	it	dozed	(17_22)
+area_begin	name=[gludin_pvp]	map_no={17;22}	type=battle_zone	range={{-88411;141732;-3752;-3352};{-87429;141733;-3752;-3352};{-87429;142708;-3752;-3352};{-88408;142708;-3752;-3352}}	area_end
+
+//Writing	lwu	tin	duel	market	Pi	Seu	Jon	(17_22)
+area_begin	name=[gludin_pvp_peace_1]	map_no={17;22}	type=peace_zone	range={{-88445;141473;-3723;-3223};{-87166;141474;-3723;-3223};{-87166;141726;-3723;-3223};{-88441;141726;-3723;-3223}}	area_end
+
+//Writing	lwu	tin	duel	market	Pi	Seu	Jon	(17_22)
+area_begin	name=[gludin_pvp_peace_2]	map_no={17;22}	type=peace_zone	range={{-88666;141473;-3745;-3245};{-88417;141474;-3745;-3245};{-88414;142740;-3745;-3245};{-88666;142746;-3745;-3245}}	area_end
+
+//Writing	lwu	tin	duel	market	Pi	Seu	Jon	(17_22)
+area_begin	name=[gludin_pvp_peace_3]	map_no={17;22}	type=peace_zone	range={{-88665;142716;-3723;-3223};{-87165;142716;-3723;-3223};{-87165;142973;-3723;-3223};{-88667;142973;-3723;-3223}}	area_end
+
+//Writing	lwu	tin	duel	market	Pi	Seu	Jon	(17_22)
+area_begin	name=[gludin_pvp_peace_4]	map_no={17;22}	type=peace_zone	range={{-87418;141681;-3732;-3232};{-87165;141680;-3732;-3232};{-87166;142779;-3732;-3232};{-87416;142779;-3732;-3232}}	area_end
+
+area_begin	name=[cruma_boss_damage_zone]	map_no={20;21}	type=damage	default_status=on	unit_tick=9	message_no=333	range={{17869;108566;-6519;-6319};{18071;108774;-6519;-6319};{18072;109060;-6519;-6319};{17865;109265;-6519;-6319};{17580;109264;-6519;-6319};{17379;109062;-6519;-6319};{17379;108774;-6519;-6319};{17584;108569;-6519;-6319}}	area_end
+
+//Onch'on	zone
+//[Onch'on	annulation]
+area_begin	name=[spa_11]	map_no={24;14}	type=poison	target=only_pc	skill_name=[s_spa_big_head]	skill_prob=100	unit_tick=9	initial_delay=1	default_status=on	range={{141249;-109636;-3634;-3434};{141473;-109798;-3634;-3434};{141739;-109821;-3634;-3434};{141924;-109669;-3634;-3434};{142038;-109397;-3634;-3434};{141852;-109130;-3634;-3434};{141604;-109051;-3634;-3434};{141321;-109091;-3634;-3434};{141213;-109266;-3634;-3434}}	area_end
+area_begin	name=[spa_21]	map_no={24;14}	type=poison	target=only_pc	skill_name=[s_spa_big_head]	skill_prob=70	unit_tick=9	initial_delay=1	default_status=on	range={{140174;-105832;-3668;-3468};{140490;-105875;-3668;-3468};{140962;-105738;-3668;-3468};{141039;-105378;-3668;-3468};{140872;-105119;-3668;-3468};{140081;-105295;-3668;-3468}}	area_end
+area_begin	name=[spa_31]	map_no={24;14}	type=poison	target=only_pc	skill_name=[s_spa_big_head]	skill_prob=70	unit_tick=9	initial_delay=1	default_status=on	range={{144927;-105193;-3724;-3524};{145226;-105412;-3724;-3524};{145576;-105344;-3724;-3524};{145819;-104976;-3724;-3524};{145575;-104555;-3724;-3524};{145217;-104490;-3724;-3524};{144935;-104684;-3724;-3524};{144832;-104959;-3724;-3524}}	area_end
+area_begin	name=[spa_41]	map_no={24;14}	type=poison	target=only_pc	skill_name=[s_spa_big_head]	skill_prob=70	unit_tick=9	initial_delay=1	default_status=on	range={{152081;-108262;-2871;-2671};{152455;-108588;-2871;-2671};{152835;-108448;-2871;-2671};{152992;-108120;-2871;-2671};{152817;-107670;-2871;-2671};{152310;-107632;-2871;-2671};{152069;-107905;-2871;-2671}}	area_end
+area_begin	name=[spa_51]	map_no={24;14}	type=poison	target=only_pc	skill_name=[s_spa_big_head]	skill_prob=70	unit_tick=9	initial_delay=1	default_status=on	range={{155279;-105735;-2787;-2587};{155448;-105880;-2787;-2587};{155992;-105963;-2787;-2587};{156201;-105790;-2787;-2587};{156133;-105320;-2787;-2587};{155896;-105229;-2787;-2587};{155459;-105254;-2787;-2587};{155283;-105478;-2787;-2587}}	area_end
+area_begin	name=[spa_61]	map_no={24;14}	type=poison	target=only_pc	skill_name=[s_spa_big_head]	skill_prob=70	unit_tick=9	initial_delay=1	default_status=on	range={{156838;-109948;-2717;-2517};{157133;-110046;-2717;-2517};{157436;-109918;-2717;-2517};{157491;-109405;-2717;-2517};{157197;-109197;-2717;-2517};{156843;-109261;-2717;-2517};{156683;-109569;-2717;-2517}}	area_end
+area_begin	name=[spa_71]	map_no={24;14}	type=poison	target=only_pc	skill_name=[s_spa_big_head]	skill_prob=70	unit_tick=9	initial_delay=1	default_status=on	range={{152063;-116732;-1609;-1409};{152505;-116982;-1609;-1409};{152904;-116927;-1609;-1409};{153020;-116469;-1609;-1409};{152881;-116221;-1609;-1409};{152555;-116100;-1609;-1409};{152285;-116160;-1609;-1409};{152099;-116415;-1609;-1409}}	area_end
+area_begin	name=[spa_81]	map_no={24;14}	type=poison	target=only_pc	skill_name=[s_spa_big_head]	skill_prob=70	unit_tick=9	initial_delay=1	default_status=on	range={{152683;-112829;-1694;-1494};{152796;-113129;-1694;-1494};{153125;-113339;-1694;-1494};{153557;-113190;-1694;-1494};{153649;-112721;-1694;-1494};{153344;-112385;-1694;-1494};{152937;-112409;-1694;-1494}}	area_end
+area_begin	name=[spa_91]	map_no={24;14}	type=poison	target=only_pc	skill_name=[s_spa_big_head]	skill_prob=70	unit_tick=9	initial_delay=1	default_status=on	range={{157444;-115790;-1979;-1779};{157774;-115907;-1979;-1779};{158174;-115759;-1979;-1779};{158017;-114971;-1979;-1779};{157625;-114984;-1979;-1779};{157439;-115101;-1979;-1779}}	area_end
+
+//[Disease	treatment]
+area_begin	name=[spa_12]	map_no={24;14}	type=instant_skill	target=pc	skill_name=[s_dispel_spa_disease_bd]	skill_prob=100	unit_tick=9	initial_delay=1	default_status=on	range={{141249;-109636;-3634;-3434};{141473;-109798;-3634;-3434};{141739;-109821;-3634;-3434};{141924;-109669;-3634;-3434};{142038;-109397;-3634;-3434};{141852;-109130;-3634;-3434};{141604;-109051;-3634;-3434};{141321;-109091;-3634;-3434};{141213;-109266;-3634;-3434}}	area_end
+area_begin	name=[spa_22]	map_no={24;14}	type=instant_skill	target=pc	skill_name=[s_dispel_spa_disease_ad]	skill_prob=30	unit_tick=9	initial_delay=1	default_status=on	range={{140174;-105832;-3668;-3468};{140490;-105875;-3668;-3468};{140962;-105738;-3668;-3468};{141039;-105378;-3668;-3468};{140872;-105119;-3668;-3468};{140081;-105295;-3668;-3468}}	area_end
+area_begin	name=[spa_32]	map_no={24;14}	type=instant_skill	target=pc	skill_name=[s_dispel_spa_disease_cd]	skill_prob=30	unit_tick=9	initial_delay=1	default_status=on	range={{144927;-105193;-3724;-3524};{145226;-105412;-3724;-3524};{145576;-105344;-3724;-3524};{145819;-104976;-3724;-3524};{145575;-104555;-3724;-3524};{145217;-104490;-3724;-3524};{144935;-104684;-3724;-3524};{144832;-104959;-3724;-3524}}	area_end
+area_begin	name=[spa_42]	map_no={24;14}	type=instant_skill	target=pc	skill_name=[s_dispel_spa_disease_ad]	skill_prob=30	unit_tick=9	initial_delay=1	default_status=on	range={{152081;-108262;-2871;-2671};{152455;-108588;-2871;-2671};{152835;-108448;-2871;-2671};{152992;-108120;-2871;-2671};{152817;-107670;-2871;-2671};{152310;-107632;-2871;-2671};{152069;-107905;-2871;-2671}}	area_end
+area_begin	name=[spa_52]	map_no={24;14}	type=instant_skill	target=pc	skill_name=[s_dispel_spa_disease_cd]	skill_prob=30	unit_tick=9	initial_delay=1	default_status=on	range={{155279;-105735;-2787;-2587};{155448;-105880;-2787;-2587};{155992;-105963;-2787;-2587};{156201;-105790;-2787;-2587};{156133;-105320;-2787;-2587};{155896;-105229;-2787;-2587};{155459;-105254;-2787;-2587};{155283;-105478;-2787;-2587}}	area_end
+area_begin	name=[spa_62]	map_no={24;14}	type=instant_skill	target=pc	skill_name=[s_dispel_spa_disease_bd]	skill_prob=30	unit_tick=9	initial_delay=1	default_status=on	range={{156838;-109948;-2717;-2517};{157133;-110046;-2717;-2517};{157436;-109918;-2717;-2517};{157491;-109405;-2717;-2517};{157197;-109197;-2717;-2517};{156843;-109261;-2717;-2517};{156683;-109569;-2717;-2517}}	area_end
+area_begin	name=[spa_72]	map_no={24;14}	type=instant_skill	target=pc	skill_name=[s_dispel_spa_disease_ad]	skill_prob=30	unit_tick=9	initial_delay=1	default_status=on	range={{152063;-116732;-1609;-1409};{152505;-116982;-1609;-1409};{152904;-116927;-1609;-1409};{153020;-116469;-1609;-1409};{152881;-116221;-1609;-1409};{152555;-116100;-1609;-1409};{152285;-116160;-1609;-1409};{152099;-116415;-1609;-1409}}	area_end
+area_begin	name=[spa_82]	map_no={24;14}	type=instant_skill	target=pc	skill_name=[s_dispel_spa_disease_cd]	skill_prob=30	unit_tick=9	initial_delay=1	default_status=on	range={{152683;-112829;-1694;-1494};{152796;-113129;-1694;-1494};{153125;-113339;-1694;-1494};{153557;-113190;-1694;-1494};{153649;-112721;-1694;-1494};{153344;-112385;-1694;-1494};{152937;-112409;-1694;-1494}}	area_end
+area_begin	name=[spa_92]	map_no={24;14}	type=instant_skill	target=pc	skill_name=[s_dispel_spa_disease_bd]	skill_prob=30	unit_tick=9	initial_delay=1	default_status=on	range={{157444;-115790;-1979;-1779};{157774;-115907;-1979;-1779};{158174;-115759;-1979;-1779};{158017;-114971;-1979;-1779};{157625;-114984;-1979;-1779};{157439;-115101;-1979;-1779}}	area_end
+area_begin	name=[spa_102]	map_no={24;14}	type=instant_skill	target=pc	skill_name=[s_dispel_spa_disease_bd]	skill_prob=30	unit_tick=9	initial_delay=1	default_status=on	range={{147182;-113255;-2152;-1952};{147194;-113430;-2152;-1952};{147312;-113584;-2152;-1952};{147467;-113630;-2152;-1952};{147748;-113523;-2152;-1952};{147816;-113273;-2152;-1952};{147723;-113074;-2152;-1952};{147512;-112956;-2152;-1952};{147258;-113048;-2152;-1952}}	area_end

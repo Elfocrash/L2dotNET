@@ -1,0 +1,6 @@
+// example
+// <server id> <client mask> <server ip>
+// '-1' instead of server id - global for all available servers
+// -1 192.168.1.* 192.168.1.54
+
+

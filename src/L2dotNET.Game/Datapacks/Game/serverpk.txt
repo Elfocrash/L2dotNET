@@ -1,0 +1,477 @@
+[C]
+Die 				0x00
+Revive 				0x01
+AttackOutofRange		0x02 d
+AttackinCoolTime		0x03 d
+AttackDeadTarget		0x04 d
+SpawnItem 			0x05
+SellList 			0x06
+BuyList 			0x07
+DeleteObject 			0x08
+CharacterSelectionInfo 		0x09
+LoginFail 			0x0a
+CharSelected 			0x0b
+NpcInfo 			0x0c
+NewCharacterSuccess 		0x0d
+NewCharacterFail		0x0e d
+CharacterCreateSuccess 		0x0f
+CharacterCreateFail 		0x10
+ItemList 			0x11
+SunRise 			0x12
+SunSet 				0x13
+TradeStart 			0x14
+TradeStartOk			21 d
+DropItem 			22
+GetItem 			23
+StatusUpdate 			24
+NpcHtmlMessage 			25
+TradeOwnAdd 			26
+TradeOtherAdd 			27
+SendTradeDone 			28
+CharacterDeleteSuccess 		29
+CharacterDeleteFail 		30
+ActionFail 			31
+ServerClose 			32
+InventoryUpdate 		33
+TeleportToLocation 		34
+TargetSelected 			35
+TargetUnselected 		36
+AutoAttackStart 		37
+AutoAttackStop 			38
+SocialAction 			39
+ChangeMoveType 			40
+ChangeWaitType 			41
+ManagePledgePower 		42
+CreatePledge			43 d
+AskJoinPledge 			44
+JoinPledge 			45
+KeyPacket 			46
+CharMoveToLocation 		47
+NpcSay 				48
+CharInfo 			49
+UserInfo 			50
+Attack 				51
+WithdrawalPledge		52 d
+OustPledgeMember		53 d
+SetOustPledgeMember		54 d
+DismissPledge			55 d
+SetDismissPledge		56 d
+AskJoinParty 			57
+JoinParty 			58
+WithdrawalParty			59 d
+OustPartyMember			60 d
+SetOustPartyMember		61 d
+DismissParty			62 d
+SetDismissParty			63 d
+MagicAndSkillList		64 d
+WareHouseDepositList 		65
+WareHouseWithdrawList 		66
+WareHouseDone			67
+ShortCutRegister 		68
+ShortCutInit 			69
+ShortCutDelete			70 d
+StopMove 			71
+MagicSkillUse 			72
+MagicSkillCanceled 		73
+Say2 				74
+EquipUpdate 			75
+DoorInfo 			76
+DoorStatusUpdate 		77
+PartySmallWindowAll 		78
+PartySmallWindowAdd 		79
+PartySmallWindowDeleteAll 	80
+PartySmallWindowDelete 		81
+PartySmallWindowUpdate 		82
+TradePressOwnOk 		83
+MagicSkillLaunched 		84
+FriendAddRequestResult		85 d
+FriendAdd			86 d
+FriendRemove			87 d
+FriendList 			88 d
+FriendStatus 			89
+PledgeShowMemberListAll 	90
+PledgeShowMemberListUpdate 	91
+PledgeShowMemberListAdd 	92
+PledgeShowMemberListDelete 	93
+MagicList			94
+SkillList 			95
+VehicleInfo 			96
+FinishRotating 			97
+SystemMessage 			98
+StartPledgeWar 			99
+StopPledgeWar 			101
+ReplyStopPledgeWar		102 d
+SurrenderPledgeWar 		103
+ReplySurrenderPledgeWar		104 d
+SetPledgeCrest			105 d
+PledgeCrest 			106
+SetupGauge 			107
+VehicleDeparture 		108
+VehicleCheckLocation 		109
+GetOnVehicle 			110
+GetOffVehicle 			111
+SendTradeRequest 		112
+RestartResponse 		113
+MoveToPawn 			114
+SSQInfo				115 d
+GameGuardQuery			116
+L2FriendList			117 d
+L2Friend 			118
+L2FriendStatus			119 d
+L2FriendSay 			120
+ValidateLocation 		121
+StartRotating 			122
+ShowBoard 			123
+ChooseInventoryItem 		124
+Dummy				125
+MoveToLocationInVehicle 	126
+StopMoveToLocationInVehicle 	127
+ValidateLocationInVehicle 	128
+TradeUpdate 			129
+TradePressOtherOk 		130
+FriendAddRequest 		131
+LeaveWorld 			132
+AbnormalStatusUpdate 		133
+QuestList 			134
+EnchantResult 			135
+PledgeShowMemberListDeleteAll 	136
+PledgeInfo 			137
+PledgeExtendedInfo		138 d
+SurrenderPersonally		139 d
+Ride 				140
+Dummy				141 d
+PledgeShowInfoUpdate 		142
+ClientAction			143 d
+AcquireSkillList 		144
+AcquireSkillInfo 		145
+ServerObjectInfo		146 d
+GMViewQuestList 		147
+AcquireSkillDone		148 d
+GMViewCharacterInfo 		149
+GMViewPledgeInfo 		150
+GMViewSkillInfo 		151
+GMViewMagicInfo			152 d
+GMViewQuestInfo 		153
+GMViewItemList 			154
+GMViewWarehouseWithdrawList 	155
+ListPartyWating 		156		dd dSdddddS
+	d x
+	d size
+		d id
+		s title
+		d locid
+		d lv min
+		d lvmax
+		d party cur
+		d party max
+		s lead name
+PartyRoomInfo 			157		ddd ddd S
+PlaySound 			158
+StaticObject 			159
+PrivateStoreManageList 		160
+PrivateStoreList 		161
+PrivateStoreMsg 		162
+ShowMiniMap 			163
+TutorialShowHtml 		166
+TutorialShowQuestionMark 	167
+TutorialEnableClientEvent 	168
+TutorialCloseHtml 		169
+ShowRadar			170 d
+WithdrawAlliance		171 d
+OustAllianceMemberPledge	172 d
+DismissAlliance			173 d
+SetAllianceCrest		174 d
+AllianceCrest 			175
+ServerCloseSocket 		176
+PetStatusShow 			177
+PetInfo 			178
+PetItemList 			179
+PetInventoryUpdate 		180
+AllianceInfo			181 d
+PetStatusUpdate 		182
+PetDelete 			183
+DeleteRadar			184 d
+MyTargetSelected 		185
+PartyMemberPosition 		186
+AskJoinAlliance 		187
+JoinAlliance			188 d
+PrivateStoreBuyManageList 	189
+PrivateStoreBuyList 		190
+PrivateStoreMsgBuy 		191
+VehicleStart			192 d
+RequestTimeCheck		193 d >> 160r
+StartAllianceWar 		194
+ReplyStartAllianceWar		195 d
+StopAllianceWar 		196
+ReplyStopAllianceWar		197 d
+SurrenderAllianceWar		198 d
+SkillCoolTime 			199
+PackageToList 			200
+CastleSiegeInfo 		201
+CastleSiegeAttackerList 	202
+CastleSiegeDefenderList 	203
+NickNameChanged 		204
+PledgeStatusChanged 		205
+RelationChanged 		206
+EventTrigger 			207
+MultiSellList 			208
+SetSummonRemainTime 		209
+PackageSendableList 		210
+Earthquake 			211
+FlyToLoaction			212 d
+BlockList			213 d
+SpecialCamera 			214
+NormalCamera 			215
+SkillRemainSec			216 d
+NetPing				217
+Dice 				218
+Snoop 				219
+RecipeBookItemList 		220
+RecipeItemMakeInfo 		221
+RecipeShopManageList 		222
+RecipeShopSellList 		223
+RecipeShopItemInfo 		224
+RecipeShopMsg 			225
+ShowCalc 			226
+MonRaceInfo 			227
+HennaItemInfo 			228
+HennaInfo 			229
+HennaUnequipList		230 d
+HennaUnequipInfo		231 d
+SendMacroList 			232
+BuyListSeed 			233
+ShowTownMap 			234
+ObserverStart 			235
+ObserverEnd 			236
+ChairSit 			237
+HennaEquipList 			238
+SellListProcure 		239
+RadarControl 			241
+ClientSetTime 			242
+ConfirmDlg 			243
+PartySpelled 			244
+ShopPreviewList 		245
+CameraMode 			247
+ShowXMasSeal 			248
+EtcStatusUpdate 		249
+ShortBuffStatusUpdate 		250
+SSQStatus 			251
+PetitionVote			252 d
+AgitDecoInfo 			253
+
+[CH]
+ExDummy					0xfe 0x00
+ExRegenMax 				0xfe 0x01
+ExEventMatchUserInfo			0xfe 0x02 d
+ExColosseumFenceInfo			0xfe 0x03 d
+ExEventMatchSpelledInfo			0xfe 0x04 d
+ExEventMatchFirecracker			0xfe 0x05 d
+ExEventMatchTeamUnlocked		0xfe 0x06 d
+ExEventMatchGMTest			0xfe 0x07 d
+ExPartyRoomMember			0xfe 0x08 d		[dd dSdddd]
+ExClosePartyRoom			0xfe 0x09 d
+ExManagePartyRoomMember			0xfe 0x0a d		[dd Sdddd]
+ExEventMatchLockResult			0xfe 0x0b d
+ExAutoSoulShot 				0xfe 0x0c
+ExEventMatchList			0xfe 0x0d d
+ExEventMatchObserver			0xfe 0x0e d
+ExEventMatchMessage			0xfe 0x0f d
+ExEventMatchScore			0xfe 0x10 d
+ExServerPrimitive			0xfe 0x11 d
+ExMPCCOpen 				0xfe 0x12
+ExMPCCClose				0xfe 0x13
+ExShowCastleInfo			0xfe 0x14
+ExShowFortressInfo			0xfe 21
+ExShowAgitInfo				0xfe 22
+ExShowFortressSiegeInfo			0xfe 23 d		[fortressID:%d totalBarrackCnt:%d, capturedBarrackCnt:%d]
+ExPartyPetWindowAdd			0xfe 24 d		[ddddSddddd]
+ExPartyPetWindowUpdate			0xfe 25 d
+ExAskJoinMPCC 				0xfe 26
+ExPledgeCrestLarge 			0xfe 27
+ExEventMatchTeamInfo			0xfe 28 d
+ExEventMatchCreate			0xfe 29 d
+ExFishingStart 				0xfe 30
+ExFishingEnd 				0xfe 31
+ExShowQuestInfo 			0xfe 32
+ExShowQuestMark 			0xfe 33
+ExSendManorList 			0xfe 34
+ExShowSeedInfo 				0xfe 35
+ExShowCropInfo 				0xfe 36
+ExShowManorDefaultInfo 			0xfe 37
+ExShowSeedSetting 			0xfe 38
+ExFishingStartCombat 			0xfe 39
+ExFishingHpRegen 			0xfe 40
+ExEnchantSkillList 			0xfe 41			[dd dd] 
+ExEnchantSkillInfo 			0xfe 42			[dd ddddQdddd]
+ExShowCropSetting 			0xfe 43
+ExShowSellCropList 			0xfe 44
+ExOlympiadMatchEnd			0xfe 45 d
+ExMailArrived 				0xfe 46
+ExStorageMaxCount 			0xfe 47
+ExEventMatchManage			0xfe 48 d
+ExMultiPartyCommandChannelInfo		0xfe 49 d		[Sddd Sdd]
+ExPCCafePointInfo 			0xfe 50
+ExSetCompassZoneCode 			0xfe 51
+ExGetBossRecord 			0xfe 52
+ExAskJoinPartyRoom 			0xfe 53
+ExListPartyMatchingWaitingRoom		0xfe 54 d		[Sdd]
+ExSetMpccRouting			0xfe 55 d
+ExShowAdventurerGuideBook 		0xfe 56
+ExShowScreenMessage			0xfe 57 d
+PledgeSkillList 			0xfe 58
+PledgeSkillListAdd 			0xfe 59
+PledgePowerGradeList 			0xfe 60
+PledgeReceivePowerInfo  		0xfe 61
+PledgeReceiveMemberInfo 		0xfe 62
+PledgeReceiveWarList 			0xfe 63
+PledgeReceiveSubPledgeCreated 		0xfe 64
+ExRedSky 				0xfe 65
+PledgeReceiveUpdatePower 		0xfe 66
+FlySelfDestination			0xfe 67 d
+ShowPCCafeCouponShowUI 			0xfe 68
+ExSearchOrc 				0xfe 69
+ExCursedWeaponList 			0xfe 70
+ExCursedWeaponLocation 			0xfe 71
+ExRestartClient 			0xfe 72
+ExRequestHackShield 			0xfe 73
+ExUseSharedGroupItem 			0xfe 74
+ExMPCCShowPartyMemberInfo 		0xfe 75
+ExDuelAskStart	 			0xfe 76
+ExDuelReady 				0xfe 77
+ExDuelStart 				0xfe 78
+ExDuelEnd 				0xfe 79
+ExDuelUpdateUserInfo 			0xfe 80
+ExShowVariationMakeWindow 		0xfe 81
+ExShowVariationCancelWindow 		0xfe 82
+ExPutItemResultForVariationMake 	0xfe 83
+ExPutIntensiveResultForVariationMake 	0xfe 84
+ExPutCommissionResultForVariationMake 	0xfe 85
+ExVariationResult 			0xfe 86
+ExPutItemResultForVariationCancel 	0xfe 87
+ExVariationCancelResult 		0xfe 88
+ExDuelEnemyRelation			0xfe 89 d
+ExPlayAnimation				0xfe 90 d
+ExMPCCPartyInfoUpdate 			0xfe 91
+ExPlayScene 				0xfe 92
+SpawnEmitter 				0xfe 93
+ExEnchantSkillInfoDetail		0xfe 94			[ddddQddddd]
+ExBasicActionList 			0xfe 95
+ExAirShipInfo				0xfe 96 d
+ExAttributeEnchantResult		0xfe 97
+ExChooseInventoryAttributeItem		0xfe 98
+ExGetOnAirShip				0xfe 99 d
+ExGetOffAirShip				0xfe 100 d
+ExMoveToLocationAirShip			0xfe 101 d
+ExStopMoveAirShip			0xfe 102 d
+ExShowTrace				0xfe 103
+ExItemAuctionInfo			0xfe 104
+ExNeedToChangeName			0xfe 105
+ExPartyPetWindowDelete			0xfe 106 d
+ExTutorialList				0xfe 107 d
+ExRpItemLink 				0xfe 108
+ExMoveToLocationInAirShip		0xfe 109 d
+ExStopMoveInAirShip			0xfe 110 d
+ExValidateLocationInAirShip		0xfe 111 d
+ExUISetting 				0xfe 112
+ExMoveToTargetInAirShip			0xfe 113 d
+ExAttackInAirShip			0xfe 114 d
+ExMagicSkillUseInAirShip		0xfe 115 d
+ExShowBaseAttributeCancelWindow		0xfe 116
+ExBaseAttributeCancelResult		0xfe 117
+ExSubPledgetSkillAdd			0xfe 118 d (ddd)
+ExResponseFreeServer			0xfe 119 d
+ExShowProcureCropDetail 		0xfe 120
+ExHeroList 				0xfe 121
+ExOlympiadUserInfoSpectator 		0xfe 122
+ExOlympiadSpelledInfo 			0xfe 123
+ExOlympiadMode 				0xfe 124
+ExShowFortressMap			0xfe 125		 fortressID:%d fortressSiegeStatus:%d, totalBarrackCnt:%d
+ExPVPMatchRecord			0xfe 126	ddddd Sdd Sdd currentState:%d blueTeamTotalKillCnt:%d, redTeamTotalKillCnt:%d"
+ExPVPMatchUserDie			0xfe 127		blueTeamTotalKillCnt:%d, redTeamTotalKillCnt:%d
+ExPrivateStoreWholeMsg			0xfe 128	dS
+
+THE GRACIA 3.0
+
+ExPutEnchantTargetItemResult		129
+ExPutEnchantSupportItemResult		130
+ExChangeNicknameNColor			131
+ExGetBookMarkInfo			132
+ExNotifyPremiumItem			133
+ExGetPremiumItemList			134		QdQdS
+ExPeriodicItemList			135		dd
+ExJumpToLocation			136
+ExPVPMatchCCRecord			137
+ExPVPMatchCCMyRecord			138
+ExPVPMatchCCRetire			139
+ExShowTerritory				140
+ExNpcQuestHtmlMessage			141
+ExSendUIEvent				142		ddddSSSS
+ExNotifyBirthDay			143
+ExShowDominionRegistry			144
+ExReplyRegisterDominion			145
+ExReplyDominionInfo			146
+ExShowOwnthingPos			147
+ExCleftList				148
+ExCleftState				149
+ExDominionChannelSet			150
+ExBlockUpSetList			151
+ExBlockUpSetState			152
+ExStartScenePlayer			153
+ExAirShipTeleportList			154
+ExMpccRoomInfo				155
+ExListMpccWaiting			156
+ExDissmissMpccRoom			157
+ExManageMpccRoomMember			158
+ExMpccRoomMember			159
+ExVitalityPointInfo			160
+ExShowSeedMapInfo			161
+ExMpccPartymasterList			162
+ExDominionWarStart			163
+ExDominionWarEnd			164
+ExShowLines				165
+ExPartyMemberRenamed			166
+ExEnchantSkillResult			167
+ExRefundList				168
+ExNoticePostArrived			169
+ExShowReceivedPostList			170 0xAA
+ExReplyReceivedPost			171 0xAB
+ExShowSentPostList			172 0xAC
+ExReplySentPost				173 0xAD
+ExResponseShowStepOne			174 0xAE
+ExResponseShowStepTwo			175 0xAF
+ExResponseShowContents			176 0xB0
+ExShowPetitionHtml			177 0xB1
+ExReplyPostItemList			178 0xB2
+ExChangePostState			179 0xB3
+ExReplyWritePost			180 0xB4
+ExInitializeSeed			181 0xB5
+ExRaidReserveResult			182 0xB6
+ExBuySellListPacket			183 0xB7
+ExCloseRaidSocket			184 0xB8
+ExPrivateMarketList			185 0xB9
+ExRaidCharacterSelected			186 0xBA
+ExAskCoupleAction			187 0xBB
+ExBR_LoadEventTopRankers		188 0xBC
+ExChangeNPCState			189 0xBD
+ExAskModifyPartyLooting			190 0xBE
+ExSetPartyLooting			191 0xBF
+ExRotation				192 0xC0 d _charObjId d _degree
+ExChangeZoneInof			193 0xC1
+ExMembershipInfo			194 0xC2
+ExReplyHandOverPartyMaster		195 0xC3
+ExQuestNpcLogList			196 0xC4
+ExQuestItemList				197 0xC5
+ExGMViewQuestItemList			198 0xC6
+ExResartResponse			199 0xC7
+ExVoteSystemInfo			200 0xC8
+ExBR_GamePoint				201 0xC9
+ExBR_ProductList			202 0xCA
+ExBR_ProductInfo			203 0xCB
+ExBR_BuyProduct				204 0xCC
+ExBR_PremiumState			205 0xCD
+ExBrBroadcastEventState			206 0xCE
+ExBrExtraUserInfo			207 0xCF
+ExBrBuffEventState			208 0xD0
+ExBR_RecentProductList			209 0xD1
+ExBR_MinigameLoadScores			210 0xD2
+ExBR_AgathionEnergyInfo			211 0xD3

@@ -1,0 +1,3574 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<null>
+ <list>
+  <territory name='oren21_2220_doma01' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='85439 95696 -3512 -3112'/>
+    <zone loc='84086 95526 -3512 -3112'/>
+    <zone loc='83051 95004 -3512 -3112'/>
+    <zone loc='83248 92984 -3512 -3112'/>
+    <zone loc='85144 92799 -3512 -3112'/>
+    <zone loc='89859 93553 -3512 -3112'/>
+    <zone loc='86919 95409 -3512 -3112'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma02' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='87160 89628 -3380 -3080'/>
+    <zone loc='90161 89872 -3380 -3080'/>
+    <zone loc='90176 93580 -3380 -3080'/>
+    <zone loc='85156 92788 -3380 -3080'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma03' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='90194 90193 -3548 -3148'/>
+    <zone loc='94901 90359 -3548 -3148'/>
+    <zone loc='94883 91074 -3548 -3148'/>
+    <zone loc='95510 91111 -3548 -3148'/>
+    <zone loc='94697 92266 -3548 -3148'/>
+    <zone loc='92940 93410 -3548 -3148'/>
+    <zone loc='90191 93580 -3548 -3148'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma04' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='89982 86149 -3680 -3180'/>
+    <zone loc='94225 86887 -3680 -3180'/>
+    <zone loc='96014 88663 -3680 -3180'/>
+    <zone loc='95948 89758 -3680 -3180'/>
+    <zone loc='95591 90355 -3680 -3180'/>
+    <zone loc='90307 90177 -3680 -3180'/>
+    <zone loc='90295 87920 -3680 -3180'/>
+  </territory>  
+  
+  <territory name='oren21_2220_doma05' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='89934 82096 -3788 -3288'/>
+    <zone loc='94266 82945 -3788 -3288'/>
+    <zone loc='94058 84326 -3788 -3288'/>
+    <zone loc='93810 86699 -3788 -3288'/>
+    <zone loc='90142 86074 -3788 -3288'/>
+    <zone loc='89755 83657 -3788 -3288'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma06' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='94708 78626 -3644 -3044'/>
+    <zone loc='94588 80744 -3644 -3044'/>
+    <zone loc='94050 81312 -3644 -3044'/>
+    <zone loc='94190 82850 -3644 -3044'/>
+    <zone loc='89935 81964 -3644 -3044'/>
+    <zone loc='90070 80363 -3644 -3044'/>
+    <zone loc='90082 78122 -3644 -3044'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma07' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='90067 74941 -3640 -3040'/>
+    <zone loc='92412 73948 -3640 -3040'/>
+    <zone loc='94417 75628 -3640 -3040'/>
+    <zone loc='94604 78552 -3640 -3040'/>
+    <zone loc='90078 78075 -3640 -3040'/>
+    <zone loc='90098 76282 -3640 -3040'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma08' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='83278 81946 -3780 -3180'/>
+    <zone loc='84183 78534 -3780 -3180'/>
+    <zone loc='90000 80347 -3780 -3180'/>
+    <zone loc='89686 83454 -3780 -3180'/>
+    <zone loc='87995 82844 -3780 -3180'/>
+    <zone loc='87447 82420 -3780 -3180'/>
+    <zone loc='86586 82269 -3780 -3180'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma09' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='84713 76214 -3752 -3252'/>
+    <zone loc='90051 76279 -3752 -3252'/>
+    <zone loc='90023 80279 -3752 -3252'/>
+    <zone loc='84214 78459 -3752 -3252'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma10' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='89999 73969 -3716 -3116'/>
+    <zone loc='90071 76239 -3716 -3116'/>
+    <zone loc='84745 76174 -3716 -3116'/>
+    <zone loc='85418 73245 -3716 -3116'/>
+    <zone loc='86572 72032 -3716 -3116'/>
+    <zone loc='87844 71986 -3716 -3116'/>
+    <zone loc='88920 73066 -3716 -3116'/>
+    <zone loc='88848 74410 -3716 -3116'/>
+    <zone loc='88848 74410 -3716 -3116'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma11' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='79693 78474 -3780 -3080'/>
+    <zone loc='84126 78442 -3780 -3080'/>
+    <zone loc='83204 82112 -3780 -3080'/>
+    <zone loc='83012 83447 -3780 -3080'/>
+    <zone loc='80916 83668 -3780 -3080'/>
+    <zone loc='79400 80996 -3780 -3080'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma12' controller='default' start_active='true' max='66'>
+    <npc id='22768' count='2' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='4' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='5' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='3' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='84052 74360 -3780 -3180'/>
+    <zone loc='85353 73299 -3780 -3180'/>
+    <zone loc='84220 78339 -3780 -3180'/>
+    <zone loc='79100 78407 -3780 -3180'/>
+    <zone loc='79933 76452 -3780 -3180'/>
+  </territory>
+  
+  <territory name='oren21_mb2220_ugozg02' controller='default' start_active='true' max='12'>
+    <npc id='18868' count='6' respawn='10s' rand='5s'/> <!-- Energy Plant -->
+    <npc id='18867' count='6' respawn='10s' rand='5s'/> <!-- Abyss Weed -->
+
+    <zone loc='96778 85146 -3780 -3380'/>
+    <zone loc='97387 85738 -3780 -3380'/>
+    <zone loc='97317 86298 -3780 -3380'/>
+    <zone loc='96166 86012 -3780 -3380'/>
+    <zone loc='95526 85644 -3780 -3380'/>
+    <zone loc='95658 84927 -3780 -3380'/>
+    <zone loc='96011 84802 -3780 -3380'/>
+  </territory>
+  
+  <spawn name='oren21_mb2220_ugozg03' controller='default' start_active='true' max='1'>
+    <npc id='32740' pos='94874 83585 -3416 29836' respawn='1m'/> <!-- Batracos -->
+  </spawn>
+  
+  <spawn name='oren21_mb2220_ugoz01' controller='default' start_active='true' max='2'>
+    <npc id='18863' pos='96804 85604 -3720 -31176' respawn='5m'/> <!-- Seer Ugoros -->
+  </spawn>
+  
+  <territory name='oren21_qm2220_01' controller='default' start_active='true' max='82'>
+    <npc id='20577' count='1' respawn='30s' rand='5s'/> <!-- Leto Lizardman -->
+    <npc id='20578' count='2' respawn='30s' rand='5s'/> <!-- Leto Lizardman Archer -->
+    <npc id='20582' count='1' respawn='30s' rand='5s'/> <!-- Leto Lizardman Overlord -->
+    <npc id='20581' count='2' respawn='30s' rand='5s'/> <!-- Leto Lizardman Shaman -->
+    <npc id='20579' count='2' respawn='30s' rand='5s'/> <!-- Leto Lizardman Soldier -->
+    <npc id='20580' count='2' respawn='30s' rand='5s'/> <!-- Leto Lizardman Warrior -->
+
+    <zone loc='98056 79316 -3776 -3476'/>
+    <zone loc='98116 76416 -3776 -3476'/>
+    <zone loc='97108 76352 -3776 -3476'/>
+    <zone loc='95516 79240 -3776 -3476'/>
+    <zone loc='96132 79892 -3776 -3476'/>
+  </territory>
+  
+  <territory name='oren21_qm2220_02' controller='default' start_active='true' max='82'>
+    <npc id='20577' count='1' respawn='30s' rand='5s'/> <!-- Leto Lizardman -->
+    <npc id='20578' count='2' respawn='30s' rand='5s'/> <!-- Leto Lizardman Archer -->
+    <npc id='20582' count='1' respawn='30s' rand='5s'/> <!-- Leto Lizardman Overlord -->
+    <npc id='20581' count='2' respawn='30s' rand='5s'/> <!-- Leto Lizardman Shaman -->
+    <npc id='20579' count='2' respawn='30s' rand='5s'/> <!-- Leto Lizardman Soldier -->
+    <npc id='20580' count='2' respawn='30s' rand='5s'/> <!-- Leto Lizardman Warrior -->
+
+    <zone loc='94615 74573 -3640 -3340'/>
+    <zone loc='97017 76457 -3640 -3340'/>
+    <zone loc='95484 79247 -3640 -3340'/>
+    <zone loc='95036 77252 -3640 -3340'/>
+    <zone loc='95027 76436 -3640 -3340'/>
+  </territory>
+  
+  <spawn name='oren21_qm2220_03' controller='default' start_active='true' max='4'>
+    <npc id='32741' pos='86486 86105 -2872 -14500' respawn='1m'/> <!-- Ankumi -->
+    <npc id='32744' pos='86522 85792 -2888 -8292' respawn='1m'/> <!-- Johnny -->
+    <npc id='32743' pos='86381 85967 -2860 -5884' respawn='1m'/> <!-- Sally -->
+    <npc id='32742' pos='86351 85797 -2856 -1424' respawn='1m'/> <!-- Laki -->
+  </spawn>
+  
+  <territory name='oren21_qm2220_04' controller='default' start_active='true' max='25'>
+    <npc id='20780' count='5' respawn='30s' rand='5s'/> <!-- Bloody Axe Elite -->
+
+    <zone loc='82892 86896 -3496 -3096'/>
+    <zone loc='83512 86424 -3496 -3096'/>
+    <zone loc='85716 88811 -3496 -3096'/>
+    <zone loc='85387 89905 -3496 -3096'/>
+    <zone loc='83340 88824 -3496 -3096'/>
+  </territory>
+  
+  <territory name='oren21_qm2220_05' controller='default' start_active='true' max='20'>
+    <npc id='20780' count='4' respawn='30s' rand='5s'/> <!-- Bloody Axe Elite -->
+
+    <zone loc='82832 92484 -3556 -3256'/>
+    <zone loc='82672 91491 -3556 -3256'/>
+    <zone loc='85020 91044 -3556 -3256'/>
+    <zone loc='84858 92012 -3556 -3256'/>
+  </territory>
+  
+  <territory name='oren21_qm2220_06' controller='default' start_active='true' max='15'>
+    <npc id='27323' count='5' respawn='15s'/> <!-- Divine Emissary -->
+
+    <zone loc='96606 93003 -3763 -3463'/>
+    <zone loc='96553 91432 -3763 -3463'/>
+    <zone loc='97534 91493 -3763 -3463'/>
+    <zone loc='97090 93071 -3763 -3463'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma01' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='85506 95105 -3496 -3096'/>
+    <zone loc='84154 94935 -3496 -3096'/>
+    <zone loc='83788 94311 -3496 -3096'/>
+    <zone loc='84071 93382 -3496 -3096'/>
+    <zone loc='86705 92874 -3496 -3096'/>
+    <zone loc='89784 92913 -3496 -3096'/>
+    <zone loc='86986 94818 -3496 -3096'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma02' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='87824 90141 -3364 -3064'/>
+    <zone loc='90193 90351 -3364 -3064'/>
+    <zone loc='90154 92865 -3364 -3064'/>
+    <zone loc='86020 92802 -3364 -3064'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma03' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='90226 90225 -3532 -3132'/>
+    <zone loc='93824 90350 -3532 -3132'/>
+    <zone loc='93807 91179 -3532 -3132'/>
+    <zone loc='94404 91216 -3532 -3132'/>
+    <zone loc='93846 92149 -3532 -3132'/>
+    <zone loc='92407 92828 -3532 -3132'/>
+    <zone loc='90231 93038 -3532 -3132'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma04' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='90621 86217 -3664 -3164'/>
+    <zone loc='93117 86786 -3664 -3164'/>
+    <zone loc='94874 88615 -3664 -3164'/>
+    <zone loc='94808 89710 -3664 -3164'/>
+    <zone loc='94466 90314 -3664 -3164'/>
+    <zone loc='90876 90210 -3664 -3164'/>
+    <zone loc='90934 87988 -3664 -3164'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma05' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='90628 82190 -3772 -3272'/>
+    <zone loc='93474 82874 -3772 -3272'/>
+    <zone loc='93266 84255 -3772 -3272'/>
+    <zone loc='93018 86680 -3772 -3272'/>
+    <zone loc='90623 86146 -3772 -3272'/>
+    <zone loc='90518 83819 -3772 -3272'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma06' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='93898 78545 -3628 -3028'/>
+    <zone loc='93745 80663 -3628 -3028'/>
+    <zone loc='93279 81267 -3628 -3028'/>
+    <zone loc='93419 82805 -3628 -3028'/>
+    <zone loc='89967 81996 -3628 -3028'/>
+    <zone loc='90102 80395 -3628 -3028'/>
+    <zone loc='90114 78154 -3628 -3028'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma07' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='90126 75727 -3624 -3024'/>
+    <zone loc='92012 75066 -3624 -3024'/>
+    <zone loc='93712 76300 -3624 -3024'/>
+    <zone loc='93881 78502 -3624 -3024'/>
+    <zone loc='90110 78107 -3624 -3024'/>
+    <zone loc='90130 76314 -3624 -3024'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma08' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='83574 81143 -3764 -3164'/>
+    <zone loc='84317 78566 -3764 -3164'/>
+    <zone loc='90032 80379 -3764 -3164'/>
+    <zone loc='89805 82652 -3764 -3164'/>
+    <zone loc='88113 82041 -3764 -3164'/>
+    <zone loc='87565 81617 -3764 -3164'/>
+    <zone loc='86704 81466 -3764 -3164'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma09' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='84825 76246 -3736 -3236'/>
+    <zone loc='90083 76311 -3736 -3236'/>
+    <zone loc='90055 80311 -3736 -3236'/>
+    <zone loc='84326 78491 -3736 -3236'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma10' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='90010 75377 -3700 -3100'/>
+    <zone loc='90003 76237 -3700 -3100'/>
+    <zone loc='84872 76159 -3700 -3100'/>
+    <zone loc='85344 74443 -3700 -3100'/>
+    <zone loc='86602 73053 -3700 -3100'/>
+    <zone loc='87873 73006 -3700 -3100'/>
+    <zone loc='88387 74005 -3700 -3100'/>
+    <zone loc='88585 74722 -3700 -3100'/>
+    <zone loc='88585 74722 -3700 -3100'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma11' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='80624 78522 -3764 -3064'/>
+    <zone loc='84158 78474 -3764 -3064'/>
+    <zone loc='83401 81285 -3764 -3064'/>
+    <zone loc='82869 81739 -3764 -3064'/>
+    <zone loc='81475 82293 -3764 -3064'/>
+    <zone loc='80331 81043 -3764 -3064'/>
+  </territory>
+  
+  <territory name='oren21_2220_Hdoma12' controller='default' start_active='true' max='10'>
+    <npc id='18864' count='2' respawn='20s' rand='5s'/> <!-- Fantasy Mushroom -->
+
+    <zone loc='83830 75409 -3764 -3164'/>
+    <zone loc='85090 74493 -3764 -3164'/>
+    <zone loc='84190 78433 -3764 -3164'/>
+    <zone loc='80674 78445 -3764 -3164'/>
+    <zone loc='80768 77501 -3764 -3164'/>
+  </territory>
+  
+  <territory name='oren21_2220_rrug01' controller='default' start_active='true' max='60'>
+    <npc id='18868' count='16' respawn='10s' rand='5s'/> <!-- Energy Plant -->
+    <npc id='18866' count='7' respawn='20s' rand='5s'/> <!-- Rainbow Frog -->
+    <npc id='18865' count='7' respawn='30s' rand='5s'/> <!-- Sticky Mushroom -->
+
+    <zone loc='81339 81736 -3744 -3144'/>
+    <zone loc='80393 80565 -3744 -3144'/>
+    <zone loc='80497 79902 -3744 -3144'/>
+    <zone loc='81724 80391 -3744 -3144'/>
+    <zone loc='81885 79224 -3744 -3144'/>
+    <zone loc='80356 78399 -3744 -3144'/>
+    <zone loc='80814 76584 -3744 -3144'/>
+    <zone loc='81330 76044 -3744 -3144'/>
+    <zone loc='83112 75632 -3744 -3144'/>
+    <zone loc='85032 74338 -3744 -3144'/>
+    <zone loc='85686 75194 -3744 -3144'/>
+    <zone loc='84159 76994 -3744 -3144'/>
+    <zone loc='84260 77769 -3744 -3144'/>
+    <zone loc='85274 78338 -3744 -3144'/>
+    <zone loc='85637 81077 -3744 -3144'/>
+    <zone loc='84431 81804 -3744 -3144'/>
+    <zone loc='83397 81505 -3744 -3144'/>
+    <zone loc='82001 82940 -3744 -3144'/>
+    <zone loc='80864 82644 -3744 -3144'/>
+  </territory>
+  
+  <territory name='oren21_2220_rrug02' controller='default' start_active='true' max='76'>
+    <npc id='18868' count='20' respawn='10s' rand='5s'/> <!-- Energy Plant -->
+    <npc id='18866' count='9' respawn='20s' rand='5s'/> <!-- Rainbow Frog -->
+    <npc id='18865' count='9' respawn='30s' rand='5s'/> <!-- Sticky Mushroom -->
+
+    <zone loc='88468 81335 -3568 -3168'/>
+    <zone loc='87339 79594 -3568 -3168'/>
+    <zone loc='88198 78376 -3568 -3168'/>
+    <zone loc='86473 78348 -3568 -3168'/>
+    <zone loc='86211 77578 -3568 -3168'/>
+    <zone loc='87362 76016 -3568 -3168'/>
+    <zone loc='86617 74523 -3568 -3168'/>
+    <zone loc='88157 73135 -3568 -3168'/>
+    <zone loc='89169 74499 -3568 -3168'/>
+    <zone loc='91685 75475 -3568 -3168'/>
+    <zone loc='92553 74971 -3568 -3168'/>
+    <zone loc='92809 75466 -3568 -3168'/>
+    <zone loc='92157 76350 -3568 -3168'/>
+    <zone loc='92619 76950 -3568 -3168'/>
+    <zone loc='93781 76709 -3568 -3168'/>
+    <zone loc='94152 79492 -3568 -3168'/>
+    <zone loc='93084 81226 -3568 -3168'/>
+    <zone loc='91457 81814 -3568 -3168'/>
+    <zone loc='90533 81086 -3568 -3168'/>
+  </territory>
+  
+  <territory name='oren21_2220_rrug03' controller='default' start_active='true' max='36'>
+    <npc id='18868' count='10' respawn='10s' rand='5s'/> <!-- Energy Plant -->
+    <npc id='18866' count='4' respawn='20s' rand='5s'/> <!-- Rainbow Frog -->
+    <npc id='18865' count='4' respawn='30s' rand='5s'/> <!-- Sticky Mushroom -->
+
+    <zone loc='93994 83476 -3668 -3368'/>
+    <zone loc='93310 84016 -3668 -3368'/>
+    <zone loc='93185 86210 -3668 -3368'/>
+    <zone loc='91345 86454 -3668 -3368'/>
+    <zone loc='90583 86343 -3668 -3368'/>
+    <zone loc='90099 85399 -3668 -3368'/>
+    <zone loc='90527 83859 -3668 -3368'/>
+    <zone loc='89915 83247 -3668 -3368'/>
+    <zone loc='90323 82619 -3668 -3368'/>
+    <zone loc='92175 82214 -3668 -3368'/>
+    <zone loc='93839 82582 -3668 -3368'/>
+  </territory>
+  
+  <territory name='oren21_2220_rrug04' controller='default' start_active='true' max='44'>
+    <npc id='18868' count='12' respawn='10s' rand='5s'/> <!-- Energy Plant -->
+    <npc id='18866' count='5' respawn='20s' rand='5s'/> <!-- Rainbow Frog -->
+    <npc id='18865' count='5' respawn='30s' rand='5s'/> <!-- Sticky Mushroom -->
+
+    <zone loc='94588 90508 -3608 -3108'/>
+    <zone loc='93165 91174 -3608 -3108'/>
+    <zone loc='92774 90205 -3608 -3108'/>
+    <zone loc='91874 90026 -3608 -3108'/>
+    <zone loc='91449 89018 -3608 -3108'/>
+    <zone loc='90269 88575 -3608 -3108'/>
+    <zone loc='91409 86478 -3608 -3108'/>
+    <zone loc='93203 86272 -3608 -3108'/>
+    <zone loc='94154 87126 -3608 -3108'/>
+    <zone loc='94506 87978 -3608 -3108'/>
+    <zone loc='95623 89043 -3608 -3108'/>
+    <zone loc='95175 89795 -3608 -3108'/>
+    <zone loc='94841 90063 -3608 -3108'/>
+  </territory>
+  
+  <territory name='oren21_2220_rrug05' controller='default' start_active='true' max='52'>
+    <npc id='18868' count='14' respawn='10s' rand='5s'/> <!-- Energy Plant -->
+    <npc id='18866' count='6' respawn='20s' rand='5s'/> <!-- Rainbow Frog -->
+    <npc id='18865' count='6' respawn='30s' rand='5s'/> <!-- Sticky Mushroom -->
+
+    <zone loc='91070 92840 -3568 -2968'/>
+    <zone loc='86774 94622 -3568 -2968'/>
+    <zone loc='86165 93839 -3568 -2968'/>
+    <zone loc='85237 94836 -3568 -2968'/>
+    <zone loc='83887 93863 -3568 -2968'/>
+    <zone loc='84716 93221 -3568 -2968'/>
+    <zone loc='85714 92670 -3568 -2968'/>
+    <zone loc='86767 90828 -3568 -2968'/>
+    <zone loc='90862 90747 -3568 -2968'/>
+    <zone loc='91384 91633 -3568 -2968'/>
+    <zone loc='92561 92566 -3568 -2968'/>
+    <zone loc='92346 93226 -3568 -2968'/>
+  </territory>
+  
+  <territory name='oren21_2220_rug01' controller='default' start_active='true' max='9'>
+    <npc id='18865' count='3' respawn='20s' rand='5s'/> <!-- Sticky Mushroom -->
+
+    <zone loc='84900 73795 -3716 -3416'/>
+    <zone loc='87732 72139 -3716 -3416'/>
+    <zone loc='88334 72910 -3716 -3416'/>
+    <zone loc='86558 74502 -3716 -3416'/>
+    <zone loc='87295 75990 -3716 -3416'/>
+    <zone loc='86749 76682 -3716 -3416'/>
+  </territory>
+  
+  <territory name='oren21_2220_rug02' controller='default' start_active='true' max='9'>
+    <npc id='18865' count='3' respawn='20s' rand='5s'/> <!-- Sticky Mushroom -->
+
+    <zone loc='84223 77014 -3752 -3452'/>
+    <zone loc='85742 75221 -3752 -3452'/>
+    <zone loc='86714 76764 -3752 -3452'/>
+    <zone loc='85338 78318 -3752 -3452'/>
+    <zone loc='84304 77728 -3752 -3452'/>
+  </territory>
+  
+  <territory name='oren21_2220_rug03' controller='default' start_active='true' max='9'>
+    <npc id='18865' count='5' respawn='20s' rand='5s'/> <!-- Sticky Mushroom -->
+
+    <zone loc='85322 78385 -3680 -3280'/>
+    <zone loc='88034 78422 -3680 -3280'/>
+    <zone loc='87192 79571 -3680 -3280'/>
+    <zone loc='88418 81396 -3680 -3280'/>
+    <zone loc='85892 82552 -3680 -3280'/>
+  </territory>
+  
+  <territory name='oren21_2220_rug04' controller='default' start_active='true' max='9'>
+    <npc id='18865' count='3' respawn='20s' rand='5s'/> <!-- Sticky Mushroom -->
+
+    <zone loc='88087 81760 -3608 -3308'/>
+    <zone loc='88841 81373 -3608 -3308'/>
+    <zone loc='90468 81167 -3608 -3308'/>
+    <zone loc='91738 82199 -3608 -3308'/>
+    <zone loc='89919 82579 -3608 -3308'/>
+    <zone loc='89306 83476 -3608 -3308'/>
+  </territory>
+  
+  <territory name='oren21_2220_rug05' controller='default' start_active='true' max='9'>
+    <npc id='18865' count='3' respawn='20s' rand='5s'/> <!-- Sticky Mushroom -->
+
+    <zone loc='90424 89901 -3500 -3200'/>
+    <zone loc='91425 89425 -3500 -3200'/>
+    <zone loc='91986 90457 -3500 -3200'/>
+    <zone loc='92808 90630 -3500 -3200'/>
+    <zone loc='93595 92473 -3500 -3200'/>
+    <zone loc='92575 92471 -3500 -3200'/>
+    <zone loc='91488 91591 -3500 -3200'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma_a1' controller='default' start_active='true' max='20'>
+    <npc id='22768' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='83885 80497 -3764 -3464'/>
+    <zone loc='83325 80678 -3764 -3464'/>
+    <zone loc='82690 80480 -3764 -3464'/>
+    <zone loc='82628 79804 -3764 -3464'/>
+    <zone loc='82713 79397 -3764 -3464'/>
+    <zone loc='82713 79397 -3764 -3464'/>
+    <zone loc='82025 78227 -3764 -3464'/>
+    <zone loc='81718 77815 -3764 -3464'/>
+    <zone loc='81959 77379 -3764 -3464'/>
+    <zone loc='82656 77511 -3764 -3464'/>
+    <zone loc='82656 77511 -3764 -3464'/>
+    <zone loc='83152 77939 -3764 -3464'/>
+    <zone loc='83913 78957 -3764 -3464'/>
+    <zone loc='84190 79474 -3764 -3464'/>
+    <zone loc='84276 80099 -3764 -3464'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma_a2' controller='default' start_active='true' max='20'>
+    <npc id='22768' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='91337 77665 -3344 -3044'/>
+    <zone loc='92093 78507 -3344 -3044'/>
+    <zone loc='92023 79105 -3344 -3044'/>
+    <zone loc='90291 79743 -3344 -3044'/>
+    <zone loc='89466 79279 -3344 -3044'/>
+    <zone loc='89466 79279 -3344 -3044'/>
+    <zone loc='89600 77834 -3344 -3044'/>
+    <zone loc='88778 76650 -3344 -3044'/>
+    <zone loc='89692 76002 -3344 -3044'/>
+    <zone loc='90764 77561 -3344 -3044'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma_a3' controller='default' start_active='true' max='20'>
+    <npc id='22768' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='92254 83601 -3744 -3444'/>
+    <zone loc='92513 84114 -3744 -3444'/>
+    <zone loc='92406 84883 -3744 -3444'/>
+    <zone loc='92553 85384 -3744 -3444'/>
+    <zone loc='91805 85573 -3744 -3444'/>
+    <zone loc='91805 85573 -3744 -3444'/>
+    <zone loc='91193 84531 -3744 -3444'/>
+    <zone loc='91293 83868 -3744 -3444'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma_a4' controller='default' start_active='true' max='20'>
+    <npc id='22768' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22769' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Warrior -->
+    <npc id='22770' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='93513 87903 -3584 -3184'/>
+    <zone loc='93911 88740 -3584 -3184'/>
+    <zone loc='93830 89533 -3584 -3184'/>
+    <zone loc='93276 89513 -3584 -3184'/>
+    <zone loc='92059 88226 -3584 -3184'/>
+    <zone loc='92059 88226 -3584 -3184'/>
+    <zone loc='91971 87777 -3584 -3184'/>
+    <zone loc='92480 87548 -3584 -3184'/>
+    <zone loc='92795 87327 -3584 -3184'/>
+    <zone loc='93262 87501 -3584 -3184'/>
+  </territory>
+  
+  <territory name='oren21_2220_doma_a5' controller='default' start_active='true' max='16'>
+    <npc id='22768' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Scout -->
+    <npc id='22770' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Soldier -->
+    <npc id='22771' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Berserker -->
+    <npc id='22772' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Archer -->
+    <npc id='22774' count='1' respawn='30s' rand='5s'/> <!-- Tanta Lizardman Summoner -->
+
+    <zone loc='88568 92008 -3288 -2788'/>
+    <zone loc='90012 92048 -3288 -2788'/>
+    <zone loc='90093 92642 -3288 -2788'/>
+    <zone loc='88464 92784 -3288 -2788'/>
+    <zone loc='87451 93745 -3288 -2788'/>
+    <zone loc='87451 93745 -3288 -2788'/>
+    <zone loc='86372 92881 -3288 -2788'/>
+    <zone loc='87136 92149 -3288 -2788'/>
+  </territory>
+  
+  <territory name='oren14_2118_01' controller='default' start_active='true' max='12'>
+    <npc id='20555' count='4' respawn='27s' rand='5s'/> <!-- Giant Fungus -->
+    <npc id='20556' count='4' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='4' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+
+    <zone loc='59528 9936 -3868 -3468'/>
+    <zone loc='61888 9412 -3868 -3468'/>
+    <zone loc='63172 10616 -3868 -3468'/>
+    <zone loc='62360 12392 -3868 -3468'/>
+    <zone loc='60624 13384 -3868 -3468'/>
+  </territory>
+  
+  <territory name='oren14_2118_02' controller='default' start_active='true' max='11'>
+    <npc id='20558' count='3' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+    <npc id='20556' count='4' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='4' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+
+    <zone loc='56496 10896 -5172 -3472'/>
+    <zone loc='59492 9944 -5172 -3472'/>
+    <zone loc='60596 13416 -5172 -3472'/>
+    <zone loc='58804 13868 -5172 -3472'/>
+  </territory>
+  
+  <territory name='oren14_2118_03' controller='default' start_active='true' max='12'>
+    <npc id='20558' count='4' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+    <npc id='20559' count='4' respawn='27s' rand='5s'/> <!-- Rotting Golem -->
+    <npc id='20561' count='4' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+
+    <zone loc='53868 12532 -5924 -4524'/>
+    <zone loc='56428 10868 -5924 -4524'/>
+    <zone loc='58548 13564 -5924 -4524'/>
+    <zone loc='54968 14544 -5924 -4524'/>
+  </territory>
+  
+  <territory name='oren14_2118_04' controller='default' start_active='true' max='9'>
+    <npc id='20560' count='3' respawn='27s' rand='5s'/> <!-- Trisalim Spider -->
+    <npc id='20561' count='3' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+    <npc id='20562' count='3' respawn='27s' rand='5s'/> <!-- Spore Zombie -->
+
+    <zone loc='53856 12508 -5916 -5216'/>
+    <zone loc='54944 14568 -5916 -5216'/>
+    <zone loc='52824 15256 -5916 -5216'/>
+    <zone loc='50560 15236 -5916 -5216'/>
+    <zone loc='50724 14280 -5916 -5216'/>
+  </territory>
+  
+  <territory name='oren14_2118_05' controller='default' start_active='true' max='7'>
+    <npc id='20560' count='2' respawn='27s' rand='5s'/> <!-- Trisalim Spider -->
+    <npc id='20561' count='2' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+    <npc id='20562' count='3' respawn='27s' rand='5s'/> <!-- Spore Zombie -->
+
+    <zone loc='48768 16688 -5552 -5052'/>
+    <zone loc='52072 16432 -5552 -5052'/>
+    <zone loc='52568 18248 -5552 -5052'/>
+    <zone loc='48896 17520 -5552 -5052'/>
+  </territory>
+  
+  <territory name='oren14_2118_06' controller='default' start_active='true' max='10'>
+    <npc id='20558' count='4' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+    <npc id='20559' count='3' respawn='27s' rand='5s'/> <!-- Rotting Golem -->
+    <npc id='20561' count='3' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+
+    <zone loc='52060 16388 -5588 -5188'/>
+    <zone loc='56240 16508 -5588 -5188'/>
+    <zone loc='56280 18740 -5588 -5188'/>
+    <zone loc='52564 18276 -5588 -5188'/>
+  </territory>
+  
+  <territory name='oren14_2118_07' controller='default' start_active='true' max='12'>
+    <npc id='20556' count='4' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='4' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+    <npc id='20558' count='4' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+
+    <zone loc='56228 16524 -5556 -3956'/>
+    <zone loc='60536 16212 -5556 -3956'/>
+    <zone loc='61068 18472 -5556 -3956'/>
+    <zone loc='56260 18652 -5556 -3956'/>
+  </territory>
+  
+  <territory name='oren14_2118_08' controller='default' start_active='true' max='8'>
+    <npc id='20555' count='3' respawn='27s' rand='5s'/> <!-- Giant Fungus -->
+    <npc id='20556' count='2' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='3' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+
+    <zone loc='60100 13656 -4157 -3557'/>
+    <zone loc='61080 13172 -4157 -3557'/>
+    <zone loc='62012 17604 -4157 -3557'/>
+    <zone loc='61136 18552 -4157 -3557'/>
+  </territory>
+  
+  <territory name='oren14_2118_09' controller='default' start_active='true' max='6'>
+    <npc id='20555' count='2' respawn='27s' rand='5s'/> <!-- Giant Fungus -->
+    <npc id='20556' count='2' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='2' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+
+    <zone loc='63796 15776 -3728 -2928'/>
+    <zone loc='64480 16044 -3728 -2928'/>
+    <zone loc='64040 17180 -3728 -2928'/>
+    <zone loc='61308 19628 -3728 -2928'/>
+    <zone loc='61184 18572 -3728 -2928'/>
+  </territory>
+  
+  <territory name='oren14_2118_10' controller='default' start_active='true' max='8'>
+    <npc id='20555' count='3' respawn='27s' rand='5s'/> <!-- Giant Fungus -->
+    <npc id='20556' count='3' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='2' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+
+    <zone loc='61248 19656 -4208 -3608'/>
+    <zone loc='63116 19532 -4208 -3608'/>
+    <zone loc='64212 20056 -4208 -3608'/>
+    <zone loc='62832 23152 -4208 -3608'/>
+    <zone loc='61972 23316 -4208 -3608'/>
+  </territory>
+  
+  <territory name='oren14_2118_11' controller='default' start_active='true' max='13'>
+    <npc id='20556' count='4' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='4' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+    <npc id='20558' count='5' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+
+    <zone loc='58448 19860 -5340 -3740'/>
+    <zone loc='61192 19428 -5340 -3740'/>
+    <zone loc='61976 23336 -5340 -3740'/>
+    <zone loc='57884 22808 -5340 -3740'/>
+  </territory>
+  
+  <territory name='oren14_2118_12' controller='default' start_active='true' max='15'>
+    <npc id='20558' count='6' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+    <npc id='20559' count='4' respawn='27s' rand='5s'/> <!-- Rotting Golem -->
+    <npc id='20561' count='5' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+
+    <zone loc='53804 19808 -5628 -5028'/>
+    <zone loc='58400 19828 -5628 -5028'/>
+    <zone loc='57812 22836 -5628 -5028'/>
+    <zone loc='52852 21648 -5628 -5028'/>
+  </territory>
+  
+  <territory name='oren14_2118_13' controller='default' start_active='true' max='7'>
+    <npc id='20560' count='2' respawn='27s' rand='5s'/> <!-- Trisalim Spider -->
+    <npc id='20561' count='2' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+    <npc id='20562' count='3' respawn='27s' rand='5s'/> <!-- Spore Zombie -->
+
+    <zone loc='49708 19600 -5600 -5300'/>
+    <zone loc='53764 19784 -5600 -5300'/>
+    <zone loc='52804 21624 -5600 -5300'/>
+    <zone loc='49636 20300 -5600 -5300'/>
+  </territory>
+  
+  <territory name='oren14_2118_14' controller='default' start_active='true' max='5'>
+    <npc id='20560' count='1' respawn='27s' rand='5s'/> <!-- Trisalim Spider -->
+    <npc id='20561' count='2' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+    <npc id='20562' count='2' respawn='27s' rand='5s'/> <!-- Spore Zombie -->
+
+    <zone loc='48352 21928 -5572 -5372'/>
+    <zone loc='51832 22652 -5572 -5372'/>
+    <zone loc='51044 23760 -5572 -5372'/>
+    <zone loc='48280 22376 -5572 -5372'/>
+  </territory>
+  
+  <territory name='oren14_2118_15' controller='default' start_active='true' max='5'>
+    <npc id='20558' count='2' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+    <npc id='20559' count='1' respawn='27s' rand='5s'/> <!-- Rotting Golem -->
+    <npc id='20561' count='2' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+
+    <zone loc='51812 22672 -5576 -5176'/>
+    <zone loc='54696 23820 -5576 -5176'/>
+    <zone loc='54464 25180 -5576 -5176'/>
+    <zone loc='51068 23732 -5576 -5176'/>
+  </territory>
+  
+  <territory name='oren14_2118_16' controller='default' start_active='true' max='8'>
+    <npc id='20558' count='2' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+    <npc id='20559' count='2' respawn='27s' rand='5s'/> <!-- Rotting Golem -->
+    <npc id='20561' count='2' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+    <npc id='20556' count='2' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+
+    <zone loc='54700 23840 -5484 -4884'/>
+    <zone loc='57924 24696 -5484 -4884'/>
+    <zone loc='56388 26516 -5484 -4884'/>
+    <zone loc='54472 25148 -5484 -4884'/>
+  </territory>
+  
+  <territory name='oren14_2118_17' controller='default' start_active='true' max='8'>
+    <npc id='20556' count='3' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='2' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+    <npc id='20558' count='3' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+
+    <zone loc='57944 24672 -5188 -3988'/>
+    <zone loc='60988 25328 -5188 -3988'/>
+    <zone loc='59684 27540 -5188 -3988'/>
+    <zone loc='56924 25960 -5188 -3988'/>
+  </territory>
+  
+  <territory name='oren14_2118_18' controller='default' start_active='true' max='5'>
+    <npc id='20555' count='2' respawn='27s' rand='5s'/> <!-- Giant Fungus -->
+    <npc id='20556' count='2' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='1' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+
+    <zone loc='61960 23336 -3960 -3760'/>
+    <zone loc='62872 23152 -3960 -3760'/>
+    <zone loc='63488 24140 -3960 -3760'/>
+    <zone loc='63104 25904 -3960 -3760'/>
+    <zone loc='61164 25260 -3960 -3760'/>
+  </territory>
+  
+  <territory name='oren14_2118_19' controller='default' start_active='true' max='9'>
+    <npc id='20555' count='3' respawn='27s' rand='5s'/> <!-- Giant Fungus -->
+    <npc id='20556' count='3' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='3' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+
+    <zone loc='61436 25352 -3908 -3708'/>
+    <zone loc='63112 25912 -3908 -3708'/>
+    <zone loc='62568 27808 -3908 -3708'/>
+    <zone loc='61608 29260 -3908 -3708'/>
+    <zone loc='59860 28524 -3908 -3708'/>
+  </territory>
+  
+  <territory name='oren14_2118_20' controller='default' start_active='true' max='5'>
+    <npc id='20555' count='2' respawn='27s' rand='5s'/> <!-- Giant Fungus -->
+    <npc id='20556' count='1' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='2' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+
+    <zone loc='55896 30404 -3916 -3716'/>
+    <zone loc='57844 29920 -3916 -3716'/>
+    <zone loc='58780 30696 -3916 -3716'/>
+    <zone loc='57924 31300 -3916 -3716'/>
+    <zone loc='56568 31140 -3916 -3716'/>
+  </territory>
+  
+  <territory name='oren14_2118_21' controller='default' start_active='true' max='3'>
+    <npc id='20555' count='1' respawn='27s' rand='5s'/> <!-- Giant Fungus -->
+    <npc id='20556' count='1' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='1' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+
+    <zone loc='59884 28540 -3908 -3708'/>
+    <zone loc='61616 29272 -3908 -3708'/>
+    <zone loc='60628 30636 -3908 -3708'/>
+    <zone loc='58792 30700 -3908 -3708'/>
+    <zone loc='57824 29896 -3908 -3708'/>
+  </territory>
+  
+  <territory name='oren14_2118_22' controller='default' start_active='true' max='4'>
+    <npc id='20556' count='2' respawn='27s' rand='5s'/> <!-- Giant Monstereye -->
+    <npc id='20557' count='1' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+    <npc id='20558' count='1' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+
+    <zone loc='55467 28377 -5308 -4408'/>
+    <zone loc='55884 27400 -5308 -4408'/>
+    <zone loc='58012 28440 -5308 -4408'/>
+    <zone loc='56299 29045 -5308 -4408'/>
+  </territory>
+  
+  <territory name='oren14_2118_23' controller='default' start_active='true' max='4'>
+    <npc id='20557' count='1' respawn='27s' rand='5s'/> <!-- Dire Wyrm -->
+    <npc id='20558' count='2' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+    <npc id='20559' count='1' respawn='27s' rand='5s'/> <!-- Rotting Golem -->
+
+    <zone loc='53344 26608 -5296 -4996'/>
+    <zone loc='55952 27268 -5296 -4996'/>
+    <zone loc='54748 28772 -5296 -4996'/>
+    <zone loc='53096 27504 -5296 -4996'/>
+  </territory>
+  
+  <territory name='oren14_2118_24' controller='default' start_active='true' max='3'>
+    <npc id='20558' count='1' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+    <npc id='20559' count='1' respawn='27s' rand='5s'/> <!-- Rotting Golem -->
+    <npc id='20560' count='1' respawn='27s' rand='5s'/> <!-- Trisalim Spider -->
+
+    <zone loc='51628 25932 -5268 -4968'/>
+    <zone loc='53344 26620 -5268 -4968'/>
+    <zone loc='53108 27492 -5268 -4968'/>
+    <zone loc='51628 26564 -5268 -4968'/>
+  </territory>
+  
+  <territory name='oren14_2118_25' controller='default' start_active='true' max='6'>
+    <npc id='20560' count='2' respawn='27s' rand='5s'/> <!-- Trisalim Spider -->
+    <npc id='20561' count='2' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+    <npc id='20562' count='2' respawn='27s' rand='5s'/> <!-- Spore Zombie -->
+
+    <zone loc='49964 25308 -5148 -4448'/>
+    <zone loc='50000 25708 -5148 -4448'/>
+    <zone loc='49020 25880 -5148 -4448'/>
+    <zone loc='47204 25156 -5148 -4448'/>
+    <zone loc='46872 22660 -5148 -4448'/>
+    <zone loc='49176 24460 -5148 -4448'/>
+  </territory>
+  
+  <territory name='oren14_2118_26' controller='default' start_active='true' max='11'>
+    <npc id='20558' count='3' respawn='27s' rand='5s'/> <!-- Rotting tree -->
+    <npc id='20560' count='3' respawn='27s' rand='5s'/> <!-- Trisalim Spider -->
+    <npc id='20561' count='2' respawn='27s' rand='5s'/> <!-- Trisalim Tarantula -->
+    <npc id='20562' count='3' respawn='27s' rand='5s'/> <!-- Spore Zombie -->
+
+    <zone loc='45472 21880 -5292 -4592'/>
+    <zone loc='46876 22656 -5292 -4592'/>
+    <zone loc='47184 25160 -5292 -4592'/>
+    <zone loc='44224 25536 -5292 -4592'/>
+    <zone loc='42872 24352 -5292 -4592'/>
+  </territory>
+  
+  <spawn name='oren22_2219_a01' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='88347 56413 -3495 49152' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='88522 56208 -3526 17127' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88418 56206 -3526 13868' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88305 56212 -3526 19456' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88190 56216 -3526 15466' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88181 56119 -3526 15734' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88296 56111 -3526 15128' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88417 56106 -3526 14390' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88530 56107 -3526 16458' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88177 56011 -3526 16387' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88298 56002 -3526 16785' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88420 55997 -3526 14642' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88530 56001 -3526 16083' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88177 55914 -3526 13392' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88294 55905 -3526 15411' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88424 55903 -3526 15063' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88530 55903 -3526 17704' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88186 55812 -3526 15800' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88303 55809 -3526 16097' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88421 55813 -3526 15393' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='88529 55803 -3526 13935' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_a02' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='89421 56422 -3501 49152' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='89261 56219 -3525 16069' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89365 56222 -3527 18156' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89475 56221 -3527 18008' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89579 56223 -3527 16805' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89262 56118 -3527 15035' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89364 56120 -3527 16637' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89475 56121 -3527 14304' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89581 56123 -3527 18984' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89265 56019 -3527 19511' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89364 56021 -3527 18633' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89475 56024 -3527 14740' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89581 56026 -3527 15548' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89268 55915 -3527 15257' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89364 55918 -3527 16562' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89476 55919 -3527 17372' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89585 55922 -3527 14490' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89270 55809 -3527 16318' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89365 55814 -3527 16965' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89475 55813 -3527 15902' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='89587 55818 -3527 17192' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_a03' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='90443 56392 -3494 49152' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='90237 56209 -3524 13795' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90348 56203 -3524 15173' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90447 56200 -3524 15376' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90546 56200 -3524 17608' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90649 56207 -3524 15610' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90255 56102 -3524 15788' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90369 56099 -3524 16368' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90471 56099 -3524 14928' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90574 56098 -3524 13679' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90680 56101 -3524 16988' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90651 55999 -3524 15409' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90545 56001 -3524 17058' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90450 55998 -3524 16518' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90346 56001 -3524 15320' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90231 55997 -3524 19048' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90683 55885 -3524 18469' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90583 55884 -3524 15488' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90473 55881 -3524 16889' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90371 55886 -3524 15399' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='90260 55883 -3524 18417' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_a04' controller='default' start_active='false' max='50'>
+    <npc id='22776' pos='87307 57853 -3637 49152' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22783' pos='87352 57660 -3678 16350' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87457 57668 -3678 14844' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87237 57664 -3678 19161' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87131 57665 -3678 14055' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87130 57564 -3678 18962' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87238 57560 -3678 18369' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87350 57560 -3678 17318' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87458 57565 -3678 16645' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87132 57462 -3678 14720' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87241 57464 -3678 18644' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87349 57459 -3678 17481' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87457 57460 -3678 17763' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87134 57356 -3678 13681' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87243 57361 -3678 14961' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87348 57358 -3678 16313' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87459 57358 -3678 13590' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87130 57255 -3678 19164' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87236 57257 -3678 17157' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87344 57251 -3678 16694' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='87455 57251 -3678 14925' respawn='90s'/> <!-- Sel Mahum Soldier -->
+  </spawn>
+  
+  <spawn name='oren22_2219_a05' controller='default' start_active='false' max='50'>
+    <npc id='22776' pos='88368 57845 -3657 49152' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22783' pos='88317 57649 -3680 14811' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88430 57648 -3680 15183' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88534 57650 -3680 15902' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88202 57653 -3680 17220' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88184 57554 -3680 17723' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88296 57553 -3680 16434' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88409 57550 -3680 15996' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88512 57551 -3680 18791' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88535 57452 -3680 17151' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88425 57451 -3680 17843' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88313 57451 -3680 16618' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88199 57453 -3680 16900' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88510 57347 -3680 18409' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88402 57347 -3680 18816' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88290 57350 -3680 20020' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88176 57350 -3680 14869' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88524 57243 -3680 17754' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88424 57240 -3680 15873' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88313 57241 -3680 14225' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='88206 57235 -3680 16051' respawn='90s'/> <!-- Sel Mahum Soldier -->
+  </spawn>
+  
+  <spawn name='oren22_2219_a06' controller='default' start_active='false' max='50'>
+    <npc id='22776' pos='89397 57854 -3586 49152' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22783' pos='89345 57645 -3632 14728' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89454 57645 -3632 18467' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89558 57649 -3632 17529' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89233 57652 -3632 18447' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89207 57548 -3632 18021' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89312 57549 -3632 16128' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89409 57548 -3632 16590' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89505 57547 -3632 17434' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89607 57549 -3632 15929' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89253 57454 -3632 14879' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89357 57456 -3632 13463' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89465 57454 -3632 16410' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89556 57456 -3632 15994' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89198 57362 -3632 16760' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89301 57365 -3632 14304' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89402 57370 -3632 17462' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89500 57373 -3632 16329' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89600 57376 -3632 16824' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89254 57278 -3632 16017' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89350 57279 -3632 16773' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89453 57276 -3632 17476' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='89552 57284 -3632 16725' respawn='90s'/> <!-- Sel Mahum Soldier -->
+  </spawn>
+  
+  <spawn name='oren22_2219_b01' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='85474 58676 -3367 32768' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='85251 58503 -3396 1823' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85236 58616 -3393 3030' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85244 58735 -3393 1349' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85250 58854 -3393 2212' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85105 58501 -3395 -2988' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85111 58621 -3393 -1933' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85104 58735 -3393 1255' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85109 58853 -3393 -280' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84977 58508 -3400 -2949' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84972 58629 -3393 3358' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84963 58740 -3393 -957' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84968 58853 -3393 -836' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84845 58513 -3400 1396' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84836 58633 -3393 2039' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84837 58743 -3393 33' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84829 58864 -3393 -1413' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84709 58512 -3413 1425' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84715 58635 -3403 -1' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84706 58755 -3397 -385' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84704 58878 -3398 1274' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_b02' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='85482 59706 -3397 32768' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='85280 59498 -3440 9' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85277 59604 -3440 3751' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85280 59701 -3440 535' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85276 59804 -3440 139' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85174 59492 -3440 2122' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85171 59592 -3440 253' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85175 59698 -3440 -1274' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85172 59805 -3440 300' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85068 59489 -3440 84' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84961 59491 -3440 233' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85276 59914 -3440 -1416' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85168 59919 -3440 -121' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85063 59594 -3440 3247' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84946 59601 -3440 -313' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85061 59701 -3440 -964' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84951 59703 -3440 -1567' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85060 59806 -3440 -1508' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84946 59807 -3440 123' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85053 59913 -3440 772' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84944 59910 -3440 359' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_b03' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='85484 60762 -3391 32768' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='85258 60555 -3440 -2001' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85259 60661 -3440 -2321' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85269 60761 -3440 1305' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85263 60869 -3440 -299' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85259 60980 -3440 806' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85152 60544 -3440 3396' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85148 60650 -3440 1408' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85147 60761 -3440 1860' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85146 60867 -3440 -1356' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85148 60974 -3440 -1199' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85033 60545 -3440 1583' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85036 60648 -3440 2276' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85030 60759 -3440 1432' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85036 60862 -3440 -513' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='85035 60976 -3440 -3165' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84913 60546 -3440 -199' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84912 60656 -3440 -233' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84904 60766 -3440 132' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84902 60870 -3440 188' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='84904 60980 -3440 -948' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_b04' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='84067 59229 -3455 32768' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='83860 59045 -3488 627' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83856 59161 -3488 2501' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83858 59274 -3488 -224' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83866 59391 -3488 -929' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83744 59040 -3488 -1600' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83738 59162 -3488 -1906' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83747 59280 -3488 -1525' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83744 59392 -3488 -1331' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83626 59036 -3488 208' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83632 59151 -3488 642' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83626 59278 -3488 -780' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83629 59395 -3488 1639' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83495 59030 -3488 -758' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83497 59152 -3488 -308' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83496 59282 -3488 -1649' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83493 59394 -3488 -2046' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_b05' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='84070 60231 -3452 32768' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='83843 60393 -3488 -1822' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83816 60255 -3488 1736' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83779 60128 -3488 -2976' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83765 60002 -3488 1724' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83649 59963 -3488 466' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83651 60086 -3488 1545' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83678 60223 -3488 -300' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83714 60345 -3488 -1259' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83521 59989 -3488 -3415' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83534 60114 -3488 1434' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83568 60249 -3488 -1828' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83594 60388 -3488 -1878' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83394 59966 -3488 3828' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83403 60092 -3488 -1266' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83429 60215 -3488 246' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83253 59961 -3488 1120' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83257 60083 -3504 1643' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83287 60203 -3504 -644' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_c01' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='79658 62438 -3638 16384' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='79437 62677 -3662 50435' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79572 62679 -3662 50020' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79715 62687 -3662 50491' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79843 62685 -3662 48555' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79440 62785 -3669 51565' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79577 62791 -3669 48354' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79722 62797 -3669 51515' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79851 62798 -3669 50697' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79448 62913 -3669 48587' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79583 62909 -3669 48691' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79730 62910 -3669 49960' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79867 62911 -3669 49242' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79445 63031 -3669 50056' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79590 63036 -3669 48406' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79735 63031 -3669 48779' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79871 63031 -3669 46955' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_c02' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='80721 62436 -3646 16384' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='80508 62651 -3670 46922' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80638 62660 -3670 48514' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80772 62665 -3670 48933' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80909 62661 -3670 51934' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80509 62782 -3670 50405' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80643 62784 -3670 48161' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80779 62788 -3670 49284' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80913 62789 -3670 49360' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80512 62908 -3670 47113' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80515 63034 -3670 51291' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80646 62908 -3670 49325' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80651 63030 -3670 49991' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80783 62913 -3670 50069' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80787 63041 -3670 48950' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80918 62923 -3670 48835' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='80919 63038 -3670 52370' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_c03' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='81796 62445 -3547 16384' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='81600 62674 -3553 47415' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81743 62677 -3569 50273' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81871 62675 -3569 47518' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81983 62679 -3569 48938' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81554 62790 -3569 48619' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81681 62796 -3569 48609' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81811 62798 -3569 50340' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81928 62795 -3569 46829' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82041 62793 -3569 52574' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81615 62910 -3585 47428' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81748 62917 -3569 52613' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81877 62919 -3569 47966' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81994 62920 -3569 48367' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81611 63055 -3585 47741' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81749 63053 -3569 47388' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81883 63061 -3569 48100' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='81997 63059 -3569 52031' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_c04' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='82825 62443 -3477 16384' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='82613 62675 -3501 47941' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82756 62677 -3501 50481' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82887 62678 -3501 46535' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83024 62673 -3501 49294' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82614 62792 -3501 49535' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82755 62799 -3501 48038' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82893 62798 -3501 50288' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83029 62801 -3501 49323' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82616 62910 -3501 51141' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82763 62914 -3501 46537' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82897 62914 -3501 49527' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83035 62922 -3501 52471' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82589 63039 -3501 51655' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82707 63042 -3501 47544' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82835 63040 -3501 50904' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='82954 63044 -3501 49439' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='83059 63052 -3501 45871' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_d01' controller='default' start_active='false' max='21'>
+    <npc id='22776' pos='91678 61528 -3230 0' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22780' pos='91867 61289 -3264 31390' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91872 61404 -3264 33485' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91873 61523 -3264 33058' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91881 61653 -3264 35075' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91879 61778 -3257 32862' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91995 61308 -3255 32861' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91994 61425 -3264 34385' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91997 61549 -3264 33501' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92002 61671 -3264 34558' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92009 61794 -3264 33667' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92124 61283 -3266 34699' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92113 61406 -3268 34448' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92121 61525 -3264 34667' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92118 61655 -3264 34866' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92135 61781 -3262 32955' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92262 61283 -3258 34729' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92250 61406 -3264 31483' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92255 61536 -3263 34885' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92268 61667 -3264 30598' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92275 61789 -3264 35240' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_d02' controller='default' start_active='false' max='50'>
+    <npc id='22776' pos='91675 62592 -3231 0' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22780' pos='91885 62545 -3264 34965' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91874 62399 -3264 29005' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91887 62678 -3264 35653' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91885 62817 -3264 34352' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91978 62399 -3264 32098' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92096 62401 -3264 31467' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92225 62402 -3264 32337' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91994 62539 -3264 30033' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92103 62536 -3264 36055' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92233 62535 -3264 33633' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92002 62675 -3264 29684' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92113 62683 -3264 29813' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92241 62677 -3264 33782' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92007 62813 -3264 33061' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92126 62803 -3264 32830' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92252 62802 -3264 32643' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_d03' controller='default' start_active='false' max='50'>
+    <npc id='22776' pos='91691 63622 -3237 0' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22780' pos='91858 63481 -3265 30402' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91865 63623 -3265 33801' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91865 63771 -3268 32118' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91958 63482 -3265 33982' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91967 63625 -3265 32187' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91965 63774 -3268 33566' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92058 63482 -3265 31999' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92070 63626 -3265 31921' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92067 63773 -3268 34683' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92161 63482 -3265 30242' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92165 63621 -3265 30363' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92176 63773 -3268 30972' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92266 63475 -3265 30056' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92267 63625 -3265 30693' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='92280 63770 -3268 33965' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_d04' controller='default' start_active='false' max='50'>
+    <npc id='22776' pos='90206 62016 -3315 0' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22780' pos='90450 61728 -3351 32486' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90459 61850 -3351 34127' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90468 61982 -3351 32490' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90474 62142 -3348 30770' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90471 62263 -3351 32979' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90581 61727 -3328 33255' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90718 61731 -3337 33508' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90862 61727 -3344 31435' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90591 61851 -3328 35475' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90729 61842 -3337 31090' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90869 61857 -3328 31414' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90599 61976 -3328 31624' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90731 61976 -3337 32816' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90874 61979 -3337 31903' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90604 62143 -3328 31937' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90739 62127 -3337 33882' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90877 62135 -3337 34076' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90603 62257 -3328 33354' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90743 62251 -3337 32884' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90880 62258 -3337 33890' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_d05' controller='default' start_active='false' max='50'>
+    <npc id='22776' pos='90207 63082 -3315 0' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22780' pos='90388 62875 -3335 34592' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90411 63022 -3335 35435' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90416 63171 -3335 33762' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90423 63305 -3335 34538' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90529 62884 -3335 32711' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90667 62892 -3335 34442' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90826 62906 -3335 30305' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90540 63029 -3335 33025' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90689 63036 -3335 33140' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90844 63058 -3335 30083' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90560 63184 -3335 35353' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90702 63185 -3335 33092' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90851 63200 -3335 33050' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90582 63319 -3335 35221' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90723 63330 -3335 32737' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90866 63338 -3335 33169' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2219_d06' controller='default' start_active='false' max='50'>
+    <npc id='22776' pos='90242 64112 -3378 0' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22780' pos='90461 63899 -3424 32772' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90468 64048 -3424 30449' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90469 64175 -3424 33880' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90471 64312 -3424 33973' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90611 63899 -3424 31695' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90613 64040 -3424 33320' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90615 64177 -3424 33876' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90626 64312 -3424 31279' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90758 63905 -3424 32659' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90762 64040 -3424 30128' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90775 64170 -3424 32686' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90785 64307 -3424 32770' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90912 63901 -3392 31574' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91084 63899 -3408 34184' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90920 64034 -3424 31932' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90939 64166 -3424 30308' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='90961 64296 -3424 31075' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91103 64020 -3408 32879' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91118 64173 -3408 32291' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91137 64302 -3424 31689' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22780' pos='91304 64290 -3440 32582' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2220_e01' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='77578 66004 -3164 16648' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='77418 66228 -3191 -16280' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77576 66227 -3191 -16192' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77732 66232 -3191 -19376' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77419 66335 -3191 -16128' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77575 66350 -3191 -18872' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77741 66355 -3191 -26144' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77417 66455 -3191 -15680' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77579 66466 -3191 -15752' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77736 66475 -3191 -16488' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77413 66569 -3191 -13568' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77579 66579 -3191 -19168' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='77739 66583 -3191 -17512' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2220_e02' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='78620 65996 -3164 16688' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='78383 66236 -3200 -15944' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78526 66238 -3200 -15512' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78669 66245 -3200 -17816' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78802 66238 -3200 -17792' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78390 66349 -3200 -16144' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78527 66356 -3200 -16488' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78673 66365 -3200 -15776' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78812 66357 -3200 -16384' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78389 66466 -3200 -16920' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78526 66469 -3200 -16840' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78670 66475 -3200 -18360' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78817 66471 -3200 -18016' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78397 66594 -3200 -17440' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78531 66587 -3200 -17632' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78677 66593 -3200 -16640' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='78821 66593 -3200 -22304' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2220_e03' controller='default' start_active='false' max='50'>
+    <npc id='22775' pos='79688 65999 -3174 16480' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22782' pos='79427 66223 -3200 -14240' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79533 66234 -3200 -15536' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79651 66243 -3200 -17216' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79793 66242 -3200 -17008' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79936 66234 -3200 -18240' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79427 66343 -3200 -17104' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79535 66362 -3200 -16056' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79656 66378 -3200 -16064' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79798 66380 -3200 -16992' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79938 66369 -3200 -16752' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79423 66466 -3200 -14600' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79536 66482 -3200 -16296' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79661 66495 -3200 -15680' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79795 66502 -3200 -17088' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79930 66500 -3200 -17824' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79431 66599 -3200 -13544' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79545 66617 -3200 -16552' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79676 66624 -3200 -17616' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79803 66625 -3200 -19536' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22782' pos='79941 66620 -3200 -18440' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2220_e04' controller='default' start_active='false' max='50'>
+    <npc id='22776' pos='78127 67305 -3165 16880' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22783' pos='78425 67509 -3200 -16488' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78309 67518 -3200 -16400' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78162 67529 -3200 -16616' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78005 67541 -3200 -16456' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='77879 67549 -3200 -16104' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='77759 67544 -3200 -9992' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78430 67619 -3200 -16040' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78313 67629 -3200 -16432' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78166 67635 -3200 -17024' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78009 67640 -3200 -16344' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='77885 67647 -3200 -16544' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='77749 67646 -3200 -7560' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='77753 67759 -3200 -14480' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='77881 67743 -3200 -15400' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78006 67744 -3200 -16968' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78168 67748 -3200 -16120' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78320 67744 -3200 -17408' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78426 67746 -3216 -16408' respawn='90s'/> <!-- Sel Mahum Soldier -->
+  </spawn>
+  
+  <spawn name='oren22_2220_e05' controller='default' start_active='false' max='50'>
+    <npc id='22776' pos='79121 67309 -3160 17688' respawn='90s'/> <!-- Sel Mahum Training Officer -->
+    <npc id='22783' pos='78928 67520 -3200 -15384' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='79062 67518 -3200 -17752' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='79207 67524 -3200 -14440' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='79305 67533 -3200 -17104' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78923 67656 -3200 -27136' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='79065 67651 -3200 -18392' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='79201 67651 -3200 -19704' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='79324 67661 -3200 -17208' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='78927 67780 -3200 -15568' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='79078 67778 -3200 -18760' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='79213 67776 -3200 -16824' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22783' pos='79313 67777 -3200 -17296' respawn='90s'/> <!-- Sel Mahum Soldier -->
+  </spawn>
+  
+  <spawn name='oren22_2220_f01' controller='default' start_active='false' max='50'>
+    <npc id='22778' pos='83532 66959 -2963 944' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22785' pos='83735 66916 -2992 32272' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83742 67038 -2992 -32000' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83751 67149 -2992 31768' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83734 66804 -2992 28752' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83863 66799 -2992 31984' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83866 66918 -2992 32128' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83875 67030 -2992 -31952' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83873 67141 -2992 -28864' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83987 66789 -2992 28448' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83996 66914 -2992 -32144' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83996 67033 -2992 -31024' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='84004 67150 -2992 31784' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='84120 67036 -2992 32240' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='84105 66836 -2992 30872' respawn='90s'/> <!-- Sel Mahum Soldier -->
+  </spawn>
+  
+  <spawn name='oren22_2220_f02' controller='default' start_active='false' max='50'>
+    <npc id='22778' pos='83532 67973 -2961 56' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22785' pos='83707 67833 -2982 31760' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83802 67832 -2982 31560' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83925 67829 -2982 30568' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='84026 67833 -2982 -31472' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83713 67969 -2982 -32640' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83811 67972 -2982 -32704' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83926 67969 -2982 32176' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='84037 67976 -2982 32584' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83721 68100 -2982 -30176' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83822 68103 -2982 32080' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='83930 68110 -2982 -31840' respawn='90s'/> <!-- Sel Mahum Soldier -->
+    <npc id='22785' pos='84047 68105 -2982 -32760' respawn='90s'/> <!-- Sel Mahum Soldier -->
+  </spawn>
+  
+  <spawn name='oren22_2220_f03' controller='default' start_active='false' max='50'>
+    <npc id='22778' pos='82164 66420 -2958 -752' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22784' pos='82384 66240 -2992 32456' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82391 66359 -2992 30544' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82402 66483 -2992 30952' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82395 66614 -2992 -31840' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82511 66236 -2992 -32728' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82517 66351 -3008 32568' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82521 66480 -2992 -30152' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82526 66607 -2992 31832' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82633 66236 -3008 28936' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82642 66350 -3008 31792' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82646 66478 -2992 -32352' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82652 66606 -2992 -32496' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82773 66230 -3008 29992' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82774 66347 -3008 31344' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82784 66476 -3008 -31576' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82785 66599 -3008 -29208' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2220_f04' controller='default' start_active='false' max='50'>
+    <npc id='22778' pos='82174 67483 -2957 2312' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22784' pos='82384 67279 -2992 31408' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82391 67404 -2992 -31088' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82397 67537 -2992 -31416' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82403 67664 -2992 -29584' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82509 67281 -2992 32376' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82509 67415 -2992 -31440' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82520 67539 -2992 32768' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82524 67669 -2992 -29192' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82623 67280 -2992 28960' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82638 67423 -2992 31392' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82641 67519 -2992 -31744' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82644 67638 -2992 32632' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82757 67278 -2992 30976' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82762 67397 -2992 -32624' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82773 67533 -2992 30696' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82773 67661 -2992 -32136' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <spawn name='oren22_2220_f05' controller='default' start_active='false' max='50'>
+    <npc id='22778' pos='82175 68529 -2957 0' respawn='90s'/> <!-- Sel Mahum Drill Sergeant -->
+    <npc id='22784' pos='82346 68317 -2992 32352' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82389 68434 -2992 32056' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82392 68575 -2992 -32568' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82378 68698 -2992 32664' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82497 68692 -2992 -31888' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82500 68576 -2992 -31392' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82500 68440 -2992 30320' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82478 68319 -2992 31768' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82612 68701 -2992 -27488' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82628 68580 -2992 -29984' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82627 68455 -2992 30760' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82624 68326 -2992 27424' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82748 68323 -2992 31584' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82760 68444 -2992 31352' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82763 68584 -2992 32520' respawn='90s'/> <!-- Sel Mahum Recruit -->
+    <npc id='22784' pos='82756 68706 -2992 -30776' respawn='90s'/> <!-- Sel Mahum Recruit -->
+  </spawn>
+  
+  <territory name='oren22_firezone01' controller='default' start_active='true' max='10'>
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='82170 60979 -3588 -3088'/>
+    <zone loc='83709 60994 -3588 -3088'/>
+    <zone loc='83888 61996 -3588 -3088'/>
+    <zone loc='82272 62100 -3588 -3088'/>
+    <zone loc='81839 61514 -3588 -3088'/>
+  </territory>
+  
+  <territory name='oren22_firezone03' controller='default' start_active='true' max='23'>
+    <npc id='18927' pos='86472 60872 -3504 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='86022 61912 -3488 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='85682 63067 -3648 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='1' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='1' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='86014 61423 -3763 -3263'/>
+    <zone loc='85997 59645 -3763 -3263'/>
+    <zone loc='86997 60893 -3763 -3263'/>
+    <zone loc='86449 62341 -3763 -3263'/>
+    <zone loc='86625 63063 -3763 -3263'/>
+    <zone loc='85469 63419 -3763 -3263'/>
+    <zone loc='85459 61733 -3763 -3263'/>
+  </territory>
+  
+  <territory name='oren22_firezone04' controller='default' start_active='true' max='26'>
+    <npc id='18927' pos='87344 62175 -3712 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='87045 62622 -3712 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='87876 62590 -3712 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='87690 62016 -3796 -3296'/>
+    <zone loc='87970 62242 -3796 -3296'/>
+    <zone loc='87986 62960 -3796 -3296'/>
+    <zone loc='87759 63171 -3796 -3296'/>
+    <zone loc='87245 63191 -3796 -3296'/>
+    <zone loc='86861 62975 -3796 -3296'/>
+    <zone loc='86849 62241 -3796 -3296'/>
+    <zone loc='87035 62022 -3796 -3296'/>
+  </territory>
+  
+  <territory name='oren22_firezone08' controller='default' start_active='true' max='21'>
+    <npc id='18927' pos='91174 57769 -3744 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='1' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='1' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='90446 57650 -3792 -3292'/>
+    <zone loc='91286 57416 -3792 -3292'/>
+    <zone loc='91862 58022 -3792 -3292'/>
+    <zone loc='90758 58723 -3792 -3292'/>
+    <zone loc='90250 58405 -3792 -3292'/>
+  </territory>
+  
+  <territory name='oren22_firezone10' controller='default' start_active='true' max='24'>
+    <npc id='18927' pos='89663 65106 -3712 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='87463 63886 -3664 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='88378 64266 -3712 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='86512 64884 -3568 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='1' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='1' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='87181 63615 -3775 -2875'/>
+    <zone loc='89357 63544 -3775 -2875'/>
+    <zone loc='90439 65376 -3775 -2875'/>
+    <zone loc='85342 65382 -3775 -2875'/>
+  </territory>
+  
+  <territory name='oren22_firezone11' controller='default' start_active='true' max='23'>
+    <npc id='18927' pos='82537 63719 -3520 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='80992 63760 -3600 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='80679 63410 -3747 -3447'/>
+    <zone loc='84281 63414 -3747 -3447'/>
+    <zone loc='83902 64048 -3747 -3447'/>
+    <zone loc='81914 64346 -3747 -3447'/>
+    <zone loc='80889 64378 -3747 -3447'/>
+  </territory>
+  
+  <territory name='oren22_firezone13' controller='default' start_active='true' max='22'>
+    <npc id='18927' pos='80352 64898 -3312 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='79154 65040 -3376 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='80414 64560 -3545 -2645'/>
+    <zone loc='81342 64639 -3545 -2645'/>
+    <zone loc='81877 65313 -3545 -2645'/>
+    <zone loc='77112 65303 -3545 -2645'/>
+    <zone loc='77711 65024 -3545 -2645'/>
+    <zone loc='78683 64654 -3545 -2645'/>
+    <zone loc='79851 64745 -3545 -2645'/>
+  </territory>
+  
+  <territory name='oren22_firezone15' controller='default' start_active='true' max='35'>
+    <npc id='18927' pos='80090 69178 -3424 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='80832 68663 -3472 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='80630 67817 -3440 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='80096 68304 -3328 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='81406 68669 -3344 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='81804 69041 -3524 -3024'/>
+    <zone loc='80764 69135 -3524 -3024'/>
+    <zone loc='80159 69560 -3524 -3024'/>
+    <zone loc='79553 69286 -3524 -3024'/>
+    <zone loc='79528 68690 -3524 -3024'/>
+    <zone loc='80430 67047 -3524 -3024'/>
+    <zone loc='81074 66786 -3524 -3024'/>
+    <zone loc='81632 68225 -3524 -3024'/>
+  </territory>
+  
+  <territory name='oren22_firezone17' controller='default' start_active='true' max='24'>
+    <npc id='18927' pos='85344 65712 -3232 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='85748 66494 -3264 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='86736 65907 -3584 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='88097 65803 -3728 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='84869 65555 -3883 -2883'/>
+    <zone loc='88555 65547 -3883 -2883'/>
+    <zone loc='87809 66717 -3883 -2883'/>
+    <zone loc='86382 67622 -3883 -2883'/>
+    <zone loc='85188 67166 -3883 -2883'/>
+  </territory>
+  
+  <territory name='oren22_firezone18' controller='default' start_active='true' max='22'>
+    <npc id='18927' pos='86448 68448 -3056 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='86896 68784 -3056 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='1' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='1' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='87169 68965 -3126 -2926'/>
+    <zone loc='86885 69131 -3126 -2926'/>
+    <zone loc='86413 69109 -3126 -2926'/>
+    <zone loc='86084 68921 -3126 -2926'/>
+    <zone loc='86067 68178 -3126 -2926'/>
+    <zone loc='86277 67990 -3126 -2926'/>
+    <zone loc='86895 68010 -3126 -2926'/>
+    <zone loc='87165 68206 -3126 -2926'/>
+  </territory>
+  
+  <territory name='oren22_firezone19' controller='default' start_active='true' max='27'>
+    <npc id='18927' pos='89312 67152 -3712 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='89792 67680 -3712 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='89759 67135 -3712 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='89296 67712 -3712 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='90073 67793 -3760 -3560'/>
+    <zone loc='89789 67959 -3760 -3560'/>
+    <zone loc='89318 67937 -3760 -3560'/>
+    <zone loc='88989 67749 -3760 -3560'/>
+    <zone loc='88971 67006 -3760 -3560'/>
+    <zone loc='89182 66818 -3760 -3560'/>
+    <zone loc='89800 66838 -3760 -3560'/>
+    <zone loc='90070 67034 -3760 -3560'/>
+  </territory>
+  
+  <territory name='oren22_firezone21' controller='default' start_active='true' max='23'>
+    <npc id='18927' pos='89967 69311 -3488 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='88640 69583 -3296 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='18927' pos='90529 70479 -3520 0' count='1' respawn='1m' rand='0'/> <!-- Fire -->
+    <npc id='22787' count='10' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22786' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+    <npc id='22788' count='2' respawn='1m' rand='0'/> <!-- Sel Mahum Squad Leader -->
+
+    <zone loc='87845 68773 -3764 -2764'/>
+    <zone loc='89242 68258 -3764 -2764'/>
+    <zone loc='90846 69229 -3764 -2764'/>
+    <zone loc='91848 70495 -3764 -2764'/>
+    <zone loc='90613 70730 -3764 -2764'/>
+    <zone loc='88247 70449 -3764 -2764'/>
+  </territory>
+  
+  <territory name='oren13_1920_01' controller='default' start_active='true' max='9'>
+    <npc id='20393' count='3' respawn='20s' rand='0'/> <!-- Red Scavenger Spider -->
+    <npc id='20369' count='3' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20049' count='3' respawn='20s' rand='0'/> <!-- Lycanthrope -->
+
+    <zone loc='-3932 82476 -3820 -3520'/>
+    <zone loc='-188 82880 -3820 -3520'/>
+    <zone loc='-168 86340 -3820 -3520'/>
+    <zone loc='-5228 86076 -3820 -3520'/>
+  </territory>
+  
+  <territory name='oren13_1920_01s' controller='default' start_active='true' max='2'>
+    <npc id='20393' count='1' respawn='20s' rand='0'/> <!-- Red Scavenger Spider -->
+    <npc id='20049' count='1' respawn='20s' rand='0'/> <!-- Lycanthrope -->
+
+    <zone loc='-3244 84004 -3756 -3556'/>
+    <zone loc='-1676 84380 -3756 -3556'/>
+    <zone loc='-1676 86036 -3756 -3556'/>
+    <zone loc='-3484 85428 -3756 -3556'/>
+  </territory>
+  
+  <territory name='oren13_1920_02' controller='default' start_active='true' max='10'>
+    <npc id='20393' count='4' respawn='20s' rand='0'/> <!-- Red Scavenger Spider -->
+    <npc id='20369' count='3' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20049' count='3' respawn='20s' rand='0'/> <!-- Lycanthrope -->
+
+    <zone loc='-2132 77796 -3752 -3352'/>
+    <zone loc='-272 79536 -3752 -3352'/>
+    <zone loc='-180 82816 -3752 -3352'/>
+    <zone loc='-3884 82456 -3752 -3352'/>
+    <zone loc='-5664 81000 -3752 -3352'/>
+    <zone loc='-5860 77764 -3752 -3352'/>
+  </territory>
+  
+  <territory name='oren13_1920_02s' controller='default' start_active='true' max='3'>
+    <npc id='20393' count='1' respawn='20s' rand='0'/> <!-- Red Scavenger Spider -->
+    <npc id='20369' count='1' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20049' count='1' respawn='20s' rand='0'/> <!-- Lycanthrope -->
+
+    <zone loc='-4440 78488 -3648 -3348'/>
+    <zone loc='-2956 78448 -3648 -3348'/>
+    <zone loc='-2268 80356 -3648 -3348'/>
+    <zone loc='-4376 80480 -3648 -3348'/>
+  </territory>
+  
+  <territory name='oren13_1920_03' controller='default' start_active='true' max='24'>
+    <npc id='20043' count='3' respawn='20s' rand='0'/> <!-- Arachnid Tracker -->
+    <npc id='20369' count='3' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20049' count='3' respawn='20s' rand='0'/> <!-- Lycanthrope -->
+
+    <zone loc='-10216 76172 -3672 -3372'/>
+    <zone loc='-5860 77764 -3672 -3372'/>
+    <zone loc='-5708 80972 -3672 -3372'/>
+    <zone loc='-8964 81736 -3672 -3372'/>
+  </territory>
+  
+  <territory name='oren13_1920_03s' controller='default' start_active='true' max='8'>
+    <npc id='20043' count='1' respawn='20s' rand='0'/> <!-- Arachnid Tracker -->
+    <npc id='20369' count='1' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20049' count='1' respawn='20s' rand='0'/> <!-- Lycanthrope -->
+
+    <zone loc='-8540 78020 -3524 -3324'/>
+    <zone loc='-6644 77944 -3524 -3324'/>
+    <zone loc='-6520 79412 -3524 -3324'/>
+    <zone loc='-7828 79704 -3524 -3324'/>
+  </territory>
+  
+  <territory name='oren13_1920_04' controller='default' start_active='true' max='24'>
+    <npc id='20039' count='3' respawn='20s' rand='0'/> <!-- Scavenger Wererat -->
+    <npc id='20369' count='3' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20043' count='3' respawn='20s' rand='0'/> <!-- Arachnid Tracker -->
+
+    <zone loc='-5712 80968 -3756 -3356'/>
+    <zone loc='-3940 82424 -3756 -3356'/>
+    <zone loc='-5236 86032 -3756 -3356'/>
+    <zone loc='-9280 86152 -3756 -3356'/>
+    <zone loc='-8956 81748 -3756 -3356'/>
+  </territory>
+  
+  <territory name='oren13_1920_04s' controller='default' start_active='true' max='16'>
+    <npc id='20039' count='2' respawn='20s' rand='0'/> <!-- Scavenger Wererat -->
+    <npc id='20369' count='2' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20043' count='2' respawn='20s' rand='0'/> <!-- Arachnid Tracker -->
+
+    <zone loc='-7104 82560 -3668 -3468'/>
+    <zone loc='-5500 82988 -3668 -3468'/>
+    <zone loc='-5500 84556 -3668 -3468'/>
+    <zone loc='-7348 84228 -3668 -3468'/>
+  </territory>
+  
+  <territory name='oren13_1920_05' controller='default' start_active='true' max='41'>
+    <npc id='20410' count='5' respawn='20s' rand='0'/> <!-- Scavenger Spider -->
+    <npc id='20369' count='6' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20043' count='5' respawn='20s' rand='0'/> <!-- Arachnid Tracker -->
+
+    <zone loc='-19080 78044 -3808 -3408'/>
+    <zone loc='-9864 81600 -3808 -3408'/>
+    <zone loc='-10500 84652 -3808 -3408'/>
+    <zone loc='-16232 85492 -3808 -3408'/>
+    <zone loc='-20764 82224 -3808 -3408'/>
+  </territory>
+  
+  <territory name='oren13_1920_051s' controller='default' start_active='true' max='4'>
+    <npc id='20410' count='1' respawn='20s' rand='0'/> <!-- Scavenger Spider -->
+    <npc id='20369' count='1' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20049' count='2' respawn='20s' rand='0'/> <!-- Lycanthrope -->
+
+    <zone loc='-14968 81524 -3732 -3432'/>
+    <zone loc='-13348 82624 -3732 -3432'/>
+    <zone loc='-14144 84616 -3732 -3432'/>
+    <zone loc='-15684 83700 -3732 -3432'/>
+  </territory>
+  
+  <territory name='oren13_1920_052s' controller='default' start_active='true' max='24'>
+    <npc id='20039' count='3' respawn='20s' rand='0'/> <!-- Scavenger Wererat -->
+    <npc id='20410' count='3' respawn='20s' rand='0'/> <!-- Scavenger Spider -->
+    <npc id='20043' count='3' respawn='20s' rand='0'/> <!-- Arachnid Tracker -->
+
+    <zone loc='-19324 80580 -3724 -3524'/>
+    <zone loc='-17528 80964 -3724 -3524'/>
+    <zone loc='-17864 82780 -3724 -3524'/>
+    <zone loc='-19720 82940 -3724 -3524'/>
+  </territory>
+  
+  <territory name='oren13_1920_06' controller='default' start_active='true' max='36'>
+    <npc id='20043' count='4' respawn='20s' rand='0'/> <!-- Arachnid Tracker -->
+    <npc id='20369' count='6' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20049' count='6' respawn='20s' rand='0'/> <!-- Lycanthrope -->
+
+    <zone loc='-14516 73296 -3700 -3400'/>
+    <zone loc='-11248 76408 -3700 -3400'/>
+    <zone loc='-9876 81556 -3700 -3400'/>
+    <zone loc='-19056 78000 -3700 -3400'/>
+    <zone loc='-17364 75004 -3700 -3400'/>
+  </territory>
+  
+  <territory name='oren13_1920_06s' controller='default' start_active='true' max='7'>
+    <npc id='20039' count='3' respawn='20s' rand='0'/> <!-- Scavenger Wererat -->
+    <npc id='20369' count='2' respawn='20s' rand='0'/> <!-- Moonstone Beast -->
+    <npc id='20049' count='2' respawn='20s' rand='0'/> <!-- Lycanthrope -->
+
+    <zone loc='-16540 76232 -3572 -3272'/>
+    <zone loc='-13900 75392 -3572 -3272'/>
+    <zone loc='-12824 78128 -3572 -3272'/>
+    <zone loc='-14788 78228 -3572 -3272'/>
+  </territory>
+  
+  <territory name='oren29_2218_23' controller='default' start_active='true' max='11'>
+    <npc id='20563' count='4' respawn='24s' rand='5s'/> <!-- Manashen Gargoyle -->
+    <npc id='20564' count='4' respawn='24s' rand='5s'/> <!-- Enchanted Monstereye -->
+    <npc id='20565' count='3' respawn='24s' rand='5s'/> <!-- Enchanted Stone Golem -->
+
+    <zone loc='85980 10492 -5400 -5100'/>
+    <zone loc='89420 11424 -5400 -5100'/>
+    <zone loc='89652 13040 -5400 -5100'/>
+    <zone loc='87664 14836 -5400 -5100'/>
+    <zone loc='85692 13784 -5400 -5100'/>
+  </territory>
+  
+  <territory name='oren29_2218_24' controller='default' start_active='true' max='13'>
+    <npc id='20563' count='5' respawn='24s' rand='5s'/> <!-- Manashen Gargoyle -->
+    <npc id='20564' count='4' respawn='24s' rand='5s'/> <!-- Enchanted Monstereye -->
+    <npc id='20565' count='4' respawn='24s' rand='5s'/> <!-- Enchanted Stone Golem -->
+
+    <zone loc='82402 10252 -5343 -5143'/>
+    <zone loc='84925 10418 -5343 -5143'/>
+    <zone loc='84940 10855 -5343 -5143'/>
+    <zone loc='85801 10823 -5343 -5143'/>
+    <zone loc='85857 12677 -5343 -5143'/>
+    <zone loc='84859 12656 -5343 -5143'/>
+    <zone loc='84879 13557 -5343 -5143'/>
+    <zone loc='81376 14063 -5343 -5143'/>
+  </territory>
+  
+  <territory name='oren29_2218_25' controller='default' start_active='true' max='11'>
+    <npc id='20564' count='3' respawn='24s' rand='5s'/> <!-- Enchanted Monstereye -->
+    <npc id='20565' count='3' respawn='24s' rand='5s'/> <!-- Enchanted Stone Golem -->
+    <npc id='20566' count='5' respawn='24s' rand='5s'/> <!-- Enchanted Iron Golem -->
+
+    <zone loc='80608 14032 -5348 -5148'/>
+    <zone loc='82848 14204 -5348 -5148'/>
+    <zone loc='82836 17716 -5348 -5148'/>
+    <zone loc='79636 16232 -5348 -5148'/>
+  </territory>
+  
+  <territory name='oren29_2218_26' controller='default' start_active='true' max='15'>
+    <npc id='20567' count='3' respawn='24s' rand='5s'/> <!-- Enchanted Gargoyle -->
+    <npc id='20566' count='5' respawn='24s' rand='5s'/> <!-- Enchanted Iron Golem -->
+    <npc id='20235' count='7' respawn='24s' rand='5s'/> <!-- Shackle -->
+
+    <zone loc='79664 16248 -5356 -5156'/>
+    <zone loc='85768 19076 -5356 -5156'/>
+    <zone loc='81972 22128 -5356 -5156'/>
+    <zone loc='79012 18196 -5356 -5156'/>
+  </territory>
+  
+  <territory name='oren29_2218_27' controller='default' start_active='true' max='12'>
+    <npc id='20565' count='4' respawn='24s' rand='5s'/> <!-- Enchanted Stone Golem -->
+    <npc id='20567' count='4' respawn='24s' rand='5s'/> <!-- Enchanted Gargoyle -->
+    <npc id='20235' count='4' respawn='24s' rand='5s'/> <!-- Shackle -->
+
+    <zone loc='87492 18724 -5360 -5160'/>
+    <zone loc='88196 21964 -5360 -5160'/>
+    <zone loc='85752 22296 -5360 -5160'/>
+    <zone loc='81996 22184 -5360 -5160'/>
+    <zone loc='85816 19128 -5360 -5160'/>
+  </territory>
+  
+  <territory name='oren29_2218_28' controller='default' start_active='true' max='9'>
+    <npc id='20564' count='3' respawn='24s' rand='5s'/> <!-- Enchanted Monstereye -->
+    <npc id='20565' count='3' respawn='24s' rand='5s'/> <!-- Enchanted Stone Golem -->
+    <npc id='20567' count='3' respawn='24s' rand='5s'/> <!-- Enchanted Gargoyle -->
+
+    <zone loc='87980 17520 -5368 -5068'/>
+    <zone loc='90184 18284 -5368 -5068'/>
+    <zone loc='89864 20844 -5368 -5068'/>
+    <zone loc='88228 21936 -5368 -5068'/>
+    <zone loc='87536 18752 -5368 -5068'/>
+  </territory>
+  
+  <territory name='oren29_2218_29' controller='default' start_active='true' max='13'>
+    <npc id='20564' count='4' respawn='24s' rand='5s'/> <!-- Enchanted Monstereye -->
+    <npc id='20565' count='4' respawn='24s' rand='5s'/> <!-- Enchanted Stone Golem -->
+    <npc id='20566' count='5' respawn='24s' rand='5s'/> <!-- Enchanted Iron Golem -->
+
+    <zone loc='91192 14192 -5436 -5236'/>
+    <zone loc='91420 16760 -5436 -5236'/>
+    <zone loc='90212 18308 -5436 -5236'/>
+    <zone loc='88008 17488 -5436 -5236'/>
+    <zone loc='87660 14836 -5436 -5236'/>
+    <zone loc='89680 13016 -5436 -5236'/>
+  </territory>
+  
+  <territory name='oren30_2218_05' controller='default' start_active='true' max='13'>
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='96652 6860 -3792 -3592'/>
+    <zone loc='98064 6516 -3792 -3592'/>
+    <zone loc='97996 10176 -3792 -3592'/>
+    <zone loc='96652 9572 -3792 -3592'/>
+  </territory>
+  
+  <territory name='oren30_2218_06' controller='default' start_active='true' max='28'>
+    <npc id='20569' count='5' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='5' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='6' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='92196 8776 -4008 -2708'/>
+    <zone loc='96640 9676 -4008 -2708'/>
+    <zone loc='97980 10272 -4008 -2708'/>
+    <zone loc='98048 18088 -4008 -2708'/>
+    <zone loc='94764 16956 -4008 -2708'/>
+    <zone loc='91924 11044 -4008 -2708'/>
+  </territory>
+  
+  <territory name='oren30_2218_06s' controller='default' start_active='true' max='18'>
+    <npc id='20569' count='3' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='4' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='95548 11520 -3720 -3120'/>
+    <zone loc='97332 13276 -3720 -3120'/>
+    <zone loc='94972 16864 -3720 -3120'/>
+    <zone loc='93984 13832 -3720 -3120'/>
+  </territory>
+  
+  <territory name='oren30_2218_07' controller='default' start_active='true' max='6'>
+    <npc id='20568' count='2' respawn='25s' rand='5s'/> <!-- Formor -->
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+
+    <zone loc='92912 19272 -3748 -3148'/>
+    <zone loc='93728 19796 -3748 -3148'/>
+    <zone loc='94420 24088 -3748 -3148'/>
+    <zone loc='91652 25852 -3748 -3148'/>
+    <zone loc='90904 21688 -3748 -3148'/>
+  </territory>
+  
+  <territory name='oren30_2218_07s' controller='default' start_active='true' max='8'>
+    <npc id='20568' count='3' respawn='25s' rand='5s'/> <!-- Formor -->
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+
+    <zone loc='93096 19640 -3684 -3284'/>
+    <zone loc='93488 22340 -3684 -3284'/>
+    <zone loc='92056 23380 -3684 -3284'/>
+    <zone loc='91340 21996 -3684 -3284'/>
+  </territory>
+  
+  <territory name='oren30_2218_08' controller='default' start_active='true' max='14'>
+    <npc id='20568' count='5' respawn='25s' rand='5s'/> <!-- Formor -->
+    <npc id='20569' count='5' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='4' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+
+    <zone loc='95148 25552 -3784 -3384'/>
+    <zone loc='98068 25752 -3784 -3384'/>
+    <zone loc='98080 29676 -3784 -3384'/>
+    <zone loc='94324 29120 -3784 -3384'/>
+    <zone loc='92608 26500 -3784 -3384'/>
+  </territory>
+  
+  <territory name='oren30_2218_09' controller='default' start_active='true' max='15'>
+    <npc id='20568' count='5' respawn='25s' rand='5s'/> <!-- Formor -->
+    <npc id='20569' count='5' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='5' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+
+    <zone loc='86740 27880 -3740 -3440'/>
+    <zone loc='92640 26572 -3740 -3440'/>
+    <zone loc='94212 28916 -3740 -3440'/>
+    <zone loc='89740 30084 -3740 -3440'/>
+    <zone loc='87108 29572 -3740 -3440'/>
+  </territory>
+  
+  <territory name='oren30_2218_10' controller='default' start_active='true' max='7'>
+    <npc id='20568' count='2' respawn='25s' rand='5s'/> <!-- Formor -->
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+
+    <zone loc='85748 24320 -3760 -3460'/>
+    <zone loc='91192 23184 -3760 -3460'/>
+    <zone loc='91656 25812 -3760 -3460'/>
+    <zone loc='85548 26744 -3760 -3460'/>
+  </territory>
+  
+  <territory name='oren30_2218_10s' controller='default' start_active='true' max='7'>
+    <npc id='20568' count='3' respawn='25s' rand='5s'/> <!-- Formor -->
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+
+    <zone loc='87092 24592 -3684 -3484'/>
+    <zone loc='89076 24576 -3684 -3484'/>
+    <zone loc='90572 24784 -3684 -3484'/>
+    <zone loc='89820 25680 -3684 -3484'/>
+    <zone loc='86984 25836 -3684 -3484'/>
+  </territory>
+  
+  <territory name='oren30_2218_11' controller='default' start_active='true' max='11'>
+    <npc id='20568' count='4' respawn='25s' rand='5s'/> <!-- Formor -->
+    <npc id='20569' count='3' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='4' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+
+    <zone loc='81420 28160 -3780 -3480'/>
+    <zone loc='86660 27900 -3780 -3480'/>
+    <zone loc='87040 29600 -3780 -3480'/>
+    <zone loc='85056 29872 -3780 -3480'/>
+  </territory>
+  
+  <territory name='oren30_2218_12' controller='default' start_active='true' max='10'>
+    <npc id='20568' count='3' respawn='25s' rand='5s'/> <!-- Formor -->
+    <npc id='20569' count='3' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='4' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+
+    <zone loc='77664 27740 -3776 -3376'/>
+    <zone loc='80084 27544 -3776 -3376'/>
+    <zone loc='82684 28776 -3776 -3376'/>
+    <zone loc='78952 29596 -3776 -3376'/>
+    <zone loc='77084 28936 -3776 -3376'/>
+  </territory>
+  
+  <territory name='oren30_2218_13' controller='default' start_active='true' max='16'>
+    <npc id='20568' count='2' respawn='25s' rand='5s'/> <!-- Formor -->
+    <npc id='20569' count='3' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='79824 22932 -3768 -3468'/>
+    <zone loc='84808 24488 -3768 -3468'/>
+    <zone loc='84668 26676 -3768 -3468'/>
+    <zone loc='81832 27084 -3768 -3468'/>
+    <zone loc='78752 26572 -3768 -3468'/>
+  </territory>
+  
+  <territory name='oren30_2218_13s' controller='default' start_active='true' max='14'>
+    <npc id='20569' count='3' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='81212 23856 -3656 -3456'/>
+    <zone loc='84432 24668 -3656 -3456'/>
+    <zone loc='83220 26232 -3656 -3456'/>
+    <zone loc='81664 26016 -3656 -3456'/>
+  </territory>
+  
+  <territory name='oren30_2218_14' controller='default' start_active='true' max='19'>
+    <npc id='20569' count='4' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='4' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='78116 20592 -3796 -3396'/>
+    <zone loc='79828 22864 -3796 -3396'/>
+    <zone loc='78720 26556 -3796 -3396'/>
+    <zone loc='75208 27024 -3796 -3396'/>
+    <zone loc='74408 24180 -3796 -3396'/>
+    <zone loc='75148 20488 -3796 -3396'/>
+  </territory>
+  
+  <territory name='oren30_2218_14s' controller='default' start_active='true' max='11'>
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='76124 21648 -3784 -3384'/>
+    <zone loc='78024 21444 -3784 -3384'/>
+    <zone loc='78024 23672 -3784 -3384'/>
+    <zone loc='75892 25312 -3784 -3384'/>
+  </territory>
+  
+  <territory name='oren30_2218_15' controller='default' start_active='true' max='11'>
+    <npc id='20569' count='3' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='73616 14628 -4136 -3536'/>
+    <zone loc='77552 15676 -4136 -3536'/>
+    <zone loc='78108 20588 -4136 -3536'/>
+    <zone loc='75168 20496 -4136 -3536'/>
+    <zone loc='73480 18608 -4136 -3536'/>
+  </territory>
+  
+  <territory name='oren30_2218_15s' controller='default' start_active='true' max='16'>
+    <npc id='20569' count='4' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='75268 16644 -4060 -3560'/>
+    <zone loc='77324 16176 -4060 -3560'/>
+    <zone loc='77516 19112 -4060 -3560'/>
+    <zone loc='74696 18908 -4060 -3560'/>
+  </territory>
+  
+  <territory name='oren30_2218_16' controller='default' start_active='true' max='20'>
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='4' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+    <npc id='20572' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear High Warrior -->
+
+    <zone loc='74588 7416 -4012 -3412'/>
+    <zone loc='79248 11704 -4012 -3412'/>
+    <zone loc='76844 15436 -4012 -3412'/>
+    <zone loc='74612 14840 -4012 -3412'/>
+  </territory>
+  
+  <territory name='oren30_2218_16s' controller='default' start_active='true' max='10'>
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='74840 9208 -3728 -3528'/>
+    <zone loc='75988 10004 -3728 -3528'/>
+    <zone loc='76172 12848 -3728 -3528'/>
+    <zone loc='74808 12932 -3728 -3528'/>
+  </territory>
+  
+  <territory name='oren30_2218_17' controller='default' start_active='true' max='14'>
+    <npc id='20569' count='3' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+    <npc id='20572' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear High Warrior -->
+
+    <zone loc='74760 7460 -3652 -3052'/>
+    <zone loc='77336 3776 -3652 -3052'/>
+    <zone loc='82516 8340 -3652 -3052'/>
+    <zone loc='78816 11160 -3652 -3052'/>
+  </territory>
+  
+  <territory name='oren30_2218_17s' controller='default' start_active='true' max='19'>
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='4' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+    <npc id='20572' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear High Warrior -->
+
+    <zone loc='76964 5248 -3564 -3064'/>
+    <zone loc='78868 6520 -3564 -3064'/>
+    <zone loc='78084 9956 -3564 -3064'/>
+    <zone loc='75384 7524 -3564 -3064'/>
+  </territory>
+  
+  <territory name='oren30_2218_18' controller='default' start_active='true' max='9'>
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='1' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+    <npc id='20572' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear High Warrior -->
+
+    <zone loc='78688 3120 -3156 -2656'/>
+    <zone loc='84184 2100 -3156 -2656'/>
+    <zone loc='84432 6744 -3156 -2656'/>
+    <zone loc='81416 5976 -3156 -2656'/>
+  </territory>
+  
+  <territory name='oren30_2218_18s' controller='default' start_active='true' max='5'>
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20572' count='1' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear High Warrior -->
+
+    <zone loc='81272 2980 -3052 -2852'/>
+    <zone loc='82572 2668 -3052 -2852'/>
+    <zone loc='83236 4192 -3052 -2852'/>
+    <zone loc='81148 5396 -3052 -2852'/>
+  </territory>
+  
+  <territory name='oren30_2218_19' controller='default' start_active='true' max='19'>
+    <npc id='20569' count='3' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='4' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='4' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='86480 1944 -3048 -2548'/>
+    <zone loc='90504 2972 -3048 -2548'/>
+    <zone loc='87476 5728 -3048 -2548'/>
+    <zone loc='85944 6540 -3048 -2548'/>
+  </territory>
+  
+  <territory name='oren30_2218_20' controller='default' start_active='true' max='9'>
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='1' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='88504 6496 -3652 -2952'/>
+    <zone loc='91808 5960 -3652 -2952'/>
+    <zone loc='91436 8904 -3652 -2952'/>
+    <zone loc='85928 8792 -3652 -2952'/>
+    <zone loc='85788 8064 -3652 -2952'/>
+  </territory>
+  
+  <territory name='oren30_2218_20s' controller='default' start_active='true' max='10'>
+    <npc id='20569' count='2' respawn='25s' rand='5s'/> <!-- Formor Elder -->
+    <npc id='20570' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='2' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='87572 7484 -3484 -3084'/>
+    <zone loc='90528 7604 -3484 -3084'/>
+    <zone loc='91048 8604 -3484 -3084'/>
+    <zone loc='87888 8520 -3484 -3084'/>
+  </territory>
+  
+  <territory name='oren30_2218_21' controller='default' start_active='true' max='12'>
+    <npc id='20570' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='91580 3496 -3124 -2724'/>
+    <zone loc='92688 3848 -3124 -2724'/>
+    <zone loc='92752 5820 -3124 -2724'/>
+    <zone loc='88564 6468 -3124 -2724'/>
+  </territory>
+  
+  <territory name='oren30_2218_22' controller='default' start_active='true' max='12'>
+    <npc id='20570' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear -->
+    <npc id='20571' count='3' respawn='25s' rand='5s'/> <!-- Tarlk Bugbear Warrior -->
+
+    <zone loc='92724 4372 -3260 -2860'/>
+    <zone loc='94848 5820 -3260 -2860'/>
+    <zone loc='95724 7476 -3260 -2860'/>
+    <zone loc='95068 8624 -3260 -2860'/>
+    <zone loc='92784 5780 -3260 -2860'/>
+  </territory>
+  
+  <territory name='oren31_2217_01' controller='default' start_active='true' max='8'>
+    <npc id='20575' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='89692 -19820 -2124 -1824'/>
+    <zone loc='90856 -20476 -2124 -1824'/>
+    <zone loc='91644 -18468 -2124 -1824'/>
+    <zone loc='90920 -18228 -2124 -1824'/>
+  </territory>
+  
+  <territory name='oren31_2217_02' controller='default' start_active='true' max='2'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20576' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+
+    <zone loc='90932 -18216 -2128 -1828'/>
+    <zone loc='91660 -18456 -2128 -1828'/>
+    <zone loc='92380 -17952 -2128 -1828'/>
+    <zone loc='92048 -16452 -2128 -1828'/>
+  </territory>
+  
+  <territory name='oren31_2217_03' controller='default' start_active='true' max='9'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20575' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='91772 -15004 -2252 -1952'/>
+    <zone loc='92244 -17300 -2252 -1952'/>
+    <zone loc='93716 -16044 -2252 -1952'/>
+    <zone loc='92852 -15112 -2252 -1952'/>
+  </territory>
+  
+  <territory name='oren31_2217_04' controller='default' start_active='true' max='9'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20575' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='92744 -18084 -2204 -1704'/>
+    <zone loc='94364 -18652 -2204 -1704'/>
+    <zone loc='95076 -16616 -2204 -1704'/>
+    <zone loc='93716 -16056 -2204 -1704'/>
+    <zone loc='92552 -17040 -2204 -1704'/>
+  </territory>
+  
+  <territory name='oren31_2217_05' controller='default' start_active='true' max='12'>
+    <npc id='20161' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20575' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='91260 -20516 -2184 -1484'/>
+    <zone loc='93140 -21468 -2184 -1484'/>
+    <zone loc='94292 -18660 -2184 -1484'/>
+    <zone loc='92736 -18116 -2184 -1484'/>
+    <zone loc='91720 -19060 -2184 -1484'/>
+  </territory>
+  
+  <territory name='oren31_2217_06' controller='default' start_active='true' max='12'>
+    <npc id='20161' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20576' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='20575' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='95884 -20992 -2964 -2464'/>
+    <zone loc='96456 -21652 -2964 -2464'/>
+    <zone loc='98048 -22024 -2964 -2464'/>
+    <zone loc='98008 -19376 -2964 -2464'/>
+    <zone loc='95740 -19432 -2964 -2464'/>
+  </territory>
+  
+  <territory name='oren31_2217_07' controller='default' start_active='true' max='10'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20575' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='96096 -19444 -2852 -2552'/>
+    <zone loc='98020 -19408 -2852 -2552'/>
+    <zone loc='98104 -16756 -2852 -2552'/>
+    <zone loc='96536 -17508 -2852 -2552'/>
+  </territory>
+  
+  <territory name='oren31_2217_08' controller='default' start_active='true' max='14'>
+    <npc id='20161' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20575' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='98092 -15088 -3264 -2664'/>
+    <zone loc='98084 -12548 -3264 -2664'/>
+    <zone loc='94160 -12632 -3264 -2664'/>
+    <zone loc='96440 -15184 -3264 -2664'/>
+  </territory>
+  
+  <territory name='oren31_2217_09' controller='default' start_active='true' max='15'>
+    <npc id='20161' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20575' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='20241' count='3' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='93964 -12092 -3568 -2968'/>
+    <zone loc='98096 -12536 -3568 -2968'/>
+    <zone loc='98072 -6692 -3568 -2968'/>
+    <zone loc='96400 -7184 -3568 -2968'/>
+    <zone loc='95248 -7928 -3568 -2968'/>
+    <zone loc='93428 -10528 -3568 -2968'/>
+  </territory>
+  
+  <territory name='oren31_2217_09s' controller='default' start_active='true' max='8'>
+    <npc id='20575' count='3' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='3' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='96412 -11744 -3364 -3164'/>
+    <zone loc='97864 -11876 -3364 -3164'/>
+    <zone loc='97324 -7992 -3364 -3164'/>
+    <zone loc='95144 -10072 -3364 -3164'/>
+  </territory>
+  
+  <territory name='oren31_2217_10' controller='default' start_active='true' max='13'>
+    <npc id='20573' count='6' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='4' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='3' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='94212 -4708 -3912 -3212'/>
+    <zone loc='98008 -4652 -3912 -3212'/>
+    <zone loc='98032 -172 -3912 -3212'/>
+    <zone loc='91276 -224 -3912 -3212'/>
+  </territory>
+  
+  <territory name='oren31_2217_10s' controller='default' start_active='true' max='10'>
+    <npc id='20573' count='3' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='4' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='3' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='94888 -2316 -3780 -3480'/>
+    <zone loc='97952 -3120 -3780 -3480'/>
+    <zone loc='97964 -296 -3780 -3480'/>
+    <zone loc='94796 -344 -3780 -3480'/>
+  </territory>
+  
+  <territory name='oren31_2217_11' controller='default' start_active='true' max='18'>
+    <npc id='20573' count='7' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='5' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='6' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='87088 -1720 -3784 -3184'/>
+    <zone loc='94156 -4692 -3784 -3184'/>
+    <zone loc='91232 -240 -3784 -3184'/>
+    <zone loc='87772 -240 -3784 -3184'/>
+  </territory>
+  
+  <territory name='oren31_2217_12' controller='default' start_active='true' max='11'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20574' count='2' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='88924 -10936 -3056 -2056'/>
+    <zone loc='90896 -11060 -3056 -2056'/>
+    <zone loc='87156 -7572 -3056 -2056'/>
+    <zone loc='86640 -7748 -3056 -2056'/>
+  </territory>
+  
+  <territory name='oren31_2217_13' controller='default' start_active='true' max='11'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20573' count='2' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='88176 -7032 -3416 -2716'/>
+    <zone loc='90836 -8872 -3416 -2716'/>
+    <zone loc='92224 -7040 -3416 -2716'/>
+    <zone loc='90996 -4104 -3416 -2716'/>
+    <zone loc='90032 -3584 -3416 -2716'/>
+  </territory>
+  
+  <territory name='oren31_2217_13s' controller='default' start_active='true' max='6'>
+    <npc id='20574' count='3' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='3' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='88404 -6876 -3256 -2956'/>
+    <zone loc='90192 -7876 -3256 -2956'/>
+    <zone loc='91136 -6148 -3256 -2956'/>
+    <zone loc='89612 -4740 -3256 -2956'/>
+  </territory>
+  
+  <territory name='oren31_2217_14' controller='default' start_active='true' max='15'>
+    <npc id='20161' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20573' count='2' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='2' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='3' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='87064 -6388 -3556 -3056'/>
+    <zone loc='88160 -7024 -3556 -3056'/>
+    <zone loc='90084 -3532 -3556 -3056'/>
+    <zone loc='86224 -2748 -3556 -3056'/>
+  </territory>
+  
+  <territory name='oren31_2217_15' controller='default' start_active='true' max='13'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20573' count='2' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='2' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='85596 -7840 -3572 -2772'/>
+    <zone loc='87040 -6392 -3572 -2772'/>
+    <zone loc='86220 -2732 -3572 -2772'/>
+    <zone loc='84700 -3000 -3572 -2772'/>
+    <zone loc='81696 -8144 -3572 -2772'/>
+  </territory>
+  
+  <territory name='oren31_2217_15s' controller='default' start_active='true' max='4'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20573' count='1' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='1' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='1' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='83184 -6364 -3340 -3040'/>
+    <zone loc='87016 -6072 -3340 -3040'/>
+    <zone loc='86360 -3672 -3340 -3040'/>
+    <zone loc='84972 -3596 -3340 -3040'/>
+  </territory>
+  
+  <territory name='oren31_2217_16' controller='default' start_active='true' max='10'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20573' count='1' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='1' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='1' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='79844 -8076 -3348 -2748'/>
+    <zone loc='81664 -8092 -3348 -2748'/>
+    <zone loc='84036 -4000 -3348 -2748'/>
+    <zone loc='79668 -3640 -3348 -2748'/>
+    <zone loc='78520 -6272 -3348 -2748'/>
+  </territory>
+  
+  <territory name='oren31_2217_16s' controller='default' start_active='true' max='4'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20573' count='1' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='1' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='1' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='79472 -5980 -3288 -2888'/>
+    <zone loc='81092 -6616 -3288 -2888'/>
+    <zone loc='82984 -4196 -3288 -2888'/>
+    <zone loc='80592 -3868 -3288 -2888'/>
+  </territory>
+  
+  <territory name='oren31_2217_18' controller='default' start_active='true' max='7'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20573' count='2' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='2' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='73900 -7412 -3084 -2784'/>
+    <zone loc='75772 -7324 -3084 -2784'/>
+    <zone loc='75788 -5008 -3084 -2784'/>
+    <zone loc='74932 -4540 -3084 -2784'/>
+    <zone loc='73108 -4432 -3084 -2784'/>
+  </territory>
+  
+  <territory name='oren31_2217_19' controller='default' start_active='true' max='3'>
+    <npc id='20573' count='1' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='1' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='1' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='72932 -3336 -3788 -3488'/>
+    <zone loc='74448 -2552 -3788 -3488'/>
+    <zone loc='76420 -188 -3788 -3488'/>
+    <zone loc='73028 -196 -3788 -3488'/>
+    <zone loc='72528 -1432 -3788 -3488'/>
+  </territory>
+  
+  <territory name='oren31_2217_19s' controller='default' start_active='true' max='4'>
+    <npc id='20573' count='2' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='1' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='1' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='73664 -2792 -3768 -3568'/>
+    <zone loc='74348 -2504 -3768 -3568'/>
+    <zone loc='76248 -268 -3768 -3568'/>
+    <zone loc='73892 -260 -3768 -3568'/>
+  </territory>
+  
+  <territory name='oren31_2217_20' controller='default' start_active='true' max='10'>
+    <npc id='20573' count='4' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='4' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='74508 -2516 -3792 -3492'/>
+    <zone loc='76880 -3604 -3792 -3492'/>
+    <zone loc='79808 -2284 -3792 -3492'/>
+    <zone loc='80392 -224 -3792 -3492'/>
+    <zone loc='76432 -204 -3792 -3492'/>
+  </territory>
+  
+  <territory name='oren31_2217_21' controller='default' start_active='true' max='10'>
+    <npc id='20573' count='4' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='4' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='79816 -2284 -3832 -3432'/>
+    <zone loc='82932 -2792 -3832 -3432'/>
+    <zone loc='86124 -240 -3832 -3432'/>
+    <zone loc='80392 -224 -3832 -3432'/>
+  </territory>
+  
+  <territory name='oren31_2217_22' controller='default' start_active='true' max='9'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20575' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20574' count='1' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='93696 -7784 -3612 -3112'/>
+    <zone loc='94404 -7732 -3612 -3112'/>
+    <zone loc='95284 -6048 -3612 -3112'/>
+    <zone loc='92440 -4908 -3612 -3112'/>
+  </territory>
+  
+  <territory name='oren31_2217_23' controller='default' start_active='true' max='2'>
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20574' count='1' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+
+    <zone loc='91872 -9932 -3276 -2676'/>
+    <zone loc='93124 -9972 -3276 -2676'/>
+    <zone loc='94244 -7784 -3276 -2676'/>
+    <zone loc='93724 -7828 -3276 -2676'/>
+  </territory>
+  
+  <territory name='oren31_2217_24' controller='default' start_active='true' max='8'>
+    <npc id='20575' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20574' count='1' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='92892 -13144 -2888 -2188'/>
+    <zone loc='93472 -12792 -2888 -2188'/>
+    <zone loc='92776 -9988 -2888 -2188'/>
+    <zone loc='91892 -9964 -2888 -2188'/>
+    <zone loc='92256 -12624 -2888 -2188'/>
+  </territory>  
+  
+  <territory name='oren31_2217_25' controller='default' start_active='true' max='9'>
+    <npc id='20574' count='1' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20161' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20576' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='93552 -15024 -2416 -1816'/>
+    <zone loc='95652 -16220 -2416 -1816'/>
+    <zone loc='96288 -16124 -2416 -1816'/>
+    <zone loc='93528 -12800 -2416 -1816'/>
+    <zone loc='92904 -13188 -2416 -1816'/>
+  </territory>
+  
+  <territory name='oren31_2217_26' controller='default' start_active='true' max='3'>
+    <npc id='20575' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20574' count='1' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20576' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+
+    <zone loc='95696 -17072 -2332 -1932'/>
+    <zone loc='98052 -16328 -2332 -1932'/>
+    <zone loc='98048 -15916 -2332 -1932'/>
+    <zone loc='95636 -16200 -2332 -1932'/>
+  </territory>
+  
+  <territory name='oren31_2218_03' controller='default' start_active='true' max='10'>
+    <npc id='20573' count='4' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='4' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='88732 64 -3792 -3292'/>
+    <zone loc='93464 100 -3792 -3292'/>
+    <zone loc='93260 3220 -3792 -3292'/>
+    <zone loc='88732 1164 -3792 -3292'/>
+  </territory>
+  
+  <territory name='oren31_2218_04' controller='default' start_active='true' max='12'>
+    <npc id='20573' count='5' respawn='41s' rand='5s'/> <!-- Tarlk Basilisk -->
+    <npc id='20574' count='4' respawn='41s' rand='5s'/> <!-- Elder Tarlk Basilisk  -->
+    <npc id='20241' count='3' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='93504 120 -3780 -3480'/>
+    <zone loc='98056 44 -3780 -3480'/>
+    <zone loc='98116 4884 -3780 -3480'/>
+    <zone loc='96020 4616 -3780 -3480'/>
+    <zone loc='93264 3452 -3780 -3480'/>
+  </territory>
+  
+  <territory name='oren31_2317_01' controller='default' start_active='true' max='16'>
+    <npc id='20161' count='3' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20575' count='3' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='4' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='98444 -22300 -3208 -2808'/>
+    <zone loc='100328 -21528 -3208 -2808'/>
+    <zone loc='102040 -19108 -3208 -2808'/>
+    <zone loc='100120 -17252 -3208 -2808'/>
+    <zone loc='98460 -16908 -3208 -2808'/>
+  </territory>
+  
+  <territory name='oren31_2317_02' controller='default' start_active='true' max='13'>
+    <npc id='20161' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20575' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20241' count='3' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='100740 -15884 -3468 -2968'/>
+    <zone loc='102008 -13912 -3468 -2968'/>
+    <zone loc='100856 -11412 -3468 -2968'/>
+    <zone loc='98512 -9580 -3468 -2968'/>
+    <zone loc='98480 -14224 -3468 -2968'/>
+  </territory>
+  
+  <territory name='oren31_2317_02s' controller='default' start_active='true' max='4'>
+    <npc id='20576' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+
+    <zone loc='100080 -15144 -3472 -3072'/>
+    <zone loc='101348 -14300 -3472 -3072'/>
+    <zone loc='100832 -11864 -3472 -3072'/>
+    <zone loc='99724 -12616 -3472 -3072'/>
+  </territory>
+  
+  <territory name='oren31_2317_03' controller='default' start_active='true' max='14'>
+    <npc id='20575' count='4' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='4' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='102008 -13888 -3392 -2692'/>
+    <zone loc='104392 -11652 -3392 -2692'/>
+    <zone loc='104408 -10196 -3392 -2692'/>
+    <zone loc='102868 -9900 -3392 -2692'/>
+    <zone loc='100960 -11428 -3392 -2692'/>
+  </territory>
+  
+  <territory name='oren31_2317_04' controller='default' start_active='true' max='13'>
+    <npc id='20241' count='3' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='20576' count='4' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='102848 -9896 -3296 -2696'/>
+    <zone loc='104420 -10188 -3296 -2696'/>
+    <zone loc='102632 -7164 -3296 -2696'/>
+    <zone loc='101056 -7208 -3296 -2696'/>
+  </territory>
+  
+  <territory name='oren31_2317_05' controller='default' start_active='true' max='10'>
+    <npc id='20161' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum -->
+    <npc id='20575' count='1' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20241' count='1' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='100940 -11396 -3484 -2984'/>
+    <zone loc='102884 -9924 -3484 -2984'/>
+    <zone loc='101012 -7196 -3484 -2984'/>
+    <zone loc='98516 -9572 -3484 -2984'/>
+  </territory>
+  
+  <territory name='oren31_2317_05s' controller='default' start_active='true' max='4'>
+    <npc id='20575' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+
+    <zone loc='100220 -8420 -3492 -3092'/>
+    <zone loc='100560 -10572 -3492 -3092'/>
+    <zone loc='102136 -10212 -3492 -3092'/>
+    <zone loc='100988 -7888 -3492 -3092'/>
+  </territory>
+  
+  <territory name='oren31_2317_06' controller='default' start_active='true' max='12'>
+    <npc id='20575' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Warrior -->
+    <npc id='20576' count='2' respawn='41s' rand='5s'/> <!-- Oel Mahum Witch Doctor -->
+    <npc id='20241' count='2' respawn='41s' rand='5s'/> <!-- Hunter Gargoyle -->
+    <npc id='21261' count='1' respawn='41s' rand='5s'/> <!-- Ol Mahum Transcender -->
+
+    <zone loc='98500 -9560 -3620 -3220'/>
+    <zone loc='101016 -7168 -3620 -3220'/>
+    <zone loc='100604 -4804 -3620 -3220'/>
+    <zone loc='98504 -6416 -3620 -3220'/>
+  </territory>
+  
+  <territory name='oren28_2219_01' controller='default' start_active='true' max='14'>
+    <npc id='20587' count='2' respawn='40s' rand='10s'/> <!-- Timak Orc Shaman -->
+    <npc id='20588' count='2' respawn='40s' rand='10s'/> <!-- Timak Orc Overlord -->
+    <npc id='20586' count='2' respawn='40s' rand='10s'/> <!-- Timak Orc Warrior -->
+
+    <zone loc='69452 36716 -3664 -3064'/>
+    <zone loc='70752 36332 -3664 -3064'/>
+    <zone loc='73856 39204 -3664 -3064'/>
+    <zone loc='70760 40964 -3664 -3064'/>
+  </territory>
+
+  <territory name='oren02_qm2119_00' controller='default_maker' start_active='true' max='15'>
+    <npc id='18342' count='15' respawn='15s' rand='0'/> <!-- Gremlin -->
+
+    <zone loc='44656 40896 -3552 -3352'/>
+    <zone loc='47488 41148 -3552 -3352'/>
+    <zone loc='46476 41884 -3552 -3352'/>
+    <zone loc='45904 41904 -3552 -3352'/>
+  </territory>
+
+  <territory name='oren23_qm2018_00' controller='default_maker' start_active='true' max='15'>
+    <npc id='18342' count='15' respawn='15s' rand='0'/> <!-- Gremlin -->
+
+    <zone loc='27820 10364 -4268 -4068'/>
+    <zone loc='29036 10356 -4268 -4068'/>
+    <zone loc='29032 11724 -4268 -4068'/>
+    <zone loc='27856 11720 -4268 -4068'/>
+  </territory>
+  
+
+  <territory name='oren01_qm1720_01' controller='default_maker' start_active='true' max='10'>
+    <npc id='27054' count='10' respawn='35s' rand='0'/> <!-- Umbar Orc -->
+
+    <zone loc='-75020 81880 -3496 -3096'/>
+    <zone loc='-73764 81816 -3496 -3096'/>
+    <zone loc='-73744 84516 -3496 -3096'/>
+    <zone loc='-74916 84452 -3496 -3096'/>
+  </territory>
+
+  <territory name='oren01_qm1819_01' controller='default_maker' start_active='true' max='6'>
+    <npc id='27036' count='1' respawn='8m' rand='0' prvt='27037 1 240s;27037 1 240s;27037 1 240s;27037 1 240s;' /> <!-- Calpico [Calpico's Goons; Calpico's Goons; Calpico's Goons; Calpico's Goons; ] -->
+
+    <zone loc='-52264 39452 -3476 -2976'/>
+    <zone loc='-50628 40272 -3476 -2976'/>
+    <zone loc='-50824 41952 -3476 -2976'/>
+    <zone loc='-52696 42072 -3476 -2976'/>
+  </territory>
+
+  <territory name='oren01_qm1819_02' controller='default_maker' start_active='true' max='1'>
+    <npc id='27022' count='1' respawn='50s' rand='15s'/> <!-- Merkenis -->
+
+    <zone loc='-48140 48206 -5774 -5494'/>
+    <zone loc='-46647 48210 -5774 -5494'/>
+    <zone loc='-46643 50587 -5774 -5494'/>
+    <zone loc='-48104 50586 -5774 -5494'/>
+  </territory>
+
+  <territory name='oren01_qm1820_01' controller='default_maker' start_active='true' max='15'>
+    <npc id='27070' count='15' respawn='3m' rand='0'/> <!-- Tumran Orc Brigand -->
+
+    <zone loc='-48196 72432 -3632 -2932'/>
+    <zone loc='-46160 72964 -3632 -2932'/>
+    <zone loc='-45760 76584 -3632 -2932'/>
+    <zone loc='-48548 80216 -3632 -2932'/>
+    <zone loc='-51460 80708 -3632 -2932'/>
+    <zone loc='-52588 77876 -3632 -2932'/>
+  </territory>
+
+  <territory name='oren01_qm1918_01' controller='default_maker' start_active='true' max='8'>
+    <npc id='27024' count='8' respawn='3m' rand='0'/> <!-- Undead Priest -->
+
+    <zone loc='-15080 150008 -3472 -2972'/>
+    <zone loc='-11520 147780 -3472 -2972'/>
+    <zone loc='-9940 149576 -3472 -2972'/>
+    <zone loc='-13964 151396 -3472 -2972'/>
+  </territory>
+
+  <territory name='oren01_qm1919_01' controller='default_maker' start_active='true' max='1'>
+    <npc id='27079' count='1' respawn='3m' rand='0'/> <!-- Black Willow Lurker -->
+
+    <zone loc='-13224 40592 -3904 -3504'/>
+    <zone loc='-11400 40768 -3904 -3504'/>
+    <zone loc='-11996 41948 -3904 -3504'/>
+    <zone loc='-13312 41696 -3904 -3504'/>
+  </territory>
+
+  <territory name='oren01_qm1919_02' controller='default_maker' start_active='true' max='1'>
+    <npc id='27079' count='1' respawn='3m' rand='0'/> <!-- Black Willow Lurker -->
+
+    <zone loc='-11936 44640 -3872 -3472'/>
+    <zone loc='-11076 44696 -3872 -3472'/>
+    <zone loc='-11052 45932 -3872 -3472'/>
+    <zone loc='-12028 46368 -3872 -3472'/>
+    <zone loc='-12388 45408 -3872 -3472'/>
+  </territory>
+
+  <territory name='oren01_qm1919_03' controller='default_maker' start_active='true' max='1'>
+    <npc id='27079' count='1' respawn='3m' rand='0'/> <!-- Black Willow Lurker -->
+
+    <zone loc='-16296 48176 -3848 -3448'/>
+    <zone loc='-14976 48072 -3848 -3448'/>
+    <zone loc='-14864 49388 -3848 -3448'/>
+    <zone loc='-16248 49484 -3848 -3448'/>
+  </territory>
+
+  <territory name='oren01_qm1919_04' controller='default_maker' start_active='true' max='1'>
+    <npc id='27079' count='1' respawn='3m' rand='0'/> <!-- Black Willow Lurker -->
+
+    <zone loc='-19320 43592 -3880 -3480'/>
+    <zone loc='-17980 43320 -3880 -3480'/>
+    <zone loc='-18084 44700 -3880 -3480'/>
+    <zone loc='-19332 44768 -3880 -3480'/>
+  </territory>
+
+  <territory name='oren01_qm1919_05' controller='default_maker' start_active='true' max='1'>
+    <npc id='27079' count='1' respawn='3m' rand='0'/> <!-- Black Willow Lurker -->
+
+    <zone loc='-20924 47988 -3860 -3460'/>
+    <zone loc='-20108 47912 -3860 -3460'/>
+    <zone loc='-19828 48644 -3860 -3460'/>
+    <zone loc='-20384 49320 -3860 -3460'/>
+    <zone loc='-21288 48860 -3860 -3460'/>
+  </territory>
+
+  <territory name='oren01_qm1919_06' controller='default_maker' start_active='true' max='1'>
+    <npc id='27079' count='1' respawn='3m' rand='0'/> <!-- Black Willow Lurker -->
+
+    <zone loc='-25600 48832 -3844 -3444'/>
+    <zone loc='-23988 49036 -3844 -3444'/>
+    <zone loc='-24000 50368 -3844 -3444'/>
+    <zone loc='-25744 50348 -3844 -3444'/>
+  </territory>
+
+  <territory name='oren01_qm1919_07' controller='default_maker' start_active='true' max='1'>
+    <npc id='27079' count='1' respawn='3m' rand='0'/> <!-- Black Willow Lurker -->
+
+    <zone loc='-25976 54092 -3844 -3444'/>
+    <zone loc='-24904 54284 -3844 -3444'/>
+    <zone loc='-24824 55444 -3844 -3444'/>
+    <zone loc='-25860 55584 -3844 -3444'/>
+  </territory>
+
+  <territory name='oren01_qm1919_08' controller='default_maker' start_active='true' max='1'>
+    <npc id='27079' count='1' respawn='3m' rand='0'/> <!-- Black Willow Lurker -->
+
+    <zone loc='-21980 56384 -3852 -3452'/>
+    <zone loc='-20652 56644 -3852 -3452'/>
+    <zone loc='-21272 58064 -3852 -3452'/>
+    <zone loc='-22292 57840 -3852 -3452'/>
+  </territory>
+
+  <territory name='oren01_qm1919_09' controller='default_maker' start_active='true' max='1'>
+    <npc id='27079' count='1' respawn='3m' rand='0'/> <!-- Black Willow Lurker -->
+
+    <zone loc='-19752 52820 -3868 -3468'/>
+    <zone loc='-18364 52744 -3868 -3468'/>
+    <zone loc='-18036 54216 -3868 -3468'/>
+    <zone loc='-19544 54244 -3868 -3468'/>
+  </territory>
+
+  <territory name='oren01_qm1919_10' controller='default_maker' start_active='true' max='13'>
+    <npc id='27110' count='1' respawn='3m' rand='0' prvt='27111 1 60s;27111 1 60s;27111 1 60s;27111 1 60s;27111 1 60s;27111 1 60s;' /> <!-- Shyslassys [Cave Basilisk; Cave Basilisk; Cave Basilisk; Cave Basilisk; Cave Basilisk; Cave Basilisk; ] -->
+
+    <zone loc='-3484 52655 -3532 -3332'/>
+    <zone loc='-2732 52765 -3532 -3332'/>
+    <zone loc='-2760 53268 -3532 -3332'/>
+    <zone loc='-3484 53103 -3532 -3332'/>
+  </territory>
+
+  <territory name='oren01_qm1919_11' controller='default_maker' start_active='true' max='5'>
+    <npc id='27118' count='5' respawn='3m' rand='0'/> <!-- Black Willow -->
+
+    <zone loc='-12208 57184 -3808 -3608'/>
+    <zone loc='-10604 56900 -3808 -3608'/>
+    <zone loc='-8428 57860 -3808 -3608'/>
+    <zone loc='-8736 58104 -3808 -3608'/>
+    <zone loc='-11212 58436 -3808 -3608'/>
+    <zone loc='-12388 58128 -3808 -3608'/>
+  </territory>
+
+  <territory name='oren01_qm2019_01' controller='default_maker' start_active='true' max='1'>
+    <npc id='27059' count='1' respawn='3m' rand='0'/> <!-- Uoph -->
+
+    <zone loc='20920 41452 -3760 -3360'/>
+    <zone loc='27528 37580 -3760 -3360'/>
+    <zone loc='28824 40800 -3760 -3360'/>
+    <zone loc='25184 43884 -3760 -3360'/>
+    <zone loc='23028 44644 -3760 -3360'/>
+  </territory>
+
+  <territory name='oren01_qm2019_02' controller='default_maker' start_active='true' max='1'>
+    <npc id='27060' count='1' respawn='3m' rand='0'/> <!-- Kracha -->
+
+    <zone loc='34528 61768 -3776 -3376'/>
+    <zone loc='37484 60576 -3776 -3376'/>
+    <zone loc='38256 62488 -3776 -3376'/>
+    <zone loc='37548 64008 -3776 -3376'/>
+    <zone loc='35840 64156 -3776 -3376'/>
+    <zone loc='34440 63312 -3776 -3376'/>
+  </territory>
+
+  <territory name='oren01_qm2019_03' controller='default_maker' start_active='true' max='1'>
+    <npc id='27061' count='1' respawn='3m' rand='0'/> <!-- Batoh -->
+
+    <zone loc='29820 79456 -3684 -3284'/>
+    <zone loc='32440 76268 -3684 -3284'/>
+    <zone loc='32412 81272 -3684 -3284'/>
+    <zone loc='29724 81400 -3684 -3284'/>
+  </territory>
+
+  <territory name='oren01_qm2019_04' controller='default_maker' start_active='true' max='4'>
+    <npc id='27062' count='1' respawn='3m' rand='0' prvt='27063 1 20s;27063 1 20s;' /> <!-- Tanukia [Tanukia's Warhound; Tanukia's Warhound; ] -->
+
+    <zone loc='21244 56736 -3524 -3224'/>
+    <zone loc='22848 55824 -3524 -3224'/>
+    <zone loc='24528 57672 -3524 -3224'/>
+    <zone loc='21888 59156 -3524 -3224'/>
+  </territory>
+
+  <territory name='oren01_qm2019_05' controller='default_maker' start_active='true' max='1'>
+    <npc id='27064' count='1' respawn='3m' rand='0'/> <!-- Turel -->
+
+    <zone loc='40444 68984 -3548 -3148'/>
+    <zone loc='43596 68888 -3548 -3148'/>
+    <zone loc='44672 69892 -3548 -3148'/>
+    <zone loc='44072 71904 -3548 -3148'/>
+    <zone loc='41112 70332 -3548 -3148'/>
+  </territory>
+
+  <territory name='oren01_qm2019_06' controller='default_maker' start_active='true' max='4'>
+    <npc id='27065' count='1' respawn='3m' rand='0' prvt='27066 1 20s;27066 1 20s;' /> <!-- Roko [Roko's Warhound; Roko's Warhound; ] -->
+
+    <zone loc='33004 78680 -3748 -3298'/>
+    <zone loc='37372 79728 -3748 -3298'/>
+    <zone loc='38244 83040 -3748 -3298'/>
+    <zone loc='33060 83048 -3748 -3298'/>
+  </territory>
+
+  <territory name='oren01_qm2019_07' controller='default_maker' start_active='true' max='1'>
+    <npc id='27067' count='1' respawn='3m' rand='0'/> <!-- Kamut -->
+
+    <zone loc='46508 89244 -3772 -3372'/>
+    <zone loc='48304 90876 -3772 -3372'/>
+    <zone loc='47488 92304 -3772 -3372'/>
+    <zone loc='45004 92160 -3772 -3372'/>
+  </territory>
+
+  <territory name='oren01_qm2019_08' controller='default_maker' start_active='true' max='4'>
+    <npc id='27068' count='1' respawn='3m' rand='0' prvt='27069 1 20s;27069 1 20s;' /> <!-- Murtika [Murtika's Warhound; Murtika's Warhound; ] -->
+
+    <zone loc='56804 77312 -3656 -3356'/>
+    <zone loc='58504 76840 -3656 -3356'/>
+    <zone loc='58780 80240 -3656 -3356'/>
+    <zone loc='56760 80072 -3656 -3356'/>
+    <zone loc='56016 78784 -3656 -3356'/>
+  </territory>
+
+  <territory name='oren01_qm2020_001' controller='default_maker' start_active='true' max='1'>
+    <npc id='27020' pos='14016 80192 -4080 0' count='1' respawn='5m' rand='0'/> <!-- Varool Foulclaw -->
+
+    <zone loc='12476 79676 -4124 -3924'/>
+    <zone loc='14184 79676 -4124 -3924'/>
+    <zone loc='14188 80712 -4124 -3924'/>
+    <zone loc='12480 80712 -4124 -3924'/>
+  </territory>
+
+  <territory name='oren01_qm2020_002' controller='default_maker' start_active='true' max='1'>
+    <npc id='27021' count='1' respawn='20s' rand='5s'/> <!-- Kirunak -->
+
+    <zone loc='8975 78321 -3767 -3617'/>
+    <zone loc='9208 78319 -3767 -3617'/>
+    <zone loc='9213 78564 -3767 -3617'/>
+    <zone loc='8979 78569 -3767 -3617'/>
+  </territory>
+
+  <territory name='oren01_qm2020_01' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='28568 90100 -3728 -3328'/>
+    <zone loc='29416 89636 -3728 -3328'/>
+    <zone loc='29936 90672 -3728 -3328'/>
+    <zone loc='29448 91072 -3728 -3328'/>
+    <zone loc='28664 91000 -3728 -3328'/>
+  </territory>
+
+  <territory name='oren01_qm2020_02' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='23700 90308 -3704 -3304'/>
+    <zone loc='24860 90184 -3704 -3304'/>
+    <zone loc='24856 91824 -3704 -3304'/>
+    <zone loc='23980 91820 -3704 -3304'/>
+    <zone loc='23284 90976 -3704 -3304'/>
+  </territory>
+
+  <territory name='oren01_qm2020_03' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='19380 89384 -3728 -3328'/>
+    <zone loc='20880 89472 -3728 -3328'/>
+    <zone loc='20996 90672 -3728 -3328'/>
+    <zone loc='19508 90844 -3728 -3328'/>
+    <zone loc='18820 90256 -3728 -3328'/>
+  </territory>
+
+  <territory name='oren01_qm2020_04' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='12844 91264 -3744 -3344'/>
+    <zone loc='14216 90948 -3744 -3344'/>
+    <zone loc='14252 92448 -3744 -3344'/>
+    <zone loc='12916 92152 -3744 -3344'/>
+  </territory>
+
+  <territory name='oren01_qm2020_05' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='6796 92460 -3704 -3304'/>
+    <zone loc='8280 91244 -3704 -3304'/>
+    <zone loc='9340 92424 -3704 -3304'/>
+    <zone loc='7660 93068 -3704 -3304'/>
+  </territory>
+
+  <territory name='oren01_qm2020_06' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='3408 89580 -3680 -3280'/>
+    <zone loc='4332 88988 -3680 -3280'/>
+    <zone loc='5124 89688 -3680 -3280'/>
+    <zone loc='3836 90244 -3680 -3280'/>
+  </territory>
+
+  <territory name='oren01_qm2119_01' controller='default_maker' start_active='true' max='9'>
+    <npc id='27017' count='9' respawn='3m' rand='0'/> <!-- Plague Zombie -->
+
+    <zone loc='34084 35788 -3764 -3544'/>
+    <zone loc='35328 34940 -3764 -3544'/>
+    <zone loc='35904 35860 -3764 -3544'/>
+    <zone loc='34640 36460 -3764 -3544'/>
+  </territory>
+
+  <territory name='oren01_qm2120_07' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='55560 89836 -3784 -3384'/>
+    <zone loc='57188 89220 -3784 -3384'/>
+    <zone loc='57756 90292 -3784 -3384'/>
+    <zone loc='57132 91152 -3784 -3384'/>
+    <zone loc='55936 91236 -3784 -3384'/>
+  </territory>
+
+  <territory name='oren01_qm2120_08' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='49012 90172 -3748 -3348'/>
+    <zone loc='50100 90600 -3748 -3348'/>
+    <zone loc='50080 91664 -3748 -3348'/>
+    <zone loc='49068 92144 -3748 -3348'/>
+    <zone loc='48224 91148 -3748 -3348'/>
+  </territory>
+
+  <territory name='oren01_qm2120_09' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='42452 92644 -3716 -3316'/>
+    <zone loc='43616 92100 -3716 -3316'/>
+    <zone loc='44404 93556 -3716 -3316'/>
+    <zone loc='43788 94300 -3716 -3316'/>
+  </territory>
+
+  <territory name='oren01_qm2120_10' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='38128 90112 -3528 -3128'/>
+    <zone loc='39000 90512 -3528 -3128'/>
+    <zone loc='38036 91784 -3528 -3128'/>
+    <zone loc='37308 91120 -3528 -3128'/>
+  </territory>
+
+  <territory name='oren01_qm2120_11' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='34424 89224 -3640 -3240'/>
+    <zone loc='35572 89364 -3640 -3240'/>
+    <zone loc='35276 90860 -3640 -3240'/>
+    <zone loc='34104 90288 -3640 -3240'/>
+  </territory>
+
+  <territory name='oren01_qm2120_12' controller='default_maker' start_active='true' max='1'>
+    <npc id='27077' count='1' respawn='3m' rand='0'/> <!-- Unicorn Of Eva -->
+
+    <zone loc='45656 89260 -3676 -3276'/>
+    <zone loc='46760 88600 -3676 -3276'/>
+    <zone loc='47960 89840 -3676 -3276'/>
+    <zone loc='46040 90272 -3676 -3276'/>
+  </territory>
+
+  <territory name='oren01_qm2120_21' controller='default_maker' start_active='true' max='3'>
+    <npc id='27096' count='3' respawn='3m' rand='0'/> <!-- Singing Flower Nightmare -->
+
+    <zone loc='69732 13420 -3692 -3492'/>
+    <zone loc='69580 10224 -3692 -3492'/>
+    <zone loc='70808 10964 -3692 -3492'/>
+    <zone loc='70736 13716 -3692 -3492'/>
+  </territory>
+
+  <territory name='oren01_qm2118_01' controller='default_maker' start_active='true' max='101'>
+    <npc id='27166' pos='63707 31164 -3736 0' count='1' respawn='3m' rand='0'/> <!-- Abyssal Jewel 2 -->
+
+    <zone loc='63124 30720 -3872 -3672'/>
+    <zone loc='65212 30688 -3872 -3672'/>
+    <zone loc='65212 32452 -3872 -3672'/>
+    <zone loc='63192 32484 -3872 -3672'/>
+  </territory>
+
+  <territory name='oren01_qm2218_01' controller='default_maker' start_active='true' max='4'>
+    <npc id='27098' count='4' respawn='3m' rand='0'/> <!-- Ghost Fire -->
+
+    <zone loc='79892 15052 -5348 -5048'/>
+    <zone loc='82008 15024 -5348 -5048'/>
+    <zone loc='84252 20204 -5348 -5048'/>
+    <zone loc='82604 22312 -5348 -5048'/>
+    <zone loc='80436 20496 -5348 -5048'/>
+    <zone loc='79172 18188 -5348 -5048'/>
+  </territory>
+
+  <territory name='oren01_qm2218_02' controller='default_maker' start_active='true' max='4'>
+    <npc id='27098' count='4' respawn='3m' rand='0'/> <!-- Ghost Fire -->
+
+    <zone loc='88572 15016 -5396 -5096'/>
+    <zone loc='91048 15508 -5396 -5096'/>
+    <zone loc='89376 20648 -5396 -5096'/>
+    <zone loc='86664 22120 -5396 -5096'/>
+    <zone loc='86512 20164 -5396 -5096'/>
+  </territory>
+  
+
+  <territory name='oren07_mb1820_01' controller='default' start_active='true' max='8'>
+    <npc id='25378' count='1' respawn='36h' rand='24h'/> <!-- Madness Beast -->
+
+    <zone loc='-54840 83820 -3648 -3048'/>
+    <zone loc='-53596 83232 -3648 -3048'/>
+    <zone loc='-53176 84348 -3648 -3048'/>
+    <zone loc='-53532 85180 -3648 -3048'/>
+    <zone loc='-54708 85092 -3648 -3048'/>
+  </territory>
+
+  <territory name='oren14_mb2118_01' controller='default' start_active='true' max='8'>
+    <npc id='25099' count='1' respawn='36h' rand='24h'/> <!-- Rotten Tree Repiro -->
+
+    <zone loc='63916 15568 -3660 -3060'/>
+    <zone loc='64500 15720 -3660 -3060'/>
+    <zone loc='64600 16308 -3660 -3060'/>
+    <zone loc='64336 16756 -3660 -3060'/>
+    <zone loc='63244 16104 -3660 -3060'/>
+  </territory>
+
+  <territory name='oren14_mb2118_02' controller='default' start_active='true' max='8'>
+    <npc id='25418' count='1' respawn='36h' rand='24h'/> <!-- Dread Avenger Kraven -->
+
+    <zone loc='62504 7440 -3584 -2984'/>
+    <zone loc='63176 7684 -3584 -2984'/>
+    <zone loc='62992 8824 -3584 -2984'/>
+    <zone loc='62172 8884 -3584 -2984'/>
+    <zone loc='61560 7992 -3584 -2984'/>
+  </territory>
+
+  <territory name='oren14_mb2118_03' controller='default' start_active='true' max='8'>
+    <npc id='25420' count='1' respawn='36h' rand='24h'/> <!-- Orfen's Handmaiden -->
+
+    <zone loc='41120 24152 -5008 -4408'/>
+    <zone loc='42192 22716 -5008 -4408'/>
+    <zone loc='43380 24572 -5008 -4408'/>
+    <zone loc='41300 25032 -5008 -4408'/>
+  </territory>
+
+  <territory name='oren31_mb2217_01' controller='default' start_active='true' max='8'>
+    <npc id='25131' count='1' respawn='36h' rand='24h'/> <!-- Carnage Lord Gato -->
+
+    <zone loc='74424 -9228 -2904 -2304'/>
+    <zone loc='75212 -10092 -2904 -2304'/>
+    <zone loc='76132 -9688 -2904 -2304'/>
+    <zone loc='75932 -8232 -2904 -2304'/>
+  </territory>
+
+  <territory name='oren31_mb2217_02' controller='default' start_active='true' max='8'>
+    <npc id='25122' count='1' respawn='36h' rand='24h'/> <!-- Refugee Hopeful Leo -->
+
+    <zone loc='86220 -8372 -3184 -2684'/>
+    <zone loc='86420 -8372 -3184 -2684'/>
+    <zone loc='86420 -8172 -3184 -2684'/>
+    <zone loc='86220 -8172 -3184 -2684'/>
+  </territory>
+
+  <territory name='oren01_mb2217_03' controller='default' start_active='true' max='8'>
+    <npc id='25067' count='1' respawn='36h' rand='24h'/> <!-- Captain of Red Flag Shaka -->
+
+    <zone loc='93628 -23452 -2352 -1752'/>
+    <zone loc='95260 -24156 -2352 -1752'/>
+    <zone loc='95932 -23160 -2352 -1752'/>
+    <zone loc='95304 -21636 -2352 -1752'/>
+  </territory>
+
+  <territory name='oren29_mb2218_01' controller='default' start_active='true' max='8'>
+    <npc id='25088' count='1' respawn='36h' rand='24h'/> <!-- Crazy Mechanic Golem -->
+
+    <zone loc='90392 15708 -5400 -4800'/>
+    <zone loc='91236 15764 -5400 -4800'/>
+    <zone loc='91420 16676 -5400 -4800'/>
+    <zone loc='90816 17216 -5400 -4800'/>
+    <zone loc='90128 16772 -5400 -4800'/>
+  </territory>
+
+  <territory name='oren29_mb2218_02' controller='default' start_active='true' max='8'>
+    <npc id='25431' count='1' respawn='36h' rand='24h'/> <!-- Flamestone Golem -->
+
+    <zone loc='79224 17696 -5524 -4924'/>
+    <zone loc='80240 17764 -5524 -4924'/>
+    <zone loc='80504 18972 -5524 -4924'/>
+    <zone loc='79804 19384 -5524 -4924'/>
+    <zone loc='78896 18604 -5524 -4924'/>
+  </territory>
+
+  <territory name='oren29_mb2218_03' controller='default' start_active='true' max='8'>
+    <npc id='25260' count='1' respawn='36h' rand='24h'/> <!-- Iron Giant Totem -->
+
+    <zone loc='92548 18716 -3696 -3096'/>
+    <zone loc='94332 19420 -3696 -3096'/>
+    <zone loc='93336 20496 -3696 -3096'/>
+    <zone loc='92192 19424 -3696 -3096'/>
+  </territory>
+
+  <territory name='oren30_mb2218_04' controller='default' start_active='true' max='8'>
+    <npc id='25026' count='1' respawn='36h' rand='24h'/> <!-- Katu Van Leader Atui -->
+
+    <zone loc='92612 7436 -4048 -3448'/>
+    <zone loc='93264 7400 -4048 -3448'/>
+    <zone loc='93356 8520 -4048 -3448'/>
+    <zone loc='92312 8704 -4048 -3448'/>
+  </territory>
+
+  <territory name='oren30_mb2218_05' controller='default' start_active='true' max='8'>
+    <npc id='25158' count='1' respawn='36h' rand='24h'/> <!-- King Tarlk -->
+
+    <zone loc='76668 5056 -3192 -2592'/>
+    <zone loc='77620 4960 -3192 -2592'/>
+    <zone loc='77644 5892 -3192 -2592'/>
+    <zone loc='76748 5952 -3192 -2592'/>
+  </territory>
+
+  <territory name='oren28_mb2219_01' controller='default' start_active='true' max='8'>
+    <npc id='25437' count='1' respawn='36h' rand='24h'/> <!-- Timak Orc Gosmos -->
+
+    <zone loc='66384 64036 -3844 -3244'/>
+    <zone loc='67800 63212 -3844 -3244'/>
+    <zone loc='68244 64340 -3844 -3244'/>
+    <zone loc='67464 64848 -3844 -3244'/>
+    <zone loc='66500 64744 -3844 -3244'/>
+  </territory>
+
+  <territory name='oren28_mb2219_02' controller='default' start_active='true' max='8'>
+    <npc id='25230' count='1' respawn='36h' rand='24h'/> <!-- Timak Seer Ragoth -->
+
+    <zone loc='66280 46420 -3948 -3348'/>
+    <zone loc='66756 46216 -3948 -3348'/>
+    <zone loc='67088 46772 -3948 -3348'/>
+    <zone loc='66792 47256 -3948 -3348'/>
+    <zone loc='66184 47032 -3948 -3348'/>
+  </territory>
+
+  <territory name='oren28_mb2220_01' controller='default' start_active='true' max='8'>
+    <npc id='25085' count='1' respawn='36h' rand='24h'/> <!-- Timak Orc Chief Ranger -->
+
+    <zone loc='66628 66688 -3808 -3208'/>
+    <zone loc='67584 66832 -3808 -3208'/>
+    <zone loc='67448 68072 -3808 -3208'/>
+    <zone loc='66180 67864 -3808 -3208'/>
+  </territory>
+
+  <territory name='oren28_mb2220_02' controller='default' start_active='true' max='8'>
+    <npc id='25155' count='1' respawn='36h' rand='24h'/> <!-- Shaman King Selu -->
+
+    <zone loc='72756 66616 -3836 -3236'/>
+    <zone loc='73440 66332 -3836 -3236'/>
+    <zone loc='74076 66520 -3836 -3236'/>
+    <zone loc='74200 67716 -3836 -3236'/>
+    <zone loc='73060 67468 -3836 -3236'/>
+  </territory>
+
+  <territory name='oren21_mb2220_03' controller='default' start_active='true' max='8'>
+    <npc id='25064' count='1' respawn='36h' rand='24h'/> <!-- Wizard of Storm Teruk -->
+
+    <zone loc='96922 94786 -3763 -3463'/>
+    <zone loc='96496 93501 -3763 -3463'/>
+    <zone loc='97734 93495 -3763 -3463'/>
+    <zone loc='97811 94729 -3763 -3463'/>
+  </territory>
+
+  <territory name='oren21_mb2220_04' controller='default' start_active='true' max='8'>
+    <npc id='25134' count='1' respawn='36h' rand='24h'/> <!-- Leto Chief Talkin -->
+
+    <zone loc='94675 82267 -3763 -3463'/>
+    <zone loc='95068 81151 -3763 -3463'/>
+    <zone loc='95594 81154 -3763 -3463'/>
+    <zone loc='95446 82775 -3763 -3463'/>
+  </territory>
+
+  <territory name='oren01_mb2317_01' controller='default' start_active='true' max='8'>
+    <npc id='25226' count='1' respawn='36h' rand='24h'/> <!-- Roaring Lord Kastor -->
+
+    <zone loc='103236 -3448 -3536 -2936'/>
+    <zone loc='103888 -4392 -3536 -2936'/>
+    <zone loc='104936 -4316 -3536 -2936'/>
+    <zone loc='104944 -3120 -3536 -2936'/>
+    <zone loc='103744 -2792 -3536 -2936'/>
+  </territory>
+
+  <territory name='oren32_mb2317_02' controller='default' start_active='true' max='8'>
+    <npc id='25051' count='1' respawn='36h' rand='24h'/> <!-- Rahha -->
+
+    <zone loc='116972 -9320 -3320 -2720'/>
+    <zone loc='117828 -9476 -3320 -2720'/>
+    <zone loc='118604 -9052 -3320 -2720'/>
+    <zone loc='118240 -8740 -3320 -2720'/>
+    <zone loc='117712 -8660 -3320 -2720'/>
+    <zone loc='117072 -8876 -3320 -2720'/>
+  </territory>
+
+  <territory name='oren32_mb2317_03' controller='default' start_active='true' max='8'>
+    <npc id='25248' count='1' respawn='36h' rand='24h'/> <!-- Doom Blade Tanatos -->
+
+    <zone loc='127576 -13452 -3836 -3236'/>
+    <zone loc='127980 -13600 -3836 -3236'/>
+    <zone loc='128320 -13340 -3836 -3236'/>
+    <zone loc='127868 -13072 -3836 -3236'/>
+  </territory>
+  
+  <spawn name='orphen_t21_18_001_01' controller='default' start_active='true' max='30'>
+    <npc id='29018' pos='43656 17560 -4352 0' respawn='6m'/> <!-- Riba Iren -->
+    <npc id='29018' pos='43464 17048 -4356 0' respawn='6m'/> <!-- Riba Iren -->
+    <npc id='29015' pos='44448 16656 -4352 0' respawn='6m'/> <!-- Raikel -->
+    <npc id='29015' pos='44440 17060 -4352 0' respawn='6m'/> <!-- Raikel -->
+    <npc id='29015' pos='44408 17480 -4352 0' respawn='6m'/> <!-- Raikel -->
+    <npc id='29015' pos='43740 17984 -4352 0' respawn='6m'/> <!-- Raikel -->
+    <npc id='29015' pos='43832 16552 -4352 0' respawn='6m'/> <!-- Raikel -->
+    <npc id='29015' pos='44364 17856 -4352 0' respawn='6m'/> <!-- Raikel -->
+    <npc id='29017' pos='44168 16908 -4352 0' respawn='6m'/> <!-- Riba -->
+    <npc id='29017' pos='44128 17580 -4352 0' respawn='6m'/> <!-- Riba -->
+    <npc id='29017' pos='43916 17776 -4352 0' respawn='6m'/> <!-- Riba -->
+    <npc id='29017' pos='43972 16740 -4352 0' respawn='6m'/> <!-- Riba -->
+    <npc id='29017' pos='43488 17768 -4352 0' respawn='6m'/> <!-- Riba -->
+    <npc id='29017' pos='43224 16844 -4352 0' respawn='6m'/> <!-- Riba -->
+    <npc id='29017' pos='43128 17220 -4352 0' respawn='6m'/> <!-- Riba -->
+    <npc id='29017' pos='43504 16644 -4352 0' respawn='6m'/> <!-- Riba -->
+    <npc id='29017' pos='43196 17580 -4352 0' respawn='6m'/> <!-- Riba -->
+    <npc id='29017' pos='44176 17240 -4352 0' respawn='6m'/> <!-- Riba -->
+  </spawn>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ </list>
+</null>

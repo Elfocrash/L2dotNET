@@ -1,0 +1,3403 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<null>
+ <list>
+
+  <territory name='schuttgart11_2313_01' controller='default_maker' start_active='true' max='5'>
+    <npc id='22017' count='3' respawn='50s' rand='10s'/> <!-- Bandit Sweeper -->
+    <npc id='22018' count='2' respawn='50s' rand='10s'/> <!-- Bandit Hound -->
+
+    <zone loc='116382 -161256 -1320 -820'/>
+    <zone loc='118878 -161489 -1320 -820'/>
+    <zone loc='120041 -160290 -1320 -820'/>
+    <zone loc='116362 -159988 -1320 -820'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_02' controller='default_maker' start_active='true' max='5'>
+    <npc id='22017' count='3' respawn='50s' rand='10s'/> <!-- Bandit Sweeper -->
+    <npc id='22018' count='2' respawn='50s' rand='10s'/> <!-- Bandit Hound -->
+
+    <zone loc='118467 -161899 -1460 -910'/>
+    <zone loc='118900 -162776 -1460 -910'/>
+    <zone loc='120908 -162207 -1460 -910'/>
+    <zone loc='119922 -160430 -1460 -910'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_03' controller='default_maker' start_active='true' max='4'>
+    <npc id='22017' count='2' respawn='50s' rand='10s'/> <!-- Bandit Sweeper -->
+    <npc id='22018' count='2' respawn='50s' rand='10s'/> <!-- Bandit Hound -->
+
+    <zone loc='113681 -162025 -1652 -1152'/>
+    <zone loc='114583 -162240 -1652 -1152'/>
+    <zone loc='114941 -161066 -1652 -1152'/>
+    <zone loc='112994 -160263 -1652 -1152'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_04' controller='default_maker' start_active='true' max='4'>
+    <npc id='22017' count='2' respawn='50s' rand='10s'/> <!-- Bandit Sweeper -->
+    <npc id='22018' count='2' respawn='50s' rand='10s'/> <!-- Bandit Hound -->
+
+    <zone loc='112985 -160243 -1740 -1240'/>
+    <zone loc='114084 -160704 -1740 -1240'/>
+    <zone loc='113826 -159583 -1740 -1240'/>
+    <zone loc='111973 -159073 -1740 -1240'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_05' controller='default_maker' start_active='true' max='4'>
+    <npc id='22017' count='2' respawn='50s' rand='10s'/> <!-- Bandit Sweeper -->
+    <npc id='22018' count='2' respawn='50s' rand='10s'/> <!-- Bandit Hound -->
+
+    <zone loc='112209 -159144 -1884 -1384'/>
+    <zone loc='113395 -159464 -1884 -1384'/>
+    <zone loc='112940 -157723 -1884 -1384'/>
+    <zone loc='111880 -157216 -1884 -1384'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_06' controller='default_maker' start_active='true' max='5'>
+    <npc id='22017' count='2' respawn='50s' rand='10s'/> <!-- Bandit Sweeper -->
+    <npc id='22018' count='2' respawn='50s' rand='10s'/> <!-- Bandit Hound -->
+    <npc id='22019' count='1' respawn='50s' rand='10s'/> <!-- Bandit Watchman -->
+
+    <zone loc='109137 -157319 -2256 -1756'/>
+    <zone loc='112040 -158196 -2256 -1756'/>
+    <zone loc='111855 -157218 -2256 -1756'/>
+    <zone loc='109034 -156490 -2256 -1756'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_07' controller='default_maker' start_active='true' max='6'>
+    <npc id='22017' count='3' respawn='50s' rand='10s'/> <!-- Bandit Sweeper -->
+    <npc id='22018' count='2' respawn='50s' rand='10s'/> <!-- Bandit Hound -->
+    <npc id='22019' count='1' respawn='50s' rand='10s'/> <!-- Bandit Watchman -->
+
+    <zone loc='106551 -158264 -2248 -1748'/>
+    <zone loc='109142 -157446 -2248 -1748'/>
+    <zone loc='109019 -156444 -2248 -1748'/>
+    <zone loc='105926 -156799 -2248 -1748'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_08' controller='default_maker' start_active='true' max='6'>
+    <npc id='22017' count='3' respawn='50s' rand='10s'/> <!-- Bandit Sweeper -->
+    <npc id='22018' count='2' respawn='50s' rand='10s'/> <!-- Bandit Hound -->
+    <npc id='22019' count='1' respawn='50s' rand='10s'/> <!-- Bandit Watchman -->
+
+    <zone loc='106325 -160030 -2092 -1592'/>
+    <zone loc='107721 -160274 -2092 -1592'/>
+    <zone loc='108415 -157659 -2092 -1592'/>
+    <zone loc='106569 -158263 -2092 -1592'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_09' controller='default_maker' start_active='true' max='6'>
+    <npc id='22018' count='3' respawn='50s' rand='10s'/> <!-- Bandit Hound -->
+    <npc id='22019' count='2' respawn='50s' rand='10s'/> <!-- Bandit Watchman -->
+    <npc id='22020' count='1' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+
+    <zone loc='109922 -161771 -1912 -1412'/>
+    <zone loc='109169 -159427 -1912 -1412'/>
+    <zone loc='108094 -158895 -1912 -1412'/>
+    <zone loc='107728 -160266 -1912 -1412'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_10' controller='default_maker' start_active='true' max='5'>
+    <npc id='22019' count='2' respawn='50s' rand='10s'/> <!-- Bandit Watchman -->
+    <npc id='22020' count='2' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+    <npc id='22021' count='1' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+
+    <zone loc='103573 -160743 -2016 -1516'/>
+    <zone loc='106178 -160880 -2016 -1516'/>
+    <zone loc='106393 -159457 -2016 -1516'/>
+    <zone loc='103710 -159904 -2016 -1516'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_11' controller='default_maker' start_active='true' max='5'>
+    <npc id='22019' count='2' respawn='50s' rand='10s'/> <!-- Bandit Watchman -->
+    <npc id='22020' count='2' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+    <npc id='22021' count='1' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+
+    <zone loc='103682 -159904 -2060 -1560'/>
+    <zone loc='105635 -159575 -2060 -1560'/>
+    <zone loc='105209 -158203 -2060 -1560'/>
+    <zone loc='102936 -158755 -2060 -1560'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_12' controller='default_maker' start_active='true' max='5'>
+    <npc id='22019' count='2' respawn='50s' rand='10s'/> <!-- Bandit Watchman -->
+    <npc id='22020' count='2' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+    <npc id='22021' count='1' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+
+    <zone loc='103648 -158579 -2124 -1624'/>
+    <zone loc='105299 -158174 -2124 -1624'/>
+    <zone loc='105615 -157465 -2124 -1624'/>
+    <zone loc='103530 -156624 -2124 -1624'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_13' controller='default_maker' start_active='true' max='5'>
+    <npc id='22021' count='3' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+    <npc id='22022' count='2' respawn='50s' rand='10s'/> <!-- Bandit Assassin -->
+
+    <zone loc='102513 -156217 -2076 -1376'/>
+    <zone loc='104218 -156892 -2076 -1376'/>
+    <zone loc='103514 -154162 -2076 -1376'/>
+    <zone loc='101960 -154206 -2076 -1376'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_14' controller='default_maker' start_active='true' max='5'>
+    <npc id='22021' count='3' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+    <npc id='22022' count='2' respawn='50s' rand='10s'/> <!-- Bandit Assassin -->
+
+    <zone loc='104137 -156464 -2052 -1452'/>
+    <zone loc='105912 -155346 -2052 -1452'/>
+    <zone loc='105198 -154122 -2052 -1452'/>
+    <zone loc='103531 -154151 -2052 -1452'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_15' controller='default_maker' start_active='true' max='6'>
+    <npc id='22019' count='3' respawn='50s' rand='10s'/> <!-- Bandit Watchman -->
+    <npc id='22020' count='2' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+    <npc id='22021' count='1' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+
+    <zone loc='107615 -156613 -2264 -1764'/>
+    <zone loc='109245 -156406 -2264 -1764'/>
+    <zone loc='109462 -154408 -2264 -1764'/>
+    <zone loc='108522 -153828 -2264 -1764'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_16' controller='default_maker' start_active='true' max='6'>
+    <npc id='22020' count='3' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+    <npc id='22021' count='2' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+    <npc id='22022' count='1' respawn='50s' rand='10s'/> <!-- Bandit Assassin -->
+
+    <zone loc='106859 -150593 -2696 -2046'/>
+    <zone loc='108937 -152091 -2696 -2046'/>
+    <zone loc='110592 -150348 -2696 -2046'/>
+    <zone loc='108033 -148694 -2696 -2046'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_17' controller='default_maker' start_active='true' max='6'>
+    <npc id='22020' count='3' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+    <npc id='22021' count='2' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+    <npc id='22022' count='1' respawn='50s' rand='10s'/> <!-- Bandit Assassin -->
+
+    <zone loc='108450 -148957 -3560 -2160'/>
+    <zone loc='109864 -149870 -3560 -2160'/>
+    <zone loc='111835 -146922 -3560 -2160'/>
+    <zone loc='110304 -146209 -3560 -2160'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_18' controller='default_maker' start_active='true' max='5'>
+    <npc id='22023' count='3' respawn='50s' rand='10s'/> <!-- Bandit Warrior -->
+    <npc id='22024' count='2' respawn='50s' rand='10s'/> <!-- Bandit Inspector -->
+
+    <zone loc='107104 -146422 -3776 -3276'/>
+    <zone loc='108656 -145478 -3776 -3276'/>
+    <zone loc='107086 -143812 -3776 -3276'/>
+    <zone loc='106365 -145027 -3776 -3276'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_22' controller='default_maker' start_active='true' max='7'>
+    <npc id='22024' count='3' respawn='50s' rand='10s'/> <!-- Bandit Inspector -->
+    <npc id='22025' count='2' respawn='50s' rand='10s'/> <!-- Frozen Wasteland Werewolf -->
+    <npc id='22026' count='2' respawn='50s' rand='10s'/> <!-- Bandit Captain -->
+
+    <zone loc='102181 -141112 -3512 -2812'/>
+    <zone loc='104817 -141199 -3512 -2812'/>
+    <zone loc='105270 -139329 -3512 -2812'/>
+    <zone loc='101415 -139642 -3512 -2812'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_23' controller='default_maker' start_active='true' max='7'>
+    <npc id='22023' count='3' respawn='50s' rand='10s'/> <!-- Bandit Warrior -->
+    <npc id='22024' count='2' respawn='50s' rand='10s'/> <!-- Bandit Inspector -->
+    <npc id='22025' count='2' respawn='50s' rand='10s'/> <!-- Frozen Wasteland Werewolf -->
+
+    <zone loc='100320 -148634 -3248 -2548'/>
+    <zone loc='103204 -147891 -3248 -2548'/>
+    <zone loc='102483 -145994 -3248 -2548'/>
+    <zone loc='99865 -146715 -3248 -2548'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_24' controller='default_maker' start_active='true' max='5'>
+    <npc id='22023' count='3' respawn='50s' rand='10s'/> <!-- Bandit Warrior -->
+    <npc id='22024' count='2' respawn='50s' rand='10s'/> <!-- Bandit Inspector -->
+
+    <zone loc='101241 -150512 -3216 -2516'/>
+    <zone loc='103161 -150323 -3216 -2516'/>
+    <zone loc='102628 -148049 -3216 -2516'/>
+    <zone loc='100864 -148515 -3216 -2516'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_25' controller='default_maker' start_active='true' max='6'>
+    <npc id='22020' count='3' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+    <npc id='22021' count='2' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+    <npc id='22022' count='1' respawn='50s' rand='10s'/> <!-- Bandit Assassin -->
+
+    <zone loc='116124 -150947 -2580 -1880'/>
+    <zone loc='117894 -150963 -2580 -1880'/>
+    <zone loc='117902 -148827 -2580 -1880'/>
+    <zone loc='116612 -148591 -2580 -1880'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_26' controller='default_maker' start_active='true' max='6'>
+    <npc id='22020' count='3' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+    <npc id='22021' count='2' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+    <npc id='22022' count='1' respawn='50s' rand='10s'/> <!-- Bandit Assassin -->
+
+    <zone loc='118501 -156972 -1996 -1296'/>
+    <zone loc='121292 -157657 -1996 -1296'/>
+    <zone loc='122710 -155940 -1996 -1296'/>
+    <zone loc='118771 -155687 -1996 -1296'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_27' controller='default_maker' start_active='true' max='6'>
+    <npc id='22022' count='3' respawn='50s' rand='10s'/> <!-- Bandit Assassin -->
+    <npc id='22023' count='2' respawn='50s' rand='10s'/> <!-- Bandit Warrior -->
+    <npc id='22024' count='1' respawn='50s' rand='10s'/> <!-- Bandit Inspector -->
+
+    <zone loc='121218 -149357 -3648 -2948'/>
+    <zone loc='123654 -148398 -3648 -2948'/>
+    <zone loc='123861 -145772 -3648 -2948'/>
+    <zone loc='120575 -147657 -3648 -2948'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_28' controller='default_maker' start_active='true' max='5'>
+    <npc id='22022' count='2' respawn='50s' rand='10s'/> <!-- Bandit Assassin -->
+    <npc id='22023' count='2' respawn='50s' rand='10s'/> <!-- Bandit Warrior -->
+    <npc id='22024' count='1' respawn='50s' rand='10s'/> <!-- Bandit Inspector -->
+
+    <zone loc='121350 -153064 -2864 -2164'/>
+    <zone loc='123380 -153916 -2864 -2164'/>
+    <zone loc='125271 -152378 -2864 -2164'/>
+    <zone loc='121901 -151626 -2864 -2164'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_29' controller='default_maker' start_active='true' max='5'>
+    <npc id='22023' count='2' respawn='50s' rand='10s'/> <!-- Bandit Warrior -->
+    <npc id='22024' count='2' respawn='50s' rand='10s'/> <!-- Bandit Inspector -->
+    <npc id='22025' count='1' respawn='50s' rand='10s'/> <!-- Frozen Wasteland Werewolf -->
+
+    <zone loc='122990 -150619 -3640 -2640'/>
+    <zone loc='125855 -151424 -3640 -2640'/>
+    <zone loc='124588 -148038 -3640 -2640'/>
+    <zone loc='122670 -148831 -3640 -2640'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_30' controller='default_maker' start_active='true' max='7'>
+    <npc id='22023' count='3' respawn='50s' rand='10s'/> <!-- Bandit Warrior -->
+    <npc id='22024' count='2' respawn='50s' rand='10s'/> <!-- Bandit Inspector -->
+    <npc id='22026' count='2' respawn='50s' rand='10s'/> <!-- Bandit Captain -->
+
+    <zone loc='123156 -160164 -1468 -668'/>
+    <zone loc='125074 -160780 -1468 -668'/>
+    <zone loc='126069 -159573 -1468 -668'/>
+    <zone loc='125241 -157844 -1468 -668'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_31' controller='default_maker' start_active='true' max='11'>
+    <npc id='22028' count='2' respawn='50s' rand='10s' prvt='22027 1 0s;22027 1 0s;22027 1 0s;' /> <!-- Vagabond of the Ruins [Forgotten Crewman; Forgotten Crewman; Forgotten Crewman; ] -->
+    <npc id='22025' count='3' respawn='50s' rand='10s'/> <!-- Frozen Wasteland Werewolf -->
+
+    <zone loc='115001 -144630 -3512 -2812'/>
+    <zone loc='117596 -144840 -3512 -2812'/>
+    <zone loc='117059 -140962 -3512 -2812'/>
+    <zone loc='115001 -142591 -3512 -2812'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_32' controller='default_maker' start_active='true' max='11'>
+    <npc id='22028' count='2' respawn='50s' rand='10s' prvt='22027 1 0s;22027 1 0s;22027 1 0s;' /> <!-- Vagabond of the Ruins [Forgotten Crewman; Forgotten Crewman; Forgotten Crewman; ] -->
+    <npc id='22025' count='3' respawn='50s' rand='10s'/> <!-- Frozen Wasteland Werewolf -->
+
+    <zone loc='117611 -144882 -3256 -2556'/>
+    <zone loc='120687 -144736 -3256 -2556'/>
+    <zone loc='120812 -143265 -3256 -2556'/>
+    <zone loc='117412 -143514 -3256 -2556'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_33' controller='default_maker' start_active='true' max='8'>
+    <npc id='22020' count='3' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+    <npc id='22021' count='3' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+    <npc id='22022' count='2' respawn='50s' rand='10s'/> <!-- Bandit Assassin -->
+
+    <zone loc='114557 -158225 -2136 -1336'/>
+    <zone loc='118338 -157700 -2136 -1336'/>
+    <zone loc='118734 -155700 -2136 -1336'/>
+    <zone loc='115938 -155629 -2136 -1336'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_34' controller='default_maker' start_active='true' max='8'>
+    <npc id='22020' count='3' respawn='50s' rand='10s'/> <!-- Snow Lynx -->
+    <npc id='22021' count='3' respawn='50s' rand='10s'/> <!-- Bandit Undertaker -->
+    <npc id='22022' count='2' respawn='50s' rand='10s'/> <!-- Bandit Assassin -->
+
+    <zone loc='115086 -153083 -4404 -1404'/>
+    <zone loc='117540 -154424 -4404 -1404'/>
+    <zone loc='120889 -151120 -4404 -1404'/>
+    <zone loc='115766 -152184 -4404 -1404'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_35' controller='default_maker' start_active='true' max='7'>
+    <npc id='22024' count='3' respawn='50s' rand='10s'/> <!-- Bandit Inspector -->
+    <npc id='22025' count='2' respawn='50s' rand='10s'/> <!-- Frozen Wasteland Werewolf -->
+    <npc id='22026' count='2' respawn='50s' rand='10s'/> <!-- Bandit Captain -->
+
+    <zone loc='101195 -143783 -3596 -2696'/>
+    <zone loc='102849 -142328 -3596 -2696'/>
+    <zone loc='101385 -139693 -3596 -2696'/>
+    <zone loc='99883 -142000 -3596 -2696'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_36' controller='default_maker' start_active='true' max='9'>
+    <npc id='22028' count='2' respawn='50s' rand='10s' prvt='22027 1 0s;22027 1 0s;22027 1 0s;' /> <!-- Vagabond of the Ruins [Forgotten Crewman; Forgotten Crewman; Forgotten Crewman; ] -->
+    <npc id='22025' count='1' respawn='50s' rand='10s'/> <!-- Frozen Wasteland Werewolf -->
+
+    <zone loc='117385 -143505 -3092 -2392'/>
+    <zone loc='120753 -143259 -3092 -2392'/>
+    <zone loc='119289 -141676 -3092 -2392'/>
+    <zone loc='117267 -142446 -3092 -2392'/>
+  </territory>
+
+  <territory name='schuttgart11_2313_37' controller='default_maker' start_active='true' max='11'>
+    <npc id='22028' count='2' respawn='50s' rand='10s' prvt='22027 1 0s;22027 1 0s;22027 1 0s;' /> <!-- Vagabond of the Ruins [Forgotten Crewman; Forgotten Crewman; Forgotten Crewman; ] -->
+    <npc id='22025' count='3' respawn='50s' rand='10s'/> <!-- Frozen Wasteland Werewolf -->
+
+    <zone loc='127810 -144372 -3652 -2852'/>
+    <zone loc='127835 -143044 -3652 -2852'/>
+    <zone loc='125098 -141583 -3652 -2852'/>
+    <zone loc='124523 -142589 -3652 -2852'/>
+  </territory>
+  
+
+  <territory name='schuttgart14_2214_01' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='3' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='90451 -128694 -4350 -3950'/>
+    <zone loc='90897 -129200 -4350 -3950'/>
+    <zone loc='91215 -128816 -4350 -3950'/>
+    <zone loc='91451 -128910 -4350 -3950'/>
+    <zone loc='91271 -129380 -4350 -3950'/>
+    <zone loc='91844 -129345 -4350 -3950'/>
+    <zone loc='92400 -128726 -4350 -3950'/>
+    <zone loc='91337 -127982 -4350 -3950'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_02' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='3' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='91923 -128332 -4434 -3934'/>
+    <zone loc='92674 -128829 -4434 -3934'/>
+    <zone loc='93448 -128481 -4434 -3934'/>
+    <zone loc='93577 -127631 -4434 -3934'/>
+    <zone loc='93430 -126845 -4434 -3934'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_03' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='3' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='92137 -126786 -4354 -3854'/>
+    <zone loc='91073 -127740 -4354 -3854'/>
+    <zone loc='91860 -128311 -4354 -3854'/>
+    <zone loc='92842 -127394 -4354 -3854'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_04' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='3' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='91917 -126010 -4354 -3854'/>
+    <zone loc='91750 -126417 -4354 -3854'/>
+    <zone loc='92854 -127370 -4354 -3854'/>
+    <zone loc='93436 -126786 -4354 -3854'/>
+    <zone loc='92543 -125881 -4354 -3854'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_05' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='3' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='91133 -126404 -4350 -3850'/>
+    <zone loc='90846 -126518 -4350 -3850'/>
+    <zone loc='91228 -127533 -4350 -3850'/>
+    <zone loc='91895 -125978 -4350 -3850'/>
+    <zone loc='91041 -125983 -4350 -3850'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_06' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='3' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='90185 -126729 -4326 -3926'/>
+    <zone loc='89695 -127697 -4326 -3926'/>
+    <zone loc='90242 -128245 -4326 -3926'/>
+    <zone loc='91228 -127573 -4326 -3926'/>
+    <zone loc='90651 -126086 -4326 -3926'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_07' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='4' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='84948 -122423 -4538 -4138'/>
+    <zone loc='84388 -122778 -4538 -4138'/>
+    <zone loc='85869 -123907 -4538 -4138'/>
+    <zone loc='86654 -123522 -4538 -4138'/>
+    <zone loc='86167 -122367 -4538 -4138'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_08' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='2' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='85470 -121851 -4558 -4158'/>
+    <zone loc='85903 -121961 -4558 -4158'/>
+    <zone loc='85801 -122364 -4558 -4158'/>
+    <zone loc='86491 -122306 -4558 -4158'/>
+    <zone loc='86875 -121907 -4558 -4158'/>
+    <zone loc='85780 -121205 -4558 -4158'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_09' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='1' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='1' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='2' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='87884 -120880 -4454 -4054'/>
+    <zone loc='86515 -122320 -4454 -4054'/>
+    <zone loc='87175 -123218 -4454 -4054'/>
+    <zone loc='88049 -122693 -4454 -4054'/>
+    <zone loc='88157 -121820 -4454 -4054'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_10' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='0'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='2' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='86526 -121018 -4570 -4170'/>
+    <zone loc='86205 -121451 -4570 -4170'/>
+    <zone loc='86893 -121895 -4570 -4170'/>
+    <zone loc='87862 -120853 -4570 -4170'/>
+    <zone loc='86434 -120717 -4570 -4170'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_11' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='0'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='3' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='86386 -119576 -4470 -4070'/>
+    <zone loc='85659 -119771 -4470 -4070'/>
+    <zone loc='85854 -120643 -4470 -4070'/>
+    <zone loc='87880 -120833 -4470 -4070'/>
+    <zone loc='87278 -120031 -4470 -4070'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_12' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='4' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='85232 -119848 -4490 -4090'/>
+    <zone loc='84499 -120483 -4490 -4090'/>
+    <zone loc='84263 -122287 -4490 -4090'/>
+    <zone loc='85332 -122349 -4490 -4090'/>
+    <zone loc='85470 -121780 -4490 -4090'/>
+    <zone loc='85916 -120872 -4490 -4090'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_13' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='4' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='92653 -122399 -4686 -4286'/>
+    <zone loc='92601 -122775 -4686 -4286'/>
+    <zone loc='94087 -123462 -4686 -4286'/>
+    <zone loc='94125 -121496 -4686 -4286'/>
+    <zone loc='93284 -121438 -4686 -4286'/>
+    <zone loc='93070 -122163 -4686 -4286'/>
+    <zone loc='92566 -121898 -4686 -4286'/>
+    <zone loc='92296 -122288 -4686 -4286'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_14' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='4' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='94325 -122820 -4702 -4302'/>
+    <zone loc='94524 -123420 -4702 -4302'/>
+    <zone loc='95868 -122618 -4702 -4302'/>
+    <zone loc='94152 -121469 -4702 -4302'/>
+    <zone loc='94135 -122881 -4702 -4302'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_15' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='3' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='95477 -122333 -4650 -4250'/>
+    <zone loc='95701 -122044 -4650 -4250'/>
+    <zone loc='96112 -122288 -4650 -4250'/>
+    <zone loc='96549 -121400 -4650 -4250'/>
+    <zone loc='95884 -121598 -4650 -4250'/>
+    <zone loc='95788 -121302 -4650 -4250'/>
+    <zone loc='94190 -121459 -4650 -4250'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_16' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='2' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='96087 -121042 -4670 -4270'/>
+    <zone loc='96236 -121426 -4670 -4270'/>
+    <zone loc='96572 -121357 -4670 -4270'/>
+    <zone loc='96435 -120819 -4670 -4270'/>
+    <zone loc='96044 -120506 -4670 -4270'/>
+    <zone loc='94714 -120846 -4670 -4270'/>
+    <zone loc='95161 -121327 -4670 -4270'/>
+    <zone loc='95715 -121271 -4670 -4270'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_17' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='3' respawn='20s' rand='0'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='94065 -119499 -4726 -4326'/>
+    <zone loc='95049 -120433 -4726 -4326'/>
+    <zone loc='95862 -119972 -4726 -4326'/>
+    <zone loc='95380 -118968 -4726 -4326'/>
+    <zone loc='94916 -118824 -4726 -4326'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_18' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='4' respawn='20s' rand='0'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='93032 -118456 -4634 -4234'/>
+    <zone loc='92394 -119755 -4634 -4234'/>
+    <zone loc='93436 -120393 -4634 -4234'/>
+    <zone loc='94076 -119396 -4634 -4234'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_19' controller='default_maker' start_active='true' max='15'>
+    <npc id='22801' count='2' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='0'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='4' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='92228 -120319 -4618 -4218'/>
+    <zone loc='91775 -121186 -4618 -4218'/>
+    <zone loc='92266 -122299 -4618 -4218'/>
+    <zone loc='93254 -120668 -4618 -4218'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_20' controller='default_maker' start_active='true' max='20'>
+    <npc id='22801' count='3' respawn='20s' rand='5s'/> <!-- Cruel Pincer Golem -->
+    <npc id='22804' count='2' respawn='20s' rand='5s'/> <!-- Drill Golem of Terror -->
+    <npc id='22807' count='4' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='94033 -119505 -4630 -4230'/>
+    <zone loc='92868 -121362 -4630 -4230'/>
+    <zone loc='94044 -121462 -4630 -4230'/>
+    <zone loc='95094 -121320 -4630 -4230'/>
+    <zone loc='94524 -120665 -4630 -4230'/>
+    <zone loc='94818 -120261 -4630 -4230'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_21' controller='default_maker' start_active='true' max='6'>
+    <npc id='22807' count='4' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+
+    <zone loc='88057 -118853 -3946 -3246'/>
+    <zone loc='89093 -119711 -3946 -3246'/>
+    <zone loc='89782 -118320 -3946 -3246'/>
+    <zone loc='89463 -117389 -3946 -3246'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_22' controller='default_maker' start_active='true' max='10'>
+    <npc id='22807' count='3' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='22810' count='4' respawn='20s' rand='5s'/> <!-- Micro Scout Golem -->
+
+    <zone loc='86202 -116990 -3663 -3063'/>
+    <zone loc='87991 -118869 -3663 -3063'/>
+    <zone loc='89248 -117249 -3663 -3063'/>
+    <zone loc='86992 -116224 -3663 -3063'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_23' controller='default_maker' start_active='true' max='20'>
+    <npc id='22807' count='5' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='22810' count='5' respawn='20s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22809' count='5' respawn='20s' rand='5s'/> <!-- Guard Golem -->
+
+    <zone loc='91484 -111751 -3612 -2712'/>
+    <zone loc='89496 -112124 -3612 -2712'/>
+    <zone loc='87856 -110852 -3612 -2712'/>
+    <zone loc='85516 -112661 -3612 -2712'/>
+    <zone loc='86245 -113920 -3612 -2712'/>
+    <zone loc='87919 -115001 -3612 -2712'/>
+    <zone loc='89123 -115138 -3612 -2712'/>
+    <zone loc='89983 -115688 -3612 -2712'/>
+    <zone loc='92802 -114382 -3612 -2712'/>
+    <zone loc='92424 -112422 -3612 -2712'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_24' controller='default_maker' start_active='true' max='15'>
+    <npc id='22807' count='2' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='22810' count='2' respawn='20s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22809' count='2' respawn='20s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='86328 -113875 -3428 -2528'/>
+    <zone loc='87445 -114626 -3428 -2528'/>
+    <zone loc='88557 -113358 -3428 -2528'/>
+    <zone loc='86605 -111884 -3428 -2528'/>
+    <zone loc='85580 -112692 -3428 -2528'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_25' controller='default_maker' start_active='true' max='15'>
+    <npc id='22807' count='2' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='22810' count='2' respawn='20s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22809' count='2' respawn='20s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='89957 -113621 -3472 -2672'/>
+    <zone loc='89140 -112735 -3472 -2672'/>
+    <zone loc='87475 -114649 -3472 -2672'/>
+    <zone loc='89072 -115086 -3472 -2672'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_26' controller='default_maker' start_active='true' max='15'>
+    <npc id='22807' count='2' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='22810' count='2' respawn='20s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22809' count='2' respawn='20s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='89970 -113642 -3516 -2716'/>
+    <zone loc='89133 -115083 -3516 -2716'/>
+    <zone loc='89984 -115622 -3516 -2716'/>
+    <zone loc='91440 -114928 -3516 -2716'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_27' controller='default_maker' start_active='true' max='15'>
+    <npc id='22807' count='2' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='22810' count='2' respawn='20s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22809' count='2' respawn='20s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='92755 -114350 -3584 -2884'/>
+    <zone loc='92337 -112414 -3584 -2884'/>
+    <zone loc='90115 -113699 -3584 -2884'/>
+    <zone loc='91481 -114937 -3584 -2884'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_28' controller='default_maker' start_active='true' max='15'>
+    <npc id='22807' count='2' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='22810' count='2' respawn='20s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22809' count='2' respawn='20s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='92289 -112379 -3480 -2780'/>
+    <zone loc='91461 -111813 -3480 -2780'/>
+    <zone loc='89553 -112147 -3480 -2780'/>
+    <zone loc='89131 -112679 -3480 -2780'/>
+    <zone loc='90066 -113679 -3480 -2780'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_29' controller='default_maker' start_active='true' max='15'>
+    <npc id='22807' count='2' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='22810' count='2' respawn='20s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22809' count='2' respawn='20s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='86639 -111869 -3412 -2412'/>
+    <zone loc='88582 -113340 -3412 -2412'/>
+    <zone loc='89497 -112167 -3412 -2412'/>
+    <zone loc='87837 -110895 -3412 -2412'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_95' controller='default_maker' start_active='true' max='15'>
+    <npc id='22807' count='6' respawn='20s' rand='5s'/> <!-- Scout-type Golem No. 28 -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='86164 -125939 -3918 -3518'/>
+    <zone loc='87679 -126082 -3918 -3518'/>
+    <zone loc='88580 -125517 -3918 -3518'/>
+    <zone loc='89301 -124338 -3918 -3518'/>
+    <zone loc='88384 -124193 -3918 -3518'/>
+    <zone loc='86883 -125040 -3918 -3518'/>
+  </territory>
+
+  <territory name='schuttgart14_2214_96' controller='default_maker' start_active='true' max='15'>
+    <npc id='22810' count='6' respawn='20s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='18917' count='1' respawn='100s' rand='20s'/> <!-- Pavel Safety Device -->
+
+    <zone loc='94914 -130462 -3566 -2966'/>
+    <zone loc='95751 -130717 -3566 -2966'/>
+    <zone loc='96867 -128005 -3566 -2966'/>
+    <zone loc='96041 -127250 -3566 -2966'/>
+  </territory>
+  
+
+  <territory name='schuttgart21_2214_31' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='1' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='90881 -111469 -3508 -3108'/>
+    <zone loc='91473 -110929 -3508 -3108'/>
+    <zone loc='91351 -110749 -3508 -3108'/>
+    <zone loc='90611 -110591 -3508 -3108'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_32' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='1' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='90419 -110540 -3476 -3076'/>
+    <zone loc='91434 -110759 -3476 -3076'/>
+    <zone loc='91632 -110590 -3476 -3076'/>
+    <zone loc='91616 -110254 -3476 -3076'/>
+    <zone loc='90733 -110135 -3476 -3076'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_33' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='1' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='90735 -110126 -3448 -3048'/>
+    <zone loc='91613 -110244 -3448 -3048'/>
+    <zone loc='91596 -109552 -3448 -3048'/>
+    <zone loc='90959 -109850 -3448 -3048'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_34' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='90412 -110524 -3412 -3012'/>
+    <zone loc='90938 -109857 -3412 -3012'/>
+    <zone loc='90521 -109482 -3412 -3012'/>
+    <zone loc='89965 -109892 -3412 -3012'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_35' controller='default_maker' start_active='true' max='10'>
+    <npc id='22809' count='1' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='1' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='1' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='89497 -109718 -3424 -3024'/>
+    <zone loc='89515 -110203 -3424 -3024'/>
+    <zone loc='90493 -109480 -3424 -3024'/>
+    <zone loc='89709 -109480 -3424 -3024'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_36' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='1' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='89882 -110652 -3432 -3032'/>
+    <zone loc='90378 -110500 -3432 -3032'/>
+    <zone loc='89953 -109899 -3432 -3032'/>
+    <zone loc='89503 -110224 -3432 -3032'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_46' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='3' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='95443 -108395 -3372 -2972'/>
+    <zone loc='96593 -107192 -3372 -2972'/>
+    <zone loc='96048 -106964 -3372 -2972'/>
+    <zone loc='95190 -107791 -3372 -2972'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_48' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='3' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='95188 -104093 -3388 -2988'/>
+    <zone loc='96018 -104920 -3388 -2988'/>
+    <zone loc='96732 -104636 -3388 -2988'/>
+    <zone loc='95461 -103386 -3388 -2988'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_50' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='3' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='92313 -104920 -3404 -3004'/>
+    <zone loc='93105 -104130 -3404 -3004'/>
+    <zone loc='92833 -103432 -3404 -3004'/>
+    <zone loc='91627 -104644 -3404 -3004'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_52' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='92879 -108414 -3404 -3004'/>
+    <zone loc='93130 -107747 -3404 -3004'/>
+    <zone loc='92331 -106983 -3404 -3004'/>
+    <zone loc='91718 -107232 -3404 -3004'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_54' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='93551 -107388 -3412 -3012'/>
+    <zone loc='94815 -107382 -3412 -3012'/>
+    <zone loc='95236 -106937 -3412 -3012'/>
+    <zone loc='94649 -106385 -3412 -3012'/>
+    <zone loc='93693 -106385 -3412 -3012'/>
+    <zone loc='93132 -106956 -3412 -3012'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_55' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='-1' count='2' respawn='30s' rand='5s'/> <!-- NoNameNpc -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='95257 -106932 -3380 -2980'/>
+    <zone loc='95644 -106544 -3380 -2980'/>
+    <zone loc='95644 -105254 -3380 -2980'/>
+    <zone loc='95345 -104948 -3380 -2980'/>
+    <zone loc='94640 -105422 -3380 -2980'/>
+    <zone loc='94670 -106382 -3380 -2980'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_56' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='94665 -105389 -3384 -2984'/>
+    <zone loc='95332 -104937 -3384 -2984'/>
+    <zone loc='94803 -104451 -3384 -2984'/>
+    <zone loc='93526 -104451 -3384 -2984'/>
+    <zone loc='92885 -105094 -3384 -2984'/>
+    <zone loc='93577 -105388 -3384 -2984'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_57' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='93116 -106937 -3373 -2973'/>
+    <zone loc='93687 -106366 -3373 -2973'/>
+    <zone loc='93685 -105867 -3373 -2973'/>
+    <zone loc='92720 -105476 -3373 -2973'/>
+    <zone loc='92731 -106541 -3373 -2973'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_61' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='1' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='87314 -108385 -3384 -2984'/>
+    <zone loc='88464 -107182 -3384 -2984'/>
+    <zone loc='87919 -106953 -3384 -2984'/>
+    <zone loc='87061 -107780 -3384 -2984'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_63' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='1' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='87055 -104083 -3392 -2992'/>
+    <zone loc='87885 -104910 -3392 -2992'/>
+    <zone loc='88599 -104625 -3392 -2992'/>
+    <zone loc='87328 -103375 -3392 -2992'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_65' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='1' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='84180 -104909 -3412 -3012'/>
+    <zone loc='84972 -104120 -3412 -3012'/>
+    <zone loc='84700 -103422 -3412 -3012'/>
+    <zone loc='83494 -104634 -3412 -3012'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_67' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='1' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='84727 -108432 -3512 -3112'/>
+    <zone loc='84993 -107737 -3512 -3112'/>
+    <zone loc='84194 -106973 -3512 -3112'/>
+    <zone loc='83553 -107236 -3512 -3112'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_69' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='85375 -107385 -3396 -2996'/>
+    <zone loc='86639 -107379 -3396 -2996'/>
+    <zone loc='87046 -106943 -3396 -2996'/>
+    <zone loc='86472 -106382 -3396 -2996'/>
+    <zone loc='85506 -106372 -3396 -2996'/>
+    <zone loc='84977 -106986 -3396 -2996'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_70' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='87070 -106947 -3424 -3024'/>
+    <zone loc='87462 -106538 -3424 -3024'/>
+    <zone loc='87455 -105242 -3424 -3024'/>
+    <zone loc='86511 -105731 -3424 -3024'/>
+    <zone loc='86484 -106365 -3424 -3024'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_71' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='86459 -105465 -3400 -3000'/>
+    <zone loc='87234 -105013 -3400 -3000'/>
+    <zone loc='86636 -104438 -3400 -3000'/>
+    <zone loc='85350 -104418 -3400 -3000'/>
+    <zone loc='84914 -104859 -3400 -3000'/>
+    <zone loc='85502 -105443 -3400 -3000'/>
+  </territory>
+
+  <territory name='schuttgart21_2214_72' controller='default_maker' start_active='true' max='15'>
+    <npc id='22809' count='2' respawn='30s' rand='5s'/> <!-- Guard Golem -->
+    <npc id='22810' count='3' respawn='30s' rand='5s'/> <!-- Micro Scout Golem -->
+    <npc id='22811' count='2' respawn='30s' rand='5s'/> <!-- Great Chaos Golem -->
+    <npc id='22812' count='1' respawn='30s' rand='5s'/> <!-- Boom Golem -->
+
+    <zone loc='84967 -106971 -3397 -2997'/>
+    <zone loc='85495 -106355 -3397 -2997'/>
+    <zone loc='85502 -105469 -3397 -2997'/>
+    <zone loc='84906 -104868 -3397 -2997'/>
+    <zone loc='84525 -105273 -3397 -2997'/>
+    <zone loc='84535 -106528 -3397 -2997'/>
+  </territory>
+  
+
+  <territory name='schuttgart12_2314_01' controller='default_maker' start_active='true' max='8'>
+    <npc id='22080' count='2' respawn='40s' rand='10s' prvt='22079 1 0s;22079 1 0s;22079 1 0s;' /> <!-- Massive Maze Bandersnatch [Lost Bandersnatch; Lost Bandersnatch; Lost Bandersnatch; ] -->
+
+    <zone loc='105313 -115297 -3096 -2396'/>
+    <zone loc='108270 -115860 -3096 -2396'/>
+    <zone loc='107646 -114609 -3096 -2396'/>
+    <zone loc='104868 -114681 -3096 -2396'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_02' controller='default_maker' start_active='true' max='6'>
+    <npc id='22081' count='3' respawn='40s' rand='10s'/> <!-- Lost Watcher -->
+    <npc id='22082' count='3' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+
+    <zone loc='103826 -117679 -2936 -2236'/>
+    <zone loc='104554 -116458 -2936 -2236'/>
+    <zone loc='104939 -115260 -2936 -2236'/>
+    <zone loc='104380 -115064 -2936 -2236'/>
+    <zone loc='104131 -116113 -2936 -2236'/>
+    <zone loc='103223 -116437 -2936 -2236'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_03' controller='default_maker' start_active='true' max='8'>
+    <npc id='22080' count='2' respawn='40s' rand='10s' prvt='22079 1 0s;22079 1 0s;22079 1 0s;' /> <!-- Massive Maze Bandersnatch [Lost Bandersnatch; Lost Bandersnatch; Lost Bandersnatch; ] -->
+
+    <zone loc='105137 -118958 -2976 -2276'/>
+    <zone loc='106043 -119100 -2976 -2276'/>
+    <zone loc='106794 -118067 -2976 -2276'/>
+    <zone loc='105242 -117482 -2976 -2276'/>
+    <zone loc='104685 -118015 -2976 -2276'/>
+    <zone loc='105328 -118322 -2976 -2276'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_04' controller='default_maker' start_active='true' max='9'>
+    <npc id='22080' count='1' respawn='40s' rand='10s' prvt='22079 1 0s;22079 1 0s;22079 1 0s;' /> <!-- Massive Maze Bandersnatch [Lost Bandersnatch; Lost Bandersnatch; Lost Bandersnatch; ] -->
+    <npc id='22081' count='2' respawn='40s' rand='10s'/> <!-- Lost Watcher -->
+    <npc id='22082' count='3' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+
+    <zone loc='106806 -118059 -2920 -2220'/>
+    <zone loc='107818 -116958 -2920 -2220'/>
+    <zone loc='110214 -117388 -2920 -2220'/>
+    <zone loc='109144 -116037 -2920 -2220'/>
+    <zone loc='107414 -115693 -2920 -2220'/>
+    <zone loc='106217 -117817 -2920 -2220'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_05' controller='default_maker' start_active='true' max='8'>
+    <npc id='22081' count='2' respawn='40s' rand='10s'/> <!-- Lost Watcher -->
+    <npc id='22082' count='2' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+    <npc id='22084' count='1' respawn='40s' rand='10s' prvt='22083 1 0s;22083 1 0s;22083 1 0s;' /> <!-- Panthera [Baby Panthera; Baby Panthera; Baby Panthera; ] -->
+
+    <zone loc='112188 -120985 -2952 -2252'/>
+    <zone loc='113254 -120995 -2952 -2252'/>
+    <zone loc='113762 -119223 -2952 -2252'/>
+    <zone loc='111542 -118132 -2952 -2252'/>
+    <zone loc='112210 -119294 -2952 -2252'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_06' controller='default_maker' start_active='true' max='8'>
+    <npc id='22081' count='2' respawn='40s' rand='10s'/> <!-- Lost Watcher -->
+    <npc id='22082' count='2' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+    <npc id='22084' count='1' respawn='40s' rand='10s' prvt='22083 1 0s;22083 1 0s;22083 1 0s;' /> <!-- Panthera [Baby Panthera; Baby Panthera; Baby Panthera; ] -->
+
+    <zone loc='113584 -119107 -2952 -2252'/>
+    <zone loc='115965 -118714 -2952 -2252'/>
+    <zone loc='114787 -117850 -2952 -2252'/>
+    <zone loc='111417 -118067 -2952 -2252'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_07' controller='default_maker' start_active='true' max='13'>
+    <npc id='22084' count='2' respawn='40s' rand='10s' prvt='22083 1 0s;22083 1 0s;22083 1 0s;' /> <!-- Panthera [Baby Panthera; Baby Panthera; Baby Panthera; ] -->
+    <npc id='22085' count='3' respawn='40s' rand='10s'/> <!-- Lost Gargoyle -->
+    <npc id='22086' count='2' respawn='40s' rand='10s'/> <!-- Lost Gargoyle Youngling -->
+
+    <zone loc='117055 -122031 -3156 -2456'/>
+    <zone loc='119463 -121746 -3156 -2456'/>
+    <zone loc='119061 -120288 -3156 -2456'/>
+    <zone loc='119945 -119719 -3156 -2456'/>
+    <zone loc='118592 -119242 -3156 -2456'/>
+    <zone loc='116179 -121448 -3156 -2456'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_08' controller='default_maker' start_active='true' max='4'>
+    <npc id='22080' count='1' respawn='40s' rand='10s' prvt='22079 1 0s;22079 1 0s;22079 1 0s;' /> <!-- Massive Maze Bandersnatch [Lost Bandersnatch; Lost Bandersnatch; Lost Bandersnatch; ] -->
+
+    <zone loc='117738 -105679 -1596 -996'/>
+    <zone loc='118697 -105963 -1596 -996'/>
+    <zone loc='118778 -104571 -1596 -996'/>
+    <zone loc='117562 -104449 -1596 -996'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_09' controller='default_maker' start_active='true' max='4'>
+    <npc id='22081' count='2' respawn='40s' rand='10s'/> <!-- Lost Watcher -->
+    <npc id='22082' count='2' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+
+    <zone loc='121051 -107210 -2640 -1940'/>
+    <zone loc='122281 -107061 -2640 -1940'/>
+    <zone loc='121780 -105953 -2640 -1940'/>
+    <zone loc='120835 -106129 -2640 -1940'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_10' controller='default_maker' start_active='true' max='4'>
+    <npc id='22084' count='1' respawn='40s' rand='10s' prvt='22083 1 0s;22083 1 0s;22083 1 0s;' /> <!-- Panthera [Baby Panthera; Baby Panthera; Baby Panthera; ] -->
+
+    <zone loc='123012 -105411 -3020 -2320'/>
+    <zone loc='123686 -105356 -3020 -2320'/>
+    <zone loc='123131 -103910 -3020 -2320'/>
+    <zone loc='122227 -104493 -3020 -2320'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_11' controller='default_maker' start_active='true' max='4'>
+    <npc id='22085' count='2' respawn='40s' rand='10s'/> <!-- Lost Gargoyle -->
+    <npc id='22086' count='2' respawn='40s' rand='10s'/> <!-- Lost Gargoyle Youngling -->
+
+    <zone loc='124161 -103587 -3120 -2420'/>
+    <zone loc='124714 -104644 -3120 -2420'/>
+    <zone loc='125201 -104254 -3120 -2420'/>
+    <zone loc='124562 -102940 -3120 -2420'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_12' controller='default_maker' start_active='true' max='11'>
+    <npc id='22088' count='1' respawn='50s' rand='10s'/> <!-- Pronghorn -->
+    <npc id='22084' count='1' respawn='40s' rand='10s' prvt='22083 1 0s;22083 1 0s;22083 1 0s;' /> <!-- Panthera [Baby Panthera; Baby Panthera; Baby Panthera; ] -->
+
+    <zone loc='127163 -107967 -2855 -2355'/>
+    <zone loc='127927 -108134 -2855 -2355'/>
+    <zone loc='129021 -106727 -2855 -2355'/>
+    <zone loc='127772 -105965 -2855 -2355'/>
+    <zone loc='127270 -106870 -2855 -2355'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_13' controller='default_maker' start_active='true' max='15'>
+    <npc id='22088' count='1' respawn='50s' rand='10s'/> <!-- Pronghorn -->
+    <npc id='22089' count='2' respawn='40s' rand='10s'/> <!-- Ice Tarantula -->
+    <npc id='22090' count='2' respawn='40s' rand='10s'/> <!-- Frost Tarantula -->
+    <npc id='22092' count='1' respawn='40s' rand='10s' prvt='22091 1 0s;22091 1 0s;22091 1 0s;' /> <!-- Frost Iron Golem [Lost Iron Golem; Lost Iron Golem; Lost Iron Golem; ] -->
+
+    <zone loc='123051 -111586 -2848 -2148'/>
+    <zone loc='125523 -111656 -2848 -2148'/>
+    <zone loc='125048 -109571 -2848 -2148'/>
+    <zone loc='123808 -108593 -2848 -2148'/>
+    <zone loc='122395 -110407 -2848 -2148'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_14' controller='default_maker' start_active='true' max='11'>
+    <npc id='22088' count='1' respawn='50s' rand='10s'/> <!-- Pronghorn -->
+    <npc id='22089' count='2' respawn='40s' rand='10s'/> <!-- Ice Tarantula -->
+    <npc id='22090' count='2' respawn='40s' rand='10s'/> <!-- Frost Tarantula -->
+
+    <zone loc='128102 -112295 -3196 -2496'/>
+    <zone loc='128770 -111302 -3196 -2496'/>
+    <zone loc='128178 -109679 -3196 -2496'/>
+    <zone loc='127195 -110520 -3196 -2496'/>
+    <zone loc='127534 -111154 -3196 -2496'/>
+    <zone loc='127209 -111995 -3196 -2496'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_15' controller='default_maker' start_active='true' max='13'>
+    <npc id='22085' count='3' respawn='40s' rand='10s'/> <!-- Lost Gargoyle -->
+    <npc id='22086' count='3' respawn='40s' rand='10s'/> <!-- Lost Gargoyle Youngling -->
+    <npc id='22088' count='1' respawn='50s' rand='10s'/> <!-- Pronghorn -->
+
+    <zone loc='119682 -114587 -2804 -2104'/>
+    <zone loc='121200 -114894 -2804 -2104'/>
+    <zone loc='122078 -111994 -2804 -2104'/>
+    <zone loc='120341 -111808 -2804 -2104'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_16' controller='default_maker' start_active='true' max='5'>
+    <npc id='22089' count='2' respawn='40s' rand='10s'/> <!-- Ice Tarantula -->
+    <npc id='22090' count='3' respawn='40s' rand='10s'/> <!-- Frost Tarantula -->
+
+    <zone loc='123477 -113391 -2956 -2256'/>
+    <zone loc='123986 -114295 -2956 -2256'/>
+    <zone loc='124870 -114366 -2956 -2256'/>
+    <zone loc='126279 -114094 -2956 -2256'/>
+    <zone loc='124507 -113029 -2956 -2256'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_17' controller='default_maker' start_active='true' max='12'>
+    <npc id='22089' count='2' respawn='40s' rand='10s'/> <!-- Ice Tarantula -->
+    <npc id='22090' count='2' respawn='40s' rand='10s'/> <!-- Frost Tarantula -->
+    <npc id='22092' count='2' respawn='40s' rand='10s' prvt='22091 1 0s;22091 1 0s;22091 1 0s;' /> <!-- Frost Iron Golem [Lost Iron Golem; Lost Iron Golem; Lost Iron Golem; ] -->
+
+    <zone loc='125940 -116971 -2980 -2280'/>
+    <zone loc='128483 -115159 -2980 -2280'/>
+    <zone loc='127126 -113912 -2980 -2280'/>
+    <zone loc='124886 -114383 -2980 -2280'/>
+    <zone loc='126048 -115748 -2980 -2280'/>
+    <zone loc='125091 -116172 -2980 -2280'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_18' controller='default_maker' start_active='true' max='7'>
+    <npc id='22089' count='2' respawn='40s' rand='10s'/> <!-- Ice Tarantula -->
+    <npc id='22090' count='1' respawn='40s' rand='10s'/> <!-- Frost Tarantula -->
+    <npc id='22092' count='1' respawn='40s' rand='10s' prvt='22091 1 0s;22091 1 0s;22091 1 0s;' /> <!-- Frost Iron Golem [Lost Iron Golem; Lost Iron Golem; Lost Iron Golem; ] -->
+
+    <zone loc='124317 -117339 -3060 -2360'/>
+    <zone loc='124679 -116119 -3060 -2360'/>
+    <zone loc='123047 -115934 -3060 -2360'/>
+    <zone loc='122759 -116345 -3060 -2360'/>
+    <zone loc='123417 -118121 -3060 -2360'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_19' controller='default_maker' start_active='true' max='6'>
+    <npc id='22089' count='1' respawn='40s' rand='10s'/> <!-- Ice Tarantula -->
+    <npc id='22090' count='1' respawn='40s' rand='10s'/> <!-- Frost Tarantula -->
+    <npc id='22092' count='1' respawn='40s' rand='10s' prvt='22091 1 0s;22091 1 0s;22091 1 0s;' /> <!-- Frost Iron Golem [Lost Iron Golem; Lost Iron Golem; Lost Iron Golem; ] -->
+
+    <zone loc='126739 -120275 -2916 -2216'/>
+    <zone loc='127262 -119304 -2916 -2216'/>
+    <zone loc='126233 -118516 -2916 -2216'/>
+    <zone loc='125666 -119281 -2916 -2216'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_20' controller='default_maker' start_active='true' max='18'>
+    <npc id='22092' count='1' respawn='40s' rand='10s' prvt='22091 1 0s;22091 1 0s;22091 1 0s;' /> <!-- Frost Iron Golem [Lost Iron Golem; Lost Iron Golem; Lost Iron Golem; ] -->
+    <npc id='22094' count='2' respawn='50s' rand='10s'/> <!-- Frost Buffalo -->
+
+    <zone loc='126810 -120160 -2658 -2058'/>
+    <zone loc='127724 -120438 -2658 -2058'/>
+    <zone loc='128715 -119079 -2658 -2058'/>
+    <zone loc='127879 -118484 -2658 -2058'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_21' controller='default_maker' start_active='true' max='8'>
+    <npc id='22096' count='1' respawn='40s' rand='10s' prvt='22095 1 0s;22095 1 0s;22095 1 0s;' /> <!-- Ursus [Ursus Cub; Ursus Cub; Ursus Cub; ] -->
+    <npc id='22097' count='2' respawn='40s' rand='10s'/> <!-- Lost Yeti -->
+    <npc id='22098' count='2' respawn='40s' rand='10s'/> <!-- Frost Yeti -->
+
+    <zone loc='127519 -123863 -2920 -2220'/>
+    <zone loc='129306 -123319 -2920 -2220'/>
+    <zone loc='128821 -122075 -2920 -2220'/>
+    <zone loc='126284 -122986 -2920 -2220'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_22' controller='default_maker' start_active='true' max='6'>
+    <npc id='22096' count='1' respawn='40s' rand='10s' prvt='22095 1 0s;22095 1 0s;22095 1 0s;' /> <!-- Ursus [Ursus Cub; Ursus Cub; Ursus Cub; ] -->
+    <npc id='22097' count='1' respawn='40s' rand='10s'/> <!-- Lost Yeti -->
+    <npc id='22098' count='1' respawn='40s' rand='10s'/> <!-- Frost Yeti -->
+
+    <zone loc='127020 -125557 -2852 -2152'/>
+    <zone loc='128740 -125572 -2852 -2152'/>
+    <zone loc='128928 -124921 -2852 -2152'/>
+    <zone loc='127020 -124808 -2852 -2152'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_23' controller='default_maker' start_active='true' max='8'>
+    <npc id='22096' count='1' respawn='40s' rand='10s' prvt='22095 1 0s;22095 1 0s;22095 1 0s;' /> <!-- Ursus [Ursus Cub; Ursus Cub; Ursus Cub; ] -->
+    <npc id='22097' count='2' respawn='40s' rand='10s'/> <!-- Lost Yeti -->
+    <npc id='22098' count='2' respawn='40s' rand='10s'/> <!-- Frost Yeti -->
+
+    <zone loc='123171 -127577 -3104 -2404'/>
+    <zone loc='125006 -127378 -3104 -2404'/>
+    <zone loc='125540 -126301 -3104 -2404'/>
+    <zone loc='125112 -125819 -3104 -2404'/>
+    <zone loc='123180 -127080 -3104 -2404'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_24' controller='default_maker' start_active='true' max='8'>
+    <npc id='22096' count='2' respawn='40s' rand='10s' prvt='22095 1 0s;22095 1 0s;22095 1 0s;' /> <!-- Ursus [Ursus Cub; Ursus Cub; Ursus Cub; ] -->
+
+    <zone loc='123946 -125293 -3080 -2380'/>
+    <zone loc='123460 -125252 -3080 -2380'/>
+    <zone loc='123245 -124636 -3080 -2380'/>
+    <zone loc='122818 -124615 -3080 -2380'/>
+    <zone loc='122930 -125197 -3080 -2380'/>
+    <zone loc='122368 -125474 -3080 -2380'/>
+    <zone loc='123825 -125921 -3080 -2380'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_25' controller='default_maker' start_active='true' max='11'>
+    <npc id='22092' count='1' respawn='40s' rand='10s' prvt='22091 1 0s;22091 1 0s;22091 1 0s;' /> <!-- Frost Iron Golem [Lost Iron Golem; Lost Iron Golem; Lost Iron Golem; ] -->
+    <npc id='22094' count='1' respawn='50s' rand='10s'/> <!-- Frost Buffalo -->
+
+    <zone loc='124748 -122966 -2936 -1936'/>
+    <zone loc='125382 -122480 -2936 -1936'/>
+    <zone loc='124539 -121429 -2936 -1936'/>
+    <zone loc='123990 -121829 -2936 -1936'/>
+    <zone loc='123911 -122440 -2936 -1936'/>
+    <zone loc='124229 -122850 -2936 -1936'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_26' controller='default_maker' start_active='true' max='8'>
+    <npc id='22096' count='1' respawn='40s' rand='10s' prvt='22095 1 0s;22095 1 0s;22095 1 0s;' /> <!-- Ursus [Ursus Cub; Ursus Cub; Ursus Cub; ] -->
+    <npc id='22092' count='1' respawn='40s' rand='10s' prvt='22091 1 0s;22091 1 0s;22091 1 0s;' /> <!-- Frost Iron Golem [Lost Iron Golem; Lost Iron Golem; Lost Iron Golem; ] -->
+
+    <zone loc='121295 -127706 -3276 -2576'/>
+    <zone loc='121878 -126820 -3276 -2576'/>
+    <zone loc='121324 -126288 -3276 -2576'/>
+    <zone loc='120349 -126816 -3276 -2576'/>
+    <zone loc='121139 -127078 -3276 -2576'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_27' controller='default_maker' start_active='true' max='11'>
+    <npc id='22085' count='2' respawn='40s' rand='10s'/> <!-- Lost Gargoyle -->
+    <npc id='22086' count='2' respawn='40s' rand='10s'/> <!-- Lost Gargoyle Youngling -->
+    <npc id='22088' count='1' respawn='50s' rand='10s'/> <!-- Pronghorn -->
+
+    <zone loc='119275 -102188 -3455 -2955'/>
+    <zone loc='120959 -102262 -3455 -2955'/>
+    <zone loc='121521 -100792 -3455 -2955'/>
+    <zone loc='119433 -100432 -3455 -2955'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_28' controller='default_maker' start_active='true' max='12'>
+    <npc id='22081' count='2' respawn='40s' rand='10s'/> <!-- Lost Watcher -->
+    <npc id='22082' count='2' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+    <npc id='22080' count='1' respawn='40s' rand='10s' prvt='22079 1 0s;22079 1 0s;22079 1 0s;' /> <!-- Massive Maze Bandersnatch [Lost Bandersnatch; Lost Bandersnatch; Lost Bandersnatch; ] -->
+    <npc id='22084' count='1' respawn='40s' rand='10s' prvt='22083 1 0s;22083 1 0s;22083 1 0s;' /> <!-- Panthera [Baby Panthera; Baby Panthera; Baby Panthera; ] -->
+
+    <zone loc='112260 -102338 -4184 -3484'/>
+    <zone loc='114820 -101810 -4184 -3484'/>
+    <zone loc='115263 -99992 -4184 -3484'/>
+    <zone loc='111630 -100579 -4184 -3484'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_29' controller='default_maker' start_active='true' max='8'>
+    <npc id='22085' count='2' respawn='40s' rand='10s'/> <!-- Lost Gargoyle -->
+    <npc id='22086' count='2' respawn='40s' rand='10s'/> <!-- Lost Gargoyle Youngling -->
+    <npc id='22084' count='1' respawn='40s' rand='10s' prvt='22083 1 0s;22083 1 0s;22083 1 0s;' /> <!-- Panthera [Baby Panthera; Baby Panthera; Baby Panthera; ] -->
+
+    <zone loc='106052 -105180 -3884 -3184'/>
+    <zone loc='107914 -103747 -3884 -3184'/>
+    <zone loc='107574 -101927 -3884 -3184'/>
+    <zone loc='104411 -104629 -3884 -3184'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_30' controller='default_maker' start_active='true' max='2'>
+    <npc id='22081' count='1' respawn='40s' rand='10s'/> <!-- Lost Watcher -->
+    <npc id='22082' count='1' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+
+    <zone loc='103172 -113631 -3656 -2956'/>
+    <zone loc='104355 -112867 -3656 -2956'/>
+    <zone loc='104355 -112012 -3656 -2956'/>
+    <zone loc='102747 -112922 -3656 -2956'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_31' controller='default_maker' start_active='true' max='1'>
+    <npc id='22081' count='1' respawn='40s' rand='10s'/> <!-- Lost Watcher -->
+
+    <zone loc='104393 -112858 -3352 -2552'/>
+    <zone loc='105237 -112106 -3352 -2552'/>
+    <zone loc='105406 -111153 -3352 -2552'/>
+    <zone loc='104381 -112015 -3352 -2552'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_32' controller='default_maker' start_active='true' max='1'>
+    <npc id='22082' count='1' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+
+    <zone loc='105352 -111555 -3236 -2336'/>
+    <zone loc='107179 -112053 -3236 -2336'/>
+    <zone loc='107506 -111635 -3236 -2336'/>
+    <zone loc='105437 -111052 -3236 -2336'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_33' controller='default_maker' start_active='true' max='2'>
+    <npc id='22081' count='1' respawn='40s' rand='10s'/> <!-- Lost Watcher -->
+    <npc id='22082' count='1' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+
+    <zone loc='107255 -111989 -2636 -1936'/>
+    <zone loc='109274 -113294 -2636 -1936'/>
+    <zone loc='109670 -113004 -2636 -1936'/>
+    <zone loc='107525 -111626 -2636 -1936'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_34' controller='default_maker' start_active='true' max='1'>
+    <npc id='22082' count='1' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+
+    <zone loc='109126 -114370 -2336 -1836'/>
+    <zone loc='110110 -113540 -2336 -1836'/>
+    <zone loc='109677 -113006 -2336 -1836'/>
+    <zone loc='108783 -114091 -2336 -1836'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_35' controller='default_maker' start_active='true' max='1'>
+    <npc id='22082' count='1' respawn='40s' rand='10s'/> <!-- Elder Lost Watcher -->
+
+    <zone loc='110806 -113394 -1924 -1224'/>
+    <zone loc='111461 -112847 -1924 -1224'/>
+    <zone loc='111122 -112393 -1924 -1224'/>
+    <zone loc='110491 -112940 -1924 -1224'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_36' controller='default_maker' start_active='true' max='1'>
+    <npc id='22085' count='1' respawn='40s' rand='10s'/> <!-- Lost Gargoyle -->
+
+    <zone loc='115834 -112323 -1240 -640'/>
+    <zone loc='115988 -112146 -1240 -640'/>
+    <zone loc='115611 -111653 -1240 -640'/>
+    <zone loc='115465 -111745 -1240 -640'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_37' controller='default_maker' start_active='true' max='1'>
+    <npc id='22085' count='1' respawn='40s' rand='10s'/> <!-- Lost Gargoyle -->
+
+    <zone loc='116031 -114373 -1716 -916'/>
+    <zone loc='116444 -113869 -1716 -916'/>
+    <zone loc='116229 -112368 -1716 -916'/>
+    <zone loc='116019 -112491 -1716 -916'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_38' controller='default_maker' start_active='true' max='1'>
+    <npc id='22086' count='1' respawn='40s' rand='10s'/> <!-- Lost Gargoyle Youngling -->
+
+    <zone loc='116777 -116047 -2048 -1448'/>
+    <zone loc='117057 -115745 -2048 -1448'/>
+    <zone loc='116444 -114799 -2048 -1448'/>
+    <zone loc='116102 -114906 -2048 -1448'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_39' controller='default_maker' start_active='true' max='1'>
+    <npc id='22086' count='1' respawn='40s' rand='10s'/> <!-- Lost Gargoyle Youngling -->
+
+    <zone loc='117270 -116618 -2436 -1636'/>
+    <zone loc='118327 -116884 -2436 -1636'/>
+    <zone loc='118519 -116585 -2436 -1636'/>
+    <zone loc='117093 -116260 -2436 -1636'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_40' controller='default_maker' start_active='true' max='1'>
+    <npc id='22089' count='1' respawn='40s' rand='10s'/> <!-- Ice Tarantula -->
+
+    <zone loc='120459 -117827 -2696 -2096'/>
+    <zone loc='121431 -118682 -2696 -2096'/>
+    <zone loc='121639 -118488 -2696 -2096'/>
+    <zone loc='120684 -117674 -2696 -2096'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_41' controller='default_maker' start_active='true' max='1'>
+    <npc id='22090' count='1' respawn='40s' rand='10s'/> <!-- Frost Tarantula -->
+
+    <zone loc='121860 -119480 -2888 -2288'/>
+    <zone loc='122187 -119726 -2888 -2288'/>
+    <zone loc='122402 -118835 -2888 -2288'/>
+    <zone loc='121852 -118708 -2888 -2288'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_42' controller='default_maker' start_active='true' max='1'>
+    <npc id='22097' count='1' respawn='40s' rand='10s'/> <!-- Lost Yeti -->
+
+    <zone loc='121941 -121703 -2936 -2436'/>
+    <zone loc='122228 -121584 -2936 -2436'/>
+    <zone loc='122490 -120573 -2936 -2436'/>
+    <zone loc='122211 -120605 -2936 -2436'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_43' controller='default_maker' start_active='true' max='1'>
+    <npc id='22097' count='1' respawn='40s' rand='10s'/> <!-- Lost Yeti -->
+
+    <zone loc='120725 -122839 -2892 -2292'/>
+    <zone loc='121055 -123127 -2892 -2292'/>
+    <zone loc='121339 -122074 -2892 -2292'/>
+    <zone loc='121143 -121895 -2892 -2292'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_44' controller='default_maker' start_active='true' max='1'>
+    <npc id='22098' count='1' respawn='40s' rand='10s'/> <!-- Frost Yeti -->
+
+    <zone loc='120600 -123995 -3080 -2480'/>
+    <zone loc='120847 -123958 -3080 -2480'/>
+    <zone loc='121005 -123182 -3080 -2480'/>
+    <zone loc='120851 -123042 -3080 -2480'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_45' controller='default_maker' start_active='true' max='1'>
+    <npc id='22098' count='1' respawn='40s' rand='10s'/> <!-- Frost Yeti -->
+
+    <zone loc='120428 -125618 -2984 -2384'/>
+    <zone loc='120693 -125283 -2984 -2384'/>
+    <zone loc='120247 -124711 -2984 -2384'/>
+    <zone loc='119991 -124841 -2984 -2384'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_46' controller='default_maker' start_active='true' max='1'>
+    <npc id='22081' count='1' respawn='40s' rand='10s'/> <!-- Lost Watcher -->
+
+    <zone loc='109289 -104938 -3204 -2304'/>
+    <zone loc='109922 -105171 -3204 -2304'/>
+    <zone loc='109614 -103262 -3204 -2304'/>
+    <zone loc='108990 -103967 -3204 -2304'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_47' controller='default_maker' start_active='true' max='1'>
+    <npc id='22085' count='1' respawn='40s' rand='10s'/> <!-- Lost Gargoyle -->
+
+    <zone loc='110209 -106521 -2656 -1756'/>
+    <zone loc='110486 -106041 -2656 -1756'/>
+    <zone loc='109943 -105215 -2656 -1756'/>
+    <zone loc='109348 -104981 -2656 -1756'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_48' controller='default_maker' start_active='true' max='11'>
+    <npc id='22088' count='1' respawn='50s' rand='10s'/> <!-- Pronghorn -->
+    <npc id='22086' count='2' respawn='40s' rand='10s'/> <!-- Lost Gargoyle Youngling -->
+    <npc id='22090' count='2' respawn='40s' rand='10s'/> <!-- Frost Tarantula -->
+
+    <zone loc='126220 -104753 -2941 -2441'/>
+    <zone loc='127489 -104895 -2941 -2441'/>
+    <zone loc='127837 -104168 -2941 -2441'/>
+    <zone loc='126348 -103970 -2941 -2441'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_49' controller='default_maker' start_active='true' max='7'>
+    <npc id='22094' count='1' respawn='50s' rand='10s'/> <!-- Frost Buffalo -->
+
+    <zone loc='127850 -127844 -2720 -2320'/>
+    <zone loc='128364 -127758 -2720 -2320'/>
+    <zone loc='128326 -127159 -2720 -2320'/>
+    <zone loc='127802 -127539 -2720 -2320'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_50' controller='default_maker' start_active='true' max='7'>
+    <npc id='22094' count='1' respawn='50s' rand='10s'/> <!-- Frost Buffalo -->
+
+    <zone loc='122576 -123720 -2728 -2328'/>
+    <zone loc='122862 -123751 -2728 -2328'/>
+    <zone loc='122990 -123248 -2728 -2328'/>
+    <zone loc='122732 -123260 -2728 -2328'/>
+  </territory>
+
+  <territory name='schuttgart12_2314_51' controller='default_maker' start_active='true' max='7'>
+    <npc id='22094' count='1' respawn='50s' rand='10s'/> <!-- Frost Buffalo -->
+
+    <zone loc='126866 -127904 -2728 -2328'/>
+    <zone loc='127174 -127977 -2728 -2328'/>
+    <zone loc='127307 -127688 -2728 -2328'/>
+    <zone loc='126916 -127575 -2728 -2328'/>
+  </territory>
+  
+
+  <territory name='schuttgart06_2512_03' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='174111 -173291 3448 3648'/>
+    <zone loc='174370 -173136 3448 3648'/>
+    <zone loc='174394 -172602 3448 3648'/>
+    <zone loc='173788 -172936 3448 3648'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_04' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='174575 -173086 3276 3526'/>
+    <zone loc='175142 -173076 3276 3526'/>
+    <zone loc='175132 -172597 3276 3526'/>
+    <zone loc='174575 -172597 3276 3526'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_05' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='175185 -173083 3152 3402'/>
+    <zone loc='175742 -173083 3152 3402'/>
+    <zone loc='175742 -172555 3152 3402'/>
+    <zone loc='175175 -172603 3152 3402'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_06' controller='default_maker' start_active='true' max='4'>
+    <npc id='22678' count='2' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+    <npc id='22689' count='1' param='PartyNum=1' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22690' count='2' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='176471 -173680 3144 3344'/>
+    <zone loc='176739 -173767 3144 3344'/>
+    <zone loc='177288 -173789 3144 3344'/>
+    <zone loc='177349 -172294 3144 3344'/>
+    <zone loc='176706 -172105 3144 3344'/>
+    <zone loc='176243 -172413 3144 3344'/>
+    <zone loc='176166 -173262 3144 3344'/>
+  </territory>
+  
+
+  <territory name='schuttgart06_2512_07' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='176904 -174859 3036 3286'/>
+    <zone loc='177439 -174847 3036 3286'/>
+    <zone loc='177379 -173941 3036 3286'/>
+    <zone loc='176808 -173929 3036 3286'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_08' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='176836 -175827 2848 3128'/>
+    <zone loc='177431 -175851 2848 3128'/>
+    <zone loc='177431 -174909 2848 3128'/>
+    <zone loc='176884 -174909 2848 3128'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_09' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='176940 -176589 2840 3040'/>
+    <zone loc='177370 -176427 2840 3040'/>
+    <zone loc='177428 -175904 2840 3040'/>
+    <zone loc='176859 -175950 2840 3040'/>
+    <zone loc='176520 -176074 2840 3040'/>
+    <zone loc='176532 -176593 2840 3040'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_10' controller='default_maker' start_active='true' max='2'>
+    <npc id='22678' count='2' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+    <npc id='22688' count='1' respawn='35s' rand='5s'/> <!-- Evil Spirits of the Mine -->
+    <npc id='22690' count='1' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+    <npc id='32651' count='1' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='175272 -176892 2820 3020'/>
+    <zone loc='175936 -176904 2820 3020'/>
+    <zone loc='175908 -175760 2820 3020'/>
+    <zone loc='175288 -175820 2820 3020'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_12' controller='default_maker' start_active='true' max='4'>
+    <npc id='22678' count='2' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+    <npc id='22689' count='1' param='PartyNum=2' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22690' count='2' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='173284 -177276 2276 2476'/>
+    <zone loc='175156 -177244 2276 2476'/>
+    <zone loc='175180 -175624 2276 2476'/>
+    <zone loc='173580 -175360 2276 2476'/>
+    <zone loc='173016 -175620 2276 2476'/>
+    <zone loc='172900 -176528 2276 2476'/>
+  </territory>
+  
+
+  <territory name='schuttgart06_2512_95' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='173887 -178208 2132 2412'/>
+    <zone loc='174340 -178208 2132 2412'/>
+    <zone loc='174317 -177270 2132 2412'/>
+    <zone loc='173817 -177293 2132 2412'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_13' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='173987 -179357 1984 2224'/>
+    <zone loc='174428 -179074 1984 2224'/>
+    <zone loc='174357 -178307 1984 2224'/>
+    <zone loc='173888 -178279 1984 2224'/>
+    <zone loc='173885 -179115 1984 2224'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_14' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='174581 -179844 1972 2172'/>
+    <zone loc='175149 -179844 1972 2172'/>
+    <zone loc='175163 -179389 1972 2172'/>
+    <zone loc='174382 -179234 1972 2172'/>
+    <zone loc='174043 -179489 1972 2172'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_15' controller='default_maker' start_active='true' max='4'>
+    <npc id='22678' count='2' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+    <npc id='22689' count='1' param='PartyNum=3' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22690' count='2' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='175351 -179837 1984 2184'/>
+    <zone loc='177488 -180068 1984 2184'/>
+    <zone loc='178289 -179532 1984 2184'/>
+    <zone loc='178292 -178810 1984 2184'/>
+    <zone loc='175861 -178835 1984 2184'/>
+  </territory>
+  
+
+  <territory name='schuttgart06_2512_16' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='176654 -178723 1824 2094'/>
+    <zone loc='177206 -178741 1824 2094'/>
+    <zone loc='177188 -177837 1824 2094'/>
+    <zone loc='176716 -177820 1824 2094'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_17' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='176688 -177731 1684 1954'/>
+    <zone loc='177152 -177714 1684 1954'/>
+    <zone loc='177187 -177268 1684 1954'/>
+    <zone loc='176656 -177260 1684 1954'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_18' controller='default_maker' start_active='true' max='4'>
+    <npc id='22678' count='2' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+    <npc id='22689' count='1' param='PartyNum=4' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22690' count='2' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='176580 -175744 1288 1488'/>
+    <zone loc='178180 -175772 1288 1488'/>
+    <zone loc='178140 -174108 1288 1488'/>
+    <zone loc='177304 -173952 1288 1488'/>
+    <zone loc='176544 -174512 1288 1488'/>
+  </territory>
+  
+
+  <territory name='schuttgart06_2512_19' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='177448 -176996 1296 1496'/>
+    <zone loc='178116 -177004 1296 1496'/>
+    <zone loc='178188 -175844 1296 1496'/>
+    <zone loc='177336 -175852 1296 1496'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_20' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='177584 -177931 1104 1384'/>
+    <zone loc='178031 -177966 1104 1384'/>
+    <zone loc='178066 -177063 1104 1384'/>
+    <zone loc='177549 -177081 1104 1384'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_21' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='177543 -179048 1000 1220'/>
+    <zone loc='177836 -179453 1000 1220'/>
+    <zone loc='178047 -179129 1000 1220'/>
+    <zone loc='178022 -178039 1000 1220'/>
+    <zone loc='177559 -177981 1000 1220'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_22' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='176602 -179699 1004 1204'/>
+    <zone loc='177400 -179647 1004 1204'/>
+    <zone loc='177822 -179482 1004 1204'/>
+    <zone loc='177464 -179042 1004 1204'/>
+    <zone loc='176561 -179177 1004 1204'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_23' controller='default_maker' start_active='true' max='4'>
+    <npc id='22679' count='3' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='3' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+    <npc id='22689' count='1' param='PartyNum=5' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22682' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior of Light -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='173716 -179888 988 1188'/>
+    <zone loc='176068 -179812 988 1188'/>
+    <zone loc='175960 -178744 988 1188'/>
+    <zone loc='174480 -178580 988 1188'/>
+    <zone loc='173648 -178560 988 1188'/>
+  </territory>
+  
+
+  <territory name='schuttgart06_2512_24' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='173884 -178387 820 1080'/>
+    <zone loc='174313 -178361 820 1080'/>
+    <zone loc='174326 -177549 820 1080'/>
+    <zone loc='173833 -177549 820 1080'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_25' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='173827 -177533 704 964'/>
+    <zone loc='174320 -177520 704 964'/>
+    <zone loc='174307 -176696 704 964'/>
+    <zone loc='173839 -176696 704 964'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_26' controller='default_maker' start_active='true' max='2'>
+    <npc id='22679' count='2' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+    <npc id='22682' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior of Light -->
+    <npc id='32651' count='1' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='173878 -176601 708 908'/>
+    <zone loc='174295 -176613 708 908'/>
+    <zone loc='174549 -176350 708 908'/>
+    <zone loc='174528 -175802 708 908'/>
+    <zone loc='174271 -175660 708 908'/>
+    <zone loc='173646 -175749 708 908'/>
+    <zone loc='173672 -176437 708 908'/>
+  </territory>
+  
+
+  <territory name='schuttgart06_2512_28' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='174631 -176355 592 842'/>
+    <zone loc='175430 -176304 592 842'/>
+    <zone loc='175379 -175785 592 842'/>
+    <zone loc='174618 -175862 592 842'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_29' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='175497 -176260 396 656'/>
+    <zone loc='176569 -176336 396 656'/>
+    <zone loc='176569 -175791 396 656'/>
+    <zone loc='175462 -175804 396 656'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_30' controller='default_maker' start_active='true' max='2'>
+    <npc id='22679' count='2' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+    <npc id='22682' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior of Light -->
+    <npc id='32651' count='1' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='176844 -176537 364 564'/>
+    <zone loc='177414 -176512 364 564'/>
+    <zone loc='177593 -176171 364 564'/>
+    <zone loc='177291 -175660 364 564'/>
+    <zone loc='176790 -175620 364 564'/>
+    <zone loc='176573 -175862 364 564'/>
+    <zone loc='176599 -176271 364 564'/>
+  </territory>
+  
+
+  <territory name='schuttgart06_2512_31' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='176873 -177296 304 554'/>
+    <zone loc='177379 -177283 304 554'/>
+    <zone loc='177392 -176559 304 554'/>
+    <zone loc='176843 -176674 304 554'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_32' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='176892 -178807 64 384'/>
+    <zone loc='177411 -178833 64 384'/>
+    <zone loc='177386 -177327 64 384'/>
+    <zone loc='176905 -177327 64 384'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_33' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='176720 -180052 92 292'/>
+    <zone loc='177172 -180200 92 292'/>
+    <zone loc='177628 -179784 92 292'/>
+    <zone loc='177474 -179280 92 292'/>
+    <zone loc='176916 -179048 92 292'/>
+    <zone loc='176616 -179436 92 292'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_34' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='173408 -184870 -1988 -1788'/>
+    <zone loc='173826 -184608 -1988 -1788'/>
+    <zone loc='173739 -182768 -1988 -1788'/>
+    <zone loc='173342 -182768 -1988 -1788'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_35' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='173418 -184934 -1932 -1732'/>
+    <zone loc='174099 -185328 -1932 -1732'/>
+    <zone loc='174930 -185150 -1932 -1732'/>
+    <zone loc='175298 -184734 -1932 -1732'/>
+    <zone loc='173627 -184834 -1932 -1732'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_36' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='175123 -185118 -1944 -1744'/>
+    <zone loc='175530 -185311 -1944 -1744'/>
+    <zone loc='177807 -185183 -1944 -1744'/>
+    <zone loc='177521 -184753 -1944 -1744'/>
+    <zone loc='175329 -184830 -1944 -1744'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_37' controller='default_maker' start_active='true' max='4'>
+    <npc id='22679' count='3' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+    <npc id='22689' count='1' param='PartyNum=6' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22688' count='1' respawn='35s' rand='5s'/> <!-- Evil Spirits of the Mine -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='177722 -184177 -1972 -1772'/>
+    <zone loc='178747 -184074 -1972 -1772'/>
+    <zone loc='179133 -182379 -1972 -1772'/>
+    <zone loc='178676 -182069 -1972 -1772'/>
+    <zone loc='177512 -182479 -1972 -1772'/>
+    <zone loc='177074 -183149 -1972 -1772'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_38' controller='default_maker' start_active='true' max='2'>
+    <npc id='22679' count='2' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+    <npc id='22688' count='2' respawn='35s' rand='5s'/> <!-- Evil Spirits of the Mine -->
+    <npc id='32651' count='1' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='177736 -181069 -1944 -1744'/>
+    <zone loc='178502 -180984 -1944 -1744'/>
+    <zone loc='178521 -179919 -1944 -1744'/>
+    <zone loc='178157 -179928 -1944 -1744'/>
+    <zone loc='177597 -180384 -1944 -1744'/>
+    <zone loc='177577 -180872 -1944 -1744'/>
+  </territory>
+  
+
+  <territory name='schuttgart06_2512_39' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22690' count='1' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+
+    <zone loc='177616 -180217 -1992 -1792'/>
+    <zone loc='178103 -179904 -1992 -1792'/>
+    <zone loc='177720 -179120 -1992 -1792'/>
+    <zone loc='177163 -179059 -1992 -1792'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_40' controller='default_maker' start_active='true' max='6'>
+    <npc id='22690' count='1' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+    <npc id='22689' count='1' param='PartyNum=21' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+
+    <zone loc='177196 -178984 -2128 -1928'/>
+    <zone loc='177748 -179096 -2128 -1928'/>
+    <zone loc='177532 -178140 -2128 -1928'/>
+    <zone loc='176984 -178140 -2128 -1928'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_41' controller='default_maker' start_active='true' max='3'>
+    <npc id='22690' count='3' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+
+    <zone loc='176968 -178072 -2288 -2038'/>
+    <zone loc='177556 -178100 -2288 -2038'/>
+    <zone loc='177672 -176960 -2288 -2038'/>
+    <zone loc='177208 -176944 -2288 -2038'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_42' controller='default_maker' start_active='true' max='6'>
+    <npc id='22690' count='1' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+    <npc id='22689' count='1' param='PartyNum=22' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+
+    <zone loc='177176 -176836 -2488 -2188'/>
+    <zone loc='177676 -176916 -2488 -2188'/>
+    <zone loc='177784 -175408 -2488 -2188'/>
+    <zone loc='177360 -175092 -2488 -2188'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_43' controller='default_maker' start_active='true' max='3'>
+    <npc id='22690' count='3' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+
+    <zone loc='177836 -175274 -2488 -2288'/>
+    <zone loc='178644 -175177 -2488 -2288'/>
+    <zone loc='178616 -174729 -2488 -2288'/>
+    <zone loc='177850 -174729 -2488 -2288'/>
+    <zone loc='177411 -175036 -2488 -2288'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_45' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='179073 -182100 -100 200'/>
+    <zone loc='179494 -182114 -100 200'/>
+    <zone loc='179494 -181458 -100 200'/>
+    <zone loc='179031 -181444 -100 200'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_46' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='179016 -181338 112 362'/>
+    <zone loc='179492 -181365 112 362'/>
+    <zone loc='179561 -180806 112 362'/>
+    <zone loc='178947 -180820 112 362'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_47' controller='default_maker' start_active='true' max='4'>
+    <npc id='22678' count='3' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+    <npc id='22689' count='1' param='PartyNum=7' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22690' count='2' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='178792 -180708 196 396'/>
+    <zone loc='179676 -180688 196 396'/>
+    <zone loc='179940 -179864 196 396'/>
+    <zone loc='180088 -177984 196 396'/>
+    <zone loc='178984 -177984 196 396'/>
+    <zone loc='178764 -178336 196 396'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_48' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='179300 -177720 204 404'/>
+    <zone loc='179748 -177700 204 404'/>
+    <zone loc='180216 -176300 204 404'/>
+    <zone loc='179652 -176260 204 404'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_49' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='179680 -176144 396 596'/>
+    <zone loc='180192 -176168 396 596'/>
+    <zone loc='180208 -174844 396 596'/>
+    <zone loc='179852 -174860 396 596'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_50' controller='default_maker' start_active='true' max='4'>
+    <npc id='22678' count='3' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+    <npc id='22689' count='1' param='PartyNum=8' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22690' count='2' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='178852 -174120 -288 -88'/>
+    <zone loc='181520 -174164 -288 -88'/>
+    <zone loc='181655 -172476 -288 -88'/>
+    <zone loc='180044 -172336 -288 -88'/>
+    <zone loc='179024 -172732 -288 -88'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_51' controller='default_maker' start_active='true' max='5'>
+    <npc id='22678' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Summoner -->
+    <npc id='22680' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Worker -->
+
+    <zone loc='177345 -173976 -288 -88'/>
+    <zone loc='178707 -173976 -288 -88'/>
+    <zone loc='178765 -173398 -288 -88'/>
+    <zone loc='177287 -173398 -288 -88'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_52' controller='default_maker' start_active='true' max='4'>
+    <npc id='22679' count='3' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='3' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+    <npc id='22689' count='1' param='PartyNum=9' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22682' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior of Light -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='176174 -174310 -320 -120'/>
+    <zone loc='177200 -174068 -320 -120'/>
+    <zone loc='177124 -173128 -320 -120'/>
+    <zone loc='176348 -172732 -320 -120'/>
+    <zone loc='174957 -173171 -320 -120'/>
+    <zone loc='174434 -173490 -320 -120'/>
+    <zone loc='174695 -174304 -320 -120'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_53' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='175607 -175940 -320 -110'/>
+    <zone loc='176011 -175940 -320 -110'/>
+    <zone loc='176098 -174520 -320 -110'/>
+    <zone loc='175578 -174549 -320 -110'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_54' controller='default_maker' start_active='true' max='4'>
+    <npc id='22679' count='3' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+    <npc id='22689' count='1' param='PartyNum=10' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22682' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior of Light -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='175159 -178036 -564 -364'/>
+    <zone loc='176521 -178500 -564 -364'/>
+    <zone loc='178060 -178475 -564 -364'/>
+    <zone loc='178005 -177748 -564 -364'/>
+    <zone loc='176159 -177442 -564 -364'/>
+    <zone loc='175549 -177471 -564 -364'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_55' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='178266 -178493 -716 -436'/>
+    <zone loc='179416 -178394 -716 -436'/>
+    <zone loc='179416 -177957 -716 -436'/>
+    <zone loc='178345 -177957 -716 -436'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_56' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='179555 -178351 -920 -600'/>
+    <zone loc='181715 -178410 -920 -600'/>
+    <zone loc='181755 -177933 -920 -600'/>
+    <zone loc='179555 -177953 -920 -600'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_57' controller='default_maker' start_active='true' max='2'>
+    <npc id='22679' count='2' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+    <npc id='22682' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior of Light -->
+    <npc id='32651' count='1' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='181816 -178415 -832 -632'/>
+    <zone loc='182768 -178633 -832 -632'/>
+    <zone loc='182907 -178215 -832 -632'/>
+    <zone loc='182707 -177779 -832 -632'/>
+    <zone loc='182122 -177780 -832 -632'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_58' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='182194 -179417 -940 -670'/>
+    <zone loc='182730 -179398 -940 -670'/>
+    <zone loc='182671 -178683 -940 -670'/>
+    <zone loc='182214 -178564 -940 -670'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_59' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='182214 -180562 -1144 -824'/>
+    <zone loc='182770 -180621 -1144 -824'/>
+    <zone loc='182691 -179510 -1144 -824'/>
+    <zone loc='182273 -179491 -1144 -824'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_60' controller='default_maker' start_active='true' max='4'>
+    <npc id='22679' count='3' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+    <npc id='22689' count='1' param='PartyNum=11' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22682' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior of Light -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='182140 -181780 -1692 -1492'/>
+    <zone loc='184080 -182140 -1692 -1492'/>
+    <zone loc='183888 -181068 -1692 -1492'/>
+    <zone loc='182184 -180976 -1692 -1492'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_61' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='1' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='183537 -182995 -1704 -1504'/>
+    <zone loc='183757 -183391 -1704 -1504'/>
+    <zone loc='183994 -183131 -1704 -1504'/>
+    <zone loc='184131 -182399 -1704 -1504'/>
+    <zone loc='183637 -182360 -1704 -1504'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_62' controller='default_maker' start_active='true' max='6'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22688' count='1' respawn='35s' rand='5s'/> <!-- Evil Spirits of the Mine -->
+    <npc id='22690' count='1' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+
+    <zone loc='181830 -183358 -1692 -1492'/>
+    <zone loc='183653 -183378 -1692 -1492'/>
+    <zone loc='183317 -182980 -1692 -1492'/>
+    <zone loc='181850 -182881 -1692 -1492'/>
+  </territory>
+  
+  <territory name='schuttgart06_2512_63' controller='default_maker' start_active='true' max='4'>
+    <npc id='22679' count='3' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22681' count='2' respawn='35s' rand='5s'/> <!-- Grave Robber Warrior -->
+    <npc id='22689' count='1' param='PartyNum=12' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22688' count='2' respawn='35s' rand='5s'/> <!-- Evil Spirits of the Mine -->
+    <npc id='22688' count='1' respawn='35s' rand='5s'/> <!-- Evil Spirits of the Mine -->
+    <npc id='32651' count='2' respawn='4m' rand='1m'/> <!-- Grave Robber Warrior -->
+
+    <zone loc='179402 -184212 -1944 -1744'/>
+    <zone loc='180078 -184825 -1944 -1744'/>
+    <zone loc='180850 -184408 -1944 -1744'/>
+    <zone loc='180709 -182250 -1944 -1744'/>
+    <zone loc='180017 -182093 -1944 -1744'/>
+    <zone loc='179463 -182469 -1944 -1744'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_64' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22690' count='1' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+
+    <zone loc='180572 -181903 -1940 -1740'/>
+    <zone loc='181030 -182022 -1940 -1740'/>
+    <zone loc='181010 -181228 -1940 -1740'/>
+    <zone loc='180473 -180991 -1940 -1740'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_65' controller='default_maker' start_active='true' max='6'>
+    <npc id='22689' count='1' param='PartyNum=23' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22690' count='1' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+
+    <zone loc='179434 -181183 -1944 -1744'/>
+    <zone loc='180386 -181242 -1944 -1744'/>
+    <zone loc='180386 -180943 -1944 -1744'/>
+    <zone loc='178761 -180726 -1944 -1744'/>
+    <zone loc='178762 -180940 -1944 -1744'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_66' controller='default_maker' start_active='true' max='5'>
+    <npc id='22679' count='1' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+    <npc id='22690' count='1' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+
+    <zone loc='178705 -180489 -1948 -1748'/>
+    <zone loc='180825 -180291 -1948 -1748'/>
+    <zone loc='180568 -179853 -1948 -1748'/>
+    <zone loc='178844 -180012 -1948 -1748'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_67' controller='default_maker' start_active='true' max='6'>
+    <npc id='22689' count='1' param='PartyNum=24' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22690' count='1' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+
+    <zone loc='180798 -179678 -1940 -1740'/>
+    <zone loc='181255 -180034 -1940 -1740'/>
+    <zone loc='181394 -177953 -1940 -1740'/>
+    <zone loc='180877 -177934 -1940 -1740'/>
+  </territory>
+
+  <territory name='schuttgart06_2512_68' controller='default_maker' start_active='true' max='27'>
+    <npc id='22689' count='1' param='PartyNum=25' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22689' count='1' param='PartyNum=26' respawn='50s' rand='10s'/> <!-- Mine Bug -->
+    <npc id='22690' count='5' respawn='35s' rand='5s'/> <!-- Earthworm's Descendant -->
+    <npc id='22679' count='3' respawn='45s' rand='5s'/> <!-- Grave Robber Magician -->
+
+    <zone loc='180610 -175836 -3620 -3420'/>
+    <zone loc='181503 -176113 -3620 -3420'/>
+    <zone loc='181998 -175240 -3620 -3420'/>
+    <zone loc='182016 -174468 -3620 -3420'/>
+    <zone loc='181264 -173994 -3620 -3420'/>
+    <zone loc='180334 -174331 -3620 -3420'/>
+    <zone loc='180116 -175301 -3620 -3420'/>
+  </territory>
+  
+  <spawn name='' controller='default_maker' start_active='true' max='1'>
+    <npc id='32653' pos='172201 -173495 3480 0' param='Pos_X1=173462;Pos_Y1=-174011;Pos_Z1=3480;my_position=1' respawn='1h'/> <!-- Krun -->
+  </spawn>
+  
+  <spawn name='schuttgart06_2512_102' controller='default_maker' start_active='true' max='1'>
+    <npc id='32652' pos='173147 -173762 3496 -14264' param='Pos_X1=171980;Pos_Y1=-173353;Pos_Z1=3440;Pos_X2=175499;Pos_Y2=-181586;Pos_Z2=-904;my_position=2' respawn='1h'/> <!-- Teleport Crystal -->
+  </spawn>
+  
+  <spawn name='schuttgart06_2512_103' controller='default_maker' start_active='true' max='1'>
+    <npc id='32654' pos='178884 -184227 -336 0' param='Pos_X1=179299;Pos_Y1=-182831;Pos_Z1=-224;my_position=1' respawn='1h'/> <!-- Tarun -->
+  </spawn>
+  
+  <spawn name='schuttgart06_2512_104' controller='default_maker' start_active='true' max='1'>
+    <npc id='32652' pos='179560 -182956 -251 32404' param='Pos_X1=178822;Pos_Y1=-184311;Pos_Z1=-352;Pos_X2=175499;Pos_Y2=-181586;Pos_Z2=-904;my_position=2' respawn='1h'/> <!-- Teleport Crystal -->
+  </spawn>
+  
+  <spawn name='schuttgart06_2512_105' controller='default_maker' start_active='true' max='1'>
+    <npc id='32652' pos='181941 -174614 -3568 0' param='Pos_X1=173462;Pos_Y1=-174011;Pos_Z1=3480;Pos_X2=179299;Pos_Y2=-182831;Pos_Z2=-224;my_position=3' nick='채굴장크리스탈' respawn='1h'/> <!-- Teleport Crystal -->
+  </spawn>
+  
+  <spawn name='schuttgart06_2512_201' controller='default_maker' start_active='true' max='1'>
+    <npc id='32706' pos='174172 -175790 736 -13112' nick='루시엔의 제단' respawn='1h'/> <!-- Lucien's Altar -->
+  </spawn>
+  
+  <spawn name='schuttgart06_2512_202' controller='default_maker' start_active='true' max='1'>
+    <npc id='32707' pos='176146 -180111 -2032 -31788' nick='루시엔의 제단' respawn='1h'/> <!-- Lucien's Altar -->
+  </spawn>
+  
+  <spawn name='schuttgart06_2512_203' controller='default_maker' start_active='true' max='1'>
+    <npc id='32708' pos='181753 -175390 -3568 28076' nick='루시엔의 제단' respawn='1h'/> <!-- Lucien's Altar -->
+  </spawn>
+  
+  <spawn name='schuttgart06_2512_204' controller='default_maker' start_active='true' max='1'>
+    <npc id='32709' pos='174533 -173522 -232 0' nick='루시엔의 제단' respawn='1h'/> <!-- Lucien's Altar -->
+  </spawn>
+  
+  <spawn name='schuttgart06_2512_205' controller='default_maker' start_active='true' max='1'>
+    <npc id='32710' pos='183992 -182779 -1656 32440' nick='루시엔의 제단' respawn='1h'/> <!-- Lucien's Altar -->
+  </spawn>
+  
+  <spawn name='schuttgart06_2512_206' controller='default_maker' start_active='true' max='1'>
+    <npc id='32650' pos='173244 -182048 -1904 0' nick='도굴꾼대장 카네미카' respawn='1h'/> <!-- Kanemika -->
+  </spawn>
+  
+
+  <territory name='schuttgart16_2214_01_n' controller='default_maker' start_active='true' max='5'>
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22691' count='1' respawn='35s' rand='10s'/> <!-- Ragna Orc -->
+    <npc id='22692' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+
+    <zone loc='72163 -129099 -3509 -2909'/>
+    <zone loc='72200 -128690 -3509 -2909'/>
+    <zone loc='71550 -128840 -3509 -2909'/>
+    <zone loc='70954 -129129 -3509 -2909'/>
+    <zone loc='71326 -129461 -3509 -2909'/>
+    <zone loc='71909 -129402 -3509 -2909'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_01_s' controller='default_maker' start_active='true' max='6'>
+    <npc id='22692' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22691' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc -->
+    <npc id='22698' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Archer -->
+
+    <zone loc='70897 -128711 -3486 -2886'/>
+    <zone loc='70943 -129119 -3486 -2886'/>
+    <zone loc='71526 -128784 -3486 -2886'/>
+    <zone loc='72202 -128683 -3486 -2886'/>
+    <zone loc='71839 -128254 -3486 -2886'/>
+    <zone loc='71328 -128257 -3486 -2886'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_02_n' controller='default_maker' start_active='true' max='7'>
+    <npc id='22697' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Seer -->
+    <npc id='22691' count='1' respawn='35s' rand='10s'/> <!-- Ragna Orc -->
+    <npc id='22692' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22699' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Sniper -->
+
+    <zone loc='76496 -128540 -3354 -2754'/>
+    <zone loc='77056 -128044 -3354 -2754'/>
+    <zone loc='77180 -127184 -3354 -2754'/>
+    <zone loc='76792 -126540 -3354 -2754'/>
+    <zone loc='75512 -128380 -3354 -2754'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_02_s' controller='default_maker' start_active='true' max='6'>
+    <npc id='22691' count='1' respawn='35s' rand='10s'/> <!-- Ragna Orc -->
+    <npc id='22692' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22699' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Sniper -->
+    <npc id='22695' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Healer -->
+
+    <zone loc='75056 -127536 -3274 -2674'/>
+    <zone loc='75492 -128372 -3274 -2674'/>
+    <zone loc='76768 -126528 -3274 -2674'/>
+    <zone loc='75916 -126304 -3274 -2674'/>
+    <zone loc='75164 -126692 -3274 -2674'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_03_n' controller='default_maker' start_active='true' max='7'>
+    <npc id='22697' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Seer -->
+    <npc id='22692' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22691' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc -->
+
+    <zone loc='70550 -126682 -3242 -2642'/>
+    <zone loc='71467 -126371 -3242 -2642'/>
+    <zone loc='71799 -125481 -3242 -2642'/>
+    <zone loc='69797 -125977 -3242 -2642'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_03_s' controller='default_maker' start_active='true' max='6'>
+    <npc id='22692' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22691' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc -->
+    <npc id='22698' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Archer -->
+
+    <zone loc='69781 -125974 -3242 -2642'/>
+    <zone loc='71808 -125461 -3242 -2642'/>
+    <zone loc='71436 -124709 -3242 -2642'/>
+    <zone loc='70572 -124477 -3242 -2642'/>
+    <zone loc='69896 -125121 -3242 -2642'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_04_n' controller='default_maker' start_active='true' max='6'>
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22692' count='4' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+
+    <zone loc='67237 -123405 -3102 -2502'/>
+    <zone loc='68005 -123297 -3102 -2502'/>
+    <zone loc='68520 -122769 -3102 -2502'/>
+    <zone loc='68443 -121718 -3102 -2502'/>
+    <zone loc='66568 -122945 -3102 -2502'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_04_s' controller='default_maker' start_active='true' max='7'>
+    <npc id='22692' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22695' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Healer -->
+    <npc id='22696' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Shaman -->
+
+    <zone loc='66555 -122928 -3102 -2502'/>
+    <zone loc='68435 -121713 -3102 -2502'/>
+    <zone loc='67705 -121202 -3102 -2502'/>
+    <zone loc='66854 -121362 -3102 -2502'/>
+    <zone loc='66414 -122160 -3102 -2502'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_05_n' controller='default_maker' start_active='true' max='8'>
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22692' count='4' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22696' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc Shaman -->
+
+    <zone loc='74350 -121545 -3182 -2582'/>
+    <zone loc='72888 -122054 -3182 -2582'/>
+    <zone loc='74092 -122942 -3182 -2582'/>
+    <zone loc='75235 -122483 -3182 -2582'/>
+    <zone loc='75900 -121410 -3182 -2582'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_05_s' controller='default_maker' start_active='true' max='9'>
+    <npc id='22697' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Seer -->
+    <npc id='22692' count='4' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22696' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc Shaman -->
+    <npc id='22695' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Healer -->
+
+    <zone loc='72986 -121007 -3182 -2582'/>
+    <zone loc='72868 -122042 -3182 -2582'/>
+    <zone loc='74281 -121534 -3182 -2582'/>
+    <zone loc='75911 -121398 -3182 -2582'/>
+    <zone loc='75145 -120613 -3182 -2582'/>
+    <zone loc='74048 -120182 -3182 -2582'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_06_n' controller='default_maker' start_active='true' max='7'>
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22692' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22696' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc Shaman -->
+
+    <zone loc='69206 -119762 -2758 -2158'/>
+    <zone loc='70093 -120105 -2758 -2158'/>
+    <zone loc='71008 -119318 -2758 -2158'/>
+    <zone loc='71154 -118851 -2758 -2158'/>
+    <zone loc='70863 -117843 -2758 -2158'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_06_s' controller='default_maker' start_active='true' max='6'>
+    <npc id='22692' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22691' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc -->
+    <npc id='22695' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Healer -->
+
+    <zone loc='69197 -119756 -2758 -2158'/>
+    <zone loc='70851 -117835 -2758 -2158'/>
+    <zone loc='69438 -117958 -2758 -2158'/>
+    <zone loc='68901 -118972 -2758 -2158'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_07_n' controller='default_maker' start_active='true' max='6'>
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22692' count='4' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+
+    <zone loc='74535 -117611 -2430 -1830'/>
+    <zone loc='75105 -117044 -2430 -1830'/>
+    <zone loc='74823 -116307 -2430 -1830'/>
+    <zone loc='74332 -116902 -2430 -1830'/>
+    <zone loc='73950 -117572 -2430 -1830'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_07_s' controller='default_maker' start_active='true' max='5'>
+    <npc id='22692' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22699' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Sniper -->
+    <npc id='22695' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Healer -->
+
+    <zone loc='74347 -116858 -2430 -1830'/>
+    <zone loc='74819 -116304 -2430 -1830'/>
+    <zone loc='74296 -116209 -2430 -1830'/>
+    <zone loc='73741 -116477 -2430 -1830'/>
+    <zone loc='73742 -117094 -2430 -1830'/>
+    <zone loc='73945 -117559 -2430 -1830'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_08_n' controller='default_maker' start_active='true' max='8'>
+    <npc id='22694' count='1' respawn='80s' rand='20s'/> <!-- Ragna Orc Commander -->
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22692' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+
+    <zone loc='67749 -117307 -2298 -1698'/>
+    <zone loc='68779 -117115 -2298 -1698'/>
+    <zone loc='69321 -116311 -2298 -1698'/>
+    <zone loc='68943 -115338 -2298 -1698'/>
+    <zone loc='67023 -116766 -2298 -1698'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_08_s' controller='default_maker' start_active='true' max='5'>
+    <npc id='22697' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Seer -->
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22699' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Sniper -->
+
+    <zone loc='67009 -116748 -2298 -1698'/>
+    <zone loc='68941 -115328 -2298 -1698'/>
+    <zone loc='68243 -114868 -2298 -1698'/>
+    <zone loc='67503 -114976 -2298 -1698'/>
+    <zone loc='66927 -115897 -2298 -1698'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_09_n' controller='default_maker' start_active='true' max='8'>
+    <npc id='22694' count='1' respawn='80s' rand='20s'/> <!-- Ragna Orc Commander -->
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22692' count='3' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+
+    <zone loc='69061 -107164 -1326 -726'/>
+    <zone loc='68839 -106768 -1326 -726'/>
+    <zone loc='67974 -107271 -1326 -726'/>
+    <zone loc='67063 -107817 -1326 -726'/>
+    <zone loc='67702 -108273 -1326 -726'/>
+    <zone loc='68665 -108073 -1326 -726'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_09_s' controller='default_maker' start_active='true' max='5'>
+    <npc id='22697' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Seer -->
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22699' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Sniper -->
+
+    <zone loc='68634 -106361 -1326 -726'/>
+    <zone loc='67754 -106040 -1326 -726'/>
+    <zone loc='67104 -106621 -1326 -726'/>
+    <zone loc='66922 -107145 -1326 -726'/>
+    <zone loc='67051 -107803 -1326 -726'/>
+    <zone loc='68832 -106753 -1326 -726'/>
+  </territory>
+
+  <territory name='schuttgart16_2114_01_n' controller='default_maker' start_active='true' max='5'>
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22692' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22691' count='1' respawn='35s' rand='10s'/> <!-- Ragna Orc -->
+
+    <zone loc='62181 -118107 -3290 -2690'/>
+    <zone loc='63318 -117758 -3290 -2690'/>
+    <zone loc='63164 -116788 -3290 -2690'/>
+    <zone loc='61728 -117483 -3290 -2690'/>
+  </territory>
+
+  <territory name='schuttgart16_2114_01_s' controller='default_maker' start_active='true' max='6'>
+    <npc id='22692' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22691' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc -->
+    <npc id='22696' count='2' respawn='35s' rand='10s'/> <!-- Ragna Orc Shaman -->
+
+    <zone loc='61599 -117532 -3290 -2690'/>
+    <zone loc='63170 -116766 -3290 -2690'/>
+    <zone loc='62478 -116299 -3290 -2690'/>
+    <zone loc='61618 -116564 -3290 -2690'/>
+  </territory>
+
+  <territory name='schuttgart16_2114_02_s' controller='default_maker' start_active='true' max='8'>
+    <npc id='22693' count='1' respawn='60s' rand='20s'/> <!-- Ragna Orc Hero -->
+    <npc id='22692' count='4' respawn='35s' rand='10s'/> <!-- Ragna Orc Warrior -->
+    <npc id='22698' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Archer -->
+    <npc id='22695' count='1' respawn='40s' rand='15s'/> <!-- Ragna Orc Healer -->
+
+    <zone loc='62815 -107067 -2466 -1866'/>
+    <zone loc='63764 -107058 -2466 -1866'/>
+    <zone loc='63684 -106291 -2466 -1866'/>
+    <zone loc='62978 -105989 -2466 -1866'/>
+    <zone loc='62324 -106507 -2466 -1866'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_21' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='72392 -130748 -3686 -3086'/>
+    <zone loc='74528 -130836 -3686 -3086'/>
+    <zone loc='73812 -128676 -3686 -3086'/>
+    <zone loc='71166 -129881 -3686 -3086'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_22' controller='default_maker' start_active='true' max='4'>
+    <npc id='22701' count='3' respawn='45s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='1' respawn='45s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='71075 -129853 -3664 -3064'/>
+    <zone loc='73795 -128646 -3664 -3064'/>
+    <zone loc='73389 -127626 -3664 -3064'/>
+    <zone loc='70089 -128476 -3664 -3064'/>
+    <zone loc='70412 -129242 -3664 -3064'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_23' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='70059 -128459 -3612 -3012'/>
+    <zone loc='73381 -127607 -3612 -3012'/>
+    <zone loc='73273 -126518 -3612 -3012'/>
+    <zone loc='69730 -127185 -3612 -3012'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_24' controller='default_maker' start_active='true' max='4'>
+    <npc id='22701' count='3' respawn='45s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='1' respawn='45s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='69688 -127172 -3534 -2934'/>
+    <zone loc='73312 -126428 -3534 -2934'/>
+    <zone loc='71320 -123764 -3534 -2934'/>
+    <zone loc='68800 -125760 -3534 -2934'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_25' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='68748 -125792 -3478 -2878'/>
+    <zone loc='71300 -123760 -3478 -2878'/>
+    <zone loc='71092 -121800 -3478 -2878'/>
+    <zone loc='66688 -124148 -3478 -2878'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_26' controller='default_maker' start_active='true' max='4'>
+    <npc id='22701' count='3' respawn='45s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='1' respawn='45s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='66644 -124140 -3494 -2894'/>
+    <zone loc='71116 -121742 -3494 -2894'/>
+    <zone loc='71235 -120431 -3494 -2894'/>
+    <zone loc='65691 -120474 -3494 -2894'/>
+    <zone loc='65690 -123190 -3494 -2894'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_27' controller='default_maker' start_active='true' max='4'>
+    <npc id='22701' count='3' respawn='45s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='1' respawn='45s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='65732 -120336 -3154 -2554'/>
+    <zone loc='71252 -120364 -3154 -2554'/>
+    <zone loc='71356 -118612 -3154 -2554'/>
+    <zone loc='70584 -116812 -3154 -2554'/>
+    <zone loc='65869 -118536 -3154 -2554'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_28' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='68316 -117616 -2582 -1982'/>
+    <zone loc='70500 -116728 -2582 -1982'/>
+    <zone loc='68260 -114188 -2582 -1982'/>
+    <zone loc='67104 -114472 -2582 -1982'/>
+    <zone loc='66692 -117104 -2582 -1982'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_29' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='65596 -114984 -2622 -2022'/>
+    <zone loc='68252 -114208 -2622 -2022'/>
+    <zone loc='67480 -112500 -2622 -2022'/>
+    <zone loc='67952 -110900 -2622 -2022'/>
+    <zone loc='65600 -111780 -2622 -2022'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_30' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='74992 -130844 -3606 -3006'/>
+    <zone loc='76136 -130872 -3606 -3006'/>
+    <zone loc='76152 -129764 -3606 -3006'/>
+    <zone loc='75004 -129180 -3606 -3006'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_31' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='75036 -129200 -3574 -2974'/>
+    <zone loc='75900 -129616 -3574 -2974'/>
+    <zone loc='76448 -128860 -3574 -2974'/>
+    <zone loc='74412 -127932 -3574 -2974'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_32' controller='default_maker' start_active='true' max='4'>
+    <npc id='22701' count='3' respawn='45s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='1' respawn='45s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='76432 -128816 -3470 -2870'/>
+    <zone loc='77260 -128596 -3470 -2870'/>
+    <zone loc='77580 -127136 -3470 -2870'/>
+    <zone loc='77084 -126096 -3470 -2870'/>
+    <zone loc='74471 -126444 -3470 -2870'/>
+    <zone loc='74419 -127926 -3470 -2870'/>
+    <zone loc='74419 -127926 -3470 -2870'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_33' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='75012 -124796 -3474 -2874'/>
+    <zone loc='76504 -124756 -3474 -2874'/>
+    <zone loc='77256 -122572 -3474 -2874'/>
+    <zone loc='72088 -122396 -3474 -2874'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_34' controller='default_maker' start_active='true' max='4'>
+    <npc id='22701' count='3' respawn='45s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='1' respawn='45s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='72196 -122328 -3374 -2774'/>
+    <zone loc='77108 -122464 -3374 -2774'/>
+    <zone loc='76580 -120584 -3374 -2774'/>
+    <zone loc='72690 -119928 -3374 -2774'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_35' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='73658 -119430 -3070 -2470'/>
+    <zone loc='76513 -119830 -3070 -2470'/>
+    <zone loc='76335 -118498 -3070 -2470'/>
+    <zone loc='75987 -117743 -3070 -2470'/>
+    <zone loc='72854 -117829 -3070 -2470'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_36' controller='default_maker' start_active='true' max='4'>
+    <npc id='22701' count='3' respawn='45s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='1' respawn='45s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='72558 -116865 -2626 -2026'/>
+    <zone loc='73096 -117765 -2626 -2026'/>
+    <zone loc='76016 -117706 -2626 -2026'/>
+    <zone loc='75336 -116408 -2626 -2026'/>
+    <zone loc='73933 -115824 -2626 -2026'/>
+    <zone loc='73933 -115824 -2626 -2026'/>
+    <zone loc='71514 -116057 -2626 -2026'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_37' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='71484 -116029 -2394 -1794'/>
+    <zone loc='73928 -115744 -2394 -1794'/>
+    <zone loc='72912 -114000 -2394 -1794'/>
+    <zone loc='70212 -114856 -2394 -1794'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_38' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='3' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='3' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='66080 -109772 -1918 -1318'/>
+    <zone loc='68164 -109308 -1918 -1318'/>
+    <zone loc='69412 -107596 -1918 -1318'/>
+    <zone loc='66200 -108120 -1918 -1318'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_39' controller='default_maker' start_active='true' max='4'>
+    <npc id='22701' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='66328 -108032 -1262 -662'/>
+    <zone loc='69388 -107596 -1262 -662'/>
+    <zone loc='70108 -105900 -1262 -662'/>
+    <zone loc='66484 -105788 -1262 -662'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_40' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='3' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='3' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='66616 -105804 -1222 -622'/>
+    <zone loc='70088 -105912 -1222 -622'/>
+    <zone loc='70660 -105216 -1222 -622'/>
+    <zone loc='67932 -104412 -1222 -622'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_41' controller='default_maker' start_active='true' max='4'>
+    <npc id='22701' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='70176 -107716 -1426 -826'/>
+    <zone loc='71544 -107424 -1426 -826'/>
+    <zone loc='71868 -105552 -1426 -826'/>
+    <zone loc='70636 -105172 -1426 -826'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_42' controller='default_maker' start_active='true' max='4'>
+    <npc id='22701' count='3' respawn='45s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='1' respawn='45s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='69552 -104920 -1122 -522'/>
+    <zone loc='71856 -105580 -1122 -522'/>
+    <zone loc='72316 -104112 -1122 -522'/>
+    <zone loc='71112 -103256 -1122 -522'/>
+  </territory>
+
+  <territory name='schuttgart16_2114_21' controller='default_maker' start_active='true' max='6'>
+    <npc id='22701' count='4' respawn='75s' rand='15s'/> <!-- Varangka's Dre Vanul -->
+    <npc id='22702' count='2' respawn='75s' rand='15s'/> <!-- Varangka's Destroyer -->
+
+    <zone loc='63700 -117704 -3206 -2606'/>
+    <zone loc='63316 -116292 -3206 -2606'/>
+    <zone loc='62128 -115856 -3206 -2606'/>
+    <zone loc='61024 -116652 -3206 -2606'/>
+    <zone loc='61336 -119060 -3206 -2606'/>
+    <zone loc='62280 -119860 -3206 -2606'/>
+    <zone loc='63212 -120000 -3206 -2606'/>
+    <zone loc='62992 -118612 -3206 -2606'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_61' controller='default_maker' start_active='true' max='1'>
+    <npc id='18807' count='1' respawn='15m' rand='5m'/> <!-- Frightened Ragna Orc -->
+
+    <zone loc='72168 -129117 -3519 -2919'/>
+    <zone loc='72204 -128685 -3519 -2919'/>
+    <zone loc='71840 -128240 -3519 -2919'/>
+    <zone loc='71324 -128244 -3519 -2919'/>
+    <zone loc='70896 -128712 -3519 -2919'/>
+    <zone loc='70944 -129100 -3519 -2919'/>
+    <zone loc='71348 -129452 -3519 -2919'/>
+    <zone loc='71900 -129400 -3519 -2919'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_62' controller='default_maker' start_active='true' max='1'>
+    <npc id='18807' count='1' respawn='15m' rand='5m'/> <!-- Frightened Ragna Orc -->
+
+    <zone loc='77184 -127180 -3342 -2742'/>
+    <zone loc='76764 -126524 -3342 -2742'/>
+    <zone loc='75916 -126308 -3342 -2742'/>
+    <zone loc='75176 -126700 -3342 -2742'/>
+    <zone loc='75072 -127552 -3342 -2742'/>
+    <zone loc='75484 -128376 -3342 -2742'/>
+    <zone loc='76492 -128520 -3342 -2742'/>
+    <zone loc='77052 -128036 -3342 -2742'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_63' controller='default_maker' start_active='true' max='1'>
+    <npc id='18807' count='1' respawn='15m' rand='5m'/> <!-- Frightened Ragna Orc -->
+
+    <zone loc='71464 -126372 -3242 -2642'/>
+    <zone loc='71788 -125476 -3242 -2642'/>
+    <zone loc='71416 -124724 -3242 -2642'/>
+    <zone loc='70552 -124492 -3242 -2642'/>
+    <zone loc='69876 -125136 -3242 -2642'/>
+    <zone loc='69776 -125980 -3242 -2642'/>
+    <zone loc='70556 -126688 -3242 -2642'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_64' controller='default_maker' start_active='true' max='1'>
+    <npc id='18807' count='1' respawn='15m' rand='5m'/> <!-- Frightened Ragna Orc -->
+
+    <zone loc='68524 -122780 -3102 -2502'/>
+    <zone loc='68444 -121724 -3102 -2502'/>
+    <zone loc='67708 -121192 -3102 -2502'/>
+    <zone loc='66844 -121364 -3102 -2502'/>
+    <zone loc='66404 -122176 -3102 -2502'/>
+    <zone loc='66568 -122952 -3102 -2502'/>
+    <zone loc='67232 -123400 -3102 -2502'/>
+    <zone loc='68012 -123296 -3102 -2502'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_65' controller='default_maker' start_active='true' max='1'>
+    <npc id='18807' count='1' respawn='15m' rand='5m'/> <!-- Frightened Ragna Orc -->
+
+    <zone loc='75916 -121416 -3202 -2602'/>
+    <zone loc='75136 -120628 -3202 -2602'/>
+    <zone loc='74040 -120200 -3202 -2602'/>
+    <zone loc='72960 -121040 -3202 -2602'/>
+    <zone loc='72864 -122056 -3202 -2602'/>
+    <zone loc='74087 -122960 -3202 -2602'/>
+    <zone loc='75231 -122500 -3202 -2602'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_66' controller='default_maker' start_active='true' max='1'>
+    <npc id='18807' count='1' respawn='15m' rand='5m'/> <!-- Frightened Ragna Orc -->
+
+    <zone loc='69187 -119774 -2758 -2158'/>
+    <zone loc='70093 -120120 -2758 -2158'/>
+    <zone loc='71017 -119331 -2758 -2158'/>
+    <zone loc='71171 -118853 -2758 -2158'/>
+    <zone loc='70857 -117824 -2758 -2158'/>
+    <zone loc='69432 -117941 -2758 -2158'/>
+    <zone loc='68884 -118969 -2758 -2158'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_67' controller='default_maker' start_active='true' max='1'>
+    <npc id='18807' count='1' respawn='15m' rand='5m'/> <!-- Frightened Ragna Orc -->
+
+    <zone loc='75116 -117044 -2466 -1866'/>
+    <zone loc='74824 -116300 -2466 -1866'/>
+    <zone loc='74292 -116200 -2466 -1866'/>
+    <zone loc='73732 -116476 -2466 -1866'/>
+    <zone loc='73736 -117096 -2466 -1866'/>
+    <zone loc='73952 -117580 -2466 -1866'/>
+    <zone loc='74524 -117616 -2466 -1866'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_68' controller='default_maker' start_active='true' max='1'>
+    <npc id='18807' count='1' respawn='15m' rand='5m'/> <!-- Frightened Ragna Orc -->
+
+    <zone loc='69332 -116324 -2298 -1698'/>
+    <zone loc='68952 -115328 -2298 -1698'/>
+    <zone loc='68240 -114852 -2298 -1698'/>
+    <zone loc='67500 -114968 -2298 -1698'/>
+    <zone loc='66908 -115888 -2298 -1698'/>
+    <zone loc='67004 -116766 -2298 -1698'/>
+    <zone loc='67740 -117315 -2298 -1698'/>
+    <zone loc='68774 -117127 -2298 -1698'/>
+  </territory>
+
+  <territory name='schuttgart16_2214_69' controller='default_maker' start_active='true' max='1'>
+    <npc id='18807' count='1' respawn='15m' rand='5m'/> <!-- Frightened Ragna Orc -->
+
+    <zone loc='68656 -108107 -1302 -702'/>
+    <zone loc='69063 -107170 -1302 -702'/>
+    <zone loc='68628 -106337 -1302 -702'/>
+    <zone loc='67744 -106032 -1302 -702'/>
+    <zone loc='67090 -106616 -1302 -702'/>
+    <zone loc='66910 -107145 -1302 -702'/>
+    <zone loc='67038 -107810 -1302 -702'/>
+    <zone loc='67700 -108282 -1302 -702'/>
+  </territory>
+  
+  <spawn name='schuttgart16_2214_51' controller='default_maker' start_active='true' max='2'>
+    <npc id='32655' pos='71136 -114412 -1740 10816' respawn='1m'/> <!-- Chairen -->
+    <npc id='32016' pos='71232 -113952 -1740 -17768' respawn='1m'/> <!-- Torrant -->
+  </spawn>
+  
+  <spawn name='schuttgart16_2214_71' controller='default_maker' start_active='true' max='20'>
+    <npc id='18811' pos='74120 -101920 -960 32760' respawn='5m'/> <!-- Guardian of the Altar -->
+  </spawn>
+  
+
+  <territory name='schuttgart17_2114_01' controller='default_maker' start_active='true' max='8'>
+    <npc id='22002' count='4' respawn='25s' rand='0'/> <!-- Grim Grizzly -->
+    <npc id='22004' count='4' respawn='25s' rand='0'/> <!-- Grave Robber Lookout -->
+
+    <zone loc='39743 -112275 -1880 -1080'/>
+    <zone loc='41414 -111194 -1880 -1080'/>
+    <zone loc='40000 -109863 -1880 -1080'/>
+    <zone loc='38965 -110737 -1880 -1080'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_02' controller='default_maker' start_active='true' max='7'>
+    <npc id='22001' count='4' respawn='25s' rand='0'/> <!-- Grim Wolf -->
+    <npc id='22003' count='3' respawn='25s' rand='0'/> <!-- Grave Robber Scout -->
+
+    <zone loc='40708 -113549 -2437 -1637'/>
+    <zone loc='42498 -113318 -2437 -1637'/>
+    <zone loc='41247 -111415 -2437 -1637'/>
+    <zone loc='40157 -112144 -2437 -1637'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_03' controller='default_maker' start_active='true' max='5'>
+    <npc id='22003' count='2' respawn='25s' rand='0'/> <!-- Grave Robber Scout -->
+    <npc id='22004' count='3' respawn='25s' rand='0'/> <!-- Grave Robber Lookout -->
+
+    <zone loc='48804 -110882 -2469 -1469'/>
+    <zone loc='49059 -109698 -2469 -1469'/>
+    <zone loc='48187 -109196 -2469 -1469'/>
+    <zone loc='46636 -111339 -2469 -1469'/>
+    <zone loc='47284 -111801 -2469 -1469'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_04' controller='default_maker' start_active='true' max='9'>
+    <npc id='22004' count='3' respawn='25s' rand='0'/> <!-- Grave Robber Lookout -->
+    <npc id='22005' count='3' respawn='25s' rand='0'/> <!-- Grave Robber Ranger -->
+    <npc id='22006' count='3' respawn='25s' rand='0'/> <!-- Grave Robber Guard -->
+
+    <zone loc='48535 -109183 -2203 -1203'/>
+    <zone loc='48967 -108284 -2203 -1203'/>
+    <zone loc='46776 -107002 -2203 -1203'/>
+    <zone loc='46198 -108720 -2203 -1203'/>
+    <zone loc='46840 -110063 -2203 -1203'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_05' controller='default_maker' start_active='true' max='8'>
+    <npc id='22004' count='2' respawn='25s' rand='0'/> <!-- Grave Robber Lookout -->
+    <npc id='22005' count='3' respawn='25s' rand='0'/> <!-- Grave Robber Ranger -->
+    <npc id='22006' count='3' respawn='25s' rand='0'/> <!-- Grave Robber Guard -->
+
+    <zone loc='56406 -113244 -3321 -2421'/>
+    <zone loc='56421 -111531 -3321 -2421'/>
+    <zone loc='55147 -110680 -3321 -2421'/>
+    <zone loc='54736 -112137 -3321 -2421'/>
+    <zone loc='55135 -113527 -3321 -2421'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_06' controller='default_maker' start_active='true' max='7'>
+    <npc id='22703' count='7' respawn='20s' rand='0'/> <!-- Contaminated Morek Warrior -->
+
+    <zone loc='47026 -116310 -3915 -3215'/>
+    <zone loc='46766 -115287 -3915 -3215'/>
+    <zone loc='45643 -115490 -3915 -3215'/>
+    <zone loc='46015 -116147 -3915 -3215'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_07' controller='default_maker' start_active='true' max='8'>
+    <npc id='22703' count='8' respawn='20s' rand='0'/> <!-- Contaminated Morek Warrior -->
+
+    <zone loc='51177 -114850 -3915 -3215'/>
+    <zone loc='50217 -114678 -3915 -3215'/>
+    <zone loc='48892 -115296 -3915 -3215'/>
+    <zone loc='49450 -116206 -3915 -3215'/>
+    <zone loc='51519 -115389 -3915 -3215'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_08' controller='default_maker' start_active='true' max='15'>
+    <npc id='22703' count='8' respawn='20s' rand='0'/> <!-- Contaminated Morek Warrior -->
+    <npc id='22704' count='7' respawn='20s' rand='0'/> <!-- Contaminated Batur Warrior -->
+
+    <zone loc='46834 -119758 -4029 -3229'/>
+    <zone loc='46445 -118930 -4029 -3229'/>
+    <zone loc='44925 -119926 -4029 -3229'/>
+    <zone loc='44510 -120874 -4029 -3229'/>
+    <zone loc='45425 -122120 -4029 -3229'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_09' controller='default_maker' start_active='true' max='15'>
+    <npc id='22703' count='8' respawn='20s' rand='0'/> <!-- Contaminated Morek Warrior -->
+    <npc id='22704' count='7' respawn='20s' rand='0'/> <!-- Contaminated Batur Warrior -->
+
+    <zone loc='44994 -119750 -3570 -2970'/>
+    <zone loc='43872 -119050 -3570 -2970'/>
+    <zone loc='42713 -119534 -3570 -2970'/>
+    <zone loc='42934 -121196 -3570 -2970'/>
+    <zone loc='43956 -121581 -3570 -2970'/>
+  </territory>
+  
+
+  <territory name='schuttgart17_2114_10' controller='default_maker' start_active='true' max='30'>
+    <npc id='22703' count='30' respawn='20s' rand='0'/> <!-- Contaminated Morek Warrior -->
+
+    <zone loc='55595 -125163 -4447 -3047'/>
+    <zone loc='53837 -121438 -4447 -3047'/>
+    <zone loc='50129 -117214 -4447 -3047'/>
+    <zone loc='46637 -121233 -4447 -3047'/>
+    <zone loc='45611 -124214 -4447 -3047'/>
+    <zone loc='46068 -125648 -4447 -3047'/>
+    <zone loc='47012 -126059 -4447 -3047'/>
+    <zone loc='50404 -126823 -4447 -3047'/>
+    <zone loc='54418 -126412 -4447 -3047'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_11' controller='default_maker' start_active='true' max='5'>
+    <npc id='22703' count='5' respawn='20s' rand='0'/> <!-- Contaminated Morek Warrior -->
+
+    <zone loc='52807 -114853 -3620 -3120'/>
+    <zone loc='51630 -114708 -3620 -3120'/>
+    <zone loc='51271 -115328 -3620 -3120'/>
+    <zone loc='51466 -115652 -3620 -3120'/>
+    <zone loc='53288 -115503 -3620 -3120'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_12' controller='default_maker' start_active='true' max='4'>
+    <npc id='22703' count='4' respawn='20s' rand='0'/> <!-- Contaminated Morek Warrior -->
+
+    <zone loc='55808 -115700 -3604 -3004'/>
+    <zone loc='54394 -114852 -3604 -3004'/>
+    <zone loc='53076 -115267 -3604 -3004'/>
+    <zone loc='53991 -117035 -3604 -3004'/>
+    <zone loc='55359 -116863 -3604 -3004'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_13' controller='default_maker' start_active='true' max='5'>
+    <npc id='22703' count='5' respawn='20s' rand='0'/> <!-- Contaminated Morek Warrior -->
+
+    <zone loc='55578 -118909 -4419 -3019'/>
+    <zone loc='53186 -118692 -4419 -3019'/>
+    <zone loc='52286 -119278 -4419 -3019'/>
+    <zone loc='52797 -119796 -4419 -3019'/>
+    <zone loc='55755 -119266 -4419 -3019'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_14' controller='default_maker' start_active='true' max='4'>
+    <npc id='22703' count='4' respawn='20s' rand='0'/> <!-- Contaminated Morek Warrior -->
+
+    <zone loc='55112 -120232 -4108 -3208'/>
+    <zone loc='54414 -119968 -4108 -3208'/>
+    <zone loc='53767 -120651 -4108 -3208'/>
+    <zone loc='54238 -121144 -4108 -3208'/>
+    <zone loc='55417 -120617 -4108 -3208'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_15' controller='default_maker' start_active='true' max='7'>
+    <npc id='22703' count='5' respawn='20s' rand='0'/> <!-- Contaminated Morek Warrior -->
+    <npc id='22704' count='2' respawn='20s' rand='0'/> <!-- Contaminated Batur Warrior -->
+
+    <zone loc='55338 -121526 -4305 -3405'/>
+    <zone loc='54151 -121600 -4305 -3405'/>
+    <zone loc='55799 -125025 -4305 -3405'/>
+    <zone loc='56765 -124281 -4305 -3405'/>
+    <zone loc='56575 -123049 -4305 -3405'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_21' controller='legend_orc_maker' param='vice_maker_name=schuttgart17_2114_21pm1' start_active='true' max='20'>
+    <npc id='22704' count='8' respawn='20s' rand='0'/> <!-- Contaminated Batur Warrior -->
+    <npc id='22705' count='7' respawn='20s' rand='0'/> <!-- Contaminated Batur Commander -->
+
+    <zone loc='51326 -119150 -4253 -3553'/>
+    <zone loc='50984 -118300 -4253 -3553'/>
+    <zone loc='50158 -117953 -4253 -3553'/>
+    <zone loc='49317 -118297 -4253 -3553'/>
+    <zone loc='48976 -119131 -4253 -3553'/>
+    <zone loc='49337 -119954 -4253 -3553'/>
+    <zone loc='50178 -120314 -4253 -3553'/>
+    <zone loc='51017 -119972 -4253 -3553'/>
+  </territory>
+  
+  <territory name='schuttgart17_2114_21' controller='legend_orc_maker' param='vice_maker_name=schuttgart17_2114_21p' start_active='true' max='20'>
+    <npc id='22704' count='8' respawn='20s' rand='0'/> <!-- Contaminated Batur Warrior -->
+    <npc id='22705' count='7' respawn='20s' rand='0'/> <!-- Contaminated Batur Commander -->
+
+    <zone loc='51326 -119150 -4253 -3553'/>
+    <zone loc='50984 -118300 -4253 -3553'/>
+    <zone loc='50158 -117953 -4253 -3553'/>
+    <zone loc='49317 -118297 -4253 -3553'/>
+    <zone loc='48976 -119131 -4253 -3553'/>
+    <zone loc='49337 -119954 -4253 -3553'/>
+    <zone loc='50178 -120314 -4253 -3553'/>
+    <zone loc='51017 -119972 -4253 -3553'/>
+  </territory>
+  
+  <spawn name='schuttgart17_2114_21p' controller='default_maker' param='on_start_spawn=0' start_active='true' max='10'>
+    <npc id='22706' pos='50508 -118259 -4160 -21440' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='49806 -118260 -4160 -12096' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='49296 -118768 -4160 -4136' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='49301 -119471 -4160 3784' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='49812 -119976 -4160 10632' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='50515 -119975 -4160 20296' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='51022 -119468 -4160 27360' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='51021 -118765 -4160 -29372' respawn='0s'/> <!-- Turka Follower's Ghost -->
+  </spawn>
+
+  <territory name='schuttgart17_2114_21ac' controller='default_maker' start_active='true' max='3'>
+    <npc id='18837' pos='50243 -119083 -3728 0' count='1' respawn='0s' rand='0'/> <!--  -->
+    <npc id='18837' pos='50170 -119219 -3728 0' count='1' respawn='0s' rand='0'/> <!--  -->
+    <npc id='18837' pos='50060 -119093 -3728 0' count='1' respawn='0s' rand='0'/> <!--  -->
+
+    <zone loc='51326 -119150 -4253 -3553'/>
+    <zone loc='50984 -118300 -4253 -3553'/>
+    <zone loc='50158 -117953 -4253 -3553'/>
+    <zone loc='49317 -118297 -4253 -3553'/>
+    <zone loc='48976 -119131 -4253 -3553'/>
+    <zone loc='49337 -119954 -4253 -3553'/>
+    <zone loc='50178 -120314 -4253 -3553'/>
+    <zone loc='51017 -119972 -4253 -3553'/>
+  </territory>
+
+  <territory name='schuttgart17_2114_22' controller='legend_orc_maker' param='vice_maker_name=schuttgart17_2114_22p' start_active='true' max='20'>
+    <npc id='22704' count='8' respawn='20s' rand='0'/> <!-- Contaminated Batur Warrior -->
+    <npc id='22705' count='7' respawn='20s' rand='0'/> <!-- Contaminated Batur Commander -->
+
+    <zone loc='49293 -122053 -4030 -3330'/>
+    <zone loc='48950 -121202 -4030 -3330'/>
+    <zone loc='48124 -120856 -4030 -3330'/>
+    <zone loc='47284 -121199 -4030 -3330'/>
+    <zone loc='46943 -122034 -4030 -3330'/>
+    <zone loc='47303 -122856 -4030 -3330'/>
+    <zone loc='48144 -123216 -4030 -3330'/>
+    <zone loc='48983 -122875 -4030 -3330'/>
+  </territory>
+  
+  <spawn name='schuttgart17_2114_22p' controller='default_maker' param='on_start_spawn=0' start_active='false' max='10'>
+    <npc id='22706' pos='47789 -121157 -3888 -12336' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='47286 -121654 -3888 -3952' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='47286 -122369 -3888 3408' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='47790 -122866 -3888 10800' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='48500 -122873 -3888 19744' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='49000 -122366 -3888 27096' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='49001 -121658 -3888 -28192' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='48496 -121155 -3888 -21152' respawn='0s'/> <!-- Turka Follower's Ghost -->
+  </spawn>
+  
+  <spawn name='schuttgart17_2114_22ac' controller='default_maker' start_active='true' max='3'>
+    <npc id='18837' pos='48192 -121934 -3440 0' respawn='0s'/> <!--  -->
+    <npc id='18837' pos='48179 -122113 -3440 0' respawn='0s'/> <!--  -->
+    <npc id='18837' pos='48042 -122022 -3440 0' respawn='0s'/> <!--  -->
+  </spawn>
+  
+  <territory name='schuttgart17_2114_23' controller='legend_orc_maker' param='vice_maker_name=schuttgart17_2114_23p' start_active='true' max='20'>
+    <npc id='22704' count='8' respawn='20s' rand='0'/> <!-- Contaminated Batur Warrior -->
+    <npc id='22705' count='7' respawn='20s' rand='0'/> <!-- Contaminated Batur Commander -->
+
+    <zone loc='53378 -122038 -4030 -3330'/>
+    <zone loc='53035 -121188 -4030 -3330'/>
+    <zone loc='52209 -120841 -4030 -3330'/>
+    <zone loc='51369 -121185 -4030 -3330'/>
+    <zone loc='51027 -122019 -4030 -3330'/>
+    <zone loc='51388 -122842 -4030 -3330'/>
+    <zone loc='52229 -123202 -4030 -3330'/>
+    <zone loc='53068 -122860 -4030 -3330'/>
+  </territory>
+  
+  <spawn name='schuttgart17_2114_23p' controller='default_maker' param='on_start_spawn=0' start_active='false' max='10'>
+    <npc id='22706' pos='52574 -121154 -3888 -21080' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='51872 -121152 -3888 -12736' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='51360 -121664 -3888 -3472' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='51360 -122368 -3888 3936' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='51865 -122872 -3888 12008' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='52576 -122870 -3888 19928' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='53079 -122366 -3888 28240' respawn='0s'/> <!-- Turka Follower's Ghost -->
+    <npc id='22706' pos='53079 -121664 -3888 -29472' respawn='0s'/> <!-- Turka Follower's Ghost -->
+  </spawn>
+  
+  <spawn name='schuttgart17_2114_23ac' controller='default_maker' start_active='true' max='3'>
+    <npc id='18837' pos='52124 -122041 -3440 0' respawn='0s'/> <!--  -->
+    <npc id='18837' pos='52272 -121932 -3440 0' respawn='0s'/> <!--  -->
+    <npc id='18837' pos='52293 -122075 -3440 0' respawn='0s'/> <!--  -->
+  </spawn>
+
+  <spawn name='schuttgart12_npc2314_100' controller='default_maker' start_active='true' max='4'>
+    <npc id='32781' pos='102402 -124491 -2768 -12072' param='position=1' nick='입장NPC' respawn='1h'/> <!-- Jinia  -->
+    <npc id='32761' pos='102512 -124416 -2768 -11100' param='position=1' nick='입장NPC' respawn='1h'/> <!-- Kegor -->
+    <npc id='32777' pos='102306 -124361 -2748 -11564' param='position=1' nick='입장NPC' respawn='1h'/> <!-- Battalion Leader -->
+    <npc id='32778' pos='102462 -124237 -2752 -10828' param='position=1' nick='입장NPC' respawn='1h'/> <!-- Legionnaire -->
+  </spawn>
+
+  <territory name='schuttgart11_mb2313_01' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25504' count='1' respawn='36h' rand='24h'/> <!-- Nellis' Vengeful Spirit -->
+
+    <zone loc='122566 -141209 -1716 -1016'/>
+    <zone loc='123042 -141155 -1716 -1016'/>
+    <zone loc='122943 -140863 -1716 -1016'/>
+    <zone loc='122534 -140863 -1716 -1016'/>
+  </territory>
+
+  <territory name='schuttgart11_mb2313_02' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25506' count='1' respawn='36h' rand='24h'/> <!-- Rayito the Looter -->
+
+    <zone loc='127724 -160762 -1280 -1080'/>
+    <zone loc='127987 -160746 -1280 -1080'/>
+    <zone loc='127956 -160524 -1280 -1080'/>
+    <zone loc='127756 -160524 -1280 -1080'/>
+  </territory>
+  
+  <spawn name='schuttgart17_mb2114_01' controller='default_use_db_maker' param='maker_name=akata_treasure01' start_active='true' max='8'>
+    <npc id='25501' pos='48575 -106191 -1568 -14680' respawn='36h'/> <!-- Boss Akata -->
+  </spawn>
+  
+  <spawn name='schuttgart14_2214_44' controller='default_use_db_maker' start_active='true' max='15'>
+    <npc id='25703' pos='92740 -111097 -3504 -4992' respawn='24h'/> <!-- Gigantic Golem -->
+  </spawn>
+  
+  <territory name='schttgart07_qm2312_00' controller='default_maker' start_active='true' max='15'>
+    <npc id='18342' count='15' respawn='15s' rand='0'/> <!-- Gremlin -->
+
+    <zone loc='108756 -175200 -604 -304'/>
+    <zone loc='109716 -174268 -604 -304'/>
+    <zone loc='108768 -172744 -604 -304'/>
+    <zone loc='107540 -173300 -604 -304'/>
+  </territory>
+  
+
+  <territory name='schuttgart01_qm2312_0' controller='default_maker' start_active='true' max='3'>
+    <npc id='27200' count='3' respawn='3m' rand='0'/> <!-- Krudel Lizardman -->
+
+    <zone loc='125094 -174072 -1062 -762'/>
+    <zone loc='125662 -174219 -1062 -762'/>
+    <zone loc='125684 -173852 -1062 -762'/>
+    <zone loc='125334 -173783 -1062 -762'/>
+  </territory>
+
+  <territory name='schuttgart01_qm2512_01' controller='default_maker' start_active='true' max='9'>
+    <npc id='27114' pos='151438 -174794 -1776 0' count='1' respawn='3m' rand='0' prvt='27115 1 60s;27115 1 60s;' /> <!-- Succubus Queen [Claw Of Succubus; Claw Of Succubus; ] -->
+
+    <zone loc='151404 -174900 -1828 -1628'/>
+    <zone loc='151604 -174900 -1828 -1628'/>
+    <zone loc='151604 -174700 -1828 -1628'/>
+    <zone loc='151404 -174700 -1828 -1628'/>
+  </territory>
+  
+
+  <territory name='schuttgart18_qm2114_01' controller='default_maker' start_active='true' max='5'>
+    <npc id='27319' count='5' respawn='30s' rand='0'/> <!-- Black Leopard -->
+
+    <zone loc='35080 -121231 -1471 -871'/>
+    <zone loc='36860 -119638 -1471 -871'/>
+    <zone loc='37603 -118243 -1471 -871'/>
+    <zone loc='36313 -117125 -1471 -871'/>
+    <zone loc='33869 -121514 -1471 -871'/>
+  </territory>
+
+  <territory name='schuttgart01_qm2213_01' controller='default_maker' start_active='true' max='4'>
+    <npc id='27322' count='4' respawn='15s' rand='0'/> <!-- Picot Araneid -->
+
+    <zone loc='67782 -133265 -2754 -2354'/>
+    <zone loc='68904 -132968 -2754 -2354'/>
+    <zone loc='68862 -131317 -2754 -2354'/>
+    <zone loc='67269 -131294 -2754 -2354'/>
+  </territory>
+
+  <territory name='schuttgart01_qm2213_02' controller='default_maker' start_active='true' max='4'>
+    <npc id='27322' count='4' respawn='15s' rand='0'/> <!-- Picot Araneid -->
+
+    <zone loc='69760 -138545 -3000 -2200'/>
+    <zone loc='70933 -138286 -3000 -2200'/>
+    <zone loc='69785 -134853 -3000 -2200'/>
+    <zone loc='68657 -136537 -3000 -2200'/>
+  </territory>
+
+  <territory name='schuttgart01_qm2213_03' controller='default_maker' start_active='true' max='10'>
+    <npc id='27321' count='10' respawn='15s' rand='0'/> <!-- Bruin Lizardman -->
+
+    <zone loc='94516 -138654 -3044 -2444'/>
+    <zone loc='94965 -138425 -3044 -2444'/>
+    <zone loc='93313 -136672 -3044 -2444'/>
+    <zone loc='91038 -135938 -3044 -2444'/>
+    <zone loc='91183 -136491 -3044 -2444'/>
+  </territory>
+  
+  <territory name='schuttgart09_mb2511_01' controller='default' start_active='true' max='8'>
+    <npc id='25429' count='1' respawn='36h' rand='24h'/> <!-- Mammon Collector Talos -->
+
+    <zone loc='171376 -214776 -3664 -3064'/>
+    <zone loc='171752 -215672 -3664 -3064'/>
+    <zone loc='172492 -215540 -3664 -3064'/>
+    <zone loc='173204 -214296 -3664 -3064'/>
+    <zone loc='171784 -213596 -3664 -3064'/>
+  </territory>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ </list>
+</null>

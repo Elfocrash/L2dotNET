@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<null>
+ <list>
+  <territory name='dion18_2021_02' controller='default_maker' start_active='true' max='1'>
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='14510 118458 -12139 -11839'/>
+    <zone loc='15402 118449 -12139 -11839'/>
+    <zone loc='15401 119438 -12139 -11839'/>
+    <zone loc='14513 119438 -12139 -11839'/>
+  </territory>
+
+  <territory name='dion18_2021_03' controller='cruma_default_maker' start_active='true' max='6'>
+    <npc id='20213' count='5' respawn='34s' rand='10s'/> <!-- Porta -->
+    <npc id='18544' count='1' respawn='1800s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='13393 120257 -12121 -11891'/>
+    <zone loc='15415 120265 -12121 -11891'/>
+    <zone loc='15414 120822 -12121 -11891'/>
+    <zone loc='13398 120825 -12121 -11891'/>
+  </territory>
+ 
+  <territory name='dion18_2021_04' controller='cruma_default_maker' start_active='true' max='11'>
+    <npc id='20213' count='2' respawn='41s' rand='15s'/> <!-- Porta -->
+    <npc id='20214' count='3' respawn='41s' rand='15s'/> <!-- Excuro -->
+    <npc id='20215' count='2' respawn='41s' rand='15s'/> <!-- Mordeo -->
+    <npc id='21035' count='3' respawn='41s' rand='15s'/> <!-- Catherok -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='12419 117313 -12133 -11903'/>
+    <zone loc='12944 117307 -12133 -11903'/>
+    <zone loc='12987 119942 -12133 -11903'/>
+    <zone loc='12414 119929 -12133 -11903'/>
+  </territory>
+  
+  <territory name='dion18_2021_05' controller='cruma_default_maker' start_active='true' max='11'>
+    <npc id='20214' count='1' respawn='35s' rand='15s'/> <!-- Excuro -->
+    <npc id='20215' count='1' respawn='35s' rand='15s'/> <!-- Mordeo -->
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20214' count='1' respawn='35s' rand='15s'/> <!-- Excuro -->
+    <npc id='20215' count='1' respawn='35s' rand='15s'/> <!-- Mordeo -->
+    <npc id='21035' count='2' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20213' count='1' respawn='41s' rand='15s'/> <!-- Porta -->
+    <npc id='20214' count='1' respawn='41s' rand='15s'/> <!-- Excuro -->
+    <npc id='21035' count='1' respawn='41s' rand='15s'/> <!-- Catherok -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='11030 119065 -12134 -11904'/>
+    <zone loc='12027 119068 -12134 -11904'/>
+    <zone loc='12020 120808 -12134 -11904'/>
+    <zone loc='11033 120807 -12134 -11904'/>
+  </territory>
+  
+  <territory name='dion18_2021_06' controller='cruma_default_maker' start_active='true' max='11'>
+    <npc id='20213' count='1' respawn='35s' rand='15s'/> <!-- Porta -->
+    <npc id='21035' count='2' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20214' count='1' respawn='35s' rand='15s'/> <!-- Excuro -->
+    <npc id='20215' count='2' respawn='35s' rand='15s'/> <!-- Mordeo -->
+    <npc id='20213' count='1' respawn='41s' rand='15s'/> <!-- Porta -->
+    <npc id='20214' count='1' respawn='41s' rand='15s'/> <!-- Excuro -->
+    <npc id='21035' count='1' respawn='41s' rand='15s'/> <!-- Catherok -->
+    <npc id='20215' count='1' respawn='41s' rand='15s'/> <!-- Mordeo -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='11025 116445 -12134 -11904'/>
+    <zone loc='12020 116447 -12134 -11904'/>
+    <zone loc='12029 118182 -12134 -11904'/>
+    <zone loc='11057 118189 -12134 -11904'/>
+  </territory>
+  
+  <territory name='dion18_2021_07' controller='cruma_default_maker' start_active='true' max='11'>
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20216' count='2' respawn='35s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20217' count='1' respawn='35s' rand='15s'/> <!-- Krator -->
+    <npc id='20216' count='2' respawn='35s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='21035' count='1' respawn='41s' rand='15s'/> <!-- Catherok -->
+    <npc id='20216' count='2' respawn='41s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20217' count='1' respawn='41s' rand='15s'/> <!-- Krator -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='13872 110333 -12131 -11901'/>
+    <zone loc='15128 110330 -12131 -11901'/>
+    <zone loc='15143 111820 -12131 -11901'/>
+    <zone loc='13854 111821 -12131 -11901'/>
+  </territory>
+  
+  <territory name='dion18_2021_12' controller='cruma_default_maker' start_active='true' max='13'>
+    <npc id='20216' count='1' respawn='35s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='21036' count='2' respawn='35s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20218' count='1' respawn='35s' rand='15s'/> <!-- Premo -->
+    <npc id='20216' count='2' respawn='41s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20218' count='1' respawn='41s' rand='15s'/> <!-- Premo -->
+    <npc id='20751' count='1' respawn='45s' rand='15s' prvt='20752 1 0s;20752 1 0s;21039 1 0s;' /> <!-- Snipe [Snipe Cohort; Snipe Cohort; Snipe Cohort; ] -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='13730 107457 -12121 -11891'/>
+    <zone loc='14875 107452 -12121 -11891'/>
+    <zone loc='14903 108963 -12121 -11891'/>
+    <zone loc='13734 108966 -12121 -11891'/>
+  </territory>
+  
+  <territory name='dion18_2021_13' controller='cruma_default_maker' start_active='true' max='9'>
+    <npc id='20216' count='1' respawn='35s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='21036' count='2' respawn='35s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20218' count='1' respawn='35s' rand='15s'/> <!-- Premo -->
+    <npc id='20216' count='2' respawn='41s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='21036' count='1' respawn='41s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20218' count='1' respawn='41s' rand='15s'/> <!-- Premo -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='11248 110563 -12121 -11891'/>
+    <zone loc='12243 110556 -12121 -11891'/>
+    <zone loc='12243 111637 -12121 -11891'/>
+    <zone loc='11245 111640 -12121 -11891'/>
+  </territory>
+  
+  <territory name='dion18_2021_14' controller='cruma_default_maker' start_active='true' max='16'>
+    <npc id='20216' count='1' respawn='35s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20217' count='1' respawn='35s' rand='15s'/> <!-- Krator -->
+    <npc id='21036' count='2' respawn='35s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20218' count='1' respawn='35s' rand='15s'/> <!-- Premo -->
+    <npc id='20216' count='1' respawn='35s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='21036' count='1' respawn='35s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20217' count='1' respawn='41s' rand='15s'/> <!-- Krator -->
+    <npc id='21036' count='2' respawn='41s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20751' count='1' respawn='45s' rand='15s' prvt='20752 1 0s;20752 1 0s;21039 1 0s;' /> <!-- Snipe [Snipe Cohort; Snipe Cohort; Snipe Cohort; ] -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='11062 107478 -12128 -11898'/>
+    <zone loc='12431 107474 -12128 -11898'/>
+    <zone loc='12414 108947 -12128 -11898'/>
+    <zone loc='11035 108960 -12128 -11898'/>
+  </territory>
+  
+  <territory name='dion18_2021_15' controller='cruma_default_maker' start_active='true' max='9'>
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20216' count='2' respawn='35s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20217' count='1' respawn='35s' rand='15s'/> <!-- Krator -->
+    <npc id='21035' count='2' respawn='41s' rand='15s'/> <!-- Catherok -->
+    <npc id='20216' count='1' respawn='41s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20217' count='1' respawn='41s' rand='15s'/> <!-- Krator -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='20259 110309 -12131 -11901'/>
+    <zone loc='21571 110268 -12131 -11901'/>
+    <zone loc='21572 111691 -12131 -11901'/>
+    <zone loc='20293 111699 -12131 -11901'/>
+  </territory>
+  
+  <territory name='dion18_2021_16' controller='cruma_default_maker' start_active='true' max='17'>
+    <npc id='20217' count='1' respawn='35s' rand='15s'/> <!-- Krator -->
+    <npc id='21036' count='2' respawn='35s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20218' count='1' respawn='35s' rand='15s'/> <!-- Premo -->
+    <npc id='20216' count='1' respawn='35s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20217' count='1' respawn='35s' rand='15s'/> <!-- Krator -->
+    <npc id='21036' count='2' respawn='35s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20216' count='2' respawn='41s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='21036' count='2' respawn='41s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20751' count='1' respawn='45s' rand='15s' prvt='20752 1 0s;20752 1 0s;21039 1 0s;' /> <!-- Snipe [Snipe Cohort; Snipe Cohort; Snipe Cohort; ] -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='20077 107473 -12121 -11891'/>
+    <zone loc='21638 107472 -12121 -11891'/>
+    <zone loc='21645 109264 -12121 -11891'/>
+    <zone loc='20068 109271 -12121 -11891'/>
+  </territory>
+  
+  <territory name='dion18_2021_17' controller='cruma_default_maker' start_active='true' max='14'>
+    <npc id='20217' count='1' respawn='35s' rand='15s'/> <!-- Krator -->
+    <npc id='21036' count='2' respawn='35s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20218' count='1' respawn='35s' rand='15s'/> <!-- Premo -->
+    <npc id='20216' count='1' respawn='41s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20217' count='1' respawn='41s' rand='15s'/> <!-- Krator -->
+    <npc id='21036' count='2' respawn='41s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20751' count='1' respawn='45s' rand='15s' prvt='20752 1 0s;20752 1 0s;21039 1 0s;' /> <!-- Snipe [Snipe Cohort; Snipe Cohort; Snipe Cohort; ] -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='22084 108308 -12133 -11903'/>
+    <zone loc='22567 108313 -12133 -11903'/>
+    <zone loc='22549 110939 -12133 -11903'/>
+    <zone loc='22099 110936 -12133 -11903'/>
+  </territory>
+  
+  <territory name='dion18_2021_18' controller='cruma_default_maker' start_active='true' max='12'>
+    <npc id='20216' count='1' respawn='35s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20217' count='1' respawn='35s' rand='15s'/> <!-- Krator -->
+    <npc id='21036' count='2' respawn='35s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20216' count='1' respawn='41s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20218' count='1' respawn='41s' rand='15s'/> <!-- Premo -->
+    <npc id='20751' count='1' respawn='45s' rand='15s' prvt='20752 1 0s;20752 1 0s;21039 1 0s;' /> <!-- Snipe [Snipe Cohort; Snipe Cohort; Snipe Cohort; ] -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='23076 107462 -12129 -11899'/>
+    <zone loc='24410 107456 -12129 -11899'/>
+    <zone loc='24406 109199 -12129 -11899'/>
+    <zone loc='23058 109192 -12129 -11899'/>
+  </territory>
+  
+  <territory name='dion18_2021_19' controller='cruma_default_maker' start_active='true' max='12'>
+    <npc id='20216' count='1' respawn='35s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20217' count='1' respawn='35s' rand='15s'/> <!-- Krator -->
+    <npc id='21036' count='2' respawn='35s' rand='15s'/> <!-- Shindebarn -->
+    <npc id='20216' count='1' respawn='41s' rand='15s'/> <!-- Ricenseo -->
+    <npc id='20218' count='1' respawn='41s' rand='15s'/> <!-- Premo -->
+    <npc id='20751' count='1' respawn='45s' rand='15s' prvt='20752 1 0s;20752 1 0s;21039 1 0s;' /> <!-- Snipe [Snipe Cohort; Snipe Cohort; Snipe Cohort; ] -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='23071 110088 -12130 -11900'/>
+    <zone loc='24415 110085 -12130 -11900'/>
+    <zone loc='24415 111839 -12130 -11900'/>
+    <zone loc='23036 111829 -12130 -11900'/>
+  </territory>
+  
+  <territory name='dion18_2021_20' controller='cruma_default_maker' start_active='true' max='10'>
+    <npc id='20213' count='1' respawn='35s' rand='15s'/> <!-- Porta -->
+    <npc id='20214' count='1' respawn='35s' rand='15s'/> <!-- Excuro -->
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20214' count='1' respawn='35s' rand='15s'/> <!-- Excuro -->
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20213' count='1' respawn='41s' rand='15s'/> <!-- Porta -->
+    <npc id='20214' count='2' respawn='41s' rand='15s'/> <!-- Excuro -->
+    <npc id='21035' count='1' respawn='41s' rand='15s'/> <!-- Catherok -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='20286 116601 -12131 -11901'/>
+    <zone loc='21567 116603 -12131 -11901'/>
+    <zone loc='21573 118040 -12131 -11901'/>
+    <zone loc='20282 118041 -12131 -11901'/>
+  </territory>
+  
+  <territory name='dion18_2021_21' controller='cruma_default_maker' start_active='true' max='12'>
+    <npc id='20213' count='1' respawn='35s' rand='15s'/> <!-- Porta -->
+    <npc id='20214' count='2' respawn='35s' rand='15s'/> <!-- Excuro -->
+    <npc id='20215' count='2' respawn='35s' rand='15s'/> <!-- Mordeo -->
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20213' count='1' respawn='41s' rand='15s'/> <!-- Porta -->
+    <npc id='20214' count='1' respawn='41s' rand='15s'/> <!-- Excuro -->
+    <npc id='20215' count='1' respawn='41s' rand='15s'/> <!-- Mordeo -->
+    <npc id='21035' count='2' respawn='41s' rand='15s'/> <!-- Catherok -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='22184 117231 -12133 -11903'/>
+    <zone loc='22651 117244 -12133 -11903'/>
+    <zone loc='22660 119913 -12133 -11903'/>
+    <zone loc='22205 119911 -12133 -11903'/>
+  </territory>
+  
+  <territory name='dion18_2021_22' controller='cruma_default_maker' start_active='true' max='11'>
+    <npc id='20213' count='2' respawn='35s' rand='15s'/> <!-- Porta -->
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20214' count='2' respawn='35s' rand='15s'/> <!-- Excuro -->
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20214' count='1' respawn='41s' rand='15s'/> <!-- Excuro -->
+    <npc id='20215' count='2' respawn='41s' rand='15s'/> <!-- Mordeo -->
+    <npc id='21035' count='1' respawn='41s' rand='15s'/> <!-- Catherok -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='23112 116437 -12130 -11900'/>
+    <zone loc='24426 116425 -12130 -11900'/>
+    <zone loc='24419 118256 -12130 -11900'/>
+    <zone loc='23106 118264 -12130 -11900'/>
+  </territory>
+  
+  <territory name='dion18_2021_23' controller='cruma_default_maker' start_active='true' max='11'>
+    <npc id='20213' count='1' respawn='35s' rand='15s'/> <!-- Porta -->
+    <npc id='20214' count='1' respawn='35s' rand='15s'/> <!-- Excuro -->
+    <npc id='21035' count='2' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20215' count='2' respawn='35s' rand='15s'/> <!-- Mordeo -->
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20213' count='1' respawn='41s' rand='15s'/> <!-- Porta -->
+    <npc id='20215' count='1' respawn='41s' rand='15s'/> <!-- Mordeo -->
+    <npc id='21035' count='1' respawn='41s' rand='15s'/> <!-- Catherok -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='23095 119126 -12130 -11900'/>
+    <zone loc='24427 119138 -12130 -11900'/>
+    <zone loc='24433 120846 -12130 -11900'/>
+    <zone loc='23103 120851 -12130 -11900'/>
+  </territory>
+  
+  <territory name='dion18_2021_24' controller='cruma_default_maker' start_active='true' max='10'>
+    <npc id='20213' count='1' respawn='35s' rand='15s'/> <!-- Porta -->
+    <npc id='20214' count='1' respawn='35s' rand='15s'/> <!-- Excuro -->
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20214' count='1' respawn='35s' rand='15s'/> <!-- Excuro -->
+    <npc id='20215' count='1' respawn='35s' rand='15s'/> <!-- Mordeo -->
+    <npc id='21035' count='1' respawn='35s' rand='15s'/> <!-- Catherok -->
+    <npc id='20214' count='1' respawn='41s' rand='15s'/> <!-- Excuro -->
+    <npc id='20215' count='1' respawn='41s' rand='15s'/> <!-- Mordeo -->
+    <npc id='21035' count='1' respawn='41s' rand='15s'/> <!-- Catherok -->
+    <npc id='18544' count='1' respawn='1200s' rand='600s'/> <!-- Cruma Border -->
+
+    <zone loc='20016 119026 -12131 -11901'/>
+    <zone loc='21216 119017 -12131 -11901'/>
+    <zone loc='21209 120853 -12131 -11901'/>
+    <zone loc='20024 120856 -12131 -11901'/>
+  </territory>
+  
+  <spawn name='dion04_qm2021_01' controller='default_maker' start_active='true' max='2'>
+    <npc id='27139' pos='9209 127105 -3640 0' respawn='3m'/> <!-- Secret Keeper Tree -->
+    <npc id='27104' pos='23031 118953 -3704 8192' respawn='3m'/> <!-- Shadow Turen -->
+  </spawn>
+  
+
+  <territory name='dion01_qm2021_02' controller='default_maker' start_active='true' max='1'>
+    <npc id='27106' count='1' respawn='3m' rand='0'/> <!-- Unicorn Phantasm -->
+
+    <zone loc='17832 86087 -3695 -3495'/>
+    <zone loc='18032 86087 -3695 -3495'/>
+    <zone loc='18032 86287 -3695 -3495'/>
+    <zone loc='17832 86287 -3695 -3495'/>
+  </territory>
+
+  <territory name='dion01_qm2023_01' controller='default_maker' start_active='true' max='8'>
+    <npc id='27112' count='1' respawn='3m' rand='0' prvt='27111 1 60s;27111 1 60s;27111 1 60s;27111 1 60s;27111 1 60s;27111 1 60s;' /> <!-- Gorr [Cave Basilisk; Cave Basilisk; Cave Basilisk; Cave Basilisk; Cave Basilisk; Cave Basilisk; ] -->
+
+    <zone loc='6284 184089 -3212 -3012'/>
+    <zone loc='6834 184648 -3212 -3012'/>
+    <zone loc='6439 184871 -3212 -3012'/>
+    <zone loc='6157 184669 -3212 -3012'/>
+    <zone loc='6043 184444 -3212 -3012'/>
+  </territory>
+
+  <territory name='dion01_qm2023_02' controller='default_maker' start_active='true' max='13'>
+    <npc id='27113' count='1' respawn='3m' rand='0' prvt='27111 1 60s;27111 1 60s;27111 1 60s;27111 1 60s;27111 1 60s;27111 1 60s;' /> <!-- Baraham [Cave Basilisk; Cave Basilisk; Cave Basilisk; Cave Basilisk; Cave Basilisk; Cave Basilisk; ] -->
+
+    <zone loc='20671 184509 -3388 -3188'/>
+    <zone loc='20945 184213 -3388 -3188'/>
+    <zone loc='21388 184856 -3388 -3188'/>
+    <zone loc='21085 185004 -3388 -3188'/>
+    <zone loc='20742 184815 -3388 -3188'/>
+  </territory>
+
+  <territory name='dion01_qm2023_03' controller='default_maker' start_active='true' max='48'>
+    <npc id='27099' count='8' respawn='10m' rand='0'/> <!-- Nameless Revenant -->
+
+    <zone loc='56743 141465 -2829 -1929'/>
+    <zone loc='57926 142725 -2829 -1929'/>
+    <zone loc='57423 143831 -2829 -1929'/>
+    <zone loc='56481 142459 -2829 -1929'/>
+  </territory>
+
+  <territory name='dion01_qm2023_04' controller='default_maker' start_active='true' max='48'>
+    <npc id='27099' count='8' respawn='10m' rand='0'/> <!-- Nameless Revenant -->
+
+    <zone loc='53205 142949 -3907 -3507'/>
+    <zone loc='54067 143000 -3907 -3507'/>
+    <zone loc='53601 144535 -3907 -3507'/>
+    <zone loc='52923 143673 -3907 -3507'/>
+  </territory>
+
+  <territory name='dion01_qm2023_05' controller='default_maker' start_active='true' max='1'>
+    <npc id='27103' count='1' respawn='3m' rand='0'/> <!-- Unicorn Racer -->
+
+    <zone loc='23354 187991 -3721 -3521'/>
+    <zone loc='23554 187991 -3721 -3521'/>
+    <zone loc='23554 188191 -3721 -3521'/>
+    <zone loc='23354 188191 -3721 -3521'/>
+  </territory>
+
+  <territory name='dion01_qm2223_01' controller='default_maker' start_active='true' max='18'>
+    <npc id='20781' count='3' respawn='3m' rand='0'/> <!-- Delu Lizardman Shaman -->
+
+    <zone loc='67572 166920 -3560 -3160'/>
+    <zone loc='69300 165652 -3560 -3160'/>
+    <zone loc='70464 168184 -3560 -3160'/>
+    <zone loc='67880 169416 -3560 -3160'/>
+  </territory>
+  
+
+  <territory name='dion04_mb2021_01' controller='default' start_active='true' max='8'>
+    <npc id='25041' count='1' respawn='36h' rand='24h'/> <!-- Remmel -->
+
+    <zone loc='9600 126452 -3732 -3132'/>
+    <zone loc='11212 126132 -3732 -3132'/>
+    <zone loc='11336 127624 -3732 -3132'/>
+    <zone loc='9952 127352 -3732 -3132'/>
+  </territory>
+
+  <territory name='dion04_mb2021_02' controller='default' start_active='true' max='8'>
+    <npc id='25170' count='1' respawn='36h' rand='24h'/> <!-- Lizardmen Leader Hellion -->
+
+    <zone loc='25544 121216 -3788 -3488'/>
+    <zone loc='27136 121432 -3788 -3488'/>
+    <zone loc='26463 123951 -3788 -3488'/>
+    <zone loc='25290 122425 -3788 -3488'/>
+  </territory>
+
+  <territory name='dion04_mb2021_03' controller='default' start_active='true' max='8'>
+    <npc id='25023' count='1' respawn='36h' rand='24h'/> <!-- Stakato Queen Zyrnna -->
+
+    <zone loc='25800 101804 -3792 -3192'/>
+    <zone loc='25904 100388 -3792 -3192'/>
+    <zone loc='27972 100540 -3792 -3192'/>
+    <zone loc='29112 103004 -3792 -3192'/>
+    <zone loc='27116 103412 -3792 -3192'/>
+  </territory>
+
+  <territory name='dion04_mb2021_04' controller='default' start_active='true' max='8'>
+    <npc id='25392' count='1' respawn='36h' rand='24h'/> <!-- Captain of Queen's Royal Guards -->
+
+    <zone loc='29592 106484 -3772 -3572'/>
+    <zone loc='30604 107032 -3772 -3572'/>
+    <zone loc='30184 107824 -3772 -3572'/>
+    <zone loc='29184 107464 -3772 -3572'/>
+  </territory>
+
+  <territory name='dion14_mb2023_01' controller='default' start_active='true' max='8'>
+    <npc id='25128' count='1' respawn='36h' rand='24h'/> <!-- Vuku Grand Seer Gharmash -->
+
+    <zone loc='17320 178620 -3616 -3016'/>
+    <zone loc='18228 178816 -3616 -3016'/>
+    <zone loc='18404 179684 -3616 -3016'/>
+    <zone loc='17392 179488 -3616 -3016'/>
+    <zone loc='17012 179064 -3616 -3016'/>
+  </territory>
+
+  <territory name='dion14_mb2023_02' controller='default' start_active='true' max='8'>
+    <npc id='25360' count='1' respawn='36h' rand='24h'/> <!-- Tiger Hornet -->
+
+    <zone loc='28860 178924 -3728 -3128'/>
+    <zone loc='29684 178936 -3728 -3128'/>
+    <zone loc='29028 180052 -3728 -3128'/>
+    <zone loc='28684 179536 -3728 -3128'/>
+  </territory>
+
+  <territory name='dion17_mb2023_03' controller='default' start_active='true' max='8'>
+    <npc id='25019' count='1' respawn='36h' rand='24h'/> <!-- Pan Dryad -->
+
+    <zone loc='6736 168972 -3772 -3172'/>
+    <zone loc='7996 168876 -3772 -3172'/>
+    <zone loc='8016 169912 -3772 -3172'/>
+    <zone loc='6660 169972 -3772 -3172'/>
+  </territory>
+
+  <territory name='dion17_mb2023_04' controller='default' start_active='true' max='8'>
+    <npc id='25398' count='1' respawn='36h' rand='24h'/> <!-- Eye of Beleth -->
+
+    <zone loc='3776 188380 -3792 -3192'/>
+    <zone loc='6428 188400 -3792 -3192'/>
+    <zone loc='5804 189932 -3792 -3192'/>
+    <zone loc='3600 189728 -3792 -3192'/>
+  </territory>
+
+  <territory name='dion03_mb2121_01' controller='default' start_active='true' max='8'>
+    <npc id='25388' pos='40129 102048 -1248 8192' count='1' respawn='36h' rand='24h'/> <!-- Red Eye Captain Trakia -->
+
+    <zone loc='39659 101745 -1390 -790'/>
+    <zone loc='40050 101470 -1390 -790'/>
+    <zone loc='40694 101594 -1390 -790'/>
+    <zone loc='40540 102563 -1390 -790'/>
+    <zone loc='39925 102586 -1390 -790'/>
+    <zone loc='39573 102158 -1390 -790'/>
+  </territory>
+
+  <territory name='dion03_mb2121_02' controller='default' start_active='true' max='8'>
+    <npc id='25391' count='1' respawn='36h' rand='24h'/> <!-- Nurka's Messenger -->
+
+    <zone loc='44694 120364 -2758 -2158'/>
+    <zone loc='46120 119953 -2758 -2158'/>
+    <zone loc='46184 121097 -2758 -2158'/>
+    <zone loc='45482 121425 -2758 -2158'/>
+  </territory>
+
+  <territory name='dion03_mb2121_03' controller='default' start_active='true' max='8'>
+    <npc id='25272' count='1' respawn='36h' rand='24h'/> <!-- Partisan Leader Talakin -->
+
+    <zone loc='48485 127590 -3761 -3161'/>
+    <zone loc='49668 127446 -3761 -3161'/>
+    <zone loc='49883 128352 -3761 -3161'/>
+    <zone loc='48738 128608 -3761 -3161'/>
+  </territory>
+
+  <territory name='dion03_mb2121_04' controller='default' start_active='true' max='8'>
+    <npc id='25079' count='1' respawn='36h' rand='24h'/> <!-- Cat's Eye Bandit -->
+
+    <zone loc='53245 102524 -1129 -529'/>
+    <zone loc='53868 102087 -1129 -529'/>
+    <zone loc='54393 102832 -1129 -529'/>
+    <zone loc='53669 103198 -1129 -529'/>
+  </territory>
+
+  <territory name='dion03_mb2121_05' controller='default' start_active='true' max='8'>
+    <npc id='25152' count='1' respawn='36h' rand='24h'/> <!-- Flame Lord Shadar -->
+
+    <zone loc='42772 123908 -3312 -2512'/>
+    <zone loc='44524 123164 -3312 -2512'/>
+    <zone loc='44488 124732 -3312 -2512'/>
+    <zone loc='43364 124464 -3312 -2512'/>
+  </territory>
+
+  <territory name='dion02_mb2122_01' controller='default' start_active='true' max='8'>
+    <npc id='25385' count='1' respawn='36h' rand='24h'/> <!-- Evil Spirit Tempest -->
+
+    <zone loc='53151 142897 -3932 -3332'/>
+    <zone loc='53548 142749 -3932 -3332'/>
+    <zone loc='54119 142852 -3932 -3332'/>
+    <zone loc='53643 144591 -3932 -3332'/>
+    <zone loc='53200 144369 -3932 -3332'/>
+    <zone loc='52850 143748 -3932 -3332'/>
+  </territory>
+
+  <territory name='dion02_mb2122_02' controller='default' start_active='true' max='8'>
+    <npc id='25118' count='1' respawn='36h' rand='24h'/> <!-- Guilotine, Warden of the Execution Grounds -->
+
+    <zone loc='50325 146283 -3677 -3077'/>
+    <zone loc='50978 145946 -3677 -3077'/>
+    <zone loc='51400 146676 -3677 -3077'/>
+    <zone loc='51137 147486 -3677 -3077'/>
+    <zone loc='50574 147430 -3677 -3077'/>
+  </territory>
+
+  <territory name='dion02_mb2122_03' controller='default' start_active='true' max='8'>
+    <npc id='25223' count='1' respawn='36h' rand='24h'/> <!-- Soul Collector Acheron -->
+
+    <zone loc='42227 152067 -2894 -2294'/>
+    <zone loc='43611 152017 -2894 -2294'/>
+    <zone loc='43446 152927 -2894 -2294'/>
+    <zone loc='42965 152958 -2894 -2294'/>
+  </territory>
+
+  <territory name='dion02_mb2122_04' controller='default' start_active='true' max='8'>
+    <npc id='25383' count='1' respawn='36h' rand='24h'/> <!-- Revenant of Sir Calibus -->
+
+    <zone loc='50882 153506 -3608 -3008'/>
+    <zone loc='51369 153158 -3608 -3008'/>
+    <zone loc='52226 154135 -3608 -3008'/>
+    <zone loc='51144 155137 -3608 -3008'/>
+  </territory>
+  
+  <spawn name='core_cube' controller='default' start_active='true' max='30'>
+    <npc id='29006' pos='17726 108915 -6480 0' respawn='60h'/> <!-- Core -->
+    <npc id='31842' pos='16502 110165 -6394 0' param='PosX=18241;PosY=114140;PosZ=-3440' nick='teleport_cube1' respawn='1h'/> <!-- Teleportation Cubic -->
+    <npc id='31842' pos='18948 110166 -6397 0' param='PosX=18241;PosY=114140;PosZ=-3440' nick='teleport_cube2' respawn='1h'/> <!-- Teleportation Cubic -->
+  </spawn>
+  
+  <spawn name='dg_20_21_03f_tele' controller='default' start_active='true' max='1'>
+    <npc id='31843' pos='17719 115430 -6582 0' param='PosX=18241;PosY=114140;PosZ=-3440' respawn='3m'/> <!-- Teleportation Cubic -->
+  </spawn>
+  
+  
+  
+  
+  
+ 
+ 
+ </list>
+</null>

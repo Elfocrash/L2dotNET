@@ -1,0 +1,108 @@
+
+#M0
+ol_mahum_champion_50_bi	coll{21 43.5}	spd{70 110}
+
+# M5
+aphros	coll{15 28}	spd{60 180}
+baby_bionic_bear	coll{9 12.5}	spd{60 180}
+baby_bionic_bear_160p	coll{12 17}	spd{60 180}
+baby_bionic_bear_e	coll{9 12.5}	spd{60 180}
+beorning_warrior	coll{15 28}	spd{60 180}
+bgurent	coll{23 30.5}	spd{60 180}
+bgurent_e	coll{23 40.5}	spd{60 180}
+big_grima	coll{45 8}	spd{60 180}
+bloody_king	coll{30 45}	spd{60 180}
+bloody_princess	coll{18 33}	spd{60 180}
+bounded_mimic	coll{11 8}	spd{60 180}
+brakian	coll{28 30}	spd{60 180}
+brakian_e	coll{35 41.5}	spd{60 180}
+br_berdandi	coll{10 12}	spd{60 180}
+br_scooldie	coll{23 23}	spd{60 180}
+br_wooldie	coll{22 30}	spd{60 180}
+cariona	coll{33 33}	spd{60 180}
+cariona_e	coll{48 46}	spd{60 180}
+chaos_zombie	coll{28 41}	spd{60 180}
+dimension_caller	coll{25 40}	spd{60 180}
+doll_claw	coll{28 50}	spd{60 180}
+doll_degenerated	coll{15 20}	spd{60 180}
+dorpagen	coll{45 62}	spd{60 180}
+dorpagen_e	coll{45 75}	spd{60 180}
+event_terrible_heat	coll{30 53.5}	spd{60 180}
+event_the_heat	coll{9 14.5}	spd{60 180}
+freya_small	coll{18 36}	spd{60 180}
+freya_stand	coll{22 55}	spd{60 180}
+freya_throne	coll{50 98.50}	spd{60 180}
+glacia_tired_soldier	coll{7 22}	spd{60 150}
+groykhan	coll{32 31}	spd{60 180}
+groykhan_e	coll{40 47}	spd{60 180}
+guardian_covenant	coll{24 49}	spd{60 180}
+guardian_covenant_a	coll{24 49}	spd{60 180}
+guildmaster_jinia	coll{11 23.5}	spd{60 180}
+human_sirr	coll{10 22}	spd{60 180}
+ice_elemental_bomb	coll{20 50}	spd{60 180}
+ice_heavy_knight	coll{28 67.5}	spd{60 180}
+ice_knight	coll{9.5 31}	spd{20 90}
+kaiona	coll{32 37.5}	spd{60 180}
+kaiona_e	coll{35 49.5}	spd{60 180}
+karnibi	coll{22 45.5}	spd{60 180}
+karnibi_e	coll{32 69.5}	spd{60 180}
+khimerian	coll{15 28}	spd{60 180}
+krakian	coll{26 36}	spd{60 180}
+krakian_e	coll{26 36}	spd{60 180}
+leader_anakazel_high	coll{21 40}	spd{50 140}
+leader_anakazel_low	coll{30 31.5}	spd{25 150}
+leader_anakazel_mid	coll{14 28}	spd{60 160}
+leader_mind_of_silen	coll{27 40}	spd{45 180}
+marguene	coll{11 13.25}	spd{60 180}
+marguene_pet	coll{11 13.25}	spd{60 180}
+marguene_pet_elite	coll{11 13.25}	spd{60 180}
+messenger_covenant	coll{18 44}	spd{60 180}
+messenger_covenant_a	coll{18 44}	spd{60 180}
+mistress_of_dimension	coll{15 35}	spd{45 180}
+mixed_skeleton_guard	coll{29 40}	spd{45 150}
+ol_mahum_cooker	coll{20 37}	spd{60 150}
+orbis_tallicrom	coll{15 28}	spd{60 180}
+orbis_turanclace	coll{15 28}	spd{60 180}
+poison_arrow_frog	coll{20 18}	spd{60 150}
+rough_bionic_bear	coll{0.01 32.5}	spd{60 180}
+sandman	coll{15 28}	spd{60 180}
+satyr_shaman	coll{15 28}	spd{60 180}
+scapegoat	coll{20 32.5}	spd{45 180}
+skeleton_boneshooter	coll{18 27.5}	spd{45 170}
+skeleton_hunter	coll{13 26}	spd{45 180}
+skeleton_sniper	coll{20 34}	spd{55 150}
+solina_knight	coll{14 31.5}	spd{60 60}
+solina_old_brother	coll{15 30}	spd{60 150}
+solina_old_brother_cleaner	coll{15 30}	spd{60 150}
+swordmaster_kegor	coll{15 27.5}	spd{60 180}
+tantaar_lizardman_archer	coll{20 40.25}	spd{60 150}
+tantaar_lizardman_high_sorcerer	coll{40 53.5}	spd{60 180}
+tantaar_lizardman_rogue	coll{20 40.25}	spd{60 150}
+tantaar_lizardman_sorcerer	coll{29 44}	spd{60 180}
+tantaar_lizardman_warrior	coll{28 37.5}	spd{60 180}
+tarcrakahn	coll{38.7 54.5}	spd{60 180}
+tarcrakahn_e	coll{40 57}	spd{60 180}
+tardion	coll{30 35}	spd{60 180}
+tardion_e	coll{30 35}	spd{60 180}
+torum_ba	coll{34.6 53.5}	spd{60 180}
+torum_ba_e	coll{40 64}	spd{60 180}
+traikan	coll{25 27}	spd{60 180}
+traikan_e	coll{30 42}	spd{60 180}
+traikan_tr	coll{22 22}	spd{60 180}
+turtlian	coll{28 28.5}	spd{60 180}
+turtlian_e	coll{38 42}	spd{60 180}
+twisted_banshee	coll{15 26.5}	spd{45 150}
+vicious_mind_of_silen	coll{14 27.5}	spd{30 180}
+xel_mahum_high_sorcerer	coll{29 33.5}	spd{60 180}
+xel_mahum_sniper	coll{27 31}	spd{60 180}
+xel_mahum_sorcerer	coll{27 31.5}	spd{60 180}
+xel_mahum_warrior	coll{29 37}	spd{60 180}
+zombie_guadian	coll{14 32.5}	spd{45 150}
+#aphros	coll{____}	spd{60 180}
+#aphros	coll{____}	spd{60 180}
+#aphros	coll{____}	spd{60 180}
+#aphros	coll{____}	spd{60 180}
+#aphros	coll{____}	spd{60 180}
+#aphros	coll{____}	spd{60 180}
+
+

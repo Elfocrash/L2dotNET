@@ -1,0 +1,805 @@
+# freya change_weapon skill handler
+# knight's_sword > fleuret_4
+128>10003
+# saber > rapier
+123>9209
+# bastard_sword > fleuret
+69>9213
+# spinebone_sword > fleuret_2
+125>9214
+# artisan's_sword > fleuret_3
+126>9215
+# crimson_sword > estoc
+127>9218
+# elven_sword > estoc_2
+130>9219
+# sword_of_revolution > epee
+129>9222
+# elven_long_sword > gran_epee
+2499>9225
+# stormbringer > soldat_estoc
+72>9228
+# stormbringer_crt.anger > soldat_estoc_crt.anger
+4681>9229
+# stormbringer_focus > soldat_estoc_focus
+4682>9230
+# stormbringer_light > soldat_estoc_light
+4683>9231
+# shamshir > chevelier_rapier
+73>9240
+# katana > chevelier_rapier_2
+74>9244
+# spirits_sword > chevelier_rapier_3
+131>9248
+# raid_sword > chevelier_rapier_4
+133>9252
+# shamshir_guidence > chevelier_rapier_1_guidence
+4684>9241
+# shamshir_backblow > chevelier_rapier_1_backblow
+4685>9242
+# shamshir_rsk.evasion > chevelier_rapier_1_rsk.evasion
+4686>9243
+# katana_focus > chevelier_rapier_2_focus
+4687>9245
+# katana_crt.damage > chevelier_rapier_2_crt.damage
+4688>9246
+# katana_haste > chevelier_rapier_2_haste
+4689>9247
+# spirits_sword_crt.damage > chevelier_rapier_3_crt.damage
+4690>9249
+# spirits_sword_crt.poison > chevelier_rapier_3_crt.poison
+4691>9250
+# spirits_sword_haste > chevelier_rapier_3_haste
+4692>9251
+# raid_sword_focus > chevelier_rapier_4_focus
+4693>9253
+# raid_sword_crt.drain > chevelier_rapier_4_crt.drain
+4694>9254
+# raid_sword_crt.poison > chevelier_rapier_4_crt.poison
+4695>9255
+# caliburs > blink_slasher
+75>9264
+# sword_of_delusion > blink_slasher_2
+76>9268
+# tsurugi > blink_slasher_3
+77>9272
+# sword_of_limit > blink_slasher_5
+132>9280
+# sword_of_nightmare > blink_slasher_4
+134>9276
+# caliburs_guidence > blink_slasher_1_guidence
+4696>9265
+# caliburs_focus > blink_slasher_1_focus
+4697>9266
+# caliburs_crt.damage > blink_slasher_1_crt.damage
+4698>9267
+# sword_of_delusion_focus > blink_slasher_2_focus
+4699>9269
+# sword_of_delusion_health > blink_slasher_2_health
+4700>9270
+# sword_of_delusion_rsk.haste > blink_slasher_2_rsk.haste
+4701>9271
+# tsurugi_focus > blink_slasher_3_focus
+4702>9273
+# tsurugi_crt.damage > blink_slasher_3_crt.damage
+4703>9274
+# tsurugi_haste > blink_slasher_3_haste
+4704>9275
+# sword_of_nightmare_health > blink_slasher_4_health
+4705>9277
+# sword_of_nightmare_focus > blink_slasher_4_focus
+4706>9278
+# sword_of_nightmare_light > blink_slasher_4_light
+4707>9279
+# sword_of_limit_guidence > blink_slasher_5_guidence
+6307>9281
+# sword_of_limit_Crt.drain > blink_slasher_5_crt.drain
+6308>9282
+# sword_of_limit_health > blink_slasher_5_health
+6309>9283
+# samurai_longsword > amiral_estoc
+135>9292
+# samurai_longsword_focus > amiral_estoc_focus
+4708>9293
+# samurai_longsword_crt.damage > amiral_estoc_crt.damage
+4709>9294
+# samurai_longsword_haste > amiral_estoc_haste
+4710>9295
+# kshanberk > assult_fleuret
+142>9304
+# kshanberk_guidence > assult_fleuret_guidence
+4714>9305
+# kshanberk_focus > assult_fleuret_focus
+4715>9306
+# kshanberk_backblow > assult_fleuret_backblow
+4716>9307
+# sword_of_damascus > colichemarde
+79>9316
+# sword_of_damascus_focus > colichemarde_focus
+4717>9317
+# sword_of_damascus_crt.damage > colichemarde_crt.damage
+4718>9318
+# sword_of_damascus_haste > colichemarde_haste
+4719>9319
+# tallum_blade > lightning_blaze
+80>9328
+# tallum_blade_crt.poison > lightning_blaze_crt.poison
+5635>9329
+# tallum_blade_haste > lightning_blaze_haste
+5636>9330
+# tallum_blade_anger > lightning_blaze_anger
+5637>9331
+# dark_legion's_edge > greed_stinger
+2500>9340
+# dark_legion's_edge_crt.damage > greed_stinger_crt.damage
+5647>9341
+# dark_legion's_edge_health > greed_stinger_health
+5648>9342
+# dark_legion's_edge_rsk.focus > greed_stinger_rsk.focus
+5649>9343
+# sirr_blade > eclair_bijou
+8678>9352
+# sirr_blade_haste > eclair_bijou_haste
+8788>9353
+# sirr_blade_health > eclair_bijou_health
+8789>9354
+# sirr_blade_crt.poison > eclair_bijou_crt.poison
+8790>9355
+# forgotten_blade > leavatein
+6364>9364
+# forgotten_blade_haste > leavatein_haste
+6581>9365
+# forgotten_blade_health > leavatein_health
+6582>9366
+# forgotten_blade_focus > leavatein_focus
+6583>9367
+# heavy_sword > tulwar
+5285>9210
+# iron_sword > tulwar_2
+7880>9211
+# two-handed_sword > hunting_sword
+124>9220
+# giants_sword > katzbalger
+7881>9223
+# claymore > general_katzbalger
+70>9226
+# flamberge > schlaeger
+71>9232
+# flamberge_crt.damage > schlaeger_crt.damage
+4711>9233
+# flamberge_focus > schlaeger_focus
+4712>9234
+# flamberge_light > schlaeger_light
+4713>9235
+# sword_of_paagrio > invincible_blade
+7882>9284
+# sword_of_paagrio_focus > invincible_blade_focus
+8102>9285
+# sword_of_paagrio_health > invincible_blade_health
+8103>9286
+# sword_of_paagrio_crt.drain > invincible_blade_crt.drain
+8104>9287
+# berserker_blade > sabertooth
+5286>9296
+# berserker_blade_focus > sabertooth_focus
+6347>9297
+# berserker_blade_crt.damage > sabertooth_crt.damage
+6348>9298
+# berserker_blade_haste > sabertooth_haste
+6349>9299
+# great_sword > nameless_victory
+78>9308
+# great_sword_health > nameless_victory_health
+4723>9309
+# great_sword_crt.damage > nameless_victory_crt.damage
+4724>9310
+# great_sword_focus > nameless_victory_focus
+4725>9311
+# guardians_sword > dismantler
+7883>9320
+# guardians_sword_crt.drain > dismantler_crt.drain
+8105>9321
+# guardians_sword_health > dismantler_health
+8106>9322
+# guardians_sword_crt.bleed > dismantler_crt.bleed
+8107>9323
+# inferno_master > pain_of_godness
+7884>9332
+# inferno_master_haste > pain_of_godness_haste
+8108>9333
+# inferno_master_crt.damage > pain_of_godness_crt.damage
+8109>9334
+# inferno_master_focus > pain_of_godness_focus
+8110>9335
+# dragon_slayer > death_bringer
+81>9344
+# dragon_slayer_health > death_bringer_health
+5644>9345
+# dragon_slayer_crt.bleed > death_bringer_crt.bleed
+5645>9346
+# dragon_slayer_crt.drain > death_bringer_crt.drain
+5646>9347
+# sword_of_ipos > burtgang
+8679>9356
+# sword_of_ipos_focus > burtgang_focus
+8791>9357
+# sword_of_ipos_haste > burtgang_haste
+8792>9358
+# sword_of_ipos_health > burtgang_health
+8793>9359
+# heavens_divider > gram
+6372>9368
+# heavens_divider_haste > gram_haste
+6605>9369
+# heavens_divider_health > gram_health
+6606>9370
+# heavens_divider_focus > gram_focus
+6607>9371
+# strengthening_bow > hunting_gun
+274>9212
+# long_bow > hand_bowgun
+275>9217
+# elven_bow > hand_bowgun_2
+276>9995
+# dark_elven_bow > hand_bowgun_3
+277>9996
+# gastraphetes > crossbow
+278>9221
+# strengthening_long_bow > arm_burster
+279>9224
+# cyclone_bow > cranequin
+280>9227
+# crystallized_ice_bow > arbalest
+281>9236
+# crystallized_ice_bow_guidence > arbalest_guidence
+4810>9237
+# crystallized_ice_bow_evasion > arbalest_evasion
+4811>9238
+# crystallized_ice_bow_quickrecovery > arbalest_quickrecovery
+4812>9239
+# elemental_bow > ballista
+282>9256
+# noble_elven_bow > ballista_2
+285>9260
+# elemental_bow_guidence > ballista_guidence
+4813>9257
+# elemental_bow_miser > ballista_miser
+4814>9258
+# elemental_bow_quickrecovery > ballista_quickrecovery
+4815>9259
+# noble_elven_bow_evasion > ballista_2_evasion
+4816>9261
+# noble_elven_bow_miser > ballista_2_miser
+4817>9262
+# noble_elven_bow_cheapshot > ballista_2_cheapshot
+4818>9263
+# akat_long_bow > taslam
+283>9288
+# akat_long_bow_guidence > taslam_guidence
+4819>9289
+# akat_long_bow_evasion > taslam_evasion
+4820>9290
+# akat_long_bow_miser > taslam_miser
+4821>9291
+# eminence_bow > shape_shooter
+286>9300
+# eminence_bow_guidence > shape_shooter_guidence
+4822>9301
+# eminence_bow_miser > shape_shooter_miser
+4823>9302
+# eminence_bow_cheapshot > shape_shooter_cheapshot
+4824>9303
+# dark_elven_long_bow > peace_maker
+284>9312
+# dark_elven_long_bow_evasion > peace_maker_evasion
+4825>9313
+# dark_elven_long_bow_crt.bleed > peace_maker_crt.bleed
+4826>9314
+# dark_elven_long_bow_miser > peace_maker_miser
+4827>9315
+# hazard_bow > hell_hound
+287>9324
+# hazard_bow_guidence > hell_hound_guidence
+4828>9325
+# hazard_bow_quickrecovery > hell_hound_quickrecovery
+4829>9326
+# hazard_bow_cheapshot > hell_hound_cheapshot
+4830>9327
+# carnium_bow > doom_singer
+288>9336
+# carnium_bow_light > doom_singer_light
+5608>9337
+# carnium_bow_crt.bleed > doom_singer_crt.bleed
+5609>9338
+# carnium_bow_manaup > doom_singer_manaup
+5610>9339
+# soul_bow > soul_shooter
+289>9348
+# soul_bow_cheapshot > soul_shooter_cheapshot
+5611>9349
+# soul_bow_quickrecovery > soul_shooter_quickrecovery
+5612>9350
+# soul_bow_crt.poison > soul_shooter_crt.poison
+5613>9351
+# shyid_bow > burst_avenger
+8684>9360
+# shyid_bow_cheapshot > burst_avenger_cheapshot
+8806>9361
+# shyid_bow_focus > burst_avenger_focus
+8807>9362
+# shyid_bow_quickrecovery > burst_avenger_quickrecovery
+8808>9363
+# draconic_bow > sarnga
+7575>9372
+# draconic_bow_cheapshot > sarnga_cheapshot
+7576>9373
+# draconic_bow_focus > sarnga_focus
+7577>9374
+# draconic_bow_crt.slow > sarnga_crt.slow
+7578>9375
+# dynasty_blade > dynasty_rapier
+9442>9376
+# dynasty_blade_focus > dynasty_rapier_focus
+9854>9377
+# dynasty_blade_health > dynasty_rapier_health
+9855>9378
+# dynasty_blade_light > dynasty_rapier_light
+9856>9379
+# dynasty_two_hand_sword > dynasty_ancientsword
+9443>9380
+# dynasty_two_hand_sword_focus > dynasty_ancientsword_focus
+9857>9381
+# dynasty_two_hand_sword_health > dynasty_ancientsword_health
+9858>9382
+# dynasty_two_hand_sword_light > dynasty_ancientsword_light
+9859>9383
+# dynasty_bow > dynasty_crossbow
+9445>9384
+# dynasty_bow_cheapshot > dynasty_crossbow_cheapshot
+9863>9385
+# dynasty_bow_guidence > dynasty_crossbow_guidence
+9864>9386
+# dynasty_bow_focus > dynasty_crossbow_focus
+9865>9387
+# icarus_sowsword > icarus_stinger
+10215>10224
+# icarus_sowsword_focus > icarus_stinger_focus
+10434>10461
+# icarus_sowsword_health > icarus_stinger_health
+10435>10462
+# icarus_sowsword_light > icarus_stinger_light
+10436>10463
+# icarus_heavy_arms > icarus_wing_blade
+10218>10225
+# icarus_heavy_arms_focus > icarus_wing_blade_focus
+10437>10464
+# icarus_heavy_arms_health > icarus_wing_blade_health
+10438>10465
+# icarus_heavy_arms_light > icarus_wing_blade_light
+10439>10466
+# icarus_accipiter > icarus_shooter
+10223>10226
+# icarus_accipiter_cheapshot > icarus_shooter_cheapshot
+10443>10467
+# icarus_accipiter_guidence > icarus_shooter_guidence
+10444>10468
+# icarus_accipiter_focus > icarus_shooter_focus
+10445>10469
+# kshanberk_high > assult_fleuret_high
+10930>10912
+# kshanberk_guidence_high > assult_fleuret_guidence_high
+10931>10913
+# kshanberk_focus_high > assult_fleuret_focus_high
+10932>10914
+# kshanberk_backblow_high > assult_fleuret_backblow_high
+10933>10915
+# sword_of_damascus_high > colichemarde_high
+10959>11001
+# sword_of_damascus_focus_high > colichemarde_focus_high
+10960>11002
+# sword_of_damascus_crt.damage_high > colichemarde_crt.damage_high
+10961>11003
+# sword_of_damascus_haste_high > colichemarde_haste_high
+10962>11004
+# tallum_blade_high > lightning_blaze_high
+11058>11025
+# tallum_blade_crt.poison_high > lightning_blaze_crt.poison_high
+11059>11026
+# tallum_blade_haste_high > lightning_blaze_haste_high
+11060>11027
+# tallum_blade_anger_high > lightning_blaze_anger_high
+11061>11028
+# dark_legion's_edge_high > greed_stinger_high
+11080>11075
+# dark_legion's_edge_crt.damage_high > greed_stinger_crt.damage_high
+11081>11076
+# dark_legion's_edge_health_high > greed_stinger_health_high
+11082>11077
+# dark_legion's_edge_rsk.focus_high > greed_stinger_rsk.focus_high
+11083>11078
+# sirr_blade_high > eclair_bijou_high
+11169>11173
+# sirr_blade_haste_high > eclair_bijou_haste_high
+11170>11174
+# sirr_blade_health_high > eclair_bijou_health_high
+11171>11175
+# sirr_blade_crt.poison_high > eclair_bijou_crt.poison_high
+11172>11176
+# forgotten_blade_high > leavatein_high
+11235>11206
+# forgotten_blade_haste_high > leavatein_haste_high
+11236>11207
+# forgotten_blade_health_high > leavatein_health_high
+11237>11208
+# forgotten_blade_focus_high > leavatein_focus_high
+11238>11209
+# great_sword_high > nameless_victory_high
+10870>10882
+# great_sword_health_high > nameless_victory_health_high
+10871>10883
+# great_sword_crt.damage_high > nameless_victory_crt.damage_high
+10872>10884
+# great_sword_focus_high > nameless_victory_focus_high
+10873>10885
+# guardians_sword_high > dismantler_high
+10955>10963
+# guardians_sword_crt.drain_high > dismantler_crt.drain_high
+10956>10964
+# guardians_sword_health_high > dismantler_health_high
+10957>10965
+# guardians_sword_crt.bleed_high > dismantler_crt.bleed_high
+10958>10966
+# inferno_master_high > pain_of_godness_high
+11049>11066
+# inferno_master_haste_high > pain_of_godness_haste_high
+11050>11067
+# inferno_master_crt.damage_high > pain_of_godness_crt.damage_high
+11051>11068
+# inferno_master_focus_high > pain_of_godness_focus_high
+11052>11069
+# dragon_slayer_high > death_bringer_high
+11096>11084
+# dragon_slayer_health_high > death_bringer_health_high
+11097>11085
+# dragon_slayer_crt.bleed_high > death_bringer_crt.bleed_high
+11098>11086
+# dragon_slayer_crt.drain_high > death_bringer_crt.drain_high
+11099>11087
+# sword_of_ipos_high > burtgang_high
+11161>11153
+# sword_of_ipos_focus_high > burtgang_focus_high
+11162>11154
+# sword_of_ipos_haste_high > burtgang_haste_high
+11163>11155
+# sword_of_ipos_health_high > burtgang_health_high
+11164>11156
+# heavens_divider_high > gram_high
+11239>11190
+# heavens_divider_haste_high > gram_haste_high
+11240>11191
+# heavens_divider_health_high > gram_health_high
+11241>11192
+# heavens_divider_focus_high > gram_focus_high
+11242>11193
+# dark_elven_long_bow_high > peace_maker_high
+10886>10934
+# dark_elven_long_bow_evasion_high > peace_maker_evasion_high
+10887>10935
+# dark_elven_long_bow_crt.bleed_high > peace_maker_crt.bleed_high
+10888>10936
+# dark_elven_long_bow_miser_high > peace_maker_miser_high
+10889>10937
+# hazard_bow_high > hell_hound_high
+11009>11013
+# hazard_bow_guidence_high > hell_hound_guidence_high
+11010>11014
+# hazard_bow_quickrecovery_high > hell_hound_quickrecovery_high
+11011>11015
+# hazard_bow_cheapshot_high > hell_hound_cheapshot_high
+11012>11016
+# carnium_bow_high > doom_singer_high
+11053>11021
+# carnium_bow_light_high > doom_singer_light_high
+11054>11022
+# carnium_bow_crt.bleed_high > doom_singer_crt.bleed_high
+11055>11023
+# carnium_bow_manaup_high > doom_singer_manaup_high
+11056>11024
+# soul_bow_high > soul_shooter_high
+11124>11112
+# soul_bow_cheapshot_high > soul_shooter_cheapshot_high
+11125>11113
+# soul_bow_quickrecovery_high > soul_shooter_quickrecovery_high
+11126>11114
+# soul_bow_crt.poison_high > soul_shooter_crt.poison_high
+11127>11115
+# shyid_bow_high > burst_avenger_high
+11157>11145
+# shyid_bow_cheapshot_high > burst_avenger_cheapshot_high
+11158>11146
+# shyid_bow_focus_high > burst_avenger_focus_high
+11159>11147
+# shyid_bow_quickrecovery_high > burst_avenger_quickrecovery_high
+11160>11148
+# draconic_bow_high > sarnga_high
+11198>11214
+# draconic_bow_cheapshot_high > sarnga_cheapshot_high
+11199>11215
+# draconic_bow_focus_high > sarnga_focus_high
+11200>11216
+# draconic_bow_crt.slow_high > sarnga_crt.slow_high
+11201>11217
+# dynasty_blade_high > dynasty_rapier_high
+11272>11252
+# dynasty_blade_focus_high > dynasty_rapier_focus_high
+11273>11253
+# dynasty_blade_health_high > dynasty_rapier_health_high
+11274>11254
+# dynasty_blade_light_high > dynasty_rapier_light_high
+11275>11255
+# dynasty_two_hand_sword_high > dynasty_ancientsword_high
+11268>11243
+# dynasty_two_hand_sword_focus_high > dynasty_ancientsword_focus_high
+11269>11244
+# dynasty_two_hand_sword_health_high > dynasty_ancientsword_health_high
+11270>11245
+# dynasty_two_hand_sword_light_high > dynasty_ancientsword_light_high
+11271>11246
+# dynasty_bow_high > dynasty_crossbow_high
+11264>11288
+# dynasty_bow_cheapshot_high > dynasty_crossbow_cheapshot_high
+11265>11289
+# dynasty_bow_guidence_high > dynasty_crossbow_guidence_high
+11266>11290
+# dynasty_bow_focus_high > dynasty_crossbow_focus_high
+11267>11291
+# icarus_sowsword_high > icarus_stinger_high
+11305>11313
+# icarus_sowsword_focus_high > icarus_stinger_focus_high
+11306>11314
+# icarus_sowsword_health_high > icarus_stinger_health_high
+11307>11315
+# icarus_sowsword_light_high > icarus_stinger_light_high
+11308>11316
+# icarus_heavy_arms_high > icarus_wing_blade_high
+11341>11325
+# icarus_heavy_arms_focus_high > icarus_wing_blade_focus_high
+11342>11326
+# icarus_heavy_arms_health_high > icarus_wing_blade_health_high
+11343>11327
+# icarus_heavy_arms_light_high > icarus_wing_blade_light_high
+11344>11328
+# icarus_accipiter_high > icarus_shooter_high
+11321>11309
+# icarus_accipiter_cheapshot_high > icarus_shooter_cheapshot_high
+11322>11310
+# icarus_accipiter_guidence_high > icarus_shooter_guidence_high
+11323>11311
+# icarus_accipiter_focus_high > icarus_shooter_focus_high
+11324>11312
+# knight's_sword_low > fleuret_4_low
+11628>11651
+# saber_low > rapier_low
+11614>11607
+# bastard_sword_low > fleuret_low
+11635>11648
+# spinebone_sword_low > fleuret_2_low
+11636>11649
+# artisan's_sword_low > fleuret_3_low
+11643>11650
+# crimson_sword_low > estoc_low
+11675>11668
+# elven_sword_low > estoc_2_low
+11670>11669
+# sword_of_revolution_low > epee_low
+11714>11702
+# elven_long_sword_low > gran_epee_low
+11733>11724
+# stormbringer_low > soldat_estoc_low
+11756>11753
+# shamshir_low > chevelier_rapier_low
+11783>11784
+# katana_low > chevelier_rapier_2_low
+11794>11785
+# spirits_sword_low > chevelier_rapier_3_low
+11789>11786
+# raid_sword_low > chevelier_rapier_4_low
+11778>11787
+# caliburs_low > blink_slasher_low
+11821>11808
+# sword_of_delusion_low > blink_slasher_2_low
+11807>11809
+# tsurugi_low > blink_slasher_3_low
+11820>11810
+# sword_of_limit_low > blink_slasher_5_low
+11801>11812
+# sword_of_nightmare_low > blink_slasher_4_low
+11815>11811
+# samurai_longsword_low > amiral_estoc_low
+11853>11854
+# kshanberk_low > assult_fleuret_low
+11916>11907
+# sword_of_damascus_low > colichemarde_low
+11930>11942
+# tallum_blade_low > lightning_blaze_low
+11957>11948
+# dark_legion's_edge_low > greed_stinger_low
+11964>11962
+# sirr_blade_low > eclair_bijou_low
+11986>11987
+# forgotten_blade_low > leavatein_low
+12004>11996
+# heavy_sword_low > tulwar_low
+11625>11620
+# iron_sword_low > tulwar_2_low
+11605>11621
+# two-handed_sword_low > hunting_sword_low
+11667>11677
+# giants_sword_low > katzbalger_low
+11710>11707
+# claymore_low > general_katzbalger_low
+11736>11734
+# flamberge_low > schlaeger_low
+11766>11754
+# sword_of_paagrio_low > invincible_blade_low
+11813>11818
+# berserker_blade_low > sabertooth_low
+11843>11849
+# great_sword_low > nameless_victory_low
+11889>11895
+# guardians_sword_low > dismantler_low
+11929>11931
+# inferno_master_low > pain_of_godness_low
+11954>11959
+# dragon_slayer_low > death_bringer_low
+11968>11965
+# sword_of_ipos_low > burtgang_low
+11984>11982
+# heavens_divider_low > gram_low
+12005>11992
+# strengthening_bow_low > hunting_gun_low
+11606>11624
+# long_bow_low > hand_bowgun_low
+11632>11652
+# elven_bow_low > hand_bowgun_2_low
+11640>11653
+# dark_elven_bow_low > hand_bowgun_3_low
+11629>11654
+# gastraphetes_low > crossbow_low
+11659>11674
+# strengthening_long_bow_low > arm_burster_low
+11683>11701
+# cyclone_bow_low > cranequin_low
+11728>11735
+# crystallized_ice_bow_low > arbalest_low
+11759>11758
+# elemental_bow_low > ballista_low
+11790>11780
+# noble_elven_bow_low > ballista_2_low
+11775>11781
+# akat_long_bow_low > taslam_low
+11814>11823
+# eminence_bow_low > shape_shooter_low
+11857>11844
+# dark_elven_long_bow_low > peace_maker_low
+11896>11917
+# hazard_bow_low > hell_hound_low
+11944>11945
+# carnium_bow_low > doom_singer_low
+11955>11947
+# soul_bow_low > soul_shooter_low
+11975>11972
+# shyid_bow_low > burst_avenger_low
+11983>11980
+# draconic_bow_low > sarnga_low
+11994>11998
+# vesper_thrower > vesper_schutze
+13467>13469
+# vesper_thrower_cheapshot > vesper_schutze_cheapshot
+14148>14154
+# vesper_thrower_focus > vesper_schutze_focus
+14149>14155
+# vesper_thrower_crt.slow > vesper_schutze_crt.slow
+14150>14156
+# vesper_cutter > vesper_pincer
+13457>13468
+# vesper_cutter_haste > vesper_pincer_haste
+14118>14151
+# vesper_cutter_health > vesper_pincer_health
+14119>14152
+# vesper_cutter_focus > vesper_pincer_focus
+14120>14153
+# vesper_slasher > vesper_nagen
+13458>13470
+# vesper_slasher_haste > vesper_nagen_haste
+14121>14157
+# vesper_slasher_health > vesper_nagen_health
+14122>14158
+# vesper_slasher_focus > vesper_nagen_focus
+14123>14159
+# waldner_two-handed_sword > waldner_ancient_sowrd
+14561>14578
+# ashton_sword > ashton_rapier
+14562>14579
+# esthus_two-handed_sword > esthus_ancient_sowrd
+14564>14580
+# cadmus_bow > cadmus_crossbow
+14568>14581
+# incessantcore_sword > heavenstair_rapier
+15544>15555
+# lavamond_saw > pyseal_blade
+15548>15556
+# recurvethorne_bow > thorne_crossbow
+15554>15557
+# peri_el_sword > gemtail_rapier
+15558>15569
+# feathereye_blade > fin_invincible_blade
+15562>15570
+# skullcarnium_bow > rubecutter_crossbow
+15568>15571
+# peri_el_sword_focus > gemtail_rapier_focus
+15830>15863
+# peri_el_sword_haste > gemtail_rapier_haste
+15831>15864
+# peri_el_sword_health > gemtail_rapier_health
+15829>15862
+# feathereye_blade_focus > fin_invincible_blade_focus
+15842>15866
+# feathereye_blade_haste > fin_invincible_blade_haste
+15843>15867
+# feathereye_blade_health > fin_invincible_blade_health
+15841>15865
+# skullcarnium_bow_crt.slow > rubecutter_crossbow_crt.slow
+15860>15869
+# skullcarnium_bow_cheapshot > rubecutter_crossbow_cheapshot
+15861>15870
+# skullcarnium_bow_focus > rubecutter_crossbow_focus
+15859>15868
+# tysandy_blade > tysandy_rapier
+15676>15687
+# tysandy_two_hand_sword > tysandy_ancientsword
+15680>15688
+# tysandy_bow > tysandy_crossbow
+15686>15689
+# incessantcore_sword_health > heavenstair_rapier_health
+15873>15906
+# incessantcore_sword_focus > heavenstair_rapier_focus
+15871>15904
+# incessantcore_sword_haste > heavenstair_rapier_haste
+15872>15905
+# lavamond_saw_health > pyseal_blade_health
+15885>15909
+# lavamond_saw_focus > pyseal_blade_focus
+15883>15907
+# lavamond_saw_haste > pyseal_blade_haste
+15884>15908
+# recurvethorne_bow_focus > thorne_crossbow_focus
+15903>15912
+# recurvethorne_bow_crt.slow > thorne_crossbow_crt.slow
+15901>15910
+# recurvethorne_bow_cheapshot > thorne_crossbow_cheapshot
+15902>15911
+# vesper_cutter_high > vesper_pincer_high
+16042>16053
+# vesper_slasher_high > vesper_nagen_high
+16043>16055
+# vesper_thrower_high > vesper_schutze_high
+16052>16054
+# vesper_cutter_haste_high > vesper_pincer_haste_high
+16056>16089
+# vesper_cutter_health_high > vesper_pincer_health_high
+16057>16090
+# vesper_cutter_focus_high > vesper_pincer_focus_high
+16058>16091
+# vesper_slasher_haste_high > vesper_nagen_haste_high
+16059>16095
+# vesper_slasher_health_high > vesper_nagen_health_high
+16060>16096
+# vesper_slasher_focus_high > vesper_nagen_focus_high
+16061>16097
+# vesper_thrower_cheapshot_high > vesper_schutze_cheapshot_high
+16086>16092
+# vesper_thrower_focus_high > vesper_schutze_focus_high
+16087>16093
+# vesper_thrower_crt.slow_high > vesper_schutze_crt.slow_high
+16088>16094

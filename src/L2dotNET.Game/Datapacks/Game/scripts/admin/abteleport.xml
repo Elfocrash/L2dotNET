@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<null>
+ <list>
+  <group id="1" str="custom" name="teleport group #1" level="30">
+    <entry name="tp no 1" x="0" y="0" z="0"/>
+    <entry name="tp no 2" x="0" y="0" z="0"/>
+    <entry name="tp no 3" x="0" y="0" z="0"/>
+    <entry name="tp no 4" x="0" y="0" z="0"/>
+    <entry name="tp no 5" x="0" y="0" z="0"/>
+    <entry name="tp no 6" x="0" y="0" z="0"/>
+  </group>
+  
+  <group id="2" str="custom" name="teleport group #2" level="35">
+    <entry name="tp no 1" x="0" y="0" z="0"/>
+    <entry name="tp no 2" x="0" y="0" z="0"/>
+    <entry name="tp no 3" x="0" y="0" z="0"/>
+  </group>
+ </list>
+</null>

@@ -1,0 +1,2208 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<null>
+ <list>
+  <territory name='innadril18_2422_001' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='152976 146576 -3184 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='153628 146630 -3320 -2620'/>
+    <zone loc='153964 146899 -3320 -2620'/>
+    <zone loc='154072 147180 -3320 -2620'/>
+    <zone loc='151974 147212 -3320 -2620'/>
+    <zone loc='152621 146252 -3320 -2620'/>
+  </territory>
+  
+  <territory name='innadril18_2422_002' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='152272 147728 -3200 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='151437 147934 -3281 -2681'/>
+    <zone loc='151663 147729 -3281 -2681'/>
+    <zone loc='151658 147514 -3281 -2681'/>
+    <zone loc='151797 147400 -3281 -2681'/>
+    <zone loc='151837 147217 -3281 -2681'/>
+    <zone loc='153092 147241 -3281 -2681'/>
+    <zone loc='152924 148306 -3281 -2681'/>
+  </territory>
+  
+  <territory name='innadril18_2422_003' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='2' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='153728 147872 -3232 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='154174 148105 -3303 -2703'/>
+    <zone loc='154159 148319 -3303 -2703'/>
+    <zone loc='153904 148364 -3303 -2703'/>
+    <zone loc='152929 148309 -3303 -2703'/>
+    <zone loc='153098 147244 -3303 -2703'/>
+    <zone loc='153931 147218 -3303 -2703'/>
+    <zone loc='154130 147802 -3303 -2703'/>
+  </territory>
+  
+  <territory name='innadril18_2422_004' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='151888 148528 -3200 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='151715 148835 -3317 -2717'/>
+    <zone loc='151634 148402 -3317 -2717'/>
+    <zone loc='151417 148273 -3317 -2717'/>
+    <zone loc='151391 148109 -3317 -2717'/>
+    <zone loc='151448 147938 -3317 -2717'/>
+    <zone loc='152920 148312 -3317 -2717'/>
+    <zone loc='151551 149456 -3317 -2717'/>
+  </territory>
+  
+  <territory name='innadril18_2422_005' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='152464 149216 -3296 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='152925 148314 -3427 -2727'/>
+    <zone loc='153196 149554 -3427 -2727'/>
+    <zone loc='151667 149786 -3427 -2727'/>
+    <zone loc='151497 149597 -3427 -2727'/>
+    <zone loc='151541 149471 -3427 -2727'/>
+  </territory>
+  
+  <territory name='innadril18_2422_006' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='153792 148912 -3312 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='154307 148882 -3401 -2801'/>
+    <zone loc='154194 149158 -3401 -2801'/>
+    <zone loc='154534 149199 -3401 -2801'/>
+    <zone loc='153197 149541 -3401 -2801'/>
+    <zone loc='152927 148313 -3401 -2801'/>
+    <zone loc='154469 148366 -3401 -2801'/>
+    <zone loc='154304 148531 -3401 -2801'/>
+  </territory>
+  
+  <territory name='innadril18_2422_007' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='152336 150096 -3408 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='153202 149558 -3481 -2781'/>
+    <zone loc='153108 150498 -3481 -2781'/>
+    <zone loc='151610 150685 -3481 -2781'/>
+    <zone loc='151455 150412 -3481 -2781'/>
+    <zone loc='151667 149792 -3481 -2781'/>
+  </territory>
+  
+  <territory name='innadril18_2422_008' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='153888 149744 -3344 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='154536 149204 -3499 -2899'/>
+    <zone loc='154439 149312 -3499 -2899'/>
+    <zone loc='154596 149854 -3499 -2899'/>
+    <zone loc='153113 150502 -3499 -2899'/>
+    <zone loc='153211 149543 -3499 -2899'/>
+  </territory>
+  
+  <territory name='innadril18_2422_009' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='152464 151104 -3472 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='152944 151227 -3630 -3030'/>
+    <zone loc='152550 151646 -3630 -3030'/>
+    <zone loc='151905 151463 -3630 -3030'/>
+    <zone loc='151675 151075 -3630 -3030'/>
+    <zone loc='151606 150698 -3630 -3030'/>
+    <zone loc='153106 150510 -3630 -3030'/>
+    <zone loc='153322 151473 -3630 -3030'/>
+  </territory>
+  
+  <territory name='innadril18_2422_010' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='2' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='153952 150800 -3472 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='154225 150397 -3717 -2817'/>
+    <zone loc='154365 151121 -3717 -2817'/>
+    <zone loc='153839 151597 -3717 -2817'/>
+    <zone loc='153295 151438 -3717 -2817'/>
+    <zone loc='153115 150509 -3717 -2817'/>
+    <zone loc='154554 149836 -3717 -2817'/>
+  </territory>
+  
+  <territory name='innadril18_2422_011' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='155648 148800 -3712 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='156363 149768 -3961 -3061'/>
+    <zone loc='155231 149587 -3961 -3061'/>
+    <zone loc='155218 149073 -3961 -3061'/>
+    <zone loc='155233 148737 -3961 -3061'/>
+    <zone loc='156413 148564 -3961 -3061'/>
+  </territory>
+  
+  <territory name='innadril18_2422_012' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='156752 149344 -3616 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='156979 148943 -3732 -2832'/>
+    <zone loc='157280 149927 -3732 -2832'/>
+    <zone loc='156368 149781 -3732 -2832'/>
+    <zone loc='156399 148627 -3732 -2832'/>
+  </territory>
+  
+  <territory name='innadril18_2422_013' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='156272 150288 -3648 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='157596 150852 -3827 -3027'/>
+    <zone loc='155109 150818 -3827 -3027'/>
+    <zone loc='155475 150243 -3827 -3027'/>
+    <zone loc='155226 149595 -3827 -3027'/>
+    <zone loc='157275 149935 -3827 -3027'/>
+  </territory>
+  
+  <territory name='innadril18_2422_014' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='155008 151712 -3728 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='155087 150825 -3861 -3061'/>
+    <zone loc='155895 150839 -3861 -3061'/>
+    <zone loc='155651 152569 -3861 -3061'/>
+    <zone loc='154356 152307 -3861 -3061'/>
+    <zone loc='153850 151663 -3861 -3061'/>
+    <zone loc='154691 150852 -3861 -3061'/>
+  </territory>
+  
+  <territory name='innadril18_2422_015' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='156800 151504 -3632 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='155900 150839 -3805 -3005'/>
+    <zone loc='157622 150859 -3805 -3005'/>
+    <zone loc='158290 151589 -3805 -3005'/>
+    <zone loc='155662 152593 -3805 -3005'/>
+  </territory>
+  
+  <territory name='innadril18_2422_016' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='157136 152800 -3536 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='157575 151869 -3751 -2851'/>
+    <zone loc='157592 153485 -3751 -2851'/>
+    <zone loc='156682 153353 -3751 -2851'/>
+    <zone loc='156546 153157 -3751 -2851'/>
+    <zone loc='155678 152598 -3751 -2851'/>
+  </territory>
+  
+  <territory name='innadril18_2422_017' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='158640 152672 -3440 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='158887 153505 -3578 -2878'/>
+    <zone loc='158278 153625 -3578 -2878'/>
+    <zone loc='157606 153513 -3578 -2878'/>
+    <zone loc='157580 151871 -3578 -2878'/>
+    <zone loc='158372 151564 -3578 -2878'/>
+    <zone loc='158927 151534 -3578 -2878'/>
+  </territory>
+  
+  <territory name='innadril18_2422_018' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='1' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='160080 152320 -3424 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='160969 151474 -3624 -2924'/>
+    <zone loc='160783 152915 -3624 -2924'/>
+    <zone loc='158895 153461 -3624 -2924'/>
+    <zone loc='158935 151537 -3624 -2924'/>
+  </territory>
+  
+  <territory name='innadril18_2422_020' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='2' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22267' pos='153248 153792 -3664 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='154337 153550 -3741 -3141'/>
+    <zone loc='154082 153783 -3741 -3141'/>
+    <zone loc='153704 153929 -3741 -3141'/>
+    <zone loc='153694 154114 -3741 -3141'/>
+    <zone loc='153414 154241 -3741 -3141'/>
+    <zone loc='153419 154558 -3741 -3141'/>
+    <zone loc='152311 153666 -3741 -3141'/>
+    <zone loc='153252 153560 -3741 -3141'/>
+    <zone loc='153305 153334 -3741 -3141'/>
+  </territory>
+  
+  <territory name='innadril18_2422_021' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='2' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22267' pos='155141 154105 -3672 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='155026 154794 -3921 -3221'/>
+    <zone loc='154889 154560 -3921 -3221'/>
+    <zone loc='154963 154305 -3921 -3221'/>
+    <zone loc='154467 153564 -3921 -3221'/>
+    <zone loc='155239 153622 -3921 -3221'/>
+    <zone loc='155748 154293 -3921 -3221'/>
+  </territory>
+  
+  <territory name='innadril18_2422_022' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='2' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22267' pos='152160 154496 -3696 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='153296 154599 -3887 -3287'/>
+    <zone loc='152648 155384 -3887 -3287'/>
+    <zone loc='151087 154216 -3887 -3287'/>
+    <zone loc='151436 154214 -3887 -3287'/>
+    <zone loc='152281 153832 -3887 -3287'/>
+  </territory>
+  
+  <territory name='innadril18_2422_023' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='2' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22267' pos='151248 155216 -3696 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='152648 155394 -3743 -3143'/>
+    <zone loc='151965 156096 -3743 -3143'/>
+    <zone loc='151124 155772 -3743 -3143'/>
+    <zone loc='150394 155012 -3743 -3143'/>
+    <zone loc='150866 154150 -3743 -3143'/>
+  </territory>
+  
+  <territory name='innadril18_2422_024' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='2' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22267' pos='152864 155936 -3687 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='153701 155830 -3888 -3288'/>
+    <zone loc='153079 156327 -3888 -3288'/>
+    <zone loc='152556 156540 -3888 -3288'/>
+    <zone loc='152024 156129 -3888 -3288'/>
+    <zone loc='153327 154694 -3888 -3288'/>
+    <zone loc='153473 155255 -3888 -3288'/>
+  </territory>
+  
+  <territory name='innadril18_2422_025' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='3' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22267' pos='154224 155600 -3687 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='154954 154812 -3764 -3164'/>
+    <zone loc='154713 156363 -3764 -3164'/>
+    <zone loc='154483 156022 -3764 -3164'/>
+    <zone loc='153707 155836 -3764 -3164'/>
+    <zone loc='153912 155224 -3764 -3164'/>
+    <zone loc='154416 155220 -3764 -3164'/>
+  </territory>
+  
+  <territory name='innadril18_2422_026' controller='default' start_active='true' max='4'>
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22266' count='2' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='155152 155904 -3680 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='154957 154821 -3838 -3138'/>
+    <zone loc='156327 156069 -3838 -3138'/>
+    <zone loc='154717 156363 -3838 -3138'/>
+  </territory>
+  
+  <territory name='innadril18_2422_027' controller='default' start_active='true' max='4'>
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22266' count='2' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='155888 155280 -3760 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='156145 154626 -3803 -3103'/>
+    <zone loc='156599 154788 -3803 -3103'/>
+    <zone loc='156329 156060 -3803 -3103'/>
+    <zone loc='154959 154822 -3803 -3103'/>
+    <zone loc='156140 154538 -3803 -3103'/>
+  </territory>
+  
+  <territory name='innadril18_2422_028' controller='default' start_active='true' max='4'>
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22266' count='2' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='157264 155472 -3760 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='158094 156037 -3884 -3184'/>
+    <zone loc='157135 155908 -3884 -3184'/>
+    <zone loc='156339 156062 -3884 -3184'/>
+    <zone loc='156591 154851 -3884 -3184'/>
+    <zone loc='157940 154992 -3884 -3184'/>
+  </territory>
+  
+  <territory name='innadril18_2422_029' controller='default' start_active='true' max='4'>
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22266' count='2' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='158544 155424 -3760 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='159061 155887 -3866 -3166'/>
+    <zone loc='158590 155823 -3866 -3166'/>
+    <zone loc='158103 156039 -3866 -3166'/>
+    <zone loc='157943 154969 -3866 -3166'/>
+    <zone loc='158428 154825 -3866 -3166'/>
+    <zone loc='158575 154946 -3866 -3166'/>
+    <zone loc='159123 154638 -3866 -3166'/>
+  </territory>
+  
+  <territory name='innadril18_2422_030' controller='default' start_active='true' max='4'>
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22266' count='2' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='160064 155056 -3760 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='159815 155675 -3877 -3177'/>
+    <zone loc='159423 155659 -3877 -3177'/>
+    <zone loc='159066 155896 -3877 -3177'/>
+    <zone loc='159128 154666 -3877 -3177'/>
+    <zone loc='159796 154458 -3877 -3177'/>
+    <zone loc='161130 154348 -3877 -3177'/>
+    <zone loc='160633 155625 -3877 -3177'/>
+    <zone loc='160225 155369 -3877 -3177'/>
+  </territory>
+  
+  <territory name='innadril18_2422_031' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='2' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22265' count='2' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+    <npc id='22267' pos='152720 157472 -3504 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='153202 156525 -3820 -3220'/>
+    <zone loc='153490 157732 -3820 -3220'/>
+    <zone loc='152619 158237 -3820 -3220'/>
+    <zone loc='151952 157609 -3820 -3220'/>
+    <zone loc='152330 156693 -3820 -3220'/>
+  </territory>
+  
+  <territory name='innadril18_2422_032' controller='default' start_active='true' max='5'>
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22266' count='3' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='155696 156944 -3664 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='155874 157644 -3822 -3122'/>
+    <zone loc='155052 157563 -3822 -3122'/>
+    <zone loc='154761 156982 -3822 -3122'/>
+    <zone loc='154752 156375 -3822 -3122'/>
+    <zone loc='156521 156348 -3822 -3122'/>
+  </territory>
+  
+  <territory name='innadril18_2422_033' controller='default' start_active='true' max='4'>
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22266' count='2' respawn='30s' rand='15s'/> <!-- Pythia -->
+    <npc id='22267' pos='157072 157600 -3552 0' count='1' respawn='310s' rand='0'/> <!-- Dark Water Dragon -->
+
+    <zone loc='157799 157556 -3745 -3045'/>
+    <zone loc='157229 158538 -3745 -3045'/>
+    <zone loc='155800 158076 -3745 -3045'/>
+    <zone loc='156764 156305 -3745 -3045'/>
+    <zone loc='157471 156626 -3745 -3045'/>
+    <zone loc='158275 156587 -3745 -3045'/>
+    <zone loc='158553 156897 -3745 -3045'/>
+  </territory>
+  
+  <territory name='innadril18_2422_034' controller='default' start_active='true' max='5'>
+    <npc id='22263' count='2' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='15s'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='15s'/> <!-- Chrysocolla -->
+
+    <zone loc='152568 158339 -3517 -2917'/>
+    <zone loc='150863 158633 -3517 -2917'/>
+    <zone loc='150655 158877 -3517 -2917'/>
+    <zone loc='150445 158256 -3517 -2917'/>
+    <zone loc='150849 157681 -3517 -2917'/>
+    <zone loc='151902 157566 -3517 -2917'/>
+  </territory>
+  
+  <territory name='innadril18_2422_035' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='2' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+
+    <zone loc='150617 158820 -3380 -2880'/>
+    <zone loc='149872 159699 -3380 -2880'/>
+    <zone loc='149459 159990 -3380 -2880'/>
+    <zone loc='149586 159419 -3380 -2880'/>
+    <zone loc='150473 158381 -3380 -2880'/>
+  </territory>
+  
+  <territory name='innadril18_2422_036' controller='default' start_active='true' max='4'>
+    <npc id='22263' count='2' respawn='30s' rand='15s'/> <!-- Sonneratia -->
+    <npc id='22264' count='2' respawn='30s' rand='15s'/> <!-- Castalia -->
+
+    <zone loc='149569 159425 -3316 -2816'/>
+    <zone loc='149446 160014 -3316 -2816'/>
+    <zone loc='149203 160456 -3316 -2816'/>
+    <zone loc='148568 160116 -3316 -2816'/>
+    <zone loc='149214 159522 -3316 -2816'/>
+  </territory>
+  
+  <territory name='innadril18_2422_037' controller='default' start_active='true' max='3'>
+    <npc id='18367' pos='155312 160160 -3344 0' count='1' respawn='60s' rand='0'/> <!-- Prison Guard -->
+    <npc id='18368' pos='155840 159936 -3344 0' count='1' respawn='15s' rand='0'/> <!-- Prison Guard -->
+    <npc id='18368' pos='155840 160448 -3344 0' count='1' respawn='15s' rand='0'/> <!-- Prison Guard -->
+
+    <zone loc='155085 159642 -3396 -3196'/>
+    <zone loc='156120 159637 -3396 -3196'/>
+    <zone loc='156123 160669 -3396 -3196'/>
+    <zone loc='155083 160670 -3396 -3196'/>
+  </territory>
+  
+  <territory name='innadril16_2422_001' controller='default' start_active='true' max='3'>
+    <npc id='18367' pos='146592 151888 -2864 49152' count='1' respawn='60s' rand='0'/> <!-- Prison Guard -->
+    <npc id='18368' pos='146366 151506 -2864 49152' count='1' respawn='15s' rand='0'/> <!-- Prison Guard -->
+    <npc id='18368' pos='146880 151504 -2864 49152' count='1' respawn='15s' rand='0'/> <!-- Prison Guard -->
+
+    <zone loc='146076 151093 -2934 -2634'/>
+    <zone loc='147105 151091 -2934 -2634'/>
+    <zone loc='147104 152112 -2934 -2634'/>
+    <zone loc='146075 152123 -2934 -2634'/>
+  </territory>
+  
+  <territory name='innadril16_2422_002' controller='default' start_active='true' max='25'>
+    <npc id='22263' count='2' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='0'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='0'/> <!-- Pythia -->
+
+    <zone loc='140852 155795 -2959 -2659'/>
+    <zone loc='141387 155587 -2959 -2659'/>
+    <zone loc='140886 160108 -2959 -2659'/>
+    <zone loc='140226 160291 -2959 -2659'/>
+    <zone loc='140104 157914 -2959 -2659'/>
+  </territory>
+  
+  <territory name='innadril16_2422_003' controller='default' start_active='true' max='30'>
+    <npc id='22263' count='1' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='2' respawn='30s' rand='0'/> <!-- Castalia -->
+    <npc id='22265' count='2' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+    <npc id='22266' count='1' respawn='30s' rand='0'/> <!-- Pythia -->
+
+    <zone loc='140674 160176 -2966 -2466'/>
+    <zone loc='143050 163488 -2966 -2466'/>
+    <zone loc='140490 163659 -2966 -2466'/>
+    <zone loc='139921 160556 -2966 -2466'/>
+  </territory>
+  
+  <territory name='innadril16_2422_004' controller='default' start_active='true' max='30'>
+    <npc id='22263' count='2' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='0'/> <!-- Castalia -->
+    <npc id='22265' count='1' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+    <npc id='22266' count='2' respawn='30s' rand='0'/> <!-- Pythia -->
+
+    <zone loc='137658 163669 -2939 -2539'/>
+    <zone loc='139957 160843 -2939 -2539'/>
+    <zone loc='140466 163641 -2939 -2539'/>
+  </territory>
+  
+  <territory name='innadril16_2423_001' controller='default' start_active='true' max='55'>
+    <npc id='22263' count='3' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='2' respawn='30s' rand='0'/> <!-- Castalia -->
+    <npc id='22265' count='3' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+    <npc id='22266' count='3' respawn='30s' rand='0'/> <!-- Pythia -->
+
+    <zone loc='140343 163874 -2939 -2439'/>
+    <zone loc='140020 167337 -2939 -2439'/>
+    <zone loc='136539 167213 -2939 -2439'/>
+    <zone loc='136788 163898 -2939 -2439'/>
+  </territory>
+  
+  <territory name='innadril16_2423_002' controller='default' start_active='true' max='55'>
+    <npc id='22263' count='2' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='3' respawn='30s' rand='0'/> <!-- Castalia -->
+    <npc id='22265' count='3' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+    <npc id='22266' count='3' respawn='30s' rand='0'/> <!-- Pythia -->
+
+    <zone loc='142716 163878 -2954 -2454'/>
+    <zone loc='144146 167289 -2954 -2454'/>
+    <zone loc='140049 167349 -2954 -2454'/>
+    <zone loc='140356 163866 -2954 -2454'/>
+  </territory>
+  
+  <territory name='innadril16_2423_003' controller='default' start_active='true' max='55'>
+    <npc id='22263' count='2' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='3' respawn='30s' rand='0'/> <!-- Castalia -->
+    <npc id='22265' count='3' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+    <npc id='22266' count='3' respawn='30s' rand='0'/> <!-- Pythia -->
+
+    <zone loc='146511 163878 -2860 -2260'/>
+    <zone loc='147473 165437 -2860 -2260'/>
+    <zone loc='144169 167263 -2860 -2260'/>
+    <zone loc='142746 163904 -2860 -2260'/>
+  </territory>
+  
+  <territory name='innadril16_2423_004' controller='default' start_active='true' max='30'>
+    <npc id='22265' count='3' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+    <npc id='22266' count='3' respawn='30s' rand='0'/> <!-- Pythia -->
+
+    <zone loc='149224 166571 -2851 -2351'/>
+    <zone loc='148457 167657 -2851 -2351'/>
+    <zone loc='147713 165750 -2851 -2351'/>
+    <zone loc='146534 163882 -2851 -2351'/>
+    <zone loc='148169 163899 -2851 -2351'/>
+    <zone loc='150496 166137 -2851 -2351'/>
+  </territory>
+  
+  <territory name='innadril16_2423_005' controller='default' start_active='true' max='30'>
+    <npc id='22265' count='3' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+    <npc id='22266' count='3' respawn='30s' rand='0'/> <!-- Pythia -->
+
+    <zone loc='155244 168872 -3288 -2288'/>
+    <zone loc='155084 169620 -3288 -2288'/>
+    <zone loc='149666 166438 -3288 -2288'/>
+    <zone loc='150800 166045 -3288 -2288'/>
+  </territory>
+  
+  <territory name='innadril16_2423_006' controller='default' start_active='true' max='35'>
+    <npc id='22262' count='2' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='3' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='2' respawn='30s' rand='0'/> <!-- Castalia -->
+
+    <zone loc='157865 169463 -3749 -2949'/>
+    <zone loc='158126 171974 -3749 -2949'/>
+    <zone loc='154922 170628 -3749 -2949'/>
+    <zone loc='155345 168624 -3749 -2949'/>
+  </territory>
+  
+  <territory name='innadril16_2423_007' controller='default' start_active='true' max='80'>
+    <npc id='22261' count='4' respawn='30s' rand='0'/> <!-- Seychelles -->
+    <npc id='22262' count='4' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='4' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='4' respawn='30s' rand='0'/> <!-- Castalia -->
+
+    <zone loc='159439 177285 -3727 -3027'/>
+    <zone loc='157149 176386 -3727 -3027'/>
+    <zone loc='155851 175521 -3727 -3027'/>
+    <zone loc='156096 174508 -3727 -3027'/>
+    <zone loc='158565 173636 -3727 -3027'/>
+    <zone loc='158022 170701 -3727 -3027'/>
+    <zone loc='161389 173523 -3727 -3027'/>
+    <zone loc='160095 175568 -3727 -3027'/>
+    <zone loc='160573 177427 -3727 -3027'/>
+    <zone loc='160206 178740 -3727 -3027'/>
+  </territory>
+  
+  <territory name='innadril16_2423_008' controller='default' start_active='true' max='60'>
+    <npc id='22261' count='3' respawn='30s' rand='0'/> <!-- Seychelles -->
+    <npc id='22262' count='3' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='3' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='3' respawn='30s' rand='0'/> <!-- Castalia -->
+
+    <zone loc='153850 176744 -3678 -3078'/>
+    <zone loc='157327 178898 -3678 -3078'/>
+    <zone loc='159548 177553 -3678 -3078'/>
+    <zone loc='160228 178850 -3678 -3078'/>
+    <zone loc='158661 180088 -3678 -3078'/>
+    <zone loc='153706 178951 -3678 -3078'/>
+    <zone loc='153360 177385 -3678 -3078'/>
+  </territory>
+  
+  <territory name='innadril16_2423_009' controller='default' start_active='true' max='35'>
+    <npc id='22264' count='2' respawn='30s' rand='0'/> <!-- Castalia -->
+    <npc id='22265' count='3' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+    <npc id='22266' count='3' respawn='30s' rand='0'/> <!-- Pythia -->
+
+    <zone loc='143485 167330 -3424 -2324'/>
+    <zone loc='146219 168987 -3424 -2324'/>
+    <zone loc='143666 169498 -3424 -2324'/>
+    <zone loc='141182 167374 -3424 -2324'/>
+  </territory>
+  
+  <territory name='innadril16_2423_010' controller='default' start_active='true' max='50'>
+    <npc id='22261' count='2' respawn='30s' rand='0'/> <!-- Seychelles -->
+    <npc id='22262' count='2' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='2' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='2' respawn='30s' rand='0'/> <!-- Castalia -->
+    <npc id='22265' count='2' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+
+    <zone loc='139089 167348 -3312 -2712'/>
+    <zone loc='138902 173814 -3312 -2712'/>
+    <zone loc='138423 173733 -3312 -2712'/>
+    <zone loc='136824 168413 -3312 -2712'/>
+  </territory>
+  
+  <territory name='innadril16_2423_011' controller='default' start_active='true' max='40'>
+    <npc id='22261' count='1' respawn='30s' rand='0'/> <!-- Seychelles -->
+    <npc id='22262' count='2' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='2' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='0'/> <!-- Castalia -->
+    <npc id='22265' count='2' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+
+    <zone loc='144302 171238 -3241 -2641'/>
+    <zone loc='143678 171621 -3241 -2641'/>
+    <zone loc='139087 169114 -3241 -2641'/>
+    <zone loc='139108 168376 -3241 -2641'/>
+    <zone loc='142956 169828 -3241 -2641'/>
+  </territory>
+  
+  <territory name='innadril16_2423_012' controller='default' start_active='true' max='40'>
+    <npc id='22261' count='2' respawn='30s' rand='0'/> <!-- Seychelles -->
+    <npc id='22262' count='1' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='2' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='1' respawn='30s' rand='0'/> <!-- Castalia -->
+    <npc id='22265' count='2' respawn='30s' rand='0'/> <!-- Chrysocolla -->
+
+    <zone loc='142154 171785 -3048 -2548'/>
+    <zone loc='141726 172792 -3048 -2548'/>
+    <zone loc='138989 172219 -3048 -2548'/>
+    <zone loc='139064 170113 -3048 -2548'/>
+  </territory>
+  
+  <territory name='innadril16_2423_013' controller='default' start_active='true' max='45'>
+    <npc id='22261' count='1' respawn='30s' rand='0'/> <!-- Seychelles -->
+    <npc id='22262' count='2' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='3' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='3' respawn='30s' rand='0'/> <!-- Castalia -->
+
+    <zone loc='139340 173997 -3597 -2997'/>
+    <zone loc='139078 175752 -3597 -2997'/>
+    <zone loc='133491 173941 -3597 -2997'/>
+    <zone loc='133618 172853 -3597 -2997'/>
+  </territory>
+  
+  <territory name='innadril16_2423_014' controller='default' start_active='true' max='40'>
+    <npc id='22261' count='2' respawn='30s' rand='0'/> <!-- Seychelles -->
+    <npc id='22262' count='2' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='2' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='2' respawn='30s' rand='0'/> <!-- Castalia -->
+
+    <zone loc='145042 174121 -3628 -2828'/>
+    <zone loc='144900 174696 -3628 -2828'/>
+    <zone loc='140868 175278 -3628 -2828'/>
+    <zone loc='139794 174567 -3628 -2828'/>
+    <zone loc='141509 174268 -3628 -2828'/>
+    <zone loc='143999 173896 -3628 -2828'/>
+  </territory>
+  
+  <territory name='innadril16_2423_015' controller='default' start_active='true' max='45'>
+    <npc id='22261' count='1' respawn='30s' rand='0'/> <!-- Seychelles -->
+    <npc id='22262' count='2' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='3' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='3' respawn='30s' rand='0'/> <!-- Castalia -->
+
+    <zone loc='144562 177792 -3390 -2840'/>
+    <zone loc='143950 178800 -3390 -2840'/>
+    <zone loc='139139 175799 -3390 -2840'/>
+    <zone loc='139324 174275 -3390 -2840'/>
+  </territory>
+  
+  <territory name='innadril16_2423_016' controller='default' start_active='true' max='45'>
+    <npc id='22261' count='1' respawn='30s' rand='0'/> <!-- Seychelles -->
+    <npc id='22262' count='2' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='3' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='3' respawn='30s' rand='0'/> <!-- Castalia -->
+
+    <zone loc='138806 178876 -3498 -3098'/>
+    <zone loc='137080 178935 -3498 -3098'/>
+    <zone loc='135735 177268 -3498 -3098'/>
+    <zone loc='136589 176180 -3498 -3098'/>
+    <zone loc='137445 176438 -3498 -3098'/>
+    <zone loc='139170 176187 -3498 -3098'/>
+    <zone loc='139250 176752 -3498 -3098'/>
+  </territory>
+  
+  <territory name='innadril16_2423_017' controller='default' start_active='true' max='45'>
+    <npc id='22261' count='1' respawn='30s' rand='0'/> <!-- Seychelles -->
+    <npc id='22262' count='2' respawn='30s' rand='0'/> <!-- Naiad -->
+    <npc id='22263' count='3' respawn='30s' rand='0'/> <!-- Sonneratia -->
+    <npc id='22264' count='3' respawn='30s' rand='0'/> <!-- Castalia -->
+
+    <zone loc='141343 178225 -3680 -3130'/>
+    <zone loc='141974 180264 -3680 -3130'/>
+    <zone loc='140760 180264 -3680 -3130'/>
+    <zone loc='139455 177800 -3680 -3130'/>
+    <zone loc='139142 175836 -3680 -3130'/>
+    <zone loc='140132 176461 -3680 -3130'/>
+  </territory>
+  
+  <territory name='innadril16_2423_018' controller='default' start_active='true' max='50'>
+    <npc id='22258' count='2' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='2' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='3' respawn='30s' rand='0'/> <!-- Kleopora -->
+    <npc id='22261' count='3' respawn='30s' rand='0'/> <!-- Seychelles -->
+
+    <zone loc='134171 178967 -3864 -3164'/>
+    <zone loc='140708 180371 -3864 -3164'/>
+    <zone loc='142335 186406 -3864 -3164'/>
+    <zone loc='136329 186742 -3864 -3164'/>
+  </territory>
+  
+  <territory name='innadril16_2423_019' controller='default' start_active='true' max='40'>
+    <npc id='22258' count='1' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='2' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='2' respawn='30s' rand='0'/> <!-- Kleopora -->
+    <npc id='22261' count='3' respawn='30s' rand='0'/> <!-- Seychelles -->
+
+    <zone loc='140924 181429 -3803 -3203'/>
+    <zone loc='141402 183076 -3803 -3203'/>
+    <zone loc='136081 182974 -3803 -3203'/>
+    <zone loc='135715 181484 -3803 -3203'/>
+  </territory>
+  
+  <territory name='innadril16_2423_020' controller='default' start_active='true' max='40'>
+    <npc id='22258' count='1' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='2' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='3' respawn='30s' rand='0'/> <!-- Kleopora -->
+    <npc id='22261' count='2' respawn='30s' rand='0'/> <!-- Seychelles -->
+
+    <zone loc='141438 183167 -3882 -3382'/>
+    <zone loc='142016 185394 -3882 -3382'/>
+    <zone loc='138935 185134 -3882 -3382'/>
+    <zone loc='136369 186712 -3882 -3382'/>
+    <zone loc='135844 184870 -3882 -3382'/>
+  </territory>
+  
+  <territory name='innadril16_2423_021' controller='default' start_active='true' max='65'>
+    <npc id='22257' count='3' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='3' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='2' respawn='30s' rand='0'/> <!-- Kleopora -->
+    <npc id='22261' count='2' respawn='30s' rand='0'/> <!-- Seychelles -->
+
+    <zone loc='141250 181328 -3848 -3348'/>
+    <zone loc='148933 180268 -3848 -3348'/>
+    <zone loc='148274 186726 -3848 -3348'/>
+    <zone loc='142402 186505 -3848 -3348'/>
+  </territory>
+  
+  <territory name='innadril16_2423_022' controller='default' start_active='true' max='55'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='2' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='2' respawn='30s' rand='0'/> <!-- Kleopora -->
+    <npc id='22261' count='2' respawn='30s' rand='0'/> <!-- Seychelles -->
+
+    <zone loc='144914 180909 -3882 -3332'/>
+    <zone loc='145245 186574 -3882 -3332'/>
+    <zone loc='142499 186450 -3882 -3332'/>
+    <zone loc='141297 181390 -3882 -3332'/>
+  </territory>
+  
+  <territory name='innadril16_2423_023' controller='default' start_active='true' max='55'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='2' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='2' respawn='30s' rand='0'/> <!-- Kleopora -->
+    <npc id='22261' count='2' respawn='30s' rand='0'/> <!-- Seychelles -->
+
+    <zone loc='148798 181187 -3868 -3368'/>
+    <zone loc='148234 186661 -3868 -3368'/>
+    <zone loc='145343 186548 -3868 -3368'/>
+    <zone loc='145093 181332 -3868 -3368'/>
+  </territory>
+  
+  <territory name='innadril16_2423_024' controller='default' start_active='true' max='60'>
+    <npc id='22257' count='3' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='3' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='3' respawn='30s' rand='0'/> <!-- Kleopora -->
+
+    <zone loc='153173 180305 -4015 -3215'/>
+    <zone loc='151985 187202 -4015 -3215'/>
+    <zone loc='148379 186045 -4015 -3215'/>
+    <zone loc='148999 180298 -4015 -3215'/>
+  </territory>
+  
+  <territory name='innadril16_2423_025' controller='default' start_active='true' max='40'>
+    <npc id='22257' count='4' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='4' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+
+    <zone loc='152305 184927 -3865 -3465'/>
+    <zone loc='151927 187129 -3865 -3465'/>
+    <zone loc='150531 186690 -3865 -3465'/>
+    <zone loc='148539 185155 -3865 -3465'/>
+    <zone loc='148666 183727 -3865 -3465'/>
+    <zone loc='150263 183458 -3865 -3465'/>
+  </territory>
+  
+  <territory name='innadril16_2423_026' controller='default' start_active='true' max='75'>
+    <npc id='22257' count='3' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='3' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='3' respawn='30s' rand='0'/> <!-- Kleopora -->
+    <npc id='22261' count='3' respawn='30s' rand='0'/> <!-- Seychelles -->
+
+    <zone loc='158949 183951 -3896 -3196'/>
+    <zone loc='157599 188646 -3896 -3196'/>
+    <zone loc='152032 187180 -3896 -3196'/>
+    <zone loc='153344 178916 -3896 -3196'/>
+    <zone loc='159381 180288 -3896 -3196'/>
+  </territory>
+  
+  <territory name='innadril16_2423_027' controller='default' start_active='true' max='40'>
+    <npc id='22258' count='1' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='2' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='2' respawn='30s' rand='0'/> <!-- Kleopora -->
+    <npc id='22262' count='3' respawn='30s' rand='0'/> <!-- Naiad -->
+
+    <zone loc='152779 182787 -3738 -3338'/>
+    <zone loc='154855 180603 -3738 -3338'/>
+    <zone loc='157301 180719 -3738 -3338'/>
+    <zone loc='158865 181447 -3738 -3338'/>
+    <zone loc='156204 183127 -3738 -3338'/>
+    <zone loc='152807 183563 -3738 -3338'/>
+  </territory>
+  
+  <territory name='innadril16_2423_028' controller='default' start_active='true' max='40'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='3' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22260' count='3' respawn='30s' rand='0'/> <!-- Kleopora -->
+
+    <zone loc='155966 186073 -3860 -3460'/>
+    <zone loc='154886 186994 -3860 -3460'/>
+    <zone loc='152159 186465 -3860 -3460'/>
+    <zone loc='152421 184937 -3860 -3460'/>
+    <zone loc='154842 183826 -3860 -3460'/>
+  </territory>
+  
+  <territory name='innadril16_2423_029' controller='default' start_active='true' max='40'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='3' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+
+    <zone loc='158345 184830 -3833 -3433'/>
+    <zone loc='156123 186313 -3833 -3433'/>
+    <zone loc='154957 183944 -3833 -3433'/>
+    <zone loc='156822 183963 -3833 -3433'/>
+    <zone loc='158283 181908 -3833 -3433'/>
+    <zone loc='158908 183509 -3833 -3433'/>
+  </territory>
+  
+  <territory name='innadril16_2423_030' controller='default' start_active='true' max='25'>
+    <npc id='22257' count='3' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='2' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+
+    <zone loc='157572 188601 -3908 -3508'/>
+    <zone loc='156389 188291 -3908 -3508'/>
+    <zone loc='156171 186372 -3908 -3508'/>
+    <zone loc='156577 186052 -3908 -3508'/>
+    <zone loc='157893 187493 -3908 -3508'/>
+  </territory>
+  
+  <territory name='innadril16_2423_031' controller='default' start_active='true' max='40'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='3' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+
+    <zone loc='137046 186748 -3867 -3467'/>
+    <zone loc='142340 186422 -3867 -3467'/>
+    <zone loc='142932 190250 -3867 -3467'/>
+    <zone loc='139459 190308 -3867 -3467'/>
+  </territory>
+  
+  <territory name='innadril16_2423_032' controller='default' start_active='true' max='50'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='2' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='3' respawn='30s' rand='0'/> <!-- Kleopora -->
+
+    <zone loc='142796 189593 -3870 -3470'/>
+    <zone loc='140389 188139 -3870 -3470'/>
+    <zone loc='138474 188779 -3870 -3470'/>
+    <zone loc='137203 186803 -3870 -3470'/>
+    <zone loc='142294 186467 -3870 -3470'/>
+  </territory>
+  
+  <territory name='innadril16_2423_033' controller='default' start_active='true' max='55'>
+    <npc id='22257' count='3' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='4' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='4' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+
+    <zone loc='142380 186524 -3859 -3359'/>
+    <zone loc='148239 186756 -3859 -3359'/>
+    <zone loc='145795 191512 -3859 -3359'/>
+    <zone loc='142961 190218 -3859 -3359'/>
+  </territory>
+  
+  <territory name='innadril16_2423_034' controller='default' start_active='true' max='40'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='3' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+
+    <zone loc='148591 186131 -3864 -3464'/>
+    <zone loc='151695 187190 -3864 -3464'/>
+    <zone loc='148991 193393 -3864 -3464'/>
+    <zone loc='145864 191481 -3864 -3464'/>
+  </territory>
+  
+  <territory name='innadril16_2423_035' controller='default' start_active='true' max='40'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='3' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+
+    <zone loc='147670 188025 -3824 -3424'/>
+    <zone loc='149800 191252 -3824 -3424'/>
+    <zone loc='148918 193221 -3824 -3424'/>
+    <zone loc='146356 190607 -3824 -3424'/>
+  </territory>
+  
+  <territory name='innadril16_2423_036' controller='default' start_active='true' max='50'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='2' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='3' respawn='30s' rand='0'/> <!-- Kleopora -->
+
+    <zone loc='148610 186216 -3884 -3484'/>
+    <zone loc='151639 187203 -3884 -3484'/>
+    <zone loc='150194 190459 -3884 -3484'/>
+    <zone loc='148548 189326 -3884 -3484'/>
+    <zone loc='147727 187992 -3884 -3484'/>
+  </territory>
+  
+  <territory name='innadril16_2423_037' controller='default' start_active='true' max='40'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='3' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+
+    <zone loc='156012 188259 -3985 -3385'/>
+    <zone loc='156553 192427 -3985 -3385'/>
+    <zone loc='151296 194570 -3985 -3385'/>
+    <zone loc='149016 193424 -3985 -3385'/>
+    <zone loc='151718 187182 -3985 -3385'/>
+  </territory>
+  
+  <territory name='innadril16_2423_038' controller='default' start_active='true' max='50'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='2' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='3' respawn='30s' rand='0'/> <!-- Kleopora -->
+
+    <zone loc='152271 187608 -3833 -3333'/>
+    <zone loc='155860 188844 -3833 -3333'/>
+    <zone loc='156028 191775 -3833 -3333'/>
+    <zone loc='151056 188937 -3833 -3333'/>
+  </territory>
+  
+  <territory name='innadril16_2423_039' controller='default' start_active='true' max='50'>
+    <npc id='22257' count='2' respawn='30s' rand='0'/> <!-- Island Guardian -->
+    <npc id='22258' count='2' respawn='30s' rand='0'/> <!-- White Sand Mirage -->
+    <npc id='22259' count='3' respawn='30s' rand='0'/> <!-- Muddy Coral -->
+    <npc id='22260' count='3' respawn='30s' rand='0'/> <!-- Kleopora -->
+
+    <zone loc='156054 191853 -3969 -3469'/>
+    <zone loc='156487 192409 -3969 -3469'/>
+    <zone loc='152784 193915 -3969 -3469'/>
+    <zone loc='151080 192774 -3969 -3469'/>
+    <zone loc='150235 190680 -3969 -3469'/>
+    <zone loc='150952 189053 -3969 -3469'/>
+    <zone loc='153750 191170 -3969 -3469'/>
+  </territory>
+  
+  <spawn name='innadril16_2423_040' controller='default' start_active='true' max='3'>
+    <npc id='18367' pos='134928 172432 -3696 49152' respawn='30s'/> <!-- Prison Guard -->
+    <npc id='18368' pos='135120 171856 -3696 49152' respawn='15s'/> <!-- Prison Guard -->
+    <npc id='18368' pos='134768 171856 -3696 49152' respawn='15s'/> <!-- Prison Guard -->
+  </spawn>
+  
+  <spawn name='innadril16_2423_041' controller='default' start_active='true' max='3'>
+    <npc id='18367' pos='160528 185216 -3696 49152' respawn='30s'/> <!-- Prison Guard -->
+    <npc id='18368' pos='160384 184704 -3696 49152' respawn='15s'/> <!-- Prison Guard -->
+    <npc id='18368' pos='160704 184704 -3696 49152' respawn='15s'/> <!-- Prison Guard -->
+  </spawn>
+  
+  <territory name='innadril21_2423_002' controller='default' start_active='true' max='40'>
+    <npc id='32342' count='40' respawn='30s' rand='0'/> <!-- Eva's Gift Box -->
+
+    <zone loc='145028 171296 -5153 -3253'/>
+    <zone loc='146098 170598 -5153 -3253'/>
+    <zone loc='146661 168774 -5153 -3253'/>
+    <zone loc='148441 168567 -5153 -3253'/>
+    <zone loc='150270 168306 -5153 -3253'/>
+    <zone loc='153351 170415 -5153 -3253'/>
+    <zone loc='153866 173263 -5153 -3253'/>
+    <zone loc='153326 176659 -5153 -3253'/>
+    <zone loc='148785 179293 -5153 -3253'/>
+    <zone loc='145744 176693 -5153 -3253'/>
+    <zone loc='145378 173480 -5153 -3253'/>
+    <zone loc='144610 172625 -5153 -3253'/>
+  </territory>
+  
+  <territory name='innadril13_2324_tas01' controller='default' start_active='true' max='10'>
+    <npc id='20784' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman -->
+    <npc id='21639' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman -->
+    <npc id='20785' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman Shaman -->
+    <npc id='21640' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman Shaman  -->
+    <npc id='21642' count='1' respawn='60s' rand='30s'/> <!-- Tasaba Lizardman Sniper -->
+    <npc id='21643' count='1' respawn='60s' rand='30s'/> <!-- Tasaba Lizardman Sniper -->
+
+    <zone loc='104812 201853 -3753 -2953'/>
+    <zone loc='106386 201898 -3753 -2953'/>
+    <zone loc='106134 204477 -3753 -2953'/>
+    <zone loc='103123 203007 -3753 -2953'/>
+  </territory>
+  
+  <territory name='innadril13_2324_tas02' controller='default' start_active='true' max='10'>
+    <npc id='20784' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman -->
+    <npc id='21639' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman -->
+    <npc id='20785' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman Shaman -->
+    <npc id='21640' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman Shaman  -->
+    <npc id='21642' count='1' respawn='60s' rand='30s'/> <!-- Tasaba Lizardman Sniper -->
+    <npc id='21643' count='1' respawn='60s' rand='30s'/> <!-- Tasaba Lizardman Sniper -->
+
+    <zone loc='100663 199952 -3784 -3584'/>
+    <zone loc='102840 199311 -3784 -3584'/>
+    <zone loc='102618 200631 -3784 -3584'/>
+    <zone loc='100890 201048 -3784 -3584'/>
+  </territory>
+  
+  <territory name='innadril13_2324_tas03' controller='default' start_active='true' max='10'>
+    <npc id='20784' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman -->
+    <npc id='21639' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman -->
+    <npc id='20785' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman Shaman -->
+    <npc id='21640' count='2' respawn='40s' rand='20s'/> <!-- Tasaba Lizardman Shaman  -->
+    <npc id='21642' count='1' respawn='60s' rand='30s'/> <!-- Tasaba Lizardman Sniper -->
+    <npc id='21643' count='1' respawn='60s' rand='30s'/> <!-- Tasaba Lizardman Sniper -->
+
+    <zone loc='102952 209827 -3092 -2492'/>
+    <zone loc='104702 209799 -3092 -2492'/>
+    <zone loc='105958 211507 -3092 -2492'/>
+    <zone loc='105550 213106 -3092 -2492'/>
+  </territory>
+  
+  <territory name='innadril13_2324_croc01' controller='default' start_active='true' max='10'>
+    <npc id='20135' count='3' respawn='40s' rand='20s'/> <!-- Alligator -->
+    <npc id='20792' count='3' respawn='40s' rand='20s'/> <!-- Farhite -->
+    <npc id='20789' count='2' respawn='40s' rand='20s'/> <!-- Crokian -->
+    <npc id='20791' count='2' respawn='40s' rand='20s'/> <!-- Crokian Warrior -->
+
+    <zone loc='109022 198572 -3814 -3014'/>
+    <zone loc='111677 199916 -3814 -3014'/>
+    <zone loc='109883 201624 -3814 -3014'/>
+    <zone loc='106772 201334 -3814 -3014'/>
+  </territory>
+  
+  <territory name='innadril13_2324_croc02' controller='default' start_active='true' max='8'>
+    <npc id='20135' count='2' respawn='40s' rand='20s'/> <!-- Alligator -->
+    <npc id='20792' count='2' respawn='40s' rand='20s'/> <!-- Farhite -->
+    <npc id='20789' count='2' respawn='40s' rand='20s'/> <!-- Crokian -->
+    <npc id='20790' count='2' respawn='40s' rand='20s'/> <!-- Dailaon -->
+
+    <zone loc='108889 197996 -3760 -3460'/>
+    <zone loc='112323 199201 -3760 -3460'/>
+    <zone loc='111731 199822 -3760 -3460'/>
+    <zone loc='108634 198284 -3760 -3460'/>
+  </territory>
+  
+  <territory name='innadril13_2324_croc03' controller='default' start_active='true' max='6'>
+    <npc id='20135' count='2' respawn='40s' rand='20s'/> <!-- Alligator -->
+    <npc id='20792' count='2' respawn='40s' rand='20s'/> <!-- Farhite -->
+    <npc id='20789' count='2' respawn='40s' rand='20s'/> <!-- Crokian -->
+
+    <zone loc='112870 198916 -3814 -3014'/>
+    <zone loc='113997 199265 -3814 -3014'/>
+    <zone loc='112526 201064 -3814 -3014'/>
+    <zone loc='110681 200917 -3814 -3014'/>
+  </territory>
+  
+  <territory name='innadril13_2324_croc04' controller='default' start_active='true' max='6'>
+    <npc id='20135' count='2' respawn='40s' rand='20s'/> <!-- Alligator -->
+    <npc id='20792' count='1' respawn='40s' rand='20s'/> <!-- Farhite -->
+    <npc id='20789' count='2' respawn='40s' rand='20s'/> <!-- Crokian -->
+    <npc id='20790' count='1' respawn='40s' rand='20s'/> <!-- Dailaon -->
+
+    <zone loc='114020 199395 -3804 -3604'/>
+    <zone loc='115703 199157 -3804 -3604'/>
+    <zone loc='115836 199572 -3804 -3604'/>
+    <zone loc='113577 199902 -3804 -3604'/>
+  </territory>
+  
+  <territory name='innadril13_2324_croc05' controller='default' start_active='true' max='8'>
+    <npc id='20789' count='2' respawn='40s' rand='20s'/> <!-- Crokian -->
+    <npc id='20790' count='2' respawn='40s' rand='20s'/> <!-- Dailaon -->
+    <npc id='20791' count='2' respawn='40s' rand='20s'/> <!-- Crokian Warrior -->
+    <npc id='20793' count='2' respawn='40s' rand='20s'/> <!-- Nos -->
+
+    <zone loc='113733 200706 -3819 -3019'/>
+    <zone loc='116145 200194 -3819 -3019'/>
+    <zone loc='115379 202202 -3819 -3019'/>
+    <zone loc='112944 202817 -3819 -3019'/>
+  </territory>
+  
+  <territory name='innadril13_2324_croc06' controller='default' start_active='true' max='8'>
+    <npc id='20792' count='2' respawn='40s' rand='20s'/> <!-- Farhite -->
+    <npc id='20789' count='2' respawn='40s' rand='20s'/> <!-- Crokian -->
+    <npc id='20790' count='2' respawn='40s' rand='20s'/> <!-- Dailaon -->
+    <npc id='20791' count='1' respawn='40s' rand='20s'/> <!-- Crokian Warrior -->
+    <npc id='20793' count='1' respawn='40s' rand='20s'/> <!-- Nos -->
+
+    <zone loc='117138 198615 -3764 -3564'/>
+    <zone loc='118016 198989 -3764 -3564'/>
+    <zone loc='118183 199896 -3764 -3564'/>
+    <zone loc='116519 199179 -3764 -3564'/>
+  </territory>
+  
+  <territory name='innadril13_2324_croc07' controller='default' start_active='true' max='10'>
+    <npc id='20792' count='2' respawn='40s' rand='20s'/> <!-- Farhite -->
+    <npc id='20789' count='2' respawn='40s' rand='20s'/> <!-- Crokian -->
+    <npc id='20790' count='2' respawn='40s' rand='20s'/> <!-- Dailaon -->
+    <npc id='20791' count='2' respawn='40s' rand='20s'/> <!-- Crokian Warrior -->
+    <npc id='20793' count='2' respawn='40s' rand='20s'/> <!-- Nos -->
+
+    <zone loc='123819 200826 -2896 -2496'/>
+    <zone loc='125842 200991 -2896 -2496'/>
+    <zone loc='126187 201710 -2896 -2496'/>
+    <zone loc='124150 201856 -2896 -2496'/>
+  </territory>
+  
+  <territory name='innadril13_2324_lien01' controller='default' start_active='true' max='16'>
+    <npc id='20786' count='4' respawn='40s' rand='20s'/> <!-- Lienrik -->
+    <npc id='21644' count='4' respawn='40s' rand='20s'/> <!-- Lienrik -->
+    <npc id='20787' count='4' respawn='40s' rand='20s'/> <!-- Lienrik Lad -->
+    <npc id='21645' count='4' respawn='40s' rand='20s'/> <!-- Lienrik Lad -->
+
+    <zone loc='117679 211677 -3816 -3016'/>
+    <zone loc='121408 208460 -3816 -3016'/>
+    <zone loc='123515 208312 -3816 -3016'/>
+    <zone loc='122186 210758 -3816 -3016'/>
+    <zone loc='118246 212386 -3816 -3016'/>
+  </territory>
+  
+  <territory name='innadril13_2324_lien02' controller='default' start_active='true' max='12'>
+    <npc id='20786' count='4' respawn='40s' rand='20s'/> <!-- Lienrik -->
+    <npc id='21644' count='2' respawn='40s' rand='20s'/> <!-- Lienrik -->
+    <npc id='20787' count='4' respawn='40s' rand='20s'/> <!-- Lienrik Lad -->
+    <npc id='21645' count='2' respawn='40s' rand='20s'/> <!-- Lienrik Lad -->
+
+    <zone loc='120905 213536 -3716 -3316'/>
+    <zone loc='125560 213540 -3716 -3316'/>
+    <zone loc='124086 214957 -3716 -3316'/>
+    <zone loc='120317 215065 -3716 -3316'/>
+  </territory>
+  
+  <territory name='innadril13_2324_lien03' controller='default' start_active='true' max='12'>
+    <npc id='20786' count='4' respawn='40s' rand='20s'/> <!-- Lienrik -->
+    <npc id='21644' count='2' respawn='40s' rand='20s'/> <!-- Lienrik -->
+    <npc id='20787' count='4' respawn='40s' rand='20s'/> <!-- Lienrik Lad -->
+    <npc id='21645' count='2' respawn='40s' rand='20s'/> <!-- Lienrik Lad -->
+
+    <zone loc='123997 218677 -3528 -2928'/>
+    <zone loc='126409 218588 -3528 -2928'/>
+    <zone loc='126114 220819 -3528 -2928'/>
+    <zone loc='123804 219959 -3528 -2928'/>
+  </territory>
+  
+  <territory name='innadril13_2324_lien04' controller='default' start_active='true' max='12'>
+    <npc id='20786' count='4' respawn='40s' rand='20s'/> <!-- Lienrik -->
+    <npc id='21644' count='2' respawn='40s' rand='20s'/> <!-- Lienrik -->
+    <npc id='20787' count='4' respawn='40s' rand='20s'/> <!-- Lienrik Lad -->
+    <npc id='21645' count='2' respawn='40s' rand='20s'/> <!-- Lienrik Lad -->
+
+    <zone loc='122913 221694 -2888 -2388'/>
+    <zone loc='124357 221694 -2888 -2388'/>
+    <zone loc='124464 223751 -2888 -2388'/>
+    <zone loc='122750 223968 -2888 -2388'/>
+  </territory>
+  
+  <territory name='innadril03_2223_hdz01' controller='reed_maker' param='mode=2' start_active='true' max='57'>
+    <npc id='22656' count='9' respawn='32s' rand='8s'/> <!-- Suppressor -->
+    <npc id='22656' count='9' respawn='32s' rand='8s'/> <!-- Suppressor -->
+    <npc id='18805' count='3' respawn='15s' rand='0'/> <!-- Waste Landfill Machine -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='86180 173791 -3826 -3426'/>
+    <zone loc='88480 174476 -3826 -3426'/>
+    <zone loc='87699 177128 -3826 -3426'/>
+    <zone loc='84267 175153 -3826 -3426'/>
+  </territory>
+  
+  <territory name='innadril03_2223_hdz02' controller='reed_maker' param='mode=2' start_active='true' max='21'>
+    <npc id='22656' count='3' respawn='32s' rand='8s'/> <!-- Suppressor -->
+    <npc id='22657' count='3' respawn='32s' rand='8s'/> <!-- Exterminator -->
+    <npc id='18805' count='3' respawn='15s' rand='0'/> <!-- Waste Landfill Machine -->
+    <npc id='18936' count='6' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='87008 171570 -3852 -3352'/>
+    <zone loc='89212 173244 -3852 -3352'/>
+    <zone loc='88506 174416 -3852 -3352'/>
+    <zone loc='86215 173747 -3852 -3352'/>
+  </territory>
+  
+  <territory name='innadril03_2223_hdz03' controller='reed_maker' param='mode=2' start_active='true' max='21'>
+    <npc id='22656' count='3' respawn='32s' rand='8s'/> <!-- Suppressor -->
+    <npc id='22657' count='3' respawn='32s' rand='8s'/> <!-- Exterminator -->
+    <npc id='18805' count='3' respawn='15s' rand='0'/> <!-- Waste Landfill Machine -->
+    <npc id='18936' count='6' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='89117 169838 -3832 -3232'/>
+    <zone loc='90325 170779 -3832 -3232'/>
+    <zone loc='89247 173213 -3832 -3232'/>
+    <zone loc='87034 171532 -3832 -3232'/>
+  </territory>
+  
+  <territory name='innadril03_2223_hdz04' controller='reed_maker' param='mode=2' start_active='true' max='45'>
+    <npc id='22656' count='7' respawn='32s' rand='8s'/> <!-- Suppressor -->
+    <npc id='22657' count='7' respawn='32s' rand='8s'/> <!-- Exterminator -->
+    <npc id='18805' count='3' respawn='15s' rand='0'/> <!-- Waste Landfill Machine -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='90427 170739 -3858 -3358'/>
+    <zone loc='93181 170063 -3858 -3358'/>
+    <zone loc='93832 172414 -3858 -3358'/>
+    <zone loc='91757 173561 -3858 -3358'/>
+    <zone loc='89664 172479 -3858 -3358'/>
+  </territory>
+  
+  <territory name='innadril03_2223_hdz05' controller='reed_maker' param='mode=2' start_active='true' max='45'>
+    <npc id='22656' count='7' respawn='32s' rand='8s'/> <!-- Suppressor -->
+    <npc id='22657' count='7' respawn='32s' rand='8s'/> <!-- Exterminator -->
+    <npc id='18805' count='3' respawn='15s' rand='0'/> <!-- Waste Landfill Machine -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='89678 172591 -3858 -3058'/>
+    <zone loc='91883 173685 -3858 -3058'/>
+    <zone loc='91663 175809 -3858 -3058'/>
+    <zone loc='88604 174429 -3858 -3058'/>
+  </territory>
+  
+  <territory name='innadril03_2223_hdz06' controller='reed_maker' param='mode=2' start_active='true' max='45'>
+    <npc id='22656' count='7' respawn='32s' rand='8s'/> <!-- Suppressor -->
+    <npc id='22657' count='7' respawn='32s' rand='8s'/> <!-- Exterminator -->
+    <npc id='18805' count='3' respawn='15s' rand='0'/> <!-- Waste Landfill Machine -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='88559 174510 -3858 -3058'/>
+    <zone loc='91656 175880 -3858 -3058'/>
+    <zone loc='91366 178955 -3858 -3058'/>
+    <zone loc='87930 176732 -3858 -3058'/>
+  </territory>
+  
+  <territory name='innadril03_2223_bdr01' controller='reed_maker' param='mode=1' start_active='true' max='63'>
+    <npc id='22656' count='5' respawn='32s' rand='8s'/> <!-- Suppressor -->
+    <npc id='22657' count='5' respawn='32s' rand='8s'/> <!-- Exterminator -->
+    <npc id='18805' count='3' respawn='15s' rand='0'/> <!-- Waste Landfill Machine -->
+    <npc id='22650' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='20' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='83979 175112 -3851 -3251'/>
+    <zone loc='87985 177447 -3851 -3251'/>
+    <zone loc='85979 179398 -3851 -3251'/>
+    <zone loc='83946 177584 -3851 -3251'/>
+  </territory>
+  
+  <territory name='innadril03_2223_bdr02' controller='reed_maker' param='mode=1' start_active='true' max='39'>
+    <npc id='22656' count='3' respawn='32s' rand='8s'/> <!-- Suppressor -->
+    <npc id='22657' count='3' respawn='32s' rand='8s'/> <!-- Exterminator -->
+    <npc id='18805' count='3' respawn='15s' rand='0'/> <!-- Waste Landfill Machine -->
+    <npc id='22650' count='3' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='3' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='12' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='88106 177491 -3858 -3058'/>
+    <zone loc='91621 179679 -3858 -3058'/>
+    <zone loc='89686 181072 -3858 -3058'/>
+    <zone loc='86057 179457 -3858 -3058'/>
+  </territory>
+  
+  <territory name='innadril03_2223_06' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='84135 177885 -3851 -3151'/>
+    <zone loc='85931 179509 -3851 -3151'/>
+    <zone loc='83245 182584 -3851 -3151'/>
+    <zone loc='81678 180675 -3851 -3151'/>
+  </territory>
+  
+  <territory name='innadril03_2223_15' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='86043 179582 -3858 -3258'/>
+    <zone loc='88295 180662 -3858 -3258'/>
+    <zone loc='85429 184440 -3858 -3258'/>
+    <zone loc='83421 182615 -3858 -3258'/>
+  </territory>
+  
+  <territory name='innadril03_2223_16' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='88431 180662 -3858 -3258'/>
+    <zone loc='89608 181147 -3858 -3258'/>
+    <zone loc='90685 183645 -3858 -3258'/>
+    <zone loc='88409 184694 -3858 -3258'/>
+    <zone loc='85977 183927 -3858 -3258'/>
+  </territory>
+  
+  <territory name='innadril03_2223_03' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='78188 187653 -3832 -2632'/>
+    <zone loc='79462 189380 -3832 -2632'/>
+    <zone loc='78748 191326 -3832 -2632'/>
+    <zone loc='76783 191234 -3832 -2632'/>
+    <zone loc='74909 189386 -3832 -2632'/>
+  </territory>
+  
+  <territory name='innadril03_2223_05' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='78496 180900 -3851 -3151'/>
+    <zone loc='81584 180740 -3851 -3151'/>
+    <zone loc='83087 182623 -3851 -3151'/>
+    <zone loc='79505 185210 -3851 -3151'/>
+    <zone loc='78766 183107 -3851 -3151'/>
+  </territory>
+  
+  <territory name='innadril03_2223_17' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='83179 182702 -3858 -3458'/>
+    <zone loc='85369 184509 -3858 -3458'/>
+    <zone loc='83234 186671 -3858 -3458'/>
+    <zone loc='79975 185092 -3858 -3458'/>
+  </territory>
+  
+  <territory name='innadril03_2223_24' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='79864 185269 -3858 -3358'/>
+    <zone loc='83082 186808 -3858 -3358'/>
+    <zone loc='80212 189665 -3858 -3358'/>
+    <zone loc='79034 188388 -3858 -3358'/>
+  </territory>
+  
+  <territory name='innadril03_2223_23' controller='reed_maker' start_active='true' max='66'>
+    <npc id='22650' count='11' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='11' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='22' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='83320 186841 -3858 -3358'/>
+    <zone loc='86405 189543 -3858 -3358'/>
+    <zone loc='83352 191165 -3858 -3358'/>
+    <zone loc='80195 189874 -3858 -3358'/>
+  </territory>
+  
+  <territory name='innadril03_2223_18' controller='reed_maker' start_active='true' max='66'>
+    <npc id='22650' count='11' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='11' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='22' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='85891 184137 -3858 -3358'/>
+    <zone loc='88441 184879 -3858 -3358'/>
+    <zone loc='87932 186897 -3858 -3358'/>
+    <zone loc='85153 188156 -3858 -3358'/>
+    <zone loc='83328 186734 -3858 -3358'/>
+  </territory>
+  
+  <territory name='innadril03_2223_25' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='79410 189736 -3858 -3358'/>
+    <zone loc='83273 191230 -3858 -3358'/>
+    <zone loc='79896 192547 -3858 -3358'/>
+    <zone loc='78844 191557 -3858 -3358'/>
+  </territory>
+  
+  <territory name='innadril03_2223_26' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='79185 192228 -3898 -3098'/>
+    <zone loc='79254 193415 -3898 -3098'/>
+    <zone loc='77706 194657 -3898 -3098'/>
+    <zone loc='75302 193829 -3898 -3098'/>
+    <zone loc='76190 192082 -3898 -3098'/>
+    <zone loc='78017 191578 -3898 -3098'/>
+  </territory>
+  
+  <territory name='innadril03_2223_27' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='83357 191275 -3858 -3058'/>
+    <zone loc='85100 195187 -3858 -3058'/>
+    <zone loc='83460 196021 -3858 -3058'/>
+    <zone loc='78753 194659 -3858 -3058'/>
+    <zone loc='79911 192605 -3858 -3058'/>
+  </territory>
+  
+  <territory name='innadril03_2223_19' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='90722 183773 -3858 -3358'/>
+    <zone loc='92325 184682 -3858 -3358'/>
+    <zone loc='91069 187133 -3858 -3358'/>
+    <zone loc='88043 186859 -3858 -3358'/>
+    <zone loc='88519 184810 -3858 -3358'/>
+  </territory>
+  
+  <territory name='innadril03_2223_20' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='93292 185483 -3858 -3358'/>
+    <zone loc='94560 186128 -3858 -3358'/>
+    <zone loc='94490 188277 -3858 -3358'/>
+    <zone loc='91174 187181 -3858 -3358'/>
+    <zone loc='91970 185653 -3858 -3358'/>
+  </territory>
+  
+  <territory name='innadril03_2223_21' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='91193 187342 -3858 -3358'/>
+    <zone loc='94522 188419 -3858 -3358'/>
+    <zone loc='94464 190632 -3858 -3358'/>
+    <zone loc='93405 192561 -3858 -3358'/>
+    <zone loc='91117 191873 -3858 -3358'/>
+  </territory>
+  
+  <territory name='innadril03_2223_22' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='88017 186993 -3858 -3358'/>
+    <zone loc='91086 187313 -3858 -3358'/>
+    <zone loc='91039 191856 -3858 -3358'/>
+    <zone loc='88135 190988 -3858 -3358'/>
+    <zone loc='85222 188211 -3858 -3358'/>
+  </territory>
+  
+  <territory name='innadril03_2223_28' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='86516 189603 -3858 -3058'/>
+    <zone loc='88115 191061 -3858 -3058'/>
+    <zone loc='85176 195138 -3858 -3058'/>
+    <zone loc='83443 191255 -3858 -3058'/>
+  </territory>
+  
+  <territory name='innadril03_2223_29' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='88240 191095 -3858 -3058'/>
+    <zone loc='93284 192658 -3858 -3058'/>
+    <zone loc='90524 195551 -3858 -3058'/>
+    <zone loc='88321 195800 -3858 -3058'/>
+    <zone loc='85234 195181 -3858 -3058'/>
+  </territory>
+  
+  <territory name='innadril03_2223_31s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='79724 182019 -3849 -3449'/>
+    <zone loc='81085 183916 -3849 -3449'/>
+    <zone loc='79828 184674 -3849 -3449'/>
+    <zone loc='78964 183076 -3849 -3449'/>
+  </territory>
+  
+  <territory name='innadril03_2223_32s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='86835 180812 -3851 -3351'/>
+    <zone loc='86718 182234 -3851 -3351'/>
+    <zone loc='85721 183385 -3851 -3351'/>
+    <zone loc='84626 182273 -3851 -3351'/>
+  </territory>
+  
+  <territory name='innadril03_2223_33s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='83594 188192 -3847 -3447'/>
+    <zone loc='84629 189154 -3847 -3447'/>
+    <zone loc='82909 190467 -3847 -3447'/>
+    <zone loc='81769 188999 -3847 -3447'/>
+  </territory>
+  
+  <territory name='innadril03_2223_34s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='83625 192278 -3829 -3329'/>
+    <zone loc='84329 193950 -3829 -3329'/>
+    <zone loc='80951 193237 -3829 -3329'/>
+    <zone loc='82187 191905 -3829 -3329'/>
+  </territory>
+  
+  <territory name='innadril03_2223_35s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='87399 188378 -3872 -3372'/>
+    <zone loc='89637 189298 -3872 -3372'/>
+    <zone loc='89531 190375 -3872 -3372'/>
+    <zone loc='86971 189137 -3872 -3372'/>
+  </territory>
+  
+  <territory name='innadril03_2223_36s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='89417 191734 -3872 -3372'/>
+    <zone loc='91211 192898 -3872 -3372'/>
+    <zone loc='88962 194381 -3872 -3372'/>
+    <zone loc='87566 192495 -3872 -3372'/>
+  </territory>
+  
+  <territory name='innadril04_2224_bzr01' controller='reed_maker' param='mode=-2' start_active='true' max='45'>
+    <npc id='22658' count='7' respawn='40s' rand='10s'/> <!-- Sentinel Waterspirit -->
+    <npc id='22659' count='7' respawn='40s' rand='10s'/> <!-- Guardian Waterspirit -->
+    <npc id='18806' count='3' respawn='15s' rand='0'/> <!-- Brazier of Purity -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='77195 210468 -3871 -2971'/>
+    <zone loc='79246 211114 -3871 -2971'/>
+    <zone loc='78503 214105 -3871 -2971'/>
+    <zone loc='73622 214673 -3871 -2971'/>
+  </territory>
+  
+  <territory name='innadril04_2224_bzr02' controller='reed_maker' param='mode=-2' start_active='true' max='71'>
+    <npc id='22658' count='11' respawn='40s' rand='10s'/> <!-- Sentinel Waterspirit -->
+    <npc id='22659' count='11' respawn='40s' rand='10s'/> <!-- Guardian Waterspirit -->
+    <npc id='18806' count='5' respawn='15s' rand='0'/> <!-- Brazier of Purity -->
+    <npc id='18936' count='22' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='73718 214780 -3871 -2971'/>
+    <zone loc='78504 214277 -3871 -2971'/>
+    <zone loc='77180 220090 -3871 -2971'/>
+    <zone loc='71282 219802 -3871 -2971'/>
+  </territory>
+  
+  <territory name='innadril04_2224_bzr03' controller='reed_maker' param='mode=-2' start_active='true' max='83'>
+    <npc id='22658' count='13' respawn='40s' rand='10s'/> <!-- Sentinel Waterspirit -->
+    <npc id='22659' count='13' respawn='40s' rand='10s'/> <!-- Guardian Waterspirit -->
+    <npc id='18806' count='5' respawn='15s' rand='0'/> <!-- Brazier of Purity -->
+    <npc id='18936' count='26' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='78658 214339 -3902 -2902'/>
+    <zone loc='81581 219068 -3902 -2902'/>
+    <zone loc='78414 220778 -3902 -2902'/>
+    <zone loc='77401 220133 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_bzr04' controller='reed_maker' param='mode=-2' start_active='true' max='71'>
+    <npc id='22658' count='11' respawn='40s' rand='10s'/> <!-- Sentinel Waterspirit -->
+    <npc id='22659' count='11' respawn='40s' rand='10s'/> <!-- Guardian Waterspirit -->
+    <npc id='18806' count='5' respawn='15s' rand='0'/> <!-- Brazier of Purity -->
+    <npc id='18936' count='22' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='79477 223645 -3902 -2902'/>
+    <zone loc='83308 227867 -3902 -2902'/>
+    <zone loc='79579 228027 -3902 -2902'/>
+    <zone loc='77606 225613 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_bzr05' controller='reed_maker' param='mode=-2' start_active='true' max='83'>
+    <npc id='22658' count='13' respawn='40s' rand='10s'/> <!-- Sentinel Waterspirit -->
+    <npc id='22659' count='13' respawn='40s' rand='10s'/> <!-- Guardian Waterspirit -->
+    <npc id='18806' count='5' respawn='15s' rand='0'/> <!-- Brazier of Purity -->
+    <npc id='18936' count='26' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='83895 222043 -3902 -2902'/>
+    <zone loc='86245 227883 -3902 -2902'/>
+    <zone loc='83558 227947 -3902 -2902'/>
+    <zone loc='79734 223654 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_bzr06' controller='reed_maker' param='mode=-2' start_active='true' max='83'>
+    <npc id='22658' count='13' respawn='40s' rand='10s'/> <!-- Sentinel Waterspirit -->
+    <npc id='22659' count='13' respawn='40s' rand='10s'/> <!-- Guardian Waterspirit -->
+    <npc id='18806' count='5' respawn='15s' rand='0'/> <!-- Brazier of Purity -->
+    <npc id='18936' count='26' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='81664 219168 -3902 -2902'/>
+    <zone loc='83874 221923 -3902 -2902'/>
+    <zone loc='79541 223537 -3902 -2902'/>
+    <zone loc='78720 220808 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_bdr01' controller='reed_maker' param='mode=-1' start_active='true' max='87'>
+    <npc id='22658' count='7' respawn='40s' rand='10s'/> <!-- Sentinel Waterspirit -->
+    <npc id='22659' count='7' respawn='40s' rand='10s'/> <!-- Guardian Waterspirit -->
+    <npc id='18806' count='3' respawn='15s' rand='0'/> <!-- Brazier of Purity -->
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='28' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='87203 218754 -3902 -2902'/>
+    <zone loc='89429 222235 -3902 -2902'/>
+    <zone loc='84973 223986 -3902 -2902'/>
+    <zone loc='83219 220845 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_bdr02' controller='reed_maker' param='mode=-1' start_active='true' max='87'>
+    <npc id='22658' count='7' respawn='40s' rand='10s'/> <!-- Sentinel Waterspirit -->
+    <npc id='22659' count='7' respawn='40s' rand='10s'/> <!-- Guardian Waterspirit -->
+    <npc id='18806' count='3' respawn='15s' rand='0'/> <!-- Brazier of Purity -->
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='28' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='83694 216703 -3902 -2902'/>
+    <zone loc='81292 218330 -3902 -2902'/>
+    <zone loc='78752 214176 -3902 -2902'/>
+    <zone loc='84009 213170 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_bdr03' controller='reed_maker' param='mode=-1' start_active='true' max='61'>
+    <npc id='22658' count='5' respawn='40s' rand='10s'/> <!-- Sentinel Waterspirit -->
+    <npc id='22659' count='5' respawn='40s' rand='10s'/> <!-- Guardian Waterspirit -->
+    <npc id='18806' count='1' respawn='15s' rand='0'/> <!-- Brazier of Purity -->
+    <npc id='22650' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='20' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='89495 222377 -3902 -2902'/>
+    <zone loc='90803 225927 -3902 -2902'/>
+    <zone loc='86388 227773 -3902 -2902'/>
+    <zone loc='84908 224180 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_11' controller='reed_maker' start_active='true' max='66'>
+    <npc id='22650' count='11' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='11' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='22' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='95134 221529 -3902 -2902'/>
+    <zone loc='93589 224873 -3902 -2902'/>
+    <zone loc='90998 225869 -3902 -2902'/>
+    <zone loc='89683 222400 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_15' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22650' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='95829 211238 -3902 -2902'/>
+    <zone loc='94956 215597 -3902 -2902'/>
+    <zone loc='92612 217430 -3902 -2902'/>
+    <zone loc='91940 213294 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_16' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='91808 213249 -3902 -2902'/>
+    <zone loc='92473 217370 -3902 -2902'/>
+    <zone loc='87780 215422 -3902 -2902'/>
+    <zone loc='87890 213662 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_17' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='95142 211257 -3902 -2902'/>
+    <zone loc='91933 213117 -3902 -2902'/>
+    <zone loc='90917 209860 -3902 -2902'/>
+    <zone loc='92982 206899 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_18' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='91822 213066 -3902 -2902'/>
+    <zone loc='87842 213510 -3902 -2902'/>
+    <zone loc='87202 210593 -3902 -2902'/>
+    <zone loc='90774 209910 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_19' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='87462 215557 -3902 -2902'/>
+    <zone loc='83894 216647 -3902 -2902'/>
+    <zone loc='84152 213156 -3902 -2902'/>
+    <zone loc='87705 213567 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_21' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='84075 212923 -3902 -2902'/>
+    <zone loc='78768 214048 -3902 -2902'/>
+    <zone loc='79420 211113 -3902 -2902'/>
+    <zone loc='82613 209638 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_22' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='87713 213458 -3902 -2902'/>
+    <zone loc='84137 213001 -3902 -2902'/>
+    <zone loc='82724 209572 -3902 -2902'/>
+    <zone loc='87066 210606 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_12' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='92558 217636 -3902 -2902'/>
+    <zone loc='95114 221296 -3902 -2902'/>
+    <zone loc='89615 222224 -3902 -2902'/>
+    <zone loc='88712 220838 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_13' controller='reed_maker' start_active='true' max='66'>
+    <npc id='22650' count='11' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='11' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='22' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='87623 215567 -3902 -2902'/>
+    <zone loc='92496 217499 -3902 -2902'/>
+    <zone loc='88630 220608 -3902 -2902'/>
+    <zone loc='87329 218646 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_14' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='95004 215748 -3902 -2902'/>
+    <zone loc='97984 215677 -3902 -2902'/>
+    <zone loc='95298 221296 -3902 -2902'/>
+    <zone loc='92666 217524 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_23' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='87123 210532 -3902 -2902'/>
+    <zone loc='82583 209457 -3902 -2902'/>
+    <zone loc='80873 206671 -3902 -2902'/>
+    <zone loc='83671 204960 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_24' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='90810 209769 -3902 -2902'/>
+    <zone loc='87209 210462 -3902 -2902'/>
+    <zone loc='83757 204993 -3902 -2902'/>
+    <zone loc='89014 207238 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_25' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='92915 206769 -3902 -2902'/>
+    <zone loc='90897 209724 -3902 -2902'/>
+    <zone loc='89051 207185 -3902 -2902'/>
+    <zone loc='93085 203781 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_26' controller='reed_maker' start_active='true' max='42'>
+    <npc id='22650' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='7' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='14' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='97406 206525 -3902 -2902'/>
+    <zone loc='94917 210308 -3902 -2902'/>
+    <zone loc='93072 206805 -3902 -2902'/>
+    <zone loc='96191 203476 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_27' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='92929 203615 -3902 -2902'/>
+    <zone loc='89047 207157 -3902 -2902'/>
+    <zone loc='83862 204893 -3902 -2902'/>
+    <zone loc='87566 202510 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_01' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='85910 197679 -3871 -2971'/>
+    <zone loc='88096 201882 -3871 -2971'/>
+    <zone loc='83248 205126 -3871 -2971'/>
+    <zone loc='77709 202082 -3871 -2971'/>
+  </territory>
+  
+  <territory name='innadril04_2224_02' controller='reed_maker' start_active='true' max='54'>
+    <npc id='22650' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Fanatic -->
+    <npc id='22651' count='9' respawn='40s' rand='10s'/> <!-- Mucrokian Ascetic -->
+    <npc id='18936' count='18' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='77718 202262 -3871 -2871'/>
+    <zone loc='83119 205189 -3871 -2871'/>
+    <zone loc='77833 208302 -3871 -2871'/>
+    <zone loc='75144 204526 -3871 -2871'/>
+  </territory>
+  
+  <territory name='innadril04_2224_28s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='87170 201544 -3902 -2902'/>
+    <zone loc='84105 204210 -3902 -2902'/>
+    <zone loc='82299 203307 -3902 -2902'/>
+    <zone loc='84100 200486 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_29s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='82293 205603 -3902 -2902'/>
+    <zone loc='79771 206977 -3902 -2902'/>
+    <zone loc='77964 206074 -3902 -2902'/>
+    <zone loc='79304 204014 -3902 -2902'/>
+  </territory>
+  
+  <territory name='innadril04_2224_30s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='87961 204253 -3912 -3412'/>
+    <zone loc='91796 205521 -3912 -3412'/>
+    <zone loc='89749 209250 -3912 -3412'/>
+    <zone loc='85988 207348 -3912 -3412'/>
+  </territory>
+  
+  <territory name='innadril04_2224_31s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='93844 206591 -3988 -3488'/>
+    <zone loc='95469 207125 -3988 -3488'/>
+    <zone loc='94244 210108 -3988 -3488'/>
+    <zone loc='92575 209596 -3988 -3488'/>
+  </territory>
+  
+  <territory name='innadril04_2224_32s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='82991 208212 -3792 -3292'/>
+    <zone loc='86648 210043 -3792 -3292'/>
+    <zone loc='83383 213402 -3792 -3292'/>
+    <zone loc='80237 210563 -3792 -3292'/>
+  </territory>
+  
+  <territory name='innadril04_2224_33s' controller='reed_maker' start_active='true' max='30'>
+    <npc id='22652' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Savior -->
+    <npc id='22653' count='5' respawn='40s' rand='10s'/> <!-- Mucrokian Preacher -->
+    <npc id='18936' count='10' respawn='1m' rand='0'/> <!--  -->
+
+    <zone loc='90550 211179 -3920 -3420'/>
+    <zone loc='94113 211587 -3920 -3420'/>
+    <zone loc='93230 216611 -3920 -3420'/>
+    <zone loc='88783 215150 -3920 -3420'/>
+  </territory>
+  
+  <territory name='innadril03_2223_murc01' controller='reed_event_maker' start_active='true' max='300'>
+    <npc id='22654' count='150' respawn='1h' rand='0'/> <!-- Contaminated Mucrokian -->
+    <npc id='22655' count='150' respawn='1h' rand='0'/> <!-- Awakened Mucrokian -->
+
+    <zone loc='93025 171309 -4076 -3376'/>
+    <zone loc='89643 175028 -4076 -3376'/>
+    <zone loc='88886 177960 -4076 -3376'/>
+    <zone loc='91599 179844 -4076 -3376'/>
+    <zone loc='88868 182402 -4076 -3376'/>
+    <zone loc='93446 186895 -4076 -3376'/>
+    <zone loc='90354 194858 -4076 -3376'/>
+    <zone loc='81424 193990 -4076 -3376'/>
+    <zone loc='78410 194845 -4076 -3376'/>
+    <zone loc='79147 181598 -4076 -3376'/>
+    <zone loc='84690 179970 -4076 -3376'/>
+    <zone loc='84475 175630 -4076 -3376'/>
+    <zone loc='87492 172986 -4076 -3376'/>
+    <zone loc='87228 170643 -4076 -3376'/>
+  </territory>
+  
+  <territory name='innadril04_2224_murc01' controller='reed_event_maker' start_active='true' max='300'>
+    <npc id='22654' count='150' respawn='1h' rand='0'/> <!-- Contaminated Mucrokian -->
+    <npc id='22655' count='150' respawn='1h' rand='0'/> <!-- Awakened Mucrokian -->
+
+    <zone loc='77974 219181 -4084 -3384'/>
+    <zone loc='75476 216991 -4084 -3384'/>
+    <zone loc='75788 211376 -4084 -3384'/>
+    <zone loc='81120 209393 -4084 -3384'/>
+    <zone loc='80564 205200 -4084 -3384'/>
+    <zone loc='82210 200790 -4084 -3384'/>
+    <zone loc='82210 200790 -4084 -3384'/>
+    <zone loc='88523 202235 -4084 -3384'/>
+    <zone loc='96179 204714 -4084 -3384'/>
+    <zone loc='96179 204714 -4084 -3384'/>
+    <zone loc='93243 224887 -4084 -3384'/>
+    <zone loc='81722 227398 -4084 -3384'/>
+  </territory>
+  
+  <spawn name='innadril03_npc2223_01' controller='default_maker' start_active='true' max='3'>
+    <npc id='32641' pos='86792 162422 -3584 7560' respawn='1m'/> <!-- Dr. Helvetica -->
+    <npc id='32646' pos='86641 162261 -3600 8072' respawn='1m'/> <!-- Katensa -->
+    <npc id='32642' pos='86816 162256 -3584 49152' respawn='1m'/> <!-- Broken Golem Control Device -->
+  </spawn>
+  
+  <spawn name='innadril04_npc2224_01' controller='default_maker' start_active='true' max='3'>
+    <npc id='32643' pos='81181 226516 -3600 0' respawn='1m'/> <!-- Athenia -->
+    <npc id='32644' pos='81404 226771 -3616 -14576' respawn='1m'/> <!-- Piazza -->
+    <npc id='32647' pos='81232 226688 -3616 -8536' respawn='1m'/> <!-- Atra -->
+  </spawn>
+  
+  <territory name='innadril03_mb2223_01' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25677' count='1' param='DBPosCheck=1' respawn='36h' rand='24h'/> <!-- Water Spirit Lian -->
+
+    <zone loc='81824 183268 -3740 -3140'/>
+    <zone loc='82868 182768 -3740 -3140'/>
+    <zone loc='83964 183136 -3740 -3140'/>
+    <zone loc='82856 183880 -3740 -3140'/>
+  </territory>
+  
+  <territory name='innadril04_mb2224_03' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25674' count='1' param='DBPosCheck=1' respawn='36h' rand='24h'/> <!-- Gwindorr -->
+
+    <zone loc='85644 217084 -3776 -3176'/>
+    <zone loc='86544 216048 -3776 -3176'/>
+    <zone loc='87576 216344 -3776 -3176'/>
+    <zone loc='86372 218076 -3776 -3176'/>
+  </territory>
+  
+  <territory name='innadril01_mb2324_01' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25214' count='1' param='DBPosCheck=1' respawn='36h' rand='24h'/> <!-- Fafurion's Page Sika -->
+
+    <zone loc='111582 209341 -3687 -3087'/>
+    <zone loc='112538 209177 -3687 -3087'/>
+    <zone loc='112840 210036 -3687 -3087'/>
+    <zone loc='112103 210972 -3687 -3087'/>
+    <zone loc='111263 210522 -3687 -3087'/>
+  </territory>
+  
+
+  <territory name='innadril04_mb2324_02' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25394' count='1' param='DBPosCheck=1' respawn='36h' rand='24h'/> <!-- Premo Prime -->
+
+    <zone loc='129025 219237 -3678 -3078'/>
+    <zone loc='129701 218912 -3678 -3078'/>
+    <zone loc='129796 219644 -3678 -3078'/>
+    <zone loc='129042 220004 -3678 -3078'/>
+  </territory>
+
+  <territory name='innadril04_mb2324_03' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25211' count='1' param='DBPosCheck=1' respawn='36h' rand='24h'/> <!-- Sebek -->
+
+    <zone loc='113456 198118 -3689 -3489'/>
+    <zone loc='113656 198118 -3689 -3489'/>
+    <zone loc='113656 198318 -3689 -3489'/>
+    <zone loc='113456 198318 -3689 -3489'/>
+  </territory>
+
+  <territory name='innadril04_mb2324_04' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25188' count='1' param='DBPosCheck=1' respawn='36h' rand='24h'/> <!-- Apepi -->
+
+    <zone loc='127076 214973 -3100 -2600'/>
+    <zone loc='127830 214979 -3100 -2600'/>
+    <zone loc='127844 215846 -3100 -2600'/>
+    <zone loc='126984 215753 -3100 -2600'/>
+  </territory>
+
+  <territory name='innadril04_mb2324_05' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25185' count='1' param='DBPosCheck=1' respawn='36h' rand='24h'/> <!-- Tasaba Patriarch Hellena -->
+
+    <zone loc='99732 204331 -3784 -3384'/>
+    <zone loc='100441 204348 -3784 -3384'/>
+    <zone loc='100525 204956 -3784 -3384'/>
+    <zone loc='99685 204972 -3784 -3384'/>
+  </territory>
+
+  <territory name='innadril04_mb2324_06' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25208' count='1' param='DBPosCheck=1' respawn='36h' rand='24h'/> <!-- Water Couatle Ateka -->
+
+    <zone loc='109801 213314 -3924 -3324'/>
+    <zone loc='110297 213830 -3924 -3324'/>
+    <zone loc='110233 214186 -3924 -3324'/>
+    <zone loc='109453 213690 -3924 -3324'/>
+  </territory>
+
+  <territory name='innadril04_mb2324_07' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25189' count='1' param='DBPosCheck=1' respawn='36h' rand='24h'/> <!-- Cronos's Servitor Mumu -->
+
+    <zone loc='127837 200661 -3792 -3192'/>
+    <zone loc='128153 200391 -3792 -3192'/>
+    <zone loc='128389 200680 -3792 -3192'/>
+    <zone loc='128120 200947 -3792 -3192'/>
+  </territory>
+
+  <territory name='innadril04_mb2324_08' controller='default_use_db_maker' start_active='true' max='8'>
+    <npc id='25115' count='1' param='DBPosCheck=1' respawn='36h' rand='24h'/> <!-- Icarus Sample 1 -->
+
+    <zone loc='125789 207644 -3752 -3152'/>
+    <zone loc='126189 207837 -3752 -3152'/>
+    <zone loc='126120 208512 -3752 -3152'/>
+    <zone loc='125401 208027 -3752 -3152'/>
+  </territory>
+  
+  <territory name='innadril01_qm2324_01' controller='default_maker' start_active='true' max='3'>
+    <npc id='20314' count='3' respawn='3m' rand='0'/> <!-- Great White Shark -->
+
+    <zone loc='106252 197068 -4236 -4036'/>
+    <zone loc='106452 197068 -4236 -4036'/>
+    <zone loc='106452 197268 -4236 -4036'/>
+    <zone loc='106252 197268 -4236 -4036'/>
+  </territory>
+  
+  <spawn name='innadril01_mb2322_01' controller='default' start_active='true' max='8'>
+    <npc id='25198' pos='102656 157424 -3735 0' respawn='36h'/> <!-- Fafurion's Herald Lokness -->
+  </spawn>
+  
+  <spawn name='innadril01_mb2322_02' controller='default' start_active='true' max='8'>
+    <npc id='25199' pos='108096 157408 -3688 0' respawn='36h'/> <!-- Water Dragon Seer Sheshark -->
+  </spawn>
+  
+  <spawn name='innadril01_mb2322_03' controller='default' start_active='true' max='8'>
+    <npc id='25202' pos='119760 157392 -3744 0' respawn='36h'/> <!-- Krokian Padisha Sobekk -->
+  </spawn>
+  
+  <spawn name='innadril01_mb2322_04' controller='default' start_active='true' max='8'>
+    <npc id='25205' pos='123808 153408 -3671 0' respawn='36h'/> <!-- Ocean Flame Ashakiel -->
+  </spawn>
+  
+
+  <territory name='innadril08_mb2323_01' controller='default' start_active='true' max='8'>
+    <npc id='25498' count='1' respawn='36h' rand='24h'/> <!-- Fafurion's Henchman Istary -->
+
+    <zone loc='126076 173788 -3188 -2588'/>
+    <zone loc='126688 173368 -3188 -2588'/>
+    <zone loc='127436 173972 -3188 -2588'/>
+    <zone loc='127356 175192 -3188 -2588'/>
+    <zone loc='126672 175488 -3188 -2588'/>
+    <zone loc='125808 174960 -3188 -2588'/>
+  </territory>
+
+  <territory name='innadril08_mb2323_02' controller='default' start_active='true' max='8'>
+    <npc id='25057' count='1' respawn='36h' rand='24h'/> <!-- Biconne of Blue Sky -->
+
+    <zone loc='106444 167828 -3508 -2908'/>
+    <zone loc='107516 167576 -3508 -2908'/>
+    <zone loc='107708 168688 -3508 -2908'/>
+    <zone loc='106972 169012 -3508 -2908'/>
+    <zone loc='106268 168516 -3508 -2908'/>
+  </territory>
+
+  <territory name='innadril08_mb2323_03' controller='default' start_active='true' max='8'>
+    <npc id='25192' count='1' respawn='36h' rand='24h'/> <!-- Earth Protector Panathen -->
+
+    <zone loc='125168 189556 -3344 -2744'/>
+    <zone loc='126180 189112 -3344 -2744'/>
+    <zone loc='127072 190596 -3344 -2744'/>
+    <zone loc='126164 191364 -3344 -2744'/>
+    <zone loc='124876 190832 -3344 -2744'/>
+  </territory>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ </list>
+</null>

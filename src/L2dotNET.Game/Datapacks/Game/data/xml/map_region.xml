@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Here are the following values of region
+0 = Talking Island Village
+1 = Elven Village
+2 = Dark Elven Village
+3 = Orc Village
+4 = Dwarven Village
+5 = Town of Gludio
+6 = Gludin Village
+7 = Town of Dion
+8 = Town of Giran
+9 = Town of Oren
+10 = Town of Aden
+11 = Hunters Village
+12 = Giran Harbor
+13 = Heine
+14 = Rune Township
+15 = Town of Goddard
+16 = Town of Schuttgart
+17 = Floran Village
+18 = Primeval Isle -->
+
+<!-- Region map correspondent with the geodata layout. See http://imageshack.us/f/104/mapc6wo9.jpg/ to understand. -->
+<!-- Regions set according to this: http://bullwinkle.gardnerweb.com/pics/LineageIIc4MapPlus20v3.jpg -->
+<list>
+	<map geoY="10" geoX_16="3"  geoX_17="3"  geoX_18="7"  geoX_19="9"  geoX_20="11" geoX_21="4"  geoX_22="4"  geoX_23="4"  geoX_24="4"  geoX_25="4"  geoX_26="4" />
+	<map geoY="11" geoX_16="3"  geoX_17="3"  geoX_18="3"  geoX_19="3"  geoX_20="3"  geoX_21="4"  geoX_22="4"  geoX_23="4"  geoX_24="4"  geoX_25="4"  geoX_26="4" />
+	<map geoY="12" geoX_16="3"  geoX_17="3"  geoX_18="3"  geoX_19="3"  geoX_20="3"  geoX_21="4"  geoX_22="4"  geoX_23="4"  geoX_24="4"  geoX_25="4"  geoX_26="4" />
+	<map geoY="13" geoX_16="3"  geoX_17="3"  geoX_18="3"  geoX_19="3"  geoX_20="3"  geoX_21="16" geoX_22="16" geoX_23="16" geoX_24="16" geoX_25="4"  geoX_26="4" />
+	<map geoY="14" geoX_16="3"  geoX_17="3"  geoX_18="3"  geoX_19="3"  geoX_20="3"  geoX_21="16" geoX_22="16" geoX_23="16" geoX_24="15" geoX_25="15" geoX_26="15" />
+	<map geoY="15" geoX_16="3"  geoX_17="3"  geoX_18="3"  geoX_19="3"  geoX_20="3"  geoX_21="14" geoX_22="14" geoX_23="15" geoX_24="15" geoX_25="15" geoX_26="15" />
+	<map geoY="16" geoX_16="3"  geoX_17="3"  geoX_18="3"  geoX_19="14" geoX_20="14" geoX_21="14" geoX_22="14" geoX_23="15" geoX_24="15" geoX_25="15" geoX_26="15" />
+	<map geoY="17" geoX_16="2"  geoX_17="2"  geoX_18="2"  geoX_19="2"  geoX_20="18" geoX_21="14" geoX_22="9"  geoX_23="10" geoX_24="10" geoX_25="10" geoX_26="10" />
+	<map geoY="18" geoX_16="2"  geoX_17="2"  geoX_18="2"  geoX_19="2"  geoX_20="2"  geoX_21="9"  geoX_22="9"  geoX_23="10" geoX_24="10" geoX_25="10" geoX_26="10" />
+	<map geoY="19" geoX_16="2"  geoX_17="2"  geoX_18="2"  geoX_19="2"  geoX_20="1"  geoX_21="1"  geoX_22="9"  geoX_23="11" geoX_24="10" geoX_25="10" geoX_26="10" />
+	<map geoY="20" geoX_16="6"  geoX_17="6"  geoX_18="2"  geoX_19="5"  geoX_20="1"  geoX_21="1"  geoX_22="9"  geoX_23="11" geoX_24="11" geoX_25="11" geoX_26="11" />
+	<map geoY="21" geoX_16="6"  geoX_17="6"  geoX_18="5"  geoX_19="5"  geoX_20="7"  geoX_21="7"  geoX_22="8"  geoX_23="8"  geoX_24="8"  geoX_25="8"  geoX_26="8" />
+	<map geoY="22" geoX_16="6"  geoX_17="6"  geoX_18="6"  geoX_19="5"  geoX_20="7"  geoX_21="7"  geoX_22="8"  geoX_23="8"  geoX_24="8"  geoX_25="8"  geoX_26="8" />
+	<map geoY="23" geoX_16="0"  geoX_17="6"  geoX_18="6"  geoX_19="5"  geoX_20="17" geoX_21="12" geoX_22="13" geoX_23="13" geoX_24="13" geoX_25="13" geoX_26="13" />
+	<map geoY="24" geoX_16="0"  geoX_17="0"  geoX_18="6"  geoX_19="6"  geoX_20="12" geoX_21="12" geoX_22="13" geoX_23="13" geoX_24="13" geoX_25="13" geoX_26="13" />
+	<map geoY="25" geoX_16="0"  geoX_17="0"  geoX_18="0"  geoX_19="0"  geoX_20="0"  geoX_21="0"  geoX_22="13" geoX_23="13" geoX_24="13" geoX_25="13" geoX_26="13" />
+</list>

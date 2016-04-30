@@ -1,0 +1,7 @@
+#set1 - whole set skill
+#set2 - shield skill
+#set3 - enchanted +6 set skill
+
+#Dynasty Breast Plate
+#CON -1 ; STR +1; P. Def. +4.6%; Max. HP +418; Resistance to darkness +6.
+9416	legs{9421 11512}	helm{9422 11557}	gloves{9423 11513}	boots{9424 11526}	shield{9441 11532}	set1{3412-1}	set2{3417-1}	set3{3623-1}

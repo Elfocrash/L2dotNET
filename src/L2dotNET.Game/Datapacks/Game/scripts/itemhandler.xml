@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ <item id="ид предмета"
+   effect="ид уровень" (скила, активируется только сами эффекты на скиле)
+   exchange="ид количество" (предмета, которое будет выдано)
+   pet="true" (скрипт может воздействовать на питомцев, стандартно false)
+   player="true" (скрипт может воздействовать на игроков, стандартно true)
+   destroy="false" (удаление предмета после использования, стандартно true)
+   />
+-->
+<null>
+ <list>
+  <item id="736" skill="2013-1"/> <!-- Scroll of Escape -->
+  <item id="1538" skill="2036-1"/> <!-- Blessed Scroll of Escape -->
+
+  <item id="1829" skill="2040-1"/> <!-- Scroll of Escape: Clan Hall -->
+  <item id="1830" skill="2041-1"/> <!-- Scroll of Escape: Castle -->
+  
+  <item id="5858" skill="2177-1"/> <!-- Blessed Scroll of Escape: Clan Hall -->
+  <item id="5859" skill="2178-1"/> <!-- Blessed Scroll of Escape: Castle -->
+  <item id="6663" skill="2213-20"/> <!-- Scroll of Escape: Orc Village -->
+  <item id="6664" skill="2213-21"/> <!-- Scroll of Escape: Silenos Village -->
+  <item id="7117" skill="2213-1"/> <!-- Scroll of Escape: Talking Island -->
+  <item id="7118" skill="2213-2"/> <!-- Scroll of Escape: Elven Village -->
+  <item id="7119" skill="2213-3"/> <!-- Scroll of Escape: Dark Elf Village -->
+  <item id="7120" skill="2213-4"/> <!-- Scroll of Escape: Orc Village -->
+  <item id="7121" skill="2213-5"/> <!-- Scroll of Escape: Dwarven Village -->
+  <item id="7122" skill="2213-6"/> <!-- Scroll of Escape: Gludin Village -->
+  <item id="7123" skill="2213-7"/> <!-- Scroll of Escape: Town of Gludio -->
+  <item id="7124" skill="2213-8"/> <!-- Scroll of Escape: Town of Dion -->
+  <item id="7125" skill="2213-9"/> <!-- Scroll of Escape: Floran -->
+  <item id="7126" skill="2213-10"/> <!-- Scroll of Escape: Giran Castle Town -->
+  <item id="7127" skill="2213-11"/> <!-- Scroll of Escape: Hardin's Private Academy -->
+  <item id="7128" skill="2213-12"/> <!-- Scroll of Escape: Heine -->
+  <item id="7129" skill="2213-13"/> <!-- Scroll of Escape: Town of Oren -->
+  <item id="7130" skill="2213-14"/> <!-- Scroll of Escape: Ivory Tower -->
+  <item id="7131" skill="2213-15"/> <!-- Scroll of Escape: Hunters Village -->
+  <item id="7132" skill="2213-16"/> <!-- Scroll of Escape: Aden Castle Town -->
+  <item id="7133" skill="2213-17"/> <!-- Scroll of Escape: Town of Goddard -->
+  <item id="7134" skill="2213-18"/> <!-- Scroll of Escape: Rune Township -->
+  <item id="7135" skill="2213-19"/> <!-- Scroll of Escape: Town of Schuttgart -->
+  <item id="7554" skill="2214-1"/> <!-- Scroll of Escape: Talking Island -->
+  <item id="7555" skill="2214-2"/> <!-- Scroll of Escape: Elven Village -->
+  <item id="7556" skill="2214-3"/> <!-- Scroll of Escape: Dark Elf Village -->
+  <item id="7557" skill="2214-4"/> <!-- Scroll of Escape: Orc Village -->
+  <item id="7558" skill="2214-5"/> <!-- Scroll of Escape: Dwarven Village -->
+  <item id="7559" skill="2214-10"/> <!-- Scroll of Escape: Giran Castle Town -->
+  <item id="7618" skill="2213-20"/> <!-- Scroll of Escape: Ketra Orc Village -->
+  <item id="7619" skill="2213-21"/> <!-- Scroll of Escape: Varka Silenos Village -->
+  <item id="9156" skill="2320-1"/> <!-- Blessed Scroll of Escape (Event) -->
+  <item id="9647" skill="2214-6"/> <!-- Scroll of Escape: Kamael Village -->
+  <item id="9716" skill="2214-6"/> <!-- Scroll of Escape: Kamael Village -->
+  <item id="10129" skill="2365-1"/> <!-- Scroll of Escape: Fortress -->
+  <item id="10130" skill="2364-1"/> <!-- Blessed Scroll of Escape: Fortress -->
+  <item id="10650" skill="2531-1"/> <!-- Adventurer's Scroll of Escape -->
+  <item id="13129" skill="2594-1"/> <!-- Pailaka Scroll of Escape -->
+  <item id="13258" skill="2595-1"/> <!-- Gran Kain's Blessed Scroll of Escape -->
+
+  <item id="13422" exchange="736-2"/> <!-- Medium Parchment Box -->
+  <item id="13425" exchange="736-1"/> <!-- Small Parchment Box -->
+
+  <item id="13731" skill="2649-1"/> <!-- Gludio Blessed Scroll of Escape -->
+  <item id="13732" skill="2649-2"/> <!-- Dion Blessed Scroll of Escape -->
+  <item id="13733" skill="2649-3"/> <!-- Giran Blessed Scroll of Escape -->
+  <item id="13734" skill="2649-4"/> <!-- Oren Blessed Scroll of Escape -->
+  <item id="13735" skill="2649-5"/> <!-- Aden Blessed Scroll of Escape -->
+  <item id="13736" skill="2649-6"/> <!-- Innadril Blessed Scroll of Escape -->
+  <item id="13737" skill="2649-7"/> <!-- Goddard Blessed Scroll of Escape -->
+  <item id="13738" skill="2649-8"/> <!-- Rune Blessed Scroll of Escape -->
+  <item id="13739" skill="2649-9"/> <!-- Schuttgart Blessed Scroll of Escape -->
+  
+  <item id="20583" skill="22103-1"/> <!-- Blessed Scroll of Escape (Event) -->
+  
+
+  <item id="2375" petId="12077" destroy="false"/> <!-- Wolf Collar  -->
+  <item id="3500" petId="12311" destroy="false"/> <!-- Dragonflute of Wind  -->
+  <item id="3501" petId="12312" destroy="false"/> <!-- Dragonflute of Star  -->
+  <item id="3502" petId="12313" destroy="false"/> <!-- Dragonflute of Twilight  -->
+  
+  <item id="4422" petId="12526" destroy="false"/> <!-- Dragon Bugle of Wind  -->
+  <item id="4423" petId="12527" destroy="false"/> <!-- Dragon Bugle of Star  -->
+  <item id="4424" petId="12528" destroy="false"/> <!-- Dragon Bugle of Twilight  -->
+  <item id="4425" petId="12564" destroy="false"/> <!-- Penitent's Manacles (sin eater)  -->
+
+  <item id="5560" summonStaticId="13006"/> <!-- Christmas Tree  -->
+  <item id="5561" summonStaticId="13007"/> <!-- Special Christmas Tree  -->
+
+  <item id="6389" summonStaticId="12774"/> <!-- Squash Seed  -->
+  <item id="6390" summonStaticId="12777"/> <!-- Large Squash Seed  -->
+
+  <item id="6648" petId="12780" destroy="false"/> <!-- Baby Buffalo Panpipe  -->
+  <item id="6649" petId="12782" destroy="false"/> <!-- Baby Cougar Chime  -->
+  <item id="6650" petId="12781" destroy="false"/> <!-- Baby Kookaburra Ocarina  -->
+  
+  <item id="9882" petId="16025" destroy="false"/> <!-- Great Wolf Necklace  -->
+  <item id="10163" petId="16025" destroy="false"/> <!-- Wolf Collar  -->
+
+  <item id="10307" petId="16037" destroy="false"/> <!-- Great Snow Wolf Necklace  -->
+  <item id="10308" petId="16038" destroy="false"/> <!-- Red Dragon Bugle of Wind  -->
+  <item id="10309" petId="16039" destroy="false"/> <!-- Red Dragon Bugle of Star  -->
+  <item id="10310" petId="16040" destroy="false"/> <!-- Red Dragon Bugle of Twilight  -->
+  <item id="10311" petId="16034" destroy="false"/> <!-- Improved Buffalo Panpipe  -->
+  <item id="10312" petId="16036" destroy="false"/> <!-- Improved Cougar Chime  -->
+  <item id="10313" petId="16035" destroy="false"/> <!-- Improved Kookaburra Ocarina  -->
+
+  <item id="10426" petId="16041" destroy="false"/> <!-- Fenrir Necklace  -->
+  <item id="10611" petId="16042" destroy="false"/> <!-- Snow Fenrir Necklace  -->
+
+  <item id="13017" petId="16045" destroy="false"/> <!-- White Weasel Hunting Helper Necklace  -->
+  <item id="13018" petId="16046" destroy="false"/> <!-- Fairy Princess Hunting Helper Necklace  -->
+  <item id="13019" petId="16044" destroy="false"/> <!-- Wild Beast Fighter Hunting Helper Necklace  -->
+  <item id="13020" petId="16043" destroy="false"/> <!-- Fox Shaman Hunting Helper Necklace  -->
+
+  <item id="14061" petId="16052" destroy="false"/> <!-- Toy Knight Summon Bracelet  -->
+  <item id="14062" petId="16051" destroy="false"/> <!-- Spirit Shaman Summon Bracelet  -->
+  <item id="14063" petId="16050" destroy="false"/> <!-- Owl Monk Summon Bracelet  -->
+  <item id="14064" petId="16053" destroy="false"/> <!-- Turtle Ascetic Summon Bracelet  -->
+
+
+  <item id="14639" exchange="13421-5;70-1"/> <!-- Event - Claymore  -->
+  <item id="14640" exchange="13421-5;159-1"/> <!-- Event - Bonebreaker  -->
+  <!-- todo 14641-14662 -->
+  <item id="14663" exchange="13421-3;2582-1"/> <!-- Event - Katana*Katana  -->
+
+  <item id="14700" effect="2863-1"/> <!-- Greater Healing Potion  -->
+  <item id="14701" effect="2864-1"/> <!-- Greater Quick Healing Potion  -->
+
+  <item id="14724" petId="13187" destroy="false"/> <!--	Event - Milk Cow Summon Scroll  -->
+  <item id="14725" petId="13188" destroy="false"/> <!-- Event - Head Milk Cow Summon Scroll  -->
+  <item id="14726" petId="13191" destroy="false"/> <!-- Event - Gloomy Milk Cow Summon Scroll  -->
+  <item id="14727" petId="13192" destroy="false"/> <!-- Event - Gloomy Head Milk Cow Summon Scroll  -->
+  <item id="14740" exchange="14724-1;14722-1"/> <!-- Event - Save the Cow Event Pack  -->
+
+  <item id="14819" petId="16068"/> <!-- Guardian's Dragon Bugle  -->
+  <item id="14828" petId="16067"/> <!-- Deinonychus Mesozoic Stone  -->
+
+  <item id="15488" petId="16071" destroy="false"/> <!-- Maguen Pet Collar  -->
+  <item id="15489" petId="16072" destroy="false"/> <!-- Elite Maguen Pet Collar  -->
+
+  <item id="20000" effect="22000-1"/> <!-- Spicy Kimchee  -->
+  <item id="20001" effect="22001-1"/> <!-- Spicy Kimchee  -->
+  <item id="20002" effect="22002-1"/> <!-- Spicy Kimchee  -->
+  <item id="20003" effect="22003-1"/> <!-- Sweet-and-Sour White Kimchee  -->
+  <item id="20004" effect="22004-1"/> <!-- Energy Ginseng  -->
+  <item id="20005" effect="22005-1"/> <!-- Energy Red Ginseng  -->
+  
+  <item id="20035" exchange="20006-1"/> <!-- Majo Agathion Pack  -->
+  <item id="20036" exchange="20007-1"/> <!-- Gold Crown Majo Agathion Pack  -->
+  <item id="20037" exchange="20008-1"/> <!-- Black Crown Majo Agathion Pack  -->
+  <item id="20038" exchange="20009-1"/> <!-- Majo Agathion 30-Day Pack Big Head  -->
+
+  <item id="20760" summonId="1561" destroy="false"/> <!-- Rudolph Necklace - Event  -->
+  <item id="20761" summonId="1561" destroy="false"/> <!-- Rudolph Necklace  -->
+  <item id="20773" exchange="20762-1"/> <!-- Rudolph's Gift  -->
+
+  <item id="20908" petId="1562" destroy="false"/> <!-- Deseloph Rose Necklace - Event  -->
+  <item id="20909" petId="1563" destroy="false"/> <!-- Hyum Rose Necklace - Event -->
+  <item id="20910" petId="1564" destroy="false"/> <!-- Rekang Rose Necklace - Event  -->
+  <item id="20911" petId="1565" destroy="false"/> <!-- Lilias Rose Necklace - Event  -->
+  <item id="20912" petId="1566" destroy="false"/> <!-- Lapham Rose Necklace - Event  -->
+  <item id="20913" petId="1567" destroy="false"/> <!-- Mafum Rose Necklace - Event  -->
+  <item id="20915" petId="1568" destroy="false"/> <!-- Improved Deseloph Rose Necklace - Event  -->
+  <item id="20916" petId="1569" destroy="false"/> <!-- Improved Hyum Rose Necklace - Event  -->
+  <item id="20917" petId="1570" destroy="false"/> <!-- Improved Rekang Rose Necklace - Event  -->
+  <item id="20918" petId="1571" destroy="false"/> <!-- Improved Lilias Rose Necklace - Event  -->
+  <item id="20919" petId="1572" destroy="false"/> <!-- Improved Lapham Rose Necklace - Event  -->
+  <item id="20920" petId="1573" destroy="false"/> <!-- Improved Mafum Rose Necklace - Event  -->
+ </list>
+</null>

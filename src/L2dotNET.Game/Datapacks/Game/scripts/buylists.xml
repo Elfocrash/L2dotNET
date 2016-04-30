@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<null>
+ <shops>
+   <shop>
+     <npc>35461</npc> <mod>1.10</mod>
+     <selllist id="0">
+       <item> 6902, 1829, 5169 </item>
+     </selllist>
+     <selllist id="1">
+       <item> 6902, 1829, 5858, 5169, 7129, 7130 </item>
+     </selllist>
+     <selllist id="2">
+       <item> 6902, 1829, 5858, 5169, 7129, 7130, 7584, 6928, 6935, 6936 </item>
+     </selllist>
+   </shop>
+ </shops> 
+</null>

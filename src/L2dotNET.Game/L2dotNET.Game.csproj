@@ -727,8 +727,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Datapacks\Auth\authdatapack.rar" />
-    <None Include="Datapacks\Game\gamedatapack.rar" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -775,7 +773,26 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Datapacks\Game\L2Crypt.dll" />
+    <Content Include="Datapacks\Game\Org.BouncyCastle.dll" />
+    <Content Include="Datapacks\Game\pk.txt" />
+    <Content Include="Datapacks\Game\serverpk.txt" />
     <Content Include="Datapacks\sqlscripts\l2dotnet.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Datapacks\Auth\config\" />
+    <Folder Include="Datapacks\Auth\log\" />
+    <Folder Include="Datapacks\Auth\sq\" />
+    <Folder Include="Datapacks\Game\cmpl\" />
+    <Folder Include="Datapacks\Game\config\" />
+    <Folder Include="Datapacks\Game\crests\" />
+    <Folder Include="Datapacks\Game\data\" />
+    <Folder Include="Datapacks\Game\dlc\" />
+    <Folder Include="Datapacks\Game\geo\" />
+    <Folder Include="Datapacks\Game\html\" />
+    <Folder Include="Datapacks\Game\log\" />
+    <Folder Include="Datapacks\Game\scripts\" />
+    <Folder Include="Datapacks\Game\sq\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

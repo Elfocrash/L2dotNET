@@ -1,0 +1,1534 @@
+# humans
+17250001	map	spawn{-82873 244808 -3717}	tex{town_map_talking_t00 365 152}
+17250002	map	spawn{-82765 241439 -3718}	tex{town_map_talking_t00 164 154}
+17250003	map	spawn{-86121 241452 -3719}	tex{town_map_talking_t00 146 358}
+# orcs
+18140001	map	spawn{-45824 -116764 -219}	tex{town_map_orc_t00 265 120}
+18140002	map	spawn{-46504 -110394 -220}	tex{town_map_orc_t00 138 413}
+18140003	map	spawn{-47332 -113246 -220}	tex{town_map_orc_t00 141 235}
+# darkelfs
+20180001	map	spawn{15258 15631 -4366}	tex{town_map_darkelf_t00 339 170}
+20180002	map	spawn{7557 18055 -4366}	tex{town_map_darkelf_t00 54 315}
+# dwarfs
+23120001	map	spawn{115462 -177295 -880}	tex{town_map_dwarf_t00 165 386}
+23120002	map	spawn{117450 -182299 -1488}	tex{town_map_dwarf_t00 368 161}
+23120003	map	spawn{116657 -183997 -1550}	tex{town_map_dwarf_t00 319 110}
+# elves
+21190001	map	spawn{47616 51349 -2968}	tex{town_map_elf_t00 430 315}
+21190002	map	spawn{45915 46695 -2969}	tex{town_map_elf_t00 248 106}
+21190003	map	spawn{43175 51424 -2968}	tex{town_map_elf_t00 110 345}
+
+#gludio
+19210010	chair	spawn{-18112 108761 -2492}
+17220015	pvp	spawn{-88697 142316 -3621}	htm{pvp_signboard001}
+17220016	pvp	spawn{-87136 142491 -3623}	htm{pvp_signboard001}
+#dion
+20220010	chair	spawn{22073 160989 -2686}
+20230001	pvp	spawn{12110 182771 -3538}	htm{pvp_signboard001}
+20230002	pvp	spawn{12979 183365 -3538}	htm{pvp_signboard001}
+#giran
+23220010	chair	spawn{117161 145097 -2559}
+22220001	pvp	spawn{73766 142489 -3748}	htm{pvp_signboard001}
+22220002	pvp	spawn{72200 143102 -3748}	htm{pvp_signboard001}
+#oren
+22190010	chair	spawn{83237 37192 -2286}
+#aden
+24180017	chair	spawn{147456 3272 -42}
+#innadril
+23250010	chair	spawn{116024 249768 -782}
+#goddard
+24160024	chair	spawn{147464 -49339 -2123}
+#rune
+20160010	chair	spawn{10103 -49153 -272}
+#schuttgart
+22130016	chair	spawn{77551 -153410 -389}
+
+#EntranceofDestruction
+12240001	door	spawn{-239264 219986 -10161}	hp{158250}	defence{644 518}	unlock{trigger}
+#EntranceofDestruction
+12240002	door	spawn{-239264 219985 -10161}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+12240003	door	spawn{-243960 217081 -12196}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+12240004	door	spawn{-243960 217081 -12196}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240005	door	spawn{-241118 218106 -12402}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240006	door	spawn{-241118 218105 -12402}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240007	door	spawn{-238727 215839 -12659}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240008	door	spawn{-238727 215839 -12659}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240009	door	spawn{-238741 212232 -12788}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240010	door	spawn{-238741 212232 -12788}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+12240011	door	spawn{-244508 215770 -12196}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+12240012	door	spawn{-244508 215770 -12196}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240013	door	spawn{-242793 213119 -12530}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240014	door	spawn{-242793 213119 -12530}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240015	door	spawn{-242794 209513 -12662}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240016	door	spawn{-242794 209513 -12662}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240017	door	spawn{-239838 207825 -12914}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240018	door	spawn{-239838 207824 -12914}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+12240019	door	spawn{-245826 215203 -12196}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+12240020	door	spawn{-245826 215203 -12196}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240021	door	spawn{-245877 211739 -12405}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240022	door	spawn{-245877 211739 -12405}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240023	door	spawn{-245877 208133 -12531}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240024	door	spawn{-245877 208133 -12531}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240025	door	spawn{-242923 206445 -12783}	hp{158250}	defence{644 518}	unlock{trigger}
+#IronWallGate
+12240026	door	spawn{-242923 206444 -12783}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+12240027	door	spawn{-247152 218400 -12193}	hp{158250}	defence{644 518}	unlock{trigger}
+#PassageGate
+12240028	door	spawn{-249761 220073 -12464}	hp{158250}	defence{644 518}	unlock{trigger}
+#PassageGate
+12240029	door	spawn{-249761 220072 -12464}	hp{158250}	defence{644 518}	unlock{trigger}
+#GrandFortressGate
+12240030	door	spawn{-251436 214385 -12122}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+12240031	door	spawn{-251450 212260 -12021}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+14240102	door	spawn{-179553 207192 -15508}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_01
+16200001	door	spawn{-109704 76424 -12656}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_02
+16200002	door	spawn{-110856 77960 -12848}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_03
+16200003	door	spawn{-111624 77960 -12848}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_04
+16200004	door	spawn{-107587 80604 -12946}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_05
+16200005	door	spawn{-109120 80648 -12944}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_06
+16200006	door	spawn{-108676 82444 -12912}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_07
+16200007	door	spawn{-110475 83143 -12912}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_08
+16200008	door	spawn{-112264 82440 -12912}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_09
+16200009	door	spawn{-111824 80648 -12944}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_10
+16200010	door	spawn{-107588 83677 -12913}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_11
+16200011	door	spawn{-110472 84488 -13008}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_12
+16200012	door	spawn{-111424 87176 -13008}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_13
+16200013	door	spawn{-110663 84052 -13011}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_14
+16200014	door	spawn{-113183 87179 -12904}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_15
+16200015	door	spawn{-115074 87178 -12816}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_16
+16200016	door	spawn{-116972 87177 -12711}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_17
+16200017	door	spawn{-108898 82223 -12878}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_18
+16200018	door	spawn{-110476 82844 -12878}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_19
+16200019	door	spawn{-112043 82231 -12878}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_20
+16200022	door	spawn{-107475 83666 -12884}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_21
+16200023	door	spawn{-109201 81920 -12907}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_22
+16200024	door	spawn{-110473 82417 -12906}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_garden_23
+16200025	door	spawn{-111741 81914 -12908}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100001	door	spawn{-88824 -252637 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100002	door	spawn{-87184 -252637 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100003	door	spawn{-84599 -252637 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100004	door	spawn{-82959 -252637 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100005	door	spawn{-80410 -252637 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100006	door	spawn{-78749 -252637 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100007	door	spawn{-76491 -252637 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100008	door	spawn{-74851 -252637 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100009	door	spawn{-88824 -249762 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100010	door	spawn{-87184 -249762 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100011	door	spawn{-84599 -249762 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100012	door	spawn{-82959 -249762 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100013	door	spawn{-80410 -249762 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100014	door	spawn{-78770 -249762 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100015	door	spawn{-76491 -249762 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100016	door	spawn{-74851 -249762 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100017	door	spawn{-88824 -246955 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100018	door	spawn{-87184 -246955 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100019	door	spawn{-84599 -246955 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100020	door	spawn{-82959 -246955 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100021	door	spawn{-80410 -246955 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100022	door	spawn{-78770 -246955 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100023	door	spawn{-76491 -246955 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100024	door	spawn{-74851 -246955 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100025	door	spawn{-88824 -244275 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100026	door	spawn{-87184 -244275 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100027	door	spawn{-84599 -244275 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100028	door	spawn{-82959 -244275 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100029	door	spawn{-80410 -244275 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100030	door	spawn{-78770 -244275 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100031	door	spawn{-76491 -244275 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100032	door	spawn{-74851 -244275 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100033	door	spawn{-88824 -241480 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100034	door	spawn{-87184 -241480 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100035	door	spawn{-84599 -241480 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100036	door	spawn{-82959 -241480 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100037	door	spawn{-80410 -241480 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100038	door	spawn{-78770 -241480 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100039	door	spawn{-76491 -241480 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100040	door	spawn{-74851 -241480 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100041	door	spawn{-88800 -238836 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100042	door	spawn{-87160 -238836 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100043	door	spawn{-84599 -238836 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+17100044	door	spawn{-82959 -238836 -3342}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150001	door	spawn{-85904 -86402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150002	door	spawn{-83904 -86402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150003	door	spawn{-81904 -86402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150004	door	spawn{-79904 -86402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150005	door	spawn{-77904 -86402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150006	door	spawn{-86498 -85808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150007	door	spawn{-85310 -85808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150008	door	spawn{-84498 -85808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150009	door	spawn{-83310 -85808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150010	door	spawn{-82498 -85808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150011	door	spawn{-81310 -85808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150012	door	spawn{-80498 -85808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150013	door	spawn{-79310 -85808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150014	door	spawn{-78498 -85808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150015	door	spawn{-77310 -85808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150016	door	spawn{-85904 -85214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150017	door	spawn{-83904 -85214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150018	door	spawn{-81904 -85214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150019	door	spawn{-79904 -85214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150020	door	spawn{-77904 -85214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150021	door	spawn{-85904 -84402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150022	door	spawn{-83904 -84402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150023	door	spawn{-81904 -84402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150024	door	spawn{-79904 -84402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150025	door	spawn{-77904 -84402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150026	door	spawn{-86498 -83808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150027	door	spawn{-85310 -83808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150028	door	spawn{-84498 -83808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150029	door	spawn{-83310 -83808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150030	door	spawn{-82498 -83808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150031	door	spawn{-81310 -83808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150032	door	spawn{-80498 -83808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150033	door	spawn{-79310 -83808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150034	door	spawn{-78498 -83808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150035	door	spawn{-77310 -83808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150036	door	spawn{-85904 -83214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150037	door	spawn{-83904 -83214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150038	door	spawn{-81904 -83214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150039	door	spawn{-79904 -83214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150040	door	spawn{-77904 -83214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150041	door	spawn{-85904 -82402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150042	door	spawn{-83904 -82402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150043	door	spawn{-81904 -82402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150044	door	spawn{-79904 -82402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150045	door	spawn{-77904 -82402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150046	door	spawn{-86498 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150047	door	spawn{-85310 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150048	door	spawn{-84498 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150049	door	spawn{-83310 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150050	door	spawn{-82498 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150051	door	spawn{-81310 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150052	door	spawn{-80498 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150053	door	spawn{-79310 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150054	door	spawn{-78498 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150055	door	spawn{-77310 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150056	door	spawn{-85904 -81214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150057	door	spawn{-83904 -81214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150058	door	spawn{-81904 -81214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150059	door	spawn{-79904 -81214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150060	door	spawn{-77904 -81214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150061	door	spawn{-85904 -80402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150062	door	spawn{-83904 -80402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150063	door	spawn{-81904 -80402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150064	door	spawn{-79904 -80402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150065	door	spawn{-77904 -80402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150066	door	spawn{-86498 -79808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150067	door	spawn{-85310 -79808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150068	door	spawn{-84498 -79808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150069	door	spawn{-83310 -79808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150070	door	spawn{-82498 -79808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150071	door	spawn{-81310 -79808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150072	door	spawn{-80498 -79808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150073	door	spawn{-79310 -79808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150074	door	spawn{-78498 -79808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150075	door	spawn{-77310 -79808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150076	door	spawn{-85904 -79214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150077	door	spawn{-83904 -79214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150078	door	spawn{-81904 -79214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150079	door	spawn{-79904 -79214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150080	door	spawn{-77904 -79214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150081	door	spawn{-85904 -78402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150082	door	spawn{-83904 -78402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150083	door	spawn{-81904 -78402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150084	door	spawn{-79904 -78402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150085	door	spawn{-77904 -78402 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150086	door	spawn{-86498 -77808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150087	door	spawn{-85310 -77808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150088	door	spawn{-84498 -77808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150089	door	spawn{-83310 -77808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150090	door	spawn{-82498 -77808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150091	door	spawn{-81310 -77808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150092	door	spawn{-80498 -77808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150093	door	spawn{-79310 -77808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150094	door	spawn{-78498 -77808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150095	door	spawn{-77310 -77808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150096	door	spawn{-85904 -77214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150097	door	spawn{-83904 -77214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150098	door	spawn{-81904 -77214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150099	door	spawn{-79904 -77214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150100	door	spawn{-77904 -77214 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150101	door	spawn{-87036 -82398 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150102	door	spawn{-86545 -81808 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17150103	door	spawn{-87036 -81218 -8384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_1
+17160001	door	spawn{-81006 -51669 -11439}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_2
+17160002	door	spawn{-80600 -51790 -11453}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_3
+17160003	door	spawn{-80267 -50993 -11441}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_4
+17160004	door	spawn{-80094 -51342 -11435}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_5
+17160005	door	spawn{-78548 -52279 -11460}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_6
+17160006	door	spawn{-78961 -52313 -11433}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_7
+17160007	door	spawn{-79898 -53425 -11453}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_8
+17160008	door	spawn{-80026 -52991 -11453}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_9
+17160009	door	spawn{-79232 -49127 -11442}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_10
+17160010	door	spawn{-79026 -48794 -11436}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_11
+17160011	door	spawn{-79643 -48216 -11437}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_12
+17160012	door	spawn{-79292 -48148 -11434}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_13
+17160013	door	spawn{-77927 -47015 -11434}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_14
+17160014	door	spawn{-77988 -47382 -11432}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_15
+17160015	door	spawn{-77268 -48589 -11436}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_16
+17160016	door	spawn{-77662 -48607 -11441}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_17
+17160017	door	spawn{-81142 -46668 -11440}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_18
+17160018	door	spawn{-81385 -46367 -11434}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_19
+17160019	door	spawn{-81001 -44640 -11436}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_20
+17160020	door	spawn{-81111 -45014 -11439}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_21
+17160021	door	spawn{-82701 -44745 -11434}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_22
+17160022	door	spawn{-82376 -44916 -11433}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_23
+17160023	door	spawn{-82132 -46753 -11432}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_24
+17160024	door	spawn{-82077 -46391 -11435}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_25
+17160025	door	spawn{-84084 -47670 -11430}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_26
+17160026	door	spawn{-84442 -47823 -11434}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_27
+17160027	door	spawn{-84269 -48644 -11435}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_28
+17160028	door	spawn{-84625 -48465 -11454}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_29
+17160029	door	spawn{-86353 -48663 -11435}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_30
+17160030	door	spawn{-86093 -48395 -11435}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_31
+17160031	door	spawn{-86009 -47000 -11433}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_32
+17160032	door	spawn{-85679 -47206 -11435}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_33
+17160033	door	spawn{-83980 -50825 -11439}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_34
+17160034	door	spawn{-83968 -51208 -11436}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_35
+17160035	door	spawn{-83136 -51339 -11440}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_36
+17160036	door	spawn{-83381 -51591 -11434}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_37
+17160037	door	spawn{-83881 -53366 -11461}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_38
+17160038	door	spawn{-84029 -52965 -11433}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_39
+17160039	door	spawn{-85296 -52364 -11434}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_40
+17160040	door	spawn{-84991 -52127 -11443}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170001	door	spawn{-85984 -20994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170002	door	spawn{-83984 -20994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170003	door	spawn{-81984 -20994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170004	door	spawn{-79984 -20994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170005	door	spawn{-77984 -20994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170006	door	spawn{-86578 -20400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170007	door	spawn{-85390 -20400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170008	door	spawn{-84578 -20400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170009	door	spawn{-83390 -20400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170010	door	spawn{-82578 -20400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170011	door	spawn{-81390 -20400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170012	door	spawn{-80578 -20400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170013	door	spawn{-79390 -20400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170014	door	spawn{-78578 -20400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170015	door	spawn{-77390 -20400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170016	door	spawn{-85984 -19806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170017	door	spawn{-83984 -19806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170018	door	spawn{-81984 -19806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170019	door	spawn{-79984 -19806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170020	door	spawn{-77984 -19806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170021	door	spawn{-85984 -18994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170022	door	spawn{-83984 -18994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170023	door	spawn{-81984 -18994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170024	door	spawn{-79984 -18994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170025	door	spawn{-77984 -18994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170026	door	spawn{-86578 -18400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170027	door	spawn{-85390 -18400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170028	door	spawn{-84578 -18400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170029	door	spawn{-83390 -18400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170030	door	spawn{-82578 -18400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170031	door	spawn{-81390 -18400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170032	door	spawn{-80578 -18400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170033	door	spawn{-79390 -18400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170034	door	spawn{-78578 -18400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170035	door	spawn{-77390 -18400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170036	door	spawn{-85984 -17806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170037	door	spawn{-83984 -17806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170038	door	spawn{-81984 -17806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170039	door	spawn{-79984 -17806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170040	door	spawn{-77984 -17806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170041	door	spawn{-85984 -16994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170042	door	spawn{-83984 -16994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170043	door	spawn{-81984 -16994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170044	door	spawn{-79984 -16994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170045	door	spawn{-77984 -16994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170046	door	spawn{-86578 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170047	door	spawn{-85390 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170048	door	spawn{-84578 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170049	door	spawn{-83390 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170050	door	spawn{-82578 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170051	door	spawn{-81390 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170052	door	spawn{-80578 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170053	door	spawn{-79390 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170054	door	spawn{-78578 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170055	door	spawn{-77390 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170056	door	spawn{-85984 -15806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170057	door	spawn{-83984 -15806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170058	door	spawn{-81984 -15806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170059	door	spawn{-79984 -15806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170060	door	spawn{-77984 -15806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170061	door	spawn{-85984 -14994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170062	door	spawn{-83984 -14994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170063	door	spawn{-81984 -14994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170064	door	spawn{-79984 -14994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170065	door	spawn{-77984 -14994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170066	door	spawn{-86578 -14400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170067	door	spawn{-85390 -14400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170068	door	spawn{-84578 -14400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170069	door	spawn{-83390 -14400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170070	door	spawn{-82578 -14400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170071	door	spawn{-81390 -14400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170072	door	spawn{-80578 -14400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170073	door	spawn{-79390 -14400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170074	door	spawn{-78578 -14400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170075	door	spawn{-77390 -14400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170076	door	spawn{-85984 -13806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170077	door	spawn{-83984 -13806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170078	door	spawn{-81984 -13806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170079	door	spawn{-79984 -13806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170080	door	spawn{-77984 -13806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170081	door	spawn{-85984 -12994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170082	door	spawn{-83984 -12994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170083	door	spawn{-81984 -12994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170084	door	spawn{-79984 -12994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170085	door	spawn{-77984 -12994 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170086	door	spawn{-86578 -12400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170087	door	spawn{-85390 -12400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170088	door	spawn{-84578 -12400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170089	door	spawn{-83390 -12400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170090	door	spawn{-82578 -12400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170091	door	spawn{-81390 -12400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170092	door	spawn{-80578 -12400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170093	door	spawn{-79390 -12400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170094	door	spawn{-78578 -12400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170095	door	spawn{-77390 -12400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170096	door	spawn{-85984 -11806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170097	door	spawn{-83984 -11806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170098	door	spawn{-81984 -11806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170099	door	spawn{-79984 -11806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170100	door	spawn{-77984 -11806 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170101	door	spawn{-87116 -16990 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170102	door	spawn{-86625 -16400 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Automatic_Door
+17170103	door	spawn{-87116 -15810 -8352}	hp{158250}	defence{644 518}	unlock{trigger}
+#Normils_cave_01
+17190001	door	spawn{-85056 47903 -3864}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_clanhall_001
+17220001	door	spawn{-84495 155209 -3150}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_clanhall_002
+17220002	door	spawn{-84495 155286 -3150}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_clanhall_003
+17220003	door	spawn{-83961 155258 -3150}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_clanhall_004
+17220004	door	spawn{-83961 155180 -3150}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_clanhall_005
+17220005	door	spawn{-83879 153064 -3149}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_clanhall_006
+17220006	door	spawn{-83956 153064 -3149}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_clanhall_007
+17220007	door	spawn{-83927 153598 -3149}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_clanhall_008
+17220008	door	spawn{-83850 153598 -3149}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_clanhall_009
+17220009	door	spawn{-83971 151880 -3112}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_clanhall_010
+17220010	door	spawn{-84047 151880 -3112}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_einhasad_001
+17220011	door	spawn{-79737 150063 -3027}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_einhasad_002
+17220012	door	spawn{-79737 150138 -3027}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_einhasad_003
+17220013	door	spawn{-79740 151522 -3027}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludin_einhasad_004
+17220014	door	spawn{-79740 151598 -3027}	hp{158250}	defence{644 518}	unlock{trigger}
+#SecretOracleofDawnGate
+17240001	door	spawn{-75606 213414 -7154}	hp{158250}	defence{644 518}	unlock{trigger}
+#SecretOracleofDawnGate
+17240002	door	spawn{-75606 213414 -7154}	hp{158250}	defence{644 518}	unlock{trigger}
+#SecretOracleofDawnGate
+17240003	door	spawn{-78455 205854 -7920}	hp{158250}	defence{644 518}	unlock{trigger}
+#SecretOracleofDawnGate
+17240004	door	spawn{-78455 205854 -7920}	hp{158250}	defence{644 518}	unlock{trigger}
+#SecretOracleofDawnGate
+17240005	door	spawn{-80257 205857 -7920}	hp{158250}	defence{644 518}	unlock{trigger}
+#SecretOracleofDawnGate
+17240006	door	spawn{-80257 205857 -7920}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240101	door	spawn{-89560 217515 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240102	door	spawn{-89048 218315 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240103	door	spawn{-88599 219493 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240104	door	spawn{-87288 220237 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240105	door	spawn{-87448 216507 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240106	door	spawn{-85464 218832 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240107	door	spawn{-84952 219629 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240108	door	spawn{-88998 220637 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240109	door	spawn{-86400 220639 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240110	door	spawn{-86839 217406 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#DisciplesNecropolisGate
+17240111	door	spawn{-84189 216028 -7520}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_1
+18250001	door	spawn{-46957 246121 -9063}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_2
+18250002	door	spawn{-45874 246878 -9062}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_3
+18250003	door	spawn{-47869 249166 -9063}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_4
+18250004	door	spawn{-49943 249168 -9063}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_5
+18250005	door	spawn{-51953 246882 -9926}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_6
+18250006	door	spawn{-51304 245352 -9926}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_7
+18250007	door	spawn{-49997 243410 -9929}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_8
+18250008	door	spawn{-47920 243407 -9929}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_9
+18250009	door	spawn{-46524 245356 -9926}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_10
+18250010	door	spawn{-45874 246878 -9926}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_11
+18250011	door	spawn{-48406 248490 -9927}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_13
+18250013	door	spawn{-51960 246886 -10787}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_14
+18250014	door	spawn{-51308 245351 -10787}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_15
+18250015	door	spawn{-49453 243765 -10788}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_17
+18250017	door	spawn{-45902 245343 -11650}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_18
+18250018	door	spawn{-46552 246875 -11650}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_19
+18250019	door	spawn{-48405 248490 -11649}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_21
+18250021	door	spawn{-51957 246910 -12511}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_22
+18250022	door	spawn{-51305 245388 -12511}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_23
+18250023	door	spawn{-49028 243324 -13316}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_24
+18250024	door	spawn{-47490 243973 -13316}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_25
+18250025	door	spawn{-45480 245970 -14122}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_101
+18250101	door	spawn{-48931 247719 -10019}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_102
+18250102	door	spawn{-48926 244536 -10880}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_103
+18250103	door	spawn{-48931 247719 -11741}	hp{158250}	defence{644 518}	unlock{trigger}
+#Temple_Gate
+19160001	door	spawn{-16369 -36806 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Anteroom_Door001
+19160002	door	spawn{-14868 -38977 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Anteroom_Door002
+19160003	door	spawn{-14595 -39831 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Anteroom_Door003
+19160004	door	spawn{-14618 -41675 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Anteroom_Door004
+19160005	door	spawn{-14867 -42518 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Anteroom_Door005
+19160006	door	spawn{-17855 -42547 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Anteroom_Door006
+19160007	door	spawn{-18140 -41692 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Anteroom_Door007
+19160008	door	spawn{-18140 -39825 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Anteroom_Door008
+19160009	door	spawn{-17872 -38967 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Chapel_Door001
+19160010	door	spawn{-16148 -44158 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Chapel_Door002
+19160011	door	spawn{-16582 -44156 -10725}	hp{158250}	defence{644 518}	unlock{trigger}
+#Door_of_Darkness001
+19160012	door	spawn{-14513 -52490 -11013}	hp{158250}	defence{644 518}	unlock{trigger}
+#Door_of_Darkness002
+19160013	door	spawn{-18278 -52474 -11013}	hp{158250}	defence{644 518}	unlock{trigger}
+#Altar_Entrance001
+19160014	door	spawn{-14829 -54967 -10603}	hp{158250}	defence{644 518}	unlock{trigger}
+#Altar_Entrance002
+19160015	door	spawn{-17959 -54973 -10603}	hp{158250}	defence{644 518}	unlock{trigger}
+#Altar_Entrance001
+19160016	door	spawn{-15362 -54835 -10449}	hp{158250}	defence{644 518}	unlock{trigger}
+#Altar_Entrance002
+19160017	door	spawn{-17420 -54835 -10449}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+19170001	door	spawn{-21667 -21072 -3037}	hp{158250}	defence{644 518}	unlock{trigger}
+#olympiadarena_Door_001
+19170002	door	spawn{-20027 -21072 -3037}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludio_clanhall_001
+19210011	door	spawn{-14790 125633 -3123}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludio_clanhall_002
+19210012	door	spawn{-14790 125557 -3123}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludio_clanhall_003
+19210013	door	spawn{-14116 125602 -3122}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludio_clanhall_004
+19210014	door	spawn{-14116 125677 -3122}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludio_clanhall_005
+19210015	door	spawn{-12601 123885 -3096}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludio_clanhall_006
+19210016	door	spawn{-12676 123885 -3096}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludio_clanhall_007
+19210017	door	spawn{-15981 123747 -3096}	hp{158250}	defence{644 518}	unlock{trigger}
+#gludio_clanhall_008
+19210018	door	spawn{-15909 123725 -3096}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+19250001	door	spawn{-28564 249888 -3505}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+19250002	door	spawn{-28438 249888 -3505}	hp{158250}	defence{644 518}	unlock{trigger}
+#Old_Gate
+19250003	door	spawn{-27410 252390 -3550}	hp{158250}	defence{644 518}	unlock{trigger}
+#Old_Gate
+19250004	door	spawn{-27410 252516 -3550}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260001	door	spawn{-13381 276039 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260002	door	spawn{-13463 275658 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260003	door	spawn{-11975 275812 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260004	door	spawn{-11808 275635 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260005	door	spawn{-12188 275473 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260006	door	spawn{-10421 274796 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260007	door	spawn{-10655 274496 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260008	door	spawn{-10996 274280 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260009	door	spawn{-10826 273222 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260010	door	spawn{-11167 273363 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260011	door	spawn{-10802 273010 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260012	door	spawn{-11041 272456 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260013	door	spawn{-13084 272064 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260014	door	spawn{-12869 272404 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260015	door	spawn{-13455 272218 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260016	door	spawn{-14625 273080 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260017	door	spawn{-14229 273244 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260018	door	spawn{-14061 273597 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260019	door	spawn{-14619 273938 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260020	door	spawn{-14061 274283 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260021	door	spawn{-14220 274653 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260022	door	spawn{-13879 274514 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260023	door	spawn{-13239 272241 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260051	door	spawn{-13614 273336 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260052	door	spawn{-11924 272856 -9065}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260053	door	spawn{-13955 273258 -15216}	hp{158250}	defence{644 518}	unlock{trigger}
+#Tullys_Gate
+19260054	door	spawn{-13307 274610 -15216}	hp{158250}	defence{644 518}	unlock{trigger}
+#cruma_001
+20210001	door	spawn{17624 112427 -6456}	hp{150000}	defence{476 383}	unlock{trigger skill}
+#cruma_002
+20210002	door	spawn{17820 112427 -6456}	hp{150000}	defence{476 383}	unlock{trigger skill}
+#cruma_003
+20210003	door	spawn{17721 112427 -6579}	hp{150000}	defence{476 383}	unlock{trigger skill}
+#H_Door_MV_01
+20220011	door	spawn{18879 143353 -2998}	hp{158250}	defence{644 518}	unlock{trigger}
+#H_Door_MV_01
+20220012	door	spawn{18872 143278 -2998}	hp{158250}	defence{644 518}	unlock{trigger}
+#H_Door_MV_01
+20220013	door	spawn{17616 145184 -3025}	hp{158250}	defence{644 518}	unlock{trigger}
+#H_Door_MV_01
+20220014	door	spawn{17678 145226 -3025}	hp{158250}	defence{644 518}	unlock{trigger}
+#H_Door_MV_01
+20220015	door	spawn{20118 145994 -3099}	hp{158250}	defence{644 518}	unlock{trigger}
+#H_Door_MV_01
+20220016	door	spawn{20193 145994 -3099}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+20240001	door	spawn{16326 210714 -9399}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+20240002	door	spawn{14032 213143 -9399}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate
+20240003	door	spawn{12472 214696 -9384}	hp{158250}	defence{644 518}	unlock{trigger}
+#Iron_Castle_Gate
+20250001	door	spawn{6020 244628 -1958}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wounded_Passage
+20250002	door	spawn{153 235135 -3296}	hp{158250}	defence{644 518}	unlock{trigger}
+#Secret_Gate
+20250004	door	spawn{20631 244037 11050}	hp{158250}	defence{644 518}	unlock{trigger}
+#Secret_Gate
+20250005	door	spawn{20631 244037 11050}	hp{158250}	defence{644 518}	unlock{trigger}
+#Secret_Gate
+20250006	door	spawn{18122 244274 11587}	hp{158250}	defence{644 518}	unlock{trigger}
+#Secret_Gate
+20250007	door	spawn{18122 244274 11587}	hp{158250}	defence{644 518}	unlock{trigger}
+#Transparent_Gate
+20250008	door	spawn{18114 244274 11706}	hp{158250}	defence{644 518}	unlock{trigger}
+#Transparent_Gate
+20250009	door	spawn{20641 244037 11181}	hp{158250}	defence{644 518}	unlock{trigger}
+#Bascule_Bridge
+20250077	door	spawn{20449 244053 11056}	hp{158250}	defence{644 518}	unlock{trigger}
+#Bascule_Bridge
+20250078	door	spawn{18375 244247 11586}	hp{158250}	defence{644 518}	unlock{trigger}
+#Dark_Gate
+20260001	door	spawn{15601 282676 -9564}	hp{158250}	defence{644 518}	unlock{trigger}
+#Blood_Gate
+20260002	door	spawn{12763 280154 -9564}	hp{158250}	defence{644 518}	unlock{trigger}
+#Closed_Gate
+20260003	door	spawn{14553 277479 -9557}	hp{158250}	defence{644 518}	unlock{trigger}
+#Closed_Gate
+20260004	door	spawn{18055 277478 -9557}	hp{158250}	defence{644 518}	unlock{trigger}
+#Blood_Gate
+20260005	door	spawn{19848 280142 -9564}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gateway_to_Destruction
+20260006	door	spawn{16978 280541 -9564}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wild_beast_reserve_Door002
+21150001	door	spawn{59974 -94123 -1350}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wild_beast_reserve_Door001
+21150002	door	spawn{59922 -94221 -1350}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wild_beast_reserve_Gate001
+21150003	door	spawn{55320 -93265 -1360}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wild_beast_reserve_Gate002
+21150004	door	spawn{55260 -93052 -1360}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wild_beast_reserve_Fence001
+21150005	door	spawn{58474 -93976 -1360}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wild_beast_reserve_Fence002
+21150006	door	spawn{56858 -93648 -1364}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wild_beast_reserve_Fence003
+21150007	door	spawn{56634 -91988 -1360}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wild_beast_reserve_Fence004
+21150008	door	spawn{58167 -91263 -1360}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wild_beast_reserve_Fence005
+21150009	door	spawn{59303 -92530 -1360}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_01
+21160001	door	spawn{37748 -50417 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_02
+21160002	door	spawn{37701 -50416 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_03
+21160003	door	spawn{38580 -50107 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_04
+21160004	door	spawn{38538 -50126 898}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_05
+21160005	door	spawn{39141 -49474 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_06
+21160006	door	spawn{39116 -49513 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_07
+21160007	door	spawn{39328 -48225 897}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_08
+21160008	door	spawn{39326 -48267 895}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_09
+21160009	door	spawn{39130 -46972 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_10
+21160010	door	spawn{39148 -47009 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_11
+21160011	door	spawn{38559 -46356 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_12
+21160012	door	spawn{38600 -46378 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_13
+21160013	door	spawn{37718 -46058 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#rune_clan_hall_14
+21160014	door	spawn{37766 -46060 899}	hp{158250}	defence{644 518}	unlock{trigger}
+#Fortress_of_the_Dead_Outer_Gate001
+21170001	door	spawn{57862 -19464 568}	hp{158250}	defence{644 518}	unlock{trigger}
+#Fortress_of_the_Dead_Outer_Gate002
+21170002	door	spawn{58053 -29474 568}	hp{158250}	defence{644 518}	unlock{trigger}
+#Fortress_of_the_Dead_Door001
+21170003	door	spawn{56991 -27197 578}	hp{158250}	defence{644 518}	unlock{trigger}
+#Fortress_of_the_Dead_Door002
+21170004	door	spawn{56991 -27307 578}	hp{158250}	defence{644 518}	unlock{trigger}
+#Fortress_of_the_Dead_Door003
+21170005	door	spawn{58016 -26390 592}	hp{158250}	defence{644 518}	unlock{trigger}
+#Fortress_of_the_Dead_Door004
+21170006	door	spawn{57910 -26384 592}	hp{158250}	defence{644 518}	unlock{trigger}
+#partisan001
+21210001	door	spawn{43643 108908 -1970}	hp{158250}	defence{644 518}	unlock{trigger}
+#partisan002
+21210002	door	spawn{43643 108783 -1970}	hp{158250}	defence{644 518}	unlock{trigger}
+#pirate_isle_001
+21240001	door	spawn{42001 208378 -3666}	hp{187500}	defence{100000 10000}	unlock{trigger skill}
+#pirate_isle_002
+21240002	door	spawn{43745 212594 -3623}	hp{187500}	defence{100000 10000}	unlock{trigger skill}
+#pirate_isle_003
+21240003	door	spawn{42167 213285 -3643}	hp{187500}	defence{476 383}	unlock{trigger skill}
+#pirate_isle_004
+21240004	door	spawn{51111 206106 -3912}	hp{187500}	defence{476 383}	unlock{trigger skill}
+#pirate_isle_005
+21240005	door	spawn{52910 206720 -3692}	hp{187500}	defence{476 383}	unlock{trigger skill}
+#pirate_isle_006
+21240006	door	spawn{52423 219103 -3209}	hp{187500}	defence{1000000 383}	unlock{trigger}
+#Gate1
+22110100	door	spawn{84031 -219873 -3911}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate2
+22110101	door	spawn{74765 -217601 -3667}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate3
+22110102	door	spawn{76503 -213542 -3624}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate4
+22110103	door	spawn{85650 -219265 -3695}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate5
+22110104	door	spawn{74935 -212702 -3639}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate6
+22110105	door	spawn{85195 -206881 -3215}	hp{158250}	defence{644 518}	unlock{trigger}
+#schuttgart_clan_hall_1
+22130017	door	spawn{86119 -143216 -1325}	hp{158250}	defence{644 518}	unlock{trigger}
+#schuttgart_clan_hall_2
+22130018	door	spawn{86124 -143169 -1325}	hp{158250}	defence{644 518}	unlock{trigger}
+#schuttgart_clan_hall_4
+22130019	door	spawn{86797 -142207 -1325}	hp{158250}	defence{644 518}	unlock{trigger}
+#schuttgart_clan_hall_3
+22130020	door	spawn{86755 -142227 -1325}	hp{158250}	defence{644 518}	unlock{trigger}
+#schuttgart_clan_hall_6
+22130021	door	spawn{87934 -142214 -1325}	hp{158250}	defence{644 518}	unlock{trigger}
+#schuttgart_clan_hall_5
+22130022	door	spawn{87970 -142235 -1325}	hp{158250}	defence{644 518}	unlock{trigger}
+#schuttgart_clan_hall_8
+22130023	door	spawn{88618 -143224 -1325}	hp{158250}	defence{644 518}	unlock{trigger}
+#schuttgart_clan_hall_7
+22130024	door	spawn{88611 -143182 -1325}	hp{158250}	defence{644 518}	unlock{trigger}
+#bandit_outer_001
+22170001	door	spawn{85621 -18127 -1670}	hp{158250}	defence{644 518}	unlock{trigger}
+#bandit_outer_002
+22170002	door	spawn{85213 -18458 -1670}	hp{158250}	defence{644 518}	unlock{trigger}
+#bandit_inner_003
+22170003	door	spawn{80818 -15357 -1762}	hp{158250}	defence{644 518}	unlock{trigger}
+#bandit_inner_004
+22170004	door	spawn{80818 -15518 -1762}	hp{158250}	defence{644 518}	unlock{trigger}
+#giran_clanhall_009
+22220003	door	spawn{81873 151842 -3488}	hp{126600}	defence{644 518}	unlock{trigger}
+#giran_clanhall_010
+22220004	door	spawn{81873 151842 -3488}	hp{126600}	defence{644 518}	unlock{trigger}
+#giran_clanhall_007
+22220005	door	spawn{81196 151657 -3490}	hp{158250}	defence{644 518}	unlock{trigger}
+#giran_clanhall_008
+22220006	door	spawn{81196 151657 -3490}	hp{158250}	defence{644 518}	unlock{trigger}
+#giran_clanhall_006
+22220007	door	spawn{78521 148327 -3553}	hp{158250}	defence{644 518}	unlock{trigger}
+#giran_clanhall_005
+22220008	door	spawn{78521 148327 -3553}	hp{158250}	defence{644 518}	unlock{trigger}
+#giran_clanhall_003
+22220009	door	spawn{81831 145267 -3489}	hp{158250}	defence{644 518}	unlock{trigger}
+#giran_clanhall_004
+22220010	door	spawn{81831 145267 -3489}	hp{158250}	defence{644 518}	unlock{trigger}
+#giran_clanhall_002
+22220011	door	spawn{83618 145382 -3360}	hp{158250}	defence{644 518}	unlock{trigger}
+#giran_clanhall_001
+22220012	door	spawn{83618 145382 -3360}	hp{158250}	defence{644 518}	unlock{trigger}
+#goe_001
+22250001	door	spawn{86226 247063 -8584}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_002
+22250002	door	spawn{88491 253871 -8584}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_003
+22250003	door	spawn{76873 253954 -8584}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_004
+22250004	door	spawn{79033 247128 -8584}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_005
+22250005	door	spawn{82738 246603 -9093}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_006
+22250006	door	spawn{87902 250378 -9093}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_007
+22250007	door	spawn{85914 256377 -9093}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_008
+22250008	door	spawn{79561 256348 -9093}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_009
+22250009	door	spawn{77616 250361 -9093}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_010
+22250010	door	spawn{80102 248387 -9611}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_011
+22250011	door	spawn{85343 248344 -9611}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_012
+22250012	door	spawn{87018 253389 -9611}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_013
+22250013	door	spawn{82768 256485 -9611}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_014
+22250014	door	spawn{78490 253391 -9611}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_015
+22250015	door	spawn{79253 253097 -10118}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_016
+22250016	door	spawn{79276 250856 -10118}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_017
+22250017	door	spawn{80601 249046 -10118}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_018
+22250018	door	spawn{82836 248341 -10118}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_019
+22250019	door	spawn{84906 249034 -10116}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_020
+22250020	door	spawn{86247 250888 -10118}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_021
+22250021	door	spawn{86213 253197 -10118}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_022
+22250022	door	spawn{84889 254973 -10118}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_023
+22250023	door	spawn{82726 255659 -10118}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_024
+22250024	door	spawn{80590 254950 -10118}	hp{187500}	defence{476 383}	unlock{trigger}
+#goe_025
+22250025	door	spawn{81959 255493 -10734}	hp{187500}	defence{476 383}	unlock{trigger skill}
+#goe_026
+22250026	door	spawn{83496 255494 -10734}	hp{187500}	defence{476 383}	unlock{trigger skill}
+#goe_027
+22250027	door	spawn{83549 248505 -10734}	hp{187500}	defence{476 383}	unlock{trigger skill}
+#goe_028
+22250028	door	spawn{82012 248506 -10734}	hp{187500}	defence{476 383}	unlock{trigger skill}
+#goe_029
+22250029	door	spawn{82560 254715 -10880}	hp{187500}	defence{476 383}	unlock{trigger skill}
+#Ice_Wall001
+23140001	door	spawn{115272 -125752 -3458}	hp{158250}	defence{644 518}	unlock{trigger}
+#Ice_Wall002
+23140002	door	spawn{113934 -126025 -3457}	hp{158250}	defence{644 518}	unlock{trigger}
+#Secret_Door001
+23150001	door	spawn{110714 -81562 -1589}	hp{158250}	defence{644 518}	unlock{trigger skill}
+#Secret_Door002
+23150002	door	spawn{114877 -71466 -549}	hp{158250}	defence{644 518}	unlock{trigger skill}
+#Gate_of_Splendor001
+23150003	door	spawn{112690 -78084 59}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Splendor002
+23150004	door	spawn{112910 -78084 59}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_tower_of_hubris
+23180001	door	spawn{113876 16953 -1979}	hp{187500}	defence{476 383}	unlock{trigger}
+#aden_tower_of_hubris
+23180002	door	spawn{113771 16849 -1979}	hp{187500}	defence{476 383}	unlock{trigger}
+#aden_tower_of_hubris
+23180003	door	spawn{113252 15914 4115}	hp{187500}	defence{476 383}	unlock{trigger}
+#aden_tower_of_hubris
+23180004	door	spawn{113117 15970 4115}	hp{187500}	defence{476 383}	unlock{trigger}
+#aden_tower_of_hubris
+23180005	door	spawn{113263 15764 7145}	hp{187500}	defence{476 383}	unlock{trigger}
+#aden_tower_of_hubris
+23180006	door	spawn{113367 15868 7145}	hp{187500}	defence{476 383}	unlock{trigger}
+#godad_ElmoreDoor_001
+24140001	door	spawn{140728 -124477 -1894}	hp{158250}	defence{644 518}	unlock{trigger}
+#godad_ElmoreDoor_002
+24140002	door	spawn{140778 -124402 -1894}	hp{158250}	defence{644 518}	unlock{trigger}
+#godad_ElmoreDoor_003
+24140003	door	spawn{141149 -124310 -1894}	hp{158250}	defence{644 518}	unlock{trigger}
+#godad_ElmoreDoor_004
+24140004	door	spawn{141224 -124360 -1894}	hp{158250}	defence{644 518}	unlock{trigger}
+#godad_ElmoreDoor_005
+24140005	door	spawn{141281 -124738 -1894}	hp{158250}	defence{644 518}	unlock{trigger}
+#godad_ElmoreDoor_006
+24140006	door	spawn{141231 -124813 -1894}	hp{158250}	defence{644 518}	unlock{trigger}
+#godad_ElmoreDoor_007
+24140007	door	spawn{140702 -123836 -1932}	hp{158250}	defence{644 518}	unlock{trigger}
+#godad_ElmoreDoor_008
+24140008	door	spawn{140722 -123934 -1932}	hp{158250}	defence{644 518}	unlock{trigger}
+#goddard_clanhall_001
+24160001	door	spawn{146438 -55458 -2792}	hp{158250}	defence{644 518}	unlock{trigger}
+#goddard_clanhall_002
+24160002	door	spawn{146449 -55547 -2792}	hp{158250}	defence{644 518}	unlock{trigger}
+#goddard_clanhall_003
+24160003	door	spawn{147071 -56472 -2792}	hp{158250}	defence{644 518}	unlock{trigger}
+#goddard_clanhall_004
+24160004	door	spawn{147151 -56514 -2792}	hp{158250}	defence{644 518}	unlock{trigger}
+#goddard_clanhall_005
+24160005	door	spawn{148262 -56520 -2792}	hp{158250}	defence{644 518}	unlock{trigger}
+#goddard_clanhall_006
+24160006	door	spawn{148342 -56478 -2792}	hp{158250}	defence{644 518}	unlock{trigger}
+#goddard_clanhall_007
+24160007	door	spawn{148971 -55557 -2792}	hp{158250}	defence{644 518}	unlock{trigger}
+#goddard_clanhall_008
+24160008	door	spawn{148982 -55468 -2792}	hp{158250}	defence{644 518}	unlock{trigger}
+#borderoutpost_Door_002
+24170001	door	spawn{157981 -25122 -1196}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_001
+24180022	door	spawn{145358 25385 -2090}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_002
+24180023	door	spawn{145358 25304 -2090}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_003
+24180024	door	spawn{149438 23177 -2101}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_004
+24180025	door	spawn{149438 23095 -2101}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_005
+24180026	door	spawn{150299 23695 -2090}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_006
+24180027	door	spawn{150299 23614 -2090}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_007
+24180028	door	spawn{150444 26584 -2226}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_008
+24180029	door	spawn{150444 26502 -2226}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_009
+24180030	door	spawn{144359 28239 -2218}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_010
+24180031	door	spawn{144359 28158 -2218}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_011
+24180032	door	spawn{144294 27131 -2228}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_clanhall_012
+24180033	door	spawn{144294 27049 -2228}	hp{158250}	defence{644 518}	unlock{trigger}
+#aden_colosseum_outer_001
+24190001	door	spawn{147086 46721 -3289}	hp{687500}	defence{644 518}	unlock{trigger}
+#aden_colosseum_inner_001
+24190002	door	spawn{148045 46721 -3289}	hp{687500}	defence{644 518}	unlock{trigger}
+#aden_colosseum_inner_002
+24190003	door	spawn{150951 46721 -3289}	hp{687500}	defence{644 518}	unlock{trigger}
+#aden_colosseum_outer_002
+24190004	door	spawn{151911 46721 -3289}	hp{687500}	defence{644 518}	unlock{trigger}
+#Coral_garden_01
+24220001	door	spawn{143676 142344 -11918}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_02
+24220002	door	spawn{144472 142483 -11918}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_03
+24220003	door	spawn{147289 143711 -12303}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_04
+24220004	door	spawn{149589 143453 -12132}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_05
+24220005	door	spawn{149714 147259 -12405}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_06
+24220006	door	spawn{152762 146864 -12617}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_07
+24220007	door	spawn{153702 145944 -12609}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_08
+24220008	door	spawn{153572 143618 -12736}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_09
+24220009	door	spawn{152818 143379 -12735}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_10
+24220010	door	spawn{152268 142832 -12737}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_11
+24220011	door	spawn{152069 142075 -12736}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_12
+24220012	door	spawn{152268 141322 -12736}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_13
+24220013	door	spawn{152821 140772 -12737}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_14
+24220014	door	spawn{153573 140569 -12736}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_15
+24220015	door	spawn{154326 140774 -12735}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_16
+24220016	door	spawn{154875 141324 -12736}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_17
+24220017	door	spawn{155077 142077 -12736}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_18
+24220018	door	spawn{154876 142830 -12737}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_19
+24220019	door	spawn{154325 143381 -12735}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_20
+24220020	door	spawn{144288 148919 -12164}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_21
+24220021	door	spawn{143878 150288 -12164}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_22
+24220022	door	spawn{144288 151658 -12164}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_23
+24220023	door	spawn{153278 149537 -12160}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_24
+24220024	door	spawn{141829 148895 -11839}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_25
+24220025	door	spawn{141254 149550 -11839}	hp{158250}	defence{644 518}	unlock{trigger}
+#Coral_garden_26
+24220026	door	spawn{143115 154426 -11839}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220030	door	spawn{141282 140493 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220031	door	spawn{141814 140494 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220032	door	spawn{143587 140494 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220033	door	spawn{144106 140494 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220034	door	spawn{140405 141370 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220035	door	spawn{142697 141373 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220036	door	spawn{144984 141372 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220037	door	spawn{140405 141937 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220038	door	spawn{144985 141938 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220039	door	spawn{141282 142824 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Underground_Warehouse
+24220040	door	spawn{143735 142823 -15653}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220041	door	spawn{144106 142824 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Treasure_Room
+24220042	door	spawn{146662 142824 -15913}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220043	door	spawn{140405 143708 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220044	door	spawn{140405 144274 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220045	door	spawn{142698 144274 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220046	door	spawn{144984 144275 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220047	door	spawn{141285 145154 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220048	door	spawn{141801 145155 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220049	door	spawn{143575 145155 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220050	door	spawn{144090 145154 -15295}	hp{158250}	defence{644 518}	unlock{trigger}
+#Judgement_Gate
+24220060	door	spawn{144984 143699 -15293}	hp{158250}	defence{644 518}	unlock{trigger}
+#Volcanic_Gate
+24220061	door	spawn{152287 149987 -12160}	hp{158250}	defence{644 518}	unlock{trigger}
+#Dark_Cloud_Mansion_Gate
+24230001	door	spawn{147153 180447 -6145}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Faith
+24230002	door	spawn{147818 180022 -6145}	hp{158250}	defence{644 518}	unlock{trigger}
+#Midway_Gate
+24230003	door	spawn{148606 180447 -6145}	hp{158250}	defence{644 518}	unlock{trigger}
+#Adventurers_Gateway
+24230004	door	spawn{148910 179902 -6145}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Test
+24230005	door	spawn{147818 180992 -6145}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Thrust
+24230006	door	spawn{148910 181282 -6145}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wall
+24230007	door	spawn{148912 179201 -6164}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wall
+24230008	door	spawn{148915 179087 -6165}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wall
+24230009	door	spawn{148916 178962 -6164}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wall
+24230010	door	spawn{148916 178835 -6165}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wall
+24230011	door	spawn{148914 178711 -6163}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wall
+24230012	door	spawn{148916 178586 -6164}	hp{158250}	defence{644 518}	unlock{trigger}
+#Wall
+24230013	door	spawn{148912 178464 -6163}	hp{158250}	defence{644 518}	unlock{trigger}
+#godad_DCDoor_001
+24210004	door	spawn{190918 -115529 -1529}	hp{158250}	defence{644 518}	unlock{trigger}
+#godad_DCDoor1F_002a
+24210005	door	spawn{189480 -108511 -964}	hp{158250}	defence{644 518}	unlock{trigger}
+#godad_DCDoor2F_003a
+24210006	door	spawn{191458 -108107 -962}	hp{158250}	defence{644 518}	unlock{trigger}
+#ent_ruler
+25150001	door	spawn{179516 -88988 -7068}	hp{158250}	defence{644 518}	unlock{trigger}
+#vs_hall_2
+25150002	door	spawn{181251 -88979 -7069}	hp{158250}	defence{644 518}	unlock{trigger}
+#ct_ahll_2
+25150003	door	spawn{183055 -88979 -7065}	hp{158250}	defence{644 518}	unlock{trigger}
+#mr_hall_2
+25150004	door	spawn{184881 -88969 -7068}	hp{158250}	defence{644 518}	unlock{trigger}
+#dk_hall_2
+25150005	door	spawn{186685 -88965 -7064}	hp{158250}	defence{644 518}	unlock{trigger}
+#em_grav_2
+25150006	door	spawn{188474 -88968 -7066}	hp{158250}	defence{644 518}	unlock{trigger}
+#conq_mos
+25150011	door	spawn{181195 -85594 -7064}	hp{158250}	defence{644 518}	unlock{trigger}
+#visc_hall_gate
+25150012	door	spawn{182981 -85580 -7067}	hp{158250}	defence{644 518}	unlock{trigger}
+#count_hall_gate
+25150013	door	spawn{184798 -85582 -7064}	hp{158250}	defence{644 518}	unlock{trigger}
+#marquis_hall_gate
+25150014	door	spawn{186575 -85576 -7066}	hp{158250}	defence{644 518}	unlock{trigger}
+#duke_hall_gate
+25150015	door	spawn{188361 -85576 -7066}	hp{158250}	defence{644 518}	unlock{trigger}
+#imp_grave_gate
+25150016	door	spawn{190191 -85576 -7064}	hp{158250}	defence{644 518}	unlock{trigger}
+#ent_judge
+25150021	door	spawn{175610 -82701 -7057}	hp{158250}	defence{644 518}	unlock{trigger}
+#vs_hall_4
+25150022	door	spawn{175606 -80956 -7075}	hp{158250}	defence{644 518}	unlock{trigger}
+#ct_ahll_4
+25150023	door	spawn{175602 -79162 -7071}	hp{158250}	defence{644 518}	unlock{trigger}
+#mr_hall_4
+25150024	door	spawn{175602 -77330 -7074}	hp{158250}	defence{644 518}	unlock{trigger}
+#dk_hall_4
+25150025	door	spawn{175597 -75538 -7061}	hp{158250}	defence{644 518}	unlock{trigger}
+#em_grav_4
+25150026	door	spawn{175592 -73721 -7063}	hp{158250}	defence{644 518}	unlock{trigger}
+#ent_grtsage
+25150031	door	spawn{173218 -86614 -7076}	hp{158250}	defence{644 518}	unlock{trigger}
+#vs_hall_3
+25150032	door	spawn{173218 -84780 -7072}	hp{158250}	defence{644 518}	unlock{trigger}
+#ct_ahll_3
+25150033	door	spawn{173214 -82974 -7072}	hp{158250}	defence{644 518}	unlock{trigger}
+#mr_hall_3
+25150034	door	spawn{173212 -81165 -7066}	hp{158250}	defence{644 518}	unlock{trigger}
+#dk_hall_3
+25150035	door	spawn{173208 -79393 -7061}	hp{158250}	defence{644 518}	unlock{trigger}
+#em_grav_3
+25150036	door	spawn{173198 -77563 -7063}	hp{158250}	defence{644 518}	unlock{trigger}
+#Mausoleum_Gate002
+25150042	door	spawn{174064 -77591 -4968}	hp{158250}	defence{644 518}	unlock{trigger}
+#Mausoleum_Gate001
+25150043	door	spawn{174063 -80203 -4968}	hp{158250}	defence{644 518}	unlock{trigger}
+#Mausoleum_Gate001
+25150045	door	spawn{174063 -83355 -4961}	hp{158250}	defence{644 518}	unlock{trigger}
+#Mausoleum_Gate003
+25150046	door	spawn{174237 -86037 -4923}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors001
+25150051	door	spawn{173133 -76024 -4884}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors002
+25150052	door	spawn{173402 -76721 -4884}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors003
+25150053	door	spawn{174100 -77007 -4884}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors004
+25150054	door	spawn{174792 -76730 -4884}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors005
+25150055	door	spawn{175076 -76037 -4884}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors006
+25150056	door	spawn{174805 -75336 -4884}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors007
+25150057	door	spawn{174108 -75056 -4884}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors008
+25150058	door	spawn{173416 -75326 -4884}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors
+25150061	door	spawn{174507 -83018 -4891}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors
+25150062	door	spawn{174631 -82513 -4891}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors
+25150063	door	spawn{174766 -81794 -4877}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors
+25150064	door	spawn{174641 -81073 -4891}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors
+25150065	door	spawn{174508 -80552 -4891}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors
+25150066	door	spawn{173635 -80552 -4891}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors
+25150067	door	spawn{173511 -81056 -4891}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors
+25150068	door	spawn{173376 -81776 -4877}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors
+25150069	door	spawn{173501 -82497 -4891}	hp{158250}	defence{644 518}	unlock{trigger}
+#Gate_of_Errors
+25150070	door	spawn{173634 -83018 -4891}	hp{158250}	defence{644 518}	unlock{trigger}
+#devastated_castle_outer_001
+25170001	door	spawn{178212 -15038 -2135}	hp{158250}	defence{644 518}	unlock{trigger}
+#devastated_castle_outer_002
+25170002	door	spawn{178468 -15038 -2135}	hp{158250}	defence{644 518}	unlock{trigger}
+#devastated_castle_inner_001
+25170003	door	spawn{178121 -18226 -2286}	hp{79125}	defence{644 518}	unlock{trigger}
+#devastated_castle_inner_002
+25170004	door	spawn{178247 -18220 -2210}	hp{79125}	defence{644 518}	unlock{trigger}
+#devastated_castle_inner_003
+25170005	door	spawn{178119 -18220 -2210}	hp{79125}	defence{644 518}	unlock{trigger}
+#devastated_castle_inner_004
+25170006	door	spawn{178298 -18650 -2233}	hp{79125}	defence{644 518}	unlock{trigger}
+

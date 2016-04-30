@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<null>
+ <list>
+  <territory name="gludio31_1725_10" controller="default" start_active="true">
+    <npc id="20131" count="2" respawn="20s"/> <!-- Orc Grunt -->
+    <npc id="20006" count="1" respawn="20s"/> <!-- Orc Archer -->
+    <npc id="20326" count="2" respawn="20s"/> <!-- Goblin Scout -->
+
+    <zone loc="-93686 249482 -3687 -3287"/>
+    <zone loc="-93127 251504 -3687 -3287"/>
+    <zone loc="-94728 252235 -3687 -3287"/>
+    <zone loc="-95242 250280 -3687 -3287"/>
+    <zone loc="-94949 249330 -3687 -3287"/>
+  </territory>
+  
+  <spawn> <npc id="31031" respawn="1m" loc="-82795 243147 -3718 0"/> </spawn>
+  <spawn> <npc id="30001" respawn="1m" loc="-86385 243267 -3717 52000"/> </spawn>
+  <spawn> <npc id="30002" respawn="1m" loc="-86733 242918 -3720 61440"/> </spawn>
+  <spawn> <npc id="30003" respawn="1m" loc="-83789 240799 -3717 32768"/> </spawn>
+  <spawn> <npc id="30004" respawn="1m" loc="-84204 240403 -3717 14000"/> </spawn>
+  <spawn> <npc id="30005" respawn="1m" loc="-81512 243424 -3720 38000"/> </spawn>
+  <spawn> <npc id="30006" respawn="1m" loc="-84108 244604 -3729 40960"/> </spawn>
+  <spawn> <npc id="30008" respawn="1m" loc="-71384 258304 -3109 42000"/> </spawn>
+  <spawn> <npc id="30009" respawn="1m" loc="-71424 258336 -3109 42000"/> </spawn>
+  <spawn> <npc id="30010" respawn="1m" loc="-81861 149197 -3120 16384"/> </spawn>
+  <spawn> <npc id="30014" respawn="1m" loc="-82212 149197 -3120 16384"/> </spawn>  
+  <spawn> <npc id="30017" respawn="1m" loc="-91008 248016 -3568 6000"/> </spawn>
+  <spawn> <npc id="30019" respawn="1m" loc="-91036 248044 -3568 6000"/> </spawn>
+  <spawn> <npc id="30022" respawn="1m" loc="-79256 150676 -3040 16384"/> </spawn>
+  <spawn> <npc id="30026" respawn="1m" loc="-83326 242964 -3718 55344"/> </spawn>
+  <spawn> <npc id="30027" respawn="1m" loc="-83020 242553 -3718 11200"/> </spawn>
+  <spawn> <npc id="30028" respawn="1m" loc="-82809 242751 -3718 36864"/> </spawn>
+  <spawn> <npc id="30029" respawn="1m" loc="-83175 243065 -3718 45956"/> </spawn>
+  <spawn> <npc id="30030" respawn="1m" loc="-13269 121884 -2968 49152"/> </spawn>
+  <spawn> <npc id="30031" respawn="1m" loc="-84516 245449 -3714 40960"/> </spawn>
+  <spawn> <npc id="30032" respawn="1m" loc="-84981 244764 -3726 24576"/> </spawn>
+  <spawn> <npc id="30033" respawn="1m" loc="-84729 245001 -3720 24576"/> </spawn>
+  <spawn> <npc id="30034" respawn="1m" loc="-79559 150661 -3040 16384"/> </spawn>
+  <spawn> <npc id="30035" respawn="1m" loc="-84965 245222 -3726 57000"/> </spawn>
+  <spawn> <npc id="30036" respawn="1m" loc="-85186 245001 -3720 57000"/> </spawn>
+  <spawn> <npc id="30037" respawn="1m" loc="-78982 150830 -3024 32853"/> </spawn>
+  <spawn> <npc id="30039" respawn="1m" loc="-82236 241573 -3728 58500"/> </spawn>
+  <spawn> <npc id="30040" respawn="1m" loc="-82515 241221 -3728 58500"/> </spawn>
+  <spawn> <npc id="30041" respawn="1m" loc="-82319 244709 -3727 9000"/> </spawn>
+  <spawn> <npc id="30042" respawn="1m" loc="-82659 244992 -3717 9000"/> </spawn>
+  <spawn> <npc id="30043" respawn="1m" loc="-86114 244682 -3727 25500"/> </spawn>
+  <spawn> <npc id="30044" respawn="1m" loc="-86328 244448 -3724 25500"/> </spawn>
+  <spawn> <npc id="30045" respawn="1m" loc="-86322 241215 -3727 42500"/> </spawn>
+  <spawn> <npc id="30046" respawn="1m" loc="-85964 240947 -3727 42500"/> </spawn>
+  <spawn> <npc id="30047" respawn="1m" loc="-97131 258946 -3622 0"/> </spawn>
+  <spawn> <npc id="30048" respawn="1m" loc="-84436 242793 -3729 42000"/> </spawn>
+  <spawn> <npc id="30049" respawn="1m" loc="-83163 243560 -3728 20490"/> </spawn>
+  <spawn> <npc id="30050" respawn="1m" loc="-84057 242832 -3729 59000"/> </spawn>
+  <spawn> <npc id="30051" respawn="1m" loc="-82041 242718 -3720 20493"/> </spawn>
+  <spawn> <npc id="30054" respawn="1m" loc="-81895 243917 -3721 41500"/> </spawn>
+  <spawn> <npc id="30055" respawn="1m" loc="-81840 243534 -3721 5000"/> </spawn>
+
+  
+ </list>
+</null>

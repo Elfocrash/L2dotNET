@@ -1,0 +1,711 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<null>
+ <list>
+  
+  <spawn name='gludio32_npc1624' controller='default' start_active='true' max='3'>
+    <npc id='30405' pos='-115080 222168 -2930 42000' respawn='1m'/> <!-- Marius -->
+    <npc id='30407' pos='-104240 222064 -3437 16384' respawn='1m'/> <!-- Mesella -->
+    <npc id='30497' pos='-114685 222291 -2925 44000' respawn='1m'/> <!-- Edmond -->
+  </spawn>
+  
+  <territory name='gludio31_npc1624_g01' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-103946 224053 -3608 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-100347 221278 -3848 -2648'/>
+    <zone loc='-99226 224044 -3848 -2648'/>
+    <zone loc='-100612 228742 -3848 -2648'/>
+    <zone loc='-109039 228764 -3848 -2648'/>
+    <zone loc='-108940 223839 -3848 -2648'/>
+    <zone loc='-107283 222030 -3848 -2648'/>
+    <zone loc='-104066 219202 -3848 -2648'/>
+  </territory>
+  
+  <territory name='gludio31_npc1624_g02' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-104404 215705 -3340 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-99573 214831 -3896 -2696'/>
+    <zone loc='-101236 217978 -3896 -2696'/>
+    <zone loc='-100704 220667 -3896 -2696'/>
+    <zone loc='-107008 217710 -3896 -2696'/>
+    <zone loc='-111276 218421 -3896 -2696'/>
+    <zone loc='-112640 216286 -3896 -2696'/>
+    <zone loc='-110321 213971 -3896 -2696'/>
+    <zone loc='-105353 214107 -3896 -2696'/>
+    <zone loc='-102280 212354 -3896 -2696'/>
+    <zone loc='-100537 213122 -3896 -2696'/>
+  </territory>
+  
+  <territory name='gludio31_npc1624_g03' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-116632 223055 -3064 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-112901 216881 -3759 -2559'/>
+    <zone loc='-111945 218152 -3759 -2559'/>
+    <zone loc='-116821 228913 -3759 -2559'/>
+    <zone loc='-119904 228935 -3759 -2559'/>
+    <zone loc='-119713 226777 -3759 -2559'/>
+    <zone loc='-118724 225614 -3759 -2559'/>
+    <zone loc='-118447 220356 -3759 -2559'/>
+  </territory>
+  
+  <spawn name='gludio31_npc1625' controller='default' start_active='true' max='1'>
+    <npc id='30667' pos='-112206 244303 -3450 16384' respawn='1m'/> <!-- Ramus -->
+    <npc id='30635' pos='-118618 233239 -2910 32768' respawn='1m'/> <!-- Almors -->
+    <npc id='30408' pos='-106485 233377 -3629 12288' respawn='1m'/> <!-- Lionel -->
+    <npc id='30311' pos='-100332 238019 -3573 36864' respawn='1m'/> <!-- Sir Collin Windawood -->
+    <npc id='30427' pos='-113490 235526 -3646 57800' respawn='1m'/> <!-- Siff -->
+    <npc id='30429' pos='49328 248416 -5952 24576' respawn='1m'/> <!-- Tiramisa -->
+  </spawn>
+  
+  <spawn name='gludio28_npc1625_bow01' controller='default' start_active='true' max='2'>
+    <npc id='30733' pos='-100536 237822 -3572 24576' respawn='1m'/> <!-- Guard -->
+    <npc id='30733' pos='-99843 237523 -3568 0' respawn='1m'/> <!-- Guard -->
+    <npc id='30733' pos='-109715 256200 -3520 36864' respawn='1m'/> <!-- Guard -->
+  </spawn>
+  
+  <territory name='gludio31_npc1625_g01' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-105222 248500 -3444 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-99476 245543 -4012 -2812'/>
+    <zone loc='-98792 247332 -4012 -2812'/>
+    <zone loc='-98736 255971 -4012 -2812'/>
+    <zone loc='-102039 255957 -4012 -2812'/>
+    <zone loc='-105135 254484 -4012 -2812'/>
+    <zone loc='-110440 253539 -4012 -2812'/>
+    <zone loc='-107361 244724 -4012 -2812'/>
+    <zone loc='-104637 243779 -4012 -2812'/>
+    <zone loc='-102869 244425 -4012 -2812'/>
+    <zone loc='-101382 246654 -4012 -2812'/>
+  </territory>
+  
+  <territory name='gludio31_npc1625_g02' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-107097 233752 -3608 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-110090 229483 -3936 -2736'/>
+    <zone loc='-98652 229704 -3936 -2736'/>
+    <zone loc='-98602 243327 -3936 -2736'/>
+    <zone loc='-101825 243873 -3936 -2736'/>
+    <zone loc='-104339 242947 -3936 -2736'/>
+    <zone loc='-107307 243185 -3936 -2736'/>
+    <zone loc='-108020 242381 -3936 -2736'/>
+    <zone loc='-106402 241513 -3936 -2736'/>
+    <zone loc='-112499 234214 -3936 -2736'/>
+  </territory>
+  
+  <territory name='gludio31_npc1625_g03' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-116429 246451 -3204 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-119203 240535 -3616 -2416'/>
+    <zone loc='-116215 239684 -3616 -2416'/>
+    <zone loc='-111549 252806 -3616 -2416'/>
+    <zone loc='-112354 254352 -3616 -2416'/>
+    <zone loc='-115111 253158 -3616 -2416'/>
+    <zone loc='-117362 247984 -3616 -2416'/>
+    <zone loc='-117375 245632 -3616 -2416'/>
+  </territory>
+  
+  <territory name='gludio31_npc1625_g04' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-118864 234801 -2900 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-119321 229797 -3304 -2104'/>
+    <zone loc='-117066 229745 -3304 -2104'/>
+    <zone loc='-116936 239598 -3304 -2104'/>
+    <zone loc='-118567 240077 -3304 -2104'/>
+    <zone loc='-120490 233677 -3304 -2104'/>
+  </territory>
+  
+  <spawn name='gludio32_npc1725_bow' controller='default' start_active='true' max='2'>
+    <npc id='30733' pos='-87847 250564 -3612 4096' respawn='1m'/> <!-- Guard -->
+    <npc id='30733' pos='-87406 250079 -3600 8192' respawn='1m'/> <!-- Guard -->
+    <npc id='30733' pos='-77978 250458 -3544 36863' respawn='1m'/> <!-- Guard -->
+    <npc id='30733' pos='-97211 258230 -3560 57343' respawn='1m'/> <!-- Guard -->
+  </spawn>
+
+  <spawn name='gludio25_npc1725_001' controller='default' start_active='true' max='1'>
+    <npc id='30598' pos='-84081 243227 -3723 9000' respawn='1m'/> <!-- Newbie Guide -->
+    <npc id='30368' pos='-85301 244587 -3725 24576' respawn='1m'/> <!-- Lilith -->
+    <npc id='30031' pos='-84516 245449 -3714 40960' respawn='1m'/> <!-- Biotin -->
+    <npc id='30045' pos='-86322 241215 -3727 42500' respawn='1m'/> <!-- Kenyos -->
+    <npc id='30046' pos='-85964 240947 -3727 42500' respawn='1m'/> <!-- Hanks -->
+    <npc id='30044' pos='-86328 244448 -3724 25500' respawn='1m'/> <!-- Chiperan -->
+    <npc id='30043' pos='-86114 244682 -3727 25500' respawn='1m'/> <!-- Johnstone -->
+  </spawn>
+  
+  <spawn name='gludio25_npc1725_006' controller='default' start_active='true' max='2'>
+    <npc id='30041' pos='-82319 244709 -3727 9000' respawn='1m'/> <!-- Arnold -->
+    <npc id='30042' pos='-82659 244992 -3717 9000' respawn='1m'/> <!-- Abellos -->
+    <npc id='30040' pos='-82515 241221 -3728 58500' respawn='1m'/> <!-- Leon -->
+    <npc id='30039' pos='-82236 241573 -3728 58500' respawn='1m'/> <!-- Gilbert -->
+    <npc id='30026' pos='-83326 242964 -3718 55344' respawn='1m'/> <!-- Bitz -->
+    <npc id='30027' pos='-83020 242553 -3718 11200' respawn='1m'/> <!-- Gwinter -->
+    <npc id='30028' pos='-82809 242751 -3718 36864' respawn='1m'/> <!-- Pintage -->
+    <npc id='30029' pos='-83175 243065 -3718 45956' respawn='1m'/> <!-- Minia -->
+    <npc id='30406' pos='-92622 254108 -3304 0' respawn='1m'/> <!-- Matheo -->
+    <npc id='30047' pos='-97131 258946 -3622 0' respawn='1m'/> <!-- Firon -->
+    <npc id='30003' pos='-83789 240799 -3717 32768' respawn='1m'/> <!-- Silvia -->
+    <npc id='30005' pos='-81512 243424 -3720 38000' respawn='1m'/> <!-- Wilford -->
+    <npc id='30054' pos='-81895 243917 -3721 41500' respawn='1m'/> <!-- Rant -->
+    <npc id='30055' pos='-81840 243534 -3721 5000' respawn='1m'/> <!-- Rolfe -->
+    <npc id='30283' pos='-85026 242689 -3729 57344' respawn='1m'/> <!-- Altran -->
+    <npc id='30006' pos='-84108 244604 -3729 40960' respawn='1m'/> <!-- Roxxy -->
+    <npc id='30032' pos='-84981 244764 -3726 24576' respawn='1m'/> <!-- Yohanes -->
+    <npc id='30035' pos='-84965 245222 -3726 57000' respawn='1m'/> <!-- Harrys -->
+    <npc id='30036' pos='-85186 245001 -3726 57000' respawn='1m'/> <!-- Petron -->
+    <npc id='30033' pos='-84729 245001 -3726 24576' respawn='1m'/> <!-- Baulro -->
+    <npc id='30048' pos='-84436 242793 -3729 42000' respawn='1m'/> <!-- Darin -->
+    <npc id='30051' pos='-82041 242718 -3725 20480' respawn='1m'/> <!-- Cristel -->
+    <npc id='30050' pos='-84057 242832 -3729 59000' respawn='1m'/> <!-- Elias -->
+    <npc id='30049' pos='-83163 243560 -3728 20480' respawn='1m'/> <!-- Bonnie -->
+    <npc id='30312' pos='-78939 240305 -3443 28672' respawn='1m'/> <!-- Rockswell -->
+    <npc id='30001' pos='-86385 243267 -3717 52000' respawn='1m'/> <!-- Lector -->
+    <npc id='30002' pos='-86733 242918 -3717 61440' respawn='1m'/> <!-- Jackson -->
+    <npc id='30004' pos='-84204 240403 -3717 14000' respawn='1m'/> <!-- Katerina -->
+    <npc id='35103' pos='-83536 243280 -3728 24400' respawn='1m'/> <!-- Manor Manager -->
+    <npc id='31562' pos='-83904 240576 -3718 25000' respawn='1m'/> <!-- Klufe -->
+    <npc id='31688' pos='-85151 241476 -3730 25000' respawn='1m'/> <!-- Grand Olympiad Manager -->
+    <npc id='31690' pos='-85096 241516 -3730 25000' respawn='1m'/> <!-- Monument of Heroes  -->
+    <npc id='31775' pos='-83472 242896 -3730 39000' respawn='1m'/> <!-- Adventure Guildsman -->
+    <npc id='31776' pos='-86080 241488 -3730 57000' respawn='1m'/> <!-- Adventure Guildsman -->
+    <npc id='31356' pos='-81920 243892 -3714 7000' respawn='1m'/> <!-- Remy -->
+    <npc id='31357' pos='-82428 245203 -3712 0' respawn='1m'/> <!-- Leandro -->
+  </spawn>
+  
+  <spawn name='gludio26_npc1725_s01' controller='default' start_active='true' max='2'>
+    <npc id='30009' pos='-71424 258336 -3109 42000' respawn='1m'/> <!-- Newbie Helper -->
+    <npc id='30008' pos='-71384 258304 -3109 42000' respawn='1m'/> <!-- Roien -->
+    <npc id='30019' pos='-91036 248044 -3568 6000' respawn='1m'/> <!-- Newbie Helper -->
+    <npc id='30017' pos='-91008 248016 -3568 6000' respawn='1m'/> <!-- Gallint -->
+  </spawn>
+  
+  <territory name='gludio32_npc1725_g01' controller='default' start_active='true' max='1'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-74921 251785 -3500 -3000'/>
+    <zone loc='-71070 255065 -3500 -3000'/>
+    <zone loc='-73782 256943 -3500 -3000'/>
+    <zone loc='-75299 256738 -3500 -3000'/>
+    <zone loc='-77172 253737 -3500 -3000'/>
+  </territory>
+  
+  <territory name='gludio32_npc1725_g02' controller='default' start_active='true' max='1'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-84073 239231 -4020 -3520'/>
+    <zone loc='-82905 238140 -4020 -3520'/>
+    <zone loc='-80576 240924 -4020 -3520'/>
+    <zone loc='-80533 243464 -4020 -3520'/>
+  </territory>
+  
+  <territory name='gludio32_npc1725_g03' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-85319 252027 -3624 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-84046 246689 -3832 -3132'/>
+    <zone loc='-80116 247068 -3832 -3132'/>
+    <zone loc='-83016 254690 -3832 -3132'/>
+    <zone loc='-87056 256534 -3832 -3132'/>
+    <zone loc='-87916 251472 -3832 -3132'/>
+    <zone loc='-86440 249238 -3832 -3132'/>
+    <zone loc='-83796 248237 -3832 -3132'/>
+  </territory>
+  
+  <territory name='gludio32_npc1725_g04' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-86223 240192 -3688 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-87961 236765 -4029 -1029'/>
+    <zone loc='-83209 238016 -4029 -1029'/>
+    <zone loc='-87678 242250 -4029 -1029'/>
+  </territory>
+  
+  <territory name='gludio32_npc1725_g05' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-81449 245555 -3728 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-80007 243286 -4068 -3568'/>
+    <zone loc='-79971 246698 -4068 -3568'/>
+    <zone loc='-83772 246321 -4068 -3568'/>
+  </territory>
+  
+  <territory name='gludio32_npc1725_g06' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+    <npc id='31032' pos='-93999 241201 -3392 0' count='1' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-91656 234518 -4028 -3328'/>
+    <zone loc='-88211 236679 -4028 -3328'/>
+    <zone loc='-87900 242892 -4028 -3328'/>
+    <zone loc='-92340 246591 -4028 -3328'/>
+    <zone loc='-94937 247028 -4028 -3328'/>
+    <zone loc='-98034 245783 -4028 -3328'/>
+    <zone loc='-98039 230004 -4028 -3328'/>
+  </territory>
+  
+  <territory name='gludio32_npc1725_g07' controller='default' start_active='true' max='2'>
+    <npc id='31032' count='2' respawn='1m' rand='0'/> <!-- Guard -->
+
+    <zone loc='-94015 248683 -3972 -3272'/>
+    <zone loc='-92802 251760 -3972 -3272'/>
+    <zone loc='-88911 252588 -3972 -3272'/>
+    <zone loc='-88412 256680 -3972 -3272'/>
+    <zone loc='-92450 256347 -3972 -3272'/>
+    <zone loc='-95118 257639 -3972 -3272'/>
+    <zone loc='-98171 256972 -3972 -3272'/>
+    <zone loc='-98124 246701 -3972 -3272'/>
+  </territory>
+  
+  <spawn name='oren10_npc1819_001' controller='default' start_active='true' max='1'>
+    <npc id='30418' pos='-46464 59263 -3318 20480' respawn='1m'/> <!-- Annika -->
+  </spawn>
+  
+  <territory name='gludio58_mb1926_501' controller='default_use_db_maker' start_active='true' max='4'>
+    <npc id='25544' pos='-12557 273901 -9000 0' count='1' respawn='36h' rand='24h'/> <!-- Tully -->
+    <npc id='25545' count='3' respawn='1h' rand='0'/> <!-- Tully's Banshee -->
+
+    <zone loc='-13359 273097 -9099 -8899'/>
+    <zone loc='-11680 273094 -9099 -8899'/>
+    <zone loc='-11685 274778 -9099 -8899'/>
+    <zone loc='-13369 274778 -9099 -8899'/>
+  </territory>
+  
+  <spawn name='gludio58_mb1926_502' controller='default_maker' start_active='true' max='1'>
+    <npc id='32303' pos='-13511 274061 -9032 0' param='control_number=1' respawn='1m'/> <!-- Machine -->
+  </spawn>
+  
+  <spawn name='gludio58_mb1926_503' controller='default_maker' start_active='true' max='1'>
+    <npc id='32303' pos='-11462 273793 -9024 32768' param='control_number=2' respawn='1m'/> <!-- Machine -->
+  </spawn>
+  
+  <spawn name='gludio12_2025_001' controller='default_use_db_maker' start_active='true' max='1'>
+    <npc id='25603' pos='20886 244088 11062 0' respawn='36h'/> <!-- Darion -->
+  </spawn>
+  
+  <territory name='gludio12_2025_002' controller='default_maker' start_active='true' max='1'>
+    <npc id='32468' pos='20728 244007 11088 0' count='1' respawn='0s' rand='0'/> <!--  -->
+
+    <zone loc='17887 244199 10956 11956'/>
+    <zone loc='20797 243918 10956 11956'/>
+    <zone loc='20808 244101 10956 11956'/>
+    <zone loc='17900 244403 10956 11956'/>
+  </territory>
+  
+
+  <territory name='gludio32_qm1725_00' controller='default_maker' start_active='true' max='10'>
+    <npc id='18342' count='10' respawn='15s' rand='0'/> <!-- Gremlin -->
+
+    <zone loc='-71944 258332 -3148 -2948'/>
+    <zone loc='-71316 257772 -3148 -2948'/>
+    <zone loc='-70728 258468 -3148 -2948'/>
+    <zone loc='-71364 259000 -3148 -2948'/>
+  </territory>
+
+  <territory name='gludio32_qm1725_01' controller='default_maker' start_active='true' max='10'>
+    <npc id='18342' count='10' respawn='15s' rand='0'/> <!-- Gremlin -->
+
+    <zone loc='-91080 248292 -3648 -3448'/>
+    <zone loc='-90792 247860 -3648 -3448'/>
+    <zone loc='-90136 248300 -3648 -3448'/>
+    <zone loc='-90432 248720 -3648 -3448'/>
+  </territory>
+  
+
+  <territory name='gludio01_qm1624_01' controller='default_maker' start_active='true' max='1'>
+    <npc id='27102' count='1' respawn='3m' rand='0'/> <!-- Pako The Cat -->
+
+    <zone loc='-118719 233139 -3029 -2829'/>
+    <zone loc='-118519 233139 -3029 -2829'/>
+    <zone loc='-118519 233339 -3029 -2829'/>
+    <zone loc='-118719 233339 -3029 -2829'/>
+  </territory>
+
+  <territory name='gludio01_qm1625_01' controller='default_maker' start_active='true' max='1'>
+    <npc id='27003' count='1' respawn='3m' rand='0'/> <!-- Spirit Of Mirrors -->
+
+    <zone loc='-98205 246704 -3743 -3543'/>
+    <zone loc='-96593 247320 -3743 -3543'/>
+    <zone loc='-95997 247760 -3743 -3543'/>
+    <zone loc='-96081 249788 -3743 -3543'/>
+    <zone loc='-98217 249244 -3743 -3543'/>
+  </territory>
+
+  <territory name='gludio01_qm1625_02' controller='default_maker' start_active='true' max='1'>
+    <npc id='27005' count='1' respawn='3m' rand='0'/> <!-- Spirit Of Mirrors -->
+
+    <zone loc='-121998 236299 -3789 -3389'/>
+    <zone loc='-121382 235219 -3789 -3389'/>
+    <zone loc='-121138 235995 -3789 -3389'/>
+    <zone loc='-121310 237847 -3789 -3389'/>
+  </territory>
+
+  <territory name='gludio01_qm1625_03' controller='default_maker' start_active='true' max='1'>
+    <npc id='27004' count='1' respawn='3m' rand='0'/> <!-- Spirit Of Mirrors -->
+
+    <zone loc='-100177 234305 -3623 -3173'/>
+    <zone loc='-98517 234345 -3623 -3173'/>
+    <zone loc='-98537 237421 -3623 -3173'/>
+    <zone loc='-99565 236309 -3623 -3173'/>
+  </territory>
+
+  <territory name='gludio01_qm1720_01' controller='default_maker' start_active='true' max='101'>
+    <npc id='27165' pos='-81247 75607 -3360 0' count='1' respawn='3m' rand='0'/> <!-- Abyssal Jewel 1 -->
+
+    <zone loc='-80836 73824 -3432 -3032'/>
+    <zone loc='-78988 75672 -3432 -3032'/>
+    <zone loc='-81100 77548 -3432 -3032'/>
+    <zone loc='-83516 75868 -3432 -3032'/>
+  </territory>
+
+  <territory name='gludio01_qm1821_01' controller='default_maker' start_active='true' max='3'>
+    <npc id='27030' count='3' respawn='5m' rand='0'/> <!-- Water Seer -->
+
+    <zone loc='-59344 122568 -3136 -2636'/>
+    <zone loc='-58200 122172 -3136 -2636'/>
+    <zone loc='-57508 123008 -3136 -2636'/>
+    <zone loc='-58640 123392 -3136 -2636'/>
+  </territory>
+
+  <territory name='gludio01_qm1821_02' controller='default_maker' start_active='true' max='3'>
+    <npc id='27030' count='3' respawn='5m' rand='0'/> <!-- Water Seer -->
+
+    <zone loc='-55876 123656 -3120 -2620'/>
+    <zone loc='-55360 123364 -3120 -2620'/>
+    <zone loc='-54196 124816 -3120 -2620'/>
+    <zone loc='-54920 124880 -3120 -2620'/>
+  </territory>
+
+  <territory name='gludio01_qm1821_03' controller='default_maker' start_active='true' max='3'>
+    <npc id='27095' count='3' respawn='3m' rand='0'/> <!-- Singing Flower Phantasm -->
+
+    <zone loc='-57976 126924 -3156 -2956'/>
+    <zone loc='-57184 126960 -3156 -2956'/>
+    <zone loc='-57768 128052 -3156 -2956'/>
+    <zone loc='-58180 128240 -3156 -2956'/>
+    <zone loc='-58492 127792 -3156 -2956'/>
+  </territory>
+
+  <territory name='gludio01_qm1822_01' controller='default_maker' start_active='true' max='10'>
+    <npc id='27038' count='10' respawn='3m' rand='0'/> <!-- Cat's Eye Bandit -->
+
+    <zone loc='-46966 142770 -3071 -2671'/>
+    <zone loc='-44626 144138 -3071 -2671'/>
+    <zone loc='-46306 147658 -3071 -2671'/>
+    <zone loc='-48814 146894 -3071 -2671'/>
+  </territory>
+
+  <territory name='gludio01_qm1822_02' controller='default_maker' start_active='true' max='10'>
+    <npc id='20782' count='10' respawn='45s' rand='0'/> <!-- Ol Mahum Novice -->
+
+    <zone loc='-49168 151453 -3148 -2648'/>
+    <zone loc='-47679 151459 -3148 -2648'/>
+    <zone loc='-47968 153661 -3148 -2648'/>
+    <zone loc='-49577 152987 -3148 -2648'/>
+  </territory>
+  
+  <spawn name='gludio01_qm1823_01' controller='default_maker' start_active='true' max='4'>
+    <npc id='27116' pos='-61264 182384 -4821 0' respawn='1m'/> <!-- Lava Salamander -->
+    <npc id='27116' pos='-61312 182848 -4821 0' respawn='1m'/> <!-- Lava Salamander -->
+    <npc id='27116' pos='-60784 182832 -4821 0' respawn='1m'/> <!-- Lava Salamander -->
+    <npc id='27116' pos='-60816 182384 -4821 0' respawn='1m'/> <!-- Lava Salamander -->
+  </spawn>
+  
+
+  <territory name='gludio01_qm1920_01' controller='default_maker' start_active='true' max='2'>
+    <npc id='27031' count='2' respawn='3m' rand='0'/> <!-- Ol Mahum Sentry -->
+
+    <zone loc='-9276 72188 -3596 -3096'/>
+    <zone loc='-8520 72308 -3596 -3096'/>
+    <zone loc='-8312 72740 -3596 -3096'/>
+    <zone loc='-9140 72780 -3596 -3096'/>
+  </territory>
+
+  <territory name='gludio01_qm1921_01' controller='default_maker' start_active='true' max='10'>
+    <npc id='20775' count='10' respawn='3m' rand='0'/> <!-- Bugbear Raider -->
+
+    <zone loc='-3792 109752 -3848 -3348'/>
+    <zone loc='-552 109284 -3848 -3348'/>
+    <zone loc='-448 113748 -3848 -3348'/>
+    <zone loc='-5032 112820 -3848 -3348'/>
+  </territory>
+
+  <territory name='gludio01_qm1923_01' controller='default_maker' start_active='true' max='2'>
+    <npc id='27100' count='2' respawn='3m' rand='0'/> <!-- Skeletal Mercenary -->
+
+    <zone loc='-18516 193540 -4312 -4012'/>
+    <zone loc='-17640 194404 -4312 -4012'/>
+    <zone loc='-17816 195400 -4312 -4012'/>
+    <zone loc='-19052 194924 -4312 -4012'/>
+  </territory>
+
+  <territory name='gludio01_qm1923_02' controller='default_maker' start_active='true' max='2'>
+    <npc id='27100' count='2' respawn='3m' rand='0'/> <!-- Skeletal Mercenary -->
+
+    <zone loc='-27108 174596 -4196 -3896'/>
+    <zone loc='-26068 175068 -4196 -3896'/>
+    <zone loc='-26104 175812 -4196 -3896'/>
+    <zone loc='-27700 175460 -4196 -3896'/>
+  </territory>
+
+  <territory name='gludio01_qm1923_03' controller='default_maker' start_active='true' max='2'>
+    <npc id='27100' count='2' respawn='3m' rand='0'/> <!-- Skeletal Mercenary -->
+
+    <zone loc='-23000 189912 -4632 -4132'/>
+    <zone loc='-21996 189464 -4632 -4132'/>
+    <zone loc='-21796 190336 -4632 -4132'/>
+    <zone loc='-22740 190716 -4632 -4132'/>
+  </territory>
+
+  <territory name='gludio01_qm1923_04' controller='default_maker' start_active='true' max='2'>
+    <npc id='27100' count='2' respawn='3m' rand='0'/> <!-- Skeletal Mercenary -->
+
+    <zone loc='-10948 189532 -4296 -3996'/>
+    <zone loc='-9344 190868 -4296 -3996'/>
+    <zone loc='-10000 191612 -4296 -3996'/>
+    <zone loc='-12124 190824 -4296 -3996'/>
+  </territory>
+
+  <territory name='gludio01_qm1924_01' controller='default_maker' start_active='true' max='1'>
+    <npc id='27105' count='1' respawn='3m' rand='0'/> <!-- Mimi The Cat -->
+
+    <zone loc='-24003 207704 -3305 -3105'/>
+    <zone loc='-23803 207704 -3305 -3105'/>
+    <zone loc='-23803 207904 -3305 -3105'/>
+    <zone loc='-24003 207904 -3305 -3105'/>
+  </territory>
+  
+  <spawn name='gludio01_qm2125_02' controller='default_maker' start_active='true' max='2'>
+    <npc id='27016' pos='46828 246674 -6672 0' respawn='15m'/> <!-- Nerkas -->
+    <npc id='27117' pos='47952 244368 -6570 0' respawn='1m'/> <!-- Nahir -->
+  </spawn>
+  
+  
+
+  <territory name='gludio01_mb1924_01' controller='default' start_active='true' max='10'>
+    <npc id='25146' count='1' respawn='36h' rand='24h'/> <!-- Serpent Demon Bifrons -->
+
+    <zone loc='-13904 214320 -3800 -3300'/>
+    <zone loc='-13280 213720 -3800 -3300'/>
+    <zone loc='-13464 213228 -3800 -3300'/>
+    <zone loc='-14144 213916 -3800 -3300'/>
+  </territory>
+
+  <territory name='gludio15_mb1721_01' controller='default' start_active='true' max='8'>
+    <npc id='25063' count='1' respawn='36h' rand='24h'/> <!-- Chertuba of Great Soul -->
+
+    <zone loc='-91272 116168 -3508 -2908'/>
+    <zone loc='-90752 116164 -3508 -2908'/>
+    <zone loc='-90752 116508 -3508 -2908'/>
+    <zone loc='-91260 116516 -3508 -2908'/>
+  </territory>
+
+  <territory name='gludio15_mb1721_02' controller='default' start_active='true' max='8'>
+    <npc id='25004' count='1' respawn='36h' rand='24h'/> <!-- Turek Mercenary Captain -->
+
+    <zone loc='-94752 100044 -3612 -3012'/>
+    <zone loc='-94228 99620 -3612 -3012'/>
+    <zone loc='-93304 100356 -3612 -3012'/>
+    <zone loc='-94120 100932 -3612 -3012'/>
+  </territory>
+
+  <territory name='gludio17_mb1821_01' controller='default' start_active='true' max='8'>
+    <npc id='25076' count='1' respawn='36h' rand='24h'/> <!-- Princess Molrang -->
+
+    <zone loc='-61520 126320 -3112 -2512'/>
+    <zone loc='-60148 126440 -3112 -2512'/>
+    <zone loc='-60548 128388 -3112 -2512'/>
+    <zone loc='-61948 128240 -3112 -2512'/>
+  </territory>
+
+  <territory name='gludio03_mb1821_02' controller='default' start_active='true' max='8'>
+    <npc id='25369' count='1' respawn='36h' rand='24h'/> <!-- Soul Scavenger -->
+
+    <zone loc='-45896 110708 -3880 -3280'/>
+    <zone loc='-44836 110992 -3880 -3280'/>
+    <zone loc='-45296 111588 -3880 -3280'/>
+    <zone loc='-46060 111556 -3880 -3280'/>
+    <zone loc='-46476 111088 -3880 -3280'/>
+  </territory>
+
+  <territory name='gludio09_mb1822_01' controller='default' start_active='true' max='8'>
+    <npc id='25001' count='1' respawn='36h' rand='24h'/> <!-- Greyclaw Kutus -->
+
+    <zone loc='-54440 145764 -3000 -2400'/>
+    <zone loc='-53532 146480 -3000 -2400'/>
+    <zone loc='-54220 147364 -3000 -2400'/>
+    <zone loc='-54988 147000 -3000 -2400'/>
+    <zone loc='-55140 146252 -3000 -2400'/>
+  </territory>
+
+  <territory name='gludio04_mb1823_01' controller='default' start_active='true' max='8'>
+    <npc id='25169' count='1' respawn='36h' rand='24h'/> <!-- Ragraman -->
+
+    <zone loc='-54788 169384 -3300 -2700'/>
+    <zone loc='-53992 170104 -3300 -2700'/>
+    <zone loc='-54024 170920 -3300 -2700'/>
+    <zone loc='-55264 170876 -3300 -2700'/>
+  </territory>
+
+  <territory name='gludio16_mb1823_02' controller='default' start_active='true' max='8'>
+    <npc id='25362' count='1' respawn='36h' rand='24h'/> <!-- Tracker Leader Sharuk -->
+
+    <zone loc='-56468 186276 -3456 -2856'/>
+    <zone loc='-55296 186236 -3456 -2856'/>
+    <zone loc='-55100 187512 -3456 -2856'/>
+    <zone loc='-56300 187588 -3456 -2856'/>
+  </territory>
+
+  <territory name='gludio01_mb1823_03' controller='default' start_active='true' max='8'>
+    <npc id='25365' count='1' respawn='36h' rand='24h'/> <!-- Patriarch Kuroboros -->
+
+    <zone loc='-62936 190480 -3760 -3160'/>
+    <zone loc='-62544 189304 -3760 -3160'/>
+    <zone loc='-60880 190788 -3760 -3160'/>
+    <zone loc='-62324 191384 -3760 -3160'/>
+  </territory>
+
+  <territory name='gludio01_mb1823_04' controller='default' start_active='true' max='8'>
+    <npc id='25366' count='1' respawn='36h' rand='24h'/> <!-- Kuroboros' Priest -->
+
+    <zone loc='-63184 179476 -3688 -3088'/>
+    <zone loc='-62604 178760 -3688 -3088'/>
+    <zone loc='-61540 179180 -3688 -3088'/>
+    <zone loc='-61796 180076 -3688 -3088'/>
+    <zone loc='-62584 180368 -3688 -3088'/>
+  </territory>
+
+  <territory name='gludio16_mb1823_05' controller='default' start_active='true' max='8'>
+    <npc id='25060' count='1' respawn='36h' rand='24h'/> <!-- Unrequited Kael -->
+
+    <zone loc='-60648 188052 -4552 -4352'/>
+    <zone loc='-60204 188044 -4552 -4352'/>
+    <zone loc='-60204 188488 -4552 -4352'/>
+    <zone loc='-60652 188480 -4552 -4352'/>
+  </territory>
+
+  <territory name='gludio16_mb1823_06' controller='default' start_active='true' max='8'>
+    <npc id='25038' count='1' respawn='36h' rand='24h'/> <!-- Tirak -->
+
+    <zone loc='-57466 186017 -5004 -4804'/>
+    <zone loc='-57266 186017 -5004 -4804'/>
+    <zone loc='-57266 186535 -5004 -4804'/>
+    <zone loc='-57466 186535 -5004 -4804'/>
+  </territory>
+
+  <territory name='gludio21_mb1824_01' controller='default' start_active='true' max='8'>
+    <npc id='25095' count='1' respawn='36h' rand='24h'/> <!-- Elf Renoa -->
+
+    <zone loc='-38088 197708 -2800 -2200'/>
+    <zone loc='-37548 197936 -2800 -2200'/>
+    <zone loc='-37436 198252 -2800 -2200'/>
+    <zone loc='-37600 198512 -2800 -2200'/>
+    <zone loc='-37924 198312 -2800 -2200'/>
+    <zone loc='-38196 198000 -2800 -2200'/>
+  </territory>
+
+  <territory name='gludio22_mb1824_01' controller='default' start_active='true' max='8'>
+    <npc id='25127' count='1' respawn='36h' rand='24h'/> <!-- Langk Matriarch Rashkos -->
+
+    <zone loc='-48400 219344 -2536 -1936'/>
+    <zone loc='-47528 218612 -2536 -1936'/>
+    <zone loc='-46876 219392 -2536 -1936'/>
+    <zone loc='-47732 219748 -2536 -1936'/>
+  </territory>
+
+  <territory name='gludio38_mb1921_01' controller='default' start_active='true' max='8'>
+    <npc id='25357' count='1' respawn='36h' rand='24h'/> <!-- Sukar Wererat Chief -->
+
+    <zone loc='-4076 112252 -3632 -3032'/>
+    <zone loc='-2836 112216 -3632 -3032'/>
+    <zone loc='-2840 113392 -3632 -3032'/>
+    <zone loc='-4052 113416 -3632 -3032'/>
+  </territory>
+
+  <territory name='gludio02_mb1922_01' controller='default' start_active='true' max='8'>
+    <npc id='25149' count='1' respawn='252h' rand='168h'/> <!-- Zombie Lord Crowl -->
+
+    <zone loc='-13166 138211 -3720 -3120'/>
+    <zone loc='-12594 137645 -3720 -3120'/>
+    <zone loc='-12128 138291 -3720 -3120'/>
+    <zone loc='-12722 138652 -3720 -3120'/>
+  </territory>
+
+  <territory name='gludio02_mb1922_02' controller='default' start_active='true' max='8'>
+    <npc id='25166' count='1' respawn='36h' rand='24h'/> <!-- Ikuntai -->
+
+    <zone loc='-22036 152044 -3136 -2636'/>
+    <zone loc='-21642 151796 -3136 -2636'/>
+    <zone loc='-21536 152076 -3136 -2636'/>
+    <zone loc='-21896 152344 -3136 -2636'/>
+  </territory>
+
+  <territory name='gludio04_mb1923_01' controller='default' start_active='true' max='8'>
+    <npc id='25352' count='1' respawn='36h' rand='24h'/> <!-- Giant Wasteland Basilisk -->
+
+    <zone loc='-17460 174700 -3584 -2984'/>
+    <zone loc='-16872 174032 -3584 -2984'/>
+    <zone loc='-16212 174712 -3584 -2984'/>
+    <zone loc='-16368 175456 -3584 -2984'/>
+    <zone loc='-17304 175548 -3584 -2984'/>
+  </territory>
+  
+  <spawn name='gludio04_mb1923_02' controller='default' start_active='true' max='8'>
+    <npc id='25354' pos='-16072 184361 -3807 45056' respawn='36h'/> <!-- Gargoyle Lord Sirocco -->
+  </spawn>
+  
+  <spawn name='queenant_room' controller='default' start_active='true' max='40'>
+    <npc id='29001' pos='-21610 181594 -5734 0' respawn='36h'/> <!-- Queen Ant -->
+  </spawn>
+  
+  <spawn name='new_queen_ant_guard_room' controller='default' start_active='true' max='7'>
+    <npc id='29004' pos='-22005 179205 -5846 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21088 179338 -5846 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21516 178956 -5846 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21945 179506 -5846 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21328 179248 -5846 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21248 179696 -5846 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21760 179088 -5846 0' respawn='6m'/> <!-- Guard Ant -->
+  </spawn>
+  
+  <spawn name='queen_ant_guard_room' controller='default' start_active='true' max='55'>
+    <npc id='29004' pos='-22154 181958 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21672 181903 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-20992 181627 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21861 182279 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21693 182717 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-22070 182890 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-22262 183156 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21308 182278 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21113 182681 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21446 183135 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-21854 183450 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-20714 182103 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-20720 182775 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-20949 183233 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-22349 182333 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-22406 182733 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-22700 182486 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+    <npc id='29004' pos='-22015 181518 -5734 0' respawn='6m'/> <!-- Guard Ant -->
+  </spawn>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ </list>
+</null>

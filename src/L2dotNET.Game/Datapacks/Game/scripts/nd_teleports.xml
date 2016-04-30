@@ -1,0 +1,900 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<null>
+ <list>
+  <npc id="30006">
+   <group id="1">
+     <e name="The Village of Gludin" x="-80684" y="149770" z="-3040" cost="18000"/>
+     <e name="Dark Elven Village" x="9744" y="15645" z="-4568" cost="24000"/>
+     <e name="Dwarven Village" x="115120" y="-178224" z="-880" cost="46000"/>
+     <e name="Elven Village" x="46951" y="51550" z="-2976" cost="23000"/>
+     <e name="Orc Village" x="-45158" y="-112583" z="-240" cost="35000"/>
+     <e name="Kamael Village" x="-117251" y="46771" z="360" cost="20000"/>
+     <e name="Elven Ruins" x="-112367" y="234703" z="-3668" cost="830"/>
+     <e name="Singing Waterfall" x="-111728" y="244330" z="-3448" cost="770"/>
+     <e name="Talking Island, Northen Territory" x="-106696" y="214691" z="-3424" cost="1000"/>
+     <e name="Obelisk of Victory" x="-99586" y="237637" z="-3568" cost="470"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Center of the Elven Ruins" x="49315" y="248452" z="-5960" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Center of the Elven Ruins" x="49315" y="248452" z="-5960" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30059">
+   <group id="1">
+     <e name="The Town of Giran" x="83463" y="148045" z="-3400" cost="6800"/>
+     <e name="Heine" x="111455" y="219400" z="-3544" cost="12000"/>
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="3400"/>
+     <e name="The Town of Goddard" x="147850" y="-55300" z="-2728" cost="71000"/>
+     <e name="Rune Township" x="43835" y="-47749" z="-792" cost="57000"/>
+     <e name="The Town of Schuttgart" x="87170" y="-143355" z="-1288" cost="88000"/>
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="52000"/>
+     <e name="The Town of Oren" x="82971" y="53207" z="-1488" cost="33000"/>
+     <e name="Cruma Marshland" x="5106" y="126916" z="-3664" cost="760"/>
+     <e name="Cruma Tower" x="17225" y="114173" z="-3440" cost="2300"/>
+     <e name="Fortress of Resistance" x="47382" y="111278" z="-2104" cost="1700"/>
+     <e name="Plains of Dion" x="630" y="179184" z="-3720" cost="1500"/>
+     <e name="Bee Hive" x="34475" y="188095" z="-2976" cost="2900"/>
+     <e name="Tanor Canyon" x="58316" y="163851" z="-2816" cost="3900"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Execution Grounds" x="51055" y="141959" z="-2869" cost="1000"/>
+     <e name="Floran Agricultural Area" x="26810" y="172787" z="-3376" cost="1000"/>
+     <e name="The Center of the Cruma Marshlands" x="15941" y="125455" z="-3640" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Execution Grounds" x="49315" y="248452" z="-5960" cost="1" itemId="6651"/>
+     <e name="Floran Agricultural Area" x="26810" y="172787" z="-3376" cost="1" itemId="6651"/>
+     <e name="The Center of the Cruma Marshlands" x="15941" y="125455" z="-3640" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30080">
+   <group id="1">
+     <e name="The Town of Oren" x="82888" y="53300" z="-1488" cost="9400"/>
+     <e name="Heine" x="111455" y="219400" z="-3544" cost="7600"/>
+     <e name="The Town of Dion" x="15472" y="142880" z="-2688" cost="6800"/>
+     <e name="The Town of Goddard" x="147850" y="-55300" z="-2728" cost="63000"/>
+     <e name="Rune Township" x="43835" y="-47749" z="-792" cost="59000"/>
+     <e name="Town of Schuttgart" x="87170" y="-143355" z="-1288" cost="87000"/>
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="29000"/>
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="13000"/>
+     <e name="Giran Harbor" x="47935" y="186810" z="-3420" cost="5200"/>
+     <e name="Hardin's Academy" x="105918" y="109759" z="-3192" cost="4400"/>
+     <e name="Dragon Valley" x="73024" y="118485" z="-3688" cost="1800"/>
+     <e name="Antharas' Lair" x="131557" y="114509" z="-3712" cost="7000"/>
+     <e name="Devil's Isle" x="43408" y="206881" z="-3752" cost="5000"/>
+     <e name="Breka's Stronghold" x="85546" y="131328" z="-3672" cost="1000"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Gorgon Flower Garden" x="113553" y="134813" z="-3640" cost="1000"/>
+     <e name="Antharas Lair - 1st Level" x="147071" y="120156" z="-4520" cost="1000"/>
+     <e name="Antharas Lair - 2nd Level" x="151689" y="112615" z="-5520" cost="1000"/>
+     <e name="Antharas Lair - Magic Force Field Bridge" x="146494" y="109285" z="-3448" cost="1000"/>
+     <e name="The Heart of Antharas Lair" x="154396" y="121235" z="-3808" cost="1000"/>
+     <e name="The Center of Dragon Valley" x="122824" y="110836" z="-3720" cost="1000"/>
+     <e name="Private Hardins Academy" x="105918" y="109759" z="-3192" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Gorgon Flower Garden" x="113553" y="134813" z="-3640" cost="1" itemId="6651"/>
+     <e name="Antharas Lair - 1st Level" x="147071" y="120156" z="-4520" cost="1" itemId="6651"/>
+     <e name="Antharas Lair - 2nd Level" x="151689" y="112615" z="-5520" cost="1" itemId="6651"/>
+     <e name="Antharas Lair - Magic Force Field Bridge" x="146494" y="109285" z="-3448" cost="1" itemId="6651"/>
+     <e name="The Heart of Antharas Lair" x="154396" y="121235" z="-3808" cost="1" itemId="6651"/>
+     <e name="The Center of Dragon Valley" x="122824" y="110836" z="-3720" cost="1" itemId="6651"/>
+     <e name="Private Hardins Academy" x="105918" y="109759" z="-3192" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30134">
+   <group id="1">
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="10000"/>
+     <e name="Dwarven Village" x="115120" y="-178224" z="-880" cost="22000"/>
+     <e name="Talking Island Village" x="-84141" y="244623" z="-3728" cost="24000"/>
+     <e name="Orc Village" x="-45158" y="-112583" z="-240" cost="13000"/>
+     <e name="Kamael Village" x="-117251" y="46771" z="360" cost="13000"/>
+     <e name="Dark Forest" x="-22224" y="14168" z="-3232" cost="890"/>
+     <e name="Swampland" x="-21966" y="40544" z="-3192" cost="1100"/>
+     <e name="Spider Nest" x="-61095" y="75104" z="-3352" cost="3600"/>
+     <e name="Neutral Zone" x="-10612" y="75881" z="-3592" cost="1700"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="The Center of the Neutral Zone" x="-18415" y="85624" z="-3680" cost="1000"/>
+     <e name="The Center of the Dark Forest" x="-14129" y="27094" z="-3680" cost="1000"/>
+     <e name="Center of the School of Dark Arts" x="-49185" y="49441" z="-5912" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="The Center of the Neutral Zone" x="-18415" y="85624" z="-3680" cost="1" itemId="6651"/>
+     <e name="The Center of the Dark Forest" x="-14129" y="27094" z="-3680" cost="1" itemId="6651"/>
+     <e name="Center of the School of Dark Arts" x="-49185" y="49441" z="-5912" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30146">
+   <group id="1">
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="9200"/>
+     <e name="Dwarven Village" x="115120" y="-178224" z="-880" cost="23000"/>
+     <e name="Talking Island Village" x="-84141" y="244623" z="-3728" cost="23000"/>
+     <e name="Orc Village" x="-45158" y="-112583" z="-240" cost="18000"/>
+     <e name="Kamael Village" x="-117251" y="46771" z="360" cost="16000"/>
+     <e name="Elven Forest" x="21362" y="51122" z="-3688" cost="710"/>
+     <e name="Elven Fortress" x="29294" y="74968" z="-3776" cost="820"/>
+     <e name="Neutral Zone" x="-10612" y="75881" z="-3592" cost="1700"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="The Center of the Neutral Zone" x="-18415" y="85624" z="-3680" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="The Center of the Neutral Zone" x="-18415" y="85624" z="-3680" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30162">
+   <group id="1">
+     <e name="1st Floor Lobby" x="85475" y="16087" z="-3640" cost="0"/>
+     <e name="2nd Floor Human Wizard Guild" x="85475" y="16087" z="-2780" cost="0"/>
+     <e name="3rd Floor Elf Wizard Guild" x="85475" y="16087" z="-2270" cost="0"/>
+     <e name="4th Floor Dark Elf Wizard Guild" x="85475" y="16087" z="-1750" cost="0"/>
+   </group>
+  </npc>
+
+  <npc id="30177">
+   <group id="1">
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="6900"/>
+     <e name="The Town of Giran" x="83463" y="148045" z="-3400" cost="9400"/>
+     <e name="Rune Township" x="43835" y="-47749" z="-792" cost="10000"/>
+     <e name="The Town of Goddard" x="147850" y="-55300" z="-2728" cost="37000"/>
+     <e name="Heine" x="111455" y="219400" z="-3544" cost="50000"/>
+     <e name="The Town of Dion" x="15472" y="142880" z="-2688" cost="33000"/>
+     <e name="Town of Schuttgart" x="87145" y="-143372" z="-1288" cost="59000"/>
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="35000"/>
+     <e name="Ivory Tower" x="85475" y="16087" z="-3672" cost="3700"/>
+     <e name="Hunters Village" x="117088" y="76931" z="-2688" cost="4100"/>
+     <e name="Hardins Private Academy" x="105918" y="109759" z="-3192" cost="6100"/>
+     <e name="Skyshadow Meadow" x="89914" y="46276" z="-3616" cost="780"/>
+     <e name="Plains of the Lizardmen" x="87252" y="85514" z="-3056" cost="1900"/>
+     <e name="Outlaw Forest" x="91539" y="-12204" z="-2440" cost="5200"/>
+     <e name="Sea of Spores" x="64328" y="26803" z="-3768" cost="2500"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Forest of Evil" x="93218" y="16969" z="-3904" cost="1000"/>
+     <e name="Timak Outpost" x="67097" y="68815" z="-3648" cost="1000"/>
+     <e name="Altar of Rites" x="-44566" y="77508" z="-3736" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Forest of Evil" x="93218" y="16969" z="-3904" cost="1" itemId="6651"/>
+     <e name="Timak Outpost" x="67097" y="68815" z="-3648" cost="1" itemId="6651"/>
+     <e name="Altar of Rites" x="-44566" y="77508" z="-3736" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30233">
+   <group id="1">
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="5900"/>
+     <e name="The Town of Oren" x="82971" y="53207" z="-1488" cost="4100"/>
+     <e name="Hardins Private Academy" x="105918" y="109759" z="-3192" cost="3400"/>
+     <e name="Southern Region The Enchanted Valley" x="124904" y="61992" z="-3920" cost="1300"/>
+     <e name="Northern Region The Enchanted Valley" x="104426" y="33746" z="-3800" cost="3600"/>
+     <e name="Entrance to the Forest of Mirrors" x="142065" y="81300" z="-3000" cost="2000"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="The Center of the Forest of Mirrors" x="166080" y="75574" z="-2992" cost="1000"/>
+     <e name="The Center of the Enchanted Valley" x="114674" y="44150" z="-3376" cost="1000"/>
+     <e name="Hunters Valley" x="114306" y="86573" z="-3112" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="The Center of the Forest of Mirrors" x="166080" y="75574" z="-2992" cost="1" itemId="6651"/>
+     <e name="The Center of the Enchanted Valley" x="114674" y="44150" z="-3376" cost="1" itemId="6651"/>
+     <e name="Hunters Valley" x="114306" y="86573" z="-3112" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30256">
+   <group id="1">
+     <e name="The Town of Schuttgart" x="87145" y="-143372" z="-1288" cost="85000"/>
+     <e name="Heine" x="111455" y="219400" z="-3544" cost="47000"/>
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="56000"/>
+     <e name="The Town of Oren" x="82971" y="53207" z="-1488" cost="35000"/>
+     <e name="The Town of Dion" x="15472" y="142880" z="-2678" cost="3400"/>
+     <e name="The Town of Goddard" x="147850" y="-55300" z="-2728" cost="71000"/>
+     <e name="The Town of Giran" x="83463" y="148045" z="-3400" cost="29000"/>
+     <e name="Rune Township" x="43835" y="-47749" z="-792" cost="53000"/>
+     <e name="The Village of Gludin" x="-80684" y="149770" z="-3040" cost="7300"/>
+     <e name="The Elven Village" x="46951" y="51550" z="-2976" cost="9200"/>
+     <e name="The Dark Elven Village" x="9744" y="15645" z="-4568" cost="10000"/>
+     <e name="Dwarven Village" x="115120" y="-178224" z="-880" cost="32000"/>
+     <e name="Orc Village" x="-45158" y="-112583" z="-240" cost="23000"/>
+     <e name="Kamael Village" x="-117251" y="46771" z="360" cost="12000"/>
+     <e name="Ruins of Agony" x="-41248" y="122848" z="-2904" cost="790"/>
+     <e name="Ruins of Despair" x="-19120" y="136816" z="-3752" cost="610"/>
+     <e name="The Ant Nest" x="-9959" y="176184" z="-4160" cost="2100"/>
+     <e name="Windawood Manor" x="-28327" y="155125" z="-3496" cost="1400"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Evil Hunting Grounds" x="-6989" y="109503" z="-3040" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Evil Hunting Grounds" x="-6989" y="109503" z="-3040" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30320">
+   <group id="1">
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="7300"/>
+     <e name="Talking Island Village" x="-84141" y="244623" z="-3729" cost="9400"/>
+     <e name="The Elven Village" x="46951" y="51550" z="-2976" cost="16000"/>
+     <e name="The Dark Elven Village" x="9744" y="15645" z="-4500" cost="16000"/>
+     <e name="Dwarven Village" x="115120" y="-178224" z="-917" cost="38000"/>
+     <e name="Orc Village" x="-45158" y="-112583" z="-236" cost="26000"/>
+     <e name="Kamael Village" x="-117251" y="46771" z="360" cost="10000"/>
+     <e name="Langk Lizardman Dwellings" x="-44763" y="203470" z="-3592" cost="1800"/>
+     <e name="Windmill Hill" x="-75437" y="168800" z="-3632" cost="550"/>
+     <e name="Fellmere Harvest Grounds" x="-63736" y="101522" z="-3552" cost="1400"/>
+     <e name="Forgotten Temple" x="-53001" y="191425" z="-3568" cost="2000"/>
+     <e name="Orc Barracks" x="-89763" y="105359" z="-3576" cost="1800"/>
+     <e name="Windy Hill" x="-88539" y="83389" z="-2864" cost="2600"/>
+     <e name="Abandoned Camp" x="-49853" y="147089" z="-2784" cost="1200"/>
+     <e name="Wastelands" x="-16526" y="208032" z="-3664" cost="3400"/>
+     <e name="Red Rock Ridge" x="-42256" y="198333" z="-2800" cost="3700"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Center of the Forgotten Temple" x="-54026" y="179504" z="-4640" cost="1000"/>
+     <e name="Wasteland, Western Region" x="-47506" y="179572" z="-3632" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Center of the Forgotten Temple" x="-54026" y="179504" z="-4640" cost="1" itemId="6651"/>
+     <e name="Wasteland, Western Region" x="-47506" y="179572" z="-3632" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30540">
+   <group id="1">
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="32000"/>
+     <e name="The Town of Schuttgart" x="87170" y="-143355" z="-1288" cost="4400"/>
+     <e name="Dark Elf Village" x="9709" y="15566" z="-4568" cost="22000"/>
+     <e name="Talking Island Village" x="-84141" y="244623" z="-3728" cost="46000"/>
+     <e name="Elven Village" x="46951" y="51550" z="-2976" cost="23000"/>
+     <e name="Orc Village" x="-45158" y="-112583" z="-240" cost="17000"/>
+     <e name="Kamael Village" x="-117251" y="46771" z="360" cost="32000"/>
+     <e name="Abandoned Coal Mines" x="139714" y="-177456" z="-1536" cost="690"/>
+     <e name="Eastern Mining Zone (Northeastern Shore)" x="169008" y="-208272" z="-3496" cost="2400"/>
+     <e name="Western Mining Zone (Central Shore)" x="136910" y="-205082" z="-3664" cost="970"/>
+     <e name="Mithril Mines Western Entrace" x="171946" y="-173352" z="3440" cost="11000"/>
+     <e name="Mithril Mines Eastern Entrace" x="178591" y="-184615" z="-360" cost="12000"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="The Center of the Mithril Mines" x="175499" y="-181586" z="-904" cost="1000"/>
+     <e name="The Center of the Abandoned Coal Mines" x="144706" y="-173223" z="-1520" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="The Center of the Mithril Mines" x="175499" y="-181586" z="-904" cost="1" itemId="6651"/>
+     <e name="The Center of the Abandoned Coal Mines" x="144706" y="-173223" z="-1520" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30576">
+   <group id="1">
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="23000"/>
+     <e name="The Town of Schuttgart" x="87170" y="-143355" z="-1288" cost="13000"/>
+     <e name="Dark Elven Village" x="9744" y="15645" z="-4568" cost="13000"/>
+     <e name="Dwarven Village" x="115120" y="-178224" z="-880" cost="17000"/>
+     <e name="Talking Island Village" x="-84141" y="244623" z="-3728" cost="35000"/>
+     <e name="Elven Village" x="46951" y="51550" z="-2976" cost="18000"/>
+     <e name="Kamael Village" x="-117251" y="46771" z="360" cost="17000"/>
+     <e name="Immortal Plateau, Southern Region" x="-4190" y="-80040" z="-2696" cost="2000"/>
+     <e name="The Immortal Plateau" x="-10983" y="-117484" z="-2464" cost="960"/>
+     <e name="Cave of Trials" x="9340" y="-112509" z="-2509" cost="1500"/>
+     <e name="Frozen Waterfall" x="8652" y="-139941" z="-1144" cost="1600"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Immortal Plateau, Northen Region" x="-25309" y="-131569" z="-680" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Immortal Plateau, Northen Region" x="-25309" y="-131569" z="-680" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30716">
+   <group id="1">
+     <e name="1st Floor Underground Shopping Area" x="84856" y="15912" z="-4270" cost="0"/>
+     <e name="1st Floor Lobby" x="85336" y="16137" z="-3640" cost="0"/>
+     <e name="3rd Floor Elven Wizard Guild" x="85391" y="16228" z="-2270" cost="0"/>
+     <e name="4th Floor Dark Wizard Guild" x="85391" y="16228" z="-1750" cost="0"/>
+   </group>
+  </npc>
+
+  <npc id="30719">
+   <group id="1">
+     <e name="1st Floor Underground Shopping Area" x="84970" y="15961" z="-4270" cost="0"/>
+     <e name="1st Floor Lobby" x="85475" y="16087" z="-3640" cost="0"/>
+     <e name="2nd Floor Human Wizard Guild" x="85475" y="16087" z="-2780" cost="0"/>
+     <e name="4th Floor Dark Wizard Guild" x="85475" y="16087" z="-1750" cost="0"/>
+   </group>
+  </npc>
+
+  <npc id="30722">
+   <group id="1">
+     <e name="1st Floor Underground Shopping Area" x="84971" y="15961" z="-4270" cost="0"/>
+     <e name="1st Floor Lobby" x="85475" y="16087" z="-3640" cost="0"/>
+     <e name="2nd Floor Human Wizard Guild" x="85475" y="16087" z="-2780" cost="0"/>
+     <e name="3rd Floor Elven Wizard Guild" x="85475" y="16087" z="-2270" cost="0"/>
+   </group>
+  </npc>
+
+  <npc id="30836">
+   <group id="1">
+     <e name="The Town of Giran" x="83463" y="148023" z="-3400" cost="4400"/>
+     <e name="The Town of Oren" x="82971" y="53207" z="-1488" cost="6100"/>
+     <e name="The Hunters Village" x="117088" y="76931" z="-2688" cost="3400"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Gorgon Flower Garden" x="113553" y="134813" z="-3640" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Gorgon Flower Garden" x="113553" y="134813" z="-3640" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30727">
+   <group id="1">
+     <e name="The Town of Oren" x="82971" y="53207" z="-1488" cost="3700"/>
+     <e name="The Hunter Village" x="117088" y="76931" z="-2688" cost="6800"/>
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="6200"/>
+   </group>
+   <group id="2">
+     <e name="1st Floor Underground Shopping Area" x="84971" y="15961" z="-4270" cost="0"/>
+     <e name="2nd Floor Human Wizard Guild" x="85475" y="16087" z="-2780" cost="0"/>
+     <e name="3rd Floor Elven Wizard Guild" x="85475" y="16087" z="-2270" cost="0"/>
+     <e name="4th Floor Dark Wizard Guild" x="85475" y="16087" z="-1750" cost="0"/>
+   </group>
+  </npc>
+
+  <npc id="30848">
+   <group id="1">
+     <e name="The Town of Goddard" x="147850" y="-55300" z="-2728" cost="8100"/>
+     <e name="The Town of Oren" x="82971" y="53207" z="-1488" cost="6900"/>
+     <e name="The Town of Giran" x="83463" y="148045" z="-3400" cost="13000"/>
+     <e name="Heine" x="111455" y="219400" z="-3544" cost="59000"/>
+     <e name="The Town of Schuttgart" x="87170" y="-143355" z="-1288" cost="53000"/>
+     <e name="The Town of Dion" x="15472" y="142880" z="-2688" cost="52000"/>
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="56000"/>
+     <e name="Rune Township" x="43835" y="-47749" z="-792" cost="37000"/>
+     <e name="Kamael Village" x="-117251" y="46771" z="360" cost="26000"/>
+     <e name="The Hunters Village" x="117088" y="76931" z="-2688" cost="5900"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3423" cost="2000"/>
+     <e name="Forsaken Plains" x="168217" y="37990" z="-4072" cost="1900"/>
+     <e name="Seal of Shilen" x="184737" y="19750" z="-3168" cost="3000"/>
+     <e name="Forest of Mirrors" x="142065" y="81300" z="-3000" cost="4400"/>
+     <e name="Blazing Swamp" x="155310" y="-16339" z="-3320" cost="6800"/>
+     <e name="Fields of Massacre" x="183543" y="-14974" z="-2776" cost="6500"/>
+     <e name="Ancient Battleground" x="106517" y="-2871" z="-3416" cost="5900"/>
+     <e name="Silent Valley" x="170838" y="55776" z="-5280" cost="6100"/>
+     <e name="Tower of Insolence" x="119900" y="16090" z="-5000" cost="4200"/>
+     <e name="Entrace to Giant's Cave" x="174491" y="50942" z="-4360" cost="7400"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="The Giant's Cave Upper Layer" x="183985" y="61424" z="-3992" cost="1000"/>
+     <e name="The Giant's Cave Lower Layer" x="191754" y="56760" z="-7624" cost="1000"/>
+     <e name="Plains of Glory" x="135756" y="19557" z="-3424" cost="1000"/>
+     <e name="War-Torn Plains" x="156898" y="11217" z="-4032" cost="1000"/>
+     <e name="Tower of Insolence, 3rd Floor" x="110848" y="16154" z="-2120" cost="1000"/>
+     <e name="Tower of Insolence, 5th Floor" x="118404" y="15988" z="832" cost="1000"/>
+     <e name="Tower of Insolence, 7th Floor" x="115064" y="12181" z="2960" cost="1000"/>
+     <e name="Tower of Insolence, 10th Floor" x="118525" y="16455" z="5984" cost="1000"/>
+     <e name="Tower of Insolence, 13th Floor" x="115384" y="16820" z="9000" cost="1000"/>
+     <e name="Hunters Valley" x="114306" y="86573" z="-3112" cost="1000"/>
+     <e name="Anghel Waterfall" x="166182" y="91560" z="-3168" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="The Giant's Cave Upper Layer" x="183985" y="61424" z="-3992" cost="1" itemId="6651"/>
+     <e name="The Giant's Cave Lower Layer" x="191754" y="56760" z="-7624" cost="1" itemId="6651"/>
+     <e name="Plains of Glory" x="135756" y="19557" z="-3424" cost="1" itemId="6651"/>
+     <e name="War-Torn Plains" x="156898" y="11217" z="-4032" cost="1" itemId="6651"/>
+     <e name="Tower of Insolence, 3rd Floor" x="110848" y="16154" z="-2120" cost="1" itemId="6651"/>
+     <e name="Tower of Insolence, 5th Floor" x="118404" y="15988" z="832" cost="1" itemId="6651"/>
+     <e name="Tower of Insolence, 7th Floor" x="115064" y="12181" z="2960" cost="1" itemId="6651"/>
+     <e name="Tower of Insolence, 10th Floor" x="118525" y="16455" z="5984" cost="1" itemId="6651"/>
+     <e name="Tower of Insolence, 13th Floor" x="115384" y="16820" z="9000" cost="1" itemId="6651"/>
+     <e name="Hunters Valley" x="114306" y="86573" z="-3112" cost="1" itemId="6651"/>
+     <e name="Anghel Waterfall" x="166182" y="91560" z="-3168" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30878">
+   <group id="1">
+     <e name="The Town of Giran" x="83463" y="148045" z="-3400" cost="5200"/>
+     <e name="Heine" x="111333" y="219345" z="-3546" cost="7100"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="30899">
+   <group id="1">
+     <e name="The Town of Giran" x="83463" y="148045" z="-3400" cost="7600"/>
+     <e name="The Town of Oren" x="82971" y="53207" z="-1488" cost="50000"/>
+     <e name="The Town of Dion" x="15472" y="142880" z="-2688" cost="12000"/>
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="59000"/>
+     <e name="The Town of Goddard" x="147850" y="-55300" z="-2728" cost="83000"/>
+     <e name="Rune Township" x="43835" y="-47749" z="-792" cost="82000"/>
+     <e name="The Town of Schuttgart" x="87170" y="-143355" z="-1288" cost="100000"/>
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="47000"/>
+     <e name="Giran Harbor" x="47938" y="186864" z="-3480" cost="7100"/>
+     <e name="Field of Silence" x="91088" y="182384" z="-3192" cost="12000"/>
+     <e name="Field of Whispers" x="74592" y="207656" z="-3032" cost="5900"/>
+     <e name="Alligator Island" x="115583" y="192261" z="-3488" cost="2100"/>
+     <e name="Garden of Eva" x="84413" y="234334" z="-3656" cost="2400"/>
+     <e name="Isle of Prayer" x="149518" y="195280" z="-3736" cost="7200"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Field of Silence Center" x="80987" y="182423" z="-3504" cost="1000"/>
+     <e name="Field of Whispers Center" x="86147" y="218268" z="-3592" cost="1000"/>
+     <e name="Field of Silence (Western Section)" x="75387" y="195263" z="-3000" cost="1000"/>
+     <e name="Field of Whispers (Western Section)" x="97786" y="209303" z="-3040" cost="1000"/>
+     <e name="The Center of Alligator Island" x="113708" y="178387" z="-3232" cost="1000"/>
+     <e name="Inside the Garden of Eva" x="82693" y="242220" z="-6712" cost="1000"/>
+     <e name="Garden of Eva - 2nd level" x="79248" y="247390" z="-8816" cost="1000"/>
+     <e name="Garden of Eva - 3rd level" x="77868" y="250400" z="-9328" cost="1000"/>
+     <e name="Garden of Eva - 4th level" x="78721" y="253309" z="-9840" cost="1000"/>
+     <e name="Garden of Eva - 5th level" x="82951" y="252354" z="-10592" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Field of Silence Center" x="80987" y="182423" z="-3504" cost="1" itemId="6651"/>
+     <e name="Field of Whispers Center" x="86147" y="218268" z="-3592" cost="1" itemId="6651"/>
+     <e name="Field of Silence (Western Section)" x="75387" y="195263" z="-3000" cost="1" itemId="6651"/>
+     <e name="Field of Whispers (Western Section)" x="97786" y="209303" z="-3040" cost="1" itemId="6651"/>
+     <e name="The Center of Alligator Island" x="113708" y="178387" z="-3232" cost="1" itemId="6651"/>
+     <e name="Inside the Garden of Eva" x="82693" y="242220" z="-6712" cost="1" itemId="6651"/>
+     <e name="Garden of Eva, 2nd level" x="79248" y="247390" z="-8816" cost="1" itemId="6651"/>
+     <e name="Garden of Eva, 3rd level" x="77868" y="250400" z="-9328" cost="1" itemId="6651"/>
+     <e name="Garden of Eva, 4th level" x="78721" y="253309" z="-9840" cost="1" itemId="6651"/>
+     <e name="Garden of Eva, 5th level" x="82951" y="252354" z="-10592" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="31212">
+   <group id="1">
+     <e name="Obelisk Of Victory" x="-99586" y="237637" z="-3568" cost="140"/>
+     <e name="Western Territory Of Talking Island" x="-106696" y="214691" z="-3424" cost="310"/>
+     <e name="Singing Waterfall" x="-111728" y="244330" z="-3448" cost="230"/>
+   </group>
+  </npc>
+
+  <npc id="31213">
+   <group id="1">
+     <e name="Elven Forest" x="21362" y="51122" z="-3688" cost="210"/>
+     <e name="Neutral Zone" x="-10612" y="75881" z="-3592" cost="520"/>
+     <e name="The Center of the Neutral Zone" x="-18415" y="85624" z="-3680" cost="610"/>
+   </group>
+  </npc>
+
+  <npc id="31214">
+   <group id="1">
+     <e name="Dark Forest" x="-22224" y="14168" z="-3232" cost="260"/>
+     <e name="The center of the Dark Forest" x="-14129" y="27094" z="-3680" cost="220"/>
+     <e name="Swampland" x="-21966" y="40544" z="-3192" cost="330"/>
+     <e name="Neutral Zone" x="-10612" y="75881" z="-3592" cost="530"/>
+     <e name="The Center of the Neutral Zone" x="-18415" y="85624" z="-3680" cost="630"/>
+     <e name="Spider Nest" x="-61095" y="75104" z="-3352" cost="1100"/>
+   </group>
+  </npc>
+
+  <npc id="31215">
+   <group id="1">
+     <e name="Immortal Plateau, Southern Region" x="-4190" y="-80040" z="-2696" cost="620"/>
+     <e name="Immortal Plateau, Northern Region" x="-10983" y="-117484" z="-2464" cost="290"/>
+     <e name="Immortal Plateau, Western Region" x="-25309" y="-131569" z="-680" cost="230"/>
+     <e name="Frozen Waterfall" x="8652" y="-139941" z="-1144" cost="500"/>
+   </group>
+  </npc>
+
+  <npc id="31216">
+   <group id="1">
+     <e name="Eastern Mining Zone (Northeastern Shore)" x="169008" y="-208272" z="-3496" cost="740"/>
+     <e name="Western Mining Zone (Central Shore)" x="136910" y="-205082" z="-3664" cost="290"/>
+   </group>
+  </npc>
+
+  <npc id="31217">
+   <group id="1">
+     <e name="Abbandoned Camp" x="-49853" y="147089" z="-2784" cost="370"/>
+     <e name="Wind Hill" x="-88539" y="83389" z="-2864" cost="800"/>
+     <e name="Orc Barracks" x="-89763" y="105359" z="-3576" cost="540"/>
+     <e name="Fellmere Harvest Ground" x="-63736" y="101522" z="-3552" cost="430"/>
+     <e name="Windmill Hill" x="-75437" y="168800" z="-3632" cost="160"/>
+     <e name="Red Rock Ridge" x="-42256" y="198333" z="-2800" cost="1100"/>
+     <e name="Wastelands, Western Region" x="-47506" y="179572" z="-3632" cost="530"/>
+     <e name="Langk Lizardman Dwelling" x="-44763" y="203470" z="-3592" cost="540"/>
+     <e name="Forgotten Temple Entrance" x="-53001" y="191425" z="-3568" cost="590"/>
+     <e name="Wastelands" x="-16526" y="208032" z="-3664" cost="1000"/>
+   </group>
+  </npc>
+
+  <npc id="31218">
+   <group id="1">
+     <e name="Ruins of Agony" x="-41248" y="122848" z="-2904" cost="230"/>
+     <e name="Ruins of Deaspair" x="-19120" y="136816" z="-3752" cost="180"/>
+     <e name="Evil Hunting Grounds" x="-6989" y="109503" z="-3040" cost="120"/>
+     <e name="AThe Ant Nest" x="-9959" y="176184" z="-4160" cost="640"/>
+     <e name="Windawood Manor" x="-28327" y="155125" z="-3496" cost="430"/>
+   </group>
+  </npc>
+
+  <npc id="31219">
+   <group id="1">
+     <e name="Cruma Marshlands" x="5106" y="126916" z="-3664" cost="220"/>
+     <e name="The Center of the Cruma Marshland" x="17743" y="120165" z="-3696" cost="270"/>
+     <e name="Fortress of Resistance" x="47382" y="111278" z="-2104" cost="530"/>
+     <e name="Plains Of Dion" x="630" y="179184" z="-3720" cost="470"/>
+     <e name="Floran Agricultural Area" x="8312" y="154875" z="-2985" cost="570"/>
+     <e name="Bee Hive" x="34475" y="188095" z="-2976" cost="880"/>
+     <e name="Execution Grounds" x="50568" y="152408" z="-2656" cost="430"/>
+     <e name="Tanor Canyon" x="58316" y="163851" z="-2816" cost="1100"/>
+   </group>
+  </npc>
+
+  <npc id="31220">
+   <group id="1">
+     <e name="Dragon Valley" x="73024" y="118485" z="-3688" cost="560"/>
+     <e name="The Center of Dragon Valley" x="122824" y="110836" z="-3720" cost="970"/>
+     <e name="Breka's Stronghold" x="85546" y="131328" z="-3672" cost="300"/>
+     <e name="Gorgon Flower Garden" x="113553" y="134553" z="-3640" cost="590"/>
+   </group>
+  </npc>
+
+  <npc id="31221">
+   <group id="1">
+     <e name="Timak Outpost" x="67097" y="68815" z="-3648" cost="530"/>
+     <e name="Plains Of The Lizardmen" x="87252" y="85514" z="-3056" cost="580"/>
+     <e name="Skyshadow Meadow" x="89914" y="46276" z="-3616" cost="230"/>
+     <e name="Outlaw Forest" x="91539" y="-12204" z="-2440" cost="1500"/>
+     <e name="Sea of Spores" x="64328" y="26803" z="-3768" cost="770"/>
+     <e name="Forest of Evil" x="93710" y="17495" z="-3800" cost="900"/>
+   </group>
+  </npc>
+
+  <npc id="31222">
+   <group id="1">
+     <e name="Field of Silence" x="91088" y="182384" z="-3192" cost="750"/>
+     <e name="West Field of Silence" x="69748" y="186111" z="-2872" cost="950"/>
+     <e name="East Field of Whisper" x="97786" y="209303" z="-3040" cost="300"/>
+     <e name="West Field of Whisper" x="74592" y="207656" z="-3032" cost="690"/>
+     <e name="Alligator Island" x="115583" y="192261" z="-3488" cost="650"/>
+     <e name="The Center of Alligator Island" x="113708" y="178387" z="-3232" cost="980"/>
+   </group>
+  </npc>
+
+  <npc id="31223">
+   <group id="1">
+     <e name="Enchanted Valley, Southern Region" x="124904" y="61992" z="-3920" cost="400"/>
+     <e name="Enchanted Valley, Northern Region" x="104426" y="33746" z="-3800" cost="1000"/>
+     <e name="The Center of Enchanted Valley" x="114674" y="44150" z="-3376" cost="780"/>
+     <e name="Forest of Mirrors" x="142065" y="81300" z="-3000" cost="600"/>
+     <e name="The Center of Forest of Mirrors" x="163707" y="78135" z="-2376" cost="1100"/>
+   </group>
+  </npc>
+
+  <npc id="31224">
+   <group id="1">
+     <e name="Acient Battleground" x="106517" y="-2871" z="-3416" cost="1700"/>
+     <e name="Forsaken Plains" x="168217" y="37990" z="-4072" cost="590"/>
+     <e name="Plains of Glory" x="135580" y="19467" z="-3424" cost="300"/>
+     <e name="War-Torn Plains" x="156898" y="11217" z="-4032" cost="420"/>
+     <e name="Seal of Shilen" x="188611" y="20588" z="-3696" cost="1000"/>
+     <e name="Forest of Mirrors" x="142506" y="63388" z="-3272" cost="1300"/>
+     <e name="Hunters Valley" x="114306" y="86573" z="-3112" cost="1600"/>
+     <e name="Anghel Waterfall" x="166182" y="91560" z="-3160" cost="1600"/>
+     <e name="Fields of Massacre" x="183543" y="-14974" z="-2776" cost="1900"/>
+     <e name="Silent Valley" x="170838" y="55776" z="-5280" cost="1800"/>
+     <e name="Blazing Swamp" x="155310" y="-16339" z="-3320" cost="2000"/>
+   </group>
+  </npc>
+
+  <npc id="31275">
+   <group id="1">
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="71000"/>
+     <e name="The Town of Giran" x="83463" y="148045" z="-3400" cost="63000"/>
+     <e name="The Town of Dion" x="15472" y="142880" z="-2688" cost="71000"/>
+     <e name="The Rune Township" x="43835" y="-47749" z="-792" cost="10000"/>
+     <e name="Heine" x="111455" y="219400" z="-3544" cost="83000"/>
+     <e name="The Town of Schuttgart" x="87170" y="-143355" z="-1288" cost="10000"/>
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="8100"/>
+     <e name="The Town of Oren" x="82971" y="53207" z="-1488" cost="37000"/>
+     <e name="Varkas Silenos Stronghold" x="125740" y="-40864" z="-3726" cost="4200"/>
+     <e name="Ketra Orc Outpost" x="146990" y="-67128" z="-3640" cost="1800"/>
+     <e name="Hot Springs" x="144880" y="-113468" z="-2560" cost="9300"/>
+     <e name="Wall of Argos" x="165054" y="-47861" z="-3560" cost="2200"/>
+     <e name="Monastery of Silence" x="106414" y="-87799" z="-2920" cost="10000"/>
+     <e name="Entrace of the Forge of the Gods" x="169018" y="-116303" z="-2432" cost="10000"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Varka Silenos Village" x="107929" y="-52248" z="-2408" cost="1000"/>
+     <e name="Ketra Orc Village" x="149817" y="-80053" z="-5576" cost="1000"/>
+     <e name="Devil's Pass" x="106349" y="-61870" z="-2904" cost="1000"/>
+     <e name="Garden of Wild Beasts" x="132997" y="-60608" z="-2960" cost="1000"/>
+     <e name="The Center of the Hot Springs" x="144625" y="-101291" z="-3384" cost="1000"/>
+     <e name="The Center of the Wall of Argos" x="183140" y="-53307" z="-1896" cost="1000"/>
+     <e name="Shrine of Loyality" x="191257" y="-59388" z="-2872" cost="1000"/>
+     <e name="Four Sepulchers" x="178127" y="-84435" z="-7216" cost="1000"/>
+     <e name="Imperial Tomb" x="186699" y="-75915" z="-2824" cost="1000"/>
+     <e name="Forge of the Gods - Top Level" x="173436" y="-112725" z="-3680" cost="1000"/>
+     <e name="Forge of the Gods - Lower Level" x="179887" y="-111241" z="-5824" cost="1000"/>
+     <e name="Monastery of Silence" x="106414" y="-87799" z="-2920" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Varka Silenos Village" x="107929" y="-52248" z="-2408" cost="1" itemId="6651"/>
+     <e name="Ketra Orc Village" x="149817" y="-80053" z="-5576" cost="1" itemId="6651"/>
+     <e name="Devil's Pass" x="106349" y="-61870" z="-2904" cost="1" itemId="6651"/>
+     <e name="Garden of Wild Beasts" x="132997" y="-60608" z="-2960" cost="1" itemId="6651"/>
+     <e name="The Center of the Hot Springs" x="144625" y="-101291" z="-3384" cost="1" itemId="6651"/>
+     <e name="The Center of the Wall of Argos" x="183140" y="-53307" z="-1896" cost="1" itemId="6651"/>
+     <e name="Shrine of Loyality" x="191257" y="-59388" z="-2872" cost="1" itemId="6651"/>
+     <e name="Four Sepulchers" x="178127" y="-84435" z="-7216" cost="1" itemId="6651"/>
+     <e name="Imperial Tomb" x="186699" y="-75915" z="-2824" cost="1" itemId="6651"/>
+     <e name="Forge of the Gods - Top Level" x="173436" y="-112725" z="-3680" cost="1" itemId="6651"/>
+     <e name="Forge of the Gods - Lower Level" x="179887" y="-111241" z="-5824" cost="1" itemId="6651"/>
+     <e name="Monastery of Silence" x="106414" y="-87799" z="-2920" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="31320">
+   <group id="1">
+     <e name="The Town of Goddard" x="147850" y="-55300" z="-2728" cost="10000"/>
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="53000"/>
+     <e name="The Town of Giran" x="83463" y="148045" z="-3400" cost="59000"/>
+     <e name="The Town of Dion" x="15472" y="142880" z="-2688" cost="57000"/>
+     <e name="Heine" x="111455" y="219400" z="-3544" cost="82000"/>
+     <e name="The Town of Schuttgart" x="87170" y="-143355" z="-1288" cost="10000"/>
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="37000"/>
+     <e name="The Town of Oren" x="82971" y="53207" z="-1488" cost="10000"/>
+     <e name="Wild Beast Pastures" x="43805" y="-88010" z="-2752" cost="4800"/>
+     <e name="Valley of Saints" x="65307" y="-71445" z="-3696" cost="3800"/>
+     <e name="Forest of the Dead" x="52107" y="-54328" z="-3152" cost="1200"/>
+     <e name="Swamp of Screams" x="69340" y="-50203" z="-3288" cost="3000"/>
+     <e name="Monestary of Silence" x="106414" y="-87799" z="-2920" cost="14000"/>
+     <e name="Stakato Nest" x="89513" y="-44800" z="-2136" cost="9100"/>
+     <e name="Primeval Isle Wharf" x="11235" y="-24026" z="-3640" cost="6400"/>
+   </group>
+   <group id="2">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="The Center of the Forest of the Dead" x="54425" y="-41692" z="-3072" cost="1000"/>
+     <e name="The Center of the Valley of Saints" x="84092" y="-80084" z="-3504" cost="1000"/>
+     <e name="Cursed Village" x="57670" y="-41672" z="-3144" cost="1000"/>
+     <e name="Shyeed's Cavern" x="76911" y="-55295" z="-5824" cost="1000"/>
+     <e name="Monastery of Silence" x="106414" y="-87799" z="-2920" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="The Center of the Forest of the Dead" x="54425" y="-41692" z="-3072" cost="1" itemId="6651"/>
+     <e name="The Center of the Valley of Saints" x="84092" y="-80084" z="-3504" cost="1" itemId="6651"/>
+     <e name="Cursed Village" x="57670" y="-41672" z="-3144" cost="1" itemId="6651"/>
+     <e name="Shyeed's Cavern" x="76911" y="-55295" z="-5824" cost="1" itemId="6651"/>
+     <e name="Monastery of Silence" x="106414" y="-87799" z="-2920" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="31698">
+   <group id="1">
+     <e name="Rune Castle Town Guild" x="38320" y="-48092" z="-1153" cost="150"/>
+   </group>
+  </npc>
+
+  <npc id="31699">
+   <group id="1">
+     <e name="Rune Castle Town Guild" x="38308" y="-48138" z="870" cost="150"/>
+   </group>
+  </npc>
+
+  <npc id="31767">
+   <group id="1">
+     <e name="Wall of Argos" x="165054" y="-47861" z="-3560" cost="660"/>
+     <e name="The Center of the Wall of Argos" x="181322" y="-49933" z="-3526" cost="1200"/>
+     <e name="Garden of Wild Beasts" x="132997" y="-60608" z="-2960" cost="570"/>
+     <e name="Devil's Pass" x="106349" y="-61870" z="-2904" cost="1500"/>
+     <e name="Varkas Silenos Stronghold" x="125740" y="-40864" z="-3726" cost="1200"/>
+     <e name="Ketra Orc Outpost" x="146990" y="-67128" z="-3640" cost="570"/>
+     <e name="Hot Springs" x="144880" y="-113468" z="-2560" cost="2700"/>
+     <e name="The Center of Hot Springs" x="144337" y="-102384" z="-3512" cost="2200"/>
+   </group>
+  </npc>
+
+  <npc id="31861">
+   <group id="1">
+     <e name="2nd Floor 100.000" x="114649" y="18587" z="-3609" cost="100000"/>
+     <e name="14th Baium 900.000" x="113098" y="14532" z="10077" cost="900000"/>
+   </group>
+  </npc>
+
+  <npc id="31964">
+   <group id="1">
+     <e name="Rune Township" x="43835" y="-47749" z="-792" cost="10000"/>
+     <e name="The Town of Goddard" x="147850" y="-55300" z="-2728" cost="10000"/>
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="53000"/>
+     <e name="The Town of Oren" x="82971" y="53207" z="-1488" cost="59000"/>
+     <e name="Heine" x="111455" y="219400" z="-3544" cost="100000"/>
+     <e name="The Town of Giran" x="83463" y="148045" z="-3400" cost="87000"/>
+     <e name="The Town of Dion" x="15472" y="142880" z="-2688" cost="88000"/>
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="85000"/>
+     <e name="Orc Village" x="-45158" y="-112583" z="-240" cost="13000"/>
+     <e name="Dwarven Village" x="115120" y="-178224" z="-880" cost="4400"/>
+     <e name="Den of Evil" x="68693" y="-110438" z="-1904" cost="7500"/>
+     <e name="Plunderous Plains" x="111965" y="-154172" z="-1528" cost="1600"/>
+     <e name="Frozen Labyrinth" x="113903" y="-108752" z="-848" cost="3500"/>
+     <e name="Crypts of Disgrace" x="47692" y="-115745" z="-3744" cost="9600"/>
+     <e name="Pavel Ruins" x="91280" y="-117152" z="-3928" cost="2100"/>
+   </group>
+   <group id="2">
+     <e name="Frost Lake" x="107577" y="-122392" z="-3632" cost="1000"/>
+     <e name="Grave Robber Hideout" x="44221" y="-114232" z="-2784" cost="1000"/>
+     <e name="Sky Wagon Relic" x="121618" y="-141554" z="-1496" cost="1000"/>
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1000"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1000"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1000"/>
+   </group>
+   <group id="3">
+     <e name="Frost Lake" x="107577" y="-122392" z="-3632" cost="1" itemId="6651"/>
+     <e name="Grave Robber Hideout" x="44221" y="-114232" z="-2784" cost="1" itemId="6651"/>
+     <e name="Sky Wagon Relic" x="121618" y="-141554" z="-1496" cost="1" itemId="6651"/>
+     <e name="Gludin Arena" x="-87328" y="142266" z="-3640" cost="1" itemId="6651"/>
+     <e name="Giran Arena" x="73579" y="142709" z="-3768" cost="1" itemId="6651"/>
+     <e name="Coliseum" x="146440" y="46723" z="-3432" cost="1" itemId="6651"/>
+   </group>
+  </npc>
+
+  <npc id="32048">
+   <group id="1">
+     <e name="Crypts of Disgrace" x="47692" y="-115745" z="-3744" cost="570"/>
+     <e name="Plunderous Plains" x="111965" y="-154172" z="-1528" cost="480"/>
+     <e name="Den of Evil" x="68693" y="-110438" z="-1904" cost="900"/>
+     <e name="Pavel Ruins" x="91280" y="-117152" z="-3928" cost="630"/>
+     <e name="Frozen Labyrinth" x="113903" y="-108752" z="-848" cost="1000"/>
+   </group>
+  </npc>
+
+  <npc id="32163">
+   <group id="1">
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="12000"/>
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="26000"/>
+     <e name="Talking Island Village" x="-84141" y="244623" z="-3728" cost="20000"/>
+     <e name="Dark Elven Village" x="9744" y="15645" z="-4568" cost="13000"/>
+     <e name="Elven Village" x="46951" y="51550" z="-2976" cost="16000"/>
+     <e name="Dwarven Village" x="115120" y="-178224" z="-880" cost="32000"/>
+     <e name="Orc Village" x="-45158" y="-112583" z="-240" cost="17000"/>
+     <e name="1st Base" x="-122410" y="73205" z="-2872" cost="2600"/>
+     <e name="2nd Base" x="-95540" y="52150" z="-2024" cost="2200"/>
+     <e name="3rd Base" x="-85928" y="37095" z="-2048" cost="3200"/>
+     <e name="Isle of Souls Harbor" x="-74016" y="51932" z="-3680" cost="4300"/>
+   </group>
+   <group id="2">
+     <e name="Stronghold I" x="-122410" y="73205" z="-2872" cost="0"/>
+     <e name="Stronghold II" x="-95540" y="52150" z="-2024" cost="0"/>
+     <e name="Stronghold III" x="-85928" y="37095" z="-2048" cost="0"/>
+   </group>
+  </npc>
+
+  <npc id="32189">
+   <group id="1">
+     <e name="The Town of Gludio" x="-12787" y="122779" z="-3112" cost="9300"/>
+     <e name="The Town of Aden" x="146783" y="25808" z="-2008" cost="22000"/>
+     <e name="Kamael Village" x="-117250" y="46750" z="360" cost="4300"/>
+   </group>
+  </npc>
+  
+  <npc id="35461">
+   <group id="1">
+     <e name="tp1" x="147728" y="-56331" z="-2776" cost="0"/>
+     <e name="tp2" x="147731" y="-58930" z="-2976" cost="0"/>
+     <e name="Kamael Village" x="-117250" y="46750" z="360" cost="0"/>
+   </group>
+   <group id="2">
+     <e name="tp3" x="147728" y="-56331" z="-2776" cost="0"/>
+     <e name="tp4" x="147731" y="-58930" z="-2976" cost="0"/>
+     <e name="orc kamael Village" x="-117250" y="46750" z="360" cost="0"/>
+   </group>
+  </npc>
+ </list>
+</null>
