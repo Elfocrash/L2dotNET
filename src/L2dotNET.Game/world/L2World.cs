@@ -248,12 +248,12 @@ namespace L2dotNET.Game.world
                 log.Warn("l2world: unrealiseEntry error, object on unk territory " + obj.X + " " + obj.Y + " " + obj.Z);
         }
 
-        public void BroadcastToRegion(int instanceId, int x, int y, GameServerNetworkPacket pck)
+        public void BroadcastToRegion(int x, int y, GameServerNetworkPacket pck)
         {
             L2WorldRegion reg = GetRegion(x, y);
             if (reg != null)
             {
-                reg.broadcastPacket(instanceId, pck, false);
+                reg.broadcastPacket(pck, false);
             }
             else
                 log.Warn("l2world: broadcastRegionPacket error, object on unk territory " + x + " " + y);

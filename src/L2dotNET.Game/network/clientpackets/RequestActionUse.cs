@@ -31,7 +31,7 @@ namespace L2dotNET.Game.network.l2recv
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player._isDead || player.isCastingNow() || player._p_block_act == 1)
+            if (player.Dead || player.isCastingNow() || player._p_block_act == 1)
             {
                 player.sendActionFailed();
                 return;

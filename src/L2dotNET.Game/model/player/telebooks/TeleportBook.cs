@@ -132,7 +132,7 @@ namespace L2dotNET.Game.model.player.telebooks
                 return;
             }
 
-            if (player._isDead)
+            if (player.Dead)
             {
                 player.sendSystemMessage(2354); //You cannot use My Teleports while you are dead.
                 return;

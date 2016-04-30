@@ -18,9 +18,9 @@ namespace L2dotNET.Game.network.l2send
 
             writeD(obj.ObjID);
 
-            writeD(obj.destx);
-            writeD(obj.desty);
-            writeD(obj.destz);
+            writeD(obj.DestX);
+            writeD(obj.DestY);
+            writeD(obj.DestZ);
 
             writeD(obj.X);
             writeD(obj.Y);

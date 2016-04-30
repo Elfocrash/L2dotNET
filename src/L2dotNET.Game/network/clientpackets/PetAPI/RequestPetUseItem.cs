@@ -28,7 +28,7 @@ namespace L2dotNET.Game.network.l2recv
 
             L2Pet pet = (L2Pet)player.Summon;
 
-            if (pet._p_block_act == 1 || pet._isDead)
+            if (pet._p_block_act == 1 || pet.Dead)
             {
                 player.sendActionFailed();
                 return;

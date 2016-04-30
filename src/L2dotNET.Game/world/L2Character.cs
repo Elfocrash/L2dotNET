@@ -16,14 +16,14 @@ namespace L2dotNET.Game.world
     {
         public SortedList<int, TSkill> _skills = new SortedList<int, TSkill>();
 
-        public string Name;
-        public string Title;
-        public int SpawnX;
-        public int SpawnY;
-        public int SpawnZ;
+        public virtual string Name { get; set; }
+        public virtual string Title { get; set; }
+        public int SpawnX { get; set; }
+        public int SpawnY { get; set; }
+        public int SpawnZ { get; set; }
         private byte[] _zones = new byte[ZoneId.GetZoneCount()];
 
-        public byte IsRunning = 1;
+        public byte IsRunning { get; set; } = 1;
 
         public int AbnormalBitMask;
         public int AbnormalBitMaskEx;
@@ -623,20 +623,19 @@ namespace L2dotNET.Game.world
 
         public int clientPosX, clientPosY, clientPosZ, clientHeading;
 
-        public virtual void teleport(int x, int y, int z, int instanceId = -1)
+        public virtual void teleport(int x, int y, int z)
         {
             ChangeTarget();
             clearKnowns(true);
             X = x;
             Y = y;
             Z = z;
-            InstanceID = instanceId;
             if (this is L2Player)
             {
                 if (((L2Player)this).Summon != null)
                 {
                     L2Player pl = (L2Player)this;
-                    pl.Summon.teleport(x, y, z, instanceId);
+                    pl.Summon.teleport(x, y, z);
                     pl.Summon.isTeleporting = true;
                 }
 
@@ -744,7 +743,7 @@ namespace L2dotNET.Game.world
 
         public void reduceHpArea(int damage, int msgId)
         {
-            if (_isDead)
+            if (Dead)
                 return;
 
             CurHP -= damage;
@@ -756,7 +755,7 @@ namespace L2dotNET.Game.world
 
             if (CurHP <= 0)
             {
-                _isDead = true;
+                Dead = true;
                 CurHP = 0;
                 doDie(null, true);
                 return;
@@ -768,7 +767,7 @@ namespace L2dotNET.Game.world
 
         public override void reduceHp(L2Character attacker, double damage)
         {
-            if (_isDead)
+            if (Dead)
                 return;
 
             if (this is L2Player && attacker is L2Player || attacker is L2Summon)
@@ -805,7 +804,7 @@ namespace L2dotNET.Game.world
 
         public virtual void doDie(L2Character killer, bool bytrigger)
         {
-            _isDead = true;
+            Dead = true;
             StopRegeneration();
             if (isAttacking())
                 abortAttack();
@@ -874,7 +873,7 @@ namespace L2dotNET.Game.world
                 return;
             }
 
-            if (target._isDead)
+            if (target.Dead)
             {
                 AICharacter.NotifyTargetDead();
                 return;
@@ -1197,9 +1196,9 @@ namespace L2dotNET.Game.world
                 return;
             }
 
-            destx = x;
-            desty = y;
-            destz = z;
+            DestX = x;
+            DestY = y;
+            DestZ = z;
 
             MoveTo(x, y, z);
         }
@@ -1551,20 +1550,20 @@ namespace L2dotNET.Game.world
                 }
             }
 
-            destx = x;
-            desty = y;
-            destz = z;
+            DestX = x;
+            DestY = y;
+            DestZ = z;
 
             double dx = (x - X), dy = (y - Y), dz = (z - Z);
             double distance = Math.Sqrt(dx * dx + dy * dy);
 
-            double speed = CharacterStat.getStat(model.skills2.TEffectType.p_speed);
+            double speed = CharacterStat.getStat(TEffectType.p_speed);
             double spy = dy / distance, spx = dx / distance;
  
             TicksToMove = 1 + (int)(10 * distance / speed);
             TicksToMoveCompleted = 0;
-            XSpeedTicks = (destx - X) / TicksToMove;
-            YSpeedTicks = (desty - Y) / TicksToMove;
+            XSpeedTicks = (DestX - X) / TicksToMove;
+            YSpeedTicks = (DestY - Y) / TicksToMove;
 
             Heading = (int)((Math.Atan2(-spx, -spy) * 10430.378) + short.MaxValue);
 
@@ -1579,7 +1578,7 @@ namespace L2dotNET.Game.world
         {
             validateWaterZones();
 
-            if (destx == X && desty == Y && destz == Z)
+            if (DestX == X && DestY == Y && DestZ == Z)
             {
                 NotifyArrived();
                 return;
@@ -1593,9 +1592,9 @@ namespace L2dotNET.Game.world
             }
             else
             {
-                X = destx;
-                Y = desty;
-                Z = destz;
+                X = DestX;
+                Y = DestY;
+                Z = DestZ;
                 NotifyArrived();
             }
         }
@@ -1613,9 +1612,9 @@ namespace L2dotNET.Game.world
                     broadcastPacket(new StopMove(this));
             }
 
-            destx = 0;
-            desty = 0;
-            destz = 0;
+            DestX = 0;
+            DestY = 0;
+            DestZ = 0;
             XSpeedTicks = 0;
             YSpeedTicks = 0;
             TicksToMove = 0;
@@ -1625,9 +1624,9 @@ namespace L2dotNET.Game.world
         {
             updatePositionTime.Enabled = false;
 
-            destx = 0;
-            desty = 0;
-            destz = 0;
+            DestX = 0;
+            DestY = 0;
+            DestZ = 0;
             XSpeedTicks = 0;
             YSpeedTicks = 0;
             TicksToMove = 0;
@@ -1671,7 +1670,7 @@ namespace L2dotNET.Game.world
         public virtual int AllianceId { get { return 0; } }
         public virtual int AllianceCrestId { get { return 0; } }
 
-        public double MaximumHp
+        public double MaxHp
         {
             get
             {
@@ -1679,7 +1678,7 @@ namespace L2dotNET.Game.world
             }
         }
 
-        public override double CurrentHP
+        public override double CurHP
         {
             get { return CurHP; }
 
@@ -1713,7 +1712,7 @@ namespace L2dotNET.Game.world
             }
         }
 
-        public override double CurrentMP
+        public override double CurMP
         {
             get { return CurMP; }
 
@@ -1747,7 +1746,7 @@ namespace L2dotNET.Game.world
             }
         }
 
-        public override double CurrentCP
+        public override double CurCP
         {
             get { return CurCP; }
 

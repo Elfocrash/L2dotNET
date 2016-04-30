@@ -67,7 +67,7 @@ namespace L2dotNET.Game.ai.npcai
 
         private void SocialTask(object sender, ElapsedEventArgs e)
         {
-            if (myself.CurHP > myself.MaxHp * 0.400000 && !myself._isDead)
+            if (myself.CurHP > myself.MaxHp * 0.400000 && !myself.Dead)
             {
                 if (MoveAroundSocial > 0 && new Random().Next(100) < 40)
                 {

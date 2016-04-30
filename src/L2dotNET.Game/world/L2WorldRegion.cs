@@ -94,23 +94,15 @@ namespace L2dotNET.Game.world
                 double dx = x1 - x;
                 double dy = y1 - y;
 
-                if (obj.InstanceID != ko.InstanceID)
+                if (dx * dx + dy * dy < sqRadius && (z1 - height < z || z1 + height > z))
                 {
-                    ko.removeKnownObject(obj, true);
-                    obj.removeKnownObject(ko, true);
+                    ko.revalidate(obj);
+                    obj.revalidate(ko);
                 }
                 else
                 {
-                    if (dx * dx + dy * dy < sqRadius && (z1 - height < z || z1 + height > z))
-                    {
-                        ko.revalidate(obj);
-                        obj.revalidate(ko);
-                    }
-                    else
-                    {
-                        ko.removeKnownObject(obj, true);
-                        obj.removeKnownObject(ko, true);
-                    }
+                    ko.removeKnownObject(obj, true);
+                    obj.removeKnownObject(ko, true);
                 }
             }
                 
@@ -119,13 +111,10 @@ namespace L2dotNET.Game.world
                     wrn.showObjects(obj, false, radius, height, delLongest, zones);
         }
 
-        public void broadcastPacket(int instanceId, GameServerNetworkPacket pck, bool main)
+        public void broadcastPacket(GameServerNetworkPacket pck, bool main)
         {
             foreach (L2Object o in _objects.Values)
             {
-                if (o.InstanceID != instanceId)
-                    continue;
-
                 if (o is L2Player)
                 {
                     o.sendPacket(pck);
@@ -133,7 +122,7 @@ namespace L2dotNET.Game.world
 
                 if (main)
                     foreach (L2WorldRegion wrn in _surroundingRegions)
-                        wrn.broadcastPacket(instanceId, pck, false);
+                        wrn.broadcastPacket(pck, false);
             }
         }
     }

@@ -43,9 +43,6 @@ namespace L2dotNET.Game.network.l2recv
             if (response != 0 && !Calcs.checkIfInRange(150, player, player.requester, true))
                 response = 0;
 
-            if (response != 0 && player.InstanceID != -1 && player.InstanceID != player.requester.InstanceID)
-                response = 0;
-
             switch (response)
             {
                 case 0:

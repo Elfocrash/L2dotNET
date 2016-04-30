@@ -181,7 +181,7 @@ namespace L2dotNET.Game
             {
                 ObjectId = ObjID,
                 Level = Level,
-                MaxHp = (int)MaximumHp,
+                MaxHp = (int)MaxHp,
                 CurHp = (int)CurHP,
                 MaxCp = (int)MaxCp,
                 CurCp = (int)CurCp,
@@ -2305,7 +2305,7 @@ namespace L2dotNET.Game
                 return;
             }
 
-            if (target._isDead)
+            if (target.Dead)
             {
                 sendMessage("dead");
                 AICharacter.StopAutoAttack();
@@ -2445,7 +2445,7 @@ namespace L2dotNET.Game
 
         public override void AttackDoHit(object sender, ElapsedEventArgs e)
         {
-            if (CurrentTarget != null && !CurrentTarget._isDead)
+            if (CurrentTarget != null && !CurrentTarget.Dead)
             {
                 if (!hit1.miss)
                 {
@@ -2476,7 +2476,7 @@ namespace L2dotNET.Game
 
         public override void AttackDoHit2nd(object sender, ElapsedEventArgs e)
         {
-            if (CurrentTarget != null && !CurrentTarget._isDead)
+            if (CurrentTarget != null && !CurrentTarget.Dead)
             {
                 if (!hit2.miss)
                 {
@@ -2636,7 +2636,7 @@ namespace L2dotNET.Game
         public void Revive(double percent)
         {
             broadcastPacket(new Revive(ObjID));
-            _isDead = false;
+            Dead = false;
             StartRegeneration();
         }
 

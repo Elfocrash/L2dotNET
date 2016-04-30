@@ -80,7 +80,7 @@ namespace L2dotNET.Game.network.l2recv
                         switch (Cfg.chat_shout)
                         {
                             case Cfg.chatoptions.Default:
-                                L2World.Instance.BroadcastToRegion(player.InstanceID, player.X, player.Y, cs);
+                                L2World.Instance.BroadcastToRegion(player.X, player.Y, cs);
                                 break;
                             case Cfg.chatoptions.Disabled:
                                 {
@@ -154,7 +154,7 @@ namespace L2dotNET.Game.network.l2recv
                         switch (Cfg.chat_trade)
                         {
                             case Cfg.chatoptions.Default:
-                                L2World.Instance.BroadcastToRegion(player.InstanceID, player.X, player.Y, cs);
+                                L2World.Instance.BroadcastToRegion(player.X, player.Y, cs);
                                 break;
                             case Cfg.chatoptions.Disabled:
                                 {

@@ -35,7 +35,7 @@ namespace L2dotNET.Game.model.npcs.cubic.data
             if (owner.CurrentTarget != null)
             {
                 //todo target was attacked some time ago with myself
-                if (owner.CurrentTarget._isDead)
+                if (owner.CurrentTarget.Dead)
                     return 0;
 
                 CallSkill(owner, skill1, owner.CurrentTarget);
@@ -53,7 +53,7 @@ namespace L2dotNET.Game.model.npcs.cubic.data
         {
             if (skill2target == "heal")
             {
-                if (owner._isDead || owner.CurrentHP / owner.MaximumHp > 0.9)
+                if (owner.Dead || owner.CurHP / owner.MaxHp > 0.9)
                     return 0;
                 CallSkill(owner, skill2, owner);
                 return 1;
@@ -62,7 +62,7 @@ namespace L2dotNET.Game.model.npcs.cubic.data
             {
                 if (owner.CurrentTarget != null)
                 {
-                    if (owner.CurrentTarget._isDead)
+                    if (owner.CurrentTarget.Dead)
                         return 0;
 
                     CallSkill(owner, skill2, owner.CurrentTarget);

@@ -33,7 +33,7 @@ namespace L2dotNET.Game.network.l2recv
 
             L2Pet pet = (L2Pet)player.Summon;
 
-            if (pet._isDead)
+            if (pet.Dead)
             {
                 player.sendSystemMessage(590);//Your pet is dead and any attempt you make to give it something goes unrecognized.
                 player.sendActionFailed();

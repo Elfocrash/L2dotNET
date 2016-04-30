@@ -100,16 +100,16 @@ namespace L2dotNET.Game.tables.admin
             }
             else if (s == "9")
             {
-                admin.destx = admin.X +200;
-                admin.desty = admin.Y +200;
-                admin.destz = admin.Z;
+                admin.DestX = admin.X +200;
+                admin.DestY = admin.Y +200;
+                admin.DestZ = admin.Z;
                 admin.sendPacket(new CharMoveToLocation(admin));
             }
             else if (s == "11")
             {
-                admin.Boat.destx = -121385;
-                admin.Boat.desty = 261660;
-                admin.Boat.destz = -3610;
+                admin.Boat.DestX = -121385;
+                admin.Boat.DestY = 261660;
+                admin.Boat.DestZ = -3610;
                 admin.Boat.OnRoute = true;
                 admin.Boat.broadcastPacket(new VehicleStarted(admin.Boat.ObjID, 1));
                 admin.Boat.broadcastPacket(new VehicleDeparture(admin.Boat, 400, 1800));
@@ -166,9 +166,9 @@ namespace L2dotNET.Game.tables.admin
                 adm = admin;
                 L2Warrior war = (L2Warrior)NpcTable.Instance.spawnNpc(21003, 14107, 182287, -3586, 32500);
 
-                war.destx = 13107;
-                war.desty = 182287;
-                war.destz = -3586;
+                war.DestX = 13107;
+                war.DestY = 182287;
+                war.DestZ = -3586;
                 admin.sendPacket(new CharMoveToLocation(war));
                 war.dtstart = DateTime.Now;
                 admin.ChangeTarget(war);

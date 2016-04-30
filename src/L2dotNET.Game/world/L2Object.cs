@@ -12,43 +12,21 @@ namespace L2dotNET.Game.world
     {
         public int ObjID;
         public SortedList<int, L2Object> knownObjects = new SortedList<int, L2Object>();
-        public byte Level = 1;
-        public double CurHP;
-        public double CurMP;
-        public double CurCP;
-        public bool _isDead = false;
-        public virtual double CurrentHP
-        {
-            get { return CurHP; }
-
-            set { CurHP = value; }
-        }
-
-        public virtual double CurrentMP
-        {
-            get { return CurMP; }
-
-            set { CurMP = value; }
-        }
-
-        public virtual double CurrentCP
-        {
-            get { return CurCP; }
-
-            set { CurCP = value; }
-        }
-
-        public int X;
-        public int Y;
-        public int Z;
-        public int destx;
-        public int desty;
-        public int destz;
-        public int Heading;
-        public int InstanceID = -1;
-        public int TeamID;
-        public bool Visible = true;
-        public string CurrentRegion;
+        public virtual byte Level { get; set; } = 1;
+        public virtual double CurHP { get; set; }
+        public virtual double CurMP { get; set; }
+        public virtual double CurCP { get; set; }
+        public virtual bool Dead { get; set; } = false;
+        public virtual int X { get; set; }
+        public virtual int Y { get; set; }
+        public virtual int Z { get; set; }
+        public virtual int DestX { get; set; }
+        public virtual int DestY { get; set; }
+        public virtual int DestZ { get; set; }
+        public virtual int Heading { get; set; }
+        public virtual int TeamID { get; set; }
+        public virtual bool Visible { get; set; } = true;
+        public virtual string CurrentRegion { get; set; }
         public byte ObjectSummonType = 0;
 
         public virtual void onAction(L2Player player) {}

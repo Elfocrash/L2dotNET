@@ -56,7 +56,7 @@ namespace L2dotNET.Game.network.l2send
             writeC(pet.Owner != null ? 1 : 0);	// when pet is dead and player exit game, pet doesn't show master name
             writeC(pet.IsRunning);
             writeC(pet.isInCombat() ? 1 : 0);	// attacking 1=true
-            writeC(pet._isDead ? 1 : 0);
+            writeC(pet.Dead ? 1 : 0);
             writeC(pet.AppearMethod()); 
             writeS(pet.Name);
             writeS(pet.Title);

@@ -19,9 +19,9 @@ namespace L2dotNET.Game.model.skills2.effects
 
         public override TEffectResult onStart(L2Character caster, world.L2Character target)
         {
-            double current = target.CurrentHP;
-            target.CurrentHP = power;
-            double next = target.CurrentHP;
+            double current = target.CurHP;
+            target.CurHP = power;
+            double next = target.CurHP;
 
             int diff = (int)(next - current);
             //$s1 HP has been restored.

@@ -80,7 +80,10 @@ namespace L2dotNET.Game.network.l2recv
             L2World.Instance.RealiseEntry(player, null, true);
             player.timer();
 
-            L2World.Instance.GetRegion(player.X, player.Y).checkZones(player, true);
+            L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
+            worldRegion.checkZones(player, true);
+            worldRegion.realiseMe(player, null, false);
+            //player.getKnowns(500, 500, false);
 
             player.sendPacket(new UserInfo(player));
             player.sendPacket(new UserInfo(player));

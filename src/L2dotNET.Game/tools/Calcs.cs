@@ -39,7 +39,6 @@ namespace L2dotNET.Game.tools
         {
             if (obj1 == null || obj2 == null) return false;
             if (range == -1) return true; // not limited
-            if (obj1.InstanceID != obj2.InstanceID) return false;
 
             double rad = obj1.Radius + obj2.Radius;
             double dx = obj1.X - obj2.X;

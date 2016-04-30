@@ -78,7 +78,7 @@ namespace L2dotNET.Game.model.player.ai
             if (dis < 80)
             {
                 L2Character target = (L2Character)player.CurrentTarget;
-                if(!target._isDead)
+                if(!target.Dead)
                     player.doAttack(target);
             }
             else

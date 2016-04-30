@@ -17,7 +17,7 @@ namespace L2dotNET.Game.model.npcs.cubic.data
 
         public override int AiActionTask(L2Player owner)
         {
-            if (owner._isDead || owner.CurrentHP / owner.MaximumHp > 0.9)
+            if (owner.Dead || owner.CurHP / owner.MaxHp > 0.9)
                 return 0;
 
             owner.addAbnormal(skill1, owner, true, false);

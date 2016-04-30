@@ -138,7 +138,6 @@ namespace L2dotNET.Game.model.playable
         {
             Owner = owner;
             owner.Summon = this;
-            InstanceID = owner.InstanceID;
 
             if (owner.Party != null)
                 owner.Party.broadcastToMembers(new ExPartyPetWindowAdd(this));

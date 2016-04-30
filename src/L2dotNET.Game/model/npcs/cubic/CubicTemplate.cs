@@ -53,9 +53,6 @@ namespace L2dotNET.Game.model.npcs.cubic
             if (target == null || caster == null)
                 return;
 
-            if (caster.InstanceID != target.InstanceID)
-                return;
-
             if (!cast.ConditionOk(caster))
                 return;
 

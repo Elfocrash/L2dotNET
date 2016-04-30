@@ -21,9 +21,9 @@ namespace L2dotNET.Game.network.l2send
             writeD(boat.ObjID);
             writeD(speed);
             writeD(rotationSpd);
-            writeD(boat.destx);
-            writeD(boat.desty);
-            writeD(boat.destz);
+            writeD(boat.DestX);
+            writeD(boat.DestY);
+            writeD(boat.DestZ);
         }
     }
 }
