@@ -15,22 +15,26 @@ namespace L2dotNET.Auth
         {
             File = new FileInfo(Path);
             _topics = new SortedList<string, string>();
-            reload();
+            Reload();
         }
 
-        public void reload()
+        public void Reload()
         {
-            StreamReader reader = new StreamReader(File.FullName);
-            while (!reader.EndOfStream)
+            using (StreamReader reader = new StreamReader(File.FullName))
             {
-                string line = reader.ReadLine();
-                if (line.Length == 0)
-                    continue;
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine().Trim();
 
-                if (line.StartsWith(";"))
-                    continue;
+                    if (line.Length == 0)
+                        continue;
 
-                _topics.Add(line.Split('=')[0], line.Split('=')[1]);
+                    if (line.StartsWith(";"))
+                        continue;
+
+                    if (line.Split('=').Length == 2)
+                        _topics.Add(line.Split('=')[0].Trim(), line.Split('=')[1].Trim());
+                }
             }
 
             log.Info($"Config file { File.Name } loaded with { _topics.Count } parameters.");
