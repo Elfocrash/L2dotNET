@@ -16,7 +16,8 @@ namespace L2dotNET.Game.tables
         private static volatile IdFactory instance;
         private static object syncRoot = new object();
 
-        public const int ID_MIN = 0x10000000, ID_MAX = 0x7FFFFFFF;
+        public const int ID_MIN = 0x10000000, 
+                         ID_MAX = 0x7FFFFFFF;
 
         private int currentId = 1;
 
