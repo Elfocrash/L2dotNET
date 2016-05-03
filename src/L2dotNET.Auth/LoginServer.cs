@@ -27,7 +27,7 @@ namespace L2dotNET.Auth
         {
             Console.Title = "L2dotNET Loginserver";
 
-            Cfg.load();
+            Cfg.Load();
             ClientManager.Instance.Initialize();
             ServerThreadPool.Instance.Initialize();
             NetworkRedirect.Instance.Initialize();
