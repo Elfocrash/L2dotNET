@@ -15,7 +15,7 @@ namespace L2dotNET.Auth
 
         public static bool AUTO_ACCOUNTS;
 
-        public static void load()
+        public static void Load()
         {
             ConfigFile server = new ConfigFile(@"config\server.ini");
 

@@ -112,9 +112,9 @@ namespace L2dotNET.Game.network.l2recv
             player.MaxMp = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
             player.MaxCp = (int)player.CharacterStat.getStat(TEffectType.b_max_cp);
 
-            player.X = -71338;
-            player.Y = 258271;
-            player.Z = -3104;
+            player.X = 45901;
+            player.Y = 41329;
+            player.Z = -3508;
 
             
 

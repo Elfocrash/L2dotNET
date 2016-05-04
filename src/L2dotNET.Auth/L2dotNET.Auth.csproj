@@ -188,4 +188,11 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <!-- Include Files to Debug -->
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <BinFiles Include="$(SolutionDir)L2dotNET.Game\Datapacks\Auth\**\*.*"/>
+    </ItemGroup>  
+    <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(TargetDir)\%(RecursiveDir)" />
+  </Target>  
 </Project>
