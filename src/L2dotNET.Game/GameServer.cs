@@ -38,7 +38,7 @@ namespace L2dotNET.Game
 
         public void Start()
         {
-            Console.Title = "L2dotNET Gameserver";
+            Console.Title = "L2dotNET GameServer";
 
             Cfg.init("all");
 
@@ -90,7 +90,6 @@ namespace L2dotNET.Game
 
             //   GeoData.getInstance();
 
-            log.Info($"Listening Gameservers on port { Cfg.SERVER_PORT }");
             _listener = new TcpListener(IPAddress.Any, Cfg.SERVER_PORT);
 
             bool isListening = false;
@@ -106,6 +105,8 @@ namespace L2dotNET.Game
 
             if (isListening)
             {
+                log.Info($"Listening Gameservers on port { Cfg.SERVER_PORT }");
+
                 TcpClient clientSocket = default(TcpClient);
                 while (true)
                 {
