@@ -62,7 +62,7 @@ namespace L2dotNET.Auth.data
                     }
                 }
             }
-            log.Info("NetworkBlock: " + blocks.Count + " blocks.");
+            log.Info($"NetworkBlock: { blocks.Count } blocks.");
         }
 
         public bool Allowed(string ip)
@@ -110,8 +110,8 @@ namespace L2dotNET.Auth.data
                     foreach (bool u in d)
                         if (u)
                             cnt++;
-                            
-                    if(cnt >= 4)
+
+                    if (cnt >= 4)
                         return false;
                 }
             }

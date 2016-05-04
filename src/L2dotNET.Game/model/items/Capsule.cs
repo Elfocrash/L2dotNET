@@ -30,7 +30,7 @@ namespace L2dotNET.Game.model.items
                 ((L2Player)character).Inventory.destroyItem(item, 1, true, true);
                 foreach (CapsuleItemReward rew in caps.rewards)
                 {
-                    if(rn.Next(100) <= rew.rate)
+                    if (rn.Next(100) <= rew.rate)
                         ((L2Player)character).addItem(rew.id, rn.Next(rew.min, rew.max));
                 }
             }
@@ -39,7 +39,7 @@ namespace L2dotNET.Game.model.items
         public Capsule()
         {
             loadXML();
-            log.Info("Capsule: Loaded " + items.Count + " items.");
+            log.Info($"Capsule: Loaded { items.Count } items.");
         }
 
         public void loadXML()
@@ -70,7 +70,7 @@ namespace L2dotNET.Game.model.items
                                 }
                                 catch (Exception)
                                 {
-                                    Console.WriteLine("cant parse capsule "+caps.id);
+                                    Console.WriteLine("cant parse capsule " + caps.id);
                                 }
                                 break;
                         }

@@ -315,7 +315,7 @@ namespace L2dotNET.Game.tables
                     item.buildEffect();
                     if (_items.ContainsKey(item.ItemID))
                     {
-                        log.Error("itemtable: dublicate " + item.ItemID);
+                        log.Error($"itemtable: dublicate { item.ItemID }");
                         _items.Remove(item.ItemID);
                     }
 
@@ -351,7 +351,7 @@ namespace L2dotNET.Game.tables
         {
             if (!_items.ContainsKey(id))
             {
-                log.Error("itemtable: error, cant find item for id " + id);
+                log.Error($"itemtable: error, cant find item for id { id }");
                 return null;
             }
 

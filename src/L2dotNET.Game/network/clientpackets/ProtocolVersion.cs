@@ -22,14 +22,14 @@ namespace L2dotNET.Game.network.l2recv
         {
             if (_protocol != 746 && _protocol != 251)
             {
-                log.Error("Protocol fail "+_protocol);
+                log.Error($"Protocol fail { _protocol }");
                 getClient().sendPacket(new KeyPacket(getClient(), 0));
                 getClient().termination();
                 return;
             }
             else if (_protocol == -1)
             {
-                log.Info("Ping received " + _protocol);
+                log.Info($"Ping received { _protocol }");
                 getClient().sendPacket(new KeyPacket(getClient(), 0));
                 getClient().termination();
                 return;
@@ -40,7 +40,7 @@ namespace L2dotNET.Game.network.l2recv
             getClient().sendPacket(new KeyPacket(getClient(), 1));
             getClient().Protocol = _protocol;
 
-  
+
         }
     }
 }

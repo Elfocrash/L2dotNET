@@ -58,7 +58,7 @@ namespace L2dotNET.Game.model.items
             if (ExchangeItems != null)
                 foreach (int id in ExchangeItems.Keys)
                     player.Inventory.addItem(id, ExchangeItems[id], true, true);
-                
+
             if (PetID != -1)
                 player.PetSummon(item, PetID);
 

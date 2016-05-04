@@ -59,12 +59,12 @@ namespace L2dotNET.Game.network.l2recv
 
             if (boat == null)
             {
-                log.Error("User requested null boat "+boatId);
+                log.Error($"User requested null boat { boatId }");
                 player.sendActionFailed();
                 return;
             }
 
-            if(player.Boat == null)
+            if (player.Boat == null)
                 player.Boat = boat;
 
             player.BoatX = dx;

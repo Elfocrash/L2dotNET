@@ -87,12 +87,12 @@ namespace L2dotNET.Game.model.quests
                 {
                     if (clist.Contains(qo.questId))
                     {
-                        qlist.Add(new object[] { null, "["+qo.questName + " (Completed)]<br1>", 0 });
+                        qlist.Add(new object[] { null, "[" + qo.questName + " (Completed)]<br1>", 0 });
                         nullex = true;
                         continue;
                     }
 
-                    qlist.Add(new object[] { qo, "<a action=\"bypass -h quest_tryaccept?quest_id="+qo.questId+"\">[" + qo.questName + "]</a><br1>", qo.questId });
+                    qlist.Add(new object[] { qo, "<a action=\"bypass -h quest_tryaccept?quest_id=" + qo.questId + "\">[" + qo.questName + "]</a><br1>", qo.questId });
                 }
             }
 

@@ -46,9 +46,9 @@ namespace L2dotNET.Game.tables
             {
                 zmax = Convert.ToInt32(loc[3]);
             }
-            catch (Exception asd )
+            catch (Exception asd)
             {
-                Console.WriteLine("err in "+loc[3]);
+                Console.WriteLine("err in " + loc[3]);
                 throw asd;
             }
 
@@ -152,10 +152,10 @@ namespace L2dotNET.Game.tables
                 {
                     sp = zone.getSpawnLocation();
                 }
-                catch (Exception asd )
+                catch (Exception asd)
                 {
-                    sp = new int[] { 0,0,0,0};
-                  //  throw asd;
+                    sp = new int[] { 0, 0, 0, 0 };
+                    //  throw asd;
                 }
 
             obj = NpcTable.Instance.spawnNpc(NpcId, sp[0], sp[1], sp[2], (zone == null) ? h : zone.rnd.Next(64000));

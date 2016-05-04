@@ -19,7 +19,7 @@ namespace L2dotNET.Auth
 
         public LoginServer()
         { }
-            
+
         protected TcpListener LoginListener;
         public static IKernel Kernel { get; set; }
 
@@ -34,7 +34,7 @@ namespace L2dotNET.Auth
 
             LoginListener = new TcpListener(IPAddress.Parse(Cfg.SERVER_HOST), Cfg.SERVER_PORT);
             LoginListener.Start();
-            log.Info("Auth server listening clients at " + Cfg.SERVER_HOST + ":" + Cfg.SERVER_PORT);
+            log.Info($"Auth server listening clients at { Cfg.SERVER_HOST }:{ Cfg.SERVER_PORT }");
             new System.Threading.Thread(ServerThreadPool.Instance.Start).Start();
             TcpClient clientSocket = default(TcpClient);
             while (true)

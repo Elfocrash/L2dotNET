@@ -47,7 +47,7 @@ namespace L2dotNET.Game.model.events
 
         public MonsterRace()
         {
-            
+
         }
 
         public void Initialize()
@@ -143,7 +143,7 @@ namespace L2dotNET.Game.model.events
             for (byte a = 0; a < 8; a++)
                 timeRange[a] = runners[a + rnd].finishTime;
 
-            raceTimeProgress = timeRange.Max() *2;
+            raceTimeProgress = timeRange.Max() * 2;
 
             foreach (L2Object obj in Zone.ObjectsInside.Values)
             {
@@ -302,7 +302,7 @@ namespace L2dotNET.Game.model.events
                 }
                 else
                 {
-                    log.Info("AreaTable[hideout]: null region at " + template._x[i] + " " + template._y[i] + " for zone " + Zone.Name);
+                    log.Info($"AreaTable[hideout]: null region at { template._x[i] } { template._y[i] } for zone { Zone.Name }");
                 }
             }
         }
@@ -460,7 +460,7 @@ namespace L2dotNET.Game.model.events
 
                 L2Item ticket = new L2Item(ItemTable.getInstance().getItem(TICKET));
                 ticket.Location = L2Item.L2ItemLocation.inventory;
-                ticket.CustomType1 = line +1;
+                ticket.CustomType1 = line + 1;
                 ticket.CustomType2 = adena / 100;
                 ticket.Enchant = currentRaceId;
 

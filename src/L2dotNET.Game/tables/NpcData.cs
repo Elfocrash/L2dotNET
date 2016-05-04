@@ -63,7 +63,7 @@ namespace L2dotNET.Game.tables
                                     slist.items.Add(new ND_shopItem(it));
                                 }
                                 else
-                                    log.Error("NpcData: cant find item to trade " + i + " on npc " + shop.id);
+                                    log.Error($"NpcData: cant find item to trade { i } on npc { shop.id }");
                             }
 
                             shop.lists.Add(slist.id, slist);
@@ -95,7 +95,7 @@ namespace L2dotNET.Game.tables
 
                 if (!shop.lists.ContainsKey(reply))
                 {
-                    player.sendMessage("your shop id was just wrong "+reply);
+                    player.sendMessage("your shop id was just wrong " + reply);
                     player.sendActionFailed();
                     return;
                 }
@@ -146,17 +146,17 @@ namespace L2dotNET.Game.tables
             try
             {
                 group = Teleports.npcs[npc.Template.NpcId].groups[type];
-            } 
+            }
             catch
             {
-                log.Error("ND:RequestTeleport cant find teleport group "+type);
+                log.Error($"ND:RequestTeleport cant find teleport group { type }");
                 player.sendActionFailed();
                 return;
             }
 
             ab_teleport_entry e = group._teles[entryId];
 
-            if(!player.hasItem(e.itemId, e.cost))
+            if (!player.hasItem(e.itemId, e.cost))
             {
                 switch (e.itemId)
                 {

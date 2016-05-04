@@ -119,7 +119,7 @@ namespace L2dotNET.Game.model.skills2
                                 case 4:
                                     skill.magic_level = dlc.readD();
                                     break;
-                                case 6: 
+                                case 6:
                                     lenx = dlc.readD();
                                     value = dlc.readS(lenx);
                                     skill.SetEffect_effect(value);
@@ -155,7 +155,7 @@ namespace L2dotNET.Game.model.skills2
                                     break;
                                 case 26:
                                     double rate = dlc.readF();
-                                    if(rate != -1)
+                                    if (rate != -1)
                                         skill.activate_rate = (short)(rate * 1000);
                                     break;
                                 case 29:
@@ -178,7 +178,7 @@ namespace L2dotNET.Game.model.skills2
                                     catch (Exception)
                                     {
                                         skill.target_type = TSkillTarget.target;
-                                        log.Error("skill #" + skill.skill_id + " invalid target " + value);
+                                        log.Error($"skill # { skill.skill_id } invalid target { value }");
                                     }
                                     break;
                                 case 40://affect_scope
@@ -191,7 +191,7 @@ namespace L2dotNET.Game.model.skills2
                                     catch
                                     {
                                         skill.affect_scope = TSkillScope.single;
-                                        log.Error("skill #" + skill.skill_id + " invalid scope " + value);
+                                        log.Error($"skill # { skill.skill_id } invalid scope { value }");
                                     }
                                     break;
                                 case 49:
@@ -200,9 +200,11 @@ namespace L2dotNET.Game.model.skills2
                                 default:
                                     switch (slp.type)
                                     {
-                                        case 1: dlc.readD();
+                                        case 1:
+                                            dlc.readD();
                                             break;
-                                        case 2: dlc.readF();
+                                        case 2:
+                                            dlc.readF();
                                             break;
                                         case 3:
                                             int f = dlc.readD();
@@ -298,7 +300,7 @@ namespace L2dotNET.Game.model.skills2
             //    }
             //}
 
-            log.Info("SkillTable: loaded " + _ids.Count + " skills, " + enchantInfo.Count + " enchants.");
+            log.Info($"SkillTable: loaded { _ids.Count } skills, { enchantInfo.Count } enchants.");
         }
 
         #region INITREG
@@ -376,7 +378,7 @@ namespace L2dotNET.Game.model.skills2
             reg(new SkillLevelParam("npc_notice", type_int, 60));
             reg(new SkillLevelParam("block_action_use_skill", type_int, 61));
         }
-        
+
         private SortedList<byte, SkillLevelParam> ps = new SortedList<byte, SkillLevelParam>();
 
         private void reg(SkillLevelParam s)
@@ -452,7 +454,7 @@ namespace L2dotNET.Game.model.skills2
             }
 
             dlc.close();
-            log.Info("SkillTable: learnable " + AcquireSkills.Count + " groups, #"+cntTotal+" skills.");
+            log.Info($"SkillTable: learnable { AcquireSkills.Count } groups, #{ cntTotal } skills.");
         }
 
         public TAcquireSkillsEntry getAllRegularSkills(ClassIds id)

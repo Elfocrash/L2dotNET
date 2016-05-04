@@ -64,7 +64,7 @@ namespace L2dotNET.Auth.network.rcv_gs
             thread.Connected = true;
 
             thread.SendPacket(new ServerLoginOk());
-            log.Info($"AuthThread: Server #{server.Id} connected");
+            log.Info($"AuthThread: Server #{ server.Id } connected");
         }
     }
 }

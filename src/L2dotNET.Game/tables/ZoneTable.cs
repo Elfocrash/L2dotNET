@@ -35,7 +35,7 @@ namespace L2dotNET.Game.tables
 
         public ZoneTable()
         {
-            
+
         }
 
         public void Initialize()
@@ -189,7 +189,7 @@ namespace L2dotNET.Game.tables
                             }
                             else
                             {
-                                log.Error("AreaTable: null region at " + template._x[i] + " " + template._y[i] + " for zone " + zone.Name);
+                                log.Error($"AreaTable: null region at { template._x[i] } { template._y[i] } for zone { zone.Name }");
                             }
                         }
                     }

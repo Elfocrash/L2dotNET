@@ -31,7 +31,7 @@ namespace L2dotNET.Game
 
         public GameServer()
         {
-           
+
         }
 
         public static IKernel Kernel { get; set; }
@@ -57,7 +57,7 @@ namespace L2dotNET.Game
             NpcTable.Instance.Initialize();
             NpcData.getInstance();
             //  SpawnTable.getInstance();
-            
+
             //  TSkillTable.getInstance();
             ItemTable.getInstance();
             ItemHandler.getInstance();
@@ -90,7 +90,7 @@ namespace L2dotNET.Game
 
             //   GeoData.getInstance();
 
-            log.Info("Listening Gameservers on port " + Cfg.SERVER_PORT);
+            log.Info($"Listening Gameservers on port { Cfg.SERVER_PORT }");
             _listener = new TcpListener(IPAddress.Any, Cfg.SERVER_PORT);
             _listener.Start();
 

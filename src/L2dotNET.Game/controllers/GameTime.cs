@@ -46,7 +46,7 @@ namespace L2dotNET.Game.controllers
 
         public GameTime()
         {
-           
+
         }
 
         public void Initialize()
@@ -93,7 +93,7 @@ namespace L2dotNET.Game.controllers
             foreach (L2Player p in L2World.Instance.GetAllPlayers())
                 p.NotifyDayChange(NightPk);
         }
-        
+
         public void EnterWorld(L2Player p)
         {
             p.NotifyDayChange(Night ? NightPk : DayPk);

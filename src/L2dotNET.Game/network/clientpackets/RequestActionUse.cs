@@ -240,7 +240,7 @@ namespace L2dotNET.Game.network.l2recv
                 Console.WriteLine("pet cast result " + result);
             }
             else
-                log.Error("pet " + npcId + " used null skill " + id + "-" + lv);
+                log.Error($"pet { npcId } used null skill { id }-{ lv }");
         }
     }
 }

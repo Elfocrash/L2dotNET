@@ -96,7 +96,7 @@ namespace L2dotNET.Game.tables
                     }
                     catch (Exception)
                     {
-                        log.Error("Npc category was not found " + pt[1]);
+                        log.Error($"Npc category was not found { pt[1] }");
                         continue;
                     }
 
@@ -454,7 +454,7 @@ namespace L2dotNET.Game.tables
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            log.Info("NpcTable: loaded #" + _npcs.Count + " NPC, #"+npcVids.Count+" VIDs, "+dropitems+" drop items.");
+            log.Info("NpcTable: loaded #" + _npcs.Count + " NPC, #" + npcVids.Count + " VIDs, " + dropitems + " drop items.");
         }
 
         public NpcTable()
@@ -476,7 +476,7 @@ namespace L2dotNET.Game.tables
 
             if (template == null)
             {
-                Console.WriteLine("null template "+id);
+                Console.WriteLine("null template " + id);
                 return null;
             }
             L2Warrior o = new L2Warrior();
@@ -589,7 +589,7 @@ namespace L2dotNET.Game.tables
             Random rn = new Random();
             foreach (DropBox box in multidrop)
             {
-                if (rn.Next(1000000) <= (int)(box.rate*10000))
+                if (rn.Next(1000000) <= (int)(box.rate * 10000))
                 {
                     int dbcc = rn.Next(1000000);
                     int dbxc = 0;
@@ -642,7 +642,7 @@ namespace L2dotNET.Game.tables
 
             foreach (DropItem itm in spoil)
             {
-                if(rn.Next(1000000) <= (int)(itm.rate * 10000))
+                if (rn.Next(1000000) <= (int)(itm.rate * 10000))
                     rolled.Add(itm);
             }
 

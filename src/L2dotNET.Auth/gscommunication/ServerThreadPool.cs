@@ -45,7 +45,7 @@ namespace L2dotNET.Auth.gscommunication
 
         public ServerThreadPool()
         {
-                       
+
         }
 
         public void Initialize()
@@ -61,7 +61,7 @@ namespace L2dotNET.Auth.gscommunication
                 servers.Add(server);
             }
 
-            log.Info("GameServerThread: loaded " + servers.Count + " servers");
+            log.Info($"GameServerThread: loaded { servers.Count } servers");
         }
 
         public L2Server Get(short serverId)
@@ -79,7 +79,7 @@ namespace L2dotNET.Auth.gscommunication
         {
             listener = new TcpListener(IPAddress.Parse(Cfg.SERVER_HOST), Cfg.SERVER_PORT_GS);
             listener.Start();
-            log.Info("Auth server listening gameservers at " + Cfg.SERVER_HOST + ":" + Cfg.SERVER_PORT_GS);
+            log.Info($"Auth server listening gameservers at { Cfg.SERVER_HOST }:{ Cfg.SERVER_PORT_GS }");
             while (true)
             {
                 VerifyClient(listener.AcceptTcpClient());
@@ -97,11 +97,11 @@ namespace L2dotNET.Auth.gscommunication
             foreach (L2Server s in servers)
                 if (s.Id == id)
                 {
-                    if(s.Thread != null)
+                    if (s.Thread != null)
                         s.Thread.Stop();
 
                     s.Thread = null;
-                    log.Warn($"ServerThread: #{id} shutted down");
+                    log.Warn($"ServerThread: #{ id } shutted down");
                     break;
                 }
         }
