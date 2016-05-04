@@ -15,6 +15,7 @@ namespace L2dotNET.Repositories
 {
     public class AccountRepository : IAccountRepository
     {
+
         private static readonly ILog log = LogManager.GetLogger(typeof(AccountRepository));
 
         internal IDbConnection db;
@@ -67,8 +68,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return this.db.Query("select count(*) from accounts where login=@login AND password=@pass",
-                        new { login = login, pass = password }).Any();
+                return this.db.Query("select count(*) from accounts where login=@login AND password=@pass", new { login = login, pass = password }).Any();
             }
             catch (MySqlException ex)
             {

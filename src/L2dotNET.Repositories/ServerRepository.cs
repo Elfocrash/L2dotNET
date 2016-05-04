@@ -15,6 +15,7 @@ namespace L2dotNET.Repositories
 {
     public class ServerRepository : IServerRepository
     {
+
         private static readonly ILog log = LogManager.GetLogger(typeof(ServerRepository));
 
         internal IDbConnection db;
@@ -62,5 +63,6 @@ namespace L2dotNET.Repositories
                 return new List<AnnouncementModel>();
             }
         }
+
     }
 }
