@@ -92,13 +92,26 @@ namespace L2dotNET.Game
 
             log.Info($"Listening Gameservers on port { Cfg.SERVER_PORT }");
             _listener = new TcpListener(IPAddress.Any, Cfg.SERVER_PORT);
-            _listener.Start();
 
-            TcpClient clientSocket = default(TcpClient);
-            while (true)
+            bool isListening = false;
+            try
             {
-                clientSocket = _listener.AcceptTcpClient();
-                Accept(clientSocket);
+                _listener.Start();
+                isListening = true;
+            }
+            catch (SocketException ex)
+            {
+                log.Error($"Socket Error: '{ ex.SocketErrorCode }'. Message: '{ ex.Message }' (Error Code: '{ ex.NativeErrorCode }')");
+            }
+
+            if (isListening)
+            {
+                TcpClient clientSocket = default(TcpClient);
+                while (true)
+                {
+                    clientSocket = _listener.AcceptTcpClient();
+                    Accept(clientSocket);
+                }
             }
         }
 
