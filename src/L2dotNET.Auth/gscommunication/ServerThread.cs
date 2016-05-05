@@ -44,7 +44,7 @@ namespace L2dotNET.Auth.gscommunication
             }
             catch (Exception e)
             {
-                log.Error("ServerThread: " + e.Message);
+                log.Error($"ServerThread: { e.Message }");
                 Termination();
             }
         }
@@ -64,7 +64,7 @@ namespace L2dotNET.Auth.gscommunication
             }
             catch (Exception e)
             {
-                log.Error("ServerThread: " + e.Message);
+                log.Error($"ServerThread: { e.Message }");
                 Termination();
             }
         }
@@ -145,7 +145,7 @@ namespace L2dotNET.Auth.gscommunication
                 nstream.Close();
                 client.Close();
             }
-            catch  {}
+            catch { }
 
             activeInGame.Clear();
         }

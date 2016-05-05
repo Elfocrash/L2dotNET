@@ -278,7 +278,7 @@ namespace L2dotNET.Game.model.npcs
                             lvl = int.Parse(val.Substring(2));
                             id = int.Parse(val.Remove(1));
                         }
-                        
+
                         NpcHtmlMessage htm = new NpcHtmlMessage(player, "agitdeco__" + id + ".htm", ObjID);
                         htm.replace("<?AgitDecoCost?>", hideout.GetDecoCost(id, lvl));
                         htm.replace("<?AgitDecoEffect?>", hideout.GetDecoEffect(id, lvl));
@@ -397,7 +397,7 @@ namespace L2dotNET.Game.model.npcs
                         }
                     }
                     break;
-                    
+
 
             }
         }
@@ -411,16 +411,16 @@ namespace L2dotNET.Game.model.npcs
                     id = 4357;
                     break;
                 case 285540354://Ускорение Ур.2
-                    id = 4357; lvl = 2; 
+                    id = 4357; lvl = 2;
                     break;
                 case 284557313://Легкая Походка Ур.1
                     id = 4342;
                     break;
                 case 284557314://Легкая Походка Lv.2
-                    id = 4342; lvl = 2; 
+                    id = 4342; lvl = 2;
                     break;
                 case 284622849://Легкость Ур.1
-                    id = 4343; 
+                    id = 4343;
                     break;
                 case 284622851://Легкость Lv.3
                     id = 4343; lvl = 3;
@@ -525,7 +525,7 @@ namespace L2dotNET.Game.model.npcs
 
             if (id == 0)
             {
-                log.Error("hideout manager has invalid buff request "+reply);
+                log.Error($"hideout manager has invalid buff request { reply }");
                 return 1;
             }
 
@@ -533,7 +533,7 @@ namespace L2dotNET.Game.model.npcs
 
             if (skill == null)
             {
-                log.Error("hideout manager has null buff skill " + id + "-" + lvl);
+                log.Error($"hideout manager has null buff skill { id }-{ lvl }");
                 return 1;
             }
 
@@ -541,9 +541,9 @@ namespace L2dotNET.Game.model.npcs
             return (short)this.castSkill(skill);
 
 
-          //  CurMP -= (skill.MpConsume1 + skill.MpConsume2);
-           // player.addEffect(this, skill, player, true, false);
-          //  return 5;
+            //  CurMP -= (skill.MpConsume1 + skill.MpConsume2);
+            // player.addEffect(this, skill, player, true, false);
+            //  return 5;
         }
 
         public void broadcastHideoutUpdate(L2Player p)
@@ -553,7 +553,7 @@ namespace L2dotNET.Game.model.npcs
 
         public override string asString()
         {
-            return "L2HideoutManager:" + Template.NpcId + "; id " + ObjID + "; " + hideout.ID+" "+hideout.ownerId;
+            return "L2HideoutManager:" + Template.NpcId + "; id " + ObjID + "; " + hideout.ID + " " + hideout.ownerId;
         }
     }
 }

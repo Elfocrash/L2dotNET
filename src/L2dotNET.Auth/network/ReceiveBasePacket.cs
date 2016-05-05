@@ -75,7 +75,7 @@ namespace L2dotNET.Auth
             }
             catch (Exception ex)
             {
-                log.Error("while reading string from packet, " + ex.Message + " " + ex.StackTrace);
+                log.Error($"while reading string from packet, { ex.Message } { ex.StackTrace }");
             }
             return result;
         }

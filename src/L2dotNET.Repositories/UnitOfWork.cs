@@ -14,12 +14,9 @@ namespace L2dotNET.Repositories
         {
         }
 
-        public UnitOfWork(
-            IPlayerRepository playerRepository,
-            IAccountRepository accountRepository,
-            IServerRepository serverRepository
-
-            )
+        public UnitOfWork(IPlayerRepository playerRepository,
+                          IAccountRepository accountRepository,
+                          IServerRepository serverRepository)
         {
             this.playerRepository = playerRepository;
             this.accountRepository = accountRepository;

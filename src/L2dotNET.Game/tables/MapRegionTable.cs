@@ -80,7 +80,7 @@ namespace L2dotNET.Game.tables
             }
             catch (Exception e)
             {
-                log.Error("Exception in GetMapRegion: " + e);
+                log.Error($"Exception in GetMapRegion: { e }");
                 return 0;
             }
         }

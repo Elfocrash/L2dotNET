@@ -42,7 +42,7 @@ namespace L2dotNET.Auth
 
         public ClientManager()
         {
-            
+
         }
 
         public void Initialize()
@@ -86,7 +86,7 @@ namespace L2dotNET.Auth
             {
                 if (flood[ip].CompareTo(DateTime.Now) == 1)
                 {
-                    log.Warn($"Active flooder :{ ip }");
+                    log.Warn($"Active flooder: { ip }");
                     client.Close();
                     return;
                 }
@@ -120,7 +120,7 @@ namespace L2dotNET.Auth
 
         public byte[] GetBlowfishKey()
         {
-            return BlowfishKeys[new Random().Next(BlowfishCount -1)];
+            return BlowfishKeys[new Random().Next(BlowfishCount - 1)];
         }
 
         public void RemoveClient(LoginClient loginClient)

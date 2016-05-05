@@ -7,7 +7,7 @@ namespace L2dotNET.Game.crypt
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(BlowFishKeygen));
         private const int CRYPT_KEYS_SIZE = 20;
-	    private static byte[][] CRYPT_KEYS = new byte[CRYPT_KEYS_SIZE][];
+        private static byte[][] CRYPT_KEYS = new byte[CRYPT_KEYS_SIZE][];
         private static Random Random = new Random();
 
         public static void GenerateKeys()

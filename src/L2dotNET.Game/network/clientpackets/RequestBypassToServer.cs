@@ -170,7 +170,7 @@ namespace L2dotNET.Game.network.l2recv
                 MonsterRace.Instance.OnBypass(player, npc, _alias);
             }
             else
-                log.Warn("Unknown bypass '"+_alias+"'");
+                log.Warn($"Unknown bypass '{ _alias }'");
         }
     }
 }

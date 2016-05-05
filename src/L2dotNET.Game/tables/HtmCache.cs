@@ -93,7 +93,7 @@ namespace L2dotNET.Game.tables
             }
             stream.Close();
             gz.Close();
-            log.Info("HtmCache: Reading "+file+" complete. " + files + " files.");
+            log.Info("HtmCache: Reading " + file + " complete. " + files + " files.");
 
             if (complete)
                 return;
@@ -143,7 +143,7 @@ namespace L2dotNET.Game.tables
             if (_htms.ContainsKey(file))
                 return _htms[file];
             else
-                return "Html file was not found "+file;
+                return "Html file was not found " + file;
         }
 
         public string getHtmAdmin(string locale, string file)
@@ -170,8 +170,8 @@ namespace L2dotNET.Game.tables
             //    return _htms[file + locale];
             //}
 
-          //  string text = File.ReadAllText(@"html_admin" + locale + "\\" + file);
-          //  _htms.Add(file + locale, text);
+            //  string text = File.ReadAllText(@"html_admin" + locale + "\\" + file);
+            //  _htms.Add(file + locale, text);
 
             if (_htms.ContainsKey(file))
                 return _htms[file];

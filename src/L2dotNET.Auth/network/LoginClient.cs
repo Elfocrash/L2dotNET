@@ -91,7 +91,7 @@ namespace L2dotNET.Auth
                     _stream.BeginRead(_buffer, 0, Length - 2, new AsyncCallback(OnReceiveCallback), result.AsyncState);
                 }
             }
-            catch(Exception s)
+            catch (Exception s)
             {
                 log.Warn(_address + $" was closed by force. { s }");
                 close();
@@ -142,7 +142,7 @@ namespace L2dotNET.Auth
                     break;
 
                 default:
-                    log.Warn("LoginClient: received unk request " + id);
+                    log.Warn($"LoginClient: received unk request { id }");
                     break;
             }
 

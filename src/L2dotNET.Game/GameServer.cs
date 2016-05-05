@@ -31,14 +31,14 @@ namespace L2dotNET.Game
 
         public GameServer()
         {
-           
+
         }
 
         public static IKernel Kernel { get; set; }
 
         public void Start()
         {
-            Console.Title = "L2dotNET Gameserver";
+            Console.Title = "L2dotNET GameServer";
 
             Cfg.init("all");
 
@@ -57,7 +57,7 @@ namespace L2dotNET.Game
             NpcTable.Instance.Initialize();
             NpcData.getInstance();
             //  SpawnTable.getInstance();
-            
+
             //  TSkillTable.getInstance();
             ItemTable.getInstance();
             ItemHandler.getInstance();
@@ -90,15 +90,29 @@ namespace L2dotNET.Game
 
             //   GeoData.getInstance();
 
-            log.Info("Listening Gameservers on port " + Cfg.SERVER_PORT);
             _listener = new TcpListener(IPAddress.Any, Cfg.SERVER_PORT);
-            _listener.Start();
 
-            TcpClient clientSocket = default(TcpClient);
-            while (true)
+            bool isListening = false;
+            try
             {
-                clientSocket = _listener.AcceptTcpClient();
-                Accept(clientSocket);
+                _listener.Start();
+                isListening = true;
+            }
+            catch (SocketException ex)
+            {
+                log.Error($"Socket Error: '{ ex.SocketErrorCode }'. Message: '{ ex.Message }' (Error Code: '{ ex.NativeErrorCode }')");
+            }
+
+            if (isListening)
+            {
+                log.Info($"Listening Gameservers on port { Cfg.SERVER_PORT }");
+
+                TcpClient clientSocket = default(TcpClient);
+                while (true)
+                {
+                    clientSocket = _listener.AcceptTcpClient();
+                    Accept(clientSocket);
+                }
             }
         }
 

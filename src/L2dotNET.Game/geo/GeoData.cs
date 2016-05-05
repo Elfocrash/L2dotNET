@@ -58,10 +58,10 @@ namespace L2dotNET.Game.geo
 
                 string[] stx = info.Name.Split('.')[0].Split('_');
                 byte rxb = byte.Parse(stx[0]), ryb = byte.Parse(stx[1]);
-                log.Info("Loading " + fname + ". " + rxb + "_" + ryb);
+                log.Info($"Loading { fname }. { rxb }_{ ryb }");
                 if (info.Length < 196608)
                 {
-                    log.Error("Unsupported geo file. L2J file cannot be smaller than 196kb. " + fname);
+                    log.Error($"Unsupported geo file. L2J file cannot be smaller than 196kb. { fname }");
                     continue;
                 }
 
@@ -125,7 +125,7 @@ namespace L2dotNET.Game.geo
                             blocks[block] = geoBlock;
                             break;
                         default:
-                            log.Error("error parsing type " + type);
+                            log.Error($"error parsing type { type }");
                             break;
                     }
                 }
@@ -140,8 +140,7 @@ namespace L2dotNET.Game.geo
                 }
                 // geo[rxb][ryb] = blocks;
                 // geob.Add(this.hashId(rxb, ryb), blocks);
-                log.Info("Loaded " + info.Name + " " + (info.Length / 1024) + "kb and applied to '" + rxb + "_" + ryb + "'");
-
+                log.Info($"Loaded { info.Name } {(info.Length / 1024) }kb and applied to '{ rxb }_{ ryb }'");
             }
 
         }
@@ -683,7 +682,7 @@ namespace L2dotNET.Game.geo
 
             if (curr_x == _x && curr_y == _y)
                 return new GeoLocation(__x, __y, _z);
-            //log.info("move" + (backwardMove ? " back" : "") + (withCollision ? " +collision" : "") + ": " + curr_x + " " + curr_y + " " + curr_z + " / xyz: " + __x + " " + __y + " " + _z + " / to xy: " + __tx + " " + __ty + " / geo xy: " + _x + " " + _y + " / geo to xy: " + _tx + " " + _ty);
+            //log.Info($"move{ (backwardMove ? " back" : "") } {(withCollision ? " +collision" : "") }: { curr_x } { curr_y } { curr_z } / xyz: { __x } { __y } { _z } / to xy: { __tx } { __ty } / geo xy: { _x } { _y } / geo to xy: { _tx } { _ty }");
             return new GeoLocation(curr_x, curr_y, curr_z).geo2world();
         }
 
@@ -1309,7 +1308,7 @@ namespace L2dotNET.Game.geo
 
             if (region == null)
             {
-                Console.WriteLine("null region! "+ix+"_"+iy);
+                Console.WriteLine("null region! " + ix + "_" + iy);
                 return null;
             }
 

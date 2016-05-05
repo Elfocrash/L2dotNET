@@ -2659,7 +2659,7 @@ namespace L2dotNET.Game
         {
             if (lastPingId != id)
             {
-                log.Warn("player fail to ping respond right " + id + " " + lastPingId + " at " + pingTimeout.ToLocalTime());
+                log.Warn($"player fail to ping respond right { id } { lastPingId } at { pingTimeout.ToLocalTime() }");
                 return;
             }
 

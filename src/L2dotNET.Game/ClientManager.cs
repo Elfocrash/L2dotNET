@@ -44,7 +44,7 @@ namespace L2dotNET.Game
 
         public void addClient(TcpClient client)
         {
-            if(_banned == null)
+            if (_banned == null)
                 _banned = NetworkBlock.Instance;
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
@@ -53,7 +53,7 @@ namespace L2dotNET.Game
             {
                 if (_flood[ip].CompareTo(DateTime.Now) == 1)
                 {
-                    log.Warn("Active flooder " + ip);
+                    log.Warn($"Active flooder: { ip }");
                     client.Close();
                     return;
                 }

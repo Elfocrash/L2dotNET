@@ -35,7 +35,7 @@ namespace L2dotNET.Game.network
 
         public NetworkBlock()
         {
-            
+
         }
 
         public void Initialize()
@@ -77,7 +77,7 @@ namespace L2dotNET.Game.network
 
             foreach (NetworkBlockModel nbi in blocks)
             {
-                if(nbi.DirectIp != null)
+                if (nbi.DirectIp != null)
                     if (nbi.DirectIp.Equals(ip))
                     {
                         if (nbi.Permanent)

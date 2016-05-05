@@ -45,7 +45,7 @@ namespace L2dotNET.Game.network.loginauth
 
         public AuthThread()
         {
-            
+
         }
 
         public void Initialize()
@@ -66,7 +66,7 @@ namespace L2dotNET.Game.network.loginauth
                     ltimer.Elapsed += new System.Timers.ElapsedEventHandler(ltimer_Elapsed);
                 }
 
-                if(!ltimer.Enabled)
+                if (!ltimer.Enabled)
                     ltimer.Enabled = true;
 
                 return;
@@ -97,7 +97,7 @@ namespace L2dotNET.Game.network.loginauth
             }
             catch (Exception e)
             {
-                log.Error("AuthThread: " + e.Message);
+                log.Error($"AuthThread: { e.Message }");
                 termination();
             }
         }
@@ -115,9 +115,9 @@ namespace L2dotNET.Game.network.loginauth
                     nstream.BeginRead(buffer, 0, length, new AsyncCallback(OnReceiveCallback), result.AsyncState);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                log.Error("AuthThread: " + e.Message);
+                log.Error($"AuthThread: { e.Message }");
                 termination();
             }
         }
@@ -146,10 +146,10 @@ namespace L2dotNET.Game.network.loginauth
         public void sendPacket(GameServerNetworkPacket pk)
         {
             pk.write();
-           
+
             List<byte> blist = new List<byte>();
             byte[] db = pk.ToByteArray();
-            
+
             short len = (short)db.Length;
             blist.AddRange(BitConverter.GetBytes(len));
             blist.AddRange(db);
@@ -162,18 +162,18 @@ namespace L2dotNET.Game.network.loginauth
         public void loginFail(string code)
         {
             paused = true;
-            log.Error("AuthThread: "+code+". Please check configuration, server paused." );
+            log.Error($"AuthThread: { code }. Please check configuration, server paused.");
             try
             {
                 nstream.Close();
                 lclient.Close();
             }
-            catch {}
+            catch { }
         }
 
         public void loginOk(string code)
         {
-            log.Info("AuthThread: " + code);
+            log.Info($"AuthThread: { code }");
         }
 
         public void setInGameAccount(string account, bool status = false)

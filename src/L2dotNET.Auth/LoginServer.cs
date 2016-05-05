@@ -19,13 +19,13 @@ namespace L2dotNET.Auth
 
         public LoginServer()
         { }
-            
+
         protected TcpListener LoginListener;
         public static IKernel Kernel { get; set; }
 
         public void Start()
         {
-            Console.Title = "L2dotNET Loginserver";
+            Console.Title = "L2dotNET LoginServer";
 
             Cfg.Load();
             ClientManager.Instance.Initialize();
@@ -33,14 +33,29 @@ namespace L2dotNET.Auth
             NetworkRedirect.Instance.Initialize();
 
             LoginListener = new TcpListener(IPAddress.Parse(Cfg.SERVER_HOST), Cfg.SERVER_PORT);
-            LoginListener.Start();
-            log.Info("Auth server listening clients at " + Cfg.SERVER_HOST + ":" + Cfg.SERVER_PORT);
-            new System.Threading.Thread(ServerThreadPool.Instance.Start).Start();
-            TcpClient clientSocket = default(TcpClient);
-            while (true)
+
+            bool isListening = false;
+            try
             {
-                clientSocket = LoginListener.AcceptTcpClient();
-                AcceptClient(clientSocket);
+                LoginListener.Start();
+                isListening = true;
+            }
+            catch (SocketException ex)
+            {
+                log.Error($"Socket Error: '{ ex.SocketErrorCode }'. Message: '{ ex.Message }' (Error Code: '{ ex.NativeErrorCode }')");
+            }
+
+            if (isListening)
+            {
+                log.Info($"Auth server listening clients at { Cfg.SERVER_HOST }:{ Cfg.SERVER_PORT }");
+                new System.Threading.Thread(ServerThreadPool.Instance.Start).Start();
+
+                TcpClient clientSocket = default(TcpClient);
+                while (true)
+                {
+                    clientSocket = LoginListener.AcceptTcpClient();
+                    AcceptClient(clientSocket);
+                }
             }
         }
 

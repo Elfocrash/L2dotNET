@@ -21,7 +21,7 @@ namespace L2dotNET.Game.model.structures
             GenZone();
             SpawnNpcs();
 
-            log.Info("Hideout #"+ID+" ("+Name+") loaded. "+npcs.Count+" npcs.");
+            log.Info($"Hideout #{ ID } ({ Name }) loaded. { npcs.Count } npcs.");
         }
 
         public void Banish()
@@ -31,7 +31,7 @@ namespace L2dotNET.Game.model.structures
                 if (obj is L2Player)
                 {
                     L2Player player = (L2Player)obj;
-                    if(player.ClanId != ownerId)
+                    if (player.ClanId != ownerId)
                         player.teleport(banishLoc[0], banishLoc[1], banishLoc[2]);
                 }
             }
@@ -56,11 +56,11 @@ namespace L2dotNET.Game.model.structures
                 L2WorldRegion region = L2World.Instance.GetRegion(template._x[i], template._y[i]);
                 if (region != null)
                 {
-                   // region._zoneManager.addZone(zone);
+                    // region._zoneManager.addZone(zone);
                 }
                 else
                 {
-                    log.Error("AreaTable[hideout]: null region at " + template._x[i] + " " + template._y[i] + " for zone " + zone.Name);
+                    log.Error($"AreaTable[hideout]: null region at { template._x[i] } { template._y[i] } for zone { zone.Name }");
                 }
             }
         }

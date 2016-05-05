@@ -57,7 +57,7 @@ namespace L2dotNET.Game.tables.ndextend
                         }
                     }
                     if (npcs.ContainsKey(npc.id))
-                        log.Error("NpcData(Teleporter) dublicate npc str " + npc.id);
+                        log.Error($"NpcData(Teleporter) dublicate npc str { npc.id }");
                     else
                         npcs.Add(npc.id, npc);
                 }

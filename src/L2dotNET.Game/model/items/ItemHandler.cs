@@ -83,7 +83,7 @@ namespace L2dotNET.Game.model.items
                         string str = m.Attribute("exchange").Value;
                         foreach (string st in str.Split(';'))
                             ih.addExchangeItem(Convert.ToInt32(st.Split('-')[0]), Convert.ToInt64(st.Split('-')[1]));
-                     }
+                    }
 
                     if (m.Attribute("pet") != null)
                         ih.Pet = Convert.ToBoolean(m.Attribute("pet").Value);
