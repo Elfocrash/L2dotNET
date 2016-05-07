@@ -176,16 +176,16 @@ namespace L2dotNET.Game.model.events
                 case 120:
                 case 60:
                     sm = new SystemMessage(820);//Monster Race $s2 will begin in $s1 minute(s)!
-                    sm.addNumber(timeToStart / 60);
-                    sm.addNumber(currentRaceId);
+                    sm.AddNumber(timeToStart / 60);
+                    sm.AddNumber(currentRaceId);
                     break;
                 case 30:
                     sm = new SystemMessage(821);//Monster Race $s1 will begin in 30 seconds!
-                    sm.addNumber(currentRaceId);
+                    sm.AddNumber(currentRaceId);
                     break;
                 case 6:
                     sm = new SystemMessage(822);//Monster Race $s1 is about to begin! Countdown in five seconds!
-                    sm.addNumber(currentRaceId);
+                    sm.AddNumber(currentRaceId);
                     break;
                 case 5:
                 case 4:
@@ -193,7 +193,7 @@ namespace L2dotNET.Game.model.events
                 case 2:
                 case 1:
                     sm = new SystemMessage(823);//The race will begin in $s1 second(s)!
-                    sm.addNumber(timeToStart);
+                    sm.AddNumber(timeToStart);
                     break;
                 case 0:
                     sm = new SystemMessage(824);//They're off!
@@ -233,7 +233,7 @@ namespace L2dotNET.Game.model.events
         {
             status = 3;
             SystemMessage sm = new SystemMessage(825); //Monster Race $s1 is finished!
-            sm.addNumber(currentRaceId);
+            sm.AddNumber(currentRaceId);
             Zone.broadcastPacket(sm);
 
             byte firstLine = 0, secondLine = 0;
@@ -262,8 +262,8 @@ namespace L2dotNET.Game.model.events
 
             //First prize goes to the player in lane $s1. Second prize goes to the player in lane $s2.
             sm = new SystemMessage(826);
-            sm.addNumber(firstLine);
-            sm.addNumber(secondLine);
+            sm.AddNumber(firstLine);
+            sm.AddNumber(secondLine);
 
             runners[firstLine - 1 + rnd].winCount++;
             runners[secondLine - 1 + rnd].winCount++;

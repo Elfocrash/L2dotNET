@@ -440,7 +440,7 @@ namespace L2dotNET.Game
 
         public override void sendMessage(string p)
         {
-            sendPacket(new SystemMessage(1987).addString(p));
+            sendPacket(new SystemMessage(1987).AddString(p));
         }
 
         public int _currentFocusEnergy = 0;
@@ -605,27 +605,27 @@ namespace L2dotNET.Game
                         {
                             //There are $s2 hour(s), $s3 minute(s), and $s4 second(s) remaining in $s1's re-use time.
                             SystemMessage sm = new SystemMessage(2305);
-                            sm.addSkillName(skill.skill_id, skill.level);
-                            sm.addNumber((int)ts.Hours);
-                            sm.addNumber((int)ts.Minutes);
-                            sm.addNumber((int)ts.Seconds);
+                            sm.AddSkillName(skill.skill_id, skill.level);
+                            sm.AddNumber((int)ts.Hours);
+                            sm.AddNumber((int)ts.Minutes);
+                            sm.AddNumber((int)ts.Seconds);
                             sendPacket(sm);
                         }
                         else if (ts.TotalMinutes > 0)
                         {
                             //There are $s2 minute(s), $s3 second(s) remaining in $s1's re-use time.
                             SystemMessage sm = new SystemMessage(2304);
-                            sm.addSkillName(skill.skill_id, skill.level);
-                            sm.addNumber((int)ts.Minutes);
-                            sm.addNumber((int)ts.Seconds);
+                            sm.AddSkillName(skill.skill_id, skill.level);
+                            sm.AddNumber((int)ts.Minutes);
+                            sm.AddNumber((int)ts.Seconds);
                             sendPacket(sm);
                         }
                         else
                         {
                             //There are $s2 second(s) remaining in $s1's re-use time.
                             SystemMessage sm = new SystemMessage(2303);
-                            sm.addSkillName(skill.skill_id, skill.level);
-                            sm.addNumber((int)ts.Seconds);
+                            sm.AddSkillName(skill.skill_id, skill.level);
+                            sm.AddNumber((int)ts.Seconds);
                             sendPacket(sm);
                         }
 
@@ -661,7 +661,7 @@ namespace L2dotNET.Game
                 if (count < skill.ConsumeItemCount)
                 {
                     //$s1 cannot be used due to unsuitable terms.
-                    sendPacket(new SystemMessage(113).addSkillName(skill.skill_id, skill.level));
+                    sendPacket(new SystemMessage(113).AddSkillName(skill.skill_id, skill.level));
                     sendActionFailed();
                     return;
                 }
@@ -702,7 +702,7 @@ namespace L2dotNET.Game
             }
 
             //You use $s1.
-            sendPacket(new SystemMessage(46).addSkillName(skill.skill_id, skill.level));
+            sendPacket(new SystemMessage(46).AddSkillName(skill.skill_id, skill.level));
 
             if (skill.hp_consume > 0)
             {
@@ -1022,8 +1022,8 @@ namespace L2dotNET.Game
         {
             //You have earned $s1 experience and $s2 SP.
             SystemMessage sm = new SystemMessage(95);
-            sm.addNumber(exp);
-            sm.addNumber(sp);
+            sm.AddNumber(exp);
+            sm.AddNumber(sp);
             sendPacket(sm);
 
             Exp += exp;
@@ -2005,8 +2005,8 @@ namespace L2dotNET.Game
             sendPacket(new EtcStatusUpdate(this));
 
             SystemMessage sm = new SystemMessage(2162);
-            sm.addNumber(count);
-            sm.addNumber(Souls);
+            sm.AddNumber(count);
+            sm.AddNumber(Souls);
             sendPacket(sm);//Your soul count has increased by $s1. It is now at $s2.
         }
 
@@ -2450,22 +2450,22 @@ namespace L2dotNET.Game
                 if (!hit1.miss)
                 {
                     if (hit1.crit)
-                        sendPacket(new SystemMessage(2266).addPlayerName(Name));//$c1 landed a critical hit!
+                        sendPacket(new SystemMessage(2266).AddPlayerName(Name));//$c1 landed a critical hit!
 
                     //$c1 has given $c2 damage of $s3.
-                    sendPacket(new SystemMessage(2261).addPlayerName(Name).addName(CurrentTarget).addNumber(hit1.damage));
+                    sendPacket(new SystemMessage(2261).AddPlayerName(Name).AddName(CurrentTarget).AddNumber(hit1.damage));
                     CurrentTarget.reduceHp(this, hit1.damage);
 
                     if (CurrentTarget is L2Player) //$c1 has received $s3 damage from $c2.
-                        CurrentTarget.sendPacket(new SystemMessage(2262).addName(CurrentTarget).addName(this).addNumber(hit1.damage));
+                        CurrentTarget.sendPacket(new SystemMessage(2262).AddName(CurrentTarget).AddName(this).AddNumber(hit1.damage));
                 }
                 else
                 {
-                    sendPacket(new SystemMessage(2265).addPlayerName(Name));//$c1's attack went astray.
+                    sendPacket(new SystemMessage(2265).AddPlayerName(Name));//$c1's attack went astray.
 
                     if (CurrentTarget is L2Player) //$c1 has evaded $c2's attack.
                     {
-                        CurrentTarget.sendPacket(new SystemMessage(2264).addName(CurrentTarget).addName(this));
+                        CurrentTarget.sendPacket(new SystemMessage(2264).AddName(CurrentTarget).AddName(this));
                         ((L2Player)CurrentTarget).AICharacter.NotifyEvaded(this);
                     }
                 }
@@ -2481,22 +2481,22 @@ namespace L2dotNET.Game
                 if (!hit2.miss)
                 {
                     if (hit2.crit)
-                        sendPacket(new SystemMessage(2266).addName(this));//$c1 landed a critical hit!
+                        sendPacket(new SystemMessage(2266).AddName(this));//$c1 landed a critical hit!
 
                     //$c1 has given $c2 damage of $s3.
-                    sendPacket(new SystemMessage(2261).addName(this).addName(CurrentTarget).addNumber(hit2.damage));
+                    sendPacket(new SystemMessage(2261).AddName(this).AddName(CurrentTarget).AddNumber(hit2.damage));
                     CurrentTarget.reduceHp(this, hit2.damage);
 
                     if (CurrentTarget is L2Player) //$c1 has received $s3 damage from $c2.
-                        CurrentTarget.sendPacket(new SystemMessage(2262).addName(CurrentTarget).addName(this).addNumber(hit2.damage));
+                        CurrentTarget.sendPacket(new SystemMessage(2262).AddName(CurrentTarget).AddName(this).AddNumber(hit2.damage));
                 }
                 else
                 {
-                    sendPacket(new SystemMessage(2265).addPlayerName(Name));//$c1's attack went astray.
+                    sendPacket(new SystemMessage(2265).AddPlayerName(Name));//$c1's attack went astray.
 
                     if (CurrentTarget is L2Player) //$c1 has evaded $c2's attack.
                     {
-                        CurrentTarget.sendPacket(new SystemMessage(2264).addName(CurrentTarget).addName(this));
+                        CurrentTarget.sendPacket(new SystemMessage(2264).AddName(CurrentTarget).AddName(this));
                         ((L2Player)CurrentTarget).AICharacter.NotifyEvaded(this);
                     }
                 }
@@ -2520,7 +2520,7 @@ namespace L2dotNET.Game
                     {
                         if (Inventory.getItemCount(sid) < weapon.Template.SoulshotCount)
                         {
-                            sendPacket(new SystemMessage(1435).addItemName(sid));//Due to insufficient $s1, the automatic use function has been deactivated.
+                            sendPacket(new SystemMessage(1435).AddItemName(sid));//Due to insufficient $s1, the automatic use function has been deactivated.
 
                             lock (autoSoulshots)
                             {

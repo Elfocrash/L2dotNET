@@ -19,14 +19,14 @@ namespace L2dotNET.Game.model.skills2.speceffects
         public override void OnStartNight(L2Player player)
         {
             //It is now midnight and the effect of $s1 can be felt.
-            player.sendPacket(new SystemMessage(1131).addSkillName(effect.SkillId, effect.SkillLv));
+            player.sendPacket(new SystemMessage(1131).AddSkillName(effect.SkillId, effect.SkillLv));
             player.addStat(effect);
         }
 
         public override void OnStartDay(L2Player player)
         {
             //It is dawn and the effect of $s1 will now disappear.
-            player.sendPacket(new SystemMessage(1132).addSkillName(effect.SkillId, effect.SkillLv));
+            player.sendPacket(new SystemMessage(1132).AddSkillName(effect.SkillId, effect.SkillLv));
             player.removeStat(effect);
         }
     }

@@ -232,7 +232,7 @@ namespace L2dotNET.Game.model.skills2
             if (retcode == -1)
             {
                 //$s1 cannot be used due to unsuitable terms.
-                target.sendPacket(new SystemMessage(113).addSkillName(skill_id, level));
+                target.sendPacket(new SystemMessage(113).AddSkillName(skill_id, level));
             }
 
             return retcode == -2;

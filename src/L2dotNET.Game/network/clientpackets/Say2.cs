@@ -122,7 +122,7 @@ namespace L2dotNET.Game.network.l2recv
                         {
                             //$s1 is not currently logged in.
                             SystemMessage sm = new SystemMessage(3);
-                            sm.addString(_target);
+                            sm.AddString(_target);
                             player.sendPacket(sm);
 
                             player.sendActionFailed();

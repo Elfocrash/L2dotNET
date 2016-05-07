@@ -25,7 +25,7 @@ namespace L2dotNET.Game.model.skills2.effects
 
             int diff = (int)(next - current);
             //$s1 HP has been restored.
-            target.sendPacket(new SystemMessage(1066).addNumber(diff));
+            target.sendPacket(new SystemMessage(1066).AddNumber(diff));
             return nothing;
         }
     }

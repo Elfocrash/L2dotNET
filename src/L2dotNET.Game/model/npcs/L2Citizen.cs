@@ -375,7 +375,7 @@ namespace L2dotNET.Game.model.npcs
 
                 if (nextLvl != 800)
                     //You do not have any further skills to learn.  Come back when you have reached Level $s1.
-                    player.sendPacket(new SystemMessage(607).addNumber(nextLvl));
+                    player.sendPacket(new SystemMessage(607).AddNumber(nextLvl));
                 else
                 {
                     //There are no other skills to learn.

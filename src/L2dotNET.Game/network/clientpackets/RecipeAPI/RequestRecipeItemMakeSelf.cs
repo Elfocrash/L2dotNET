@@ -76,8 +76,8 @@ namespace L2dotNET.Game.network.l2recv
                 {
                     //You are missing $s2 $s1 required to create that.
                     SystemMessage sm = new SystemMessage(854);
-                    sm.addItemName(material.item.ItemID);
-                    sm.addItemCount(material.count - count);
+                    sm.AddItemName(material.item.ItemID);
+                    sm.AddItemCount(material.count - count);
                     player.sendPacket(sm);
                     player.sendActionFailed();
                     return;

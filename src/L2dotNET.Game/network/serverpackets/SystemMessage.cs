@@ -16,88 +16,88 @@ namespace L2dotNET.Game.network.l2send
             MessgeID = msgId;
         }
 
-        public SystemMessage addString(string val)
+        public SystemMessage AddString(string val)
         {
             data.Add(new object[] { 0, val });
             return this;
         }
 
-        public SystemMessage addNumber(int val)
+        public SystemMessage AddNumber(int val)
         {
             data.Add(new object[] { 1, val });
             return this;
         }
 
-        public SystemMessage addNumber(double val)
+        public SystemMessage AddNumber(double val)
         {
             data.Add(new object[] { 1, (int)val });
             return this;
         }
 
-        public SystemMessage addNpcName(int val)
+        public SystemMessage AddNpcName(int val)
         {
             data.Add(new object[] { 2, (1000000 + val) });
             return this;
         }
 
-        public SystemMessage addItemName(int val)
+        public SystemMessage AddItemName(int val)
         {
             data.Add(new object[] { 3, val });
             return this;
         }
 
-        public SystemMessage addSkillName(int val, int lvl)
+        public SystemMessage AddSkillName(int val, int lvl)
         {
             data.Add(new object[] { 4, val, lvl });
             return this;
         }
 
-        public void addCastleName(int val)
+        public void AddCastleName(int val)
         {
             data.Add(new object[] { 5, val });
         }
 
-        public void addItemCount(long val)
+        public void AddItemCount(long val)
         {
             data.Add(new object[] { 6, val });
         }
 
-        public void addZoneName(int val, int y, int z)
+        public void AddZoneName(int val, int y, int z)
         {
             data.Add(new object[] { 7, val, y, z });
         }
 
-        public void addElementName(int val)
+        public void AddElementName(int val)
         {
             data.Add(new object[] { 9, val });
         }
 
-        public void addInstanceName(int val)
+        public void AddInstanceName(int val)
         {
             data.Add(new object[] { 10, val });
         }
 
-        public SystemMessage addPlayerName(string val)
+        public SystemMessage AddPlayerName(string val)
         {
             data.Add(new object[] { 12, val });
             return this;
         }
 
-        public SystemMessage addName(L2Object obj)
+        public SystemMessage AddName(L2Object obj)
         {
             if (obj is L2Player)
-                return addPlayerName(((L2Player)obj).Name);
+                return AddPlayerName(((L2Player)obj).Name);
             else if (obj is L2Citizen)
-                return addNpcName(((L2Citizen)obj).NpcId);
+                return AddNpcName(((L2Citizen)obj).NpcId);
             else if (obj is L2Summon)
-                return addNpcName(((L2Summon)obj).NpcId);
+                return AddNpcName(((L2Summon)obj).NpcId);
             else if (obj is L2Item)
-                return addItemName(((L2Item)obj).Template.ItemID);
+                return AddItemName(((L2Item)obj).Template.ItemID);
             else
-                return addString(obj.asString());
+                return AddString(obj.asString());
         }
 
-        public void addSysStr(int val)
+        public void AddSysStr(int val)
         {
             data.Add(new object[] { 13, val });
         }

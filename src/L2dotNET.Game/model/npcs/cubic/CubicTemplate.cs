@@ -68,27 +68,27 @@ namespace L2dotNET.Game.model.npcs.cubic
                         {
                             //There are $s2 hour(s), $s3 minute(s), and $s4 second(s) remaining in $s1's re-use time.
                             SystemMessage sm = new SystemMessage(2305);
-                            sm.addSkillName(cast.skill_id, cast.level);
-                            sm.addNumber((int)ts.Hours);
-                            sm.addNumber((int)ts.Minutes);
-                            sm.addNumber((int)ts.Seconds);
+                            sm.AddSkillName(cast.skill_id, cast.level);
+                            sm.AddNumber((int)ts.Hours);
+                            sm.AddNumber((int)ts.Minutes);
+                            sm.AddNumber((int)ts.Seconds);
                             caster.sendPacket(sm);
                         }
                         else if (ts.TotalMinutes > 0)
                         {
                             //There are $s2 minute(s), $s3 second(s) remaining in $s1's re-use time.
                             SystemMessage sm = new SystemMessage(2304);
-                            sm.addSkillName(cast.skill_id, cast.level);
-                            sm.addNumber((int)ts.Minutes);
-                            sm.addNumber((int)ts.Seconds);
+                            sm.AddSkillName(cast.skill_id, cast.level);
+                            sm.AddNumber((int)ts.Minutes);
+                            sm.AddNumber((int)ts.Seconds);
                             caster.sendPacket(sm);
                         }
                         else
                         {
                             //There are $s2 second(s) remaining in $s1's re-use time.
                             SystemMessage sm = new SystemMessage(2303);
-                            sm.addSkillName(cast.skill_id, cast.level);
-                            sm.addNumber((int)ts.Seconds);
+                            sm.AddSkillName(cast.skill_id, cast.level);
+                            sm.AddNumber((int)ts.Seconds);
                             caster.sendPacket(sm);
                         }
 

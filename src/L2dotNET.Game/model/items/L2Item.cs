@@ -124,9 +124,9 @@ namespace L2dotNET.Game.model.items
             if (Template.Type == ItemTemplate.L2ItemType.armor || Template.Type == ItemTemplate.L2ItemType.weapon || Template.Type == ItemTemplate.L2ItemType.accessary)
             {
                 if (Enchant == 0)
-                    owner.sendPacket(new SystemMessage(417).addItemName(Template.ItemID));//$s1 has been disarmed.
+                    owner.sendPacket(new SystemMessage(417).AddItemName(Template.ItemID));//$s1 has been disarmed.
                 else
-                    owner.sendPacket(new SystemMessage(1064).addNumber(Enchant).addItemName(Template.ItemID));//The equipment, +$s1 $s2, has been removed.
+                    owner.sendPacket(new SystemMessage(1064).AddNumber(Enchant).AddItemName(Template.ItemID));//The equipment, +$s1 $s2, has been removed.
             }
 
             owner.removeStats(this);
@@ -176,9 +176,9 @@ namespace L2dotNET.Game.model.items
             if (Template.Type == ItemTemplate.L2ItemType.armor || Template.Type == ItemTemplate.L2ItemType.weapon || Template.Type == ItemTemplate.L2ItemType.accessary)
             {
                 if (Enchant == 0)
-                    owner.sendPacket(new SystemMessage(49).addItemName(Template.ItemID));//You have equipped your $s1.
+                    owner.sendPacket(new SystemMessage(49).AddItemName(Template.ItemID));//You have equipped your $s1.
                 else
-                    owner.sendPacket(new SystemMessage(368).addNumber(Enchant).addItemName(Template.ItemID));//Equipped +$s1 $s2.
+                    owner.sendPacket(new SystemMessage(368).AddNumber(Enchant).AddItemName(Template.ItemID));//Equipped +$s1 $s2.
             }
 
             owner.addStats(this);
