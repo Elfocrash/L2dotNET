@@ -68,7 +68,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return this.db.Query("select count(*) from accounts where login=@login AND password=@pass", new { login = login, pass = password }).Any();
+                return this.db.Query("select distinct 1 from accounts where login=@login AND password=@pass", new { login = login, pass = password }).Any();
             }
             catch (MySqlException ex)
             {
