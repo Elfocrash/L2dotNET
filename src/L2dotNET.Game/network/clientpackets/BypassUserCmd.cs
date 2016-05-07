@@ -21,7 +21,6 @@ namespace L2dotNET.Game.network.l2recv
             _command = readD();
         }
 
-
         public override void run()
         {
             L2Player player = getClient().CurrentPlayer;
