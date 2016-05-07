@@ -48,7 +48,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return this.db.Query("select count(*) from characters where char_name=@name", new { name = name }).Any();
+                return this.db.Query("select distinct 1 from characters where char_name=@name", new { name = name }).Any();
             }
             catch (MySqlException ex)
             {
