@@ -21,10 +21,6 @@ namespace L2dotNET.Game.network.l2recv
             _command = readD();
         }
 
-        private enum RequestType
-        {
-            loc = 0
-        }
 
         public override void run()
         {
