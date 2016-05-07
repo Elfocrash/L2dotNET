@@ -48,13 +48,13 @@ namespace L2dotNET.Game.network.l2recv
                 case 0:
                     player.TradeState = 0;
                     player.requester.TradeState = 0;
-                    player.requester.sendPacket(new SystemMessage(119).addPlayerName(player.Name));//$c1 has denied your request to trade.
+                    player.requester.sendPacket(new SystemMessage(119).AddPlayerName(player.Name));//$c1 has denied your request to trade.
                     player.requester.requester = null;
                     player.requester = null;
                     break;
                 case 1:
-                    player.requester.sendPacket(new SystemMessage(120).addPlayerName(player.Name));//You begin trading with $c1.
-                    player.sendPacket(new SystemMessage(120).addPlayerName(player.requester.Name));//You begin trading with $c1.
+                    player.requester.sendPacket(new SystemMessage(120).AddPlayerName(player.Name));//You begin trading with $c1.
+                    player.sendPacket(new SystemMessage(120).AddPlayerName(player.requester.Name));//You begin trading with $c1.
                     player.TradeState = 3;
                     player.requester.TradeState = 3;
                     player.sendPacket(new TradeStart(player));

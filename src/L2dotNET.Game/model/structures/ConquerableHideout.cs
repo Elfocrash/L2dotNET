@@ -101,13 +101,13 @@ namespace L2dotNET.Game.model.structures
                     {
                         cl.UpdatePledgeNameValue(ReputationCapture);
                         //Your clan has added $1s points to its clan reputation score.
-                        cl.broadcastToMembers(new SystemMessage(1781).addNumber(ReputationCapture));
+                        cl.broadcastToMembers(new SystemMessage(1781).AddNumber(ReputationCapture));
                     }
                     else
                     {
                         cl.UpdatePledgeNameValue(ReputationNothing);
                         //Your clan's newly acquired contested clan hall has added $s1 points to your clan's reputation score.
-                        cl.broadcastToMembers(new SystemMessage(1774).addNumber(ReputationNothing));
+                        cl.broadcastToMembers(new SystemMessage(1774).AddNumber(ReputationNothing));
                     }
                 }
                 else

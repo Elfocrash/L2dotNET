@@ -55,8 +55,8 @@ namespace L2dotNET.Game.network.l2recv
             if (item.Template.is_destruct == 0)
             {
                 SystemMessage sm = new SystemMessage(614);
-                sm.addItemName(item.Template.ItemID);
-                sm.addString("cannot be destroyed.");
+                sm.AddItemName(item.Template.ItemID);
+                sm.AddString("cannot be destroyed.");
                 player.sendPacket(sm);
                 player.sendActionFailed();
                 return;

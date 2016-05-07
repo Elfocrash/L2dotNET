@@ -104,11 +104,11 @@ namespace L2dotNET.Game.controllers
             DateTime dt = new DateTime(2000, 1, 1, 0, 0, 0).AddSeconds(Time * 6);
 
             SystemMessage sm = new SystemMessage(Night ? 928 : 927);
-            sm.addString(dt.Hour < 10 ? "0" + dt.Hour : "" + dt.Hour);
+            sm.AddString(dt.Hour < 10 ? "0" + dt.Hour : "" + dt.Hour);
             string str = dt.Minute < 10 ? "0" + dt.Minute : "" + dt.Minute;
             str += ":";
             str += dt.Second < 10 ? "0" + dt.Second : "" + dt.Second;
-            sm.addString(str);
+            sm.AddString(str);
             player.sendPacket(sm);
         }
     }

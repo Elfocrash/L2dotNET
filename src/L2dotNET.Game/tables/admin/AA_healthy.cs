@@ -33,13 +33,13 @@ namespace L2dotNET.Game.tables.admin
             target.sendPacket(su);
 
             SystemMessage sm = new SystemMessage(1067); //$s2 HP has been restored by $s1.
-            sm.addPlayerName(admin.Name);
-            sm.addNumber((int)hpval);
+            sm.AddPlayerName(admin.Name);
+            sm.AddNumber((int)hpval);
             target.sendPacket(sm);
 
             sm = new SystemMessage(1069); //$s2 MP has been restored by $s1.
-            sm.addPlayerName(admin.Name);
-            sm.addNumber((int)mpval);
+            sm.AddPlayerName(admin.Name);
+            sm.AddNumber((int)mpval);
             target.sendPacket(sm);
         }
     }

@@ -100,13 +100,13 @@ namespace L2dotNET.Game.managers
             pl1.TradeState = 0;
             pl1.currentTrade.Clear();
             pl1.sendPacket(trade_fail);
-            pl1.sendPacket(new SystemMessage(124).addPlayerName(name));//$c1 has cancelled the trade.
+            pl1.sendPacket(new SystemMessage(124).AddPlayerName(name));//$c1 has cancelled the trade.
             pl1.requester = null;
 
             pl2.TradeState = 0;
             pl2.currentTrade.Clear();
             pl2.sendPacket(trade_fail);
-            pl2.sendPacket(new SystemMessage(124).addPlayerName(name));//$c1 has cancelled the trade.
+            pl2.sendPacket(new SystemMessage(124).AddPlayerName(name));//$c1 has cancelled the trade.
             pl2.requester = null;
         }
     }

@@ -40,7 +40,7 @@ namespace L2dotNET.Game.network.l2recv
                 case -1:
                     {
                         SystemMessage sm = new SystemMessage(3168); //$c1 is set to refuse party requests and cannot receive a party request.
-                        sm.addPlayerName(player.Name);
+                        sm.AddPlayerName(player.Name);
                         player.requester.sendPacket(sm);
                     }
                     break;

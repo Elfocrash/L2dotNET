@@ -183,11 +183,11 @@ namespace L2dotNET.Game.model.inventory
                         if (enchant > 0)
                         {
                             sm.MessgeID = 1666; //You have obtained +$s1$s2.
-                            sm.addNumber(enchant);
-                            sm.addItemName(template.ItemID);
+                            sm.AddNumber(enchant);
+                            sm.AddItemName(template.ItemID);
                         }
                         else
-                            sm.addItemName(template.ItemID);
+                            sm.AddItemName(template.ItemID);
 
                         _owner.sendPacket(sm);
                     }
@@ -196,8 +196,8 @@ namespace L2dotNET.Game.model.inventory
                 if (msg && mass)
                 {
                     SystemMessage sm = new SystemMessage(53); //You have earned $s2 $s1(s).
-                    sm.addItemName(template.ItemID);
-                    sm.addItemCount(count);
+                    sm.AddItemName(template.ItemID);
+                    sm.AddItemCount(count);
                     _owner.sendPacket(sm);
                 }
             }
@@ -238,18 +238,18 @@ namespace L2dotNET.Game.model.inventory
                     if (template.ItemID == 57)
                     {
                         sm = new SystemMessage(52); //You have earned $s1 adena.
-                        sm.addItemCount(count);
+                        sm.AddItemCount(count);
                     }
                     else if (count > 1)
                     {
                         sm = new SystemMessage(53); //You have earned $s2 $s1(s).
-                        sm.addItemName(template.ItemID);
-                        sm.addItemCount(count);
+                        sm.AddItemName(template.ItemID);
+                        sm.AddItemCount(count);
                     }
                     else
                     {
                         sm = new SystemMessage(54); //You have earned $s1.
-                        sm.addItemName(template.ItemID);
+                        sm.AddItemName(template.ItemID);
                     }
 
                     _owner.sendPacket(sm);
@@ -289,11 +289,11 @@ namespace L2dotNET.Game.model.inventory
                     if (item.Enchant > 0 && item.Template.ItemID != 4443)
                     {
                         sm.MessgeID = 1666; //You have obtained +$s1$s2.
-                        sm.addNumber(item.Enchant);
-                        sm.addItemName(item.Template.ItemID);
+                        sm.AddNumber(item.Enchant);
+                        sm.AddItemName(item.Template.ItemID);
                     }
                     else
-                        sm.addItemName(item.Template.ItemID);
+                        sm.AddItemName(item.Template.ItemID);
 
                     _owner.sendPacket(sm);
                 }
@@ -332,18 +332,18 @@ namespace L2dotNET.Game.model.inventory
                     if (item.Template.ItemID == 57)
                     {
                         sm = new SystemMessage(28); //You have obtained $s1 adena.
-                        sm.addItemCount(item.Count);
+                        sm.AddItemCount(item.Count);
                     }
                     else if (item.Count > 1)
                     {
                         sm = new SystemMessage(29); //You have obtained $s2 $s1.
-                        sm.addItemName(item.Template.ItemID);
-                        sm.addItemCount(item.Count);
+                        sm.AddItemName(item.Template.ItemID);
+                        sm.AddItemCount(item.Count);
                     }
                     else
                     {
                         sm = new SystemMessage(30); //You have obtained $s1.
-                        sm.addItemName(item.Template.ItemID);
+                        sm.AddItemName(item.Template.ItemID);
                     }
 
                     _owner.sendPacket(sm);
@@ -761,10 +761,10 @@ namespace L2dotNET.Game.model.inventory
 
                         if (msg)
                         {
-                            sm.addItemName(item.Template.ItemID);
+                            sm.AddItemName(item.Template.ItemID);
 
                             if (count > 1)
-                                sm.addItemCount(count);
+                                sm.AddItemCount(count);
                         }
 
                         break;
@@ -780,7 +780,7 @@ namespace L2dotNET.Game.model.inventory
 
                             if (msg)
                             {
-                                sm.addItemName(item.Template.ItemID);
+                                sm.AddItemName(item.Template.ItemID);
                             }
 
                             item.sql_delete();
@@ -815,8 +815,8 @@ namespace L2dotNET.Game.model.inventory
             {
                 if (nonstackmass)
                 {
-                    sm.addItemName(iditem);
-                    sm.addItemCount(count);
+                    sm.AddItemName(iditem);
+                    sm.AddItemCount(count);
                 }
 
                 _owner.sendPacket(sm);
@@ -860,10 +860,10 @@ namespace L2dotNET.Game.model.inventory
 
                 if (msg)
                 {
-                    sm.addItemName(item.Template.ItemID);
+                    sm.AddItemName(item.Template.ItemID);
 
                     if (count > 1)
-                        sm.addNumber(count);
+                        sm.AddNumber(count);
                 }
             }
             else
@@ -877,7 +877,7 @@ namespace L2dotNET.Game.model.inventory
 
                     if (msg)
                     {
-                        sm.addItemName(item.Template.ItemID);
+                        sm.AddItemName(item.Template.ItemID);
                     }
 
                     item.sql_delete();
@@ -905,8 +905,8 @@ namespace L2dotNET.Game.model.inventory
             {
                 if (nonstackmass)
                 {
-                    sm.addItemName(iditem);
-                    sm.addNumber(count);
+                    sm.AddItemName(iditem);
+                    sm.AddNumber(count);
                 }
 
                 _owner.sendPacket(sm);
@@ -942,8 +942,8 @@ namespace L2dotNET.Game.model.inventory
                         if (msg)
                         {
                             SystemMessage sm = new SystemMessage(301);
-                            sm.addItemName(item.Template.ItemID);
-                            sm.addItemCount(c);
+                            sm.AddItemName(item.Template.ItemID);
+                            sm.AddItemCount(c);
 
                             _owner.sendPacket(sm);
                         }
@@ -960,8 +960,8 @@ namespace L2dotNET.Game.model.inventory
                         if (msg)
                         {
                             SystemMessage sm = new SystemMessage(301);
-                            sm.addItemName(item.Template.ItemID);
-                            sm.addNumber(1);
+                            sm.AddItemName(item.Template.ItemID);
+                            sm.AddNumber(1);
 
                             _owner.sendPacket(sm);
                         }

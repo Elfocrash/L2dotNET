@@ -315,7 +315,7 @@ namespace L2dotNET.Game.model.communities
             }
 
             SystemMessage sm = new SystemMessage(223); //$s1 has withdrawn from the clan.
-            sm.addPlayerName(player.Name);
+            sm.AddPlayerName(player.Name);
             broadcastToOnline(sm);
 
             foreach (ClanMember cm in members)

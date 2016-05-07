@@ -46,11 +46,11 @@ namespace L2dotNET.Game
             player.Party = this;
 
             SystemMessage sm = new SystemMessage(106);//You have joined $s1's party.
-            sm.addPlayerName(leader.Name);
+            sm.AddPlayerName(leader.Name);
             player.sendPacket(sm);
 
             sm = new SystemMessage(107);//$c1 has joined the party.
-            sm.addPlayerName(leader.Name);
+            sm.AddPlayerName(leader.Name);
             broadcastToMembers(sm, player.ObjID);
         }
 
@@ -75,7 +75,7 @@ namespace L2dotNET.Game
             VoteId = mode;
             broadcastToMembers(new ExAskModifyPartyLooting(leader.Name, mode));
             SystemMessage sm = new SystemMessage(3135); //Requesting approval for changing party loot to "$s1".
-            sm.addSysStr(LOOT_SYSSTRINGS[mode]);
+            sm.AddSysStr(LOOT_SYSSTRINGS[mode]);
             leader.sendPacket(sm);
 
             votesOnStart = (byte)Members.Count;
@@ -118,7 +118,7 @@ namespace L2dotNET.Game
             if (agreed > half)
             {
                 sm = new SystemMessage(3138);//Party loot was changed to "$s1".
-                sm.addSysStr(LOOT_SYSSTRINGS[VoteId]);
+                sm.AddSysStr(LOOT_SYSSTRINGS[VoteId]);
                 itemDistribution = VoteId;
             }
             else
@@ -142,7 +142,7 @@ namespace L2dotNET.Game
 
                     leader = Members.First.Value;
                     SystemMessage sm = new SystemMessage(1384);//$c1 has become the party leader.
-                    sm.addPlayerName(leader.Name);
+                    sm.AddPlayerName(leader.Name);
                     broadcastToMembers(sm);
 
                     broadcastToMembers(new PartySmallWindowDeleteAll());
@@ -179,7 +179,7 @@ namespace L2dotNET.Game
                 player.Party = null;
 
                 SystemMessage sm = new SystemMessage(108); //$c1 has left the party.
-                sm.addPlayerName(player.Name);
+                sm.AddPlayerName(player.Name);
                 broadcastToMembers(sm);
                 broadcastToMembers(new PartySmallWindowDelete(player.ObjID, player.Name));
 
