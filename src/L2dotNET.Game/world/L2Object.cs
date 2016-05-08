@@ -448,21 +448,13 @@ namespace L2dotNET.Game.world
 
         public void validateVisibleObjects(int x, int y, bool zones)
         {
-            int range = Cfg.world_visble_range_surface;
-            int height = Cfg.world_visble_height_surface;
+            int range = 4000;
+            int height = 1600;
 
             if (isInSiege())
             {
-                range = Cfg.world_visble_range_siege;
-                height = Cfg.world_visble_height_siege;
-            }
-            else
-            {
-                if (isInDungeon())
-                {
-                    range = Cfg.world_visble_range_dungeon;
-                    height = Cfg.world_visble_height_dungeon;
-                }
+                range = 2600;
+                height = 1000;
             }
 
             L2World.Instance.CheckToUpdate(this, x, y, range, height, true, zones);

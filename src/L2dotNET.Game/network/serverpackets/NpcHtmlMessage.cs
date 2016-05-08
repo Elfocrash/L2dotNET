@@ -7,14 +7,14 @@ namespace L2dotNET.Game.network.l2send
         public string _htm; int _objId, _itemId;
         public NpcHtmlMessage(L2Player player, string file, int objId)
         {
-            _htm = HtmCache.Instance.getHtm(player._locale, file);
+            _htm = HtmCache.Instance.GetHtmByFilename(file);
             _objId = objId;
             _itemId = 0;
         }
 
         public NpcHtmlMessage(L2Player player, string file, int objId, int itemId)
         {
-            _htm = HtmCache.Instance.getHtm(player._locale, file);
+            _htm = HtmCache.Instance.GetHtmByFilename(file);
             _objId = objId;
             _itemId = itemId;
         }

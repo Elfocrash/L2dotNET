@@ -12,13 +12,30 @@ namespace L2dotNET.Game.scripting
     public class ScriptCompiler
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ScriptCompiler));
-        private static ScriptCompiler instance = new ScriptCompiler();
-        public static ScriptCompiler getController()
-        {
-            return instance;
-        }
 
         private CSharpCodeProvider provider;
+
+        private static volatile ScriptCompiler instance;
+        private static object syncRoot = new object();
+
+        public static ScriptCompiler Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new ScriptCompiler();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
 
         public ScriptCompiler()
         {

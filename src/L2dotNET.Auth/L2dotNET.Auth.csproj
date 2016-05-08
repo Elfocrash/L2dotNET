@@ -76,6 +76,10 @@
       <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
@@ -93,14 +97,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\Config.cs" />
+    <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="DepInjectionModule.cs" />
     <Compile Include="gscommunication\ServerThread.cs" />
     <Compile Include="LoginServer.cs" />
     <Compile Include="managers\NetRedClass.cs" />
     <Compile Include="managers\NetworkRedirect.cs" />
-    <Compile Include="Cfg.cs" />
     <Compile Include="managers\ClientManager.cs" />
-    <Compile Include="model\ConfigFile.cs" />
     <Compile Include="network\rcv_gs\RequestUpdatePremiumState.cs" />
     <Compile Include="network\rcv_gs\RequestPlayersOnline.cs" />
     <Compile Include="network\rcv_gs\RequestPlayerInGame.cs" />

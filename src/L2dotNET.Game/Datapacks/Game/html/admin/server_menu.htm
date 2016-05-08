@@ -1,0 +1,59 @@
+<html><title>Server menu</title><body><center>
+	<table width=260>
+		<tr>
+			<td><button value="Main" action="bypass -h admin_admin" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+			<td><button value="Game" action="bypass -h admin_admin2" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+			<td><button value="Effects" action="bypass -h admin_admin3" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+			<td><button value="Server" action="bypass -h admin_admin4" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+		</tr>
+	</table>
+	<img src="l2ui.SquareWhite" width=275 height=1><br>
+	<table width=240>
+		<tr>
+			<td>QuickBox</td>
+			<td><edit var="menu_command" width=120 height=15></td>
+			<td><button value="Help" action="bypass -h admin_help help/1.htm" width=45 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table><br>
+	Reload
+	<table width=240>
+		<tr>
+			<td><combobox width=120 height=21 var="cb" list=acar;announcement;config;crest;cw;door;htm;item;multisell;npc;npcwalker;skill;teleport;zone;></td>
+			<td><button value="Reload" action="bypass -h admin_reload $cb" width=75 height=21 back="L2UI_ch3.Btn1_normalOn" fore="L2UI_ch3.Btn1_normal"></td>
+		</tr>
+	</table><br>
+	<img src="L2UI_CH3.herotower_deco" width=256 height=32><br>
+	GeoEngine / Zones
+	<table width=240>
+		<tr>
+			<td><button value="Zone Check" action="bypass -h admin_zone_check" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Path Info" action="bypass -h admin_path_info" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Path Find" action="bypass -h admin_path_find" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+		<tr>
+			<td><button value="Beeline Test" action="bypass -h admin_geo_move" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="LoS Test" action="bypass -h admin_geo_see" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Position Info" action="bypass -h admin_geo_pos" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button value="Report Geo Bug" action="bypass -h admin_geo_bug $menu_command" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td></td>
+		</tr>
+	</table><br>
+	Maintenance
+	<table width=150>
+		<tr>
+			<td><button value="Maintenance" action="bypass -h admin_server" width=75 height=21 back="L2UI_ch3.Btn1_normalOn" fore="L2UI_ch3.Btn1_normal"></td>
+			<td><button value="Announce" action="bypass -h admin_help announce.htm" width=75 height=21 back="L2UI_ch3.Btn1_normalOn" fore="L2UI_ch3.Btn1_normal"></td>
+		</tr>
+	</table><br>
+	Development
+	<table width=240>
+		<tr>
+			<td><button value="Packet Forge" action="bypass -h admin_forge" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="SysMessage" action="bypass -h admin_msg $menu_command" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Skill Test" action="bypass -h admin_st $menu_command" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table>
+</center></body></html>

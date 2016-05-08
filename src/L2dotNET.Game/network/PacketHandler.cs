@@ -326,12 +326,6 @@ namespace L2dotNET.Game.network
                         case 0x79:
                             msg = new AnswerPartyLootModification(client, buff);
                             break;
-                        case 0x84:
-                            msg = new RequestBR_MinigameLoadScores(client, buff);
-                            break;
-                        case 0x85:
-                            msg = new RequestBR_MinigameInsertScore(client, buff);
-                            break;
                         default:
                             break;
                     }

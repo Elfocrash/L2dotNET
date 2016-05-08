@@ -1,0 +1,102 @@
+<html>
+<body><center><br><br>
+<table border=0 width=750><tr><td width=10></td><td width=740 align=left>
+<a action="bypass _bbshome">HOME</a>&nbsp;>&nbsp;<a action="bypass _bbsclan">Clan Community</a>&nbsp;>&nbsp;<a action="bypass _bbsclan;clan;%clanid%">Clan Home</a>&nbsp;>&nbsp;%link%
+</td></tr>
+</table>
+
+<table border=0 cellspacing=0 cellpadding=0 bgcolor=333333>
+<tr><td height=10></td></tr>
+<tr>
+<td fixWIDTH=65 align=center valign=top>%postId%</td>
+<td fixWIDTH=480 valign=top>%postTitle%</td>
+<td fixwidth=5></td>
+<td fixwidth=60 valign=top> &$419; :</td>
+<td fixWIDTH=140 valign=top>%postReadCount%</td>
+</tr>
+<tr><td height=10></td></tr>
+<tr>
+<td align=center><font color="DDDDDD">&$417; :</font></td>
+<td><font color="DDDDDD">%postOwnerName%</font></td>
+<td></td>
+<td><font color="DDDDDD">&$418; :</font></td>
+<td><font color="DDDDDD">%postDate%</font></td>
+</tr>
+<tr><td height=10></td></tr>
+</table>
+
+<br>
+<table border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td fixwidth=5></td>
+<td FIXWIDTH=740 align=left>%mes%</td>
+<td fixwidth=5></td>
+</tr>
+</table>
+<br>
+
+<table>
+<tr><td><img src="L2UI.squaregray" width="750" height="1"></td></tr>
+</table>
+<table border=0 cellspacing=0 cellpadding=0 width=610>
+<tr><td height=10></td></tr>
+<tr>
+<td WIDTH=70></td>
+<td align=center WIDTH=60>&$423;</td>
+<td WIDTH=5></td>
+<td><edit var = "comment" width=510 height=11></td>
+<td><button value="&$140;" action="Write _bbscpost com %clanid%;%topicId%;%postId% comment comment comment" back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF" width=65 height=20> </td>
+<td WIDTH=70></td>
+</tr>
+</table>
+
+<table border=0 cellspacing=0 cellpadding=3 width=750>
+%commentList%
+<tr><td><img src=\"L2UI.squaregray\" width=750 height=1></td></tr>
+<tr><td align=center><table WIDTH=300><tr>
+<td>%prevCom%</td>
+<td>%comCount%</td>
+<td>%nextCom%</td>
+</tr></table></td></tr>
+</table>
+
+<table border=0 cellspacing=0 cellpadding=2 bgcolor=5A5A5A width=750>
+<tr>
+<td FIXWIDTH=60 align=center>&$416;</td>
+<td FIXWIDTH=415 align=center>&$413;</td>
+<td FIXWIDTH=130 align=center>&$417;</td>
+<td FIXWIDTH=80 align=center>&$418;</td>
+<td FIXWIDTH=65 align=center>&$419;</td>
+</tr>
+</table>
+
+%replyList%
+
+<img src="L2UI.squaregray" width=750 height=1><br1>
+<center><table WIDTH=300><tr>
+<td>%prevReply%</td>
+<td>%replyCount%</td>
+<td>%nextReply%</td>
+</tr></table></center>
+
+<img src="L2UI.squareblank" width="1" height="5">
+<img src="L2UI.squaregray" width="750" height="1">
+<img src="L2UI.squareblank" width="1" height="5">
+<table border=0 cellspacing=0 cellpadding=0 FIXWIDTH=750>
+<tr>
+<td width=50>
+<button value = "&$422;" action="bypass _bbscpost;list;%type%;%clanid%" back="L2UI_CT1.Button_DF_Down" width=65 height=20 fore="L2UI_CT1.Button_DF">
+</td>
+<td width=700 align=right>< table border=0 cellspacing=0><tr>
+<td><button value = "&$424;" action="bypass _bbscpost;edit;%type%;%clanid%;%postId%" back="L2UI_CT1.Button_DF_Down" width=65 height=20 fore="L2UI_CT1.Button_DF"></td>&nbsp;
+<td><button value = "&$425;" action="bypass _bbscpost;del;%type%;%clanid%;%postId%" back="L2UI_CT1.Button_DF_Down" width=65 height=20 fore="L2UI_CT1.Button_DF"></td>&nbsp;
+<td><button value = "&$426;" action="bypass _bbscpost;reply;%type%;%clanid%;%postParentId%" back="L2UI_CT1.Button_DF_Down" width=65 height=20 fore="L2UI_CT1.Button_DF"></td>&nbsp;
+<td><button value = "&$421;" action="bypass _bbscpost;new;%type%;%clanid%" back="L2UI_CT1.Button_DF_Down" width=65 height=20 fore="L2UI_CT1.Button_DF"></td>&nbsp;
+</tr></table>
+</td>
+</tr>
+</table> 
+
+</center>
+</body>
+</html>

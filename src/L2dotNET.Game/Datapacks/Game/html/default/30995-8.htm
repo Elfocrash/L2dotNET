@@ -1,0 +1,25 @@
+<html><body>
+<center>Confirm Monster Race Bet / Calculate Winnings</center>
+<img src="L2UI.SquareWhite" width=270 height=1>
+<img src="L2UI.SquareBlank" width=1 height=3>
+<table width=270 border=0>
+<tr>
+<td width=230>Race #%raceId%<br>
+Lane: %lane%<br>
+Bet: %bet% Adena<br>
+1st place: Lane [%firstLane%]<br>
+Odds: [%odd%]
+</td>
+</tr>
+</table>
+<img src="L2UI.SquareBlank" width=270 height=10>
+<img src="L2UI.SquareWhite" width=270 height=1>
+<img src="L2UI.SquareBlank" width=270 height=5>
+
+<table width=270 border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td width=90 height=20><button value="Previous" action="bypass -h npc_%objectId%_ShowTickets" back="L2UI.DefaultButton_click" fore="L2UI.DefaultButton" width=67 height=19></td>
+<td width=90></td>
+<td width=90 align=right><button value="Calculate" action="bypass -h npc_%objectId%_CalculateWin %ticketObjectId%" back="L2UI.DefaultButton_click" fore="L2UI.DefaultButton" width=67 height=19></td>
+</tr></table>
+</body></html>

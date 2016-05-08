@@ -1,0 +1,27 @@
+<html><title>Find Dualbox Panel</title><body><center>
+	<table width=270>
+		<tr>
+			<td width=45><button value="Main" action="bypass -h admin_admin" width=45 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td width=180><center>Dualbox Menu</center></td>
+			<td width=45><button value="Back" action="bypass -h admin_admin" width=45 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table><br>
+	
+	<button value="Goto Character List" action="bypass -h admin_show_characters 1" width=140 height=21 back="bigbutton3_over" fore="bigbutton3">
+	<br>
+	IPs with Dualboxes (%multibox%):
+	<br>
+	%results%
+	<br><br>
+	Find Dualbox with:
+	
+	<table width=200>
+		<tr>
+			<td><button value="2+ Characters" action="bypass -h admin_%strict%find_dualbox 2" width=95 height=21 back="bigbutton_over" fore="bigbutton"></td>
+			<td><button value="3+ Characters" action="bypass -h admin_%strict%find_dualbox 3" width=95 height=21 back="bigbutton_over" fore="bigbutton"></td>
+		</tr><tr>
+			<td><button value="4+ Characters" action="bypass -h admin_%strict%find_dualbox 4" width=95 height=21 back="bigbutton_over" fore="bigbutton"></td>
+			<td><button value="5+ Characters" action="bypass -h admin_%strict%find_dualbox 5" width=95 height=21 back="bigbutton_over" fore="bigbutton"></td>
+		</tr>
+	</table><br>
+</center></body></html>
