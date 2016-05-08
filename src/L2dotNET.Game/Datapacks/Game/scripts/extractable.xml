@@ -1369,8 +1369,8 @@
     <item id="14739" min="1" max="1" rate="100"/> <!-- Event - Fresh Milk -->
     <item id="9156" min="1" max="1" rate="5"/> <!-- Blessed Scroll of Escape (Event) -->
     <item id="9157" min="1" max="1" rate="5"/> <!-- Blessed Scroll of Resurrection (Event) -->
-    <item id="14705" min="1" max="1" rate="0.325"/> <!-- Agathion Auxiliary Stone: Enchant Weapon (A-Grade) -->
-    <item id="14706" min="1" max="1" rate="0.025"/> <!-- Agathion Auxiliary Stone: Enchant Weapon (S-Grade) -->
+    <item id="14705" min="1" max="1" rate="1"/> <!-- Agathion Auxiliary Stone: Enchant Weapon (A-Grade) --> <!-- Previous rate="0.325" -->
+    <item id="14706" min="1" max="1" rate="1"/> <!-- Agathion Auxiliary Stone: Enchant Weapon (S-Grade) --> <!-- Previous rate="0.325" -->
   </capsule>
   <capsule id="15343"> <!-- Aqua Elf Transforming Harp 60-day Pack -->
     <item id="15342" min="1" max="1" rate="100"/> <!-- Aqua Elf Transforming Harp 60 day limited period -->
