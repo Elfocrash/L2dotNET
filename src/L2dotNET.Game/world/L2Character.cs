@@ -404,7 +404,7 @@ namespace L2dotNET.Game.world
         public virtual void sendSystemMessage(int p) { }
         public virtual void onPickUp(L2Item item) { }
 
-        public int _buffMax = Cfg.max_buffs;
+        public int _buffMax = Config.Instance.gameplayConfig.MaxBuffs;
         public LinkedList<AbnormalEffect> _effects = new LinkedList<AbnormalEffect>();
 
         public override void addAbnormal(TSkill skill, L2Character caster, bool permanent, bool unlim)

@@ -75,6 +75,10 @@
       <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
@@ -100,10 +104,12 @@
     <Compile Include="ai\npcai\merchant.cs" />
     <Compile Include="ai\npcai\monster_parameter.cs" />
     <Compile Include="ai\template\AI.cs" />
-    <Compile Include="Cfg.cs" />
     <Compile Include="ClientManager.cs" />
     <Compile Include="compression\DlcStream.cs" />
     <Compile Include="ConfigFile.cs" />
+    <Compile Include="Config\Config.cs" />
+    <Compile Include="Config\GameplayConfig.cs" />
+    <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="controllers\GameTime.cs" />
     <Compile Include="Crypt.cs" />
     <Compile Include="crypt\BlowFishKeygen.cs" />
@@ -121,12 +127,10 @@
     <Compile Include="Managers\bbs\BBSManager.cs" />
     <Compile Include="Managers\CastleManager.cs" />
     <Compile Include="Managers\ItemEnchantManager.cs" />
-    <Compile Include="Managers\MinigameRankManager.cs" />
     <Compile Include="Managers\PetitionManager.cs" />
     <Compile Include="Managers\ThreadPoolManager.cs" />
     <Compile Include="Managers\TradeManager.cs" />
     <Compile Include="Managers\TransformManager.cs" />
-    <Compile Include="Managers\MailManager.cs" />
     <Compile Include="Managers\PartyRoomManager.cs" />
     <Compile Include="Managers\PointCmdManager.cs" />
     <Compile Include="Managers\RqItemManager.cs" />
@@ -385,8 +389,6 @@
     <Compile Include="network\clientpackets\ClanAPI\RequestSetPledgeCrest.cs" />
     <Compile Include="network\clientpackets\RequestTutorialPassCmdToServer.cs" />
     <Compile Include="network\clientpackets\RequestTutorialLinkHtml.cs" />
-    <Compile Include="network\clientpackets\RequestBR_MinigameLoadScores.cs" />
-    <Compile Include="network\clientpackets\RequestBR_MinigameInsertScore.cs" />
     <Compile Include="network\clientpackets\RequestActionUse.cs" />
     <Compile Include="network\clientpackets\RequestExRqItemLink.cs" />
     <Compile Include="network\clientpackets\RequestBuySellUIClose.cs" />
@@ -509,20 +511,15 @@
     <Compile Include="network\serverpackets\ExBR_GamePoint.cs" />
     <Compile Include="network\serverpackets\ExRaidCharacterSelected.cs" />
     <Compile Include="network\serverpackets\ExQuestItemList.cs" />
-    <Compile Include="network\serverpackets\ExBR_MinigameLoadScores.cs" />
     <Compile Include="network\serverpackets\ExShowPetitionHtml.cs" />
     <Compile Include="network\serverpackets\ExBuySellList_Close.cs" />
     <Compile Include="network\serverpackets\ExBuySellList_Sell.cs" />
     <Compile Include="network\serverpackets\TutorialCloseHtml.cs" />
     <Compile Include="network\serverpackets\TutorialShowQuestionMark.cs" />
     <Compile Include="network\serverpackets\TutorialShowHtml.cs" />
-    <Compile Include="network\serverpackets\ExShowSentPost.cs" />
     <Compile Include="network\serverpackets\ExChangePostState.cs" />
-    <Compile Include="network\serverpackets\ExShowReceivedPost.cs" />
     <Compile Include="network\serverpackets\ExNoticePostSent.cs" />
     <Compile Include="network\serverpackets\ExPostItemList.cs" />
-    <Compile Include="network\serverpackets\ExShowSentPostList.cs" />
-    <Compile Include="network\serverpackets\ExShowReceivedPostList.cs" />
     <Compile Include="network\serverpackets\ExBasicActionList.cs" />
     <Compile Include="network\serverpackets\ExRpItemLink.cs" />
     <Compile Include="network\serverpackets\ShopPreviewList.cs" />
@@ -728,9 +725,8 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Datapacks\Auth\config\server.json" />
-    <None Include="Datapacks\Game\config\options.ini" />
-    <None Include="Datapacks\Game\config\rates.ini" />
-    <None Include="Datapacks\Game\config\server.ini" />
+    <None Include="Datapacks\Game\config\gameplay.json" />
+    <None Include="Datapacks\Game\config\server.json" />
     <None Include="Datapacks\Game\dlc\dropdata.dlc" />
     <None Include="Datapacks\Game\dlc\multisell.dlc" />
     <None Include="Datapacks\Game\dlc\skilldb_edit.dlc" />

@@ -6,14 +6,14 @@ namespace L2dotNET.Game.network.loginauth.send
         protected internal override void write()
         {
             writeC(0xA1);
-            writeH(Cfg.SERVER_PORT);
-            writeS(Cfg.SERVER_HOST);
+            writeH(Config.Instance.serverConfig.Port);
+            writeS(Config.Instance.serverConfig.Host);
             writeS("");
-            writeS(Cfg.auth_code);
+            writeS(Config.Instance.serverConfig.AuthCode);
             writeD(0);
-            writeH(Cfg.max_players);
-            writeC(Cfg.gmonly);
-            writeC(Cfg.test);
+            writeH(Config.Instance.serverConfig.MaxPlayers);
+            writeC(Config.Instance.serverConfig.IsGmOnly ? 0x01 : 0x00);
+            writeC(Config.Instance.serverConfig.IsTestServer ? 0x01 : 0x00);
         }
     }
 }
