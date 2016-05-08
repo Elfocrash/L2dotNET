@@ -53,7 +53,7 @@ namespace L2dotNET.Auth.rcv_l2
 
             if (account == null)
             {
-                if (Cfg.AUTO_ACCOUNTS)
+                if (Config.Instance.serverConfig.AutoCreate)
                     account = accountService.CreateAccount(username, L2Security.HashPassword(password));
                 else
                 {

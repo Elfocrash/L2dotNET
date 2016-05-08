@@ -39,11 +39,12 @@ namespace L2dotNET.Game.tables
 
         public HtmCache()
         {
-            htmCache = new List<L2Html>();
+            
         }
 
         public void Initialize()
         {
+            htmCache = new List<L2Html>();
             htmFiles = DirSearch("./html/");
             BuildHtmCache();
             log.Info($"HtmCache: Cache Built. Loaded { htmCache.Count } files.");
@@ -102,7 +103,7 @@ namespace L2dotNET.Game.tables
         {
             Filename = filename;
             Content = content;
-            Filepath = filepath;
+            Filepath = filepath.Replace("\\", "/");
         }
     }
 }

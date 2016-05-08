@@ -727,6 +727,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Datapacks\Auth\config\server.json" />
     <None Include="Datapacks\Game\config\options.ini" />
     <None Include="Datapacks\Game\config\rates.ini" />
     <None Include="Datapacks\Game\config\server.ini" />
@@ -13969,7 +13970,6 @@
     <Content Include="Datapacks\sqlscripts\l2dotnet.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Datapacks\Auth\config\" />
     <Folder Include="Datapacks\Auth\log\" />
     <Folder Include="Datapacks\Auth\sq\" />
     <Folder Include="Datapacks\Game\cmpl\ai\" />

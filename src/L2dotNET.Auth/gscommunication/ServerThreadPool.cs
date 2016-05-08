@@ -77,9 +77,9 @@ namespace L2dotNET.Auth.gscommunication
 
         public void Start()
         {
-            listener = new TcpListener(IPAddress.Parse(Cfg.SERVER_HOST), Cfg.SERVER_PORT_GS);
+            listener = new TcpListener(IPAddress.Parse(Config.Instance.serverConfig.Host), Config.Instance.serverConfig.GSPort);
             listener.Start();
-            log.Info($"Auth server listening gameservers at { Cfg.SERVER_HOST }:{ Cfg.SERVER_PORT_GS }");
+            log.Info($"Auth server listening gameservers at { Config.Instance.serverConfig.Host }:{ Config.Instance.serverConfig.GSPort }");
             while (true)
             {
                 VerifyClient(listener.AcceptTcpClient());
