@@ -1,0 +1,80 @@
+<html><title>Character Management Menu</title><body><center>
+	<table width=250>
+		<tr>
+			<td width=90>Character name</td>
+			<td><edit var="menu_command" width=115 height=15></td>
+			<td><button value="Help" action="bypass -h admin_help help/1.htm" width=45 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table><br>
+	
+	<table width=270>
+		<tr>
+			<td><button value="Go To" action="bypass -h admin_goto $menu_command" width=50 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Kick" action="bypass -h admin_kick $menu_command" width=50 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Ban Char" action="bypass -h admin_ban_char $menu_command" width=60 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Ban Acc" action="bypass -h admin_ban_acc $menu_command" width=60 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Jail" action="bypass -h admin_jail $menu_command" width=50 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr><tr>
+			<td><button value="Recall" action="bypass -h admin_recall $menu_command" width=50 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Kill" action="bypass -h admin_kill $menu_command" width=50 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Unban Char" action="bypass -h admin_unban_char $menu_command" width=60 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Unban Acc" action="bypass -h admin_unban_acc $menu_command" width=60 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="UnJail" action="bypass -h admin_unjail $menu_command" width=50 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr><tr>
+			<td><button value="GetParty" action="bypass -h admin_recall_party $menu_command" width=50 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Get Clan" action="bypass -h admin_recall_clan $menu_command" width=50 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table><br>
+	
+	<table width=260>
+		<tr>
+			<td width=15>X</td><td><edit var="char_cord_x" width=50></td>
+			<td width=15>Y</td><td><edit var="char_cord_y" width=50></td>
+			<td width=15>Z</td><td><edit var="char_cord_z" width=50></td>
+			<td><button value="Teleport" action="bypass -h admin_teleport_character_to_menu $menu_command $char_cord_x $char_cord_y $char_cord_z" width=60 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table><br>
+	
+	<table width=260>
+		<tr>
+			<td width=101>STARTER TOWNS</td>
+			<td width="102">MAINLANDS</td></tr>
+		<tr>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 9745 15606 -4574">Dark Elven Village</a></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 15670 142983 -2705">Town of Dion</a></td>
+		</tr><tr>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 115113 -178212 -901">Dwarven Village</a></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 17838 170274 -3508">Floran Village</a></td>
+		</tr><tr>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 46934 51467 -2977">Elven Village</a></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 83400 147943 -3404">Town of Giran</a></td>
+		</tr><tr>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command -44836 -112352 -239">Orc Village</a></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command -80826 149775 -3043">Gludin Village</a></td>
+		</tr><tr>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command -84318 244579 -3730">Talking Island Village</a></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command -12672 122776 -3116">Town of Gludio</a></td>
+		</tr><tr>
+			<td></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 117110 76883 -2695">Hunter Village</a></td>
+		</tr><tr>
+			<td>ARENAS</td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 147450 26741 -2204">Town of Aden</a></td>
+		</tr><tr>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command -86979 142402 -3643">Gludin Arena</a></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 82956 53162 -1495">Town of Oren</a></td>
+		</tr><tr>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 147451 46728 -3410">Coliseum</a></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 43799 -47727 -798">Rune Township</a></td>
+		</tr><tr>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 73890 142656 -3778">Giran Arena</a></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 147928 -55273 -2734">Town of Goddard</a></td></tr>
+		<tr>
+			<td></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 111409 219364 -3545">Heine</a></td>
+		</tr><tr>
+			<td></td>
+			<td><a action="bypass -h admin_teleport_character_to_menu $menu_command 87386 -143246 -1293 ">Town of Schuttgart</a></td>
+		</tr>
+	</table>
+</center></body></html>

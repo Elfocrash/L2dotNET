@@ -21,7 +21,7 @@ namespace L2dotNET.Game.model.quests
 
         public QuestManager()
         {
-            object[] items = ScriptCompiler.getController().CompileFolder(@"cmpl\quests");
+            object[] items = ScriptCompiler.Instance.CompileFolder(@"cmpl\quests");
 
             if (items == null)
                 return;

@@ -84,7 +84,7 @@ namespace L2dotNET.Game
             //  SpawnTable.getInstance().Spawn();
             StructureTable.Instance.Initialize();
 
-            HtmCache.Instance.Initialize();
+           HtmCache.Instance.Initialize();
 
             AuthThread.Instance.Initialize();
 

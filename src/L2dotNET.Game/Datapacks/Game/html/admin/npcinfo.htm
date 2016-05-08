@@ -1,0 +1,93 @@
+<html><title>NPC Info</title><body>
+	<center>
+		<table width="100%">
+			<tr>
+				<td><button value="Kill" action="bypass -h admin_kill" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+				<td><button value="Delete" action="bypass -h admin_delete" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+				<td><button value="Skills" action="bypass -h admin_show_skilllist %id%" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+				<td><button value="Buffs" action="bypass -h admin_getbuffs" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+			</tr><tr>
+				<td><button value="Spawns" action="bypass -h admin_list_spawns %id%" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+				<td><button value="Droplist" action="bypass -h admin_show_droplist %id%" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+				<td><button value="Scripts" action="bypass -h admin_show_scripts %id%" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+				<td>%butt%</td>
+				<td></td>
+			</tr>
+		</table>
+
+		<br><img src="L2UI.SquareWhite" width=260 height=1><br>
+		<font color="LEVEL">General Informations</font>
+		<table width="100%">
+			<tr><td><font color="LEVEL">Name:</font></td><td>%name%</td><td><font color="LEVEL">Level:</font></td><td>%lvl%</td></tr>
+			<tr><td><font color="LEVEL">NpcId:</font></td><td>%id%</td><td><font color="LEVEL">CustomId:</font></td><td>%tmplid%</td></tr>
+			<tr><td><font color="LEVEL">Type:</font></td><td>%class%</td></tr>
+			<tr><td><font color="LEVEL">Race:</font></td><td>%race%</td></tr>
+		</table><br>
+
+		<font color="LEVEL">AI Informations</font>
+		<table width="100%">
+			<tr><td width=100><font color="LEVEL">Type:</font></td><td align=right width=170>%ai_type%</td></tr>
+			<tr><td width=100><font color="LEVEL">Aggro:</font></td><td align=right width=170>%aggro%</td></tr>
+			<tr><td width=100><font color="LEVEL">Enchant:</font></td><td align=right width=170>%enchant%</td></tr>
+			<tr><td width=100><font color="LEVEL">canMove:</font></td><td align=right width=170>%ai_move%</td></tr>
+			<tr><td width=100><font color="LEVEL">isSeedable:</font></td><td align=right width=170>%ai_seed%</td></tr>
+			<tr><td width=100><font color="LEVEL">ss:</font></td><td align=right width=170>%ai_ssinfo%</td></tr>
+			<tr><td width=100><font color="LEVEL">sps:</font></td><td align=right width=170>%ai_spsinfo%</td></tr>
+			%ai_clan%
+		</table><br>
+		
+		<font color="LEVEL">Combat Informations</font>
+		<table width="100%">
+			<tr><td><font color="LEVEL">HP:</font></td><td><font color=FF4040>%hp%/%hpmax%</font></td><td><font color="LEVEL">MP:</font></td><td><font color=6161FF>%mp%/%mpmax%</font></td></tr>
+			<tr><td>P.Atk.</td><td>%patk%</td><td>M.Atk.</td><td>%matk%</td></tr>
+			<tr><td>P.Def.</td><td>%pdef%</td><td>M.Def.</td><td>%mdef%</td></tr>
+			<tr><td>Accuracy</td><td>%accu%</td><td>Evasion</td><td>%evas%</td></tr>
+			<tr><td>Critical</td><td>%crit%</td><td>Speed</td><td>%rspd%</td></tr>
+			<tr><td>Atk.Spd</td><td>%aspd%</td><td>Cast.Spd</td><td>%cspd%</td></tr>
+		</table><br>
+
+		%ai_intention%
+		%ai%
+
+		<font color="LEVEL">Spawn Informations</font>
+		<table width="100%">
+			<tr><td width=100><font color="LEVEL">Spawn:</font></td><td align=right width=170>%spawn%</td></tr>
+			<tr><td width=100><font color="LEVEL">Location:</font></td><td align=right width=170>%loc%</td></tr>
+			<tr><td width=100><font color="LEVEL">Distance:</font></td><td align=right width=170>2D: %loc2d%, 3D: %loc3d%, You: %dist%</td></tr>
+			<tr><td width=100><font color="LEVEL">Respawn:</font></td><td align=right width=170>%resp%</td></tr>
+			<tr><td width=100><font color="LEVEL">Random Respawn:</font></td><td align=right width=170>%rand_resp%</td></tr>
+			<tr><td width=100><font color="LEVEL">Corpse Delay:</font></td><td align=right width=170>%corpse%</td></tr>
+		</table><br>
+
+		<font color="LEVEL">Basic Stats</font>
+		<table width="100%">
+			<tr>
+				<td>STR</td><td>%str%</td>
+				<td>DEX</td><td>%dex%</td>
+				<td>CON</td><td>%con%</td>
+			</tr>
+			<tr>
+				<td>INT</td><td>%int%</td>
+				<td>WIT</td><td>%wit%</td>
+				<td>MEN</td><td>%men%</td>
+			</tr>
+		</table><br>
+
+		<font color="LEVEL">Elements</font>
+		<table border="0" width="100%">
+			<tr>
+				<td>Fire</td><td>%ele_fire%</td>
+				<td>Water</td><td>%ele_water%</td>
+			</tr>
+			<tr>
+				<td>Wind</td><td>%ele_wind%</td>
+				<td>Earth</td><td>%ele_earth%</td>
+			</tr>
+			<tr>
+				<td>Holy</td><td>%ele_holy%</td>
+				<td>Dark</td><td>%ele_dark%</td>
+			</tr>
+		</table><br>
+		<br><img src="L2UI.SquareWhite" width=260 height=1><br>
+	</center>
+</body></html>

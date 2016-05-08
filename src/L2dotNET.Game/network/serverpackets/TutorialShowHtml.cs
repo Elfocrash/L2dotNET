@@ -40,15 +40,15 @@ namespace L2dotNET.Game.network.l2send
 
         private void render(L2Player player, string file, string back, bool admin)
         {
-            Content = admin ? HtmCache.Instance.getHtmAdmin(player._locale, file) : HtmCache.Instance.getHtm(player._locale, file);
+            //Content = admin ? HtmCache.Instance.getHtmAdmin(player._locale, file) : HtmCache.Instance.getHtm(player._locale, file);
 
-            if (admin)
-            {
-                if (back.Equals(""))
-                    back = "link main.htm";
+            //if (admin)
+            //{
+            //    if (back.Equals(""))
+            //        back = "link main.htm";
 
-                replace("<html>", "<html><title>Admin Menu</title><table width=270><tr><td width=45><td width=45><button value=\"Back\" action=\"" + back + "\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>><td width=180><center><td width=45><button value=\"Main\" action=\"link main.htm\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></center></td><td width=45><button value=\"Close\" action=\"link admin_close\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr></table>");
-            }
+            //    replace("<html>", "<html><title>Admin Menu</title><table width=270><tr><td width=45><td width=45><button value=\"Back\" action=\"" + back + "\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>><td width=180><center><td width=45><button value=\"Main\" action=\"link main.htm\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></center></td><td width=45><button value=\"Close\" action=\"link admin_close\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr></table>");
+            //}
         }
 
         public void replace(string p, object t)
