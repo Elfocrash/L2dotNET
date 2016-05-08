@@ -51,14 +51,14 @@ namespace L2dotNET.Game.network.l2recv
             target = (L2Player)player.CurrentTarget;
             if (target.TradeState != 0)
             {
-                player.sendPacket(new SystemMessage(143).addPlayerName(target.Name));//$c1 is already trading with another person. Please try again later.
+                player.sendPacket(new SystemMessage(143).AddPlayerName(target.Name));//$c1 is already trading with another person. Please try again later.
                 player.sendActionFailed();
                 return;
             }
 
             if (target.PartyState == 1)
             {
-                player.sendPacket(new SystemMessage(153).addPlayerName(target.Name));//$c1 is on another task. Please try again later.
+                player.sendPacket(new SystemMessage(153).AddPlayerName(target.Name));//$c1 is on another task. Please try again later.
                 player.sendActionFailed();
                 return;
             }
@@ -69,7 +69,7 @@ namespace L2dotNET.Game.network.l2recv
                 return;
             }
 
-            player.sendPacket(new SystemMessage(118).addPlayerName(target.Name));//You have requested a trade with $c1.
+            player.sendPacket(new SystemMessage(118).AddPlayerName(target.Name));//You have requested a trade with $c1.
             target.requester = player;
             player.requester = target;
             target.sendPacket(new SendTradeRequest(player.ObjID));

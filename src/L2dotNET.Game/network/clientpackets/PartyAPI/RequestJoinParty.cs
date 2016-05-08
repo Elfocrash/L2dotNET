@@ -60,7 +60,7 @@ namespace L2dotNET.Game.network.l2recv
             if (target.Party != null)
             {
                 SystemMessage sm = new SystemMessage(160);
-                sm.addPlayerName(target.Name);
+                sm.AddPlayerName(target.Name);
                 player.sendPacket(sm);//$c1 is a member of another party and cannot be invited.
                 player.sendActionFailed();
                 return;
@@ -82,7 +82,7 @@ namespace L2dotNET.Game.network.l2recv
 
             if (target.TradeState == 1 || target.TradeState == 2)
             {
-                player.sendPacket(new SystemMessage(153).addPlayerName(target.Name));//$c1 is on another task. Please try again later.
+                player.sendPacket(new SystemMessage(153).AddPlayerName(target.Name));//$c1 is on another task. Please try again later.
                 player.sendActionFailed();
                 return;
             }
@@ -108,7 +108,7 @@ namespace L2dotNET.Game.network.l2recv
                 return;
             }
 
-            player.sendPacket(new SystemMessage(105).addPlayerName(target.Name));//$c1 has been invited to the party.
+            player.sendPacket(new SystemMessage(105).AddPlayerName(target.Name));//$c1 has been invited to the party.
             target.PendToJoinParty(player, itemDistribution);
         }
     }

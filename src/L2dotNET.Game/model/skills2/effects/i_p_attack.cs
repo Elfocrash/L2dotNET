@@ -35,9 +35,9 @@ namespace L2dotNET.Game.model.skills2.effects
             double damage = Formulas.getPhysSkillHitDamage(caster, tar, power);
 
             //$c1 has given $c2 damage of $s3.
-            caster.sendPacket(new SystemMessage(2261).addPlayerName(caster.Name).addString(tar.Name).addNumber(damage));
+            caster.sendPacket(new SystemMessage(2261).AddPlayerName(caster.Name).AddString(tar.Name).AddNumber(damage));
             if (tar is L2Player) //$c1 has received $s3 damage from $c2.
-                tar.sendPacket(new SystemMessage(2262).addPlayerName(tar.Name).addPlayerName(caster.Name).addNumber(damage));
+                tar.sendPacket(new SystemMessage(2262).AddPlayerName(tar.Name).AddPlayerName(caster.Name).AddNumber(damage));
 
             tar.reduceHp(caster, damage);
 

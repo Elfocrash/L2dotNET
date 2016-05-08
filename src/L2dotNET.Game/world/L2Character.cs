@@ -388,7 +388,7 @@ namespace L2dotNET.Game.world
             removeStats(ave.skill, caster);
 
             if (msg)
-                sendPacket(new SystemMessage(749).addSkillName(ave.id, ave.lvl));//The effect of $s1 has been removed.
+                sendPacket(new SystemMessage(749).AddSkillName(ave.id, ave.lvl));//The effect of $s1 has been removed.
 
             if (uis)
                 broadcastUserInfo();
@@ -418,10 +418,10 @@ namespace L2dotNET.Game.world
                     if (!success)
                     {
                         //$s1 has resisted your $s2.
-                        caster.sendPacket(new SystemMessage(139).addString(Name).addSkillName(skill.skill_id, skill.level));
+                        caster.sendPacket(new SystemMessage(139).AddString(Name).AddSkillName(skill.skill_id, skill.level));
                         
                         //You have resisted $s1's magic.
-                        sendPacket(new SystemMessage(159).addString(caster.Name));
+                        sendPacket(new SystemMessage(159).AddString(caster.Name));
                         return;
                     }
                 }
@@ -507,7 +507,7 @@ namespace L2dotNET.Game.world
 
             {
                 SystemMessage sm = new SystemMessage(110); //The effects of $s1 flow through you.
-                sm.addSkillName(ic.id, ic.lvl);
+                sm.AddSkillName(ic.id, ic.lvl);
                 sendPacket(sm);
             }
 
@@ -762,7 +762,7 @@ namespace L2dotNET.Game.world
             }
 
             if (this is L2Player)
-                sendPacket(new SystemMessage(msgId).addNumber((int)damage));
+                sendPacket(new SystemMessage(msgId).AddNumber((int)damage));
         }
 
         public override void reduceHp(L2Character attacker, double damage)
@@ -1029,13 +1029,13 @@ namespace L2dotNET.Game.world
                     CurrentTarget.reduceHp(this, hit1.damage);
 
                     if (CurrentTarget is L2Player) //$c1 has received $s3 damage from $c2.
-                        CurrentTarget.sendPacket(new SystemMessage(2262).addName(CurrentTarget).addName(this).addNumber(hit1.damage));
+                        CurrentTarget.sendPacket(new SystemMessage(2262).AddName(CurrentTarget).AddName(this).AddNumber(hit1.damage));
                 }
                 else
                 {
                     if (CurrentTarget is L2Player) //$c1 has evaded $c2's attack.
                     {
-                        CurrentTarget.sendPacket(new SystemMessage(2264).addName(CurrentTarget).addName(this));
+                        CurrentTarget.sendPacket(new SystemMessage(2264).AddName(CurrentTarget).AddName(this));
                         ((L2Player)CurrentTarget).AICharacter.NotifyEvaded(this);
                     }
                 }
@@ -1052,13 +1052,13 @@ namespace L2dotNET.Game.world
                 {
                     CurrentTarget.reduceHp(this, hit2.damage);
                     if (CurrentTarget is L2Player) //$c1 has received $s3 damage from $c2.
-                        CurrentTarget.sendPacket(new SystemMessage(2262).addName(CurrentTarget).addName(this).addNumber(hit2.damage));
+                        CurrentTarget.sendPacket(new SystemMessage(2262).AddName(CurrentTarget).AddName(this).AddNumber(hit2.damage));
                 }
                 else
                 {
                     if (CurrentTarget is L2Player) //$c1 has evaded $c2's attack.
                     {
-                        CurrentTarget.sendPacket(new SystemMessage(2264).addName(CurrentTarget).addName(this));
+                        CurrentTarget.sendPacket(new SystemMessage(2264).AddName(CurrentTarget).AddName(this));
                         ((L2Player)CurrentTarget).AICharacter.NotifyEvaded(this);
                     }
                 }
