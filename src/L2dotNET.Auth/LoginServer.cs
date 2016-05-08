@@ -27,12 +27,12 @@ namespace L2dotNET.Auth
         {
             Console.Title = "L2dotNET LoginServer";
 
-            Cfg.Load();
+            Config.Instance.Initialize();
             ClientManager.Instance.Initialize();
             ServerThreadPool.Instance.Initialize();
             NetworkRedirect.Instance.Initialize();
 
-            LoginListener = new TcpListener(IPAddress.Parse(Cfg.SERVER_HOST), Cfg.SERVER_PORT);
+            LoginListener = new TcpListener(IPAddress.Parse(Config.Instance.serverConfig.Host), Config.Instance.serverConfig.LoginPort);
 
             bool isListening = false;
             try
@@ -47,7 +47,7 @@ namespace L2dotNET.Auth
 
             if (isListening)
             {
-                log.Info($"Auth server listening clients at { Cfg.SERVER_HOST }:{ Cfg.SERVER_PORT }");
+                log.Info($"Auth server listening clients at { Config.Instance.serverConfig.Host }:{ Config.Instance.serverConfig.LoginPort }");
                 new System.Threading.Thread(ServerThreadPool.Instance.Start).Start();
 
                 TcpClient clientSocket = default(TcpClient);

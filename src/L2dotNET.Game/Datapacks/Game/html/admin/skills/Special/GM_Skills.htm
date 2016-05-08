@@ -1,0 +1,33 @@
+<html><title>Choose skill to add</title>
+<body>
+	<center>
+		<a action="bypass -h admin_add_skill 7029 1">Super Haste I</a>
+		<a action="bypass -h admin_add_skill 7029 2">Super Haste II</a>
+		<a action="bypass -h admin_add_skill 7029 3">Super Haste III</a>
+		<a action="bypass -h admin_add_skill 7029 4">Super Haste IV</a>
+		<a action="bypass -h admin_add_skill 4683 1">Valakas Dragon Breath</a>
+		<a action="bypass -h admin_add_skill 4688 1">Valakas Shock</a>
+		<a action="bypass -h admin_add_skill 4681 1">Valakas Fear</a>
+		<a action="bypass -h admin_add_skill 4111 1">(Antharas skill) Fossilization</a>
+		<a action="bypass -h admin_add_skill 4108 1">(Antharas skill) Terror</a>
+		<a action="bypass -h admin_add_skill 4109 1">Curse Of Antharas</a>
+		<br><img src="L2UI_CH3.herotower_deco" width=256 height=32><br>
+		<table>
+			<tr>
+				<td width=70>Id</td>
+				<td><edit var="id" width=70></td>
+			</tr>
+			<tr>
+				<td>Level</td>
+				<td><edit var="level" width=70></td>
+			</tr>
+		</table>
+		<br>
+		<table>
+			<tr>
+				<td><button value="Add skill" action="bypass -h admin_add_skill $id $level" width=70 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+				<td><button value="Back" action="bypass -h admin_show_skills" width=70 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			</tr>
+		</table>
+	</center>
+</body></html>

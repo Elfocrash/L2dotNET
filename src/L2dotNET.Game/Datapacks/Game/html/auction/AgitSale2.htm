@@ -1,0 +1,22 @@
+<html><body>
+	The standard system price for this clan hall is <font color="aaccff">%AGIT_LAST_PRICE%</font> adena and the last trading price was <font color="aaccff">%AGIT_LAST_PRICE%</font> adena.<br>
+	The amount received at the end of the auction is the amount remaining after deducting the<font color="LEVEL"> transaction tax (10%) </font> from the successful bid price.<br>
+	How much would you like to set the standard auction price at (minimum bid price)?
+	<table width=270>
+		<tr>
+			<td width=110><edit var=minbid width=110 type=number></td>
+			<td width=160>adena</td>
+		</tr>
+	</table><br>
+	For how many days do you want the auction to run?<br>
+	<combobox width=50 var=day list="7;3;1"><br>
+	Write an explanation of the clan hall. <multiedit var="comment" width=270>
+	<img src="L2UI.SquareBlank" width=270 height=10> <img src="L2UI.SquareWhite" width=270 height=1> <img src="L2UI.SquareBlank" width=270 height=5>
+	<table width=270>
+		<tr>
+			<td width=130></td>
+			<td width=70 align=center><button action="%AGIT_LINK_BACK%" value="Back" width=70 height=21 back="L2UI.DefaultButton_click" fore="L2UI.DefaultButton"></td>
+			<td width=70 align=center><button action="bypass -h npc_%objectId%_auction $day $minbid" value="Sell" width=70 height=21 back="L2UI.DefaultButton_click" fore="L2UI.DefaultButton"></td> 
+		</tr>
+	</table>
+</body></html>

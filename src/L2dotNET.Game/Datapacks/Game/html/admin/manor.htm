@@ -1,0 +1,19 @@
+<html><body><center>
+	<font color="LEVEL">[Manor System]</font><br>
+	<table width="100%">
+		<tr><td>Disabled: %disabled%</td><td>Under Maintenance: %maintenance%</td></tr>
+		<tr><td>Time to refresh: %refresh%</td><td>Time to approve: %approve%</td></tr>
+	</table>
+	
+	<table>
+		<tr><td><button value="Set Next" action="bypass -h admin_manor_setnext" width=110 height=15 back="sek.cbui94" fore="sek.cbui92"></td><td><button value="Approve Next" action="bypass -h admin_manor_approve" width=110 height=15 back="sek.cbui94" fore="sek.cbui92"></td></tr>
+		<tr><td><button value="%value1%" action="bypass -h admin_manor_setmaintenance" width=110 height=15 back="sek.cbui94" fore="sek.cbui92"></td><td><button value="%value2%" action="bypass -h admin_manor_disable" width=110 height=15 back="sek.cbui94" fore="sek.cbui92"></td></tr>
+		<tr><td><button value="Refresh" action="bypass -h admin_manor" width=110 height=15 back="sek.cbui94" fore="sek.cbui92"></td><td><button value="Back" action="bypass -h admin_admin" width=110 height=15 back="sek.cbui94" fore="sek.cbui92"></td></tr>
+	</table><br>
+	
+	Castle Information:
+	<table width="100%">
+		<tr><td></td><td>Current Period</td><td>Next Period</td></tr>
+		%castles%
+	</table>
+</center></body></html>

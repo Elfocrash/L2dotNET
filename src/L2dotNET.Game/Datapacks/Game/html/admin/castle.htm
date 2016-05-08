@@ -1,0 +1,43 @@
+<html><body>
+<table width=260><tr>
+<td width=40><button value="Main" action="bypass -h admin_admin" width=40 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+<td width=180><center>Siege Menu</center></td>
+<td width=40><button value="Back" action="bypass -h admin_siege" width=40 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+</tr></table>
+<center>
+<br><br><br>Castle: %castleName%<br><br>
+<table width=270>
+<tr>
+<td><button value="Add Attacker" action="bypass -h admin_add_attacker %castleName%" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+<td><button value="Add Defender" action="bypass -h admin_add_defender %castleName%" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+</tr><tr>
+<td><button value="List Clans" action="bypass -h admin_list_siege_clans %castleName%" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+<td><button value="Clear List" action="bypass -h admin_clear_siege_list %castleName%" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+</tr>
+</table>
+<br>
+<table width=270>
+<tr>
+<td><button value="Move Defenders" action="bypass -h admin_move_defenders %castleName%" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+<td><button value="Spawn Doors" action="bypass -h admin_spawn_doors %castleName%" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+</tr>
+</table>
+<br>
+<table width=270>
+<tr>
+<td><button value="Start Siege" action="bypass -h admin_startsiege %castleName%" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+<td><button value="End Siege" action="bypass -h admin_endsiege %castleName%" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+</tr>
+</table>
+<br>
+<table width=270>
+<tr><td><button value="Give Castle" action="bypass -h admin_setcastle %castleName%" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+<td><button value="Remove Castle" action="bypass -h admin_removecastle %castleName%" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td></tr>
+</tr>
+</table>
+<br>
+<table width=270>
+<tr><td width=60>NpcId:</td><td><edit var="value" width=40></td><td><button value="Add Guard" action="bypass -h admin_add_guard %castleName% $value" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+</tr></table>
+</center>
+</body></html>

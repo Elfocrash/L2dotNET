@@ -1,0 +1,72 @@
+<html><title>Effects menu</title><body><center>
+	<table width=260>
+		<tr>
+			<td><button value="Main" action="bypass -h admin_admin" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+			<td><button value="Game" action="bypass -h admin_admin2" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+			<td><button value="Effects" action="bypass -h admin_admin3" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+			<td><button value="Server" action="bypass -h admin_admin4" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+		</tr>
+	</table>
+	<img src="l2ui.SquareWhite" width=275 height=1><br>
+	<table width=240>
+		<tr>
+			<td>QuickBox</td>
+			<td><edit var="menu_command" width=120 height=15></td>
+			<td><button value="Help" action="bypass -h admin_help help/1.htm" width=45 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table><br>Characters actions
+	<table width=200>
+		<tr>
+			<td><button value="Polymorph" action="bypass -h admin_polymorph_menu $menu_command" width=70 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Paralize" action="bypass -h admin_para_menu $menu_command" width=60 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Effect" action="bypass -h admin_effect_menu $menu_command" width=60 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr><tr>
+			<td><button value="Unpolymorph" action="bypass -h admin_unpolymorph_menu" width=70 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Unparalize" action="bypass -h admin_unpara_menu $menu_command" width=60 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Set name" action="bypass -h admin_changename_menu $menu_command" width=60 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table><br>Global actions
+	<table width=240>
+		<tr>
+			<td><button value="SSQ Norm" action="bypass -h admin_atmosphere_menu ssqinfo regular" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="SSQ Dawn" action="bypass -h admin_atmosphere_menu ssqinfo dawn" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="SSQ Dusk" action="bypass -h admin_atmosphere_menu ssqinfo dusk" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="SSQ Red" action="bypass -h admin_atmosphere_menu ssqinfo red" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr><tr>
+			<td><button value="Day Sky" action="bypass -h admin_atmosphere_menu sky day" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Night Sky" action="bypass -h admin_atmosphere_menu sky night" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Red Sky" action="bypass -h admin_atmosphere_menu sky red" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Quake" action="bypass -h admin_earthquake_menu $menu_command" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr><tr>
+			<td></td>
+			<td><button value="ParaAll" action="bypass -h admin_para_all_menu" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="UnParaAll" action="bypass -h admin_unpara_all_menu" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td></td>
+		</tr>
+	</table><br>
+	<table width=240>
+		<tr>
+			<td><button value="Social" action="bypass -h admin_social_menu $menu_command" width=75 height=21 back="L2UI_ch3.Btn1_normalOn" fore="L2UI_ch3.Btn1_normal"></td>
+			<td><button value="jukeBox" action="bypass -h admin_help songs/songs.htm" width=75 height=21 back="L2UI_ch3.Btn1_normalOn" fore="L2UI_ch3.Btn1_normal"></td>
+			<td><button value="Abnormal" action="bypass -h admin_abnormal_menu $menu_command" width=75 height=21 back="L2UI_ch3.Btn1_normalOn" fore="L2UI_ch3.Btn1_normal"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button value="Movie Maker" action="bypass -h admin_movie" width=75 height=21 back="L2UI_ch3.Btn1_normalOn" fore="L2UI_ch3.Btn1_normal"></td>
+			<td></td>
+		</tr>
+	</table><br>GM actions panels
+	<table width=240>
+		<tr>
+			<td><button value="List ON/OFF" action="bypass -h admin_gmlist" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td></td>
+			<td></td>
+			<td><button value="Hide" action="bypass -h admin_hide" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr><tr>
+			<td><button value="Petitions" action="bypass -h admin_view_petitions" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Silence" action="bypass -h admin_silence" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="TradeOff" action="bypass -h admin_tradeoff" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Invul" action="bypass -h admin_invul" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table>
+</center></body></html>

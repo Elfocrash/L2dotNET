@@ -1,0 +1,61 @@
+<html><title>Game menu</title><body><center>
+	<table width=260>
+		<tr>
+			<td><button value="Main" action="bypass -h admin_admin" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+			<td><button value="Game" action="bypass -h admin_admin2" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+			<td><button value="Effects" action="bypass -h admin_admin3" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+			<td><button value="Server" action="bypass -h admin_admin4" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
+		</tr>
+	</table>
+	<img src="l2ui.SquareWhite" width=275 height=1><br>
+	<table width=240>
+		<tr>
+			<td>QuickBox</td>
+			<td><edit var="menu_command" width=120 height=15></td>
+			<td><button value="Help" action="bypass -h admin_help help/1.htm" width=45 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table><br>
+	Clan / Castles
+	<table width=240>
+		<tr>
+			<td><button value="Create" action="bypass -h admin_pledge create $menu_command" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Delete" action="bypass -h admin_pledge dismiss $menu_command" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Set Level" action="bypass -h admin_pledge setlevel $menu_command" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+		<tr>
+			<td><button value="Reputation" action="bypass -h admin_pledge rep $menu_command" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Castles/CH" action="bypass -h admin_siege" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Info" action="bypass -h admin_pledge info" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table>
+	<br><img src="L2UI_CH3.herotower_deco" width=256 height=32><br>
+	<table width=240>
+		<tr>
+			<td width=90>Cursed Weapons</td>
+			<td width=70></td>
+			<td width=80>Seven Signs</td>
+		</tr>
+	</table>
+	<table width=240>
+		<tr>
+			<td><button value="Reload" action="bypass -h admin_reload cw" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Info" action="bypass -h admin_cw_info_menu $menu_command" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td width=2></td>
+			<td><button value="Blacksmith" action="bypass -h admin_mammon_find 1" width=64 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Merchant" action="bypass -h admin_mammon_find 2" width=64 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr><tr>
+			<td><button value="Add" action="bypass -h admin_cw_add $menu_command" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td><button value="Remove" action="bypass -h admin_cw_remove $menu_command" width=55 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td width=2></td>
+			<td><button value="Respawn" action="bypass -h admin_mammon_respawn" width=64 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+			<td></td>
+		</tr>
+	</table>
+	<br><img src="L2UI_CH3.herotower_deco" width=256 height=32><br>
+	Olympiad
+	<table width=160>
+		<tr>
+			<td><button value="End Olympiad" action="bypass -h admin_endoly" width=80 height=15 back="sek.cbui94" fore="sek.cbui92"></td>
+		</tr>
+	</table>
+</center></body></html>
