@@ -607,7 +607,7 @@ namespace L2dotNET.Game.tables
                     if (rolled == null)
                         continue;
 
-                    if (Cfg.autoloot)
+                    if (Config.Instance.gameplayConfig.AutoLoot)
                     {
                         int count = rn.Next((int)rolled.min, (int)rolled.max);
                         ((L2Player)killer).Inventory.addItem(rolled.id, count, 0, true, true);
@@ -701,7 +701,7 @@ namespace L2dotNET.Game.tables
                     if (rolled == null)
                         continue;
 
-                    if (Cfg.autoloot)
+                    if (Config.Instance.gameplayConfig.AutoLoot)
                     {
                         int count = rn.Next((int)rolled.min, (int)rolled.max);
                         ((L2Player)killer).Inventory.addItem(rolled.id, count, 0, true, true);

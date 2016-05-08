@@ -76,39 +76,7 @@ namespace L2dotNET.Game.network.l2recv
                     }
                     break;
                 case SayIDList.CHAT_SHOUT:
-                    {
-                        switch (Cfg.chat_shout)
-                        {
-                            case Cfg.chatoptions.Default:
-                                L2World.Instance.BroadcastToRegion(player.X, player.Y, cs);
-                                break;
-                            case Cfg.chatoptions.Disabled:
-                                {
-                                    player.sendSystemMessage(346); //Chat disabled.
-                                    player.sendActionFailed();
-                                    return;
-                                }
-                            case Cfg.chatoptions.Global:
-                                foreach (L2Player p in L2World.Instance.GetAllPlayers())
-                                {
-                                    p.sendPacket(cs);
-                                }
-                                break;
-                            case Cfg.chatoptions.GMonly:
-                                if (player.Builder == 0)
-                                {
-                                    player.sendMessage("This chat type is restricted for GM characters. You are not supposed to use it.");
-                                }
-                                else
-                                {
-                                    foreach (L2Player p in L2World.Instance.GetAllPlayers())
-                                    {
-                                        p.sendPacket(cs);
-                                    }
-                                }
-                                break;
-                        }
-                    }
+                    L2World.Instance.BroadcastToRegion(player.X, player.Y, cs);
                     break;
                 case SayIDList.CHAT_TELL:
                     {
@@ -150,38 +118,9 @@ namespace L2dotNET.Game.network.l2recv
                         player.Party.broadcastToMembers(cs);
                     break;
                 case SayIDList.CHAT_MARKET:
+                    foreach (L2Player p in L2World.Instance.GetAllPlayers())
                     {
-                        switch (Cfg.chat_trade)
-                        {
-                            case Cfg.chatoptions.Default:
-                                L2World.Instance.BroadcastToRegion(player.X, player.Y, cs);
-                                break;
-                            case Cfg.chatoptions.Disabled:
-                                {
-                                    player.sendSystemMessage(346); //Chat disabled.
-                                    player.sendActionFailed();
-                                    return;
-                                }
-                            case Cfg.chatoptions.Global:
-                                foreach (L2Player p in L2World.Instance.GetAllPlayers())
-                                {
-                                    p.sendPacket(cs);
-                                }
-                                break;
-                            case Cfg.chatoptions.GMonly:
-                                if (player.Builder == 0)
-                                {
-                                    player.sendMessage("This chat type is restricted for GM characters. You are not supposed to use it.");
-                                }
-                                else
-                                {
-                                    foreach (L2Player p in L2World.Instance.GetAllPlayers())
-                                    {
-                                        p.sendPacket(cs);
-                                    }
-                                }
-                                break;
-                        }
+                        p.sendPacket(cs);
                     }
                     break;
                 case SayIDList.CHAT_HERO:
