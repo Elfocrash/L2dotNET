@@ -168,7 +168,7 @@ namespace L2dotNET.Game.model.npcs
                     }
                     break;
                 case -303:
-                    MultiSell.getInstance().showList(player, this, reply);
+                    MultiSell.Instance.showList(player, this, reply);
                     break;
                 case -305:
                     switch (reply)

@@ -49,11 +49,11 @@ namespace L2dotNET.Game.ai.npcai
             }
             else if (ask == -506)
             {
-                MultiSell.getInstance().showList(talker, myself, 212);
+                MultiSell.Instance.showList(talker, myself, 212);
             }
             else if (ask == -507)
             {
-                MultiSell.getInstance().showList(talker, myself, 221);
+                MultiSell.Instance.showList(talker, myself, 221);
             }
             else if (ask == -510)
             {

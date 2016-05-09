@@ -61,7 +61,8 @@ namespace L2dotNET.Game
             //  TSkillTable.getInstance();
             ItemTable.getInstance();
             ItemHandler.getInstance();
-            MultiSell.getInstance();
+
+            MultiSell.Instance.Initialize();
             Capsule.getInstance();
             RecipeTable.getInstance();
 
