@@ -11,21 +11,38 @@ namespace L2dotNET.Game.tables
     public class SpawnTable
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(SpawnTable));
-        private static SpawnTable instance = new SpawnTable();
-        public static SpawnTable getInstance()
+        private static volatile SpawnTable instance;
+        private static object syncRoot = new object();
+
+        public static SpawnTable Instance
         {
-            return instance;
+            get
+            {
+                if(instance == null)
+                {
+                    lock(syncRoot)
+                    {
+                        if(instance == null)
+                        {
+                            instance = new SpawnTable();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
-        public readonly SortedList<string, L2Territory> territorries = new SortedList<string, L2Territory>();
-        public readonly List<L2Spawn> spawns = new List<L2Spawn>();
-        public SpawnTable()
+        public void Initialize()
         {
             foreach (string path in Directory.EnumerateFiles(@"scripts\spawn\", "*.xml"))
                 read(path);
 
-            log.Info("SpawnTable: Created " + territorries.Count+" territories with "+npcs+" monsters.");
+            log.Info("SpawnTable: Created " + territorries.Count + " territories with " + npcs + " monsters.");
         }
+
+        public readonly SortedList<string, L2Territory> territorries = new SortedList<string, L2Territory>();
+        public readonly List<L2Spawn> spawns = new List<L2Spawn>();
 
         private long npcs = 0;
         public void read(string path)

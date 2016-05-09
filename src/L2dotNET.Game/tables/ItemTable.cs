@@ -10,17 +10,29 @@ namespace L2dotNET.Game.tables
     class ItemTable
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ItemTable));
-        private static ItemTable instance = new ItemTable();
-        public static ItemTable getInstance()
+        private static volatile ItemTable instance;
+        private static object syncRoot = new object();
+
+        public static ItemTable Instance
         {
-            return instance;
+            get
+            {
+                if(instance == null)
+                {
+                    lock(syncRoot)
+                    {
+                        if(instance == null)
+                        {
+                            instance = new ItemTable();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
-        public readonly SortedList<int, ItemTemplate> _items = new SortedList<int, ItemTemplate>();
-        public readonly SortedList<int, ItemSetTemplate> _sets = new SortedList<int, ItemSetTemplate>();
-        public readonly SortedList<int, int> ConvertDataList = new SortedList<int, int>();
-
-        public ItemTable()
+        public void Initialize()
         {
             FileInfo file = new FileInfo(@"scripts\items_set.txt");
             using (StreamReader sreader = file.OpenText())
@@ -347,6 +359,10 @@ namespace L2dotNET.Game.tables
             log.Info($"ItemTable: #{ _items.Count } items, #{ _sets.Count } sets, #{ ConvertDataList.Count } convertable.");
         }
 
+        public readonly SortedList<int, ItemTemplate> _items = new SortedList<int, ItemTemplate>();
+        public readonly SortedList<int, ItemSetTemplate> _sets = new SortedList<int, ItemSetTemplate>();
+        public readonly SortedList<int, int> ConvertDataList = new SortedList<int, int>();
+
         public ItemTemplate getItem(int id)
         {
             if (!_items.ContainsKey(id))
@@ -569,13 +585,13 @@ namespace L2dotNET.Game.tables
 
             if (cnt == set1sum) // весь сет
             {
-                owner.addSkill(TSkillTable.getInstance().get(set1Id, set1Lvl), false, false);
+                owner.addSkill(TSkillTable.Instance.get(set1Id, set1Lvl), false, false);
 
                 if (set2sum == 1) //со щитом
-                    owner.addSkill(TSkillTable.getInstance().get(set2Id, set2Lvl), false, false);
+                    owner.addSkill(TSkillTable.Instance.get(set2Id, set2Lvl), false, false);
 
                 if (set3sum == cnt) //весь сет +6
-                    owner.addSkill(TSkillTable.getInstance().get(set3Id, set3Lvl), false, false);
+                    owner.addSkill(TSkillTable.Instance.get(set3Id, set3Lvl), false, false);
 
                 owner.updateSkillList();
             }

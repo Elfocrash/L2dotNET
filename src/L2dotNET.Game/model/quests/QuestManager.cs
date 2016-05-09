@@ -10,16 +10,29 @@ namespace L2dotNET.Game.model.quests
     public class QuestManager
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(QuestManager));
-        private static QuestManager qm = new QuestManager();
+        private static volatile QuestManager instance;
+        private static object syncRoot = new object();
 
-        public static QuestManager getInstance()
+        public static QuestManager Instance
         {
-            return qm;
+            get
+            {
+                if(instance == null)
+                {
+                    lock(syncRoot)
+                    {
+                        if(instance == null)
+                        {
+                            instance = new QuestManager();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
-        public readonly SortedList<int, QuestOrigin> _quests = new SortedList<int, QuestOrigin>();
-
-        public QuestManager()
+        public void Initialize()
         {
             object[] items = ScriptCompiler.Instance.CompileFolder(@"cmpl\quests");
 
@@ -45,6 +58,8 @@ namespace L2dotNET.Game.model.quests
 
             log.Info($"QuestManager: loaded { _quests.Count } quests.");
         }
+
+        public readonly SortedList<int, QuestOrigin> _quests = new SortedList<int, QuestOrigin>();
 
         private void register(QuestOrigin qo)
         {
