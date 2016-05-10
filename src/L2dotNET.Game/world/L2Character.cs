@@ -106,7 +106,7 @@ namespace L2dotNET.Game.world
 
         public void addSkill(int id, int lvl, bool updDb, bool update)
         {
-            TSkill skill = TSkillTable.getInstance().get(id, lvl);
+            TSkill skill = TSkillTable.Instance.Get(id, lvl);
             if (skill != null)
                 addSkill(skill, updDb, update);
         }
@@ -554,7 +554,7 @@ namespace L2dotNET.Game.world
             if (!addNew)
                 return;
 
-            TSkill newsk = TSkillTable.getInstance().get(skillId, lvlnext);
+            TSkill newsk = TSkillTable.Instance.Get(skillId, lvlnext);
             AbnormalEffect ic = new AbnormalEffect();
             ic.id = newsk.skill_id;
             ic.lvl = newsk.level;

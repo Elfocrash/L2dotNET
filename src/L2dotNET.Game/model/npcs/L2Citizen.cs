@@ -335,7 +335,7 @@ namespace L2dotNET.Game.model.npcs
                 list = new SortedList<int, TAcquireSkill>();
 
             int nextLvl = 800;
-            foreach (TAcquireSkill e in TSkillTable.getInstance().getAllRegularSkills(player.ActiveClass.ClassId.Id).skills)
+            foreach (TAcquireSkill e in TSkillTable.Instance.GetAllRegularSkills(player.ActiveClass.ClassId.Id).skills)
             {
                 if (e.get_lv > player.Level)
                 {
@@ -502,7 +502,7 @@ namespace L2dotNET.Game.model.npcs
             this.npc = npc;
             this.cha = target;
             this.skillId = skillId;
-            skill = TSkillTable.getInstance().get(skillId);
+            skill = TSkillTable.Instance.Get(skillId);
             cha.broadcastPacket(new MagicSkillUse(npc, cha, skill, skill.skill_hit_time));
 
             new Thread(Run).Start();

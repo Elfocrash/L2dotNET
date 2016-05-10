@@ -15,7 +15,7 @@ namespace L2dotNET.Game.tables.admin
             int id = int.Parse(alias.Split(' ')[1]);
             int lvl = int.Parse(alias.Split(' ')[2]);
 
-            TSkill skill = TSkillTable.getInstance().get(id, lvl);
+            TSkill skill = TSkillTable.Instance.Get(id, lvl);
 
             if (skill == null)
                 admin.sendMessage("Skill " + id + "/" + lvl + " is missing.");

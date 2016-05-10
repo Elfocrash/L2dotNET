@@ -529,7 +529,7 @@ namespace L2dotNET.Game.model.npcs
                 return 1;
             }
 
-            TSkill skill = TSkillTable.getInstance().get(id, lvl);
+            TSkill skill = TSkillTable.Instance.Get(id, lvl);
 
             if (skill == null)
             {

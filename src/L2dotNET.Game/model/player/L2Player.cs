@@ -2721,7 +2721,7 @@ namespace L2dotNET.Game
 
         public void broadcastSkillUse(int skillId)
         {
-            TSkill skill = TSkillTable.getInstance().get(skillId);
+            TSkill skill = TSkillTable.Instance.Get(skillId);
             broadcastPacket(new MagicSkillUse(this, this, skill.skill_id, skill.level, skill.skill_hit_time));
         }
 

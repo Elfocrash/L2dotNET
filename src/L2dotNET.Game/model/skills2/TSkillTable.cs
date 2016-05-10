@@ -104,7 +104,7 @@ namespace L2dotNET.Game.model.skills2
             }
 
             SortedList<int, object> _ids = new SortedList<int, object>();
-            initreg();
+            Initreg();
             using (FileStream fstream = File.Open(@"dlc\skilldb_edit.dlc", FileMode.Open, FileAccess.Read))
             {
                 byte[] dlcheader = new byte[3];
