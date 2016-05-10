@@ -364,7 +364,7 @@ namespace L2dotNET.Game.ai.npcai
 
         private void ShowEtcSkillList(L2Player talker, int type)
         {
-            TAcquireSkillsEntry skills = TSkillTable.Instance.getPledgeSkills();
+            TAcquireSkillsEntry skills = TSkillTable.getInstance().getPledgeSkills();
             SortedList<int, TAcquireSkill> avail = new SortedList<int, TAcquireSkill>();
 
             int nextLvl = 800;

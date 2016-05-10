@@ -43,7 +43,7 @@ namespace L2dotNET.Game.network.l2recv
 
             L2Item item = pet.Inventory.Items[sID];
 
-            if (ItemHandler.Instance.Process(pet, item))
+            if (ItemHandler.getInstance().Process(pet, item))
                 return;
 
             player.sendActionFailed();

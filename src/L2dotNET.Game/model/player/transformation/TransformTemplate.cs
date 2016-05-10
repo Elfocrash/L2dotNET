@@ -34,7 +34,7 @@ namespace L2dotNET.Game.model.player.transformation
             {
                 foreach (int[] s in _skills)
                 {
-                    TSkill sk = TSkillTable.Instance.get(s[0], s[1]);
+                    TSkill sk = TSkillTable.getInstance().get(s[0], s[1]);
                     if (sk != null)
                         player.addSkill(sk, false, false);
                 }

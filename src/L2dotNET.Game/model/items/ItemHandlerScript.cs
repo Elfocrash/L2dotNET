@@ -92,7 +92,7 @@ namespace L2dotNET.Game.model.items
         {
             if (EffectID != -1)
             {
-                TSkill skill = TSkillTable.Instance.get(EffectID, EffectLv);
+                TSkill skill = TSkillTable.getInstance().get(EffectID, EffectLv);
 
                 if (skill == null)
                 {
@@ -109,7 +109,7 @@ namespace L2dotNET.Game.model.items
         {
             if (SkillID != -1)
             {
-                TSkill skill = TSkillTable.Instance.get(SkillID, SkillLv);
+                TSkill skill = TSkillTable.getInstance().get(SkillID, SkillLv);
 
                 if (skill == null)
                 {

@@ -11,37 +11,11 @@ namespace L2dotNET.Game.model.items
     public class ItemHandler
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ItemHandler));
-        private static volatile ItemHandler instance;
-        private static object syncRoot = new object();
 
-        public static ItemHandler Instance
+        private static ItemHandler instance = new ItemHandler();
+        public static ItemHandler getInstance()
         {
-            get
-            {
-                if(instance == null)
-                {
-                    lock(syncRoot)
-                    {
-                        if(instance == null)
-                        {
-                            instance = new ItemHandler();
-                        }
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-        public void Initialize()
-        {
-            register(new TeleportBooks());
-            register(new BottlesOfSouls());
-            register(new EnchantScrolls());
-            register(new Calculator());
-
-            loadXML();
-            log.Info($"ItemHandler: Loaded { effects } effects with { items.Count } items.");
+            return instance;
         }
 
         public SortedList<int, ItemEffect> items = new SortedList<int, ItemEffect>();
@@ -57,6 +31,16 @@ namespace L2dotNET.Game.model.items
                 return false;
         }
 
+        public ItemHandler()
+        {
+            register(new TeleportBooks());
+            register(new BottlesOfSouls());
+            register(new EnchantScrolls());
+            register(new Calculator());
+
+            loadXML();
+            log.Info($"ItemHandler: Loaded { effects } effects with { items.Count } items.");
+        }
 
         short effects = 0;
         private void register(ItemEffect effect)

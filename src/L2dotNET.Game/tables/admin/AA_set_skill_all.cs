@@ -20,7 +20,7 @@ namespace L2dotNET.Game.tables.admin
             }
 
             L2Player target = admin.CurrentTarget as L2Player;
-            TAcquireSkillsEntry skills = TSkillTable.Instance.getAllRegularSkills(target.ActiveClass.ClassId.Id);
+            TAcquireSkillsEntry skills = TSkillTable.getInstance().getAllRegularSkills(target.ActiveClass.ClassId.Id);
 
             SortedList<int, TAcquireSkill> avail = new SortedList<int, TAcquireSkill>();
             Dictionary<int, int> updDel = new Dictionary<int, int>();
@@ -64,7 +64,7 @@ namespace L2dotNET.Game.tables.admin
 
             foreach (TAcquireSkill sk in avail.Values)
             {
-                TSkill skill = TSkillTable.Instance.get(sk.id, sk.lv);
+                TSkill skill = TSkillTable.getInstance().get(sk.id, sk.lv);
                 if (skill != null)
                     target.addSkill(skill, false, false);
                 else

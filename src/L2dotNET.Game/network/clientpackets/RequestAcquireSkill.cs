@@ -69,7 +69,7 @@ namespace L2dotNET.Game.network.l2recv
 
             player.Inventory.destroyItem(e.itemid, e.itemcount, true, true);
 
-            TSkill skill = TSkillTable.Instance.get(e.id, e.lv);
+            TSkill skill = TSkillTable.getInstance().get(e.id, e.lv);
             if (skill != null)
                 player.addSkill(skill, true, true);
             else

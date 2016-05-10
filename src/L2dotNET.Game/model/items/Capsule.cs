@@ -10,32 +10,10 @@ namespace L2dotNET.Game.model.items
     public class Capsule
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Capsule));
-        private static volatile Capsule instance;
-        private static object syncRoot = new object();
-        
-        public static Capsule Instance
+        private static Capsule instance = new Capsule();
+        public static Capsule getInstance()
         {
-            get
-            {
-                if(instance == null)
-                {
-                    lock(syncRoot)
-                    {
-                        if(instance == null)
-                        {
-                            instance = new Capsule();
-                        }
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-        public void Initialize()
-        {
-            loadXML();
-            log.Info($"Capsule: Loaded { items.Count } items.");
+            return instance;
         }
 
         public SortedList<int, CapsuleItem> items = new SortedList<int, CapsuleItem>();
@@ -56,6 +34,12 @@ namespace L2dotNET.Game.model.items
                         ((L2Player)character).addItem(rew.id, rn.Next(rew.min, rew.max));
                 }
             }
+        }
+
+        public Capsule()
+        {
+            loadXML();
+            log.Info($"Capsule: Loaded { items.Count } items.");
         }
 
         public void loadXML()

@@ -47,7 +47,7 @@ namespace L2dotNET.Game.network.l2recv
                 return;
             }
 
-            ND_shop shop = NpcData.Instance._shops[trader.Template.NpcId];
+            ND_shop shop = NpcData.getInstance()._shops[trader.Template.NpcId];
 
             if (shop == null)
             {

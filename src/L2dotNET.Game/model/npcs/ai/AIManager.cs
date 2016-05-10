@@ -4,34 +4,19 @@ namespace L2dotNET.Game.model.npcs.ai
 {
     public class AIManager
     {
-        private static volatile AIManager instance;
-        private static object syncRoot = new object();
+        private static AIManager ai = new AIManager();
 
-        public static AIManager Instance
+        public static AIManager getInstance()
         {
-            get
-            {
-                if(instance == null)
-                {
-                    lock(syncRoot)
-                    {
-                        if(instance == null)
-                        {
-                            instance = new AIManager();
-                        }
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-        public void Initialize()
-        {
-            register(new broadcasting_tower());
+            return ai;
         }
 
         public SortedList<int, AITemplate> _registeredAis = new SortedList<int, AITemplate>();
+
+        public AIManager()
+        {
+            register(new broadcasting_tower());
+        }
 
         private void register(AITemplate t)
         {

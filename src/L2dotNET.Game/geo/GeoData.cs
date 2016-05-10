@@ -10,34 +10,11 @@ namespace L2dotNET.Game.geo
     public class GeoData : Geo
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(GeoData));
-        private static volatile GeoData instance;
-        private static object syncRoot = new object();
 
-        public static GeoData Instance
+        private static GeoData instance = new GeoData();
+        public static GeoData getInstance()
         {
-            get
-            {
-                if(instance == null)
-                {
-                    lock(syncRoot)
-                    {
-                        if(instance == null)
-                        {
-                            instance = new GeoData();
-                        }
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-        public void Initialize()
-        {
-            for (int a = 0; a < 26; a++)
-                geodata[a] = new byte[26][][];
-
-            loadGeo();
+            return instance;
         }
 
         public static int MAP_MIN_X = -294912;//-163840;
@@ -62,6 +39,15 @@ namespace L2dotNET.Game.geo
 
 
         public byte[][][][] geodata = new byte[26][][][];
+
+
+        public GeoData()
+        {
+            for (int a = 0; a < 26; a++)
+                geodata[a] = new byte[26][][];
+
+            loadGeo();
+        }
 
         public override void loadGeo()
         {

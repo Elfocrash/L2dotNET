@@ -25,21 +25,21 @@ namespace L2dotNET.Game.ai.npcai
             {
                 switch (reply)
                 {
-                    case 0: NpcData.Instance.buylist(talker, myself, 0);
+                    case 0: NpcData.getInstance().buylist(talker, myself, 0);
                         break;
-                    case 1: NpcData.Instance.buylist(talker, myself, 1);
+                    case 1: NpcData.getInstance().buylist(talker, myself, 1);
                         break;
-                    case 2: NpcData.Instance.preview(talker, myself, 2);
+                    case 2: NpcData.getInstance().preview(talker, myself, 2);
                         break;
-                    case 3: NpcData.Instance.preview(talker, myself, 3);
+                    case 3: NpcData.getInstance().preview(talker, myself, 3);
                         break;
-                    case 4: NpcData.Instance.buylist(talker, myself, 4);
+                    case 4: NpcData.getInstance().buylist(talker, myself, 4);
                         break;
-                    case 5: NpcData.Instance.buylist(talker, myself, 5);
+                    case 5: NpcData.getInstance().buylist(talker, myself, 5);
                         break;
-                    case 6: NpcData.Instance.preview(talker, myself, 6);
+                    case 6: NpcData.getInstance().preview(talker, myself, 6);
                         break;
-                    case 7: NpcData.Instance.preview(talker, myself, 7);
+                    case 7: NpcData.getInstance().preview(talker, myself, 7);
                         break;
                     case 8:
                         talker.sendPacket(new ExBuySellList_Buy(talker.getAdena()));

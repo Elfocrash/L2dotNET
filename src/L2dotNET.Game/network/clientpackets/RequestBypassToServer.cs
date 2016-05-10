@@ -86,7 +86,7 @@ namespace L2dotNET.Game.network.l2recv
             else if (_alias.Equals("talk_select"))
             {
                 npc = getNpc();
-                QuestManager.Instance.talkSelection(player, npc);
+                QuestManager.getInstance().talkSelection(player, npc);
             }
             else if (_alias.StartsWith("quest_accept?"))
             {
@@ -95,7 +95,7 @@ namespace L2dotNET.Game.network.l2recv
                 string x1 = _alias.Split('?')[1];
                 int qid = int.Parse(x1.Split('=')[1]);
 
-                QuestManager.Instance.questAccept(player, npc, qid);
+                QuestManager.getInstance().questAccept(player, npc, qid);
             }
             else if (_alias.StartsWith("quest_continue?"))
             {
@@ -104,7 +104,7 @@ namespace L2dotNET.Game.network.l2recv
                 string x1 = _alias.Split('?')[1];
                 int qid = int.Parse(x1.Split('=')[1]);
 
-                QuestManager.Instance.quest_continue(player, npc, qid);
+                QuestManager.getInstance().quest_continue(player, npc, qid);
             }
             else if (_alias.StartsWith("quest_tryaccept?"))
             {
@@ -113,7 +113,7 @@ namespace L2dotNET.Game.network.l2recv
                 string x1 = _alias.Split('?')[1];
                 int qid = int.Parse(x1.Split('=')[1]);
 
-                QuestManager.Instance.quest_tryaccept(player, npc, qid);
+                QuestManager.getInstance().quest_tryaccept(player, npc, qid);
             }
             else if (_alias.Equals("deposit"))
             {

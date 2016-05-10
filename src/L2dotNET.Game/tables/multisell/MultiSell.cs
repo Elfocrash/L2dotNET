@@ -129,7 +129,7 @@ namespace L2dotNET.Game.tables.multisell
                                             item.count = Convert.ToInt64(its.Attribute("count").Value);
                                             if (item.id > 0)
                                             {
-                                                item.template = ItemTable.Instance.getItem(item.id);
+                                                item.template = ItemTable.getInstance().getItem(item.id);
                                                 if (!item.template.isStackable())
                                                     entry.Stackable = 0;
                                             }
@@ -142,7 +142,7 @@ namespace L2dotNET.Game.tables.multisell
                                             item.id = Convert.ToInt32(its.Attribute("id").Value);
                                             item.count = Convert.ToInt64(its.Attribute("count").Value);
                                             if (item.id > 0)
-                                                item.template = ItemTable.Instance.getItem(item.id);
+                                                item.template = ItemTable.getInstance().getItem(item.id);
                                             entry.take.Add(item);
                                         }
                                         break;

@@ -363,7 +363,7 @@ namespace L2dotNET.Game.tables
                                                     item.min = long.Parse(items.Attribute("min").Value);
                                                     item.max = long.Parse(items.Attribute("max").Value);
                                                     item.rate = double.Parse(items.Attribute("rate").Value);
-                                                    item.template = ItemTable.Instance.getItem(item.id);
+                                                    item.template = ItemTable.getInstance().getItem(item.id);
                                                     box.items.Add(item);
                                                     dropitems++;
                                                 }
@@ -394,7 +394,7 @@ namespace L2dotNET.Game.tables
                                                     item.min = long.Parse(items.Attribute("min").Value);
                                                     item.max = long.Parse(items.Attribute("max").Value);
                                                     item.rate = double.Parse(items.Attribute("rate").Value);
-                                                    item.template = ItemTable.Instance.getItem(item.id);
+                                                    item.template = ItemTable.getInstance().getItem(item.id);
                                                     box.items.Add(item);
                                                     dropitems++;
                                                 }
@@ -419,7 +419,7 @@ namespace L2dotNET.Game.tables
                                             item.min = long.Parse(boxes.Attribute("min").Value);
                                             item.max = long.Parse(boxes.Attribute("max").Value);
                                             item.rate = double.Parse(boxes.Attribute("rate").Value);
-                                            item.template = ItemTable.Instance.getItem(item.id);
+                                            item.template = ItemTable.getInstance().getItem(item.id);
                                             template.DropData.spoil.Add(item);
                                             dropitems++;
                                         }
@@ -440,7 +440,7 @@ namespace L2dotNET.Game.tables
                                             item.min = long.Parse(boxes.Attribute("min").Value);
                                             item.max = long.Parse(boxes.Attribute("max").Value);
                                             item.rate = double.Parse(boxes.Attribute("rate").Value);
-                                            item.template = ItemTable.Instance.getItem(item.id);
+                                            item.template = ItemTable.getInstance().getItem(item.id);
                                             template.DropData.qdrop.Add(item);
                                             dropitems++;
                                         }

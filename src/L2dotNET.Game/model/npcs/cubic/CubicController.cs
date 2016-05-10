@@ -37,11 +37,11 @@ namespace L2dotNET.Game.model.npcs.cubic
                 delay = 10,
                 max_count = 50,
                 power = 2106,
-                skill1 = TSkillTable.Instance.get(4165, 9),
+                skill1 = TSkillTable.getInstance().get(4165, 9),
                 skill1rate = 25,
-                skill2 = TSkillTable.Instance.get(4053, 8),
+                skill2 = TSkillTable.getInstance().get(4053, 8),
                 skill2rate = 25,
-                skill3 = TSkillTable.Instance.get(5579, 1),
+                skill3 = TSkillTable.getInstance().get(5579, 1),
                 skill3rate = 50,
                 skill3target = "master"
             });
@@ -52,11 +52,11 @@ namespace L2dotNET.Game.model.npcs.cubic
                 delay = 10,
                 max_count = 50,
                 power = 2106,
-                skill1 = TSkillTable.Instance.get(5115, 4),
+                skill1 = TSkillTable.getInstance().get(5115, 4),
                 skill1rate = 40,
-                skill2 = TSkillTable.Instance.get(4049, 8),
+                skill2 = TSkillTable.getInstance().get(4049, 8),
                 skill2rate = 15,
-                skill3 = TSkillTable.Instance.get(5579, 1),
+                skill3 = TSkillTable.getInstance().get(5579, 1),
                 skill3rate = 45,
                 skill3target = "master"
             });
@@ -67,12 +67,12 @@ namespace L2dotNET.Game.model.npcs.cubic
                 delay = 13,
                 max_count = 50,
                 power = 2106,
-                skill1 = TSkillTable.Instance.get(4165, 9),
+                skill1 = TSkillTable.getInstance().get(4165, 9),
                 skill1rate = 20,
-                skill2 = TSkillTable.Instance.get(4051, 1),
+                skill2 = TSkillTable.getInstance().get(4051, 1),
                 skill2rate = 30,
                 skill2target = "heal",
-                skill3 = TSkillTable.Instance.get(5579, 1),
+                skill3 = TSkillTable.getInstance().get(5579, 1),
                 skill3rate = 50,
                 skill3target = "master"
             });
@@ -83,11 +83,11 @@ namespace L2dotNET.Game.model.npcs.cubic
                 delay = 13,
                 max_count = 50,
                 power = 2106,
-                skill1 = TSkillTable.Instance.get(4049, 8),
+                skill1 = TSkillTable.getInstance().get(4049, 8),
                 skill1rate = 25,
-                skill2 = TSkillTable.Instance.get(4166, 9),
+                skill2 = TSkillTable.getInstance().get(4166, 9),
                 skill2rate = 25,
-                skill3 = TSkillTable.Instance.get(5579, 1),
+                skill3 = TSkillTable.getInstance().get(5579, 1),
                 skill3rate = 50,
                 skill3target = "master"
             });
@@ -98,11 +98,11 @@ namespace L2dotNET.Game.model.npcs.cubic
                 delay = 13,
                 max_count = 50,
                 power = 2106,
-                skill1 = TSkillTable.Instance.get(4049, 8),
+                skill1 = TSkillTable.getInstance().get(4049, 8),
                 skill1rate = 30,
-                skill2 = TSkillTable.Instance.get(4052, 6),
+                skill2 = TSkillTable.getInstance().get(4052, 6),
                 skill2rate = 20,
-                skill3 = TSkillTable.Instance.get(5579, 1),
+                skill3 = TSkillTable.getInstance().get(5579, 1),
                 skill3rate = 50,
                 skill3target = "master"
             });

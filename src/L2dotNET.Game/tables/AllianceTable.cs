@@ -7,29 +7,15 @@ namespace L2dotNET.Game.tables
 {
     class AllianceTable
     {
-        private static volatile AllianceTable instance;
-        private static object syncRoot = new object();
-
-        public static AllianceTable Instance
+        private static AllianceTable instance = new AllianceTable();
+        public static AllianceTable getInstance()
         {
-            get
-            {
-                if(instance == null)
-                {
-                    lock(syncRoot)
-                    {
-                        if(instance == null)
-                        {
-                            instance = new AllianceTable();
-                        }
-                    }
-                }
-
-                return instance;
-            }
+            return instance;
         }
 
-        public void Initialize()
+        public SortedList<int, L2Alliance> _alliances = new SortedList<int, L2Alliance>();
+
+        public AllianceTable()
         {
             //MySqlConnection connection = SQLjec.getInstance().conn();
             //MySqlCommand cmd = connection.CreateCommand();
@@ -57,8 +43,6 @@ namespace L2dotNET.Game.tables
 
             //CLogger.info("Community: loaded "+_alliances.Count+" alliances.");
         }
-
-        public SortedList<int, L2Alliance> _alliances = new SortedList<int, L2Alliance>();
 
         public L2Alliance getAlliance(int id)
         {

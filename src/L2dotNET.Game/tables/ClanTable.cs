@@ -8,31 +8,16 @@ namespace L2dotNET.Game.tables
 {
     class ClanTable
     {
-        private static volatile ClanTable instance;
-        private static object syncRoot = new object();
-
-        public static ClanTable Instance
+        private static ClanTable instance = new ClanTable();
+        public static ClanTable getInstance()
         {
-            get
-            {
-                if(instance == null)
-                {
-                    lock(syncRoot)
-                    {
-                        if(instance == null)
-                        {
-                            instance = new ClanTable();
-                        }
-                    }
-                }
-
-                return instance;
-            }
+            return instance;
         }
 
-        public void Initialize()
-        {
+        public SortedList<int, L2Clan> _clans = new SortedList<int, L2Clan>();
 
+        public ClanTable()
+        {
             //MySqlConnection connection = SQLjec.getInstance().conn();
             //MySqlCommand cmd = connection.CreateCommand();
 
@@ -203,8 +188,6 @@ namespace L2dotNET.Game.tables
 
             //CLogger.info("Community: loaded " + _clans.Count + " clans.");
         }
-
-        public SortedList<int, L2Clan> _clans = new SortedList<int, L2Clan>();
 
         public void apply(L2Player player)
         {

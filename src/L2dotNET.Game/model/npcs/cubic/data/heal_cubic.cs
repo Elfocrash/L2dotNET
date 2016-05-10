@@ -9,7 +9,7 @@ namespace L2dotNET.Game.model.npcs.cubic.data
         {
             this.id = id;
             this.level = lv;
-            this.skill1 = TSkillTable.Instance.get(skillId, skilllv);
+            this.skill1 = TSkillTable.getInstance().get(skillId, skilllv);
             this.delay = 13;
             this.duration = duration;
             this.max_count = 20;

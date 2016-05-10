@@ -55,41 +55,41 @@ namespace L2dotNET.Game
             ZoneTable.Instance.Initialize();
 
             NpcTable.Instance.Initialize();
-            NpcData.Instance.Initialize();
-            //  SpawnTable.Instance.Initialize();
+            NpcData.getInstance();
+            //  SpawnTable.getInstance();
 
-            //  TSkillTable.Instance.Initialize();
-            ItemTable.Instance.Initialize();
-            ItemHandler.Instance.Initialize();
+            //  TSkillTable.getInstance();
+            ItemTable.getInstance();
+            ItemHandler.getInstance();
 
             MultiSell.Instance.Initialize();
-            Capsule.Instance.Initialize();
-            RecipeTable.Instance.Initialize();
+            Capsule.getInstance();
+            RecipeTable.getInstance();
 
-            AIManager.Instance.Initialize();
+            AIManager.getInstance();
 
             BlowFishKeygen.GenerateKeys();
 
             AdminAccess.Instance.Initialize(); ;
 
-            QuestManager.Instance.Initialize();
+            QuestManager.getInstance();
 
             AnnouncementManager.Instance.Initialize();
 
-            AllianceTable.Instance.Initialize();
-            ClanTable.Instance.Initialize();
+            AllianceTable.getInstance();
+            ClanTable.getInstance();
 
             log.Info("NpcServer: ");
             StaticObjTable.Instance.Initialize();
             MonsterRace.Instance.Initialize();
-            //  SpawnTable.Instance.Spawn();
+            //  SpawnTable.getInstance().Spawn();
             StructureTable.Instance.Initialize();
 
             HtmCache.Instance.Initialize();
 
             AuthThread.Instance.Initialize();
 
-            //  GeoData.Instance.Initialize();
+            //   GeoData.getInstance();
 
             _listener = new TcpListener(IPAddress.Any, Config.Instance.serverConfig.Port);
 

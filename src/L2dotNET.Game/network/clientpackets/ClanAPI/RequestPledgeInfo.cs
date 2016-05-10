@@ -21,7 +21,7 @@ namespace L2dotNET.Game.network.l2recv
         {
             L2Player player = Client.CurrentPlayer;
 
-            L2Clan clan = ClanTable.Instance.getClan(_clanId);
+            L2Clan clan = ClanTable.getInstance().getClan(_clanId);
             if (clan != null)
                 player.sendPacket(new PledgeInfo(clan.ClanID, clan.Name, clan.AllianceName));
         }

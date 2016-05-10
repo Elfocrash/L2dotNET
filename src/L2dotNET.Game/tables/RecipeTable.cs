@@ -9,29 +9,15 @@ namespace L2dotNET.Game.tables
     class RecipeTable
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(RecipeTable));
-        private static volatile RecipeTable instance;
-        private static object syncRoot = new object();
-
-        public static RecipeTable Instance
+        private static RecipeTable it = new RecipeTable();
+        public static RecipeTable getInstance()
         {
-            get
-            {
-                if(instance == null)
-                {
-                    lock(syncRoot)
-                    {
-                        if(instance == null)
-                        {
-                            instance = new RecipeTable();
-                        }
-                    }
-                }
-
-                return instance;
-            }
+            return it;
         }
 
-        public void Initialize()
+        public readonly SortedList<int, L2Recipe> _recipes = new SortedList<int, L2Recipe>();
+
+        public RecipeTable()
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\recipes.xml"));
             XElement ex = xml.Element("list");
@@ -99,8 +85,6 @@ namespace L2dotNET.Game.tables
             log.Info("RecipeTable: loaded " + _recipes.Count + " recipes.");
         }
 
-        public readonly SortedList<int, L2Recipe> _recipes = new SortedList<int, L2Recipe>();
-
         public L2Recipe getById(int p)
         {
             if (!_recipes.ContainsKey(p))
@@ -145,7 +129,7 @@ namespace L2dotNET.Game.tables
 
         public recipe_item_entry(int id, long count)
         {
-            item = ItemTable.Instance.getItem(id);
+            item = ItemTable.getInstance().getItem(id);
             this.count = count;
         }
     }

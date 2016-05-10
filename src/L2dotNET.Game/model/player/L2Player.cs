@@ -302,7 +302,7 @@ namespace L2dotNET.Game
         {
             get { return Clan == null ? 0 : Clan.ClanID; }
 
-            set { Clan = ClanTable.Instance.getClan(value); }
+            set { Clan = ClanTable.getInstance().getClan(value); }
         }
 
         public override int ClanCrestId
@@ -2721,7 +2721,7 @@ namespace L2dotNET.Game
 
         public void broadcastSkillUse(int skillId)
         {
-            TSkill skill = TSkillTable.Instance.get(skillId);
+            TSkill skill = TSkillTable.getInstance().get(skillId);
             broadcastPacket(new MagicSkillUse(this, this, skill.skill_id, skill.level, skill.skill_hit_time));
         }
 
