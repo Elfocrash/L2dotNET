@@ -58,6 +58,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -118,10 +119,9 @@
     <Compile Include="Enums\ClassRace.cs" />
     <Compile Include="Enums\ShotType.cs" />
     <Compile Include="Enums\ZoneId.cs" />
-    <Compile Include="geo\Geo.cs" />
-    <Compile Include="geo\GeoData.cs" />
+    <Compile Include="geo\GeoBlock.cs" />
+    <Compile Include="geo\Geodata.cs" />
     <Compile Include="geo\Layer.cs" />
-    <Compile Include="geo\GeoLocation.cs" />
     <Compile Include="geo\MByteBuffer.cs" />
     <Compile Include="Managers\AnnouncementManager.cs" />
     <Compile Include="Managers\bbs\BBSManager.cs" />
@@ -711,12 +711,14 @@
     <Compile Include="templates\StatsSet.cs" />
     <Compile Include="tools\Calcs.cs" />
     <Compile Include="tools\Utilz.cs" />
-    <Compile Include="Utils\MathHelper.cs" />
-    <Compile Include="Utils\Matrix.cs" />
-    <Compile Include="Utils\Quaternion.cs" />
-    <Compile Include="Utils\Rnd.cs" />
-    <Compile Include="Utils\Vector2.cs" />
-    <Compile Include="Utils\Vector3.cs" />
+    <Compile Include="Utils\L2Buffer.cs" />
+    <Compile Include="Utils\Geometry\MathHelper.cs" />
+    <Compile Include="Utils\Geometry\Matrix.cs" />
+    <Compile Include="Utils\Geometry\Quaternion.cs" />
+    <Compile Include="Utils\Geometry\Rnd.cs" />
+    <Compile Include="Utils\Geometry\Vector2.cs" />
+    <Compile Include="Utils\Geometry\Vector3.cs" />
+    <Compile Include="Utils\L2FileReader.cs" />
     <Compile Include="world\L2Character.cs" />
     <Compile Include="world\L2Object.cs" />
     <Compile Include="world\L2World.cs" />
