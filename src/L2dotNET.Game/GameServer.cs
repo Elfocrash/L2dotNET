@@ -66,11 +66,11 @@ namespace L2dotNET.Game
             Capsule.Instance.Initialize();
             RecipeTable.Instance.Initialize();
 
-            AIManager.getInstance();
+            AIManager.Instance.Initialize();
 
             BlowFishKeygen.GenerateKeys();
 
-            AdminAccess.Instance.Initialize(); ;
+            AdminAccess.Instance.Initialize();
 
             QuestManager.getInstance();
 

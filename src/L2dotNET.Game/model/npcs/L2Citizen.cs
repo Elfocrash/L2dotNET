@@ -109,7 +109,7 @@ namespace L2dotNET.Game.model.npcs
                 return;
             }
 
-            AITemplate t = AIManager.getInstance().checkDialogResult(Template.NpcId);
+            AITemplate t = AIManager.Instance.CheckDialogResult(Template.NpcId);
             if (t != null)
             {
                 t.onDialog(player, ask, reply, this);
