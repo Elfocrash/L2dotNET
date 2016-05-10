@@ -73,11 +73,22 @@ namespace L2dotNET.Game.templates
 
         public bool GetBool(string key, bool defaultVal)
         {
-            var val = base[key].ToString();
-            bool toReturn;
-            if (bool.TryParse(val, out toReturn))
-                return toReturn;
-            return defaultVal;
+            //check if the dictionary contains the key
+            if (base.ContainsKey(key))
+            {
+                var val = base[key].ToString();
+                bool toReturn;
+                if (bool.TryParse(val, out toReturn))
+                    return toReturn;
+                return defaultVal;
+            }
+            else
+            {
+                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                //if key doesn't exists,
+                //returns the defaultValue var
+                return defaultVal;
+            }
         }
 
         public byte GetByte(string key)
@@ -90,11 +101,22 @@ namespace L2dotNET.Game.templates
 
         public byte GetByte(string key, byte defaultVal)
         {
-            var val = base[key].ToString();
-            byte toReturn;
-            if (byte.TryParse(val, out toReturn))
-                return toReturn;
-            return defaultVal;
+            //check if the dictionary contains the key
+            if (base.ContainsKey(key))
+            {
+                var val = base[key].ToString();
+                byte toReturn;
+                if (byte.TryParse(val, out toReturn))
+                    return toReturn;
+                return defaultVal;
+            }
+            else
+            {
+                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                //if key doesn't exists,
+                //returns the defaultValue var
+                return defaultVal;
+            }
         }
 
         public double GetDouble(string key)
@@ -107,11 +129,22 @@ namespace L2dotNET.Game.templates
 
         public double GetDouble(string key, double defaultVal)
         {
-            var val = base[key].ToString();
-            double toReturn;
-            if (double.TryParse(val, out toReturn))
-                return toReturn;
-            return defaultVal;
+            //check if the dictionary contains the key
+            if (base.ContainsKey(key))
+            {
+                var val = base[key].ToString();
+                double toReturn;
+                if (double.TryParse(val, out toReturn))
+                    return toReturn;
+                return defaultVal;
+            }
+            else
+            {
+                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                //if key doesn't exists,
+                //returns the defaultValue var
+                return defaultVal;
+            }
         }
 
         public float GetFloat(string key)
@@ -124,11 +157,22 @@ namespace L2dotNET.Game.templates
 
         public float GetFloat(string key, float defaultVal)
         {
-            var val = base[key].ToString();
-            float toReturn;
-            if (float.TryParse(val, out toReturn))
-                return toReturn;
-            return defaultVal;
+            //check if the dictionary contains the key
+            if (base.ContainsKey(key))
+            {
+                var val = base[key].ToString();
+                float toReturn;
+                if (float.TryParse(val, out toReturn))
+                    return toReturn;
+                return defaultVal;
+            }
+            else
+            {
+                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                //if key doesn't exists,
+                //returns the defaultValue var
+                return defaultVal;
+            }
         }
 
         public int GetInt(string key)
@@ -137,15 +181,27 @@ namespace L2dotNET.Game.templates
             int toReturn;
             int.TryParse(val, out toReturn);
             return toReturn;
+
         }
 
         public int GetInt(string key, int defaultVal)
         {
-            var val = base[key].ToString();
-            int toReturn;
-            if (int.TryParse(val, out toReturn))
-                return toReturn;
-            return defaultVal;
+            //check if the dictionary contains the key
+            if (base.ContainsKey(key))
+            {
+                var val = base[key].ToString();
+                int toReturn;
+                if (int.TryParse(val, out toReturn))
+                    return toReturn;
+                return defaultVal;
+            }
+            else
+            {
+                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                //if key doesn't exists,
+                //returns the defaultValue var
+                return defaultVal;
+            }
         }
 
         public string GetString(string key)
@@ -156,10 +212,19 @@ namespace L2dotNET.Game.templates
 
         public string GetString(string key, string defaultVal)
         {
-            var val = base[key].ToString();
-            if (string.IsNullOrWhiteSpace(val))
+            //check if the dictionary contains the key
+            if (base.ContainsKey(key))
+            {
+                var val = base[key].ToString();
+                return val;
+            }
+            else
+            {
+                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                //if key doesn't exists,
+                //returns the defaultValue var
                 return defaultVal;
-            return val;
+            }
         }
 
         public T Get<T>(string key, T defaultValue = default(T)) where T : struct, IConvertible
