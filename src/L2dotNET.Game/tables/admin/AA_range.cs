@@ -46,7 +46,7 @@ namespace L2dotNET.Game.tables.admin
             else if (s == "2")
             {
                 int listid = int.Parse(alias.Split(' ')[2]);
-                MultiSell.getInstance().showList(admin, null, listid);
+                MultiSell.Instance.showList(admin, null, listid);
             }
             else if (s == "4")
             {

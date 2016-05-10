@@ -78,13 +78,13 @@ namespace L2dotNET.Game.network.l2recv
                     break;
             }
 
-            if (ItemHandler.getInstance().Process(player, item))
+            if (ItemHandler.Instance.Process(player, item))
                 return;
 
             switch (item.Template.default_action)
             {
                 case "action_capsule":
-                    Capsule.getInstance().Process(player, item);
+                    Capsule.Instance.Process(player, item);
                     break;
                 case "action_call_skill":
                     {

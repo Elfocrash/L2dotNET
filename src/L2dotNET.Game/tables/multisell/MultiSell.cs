@@ -12,13 +12,30 @@ namespace L2dotNET.Game.tables.multisell
     public class MultiSell
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(MultiSell));
-        private static MultiSell instance = new MultiSell();
-        public static MultiSell getInstance()
+
+        private static volatile MultiSell instance;
+        private static object syncRoot = new object();
+
+        public static MultiSell Instance
         {
-            return instance;
+            get
+            {
+                if(instance == null)
+                {
+                    lock(syncRoot)
+                    {
+                        if(instance == null)
+                        {
+                            instance = new MultiSell();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
-        public MultiSell()
+        public void Initialize()
         {
             loadXml();
         }
@@ -112,7 +129,7 @@ namespace L2dotNET.Game.tables.multisell
                                             item.count = Convert.ToInt64(its.Attribute("count").Value);
                                             if (item.id > 0)
                                             {
-                                                item.template = ItemTable.getInstance().getItem(item.id);
+                                                item.template = ItemTable.Instance.getItem(item.id);
                                                 if (!item.template.isStackable())
                                                     entry.Stackable = 0;
                                             }
@@ -125,7 +142,7 @@ namespace L2dotNET.Game.tables.multisell
                                             item.id = Convert.ToInt32(its.Attribute("id").Value);
                                             item.count = Convert.ToInt64(its.Attribute("count").Value);
                                             if (item.id > 0)
-                                                item.template = ItemTable.getInstance().getItem(item.id);
+                                                item.template = ItemTable.Instance.getItem(item.id);
                                             entry.take.Add(item);
                                         }
                                         break;

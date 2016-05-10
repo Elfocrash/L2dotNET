@@ -67,7 +67,7 @@ namespace L2dotNET.Game.network.l2recv
 
             if (player.ClanId > 0)
             {
-                ClanTable.getInstance().apply(player);
+                ClanTable.Instance.apply(player);
             }
 
             player.sendPacket(new ExStorageMaxCount(player));

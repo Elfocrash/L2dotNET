@@ -16,19 +16,35 @@ namespace L2dotNET.Game.tables
     class NpcData
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(NpcData));
-        private static NpcData it = new NpcData();
-        public static NpcData getInstance()
+        private static volatile NpcData instance;
+        private static object syncRoot = new object();
+
+        public static NpcData Instance
         {
-            return it;
+            get
+            {
+                if(instance == null)
+                {
+                    lock(syncRoot)
+                    {
+                        if(instance == null)
+                        {
+                            instance = new NpcData();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        public void Initialize()
+        {
+            load();
         }
 
         public SortedList<int, ND_shop> _shops = new SortedList<int, ND_shop>();
         private NDTeleport Teleports;
-
-        public NpcData()
-        {
-            load();
-        }
 
         private void load()
         {
@@ -36,7 +52,7 @@ namespace L2dotNET.Game.tables
 
             Teleports = new NDTeleport();
 
-            ItemTable itable = ItemTable.getInstance();
+            ItemTable itable = ItemTable.Instance;
             {
                 XElement xml = XElement.Parse(File.ReadAllText(@"scripts\buylists.xml"));
                 foreach (var shops in xml.Elements("shops"))

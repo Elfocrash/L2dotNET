@@ -432,7 +432,7 @@ namespace L2dotNET.Game.model.items
 
             foreach (string v in value.Split(';'))
             {
-                TSkill sk = TSkillTable.getInstance().get(int.Parse(v.Split('-')[0]), int.Parse(v.Split('-')[1]));
+                TSkill sk = TSkillTable.Instance.get(int.Parse(v.Split('-')[0]), int.Parse(v.Split('-')[1]));
                 if (sk != null)
                     multiSkills.Add(sk);
             }
@@ -473,7 +473,7 @@ namespace L2dotNET.Game.model.items
         public TSkill unequip_skill;
         public void setUnequipSkill(string value)
         {
-            unequip_skill = TSkillTable.getInstance().get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
+            unequip_skill = TSkillTable.Instance.get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
         }
 
         internal void setEquipOption(string value)
@@ -489,7 +489,7 @@ namespace L2dotNET.Game.model.items
         public TSkill item_skill;
         public void addItemSkill(string value)
         {
-            item_skill = TSkillTable.getInstance().get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
+            item_skill = TSkillTable.Instance.get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
         }
 
         public TSkill item_skill_ench4;
@@ -503,7 +503,7 @@ namespace L2dotNET.Game.model.items
         public short AttrAttackType = -2;
         public void addItemEnch4(string value)
         {
-            item_skill_ench4 = TSkillTable.getInstance().get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
+            item_skill_ench4 = TSkillTable.Instance.get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
         }
     }
 }

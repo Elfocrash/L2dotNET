@@ -13,14 +13,29 @@ namespace L2dotNET.Game.model.skills2
     class TSkillTable
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(TSkillTable));
+        private static volatile TSkillTable instance;
+        private static object syncRoot = new object();
 
-        private static TSkillTable st = new TSkillTable();
-        public static TSkillTable getInstance()
+        public static TSkillTable Instance
         {
-            return st;
+            get
+            {
+                if(instance == null)
+                {
+                    lock(syncRoot)
+                    {
+                        if(instance == null)
+                        {
+                            instance = new TSkillTable();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
-        public TSkillTable()
+        public void Initialize()
         {
             read();
             loadDLC();
