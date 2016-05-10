@@ -11,24 +11,45 @@ namespace L2dotNET.Game.tables
     public class SpawnTable
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(SpawnTable));
-        private static SpawnTable instance = new SpawnTable();
-        public static SpawnTable getInstance()
+        private static volatile SpawnTable instance;
+        private static object syncRoot = new object();
+
+        public static SpawnTable Instance
         {
-            return instance;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new SpawnTable();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
-        public readonly SortedList<string, L2Territory> territorries = new SortedList<string, L2Territory>();
-        public readonly List<L2Spawn> spawns = new List<L2Spawn>();
-        public SpawnTable()
+        public void Initialize()
         {
             foreach (string path in Directory.EnumerateFiles(@"scripts\spawn\", "*.xml"))
-                read(path);
+                Read(path);
 
-            log.Info("SpawnTable: Created " + territorries.Count+" territories with "+npcs+" monsters.");
+            log.Info("SpawnTable: Created " + Territorries.Count + " territories with " + npcs + " monsters.");
+        }
+
+        public readonly SortedList<string, L2Territory> Territorries = new SortedList<string, L2Territory>();
+        public readonly List<L2Spawn> Spawns = new List<L2Spawn>();
+        public SpawnTable()
+        {
+
         }
 
         private long npcs = 0;
-        public void read(string path)
+        public void Read(string path)
         {
             XElement xml = XElement.Parse(File.ReadAllText(path));
             XElement ex = xml.Element("list");
@@ -60,10 +81,10 @@ namespace L2dotNET.Game.tables
                     }
 
                     zone.InitZone(); //создаем зону
-                    if (territorries.ContainsKey(zone.name))
+                    if (Territorries.ContainsKey(zone.name))
                         Console.WriteLine("dublicate zone name " + zone.name);
                     else
-                        territorries.Add(zone.name, zone);
+                        Territorries.Add(zone.name, zone);
                 }
                 else if (m.Name == "spawn")
                 {
@@ -84,7 +105,7 @@ namespace L2dotNET.Game.tables
                                     else if (respawn.Contains("d"))
                                         value *= 86400000;
 
-                                    spawns.Add(new L2Spawn(Convert.ToInt32(stp.Attribute("id").Value), value, stp.Attribute("pos").Value.Split(' ')));
+                                    Spawns.Add(new L2Spawn(Convert.ToInt32(stp.Attribute("id").Value), value, stp.Attribute("pos").Value.Split(' ')));
                                 }
                                 npcs++;
                                 break;
@@ -105,14 +126,14 @@ namespace L2dotNET.Game.tables
                 return;
             }
             long sp = 0;
-            foreach (L2Territory t in territorries.Values)
+            foreach (L2Territory t in Territorries.Values)
             {
                 sp += t.spawns.Count;
                 t.Spawn();
             }
 
-            sp += spawns.Count;
-            foreach (L2Spawn s in spawns)
+            sp += Spawns.Count;
+            foreach (L2Spawn s in Spawns)
                 s.init();
 
             log.Info("NpcServer spawn done, #"+sp+" npcs.");
@@ -120,14 +141,14 @@ namespace L2dotNET.Game.tables
 
         public void SunRise(bool y)
         {
-            foreach (L2Territory t in territorries.Values)
+            foreach (L2Territory t in Territorries.Values)
                 t.SunRise(y);
 
-            foreach (L2Spawn s in spawns)
+            foreach (L2Spawn s in Spawns)
                 s.SunRise(y);
         }
 
-        public L2Object spawnOne(int id, int x, int y, int z, int h)
+        public L2Object SpawnOne(int id, int x, int y, int z, int h)
         {
             NpcTemplate template = NpcTable.Instance.getNpcTemplate(id);
 

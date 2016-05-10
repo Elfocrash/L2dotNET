@@ -56,9 +56,9 @@ namespace L2dotNET.Game
 
             NpcTable.Instance.Initialize();
             NpcData.Instance.Initialize();
-            //  SpawnTable.getInstance();
+            //  SpawnTable.Instance.Initialize();
 
-            //  TSkillTable.getInstance();
+            //  TSkillTable.Instance.Initialize();
             ItemTable.getInstance();
             ItemHandler.getInstance();
 
