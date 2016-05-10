@@ -231,7 +231,7 @@ namespace L2dotNET.Game.network.l2recv
             //    return;
             //}
 
-            TSkill skill = TSkillTable.getInstance().get(id, lv);
+            TSkill skill = TSkillTable.Instance.Get(id, lv);
 
             if (skill != null)
             {

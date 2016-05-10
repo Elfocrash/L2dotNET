@@ -67,7 +67,7 @@ namespace L2dotNET.Game.model.items
 
             if (SummonStaticID != -1)
             {
-                NpcTable.Instance.spawnNpc(SummonStaticID, player.X, player.Y, player.Z, player.Heading);
+                NpcTable.Instance.SpawnNpc(SummonStaticID, player.X, player.Y, player.Z, player.Heading);
             }
         }
 
@@ -84,7 +84,7 @@ namespace L2dotNET.Game.model.items
 
             if (SummonStaticID != -1)
             {
-                NpcTable.Instance.spawnNpc(SummonStaticID, pet.X, pet.Y, pet.Z, pet.Heading);
+                NpcTable.Instance.SpawnNpc(SummonStaticID, pet.X, pet.Y, pet.Z, pet.Heading);
             }
         }
 
@@ -92,7 +92,7 @@ namespace L2dotNET.Game.model.items
         {
             if (EffectID != -1)
             {
-                TSkill skill = TSkillTable.getInstance().get(EffectID, EffectLv);
+                TSkill skill = TSkillTable.Instance.Get(EffectID, EffectLv);
 
                 if (skill == null)
                 {
@@ -109,7 +109,7 @@ namespace L2dotNET.Game.model.items
         {
             if (SkillID != -1)
             {
-                TSkill skill = TSkillTable.getInstance().get(SkillID, SkillLv);
+                TSkill skill = TSkillTable.Instance.Get(SkillID, SkillLv);
 
                 if (skill == null)
                 {

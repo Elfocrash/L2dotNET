@@ -569,13 +569,13 @@ namespace L2dotNET.Game.tables
 
             if (cnt == set1sum) // весь сет
             {
-                owner.addSkill(TSkillTable.getInstance().get(set1Id, set1Lvl), false, false);
+                owner.addSkill(TSkillTable.Instance.Get(set1Id, set1Lvl), false, false);
 
                 if (set2sum == 1) //со щитом
-                    owner.addSkill(TSkillTable.getInstance().get(set2Id, set2Lvl), false, false);
+                    owner.addSkill(TSkillTable.Instance.Get(set2Id, set2Lvl), false, false);
 
                 if (set3sum == cnt) //весь сет +6
-                    owner.addSkill(TSkillTable.getInstance().get(set3Id, set3Lvl), false, false);
+                    owner.addSkill(TSkillTable.Instance.Get(set3Id, set3Lvl), false, false);
 
                 owner.updateSkillList();
             }

@@ -13,20 +13,40 @@ namespace L2dotNET.Game.model.skills2
     class TSkillTable
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(TSkillTable));
+        private static volatile TSkillTable instance;
+        private static object syncRoot = new object();
 
-        private static TSkillTable st = new TSkillTable();
-        public static TSkillTable getInstance()
+        public static TSkillTable Instance
         {
-            return st;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new TSkillTable();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        public void Initialize()
+        {
+            Read();
+            loadDLC();
         }
 
         public TSkillTable()
         {
-            read();
-            loadDLC();
+
         }
 
-        public TSkill get(int id, int lvl)
+        public TSkill Get(int id, int lvl)
         {
             long hash = id * 65536 + lvl;
             if (_skills.ContainsKey(hash))
@@ -35,7 +55,7 @@ namespace L2dotNET.Game.model.skills2
             return null;
         }
 
-        public TSkill get(int skillId)
+        public TSkill Get(int skillId)
         {
             if (_skills.ContainsKey(skillId))
                 return _skills[skillId];
@@ -46,7 +66,7 @@ namespace L2dotNET.Game.model.skills2
         public readonly SortedList<long, TSkillEnchantInfo> enchantInfo = new SortedList<long, TSkillEnchantInfo>();
         public readonly SortedList<long, TSkill> _skills = new SortedList<long, TSkill>();
 
-        public void read()
+        public void Read()
         {
             using (FileStream fstream = File.Open(@"dlc\skillenchant.dlc", FileMode.Open, FileAccess.Read))
             {
@@ -84,7 +104,7 @@ namespace L2dotNET.Game.model.skills2
             }
 
             SortedList<int, object> _ids = new SortedList<int, object>();
-            initreg();
+            Initreg();
             using (FileStream fstream = File.Open(@"dlc\skilldb_edit.dlc", FileMode.Open, FileAccess.Read))
             {
                 byte[] dlcheader = new byte[3];
@@ -311,7 +331,7 @@ namespace L2dotNET.Game.model.skills2
             type_double = 2,
             type_str = 3;
 
-        public void initreg()
+        public void Initreg()
         {
             if (ps.Count != 0)
                 return;
@@ -457,12 +477,12 @@ namespace L2dotNET.Game.model.skills2
             log.Info($"SkillTable: learnable { AcquireSkills.Count } groups, #{ cntTotal } skills.");
         }
 
-        public TAcquireSkillsEntry getAllRegularSkills(ClassIds id)
+        public TAcquireSkillsEntry GetAllRegularSkills(ClassIds id)
         {
             return AcquireSkills[id.ToString()];
         }
 
-        public TAcquireSkillsEntry getSharingSkills(ClassIds id)
+        public TAcquireSkillsEntry GetSharingSkills(ClassIds id)
         {
             switch (id)
             {
@@ -478,32 +498,32 @@ namespace L2dotNET.Game.model.skills2
             }
         }
 
-        public TAcquireSkillsEntry getCollectingSkills()
+        public TAcquireSkillsEntry GetCollectingSkills()
         {
             return AcquireSkills["collect"];
         }
 
-        public TAcquireSkillsEntry getSubjobSkills()
+        public TAcquireSkillsEntry GetSubjobSkills()
         {
             return AcquireSkills["subjob"];
         }
 
-        public TAcquireSkillsEntry getTransformSkills()
+        public TAcquireSkillsEntry GetTransformSkills()
         {
             return AcquireSkills["transform"];
         }
 
-        public TAcquireSkillsEntry getSubpledgeSkills()
+        public TAcquireSkillsEntry GetSubpledgeSkills()
         {
             return AcquireSkills["sub_pledge"];
         }
 
-        public TAcquireSkillsEntry getPledgeSkills()
+        public TAcquireSkillsEntry GetPledgeSkills()
         {
             return AcquireSkills["pledge"];
         }
 
-        public TAcquireSkillsEntry getFishingSkills()
+        public TAcquireSkillsEntry GetFishingSkills()
         {
             return AcquireSkills["fishing"];
         }

@@ -66,7 +66,7 @@ namespace L2dotNET.Game.model.npcs
             if (level == 0)
                 player.sendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjID));
             else
-                NpcData.getInstance().RequestTeleportList(this, player, level);
+                NpcData.Instance.RequestTeleportList(this, player, level);
         }
 
         public override void onDialog(L2Player player, int ask, int reply)
@@ -134,7 +134,7 @@ namespace L2dotNET.Game.model.npcs
                                 if (level == 0)
                                     player.sendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjID));
                                 else
-                                    NpcData.getInstance().buylist(player, this, (short)level);
+                                    NpcData.Instance.Buylist(player, this, (short)level);
                             }
                             break;
                         case 51: // manage regen
@@ -529,7 +529,7 @@ namespace L2dotNET.Game.model.npcs
                 return 1;
             }
 
-            TSkill skill = TSkillTable.getInstance().get(id, lvl);
+            TSkill skill = TSkillTable.Instance.Get(id, lvl);
 
             if (skill == null)
             {

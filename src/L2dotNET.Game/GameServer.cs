@@ -55,21 +55,22 @@ namespace L2dotNET.Game
             ZoneTable.Instance.Initialize();
 
             NpcTable.Instance.Initialize();
-            NpcData.getInstance();
-            //  SpawnTable.getInstance();
+            NpcData.Instance.Initialize();
+            //  SpawnTable.Instance.Initialize();
 
-            //  TSkillTable.getInstance();
+            //  TSkillTable.Instance.Initialize();
             ItemTable.getInstance();
-            ItemHandler.getInstance();
-            MultiSell.getInstance();
-            Capsule.getInstance();
-            RecipeTable.getInstance();
+            ItemHandler.Instance.Initialize();
 
-            AIManager.getInstance();
+            MultiSell.Instance.Initialize();
+            Capsule.Instance.Initialize();
+            RecipeTable.Instance.Initialize();
+
+            AIManager.Instance.Initialize();
 
             BlowFishKeygen.GenerateKeys();
 
-            AdminAccess.Instance.Initialize(); ;
+            AdminAccess.Instance.Initialize();
 
             QuestManager.getInstance();
 

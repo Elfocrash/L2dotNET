@@ -2134,7 +2134,7 @@ namespace L2dotNET.Game
         private void PetSummonEnd(object sender, ElapsedEventArgs e)
         {
             L2Pet pet = new L2Pet();
-            pet.setTemplate(NpcTable.Instance.getNpcTemplate(PetID));
+            pet.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
             pet.setOwner(this);
             pet.ControlItem = PetControlItem;
            // pet.sql_restore();
@@ -2146,7 +2146,7 @@ namespace L2dotNET.Game
         private void NonpetSummonEnd(object sender, ElapsedEventArgs e)
         {
             L2Summon summon = new L2Summon();
-            summon.setTemplate(NpcTable.Instance.getNpcTemplate(PetID));
+            summon.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
             summon.setOwner(this);
             summon.ControlItem = PetControlItem;
             summon.SpawmMe();
@@ -2721,7 +2721,7 @@ namespace L2dotNET.Game
 
         public void broadcastSkillUse(int skillId)
         {
-            TSkill skill = TSkillTable.getInstance().get(skillId);
+            TSkill skill = TSkillTable.Instance.Get(skillId);
             broadcastPacket(new MagicSkillUse(this, this, skill.skill_id, skill.level, skill.skill_hit_time));
         }
 
