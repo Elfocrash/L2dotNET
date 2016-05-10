@@ -63,7 +63,7 @@ namespace L2dotNET.Game
             ItemHandler.Instance.Initialize();
 
             MultiSell.Instance.Initialize();
-            Capsule.getInstance();
+            Capsule.Instance.Initialize();
             RecipeTable.getInstance();
 
             AIManager.getInstance();

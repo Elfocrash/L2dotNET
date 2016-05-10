@@ -49,22 +49,22 @@ namespace L2dotNET.Game.model.skills2
         public TSkill Get(int id, int lvl)
         {
             long hash = id * 65536 + lvl;
-            if (_Skills.ContainsKey(hash))
-                return _Skills[hash];
+            if (_skills.ContainsKey(hash))
+                return _skills[hash];
 
             return null;
         }
 
         public TSkill Get(int skillId)
         {
-            if (_Skills.ContainsKey(skillId))
-                return _Skills[skillId];
+            if (_skills.ContainsKey(skillId))
+                return _skills[skillId];
 
             return null;
         }
 
-        public readonly SortedList<long, TSkillEnchantInfo> EnchantInfo = new SortedList<long, TSkillEnchantInfo>();
-        public readonly SortedList<long, TSkill> _Skills = new SortedList<long, TSkill>();
+        public readonly SortedList<long, TSkillEnchantInfo> enchantInfo = new SortedList<long, TSkillEnchantInfo>();
+        public readonly SortedList<long, TSkill> _skills = new SortedList<long, TSkill>();
 
         public void Read()
         {
@@ -98,7 +98,7 @@ namespace L2dotNET.Game.model.skills2
                             inf.details.Add(nfo.enchanted_skill_level, nfo);
                         }
 
-                        EnchantInfo.Add(inf.id * 65536 + inf.lv, inf);
+                        enchantInfo.Add(inf.id * 65536 + inf.lv, inf);
                     }
                 }
             }
@@ -235,10 +235,10 @@ namespace L2dotNET.Game.model.skills2
                             }
                         }
 
-                        if (EnchantInfo.ContainsKey(skill.HashID()))
+                        if (enchantInfo.ContainsKey(skill.HashID()))
                             skill.EnchantEnabled = 1;
 
-                        _Skills.Add(skill.HashID(), skill);
+                        _skills.Add(skill.HashID(), skill);
 
                         if (!_ids.ContainsKey(skill.skill_id))
                             _ids.Add(skill.skill_id, null);
@@ -320,7 +320,7 @@ namespace L2dotNET.Game.model.skills2
             //    }
             //}
 
-            log.Info($"SkillTable: loaded { _ids.Count } skills, { EnchantInfo.Count } enchants.");
+            log.Info($"SkillTable: loaded { _ids.Count } skills, { enchantInfo.Count } enchants.");
         }
 
         #region INITREG

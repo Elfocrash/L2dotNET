@@ -11,7 +11,7 @@ namespace L2dotNET.Game.tables.admin
 
         protected internal override void use(L2Player admin, string alias)
         {
-            NpcTable.Instance.spawnNpc(Convert.ToInt32(alias.Split(' ')[1]), admin.X, admin.Y, admin.Z, admin.Heading);
+            NpcTable.Instance.SpawnNpc(Convert.ToInt32(alias.Split(' ')[1]), admin.X, admin.Y, admin.Z, admin.Heading);
         }
     }
 }

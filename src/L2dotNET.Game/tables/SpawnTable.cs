@@ -38,10 +38,10 @@ namespace L2dotNET.Game.tables
             foreach (string path in Directory.EnumerateFiles(@"scripts\spawn\", "*.xml"))
                 Read(path);
 
-            log.Info("SpawnTable: Created " + Territorries.Count + " territories with " + npcs + " monsters.");
+            log.Info("SpawnTable: Created " + territorries.Count + " territories with " + npcs + " monsters.");
         }
 
-        public readonly SortedList<string, L2Territory> Territorries = new SortedList<string, L2Territory>();
+        public readonly SortedList<string, L2Territory> territorries = new SortedList<string, L2Territory>();
         public readonly List<L2Spawn> Spawns = new List<L2Spawn>();
         public SpawnTable()
         {
@@ -81,10 +81,10 @@ namespace L2dotNET.Game.tables
                     }
 
                     zone.InitZone(); //создаем зону
-                    if (Territorries.ContainsKey(zone.name))
+                    if (territorries.ContainsKey(zone.name))
                         Console.WriteLine("dublicate zone name " + zone.name);
                     else
-                        Territorries.Add(zone.name, zone);
+                        territorries.Add(zone.name, zone);
                 }
                 else if (m.Name == "spawn")
                 {
@@ -126,7 +126,7 @@ namespace L2dotNET.Game.tables
                 return;
             }
             long sp = 0;
-            foreach (L2Territory t in Territorries.Values)
+            foreach (L2Territory t in territorries.Values)
             {
                 sp += t.spawns.Count;
                 t.Spawn();
@@ -141,7 +141,7 @@ namespace L2dotNET.Game.tables
 
         public void SunRise(bool y)
         {
-            foreach (L2Territory t in Territorries.Values)
+            foreach (L2Territory t in territorries.Values)
                 t.SunRise(y);
 
             foreach (L2Spawn s in Spawns)
@@ -150,7 +150,7 @@ namespace L2dotNET.Game.tables
 
         public L2Object SpawnOne(int id, int x, int y, int z, int h)
         {
-            NpcTemplate template = NpcTable.Instance.getNpcTemplate(id);
+            NpcTemplate template = NpcTable.Instance.GetNpcTemplate(id);
 
             L2Warrior o = new L2Warrior();
             o.setTemplate(template);

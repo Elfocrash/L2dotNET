@@ -41,16 +41,16 @@ namespace L2dotNET.Game.model.items
             register(new Calculator());
 
             LoadXML();
-            log.Info($"ItemHandler: Loaded { effects } effects with { Items.Count } items.");
+            log.Info($"ItemHandler: Loaded { effects } effects with { items.Count } items.");
         }
 
-        public SortedList<int, ItemEffect> Items = new SortedList<int, ItemEffect>();
+        public SortedList<int, ItemEffect> items = new SortedList<int, ItemEffect>();
 
         public bool Process(L2Character character, L2Item item)
         {
-            if (Items.ContainsKey(item.Template.ItemID))
+            if (items.ContainsKey(item.Template.ItemID))
             {
-                Items[item.Template.ItemID].Use(character, item);
+                items[item.Template.ItemID].Use(character, item);
                 return true;
             }
             else
@@ -66,7 +66,7 @@ namespace L2dotNET.Game.model.items
         private void register(ItemEffect effect)
         {
             foreach (int id in effect.ids)
-                Items.Add(id, effect);
+                items.Add(id, effect);
 
             effects++;
         }
@@ -123,7 +123,7 @@ namespace L2dotNET.Game.model.items
                     if (m.Attribute("summonStaticId") != null)
                         ih.SummonStaticID = Convert.ToInt32(m.Attribute("summonStaticId").Value);
 
-                    Items.Add(id, ih);
+                    items.Add(id, ih);
                 }
             }
         }

@@ -107,7 +107,7 @@ namespace L2dotNET.Game.model.events
         private L2RaceManager raceManager1, raceManager2;
         private void GenNpc()
         {
-            NpcTemplate nt = NpcTable.Instance.getNpcTemplate(30995);
+            NpcTemplate nt = NpcTable.Instance.GetNpcTemplate(30995);
 
             raceManager1 = new L2RaceManager();
             raceManager1.setTemplate(nt);
@@ -475,7 +475,7 @@ namespace L2dotNET.Game.model.events
         public MonsterRunner(int npcId, int sys_string, int max_speed, int min_speed)
         {
             this.npcId = npcId;
-            this.npcTemplate = NpcTable.Instance.getNpcTemplate(npcId);
+            this.npcTemplate = NpcTable.Instance.GetNpcTemplate(npcId);
             this.sys_string = sys_string;
             this.max_speed = max_speed;
             this.min_speed = min_speed;

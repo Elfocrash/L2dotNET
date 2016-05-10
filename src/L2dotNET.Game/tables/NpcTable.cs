@@ -462,7 +462,7 @@ namespace L2dotNET.Game.tables
 
         }
 
-        public NpcTemplate getNpcTemplate(int id)
+        public NpcTemplate GetNpcTemplate(int id)
         {
             if (_npcs.ContainsKey(id))
                 return _npcs[id];
@@ -470,9 +470,9 @@ namespace L2dotNET.Game.tables
             return null;
         }
 
-        public L2Object spawnNpc(int id, int x, int y, int z, int h)
+        public L2Object SpawnNpc(int id, int x, int y, int z, int h)
         {
-            NpcTemplate template = this.getNpcTemplate(id);
+            NpcTemplate template = this.GetNpcTemplate(id);
 
             if (template == null)
             {

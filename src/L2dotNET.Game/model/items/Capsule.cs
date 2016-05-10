@@ -10,10 +10,32 @@ namespace L2dotNET.Game.model.items
     public class Capsule
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Capsule));
-        private static Capsule instance = new Capsule();
-        public static Capsule getInstance()
+        private static volatile Capsule instance;
+        private static object syncRoot = new object();
+
+        public static Capsule Instance
         {
-            return instance;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new Capsule();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        public void Initialize()
+        {
+            LoadXML();
+            log.Info($"Capsule: Loaded { items.Count } items.");
         }
 
         public SortedList<int, CapsuleItem> items = new SortedList<int, CapsuleItem>();
@@ -38,11 +60,10 @@ namespace L2dotNET.Game.model.items
 
         public Capsule()
         {
-            loadXML();
-            log.Info($"Capsule: Loaded { items.Count } items.");
+
         }
 
-        public void loadXML()
+        public void LoadXML()
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\extractable.xml"));
             XElement ex = xml.Element("list");

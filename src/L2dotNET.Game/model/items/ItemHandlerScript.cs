@@ -67,7 +67,7 @@ namespace L2dotNET.Game.model.items
 
             if (SummonStaticID != -1)
             {
-                NpcTable.Instance.spawnNpc(SummonStaticID, player.X, player.Y, player.Z, player.Heading);
+                NpcTable.Instance.SpawnNpc(SummonStaticID, player.X, player.Y, player.Z, player.Heading);
             }
         }
 
@@ -84,7 +84,7 @@ namespace L2dotNET.Game.model.items
 
             if (SummonStaticID != -1)
             {
-                NpcTable.Instance.spawnNpc(SummonStaticID, pet.X, pet.Y, pet.Z, pet.Heading);
+                NpcTable.Instance.SpawnNpc(SummonStaticID, pet.X, pet.Y, pet.Z, pet.Heading);
             }
         }
 

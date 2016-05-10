@@ -130,7 +130,7 @@ namespace L2dotNET.Game.tables.admin
             }
             else if (s == "17")
             {
-                admin.Mount(NpcTable.Instance.getNpcTemplate(13146));
+                admin.Mount(NpcTable.Instance.GetNpcTemplate(13146));
             }
             else if (s == "18")
             {
@@ -164,7 +164,7 @@ namespace L2dotNET.Game.tables.admin
             else if (s == "22")
             {
                 adm = admin;
-                L2Warrior war = (L2Warrior)NpcTable.Instance.spawnNpc(21003, 14107, 182287, -3586, 32500);
+                L2Warrior war = (L2Warrior)NpcTable.Instance.SpawnNpc(21003, 14107, 182287, -3586, 32500);
 
                 war.DestX = 13107;
                 war.DestY = 182287;
