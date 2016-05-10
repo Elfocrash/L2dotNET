@@ -60,7 +60,7 @@ namespace L2dotNET.Game
 
             //  TSkillTable.Instance.Initialize();
             ItemTable.getInstance();
-            ItemHandler.getInstance();
+            ItemHandler.Instance.Initialize();
 
             MultiSell.Instance.Initialize();
             Capsule.getInstance();

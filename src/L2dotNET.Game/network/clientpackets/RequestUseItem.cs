@@ -78,7 +78,7 @@ namespace L2dotNET.Game.network.l2recv
                     break;
             }
 
-            if (ItemHandler.getInstance().Process(player, item))
+            if (ItemHandler.Instance.Process(player, item))
                 return;
 
             switch (item.Template.default_action)

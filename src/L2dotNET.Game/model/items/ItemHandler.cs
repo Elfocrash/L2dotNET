@@ -11,20 +11,46 @@ namespace L2dotNET.Game.model.items
     public class ItemHandler
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ItemHandler));
+        private static volatile ItemHandler instance;
+        private static object syncRoot = new object();
 
-        private static ItemHandler instance = new ItemHandler();
-        public static ItemHandler getInstance()
+        public static ItemHandler Instance
         {
-            return instance;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new ItemHandler();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
-        public SortedList<int, ItemEffect> items = new SortedList<int, ItemEffect>();
+        public void Initialize()
+        {
+            register(new TeleportBooks());
+            register(new BottlesOfSouls());
+            register(new EnchantScrolls());
+            register(new Calculator());
+
+            LoadXML();
+            log.Info($"ItemHandler: Loaded { effects } effects with { Items.Count } items.");
+        }
+
+        public SortedList<int, ItemEffect> Items = new SortedList<int, ItemEffect>();
 
         public bool Process(L2Character character, L2Item item)
         {
-            if (items.ContainsKey(item.Template.ItemID))
+            if (Items.ContainsKey(item.Template.ItemID))
             {
-                items[item.Template.ItemID].Use(character, item);
+                Items[item.Template.ItemID].Use(character, item);
                 return true;
             }
             else
@@ -33,25 +59,19 @@ namespace L2dotNET.Game.model.items
 
         public ItemHandler()
         {
-            register(new TeleportBooks());
-            register(new BottlesOfSouls());
-            register(new EnchantScrolls());
-            register(new Calculator());
 
-            loadXML();
-            log.Info($"ItemHandler: Loaded { effects } effects with { items.Count } items.");
         }
 
         short effects = 0;
         private void register(ItemEffect effect)
         {
             foreach (int id in effect.ids)
-                items.Add(id, effect);
+                Items.Add(id, effect);
 
             effects++;
         }
 
-        public void loadXML()
+        public void LoadXML()
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\itemhandler.xml"));
             XElement ex = xml.Element("list");
@@ -103,7 +123,7 @@ namespace L2dotNET.Game.model.items
                     if (m.Attribute("summonStaticId") != null)
                         ih.SummonStaticID = Convert.ToInt32(m.Attribute("summonStaticId").Value);
 
-                    items.Add(id, ih);
+                    Items.Add(id, ih);
                 }
             }
         }
