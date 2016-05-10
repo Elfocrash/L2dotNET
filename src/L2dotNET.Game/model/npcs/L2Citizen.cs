@@ -88,12 +88,12 @@ namespace L2dotNET.Game.model.npcs
 
         public virtual void onTeleportRequest(L2Player player)
         {
-            NpcData.getInstance().RequestTeleportList(this, player, 1);
+            NpcData.Instance.RequestTeleportList(this, player, 1);
         }
 
         public void UseTeleporter(L2Player player, int type, int entryId)
         {
-            NpcData.getInstance().RequestTeleport(this, player, type, entryId);
+            NpcData.Instance.RequestTeleport(this, player, type, entryId);
         }
 
         public virtual void onDialog(L2Player player, int ask, int reply)
@@ -109,7 +109,7 @@ namespace L2dotNET.Game.model.npcs
                 return;
             }
 
-            AITemplate t = AIManager.getInstance().checkDialogResult(Template.NpcId);
+            AITemplate t = AIManager.Instance.CheckDialogResult(Template.NpcId);
             if (t != null)
             {
                 t.onDialog(player, ask, reply, this);
@@ -127,7 +127,7 @@ namespace L2dotNET.Game.model.npcs
                             break;
 
                         default:
-                            NpcData.getInstance().buylist(player, this, (short)reply);
+                            NpcData.Instance.Buylist(player, this, (short)reply);
                             break;
                     }
                     break;
@@ -147,7 +147,7 @@ namespace L2dotNET.Game.model.npcs
                     switch (reply)
                     {
                         case 2:
-                            NpcData.getInstance().RequestTeleportList(this, player, 2);
+                            NpcData.Instance.RequestTeleportList(this, player, 2);
                             break;
                     }
                     break;
@@ -155,7 +155,7 @@ namespace L2dotNET.Game.model.npcs
                     switch (reply)
                     {
                         case 2:
-                            NpcData.getInstance().RequestTeleportList(this, player, 3);
+                            NpcData.Instance.RequestTeleportList(this, player, 3);
                             break;
                     }
                     break;
@@ -163,12 +163,12 @@ namespace L2dotNET.Game.model.npcs
                     switch (reply)
                     {
                         case 2:
-                            NpcData.getInstance().RequestTeleportList(this, player, 1);
+                            NpcData.Instance.RequestTeleportList(this, player, 1);
                             break;
                     }
                     break;
                 case -303:
-                    MultiSell.getInstance().showList(player, this, reply);
+                    MultiSell.Instance.ShowList(player, this, reply);
                     break;
                 case -305:
                     switch (reply)
@@ -335,7 +335,7 @@ namespace L2dotNET.Game.model.npcs
                 list = new SortedList<int, TAcquireSkill>();
 
             int nextLvl = 800;
-            foreach (TAcquireSkill e in TSkillTable.getInstance().getAllRegularSkills(player.ActiveClass.ClassId.Id).skills)
+            foreach (TAcquireSkill e in TSkillTable.Instance.GetAllRegularSkills(player.ActiveClass.ClassId.Id).skills)
             {
                 if (e.get_lv > player.Level)
                 {
@@ -502,7 +502,7 @@ namespace L2dotNET.Game.model.npcs
             this.npc = npc;
             this.cha = target;
             this.skillId = skillId;
-            skill = TSkillTable.getInstance().get(skillId);
+            skill = TSkillTable.Instance.Get(skillId);
             cha.broadcastPacket(new MagicSkillUse(npc, cha, skill, skill.skill_hit_time));
 
             new Thread(Run).Start();

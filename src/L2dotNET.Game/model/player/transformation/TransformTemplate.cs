@@ -27,14 +27,14 @@ namespace L2dotNET.Game.model.player.transformation
         {
             player.TransformID = id;
             player.MountType = MoveMode;
-            player.MountedTemplate = NpcTable.Instance.getNpcTemplate(npcId);
+            player.MountedTemplate = NpcTable.Instance.GetNpcTemplate(npcId);
             player.broadcastUserInfo();
 
             if (_skills != null && _skills.Count > 0)
             {
                 foreach (int[] s in _skills)
                 {
-                    TSkill sk = TSkillTable.getInstance().get(s[0], s[1]);
+                    TSkill sk = TSkillTable.Instance.Get(s[0], s[1]);
                     if (sk != null)
                         player.addSkill(sk, false, false);
                 }

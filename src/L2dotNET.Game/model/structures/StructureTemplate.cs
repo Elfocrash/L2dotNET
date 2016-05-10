@@ -18,7 +18,7 @@ namespace L2dotNET.Game.model.structures
             if (npcs == null)
                 npcs = new SortedList<int, L2Citizen>();
 
-            NpcTemplate t = NpcTable.Instance.getNpcTemplate(id);
+            NpcTemplate t = NpcTable.Instance.GetNpcTemplate(id);
             L2Citizen npc = null;
             switch (t.NpcId)
             {

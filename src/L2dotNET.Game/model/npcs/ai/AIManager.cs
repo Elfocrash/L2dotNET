@@ -4,18 +4,38 @@ namespace L2dotNET.Game.model.npcs.ai
 {
     public class AIManager
     {
-        private static AIManager ai = new AIManager();
+        private static volatile AIManager instance;
+        private static object syncRoot = new object();
 
-        public static AIManager getInstance()
+        public static AIManager Instance
         {
-            return ai;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new AIManager();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        public void Initialize()
+        {
+            register(new broadcasting_tower());
         }
 
         public SortedList<int, AITemplate> _registeredAis = new SortedList<int, AITemplate>();
 
         public AIManager()
         {
-            register(new broadcasting_tower());
+
         }
 
         private void register(AITemplate t)
@@ -23,7 +43,7 @@ namespace L2dotNET.Game.model.npcs.ai
             _registeredAis.Add(t.id, t);
         }
 
-        public AITemplate checkChatWindow(int id)
+        public AITemplate CheckChatWindow(int id)
         {
             if (_registeredAis.ContainsKey(id))
             {
@@ -37,7 +57,7 @@ namespace L2dotNET.Game.model.npcs.ai
             return null;
         }
 
-        public AITemplate checkDialogResult(int id)
+        public AITemplate CheckDialogResult(int id)
         {
             if (_registeredAis.ContainsKey(id))
             {

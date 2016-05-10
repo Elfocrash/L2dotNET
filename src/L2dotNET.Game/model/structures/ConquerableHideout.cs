@@ -33,7 +33,7 @@ namespace L2dotNET.Game.model.structures
             Message("Siege registration of "+name+" has begun!");
             Message("Now its open for 2 hours!");
 
-            npc4 = (L2Character)SpawnTable.getInstance().spawnOne(MessengerId, spawn4[0], spawn4[1], spawn4[2], spawn4[3]);
+            npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, spawn4[0], spawn4[1], spawn4[2], spawn4[3]);
         }
 
         public void Message(string text)
@@ -46,16 +46,16 @@ namespace L2dotNET.Game.model.structures
         {
             isActive = true;
             Message("Siege of " + name + " has begun!");
-            npc1 = (L2Character)SpawnTable.getInstance().spawnOne(BossId, spawn1[0], spawn1[1], spawn1[2], spawn1[3]);
-            npc2 = (L2Character)SpawnTable.getInstance().spawnOne(Minion1Id, spawn2[0], spawn2[1], spawn2[2], spawn2[3]);
-            npc3 = (L2Character)SpawnTable.getInstance().spawnOne(Minion2Id, spawn3[0], spawn3[1], spawn3[2], spawn3[3]);
-            npc4 = (L2Character)SpawnTable.getInstance().spawnOne(MessengerId, spawn4[0], spawn4[1], spawn4[2], spawn4[3]);
+            npc1 = (L2Character)SpawnTable.Instance.SpawnOne(BossId, spawn1[0], spawn1[1], spawn1[2], spawn1[3]);
+            npc2 = (L2Character)SpawnTable.Instance.SpawnOne(Minion1Id, spawn2[0], spawn2[1], spawn2[2], spawn2[3]);
+            npc3 = (L2Character)SpawnTable.Instance.SpawnOne(Minion2Id, spawn3[0], spawn3[1], spawn3[2], spawn3[3]);
+            npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, spawn4[0], spawn4[1], spawn4[2], spawn4[3]);
             clanDamage = new SortedList<int, double>();
             mobActive = new List<L2Character>();
 
             foreach (int[] sp in mobSpawns)
             {
-                L2Character o = (L2Character)SpawnTable.getInstance().spawnOne(sp[0], sp[1], sp[2], sp[3], sp[4]);
+                L2Character o = (L2Character)SpawnTable.Instance.SpawnOne(sp[0], sp[1], sp[2], sp[3], sp[4]);
                 mobActive.Add(o);
             }
 

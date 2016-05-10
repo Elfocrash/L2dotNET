@@ -12,20 +12,42 @@ namespace L2dotNET.Game.tables.multisell
     public class MultiSell
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(MultiSell));
-        private static MultiSell instance = new MultiSell();
-        public static MultiSell getInstance()
+
+        private static volatile MultiSell instance;
+        private static object syncRoot = new object();
+
+        public static MultiSell Instance
         {
-            return instance;
+            get
+            {
+                if(instance == null)
+                {
+                    lock(syncRoot)
+                    {
+                        if(instance == null)
+                        {
+                            instance = new MultiSell();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        public void Initialize()
+        {
+            LoadXml();
         }
 
         public MultiSell()
         {
-            loadXml();
+
         }
 
         public SortedList<int, MultiSellList> lists = new SortedList<int, MultiSellList>();
 
-        public void showList(L2Player player, L2Citizen npc, int listId)
+        public void ShowList(L2Player player, L2Citizen npc, int listId)
         {
             if (!lists.ContainsKey(listId))
             {
@@ -81,7 +103,7 @@ namespace L2dotNET.Game.tables.multisell
             }
         }
 
-        public void loadXml()
+        public void LoadXml()
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\multisell.xml"));
             XElement ex = xml.Element("list");

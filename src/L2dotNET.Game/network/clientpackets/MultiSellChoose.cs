@@ -62,10 +62,10 @@ namespace L2dotNET.Game.network.l2recv
             {
                 list = player.CustomMultiSellList;
                 if(list.id != _listId)
-                    list = MultiSell.getInstance().getList(_listId);
+                    list = MultiSell.Instance.getList(_listId);
             }
             else
-                list = MultiSell.getInstance().getList(_listId);
+                list = MultiSell.Instance.getList(_listId);
 
             if (list == null || list.container.Count < _entryId)
             {

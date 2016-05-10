@@ -32,7 +32,7 @@ namespace L2dotNET.Game.model.npcs.ai.ex
             if (value != null)
             {
                 int[] skill = getValueSkill(value);
-                pet.castSkill(TSkillTable.getInstance().get(skill[0], skill[1]));
+                pet.castSkill(TSkillTable.Instance.Get(skill[0], skill[1]));
             }
         }
     }

@@ -112,25 +112,25 @@ namespace L2dotNET.Game.ai.npcai
                 {
                     if (talker.Level > 40 && talker.Level < 46)
                     {
-                            MultiSell.getInstance().showList(talker, myself, reply);
+                            MultiSell.Instance.ShowList(talker, myself, reply);
                     }
                 }
                 else if (reply == 580)
                 {
                     if (talker.Level >= 46 && talker.Level < 52)
                     {
-                            MultiSell.getInstance().showList(talker, myself, reply);
+                            MultiSell.Instance.ShowList(talker, myself, reply);
                     }
                 }
                 else if (reply == 581)
                 {
                     if (talker.Level >= 52)
                     {
-                            MultiSell.getInstance().showList(talker, myself, reply);
+                            MultiSell.Instance.ShowList(talker, myself, reply);
                     }
                 }
                 else
-                    MultiSell.getInstance().showList(talker, myself, reply);
+                    MultiSell.Instance.ShowList(talker, myself, reply);
             }
             else if (ask == -503)
             {
@@ -158,47 +158,47 @@ namespace L2dotNET.Game.ai.npcai
                 else if (reply == 2)
                 {
                     if(talker.Level < 20)
-                        MultiSell.getInstance().showList(talker, myself, 583);
+                        MultiSell.Instance.ShowList(talker, myself, 583);
                     else if(talker.Level >= 20 && talker.Level < 40)
-                        MultiSell.getInstance().showList(talker, myself, 584);
+                        MultiSell.Instance.ShowList(talker, myself, 584);
                     else if (talker.Level >= 40 && talker.Level < 52)
-                        MultiSell.getInstance().showList(talker, myself, 585);
+                        MultiSell.Instance.ShowList(talker, myself, 585);
                     else if (talker.Level >= 52 && talker.Level < 61)
-                        MultiSell.getInstance().showList(talker, myself, 586);
+                        MultiSell.Instance.ShowList(talker, myself, 586);
                     else if (talker.Level >= 61 && talker.Level < 76)
-                        MultiSell.getInstance().showList(talker, myself, 587);
+                        MultiSell.Instance.ShowList(talker, myself, 587);
                     else if (talker.Level >= 76)
-                        MultiSell.getInstance().showList(talker, myself, 588);
+                        MultiSell.Instance.ShowList(talker, myself, 588);
                 }
                 else if (reply == 3)
                 {
                     if (talker.Level < 20)
-                        MultiSell.getInstance().showList(talker, myself, 589);
+                        MultiSell.Instance.ShowList(talker, myself, 589);
                     else if (talker.Level >= 20 && talker.Level < 40)
-                        MultiSell.getInstance().showList(talker, myself, 590);
+                        MultiSell.Instance.ShowList(talker, myself, 590);
                     else if (talker.Level >= 40 && talker.Level < 52)
-                        MultiSell.getInstance().showList(talker, myself, 591);
+                        MultiSell.Instance.ShowList(talker, myself, 591);
                     else if (talker.Level >= 52 && talker.Level < 61)
-                        MultiSell.getInstance().showList(talker, myself, 592);
+                        MultiSell.Instance.ShowList(talker, myself, 592);
                     else if (talker.Level >= 61 && talker.Level < 76)
-                        MultiSell.getInstance().showList(talker, myself, 593);
+                        MultiSell.Instance.ShowList(talker, myself, 593);
                     else if (talker.Level >= 76)
-                        MultiSell.getInstance().showList(talker, myself, 594);
+                        MultiSell.Instance.ShowList(talker, myself, 594);
                 }
                 else if (reply == 4)
                 {
                     if (talker.Level < 20)
-                        MultiSell.getInstance().showList(talker, myself, 595);
+                        MultiSell.Instance.ShowList(talker, myself, 595);
                     else if (talker.Level >= 20 && talker.Level < 40)
-                        MultiSell.getInstance().showList(talker, myself, 596);
+                        MultiSell.Instance.ShowList(talker, myself, 596);
                     else if (talker.Level >= 40 && talker.Level < 52)
-                        MultiSell.getInstance().showList(talker, myself, 597);
+                        MultiSell.Instance.ShowList(talker, myself, 597);
                     else if (talker.Level >= 52 && talker.Level < 61)
-                        MultiSell.getInstance().showList(talker, myself, 598);
+                        MultiSell.Instance.ShowList(talker, myself, 598);
                     else if (talker.Level >= 61 && talker.Level < 76)
-                        MultiSell.getInstance().showList(talker, myself, 601);
+                        MultiSell.Instance.ShowList(talker, myself, 601);
                     else if (talker.Level >= 76)
-                        MultiSell.getInstance().showList(talker, myself, 600);
+                        MultiSell.Instance.ShowList(talker, myself, 600);
                 }
             }
         }
