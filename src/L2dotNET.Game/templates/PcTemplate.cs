@@ -63,7 +63,10 @@ namespace L2dotNET.Game.templates
             classBaseLevel = set.GetInt("baseLvl");
 
             string[] _hpTable = set.GetString("hpTable").Split(';');
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
 
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
             hpTable = new double[_hpTable.Length];
 
             for (int i = 0; i < _hpTable.Length; i++)

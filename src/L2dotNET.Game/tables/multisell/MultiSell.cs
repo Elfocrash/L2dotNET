@@ -37,12 +37,17 @@ namespace L2dotNET.Game.tables.multisell
 
         public void Initialize()
         {
-            loadXml();
+            LoadXml();
+        }
+
+        public MultiSell()
+        {
+
         }
 
         public SortedList<int, MultiSellList> lists = new SortedList<int, MultiSellList>();
 
-        public void showList(L2Player player, L2Citizen npc, int listId)
+        public void ShowList(L2Player player, L2Citizen npc, int listId)
         {
             if (!lists.ContainsKey(listId))
             {
@@ -98,7 +103,7 @@ namespace L2dotNET.Game.tables.multisell
             }
         }
 
-        public void loadXml()
+        public void LoadXml()
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\multisell.xml"));
             XElement ex = xml.Element("list");
