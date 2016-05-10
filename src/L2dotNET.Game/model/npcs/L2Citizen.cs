@@ -88,12 +88,12 @@ namespace L2dotNET.Game.model.npcs
 
         public virtual void onTeleportRequest(L2Player player)
         {
-            NpcData.getInstance().RequestTeleportList(this, player, 1);
+            NpcData.Instance.RequestTeleportList(this, player, 1);
         }
 
         public void UseTeleporter(L2Player player, int type, int entryId)
         {
-            NpcData.getInstance().RequestTeleport(this, player, type, entryId);
+            NpcData.Instance.RequestTeleport(this, player, type, entryId);
         }
 
         public virtual void onDialog(L2Player player, int ask, int reply)
@@ -127,7 +127,7 @@ namespace L2dotNET.Game.model.npcs
                             break;
 
                         default:
-                            NpcData.getInstance().buylist(player, this, (short)reply);
+                            NpcData.Instance.Buylist(player, this, (short)reply);
                             break;
                     }
                     break;
@@ -147,7 +147,7 @@ namespace L2dotNET.Game.model.npcs
                     switch (reply)
                     {
                         case 2:
-                            NpcData.getInstance().RequestTeleportList(this, player, 2);
+                            NpcData.Instance.RequestTeleportList(this, player, 2);
                             break;
                     }
                     break;
@@ -155,7 +155,7 @@ namespace L2dotNET.Game.model.npcs
                     switch (reply)
                     {
                         case 2:
-                            NpcData.getInstance().RequestTeleportList(this, player, 3);
+                            NpcData.Instance.RequestTeleportList(this, player, 3);
                             break;
                     }
                     break;
@@ -163,7 +163,7 @@ namespace L2dotNET.Game.model.npcs
                     switch (reply)
                     {
                         case 2:
-                            NpcData.getInstance().RequestTeleportList(this, player, 1);
+                            NpcData.Instance.RequestTeleportList(this, player, 1);
                             break;
                     }
                     break;

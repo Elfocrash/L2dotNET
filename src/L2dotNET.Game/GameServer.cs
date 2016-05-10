@@ -55,7 +55,7 @@ namespace L2dotNET.Game
             ZoneTable.Instance.Initialize();
 
             NpcTable.Instance.Initialize();
-            NpcData.getInstance();
+            NpcData.Instance.Initialize();
             //  SpawnTable.getInstance();
 
             //  TSkillTable.getInstance();
