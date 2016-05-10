@@ -88,7 +88,7 @@ namespace L2dotNET.Game
 
             AuthThread.Instance.Initialize();
 
-            //   GeoData.getInstance();
+            Geodata.Initialize();
 
             _listener = new TcpListener(IPAddress.Any, Config.Instance.serverConfig.Port);
 
