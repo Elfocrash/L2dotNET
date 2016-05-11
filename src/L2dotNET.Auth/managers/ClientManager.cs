@@ -81,7 +81,7 @@ namespace L2dotNET.Auth
                 banned = NetworkBlock.Instance;
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
-            Console.WriteLine($"Connected: { ip }");
+            log.Info($"Connected: { ip }");
             if (flood.ContainsKey(ip))
             {
                 if (flood[ip].CompareTo(DateTime.Now) == 1)

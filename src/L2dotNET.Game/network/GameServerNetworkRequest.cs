@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Runtime.Remoting.Contexts;
 
 namespace L2dotNET.Game.network
@@ -6,6 +7,8 @@ namespace L2dotNET.Game.network
     [Synchronization]
     public abstract class GameServerNetworkRequest
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(GameServerNetworkRequest));
+
         private byte[] buffer;
         private int position;
         public GameClient Client;
@@ -89,7 +92,7 @@ namespace L2dotNET.Game.network
             }
             catch (Exception ex)
             {
-                Console.WriteLine("while reading string from packet, " + ex.Message + " " + ex.StackTrace);
+                log.Error($"while reading string from packet, { ex.Message } { ex.StackTrace }");
             }
             return result;
         }

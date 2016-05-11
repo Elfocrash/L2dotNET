@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -6,6 +7,8 @@ namespace L2dotNET.Game.managers
 {
     public class ThreadPoolManager
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ThreadPoolManager));
+
         private static ThreadPoolManager instance = new ThreadPoolManager();
         public static ThreadPoolManager getInstance()
         {
@@ -28,7 +31,7 @@ namespace L2dotNET.Game.managers
 
             thread.Start();
 
-            Console.WriteLine("threads {0}", threads.Count);
+            log.Info($"threads { threads.Count }");
         }
 
         public void ExecuteGeneralTicks(Action action, int ticks, int tickWait = 1000, int wait = 0, object id = null)
@@ -87,6 +90,8 @@ namespace L2dotNET.Game.managers
 
     public class RThread
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(RThread));
+
         public Action PerformAction;
         public Action[] PerformActions;
         public RThreadType type;
@@ -99,8 +104,8 @@ namespace L2dotNET.Game.managers
 
         ~RThread()
         {
-            if (debug)
-                Console.WriteLine("Thread[" + id + "] was erased");
+            if (debug)                
+                log.Info($"Thread[{ id }] was erased");
         }
 
         public void Start()

@@ -82,7 +82,7 @@ namespace L2dotNET.Game.tables
 
                     zone.InitZone(); //создаем зону
                     if (territorries.ContainsKey(zone.name))
-                        Console.WriteLine("dublicate zone name " + zone.name);
+                        log.Info($"duplicate zone name { zone.name }");
                     else
                         territorries.Add(zone.name, zone);
                 }

@@ -1,13 +1,15 @@
-﻿using System;
-using System.Threading;
-using L2dotNET.Game.network.loginauth;
+﻿using L2dotNET.Game.network.loginauth;
 using L2dotNET.Game.network.loginauth.recv;
-using System.Linq;
+using log4net;
+using System;
+using System.Threading;
 
 namespace L2dotNET.Game.network
 {
     public class PacketHandlerAuth
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(PacketHandlerAuth));
+
         public static void handlePacket(AuthThread login, byte[] buff)
         {
             byte id = 0;
@@ -17,11 +19,11 @@ namespace L2dotNET.Game.network
             }
             catch(IndexOutOfRangeException e)
             {
-                Console.WriteLine("Something went wrong on PacketHandlerAuth: " + e);
+                log.Error($"Something went wrong on PacketHandlerAuth: { e }");
                 goto SkipLabel;
             }
 
-            Console.WriteLine("login>gs: "+id);
+            log.Info($"login>gs: { id }");
             string cninfo = "handlepacket: request " + id.ToString("x2") + " size " + buff.Length;
 
             ReceiveAuthPacket msg = null;
@@ -46,7 +48,7 @@ namespace L2dotNET.Game.network
 
             if (msg == null)
             {
-                Console.WriteLine(cninfo);
+                log.Info(cninfo);
                 return;
             }
 

@@ -471,6 +471,8 @@ namespace L2dotNET.Game.model.events
 
     public class MonsterRunner
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(MonsterRace));
+
         public int id, npcId, sys_string, max_speed, min_speed;
         public MonsterRunner(int npcId, int sys_string, int max_speed, int min_speed)
         {
@@ -504,7 +506,7 @@ namespace L2dotNET.Game.model.events
 
             finishTime = (1 + (int)(10 * 2000 / cur_speed)) * 100;
             runCount++;
-            Console.WriteLine("runner #" + id + " spd " + cur_speed + " , ms " + finishTime);
+            log.Info($"runner #{ id } spd { cur_speed } , ms { finishTime }");
             return cur_speed;
         }
     }

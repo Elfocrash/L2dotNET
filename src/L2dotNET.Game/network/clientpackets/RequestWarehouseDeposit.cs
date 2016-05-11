@@ -1,15 +1,15 @@
-﻿using L2dotNET.Game.network.l2send;
+﻿using L2dotNET.Game.model.inventory;
 using L2dotNET.Game.model.items;
-using L2dotNET.Game.model.inventory;
-using System.Collections.Generic;
 using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.world;
-using System;
+using log4net;
+using System.Collections.Generic;
 
 namespace L2dotNET.Game.network.l2recv
 {
     class RequestWarehouseDeposit : GameServerNetworkRequest
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(RequestBypassToServer));
+
         public RequestWarehouseDeposit(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -58,7 +58,7 @@ namespace L2dotNET.Game.network.l2recv
 
                 if (item == null)
                 {
-                    Console.WriteLine("cant find item " + objectId + " in inventory " + player.Name);
+                    log.Info($"cant find item { objectId } in inventory { player.Name }");
                     player.sendActionFailed();
                     return;
                 }

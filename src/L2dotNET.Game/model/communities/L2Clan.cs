@@ -1,16 +1,19 @@
-﻿using System;
+﻿using L2dotNET.Game.model.structures;
+using L2dotNET.Game.network;
+using L2dotNET.Game.network.l2send;
+using L2dotNET.Game.tables;
+using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.model.structures;
-using L2dotNET.Game.network;
 
 namespace L2dotNET.Game.model.communities
 {
     public class L2Clan
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(L2Clan));
+
         public byte Level = 0;
         public int LeaderID;
         public string Name;
@@ -198,7 +201,7 @@ namespace L2dotNET.Game.model.communities
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Error(ex.Message);
                 }
             }
 
@@ -244,7 +247,7 @@ namespace L2dotNET.Game.model.communities
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Error(ex.Message);
                 }
             }
 

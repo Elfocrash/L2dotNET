@@ -1,10 +1,13 @@
 ﻿using L2dotNET.Game.world;
+using log4net;
 using System;
 
 namespace L2dotNET.Game.model.playable.petai
 {
     public class StandartAiTemplate
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(StandartAiTemplate));
+
         public L2Character character;
         public System.Timers.Timer ai1sec, follow;
         private bool FollowStatus = false;
@@ -67,22 +70,22 @@ namespace L2dotNET.Game.model.playable.petai
 
         public virtual void NotifyTargetNull()
         {
-            Console.WriteLine("NotifyTargetNull");
+            log.Info("NotifyTargetNull");
         }
 
         public virtual void NotifyTargetDead()
         {
-            Console.WriteLine("NotifyTargetDead");
+            log.Info("NotifyTargetDead");
         }
 
         public virtual void NotifyMpEnd(L2Character target)
         {
-            Console.WriteLine("NotifyMpEnd");
+            log.Info("NotifyMpEnd");
         }
 
         public virtual void NotifyEvaded(L2Character target)
         {
-            Console.WriteLine("NotifyEvaded");
+            log.Info("NotifyEvaded");
         }
 
         public virtual void Attack(L2Character target) { }

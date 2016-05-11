@@ -156,7 +156,7 @@ namespace L2dotNET.Game.tables
             catch(Exception sss)
             {
                 admin.sendMessage("Probably syntax eror.");
-                Console.WriteLine(sss);
+                log.Error(sss);
             }
         }
 

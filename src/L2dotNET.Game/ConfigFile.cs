@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -6,6 +7,8 @@ namespace L2dotNET.Game
 {
     class ConfigFile
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ConfigFile));
+
         private FileInfo File;
         public SortedList<string, string> _topics;
 
@@ -31,7 +34,7 @@ namespace L2dotNET.Game
                 _topics.Add(line.Split('=')[0], line.Split('=')[1]);
             }
 
-            Console.WriteLine("Config file " + File.Name + " loaded with " + _topics.Count + " parameters.");
+            log.Info($"Config file { File.Name } loaded with { _topics.Count } parameters.");
         }
 
         public string getProperty(string value, string defaultprop)
@@ -44,7 +47,7 @@ namespace L2dotNET.Game
             catch
             {
                 ret = null;
-                Console.WriteLine("config: error, parameter "+value+" was not found");
+                log.Info($"config: error, parameter { value } was not found");
             }
 
             return ret == null ? defaultprop : ret;

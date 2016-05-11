@@ -2,11 +2,14 @@
 using System;
 using L2dotNET.Game.model.player;
 using L2dotNET.Game.managers;
+using log4net;
 
 namespace L2dotNET.Game.network.l2recv
 {
     class RequestPartyMatchList : GameServerNetworkRequest
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(RequestPartyMatchList));
+
         public RequestPartyMatchList(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -21,7 +24,7 @@ namespace L2dotNET.Game.network.l2recv
 
         public override void run()
         {
-            Console.WriteLine("party "+_status);
+            log.Info($"party { _status }");
             
         }
     }

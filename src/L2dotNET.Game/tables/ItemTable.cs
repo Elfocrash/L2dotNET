@@ -111,8 +111,7 @@ namespace L2dotNET.Game.tables
                         }
                         catch (Exception)
                         {
-
-                            Console.WriteLine("eh " + pt[ord]);
+                            log.Error($"eh { pt[ord] }");
                         }
 
                         switch (parameter.Split('{')[0].ToLower())
@@ -409,6 +408,8 @@ namespace L2dotNET.Game.tables
 
     public class ItemSetTemplate
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ItemSetTemplate));
+
         public int armorId;
 
         public List<int> legs;
@@ -565,7 +566,7 @@ namespace L2dotNET.Game.tables
             }
 
             byte cnt = count();
-            Console.WriteLine("set validation: cnt " + cnt + ", s1 " + set1sum + ", s2 " + set2sum + ", s3 " + set3sum);
+            log.Info($"set validation: cnt { cnt }, s1 { set1sum }, s2 { set2sum }, s3 { set3sum }");
 
             if (cnt == set1sum) // весь сет
             {

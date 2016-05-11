@@ -1,13 +1,16 @@
-﻿using System;
+﻿using L2dotNET.Game.network.l2recv;
+using log4net;
+using System;
 using System.Runtime.Remoting.Contexts;
 using System.Threading;
-using L2dotNET.Game.network.l2recv;
 
 namespace L2dotNET.Game.network
 {
     [Synchronization]
     public class PacketHandler
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(PacketHandler));
+
         private static int cnt;
         public static void handlePacket(GameClient client, byte[] buff)
         {
@@ -18,7 +21,7 @@ namespace L2dotNET.Game.network
             foreach (byte b in buff)
                 str += b.ToString("x2") + " ";
 
-            Console.WriteLine(str);
+            log.Info(str);
             GameServerNetworkRequest msg = null;
             switch (id)
             {
@@ -335,7 +338,7 @@ namespace L2dotNET.Game.network
             }
             if (msg == null)
             {
-                Console.WriteLine(cninfo + ", " + cnt);
+                log.Info($"{ cninfo }, { cnt }");
                 return;
             }
 
@@ -374,7 +377,7 @@ namespace L2dotNET.Game.network
                 }
             }
 
-            Console.WriteLine(s);
+            log.Info(s);
         }
     }
 }

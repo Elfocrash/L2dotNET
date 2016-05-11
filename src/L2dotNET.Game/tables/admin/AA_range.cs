@@ -1,23 +1,21 @@
-﻿using System;
-using System.Threading;
-using L2dotNET.Game.managers;
-using L2dotNET.Game.model.items;
+﻿using L2dotNET.Game.managers;
+using L2dotNET.Game.model.events;
 using L2dotNET.Game.model.npcs;
+using L2dotNET.Game.model.structures.conq;
+using L2dotNET.Game.model.vehicles;
 using L2dotNET.Game.model.zones.forms;
 using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.world;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.model.skills2.effects;
-using L2dotNET.Game.model.events;
-using L2dotNET.Game.model.vehicles;
-using System.Collections.Generic;
-using L2dotNET.Game.model.structures.conq;
 using L2dotNET.Game.tables.multisell;
+using L2dotNET.Game.world;
+using log4net;
+using System;
+using System.Threading;
 
 namespace L2dotNET.Game.tables.admin
 {
     class AA_range : _adminAlias
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(AA_range));
 
         public AA_range()
         {
@@ -212,7 +210,7 @@ namespace L2dotNET.Game.tables.admin
             {
                 p[0] = rn.Next(np.minX, np.maxX);
                 p[1] = rn.Next(np.minY, np.maxY);
-                Console.WriteLine("rnd xy " + p[0] + " " + p[1]);
+                log.Info($"rnd xy { p[0] } { p[1] }");
                 if (np.isInsideZone(p[0], p[1]))
                 {
                     double curdistance = -1;
