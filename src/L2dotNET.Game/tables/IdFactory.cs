@@ -1,9 +1,7 @@
-using System;
-using System.Data;
-using MySql.Data.MySqlClient;
-using System.Collections.Generic;
-using Ninject;
 using L2dotNET.Services.Contracts;
+using log4net;
+using Ninject;
+using System;
 using System.Linq;
 
 namespace L2dotNET.Game.tables
@@ -12,6 +10,8 @@ namespace L2dotNET.Game.tables
     {
         [Inject]
         public IServerService serverService { get { return GameServer.Kernel.Get<IServerService>(); } }
+
+        private static readonly ILog log = LogManager.GetLogger(typeof(IdFactory));
 
         private static volatile IdFactory instance;
         private static object syncRoot = new object();
@@ -54,8 +54,8 @@ namespace L2dotNET.Game.tables
         public void Initialize()
         {
             currentId = serverService.GetPlayersObjectIdList().DefaultIfEmpty(ID_MIN).Max();
-
-            Console.WriteLine("idfactory: used ids " + currentId);
+            
+            log.Info($"idfactory: used ids { currentId }");
         }
     }
 }

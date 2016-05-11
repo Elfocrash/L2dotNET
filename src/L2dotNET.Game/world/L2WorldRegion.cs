@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using L2dotNET.Game.model.zones;
 using L2dotNET.Game.network;
+using log4net;
 
 namespace L2dotNET.Game.world
 {
     public class L2WorldRegion
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(L2WorldRegion));
+
         public List<L2WorldRegion> _surroundingRegions;
         private int _tileX, _tileY;
         public L2WorldRegion(int pTileX, int pTileY)
@@ -36,8 +39,8 @@ namespace L2dotNET.Game.world
         public void realiseMe(L2Object obj, GameServerNetworkPacket pk, bool pkuse)
         {
             if (_objects.ContainsKey(obj.ObjID))
-            {
-                Console.WriteLine(getName()+" error, object "+obj.ObjID+" already in here.");
+            {                
+                log.Info($"{ getName() } error, object { obj.ObjID } already in here.");
                 return;
             }
 

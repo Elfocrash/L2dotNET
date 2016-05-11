@@ -650,13 +650,13 @@ namespace L2dotNET.Game.Utils
             diff.Normalize();
             m.Forward = -diff;
             
-            Console.WriteLine("Forward: {0}", m.Forward);
+            log.Info($"Forward: { m.Forward }");
 
             Vector3 right;
             Vector3.Cross(ref cameraUpVector, ref diff, out right);
             m.Right = right;
             
-            Console.WriteLine("Right: {0}", right);
+            log.Info($"Right: { right }");
             
             Vector3 up;
             Vector3.Cross(ref diff, ref right, out up);

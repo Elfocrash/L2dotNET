@@ -48,7 +48,7 @@ namespace L2dotNET.Game.tables
             }
             catch (Exception asd)
             {
-                Console.WriteLine("err in " + loc[3]);
+                log.Error($"err in { loc[3] }");
                 throw asd;
             }
 

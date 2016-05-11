@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Timers;
+﻿using L2dotNET.Game.Enums;
 using L2dotNET.Game.model.communities;
 using L2dotNET.Game.model.inventory;
 using L2dotNET.Game.model.items;
 using L2dotNET.Game.model.npcs;
+using L2dotNET.Game.model.npcs.cubic;
 using L2dotNET.Game.model.npcs.decor;
 using L2dotNET.Game.model.playable;
 using L2dotNET.Game.model.player;
@@ -21,18 +16,21 @@ using L2dotNET.Game.model.skills2.effects;
 using L2dotNET.Game.model.vehicles;
 using L2dotNET.Game.network;
 using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.network.loginauth;
 using L2dotNET.Game.tables;
+using L2dotNET.Game.templates;
 using L2dotNET.Game.tools;
 using L2dotNET.Game.world;
-using MySql.Data.MySqlClient;
-using L2dotNET.Game.model.npcs.cubic;
-using Ninject;
-using L2dotNET.Services.Contracts;
 using L2dotNET.Models;
-using L2dotNET.Game.templates;
-using L2dotNET.Game.Enums;
+using L2dotNET.Services.Contracts;
 using log4net;
+using Ninject;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Runtime.Remoting.Contexts;
+using System.Timers;
 
 namespace L2dotNET.Game
 {
@@ -351,7 +349,7 @@ namespace L2dotNET.Game
             }
             catch
             {
-                Console.WriteLine("player: cant find item obj " + itemobj);
+                log.Info($"player: cant find item obj { itemobj }");
                 return null;
             }
         }

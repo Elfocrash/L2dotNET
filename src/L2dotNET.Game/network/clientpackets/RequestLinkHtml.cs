@@ -19,7 +19,7 @@ namespace L2dotNET.Game.network.l2recv
         {
             L2Player player = Client.CurrentPlayer;
 
-           // Console.WriteLine("link to '" + _link+"'");
+           // log.Info($"link to '{ _link }'");
 
             string file = "";
             int id = 0;

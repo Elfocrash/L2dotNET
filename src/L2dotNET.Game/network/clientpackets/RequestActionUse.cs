@@ -167,7 +167,7 @@ namespace L2dotNET.Game.network.l2recv
                     petCast(player, 0, 23168, 1);
                     break;
                 default:
-                    Console.WriteLine("unrecognized action #" + _actionId);
+                    log.Info($"unrecognized action # { _actionId }");
 
                     break;
             }
@@ -237,7 +237,7 @@ namespace L2dotNET.Game.network.l2recv
             {
                 player.Summon.ChangeTarget(player.CurrentTarget);
                 int result = player.Summon.castSkill(skill);
-                Console.WriteLine("pet cast result " + result);
+                log.Info($"pet cast result { result }");
             }
             else
                 log.Error($"pet { npcId } used null skill { id }-{ lv }");

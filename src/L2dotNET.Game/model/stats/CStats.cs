@@ -51,7 +51,7 @@ namespace L2dotNET.Game.model.stats
             foreach (TEffect effect in effects)
             {
                 TEffectResult ter = effect.onStart(caster, owner);
-                if(result.TotalUI == 0)
+                if (result.TotalUI == 0)
                     result.TotalUI = ter.TotalUI;
 
                 if (ter.sus != null)
@@ -88,7 +88,7 @@ namespace L2dotNET.Game.model.stats
 
                     newvalue = calcSupMethod(newvalue, cc.supMethod);
                 }
-            //    Console.WriteLine("newvalue! #1 " + newvalue + " " + cc.supMethod.Value+" "+cc.type);
+                //log.Info($"newvalue! #1 { newvalue } { cc.supMethod.Value } { cc.type }");
             }
 
             if (arif != null)
@@ -96,7 +96,7 @@ namespace L2dotNET.Game.model.stats
                 foreach (TEffect cc in arif)
                 {
                     newvalue = calcSupMethod(newvalue, cc.supMethod);
-                //    Console.WriteLine("newvalue! arif " + newvalue + " " + cc.supMethod.Value+" "+cc.type);
+                    //log.Info($"newvalue! arif { newvalue } { cc.supMethod.Value } { cc.type }");                    
                 }
             }
 

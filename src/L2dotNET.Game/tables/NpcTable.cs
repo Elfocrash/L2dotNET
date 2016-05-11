@@ -111,8 +111,7 @@ namespace L2dotNET.Game.tables
                     }
                     catch (Exception)
                     {
-
-                        Console.WriteLine("err2 in #" + template.NpcId + " '" + pt[2] + "'");
+                        log.Error($"err2 in #{ template.NpcId } '{ pt[2] }'");
                     }
 
                     for (byte ord = 3; ord < pt.Length; ord++)
@@ -128,8 +127,7 @@ namespace L2dotNET.Game.tables
                         }
                         catch (Exception)
                         {
-
-                            Console.WriteLine("err in #" + template.NpcId + " '" + parameter + "'");
+                            log.Error($"err in #{ template.NpcId } '{ parameter }'");
                         }
 
                         switch (parameter.Split('{')[0].ToLower())
@@ -476,7 +474,7 @@ namespace L2dotNET.Game.tables
 
             if (template == null)
             {
-                Console.WriteLine("null template " + id);
+                log.Info($"null template { id }");
                 return null;
             }
             L2Warrior o = new L2Warrior();
