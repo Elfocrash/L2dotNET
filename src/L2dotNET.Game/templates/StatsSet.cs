@@ -56,7 +56,7 @@ namespace L2dotNET.Game.templates
         public void Set(string key, Enum value)
         {
             Add(key, value);
-        }
+        }    
 
         public void Unset(string key)
         {
@@ -227,47 +227,82 @@ namespace L2dotNET.Game.templates
             }
         }
 
+        public void Set<T>(string key, T value)
+        {
+            Add(key, value);
+        }
+
+        ///<summary>Gets the 'value' from dictionary based on 'key' parameter and converts it to the type of T.</summary>
+        ///<typeparam name="T"></typeparam>
+        ///<param name="key">Specific 'key' to get the 'value' from dictionary.</param>
+        ///<param name="defaultValue">Optional. When not specified, has a value of 'default(T)'.</param>
+        ///<returns>Converted value when Parse not fails, if it fails then returns 'defaultValue'.</returns>
         public T Get<T>(string key, T defaultValue = default(T)) where T : struct, IConvertible
         {
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                log.Info($"Key is 'Null, Empty or White-space'! The function will return the 'defaultValue' parameter.");            
+                return defaultValue;
+            }
+
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
                 string value = base[key].ToString();
 
-                // find the TryParse method.
-                MethodInfo parseMethod = typeof(T).GetMethod("TryParse",
-                                                             // We want the public static one
-                                                             BindingFlags.Public | BindingFlags.Static,
-                                                             Type.DefaultBinder,
-                                                             // where the arguments are (string, out T)
-                                                             new[] { typeof(string), typeof(T).MakeByRefType() },
-                                                             null);
-
-                if (parseMethod == null)
+                if (typeof(T).IsEnum)
                 {
-                    // You need to know this so you can parse manually
-                    log.Error($"'{ typeof(T).FullName }' doesn't have a 'TryParse(string s, out { typeof(T).FullName } result)' function! The function will return the 'defaultValue' parameter.");
-                    return defaultValue;
+                    T result;
+
+                    if (Enum.TryParse<T>(value, out result))
+                    {
+                        if (Enum.IsDefined(typeof(T), result)) //checks if enum name exists
+                            return result; //if it returned true, returns converted value
+                        return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first enum from list. Default value is always the enum with "0" value, but not every enum has it.
+                    }
+                    else
+                    {
+                        //throw new Exception($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'!");
+                        return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first enum from list. Default value is always 0, but not every enum has a "0" value
+                    }
                 }
-
-                // create the parameter list for the function call
-                object[] args = new object[] { value, default(T) };
-
-                // and then call the function.
-                if ((bool)parseMethod.Invoke(null, args))
-                    return (T)args[1]; // if it returned true, returns converted value
                 else
                 {
-                    log.Info($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'!");
-                    return default(T); // if it returned false, returns default value of 'T'
+                    //find the TryParse method.
+                    MethodInfo parseMethod = typeof(T).GetMethod("TryParse",
+                                                                 //We want the public static one
+                                                                 BindingFlags.Public | BindingFlags.Static,
+                                                                 Type.DefaultBinder,
+                                                                 //where the arguments are (string, out T)
+                                                                 new[] { typeof(string), typeof(T).MakeByRefType() },
+                                                                 null);
+
+                    if (parseMethod == null)
+                    {
+                        //You need to know this so you can parse manually
+                        log.Error($"'{ typeof(T).FullName }' doesn't have a 'TryParse(string s, out { typeof(T).FullName } result)' function! The function will return the 'defaultValue' parameter.");
+                        return defaultValue;
+                    }
+
+                    //create the parameter list for the function call
+                    object[] args = new object[] { value, default(T) };
+
+                    //and then call the function.
+                    if ((bool)parseMethod.Invoke(null, args))
+                        return (T)args[1]; //if it returned true, returns converted value
+                    else
+                    {
+                        log.Info($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'!");
+                        return default(T); //if it returned false, returns default value of 'T'
+                    }
                 }
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var,
                 //when not specified returns the default value of 'T'
+                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");                
                 return defaultValue;
             }
         }
