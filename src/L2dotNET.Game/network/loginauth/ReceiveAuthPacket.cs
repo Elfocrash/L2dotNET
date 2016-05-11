@@ -1,10 +1,13 @@
-﻿using System;
-using L2dotNET.Game.network.loginauth;
+﻿using L2dotNET.Game.network.loginauth;
+using log4net;
+using System;
 
 namespace L2dotNET.Game.network
 {
     public abstract class ReceiveAuthPacket
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ReceiveAuthPacket));
+
         private byte[] _packet;
         private int _offset;
         public AuthThread login;
@@ -74,7 +77,7 @@ namespace L2dotNET.Game.network
             }
             catch (Exception ex)
             {
-                Console.WriteLine("while reading string from packet, " + ex.Message + " " + ex.StackTrace);
+                log.Error($"while reading string from packet, { ex.Message } { ex.StackTrace }");
             }
             return result;
         }

@@ -10,6 +10,8 @@ namespace L2dotNET.Game.network.l2recv
 {
     class RequestWarehouseDeposit : GameServerNetworkRequest
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(RequestBypassToServer));
+
         public RequestWarehouseDeposit(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -58,7 +60,7 @@ namespace L2dotNET.Game.network.l2recv
 
                 if (item == null)
                 {
-                    Console.WriteLine("cant find item " + objectId + " in inventory " + player.Name);
+                    log.Info($"cant find item { objectId } in inventory { player.Name }");
                     player.sendActionFailed();
                     return;
                 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Ninject;
 using L2dotNET.Services.Contracts;
 using System;
+using log4net;
 
 namespace L2dotNET.Game.Managers
 {
@@ -14,6 +15,8 @@ namespace L2dotNET.Game.Managers
     {
         [Inject]
         public IServerService serverService { get { return GameServer.Kernel.Get<IServerService>(); } }
+
+        private static readonly ILog Log = LogManager.GetLogger(typeof(AnnouncementManager));
 
         private static volatile AnnouncementManager instance;
         private static object syncRoot = new object();
@@ -42,12 +45,12 @@ namespace L2dotNET.Game.Managers
         public void Initialize()
         {
             Announcements = serverService.GetAnnouncementsList();
-            Console.WriteLine($"Announcement manager: Loaded { Announcements.Count } annoucements.");
+            Log.Info($"Announcement manager: Loaded { Announcements.Count } annoucements.");
         }
 
         public AnnouncementManager()
         {
-           
+
         }
 
         public void Announce(string text)
@@ -90,7 +93,7 @@ namespace L2dotNET.Game.Managers
                     cs.Text = announcement.Text;
                     player.sendPacket(cs);
                 }
-            } 
+            }
         }
     }
 }

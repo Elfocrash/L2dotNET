@@ -56,7 +56,7 @@ namespace L2dotNET.Game.templates
         public void Set(string key, Enum value)
         {
             Add(key, value);
-        }    
+        }
 
         public void Unset(string key)
         {
@@ -241,7 +241,7 @@ namespace L2dotNET.Game.templates
         {
             if (string.IsNullOrWhiteSpace(key))
             {
-                log.Info($"Key is 'Null, Empty or White-space'! The function will return the 'defaultValue' parameter.");            
+                log.Info($"Key is 'Null, Empty or White-space'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
 
@@ -302,7 +302,7 @@ namespace L2dotNET.Game.templates
                 //if key doesn't exists,
                 //returns the defaultValue var,
                 //when not specified returns the default value of 'T'
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");                
+                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
         }

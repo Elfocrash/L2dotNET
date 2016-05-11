@@ -1,14 +1,16 @@
-﻿using System;
+﻿using L2Crypt;
+using L2dotNET.Game.crypt;
+using L2dotNET.Game.network;
+using L2dotNET.Game.network.l2send;
+using L2dotNET.Game.world;
+using L2dotNET.Models;
+using L2dotNET.Services.Contracts;
+using log4net;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using L2dotNET.Game.crypt;
-using L2dotNET.Game.network;
-using L2Crypt;
-using L2dotNET.Models;
-using Ninject;
-using L2dotNET.Services.Contracts;
-using L2dotNET.Game.world;
 
 namespace L2dotNET.Game
 {
@@ -16,6 +18,8 @@ namespace L2dotNET.Game
     {
         [Inject]
         public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
+
+        private static readonly ILog log = LogManager.GetLogger(typeof(GameClient));
 
         public EndPoint _address;
         public TcpClient _client;
@@ -35,7 +39,7 @@ namespace L2dotNET.Game
 
         public GameClient(TcpClient tcpClient)
         {
-            Console.WriteLine("connection from " + tcpClient.Client.RemoteEndPoint);
+            log.Info($"connection from { tcpClient.Client.RemoteEndPoint }");
             _client = tcpClient;
             _stream = tcpClient.GetStream();
             _address = tcpClient.Client.RemoteEndPoint;
@@ -63,29 +67,29 @@ namespace L2dotNET.Game
             bytes.AddRange(data);
             TrafficDown += bytes.Count;
 
-            if (sbp is L2dotNET.Game.network.l2send.CharacterSelectionInfo)
+            if (sbp is CharacterSelectionInfo)
             {
 
-               // byte[] st = ToByteArray();
+                // byte[] st = ToByteArray();
                 //foreach (byte s in data)
-                //    Console.Write(s.ToString("x2") + " ");
+                //    log.Info($"{ s.ToString("x2") } ");
             }
 
             try
             {
                 _stream.Write(bytes.ToArray(), 0, bytes.Count);
-              //  _stream.Flush();
+                //  _stream.Flush();
             }
             catch
             {
-                Console.WriteLine("client " + AccountName + " terminated.");
+                log.Info($"client { AccountName } terminated.");
                 termination();
             }
         }
 
         public void termination()
         {
-            Console.WriteLine("termination");
+            log.Info("termination");
             IsTerminated = true;
             _stream.Close();
             _client.Close();

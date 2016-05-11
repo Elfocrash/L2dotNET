@@ -87,7 +87,7 @@ namespace L2dotNET.Auth.gscommunication
             foreach (byte b in buff)
                 str += b.ToString("x2") + " ";
 
-            Console.WriteLine(str);
+            log.Info(str);
 
             ReceiveServerPacket msg = null;
             switch (id)

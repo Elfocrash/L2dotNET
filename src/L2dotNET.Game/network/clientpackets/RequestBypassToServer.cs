@@ -25,7 +25,7 @@ namespace L2dotNET.Game.network.l2recv
 
         private L2Citizen getNpc()
         {
-            Console.WriteLine("bypass '" + _alias+"'");
+            log.Info($"bypass '{ _alias }'");
             L2Citizen npc = (L2Citizen)getClient().CurrentPlayer.CurrentTarget;
 
             if (npc == null)
