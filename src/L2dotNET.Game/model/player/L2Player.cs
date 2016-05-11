@@ -851,6 +851,7 @@ namespace L2dotNET.Game
         public void onGameInit()
         {
             CStatsInit();
+            CharacterStat.setTemplate(ActiveClass);
             ExpAfterLogin = 0;
         }
 
