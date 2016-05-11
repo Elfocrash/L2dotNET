@@ -241,7 +241,7 @@ namespace L2dotNET.Game.templates
         {
             if (string.IsNullOrWhiteSpace(key))
             {
-                log.Warn($"Key is 'Null, Empty or White-space'! The function will return the 'defaultValue' parameter.");
+                log.Error($"Key is 'Null, Empty or White-space'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
 
@@ -250,20 +250,24 @@ namespace L2dotNET.Game.templates
             {
                 string value = base[key].ToString();
 
-                if (typeof(T).IsEnum)
+                if (typeof(T).IsEnum) //block for Enum handling
                 {
                     T result;
 
                     if (Enum.TryParse<T>(value, out result))
                     {
-                        if (Enum.IsDefined(typeof(T), result)) //checks if enum name exists
+                        if (Enum.IsDefined(typeof(T), result)) //checks if enum element exists
                             return result; //if it returned true, returns converted value
-                        return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first enum from list. Default value is always the enum with "0" value, but not every enum has it.
+                        else
+                        {
+                            log.Error($"Element '{ value }' was not found at the enum '{ typeof(T).FullName }'! The function will return the first enum element.");
+                            return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first element from enum. Default value is always the enum with "0" value, but not every enum has it.
+                        }
                     }
                     else
                     {
-                        //throw new Exception($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'!");
-                        return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first enum from list. Default value is always 0, but not every enum has a "0" value
+                        log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the first enum element.");
+                        return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first element from enum. Default value is always 0, but not every enum has it.
                     }
                 }
                 else
@@ -292,8 +296,8 @@ namespace L2dotNET.Game.templates
                         return (T)args[1]; //if it returned true, returns converted value
                     else
                     {
-                        log.Warn($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'!");
-                        return default(T); //if it returned false, returns default value of 'T'
+                        log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the default value.");
+                        return defaultValue; //if it returned false, returns defaultValue' parameter."
                     }
                 }
             }
