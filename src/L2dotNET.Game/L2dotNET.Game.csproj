@@ -121,8 +121,6 @@
     <Compile Include="Enums\ZoneId.cs" />
     <Compile Include="geo\GeoBlock.cs" />
     <Compile Include="geo\Geodata.cs" />
-    <Compile Include="geo\Layer.cs" />
-    <Compile Include="geo\MByteBuffer.cs" />
     <Compile Include="Managers\AnnouncementManager.cs" />
     <Compile Include="Managers\bbs\BBSManager.cs" />
     <Compile Include="Managers\CastleManager.cs" />

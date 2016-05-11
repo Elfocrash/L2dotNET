@@ -851,9 +851,6 @@ namespace L2dotNET.Game
         public void onGameInit()
         {
             CStatsInit();
-            if (!insrestored)
-                CharacterStat.setTemplate(ActiveClass);
-
             ExpAfterLogin = 0;
         }
 
@@ -1501,51 +1498,12 @@ namespace L2dotNET.Game
         }
 
         public SortedList<int, db_InstanceReuse> InstanceReuse = new SortedList<int, db_InstanceReuse>();
-        bool insrestored = false;
         public int ViewingAdminPage;
         public int ViewingAdminTeleportGroup = -1;
         public int TeleportPayID;
         public int LastMinigameScore;
         public short ClanType;
         public int Fame;
-
-
-        public void db_restoreInstanceReuse()
-        {
-            if (insrestored)
-                return;
-
-            //MySqlConnection connection = SQLjec.getInstance().conn();
-            //MySqlCommand cmd = connection.CreateCommand();
-
-            //connection.Open();
-
-            //cmd.CommandText = "SELECT * FROM user_instances WHERE ownerId=" + ObjID + "";
-            //cmd.CommandType = CommandType.Text;
-
-            //MySqlDataReader reader = cmd.ExecuteReader();
-
-            //while (reader.Read())
-            //{
-            //    string name = reader.GetString("name");
-            //    int id = reader.GetInt32("instanceId");
-            //    string time = reader.GetString("disabledTo");
-
-            //    DateTime dt = DateTime.Parse(time);
-            //    if (dt.CompareTo(DateTime.Now) == 1)
-            //    {
-            //        db_InstanceReuse db = new db_InstanceReuse();
-            //        db.dt = dt;
-            //        db.id = id;
-            //        db.name = name;
-            //        InstanceReuse.Add(id, db);
-            //    }
-            //}
-
-            //reader.Close();
-            //connection.Close();
-            insrestored = true;
-        }
 
         public void ShowHtmAdmin(string val, bool plain)
         {
@@ -1917,7 +1875,6 @@ namespace L2dotNET.Game
             db_restoreSkills();
             db_restoreQuests();
             db_restoreRecipes();
-            db_restoreInstanceReuse();
             db_restoreTelbooks();
            // db_restoreShortcuts(); elfo to be added
 
