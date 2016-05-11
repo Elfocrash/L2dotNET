@@ -76,7 +76,7 @@ namespace L2dotNET.Game.templates
                 if (bool.TryParse(value, out toReturn))
                     return toReturn;
                 else
-                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(bool).FullName }'! The function will return the first enum element.");
+                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(bool).FullName }'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
             else
@@ -98,7 +98,7 @@ namespace L2dotNET.Game.templates
                 if (byte.TryParse(value, out toReturn))
                     return toReturn;
                 else
-                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(byte).FullName }'! The function will return the first enum element.");
+                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(byte).FullName }'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
             else
@@ -120,7 +120,7 @@ namespace L2dotNET.Game.templates
                 if (int.TryParse(value, out toReturn))
                     return toReturn;
                 else
-                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(int).FullName }'! The function will return the first enum element.");
+                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(int).FullName }'! The function return the 'defaultValue' parameter.");
                 return defaultValue;
             }
             else
@@ -142,7 +142,7 @@ namespace L2dotNET.Game.templates
                 if (float.TryParse(value, out toReturn))
                     return toReturn;
                 else
-                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(float).FullName }'! The function will return the first enum element.");
+                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(float).FullName }'! The function return the 'defaultValue' parameter.");
                 return defaultValue;
             }
             else
@@ -164,7 +164,7 @@ namespace L2dotNET.Game.templates
                 if (double.TryParse(value, out toReturn))
                     return toReturn;
                 else
-                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(double).FullName }'! The function will return the first enum element.");
+                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(double).FullName }'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
             else
