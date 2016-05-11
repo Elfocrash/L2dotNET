@@ -167,7 +167,7 @@ namespace L2dotNET.Game.network.l2recv
                     petCast(player, 0, 23168, 1);
                     break;
                 default:
-                    log.Info($"unrecognized action # { _actionId });
+                    log.Info($"unrecognized action # { _actionId }");
 
                     break;
             }
