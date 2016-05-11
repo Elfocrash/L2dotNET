@@ -84,7 +84,7 @@ namespace L2dotNET.Game.templates
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultVal;
@@ -112,7 +112,7 @@ namespace L2dotNET.Game.templates
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultVal;
@@ -140,7 +140,7 @@ namespace L2dotNET.Game.templates
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultVal;
@@ -168,7 +168,7 @@ namespace L2dotNET.Game.templates
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultVal;
@@ -197,7 +197,7 @@ namespace L2dotNET.Game.templates
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultVal;
@@ -220,7 +220,7 @@ namespace L2dotNET.Game.templates
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultVal;
@@ -241,7 +241,7 @@ namespace L2dotNET.Game.templates
         {
             if (string.IsNullOrWhiteSpace(key))
             {
-                log.Info($"Key is 'Null, Empty or White-space'! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key is 'Null, Empty or White-space'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
 
@@ -292,7 +292,7 @@ namespace L2dotNET.Game.templates
                         return (T)args[1]; //if it returned true, returns converted value
                     else
                     {
-                        log.Info($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'!");
+                        log.Warn($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'!");
                         return default(T); //if it returned false, returns default value of 'T'
                     }
                 }
@@ -302,7 +302,7 @@ namespace L2dotNET.Game.templates
                 //if key doesn't exists,
                 //returns the defaultValue var,
                 //when not specified returns the default value of 'T'
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
         }
