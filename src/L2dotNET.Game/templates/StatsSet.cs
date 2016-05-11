@@ -296,7 +296,7 @@ namespace L2dotNET.Game.templates
                         return (T)args[1]; //if it returned true, returns converted value
                     else
                     {
-                        log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the default value.");
+                        log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the 'defaultValue' parameter.");
                         return defaultValue; //if it returned false, returns defaultValue' parameter."
                     }
                 }
