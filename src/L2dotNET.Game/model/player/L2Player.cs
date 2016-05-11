@@ -60,10 +60,12 @@ namespace L2dotNET.Game
         private long expAfterLogin = 0;
         public long ExpAfterLogin { get { return expAfterLogin; } set { expAfterLogin = value; } }
         public int SP { get; set; }
-        public int MaxCp { get; set; }
-        public double CurCp { get; set; }
-        public int MaxMp { get; set; }
-        public double CurMp { get; set; }
+        public override int MaxHP { get; set; }
+        public override double CurHP { get; set; }
+        public override int MaxCP { get; set; }
+        public override double CurCP { get; set; }
+        public override int MaxMP { get; set; }
+        public override double CurMP { get; set; }
         public int Karma = 0;
         public int PvpKills { get; set; }
         public long DeleteTime { get; set; }
@@ -179,12 +181,12 @@ namespace L2dotNET.Game
             {
                 ObjectId = ObjID,
                 Level = Level,
-                MaxHp = (int)MaxHp,
+                MaxHp = MaxHP,
                 CurHp = (int)CurHP,
-                MaxCp = (int)MaxCp,
-                CurCp = (int)CurCp,
-                MaxMp = (int)MaxMp,
-                CurMp = (int)CurMp,
+                MaxCp = MaxCP,
+                CurCp = (int)CurCP,
+                MaxMp = MaxMP,
+                CurMp = (int)CurMP,
                 Face = Face,
                 HairStyle = HairStyle,
                 HairColor = HairColor,

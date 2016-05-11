@@ -72,12 +72,12 @@ namespace L2dotNET.Game.network.l2recv
             //ObjectId = player.ObjID,
             //player.Name = playerModel.Name;
             player.Level = (byte)playerModel.Level;
-            player.MaxHp = playerModel.MaxHp;
+            player.MaxHP = playerModel.MaxHp;
             player.CurHP = playerModel.CurHp;
-            player.MaxCp = playerModel.MaxCp;
-            player.CurCp = playerModel.CurCp;
-            player.MaxMp = playerModel.MaxMp;
-            player.CurMp = playerModel.CurMp;
+            player.MaxCP = playerModel.MaxCp;
+            player.CurCP = playerModel.CurCp;
+            player.MaxMP = playerModel.MaxMp;
+            player.CurMP = playerModel.CurMp;
             player.Face = playerModel.Face;
             player.HairStyle = playerModel.HairStyle;
             player.HairColor = playerModel.HairColor;

@@ -1670,7 +1670,9 @@ namespace L2dotNET.Game.world
         public virtual int AllianceId { get { return 0; } }
         public virtual int AllianceCrestId { get { return 0; } }
 
-        public virtual double MaxHp { get; set; }
+        public virtual int MaxHP { get; set; }
+        public virtual int MaxCP { get; set; }
+        public virtual int MaxMP { get; set; }
 
         public override double CurHP
         {

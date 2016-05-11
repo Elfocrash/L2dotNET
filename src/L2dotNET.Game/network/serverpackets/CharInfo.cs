@@ -135,7 +135,7 @@ namespace L2dotNET.Game.network.l2send
             writeH(player.RecHave);
             writeD((int)player.ActiveClass.ClassId.Id);
 
-            writeD(player.MaxCp);//max cp here
+            writeD(player.MaxCP);//max cp here
             writeC(player.GetEnchantValue());
             writeC(player.TeamID);
             writeD(player.getClanCrestLargeId());

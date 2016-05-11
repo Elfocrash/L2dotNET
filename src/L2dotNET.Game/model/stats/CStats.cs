@@ -202,7 +202,8 @@ namespace L2dotNET.Game.model.stats
 
         public void addTemplate(TEffectType type, double value)
         {
-            statTemplate.Add(type, value);
+            if(!statTemplate.Contains(type))
+                statTemplate.Add(type, value);
         }
 
         public void setTemplate(PcTemplate template)

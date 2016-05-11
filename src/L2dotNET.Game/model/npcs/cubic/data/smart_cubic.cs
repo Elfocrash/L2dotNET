@@ -53,7 +53,7 @@ namespace L2dotNET.Game.model.npcs.cubic.data
         {
             if (skill2target == "heal")
             {
-                if (owner.Dead || owner.CurHP / owner.MaxHp > 0.9)
+                if (owner.Dead || owner.CurHP / owner.MaxHP > 0.9)
                     return 0;
                 CallSkill(owner, skill2, owner);
                 return 1;
