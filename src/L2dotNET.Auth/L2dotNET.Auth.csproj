@@ -44,6 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -105,6 +106,10 @@
     <Compile Include="managers\NetRedClass.cs" />
     <Compile Include="managers\NetworkRedirect.cs" />
     <Compile Include="managers\ClientManager.cs" />
+    <Compile Include="network\NetworkClient.cs" />
+    <Compile Include="network\Packet.cs" />
+    <Compile Include="network\QueuedRequest.cs" />
+    <Compile Include="network\QueuedRequestsPool.cs" />
     <Compile Include="network\rcv_gs\RequestUpdatePremiumState.cs" />
     <Compile Include="network\rcv_gs\RequestPlayersOnline.cs" />
     <Compile Include="network\rcv_gs\RequestPlayerInGame.cs" />
@@ -118,6 +123,9 @@
     <Compile Include="network\serverpackets_gs\ServerLoginOk.cs" />
     <Compile Include="network\serverpackets_gs\ServerLoginFail.cs" />
     <Compile Include="network\serverpackets_gs\LoginServPing.cs" />
+    <Compile Include="network\UserConnection.cs" />
+    <Compile Include="network\UserConnectionsListener.cs" />
+    <Compile Include="network\UserSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="managers\NetworkBlock.cs" />
     <Compile Include="gscommunication\ServerThreadPool.cs" />
@@ -137,7 +145,10 @@
     <Compile Include="network\serverpackets\LoginOk.cs" />
     <Compile Include="network\serverpackets\GGAuth.cs" />
     <Compile Include="network\serverpackets\Init.cs" />
+    <Compile Include="Utils\L2Buffer.cs" />
+    <Compile Include="Utils\L2Random.cs" />
     <Compile Include="Utils\L2Security.cs" />
+    <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\L2Crypt.dll" />

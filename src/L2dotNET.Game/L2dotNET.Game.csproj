@@ -44,6 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -325,6 +326,7 @@
     <Compile Include="Model\zones\ZoneTemplate.cs" />
     <Compile Include="Model\zones\L2Zone.cs" />
     <Compile Include="network\clientpackets\RequestSocialAction.cs" />
+    <Compile Include="network\Packet.cs" />
     <Compile Include="network\serverpackets\ExChangeNicknameNColor.cs" />
     <Compile Include="network\loginauth\ReceiveAuthPacket.cs" />
     <Compile Include="network\loginauth\recv\LoginServKickAccount.cs" />
