@@ -1,17 +1,39 @@
-﻿
+﻿using L2dotNET.GameService.network.l2send;
+
 namespace L2dotNET.GameService.managers.bbs
 {
     public class BBSManager
     {
-        private static BBSManager instance = new BBSManager();
-        public static BBSManager getInstance()
+        private static volatile BBSManager instance;
+        private static object syncRoot = new object();
+
+        public static BBSManager Instance
         {
-            return instance;
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new BBSManager();
+                        }
+                    }
+                }
+
+                return instance;
+            }
         }
 
         public void RequestShow(L2Player player, int type)
         {
-            player.ShowHtmBBS("<html><body><br><br><center>Welcome to the community board</center><br><br></body></html>");
+            if (Config.Instance.gameplayConfig.CommunityBoard)
+            {
+                player.ShowHtmBBS("<html><body><br><br><center>Welcome to the community board</center><br><br></body></html>");
+            }
+            else
+                player.sendPacket(SystemMessage.CB_OFFLINE);
         }
     }
 }

@@ -14,5 +14,8 @@ namespace L2dotNET.GameService
 
         [JsonProperty(PropertyName = "autoloot")]
         public bool AutoLoot { get; set; }
+
+        [JsonProperty(PropertyName = "UseCommunityBoard")]
+        public bool CommunityBoard { get; set; }
     }
 }
