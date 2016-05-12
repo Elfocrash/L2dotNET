@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.Game.model.items;
+using L2dotNET.GameService.model.items;
 using log4net;
 
-namespace L2dotNET.Game.tables
+namespace L2dotNET.GameService.tables
 {
     class RecipeTable
     {

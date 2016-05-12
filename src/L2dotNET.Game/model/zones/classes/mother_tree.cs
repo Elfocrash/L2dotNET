@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game.Enums;
-using L2dotNET.Game.model.player.basic;
-using L2dotNET.Game.tables;
+﻿using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.model.player.basic;
+using L2dotNET.GameService.tables;
 
-namespace L2dotNET.Game.model.zones.classes
+namespace L2dotNET.GameService.model.zones.classes
 {
     class mother_tree : L2Zone
     {

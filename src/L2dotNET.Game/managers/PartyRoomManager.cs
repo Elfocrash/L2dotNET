@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using L2dotNET.Game.model.player;
+using L2dotNET.GameService.model.player;
 
-namespace L2dotNET.Game.managers
+namespace L2dotNET.GameService.managers
 {
     public class PartyRoomManager
     {

@@ -1,11 +1,11 @@
-﻿using L2dotNET.Game.model.zones.forms;
-using L2dotNET.Game.world;
+﻿using L2dotNET.GameService.model.zones.forms;
+using L2dotNET.GameService.world;
 using System.Timers;
 using System.Collections.Generic;
-using L2dotNET.Game.network;
-using L2dotNET.Game.model.playable;
+using L2dotNET.GameService.network;
+using L2dotNET.GameService.model.playable;
 
-namespace L2dotNET.Game.model.zones
+namespace L2dotNET.GameService.model.zones
 {
     public class L2Zone
     {

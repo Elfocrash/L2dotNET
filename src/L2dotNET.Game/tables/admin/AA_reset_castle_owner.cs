@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.Game.tables.admin
+﻿namespace L2dotNET.GameService.tables.admin
 {
     class AA_reset_castle_owner : _adminAlias
     {

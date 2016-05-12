@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.Game.geo
+namespace L2dotNET.GameService.geo
 {
     /// <summary>
     /// Represents <see cref="GeoBlock"/> types.

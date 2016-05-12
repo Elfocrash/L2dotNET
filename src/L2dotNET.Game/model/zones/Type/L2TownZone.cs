@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using L2dotNET.Game.world;
-using L2dotNET.Game.Enums;
+using L2dotNET.GameService.world;
+using L2dotNET.GameService.Enums;
 
-namespace L2dotNET.Game.model.zones.Type
+namespace L2dotNET.GameService.model.zones.Type
 {
     public class L2TownZone : L2SpawnZone
     {

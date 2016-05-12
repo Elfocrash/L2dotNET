@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace L2dotNET.Auth.managers
+namespace L2dotNET.LoginService.managers
 {
     class NetworkRedirect
     {

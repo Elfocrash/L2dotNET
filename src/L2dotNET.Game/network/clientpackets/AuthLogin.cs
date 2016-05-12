@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.network.loginauth;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.network.loginauth;
 using MySql.Data.MySqlClient;
-using L2dotNET.Game.network.loginauth.recv;
+using L2dotNET.GameService.network.loginauth.recv;
 using L2dotNET.Models;
 using Ninject;
 using L2dotNET.Services.Contracts;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class AuthLogin : GameServerNetworkRequest
     {

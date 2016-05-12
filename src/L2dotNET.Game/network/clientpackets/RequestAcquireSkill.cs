@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Game.model.player;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.network.l2send;
+using L2dotNET.GameService.model.player;
+using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.network.l2send;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class RequestAcquireSkill : GameServerNetworkRequest
     {

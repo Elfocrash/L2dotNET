@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
-using L2dotNET.Game.templates;
+using L2dotNET.GameService.templates;
 using System.Xml;
-using L2dotNET.Game.Enums;
+using L2dotNET.GameService.Enums;
 using System.Collections.Generic;
 
 namespace L2dotNET.Tests

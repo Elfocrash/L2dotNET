@@ -1,6 +1,8 @@
-﻿using L2dotNET.Auth.serverpackets;
+﻿
 
-namespace L2dotNET.Auth.rcv_l2
+using L2dotNET.LoginService.Network.OuterNetwork;
+
+namespace L2dotNET.LoginService.rcv_l2
 {
     class AuthGameGuard : ReceiveBasePacket
     {

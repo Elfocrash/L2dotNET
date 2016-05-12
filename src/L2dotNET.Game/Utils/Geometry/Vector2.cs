@@ -3,7 +3,7 @@ using System.Text;
 //using System.Drawing;
 using System.Globalization;
 
-namespace L2dotNET.Game.Utils
+namespace L2dotNET.GameService.Utils
 {
     [Serializable]
     public struct Vector2 : IEquatable<Vector2>

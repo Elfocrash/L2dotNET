@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using L2dotNET.Game.network.l2send;
+using L2dotNET.GameService.network.l2send;
 
-namespace L2dotNET.Game.model.npcs.ai
+namespace L2dotNET.GameService.model.npcs.ai
 {
     class broadcasting_tower : AITemplate
     {

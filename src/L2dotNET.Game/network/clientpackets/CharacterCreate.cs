@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Data;
-using L2dotNET.Game.model.inventory;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.model.player;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
+using L2dotNET.GameService.model.inventory;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.model.player;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
 using MySql.Data.MySqlClient;
 using L2dotNET.Services.Contracts;
 using Ninject;
 using L2dotNET.Models;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.templates;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.templates;
+using L2dotNET.GameService.world;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class CharacterCreate : GameServerNetworkRequest
     {

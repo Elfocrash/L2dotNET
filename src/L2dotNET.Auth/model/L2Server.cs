@@ -1,6 +1,6 @@
-﻿using L2dotNET.Auth.managers;
+﻿using L2dotNET.LoginService.managers;
 
-namespace L2dotNET.Auth.gscommunication
+namespace L2dotNET.LoginService.gscommunication
 {
     public class L2Server
     {

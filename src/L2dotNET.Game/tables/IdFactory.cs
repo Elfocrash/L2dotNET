@@ -4,7 +4,7 @@ using Ninject;
 using System;
 using System.Linq;
 
-namespace L2dotNET.Game.tables
+namespace L2dotNET.GameService.tables
 {
     sealed class IdFactory
     {

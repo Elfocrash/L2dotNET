@@ -1,16 +1,16 @@
-﻿using L2dotNET.Game.controllers;
-using L2dotNET.Game.crypt;
-using L2dotNET.Game.geo;
-using L2dotNET.Game.Managers;
-using L2dotNET.Game.model.events;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.model.npcs.ai;
-using L2dotNET.Game.model.quests;
-using L2dotNET.Game.network;
-using L2dotNET.Game.network.loginauth;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.tables.multisell;
-using L2dotNET.Game.world;
+﻿using L2dotNET.GameService.controllers;
+using L2dotNET.GameService.crypt;
+using L2dotNET.GameService.geo;
+using L2dotNET.GameService.Managers;
+using L2dotNET.GameService.model.events;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.model.npcs.ai;
+using L2dotNET.GameService.model.quests;
+using L2dotNET.GameService.network;
+using L2dotNET.GameService.network.loginauth;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.tables.multisell;
+using L2dotNET.GameService.world;
 using log4net;
 using Ninject;
 using System;
@@ -18,7 +18,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace L2dotNET.Game
+namespace L2dotNET.GameService
 {
     class GameServer
     {

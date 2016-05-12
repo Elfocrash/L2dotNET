@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Auth.managers
+namespace L2dotNET.LoginService.managers
 {
     class NetRedClass
     {

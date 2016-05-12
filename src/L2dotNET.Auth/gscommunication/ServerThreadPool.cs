@@ -2,7 +2,7 @@
 using System.Data;
 using System.Net;
 using System.Net.Sockets;
-using L2dotNET.Auth.data;
+using L2dotNET.LoginService.data;
 using MySql.Data.MySqlClient;
 using System;
 using Ninject;
@@ -10,7 +10,7 @@ using L2dotNET.Services.Contracts;
 using L2dotNET.Models;
 using log4net;
 
-namespace L2dotNET.Auth.gscommunication
+namespace L2dotNET.LoginService.gscommunication
 {
     public class ServerThreadPool
     {

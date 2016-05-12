@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace L2dotNET.Game.model.items.cursed
+namespace L2dotNET.GameService.model.items.cursed
 {
     class CursedWeapons
     {

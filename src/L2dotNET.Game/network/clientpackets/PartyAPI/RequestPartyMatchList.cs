@@ -1,10 +1,10 @@
-﻿using L2dotNET.Game.network.l2send;
+﻿using L2dotNET.GameService.network.l2send;
 using System;
-using L2dotNET.Game.model.player;
-using L2dotNET.Game.managers;
+using L2dotNET.GameService.model.player;
+using L2dotNET.GameService.managers;
 using log4net;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class RequestPartyMatchList : GameServerNetworkRequest
     {

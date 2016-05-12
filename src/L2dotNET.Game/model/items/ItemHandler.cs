@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.Game.model.items.effects;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.items.effects;
+using L2dotNET.GameService.world;
 using log4net;
 
-namespace L2dotNET.Game.model.items
+namespace L2dotNET.GameService.model.items
 {
     public class ItemHandler
     {

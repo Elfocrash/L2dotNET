@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Game.model.npcs.decor;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.npcs.decor;
+using L2dotNET.GameService.world;
 using log4net;
 
-namespace L2dotNET.Game.tables
+namespace L2dotNET.GameService.tables
 {
     class StaticObjTable
     {

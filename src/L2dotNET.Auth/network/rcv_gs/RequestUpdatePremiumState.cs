@@ -1,7 +1,7 @@
-﻿using L2dotNET.Auth.data;
-using L2dotNET.Auth.gscommunication;
+﻿using L2dotNET.LoginService.data;
+using L2dotNET.LoginService.gscommunication;
 
-namespace L2dotNET.Auth.network.rcv_gs
+namespace L2dotNET.LoginService.network.rcv_gs
 {
     class RequestUpdatePremiumState : ReceiveServerPacket
     {

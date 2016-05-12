@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace L2dotNET.Game.templates
+namespace L2dotNET.GameService.templates
 {
     public class StatsSet : Dictionary<string, object>
     {

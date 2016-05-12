@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using L2dotNET.Game.world;
-using L2dotNET.Game.Utils;
+using L2dotNET.GameService.world;
+using L2dotNET.GameService.Utils;
 
-namespace L2dotNET.Game.model.zones
+namespace L2dotNET.GameService.model.zones
 {
     public class L2SpawnZone : L2ZoneType
     {

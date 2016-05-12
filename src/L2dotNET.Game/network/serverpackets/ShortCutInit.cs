@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Game.model.player;
+using L2dotNET.GameService.model.player;
 
-namespace L2dotNET.Game.network.l2send
+namespace L2dotNET.GameService.network.l2send
 {
     class ShortCutInit : GameServerNetworkPacket
     {

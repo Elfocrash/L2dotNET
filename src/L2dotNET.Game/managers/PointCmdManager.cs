@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace L2dotNET.Game.managers
+namespace L2dotNET.GameService.managers
 {
     public class PointCmdManager
     {

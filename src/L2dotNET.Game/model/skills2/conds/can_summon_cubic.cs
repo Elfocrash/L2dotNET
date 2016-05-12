@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.model.skills2.conds
+namespace L2dotNET.GameService.model.skills2.conds
 {
     public class can_summon_cubic : TSkillCond
     {

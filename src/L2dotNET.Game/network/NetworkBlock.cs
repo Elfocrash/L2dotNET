@@ -4,7 +4,7 @@ using System.IO;
 using L2dotNET.Models;
 using log4net;
 
-namespace L2dotNET.Game.network
+namespace L2dotNET.GameService.network
 {
     class NetworkBlock
     {

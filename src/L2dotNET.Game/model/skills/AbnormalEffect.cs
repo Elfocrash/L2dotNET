@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Timers;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.world;
 
-namespace L2dotNET.Game
+namespace L2dotNET.GameService
 {
     public class AbnormalEffect
     {

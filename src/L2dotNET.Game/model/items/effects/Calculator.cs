@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.model.items.effects
+namespace L2dotNET.GameService.model.items.effects
 {
     class Calculator : ItemEffect
     {
@@ -12,7 +12,7 @@ namespace L2dotNET.Game.model.items.effects
 
         public override void UsePlayer(L2Player player, L2Item item)
         {
-            player.sendPacket(new L2dotNET.Game.network.l2send.Calculator());
+            player.sendPacket(new L2dotNET.GameService.network.l2send.Calculator());
         }
     }
 }

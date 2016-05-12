@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.world;
-using L2dotNET.Game.model.playable.petai;
-using L2dotNET.Game.tools;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.world;
+using L2dotNET.GameService.model.playable.petai;
+using L2dotNET.GameService.tools;
 
-namespace L2dotNET.Game.model.playable
+namespace L2dotNET.GameService.model.playable
 {
     public class L2Summon : L2Character
     {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using L2dotNET.Auth.rcv_l2;
-using L2dotNET.Auth.serverpackets;
+using L2dotNET.LoginService.rcv_l2;
 using L2Crypt;
 using L2dotNET.Models;
 using log4net;
+using L2dotNET.LoginService.Network.OuterNetwork;
 
-namespace L2dotNET.Auth
+namespace L2dotNET.LoginService
 {
     public class LoginClient
     {

@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.managers.bbs;
+﻿using L2dotNET.GameService.managers.bbs;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class RequestShowBoard : GameServerNetworkRequest
     {

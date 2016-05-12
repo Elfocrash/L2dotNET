@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace L2dotNET.Auth
+namespace L2dotNET.LoginService
 {
     public abstract class SendBasePacket
     {

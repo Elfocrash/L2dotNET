@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.model.skills2.effects
+namespace L2dotNET.GameService.model.skills2.effects
 {
     class p_speed : TEffect
     {

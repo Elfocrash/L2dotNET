@@ -1,8 +1,8 @@
 ﻿using L2Crypt;
-using L2dotNET.Game.crypt;
-using L2dotNET.Game.network;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.crypt;
+using L2dotNET.GameService.network;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.world;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using log4net;
@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 
-namespace L2dotNET.Game
+namespace L2dotNET.GameService
 {
     public class GameClient
     {

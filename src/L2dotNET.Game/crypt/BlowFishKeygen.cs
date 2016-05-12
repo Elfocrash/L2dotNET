@@ -1,7 +1,7 @@
 ﻿using log4net;
 using System;
 
-namespace L2dotNET.Game.crypt
+namespace L2dotNET.GameService.crypt
 {
     class BlowFishKeygen
     {

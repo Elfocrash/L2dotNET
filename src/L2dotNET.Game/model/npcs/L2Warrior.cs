@@ -1,12 +1,12 @@
 ﻿using System;
-using L2dotNET.Game.model.npcs.ai;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.world;
-using L2dotNET.Game.model.playable;
+using L2dotNET.GameService.model.npcs.ai;
+using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.world;
+using L2dotNET.GameService.model.playable;
 
-namespace L2dotNET.Game.model.npcs
+namespace L2dotNET.GameService.model.npcs
 {
     public class L2Warrior : L2Citizen
     {

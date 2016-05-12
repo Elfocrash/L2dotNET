@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("L2dotNET.Auth")]
+[assembly: AssemblyTitle("L2dotNET.LoginService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("L2dotNET.Auth")]
+[assembly: AssemblyProduct("L2dotNET.LoginService")]
 [assembly: AssemblyCopyright("Copyright © Elfocrash 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

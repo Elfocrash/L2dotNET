@@ -1,6 +1,6 @@
 ﻿using System.Timers;
 
-namespace L2dotNET.Game.model.player.transformation
+namespace L2dotNET.GameService.model.player.transformation
 {
     public class L2Transform
     {

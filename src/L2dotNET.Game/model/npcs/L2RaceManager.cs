@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.model.events;
+﻿using L2dotNET.GameService.model.events;
 
-namespace L2dotNET.Game.model.npcs
+namespace L2dotNET.GameService.model.npcs
 {
     public class L2RaceManager : L2Citizen
     {

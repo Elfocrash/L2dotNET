@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.managers.bbs
+namespace L2dotNET.GameService.managers.bbs
 {
     public class BBSManager
     {

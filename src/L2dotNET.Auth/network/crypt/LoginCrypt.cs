@@ -1,7 +1,7 @@
 ﻿using System;
 using L2Crypt;
 
-namespace L2dotNET.Auth
+namespace L2dotNET.LoginService
 {
     class LoginCrypt
     {

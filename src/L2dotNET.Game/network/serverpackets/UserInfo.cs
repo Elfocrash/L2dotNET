@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game.model.inventory;
-using L2dotNET.Game.model.npcs.cubic;
-using L2dotNET.Game.model.skills2;
+﻿using L2dotNET.GameService.model.inventory;
+using L2dotNET.GameService.model.npcs.cubic;
+using L2dotNET.GameService.model.skills2;
 
-namespace L2dotNET.Game.network.l2send
+namespace L2dotNET.GameService.network.l2send
 {
     class UserInfo : GameServerNetworkPacket
     {

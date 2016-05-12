@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using L2dotNET.Game.model.communities;
+using L2dotNET.GameService.model.communities;
 using MySql.Data.MySqlClient;
 
-namespace L2dotNET.Game.tables
+namespace L2dotNET.GameService.tables
 {
     class ClanTable
     {

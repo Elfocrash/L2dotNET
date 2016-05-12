@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.ai.npcai
+namespace L2dotNET.GameService.ai.npcai
 {
     class black_judge_basic : citizen
     {

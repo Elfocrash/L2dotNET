@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace L2dotNET.Game.Utils
+namespace L2dotNET.GameService.Utils
 {
     public static class MathHelper
     {

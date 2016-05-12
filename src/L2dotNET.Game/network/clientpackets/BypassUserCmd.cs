@@ -1,12 +1,12 @@
 ﻿using System;
-using L2dotNET.Game.controllers;
-using L2dotNET.Game.model.player.partials;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.world;
-using L2dotNET.Game.geo;
+using L2dotNET.GameService.controllers;
+using L2dotNET.GameService.model.player.partials;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.world;
+using L2dotNET.GameService.geo;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class BypassUserCmd : GameServerNetworkRequest
     {

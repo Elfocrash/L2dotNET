@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L2dotNET.Game.model.zones.forms
+namespace L2dotNET.GameService.model.zones.forms
 {
     public class ZoneCylinder : ZoneForm 
     {

@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game;
-using L2dotNET.Game.Enums;
-using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.model.player.basic;
-using L2dotNET.Game.model.quests;
+﻿using L2dotNET.GameService;
+using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.model.player.basic;
+using L2dotNET.GameService.model.quests;
 
 class _0002_what_women_want : QuestOrigin
 {

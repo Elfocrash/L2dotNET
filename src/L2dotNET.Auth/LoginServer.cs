@@ -1,5 +1,5 @@
-﻿using L2dotNET.Auth.gscommunication;
-using L2dotNET.Auth.managers;
+﻿using L2dotNET.LoginService.gscommunication;
+using L2dotNET.LoginService.managers;
 using log4net;
 using Ninject;
 using System;
@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace L2dotNET.Auth
+namespace L2dotNET.LoginService
 {
     class LoginServer
     {

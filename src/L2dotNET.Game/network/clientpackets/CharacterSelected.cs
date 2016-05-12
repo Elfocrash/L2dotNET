@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using L2dotNET.Game.network.l2send;
+using L2dotNET.GameService.network.l2send;
 using Ninject;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Models;
-using L2dotNET.Game.Enums;
+using L2dotNET.GameService.Enums;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class CharacterSelected : GameServerNetworkRequest
     {

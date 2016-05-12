@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using L2dotNET.Game.network.loginauth.recv;
-using L2dotNET.Game.network.loginauth.send;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.network.loginauth.recv;
+using L2dotNET.GameService.network.loginauth.send;
+using L2dotNET.GameService.world;
 using L2dotNET.Models;
 using log4net;
 
-namespace L2dotNET.Game.network.loginauth
+namespace L2dotNET.GameService.network.loginauth
 {
     public class AuthThread
     {

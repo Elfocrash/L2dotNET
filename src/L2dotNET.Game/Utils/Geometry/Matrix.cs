@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L2dotNET.Game.Utils
+namespace L2dotNET.GameService.Utils
 {
     public struct Matrix : IEquatable<Matrix>
     {

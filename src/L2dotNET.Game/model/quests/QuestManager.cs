@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.model.quests.data;
-using L2dotNET.Game.scripting;
+using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.model.quests.data;
+using L2dotNET.GameService.scripting;
 using log4net;
 
-namespace L2dotNET.Game.model.quests
+namespace L2dotNET.GameService.model.quests
 {
     public class QuestManager
     {

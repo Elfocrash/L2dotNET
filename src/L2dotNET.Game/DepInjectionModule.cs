@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.Game
+namespace L2dotNET.GameService
 {
     public class DepInjectionModule : NinjectModule
     {

@@ -1,11 +1,11 @@
-﻿using L2dotNET.Game.tables.multisell;
+﻿using L2dotNET.GameService.tables.multisell;
 
-namespace L2dotNET.Game.network.l2send
+namespace L2dotNET.GameService.network.l2send
 {
     class MultiSellListEx : GameServerNetworkPacket
     {
-        private L2dotNET.Game.tables.multisell.MultiSellList list;
-        public MultiSellListEx(L2Player player, L2dotNET.Game.tables.multisell.MultiSellList list)
+        private L2dotNET.GameService.tables.multisell.MultiSellList list;
+        public MultiSellListEx(L2Player player, L2dotNET.GameService.tables.multisell.MultiSellList list)
         {
             this.list = list;
         }

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.world;
-using L2dotNET.Game.model.templates;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.world;
+using L2dotNET.GameService.model.templates;
 
-namespace L2dotNET.Game.model.npcs
+namespace L2dotNET.GameService.model.npcs
 {
     public class NpcTemplate : TObject
     {

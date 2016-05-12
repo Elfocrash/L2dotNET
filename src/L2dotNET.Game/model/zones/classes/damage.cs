@@ -1,10 +1,10 @@
-﻿using L2dotNET.Game.tables;
+﻿using L2dotNET.GameService.tables;
 using System.Timers;
-using L2dotNET.Game.world;
-using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.network.l2send;
+using L2dotNET.GameService.world;
+using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.network.l2send;
 
-namespace L2dotNET.Game.model.zones.classes
+namespace L2dotNET.GameService.model.zones.classes
 {
     class damage : L2Zone
     {

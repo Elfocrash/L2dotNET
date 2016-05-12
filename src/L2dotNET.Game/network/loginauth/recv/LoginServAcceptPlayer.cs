@@ -1,7 +1,7 @@
 ﻿using L2dotNET.Models;
 using System;
 
-namespace L2dotNET.Game.network.loginauth.recv
+namespace L2dotNET.GameService.network.loginauth.recv
 {
     class LoginServAcceptPlayer : ReceiveAuthPacket
     {

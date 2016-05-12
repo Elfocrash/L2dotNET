@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.tables.admin
+namespace L2dotNET.GameService.tables.admin
 {
     public abstract class _adminAlias
     {

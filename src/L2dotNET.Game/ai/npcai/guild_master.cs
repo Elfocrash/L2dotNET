@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using L2dotNET.Game.ai.template;
-using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.model.communities;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.model.skills2;
+using L2dotNET.GameService.ai.template;
+using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.model.communities;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.model.skills2;
 
-namespace L2dotNET.Game.ai.npcai
+namespace L2dotNET.GameService.ai.npcai
 {
     public class guild_master : AI
     {

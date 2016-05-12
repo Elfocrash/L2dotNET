@@ -1,8 +1,8 @@
 ﻿using System;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.model.structures;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.model.structures;
 
-namespace L2dotNET.Game.model.npcs.decor
+namespace L2dotNET.GameService.model.npcs.decor
 {
     public class L2Door : L2StaticObject
     {

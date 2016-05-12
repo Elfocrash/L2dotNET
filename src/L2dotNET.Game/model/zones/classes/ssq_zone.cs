@@ -1,6 +1,6 @@
 ﻿
-using L2dotNET.Game.tables;
-namespace L2dotNET.Game.model.zones.classes
+using L2dotNET.GameService.tables;
+namespace L2dotNET.GameService.model.zones.classes
 {
     class ssq_zone : L2Zone
     {

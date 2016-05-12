@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.Game.tables.admin;
-using L2dotNET.Game.tables.admin_bypass;
+using L2dotNET.GameService.tables.admin;
+using L2dotNET.GameService.tables.admin_bypass;
 using log4net;
 
-namespace L2dotNET.Game.tables
+namespace L2dotNET.GameService.tables
 {
     public class AdminAccess
     {

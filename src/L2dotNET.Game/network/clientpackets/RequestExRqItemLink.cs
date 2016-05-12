@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game.managers;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.network.l2send;
+﻿using L2dotNET.GameService.managers;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.network.l2send;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class RequestExRqItemLink : GameServerNetworkRequest
     {

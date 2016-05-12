@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Game.model.structures;
+using L2dotNET.GameService.model.structures;
 using MySql.Data.MySqlClient;
 using System.Data;
 using log4net;
 
-namespace L2dotNET.Game.tables
+namespace L2dotNET.GameService.tables
 {
     class StructureTable
     {

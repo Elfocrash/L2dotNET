@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game
+namespace L2dotNET.GameService
 {
     class Crypt
     {

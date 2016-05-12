@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace L2dotNET.Game.tables.admin_bypass
+namespace L2dotNET.GameService.tables.admin_bypass
 {
     public class ABTeleport
     {

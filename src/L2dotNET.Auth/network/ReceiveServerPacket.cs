@@ -1,8 +1,8 @@
 ﻿using System;
-using L2dotNET.Auth.gscommunication;
+using L2dotNET.LoginService.gscommunication;
 using log4net;
 
-namespace L2dotNET.Auth
+namespace L2dotNET.LoginService
 {
     public abstract class ReceiveServerPacket
     {

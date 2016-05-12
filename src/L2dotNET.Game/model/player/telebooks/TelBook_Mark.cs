@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.model.player.telebooks
+namespace L2dotNET.GameService.model.player.telebooks
 {
     public class TelBook_Mark
     {

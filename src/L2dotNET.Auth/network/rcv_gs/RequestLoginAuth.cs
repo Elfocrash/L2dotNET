@@ -1,8 +1,8 @@
-﻿using L2dotNET.Auth.gscommunication;
-using L2dotNET.Auth.network.serverpackets_gs;
+﻿using L2dotNET.LoginService.gscommunication;
+using L2dotNET.LoginService.Network.OuterNetwork;
 using log4net;
 
-namespace L2dotNET.Auth.network.rcv_gs
+namespace L2dotNET.LoginService.network.rcv_gs
 {
     class RequestLoginAuth : ReceiveServerPacket
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.network.loginauth.recv
+namespace L2dotNET.GameService.network.loginauth.recv
 {
     class LoginServLoginOk : ReceiveAuthPacket
     {

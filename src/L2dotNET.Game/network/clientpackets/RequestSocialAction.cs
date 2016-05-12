@@ -1,11 +1,11 @@
-﻿using L2dotNET.Game.network.l2send;
+﻿using L2dotNET.GameService.network.l2send;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class RequestSocialAction : GameServerNetworkRequest
     {

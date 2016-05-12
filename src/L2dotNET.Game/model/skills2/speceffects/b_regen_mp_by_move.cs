@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.model.skills2.speceffects
+namespace L2dotNET.GameService.model.skills2.speceffects
 {
     public class b_regen_mp_by_move : TSpecEffect
     {

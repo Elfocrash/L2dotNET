@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Game.model.player.basic;
-using L2dotNET.Game.model.structures;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.player.basic;
+using L2dotNET.GameService.model.structures;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.world;
 
-namespace L2dotNET.Game.managers
+namespace L2dotNET.GameService.managers
 {
     class CastleManager
     {

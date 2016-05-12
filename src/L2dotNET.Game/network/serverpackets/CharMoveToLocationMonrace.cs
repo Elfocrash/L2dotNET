@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.model.events;
+﻿using L2dotNET.GameService.model.events;
 
-namespace L2dotNET.Game.network.l2send
+namespace L2dotNET.GameService.network.l2send
 {
     class CharMoveToLocationMonrace : GameServerNetworkPacket
     {

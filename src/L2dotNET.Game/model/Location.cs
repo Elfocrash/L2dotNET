@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.Game.model
+namespace L2dotNET.GameService.model
 {
     public class Location
     {
