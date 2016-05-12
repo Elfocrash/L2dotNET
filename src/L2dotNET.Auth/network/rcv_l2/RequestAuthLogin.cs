@@ -73,7 +73,7 @@ namespace L2dotNET.Auth.rcv_l2
 
                 if(ServerThreadPool.Instance.LoggedAlready(username.ToLower()))
                 {
-                    getClient().sendPacket(new LoginFail(getClient(), LoginFailReason.REASON_ACCOUNT_IN_USE));
+                    getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_ACCOUNT_IN_USE));
                     getClient().close();
                     return;
                 }

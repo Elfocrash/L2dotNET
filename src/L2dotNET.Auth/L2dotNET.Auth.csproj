@@ -106,7 +106,12 @@
     <Compile Include="managers\NetRedClass.cs" />
     <Compile Include="managers\NetworkRedirect.cs" />
     <Compile Include="managers\ClientManager.cs" />
+    <Compile Include="network\Firewall.cs" />
+    <Compile Include="network\InitializeRequest.cs" />
+    <Compile Include="network\Listener.cs" />
+    <Compile Include="network\NetLayer.cs" />
     <Compile Include="network\NetworkClient.cs" />
+    <Compile Include="network\NetworkHelper.cs" />
     <Compile Include="network\Packet.cs" />
     <Compile Include="network\QueuedRequest.cs" />
     <Compile Include="network\QueuedRequestsPool.cs" />

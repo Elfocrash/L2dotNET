@@ -1,7 +1,12 @@
-﻿using System;
+﻿using L2.Net.LoginService.Crypt;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace L2dotNET.Auth.network
@@ -126,7 +131,7 @@ namespace L2dotNET.Auth.network
             }
             catch (Exception e)
             {
-                Logger.Exception(e, "Failed to start listener thread");
+             //   Logger.Exception(e, "Failed to start listener thread");
             }
         }
 
@@ -140,9 +145,9 @@ namespace L2dotNET.Auth.network
             {
                 UserConnection userConnection = new UserConnection(socket);
 
-                if (m_ActiveConnections.Count >= Settings.Default.LoginServiceMaxAwaitingUsersCount)
+                if (m_ActiveConnections.Count >= 100)
                 {
-                    userConnection.Send(LoginFailed.ToPacket(UserAuthenticationResponseType.ServerOverloaded));
+                   // userConnection.Send(LoginFailed.ToPacket(UserAuthenticationResponseType.ServerOverloaded));
                     CloseActiveConnection(userConnection);
                     return;
                 }
@@ -156,7 +161,7 @@ namespace L2dotNET.Auth.network
 
                 m_ActiveConnections.Add(userConnection.Session.ID, userConnection);
 
-                userConnection.Send(InitializeConnection.ToPacket(userConnection.Session)); // say hello to client
+                //userConnection.Send(InitializeConnection.ToPacket(userConnection.Session)); // say hello to client
 
                 userConnection.BeginReceive();
             }
@@ -167,7 +172,7 @@ namespace L2dotNET.Auth.network
         /// </summary>
         private static void ListenerService_OnTerminated()
         {
-            Logger.WriteLine(Source.OuterNetwork, "Network listener ({0}) terminated.", m_LocalEndPoint);
+           // Logger.WriteLine(Source.OuterNetwork, "Network listener ({0}) terminated.", m_LocalEndPoint);
         }
 
         /// <summary>
@@ -175,7 +180,7 @@ namespace L2dotNET.Auth.network
         /// </summary>
         private static void ListenerService_OnStopped()
         {
-            Logger.WriteLine(Source.OuterNetwork, "Network listener ({0}) stopped.", m_LocalEndPoint);
+           // Logger.WriteLine(Source.OuterNetwork, "Network listener ({0}) stopped.", m_LocalEndPoint);
         }
 
         /// <summary>
@@ -183,7 +188,7 @@ namespace L2dotNET.Auth.network
         /// </summary>
         private static void ListenerService_OnStarted()
         {
-            Logger.WriteLine(Source.OuterNetwork, "User connections listener initialized on {0}", m_LocalEndPoint);
+            //Logger.WriteLine(Source.OuterNetwork, "User connections listener initialized on {0}", m_LocalEndPoint);
         }
 
         /// <summary>
@@ -214,8 +219,8 @@ namespace L2dotNET.Auth.network
         {
             if (connection != null)
             {
-                if (connection.Session.AccountID > 0)
-                    CacheServiceConnection.Send(new UnCacheUser(connection.Session.ID).ToPacket());
+                //if (connection.Session.AccountID > 0)
+                //    CacheServiceConnection.Send(new UnCacheUser(connection.Session.ID).ToPacket());
 
                 m_ActiveConnections.Remove(connection.Session.ID);
                 connection = null;
@@ -246,12 +251,12 @@ namespace L2dotNET.Auth.network
             {
                 connection.CloseConnection();
 
-                if (connection.Session.AccountID > 0)
-                    CacheServiceConnection.Send(new UnCacheUser(connection.Session.ID).ToPacket());
+                //if (connection.Session.AccountID > 0)
+                //    CacheServiceConnection.Send(new UnCacheUser(connection.Session.ID).ToPacket());
 
                 m_ActiveConnections.Remove(connection.Session.ID);
 
-                Logger.WriteLine(Source.OuterNetwork, "Connection closed for session {0}.", connection.Session.ToString());
+                //Logger.WriteLine(Source.OuterNetwork, "Connection closed for session {0}.", connection.Session.ToString());
 
                 connection = null;
             }
@@ -266,8 +271,8 @@ namespace L2dotNET.Auth.network
             {
                 connection.CloseConnection();
 
-                if (connection.Session.AccountID > 0)
-                    CacheServiceConnection.Send(new UnCacheUser(connection.Session.ID).ToPacket());
+                //if (connection.Session.AccountID > 0)
+                //    CacheServiceConnection.Send(new UnCacheUser(connection.Session.ID).ToPacket());
             }
 
             m_ActiveConnections.Clear();
