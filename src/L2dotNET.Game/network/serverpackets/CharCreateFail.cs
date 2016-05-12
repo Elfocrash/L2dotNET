@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.network.l2send
         public enum CharCreateFailReason
         {
             JUST_FAILED = 0,
-            TOO_MANY_CHARS_ON_ACCOUNT = 2,
+            TOO_MANY_CHARS_ON_ACCOUNT = 1,
             NAME_EXISTS = 2,
             TOO_LONG_16_CHARS = 3,
             INCORRECT_NAME = 4,
