@@ -1,7 +1,7 @@
-﻿using L2dotNET.Game.tables;
-using L2dotNET.Game.world;
+﻿using L2dotNET.GameService.tables;
+using L2dotNET.GameService.world;
 
-namespace L2dotNET.Game.model.zones.classes
+namespace L2dotNET.GameService.model.zones.classes
 {
     class instant_buff : L2Zone
     {

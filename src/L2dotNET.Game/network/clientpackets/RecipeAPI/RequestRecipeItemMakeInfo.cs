@@ -1,7 +1,7 @@
-﻿using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
+﻿using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class RequestRecipeItemMakeInfo : GameServerNetworkRequest
     {

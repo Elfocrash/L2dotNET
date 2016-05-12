@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.tables.multisell;
+﻿using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.tables.multisell;
 
-namespace L2dotNET.Game.ai.npcai
+namespace L2dotNET.GameService.ai.npcai
 {
     class merchant : citizen
     {

@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.model.vehicles;
+﻿using L2dotNET.GameService.model.vehicles;
 
-namespace L2dotNET.Game.network.l2send
+namespace L2dotNET.GameService.network.l2send
 {
     class VehicleInfo : GameServerNetworkPacket
     {

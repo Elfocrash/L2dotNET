@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.model.communities
+namespace L2dotNET.GameService.model.communities
 {
     public class L2Alliance
     {

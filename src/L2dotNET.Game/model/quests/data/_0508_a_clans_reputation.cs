@@ -1,7 +1,7 @@
-﻿using L2dotNET.Game.model.communities;
-using L2dotNET.Game.model.npcs;
+﻿using L2dotNET.GameService.model.communities;
+using L2dotNET.GameService.model.npcs;
 
-namespace L2dotNET.Game.model.quests.data
+namespace L2dotNET.GameService.model.quests.data
 {
     class _0508_a_clans_reputation : QuestOrigin
     {

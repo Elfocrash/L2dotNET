@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Auth.network.serverpackets_gs
+namespace L2dotNET.LoginService.Network.OuterNetwork
 {
     class ServerLoginOk : SendServerPacket
     {

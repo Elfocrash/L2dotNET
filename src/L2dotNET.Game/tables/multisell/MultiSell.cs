@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.model.npcs;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.model.npcs;
 using log4net;
 
-namespace L2dotNET.Game.tables.multisell
+namespace L2dotNET.GameService.tables.multisell
 {
     public class MultiSell
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.Game.model.inventory;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.model.skills2.effects;
+using L2dotNET.GameService.model.inventory;
+using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.model.skills2.effects;
 
-namespace L2dotNET.Game.model.items
+namespace L2dotNET.GameService.model.items
 {
     public class ItemTemplate
     {

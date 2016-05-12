@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Game.model.player.transformation;
-using L2dotNET.Game.model.player.transformation.data;
+using L2dotNET.GameService.model.player.transformation;
+using L2dotNET.GameService.model.player.transformation.data;
 
-namespace L2dotNET.Game.managers
+namespace L2dotNET.GameService.managers
 {
     class TransformManager
     {

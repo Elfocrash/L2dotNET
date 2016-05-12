@@ -3,10 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace L2dotNET.Game.templates
+namespace L2dotNET.GameService.templates
 {
     public class StatsSet : Dictionary<string, object>
     {
@@ -58,178 +56,141 @@ namespace L2dotNET.Game.templates
             Add(key, value);
         }
 
+        public void Set<T>(string key, T value)
+        {
+            Add(key, value);
+        }
+
         public void Unset(string key)
         {
             Remove(key);
         }
 
-        public bool GetBool(string key)
-        {
-            var val = base[key].ToString();
-            bool toReturn;
-            bool.TryParse(val, out toReturn);
-            return toReturn;
-        }
-
-        public bool GetBool(string key, bool defaultVal)
+        public bool GetBool(string key, bool defaultValue = default(bool))
         {
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
-                var val = base[key].ToString();
+                var value = base[key].ToString();
                 bool toReturn;
-                if (bool.TryParse(val, out toReturn))
+                if (bool.TryParse(value, out toReturn))
                     return toReturn;
-                return defaultVal;
+                else
+                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(bool).FullName }'! The function will return the 'defaultValue' parameter.");
+                return defaultValue;
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
-                return defaultVal;
+                return defaultValue;
             }
         }
 
-        public byte GetByte(string key)
-        {
-            var val = base[key].ToString();
-            byte toReturn;
-            byte.TryParse(val, out toReturn);
-            return toReturn;
-        }
-
-        public byte GetByte(string key, byte defaultVal)
+        public byte GetByte(string key, byte defaultValue = default(byte))
         {
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
-                var val = base[key].ToString();
+                var value = base[key].ToString();
                 byte toReturn;
-                if (byte.TryParse(val, out toReturn))
+                if (byte.TryParse(value, out toReturn))
                     return toReturn;
-                return defaultVal;
+                else
+                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(byte).FullName }'! The function will return the 'defaultValue' parameter.");
+                return defaultValue;
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
-                return defaultVal;
+                return defaultValue;
             }
         }
 
-        public double GetDouble(string key)
-        {
-            var val = base[key].ToString();
-            double toReturn;
-            double.TryParse(val, out toReturn);
-            return toReturn;
-        }
-
-        public double GetDouble(string key, double defaultVal)
+        public int GetInt(string key, int defaultValue = default(int))
         {
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
-                var val = base[key].ToString();
-                double toReturn;
-                if (double.TryParse(val, out toReturn))
-                    return toReturn;
-                return defaultVal;
-            }
-            else
-            {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
-                //if key doesn't exists,
-                //returns the defaultValue var
-                return defaultVal;
-            }
-        }
-
-        public float GetFloat(string key)
-        {
-            var val = base[key].ToString();
-            float toReturn;
-            float.TryParse(val, out toReturn);
-            return toReturn;
-        }
-
-        public float GetFloat(string key, float defaultVal)
-        {
-            //check if the dictionary contains the key
-            if (base.ContainsKey(key))
-            {
-                var val = base[key].ToString();
-                float toReturn;
-                if (float.TryParse(val, out toReturn))
-                    return toReturn;
-                return defaultVal;
-            }
-            else
-            {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
-                //if key doesn't exists,
-                //returns the defaultValue var
-                return defaultVal;
-            }
-        }
-
-        public int GetInt(string key)
-        {
-            var val = base[key].ToString();
-            int toReturn;
-            int.TryParse(val, out toReturn);
-            return toReturn;
-
-        }
-
-        public int GetInt(string key, int defaultVal)
-        {
-            //check if the dictionary contains the key
-            if (base.ContainsKey(key))
-            {
-                var val = base[key].ToString();
+                var value = base[key].ToString();
                 int toReturn;
-                if (int.TryParse(val, out toReturn))
+                if (int.TryParse(value, out toReturn))
                     return toReturn;
-                return defaultVal;
+                else
+                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(int).FullName }'! The function return the 'defaultValue' parameter.");
+                return defaultValue;
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
-                return defaultVal;
+                return defaultValue;
             }
         }
 
-        public string GetString(string key)
-        {
-            var val = base[key].ToString();
-            return val;
-        }
-
-        public string GetString(string key, string defaultVal)
+        public float GetFloat(string key, float defaultValue = default(float))
         {
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
-                var val = base[key].ToString();
-                return val;
+                var value = base[key].ToString();
+                float toReturn;
+                if (float.TryParse(value, out toReturn))
+                    return toReturn;
+                else
+                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(float).FullName }'! The function return the 'defaultValue' parameter.");
+                return defaultValue;
             }
             else
             {
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
-                return defaultVal;
+                return defaultValue;
             }
         }
 
-        public void Set<T>(string key, T value)
+        public double GetDouble(string key, double defaultValue = default(double))
         {
-            Add(key, value);
+            //check if the dictionary contains the key
+            if (base.ContainsKey(key))
+            {
+                var value = base[key].ToString();
+                double toReturn;
+                if (double.TryParse(value, out toReturn))
+                    return toReturn;
+                else
+                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(double).FullName }'! The function will return the 'defaultValue' parameter.");
+                return defaultValue;
+            }
+            else
+            {
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                //if key doesn't exists,
+                //returns the defaultValue var
+                return defaultValue;
+            }
+        }
+
+        public string GetString(string key, string defaultValue = default(string))
+        {
+            //check if the dictionary contains the key
+            if (base.ContainsKey(key))
+            {
+                var value = base[key].ToString();
+                return value;
+            }
+            else
+            {
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                //if key doesn't exists,
+                //returns the defaultValue var
+                return defaultValue;
+            }
         }
 
         ///<summary>Gets the 'value' from dictionary based on 'key' parameter and converts it to the type of T.</summary>
@@ -241,7 +202,7 @@ namespace L2dotNET.Game.templates
         {
             if (string.IsNullOrWhiteSpace(key))
             {
-                log.Info($"Key is 'Null, Empty or White-space'! The function will return the 'defaultValue' parameter.");
+                log.Error($"Key is 'Null, Empty or White-space'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
 
@@ -250,20 +211,24 @@ namespace L2dotNET.Game.templates
             {
                 string value = base[key].ToString();
 
-                if (typeof(T).IsEnum)
+                if (typeof(T).IsEnum) //block for Enum handling
                 {
                     T result;
 
                     if (Enum.TryParse<T>(value, out result))
                     {
-                        if (Enum.IsDefined(typeof(T), result)) //checks if enum name exists
+                        if (Enum.IsDefined(typeof(T), result)) //checks if enum element exists
                             return result; //if it returned true, returns converted value
-                        return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first enum from list. Default value is always the enum with "0" value, but not every enum has it.
+                        else
+                        {
+                            log.Error($"Element '{ value }' was not found at the enum '{ typeof(T).FullName }'! The function will return the first enum element.");
+                            return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first element from enum. Default value is always the enum with "0" value, but not every enum has it.
+                        }
                     }
                     else
                     {
-                        //throw new Exception($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'!");
-                        return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first enum from list. Default value is always 0, but not every enum has a "0" value
+                        log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the first enum element.");
+                        return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first element from enum. Default value is always 0, but not every enum has it.
                     }
                 }
                 else
@@ -292,8 +257,8 @@ namespace L2dotNET.Game.templates
                         return (T)args[1]; //if it returned true, returns converted value
                     else
                     {
-                        log.Info($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'!");
-                        return default(T); //if it returned false, returns default value of 'T'
+                        log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the 'defaultValue' parameter.");
+                        return defaultValue; //if it returned false, returns defaultValue' parameter."
                     }
                 }
             }
@@ -302,7 +267,7 @@ namespace L2dotNET.Game.templates
                 //if key doesn't exists,
                 //returns the defaultValue var,
                 //when not specified returns the default value of 'T'
-                log.Info($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
         }

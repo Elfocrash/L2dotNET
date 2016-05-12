@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.Game.tables.admin_bypass;
+using L2dotNET.GameService.tables.admin_bypass;
 using log4net;
 
-namespace L2dotNET.Game.tables.ndextend
+namespace L2dotNET.GameService.tables.ndextend
 {
     class NDTeleport
     {

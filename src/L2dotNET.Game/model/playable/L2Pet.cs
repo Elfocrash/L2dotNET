@@ -1,11 +1,11 @@
 ﻿using System.Data;
-using L2dotNET.Game.model.inventory;
-using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.model.playable.petai;
-using L2dotNET.Game.tables;
+using L2dotNET.GameService.model.inventory;
+using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.model.playable.petai;
+using L2dotNET.GameService.tables;
 using MySql.Data.MySqlClient;
 
-namespace L2dotNET.Game.model.playable
+namespace L2dotNET.GameService.model.playable
 {
     public class L2Pet : L2Summon
     {

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace L2dotNET.Game.tools
+namespace L2dotNET.GameService.tools
 {
     public class Utilz
     {

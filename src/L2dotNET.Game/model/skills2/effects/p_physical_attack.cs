@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.network.l2send;
+﻿using L2dotNET.GameService.network.l2send;
 
-namespace L2dotNET.Game.model.skills2.effects
+namespace L2dotNET.GameService.model.skills2.effects
 {
     class p_physical_attack : TEffect
     {

@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.network.loginauth.send;
+﻿using L2dotNET.GameService.network.loginauth.send;
 
-namespace L2dotNET.Game.network.loginauth.recv
+namespace L2dotNET.GameService.network.loginauth.recv
 {
     class LoginServPingResponse : ReceiveAuthPacket
     {

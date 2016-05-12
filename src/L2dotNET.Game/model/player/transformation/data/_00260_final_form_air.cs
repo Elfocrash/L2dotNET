@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.model.player.transformation.data
+namespace L2dotNET.GameService.model.player.transformation.data
 {
     class _00260_final_form_air : TransformTemplate
     {

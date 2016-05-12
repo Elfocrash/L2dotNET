@@ -1,12 +1,12 @@
-﻿using L2dotNET.Game.Enums;
-using L2dotNET.Game.model.items;
+﻿using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.model.items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.Game.templates
+namespace L2dotNET.GameService.templates
 {
     public class PcTemplate : CharTemplate
     {

@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Data;
-using L2dotNET.Game.model.inventory;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.model.player;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
+using L2dotNET.GameService.model.inventory;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.model.player;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
 using MySql.Data.MySqlClient;
 using L2dotNET.Services.Contracts;
 using Ninject;
 using L2dotNET.Models;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.templates;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.templates;
+using L2dotNET.GameService.world;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class CharacterCreate : GameServerNetworkRequest
     {
@@ -109,8 +109,9 @@ namespace L2dotNET.Game.network.l2recv
             player.CurHP = template.HpTable[player.Level];
             player.CurMP = template.MpTable[player.Level];
             player.CurCP = template.CpTable[player.Level];
-            player.MaxMp = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
-            player.MaxCp = (int)player.CharacterStat.getStat(TEffectType.b_max_cp);
+            player.MaxMP = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
+            player.MaxCP = (int)player.CharacterStat.getStat(TEffectType.b_max_cp);
+            player.MaxHP = (int)player.CharacterStat.getStat(TEffectType.b_max_hp);
 
             player.X = 45901;
             player.Y = 41329;
@@ -157,12 +158,12 @@ namespace L2dotNET.Game.network.l2recv
                 ObjectId = player.ObjID,
                 Name = player.Name,
                 Level = player.Level,
-                MaxHp = (int)player.MaxHp,
+                MaxHp = (int)player.MaxHP,
                 CurHp = (int)player.CurHP,
-                MaxCp = player.MaxCp,
-                CurCp = (int)player.CurCp,
-                MaxMp = player.MaxMp,
-                CurMp = (int)player.CurMp,
+                MaxCp = player.MaxCP,
+                CurCp = (int)player.CurCP,
+                MaxMp = player.MaxMP,
+                CurMp = (int)player.CurMP,
                 Face = player.Face,
                 HairStyle = player.HairStyle,
                 HairColor = player.HairColor,

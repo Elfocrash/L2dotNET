@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.model.player.transformation.data
+namespace L2dotNET.GameService.model.player.transformation.data
 {
     class _20001_jet_bike : TransformTemplate
     {

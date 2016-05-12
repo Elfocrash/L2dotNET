@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Text;
-using L2dotNET.Auth.data;
-using L2dotNET.Auth.gscommunication;
-using L2dotNET.Auth.serverpackets;
+using L2dotNET.LoginService.data;
+using L2dotNET.LoginService.gscommunication;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Engines;
 using L2dotNET.Models;
 using Ninject;
 using L2dotNET.Services.Contracts;
-using L2dotNET.Auth.Utils;
+using L2dotNET.LoginService.Utils;
+using L2dotNET.LoginService.Network.OuterNetwork;
 
-namespace L2dotNET.Auth.rcv_l2
+namespace L2dotNET.LoginService.rcv_l2
 {
     class RequestAuthLogin : ReceiveBasePacket
     {

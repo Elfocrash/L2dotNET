@@ -1,10 +1,10 @@
-﻿using L2dotNET.Game.network.l2recv;
+﻿using L2dotNET.GameService.network.l2recv;
 using log4net;
 using System;
 using System.Runtime.Remoting.Contexts;
 using System.Threading;
 
-namespace L2dotNET.Game.network
+namespace L2dotNET.GameService.network
 {
     [Synchronization]
     public class PacketHandler

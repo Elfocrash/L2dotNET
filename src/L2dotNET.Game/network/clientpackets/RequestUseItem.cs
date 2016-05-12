@@ -1,10 +1,10 @@
 ﻿using System;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.model.skills2;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.model.skills2;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class RequestUseItem : GameServerNetworkRequest
     {

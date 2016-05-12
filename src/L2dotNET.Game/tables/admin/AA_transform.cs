@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.managers;
+﻿using L2dotNET.GameService.managers;
 
-namespace L2dotNET.Game.tables.admin
+namespace L2dotNET.GameService.tables.admin
 {
     class AA_transform : _adminAlias
     {

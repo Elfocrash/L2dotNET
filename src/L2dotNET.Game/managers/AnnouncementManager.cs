@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using L2dotNET.Game.model.player.basic;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.player.basic;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.world;
 using L2dotNET.Models;
 using System.Collections.Generic;
 using Ninject;
@@ -9,7 +9,7 @@ using L2dotNET.Services.Contracts;
 using System;
 using log4net;
 
-namespace L2dotNET.Game.Managers
+namespace L2dotNET.GameService.Managers
 {
     class AnnouncementManager
     {

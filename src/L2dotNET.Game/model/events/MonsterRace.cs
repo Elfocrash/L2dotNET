@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.model.zones;
-using L2dotNET.Game.model.zones.classes;
-using L2dotNET.Game.model.zones.forms;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.model.zones;
+using L2dotNET.GameService.model.zones.classes;
+using L2dotNET.GameService.model.zones.forms;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.world;
 using log4net;
 
-namespace L2dotNET.Game.model.events
+namespace L2dotNET.GameService.model.events
 {
     public class MonsterRace
     {

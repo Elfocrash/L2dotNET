@@ -1,6 +1,6 @@
-﻿using L2dotNET.Auth.gscommunication;
+﻿using L2dotNET.LoginService.gscommunication;
 
-namespace L2dotNET.Auth.network.serverpackets_gs
+namespace L2dotNET.LoginService.Network.OuterNetwork
 {
     class LoginServPing : SendServerPacket
     {

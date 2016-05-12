@@ -1,7 +1,7 @@
-﻿using L2dotNET.Game.model.npcs;
+﻿using L2dotNET.GameService.model.npcs;
 using System;
 
-namespace L2dotNET.Game.model.quests.data
+namespace L2dotNET.GameService.model.quests.data
 {
     class _0606_war_with_varka_silenos : QuestOrigin
     {

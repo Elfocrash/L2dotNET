@@ -1,5 +1,5 @@
-﻿using L2dotNET.Game.Properties;
-using L2dotNET.Game.Utils;
+﻿using L2dotNET.GameService.Properties;
+using L2dotNET.Utility;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.Game.geo
+namespace L2dotNET.GameService.geo
 {
     /// <summary>
     /// Geodata engine.

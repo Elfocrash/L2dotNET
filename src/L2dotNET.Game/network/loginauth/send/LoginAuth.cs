@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.network.loginauth.send
+namespace L2dotNET.GameService.network.loginauth.send
 {
     class LoginAuth : GameServerNetworkPacket
     {

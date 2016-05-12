@@ -1,4 +1,4 @@
-﻿using L2dotNET.Game.Enums;
+﻿using L2dotNET.GameService.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

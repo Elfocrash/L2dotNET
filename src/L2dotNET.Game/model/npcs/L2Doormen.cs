@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game.model.npcs.decor;
-using L2dotNET.Game.model.structures;
-using L2dotNET.Game.network.l2send;
+﻿using L2dotNET.GameService.model.npcs.decor;
+using L2dotNET.GameService.model.structures;
+using L2dotNET.GameService.network.l2send;
 
-namespace L2dotNET.Game.model.npcs
+namespace L2dotNET.GameService.model.npcs
 {
     class L2Doormen : L2Citizen
     {

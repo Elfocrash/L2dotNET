@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.model.npcs;
+﻿using L2dotNET.GameService.model.npcs;
 
-namespace L2dotNET.Game.model.quests.data
+namespace L2dotNET.GameService.model.quests.data
 {
     class _0011_secret_meeting_with_ketra_orcs : QuestOrigin
     {

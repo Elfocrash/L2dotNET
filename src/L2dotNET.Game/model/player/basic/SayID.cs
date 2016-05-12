@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.model.player.basic
+namespace L2dotNET.GameService.model.player.basic
 {
     public class SayID
     {

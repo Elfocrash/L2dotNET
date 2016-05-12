@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
-using L2dotNET.Game.tools;
+using L2dotNET.GameService.tools;
 using System;
-using L2dotNET.Game.geo;
+using L2dotNET.GameService.geo;
 using Ninject;
 
-namespace L2dotNET.Game
+namespace L2dotNET.GameService
 {
     class Program
     {

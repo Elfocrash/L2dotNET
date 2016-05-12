@@ -1,11 +1,11 @@
-﻿using L2dotNET.Game.Utils;
+﻿using L2dotNET.GameService.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.Game.model.zones.forms
+namespace L2dotNET.GameService.model.zones.forms
 {
     public abstract class L2ZoneForm
     {

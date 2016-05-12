@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Auth.gscommunication;
+using L2dotNET.LoginService.gscommunication;
 
-namespace L2dotNET.Auth.serverpackets
+namespace L2dotNET.LoginService.Network.OuterNetwork
 {
     public class ServerList : SendBasePacket
     {

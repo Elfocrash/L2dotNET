@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.model.quests;
+﻿using L2dotNET.GameService.model.quests;
 
-namespace L2dotNET.Game
+namespace L2dotNET.GameService
 {
     public class QuestInfo
     {

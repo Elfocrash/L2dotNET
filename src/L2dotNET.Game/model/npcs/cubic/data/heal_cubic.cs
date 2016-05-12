@@ -1,7 +1,7 @@
-﻿using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.network.l2send;
+﻿using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.network.l2send;
 
-namespace L2dotNET.Game.model.npcs.cubic.data
+namespace L2dotNET.GameService.model.npcs.cubic.data
 {
     public class heal_cubic : CubicTemplate
     {
@@ -17,7 +17,7 @@ namespace L2dotNET.Game.model.npcs.cubic.data
 
         public override int AiActionTask(L2Player owner)
         {
-            if (owner.Dead || owner.CurHP / owner.MaxHp > 0.9)
+            if (owner.Dead || owner.CurHP / owner.MaxHP > 0.9)
                 return 0;
 
             owner.addAbnormal(skill1, owner, true, false);

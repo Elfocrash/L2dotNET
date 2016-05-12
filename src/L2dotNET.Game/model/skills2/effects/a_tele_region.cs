@@ -1,7 +1,7 @@
-﻿using L2dotNET.Game.tables;
-using L2dotNET.Game.world;
+﻿using L2dotNET.GameService.tables;
+using L2dotNET.GameService.world;
 
-namespace L2dotNET.Game.model.skills2.effects
+namespace L2dotNET.GameService.model.skills2.effects
 {
     class a_tele_region : TEffect
     {

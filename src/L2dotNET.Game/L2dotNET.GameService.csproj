@@ -44,6 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -121,8 +122,6 @@
     <Compile Include="Enums\ZoneId.cs" />
     <Compile Include="geo\GeoBlock.cs" />
     <Compile Include="geo\Geodata.cs" />
-    <Compile Include="geo\Layer.cs" />
-    <Compile Include="geo\MByteBuffer.cs" />
     <Compile Include="Managers\AnnouncementManager.cs" />
     <Compile Include="Managers\bbs\BBSManager.cs" />
     <Compile Include="Managers\CastleManager.cs" />
@@ -327,6 +326,7 @@
     <Compile Include="Model\zones\ZoneTemplate.cs" />
     <Compile Include="Model\zones\L2Zone.cs" />
     <Compile Include="network\clientpackets\RequestSocialAction.cs" />
+    <Compile Include="network\Packet.cs" />
     <Compile Include="network\serverpackets\ExChangeNicknameNColor.cs" />
     <Compile Include="network\loginauth\ReceiveAuthPacket.cs" />
     <Compile Include="network\loginauth\recv\LoginServKickAccount.cs" />
@@ -711,14 +711,12 @@
     <Compile Include="templates\StatsSet.cs" />
     <Compile Include="tools\Calcs.cs" />
     <Compile Include="tools\Utilz.cs" />
-    <Compile Include="Utils\L2Buffer.cs" />
     <Compile Include="Utils\Geometry\MathHelper.cs" />
     <Compile Include="Utils\Geometry\Matrix.cs" />
     <Compile Include="Utils\Geometry\Quaternion.cs" />
     <Compile Include="Utils\Geometry\Rnd.cs" />
     <Compile Include="Utils\Geometry\Vector2.cs" />
     <Compile Include="Utils\Geometry\Vector3.cs" />
-    <Compile Include="Utils\L2FileReader.cs" />
     <Compile Include="world\L2Character.cs" />
     <Compile Include="world\L2Object.cs" />
     <Compile Include="world\L2World.cs" />
@@ -783,6 +781,10 @@
     <ProjectReference Include="..\L2dotNET.Services\L2dotNET.Services.csproj">
       <Project>{0a70c676-f9bd-4593-9ef4-b22f8e170aed}</Project>
       <Name>L2dotNET.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L2dotNET\L2dotNET.csproj">
+      <Project>{00ee35ee-f920-4a50-b9bd-aab02da5c066}</Project>
+      <Name>L2dotNET</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

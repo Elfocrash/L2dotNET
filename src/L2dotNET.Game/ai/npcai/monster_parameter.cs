@@ -1,7 +1,7 @@
-﻿using L2dotNET.Game.ai.template;
-using L2dotNET.Game.model.playable;
+﻿using L2dotNET.GameService.ai.template;
+using L2dotNET.GameService.model.playable;
 
-namespace L2dotNET.Game.ai.npcai
+namespace L2dotNET.GameService.ai.npcai
 {
     public class monster_parameter : AI
     {

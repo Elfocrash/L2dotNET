@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.model.skills2;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.model.skills2;
 using log4net;
 
-namespace L2dotNET.Game.tables
+namespace L2dotNET.GameService.tables
 {
     class ItemTable
     {

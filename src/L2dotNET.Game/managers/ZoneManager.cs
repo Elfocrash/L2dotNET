@@ -1,5 +1,5 @@
-﻿using L2dotNET.Game.model.zones;
-using L2dotNET.Game.world;
+﻿using L2dotNET.GameService.model.zones;
+using L2dotNET.GameService.world;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace L2dotNET.Game.managers
+namespace L2dotNET.GameService.managers
 {
     public class ZoneManager
     {

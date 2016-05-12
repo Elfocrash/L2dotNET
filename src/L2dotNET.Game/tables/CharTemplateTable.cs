@@ -1,5 +1,5 @@
-﻿using L2dotNET.Game.Enums;
-using L2dotNET.Game.templates;
+﻿using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.templates;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace L2dotNET.Game.tables
+namespace L2dotNET.GameService.tables
 {
     sealed class CharTemplateTable
     {

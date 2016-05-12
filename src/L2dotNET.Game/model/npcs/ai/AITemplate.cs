@@ -1,7 +1,7 @@
-﻿using L2dotNET.Game.model.playable;
+﻿using L2dotNET.GameService.model.playable;
 using System.Collections.Generic;
 
-namespace L2dotNET.Game.model.npcs.ai
+namespace L2dotNET.GameService.model.npcs.ai
 {
     public class AITemplate
     {

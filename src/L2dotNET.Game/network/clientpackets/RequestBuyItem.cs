@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.network.l2send;
+﻿using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.network.l2send;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class RequestBuyItem : GameServerNetworkRequest
     {

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using L2dotNET.Game.model.player;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.world;
-using L2dotNET.Game.templates;
+using L2dotNET.GameService.model.player;
+using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.world;
+using L2dotNET.GameService.templates;
 
-namespace L2dotNET.Game.model.stats
+namespace L2dotNET.GameService.model.stats
 {
     public class CStats
     {
@@ -202,7 +202,8 @@ namespace L2dotNET.Game.model.stats
 
         public void addTemplate(TEffectType type, double value)
         {
-            statTemplate.Add(type, value);
+            if(!statTemplate.Contains(type))
+                statTemplate.Add(type, value);
         }
 
         public void setTemplate(PcTemplate template)

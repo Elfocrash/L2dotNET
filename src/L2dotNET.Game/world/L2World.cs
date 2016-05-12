@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.network;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.network;
 using System.Linq;
-using L2dotNET.Game.model;
+using L2dotNET.GameService.model;
 using log4net;
 
-namespace L2dotNET.Game.world
+namespace L2dotNET.GameService.world
 {
     public class L2World
     {

@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game.model.items;
+﻿using L2dotNET.GameService.model.items;
 using System;
 using System.Collections.Generic;
 
-namespace L2dotNET.Game.network.l2send
+namespace L2dotNET.GameService.network.l2send
 {
     public class StatusUpdate : GameServerNetworkPacket
     {

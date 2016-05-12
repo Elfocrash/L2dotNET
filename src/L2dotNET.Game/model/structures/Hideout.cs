@@ -1,12 +1,12 @@
 ﻿using System;
-using L2dotNET.Game.model.npcs.ai;
-using L2dotNET.Game.model.zones;
-using L2dotNET.Game.model.zones.classes;
-using L2dotNET.Game.model.zones.forms;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.npcs.ai;
+using L2dotNET.GameService.model.zones;
+using L2dotNET.GameService.model.zones.classes;
+using L2dotNET.GameService.model.zones.forms;
+using L2dotNET.GameService.world;
 using log4net;
 
-namespace L2dotNET.Game.model.structures
+namespace L2dotNET.GameService.model.structures
 {
     public class Hideout : HideoutTemplate
     {

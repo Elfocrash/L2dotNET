@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using L2dotNET.Game.model.npcs.cubic.data;
-using L2dotNET.Game.model.skills2;
+using L2dotNET.GameService.model.npcs.cubic.data;
+using L2dotNET.GameService.model.skills2;
 
-namespace L2dotNET.Game.model.npcs.cubic
+namespace L2dotNET.GameService.model.npcs.cubic
 {
     public class CubicController
     {

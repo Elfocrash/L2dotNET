@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.model.playable;
+﻿using L2dotNET.GameService.model.playable;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class RequestChangePetName : GameServerNetworkRequest
     {

@@ -1,12 +1,12 @@
-﻿using L2dotNET.Game.model.npcs.ai;
-using L2dotNET.Game.model.npcs.decor;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.model.structures;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
+﻿using L2dotNET.GameService.model.npcs.ai;
+using L2dotNET.GameService.model.npcs.decor;
+using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.model.structures;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
 using log4net;
 
-namespace L2dotNET.Game.model.npcs
+namespace L2dotNET.GameService.model.npcs
 {
     class L2HideoutManager : L2Citizen
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace L2dotNET.Game
+namespace L2dotNET.GameService
 {
     class ConfigFile
     {

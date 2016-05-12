@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace L2dotNET.Auth.data
+namespace L2dotNET.LoginService.data
 {
     sealed class NetworkBlock
     {

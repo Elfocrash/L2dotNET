@@ -1,10 +1,10 @@
 ﻿
-using L2dotNET.Game.network.l2send;
+using L2dotNET.GameService.network.l2send;
 using System.Threading;
 using System;
-using L2dotNET.Game.model.zones;
-using L2dotNET.Game.model.zones.forms;
-namespace L2dotNET.Game.tables.admin
+using L2dotNET.GameService.model.zones;
+using L2dotNET.GameService.model.zones.forms;
+namespace L2dotNET.GameService.tables.admin
 {
     class AA_test : _adminAlias
     {

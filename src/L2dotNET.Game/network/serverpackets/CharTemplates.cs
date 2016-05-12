@@ -1,7 +1,7 @@
-﻿using L2dotNET.Game.templates;
+﻿using L2dotNET.GameService.templates;
 using System.Collections.Generic;
 
-namespace L2dotNET.Game.network.l2send
+namespace L2dotNET.GameService.network.l2send
 {
     class CharTemplates : GameServerNetworkPacket
     {

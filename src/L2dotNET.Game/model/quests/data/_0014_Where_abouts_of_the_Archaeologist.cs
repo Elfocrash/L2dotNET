@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.model.npcs;
+﻿using L2dotNET.GameService.model.npcs;
 
-namespace L2dotNET.Game.model.quests.data
+namespace L2dotNET.GameService.model.quests.data
 {
     class _0014_Where_abouts_of_the_Archaeologist : QuestOrigin
     {

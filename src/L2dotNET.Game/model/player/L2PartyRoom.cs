@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace L2dotNET.Game.model.player
+namespace L2dotNET.GameService.model.player
 {
     public class L2PartyRoom
     {

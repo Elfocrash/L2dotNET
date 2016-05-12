@@ -1,8 +1,8 @@
 ﻿using System;
-using L2dotNET.Game.model.npcs.decor;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.npcs.decor;
+using L2dotNET.GameService.world;
 
-namespace L2dotNET.Game.model.skills2.effects
+namespace L2dotNET.GameService.model.skills2.effects
 {
     class a_opendoor : TEffect
     {

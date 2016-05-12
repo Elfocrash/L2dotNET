@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using L2dotNET.Auth.gscommunication;
+using L2dotNET.LoginService.gscommunication;
 
-namespace L2dotNET.Auth
+namespace L2dotNET.LoginService
 {
     public abstract class SendServerPacket
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L2dotNET.Game.model.npcs.cubic
+namespace L2dotNET.GameService.model.npcs.cubic
 {
     public class Cubic
     {

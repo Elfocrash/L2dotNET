@@ -1,9 +1,9 @@
 ﻿using System;
-using L2dotNET.Auth.data;
-using L2dotNET.Auth.gscommunication;
-using L2dotNET.Auth.serverpackets;
+using L2dotNET.LoginService.data;
+using L2dotNET.LoginService.gscommunication;
+using L2dotNET.LoginService.Network.OuterNetwork;
 
-namespace L2dotNET.Auth.rcv_l2
+namespace L2dotNET.LoginService.rcv_l2
 {
     class RequestServerLogin : ReceiveBasePacket
     {

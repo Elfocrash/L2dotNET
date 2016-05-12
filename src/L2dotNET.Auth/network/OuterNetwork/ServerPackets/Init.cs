@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Auth.serverpackets
+namespace L2dotNET.LoginService.Network.OuterNetwork
 {
     public class Init : SendBasePacket
     {

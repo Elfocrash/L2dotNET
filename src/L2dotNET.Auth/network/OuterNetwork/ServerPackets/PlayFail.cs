@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.Auth.network.serverpackets
+namespace L2dotNET.LoginService.Network.OuterNetwork
 {
     class PlayFail : SendBasePacket
     {

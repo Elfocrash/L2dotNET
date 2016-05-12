@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.Auth
+namespace L2dotNET.LoginService
 {
     public sealed class Config
     {

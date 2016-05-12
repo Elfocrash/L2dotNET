@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game.model.npcs;
+﻿using L2dotNET.GameService.model.npcs;
 using System;
-using L2dotNET.Game.model.player.basic;
+using L2dotNET.GameService.model.player.basic;
 
-namespace L2dotNET.Game.model.quests.data
+namespace L2dotNET.GameService.model.quests.data
 {
     class _0017_Light_And_Darkness : QuestOrigin
     {

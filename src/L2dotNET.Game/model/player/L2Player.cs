@@ -1,25 +1,25 @@
-﻿using L2dotNET.Game.Enums;
-using L2dotNET.Game.model.communities;
-using L2dotNET.Game.model.inventory;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.model.npcs.cubic;
-using L2dotNET.Game.model.npcs.decor;
-using L2dotNET.Game.model.playable;
-using L2dotNET.Game.model.player;
-using L2dotNET.Game.model.player.ai;
-using L2dotNET.Game.model.player.partials;
-using L2dotNET.Game.model.player.telebooks;
-using L2dotNET.Game.model.player.transformation;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.model.skills2.effects;
-using L2dotNET.Game.model.vehicles;
-using L2dotNET.Game.network;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.templates;
-using L2dotNET.Game.tools;
-using L2dotNET.Game.world;
+﻿using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.model.communities;
+using L2dotNET.GameService.model.inventory;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.model.npcs.cubic;
+using L2dotNET.GameService.model.npcs.decor;
+using L2dotNET.GameService.model.playable;
+using L2dotNET.GameService.model.player;
+using L2dotNET.GameService.model.player.ai;
+using L2dotNET.GameService.model.player.partials;
+using L2dotNET.GameService.model.player.telebooks;
+using L2dotNET.GameService.model.player.transformation;
+using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.model.skills2.effects;
+using L2dotNET.GameService.model.vehicles;
+using L2dotNET.GameService.network;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.templates;
+using L2dotNET.GameService.tools;
+using L2dotNET.GameService.world;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using log4net;
@@ -32,7 +32,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Timers;
 
-namespace L2dotNET.Game
+namespace L2dotNET.GameService
 {
     [Synchronization]
     public partial class L2Player : L2Character
@@ -60,10 +60,12 @@ namespace L2dotNET.Game
         private long expAfterLogin = 0;
         public long ExpAfterLogin { get { return expAfterLogin; } set { expAfterLogin = value; } }
         public int SP { get; set; }
-        public int MaxCp { get; set; }
-        public double CurCp { get; set; }
-        public int MaxMp { get; set; }
-        public double CurMp { get; set; }
+        public override int MaxHP { get; set; }
+        public override double CurHP { get; set; }
+        public override int MaxCP { get; set; }
+        public override double CurCP { get; set; }
+        public override int MaxMP { get; set; }
+        public override double CurMP { get; set; }
         public int Karma = 0;
         public int PvpKills { get; set; }
         public long DeleteTime { get; set; }
@@ -179,12 +181,12 @@ namespace L2dotNET.Game
             {
                 ObjectId = ObjID,
                 Level = Level,
-                MaxHp = (int)MaxHp,
+                MaxHp = MaxHP,
                 CurHp = (int)CurHP,
-                MaxCp = (int)MaxCp,
-                CurCp = (int)CurCp,
-                MaxMp = (int)MaxMp,
-                CurMp = (int)CurMp,
+                MaxCp = MaxCP,
+                CurCp = (int)CurCP,
+                MaxMp = MaxMP,
+                CurMp = (int)CurMP,
                 Face = Face,
                 HairStyle = HairStyle,
                 HairColor = HairColor,
@@ -851,9 +853,7 @@ namespace L2dotNET.Game
         public void onGameInit()
         {
             CStatsInit();
-            if (!insrestored)
-                CharacterStat.setTemplate(ActiveClass);
-
+            CharacterStat.setTemplate(ActiveClass);
             ExpAfterLogin = 0;
         }
 
@@ -1501,51 +1501,12 @@ namespace L2dotNET.Game
         }
 
         public SortedList<int, db_InstanceReuse> InstanceReuse = new SortedList<int, db_InstanceReuse>();
-        bool insrestored = false;
         public int ViewingAdminPage;
         public int ViewingAdminTeleportGroup = -1;
         public int TeleportPayID;
         public int LastMinigameScore;
         public short ClanType;
         public int Fame;
-
-
-        public void db_restoreInstanceReuse()
-        {
-            if (insrestored)
-                return;
-
-            //MySqlConnection connection = SQLjec.getInstance().conn();
-            //MySqlCommand cmd = connection.CreateCommand();
-
-            //connection.Open();
-
-            //cmd.CommandText = "SELECT * FROM user_instances WHERE ownerId=" + ObjID + "";
-            //cmd.CommandType = CommandType.Text;
-
-            //MySqlDataReader reader = cmd.ExecuteReader();
-
-            //while (reader.Read())
-            //{
-            //    string name = reader.GetString("name");
-            //    int id = reader.GetInt32("instanceId");
-            //    string time = reader.GetString("disabledTo");
-
-            //    DateTime dt = DateTime.Parse(time);
-            //    if (dt.CompareTo(DateTime.Now) == 1)
-            //    {
-            //        db_InstanceReuse db = new db_InstanceReuse();
-            //        db.dt = dt;
-            //        db.id = id;
-            //        db.name = name;
-            //        InstanceReuse.Add(id, db);
-            //    }
-            //}
-
-            //reader.Close();
-            //connection.Close();
-            insrestored = true;
-        }
 
         public void ShowHtmAdmin(string val, bool plain)
         {
@@ -1917,7 +1878,6 @@ namespace L2dotNET.Game
             db_restoreSkills();
             db_restoreQuests();
             db_restoreRecipes();
-            db_restoreInstanceReuse();
             db_restoreTelbooks();
            // db_restoreShortcuts(); elfo to be added
 
@@ -2641,7 +2601,7 @@ namespace L2dotNET.Game
         private DateTime pingTimeout;
         private int lastPingId;
         public int Ping = -1;
-        public L2dotNET.Game.tables.multisell.MultiSellList CustomMultiSellList;
+        public L2dotNET.GameService.tables.multisell.MultiSellList CustomMultiSellList;
         public int LastRequestedMultiSellId = -1;
         public int AttackingId;
         public SortedList<int, TAcquireSkill> ActiveSkillTree;

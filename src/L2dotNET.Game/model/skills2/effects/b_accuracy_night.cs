@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.model.skills2.speceffects;
+﻿using L2dotNET.GameService.model.skills2.speceffects;
 
-namespace L2dotNET.Game.model.skills2.effects
+namespace L2dotNET.GameService.model.skills2.effects
 {
     class b_accuracy_night : TEffect
     {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.model.templates;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.model.templates;
+using L2dotNET.GameService.world;
 using log4net;
 
-namespace L2dotNET.Game.tables
+namespace L2dotNET.GameService.tables
 {
     class NpcTable
     {

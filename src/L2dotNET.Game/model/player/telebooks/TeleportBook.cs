@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.network.l2send;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.network.l2send;
 
-namespace L2dotNET.Game.model.player.telebooks
+namespace L2dotNET.GameService.model.player.telebooks
 {
     public class TeleportBook
     {

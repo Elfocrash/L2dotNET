@@ -1,6 +1,7 @@
-﻿using L2dotNET.Auth.serverpackets;
+﻿
+using L2dotNET.LoginService.Network.OuterNetwork;
 
-namespace L2dotNET.Auth.rcv_l2
+namespace L2dotNET.LoginService.rcv_l2
 {
     class RequestServerList : ReceiveBasePacket
     {

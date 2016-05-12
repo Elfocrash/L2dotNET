@@ -1,7 +1,7 @@
 ﻿using log4net;
 using System;
 
-namespace L2dotNET.Auth
+namespace L2dotNET.LoginService
 {
     public abstract class ReceiveBasePacket
     {

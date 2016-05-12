@@ -44,6 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -105,38 +106,38 @@
     <Compile Include="managers\NetRedClass.cs" />
     <Compile Include="managers\NetworkRedirect.cs" />
     <Compile Include="managers\ClientManager.cs" />
-    <Compile Include="network\rcv_gs\RequestUpdatePremiumState.cs" />
-    <Compile Include="network\rcv_gs\RequestPlayersOnline.cs" />
-    <Compile Include="network\rcv_gs\RequestPlayerInGame.cs" />
-    <Compile Include="network\rcv_gs\RequestLoginAuth.cs" />
-    <Compile Include="network\SendServerPacket.cs" />
-    <Compile Include="network\ReceiveServerPacket.cs" />
-    <Compile Include="network\rcv_gs\RequestLoginServPing.cs" />
-    <Compile Include="network\serverpackets\PlayFail.cs" />
-    <Compile Include="network\serverpackets_gs\PleaseKickAccount.cs" />
-    <Compile Include="network\serverpackets_gs\PleaseAcceptPlayer.cs" />
-    <Compile Include="network\serverpackets_gs\ServerLoginOk.cs" />
-    <Compile Include="network\serverpackets_gs\ServerLoginFail.cs" />
-    <Compile Include="network\serverpackets_gs\LoginServPing.cs" />
+    <Compile Include="Network\rcv_gs\RequestUpdatePremiumState.cs" />
+    <Compile Include="Network\rcv_gs\RequestPlayersOnline.cs" />
+    <Compile Include="Network\rcv_gs\RequestPlayerInGame.cs" />
+    <Compile Include="Network\rcv_gs\RequestLoginAuth.cs" />
+    <Compile Include="Network\SendServerPacket.cs" />
+    <Compile Include="Network\ReceiveServerPacket.cs" />
+    <Compile Include="Network\rcv_gs\RequestLoginServPing.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\PlayFail.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\PleaseKickAccount.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\PleaseAcceptPlayer.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginOk.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginFail.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\LoginServPing.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="managers\NetworkBlock.cs" />
     <Compile Include="gscommunication\ServerThreadPool.cs" />
     <Compile Include="model\L2Server.cs" />
-    <Compile Include="network\LoginClient.cs" />
-    <Compile Include="network\crypt\LoginCrypt.cs" />
+    <Compile Include="Network\LoginClient.cs" />
+    <Compile Include="Network\crypt\LoginCrypt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="network\rcv_l2\RequestServerLogin.cs" />
-    <Compile Include="network\rcv_l2\RequestServerList.cs" />
-    <Compile Include="network\rcv_l2\RequestAuthLogin.cs" />
-    <Compile Include="network\rcv_l2\AuthGameGuard.cs" />
-    <Compile Include="network\ReceiveBasePacket.cs" />
-    <Compile Include="network\SendBasePacket.cs" />
-    <Compile Include="network\serverpackets\PlayOk.cs" />
-    <Compile Include="network\serverpackets\ServerList.cs" />
-    <Compile Include="network\serverpackets\LoginFail.cs" />
-    <Compile Include="network\serverpackets\LoginOk.cs" />
-    <Compile Include="network\serverpackets\GGAuth.cs" />
-    <Compile Include="network\serverpackets\Init.cs" />
+    <Compile Include="Network\rcv_l2\RequestServerLogin.cs" />
+    <Compile Include="Network\rcv_l2\RequestServerList.cs" />
+    <Compile Include="Network\rcv_l2\RequestAuthLogin.cs" />
+    <Compile Include="Network\rcv_l2\AuthGameGuard.cs" />
+    <Compile Include="Network\ReceiveBasePacket.cs" />
+    <Compile Include="Network\SendBasePacket.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\PlayOk.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\ServerList.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\LoginFail.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\LoginOk.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\GGAuth.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\Init.cs" />
     <Compile Include="Utils\L2Security.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -173,7 +174,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Network\InnerNetwork\" />
+    <Folder Include="Network\OuterNetwork\ClientPackets\" />
+    <Folder Include="Network\serverpackets_gs\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">
       <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
@@ -186,6 +191,10 @@
     <ProjectReference Include="..\L2dotNET.Services\L2dotNET.Services.csproj">
       <Project>{0a70c676-f9bd-4593-9ef4-b22f8e170aed}</Project>
       <Name>L2dotNET.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L2dotNET\L2dotNET.csproj">
+      <Project>{00ee35ee-f920-4a50-b9bd-aab02da5c066}</Project>
+      <Name>L2dotNET</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

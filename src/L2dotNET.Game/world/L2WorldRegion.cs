@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.Game.model.zones;
-using L2dotNET.Game.network;
+using L2dotNET.GameService.model.zones;
+using L2dotNET.GameService.network;
 using log4net;
 
-namespace L2dotNET.Game.world
+namespace L2dotNET.GameService.world
 {
     public class L2WorldRegion
     {

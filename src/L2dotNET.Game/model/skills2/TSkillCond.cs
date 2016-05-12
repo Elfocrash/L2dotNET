@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.world;
+﻿using L2dotNET.GameService.world;
 
-namespace L2dotNET.Game.model.skills2
+namespace L2dotNET.GameService.model.skills2
 {
     public class TSkillCond
     {

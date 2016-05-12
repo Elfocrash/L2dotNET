@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.model.skills2;
+﻿using L2dotNET.GameService.model.skills2;
 
-namespace L2dotNET.Game.tables.admin
+namespace L2dotNET.GameService.tables.admin
 {
     class AA_setskill : _adminAlias
     {

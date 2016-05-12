@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game.network.l2send;
+﻿using L2dotNET.GameService.network.l2send;
 using System;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.world;
 
-namespace L2dotNET.Game.network.l2recv
+namespace L2dotNET.GameService.network.l2recv
 {
     class RequestJoinParty : GameServerNetworkRequest
     {

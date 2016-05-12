@@ -4,7 +4,7 @@ using System.IO;
 using Microsoft.CSharp;
 using log4net;
 
-namespace L2dotNET.Game.scripting
+namespace L2dotNET.GameService.scripting
 {
     /// <summary>
     /// Idea L2cemu
@@ -45,7 +45,7 @@ namespace L2dotNET.Game.scripting
         public object[] CompileFolder(string path)
         {
             CompilerParameters cp = new CompilerParameters();
-            cp.ReferencedAssemblies.Add("L2dotNET.Game.exe");
+            cp.ReferencedAssemblies.Add("L2dotNET.GameService.exe");
             cp.GenerateInMemory = true;
             cp.CompilerOptions = "/t:library";
 

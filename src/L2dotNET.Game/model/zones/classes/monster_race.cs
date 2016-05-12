@@ -1,6 +1,6 @@
-﻿using L2dotNET.Game.tables;
+﻿using L2dotNET.GameService.tables;
 
-namespace L2dotNET.Game.model.zones.classes
+namespace L2dotNET.GameService.model.zones.classes
 {
     public class monster_race : L2Zone
     {

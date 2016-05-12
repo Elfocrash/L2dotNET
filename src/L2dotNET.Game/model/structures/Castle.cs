@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace L2dotNET.Game.model.structures
+namespace L2dotNET.GameService.model.structures
 {
     class Castle
     {

@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using System.Xml;
-using L2dotNET.Game.model;
-using L2dotNET.Game.world;
-using L2dotNET.Game.model.zones.Type;
-using L2dotNET.Game.Enums;
+using L2dotNET.GameService.model;
+using L2dotNET.GameService.world;
+using L2dotNET.GameService.model.zones.Type;
+using L2dotNET.GameService.Enums;
 using log4net;
 
-namespace L2dotNET.Game.tables
+namespace L2dotNET.GameService.tables
 {
     class MapRegionTable
     {

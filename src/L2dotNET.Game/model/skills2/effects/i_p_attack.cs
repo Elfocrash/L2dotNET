@@ -1,9 +1,9 @@
-﻿using L2dotNET.Game.model.stats;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.world;
+﻿using L2dotNET.GameService.model.stats;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.world;
 using System;
 
-namespace L2dotNET.Game.model.skills2.effects
+namespace L2dotNET.GameService.model.skills2.effects
 {
     class i_p_attack : TEffect
     {

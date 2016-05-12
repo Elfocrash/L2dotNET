@@ -7,7 +7,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.Game.Utils
+namespace L2dotNET.Utility
 {
     /// <summary>
     /// Files reader helper.

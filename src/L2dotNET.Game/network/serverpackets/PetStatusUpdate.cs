@@ -1,7 +1,7 @@
-﻿using L2dotNET.Game.model.playable;
-using L2dotNET.Game.model.skills2;
+﻿using L2dotNET.GameService.model.playable;
+using L2dotNET.GameService.model.skills2;
 
-namespace L2dotNET.Game.network.l2send
+namespace L2dotNET.GameService.network.l2send
 {
     class PetStatusUpdate : GameServerNetworkPacket
     {

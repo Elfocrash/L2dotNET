@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using L2dotNET.Auth.data;
+using L2dotNET.LoginService.data;
 using L2Crypt;
 using log4net;
 
-namespace L2dotNET.Auth
+namespace L2dotNET.LoginService
 {
     sealed class ClientManager
     {

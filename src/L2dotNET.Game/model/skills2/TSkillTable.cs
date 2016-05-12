@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
-using L2dotNET.Game.compression;
+using L2dotNET.GameService.compression;
 using System.Xml.Linq;
-using L2dotNET.Game.Enums;
+using L2dotNET.GameService.Enums;
 using log4net;
 
-namespace L2dotNET.Game.model.skills2
+namespace L2dotNET.GameService.model.skills2
 {
     class TSkillTable
     {

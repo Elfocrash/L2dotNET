@@ -1,8 +1,8 @@
-﻿using L2dotNET.Game.model.inventory;
-using L2dotNET.Game.model.npcs.cubic;
-using L2dotNET.Game.model.skills2;
+﻿using L2dotNET.GameService.model.inventory;
+using L2dotNET.GameService.model.npcs.cubic;
+using L2dotNET.GameService.model.skills2;
 
-namespace L2dotNET.Game.network.l2send
+namespace L2dotNET.GameService.network.l2send
 {
     class CharInfo : GameServerNetworkPacket
     {
@@ -135,7 +135,7 @@ namespace L2dotNET.Game.network.l2send
             writeH(player.RecHave);
             writeD((int)player.ActiveClass.ClassId.Id);
 
-            writeD(player.MaxCp);//max cp here
+            writeD(player.MaxCP);//max cp here
             writeC(player.GetEnchantValue());
             writeC(player.TeamID);
             writeD(player.getClanCrestLargeId());

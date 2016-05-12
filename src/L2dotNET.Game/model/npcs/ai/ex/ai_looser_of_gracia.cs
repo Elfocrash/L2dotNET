@@ -1,5 +1,5 @@
 ﻿
-namespace L2dotNET.Game.model.npcs.ai.ex
+namespace L2dotNET.GameService.model.npcs.ai.ex
 {
     class ai_looser_of_gracia : AITemplate
     {

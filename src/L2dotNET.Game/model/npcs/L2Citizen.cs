@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Timers;
-using L2dotNET.Game.ai.npcai;
-using L2dotNET.Game.ai.template;
-using L2dotNET.Game.model.items;
-using L2dotNET.Game.model.npcs.ai;
-using L2dotNET.Game.model.quests;
-using L2dotNET.Game.model.skills2;
-using L2dotNET.Game.network.l2send;
-using L2dotNET.Game.tables;
-using L2dotNET.Game.tables.multisell;
-using L2dotNET.Game.tools;
-using L2dotNET.Game.world;
+using L2dotNET.GameService.ai.npcai;
+using L2dotNET.GameService.ai.template;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.model.npcs.ai;
+using L2dotNET.GameService.model.quests;
+using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.tables.multisell;
+using L2dotNET.GameService.tools;
+using L2dotNET.GameService.world;
 
-namespace L2dotNET.Game.model.npcs
+namespace L2dotNET.GameService.model.npcs
 {
     public class L2Citizen : L2Character
     {
