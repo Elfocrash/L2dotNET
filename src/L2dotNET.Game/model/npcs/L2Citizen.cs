@@ -105,7 +105,7 @@ namespace L2dotNET.GameService.model.npcs
 
             if (ask > 0 && ask < 1000)
             {
-                QuestManager.getInstance().onQuestTalk(player, this, ask, reply);
+                QuestManager.Instance.OnQuestTalk(player, this, ask, reply);
                 return;
             }
 

@@ -302,7 +302,7 @@ namespace L2dotNET.GameService
         {
             get { return Clan == null ? 0 : Clan.ClanID; }
 
-            set { Clan = ClanTable.getInstance().getClan(value); }
+            set { Clan = ClanTable.Instance.GetClan(value); }
         }
 
         public override int ClanCrestId

@@ -66,13 +66,13 @@ namespace L2dotNET.GameService
             BlowFishKeygen.GenerateKeys();
 
             AdminAccess.Instance.Initialize();
-
-            QuestManager.getInstance();
+            
+            QuestManager.Instance.Initialize();
 
             AnnouncementManager.Instance.Initialize();
 
-            AllianceTable.getInstance();
-            ClanTable.getInstance();
+            AllianceTable.Instance.Initialize();
+            ClanTable.Instance.Initialize();
 
             log.Info("NpcServer: ");
             StaticObjTable.Instance.Initialize();
