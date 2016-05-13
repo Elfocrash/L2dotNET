@@ -60,28 +60,26 @@ namespace L2dotNET.GameService.network.l2recv
         {
             if (_name.Length < 2 || _name.Length > 16)
             {
-                getClient().sendPacket(new CharCreateFail(getClient(), CharCreateFail.CharCreateFailReason.TOO_LONG_16_CHARS));
+                getClient().sendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TOO_LONG_16_CHARS));
                 return;
             }
 
             if (getClient()._accountChars.Count > 7)
             {
-                getClient().sendPacket(new CharCreateFail(getClient(), CharCreateFail.CharCreateFailReason.TOO_MANY_CHARS_ON_ACCOUNT));
+                getClient().sendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TOO_MANY_CHARS_ON_ACCOUNT));
                 return;
             }
 
-            bool exists = playerService.CheckIfPlayerNameExists(_name);
-
-            if (exists)
+            if (playerService.CheckIfPlayerNameExists(_name))
             {
-                getClient().sendPacket(new CharCreateFail(getClient(), CharCreateFail.CharCreateFailReason.NAME_EXISTS));
+                getClient().sendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.NAME_EXISTS));
                 return;
             }
 
             PcTemplate template = CharTemplateTable.Instance.GetTemplate((byte)_classId);
             if (template == null)
             {
-                getClient().sendPacket(new CharCreateFail(getClient(), CharCreateFail.CharCreateFailReason.CREATION_RESTRICTION));
+                getClient().sendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.CREATION_RESTRICTION));
                 return;
             }
 
