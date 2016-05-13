@@ -327,6 +327,8 @@
     <Compile Include="Model\zones\L2Zone.cs" />
     <Compile Include="network\clientpackets\RequestSocialAction.cs" />
     <Compile Include="network\Packet.cs" />
+    <Compile Include="network\serverpackets\CharDeleteFail.cs" />
+    <Compile Include="network\serverpackets\CharDeleteOk.cs" />
     <Compile Include="network\serverpackets\ExChangeNicknameNColor.cs" />
     <Compile Include="network\loginauth\ReceiveAuthPacket.cs" />
     <Compile Include="network\loginauth\recv\LoginServKickAccount.cs" />
