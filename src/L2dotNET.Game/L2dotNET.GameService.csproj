@@ -115,6 +115,8 @@
     <Compile Include="controllers\GameTime.cs" />
     <Compile Include="Crypt.cs" />
     <Compile Include="crypt\BlowFishKeygen.cs" />
+    <Compile Include="Datapacks\Game\cmpl\quests\_0001_letters_of_love.cs" />
+    <Compile Include="Datapacks\Game\cmpl\quests\_0002_what_women_want.cs" />
     <Compile Include="DepInjectionModule.cs" />
     <Compile Include="Enums\ClassId.cs" />
     <Compile Include="Enums\ClassRace.cs" />
@@ -200,7 +202,6 @@
     <Compile Include="Model\player\transformation\data\_20000_kadomas.cs" />
     <Compile Include="Model\player\transformation\L2Transform.cs" />
     <Compile Include="Model\player\transformation\TransformTemplate.cs" />
-    <Compile Include="Model\quests\data\_0002_what_women_want.cs" />
     <Compile Include="Model\quests\data\_0012_Secret_Meeting_With_Varka_Silenos .cs" />
     <Compile Include="Model\quests\data\_0013_Parcel_Deliverys.cs" />
     <Compile Include="Model\quests\data\_0014_Where_abouts_of_the_Archaeologist.cs" />
@@ -13976,7 +13977,6 @@
     <Folder Include="Datapacks\Auth\log\" />
     <Folder Include="Datapacks\Auth\sq\" />
     <Folder Include="Datapacks\Game\cmpl\ai\" />
-    <Folder Include="Datapacks\Game\cmpl\quests\" />
     <Folder Include="Datapacks\Game\html\scripts\teleports\RaceTrack\" />
     <Folder Include="Datapacks\Game\log\" />
   </ItemGroup>
