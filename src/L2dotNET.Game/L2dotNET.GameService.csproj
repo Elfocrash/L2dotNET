@@ -115,8 +115,6 @@
     <Compile Include="controllers\GameTime.cs" />
     <Compile Include="Crypt.cs" />
     <Compile Include="crypt\BlowFishKeygen.cs" />
-    <Compile Include="Datapacks\Game\cmpl\quests\_0001_letters_of_love.cs" />
-    <Compile Include="Datapacks\Game\cmpl\quests\_0002_what_women_want.cs" />
     <Compile Include="DepInjectionModule.cs" />
     <Compile Include="Enums\ClassId.cs" />
     <Compile Include="Enums\ClassRace.cs" />
@@ -13977,6 +13975,7 @@
     <Folder Include="Datapacks\Auth\log\" />
     <Folder Include="Datapacks\Auth\sq\" />
     <Folder Include="Datapacks\Game\cmpl\ai\" />
+    <Folder Include="Datapacks\Game\cmpl\quests\" />
     <Folder Include="Datapacks\Game\html\scripts\teleports\RaceTrack\" />
     <Folder Include="Datapacks\Game\log\" />
   </ItemGroup>
