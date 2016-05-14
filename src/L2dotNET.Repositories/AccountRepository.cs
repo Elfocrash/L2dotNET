@@ -1,15 +1,13 @@
-﻿using L2dotNET.Models;
+﻿using Dapper;
+using L2dotNET.Models;
 using L2dotNET.Repositories.Contracts;
+using log4net;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
-using log4net;
 
 namespace L2dotNET.Repositories
 {
@@ -34,7 +32,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: { "GetAccountByLogin" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
                 return null;
             }
         }
@@ -59,7 +57,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: { "CreateAccount" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
                 return null;
             }
         }
@@ -72,7 +70,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: { "CheckIfAccountIsCorrect" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
                 return false;
             }
         }
@@ -85,7 +83,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: { "GetPlayerIdsListByAccountName" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
                 return new List<int>();
             }
         }

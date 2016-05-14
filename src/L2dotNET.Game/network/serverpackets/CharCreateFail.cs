@@ -20,17 +20,17 @@
             CREATION_RESTRICTION = 6
         }
 
-        CharCreateFailReason _reason;
+        CharCreateFailReason reason;
 
         public CharCreateFail(CharCreateFailReason reason)
         {   
-            _reason = reason;
+            this.reason = reason;
         }
 
         protected internal override void write()
         {
             writeC(0x1a);
-            writeD((int)_reason);
+            writeD((int)reason);
         }
     }
 }

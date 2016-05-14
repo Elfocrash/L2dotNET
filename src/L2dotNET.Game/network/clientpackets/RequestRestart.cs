@@ -1,6 +1,4 @@
 ﻿using L2dotNET.GameService.network.l2send;
-using L2dotNET.GameService.world;
-using L2dotNET.GameService.tables;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -36,7 +34,7 @@ namespace L2dotNET.GameService.network.l2recv
             player.Termination();
             player.sendPacket(new RestartResponse());
 
-            CharacterSelectionInfo csl = new CharacterSelectionInfo(Client.AccountName, Client._accountChars, Client.SessionId);
+            CharacterSelectionInfo csl = new CharacterSelectionInfo(Client.AccountName, Client.AccountChars, Client.SessionId);
             csl.charId = player.ObjID;
             player.sendPacket(csl);
         }

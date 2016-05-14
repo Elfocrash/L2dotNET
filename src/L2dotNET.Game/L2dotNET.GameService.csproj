@@ -325,6 +325,7 @@
     <Compile Include="Model\zones\Type\L2TownZone.cs" />
     <Compile Include="Model\zones\ZoneTemplate.cs" />
     <Compile Include="Model\zones\L2Zone.cs" />
+    <Compile Include="network\clientpackets\CharacterDelete.cs" />
     <Compile Include="network\clientpackets\RequestSocialAction.cs" />
     <Compile Include="network\Packet.cs" />
     <Compile Include="network\serverpackets\CharDeleteFail.cs" />

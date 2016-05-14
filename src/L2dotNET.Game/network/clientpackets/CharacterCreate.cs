@@ -1,17 +1,13 @@
-﻿using System;
-using System.Data;
-using L2dotNET.GameService.model.inventory;
-using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.model.player;
+﻿using L2dotNET.GameService.model.inventory;
+using L2dotNET.GameService.model.skills2;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
-using MySql.Data.MySqlClient;
-using L2dotNET.Services.Contracts;
-using Ninject;
-using L2dotNET.Models;
-using L2dotNET.GameService.model.skills2;
 using L2dotNET.GameService.templates;
 using L2dotNET.GameService.world;
+using L2dotNET.Models;
+using L2dotNET.Services.Contracts;
+using Ninject;
+using System;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -58,13 +54,13 @@ namespace L2dotNET.GameService.network.l2recv
 
         public override void run()
         {
-            if (_name.Length < 2 || _name.Length > 16)
+            if (_name.Length > 16)
             {
                 getClient().sendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TOO_LONG_16_CHARS));
                 return;
             }
 
-            if (getClient()._accountChars.Count > 7)
+            if (getClient().AccountChars.Count > 7)
             {
                 getClient().sendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TOO_MANY_CHARS_ON_ACCOUNT));
                 return;
@@ -95,9 +91,8 @@ namespace L2dotNET.GameService.network.l2recv
             player.Level = 1;
             player.Gameclient = getClient();
 
-            player.Exp = 0;
+            player.Exp = 0;            
             
-            //player.MaximumHp = template._hp[player.Level];
             player.CStatsInit();
             player.CharacterStat.setTemplate(template);
 
@@ -114,8 +109,6 @@ namespace L2dotNET.GameService.network.l2recv
             player.X = 45901;
             player.Y = 41329;
             player.Z = -3508;
-
-            
 
             if (template.Items != null)
             {
@@ -148,7 +141,7 @@ namespace L2dotNET.GameService.network.l2recv
                 //}
             }
 
-            player.CharSlot = player.Gameclient._accountChars.Count;
+            player.CharSlot = player.Gameclient.AccountChars.Count;
 
             PlayerModel playerModel = new PlayerModel()
             {
@@ -209,10 +202,10 @@ namespace L2dotNET.GameService.network.l2recv
                 DeathPenaltyLevel = player.DeathPenaltyLevel
             };
             playerService.CreatePlayer(playerModel);
-            player.Gameclient._accountChars.Add(player);
+            player.Gameclient.AccountChars.Add(player);
             getClient().sendPacket(new CharCreateOk());
             L2World.Instance.RealiseEntry(player, null, true);
-            CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars, getClient().SessionId);
+            CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient().AccountChars, getClient().SessionId);
             csl.charId = player.ObjID;
             getClient().sendPacket(csl);
         }

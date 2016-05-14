@@ -1,4 +1,5 @@
 {
-    "max_buffs": "24",
-	"autoloot": "true"
+  "autoloot": "true",
+  "DeleteCharAfterDays": "0",
+  "max_buffs": "24"
 }
