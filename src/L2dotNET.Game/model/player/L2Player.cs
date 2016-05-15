@@ -2310,7 +2310,6 @@ namespace L2dotNET.GameService
 
                     if (SecondaryWeaponSupport == null || SecondaryWeaponSupport.Count < weapon.Template.SoulshotCount)
                     {
-                        //Not enough bolts, You have run out of arrows.
                         if (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow)
                             sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_ARROWS);
                         else
