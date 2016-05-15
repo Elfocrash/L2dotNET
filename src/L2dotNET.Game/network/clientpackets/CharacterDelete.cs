@@ -33,6 +33,12 @@ namespace L2dotNET.GameService.network.l2recv
 
             L2Player player = getClient().AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
 
+            if (player == null)
+            {
+                getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
+                return;
+            }
+
             if (player.ClanId != 0 && player.Clan != null)
             {
                 if (player.Clan.LeaderID == player.ObjID)
