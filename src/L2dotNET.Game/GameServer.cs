@@ -49,14 +49,13 @@ namespace L2dotNET.GameService
             MapRegionTable.Instance.Initialize();
             ZoneTable.Instance.Initialize();
 
-            ItemTable.Instance.Initialize();
-            ItemHandler.Instance.Initialize();
-
             NpcTable.Instance.Initialize();
             NpcData.Instance.Initialize();
             //SpawnTable.Instance.Initialize();
 
             //TSkillTable.Instance.Initialize();
+            ItemTable.getInstance();
+            ItemHandler.Instance.Initialize();
 
             MultiSell.Instance.Initialize();
             Capsule.Instance.Initialize();

@@ -10,29 +10,17 @@ namespace L2dotNET.GameService.tables
     class ItemTable
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ItemTable));
-        private static volatile ItemTable instance;
-        private static object syncRoot = new object();
-
-        public static ItemTable Instance
+        private static ItemTable instance = new ItemTable();
+        public static ItemTable getInstance()
         {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new ItemTable();
-                        }
-                    }
-                }
-
-                return instance;
-            }
+            return instance;
         }
 
-        public void Initialize()
+        public readonly SortedList<int, ItemTemplate> _items = new SortedList<int, ItemTemplate>();
+        public readonly SortedList<int, ItemSetTemplate> _sets = new SortedList<int, ItemSetTemplate>();
+        public readonly SortedList<int, int> ConvertDataList = new SortedList<int, int>();
+
+        public ItemTable()
         {
             FileInfo file = new FileInfo(@"scripts\items_set.txt");
             using (StreamReader sreader = file.OpenText())
@@ -358,16 +346,7 @@ namespace L2dotNET.GameService.tables
             log.Info($"ItemTable: #{ _items.Count } items, #{ _sets.Count } sets, #{ ConvertDataList.Count } convertable.");
         }
 
-        public readonly SortedList<int, ItemTemplate> _items = new SortedList<int, ItemTemplate>();
-        public readonly SortedList<int, ItemSetTemplate> _sets = new SortedList<int, ItemSetTemplate>();
-        public readonly SortedList<int, int> ConvertDataList = new SortedList<int, int>();
-
-        public ItemTable()
-        {
-            
-        }
-
-        public ItemTemplate GetItem(int id)
+        public ItemTemplate getItem(int id)
         {
             if (!_items.ContainsKey(id))
             {
@@ -421,7 +400,7 @@ namespace L2dotNET.GameService.tables
         }
 
 
-        public bool CanConvert(int id)
+        public bool canConvert(int id)
         {
             return ConvertDataList.ContainsKey(id);
         }

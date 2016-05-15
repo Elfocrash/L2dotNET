@@ -150,7 +150,7 @@ namespace L2dotNET.GameService.tables
 
         public recipe_item_entry(int id, long count)
         {
-            item = ItemTable.Instance.GetItem(id);
+            item = ItemTable.getInstance().getItem(id);
             this.count = count;
         }
     }

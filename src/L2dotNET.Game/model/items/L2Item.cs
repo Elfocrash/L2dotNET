@@ -116,10 +116,10 @@ namespace L2dotNET.GameService.model.items
             }
 
             if (Template.SetItem)
-                ItemTable.Instance.NotifyKeySetItem(owner, this, false);
+                ItemTable.getInstance().NotifyKeySetItem(owner, this, false);
 
             if (Template.Type == ItemTemplate.L2ItemType.armor && owner.setKeyItems != null && owner.setKeyItems.Contains(Template.ItemID))
-                ItemTable.Instance.NotifySetItemEquip(owner, this, false);
+                ItemTable.getInstance().NotifySetItemEquip(owner, this, false);
 
             if (Template.Type == ItemTemplate.L2ItemType.armor || Template.Type == ItemTemplate.L2ItemType.weapon || Template.Type == ItemTemplate.L2ItemType.accessary)
             {
@@ -168,10 +168,10 @@ namespace L2dotNET.GameService.model.items
                 tryEquipSecondary(owner);
 
             if (Template.SetItem)
-                ItemTable.Instance.NotifyKeySetItem(owner, this, true);
+                ItemTable.getInstance().NotifyKeySetItem(owner, this, true);
 
             if (Template.Type == ItemTemplate.L2ItemType.armor && owner.setKeyItems != null && owner.setKeyItems.Contains(Template.ItemID))
-                ItemTable.Instance.NotifySetItemEquip(owner, this, true);
+                ItemTable.getInstance().NotifySetItemEquip(owner, this, true);
 
             if (Template.Type == ItemTemplate.L2ItemType.armor || Template.Type == ItemTemplate.L2ItemType.weapon || Template.Type == ItemTemplate.L2ItemType.accessary)
             {
@@ -203,10 +203,10 @@ namespace L2dotNET.GameService.model.items
                 tryEquipSecondary(owner);
 
             if (Template.SetItem)
-                ItemTable.Instance.NotifyKeySetItem(owner, this, true);
+                ItemTable.getInstance().NotifyKeySetItem(owner, this, true);
 
             if (Template.Type == ItemTemplate.L2ItemType.armor && owner.setKeyItems != null && owner.setKeyItems.Contains(Template.ItemID))
-                ItemTable.Instance.NotifySetItemEquip(owner, this, true);
+                ItemTable.getInstance().NotifySetItemEquip(owner, this, true);
 
             owner.addStats(this);
         }
