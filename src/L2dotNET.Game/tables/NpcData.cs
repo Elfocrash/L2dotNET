@@ -57,7 +57,7 @@ namespace L2dotNET.GameService.tables
 
             Teleports = new NDTeleport();
 
-            ItemTable itable = ItemTable.getInstance();
+            ItemTable itable = ItemTable.Instance;
             {
                 XElement xml = XElement.Parse(File.ReadAllText(@"scripts\buylists.xml"));
                 foreach (var shops in xml.Elements("shops"))
@@ -78,7 +78,7 @@ namespace L2dotNET.GameService.tables
 
                             foreach (string i in items.Split(','))
                             {
-                                ItemTemplate it = itable.getItem(Convert.ToInt32(i));
+                                ItemTemplate it = itable.GetItem(Convert.ToInt32(i));
                                 if (it != null)
                                 {
                                     slist.items.Add(new ND_shopItem(it));
