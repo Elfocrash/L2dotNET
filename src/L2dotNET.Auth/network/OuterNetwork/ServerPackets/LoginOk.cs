@@ -1,25 +1,22 @@
 ﻿
+using L2dotNET.Network;
+
 namespace L2dotNET.LoginService.Network.OuterNetwork
 {
-    public class LoginOk : SendBasePacket
+    internal static class LoginOk
     {
-        public LoginOk(LoginClient Client)
-        {
-            base.makeme(Client);
-        }
+        /// <summary>
+        /// Packet opcode.
+        /// </summary>
+        private const byte Opcode = 0x03;
 
-        protected internal override void write()
+        internal static Packet ToPacket(LoginClient client)
         {
-            writeC(0x03);
-            writeD(lc.login1);
-            writeD(lc.login2);
-            writeD(0x00);
-            writeD(0x00);
-            writeD(0x000003ea);
-            writeD(0x00);
-            writeD(0x00);
-            writeD(0x00);
-            writeB(new byte[16]);
+            Packet p = new Packet(Opcode);
+            p.WriteInt(client.login1, client.login2);
+            p.WriteInt(0x00, 0x00, 0x000003ea, 0x00, 0x00, 0x00);
+            p.WriteBytesArray(new byte[16]);
+            return p;
         }
     }
 }

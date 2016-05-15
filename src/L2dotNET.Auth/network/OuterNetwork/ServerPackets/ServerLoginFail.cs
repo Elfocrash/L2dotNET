@@ -1,18 +1,21 @@
 ﻿
+using L2dotNET.Network;
+
 namespace L2dotNET.LoginService.Network.OuterNetwork
 {
-    class ServerLoginFail : SendServerPacket
+    internal static class ServerLoginFail
     {
-        private string code;
-        public ServerLoginFail(string code)
+        /// <summary>
+        /// Packet opcode.
+        /// </summary>
+        private const byte Opcode = 0xA5;
+
+        internal static Packet ToPacket(string code)
         {
-            this.code = code;
+            Packet p = new Packet(Opcode);
+            p.WriteString(code);
+            return p;
         }
 
-        protected internal override void write()
-        {
-            writeC(0xA5);
-            writeS(code);
-        }
     }
 }

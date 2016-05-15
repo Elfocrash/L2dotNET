@@ -8,8 +8,8 @@
     <ProjectGuid>{960CD325-3EEB-4AAA-9C67-727ECDE884BB}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>L2dotNET.Auth</RootNamespace>
-    <AssemblyName>L2dotNET.Auth</AssemblyName>
+    <RootNamespace>L2dotNET.LoginService</RootNamespace>
+    <AssemblyName>L2dotNET.LoginService</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -106,16 +106,14 @@
     <Compile Include="managers\NetRedClass.cs" />
     <Compile Include="managers\NetworkRedirect.cs" />
     <Compile Include="managers\ClientManager.cs" />
-    <Compile Include="Network\rcv_gs\RequestUpdatePremiumState.cs" />
-    <Compile Include="Network\rcv_gs\RequestPlayersOnline.cs" />
-    <Compile Include="Network\rcv_gs\RequestPlayerInGame.cs" />
-    <Compile Include="Network\rcv_gs\RequestLoginAuth.cs" />
-    <Compile Include="Network\SendServerPacket.cs" />
+    <Compile Include="Network\InnerNetwork\ClientPackets\RequestPlayersOnline.cs" />
+    <Compile Include="Network\InnerNetwork\ClientPackets\RequestPlayerInGame.cs" />
+    <Compile Include="Network\InnerNetwork\ClientPackets\RequestLoginAuth.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\PleaseAcceptPlayer.cs" />
     <Compile Include="Network\ReceiveServerPacket.cs" />
-    <Compile Include="Network\rcv_gs\RequestLoginServPing.cs" />
+    <Compile Include="Network\InnerNetwork\ClientPackets\RequestLoginServPing.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\PlayFail.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\PleaseKickAccount.cs" />
-    <Compile Include="Network\OuterNetwork\ServerPackets\PleaseAcceptPlayer.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginOk.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginFail.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginServPing.cs" />
@@ -126,12 +124,11 @@
     <Compile Include="Network\LoginClient.cs" />
     <Compile Include="Network\crypt\LoginCrypt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Network\rcv_l2\RequestServerLogin.cs" />
-    <Compile Include="Network\rcv_l2\RequestServerList.cs" />
-    <Compile Include="Network\rcv_l2\RequestAuthLogin.cs" />
-    <Compile Include="Network\rcv_l2\AuthGameGuard.cs" />
+    <Compile Include="Network\InnerNetwork\ClientPackets\RequestServerLogin.cs" />
+    <Compile Include="Network\InnerNetwork\ClientPackets\RequestServerList.cs" />
+    <Compile Include="Network\InnerNetwork\ClientPackets\RequestAuthLogin.cs" />
+    <Compile Include="Network\InnerNetwork\ClientPackets\AuthGameGuard.cs" />
     <Compile Include="Network\ReceiveBasePacket.cs" />
-    <Compile Include="Network\SendBasePacket.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\PlayOk.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerList.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginFail.cs" />
@@ -175,9 +172,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Network\InnerNetwork\" />
+    <Folder Include="Network\InnerNetwork\ServerPackets\" />
     <Folder Include="Network\OuterNetwork\ClientPackets\" />
-    <Folder Include="Network\serverpackets_gs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">

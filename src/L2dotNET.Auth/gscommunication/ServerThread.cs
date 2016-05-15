@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading;
-using L2dotNET.LoginService.network.rcv_gs;
 using log4net;
 using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.Network;
+using L2dotNET.LoginService.Network.InnerNetwork;
 
 namespace L2dotNET.LoginService.gscommunication
 {
@@ -104,9 +105,6 @@ namespace L2dotNET.LoginService.gscommunication
                 case 0xA3:
                     msg = new RequestPlayersOnline(this, buff);
                     break;
-                case 0xA4:
-                    msg = new RequestUpdatePremiumState(this, buff);
-                    break;
             }
 
             if (msg == null)
@@ -120,11 +118,10 @@ namespace L2dotNET.LoginService.gscommunication
             ServerThreadPool.Instance.Shutdown(Id);
         }
 
-        public void SendPacket(SendServerPacket pk)
+        public void Send(Packet pk)
         {
-            pk.write();
             List<byte> blist = new List<byte>();
-            byte[] db = pk.ToByteArray();
+            byte[] db = pk.GetBuffer();
             short len = (short)db.Length;
             blist.AddRange(BitConverter.GetBytes(len));
             blist.AddRange(db);
@@ -132,9 +129,9 @@ namespace L2dotNET.LoginService.gscommunication
             nstream.Flush();
         }
 
-        public void close(SendServerPacket pk)
+        public void close(Packet pk)
         {
-            SendPacket(pk);
+            Send(pk);
             ServerThreadPool.Instance.Shutdown(Id);
         }
 
@@ -170,15 +167,15 @@ namespace L2dotNET.LoginService.gscommunication
             return activeInGame.Contains(account);
         }
 
-        public void SendPlayer(LoginClient client, string time)
-        {
-            SendPacket(new PleaseAcceptPlayer(client.ActiveAccount, time));
-        }
-
         public void KickAccount(string account)
         {
             activeInGame.Remove(account);
-            SendPacket(new PleaseKickAccount(account));
+            Send(PleaseKickAccount.ToPacket(account));
+        }
+
+        public void SendPlayer(LoginClient client, string time)
+        {
+            Send(PleaseAcceptPlayer.ToPacket(client.ActiveAccount, time));
         }
     }
 }

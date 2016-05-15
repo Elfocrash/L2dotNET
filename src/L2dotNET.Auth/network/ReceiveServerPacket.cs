@@ -12,7 +12,7 @@ namespace L2dotNET.LoginService
         private int _offset;
         public ServerThread thread;
 
-        public void makeme(ServerThread thread, byte[] packet)
+        public void CreatePacket(ServerThread thread, byte[] packet)
         {
             this.thread = thread;
             _packet = packet;
@@ -20,21 +20,21 @@ namespace L2dotNET.LoginService
             read();
         }
 
-        public int readD()
+        public int ReadInt()
         {
             int result = BitConverter.ToInt32(_packet, _offset);
             _offset += 4;
             return result;
         }
 
-        public byte readC()
+        public byte ReadByte()
         {
             byte result = _packet[_offset];
             _offset += 1;
             return result;
         }
 
-        public byte[] readB(int Length)
+        public byte[] ReadByteArray(int Length)
         {
             byte[] result = new byte[Length];
             Array.Copy(_packet, _offset, result, 0, Length);
@@ -42,28 +42,28 @@ namespace L2dotNET.LoginService
             return result;
         }
 
-        public short readH()
+        public short ReadShort()
         {
             short result = BitConverter.ToInt16(_packet, _offset);
             _offset += 2;
             return result;
         }
 
-        public double readF()
+        public double ReadDouble()
         {
             double result = BitConverter.ToDouble(_packet, _offset);
             _offset += 8;
             return result;
         }
 
-        public long readQ()
+        public long ReadLong()
         {
             long result = BitConverter.ToInt64(_packet, _offset);
             _offset += 8;
             return result;
         }
 
-        public string readS()
+        public string ReadString()
         {
             string result = "";
             try

@@ -9,36 +9,31 @@ namespace L2dotNET.LoginService
 
         private byte[] _packet;
         private int _offset;
-        private LoginClient _Client;
+        public LoginClient Client { get; set; }
 
-        public LoginClient getClient()
+        internal void CreatePacket(LoginClient client, byte[] packet)
         {
-            return _Client;
-        }
-
-        internal void makeme(LoginClient Client, byte[] packet)
-        {
-            _Client = Client;
+            Client = client;
             _packet = packet;
             _offset = 1;
-            read();
+            Read();
         }
 
-        public int readD()
+        public int ReadInt()
         {
             int result = BitConverter.ToInt32(_packet, _offset);
             _offset += 4;
             return result;
         }
 
-        public byte readC()
+        public byte ReadByte()
         {
             byte result = _packet[_offset];
             _offset += 1;
             return result;
         }
 
-        public byte[] readB(int Length)
+        public byte[] ReadByteArray(int Length)
         {
             byte[] result = new byte[Length];
             Array.Copy(_packet, _offset, result, 0, Length);
@@ -46,21 +41,21 @@ namespace L2dotNET.LoginService
             return result;
         }
 
-        public short readH()
+        public short ReadShort()
         {
             short result = BitConverter.ToInt16(_packet, _offset);
             _offset += 2;
             return result;
         }
 
-        public double readF()
+        public double ReadDouble()
         {
             double result = BitConverter.ToDouble(_packet, _offset);
             _offset += 8;
             return result;
         }
 
-        public string readS()
+        public string ReadString()
         {
             string result = "";
             try
@@ -75,12 +70,12 @@ namespace L2dotNET.LoginService
             }
             catch (Exception ex)
             {
-                log.Error($"while reading string from packet, { ex.Message } { ex.StackTrace }");
+                log.Error($"While reading string from packet, { ex.Message } { ex.StackTrace }");
             }
             return result;
         }
 
-        public abstract void read();
-        public abstract void run();
+        public abstract void Read();
+        public abstract void Run();
     }
 }

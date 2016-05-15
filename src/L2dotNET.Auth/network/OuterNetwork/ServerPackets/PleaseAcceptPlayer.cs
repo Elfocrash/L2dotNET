@@ -1,19 +1,18 @@
 ﻿using L2dotNET.Models;
+using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.OuterNetwork
 {
-    class PleaseAcceptPlayer : SendServerPacket
+    internal static class PleaseAcceptPlayer
     {
-        private AccountModel account;
-        private string time;
-        public PleaseAcceptPlayer(AccountModel account, string time)
-        {
-            this.account = account;
-            this.time = time;
-        }
+        /// <summary>
+        /// Packet opcode.
+        /// </summary>
+        private const byte Opcode = 0xA7;
 
-        protected internal override void write()
+        internal static Packet ToPacket(AccountModel account, string time)
         {
+            Packet p = new Packet(Opcode);
             //writeC(0xA7);
             //writeS(account..ToLower());
             //writeS(account.type.ToString());
@@ -21,6 +20,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork
             //writeC(account.premium ? 1 : 0);
             //writeQ(account.points);
             //writeS(time);
+            return p;
         }
     }
 }

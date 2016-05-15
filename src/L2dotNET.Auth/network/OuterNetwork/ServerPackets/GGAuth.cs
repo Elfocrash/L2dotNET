@@ -1,21 +1,20 @@
 ﻿
+using L2dotNET.Network;
+
 namespace L2dotNET.LoginService.Network.OuterNetwork
 {
-    public class GGAuth : SendBasePacket
+    internal static class GGAuth
     {
-        public GGAuth(LoginClient Client)
-        {
-            base.makeme(Client);
-        }
+        /// <summary>
+        /// Packet opcode.
+        /// </summary>
+        private const byte Opcode = 0x0b;
 
-        protected internal override void write()
+        internal static Packet ToPacket(LoginClient client)
         {
-            writeC(0x0b);
-            writeD(lc.SessionId);
-            writeD(0x00);
-            writeD(0x00);
-            writeD(0x00);
-            writeD(0x00);
+            Packet p = new Packet(Opcode);
+            p.WriteInt(client.SessionId, 0x00, 0x00, 0x00, 0x00);
+            return p;
         }
     }
 }

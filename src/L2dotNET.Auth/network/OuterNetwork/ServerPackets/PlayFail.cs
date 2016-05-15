@@ -1,4 +1,5 @@
-﻿using System;
+﻿using L2dotNET.Network;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace L2dotNET.LoginService.Network.OuterNetwork
 {
-    class PlayFail : SendBasePacket
+    internal static class PlayFail
     {
+        /// <summary>
+        /// Packet opcode.
+        /// </summary>
+        private const byte Opcode = 0x06;
+
         public enum PlayFailReason
         {
             REASON_SYSTEM_ERROR = 0x01,
@@ -16,17 +22,13 @@ namespace L2dotNET.LoginService.Network.OuterNetwork
             REASON4 = 0x04,
             REASON_TOO_MANY_PLAYERS = 0x0f
         }
-        PlayFailReason _reason;
-        public PlayFail(LoginClient Client, PlayFailReason reason)
+
+        internal static Packet ToPacket(LoginClient client, PlayFailReason reason)
         {
-            base.makeme(Client);
-            _reason = reason;
+            Packet p = new Packet(Opcode);
+            p.WriteInt((byte)reason);
+            return p;
         }
 
-        protected internal override void write()
-        {
-            writeC(0x06);
-            writeD((byte)_reason);
-        }
     }
 }

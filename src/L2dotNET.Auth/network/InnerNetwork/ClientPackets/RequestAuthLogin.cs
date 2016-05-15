@@ -10,7 +10,7 @@ using L2dotNET.Services.Contracts;
 using L2dotNET.LoginService.Utils;
 using L2dotNET.LoginService.Network.OuterNetwork;
 
-namespace L2dotNET.LoginService.rcv_l2
+namespace L2dotNET.LoginService.Network.InnerNetwork
 {
     class RequestAuthLogin : ReceiveBasePacket
     {
@@ -19,21 +19,21 @@ namespace L2dotNET.LoginService.rcv_l2
 
         public RequestAuthLogin(LoginClient Client, byte[] data)
         {
-            base.makeme(Client, data);
+            base.CreatePacket(Client, data);
         }
 
         protected byte[] _raw = null;
 
-        public override void read()
+        public override void Read()
         {
-            _raw = readB(128);
+            _raw = ReadByteArray(128);
         }
 
-        public override void run()
+        public override void Run()
         {
             string username, password;
 
-            CipherParameters key = getClient().RsaPair._privateKey;
+            CipherParameters key = Client.RsaPair._privateKey;
             RSAEngine rsa = new RSAEngine();
             rsa.init(false, key);
 
@@ -57,8 +57,8 @@ namespace L2dotNET.LoginService.rcv_l2
                     account = accountService.CreateAccount(username, L2Security.HashPassword(password));
                 else
                 {
-                    getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_USER_OR_PASS_WRONG));
-                    getClient().close();
+                    Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_USER_OR_PASS_WRONG));
+                    Client.close();
                     return;
                 }
             }
@@ -66,26 +66,26 @@ namespace L2dotNET.LoginService.rcv_l2
             {
                 if (!accountService.CheckIfAccountIsCorrect(username, L2Security.HashPassword(password)))
                 {
-                    getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_USER_OR_PASS_WRONG));
-                    getClient().close();
+                    Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_USER_OR_PASS_WRONG));
+                    Client.close();
                     return;
                 }
 
                 if(ServerThreadPool.Instance.LoggedAlready(username.ToLower()))
                 {
-                    getClient().sendPacket(new LoginFail(getClient(), LoginFail.LoginFailReason.REASON_ACCOUNT_IN_USE));
-                    getClient().close();
+                    Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCOUNT_IN_USE));
+                    Client.close();
                     return;
                 }
             }
 
             Random rnd = new Random();
 
-            getClient().ActiveAccount = account;
-            getClient().setLoginPair(rnd.Next(), rnd.Next());
-            getClient().setPlayPair(rnd.Next(), rnd.Next());
+            Client.ActiveAccount = account;
+            Client.setLoginPair(rnd.Next(), rnd.Next());
+            Client.setPlayPair(rnd.Next(), rnd.Next());
 
-            getClient().sendPacket(new LoginOk(getClient()));
+            Client.Send(LoginOk.ToPacket(Client));
         }
     }
 }

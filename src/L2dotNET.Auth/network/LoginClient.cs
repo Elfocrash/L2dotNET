@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using L2dotNET.LoginService.rcv_l2;
 using L2Crypt;
 using L2dotNET.Models;
 using log4net;
 using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.Network;
+using L2dotNET.Utility;
+using L2dotNET.LoginService.Network.InnerNetwork;
 
 namespace L2dotNET.LoginService
 {
@@ -43,24 +45,25 @@ namespace L2dotNET.LoginService
             _loginCrypt.updateKey(BlowfishKey);
 
             new Thread(read).Start();
-            new Thread(sendInit).Start();
+            new Thread(SendInit).Start();
         }
 
-        public void sendInit()
+        public void SendInit()
         {
-            sendPacket(new Init(this));
+            Send(Init.ToPacket(this));
         }
 
-        public void sendPacket(SendBasePacket sbp)
+        public void Send(Packet p)
         {
-            sbp.write();
-            byte[] data = sbp.ToByteArray();
+            byte[] data = p.GetBuffer();
             data = _loginCrypt.encrypt(data, 0, data.Length);
             List<byte> array = new List<byte>();
             array.AddRange(BitConverter.GetBytes((short)(data.Length + 2)));
             array.AddRange(data);
             _stream.Write(array.ToArray(), 0, array.Count);
+            Console.WriteLine("Recieve :\r\n{0}", L2Buffer.ToString(array.ToArray()));
             _stream.Flush();
+
         }
 
         public void read()
@@ -147,7 +150,7 @@ namespace L2dotNET.LoginService
             }
 
             if (msg != null)
-                new Thread(new ThreadStart(msg.run)).Start();
+                new Thread(new ThreadStart(msg.Run)).Start();
         }
 
         public int login1, login2;
