@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.network.l2recv
             {
                 bool success;
 
-                if (Config.Instance.gameplayConfig.DELETE_DAYS == 0)
+                if (Config.Instance.gameplayConfig.DeleteDays == 0)
                 {
                     success = playerService.DeleteCharByObjId(player.ObjID);
                     getClient().AccountChars.Remove(getClient().AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot));

@@ -1,5 +1,20 @@
 {
   "autoloot": "true",
   "DeleteCharAfterDays": "0",
-  "max_buffs": "24"
+  "max_buffs": "24",
+  "FloodProtector": {
+    "CharacterSelectTime": "3000",
+    "DropItemTime": "1000",
+    "GlobalChatTime": "0",
+    "HeroVoiceTime": "10000",
+    "ManorTime": "3000",
+    "ManufactureTime": "300",
+    "MultisellTime": "100",
+    "RollDiceTime": "4200",
+    "SendMailTime": "10000",
+    "ServerBypassTime": "500",
+    "SocialTime": "2000",
+    "SubclassTime": "2000",
+    "TradeChatTime": "0"
+  }
 }
