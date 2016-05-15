@@ -171,9 +171,12 @@ namespace L2dotNET.GameService
             new System.Threading.Thread(read).Start();
         }
 
-        public void ResetAccountCharsSlotIndex()
-        {
-            AccountChars = AccountChars.OrderBy(orderby => orderby.CharSlot).ToList();
+        public void RemoveAccountCharAndResetSlotIndex(int charSlot)
+        {   
+            AccountChars = AccountChars.Where(filter => filter.CharSlot != charSlot)
+                                       .OrderBy(orderby => orderby.CharSlot)
+                                       .ToList();
+
             for (int i = 0; i < AccountChars.Count; i++)
                 AccountChars[i].CharSlot = i;
         }

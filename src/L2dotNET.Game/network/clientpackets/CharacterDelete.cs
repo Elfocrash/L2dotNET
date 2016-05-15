@@ -31,7 +31,6 @@ namespace L2dotNET.GameService.network.l2recv
             //	return;
             //}		
 
-            PlayerModel playerModel = playerService.GetPlayerModelBySlotId(getClient().AccountName, _charSlot);
             L2Player player = getClient().AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
 
             if (player.ClanId != 0 && player.Clan != null)
@@ -55,9 +54,8 @@ namespace L2dotNET.GameService.network.l2recv
                     getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
                     return;
                 }
-
-                getClient().AccountChars.Remove(getClient().AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot));
-                getClient().ResetAccountCharsSlotIndex();
+                
+                getClient().RemoveAccountCharAndResetSlotIndex(_charSlot);
             }
             else
             {
