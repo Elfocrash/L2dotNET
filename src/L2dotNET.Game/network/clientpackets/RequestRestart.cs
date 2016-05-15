@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.isInCombat())
             {
-                player.sendSystemMessage(102);//You cannot restart while in combat.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANT_RESTART_WHILE_FIGHTING);
                 player.sendActionFailed();
                 return;
             }

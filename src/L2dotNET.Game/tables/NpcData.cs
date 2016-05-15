@@ -182,14 +182,14 @@ namespace L2dotNET.GameService.tables
                 switch (e.itemId)
                 {
                     case 57:
-                        player.sendSystemMessage(279); //You do not have enough adena.
+                        player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                         break;
                     case 6651:
                         player.ShowHtm("fornonoblessitem.htm", npc);
                         break;
 
                     default:
-                        player.sendSystemMessage(701); //You do not have enough required items.
+                        player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_REQUIRED_ITEMS);
                         break;
                 }
 

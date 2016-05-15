@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.managers;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.model.skills2.effects
 {
@@ -33,42 +34,42 @@ namespace L2dotNET.GameService.model.skills2.effects
 
             L2Player player = (L2Player)caster;
             if (player.Summon != null)
-            {
-                player.sendSystemMessage(2062);//You cannot polymorph when you have summoned a servitor/pet.
+            {   
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHEN_SUMMONED_SERVITOR);
                 return false;
             }
 
             if (player.isSittingInProgress() || player.isSitting())
-            {
-                player.sendSystemMessage(2283);//You cannot transform while sitting.
+            {   
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_TRANSFORM_WHILE_SITTING);
                 player.sendActionFailed();
                 return false;
             }
 
             if (player.isInWater())
             {
-                player.sendSystemMessage(2060);//You cannot polymorph into the desired form in water.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_INTO_THE_DESIRED_FORM_IN_WATER);
                 player.sendActionFailed();
                 return false;
             }
 
             if (player.MountType > 0)
             {
-                player.sendSystemMessage(2063);//You cannot polymorph while riding a pet.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHILE_RIDING_PET);
                 player.sendActionFailed();
                 return false;
             }
 
             if (player.TransformID != 0)
             {
-                player.sendSystemMessage(2058);//You already polymorphed and cannot polymorph again.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.ALREADY_POLYMORPHED_CANNOT_POLYMORPH_AGAIN);
                 player.sendActionFailed();
                 return false;
             }
 
             if (player.isOnShip() || player.Boat != null)
             {
-                player.sendSystemMessage(2182);//You cannot polymorph while riding a boat.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHILE_RIDING_BOAT);
                 player.sendActionFailed();
                 return false;
             }

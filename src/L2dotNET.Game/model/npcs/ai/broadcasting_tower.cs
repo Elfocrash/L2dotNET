@@ -88,7 +88,7 @@ namespace L2dotNET.GameService.model.npcs.ai
 
             if (player.getAdena() < dx[2])
             {
-                player.sendSystemMessage(279);//You do not have enough adena.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                 player.sendActionFailed();
                 return;
             }

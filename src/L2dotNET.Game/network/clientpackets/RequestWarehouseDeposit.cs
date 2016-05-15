@@ -1,6 +1,7 @@
 ﻿using L2dotNET.GameService.model.inventory;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.network.l2send;
 using log4net;
 using System.Collections.Generic;
 
@@ -74,7 +75,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if ((player.getAdena() - adenatransfer) < fee)
             {
-                player.sendSystemMessage(281);//You do not have enough adena to pay the fee.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA_PAY_FEE);
                 player.sendActionFailed();
                 return;
             }
@@ -88,7 +89,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.ItemLimit_Warehouse < (itsize + slots))
             {
-                player.sendSystemMessage(130);//Your warehouse is full.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.WAREHOUSE_FULL);
                 player.sendActionFailed();
                 return;
             }

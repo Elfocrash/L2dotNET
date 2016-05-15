@@ -87,9 +87,8 @@ namespace L2dotNET.GameService.network.l2recv
                             target = L2World.Instance.GetPlayer(_target);
 
                         if (target == null)
-                        {
-                            //$s1 is not currently logged in.
-                            SystemMessage sm = new SystemMessage(3);
+                        {   
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_IS_NOT_ONLINE);
                             sm.AddString(_target);
                             player.sendPacket(sm);
 
@@ -99,9 +98,8 @@ namespace L2dotNET.GameService.network.l2recv
                         else
                         {
                             if (target.WhieperBlock)
-                            {
-                                //That person is in message refusal mode.
-                                player.sendSystemMessage(176);
+                            {   
+                                player.sendSystemMessage(SystemMessage.SystemMessageId.THE_PERSON_IS_IN_MESSAGE_REFUSAL_MODE);
                                 player.sendActionFailed();
                                 return;
                             }

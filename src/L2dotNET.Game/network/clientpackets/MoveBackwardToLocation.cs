@@ -1,4 +1,6 @@
 ﻿
+using L2dotNET.GameService.network.l2send;
+
 namespace L2dotNET.GameService.network.l2recv
 {
     class MoveBackwardToLocation : GameServerNetworkRequest
@@ -40,7 +42,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.isSittingInProgress() || player.isSitting())
             {
-                player.sendSystemMessage(31);//You cannot move while sitting.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANT_MOVE_SITTING);
                 player.sendActionFailed();
                 return;
             }

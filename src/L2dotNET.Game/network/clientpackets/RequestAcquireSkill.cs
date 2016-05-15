@@ -44,7 +44,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (e.lv_up_sp > player.SP)
             {
-                player.sendSystemMessage(278); //You do not have enough SP to learn this skill.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_SP_TO_LEARN_SKILL);
                 player.sendActionFailed();
                 return;
             }
@@ -53,7 +53,7 @@ namespace L2dotNET.GameService.network.l2recv
             {
                 if (!player.hasItem(e.itemid, e.itemcount))
                 {
-                    player.sendSystemMessage(276); //You do not have the necessary materials or prerequisites to learn this skill.
+                    player.sendSystemMessage(SystemMessage.SystemMessageId.ITEM_MISSING_TO_LEARN_SKILL);
                     player.sendActionFailed();
                     return;
                 }

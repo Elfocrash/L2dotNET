@@ -45,11 +45,11 @@ namespace L2dotNET.GameService
 
             player.Party = this;
 
-            SystemMessage sm = new SystemMessage(106);//You have joined $s1's party.
+            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_JOINED_S1_PARTY);
             sm.AddPlayerName(leader.Name);
             player.sendPacket(sm);
 
-            sm = new SystemMessage(107);//$c1 has joined the party.
+            sm = new SystemMessage(SystemMessage.SystemMessageId.S1_JOINED_PARTY);
             sm.AddPlayerName(leader.Name);
             broadcastToMembers(sm, player.ObjID);
         }
@@ -63,7 +63,7 @@ namespace L2dotNET.GameService
         public void broadcastToMembers(GameServerNetworkPacket pk, int except)
         {
             foreach (L2Player pl in Members)
-                if(pl.ObjID != except)
+                if (pl.ObjID != except)
                     pl.sendPacket(pk);
         }
 
@@ -74,7 +74,7 @@ namespace L2dotNET.GameService
         {
             VoteId = mode;
             broadcastToMembers(new ExAskModifyPartyLooting(leader.Name, mode));
-            SystemMessage sm = new SystemMessage(3135); //Requesting approval for changing party loot to "$s1".
+            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.REQUESTING_APPROVAL_FOR_CHANGING_PARTY_LOOT_TO_S1);
             sm.AddSysStr(LOOT_SYSSTRINGS[mode]);
             leader.sendPacket(sm);
 
@@ -117,13 +117,13 @@ namespace L2dotNET.GameService
             SystemMessage sm;
             if (agreed > half)
             {
-                sm = new SystemMessage(3138);//Party loot was changed to "$s1".
+                sm = new SystemMessage(SystemMessage.SystemMessageId.PARTY_LOOT_WAS_CHANGED_TO_S1);
                 sm.AddSysStr(LOOT_SYSSTRINGS[VoteId]);
                 itemDistribution = VoteId;
             }
             else
             {
-                sm = new SystemMessage(3137);//Party loot change was cancelled.
+                sm = new SystemMessage(SystemMessage.SystemMessageId.PARTY_LOOT_CHANGE_WAS_CANCELLED);
                 VoteId = -1;
             }
 
@@ -141,7 +141,7 @@ namespace L2dotNET.GameService
                     kick(player);
 
                     leader = Members.First.Value;
-                    SystemMessage sm = new SystemMessage(1384);//$c1 has become the party leader.
+                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_HAS_BECOME_A_PARTY_LEADER);
                     sm.AddPlayerName(leader.Name);
                     broadcastToMembers(sm);
 
@@ -152,7 +152,7 @@ namespace L2dotNET.GameService
                 {
                     foreach (L2Player pl in Members)
                     {
-                        pl.sendSystemMessage(203);//The party has dispersed.
+                        pl.sendSystemMessage(SystemMessage.SystemMessageId.PARTY_DISPERSED);
                         pl.sendPacket(new PartySmallWindowDeleteAll());
                         pl.Party = null;
                     }
@@ -174,11 +174,11 @@ namespace L2dotNET.GameService
 
             if (Members.Count > 2)
             {
-                player.sendSystemMessage(200);//You have withdrawn from the party.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_LEFT_PARTY);
                 player.sendPacket(new PartySmallWindowDeleteAll());
                 player.Party = null;
 
-                SystemMessage sm = new SystemMessage(108); //$c1 has left the party.
+                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_LEFT_PARTY);
                 sm.AddPlayerName(player.Name);
                 broadcastToMembers(sm);
                 broadcastToMembers(new PartySmallWindowDelete(player.ObjID, player.Name));
@@ -190,7 +190,7 @@ namespace L2dotNET.GameService
             {
                 foreach (L2Player pl in Members)
                 {
-                    pl.sendSystemMessage(203);//The party has dispersed.
+                    pl.sendSystemMessage(SystemMessage.SystemMessageId.PARTY_DISPERSED);
                     pl.sendPacket(new PartySmallWindowDeleteAll());
                     pl.Party = null;
                 }
@@ -203,7 +203,7 @@ namespace L2dotNET.GameService
         {
             L2Player player = null;
 
-            foreach(L2Player pl in Members)
+            foreach (L2Player pl in Members)
                 if (pl.Name.Equals(name))
                 {
                     player = pl;
@@ -212,14 +212,12 @@ namespace L2dotNET.GameService
 
             if (player == null)
             {
-                player.sendSystemMessage(317);//You have failed to expel the party member.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_EXPEL_THE_PARTY_MEMBER);
                 player.sendActionFailed();
                 return;
             }
 
-            //You have been expelled from the party.
-            //$c1 was expelled from the party.
-            kick(player, 202, 201);
+            kick(player, (int)SystemMessage.SystemMessageId.HAVE_BEEN_EXPELLED_FROM_PARTY, (int)SystemMessage.SystemMessageId.S1_WAS_EXPELLED_FROM_PARTY);
         }
     }
 }

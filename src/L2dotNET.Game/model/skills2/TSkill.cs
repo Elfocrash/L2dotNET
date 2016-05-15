@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.model.skills2
         public int cast_range, effective_range;
         public int skill_cool_time;
         public double reuse_delay;
-        
+
 
         public short is_magic = 0;
 
@@ -54,7 +54,7 @@ namespace L2dotNET.GameService.model.skills2
 
         public byte EnchantEnabled = 0;
 
-        
+
 
         /// <summary>
         /// (effect) (cond)* (sup)*
@@ -80,9 +80,9 @@ namespace L2dotNET.GameService.model.skills2
                     effects.Add(te);
                     order++;
                 }
-               // else
-               //     CLogger.error("skill #" + skill_id + " requested unregistered effect " + str);
-              ///  order++;
+                // else
+                //     CLogger.error("skill #" + skill_id + " requested unregistered effect " + str);
+                ///  order++;
             }
         }
 
@@ -230,10 +230,7 @@ namespace L2dotNET.GameService.model.skills2
                 }
 
             if (retcode == -1)
-            {
-                //$s1 cannot be used due to unsuitable terms.
-                target.sendPacket(new SystemMessage(113).AddSkillName(skill_id, level));
-            }
+                target.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANNOT_BE_USED).AddSkillName(skill_id, level));
 
             return retcode == -2;
         }

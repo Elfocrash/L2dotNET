@@ -32,12 +32,12 @@ namespace L2dotNET.GameService.tables.admin
             su.add(StatusUpdate.CUR_MP, (int)target.CurMP);
             target.sendPacket(su);
 
-            SystemMessage sm = new SystemMessage(1067); //$s2 HP has been restored by $s1.
+            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_HP_RESTORED_BY_S1);
             sm.AddPlayerName(admin.Name);
             sm.AddNumber((int)hpval);
             target.sendPacket(sm);
 
-            sm = new SystemMessage(1069); //$s2 MP has been restored by $s1.
+            sm = new SystemMessage(SystemMessage.SystemMessageId.S2_MP_RESTORED_BY_S1);
             sm.AddPlayerName(admin.Name);
             sm.AddNumber((int)mpval);
             target.sendPacket(sm);

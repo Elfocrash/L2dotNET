@@ -303,7 +303,7 @@ namespace L2dotNET.GameService.model.communities
         {
             if (player.ObjID == LeaderID)
             {
-                player.sendSystemMessage(239);//A clan leader cannot withdraw from their own clan.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CLAN_LEADER_CANNOT_WITHDRAW);
                 return;
             }
 
@@ -317,7 +317,7 @@ namespace L2dotNET.GameService.model.communities
                 }
             }
 
-            SystemMessage sm = new SystemMessage(223); //$s1 has withdrawn from the clan.
+            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_HAS_WITHDRAWN_FROM_THE_CLAN);
             sm.AddPlayerName(player.Name);
             broadcastToOnline(sm);
 
@@ -338,12 +338,12 @@ namespace L2dotNET.GameService.model.communities
             player.ClanType = 0;
 
             player.Title = "";
-            player.sendSystemMessage(197);//You have withdrawn from the clan.
+            player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_HAVE_WITHDRAWN_FROM_CLAN);
             player.sendPacket(new PledgeShowMemberListDeleteAll());
             player.broadcastUserInfo();
 
             player.setPenalty_ClanJoin(DateTime.Now.AddHours(24), false);
-            player.sendSystemMessage(232); //+1day
+            player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_MUST_WAIT_BEFORE_JOINING_ANOTHER_CLAN);
 
            // player.updateDb();
         }

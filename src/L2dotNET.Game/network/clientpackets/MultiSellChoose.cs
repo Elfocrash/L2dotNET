@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables.multisell;
 
 namespace L2dotNET.GameService.network.l2recv
@@ -69,7 +70,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (list == null || list.container.Count < _entryId)
             {
-                player.sendSystemMessage(1802);//The attempt to trade has failed.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
                 player.sendActionFailed();
                 return;
             }
@@ -102,7 +103,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if(!ok)
             {
-                player.sendSystemMessage(701);//You do not have enough required items.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_REQUIRED_ITEMS);
                 player.sendActionFailed();
                 return;
             }
@@ -156,7 +157,7 @@ namespace L2dotNET.GameService.network.l2recv
                 }
             }
 
-            player.sendSystemMessage(1656);//You have successfully traded the item with the NPC.
+            player.sendSystemMessage(SystemMessage.SystemMessageId.SUCCESSFULLY_TRADED_WITH_NPC);
         }
     }
 }

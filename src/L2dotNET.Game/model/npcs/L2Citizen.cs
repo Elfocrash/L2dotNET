@@ -240,14 +240,14 @@ namespace L2dotNET.GameService.model.npcs
         {
             if (player.Clan == null)
             {
-                player.sendSystemMessage(709); //You do not have the right to use the clan warehouse.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_CLAN_WAREHOUSE);
                 player.sendActionFailed();
                 return;
             }
 
             if (player.Clan.Level == 0)
             {
-                player.sendSystemMessage(710); //Only clans of clan level 1 or higher can use a clan warehouse.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.ONLY_LEVEL_1_CLAN_OR_HIGHER_CAN_USE_WAREHOUSE);
                 player.sendActionFailed();
                 return;
             }
@@ -269,7 +269,7 @@ namespace L2dotNET.GameService.model.npcs
         {
             if (player._warehouse == null)
             {
-                player.sendSystemMessage(282); //You have not deposited any items in your warehouse.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
                 player.sendActionFailed();
                 return;
             }
@@ -282,7 +282,7 @@ namespace L2dotNET.GameService.model.npcs
 
             if (items.Count == 0)// на случай если вх был создан и убраны вещи до времени выхода с сервера
             {
-                player.sendSystemMessage(282); //You have not deposited any items in your warehouse.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
                 player.sendActionFailed();
                 return;
             }
@@ -295,14 +295,14 @@ namespace L2dotNET.GameService.model.npcs
         {
             if (player.Clan == null)
             {
-                player.sendSystemMessage(709); //You do not have the right to use the clan warehouse.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_CLAN_WAREHOUSE);
                 player.sendActionFailed();
                 return;
             }
 
             if (player.Clan.Level == 0)
             {
-                player.sendSystemMessage(710); //Only clans of clan level 1 or higher can use a clan warehouse.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.ONLY_LEVEL_1_CLAN_OR_HIGHER_CAN_USE_WAREHOUSE);
                 player.sendActionFailed();
                 return;
             }
@@ -315,8 +315,8 @@ namespace L2dotNET.GameService.model.npcs
 
         public override void broadcastUserInfo()
         {
-            foreach(L2Object obj in knownObjects.Values)
-                if(obj is L2Player)
+            foreach (L2Object obj in knownObjects.Values)
+                if (obj is L2Player)
                     obj.sendPacket(new NpcInfo(this));
         }
 
@@ -374,13 +374,9 @@ namespace L2dotNET.GameService.model.npcs
                 }
 
                 if (nextLvl != 800)
-                    //You do not have any further skills to learn.  Come back when you have reached Level $s1.
-                    player.sendPacket(new SystemMessage(607).AddNumber(nextLvl));
+                    player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.DO_NOT_HAVE_FURTHER_SKILLS_TO_LEARN_S1).AddNumber(nextLvl));
                 else
-                {
-                    //There are no other skills to learn.
-                    player.sendSystemMessage(750);
-                }
+                    player.sendSystemMessage(SystemMessage.SystemMessageId.NO_MORE_SKILLS_TO_LEARN);
 
                 player.sendActionFailed();
                 return;
@@ -446,23 +442,23 @@ namespace L2dotNET.GameService.model.npcs
 
         public override double Radius
         {
-            get 
+            get
             {
                 if (Template.CollisionRadius == 0)
                     return 12;
 
-                return Template.CollisionRadius; 
+                return Template.CollisionRadius;
             }
         }
 
         public override double Height
         {
-            get 
+            get
             {
                 if (Template.CollisionHeight == 0)
                     return 22;
 
-                return Template.CollisionHeight; 
+                return Template.CollisionHeight;
             }
         }
 
@@ -473,12 +469,13 @@ namespace L2dotNET.GameService.model.npcs
 
         public void CreateOnePrivateEx(int npcId, string ai_type, int x, int y, int z)
         {
-            
+
         }
 
-        public double MaxHp 
+        public double MaxHp
         {
-            get {
+            get
+            {
                 return CharacterStat.getStat(TEffectType.b_max_hp);
             }
         }

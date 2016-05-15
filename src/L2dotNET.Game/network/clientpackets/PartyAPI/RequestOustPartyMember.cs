@@ -1,4 +1,6 @@
 ﻿
+using L2dotNET.GameService.network.l2send;
+
 namespace L2dotNET.GameService.network.l2recv
 {
     class RequestOustPartyMember : GameServerNetworkRequest
@@ -26,7 +28,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.Party.leader.ObjID != player.ObjID)
             {
-                player.sendSystemMessage(317);//You have failed to expel the party member.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_EXPEL_THE_PARTY_MEMBER);
                 player.sendActionFailed();
                 return;
             }

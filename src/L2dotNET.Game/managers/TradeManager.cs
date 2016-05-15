@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.managers
 
         public TradeDone trade_success = new TradeDone();
         public TradeDone trade_fail = new TradeDone(false);
-        public SystemMessage trade_ok = new SystemMessage(123);//Your trade was successful.
+        public SystemMessage trade_ok = new SystemMessage(SystemMessage.SystemMessageId.TRADE_SUCCESSFUL);
 
         private bool validateList(L2Player player)
         {
@@ -100,13 +100,13 @@ namespace L2dotNET.GameService.managers
             pl1.TradeState = 0;
             pl1.currentTrade.Clear();
             pl1.sendPacket(trade_fail);
-            pl1.sendPacket(new SystemMessage(124).AddPlayerName(name));//$c1 has cancelled the trade.
+            pl1.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(name));
             pl1.requester = null;
 
             pl2.TradeState = 0;
             pl2.currentTrade.Clear();
             pl2.sendPacket(trade_fail);
-            pl2.sendPacket(new SystemMessage(124).AddPlayerName(name));//$c1 has cancelled the trade.
+            pl2.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(name));
             pl2.requester = null;
         }
     }

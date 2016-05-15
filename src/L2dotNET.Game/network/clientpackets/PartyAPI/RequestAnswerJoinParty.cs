@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.network.l2recv
             if (player.requester.IsInOlympiad)
             {
                 response = 0;
-                player.requester.sendSystemMessage(3094);//A user currently participating in the Olympiad cannot send party and friend invitations.
+                player.requester.sendSystemMessage(SystemMessage.SystemMessageId.USER_CURRENTLY_PARTICIPATING_IN_OLYMPIAD_CANNOT_SEND_PARTY_AND_FRIEND_INVITATIONS);
             }
 
             player.requester.sendPacket(new JoinParty(response));
@@ -39,7 +39,7 @@ namespace L2dotNET.GameService.network.l2recv
             {
                 case -1:
                     {
-                        SystemMessage sm = new SystemMessage(3168); //$c1 is set to refuse party requests and cannot receive a party request.
+                        SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.C1_IS_SET_TO_REFUSE_PARTY_REQUESTS);
                         sm.AddPlayerName(player.Name);
                         player.requester.sendPacket(sm);
                     }
@@ -57,7 +57,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (leader.Party.Members.Count == 9)
             {
-                player.sendSystemMessage(2102); //You cannot enter due to the party having exceeded the limit
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_ENTER_DUE_PARTY_HAVING_EXCEED_LIMIT);
                 return;
             }
 

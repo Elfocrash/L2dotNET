@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.model.skills2.effects
             L2Item item = player.getWeaponItem();
             if (item == null || !ItemTable.getInstance().ConvertDataList.ContainsKey(item.Template.ItemID))
             {
-                caster.sendSystemMessage(2130);//You cannot convert this item.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
                 return nothing;
             }
 
@@ -44,19 +44,19 @@ namespace L2dotNET.GameService.model.skills2.effects
             L2Item item = caster.getWeaponItem();
             if (item == null)
             {
-                caster.sendSystemMessage(2130);//You cannot convert this item.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
                 return false;
             }
 
             if (item.AugmentationID > 0)
             {
-                caster.sendSystemMessage(2129);//The augmented item cannot be converted. Please convert after the augmentation has been removed.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.AUGMENTED_ITEM_CANNOT_BE_CONVERTED);
                 return false;
             }
 
             if (!ItemTable.getInstance().ConvertDataList.ContainsKey(item.Template.ItemID))
             {
-                caster.sendSystemMessage(2130);//You cannot convert this item.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
                 return false;
             }
 

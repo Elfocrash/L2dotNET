@@ -26,14 +26,14 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.EnchantState != ItemEnchantManager.STATE_ENCHANT_START)
             {
-                player.sendSystemMessage(355);//Inappropriate enchant conditions.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
                 player.sendActionFailed();
                 return;
             }
 
             if (a_sTargetID != player.EnchantItem.ObjID)
             {
-                player.sendSystemMessage(355);//Inappropriate enchant conditions.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
                 player.sendActionFailed();
                 return;
             }

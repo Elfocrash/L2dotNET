@@ -41,7 +41,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             player.TotalRestore();
 
-            player.sendPacket(new SystemMessage(34));
+            player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.WELCOME_TO_LINEAGE));
 
             AnnouncementManager.Instance.OnEnter(player);
 

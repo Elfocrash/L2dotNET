@@ -1,4 +1,5 @@
 ﻿
+using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
 namespace L2dotNET.GameService.model.zones.classes
 {
@@ -22,7 +23,7 @@ namespace L2dotNET.GameService.model.zones.classes
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.sendSystemMessage(Template._entering_message_no);
+                p.sendSystemMessage((SystemMessage.SystemMessageId)Template._entering_message_no);
             }
         }
 
@@ -38,7 +39,7 @@ namespace L2dotNET.GameService.model.zones.classes
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.sendSystemMessage(Template._leaving_message_no);
+                p.sendSystemMessage((SystemMessage.SystemMessageId)Template._leaving_message_no);
             }
         }
     }

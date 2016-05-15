@@ -23,9 +23,8 @@ namespace L2dotNET.GameService.model.skills2.effects
             target.CurHP = power;
             double next = target.CurHP;
 
-            int diff = (int)(next - current);
-            //$s1 HP has been restored.
-            target.sendPacket(new SystemMessage(1066).AddNumber(diff));
+            int diff = (int)(next - current);            
+            target.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_HP_RESTORED).AddNumber(diff));
             return nothing;
         }
     }

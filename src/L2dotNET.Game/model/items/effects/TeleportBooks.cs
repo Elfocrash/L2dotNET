@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.model.items.effects
 
             if (player.TelbookLimit >= player.TelbookLimitMax)
             {
-                player.sendSystemMessage(2390);//Your number of My Teleports slots has reached its maximum limit.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.YOUR_NUMBER_OF_MY_TELEPORTS_SLOTS_HAS_REACHED_LIMIT);
                 return;
             }
 
@@ -36,7 +36,7 @@ namespace L2dotNET.GameService.model.items.effects
             //sqb.where("objId", player.ObjID);
             //sqb.sql_update(false);
 
-            player.sendSystemMessage(2409);//The number of My Teleports slots has been increased.
+            player.sendSystemMessage(SystemMessage.SystemMessageId.NUMBER_OF_MY_TELEPORTS_SLOTS_HAS_BEEN_INCREASED);
             player.sendPacket(new ExGetBookMarkInfo(player.TelbookLimit, player.Telbook));
         }
     }
