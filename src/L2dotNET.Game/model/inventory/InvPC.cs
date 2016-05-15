@@ -359,7 +359,7 @@ namespace L2dotNET.GameService.model.inventory
 
         public void addItem(int id, long count, short enc, bool msg, bool update)
         {
-            ItemTemplate template = ItemTable.getInstance().getItem(id);
+            ItemTemplate template = ItemTable.Instance.GetItem(id);
 
             if (template == null)
                 return;
@@ -369,7 +369,7 @@ namespace L2dotNET.GameService.model.inventory
 
         public void addItem(int id, long count, bool msg, bool update)
         {
-            ItemTemplate template = ItemTable.getInstance().getItem(id);
+            ItemTemplate template = ItemTable.Instance.GetItem(id);
 
             if (template == null)
                 return;

@@ -43,20 +43,11 @@
   <ItemGroup>
     <Compile Include="Network\Firewall.cs" />
     <Compile Include="Network\InnerNetworkClient.cs" />
-    <Compile Include="Network\InnerNetworkConnection.cs" />
-    <Compile Include="Network\Listener.cs" />
     <Compile Include="Network\NetworkClient.cs" />
-    <Compile Include="Network\NetworkHelper.cs" />
     <Compile Include="Network\Packet.cs" />
     <Compile Include="Network\RemoteServiceSettings.cs" />
     <Compile Include="Network\ServiceShutdownEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scructs\NetLayer.cs" />
-    <Compile Include="Scructs\Services\ServiceLayer\InitializeRequest.cs" />
-    <Compile Include="Scructs\Services\ServiceLayer\InitializeResponse.cs" />
-    <Compile Include="Scructs\Services\ServiceLayer\SetSettingsRequest.cs" />
-    <Compile Include="Scructs\Services\ServiceLayer\SetSettingsResponse.cs" />
-    <Compile Include="UserSession.cs" />
     <Compile Include="Utility\L2Buffer.cs" />
     <Compile Include="Utility\L2FileReader.cs" />
     <Compile Include="Utility\L2Random.cs" />
@@ -64,10 +55,7 @@
     <Compile Include="Utility\ServiceTime.cs" />
     <Compile Include="Utility\Stopwatch.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scructs\Client\" />
-    <Folder Include="Scructs\Services\UserDataLayer\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

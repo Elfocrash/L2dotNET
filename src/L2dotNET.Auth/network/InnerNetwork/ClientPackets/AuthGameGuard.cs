@@ -2,23 +2,23 @@
 
 using L2dotNET.LoginService.Network.OuterNetwork;
 
-namespace L2dotNET.LoginService.rcv_l2
+namespace L2dotNET.LoginService.Network.InnerNetwork
 {
     class AuthGameGuard : ReceiveBasePacket
     {
         public AuthGameGuard(LoginClient Client, byte[] data)
         {
-            base.makeme(Client, data);
+            base.CreatePacket(Client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
             // do nothing
         }
 
-        public override void run()
+        public override void Run()
         {
-            this.getClient().sendPacket(new GGAuth(getClient()));
+            Client.Send(GGAuth.ToPacket(Client));
         }
     }
 }

@@ -1,13 +1,19 @@
 ﻿using L2dotNET.LoginService.gscommunication;
+using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.OuterNetwork
 {
-    class LoginServPing : SendServerPacket
+    internal static class LoginServPing
     {
-        protected internal override void write()
+        /// <summary>
+        /// Packet opcode.
+        /// </summary>
+        private const byte Opcode = 0xA1;
+        internal static Packet ToPacket()
         {
-            writeC(0xA1);
-            writeS("it's me, im alive. thanks for asking");
+            Packet p = new Packet(Opcode);
+            p.WriteString("LoginServPing: PING!");
+            return p;
         }
     }
 }

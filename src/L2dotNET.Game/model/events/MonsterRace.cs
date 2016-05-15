@@ -457,7 +457,7 @@ namespace L2dotNET.GameService.model.events
 
                 player.reduceAdena(adena, true, true);
 
-                L2Item ticket = new L2Item(ItemTable.getInstance().getItem(TICKET));
+                L2Item ticket = new L2Item(ItemTable.Instance.GetItem(TICKET));
                 ticket.Location = L2Item.L2ItemLocation.inventory;
                 ticket.CustomType1 = line + 1;
                 ticket.CustomType2 = adena / 100;

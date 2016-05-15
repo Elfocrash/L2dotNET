@@ -1,29 +1,24 @@
 ﻿
+using L2dotNET.Network;
+
 namespace L2dotNET.LoginService.Network.OuterNetwork
 {
-    public class Init : SendBasePacket
+    internal static class Init
     {
-        public Init(LoginClient Client)
+        /// <summary>
+        /// Packet opcode.
+        /// </summary>
+        private const byte Opcode = 0x00;
+
+        internal static Packet ToPacket(LoginClient client)
         {
-            base.makeme(Client);
-        }
-
-        protected internal override void write()
-        {
-            writeC(0x00);
-            writeD(lc.SessionId);
-            writeD(0x0000c621); // protocol revision
-
-            writeB(lc.RsaPair._scrambledModulus); // RSA Public Key
-
-            // unk GG related?
-            writeD(0x29DD954E);
-            writeD(0x77C39CFC);
-            writeD(unchecked((int)0x97ADB620));
-            writeD(0x07BDE0F7);
-
-            writeB(lc.BlowfishKey); // BlowFish key
-            writeC(0x00); // null termination ;)
+            Packet p = new Packet(Opcode);
+            p.WriteInt(client.SessionId, 0x0000c621);
+            p.WriteBytesArray(client.RsaPair._scrambledModulus);
+            p.WriteInt(0x29DD954E, 0x77C39CFC, unchecked((int)0x97ADB620), 0x07BDE0F7);
+            p.WriteBytesArray(client.BlowfishKey);
+            p.WriteByte(0x00);
+            return p;
         }
     }
 }

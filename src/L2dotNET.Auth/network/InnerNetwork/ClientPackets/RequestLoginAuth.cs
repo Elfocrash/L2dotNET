@@ -2,7 +2,7 @@
 using L2dotNET.LoginService.Network.OuterNetwork;
 using log4net;
 
-namespace L2dotNET.LoginService.network.rcv_gs
+namespace L2dotNET.LoginService.Network.InnerNetwork
 {
     class RequestLoginAuth : ReceiveServerPacket
     {
@@ -19,19 +19,19 @@ namespace L2dotNET.LoginService.network.rcv_gs
 
         public RequestLoginAuth(ServerThread server, byte[] data)
         {
-            base.makeme(server, data);
+            base.CreatePacket(server, data);
         }
 
         public override void read()
         {
-            port = readH();
-            host = readS();
-            info = readS();
-            code = readS();
-            curp = readD();
-            maxp = readH();
-            gmonly = readC();
-            test = readC();
+            port = ReadShort();
+            host = ReadString();
+            info = ReadString();
+            code = ReadString();
+            curp = ReadInt();
+            maxp = ReadShort();
+            gmonly = ReadByte();
+            test = ReadByte();
         }
 
         public override void run()
@@ -50,7 +50,7 @@ namespace L2dotNET.LoginService.network.rcv_gs
             if (server == null)
             {
                 log.Error($"Code '{ code }' for server was not found. Closing");
-                thread.close(new ServerLoginFail("wrong code"));
+                thread.close(ServerLoginFail.ToPacket("Code Error"));
                 return;
             }
 
@@ -63,7 +63,7 @@ namespace L2dotNET.LoginService.network.rcv_gs
             thread.TestMode = test == 1;
             thread.Connected = true;
 
-            thread.SendPacket(new ServerLoginOk());
+            thread.Send(ServerLoginOk.ToPacket());
             log.Info($"AuthThread: Server #{ server.Id } connected");
         }
     }

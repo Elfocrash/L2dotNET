@@ -1,12 +1,20 @@
 ﻿
+using L2dotNET.Network;
+
 namespace L2dotNET.LoginService.Network.OuterNetwork
 {
-    class ServerLoginOk : SendServerPacket
+    internal static class ServerLoginOk
     {
-        protected internal override void write()
+        /// <summary>
+        /// Packet opcode.
+        /// </summary>
+        private const byte Opcode = 0xA6;
+
+        internal static Packet ToPacket()
         {
-            writeC(0xA6);
-            writeS("auth complete");
+            Packet p = new Packet(Opcode);
+            p.WriteString("Gameserver Authenticated");
+            return p;
         }
     }
 }

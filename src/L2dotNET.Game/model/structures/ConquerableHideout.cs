@@ -93,7 +93,7 @@ namespace L2dotNET.GameService.model.structures
 
                 if (tmClanId > 0)
                 {
-                    L2Clan cl = ClanTable.getInstance().getClan(tmClanId);
+                    L2Clan cl = ClanTable.Instance.GetClan(tmClanId);
                     Message("Now its belong to: '" + cl.Name + "' until next siege.");
                     bool captured = false; //todo
 

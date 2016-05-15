@@ -1,18 +1,20 @@
 ﻿
+using L2dotNET.Network;
+
 namespace L2dotNET.LoginService.Network.OuterNetwork
 {
-    class PleaseKickAccount : SendServerPacket
+    internal static class PleaseKickAccount
     {
-        private string account;
-        public PleaseKickAccount(string account)
-        {
-            this.account = account;
-        }
+        /// <summary>
+        /// Packet opcode.
+        /// </summary>
+        private const byte Opcode = 0xA8;
 
-        protected internal override void write()
+        internal static Packet ToPacket(string account)
         {
-            writeC(0xA8);
-            writeS(account.ToLower());
+            Packet p = new Packet(Opcode);
+            p.WriteString(account.ToLower());
+            return p;
         }
     }
 }
