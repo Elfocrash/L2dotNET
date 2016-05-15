@@ -34,56 +34,41 @@ namespace L2dotNET.GameService.network.l2recv
             PlayerModel playerModel = playerService.GetPlayerModelBySlotId(getClient().AccountName, _charSlot);
             L2Player player = getClient().AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
 
-            int reason = 0;
-            if (player.ClanId != 0)
+            if (player.ClanId != 0 && player.Clan != null)
             {
-                if (player.Clan == null)
-                    reason = 0;
-                else if (player.Clan.LeaderID == player.ObjID)
-                    reason = 3;
-                else
-                    reason = 2;
-            }
-
-            if (reason == 0)
-            {
-                bool success;
-
-                if (Config.Instance.gameplayConfig.DeleteDays == 0)
+                if (player.Clan.LeaderID == player.ObjID)
                 {
-                    success = playerService.DeleteCharByObjId(player.ObjID);
-                    getClient().AccountChars.Remove(getClient().AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot));
-                    //Reset CharSlot index
-                    getClient().AccountChars = getClient().AccountChars.OrderBy(orderby => orderby.CharSlot).ToList();
-                    for (int i = 0; i < getClient().AccountChars.Count; i++)
-                    {
-                        getClient().AccountChars[i].CharSlot = i;
-                    }
+                    getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.CLAN_LEADERS_MAY_NOT_BE_DELETED));
+                    return;
                 }
                 else
-                    success = playerService.MarkToDeleteChar(player.ObjID);
-
-                if (!success)
-                    reason = 1;
-            }
-
-            switch (reason)
-            {
-                case 0:
-                    getClient().sendPacket(new CharDeleteOk());
-                    break;
-                case 1:
-                default:
-                    getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
-                    break;
-                case 2:
+                {
                     getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.YOU_MAY_NOT_DELETE_CLAN_MEMBER));
-                    break;
-                case 3:
-                    getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.CLAN_LEADERS_MAY_NOT_BE_DELETED));
-                    break;
+                    return;
+                }
             }
 
+            if (Config.Instance.gameplayConfig.DeleteDays == 0)
+            {
+                if (!playerService.DeleteCharByObjId(player.ObjID))
+                {
+                    getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
+                    return;
+                }
+
+                getClient().AccountChars.Remove(getClient().AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot));
+                getClient().ResetAccountCharsSlotIndex();
+            }
+            else
+            {
+                if (!playerService.MarkToDeleteChar(player.ObjID))
+                {
+                    getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
+                    return;
+                }
+            }
+
+            getClient().sendPacket(new CharDeleteOk());
             CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient().AccountChars, getClient().SessionId);
             getClient().sendPacket(csl);
         }

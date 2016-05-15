@@ -9,6 +9,7 @@ using log4net;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 
@@ -168,6 +169,13 @@ namespace L2dotNET.GameService
             PacketHandler.handlePacket(this, buff);
 
             new System.Threading.Thread(read).Start();
+        }
+
+        public void ResetAccountCharsSlotIndex()
+        {
+            AccountChars = AccountChars.OrderBy(orderby => orderby.CharSlot).ToList();
+            for (int i = 0; i < AccountChars.Count; i++)
+                AccountChars[i].CharSlot = i;
         }
 
         public string AccountName { get; set; }
