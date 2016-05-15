@@ -10,29 +10,16 @@ namespace L2dotNET.GameService.model.quests
     public class QuestManager
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(QuestManager));
-        private static volatile QuestManager instance;
-        private static object syncRoot = new object();
+        private static QuestManager qm = new QuestManager();
 
-        public static QuestManager Instance
+        public static QuestManager getInstance()
         {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new QuestManager();
-                        }
-                    }
-                }
-
-                return instance;
-            }
+            return qm;
         }
 
-        public void Initialize()
+        public readonly SortedList<int, QuestOrigin> _quests = new SortedList<int, QuestOrigin>();
+
+        public QuestManager()
         {
             object[] items = ScriptCompiler.Instance.CompileFolder(@"cmpl\quests");
 
@@ -59,25 +46,18 @@ namespace L2dotNET.GameService.model.quests
             log.Info($"QuestManager: loaded { _quests.Count } quests.");
         }
 
-        public readonly SortedList<int, QuestOrigin> _quests = new SortedList<int, QuestOrigin>();
-
-        public QuestManager()
-        {
-
-        }
-
         private void register(QuestOrigin qo)
         {
             _quests.Add(qo.questId, qo);
         }
 
-        public void QuestAccept(L2Player player, L2Citizen npc, int questId)
+        public void questAccept(L2Player player, L2Citizen npc, int questId)
         {
             QuestOrigin qo = _quests[questId];
             qo.onAccept(player, npc);
         }
 
-        public void TalkSelection(L2Player player, L2Citizen npc)
+        public void talkSelection(L2Player player, L2Citizen npc)
         {
             List<object[]> qlist = new List<object[]>();
             List<int> ilist = new List<int>();
@@ -149,7 +129,7 @@ namespace L2dotNET.GameService.model.quests
             clist.Clear();
         }
 
-        public void OnQuestTalk(L2Player player, L2Citizen npc, int ask, int reply)
+        public void onQuestTalk(L2Player player, L2Citizen npc, int ask, int reply)
         {
             foreach (QuestInfo qo in player._quests)
             {
@@ -161,12 +141,12 @@ namespace L2dotNET.GameService.model.quests
             }
         }
 
-        public void Quest_continue(L2Player player, L2Citizen npc, int qid)
+        public void quest_continue(L2Player player, L2Citizen npc, int qid)
         {
             player.quest_Talk(npc, qid);
         }
 
-        public void Quest_tryaccept(L2Player player, L2Citizen npc, int qid)
+        public void quest_tryaccept(L2Player player, L2Citizen npc, int qid)
         {
             QuestOrigin qo = _quests[qid];
             qo.tryAccept(player, npc);
