@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.managers.bbs
                 player.ShowHtmBBS("<html><body><br><br><center>Welcome to the community board</center><br><br></body></html>");
             }
             else
-                player.sendPacket(SystemMessage.CB_OFFLINE);
+                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.CB_OFFLINE));
         }
     }
 }
