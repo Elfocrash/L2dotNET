@@ -9,6 +9,7 @@ using log4net;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 
@@ -31,7 +32,7 @@ namespace L2dotNET.GameService
 
         public L2Player CurrentPlayer;
 
-        public List<L2Player> _accountChars = new List<L2Player>();
+        private List<L2Player> _accountChars = new List<L2Player>();
         public int Protocol;
         public bool IsTerminated;
 
@@ -170,10 +171,26 @@ namespace L2dotNET.GameService
             new System.Threading.Thread(read).Start();
         }
 
+        public void RemoveAccountCharAndResetSlotIndex(int charSlot)
+        {   
+            AccountChars = AccountChars.Where(filter => filter.CharSlot != charSlot)
+                                       .OrderBy(orderby => orderby.CharSlot)
+                                       .ToList();
+
+            for (int i = 0; i < AccountChars.Count; i++)
+                AccountChars[i].CharSlot = i;
+        }
+
         public string AccountName { get; set; }
         public int SessionId { get; set; }
         public string AccountType { get; set; }
         public string AccountTimeEnd { get; set; }
         public DateTime AccountTimeLogIn { get; set; }
+
+        public List<L2Player> AccountChars
+        {
+            get { return _accountChars ?? new List<L2Player>(); }
+            set { _accountChars = value; }
+        }
     }
 }

@@ -1,9 +1,4 @@
 ﻿using L2dotNET.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.Repositories.Contracts
 {
@@ -18,5 +13,9 @@ namespace L2dotNET.Repositories.Contracts
         void UpdatePlayer(PlayerModel player);
 
         PlayerModel GetPlayerModelBySlotId(string accountName, int slotId);
+
+        bool MarkToDeleteChar(int objId);
+
+        bool DeleteCharByObjId(int objId);
     }
 }

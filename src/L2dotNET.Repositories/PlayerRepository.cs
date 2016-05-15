@@ -1,15 +1,11 @@
-﻿using L2dotNET.Repositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
+﻿using Dapper;
+using L2dotNET.Models;
+using L2dotNET.Repositories.Contracts;
+using log4net;
 using MySql.Data.MySqlClient;
 using System.Configuration;
-using L2dotNET.Models;
-using log4net;
+using System.Data;
+using System.Linq;
 
 namespace L2dotNET.Repositories
 {
@@ -39,7 +35,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: { "GetAccountByLogin" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
                 return null;
             }
         }
@@ -52,7 +48,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: { "CheckIfPlayerNameExists" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
                 return true;
             }
         }
@@ -127,7 +123,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: { "CreatePlayer" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
             }
         }
 
@@ -200,7 +196,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: { "UpdatePlayer" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
             }
         }
 
@@ -218,9 +214,67 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: { "GetPlayerModelBySlotId" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
                 return null;
             }
+        }
+
+        public bool MarkToDeleteChar(int objId)
+        {
+            bool success;
+            try
+            {
+                this.db.Execute(@"UPDATE characters SET deletetime=@deletetime WHERE obj_id=@obj_id",
+                                new
+                                {
+                                    deletetime = 1, //TODO: Verify formula
+                                    //statement.setLong(1, System.currentTimeMillis() + Config.DELETE_DAYS * 86400000L);
+                                    obj_id = objId,
+                                });
+
+                success = true;
+            }
+            catch (MySqlException ex)
+            {
+                log.Error($"Method: { "MarkToDeleteChar" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+
+                success = false;
+            }
+            return success;
+        }
+
+        public bool DeleteCharByObjId(int objId)
+        {
+            bool success;
+            try
+            {
+                //this.db.Execute(@"DELETE FROM character_friends WHERE char_id=@obj_id OR friend_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM character_hennas WHERE char_obj_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM character_macroses WHERE char_obj_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM character_quests WHERE charId=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM character_recipebook WHERE char_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM character_shortcuts WHERE char_obj_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM character_skills WHERE char_obj_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM character_skills_save WHERE char_obj_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM character_subclasses WHERE char_obj_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM heroes WHERE char_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM olympiad_nobles WHERE char_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM seven_signs WHERE char_obj_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM pets WHERE item_obj_id IN (SELECT object_id FROM items WHERE items.owner_id=@obj_id)", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM augmentations WHERE item_id IN (SELECT object_id FROM items WHERE items.owner_id=@obj_id)", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM items WHERE owner_id=@obj_id", new { obj_id = objId });
+                //this.db.Execute(@"DELETE FROM character_raid_points WHERE char_id=@obj_id", new { obj_id = objId });
+                this.db.Execute(@"DELETE FROM characters WHERE obj_Id=@obj_id", new { obj_id = objId });
+
+                success = true;
+            }
+            catch (MySqlException ex)
+            {
+                log.Error($"Method: { "DeleteCharByObjId" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+
+                success = false;
+            }
+            return success;
         }
 
     }

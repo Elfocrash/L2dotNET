@@ -1,6 +1,6 @@
-using L2dotNET.Game;
-using L2dotNET.Game.model.npcs;
-using L2dotNET.Game.model.quests;
+using L2dotNET.GameService;
+using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.model.quests;
 
 class _0001_letters_of_love : QuestOrigin
 {
