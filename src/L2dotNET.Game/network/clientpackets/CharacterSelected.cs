@@ -16,12 +16,12 @@ namespace L2dotNET.GameService.network.l2recv
             base.makeme(client, data);
         }
 
-	    private int _charSlot;
+        private int _charSlot;
 
-	    private int _unk1; 	// new in C4
-	    private int _unk2;	// new in C4
-	    private int _unk3;	// new in C4
-	    private int _unk4;	// new in C4
+        private int _unk1;  // new in C4
+        private int _unk2;  // new in C4
+        private int _unk3;  // new in C4
+        private int _unk4;	// new in C4
 
         public override void read()
         {
@@ -36,19 +36,16 @@ namespace L2dotNET.GameService.network.l2recv
         {
             GameClient client = getClient();
 
-            if(client.CurrentPlayer == null)
-            {
-                PlayerModel playerModel = playerService.GetPlayerModelBySlotId(client.AccountName, _charSlot);
-                L2Player player = getClient().AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
+            PlayerModel playerModel = playerService.GetPlayerModelBySlotId(client.AccountName, _charSlot);
+            L2Player player = getClient().AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
 
-                PlayerModelMapping(playerModel, player);
+            PlayerModelMapping(playerModel, player);
 
-                player.Online = 1;
-                player.Gameclient = client;
-                client.CurrentPlayer = player;
+            player.Online = 1;
+            player.Gameclient = client;
+            client.CurrentPlayer = player;
 
-                getClient().sendPacket(new l2send.CharacterSelected(player, client.SessionId));
-            }
+            getClient().sendPacket(new l2send.CharacterSelected(player, client.SessionId));
 
         }
 
