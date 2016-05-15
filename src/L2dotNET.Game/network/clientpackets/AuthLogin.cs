@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.network.loginauth;
-using MySql.Data.MySqlClient;
-using L2dotNET.GameService.network.loginauth.recv;
-using L2dotNET.Models;
-using Ninject;
 using L2dotNET.Services.Contracts;
+using Ninject;
+using System.Collections.Generic;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -48,10 +44,10 @@ namespace L2dotNET.GameService.network.l2recv
                 {
                     L2Player p = new L2Player().RestorePlayer(id, getClient());
                     p.CharSlot = slot; slot++;
-                    Client._accountChars.Add(p);
+                    Client.AccountChars.Add(p);
                 }
 
-                getClient().sendPacket(new CharacterSelectionInfo(getClient().AccountName, getClient()._accountChars, getClient().SessionId));
+                getClient().sendPacket(new CharacterSelectionInfo(getClient().AccountName, getClient().AccountChars, getClient().SessionId));
                 AuthThread.Instance.setInGameAccount(getClient().AccountName, true);
             }
             else

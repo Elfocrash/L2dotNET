@@ -92,6 +92,7 @@ namespace L2dotNET.GameService.network.l2send
                 if (charId == -1 && player.LastAccountSelection == 1)
                     selection = 1;
 
+
                 writeD(selection); // auto-select char
                 writeC(player.GetEnchantValue());
                 writeD(0x00); // augment

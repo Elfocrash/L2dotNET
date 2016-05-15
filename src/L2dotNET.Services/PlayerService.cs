@@ -1,11 +1,6 @@
 ﻿using L2dotNET.Models;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.Services
 {
@@ -41,6 +36,16 @@ namespace L2dotNET.Services
         public PlayerModel GetPlayerModelBySlotId(string accountName, int slotId)
         {
             return this.unitOfWork.PlayerRepository.GetPlayerModelBySlotId(accountName, slotId);
+        }
+
+        public bool MarkToDeleteChar(int objId)
+        {
+            return this.unitOfWork.PlayerRepository.MarkToDeleteChar(objId);
+        }
+
+        public bool DeleteCharByObjId(int objId)
+        {
+            return this.unitOfWork.PlayerRepository.DeleteCharByObjId(objId);
         }
     }
 }

@@ -58,7 +58,7 @@ namespace L2dotNET.GameService.scripting
                 if (result.Errors.Count > 0)
                     log.Error($"ScriptCompiler: Failed to compile { fname }.");
                 else
-                    objectList.Add(result.CompiledAssembly.CreateInstance(info.Name.Remove(info.Name.Length - 3)));
+                    objectList.Add(result.CompiledAssembly.CreateInstance(Path.GetFileNameWithoutExtension(info.Name)));
             }
             log.Info($"Script Compiler: Compiled {objectList.Count} scripted quests.");
 
