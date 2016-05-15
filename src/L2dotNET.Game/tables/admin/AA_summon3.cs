@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.tables.admin
             bool x = false;
             for(int i = idmin; i <= idmax; i++)
             {
-                ItemTemplate item = ItemTable.getInstance().getItem(i);
+                ItemTemplate item = ItemTable.Instance.GetItem(i);
 
                 if (item == null)
                     admin.sendMessage("Item with id " + i + " not exists.");

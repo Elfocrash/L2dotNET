@@ -49,13 +49,14 @@ namespace L2dotNET.GameService
             MapRegionTable.Instance.Initialize();
             ZoneTable.Instance.Initialize();
 
+            ItemTable.Instance.Initialize();
+            ItemHandler.Instance.Initialize();
+
             NpcTable.Instance.Initialize();
             NpcData.Instance.Initialize();
             //SpawnTable.Instance.Initialize();
 
             //TSkillTable.Instance.Initialize();
-            ItemTable.getInstance();
-            ItemHandler.Instance.Initialize();
 
             MultiSell.Instance.Initialize();
             Capsule.Instance.Initialize();
@@ -66,13 +67,13 @@ namespace L2dotNET.GameService
             BlowFishKeygen.GenerateKeys();
 
             AdminAccess.Instance.Initialize();
-
-            QuestManager.getInstance();
+            
+            QuestManager.Instance.Initialize();
 
             AnnouncementManager.Instance.Initialize();
 
-            AllianceTable.getInstance();
-            ClanTable.getInstance();
+            AllianceTable.Instance.Initialize();
+            ClanTable.Instance.Initialize();
 
             log.Info("NpcServer: ");
             StaticObjTable.Instance.Initialize();
