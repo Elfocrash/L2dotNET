@@ -202,7 +202,6 @@
     <Compile Include="Model\player\transformation\data\_20000_kadomas.cs" />
     <Compile Include="Model\player\transformation\L2Transform.cs" />
     <Compile Include="Model\player\transformation\TransformTemplate.cs" />
-    <Compile Include="Model\quests\data\_0002_what_women_want.cs" />
     <Compile Include="Model\quests\data\_0012_Secret_Meeting_With_Varka_Silenos .cs" />
     <Compile Include="Model\quests\data\_0013_Parcel_Deliverys.cs" />
     <Compile Include="Model\quests\data\_0014_Where_abouts_of_the_Archaeologist.cs" />
@@ -327,8 +326,11 @@
     <Compile Include="Model\zones\Type\L2TownZone.cs" />
     <Compile Include="Model\zones\ZoneTemplate.cs" />
     <Compile Include="Model\zones\L2Zone.cs" />
+    <Compile Include="network\clientpackets\CharacterDelete.cs" />
     <Compile Include="network\clientpackets\RequestSocialAction.cs" />
     <Compile Include="network\Packet.cs" />
+    <Compile Include="network\serverpackets\CharDeleteFail.cs" />
+    <Compile Include="network\serverpackets\CharDeleteOk.cs" />
     <Compile Include="network\serverpackets\ExChangeNicknameNColor.cs" />
     <Compile Include="network\loginauth\ReceiveAuthPacket.cs" />
     <Compile Include="network\loginauth\recv\LoginServKickAccount.cs" />

@@ -1,6 +1,5 @@
 ﻿using L2dotNET.GameService.network.l2recv;
 using log4net;
-using System;
 using System.Runtime.Remoting.Contexts;
 using System.Threading;
 
@@ -31,16 +30,15 @@ namespace L2dotNET.GameService.network
                 case 0x08:
                     msg = new AuthLogin(client, buff);
                     break;
-
                 case 0x09:
                     msg = new Logout(client, buff);
                     break;
                 case 0x0b:
                     msg = new CharacterCreate(client, buff);
                     break;
-                //case 0x0c:
-                //    msg = new CharacterDelete(client, buff);
-                //    break;
+                case 0x0c:
+                    msg = new CharacterDelete(client, buff);
+                    break;
                 case 0x0d:
                     msg = new CharacterSelected(client, buff);
                     break;
@@ -231,9 +229,9 @@ namespace L2dotNET.GameService.network
                 case 0x86:
                     msg = new RequestTutorialPassCmdToServer(client, buff);
                     break;
-              //  case 0x87:
-              //      msg = new RequestTutorialQuestionMark();
-               //     break;
+                //  case 0x87:
+                //      msg = new RequestTutorialQuestionMark();
+                //     break;
 
                 case 0x93:
                     msg = new RequestChangePetName(client, buff);
