@@ -57,7 +57,7 @@ namespace L2dotNET.GameService.tables
 
             Teleports = new NDTeleport();
 
-            ItemTable itable = ItemTable.getInstance();
+            ItemTable itable = ItemTable.Instance;
             {
                 XElement xml = XElement.Parse(File.ReadAllText(@"scripts\buylists.xml"));
                 foreach (var shops in xml.Elements("shops"))
@@ -78,7 +78,7 @@ namespace L2dotNET.GameService.tables
 
                             foreach (string i in items.Split(','))
                             {
-                                ItemTemplate it = itable.getItem(Convert.ToInt32(i));
+                                ItemTemplate it = itable.GetItem(Convert.ToInt32(i));
                                 if (it != null)
                                 {
                                     slist.items.Add(new ND_shopItem(it));
@@ -182,14 +182,14 @@ namespace L2dotNET.GameService.tables
                 switch (e.itemId)
                 {
                     case 57:
-                        player.sendSystemMessage(279); //You do not have enough adena.
+                        player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                         break;
                     case 6651:
                         player.ShowHtm("fornonoblessitem.htm", npc);
                         break;
 
                     default:
-                        player.sendSystemMessage(701); //You do not have enough required items.
+                        player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_REQUIRED_ITEMS);
                         break;
                 }
 

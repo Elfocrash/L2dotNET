@@ -32,7 +32,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.isInCombat())
             {
-                player.sendSystemMessage(101);//You cannot exit the game while in combat.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANT_LOGOUT_WHILE_FIGHTING);
                 player.sendActionFailed();
                 return;
             }

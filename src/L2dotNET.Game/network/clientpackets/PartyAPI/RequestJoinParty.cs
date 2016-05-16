@@ -45,7 +45,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (target == null)
             {
-                player.sendSystemMessage(185);//You must first select a user to invite to your party.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.FIRST_SELECT_USER_TO_INVITE_TO_PARTY);
                 player.sendActionFailed();
                 return;
             }
@@ -59,56 +59,56 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (target.Party != null)
             {
-                SystemMessage sm = new SystemMessage(160);
+                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_IS_ALREADY_IN_PARTY);
                 sm.AddPlayerName(target.Name);
-                player.sendPacket(sm);//$c1 is a member of another party and cannot be invited.
+                player.sendPacket(sm);
                 player.sendActionFailed();
                 return;
             }
 
             if (player.IsCursed || target.IsCursed)
             {
-                player.sendSystemMessage(152);//You have invited the wrong target.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_HAVE_INVITED_THE_WRONG_TARGET);
                 player.sendActionFailed();
                 return;
             }
 
             if (target.PartyState == 1)
             {
-                player.sendSystemMessage(164);//Waiting for another reply.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.WAITING_FOR_ANOTHER_REPLY);
                 player.sendActionFailed();
                 return;
             }
 
             if (target.TradeState == 1 || target.TradeState == 2)
             {
-                player.sendPacket(new SystemMessage(153).AddPlayerName(target.Name));//$c1 is on another task. Please try again later.
+                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_IS_BUSY_TRY_LATER).AddPlayerName(target.Name));
                 player.sendActionFailed();
                 return;
             }
 
             if (player.Party != null && player.Party.leader.ObjID != player.ObjID)
             {
-                player.sendSystemMessage(154);//Only the leader can give out invitations.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.ONLY_LEADER_CAN_INVITE);
                 player.sendActionFailed();
                 return;
             }
 
             if (player.IsInOlympiad)
             {
-                player.requester.sendSystemMessage(3094);//A user currently participating in the Olympiad cannot send party and friend invitations.
+                player.requester.sendSystemMessage(SystemMessage.SystemMessageId.USER_CURRENTLY_PARTICIPATING_IN_OLYMPIAD_CANNOT_SEND_PARTY_AND_FRIEND_INVITATIONS);
                 player.sendActionFailed();
                 return;
             }
 
             if (player.Party != null && player.Party.Members.Count == 9)
             {
-                player.requester.sendSystemMessage(155);//The party is full.
+                player.requester.sendSystemMessage(SystemMessage.SystemMessageId.PARTY_FULL);
                 player.sendActionFailed();
                 return;
             }
 
-            player.sendPacket(new SystemMessage(105).AddPlayerName(target.Name));//$c1 has been invited to the party.
+            player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.YOU_INVITED_S1_TO_PARTY).AddPlayerName(target.Name));
             target.PendToJoinParty(player, itemDistribution);
         }
     }

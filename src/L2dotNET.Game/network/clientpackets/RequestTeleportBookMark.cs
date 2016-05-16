@@ -1,4 +1,6 @@
 ﻿
+using L2dotNET.GameService.network.l2send;
+
 namespace L2dotNET.GameService.network.l2recv
 {
     class RequestTeleportBookMark : GameServerNetworkRequest
@@ -20,7 +22,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.Telbook == null)
             {
-                player.sendSystemMessage(2358); //You have no space to save the teleport location.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.NO_SPACE_TO_SAVE_TELEPORT_LOCATION);
                 player.sendActionFailed();
                 return;
             }

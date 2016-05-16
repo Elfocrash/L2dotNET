@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.model.items.effects
         {
             if (player.EnchantState != 0)
             {
-                player.sendSystemMessage(2188);//Another enchantment is in progress. Please complete the previous task, then try again
+                player.sendSystemMessage(SystemMessage.SystemMessageId.ANOTHER_ENCHANTMENT_IS_IN_PROGRESS);
                 player.sendActionFailed();
                 return;
             }
@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.model.items.effects
             player.sendPacket(new ChooseInventoryItem(item.Template.ItemID));
             player.EnchantScroll = item;
             player.EnchantState = ItemEnchantManager.STATE_PUT_ITEM;
-            player.sendSystemMessage(303);//Select item to enchant.
+            player.sendSystemMessage(SystemMessage.SystemMessageId.SELECT_ITEM_TO_ENCHANT);
         }
     }
 }

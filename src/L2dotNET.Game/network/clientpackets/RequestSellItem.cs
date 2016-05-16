@@ -51,7 +51,7 @@ namespace L2dotNET.GameService.network.l2recv
 
                 if (count < 0 || count > int.MaxValue)
                 {
-                    player.sendSystemMessage(1801); //The attempt to sell has failed.
+                    player.sendSystemMessage(SystemMessage.SystemMessageId.SELL_ATTEMPT_FAILED);
                     player.sendActionFailed();
                     return;
                 }
@@ -68,7 +68,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (totalCost > long.MaxValue)
             {
-                player.sendSystemMessage(1801); //The attempt to sell has failed.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.SELL_ATTEMPT_FAILED);
                 player.sendActionFailed();
                 return;
             }

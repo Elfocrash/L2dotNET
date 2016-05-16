@@ -1,5 +1,6 @@
 ﻿using L2dotNET.GameService.managers;
 using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -24,7 +25,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.EnchantState != ItemEnchantManager.STATE_ENCHANT_START || player.EnchantItem.ObjID != a_sTargetID)
             {
-                player.sendSystemMessage(2387);//Registration of the support enhancement spellbook has failed.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.REGISTRATION_OF_ENHANCEMENT_SPELLBOOK_HAS_FAILED);
                 player.sendActionFailed();
                 return;
             }
@@ -33,7 +34,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (stone == null)
             {
-                player.sendSystemMessage(2387);//Registration of the support enhancement spellbook has failed.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.REGISTRATION_OF_ENHANCEMENT_SPELLBOOK_HAS_FAILED);
                 player.sendActionFailed();
                 return;
             }

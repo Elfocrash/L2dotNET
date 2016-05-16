@@ -41,7 +41,7 @@ namespace L2dotNET.GameService.network.l2recv
             if (bDone)
             {
                 player.TradeState = 4;
-                player.requester.sendPacket(new SystemMessage(121).AddPlayerName(player.Name));//$c1 has confirmed the trade.
+                player.requester.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CONFIRMED_TRADE).AddPlayerName(player.Name));
 
                 if (player.requester.TradeState == 4)
                     TradeManager.getInstance().PersonalTrade(player, player.requester);
@@ -52,7 +52,7 @@ namespace L2dotNET.GameService.network.l2recv
                 player.TradeState = 0;
                 player.currentTrade.Clear();
                 player.sendPacket(end);
-                player.requester.sendPacket(new SystemMessage(124).AddPlayerName(player.Name));//$c1 has cancelled the trade.
+                player.requester.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(player.Name));
 
                 player.requester.TradeState = 0;
                 player.requester.currentTrade.Clear();

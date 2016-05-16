@@ -93,21 +93,19 @@ namespace L2dotNET.GameService.model.structures
 
                 if (tmClanId > 0)
                 {
-                    L2Clan cl = ClanTable.getInstance().getClan(tmClanId);
+                    L2Clan cl = ClanTable.Instance.GetClan(tmClanId);
                     Message("Now its belong to: '" + cl.Name + "' until next siege.");
                     bool captured = false; //todo
 
                     if (captured)
                     {
-                        cl.UpdatePledgeNameValue(ReputationCapture);
-                        //Your clan has added $1s points to its clan reputation score.
-                        cl.broadcastToMembers(new SystemMessage(1781).AddNumber(ReputationCapture));
+                        cl.UpdatePledgeNameValue(ReputationCapture);                        
+                        cl.broadcastToMembers(new SystemMessage(SystemMessage.SystemMessageId.CLAN_ADDED_S1S_POINTS_TO_REPUTATION_SCORE).AddNumber(ReputationCapture));
                     }
                     else
                     {
                         cl.UpdatePledgeNameValue(ReputationNothing);
-                        //Your clan's newly acquired contested clan hall has added $s1 points to your clan's reputation score.
-                        cl.broadcastToMembers(new SystemMessage(1774).AddNumber(ReputationNothing));
+                        cl.broadcastToMembers(new SystemMessage(SystemMessage.SystemMessageId.CLAN_ACQUIRED_CONTESTED_CLAN_HALL_AND_S1_REPUTATION_POINTS).AddNumber(ReputationNothing));
                     }
                 }
                 else

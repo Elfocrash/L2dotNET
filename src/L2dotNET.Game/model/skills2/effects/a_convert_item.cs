@@ -10,20 +10,20 @@ namespace L2dotNET.GameService.model.skills2.effects
         {
             L2Player player = caster as L2Player;
             L2Item item = player.getWeaponItem();
-            if (item == null || !ItemTable.getInstance().ConvertDataList.ContainsKey(item.Template.ItemID))
+            if (item == null || !ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemID))
             {
-                caster.sendSystemMessage(2130);//You cannot convert this item.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
                 return nothing;
             }
 
-            int newid = ItemTable.getInstance().ConvertDataList[item.Template.ItemID];
+            int newid = ItemTable.Instance.ConvertDataList[item.Template.ItemID];
 
             int pdollId = player.Inventory.getPaperdollId(item.Template);
             player.setPaperdoll(pdollId, null, false);
             player.broadcastUserInfo();
 
             int oldweight = item.Template.Weight;
-            item.Template = ItemTable.getInstance().getItem(newid);
+            item.Template = ItemTable.Instance.GetItem(newid);
             item.sql_update();
 
             if (oldweight != item.Template.Weight)
@@ -44,19 +44,19 @@ namespace L2dotNET.GameService.model.skills2.effects
             L2Item item = caster.getWeaponItem();
             if (item == null)
             {
-                caster.sendSystemMessage(2130);//You cannot convert this item.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
                 return false;
             }
 
             if (item.AugmentationID > 0)
             {
-                caster.sendSystemMessage(2129);//The augmented item cannot be converted. Please convert after the augmentation has been removed.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.AUGMENTED_ITEM_CANNOT_BE_CONVERTED);
                 return false;
             }
 
-            if (!ItemTable.getInstance().ConvertDataList.ContainsKey(item.Template.ItemID))
+            if (!ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemID))
             {
-                caster.sendSystemMessage(2130);//You cannot convert this item.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
                 return false;
             }
 

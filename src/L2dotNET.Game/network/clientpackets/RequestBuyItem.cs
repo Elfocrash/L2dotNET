@@ -42,7 +42,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (trader == null)
             {
-                player.sendSystemMessage(1802); //The attempt to trade has failed.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
                 player.sendActionFailed();
                 return;
             }
@@ -51,7 +51,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (shop == null)
             {
-                player.sendSystemMessage(1802); //The attempt to trade has failed.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
                 player.sendActionFailed();
                 return;
             }
@@ -60,7 +60,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (list == null)
             {
-                player.sendSystemMessage(1802); //The attempt to trade has failed.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
                 player.sendActionFailed();
                 return;
             }
@@ -96,7 +96,7 @@ namespace L2dotNET.GameService.network.l2recv
 
                 if (notfound)
                 {
-                    player.sendSystemMessage(1802); //The attempt to trade has failed.
+                    player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
                     player.sendActionFailed();
                     return;
                 }
@@ -104,7 +104,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (adena > player.getAdena())
             {
-                player.sendSystemMessage(279); //You do not have enough adena.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                 return;
             }
 

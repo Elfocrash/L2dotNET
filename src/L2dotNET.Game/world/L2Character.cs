@@ -388,7 +388,7 @@ namespace L2dotNET.GameService.world
             removeStats(ave.skill, caster);
 
             if (msg)
-                sendPacket(new SystemMessage(749).AddSkillName(ave.id, ave.lvl));//The effect of $s1 has been removed.
+                sendPacket(new SystemMessage(SystemMessage.SystemMessageId.EFFECT_S1_DISAPPEARED).AddSkillName(ave.id, ave.lvl));
 
             if (uis)
                 broadcastUserInfo();
@@ -401,7 +401,7 @@ namespace L2dotNET.GameService.world
         public virtual void updateSkillList() { }
         public virtual void sendMessage(string p) { }
         public virtual void sendActionFailed() { }
-        public virtual void sendSystemMessage(int p) { }
+        public virtual void sendSystemMessage(SystemMessage.SystemMessageId msgId) { }
         public virtual void onPickUp(L2Item item) { }
 
         public int _buffMax = Config.Instance.gameplayConfig.MaxBuffs;
@@ -417,11 +417,9 @@ namespace L2dotNET.GameService.world
 
                     if (!success)
                     {
-                        //$s1 has resisted your $s2.
-                        caster.sendPacket(new SystemMessage(139).AddString(Name).AddSkillName(skill.skill_id, skill.level));
-                        
-                        //You have resisted $s1's magic.
-                        sendPacket(new SystemMessage(159).AddString(caster.Name));
+                        caster.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_RESISTED_YOUR_S2).AddString(Name).AddSkillName(skill.skill_id, skill.level));
+
+                        sendPacket(new SystemMessage(SystemMessage.SystemMessageId.RESISTED_S1_MAGIC).AddString(caster.Name));
                         return;
                     }
                 }
@@ -506,7 +504,7 @@ namespace L2dotNET.GameService.world
             onAveStart(skill, caster);
 
             {
-                SystemMessage sm = new SystemMessage(110); //The effects of $s1 flow through you.
+                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_FEEL_S1_EFFECT);
                 sm.AddSkillName(ic.id, ic.lvl);
                 sendPacket(sm);
             }
@@ -762,7 +760,7 @@ namespace L2dotNET.GameService.world
             }
 
             if (this is L2Player)
-                sendPacket(new SystemMessage(msgId).AddNumber((int)damage));
+                sendPacket(new SystemMessage((SystemMessage.SystemMessageId)msgId).AddNumber((int)damage));
         }
 
         public override void reduceHp(L2Character attacker, double damage)
@@ -1028,14 +1026,14 @@ namespace L2dotNET.GameService.world
                 {
                     CurrentTarget.reduceHp(this, hit1.damage);
 
-                    if (CurrentTarget is L2Player) //$c1 has received $s3 damage from $c2.
-                        CurrentTarget.sendPacket(new SystemMessage(2262).AddName(CurrentTarget).AddName(this).AddNumber(hit1.damage));
+                    if (CurrentTarget is L2Player)
+                        CurrentTarget.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2).AddName(CurrentTarget).AddName(this).AddNumber(hit1.damage));
                 }
                 else
                 {
-                    if (CurrentTarget is L2Player) //$c1 has evaded $c2's attack.
+                    if (CurrentTarget is L2Player)
                     {
-                        CurrentTarget.sendPacket(new SystemMessage(2264).AddName(CurrentTarget).AddName(this));
+                        CurrentTarget.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_EVADED_C2_ATTACK).AddName(CurrentTarget).AddName(this));
                         ((L2Player)CurrentTarget).AICharacter.NotifyEvaded(this);
                     }
                 }
@@ -1051,14 +1049,14 @@ namespace L2dotNET.GameService.world
                 if (!hit2.miss)
                 {
                     CurrentTarget.reduceHp(this, hit2.damage);
-                    if (CurrentTarget is L2Player) //$c1 has received $s3 damage from $c2.
-                        CurrentTarget.sendPacket(new SystemMessage(2262).AddName(CurrentTarget).AddName(this).AddNumber(hit2.damage));
+                    if (CurrentTarget is L2Player)
+                        CurrentTarget.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2).AddName(CurrentTarget).AddName(this).AddNumber(hit2.damage));
                 }
                 else
                 {
-                    if (CurrentTarget is L2Player) //$c1 has evaded $c2's attack.
+                    if (CurrentTarget is L2Player)
                     {
-                        CurrentTarget.sendPacket(new SystemMessage(2264).AddName(CurrentTarget).AddName(this));
+                        CurrentTarget.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_EVADED_C2_ATTACK).AddName(CurrentTarget).AddName(this));
                         ((L2Player)CurrentTarget).AICharacter.NotifyEvaded(this);
                     }
                 }
@@ -1149,7 +1147,7 @@ namespace L2dotNET.GameService.world
             if (skillId > 0)
             {
                 broadcastPacket(new MagicSkillUse(this, this, skillId, 1, 0));
-                sendSystemMessage(342);//Your soulshots are enabled.
+                sendSystemMessage(SystemMessage.SystemMessageId.ENABLED_SOULSHOT);
             }
         }
 

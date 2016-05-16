@@ -116,17 +116,17 @@ namespace L2dotNET.GameService.model.items
             }
 
             if (Template.SetItem)
-                ItemTable.getInstance().NotifyKeySetItem(owner, this, false);
+                ItemTable.Instance.NotifyKeySetItem(owner, this, false);
 
             if (Template.Type == ItemTemplate.L2ItemType.armor && owner.setKeyItems != null && owner.setKeyItems.Contains(Template.ItemID))
-                ItemTable.getInstance().NotifySetItemEquip(owner, this, false);
+                ItemTable.Instance.NotifySetItemEquip(owner, this, false);
 
             if (Template.Type == ItemTemplate.L2ItemType.armor || Template.Type == ItemTemplate.L2ItemType.weapon || Template.Type == ItemTemplate.L2ItemType.accessary)
             {
                 if (Enchant == 0)
-                    owner.sendPacket(new SystemMessage(417).AddItemName(Template.ItemID));//$s1 has been disarmed.
+                    owner.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_DISARMED).AddItemName(Template.ItemID));
                 else
-                    owner.sendPacket(new SystemMessage(1064).AddNumber(Enchant).AddItemName(Template.ItemID));//The equipment, +$s1 $s2, has been removed.
+                    owner.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.EQUIPMENT_S1_S2_REMOVED).AddNumber(Enchant).AddItemName(Template.ItemID));
             }
 
             owner.removeStats(this);
@@ -168,17 +168,17 @@ namespace L2dotNET.GameService.model.items
                 tryEquipSecondary(owner);
 
             if (Template.SetItem)
-                ItemTable.getInstance().NotifyKeySetItem(owner, this, true);
+                ItemTable.Instance.NotifyKeySetItem(owner, this, true);
 
             if (Template.Type == ItemTemplate.L2ItemType.armor && owner.setKeyItems != null && owner.setKeyItems.Contains(Template.ItemID))
-                ItemTable.getInstance().NotifySetItemEquip(owner, this, true);
+                ItemTable.Instance.NotifySetItemEquip(owner, this, true);
 
             if (Template.Type == ItemTemplate.L2ItemType.armor || Template.Type == ItemTemplate.L2ItemType.weapon || Template.Type == ItemTemplate.L2ItemType.accessary)
             {
                 if (Enchant == 0)
-                    owner.sendPacket(new SystemMessage(49).AddItemName(Template.ItemID));//You have equipped your $s1.
+                    owner.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_EQUIPPED).AddItemName(Template.ItemID));
                 else
-                    owner.sendPacket(new SystemMessage(368).AddNumber(Enchant).AddItemName(Template.ItemID));//Equipped +$s1 $s2.
+                    owner.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_S2_EQUIPPED).AddNumber(Enchant).AddItemName(Template.ItemID));
             }
 
             owner.addStats(this);
@@ -203,10 +203,10 @@ namespace L2dotNET.GameService.model.items
                 tryEquipSecondary(owner);
 
             if (Template.SetItem)
-                ItemTable.getInstance().NotifyKeySetItem(owner, this, true);
+                ItemTable.Instance.NotifyKeySetItem(owner, this, true);
 
             if (Template.Type == ItemTemplate.L2ItemType.armor && owner.setKeyItems != null && owner.setKeyItems.Contains(Template.ItemID))
-                ItemTable.getInstance().NotifySetItemEquip(owner, this, true);
+                ItemTable.Instance.NotifySetItemEquip(owner, this, true);
 
             owner.addStats(this);
         }

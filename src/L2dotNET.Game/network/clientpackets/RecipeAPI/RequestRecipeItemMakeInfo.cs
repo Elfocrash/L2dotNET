@@ -21,9 +21,8 @@ namespace L2dotNET.GameService.network.l2recv
             L2Player player = Client.CurrentPlayer;
 
             if (player._recipeBook == null)
-            {
-                //The recipe is incorrect.
-                player.sendSystemMessage(852);
+            {   
+                player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
                 player.sendActionFailed();
                 return;
             }
@@ -40,9 +39,8 @@ namespace L2dotNET.GameService.network.l2recv
             }
 
             if (rec == null)
-            {
-                //The recipe is incorrect.
-                player.sendSystemMessage(852);
+            {   
+                player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
                 player.sendActionFailed();
                 return;
             }

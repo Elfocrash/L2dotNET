@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.model.playable;
+using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
 
 namespace L2dotNET.GameService.model.skills2.effects
@@ -26,7 +27,7 @@ namespace L2dotNET.GameService.model.skills2.effects
             L2Player player = (L2Player)caster;
             if (player.Summon != null)
             {
-                player.sendSystemMessage(543);//You already have a pet.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_ALREADY_HAVE_A_PET);
                 return false;
             }
 

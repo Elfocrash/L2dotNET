@@ -33,13 +33,13 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (item == null)
             {
-                player.sendSystemMessage(352); //Incorrect item.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.INCORRECT_ITEM);
                 return;
             }
 
             if(player.TradeState != 0)
             {
-                player.sendSystemMessage(149); //You cannot pick up or use items while trading.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_PICKUP_OR_USE_ITEM_WHILE_TRADING);
                 player.sendActionFailed();
                 return;
             }
@@ -53,9 +53,8 @@ namespace L2dotNET.GameService.network.l2recv
                         if (item._isEquipped == 0)
                         {
                             if (!item.Template.canEquipChaotic(player.PkKills))
-                            {
-                                //You are unable to equip this item when your PK count is greater than or equal to one.
-                                player.sendSystemMessage(1685);
+                            {   
+                                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_ARE_UNABLE_TO_EQUIP_THIS_ITEM_WHEN_YOUR_PK_COUNT_IS_GREATER_THAN_OR_EQUAL_TO_ONE);
                                 player.sendActionFailed();
                                 return;
                             }
@@ -63,9 +62,8 @@ namespace L2dotNET.GameService.network.l2recv
                             if (!item.Template.canEquipHeroic(player.Heroic) ||
                                 !item.Template.canEquipNobless(player.Noblesse) ||
                                 !item.Template.canEquipSex(player.Sex))
-                            {
-                                //You do not meet the required condition to equip that item.
-                                player.sendSystemMessage(1518);
+                            {   
+                                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION);
                                 player.sendActionFailed();
                                 return;
                             }

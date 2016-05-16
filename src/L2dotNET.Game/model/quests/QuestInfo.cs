@@ -25,7 +25,7 @@ namespace L2dotNET.GameService
 
             if (fin == 0)
             {
-                _template = QuestManager.getInstance()._quests[id];
+                _template = QuestManager.Instance._quests[id];
             }
         }
     }

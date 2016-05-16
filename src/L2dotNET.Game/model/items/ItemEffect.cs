@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.model.playable;
+using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.world;
 using log4net;
 
@@ -25,7 +26,7 @@ namespace L2dotNET.GameService.model.items
 
         public virtual void UsePet(L2Pet pet, L2Item item) 
         {
-            pet.Owner.sendSystemMessage(972); //This pet cannot use this item.
+            pet.Owner.sendSystemMessage(SystemMessage.SystemMessageId.PET_CANNOT_USE_ITEM);
         }
     }
 }

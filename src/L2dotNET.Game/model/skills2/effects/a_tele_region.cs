@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.model.skills2.effects
@@ -34,7 +35,7 @@ namespace L2dotNET.GameService.model.skills2.effects
 
             if (player.IsWard())
             {
-                caster.sendSystemMessage(2778);//You cannot teleport while in possession of a ward.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_TELEPORT_WHILE_POSSESSION_WARD);
                 return false;
             }
 

@@ -2,6 +2,10 @@
   "autoloot": "true",
   "DeleteCharAfterDays": "0",
   "max_buffs": "24",
+  "CommunityBoard": {
+    "UseCommunityBoard": "true",
+    "BBSDefault": "_bbshome"
+  },
   "FloodProtector": {
     "CharacterSelectTime": "3000",
     "DropItemTime": "1000",

@@ -175,16 +175,16 @@ namespace L2dotNET.GameService.model.events
                 case 180:
                 case 120:
                 case 60:
-                    sm = new SystemMessage(820);//Monster Race $s2 will begin in $s1 minute(s)!
+                    sm = new SystemMessage(SystemMessage.SystemMessageId.MONSRACE_S2_BEGINS_IN_S1_MINUTES);
                     sm.AddNumber(timeToStart / 60);
                     sm.AddNumber(currentRaceId);
                     break;
                 case 30:
-                    sm = new SystemMessage(821);//Monster Race $s1 will begin in 30 seconds!
+                    sm = new SystemMessage(SystemMessage.SystemMessageId.MONSRACE_S1_BEGINS_IN_30_SECONDS);
                     sm.AddNumber(currentRaceId);
                     break;
                 case 6:
-                    sm = new SystemMessage(822);//Monster Race $s1 is about to begin! Countdown in five seconds!
+                    sm = new SystemMessage(SystemMessage.SystemMessageId.MONSRACE_S1_COUNTDOWN_IN_FIVE_SECONDS);
                     sm.AddNumber(currentRaceId);
                     break;
                 case 5:
@@ -192,11 +192,11 @@ namespace L2dotNET.GameService.model.events
                 case 3:
                 case 2:
                 case 1:
-                    sm = new SystemMessage(823);//The race will begin in $s1 second(s)!
+                    sm = new SystemMessage(SystemMessage.SystemMessageId.MONSRACE_BEGINS_IN_S1_SECONDS);
                     sm.AddNumber(timeToStart);
                     break;
                 case 0:
-                    sm = new SystemMessage(824);//They're off!
+                    sm = new SystemMessage(SystemMessage.SystemMessageId.MONSRACE_RACE_START);
                     raceStartTime.Enabled = false;
 
                     foreach (L2Object obj in Zone.ObjectsInside.Values)
@@ -232,7 +232,7 @@ namespace L2dotNET.GameService.model.events
         private void RaceEnd(object sender, System.Timers.ElapsedEventArgs e)
         {
             status = 3;
-            SystemMessage sm = new SystemMessage(825); //Monster Race $s1 is finished!
+            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.MONSRACE_S1_RACE_END);
             sm.AddNumber(currentRaceId);
             Zone.broadcastPacket(sm);
 
@@ -259,9 +259,8 @@ namespace L2dotNET.GameService.model.events
                     secondLine = runners[a + rnd].lineId;
                 }
             }
-
-            //First prize goes to the player in lane $s1. Second prize goes to the player in lane $s2.
-            sm = new SystemMessage(826);
+            
+            sm = new SystemMessage(SystemMessage.SystemMessageId.MONSRACE_FIRST_PLACE_S1_SECOND_S2);
             sm.AddNumber(firstLine);
             sm.AddNumber(secondLine);
 
@@ -452,13 +451,13 @@ namespace L2dotNET.GameService.model.events
 
                 if (player.getAdena() < adena)
                 {
-                    player.sendSystemMessage(279);//You do not have enough adena.
+                    player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                     return;
                 }
 
                 player.reduceAdena(adena, true, true);
 
-                L2Item ticket = new L2Item(ItemTable.getInstance().getItem(TICKET));
+                L2Item ticket = new L2Item(ItemTable.Instance.GetItem(TICKET));
                 ticket.Location = L2Item.L2ItemLocation.inventory;
                 ticket.CustomType1 = line + 1;
                 ticket.CustomType2 = adena / 100;

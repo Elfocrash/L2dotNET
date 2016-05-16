@@ -302,7 +302,7 @@ namespace L2dotNET.GameService
         {
             get { return Clan == null ? 0 : Clan.ClanID; }
 
-            set { Clan = ClanTable.getInstance().getClan(value); }
+            set { Clan = ClanTable.Instance.GetClan(value); }
         }
 
         public override int ClanCrestId
@@ -376,9 +376,9 @@ namespace L2dotNET.GameService
             sendPacket(af);
         }
 
-        public override void sendSystemMessage(int id)
+        public override void sendSystemMessage(SystemMessage.SystemMessageId msgId)
         {
-            sendPacket(new SystemMessage(id));
+            sendPacket(new SystemMessage(msgId));
         }
 
         public int _penaltyWeight = 0;
@@ -440,7 +440,7 @@ namespace L2dotNET.GameService
 
         public override void sendMessage(string p)
         {
-            sendPacket(new SystemMessage(1987).AddString(p));
+            sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1).AddString(p));
         }
 
         public int _currentFocusEnergy = 0;
@@ -577,7 +577,7 @@ namespace L2dotNET.GameService
 
             if (target == null)
             {
-                sendSystemMessage(50); //Your target cannot be found.
+                sendSystemMessage(SystemMessage.SystemMessageId.TARGET_CANT_FOUND);
                 sendActionFailed();
                 return;
             }
@@ -603,8 +603,7 @@ namespace L2dotNET.GameService
                     {
                         if (ts.TotalHours > 0)
                         {
-                            //There are $s2 hour(s), $s3 minute(s), and $s4 second(s) remaining in $s1's re-use time.
-                            SystemMessage sm = new SystemMessage(2305);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_HOURS_S3_MINUTES_S4_SECONDS_REMAINING_IN_S1_REUSE_TIME);
                             sm.AddSkillName(skill.skill_id, skill.level);
                             sm.AddNumber((int)ts.Hours);
                             sm.AddNumber((int)ts.Minutes);
@@ -613,8 +612,7 @@ namespace L2dotNET.GameService
                         }
                         else if (ts.TotalMinutes > 0)
                         {
-                            //There are $s2 minute(s), $s3 second(s) remaining in $s1's re-use time.
-                            SystemMessage sm = new SystemMessage(2304);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_MINUTES_S3_SECONDS_REMAINING_IN_S1_REUSE_TIME);
                             sm.AddSkillName(skill.skill_id, skill.level);
                             sm.AddNumber((int)ts.Minutes);
                             sm.AddNumber((int)ts.Seconds);
@@ -622,8 +620,7 @@ namespace L2dotNET.GameService
                         }
                         else
                         {
-                            //There are $s2 second(s) remaining in $s1's re-use time.
-                            SystemMessage sm = new SystemMessage(2303);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_SECONDS_REMAINING_IN_S1_REUSE_TIME);
                             sm.AddSkillName(skill.skill_id, skill.level);
                             sm.AddNumber((int)ts.Seconds);
                             sendPacket(sm);
@@ -639,7 +636,7 @@ namespace L2dotNET.GameService
             {
                 if (CurMP < skill.mp_consume1 + skill.mp_consume2)
                 {
-                    sendSystemMessage(24); //Not enough MP.
+                    sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_MP);
                     sendActionFailed();
                     return;
                 }
@@ -649,7 +646,7 @@ namespace L2dotNET.GameService
             {
                 if (CurHP < skill.hp_consume)
                 {
-                    sendSystemMessage(23); //Not enough HP.
+                    sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_HP);
                     sendActionFailed();
                     return;
                 }
@@ -660,8 +657,7 @@ namespace L2dotNET.GameService
                 long count = Inventory.getItemCount(skill.ConsumeItemId);
                 if (count < skill.ConsumeItemCount)
                 {
-                    //$s1 cannot be used due to unsuitable terms.
-                    sendPacket(new SystemMessage(113).AddSkillName(skill.skill_id, skill.level));
+                    sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANNOT_BE_USED).AddSkillName(skill.skill_id, skill.level));
                     sendActionFailed();
                     return;
                 }
@@ -701,8 +697,7 @@ namespace L2dotNET.GameService
                 updateReuse();
             }
 
-            //You use $s1.
-            sendPacket(new SystemMessage(46).AddSkillName(skill.skill_id, skill.level));
+            sendPacket(new SystemMessage(SystemMessage.SystemMessageId.USE_S1).AddSkillName(skill.skill_id, skill.level));
 
             if (skill.hp_consume > 0)
             {
@@ -759,7 +754,7 @@ namespace L2dotNET.GameService
             {
                 if (CurMP < currentCast.mp_consume2)
                 {
-                    sendSystemMessage(24); //Not enough MP.
+                    sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_MP);
                     sendActionFailed();
 
                     currentCast = null;
@@ -790,7 +785,7 @@ namespace L2dotNET.GameService
 
                 if (block)
                 {
-                    sendSystemMessage(748); //The distance is too far and so the casting has been stopped.
+                    sendSystemMessage(SystemMessage.SystemMessageId.DIST_TOO_FAR_CASTING_STOPPED);
                     sendActionFailed();
 
                     currentCast = null;
@@ -807,7 +802,7 @@ namespace L2dotNET.GameService
 
             addEffects(this, currentCast, arr);
             currentCast = null;
-            if(castTime != null)
+            if (castTime != null)
                 castTime.Enabled = false;
         }
 
@@ -1018,8 +1013,7 @@ namespace L2dotNET.GameService
 
         public void addExpSp(int exp, int sp, bool msg)
         {
-            //You have earned $s1 experience and $s2 SP.
-            SystemMessage sm = new SystemMessage(95);
+            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_EARNED_S1_EXP_AND_S2_SP);
             sm.AddNumber(exp);
             sm.AddNumber(sp);
             sendPacket(sm);
@@ -1668,7 +1662,7 @@ namespace L2dotNET.GameService
 
             if (getAllNonQuestItems().Length + check >= (ItemLimit_Inventory * .8))
             {
-                sendSystemMessage(2981); //You could not receive because your inventory is full.
+                sendSystemMessage(SystemMessage.SystemMessageId.YOU_COULD_NOT_RECEIVE_BECAUSE_YOUR_INVENTORY_IS_FULL);
                 return false;
             }
 
@@ -1851,7 +1845,7 @@ namespace L2dotNET.GameService
 
             if (sql)
             {
-               
+
             }
         }
 
@@ -1864,7 +1858,7 @@ namespace L2dotNET.GameService
 
             if (sql)
             {
-               
+
             }
         }
 
@@ -1879,7 +1873,7 @@ namespace L2dotNET.GameService
             db_restoreQuests();
             db_restoreRecipes();
             db_restoreTelbooks();
-           // db_restoreShortcuts(); elfo to be added
+            // db_restoreShortcuts(); elfo to be added
 
             IsRestored = true;
         }
@@ -1962,10 +1956,10 @@ namespace L2dotNET.GameService
             Souls += count;
             sendPacket(new EtcStatusUpdate(this));
 
-            SystemMessage sm = new SystemMessage(2162);
+            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YOUR_SOUL_COUNT_HAS_INCREASED_BY_S1_NOW_AT_S2);
             sm.AddNumber(count);
             sm.AddNumber(Souls);
-            sendPacket(sm);//Your soul count has increased by $s1. It is now at $s2.
+            sendPacket(sm);
         }
 
         public void IncreaseSouls()
@@ -1974,7 +1968,7 @@ namespace L2dotNET.GameService
 
             if (Souls + soul > 45 || Souls == 45)
             {
-                sendSystemMessage(2163); //Soul cannot be increased anymore.
+                sendSystemMessage(SystemMessage.SystemMessageId.SOUL_CANNOT_BE_INCREASED_ANYMORE);
                 return;
             }
 
@@ -2054,7 +2048,7 @@ namespace L2dotNET.GameService
         {
             if (Summon != null)
             {
-                sendSystemMessage(543);//You already have a pet.
+                sendSystemMessage(SystemMessage.SystemMessageId.YOU_ALREADY_HAVE_A_PET);
                 return;
             }
 
@@ -2068,7 +2062,7 @@ namespace L2dotNET.GameService
                 }
 
                 petSummonTime.Enabled = true;
-                sendSystemMessage(547);//Summoning your pet…
+                sendSystemMessage(SystemMessage.SystemMessageId.SUMMON_A_PET);
             }
             else
             {
@@ -2095,7 +2089,7 @@ namespace L2dotNET.GameService
             pet.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
             pet.setOwner(this);
             pet.ControlItem = PetControlItem;
-           // pet.sql_restore();
+            // pet.sql_restore();
             pet.SpawmMe();
 
             petSummonTime.Enabled = false;
@@ -2316,8 +2310,10 @@ namespace L2dotNET.GameService
 
                     if (SecondaryWeaponSupport == null || SecondaryWeaponSupport.Count < weapon.Template.SoulshotCount)
                     {
-                        //Not enough bolts, You have run out of arrows.
-                        sendSystemMessage(weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow ? 112 : 2226);
+                        if (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow)
+                            sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_ARROWS);
+                        else
+                            sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_BOLTS);
                         sendActionFailed();
                         return;
                     }
@@ -2408,22 +2404,21 @@ namespace L2dotNET.GameService
                 if (!hit1.miss)
                 {
                     if (hit1.crit)
-                        sendPacket(new SystemMessage(2266).AddPlayerName(Name));//$c1 landed a critical hit!
+                        sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_LANDED_A_CRITICAL_HIT).AddPlayerName(Name));
 
-                    //$c1 has given $c2 damage of $s3.
-                    sendPacket(new SystemMessage(2261).AddPlayerName(Name).AddName(CurrentTarget).AddNumber(hit1.damage));
+                    sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3).AddPlayerName(Name).AddName(CurrentTarget).AddNumber(hit1.damage));
                     CurrentTarget.reduceHp(this, hit1.damage);
 
-                    if (CurrentTarget is L2Player) //$c1 has received $s3 damage from $c2.
-                        CurrentTarget.sendPacket(new SystemMessage(2262).AddName(CurrentTarget).AddName(this).AddNumber(hit1.damage));
+                    if (CurrentTarget is L2Player)
+                        CurrentTarget.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2).AddName(CurrentTarget).AddName(this).AddNumber(hit1.damage));
                 }
                 else
                 {
-                    sendPacket(new SystemMessage(2265).AddPlayerName(Name));//$c1's attack went astray.
+                    sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_ATTACK_WENT_ASTRAY).AddPlayerName(Name));
 
-                    if (CurrentTarget is L2Player) //$c1 has evaded $c2's attack.
+                    if (CurrentTarget is L2Player)
                     {
-                        CurrentTarget.sendPacket(new SystemMessage(2264).AddName(CurrentTarget).AddName(this));
+                        CurrentTarget.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_EVADED_C2_ATTACK).AddName(CurrentTarget).AddName(this));
                         ((L2Player)CurrentTarget).AICharacter.NotifyEvaded(this);
                     }
                 }
@@ -2439,22 +2434,21 @@ namespace L2dotNET.GameService
                 if (!hit2.miss)
                 {
                     if (hit2.crit)
-                        sendPacket(new SystemMessage(2266).AddName(this));//$c1 landed a critical hit!
+                        sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_LANDED_A_CRITICAL_HIT).AddName(this));
 
-                    //$c1 has given $c2 damage of $s3.
-                    sendPacket(new SystemMessage(2261).AddName(this).AddName(CurrentTarget).AddNumber(hit2.damage));
+                    sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3).AddName(this).AddName(CurrentTarget).AddNumber(hit2.damage));
                     CurrentTarget.reduceHp(this, hit2.damage);
 
-                    if (CurrentTarget is L2Player) //$c1 has received $s3 damage from $c2.
-                        CurrentTarget.sendPacket(new SystemMessage(2262).AddName(CurrentTarget).AddName(this).AddNumber(hit2.damage));
+                    if (CurrentTarget is L2Player)
+                        CurrentTarget.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2).AddName(CurrentTarget).AddName(this).AddNumber(hit2.damage));
                 }
                 else
                 {
-                    sendPacket(new SystemMessage(2265).AddPlayerName(Name));//$c1's attack went astray.
+                    sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_ATTACK_WENT_ASTRAY).AddPlayerName(Name));
 
-                    if (CurrentTarget is L2Player) //$c1 has evaded $c2's attack.
+                    if (CurrentTarget is L2Player)
                     {
-                        CurrentTarget.sendPacket(new SystemMessage(2264).AddName(CurrentTarget).AddName(this));
+                        CurrentTarget.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_EVADED_C2_ATTACK).AddName(CurrentTarget).AddName(this));
                         ((L2Player)CurrentTarget).AICharacter.NotifyEvaded(this);
                     }
                 }
@@ -2478,7 +2472,7 @@ namespace L2dotNET.GameService
                     {
                         if (Inventory.getItemCount(sid) < weapon.Template.SoulshotCount)
                         {
-                            sendPacket(new SystemMessage(1435).AddItemName(sid));//Due to insufficient $s1, the automatic use function has been deactivated.
+                            sendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_CANCELLED_LACK_OF_S1).AddItemName(sid));
 
                             lock (autoSoulshots)
                             {
@@ -2709,13 +2703,13 @@ namespace L2dotNET.GameService
 
         public void UpdateAgathionEnergy(int count)
         {
-            sendMessage("@UpdateAgathionEnergy "+count);
+            sendMessage("@UpdateAgathionEnergy " + count);
         }
 
         public List<Cubic> cubics = new List<Cubic>();
         public void StopCubic(Cubic cubic)
         {
-            foreach(Cubic cub in cubics)
+            foreach (Cubic cub in cubics)
                 if (cub.template.id == cubic.template.id)
                 {
                     lock (cubics)
@@ -2736,11 +2730,11 @@ namespace L2dotNET.GameService
             {
                 Cubic cub = cubics[0];
                 cub.OnEnd(false);
-                lock(cubics)
+                lock (cubics)
                     cubics.RemoveAt(0);
             }
 
-            foreach(Cubic cub in cubics)
+            foreach (Cubic cub in cubics)
                 if (cub.template.id == cubic.template.id)
                 {
                     lock (cubics)
@@ -2753,7 +2747,7 @@ namespace L2dotNET.GameService
 
             cubic.OnSummon();
             cubics.Add(cubic);
-            if(update)
+            if (update)
                 this.broadcastUserInfo();
         }
 

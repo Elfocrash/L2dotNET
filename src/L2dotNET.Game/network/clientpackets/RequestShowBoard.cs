@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.network.l2recv
 
         public override void run()
         {
-            BBSManager.getInstance().RequestShow(Client.CurrentPlayer, type);
+            BBSManager.Instance.RequestShow(Client.CurrentPlayer, type);
         }
     }
 }

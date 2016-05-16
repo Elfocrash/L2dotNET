@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.model.communities;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -33,28 +34,28 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (clan.Level < 3)
             {
-                player.sendSystemMessage(272); //A clan crest can only be registered when the clan's skill level is 3 or above.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CLAN_LVL_3_NEEDED_TO_SET_CREST);
                 player.sendActionFailed();
                 return;
             }
 
             if (clan.IsDissolving())
             {
-                player.sendSystemMessage(552); //As you are currently schedule for clan dissolution, you cannot register or delete a Clan Crest.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_SET_CREST_WHILE_DISSOLUTION_IN_PROGRESS);
                 player.sendActionFailed();
                 return;
             }
 
             if (_size < 0 || _size > 256)
             {
-                player.sendSystemMessage(211); //You can only register 16x12 pixel 256 color bmp files.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CAN_ONLY_REGISTER_16_12_PX_256_COLOR_BMP_FILES);
                 player.sendActionFailed();
                 return;
             }
 
             if ((player.ClanPrivs & L2Clan.CP_CL_REGISTER_CREST) != L2Clan.CP_CL_REGISTER_CREST)
             {
-                player.sendSystemMessage(235); //You are not authorized to bestow these rights.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_AUTHORIZED_TO_BESTOW_RIGHTS);
                 player.sendActionFailed();
                 return;
             }

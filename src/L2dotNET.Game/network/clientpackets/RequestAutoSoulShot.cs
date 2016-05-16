@@ -38,8 +38,8 @@ namespace L2dotNET.GameService.network.l2recv
                 }
 
                 player.autoSoulshots.Add(itemId);
-                player.sendPacket(new ExAutoSoulShot(itemId, type)); //The automatic use of $s1 has been activated.
-                player.sendPacket(new SystemMessage(1433).AddItemName(itemId));
+                player.sendPacket(new ExAutoSoulShot(itemId, type));
+                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.USE_OF_S1_WILL_BE_AUTO).AddItemName(itemId));
 
                 L2Item weapon = player.Inventory.getWeapon();
                 if (weapon != null)
@@ -51,7 +51,7 @@ namespace L2dotNET.GameService.network.l2recv
                             {
                                 if (!player.hasItem(sid, weapon.Template.SoulshotCount))
                                 {
-                                    player.sendPacket(new SystemMessage(1436).AddItemName(itemId));//Due to insufficient $s1, the automatic use function cannot be activated.
+                                    player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.CANNOT_AUTO_USE_LACK_OF_S1).AddItemName(itemId));
                                     player.sendActionFailed();
                                     return;
                                 }
@@ -69,8 +69,8 @@ namespace L2dotNET.GameService.network.l2recv
                 lock (player.autoSoulshots)
                     player.autoSoulshots.Remove(itemId);
 
-                player.sendPacket(new ExAutoSoulShot(itemId, 0)); //The automatic use of $s1 has been deactivated.
-                player.sendPacket(new SystemMessage(1434).AddItemName(itemId));
+                player.sendPacket(new ExAutoSoulShot(itemId, 0));
+                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_OF_S1_CANCELLED).AddItemName(itemId));
             }
         }
     }

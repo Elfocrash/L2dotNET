@@ -15,6 +15,18 @@ namespace L2dotNET.GameService
 
         [JsonProperty(PropertyName = "FloodProtector")]
         public FloodProtector FloodProtector { get; set; }
+
+        [JsonProperty(PropertyName = "CommunityBoard")]
+        public CommunityBoard CommunityBoard { get; set; }
+    }
+
+    public class CommunityBoard
+    {
+        [JsonProperty(PropertyName = "UseCommunityBoard")]
+        public bool EnableCommunityBoard { get; set; }
+
+        [JsonProperty(PropertyName = "BBSDefault")]
+        public string BBSDefault { get; set; }
     }
 
     public class FloodProtector

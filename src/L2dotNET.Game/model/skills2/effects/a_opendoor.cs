@@ -1,6 +1,7 @@
 ﻿using System;
 using L2dotNET.GameService.model.npcs.decor;
 using L2dotNET.GameService.world;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.model.skills2.effects
 {
@@ -13,7 +14,7 @@ namespace L2dotNET.GameService.model.skills2.effects
             this.rate = Convert.ToInt32(str.Split(' ')[2]);
         }
 
-        public override TEffectResult onStart(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             if(target is L2Door)
             {
@@ -25,20 +26,20 @@ namespace L2dotNET.GameService.model.skills2.effects
                         door.OpenForTime();
                     }
                     else
-                        caster.sendSystemMessage(320);//You have failed to unlock the door.
+                        caster.sendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_UNLOCK_DOOR);
                 }
                 else
-                    caster.sendSystemMessage(320);//You have failed to unlock the door.
+                    caster.sendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_UNLOCK_DOOR);
             }
             else
             {
-                caster.sendSystemMessage(144);//That is an incorrect target.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
             }
 
             return nothing;
         }
 
-        public override bool canUse(world.L2Character caster)
+        public override bool canUse(L2Character caster)
         {
             L2Object target = caster.CurrentTarget;
             if (target is L2Door)
@@ -46,19 +47,19 @@ namespace L2dotNET.GameService.model.skills2.effects
                 L2Door door = target as L2Door;
                 if (door.Closed == 0)
                 {
-                    caster.sendSystemMessage(144);//That is an incorrect target.
+                    caster.sendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
                     return false;
                 }
 
                 if (!door.UnlockSkill)
                 {
-                    caster.sendSystemMessage(319);//This door cannot be unlocked
+                    caster.sendSystemMessage(SystemMessage.SystemMessageId.UNABLE_TO_UNLOCK_DOOR);
                     return false;
                 }
             }
             else
             {
-                caster.sendSystemMessage(144);//That is an incorrect target.
+                caster.sendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
                 return false;
             }
 

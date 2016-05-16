@@ -47,14 +47,14 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (item.Template.can_equip_hero == 1 && item.Template.Type == ItemTemplate.L2ItemType.weapon)
             {
-                player.sendSystemMessage(1845);//Hero weapons cannot be destroyed.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.HERO_WEAPONS_CANT_DESTROYED);
                 player.sendActionFailed();
                 return;
             }
 
             if (item.Template.is_destruct == 0)
             {
-                SystemMessage sm = new SystemMessage(614);
+                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_S2);
                 sm.AddItemName(item.Template.ItemID);
                 sm.AddString("cannot be destroyed.");
                 player.sendPacket(sm);
