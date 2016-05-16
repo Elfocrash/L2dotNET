@@ -51,6 +51,7 @@
     <Compile Include="Utility\L2Buffer.cs" />
     <Compile Include="Utility\L2FileReader.cs" />
     <Compile Include="Utility\L2Random.cs" />
+    <Compile Include="Utility\L2Security.cs" />
     <Compile Include="Utility\Logger.cs" />
     <Compile Include="Utility\ServiceTime.cs" />
     <Compile Include="Utility\Stopwatch.cs" />

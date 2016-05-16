@@ -1,24 +1,23 @@
 ﻿
 
 using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
-    class AuthGameGuard : ReceiveBasePacket
+    class AuthGameGuard
     {
-        public AuthGameGuard(LoginClient Client, byte[] data)
-        {
-            base.CreatePacket(Client, data);
-        }
+        private LoginClient client;
 
-        public override void Read()
+        public AuthGameGuard(Packet p, LoginClient client)
         {
+            this.client = client;
             // do nothing
         }
 
-        public override void Run()
+        public void RunImpl()
         {
-            Client.Send(GGAuth.ToPacket(Client));
+            client.Send(GGAuth.ToPacket(client));
         }
     }
 }

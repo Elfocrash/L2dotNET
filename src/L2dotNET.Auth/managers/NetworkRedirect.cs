@@ -67,7 +67,7 @@ namespace L2dotNET.LoginService.managers
         {
             if (GlobalRedirection != null)
             {
-                string[] a = client._address.ToString().Split(':')[0].Split('.'), b = GlobalRedirection.mask.Split('.');
+                string[] a = client.Address.ToString().Split(':')[0].Split('.'), b = GlobalRedirection.mask.Split('.');
                 byte[] d = new byte[4];
                 for (byte c = 0; c < 4; c++)
                 {
@@ -100,7 +100,7 @@ namespace L2dotNET.LoginService.managers
                 {
                     if (nr.serverId == serverId)
                     {
-                        string[] a = client._address.ToString().Split(':')[0].Split('.'), b = nr.mask.Split('.');
+                        string[] a = client.Address.ToString().Split(':')[0].Split('.'), b = nr.mask.Split('.');
                         byte[] d = new byte[4];
                         for (byte c = 0; c < 4; c++)
                         {

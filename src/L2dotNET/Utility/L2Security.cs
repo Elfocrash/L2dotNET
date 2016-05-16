@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.LoginService.Utils
+namespace L2dotNET.Utility
 {
     public class L2Security
     {

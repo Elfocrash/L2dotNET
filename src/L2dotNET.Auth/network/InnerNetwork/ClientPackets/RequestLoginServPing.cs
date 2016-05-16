@@ -1,22 +1,20 @@
 ﻿using L2dotNET.LoginService.gscommunication;
 using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
-    class RequestLoginServPing : ReceiveServerPacket
+    class RequestLoginServPing
     {
         private string message;
-        public RequestLoginServPing(ServerThread server, byte[] data)
+        ServerThread thread;
+        public RequestLoginServPing(Packet p, ServerThread server)
         {
-            base.CreatePacket(server, data);
+            thread = server;
+            message = p.ReadString();
         }
 
-        public override void read()
-        {
-            message = ReadString();
-        }
-
-        public override void run()
+        public void RunImpl()
         {
             thread.Send(LoginServPing.ToPacket());
         }

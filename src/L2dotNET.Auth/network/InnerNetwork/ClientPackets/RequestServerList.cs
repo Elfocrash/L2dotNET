@@ -1,31 +1,29 @@
 ﻿
 using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
-    class RequestServerList : ReceiveBasePacket
+    class RequestServerList
     {
-        public RequestServerList(LoginClient Client, byte[] data)
-        {
-            base.CreatePacket(Client, data);
-        }
-
         int login1, login2;
-        public override void Read()
+        private LoginClient client;
+        public RequestServerList(Packet p, LoginClient client)
         {
-            login1 = ReadInt();
-            login2 = ReadInt();
+            this.client = client;
+            login1 = p.ReadInt();
+            login2 = p.ReadInt();
         }
 
-        public override void Run()
+        public void RunImpl()
         {
-            if (Client.login1 != login1 && Client.login2 != login2)
+            if (client.login1 != login1 && client.login2 != login2)
             {
-                Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCESS_FAILED));
+                client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCESS_FAILED));
                 return;
             }
 
-            Client.Send(ServerList.ToPacket(Client));
+            client.Send(ServerList.ToPacket(client));
         }
     }
 }

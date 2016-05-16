@@ -7,33 +7,31 @@ using Org.BouncyCastle.Crypto.Engines;
 using L2dotNET.Models;
 using Ninject;
 using L2dotNET.Services.Contracts;
-using L2dotNET.LoginService.Utils;
 using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.Utility;
+using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
-    class RequestAuthLogin : ReceiveBasePacket
+    class RequestAuthLogin
     {
         [Inject]
         public IAccountService accountService { get { return LoginServer.Kernel.Get<IAccountService>(); } }
 
-        public RequestAuthLogin(LoginClient Client, byte[] data)
-        {
-            base.CreatePacket(Client, data);
-        }
-
         protected byte[] _raw = null;
+        private LoginClient client;
 
-        public override void Read()
+        public RequestAuthLogin(Packet p, LoginClient client)
         {
-            _raw = ReadByteArray(128);
+            this.client = client;
+            _raw = p.ReadBytesArray(128);
         }
 
-        public override void Run()
+        public void RunImpl()
         {
             string username, password;
 
-            CipherParameters key = Client.RsaPair._privateKey;
+            CipherParameters key = client.RsaPair._privateKey;
             RSAEngine rsa = new RSAEngine();
             rsa.init(false, key);
 
@@ -57,8 +55,8 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
                     account = accountService.CreateAccount(username, L2Security.HashPassword(password));
                 else
                 {
-                    Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_USER_OR_PASS_WRONG));
-                    Client.close();
+                    client.Send(LoginFail.ToPacket(LoginFailReason.REASON_USER_OR_PASS_WRONG));
+                    client.close();
                     return;
                 }
             }
@@ -66,26 +64,26 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
             {
                 if (!accountService.CheckIfAccountIsCorrect(username, L2Security.HashPassword(password)))
                 {
-                    Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_USER_OR_PASS_WRONG));
-                    Client.close();
+                    client.Send(LoginFail.ToPacket(LoginFailReason.REASON_USER_OR_PASS_WRONG));
+                    client.close();
                     return;
                 }
 
                 if(ServerThreadPool.Instance.LoggedAlready(username.ToLower()))
                 {
-                    Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCOUNT_IN_USE));
-                    Client.close();
+                    client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCOUNT_IN_USE));
+                    client.close();
                     return;
                 }
             }
 
             Random rnd = new Random();
 
-            Client.ActiveAccount = account;
-            Client.setLoginPair(rnd.Next(), rnd.Next());
-            Client.setPlayPair(rnd.Next(), rnd.Next());
+            client.ActiveAccount = account;
+            client.setLoginPair(rnd.Next(), rnd.Next());
+            client.setPlayPair(rnd.Next(), rnd.Next());
 
-            Client.Send(LoginOk.ToPacket(Client));
+            client.Send(LoginOk.ToPacket(client));
         }
     }
 }

@@ -76,41 +76,40 @@ namespace L2dotNET.LoginService.gscommunication
 
             byte[] buff = new byte[buffer.Length];
             buffer.CopyTo(buff, 0);
-            handlePacket(buff);
+            Handle(new Packet(1, buff));
             new Thread(Read).Start();
         }
 
-        private void handlePacket(byte[] buff)
+        /// <summary>
+        /// Handles incoming packet.
+        /// </summary>
+        /// <param name="packet">Incoming packet.</param>
+        protected void Handle(Packet packet)
         {
-            byte id = buff[0];
+            string str = "header: " + packet.FirstOpcode + "\n";
 
-            string str = "header: " + buff[0] + "\n";
-            foreach (byte b in buff)
-                str += b.ToString("x2") + " ";
+            log.Info($"{packet.ToString()}");
 
-            log.Info(str);
-
-            ReceiveServerPacket msg = null;
-            switch (id)
+            switch (packet.FirstOpcode)
             {
                 case 0xA0:
-                    msg = new RequestLoginServPing(this, buff);
+                    new RequestLoginServPing(packet, this).RunImpl();
                     break;
                 case 0xA1:
-                    msg = new RequestLoginAuth(this, buff);
+                    new RequestLoginAuth(packet, this).RunImpl();
                     break;
                 case 0xA2:
-                    msg = new RequestPlayerInGame(this, buff);
+                    new RequestPlayerInGame(packet, this).RunImpl();
                     break;
                 case 0xA3:
-                    msg = new RequestPlayersOnline(this, buff);
+                    new RequestPlayersOnline(packet, this).RunImpl();
                     break;
             }
 
-            if (msg == null)
-                return;
+            //if (msg == null)
+            //    return;
 
-            new Thread(new ThreadStart(msg.run)).Start();
+            //new Thread(new ThreadStart(msg.run)).Start();
         }
 
         private void Termination()
