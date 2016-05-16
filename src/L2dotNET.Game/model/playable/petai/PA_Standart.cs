@@ -1,5 +1,6 @@
 ﻿using System;
 using L2dotNET.GameService.tools;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.model.playable.petai
 {
@@ -43,7 +44,7 @@ namespace L2dotNET.GameService.model.playable.petai
                 if (under55percent == null)
                 {
                     under55percent = DateTime.Now;
-                    pet.Owner.sendSystemMessage(595);//Your pet is very hungry.
+                    pet.Owner.sendSystemMessage(SystemMessage.SystemMessageId.YOUR_PET_IS_VERY_HUNGRY);
                 }
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.playable;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -33,7 +34,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (pet.Dead)
             {
-                player.sendSystemMessage(590);//Your pet is dead and any attempt you make to give it something goes unrecognized.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_GIVE_ITEMS_TO_DEAD_PET);
                 player.sendActionFailed();
                 return;
             }
@@ -48,7 +49,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (item.Template.is_drop == 0 || item.Template.is_destruct == 0 || item.Template.is_trade == 0 || item.Template.can_equip_hero != -1 || pet.ControlItem.ObjID == sID)
             {
-                player.sendSystemMessage(544);//Your pet cannot carry this item.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.ITEM_NOT_FOR_PETS);
                 player.sendActionFailed();
                 return;
             }

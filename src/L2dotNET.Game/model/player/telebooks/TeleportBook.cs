@@ -21,13 +21,13 @@ namespace L2dotNET.GameService.model.player.telebooks
         {
             if (bookmarks.Count >= player.TelbookLimit)
             {
-                player.sendSystemMessage(2358); //You have no space to save the teleport location.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.NO_SPACE_TO_SAVE_TELEPORT_LOCATION);
                 return;
             }
 
             if (!player.hasItem(MY_TELEPORT_FLAG, 1))
             {
-                player.sendSystemMessage(6501); //You cannot bookmark this location because you do not have a My Teleport Flag.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_BOOKMARK_THIS_LOCATION_BECAUSE_NO_MY_TELEPORT_FLAG);
                 return;
             }
 
@@ -128,23 +128,23 @@ namespace L2dotNET.GameService.model.player.telebooks
 
             if (scroll == null)
             {
-                player.sendSystemMessage(2359); //You cannot teleport because you do not have a teleport item.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_TELEPORT_BECAUSE_DO_NOT_HAVE_TELEPORT_ITEM);
                 return;
             }
 
             if (player.Dead)
             {
-                player.sendSystemMessage(2354); //You cannot use My Teleports while you are dead.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_MY_TELEPORTS_WHILE_DEAD);
                 return;
             }
             else if (player.isInWater())
             {
-                player.sendSystemMessage(2356); //You cannot use My Teleports underwater.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_MY_TELEPORTS_UNDERWATER);
                 return;
             }
             else if (player.IsFlying)
             {
-                player.sendSystemMessage(2351); //You cannot use My Teleports while flying.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_MY_TELEPORTS_WHILE_FLYING);
                 return;
             }
 

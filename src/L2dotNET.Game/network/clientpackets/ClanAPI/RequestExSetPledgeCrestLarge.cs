@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.model.communities;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -40,14 +41,14 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (_size < 0 || _size > 2176)
             {
-                player.sendSystemMessage(2285); //The length of the crest or insignia does not meet the standard requirements.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.LENGTH_CREST_DOES_NOT_MEET_STANDARD_REQUIREMENTS);
                 player.sendActionFailed();
                 return;
             }
 
             if ((player.ClanPrivs & L2Clan.CP_CL_REGISTER_CREST) != L2Clan.CP_CL_REGISTER_CREST)
             {
-                player.sendSystemMessage(235); //You are not authorized to bestow these rights.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_AUTHORIZED_TO_BESTOW_RIGHTS);
                 player.sendActionFailed();
                 return;
             }

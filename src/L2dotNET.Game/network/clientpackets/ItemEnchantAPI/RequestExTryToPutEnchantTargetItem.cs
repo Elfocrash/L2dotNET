@@ -1,5 +1,6 @@
 ﻿using L2dotNET.GameService.managers;
 using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -22,7 +23,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.EnchantState != ItemEnchantManager.STATE_PUT_ITEM)
             {
-                player.sendSystemMessage(355);//Inappropriate enchant conditions.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
                 player.sendActionFailed();
                 return;
             }
@@ -31,7 +32,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (item == null)
             {
-                player.sendSystemMessage(355);//Inappropriate enchant conditions.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
                 player.sendActionFailed();
                 return;
             }

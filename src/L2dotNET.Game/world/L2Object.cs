@@ -370,14 +370,14 @@ namespace L2dotNET.GameService.world
             {
                 if (this is L2Player)
                 {
-                    ((L2Player)this).sendSystemMessage(116); //You have entered a peaceful zone.
+                    ((L2Player)this).sendSystemMessage(SystemMessage.SystemMessageId.ENTER_PEACEFUL_ZONE);
                 }
             }
             else if (old && !_isInsidePeaceZone)
             {
                 if (this is L2Player)
                 {
-                    ((L2Player)this).sendSystemMessage(117); //You have left the peaceful zone.
+                    ((L2Player)this).sendSystemMessage(SystemMessage.SystemMessageId.EXIT_PEACEFUL_ZONE);
                 }
             }
         }
@@ -411,14 +411,14 @@ namespace L2dotNET.GameService.world
             {
                 if (this is L2Player)
                 {
-                    ((L2Player)this).sendSystemMessage(283); //You have entered a combat zone.
+                    ((L2Player)this).sendSystemMessage(SystemMessage.SystemMessageId.ENTERED_COMBAT_ZONE);
                 }
             }
             else if (old && !_isInsidePvpZone)
             {
                 if (this is L2Player)
                 {
-                    ((L2Player)this).sendSystemMessage(284); //You have left a combat zone.
+                    ((L2Player)this).sendSystemMessage(SystemMessage.SystemMessageId.LEFT_COMBAT_ZONE);
                 }
             }
         }

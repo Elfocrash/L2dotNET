@@ -22,9 +22,8 @@ namespace L2dotNET.GameService.network.l2recv
             L2Player player = Client.CurrentPlayer;
 
             if (player._recipeBook == null)
-            {
-                //The recipe is incorrect.
-                player.sendSystemMessage(852);
+            {   
+                player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
                 player.sendActionFailed();
                 return;
             }
@@ -42,15 +41,14 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (rec == null)
             {
-                //The recipe is incorrect.
-                player.sendSystemMessage(852);
+                player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
                 player.sendActionFailed();
                 return;
             }
 
             if (player.CurMP < rec._mp_consume)
             {
-                player.sendSystemMessage(24); //Not enough MP.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_MP);
                 player.sendActionFailed();
                 return;
             }
@@ -64,7 +62,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (!next)
             {
-                player.sendSystemMessage(404); //Your Create Item level is too low to register this recipe.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CREATE_LVL_TOO_LOW_TO_REGISTER);
                 player.sendActionFailed();
                 return;
             }
@@ -73,9 +71,8 @@ namespace L2dotNET.GameService.network.l2recv
             {
                 long count = player.Inventory.getItemCount(material.item.ItemID);
                 if (count < material.count)
-                {
-                    //You are missing $s2 $s1 required to create that.
-                    SystemMessage sm = new SystemMessage(854);
+                {   
+                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.MISSING_S2_S1_TO_CREATE);
                     sm.AddItemName(material.item.ItemID);
                     sm.AddItemCount(material.count - count);
                     player.sendPacket(sm);

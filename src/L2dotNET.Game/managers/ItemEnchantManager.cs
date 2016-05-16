@@ -176,7 +176,7 @@ namespace L2dotNET.GameService.managers
                 player.sendPacket(new ExPutEnchantTargetItemResult());
                 player.EnchantScroll = null;
                 player.EnchantState = 0;
-                player.sendSystemMessage(424);//Does not fit strengthening conditions of the scroll.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.DOES_NOT_FIT_SCROLL_CONDITIONS);
             }
             else
             {
@@ -190,7 +190,7 @@ namespace L2dotNET.GameService.managers
         {
             if (!supports.ContainsKey(stone.Template.ItemID))
             {
-                player.sendSystemMessage(2385);//This is an incorrect support enhancement spellbook.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.INCORRECT_SUPPORT_ENHANCEMENT_SPELLBOOK);
                 player.sendActionFailed();
                 return;
             }
@@ -250,7 +250,7 @@ namespace L2dotNET.GameService.managers
             {
                 player.sendPacket(new ExPutEnchantSupportItemResult());
                 player.EnchantStone = null;
-                player.sendSystemMessage(2386);//This item does not meet the requirements for the support enhancement spellbook.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.ITEM_DOES_NOT_MEET_REQUIREMENTS_FOR_SUPPORT_ENHANCEMENT_SPELLBOOK);
             }
             else
             {

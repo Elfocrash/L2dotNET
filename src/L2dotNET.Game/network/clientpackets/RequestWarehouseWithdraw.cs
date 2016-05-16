@@ -1,6 +1,7 @@
 ﻿using L2dotNET.GameService.model.inventory;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.network.l2send;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -77,7 +78,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.ItemLimit_Inventory < (player.getAllItems().Length + slots))
             {
-                player.sendSystemMessage(129);//Your inventory is full.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.SLOTS_FULL);
                 player.sendActionFailed();
                 return;
             }

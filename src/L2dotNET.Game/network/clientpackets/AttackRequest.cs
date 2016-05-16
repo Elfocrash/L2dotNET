@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.network.l2recv
@@ -39,7 +40,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (_objectId == player.ObjID)
             {
-                player.sendSystemMessage(51);//You cannot use this on yourself.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_ON_YOURSELF);
                 player.sendActionFailed();
                 return;
             }

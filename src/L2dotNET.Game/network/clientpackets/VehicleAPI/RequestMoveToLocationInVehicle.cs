@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.Summon != null)
             {
-                player.sendSystemMessage(1523);//You should release your pet or servitor so that it does not fall off of the boat and drown!
+                player.sendSystemMessage(SystemMessage.SystemMessageId.RELEASE_PET_ON_BOAT);
                 player.sendActionFailed();
                 return;
             }

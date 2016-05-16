@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.model.playable;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -31,9 +32,9 @@ namespace L2dotNET.GameService.network.l2recv
                 return;
             }
 
-            if (name.Length < 3 || name.Length > 8)
+            if (name.Length > 8)
             {
-                player.sendSystemMessage(548);//Your pet's name can be up to 8 characters in length.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.NAMING_PETNAME_UP_TO_8CHARS);
                 player.sendActionFailed();
                 return;
             }

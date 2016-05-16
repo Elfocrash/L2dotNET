@@ -103,7 +103,7 @@ namespace L2dotNET.GameService.controllers
         {
             DateTime dt = new DateTime(2000, 1, 1, 0, 0, 0).AddSeconds(Time * 6);
 
-            SystemMessage sm = new SystemMessage(Night ? 928 : 927);
+            SystemMessage sm = new SystemMessage(Night ? SystemMessage.SystemMessageId.TIME_S1_S2_IN_THE_NIGHT : SystemMessage.SystemMessageId.TIME_S1_S2_IN_THE_DAY);
             sm.AddString(dt.Hour < 10 ? "0" + dt.Hour : "" + dt.Hour);
             string str = dt.Minute < 10 ? "0" + dt.Minute : "" + dt.Minute;
             str += ":";

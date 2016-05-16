@@ -47,7 +47,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.TradeState == 4 || player.requester.TradeState == 4) // подтвердил уже
             {
-                player.sendSystemMessage(122);//You may no longer adjust items in the trade because the trade has been confirmed.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_ADJUST_ITEMS_AFTER_TRADE_CONFIRMED);
                 player.sendActionFailed();
                 return;
             }

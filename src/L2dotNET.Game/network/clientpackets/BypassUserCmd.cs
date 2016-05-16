@@ -30,9 +30,9 @@ namespace L2dotNET.GameService.network.l2recv
                 case 0: // [loc]
                     int regId = 0;//MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
                     if (regId > 0)
-                        player.sendPacket(new SystemMessage(regId).AddNumber(player.X).AddNumber(player.Y).AddNumber(player.Z));
+                        player.sendPacket(new SystemMessage((SystemMessage.SystemMessageId)regId).AddNumber(player.X).AddNumber(player.Y).AddNumber(player.Z));
                     else
-                        player.sendPacket(new SystemMessage(2361).AddString("Nowhere"));
+                        player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.NOT_IMPLEMENTED_YET_2361).AddString("Nowhere"));
 
                     int x = (player.X >> 15) + 9 + 8;
                     int y = (player.Y >> 15) + 10 + 11;

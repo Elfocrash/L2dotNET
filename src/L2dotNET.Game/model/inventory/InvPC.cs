@@ -179,10 +179,10 @@ namespace L2dotNET.GameService.model.inventory
                     ins.sql_insert(_owner.ObjID);
                     if (msg && !mass)
                     {
-                        SystemMessage sm = new SystemMessage(54); //You have earned $s1.
+                        SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.EARNED_ITEM_S1);
                         if (enchant > 0)
                         {
-                            sm.MessgeID = 1666; //You have obtained +$s1$s2.
+                            sm = new SystemMessage(SystemMessage.SystemMessageId.OBTAINED_S1_S2);                            
                             sm.AddNumber(enchant);
                             sm.AddItemName(template.ItemID);
                         }
@@ -195,7 +195,7 @@ namespace L2dotNET.GameService.model.inventory
 
                 if (msg && mass)
                 {
-                    SystemMessage sm = new SystemMessage(53); //You have earned $s2 $s1(s).
+                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.EARNED_S2_S1_S);
                     sm.AddItemName(template.ItemID);
                     sm.AddItemCount(count);
                     _owner.sendPacket(sm);
@@ -237,18 +237,18 @@ namespace L2dotNET.GameService.model.inventory
                     SystemMessage sm = null;
                     if (template.ItemID == 57)
                     {
-                        sm = new SystemMessage(52); //You have earned $s1 adena.
+                        sm = new SystemMessage(SystemMessage.SystemMessageId.EARNED_S1_ADENA);
                         sm.AddItemCount(count);
                     }
                     else if (count > 1)
                     {
-                        sm = new SystemMessage(53); //You have earned $s2 $s1(s).
+                        sm = new SystemMessage(SystemMessage.SystemMessageId.EARNED_S2_S1_S);
                         sm.AddItemName(template.ItemID);
                         sm.AddItemCount(count);
                     }
                     else
                     {
-                        sm = new SystemMessage(54); //You have earned $s1.
+                        sm = new SystemMessage(SystemMessage.SystemMessageId.EARNED_ITEM_S1);
                         sm.AddItemName(template.ItemID);
                     }
 
@@ -285,10 +285,10 @@ namespace L2dotNET.GameService.model.inventory
                 item.sql_insert(_owner.ObjID);
                 if (msg)
                 {
-                    SystemMessage sm = new SystemMessage(30); //You have obtained $s1.
+                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_PICKED_UP_S1);
                     if (item.Enchant > 0 && item.Template.ItemID != 4443)
                     {
-                        sm.MessgeID = 1666; //You have obtained +$s1$s2.
+                        sm = new SystemMessage(SystemMessage.SystemMessageId.OBTAINED_S1_S2);
                         sm.AddNumber(item.Enchant);
                         sm.AddItemName(item.Template.ItemID);
                     }
@@ -331,18 +331,18 @@ namespace L2dotNET.GameService.model.inventory
                     SystemMessage sm = null;
                     if (item.Template.ItemID == 57)
                     {
-                        sm = new SystemMessage(28); //You have obtained $s1 adena.
+                        sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_PICKED_UP_S1_ADENA);
                         sm.AddItemCount(item.Count);
                     }
                     else if (item.Count > 1)
                     {
-                        sm = new SystemMessage(29); //You have obtained $s2 $s1.
+                        sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_PICKED_UP_S2_S1);
                         sm.AddItemName(item.Template.ItemID);
                         sm.AddItemCount(item.Count);
                     }
                     else
                     {
-                        sm = new SystemMessage(30); //You have obtained $s1.
+                        sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_PICKED_UP_S1);
                         sm.AddItemName(item.Template.ItemID);
                     }
 
@@ -729,7 +729,7 @@ namespace L2dotNET.GameService.model.inventory
 
             SystemMessage sm = null;
             if (msg)
-                sm = new SystemMessage(count == 1 ? 302 : 301);
+                sm = new SystemMessage(count == 1 ? SystemMessage.SystemMessageId.S1_DISAPPEARED : SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
 
             bool weightUp = false;
             List<int> nulled = new List<int>();
@@ -834,7 +834,7 @@ namespace L2dotNET.GameService.model.inventory
 
             SystemMessage sm = null;
             if (msg)
-                sm = new SystemMessage(count == 1 ? 302 : 301);
+                sm = new SystemMessage(count == 1 ? SystemMessage.SystemMessageId.S1_DISAPPEARED : SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
 
             List<int> nulled = new List<int>();
             bool nonstackmass = false; int iditem = 0;
@@ -941,7 +941,7 @@ namespace L2dotNET.GameService.model.inventory
 
                         if (msg)
                         {
-                            SystemMessage sm = new SystemMessage(301);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
                             sm.AddItemName(item.Template.ItemID);
                             sm.AddItemCount(c);
 
@@ -959,7 +959,7 @@ namespace L2dotNET.GameService.model.inventory
 
                         if (msg)
                         {
-                            SystemMessage sm = new SystemMessage(301);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
                             sm.AddItemName(item.Template.ItemID);
                             sm.AddNumber(1);
 

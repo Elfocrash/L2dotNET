@@ -1,5 +1,6 @@
 ﻿using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.playable;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -36,7 +37,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (!pet.Inventory.Items.ContainsKey(sID))
             {
-                player.sendSystemMessage(352); //Incorrect item.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.INCORRECT_ITEM);
                 player.sendActionFailed();
                 return;
             }

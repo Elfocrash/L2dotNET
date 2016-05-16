@@ -13,20 +13,18 @@ namespace L2dotNET.GameService.model.skills2.speceffects
             effect.HashID = skillId * 65536 + lvl;
             effect.SkillId = skillId;
             effect.SkillLv = lvl;
-            effect.build("st +"+value);
+            effect.build("st +" + value);
         }
 
         public override void OnStartNight(L2Player player)
         {
-            //It is now midnight and the effect of $s1 can be felt.
-            player.sendPacket(new SystemMessage(1131).AddSkillName(effect.SkillId, effect.SkillLv));
+            player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.NIGHT_S1_EFFECT_APPLIES).AddSkillName(effect.SkillId, effect.SkillLv));
             player.addStat(effect);
         }
 
         public override void OnStartDay(L2Player player)
         {
-            //It is dawn and the effect of $s1 will now disappear.
-            player.sendPacket(new SystemMessage(1132).AddSkillName(effect.SkillId, effect.SkillLv));
+            player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.DAY_S1_EFFECT_DISAPPEARS).AddSkillName(effect.SkillId, effect.SkillLv));
             player.removeStat(effect);
         }
     }

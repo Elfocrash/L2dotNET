@@ -22,14 +22,14 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.TradeState != 0)
             {
-                player.sendSystemMessage(142);//You are already trading with someone.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.ALREADY_TRADING);
                 player.sendActionFailed();
                 return;
             }
 
             if (player.ObjID == targetId)
             {
-                player.sendSystemMessage(51);//You cannot use this on yourself.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_ON_YOURSELF);
                 player.sendActionFailed();
                 return;
             }
@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.network.l2recv
             L2Player target;
             if (player.CurrentTarget == null || !(player.CurrentTarget is L2Player))
             {
-                player.sendSystemMessage(144);//That is an incorrect target.
+                player.sendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
                 player.sendActionFailed();
                 return;
             }
@@ -51,14 +51,14 @@ namespace L2dotNET.GameService.network.l2recv
             target = (L2Player)player.CurrentTarget;
             if (target.TradeState != 0)
             {
-                player.sendPacket(new SystemMessage(143).AddPlayerName(target.Name));//$c1 is already trading with another person. Please try again later.
+                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_ALREADY_TRADING).AddPlayerName(target.Name));
                 player.sendActionFailed();
                 return;
             }
 
             if (target.PartyState == 1)
             {
-                player.sendPacket(new SystemMessage(153).AddPlayerName(target.Name));//$c1 is on another task. Please try again later.
+                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_IS_BUSY_TRY_LATER).AddPlayerName(target.Name));
                 player.sendActionFailed();
                 return;
             }
@@ -69,7 +69,7 @@ namespace L2dotNET.GameService.network.l2recv
                 return;
             }
 
-            player.sendPacket(new SystemMessage(118).AddPlayerName(target.Name));//You have requested a trade with $c1.
+            player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.REQUEST_S1_FOR_TRADE).AddPlayerName(target.Name));
             target.requester = player;
             player.requester = target;
             target.sendPacket(new SendTradeRequest(player.ObjID));
