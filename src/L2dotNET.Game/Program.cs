@@ -1,8 +1,6 @@
-﻿using System.Diagnostics;
-using L2dotNET.GameService.tools;
+﻿using Ninject;
 using System;
-using L2dotNET.GameService.geo;
-using Ninject;
+using System.Diagnostics;
 
 namespace L2dotNET.GameService
 {
@@ -11,11 +9,18 @@ namespace L2dotNET.GameService
         
         static void Main(string[] args)
         {
+            SetConsoleConfigurations();
             SetNumberDecimalSeparator();
             GameServer.Kernel = new StandardKernel(new DepInjectionModule());
             GameServer server = GameServer.Kernel.Get<GameServer>();
             server.Start();
             Process.GetCurrentProcess().WaitForExit();
+        }
+
+        private static void SetConsoleConfigurations()
+        {
+            Console.Title = "L2dotNET GameServer";
+            Console.WindowWidth = (Console.LargestWindowWidth * 7 / 10);
         }
 
         //TODO: Temporary fix. Need a better workaround to fix the Culture conversion issues. (Note: parsing error when reading "." in Latin cultures from XML files)

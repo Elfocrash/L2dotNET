@@ -14,5 +14,7 @@ namespace L2dotNET.Services.Contracts
         List<int> GetPlayersObjectIdList();
 
         List<AnnouncementModel> GetAnnouncementsList();
+
+        bool CheckDatabaseQuery();
     }
 }
