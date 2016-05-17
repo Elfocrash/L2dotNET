@@ -37,7 +37,6 @@ namespace L2dotNET.LoginService
 
         public bool RunCheckers()
         {
-            host = "tste";
             try
             {
                 if (CheckDatabaseHostPing(host))
