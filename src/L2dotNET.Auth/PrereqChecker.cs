@@ -25,8 +25,8 @@ namespace L2dotNET.LoginService
         private const int MYSQL_SERVICE_RETRY_WAIT_TIME_MS = 5000;
         private const int MYSQL_SERVICE_RETRY_ATTEMPTS = 5;
         
-        private string host;
-        private string database;
+        private readonly string host;
+        private readonly string database;
 
         public PrereqChecker()
         {
