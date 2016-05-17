@@ -19,35 +19,37 @@ namespace L2dotNET.LoginService
 
         [Inject]
         public IServerService serverService { get { return LoginServer.Kernel.Get<IServerService>(); } }
-
-        private IDbConnection db;
-
+        
         private const int PING_TIMEOUT = 5000;
         private const int PING_RETRY_ATTEMPTS = 5;
         private const int MYSQL_SERVICE_RETRY_WAIT_TIME_MS = 5000;
         private const int MYSQL_SERVICE_RETRY_ATTEMPTS = 5;
+        
+        private string host;
+        private string database;
 
         public PrereqChecker()
         {
-            this.db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
+            MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
+            host = connStrBuilder.Server;
+            database = connStrBuilder.Database;
         }
 
         public bool RunCheckers()
         {
+            host = "tste";
             try
             {
-                MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(this.db.ConnectionString);
-
-                if (CheckDatabaseHostPing(connStrBuilder.Server))
-                    if (IsLocalIPAddress(connStrBuilder.Server))
+                if (CheckDatabaseHostPing(host))
+                    if (IsLocalIPAddress(host))
                     {
                         if (CheckMySQLService())
-                            if (CheckDatabaseQuery(connStrBuilder.Database))
+                            if (CheckDatabaseQuery(database))
                                 return true;
                     }
                     else
                     {
-                        if (CheckDatabaseQuery(connStrBuilder.Database))
+                        if (CheckDatabaseQuery(database))
                             return true;
                     }
             }
@@ -158,7 +160,7 @@ namespace L2dotNET.LoginService
             return false;
         }
 
-        public bool IsDatabaseQuerying()
+        private bool IsDatabaseQuerying()
         {
             return serverService.CheckDatabaseQuery();
         }
