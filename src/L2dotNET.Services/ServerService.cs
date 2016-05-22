@@ -33,5 +33,10 @@ namespace L2dotNET.Services
             return this.unitOfWork.ServerRepository.GetAnnouncementsList();
         }
 
+        public bool CheckDatabaseQuery()
+        {
+            return this.unitOfWork.ServerRepository.CheckDatabaseQuery();
+        }
+
     }
 }

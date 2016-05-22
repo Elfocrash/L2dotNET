@@ -61,5 +61,18 @@ namespace L2dotNET.Repositories
             }
         }
 
+        public bool CheckDatabaseQuery()
+        {
+            try
+            {
+                return this.db.Query("SELECT 1").Any();
+            }
+            catch (MySqlException ex)
+            {
+                log.Error($"Method: { "CheckDatabaseQuery" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+            }
+            return false;
+        }
+
     }
 }
