@@ -583,7 +583,7 @@
     <Compile Include="network\NetworkBlock.cs" />
     <Compile Include="network\PacketHandler.cs" />
     <Compile Include="network\GameServerNetworkRequest.cs" />
-    <Compile Include="Prereq.cs" />
+    <Compile Include="PreReqValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\quests\QuestInfo.cs" />

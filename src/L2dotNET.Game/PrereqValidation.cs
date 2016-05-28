@@ -3,19 +3,19 @@ using log4net;
 using Ninject;
 using System;
 
-namespace L2dotNET.LoginService
+namespace L2dotNET.GameService
 {
-    public class Prereq
+    public class PreReqValidation
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(Prereq));
+        private static readonly ILog log = LogManager.GetLogger(typeof(PreReqValidation));
 
         [Inject]
-        public ICheckService checkService { get { return LoginServer.Kernel.Get<ICheckService>(); } }
+        public ICheckService checkService { get { return GameServer.Kernel.Get<ICheckService>(); } }
 
-        private static volatile Prereq instance;
+        private static volatile PreReqValidation instance;
         private static object syncRoot = new object();
 
-        public static Prereq Instance
+        public static PreReqValidation Instance
         {
             get
             {
@@ -25,7 +25,7 @@ namespace L2dotNET.LoginService
                     {
                         if (instance == null)
                         {
-                            instance = new Prereq();
+                            instance = new PreReqValidation();
                         }
                     }
                 }
@@ -34,7 +34,7 @@ namespace L2dotNET.LoginService
             }
         }
 
-        public Prereq()
+        public PreReqValidation()
         {
 
         }

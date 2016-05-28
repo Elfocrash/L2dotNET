@@ -23,7 +23,7 @@ namespace L2dotNET.LoginService
         public void Start()
         {
             Config.Instance.Initialize();
-            Prereq.Instance.Initialize();
+            PreReqValidation.Instance.Initialize();
             ClientManager.Instance.Initialize();
             ServerThreadPool.Instance.Initialize();
             NetworkRedirect.Instance.Initialize();

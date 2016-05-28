@@ -34,7 +34,7 @@ namespace L2dotNET.GameService
         {
             Config.Instance.Initialize();
 
-            Prereq.Instance.Initialize();
+            PreReqValidation.Instance.Initialize();
 
             CharTemplateTable.Instance.Initialize();
 
