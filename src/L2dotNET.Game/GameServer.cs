@@ -32,9 +32,9 @@ namespace L2dotNET.GameService
 
         public void Start()
         {
-            this.PrereqChecks();
-
             Config.Instance.Initialize();
+
+            PreReqValidation.Instance.Initialize();
 
             CharTemplateTable.Instance.Initialize();
 
@@ -110,19 +110,6 @@ namespace L2dotNET.GameService
         private void Accept(TcpClient clientSocket)
         {
             ClientManager.Instance.addClient(clientSocket);
-        }
-
-        private void PrereqChecks()
-        {
-            PrereqChecker prereqs = new PrereqChecker();
-
-            if (!prereqs.RunCheckers())
-            {
-                log.Warn($"Some checks have failed. Please correct the errors and try again.");
-                log.Info($"Press ENTER to exit...");
-                Console.Read();
-                Environment.Exit(0);
-            }
         }
     }
 }
