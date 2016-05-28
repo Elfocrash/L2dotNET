@@ -16,11 +16,13 @@ namespace L2dotNET.Repositories
 
         public UnitOfWork(IPlayerRepository playerRepository,
                           IAccountRepository accountRepository,
-                          IServerRepository serverRepository)
+                          IServerRepository serverRepository,
+                          ICheckRepository checkRepository)
         {
             this.playerRepository = playerRepository;
             this.accountRepository = accountRepository;
             this.serverRepository = serverRepository;
+            this.checkRepository = checkRepository;
         }
 
         public void Commit()
@@ -68,6 +70,18 @@ namespace L2dotNET.Repositories
                     this.serverRepository = new ServerRepository();
 
                 return this.serverRepository;
+            }
+        }
+
+        private ICheckRepository checkRepository;
+        public ICheckRepository CheckRepository
+        {
+            get
+            {
+                if (this.checkRepository == null)
+                    this.checkRepository = new CheckRepository();
+
+                return this.checkRepository;
             }
         }
 

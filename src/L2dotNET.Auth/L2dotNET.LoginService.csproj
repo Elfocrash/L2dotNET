@@ -90,9 +90,7 @@
       <HintPath>lib\Org.BouncyCastle.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -119,7 +117,7 @@
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginOk.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginFail.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginServPing.cs" />
-    <Compile Include="PrereqChecker.cs" />
+    <Compile Include="Prereq.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="managers\NetworkBlock.cs" />
     <Compile Include="gscommunication\ServerThreadPool.cs" />

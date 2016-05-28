@@ -22,9 +22,8 @@ namespace L2dotNET.LoginService
 
         public void Start()
         {
-            this.PrereqChecks();
-
             Config.Instance.Initialize();
+            Prereq.Instance.Initialize();
             ClientManager.Instance.Initialize();
             ServerThreadPool.Instance.Initialize();
             NetworkRedirect.Instance.Initialize();
@@ -54,19 +53,6 @@ namespace L2dotNET.LoginService
         private void AcceptClient(TcpClient client)
         {
             ClientManager.Instance.addClient(client);
-        }
-
-        private void PrereqChecks()
-        {
-            PrereqChecker prereqs = new PrereqChecker();
-
-            if (!prereqs.RunCheckers())
-            {
-                log.Warn($"Some checks have failed. Please correct the errors and try again.");
-                log.Info($"Press ENTER to exit...");
-                Console.Read();
-                Environment.Exit(0);
-            }
         }
     }
 }
