@@ -1,18 +1,11 @@
 ﻿using Dapper;
-using L2dotNET.Models;
 using L2dotNET.Repositories.Contracts;
+using L2dotNET.Repositories.Utils;
 using log4net;
 using MySql.Data.MySqlClient;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
-using System;
-using System.Net;
-using System.ServiceProcess;
-using System.Threading;
-using System.Net.NetworkInformation;
-using L2dotNET.Repositories.Utils;
 
 namespace L2dotNET.Repositories
 {
@@ -24,8 +17,9 @@ namespace L2dotNET.Repositories
 
         private const int PING_TIMEOUT = 5000;
         private const int PING_RETRY_ATTEMPTS = 5;
-        private const int MYSQL_SERVICE_RETRY_WAIT_TIME_MS = 5000;
+        private const int MYSQL_SERVICE_START_TIMEOUT = 5000;
         private const int MYSQL_SERVICE_RETRY_ATTEMPTS = 5;
+        private const string MYSQL_SERVICE_NAME = "MySQL";
 
         private readonly string host;
         private readonly string database;
@@ -52,6 +46,7 @@ namespace L2dotNET.Repositories
         private bool CheckDatabaseHostPing()
         {
             log.Info($"Checking ping to database host...");
+
             bool isHostPinging = HostCheck.IsPingSuccessful(host, PING_TIMEOUT);
 
             for (int i = 1; !isHostPinging && i <= PING_RETRY_ATTEMPTS; i++)
@@ -78,21 +73,24 @@ namespace L2dotNET.Repositories
             if (HostCheck.IsLocalIPAddress(host))
             {
                 log.Info($"Database host running at localhost.");
-
                 log.Info($"Checking if MySQL Service is running at localhost...");
 
-                bool isMySQLServiceRunning = HostCheck.IsServiceRunning("MySQL");
+                bool isMySQLServiceRunning = HostCheck.IsServiceRunning(MYSQL_SERVICE_NAME);
 
                 for (int i = 1; !isMySQLServiceRunning && i <= MYSQL_SERVICE_RETRY_ATTEMPTS; i++)
                 {
                     log.Error($"MySQL Service was not found running at localhost!");
-                    log.Warn($"Retrying to check MySQL Service...Retry attempt: { i }.");
+                    log.Warn($"Trying to start MySQL service...Retry attempt: { i }.");
 
-                    Thread.Sleep(MYSQL_SERVICE_RETRY_WAIT_TIME_MS);
-                    isMySQLServiceRunning = HostCheck.IsServiceRunning("MySQL");
+                    HostCheck.StartService(MYSQL_SERVICE_NAME, MYSQL_SERVICE_START_TIMEOUT);
+
+                    isMySQLServiceRunning = HostCheck.IsServiceRunning(MYSQL_SERVICE_NAME);
 
                     if (isMySQLServiceRunning)
+                    {
+                        log.Info("MySQL Service started!");
                         break;
+                    }
                 }
 
                 if (isMySQLServiceRunning)

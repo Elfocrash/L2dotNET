@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.Repositories.Utils
 {
     public static class HostCheck
     {
         public static bool IsPingSuccessful(string host, int pingTimeout)
-        {   
+        {
             try { return new Ping().Send(host, pingTimeout, new byte[1]).Status == IPStatus.Success; }
             catch { }
             return false;
@@ -50,6 +47,20 @@ namespace L2dotNET.Repositories.Utils
             }
             catch { }
             return false;
+        }
+
+        public static void StartService(string serviceName, int timeoutMilliseconds)
+        {
+            TimeSpan timeout = TimeSpan.FromMilliseconds(timeoutMilliseconds);
+            ServiceController service = ServiceController.GetServices().FirstOrDefault(filter => filter.ServiceName.StartsWith(serviceName) &&
+                                                                                                  filter.Status != ServiceControllerStatus.Running);
+
+            try
+            {
+                service.Start();
+                service.WaitForStatus(ServiceControllerStatus.Running, timeout);
+            }
+            catch { }
         }
     }
 }
