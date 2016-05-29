@@ -3,14 +3,15 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.ServiceProcess;
+using System.Threading;
 
 namespace L2dotNET.Repositories.Utils
 {
     public static class HostCheck
     {
-        public static bool IsPingSuccessful(string host, int pingTimeout)
+        public static bool IsPingSuccessful(string host, int timeoutMs)
         {
-            try { return new Ping().Send(host, pingTimeout, new byte[1]).Status == IPStatus.Success; }
+            try { return new Ping().Send(host, timeoutMs, new byte[1]).Status == IPStatus.Success; }
             catch { }
             return false;
         }
@@ -38,6 +39,13 @@ namespace L2dotNET.Repositories.Utils
             return false;
         }
 
+        public static bool ServiceExists(string serviceName)
+        {
+            try { return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName)); }
+            catch { }
+            return false;
+        }
+
         public static bool IsServiceRunning(string serviceName)
         {
             try
@@ -49,18 +57,30 @@ namespace L2dotNET.Repositories.Utils
             return false;
         }
 
-        public static void StartService(string serviceName, int timeoutMilliseconds)
+        public static void StartService(string serviceName, int timeoutMs)
         {
-            TimeSpan timeout = TimeSpan.FromMilliseconds(timeoutMilliseconds);
-            ServiceController service = ServiceController.GetServices().FirstOrDefault(filter => filter.ServiceName.StartsWith(serviceName) &&
-                                                                                                  filter.Status != ServiceControllerStatus.Running);
+            ServiceController service = ServiceController.GetServices().FirstOrDefault(filter => filter.ServiceName.StartsWith(serviceName));
 
-            try
+            if (service == null)
+                return;
+
+            switch (service.Status)
             {
-                service.Start();
-                service.WaitForStatus(ServiceControllerStatus.Running, timeout);
+                case ServiceControllerStatus.Running:
+                    break;
+                case ServiceControllerStatus.Stopped:
+                    try
+                    {
+                        TimeSpan timeout = TimeSpan.FromMilliseconds(timeoutMs);
+                        service.Start();
+                        service.WaitForStatus(ServiceControllerStatus.Running, timeout);
+                    }
+                    catch { }
+                    break;
+                default:
+                    Thread.Sleep(timeoutMs);
+                    break;
             }
-            catch { }
         }
     }
 }
