@@ -59,6 +59,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -116,7 +117,7 @@
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginOk.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginFail.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginServPing.cs" />
-    <Compile Include="PreReqValidation.cs.cs" />
+    <Compile Include="PreReqValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="managers\NetworkBlock.cs" />
     <Compile Include="gscommunication\ServerThreadPool.cs" />

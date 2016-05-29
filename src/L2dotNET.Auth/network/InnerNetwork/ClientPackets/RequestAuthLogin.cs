@@ -24,7 +24,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
         public RequestAuthLogin(Packet p, LoginClient client)
         {
             this.client = client;
-            _raw = p.ReadBytesArray(128);
+            _raw = p.ReadByteArrayAlt(128);
         }
 
         public void RunImpl()
@@ -43,7 +43,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
                 Array.Copy(decrypt, 0, temp, 128 - decrypt.Length, decrypt.Length);
                 decrypt = temp;
             }
-
+            
             username = Encoding.ASCII.GetString(decrypt, 0x5e, 14).Replace("\0", "");
             password = Encoding.ASCII.GetString(decrypt, 0x6c, 16).Replace("\0", "");
 

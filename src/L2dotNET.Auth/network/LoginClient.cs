@@ -106,6 +106,7 @@ namespace L2dotNET.LoginService
         }
 
         private void OnReceiveCallback(IAsyncResult result)
+
         {
             NetStream.EndRead(result);
 
