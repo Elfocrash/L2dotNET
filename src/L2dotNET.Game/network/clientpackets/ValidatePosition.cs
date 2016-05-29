@@ -68,6 +68,8 @@ namespace L2dotNET.GameService.network.l2recv
                             player.Z = _z;
                         }
                     }
+                    Console.WriteLine($"Current position: X:{player.clientPosX}, Y:{player.clientPosY}, Z:{player.clientPosZ}");//debug
+                    player.BroadcastUserInfo();
                     return;
                 }
                 else if (diffSq > 250000 || Math.Abs(dz) > 200)
@@ -85,12 +87,13 @@ namespace L2dotNET.GameService.network.l2recv
                 }
             }
 
-            player.clientPosX = _x;
-            player.clientPosY = _y;
-            player.clientPosZ = _z;
-            player.clientHeading = _heading;
-
-            player.validateVisibleObjects(_x, _y, true);         
+            player.X = _x;
+            player.Y = _y;
+            player.X = _z;
+            player.Heading = _heading;
+            Console.WriteLine($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}");//debug
+            player.BroadcastUserInfo();
+            //player.validateVisibleObjects(_x, _y, true);         
         }
     }
 }

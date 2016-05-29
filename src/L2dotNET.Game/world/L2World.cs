@@ -84,7 +84,7 @@ namespace L2dotNET.GameService.world
                         for (int b = -1; b <= 1; b++)
                         {
                             if (validRegion(x + a, y + b))
-                                _worldRegions[x + a,y + b].addSurroundingRegion(_worldRegions[x,y]);
+                                _worldRegions[x + a,y + b].AddSurroundingRegion(_worldRegions[x,y]);
                         }
                     }
                 }

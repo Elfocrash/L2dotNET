@@ -76,13 +76,12 @@ namespace L2dotNET.GameService.network.l2recv
             player.sendActionFailed();
 
             GameTime.Instance.EnterWorld(player);
-
-            L2World.Instance.AddPlayer(player);
+            
             player.timer();
 
-            L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
-            worldRegion.checkZones(player, true);
-            worldRegion.realiseMe(player, null, false);
+            player.SpawnMe();
+            //L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
+            //player.SetRegion(worldRegion);
             //player.getKnowns(500, 500, false);
 
             player.sendPacket(new UserInfo(player));

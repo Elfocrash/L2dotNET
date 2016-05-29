@@ -68,22 +68,15 @@ namespace L2dotNET.GameService.network.l2send
             writeD(player.PvPStatus);
             writeD(player.Karma);
 
-            writeD(0x00);
-            writeD(0x01);
+            writeD(player.CharacterStat.getStat(TEffectType.b_attack_spd));//matkspeed
+            writeD(player.CharacterStat.getStat(TEffectType.b_casting_spd));
 
             writeD(player.PvPStatus); 
             writeD(player.Karma);
 
-            double atkspd = player.CharacterStat.getStat(TEffectType.b_attack_spd);
-
-            writeD(player.CharacterStat.getStat(TEffectType.b_casting_spd));
-            writeD(atkspd);
-
-            writeD(0x00);
-
             double spd = player.CharacterStat.getStat(TEffectType.p_speed);
             double anim = spd * 1f / 130;
-            double anim2 = (1.1) * atkspd / 300;
+            double anim2 = (1.1) * player.CharacterStat.getStat(TEffectType.b_attack_spd) / 300;
             double runSpd = spd / anim;
             double walkSpd = spd * .8 / anim;
 
@@ -93,12 +86,12 @@ namespace L2dotNET.GameService.network.l2send
             writeD(50); // swimspeed
             writeD(runSpd);
             writeD(walkSpd);
-            writeD(0);
-            writeD(0);
-            writeF(anim); //анимация бега
-            writeF(anim2); //анимация атаки
+            writeD(runSpd);
+            writeD(walkSpd);
+            writeF(anim);
+            writeF(anim2);
 
-            writeF(player.Radius);//elfo
+            writeF(player.Radius);
             writeF(player.Height);
 
             writeD(player.HairStyle);
@@ -136,6 +129,7 @@ namespace L2dotNET.GameService.network.l2send
             writeD((int)player.ActiveClass.ClassId.Id);
 
             writeD(player.MaxCP);//max cp here
+            writeD((int)player.CurCP);
             writeC(player.GetEnchantValue());
             writeC(player.TeamID);
             writeD(player.getClanCrestLargeId());
@@ -153,13 +147,13 @@ namespace L2dotNET.GameService.network.l2send
             writeD(player.GetFishz()); //fishing z
             writeD(player.getNameColor());
 
-            writeD(player.Heading);
+            writeD(0x00);
 
             writeD(player.ClanRank()); 
             writeD(player.ClanType);
 
             writeD(player.getTitleColor());
-            writeD(player.CursedWeaponLevel);
+            writeD(0x00);//titlecolor
         }
     }
 }

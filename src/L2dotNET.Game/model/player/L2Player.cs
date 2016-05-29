@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.model;
 using L2dotNET.GameService.model.communities;
 using L2dotNET.GameService.model.inventory;
 using L2dotNET.GameService.model.items;
@@ -433,7 +434,7 @@ namespace L2dotNET.GameService
         public override void broadcastUserInfo()
         {
             sendPacket(new UserInfo(this));
-            updateAbnormalEventEffect();
+            //updateAbnormalEventEffect();
 
             broadcastPacket(new CharInfo(this), true);
         }
@@ -1478,6 +1479,56 @@ namespace L2dotNET.GameService
             }
         }
 
+        public void BroadcastCharInfo()
+        {
+            foreach (L2Player player in L2World.Instance.GetPlayers())
+		    {
+                if(player != this)
+			        player.sendPacket(new CharInfo(this));
+			
+			    //int relation = getRelation(player);
+       //         bool isAutoAttackable = isAutoAttackable(player);
+
+       //         player.sendPacket(new RelationChanged(this, relation, isAutoAttackable));
+			    //    if (getPet() != null)
+				   //     player.sendPacket(new RelationChanged(getPet(), relation, isAutoAttackable));
+		    }
+        }
+
+        public void BroadcastUserInfo()
+        {
+            sendPacket(new UserInfo(this));
+
+            //if (getPolyType() == PolyType.NPC)
+            //    Broadcast.toKnownPlayers(this, new AbstractNpcInfo.PcMorphInfo(this, getPolyTemplate()));
+            //else
+                BroadcastCharInfo();
+        }
+
+        public override void AddKnownObject(L2Object obj)
+        {
+            SendInfoFrom(obj);
+        }
+
+        private void SendInfoFrom(L2Object obj)
+        {
+            //if (obj.getPolyType() == PolyType.ITEM)
+            //    sendPacket(new SpawnItem(obj));
+            //else
+            //{
+                // send object info to player
+                obj.SendInfo(this);
+
+       //         if (obj is L2Character)
+			    //{
+       //             // Update the state of the L2Character object client side by sending Server->Client packet MoveToPawn/MoveToLocation and AutoAttackStart to the L2PcInstance
+       //             L2Character obj2 = (L2Character)obj;
+       //             if (obj2. hasAI())
+       //                 obj2.getAI().describeStateToPlayer(this);
+       //         }
+       //     }
+        }
+
         public void untransform()
         {
             if (Transform != null)
@@ -1485,6 +1536,59 @@ namespace L2dotNET.GameService
                 Transform.Template.onTransformEnd(this);
                 Transform = null;
             }
+        }
+
+        public override void SendInfo(L2Player player)
+        {
+            //if (this.Boa isInBoat())
+            //    getPosition().set(getBoat().getPosition());
+
+            //if (getPolyType() == PolyType.NPC)
+            //    activeChar.sendPacket(new AbstractNpcInfo.PcMorphInfo(this, getPolyTemplate()));
+            //else
+            //{
+                player.sendPacket(new CharInfo(this));
+
+                if (IsSitting)
+                {
+     //               L2Object obj = World.getInstance().getObject(_throneId);
+     //               if (obj is L2StaticObject)
+					//activeChar.sendPacket(new ChairSit(getObjectId(), ((L2StaticObjectInstance)object).getStaticObjectId()));
+                }
+            //}
+
+            //int relation = getRelation(activeChar);
+            //boolean isAutoAttackable = isAutoAttackable(activeChar);
+
+            //activeChar.sendPacket(new RelationChanged(this, relation, isAutoAttackable));
+            //if (getPet() != null)
+            //    activeChar.sendPacket(new RelationChanged(getPet(), relation, isAutoAttackable));
+
+            //relation = activeChar.getRelation(this);
+            //isAutoAttackable = activeChar.isAutoAttackable(this);
+
+            //sendPacket(new RelationChanged(activeChar, relation, isAutoAttackable));
+            //if (activeChar.getPet() != null)
+            //    sendPacket(new RelationChanged(activeChar.getPet(), relation, isAutoAttackable));
+
+            //if (isInBoat())
+            //    activeChar.sendPacket(new GetOnVehicle(getObjectId(), getBoat().getObjectId(), getVehiclePosition()));
+
+            //switch (getStoreType())
+            //{
+            //    case SELL:
+            //    case PACKAGE_SELL:
+            //        activeChar.sendPacket(new PrivateStoreMsgSell(this));
+            //        break;
+
+            //    case BUY:
+            //        activeChar.sendPacket(new PrivateStoreMsgBuy(this));
+            //        break;
+
+            //    case MANUFACTURE:
+            //        activeChar.sendPacket(new RecipeShopMsg(this));
+            //        break;
+            //}
         }
 
         public void setTransform(L2Transform tr)
@@ -1607,6 +1711,23 @@ namespace L2dotNET.GameService
                 return false;
 
             return true;
+        }
+
+        public void SpawnMe()
+        {
+            //_isVisible = true;
+
+            Region = L2World.Instance.GetRegion(new Location(X,Y,Z));
+
+            L2World.Instance.AddPlayer(this);
+
+            onSpawn();
+        }
+
+
+        public override void teleport(int x, int y, int z)
+        {
+            base.teleport(x, y, z);
         }
 
         public bool CheckFreeSlotsInventory(ItemTemplate item, int count)
