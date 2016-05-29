@@ -404,7 +404,7 @@ namespace L2dotNET.GameService.model.npcs
         private void removeCorpse(object sender, ElapsedEventArgs e)
         {
             broadcastPacket(new DeleteObject(ObjID));
-            L2World.Instance.UnrealiseEntry(this, true);
+            L2World.Instance.RemoveObject(this);
         }
 
         public override void DeleteByForce()

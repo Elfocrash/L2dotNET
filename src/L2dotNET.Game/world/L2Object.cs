@@ -74,7 +74,7 @@ namespace L2dotNET.GameService.world
 
             StopRegeneration();
 
-            L2World.Instance.UnrealiseEntry(this, true);
+            L2World.Instance.RemoveObject(this);
         }
 
         public void clearKnowns(bool deleteMe, params int[] exclude)
@@ -94,7 +94,7 @@ namespace L2dotNET.GameService.world
 
         public void getKnowns(int range, int height, bool zones)
         {
-            L2World.Instance.GetKnowns(this, range, height, zones);
+            L2World.Instance.getObjects();// GetKnowns(this, range, height, zones);
         }
 
         private void onClearing(L2Object target, bool deleteMe)
@@ -457,7 +457,7 @@ namespace L2dotNET.GameService.world
                 height = 1000;
             }
 
-            L2World.Instance.CheckToUpdate(this, x, y, range, height, true, zones);
+            //L2World.Instance.CheckToUpdate(this, x, y, range, height, true, zones);
         }
 
         public Timer RegenerationMethod_1s, RegenUpdate;

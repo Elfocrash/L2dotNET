@@ -124,7 +124,7 @@ namespace L2dotNET.GameService.model.playable
 
             Owner.sendPacket(new PetStatusUpdate(this));
 
-            L2World.Instance.RealiseEntry(this, new PetInfo(this), true);
+            L2World.Instance.AddObject(this);//to add pet
             IsSpawned = true;
             onSpawn();
 

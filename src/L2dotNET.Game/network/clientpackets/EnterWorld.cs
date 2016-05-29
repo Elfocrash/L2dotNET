@@ -77,7 +77,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             GameTime.Instance.EnterWorld(player);
 
-            L2World.Instance.RealiseEntry(player, null, true);
+            L2World.Instance.AddPlayer(player);
             player.timer();
 
             L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);

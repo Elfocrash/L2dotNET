@@ -841,7 +841,7 @@ namespace L2dotNET.GameService.world
             _effects.Clear();
 
             broadcastPacket(new DeleteObject(ObjID));
-            L2World.Instance.UnrealiseEntry(this, true);
+            L2World.Instance.RemoveObject(this);
         }
 
         public virtual L2Item ActiveWeapon

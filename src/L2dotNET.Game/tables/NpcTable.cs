@@ -503,7 +503,7 @@ namespace L2dotNET.GameService.tables
             o.SpawnY = y;
             o.SpawnZ = z;
 
-            L2World.Instance.RealiseEntry(o, null, true);
+            L2World.Instance.AddObject(o);
             o.onSpawn();
 
             return o;

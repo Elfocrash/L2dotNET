@@ -285,6 +285,14 @@ namespace L2dotNET.Network
             return dest;
         }
 
+        public byte[] ReadByteArrayAlt(int Length)
+        {
+            byte[] result = new byte[Length];
+            Array.Copy(this.GetBuffer(), m_Offset, result, 0, Length);
+            m_Offset += Length;
+            return result;
+        }
+
         /// <summary>
         /// Reads <see cref="short"/> value from packet buffer.
         /// </summary>

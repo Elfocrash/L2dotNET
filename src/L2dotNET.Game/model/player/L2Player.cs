@@ -241,7 +241,7 @@ namespace L2dotNET.GameService
                 UpdatePlayer();
                 saveInventory();
 
-                L2World.Instance.UnrealiseEntry(this, true);
+                L2World.Instance.RemoveObject(this);
             }
         }
 

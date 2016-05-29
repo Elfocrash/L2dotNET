@@ -96,9 +96,9 @@ namespace L2dotNET.GameService.model.events
             GenZone();
             GenNpc();
 
-            L2World.Instance.RealiseEntry(raceManager1, null, true);
+            //L2World.Instance.RealiseEntry(raceManager1, null, true);
             raceManager1.onSpawn();
-            L2World.Instance.RealiseEntry(raceManager2, null, true);
+            //L2World.Instance.RealiseEntry(raceManager2, null, true);
             raceManager2.onSpawn();
 
             log.Info("MonsterRace loaded.");

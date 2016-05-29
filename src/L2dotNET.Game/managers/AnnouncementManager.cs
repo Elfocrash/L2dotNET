@@ -56,7 +56,7 @@ namespace L2dotNET.GameService.Managers
         public void Announce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_ANNOUNCE, text);
-            foreach (L2Player p in L2World.Instance.GetAllPlayers())
+            foreach (L2Player p in L2World.Instance.GetPlayers())
             {
                 p.sendPacket(cs);
             }
@@ -65,7 +65,7 @@ namespace L2dotNET.GameService.Managers
         public void criticalAnnounce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_CRITICAL_ANNOUNCE, text);
-            foreach (L2Player p in L2World.Instance.GetAllPlayers())
+            foreach (L2Player p in L2World.Instance.GetPlayers())
             {
                 p.sendPacket(cs);
             }
@@ -74,7 +74,7 @@ namespace L2dotNET.GameService.Managers
         public void screenAnnounce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_SCREEN_ANNOUNCE, text);
-            foreach (L2Player p in L2World.Instance.GetAllPlayers())
+            foreach (L2Player p in L2World.Instance.GetPlayers())
             {
                 p.sendPacket(cs);
             }

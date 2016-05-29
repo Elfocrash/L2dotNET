@@ -119,7 +119,7 @@ namespace L2dotNET.GameService.tables.admin
                 boat.Y = 261660;
                 boat.Z = -3610;
 
-                L2World.Instance.RealiseEntry(boat, null, true);
+                L2World.Instance.AddObject(boat);
                 boat.onSpawn();
             }
             else if (s == "13")
