@@ -1,8 +1,7 @@
 ## Travis CI Integration
-
-language: c
-
-install:
-  - sudo apt-get update && sudo apt-get install mono-devel mono-gmcs nunit-console
+language: csharp
+solution: L2dotNET.sln
+script:
+  - xbuild /p:VbcToolExe=vbnc.exe L2dotNET.sln
 script:
   - xbuild L2dotNET/src/L2dotNET.sln
