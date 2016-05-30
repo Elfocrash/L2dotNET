@@ -1,6 +1,5 @@
 ﻿using L2dotNET.GameService.controllers;
 using L2dotNET.GameService.crypt;
-using L2dotNET.GameService.geo;
 using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.model.events;
 using L2dotNET.GameService.model.items;
@@ -83,8 +82,6 @@ namespace L2dotNET.GameService
             HtmCache.Instance.Initialize();
 
             AuthThread.Instance.Initialize();
-
-            Geodata.Initialize();
 
             GameServerListener = new TcpListener(IPAddress.Any, Config.Instance.serverConfig.Port);
 

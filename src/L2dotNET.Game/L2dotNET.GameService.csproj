@@ -122,8 +122,6 @@
     <Compile Include="Enums\ClassRace.cs" />
     <Compile Include="Enums\ShotType.cs" />
     <Compile Include="Enums\ZoneId.cs" />
-    <Compile Include="geo\GeoBlock.cs" />
-    <Compile Include="geo\Geodata.cs" />
     <Compile Include="Managers\AnnouncementManager.cs" />
     <Compile Include="Managers\bbs\BBSManager.cs" />
     <Compile Include="Managers\CastleManager.cs" />
@@ -716,12 +714,6 @@
     <Compile Include="templates\StatsSet.cs" />
     <Compile Include="tools\Calcs.cs" />
     <Compile Include="tools\Utilz.cs" />
-    <Compile Include="Utils\Geometry\MathHelper.cs" />
-    <Compile Include="Utils\Geometry\Matrix.cs" />
-    <Compile Include="Utils\Geometry\Quaternion.cs" />
-    <Compile Include="Utils\Geometry\Rnd.cs" />
-    <Compile Include="Utils\Geometry\Vector2.cs" />
-    <Compile Include="Utils\Geometry\Vector3.cs" />
     <Compile Include="world\L2Character.cs" />
     <Compile Include="world\L2Object.cs" />
     <Compile Include="world\L2World.cs" />
@@ -851,6 +843,7 @@
     <Folder Include="Datapacks\Game\cmpl\quests\" />
     <Folder Include="Datapacks\Game\html\scripts\teleports\RaceTrack\" />
     <Folder Include="Datapacks\Game\log\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

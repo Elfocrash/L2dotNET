@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.GameService.Utils
+namespace L2dotNET.Utility
 {
     [Serializable]
     public struct Vector3 : IEquatable<Vector3>

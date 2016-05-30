@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.GameService.Utils
+namespace L2dotNET.Utility
 {
     public static class Rnd
     {

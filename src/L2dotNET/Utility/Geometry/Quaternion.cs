@@ -3,7 +3,7 @@
 using System.Runtime.Serialization;
 #endif
 
-namespace L2dotNET.GameService.Utils
+namespace L2dotNET.Utility
 {
 #if WINRT
     [DataContract]

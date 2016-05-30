@@ -48,6 +48,12 @@
     <Compile Include="Network\RemoteServiceSettings.cs" />
     <Compile Include="Network\ServiceShutdownEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Geometry\MathHelper.cs" />
+    <Compile Include="Utility\Geometry\Matrix.cs" />
+    <Compile Include="Utility\Geometry\Quaternion.cs" />
+    <Compile Include="Utility\Geometry\Rnd.cs" />
+    <Compile Include="Utility\Geometry\Vector2.cs" />
+    <Compile Include="Utility\Geometry\Vector3.cs" />
     <Compile Include="Utility\L2Buffer.cs" />
     <Compile Include="Utility\L2FileReader.cs" />
     <Compile Include="Utility\L2Random.cs" />

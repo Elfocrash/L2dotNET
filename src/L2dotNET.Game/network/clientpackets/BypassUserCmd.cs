@@ -4,7 +4,6 @@ using L2dotNET.GameService.model.player.partials;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
-using L2dotNET.GameService.geo;
 using System.Collections.Generic;
 
 namespace L2dotNET.GameService.network.l2recv

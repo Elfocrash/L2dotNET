@@ -89,7 +89,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             player.X = _x;
             player.Y = _y;
-            player.X = _z;
+            player.Z = _z;
             player.Heading = _heading;
             Console.WriteLine($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}");//debug
             player.BroadcastUserInfo();

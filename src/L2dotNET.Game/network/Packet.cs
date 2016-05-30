@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Utils;
-using L2dotNET.Utility;
+﻿using L2dotNET.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
