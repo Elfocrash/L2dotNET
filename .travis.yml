@@ -1,0 +1,8 @@
+## Travis CI Integration
+
+language: c
+
+install:
+  - sudo apt-get update && sudo apt-get install mono-devel mono-gmcs nunit-console
+script:
+  - xbuild L2dotNET/src/L2dotNET.sln
