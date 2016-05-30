@@ -1,5 +1,5 @@
 # L2dotNET
-A not so basic server for L2 Interlude Chronicle
+A server emulator for Lineage2 Interlude written in C#
 
 Join the chat: [![Join the chat at https://gitter.im/Elfocrash/L2dotNET](https://badges.gitter.im/Elfocrash/L2dotNET.svg)](https://gitter.im/Elfocrash/L2dotNET?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
