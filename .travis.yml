@@ -1,0 +1,7 @@
+## Travis CI Integration
+language: csharp
+solution: src/L2dotNET.sln
+script:
+  - xbuild /p:VbcToolExe=vbnc.exe src/L2dotNET.sln
+script:
+  - xbuild src/L2dotNET.sln
