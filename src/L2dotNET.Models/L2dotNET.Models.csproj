@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AccountModel.cs" />
     <Compile Include="AnnouncementModel.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="NetworkBlockModel.cs" />
     <Compile Include="PlayerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

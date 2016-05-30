@@ -152,7 +152,6 @@
     <Compile Include="Model\items\ItemEffect.cs" />
     <Compile Include="Model\items\ItemHandler.cs" />
     <Compile Include="Model\items\ItemHandlerScript.cs" />
-    <Compile Include="Model\Location.cs" />
     <Compile Include="Model\npcs\ai\AgitManagerAI.cs" />
     <Compile Include="Model\npcs\ai\AIManager.cs" />
     <Compile Include="Model\npcs\ai\AITemplate.cs" />

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using L2dotNET.GameService.world;
 using L2dotNET.Utility;
+using L2dotNET.Models;
 
 namespace L2dotNET.GameService.model.zones
 {

@@ -48,10 +48,21 @@
     <Compile Include="Network\RemoteServiceSettings.cs" />
     <Compile Include="Network\ServiceShutdownEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Geometry\AShape.cs" />
+    <Compile Include="Utility\Geometry\Circle.cs" />
+    <Compile Include="Utility\Geometry\Cube.cs" />
+    <Compile Include="Utility\Geometry\Cuboid.cs" />
+    <Compile Include="Utility\Geometry\Cylinder.cs" />
     <Compile Include="Utility\Geometry\MathHelper.cs" />
     <Compile Include="Utility\Geometry\Matrix.cs" />
+    <Compile Include="Utility\Geometry\Polygon.cs" />
     <Compile Include="Utility\Geometry\Quaternion.cs" />
+    <Compile Include="Utility\Geometry\Rectangle.cs" />
     <Compile Include="Utility\Geometry\Rnd.cs" />
+    <Compile Include="Utility\Geometry\Sphere.cs" />
+    <Compile Include="Utility\Geometry\Square.cs" />
+    <Compile Include="Utility\Geometry\Triangle.cs" />
+    <Compile Include="Utility\Geometry\Triangle3D.cs" />
     <Compile Include="Utility\Geometry\Vector2.cs" />
     <Compile Include="Utility\Geometry\Vector3.cs" />
     <Compile Include="Utility\L2Buffer.cs" />
@@ -62,7 +73,12 @@
     <Compile Include="Utility\ServiceTime.cs" />
     <Compile Include="Utility\Stopwatch.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">
+      <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
+      <Name>L2dotNET.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

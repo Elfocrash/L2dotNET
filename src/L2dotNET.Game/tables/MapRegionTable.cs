@@ -9,6 +9,7 @@ using L2dotNET.GameService.world;
 using L2dotNET.GameService.model.zones.Type;
 using L2dotNET.GameService.Enums;
 using log4net;
+using L2dotNET.Models;
 
 namespace L2dotNET.GameService.tables
 {

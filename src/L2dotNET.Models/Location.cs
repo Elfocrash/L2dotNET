@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L2dotNET.GameService.model
+namespace L2dotNET.Models
 {
     public class Location
     {
@@ -48,7 +48,7 @@ namespace L2dotNET.GameService.model
 
         public override bool Equals(object obj)
         {
-            if(obj is Location)
+            if (obj is Location)
             {
                 Location loc = (Location)obj;
                 return (loc.X.Equals(x) && loc.Y.Equals(y) && loc.Z.Equals(z));

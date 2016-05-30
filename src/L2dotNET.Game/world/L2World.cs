@@ -8,6 +8,7 @@ using log4net;
 using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.tables;
 using System.Collections.ObjectModel;
+using L2dotNET.Models;
 
 namespace L2dotNET.GameService.world
 {
