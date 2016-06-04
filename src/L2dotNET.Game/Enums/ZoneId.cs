@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Enums
         private ZoneIds zoneId;
         public ZoneIds Id { get { return zoneId; } }
 
-        ZoneId(ZoneIds zoneId)
+        private ZoneId(ZoneIds zoneId)
         {
             this.zoneId = zoneId;
         }

@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.network.l2recv
             base.makeme(client, data);
         }
 
-        string _link;
+        private string _link;
         public override void read()
         {
             _link = readS();

@@ -5,51 +5,51 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0605_alliance_with_ketra_orcs : QuestOrigin
     {
-        const int herald_wakan = 31371;
+        private const int herald_wakan = 31371;
 
         // уровень1
-        const int varka_silenos_grunt = 21350;
-        const int varka_silenos_footman = 21351;
-        const int varka_silenos_scout = 21353;
-        const int varka_silenos_hunter = 21354;
-        const int varka_silenos_shaman = 21355;
+        private const int varka_silenos_grunt = 21350;
+        private const int varka_silenos_footman = 21351;
+        private const int varka_silenos_scout = 21353;
+        private const int varka_silenos_hunter = 21354;
+        private const int varka_silenos_shaman = 21355;
         // уровень2
-        const int varka_silenos_priest = 21357;
-        const int varka_silenos_warrior = 21358;
-        const int varka_silenos_medium = 21360;
-        const int varka_silenos_mage = 21361;
-        const int varka_silenos_sergeant = 21362;
-        const int varka_silenos_general = 21369;
-        const int varka_elite_guard = 21370;
+        private const int varka_silenos_priest = 21357;
+        private const int varka_silenos_warrior = 21358;
+        private const int varka_silenos_medium = 21360;
+        private const int varka_silenos_mage = 21361;
+        private const int varka_silenos_sergeant = 21362;
+        private const int varka_silenos_general = 21369;
+        private const int varka_elite_guard = 21370;
         // уровень3
-        const int varka_silenos_seer = 21364;
-        const int varka_silenos_archmage = 21365;
-        const int varka_silenos_officer = 21366;
-        const int varka_silenos_overseer = 21368;
-        const int varka_high_magus = 21371;
-        const int varka_high_guard = 21372;
-        const int varka_soothsayer = 21373;
-        const int soothsayers_escort = 21374;
-        const int soothsayers_apostle = 21375;
+        private const int varka_silenos_seer = 21364;
+        private const int varka_silenos_archmage = 21365;
+        private const int varka_silenos_officer = 21366;
+        private const int varka_silenos_overseer = 21368;
+        private const int varka_high_magus = 21371;
+        private const int varka_high_guard = 21372;
+        private const int varka_soothsayer = 21373;
+        private const int soothsayers_escort = 21374;
+        private const int soothsayers_apostle = 21375;
 
-        const int q_barka_badge_grunt = 7216;
-        const int q_barka_badge_captn = 7217;
-        const int q_barka_badge_officer = 7218;
-        const int q_ketra_friendship_1 = 7211;
-        const int q_ketra_friendship_2 = 7212;
-        const int q_ketra_friendship_3 = 7213;
-        const int q_ketra_friendship_4 = 7214;
-        const int q_ketra_friendship_5 = 7215;
+        private const int q_barka_badge_grunt = 7216;
+        private const int q_barka_badge_captn = 7217;
+        private const int q_barka_badge_officer = 7218;
+        private const int q_ketra_friendship_1 = 7211;
+        private const int q_ketra_friendship_2 = 7212;
+        private const int q_ketra_friendship_3 = 7213;
+        private const int q_ketra_friendship_4 = 7214;
+        private const int q_ketra_friendship_5 = 7215;
 
-        const int q_barka_friendship_1 = 7221;
-        const int q_barka_friendship_2 = 7222;
-        const int q_barka_friendship_3 = 7223;
-        const int q_barka_friendship_4 = 7224;
-        const int q_barka_friendship_5 = 7225;
-        const int q_totem_of_valor = 7219;
-        const int q_totem_of_wisdom = 7220;
+        private const int q_barka_friendship_1 = 7221;
+        private const int q_barka_friendship_2 = 7222;
+        private const int q_barka_friendship_3 = 7223;
+        private const int q_barka_friendship_4 = 7224;
+        private const int q_barka_friendship_5 = 7225;
+        private const int q_totem_of_valor = 7219;
+        private const int q_totem_of_wisdom = 7220;
 
-        Random rn;
+        private Random rn;
         public _0605_alliance_with_ketra_orcs()
         {
             questId = 605;

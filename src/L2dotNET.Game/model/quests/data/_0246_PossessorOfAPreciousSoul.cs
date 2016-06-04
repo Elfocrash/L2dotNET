@@ -5,20 +5,20 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0246_PossessorOfAPreciousSoul : QuestOrigin
     {
-        const int caradine = 31740;
-        const int ossian = 31741;
-        const int magister_ladd = 30721;
+        private const int caradine = 31740;
+        private const int ossian = 31741;
+        private const int magister_ladd = 30721;
 
-        const int brilliant_prophet = 21541;
-        const int brilliant_justice = 21544;
-        const int blinding_fire_barakiel = 25325;
+        private const int brilliant_prophet = 21541;
+        private const int brilliant_justice = 21544;
+        private const int blinding_fire_barakiel = 25325;
 
-        const int q_caradines_letter1 = 7678;
-        const int q_ring_waterbinder = 7591;
-        const int q_necklace_evergreen = 7592;
-        const int q_staff_rainsong = 7593;
-        const int q_caradines_letter2 = 7679;
-        const int q_red_dust = 7594;
+        private const int q_caradines_letter1 = 7678;
+        private const int q_ring_waterbinder = 7591;
+        private const int q_necklace_evergreen = 7592;
+        private const int q_staff_rainsong = 7593;
+        private const int q_caradines_letter2 = 7679;
+        private const int q_red_dust = 7594;
 
         public _0246_PossessorOfAPreciousSoul()
         {

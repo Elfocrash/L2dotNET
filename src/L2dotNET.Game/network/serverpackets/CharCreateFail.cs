@@ -20,7 +20,7 @@
             CREATION_RESTRICTION = 6
         }
 
-        CharCreateFailReason reason;
+        private CharCreateFailReason reason;
 
         public CharCreateFail(CharCreateFailReason reason)
         {   

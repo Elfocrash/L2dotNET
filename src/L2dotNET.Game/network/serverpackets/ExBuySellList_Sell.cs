@@ -5,7 +5,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExBuySellList_Sell : GameServerNetworkPacket
     {
-        List<L2Item> _sells = new List<L2Item>(), _refund = new List<L2Item>();
+        private List<L2Item> _sells = new List<L2Item>();
+        private List<L2Item> _refund = new List<L2Item>();
+
         public ExBuySellList_Sell(L2Player player)
         {
             foreach (L2Item item in player.getAllItems())

@@ -649,8 +649,8 @@ namespace L2dotNET.GameService.world
             return -1;
         }
 
-        System.Timers.Timer _waterTimer;
-        DateTime _waterTimeDamage;
+        private System.Timers.Timer _waterTimer;
+        private DateTime _waterTimeDamage;
         private bool lastInsideWater = false;
         public void waterTimer()
         {
@@ -1697,9 +1697,9 @@ namespace L2dotNET.GameService.world
             return null;
         }
 
-        List<long> Muted0;
-        List<long> Muted1;
-        List<long> Muted2;
+        private List<long> Muted0;
+        private List<long> Muted1;
+        private List<long> Muted2;
         public void Mute(int type, long hashId, bool start)
         {
             List<long> list = null;

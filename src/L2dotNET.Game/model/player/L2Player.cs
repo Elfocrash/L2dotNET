@@ -1218,7 +1218,7 @@ namespace L2dotNET.GameService
             sendPacket(new SkillList(this, _p_block_act, _p_block_spell, _p_block_skill));
         }
 
-        System.Timers.Timer _timerTooFar;
+        private System.Timers.Timer _timerTooFar;
         public string _locale = "en";
 
         public void timer()

@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.model.skills2.conds
 {
     class Cond_EquipWeapon : TSkillCond
     {
-        List<string> allowed = new List<string>();
+        private List<string> allowed = new List<string>();
 
         public void add(string mask)
         {

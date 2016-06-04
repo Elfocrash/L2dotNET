@@ -96,7 +96,9 @@ namespace L2dotNET.GameService.model.npcs.ai
             base.NotifyTargetNull();
         }
 
-        byte MoveHome = 0, MoveTarget = 0;
+        private byte MoveHome = 0;
+        private byte MoveTarget = 0;
+
         private void ValidateSpawnLocation()
         {
             if (character.cantMove())

@@ -8,8 +8,8 @@ namespace L2dotNET.GameService.tables.admin
             cmd = "test";
         }
 
-        L2Player p = null;
-        int spd = 1000;
+        private L2Player p = null;
+        private int spd = 1000;
         protected internal override void use(L2Player admin, string alias)
         {
 
@@ -24,7 +24,7 @@ namespace L2dotNET.GameService.tables.admin
             //new System.Threading.Thread(loopme).Start();
         }
 
-        bool lp = false;
+        private bool lp = false;
 
         private void loopme()
         {

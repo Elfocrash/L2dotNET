@@ -37,7 +37,7 @@ namespace L2dotNET.GameService.model.structures
             }
         }
 
-        hideout_zone zone;
+        private hideout_zone zone;
         public void GenZone()
         {
             zone = new hideout_zone();

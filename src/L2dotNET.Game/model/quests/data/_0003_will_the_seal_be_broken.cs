@@ -5,19 +5,19 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0003_will_the_seal_be_broken : QuestOrigin
     {
-        const int redry = 30141;
+        private const int redry = 30141;
 
-        const int onyx_beast = 20031;
-        const int tainted_zombie = 20041;
-        const int stink_zombie = 20046;
-        const int least_succubus = 20048;
-        const int least_succubus_turen = 20052;
-        const int least_succubus_tilfo = 20057;
+        private const int onyx_beast = 20031;
+        private const int tainted_zombie = 20041;
+        private const int stink_zombie = 20046;
+        private const int least_succubus = 20048;
+        private const int least_succubus_turen = 20052;
+        private const int least_succubus_tilfo = 20057;
 
-        const int onyx_beast_eye = 1081;
-        const int taint_stone = 1082;
-        const int succubus_blood = 1083;
-        const int scrl_of_ench_am_d = 956;
+        private const int onyx_beast_eye = 1081;
+        private const int taint_stone = 1082;
+        private const int succubus_blood = 1083;
+        private const int scrl_of_ench_am_d = 956;
 
         public _0003_will_the_seal_be_broken()
         {

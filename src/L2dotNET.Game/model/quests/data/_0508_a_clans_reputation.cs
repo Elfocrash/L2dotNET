@@ -5,21 +5,21 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0508_a_clans_reputation : QuestOrigin
     {
-        const int sir_eric_rodemai = 30868;
+        private const int sir_eric_rodemai = 30868;
 
-        const int flame_stone_golem = 25524;
-        const int palibati_queen_themis = 25252;
-        const int hekaton_prime = 25140;
-        const int gargoyle_lord_tiphon = 25255;
-        const int last_lesser_glaki = 25245;
-        const int rahha = 25051;
+        private const int flame_stone_golem = 25524;
+        private const int palibati_queen_themis = 25252;
+        private const int hekaton_prime = 25140;
+        private const int gargoyle_lord_tiphon = 25255;
+        private const int last_lesser_glaki = 25245;
+        private const int rahha = 25051;
 
-        const int nucleus_of_flamestone_giant1 = 8494;
-        const int q_themis_scale = 8277;
-        const int q_nucleus_of_hekaton_prime = 8279;
-        const int q_tiphon_shard = 8280;
-        const int q_glakis_necleus = 8281;
-        const int q_rahhas_fang = 8282;
+        private const int nucleus_of_flamestone_giant1 = 8494;
+        private const int q_themis_scale = 8277;
+        private const int q_nucleus_of_hekaton_prime = 8279;
+        private const int q_tiphon_shard = 8280;
+        private const int q_glakis_necleus = 8281;
+        private const int q_rahhas_fang = 8282;
 
         public _0508_a_clans_reputation()
         {

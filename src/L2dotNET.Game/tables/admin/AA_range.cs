@@ -21,7 +21,8 @@ namespace L2dotNET.GameService.tables.admin
         {
             cmd = "range";
         }
-        ZoneNPoly np;
+
+        private ZoneNPoly np;
         protected internal override void use(L2Player admin, string alias)
         {
           //  double dis = Calcs.calculateDistance(admin, admin._currentTarget, true);
@@ -190,10 +191,11 @@ namespace L2dotNET.GameService.tables.admin
           //  su.add(val, 5000);
           //  admin.sendPacket(su);
         }
-        System.Timers.Timer t;
-        L2Player adm;
 
-        void t_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private System.Timers.Timer t;
+        private L2Player adm;
+
+        private void t_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             //List<int> l = new List<int>();
             //l.Add(adm.ObjID);

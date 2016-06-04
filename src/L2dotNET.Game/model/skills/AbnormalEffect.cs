@@ -52,7 +52,7 @@ namespace L2dotNET.GameService
             _timer.Enabled = true;
         }
 
-        void _timer_Elapsed(object sender, ElapsedEventArgs e)
+        private void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             _timer.Stop();
             active = 0;

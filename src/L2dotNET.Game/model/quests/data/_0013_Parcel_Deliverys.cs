@@ -4,10 +4,10 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0013_Parcel_Deliverys : QuestOrigin
     {
-        const int mineral_trader_fundin = 31274;
-        const int warsmith_vulcan = 31539;
+        private const int mineral_trader_fundin = 31274;
+        private const int warsmith_vulcan = 31539;
 
-        const int q_package_to_vulcan = 7263;
+        private const int q_package_to_vulcan = 7263;
 
         public _0013_Parcel_Deliverys()
         {

@@ -324,10 +324,13 @@ namespace L2dotNET.GameService.model.skills2
 
         #region INITREG
 
-        const byte
-            type_byte = 0,
-            type_int = 1,
-            type_double = 2,
+        private const byte
+            type_byte = 0;
+        private const byte
+            type_int = 1;
+        private const byte
+            type_double = 2;
+        private const byte
             type_str = 3;
 
         public void Initreg()

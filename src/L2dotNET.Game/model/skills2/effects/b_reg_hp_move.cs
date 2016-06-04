@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.model.skills2.effects
 {
     class b_reg_hp_move : TEffect
     {
-        TSpecEffect ef;
+        private TSpecEffect ef;
         public override void build(string str)
         {
             ef = new b_regen_hp_by_move(double.Parse(str.Split(' ')[1]));

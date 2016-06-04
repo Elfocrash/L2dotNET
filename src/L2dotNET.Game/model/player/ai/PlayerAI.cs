@@ -60,8 +60,10 @@ namespace L2dotNET.GameService.model.player.ai
             attackMove.Enabled = true;
         }
 
-        int lastx, lasty, lastz;
-        byte MoveTarget = 0;
+        private int lastx;
+        private int lasty;
+        private int lastz;
+        private byte MoveTarget = 0;
         private void AttackMoveTask(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (player.isAttacking())

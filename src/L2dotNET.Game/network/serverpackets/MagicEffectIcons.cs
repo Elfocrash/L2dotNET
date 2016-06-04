@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     public class MagicEffectIcons : GameServerNetworkPacket
     {
-        List<int[]> _timers = new List<int[]>();
+        private List<int[]> _timers = new List<int[]>();
         public void addIcon(int id, int lvl, int duration)
         {
             _timers.Add(new int[] {id,lvl,duration});

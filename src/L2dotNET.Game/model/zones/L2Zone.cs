@@ -63,7 +63,7 @@ namespace L2dotNET.GameService.model.zones
 
         public virtual void onInit() { }
 
-        Timer _selfDestruct;
+        private Timer _selfDestruct;
         public int[] CylinderCenter;
         public string Name;
         public void SelfDestruct(int sec)

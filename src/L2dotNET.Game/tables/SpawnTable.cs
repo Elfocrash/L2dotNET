@@ -116,7 +116,7 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-        bool nospawn = true;
+        private bool nospawn = true;
         public void Spawn()
         {
             log.Info("NpcServer spawn init.");

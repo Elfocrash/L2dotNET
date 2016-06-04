@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class SkillCoolTime : GameServerNetworkPacket
     {
-        ICollection<L2SkillCoolTime> list;
+        private ICollection<L2SkillCoolTime> list;
         public SkillCoolTime(L2Player player)
         {
             list = player._reuse.Values;

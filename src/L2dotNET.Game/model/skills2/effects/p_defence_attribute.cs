@@ -7,8 +7,8 @@
             type = TEffectType.p_defence_attribute;
         }
 
-        int value;
-        string element;
+        private int value;
+        private string element;
         public override void build(string str)
         {
             string[] v = str.Split(' ');

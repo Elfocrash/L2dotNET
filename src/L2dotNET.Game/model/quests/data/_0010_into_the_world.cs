@@ -5,13 +5,13 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0010_into_the_world : QuestOrigin
     {
-        const int elder_balanki = 30533;
-        const int warehouse_chief_reed = 30520;
-        const int gerald_priest_of_earth = 30650;
+        private const int elder_balanki = 30533;
+        private const int warehouse_chief_reed = 30520;
+        private const int gerald_priest_of_earth = 30650;
 
-        const int q_expensive_necklace = 7574;
-        const int escape_scroll_giran = 7126;
-        const int q_symbol_of_traveler = 7570;
+        private const int q_expensive_necklace = 7574;
+        private const int escape_scroll_giran = 7126;
+        private const int q_symbol_of_traveler = 7570;
 
         public _0010_into_the_world()
         {

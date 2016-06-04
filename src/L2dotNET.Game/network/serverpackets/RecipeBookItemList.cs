@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.network.l2send
     {
         private int _type;
         private int _mp;
-        List<L2Recipe> _book;
+        private List<L2Recipe> _book;
         public RecipeBookItemList(L2Player player, int type)
         {
             _type = type;

@@ -4,11 +4,11 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0018_Meeting_with_the_Golden_Ram : QuestOrigin
     {
-        const int warehouse_chief_donal = 31314;
-        const int freighter_daisy = 31315;
-        const int supplier_abercrombie = 31555;
+        private const int warehouse_chief_donal = 31314;
+        private const int freighter_daisy = 31315;
+        private const int supplier_abercrombie = 31555;
 
-        const int q_mercs_supplies = 7245;
+        private const int q_mercs_supplies = 7245;
 
         public _0018_Meeting_with_the_Golden_Ram()
         {

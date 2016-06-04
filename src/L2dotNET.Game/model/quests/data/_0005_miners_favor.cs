@@ -4,19 +4,19 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0005_miners_favor : QuestOrigin
     {
-        const int miner_bolter = 30554;
-        const int trader_chali = 30517;
-        const int trader_garita = 30518;
-        const int warehouse_chief_reed = 30520;
-        const int blacksmith_bronp = 30526;
+        private const int miner_bolter = 30554;
+        private const int trader_chali = 30517;
+        private const int trader_garita = 30518;
+        private const int warehouse_chief_reed = 30520;
+        private const int blacksmith_bronp = 30526;
 
-        const int bolters_list = 1547;
-        const int mining_boots = 1548;
-        const int miners_pick = 1549;
-        const int boomboom_powder = 1550;
-        const int redstone_beer = 1551;
-        const int bolters_smelly_socks = 1552;
-        const int necklace_of_knowledge = 906;
+        private const int bolters_list = 1547;
+        private const int mining_boots = 1548;
+        private const int miners_pick = 1549;
+        private const int boomboom_powder = 1550;
+        private const int redstone_beer = 1551;
+        private const int bolters_smelly_socks = 1552;
+        private const int necklace_of_knowledge = 906;
 
         public _0005_miners_favor()
         {

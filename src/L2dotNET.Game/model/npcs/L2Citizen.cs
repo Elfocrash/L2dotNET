@@ -387,7 +387,7 @@ namespace L2dotNET.GameService.model.npcs
             player.FolkNpc = this;
         }
 
-        System.Timers.Timer _corpseTimer;
+        private System.Timers.Timer _corpseTimer;
         public int residenceId;
         public override void doDie(L2Character killer, bool bytrigger)
         {

@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.model.skills2.effects
             type = TEffectType.i_target_cancel;
         }
 
-        int rate;
+        private int rate;
         public override void build(string str)
         {
             string[] v = str.Split(' ');

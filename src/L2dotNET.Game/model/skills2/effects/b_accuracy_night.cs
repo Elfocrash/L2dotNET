@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.model.skills2.effects
 {
     class b_accuracy_night : TEffect
     {
-        TSpecEffect ef;
+        private TSpecEffect ef;
         public override void build(string str)
         {
             ef = new b_accuracy_by_night(double.Parse(str.Split(' ')[1]), SkillId, SkillLv);

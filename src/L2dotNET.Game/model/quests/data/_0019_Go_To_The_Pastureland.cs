@@ -4,10 +4,10 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0019_Go_To_The_Pastureland : QuestOrigin
     {
-        const int trader_vladimir = 31302;
-        const int beast_herder_tunatun = 31537;
+        private const int trader_vladimir = 31302;
+        private const int beast_herder_tunatun = 31537;
 
-        const int q_youngmeat_of_beast = 7547;
+        private const int q_youngmeat_of_beast = 7547;
 
         public _0019_Go_To_The_Pastureland()
         {

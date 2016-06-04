@@ -4,9 +4,9 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0015_Sweet_Whispers : QuestOrigin
     {
-        const int trader_vladimir = 31302;
-        const int dark_necromancer = 31518;
-        const int dark_presbyter = 31517;
+        private const int trader_vladimir = 31302;
+        private const int dark_necromancer = 31518;
+        private const int dark_presbyter = 31517;
 
         public _0015_Sweet_Whispers()
         {

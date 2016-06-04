@@ -126,7 +126,7 @@ namespace L2dotNET.GameService.model.events
 
         public int currentRaceId = 1, timeToStart, maxSpd = 0, rnd, raceTimeProgress;
         public System.Timers.Timer raceStartTime, raceInProgress;
-        Random rn = new Random();
+        private Random rn = new Random();
         public void startRace()
         {
             maxSpd = 0;

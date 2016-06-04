@@ -8,7 +8,7 @@ namespace L2dotNET.GameService
     {
         public int id, lvl, total, delay;
 
-        Timer _timer;
+        private Timer _timer;
         public L2Character _owner;
         public DateTime stopTime;
 

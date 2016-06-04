@@ -4,7 +4,10 @@ namespace L2dotNET.GameService.network.l2send
 {
     class NpcHtmlMessage : GameServerNetworkPacket
     {
-        public string _htm; int _objId, _itemId;
+        public string _htm;
+        private int _objId;
+        private int _itemId;
+
         public NpcHtmlMessage(L2Player player, string file, int objId)
         {
             _htm = HtmCache.Instance.GetHtmByFilename(file);

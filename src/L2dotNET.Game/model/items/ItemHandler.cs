@@ -62,7 +62,7 @@ namespace L2dotNET.GameService.model.items
 
         }
 
-        short effects = 0;
+        private short effects = 0;
         private void register(ItemEffect effect)
         {
             foreach (int id in effect.ids)

@@ -6,8 +6,7 @@ namespace L2dotNET.GameService
 {
     class Program
     {
-        
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             SetConsoleConfigurations();
             SetNumberDecimalSeparator();

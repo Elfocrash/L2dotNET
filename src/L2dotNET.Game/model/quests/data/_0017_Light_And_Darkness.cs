@@ -4,13 +4,13 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0017_Light_And_Darkness : QuestOrigin
     {
-        const int dark_presbyter = 31517;
-        const int blessed_altar1 = 31508;
-        const int blessed_altar2 = 31509;
-        const int blessed_altar3 = 31510;
-        const int blessed_altar4 = 31511;
+        private const int dark_presbyter = 31517;
+        private const int blessed_altar1 = 31508;
+        private const int blessed_altar2 = 31509;
+        private const int blessed_altar3 = 31510;
+        private const int blessed_altar4 = 31511;
 
-        const int q_blood_of_saint = 7168;
+        private const int q_blood_of_saint = 7168;
 
         public _0017_Light_And_Darkness()
         {

@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.network.l2send
             this.character = character;
         }
 
-        List<int[]> _timers = new List<int[]>();
+        private List<int[]> _timers = new List<int[]>();
         private int id;
         private L2Character character;
         private int summonType;

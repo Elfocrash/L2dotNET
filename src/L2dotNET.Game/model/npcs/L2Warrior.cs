@@ -54,7 +54,7 @@ namespace L2dotNET.GameService.model.npcs
             }
         }
 
-        Random rnd = new Random();
+        private Random rnd = new Random();
         public override void onSpawn()
         {
             base.onSpawn();

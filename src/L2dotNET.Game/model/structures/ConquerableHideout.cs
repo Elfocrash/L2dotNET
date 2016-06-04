@@ -37,7 +37,7 @@ namespace L2dotNET.GameService.model.structures
             AnnouncementManager.Instance.Announce(text);
         }
 
-        List<L2Character> mobActive;
+        private List<L2Character> mobActive;
         public virtual void start()
         {
             isActive = true;

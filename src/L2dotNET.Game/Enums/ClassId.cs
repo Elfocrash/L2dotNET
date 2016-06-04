@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Enums
         private ClassRace _raceId;
         public ClassRace ClassRace { get { return _raceId; } }
 
-        ClassId(ClassIds classId, ClassRace raceId)
+        private ClassId(ClassIds classId, ClassRace raceId)
         {
             _classId = classId;
             _raceId = raceId;

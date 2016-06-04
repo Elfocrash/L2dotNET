@@ -4,11 +4,11 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0011_secret_meeting_with_ketra_orcs : QuestOrigin
     {
-        const int guard_cadmon = 31296;
-        const int trader_leon = 31256;
-        const int herald_wakan = 31371;
+        private const int guard_cadmon = 31296;
+        private const int trader_leon = 31256;
+        private const int herald_wakan = 31371;
 
-        const int q_cargo_for_ketra = 7231;
+        private const int q_cargo_for_ketra = 7231;
 
         public _0011_secret_meeting_with_ketra_orcs()
         {

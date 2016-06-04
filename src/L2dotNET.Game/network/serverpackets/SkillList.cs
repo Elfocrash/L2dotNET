@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class SkillList : GameServerNetworkPacket
     {
-        IList<TSkill> skills;
+        private IList<TSkill> skills;
         private int _blockAct;
         private int _blockSpell;
         private int _blockSkill;

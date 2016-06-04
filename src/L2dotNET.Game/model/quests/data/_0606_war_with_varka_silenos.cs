@@ -5,28 +5,28 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0606_war_with_varka_silenos : QuestOrigin
     {
-        const int elder_kadun_zu_ketra = 31370;
+        private const int elder_kadun_zu_ketra = 31370;
 
-        const int varka_silenos_grunt = 21350;
-        const int varka_silenos_scout = 21353;
-        const int varka_silenos_hunter = 21354;
-        const int varka_silenos_shaman = 21355;
-        const int varka_silenos_priest = 21357;
-        const int varka_silenos_warrior = 21358;
-        const int varka_silenos_medium = 21360;
-        const int varka_silenos_sergeant = 21362;
-        const int varka_silenos_seer = 21364;
-        const int varka_silenos_archmage = 21365;
-        const int varka_silenos_officer = 21366;
-        const int varka_silenos_overseer = 21368;
-        const int varka_silenos_general = 21369;
-        const int varka_high_magus = 21371;
-        const int varka_soothsayer = 21373;
+        private const int varka_silenos_grunt = 21350;
+        private const int varka_silenos_scout = 21353;
+        private const int varka_silenos_hunter = 21354;
+        private const int varka_silenos_shaman = 21355;
+        private const int varka_silenos_priest = 21357;
+        private const int varka_silenos_warrior = 21358;
+        private const int varka_silenos_medium = 21360;
+        private const int varka_silenos_sergeant = 21362;
+        private const int varka_silenos_seer = 21364;
+        private const int varka_silenos_archmage = 21365;
+        private const int varka_silenos_officer = 21366;
+        private const int varka_silenos_overseer = 21368;
+        private const int varka_silenos_general = 21369;
+        private const int varka_high_magus = 21371;
+        private const int varka_soothsayer = 21373;
 
-        const int q_barka_mane = 7233;
-        const int q_buffalo_horn = 7186;
+        private const int q_barka_mane = 7233;
+        private const int q_buffalo_horn = 7186;
 
-        Random rn;
+        private Random rn;
         public _0606_war_with_varka_silenos()
         {
             questId = 606;

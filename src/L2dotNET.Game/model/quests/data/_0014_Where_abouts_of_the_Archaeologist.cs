@@ -4,10 +4,10 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0014_Where_abouts_of_the_Archaeologist : QuestOrigin
     {
-        const int trader_liesel = 31263;
-        const int explorer_ghost_a = 31538;
+        private const int trader_liesel = 31263;
+        private const int explorer_ghost_a = 31538;
 
-        const int q_letter_to_explorer = 7253;
+        private const int q_letter_to_explorer = 7253;
 
         public _0014_Where_abouts_of_the_Archaeologist()
         {

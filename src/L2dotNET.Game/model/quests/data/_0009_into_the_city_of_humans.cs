@@ -5,12 +5,12 @@ namespace L2dotNET.GameService.model.quests.data
 {
     class _0009_into_the_city_of_humans : QuestOrigin
     {
-        const int centurion_petukai = 30583;
-        const int seer_tanapi = 30571;
-        const int gatekeeper_tamil = 30576;
+        private const int centurion_petukai = 30583;
+        private const int seer_tanapi = 30571;
+        private const int gatekeeper_tamil = 30576;
 
-        const int escape_scroll_giran = 7126;
-        const int q_symbol_of_traveler = 7570;
+        private const int escape_scroll_giran = 7126;
+        private const int q_symbol_of_traveler = 7570;
 
         public _0009_into_the_city_of_humans()
         {

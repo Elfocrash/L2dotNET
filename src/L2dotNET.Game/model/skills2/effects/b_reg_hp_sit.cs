@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.model.skills2.effects
 {
     class b_reg_hp_sit : TEffect
     {
-        TSpecEffect ef;
+        private TSpecEffect ef;
         public override void build(string str)
         {
             string val = str.Split(' ')[1];
