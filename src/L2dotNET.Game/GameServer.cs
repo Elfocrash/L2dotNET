@@ -23,7 +23,7 @@ namespace L2dotNET.GameService
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(GameServer));
 
-        protected TcpListener GameServerListener;
+        private TcpListener GameServerListener;
 
         public static IKernel Kernel { get; set; }
 
@@ -74,7 +74,7 @@ namespace L2dotNET.GameService
             AllianceTable.Instance.Initialize();
             ClanTable.Instance.Initialize();
 
-            log.Info("NpcServer: ");
+            log.Info($"NpcServer: ");
             StaticObjTable.Instance.Initialize();
             MonsterRace.Instance.Initialize();
             //SpawnTable.getInstance().Spawn();

@@ -13,7 +13,7 @@ namespace L2dotNET.LoginService
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(LoginServer));
 
-        protected TcpListener LoginServerListener;
+        private TcpListener LoginServerListener;
 
         public static IKernel Kernel { get; set; }
 
