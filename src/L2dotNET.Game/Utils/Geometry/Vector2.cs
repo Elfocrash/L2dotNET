@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-//using System.Drawing;
 
 namespace L2dotNET.GameService.Utils
 {
