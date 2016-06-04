@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using L2dotNET.GameService.model.inventory;
 using L2dotNET.GameService.model.skills2;
 using L2dotNET.GameService.model.skills2.effects;

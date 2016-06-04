@@ -1,14 +1,10 @@
-﻿using System.Data;
-using MySql.Data.MySqlClient;
-using System.Collections.Generic;
-using System.IO;
-using System;
+﻿using System;
 using System.Xml;
-using L2dotNET.GameService.model;
-using L2dotNET.GameService.world;
-using L2dotNET.GameService.model.zones.Type;
-using L2dotNET.GameService.Enums;
 using log4net;
+using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.model;
+using L2dotNET.GameService.model.zones.Type;
+using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.tables
 {

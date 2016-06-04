@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace L2dotNET.GameService.model.skills2.effects
+﻿namespace L2dotNET.GameService.model.skills2.effects
 {
     public class p_defence_attribute : TEffect
     {

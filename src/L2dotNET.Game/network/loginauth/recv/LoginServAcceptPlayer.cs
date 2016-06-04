@@ -1,5 +1,4 @@
 ﻿using L2dotNET.Models;
-using System;
 
 namespace L2dotNET.GameService.network.loginauth.recv
 {

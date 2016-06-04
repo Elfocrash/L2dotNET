@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.model.npcs;
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.network.l2recv

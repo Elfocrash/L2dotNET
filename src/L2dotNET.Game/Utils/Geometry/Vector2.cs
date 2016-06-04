@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Text;
-//using System.Drawing;
 using System.Globalization;
+//using System.Drawing;
 
 namespace L2dotNET.GameService.Utils
 {

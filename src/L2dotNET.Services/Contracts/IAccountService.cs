@@ -1,5 +1,5 @@
-﻿using L2dotNET.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using L2dotNET.Models;
 
 namespace L2dotNET.Services.Contracts
 {

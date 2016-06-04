@@ -1,13 +1,11 @@
-﻿using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.templates;
-using log4net;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
+using log4net;
+using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.templates;
 
 namespace L2dotNET.GameService.tables
 {

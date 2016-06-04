@@ -2,7 +2,6 @@
 using L2dotNET.GameService.model.skills2;
 using L2dotNET.GameService.tools;
 using L2dotNET.GameService.world;
-using System;
 
 namespace L2dotNET.GameService.model.player.ai
 {

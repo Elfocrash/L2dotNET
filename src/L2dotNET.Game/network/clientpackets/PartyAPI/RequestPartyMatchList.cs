@@ -1,8 +1,4 @@
-﻿using L2dotNET.GameService.network.l2send;
-using System;
-using L2dotNET.GameService.model.player;
-using L2dotNET.GameService.managers;
-using log4net;
+﻿using log4net;
 
 namespace L2dotNET.GameService.network.l2recv
 {

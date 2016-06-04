@@ -1,11 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Xml;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L2dotNET.Tests
 {

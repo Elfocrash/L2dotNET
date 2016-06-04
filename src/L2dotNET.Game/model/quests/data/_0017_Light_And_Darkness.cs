@@ -1,6 +1,4 @@
 ﻿using L2dotNET.GameService.model.npcs;
-using System;
-using L2dotNET.GameService.model.player.basic;
 
 namespace L2dotNET.GameService.model.quests.data
 {

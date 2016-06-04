@@ -1,6 +1,5 @@
-﻿using L2dotNET.GameService.world;
-using log4net;
-using System;
+﻿using log4net;
+using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.model.playable.petai
 {

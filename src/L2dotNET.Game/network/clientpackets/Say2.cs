@@ -1,9 +1,7 @@
 ﻿using L2dotNET.GameService.managers;
-using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.model.player.basic;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.world;
-using L2dotNET.GameService.model.player.basic;
-using System;
 
 namespace L2dotNET.GameService.network.l2recv
 {

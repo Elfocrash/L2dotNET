@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
+using log4net;
 using L2dotNET.GameService.model.items.effects;
 using L2dotNET.GameService.world;
-using log4net;
 
 namespace L2dotNET.GameService.model.items
 {

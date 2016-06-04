@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.network.loginauth;
+﻿using System;
 using log4net;
-using System;
+using L2dotNET.GameService.network.loginauth;
 
 namespace L2dotNET.GameService.network
 {

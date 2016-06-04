@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using L2dotNET.GameService.model.communities;
-using MySql.Data.MySqlClient;
 
 namespace L2dotNET.GameService.tables
 {

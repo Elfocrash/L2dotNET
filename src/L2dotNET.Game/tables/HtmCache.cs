@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Threading;
-using System.IO.Compression;
 using System.Linq;
+using System.Text;
 using log4net;
 
 namespace L2dotNET.GameService.tables

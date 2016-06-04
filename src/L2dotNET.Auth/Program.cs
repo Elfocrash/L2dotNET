@@ -1,6 +1,6 @@
-﻿using Ninject;
-using System;
+﻿using System;
 using System.Diagnostics;
+using Ninject;
 
 namespace L2dotNET.LoginService
 {

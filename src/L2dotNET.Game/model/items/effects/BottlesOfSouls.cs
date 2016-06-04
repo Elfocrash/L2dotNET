@@ -1,6 +1,4 @@
-﻿using L2dotNET.GameService.model.player.basic;
-
-namespace L2dotNET.GameService.model.items.effects
+﻿namespace L2dotNET.GameService.model.items.effects
 {
     class BottlesOfSouls : ItemEffect
     {

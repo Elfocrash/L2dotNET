@@ -1,7 +1,7 @@
-﻿using log4net;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using log4net;
 
 namespace L2dotNET.LoginService.managers
 {

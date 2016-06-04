@@ -1,4 +1,11 @@
-﻿using L2dotNET.GameService.Enums;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Remoting.Contexts;
+using System.Timers;
+using log4net;
+using L2dotNET.GameService.Enums;
 using L2dotNET.GameService.model.communities;
 using L2dotNET.GameService.model.inventory;
 using L2dotNET.GameService.model.items;
@@ -22,15 +29,7 @@ using L2dotNET.GameService.tools;
 using L2dotNET.GameService.world;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
-using log4net;
 using Ninject;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Timers;
 
 namespace L2dotNET.GameService
 {

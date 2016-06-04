@@ -1,7 +1,7 @@
-﻿using L2dotNET.Models;
+﻿using System.Collections.Generic;
+using L2dotNET.Models;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
-using System.Collections.Generic;
 
 namespace L2dotNET.Services
 {

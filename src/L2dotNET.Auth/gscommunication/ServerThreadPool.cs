@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using System.Net;
 using System.Net.Sockets;
-using L2dotNET.LoginService.data;
-using MySql.Data.MySqlClient;
-using System;
-using Ninject;
-using L2dotNET.Services.Contracts;
-using L2dotNET.Models;
 using log4net;
+using L2dotNET.Models;
+using L2dotNET.Services.Contracts;
+using Ninject;
 
 namespace L2dotNET.LoginService.gscommunication
 {

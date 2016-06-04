@@ -1,6 +1,4 @@
-﻿using System;
-using L2dotNET.LoginService.data;
-using L2dotNET.LoginService.gscommunication;
+﻿using L2dotNET.LoginService.gscommunication;
 using L2dotNET.LoginService.Network.OuterNetwork;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork

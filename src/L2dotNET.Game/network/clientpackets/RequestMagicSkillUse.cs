@@ -1,5 +1,6 @@
 ﻿
 using L2dotNET.GameService.model.skills2;
+
 namespace L2dotNET.GameService.network.l2recv
 {
     class RequestMagicSkillUse : GameServerNetworkRequest

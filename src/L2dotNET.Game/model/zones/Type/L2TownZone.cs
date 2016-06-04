@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using L2dotNET.GameService.world;
 using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.model.zones.Type
 {

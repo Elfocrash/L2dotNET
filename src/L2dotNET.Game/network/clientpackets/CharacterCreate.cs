@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.model.inventory;
+﻿using System;
+using L2dotNET.GameService.model.inventory;
 using L2dotNET.GameService.model.skills2;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
@@ -7,7 +8,6 @@ using L2dotNET.GameService.world;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using Ninject;
-using System;
 
 namespace L2dotNET.GameService.network.l2recv
 {

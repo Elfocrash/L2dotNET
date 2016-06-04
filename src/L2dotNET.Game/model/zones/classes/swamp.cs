@@ -1,5 +1,5 @@
-﻿using L2dotNET.GameService.tables;
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.tables;
 
 namespace L2dotNET.GameService.model.zones.classes
 {

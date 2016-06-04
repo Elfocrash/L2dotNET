@@ -1,13 +1,11 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using log4net;
 using L2dotNET.GameService.model.player.basic;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.world;
 using L2dotNET.Models;
-using System.Collections.Generic;
-using Ninject;
 using L2dotNET.Services.Contracts;
-using System;
-using log4net;
+using Ninject;
 
 namespace L2dotNET.GameService.Managers
 {

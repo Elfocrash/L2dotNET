@@ -1,8 +1,8 @@
-﻿using log4net;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using log4net;
 
 namespace L2dotNET.GameService.templates
 {

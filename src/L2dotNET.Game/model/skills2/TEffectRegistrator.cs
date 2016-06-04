@@ -1,5 +1,5 @@
-﻿using L2dotNET.GameService.model.skills2.effects;
-using L2dotNET.GameService.model.skills2.conds;
+﻿using L2dotNET.GameService.model.skills2.conds;
+using L2dotNET.GameService.model.skills2.effects;
 
 namespace L2dotNET.GameService.model.skills2
 {

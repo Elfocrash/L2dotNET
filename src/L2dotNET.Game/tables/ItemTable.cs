@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using log4net;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.skills2;
-using log4net;
 
 namespace L2dotNET.GameService.tables
 {

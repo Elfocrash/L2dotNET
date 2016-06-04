@@ -1,6 +1,5 @@
 ﻿using L2dotNET.GameService.Enums;
 using L2dotNET.GameService.model.npcs;
-using L2dotNET.GameService.model.player.basic;
 
 namespace L2dotNET.GameService.model.quests.data
 {

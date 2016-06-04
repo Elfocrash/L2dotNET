@@ -1,6 +1,6 @@
-﻿using L2dotNET.LoginService.gscommunication;
+﻿using log4net;
+using L2dotNET.LoginService.gscommunication;
 using L2dotNET.LoginService.Network.OuterNetwork;
-using log4net;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {

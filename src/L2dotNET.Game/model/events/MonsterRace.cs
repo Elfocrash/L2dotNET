@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using log4net;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.model.zones;
@@ -9,7 +10,6 @@ using L2dotNET.GameService.model.zones.forms;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
-using log4net;
 
 namespace L2dotNET.GameService.model.events
 {

@@ -1,8 +1,8 @@
-﻿using L2dotNET.GameService.network.l2send;
+﻿using System.Collections.Generic;
+using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.network.loginauth;
 using L2dotNET.Services.Contracts;
 using Ninject;
-using System.Collections.Generic;
 
 namespace L2dotNET.GameService.network.l2recv
 {

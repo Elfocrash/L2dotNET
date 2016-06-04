@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using L2dotNET.GameService.model.zones;
-using L2dotNET.GameService.network;
+﻿using System.Collections.Generic;
 using log4net;
+using L2dotNET.GameService.network;
 
 namespace L2dotNET.GameService.world
 {

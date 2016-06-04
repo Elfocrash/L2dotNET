@@ -1,5 +1,4 @@
 ﻿using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.model.player.basic;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
 

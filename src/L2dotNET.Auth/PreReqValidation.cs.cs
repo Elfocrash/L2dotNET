@@ -1,7 +1,7 @@
-﻿using L2dotNET.Services.Contracts;
+﻿using System;
 using log4net;
+using L2dotNET.Services.Contracts;
 using Ninject;
-using System;
 
 namespace L2dotNET.LoginService
 {

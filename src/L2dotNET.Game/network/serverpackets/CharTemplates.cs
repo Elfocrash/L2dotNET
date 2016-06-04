@@ -1,5 +1,5 @@
-﻿using L2dotNET.GameService.templates;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using L2dotNET.GameService.templates;
 
 namespace L2dotNET.GameService.network.l2send
 {

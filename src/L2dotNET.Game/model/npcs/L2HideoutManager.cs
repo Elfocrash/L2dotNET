@@ -1,10 +1,10 @@
-﻿using L2dotNET.GameService.model.npcs.ai;
+﻿using log4net;
+using L2dotNET.GameService.model.npcs.ai;
 using L2dotNET.GameService.model.npcs.decor;
 using L2dotNET.GameService.model.skills2;
 using L2dotNET.GameService.model.structures;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
-using log4net;
 
 namespace L2dotNET.GameService.model.npcs
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using L2dotNET.GameService.tables.admin_bypass;
 using log4net;
+using L2dotNET.GameService.tables.admin_bypass;
 
 namespace L2dotNET.GameService.tables.ndextend
 {

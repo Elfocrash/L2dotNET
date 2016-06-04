@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.model.stats

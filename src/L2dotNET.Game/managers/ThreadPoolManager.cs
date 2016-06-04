@@ -1,7 +1,7 @@
-﻿using log4net;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using log4net;
 
 namespace L2dotNET.GameService.managers
 {

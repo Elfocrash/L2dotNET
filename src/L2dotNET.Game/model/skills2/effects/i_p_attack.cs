@@ -1,7 +1,6 @@
 ﻿using L2dotNET.GameService.model.stats;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.world;
-using System;
 
 namespace L2dotNET.GameService.model.skills2.effects
 {

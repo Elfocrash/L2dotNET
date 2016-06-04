@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading;
 using log4net;
+using L2dotNET.LoginService.Network.InnerNetwork;
 using L2dotNET.LoginService.Network.OuterNetwork;
 using L2dotNET.Network;
-using L2dotNET.LoginService.Network.InnerNetwork;
 
 namespace L2dotNET.LoginService.gscommunication
 {

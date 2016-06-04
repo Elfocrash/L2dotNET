@@ -1,4 +1,5 @@
 ﻿using System;
+
 #if WINRT
 using System.Runtime.Serialization;
 #endif

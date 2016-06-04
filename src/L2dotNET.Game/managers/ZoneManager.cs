@@ -1,12 +1,7 @@
-﻿using L2dotNET.GameService.model.zones;
-using L2dotNET.GameService.world;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
+using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.managers
 {

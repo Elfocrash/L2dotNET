@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.GameService.model.structures;
-using MySql.Data.MySqlClient;
-using System.Data;
 using log4net;
+using L2dotNET.GameService.model.structures;
 
 namespace L2dotNET.GameService.tables
 {

@@ -1,11 +1,11 @@
-﻿using Dapper;
-using L2dotNET.Models;
-using L2dotNET.Repositories.Contracts;
-using log4net;
-using MySql.Data.MySqlClient;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data;
 using System.Linq;
+using Dapper;
+using log4net;
+using L2dotNET.Models;
+using L2dotNET.Repositories.Contracts;
+using MySql.Data.MySqlClient;
 
 namespace L2dotNET.Repositories
 {

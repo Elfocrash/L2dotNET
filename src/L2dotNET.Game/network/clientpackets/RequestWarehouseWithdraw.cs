@@ -1,10 +1,9 @@
-﻿using L2dotNET.GameService.model.inventory;
+﻿using System.Collections.Generic;
+using log4net;
+using L2dotNET.GameService.model.inventory;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.network.l2send;
-using log4net;
-using System;
-using System.Collections.Generic;
 
 namespace L2dotNET.GameService.network.l2recv
 {

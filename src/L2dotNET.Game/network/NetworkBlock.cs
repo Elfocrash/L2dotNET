@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Models;
 using log4net;
+using L2dotNET.Models;
 
 namespace L2dotNET.GameService.network
 {

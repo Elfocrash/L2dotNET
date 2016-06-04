@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using L2dotNET.LoginService.data;
-using L2Crypt;
 using log4net;
+using L2Crypt;
+using L2dotNET.LoginService.data;
 
 namespace L2dotNET.LoginService
 {

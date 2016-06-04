@@ -3,8 +3,8 @@ using System.Timers;
 using L2dotNET.GameService.model.skills2;
 using L2dotNET.GameService.model.zones;
 using L2dotNET.GameService.model.zones.classes;
-using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.network;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.world
 {

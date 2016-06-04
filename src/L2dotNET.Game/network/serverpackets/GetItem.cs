@@ -1,6 +1,4 @@
-﻿using L2dotNET.GameService.model.items;
-
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class GetItem : GameServerNetworkPacket
     {

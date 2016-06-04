@@ -1,5 +1,5 @@
-﻿using L2dotNET.GameService.model.npcs;
-using System;
+﻿using System;
+using L2dotNET.GameService.model.npcs;
 
 namespace L2dotNET.GameService.model.quests.data
 {

@@ -1,9 +1,5 @@
-﻿using L2dotNET.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using L2dotNET.Utility;
 
 namespace L2dotNET.Network
 {

@@ -1,12 +1,8 @@
-﻿using L2dotNET.GameService.Properties;
-using L2dotNET.Utility;
-using log4net;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using log4net;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.geo
 {

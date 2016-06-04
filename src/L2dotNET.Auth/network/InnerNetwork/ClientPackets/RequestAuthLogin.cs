@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Text;
-using L2dotNET.LoginService.data;
 using L2dotNET.LoginService.gscommunication;
+using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.LoginService.Utils;
+using L2dotNET.Models;
+using L2dotNET.Services.Contracts;
+using Ninject;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Engines;
-using L2dotNET.Models;
-using Ninject;
-using L2dotNET.Services.Contracts;
-using L2dotNET.LoginService.Utils;
-using L2dotNET.LoginService.Network.OuterNetwork;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {

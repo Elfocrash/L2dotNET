@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace L2dotNET.GameService.model.player.transformation.data
+﻿namespace L2dotNET.GameService.model.player.transformation.data
 {
     class _00001_1 : TransformTemplate
     {

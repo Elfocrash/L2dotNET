@@ -1,7 +1,4 @@
-﻿using L2dotNET.GameService.network.l2send;
-using System;
-
-namespace L2dotNET.GameService.network.l2recv
+﻿namespace L2dotNET.GameService.network.l2recv
 {
     class RequestPartyLootModification : GameServerNetworkRequest
     {

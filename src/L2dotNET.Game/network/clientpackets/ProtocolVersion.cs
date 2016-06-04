@@ -1,5 +1,5 @@
-﻿using L2dotNET.GameService.network.l2send;
-using log4net;
+﻿using log4net;
+using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {

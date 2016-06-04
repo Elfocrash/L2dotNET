@@ -1,12 +1,11 @@
-﻿using L2dotNET.GameService.model.structures;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using log4net;
+using L2dotNET.GameService.model.structures;
 using L2dotNET.GameService.network;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
-using log4net;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace L2dotNET.GameService.model.communities
 {

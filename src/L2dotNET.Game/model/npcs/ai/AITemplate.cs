@@ -1,5 +1,5 @@
-﻿using L2dotNET.GameService.model.playable;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using L2dotNET.GameService.model.playable;
 
 namespace L2dotNET.GameService.model.npcs.ai
 {

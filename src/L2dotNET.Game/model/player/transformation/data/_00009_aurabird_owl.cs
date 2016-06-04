@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace L2dotNET.GameService.model.player.transformation.data
+﻿namespace L2dotNET.GameService.model.player.transformation.data
 {
     class _00009_aurabird_owl : TransformTemplate
     {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using L2dotNET.GameService.tables;
-
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class EtcStatusUpdate : GameServerNetworkPacket
     {

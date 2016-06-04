@@ -1,6 +1,6 @@
-﻿using log4net;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using log4net;
 
 namespace L2dotNET.GameService.model.items.cursed
 {

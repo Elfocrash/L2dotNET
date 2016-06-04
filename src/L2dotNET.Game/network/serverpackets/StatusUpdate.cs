@@ -1,6 +1,4 @@
-﻿using L2dotNET.GameService.model.items;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace L2dotNET.GameService.network.l2send
 {

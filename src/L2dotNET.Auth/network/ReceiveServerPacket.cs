@@ -1,6 +1,6 @@
 ﻿using System;
-using L2dotNET.LoginService.gscommunication;
 using log4net;
+using L2dotNET.LoginService.gscommunication;
 
 namespace L2dotNET.LoginService
 {

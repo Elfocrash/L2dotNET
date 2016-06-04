@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using log4net;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.model.templates;
 using L2dotNET.GameService.world;
-using log4net;
 
 namespace L2dotNET.GameService.tables
 {

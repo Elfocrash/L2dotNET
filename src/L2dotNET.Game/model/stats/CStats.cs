@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using L2dotNET.GameService.model.player;
 using L2dotNET.GameService.model.skills2;
-using L2dotNET.GameService.world;
 using L2dotNET.GameService.templates;
+using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.model.stats
 {

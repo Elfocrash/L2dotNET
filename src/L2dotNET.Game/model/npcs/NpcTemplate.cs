@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using L2dotNET.GameService.model.items;
+﻿using L2dotNET.GameService.model.templates;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
-using L2dotNET.GameService.model.templates;
 
 namespace L2dotNET.GameService.model.npcs
 {

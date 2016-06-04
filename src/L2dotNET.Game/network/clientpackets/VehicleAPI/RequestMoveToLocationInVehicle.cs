@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.model.vehicles;
+﻿using log4net;
+using L2dotNET.GameService.model.vehicles;
 using L2dotNET.GameService.network.l2send;
-using log4net;
 
 namespace L2dotNET.GameService.network.l2recv
 {

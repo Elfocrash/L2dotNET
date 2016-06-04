@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using L2Crypt;
-using L2dotNET.Models;
 using log4net;
+using L2Crypt;
+using L2dotNET.LoginService.Network.InnerNetwork;
 using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.Models;
 using L2dotNET.Network;
 using L2dotNET.Utility;
-using L2dotNET.LoginService.Network.InnerNetwork;
 
 namespace L2dotNET.LoginService
 {

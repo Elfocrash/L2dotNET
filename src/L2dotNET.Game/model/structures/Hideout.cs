@@ -1,10 +1,10 @@
 ﻿using System;
+using log4net;
 using L2dotNET.GameService.model.npcs.ai;
 using L2dotNET.GameService.model.zones;
 using L2dotNET.GameService.model.zones.classes;
 using L2dotNET.GameService.model.zones.forms;
 using L2dotNET.GameService.world;
-using log4net;
 
 namespace L2dotNET.GameService.model.structures
 {

@@ -1,6 +1,6 @@
 ﻿using System;
-using L2dotNET.GameService.tables;
 using L2dotNET.GameService.model.structures;
+using L2dotNET.GameService.tables;
 
 namespace L2dotNET.GameService.model.npcs.decor
 {

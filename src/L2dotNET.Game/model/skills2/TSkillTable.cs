@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
-using L2dotNET.GameService.compression;
-using System.Xml.Linq;
-using L2dotNET.GameService.Enums;
 using log4net;
+using L2dotNET.GameService.compression;
+using L2dotNET.GameService.Enums;
 
 namespace L2dotNET.GameService.model.skills2
 {

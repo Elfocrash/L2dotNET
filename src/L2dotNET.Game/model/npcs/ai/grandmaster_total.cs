@@ -1,8 +1,4 @@
-﻿using L2dotNET.GameService.model.communities;
-using L2dotNET.GameService.tables;
-using L2dotNET.GameService.network.l2send;
-
-namespace L2dotNET.GameService.model.npcs.ai
+﻿namespace L2dotNET.GameService.model.npcs.ai
 {
     class grandmaster_total
     {
