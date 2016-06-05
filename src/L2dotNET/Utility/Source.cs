@@ -31,11 +31,11 @@ namespace L2dotNET.Utility
         OuterNetwork,
 
         /// <summary>
-        /// Source is <see cref="L2.Net.Network.Services.Firewall"/> object.
+        /// Source is <see cref="L2dotNET.Network.Firewall"/> object.
         /// </summary>
         Firewall,
         /// <summary>
-        /// <see cref="L2.Net.Network.Services.Listener"/> class.
+        /// Listener
         /// </summary>
         Listener,
         /// <summary>

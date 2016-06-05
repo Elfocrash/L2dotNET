@@ -15,7 +15,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
         /// <summary>
         /// Returns play accepted server > client packet.
         /// </summary>
-        /// <param name="session"><see cref="LoginClient"/> object.</param>
+        /// <param name="client"><see cref="LoginClient"/> object.</param>
         /// <returns>Play accepted <see cref="Packet"/>.</returns>
         internal static Packet ToPacket(LoginClient client)
         {

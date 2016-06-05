@@ -39,6 +39,9 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
 
         public void CallSkill(L2Player caster, TSkill skill, L2Character target)
         {
+            this.caster = caster;
+            this.cast = skill;
+
             if (SkillCast == null)
                 SkillCast = new System.Timers.Timer();
 

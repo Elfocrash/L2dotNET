@@ -31,7 +31,7 @@ namespace L2dotNET.LoginService.Managers
             }
         }
 
-        protected readonly List<NB_interface> blocks = new List<NB_interface>();
+        private readonly List<NB_interface> blocks = new List<NB_interface>();
 
         public NetworkBlock()
         {

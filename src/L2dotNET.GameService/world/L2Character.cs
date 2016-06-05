@@ -679,7 +679,7 @@ namespace L2dotNET.GameService.World
 
         private System.Timers.Timer _waterTimer;
         private DateTime _waterTimeDamage;
-        private bool lastInsideWater = false;
+        //private bool lastInsideWater = false;
 
         public void waterTimer()
         {
@@ -718,7 +718,7 @@ namespace L2dotNET.GameService.World
                     }
                 }
             }
-            /// asd
+            
             //if (!isInWater())
             //{
             //    if (_waterTimer == null)

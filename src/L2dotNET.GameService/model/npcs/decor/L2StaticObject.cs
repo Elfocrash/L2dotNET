@@ -16,7 +16,6 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
         public int StructureId = 0;
         public int Type = 0;
         public byte Closed = 1;
-        public int MaxHP = 0;
         public ShowTownMap townMap;
         public string htm;
         public int pdef;
@@ -26,7 +25,7 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
         public bool UnlockNpc = false;
 
         public override void broadcastUserInfo()
-        {
+        {   
             foreach (L2Object obj in knownObjects.Values)
                 if (obj is L2Player)
                     obj.sendPacket(new StaticObject(this));

@@ -310,8 +310,8 @@ namespace L2dotNET.GameService.World
         public SortedList<int, L2Zone> _activeZones = new SortedList<int, L2Zone>();
         private bool _isInsidePeaceZone = false,
                      _isInsidePvpZone = false,
-                     _isInsideWaterZone = false,
-                     _isInsideSSQZone = false;
+                     _isInsideWaterZone = false;
+        //private bool _isInsideSSQZone = false;
         private readonly bool _isInsideSiegeZone = false;
         private readonly bool _isInsideSomeDungeon = false;
 
@@ -550,13 +550,13 @@ namespace L2dotNET.GameService.World
 
         public void validateVisibleObjects(int x, int y, bool zones)
         {
-            int range = 4000;
-            int height = 1600;
+            //int range = 4000;
+            //int height = 1600;
 
             if (isInSiege())
             {
-                range = 2600;
-                height = 1000;
+                //range = 2600;
+                //height = 1000;
             }
 
             //L2World.Instance.CheckToUpdate(this, x, y, range, height, true, zones);

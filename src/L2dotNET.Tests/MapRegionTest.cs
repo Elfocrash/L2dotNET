@@ -46,9 +46,13 @@ namespace L2dotNET.Tests
                     }
                 }
             }
-            catch (Exception e)
+            //catch (Exception e)
+            //{
+            //    //_log.log(Level.SEVERE, "NpcTable: Error parsing NPC templates : ", e);
+            //}
+            finally
             {
-                //_log.log(Level.SEVERE, "NpcTable: Error parsing NPC templates : ", e);
+                
             }
         }
     }

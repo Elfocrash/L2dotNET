@@ -193,8 +193,8 @@ namespace L2dotNET.GameService.Model.Communities
 
         public void updateCrest(int size, byte[] picture)
         {
-            SystemMessage.SystemMessageId msg;
-            msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
+            //SystemMessage.SystemMessageId msg;
+            //msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
 
             CrestPicture = picture;
 
@@ -210,7 +210,7 @@ namespace L2dotNET.GameService.Model.Communities
                 if (CrestID > 0)
                     File.Delete(@"crests\c" + CrestID + ".bmp");
 
-                msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
+                //msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
                 CrestID = IdFactory.Instance.nextId();
                 try
                 {
@@ -242,8 +242,8 @@ namespace L2dotNET.GameService.Model.Communities
 
         public void updateCrestLarge(int size, byte[] picture)
         {
-            SystemMessage.SystemMessageId msg;
-            msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
+            //SystemMessage.SystemMessageId msg;
+            //msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
 
             CrestLargePicture = picture;
 
@@ -259,7 +259,7 @@ namespace L2dotNET.GameService.Model.Communities
                 if (LargeCrestID > 0)
                     File.Delete(@"crests\b" + LargeCrestID + ".bmp");
 
-                msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
+                //msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
                 LargeCrestID = IdFactory.Instance.nextId();
                 try
                 {

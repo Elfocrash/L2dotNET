@@ -21,8 +21,8 @@ namespace L2dotNET.GameService.Model.Structures
                      spawn3,
                      spawn4;
         public bool isActive = false;
-        public Timer TimeWait,
-                     TimeReg,
+        public Timer TimeWait = null,
+                     TimeReg = null,
                      TimeSiege;
 
         public int ReputationNothing = 600;

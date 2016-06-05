@@ -4,9 +4,9 @@
     {
         private readonly string _file;
         private readonly int type = 0;
-        private uint x;
-        private uint y;
-        private uint z;
+        private uint x = 0;
+        private uint y = 0;
+        private uint z = 0;
 
         public PlaySound(string file, bool ogg = false)
         {

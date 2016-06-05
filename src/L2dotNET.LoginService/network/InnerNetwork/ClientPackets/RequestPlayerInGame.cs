@@ -11,6 +11,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public RequestPlayerInGame(Packet p, ServerThread server)
         {
+            this.thread = server;
             account = p.ReadString();
             status = p.ReadByte();
         }

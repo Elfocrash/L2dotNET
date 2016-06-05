@@ -37,7 +37,7 @@ namespace L2dotNET.GameService.Model.Zones.Forms
             return true;
         }
 
-        public bool intersectsRectangle(int ax1, int ax2, int ay1, int ay2)
+        public override bool intersectsRectangle(int ax1, int ax2, int ay1, int ay2)
         {
             if (_x > ax1 && _x < ax2 && _y > ay1 && _y < ay2)
                 return true;

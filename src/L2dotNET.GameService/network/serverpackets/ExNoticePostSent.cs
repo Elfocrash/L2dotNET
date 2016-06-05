@@ -6,7 +6,7 @@
 
         public ExNoticePostSent(int anim)
         {
-            anim = anim;
+            this.anim = anim;
         }
 
         protected internal override void write()

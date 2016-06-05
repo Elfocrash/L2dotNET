@@ -70,19 +70,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     player.BroadcastUserInfo();
                     return;
                 }
-                else if (diffSq > 250000 || Math.Abs(dz) > 200)
-                {
-                    if (Math.Abs(dz) > 200 && Math.Abs(dz) < 1500 && Math.Abs(_z - player.clientHeading) < 800)
-                    {
-                        player.X = realX;
-                        player.Y = realY;
-                        player.Z = _z;
-                    }
-                    else
-                    {
-                        player.sendPacket(new ValidateLocation(player));
-                    }
-                }
+                //else if (diffSq > 250000 || Math.Abs(dz) > 200)
+                //{
+                //    if (Math.Abs(dz) > 200 && Math.Abs(dz) < 1500 && Math.Abs(_z - player.clientHeading) < 800)
+                //    {
+                //        player.X = realX;
+                //        player.Y = realY;
+                //        player.Z = _z;
+                //    }
+                //    else
+                //    {
+                //        player.sendPacket(new ValidateLocation(player));
+                //    }
+                //}
             }
 
             player.X = _x;

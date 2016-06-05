@@ -2,8 +2,8 @@
 {
     class Castle
     {
-        public string OwningPlayerName;
-        public double Tax;
-        public string OwningClanName;
+        public string OwningPlayerName = null;
+        public double Tax = 0;
+        public string OwningClanName = null;
     }
 }
