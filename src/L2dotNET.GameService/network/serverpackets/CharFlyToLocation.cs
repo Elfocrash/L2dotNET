@@ -30,11 +30,4 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(id);
         }
     }
-
-    public enum FlyType
-    {
-        THROW_UP,
-        THROW_HORIZONTAL,
-        DUMMY
-    }
 }

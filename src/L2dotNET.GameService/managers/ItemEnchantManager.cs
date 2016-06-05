@@ -264,23 +264,6 @@ namespace L2dotNET.GameService.Managers
         }
     }
 
-    public enum EnchantType
-    {
-        standart,
-        crystal,
-        blessed,
-        auxiliary,
-        bonus,
-        ancient
-    }
-
-    public enum EnchantTarget
-    {
-        weapon,
-        armor,
-        yogi_staff
-    }
-
     public class EnchantScroll
     {
         public EnchantType Type;

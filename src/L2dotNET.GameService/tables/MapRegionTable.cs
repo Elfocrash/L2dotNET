@@ -438,12 +438,4 @@ namespace L2dotNET.GameService.Tables
             return null;
         }
     }
-
-    public enum TeleportWhereType
-    {
-        CASTLE,
-        CLAN_HALL,
-        SIEGE_FLAG,
-        TOWN
-    }
 }

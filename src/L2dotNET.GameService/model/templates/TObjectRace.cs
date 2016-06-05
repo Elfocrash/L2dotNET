@@ -1,0 +1,31 @@
+namespace L2dotNET.GameService.Model.Templates
+{
+    public enum TObjectRace
+    {
+        undead,
+        animal,
+        dragon,
+        fairy,
+        etc,
+        angel,
+        construct,
+        elemental,
+        demonic,
+        siege_weapon,
+        humanoid,
+        bug,
+        human,
+        beast,
+        plant,
+        giant,
+        elf,
+        orc,
+        dwarf,
+        darkelf,
+        castle_guard,
+        mercenary,
+        creature,
+        divine,
+        kamael
+    }
+}

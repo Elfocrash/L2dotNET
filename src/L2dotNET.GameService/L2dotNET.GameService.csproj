@@ -108,14 +108,19 @@
     <Compile Include="Controllers\GameTime.cs" />
     <Compile Include="DepInjectionModule.cs" />
     <Compile Include="Enums\ClassId.cs" />
+    <Compile Include="Enums\ClassIds.cs" />
     <Compile Include="Enums\ClassRace.cs" />
     <Compile Include="Enums\ShotType.cs" />
     <Compile Include="Enums\ZoneId.cs" />
+    <Compile Include="Enums\ZoneIds.cs" />
     <Compile Include="Managers\AnnouncementManager.cs" />
     <Compile Include="Managers\BBS\BBSManager.cs" />
     <Compile Include="Managers\CastleManager.cs" />
+    <Compile Include="Managers\EnchantTarget.cs" />
+    <Compile Include="Managers\EnchantType.cs" />
     <Compile Include="Managers\ItemEnchantManager.cs" />
     <Compile Include="Managers\PetitionManager.cs" />
+    <Compile Include="Managers\RThreadType.cs" />
     <Compile Include="Managers\ThreadPoolManager.cs" />
     <Compile Include="Managers\TradeManager.cs" />
     <Compile Include="Managers\TransformManager.cs" />
@@ -123,6 +128,8 @@
     <Compile Include="Managers\PointCmdManager.cs" />
     <Compile Include="Managers\RqItemManager.cs" />
     <Compile Include="Managers\ZoneManager.cs" />
+    <Compile Include="Model\Communities\e_ClanRank.cs" />
+    <Compile Include="Model\Communities\e_ClanType.cs" />
     <Compile Include="Model\Communities\L2Alliance.cs" />
     <Compile Include="Model\Communities\L2Clan.cs" />
     <Compile Include="Model\Inventory\InvPet.cs" />
@@ -167,6 +174,7 @@
     <Compile Include="Model\Player\AI\PlayerAI.cs" />
     <Compile Include="Model\Player\Basic\Formulas.cs" />
     <Compile Include="Model\Player\Basic\SayID.cs" />
+    <Compile Include="Model\Player\Basic\SayIDList.cs" />
     <Compile Include="Model\Player\Experience.cs" />
     <Compile Include="Model\Player\L2PartyRoom.cs" />
     <Compile Include="Model\Player\L2Shortcut.cs" />
@@ -282,6 +290,10 @@
     <Compile Include="Model\Structures\Hideout.cs" />
     <Compile Include="Model\Structures\StructureTemplate.cs" />
     <Compile Include="Model\Templates\TObject.cs" />
+    <Compile Include="Model\Templates\TObjectBaseAttackType.cs" />
+    <Compile Include="Model\Templates\TObjectCategory.cs" />
+    <Compile Include="Model\Templates\TObjectRace.cs" />
+    <Compile Include="Model\Templates\TObjectSex.cs" />
     <Compile Include="Model\Vehicles\L2Boat.cs" />
     <Compile Include="Model\Zones\Classes\battle_zone.cs" />
     <Compile Include="Model\Zones\Classes\monster_race.cs" />
@@ -309,6 +321,7 @@
     <Compile Include="Network\Clientpackets\RequestSocialAction.cs" />
     <Compile Include="Network\Serverpackets\CharDeleteFail.cs" />
     <Compile Include="Network\Serverpackets\CharDeleteOk.cs" />
+    <Compile Include="Network\Serverpackets\EnchantResultVal.cs" />
     <Compile Include="Network\Serverpackets\ExChangeNicknameNColor.cs" />
     <Compile Include="Network\LoginAuth\ReceiveAuthPacket.cs" />
     <Compile Include="Network\LoginAuth\Recv\LoginServKickAccount.cs" />
@@ -429,6 +442,7 @@
     <Compile Include="Network\Serverpackets\CharMoveToLocationMonrace.cs" />
     <Compile Include="Network\Serverpackets\AutoAttackStart.cs" />
     <Compile Include="Network\Serverpackets\AutoAttackStop.cs" />
+    <Compile Include="Network\Serverpackets\FlyType.cs" />
     <Compile Include="Network\Serverpackets\MultiSellListEx.cs" />
     <Compile Include="Network\Serverpackets\NetPing.cs" />
     <Compile Include="Network\Serverpackets\ShowBoard.cs" />
@@ -602,10 +616,13 @@
     <Compile Include="Tables\IdFactory.cs" />
     <Compile Include="Tables\RecipeTable.cs" />
     <Compile Include="Tables\StaticObjTable.cs" />
+    <Compile Include="Tables\TeleportWhereType.cs" />
     <Compile Include="Tables\ZoneTable.cs" />
+    <Compile Include="Templates\AIType.cs" />
     <Compile Include="Templates\CharTemplate.cs" />
     <Compile Include="Templates\NpcTemplate.cs" />
     <Compile Include="Templates\PcTemplate.cs" />
+    <Compile Include="Templates\Race.cs" />
     <Compile Include="Templates\StatsSet.cs" />
     <Compile Include="Tools\Calcs.cs" />
     <Compile Include="World\L2Character.cs" />

@@ -181,12 +181,4 @@ namespace L2dotNET.GameService.Managers
             ThreadPoolManager.getInstance().CloseMe(this);
         }
     }
-
-    public enum RThreadType
-    {
-        general,
-        general_tick,
-        loop_tick,
-        actions
-    }
 }

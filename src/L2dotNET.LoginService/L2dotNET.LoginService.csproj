@@ -105,6 +105,7 @@
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestPlayersOnline.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestPlayerInGame.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestLoginAuth.cs" />
+    <Compile Include="Network\OuterNetwork\ServerPackets\LoginFailReason.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\PleaseAcceptPlayer.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestLoginServPing.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\PlayFail.cs" />
