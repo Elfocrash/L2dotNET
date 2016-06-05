@@ -11,7 +11,7 @@ namespace L2dotNET.LoginService.gscommunication
 {
     public class ServerThread
     {
-        ILog log = LogManager.GetLogger(typeof(ServerThread));
+        private readonly ILog log = LogManager.GetLogger(typeof(ServerThread));
 
         private NetworkStream nstream;
         private TcpClient client;
@@ -19,9 +19,8 @@ namespace L2dotNET.LoginService.gscommunication
 
         public string Wan { get; set; }
         public short Port { get; set; }
-        private short curp = 0, maxp = 1000;
-        public short Curp { get { return curp; } set { curp = value; } }
-        public short Maxp { get { return maxp; } set { maxp = value; } }
+        public short Curp { get; set; } = 0;
+        public short Maxp { get; set; } = 1000;
         public string Info { get; set; }
         public bool Connected { get; set; }
         public bool TestMode { get; set; }
@@ -147,7 +146,7 @@ namespace L2dotNET.LoginService.gscommunication
             activeInGame.Clear();
         }
 
-        private List<string> activeInGame = new List<string>();
+        private readonly List<string> activeInGame = new List<string>();
         public void AccountInGame(string account, byte status)
         {
             if (status == 1)

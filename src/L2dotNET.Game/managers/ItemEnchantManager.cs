@@ -7,14 +7,14 @@ namespace L2dotNET.GameService.managers
 {
     public class ItemEnchantManager
     {
-        private static ItemEnchantManager instance = new ItemEnchantManager();
+        private static readonly ItemEnchantManager instance = new ItemEnchantManager();
         public static ItemEnchantManager getInstance()
         {
             return instance;
         }
 
-        private SortedList<int, EnchantScroll> items;
-        private SortedList<int, EnchantScroll> supports;
+        private readonly SortedList<int, EnchantScroll> items;
+        private readonly SortedList<int, EnchantScroll> supports;
         public ItemEnchantManager()
         {
             items = new SortedList<int, EnchantScroll>();

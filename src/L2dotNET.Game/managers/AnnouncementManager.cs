@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Managers
         private static readonly ILog Log = LogManager.GetLogger(typeof(AnnouncementManager));
 
         private static volatile AnnouncementManager instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public List<AnnouncementModel> Announcements { get; set; }
 

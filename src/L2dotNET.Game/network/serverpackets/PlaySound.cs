@@ -3,8 +3,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class PlaySound : GameServerNetworkPacket
     {
-        private string _file;
-        private int type = 0;
+        private readonly string _file;
+        private readonly int type = 0;
         private uint x;
         private uint y;
         private uint z;

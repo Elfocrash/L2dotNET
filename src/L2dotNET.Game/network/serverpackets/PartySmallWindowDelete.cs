@@ -3,8 +3,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class PartySmallWindowDelete : GameServerNetworkPacket
     {
-        private int id;
-        private string name;
+        private readonly int id;
+        private readonly string name;
         public PartySmallWindowDelete(int id, string name)
         {
             this.id = id;

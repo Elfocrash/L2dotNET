@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class VehicleInfo : GameServerNetworkPacket
     {
-        private L2Boat boat;
+        private readonly L2Boat boat;
         public VehicleInfo(L2Boat boat)
         {
             this.boat = boat;

@@ -2,7 +2,7 @@
 {
     public class PointCmdManager
     {
-        private static PointCmdManager m = new PointCmdManager();
+        private static readonly PointCmdManager m = new PointCmdManager();
 
         public static PointCmdManager getInstance()
         {

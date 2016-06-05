@@ -5,10 +5,10 @@ namespace L2dotNET.GameService.network.l2send
 {
     public class MagicSkillLaunched : GameServerNetworkPacket
     {
-        private int _level;
-        private int _id;
-        private int CasterId;
-        private int[] Targets;
+        private readonly int _level;
+        private readonly int _id;
+        private readonly int CasterId;
+        private readonly int[] Targets;
 
         public MagicSkillLaunched(L2Character caster, List<int> targets, int id, int lvl)
         {

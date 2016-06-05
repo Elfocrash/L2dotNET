@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.managers
 {
     public class PartyRoomManager
     {
-        private static PartyRoomManager m = new PartyRoomManager();
+        private static readonly PartyRoomManager m = new PartyRoomManager();
 
         public static PartyRoomManager getInstance()
         {

@@ -4,7 +4,12 @@ namespace L2dotNET.GameService.model.zones.forms
 {
     public class ZoneCylinder : ZoneForm 
     {
-        private int _x, _y, _z1, _z2, _rad, _radS;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z1;
+        private readonly int _z2;
+        private readonly int _rad;
+        private readonly int _radS;
 
         public ZoneCylinder(int x, int y, int z1, int z2, int rad)
         {

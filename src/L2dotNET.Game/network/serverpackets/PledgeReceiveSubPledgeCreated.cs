@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class PledgeReceiveSubPledgeCreated : GameServerNetworkPacket
     {
-        private e_ClanSub sub;
+        private readonly e_ClanSub sub;
         public PledgeReceiveSubPledgeCreated(e_ClanSub sub)
         {
             this.sub = sub;

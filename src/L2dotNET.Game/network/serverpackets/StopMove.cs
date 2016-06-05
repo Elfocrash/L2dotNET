@@ -4,11 +4,11 @@ namespace L2dotNET.GameService.network.l2send
 {
     class StopMove : GameServerNetworkPacket
     {
-        private int _id;
-        private int _x;
-        private int _y;
-        private int _z;
-        private int _h;
+        private readonly int _id;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
+        private readonly int _h;
         public StopMove(L2Character cha)
         {
             _id = cha.ObjID;

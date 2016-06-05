@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.tables.multisell
         private static readonly ILog log = LogManager.GetLogger(typeof(MultiSell));
 
         private static volatile MultiSell instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static MultiSell Instance
         {

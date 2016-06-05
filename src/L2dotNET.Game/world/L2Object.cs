@@ -211,8 +211,10 @@ namespace L2dotNET.GameService.world
             _isInsidePeaceZone = false,
             _isInsidePvpZone = false, 
             _isInsideWaterZone = false, 
-            _isInsideSSQZone = false,
-            _isInsideSiegeZone = false,
+            _isInsideSSQZone = false;
+        private readonly bool 
+            _isInsideSiegeZone = false;
+        private readonly bool 
             _isInsideSomeDungeon = false;
 
         public bool isInDanger = false;

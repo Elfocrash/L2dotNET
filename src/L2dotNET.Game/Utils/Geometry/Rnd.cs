@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Utils
 {
     public static class Rnd
     {
-        private static Random rnd = new Random();
+        private static readonly Random rnd = new Random();
 
         public static double Get()
         {

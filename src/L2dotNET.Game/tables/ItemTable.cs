@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.tables
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ItemTable));
         private static volatile ItemTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static ItemTable Instance
         {

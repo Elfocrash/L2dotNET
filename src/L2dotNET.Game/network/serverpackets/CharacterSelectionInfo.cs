@@ -5,10 +5,10 @@ namespace L2dotNET.GameService.network.l2send
 {
     class CharacterSelectionInfo : GameServerNetworkPacket
     {
-        private List<L2Player> players;
+        private readonly List<L2Player> players;
         public int charId = -1;
-        private string account;
-        private int sessionId;
+        private readonly string account;
+        private readonly int sessionId;
 
         public CharacterSelectionInfo(string account, List<L2Player> players, int sessionId)
         {

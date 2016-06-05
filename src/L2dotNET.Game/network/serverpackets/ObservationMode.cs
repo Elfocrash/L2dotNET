@@ -3,9 +3,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ObservationMode : GameServerNetworkPacket
     {
-        private int _x;
-        private int _y;
-        private int _z;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
         public ObservationMode(int x, int y, int z)
         {
             _x = x;

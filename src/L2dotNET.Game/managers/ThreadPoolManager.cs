@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.managers
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ThreadPoolManager));
 
-        private static ThreadPoolManager instance = new ThreadPoolManager();
+        private static readonly ThreadPoolManager instance = new ThreadPoolManager();
         public static ThreadPoolManager getInstance()
         {
             return instance;

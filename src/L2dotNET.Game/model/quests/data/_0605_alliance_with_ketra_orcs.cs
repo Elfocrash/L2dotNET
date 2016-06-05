@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.model.quests.data
         private const int q_totem_of_valor = 7219;
         private const int q_totem_of_wisdom = 7220;
 
-        private Random rn;
+        private readonly Random rn;
         public _0605_alliance_with_ketra_orcs()
         {
             questId = 605;

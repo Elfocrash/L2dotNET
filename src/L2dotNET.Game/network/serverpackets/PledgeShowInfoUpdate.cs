@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class PledgeShowInfoUpdate : GameServerNetworkPacket
     {
-        private L2Clan Clan;
+        private readonly L2Clan Clan;
         public PledgeShowInfoUpdate(L2Clan clan)
         {
             Clan = clan;

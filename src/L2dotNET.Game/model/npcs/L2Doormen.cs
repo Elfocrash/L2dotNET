@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.model.npcs
 {
     class L2Doormen : L2Citizen
     {
-        private Hideout hideout;
+        private readonly Hideout hideout;
 
         public L2Doormen(HideoutTemplate hideout)
         {

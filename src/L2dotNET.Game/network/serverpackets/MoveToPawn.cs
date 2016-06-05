@@ -4,12 +4,15 @@ namespace L2dotNET.GameService.network.l2send
 {
     class MoveToPawn : GameServerNetworkPacket
     {
-        private int _id;
-        private int _target;
-        private int _dist;
-        private int _x, _tx;
-        private int _y, _ty;
-        private int _z, _tz;
+        private readonly int _id;
+        private readonly int _target;
+        private readonly int _dist;
+        private int _x;
+        private readonly int _tx;
+        private int _y;
+        private readonly int _ty;
+        private int _z;
+        private readonly int _tz;
 
         public MoveToPawn(int id, L2Object target, int dist, int x, int y, int z)
         {

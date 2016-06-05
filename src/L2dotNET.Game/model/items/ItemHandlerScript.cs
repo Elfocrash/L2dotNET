@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.model.items
     class ItemHandlerScript : ItemEffect
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ItemHandlerScript));
-        private int id;
+        private readonly int id;
 
         public int EffectID = -1;
         public int EffectLv;

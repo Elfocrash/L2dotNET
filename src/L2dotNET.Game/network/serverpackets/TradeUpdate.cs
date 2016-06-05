@@ -4,9 +4,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     class TradeUpdate : GameServerNetworkPacket
     {
-        private L2Item item;
-        private long num;
-        private byte action;
+        private readonly L2Item item;
+        private readonly long num;
+        private readonly byte action;
         public TradeUpdate(L2Item item, long num, byte action)
         {
             this.item = item;

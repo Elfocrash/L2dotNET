@@ -3,8 +3,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class AskJoinParty : GameServerNetworkPacket
     {
-        private string asker;
-        private int itemDistribution;
+        private readonly string asker;
+        private readonly int itemDistribution;
 
         public AskJoinParty(string asker, int itemDistribution)
         {

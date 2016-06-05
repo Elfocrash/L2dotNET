@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.model.player.ai
 {
     public class PlayerAI : StandartAiTemplate
     {
-        private L2Player player;
+        private readonly L2Player player;
         public PlayerAI(L2Character cha)
         {
             character = cha;

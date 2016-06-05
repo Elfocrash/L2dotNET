@@ -10,8 +10,8 @@ namespace L2dotNET.LoginService
             (byte) 0xcc, (byte) 0x2b, (byte) 0x6c, (byte) 0x55, (byte) 0x6c, (byte) 0x6c, (byte) 0x6c, (byte) 0x6c };
 
         private bool updatedKey = false;
-        private Random rnd = new Random();
-        private BlowfishCipher cipher;
+        private readonly Random rnd = new Random();
+        private readonly BlowfishCipher cipher;
 
         public LoginCrypt()
         {

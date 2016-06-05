@@ -4,9 +4,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     class CreatureSay : GameServerNetworkPacket
     {
-        private int _objectId;
-        private SayIDList _type;
-        private string _charName;
+        private readonly int _objectId;
+        private readonly SayIDList _type;
+        private readonly string _charName;
         public string Text { get; set; }
 
         public CreatureSay(int id, SayIDList _type, string name, string _text)

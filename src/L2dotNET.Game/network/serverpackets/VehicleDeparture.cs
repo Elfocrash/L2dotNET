@@ -4,9 +4,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     class VehicleDeparture : GameServerNetworkPacket
     {
-        private L2Boat boat;
-        private int speed;
-        private int rotationSpd;
+        private readonly L2Boat boat;
+        private readonly int speed;
+        private readonly int rotationSpd;
 
         public VehicleDeparture(L2Boat boat, int speed, int rotationSpd)
         {

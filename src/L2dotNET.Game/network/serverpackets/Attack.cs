@@ -7,9 +7,12 @@ namespace L2dotNET.GameService.network.l2send
         protected int _attackerObjId;
         public bool soulshot;
         public int _grade;
-        private int _x, tx;
-        private int _y, ty;
-        private int _z, tz;
+        private readonly int _x;
+        private int tx;
+        private readonly int _y;
+        private int ty;
+        private readonly int _z;
+        private int tz;
         private Hit[] _hits;
 
         public Attack(L2Character player, L2Object target, bool ss, int grade)

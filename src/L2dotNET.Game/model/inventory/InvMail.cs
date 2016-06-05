@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.model.inventory
 {
     public class InvMail : InvTemplate
     {
-        private L2Player _owner;
+        private readonly L2Player _owner;
         public InvMail(L2Player owner)
         {
             _owner = owner;

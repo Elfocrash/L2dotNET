@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.managers
     public class ZoneManager
     {
         private static volatile ZoneManager instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public ZoneManager()
         {

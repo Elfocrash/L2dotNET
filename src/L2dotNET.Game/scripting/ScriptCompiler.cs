@@ -13,10 +13,10 @@ namespace L2dotNET.GameService.scripting
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ScriptCompiler));
 
-        private CSharpCodeProvider provider;
+        private readonly CSharpCodeProvider provider;
 
         private static volatile ScriptCompiler instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static ScriptCompiler Instance
         {

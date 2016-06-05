@@ -3,9 +3,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     public class ShowTownMap : GameServerNetworkPacket
     {
-        private string texture;
-        private int x;
-        private int y;
+        private readonly string texture;
+        private readonly int x;
+        private readonly int y;
 
         public ShowTownMap(string texture, int x, int y)
         {

@@ -7,13 +7,13 @@ namespace L2dotNET.GameService.model.items.cursed
     class CursedWeapons
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(CursedWeapons));
-        private static CursedWeapons instance = new CursedWeapons();
+        private static readonly CursedWeapons instance = new CursedWeapons();
         public static CursedWeapons getInstance()
         {
             return instance;
         }
 
-        private SortedList<int, CursedWeapon> items = new SortedList<int, CursedWeapon>();
+        private readonly SortedList<int, CursedWeapon> items = new SortedList<int, CursedWeapon>();
 
         public CursedWeapons()
         {

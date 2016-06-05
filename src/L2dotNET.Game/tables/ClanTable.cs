@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.tables
     class ClanTable
     {
         private static volatile ClanTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static ClanTable Instance
         {

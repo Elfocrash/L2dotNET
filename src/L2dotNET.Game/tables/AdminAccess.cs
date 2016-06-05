@@ -9,11 +9,11 @@ namespace L2dotNET.GameService.tables
     public class AdminAccess
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(AdminAccess));
-        private SortedList<string, _adminAlias> _commands = new SortedList<string, _adminAlias>();
+        private readonly SortedList<string, _adminAlias> _commands = new SortedList<string, _adminAlias>();
         private ABTeleport Teleports;
 
         private static volatile AdminAccess instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static AdminAccess Instance
         {

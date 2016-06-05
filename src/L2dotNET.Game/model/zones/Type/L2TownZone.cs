@@ -6,32 +6,29 @@ namespace L2dotNET.GameService.model.zones.Type
 {
     public class L2TownZone : L2SpawnZone
     {
-        private int _townId;
-        private int _taxById;
-        private bool _isPeaceZone;
-        public int TaxById { get { return _taxById; } }
-        public bool IsPeaceZone { get { return _isPeaceZone; } }
-        public int TownId { get { return _townId; } }
+        public int TaxById { get; private set; }
+        public bool IsPeaceZone { get; private set; }
+        public int TownId { get; private set; }
 
         public L2TownZone(int id) : base(id)
         {
-            _taxById = 0;
-            _isPeaceZone = true;
+            TaxById = 0;
+            IsPeaceZone = true;
         }
 
         public override void SetParameter(string name, string value)
         {
             if (name.Equals("townId"))
-                _townId = Convert.ToInt32(value);
+                TownId = Convert.ToInt32(value);
             else if (name.Equals("taxById"))
-                _taxById = Convert.ToInt32(value);
+                TaxById = Convert.ToInt32(value);
             else if (name.Equals("isPeaceZone"))
-                _isPeaceZone = bool.Parse(value);
+                IsPeaceZone = bool.Parse(value);
         }
 
         protected override void OnEnter(L2Character character)
         {
-            if (_isPeaceZone)
+            if (IsPeaceZone)
                 character.SetInsisdeZone(ZoneId.PEACE, true);
 
             character.SetInsisdeZone(ZoneId.TOWN, true);
@@ -39,7 +36,7 @@ namespace L2dotNET.GameService.model.zones.Type
 
         protected override void OnExit(L2Character character)
         {
-            if (_isPeaceZone)
+            if (IsPeaceZone)
                 character.SetInsisdeZone(ZoneId.PEACE, false);
 
             character.SetInsisdeZone(ZoneId.TOWN, false);

@@ -3,10 +3,10 @@ namespace L2dotNET.GameService.network.l2send
 {
     class GetOffVehicle : GameServerNetworkPacket
     {
-        private L2Player player;
-        private int x;
-        private int y;
-        private int z;
+        private readonly L2Player player;
+        private readonly int x;
+        private readonly int y;
+        private readonly int z;
         public GetOffVehicle(L2Player player, int x, int y, int z)
         {
             this.player = player;

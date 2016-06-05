@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.tables
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(HtmCache));
         private static volatile HtmCache instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         private List<L2Html> htmCache;
         private List<string> htmFiles;

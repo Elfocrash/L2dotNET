@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.tables
     class AllianceTable
     {
         private static volatile AllianceTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static AllianceTable Instance
         {

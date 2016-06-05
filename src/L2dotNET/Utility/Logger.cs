@@ -109,7 +109,7 @@ namespace L2dotNET.Utility
         /// <param name="args">Arguments.</param>
         public static void Write(bool append, string format, params object[] args)
         {
-            string s = String.Format(format, args);
+            string s = string.Format(format, args);
 
             if (!append)
                 s = FormatOutputString(s);
@@ -124,7 +124,7 @@ namespace L2dotNET.Utility
         /// <param name="args">Arguments.</param>
         public static void EndWrite(string format, params object[] args)
         {
-            Write(true, String.Format(format + Environment.NewLine, args));
+            Write(true, string.Format(format + Environment.NewLine, args));
         }
 
         /// <summary>
@@ -135,8 +135,8 @@ namespace L2dotNET.Utility
         /// <param name="args">Arguments.</param>
         public static void WriteLine(Source src, string format, params object[] args)
         {
-            format = String.Format(format, args);
-            string s = String.Format("[{0}] {1}", src, format);
+            format = string.Format(format, args);
+            string s = string.Format("[{0}] {1}", src, format);
 
             switch (src)
             {
@@ -156,7 +156,7 @@ namespace L2dotNET.Utility
         /// <param name="args">Arguments.</param>
         public static void WriteLine(string format, params object[] args)
         {
-            string s = args.Length > 0 ? String.Format(format, args) : format;
+            string s = args.Length > 0 ? string.Format(format, args) : format;
 
             s = FormatOutputString(s);
 
@@ -173,13 +173,13 @@ namespace L2dotNET.Utility
         /// <param name="args">Arguments.</param>
         public static void Exception(Exception e, string format, params object[] args)
         {
-            string s = String.Format(format, args);
-            s = String.Format("{0}{1}{2}", s, Environment.NewLine, FormatException(e));
+            string s = string.Format(format, args);
+            s = string.Format("{0}{1}{2}", s, Environment.NewLine, FormatException(e));
             s = FormatOutputString(s);
 
             Console.WriteLine(s);
 
-            s = String.Format("{0}{1}{2}", GetSystemSummary(), Environment.NewLine, s);
+            s = string.Format("{0}{1}{2}", GetSystemSummary(), Environment.NewLine, s);
 
             WriteException(e.GetType().ToString(), s);
         }
@@ -190,7 +190,7 @@ namespace L2dotNET.Utility
         /// <param name="e">Occurred <see cref="System.Exception"/>.</param>
         public static void Exception(Exception e)
         {
-            Exception(e, String.Empty);
+            Exception(e, string.Empty);
         }
 
         /// <summary>
@@ -201,23 +201,23 @@ namespace L2dotNET.Utility
         private static string FormatException(Exception e)
         {
             if (e == null)
-                return String.Empty;
+                return string.Empty;
 
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("{0} occurred on {1}{2}", e.GetType(), ServiceTime.CurrentTime, Environment.NewLine);
 
-            if (!String.IsNullOrEmpty(e.Message))
+            if (!string.IsNullOrEmpty(e.Message))
                 sb.AppendFormat("Message: {0}{1}", e.Message, Environment.NewLine);
-            if (!String.IsNullOrEmpty(e.StackTrace))
+            if (!string.IsNullOrEmpty(e.StackTrace))
                 sb.AppendFormat("StackTrace: {0}{1}", e.StackTrace, Environment.NewLine);
             if (e.InnerException != null)
             {
                 sb.AppendLine("Inner exception data:");
 
-                if (!String.IsNullOrEmpty(e.InnerException.Message))
+                if (!string.IsNullOrEmpty(e.InnerException.Message))
                     sb.AppendFormat("\tMessage: {0}{1}", e.InnerException.Message, Environment.NewLine);
 
-                if (!String.IsNullOrEmpty(e.InnerException.StackTrace))
+                if (!string.IsNullOrEmpty(e.InnerException.StackTrace))
                     sb.AppendFormat("\tStackTrace: {0}{1}", e.InnerException.StackTrace, Environment.NewLine);
             }
 
@@ -248,7 +248,7 @@ namespace L2dotNET.Utility
         public static void Initialize()
         {
             EnsureDirectiries();
-            Output = new StreamWriter(Path.Combine(OutLogsDirectory, String.Format("{0}.log", ServiceTime.CurrentTime.ToString().Replace(":", "-").Replace("/", "-"))), true);
+            Output = new StreamWriter(Path.Combine(OutLogsDirectory, string.Format("{0}.log", ServiceTime.CurrentTime.ToString().Replace(":", "-").Replace("/", "-"))), true);
             WriteLine(Source.Logger, "Initialized.");
         }
 
@@ -298,7 +298,7 @@ namespace L2dotNET.Utility
         /// <param name="data"><see cref="System.Exception"/> data.</param>
         private static void WriteException(string type, string data)
         {
-            String fp = String.Format("{0}-{1}.ex", type, ServiceTime.CurrentTime.ToString().Replace(":", "-").Replace("/", "-"));
+            string fp = string.Format("{0}-{1}.ex", type, ServiceTime.CurrentTime.ToString().Replace(":", "-").Replace("/", "-"));
 
             using (StreamWriter sw = new StreamWriter(Path.Combine(ExceptionsLogDirectory, fp), true, Encoding.Unicode))
             {
@@ -315,7 +315,7 @@ namespace L2dotNET.Utility
         /// <returns>Formatted <see cref="string"/> object.</returns>
         private static string FormatOutputString(string s)
         {
-            return String.Format("{0} > {1}", ServiceTime.CurrentTime, s);
+            return string.Format("{0} > {1}", ServiceTime.CurrentTime, s);
         }
     }
 }

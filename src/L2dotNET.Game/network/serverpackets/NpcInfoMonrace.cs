@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class NpcInfoMonrace : GameServerNetworkPacket
     {
-        private MonsterRunner runner;
+        private readonly MonsterRunner runner;
         public NpcInfoMonrace(MonsterRunner runner)
         {
             this.runner = runner;

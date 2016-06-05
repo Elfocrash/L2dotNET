@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.tables
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(StructureTable));
         private static volatile StructureTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static StructureTable Instance
         {

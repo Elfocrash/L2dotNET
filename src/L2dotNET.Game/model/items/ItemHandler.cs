@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.model.items
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ItemHandler));
         private static volatile ItemHandler instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static ItemHandler Instance
         {

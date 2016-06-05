@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.managers
 {
     class RqItemManager
     {
-        private static RqItemManager m = new RqItemManager();
+        private static readonly RqItemManager m = new RqItemManager();
 
         public static RqItemManager getInstance()
         {

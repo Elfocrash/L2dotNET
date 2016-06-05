@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class PartySmallWindowAll : GameServerNetworkPacket
     {
-        private L2Party party;
+        private readonly L2Party party;
         public PartySmallWindowAll(L2Party party)
         {
             this.party = party;

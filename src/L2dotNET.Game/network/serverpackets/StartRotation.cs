@@ -3,10 +3,10 @@ namespace L2dotNET.GameService.network.l2send
 {
     class StartRotation : GameServerNetworkPacket
     {
-        private int sId;
-        private int degree;
-        private int side;
-        private int speed;
+        private readonly int sId;
+        private readonly int degree;
+        private readonly int side;
+        private readonly int speed;
         public StartRotation(int sId, int degree, int side, int speed)
         {
             this.sId = sId;

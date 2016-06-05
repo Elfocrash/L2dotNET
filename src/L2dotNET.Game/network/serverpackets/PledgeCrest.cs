@@ -3,8 +3,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class PledgeCrest : GameServerNetworkPacket
     {
-        private int id;
-        private byte[] picture;
+        private readonly int id;
+        private readonly byte[] picture;
         public PledgeCrest(int id, byte[] picture)
         {
             this.id = id;

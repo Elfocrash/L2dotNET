@@ -11,8 +11,8 @@ namespace L2dotNET.GameService.network.l2send
             green = 3
         }
 
-        private SG_color _color;
-        private int _time;
+        private readonly SG_color _color;
+        private readonly int _time;
         private int _id;
         public SetupGauge(int id, SG_color color, int time)
         {

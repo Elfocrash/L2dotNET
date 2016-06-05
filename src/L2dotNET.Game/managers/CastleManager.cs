@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.managers
 {
     class CastleManager
     {
-        private static CastleManager inst = new CastleManager();
+        private static readonly CastleManager inst = new CastleManager();
 
         public static CastleManager getInstance()
         {

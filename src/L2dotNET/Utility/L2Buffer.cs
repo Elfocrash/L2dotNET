@@ -255,7 +255,7 @@ namespace L2dotNET.Utility
 
             while (index < buffer.Length)
             {
-                hex = data = String.Empty;
+                hex = data = string.Empty;
 
                 for (i = 0; i < 16 && index + i < buffer.Length; i++)
                 {
@@ -305,7 +305,7 @@ namespace L2dotNET.Utility
         /// <param name="maxLength">Max source buffer position, that method can reach.</param>
         public static unsafe string GetTrimmedString(byte* src, ref int srcOffset, int maxLength)
         {
-            string dst = String.Empty;
+            string dst = string.Empty;
 
             while (src[srcOffset] != 0 && srcOffset + sizeof(char) < maxLength)
             {

@@ -4,8 +4,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExGetBookMarkInfo : GameServerNetworkPacket
     {
-        private TeleportBook book;
-        private byte current;
+        private readonly TeleportBook book;
+        private readonly byte current;
 
         public ExGetBookMarkInfo(byte current, TeleportBook teleportBook)
         {

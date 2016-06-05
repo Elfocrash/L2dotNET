@@ -3,8 +3,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExAutoSoulShot : GameServerNetworkPacket
     {
-        private int itemId;
-        private int type;
+        private readonly int itemId;
+        private readonly int type;
         public ExAutoSoulShot(int itemId, int type)
         {
             this.itemId = itemId;

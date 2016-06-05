@@ -2,8 +2,8 @@
 {
     class MyTargetSelected : GameServerNetworkPacket
     {
-        private int _targetId;
-        private short _color;
+        private readonly int _targetId;
+        private readonly short _color;
 
         public MyTargetSelected(int target, int color)
         {

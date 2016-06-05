@@ -5,10 +5,11 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ValidateLocation : GameServerNetworkPacket
     {
-        private int _x, _id;
-        private int _y;
-        private int _z;
-        private int _heading;
+        private readonly int _x;
+        private readonly int _id;
+        private readonly int _y;
+        private readonly int _z;
+        private readonly int _heading;
 
         public ValidateLocation(int _id, int _x, int _y, int _z, int _heading)
         {

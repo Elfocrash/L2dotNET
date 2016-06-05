@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.network.loginauth
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(AuthThread));
         private static volatile AuthThread instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static AuthThread Instance
         {
@@ -186,7 +186,7 @@ namespace L2dotNET.GameService.network.loginauth
             sendPacket(new PlayerCount(cnt));
         }
 
-        private SortedList<string, AccountModel> awaitingAccounts = new SortedList<string, AccountModel>();
+        private readonly SortedList<string, AccountModel> awaitingAccounts = new SortedList<string, AccountModel>();
         public void awaitAccount(AccountModel ta)
         {
             if (awaitingAccounts.ContainsKey(ta.Login))

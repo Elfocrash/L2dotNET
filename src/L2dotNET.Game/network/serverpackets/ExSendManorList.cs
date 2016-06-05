@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExSendManorList : GameServerNetworkPacket
     {
-        private List<string> _list;
+        private readonly List<string> _list;
         public ExSendManorList(List<string> list)
         {
             _list = list;

@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.managers.bbs
     public class BBSManager
     {
         private static volatile BBSManager instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static BBSManager Instance
         {

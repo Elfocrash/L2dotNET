@@ -3,9 +3,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExPartyPetWindowDelete : GameServerNetworkPacket
     {
-        private int petId;
-        private int playerId;
-        private string petName;
+        private readonly int petId;
+        private readonly int playerId;
+        private readonly string petName;
 
         public ExPartyPetWindowDelete(int petId, int playerId, string petName)
         {

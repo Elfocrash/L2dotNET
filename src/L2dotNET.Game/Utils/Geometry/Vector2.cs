@@ -8,11 +8,6 @@ namespace L2dotNET.GameService.Utils
     {
         #region Private Fields
 
-        private static Vector2 zeroVector = new Vector2(0f, 0f);
-        private static Vector2 unitVector = new Vector2(1f, 1f);
-        private static Vector2 unitXVector = new Vector2(1f, 0f);
-        private static Vector2 unitYVector = new Vector2(0f, 1f);
-
         #endregion Private Fields
 
 
@@ -26,25 +21,13 @@ namespace L2dotNET.GameService.Utils
 
         #region Properties
 
-        public static Vector2 Zero
-        {
-            get { return zeroVector; }
-        }
+        public static Vector2 Zero { get; } = new Vector2(0f, 0f);
 
-        public static Vector2 One
-        {
-            get { return unitVector; }
-        }
+        public static Vector2 One { get; } = new Vector2(1f, 1f);
 
-        public static Vector2 UnitX
-        {
-            get { return unitXVector; }
-        }
+        public static Vector2 UnitX { get; } = new Vector2(1f, 0f);
 
-        public static Vector2 UnitY
-        {
-            get { return unitYVector; }
-        }
+        public static Vector2 UnitY { get; } = new Vector2(0f, 1f);
 
         #endregion Properties
 

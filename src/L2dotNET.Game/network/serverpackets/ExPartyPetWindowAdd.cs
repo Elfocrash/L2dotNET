@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExPartyPetWindowAdd : GameServerNetworkPacket
     {
-        private L2Summon _summon;
+        private readonly L2Summon _summon;
         public ExPartyPetWindowAdd(L2Summon summon)
         {
             this._summon = summon;

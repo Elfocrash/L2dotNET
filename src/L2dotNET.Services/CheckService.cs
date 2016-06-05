@@ -5,7 +5,7 @@ namespace L2dotNET.Services
 {
     public class CheckService : ICheckService
     {
-        IUnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
         public CheckService(IUnitOfWork unitOfWork)
         {

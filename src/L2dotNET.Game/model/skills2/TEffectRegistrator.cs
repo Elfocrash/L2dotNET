@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.model.skills2
 {
     class TEffectRegistrator
     {
-        private static TEffectRegistrator st = new TEffectRegistrator();
+        private static readonly TEffectRegistrator st = new TEffectRegistrator();
         public static TEffectRegistrator getInstance()
         {
             return st;

@@ -13,7 +13,7 @@ namespace L2dotNET.GameService
         public ICheckService checkService { get { return GameServer.Kernel.Get<ICheckService>(); } }
 
         private static volatile PreReqValidation instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static PreReqValidation Instance
         {

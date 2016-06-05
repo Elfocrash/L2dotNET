@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.tables
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(SpawnTable));
         private static volatile SpawnTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static SpawnTable Instance
         {
@@ -116,7 +116,7 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-        private bool nospawn = true;
+        private readonly bool nospawn = true;
         public void Spawn()
         {
             log.Info("NpcServer spawn init.");

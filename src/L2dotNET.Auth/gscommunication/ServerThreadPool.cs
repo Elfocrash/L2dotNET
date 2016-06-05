@@ -16,7 +16,7 @@ namespace L2dotNET.LoginService.gscommunication
         public IServerService serverService { get { return LoginServer.Kernel.Get<IServerService>(); } }
 
         private static volatile ServerThreadPool instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public List<L2Server> servers = new List<L2Server>();
 

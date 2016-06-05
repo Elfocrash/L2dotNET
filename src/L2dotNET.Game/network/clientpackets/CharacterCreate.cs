@@ -1,5 +1,4 @@
-﻿using System;
-using L2dotNET.GameService.model.inventory;
+﻿using L2dotNET.GameService.model.inventory;
 using L2dotNET.GameService.model.skills2;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
@@ -21,7 +20,7 @@ namespace L2dotNET.GameService.network.l2recv
             base.makeme(client, data);
         }
 
-        private String _name;
+        private string _name;
         private int _race;
         private byte _sex;
         private int _classId;

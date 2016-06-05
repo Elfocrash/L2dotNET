@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.loginauth.send
     class LoginServPing : GameServerNetworkPacket
     {
         public string version;
-        private int build;
+        private readonly int build;
         public LoginServPing(AuthThread th)
         {
             this.version = th.version;

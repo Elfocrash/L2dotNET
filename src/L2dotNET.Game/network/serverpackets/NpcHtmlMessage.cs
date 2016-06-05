@@ -5,8 +5,8 @@ namespace L2dotNET.GameService.network.l2send
     class NpcHtmlMessage : GameServerNetworkPacket
     {
         public string _htm;
-        private int _objId;
-        private int _itemId;
+        private readonly int _objId;
+        private readonly int _itemId;
 
         public NpcHtmlMessage(L2Player player, string file, int objId)
         {

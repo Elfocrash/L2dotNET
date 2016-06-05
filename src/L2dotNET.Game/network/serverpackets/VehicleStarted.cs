@@ -3,8 +3,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class VehicleStarted : GameServerNetworkPacket
     {
-        private int sId;
-        private int type;
+        private readonly int sId;
+        private readonly int type;
         public VehicleStarted(int sId, int type)
         {
             this.sId = sId;

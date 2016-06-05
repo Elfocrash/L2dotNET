@@ -12,12 +12,12 @@ namespace L2dotNET.GameService.tables
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(MapRegionTable));
         private static volatile MapRegionTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
-        private static int REGIONS_X = 11;
-        private static int REGIONS_Y = 16;
+        private static readonly int REGIONS_X = 11;
+        private static readonly int REGIONS_Y = 16;
 
-        private static int[,] _regions = new int[REGIONS_X, REGIONS_Y];
+        private static readonly int[,] _regions = new int[REGIONS_X, REGIONS_Y];
 
         private static int[] _castleIdArray =
         { 0, 0, 0, 0, 0, 1, 0, 2, 3, 4, 5, 0, 0, 6, 8, 7, 9, 0, 0 };

@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.managers
 {
     class TradeManager
     {
-        private static TradeManager instance = new TradeManager();
+        private static readonly TradeManager instance = new TradeManager();
         public static TradeManager getInstance()
         {
             return instance;

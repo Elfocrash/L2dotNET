@@ -4,8 +4,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class DropItem : GameServerNetworkPacket
     {
-        private int id;
-        private L2Item item;
+        private readonly int id;
+        private readonly L2Item item;
         public DropItem(L2Item item)
         {
             this.item = item;

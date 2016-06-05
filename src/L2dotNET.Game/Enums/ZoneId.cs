@@ -5,12 +5,11 @@ namespace L2dotNET.GameService.Enums
 {
     public class ZoneId
     {
-        private ZoneIds zoneId;
-        public ZoneIds Id { get { return zoneId; } }
+        public ZoneIds Id { get; }
 
         private ZoneId(ZoneIds zoneId)
         {
-            this.zoneId = zoneId;
+            this.Id = zoneId;
         }
 
         public static int GetZoneCount()

@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     public class SystemMessage : GameServerNetworkPacket
     {
-        private List<object[]> data = new List<object[]>();
+        private readonly List<object[]> data = new List<object[]>();
         public int MessgeID;
 
         public SystemMessage(SystemMessageId msgId)

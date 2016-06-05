@@ -7,8 +7,7 @@ namespace L2dotNET.GameService.model.zones
 {
     public abstract class L2ZoneType
     {
-        private int _id;
-        public int Id { get { return _id; } }
+        public int Id { get; }
         protected L2ZoneForm _zone;
         public L2ZoneForm Zone { get { return _zone; } set { _zone = value; } }
 
@@ -16,7 +15,7 @@ namespace L2dotNET.GameService.model.zones
 
         public L2ZoneType(int id)
         {
-            _id = id;
+            Id = id;
             _characterList = new List<L2Character>();
         }
 

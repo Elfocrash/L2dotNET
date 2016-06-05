@@ -9,7 +9,7 @@ namespace L2dotNET.LoginService.managers
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(NetworkRedirect));
         private static volatile NetworkRedirect instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         protected List<NetRedClass> redirects = new List<NetRedClass>();
         public NetRedClass GlobalRedirection { get; set; }

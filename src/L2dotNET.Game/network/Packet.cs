@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.network
         /// <summary>
         /// Indicates if <see cref="Packet"/> was received or created to be sent.
         /// </summary>
-        private bool m_ReceivedPacket;
+        private readonly bool m_ReceivedPacket;
 
         /// <summary>
         /// Initializes new instance of <see cref="Packet"/> (received packet).
@@ -225,7 +225,7 @@ namespace L2dotNET.GameService.network
         /// <param name="s">Array of <see cref="string"/> values.</param>
         public unsafe void WriteString(params string[] s)
         {
-            string v = String.Empty;
+            string v = string.Empty;
 
             for (int i = 0; i < s.Length; i++)
                 v += s[i] + '\0';

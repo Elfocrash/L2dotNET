@@ -3,8 +3,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ChairSit : GameServerNetworkPacket
     {
-        private int sId;
-        private int staticId;
+        private readonly int sId;
+        private readonly int staticId;
 
         public ChairSit(int sId, int staticId)
         {

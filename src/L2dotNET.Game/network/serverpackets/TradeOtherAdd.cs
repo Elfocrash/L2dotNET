@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class TradeOtherAdd : GameServerNetworkPacket
     {
-        private L2Item item;
+        private readonly L2Item item;
         private long num;
         public TradeOtherAdd(L2Item item, long num)
         {

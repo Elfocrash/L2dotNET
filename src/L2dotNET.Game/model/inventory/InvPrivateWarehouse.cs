@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.model.inventory
 {
     public class InvPrivateWarehouse : InvTemplate
     {
-        private L2Player _owner;
+        private readonly L2Player _owner;
         public InvPrivateWarehouse(L2Player owner)
         {
             _owner = owner;

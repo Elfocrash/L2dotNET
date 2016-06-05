@@ -4,8 +4,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class TradeOwnAdd : GameServerNetworkPacket
     {
-        private L2Item item;
-        private long num;
+        private readonly L2Item item;
+        private readonly long num;
         public TradeOwnAdd(L2Item item, long num)
         {
             this.item = item;

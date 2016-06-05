@@ -2,11 +2,11 @@
 {
     class EtcStatusUpdate : GameServerNetworkPacket
     {
-        private int _force;
-        private int _weight;
-        private int _whisper;
-        private int _danger;
-        private int _grade;
+        private readonly int _force;
+        private readonly int _weight;
+        private readonly int _whisper;
+        private readonly int _danger;
+        private readonly int _grade;
         private int _death;
         private int _souls;
         public EtcStatusUpdate(L2Player player)

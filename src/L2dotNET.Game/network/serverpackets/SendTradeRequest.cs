@@ -3,7 +3,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class SendTradeRequest : GameServerNetworkPacket
     {
-        private int sId;
+        private readonly int sId;
         public SendTradeRequest(int sId)
         {
             this.sId = sId;

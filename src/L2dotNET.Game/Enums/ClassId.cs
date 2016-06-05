@@ -4,16 +4,14 @@ namespace L2dotNET.GameService.Enums
 {
     public class ClassId
     {
-        private ClassIds _classId;
-        public ClassIds Id { get { return _classId; }
-            set { _classId = value; } }
-        private ClassRace _raceId;
-        public ClassRace ClassRace { get { return _raceId; } }
+        public ClassIds Id { get; set; }
+
+        public ClassRace ClassRace { get; }
 
         private ClassId(ClassIds classId, ClassRace raceId)
         {
-            _classId = classId;
-            _raceId = raceId;
+            Id = classId;
+            ClassRace = raceId;
         }
 
         public static IEnumerable<ClassId> Values

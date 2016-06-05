@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ShortCutInit : GameServerNetworkPacket
     {
-        private List<L2Shortcut> _shortcuts;
+        private readonly List<L2Shortcut> _shortcuts;
         public ShortCutInit(L2Player player)
         {
             _shortcuts = player._shortcuts;

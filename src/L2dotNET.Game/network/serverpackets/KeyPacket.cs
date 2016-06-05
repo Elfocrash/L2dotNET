@@ -3,7 +3,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class KeyPacket : GameServerNetworkPacket
     {
-        private byte[] key;
+        private readonly byte[] key;
         private byte next;
         public KeyPacket(GameClient client, byte n)
         {

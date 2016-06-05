@@ -8,7 +8,7 @@ namespace L2dotNET.GameService
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ConfigFile));
 
-        private FileInfo File;
+        private readonly FileInfo File;
         public SortedList<string, string> _topics;
 
         public ConfigFile(string Path)

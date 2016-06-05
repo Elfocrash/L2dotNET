@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.model.npcs.ai
     public class AIManager
     {
         private static volatile AIManager instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static AIManager Instance
         {

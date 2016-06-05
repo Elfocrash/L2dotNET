@@ -5,8 +5,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExQuestItemList : GameServerNetworkPacket
     {
-        private L2Item[] _items;
-        private List<int> _block = new List<int>();
+        private readonly L2Item[] _items;
+        private readonly List<int> _block = new List<int>();
         public ExQuestItemList(L2Player player)
         {
             _items = player.getAllQuestItems();

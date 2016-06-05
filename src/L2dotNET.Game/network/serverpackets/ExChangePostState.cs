@@ -3,9 +3,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExChangePostState : GameServerNetworkPacket
     {
-        private bool _receivedBoard;
-        private int[] _msgs;
-        private int _status;
+        private readonly bool _receivedBoard;
+        private readonly int[] _msgs;
+        private readonly int _status;
         public static int Deleted = 0;
         public static int Readed = 1;
         public static int Rejected = 2;

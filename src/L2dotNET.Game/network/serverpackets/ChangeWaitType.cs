@@ -3,11 +3,11 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ChangeWaitType : GameServerNetworkPacket
     {
-        private int sId;
-        private int type;
-        private int x;
-        private int y;
-        private int z;
+        private readonly int sId;
+        private readonly int type;
+        private readonly int x;
+        private readonly int y;
+        private readonly int z;
         public static int SIT = 0;
         public static int STAND = 1;
         public static int FAKE = 2;

@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.model.inventory
 {
     public class InvRefund
     {
-        private L2Player _owner;
+        private readonly L2Player _owner;
         public List<L2Item> _items = new List<L2Item>();
         public InvRefund(L2Player owner)
         {

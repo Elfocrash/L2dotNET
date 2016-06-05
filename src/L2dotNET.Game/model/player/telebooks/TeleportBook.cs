@@ -8,9 +8,9 @@ namespace L2dotNET.GameService.model.player.telebooks
     {
         public SortedList<byte, TelBook_Mark> bookmarks;
 
-        private int MY_TELEPORT_FLAG            = 20033;
-        private int MY_TELEPORT_SCROLL          = 13016;
-        private int MY_TELEPORT_SCROLL_EVENT    = 13302;
+        private readonly int MY_TELEPORT_FLAG            = 20033;
+        private readonly int MY_TELEPORT_SCROLL          = 13016;
+        private readonly int MY_TELEPORT_SCROLL_EVENT    = 13302;
 
         public TeleportBook()
         {

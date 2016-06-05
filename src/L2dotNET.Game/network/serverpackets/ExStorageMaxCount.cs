@@ -3,13 +3,13 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExStorageMaxCount : GameServerNetworkPacket
     {
-        private int _inventory;
-        private int _warehouse;
-        private int _clan;
-        private int _privateSell;
-        private int _privateBuy;
-        private int _receipeD;
-        private int _recipe;
+        private readonly int _inventory;
+        private readonly int _warehouse;
+        private readonly int _clan;
+        private readonly int _privateSell;
+        private readonly int _privateBuy;
+        private readonly int _receipeD;
+        private readonly int _recipe;
         //private int _extra;
         //private int _quest;
 

@@ -2,11 +2,11 @@
 {
     class GetItem : GameServerNetworkPacket
     {
-        private int _id;
-        private int _itemId;
-        private int _x;
-        private int _y;
-        private int _z;
+        private readonly int _id;
+        private readonly int _itemId;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
         public GetItem(int id, int itemId, int x, int y, int z)
         {
             _id = id;

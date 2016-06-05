@@ -35,7 +35,7 @@ namespace L2dotNET.GameService.tools
             return m_StrBuilder.ToString();
         }
 
-        private static DateTime year1970 = new DateTime(1970, 1, 1);
+        private static readonly DateTime year1970 = new DateTime(1970, 1, 1);
         public static int CurrentSeconds()
         {
             TimeSpan ts = year1970 - DateTime.Now;

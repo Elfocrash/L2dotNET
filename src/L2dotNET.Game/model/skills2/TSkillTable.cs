@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.model.skills2
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(TSkillTable));
         private static volatile TSkillTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static TSkillTable Instance
         {
@@ -401,7 +401,7 @@ namespace L2dotNET.GameService.model.skills2
             reg(new SkillLevelParam("block_action_use_skill", type_int, 61));
         }
 
-        private SortedList<byte, SkillLevelParam> ps = new SortedList<byte, SkillLevelParam>();
+        private readonly SortedList<byte, SkillLevelParam> ps = new SortedList<byte, SkillLevelParam>();
 
         private void reg(SkillLevelParam s)
         {

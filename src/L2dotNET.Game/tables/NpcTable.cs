@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.tables
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(NpcTable));
         private static volatile NpcTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static NpcTable Instance
         {

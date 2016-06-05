@@ -3,7 +3,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class TradeDone : GameServerNetworkPacket
     {
-        private bool done;
+        private readonly bool done;
         public TradeDone(bool done = true)
         {
             this.done = done;

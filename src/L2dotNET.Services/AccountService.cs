@@ -7,7 +7,7 @@ namespace L2dotNET.Services
 {
     public class AccountService : IAccountService
     {
-        IUnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
         public AccountService(IUnitOfWork unitOfWork)
         {

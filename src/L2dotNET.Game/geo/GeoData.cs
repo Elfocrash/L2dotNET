@@ -142,7 +142,7 @@ namespace L2dotNET.GameService.geo
                                         break;
                                     }
                                 default:
-                                    throw new InvalidOperationException(String.Format("Failed to read geodata file '{0}'", currentFile.FullName));
+                                    throw new InvalidOperationException(string.Format("Failed to read geodata file '{0}'", currentFile.FullName));
                             }
 
                             counter++;
@@ -185,15 +185,15 @@ namespace L2dotNET.GameService.geo
         /// <returns>Parsed absolute map offset.</returns>
         private static short ParseMapOffsets(FileInfo fileInfo)
         {
-            string[] tmp = fileInfo.Name.Replace(fileInfo.Extension, String.Empty).Split('_');
+            string[] tmp = fileInfo.Name.Replace(fileInfo.Extension, string.Empty).Split('_');
 
             if (tmp.Length != 0x02)
-                throw new ArgumentException(String.Format("Failed to parse geodata file offsets, file name: '{0}'", fileInfo.Name));
+                throw new ArgumentException(string.Format("Failed to parse geodata file offsets, file name: '{0}'", fileInfo.Name));
 
             byte[] offsets = new byte[0x02];
 
             if (!byte.TryParse(tmp[0], out offsets[0]) || !byte.TryParse(tmp[1], out offsets[1]))
-                throw new ArgumentException(String.Format("Failed to parse geodata file offsets, file name: '{0}'", fileInfo.Name));
+                throw new ArgumentException(string.Format("Failed to parse geodata file offsets, file name: '{0}'", fileInfo.Name));
 
             return (short)((offsets[0x00] << 0x05) + offsets[0x01]);
         }

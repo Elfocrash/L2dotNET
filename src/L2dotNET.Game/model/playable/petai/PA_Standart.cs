@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.model.playable.petai
 {
     public class PA_Standart : StandartAiTemplate
     {
-        private L2Pet pet;
+        private readonly L2Pet pet;
         public PA_Standart(L2Summon s)
         {
             character = s;

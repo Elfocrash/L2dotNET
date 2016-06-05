@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExPostItemList : GameServerNetworkPacket
     {
-        private List<L2Item> list;
+        private readonly List<L2Item> list;
 
         public ExPostItemList(List<L2Item> list)
         {

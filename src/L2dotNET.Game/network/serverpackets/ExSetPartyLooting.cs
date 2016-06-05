@@ -3,8 +3,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExSetPartyLooting : GameServerNetworkPacket
     {
-        private int result = 0;
-        private int mode = 0;
+        private readonly int result = 0;
+        private readonly int mode = 0;
 
         public ExSetPartyLooting(short VoteId)
         {

@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class UserInfo : GameServerNetworkPacket
     {
-        private L2Player player;
+        private readonly L2Player player;
         public UserInfo(L2Player player)
         {
             this.player = player;

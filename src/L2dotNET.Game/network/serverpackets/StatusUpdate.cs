@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.network.l2send
         public static int MAX_CP = 0x22;
 
         public List<object[]> attrs = new List<object[]>();
-        private int _id;
+        private readonly int _id;
 
         public void add(int type, object val)
         {

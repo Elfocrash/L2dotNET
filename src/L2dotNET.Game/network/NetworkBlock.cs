@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.network
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(NetworkBlock));
         private static volatile NetworkBlock instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static NetworkBlock Instance
         {

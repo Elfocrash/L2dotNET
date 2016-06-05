@@ -4,10 +4,10 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ShowBoard : GameServerNetworkPacket
     {
-        private string id;
-        private string htmlCode;
-        private List<string> arg;
-        private static short BBS_MAX = 8180;
+        private readonly string id;
+        private readonly string htmlCode;
+        private readonly List<string> arg;
+        private static readonly short BBS_MAX = 8180;
         public ShowBoard(string htm, string id)
         {
             this.id = id;

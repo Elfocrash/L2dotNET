@@ -3,8 +3,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class CharacterSelected : GameServerNetworkPacket
     {
-        private int session;
-        private L2Player player;
+        private readonly int session;
+        private readonly L2Player player;
 
         public CharacterSelected(L2Player player, int session)
         {

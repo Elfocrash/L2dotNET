@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class QuestList : GameServerNetworkPacket
     {
-        private List<QuestInfo> list;
+        private readonly List<QuestInfo> list;
         public QuestList(L2Player player)
         {
             list = player.getAllActiveQuests();

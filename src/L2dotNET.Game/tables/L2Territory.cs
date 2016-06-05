@@ -108,13 +108,14 @@ namespace L2dotNET.GameService.tables
         public System.Timers.Timer RespawnTimer;
 
         public L2Object obj;
-        private L2Territory zone;
-        private int x = 0;
-        private int y = 0;
-        private int z = 0;
-        private int h = 0;
+        private readonly L2Territory zone;
+        private readonly int x = 0;
+        private readonly int y = 0;
+        private readonly int z = 0;
+        private readonly int h = 0;
 
-        private byte Mode = MODE_ANYTIME, STATUS = STATUS_OFFLINE;
+        private readonly byte Mode = MODE_ANYTIME;
+        private byte STATUS = STATUS_OFFLINE;
         public const byte MODE_DAY_ONLY = 1, MODE_NIGHT_ONLY = 2, MODE_ANYTIME = 0, STATUS_ACTIVE = 1, STATUS_OFFLINE = 2, STATUS_INACTIVE = 0;
 
         public L2Spawn(int NpcId, long Respawn, L2Territory zone, string pos)

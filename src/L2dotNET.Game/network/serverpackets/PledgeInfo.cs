@@ -2,9 +2,9 @@
 {
     class PledgeInfo : GameServerNetworkPacket
     {
-        private int _id;
-        private string _name;
-        private string _ally;
+        private readonly int _id;
+        private readonly string _name;
+        private readonly string _ally;
         public PledgeInfo(int id, string name, string ally)
         {
             _id = id;

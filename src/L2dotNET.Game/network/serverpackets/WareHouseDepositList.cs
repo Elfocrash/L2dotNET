@@ -9,9 +9,9 @@ namespace L2dotNET.GameService.network.l2send
         public static short WH_CLAN = 2;
         public static short WH_CASTLE = 3;
         public static short WH_FREIGHT = 4;
-        private List<L2Item> _items = new List<L2Item>();
-        private short _type;
-        private long _adena;
+        private readonly List<L2Item> _items = new List<L2Item>();
+        private readonly short _type;
+        private readonly long _adena;
         public WareHouseDepositList(L2Player player, List<L2Item> items, short type)
         {
             _type = type;

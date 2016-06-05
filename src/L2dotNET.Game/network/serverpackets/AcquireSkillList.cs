@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class AcquireSkillList : GameServerNetworkPacket
     {
-        private int _type;
+        private readonly int _type;
         public static int ESTT_NORMAL = 0;
         public static int ESTT_FISHING = 1;
         public static int ESTT_CLAN = 2;
@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.network.l2send
         public static int ESTT_BISHOP_SHARING = 7;		// CT2.5 Skill Sharing	
         public static int ESTT_ELDER_SHARING = 8;		// CT2.5 Skill Sharing	
         public static int ESTT_SILEN_ELDER_SHARING = 9;			// CT2.5 Skill Sharing
-        private SortedList<int, TAcquireSkill> _list;
+        private readonly SortedList<int, TAcquireSkill> _list;
         public AcquireSkillList(int type, L2Player player)
         {
             _list = player.ActiveSkillTree;

@@ -3,10 +3,10 @@ namespace L2dotNET.GameService.network.l2send
 {
     class TeleportToLocation : GameServerNetworkPacket
     {
-        private int _x;
-        private int _y;
-        private int _z;
-        private int _id;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
+        private readonly int _id;
         private int _heading;
         public TeleportToLocation(int id, int x, int y, int z, int h)
         {

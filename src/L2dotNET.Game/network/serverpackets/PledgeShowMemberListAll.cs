@@ -5,8 +5,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class PledgeShowMemberListAll : GameServerNetworkPacket
     {
-        private L2Clan clan;
-        private e_ClanType type;
+        private readonly L2Clan clan;
+        private readonly e_ClanType type;
         public PledgeShowMemberListAll(L2Clan clan, e_ClanType type)
         {
             this.clan = clan;

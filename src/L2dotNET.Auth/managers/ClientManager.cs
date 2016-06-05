@@ -12,13 +12,13 @@ namespace L2dotNET.LoginService
         private static readonly ILog log = LogManager.GetLogger(typeof(ClientManager));
 
         private static volatile ClientManager instance;
-        private static object syncRoot = new object();
-        private int ScrambleCount = 1;
+        private static readonly object syncRoot = new object();
+        private readonly int ScrambleCount = 1;
         private ScrambledKeyPair[] ScrambledPairs;
-        private int BlowfishCount = 20;
-        private Byte[][] BlowfishKeys;
+        private readonly int BlowfishCount = 20;
+        private byte[][] BlowfishKeys;
 
-        private List<LoginClient> _loggedClients = new List<LoginClient>();
+        private readonly List<LoginClient> _loggedClients = new List<LoginClient>();
         private SortedList<string, LoginClient> _waitingAcc = new SortedList<string, LoginClient>();
 
         public static ClientManager Instance
@@ -61,11 +61,11 @@ namespace L2dotNET.LoginService
             log.Info($"Scrambled { ScrambledPairs.Length } keypairs.");
             log.Info("Randomize blowfish keys.");
 
-            BlowfishKeys = new Byte[BlowfishCount][];
+            BlowfishKeys = new byte[BlowfishCount][];
 
             for (int i = 0; i < BlowfishCount; i++)
             {
-                BlowfishKeys[i] = new Byte[16];
+                BlowfishKeys[i] = new byte[16];
                 new Random().NextBytes(BlowfishKeys[i]);
             }
 
@@ -73,7 +73,7 @@ namespace L2dotNET.LoginService
         }
 
         private NetworkBlock banned;
-        private SortedList<string, DateTime> flood = new SortedList<string, DateTime>();
+        private readonly SortedList<string, DateTime> flood = new SortedList<string, DateTime>();
 
         public void addClient(TcpClient client)
         {

@@ -4,11 +4,11 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExBuySellList_Buy : GameServerNetworkPacket
     {
-        private ND_shopList _shop;
-        private long _adena;
-        private double _mod;
-        private double _tax;
-        private int _shopId;
+        private readonly ND_shopList _shop;
+        private readonly long _adena;
+        private readonly double _mod;
+        private readonly double _tax;
+        private readonly int _shopId;
 
         public ExBuySellList_Buy(L2Player player, ND_shopList shop, double mod, double tax, int shopId)
         {

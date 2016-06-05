@@ -5,9 +5,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ItemList : GameServerNetworkPacket
     {
-        private bool showWindow;
-        private List<ItemListItem> items = new List<ItemListItem>();
-        private List<int> blocked = new List<int>();
+        private readonly bool showWindow;
+        private readonly List<ItemListItem> items = new List<ItemListItem>();
+        private readonly List<int> blocked = new List<int>();
         public ItemList(L2Player player, bool showWindow)
         {
             this.showWindow = showWindow;

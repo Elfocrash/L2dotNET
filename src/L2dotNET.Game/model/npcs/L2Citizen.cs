@@ -490,9 +490,9 @@ namespace L2dotNET.GameService.model.npcs
     class BuffForQuestReward
     {
         public L2Character cha;
-        private L2Citizen npc;
+        private readonly L2Citizen npc;
         private int skillId;
-        private TSkill skill;
+        private readonly TSkill skill;
 
         public BuffForQuestReward(L2Citizen npc, L2Character target, int skillId)
         {

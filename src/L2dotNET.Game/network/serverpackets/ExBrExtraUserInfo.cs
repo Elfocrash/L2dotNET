@@ -3,8 +3,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExBrExtraUserInfo : GameServerNetworkPacket
     {
-        private int playerId;
-        private int value;
+        private readonly int playerId;
+        private readonly int value;
         public ExBrExtraUserInfo(int id, int value)
         {
             this.playerId = id;

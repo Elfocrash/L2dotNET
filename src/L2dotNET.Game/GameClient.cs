@@ -26,7 +26,7 @@ namespace L2dotNET.GameService
         public TcpClient _client;
         public NetworkStream _stream;
         private byte[] _buffer;
-        private GameCrypt _crypt;
+        private readonly GameCrypt _crypt;
         public byte[] _blowfishKey;
         public ScrambledKeyPair _scrambledPair;
 

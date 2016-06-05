@@ -3,7 +3,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class JoinParty : GameServerNetworkPacket
     {
-        private int response;
+        private readonly int response;
         public JoinParty(int response)
         {
             this.response = response;

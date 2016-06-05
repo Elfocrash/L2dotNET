@@ -4,10 +4,10 @@ namespace L2dotNET.GameService.network.l2send
 {
     class AcquireSkillInfo : GameServerNetworkPacket
     {
-        private int _id;
-        private int _level;
-        private int _spCost;
-        private int _mode;
+        private readonly int _id;
+        private readonly int _level;
+        private readonly int _spCost;
+        private readonly int _mode;
         public List<int[]> _reqs = new List<int[]>();
 
         public AcquireSkillInfo(int _id, int _level, int sp, int _skillType)

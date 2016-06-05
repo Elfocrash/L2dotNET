@@ -3,7 +3,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class AutoAttackStop : GameServerNetworkPacket
     {
-        private int sId;
+        private readonly int sId;
         public AutoAttackStop(int sId)
         {
             this.sId = sId;

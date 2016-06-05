@@ -6,7 +6,7 @@ namespace L2dotNET.GameService
     public sealed class Config
     {
         private static volatile Config instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static Config Instance
         {

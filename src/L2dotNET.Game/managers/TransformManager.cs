@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.managers
 {
     class TransformManager
     {
-        private static TransformManager m = new TransformManager();
+        private static readonly TransformManager m = new TransformManager();
         public static TransformManager getInstance()
         {
             return m;

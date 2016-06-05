@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.model.npcs.cubic
 {
     public class CubicController
     {
-        private static CubicController instance = new CubicController();
+        private static readonly CubicController instance = new CubicController();
         public static CubicController getController()
         {
             return instance;

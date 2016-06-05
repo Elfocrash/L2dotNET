@@ -13,12 +13,12 @@ namespace L2dotNET.GameService.model.stats
         {
             this.owner = owner;
         }
-        private L2Character owner;
+        private readonly L2Character owner;
 
         public Hashtable statTemplate = new Hashtable();
         public Hashtable statBuff = new Hashtable();
 
-        private List<TEffect> activeEffects = new List<TEffect>();
+        private readonly List<TEffect> activeEffects = new List<TEffect>();
 
         public double SpecBonusRegHP, URegHpMul = 1.0, SpecBonusRegMP, URegMpMul = 1.0, SpecBonusRegCP, SpecBonusEvasion;
 

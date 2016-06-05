@@ -5,10 +5,10 @@ namespace L2dotNET.GameService.network.l2send
 {
     class SkillList : GameServerNetworkPacket
     {
-        private IList<TSkill> skills;
-        private int _blockAct;
-        private int _blockSpell;
-        private int _blockSkill;
+        private readonly IList<TSkill> skills;
+        private readonly int _blockAct;
+        private readonly int _blockSpell;
+        private readonly int _blockSkill;
         public SkillList(L2Player player, int blockAct, int blockSpell, int blockSkill)
         {
             skills = player._skills.Values;

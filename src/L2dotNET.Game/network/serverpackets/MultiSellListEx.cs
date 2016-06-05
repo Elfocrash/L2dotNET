@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class MultiSellListEx : GameServerNetworkPacket
     {
-        private L2dotNET.GameService.tables.multisell.MultiSellList list;
+        private readonly L2dotNET.GameService.tables.multisell.MultiSellList list;
         public MultiSellListEx(L2Player player, L2dotNET.GameService.tables.multisell.MultiSellList list)
         {
             this.list = list;

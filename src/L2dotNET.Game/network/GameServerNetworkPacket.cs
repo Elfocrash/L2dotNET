@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.network
     [Synchronization]
     public abstract class GameServerNetworkPacket
     {
-        private MemoryStream stream = new MemoryStream();
+        private readonly MemoryStream stream = new MemoryStream();
 
         protected void writeB(byte[] value)
         {

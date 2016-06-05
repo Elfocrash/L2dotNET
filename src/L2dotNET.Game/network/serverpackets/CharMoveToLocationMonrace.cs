@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class CharMoveToLocationMonrace : GameServerNetworkPacket
     {
-        private MonsterRunner runner;
+        private readonly MonsterRunner runner;
         public CharMoveToLocationMonrace(MonsterRunner runner)
         {
             this.runner = runner;

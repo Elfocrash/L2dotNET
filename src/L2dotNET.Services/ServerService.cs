@@ -7,7 +7,7 @@ namespace L2dotNET.Services
 {
     public class ServerService : IServerService
     {
-        IUnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
         public ServerService(IUnitOfWork unitOfWork)
         {

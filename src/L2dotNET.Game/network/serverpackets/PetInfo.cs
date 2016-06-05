@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class PetInfo : GameServerNetworkPacket
     {
-        private L2Summon pet;
+        private readonly L2Summon pet;
         public PetInfo(L2Summon pet)
         {
             this.pet = pet;

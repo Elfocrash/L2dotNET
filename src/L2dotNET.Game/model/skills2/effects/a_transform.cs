@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.model.skills2.effects
 {
     class a_transform : TEffect
     {
-        private int transformId;
+        private readonly int transformId;
         public a_transform(int transformId)
         {
             this.transformId = transformId;

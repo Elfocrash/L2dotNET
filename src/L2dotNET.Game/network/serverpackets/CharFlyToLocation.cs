@@ -4,8 +4,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class CharFlyToLocation : GameServerNetworkPacket
     {
-        private L2Object obj;
-        private int id;
+        private readonly L2Object obj;
+        private readonly int id;
         public CharFlyToLocation(L2Object obj, FlyType type)
         {
             this.obj = obj;

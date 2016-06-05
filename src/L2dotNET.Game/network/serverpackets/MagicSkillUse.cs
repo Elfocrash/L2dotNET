@@ -5,15 +5,18 @@ namespace L2dotNET.GameService.network.l2send
 {
     public class MagicSkillUse : GameServerNetworkPacket
     {
-        private int _level;
-        private int _id;
-        private int _hitTime;
-        private int _targetId;
-        private int _casterId;
-        private int _x, tx;
-        private int _y, ty;
-        private int _z, tz;
-        private int _damageSuccess;
+        private readonly int _level;
+        private readonly int _id;
+        private readonly int _hitTime;
+        private readonly int _targetId;
+        private readonly int _casterId;
+        private readonly int _x;
+        private readonly int tx;
+        private readonly int _y;
+        private readonly int ty;
+        private readonly int _z;
+        private readonly int tz;
+        private readonly int _damageSuccess;
         public MagicSkillUse(L2Character caster, L2Object target, TSkill skill, int hitTime, int flag = 0)
         {
             _id = skill.skill_id;

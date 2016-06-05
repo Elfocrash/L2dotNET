@@ -4,9 +4,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ShopPreviewList : GameServerNetworkPacket
     {
-        private long _adena;
-        private ND_shopList _shop;
-        private int _shopId;
+        private readonly long _adena;
+        private readonly ND_shopList _shop;
+        private readonly int _shopId;
         public ShopPreviewList(L2Player player, ND_shopList shop, int shopId)
         {
             _adena = player.getAdena();

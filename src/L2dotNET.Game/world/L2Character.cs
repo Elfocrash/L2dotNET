@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.world
         public int SpawnX { get; set; }
         public int SpawnY { get; set; }
         public int SpawnZ { get; set; }
-        private byte[] _zones = new byte[ZoneId.GetZoneCount()];
+        private readonly byte[] _zones = new byte[ZoneId.GetZoneCount()];
 
         public byte IsRunning { get; set; } = 1;
 

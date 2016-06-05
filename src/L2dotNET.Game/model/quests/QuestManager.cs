@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.model.quests
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(QuestManager));
         private static volatile QuestManager instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static QuestManager Instance
         {

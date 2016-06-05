@@ -9,7 +9,9 @@ namespace L2dotNET.GameService.world
         private static readonly ILog log = LogManager.GetLogger(typeof(L2WorldRegion));
 
         public List<L2WorldRegion> _surroundingRegions;
-        private int _tileX, _tileY;
+        private readonly int _tileX;
+        private readonly int _tileY;
+
         public L2WorldRegion(int pTileX, int pTileY)
         {
             _surroundingRegions = new List<L2WorldRegion>();

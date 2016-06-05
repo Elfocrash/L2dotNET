@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class StaticObject : GameServerNetworkPacket
     {
-        private L2StaticObject obj;
+        private readonly L2StaticObject obj;
         public StaticObject(L2StaticObject obj)
         {
             this.obj = obj;

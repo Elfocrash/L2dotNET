@@ -10,7 +10,9 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
             base.CreatePacket(Client, data);
         }
 
-        int login1, login2;
+        private int login1;
+        private int login2;
+
         public override void Read()
         {
             login1 = ReadInt();

@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.model.events
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(MonsterRace));
         private static volatile MonsterRace instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static MonsterRace Instance
         {
@@ -126,7 +126,7 @@ namespace L2dotNET.GameService.model.events
 
         public int currentRaceId = 1, timeToStart, maxSpd = 0, rnd, raceTimeProgress;
         public System.Timers.Timer raceStartTime, raceInProgress;
-        private Random rn = new Random();
+        private readonly Random rn = new Random();
         public void startRace()
         {
             maxSpd = 0;

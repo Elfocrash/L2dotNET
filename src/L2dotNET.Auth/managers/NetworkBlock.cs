@@ -10,7 +10,7 @@ namespace L2dotNET.LoginService.data
         private static readonly ILog log = LogManager.GetLogger(typeof(NetworkBlock));
 
         private static volatile NetworkBlock instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static NetworkBlock Instance
         {
@@ -31,7 +31,7 @@ namespace L2dotNET.LoginService.data
             }
         }
 
-        protected List<NB_interface> blocks = new List<NB_interface>();
+        protected readonly List<NB_interface> blocks = new List<NB_interface>();
 
         public NetworkBlock()
         {

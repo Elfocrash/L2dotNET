@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.tables
 {
     class FString
     {
-        private static FString inst = new FString();
+        private static readonly FString inst = new FString();
         public static FString getInstance()
         {
             return inst;

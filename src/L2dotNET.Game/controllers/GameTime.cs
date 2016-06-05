@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.controllers
         private static readonly ILog log = LogManager.GetLogger(typeof(GameTime));
 
         private static volatile GameTime instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static GameTime Instance
         {
@@ -35,8 +35,8 @@ namespace L2dotNET.GameService.controllers
         }
 
         private int Time;
-        private GameServerNetworkPacket DayPk = new SunRise();
-        private GameServerNetworkPacket NightPk = new SunSet();
+        private readonly GameServerNetworkPacket DayPk = new SunRise();
+        private readonly GameServerNetworkPacket NightPk = new SunSet();
         private System.Timers.Timer TimeController;
         public DateTime serverStartUp;
         public static bool Night = false;

@@ -3,7 +3,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class EnchantResult : GameServerNetworkPacket
     {
-        private EnchantResultVal result;
+        private readonly EnchantResultVal result;
         private int crystal;
         private long count;
         public EnchantResult(EnchantResultVal result, int crystal = 0, long count = 0)

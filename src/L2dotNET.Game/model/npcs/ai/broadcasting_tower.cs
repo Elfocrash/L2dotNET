@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.model.npcs.ai
 {
     class broadcasting_tower : AITemplate
     {
-        private int[][] data;
+        private readonly int[][] data;
         public broadcasting_tower()
         {
             id = 31031;

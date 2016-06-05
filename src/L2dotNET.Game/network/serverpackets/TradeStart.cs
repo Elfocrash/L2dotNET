@@ -6,8 +6,8 @@ namespace L2dotNET.GameService.network.l2send
     class TradeStart : GameServerNetworkPacket
     {
         private L2Player player;
-        private List<L2Item> trade = new List<L2Item>();
-        private int partnerId;
+        private readonly List<L2Item> trade = new List<L2Item>();
+        private readonly int partnerId;
         public TradeStart(L2Player player)
         {
             this.player = player;

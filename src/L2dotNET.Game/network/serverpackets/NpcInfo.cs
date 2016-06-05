@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class NpcInfo : GameServerNetworkPacket
     {
-        private L2Citizen npc;
+        private readonly L2Citizen npc;
         public NpcInfo(L2Citizen npc)
         {
             this.npc = npc;

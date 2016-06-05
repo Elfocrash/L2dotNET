@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class ExReplyDominionInfo : GameServerNetworkPacket
     {
-        private List<string> names = new List<string>();
+        private readonly List<string> names = new List<string>();
         public ExReplyDominionInfo()
         {
             names.Add("gludio");

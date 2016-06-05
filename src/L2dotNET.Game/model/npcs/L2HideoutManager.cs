@@ -11,8 +11,8 @@ namespace L2dotNET.GameService.model.npcs
     class L2HideoutManager : L2Citizen
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(L2HideoutManager));
-        private Hideout hideout;
-        private AgitManagerAI ai;
+        private readonly Hideout hideout;
+        private readonly AgitManagerAI ai;
         public L2HideoutManager(HideoutTemplate hideout)
         {
             this.hideout = (Hideout)hideout;

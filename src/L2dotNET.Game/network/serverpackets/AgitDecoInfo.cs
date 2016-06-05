@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class AgitDecoInfo : GameServerNetworkPacket
     {
-        private Hideout hideout;
+        private readonly Hideout hideout;
 
         public AgitDecoInfo(Hideout hideout)
         {

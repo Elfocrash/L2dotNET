@@ -12,7 +12,7 @@
 			CLAN_LEADERS_MAY_NOT_BE_DELETED = 3
         }
 
-        private CharDeleteFailReason reason;
+        private readonly CharDeleteFailReason reason;
 
         public CharDeleteFail(CharDeleteFailReason reason)
         {   

@@ -7,10 +7,10 @@ namespace L2dotNET.Tests
     [TestClass]
     public class MapRegionTest
     {
-        private static int REGIONS_X = 11;
-        private static int REGIONS_Y = 16;
+        private static readonly int REGIONS_X = 11;
+        private static readonly int REGIONS_Y = 16;
 
-        private static int[,] _regions = new int[REGIONS_X, REGIONS_Y];
+        private static readonly int[,] _regions = new int[REGIONS_X, REGIONS_Y];
 
         [TestMethod]
         public void Test()

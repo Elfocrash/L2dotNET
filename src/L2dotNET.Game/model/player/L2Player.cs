@@ -50,14 +50,11 @@ namespace L2dotNET.GameService
         public int HairStyle { get; set; }
         public int HairColor { get; set; }
         public int Face { get; set; }
-        private bool _whisperBlock = false;
-        public bool WhieperBlock { get { return _whisperBlock; } set { _whisperBlock = value; } }
+        public bool WhieperBlock { get; set; } = false;
         public GameClient Gameclient { get; set; }
         public long Exp { get; set; }
-        private long expOnDeath = 0;
-        public long ExpOnDeath { get { return expOnDeath; } set { expOnDeath = value; } }
-        private long expAfterLogin = 0;
-        public long ExpAfterLogin { get { return expAfterLogin; } set { expAfterLogin = value; } }
+        public long ExpOnDeath { get; set; } = 0;
+        public long ExpAfterLogin { get; set; } = 0;
         public int SP { get; set; }
         public override int MaxHP { get; set; }
         public override double CurHP { get; set; }

@@ -14,10 +14,10 @@ namespace L2dotNET.GameService.tables
         private static readonly ILog Log = LogManager.GetLogger(typeof(CharTemplateTable));
 
         private static volatile CharTemplateTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
-        private Dictionary<int, PcTemplate> templates = new Dictionary<int, PcTemplate>();
-        public Dictionary<int, PcTemplate> Templates { get { return templates; } }
+        public Dictionary<int, PcTemplate> Templates { get; } = new Dictionary<int, PcTemplate>();
+
         public static CharTemplateTable Instance
         {
             get
@@ -74,7 +74,7 @@ namespace L2dotNET.GameService.tables
                                 break;
                         }
                         PcTemplate pcTempl = new PcTemplate(classId, set);
-                        templates.Add((int)pcTempl.ClassId.Id, pcTempl);
+                        Templates.Add((int)pcTempl.ClassId.Id, pcTempl);
                         
                     }
 
@@ -82,17 +82,17 @@ namespace L2dotNET.GameService.tables
 
 
             }
-            Log.Info($"Loaded { templates.Count } character templates.");
+            Log.Info($"Loaded { Templates.Count } character templates.");
         }
 
         public PcTemplate GetTemplate(ClassIds classId)
         {
-            return templates[(int)classId];
+            return Templates[(int)classId];
         }
 
         public PcTemplate GetTemplate(int classId)
         {
-            return templates[classId];
+            return Templates[classId];
         }
 
     }

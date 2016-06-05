@@ -56,7 +56,9 @@ namespace L2dotNET.GameService.model.inventory
         public int[][] _paperdoll = new int[EQUIPITEM_Max][];
         public int[] _paperdollVisual = new int[EQUIPITEM_Max];
 
-        private byte PDOLL_ID = 0, PDOLL_OBJID = 1, PDOLL_AUGMENT = 2;
+        private readonly byte PDOLL_ID = 0;
+        private readonly byte PDOLL_OBJID = 1;
+        private readonly byte PDOLL_AUGMENT = 2;
 
         public L2Player _owner;
 

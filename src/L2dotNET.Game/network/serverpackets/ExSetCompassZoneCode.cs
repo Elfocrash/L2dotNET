@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.network.l2send
         public static int PVPZONE           = 0x0E;
         public static int GENERALZONE       = 0x0F;
 
-        private int ZoneCode;
+        private readonly int ZoneCode;
         public ExSetCompassZoneCode(int type)
         {
             ZoneCode = type;

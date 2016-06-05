@@ -5,9 +5,9 @@ namespace L2dotNET.GameService.network.l2send
 {
     class RecipeBookItemList : GameServerNetworkPacket
     {
-        private int _type;
-        private int _mp;
-        private List<L2Recipe> _book;
+        private readonly int _type;
+        private readonly int _mp;
+        private readonly List<L2Recipe> _book;
         public RecipeBookItemList(L2Player player, int type)
         {
             _type = type;

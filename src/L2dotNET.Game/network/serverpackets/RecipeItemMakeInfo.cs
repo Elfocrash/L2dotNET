@@ -4,11 +4,11 @@ namespace L2dotNET.GameService.network.l2send
 {
     class RecipeItemMakeInfo : GameServerNetworkPacket
     {
-        private int RecipeID;
-        private int Type;
-        private int CurrentMP;
-        private int MaxMP;
-        private int MakingResult;
+        private readonly int RecipeID;
+        private readonly int Type;
+        private readonly int CurrentMP;
+        private readonly int MaxMP;
+        private readonly int MakingResult;
 
         public RecipeItemMakeInfo(L2Player player, L2Recipe rec, int result)
         {

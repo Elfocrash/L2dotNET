@@ -30,9 +30,6 @@ namespace L2dotNET.GameService.Utils
 #endif
         public double W;
 
-        private static Quaternion identity = new Quaternion(0, 0, 0, 1);
-
-
         public Quaternion(double x, double y, double z, double w)
         {
             this.X = x;
@@ -50,11 +47,7 @@ namespace L2dotNET.GameService.Utils
             this.W = scalarPart;
         }
 
-        public static Quaternion Identity
-        {
-            get { return identity; }
-        }
-
+        public static Quaternion Identity { get; } = new Quaternion(0, 0, 0, 1);
 
         public static Quaternion Add(Quaternion quaternion1, Quaternion quaternion2)
         {

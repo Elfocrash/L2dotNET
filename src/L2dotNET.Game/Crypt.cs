@@ -3,7 +3,7 @@ namespace L2dotNET.GameService
 {
     class Crypt
     {
-        private byte[] _key = new byte[16];//8];
+        private readonly byte[] _key = new byte[16];//8];
         private bool enabled;
 
         public Crypt()

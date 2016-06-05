@@ -3,10 +3,10 @@ namespace L2dotNET.GameService.network.l2send
 {
     class Ride : GameServerNetworkPacket
     {
-        private int id;
-        private int bRide;
-        private int rideType;
-        private int npcID;
+        private readonly int id;
+        private readonly int bRide;
+        private readonly int rideType;
+        private readonly int npcID;
         private int x;
         private int y;
         private int z;

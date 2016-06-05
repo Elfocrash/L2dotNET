@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.network.l2send
 {
     class CharTemplates : GameServerNetworkPacket
     {
-        private List<PcTemplate> _templates;
+        private readonly List<PcTemplate> _templates;
         public CharTemplates(List<PcTemplate> templates)
         {
             _templates = templates;
