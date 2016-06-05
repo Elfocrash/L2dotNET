@@ -4,18 +4,25 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.ServiceProcess;
 using System.Threading;
+using log4net;
 
 namespace L2dotNET.Repositories.Utils
 {
     public static class HostCheck
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(HostCheck));
+
         public static bool IsPingSuccessful(string host, int timeoutMs)
         {
             try
             {
-                return new Ping().Send(host, timeoutMs, new byte[1]).Status == IPStatus.Success;
+                var pingReply = new Ping().Send(host, timeoutMs, new byte[1]);
+                return pingReply != null && pingReply.Status == IPStatus.Success;
             }
-            catch { }
+            catch (Exception ex)
+            {
+                log.Error($"HostCheck: IsPingSuccessful: {ex.Message}");
+            }
             return false;
         }
 
@@ -34,15 +41,16 @@ namespace L2dotNET.Repositories.Utils
                     // is localhost
                     if (IPAddress.IsLoopback(hostIP))
                         return true;
+
                     // is local address
-                    foreach (IPAddress localIP in localIPs)
-                    {
-                        if (hostIP.Equals(localIP))
-                            return true;
-                    }
+                    if (localIPs.Contains(hostIP))
+                        return true;
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                log.Error($"HostCheck: IsLocalIPAddress: {ex.Message}");
+            }
             return false;
         }
 
@@ -52,7 +60,10 @@ namespace L2dotNET.Repositories.Utils
             {
                 return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName));
             }
-            catch { }
+            catch (Exception ex)
+            {
+                log.Error($"HostCheck: ServiceExists: {ex.Message}");
+            }
             return false;
         }
 
@@ -62,7 +73,10 @@ namespace L2dotNET.Repositories.Utils
             {
                 return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName) && service.Status == ServiceControllerStatus.Running);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                log.Error($"HostCheck: IsServiceRunning: {ex.Message}");
+            }
             return false;
         }
 
@@ -84,7 +98,10 @@ namespace L2dotNET.Repositories.Utils
                         service.Start();
                         service.WaitForStatus(ServiceControllerStatus.Running, timeout);
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        log.Error($"HostCheck: StartService: {ex.Message}");
+                    }
                     break;
                 default:
                     Thread.Sleep(timeoutMs);

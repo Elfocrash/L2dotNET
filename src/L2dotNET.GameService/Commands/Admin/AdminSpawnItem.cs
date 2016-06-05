@@ -1,9 +1,13 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using System;
+using log4net;
+using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Commands.Admin
 {
     class AdminSpawnItem : AAdminCommand
     {
+        private readonly ILog log = LogManager.GetLogger(typeof(AAdminCommand));
+
         public AdminSpawnItem()
         {
             Cmd = "summon";
@@ -20,7 +24,11 @@ namespace L2dotNET.GameService.Commands.Admin
             {
                 count = int.Parse(alias.Split(' ')[2]);
             }
-            catch { }
+            catch (Exception e)
+            {
+                log.Error($"AdminSpawnItem: {e.Message}");
+            }
+
             admin.Inventory.addItem(id, count, true, true);
         }
     }

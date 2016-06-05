@@ -141,7 +141,10 @@ namespace L2dotNET.LoginService.GSCommunication
                 nstream.Close();
                 client.Close();
             }
-            catch { }
+            catch (Exception e)
+            {
+                log.Error($"ServerThread: {e.Message}");
+            }
 
             activeInGame.Clear();
         }

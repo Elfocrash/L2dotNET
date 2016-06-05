@@ -164,7 +164,10 @@ namespace L2dotNET.GameService.Network.LoginAuth
                 nstream.Close();
                 lclient.Close();
             }
-            catch { }
+            catch (Exception e)
+            {
+                log.Error($"AuthThread: {e.Message}");
+            }
         }
 
         public void loginOk(string code)

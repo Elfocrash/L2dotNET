@@ -4165,6 +4165,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
             PARTY_LOOT_CHANGE_WAS_CANCELLED = 3137,
             ///<summary>Party loot was changed to "$s1".</summary>
             PARTY_LOOT_WAS_CHANGED_TO_S1 = 3138,
+            ///<summary>The crest was successfully registered.</summary>
+            CLAN_CREST_WAS_SUCCESFULLY_REGISTERED = 3140,
             ///<summary>$c1 is set to refuse party requests and cannot receive a party request.</summary>
             C1_IS_SET_TO_REFUSE_PARTY_REQUESTS = 3168,
 
