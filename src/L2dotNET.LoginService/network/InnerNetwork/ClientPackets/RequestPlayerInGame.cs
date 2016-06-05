@@ -7,7 +7,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
     {
         private readonly string account;
         private readonly byte status;
-        private ServerThread thread;
+        private readonly ServerThread thread;
 
         public RequestPlayerInGame(Packet p, ServerThread server)
         {

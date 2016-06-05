@@ -2,7 +2,6 @@
 using System.IO;
 using System.Xml;
 using log4net;
-using L2dotNET.GameService.Network;
 using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Managers

@@ -718,7 +718,7 @@ namespace L2dotNET.GameService.World
                     }
                 }
             }
-            
+
             //if (!isInWater())
             //{
             //    if (_waterTimer == null)

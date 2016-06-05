@@ -199,7 +199,6 @@ namespace L2dotNET.GameService.Model.Player
         public int getPaperdollObjectId(int p)
         {
             return Inventory.getPaperdollObjectId(p);
-            ;
         }
 
         public int getPaperdollItemId(int p)

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using L2dotNET.GameService.Templates;
@@ -46,14 +45,11 @@ namespace L2dotNET.Tests
                     }
                 }
             }
-            //catch (Exception e)
-            //{
-            //    //_log.log(Level.SEVERE, "NpcTable: Error parsing NPC templates : ", e);
-            //}
-            finally
-            {
-                
-            }
+                //catch (Exception e)
+                //{
+                //    //_log.log(Level.SEVERE, "NpcTable: Error parsing NPC templates : ", e);
+                //}
+            finally { }
         }
     }
 }

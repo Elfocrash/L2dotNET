@@ -25,7 +25,7 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
         public bool UnlockNpc = false;
 
         public override void broadcastUserInfo()
-        {   
+        {
             foreach (L2Object obj in knownObjects.Values)
                 if (obj is L2Player)
                     obj.sendPacket(new StaticObject(this));
