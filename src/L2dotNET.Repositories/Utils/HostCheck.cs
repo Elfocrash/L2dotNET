@@ -16,7 +16,7 @@ namespace L2dotNET.Repositories.Utils
         {
             try
             {
-                var pingReply = new Ping().Send(host, timeoutMs, new byte[1]);
+                PingReply pingReply = new Ping().Send(host, timeoutMs, new byte[1]);
                 return pingReply != null && pingReply.Status == IPStatus.Success;
             }
             catch (Exception ex)
