@@ -45,10 +45,6 @@ namespace L2dotNET.GameService.network.l2recv
 
             AnnouncementManager.Instance.OnEnter(player);
 
-            if (player.TelbookLimit > 0)
-                player.sendPacket(new ExGetBookMarkInfo(player.TelbookLimit, player.Telbook));
-
-            //навешиваем статы уже одетых предметов
             foreach (L2Item item in player.Inventory.Items.Values)
             {
                 if (item._isEquipped == 0)
@@ -59,7 +55,6 @@ namespace L2dotNET.GameService.network.l2recv
 
             player.StartRegeneration();
            // player.sendItemList(false);
-            //player.Vitality = 20000;
             player.sendPacket(new FriendList());
             player.sendQuestList();
             player.updateSkillList();

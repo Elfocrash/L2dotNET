@@ -35,8 +35,6 @@ namespace L2dotNET.GameService.model.items
 
         public void Initialize()
         {
-            register(new TeleportBooks());
-            register(new BottlesOfSouls());
             register(new EnchantScrolls());
             register(new Calculator());
 

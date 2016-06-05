@@ -145,10 +145,8 @@
     <Compile Include="Model\items\Capsule.cs" />
     <Compile Include="Model\items\cursed\CursedWeapon.cs" />
     <Compile Include="Model\items\cursed\CursedWeapons.cs" />
-    <Compile Include="Model\items\effects\BottlesOfSouls.cs" />
     <Compile Include="Model\items\effects\Calculator.cs" />
     <Compile Include="Model\items\effects\EnchantScrolls.cs" />
-    <Compile Include="Model\items\effects\TeleportBooks.cs" />
     <Compile Include="Model\items\ItemEffect.cs" />
     <Compile Include="Model\items\ItemHandler.cs" />
     <Compile Include="Model\items\ItemHandlerScript.cs" />
@@ -186,8 +184,6 @@
     <Compile Include="Model\player\L2PartyRoom.cs" />
     <Compile Include="Model\player\L2Shortcut.cs" />
     <Compile Include="Model\player\partials\db_InstanceReuse.cs" />
-    <Compile Include="Model\player\telebooks\TelBook_Mark.cs" />
-    <Compile Include="Model\player\telebooks\TeleportBook.cs" />
     <Compile Include="Model\player\transformation\data\_00001_1.cs" />
     <Compile Include="Model\player\transformation\data\_00260_final_form_air.cs" />
     <Compile Include="Model\player\transformation\data\_00126_treykan.cs" />
@@ -380,11 +376,6 @@
     <Compile Include="network\clientpackets\RequestDispel.cs" />
     <Compile Include="network\clientpackets\RequestCursedWeaponList.cs" />
     <Compile Include="network\clientpackets\RequestDominionInfo.cs" />
-    <Compile Include="network\clientpackets\RequestTeleportBookMark.cs" />
-    <Compile Include="network\clientpackets\RequestDeleteBookMarkSlot.cs" />
-    <Compile Include="network\clientpackets\RequestModifyBookMarkSlot.cs" />
-    <Compile Include="network\clientpackets\RequestSaveBookMarkSlot.cs" />
-    <Compile Include="network\clientpackets\RequestBookMarkSlotInfo.cs" />
     <Compile Include="network\clientpackets\ClanAPI\RequestWithdrawalPledge.cs" />
     <Compile Include="network\clientpackets\ClanAPI\RequestExSetPledgeCrestLarge.cs" />
     <Compile Include="network\clientpackets\ClanAPI\RequestSetPledgeCrest.cs" />
@@ -500,7 +491,6 @@
     <Compile Include="network\serverpackets\ExCursedWeaponList.cs" />
     <Compile Include="network\serverpackets\ExShowOwnthingPos.cs" />
     <Compile Include="network\serverpackets\ExReplyDominionInfo.cs" />
-    <Compile Include="network\serverpackets\ExGetBookMarkInfo.cs" />
     <Compile Include="network\serverpackets\SunSet.cs" />
     <Compile Include="network\serverpackets\PledgeShowMemberListDeleteAll.cs" />
     <Compile Include="network\serverpackets\PledgeReceiveSubPledgeCreated.cs" />

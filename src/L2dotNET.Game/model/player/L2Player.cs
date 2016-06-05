@@ -10,7 +10,6 @@ using L2dotNET.GameService.model.playable;
 using L2dotNET.GameService.model.player;
 using L2dotNET.GameService.model.player.ai;
 using L2dotNET.GameService.model.player.partials;
-using L2dotNET.GameService.model.player.telebooks;
 using L2dotNET.GameService.model.player.transformation;
 using L2dotNET.GameService.model.skills2;
 using L2dotNET.GameService.model.skills2.effects;
@@ -1993,48 +1992,9 @@ namespace L2dotNET.GameService
             db_restoreSkills();
             db_restoreQuests();
             db_restoreRecipes();
-            db_restoreTelbooks();
             // db_restoreShortcuts(); elfo to be added
 
             IsRestored = true;
-        }
-
-        public TeleportBook Telbook;
-        public byte TelbookLimit = 0, TelbookLimitMax = 25;
-        public bool IsFlying;
-
-        public void db_restoreTelbooks()
-        {
-            if (TelbookLimit == 0)
-                return;
-
-            //MySqlConnection connection = SQLjec.getInstance().conn();
-            //MySqlCommand cmd = connection.CreateCommand();
-
-            //connection.Open();
-
-            //cmd.CommandText = "SELECT * FROM user_telbooks WHERE ownerId=" + ObjID;
-            //cmd.CommandType = CommandType.Text;
-
-            //MySqlDataReader reader = cmd.ExecuteReader();
-
-            //Telbook = new TeleportBook();
-            //while (reader.Read())
-            //{
-            //    TelBook_Mark mark = new TelBook_Mark();
-            //    mark.id = (byte)reader.GetInt16("id");
-            //    mark.x = reader.GetInt32("locx");
-            //    mark.y = reader.GetInt32("locy");
-            //    mark.z = reader.GetInt32("locz");
-            //    mark.icon = reader.GetInt32("icon");
-            //    mark.name = reader.GetString("name");
-            //    mark.tag = reader.GetString("tag");
-
-            //    Telbook.bookmarks.Add(mark.id, mark);
-            //}
-
-            //reader.Close();
-            //connection.Close();
         }
 
         public void db_restoreShortcuts()
