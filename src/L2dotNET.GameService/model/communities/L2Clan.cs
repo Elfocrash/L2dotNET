@@ -120,7 +120,8 @@ namespace L2dotNET.GameService.Model.Communities
         {
             player.Clan = this;
 
-            foreach (ClanMember m in members.Where(m => m.ObjID == player.ObjID)) {
+            foreach (ClanMember m in members.Where(m => m.ObjID == player.ObjID))
+            {
                 m.online = 1;
                 m.Level = player.Level;
                 m.Target = player;
@@ -191,7 +192,7 @@ namespace L2dotNET.GameService.Model.Communities
         {
             SystemMessage.SystemMessageId msg;
             msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
-            
+
             CrestPicture = picture;
 
             if (size == 0)
@@ -349,7 +350,8 @@ namespace L2dotNET.GameService.Model.Communities
             sm.AddPlayerName(player.Name);
             broadcastToOnline(sm);
 
-            foreach (ClanMember cm in members.Where(cm => cm.ObjID == player.ObjID)) {
+            foreach (ClanMember cm in members.Where(cm => cm.ObjID == player.ObjID))
+            {
                 lock (members)
                     members.Remove(cm);
 

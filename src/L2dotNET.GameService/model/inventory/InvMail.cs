@@ -41,7 +41,8 @@ namespace L2dotNET.GameService.Model.Inventory
                                 nulled.Add(itemd[0]);
                                 if (ex)
                                 {
-                                    foreach (L2Item itp in Items.Values.Where(itp => itp.Template.ItemID == item.Template.ItemID)) {
+                                    foreach (L2Item itp in Items.Values.Where(itp => itp.Template.ItemID == item.Template.ItemID))
+                                    {
                                         itp.Count += item.Count;
                                         itp.sql_update();
                                         break;
@@ -65,7 +66,8 @@ namespace L2dotNET.GameService.Model.Inventory
 
                                 if (ex)
                                 {
-                                    foreach (L2Item itp in Items.Values.Where(itp => itp.Template.ItemID == item.Template.ItemID)) {
+                                    foreach (L2Item itp in Items.Values.Where(itp => itp.Template.ItemID == item.Template.ItemID))
+                                    {
                                         itp.Count += itemd[1];
                                         itp.sql_update();
                                         break;
@@ -139,7 +141,8 @@ namespace L2dotNET.GameService.Model.Inventory
                                 nulled.Add(itemd[0]);
                                 if (ex)
                                 {
-                                    foreach (L2Item itp in player.getAllItems().Where(itp => itp.Template.ItemID == item.Template.ItemID)) {
+                                    foreach (L2Item itp in player.getAllItems().Where(itp => itp.Template.ItemID == item.Template.ItemID))
+                                    {
                                         itp.Count += item.Count;
                                         itp.sql_update();
                                         if (update)
@@ -165,7 +168,8 @@ namespace L2dotNET.GameService.Model.Inventory
                                 item.Count -= itemd[1];
                                 if (ex)
                                 {
-                                    foreach (L2Item itp in player.getAllItems().Where(itp => itp.Template.ItemID == item.Template.ItemID)) {
+                                    foreach (L2Item itp in player.getAllItems().Where(itp => itp.Template.ItemID == item.Template.ItemID))
+                                    {
                                         itp.Count += itemd[1];
                                         itp.sql_update();
                                         if (update)
