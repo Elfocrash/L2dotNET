@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using log4net;
-using L2dotNET.GameService.Templates;
 using System.Xml;
+using log4net;
 using L2dotNET.GameService.templates;
+using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.tables
 {
@@ -13,9 +13,9 @@ namespace L2dotNET.GameService.tables
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(NpcTable));
         private static volatile NpcTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
-        Dictionary<int, NpcTemplate> npcs = new Dictionary<int, NpcTemplate>();
+        private readonly Dictionary<int, NpcTemplate> npcs = new Dictionary<int, NpcTemplate>();
 
         public static NpcTable Instance
         {
@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.tables
 
         public NpcTemplate GetTemplateByName(string name)
         {
-            foreach(NpcTemplate npcTemplate in npcs.Values)
+            foreach (NpcTemplate npcTemplate in npcs.Values)
             {
                 if (npcTemplate.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                     return npcTemplate;
@@ -84,14 +84,12 @@ namespace L2dotNET.GameService.tables
                             set.Set("name", attrs.GetNamedItem("name").Value);
                             set.Set("title", attrs.GetNamedItem("title").Value);
 
-
                             npcs.Add(npcId, new NpcTemplate(set));
-
                         }
                         set.Clear();
                     }
                 }
-                log.Info($"Loaded { npcs.Count} npcs.");
+                log.Info($"Loaded {npcs.Count} npcs.");
             }
             catch (Exception e)
             {

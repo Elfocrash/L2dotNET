@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.GameService.tables.admin_bypass;
 using log4net;
-using L2dotNET.GameService.Commands;
 using L2dotNET.GameService.Command;
+using L2dotNET.GameService.Commands;
+using L2dotNET.GameService.tables.admin_bypass;
 
 namespace L2dotNET.GameService.Handlers
 {
     public class AdminCommandHandler
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(AdminCommandHandler));
-        private SortedList<string, AAdminCommand> commands = new SortedList<string, AAdminCommand>();
+        private readonly SortedList<string, AAdminCommand> commands = new SortedList<string, AAdminCommand>();
         private ABTeleport Teleports;
 
         private static volatile AdminCommandHandler instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static AdminCommandHandler Instance
         {
@@ -74,7 +74,7 @@ namespace L2dotNET.GameService.Handlers
             {
                 processor.Use(admin, alias);
             }
-            catch(Exception sss)
+            catch (Exception sss)
             {
                 admin.sendMessage("Probably syntax eror.");
                 log.Error(sss);
@@ -86,10 +86,7 @@ namespace L2dotNET.GameService.Handlers
             commands.Add(processor.Cmd, processor);
         }
 
-        public AdminCommandHandler()
-        {
-            
-        }
+        public AdminCommandHandler() { }
 
         public void ProcessBypass(L2Player player, int ask, int reply)
         {

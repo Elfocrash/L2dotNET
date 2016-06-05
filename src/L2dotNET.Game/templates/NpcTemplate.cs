@@ -1,16 +1,13 @@
-﻿using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.templates;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.templates;
 
 namespace L2dotNET.GameService.Templates
 {
     public class NpcTemplate : CharTemplate
     {
-        public int NpcId {get; set;}
+        public int NpcId { get; set; }
         public int IdTemplate { get; set; }
         public string Type { get; set; }
         public string Name { get; set; }
@@ -61,7 +58,7 @@ namespace L2dotNET.GameService.Templates
             Type = set.GetString("type");
             Name = set.GetString("name");
             Title = set.GetString("title", "");
-            CantBeChampionMonster = Title.Equals("Quest Monster",StringComparison.InvariantCultureIgnoreCase);
+            CantBeChampionMonster = Title.Equals("Quest Monster", StringComparison.InvariantCultureIgnoreCase);
             Level = set.GetByte("level", (byte)1);
             Exp = set.GetInt("exp", 0);
             Sp = set.GetInt("sp", 0);
@@ -81,38 +78,37 @@ namespace L2dotNET.GameService.Templates
                 race = (Race)set.GetInt("raceId");
 
             //_aiType = set.GetEnumerator(new "aiType", AIType.DEFAULT);
-		
-		    SsCount = set.GetInt("ssCount", 0);
-		    SsRate = set.GetInt("ssRate", 0);
-		    SpsCount = set.GetInt("spsCount", 0);
-		    SpsRate = set.GetInt("spsRate", 0);
-		    AggroRange = set.GetInt("aggro", 0);
-		
-		    if (set.ContainsKey("clan"))
-		    {
-			    Clans = set.GetStringArray("clan");
-			    ClanRange = set.GetInt("clanRange");
-			
-			    if (set.ContainsKey("ignoredIds"))
-				    IgnoredIds = set.GetIntegerArray("ignoredIds");
-		    }
 
-                CanMove = set.GetBool("canMove", true);
-		        IsSeedable = set.GetBool("seedable", false);
-		
-		       // _categories = set.getList("drops");
-		       // _minions = set.getList("minions");
-		
-		        //if (set.containsKey("teachTo"))
-		        //{
-			    // for (int classId : set.getIntegerArray("teachTo"))
+            SsCount = set.GetInt("ssCount", 0);
+            SsRate = set.GetInt("ssRate", 0);
+            SpsCount = set.GetInt("spsCount", 0);
+            SpsRate = set.GetInt("spsRate", 0);
+            AggroRange = set.GetInt("aggro", 0);
 
-                //addTeachInfo(ClassId.Values.classId]);
-                //}
+            if (set.ContainsKey("clan"))
+            {
+                Clans = set.GetStringArray("clan");
+                ClanRange = set.GetInt("clanRange");
 
+                if (set.ContainsKey("ignoredIds"))
+                    IgnoredIds = set.GetIntegerArray("ignoredIds");
+            }
 
-                //addSkills(set.getList("skills"));
-	        }
+            CanMove = set.GetBool("canMove", true);
+            IsSeedable = set.GetBool("seedable", false);
+
+            // _categories = set.getList("drops");
+            // _minions = set.getList("minions");
+
+            //if (set.containsKey("teachTo"))
+            //{
+            // for (int classId : set.getIntegerArray("teachTo"))
+
+            //addTeachInfo(ClassId.Values.classId]);
+            //}
+
+            //addSkills(set.getList("skills"));
+        }
     }
 
     public enum AIType
@@ -150,6 +146,5 @@ namespace L2dotNET.GameService.Templates
         SIEGEWEAPON,
         DEFENDINGARMY,
         MERCENARIE
-
     }
 }

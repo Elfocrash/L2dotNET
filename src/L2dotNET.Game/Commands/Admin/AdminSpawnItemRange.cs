@@ -1,6 +1,5 @@
 ﻿using L2dotNET.GameService.Commands;
 using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
 
 namespace L2dotNET.GameService.Command
@@ -24,7 +23,7 @@ namespace L2dotNET.GameService.Command
             }
 
             bool x = false;
-            for(int i = idmin; i <= idmax; i++)
+            for (int i = idmin; i <= idmax; i++)
             {
                 ItemTemplate item = ItemTable.Instance.GetItem(i);
 

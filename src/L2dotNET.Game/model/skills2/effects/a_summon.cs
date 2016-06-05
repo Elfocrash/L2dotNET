@@ -1,6 +1,5 @@
 ﻿using L2dotNET.GameService.model.playable;
 using L2dotNET.GameService.network.l2send;
-using L2dotNET.GameService.tables;
 
 namespace L2dotNET.GameService.model.skills2.effects
 {

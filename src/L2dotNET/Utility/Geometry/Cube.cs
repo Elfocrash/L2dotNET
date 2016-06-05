@@ -1,18 +1,13 @@
 ﻿using L2dotNET.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.Utility
 {
     public class Cube : Square
     {
         // cube origin coordinates
-        private int _z;
+        private readonly int _z;
 
-        public Cube(int x, int y, int z, int a) : base(x,y,a)
+        public Cube(int x, int y, int z, int a) : base(x, y, a)
         {
             _z = z;
         }

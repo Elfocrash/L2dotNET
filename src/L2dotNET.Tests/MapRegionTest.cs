@@ -1,20 +1,16 @@
-﻿using L2dotNET.GameService.templates;
-using L2dotNET.GameService.Templates;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
+using L2dotNET.GameService.templates;
+using L2dotNET.GameService.Templates;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L2dotNET.Tests
 {
     [TestClass]
     public class MapRegionTest
     {
-
         [TestMethod]
         public void Test()
         {
@@ -45,9 +41,7 @@ namespace L2dotNET.Tests
                             set.Set("name", attrs.GetNamedItem("name").Value);
                             set.Set("title", attrs.GetNamedItem("title").Value);
 
-
                             _npcs.Add(npcId, new NpcTemplate(set));
-
                         }
                         set.Clear();
                     }

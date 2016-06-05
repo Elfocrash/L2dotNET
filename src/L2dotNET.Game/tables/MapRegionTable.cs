@@ -1,14 +1,9 @@
-﻿using System.Data;
-using MySql.Data.MySqlClient;
-using System.Collections.Generic;
-using System.IO;
-using System;
+﻿using System;
 using System.Xml;
-using L2dotNET.GameService.model;
-using L2dotNET.GameService.world;
-using L2dotNET.GameService.model.zones.Type;
-using L2dotNET.GameService.Enums;
 using log4net;
+using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.model.zones.Type;
+using L2dotNET.GameService.world;
 using L2dotNET.Models;
 
 namespace L2dotNET.GameService.tables
@@ -17,20 +12,16 @@ namespace L2dotNET.GameService.tables
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(MapRegionTable));
         private static volatile MapRegionTable instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
-        private static int REGIONS_X = 11;
-        private static int REGIONS_Y = 16;
+        private static readonly int REGIONS_X = 11;
+        private static readonly int REGIONS_Y = 16;
 
-        private static int[,] _regions = new int[REGIONS_X, REGIONS_Y];
+        private static readonly int[,] _regions = new int[REGIONS_X, REGIONS_Y];
 
-        private static int[] _castleIdArray =
-        { 0, 0, 0, 0, 0, 1, 0, 2, 3, 4, 5, 0, 0, 6, 8, 7, 9, 0, 0 };
+        private static int[] _castleIdArray = { 0, 0, 0, 0, 0, 1, 0, 2, 3, 4, 5, 0, 0, 6, 8, 7, 9, 0, 0 };
 
-        public MapRegionTable()
-        {
-
-        }
+        public MapRegionTable() { }
 
         public static MapRegionTable Instance
         {
@@ -81,7 +72,7 @@ namespace L2dotNET.GameService.tables
             }
             catch (Exception e)
             {
-                log.Error($"Exception in GetMapRegion: { e }");
+                log.Error($"Exception in GetMapRegion: {e}");
                 return 0;
             }
         }
@@ -229,22 +220,22 @@ namespace L2dotNET.GameService.tables
                 case 0: // TI
                     return GetTown(2);
 
-                case 1:// Elven
+                case 1: // Elven
                     return GetTown((race == ClassRace.DARK_ELF) ? 1 : 3);
 
-                case 2:// DE
+                case 2: // DE
                     return GetTown((race == ClassRace.ELF) ? 3 : 1);
 
                 case 3: // Orc
                     return GetTown(4);
 
-                case 4:// Dwarven
+                case 4: // Dwarven
                     return GetTown(6);
 
-                case 5:// Gludio
+                case 5: // Gludio
                     return GetTown(7);
 
-                case 6:// Gludin
+                case 6: // Gludin
                     return GetTown(5);
 
                 case 7: // Dion
@@ -275,10 +266,10 @@ namespace L2dotNET.GameService.tables
                 case 16: // Schuttgart
                     return GetTown(17);
 
-                case 17:// Floran
+                case 17: // Floran
                     return GetTown(16);
 
-                case 18:// Primeval Isle
+                case 18: // Primeval Isle
                     return GetTown(19);
             }
             return GetTown(16); // Default to floran
@@ -291,22 +282,22 @@ namespace L2dotNET.GameService.tables
                 case 0: // TI
                     return GetTown(2);
 
-                case 1:// Elven
+                case 1: // Elven
                     return GetTown(3);
 
-                case 2:// DE
+                case 2: // DE
                     return GetTown(1);
 
                 case 3: // Orc
                     return GetTown(4);
 
-                case 4:// Dwarven
+                case 4: // Dwarven
                     return GetTown(6);
 
-                case 5:// Gludio
+                case 5: // Gludio
                     return GetTown(7);
 
-                case 6:// Gludin
+                case 6: // Gludin
                     return GetTown(5);
 
                 case 7: // Dion
@@ -337,10 +328,10 @@ namespace L2dotNET.GameService.tables
                 case 16: // Schuttgart
                     return GetTown(17);
 
-                case 17:// Floran
+                case 17: // Floran
                     return GetTown(16);
 
-                case 18:// Primeval Isle
+                case 18: // Primeval Isle
                     return GetTown(19);
             }
             return GetTown(16); // Default to floran
@@ -369,13 +360,13 @@ namespace L2dotNET.GameService.tables
 
                 case 8: // Giran
                 case 9: // Oren
-                case 10:// Aden
+                case 10: // Aden
                 case 11: // HV
                     return GetTown(11);
 
                 case 12: // Giran Harbour
                 case 13: // Heine
-                case 17:// Floran
+                case 17: // Floran
                     return GetTown(16);
 
                 case 14: // Rune
@@ -405,7 +396,7 @@ namespace L2dotNET.GameService.tables
 
                 case 3: // Orc
                 case 4: // Dwarven
-                case 16:// Schuttgart
+                case 16: // Schuttgart
                     return 9;
 
                 case 5: // Gludio

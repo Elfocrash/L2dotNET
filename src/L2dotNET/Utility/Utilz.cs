@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.Utility
 {
@@ -38,7 +35,8 @@ namespace L2dotNET.Utility
             return m_StrBuilder.ToString();
         }
 
-        private static DateTime year1970 = new DateTime(1970, 1, 1);
+        private static readonly DateTime year1970 = new DateTime(1970, 1, 1);
+
         public static int CurrentSeconds()
         {
             TimeSpan ts = year1970 - DateTime.Now;

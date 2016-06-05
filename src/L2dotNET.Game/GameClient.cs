@@ -1,24 +1,27 @@
-﻿using L2Crypt;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using log4net;
+using L2Crypt;
 using L2dotNET.GameService.network;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.world;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;
-using log4net;
 using Ninject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 
 namespace L2dotNET.GameService
 {
     public class GameClient
     {
         [Inject]
-        public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
+        public IPlayerService playerService
+        {
+            get { return GameServer.Kernel.Get<IPlayerService>(); }
+        }
 
         private static readonly ILog log = LogManager.GetLogger(typeof(GameClient));
 
@@ -26,7 +29,7 @@ namespace L2dotNET.GameService
         public TcpClient _client;
         public NetworkStream _stream;
         private byte[] _buffer;
-        private GameCrypt _crypt;
+        private readonly GameCrypt _crypt;
         public byte[] _blowfishKey;
         public ScrambledKeyPair _scrambledPair;
 
@@ -36,11 +39,12 @@ namespace L2dotNET.GameService
         public int Protocol;
         public bool IsTerminated;
 
-        public long TrafficUp = 0, TrafficDown = 0;
+        public long TrafficUp = 0,
+                    TrafficDown = 0;
 
         public GameClient(TcpClient tcpClient)
         {
-            log.Info($"connection from { tcpClient.Client.RemoteEndPoint }");
+            log.Info($"connection from {tcpClient.Client.RemoteEndPoint}");
             _client = tcpClient;
             _stream = tcpClient.GetStream();
             _address = tcpClient.Client.RemoteEndPoint;
@@ -70,7 +74,6 @@ namespace L2dotNET.GameService
 
             if (sbp is CharacterSelectionInfo)
             {
-
                 // byte[] st = ToByteArray();
                 //foreach (byte s in data)
                 //    log.Info($"{ s.ToString("x2") } ");
@@ -83,7 +86,7 @@ namespace L2dotNET.GameService
             }
             catch
             {
-                log.Info($"client { AccountName } terminated.");
+                log.Info($"client {AccountName} terminated.");
                 termination();
             }
         }
@@ -172,10 +175,8 @@ namespace L2dotNET.GameService
         }
 
         public void RemoveAccountCharAndResetSlotIndex(int charSlot)
-        {   
-            AccountChars = AccountChars.Where(filter => filter.CharSlot != charSlot)
-                                       .OrderBy(orderby => orderby.CharSlot)
-                                       .ToList();
+        {
+            AccountChars = AccountChars.Where(filter => filter.CharSlot != charSlot).OrderBy(orderby => orderby.CharSlot).ToList();
 
             for (int i = 0; i < AccountChars.Count; i++)
                 AccountChars[i].CharSlot = i;

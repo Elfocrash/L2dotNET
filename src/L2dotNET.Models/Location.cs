@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace L2dotNET.Models
+﻿namespace L2dotNET.Models
 {
     public class Location
     {
@@ -14,9 +8,18 @@ namespace L2dotNET.Models
         private volatile int y;
         private volatile int z;
 
-        public int X { get { return x; } }
-        public int Y { get { return y; } }
-        public int Z { get { return z; } }
+        public int X
+        {
+            get { return x; }
+        }
+        public int Y
+        {
+            get { return y; }
+        }
+        public int Z
+        {
+            get { return z; }
+        }
 
         public Location(int x, int y, int z)
         {

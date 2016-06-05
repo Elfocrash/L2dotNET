@@ -52,18 +52,12 @@ namespace L2dotNET.GameService.world
         public virtual void NotifyAction(L2Player player) { }
 
         public virtual void StartAI() { }
-        public virtual void AddKnownObject(L2Object obj)
-        {
-        }
 
-        public virtual void RemoveKnownObject(L2Object obj)
-        {
-        }
+        public virtual void AddKnownObject(L2Object obj) { }
 
-        public virtual void SendInfo(L2Player player)
-        {
+        public virtual void RemoveKnownObject(L2Object obj) { }
 
-        }
+        public virtual void SendInfo(L2Player player) { }
 
         public virtual void onSpawn()
         {
@@ -119,7 +113,7 @@ namespace L2dotNET.GameService.world
 
         public void getKnowns(int range, int height, bool zones)
         {
-            L2World.Instance.getObjects();// GetKnowns(this, range, height, zones);
+            L2World.Instance.getObjects(); // GetKnowns(this, range, height, zones);
         }
 
         public virtual List<L2Player> GetKnownPlayers()
@@ -132,7 +126,7 @@ namespace L2dotNET.GameService.world
 
             foreach (L2WorldRegion reg in region.GetSurroundingRegions())
             {
-                foreach (L2Player obj in L2World.Instance.GetPlayers())//reg.getObjects()
+                foreach (L2Player obj in L2World.Instance.GetPlayers()) //reg.getObjects()
                 {
                     if (obj == this)
                         continue;
@@ -176,32 +170,32 @@ namespace L2dotNET.GameService.world
                     }
 
                     if (this is L2Player && region.IsEmptyNeighborhood())
-					region.SetActive(false);
+                        region.SetActive(false);
                 }
             }
 
-		        foreach (L2WorldRegion region in newAreas)
-		        {
-			        if (!oldAreas.Contains(region))
-			        {
-				        // Update all objects.
-				        foreach (L2Object obj in region.getObjects())
-				        {
-					        if (obj == this)
-						        continue;
+            foreach (L2WorldRegion region in newAreas)
+            {
+                if (!oldAreas.Contains(region))
+                {
+                    // Update all objects.
+                    foreach (L2Object obj in region.getObjects())
+                    {
+                        if (obj == this)
+                            continue;
 
-                            obj.AddKnownObject(this);
-                            AddKnownObject(obj);
-                        }
-				
-				        // Activate the new neighbor region.
-				        if (this is L2Player)
-					        region.SetActive(true);
+                        obj.AddKnownObject(this);
+                        AddKnownObject(obj);
                     }
-                }
 
-                Region = newRegion;
-	        }
+                    // Activate the new neighbor region.
+                    if (this is L2Player)
+                        region.SetActive(true);
+                }
+            }
+
+            Region = newRegion;
+        }
 
         private void onClearing(L2Object target, bool deleteMe)
         {

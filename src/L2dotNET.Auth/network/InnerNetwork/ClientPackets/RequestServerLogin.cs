@@ -1,6 +1,4 @@
-﻿using System;
-using L2dotNET.LoginService.data;
-using L2dotNET.LoginService.gscommunication;
+﻿using L2dotNET.LoginService.gscommunication;
 using L2dotNET.LoginService.Network.OuterNetwork;
 using L2dotNET.Network;
 
@@ -8,9 +6,11 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 {
     class RequestServerLogin
     {
-        LoginClient client;
-        int login1, login2;
-        byte serverId;
+        private readonly LoginClient client;
+        private readonly int login1;
+        private readonly int login2;
+        private readonly byte serverId;
+
         public RequestServerLogin(Packet p, LoginClient client)
         {
             this.client = client;
@@ -46,7 +46,6 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 
                 client.Send(PlayOk.ToPacket(client));
                 //need to add checks to prevent double logins.
-                
             }
         }
     }

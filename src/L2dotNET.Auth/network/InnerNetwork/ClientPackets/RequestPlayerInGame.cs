@@ -5,9 +5,9 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 {
     class RequestPlayerInGame
     {
-        private string account;
-        private byte status;
-        ServerThread thread;
+        private readonly string account;
+        private readonly byte status;
+        private ServerThread thread;
 
         public RequestPlayerInGame(Packet p, ServerThread server)
         {

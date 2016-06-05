@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using log4net;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.network;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables.admin_bypass;
 using L2dotNET.GameService.tables.ndextend;
-using L2dotNET.GameService.network;
-using log4net;
 
 namespace L2dotNET.GameService.tables
 {
@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.tables
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(NpcData));
         private static volatile NpcData instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         public static NpcData Instance
         {
@@ -46,10 +46,7 @@ namespace L2dotNET.GameService.tables
         public SortedList<int, ND_shop> _shops = new SortedList<int, ND_shop>();
         private NDTeleport Teleports;
 
-        public NpcData()
-        {
-            
-        }
+        public NpcData() { }
 
         private void load()
         {
@@ -84,7 +81,7 @@ namespace L2dotNET.GameService.tables
                                     slist.items.Add(new ND_shopItem(it));
                                 }
                                 else
-                                    log.Error($"NpcData: cant find item to trade { i } on npc { shop.id }");
+                                    log.Error($"NpcData: cant find item to trade {i} on npc {shop.id}");
                             }
 
                             shop.lists.Add(slist.id, slist);
@@ -130,7 +127,6 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-
         public void RequestTeleportList(L2Npc npc, L2Player player, int groupId)
         {
             RequestTeleportList(npc, player, groupId, -1);
@@ -170,7 +166,7 @@ namespace L2dotNET.GameService.tables
             }
             catch
             {
-                log.Error($"ND:RequestTeleport cant find teleport group { type }");
+                log.Error($"ND:RequestTeleport cant find teleport group {type}");
                 player.sendActionFailed();
                 return;
             }

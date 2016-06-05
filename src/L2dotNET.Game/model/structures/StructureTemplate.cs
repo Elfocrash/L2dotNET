@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.model.npcs.decor;
 using L2dotNET.GameService.tables;
-using L2dotNET.GameService.world;
 using L2dotNET.GameService.Templates;
+using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.model.structures
 {
     public class HideoutTemplate
     {
         public int ID;
-        public string Name, Descr;
+        public string Name,
+                      Descr;
 
         public SortedList<int, L2Npc> npcs;
+
         internal void SetNpc(int id)
         {
             if (npcs == null)
                 npcs = new SortedList<int, L2Npc>();
 
-            NpcTemplate t = new NpcTemplate(new GameService.templates.StatsSet());//NpcTable.Instance.GetNpcTemplate(id);
+            NpcTemplate t = new NpcTemplate(new GameService.templates.StatsSet()); //NpcTable.Instance.GetNpcTemplate(id);
             L2Npc npc = null;
             switch (t.NpcId)
             {
@@ -32,7 +34,7 @@ namespace L2dotNET.GameService.model.structures
             }
 
             //npc.setTemplate(t);
-            if(npc != null)
+            if (npc != null)
             {
                 StructureSpawn ss = StructureTable.Instance.GetSpawn(id);
                 npc.X = ss.x;
@@ -42,7 +44,6 @@ namespace L2dotNET.GameService.model.structures
 
                 npcs.Add(t.NpcId, npc);
             }
-            
         }
 
         public void SpawnNpcs()
@@ -58,6 +59,7 @@ namespace L2dotNET.GameService.model.structures
         }
 
         public List<L2Door> doors;
+
         internal void SetDoor(int id)
         {
             if (doors == null)
@@ -69,24 +71,28 @@ namespace L2dotNET.GameService.model.structures
         }
 
         public int[] ownerLoc;
+
         internal void SetOwnerRespawn(string[] p)
         {
             ownerLoc = new int[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
         }
 
         public int[] outsideLoc;
+
         internal void SetOutsideRespawn(string[] p)
         {
             outsideLoc = new int[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
         }
 
         public int[] banishLoc;
+
         internal void SetBanishRespawn(string[] p)
         {
             banishLoc = new int[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
         }
 
         public List<int[]> zoneLoc;
+
         internal void SetZoneLoc(string[] p)
         {
             if (zoneLoc == null)
@@ -96,7 +102,5 @@ namespace L2dotNET.GameService.model.structures
         }
 
         public virtual void init() { }
-
-
     }
 }

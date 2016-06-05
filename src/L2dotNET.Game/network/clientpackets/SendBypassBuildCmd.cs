@@ -1,5 +1,4 @@
 ﻿using L2dotNET.GameService.Handlers;
-using L2dotNET.GameService.tables;
 
 namespace L2dotNET.GameService.network.l2recv
 {

@@ -7,7 +7,8 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
     class RequestLoginServPing
     {
         private string message;
-        ServerThread thread;
+        private readonly ServerThread thread;
+
         public RequestLoginServPing(Packet p, ServerThread server)
         {
             thread = server;

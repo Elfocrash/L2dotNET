@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.model.npcs.ai
 {
     class broadcasting_tower : AITemplate
     {
-        int[][] data;
+        private readonly int[][] data;
+
         public broadcasting_tower()
         {
             id = 31031;
@@ -27,8 +25,8 @@ namespace L2dotNET.GameService.model.npcs.ai
             data[11] = new int[] { 617, 631, 500, 147457, 8720, -252 };
             data[12] = new int[] { 1243, 1244, 500, 147542, -43543, -1328 };
             data[13] = new int[] { 1243, 1245, 500, 147465, -45259, -1328 };
-            data[14] = new int[] { 1420, 1421, 500, 20598, - 49113, - 300 };
-            data[15] = new int[] { 1420, 1422, 500, 18702, - 49150, - 600 };
+            data[14] = new int[] { 1420, 1421, 500, 20598, -49113, -300 };
+            data[15] = new int[] { 1420, 1422, 500, 18702, -49150, -600 };
             data[16] = new int[] { 1423, 1424, 500, 77541, -147447, 353 };
             data[17] = new int[] { 1423, 1425, 500, 77541, -149245, 353 };
             data[18] = new int[] { 619, 634, 80, 148416, 46724, -3000 };
@@ -46,7 +44,7 @@ namespace L2dotNET.GameService.model.npcs.ai
 
             foreach (int[] d in data)
             {
-                if(ar.Contains(d[0]))
+                if (ar.Contains(d[0]))
                     continue;
 
                 ar.Add(d[0]);
@@ -104,7 +102,6 @@ namespace L2dotNET.GameService.model.npcs.ai
             player.sendPacket(new ObservationMode(dx[3], dx[4], dx[5]));
         }
 
-
         private void showGroup(L2Player player, L2Npc npc, int group)
         {
             List<int[]> ar = new List<int[]>();
@@ -112,8 +109,7 @@ namespace L2dotNET.GameService.model.npcs.ai
 
             foreach (int[] d in data)
             {
-
-                if(d[0] == group)
+                if (d[0] == group)
                     ar.Add(d);
             }
 

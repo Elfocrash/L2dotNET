@@ -1,7 +1,7 @@
-﻿using log4net;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using log4net;
 
 namespace L2dotNET.LoginService.managers
 {
@@ -9,7 +9,7 @@ namespace L2dotNET.LoginService.managers
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(NetworkRedirect));
         private static volatile NetworkRedirect instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         protected List<NetRedClass> redirects = new List<NetRedClass>();
         public NetRedClass GlobalRedirection { get; set; }
@@ -33,10 +33,7 @@ namespace L2dotNET.LoginService.managers
             }
         }
 
-        public NetworkRedirect()
-        {
-
-        }
+        public NetworkRedirect() { }
 
         public void Initialize()
         {
@@ -60,14 +57,15 @@ namespace L2dotNET.LoginService.managers
                         redirects.Add(i);
                 }
             }
-            log.Info($"NetworkRedirect: { redirects.Count } redirects. Global is { (GlobalRedirection == null ? "disabled" : "enabled") }");
+            log.Info($"NetworkRedirect: {redirects.Count} redirects. Global is {(GlobalRedirection == null ? "disabled" : "enabled")}");
         }
 
         public byte[] GetRedirect(LoginClient client, short serverId)
         {
             if (GlobalRedirection != null)
             {
-                string[] a = client.Address.ToString().Split(':')[0].Split('.'), b = GlobalRedirection.mask.Split('.');
+                string[] a = client.Address.ToString().Split(':')[0].Split('.'),
+                         b = GlobalRedirection.mask.Split('.');
                 byte[] d = new byte[4];
                 for (byte c = 0; c < 4; c++)
                 {
@@ -79,7 +77,8 @@ namespace L2dotNET.LoginService.managers
                         d[c] = 1;
                     else if (b[c].Contains("/"))
                     {
-                        byte n = byte.Parse(b[c].Split('/')[0]), x = byte.Parse(b[c].Split('/')[1]);
+                        byte n = byte.Parse(b[c].Split('/')[0]),
+                             x = byte.Parse(b[c].Split('/')[1]);
                         byte t = byte.Parse(a[c]);
                         d[c] = (t >= n && t <= x) ? (byte)1 : (byte)0;
                     }
@@ -87,7 +86,7 @@ namespace L2dotNET.LoginService.managers
 
                 if (d.Min() == 1)
                 {
-                    log.Info($"Redirecting client to global { GlobalRedirection.redirect } on #{ serverId }");
+                    log.Info($"Redirecting client to global {GlobalRedirection.redirect} on #{serverId}");
                     return GlobalRedirection.redirectBits;
                 }
             }
@@ -100,7 +99,8 @@ namespace L2dotNET.LoginService.managers
                 {
                     if (nr.serverId == serverId)
                     {
-                        string[] a = client.Address.ToString().Split(':')[0].Split('.'), b = nr.mask.Split('.');
+                        string[] a = client.Address.ToString().Split(':')[0].Split('.'),
+                                 b = nr.mask.Split('.');
                         byte[] d = new byte[4];
                         for (byte c = 0; c < 4; c++)
                         {
@@ -112,7 +112,8 @@ namespace L2dotNET.LoginService.managers
                                 d[c] = 1;
                             else if (b[c].Contains("/"))
                             {
-                                byte n = byte.Parse(b[c].Split('/')[0]), x = byte.Parse(b[c].Split('/')[1]);
+                                byte n = byte.Parse(b[c].Split('/')[0]),
+                                     x = byte.Parse(b[c].Split('/')[1]);
                                 byte t = byte.Parse(a[c]);
                                 d[c] = (t >= n && t <= x) ? (byte)1 : (byte)0;
                             }
@@ -120,7 +121,7 @@ namespace L2dotNET.LoginService.managers
 
                         if (d.Min() == 1)
                         {
-                            log.Info($"Redirecting client to { nr.redirect } on #{ serverId }");
+                            log.Info($"Redirecting client to {nr.redirect} on #{serverId}");
                             return nr.redirectBits;
                         }
                     }

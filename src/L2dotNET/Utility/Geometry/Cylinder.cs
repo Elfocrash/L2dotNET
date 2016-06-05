@@ -1,19 +1,15 @@
-﻿using L2dotNET.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using L2dotNET.Models;
 
 namespace L2dotNET.Utility
 {
     public class Cylinder : Circle
     {
         // min and max Z coorinates
-        private int _minZ;
-        private int _maxZ;
+        private readonly int _minZ;
+        private readonly int _maxZ;
 
-        public Cylinder(int x, int y, int r, int minZ, int maxZ):base(x, y, r)
+        public Cylinder(int x, int y, int r, int minZ, int maxZ) : base(x, y, r)
         {
             _minZ = minZ;
             _maxZ = maxZ;

@@ -1,6 +1,4 @@
 ﻿using L2dotNET.GameService.Commands;
-using L2dotNET.GameService.tables;
-using System;
 
 namespace L2dotNET.GameService.Command
 {

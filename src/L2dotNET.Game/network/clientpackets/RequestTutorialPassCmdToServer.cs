@@ -1,6 +1,4 @@
-﻿using System;
-using L2dotNET.GameService.tables;
-using L2dotNET.GameService.Handlers;
+﻿using L2dotNET.GameService.Handlers;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -12,6 +10,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private string _alias;
+
         public override void read()
         {
             _alias = readS();
@@ -50,7 +49,9 @@ namespace L2dotNET.GameService.network.l2recv
                 if (_alias.Contains("tp"))
                 {
                     string[] coord = _alias.Split(' ');
-                    int x, y, z;
+                    int x,
+                        y,
+                        z;
                     if (!int.TryParse(coord[1], out x) || !int.TryParse(coord[2], out y) || !int.TryParse(coord[3], out z))
                     {
                         player.sendMessage("Only numbers allowed in box.");

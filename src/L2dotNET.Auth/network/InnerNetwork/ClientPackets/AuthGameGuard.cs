@@ -1,13 +1,11 @@
-﻿
-
-using L2dotNET.LoginService.Network.OuterNetwork;
+﻿using L2dotNET.LoginService.Network.OuterNetwork;
 using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
     class AuthGameGuard
     {
-        private LoginClient client;
+        private readonly LoginClient client;
 
         public AuthGameGuard(Packet p, LoginClient client)
         {

@@ -1,9 +1,8 @@
-﻿using L2dotNET.GameService.managers;
+﻿using log4net;
+using L2dotNET.GameService.managers;
 using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.model.npcs.ai;
 using L2dotNET.GameService.model.quests;
-using System;
-using log4net;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -17,6 +16,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private string _alias;
+
         public override void read()
         {
             _alias = readS();
@@ -24,7 +24,7 @@ namespace L2dotNET.GameService.network.l2recv
 
         private L2Npc getNpc()
         {
-            log.Info($"bypass '{ _alias }'");
+            log.Info($"bypass '{_alias}'");
             L2Npc npc = (L2Npc)getClient().CurrentPlayer.CurrentTarget;
 
             if (npc == null)
@@ -164,7 +164,7 @@ namespace L2dotNET.GameService.network.l2recv
                 PetitionManager.getInstance().petitionlink(player, _alias.Split('?')[1]);
             }
             else
-                log.Warn($"Unknown bypass '{ _alias }'");
+                log.Warn($"Unknown bypass '{_alias}'");
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.model.playable.petai;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
-using L2dotNET.GameService.world;
-using L2dotNET.GameService.model.playable.petai;
 using L2dotNET.GameService.tools;
 using L2dotNET.GameService.Templates;
+using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.model.playable
 {
@@ -116,6 +115,7 @@ namespace L2dotNET.GameService.model.playable
         }
 
         private bool IsSpawned = false;
+
         public void SpawmMe()
         {
             X = Owner.X;
@@ -125,7 +125,7 @@ namespace L2dotNET.GameService.model.playable
 
             Owner.sendPacket(new PetStatusUpdate(this));
 
-            L2World.Instance.AddObject(this);//to add pet
+            L2World.Instance.AddObject(this); //to add pet
             IsSpawned = true;
             onSpawn();
 
@@ -178,10 +178,7 @@ namespace L2dotNET.GameService.model.playable
             AICharacter.ChangeFollowStatus();
         }
 
-        public virtual void Attack()
-        {
-
-        }
+        public virtual void Attack() { }
 
         public virtual void Stop()
         {
@@ -259,7 +256,6 @@ namespace L2dotNET.GameService.model.playable
             nulled.Clear();
             Owner.Party.broadcastToMembers(p);
         }
-
 
         public override string asString()
         {

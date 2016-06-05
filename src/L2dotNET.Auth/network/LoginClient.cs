@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using L2Crypt;
-using L2dotNET.Models;
 using log4net;
+using L2Crypt;
+using L2dotNET.LoginService.Network.InnerNetwork;
 using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.Models;
 using L2dotNET.Network;
 using L2dotNET.Utility;
-using L2dotNET.LoginService.Network.InnerNetwork;
 
 namespace L2dotNET.LoginService
 {
@@ -62,7 +62,6 @@ namespace L2dotNET.LoginService
             NetStream.Write(array.ToArray(), 0, array.Count);
             Console.WriteLine("Recieve :\r\n{0}", L2Buffer.ToString(array.ToArray()));
             NetStream.Flush();
-
         }
 
         public void read()
@@ -95,7 +94,7 @@ namespace L2dotNET.LoginService
             }
             catch (Exception s)
             {
-                log.Warn(Address + $" was closed by force. { s }");
+                log.Warn(Address + $" was closed by force. {s}");
                 close();
             }
         }
@@ -115,7 +114,7 @@ namespace L2dotNET.LoginService
 
             if (!_loginCrypt.decrypt(ref buff, 0, buff.Length))
             {
-                log.Error($"Blowfish failed on { Address }. Please restart auth server.");
+                log.Error($"Blowfish failed on {Address}. Please restart auth server.");
             }
             else
             {
@@ -146,7 +145,7 @@ namespace L2dotNET.LoginService
                     break;
 
                 default:
-                    log.Warn($"LoginClient: received unk request { packet.FirstOpcode }");
+                    log.Warn($"LoginClient: received unk request {packet.FirstOpcode}");
                     break;
             }
 
@@ -154,14 +153,18 @@ namespace L2dotNET.LoginService
             //    new Thread(new ThreadStart(msg.Run)).Start();
         }
 
-        public int login1, login2;
+        public int login1,
+                   login2;
+
         public void setLoginPair(int key1, int key2)
         {
             login1 = key1;
             login2 = key2;
         }
 
-        public int play1, play2;
+        public int play1,
+                   play2;
+
         public void setPlayPair(int key1, int key2)
         {
             play1 = key1;

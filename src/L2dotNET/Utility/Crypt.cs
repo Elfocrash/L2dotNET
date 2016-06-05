@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace L2dotNET.Utility
+﻿namespace L2dotNET.Utility
 {
     class Crypt
     {
-        private byte[] _key = new byte[16];//8];
+        private readonly byte[] _key = new byte[16]; //8];
         private bool enabled;
 
-        public Crypt()
-        {
-        }
+        public Crypt() { }
 
         public void setKey(byte[] key)
         {
@@ -50,17 +42,17 @@ namespace L2dotNET.Utility
                 temp = temp2;
             }
 
-            long old = _key[8] & 0xff;//0
-            old |= ((_key[9]) << 8 & 0xff00);//1
-            old |= ((_key[10]) << 0x10 & 0xff0000);//2
-            old |= ((_key[11]) << 0x18 & 0xff000000);//3
+            long old = _key[8] & 0xff; //0
+            old |= ((_key[9]) << 8 & 0xff00); //1
+            old |= ((_key[10]) << 0x10 & 0xff0000); //2
+            old |= ((_key[11]) << 0x18 & 0xff000000); //3
 
             old += raw.Length;
 
-            _key[8] = (byte)(old & 0xff);//0
-            _key[9] = (byte)(old >> 0x08 & 0xff);//1
-            _key[10] = (byte)(old >> 0x10 & 0xff);//2
-            _key[11] = (byte)(old >> 0x18 & 0xff);//3
+            _key[8] = (byte)(old & 0xff); //0
+            _key[9] = (byte)(old >> 0x08 & 0xff); //1
+            _key[10] = (byte)(old >> 0x10 & 0xff); //2
+            _key[11] = (byte)(old >> 0x18 & 0xff); //3
         }
 
         public void decrypt(byte[] raw, int offset, int size)
@@ -102,17 +94,17 @@ namespace L2dotNET.Utility
                 temp = temp2;
             }
 
-            uint old = ((uint)_key[8]) & (uint)0xff;//0
-            old |= (uint)(((uint)_key[9]) << 8 & (uint)0xff00);//1
-            old |= (uint)(((uint)_key[10]) << 0x10 & (uint)0xff0000);//2
-            old |= (uint)(((uint)_key[11]) << 0x18 & (uint)0xff000000);//3
+            uint old = ((uint)_key[8]) & (uint)0xff; //0
+            old |= (uint)(((uint)_key[9]) << 8 & (uint)0xff00); //1
+            old |= (uint)(((uint)_key[10]) << 0x10 & (uint)0xff0000); //2
+            old |= (uint)(((uint)_key[11]) << 0x18 & (uint)0xff000000); //3
 
             old += (uint)size;
 
-            _key[8] = (byte)(old & 0xff);//0
-            _key[9] = (byte)(old >> 0x08 & 0xff);//1
-            _key[10] = (byte)(old >> 0x10 & 0xff);//2
-            _key[11] = (byte)(old >> 0x18 & 0xff);//3
+            _key[8] = (byte)(old & 0xff); //0
+            _key[9] = (byte)(old >> 0x08 & 0xff); //1
+            _key[10] = (byte)(old >> 0x10 & 0xff); //2
+            _key[11] = (byte)(old >> 0x18 & 0xff); //3
         }
 
         public void encrypt(byte[] raw)

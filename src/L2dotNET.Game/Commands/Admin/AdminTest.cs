@@ -1,10 +1,4 @@
-﻿
-using L2dotNET.GameService.network.l2send;
-using System.Threading;
-using System;
-using L2dotNET.GameService.model.zones;
-using L2dotNET.GameService.model.zones.forms;
-using L2dotNET.GameService.Commands;
+﻿using L2dotNET.GameService.Commands;
 
 namespace L2dotNET.GameService.Command
 {
@@ -15,11 +9,11 @@ namespace L2dotNET.GameService.Command
             Cmd = "test";
         }
 
-        L2Player p = null;
-        int spd = 1000;
+        private L2Player p = null;
+        private int spd = 1000;
+
         protected internal override void Use(L2Player admin, string alias)
         {
-
             //p = admin;
             //spd = int.Parse(alias.Split(' ')[1]);
 
@@ -31,11 +25,8 @@ namespace L2dotNET.GameService.Command
             //new System.Threading.Thread(loopme).Start();
         }
 
-        bool lp = false;
+        private bool lp = false;
 
-        private void loopme()
-        {
-
-        }
+        private void loopme() { }
     }
 }

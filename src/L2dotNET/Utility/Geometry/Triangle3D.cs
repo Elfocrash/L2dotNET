@@ -1,18 +1,14 @@
-﻿using L2dotNET.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using L2dotNET.Models;
 
 namespace L2dotNET.Utility
 {
     public class Triangle3D : Triangle
     {
-        private int _minZ;
-        private int _maxZ;
+        private readonly int _minZ;
+        private readonly int _maxZ;
 
-        private double _length;
+        private readonly double _length;
 
         public Triangle3D(int[] A, int[] B, int[] C) : base(A, B, C)
         {
@@ -55,7 +51,7 @@ namespace L2dotNET.Utility
 
             int x = _Ax + (int)(ba * _BAx + ca * _CAx);
             int y = _Ay + (int)(ba * _BAy + ca * _CAy);
-            
+
             return new Location(x, y, Rnd.Get(_minZ, _maxZ));
         }
     }

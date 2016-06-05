@@ -1,7 +1,7 @@
-﻿using L2dotNET.LoginService.gscommunication;
+﻿using log4net;
+using L2dotNET.LoginService.gscommunication;
 using L2dotNET.LoginService.Network.OuterNetwork;
 using L2dotNET.Network;
-using log4net;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
@@ -9,15 +9,16 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(RequestLoginAuth));
 
-        private short port;
-        private string host;
-        private string info;
-        private string code;
+        private readonly short port;
+        private readonly string host;
+        private readonly string info;
+        private readonly string code;
         private int curp;
-        private short maxp;
-        private byte gmonly;
-        private byte test;
-        private ServerThread thread;
+        private readonly short maxp;
+        private readonly byte gmonly;
+        private readonly byte test;
+        private readonly ServerThread thread;
+
         public RequestLoginAuth(Packet p, ServerThread server)
         {
             thread = server;
@@ -46,7 +47,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 
             if (server == null)
             {
-                log.Error($"Code '{ code }' for server was not found. Closing");
+                log.Error($"Code '{code}' for server was not found. Closing");
                 thread.close(ServerLoginFail.ToPacket("Code Error"));
                 return;
             }
@@ -61,7 +62,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
             thread.Connected = true;
 
             thread.Send(ServerLoginOk.ToPacket());
-            log.Info($"AuthThread: Server #{ server.Id } connected");
+            log.Info($"AuthThread: Server #{server.Id} connected");
         }
     }
 }

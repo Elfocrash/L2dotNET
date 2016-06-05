@@ -1,10 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using L2dotNET.GameService.controllers;
-using L2dotNET.GameService.model.player.partials;
 using L2dotNET.GameService.network.l2send;
-using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
-using System.Collections.Generic;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -16,6 +13,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private int _command;
+
         public override void read()
         {
             _command = readD();
@@ -28,7 +26,7 @@ namespace L2dotNET.GameService.network.l2recv
             switch (_command)
             {
                 case 0: // [loc]
-                    int regId = 0;//MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
+                    int regId = 0; //MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
                     if (regId > 0)
                         player.sendPacket(new SystemMessage((SystemMessage.SystemMessageId)regId).AddNumber(player.X).AddNumber(player.Y).AddNumber(player.Z));
                     else
@@ -38,10 +36,10 @@ namespace L2dotNET.GameService.network.l2recv
                     int y = (player.Y >> 15) + 10 + 11;
                     player.sendMessage($"Current loc is X:{player.X} Y:{player.Y} Z:{player.Z}");
                     player.teleport(26807, 41123, -3622);
-                    player.BroadcastUserInfo();//for debug reasons
+                    player.BroadcastUserInfo(); //for debug reasons
                     break;
                 case 52: // /unstuck
-                    
+
                     L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
                     player.SetRegion(worldRegion);
                     List<L2Player> knowns = player.GetKnownPlayers();

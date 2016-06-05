@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.GameService.network.l2send;
-using L2dotNET.GameService.network;
 using System.Linq;
-using L2dotNET.GameService.model;
 using log4net;
-using L2dotNET.GameService.model.npcs;
-using L2dotNET.GameService.tables;
-using System.Collections.ObjectModel;
 using L2dotNET.Models;
 
 namespace L2dotNET.GameService.world
@@ -17,7 +11,7 @@ namespace L2dotNET.GameService.world
         private static readonly ILog log = LogManager.GetLogger(typeof(L2World));
 
         private static volatile L2World instance;
-        private static object syncRoot = new object();
+        private static readonly object syncRoot = new object();
 
         // Geodata min/max tiles
         public static int TILE_X_MIN = 16;
@@ -33,21 +27,18 @@ namespace L2dotNET.GameService.world
         public static int WORLD_Y_MAX = (TILE_Y_MAX - 17) * TILE_SIZE;
 
         // Regions and offsets
-        private static int REGION_SIZE = 4096;
-        private static int REGIONS_X = (WORLD_X_MAX - WORLD_X_MIN) / REGION_SIZE;
-        private static int REGIONS_Y = (WORLD_Y_MAX - WORLD_Y_MIN) / REGION_SIZE;
-        private static int REGION_X_OFFSET = Math.Abs(WORLD_X_MIN / REGION_SIZE);
-        private static int REGION_Y_OFFSET = Math.Abs(WORLD_Y_MIN / REGION_SIZE);
+        private static readonly int REGION_SIZE = 4096;
+        private static readonly int REGIONS_X = (WORLD_X_MAX - WORLD_X_MIN) / REGION_SIZE;
+        private static readonly int REGIONS_Y = (WORLD_Y_MAX - WORLD_Y_MIN) / REGION_SIZE;
+        private static readonly int REGION_X_OFFSET = Math.Abs(WORLD_X_MIN / REGION_SIZE);
+        private static readonly int REGION_Y_OFFSET = Math.Abs(WORLD_Y_MIN / REGION_SIZE);
 
-        private Dictionary<int, L2Object> _objects = new Dictionary<int, L2Object>();
-        private Dictionary<int, L2Player> _players = new Dictionary<int, L2Player>();
+        private readonly Dictionary<int, L2Object> _objects = new Dictionary<int, L2Object>();
+        private readonly Dictionary<int, L2Player> _players = new Dictionary<int, L2Player>();
 
-        private L2WorldRegion[,] _worldRegions = new L2WorldRegion[REGIONS_X + 1,REGIONS_Y + 1];
-	
-        private L2World()
-        {
+        private readonly L2WorldRegion[,] _worldRegions = new L2WorldRegion[REGIONS_X + 1, REGIONS_Y + 1];
 
-        }
+        private L2World() { }
 
         public static L2World Instance
         {
@@ -73,7 +64,7 @@ namespace L2dotNET.GameService.world
             for (int i = 0; i <= REGIONS_X; i++)
             {
                 for (int j = 0; j <= REGIONS_Y; j++)
-                    _worldRegions[i,j] = new L2WorldRegion(i, j);
+                    _worldRegions[i, j] = new L2WorldRegion(i, j);
             }
 
             for (int x = 0; x <= REGIONS_X; x++)
@@ -85,7 +76,7 @@ namespace L2dotNET.GameService.world
                         for (int b = -1; b <= 1; b++)
                         {
                             if (validRegion(x + a, y + b))
-                                _worldRegions[x + a,y + b].AddSurroundingRegion(_worldRegions[x,y]);
+                                _worldRegions[x + a, y + b].AddSurroundingRegion(_worldRegions[x, y]);
                         }
                     }
                 }
@@ -95,7 +86,7 @@ namespace L2dotNET.GameService.world
 
         public void AddObject(L2Object obj)
         {
-            if(!_objects.ContainsKey(obj.ObjID))
+            if (!_objects.ContainsKey(obj.ObjID))
                 _objects.Add(obj.ObjID, obj);
         }
 
@@ -116,7 +107,7 @@ namespace L2dotNET.GameService.world
 
         public void AddPlayer(L2Player cha)
         {
-            if(!_players.ContainsKey(cha.ObjID))
+            if (!_players.ContainsKey(cha.ObjID))
                 _players.Add(cha.ObjID, cha);
         }
 
@@ -162,7 +153,7 @@ namespace L2dotNET.GameService.world
 
         public L2WorldRegion GetRegion(int x, int y)
         {
-            return _worldRegions[(x - WORLD_X_MIN) / REGION_SIZE,(y - WORLD_Y_MIN) / REGION_SIZE];
+            return _worldRegions[(x - WORLD_X_MIN) / REGION_SIZE, (y - WORLD_Y_MIN) / REGION_SIZE];
         }
 
         public L2WorldRegion[,] GetWorldRegions()
@@ -173,27 +164,27 @@ namespace L2dotNET.GameService.world
         public void deleteVisibleNpcSpawns()
         {
             //_log.info("Deleting all visible NPCs.");
-             //       for (int i = 0; i <= REGIONS_X; i++)
-             //       {
-             //           for (int j = 0; j <= REGIONS_Y; j++)
-             //           {
-             //               foreach (L2Object obj in _worldRegions[i,j].GetObjects())
-             //               {
-             //               if (obj is L2Npc)
-					        //{
-             //                   ((L2Npc)obj).deleteMe();
+            //       for (int i = 0; i <= REGIONS_X; i++)
+            //       {
+            //           for (int j = 0; j <= REGIONS_Y; j++)
+            //           {
+            //               foreach (L2Object obj in _worldRegions[i,j].GetObjects())
+            //               {
+            //               if (obj is L2Npc)
+            //{
+            //                   ((L2Npc)obj).deleteMe();
 
-             //                   L2Spawn spawn = ((L2Npc)obj).getSpawn();
-             //                   if (spawn != null)
-             //                   {
-             //                       //spawn.setRespawnState(false);
-             //                       //SpawnTable.getInstance().deleteSpawn(spawn, false);
-             //                   }
-             //               }
-             //           }
-             //       }
-             //   }
-             //   _log.info("All visibles NPCs are now deleted.");
-	    }
+            //                   L2Spawn spawn = ((L2Npc)obj).getSpawn();
+            //                   if (spawn != null)
+            //                   {
+            //                       //spawn.setRespawnState(false);
+            //                       //SpawnTable.getInstance().deleteSpawn(spawn, false);
+            //                   }
+            //               }
+            //           }
+            //       }
+            //   }
+            //   _log.info("All visibles NPCs are now deleted.");
+        }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System;
 using L2dotNET.GameService.model.npcs.ai;
+using L2dotNET.GameService.model.playable;
 using L2dotNET.GameService.model.skills2;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
-using L2dotNET.GameService.model.playable;
 
 namespace L2dotNET.GameService.model.npcs
 {
@@ -14,6 +14,7 @@ namespace L2dotNET.GameService.model.npcs
         public System.DateTime dtstart;
         public L2Spawn TerritorySpawn;
         public System.Timers.Timer socialTask;
+
         public override string asString()
         {
             return base.asString().Replace("L2Npc", "L2Warrior");
@@ -22,8 +23,8 @@ namespace L2dotNET.GameService.model.npcs
         public override void onAction(L2Player player)
         {
             player.sendMessage(asString());
-        //    TimeSpan ts = dtstart - DateTime.Now;
-        //    player.sendMessage("timems "+(ts.TotalMilliseconds));
+            //    TimeSpan ts = dtstart - DateTime.Now;
+            //    player.sendMessage("timems "+(ts.TotalMilliseconds));
             bool newtarget = false;
             if (player.CurrentTarget == null)
             {
@@ -54,11 +55,12 @@ namespace L2dotNET.GameService.model.npcs
             }
         }
 
-        Random rnd = new Random();
+        private readonly Random rnd = new Random();
+
         public override void onSpawn()
         {
             base.onSpawn();
-            if(Template.AggroRange > 0)
+            if (Template.AggroRange > 0)
                 AICharacter.Enable();
 
             SpawnX = X;
@@ -77,8 +79,8 @@ namespace L2dotNET.GameService.model.npcs
                 return;
 
             MoveTo(rnd.Next(SpawnX - 90, SpawnX + 90), rnd.Next(SpawnY - 90, SpawnY + 90), Z);
-            
-           // broadcastPacket(new SocialAction(ObjID, rnd.Next(8)));
+
+            // broadcastPacket(new SocialAction(ObjID, rnd.Next(8)));
         }
 
         public override void StartAI()
@@ -115,8 +117,6 @@ namespace L2dotNET.GameService.model.npcs
             if (TerritorySpawn != null)
                 TerritorySpawn.onDie(this, killer);
 
-
-
             //socialTask.Enabled = false;
         }
 
@@ -124,7 +124,7 @@ namespace L2dotNET.GameService.model.npcs
         {
             string text = "";
 
-            text += "pdef: " + CharacterStat.getStat(TEffectType.p_physical_defense)+"<br>";
+            text += "pdef: " + CharacterStat.getStat(TEffectType.p_physical_defense) + "<br>";
             text += "patk: " + CharacterStat.getStat(TEffectType.p_physical_attack) + "<br>";
             text += "curhp: " + CurHP + "<br>";
             text += "maxhp: " + CharacterStat.getStat(TEffectType.b_max_hp) + "<br>";

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.model.skills2;
-using L2dotNET.GameService.tables;
 
 namespace L2dotNET.GameService.model.player.transformation
 {

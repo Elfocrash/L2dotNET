@@ -1,6 +1,4 @@
-﻿using L2dotNET.GameService.world;
-
-namespace L2dotNET.GameService.network.loginauth.recv
+﻿namespace L2dotNET.GameService.network.loginauth.recv
 {
     class LoginServKickAccount : ReceiveAuthPacket
     {

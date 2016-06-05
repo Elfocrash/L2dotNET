@@ -1,13 +1,14 @@
-﻿
-using L2dotNET.LoginService.Network.OuterNetwork;
+﻿using L2dotNET.LoginService.Network.OuterNetwork;
 using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
     class RequestServerList
     {
-        int login1, login2;
-        private LoginClient client;
+        private readonly int login1;
+        private readonly int login2;
+        private readonly LoginClient client;
+
         public RequestServerList(Packet p, LoginClient client)
         {
             this.client = client;

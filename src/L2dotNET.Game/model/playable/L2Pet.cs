@@ -1,5 +1,4 @@
 ﻿using L2dotNET.GameService.model.inventory;
-using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.tables;
 
 namespace L2dotNET.GameService.model.playable

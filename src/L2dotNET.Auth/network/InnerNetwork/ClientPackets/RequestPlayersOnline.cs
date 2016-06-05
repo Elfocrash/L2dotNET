@@ -5,8 +5,9 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 {
     class RequestPlayersOnline
     {
-        private short cnt;
-        ServerThread thread;
+        private readonly short cnt;
+        private ServerThread thread;
+
         public RequestPlayersOnline(Packet p, ServerThread server)
         {
             cnt = p.ReadShort();

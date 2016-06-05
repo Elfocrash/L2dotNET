@@ -1,5 +1,6 @@
 ﻿using L2dotNET.GameService.Commands;
 using L2dotNET.GameService.network.l2send;
+
 namespace L2dotNET.GameService.Command
 {
     class AdminWhisper : AAdminCommand

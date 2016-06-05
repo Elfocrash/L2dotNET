@@ -106,7 +106,6 @@ namespace L2dotNET.GameService.world
                 player.sendActionFailed();
         }
 
-
         public override void SetRegion(L2WorldRegion newRegion)
         {
             // confirm revalidation of old region's zones

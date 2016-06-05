@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using L2dotNET.GameService.model.zones;
-using L2dotNET.GameService.network;
-using log4net;
+﻿using System.Collections.Generic;
 using System.Linq;
+using log4net;
+using L2dotNET.GameService.model.zones;
 
 namespace L2dotNET.GameService.world
 {
@@ -11,13 +9,13 @@ namespace L2dotNET.GameService.world
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(L2WorldRegion));
 
-        private Dictionary<int, L2Object> _objects = new Dictionary<int, L2Object>();
+        private readonly Dictionary<int, L2Object> _objects = new Dictionary<int, L2Object>();
 
-        private List<L2WorldRegion> _surroundingRegions = new List<L2WorldRegion>();
-        private List<L2ZoneType> _zones = new List<L2ZoneType>();
+        private readonly List<L2WorldRegion> _surroundingRegions = new List<L2WorldRegion>();
+        private readonly List<L2ZoneType> _zones = new List<L2ZoneType>();
 
-        private int _tileX;
-        private int _tileY;
+        private readonly int _tileX;
+        private readonly int _tileY;
 
         private bool _active;
         private int _playersCount = 0;
@@ -30,9 +28,8 @@ namespace L2dotNET.GameService.world
 
         public string getName()
         {
-            return "WorldRegion:"+_tileX + "_" + _tileY;
+            return "WorldRegion:" + _tileX + "_" + _tileY;
         }
-
 
         public List<L2Object> getObjects()
         {
@@ -68,7 +65,7 @@ namespace L2dotNET.GameService.world
         {
             //if (character.isTeleporting())
             //    return;
-            foreach(L2ZoneType zone in _zones)
+            foreach (L2ZoneType zone in _zones)
             {
                 zone.RevalidateInZone(character);
             }
@@ -92,36 +89,36 @@ namespace L2dotNET.GameService.world
             return false;
         }
 
-   //     public bool checkEffectRangeInsidePeaceZone(L2Skill skill, final int x, final int y, final int z)
-   //     {
-   //         int range = skill.getEffectRange();
-   //         int up = y + range;
-   //         int down = y - range;
-   //         int left = x + range;
-   //         int right = x - range;
+        //     public bool checkEffectRangeInsidePeaceZone(L2Skill skill, final int x, final int y, final int z)
+        //     {
+        //         int range = skill.getEffectRange();
+        //         int up = y + range;
+        //         int down = y - range;
+        //         int left = x + range;
+        //         int right = x - range;
 
-   //         foreach (L2ZoneType e in _zones)
-   //         {
-   ////             if ((e is L2TownZone && ((L2TownZone)e).isPeaceZone()) || e instanceof L2DerbyTrackZone || e instanceof L2PeaceZone)
-			////{
-   //             //if (e.isInsideZone(x, up, z))
-   //             //    return false;
+        //         foreach (L2ZoneType e in _zones)
+        //         {
+        ////             if ((e is L2TownZone && ((L2TownZone)e).isPeaceZone()) || e instanceof L2DerbyTrackZone || e instanceof L2PeaceZone)
+        ////{
+        //             //if (e.isInsideZone(x, up, z))
+        //             //    return false;
 
-   //             //if (e.isInsideZone(x, down, z))
-   //             //    return false;
+        //             //if (e.isInsideZone(x, down, z))
+        //             //    return false;
 
-   //             //if (e.isInsideZone(left, y, z))
-   //             //    return false;
+        //             //if (e.isInsideZone(left, y, z))
+        //             //    return false;
 
-   //             //if (e.isInsideZone(right, y, z))
-   //             //    return false;
+        //             //if (e.isInsideZone(right, y, z))
+        //             //    return false;
 
-   //             //if (e.isInsideZone(x, y, z))
-   //             //    return false;
-   //         //}
-   //     }
-		 //   return true;
-	  //  }
+        //             //if (e.isInsideZone(x, y, z))
+        //             //    return false;
+        //         //}
+        //     }
+        //   return true;
+        //  }
 
         //public void onDeath(L2Character character)
         //{
@@ -147,6 +144,7 @@ namespace L2dotNET.GameService.world
 	     * Check if neighbors (including self) aren't inhabited.
 	     * @return true if the above condition is met.
 	     */
+
         public bool IsEmptyNeighborhood()
         {
             foreach (L2WorldRegion neighbor in _surroundingRegions)
@@ -161,6 +159,7 @@ namespace L2dotNET.GameService.world
 	     * This function turns this region's AI on or off.
 	     * @param value : if true, activate hp/mp regen and random animation. If false, clean aggro/attack list, set objects on IDLE and drop their AI tasks.
 	     */
+
         public void SetActive(bool value)
         {
             if (_active == value)
@@ -172,49 +171,49 @@ namespace L2dotNET.GameService.world
             {
                 foreach (L2Object o in _objects.Values)
                 {
-        //            if (o is L2Attackable)
-				    //{
-        //                L2Attackable mob = (L2Attackable)o;
+                    //            if (o is L2Attackable)
+                    //{
+                    //                L2Attackable mob = (L2Attackable)o;
 
-        //                // Set target to null and cancel Attack or Cast
-        //                mob.setTarget(null);
+                    //                // Set target to null and cancel Attack or Cast
+                    //                mob.setTarget(null);
 
-        //                // Stop movement
-        //                mob.stopMove(null);
+                    //                // Stop movement
+                    //                mob.stopMove(null);
 
-        //                // Stop all active skills effects in progress on the L2Character
-        //                mob.stopAllEffects();
+                    //                // Stop all active skills effects in progress on the L2Character
+                    //                mob.stopAllEffects();
 
-        //                mob.getAggroList().clear();
-        //                mob.getAttackByList().clear();
+                    //                mob.getAggroList().clear();
+                    //                mob.getAttackByList().clear();
 
-        //                // stop the ai tasks
-        //                if (mob.hasAI())
-        //                {
-        //                    mob.getAI().setIntention(CtrlIntention.IDLE);
-        //                    mob.getAI().stopAITask();
-        //                }
+                    //                // stop the ai tasks
+                    //                if (mob.hasAI())
+                    //                {
+                    //                    mob.getAI().setIntention(CtrlIntention.IDLE);
+                    //                    mob.getAI().stopAITask();
+                    //                }
                 }
             }
-        
-		    else
-		    {
-			    //for (L2Object o : _objects.values())
-			    //{
-				   // if (o instanceof L2Attackable)
-					  //  ((L2Attackable) o).getStatus().startHpMpRegeneration();
-				   // else if (o instanceof L2Npc)
-					  //  ((L2Npc) o).startRandomAnimationTimer();
-       //         }
-		    }
-	    }
 
-	    public void AddVisibleObject(L2Object obj)
+            else
+            {
+                //for (L2Object o : _objects.values())
+                //{
+                // if (o instanceof L2Attackable)
+                //  ((L2Attackable) o).getStatus().startHpMpRegeneration();
+                // else if (o instanceof L2Npc)
+                //  ((L2Npc) o).startRandomAnimationTimer();
+                //         }
+            }
+        }
+
+        public void AddVisibleObject(L2Object obj)
         {
             if (obj == null)
                 return;
-            
-            if(!_objects.ContainsKey(obj.ObjID))
+
+            if (!_objects.ContainsKey(obj.ObjID))
                 _objects.Add(obj.ObjID, obj);
 
             if (obj is L2Player)
@@ -229,8 +228,7 @@ namespace L2dotNET.GameService.world
             _objects.Remove(obj.ObjID);
 
             if (obj is L2Player)
-			        _playersCount -= 1;
+                _playersCount -= 1;
         }
-        
     }
 }

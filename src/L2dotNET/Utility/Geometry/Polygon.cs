@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using L2dotNET.Models;
 
 namespace L2dotNET.Utility
 {
     public class Polygon : AShape
     {
-        private static int TRIANGULATION_MAX_LOOPS = 100;
+        private static readonly int TRIANGULATION_MAX_LOOPS = 100;
 
         protected List<AShape> _shapes;
 
@@ -39,7 +37,7 @@ namespace L2dotNET.Utility
                 bool isCw = GetPolygonOrientation(points);
 
                 // calculate non convex points
-                List< int[] > nonConvexPoints = CalculateNonConvexPoints(points, isCw);
+                List<int[]> nonConvexPoints = CalculateNonConvexPoints(points, isCw);
 
                 // polygon triangulation of points based on orientation and non-convex points
                 triangles = DoTriangulationAlgorithm(points, isCw, nonConvexPoints);
@@ -162,7 +160,7 @@ namespace L2dotNET.Utility
         private static List<int[]> CalculateNonConvexPoints(List<int[]> points, bool isCw)
         {
             // list of non convex points
-            List< int[] > nonConvexPoints = new List<int[]>();
+            List<int[]> nonConvexPoints = new List<int[]>();
 
             // result value of test function
             int size = points.Count;
@@ -189,50 +187,50 @@ namespace L2dotNET.Utility
         {
             // create the list
             List<Triangle> triangles = new List<Triangle>();
-		
-		    int size = points.Count;
+
+            int size = points.Count;
             int loops = 0;
             int index = 1;
-		    while (size > 3)
-		    {
-			    // get next and previous indexes
-			    int indexPrev = GetPrevIndex(size, index);
+            while (size > 3)
+            {
+                // get next and previous indexes
+                int indexPrev = GetPrevIndex(size, index);
                 int indexNext = GetNextIndex(size, index);
 
                 // get points
                 int[] pointPrev = points[indexPrev];
                 int[] point = points[index];
                 int[] pointNext = points[indexNext];
-			
-			    // check point to create polygon ear
-			    if (IsEar(isCw, nonConvexPoints, pointPrev, point, pointNext))
-			    {
-				    // create triangle from polygon ear
-				    triangles.Add(new Triangle(pointPrev, point, pointNext));
-				
-				    // remove middle point from list, update size
-				    points.RemoveAt(index);
-				    size--;
-				
-				    // move index
-				    index = GetPrevIndex(size, index);
+
+                // check point to create polygon ear
+                if (IsEar(isCw, nonConvexPoints, pointPrev, point, pointNext))
+                {
+                    // create triangle from polygon ear
+                    triangles.Add(new Triangle(pointPrev, point, pointNext));
+
+                    // remove middle point from list, update size
+                    points.RemoveAt(index);
+                    size--;
+
+                    // move index
+                    index = GetPrevIndex(size, index);
                 }
-			    else
-			    {
-				    // move index
-				    index = indexNext;
-			    }
-			
-			    if (++loops == TRIANGULATION_MAX_LOOPS)
-				    throw new Exception("Coordinates are not aligned to form monotone polygon.");
-		    }
-		
-		    // add last triangle
-		    triangles.Add(new Triangle(points[0], points[1], points[2]));
-		
-		    // return triangles
-		    return triangles;
-	    }
+                else
+                {
+                    // move index
+                    index = indexNext;
+                }
+
+                if (++loops == TRIANGULATION_MAX_LOOPS)
+                    throw new Exception("Coordinates are not aligned to form monotone polygon.");
+            }
+
+            // add last triangle
+            triangles.Add(new Triangle(points[0], points[1], points[2]));
+
+            // return triangles
+            return triangles;
+        }
 
         private static bool IsEar(bool isCw, List<int[]> nonConvexPoints, int[] A, int[] B, int[] C)
         {
