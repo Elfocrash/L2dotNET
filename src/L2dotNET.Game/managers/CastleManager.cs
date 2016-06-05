@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.structures;
+using L2dotNET.GameService.Model.Structures;
 
 namespace L2dotNET.GameService.Managers
 {

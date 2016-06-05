@@ -1,7 +1,8 @@
-﻿using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.skills2.speceffects;
+﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Skills2.SpecEffects;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2.effects
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     class b_reg_mp_sit : TEffect
     {
@@ -14,7 +15,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             ef.mul = val.StartsWith("*");
         }
 
-        public override TEffectResult onStart(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             if (!(target is L2Player))
                 return nothing;
@@ -24,7 +25,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             return nothing;
         }
 
-        public override TEffectResult onEnd(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onEnd(L2Character caster, L2Character target)
         {
             if (!(target is L2Player))
                 return nothing;

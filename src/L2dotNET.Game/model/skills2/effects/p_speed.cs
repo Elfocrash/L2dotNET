@@ -1,8 +1,10 @@
-﻿namespace L2dotNET.GameService.Model.skills2.effects
+﻿using L2dotNET.GameService.World;
+
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     class p_speed : TEffect
     {
-        public override TEffectResult onStart(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             double[] val = target.CharacterStat.Apply(this);
 
@@ -11,7 +13,7 @@
             return ter;
         }
 
-        public override TEffectResult onEnd(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onEnd(L2Character caster, L2Character target)
         {
             double[] val = target.CharacterStat.Stop(this);
 

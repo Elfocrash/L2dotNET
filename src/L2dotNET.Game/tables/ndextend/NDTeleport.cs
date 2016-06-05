@@ -2,9 +2,9 @@
 using System.IO;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.GameService.tables.admin_bypass;
+using L2dotNET.GameService.Tables.Admin_Bypass;
 
-namespace L2dotNET.GameService.tables.ndextend
+namespace L2dotNET.GameService.Tables.Ndextend
 {
     class NDTeleport
     {

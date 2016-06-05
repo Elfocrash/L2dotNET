@@ -1,10 +1,10 @@
 ﻿using L2dotNET.GameService.Managers;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.player.basic;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Player.Basic;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.network.clientpackets
+namespace L2dotNET.GameService.Network.Clientpackets
 {
     class Say2 : GameServerNetworkRequest
     {

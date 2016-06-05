@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.Model.player;
+﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2.effects
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     class i_restoration : TEffect
     {
@@ -14,7 +15,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             count = long.Parse(v[2]);
         }
 
-        public override TEffectResult onStart(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             L2Player player = target as L2Player;
             if (player == null)
@@ -25,7 +26,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             return nothing;
         }
 
-        public override bool canUse(world.L2Character caster)
+        public override bool canUse(L2Character caster)
         {
             return caster is L2Player;
         }

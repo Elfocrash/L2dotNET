@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using log4net;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Tables
 {
     public class HtmCache
     {

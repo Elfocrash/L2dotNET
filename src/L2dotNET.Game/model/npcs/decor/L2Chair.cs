@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Tables;
 
-namespace L2dotNET.GameService.Model.npcs.decor
+namespace L2dotNET.GameService.Model.Npcs.Decor
 {
     public class L2Chair : L2StaticObject
     {

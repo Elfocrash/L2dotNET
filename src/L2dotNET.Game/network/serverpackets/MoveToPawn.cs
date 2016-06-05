@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.world;
+﻿using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.network.serverpackets
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class MoveToPawn : GameServerNetworkPacket
     {

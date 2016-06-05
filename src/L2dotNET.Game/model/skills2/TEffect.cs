@@ -1,7 +1,7 @@
 ﻿using System;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2
+namespace L2dotNET.GameService.Model.Skills2
 {
     public class TEffect
     {

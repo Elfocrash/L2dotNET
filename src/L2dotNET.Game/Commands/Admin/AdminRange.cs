@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
 using log4net;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.structures.conq;
-using L2dotNET.GameService.Model.zones.forms;
-using L2dotNET.GameService.tables.multisell;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Structures.Conq;
+using L2dotNET.GameService.Model.Zones.Forms;
+using L2dotNET.GameService.Tables.Multisell;
 
 namespace L2dotNET.GameService.Commands.Admin
 {

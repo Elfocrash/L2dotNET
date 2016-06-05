@@ -1,8 +1,9 @@
 ﻿using L2dotNET.GameService.Managers;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2.effects
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     class a_transform : TEffect
     {
@@ -13,7 +14,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             this.transformId = transformId;
         }
 
-        public override TEffectResult onStart(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             if (target is L2Player)
                 TransformManager.getInstance().transformTo(transformId, (L2Player)target, -1);
@@ -21,7 +22,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             return nothing;
         }
 
-        public override TEffectResult onEnd(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onEnd(L2Character caster, L2Character target)
         {
             if (target is L2Player)
                 ((L2Player)target).untransform();
@@ -29,7 +30,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             return nothing;
         }
 
-        public override bool canUse(world.L2Character caster)
+        public override bool canUse(L2Character caster)
         {
             if (!(caster is L2Player))
                 return false;

@@ -1,8 +1,8 @@
-﻿using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.world;
+﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2.effects
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     class a_tele_region : TEffect
     {
@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             this.region = str.Split(' ')[1];
         }
 
-        public override TEffectResult onStart(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             int[] loc = null; //для городов не буду писать, пусть тащит как нуль
             if (region.Equals("hideout"))
@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             return nothing;
         }
 
-        public override bool canUse(world.L2Character caster)
+        public override bool canUse(L2Character caster)
         {
             L2Player player = (L2Player)caster;
 

@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Model.player
+﻿namespace L2dotNET.GameService.Model.Player
 {
     public class Experience
     {

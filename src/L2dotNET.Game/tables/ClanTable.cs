@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.communities;
-using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.Communities;
+using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Tables
 {
     class ClanTable
     {

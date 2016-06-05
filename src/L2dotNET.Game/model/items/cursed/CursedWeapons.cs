@@ -2,7 +2,7 @@
 using System.Linq;
 using log4net;
 
-namespace L2dotNET.GameService.Model.items.cursed
+namespace L2dotNET.GameService.Model.Items.Cursed
 {
     class CursedWeapons
     {

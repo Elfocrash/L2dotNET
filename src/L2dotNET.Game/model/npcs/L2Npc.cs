@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Timers;
-using L2dotNET.GameService.ai.template;
-using L2dotNET.GameService.Model.items;
-using L2dotNET.GameService.Model.npcs.ai;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.quests;
-using L2dotNET.GameService.Model.skills2;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables;
-using L2dotNET.GameService.tables.multisell;
-using L2dotNET.GameService.tools;
+using L2dotNET.GameService.Ai.Template;
+using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Npcs.Ai;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Quests;
+using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables;
+using L2dotNET.GameService.Tables.Multisell;
 using L2dotNET.GameService.Templates;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Tools;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.npcs
+namespace L2dotNET.GameService.Model.Npcs
 {
     public class L2Npc : L2Character
     {

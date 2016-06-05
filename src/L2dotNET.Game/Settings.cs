@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Properties
+﻿namespace L2dotNET.GameService
 {
     // This class allows you to handle specific events on the settings class:
     //  The SettingChanging event is raised before a setting's value is changed.

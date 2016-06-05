@@ -1,8 +1,8 @@
-﻿using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables;
 
-namespace L2dotNET.GameService.network.clientpackets.RecipeAPI
+namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
 {
     class RequestRecipeItemMakeInfo : GameServerNetworkRequest
     {

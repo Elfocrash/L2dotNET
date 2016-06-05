@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Timers;
 using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.Model.items;
-using L2dotNET.GameService.Model.playable;
-using L2dotNET.GameService.Model.playable.petai;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.skills;
-using L2dotNET.GameService.Model.skills2;
-using L2dotNET.GameService.Model.stats;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tools;
+using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Playable;
+using L2dotNET.GameService.Model.Playable.PetAI;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Skills;
+using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.GameService.Model.Stats;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tools;
 
-namespace L2dotNET.GameService.world
+namespace L2dotNET.GameService.World
 {
     public class L2Character : L2Object
     {

@@ -2,13 +2,13 @@
 using System.Net;
 using System.Net.Sockets;
 using log4net;
-using L2dotNET.LoginService.model;
+using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using Ninject;
 
-namespace L2dotNET.LoginService.gscommunication
+namespace L2dotNET.LoginService.GSCommunication
 {
     public class ServerThreadPool
     {

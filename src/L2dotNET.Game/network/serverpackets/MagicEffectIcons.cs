@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace L2dotNET.GameService.network.serverpackets
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     public class MagicEffectIcons : GameServerNetworkPacket
     {

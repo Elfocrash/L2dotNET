@@ -1,5 +1,5 @@
 ﻿using System;
-using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Managers
 {

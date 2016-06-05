@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Remoting.Contexts;
-using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.Items;
 
-namespace L2dotNET.GameService.Model.inventory
+namespace L2dotNET.GameService.Model.Inventory
 {
     [Synchronization]
     public class InvTemplate

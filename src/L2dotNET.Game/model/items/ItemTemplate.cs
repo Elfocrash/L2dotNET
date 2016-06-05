@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.inventory;
-using L2dotNET.GameService.Model.skills2;
-using L2dotNET.GameService.Model.skills2.effects;
+using L2dotNET.GameService.Model.Inventory;
+using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.GameService.Model.Skills2.Effects;
 
-namespace L2dotNET.GameService.Model.items
+namespace L2dotNET.GameService.Model.Items
 {
     public class ItemTemplate
     {

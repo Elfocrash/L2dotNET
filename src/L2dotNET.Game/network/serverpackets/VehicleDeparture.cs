@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.Model.vehicles;
+﻿using L2dotNET.GameService.Model.Vehicles;
 
-namespace L2dotNET.GameService.network.serverpackets
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class VehicleDeparture : GameServerNetworkPacket
     {

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Remoting.Contexts;
 using System.Timers;
-using L2dotNET.GameService.network;
-using L2dotNET.GameService.network.serverpackets;
+using L2dotNET.GameService.Network;
+using L2dotNET.GameService.Network.Serverpackets;
 
-namespace L2dotNET.GameService.Model.player
+namespace L2dotNET.GameService.Model.Player
 {
     [Synchronization]
     public class L2Party

@@ -1,7 +1,7 @@
-﻿using L2dotNET.GameService.Model.skills2;
-using L2dotNET.GameService.world;
+﻿using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.network.serverpackets
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     public class MagicSkillUse : GameServerNetworkPacket
     {

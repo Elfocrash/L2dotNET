@@ -1,9 +1,9 @@
 ﻿using System;
 using L2dotNET.GameService.Managers;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
 
-namespace L2dotNET.GameService.network.clientpackets.ItemEnchantAPI
+namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 {
     class RequestEnchantItem : GameServerNetworkRequest
     {

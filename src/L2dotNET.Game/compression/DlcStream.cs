@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 
-namespace L2dotNET.GameService.compression
+namespace L2dotNET.GameService.Compression
 {
     class DlcStream
     {

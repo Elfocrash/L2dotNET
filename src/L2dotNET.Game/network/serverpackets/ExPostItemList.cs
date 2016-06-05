@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.Items;
 
-namespace L2dotNET.GameService.network.serverpackets
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class ExPostItemList : GameServerNetworkPacket
     {

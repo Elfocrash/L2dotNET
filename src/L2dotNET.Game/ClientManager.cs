@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using log4net;
-using L2dotNET.GameService.network;
+using L2dotNET.GameService.Network;
 
 namespace L2dotNET.GameService
 {

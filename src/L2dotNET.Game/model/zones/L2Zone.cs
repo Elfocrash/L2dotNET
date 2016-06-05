@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Timers;
-using L2dotNET.GameService.Model.playable;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.zones.forms;
-using L2dotNET.GameService.network;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Playable;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Zones.Forms;
+using L2dotNET.GameService.Network;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.zones
+namespace L2dotNET.GameService.Model.Zones
 {
     public class L2Zone
     {
@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Model.zones
         public bool _enabled = false;
         public ZoneTemplate Template;
         public int InstanceID = -1;
-        public world.L2Object NpcCenter;
+        public L2Object NpcCenter;
 
         public SortedList<int, L2Object> ObjectsInside = new SortedList<int, L2Object>();
 

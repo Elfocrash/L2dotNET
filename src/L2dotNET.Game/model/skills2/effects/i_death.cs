@@ -1,7 +1,7 @@
 ﻿using System;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2.effects
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     class i_death : TEffect
     {
@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             rate = int.Parse(v[2]);
         }
 
-        public override TEffectResult onStart(L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             if (new Random().Next(100) < rate)
                 target.sendMessage("i_death " + death_type + " done on you");

@@ -1,9 +1,9 @@
 ﻿using System;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.npcs.decor
+namespace L2dotNET.GameService.Model.Npcs.Decor
 {
     public class L2StaticObject : L2Character
     {

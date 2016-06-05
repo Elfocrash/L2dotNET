@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.items;
-using L2dotNET.GameService.Model.playable.petai;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.skills;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables;
-using L2dotNET.GameService.tools;
+using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Playable.PetAI;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Skills;
+using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Templates;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Tools;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.playable
+namespace L2dotNET.GameService.Model.Playable
 {
     public class L2Summon : L2Character
     {
@@ -47,7 +48,7 @@ namespace L2dotNET.GameService.Model.playable
             Template = template;
             CStatsInit();
             //CharacterStat.setTemplate(template);
-            CurHP = CharacterStat.getStat(skills2.TEffectType.b_max_hp);
+            CurHP = CharacterStat.getStat(TEffectType.b_max_hp);
             MaxTime = 1200; //20 минут
             CurrentTime = MaxTime;
             Level = template.Level;

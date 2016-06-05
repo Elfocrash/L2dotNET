@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.playable;
-using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.Playable;
+using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.Model.npcs.ai
+namespace L2dotNET.GameService.Model.Npcs.Ai
 {
     public class AITemplate
     {

@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.Model.player;
+﻿using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.ai.npcai
+namespace L2dotNET.GameService.Ai.NpcAI
 {
     class black_judge_basic : citizen
     {

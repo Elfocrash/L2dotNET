@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using Ninject;
 
-namespace L2dotNET.GameService.network.clientpackets
+namespace L2dotNET.GameService.Network.Clientpackets
 {
     class CharacterSelected : GameServerNetworkRequest
     {
@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.network.clientpackets
             player.Gameclient = client;
             client.CurrentPlayer = player;
 
-            getClient().sendPacket(new serverpackets.CharacterSelected(player, client.SessionId));
+            getClient().sendPacket(new Serverpackets.CharacterSelected(player, client.SessionId));
         }
 
         private static void PlayerModelMapping(PlayerModel playerModel, L2Player player)

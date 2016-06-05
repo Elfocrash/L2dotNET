@@ -1,9 +1,9 @@
-﻿using L2dotNET.GameService.Model.inventory;
-using L2dotNET.GameService.Model.npcs.cubic;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.skills2;
+﻿using L2dotNET.GameService.Model.Inventory;
+using L2dotNET.GameService.Model.Npcs.Cubic;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Skills2;
 
-namespace L2dotNET.GameService.network.serverpackets
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class UserInfo : GameServerNetworkPacket
     {

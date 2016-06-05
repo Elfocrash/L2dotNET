@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.Model.player;
+﻿using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.Model.items.effects
+namespace L2dotNET.GameService.Model.Items.Effects
 {
     class Calculator : ItemEffect
     {
@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Model.items.effects
 
         public override void UsePlayer(L2Player player, L2Item item)
         {
-            player.sendPacket(new network.serverpackets.Calculator());
+            player.sendPacket(new Network.Serverpackets.Calculator());
         }
     }
 }

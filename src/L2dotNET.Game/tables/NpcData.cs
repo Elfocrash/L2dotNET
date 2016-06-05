@@ -4,15 +4,15 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.GameService.Model.items;
-using L2dotNET.GameService.Model.npcs;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables.admin_bypass;
-using L2dotNET.GameService.tables.ndextend;
+using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Npcs;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables.Admin_Bypass;
+using L2dotNET.GameService.Tables.Ndextend;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Tables
 {
     class NpcData
     {

@@ -3,9 +3,9 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.tables.admin_bypass
+namespace L2dotNET.GameService.Tables.Admin_Bypass
 {
     public class ABTeleport
     {

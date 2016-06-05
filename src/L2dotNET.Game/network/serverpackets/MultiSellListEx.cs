@@ -1,13 +1,13 @@
-﻿using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.tables.multisell;
+﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Tables.Multisell;
 
-namespace L2dotNET.GameService.network.serverpackets
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class MultiSellListEx : GameServerNetworkPacket
     {
-        private readonly L2dotNET.GameService.tables.multisell.MultiSellList list;
+        private readonly MultiSellList list;
 
-        public MultiSellListEx(L2Player player, L2dotNET.GameService.tables.multisell.MultiSellList list)
+        public MultiSellListEx(L2Player player, MultiSellList list)
         {
             this.list = list;
         }

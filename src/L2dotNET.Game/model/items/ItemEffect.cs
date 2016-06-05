@@ -1,10 +1,10 @@
 ﻿using log4net;
-using L2dotNET.GameService.Model.playable;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Playable;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.items
+namespace L2dotNET.GameService.Model.Items
 {
     public class ItemEffect
     {

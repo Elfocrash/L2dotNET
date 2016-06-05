@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using log4net;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.structures;
-using L2dotNET.GameService.network;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Structures;
+using L2dotNET.GameService.Network;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables;
 
-namespace L2dotNET.GameService.Model.communities
+namespace L2dotNET.GameService.Model.Communities
 {
     public class L2Clan
     {

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Runtime.Remoting.Contexts;
 using log4net;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.controllers
+namespace L2dotNET.GameService.Controllers
 {
     [Synchronization]
     public class GameTime

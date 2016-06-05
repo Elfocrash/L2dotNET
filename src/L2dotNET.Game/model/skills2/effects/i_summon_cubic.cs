@@ -1,8 +1,8 @@
-﻿using L2dotNET.GameService.Model.npcs.cubic;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.world;
+﻿using L2dotNET.GameService.Model.Npcs.Cubic;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2.effects
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     public class i_summon_cubic : TEffect
     {
@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             type = TEffectType.i_summon_cubic;
         }
 
-        public override TEffectResult onStart(L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             L2Player player = caster as L2Player;
             CubicTemplate template = CubicController.getController().getCubic(id, lvl);

@@ -1,9 +1,9 @@
 ﻿using System;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.structures;
-using L2dotNET.GameService.tables;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Structures;
+using L2dotNET.GameService.Tables;
 
-namespace L2dotNET.GameService.Model.npcs.decor
+namespace L2dotNET.GameService.Model.Npcs.Decor
 {
     public class L2Door : L2StaticObject
     {

@@ -1,9 +1,9 @@
-﻿using L2dotNET.GameService.Model.npcs;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.skills2;
-using L2dotNET.GameService.world;
+﻿using L2dotNET.GameService.Model.Npcs;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.quests
+namespace L2dotNET.GameService.Model.Quests
 {
     public class QuestOrigin
     {

@@ -1,7 +1,7 @@
-﻿using L2dotNET.GameService.Model.skills2.conds;
-using L2dotNET.GameService.Model.skills2.effects;
+﻿using L2dotNET.GameService.Model.Skills2.Conds;
+using L2dotNET.GameService.Model.Skills2.Effects;
 
-namespace L2dotNET.GameService.Model.skills2
+namespace L2dotNET.GameService.Model.Skills2
 {
     class TEffectRegistrator
     {

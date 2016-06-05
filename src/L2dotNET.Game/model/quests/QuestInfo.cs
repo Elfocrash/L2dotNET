@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Model.quests
+﻿namespace L2dotNET.GameService.Model.Quests
 {
     public class QuestInfo
     {

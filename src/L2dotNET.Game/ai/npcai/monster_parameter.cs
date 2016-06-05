@@ -1,7 +1,8 @@
-﻿using L2dotNET.GameService.ai.template;
-using L2dotNET.GameService.Model.playable;
+﻿using L2dotNET.GameService.Ai.Template;
+using L2dotNET.GameService.Model.Playable;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.ai.npcai
+namespace L2dotNET.GameService.Ai.NpcAI
 {
     public class monster_parameter : AI
     {
@@ -62,7 +63,7 @@ namespace L2dotNET.GameService.ai.npcai
         public int LongRangeGuardRate = -1;
         public int SeeCreatureAttackerTime = -1;
 
-        public override void AttackFinished(world.L2Character target)
+        public override void AttackFinished(L2Character target)
         {
             if (target is L2Summon)
             {

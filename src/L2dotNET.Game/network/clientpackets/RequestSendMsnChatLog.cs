@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.network.clientpackets
+﻿namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestSendMsnChatLog : GameServerNetworkRequest
     {

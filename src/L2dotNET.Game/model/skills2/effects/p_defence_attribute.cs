@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Model.skills2.effects
+﻿using L2dotNET.GameService.World;
+
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     public class p_defence_attribute : TEffect
     {
@@ -17,7 +19,7 @@
             value = int.Parse(v[2]);
         }
 
-        public override TEffectResult onStart(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             return nothing;
         }

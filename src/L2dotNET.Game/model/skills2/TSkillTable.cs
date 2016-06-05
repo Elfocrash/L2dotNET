@@ -4,10 +4,10 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 using log4net;
-using L2dotNET.GameService.compression;
+using L2dotNET.GameService.Compression;
 using L2dotNET.GameService.Enums;
 
-namespace L2dotNET.GameService.Model.skills2
+namespace L2dotNET.GameService.Model.Skills2
 {
     class TSkillTable
     {

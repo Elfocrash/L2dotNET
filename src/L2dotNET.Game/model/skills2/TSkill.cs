@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.GameService.Model.npcs.decor;
-using L2dotNET.GameService.Model.playable;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tools;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Npcs.Decor;
+using L2dotNET.GameService.Model.Playable;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tools;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2
+namespace L2dotNET.GameService.Model.Skills2
 {
     public class TSkill
     {

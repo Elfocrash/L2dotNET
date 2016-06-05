@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.items;
-using L2dotNET.GameService.Model.npcs;
-using L2dotNET.GameService.Model.playable;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Npcs;
+using L2dotNET.GameService.Model.Playable;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.network.serverpackets
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     public class SystemMessage : GameServerNetworkPacket
     {

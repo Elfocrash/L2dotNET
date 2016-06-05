@@ -97,11 +97,11 @@
     <Compile Include="Config\Config.cs" />
     <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="DepInjectionModule.cs" />
-    <Compile Include="gscommunication\ServerThread.cs" />
+    <Compile Include="GSCommunication\ServerThread.cs" />
     <Compile Include="LoginServer.cs" />
-    <Compile Include="managers\NetRedClass.cs" />
-    <Compile Include="managers\NetworkRedirect.cs" />
-    <Compile Include="managers\ClientManager.cs" />
+    <Compile Include="Managers\NetRedClass.cs" />
+    <Compile Include="Managers\NetworkRedirect.cs" />
+    <Compile Include="Managers\ClientManager.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestPlayersOnline.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestPlayerInGame.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestLoginAuth.cs" />
@@ -114,11 +114,11 @@
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginServPing.cs" />
     <Compile Include="PreReqValidation.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="managers\NetworkBlock.cs" />
-    <Compile Include="gscommunication\ServerThreadPool.cs" />
-    <Compile Include="model\L2Server.cs" />
+    <Compile Include="Managers\NetworkBlock.cs" />
+    <Compile Include="GSCommunication\ServerThreadPool.cs" />
+    <Compile Include="Model\L2Server.cs" />
     <Compile Include="Network\LoginClient.cs" />
-    <Compile Include="Network\crypt\LoginCrypt.cs" />
+    <Compile Include="Network\Crypt\LoginCrypt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestServerLogin.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestServerList.cs" />
@@ -132,8 +132,8 @@
     <Compile Include="Network\OuterNetwork\ServerPackets\Init.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\L2Crypt.dll" />
-    <Content Include="lib\Org.BouncyCastle.dll" />
+    <Content Include="Lib\L2Crypt.dll" />
+    <Content Include="Lib\Org.BouncyCastle.dll" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

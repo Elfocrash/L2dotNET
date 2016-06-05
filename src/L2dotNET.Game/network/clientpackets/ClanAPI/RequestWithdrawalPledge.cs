@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.Model.player;
+﻿using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.network.clientpackets.ClanAPI
+namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 {
     class RequestWithdrawalPledge : GameServerNetworkRequest
     {

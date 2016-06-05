@@ -1,8 +1,8 @@
-﻿using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.world;
+﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.vehicles
+namespace L2dotNET.GameService.Model.Vehicles
 {
     public class L2Boat : L2Object
     {

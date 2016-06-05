@@ -1,7 +1,7 @@
 ﻿using log4net;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.playable.petai
+namespace L2dotNET.GameService.Model.Playable.PetAI
 {
     public class StandartAiTemplate
     {

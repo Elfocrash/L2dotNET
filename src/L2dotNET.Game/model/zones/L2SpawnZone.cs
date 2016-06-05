@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.World;
 using L2dotNET.Models;
 using L2dotNET.Utility.Geometry;
 
-namespace L2dotNET.GameService.Model.zones
+namespace L2dotNET.GameService.Model.Zones
 {
     public class L2SpawnZone : L2ZoneType
     {

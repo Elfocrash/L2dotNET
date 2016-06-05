@@ -1,9 +1,9 @@
-﻿using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables;
-using L2dotNET.GameService.tables.multisell;
+﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables;
+using L2dotNET.GameService.Tables.Multisell;
 
-namespace L2dotNET.GameService.ai.npcai
+namespace L2dotNET.GameService.Ai.NpcAI
 {
     class merchant : citizen
     {

@@ -1,6 +1,6 @@
 ﻿using log4net;
 
-namespace L2dotNET.GameService.network.clientpackets.PartyAPI
+namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 {
     class RequestPartyMatchList : GameServerNetworkRequest
     {

@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Model.structures.conq
+﻿namespace L2dotNET.GameService.Model.Structures.Conq
 {
     class FortressOfTheDead : ConquerableHideout
     {

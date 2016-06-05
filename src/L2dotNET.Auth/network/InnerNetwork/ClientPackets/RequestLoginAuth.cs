@@ -1,6 +1,6 @@
 ﻿using log4net;
-using L2dotNET.LoginService.gscommunication;
-using L2dotNET.LoginService.model;
+using L2dotNET.LoginService.GSCommunication;
+using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
 

@@ -1,7 +1,7 @@
-﻿using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Tables;
 
-namespace L2dotNET.GameService.network.serverpackets
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class NpcHtmlMessage : GameServerNetworkPacket
     {

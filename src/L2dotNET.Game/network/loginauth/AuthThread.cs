@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using log4net;
-using L2dotNET.GameService.network.loginauth.send;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Network.LoginAuth.Send;
+using L2dotNET.GameService.World;
 using L2dotNET.Models;
 
-namespace L2dotNET.GameService.network.loginauth
+namespace L2dotNET.GameService.Network.LoginAuth
 {
     public class AuthThread
     {
@@ -73,7 +73,7 @@ namespace L2dotNET.GameService.network.loginauth
 
             IsConnected = true;
 
-            sendPacket(new LoginAuth());
+            sendPacket(new Send.LoginAuth());
             sendPacket(new LoginServPing(this));
             new System.Threading.Thread(read).Start();
         }

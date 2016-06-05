@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
 using log4net;
-using L2dotNET.GameService.network.loginauth;
-using L2dotNET.GameService.network.loginauth.recv;
+using L2dotNET.GameService.Network.LoginAuth;
+using L2dotNET.GameService.Network.LoginAuth.Recv;
 
-namespace L2dotNET.GameService.network
+namespace L2dotNET.GameService.Network
 {
     public class PacketHandlerAuth
     {

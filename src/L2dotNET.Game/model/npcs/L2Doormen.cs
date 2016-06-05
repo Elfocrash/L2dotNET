@@ -1,9 +1,9 @@
-﻿using L2dotNET.GameService.Model.npcs.decor;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.structures;
-using L2dotNET.GameService.network.serverpackets;
+﻿using L2dotNET.GameService.Model.Npcs.Decor;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Structures;
+using L2dotNET.GameService.Network.Serverpackets;
 
-namespace L2dotNET.GameService.Model.npcs
+namespace L2dotNET.GameService.Model.Npcs
 {
     class L2Doormen : L2Npc
     {

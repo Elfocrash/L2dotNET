@@ -1,7 +1,7 @@
-﻿using L2dotNET.GameService.Model.npcs;
-using L2dotNET.GameService.Model.player;
+﻿using L2dotNET.GameService.Model.Npcs;
+using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.Model.quests.data
+namespace L2dotNET.GameService.Model.Quests.Data
 {
     class _0013_Parcel_Deliverys : QuestOrigin
     {

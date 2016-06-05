@@ -5,7 +5,7 @@ using log4net;
 using L2Crypt;
 using L2dotNET.LoginService.Network;
 
-namespace L2dotNET.LoginService.managers
+namespace L2dotNET.LoginService.Managers
 {
     sealed class ClientManager
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using log4net;
-using L2dotNET.GameService.Model.structures;
+using L2dotNET.GameService.Model.Structures;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Tables
 {
     class StructureTable
     {

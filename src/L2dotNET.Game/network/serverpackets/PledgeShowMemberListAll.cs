@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.communities;
+using L2dotNET.GameService.Model.Communities;
 
-namespace L2dotNET.GameService.network.serverpackets
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class PledgeShowMemberListAll : GameServerNetworkPacket
     {

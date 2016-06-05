@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.Model.player;
+﻿using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.network.clientpackets.PartyAPI
+namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 {
     class RequestPartyLootModification : GameServerNetworkRequest
     {

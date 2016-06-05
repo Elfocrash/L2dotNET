@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Timers;
-using L2dotNET.GameService.ai.template;
+using L2dotNET.GameService.Ai.Template;
 using L2dotNET.GameService.Managers;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.structures;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables;
-using L2dotNET.GameService.tables.multisell;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Structures;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables;
+using L2dotNET.GameService.Tables.Multisell;
 
-namespace L2dotNET.GameService.ai.npcai
+namespace L2dotNET.GameService.Ai.NpcAI
 {
     class citizen : AI
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using log4net;
 
-namespace L2dotNET.GameService.network.loginauth
+namespace L2dotNET.GameService.Network.LoginAuth
 {
     public abstract class ReceiveAuthPacket
     {

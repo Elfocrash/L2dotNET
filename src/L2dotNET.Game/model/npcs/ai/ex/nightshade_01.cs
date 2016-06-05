@@ -1,11 +1,12 @@
-﻿using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.skills2;
+﻿using L2dotNET.GameService.Model.Playable;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Skills2;
 
-namespace L2dotNET.GameService.Model.npcs.ai.ex
+namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
 {
     class nightshade_01 : AITemplate
     {
-        public override void onActionClicked(L2Player player, playable.L2Summon pet, int id)
+        public override void onActionClicked(L2Player player, L2Summon pet, int id)
         {
             string value = null;
             switch (id)

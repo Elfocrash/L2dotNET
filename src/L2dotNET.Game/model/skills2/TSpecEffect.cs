@@ -1,8 +1,8 @@
-﻿using L2dotNET.GameService.Model.items;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.world;
+﻿using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2
+namespace L2dotNET.GameService.Model.Skills2
 {
     public class TSpecEffect
     {

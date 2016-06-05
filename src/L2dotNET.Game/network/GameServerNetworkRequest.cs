@@ -2,7 +2,7 @@
 using System.Runtime.Remoting.Contexts;
 using log4net;
 
-namespace L2dotNET.GameService.network
+namespace L2dotNET.GameService.Network
 {
     [Synchronization]
     public abstract class GameServerNetworkRequest

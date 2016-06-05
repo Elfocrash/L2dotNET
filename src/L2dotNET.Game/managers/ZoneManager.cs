@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Managers
 {

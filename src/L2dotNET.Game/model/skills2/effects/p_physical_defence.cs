@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.network.serverpackets;
+﻿using L2dotNET.GameService.Network.Serverpackets;
 
-namespace L2dotNET.GameService.Model.skills2.effects
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     class p_physical_defence : TEffect
     {

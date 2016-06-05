@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Remoting.Contexts;
 
-namespace L2dotNET.GameService.network
+namespace L2dotNET.GameService.Network
 {
     [Synchronization]
     public abstract class GameServerNetworkPacket

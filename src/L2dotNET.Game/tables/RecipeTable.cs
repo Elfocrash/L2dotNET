@@ -2,9 +2,9 @@
 using System.IO;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.Items;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Tables
 {
     class RecipeTable
     {

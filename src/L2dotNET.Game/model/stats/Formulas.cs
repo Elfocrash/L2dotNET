@@ -1,7 +1,8 @@
 ﻿using System;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.stats
+namespace L2dotNET.GameService.Model.Stats
 {
     class Formulas
     {
@@ -9,7 +10,7 @@ namespace L2dotNET.GameService.Model.stats
 
         public static bool checkMissed(L2Character attacker, L2Character target)
         {
-            int delta = (int)(attacker.CharacterStat.getStat(skills2.TEffectType.b_accuracy) - target.CharacterStat.getStat(skills2.TEffectType.b_evasion));
+            int delta = (int)(attacker.CharacterStat.getStat(TEffectType.b_accuracy) - target.CharacterStat.getStat(TEffectType.b_evasion));
 
             double chance;
             if (delta >= 10)
@@ -141,17 +142,17 @@ namespace L2dotNET.GameService.Model.stats
 
         public static double checkShieldDef(L2Character attacker, L2Character target)
         {
-            double rate = target.CharacterStat.getStat(skills2.TEffectType.b_shield_rate);
+            double rate = target.CharacterStat.getStat(TEffectType.b_shield_rate);
 
             if (rnd.Next(100) > rate)
                 return 0;
 
-            return target.CharacterStat.getStat(skills2.TEffectType.p_physical_shield_defence);
+            return target.CharacterStat.getStat(TEffectType.p_physical_shield_defence);
         }
 
         public static bool checkCrit(L2Character attacker, L2Character target)
         {
-            double rate = attacker.CharacterStat.getStat(skills2.TEffectType.b_critical_rate);
+            double rate = attacker.CharacterStat.getStat(TEffectType.b_critical_rate);
 
             if (rnd.Next(1000) <= rate)
                 return true;
@@ -161,8 +162,8 @@ namespace L2dotNET.GameService.Model.stats
 
         public static double getPhysHitDamage(L2Character attacker, L2Character target, double sdef)
         {
-            double atk = attacker.CharacterStat.getStat(skills2.TEffectType.p_physical_attack);
-            double def = target.CharacterStat.getStat(skills2.TEffectType.p_physical_defense);
+            double atk = attacker.CharacterStat.getStat(TEffectType.p_physical_attack);
+            double def = target.CharacterStat.getStat(TEffectType.p_physical_defense);
 
             double basedamage = 70 * atk / def;
 
@@ -178,8 +179,8 @@ namespace L2dotNET.GameService.Model.stats
 
         public static double getPhysSkillHitDamage(L2Character attacker, L2Character target, int power)
         {
-            double atk = attacker.CharacterStat.getStat(skills2.TEffectType.p_physical_attack);
-            double def = target.CharacterStat.getStat(skills2.TEffectType.p_physical_defense);
+            double atk = attacker.CharacterStat.getStat(TEffectType.p_physical_attack);
+            double def = target.CharacterStat.getStat(TEffectType.p_physical_defense);
 
             atk += power;
             double basedamage = 70 * atk / def;

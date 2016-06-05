@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Tables
 {
     class FString
     {

@@ -1,7 +1,7 @@
 ﻿using L2dotNET.GameService.Handlers;
-using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.network.clientpackets
+namespace L2dotNET.GameService.Network.Clientpackets
 {
     class SendBypassBuildCmd : GameServerNetworkRequest
     {

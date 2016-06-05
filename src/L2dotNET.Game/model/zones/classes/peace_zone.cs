@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Tables;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.zones.classes
+namespace L2dotNET.GameService.Model.Zones.Classes
 {
     class peace_zone : L2Zone
     {
@@ -10,7 +11,7 @@ namespace L2dotNET.GameService.Model.zones.classes
             _enabled = true;
         }
 
-        public override void onEnter(world.L2Object obj)
+        public override void onEnter(L2Object obj)
         {
             if (!_enabled)
                 return;
@@ -20,7 +21,7 @@ namespace L2dotNET.GameService.Model.zones.classes
             obj.onEnterZone(this);
         }
 
-        public override void onExit(world.L2Object obj, bool cls)
+        public override void onExit(L2Object obj, bool cls)
         {
             if (!_enabled)
                 return;

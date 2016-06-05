@@ -3,8 +3,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using log4net;
-using L2dotNET.LoginService.gscommunication;
-using L2dotNET.LoginService.managers;
+using L2dotNET.LoginService.GSCommunication;
+using L2dotNET.LoginService.Managers;
 using Ninject;
 
 namespace L2dotNET.LoginService

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.GameService.Model.npcs;
+using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Templates;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Tables
 {
     public class SpawnTable
     {

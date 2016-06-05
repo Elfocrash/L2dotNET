@@ -1,4 +1,4 @@
-﻿using L2dotNET.LoginService.gscommunication;
+﻿using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets

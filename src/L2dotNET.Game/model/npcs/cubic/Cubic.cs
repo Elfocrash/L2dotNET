@@ -1,7 +1,7 @@
 ﻿using System;
-using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.Model.npcs.cubic
+namespace L2dotNET.GameService.Model.Npcs.Cubic
 {
     public class Cubic
     {

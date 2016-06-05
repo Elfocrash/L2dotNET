@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Model.skills2
+﻿namespace L2dotNET.GameService.Model.Skills2
 {
     public class SkillLevelParam
     {

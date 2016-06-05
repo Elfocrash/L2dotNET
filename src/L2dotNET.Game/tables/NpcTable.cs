@@ -6,7 +6,7 @@ using System.Xml;
 using log4net;
 using L2dotNET.GameService.Templates;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Tables
 {
     class NpcTable
     {

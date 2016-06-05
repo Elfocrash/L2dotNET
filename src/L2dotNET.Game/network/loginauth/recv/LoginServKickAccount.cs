@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.network.loginauth.recv
+﻿namespace L2dotNET.GameService.Network.LoginAuth.Recv
 {
     class LoginServKickAccount : ReceiveAuthPacket
     {

@@ -1,13 +1,14 @@
-﻿using L2dotNET.GameService.Model.items;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2.effects
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     class a_convert_item : TEffect
     {
-        public override TEffectResult onStart(world.L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             L2Player player = caster as L2Player;
             L2Item item = player.getWeaponItem();
@@ -40,7 +41,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             return nothing;
         }
 
-        public override bool canUse(world.L2Character caster)
+        public override bool canUse(L2Character caster)
         {
             L2Item item = caster.getWeaponItem();
             if (item == null)

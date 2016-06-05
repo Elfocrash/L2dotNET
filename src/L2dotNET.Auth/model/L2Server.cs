@@ -1,8 +1,8 @@
-﻿using L2dotNET.LoginService.gscommunication;
-using L2dotNET.LoginService.managers;
+﻿using L2dotNET.LoginService.GSCommunication;
+using L2dotNET.LoginService.Managers;
 using L2dotNET.LoginService.Network;
 
-namespace L2dotNET.LoginService.model
+namespace L2dotNET.LoginService.Model
 {
     public class L2Server
     {

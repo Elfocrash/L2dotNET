@@ -1,15 +1,15 @@
-﻿using L2dotNET.GameService.Model.inventory;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.skills2;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Model.Inventory;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Templates;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.World;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using Ninject;
 
-namespace L2dotNET.GameService.network.clientpackets
+namespace L2dotNET.GameService.Network.Clientpackets
 {
     class CharacterCreate : GameServerNetworkRequest
     {

@@ -2,17 +2,17 @@
 using System.Net;
 using System.Net.Sockets;
 using log4net;
-using L2dotNET.GameService.controllers;
+using L2dotNET.GameService.Controllers;
 using L2dotNET.GameService.Handlers;
 using L2dotNET.GameService.Managers;
-using L2dotNET.GameService.Model.items;
-using L2dotNET.GameService.Model.npcs.ai;
-using L2dotNET.GameService.Model.quests;
-using L2dotNET.GameService.network;
-using L2dotNET.GameService.network.loginauth;
-using L2dotNET.GameService.tables;
-using L2dotNET.GameService.tables.multisell;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Npcs.Ai;
+using L2dotNET.GameService.Model.Quests;
+using L2dotNET.GameService.Network;
+using L2dotNET.GameService.Network.LoginAuth;
+using L2dotNET.GameService.Tables;
+using L2dotNET.GameService.Tables.Multisell;
+using L2dotNET.GameService.World;
 using L2dotNET.Utility;
 using Ninject;
 

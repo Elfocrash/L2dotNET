@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.network.loginauth.send
+﻿namespace L2dotNET.GameService.Network.LoginAuth.Send
 {
     class LoginServPing : GameServerNetworkPacket
     {

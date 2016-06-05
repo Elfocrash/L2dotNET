@@ -4,7 +4,7 @@ using System.IO;
 using log4net;
 using Microsoft.CSharp;
 
-namespace L2dotNET.GameService.scripting
+namespace L2dotNET.GameService.Scripting
 {
     /// <summary>
     /// Idea L2cemu

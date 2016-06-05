@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Model.player.transformation.data
+﻿namespace L2dotNET.GameService.Model.Player.Transformation.Data
 {
     class _20003_sujin : TransformTemplate
     {

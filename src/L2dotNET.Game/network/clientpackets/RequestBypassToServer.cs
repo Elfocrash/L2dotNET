@@ -1,11 +1,11 @@
 ﻿using log4net;
 using L2dotNET.GameService.Managers;
-using L2dotNET.GameService.Model.npcs;
-using L2dotNET.GameService.Model.npcs.ai;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.quests;
+using L2dotNET.GameService.Model.Npcs;
+using L2dotNET.GameService.Model.Npcs.Ai;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Quests;
 
-namespace L2dotNET.GameService.network.clientpackets
+namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestBypassToServer : GameServerNetworkRequest
     {

@@ -6,32 +6,33 @@ using System.Runtime.Remoting.Contexts;
 using System.Timers;
 using log4net;
 using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.Model.communities;
-using L2dotNET.GameService.Model.inventory;
-using L2dotNET.GameService.Model.items;
-using L2dotNET.GameService.Model.npcs;
-using L2dotNET.GameService.Model.npcs.cubic;
-using L2dotNET.GameService.Model.npcs.decor;
-using L2dotNET.GameService.Model.playable;
-using L2dotNET.GameService.Model.player.ai;
-using L2dotNET.GameService.Model.player.partials;
-using L2dotNET.GameService.Model.player.transformation;
-using L2dotNET.GameService.Model.quests;
-using L2dotNET.GameService.Model.skills;
-using L2dotNET.GameService.Model.skills2;
-using L2dotNET.GameService.Model.skills2.effects;
-using L2dotNET.GameService.Model.vehicles;
-using L2dotNET.GameService.network;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables;
-using L2dotNET.GameService.tools;
+using L2dotNET.GameService.Model.Communities;
+using L2dotNET.GameService.Model.Inventory;
+using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Npcs;
+using L2dotNET.GameService.Model.Npcs.Cubic;
+using L2dotNET.GameService.Model.Npcs.Decor;
+using L2dotNET.GameService.Model.Playable;
+using L2dotNET.GameService.Model.Player.AI;
+using L2dotNET.GameService.Model.Player.Partials;
+using L2dotNET.GameService.Model.Player.Transformation;
+using L2dotNET.GameService.Model.Quests;
+using L2dotNET.GameService.Model.Skills;
+using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.GameService.Model.Skills2.Effects;
+using L2dotNET.GameService.Model.Vehicles;
+using L2dotNET.GameService.Network;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables;
+using L2dotNET.GameService.Tables.Multisell;
 using L2dotNET.GameService.Templates;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Tools;
+using L2dotNET.GameService.World;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using Ninject;
 
-namespace L2dotNET.GameService.Model.player
+namespace L2dotNET.GameService.Model.Player
 {
     [Synchronization]
     public partial class L2Player : L2Character
@@ -2650,7 +2651,7 @@ namespace L2dotNET.GameService.Model.player
         private DateTime pingTimeout;
         private int lastPingId;
         public int Ping = -1;
-        public L2dotNET.GameService.tables.multisell.MultiSellList CustomMultiSellList;
+        public MultiSellList CustomMultiSellList;
         public int LastRequestedMultiSellId = -1;
         public int AttackingId;
         public SortedList<int, TAcquireSkill> ActiveSkillTree;

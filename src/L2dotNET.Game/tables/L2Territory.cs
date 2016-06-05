@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using log4net;
-using L2dotNET.GameService.Model.npcs;
-using L2dotNET.GameService.Model.zones.forms;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Npcs;
+using L2dotNET.GameService.Model.Zones.Forms;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Tables
 {
     public class L2Territory
     {
@@ -176,7 +176,7 @@ namespace L2dotNET.GameService.tables
             STATUS = STATUS_ACTIVE;
         }
 
-        public void onDie(L2Warrior warrior, world.L2Character killer)
+        public void onDie(L2Warrior warrior, L2Character killer)
         {
             obj = null;
             if (RespawnTimer == null)

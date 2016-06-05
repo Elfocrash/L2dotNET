@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.tables;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Templates;
 
-namespace L2dotNET.GameService.network.clientpackets
+namespace L2dotNET.GameService.Network.Clientpackets
 {
     class NewCharacter : GameServerNetworkRequest
     {

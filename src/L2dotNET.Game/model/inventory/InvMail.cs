@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.items;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.quests;
-using L2dotNET.GameService.network.serverpackets;
+using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Quests;
+using L2dotNET.GameService.Network.Serverpackets;
 
-namespace L2dotNET.GameService.Model.inventory
+namespace L2dotNET.GameService.Model.Inventory
 {
     public class InvMail : InvTemplate
     {

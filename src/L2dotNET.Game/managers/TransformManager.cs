@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.player.transformation;
-using L2dotNET.GameService.Model.player.transformation.data;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Player.Transformation;
+using L2dotNET.GameService.Model.Player.Transformation.Data;
 
 namespace L2dotNET.GameService.Managers
 {

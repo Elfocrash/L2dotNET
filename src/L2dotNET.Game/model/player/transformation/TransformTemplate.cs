@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.Model.Skills2;
 
-namespace L2dotNET.GameService.Model.player.transformation
+namespace L2dotNET.GameService.Model.Player.Transformation
 {
     public class TransformTemplate
     {

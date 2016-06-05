@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.npcs.cubic.data;
-using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.Model.Npcs.Cubic.Data;
+using L2dotNET.GameService.Model.Skills2;
 
-namespace L2dotNET.GameService.Model.npcs.cubic
+namespace L2dotNET.GameService.Model.Npcs.Cubic
 {
     public class CubicController
     {

@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Model.communities
+﻿namespace L2dotNET.GameService.Model.Communities
 {
     public class L2Alliance
     {

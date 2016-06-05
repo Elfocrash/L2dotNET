@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using L2dotNET.LoginService.gscommunication;
+using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Models;
 using L2dotNET.Network;

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using log4net;
-using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.Models;
 
-namespace L2dotNET.GameService.world
+namespace L2dotNET.GameService.World
 {
     public class L2World
     {

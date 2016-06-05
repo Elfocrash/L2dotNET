@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L2dotNET.GameService.Model.zones.forms
+namespace L2dotNET.GameService.Model.Zones.Forms
 {
     public class ZoneNPoly : ZoneForm
     {

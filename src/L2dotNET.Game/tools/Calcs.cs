@@ -1,7 +1,7 @@
 ﻿using System;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.tools
+namespace L2dotNET.GameService.Tools
 {
     class Calcs
     {

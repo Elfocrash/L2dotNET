@@ -1,7 +1,7 @@
-﻿using L2dotNET.GameService.Model.items.cursed;
-using L2dotNET.GameService.network.serverpackets;
+﻿using L2dotNET.GameService.Model.Items.Cursed;
+using L2dotNET.GameService.Network.Serverpackets;
 
-namespace L2dotNET.GameService.network.clientpackets
+namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestCursedWeaponList : GameServerNetworkRequest
     {

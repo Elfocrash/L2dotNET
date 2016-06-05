@@ -1,9 +1,9 @@
-﻿using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.stats;
-using L2dotNET.GameService.network.serverpackets;
-using L2dotNET.GameService.world;
+﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Stats;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.skills2.effects
+namespace L2dotNET.GameService.Model.Skills2.Effects
 {
     class i_p_attack : TEffect
     {
@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Model.skills2.effects
             unk3 = int.Parse(v[2]);
         }
 
-        public override TEffectResult onStart(L2Character caster, world.L2Character target)
+        public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             if (!(target is L2Character))
                 return nothing;

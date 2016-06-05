@@ -1,15 +1,15 @@
 ﻿using System.Runtime.Remoting.Contexts;
 using System.Threading;
 using log4net;
-using L2dotNET.GameService.network.clientpackets;
-using L2dotNET.GameService.network.clientpackets.ClanAPI;
-using L2dotNET.GameService.network.clientpackets.ItemEnchantAPI;
-using L2dotNET.GameService.network.clientpackets.PartyAPI;
-using L2dotNET.GameService.network.clientpackets.PetAPI;
-using L2dotNET.GameService.network.clientpackets.RecipeAPI;
-using L2dotNET.GameService.network.clientpackets.VehicleAPI;
+using L2dotNET.GameService.Network.Clientpackets;
+using L2dotNET.GameService.Network.Clientpackets.ClanAPI;
+using L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI;
+using L2dotNET.GameService.Network.Clientpackets.PartyAPI;
+using L2dotNET.GameService.Network.Clientpackets.PetAPI;
+using L2dotNET.GameService.Network.Clientpackets.RecipeAPI;
+using L2dotNET.GameService.Network.Clientpackets.VehicleAPI;
 
-namespace L2dotNET.GameService.network
+namespace L2dotNET.GameService.Network
 {
     [Synchronization]
     public class PacketHandler

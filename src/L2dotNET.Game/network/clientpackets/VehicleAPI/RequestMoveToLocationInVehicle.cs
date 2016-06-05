@@ -1,9 +1,9 @@
 ﻿using log4net;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.vehicles;
-using L2dotNET.GameService.network.serverpackets;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Vehicles;
+using L2dotNET.GameService.Network.Serverpackets;
 
-namespace L2dotNET.GameService.network.clientpackets.VehicleAPI
+namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 {
     class RequestMoveToLocationInVehicle : GameServerNetworkRequest
     {

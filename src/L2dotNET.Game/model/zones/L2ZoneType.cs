@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.Model.zones.forms;
-using L2dotNET.GameService.network;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Zones.Forms;
+using L2dotNET.GameService.Network;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.zones
+namespace L2dotNET.GameService.Model.Zones
 {
     public abstract class L2ZoneType
     {

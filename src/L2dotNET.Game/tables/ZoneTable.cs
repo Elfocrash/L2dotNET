@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
 using log4net;
-using L2dotNET.GameService.Model.zones;
-using L2dotNET.GameService.Model.zones.classes;
-using L2dotNET.GameService.Model.zones.forms;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Zones;
+using L2dotNET.GameService.Model.Zones.Classes;
+using L2dotNET.GameService.Model.Zones.Forms;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Tables
 {
     class ZoneTable
     {

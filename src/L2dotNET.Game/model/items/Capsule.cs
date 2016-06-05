@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.items
+namespace L2dotNET.GameService.Model.Items
 {
     public class Capsule
     {

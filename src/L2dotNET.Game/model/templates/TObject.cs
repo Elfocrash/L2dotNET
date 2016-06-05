@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Model.templates
+﻿namespace L2dotNET.GameService.Model.Templates
 {
     public class TObject
     {

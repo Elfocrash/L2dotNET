@@ -1,8 +1,8 @@
-﻿using L2dotNET.GameService.Model.communities;
-using L2dotNET.GameService.Model.player;
-using L2dotNET.GameService.network.serverpackets;
+﻿using L2dotNET.GameService.Model.Communities;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Network.Serverpackets;
 
-namespace L2dotNET.GameService.network.clientpackets.ClanAPI
+namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 {
     class RequestExSetPledgeCrestLarge : GameServerNetworkRequest
     {

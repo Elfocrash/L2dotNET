@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.GameService.Model.npcs;
-using L2dotNET.GameService.Model.npcs.decor;
-using L2dotNET.GameService.tables;
+using L2dotNET.GameService.Model.Npcs;
+using L2dotNET.GameService.Model.Npcs.Decor;
+using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Templates;
-using L2dotNET.GameService.world;
+using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Model.structures
+namespace L2dotNET.GameService.Model.Structures
 {
     public class HideoutTemplate
     {

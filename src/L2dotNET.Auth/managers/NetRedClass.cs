@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.LoginService.managers
+﻿namespace L2dotNET.LoginService.Managers
 {
     class NetRedClass
     {
