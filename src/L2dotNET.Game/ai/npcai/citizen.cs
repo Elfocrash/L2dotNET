@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Timers;
-using L2dotNET.GameService.Ai.Template;
 using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Structures;
@@ -8,9 +7,9 @@ using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Tables.Multisell;
 
-namespace L2dotNET.GameService.Ai.NpcAI
+namespace L2dotNET.GameService.AI.NpcAI
 {
-    class citizen : AI
+    class citizen : Template.AI
     {
         public string fnHi = "lector001.htm";
         public string fnFeudInfo = "gludio_feud_manager001.htm";

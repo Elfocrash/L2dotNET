@@ -1,6 +1,6 @@
 ﻿using L2dotNET.GameService.Model.Player;
 
-namespace L2dotNET.GameService.Ai.NpcAI
+namespace L2dotNET.GameService.AI.NpcAI
 {
     class henna_manager : citizen
     {

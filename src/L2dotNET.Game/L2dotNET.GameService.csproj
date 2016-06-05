@@ -91,14 +91,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ai\NpcAI\aidb_container.cs" />
-    <Compile Include="Ai\NpcAI\black_judge_basic.cs" />
-    <Compile Include="Ai\NpcAI\citizen.cs" />
-    <Compile Include="Ai\NpcAI\guild_master.cs" />
-    <Compile Include="Ai\NpcAI\henna_manager.cs" />
-    <Compile Include="Ai\NpcAI\merchant.cs" />
-    <Compile Include="Ai\NpcAI\monster_parameter.cs" />
-    <Compile Include="Ai\Template\AI.cs" />
+    <Compile Include="AI\NpcAI\aidb_container.cs" />
+    <Compile Include="AI\NpcAI\black_judge_basic.cs" />
+    <Compile Include="AI\NpcAI\citizen.cs" />
+    <Compile Include="AI\NpcAI\guild_master.cs" />
+    <Compile Include="AI\NpcAI\henna_manager.cs" />
+    <Compile Include="AI\NpcAI\merchant.cs" />
+    <Compile Include="AI\NpcAI\monster_parameter.cs" />
+    <Compile Include="AI\Template\AI.cs" />
     <Compile Include="ClientManager.cs" />
     <Compile Include="Compression\DlcStream.cs" />
     <Compile Include="ConfigFile.cs" />

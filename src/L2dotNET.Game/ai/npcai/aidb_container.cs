@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Ai.NpcAI
+﻿namespace L2dotNET.GameService.AI.NpcAI
 {
     public class tayrs_guard { }
 }

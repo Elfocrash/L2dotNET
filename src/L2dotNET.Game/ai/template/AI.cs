@@ -3,7 +3,7 @@ using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Ai.Template
+namespace L2dotNET.GameService.AI.Template
 {
     public class AI
     {

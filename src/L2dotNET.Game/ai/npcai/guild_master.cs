@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Ai.Template;
 using L2dotNET.GameService.Model.Communities;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
 
-namespace L2dotNET.GameService.Ai.NpcAI
+namespace L2dotNET.GameService.AI.NpcAI
 {
-    public class guild_master : AI
+    public class guild_master : Template.AI
     {
         private const int @proof_of_blood = 57;
         private const int @q_proof_of_alliance = 57;

@@ -1,10 +1,9 @@
-﻿using L2dotNET.GameService.Ai.Template;
-using L2dotNET.GameService.Model.Playable;
+﻿using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.World;
 
-namespace L2dotNET.GameService.Ai.NpcAI
+namespace L2dotNET.GameService.AI.NpcAI
 {
-    public class monster_parameter : AI
+    public class monster_parameter : Template.AI
     {
         public int AttackLowLevel = 0;
         public int RunAway = 1;

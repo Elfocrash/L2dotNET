@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Timers;
-using L2dotNET.GameService.Ai.Template;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Npcs.Ai;
 using L2dotNET.GameService.Model.Player;
@@ -21,7 +20,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public NpcTemplate Template;
         public bool _summoned;
         public bool structureControlled = false;
-        public AI AIProcessor;
+        public AI.Template.AI AIProcessor;
 
         //public virtual void setTemplate(NpcTemplate template)
         //{

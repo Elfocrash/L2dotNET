@@ -3,7 +3,7 @@ using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Tables.Multisell;
 
-namespace L2dotNET.GameService.Ai.NpcAI
+namespace L2dotNET.GameService.AI.NpcAI
 {
     class merchant : citizen
     {
