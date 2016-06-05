@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.network.l2recv
         {
             L2Player player = getClient().CurrentPlayer;
 
-            AdminAccess.Instance.request(player, _alias);
+            AdminCommandHandler.Instance.request(player, _alias);
         }
     }
 }

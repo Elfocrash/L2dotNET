@@ -64,7 +64,7 @@ namespace L2dotNET.GameService
 
             BlowFishKeygen.GenerateKeys();
 
-            AdminAccess.Instance.Initialize();
+            AdminCommandHandler.Instance.Initialize();
 
             QuestManager.Instance.Initialize();
 
