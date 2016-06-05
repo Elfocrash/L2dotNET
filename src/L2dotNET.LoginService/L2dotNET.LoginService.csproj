@@ -99,6 +99,7 @@
     <Compile Include="DepInjectionModule.cs" />
     <Compile Include="GSCommunication\ServerThread.cs" />
     <Compile Include="LoginServer.cs" />
+    <Compile Include="Managers\NB_interface.cs" />
     <Compile Include="Managers\NetRedClass.cs" />
     <Compile Include="Managers\NetworkRedirect.cs" />
     <Compile Include="Managers\ClientManager.cs" />

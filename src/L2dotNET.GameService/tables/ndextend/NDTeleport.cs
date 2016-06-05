@@ -67,10 +67,4 @@ namespace L2dotNET.GameService.Tables.Ndextend
             log.Info("NpcData(Teleporter): loaded " + npcs.Count + " npcs.");
         }
     }
-
-    public class ab_teleport_npc
-    {
-        public int id;
-        public SortedList<int, ab_teleport_group> groups = new SortedList<int, ab_teleport_group>();
-    }
 }

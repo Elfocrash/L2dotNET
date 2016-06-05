@@ -45,6 +45,7 @@
     <Compile Include="GeoEngine\Pathfinding\Node.cs" />
     <Compile Include="Network\Firewall.cs" />
     <Compile Include="Network\InnerNetworkClient.cs" />
+    <Compile Include="Network\LoginServiceSettings.cs" />
     <Compile Include="Network\NetworkClient.cs" />
     <Compile Include="Network\Packet.cs" />
     <Compile Include="Network\RemoteServiceSettings.cs" />

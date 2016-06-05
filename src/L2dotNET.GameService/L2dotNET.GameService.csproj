@@ -91,7 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AI\NpcAI\aidb_container.cs" />
+    <Compile Include="AI\NpcAI\tayrs_guard.cs" />
     <Compile Include="AI\NpcAI\black_judge_basic.cs" />
     <Compile Include="AI\NpcAI\citizen.cs" />
     <Compile Include="AI\NpcAI\guild_master.cs" />
@@ -102,7 +102,9 @@
     <Compile Include="ClientManager.cs" />
     <Compile Include="Compression\DlcStream.cs" />
     <Compile Include="ConfigFile.cs" />
+    <Compile Include="Config\CommunityBoard.cs" />
     <Compile Include="Config\Config.cs" />
+    <Compile Include="Config\FloodProtector.cs" />
     <Compile Include="Config\GameplayConfig.cs" />
     <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="Controllers\GameTime.cs" />
@@ -116,10 +118,12 @@
     <Compile Include="Managers\AnnouncementManager.cs" />
     <Compile Include="Managers\BBS\BBSManager.cs" />
     <Compile Include="Managers\CastleManager.cs" />
+    <Compile Include="Managers\EnchantScroll.cs" />
     <Compile Include="Managers\EnchantTarget.cs" />
     <Compile Include="Managers\EnchantType.cs" />
     <Compile Include="Managers\ItemEnchantManager.cs" />
     <Compile Include="Managers\PetitionManager.cs" />
+    <Compile Include="Managers\RThread.cs" />
     <Compile Include="Managers\RThreadType.cs" />
     <Compile Include="Managers\ThreadPoolManager.cs" />
     <Compile Include="Managers\TradeManager.cs" />
@@ -128,7 +132,9 @@
     <Compile Include="Managers\PointCmdManager.cs" />
     <Compile Include="Managers\RqItemManager.cs" />
     <Compile Include="Managers\ZoneManager.cs" />
+    <Compile Include="Model\Communities\ClanMember.cs" />
     <Compile Include="Model\Communities\e_ClanRank.cs" />
+    <Compile Include="Model\Communities\e_ClanSub.cs" />
     <Compile Include="Model\Communities\e_ClanType.cs" />
     <Compile Include="Model\Communities\L2Alliance.cs" />
     <Compile Include="Model\Communities\L2Clan.cs" />
@@ -138,6 +144,8 @@
     <Compile Include="Model\Inventory\InvTemplate.cs" />
     <Compile Include="Model\Inventory\InvPrivateWarehouse.cs" />
     <Compile Include="Model\Items\Capsule.cs" />
+    <Compile Include="Model\Items\CapsuleItem.cs" />
+    <Compile Include="Model\Items\CapsuleItemReward.cs" />
     <Compile Include="Model\Items\Cursed\CursedWeapon.cs" />
     <Compile Include="Model\Items\Cursed\CursedWeapons.cs" />
     <Compile Include="Model\Items\Effects\Calculator.cs" />
@@ -153,6 +161,7 @@
     <Compile Include="Model\Npcs\Ai\Ex\nightshade_01.cs" />
     <Compile Include="Model\Npcs\Ai\grandmaster_total.cs" />
     <Compile Include="Model\Npcs\Ai\WarriorAI.cs" />
+    <Compile Include="Model\Npcs\BuffForQuestReward.cs" />
     <Compile Include="Model\Npcs\Cubic\Cubic.cs" />
     <Compile Include="Model\Npcs\Cubic\CubicController.cs" />
     <Compile Include="Model\Npcs\Cubic\CubicTemplate.cs" />
@@ -190,7 +199,7 @@
     <Compile Include="Model\Player\Transformation\Data\_20000_kadomas.cs" />
     <Compile Include="Model\Player\Transformation\L2Transform.cs" />
     <Compile Include="Model\Player\Transformation\TransformTemplate.cs" />
-    <Compile Include="Model\Quests\Data\_0012_Secret_Meeting_With_Varka_Silenos .cs" />
+    <Compile Include="Model\Quests\Data\_0012_Secret_Meeting_With_Varka_Silenos.cs" />
     <Compile Include="Model\Quests\Data\_0013_Parcel_Deliverys.cs" />
     <Compile Include="Model\Quests\Data\_0014_Where_abouts_of_the_Archaeologist.cs" />
     <Compile Include="Model\Quests\Data\_0015_Sweet_Whispers.cs" />
@@ -267,6 +276,7 @@
     <Compile Include="Model\Skills2\TSkillCond.cs" />
     <Compile Include="Model\Skills2\TSkillCondType.cs" />
     <Compile Include="Model\Skills2\TSkillEnchantInfo.cs" />
+    <Compile Include="Model\Skills2\TSkillEnchantInfoDetail.cs" />
     <Compile Include="Model\Skills2\TSkillOperational.cs" />
     <Compile Include="Model\Skills2\TSkillScope.cs" />
     <Compile Include="Model\Skills2\TSkillTable.cs" />
@@ -288,7 +298,7 @@
     <Compile Include="Model\Structures\ConquerableHideout.cs" />
     <Compile Include="Model\Structures\Conq\FortressOfTheDead.cs" />
     <Compile Include="Model\Structures\Hideout.cs" />
-    <Compile Include="Model\Structures\StructureTemplate.cs" />
+    <Compile Include="Model\Structures\HideoutTemplate.cs" />
     <Compile Include="Model\Templates\TObject.cs" />
     <Compile Include="Model\Templates\TObjectBaseAttackType.cs" />
     <Compile Include="Model\Templates\TObjectCategory.cs" />
@@ -443,6 +453,8 @@
     <Compile Include="Network\Serverpackets\AutoAttackStart.cs" />
     <Compile Include="Network\Serverpackets\AutoAttackStop.cs" />
     <Compile Include="Network\Serverpackets\FlyType.cs" />
+    <Compile Include="Network\Serverpackets\Hit.cs" />
+    <Compile Include="Network\Serverpackets\ItemListItem.cs" />
     <Compile Include="Network\Serverpackets\MultiSellListEx.cs" />
     <Compile Include="Network\Serverpackets\NetPing.cs" />
     <Compile Include="Network\Serverpackets\ShowBoard.cs" />
@@ -597,17 +609,32 @@
     <Compile Include="Commands\Admin\AAdminCommand.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Tables\Admin_Bypass\ABTeleport.cs" />
+    <Compile Include="Tables\Admin_Bypass\ab_teleport_entry.cs" />
+    <Compile Include="Tables\Admin_Bypass\ab_teleport_group.cs" />
     <Compile Include="Tables\CharTemplateTable.cs" />
     <Compile Include="Tables\ClanTable.cs" />
     <Compile Include="Tables\AllianceTable.cs" />
     <Compile Include="Tables\FString.cs" />
+    <Compile Include="Tables\ItemSetTemplate.cs" />
     <Compile Include="Tables\ItemTable.cs" />
+    <Compile Include="Tables\L2Html.cs" />
+    <Compile Include="Tables\L2Recipe.cs" />
+    <Compile Include="Tables\L2Spawn.cs" />
     <Compile Include="Tables\L2Territory.cs" />
     <Compile Include="Tables\MapRegionTable.cs" />
     <Compile Include="Tables\Multisell\MultiSell.cs" />
+    <Compile Include="Tables\Multisell\MultiSellEntry.cs" />
+    <Compile Include="Tables\Multisell\MultiSellItem.cs" />
+    <Compile Include="Tables\Multisell\MultiSellList.cs" />
+    <Compile Include="Tables\Ndextend\ab_teleport_npc.cs" />
     <Compile Include="Tables\Ndextend\NDTeleport.cs" />
+    <Compile Include="Tables\ND_shop.cs" />
+    <Compile Include="Tables\ND_shopItem.cs" />
+    <Compile Include="Tables\ND_shopList.cs" />
+    <Compile Include="Tables\recipe_item_entry.cs" />
     <Compile Include="Tables\RegionID.cs" />
     <Compile Include="Tables\SpawnTable.cs" />
+    <Compile Include="Tables\StructureSpawn.cs" />
     <Compile Include="Tables\StructureTable.cs" />
     <Compile Include="Tables\NpcData.cs" />
     <Compile Include="Tables\NpcSpawn.cs" />

@@ -213,28 +213,4 @@ namespace L2dotNET.GameService.Tables
             throw new NotImplementedException();
         }
     }
-
-    public class ND_shop
-    {
-        public SortedList<short, ND_shopList> lists = new SortedList<short, ND_shopList>();
-        public double mod;
-        public int id;
-    }
-
-    public class ND_shopList
-    {
-        public List<ND_shopItem> items = new List<ND_shopItem>();
-        public short id;
-    }
-
-    public class ND_shopItem
-    {
-        public ItemTemplate item;
-        public int count = -1;
-
-        public ND_shopItem(ItemTemplate it)
-        {
-            this.item = it;
-        }
-    }
 }

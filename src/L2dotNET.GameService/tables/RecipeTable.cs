@@ -2,7 +2,6 @@
 using System.IO;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.GameService.Model.Items;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -120,35 +119,6 @@ namespace L2dotNET.GameService.Tables
             }
 
             return null;
-        }
-    }
-
-    public class L2Recipe
-    {
-        public string name;
-        public int RecipeID;
-        public int _level;
-        public int _iscommonrecipe;
-        public int _item_id;
-        public int _success_rate;
-        public int _mp_consume;
-
-        public List<recipe_item_entry> _materials = new List<recipe_item_entry>();
-        public List<recipe_item_entry> _products = new List<recipe_item_entry>();
-        public List<recipe_item_entry> _npcFee = new List<recipe_item_entry>();
-        public string mk;
-    }
-
-    public class recipe_item_entry
-    {
-        public ItemTemplate item;
-        public long count;
-        public double rate;
-
-        public recipe_item_entry(int id, long count)
-        {
-            item = ItemTable.Instance.GetItem(id);
-            this.count = count;
         }
     }
 }

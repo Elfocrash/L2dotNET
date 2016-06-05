@@ -117,24 +117,4 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             player.teleport(e.x, e.y, e.z);
         }
     }
-
-    public class ab_teleport_group
-    {
-        public SortedList<int, ab_teleport_entry> _teles = new SortedList<int, ab_teleport_entry>();
-        public int level;
-        public string name;
-        public int id;
-        public string str;
-    }
-
-    public class ab_teleport_entry
-    {
-        public string name;
-        public int x;
-        public int y;
-        public int z;
-        public int id;
-        public long cost = 0;
-        public int itemId = 57;
-    }
 }
