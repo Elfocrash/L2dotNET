@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     public static class Rnd
     {
-        private static Random rnd = new Random();
+        private static readonly Random rnd = new Random();
 
         public static double Get()
         {

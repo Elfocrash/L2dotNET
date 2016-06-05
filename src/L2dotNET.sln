@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.LoginService", "L2dotNET.Auth\L2dotNET.LoginService.csproj", "{960CD325-3EEB-4AAA-9C67-727ECDE884BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.LoginService", "L2dotNET.LoginService\L2dotNET.LoginService.csproj", "{960CD325-3EEB-4AAA-9C67-727ECDE884BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.GameService", "L2dotNET.Game\L2dotNET.GameService.csproj", "{991E13B3-EB83-46C1-9F63-6ED3E332F88F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.GameService", "L2dotNET.GameService\L2dotNET.GameService.csproj", "{991E13B3-EB83-46C1-9F63-6ED3E332F88F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Repositories", "L2dotNET.Repositories\L2dotNET.Repositories.csproj", "{34030AFB-511D-4A7A-8711-71E0364E2F64}"
 EndProject

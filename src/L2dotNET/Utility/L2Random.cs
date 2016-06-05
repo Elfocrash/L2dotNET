@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.Utility
 {
@@ -53,7 +49,9 @@ namespace L2dotNET.Utility
         /// <returns>Randomly generated array of <see cref="byte"/> values.</returns>
         public static unsafe byte[] NextBytes(ref byte[] buffer)
         {
-            int i = buffer.Length, j = 0, k;
+            int i = buffer.Length,
+                j = 0,
+                k;
 
             fixed (byte* buf = buffer)
             {

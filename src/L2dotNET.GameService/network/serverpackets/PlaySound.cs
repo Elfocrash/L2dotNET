@@ -1,0 +1,31 @@
+﻿namespace L2dotNET.GameService.Network.Serverpackets
+{
+    class PlaySound : GameServerNetworkPacket
+    {
+        private readonly string _file;
+        private readonly int type = 0;
+        private uint x;
+        private uint y;
+        private uint z;
+
+        public PlaySound(string file, bool ogg = false)
+        {
+            _file = file;
+
+            if (ogg)
+                type = 1;
+        }
+
+        protected internal override void write()
+        {
+            writeC(0x9e);
+            writeD(type);
+            writeS(_file);
+            writeD(0);
+            writeD(0);
+            writeD(x);
+            writeD(y);
+            writeD(z);
+        }
+    }
+}

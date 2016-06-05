@@ -1,15 +1,9 @@
 ﻿using L2dotNET.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     public abstract class AShape
     {
-
         public abstract int GetSize();
 
         public abstract double GetArea();

@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
 using System.IO;
-using L2dotNET.GameService.templates;
 using System.Xml;
 using L2dotNET.GameService.Enums;
-using System.Collections.Generic;
+using L2dotNET.GameService.Templates;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace L2dotNET.Tests
 {
@@ -20,7 +19,6 @@ namespace L2dotNET.Tests
             foreach (string file in Directory.EnumerateFiles(folderPath, "*.xml"))
             {
                 string contents = File.ReadAllText(file);
-
             }
 
             XmlDocument doc = new XmlDocument();
@@ -29,19 +27,17 @@ namespace L2dotNET.Tests
             {
                 doc.Load(xmlFilesArray[i]);
                 XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/class");
-               
+
                 foreach (XmlNode node in nodes)
                 {
-                    
                     if ("class".Equals(node.Attributes[0].OwnerElement.Name))
                     {
                         XmlNamedNodeMap attrs = node.Attributes;
                         ClassIds classId = (ClassIds)int.Parse(attrs.Item(0).Value);
                         StatsSet set = new StatsSet();
 
-                        for (XmlNode cd = node.FirstChild;cd != null;cd = cd.NextSibling)
+                        for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
                         {
-
                             if ("set".Equals(cd.NextSibling.Name) && cd.NextSibling != null)
                             {
                                 attrs = cd.NextSibling.Attributes;
@@ -56,10 +52,7 @@ namespace L2dotNET.Tests
                         ////templates.Add((int)pcTempl.ClassId, pcTempl);
                         //System.Diagnostics.Trace.WriteLine("Added template for: " + pcTempl.ClassId);
                     }
-                   
                 }
-                
-
             }
         }
     }

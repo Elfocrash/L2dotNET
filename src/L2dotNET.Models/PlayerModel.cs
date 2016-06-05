@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace L2dotNET.Models
+﻿namespace L2dotNET.Models
 {
     public class PlayerModel
     {
@@ -118,9 +112,6 @@ namespace L2dotNET.Models
 
         public int DeathPenaltyLevel { get; set; }
 
-        public PlayerModel()
-        {
-
-        }
+        public PlayerModel() { }
     }
 }

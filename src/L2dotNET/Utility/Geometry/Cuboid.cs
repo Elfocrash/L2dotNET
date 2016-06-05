@@ -1,19 +1,14 @@
 ﻿using L2dotNET.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     public class Cuboid : Rectangle
     {
         // min and max Z coorinates
-        private int _minZ;
-        private int _maxZ;
+        private readonly int _minZ;
+        private readonly int _maxZ;
 
-        public Cuboid(int x, int y, int minZ, int maxZ, int w, int h):base(x, y, w, h)
+        public Cuboid(int x, int y, int minZ, int maxZ, int w, int h) : base(x, y, w, h)
         {
             _minZ = minZ;
             _maxZ = maxZ;

@@ -1,15 +1,11 @@
-﻿using L2dotNET.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using L2dotNET.Models;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     public class Sphere : Circle
     {
-        private int _z;
+        private readonly int _z;
 
         public Sphere(int x, int y, int z, int r) : base(x, y, r)
         {

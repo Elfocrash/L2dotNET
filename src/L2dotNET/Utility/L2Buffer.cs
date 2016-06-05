@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.Utility
 {
@@ -254,12 +250,14 @@ namespace L2dotNET.Utility
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.AppendFormat("Buffer dump, length: {0}{1}Index   |---------------------------------------------|  |--------------|{1}", buffer.Length, Environment.NewLine);
 
-            int index = 0, i;
-            string hex, data;
+            int index = 0,
+                i;
+            string hex,
+                   data;
 
             while (index < buffer.Length)
             {
-                hex = data = String.Empty;
+                hex = data = string.Empty;
 
                 for (i = 0; i < 16 && index + i < buffer.Length; i++)
                 {
@@ -309,7 +307,7 @@ namespace L2dotNET.Utility
         /// <param name="maxLength">Max source buffer position, that method can reach.</param>
         public static unsafe string GetTrimmedString(byte* src, ref int srcOffset, int maxLength)
         {
-            string dst = String.Empty;
+            string dst = string.Empty;
 
             while (src[srcOffset] != 0 && srcOffset + sizeof(char) < maxLength)
             {

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.Utility
 {
@@ -80,17 +76,16 @@ namespace L2dotNET.Utility
                     if (ReadFile(handle, buf, lengthToRead, &lengthToRead, 0x00))
                     {
                         if (!CloseHandle(handle))
-                            throw new IOException(String.Format("Failed to close file handle for '{0}'", fileName));
+                            throw new IOException(string.Format("Failed to close file handle for '{0}'", fileName));
 
                         return buffer;
                     }
                 }
 
-                throw new FileLoadException(String.Format("Failed to read {0} bytes from file '{1}'.", lengthToRead, fileName));
-
+                throw new FileLoadException(string.Format("Failed to read {0} bytes from file '{1}'.", lengthToRead, fileName));
             }
 
-            throw new FileNotFoundException(String.Format("File '{0}' can't be found.", fileName));
+            throw new FileNotFoundException(string.Format("File '{0}' can't be found.", fileName));
         }
 
         /// <summary>
@@ -106,7 +101,7 @@ namespace L2dotNET.Utility
             if (Directory.Exists(directory))
                 return new DirectoryInfo(directory).GetFiles(mask, searchHow);
 
-            throw new DirectoryNotFoundException(String.Format("Directory '{0}' can't be found.", directory));
+            throw new DirectoryNotFoundException(string.Format("Directory '{0}' can't be found.", directory));
         }
     }
 }

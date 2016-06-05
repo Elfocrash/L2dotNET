@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace L2dotNET.Models
+﻿namespace L2dotNET.Models
 {
     public class AnnouncementModel
     {
@@ -14,9 +8,6 @@ namespace L2dotNET.Models
 
         public int Type { get; set; }
 
-        public AnnouncementModel()
-        {
-
-        }
+        public AnnouncementModel() { }
     }
 }

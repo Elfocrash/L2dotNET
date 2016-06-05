@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.GeoEngine.Geodata
 {
     public class BlockMultilayer : ABlock
     {
-        private static int MAX_LAYERS = byte.MaxValue;
+        private static readonly int MAX_LAYERS = byte.MaxValue;
 
         private static MemoryStream _temp;
 
@@ -18,7 +14,7 @@ namespace L2dotNET.GeoEngine.Geodata
         public static void Initialize()
         {
             _temp = new MemoryStream(GeoStructure.BLOCK_CELLS * MAX_LAYERS * 3);
-            
+
             if (!BitConverter.IsLittleEndian)
             {
                 byte[] superTemp;
@@ -86,7 +82,7 @@ namespace L2dotNET.GeoEngine.Geodata
 
                 index -= 3;
             }
-            
+
             return short.MinValue;
         }
 
@@ -168,7 +164,7 @@ namespace L2dotNET.GeoEngine.Geodata
             }
 
             byte layers = _buffer[index++];
-            
+
             while (layers-- > 0)
             {
                 int height = _buffer[index + 1] & 0x00FF | _buffer[index + 2] << 8;

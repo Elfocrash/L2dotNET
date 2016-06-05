@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     [Serializable]
     public struct Vector3 : IEquatable<Vector3>
@@ -13,19 +10,8 @@ namespace L2dotNET.Utility
         #region Private Fields
 
         private static Vector3 zero = new Vector3(0f, 0f, 0f);
-        private static Vector3 one = new Vector3(1f, 1f, 1f);
-        private static Vector3 unitX = new Vector3(1f, 0f, 0f);
-        private static Vector3 unitY = new Vector3(0f, 1f, 0f);
-        private static Vector3 unitZ = new Vector3(0f, 0f, 1f);
-        private static Vector3 up = new Vector3(0f, 1f, 0f);
-        private static Vector3 down = new Vector3(0f, -1f, 0f);
-        private static Vector3 right = new Vector3(1f, 0f, 0f);
-        private static Vector3 left = new Vector3(-1f, 0f, 0f);
-        private static Vector3 forward = new Vector3(0f, 0f, -1f);
-        private static Vector3 backward = new Vector3(0f, 0f, 1f);
 
         #endregion Private Fields
-
 
         #region Public Fields
 
@@ -35,7 +21,6 @@ namespace L2dotNET.Utility
 
         #endregion Public Fields
 
-
         #region Properties
 
         public static Vector3 Zero
@@ -43,58 +28,27 @@ namespace L2dotNET.Utility
             get { return zero; }
         }
 
-        public static Vector3 One
-        {
-            get { return one; }
-        }
+        public static Vector3 One { get; } = new Vector3(1f, 1f, 1f);
 
-        public static Vector3 UnitX
-        {
-            get { return unitX; }
-        }
+        public static Vector3 UnitX { get; } = new Vector3(1f, 0f, 0f);
 
-        public static Vector3 UnitY
-        {
-            get { return unitY; }
-        }
+        public static Vector3 UnitY { get; } = new Vector3(0f, 1f, 0f);
 
-        public static Vector3 UnitZ
-        {
-            get { return unitZ; }
-        }
+        public static Vector3 UnitZ { get; } = new Vector3(0f, 0f, 1f);
 
-        public static Vector3 Up
-        {
-            get { return up; }
-        }
+        public static Vector3 Up { get; } = new Vector3(0f, 1f, 0f);
 
-        public static Vector3 Down
-        {
-            get { return down; }
-        }
+        public static Vector3 Down { get; } = new Vector3(0f, -1f, 0f);
 
-        public static Vector3 Right
-        {
-            get { return right; }
-        }
+        public static Vector3 Right { get; } = new Vector3(1f, 0f, 0f);
 
-        public static Vector3 Left
-        {
-            get { return left; }
-        }
+        public static Vector3 Left { get; } = new Vector3(-1f, 0f, 0f);
 
-        public static Vector3 Forward
-        {
-            get { return forward; }
-        }
+        public static Vector3 Forward { get; } = new Vector3(0f, 0f, -1f);
 
-        public static Vector3 Backward
-        {
-            get { return backward; }
-        }
+        public static Vector3 Backward { get; } = new Vector3(0f, 0f, 1f);
 
         #endregion Properties
-
 
         #region Constructors
 
@@ -105,14 +59,12 @@ namespace L2dotNET.Utility
             this.Z = z;
         }
 
-
         public Vector3(double value)
         {
             this.X = value;
             this.Y = value;
             this.Z = value;
         }
-
 
         public Vector3(Vector2 value, double z)
         {
@@ -121,9 +73,7 @@ namespace L2dotNET.Utility
             this.Z = z;
         }
 
-
         #endregion Constructors
-
 
         #region Public Methods
 
@@ -144,50 +94,32 @@ namespace L2dotNET.Utility
 
         public static Vector3 Barycentric(Vector3 value1, Vector3 value2, Vector3 value3, double amount1, double amount2)
         {
-            return new Vector3(
-                MathHelper.Barycentric(value1.X, value2.X, value3.X, amount1, amount2),
-                MathHelper.Barycentric(value1.Y, value2.Y, value3.Y, amount1, amount2),
-                MathHelper.Barycentric(value1.Z, value2.Z, value3.Z, amount1, amount2));
+            return new Vector3(MathHelper.Barycentric(value1.X, value2.X, value3.X, amount1, amount2), MathHelper.Barycentric(value1.Y, value2.Y, value3.Y, amount1, amount2), MathHelper.Barycentric(value1.Z, value2.Z, value3.Z, amount1, amount2));
         }
 
         public static void Barycentric(ref Vector3 value1, ref Vector3 value2, ref Vector3 value3, double amount1, double amount2, out Vector3 result)
         {
-            result = new Vector3(
-                MathHelper.Barycentric(value1.X, value2.X, value3.X, amount1, amount2),
-                MathHelper.Barycentric(value1.Y, value2.Y, value3.Y, amount1, amount2),
-                MathHelper.Barycentric(value1.Z, value2.Z, value3.Z, amount1, amount2));
+            result = new Vector3(MathHelper.Barycentric(value1.X, value2.X, value3.X, amount1, amount2), MathHelper.Barycentric(value1.Y, value2.Y, value3.Y, amount1, amount2), MathHelper.Barycentric(value1.Z, value2.Z, value3.Z, amount1, amount2));
         }
 
         public static Vector3 CatmullRom(Vector3 value1, Vector3 value2, Vector3 value3, Vector3 value4, double amount)
         {
-            return new Vector3(
-                MathHelper.CatmullRom(value1.X, value2.X, value3.X, value4.X, amount),
-                MathHelper.CatmullRom(value1.Y, value2.Y, value3.Y, value4.Y, amount),
-                MathHelper.CatmullRom(value1.Z, value2.Z, value3.Z, value4.Z, amount));
+            return new Vector3(MathHelper.CatmullRom(value1.X, value2.X, value3.X, value4.X, amount), MathHelper.CatmullRom(value1.Y, value2.Y, value3.Y, value4.Y, amount), MathHelper.CatmullRom(value1.Z, value2.Z, value3.Z, value4.Z, amount));
         }
 
         public static void CatmullRom(ref Vector3 value1, ref Vector3 value2, ref Vector3 value3, ref Vector3 value4, double amount, out Vector3 result)
         {
-            result = new Vector3(
-                MathHelper.CatmullRom(value1.X, value2.X, value3.X, value4.X, amount),
-                MathHelper.CatmullRom(value1.Y, value2.Y, value3.Y, value4.Y, amount),
-                MathHelper.CatmullRom(value1.Z, value2.Z, value3.Z, value4.Z, amount));
+            result = new Vector3(MathHelper.CatmullRom(value1.X, value2.X, value3.X, value4.X, amount), MathHelper.CatmullRom(value1.Y, value2.Y, value3.Y, value4.Y, amount), MathHelper.CatmullRom(value1.Z, value2.Z, value3.Z, value4.Z, amount));
         }
 
         public static Vector3 Clamp(Vector3 value1, Vector3 min, Vector3 max)
         {
-            return new Vector3(
-                MathHelper.Clamp(value1.X, min.X, max.X),
-                MathHelper.Clamp(value1.Y, min.Y, max.Y),
-                MathHelper.Clamp(value1.Z, min.Z, max.Z));
+            return new Vector3(MathHelper.Clamp(value1.X, min.X, max.X), MathHelper.Clamp(value1.Y, min.Y, max.Y), MathHelper.Clamp(value1.Z, min.Z, max.Z));
         }
 
         public static void Clamp(ref Vector3 value1, ref Vector3 min, ref Vector3 max, out Vector3 result)
         {
-            result = new Vector3(
-                MathHelper.Clamp(value1.X, min.X, max.X),
-                MathHelper.Clamp(value1.Y, min.Y, max.Y),
-                MathHelper.Clamp(value1.Z, min.Z, max.Z));
+            result = new Vector3(MathHelper.Clamp(value1.X, min.X, max.X), MathHelper.Clamp(value1.Y, min.Y, max.Y), MathHelper.Clamp(value1.Z, min.Z, max.Z));
         }
 
         public static Vector3 Cross(Vector3 vector1, Vector3 vector2)
@@ -198,9 +130,7 @@ namespace L2dotNET.Utility
 
         public static void Cross(ref Vector3 vector1, ref Vector3 vector2, out Vector3 result)
         {
-            result = new Vector3(vector1.Y * vector2.Z - vector2.Y * vector1.Z,
-                                 -(vector1.X * vector2.Z - vector2.X * vector1.Z),
-                                 vector1.X * vector2.Y - vector2.X * vector1.Y);
+            result = new Vector3(vector1.Y * vector2.Z - vector2.Y * vector1.Z, -(vector1.X * vector2.Z - vector2.X * vector1.Z), vector1.X * vector2.Y - vector2.X * vector1.Y);
         }
 
         public static double Distance(Vector3 vector1, Vector3 vector2)
@@ -225,9 +155,7 @@ namespace L2dotNET.Utility
 
         public static void DistanceSquared(ref Vector3 value1, ref Vector3 value2, out double result)
         {
-            result = (value1.X - value2.X) * (value1.X - value2.X) +
-                     (value1.Y - value2.Y) * (value1.Y - value2.Y) +
-                     (value1.Z - value2.Z) * (value1.Z - value2.Z);
+            result = (value1.X - value2.X) * (value1.X - value2.X) + (value1.Y - value2.Y) * (value1.Y - value2.Y) + (value1.Z - value2.Z) * (value1.Z - value2.Z);
         }
 
         public static Vector3 Divide(Vector3 value1, Vector3 value2)
@@ -317,50 +245,32 @@ namespace L2dotNET.Utility
 
         public static Vector3 Lerp(Vector3 value1, Vector3 value2, double amount)
         {
-            return new Vector3(
-                MathHelper.Lerp(value1.X, value2.X, amount),
-                MathHelper.Lerp(value1.Y, value2.Y, amount),
-                MathHelper.Lerp(value1.Z, value2.Z, amount));
+            return new Vector3(MathHelper.Lerp(value1.X, value2.X, amount), MathHelper.Lerp(value1.Y, value2.Y, amount), MathHelper.Lerp(value1.Z, value2.Z, amount));
         }
 
         public static void Lerp(ref Vector3 value1, ref Vector3 value2, double amount, out Vector3 result)
         {
-            result = new Vector3(
-                MathHelper.Lerp(value1.X, value2.X, amount),
-                MathHelper.Lerp(value1.Y, value2.Y, amount),
-                MathHelper.Lerp(value1.Z, value2.Z, amount));
+            result = new Vector3(MathHelper.Lerp(value1.X, value2.X, amount), MathHelper.Lerp(value1.Y, value2.Y, amount), MathHelper.Lerp(value1.Z, value2.Z, amount));
         }
 
         public static Vector3 Max(Vector3 value1, Vector3 value2)
         {
-            return new Vector3(
-                MathHelper.Max(value1.X, value2.X),
-                MathHelper.Max(value1.Y, value2.Y),
-                MathHelper.Max(value1.Z, value2.Z));
+            return new Vector3(MathHelper.Max(value1.X, value2.X), MathHelper.Max(value1.Y, value2.Y), MathHelper.Max(value1.Z, value2.Z));
         }
 
         public static void Max(ref Vector3 value1, ref Vector3 value2, out Vector3 result)
         {
-            result = new Vector3(
-                MathHelper.Max(value1.X, value2.X),
-                MathHelper.Max(value1.Y, value2.Y),
-                MathHelper.Max(value1.Z, value2.Z));
+            result = new Vector3(MathHelper.Max(value1.X, value2.X), MathHelper.Max(value1.Y, value2.Y), MathHelper.Max(value1.Z, value2.Z));
         }
 
         public static Vector3 Min(Vector3 value1, Vector3 value2)
         {
-            return new Vector3(
-                MathHelper.Min(value1.X, value2.X),
-                MathHelper.Min(value1.Y, value2.Y),
-                MathHelper.Min(value1.Z, value2.Z));
+            return new Vector3(MathHelper.Min(value1.X, value2.X), MathHelper.Min(value1.Y, value2.Y), MathHelper.Min(value1.Z, value2.Z));
         }
 
         public static void Min(ref Vector3 value1, ref Vector3 value2, out Vector3 result)
         {
-            result = new Vector3(
-                MathHelper.Min(value1.X, value2.X),
-                MathHelper.Min(value1.Y, value2.Y),
-                MathHelper.Min(value1.Z, value2.Z));
+            result = new Vector3(MathHelper.Min(value1.X, value2.X), MathHelper.Min(value1.Y, value2.Y), MathHelper.Min(value1.Z, value2.Z));
         }
 
         public static Vector3 Multiply(Vector3 value1, Vector3 value2)
@@ -451,23 +361,16 @@ namespace L2dotNET.Utility
             result.X = vector.X - (2.0f * normal.X) * dotProduct;
             result.Y = vector.Y - (2.0f * normal.Y) * dotProduct;
             result.Z = vector.Z - (2.0f * normal.Z) * dotProduct;
-
         }
 
         public static Vector3 SmoothStep(Vector3 value1, Vector3 value2, double amount)
         {
-            return new Vector3(
-                MathHelper.SmoothStep(value1.X, value2.X, amount),
-                MathHelper.SmoothStep(value1.Y, value2.Y, amount),
-                MathHelper.SmoothStep(value1.Z, value2.Z, amount));
+            return new Vector3(MathHelper.SmoothStep(value1.X, value2.X, amount), MathHelper.SmoothStep(value1.Y, value2.Y, amount), MathHelper.SmoothStep(value1.Z, value2.Z, amount));
         }
 
         public static void SmoothStep(ref Vector3 value1, ref Vector3 value2, double amount, out Vector3 result)
         {
-            result = new Vector3(
-                MathHelper.SmoothStep(value1.X, value2.X, amount),
-                MathHelper.SmoothStep(value1.Y, value2.Y, amount),
-                MathHelper.SmoothStep(value1.Z, value2.Z, amount));
+            result = new Vector3(MathHelper.SmoothStep(value1.X, value2.X, amount), MathHelper.SmoothStep(value1.Y, value2.Y, amount), MathHelper.SmoothStep(value1.Z, value2.Z, amount));
         }
 
         public static Vector3 Subtract(Vector3 value1, Vector3 value2)
@@ -506,9 +409,7 @@ namespace L2dotNET.Utility
 
         public static void Transform(ref Vector3 position, ref Matrix matrix, out Vector3 result)
         {
-            result = new Vector3((position.X * matrix.M11) + (position.Y * matrix.M21) + (position.Z * matrix.M31) + matrix.M41,
-                                 (position.X * matrix.M12) + (position.Y * matrix.M22) + (position.Z * matrix.M32) + matrix.M42,
-                                 (position.X * matrix.M13) + (position.Y * matrix.M23) + (position.Z * matrix.M33) + matrix.M43);
+            result = new Vector3((position.X * matrix.M11) + (position.Y * matrix.M21) + (position.Z * matrix.M31) + matrix.M41, (position.X * matrix.M12) + (position.Y * matrix.M22) + (position.Z * matrix.M32) + matrix.M42, (position.X * matrix.M13) + (position.Y * matrix.M23) + (position.Z * matrix.M33) + matrix.M43);
         }
 
         public static void Transform(Vector3[] sourceArray, ref Matrix matrix, Vector3[] destinationArray)
@@ -520,11 +421,7 @@ namespace L2dotNET.Utility
             for (var i = 0; i < sourceArray.Length; i++)
             {
                 var position = sourceArray[i];
-                destinationArray[i] =
-                    new Vector3(
-                        (position.X * matrix.M11) + (position.Y * matrix.M21) + (position.Z * matrix.M31) + matrix.M41,
-                        (position.X * matrix.M12) + (position.Y * matrix.M22) + (position.Z * matrix.M32) + matrix.M42,
-                        (position.X * matrix.M13) + (position.Y * matrix.M23) + (position.Z * matrix.M33) + matrix.M43);
+                destinationArray[i] = new Vector3((position.X * matrix.M11) + (position.Y * matrix.M21) + (position.Z * matrix.M31) + matrix.M41, (position.X * matrix.M12) + (position.Y * matrix.M22) + (position.Z * matrix.M32) + matrix.M42, (position.X * matrix.M13) + (position.Y * matrix.M23) + (position.Z * matrix.M33) + matrix.M43);
             }
         }
 
@@ -560,7 +457,6 @@ namespace L2dotNET.Utility
         //            Vector3.Multiply(ref temp, 2, out temp);
         //            Vector3.Add(ref vec, ref temp, out result);
         //        }
-
         /// <summary>
         /// Transforms a vector by a quaternion rotation.
         /// </summary>
@@ -583,21 +479,16 @@ namespace L2dotNET.Utility
 
         public static void TransformNormal(ref Vector3 normal, ref Matrix matrix, out Vector3 result)
         {
-            result = new Vector3((normal.X * matrix.M11) + (normal.Y * matrix.M21) + (normal.Z * matrix.M31),
-                                 (normal.X * matrix.M12) + (normal.Y * matrix.M22) + (normal.Z * matrix.M32),
-                                 (normal.X * matrix.M13) + (normal.Y * matrix.M23) + (normal.Z * matrix.M33));
+            result = new Vector3((normal.X * matrix.M11) + (normal.Y * matrix.M21) + (normal.Z * matrix.M31), (normal.X * matrix.M12) + (normal.Y * matrix.M22) + (normal.Z * matrix.M32), (normal.X * matrix.M13) + (normal.Y * matrix.M23) + (normal.Z * matrix.M33));
         }
 
         #endregion Public methods
-
 
         #region Operators
 
         public static bool operator ==(Vector3 value1, Vector3 value2)
         {
-            return value1.X == value2.X
-                && value1.Y == value2.Y
-                && value1.Z == value2.Z;
+            return value1.X == value2.X && value1.Y == value2.Y && value1.Z == value2.Z;
         }
 
         public static bool operator !=(Vector3 value1, Vector3 value2)

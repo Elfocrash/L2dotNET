@@ -33,12 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeoEngine\Geodata\ABlock.cs" />
@@ -51,10 +45,13 @@
     <Compile Include="GeoEngine\Pathfinding\Node.cs" />
     <Compile Include="Network\Firewall.cs" />
     <Compile Include="Network\InnerNetworkClient.cs" />
+    <Compile Include="Network\LoginServiceSettings.cs" />
     <Compile Include="Network\NetworkClient.cs" />
     <Compile Include="Network\Packet.cs" />
     <Compile Include="Network\RemoteServiceSettings.cs" />
     <Compile Include="Network\ServiceShutdownEventArgs.cs" />
+    <Compile Include="Network\ServiceShutdownType.cs" />
+    <Compile Include="Network\ServiceType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\BlowFishKeygen.cs" />
     <Compile Include="Utility\Crypt.cs" />
@@ -81,6 +78,7 @@
     <Compile Include="Utility\L2Security.cs" />
     <Compile Include="Utility\Logger.cs" />
     <Compile Include="Utility\ServiceTime.cs" />
+    <Compile Include="Utility\Source.cs" />
     <Compile Include="Utility\Stopwatch.cs" />
     <Compile Include="Utility\Utilz.cs" />
   </ItemGroup>

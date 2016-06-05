@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using L2dotNET.Models;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     public class Triangle : AShape
     {

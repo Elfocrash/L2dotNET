@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.Utility
 {
     public class BlowFishKeygen
     {
         private const int CRYPT_KEYS_SIZE = 20;
-        private static byte[][] CRYPT_KEYS = new byte[CRYPT_KEYS_SIZE][];
-        private static Random Random = new Random();
+        private static readonly byte[][] CRYPT_KEYS = new byte[CRYPT_KEYS_SIZE][];
+        private static readonly Random Random = new Random();
 
         public static void GenerateKeys()
         {

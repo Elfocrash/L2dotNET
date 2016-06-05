@@ -6,7 +6,7 @@ namespace L2dotNET.Services
 {
     public class PlayerService : IPlayerService
     {
-        IUnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
         public PlayerService(IUnitOfWork unitOfWork)
         {

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace L2dotNET.GeoEngine.Geodata
 {
     public class BlockNull : ABlock
     {
-        private byte _nswe;
+        private readonly byte _nswe;
 
         public BlockNull()
         {
@@ -106,14 +101,8 @@ namespace L2dotNET.GeoEngine.Geodata
             return false;
         }
 
-        public override void SaveBlock(BufferedStream stream)
-        {
-            
-        }
+        public override void SaveBlock(BufferedStream stream) { }
 
-        public override void SetNswe(int index, byte nswe)
-        {
-            
-        }
+        public override void SetNswe(int index, byte nswe) { }
     }
 }
