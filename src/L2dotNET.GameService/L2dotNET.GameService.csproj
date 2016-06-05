@@ -615,7 +615,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Datapacks\Auth\config\server.json" />
+    <None Include="Datapacks\Login\config\server.json" />
     <None Include="Datapacks\Game\config\gameplay.json" />
     <None Include="Datapacks\Game\config\server.json" />
     <None Include="Datapacks\Game\dlc\dropdata.dlc" />
@@ -747,12 +747,12 @@
     <Content Include="Datapacks\sqlscripts\l2dotnet.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Datapacks\Auth\log\" />
-    <Folder Include="Datapacks\Auth\sq\" />
     <Folder Include="Datapacks\Game\cmpl\ai\" />
     <Folder Include="Datapacks\Game\cmpl\quests\" />
     <Folder Include="Datapacks\Game\html\scripts\teleports\RaceTrack\" />
     <Folder Include="Datapacks\Game\log\" />
+    <Folder Include="Datapacks\Login\log\" />
+    <Folder Include="Datapacks\Login\sq\" />
     <Folder Include="GeoEngine\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -766,7 +766,7 @@
   <!-- Include Files to Debug -->
   <Target Name="AfterBuild">
     <ItemGroup>
-      <BinFiles Include="$(SolutionDir)L2dotNET.Game\Datapacks\Game\**\*.*" />
+      <BinFiles Include="$(SolutionDir)L2dotNET.GameService\Datapacks\Game\**\*.*" />
     </ItemGroup>
     <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(TargetDir)\%(RecursiveDir)" />
   </Target>

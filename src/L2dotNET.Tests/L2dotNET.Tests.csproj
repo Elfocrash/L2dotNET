@@ -58,11 +58,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\L2dotNET.Auth\L2dotNET.LoginService.csproj">
+    <ProjectReference Include="..\L2dotNET.LoginService\L2dotNET.LoginService.csproj">
       <Project>{960cd325-3eeb-4aaa-9c67-727ecde884bb}</Project>
       <Name>L2dotNET.LoginService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\L2dotNET.Game\L2dotNET.GameService.csproj">
+    <ProjectReference Include="..\L2dotNET.GameService\L2dotNET.GameService.csproj">
       <Project>{991e13b3-eb83-46c1-9f63-6ed3e332f88f}</Project>
       <Name>L2dotNET.GameService</Name>
     </ProjectReference>
