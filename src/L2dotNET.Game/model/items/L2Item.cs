@@ -1,11 +1,12 @@
 ﻿using System;
-using L2dotNET.GameService.model.inventory;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.inventory;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.tools;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.items
+namespace L2dotNET.GameService.Model.items
 {
     public class L2Item : L2Object
     {
@@ -257,7 +258,7 @@ namespace L2dotNET.GameService.model.items
             X = x;
             Y = y;
             Z = z;
-            L2dotNET.GameService.network.l2send.DropItem pk = new L2dotNET.GameService.network.l2send.DropItem(this);
+            DropItem pk = new DropItem(this);
             if (dropper != null)
                 _dropper = dropper.ObjID;
 

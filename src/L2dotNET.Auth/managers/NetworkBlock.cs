@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using log4net;
 
-namespace L2dotNET.LoginService.data
+namespace L2dotNET.LoginService.managers
 {
     sealed class NetworkBlock
     {

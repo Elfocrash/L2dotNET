@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Timers;
-using L2dotNET.GameService.model.npcs;
-using L2dotNET.GameService.model.skills2;
+using L2dotNET.GameService.Model.npcs;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.zones.classes
+namespace L2dotNET.GameService.Model.zones.classes
 {
     class instant_skill : L2Zone
     {

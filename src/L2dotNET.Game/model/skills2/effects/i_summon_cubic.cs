@@ -1,7 +1,8 @@
-﻿using L2dotNET.GameService.model.npcs.cubic;
+﻿using L2dotNET.GameService.Model.npcs.cubic;
+using L2dotNET.GameService.Model.player;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.skills2.effects
+namespace L2dotNET.GameService.Model.skills2.effects
 {
     public class i_summon_cubic : TEffect
     {

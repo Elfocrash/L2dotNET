@@ -2,9 +2,9 @@
 using System.Runtime.Remoting.Contexts;
 using System.Timers;
 using L2dotNET.GameService.network;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.network.serverpackets;
 
-namespace L2dotNET.GameService
+namespace L2dotNET.GameService.Model.player
 {
     [Synchronization]
     public class L2Party

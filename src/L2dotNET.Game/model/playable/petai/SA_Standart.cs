@@ -1,6 +1,6 @@
 ﻿using L2dotNET.GameService.tools;
 
-namespace L2dotNET.GameService.model.playable.petai
+namespace L2dotNET.GameService.Model.playable.petai
 {
     public class SA_Standart : StandartAiTemplate
     {

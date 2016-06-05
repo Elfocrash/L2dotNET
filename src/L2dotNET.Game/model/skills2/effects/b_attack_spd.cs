@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.model.skills2.effects
+﻿namespace L2dotNET.GameService.Model.skills2.effects
 {
     class b_attack_spd : TEffect
     {

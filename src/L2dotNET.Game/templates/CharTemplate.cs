@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.templates
+﻿namespace L2dotNET.GameService.Templates
 {
     public class CharTemplate
     {

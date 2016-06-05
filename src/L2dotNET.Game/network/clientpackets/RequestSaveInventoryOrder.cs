@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.model.items;
+﻿using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.player;
 
-namespace L2dotNET.GameService.network.l2recv
+namespace L2dotNET.GameService.network.clientpackets
 {
     class RequestSaveInventoryOrder : GameServerNetworkRequest
     {

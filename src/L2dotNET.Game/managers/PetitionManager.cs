@@ -1,6 +1,7 @@
 ﻿using System;
+using L2dotNET.GameService.Model.player;
 
-namespace L2dotNET.GameService.managers
+namespace L2dotNET.GameService.Managers
 {
     class PetitionManager
     {

@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.model.npcs.ai.ex
+﻿using L2dotNET.GameService.Model.player;
+
+namespace L2dotNET.GameService.Model.npcs.ai.ex
 {
     class ai_looser_of_gracia : AITemplate
     {

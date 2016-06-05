@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class ExSendManorList : GameServerNetworkPacket
     {

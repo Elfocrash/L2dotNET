@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.model.player.basic;
+﻿using L2dotNET.GameService.Model.player.basic;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class CreatureSay : GameServerNetworkPacket
     {

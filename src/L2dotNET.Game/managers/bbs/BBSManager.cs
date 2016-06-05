@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 
-namespace L2dotNET.GameService.managers.bbs
+namespace L2dotNET.GameService.Managers.bbs
 {
     public class BBSManager
     {
@@ -30,7 +31,7 @@ namespace L2dotNET.GameService.managers.bbs
 
         public void RequestShow(L2Player player, int type)
         {
-            if (Config.Instance.gameplayConfig.CommunityBoard.EnableCommunityBoard)
+            if (Config.Config.Instance.gameplayConfig.CommunityBoard.EnableCommunityBoard)
             {
                 player.ShowHtmBBS("<html><body><br><br><center>Welcome to the community board</center><br><br></body></html>");
             }

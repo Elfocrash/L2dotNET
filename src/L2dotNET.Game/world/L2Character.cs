@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Timers;
 using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.model.playable;
-using L2dotNET.GameService.model.playable.petai;
-using L2dotNET.GameService.model.skills2;
-using L2dotNET.GameService.model.stats;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.playable;
+using L2dotNET.GameService.Model.playable.petai;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills;
+using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.Model.stats;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tools;
 
 namespace L2dotNET.GameService.world
@@ -425,7 +427,7 @@ namespace L2dotNET.GameService.world
 
         public virtual void onPickUp(L2Item item) { }
 
-        public int _buffMax = Config.Instance.gameplayConfig.MaxBuffs;
+        public int _buffMax = Config.Config.Instance.gameplayConfig.MaxBuffs;
         public LinkedList<AbnormalEffect> _effects = new LinkedList<AbnormalEffect>();
 
         public override void addAbnormal(TSkill skill, L2Character caster, bool permanent, bool unlim)

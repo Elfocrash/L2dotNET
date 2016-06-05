@@ -1,11 +1,12 @@
 ﻿using log4net;
-using L2dotNET.GameService.model.npcs.decor;
-using L2dotNET.GameService.model.playable;
-using L2dotNET.GameService.model.skills2;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.npcs.decor;
+using L2dotNET.GameService.Model.playable;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tools;
 
-namespace L2dotNET.GameService.network.l2recv
+namespace L2dotNET.GameService.network.clientpackets
 {
     class RequestActionUse : GameServerNetworkRequest
     {

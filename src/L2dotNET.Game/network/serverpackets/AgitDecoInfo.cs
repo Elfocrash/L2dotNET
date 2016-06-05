@@ -1,7 +1,7 @@
-﻿using L2dotNET.GameService.model.npcs.ai;
-using L2dotNET.GameService.model.structures;
+﻿using L2dotNET.GameService.Model.npcs.ai;
+using L2dotNET.GameService.Model.structures;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class AgitDecoInfo : GameServerNetworkPacket
     {

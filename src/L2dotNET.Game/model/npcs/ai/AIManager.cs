@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace L2dotNET.GameService.model.npcs.ai
+namespace L2dotNET.GameService.Model.npcs.ai
 {
     public class AIManager
     {

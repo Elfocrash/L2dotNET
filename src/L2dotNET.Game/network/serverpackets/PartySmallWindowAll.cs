@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.model.skills2;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class PartySmallWindowAll : GameServerNetworkPacket
     {

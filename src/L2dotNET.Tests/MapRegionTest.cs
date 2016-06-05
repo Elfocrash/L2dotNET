@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-using L2dotNET.GameService.templates;
 using L2dotNET.GameService.Templates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

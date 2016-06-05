@@ -1,8 +1,8 @@
 ﻿using System;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tools;
 
-namespace L2dotNET.GameService.model.playable.petai
+namespace L2dotNET.GameService.Model.playable.petai
 {
     public class PA_Standart : StandartAiTemplate
     {

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Timers;
 using L2dotNET.GameService.ai.template;
-using L2dotNET.GameService.managers;
-using L2dotNET.GameService.model.structures;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Managers;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.structures;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.tables.multisell;
 

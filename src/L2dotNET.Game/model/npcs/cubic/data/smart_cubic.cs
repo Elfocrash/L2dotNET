@@ -1,6 +1,8 @@
 ﻿using System;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills;
 
-namespace L2dotNET.GameService.model.npcs.cubic.data
+namespace L2dotNET.GameService.Model.npcs.cubic.data
 {
     /// <summary>
     /// represents smart cubics id 10-14

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L2dotNET.GameService.model.player.partials
+namespace L2dotNET.GameService.Model.player.partials
 {
     public class db_InstanceReuse
     {

@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.model.zones.forms
+﻿namespace L2dotNET.GameService.Model.zones.forms
 {
     public class ZoneForm
     {

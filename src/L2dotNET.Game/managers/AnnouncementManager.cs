@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using log4net;
-using L2dotNET.GameService.model.player.basic;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.player.basic;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.world;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;

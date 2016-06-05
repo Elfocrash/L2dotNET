@@ -1,7 +1,7 @@
-﻿using L2dotNET.GameService.Commands;
-using L2dotNET.GameService.managers;
+﻿using L2dotNET.GameService.Managers;
+using L2dotNET.GameService.Model.player;
 
-namespace L2dotNET.GameService.Command
+namespace L2dotNET.GameService.Commands.Admin
 {
     class AdminTransform : AAdminCommand
     {

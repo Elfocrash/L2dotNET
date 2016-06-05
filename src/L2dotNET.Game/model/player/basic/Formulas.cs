@@ -1,8 +1,8 @@
 ﻿using System;
-using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.Model.items;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.player.basic
+namespace L2dotNET.GameService.Model.player.basic
 {
     class Formulas
     {

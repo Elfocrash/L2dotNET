@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.model.communities;
+using L2dotNET.GameService.Model.communities;
+using L2dotNET.GameService.Model.player;
 
 namespace L2dotNET.GameService.tables
 {

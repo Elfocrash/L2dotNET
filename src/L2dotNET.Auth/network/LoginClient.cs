@@ -5,13 +5,15 @@ using System.Net.Sockets;
 using System.Threading;
 using log4net;
 using L2Crypt;
-using L2dotNET.LoginService.Network.InnerNetwork;
-using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.LoginService.managers;
+using L2dotNET.LoginService.Network.crypt;
+using L2dotNET.LoginService.Network.InnerNetwork.ClientPackets;
+using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Models;
 using L2dotNET.Network;
 using L2dotNET.Utility;
 
-namespace L2dotNET.LoginService
+namespace L2dotNET.LoginService.Network
 {
     public class LoginClient
     {

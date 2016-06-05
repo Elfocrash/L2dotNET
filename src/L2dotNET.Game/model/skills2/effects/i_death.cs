@@ -1,7 +1,7 @@
 ﻿using System;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.skills2.effects
+namespace L2dotNET.GameService.Model.skills2.effects
 {
     class i_death : TEffect
     {

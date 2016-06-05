@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.network.l2recv
+﻿using L2dotNET.GameService.Model.player;
+
+namespace L2dotNET.GameService.network.clientpackets
 {
     class RequestTargetCanceld : GameServerNetworkRequest
     {

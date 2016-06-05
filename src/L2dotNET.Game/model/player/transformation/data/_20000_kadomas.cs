@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.model.player.transformation.data
+﻿namespace L2dotNET.GameService.Model.player.transformation.data
 {
     class _20000_kadomas : TransformTemplate
     {

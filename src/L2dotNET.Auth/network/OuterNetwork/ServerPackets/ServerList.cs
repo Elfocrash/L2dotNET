@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.LoginService.gscommunication;
+using L2dotNET.LoginService.model;
 using L2dotNET.Network;
 
-namespace L2dotNET.LoginService.Network.OuterNetwork
+namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 {
     /// <summary>
     /// Play accepted packet.

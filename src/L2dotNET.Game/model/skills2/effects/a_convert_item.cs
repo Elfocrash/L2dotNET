@@ -1,8 +1,9 @@
-﻿using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.model.skills2.effects
+namespace L2dotNET.GameService.Model.skills2.effects
 {
     class a_convert_item : TEffect
     {

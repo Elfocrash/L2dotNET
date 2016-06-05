@@ -4,7 +4,7 @@
 using System.Runtime.Serialization;
 #endif
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
 #if WINRT
     [DataContract]

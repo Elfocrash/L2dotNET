@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class ExBuySellList_Buy : GameServerNetworkPacket
     {

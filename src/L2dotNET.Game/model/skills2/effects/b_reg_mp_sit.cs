@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.model.skills2.speceffects;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2.speceffects;
 
-namespace L2dotNET.GameService.model.skills2.effects
+namespace L2dotNET.GameService.Model.skills2.effects
 {
     class b_reg_mp_sit : TEffect
     {

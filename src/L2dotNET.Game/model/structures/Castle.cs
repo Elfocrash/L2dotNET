@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.model.structures
+﻿namespace L2dotNET.GameService.Model.structures
 {
     class Castle
     {

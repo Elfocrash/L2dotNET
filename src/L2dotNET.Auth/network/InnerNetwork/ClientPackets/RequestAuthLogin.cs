@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using L2dotNET.LoginService.gscommunication;
-using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Models;
 using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
@@ -10,7 +10,7 @@ using Ninject;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Engines;
 
-namespace L2dotNET.LoginService.Network.InnerNetwork
+namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestAuthLogin
     {
@@ -54,7 +54,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 
             if (account == null)
             {
-                if (Config.Instance.serverConfig.AutoCreate)
+                if (Config.Config.Instance.serverConfig.AutoCreate)
                     account = accountService.CreateAccount(username, L2Security.HashPassword(password));
                 else
                 {

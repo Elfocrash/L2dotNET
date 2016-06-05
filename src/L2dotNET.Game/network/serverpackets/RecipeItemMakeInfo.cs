@@ -1,6 +1,8 @@
-﻿using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class RecipeItemMakeInfo : GameServerNetworkPacket
     {
@@ -15,7 +17,7 @@ namespace L2dotNET.GameService.network.l2send
             RecipeID = rec.RecipeID;
             Type = rec._iscommonrecipe;
             CurrentMP = (int)player.CurMP;
-            MaxMP = (int)player.CharacterStat.getStat(model.skills2.TEffectType.b_max_mp);
+            MaxMP = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
             MakingResult = result;
         }
 

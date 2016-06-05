@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using log4net;
 using L2Crypt;
-using L2dotNET.LoginService.data;
+using L2dotNET.LoginService.Network;
 
-namespace L2dotNET.LoginService
+namespace L2dotNET.LoginService.managers
 {
     sealed class ClientManager
     {

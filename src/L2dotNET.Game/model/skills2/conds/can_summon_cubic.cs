@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.model.skills2.conds
+﻿using L2dotNET.GameService.Model.player;
+
+namespace L2dotNET.GameService.Model.skills2.conds
 {
     public class can_summon_cubic : TSkillCond
     {

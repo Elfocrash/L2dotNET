@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2;
 using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class RecipeBookItemList : GameServerNetworkPacket
     {
@@ -12,7 +14,7 @@ namespace L2dotNET.GameService.network.l2send
         public RecipeBookItemList(L2Player player, int type)
         {
             _type = type;
-            _mp = (int)player.CharacterStat.getStat(model.skills2.TEffectType.b_max_mp);
+            _mp = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
             _book = new List<L2Recipe>();
 
             if (player._recipeBook != null)

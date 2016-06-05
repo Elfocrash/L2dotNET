@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
 
-namespace L2dotNET.GameService
+namespace L2dotNET.GameService.Config
 {
     public sealed class Config
     {

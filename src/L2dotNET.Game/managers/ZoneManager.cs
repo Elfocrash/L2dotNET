@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.managers
+namespace L2dotNET.GameService.Managers
 {
     public class ZoneManager
     {

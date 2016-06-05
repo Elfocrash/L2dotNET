@@ -1,9 +1,11 @@
 ﻿using System;
-using L2dotNET.GameService.model.skills2;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills;
+using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.npcs.cubic
+namespace L2dotNET.GameService.Model.npcs.cubic
 {
     public class CubicTemplate
     {

@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.model.npcs.decor;
+﻿using L2dotNET.GameService.Model.npcs.decor;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class StaticObject : GameServerNetworkPacket
     {

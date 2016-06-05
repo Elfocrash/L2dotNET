@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.Model.npcs;
+using L2dotNET.GameService.Model.player;
 using L2dotNET.GameService.world;
 
 namespace L2dotNET.GameService.ai.template

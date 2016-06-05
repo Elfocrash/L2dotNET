@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.model.npcs.decor
+namespace L2dotNET.GameService.Model.npcs.decor
 {
     public class L2TownMap : L2StaticObject
     {

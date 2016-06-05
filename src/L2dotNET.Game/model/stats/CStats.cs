@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using L2dotNET.GameService.model.skills2;
-using L2dotNET.GameService.templates;
+using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.Templates;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.stats
+namespace L2dotNET.GameService.Model.stats
 {
     public class CStats
     {

@@ -1,7 +1,8 @@
-﻿using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tools;
 
-namespace L2dotNET.GameService.network.l2recv
+namespace L2dotNET.GameService.network.clientpackets
 {
     class AnswerTradeRequest : GameServerNetworkRequest
     {

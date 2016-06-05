@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Commands;
-using L2dotNET.GameService.model.skills2;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.network.serverpackets;
 
-namespace L2dotNET.GameService.Command
+namespace L2dotNET.GameService.Commands.Admin
 {
     class AdminGiveAllSkills : AAdminCommand
     {

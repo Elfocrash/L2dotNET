@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.network.loginauth
             IsConnected = false;
             try
             {
-                lclient = new TcpClient(Config.Instance.serverConfig.AuthHost, Config.Instance.serverConfig.AuthPort);
+                lclient = new TcpClient(Config.Config.Instance.serverConfig.AuthHost, Config.Config.Instance.serverConfig.AuthPort);
                 nstream = lclient.GetStream();
             }
             catch (SocketException)

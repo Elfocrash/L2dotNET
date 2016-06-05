@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.Model.items;
 
-namespace L2dotNET.GameService.templates
+namespace L2dotNET.GameService.Templates
 {
     public class PcTemplate : CharTemplate
     {

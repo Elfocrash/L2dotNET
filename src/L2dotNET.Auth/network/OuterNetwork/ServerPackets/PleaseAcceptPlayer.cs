@@ -1,7 +1,7 @@
 ﻿using L2dotNET.Models;
 using L2dotNET.Network;
 
-namespace L2dotNET.LoginService.Network.OuterNetwork
+namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 {
     internal static class PleaseAcceptPlayer
     {

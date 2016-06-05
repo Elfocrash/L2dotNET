@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using log4net;
-using L2dotNET.GameService.Command;
 using L2dotNET.GameService.Commands;
+using L2dotNET.GameService.Commands.Admin;
+using L2dotNET.GameService.Model.player;
 using L2dotNET.GameService.tables.admin_bypass;
 
 namespace L2dotNET.GameService.Handlers

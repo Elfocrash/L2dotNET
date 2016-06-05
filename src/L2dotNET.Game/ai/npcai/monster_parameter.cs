@@ -1,5 +1,5 @@
 ﻿using L2dotNET.GameService.ai.template;
-using L2dotNET.GameService.model.playable;
+using L2dotNET.GameService.Model.playable;
 
 namespace L2dotNET.GameService.ai.npcai
 {

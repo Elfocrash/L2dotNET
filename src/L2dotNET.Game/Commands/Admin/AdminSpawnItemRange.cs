@@ -1,8 +1,8 @@
-﻿using L2dotNET.GameService.Commands;
-using L2dotNET.GameService.model.items;
+﻿using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.player;
 using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.Command
+namespace L2dotNET.GameService.Commands.Admin
 {
     class AdminSpawnItemRange : AAdminCommand
     {

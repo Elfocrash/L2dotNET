@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.tables.multisell;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.tables.multisell;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class MultiSellListEx : GameServerNetworkPacket
     {

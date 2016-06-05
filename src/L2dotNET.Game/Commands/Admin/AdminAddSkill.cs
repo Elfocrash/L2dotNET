@@ -1,7 +1,7 @@
-﻿using L2dotNET.GameService.Commands;
-using L2dotNET.GameService.model.skills2;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2;
 
-namespace L2dotNET.GameService.Command
+namespace L2dotNET.GameService.Commands.Admin
 {
     class AdminAddSkill : AAdminCommand
     {

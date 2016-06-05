@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.model.inventory;
+using L2dotNET.GameService.Model.inventory;
+using L2dotNET.GameService.Model.player;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class CharacterSelectionInfo : GameServerNetworkPacket
     {

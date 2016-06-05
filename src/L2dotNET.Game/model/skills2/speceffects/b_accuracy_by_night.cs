@@ -1,7 +1,8 @@
-﻿using L2dotNET.GameService.model.skills2.effects;
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2.effects;
+using L2dotNET.GameService.network.serverpackets;
 
-namespace L2dotNET.GameService.model.skills2.speceffects
+namespace L2dotNET.GameService.Model.skills2.speceffects
 {
     public class b_accuracy_by_night : TSpecEffect
     {

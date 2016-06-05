@@ -1,7 +1,8 @@
-﻿using L2dotNET.GameService.model.inventory;
+﻿using L2dotNET.GameService.Model.inventory;
+using L2dotNET.GameService.Model.player;
 using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.model.playable
+namespace L2dotNET.GameService.Model.playable
 {
     public class L2Pet : L2Summon
     {

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.player;
 
-namespace L2dotNET.GameService.model.skills2.conds
+namespace L2dotNET.GameService.Model.skills2.conds
 {
     class Cond_EquipWeapon : TSkillCond
     {

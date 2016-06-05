@@ -1,9 +1,9 @@
-﻿using L2dotNET.GameService.model.playable.petai;
-using L2dotNET.GameService.model.skills2;
+﻿using L2dotNET.GameService.Model.playable.petai;
+using L2dotNET.GameService.Model.skills2;
 using L2dotNET.GameService.tools;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.player.ai
+namespace L2dotNET.GameService.Model.player.ai
 {
     public class PlayerAI : StandartAiTemplate
     {

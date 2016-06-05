@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.GameService.model.npcs;
-using L2dotNET.GameService.model.npcs.decor;
+using L2dotNET.GameService.Model.npcs;
+using L2dotNET.GameService.Model.npcs.decor;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.Templates;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.structures
+namespace L2dotNET.GameService.Model.structures
 {
     public class HideoutTemplate
     {
@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.model.structures
             if (npcs == null)
                 npcs = new SortedList<int, L2Npc>();
 
-            NpcTemplate t = new NpcTemplate(new GameService.templates.StatsSet()); //NpcTable.Instance.GetNpcTemplate(id);
+            NpcTemplate t = new NpcTemplate(new StatsSet()); //NpcTable.Instance.GetNpcTemplate(id);
             L2Npc npc = null;
             switch (t.NpcId)
             {

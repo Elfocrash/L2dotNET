@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.model.skills2.effects
+﻿using L2dotNET.GameService.Model.player;
+
+namespace L2dotNET.GameService.Model.skills2.effects
 {
     class i_agathion_energy : TEffect
     {

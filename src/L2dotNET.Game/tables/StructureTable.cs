@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using log4net;
-using L2dotNET.GameService.model.structures;
+using L2dotNET.GameService.Model.structures;
 
 namespace L2dotNET.GameService.tables
 {

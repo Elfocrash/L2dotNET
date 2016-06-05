@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.model.items.cursed
+﻿namespace L2dotNET.GameService.Model.items.cursed
 {
     class CursedWeapon { }
 }

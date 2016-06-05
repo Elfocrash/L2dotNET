@@ -2,7 +2,7 @@
 using System.Timers;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService
+namespace L2dotNET.GameService.Model.skills
 {
     public class L2SkillCoolTime
     {

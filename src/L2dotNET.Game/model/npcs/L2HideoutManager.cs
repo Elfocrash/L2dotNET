@@ -1,12 +1,13 @@
 ﻿using log4net;
-using L2dotNET.GameService.model.npcs.ai;
-using L2dotNET.GameService.model.npcs.decor;
-using L2dotNET.GameService.model.skills2;
-using L2dotNET.GameService.model.structures;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.npcs.ai;
+using L2dotNET.GameService.Model.npcs.decor;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.Model.structures;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.model.npcs
+namespace L2dotNET.GameService.Model.npcs
 {
     class L2HideoutManager : L2Npc
     {

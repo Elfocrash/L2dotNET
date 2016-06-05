@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using L2dotNET.Utility;
 
-namespace L2dotNET
+namespace L2dotNET.Network
 {
     /// <summary>
     /// Services types.
@@ -30,10 +30,7 @@ namespace L2dotNET
         /// </summary>
         NpcService = 0x04
     }
-}
 
-namespace L2dotNET.Network
-{
     /// <summary>
     /// Delegate for packet handling
     /// </summary>

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.Model.items;
 
 namespace L2dotNET.GameService.tables
 {

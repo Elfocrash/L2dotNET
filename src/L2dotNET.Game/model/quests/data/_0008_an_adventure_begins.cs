@@ -1,7 +1,8 @@
 ﻿using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.Model.npcs;
+using L2dotNET.GameService.Model.player;
 
-namespace L2dotNET.GameService.model.quests.data
+namespace L2dotNET.GameService.Model.quests.data
 {
     class _0008_an_adventure_begins : QuestOrigin
     {

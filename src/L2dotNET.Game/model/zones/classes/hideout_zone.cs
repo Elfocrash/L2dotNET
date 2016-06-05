@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.model.zones.classes
+namespace L2dotNET.GameService.Model.zones.classes
 {
     class hideout_zone : L2Zone
     {

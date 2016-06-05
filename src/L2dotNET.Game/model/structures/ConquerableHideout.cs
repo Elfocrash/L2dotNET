@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Timers;
-using L2dotNET.GameService.model.communities;
 using L2dotNET.GameService.Managers;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.communities;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.structures
+namespace L2dotNET.GameService.Model.structures
 {
     class ConquerableHideout
     {

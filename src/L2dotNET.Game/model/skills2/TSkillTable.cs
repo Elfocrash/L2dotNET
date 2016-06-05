@@ -7,7 +7,7 @@ using log4net;
 using L2dotNET.GameService.compression;
 using L2dotNET.GameService.Enums;
 
-namespace L2dotNET.GameService.model.skills2
+namespace L2dotNET.GameService.Model.skills2
 {
     class TSkillTable
     {

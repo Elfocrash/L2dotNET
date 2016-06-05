@@ -1,7 +1,13 @@
 ﻿using System.Runtime.Remoting.Contexts;
 using System.Threading;
 using log4net;
-using L2dotNET.GameService.network.l2recv;
+using L2dotNET.GameService.network.clientpackets;
+using L2dotNET.GameService.network.clientpackets.ClanAPI;
+using L2dotNET.GameService.network.clientpackets.ItemEnchantAPI;
+using L2dotNET.GameService.network.clientpackets.PartyAPI;
+using L2dotNET.GameService.network.clientpackets.PetAPI;
+using L2dotNET.GameService.network.clientpackets.RecipeAPI;
+using L2dotNET.GameService.network.clientpackets.VehicleAPI;
 
 namespace L2dotNET.GameService.network
 {

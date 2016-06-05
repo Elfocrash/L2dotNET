@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.controllers;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.network.l2recv
+namespace L2dotNET.GameService.network.clientpackets
 {
     class BypassUserCmd : GameServerNetworkRequest
     {

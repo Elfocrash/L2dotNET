@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace L2dotNET.GeoEngine
+namespace L2dotNET.GeoEngine.Geodata
 {
     public abstract class ABlock
     {

@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.model.communities;
+﻿using L2dotNET.GameService.Model.communities;
 
-namespace L2dotNET.GameService.network.l2send
+namespace L2dotNET.GameService.network.serverpackets
 {
     class PledgeReceiveMemberInfo : GameServerNetworkPacket
     {

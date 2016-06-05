@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     public static class Rnd
     {

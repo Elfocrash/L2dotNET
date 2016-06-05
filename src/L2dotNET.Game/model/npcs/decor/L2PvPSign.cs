@@ -1,7 +1,8 @@
-﻿using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.model.npcs.decor
+namespace L2dotNET.GameService.Model.npcs.decor
 {
     public class L2PvPSign : L2StaticObject
     {

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     [Serializable]
     public struct Vector3 : IEquatable<Vector3>

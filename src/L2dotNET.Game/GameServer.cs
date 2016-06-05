@@ -4,10 +4,10 @@ using System.Net.Sockets;
 using log4net;
 using L2dotNET.GameService.controllers;
 using L2dotNET.GameService.Handlers;
-using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.model.npcs.ai;
-using L2dotNET.GameService.model.quests;
 using L2dotNET.GameService.Managers;
+using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.npcs.ai;
+using L2dotNET.GameService.Model.quests;
 using L2dotNET.GameService.network;
 using L2dotNET.GameService.network.loginauth;
 using L2dotNET.GameService.tables;
@@ -30,7 +30,7 @@ namespace L2dotNET.GameService
 
         public void Start()
         {
-            Config.Instance.Initialize();
+            Config.Config.Instance.Initialize();
 
             PreReqValidation.Instance.Initialize();
 
@@ -81,7 +81,7 @@ namespace L2dotNET.GameService
 
             AuthThread.Instance.Initialize();
 
-            GameServerListener = new TcpListener(IPAddress.Any, Config.Instance.serverConfig.Port);
+            GameServerListener = new TcpListener(IPAddress.Any, Config.Config.Instance.serverConfig.Port);
 
             try
             {
@@ -95,7 +95,7 @@ namespace L2dotNET.GameService
                 Environment.Exit(0);
             }
 
-            log.Info($"Listening Gameservers on port {Config.Instance.serverConfig.Port}");
+            log.Info($"Listening Gameservers on port {Config.Config.Instance.serverConfig.Port}");
 
             TcpClient clientSocket = default(TcpClient);
             while (true)

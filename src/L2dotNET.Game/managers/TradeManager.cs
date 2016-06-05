@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 
-namespace L2dotNET.GameService.managers
+namespace L2dotNET.GameService.Managers
 {
     class TradeManager
     {

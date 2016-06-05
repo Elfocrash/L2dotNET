@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.templates;
 
 namespace L2dotNET.GameService.Templates
 {

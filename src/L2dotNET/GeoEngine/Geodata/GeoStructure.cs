@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L2dotNET.GeoEngine
+namespace L2dotNET.GeoEngine.Geodata
 {
     public class GeoStructure
     {

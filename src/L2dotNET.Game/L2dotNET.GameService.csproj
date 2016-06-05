@@ -566,7 +566,6 @@
     </Compile>
     <Compile Include="network\GameServerNetworkPacket.cs" />
     <Compile Include="scripting\ScriptCompiler.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="Handlers\AdminCommandHandler.cs" />
     <Compile Include="Commands\Admin\AdminHeal.cs" />
     <Compile Include="Commands\Admin\AdminAddSkill.cs" />

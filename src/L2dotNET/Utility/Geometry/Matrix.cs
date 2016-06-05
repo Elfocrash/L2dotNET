@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     public struct Matrix : IEquatable<Matrix>
     {

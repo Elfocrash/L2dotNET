@@ -1,7 +1,7 @@
 ﻿using System;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.stats
+namespace L2dotNET.GameService.Model.stats
 {
     class Formulas
     {

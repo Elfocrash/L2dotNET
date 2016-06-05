@@ -1,7 +1,8 @@
-﻿using L2dotNET.GameService.managers;
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.Managers;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 
-namespace L2dotNET.GameService.model.items.effects
+namespace L2dotNET.GameService.Model.items.effects
 {
     class EnchantScrolls : ItemEffect
     {

@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 using log4net;
+using L2dotNET.GameService.Model.player;
 
 namespace L2dotNET.GameService.tables.admin_bypass
 {

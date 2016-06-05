@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.model.player.basic
+﻿namespace L2dotNET.GameService.Model.player.basic
 {
     public class SayID
     {

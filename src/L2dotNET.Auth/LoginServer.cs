@@ -21,13 +21,13 @@ namespace L2dotNET.LoginService
 
         public void Start()
         {
-            Config.Instance.Initialize();
+            Config.Config.Instance.Initialize();
             PreReqValidation.Instance.Initialize();
             ClientManager.Instance.Initialize();
             ServerThreadPool.Instance.Initialize();
             NetworkRedirect.Instance.Initialize();
 
-            LoginServerListener = new TcpListener(IPAddress.Parse(Config.Instance.serverConfig.Host), Config.Instance.serverConfig.LoginPort);
+            LoginServerListener = new TcpListener(IPAddress.Parse(Config.Config.Instance.serverConfig.Host), Config.Config.Instance.serverConfig.LoginPort);
 
             try
             {
@@ -41,7 +41,7 @@ namespace L2dotNET.LoginService
                 Environment.Exit(0);
             }
 
-            log.Info($"Auth server listening clients at {Config.Instance.serverConfig.Host}:{Config.Instance.serverConfig.LoginPort}");
+            log.Info($"Auth server listening clients at {Config.Config.Instance.serverConfig.Host}:{Config.Config.Instance.serverConfig.LoginPort}");
             new Thread(ServerThreadPool.Instance.Start).Start();
 
             TcpClient clientSocket = default(TcpClient);

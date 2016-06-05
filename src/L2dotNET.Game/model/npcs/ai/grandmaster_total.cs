@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.model.npcs.ai
+﻿using L2dotNET.GameService.Model.player;
+
+namespace L2dotNET.GameService.Model.npcs.ai
 {
     class grandmaster_total
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.Models;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     public class Polygon : AShape
     {

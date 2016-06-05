@@ -1,6 +1,6 @@
 ﻿using L2dotNET.GameService.tables;
 
-namespace L2dotNET.GameService.model.zones.classes
+namespace L2dotNET.GameService.Model.zones.classes
 {
     class battle_zone : L2Zone
     {

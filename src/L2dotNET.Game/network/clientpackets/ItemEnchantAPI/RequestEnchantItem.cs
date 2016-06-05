@@ -1,8 +1,9 @@
 ﻿using System;
-using L2dotNET.GameService.managers;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Managers;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 
-namespace L2dotNET.GameService.network.l2recv
+namespace L2dotNET.GameService.network.clientpackets.ItemEnchantAPI
 {
     class RequestEnchantItem : GameServerNetworkRequest
     {

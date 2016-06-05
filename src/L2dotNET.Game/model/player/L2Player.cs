@@ -6,24 +6,24 @@ using System.Runtime.Remoting.Contexts;
 using System.Timers;
 using log4net;
 using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.model.communities;
-using L2dotNET.GameService.model.inventory;
-using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.model.npcs;
-using L2dotNET.GameService.model.npcs.cubic;
-using L2dotNET.GameService.model.npcs.decor;
-using L2dotNET.GameService.model.playable;
-using L2dotNET.GameService.model.player;
-using L2dotNET.GameService.model.player.ai;
-using L2dotNET.GameService.model.player.partials;
-using L2dotNET.GameService.model.player.transformation;
-using L2dotNET.GameService.model.skills2;
-using L2dotNET.GameService.model.skills2.effects;
-using L2dotNET.GameService.model.vehicles;
+using L2dotNET.GameService.Model.communities;
+using L2dotNET.GameService.Model.inventory;
+using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.npcs;
+using L2dotNET.GameService.Model.npcs.cubic;
+using L2dotNET.GameService.Model.npcs.decor;
+using L2dotNET.GameService.Model.playable;
+using L2dotNET.GameService.Model.player.ai;
+using L2dotNET.GameService.Model.player.partials;
+using L2dotNET.GameService.Model.player.transformation;
+using L2dotNET.GameService.Model.quests;
+using L2dotNET.GameService.Model.skills;
+using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.Model.skills2.effects;
+using L2dotNET.GameService.Model.vehicles;
 using L2dotNET.GameService.network;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.network.serverpackets;
 using L2dotNET.GameService.tables;
-using L2dotNET.GameService.templates;
 using L2dotNET.GameService.tools;
 using L2dotNET.GameService.Templates;
 using L2dotNET.GameService.world;
@@ -31,7 +31,7 @@ using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using Ninject;
 
-namespace L2dotNET.GameService
+namespace L2dotNET.GameService.Model.player
 {
     [Synchronization]
     public partial class L2Player : L2Character

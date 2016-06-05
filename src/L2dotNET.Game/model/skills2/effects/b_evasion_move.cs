@@ -1,7 +1,8 @@
-﻿using L2dotNET.GameService.model.skills2.speceffects;
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.skills2.speceffects;
+using L2dotNET.GameService.network.serverpackets;
 
-namespace L2dotNET.GameService.model.skills2.effects
+namespace L2dotNET.GameService.Model.skills2.effects
 {
     class b_evasion_move : TEffect
     {

@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GeoEngine
+﻿namespace L2dotNET.GeoEngine.Pathfinding
 {
     public class Node { }
 }

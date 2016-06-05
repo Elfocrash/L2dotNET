@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.ai.npcai
+﻿using L2dotNET.GameService.Model.player;
+
+namespace L2dotNET.GameService.ai.npcai
 {
     class henna_manager : citizen
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.model.structures;
+using L2dotNET.GameService.Model.structures;
 
-namespace L2dotNET.GameService.managers
+namespace L2dotNET.GameService.Managers
 {
     class CastleManager
     {

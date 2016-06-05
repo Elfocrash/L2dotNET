@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace L2dotNET.Utility
+namespace L2dotNET.Utility.Geometry
 {
     [Serializable]
     public struct Vector2 : IEquatable<Vector2>

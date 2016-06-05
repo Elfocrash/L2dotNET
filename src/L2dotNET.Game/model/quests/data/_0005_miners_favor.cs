@@ -1,6 +1,7 @@
-﻿using L2dotNET.GameService.model.npcs;
+﻿using L2dotNET.GameService.Model.npcs;
+using L2dotNET.GameService.Model.player;
 
-namespace L2dotNET.GameService.model.quests.data
+namespace L2dotNET.GameService.Model.quests.data
 {
     class _0005_miners_favor : QuestOrigin
     {

@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Commands
+﻿using L2dotNET.GameService.Model.player;
+
+namespace L2dotNET.GameService.Commands.Admin
 {
     public abstract class AAdminCommand
     {

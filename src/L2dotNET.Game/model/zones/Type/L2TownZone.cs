@@ -2,7 +2,7 @@
 using L2dotNET.GameService.Enums;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.zones.Type
+namespace L2dotNET.GameService.Model.zones.Type
 {
     public class L2TownZone : L2SpawnZone
     {

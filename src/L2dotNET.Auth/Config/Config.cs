@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
 
-namespace L2dotNET.LoginService
+namespace L2dotNET.LoginService.Config
 {
     public sealed class Config
     {

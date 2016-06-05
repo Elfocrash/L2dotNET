@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace L2dotNET.GameService
+namespace L2dotNET.GameService.Config
 {
     public class GameplayConfig
     {

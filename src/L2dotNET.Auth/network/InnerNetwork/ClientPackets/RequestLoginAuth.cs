@@ -1,9 +1,10 @@
 ﻿using log4net;
 using L2dotNET.LoginService.gscommunication;
-using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.LoginService.model;
+using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
 
-namespace L2dotNET.LoginService.Network.InnerNetwork
+namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestLoginAuth
     {

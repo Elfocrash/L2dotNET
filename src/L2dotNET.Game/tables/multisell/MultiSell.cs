@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.model.npcs;
-using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.npcs;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 
 namespace L2dotNET.GameService.tables.multisell
 {
@@ -204,7 +205,7 @@ namespace L2dotNET.GameService.tables.multisell
     {
         public int id;
         public long count;
-        public model.items.ItemTemplate template;
+        public ItemTemplate template;
 
         public short enchant
         {

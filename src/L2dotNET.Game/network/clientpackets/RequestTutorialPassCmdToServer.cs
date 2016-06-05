@@ -1,6 +1,7 @@
 ﻿using L2dotNET.GameService.Handlers;
+using L2dotNET.GameService.Model.player;
 
-namespace L2dotNET.GameService.network.l2recv
+namespace L2dotNET.GameService.network.clientpackets
 {
     class RequestTutorialPassCmdToServer : GameServerNetworkRequest
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using log4net;
 
-namespace L2dotNET.GameService.managers
+namespace L2dotNET.GameService.Managers
 {
     public class ThreadPoolManager
     {

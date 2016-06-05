@@ -1,8 +1,9 @@
-﻿using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.model.playable;
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.Model.items;
+using L2dotNET.GameService.Model.playable;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.network.serverpackets;
 
-namespace L2dotNET.GameService.network.l2recv
+namespace L2dotNET.GameService.network.clientpackets.PetAPI
 {
     class RequestPetUseItem : GameServerNetworkRequest
     {

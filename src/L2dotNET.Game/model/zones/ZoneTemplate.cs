@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.model.skills2;
-using L2dotNET.GameService.model.zones.forms;
+using L2dotNET.GameService.Model.skills2;
+using L2dotNET.GameService.Model.zones.forms;
 
-namespace L2dotNET.GameService.model.zones
+namespace L2dotNET.GameService.Model.zones
 {
     public class ZoneTemplate
     {

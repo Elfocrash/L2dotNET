@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.model.skills2.speceffects
+﻿using L2dotNET.GameService.Model.player;
+
+namespace L2dotNET.GameService.Model.skills2.speceffects
 {
     public class b_regen_mp_by_move : TSpecEffect
     {

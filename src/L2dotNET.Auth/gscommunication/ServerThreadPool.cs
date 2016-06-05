@@ -2,6 +2,8 @@
 using System.Net;
 using System.Net.Sockets;
 using log4net;
+using L2dotNET.LoginService.model;
+using L2dotNET.LoginService.Network;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using Ninject;
@@ -73,9 +75,9 @@ namespace L2dotNET.LoginService.gscommunication
 
         public void Start()
         {
-            listener = new TcpListener(IPAddress.Parse(Config.Instance.serverConfig.Host), Config.Instance.serverConfig.GSPort);
+            listener = new TcpListener(IPAddress.Parse(Config.Config.Instance.serverConfig.Host), Config.Config.Instance.serverConfig.GSPort);
             listener.Start();
-            log.Info($"Auth server listening gameservers at {Config.Instance.serverConfig.Host}:{Config.Instance.serverConfig.GSPort}");
+            log.Info($"Auth server listening gameservers at {Config.Config.Instance.serverConfig.Host}:{Config.Config.Instance.serverConfig.GSPort}");
             while (true)
             {
                 VerifyClient(listener.AcceptTcpClient());

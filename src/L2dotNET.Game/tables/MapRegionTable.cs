@@ -2,7 +2,8 @@
 using System.Xml;
 using log4net;
 using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.model.zones.Type;
+using L2dotNET.GameService.Model.player;
+using L2dotNET.GameService.Model.zones.Type;
 using L2dotNET.GameService.world;
 using L2dotNET.Models;
 

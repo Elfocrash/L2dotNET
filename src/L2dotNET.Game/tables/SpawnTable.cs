@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.GameService.model.npcs;
+using L2dotNET.GameService.Model.npcs;
 using L2dotNET.GameService.Templates;
 using L2dotNET.GameService.world;
 
@@ -150,7 +150,7 @@ namespace L2dotNET.GameService.tables
 
         public L2Object SpawnOne(int id, int x, int y, int z, int h)
         {
-            NpcTemplate template = new NpcTemplate(new templates.StatsSet()); //NpcTable.Instance.GetNpcTemplate(id);
+            NpcTemplate template = new NpcTemplate(new StatsSet()); //NpcTable.Instance.GetNpcTemplate(id);
 
             L2Warrior o = new L2Warrior();
             //o.setTemplate(template);

@@ -1,8 +1,8 @@
-﻿using L2dotNET.GameService.model.playable.petai;
+﻿using L2dotNET.GameService.Model.playable.petai;
 using L2dotNET.GameService.tools;
 using L2dotNET.GameService.world;
 
-namespace L2dotNET.GameService.model.npcs.ai
+namespace L2dotNET.GameService.Model.npcs.ai
 {
     public class WarriorAI : StandartAiTemplate
     {
