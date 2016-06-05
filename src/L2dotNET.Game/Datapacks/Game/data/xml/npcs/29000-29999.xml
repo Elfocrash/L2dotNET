@@ -1,0 +1,4442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<list>
+	<npc id="29001" name="Queen Ant" title="">
+		<set name="level" val="40"/>
+		<set name="radius" val="45"/>
+		<set name="height" val="53"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="2179535"/>
+		<set name="sp" val="140740"/>
+		<set name="hp" val="96596"/>
+		<set name="mp" val="300.8"/>
+		<set name="hpRegen" val="208"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="105"/>
+		<set name="pDef" val="1252"/>
+		<set name="mAtk" val="8"/>
+		<set name="mDef" val="229"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="300"/>
+		<set name="walkSpd" val="80"/>
+		<set name="runSpd" val="230"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="queen_ant_clan" clanRange="2000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4021" level="1"/>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="12"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="70" min="1" max="1" chance="60000"/>
+				<drop itemid="159" min="1" max="1" chance="55000"/>
+				<drop itemid="188" min="1" max="1" chance="55000"/>
+				<drop itemid="189" min="1" max="1" chance="55000"/>
+				<drop itemid="225" min="1" max="1" chance="55000"/>
+				<drop itemid="262" min="1" max="1" chance="50000"/>
+				<drop itemid="280" min="1" max="1" chance="55000"/>
+				<drop itemid="297" min="1" max="1" chance="55000"/>
+				<drop itemid="2499" min="1" max="1" chance="60000"/>
+			</category>
+			<category id="2">
+				<drop itemid="353" min="1" max="2" chance="375000"/>
+				<drop itemid="380" min="1" max="2" chance="375000"/>
+			</category>
+			<category id="3">
+				<drop itemid="396" min="1" max="2" chance="425000"/>
+				<drop itemid="438" min="1" max="2" chance="425000"/>
+			</category>
+			<category id="4">
+				<drop itemid="607" min="1" max="3" chance="200000"/>
+				<drop itemid="630" min="1" max="3" chance="200000"/>
+				<drop itemid="1125" min="1" max="3" chance="200000"/>
+				<drop itemid="2412" min="1" max="3" chance="200000"/>
+			</category>
+			<category id="5">
+				<drop itemid="851" min="1" max="2" chance="350000"/>
+				<drop itemid="882" min="1" max="2" chance="350000"/>
+				<drop itemid="914" min="1" max="2" chance="300000"/>
+			</category>
+			<category id="6">
+				<drop itemid="6660" min="1" max="1" chance="300000"/>
+			</category>
+			<category id="7">
+				<drop itemid="955" min="1" max="3" chance="200000"/>
+			</category>
+			<category id="0">
+				<drop itemid="57" min="140000" max="170000" chance="1000000"/>
+			</category>
+			<category id="51">
+				<drop itemid="57" min="140000" max="170000" chance="1000000"/>
+			</category>
+			<category id="52">
+				<drop itemid="57" min="140000" max="170000" chance="1000000"/>
+			</category>
+			<category id="53">
+				<drop itemid="57" min="140000" max="170000" chance="1000000"/>
+			</category>
+			<category id="54">
+				<drop itemid="57" min="140000" max="170000" chance="1000000"/>
+			</category>
+			<category id="55">
+				<drop itemid="57" min="140000" max="170000" chance="1000000"/>
+			</category>
+			<category id="56">
+				<drop itemid="57" min="140000" max="170000" chance="1000000"/>
+			</category>
+			<category id="57">
+				<drop itemid="57" min="120000" max="150000" chance="1000000"/>
+			</category>
+		</drops>
+		<minions>
+			<minion id="29003" min="5" max="5"/>
+			<minion id="29005" min="7" max="7"/>
+		</minions>
+	</npc>
+	<npc id="29002" name="Queen Ant Larva" title="">
+		<set name="level" val="38"/>
+		<set name="radius" val="12"/>
+		<set name="height" val="8"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="591.9"/>
+		<set name="mp" val="315.1"/>
+		<set name="hpRegen" val="3.5"/>
+		<set name="mpRegen" val="1.5"/>
+		<set name="pAtk" val="89.21"/>
+		<set name="pDef" val="118.72"/>
+		<set name="mAtk" val="59.01"/>
+		<set name="mDef" val="84.16"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="40"/>
+		<set name="runSpd" val="60"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="queen_ant_clan" clanRange="4500" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="12"/>
+		</skills>
+		<minions>
+			<minion id="29003" min="2" max="2"/>
+		</minions>
+	</npc>
+	<npc id="29003" name="Nurse Ant" title="">
+		<set name="level" val="35"/>
+		<set name="radius" val="26"/>
+		<set name="height" val="15"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="4000"/>
+		<set name="mp" val="402.6"/>
+		<set name="hpRegen" val="108"/>
+		<set name="mpRegen" val="1.8"/>
+		<set name="pAtk" val="637"/>
+		<set name="pDef" val="547"/>
+		<set name="mAtk" val="395"/>
+		<set name="mDef" val="200"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="40"/>
+		<set name="runSpd" val="130"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="queen_ant_clan" clanRange="700" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="12"/>
+		</skills>
+	</npc>
+	<npc id="29004" name="Guard Ant" title="">
+		<set name="level" val="37"/>
+		<set name="radius" val="26"/>
+		<set name="height" val="15"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="4343"/>
+		<set name="mp" val="432.7"/>
+		<set name="hpRegen" val="115"/>
+		<set name="mpRegen" val="1.8"/>
+		<set name="pAtk" val="178"/>
+		<set name="pDef" val="578"/>
+		<set name="mAtk" val="27"/>
+		<set name="mDef" val="211"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="40"/>
+		<set name="runSpd" val="230"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="500" clan="queen_ant_clan" clanRange="700" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="12"/>
+		</skills>
+	</npc>
+	<npc id="29005" name="Royal Guard Ant" title="">
+		<set name="level" val="39"/>
+		<set name="radius" val="26"/>
+		<set name="height" val="15"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="7051"/>
+		<set name="mp" val="463.3"/>
+		<set name="hpRegen" val="122"/>
+		<set name="mpRegen" val="1.8"/>
+		<set name="pAtk" val="1190"/>
+		<set name="pDef" val="610"/>
+		<set name="mAtk" val="1074"/>
+		<set name="mDef" val="223"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="40"/>
+		<set name="runSpd" val="230"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="queen_ant_clan" clanRange="700" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="12"/>
+		</skills>
+	</npc>
+	<npc id="29006" name="Core" title="">
+		<set name="level" val="50"/>
+		<set name="radius" val="140"/>
+		<set name="height" val="75"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="2041407"/>
+		<set name="sp" val="153786"/>
+		<set name="hp" val="261551.926"/>
+		<set name="mp" val="1708.8"/>
+		<set name="hpRegen" val="441.65"/>
+		<set name="mpRegen" val="20"/>
+		<set name="pAtk" val="722.31"/>
+		<set name="pDef" val="1602"/>
+		<set name="mAtk" val="1398.68"/>
+		<set name="mDef" val="293"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="10"/>
+		<set name="walkSpd" val="50"/>
+		<set name="runSpd" val="110"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="curma_core_clan" clanRange="4500" canMove="false" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="2"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="75" min="1" max="1" chance="48000"/>
+				<drop itemid="84" min="1" max="1" chance="40000"/>
+				<drop itemid="162" min="1" max="1" chance="48000"/>
+				<drop itemid="174" min="1" max="1" chance="40000"/>
+				<drop itemid="200" min="1" max="1" chance="40000"/>
+				<drop itemid="233" min="1" max="1" chance="48000"/>
+				<drop itemid="265" min="1" max="1" chance="40000"/>
+				<drop itemid="283" min="1" max="1" chance="48000"/>
+				<drop itemid="301" min="1" max="1" chance="48000"/>
+			</category>
+			<category id="2">
+				<drop itemid="60" min="1" max="1" chance="120000"/>
+				<drop itemid="400" min="1" max="1" chance="120000"/>
+				<drop itemid="420" min="1" max="1" chance="120000"/>
+				<drop itemid="441" min="1" max="1" chance="120000"/>
+				<drop itemid="472" min="1" max="1" chance="120000"/>
+				<drop itemid="2435" min="1" max="1" chance="140000"/>
+				<drop itemid="2459" min="1" max="1" chance="140000"/>
+			</category>
+			<category id="3">
+				<drop itemid="107" min="1" max="1" chance="140000"/>
+				<drop itemid="517" min="1" max="1" chance="140000"/>
+			</category>
+			<category id="4">
+				<drop itemid="6662" min="1" max="1" chance="300000"/>
+			</category>
+			<category id="5">
+				<drop itemid="951" min="1" max="1" chance="140000"/>
+				<drop itemid="8744" min="3" max="4" chance="200000"/>
+				<drop itemid="8745" min="3" max="3" chance="500000"/>
+				<drop itemid="8754" min="1" max="1" chance="125000"/>
+			</category>
+			<category id="6">
+				<drop itemid="8755" min="1" max="1" chance="333333"/>
+			</category>
+			<category id="0">
+				<drop itemid="57" min="100000" max="150000" chance="1000000"/>
+			</category>
+			<category id="51">
+				<drop itemid="57" min="100000" max="150000" chance="1000000"/>
+			</category>
+			<category id="52">
+				<drop itemid="57" min="100000" max="150000" chance="1000000"/>
+			</category>
+			<category id="53">
+				<drop itemid="57" min="100000" max="150000" chance="1000000"/>
+			</category>
+			<category id="54">
+				<drop itemid="57" min="100000" max="150000" chance="1000000"/>
+			</category>
+			<category id="55">
+				<drop itemid="57" min="100000" max="150000" chance="1000000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29007" name="Death Knight" title="">
+		<set name="level" val="50"/>
+		<set name="radius" val="12"/>
+		<set name="height" val="31"/>
+		<set name="rHand" val="75"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="13817"/>
+		<set name="mp" val="747.8"/>
+		<set name="hpRegen" val="166"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="410"/>
+		<set name="pDef" val="801"/>
+		<set name="mAtk" val="69"/>
+		<set name="mDef" val="293"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="27"/>
+		<set name="runSpd" val="110"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="1050" clan="curma_core_clan" clanRange="2300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4275" level="2"/>
+			<skill id="4278" level="1"/>
+			<skill id="4416" level="1"/>
+		</skills>
+	</npc>
+	<npc id="29008" name="Doom Wraith" title="">
+		<set name="level" val="55"/>
+		<set name="radius" val="15"/>
+		<set name="height" val="45"/>
+		<set name="rHand" val="1472"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="16012"/>
+		<set name="mp" val="889.8"/>
+		<set name="hpRegen" val="185"/>
+		<set name="mpRegen" val="2.4"/>
+		<set name="pAtk" val="470"/>
+		<set name="pDef" val="895"/>
+		<set name="mAtk" val="715"/>
+		<set name="mDef" val="327"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="100"/>
+		<set name="runSpd" val="230"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="950" clan="curma_core_clan" clanRange="700" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4001" level="5"/>
+			<skill id="4045" level="1"/>
+			<skill id="4275" level="2"/>
+			<skill id="4278" level="1"/>
+			<skill id="4416" level="1"/>
+		</skills>
+	</npc>
+	<npc id="29009" name="Dicor" title="">
+		<set name="level" val="47"/>
+		<set name="radius" val="12"/>
+		<set name="height" val="25.5"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="12544"/>
+		<set name="mp" val="665"/>
+		<set name="hpRegen" val="154"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="354"/>
+		<set name="pDef" val="747"/>
+		<set name="mAtk" val="60"/>
+		<set name="mDef" val="273"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="80"/>
+		<set name="runSpd" val="120"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="650" clan="curma_core_clan" clanRange="800" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4035" level="4"/>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="5"/>
+		</skills>
+	</npc>
+	<npc id="29010" name="Validus" title="">
+		<set name="level" val="46"/>
+		<set name="radius" val="15"/>
+		<set name="height" val="29"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="12130"/>
+		<set name="mp" val="637.8"/>
+		<set name="hpRegen" val="150"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="337"/>
+		<set name="pDef" val="729"/>
+		<set name="mAtk" val="58"/>
+		<set name="mDef" val="267"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="70"/>
+		<set name="runSpd" val="110"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="750" clan="curma_core_clan" clanRange="1200" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="3"/>
+		</skills>
+	</npc>
+	<npc id="29011" name="Susceptor" title="">
+		<set name="level" val="49"/>
+		<set name="radius" val="20"/>
+		<set name="height" val="35"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="13389"/>
+		<set name="mp" val="720"/>
+		<set name="hpRegen" val="162"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="391"/>
+		<set name="pDef" val="783"/>
+		<set name="mAtk" val="66"/>
+		<set name="mDef" val="286"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="27"/>
+		<set name="runSpd" val="150"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="850" clan="curma_core_clan" clanRange="1500" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4001" level="4"/>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="2"/>
+		</skills>
+	</npc>
+	<npc id="29012" name="Perum" title="">
+		<set name="level" val="48"/>
+		<set name="radius" val="18"/>
+		<set name="height" val="34"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="12964"/>
+		<set name="mp" val="692.4"/>
+		<set name="hpRegen" val="158"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="372"/>
+		<set name="pDef" val="765"/>
+		<set name="mAtk" val="63"/>
+		<set name="mDef" val="280"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="20"/>
+		<set name="runSpd" val="20"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="750" clan="curma_core_clan" clanRange="800" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4001" level="4"/>
+			<skill id="4045" level="1"/>
+			<skill id="4273" level="3"/>
+			<skill id="4274" level="1"/>
+			<skill id="4416" level="2"/>
+			<skill id="4444" level="2"/>
+		</skills>
+	</npc>
+	<npc id="29013" name="Premo" title="">
+		<set name="level" val="45"/>
+		<set name="radius" val="21"/>
+		<set name="height" val="35"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="11721"/>
+		<set name="mp" val="610.8"/>
+		<set name="hpRegen" val="146"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="320"/>
+		<set name="pDef" val="711"/>
+		<set name="mAtk" val="55"/>
+		<set name="mDef" val="260"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="55"/>
+		<set name="runSpd" val="110"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="curma_core_clan" clanRange="1200" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="11"/>
+		</skills>
+	</npc>
+	<npc id="29014" name="Orfen" title="">
+		<set name="level" val="50"/>
+		<set name="radius" val="35"/>
+		<set name="height" val="143"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="2041407"/>
+		<set name="sp" val="153786"/>
+		<set name="hp" val="261551.926"/>
+		<set name="mp" val="1708.8"/>
+		<set name="hpRegen" val="441.65"/>
+		<set name="mpRegen" val="20"/>
+		<set name="pAtk" val="722.31"/>
+		<set name="pDef" val="1602"/>
+		<set name="mAtk" val="1398.68"/>
+		<set name="mDef" val="293"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="300"/>
+		<set name="walkSpd" val="60"/>
+		<set name="runSpd" val="230"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="1000" clan="orfen_clan" clanRange="3500" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4062" level="1"/>
+			<skill id="4416" level="13"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="76" min="1" max="1" chance="42000"/>
+				<drop itemid="145" min="1" max="1" chance="35000"/>
+				<drop itemid="162" min="1" max="1" chance="42000"/>
+				<drop itemid="199" min="1" max="1" chance="35000"/>
+				<drop itemid="201" min="1" max="1" chance="35000"/>
+				<drop itemid="231" min="1" max="1" chance="42000"/>
+				<drop itemid="265" min="1" max="1" chance="35000"/>
+				<drop itemid="283" min="1" max="1" chance="42000"/>
+				<drop itemid="303" min="1" max="1" chance="42000"/>
+			</category>
+			<category id="2">
+				<drop itemid="60" min="1" max="1" chance="100000"/>
+				<drop itemid="64" min="1" max="2" chance="100000"/>
+				<drop itemid="103" min="1" max="2" chance="100000"/>
+				<drop itemid="400" min="1" max="1" chance="100000"/>
+				<drop itemid="420" min="1" max="1" chance="100000"/>
+				<drop itemid="441" min="1" max="1" chance="100000"/>
+				<drop itemid="472" min="1" max="1" chance="100000"/>
+				<drop itemid="517" min="1" max="2" chance="100000"/>
+				<drop itemid="608" min="1" max="2" chance="100000"/>
+			</category>
+			<category id="3">
+				<drop itemid="854" min="1" max="2" chance="350000"/>
+				<drop itemid="885" min="1" max="2" chance="350000"/>
+				<drop itemid="917" min="1" max="2" chance="300000"/>
+			</category>
+			<category id="4">
+				<drop itemid="6661" min="1" max="1" chance="300000"/>
+			</category>
+			<category id="5">
+				<drop itemid="951" min="1" max="2" chance="100000"/>
+				<drop itemid="8744" min="4" max="4" chance="100000"/>
+				<drop itemid="8745" min="2" max="4" chance="400000"/>
+				<drop itemid="8755" min="1" max="2" chance="200000"/>
+			</category>
+			<category id="0">
+				<drop itemid="57" min="110000" max="150000" chance="1000000"/>
+			</category>
+			<category id="51">
+				<drop itemid="57" min="110000" max="150000" chance="1000000"/>
+			</category>
+			<category id="52">
+				<drop itemid="57" min="110000" max="150000" chance="1000000"/>
+			</category>
+			<category id="53">
+				<drop itemid="57" min="110000" max="150000" chance="1000000"/>
+			</category>
+			<category id="54">
+				<drop itemid="57" min="110000" max="150000" chance="1000000"/>
+			</category>
+			<category id="55">
+				<drop itemid="57" min="110000" max="150000" chance="1000000"/>
+			</category>
+		</drops>
+		<minions>
+			<minion id="29016" min="4" max="4"/>
+		</minions>
+	</npc>
+	<npc id="29015" name="Raikel" title="">
+		<set name="level" val="48"/>
+		<set name="radius" val="37"/>
+		<set name="height" val="64"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="6482"/>
+		<set name="mp" val="692.4"/>
+		<set name="hpRegen" val="158"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="298"/>
+		<set name="pDef" val="765"/>
+		<set name="mAtk" val="40"/>
+		<set name="mDef" val="280"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="60"/>
+		<set name="runSpd" val="230"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="orfen_clan" clanRange="2500" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="12"/>
+		</skills>
+	</npc>
+	<npc id="29016" name="Raikel Leos" title="">
+		<set name="level" val="49"/>
+		<set name="radius" val="37"/>
+		<set name="height" val="64"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="6694"/>
+		<set name="mp" val="720"/>
+		<set name="hpRegen" val="162"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="1058"/>
+		<set name="pDef" val="783"/>
+		<set name="mAtk" val="1563"/>
+		<set name="mDef" val="286"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="60"/>
+		<set name="runSpd" val="230"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="orfen_clan" clanRange="2700" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="12"/>
+		</skills>
+	</npc>
+	<npc id="29017" name="Riba" title="">
+		<set name="level" val="48"/>
+		<set name="radius" val="25"/>
+		<set name="height" val="72"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="6482"/>
+		<set name="mp" val="692.4"/>
+		<set name="hpRegen" val="158"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="298"/>
+		<set name="pDef" val="765"/>
+		<set name="mAtk" val="40"/>
+		<set name="mDef" val="280"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="60"/>
+		<set name="runSpd" val="230"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="orfen_clan" clanRange="2700" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="12"/>
+		</skills>
+	</npc>
+	<npc id="29018" name="Riba Iren" title="">
+		<set name="level" val="49"/>
+		<set name="radius" val="25"/>
+		<set name="height" val="72"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="1"/>
+		<set name="hp" val="13389"/>
+		<set name="mp" val="720"/>
+		<set name="hpRegen" val="162"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="1058"/>
+		<set name="pDef" val="783"/>
+		<set name="mAtk" val="1563"/>
+		<set name="mDef" val="286"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="60"/>
+		<set name="runSpd" val="230"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="orfen_clan" clanRange="2900" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="12"/>
+		</skills>
+	</npc>
+	<npc id="29019" name="Antharas" title="">
+		<set name="level" val="79"/>
+		<set name="radius" val="300"/>
+		<set name="height" val="300"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="262720918"/>
+		<set name="sp" val="29116376"/>
+		<set name="hp" val="7500000"/>
+		<set name="mp" val="18000"/>
+		<set name="hpRegen" val="1100"/>
+		<set name="mpRegen" val="99"/>
+		<set name="pAtk" val="4900"/>
+		<set name="pDef" val="3840"/>
+		<set name="mAtk" val="2550"/>
+		<set name="mDef" val="825"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="14"/>
+		<set name="walkSpd" val="50"/>
+		<set name="runSpd" val="186"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4122" level="1"/>
+			<skill id="4416" level="10"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="80" min="1" max="2" chance="250000"/>
+				<drop itemid="98" min="1" max="2" chance="250000"/>
+				<drop itemid="269" min="1" max="2" chance="250000"/>
+				<drop itemid="2504" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="2">
+				<drop itemid="150" min="1" max="2" chance="250000"/>
+				<drop itemid="212" min="1" max="2" chance="250000"/>
+				<drop itemid="235" min="1" max="2" chance="250000"/>
+				<drop itemid="288" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="3">
+				<drop itemid="81" min="1" max="2" chance="250000"/>
+				<drop itemid="151" min="1" max="2" chance="250000"/>
+				<drop itemid="164" min="1" max="2" chance="250000"/>
+				<drop itemid="2500" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="4">
+				<drop itemid="213" min="1" max="2" chance="200000"/>
+				<drop itemid="236" min="1" max="2" chance="200000"/>
+				<drop itemid="270" min="1" max="2" chance="200000"/>
+				<drop itemid="289" min="1" max="2" chance="200000"/>
+				<drop itemid="305" min="1" max="2" chance="200000"/>
+			</category>
+			<category id="5">
+				<drop itemid="6364" min="1" max="1" chance="170000"/>
+				<drop itemid="6365" min="1" max="1" chance="170000"/>
+				<drop itemid="6369" min="1" max="1" chance="170000"/>
+				<drop itemid="6370" min="1" max="1" chance="170000"/>
+				<drop itemid="6372" min="1" max="1" chance="160000"/>
+				<drop itemid="6580" min="1" max="1" chance="160000"/>
+			</category>
+			<category id="6">
+				<drop itemid="6366" min="1" max="1" chance="200000"/>
+				<drop itemid="6367" min="1" max="1" chance="200000"/>
+				<drop itemid="6371" min="1" max="1" chance="200000"/>
+				<drop itemid="6579" min="1" max="1" chance="200000"/>
+				<drop itemid="7575" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="7">
+				<drop itemid="5287" min="1" max="3" chance="500000"/>
+				<drop itemid="5297" min="1" max="3" chance="250000"/>
+				<drop itemid="5304" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="8">
+				<drop itemid="5311" min="1" max="3" chance="350000"/>
+				<drop itemid="5320" min="1" max="3" chance="350000"/>
+				<drop itemid="5326" min="1" max="3" chance="300000"/>
+			</category>
+			<category id="9">
+				<drop itemid="5293" min="1" max="3" chance="250000"/>
+				<drop itemid="5301" min="1" max="3" chance="250000"/>
+				<drop itemid="5308" min="1" max="3" chance="250000"/>
+				<drop itemid="5316" min="1" max="3" chance="80000"/>
+				<drop itemid="5323" min="1" max="3" chance="80000"/>
+				<drop itemid="5329" min="1" max="3" chance="90000"/>
+			</category>
+			<category id="10">
+				<drop itemid="5288" min="1" max="3" chance="350000"/>
+				<drop itemid="5298" min="1" max="3" chance="350000"/>
+				<drop itemid="5305" min="1" max="3" chance="300000"/>
+			</category>
+			<category id="11">
+				<drop itemid="6674" min="1" max="1" chance="150000"/>
+				<drop itemid="6675" min="1" max="1" chance="150000"/>
+				<drop itemid="6680" min="1" max="1" chance="350000"/>
+				<drop itemid="6684" min="1" max="1" chance="350000"/>
+			</category>
+			<category id="12">
+				<drop itemid="5289" min="1" max="3" chance="250000"/>
+				<drop itemid="5294" min="1" max="3" chance="250000"/>
+				<drop itemid="5312" min="1" max="3" chance="250000"/>
+				<drop itemid="5317" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="13">
+				<drop itemid="5291" min="1" max="3" chance="250000"/>
+				<drop itemid="5296" min="1" max="3" chance="250000"/>
+				<drop itemid="5314" min="1" max="3" chance="250000"/>
+				<drop itemid="5319" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="14">
+				<drop itemid="5290" min="1" max="3" chance="250000"/>
+				<drop itemid="5295" min="1" max="3" chance="250000"/>
+				<drop itemid="5313" min="1" max="3" chance="250000"/>
+				<drop itemid="5318" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="15">
+				<drop itemid="5292" min="1" max="3" chance="400000"/>
+				<drop itemid="5315" min="1" max="3" chance="400000"/>
+				<drop itemid="6678" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="16">
+				<drop itemid="6676" min="1" max="1" chance="340000"/>
+				<drop itemid="6681" min="1" max="1" chance="330000"/>
+				<drop itemid="6685" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="17">
+				<drop itemid="6677" min="1" max="1" chance="340000"/>
+				<drop itemid="6682" min="1" max="1" chance="330000"/>
+				<drop itemid="6686" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="18">
+				<drop itemid="6679" min="1" max="1" chance="340000"/>
+				<drop itemid="6683" min="1" max="1" chance="330000"/>
+				<drop itemid="6687" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="19">
+				<drop itemid="6326" min="1" max="5" chance="300000"/>
+				<drop itemid="6327" min="1" max="5" chance="350000"/>
+				<drop itemid="6328" min="1" max="5" chance="350000"/>
+			</category>
+			<category id="20">
+				<drop itemid="6323" min="1" max="5" chance="300000"/>
+				<drop itemid="6324" min="1" max="5" chance="350000"/>
+				<drop itemid="6325" min="1" max="5" chance="350000"/>
+			</category>
+			<category id="21">
+				<drop itemid="6724" min="1" max="1" chance="350000"/>
+				<drop itemid="6725" min="1" max="1" chance="350000"/>
+				<drop itemid="6726" min="1" max="1" chance="300000"/>
+			</category>
+			<category id="22">
+				<drop itemid="6656" min="1" max="1" chance="1000000"/>
+			</category>
+			<category id="23">
+				<drop itemid="729" min="1" max="19" chance="1000000"/>
+			</category>
+			<category id="24">
+				<drop itemid="1538" min="1" max="59" chance="1000000"/>
+			</category>
+			<category id="25">
+				<drop itemid="3936" min="1" max="39" chance="1000000"/>
+			</category>
+			<category id="26">
+				<drop itemid="8751" min="2" max="4" chance="166666"/>
+				<drop itemid="8752" min="3" max="4" chance="540000"/>
+			</category>
+			<category id="27">
+				<drop itemid="8620" min="12" max="29" chance="2000000"/>
+			</category>
+			<category id="0">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="51">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="52">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="53">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="54">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="55">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="56">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="57">
+				<drop itemid="57" min="9000000" max="13000000" chance="1000000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29020" name="Baium" title="">
+		<set name="level" val="75"/>
+		<set name="radius" val="65"/>
+		<set name="height" val="174"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="10253400"/>
+		<set name="sp" val="1081544"/>
+		<set name="hp" val="1709400"/>
+		<set name="mp" val="18000"/>
+		<set name="hpRegen" val="750"/>
+		<set name="mpRegen" val="99"/>
+		<set name="pAtk" val="3374.18"/>
+		<set name="pDef" val="3300"/>
+		<set name="mAtk" val="2200"/>
+		<set name="mDef" val="2200"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="13"/>
+		<set name="walkSpd" val="80"/>
+		<set name="runSpd" val="120"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4256" level="1"/>
+			<skill id="4416" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="80" min="1" max="1" chance="60000"/>
+				<drop itemid="98" min="1" max="1" chance="60000"/>
+				<drop itemid="150" min="1" max="1" chance="60000"/>
+				<drop itemid="212" min="1" max="1" chance="60000"/>
+				<drop itemid="235" min="1" max="1" chance="60000"/>
+				<drop itemid="269" min="1" max="1" chance="60000"/>
+				<drop itemid="288" min="1" max="1" chance="60000"/>
+				<drop itemid="2504" min="1" max="1" chance="60000"/>
+				<drop itemid="6364" min="1" max="1" chance="12000"/>
+				<drop itemid="6365" min="1" max="1" chance="12000"/>
+				<drop itemid="6366" min="1" max="1" chance="12000"/>
+				<drop itemid="6367" min="1" max="1" chance="9000"/>
+				<drop itemid="6369" min="1" max="1" chance="9000"/>
+				<drop itemid="6370" min="1" max="1" chance="9000"/>
+				<drop itemid="6371" min="1" max="1" chance="12000"/>
+				<drop itemid="6372" min="1" max="1" chance="12000"/>
+				<drop itemid="6579" min="1" max="1" chance="12000"/>
+				<drop itemid="6580" min="1" max="1" chance="9000"/>
+				<drop itemid="7575" min="1" max="1" chance="12000"/>
+			</category>
+			<category id="2">
+				<drop itemid="6658" min="1" max="1" chance="1000000"/>
+			</category>
+			<category id="3">
+				<drop itemid="8620" min="5" max="15" chance="800000"/>
+				<drop itemid="8761" min="1" max="1" chance="48387"/>
+				<drop itemid="8762" min="1" max="1" chance="16129"/>
+			</category>
+			<category id="4">
+				<drop itemid="8751" min="1" max="2" chance="400000"/>
+				<drop itemid="8752" min="1" max="2" chance="355000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29021" name="Archangel" title="">
+		<set name="level" val="74"/>
+		<set name="radius" val="15"/>
+		<set name="height" val="80"/>
+		<set name="rHand" val="93"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="343"/>
+		<set name="hp" val="186915"/>
+		<set name="mp" val="1475"/>
+		<set name="hpRegen" val="158"/>
+		<set name="mpRegen" val="3"/>
+		<set name="pAtk" val="1395"/>
+		<set name="pDef" val="5108"/>
+		<set name="mAtk" val="371"/>
+		<set name="mDef" val="1686"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="50"/>
+		<set name="runSpd" val="170"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="2000" clan="archangel_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="8"/>
+		</skills>
+	</npc>
+	<npc id="29022" name="Zaken" title="">
+		<set name="level" val="60"/>
+		<set name="radius" val="16"/>
+		<set name="height" val="32"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="4879745"/>
+		<set name="sp" val="423589"/>
+		<set name="hp" val="360722"/>
+		<set name="mp" val="180000"/>
+		<set name="hpRegen" val="346.8"/>
+		<set name="mpRegen" val="100"/>
+		<set name="pAtk" val="3616"/>
+		<set name="pDef" val="1981"/>
+		<set name="mAtk" val="1520"/>
+		<set name="mDef" val="966.39"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="300"/>
+		<set name="walkSpd" val="42"/>
+		<set name="runSpd" val="190"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="78" min="1" max="1" chance="10000"/>
+				<drop itemid="91" min="1" max="1" chance="12000"/>
+				<drop itemid="92" min="1" max="1" chance="13000"/>
+				<drop itemid="135" min="1" max="1" chance="48000"/>
+				<drop itemid="142" min="1" max="1" chance="8000"/>
+				<drop itemid="148" min="1" max="1" chance="8000"/>
+				<drop itemid="204" min="1" max="1" chance="12000"/>
+				<drop itemid="205" min="1" max="1" chance="12000"/>
+				<drop itemid="206" min="1" max="1" chance="15000"/>
+				<drop itemid="228" min="1" max="1" chance="48000"/>
+				<drop itemid="229" min="1" max="1" chance="8000"/>
+				<drop itemid="243" min="1" max="1" chance="8000"/>
+				<drop itemid="266" min="1" max="1" chance="30000"/>
+				<drop itemid="267" min="1" max="1" chance="10000"/>
+				<drop itemid="284" min="1" max="1" chance="13000"/>
+				<drop itemid="286" min="1" max="1" chance="39000"/>
+				<drop itemid="299" min="1" max="1" chance="30000"/>
+				<drop itemid="300" min="1" max="1" chance="10000"/>
+				<drop itemid="2503" min="1" max="1" chance="36000"/>
+				<drop itemid="5286" min="1" max="1" chance="30000"/>
+			</category>
+			<category id="2">
+				<drop itemid="357" min="1" max="1" chance="50000"/>
+				<drop itemid="383" min="1" max="1" chance="50000"/>
+				<drop itemid="503" min="1" max="1" chance="30000"/>
+				<drop itemid="554" min="1" max="1" chance="30000"/>
+				<drop itemid="600" min="1" max="1" chance="30000"/>
+				<drop itemid="612" min="1" max="1" chance="30000"/>
+				<drop itemid="633" min="1" max="1" chance="30000"/>
+				<drop itemid="673" min="1" max="1" chance="30000"/>
+				<drop itemid="2376" min="1" max="1" chance="50000"/>
+				<drop itemid="2379" min="1" max="1" chance="50000"/>
+				<drop itemid="2384" min="1" max="1" chance="50000"/>
+				<drop itemid="2388" min="1" max="1" chance="50000"/>
+				<drop itemid="2390" min="1" max="1" chance="100000"/>
+				<drop itemid="2397" min="1" max="1" chance="50000"/>
+				<drop itemid="2402" min="1" max="1" chance="50000"/>
+				<drop itemid="2406" min="1" max="1" chance="100000"/>
+				<drop itemid="2415" min="1" max="1" chance="30000"/>
+				<drop itemid="2464" min="1" max="1" chance="30000"/>
+				<drop itemid="8922" min="1" max="1" chance="80000"/>
+			</category>
+			<category id="3">
+				<drop itemid="6659" min="1" max="1" chance="1000000"/>
+			</category>
+			<category id="4">
+				<drop itemid="947" min="1" max="1" chance="60000"/>
+				<drop itemid="8747" min="3" max="4" chance="320000"/>
+				<drop itemid="8748" min="2" max="3" chance="440000"/>
+				<drop itemid="8757" min="2" max="2" chance="80000"/>
+			</category>
+			<category id="5">
+				<drop itemid="8758" min="1" max="2" chance="80000"/>
+			</category>
+			<category id="0">
+				<drop itemid="57" min="180000" max="220000" chance="1000000"/>
+			</category>
+			<category id="51">
+				<drop itemid="57" min="180000" max="220000" chance="1000000"/>
+			</category>
+			<category id="52">
+				<drop itemid="57" min="180000" max="220000" chance="1000000"/>
+			</category>
+			<category id="53">
+				<drop itemid="57" min="180000" max="220000" chance="1000000"/>
+			</category>
+			<category id="54">
+				<drop itemid="57" min="180000" max="220000" chance="1000000"/>
+			</category>
+			<category id="55">
+				<drop itemid="57" min="180000" max="220000" chance="1000000"/>
+			</category>
+			<category id="56">
+				<drop itemid="57" min="180000" max="220000" chance="1000000"/>
+			</category>
+			<category id="57">
+				<drop itemid="57" min="180000" max="220000" chance="1000000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29023" name="Doll Blader" title="">
+		<set name="level" val="58"/>
+		<set name="radius" val="6"/>
+		<set name="height" val="12"/>
+		<set name="rHand" val="5129"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1828"/>
+		<set name="mp" val="832.4"/>
+		<set name="hpRegen" val="6.5"/>
+		<set name="mpRegen" val="2.4"/>
+		<set name="pAtk" val="442"/>
+		<set name="pDef" val="261"/>
+		<set name="mAtk" val="302"/>
+		<set name="mDef" val="191"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="22"/>
+		<set name="runSpd" val="150"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="500" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4071" level="5"/>
+			<skill id="4085" level="1"/>
+			<skill id="4086" level="1"/>
+			<skill id="4278" level="1"/>
+			<skill id="4333" level="5"/>
+			<skill id="4416" level="9"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="1061" min="4" max="8" chance="200000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29024" name="Vale master" title="">
+		<set name="level" val="59"/>
+		<set name="radius" val="12"/>
+		<set name="height" val="40"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1880"/>
+		<set name="mp" val="861"/>
+		<set name="hpRegen" val="6.5"/>
+		<set name="mpRegen" val="2.4"/>
+		<set name="pAtk" val="461"/>
+		<set name="pDef" val="267"/>
+		<set name="mAtk" val="315"/>
+		<set name="mDef" val="195"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="70"/>
+		<set name="runSpd" val="155"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="500" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4071" level="5"/>
+			<skill id="4085" level="1"/>
+			<skill id="4086" level="1"/>
+			<skill id="4278" level="1"/>
+			<skill id="4333" level="5"/>
+			<skill id="4416" level="9"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="1061" min="4" max="8" chance="200000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29025" name="Baium" title="">
+		<set name="level" val="75"/>
+		<set name="radius" val="65"/>
+		<set name="height" val="82"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Npc"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1709400"/>
+		<set name="mp" val="18000"/>
+		<set name="hpRegen" val="718"/>
+		<set name="mpRegen" val="99"/>
+		<set name="pAtk" val="1874.18"/>
+		<set name="pDef" val="3300"/>
+		<set name="mAtk" val="1596.95"/>
+		<set name="mDef" val="2200"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="50"/>
+		<set name="runSpd" val="120"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="1"/>
+		</skills>
+	</npc>
+	<npc id="29026" name="Pirate Zombie Captain" title="">
+		<set name="level" val="60"/>
+		<set name="radius" val="17"/>
+		<set name="height" val="28"/>
+		<set name="rHand" val="232"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1933"/>
+		<set name="mp" val="804"/>
+		<set name="hpRegen" val="6.5"/>
+		<set name="mpRegen" val="2.4"/>
+		<set name="pAtk" val="420"/>
+		<set name="pDef" val="272"/>
+		<set name="mAtk" val="328"/>
+		<set name="mDef" val="199"/>
+		<set name="crit" val="8"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="14"/>
+		<set name="runSpd" val="140"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="500" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4275" level="2"/>
+			<skill id="4278" level="1"/>
+			<skill id="4416" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="1061" min="4" max="8" chance="200000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29027" name="Pirate Zombie" title="">
+		<set name="level" val="57"/>
+		<set name="radius" val="10"/>
+		<set name="height" val="23"/>
+		<set name="rHand" val="225"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1776"/>
+		<set name="mp" val="584"/>
+		<set name="hpRegen" val="6.5"/>
+		<set name="mpRegen" val="2.1"/>
+		<set name="pAtk" val="371"/>
+		<set name="pDef" val="256"/>
+		<set name="mAtk" val="289"/>
+		<set name="mDef" val="187"/>
+		<set name="crit" val="8"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="11"/>
+		<set name="runSpd" val="140"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="500" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4275" level="2"/>
+			<skill id="4278" level="1"/>
+			<skill id="4416" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="1061" min="4" max="8" chance="200000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29028" name="Valakas" title="Fire Dragon">
+		<set name="level" val="85"/>
+		<set name="radius" val="190"/>
+		<set name="height" val="335"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="284286178"/>
+		<set name="sp" val="27215401"/>
+		<set name="hp" val="7500000"/>
+		<set name="mp" val="1800000"/>
+		<set name="hpRegen" val="1000"/>
+		<set name="mpRegen" val="1000"/>
+		<set name="pAtk" val="8932"/>
+		<set name="pDef" val="3310"/>
+		<set name="mAtk" val="3700"/>
+		<set name="mDef" val="898.7"/>
+		<set name="crit" val="1"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="21"/>
+		<set name="walkSpd" val="120"/>
+		<set name="runSpd" val="300"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="valakas_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="10"/>
+			<skill id="4679" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="80" min="1" max="2" chance="250000"/>
+				<drop itemid="98" min="1" max="2" chance="250000"/>
+				<drop itemid="269" min="1" max="2" chance="250000"/>
+				<drop itemid="2504" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="2">
+				<drop itemid="150" min="1" max="2" chance="250000"/>
+				<drop itemid="212" min="1" max="2" chance="250000"/>
+				<drop itemid="235" min="1" max="2" chance="250000"/>
+				<drop itemid="288" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="3">
+				<drop itemid="81" min="1" max="2" chance="250000"/>
+				<drop itemid="151" min="1" max="2" chance="250000"/>
+				<drop itemid="164" min="1" max="2" chance="250000"/>
+				<drop itemid="2500" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="4">
+				<drop itemid="213" min="1" max="2" chance="200000"/>
+				<drop itemid="236" min="1" max="2" chance="200000"/>
+				<drop itemid="270" min="1" max="2" chance="200000"/>
+				<drop itemid="289" min="1" max="2" chance="200000"/>
+				<drop itemid="305" min="1" max="2" chance="200000"/>
+			</category>
+			<category id="5">
+				<drop itemid="6364" min="1" max="1" chance="170000"/>
+				<drop itemid="6365" min="1" max="1" chance="170000"/>
+				<drop itemid="6369" min="1" max="1" chance="170000"/>
+				<drop itemid="6370" min="1" max="1" chance="170000"/>
+				<drop itemid="6372" min="1" max="1" chance="160000"/>
+				<drop itemid="6580" min="1" max="1" chance="160000"/>
+			</category>
+			<category id="6">
+				<drop itemid="6366" min="1" max="1" chance="200000"/>
+				<drop itemid="6367" min="1" max="1" chance="200000"/>
+				<drop itemid="6371" min="1" max="1" chance="200000"/>
+				<drop itemid="6579" min="1" max="1" chance="200000"/>
+				<drop itemid="7575" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="7">
+				<drop itemid="5287" min="1" max="3" chance="500000"/>
+				<drop itemid="5297" min="1" max="3" chance="250000"/>
+				<drop itemid="5304" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="8">
+				<drop itemid="5311" min="1" max="3" chance="350000"/>
+				<drop itemid="5320" min="1" max="3" chance="350000"/>
+				<drop itemid="5326" min="1" max="3" chance="300000"/>
+			</category>
+			<category id="9">
+				<drop itemid="5293" min="1" max="3" chance="250000"/>
+				<drop itemid="5301" min="1" max="3" chance="250000"/>
+				<drop itemid="5308" min="1" max="3" chance="250000"/>
+				<drop itemid="5316" min="1" max="3" chance="80000"/>
+				<drop itemid="5323" min="1" max="3" chance="80000"/>
+				<drop itemid="5329" min="1" max="3" chance="90000"/>
+			</category>
+			<category id="10">
+				<drop itemid="5288" min="1" max="3" chance="350000"/>
+				<drop itemid="5298" min="1" max="3" chance="350000"/>
+				<drop itemid="5305" min="1" max="3" chance="300000"/>
+			</category>
+			<category id="11">
+				<drop itemid="6674" min="1" max="1" chance="150000"/>
+				<drop itemid="6675" min="1" max="1" chance="150000"/>
+				<drop itemid="6680" min="1" max="1" chance="350000"/>
+				<drop itemid="6684" min="1" max="1" chance="350000"/>
+			</category>
+			<category id="12">
+				<drop itemid="5289" min="1" max="3" chance="250000"/>
+				<drop itemid="5294" min="1" max="3" chance="250000"/>
+				<drop itemid="5312" min="1" max="3" chance="250000"/>
+				<drop itemid="5317" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="13">
+				<drop itemid="5291" min="1" max="3" chance="250000"/>
+				<drop itemid="5296" min="1" max="3" chance="250000"/>
+				<drop itemid="5314" min="1" max="3" chance="250000"/>
+				<drop itemid="5319" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="14">
+				<drop itemid="5290" min="1" max="3" chance="250000"/>
+				<drop itemid="5295" min="1" max="3" chance="250000"/>
+				<drop itemid="5313" min="1" max="3" chance="250000"/>
+				<drop itemid="5318" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="15">
+				<drop itemid="5292" min="1" max="3" chance="400000"/>
+				<drop itemid="5315" min="1" max="3" chance="400000"/>
+				<drop itemid="6678" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="16">
+				<drop itemid="6676" min="1" max="1" chance="340000"/>
+				<drop itemid="6681" min="1" max="1" chance="330000"/>
+				<drop itemid="6685" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="17">
+				<drop itemid="6677" min="1" max="1" chance="340000"/>
+				<drop itemid="6682" min="1" max="1" chance="330000"/>
+				<drop itemid="6686" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="18">
+				<drop itemid="6679" min="1" max="1" chance="340000"/>
+				<drop itemid="6683" min="1" max="1" chance="330000"/>
+				<drop itemid="6687" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="19">
+				<drop itemid="6326" min="1" max="5" chance="300000"/>
+				<drop itemid="6327" min="1" max="5" chance="350000"/>
+				<drop itemid="6328" min="1" max="5" chance="350000"/>
+			</category>
+			<category id="20">
+				<drop itemid="6323" min="1" max="5" chance="300000"/>
+				<drop itemid="6324" min="1" max="5" chance="350000"/>
+				<drop itemid="6325" min="1" max="5" chance="350000"/>
+			</category>
+			<category id="21">
+				<drop itemid="6724" min="1" max="1" chance="350000"/>
+				<drop itemid="6725" min="1" max="1" chance="350000"/>
+				<drop itemid="6726" min="1" max="1" chance="300000"/>
+			</category>
+			<category id="22">
+				<drop itemid="6657" min="1" max="1" chance="1000000"/>
+			</category>
+			<category id="23">
+				<drop itemid="729" min="1" max="19" chance="1000000"/>
+			</category>
+			<category id="24">
+				<drop itemid="1538" min="1" max="59" chance="1000000"/>
+			</category>
+			<category id="25">
+				<drop itemid="3936" min="1" max="39" chance="1000000"/>
+			</category>
+			<category id="26">
+				<drop itemid="8620" min="12" max="19" chance="1000000"/>
+			</category>
+			<category id="0">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="51">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="52">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="53">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="54">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="55">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="56">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="57">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="58">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="59">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="60">
+				<drop itemid="57" min="2000000" max="6000000" chance="1000000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29029" name="Lavasaurus Pustbon" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="15"/>
+		<set name="height" val="75"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="4129.70213428133"/>
+		<set name="mp" val="1980.30304497258"/>
+		<set name="hpRegen" val="67.0069943268003"/>
+		<set name="mpRegen" val="3.96"/>
+		<set name="pAtk" val="2670.3603804899"/>
+		<set name="pDef" val="388.150473598966"/>
+		<set name="mAtk" val="812.454942994962"/>
+		<set name="mDef" val="284.031666989471"/>
+		<set name="crit" val="8"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="1"/>
+		<set name="runSpd" val="1"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="500" clan="valakas_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="2"/>
+			<skill id="4607" level="1"/>
+		</skills>
+	</npc>
+	<npc id="29030" name="Fenril Hound Kerinne" title="Family of Valakas">
+		<set name="level" val="84"/>
+		<set name="radius" val="21"/>
+		<set name="height" val="30"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2RaidBoss"/>
+		<set name="exp" val="2589552"/>
+		<set name="sp" val="1226568"/>
+		<set name="hp" val="104586.37"/>
+		<set name="mp" val="1657.536"/>
+		<set name="hpRegen" val="170.72"/>
+		<set name="mpRegen" val="9.7"/>
+		<set name="pAtk" val="2512.3"/>
+		<set name="pDef" val="2681.953"/>
+		<set name="mAtk" val="586.96652138195"/>
+		<set name="mDef" val="490.626"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="200"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4178" level="9"/>
+			<skill id="4416" level="3"/>
+			<skill id="4494" level="1"/>
+			<skill id="4978" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="6652" min="2" max="6" chance="186739"/>
+				<drop itemid="6654" min="18" max="54" chance="64840"/>
+				<drop itemid="6655" min="14" max="42" chance="41683"/>
+			</category>
+		</drops>
+		<minions>
+			<minion id="29031" min="1" max="1"/>
+			<minion id="29032" min="1" max="1"/>
+		</minions>
+	</npc>
+	<npc id="29031" name="Kerinne's Ifrit" title="">
+		<set name="level" val="84"/>
+		<set name="radius" val="10"/>
+		<set name="height" val="42"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="20648.928"/>
+		<set name="mp" val="1607.808"/>
+		<set name="hpRegen" val="33.792"/>
+		<set name="mpRegen" val="3.84"/>
+		<set name="pAtk" val="4864.32"/>
+		<set name="pDef" val="1310.88"/>
+		<set name="mAtk" val="3386.88"/>
+		<set name="mDef" val="479.616"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="38"/>
+		<set name="runSpd" val="170"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4209" level="9"/>
+			<skill id="4213" level="9"/>
+			<skill id="4416" level="7"/>
+		</skills>
+	</npc>
+	<npc id="29032" name="Kerinne's Golem" title="">
+		<set name="level" val="84"/>
+		<set name="radius" val="22"/>
+		<set name="height" val="45"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="2854.42094757852"/>
+		<set name="mp" val="1607.808"/>
+		<set name="hpRegen" val="48"/>
+		<set name="mpRegen" val="3.84"/>
+		<set name="pAtk" val="4864.32"/>
+		<set name="pDef" val="1310.88"/>
+		<set name="mAtk" val="3386.88"/>
+		<set name="mDef" val="479.616"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="13"/>
+		<set name="runSpd" val="60"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="2"/>
+		</skills>
+	</npc>
+	<npc id="29033" name="Fenril Hound Freki" title="Family of Valakas">
+		<set name="level" val="84"/>
+		<set name="radius" val="21"/>
+		<set name="height" val="30"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2RaidBoss"/>
+		<set name="exp" val="2554272"/>
+		<set name="sp" val="1257012"/>
+		<set name="hp" val="105872.34"/>
+		<set name="mp" val="1708.14"/>
+		<set name="hpRegen" val="171.99"/>
+		<set name="mpRegen" val="9.8"/>
+		<set name="pAtk" val="2593.57"/>
+		<set name="pDef" val="2742.236"/>
+		<set name="mAtk" val="611.11393355078"/>
+		<set name="mDef" val="501.662"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="200"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4197" level="9"/>
+			<skill id="4416" level="3"/>
+			<skill id="4494" level="1"/>
+			<skill id="4979" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="6652" min="2" max="6" chance="189407"/>
+				<drop itemid="6654" min="18" max="54" chance="65766"/>
+				<drop itemid="6655" min="14" max="42" chance="42279"/>
+			</category>
+		</drops>
+		<minions>
+			<minion id="29034" min="1" max="1"/>
+			<minion id="29035" min="1" max="1"/>
+		</minions>
+	</npc>
+	<npc id="29034" name="Freki's Ifrit" title="">
+		<set name="level" val="84"/>
+		<set name="radius" val="10"/>
+		<set name="height" val="42"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="20917.08"/>
+		<set name="mp" val="1657.536"/>
+		<set name="hpRegen" val="34.92"/>
+		<set name="mpRegen" val="3.88"/>
+		<set name="pAtk" val="6682.718"/>
+		<set name="pDef" val="1340.9765"/>
+		<set name="mAtk" val="6293.5257924"/>
+		<set name="mDef" val="490.626"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="38"/>
+		<set name="runSpd" val="170"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4193" level="9"/>
+			<skill id="4203" level="9"/>
+			<skill id="4416" level="7"/>
+		</skills>
+	</npc>
+	<npc id="29035" name="Freki's Golem" title="">
+		<set name="level" val="84"/>
+		<set name="radius" val="22"/>
+		<set name="height" val="45"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="20917.08"/>
+		<set name="mp" val="1657.536"/>
+		<set name="hpRegen" val="34.92"/>
+		<set name="mpRegen" val="3.88"/>
+		<set name="pAtk" val="5024.6"/>
+		<set name="pDef" val="1340.9765"/>
+		<set name="mAtk" val="3539.6658"/>
+		<set name="mDef" val="490.626"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="13"/>
+		<set name="runSpd" val="60"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="2"/>
+		</skills>
+	</npc>
+	<npc id="29036" name="Fenril Hound Uruz" title="Family of Valakas">
+		<set name="level" val="84"/>
+		<set name="radius" val="21"/>
+		<set name="height" val="30"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2RaidBoss"/>
+		<set name="exp" val="2526048"/>
+		<set name="sp" val="1289662"/>
+		<set name="hp" val="214199.37"/>
+		<set name="mp" val="1759.626"/>
+		<set name="hpRegen" val="345.51"/>
+		<set name="mpRegen" val="9.9"/>
+		<set name="pAtk" val="5351.94"/>
+		<set name="pDef" val="2802.591"/>
+		<set name="mAtk" val="635.498613944512"/>
+		<set name="mDef" val="512.721"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="200"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4170" level="9"/>
+			<skill id="4172" level="9"/>
+			<skill id="4175" level="9"/>
+			<skill id="4177" level="9"/>
+			<skill id="4416" level="3"/>
+			<skill id="4494" level="1"/>
+			<skill id="4980" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="6652" min="2" max="6" chance="192247"/>
+				<drop itemid="6654" min="18" max="54" chance="66752"/>
+				<drop itemid="6655" min="14" max="42" chance="42912"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29037" name="Fenril Hound Kinaz" title="Family of Valakas">
+		<set name="level" val="84"/>
+		<set name="radius" val="21"/>
+		<set name="height" val="30"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2RaidBoss"/>
+		<set name="exp" val="2504880"/>
+		<set name="sp" val="1322688"/>
+		<set name="hp" val="108266.5"/>
+		<set name="mp" val="1812"/>
+		<set name="hpRegen" val="174"/>
+		<set name="mpRegen" val="10"/>
+		<set name="pAtk" val="2759.5"/>
+		<set name="pDef" val="2863"/>
+		<set name="mAtk" val="660.073042542101"/>
+		<set name="mDef" val="523.7"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="200"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4184" level="9"/>
+			<skill id="4188" level="9"/>
+			<skill id="4195" level="9"/>
+			<skill id="4416" level="3"/>
+			<skill id="4494" level="1"/>
+			<skill id="4981" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="6652" min="2" max="6" chance="194987"/>
+				<drop itemid="6654" min="18" max="54" chance="67704"/>
+				<drop itemid="6655" min="14" max="42" chance="43524"/>
+			</category>
+		</drops>
+		<minions>
+			<minion id="29038" min="1" max="1"/>
+			<minion id="29039" min="1" max="1"/>
+		</minions>
+	</npc>
+	<npc id="29038" name="Kinaz's Ifrit" title="">
+		<set name="level" val="84"/>
+		<set name="radius" val="10"/>
+		<set name="height" val="42"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="20917.08"/>
+		<set name="mp" val="1657.536"/>
+		<set name="hpRegen" val="34.92"/>
+		<set name="mpRegen" val="3.88"/>
+		<set name="pAtk" val="6682.718"/>
+		<set name="pDef" val="1340.9765"/>
+		<set name="mAtk" val="6293.5257924"/>
+		<set name="mDef" val="490.626"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="38"/>
+		<set name="runSpd" val="170"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4191" level="9"/>
+			<skill id="4201" level="9"/>
+			<skill id="4416" level="7"/>
+		</skills>
+	</npc>
+	<npc id="29039" name="Kinaz's Ifrit" title="">
+		<set name="level" val="84"/>
+		<set name="radius" val="10"/>
+		<set name="height" val="42"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="20917.08"/>
+		<set name="mp" val="1657.536"/>
+		<set name="hpRegen" val="34.92"/>
+		<set name="mpRegen" val="3.88"/>
+		<set name="pAtk" val="5024.6"/>
+		<set name="pDef" val="1340.9765"/>
+		<set name="mAtk" val="3539.6658"/>
+		<set name="mDef" val="490.626"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="38"/>
+		<set name="runSpd" val="170"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4210" level="9"/>
+			<skill id="4212" level="9"/>
+			<skill id="4416" level="7"/>
+		</skills>
+	</npc>
+	<npc id="29040" name="Wings of Flame Ixion" title="Gatekeeper of Valakas">
+		<set name="level" val="84"/>
+		<set name="radius" val="29"/>
+		<set name="height" val="42"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2RaidBoss"/>
+		<set name="exp" val="2476656"/>
+		<set name="sp" val="1356048"/>
+		<set name="hp" val="218741.76"/>
+		<set name="mp" val="1865.268"/>
+		<set name="hpRegen" val="349.46"/>
+		<set name="mpRegen" val="10.1"/>
+		<set name="pAtk" val="5688.32"/>
+		<set name="pDef" val="2923.243"/>
+		<set name="mAtk" val="684.787299379049"/>
+		<set name="mDef" val="534.795"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="57"/>
+		<set name="runSpd" val="200"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4168" level="1"/>
+			<skill id="4172" level="1"/>
+			<skill id="4175" level="1"/>
+			<skill id="4177" level="1"/>
+			<skill id="4416" level="10"/>
+			<skill id="4494" level="1"/>
+			<skill id="4982" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="6652" min="2" max="6" chance="197626"/>
+				<drop itemid="6654" min="18" max="54" chance="68620"/>
+				<drop itemid="6655" min="14" max="42" chance="44113"/>
+			</category>
+		</drops>
+		<minions>
+			<minion id="29041" min="1" max="1"/>
+			<minion id="29042" min="1" max="1"/>
+			<minion id="29043" min="1" max="1"/>
+			<minion id="29044" min="1" max="1"/>
+		</minions>
+	</npc>
+	<npc id="29041" name="Inferno Golem" title="">
+		<set name="level" val="84"/>
+		<set name="radius" val="22"/>
+		<set name="height" val="45"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="20917.08"/>
+		<set name="mp" val="1657.536"/>
+		<set name="hpRegen" val="34.92"/>
+		<set name="mpRegen" val="3.88"/>
+		<set name="pAtk" val="10049.2"/>
+		<set name="pDef" val="1340.9765"/>
+		<set name="mAtk" val="14158.6632"/>
+		<set name="mDef" val="490.626"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="13"/>
+		<set name="runSpd" val="60"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4179" level="9"/>
+			<skill id="4416" level="2"/>
+		</skills>
+	</npc>
+	<npc id="29042" name="Inferno Golem" title="">
+		<set name="level" val="84"/>
+		<set name="radius" val="22"/>
+		<set name="height" val="45"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="20917.08"/>
+		<set name="mp" val="1657.536"/>
+		<set name="hpRegen" val="34.92"/>
+		<set name="mpRegen" val="3.88"/>
+		<set name="pAtk" val="5024.6"/>
+		<set name="pDef" val="1340.9765"/>
+		<set name="mAtk" val="3539.6658"/>
+		<set name="mDef" val="490.626"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="13"/>
+		<set name="runSpd" val="60"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="2"/>
+		</skills>
+	</npc>
+	<npc id="29043" name="Howling Ifrit" title="">
+		<set name="level" val="84"/>
+		<set name="radius" val="10"/>
+		<set name="height" val="42"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="20917.08"/>
+		<set name="mp" val="1657.536"/>
+		<set name="hpRegen" val="34.92"/>
+		<set name="mpRegen" val="3.88"/>
+		<set name="pAtk" val="5024.6"/>
+		<set name="pDef" val="1340.9765"/>
+		<set name="mAtk" val="3539.6658"/>
+		<set name="mDef" val="490.626"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="38"/>
+		<set name="runSpd" val="170"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4209" level="9"/>
+			<skill id="4211" level="9"/>
+			<skill id="4416" level="7"/>
+		</skills>
+	</npc>
+	<npc id="29044" name="Howling Ifrit" title="">
+		<set name="level" val="84"/>
+		<set name="radius" val="10"/>
+		<set name="height" val="42"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="20917.08"/>
+		<set name="mp" val="1657.536"/>
+		<set name="hpRegen" val="34.92"/>
+		<set name="mpRegen" val="3.88"/>
+		<set name="pAtk" val="6682.718"/>
+		<set name="pDef" val="1340.9765"/>
+		<set name="mAtk" val="6293.5257924"/>
+		<set name="mDef" val="490.626"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="38"/>
+		<set name="runSpd" val="170"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="fire_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4191" level="9"/>
+			<skill id="4199" level="9"/>
+			<skill id="4416" level="7"/>
+		</skills>
+	</npc>
+	<npc id="29045" name="Frintezza" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="45"/>
+		<set name="height" val="42.7"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="13232"/>
+		<set name="hp" val="428076.229929773"/>
+		<set name="mp" val="23423.9034583234"/>
+		<set name="hpRegen" val="2484.3"/>
+		<set name="mpRegen" val="3.15"/>
+		<set name="pAtk" val="2641.63342970569"/>
+		<set name="pDef" val="4218.55484265502"/>
+		<set name="mAtk" val="971.856593649426"/>
+		<set name="mDef" val="3093.6078479881"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="43"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="31"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="frintessa_clan" clanRange="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="6"/>
+		</skills>
+	</npc>
+	<npc id="29046" name="Scarlet van Halisha" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="45"/>
+		<set name="height" val="90.7"/>
+		<set name="rHand" val="8204"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="2"/>
+		<set name="hp" val="1554518.0975573"/>
+		<set name="mp" val="11026.9882971101"/>
+		<set name="hpRegen" val="155.43"/>
+		<set name="mpRegen" val="109"/>
+		<set name="pAtk" val="3135.90530099925"/>
+		<set name="pDef" val="1342.97453242915"/>
+		<set name="mAtk" val="1442.51644402476"/>
+		<set name="mDef" val="2089.07149518896"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="43"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="240"/>
+		<set name="runSpd" val="111"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="frintessa_clan" clanRange="2000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="9"/>
+		</skills>
+	</npc>
+	<npc id="29047" name="Scarlet van Halisha" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="92"/>
+		<set name="height" val="112.8"/>
+		<set name="rHand" val="8222"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="284286178"/>
+		<set name="sp" val="27215401"/>
+		<set name="hp" val="2042432.67633202"/>
+		<set name="mp" val="23156.6754239312"/>
+		<set name="hpRegen" val="155.43"/>
+		<set name="mpRegen" val="109"/>
+		<set name="pAtk" val="8890.29152833288"/>
+		<set name="pDef" val="1566.80362116734"/>
+		<set name="mAtk" val="8989.0725799934"/>
+		<set name="mDef" val="2193.5250699484"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="43"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="250"/>
+		<set name="runSpd" val="155"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="frintessa_clan" clanRange="2000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="9"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="80" min="1" max="1" chance="83333"/>
+				<drop itemid="98" min="1" max="1" chance="142857"/>
+				<drop itemid="150" min="1" max="1" chance="166667"/>
+				<drop itemid="212" min="1" max="1" chance="62500"/>
+				<drop itemid="213" min="1" max="1" chance="62500"/>
+				<drop itemid="235" min="1" max="1" chance="62500"/>
+				<drop itemid="269" min="1" max="1" chance="62500"/>
+				<drop itemid="288" min="1" max="1" chance="111111"/>
+				<drop itemid="305" min="1" max="1" chance="21276"/>
+				<drop itemid="2504" min="1" max="1" chance="142857"/>
+			</category>
+			<category id="2">
+				<drop itemid="81" min="1" max="1" chance="43478"/>
+				<drop itemid="151" min="1" max="1" chance="43478"/>
+				<drop itemid="164" min="1" max="1" chance="125000"/>
+				<drop itemid="236" min="1" max="1" chance="21276"/>
+				<drop itemid="270" min="1" max="1" chance="43478"/>
+				<drop itemid="289" min="1" max="1" chance="83333"/>
+				<drop itemid="2500" min="1" max="1" chance="62500"/>
+				<drop itemid="6364" min="1" max="1" chance="21276"/>
+				<drop itemid="6365" min="1" max="1" chance="43478"/>
+				<drop itemid="6366" min="1" max="1" chance="21276"/>
+				<drop itemid="6367" min="1" max="1" chance="21276"/>
+				<drop itemid="6369" min="1" max="1" chance="62500"/>
+				<drop itemid="6370" min="1" max="1" chance="43478"/>
+				<drop itemid="6371" min="1" max="1" chance="21276"/>
+				<drop itemid="6372" min="1" max="1" chance="43478"/>
+				<drop itemid="6579" min="1" max="1" chance="21276"/>
+				<drop itemid="6580" min="1" max="1" chance="43478"/>
+				<drop itemid="7575" min="1" max="1" chance="43478"/>
+			</category>
+			<category id="3">
+				<drop itemid="5312" min="1" max="1" chance="111111"/>
+				<drop itemid="5314" min="1" max="1" chance="125000"/>
+				<drop itemid="5320" min="1" max="1" chance="111111"/>
+				<drop itemid="5326" min="1" max="1" chance="200000"/>
+				<drop itemid="6680" min="1" max="1" chance="111111"/>
+				<drop itemid="6681" min="1" max="1" chance="83333"/>
+				<drop itemid="6682" min="1" max="1" chance="111111"/>
+				<drop itemid="6683" min="1" max="1" chance="142857"/>
+			</category>
+			<category id="4">
+				<drop itemid="5292" min="1" max="1" chance="250000"/>
+				<drop itemid="5304" min="1" max="1" chance="333333"/>
+				<drop itemid="5311" min="1" max="1" chance="142857"/>
+				<drop itemid="5313" min="1" max="1" chance="83333"/>
+				<drop itemid="5315" min="1" max="1" chance="142857"/>
+				<drop itemid="6678" min="1" max="1" chance="21276"/>
+			</category>
+			<category id="5">
+				<drop itemid="5293" min="1" max="1" chance="142857"/>
+				<drop itemid="5294" min="1" max="1" chance="111111"/>
+				<drop itemid="5295" min="1" max="1" chance="83333"/>
+				<drop itemid="5296" min="1" max="1" chance="83333"/>
+				<drop itemid="5301" min="1" max="1" chance="62500"/>
+				<drop itemid="5305" min="1" max="1" chance="250000"/>
+				<drop itemid="5308" min="1" max="1" chance="166667"/>
+			</category>
+			<category id="6">
+				<drop itemid="5287" min="1" max="1" chance="142857"/>
+				<drop itemid="5288" min="1" max="1" chance="125000"/>
+				<drop itemid="5289" min="1" max="1" chance="111111"/>
+				<drop itemid="5290" min="1" max="1" chance="83333"/>
+				<drop itemid="5291" min="1" max="1" chance="200000"/>
+				<drop itemid="5297" min="1" max="1" chance="125000"/>
+				<drop itemid="5298" min="1" max="1" chance="111111"/>
+			</category>
+			<category id="7">
+				<drop itemid="5316" min="1" max="1" chance="43478"/>
+				<drop itemid="5317" min="1" max="1" chance="125000"/>
+				<drop itemid="5318" min="1" max="1" chance="43478"/>
+				<drop itemid="5319" min="1" max="1" chance="111111"/>
+				<drop itemid="5323" min="1" max="1" chance="62500"/>
+				<drop itemid="5329" min="1" max="1" chance="111111"/>
+				<drop itemid="6674" min="1" max="1" chance="43478"/>
+				<drop itemid="6675" min="1" max="1" chance="200000"/>
+				<drop itemid="6676" min="1" max="1" chance="142857"/>
+				<drop itemid="6677" min="1" max="1" chance="83333"/>
+			</category>
+			<category id="8">
+				<drop itemid="6679" min="1" max="1" chance="125000"/>
+				<drop itemid="6684" min="1" max="1" chance="200000"/>
+				<drop itemid="6685" min="1" max="1" chance="125000"/>
+				<drop itemid="6686" min="1" max="1" chance="142857"/>
+				<drop itemid="6687" min="1" max="1" chance="125000"/>
+			</category>
+			<category id="9">
+				<drop itemid="6323" min="1" max="1" chance="142857"/>
+				<drop itemid="6324" min="1" max="1" chance="83333"/>
+				<drop itemid="6325" min="1" max="1" chance="111111"/>
+				<drop itemid="6326" min="1" max="1" chance="250000"/>
+				<drop itemid="6327" min="1" max="1" chance="142857"/>
+				<drop itemid="6328" min="1" max="1" chance="125000"/>
+			</category>
+			<category id="10">
+				<drop itemid="8191" min="1" max="1" chance="1000000"/>
+			</category>
+			<category id="11">
+				<drop itemid="6724" min="1" max="1" chance="200000"/>
+				<drop itemid="6725" min="1" max="1" chance="125000"/>
+				<drop itemid="6726" min="1" max="1" chance="125000"/>
+			</category>
+			<category id="12">
+				<drop itemid="3936" min="1" max="10" chance="1000000"/>
+			</category>
+			<category id="13">
+				<drop itemid="1538" min="1" max="30" chance="1000000"/>
+			</category>
+			<category id="14">
+				<drop itemid="8620" min="6" max="25" chance="1000000"/>
+			</category>
+			<category id="15">
+				<drop itemid="8751" min="2" max="4" chance="500000"/>
+				<drop itemid="8752" min="2" max="4" chance="333333"/>
+				<drop itemid="8761" min="1" max="2" chance="125000"/>
+			</category>
+			<category id="16">
+				<drop itemid="8762" min="1" max="2" chance="111111"/>
+			</category>
+			<category id="0">
+				<drop itemid="57" min="3016667" max="3620000" chance="1000000"/>
+			</category>
+			<category id="51">
+				<drop itemid="57" min="3016667" max="3620000" chance="1000000"/>
+			</category>
+			<category id="52">
+				<drop itemid="57" min="3016667" max="3620000" chance="1000000"/>
+			</category>
+			<category id="53">
+				<drop itemid="57" min="3016667" max="3620000" chance="1000000"/>
+			</category>
+			<category id="54">
+				<drop itemid="57" min="3016667" max="3620000" chance="1000000"/>
+			</category>
+			<category id="55">
+				<drop itemid="57" min="3016667" max="3620000" chance="1000000"/>
+			</category>
+			<category id="56">
+				<drop itemid="57" min="3016667" max="3620000" chance="1000000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29048" name="Evil Spirit" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="40"/>
+		<set name="height" val="100"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="2"/>
+		<set name="hp" val="82844.5126642967"/>
+		<set name="mp" val="2177.28986625269"/>
+		<set name="hpRegen" val="1.03"/>
+		<set name="mpRegen" val="1.03"/>
+		<set name="pAtk" val="1637.21079615435"/>
+		<set name="pDef" val="1637.38608949103"/>
+		<set name="mAtk" val="1151.5428303933"/>
+		<set name="mDef" val="1091.59072648368"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="10"/>
+		<set name="runSpd" val="1"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="CORPSE" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="frintessa_clan" clanRange="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="2"/>
+		</skills>
+	</npc>
+	<npc id="29049" name="Evil Spirit" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="40"/>
+		<set name="height" val="100"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="2"/>
+		<set name="hp" val="82844.5126642967"/>
+		<set name="mp" val="2177.28986625269"/>
+		<set name="hpRegen" val="1.03"/>
+		<set name="mpRegen" val="1.03"/>
+		<set name="pAtk" val="1637.21079615435"/>
+		<set name="pDef" val="1637.38608949103"/>
+		<set name="mAtk" val="1151.5428303933"/>
+		<set name="mDef" val="1091.59072648368"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="10"/>
+		<set name="runSpd" val="1"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="CORPSE" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="frintessa_clan" clanRange="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="2"/>
+		</skills>
+	</npc>
+	<npc id="29050" name="Breath of Halisha" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="23"/>
+		<set name="height" val="40"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="2"/>
+		<set name="hp" val="12996.4412419667"/>
+		<set name="mp" val="20560.2695810843"/>
+		<set name="hpRegen" val="1.01"/>
+		<set name="mpRegen" val="3.03"/>
+		<set name="pAtk" val="1556.78628597682"/>
+		<set name="pDef" val="642.236873936287"/>
+		<set name="mAtk" val="1073.71405840992"/>
+		<set name="mDef" val="428.157916018841"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="200"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="frintessa_clan" clanRange="2000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="9"/>
+			<skill id="5009" level="1"/>
+			<skill id="5011" level="1"/>
+			<skill id="5012" level="1"/>
+		</skills>
+	</npc>
+	<npc id="29051" name="Breath of Halisha" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="23"/>
+		<set name="height" val="40"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="2"/>
+		<set name="hp" val="12996.4412419667"/>
+		<set name="mp" val="20560.2695810843"/>
+		<set name="hpRegen" val="1.01"/>
+		<set name="mpRegen" val="3.03"/>
+		<set name="pAtk" val="1556.78628597682"/>
+		<set name="pDef" val="642.236873936287"/>
+		<set name="mAtk" val="1073.71405840992"/>
+		<set name="mDef" val="428.157916018841"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="200"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="6000" clan="frintessa_clan" clanRange="2000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="9"/>
+			<skill id="5010" level="1"/>
+			<skill id="5011" level="1"/>
+			<skill id="5012" level="1"/>
+		</skills>
+	</npc>
+	<npc id="29052" name="Follower Dummy" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="1"/>
+		<set name="height" val="35"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="3960.03406422627"/>
+		<set name="mp" val="2056.8288406974"/>
+		<set name="hpRegen" val="8.585"/>
+		<set name="mpRegen" val="3.03"/>
+		<set name="pAtk" val="1216.23928591939"/>
+		<set name="pDef" val="3864.96881246637"/>
+		<set name="mAtk" val="838.839108132747"/>
+		<set name="mDef" val="2826.6352584085"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="1"/>
+		<set name="walkSpd" val="10"/>
+		<set name="runSpd" val="1"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="frintessa_clan" clanRange="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4390" level="1"/>
+			<skill id="4416" level="2"/>
+		</skills>
+	</npc>
+	<npc id="29053" name="Follower Dummy" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="1"/>
+		<set name="height" val="58"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="5448.83722464782"/>
+		<set name="mp" val="2036.46419871029"/>
+		<set name="hpRegen" val="8.5"/>
+		<set name="mpRegen" val="3"/>
+		<set name="pAtk" val="1456.32495032888"/>
+		<set name="pDef" val="383.421920892449"/>
+		<set name="mAtk" val="994.481156766258"/>
+		<set name="mDef" val="280.571522036227"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="10"/>
+		<set name="runSpd" val="1"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="frintessa_clan" clanRange="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4390" level="1"/>
+			<skill id="4416" level="2"/>
+		</skills>
+	</npc>
+	<npc id="29054" name="Benom" title="Triol's Leader">
+		<set name="level" val="75"/>
+		<set name="radius" val="20"/>
+		<set name="height" val="56"/>
+		<set name="rHand" val="8203"/>
+		<set name="lHand" val="8203"/>
+		<set name="type" val="L2RaidBoss"/>
+		<set name="exp" val="5879"/>
+		<set name="sp" val="590"/>
+		<set name="hp" val="568382.4"/>
+		<set name="mp" val="4071.06"/>
+		<set name="hpRegen" val="357"/>
+		<set name="mpRegen" val="8.1"/>
+		<set name="pAtk" val="4510"/>
+		<set name="pDef" val="2554"/>
+		<set name="mAtk" val="3279"/>
+		<set name="mDef" val="467.22"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="79"/>
+		<set name="runSpd" val="220"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="9"/>
+			<skill id="4993" level="1"/>
+			<skill id="4994" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="6674" min="1" max="1" chance="17880"/>
+				<drop itemid="6675" min="1" max="1" chance="28535"/>
+				<drop itemid="6701" min="8" max="22" chance="453748"/>
+				<drop itemid="6702" min="24" max="72" chance="182529"/>
+			</category>
+			<category id="2">
+				<drop itemid="6364" min="1" max="1" chance="7859"/>
+				<drop itemid="6372" min="1" max="1" chance="7859"/>
+				<drop itemid="6688" min="8" max="22" chance="276329"/>
+				<drop itemid="6696" min="24" max="72" chance="87725"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29055" name="Teleportation Cubic" title="">
+		<set name="level" val="70"/>
+		<set name="radius" val="40"/>
+		<set name="height" val="80"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Npc"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="2"/>
+		<set name="hp" val="2444.46819"/>
+		<set name="mp" val="1345.8"/>
+		<set name="hpRegen" val="7.5"/>
+		<set name="mpRegen" val="2.7"/>
+		<set name="pAtk" val="688.86373"/>
+		<set name="pDef" val="295.91597"/>
+		<set name="mAtk" val="470.40463"/>
+		<set name="mDef" val="216.53847"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="50"/>
+		<set name="runSpd" val="120"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="6000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="19"/>
+		</skills>
+	</npc>
+	<npc id="29056" name="Ice Fairy Sirra" title="Raid Boss">
+		<set name="level" val="60"/>
+		<set name="radius" val="16"/>
+		<set name="height" val="35.6"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2RaidBoss"/>
+		<set name="exp" val="177"/>
+		<set name="sp" val="5"/>
+		<set name="hp" val="79149.92"/>
+		<set name="mp" val="1036.8"/>
+		<set name="hpRegen" val="147.5576413"/>
+		<set name="mpRegen" val="2.4"/>
+		<set name="pAtk" val="1277.936184"/>
+		<set name="pDef" val="1981.2"/>
+		<set name="mAtk" val="434.6017877"/>
+		<set name="mDef" val="362.44"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="190"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="ice_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="7"/>
+			<skill id="4430" level="5"/>
+			<skill id="4478" level="1"/>
+			<skill id="4494" level="1"/>
+			<skill id="5036" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="110" min="1" max="1" chance="35857"/>
+				<drop itemid="2416" min="1" max="1" chance="25041"/>
+				<drop itemid="2417" min="1" max="1" chance="25041"/>
+				<drop itemid="4077" min="40" max="120" chance="85189"/>
+				<drop itemid="4088" min="9" max="27" chance="318088"/>
+				<drop itemid="4089" min="14" max="42" chance="204485"/>
+			</category>
+			<category id="2">
+				<drop itemid="171" min="1" max="1" chance="2082"/>
+				<drop itemid="175" min="1" max="1" chance="2082"/>
+				<drop itemid="210" min="1" max="1" chance="2082"/>
+				<drop itemid="4116" min="3" max="9" chance="99303"/>
+				<drop itemid="4117" min="4" max="10" chance="85117"/>
+				<drop itemid="4118" min="4" max="12" chance="70562"/>
+				<drop itemid="7893" min="1" max="1" chance="2082"/>
+				<drop itemid="7901" min="1" max="1" chance="2082"/>
+				<drop itemid="8340" min="36" max="108" chance="39453"/>
+				<drop itemid="8348" min="8" max="22" chance="189375"/>
+			</category>
+			<category id="3">
+				<drop itemid="8180" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="4">
+				<drop itemid="1343" min="100" max="200" chance="350689"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29057" name="Sirra's Page" title="Raid Fighter">
+		<set name="level" val="59"/>
+		<set name="radius" val="12"/>
+		<set name="height" val="39.7"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="2"/>
+		<set name="hp" val="7721.463"/>
+		<set name="mp" val="1007"/>
+		<set name="hpRegen" val="57.96894"/>
+		<set name="mpRegen" val="2.4"/>
+		<set name="pAtk" val="1181.243"/>
+		<set name="pDef" val="971.28"/>
+		<set name="mAtk" val="386.9314"/>
+		<set name="mDef" val="355.36"/>
+		<set name="crit" val="1"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="60"/>
+		<set name="runSpd" val="190"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="ice_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4010" level="5"/>
+			<skill id="4045" level="1"/>
+			<skill id="4213" level="1"/>
+			<skill id="4414" level="3"/>
+			<skill id="4416" level="7"/>
+			<skill id="4780" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="1344" min="20" max="60" chance="928000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29058" name="Sirra's Beholder" title="Raid Fighter">
+		<set name="level" val="59"/>
+		<set name="radius" val="18"/>
+		<set name="height" val="36"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="2"/>
+		<set name="hp" val="3860.731"/>
+		<set name="mp" val="1007"/>
+		<set name="hpRegen" val="57.96894"/>
+		<set name="mpRegen" val="2.4"/>
+		<set name="pAtk" val="1181.241"/>
+		<set name="pDef" val="971.28"/>
+		<set name="mAtk" val="386.9314"/>
+		<set name="mDef" val="355.36"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="70"/>
+		<set name="runSpd" val="190"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="ice_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4010" level="5"/>
+			<skill id="4045" level="1"/>
+			<skill id="4414" level="3"/>
+			<skill id="4416" level="2"/>
+			<skill id="4481" level="1"/>
+			<skill id="4482" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="1539" min="1" max="1" chance="227733"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29060" name="Captain of the Ice Queen's Royal Guard" title="Raid Boss">
+		<set name="level" val="59"/>
+		<set name="radius" val="19"/>
+		<set name="height" val="61"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2RaidBoss"/>
+		<set name="exp" val="30"/>
+		<set name="sp" val="2"/>
+		<set name="hp" val="66183.96803"/>
+		<set name="mp" val="1007"/>
+		<set name="hpRegen" val="124.2191592"/>
+		<set name="mpRegen" val="2.4"/>
+		<set name="pAtk" val="1063.76651"/>
+		<set name="pDef" val="1942.56"/>
+		<set name="mAtk" val="313.7963651"/>
+		<set name="mDef" val="355.36"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="140"/>
+		<set name="runSpd" val="190"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="ice_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4173" level="1"/>
+			<skill id="4177" level="1"/>
+			<skill id="4416" level="2"/>
+			<skill id="4494" level="1"/>
+			<skill id="4727" level="1"/>
+			<skill id="4737" level="1"/>
+			<skill id="5030" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="2391" min="1" max="1" chance="13946"/>
+				<drop itemid="2392" min="1" max="1" chance="13946"/>
+				<drop itemid="4082" min="4" max="12" chance="347671"/>
+				<drop itemid="4083" min="8" max="22" chance="185424"/>
+			</category>
+			<category id="2">
+				<drop itemid="287" min="1" max="1" chance="11274"/>
+				<drop itemid="4121" min="3" max="9" chance="536009"/>
+			</category>
+			<category id="3">
+				<drop itemid="4616" min="1" max="3" chance="220057"/>
+				<drop itemid="4617" min="2" max="4" chance="146705"/>
+				<drop itemid="4618" min="1" max="1" chance="440115"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29061" name="Teleportation Cubic" title="">
+		<set name="level" val="70"/>
+		<set name="radius" val="40"/>
+		<set name="height" val="80"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Teleporter"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="40000"/>
+		<set name="hp" val="2444.46819"/>
+		<set name="mp" val="1345.8"/>
+		<set name="hpRegen" val="7.5"/>
+		<set name="mpRegen" val="2.7"/>
+		<set name="pAtk" val="688.86373"/>
+		<set name="pDef" val="295.91597"/>
+		<set name="mAtk" val="470.40463"/>
+		<set name="mDef" val="216.53847"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="50"/>
+		<set name="runSpd" val="120"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="500" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="19"/>
+		</skills>
+	</npc>
+	<npc id="29062" name="Andreas Van Halter" title="Seer of Pagan">
+		<set name="level" val="80"/>
+		<set name="radius" val="9"/>
+		<set name="height" val="21.3"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2RaidBoss"/>
+		<set name="exp" val="372044"/>
+		<set name="sp" val="40000"/>
+		<set name="hp" val="115708.195"/>
+		<set name="mp" val="2051.19"/>
+		<set name="hpRegen" val="364.87"/>
+		<set name="mpRegen" val="3.21"/>
+		<set name="pAtk" val="3134.565"/>
+		<set name="pDef" val="3161.7216"/>
+		<set name="mAtk" val="1241.64405"/>
+		<set name="mDef" val="578.3992"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="210"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="500" clan="andreas_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4183" level="3"/>
+			<skill id="4189" level="3"/>
+			<skill id="4194" level="3"/>
+			<skill id="4416" level="6"/>
+			<skill id="4494" level="1"/>
+			<skill id="5033" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="6684" min="1" max="1" chance="17056"/>
+				<drop itemid="6711" min="12" max="36" chance="306342"/>
+			</category>
+			<category id="2">
+				<drop itemid="7575" min="1" max="1" chance="10504"/>
+				<drop itemid="7579" min="12" max="36" chance="233504"/>
+			</category>
+			<category id="3">
+				<drop itemid="959" min="1" max="1" chance="32009"/>
+				<drop itemid="960" min="1" max="1" chance="320095"/>
+				<drop itemid="6577" min="1" max="1" chance="5335"/>
+				<drop itemid="8921" min="1" max="1" chance="320095"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29063" name="Andreas' Acolyte" title="Raid Fighter">
+		<set name="level" val="80"/>
+		<set name="radius" val="7.7"/>
+		<set name="height" val="28.4"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="40000"/>
+		<set name="hp" val="15283.32804"/>
+		<set name="mp" val="1994.708"/>
+		<set name="hpRegen" val="145.856"/>
+		<set name="mpRegen" val="3.18"/>
+		<set name="pAtk" val="8120.810308"/>
+		<set name="pDef" val="1550.2288"/>
+		<set name="mAtk" val="8457.09203048"/>
+		<set name="mDef" val="567.1848"/>
+		<set name="crit" val="1"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="60"/>
+		<set name="runSpd" val="200"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="500" clan="andreas_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4193" level="1"/>
+			<skill id="4414" level="3"/>
+			<skill id="4416" level="6"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="1344" min="60" max="180" chance="384933"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29064" name="Andreas' Acolyte" title="Raid Fighter">
+		<set name="level" val="80"/>
+		<set name="radius" val="7.7"/>
+		<set name="height" val="28.4"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="40000"/>
+		<set name="hp" val="22740.48"/>
+		<set name="mp" val="1939.14"/>
+		<set name="hpRegen" val="145.32"/>
+		<set name="mpRegen" val="3.15"/>
+		<set name="pAtk" val="5913.6"/>
+		<set name="pDef" val="1519.518"/>
+		<set name="mAtk" val="4557.735"/>
+		<set name="mDef" val="555.954"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="58"/>
+		<set name="runSpd" val="200"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="500" clan="andreas_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4210" level="1"/>
+			<skill id="4214" level="1"/>
+			<skill id="4414" level="3"/>
+			<skill id="4416" level="6"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="1344" min="60" max="180" chance="376000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29065" name="Sailren" title="Sealed Evil Power">
+		<set name="level" val="80"/>
+		<set name="radius" val="100"/>
+		<set name="height" val="82.1"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="689061.278161977"/>
+		<set name="mp" val="2051.19"/>
+		<set name="hpRegen" val="264.824069962994"/>
+		<set name="mpRegen" val="3.21"/>
+		<set name="pAtk" val="3316.12759363386"/>
+		<set name="pDef" val="1185.643995"/>
+		<set name="mAtk" val="1426.64874503057"/>
+		<set name="mDef" val="578.3992"/>
+		<set name="crit" val="1"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="41"/>
+		<set name="runSpd" val="185"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4172" level="2"/>
+			<skill id="4416" level="3"/>
+			<skill id="4494" level="1"/>
+			<skill id="5118" level="1"/>
+			<skill id="5122" level="1"/>
+			<skill id="5143" level="1"/>
+			<skill id="5180" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="6680" min="1" max="1" chance="7303"/>
+				<drop itemid="6707" min="3" max="9" chance="524645"/>
+			</category>
+			<category id="2">
+				<drop itemid="6367" min="1" max="1" chance="4497"/>
+				<drop itemid="6691" min="3" max="9" chance="395312"/>
+			</category>
+			<category id="3">
+				<drop itemid="959" min="1" max="1" chance="18273"/>
+				<drop itemid="960" min="1" max="1" chance="182734"/>
+				<drop itemid="6577" min="1" max="1" chance="3046"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29066" name="Antharas" title="">
+		<set name="level" val="79"/>
+		<set name="radius" val="300"/>
+		<set name="height" val="300"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="230931687"/>
+		<set name="sp" val="25593295"/>
+		<set name="hp" val="6100000"/>
+		<set name="mp" val="1800000"/>
+		<set name="hpRegen" val="1100"/>
+		<set name="mpRegen" val="1000"/>
+		<set name="pAtk" val="4900"/>
+		<set name="pDef" val="3456"/>
+		<set name="mAtk" val="2550"/>
+		<set name="mDef" val="862.5"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="14"/>
+		<set name="walkSpd" val="50"/>
+		<set name="runSpd" val="186"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4122" level="1"/>
+			<skill id="4416" level="10"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="80" min="1" max="2" chance="250000"/>
+				<drop itemid="98" min="1" max="2" chance="250000"/>
+				<drop itemid="269" min="1" max="2" chance="250000"/>
+				<drop itemid="2504" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="2">
+				<drop itemid="150" min="1" max="2" chance="250000"/>
+				<drop itemid="212" min="1" max="2" chance="250000"/>
+				<drop itemid="235" min="1" max="2" chance="250000"/>
+				<drop itemid="288" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="3">
+				<drop itemid="81" min="1" max="2" chance="250000"/>
+				<drop itemid="151" min="1" max="2" chance="250000"/>
+				<drop itemid="164" min="1" max="2" chance="250000"/>
+				<drop itemid="2500" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="4">
+				<drop itemid="213" min="1" max="2" chance="200000"/>
+				<drop itemid="236" min="1" max="2" chance="200000"/>
+				<drop itemid="270" min="1" max="2" chance="200000"/>
+				<drop itemid="289" min="1" max="2" chance="200000"/>
+				<drop itemid="305" min="1" max="2" chance="200000"/>
+			</category>
+			<category id="5">
+				<drop itemid="6364" min="1" max="1" chance="170000"/>
+				<drop itemid="6365" min="1" max="1" chance="170000"/>
+				<drop itemid="6369" min="1" max="1" chance="170000"/>
+				<drop itemid="6370" min="1" max="1" chance="170000"/>
+				<drop itemid="6372" min="1" max="1" chance="160000"/>
+				<drop itemid="6580" min="1" max="1" chance="160000"/>
+			</category>
+			<category id="6">
+				<drop itemid="6366" min="1" max="1" chance="200000"/>
+				<drop itemid="6367" min="1" max="1" chance="200000"/>
+				<drop itemid="6371" min="1" max="1" chance="200000"/>
+				<drop itemid="6579" min="1" max="1" chance="200000"/>
+				<drop itemid="7575" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="7">
+				<drop itemid="5287" min="1" max="3" chance="500000"/>
+				<drop itemid="5297" min="1" max="3" chance="250000"/>
+				<drop itemid="5304" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="8">
+				<drop itemid="5311" min="1" max="3" chance="350000"/>
+				<drop itemid="5320" min="1" max="3" chance="350000"/>
+				<drop itemid="5326" min="1" max="3" chance="300000"/>
+			</category>
+			<category id="9">
+				<drop itemid="5293" min="1" max="3" chance="250000"/>
+				<drop itemid="5301" min="1" max="3" chance="250000"/>
+				<drop itemid="5308" min="1" max="3" chance="250000"/>
+				<drop itemid="5316" min="1" max="3" chance="80000"/>
+				<drop itemid="5323" min="1" max="3" chance="80000"/>
+				<drop itemid="5329" min="1" max="3" chance="90000"/>
+			</category>
+			<category id="10">
+				<drop itemid="5288" min="1" max="3" chance="350000"/>
+				<drop itemid="5298" min="1" max="3" chance="350000"/>
+				<drop itemid="5305" min="1" max="3" chance="300000"/>
+			</category>
+			<category id="11">
+				<drop itemid="6674" min="1" max="1" chance="150000"/>
+				<drop itemid="6675" min="1" max="1" chance="150000"/>
+				<drop itemid="6680" min="1" max="1" chance="350000"/>
+				<drop itemid="6684" min="1" max="1" chance="350000"/>
+			</category>
+			<category id="12">
+				<drop itemid="5289" min="1" max="3" chance="250000"/>
+				<drop itemid="5294" min="1" max="3" chance="250000"/>
+				<drop itemid="5312" min="1" max="3" chance="250000"/>
+				<drop itemid="5317" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="13">
+				<drop itemid="5291" min="1" max="3" chance="250000"/>
+				<drop itemid="5296" min="1" max="3" chance="250000"/>
+				<drop itemid="5314" min="1" max="3" chance="250000"/>
+				<drop itemid="5319" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="14">
+				<drop itemid="5290" min="1" max="3" chance="250000"/>
+				<drop itemid="5295" min="1" max="3" chance="250000"/>
+				<drop itemid="5313" min="1" max="3" chance="250000"/>
+				<drop itemid="5318" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="15">
+				<drop itemid="5292" min="1" max="3" chance="400000"/>
+				<drop itemid="5315" min="1" max="3" chance="400000"/>
+				<drop itemid="6678" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="16">
+				<drop itemid="6676" min="1" max="1" chance="340000"/>
+				<drop itemid="6681" min="1" max="1" chance="330000"/>
+				<drop itemid="6685" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="17">
+				<drop itemid="6677" min="1" max="1" chance="340000"/>
+				<drop itemid="6682" min="1" max="1" chance="330000"/>
+				<drop itemid="6686" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="18">
+				<drop itemid="6679" min="1" max="1" chance="340000"/>
+				<drop itemid="6683" min="1" max="1" chance="330000"/>
+				<drop itemid="6687" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="19">
+				<drop itemid="6326" min="1" max="5" chance="300000"/>
+				<drop itemid="6327" min="1" max="5" chance="350000"/>
+				<drop itemid="6328" min="1" max="5" chance="350000"/>
+			</category>
+			<category id="20">
+				<drop itemid="6323" min="1" max="5" chance="300000"/>
+				<drop itemid="6324" min="1" max="5" chance="350000"/>
+				<drop itemid="6325" min="1" max="5" chance="350000"/>
+			</category>
+			<category id="21">
+				<drop itemid="6724" min="1" max="1" chance="350000"/>
+				<drop itemid="6725" min="1" max="1" chance="350000"/>
+				<drop itemid="6726" min="1" max="1" chance="300000"/>
+			</category>
+			<category id="22">
+				<drop itemid="6656" min="1" max="1" chance="1000000"/>
+			</category>
+			<category id="23">
+				<drop itemid="729" min="1" max="19" chance="1000000"/>
+			</category>
+			<category id="24">
+				<drop itemid="1538" min="1" max="59" chance="1000000"/>
+			</category>
+			<category id="25">
+				<drop itemid="3936" min="1" max="39" chance="1000000"/>
+			</category>
+			<category id="26">
+				<drop itemid="8751" min="2" max="4" chance="166666"/>
+				<drop itemid="8752" min="3" max="4" chance="540000"/>
+			</category>
+			<category id="27">
+				<drop itemid="8620" min="12" max="29" chance="1487600"/>
+			</category>
+			<category id="0">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="51">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="52">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="53">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="54">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="55">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="56">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="57">
+				<drop itemid="57" min="9000000" max="13000000" chance="1000000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29067" name="Antharas" title="">
+		<set name="level" val="79"/>
+		<set name="radius" val="300"/>
+		<set name="height" val="300"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="262720918"/>
+		<set name="sp" val="29116376"/>
+		<set name="hp" val="6800000"/>
+		<set name="mp" val="1800000"/>
+		<set name="hpRegen" val="1100"/>
+		<set name="mpRegen" val="1000"/>
+		<set name="pAtk" val="4900"/>
+		<set name="pDef" val="3456"/>
+		<set name="mAtk" val="2550"/>
+		<set name="mDef" val="862.5"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="14"/>
+		<set name="walkSpd" val="50"/>
+		<set name="runSpd" val="186"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4122" level="1"/>
+			<skill id="4416" level="10"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="80" min="1" max="2" chance="250000"/>
+				<drop itemid="98" min="1" max="2" chance="250000"/>
+				<drop itemid="269" min="1" max="2" chance="250000"/>
+				<drop itemid="2504" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="2">
+				<drop itemid="150" min="1" max="2" chance="250000"/>
+				<drop itemid="212" min="1" max="2" chance="250000"/>
+				<drop itemid="235" min="1" max="2" chance="250000"/>
+				<drop itemid="288" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="3">
+				<drop itemid="81" min="1" max="2" chance="250000"/>
+				<drop itemid="151" min="1" max="2" chance="250000"/>
+				<drop itemid="164" min="1" max="2" chance="250000"/>
+				<drop itemid="2500" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="4">
+				<drop itemid="213" min="1" max="2" chance="200000"/>
+				<drop itemid="236" min="1" max="2" chance="200000"/>
+				<drop itemid="270" min="1" max="2" chance="200000"/>
+				<drop itemid="289" min="1" max="2" chance="200000"/>
+				<drop itemid="305" min="1" max="2" chance="200000"/>
+			</category>
+			<category id="5">
+				<drop itemid="6364" min="1" max="1" chance="170000"/>
+				<drop itemid="6365" min="1" max="1" chance="170000"/>
+				<drop itemid="6369" min="1" max="1" chance="170000"/>
+				<drop itemid="6370" min="1" max="1" chance="170000"/>
+				<drop itemid="6372" min="1" max="1" chance="160000"/>
+				<drop itemid="6580" min="1" max="1" chance="160000"/>
+			</category>
+			<category id="6">
+				<drop itemid="6366" min="1" max="1" chance="200000"/>
+				<drop itemid="6367" min="1" max="1" chance="200000"/>
+				<drop itemid="6371" min="1" max="1" chance="200000"/>
+				<drop itemid="6579" min="1" max="1" chance="200000"/>
+				<drop itemid="7575" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="7">
+				<drop itemid="5287" min="1" max="3" chance="500000"/>
+				<drop itemid="5297" min="1" max="3" chance="250000"/>
+				<drop itemid="5304" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="8">
+				<drop itemid="5311" min="1" max="3" chance="350000"/>
+				<drop itemid="5320" min="1" max="3" chance="350000"/>
+				<drop itemid="5326" min="1" max="3" chance="300000"/>
+			</category>
+			<category id="9">
+				<drop itemid="5293" min="1" max="3" chance="250000"/>
+				<drop itemid="5301" min="1" max="3" chance="250000"/>
+				<drop itemid="5308" min="1" max="3" chance="250000"/>
+				<drop itemid="5316" min="1" max="3" chance="80000"/>
+				<drop itemid="5323" min="1" max="3" chance="80000"/>
+				<drop itemid="5329" min="1" max="3" chance="90000"/>
+			</category>
+			<category id="10">
+				<drop itemid="5288" min="1" max="3" chance="350000"/>
+				<drop itemid="5298" min="1" max="3" chance="350000"/>
+				<drop itemid="5305" min="1" max="3" chance="300000"/>
+			</category>
+			<category id="11">
+				<drop itemid="6674" min="1" max="1" chance="150000"/>
+				<drop itemid="6675" min="1" max="1" chance="150000"/>
+				<drop itemid="6680" min="1" max="1" chance="350000"/>
+				<drop itemid="6684" min="1" max="1" chance="350000"/>
+			</category>
+			<category id="12">
+				<drop itemid="5289" min="1" max="3" chance="250000"/>
+				<drop itemid="5294" min="1" max="3" chance="250000"/>
+				<drop itemid="5312" min="1" max="3" chance="250000"/>
+				<drop itemid="5317" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="13">
+				<drop itemid="5291" min="1" max="3" chance="250000"/>
+				<drop itemid="5296" min="1" max="3" chance="250000"/>
+				<drop itemid="5314" min="1" max="3" chance="250000"/>
+				<drop itemid="5319" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="14">
+				<drop itemid="5290" min="1" max="3" chance="250000"/>
+				<drop itemid="5295" min="1" max="3" chance="250000"/>
+				<drop itemid="5313" min="1" max="3" chance="250000"/>
+				<drop itemid="5318" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="15">
+				<drop itemid="5292" min="1" max="3" chance="400000"/>
+				<drop itemid="5315" min="1" max="3" chance="400000"/>
+				<drop itemid="6678" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="16">
+				<drop itemid="6676" min="1" max="1" chance="340000"/>
+				<drop itemid="6681" min="1" max="1" chance="330000"/>
+				<drop itemid="6685" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="17">
+				<drop itemid="6677" min="1" max="1" chance="340000"/>
+				<drop itemid="6682" min="1" max="1" chance="330000"/>
+				<drop itemid="6686" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="18">
+				<drop itemid="6679" min="1" max="1" chance="340000"/>
+				<drop itemid="6683" min="1" max="1" chance="330000"/>
+				<drop itemid="6687" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="19">
+				<drop itemid="6326" min="1" max="5" chance="300000"/>
+				<drop itemid="6327" min="1" max="5" chance="350000"/>
+				<drop itemid="6328" min="1" max="5" chance="350000"/>
+			</category>
+			<category id="20">
+				<drop itemid="6323" min="1" max="5" chance="300000"/>
+				<drop itemid="6324" min="1" max="5" chance="350000"/>
+				<drop itemid="6325" min="1" max="5" chance="350000"/>
+			</category>
+			<category id="21">
+				<drop itemid="6724" min="1" max="1" chance="350000"/>
+				<drop itemid="6725" min="1" max="1" chance="350000"/>
+				<drop itemid="6726" min="1" max="1" chance="300000"/>
+			</category>
+			<category id="22">
+				<drop itemid="6656" min="1" max="1" chance="1000000"/>
+			</category>
+			<category id="23">
+				<drop itemid="729" min="1" max="19" chance="1000000"/>
+			</category>
+			<category id="24">
+				<drop itemid="1538" min="1" max="59" chance="1000000"/>
+			</category>
+			<category id="25">
+				<drop itemid="3936" min="1" max="39" chance="1000000"/>
+			</category>
+			<category id="26">
+				<drop itemid="8751" min="2" max="4" chance="166666"/>
+				<drop itemid="8752" min="3" max="4" chance="540000"/>
+			</category>
+			<category id="0">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="51">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="52">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="53">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="54">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="55">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="56">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="57">
+				<drop itemid="57" min="9000000" max="13000000" chance="1000000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29068" name="Antharas" title="Earth Dragon">
+		<set name="level" val="79"/>
+		<set name="radius" val="300"/>
+		<set name="height" val="300"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2GrandBoss"/>
+		<set name="exp" val="317892324"/>
+		<set name="sp" val="31824199"/>
+		<set name="hp" val="7500000"/>
+		<set name="mp" val="1800000"/>
+		<set name="hpRegen" val="1830"/>
+		<set name="mpRegen" val="1000"/>
+		<set name="pAtk" val="4900"/>
+		<set name="pDef" val="3456"/>
+		<set name="mAtk" val="2550"/>
+		<set name="mDef" val="862.5"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="14"/>
+		<set name="walkSpd" val="50"/>
+		<set name="runSpd" val="186"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4122" level="1"/>
+			<skill id="4416" level="10"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="80" min="1" max="2" chance="250000"/>
+				<drop itemid="98" min="1" max="2" chance="250000"/>
+				<drop itemid="269" min="1" max="2" chance="250000"/>
+				<drop itemid="2504" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="2">
+				<drop itemid="150" min="1" max="2" chance="250000"/>
+				<drop itemid="212" min="1" max="2" chance="250000"/>
+				<drop itemid="235" min="1" max="2" chance="250000"/>
+				<drop itemid="288" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="3">
+				<drop itemid="81" min="1" max="2" chance="250000"/>
+				<drop itemid="151" min="1" max="2" chance="250000"/>
+				<drop itemid="164" min="1" max="2" chance="250000"/>
+				<drop itemid="2500" min="1" max="2" chance="250000"/>
+			</category>
+			<category id="4">
+				<drop itemid="213" min="1" max="2" chance="200000"/>
+				<drop itemid="236" min="1" max="2" chance="200000"/>
+				<drop itemid="270" min="1" max="2" chance="200000"/>
+				<drop itemid="289" min="1" max="2" chance="200000"/>
+				<drop itemid="305" min="1" max="2" chance="200000"/>
+			</category>
+			<category id="5">
+				<drop itemid="6364" min="1" max="1" chance="170000"/>
+				<drop itemid="6365" min="1" max="1" chance="170000"/>
+				<drop itemid="6369" min="1" max="1" chance="170000"/>
+				<drop itemid="6370" min="1" max="1" chance="170000"/>
+				<drop itemid="6372" min="1" max="1" chance="160000"/>
+				<drop itemid="6580" min="1" max="1" chance="160000"/>
+			</category>
+			<category id="6">
+				<drop itemid="6366" min="1" max="1" chance="200000"/>
+				<drop itemid="6367" min="1" max="1" chance="200000"/>
+				<drop itemid="6371" min="1" max="1" chance="200000"/>
+				<drop itemid="6579" min="1" max="1" chance="200000"/>
+				<drop itemid="7575" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="7">
+				<drop itemid="5287" min="1" max="3" chance="500000"/>
+				<drop itemid="5297" min="1" max="3" chance="250000"/>
+				<drop itemid="5304" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="8">
+				<drop itemid="5311" min="1" max="3" chance="350000"/>
+				<drop itemid="5320" min="1" max="3" chance="350000"/>
+				<drop itemid="5326" min="1" max="3" chance="300000"/>
+			</category>
+			<category id="9">
+				<drop itemid="5293" min="1" max="3" chance="250000"/>
+				<drop itemid="5301" min="1" max="3" chance="250000"/>
+				<drop itemid="5308" min="1" max="3" chance="250000"/>
+				<drop itemid="5316" min="1" max="3" chance="80000"/>
+				<drop itemid="5323" min="1" max="3" chance="80000"/>
+				<drop itemid="5329" min="1" max="3" chance="90000"/>
+			</category>
+			<category id="10">
+				<drop itemid="5288" min="1" max="3" chance="350000"/>
+				<drop itemid="5298" min="1" max="3" chance="350000"/>
+				<drop itemid="5305" min="1" max="3" chance="300000"/>
+			</category>
+			<category id="11">
+				<drop itemid="6674" min="1" max="1" chance="150000"/>
+				<drop itemid="6675" min="1" max="1" chance="150000"/>
+				<drop itemid="6680" min="1" max="1" chance="350000"/>
+				<drop itemid="6684" min="1" max="1" chance="350000"/>
+			</category>
+			<category id="12">
+				<drop itemid="5289" min="1" max="3" chance="250000"/>
+				<drop itemid="5294" min="1" max="3" chance="250000"/>
+				<drop itemid="5312" min="1" max="3" chance="250000"/>
+				<drop itemid="5317" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="13">
+				<drop itemid="5291" min="1" max="3" chance="250000"/>
+				<drop itemid="5296" min="1" max="3" chance="250000"/>
+				<drop itemid="5314" min="1" max="3" chance="250000"/>
+				<drop itemid="5319" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="14">
+				<drop itemid="5290" min="1" max="3" chance="250000"/>
+				<drop itemid="5295" min="1" max="3" chance="250000"/>
+				<drop itemid="5313" min="1" max="3" chance="250000"/>
+				<drop itemid="5318" min="1" max="3" chance="250000"/>
+			</category>
+			<category id="15">
+				<drop itemid="5292" min="1" max="3" chance="400000"/>
+				<drop itemid="5315" min="1" max="3" chance="400000"/>
+				<drop itemid="6678" min="1" max="1" chance="200000"/>
+			</category>
+			<category id="16">
+				<drop itemid="6676" min="1" max="1" chance="340000"/>
+				<drop itemid="6681" min="1" max="1" chance="330000"/>
+				<drop itemid="6685" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="17">
+				<drop itemid="6677" min="1" max="1" chance="340000"/>
+				<drop itemid="6682" min="1" max="1" chance="330000"/>
+				<drop itemid="6686" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="18">
+				<drop itemid="6679" min="1" max="1" chance="340000"/>
+				<drop itemid="6683" min="1" max="1" chance="330000"/>
+				<drop itemid="6687" min="1" max="1" chance="330000"/>
+			</category>
+			<category id="19">
+				<drop itemid="6326" min="1" max="5" chance="300000"/>
+				<drop itemid="6327" min="1" max="5" chance="350000"/>
+				<drop itemid="6328" min="1" max="5" chance="350000"/>
+			</category>
+			<category id="20">
+				<drop itemid="6323" min="1" max="5" chance="300000"/>
+				<drop itemid="6324" min="1" max="5" chance="350000"/>
+				<drop itemid="6325" min="1" max="5" chance="350000"/>
+			</category>
+			<category id="21">
+				<drop itemid="6724" min="1" max="1" chance="350000"/>
+				<drop itemid="6725" min="1" max="1" chance="350000"/>
+				<drop itemid="6726" min="1" max="1" chance="300000"/>
+			</category>
+			<category id="22">
+				<drop itemid="6656" min="1" max="1" chance="1000000"/>
+			</category>
+			<category id="23">
+				<drop itemid="729" min="1" max="19" chance="1000000"/>
+			</category>
+			<category id="24">
+				<drop itemid="1538" min="1" max="59" chance="1000000"/>
+			</category>
+			<category id="25">
+				<drop itemid="3936" min="1" max="39" chance="1000000"/>
+			</category>
+			<category id="26">
+				<drop itemid="8751" min="2" max="4" chance="166666"/>
+				<drop itemid="8752" min="3" max="4" chance="540000"/>
+			</category>
+			<category id="0">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="51">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="52">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="53">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="54">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="55">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="56">
+				<drop itemid="57" min="14000000" max="18000000" chance="1000000"/>
+			</category>
+			<category id="57">
+				<drop itemid="57" min="9000000" max="13000000" chance="1000000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29069" name="Behemoth Dragon" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="63"/>
+		<set name="height" val="54"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="401551.696720203"/>
+		<set name="mp" val="1809"/>
+		<set name="hpRegen" val="76.71"/>
+		<set name="mpRegen" val="3"/>
+		<set name="pAtk" val="3584.56902102981"/>
+		<set name="pDef" val="1071.29474264312"/>
+		<set name="mAtk" val="1386.66000087809"/>
+		<set name="mDef" val="522.626863116263"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="180"/>
+		<set name="runSpd" val="180"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="10"/>
+			<skill id="5095" level="1"/>
+			<skill id="5096" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="8600" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="2">
+				<drop itemid="8601" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="3">
+				<drop itemid="8602" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="4">
+				<drop itemid="8603" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="5">
+				<drop itemid="8604" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="6">
+				<drop itemid="8605" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="7">
+				<drop itemid="8606" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="8">
+				<drop itemid="8607" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="9">
+				<drop itemid="8608" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="10">
+				<drop itemid="8609" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="11">
+				<drop itemid="8610" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="12">
+				<drop itemid="8611" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="13">
+				<drop itemid="8612" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="14">
+				<drop itemid="8613" min="4" max="16" chance="300000"/>
+			</category>
+			<category id="15">
+				<drop itemid="8614" min="4" max="16" chance="300000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29070" name="Dragon Bomber" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="37"/>
+		<set name="height" val="28"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1353.6766"/>
+		<set name="mp" val="1809"/>
+		<set name="hpRegen" val="8.5"/>
+		<set name="mpRegen" val="3"/>
+		<set name="pAtk" val="1094.11758465172"/>
+		<set name="pDef" val="357.098247547707"/>
+		<set name="mAtk" val="4902.24"/>
+		<set name="mDef" val="261.308998696584"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="200"/>
+		<set name="runSpd" val="250"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4416" level="10"/>
+		</skills>
+	</npc>
+	<npc id="29071" name="Dragon Bomber" title="">
+		<set name="level" val="78"/>
+		<set name="radius" val="37"/>
+		<set name="height" val="28"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1000"/>
+		<set name="mp" val="1607.4"/>
+		<set name="hpRegen" val="8.5"/>
+		<set name="mpRegen" val="3"/>
+		<set name="pAtk" val="855.81387"/>
+		<set name="pDef" val="332.70061"/>
+		<set name="mAtk" val="584.40994"/>
+		<set name="mDef" val="243.45587"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="200"/>
+		<set name="runSpd" val="245"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4416" level="10"/>
+		</skills>
+	</npc>
+	<npc id="29072" name="Dragon Bomber" title="">
+		<set name="level" val="78"/>
+		<set name="radius" val="37"/>
+		<set name="height" val="28"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1000"/>
+		<set name="mp" val="1607.4"/>
+		<set name="hpRegen" val="8.5"/>
+		<set name="mpRegen" val="3"/>
+		<set name="pAtk" val="855.81387"/>
+		<set name="pDef" val="332.70061"/>
+		<set name="mAtk" val="584.40994"/>
+		<set name="mDef" val="243.45587"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="200"/>
+		<set name="runSpd" val="255"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4416" level="10"/>
+		</skills>
+	</npc>
+	<npc id="29073" name="Dragon Bomber" title="">
+		<set name="level" val="78"/>
+		<set name="radius" val="37"/>
+		<set name="height" val="28"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1000"/>
+		<set name="mp" val="1607.4"/>
+		<set name="hpRegen" val="8.5"/>
+		<set name="mpRegen" val="3"/>
+		<set name="pAtk" val="855.81387"/>
+		<set name="pDef" val="332.70061"/>
+		<set name="mAtk" val="584.40994"/>
+		<set name="mDef" val="243.45587"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="200"/>
+		<set name="runSpd" val="247"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4416" level="10"/>
+		</skills>
+	</npc>
+	<npc id="29074" name="Dragon Bomber" title="">
+		<set name="level" val="78"/>
+		<set name="radius" val="37"/>
+		<set name="height" val="28"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1000"/>
+		<set name="mp" val="1607.4"/>
+		<set name="hpRegen" val="8.5"/>
+		<set name="mpRegen" val="3"/>
+		<set name="pAtk" val="855.81387"/>
+		<set name="pDef" val="332.70061"/>
+		<set name="mAtk" val="584.40994"/>
+		<set name="mDef" val="243.45587"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="200"/>
+		<set name="runSpd" val="252"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4416" level="10"/>
+		</skills>
+	</npc>
+	<npc id="29075" name="Dragon Bomber" title="">
+		<set name="level" val="78"/>
+		<set name="radius" val="37"/>
+		<set name="height" val="28"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1000"/>
+		<set name="mp" val="1607.4"/>
+		<set name="hpRegen" val="8.5"/>
+		<set name="mpRegen" val="3"/>
+		<set name="pAtk" val="855.81387"/>
+		<set name="pDef" val="332.70061"/>
+		<set name="mAtk" val="584.40994"/>
+		<set name="mDef" val="243.45587"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="200"/>
+		<set name="runSpd" val="243"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4416" level="10"/>
+		</skills>
+	</npc>
+	<npc id="29076" name="Dragon Bomber" title="">
+		<set name="level" val="85"/>
+		<set name="radius" val="42"/>
+		<set name="height" val="34.5"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="1353.6766"/>
+		<set name="mp" val="1809"/>
+		<set name="hpRegen" val="8.5"/>
+		<set name="mpRegen" val="3"/>
+		<set name="pAtk" val="1094.11758465172"/>
+		<set name="pDef" val="357.098247547707"/>
+		<set name="mAtk" val="4902.24"/>
+		<set name="mDef" val="261.308998696584"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="200"/>
+		<set name="runSpd" val="250"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4416" level="10"/>
+		</skills>
+	</npc>
+	<npc id="29095" name="Gordon" title="Knight of Destruction">
+		<set name="level" val="80"/>
+		<set name="radius" val="43"/>
+		<set name="height" val="46.6"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2RaidBoss"/>
+		<set name="exp" val="2272000"/>
+		<set name="sp" val="918808"/>
+		<set name="hp" val="961780.70191152"/>
+		<set name="mp" val="2051.19"/>
+		<set name="hpRegen" val="369.61370264709"/>
+		<set name="mpRegen" val="3.21"/>
+		<set name="pAtk" val="6129.55481158677"/>
+		<set name="pDef" val="1185.643995"/>
+		<set name="mAtk" val="4888.35447858044"/>
+		<set name="mDef" val="578.3992"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="60"/>
+		<set name="runSpd" val="190"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4174" level="1"/>
+			<skill id="4177" level="1"/>
+			<skill id="4416" level="9"/>
+			<skill id="4494" level="1"/>
+			<skill id="4726" level="1"/>
+			<skill id="4733" level="1"/>
+			<skill id="5181" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="6371" min="1" max="1" chance="23810"/>
+			</category>
+			<category id="2">
+				<drop itemid="6684" min="1" max="1" chance="71428"/>
+			</category>
+			<category id="3">
+				<drop itemid="6711" min="15" max="29" chance="700000"/>
+			</category>
+			<category id="4">
+				<drop itemid="6695" min="3" max="9" chance="930000"/>
+			</category>
+			<category id="5">
+				<drop itemid="960" min="1" max="1" chance="450000"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29096" name="Anais" title="Lord of Splendor">
+		<set name="level" val="80"/>
+		<set name="radius" val="16"/>
+		<set name="height" val="41.8"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="480890.35095576"/>
+		<set name="mp" val="2051.19"/>
+		<set name="hpRegen" val="147.845481058836"/>
+		<set name="mpRegen" val="3.21"/>
+		<set name="pAtk" val="3064.77740579339"/>
+		<set name="pDef" val="1185.643995"/>
+		<set name="mAtk" val="1222.08861964511"/>
+		<set name="mDef" val="578.3992"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="60"/>
+		<set name="int" val="76"/>
+		<set name="dex" val="73"/>
+		<set name="wit" val="70"/>
+		<set name="con" val="57"/>
+		<set name="men" val="80"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="60"/>
+		<set name="runSpd" val="160"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="solina_clan" clanRange="1000" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4416" level="8"/>
+			<skill id="4423" level="1"/>
+			<skill id="4494" level="1"/>
+			<skill id="5032" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="6674" min="1" max="1" chance="8022"/>
+				<drop itemid="6675" min="1" max="1" chance="12803"/>
+				<drop itemid="6701" min="8" max="22" chance="203579"/>
+				<drop itemid="6702" min="4" max="12" chance="491363"/>
+			</category>
+			<category id="2">
+				<drop itemid="6370" min="1" max="1" chance="8120"/>
+				<drop itemid="6694" min="3" max="9" chance="726675"/>
+			</category>
+			<category id="3">
+				<drop itemid="959" min="1" max="1" chance="24745"/>
+				<drop itemid="960" min="1" max="1" chance="247447"/>
+				<drop itemid="6577" min="1" max="1" chance="4124"/>
+				<drop itemid="8920" min="1" max="1" chance="247447"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29097" name="Splendor Disciple" title="Raid Fighter">
+		<set name="level" val="80"/>
+		<set name="radius" val="13"/>
+		<set name="height" val="47"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="37734.3404839904"/>
+		<set name="mp" val="1994.708"/>
+		<set name="hpRegen" val="145.013611476234"/>
+		<set name="mpRegen" val="3.18"/>
+		<set name="pAtk" val="6012.14777485147"/>
+		<set name="pDef" val="581.336118"/>
+		<set name="mAtk" val="4732.4064449491"/>
+		<set name="mDef" val="567.1848"/>
+		<set name="crit" val="4"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="190"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="solina_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4414" level="3"/>
+			<skill id="4416" level="8"/>
+			<skill id="4423" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="1344" min="60" max="180" chance="384933"/>
+			</category>
+		</drops>
+	</npc>
+	<npc id="29098" name="Splendor Worshiper" title="Raid Fighter">
+		<set name="level" val="80"/>
+		<set name="radius" val="13"/>
+		<set name="height" val="47"/>
+		<set name="rHand" val="0"/>
+		<set name="lHand" val="0"/>
+		<set name="type" val="L2Monster"/>
+		<set name="exp" val="0"/>
+		<set name="sp" val="0"/>
+		<set name="hp" val="50564.0162485472"/>
+		<set name="mp" val="1994.708"/>
+		<set name="hpRegen" val="145.013611476234"/>
+		<set name="mpRegen" val="3.18"/>
+		<set name="pAtk" val="6012.14777485147"/>
+		<set name="pDef" val="581.336118"/>
+		<set name="mAtk" val="4732.4064449491"/>
+		<set name="mDef" val="567.1848"/>
+		<set name="crit" val="1"/>
+		<set name="atkSpd" val="253"/>
+		<set name="str" val="40"/>
+		<set name="int" val="21"/>
+		<set name="dex" val="30"/>
+		<set name="wit" val="20"/>
+		<set name="con" val="43"/>
+		<set name="men" val="20"/>
+		<set name="corpseTime" val="7"/>
+		<set name="walkSpd" val="30"/>
+		<set name="runSpd" val="190"/>
+		<set name="dropHerbGroup" val="0"/>
+		<ai type="DEFAULT" ssCount="0" ssRate="0" spsCount="0" spsRate="0" aggro="0" clan="solina_clan" clanRange="300" canMove="true" seedable="false"/>
+		<skills>
+			<skill id="4045" level="1"/>
+			<skill id="4414" level="3"/>
+			<skill id="4416" level="8"/>
+			<skill id="4423" level="1"/>
+		</skills>
+		<drops>
+			<category id="1">
+				<drop itemid="1344" min="60" max="180" chance="384933"/>
+			</category>
+		</drops>
+	</npc>
+</list>

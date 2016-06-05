@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.network.loginauth.recv
 
         public override void run()
         {
-            L2World.Instance.KickAccount(account);
+            //L2World.Instance.KickAccount(account);
         }
     }
 }

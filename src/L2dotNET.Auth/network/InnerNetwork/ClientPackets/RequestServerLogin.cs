@@ -1,44 +1,42 @@
-﻿using L2dotNET.LoginService.gscommunication;
+﻿using System;
+using L2dotNET.LoginService.data;
+using L2dotNET.LoginService.gscommunication;
 using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
-    class RequestServerLogin : ReceiveBasePacket
+    class RequestServerLogin
     {
-        public RequestServerLogin(LoginClient Client, byte[] data)
+        LoginClient client;
+        int login1, login2;
+        byte serverId;
+        public RequestServerLogin(Packet p, LoginClient client)
         {
-            base.CreatePacket(Client, data);
+            this.client = client;
+            login1 = p.ReadInt();
+            login2 = p.ReadInt();
+            serverId = p.ReadByte();
         }
 
-        private int login1;
-        private int login2;
-        private byte serverId;
-
-        public override void Read()
+        public void RunImpl()
         {
-            login1 = ReadInt();
-            login2 = ReadInt();
-            serverId = ReadByte();
-        }
-
-        public override void Run()
-        {
-            if (Client.login1 != login1 && Client.login2 != login2)
+            if (client.login1 != login1 && client.login2 != login2)
             {
-                Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCESS_FAILED));
+                client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCESS_FAILED));
                 return;
             }
 
             L2Server server = ServerThreadPool.Instance.Get(serverId);
             if (server == null)
             {
-                Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCESS_FAILED));
+                client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCESS_FAILED));
                 return;
             }
 
             if (server.Connected == 0)
             {
-                Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_SERVER_MAINTENANCE));
+                client.Send(LoginFail.ToPacket(LoginFailReason.REASON_SERVER_MAINTENANCE));
             }
             else
             {
@@ -46,8 +44,9 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 
                 //login updates here
 
-                Client.Send(PlayOk.ToPacket(Client));
+                client.Send(PlayOk.ToPacket(client));
                 //need to add checks to prevent double logins.
+                
             }
         }
     }

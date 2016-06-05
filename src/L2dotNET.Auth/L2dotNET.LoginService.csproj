@@ -59,6 +59,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -106,14 +107,13 @@
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestPlayerInGame.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestLoginAuth.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\PleaseAcceptPlayer.cs" />
-    <Compile Include="Network\ReceiveServerPacket.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestLoginServPing.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\PlayFail.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\PleaseKickAccount.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginOk.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginFail.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginServPing.cs" />
-    <Compile Include="PreReqValidation.cs.cs" />
+    <Compile Include="PreReqValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="managers\NetworkBlock.cs" />
     <Compile Include="gscommunication\ServerThreadPool.cs" />
@@ -125,14 +125,12 @@
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestServerList.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\RequestAuthLogin.cs" />
     <Compile Include="Network\InnerNetwork\ClientPackets\AuthGameGuard.cs" />
-    <Compile Include="Network\ReceiveBasePacket.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\PlayOk.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerList.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginFail.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginOk.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\GGAuth.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\Init.cs" />
-    <Compile Include="Utils\L2Security.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\L2Crypt.dll" />

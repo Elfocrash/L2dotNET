@@ -99,8 +99,8 @@ namespace L2dotNET.GameService.network.l2send
             writeH(0); // ??
 
             writeC(pet.TeamID);
-            writeD(pet.Template.soulshot_count);
-            writeD(pet.Template.spiritshot_count);
+            writeD(pet.Template.SsCount);
+            writeD(pet.Template.SpsCount);
             writeD(pet.getForm());
             writeD(pet.AbnormalBitMaskEx);
         }

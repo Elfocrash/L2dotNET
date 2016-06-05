@@ -106,6 +106,21 @@ namespace L2dotNET.GameService.world
                 player.sendActionFailed();
         }
 
+
+        public override void SetRegion(L2WorldRegion newRegion)
+        {
+            // confirm revalidation of old region's zones
+            if (Region != null)
+            {
+                if (newRegion != null)
+                    Region.RevalidateZones(this);
+                else
+                    Region.RemoveFromZones(this);
+            }
+
+            base.SetRegion(newRegion);
+        }
+
         public void addSkill(int id, int lvl, bool updDb, bool update)
         {
             TSkill skill = TSkillTable.Instance.Get(id, lvl);
@@ -636,7 +651,7 @@ namespace L2dotNET.GameService.world
         public virtual void teleport(int x, int y, int z)
         {
             ChangeTarget();
-            clearKnowns(true);
+            //clearKnowns(true);
             X = x;
             Y = y;
             Z = z;
@@ -850,7 +865,7 @@ namespace L2dotNET.GameService.world
             _effects.Clear();
 
             broadcastPacket(new DeleteObject(ObjID));
-            L2World.Instance.UnrealiseEntry(this, true);
+            L2World.Instance.RemoveObject(this);
         }
 
         public virtual L2Item ActiveWeapon

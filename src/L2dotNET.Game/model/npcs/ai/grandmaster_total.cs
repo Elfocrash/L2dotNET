@@ -1,33 +1,40 @@
-﻿namespace L2dotNET.GameService.model.npcs.ai
+﻿using L2dotNET.GameService.model.communities;
+using L2dotNET.GameService.tables;
+using L2dotNET.GameService.network.l2send;
+
+namespace L2dotNET.GameService.model.npcs.ai
 {
     class grandmaster_total
     {
-        public static void createClan(L2Player player, string name, L2Citizen npc) { }
+        public static void createClan(L2Player player, string name, L2Npc npc)
+        {
+            
+        }
 
-        public static void onReply(L2Player player, int reply, L2Citizen npc)
+        public static void onReply(L2Player player, int reply, L2Npc npc)
         {
             switch (reply)
             {
                 case 0: //new clan
-                {
-                    if (player.Level < 10)
                     {
-                        player.ShowHtm("pl002.htm", npc);
-                        return;
+                        if (player.Level < 10)
+                        {
+                            player.ShowHtm("pl002.htm", npc);
+                            return;
+                        }
+
+                        if (player.Clan != null)
+                        {
+                            if (player.Clan.LeaderID == player.ObjID)
+                                player.ShowHtm("pl003.htm", npc);
+                            else
+                                player.ShowHtm("pl004.htm", npc);
+
+                            return;
+                        }
+
+                        player.ShowHtm("pl005.htm", npc);
                     }
-
-                    if (player.Clan != null)
-                    {
-                        if (player.Clan.LeaderID == player.ObjID)
-                            player.ShowHtm("pl003.htm", npc);
-                        else
-                            player.ShowHtm("pl004.htm", npc);
-
-                        return;
-                    }
-
-                    player.ShowHtm("pl005.htm", npc);
-                }
                     break;
                 case 1: //Повысить
                     player.ShowHtm("pl013.htm", npc);

@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.tables;
+﻿using L2dotNET.GameService.Handlers;
+using L2dotNET.GameService.tables;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -21,7 +22,7 @@ namespace L2dotNET.GameService.network.l2recv
         {
             L2Player player = getClient().CurrentPlayer;
 
-            AdminAccess.Instance.request(player, _alias);
+            AdminCommandHandler.Instance.request(player, _alias);
         }
     }
 }

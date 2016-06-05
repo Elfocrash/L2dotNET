@@ -4,7 +4,7 @@ using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.model.npcs
 {
-    class L2Doormen : L2Citizen
+    class L2Doormen : L2Npc
     {
         private readonly Hideout hideout;
 

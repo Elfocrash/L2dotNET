@@ -28,6 +28,7 @@ namespace L2dotNET.GameService.world
         public virtual bool Visible { get; set; } = true;
         public virtual string CurrentRegion { get; set; }
         public byte ObjectSummonType = 0;
+        public virtual L2WorldRegion Region { get; set; }
 
         public virtual void onAction(L2Player player) { }
 
@@ -51,6 +52,18 @@ namespace L2dotNET.GameService.world
         public virtual void NotifyAction(L2Player player) { }
 
         public virtual void StartAI() { }
+        public virtual void AddKnownObject(L2Object obj)
+        {
+        }
+
+        public virtual void RemoveKnownObject(L2Object obj)
+        {
+        }
+
+        public virtual void SendInfo(L2Player player)
+        {
+
+        }
 
         public virtual void onSpawn()
         {
@@ -62,7 +75,7 @@ namespace L2dotNET.GameService.world
             if (!excludeYourself)
                 sendPacket(pk);
 
-            foreach (L2Object o in knownObjects.Values)
+            foreach (L2Object o in GetKnownPlayers())
             {
                 if (o is L2Player)
                     o.sendPacket(pk);
@@ -86,7 +99,7 @@ namespace L2dotNET.GameService.world
 
             StopRegeneration();
 
-            L2World.Instance.UnrealiseEntry(this, true);
+            L2World.Instance.RemoveObject(this);
         }
 
         public void clearKnowns(bool deleteMe, params int[] exclude)
@@ -106,8 +119,89 @@ namespace L2dotNET.GameService.world
 
         public void getKnowns(int range, int height, bool zones)
         {
-            L2World.Instance.GetKnowns(this, range, height, zones);
+            L2World.Instance.getObjects();// GetKnowns(this, range, height, zones);
         }
+
+        public virtual List<L2Player> GetKnownPlayers()
+        {
+            L2WorldRegion region = Region;
+            if (region == null)
+                return new List<L2Player>();
+
+            List<L2Player> result = new List<L2Player>();
+
+            foreach (L2WorldRegion reg in region.GetSurroundingRegions())
+            {
+                foreach (L2Player obj in L2World.Instance.GetPlayers())//reg.getObjects()
+                {
+                    if (obj == this)
+                        continue;
+
+                    result.Add(obj);
+                }
+            }
+
+            return result;
+        }
+
+        public virtual void SetRegion(L2WorldRegion newRegion)
+        {
+            List<L2WorldRegion> oldAreas = new List<L2WorldRegion>();
+
+            if (Region != null)
+            {
+                Region.RemoveVisibleObject(this);
+                oldAreas = Region.GetSurroundingRegions();
+            }
+
+            List<L2WorldRegion> newAreas = new List<L2WorldRegion>();
+
+            if (newRegion != null)
+            {
+                newRegion.AddVisibleObject(this);
+                newAreas = newRegion.GetSurroundingRegions();
+            }
+
+            foreach (L2WorldRegion region in oldAreas)
+            {
+                if (!newAreas.Contains(region))
+                {
+                    foreach (L2Object obj in region.getObjects())
+                    {
+                        if (obj == this)
+                            continue;
+
+                        obj.RemoveKnownObject(this);
+                        RemoveKnownObject(obj);
+                    }
+
+                    if (this is L2Player && region.IsEmptyNeighborhood())
+					region.SetActive(false);
+                }
+            }
+
+		        foreach (L2WorldRegion region in newAreas)
+		        {
+			        if (!oldAreas.Contains(region))
+			        {
+				        // Update all objects.
+				        foreach (L2Object obj in region.getObjects())
+				        {
+					        if (obj == this)
+						        continue;
+
+                            obj.AddKnownObject(this);
+                            AddKnownObject(obj);
+                        }
+				
+				        // Activate the new neighbor region.
+				        if (this is L2Player)
+					        region.SetActive(true);
+                    }
+                }
+
+                Region = newRegion;
+	        }
 
         private void onClearing(L2Object target, bool deleteMe)
         {
@@ -470,7 +564,7 @@ namespace L2dotNET.GameService.world
                 height = 1000;
             }
 
-            L2World.Instance.CheckToUpdate(this, x, y, range, height, true, zones);
+            //L2World.Instance.CheckToUpdate(this, x, y, range, height, true, zones);
         }
 
         public Timer RegenerationMethod_1s,

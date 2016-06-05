@@ -1,10 +1,11 @@
-﻿using log4net;
-using L2dotNET.LoginService.gscommunication;
+﻿using L2dotNET.LoginService.gscommunication;
 using L2dotNET.LoginService.Network.OuterNetwork;
+using L2dotNET.Network;
+using log4net;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
-    class RequestLoginAuth : ReceiveServerPacket
+    class RequestLoginAuth
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(RequestLoginAuth));
 
@@ -16,25 +17,21 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
         private short maxp;
         private byte gmonly;
         private byte test;
-
-        public RequestLoginAuth(ServerThread server, byte[] data)
+        private ServerThread thread;
+        public RequestLoginAuth(Packet p, ServerThread server)
         {
-            base.CreatePacket(server, data);
+            thread = server;
+            port = p.ReadShort();
+            host = p.ReadString().ToLower();
+            info = p.ReadString().ToLower();
+            code = p.ReadString().ToLower();
+            curp = p.ReadInt();
+            maxp = p.ReadShort();
+            gmonly = p.ReadByte();
+            test = p.ReadByte();
         }
 
-        public override void read()
-        {
-            port = ReadShort();
-            host = ReadString();
-            info = ReadString();
-            code = ReadString();
-            curp = ReadInt();
-            maxp = ReadShort();
-            gmonly = ReadByte();
-            test = ReadByte();
-        }
-
-        public override void run()
+        public void RunImpl()
         {
             L2Server server = null;
             foreach (L2Server srv in ServerThreadPool.Instance.servers)
@@ -49,7 +46,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 
             if (server == null)
             {
-                log.Error($"Code '{code}' for server was not found. Closing");
+                log.Error($"Code '{ code }' for server was not found. Closing");
                 thread.close(ServerLoginFail.ToPacket("Code Error"));
                 return;
             }
@@ -64,7 +61,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
             thread.Connected = true;
 
             thread.Send(ServerLoginOk.ToPacket());
-            log.Info($"AuthThread: Server #{server.Id} connected");
+            log.Info($"AuthThread: Server #{ server.Id } connected");
         }
     }
 }

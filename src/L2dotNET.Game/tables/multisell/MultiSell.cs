@@ -44,7 +44,7 @@ namespace L2dotNET.GameService.tables.multisell
 
         public SortedList<int, MultiSellList> lists = new SortedList<int, MultiSellList>();
 
-        public void ShowList(L2Player player, L2Citizen npc, int listId)
+        public void ShowList(L2Player player, L2Npc npc, int listId)
         {
             if (!lists.ContainsKey(listId))
             {

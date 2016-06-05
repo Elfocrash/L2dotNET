@@ -2,7 +2,7 @@
 {
     class ai_looser_of_gracia : AITemplate
     {
-        public override void onDialog(L2Player player, int ask, int reply, L2Citizen npc)
+        public override void onDialog(L2Player player, int ask, int reply, L2Npc npc)
         {
             switch (ask)
             {

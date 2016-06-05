@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
-using log4net;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.npcs;
-using L2dotNET.GameService.network;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables.admin_bypass;
 using L2dotNET.GameService.tables.ndextend;
+using L2dotNET.GameService.network;
+using log4net;
 
 namespace L2dotNET.GameService.tables
 {
@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.tables
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(NpcData));
         private static volatile NpcData instance;
-        private static readonly object syncRoot = new object();
+        private static object syncRoot = new object();
 
         public static NpcData Instance
         {
@@ -46,7 +46,10 @@ namespace L2dotNET.GameService.tables
         public SortedList<int, ND_shop> _shops = new SortedList<int, ND_shop>();
         private NDTeleport Teleports;
 
-        public NpcData() { }
+        public NpcData()
+        {
+            
+        }
 
         private void load()
         {
@@ -81,7 +84,7 @@ namespace L2dotNET.GameService.tables
                                     slist.items.Add(new ND_shopItem(it));
                                 }
                                 else
-                                    log.Error($"NpcData: cant find item to trade {i} on npc {shop.id}");
+                                    log.Error($"NpcData: cant find item to trade { i } on npc { shop.id }");
                             }
 
                             shop.lists.Add(slist.id, slist);
@@ -96,7 +99,7 @@ namespace L2dotNET.GameService.tables
             //CLogger.info("NpcData: loaded " + _mults.Count + " multisell lists.");
         }
 
-        public void Buylist(L2Player player, L2Citizen trader, short reply)
+        public void Buylist(L2Player player, L2Npc trader, short reply)
         {
             if (!_shops.ContainsKey(trader.Template.NpcId))
             {
@@ -127,12 +130,13 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-        public void RequestTeleportList(L2Citizen npc, L2Player player, int groupId)
+
+        public void RequestTeleportList(L2Npc npc, L2Player player, int groupId)
         {
             RequestTeleportList(npc, player, groupId, -1);
         }
 
-        public void RequestTeleportList(L2Citizen npc, L2Player player, int groupId, int itemId)
+        public void RequestTeleportList(L2Npc npc, L2Player player, int groupId, int itemId)
         {
             if (!Teleports.npcs.ContainsKey(npc.Template.NpcId))
             {
@@ -157,7 +161,7 @@ namespace L2dotNET.GameService.tables
             player.ShowHtmPlain(sb.ToString(), npc);
         }
 
-        public void RequestTeleport(L2Citizen npc, L2Player player, int type, int entryId)
+        public void RequestTeleport(L2Npc npc, L2Player player, int type, int entryId)
         {
             ab_teleport_group group = null;
             try
@@ -166,7 +170,7 @@ namespace L2dotNET.GameService.tables
             }
             catch
             {
-                log.Error($"ND:RequestTeleport cant find teleport group {type}");
+                log.Error($"ND:RequestTeleport cant find teleport group { type }");
                 player.sendActionFailed();
                 return;
             }
@@ -207,7 +211,7 @@ namespace L2dotNET.GameService.tables
             player.teleport(e.x, e.y, e.z);
         }
 
-        internal void preview(L2Player talker, L2Citizen myself, int p)
+        internal void preview(L2Player talker, L2Npc myself, int p)
         {
             throw new NotImplementedException();
         }

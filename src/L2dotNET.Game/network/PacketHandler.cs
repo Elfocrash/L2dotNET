@@ -37,9 +37,9 @@ namespace L2dotNET.GameService.network
                 case 0x0b:
                     msg = new CharacterCreate(client, buff);
                     break;
-                case 0x0c:
-                    msg = new CharacterDelete(client, buff);
-                    break;
+                //case 0x0c:
+                //    msg = new CharacterDelete(client, buff);
+                //    break;
                 case 0x0d:
                     msg = new CharacterSelected(client, buff);
                     break;

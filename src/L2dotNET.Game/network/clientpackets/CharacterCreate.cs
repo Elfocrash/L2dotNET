@@ -149,7 +149,7 @@ namespace L2dotNET.GameService.network.l2recv
             playerService.CreatePlayer(playerModel);
             player.Gameclient.AccountChars.Add(player);
             getClient().sendPacket(new CharCreateOk());
-            L2World.Instance.RealiseEntry(player, null, true);
+            L2World.Instance.AddPlayer(player);
             CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient().AccountChars, getClient().SessionId);
             csl.charId = player.ObjID;
             getClient().sendPacket(csl);

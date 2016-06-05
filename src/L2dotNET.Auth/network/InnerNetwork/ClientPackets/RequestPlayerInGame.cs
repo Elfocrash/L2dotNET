@@ -1,24 +1,21 @@
 ﻿using L2dotNET.LoginService.gscommunication;
+using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
-    class RequestPlayerInGame : ReceiveServerPacket
+    class RequestPlayerInGame
     {
         private string account;
         private byte status;
+        ServerThread thread;
 
-        public RequestPlayerInGame(ServerThread server, byte[] data)
+        public RequestPlayerInGame(Packet p, ServerThread server)
         {
-            base.CreatePacket(server, data);
+            account = p.ReadString();
+            status = p.ReadByte();
         }
 
-        public override void read()
-        {
-            account = ReadString();
-            status = ReadByte();
-        }
-
-        public override void run()
+        public void RunImpl()
         {
             thread.AccountInGame(account, status);
         }

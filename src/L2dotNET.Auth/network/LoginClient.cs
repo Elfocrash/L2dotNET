@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using log4net;
 using L2Crypt;
-using L2dotNET.LoginService.Network.InnerNetwork;
-using L2dotNET.LoginService.Network.OuterNetwork;
 using L2dotNET.Models;
+using log4net;
+using L2dotNET.LoginService.Network.OuterNetwork;
 using L2dotNET.Network;
 using L2dotNET.Utility;
+using L2dotNET.LoginService.Network.InnerNetwork;
 
 namespace L2dotNET.LoginService
 {
@@ -18,9 +18,9 @@ namespace L2dotNET.LoginService
         private static readonly ILog log = LogManager.GetLogger(typeof(LoginClient));
 
         public int SessionId;
-        public EndPoint _address;
-        public TcpClient _client;
-        public NetworkStream _stream;
+        public EndPoint Address { get; set; }
+        public TcpClient Client { get; set; }
+        public NetworkStream NetStream { get; set; }
         private byte[] _buffer;
         private LoginCrypt _loginCrypt;
         public byte[] BlowfishKey;
@@ -28,10 +28,9 @@ namespace L2dotNET.LoginService
 
         public LoginClient(TcpClient tcpClient)
         {
-            //  CLogger.extra_info("connection from " + tcpClient.Client.RemoteEndPoint);
-            _client = tcpClient;
-            _stream = tcpClient.GetStream();
-            _address = tcpClient.Client.RemoteEndPoint;
+            Client = tcpClient;
+            NetStream = tcpClient.GetStream();
+            Address = tcpClient.Client.RemoteEndPoint;
             SessionId = new Random().Next(int.MaxValue);
 
             initializeNetwork();
@@ -60,9 +59,10 @@ namespace L2dotNET.LoginService
             List<byte> array = new List<byte>();
             array.AddRange(BitConverter.GetBytes((short)(data.Length + 2)));
             array.AddRange(data);
-            _stream.Write(array.ToArray(), 0, array.Count);
+            NetStream.Write(array.ToArray(), 0, array.Count);
             Console.WriteLine("Recieve :\r\n{0}", L2Buffer.ToString(array.ToArray()));
-            _stream.Flush();
+            NetStream.Flush();
+
         }
 
         public void read()
@@ -70,7 +70,7 @@ namespace L2dotNET.LoginService
             try
             {
                 _buffer = new byte[2];
-                _stream.BeginRead(_buffer, 0, 2, new AsyncCallback(OnReceiveCallbackStatic), null);
+                NetStream.BeginRead(_buffer, 0, 2, new AsyncCallback(OnReceiveCallbackStatic), null);
             }
             catch (Exception ex)
             {
@@ -84,18 +84,18 @@ namespace L2dotNET.LoginService
             int rs = 0;
             try
             {
-                rs = _stream.EndRead(result);
+                rs = NetStream.EndRead(result);
 
                 if (rs > 0)
                 {
                     short Length = BitConverter.ToInt16(_buffer, 0);
                     _buffer = new byte[Length - 2];
-                    _stream.BeginRead(_buffer, 0, Length - 2, new AsyncCallback(OnReceiveCallback), result.AsyncState);
+                    NetStream.BeginRead(_buffer, 0, Length - 2, new AsyncCallback(OnReceiveCallback), result.AsyncState);
                 }
             }
             catch (Exception s)
             {
-                log.Warn(_address + $" was closed by force. {s}");
+                log.Warn(Address + $" was closed by force. { s }");
                 close();
             }
         }
@@ -106,64 +106,62 @@ namespace L2dotNET.LoginService
         }
 
         private void OnReceiveCallback(IAsyncResult result)
+
         {
-            _stream.EndRead(result);
+            NetStream.EndRead(result);
 
             byte[] buff = new byte[_buffer.Length];
             _buffer.CopyTo(buff, 0);
 
             if (!_loginCrypt.decrypt(ref buff, 0, buff.Length))
             {
-                log.Error($"Blowfish failed on {_address}. Please restart auth server.");
+                log.Error($"Blowfish failed on { Address }. Please restart auth server.");
             }
             else
             {
-                handlePacket(buff);
+                Handle(new Packet(1, buff));
                 new System.Threading.Thread(read).Start();
             }
         }
 
-        private void handlePacket(byte[] buff)
+        /// <summary>
+        /// Handles incoming packet.
+        /// </summary>
+        /// <param name="packet">Incoming packet.</param>
+        protected void Handle(Packet packet)
         {
-            byte id = buff[0];
-
-            ReceiveBasePacket msg = null;
-            switch (id)
+            switch (packet.FirstOpcode)
             {
                 case 0x00:
-                    msg = new RequestAuthLogin(this, buff);
+                    new RequestAuthLogin(packet, this).RunImpl();
                     break;
                 case 0x02:
-                    msg = new RequestServerLogin(this, buff);
+                    new RequestServerLogin(packet, this).RunImpl();
                     break;
                 case 0x05:
-                    msg = new RequestServerList(this, buff);
+                    new RequestServerList(packet, this).RunImpl();
                     break;
                 case 0x07:
-                    msg = new AuthGameGuard(this, buff);
+                    new AuthGameGuard(packet, this).RunImpl();
                     break;
 
                 default:
-                    log.Warn($"LoginClient: received unk request {id}");
+                    log.Warn($"LoginClient: received unk request { packet.FirstOpcode }");
                     break;
             }
 
-            if (msg != null)
-                new Thread(new ThreadStart(msg.Run)).Start();
+            //if (msg != null)
+            //    new Thread(new ThreadStart(msg.Run)).Start();
         }
 
-        public int login1,
-                   login2;
-
+        public int login1, login2;
         public void setLoginPair(int key1, int key2)
         {
             login1 = key1;
             login2 = key2;
         }
 
-        public int play1,
-                   play2;
-
+        public int play1, play2;
         public void setPlayPair(int key1, int key2)
         {
             play1 = key1;

@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.model.quests.data
             actItems = new int[] { onyx_beast_eye, taint_stone, succubus_blood };
         }
 
-        public override void tryAccept(L2Player player, L2Citizen npc)
+        public override void tryAccept(L2Player player, L2Npc npc)
         {
             if (player.BaseClass.ClassId.ClassRace != ClassRace.DARK_ELF)
             {
@@ -44,13 +44,13 @@ namespace L2dotNET.GameService.model.quests.data
             }
         }
 
-        public override void onAccept(L2Player player, L2Citizen npc)
+        public override void onAccept(L2Player player, L2Npc npc)
         {
             player.questAccept(new QuestInfo(this));
             player.ShowHtm("redry_q0003_03.htm", npc);
         }
 
-        public override void onTalkToNpc(L2Player player, L2Citizen npc, int cond)
+        public override void onTalkToNpc(L2Player player, L2Npc npc, int cond)
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;

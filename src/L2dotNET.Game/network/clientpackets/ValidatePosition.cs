@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using L2dotNET.GameService.network.l2send;
+using L2dotNET.GameService.world;
+using L2dotNET.GameService.model.zones;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -36,9 +41,7 @@ namespace L2dotNET.GameService.network.l2recv
             int realY = player.Y;
             int realZ = player.Z;
 
-            int dx,
-                dy,
-                dz;
+            int dx, dy, dz;
             double diffSq;
 
             dx = _x - realX;
@@ -46,11 +49,11 @@ namespace L2dotNET.GameService.network.l2recv
             dz = _z - realZ;
             diffSq = (dx * dx + dy * dy);
 
-            if (diffSq < 360000)
+            if(diffSq < 360000)
             {
-                if (SYNCTYPE == 1)
+                if(SYNCTYPE == 1)
                 {
-                    if (!player.isMoving())
+                    if(!player.isMoving())
                     {
                         if (diffSq < 2500)
                         {
@@ -65,6 +68,8 @@ namespace L2dotNET.GameService.network.l2recv
                             player.Z = _z;
                         }
                     }
+                    Console.WriteLine($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}");//debug
+                    player.BroadcastUserInfo();
                     return;
                 }
                 else if (diffSq > 250000 || Math.Abs(dz) > 200)
@@ -82,12 +87,13 @@ namespace L2dotNET.GameService.network.l2recv
                 }
             }
 
-            player.clientPosX = _x;
-            player.clientPosY = _y;
-            player.clientPosZ = _z;
-            player.clientHeading = _heading;
-
-            player.validateVisibleObjects(_x, _y, true);
+            player.X = _x;
+            player.Y = _y;
+            player.Z = _z;
+            player.Heading = _heading;
+            Console.WriteLine($"Current position: X:{player.clientPosX}, Y:{player.clientPosY}, Z:{player.clientPosZ}");//debug
+            player.BroadcastUserInfo();
+            //player.validateVisibleObjects(_x, _y, true);         
         }
     }
 }

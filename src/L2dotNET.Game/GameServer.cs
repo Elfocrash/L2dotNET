@@ -1,21 +1,20 @@
-﻿using System;
-using System.Net;
-using System.Net.Sockets;
-using log4net;
-using L2dotNET.GameService.controllers;
-using L2dotNET.GameService.crypt;
-using L2dotNET.GameService.geo;
-using L2dotNET.GameService.model.events;
+﻿using L2dotNET.GameService.controllers;
+using L2dotNET.GameService.Handlers;
+using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.npcs.ai;
 using L2dotNET.GameService.model.quests;
-using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.network;
 using L2dotNET.GameService.network.loginauth;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.tables.multisell;
 using L2dotNET.GameService.world;
+using L2dotNET.Utility;
+using log4net;
 using Ninject;
+using System;
+using System.Net;
+using System.Net.Sockets;
 
 namespace L2dotNET.GameService
 {
@@ -23,11 +22,12 @@ namespace L2dotNET.GameService
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(GameServer));
 
-        private TcpListener GameServerListener;
+        protected TcpListener GameServerListener;
 
         public static IKernel Kernel { get; set; }
 
-        public GameServer() { }
+        public GameServer()
+        { }
 
         public void Start()
         {
@@ -64,7 +64,7 @@ namespace L2dotNET.GameService
 
             BlowFishKeygen.GenerateKeys();
 
-            AdminAccess.Instance.Initialize();
+            AdminCommandHandler.Instance.Initialize();
 
             QuestManager.Instance.Initialize();
 
@@ -73,9 +73,8 @@ namespace L2dotNET.GameService
             AllianceTable.Instance.Initialize();
             ClanTable.Instance.Initialize();
 
-            log.Info($"NpcServer: ");
+            log.Info("NpcServer: ");
             StaticObjTable.Instance.Initialize();
-            MonsterRace.Instance.Initialize();
             //SpawnTable.getInstance().Spawn();
             StructureTable.Instance.Initialize();
 
@@ -83,23 +82,18 @@ namespace L2dotNET.GameService
 
             AuthThread.Instance.Initialize();
 
-            Geodata.Initialize();
-
             GameServerListener = new TcpListener(IPAddress.Any, Config.Instance.serverConfig.Port);
 
-            try
-            {
-                GameServerListener.Start();
-            }
+            try { GameServerListener.Start(); }
             catch (SocketException ex)
             {
-                log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
+                log.Error($"Socket Error: '{ ex.SocketErrorCode }'. Message: '{ ex.Message }' (Error Code: '{ ex.NativeErrorCode }')");
                 log.Info($"Press ENTER to exit...");
                 Console.Read();
                 Environment.Exit(0);
             }
 
-            log.Info($"Listening Gameservers on port {Config.Instance.serverConfig.Port}");
+            log.Info($"Listening Gameservers on port { Config.Instance.serverConfig.Port }");
 
             TcpClient clientSocket = default(TcpClient);
             while (true)

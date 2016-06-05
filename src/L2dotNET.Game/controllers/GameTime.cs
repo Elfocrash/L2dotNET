@@ -82,7 +82,7 @@ namespace L2dotNET.GameService.controllers
         {
             Night = false;
 
-            foreach (L2Player p in L2World.Instance.GetAllPlayers())
+            foreach (L2Player p in L2World.Instance.GetPlayers())
                 p.NotifyDayChange(DayPk);
         }
 
@@ -90,7 +90,7 @@ namespace L2dotNET.GameService.controllers
         {
             Night = true;
 
-            foreach (L2Player p in L2World.Instance.GetAllPlayers())
+            foreach (L2Player p in L2World.Instance.GetPlayers())
                 p.NotifyDayChange(NightPk);
         }
 

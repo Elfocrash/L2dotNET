@@ -40,8 +40,8 @@ namespace L2dotNET.GameService.network.l2recv
                     }
             }
 
-            if (target == null)
-                target = L2World.Instance.GetPlayer(name);
+            //if (target == null)
+            //    target = L2World.Instance.GetPlayer(name);
 
             if (target == null)
             {

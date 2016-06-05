@@ -120,7 +120,7 @@ namespace L2dotNET.GameService.tables
             }
             foreach (L2StaticObject o in objects.Values)
             {
-                L2World.Instance.RealiseEntry(o, null, true);
+                L2World.Instance.AddObject(o);
                 o.onSpawn();
             }
 

@@ -1,22 +1,18 @@
 ﻿using L2dotNET.LoginService.gscommunication;
+using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {
-    class RequestPlayersOnline : ReceiveServerPacket
+    class RequestPlayersOnline
     {
         private short cnt;
-
-        public RequestPlayersOnline(ServerThread server, byte[] data)
+        ServerThread thread;
+        public RequestPlayersOnline(Packet p, ServerThread server)
         {
-            base.CreatePacket(server, data);
+            cnt = p.ReadShort();
         }
 
-        public override void read()
-        {
-            cnt = ReadShort();
-        }
-
-        public override void run()
+        public void RunImpl()
         {
             thread.Curp = cnt;
         }

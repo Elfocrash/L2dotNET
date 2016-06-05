@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.model.skills2.effects
         public override TEffectResult onStart(world.L2Character caster, world.L2Character target)
         {
             L2Summon summon = new L2Summon();
-            summon.setTemplate(NpcTable.Instance.GetNpcTemplate(npcId));
+            //summon.setTemplate(NpcTable.Instance.GetNpcTemplate(npcId));
             summon.setOwner((L2Player)caster);
             summon.SpawmMe();
 

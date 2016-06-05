@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.model.quests.data
             actItems = new int[] { q_caradines_letter1, q_ring_waterbinder, q_necklace_evergreen, q_staff_rainsong, q_caradines_letter2, q_red_dust };
         }
 
-        public override void tryAccept(L2Player player, L2Citizen npc)
+        public override void tryAccept(L2Player player, L2Npc npc)
         {
             if (!player.subActive() || !player.hasItem(q_caradines_letter1) || player.Level < 65)
             {
@@ -40,13 +40,13 @@ namespace L2dotNET.GameService.model.quests.data
             player.ShowHtm("caradine_q0246_0101.htm", npc, questId);
         }
 
-        public override void onAccept(L2Player player, L2Citizen npc)
+        public override void onAccept(L2Player player, L2Npc npc)
         {
             player.questAccept(new QuestInfo(this));
             player.ShowHtm("caradine_q0246_0104.htm", npc);
         }
 
-        public override void onTalkToNpcQM(L2Player player, L2Citizen npc, int reply)
+        public override void onTalkToNpcQM(L2Player player, L2Npc npc, int reply)
         {
             if (reply == 1)
             {
@@ -77,7 +77,7 @@ namespace L2dotNET.GameService.model.quests.data
             }
         }
 
-        public override void onTalkToNpc(L2Player player, L2Citizen npc, int cond)
+        public override void onTalkToNpc(L2Player player, L2Npc npc, int cond)
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;

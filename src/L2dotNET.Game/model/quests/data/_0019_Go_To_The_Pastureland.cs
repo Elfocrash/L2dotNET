@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.model.quests.data
             actItems = new int[] { q_youngmeat_of_beast };
         }
 
-        public override void tryAccept(L2Player player, L2Citizen npc)
+        public override void tryAccept(L2Player player, L2Npc npc)
         {
             if (player.Level >= 63)
                 player.ShowHtm("trader_vladimir_q0019_0101.htm", npc);
@@ -28,18 +28,18 @@ namespace L2dotNET.GameService.model.quests.data
             }
         }
 
-        public override void onAccept(L2Player player, L2Citizen npc)
+        public override void onAccept(L2Player player, L2Npc npc)
         {
             player.questAccept(new QuestInfo(this));
             player.ShowHtm("trader_vladimir_q0019_0104.htm", npc);
         }
 
-        public override void onTalkToNpcQM(L2Player player, L2Citizen npc, int reply)
+        public override void onTalkToNpcQM(L2Player player, L2Npc npc, int reply)
         {
             //todo
         }
 
-        public override void onTalkToNpc(L2Player player, L2Citizen npc, int cond)
+        public override void onTalkToNpc(L2Player player, L2Npc npc, int cond)
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;

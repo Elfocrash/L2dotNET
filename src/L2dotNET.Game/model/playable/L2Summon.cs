@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.npcs;
-using L2dotNET.GameService.model.playable.petai;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
-using L2dotNET.GameService.tools;
 using L2dotNET.GameService.world;
+using L2dotNET.GameService.model.playable.petai;
+using L2dotNET.GameService.tools;
+using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.model.playable
 {
@@ -44,7 +45,7 @@ namespace L2dotNET.GameService.model.playable
         {
             Template = template;
             CStatsInit();
-            CharacterStat.setTemplate(template);
+            //CharacterStat.setTemplate(template);
             CurHP = CharacterStat.getStat(skills2.TEffectType.b_max_hp);
             MaxTime = 1200; //20 минут
             CurrentTime = MaxTime;
@@ -115,7 +116,6 @@ namespace L2dotNET.GameService.model.playable
         }
 
         private bool IsSpawned = false;
-
         public void SpawmMe()
         {
             X = Owner.X;
@@ -125,7 +125,7 @@ namespace L2dotNET.GameService.model.playable
 
             Owner.sendPacket(new PetStatusUpdate(this));
 
-            L2World.Instance.RealiseEntry(this, new PetInfo(this), true);
+            L2World.Instance.AddObject(this);//to add pet
             IsSpawned = true;
             onSpawn();
 
@@ -178,7 +178,10 @@ namespace L2dotNET.GameService.model.playable
             AICharacter.ChangeFollowStatus();
         }
 
-        public virtual void Attack() { }
+        public virtual void Attack()
+        {
+
+        }
 
         public virtual void Stop()
         {
@@ -256,6 +259,7 @@ namespace L2dotNET.GameService.model.playable
             nulled.Clear();
             Owner.Party.broadcastToMembers(p);
         }
+
 
         public override string asString()
         {

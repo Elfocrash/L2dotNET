@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -85,10 +85,17 @@
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Org.BouncyCastle">
+      <HintPath>..\..\c_auth\c_auth\lib\Org.BouncyCastle.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -108,15 +115,11 @@
     <Compile Include="Config\GameplayConfig.cs" />
     <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="controllers\GameTime.cs" />
-    <Compile Include="Crypt.cs" />
-    <Compile Include="crypt\BlowFishKeygen.cs" />
     <Compile Include="DepInjectionModule.cs" />
     <Compile Include="Enums\ClassId.cs" />
     <Compile Include="Enums\ClassRace.cs" />
     <Compile Include="Enums\ShotType.cs" />
     <Compile Include="Enums\ZoneId.cs" />
-    <Compile Include="geo\GeoBlock.cs" />
-    <Compile Include="geo\Geodata.cs" />
     <Compile Include="Managers\AnnouncementManager.cs" />
     <Compile Include="Managers\bbs\BBSManager.cs" />
     <Compile Include="Managers\CastleManager.cs" />
@@ -131,7 +134,6 @@
     <Compile Include="Managers\ZoneManager.cs" />
     <Compile Include="Model\communities\L2Alliance.cs" />
     <Compile Include="Model\communities\L2Clan.cs" />
-    <Compile Include="Model\events\MonsterRace.cs" />
     <Compile Include="Model\inventory\InvPet.cs" />
     <Compile Include="Model\inventory\InvRefund.cs" />
     <Compile Include="Model\inventory\InvMail.cs" />
@@ -140,14 +142,11 @@
     <Compile Include="Model\items\Capsule.cs" />
     <Compile Include="Model\items\cursed\CursedWeapon.cs" />
     <Compile Include="Model\items\cursed\CursedWeapons.cs" />
-    <Compile Include="Model\items\effects\BottlesOfSouls.cs" />
     <Compile Include="Model\items\effects\Calculator.cs" />
     <Compile Include="Model\items\effects\EnchantScrolls.cs" />
-    <Compile Include="Model\items\effects\TeleportBooks.cs" />
     <Compile Include="Model\items\ItemEffect.cs" />
     <Compile Include="Model\items\ItemHandler.cs" />
     <Compile Include="Model\items\ItemHandlerScript.cs" />
-    <Compile Include="Model\Location.cs" />
     <Compile Include="Model\npcs\ai\AgitManagerAI.cs" />
     <Compile Include="Model\npcs\ai\AIManager.cs" />
     <Compile Include="Model\npcs\ai\AITemplate.cs" />
@@ -168,7 +167,6 @@
     <Compile Include="Model\npcs\decor\L2Chair.cs" />
     <Compile Include="Model\npcs\decor\L2StaticObject.cs" />
     <Compile Include="Model\npcs\L2Doormen.cs" />
-    <Compile Include="Model\npcs\L2RaceManager.cs" />
     <Compile Include="Model\npcs\L2Warrior.cs" />
     <Compile Include="Model\playable\L2Pet.cs" />
     <Compile Include="Model\playable\L2Summon.cs" />
@@ -182,8 +180,6 @@
     <Compile Include="Model\player\L2PartyRoom.cs" />
     <Compile Include="Model\player\L2Shortcut.cs" />
     <Compile Include="Model\player\partials\db_InstanceReuse.cs" />
-    <Compile Include="Model\player\telebooks\TelBook_Mark.cs" />
-    <Compile Include="Model\player\telebooks\TeleportBook.cs" />
     <Compile Include="Model\player\transformation\data\_00001_1.cs" />
     <Compile Include="Model\player\transformation\data\_00260_final_form_air.cs" />
     <Compile Include="Model\player\transformation\data\_00126_treykan.cs" />
@@ -286,8 +282,7 @@
     <Compile Include="Model\inventory\InvPC.cs" />
     <Compile Include="Model\items\ItemTemplate.cs" />
     <Compile Include="Model\items\L2Item.cs" />
-    <Compile Include="Model\npcs\NpcTemplate.cs" />
-    <Compile Include="Model\npcs\L2Citizen.cs" />
+    <Compile Include="Model\npcs\L2Npc.cs" />
     <Compile Include="Model\stats\CStats.cs" />
     <Compile Include="Model\stats\Formulas.cs" />
     <Compile Include="Model\structures\Castle.cs" />
@@ -321,7 +316,6 @@
     <Compile Include="Model\zones\L2Zone.cs" />
     <Compile Include="network\clientpackets\CharacterDelete.cs" />
     <Compile Include="network\clientpackets\RequestSocialAction.cs" />
-    <Compile Include="network\Packet.cs" />
     <Compile Include="network\serverpackets\CharDeleteFail.cs" />
     <Compile Include="network\serverpackets\CharDeleteOk.cs" />
     <Compile Include="network\serverpackets\ExChangeNicknameNColor.cs" />
@@ -376,11 +370,6 @@
     <Compile Include="network\clientpackets\RequestDispel.cs" />
     <Compile Include="network\clientpackets\RequestCursedWeaponList.cs" />
     <Compile Include="network\clientpackets\RequestDominionInfo.cs" />
-    <Compile Include="network\clientpackets\RequestTeleportBookMark.cs" />
-    <Compile Include="network\clientpackets\RequestDeleteBookMarkSlot.cs" />
-    <Compile Include="network\clientpackets\RequestModifyBookMarkSlot.cs" />
-    <Compile Include="network\clientpackets\RequestSaveBookMarkSlot.cs" />
-    <Compile Include="network\clientpackets\RequestBookMarkSlotInfo.cs" />
     <Compile Include="network\clientpackets\ClanAPI\RequestWithdrawalPledge.cs" />
     <Compile Include="network\clientpackets\ClanAPI\RequestExSetPledgeCrestLarge.cs" />
     <Compile Include="network\clientpackets\ClanAPI\RequestSetPledgeCrest.cs" />
@@ -496,7 +485,6 @@
     <Compile Include="network\serverpackets\ExCursedWeaponList.cs" />
     <Compile Include="network\serverpackets\ExShowOwnthingPos.cs" />
     <Compile Include="network\serverpackets\ExReplyDominionInfo.cs" />
-    <Compile Include="network\serverpackets\ExGetBookMarkInfo.cs" />
     <Compile Include="network\serverpackets\SunSet.cs" />
     <Compile Include="network\serverpackets\PledgeShowMemberListDeleteAll.cs" />
     <Compile Include="network\serverpackets\PledgeReceiveSubPledgeCreated.cs" />
@@ -588,7 +576,21 @@
     <Compile Include="network\GameServerNetworkPacket.cs" />
     <Compile Include="scripting\ScriptCompiler.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="tables\AdminAccess.cs" />
+    <Compile Include="Handlers\AdminCommandHandler.cs" />
+    <Compile Include="Commands\Admin\AdminHeal.cs" />
+    <Compile Include="Commands\Admin\AdminAddSkill.cs" />
+    <Compile Include="Commands\Admin\AdminGiveAllSkills.cs" />
+    <Compile Include="Commands\Admin\AdminSpawnItem.cs" />
+    <Compile Include="Commands\Admin\AdminSpawnEnchanted.cs" />
+    <Compile Include="Commands\Admin\AdminSpawnItemRange.cs" />
+    <Compile Include="Commands\Admin\AdminTeleport.cs" />
+    <Compile Include="Commands\Admin\AdminTest.cs" />
+    <Compile Include="Commands\Admin\AdminRange.cs" />
+    <Compile Include="Commands\Admin\AdminWhisper.cs" />
+    <Compile Include="Commands\Admin\AdminSpawnNpc.cs" />
+    <Compile Include="Commands\Admin\AdminTransform.cs" />
+    <Compile Include="Commands\Admin\AdminChat.cs" />
+    <Compile Include="Commands\Admin\AAdminCommand.cs" />
     <Compile Include="tables\admin_bypass\ABTeleport.cs" />
     <Compile Include="tables\CharTemplateTable.cs" />
     <Compile Include="tables\ClanTable.cs" />
@@ -610,17 +612,11 @@
     <Compile Include="tables\RecipeTable.cs" />
     <Compile Include="tables\StaticObjTable.cs" />
     <Compile Include="tables\ZoneTable.cs" />
-    <Compile Include="templates\CharTemplate.cs" />
-    <Compile Include="templates\PcTemplate.cs" />
-    <Compile Include="templates\StatsSet.cs" />
+    <Compile Include="Templates\CharTemplate.cs" />
+    <Compile Include="Templates\NpcTemplate.cs" />
+    <Compile Include="Templates\PcTemplate.cs" />
+    <Compile Include="Templates\StatsSet.cs" />
     <Compile Include="tools\Calcs.cs" />
-    <Compile Include="tools\Utilz.cs" />
-    <Compile Include="Utils\Geometry\MathHelper.cs" />
-    <Compile Include="Utils\Geometry\Matrix.cs" />
-    <Compile Include="Utils\Geometry\Quaternion.cs" />
-    <Compile Include="Utils\Geometry\Rnd.cs" />
-    <Compile Include="Utils\Geometry\Vector2.cs" />
-    <Compile Include="Utils\Geometry\Vector3.cs" />
     <Compile Include="world\L2Character.cs" />
     <Compile Include="world\L2Object.cs" />
     <Compile Include="world\L2World.cs" />
@@ -705,6 +701,22 @@
     <Content Include="Datapacks\Game\data\xml\classes\orc_fighter.xml" />
     <Content Include="Datapacks\Game\data\xml\classes\orc_mystic.xml" />
     <Content Include="Datapacks\Game\data\xml\map_region.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\12000-12999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\13000-13999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\14000-14999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\16000-16999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\18000-18999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\20000-20999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\21000-21999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\22000-22999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\25000-25999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\27000-27999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\29000-29999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\30000-30999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\31000-31999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\32000-32999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\35000-35999.xml" />
+    <Content Include="Datapacks\Game\data\xml\npcs\50000-50999.xml" />
     <Content Include="Datapacks\Game\L2Crypt.dll" />
     <Content Include="Datapacks\Game\Org.BouncyCastle.dll" />
     <Content Include="Datapacks\Game\pk.txt" />
@@ -750,6 +762,7 @@
     <Folder Include="Datapacks\Game\cmpl\quests\" />
     <Folder Include="Datapacks\Game\html\scripts\teleports\RaceTrack\" />
     <Folder Include="Datapacks\Game\log\" />
+    <Folder Include="GeoEngine\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

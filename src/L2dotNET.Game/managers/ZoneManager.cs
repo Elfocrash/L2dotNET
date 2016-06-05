@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.managers
 
         public void Initialize()
         {
-            L2WorldRegion[][] worldRegions = L2World.Instance.GetWorldRegions();
+            L2WorldRegion[,] worldRegions = L2World.Instance.GetWorldRegions();
 
             try
             {

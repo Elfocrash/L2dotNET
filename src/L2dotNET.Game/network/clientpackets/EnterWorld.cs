@@ -1,9 +1,10 @@
 ﻿using L2dotNET.GameService.controllers;
-using L2dotNET.GameService.model.items;
-using L2dotNET.GameService.Managers;
+using L2dotNET.GameService.managers;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
+using L2dotNET.GameService.model.items;
+using L2dotNET.GameService.Managers;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -44,10 +45,6 @@ namespace L2dotNET.GameService.network.l2recv
 
             AnnouncementManager.Instance.OnEnter(player);
 
-            if (player.TelbookLimit > 0)
-                player.sendPacket(new ExGetBookMarkInfo(player.TelbookLimit, player.Telbook));
-
-            //навешиваем статы уже одетых предметов
             foreach (L2Item item in player.Inventory.Items.Values)
             {
                 if (item._isEquipped == 0)
@@ -57,8 +54,7 @@ namespace L2dotNET.GameService.network.l2recv
             }
 
             player.StartRegeneration();
-            // player.sendItemList(false);
-            //player.Vitality = 20000;
+           // player.sendItemList(false);
             player.sendPacket(new FriendList());
             player.sendQuestList();
             player.updateSkillList();
@@ -70,18 +66,17 @@ namespace L2dotNET.GameService.network.l2recv
             }
 
             player.sendPacket(new ExStorageMaxCount(player));
-            // player.sendPacket(new ExBasicActionList());
-            //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
+           // player.sendPacket(new ExBasicActionList());
+          //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
             player.sendActionFailed();
 
             GameTime.Instance.EnterWorld(player);
-
-            L2World.Instance.RealiseEntry(player, null, true);
+            
             player.timer();
 
-            L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
-            worldRegion.checkZones(player, true);
-            worldRegion.realiseMe(player, null, false);
+            player.SpawnMe();
+            //L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
+            //player.SetRegion(worldRegion);
             //player.getKnowns(500, 500, false);
 
             player.sendPacket(new UserInfo(player));

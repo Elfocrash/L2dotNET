@@ -23,16 +23,16 @@ namespace L2dotNET.GameService.model.playable
             player.ChangeTarget(this);
         }
 
-        public override void setTemplate(NpcTemplate template)
-        {
-            Template = template;
-            CStatsInit();
-            CharacterStat.setTemplate(template);
-            CurHP = CharacterStat.getStat(skills2.TEffectType.b_max_hp);
-            MaxTime = 1200; //20 минут
-            CurrentTime = MaxTime;
-            Level = 35;
-        }
+        //public override void setTemplate(NpcTemplate template)
+        //{
+        //    Template = template;
+        //    CStatsInit();
+        //    CharacterStat.setTemplate(template);
+        //    CurHP = CharacterStat.getStat(skills2.TEffectType.b_max_hp);
+        //    MaxTime = 1200; //20 минут
+        //    CurrentTime = MaxTime;
+        //    Level = 35;
+        //}
 
         public override int MaxWeight()
         {
