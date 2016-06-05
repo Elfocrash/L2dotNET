@@ -30,7 +30,8 @@ namespace L2dotNET.GameService.model.zones
         public int _mp_regen_bonus;
         public int[] _x;
         public int[] _y;
-        public int _z1, _z2;
+        public int _z1,
+                   _z2;
         public int _exp_penalty_per;
         public bool _item_drop;
 

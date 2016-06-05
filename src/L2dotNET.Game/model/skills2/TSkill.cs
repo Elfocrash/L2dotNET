@@ -14,7 +14,8 @@ namespace L2dotNET.GameService.model.skills2
         public int level;
         public TSkillOperational OpType;
         public int magic_level;
-        public int cast_range, effective_range;
+        public int cast_range,
+                   effective_range;
         public int skill_cool_time;
         public double reuse_delay;
 

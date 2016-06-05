@@ -33,7 +33,8 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 
         public override void Run()
         {
-            string username, password;
+            string username,
+                   password;
 
             CipherParameters key = Client.RsaPair._privateKey;
             RSAEngine rsa = new RSAEngine();

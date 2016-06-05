@@ -38,12 +38,15 @@ namespace L2dotNET.GameService.model.events
             }
         }
 
-        public string beginMusic = "S_Race", beginSound = "ItemSound2.race_start", endSound = "ItemSound2.race_end";
+        public string beginMusic = "S_Race",
+                      beginSound = "ItemSound2.race_start",
+                      endSound = "ItemSound2.race_end";
         public int[][] tracks;
         public MonsterRunner[] runners;
         public monster_race Zone;
         public List<int[]> zoneLoc;
-        public int TICKET = 4443, TICKET_DOUBLE = 4444;
+        public int TICKET = 4443,
+                   TICKET_DOUBLE = 4444;
 
         public MonsterRace() { }
 
@@ -101,7 +104,8 @@ namespace L2dotNET.GameService.model.events
             log.Info("MonsterRace loaded.");
         }
 
-        private L2RaceManager raceManager1, raceManager2;
+        private L2RaceManager raceManager1,
+                              raceManager2;
 
         private void GenNpc()
         {
@@ -122,8 +126,13 @@ namespace L2dotNET.GameService.model.events
             raceManager2.Heading = 16384;
         }
 
-        public int currentRaceId = 1, timeToStart, maxSpd = 0, rnd, raceTimeProgress;
-        public System.Timers.Timer raceStartTime, raceInProgress;
+        public int currentRaceId = 1,
+                   timeToStart,
+                   maxSpd = 0,
+                   rnd,
+                   raceTimeProgress;
+        public System.Timers.Timer raceStartTime,
+                                   raceInProgress;
         private readonly Random rn = new Random();
 
         public void startRace()
@@ -235,7 +244,8 @@ namespace L2dotNET.GameService.model.events
             sm.AddNumber(currentRaceId);
             Zone.broadcastPacket(sm);
 
-            byte firstLine = 0, secondLine = 0;
+            byte firstLine = 0,
+                 secondLine = 0;
             int max = int.MaxValue;
             for (byte a = 0; a < 8; a++)
             {
@@ -513,7 +523,11 @@ namespace L2dotNET.GameService.model.events
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(MonsterRace));
 
-        public int id, npcId, sys_string, max_speed, min_speed;
+        public int id,
+                   npcId,
+                   sys_string,
+                   max_speed,
+                   min_speed;
 
         public MonsterRunner(int npcId, int sys_string, int max_speed, int min_speed)
         {
@@ -525,12 +539,20 @@ namespace L2dotNET.GameService.model.events
             this.id = IdFactory.Instance.nextId();
         }
 
-        public int x, y, z, dx, dy, dz;
-        public int heading = 32500, cur_speed, finishTime;
+        public int x,
+                   y,
+                   z,
+                   dx,
+                   dy,
+                   dz;
+        public int heading = 32500,
+                   cur_speed,
+                   finishTime;
         public byte lineId;
         public npcs.NpcTemplate npcTemplate;
 
-        public long runCount = 0, winCount = 0;
+        public long runCount = 0,
+                    winCount = 0;
 
         public int Prepare(int[] track, byte line)
         {

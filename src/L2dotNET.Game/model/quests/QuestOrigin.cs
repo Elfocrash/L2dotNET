@@ -9,7 +9,8 @@ namespace L2dotNET.GameService.model.quests
         public int questId;
         public int startNpc;
         public string questName;
-        public int[] talkNpcs, actItems;
+        public int[] talkNpcs,
+                     actItems;
         public bool repeatable = false;
 
         public string no_action_required = "You are either not on a quest that involves this NPC, or you don't meet this NPC's minimum quest requirements.";

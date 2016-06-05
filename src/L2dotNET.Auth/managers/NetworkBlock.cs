@@ -88,7 +88,8 @@ namespace L2dotNET.LoginService.data
 
                 if (nbi.mask != null)
                 {
-                    string[] a = ip.Split('.'), b = nbi.mask.Split('.');
+                    string[] a = ip.Split('.'),
+                             b = nbi.mask.Split('.');
                     bool[] d = new bool[4];
                     for (byte c = 0; c < 4; c++)
                     {
@@ -100,7 +101,8 @@ namespace L2dotNET.LoginService.data
                             d[c] = true;
                         else if (b[c].Contains("/"))
                         {
-                            byte n = byte.Parse(b[c].Split('/')[0]), x = byte.Parse(b[c].Split('/')[1]);
+                            byte n = byte.Parse(b[c].Split('/')[0]),
+                                 x = byte.Parse(b[c].Split('/')[1]);
                             byte t = byte.Parse(a[c]);
                             d[c] = t >= n && t <= x;
                         }

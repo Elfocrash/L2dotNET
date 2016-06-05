@@ -12,7 +12,8 @@ namespace L2dotNET.GameService.network.l2recv
             base.makeme(client, data);
         }
 
-        private string _text, _target = null;
+        private string _text,
+                       _target = null;
         private SayIDList Type;
 
         public override void read()

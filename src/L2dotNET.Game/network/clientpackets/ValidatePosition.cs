@@ -36,7 +36,9 @@ namespace L2dotNET.GameService.network.l2recv
             int realY = player.Y;
             int realZ = player.Z;
 
-            int dx, dy, dz;
+            int dx,
+                dy,
+                dz;
             double diffSq;
 
             dx = _x - realX;

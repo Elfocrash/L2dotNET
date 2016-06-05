@@ -47,7 +47,12 @@ namespace L2dotNET.GameService.Utils
         {
             // All transformed to double not to lose precission
             // Otherwise, for high numbers of param:amount the result is NaN instead of Infinity
-            double v1 = value1, v2 = value2, t1 = tangent1, t2 = tangent2, s = amount, result;
+            double v1 = value1,
+                   v2 = value2,
+                   t1 = tangent1,
+                   t2 = tangent2,
+                   s = amount,
+                   result;
             double sCubed = s * s * s;
             double sSquared = s * s;
 

@@ -10,7 +10,8 @@ namespace L2dotNET.GameService.model.structures
     public class HideoutTemplate
     {
         public int ID;
-        public string Name, Descr;
+        public string Name,
+                      Descr;
 
         public SortedList<int, L2Citizen> npcs;
 

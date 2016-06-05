@@ -31,18 +31,34 @@ namespace L2dotNET.GameService.model.items
             get { return default_action == "action_soulshot" || default_action == "action_spiritshot" || default_action == "action_summon_soulshot" || default_action == "action_summon_spiritshot"; }
         }
 
-        public int SoulshotCount = 0, SpiritshotCount = 0;
+        public int SoulshotCount = 0,
+                   SpiritshotCount = 0;
         public long Price = 0;
         public int AbnormalMaskEvent = 0;
 
         //  public TSkill critical_attack_skill, attack_skill, magic_skill;
 
-        public int is_trade = 1, is_drop = 1, is_destruct = 1, enchant_enable = 0;
-        public int is_private_store = 1, elemental_enable = 0, is_olympiad_can_use = 1, is_premium = 0;
-        public int physical_damage, random_damage, attack_range, attack_speed, magical_damage;
-        public int physical_defense, magical_defense, mp_bonus, magic_weapon;
+        public int is_trade = 1,
+                   is_drop = 1,
+                   is_destruct = 1,
+                   enchant_enable = 0;
+        public int is_private_store = 1,
+                   elemental_enable = 0,
+                   is_olympiad_can_use = 1,
+                   is_premium = 0;
+        public int physical_damage,
+                   random_damage,
+                   attack_range,
+                   attack_speed,
+                   magical_damage;
+        public int physical_defense,
+                   magical_defense,
+                   mp_bonus,
+                   magic_weapon;
 
-        public int avoid_modify, shield_defense, shield_defense_rate;
+        public int avoid_modify,
+                   shield_defense,
+                   shield_defense_rate;
         public double hit_modify;
 
         public int BaseAttrAttackType = -2;

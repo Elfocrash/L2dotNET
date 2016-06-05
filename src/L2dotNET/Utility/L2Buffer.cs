@@ -250,8 +250,10 @@ namespace L2dotNET.Utility
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.AppendFormat("Buffer dump, length: {0}{1}Index   |---------------------------------------------|  |--------------|{1}", buffer.Length, Environment.NewLine);
 
-            int index = 0, i;
-            string hex, data;
+            int index = 0,
+                i;
+            string hex,
+                   data;
 
             while (index < buffer.Length)
             {

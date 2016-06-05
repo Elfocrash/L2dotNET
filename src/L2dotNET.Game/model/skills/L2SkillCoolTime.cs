@@ -6,7 +6,10 @@ namespace L2dotNET.GameService
 {
     public class L2SkillCoolTime
     {
-        public int id, lvl, total, delay;
+        public int id,
+                   lvl,
+                   total,
+                   delay;
 
         private Timer _timer;
         public L2Character _owner;

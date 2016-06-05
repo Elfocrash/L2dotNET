@@ -414,7 +414,8 @@ namespace L2dotNET.GameService.model.skills2
 
             AcquireSkills = new Dictionary<string, TAcquireSkillsEntry>();
             DlcStream dlc = new DlcStream(fstream, CompressionMode.Decompress);
-            int cnt = dlc.readD(), cntTotal = 0;
+            int cnt = dlc.readD(),
+                cntTotal = 0;
             for (int a = 0; a < cnt; a++)
             {
                 TAcquireSkillsEntry list = new TAcquireSkillsEntry();

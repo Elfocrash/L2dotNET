@@ -19,7 +19,8 @@ namespace L2dotNET.GameService.model.inventory
             if (_items.Count > 12)
             {
                 List<L2Item> s2 = new List<L2Item>();
-                int nt = _items.Count - 12, xt = 1;
+                int nt = _items.Count - 12,
+                    xt = 1;
 
                 foreach (L2Item item in _items)
                 {

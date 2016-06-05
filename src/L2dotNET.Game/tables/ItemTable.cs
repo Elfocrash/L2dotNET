@@ -391,7 +391,9 @@ namespace L2dotNET.GameService.tables
 
             if (!equip)
             {
-                bool b1 = false, b2 = false, b3 = false;
+                bool b1 = false,
+                     b2 = false,
+                     b3 = false;
                 foreach (TSkill skill in owner._skills.Values)
                 {
                     if (set.set1Id > 0 && skill.skill_id == set.set1Id)
@@ -483,7 +485,8 @@ namespace L2dotNET.GameService.tables
             shields.Add(p);
         }
 
-        public int set1Id, set1Lvl;
+        public int set1Id,
+                   set1Lvl;
 
         public void set1(int p, int p2)
         {
@@ -491,7 +494,8 @@ namespace L2dotNET.GameService.tables
             set1Lvl = p2;
         }
 
-        public int set2Id, set2Lvl;
+        public int set2Id,
+                   set2Lvl;
 
         public void set2(int p, int p2)
         {
@@ -499,7 +503,8 @@ namespace L2dotNET.GameService.tables
             set2Lvl = p2;
         }
 
-        public int set3Id, set3Lvl;
+        public int set3Id,
+                   set3Lvl;
 
         public void set3(int p, int p2)
         {
@@ -509,7 +514,9 @@ namespace L2dotNET.GameService.tables
 
         public void Validate(L2Player owner)
         {
-            byte set1sum = 0, set2sum = 0, set3sum = 0;
+            byte set1sum = 0,
+                 set2sum = 0,
+                 set3sum = 0;
             foreach (L2Item item in owner.Inventory.Items.Values)
             {
                 if (item._isEquipped == 0 || item.Template.Type != ItemTemplate.L2ItemType.armor)

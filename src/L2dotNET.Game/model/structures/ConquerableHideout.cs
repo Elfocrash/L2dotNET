@@ -12,10 +12,18 @@ namespace L2dotNET.GameService.model.structures
     {
         public string name;
         public int id;
-        public int BossId, Minion1Id, Minion2Id, MessengerId;
-        public int[] spawn1, spawn2, spawn3, spawn4;
+        public int BossId,
+                   Minion1Id,
+                   Minion2Id,
+                   MessengerId;
+        public int[] spawn1,
+                     spawn2,
+                     spawn3,
+                     spawn4;
         public bool isActive = false;
-        public Timer TimeWait, TimeReg, TimeSiege;
+        public Timer TimeWait,
+                     TimeReg,
+                     TimeSiege;
 
         public int ReputationNothing = 600;
         public int ReputationCapture = 600;
@@ -23,7 +31,10 @@ namespace L2dotNET.GameService.model.structures
 
         public SortedList<int, double> clanDamage;
         public List<int[]> mobSpawns;
-        private L2Character npc1, npc2, npc3, npc4;
+        private L2Character npc1,
+                            npc2,
+                            npc3,
+                            npc4;
 
         public virtual void init()
         {

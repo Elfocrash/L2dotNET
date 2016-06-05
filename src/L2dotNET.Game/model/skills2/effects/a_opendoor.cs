@@ -7,7 +7,8 @@ namespace L2dotNET.GameService.model.skills2.effects
 {
     class a_opendoor : TEffect
     {
-        private int level, rate;
+        private int level,
+                    rate;
 
         public override void build(string str)
         {

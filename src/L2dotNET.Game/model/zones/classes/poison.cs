@@ -74,7 +74,12 @@ namespace L2dotNET.GameService.model.zones.classes
                 if (rn.Next(0, 100) > Template._skill_prob)
                     return;
 
-                int a = 4551, b = 4552, c = 4553, d = 4554, x1 = 0, x2 = 0;
+                int a = 4551,
+                    b = 4552,
+                    c = 4553,
+                    d = 4554,
+                    x1 = 0,
+                    x2 = 0;
                 int id = int.Parse(Template.Name.Substring(5).Replace("]", ""));
 
                 switch (id)

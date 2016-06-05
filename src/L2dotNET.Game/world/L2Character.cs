@@ -628,7 +628,10 @@ namespace L2dotNET.GameService.world
             addAbnormal(skill, caster, permanent, unlim);
         }
 
-        public int clientPosX, clientPosY, clientPosZ, clientHeading;
+        public int clientPosX,
+                   clientPosY,
+                   clientPosZ,
+                   clientHeading;
 
         public virtual void teleport(int x, int y, int z)
         {
@@ -901,11 +904,14 @@ namespace L2dotNET.GameService.world
                 return;
             }
 
-            double dist = 60, reqMp = 0;
+            double dist = 60,
+                   reqMp = 0;
 
             L2Item weapon = ActiveWeapon;
             double timeAtk = CharacterStat.getStat(TEffectType.b_attack_spd);
-            bool dual = false, ranged = false, ss = false;
+            bool dual = false,
+                 ranged = false,
+                 ss = false;
             if (weapon != null)
             {
                 ss = weapon.Soulshot;
@@ -1012,7 +1018,8 @@ namespace L2dotNET.GameService.world
             public double damage;
         }
 
-        public Hit hit1, hit2;
+        public Hit hit1,
+                   hit2;
 
         public Hit genHitSimple(bool dual, bool ss)
         {
@@ -1182,9 +1189,12 @@ namespace L2dotNET.GameService.world
             //  hit2 = null;
         }
 
-        public Timer attack_ToHit, attack_toHitBonus, attack_ToEnd;
+        public Timer attack_ToHit,
+                     attack_toHitBonus,
+                     attack_ToEnd;
 
-        public int _p_block_spell = 0, _p_block_skill = 0;
+        public int _p_block_spell = 0,
+                   _p_block_skill = 0;
         public int _p_block_act = 0;
 
         public virtual bool cantMove()
@@ -1268,7 +1278,9 @@ namespace L2dotNET.GameService.world
 
         public override void RegenUpdateTaskDone(object sender, ElapsedEventArgs e)
         {
-            bool hp = CurHP < CharacterStat.getStat(TEffectType.b_max_hp), mp = CurMP < CharacterStat.getStat(TEffectType.b_max_mp), cp = false;
+            bool hp = CurHP < CharacterStat.getStat(TEffectType.b_max_hp),
+                 mp = CurMP < CharacterStat.getStat(TEffectType.b_max_mp),
+                 cp = false;
 
             if (this is L2Player)
                 cp = CurCP < CharacterStat.getStat(TEffectType.b_max_cp);
@@ -1567,11 +1579,14 @@ namespace L2dotNET.GameService.world
             DestY = y;
             DestZ = z;
 
-            double dx = (x - X), dy = (y - Y), dz = (z - Z);
+            double dx = (x - X),
+                   dy = (y - Y),
+                   dz = (z - Z);
             double distance = Math.Sqrt(dx * dx + dy * dy);
 
             double speed = CharacterStat.getStat(TEffectType.p_speed);
-            double spy = dy / distance, spx = dx / distance;
+            double spy = dy / distance,
+                   spx = dx / distance;
 
             TicksToMove = 1 + (int)(10 * distance / speed);
             TicksToMoveCompleted = 0;
@@ -1648,7 +1663,8 @@ namespace L2dotNET.GameService.world
         }
 
         private Timer updatePositionTime;
-        private int TicksToMove, TicksToMoveCompleted = 0;
+        private int TicksToMove,
+                    TicksToMoveCompleted = 0;
         private float XSpeedTicks;
         private float YSpeedTicks;
 

@@ -92,25 +92,29 @@ namespace L2dotNET.GameService.Utils
 
         public static double Distance(Vector2 value1, Vector2 value2)
         {
-            double v1 = value1.X - value2.X, v2 = value1.Y - value2.Y;
+            double v1 = value1.X - value2.X,
+                   v2 = value1.Y - value2.Y;
             return (double)Math.Sqrt((v1 * v1) + (v2 * v2));
         }
 
         public static void Distance(ref Vector2 value1, ref Vector2 value2, out double result)
         {
-            double v1 = value1.X - value2.X, v2 = value1.Y - value2.Y;
+            double v1 = value1.X - value2.X,
+                   v2 = value1.Y - value2.Y;
             result = (double)Math.Sqrt((v1 * v1) + (v2 * v2));
         }
 
         public static double DistanceSquared(Vector2 value1, Vector2 value2)
         {
-            double v1 = value1.X - value2.X, v2 = value1.Y - value2.Y;
+            double v1 = value1.X - value2.X,
+                   v2 = value1.Y - value2.Y;
             return (v1 * v1) + (v2 * v2);
         }
 
         public static void DistanceSquared(ref Vector2 value1, ref Vector2 value2, out double result)
         {
-            double v1 = value1.X - value2.X, v2 = value1.Y - value2.Y;
+            double v1 = value1.X - value2.X,
+                   v2 = value1.Y - value2.Y;
             result = (v1 * v1) + (v2 * v2);
         }
 
@@ -346,7 +350,9 @@ namespace L2dotNET.GameService.Utils
 
         public static void Transform(ref Vector2 position, ref Quaternion quat, out Vector2 result)
         {
-            Quaternion v = new Quaternion(position.X, position.Y, 0, 0), i, t;
+            Quaternion v = new Quaternion(position.X, position.Y, 0, 0),
+                       i,
+                       t;
             Quaternion.Inverse(ref quat, out i);
             Quaternion.Multiply(ref quat, ref v, out t);
             Quaternion.Multiply(ref t, ref i, out v);

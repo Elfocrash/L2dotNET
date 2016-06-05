@@ -16,7 +16,9 @@ namespace L2dotNET.GameService.model.playable.petai
 
         private DateTime under55percent;
 
-        private int lastOwnerX, lastOwnerY, lastOwnerZ;
+        private int lastOwnerX,
+                    lastOwnerY,
+                    lastOwnerZ;
 
         public override void DoFollow(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {

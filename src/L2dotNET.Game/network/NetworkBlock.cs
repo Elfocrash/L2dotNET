@@ -90,7 +90,8 @@ namespace L2dotNET.GameService.network
 
                 if (nbi.Mask != null)
                 {
-                    string[] a = ip.Split('.'), b = nbi.Mask.Split('.');
+                    string[] a = ip.Split('.'),
+                             b = nbi.Mask.Split('.');
                     bool[] d = new bool[4];
                     for (int c = 0; c < 4; c++)
                     {
@@ -102,7 +103,8 @@ namespace L2dotNET.GameService.network
                             d[c] = true;
                         else if (b[c].Contains("/"))
                         {
-                            short n = short.Parse(b[c].Split('/')[0]), x = short.Parse(b[c].Split('/')[1]);
+                            short n = short.Parse(b[c].Split('/')[0]),
+                                  x = short.Parse(b[c].Split('/')[1]);
                             short t = short.Parse(a[c]);
                             d[c] = t >= n && t <= x;
                         }

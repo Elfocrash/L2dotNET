@@ -13,7 +13,12 @@
 
         public override void UsePlayer(L2Player player, L2Item item)
         {
-            byte method = 0, add = 0, rem = 1, add_battle = 2, count = 5, fin = 0;
+            byte method = 0,
+                 add = 0,
+                 rem = 1,
+                 add_battle = 2,
+                 count = 5,
+                 fin = 0;
             short reward = 0;
             switch (item.Template.ItemID)
             {

@@ -6,7 +6,8 @@ namespace L2dotNET.GameService.network.l2recv
 {
     class RequestBuyItem : GameServerNetworkRequest
     {
-        private int _listId, _count;
+        private int _listId,
+                    _count;
         private long[] _items;
 
         public RequestBuyItem(GameClient client, byte[] data)
@@ -66,7 +67,8 @@ namespace L2dotNET.GameService.network.l2recv
             }
 
             long adena = 0;
-            int slots = 0, weight = 0;
+            int slots = 0,
+                weight = 0;
 
             for (int i = 0; i < _count; i++)
             {

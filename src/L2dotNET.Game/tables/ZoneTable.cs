@@ -37,7 +37,8 @@ namespace L2dotNET.GameService.tables
 
         public void Initialize()
         {
-            int ctx = 0, cta = 0;
+            int ctx = 0,
+                cta = 0;
             using (StreamReader reader = new StreamReader(new FileInfo(@"scripts\areadata_cur.txt").FullName))
             {
                 while (!reader.EndOfStream)

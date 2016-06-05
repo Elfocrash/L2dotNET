@@ -57,7 +57,8 @@ namespace L2dotNET.GameService.tables
 
         public void InitZone()
         {
-            int z1 = 0, z2 = 0;
+            int z1 = 0,
+                z2 = 0;
             int[] x = new int[territoryLoc.Count];
             int[] y = new int[territoryLoc.Count];
             byte i = 0;
@@ -116,7 +117,12 @@ namespace L2dotNET.GameService.tables
 
         private readonly byte Mode = MODE_ANYTIME;
         private byte STATUS = STATUS_OFFLINE;
-        public const byte MODE_DAY_ONLY = 1, MODE_NIGHT_ONLY = 2, MODE_ANYTIME = 0, STATUS_ACTIVE = 1, STATUS_OFFLINE = 2, STATUS_INACTIVE = 0;
+        public const byte MODE_DAY_ONLY = 1,
+                          MODE_NIGHT_ONLY = 2,
+                          MODE_ANYTIME = 0,
+                          STATUS_ACTIVE = 1,
+                          STATUS_OFFLINE = 2,
+                          STATUS_INACTIVE = 0;
 
         public L2Spawn(int NpcId, long Respawn, L2Territory zone, string pos)
         {

@@ -219,7 +219,10 @@ namespace L2dotNET.GameService.world
         }
 
         public SortedList<int, L2Zone> _activeZones = new SortedList<int, L2Zone>();
-        private bool _isInsidePeaceZone = false, _isInsidePvpZone = false, _isInsideWaterZone = false, _isInsideSSQZone = false;
+        private bool _isInsidePeaceZone = false,
+                     _isInsidePvpZone = false,
+                     _isInsideWaterZone = false,
+                     _isInsideSSQZone = false;
         private readonly bool _isInsideSiegeZone = false;
         private readonly bool _isInsideSomeDungeon = false;
 
@@ -360,7 +363,8 @@ namespace L2dotNET.GameService.world
 
         public void validatePeaceZones()
         {
-            bool found = false, old = _isInsidePeaceZone;
+            bool found = false,
+                 old = _isInsidePeaceZone;
             foreach (L2Zone z in _activeZones.Values)
             {
                 if (z is peace_zone)
@@ -392,7 +396,8 @@ namespace L2dotNET.GameService.world
 
         public void validateBattleZones()
         {
-            bool found = false, old = _isInsidePvpZone;
+            bool found = false,
+                 old = _isInsidePvpZone;
             if (!ForceSetPvp)
             {
                 foreach (L2Zone z in _activeZones.Values)
@@ -468,7 +473,8 @@ namespace L2dotNET.GameService.world
             L2World.Instance.CheckToUpdate(this, x, y, range, height, true, zones);
         }
 
-        public Timer RegenerationMethod_1s, RegenUpdate;
+        public Timer RegenerationMethod_1s,
+                     RegenUpdate;
         public int RegenUpdateInterval = 3000;
 
         public virtual void StartRegeneration()

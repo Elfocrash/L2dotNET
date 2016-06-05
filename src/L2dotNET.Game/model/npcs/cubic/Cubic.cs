@@ -14,8 +14,10 @@ namespace L2dotNET.GameService.model.npcs.cubic
             this.template = t;
         }
 
-        public DateTime SummonedTime, SummonEndTime;
-        public System.Timers.Timer AiAction, SummonEnd;
+        public DateTime SummonedTime,
+                        SummonEndTime;
+        public System.Timers.Timer AiAction,
+                                   SummonEnd;
 
         public virtual void OnSummon()
         {

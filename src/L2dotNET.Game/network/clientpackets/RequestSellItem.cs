@@ -72,7 +72,8 @@ namespace L2dotNET.GameService.network.l2recv
                 return;
             }
 
-            long added = 0, currentAdena = player.getAdena();
+            long added = 0,
+                 currentAdena = player.getAdena();
             if (currentAdena + totalCost >= int.MaxValue)
             {
                 added = int.MaxValue - currentAdena;

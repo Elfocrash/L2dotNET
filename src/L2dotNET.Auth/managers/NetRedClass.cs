@@ -2,7 +2,8 @@
 {
     class NetRedClass
     {
-        public string mask, redirect;
+        public string mask,
+                      redirect;
         public short serverId;
         public byte[] redirectBits;
 

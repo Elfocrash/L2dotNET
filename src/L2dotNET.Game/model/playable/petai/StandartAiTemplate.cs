@@ -8,7 +8,8 @@ namespace L2dotNET.GameService.model.playable.petai
         private static readonly ILog log = LogManager.GetLogger(typeof(StandartAiTemplate));
 
         public L2Character character;
-        public System.Timers.Timer ai1sec, follow;
+        public System.Timers.Timer ai1sec,
+                                   follow;
         private bool FollowStatus = false;
 
         public void Enable()

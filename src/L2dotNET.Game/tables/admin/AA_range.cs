@@ -223,7 +223,8 @@ namespace L2dotNET.GameService.tables.admin
                     {
                         int p1x = np._x[i];
                         int p1y = np._y[i];
-                        long dx = p1x - p[0], dy = p1y - p[1];
+                        long dx = p1x - p[0],
+                             dy = p1y - p[1];
                         double distance = Math.Sqrt(dx * dx + dy * dy);
                         if (curdistance == -1 || distance < curdistance)
                         {

@@ -67,7 +67,8 @@ namespace L2dotNET.GameService
                     pl.sendPacket(pk);
         }
 
-        private byte votesOnStart = 0, votesVoted = 0;
+        private byte votesOnStart = 0,
+                     votesVoted = 0;
         private Timer voteTimer = null;
         private SortedList<int, byte> votes = null;
 

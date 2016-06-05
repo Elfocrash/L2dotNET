@@ -9,7 +9,10 @@ namespace L2dotNET.GameService.model.zones.forms
         public int _z1;
         public int _z2;
 
-        public int minX = int.MaxValue, maxX = 0, minY = int.MaxValue, maxY = 0;
+        public int minX = int.MaxValue,
+                   maxX = 0,
+                   minY = int.MaxValue,
+                   maxY = 0;
 
         public ZoneNPoly(int[] x, int[] y, int z1, int z2)
         {
@@ -43,7 +46,8 @@ namespace L2dotNET.GameService.model.zones.forms
                 return false;
 
             bool inside = false;
-            for (int i = 0, j = _x.Length - 1; i < _x.Length; j = i++)
+            for (int i = 0,
+                     j = _x.Length - 1; i < _x.Length; j = i++)
             {
                 if ((((_y[i] <= y) && (y < _y[j])) || ((_y[j] <= y) && (y < _y[i]))) && (x < (_x[j] - _x[i]) * (y - _y[i]) / (_y[j] - _y[i]) + _x[i]))
                 {
@@ -56,7 +60,8 @@ namespace L2dotNET.GameService.model.zones.forms
         public bool isInsideZone(int x, int y)
         {
             bool inside = false;
-            for (int i = 0, j = _x.Length - 1; i < _x.Length; j = i++)
+            for (int i = 0,
+                     j = _x.Length - 1; i < _x.Length; j = i++)
             {
                 if ((((_y[i] <= y) && (y < _y[j])) || ((_y[j] <= y) && (y < _y[i]))) && (x < (_x[j] - _x[i]) * (y - _y[i]) / (_y[j] - _y[i]) + _x[i]))
                 {
@@ -68,7 +73,8 @@ namespace L2dotNET.GameService.model.zones.forms
 
         public override double getDistanceToZone(int x, int y)
         {
-            double test, shortestDist = Math.Pow(_x[0] - x, 2) + Math.Pow(_y[0] - y, 2);
+            double test,
+                   shortestDist = Math.Pow(_x[0] - x, 2) + Math.Pow(_y[0] - y, 2);
 
             for (int i = 1; i < _y.Length; i++)
             {

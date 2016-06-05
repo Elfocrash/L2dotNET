@@ -31,7 +31,8 @@ namespace L2dotNET.GameService.model.player.telebooks
                 return;
             }
 
-            byte max = (byte)(bookmarks.Count + 2), id = 1;
+            byte max = (byte)(bookmarks.Count + 2),
+                 id = 1;
 
             for (byte x = 1; x < max; x++)
                 if (!bookmarks.ContainsKey(x))

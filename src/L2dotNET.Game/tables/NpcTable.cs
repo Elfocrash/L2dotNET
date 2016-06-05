@@ -735,7 +735,8 @@ namespace L2dotNET.GameService.tables
     public class DropItem
     {
         public double rate;
-        public long min, max;
+        public long min,
+                    max;
         public int id;
         public ItemTemplate template;
     }

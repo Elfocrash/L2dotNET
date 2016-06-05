@@ -32,8 +32,14 @@ namespace L2dotNET.GameService.geo
 
                 FileInfo currentFile;
 
-                int counter, reader, i, j, k, m;
-                short[] heightsComplex = new short[0x40], heightsMultilayered = new short[0x900];
+                int counter,
+                    reader,
+                    i,
+                    j,
+                    k,
+                    m;
+                short[] heightsComplex = new short[0x40],
+                        heightsMultilayered = new short[0x900];
                 byte[] heightsMap = new byte[0x40];
                 ushort[] offsetsMap = new ushort[0x40];
                 GeoBlock[] nextMap;

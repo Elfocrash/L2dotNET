@@ -6,9 +6,13 @@ namespace L2dotNET.GameService.model.player.transformation
 {
     public class TransformTemplate
     {
-        public int id, npcId;
-        public double[] collision_box, collision_box_f;
-        public int[] moving_speed, skills, action;
+        public int id,
+                   npcId;
+        public double[] collision_box,
+                        collision_box_f;
+        public int[] moving_speed,
+                     skills,
+                     action;
         public List<int[]> _skills;
         public bool _onCursedWeapon = false;
         public byte MoveMode = 0; //1- ride, 2-fly
@@ -21,7 +25,9 @@ namespace L2dotNET.GameService.model.player.transformation
         public int base_physical_attack;
         public int base_magical_attack;
 
-        public int[] base_defend, base_magic_defend, basic_stat;
+        public int[] base_defend,
+                     base_magic_defend,
+                     basic_stat;
 
         public virtual void onTransformStart(L2Player player)
         {

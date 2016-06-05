@@ -7,7 +7,12 @@ namespace L2dotNET.GameService.model.npcs.cubic
 {
     public class CubicTemplate
     {
-        public int id, level = 1, duration = 900, delay, max_count, use_up;
+        public int id,
+                   level = 1,
+                   duration = 900,
+                   delay,
+                   max_count,
+                   use_up;
         public byte slot;
         public double power;
         public TSkill skill1;

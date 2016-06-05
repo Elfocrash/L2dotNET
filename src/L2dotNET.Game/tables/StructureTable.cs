@@ -156,7 +156,10 @@ namespace L2dotNET.GameService.tables
 
     class StructureSpawn
     {
-        public int x, y, z, heading;
+        public int x,
+                   y,
+                   z,
+                   heading;
         public int respawnSec = 60;
         public int npcId;
 

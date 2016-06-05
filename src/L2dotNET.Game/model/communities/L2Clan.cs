@@ -471,7 +471,8 @@ namespace L2dotNET.GameService.model.communities
         public int ObjID;
         public int sponsorId;
         public short ClanType;
-        public string NickName, _pledgeTypeName;
+        public string NickName,
+                      _pledgeTypeName;
         public int ClanPrivs;
         public string _ownerName = "";
         public int Gender;

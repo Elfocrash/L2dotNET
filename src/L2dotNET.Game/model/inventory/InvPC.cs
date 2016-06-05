@@ -704,7 +704,8 @@ namespace L2dotNET.GameService.model.inventory
 
         public bool hasAllOfThis(int[] px)
         {
-            byte count = (byte)px.Length, ctx = 0;
+            byte count = (byte)px.Length,
+                 ctx = 0;
             foreach (L2Item item in Items.Values)
             {
                 foreach (int i in px)

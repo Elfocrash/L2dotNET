@@ -7,7 +7,8 @@
             base.makeme(client, data);
         }
 
-        private string _text, _email;
+        private string _text,
+                       _email;
         private int _type;
 
         public override void read()

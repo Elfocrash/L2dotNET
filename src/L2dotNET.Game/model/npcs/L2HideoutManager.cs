@@ -402,7 +402,8 @@ namespace L2dotNET.GameService.model.npcs
 
         private short useBuff(int reply, L2Player player)
         {
-            int id = 0, lvl = 1;
+            int id = 0,
+                lvl = 1;
             switch (reply) // id * 65536 + level
             {
                 case 285540353: //Ускорение Ур.1

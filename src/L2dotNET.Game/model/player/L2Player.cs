@@ -1136,19 +1136,25 @@ namespace L2dotNET.GameService
 
         public L2Item[] getAllNonQuestItems()
         {
-            var sort = from item in Inventory.Items.Values where item.Template.Type != ItemTemplate.L2ItemType.questitem select item;
+            var sort = from item in Inventory.Items.Values
+                       where item.Template.Type != ItemTemplate.L2ItemType.questitem
+                       select item;
             return sort.ToArray();
         }
 
         public L2Item[] getAllWeaponArmorNonQuestItems()
         {
-            var sort = from item in Inventory.Items.Values where item.Template.Type != ItemTemplate.L2ItemType.questitem && (item.Template.Type == ItemTemplate.L2ItemType.armor || item.Template.Type == ItemTemplate.L2ItemType.weapon) select item;
+            var sort = from item in Inventory.Items.Values
+                       where item.Template.Type != ItemTemplate.L2ItemType.questitem && (item.Template.Type == ItemTemplate.L2ItemType.armor || item.Template.Type == ItemTemplate.L2ItemType.weapon)
+                       select item;
             return sort.ToArray();
         }
 
         public L2Item[] getAllQuestItems()
         {
-            var sort = from item in Inventory.Items.Values where item.Template.Type == ItemTemplate.L2ItemType.questitem select item;
+            var sort = from item in Inventory.Items.Values
+                       where item.Template.Type == ItemTemplate.L2ItemType.questitem
+                       select item;
             return sort.ToArray();
         }
 
@@ -1164,7 +1170,15 @@ namespace L2dotNET.GameService
 
         public L2Clan Clan;
 
-        public int ItemLimit_Inventory = 80, ItemLimit_Selling = 5, ItemLimit_Buying = 5, ItemLimit_RecipeDwarven = 50, ItemLimit_RecipeCommon = 50, ItemLimit_Warehouse = 120, ItemLimit_ClanWarehouse = 150, ItemLimit_Extra = 0, ItemLimit_Quest = 20;
+        public int ItemLimit_Inventory = 80,
+                   ItemLimit_Selling = 5,
+                   ItemLimit_Buying = 5,
+                   ItemLimit_RecipeDwarven = 50,
+                   ItemLimit_RecipeCommon = 50,
+                   ItemLimit_Warehouse = 120,
+                   ItemLimit_ClanWarehouse = 150,
+                   ItemLimit_Extra = 0,
+                   ItemLimit_Quest = 20;
 
         public L2Citizen FolkNpc;
         public int last_x1 = -4;
@@ -1835,7 +1849,8 @@ namespace L2dotNET.GameService
         }
 
         public TeleportBook Telbook;
-        public byte TelbookLimit = 0, TelbookLimitMax = 25;
+        public byte TelbookLimit = 0,
+                    TelbookLimitMax = 25;
         public bool IsFlying;
 
         public void db_restoreTelbooks()
@@ -1953,7 +1968,9 @@ namespace L2dotNET.GameService
 
         public L2Summon Summon;
         public bool IsInOlympiad = false;
-        public L2Item EnchantScroll, EnchantItem, EnchantStone;
+        public L2Item EnchantScroll,
+                      EnchantItem,
+                      EnchantStone;
         public byte EnchantState = 0;
 
         // 0 cls, 1 violet, 2 blink
@@ -1996,7 +2013,8 @@ namespace L2dotNET.GameService
             sendActionFailed();
         }
 
-        private System.Timers.Timer petSummonTime, nonpetSummonTime;
+        private System.Timers.Timer petSummonTime,
+                                    nonpetSummonTime;
         private int PetID = -1;
         private L2Item PetControlItem = null;
 
@@ -2232,11 +2250,14 @@ namespace L2dotNET.GameService
                 sendActionFailed();
                 return;
             }
-            double dist = 60, reqMp = 0;
+            double dist = 60,
+                   reqMp = 0;
 
             L2Item weapon = ActiveWeapon;
             double timeAtk = CharacterStat.getStat(TEffectType.b_attack_spd);
-            bool dual = false, ranged = false, ss = false;
+            bool dual = false,
+                 ranged = false,
+                 ss = false;
             if (weapon != null)
             {
                 ss = weapon.Soulshot;

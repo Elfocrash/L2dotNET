@@ -21,7 +21,12 @@ namespace L2dotNET.GameService.model.stats
 
         private readonly List<TEffect> activeEffects = new List<TEffect>();
 
-        public double SpecBonusRegHP, URegHpMul = 1.0, SpecBonusRegMP, URegMpMul = 1.0, SpecBonusRegCP, SpecBonusEvasion;
+        public double SpecBonusRegHP,
+                      URegHpMul = 1.0,
+                      SpecBonusRegMP,
+                      URegMpMul = 1.0,
+                      SpecBonusRegCP,
+                      SpecBonusEvasion;
 
         public double getStat(TEffectType type)
         {

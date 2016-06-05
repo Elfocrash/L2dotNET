@@ -39,7 +39,8 @@ namespace L2dotNET.GameService
         public int Protocol;
         public bool IsTerminated;
 
-        public long TrafficUp = 0, TrafficDown = 0;
+        public long TrafficUp = 0,
+                    TrafficDown = 0;
 
         public GameClient(TcpClient tcpClient)
         {

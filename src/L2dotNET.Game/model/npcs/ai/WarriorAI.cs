@@ -74,7 +74,9 @@ namespace L2dotNET.GameService.model.npcs.ai
             }
         }
 
-        public int lastx, lasty, lastz;
+        public int lastx,
+                   lasty,
+                   lastz;
 
         public override void NotifyOnDie(L2Character killer)
         {

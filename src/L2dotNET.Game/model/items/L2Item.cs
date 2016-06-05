@@ -212,7 +212,8 @@ namespace L2dotNET.GameService.model.items
 
         private void tryEquipSecondary(L2Player owner)
         {
-            int secondaryId1 = 0, secondaryId2 = 0;
+            int secondaryId1 = 0,
+                secondaryId2 = 0;
             bool bow = Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow;
             switch (Template.CrystallGrade)
             {
@@ -309,7 +310,9 @@ namespace L2dotNET.GameService.model.items
         private DateTime LifeTimeEndTime;
         public int CustomType1;
         public int CustomType2;
-        public bool Soulshot = false, Spiritshot = false, BlessSpiritshot = false;
+        public bool Soulshot = false,
+                    Spiritshot = false,
+                    BlessSpiritshot = false;
 
         public int LifeTimeEnd()
         {

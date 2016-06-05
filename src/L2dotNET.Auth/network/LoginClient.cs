@@ -152,7 +152,8 @@ namespace L2dotNET.LoginService
                 new Thread(new ThreadStart(msg.Run)).Start();
         }
 
-        public int login1, login2;
+        public int login1,
+                   login2;
 
         public void setLoginPair(int key1, int key2)
         {
@@ -160,7 +161,8 @@ namespace L2dotNET.LoginService
             login2 = key2;
         }
 
-        public int play1, play2;
+        public int play1,
+                   play2;
 
         public void setPlayPair(int key1, int key2)
         {

@@ -6,7 +6,9 @@ namespace L2dotNET.GameService.model.npcs.ai
     public class AITemplate
     {
         public SortedList<string, string> parameters = new SortedList<string, string>();
-        public bool chatOvr = false, dialogOvr = false, teleportOvr = false;
+        public bool chatOvr = false,
+                    dialogOvr = false,
+                    teleportOvr = false;
         public int id;
         public string ainame = "default01";
 

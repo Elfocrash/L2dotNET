@@ -10,7 +10,9 @@ namespace L2dotNET.GameService.model.playable.petai
             summon = s;
         }
 
-        private int lastOwnerX, lastOwnerY, lastOwnerZ;
+        private int lastOwnerX,
+                    lastOwnerY,
+                    lastOwnerZ;
         private readonly L2Summon summon;
 
         public override void DoFollow(object sender = null, System.Timers.ElapsedEventArgs e = null)

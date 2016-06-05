@@ -233,7 +233,8 @@ namespace L2dotNET.GameService.managers
 
             if (next)
             {
-                byte min = 0, max = 0;
+                byte min = 0,
+                     max = 0;
                 switch (dat.Type)
                 {
                     case EnchantType.auxiliary:
