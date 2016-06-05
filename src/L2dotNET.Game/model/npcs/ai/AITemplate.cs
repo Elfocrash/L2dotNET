@@ -9,9 +9,9 @@ namespace L2dotNET.GameService.model.npcs.ai
         public bool chatOvr = false, dialogOvr = false, teleportOvr = false;
         public int id;
         public string ainame = "default01";
-        public virtual void onShowChat(L2Player player, L2Citizen npc) { }
-        public virtual void onDialog(L2Player player, int ask, int reply, L2Citizen npc) { }
-        public virtual void onTeleportRequest(L2Player player, int ask, int reply, L2Citizen npc) { }
+        public virtual void onShowChat(L2Player player, L2Npc npc) { }
+        public virtual void onDialog(L2Player player, int ask, int reply, L2Npc npc) { }
+        public virtual void onTeleportRequest(L2Player player, int ask, int reply, L2Npc npc) { }
         public virtual void onActionClicked(L2Player player, L2Summon pet, int id) { }
 
 

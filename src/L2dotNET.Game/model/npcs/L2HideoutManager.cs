@@ -8,7 +8,7 @@ using log4net;
 
 namespace L2dotNET.GameService.model.npcs
 {
-    class L2HideoutManager : L2Citizen
+    class L2HideoutManager : L2Npc
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(L2HideoutManager));
         private Hideout hideout;

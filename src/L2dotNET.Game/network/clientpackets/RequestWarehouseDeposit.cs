@@ -39,7 +39,7 @@ namespace L2dotNET.GameService.network.l2recv
         {
             L2Player player = getClient().CurrentPlayer;
 
-            L2Citizen npc = player.FolkNpc;
+            L2Npc npc = player.FolkNpc;
 
             if (npc == null)
             {

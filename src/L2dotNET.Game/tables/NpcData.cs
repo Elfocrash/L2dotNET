@@ -99,7 +99,7 @@ namespace L2dotNET.GameService.tables
             //CLogger.info("NpcData: loaded " + _mults.Count + " multisell lists.");
         }
 
-        public void Buylist(L2Player player, L2Citizen trader, short reply)
+        public void Buylist(L2Player player, L2Npc trader, short reply)
         {
             if (!_shops.ContainsKey(trader.Template.NpcId))
             {
@@ -131,12 +131,12 @@ namespace L2dotNET.GameService.tables
         }
 
 
-        public void RequestTeleportList(L2Citizen npc, L2Player player, int groupId)
+        public void RequestTeleportList(L2Npc npc, L2Player player, int groupId)
         {
             RequestTeleportList(npc, player, groupId, -1);
         }
 
-        public void RequestTeleportList(L2Citizen npc, L2Player player, int groupId, int itemId)
+        public void RequestTeleportList(L2Npc npc, L2Player player, int groupId, int itemId)
         {
             if (!Teleports.npcs.ContainsKey(npc.Template.NpcId))
             {
@@ -161,7 +161,7 @@ namespace L2dotNET.GameService.tables
             player.ShowHtmPlain(sb.ToString(), npc);
         }
 
-        public void RequestTeleport(L2Citizen npc, L2Player player, int type, int entryId)
+        public void RequestTeleport(L2Npc npc, L2Player player, int type, int entryId)
         {
             ab_teleport_group group = null;
             try
@@ -211,7 +211,7 @@ namespace L2dotNET.GameService.tables
             player.teleport(e.x, e.y, e.z);
         }
 
-        internal void preview(L2Player talker, L2Citizen myself, int p)
+        internal void preview(L2Player talker, L2Npc myself, int p)
         {
             throw new NotImplementedException();
         }

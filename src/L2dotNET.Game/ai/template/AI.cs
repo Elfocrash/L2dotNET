@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.ai.template
 {
     public class AI
     {
-        public L2Citizen myself;
+        public L2Npc myself;
         public virtual void Created() { }
         public virtual void Talked(L2Player talker) { }
         public virtual void Attacked(L2Character attacker, double damage) { }

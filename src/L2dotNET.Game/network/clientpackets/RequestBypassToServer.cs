@@ -2,7 +2,6 @@
 using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.model.npcs.ai;
 using L2dotNET.GameService.model.quests;
-using L2dotNET.GameService.model.events;
 using System;
 using log4net;
 
@@ -23,10 +22,10 @@ namespace L2dotNET.GameService.network.l2recv
             _alias = readS();
         }
 
-        private L2Citizen getNpc()
+        private L2Npc getNpc()
         {
             log.Info($"bypass '{ _alias }'");
-            L2Citizen npc = (L2Citizen)getClient().CurrentPlayer.CurrentTarget;
+            L2Npc npc = (L2Npc)getClient().CurrentPlayer.CurrentTarget;
 
             if (npc == null)
             {
@@ -48,7 +47,7 @@ namespace L2dotNET.GameService.network.l2recv
                 return;
             }
 
-            L2Citizen npc;
+            L2Npc npc;
 
             if (_alias.Equals("teleport_request"))
             {
@@ -163,11 +162,6 @@ namespace L2dotNET.GameService.network.l2recv
             else if (_alias.StartsWith("petitionlink?"))
             {
                 PetitionManager.getInstance().petitionlink(player, _alias.Split('?')[1]);
-            }
-            else if (_alias.StartsWith("_mr"))
-            {
-                npc = getNpc();
-                MonsterRace.Instance.OnBypass(player, npc, _alias);
             }
             else
                 log.Warn($"Unknown bypass '{ _alias }'");

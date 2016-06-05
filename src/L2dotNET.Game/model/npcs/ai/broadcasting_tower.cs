@@ -39,7 +39,7 @@ namespace L2dotNET.GameService.model.npcs.ai
             dialogOvr = true;
         }
 
-        public override void onShowChat(L2Player player, L2Citizen npc)
+        public override void onShowChat(L2Player player, L2Npc npc)
         {
             List<int> ar = new List<int>();
             string text = "";
@@ -60,7 +60,7 @@ namespace L2dotNET.GameService.model.npcs.ai
             player.ShowHtmPlain(text, npc);
         }
 
-        public override void onDialog(L2Player player, int ask, int reply, L2Citizen npc)
+        public override void onDialog(L2Player player, int ask, int reply, L2Npc npc)
         {
             switch (ask)
             {
@@ -73,7 +73,7 @@ namespace L2dotNET.GameService.model.npcs.ai
             }
         }
 
-        private void observeIt(L2Player player, L2Citizen npc, int reply)
+        private void observeIt(L2Player player, L2Npc npc, int reply)
         {
             int[] dx = null;
 
@@ -105,7 +105,7 @@ namespace L2dotNET.GameService.model.npcs.ai
         }
 
 
-        private void showGroup(L2Player player, L2Citizen npc, int group)
+        private void showGroup(L2Player player, L2Npc npc, int group)
         {
             List<int[]> ar = new List<int[]>();
             string text = "&$650;<br>";

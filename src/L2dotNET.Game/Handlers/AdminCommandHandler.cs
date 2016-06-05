@@ -5,7 +5,7 @@ using log4net;
 using L2dotNET.GameService.Commands;
 using L2dotNET.GameService.Command;
 
-namespace L2dotNET.GameService.tables
+namespace L2dotNET.GameService.Handlers
 {
     public class AdminCommandHandler
     {

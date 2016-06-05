@@ -6,12 +6,12 @@ namespace L2dotNET.GameService.model.npcs.ai
 {
     class grandmaster_total
     {
-        public static void createClan(L2Player player, string name, L2Citizen npc)
+        public static void createClan(L2Player player, string name, L2Npc npc)
         {
             
         }
 
-        public static void onReply(L2Player player, int reply, L2Citizen npc)
+        public static void onReply(L2Player player, int reply, L2Npc npc)
         {
             switch (reply)
             {

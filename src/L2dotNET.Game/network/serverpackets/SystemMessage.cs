@@ -87,8 +87,8 @@ namespace L2dotNET.GameService.network.l2send
         {
             if (obj is L2Player)
                 return AddPlayerName(((L2Player)obj).Name);
-            else if (obj is L2Citizen)
-                return AddNpcName(((L2Citizen)obj).NpcId);
+            else if (obj is L2Npc)
+                return AddNpcName(((L2Npc)obj).NpcId);
             else if (obj is L2Summon)
                 return AddNpcName(((L2Summon)obj).NpcId);
             else if (obj is L2Item)

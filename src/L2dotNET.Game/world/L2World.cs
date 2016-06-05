@@ -179,11 +179,11 @@ namespace L2dotNET.GameService.world
              //           {
              //               foreach (L2Object obj in _worldRegions[i,j].GetObjects())
              //               {
-             //               if (obj is L2Citizen)
+             //               if (obj is L2Npc)
 					        //{
-             //                   ((L2Citizen)obj).deleteMe();
+             //                   ((L2Npc)obj).deleteMe();
 
-             //                   L2Spawn spawn = ((L2Citizen)obj).getSpawn();
+             //                   L2Spawn spawn = ((L2Npc)obj).getSpawn();
              //                   if (spawn != null)
              //                   {
              //                       //spawn.setRespawnState(false);

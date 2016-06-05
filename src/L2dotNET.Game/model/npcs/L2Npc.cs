@@ -12,31 +12,32 @@ using L2dotNET.GameService.tables;
 using L2dotNET.GameService.tables.multisell;
 using L2dotNET.GameService.tools;
 using L2dotNET.GameService.world;
+using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.model.npcs
 {
-    public class L2Citizen : L2Character
+    public class L2Npc : L2Character
     {
         public NpcTemplate Template;
         public bool _summoned;
         public bool structureControlled = false;
         public AI AIProcessor;
 
-        public virtual void setTemplate(NpcTemplate template)
-        {
-            Template = template;
-            ObjID = IdFactory.Instance.nextId();
-            CStatsInit();
-            CharacterStat.setTemplate(template);
-            CurHP = CharacterStat.getStat(skills2.TEffectType.b_max_hp);
-            Name = template.Name;
-            AIProcessor = new citizen();
-            AIProcessor.dialog = new Dictionary<string, string>();
-            AIProcessor.dialog.Add("fnHi", "lector001.htm");
-            AIProcessor.dialog.Add("fnFeudInfo", "gludio_feud_manager001.htm");
-            AIProcessor.dialog.Add("fnNoFeudInfo", "farm_messenger002.htm");
-            AIProcessor.myself = this;
-        }
+        //public virtual void setTemplate(NpcTemplate template)
+        //{
+        //    Template = template;
+        //    ObjID = IdFactory.Instance.nextId();
+        //    CStatsInit();
+        //    CharacterStat.setTemplate(template);
+        //    CurHP = CharacterStat.getStat(skills2.TEffectType.b_max_hp);
+        //    Name = template.Name;
+        //    AIProcessor = new citizen();
+        //    AIProcessor.dialog = new Dictionary<string, string>();
+        //    AIProcessor.dialog.Add("fnHi", "lector001.htm");
+        //    AIProcessor.dialog.Add("fnFeudInfo", "gludio_feud_manager001.htm");
+        //    AIProcessor.dialog.Add("fnNoFeudInfo", "farm_messenger002.htm");
+        //    AIProcessor.myself = this;
+        //}
 
         public override void NotifyAction(L2Player player)
         {
@@ -393,9 +394,9 @@ namespace L2dotNET.GameService.model.npcs
         {
             base.doDie(killer, bytrigger);
 
-            if (Template.corpse_time > 0)
+            if (Template.CorpseTime > 0)
             {
-                _corpseTimer = new System.Timers.Timer(Template.corpse_time * 1000);
+                _corpseTimer = new System.Timers.Timer(Template.CorpseTime * 1000);
                 _corpseTimer.Elapsed += new ElapsedEventHandler(removeCorpse);
                 _corpseTimer.Enabled = true;
             }
@@ -417,7 +418,7 @@ namespace L2dotNET.GameService.model.npcs
 
         public bool isBoss()
         {
-            return Template.Category == templates.TObjectCategory.boss;
+            return false;//Template.AiT == templates.TObjectCategory.boss;
         }
 
         public void consumeBody()
@@ -464,7 +465,7 @@ namespace L2dotNET.GameService.model.npcs
 
         public override string asString()
         {
-            return "L2Citizen:" + Template.NpcId + "; id " + ObjID;
+            return "L2Npc:" + Template.NpcId + "; id " + ObjID;
         }
 
         public void CreateOnePrivateEx(int npcId, string ai_type, int x, int y, int z)
@@ -482,7 +483,7 @@ namespace L2dotNET.GameService.model.npcs
 
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {
-            cha.sendMessage("l2citizen.CastBuffForQuestReward " + skillId);
+            cha.sendMessage("L2Npc.CastBuffForQuestReward " + skillId);
             new BuffForQuestReward(this, cha, skillId);
         }
     }
@@ -490,11 +491,11 @@ namespace L2dotNET.GameService.model.npcs
     class BuffForQuestReward
     {
         public L2Character cha;
-        private L2Citizen npc;
+        private L2Npc npc;
         private int skillId;
         private TSkill skill;
 
-        public BuffForQuestReward(L2Citizen npc, L2Character target, int skillId)
+        public BuffForQuestReward(L2Npc npc, L2Character target, int skillId)
         {
             this.npc = npc;
             this.cha = target;

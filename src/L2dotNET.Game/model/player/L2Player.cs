@@ -18,6 +18,7 @@ using L2dotNET.GameService.network;
 using L2dotNET.GameService.network.l2send;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.templates;
+using L2dotNET.GameService.Templates;
 using L2dotNET.GameService.tools;
 using L2dotNET.GameService.world;
 using L2dotNET.Models;
@@ -854,7 +855,7 @@ namespace L2dotNET.GameService
 
         public List<QuestInfo> _quests = new List<QuestInfo>();
 
-        public void quest_Talk(L2Citizen npc, int questId)
+        public void quest_Talk(L2Npc npc, int questId)
         {
             foreach (QuestInfo qi in _quests)
             {
@@ -901,14 +902,14 @@ namespace L2dotNET.GameService
             if (file.EndsWith(".htm"))
             {
                 sendPacket(new NpcHtmlMessage(this, file, o.ObjID, 0));
-                if (o is L2Citizen)
-                    this.FolkNpc = (L2Citizen)o;
+                if (o is L2Npc)
+                    this.FolkNpc = (L2Npc)o;
             }
             else
                 this.ShowHtmPlain(file, o);
         }
 
-        public void ShowHtm(string file, L2Citizen npc, int questId)
+        public void ShowHtm(string file, L2Npc npc, int questId)
         {
             if (file.EndsWith(".htm"))
             {
@@ -958,8 +959,8 @@ namespace L2dotNET.GameService
         public void ShowHtmPlain(string plain, L2Object o)
         {
             sendPacket(new NpcHtmlMessage(this, plain, o == null ? -1 : o.ObjID, true));
-            if (o is L2Citizen)
-                this.FolkNpc = (L2Citizen)o;
+            if (o is L2Npc)
+                this.FolkNpc = (L2Npc)o;
         }
 
         public void takeItem(int id, long count)
@@ -1205,7 +1206,7 @@ namespace L2dotNET.GameService
             ItemLimit_Extra = 0,
             ItemLimit_Quest = 20;
 
-        public L2Citizen FolkNpc;
+        public L2Npc FolkNpc;
         public int last_x1 = -4;
         public int last_y1;
 
@@ -1445,9 +1446,9 @@ namespace L2dotNET.GameService
 
         public override void onAddObject(L2Object obj, GameServerNetworkPacket pk, string msg = null)
         {
-            if (obj is L2Citizen)
+            if (obj is L2Npc)
             {
-                sendPacket(new NpcInfo((L2Citizen)obj));
+                sendPacket(new NpcInfo((L2Npc)obj));
             }
             else if (obj is L2Player)
             {
@@ -2167,7 +2168,7 @@ namespace L2dotNET.GameService
         private void PetSummonEnd(object sender, ElapsedEventArgs e)
         {
             L2Pet pet = new L2Pet();
-            pet.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
+            //pet.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
             pet.setOwner(this);
             pet.ControlItem = PetControlItem;
             // pet.sql_restore();
@@ -2179,7 +2180,7 @@ namespace L2dotNET.GameService
         private void NonpetSummonEnd(object sender, ElapsedEventArgs e)
         {
             L2Summon summon = new L2Summon();
-            summon.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
+            //summon.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
             summon.setOwner(this);
             summon.ControlItem = PetControlItem;
             summon.SpawmMe();
@@ -2712,14 +2713,12 @@ namespace L2dotNET.GameService
             if (Summon != null && Summon.ConsumeExp > 0)
                 expPet = Summon.ConsumeExp / 100.0 + 1;
 
-            double expReward = mob.Template.exp / (Level * mob.Template.acquire_exp_rate < 1.0 ? 1.0 : mob.Template.acquire_exp_rate);
-            int sp = mob.Template.acquire_sp;
-            int rp = mob.Template.acquire_rp;
+            double expReward = mob.Template.Exp / (1.0);
+            int sp = mob.Template.Sp;
             sendMessage("debug: expPet " + expPet);
-            sendMessage("debug: mob.Template " + mob.Template.exp + " @" + mob.Template.acquire_exp_rate);
+            sendMessage("debug: mob.Template " + mob.Template.Exp + " @");
             sendMessage("debug: expReward " + expReward);
             sendMessage("debug: sp " + sp);
-            sendMessage("debug: rp " + rp);
 
             byte oldLvl = Level;
             Exp += (long)expReward;

@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.network.l2recv
                 return;
             }
 
-            L2Citizen trader = player.FolkNpc;
+            L2Npc trader = player.FolkNpc;
 
             if (trader == null)
             {

@@ -5,8 +5,8 @@ namespace L2dotNET.GameService.network.l2send
 {
     class NpcInfo : GameServerNetworkPacket
     {
-        private L2Citizen npc;
-        public NpcInfo(L2Citizen npc)
+        private L2Npc npc;
+        public NpcInfo(L2Npc npc)
         {
             this.npc = npc;
         }
@@ -44,9 +44,9 @@ namespace L2dotNET.GameService.network.l2send
             writeF(anim2);
             writeF(npc.Radius);
             writeF(npc.Height);
-            writeD(npc.Template.slot_rhand_id); // right hand weapon
+            writeD(npc.Template.RHand); // right hand weapon
             writeD(0);
-            writeD(npc.Template.slot_lhand_id); // left hand weapon
+            writeD(npc.Template.LHand); // left hand weapon
             writeC(1);	// name above char 1=true ... ??
             writeC(npc.isRunning());
             writeC(npc.isInCombat() ? 1 : 0);

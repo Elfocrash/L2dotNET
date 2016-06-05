@@ -20,17 +20,17 @@ namespace L2dotNET.GameService.model.quests
         { }
         public virtual void onDie(L2Player player, L2Character killer, int stage)
         { }
-        public virtual void onTalkToNpc(L2Player player, L2Citizen npc, int stage)
+        public virtual void onTalkToNpc(L2Player player, L2Npc npc, int stage)
         { }
         public virtual void onKill(L2Player player, L2Warrior mob, int stage)
         { }
-        public virtual void onAccept(L2Player player, L2Citizen npc)
+        public virtual void onAccept(L2Player player, L2Npc npc)
         { }
 
-        public virtual void tryAccept(L2Player player, L2Citizen npc)
+        public virtual void tryAccept(L2Player player, L2Npc npc)
         { }
 
-        public virtual bool canTalk(L2Player player, L2Citizen npc)
+        public virtual bool canTalk(L2Player player, L2Npc npc)
         {
             foreach (int id in talkNpcs)
             {
@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.model.quests
             return false;
         }
 
-        public virtual void onTalkToNpcQM(L2Player player, L2Citizen npc, int reply)
+        public virtual void onTalkToNpcQM(L2Player player, L2Npc npc, int reply)
         { }
 
         public virtual void onEarnItem(L2Player player, int stage, int id)

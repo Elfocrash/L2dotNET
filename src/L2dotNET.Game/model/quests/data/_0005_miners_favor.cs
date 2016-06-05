@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.model.quests.data
             actItems = new int[] { bolters_list, mining_boots, miners_pick, boomboom_powder, redstone_beer, bolters_smelly_socks };
         }
 
-        public override void tryAccept(L2Player player, L2Citizen npc)
+        public override void tryAccept(L2Player player, L2Npc npc)
         {
             if (player.Level >= 2)
                 player.ShowHtm("miner_bolter_q0005_02.htm", npc, questId);
@@ -35,7 +35,7 @@ namespace L2dotNET.GameService.model.quests.data
                 player.ShowHtm("miner_bolter_q0005_01.htm", npc);
         }
 
-        public override void onAccept(L2Player player, L2Citizen npc)
+        public override void onAccept(L2Player player, L2Npc npc)
         {
             player.questAccept(new QuestInfo(this));
             player.ShowHtm("miner_bolter_q0005_03.htm", npc);
@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.model.quests.data
             player.addItem(bolters_smelly_socks, 1);
         }
 
-        public override void onTalkToNpc(L2Player player, L2Citizen npc, int cond)
+        public override void onTalkToNpc(L2Player player, L2Npc npc, int cond)
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;

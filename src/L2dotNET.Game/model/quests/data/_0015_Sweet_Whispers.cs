@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.model.quests.data
             talkNpcs = new int[] { startNpc, dark_necromancer, dark_presbyter };
         }
 
-        public override void tryAccept(L2Player player, L2Citizen npc)
+        public override void tryAccept(L2Player player, L2Npc npc)
         {
             if (player.Level >= 60)
                 player.ShowHtm("trader_vladimir_q0015_0101.htm", npc);
@@ -26,18 +26,18 @@ namespace L2dotNET.GameService.model.quests.data
             }
         }
 
-        public override void onAccept(L2Player player, L2Citizen npc)
+        public override void onAccept(L2Player player, L2Npc npc)
         {
             player.questAccept(new QuestInfo(this));
             player.ShowHtm("trader_vladimir_q0015_0104.htm", npc);
         }
 
-        public override void onTalkToNpcQM(L2Player player, L2Citizen npc, int reply)
+        public override void onTalkToNpcQM(L2Player player, L2Npc npc, int reply)
         {
             //todo
         }
 
-        public override void onTalkToNpc(L2Player player, L2Citizen npc, int cond)
+        public override void onTalkToNpc(L2Player player, L2Npc npc, int cond)
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;

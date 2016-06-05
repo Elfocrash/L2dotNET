@@ -6,6 +6,7 @@ using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
 using L2dotNET.GameService.model.playable.petai;
 using L2dotNET.GameService.tools;
+using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.model.playable
 {
@@ -44,7 +45,7 @@ namespace L2dotNET.GameService.model.playable
         {
             Template = template;
             CStatsInit();
-            CharacterStat.setTemplate(template);
+            //CharacterStat.setTemplate(template);
             CurHP = CharacterStat.getStat(skills2.TEffectType.b_max_hp);
             MaxTime = 1200; //20 минут
             CurrentTime = MaxTime;

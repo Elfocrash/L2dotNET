@@ -231,27 +231,27 @@ namespace L2dotNET.GameService.model.stats
             addTemplate(TEffectType.b_reg_cp, 50);
         }
 
-        public void setTemplate(npcs.NpcTemplate template)
-        {
-            addTemplate(TEffectType.p_physical_attack, template.base_physical_attack);
-            addTemplate(TEffectType.p_physical_defense, template.base_defend);
-            addTemplate(TEffectType.p_magical_attack, template.base_magic_attack);
-            addTemplate(TEffectType.p_magical_defense, template.base_magic_defend);
-            addTemplate(TEffectType.p_speed, template.RunSpeed);
+        //public void setTemplate(npcs.NpcTemplate template)
+        //{
+        //    addTemplate(TEffectType.p_physical_attack, template.base_physical_attack);
+        //    addTemplate(TEffectType.p_physical_defense, template.base_defend);
+        //    addTemplate(TEffectType.p_magical_attack, template.base_magic_attack);
+        //    addTemplate(TEffectType.p_magical_defense, template.base_magic_defend);
+        //    addTemplate(TEffectType.p_speed, template.RunSpeed);
 
-            addTemplate(TEffectType.b_accuracy, 50);
-            addTemplate(TEffectType.b_critical_rate, template.base_critical);
-            addTemplate(TEffectType.b_evasion, 50);
+        //    addTemplate(TEffectType.b_accuracy, 50);
+        //    addTemplate(TEffectType.b_critical_rate, template.base_critical);
+        //    addTemplate(TEffectType.b_evasion, 50);
 
-            addTemplate(TEffectType.b_attack_spd, template.base_attack_speed);
-            addTemplate(TEffectType.b_casting_spd, template.base_magic_speed);
+        //    addTemplate(TEffectType.b_attack_spd, template.base_attack_speed);
+        //    addTemplate(TEffectType.b_casting_spd, template.base_magic_speed);
 
-            addTemplate(TEffectType.b_max_hp, template.org_hp);
-            owner.CurHP = template.org_hp;
-            addTemplate(TEffectType.b_reg_hp, template.org_hp_regen);
-            addTemplate(TEffectType.b_max_mp, template.org_mp);
-            owner.CurMP = template.org_mp;
-            addTemplate(TEffectType.b_reg_mp, template.org_mp_regen);
-        }
+        //    addTemplate(TEffectType.b_max_hp, template.org_hp);
+        //    owner.CurHP = template.org_hp;
+        //    addTemplate(TEffectType.b_reg_hp, template.org_hp_regen);
+        //    addTemplate(TEffectType.b_max_mp, template.org_mp);
+        //    owner.CurMP = template.org_mp;
+        //    addTemplate(TEffectType.b_reg_mp, template.org_mp_regen);
+        //}
     }
 }

@@ -53,9 +53,9 @@ namespace L2dotNET.GameService.network.l2recv
                 return;
             }
 
-            //if (obj is L2Citizen)
+            //if (obj is L2Npc)
             //{
-            //    if (((L2Citizen)obj).Template._can_be_attacked == 0)
+            //    if (((L2Npc)obj).Template._can_be_attacked == 0)
             //    {
             //        player.sendSystemMessage(144);//That is the incorrect target.
             //        player.sendActionFailed();

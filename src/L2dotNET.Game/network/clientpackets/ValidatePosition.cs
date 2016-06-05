@@ -68,7 +68,7 @@ namespace L2dotNET.GameService.network.l2recv
                             player.Z = _z;
                         }
                     }
-                    Console.WriteLine($"Current position: X:{player.clientPosX}, Y:{player.clientPosY}, Z:{player.clientPosZ}");//debug
+                    Console.WriteLine($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}");//debug
                     player.BroadcastUserInfo();
                     return;
                 }
@@ -91,7 +91,7 @@ namespace L2dotNET.GameService.network.l2recv
             player.Y = _y;
             player.Z = _z;
             player.Heading = _heading;
-            Console.WriteLine($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}");//debug
+            Console.WriteLine($"Current position: X:{player.clientPosX}, Y:{player.clientPosY}, Z:{player.clientPosZ}");//debug
             player.BroadcastUserInfo();
             //player.validateVisibleObjects(_x, _y, true);         
         }

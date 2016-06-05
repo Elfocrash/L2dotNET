@@ -1,6 +1,5 @@
 ﻿using L2dotNET.GameService.Commands;
 using L2dotNET.GameService.managers;
-using L2dotNET.GameService.model.events;
 using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.model.structures.conq;
 using L2dotNET.GameService.model.vehicles;
@@ -71,117 +70,7 @@ namespace L2dotNET.GameService.Command
                 }
 
             }
-            else if (s == "6")
-            {
-                L2Citizen npc = (L2Citizen)admin.CurrentTarget;
-                if (npc.Template.DropData == null)
-                    admin.sendMessage("no drops at this npc");
-                else
-                    npc.Template.DropData.showInfo(admin);
-            }
-            else if (s == "7")
-            {
-                L2Citizen npc = (L2Citizen)admin.CurrentTarget;
-                if (npc.Template.DropData == null)
-                    admin.sendMessage("no drops at this npc");
-                else
-                    npc.Template.roll_drops(npc, admin);
-            }
-            else if (s == "8")
-            {
-                L2Citizen npc = (L2Citizen)admin.CurrentTarget;
-                if (npc.Template.DropData == null)
-                    admin.sendMessage("no drops at this npc");
-                else
-                {
-                    npc.doDie(admin, false);
-                    npc.Template.roll_drops(npc, admin);
-                }
-            }
-            else if (s == "9")
-            {
-                admin.DestX = admin.X +200;
-                admin.DestY = admin.Y +200;
-                admin.DestZ = admin.Z;
-                admin.sendPacket(new CharMoveToLocation(admin));
-            }
-            else if (s == "11")
-            {
-                admin.Boat.DestX = -121385;
-                admin.Boat.DestY = 261660;
-                admin.Boat.DestZ = -3610;
-                admin.Boat.OnRoute = true;
-                admin.Boat.broadcastPacket(new VehicleStarted(admin.Boat.ObjID, 1));
-                admin.Boat.broadcastPacket(new VehicleDeparture(admin.Boat, 400, 1800));
-            }
-            else if (s == "12")
-            {
-                L2Boat boat = new L2Boat();
-                boat.X = -96622;
-                boat.Y = 261660;
-                boat.Z = -3610;
-
-                L2World.Instance.AddObject(boat);
-                boat.onSpawn();
-            }
-            else if (s == "13")
-            {
-                MonsterRace.Instance.startRace();
-            }
-            else if (s == "17")
-            {
-                admin.Mount(NpcTable.Instance.GetNpcTemplate(13146));
-            }
-            else if (s == "18")
-            {
-                int count = int.Parse(alias.Split(' ')[2]);
-                TransformManager.getInstance().transformTo(count, admin, 30);
-            }
-            else if (s == "19")
-            {
-                admin.sstt = int.Parse(alias.Split(' ')[2]);
-                admin.broadcastUserInfo();
-            }
-            else if (s == "20")
-            {
-                int sx = int.Parse(alias.Split(' ')[2]);
-                admin.broadcastPacket(new MagicSkillUse(admin, admin, sx, 1, 0));
-            }
-            else if (s == "21")
-            {
-                int sx = int.Parse(alias.Split(' ')[2]);
-                admin.broadcastPacket(new MagicSkillUse(admin, admin, 261, 1, 1000, sx));
-                adm = admin;
-                if (t == null)
-                {
-                    t = new System.Timers.Timer();
-                    t.Elapsed += new System.Timers.ElapsedEventHandler(t_Elapsed);
-                }
-
-                t.Interval = 900;
-                t.Enabled = true;
-            }
-            else if (s == "22")
-            {
-                adm = admin;
-                L2Warrior war = (L2Warrior)NpcTable.Instance.SpawnNpc(21003, 14107, 182287, -3586, 32500);
-
-                war.DestX = 13107;
-                war.DestY = 182287;
-                war.DestZ = -3586;
-                admin.sendPacket(new CharMoveToLocation(war));
-                war.dtstart = DateTime.Now;
-                admin.ChangeTarget(war);
-
-                if (t == null)
-                {
-                    t = new System.Timers.Timer();
-                    t.Elapsed += new System.Timers.ElapsedEventHandler(t_Elapsed);
-                }
-
-                t.Interval = 2000 * 12;
-                t.Enabled = true;
-            }
+            
            // admin._privateStoreType = byte.Parse(alias.Split(' ')[1]);
            // admin.broadcastUserInfo();
             

@@ -1,7 +1,6 @@
 ﻿using L2dotNET.GameService.controllers;
-using L2dotNET.GameService.crypt;
+using L2dotNET.GameService.Handlers;
 using L2dotNET.GameService.Managers;
-using L2dotNET.GameService.model.events;
 using L2dotNET.GameService.model.items;
 using L2dotNET.GameService.model.npcs.ai;
 using L2dotNET.GameService.model.quests;
@@ -10,6 +9,7 @@ using L2dotNET.GameService.network.loginauth;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.tables.multisell;
 using L2dotNET.GameService.world;
+using L2dotNET.Utility;
 using log4net;
 using Ninject;
 using System;
@@ -75,7 +75,6 @@ namespace L2dotNET.GameService
 
             log.Info("NpcServer: ");
             StaticObjTable.Instance.Initialize();
-            MonsterRace.Instance.Initialize();
             //SpawnTable.getInstance().Spawn();
             StructureTable.Instance.Initialize();
 

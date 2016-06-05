@@ -71,13 +71,13 @@ namespace L2dotNET.GameService.model.quests
             _quests.Add(qo.questId, qo);
         }
 
-        public void QuestAccept(L2Player player, L2Citizen npc, int questId)
+        public void QuestAccept(L2Player player, L2Npc npc, int questId)
         {
             QuestOrigin qo = _quests[questId];
             qo.onAccept(player, npc);
         }
 
-        public void TalkSelection(L2Player player, L2Citizen npc)
+        public void TalkSelection(L2Player player, L2Npc npc)
         {
             List<object[]> qlist = new List<object[]>();
             List<int> ilist = new List<int>();
@@ -149,7 +149,7 @@ namespace L2dotNET.GameService.model.quests
             clist.Clear();
         }
 
-        public void OnQuestTalk(L2Player player, L2Citizen npc, int ask, int reply)
+        public void OnQuestTalk(L2Player player, L2Npc npc, int ask, int reply)
         {
             foreach (QuestInfo qo in player._quests)
             {
@@ -161,12 +161,12 @@ namespace L2dotNET.GameService.model.quests
             }
         }
 
-        public void Quest_continue(L2Player player, L2Citizen npc, int qid)
+        public void Quest_continue(L2Player player, L2Npc npc, int qid)
         {
             player.quest_Talk(npc, qid);
         }
 
-        public void Quest_tryaccept(L2Player player, L2Citizen npc, int qid)
+        public void Quest_tryaccept(L2Player player, L2Npc npc, int qid)
         {
             QuestOrigin qo = _quests[qid];
             qo.tryAccept(player, npc);

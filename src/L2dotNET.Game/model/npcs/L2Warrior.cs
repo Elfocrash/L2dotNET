@@ -8,7 +8,7 @@ using L2dotNET.GameService.model.playable;
 
 namespace L2dotNET.GameService.model.npcs
 {
-    public class L2Warrior : L2Citizen
+    public class L2Warrior : L2Npc
     {
         public bool spoilActive = false;
         public System.DateTime dtstart;
@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.model.npcs
         public System.Timers.Timer socialTask;
         public override string asString()
         {
-            return base.asString().Replace("L2Citizen", "L2Warrior");
+            return base.asString().Replace("L2Npc", "L2Warrior");
         }
 
         public override void onAction(L2Player player)
@@ -58,7 +58,7 @@ namespace L2dotNET.GameService.model.npcs
         public override void onSpawn()
         {
             base.onSpawn();
-            if(Template.agro_range > 0)
+            if(Template.AggroRange > 0)
                 AICharacter.Enable();
 
             SpawnX = X;
@@ -110,7 +110,7 @@ namespace L2dotNET.GameService.model.npcs
             else if (killer is L2Pet)
                 ((L2Pet)killer).Owner.RedistExp(this);
 
-            Template.roll_drops(this, killer);
+            //Template.roll_drops(this, killer);
 
             if (TerritorySpawn != null)
                 TerritorySpawn.onDie(this, killer);

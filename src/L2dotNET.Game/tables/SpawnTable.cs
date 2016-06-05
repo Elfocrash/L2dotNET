@@ -5,6 +5,7 @@ using System.Xml.Linq;
 using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.world;
 using log4net;
+using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.tables
 {
@@ -150,10 +151,10 @@ namespace L2dotNET.GameService.tables
 
         public L2Object SpawnOne(int id, int x, int y, int z, int h)
         {
-            NpcTemplate template = NpcTable.Instance.GetNpcTemplate(id);
+            NpcTemplate template = new NpcTemplate(new templates.StatsSet());//NpcTable.Instance.GetNpcTemplate(id);
 
             L2Warrior o = new L2Warrior();
-            o.setTemplate(template);
+            //o.setTemplate(template);
             //switch (template._type)
             //{
             //    case NpcTemplate.L2NpcType.warrior:
@@ -165,8 +166,8 @@ namespace L2dotNET.GameService.tables
             //        break;
 
             //    default:
-            //        o = new L2Citizen();
-            //        ((L2Citizen)o).setTemplate(template);
+            //        o = new L2Npc();
+            //        ((L2Npc)o).setTemplate(template);
             //        break;
             //}
             o.X = x;

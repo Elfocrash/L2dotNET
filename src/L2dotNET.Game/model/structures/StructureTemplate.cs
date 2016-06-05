@@ -4,6 +4,7 @@ using L2dotNET.GameService.model.npcs;
 using L2dotNET.GameService.model.npcs.decor;
 using L2dotNET.GameService.tables;
 using L2dotNET.GameService.world;
+using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.model.structures
 {
@@ -12,14 +13,14 @@ namespace L2dotNET.GameService.model.structures
         public int ID;
         public string Name, Descr;
 
-        public SortedList<int, L2Citizen> npcs;
+        public SortedList<int, L2Npc> npcs;
         internal void SetNpc(int id)
         {
             if (npcs == null)
-                npcs = new SortedList<int, L2Citizen>();
+                npcs = new SortedList<int, L2Npc>();
 
-            NpcTemplate t = NpcTable.Instance.GetNpcTemplate(id);
-            L2Citizen npc = null;
+            NpcTemplate t = new NpcTemplate(new GameService.templates.StatsSet());//NpcTable.Instance.GetNpcTemplate(id);
+            L2Npc npc = null;
             switch (t.NpcId)
             {
                 case 35461:
@@ -30,15 +31,18 @@ namespace L2dotNET.GameService.model.structures
                     break;
             }
 
-            npc.setTemplate(t);
+            //npc.setTemplate(t);
+            if(npc != null)
+            {
+                StructureSpawn ss = StructureTable.Instance.GetSpawn(id);
+                npc.X = ss.x;
+                npc.Y = ss.y;
+                npc.Z = ss.z;
+                npc.Heading = ss.heading;
 
-            StructureSpawn ss = StructureTable.Instance.GetSpawn(id);
-            npc.X = ss.x;
-            npc.Y = ss.y;
-            npc.Z = ss.z;
-            npc.Heading = ss.heading;
-
-            npcs.Add(t.NpcId, npc);
+                npcs.Add(t.NpcId, npc);
+            }
+            
         }
 
         public void SpawnNpcs()
@@ -46,7 +50,7 @@ namespace L2dotNET.GameService.model.structures
             if (npcs == null)
                 return;
 
-            foreach (L2Citizen npc in npcs.Values)
+            foreach (L2Npc npc in npcs.Values)
             {
                 L2World.Instance.AddObject(npc);
                 npc.onSpawn();
