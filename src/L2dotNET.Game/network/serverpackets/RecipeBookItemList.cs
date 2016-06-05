@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int _type;
         private readonly int _mp;
         private readonly List<L2Recipe> _book;
+
         public RecipeBookItemList(L2Player player, int type)
         {
             _type = type;
@@ -36,7 +37,8 @@ namespace L2dotNET.GameService.network.l2send
             foreach (L2Recipe rec in _book)
             {
                 writeD(rec.RecipeID);
-                writeD(x); x++; //?
+                writeD(x);
+                x++; //?
             }
         }
     }

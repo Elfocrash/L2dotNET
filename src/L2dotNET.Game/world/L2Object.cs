@@ -29,18 +29,30 @@ namespace L2dotNET.GameService.world
         public virtual string CurrentRegion { get; set; }
         public byte ObjectSummonType = 0;
 
-        public virtual void onAction(L2Player player) {}
-        public virtual void onActionShift(L2Player player) { onAction(player); }
-        public virtual void onForcedAttack(L2Player player) {}
+        public virtual void onAction(L2Player player) { }
+
+        public virtual void onActionShift(L2Player player)
+        {
+            onAction(player);
+        }
+
+        public virtual void onForcedAttack(L2Player player) { }
+
         public virtual void sendPacket(GameServerNetworkPacket pk) { }
+
         public virtual void addAbnormal(TSkill skill, L2Character caster, bool permanent, bool unlim) { }
+
         public virtual void onRemObject(L2Object obj) { }
+
         public virtual void onAddObject(L2Object obj, GameServerNetworkPacket pk, string msg = null) { }
+
         public virtual void broadcastUserInfo() { }
+
         public virtual void NotifyAction(L2Player player) { }
+
         public virtual void StartAI() { }
 
-        public virtual void onSpawn() 
+        public virtual void onSpawn()
         {
             broadcastUserInfo();
         }
@@ -68,7 +80,7 @@ namespace L2dotNET.GameService.world
         {
             foreach (L2Object o in knownObjects.Values)
             {
-                if(o is L2Player)
+                if (o is L2Player)
                     o.sendPacket(new DeleteObject(ObjID));
             }
 
@@ -85,7 +97,7 @@ namespace L2dotNET.GameService.world
 
                 if (deleteMe && this is L2Player)
                 {
-                      sendPacket(new DeleteObject(o.ObjID));
+                    sendPacket(new DeleteObject(o.ObjID));
                 }
             }
 
@@ -109,7 +121,7 @@ namespace L2dotNET.GameService.world
                 target.sendPacket(new DeleteObject(ObjID));
             }
         }
-        
+
         public void setVisible(bool val)
         {
             Visible = val;
@@ -137,7 +149,7 @@ namespace L2dotNET.GameService.world
             if (!obj.Visible)
                 return;
 
-            if(pkuse)
+            if (pkuse)
                 onAddObject(obj, pk);
         }
 
@@ -152,7 +164,7 @@ namespace L2dotNET.GameService.world
 
         public void removeKnownObject(L2Object obj, bool update)
         {
-            if(knownObjects.ContainsKey(obj.ObjID))
+            if (knownObjects.ContainsKey(obj.ObjID))
             {
                 onRemObject(obj);
 
@@ -169,7 +181,7 @@ namespace L2dotNET.GameService.world
             {
                 knownObjects.Add(obj.ObjID, obj);
 
-                if(obj.Visible)
+                if (obj.Visible)
                     onAddObject(obj, null);
             }
         }
@@ -207,15 +219,9 @@ namespace L2dotNET.GameService.world
         }
 
         public SortedList<int, L2Zone> _activeZones = new SortedList<int, L2Zone>();
-        private bool 
-            _isInsidePeaceZone = false,
-            _isInsidePvpZone = false, 
-            _isInsideWaterZone = false, 
-            _isInsideSSQZone = false;
-        private readonly bool 
-            _isInsideSiegeZone = false;
-        private readonly bool 
-            _isInsideSomeDungeon = false;
+        private bool _isInsidePeaceZone = false, _isInsidePvpZone = false, _isInsideWaterZone = false, _isInsideSSQZone = false;
+        private readonly bool _isInsideSiegeZone = false;
+        private readonly bool _isInsideSomeDungeon = false;
 
         public bool isInDanger = false;
 
@@ -287,7 +293,7 @@ namespace L2dotNET.GameService.world
 
             if (this is L2Player)
             {
-                ((L2Player)this).sendMessage("entered zone "+z.Name);
+                ((L2Player)this).sendMessage("entered zone " + z.Name);
             }
 
             _activeZones.Add(z.ZoneID, z);
@@ -306,7 +312,7 @@ namespace L2dotNET.GameService.world
             {
                 _activeZones.Remove(z.ZoneID);
             }
-            
+
             z.onExit(this, cls);
 
             revalidateZone(z);
@@ -328,7 +334,7 @@ namespace L2dotNET.GameService.world
                 validateWaterZones();
             }
         }
- 
+
         public bool isInBattle()
         {
             return _isInsidePvpZone;
@@ -486,6 +492,7 @@ namespace L2dotNET.GameService.world
         }
 
         public virtual void RegenTaskDone(object sender, ElapsedEventArgs e) { }
+
         public virtual void RegenUpdateTaskDone(object sender, ElapsedEventArgs e) { }
 
         public void StopRegeneration()
@@ -512,6 +519,4 @@ namespace L2dotNET.GameService.world
             return "L2Object:" + ObjID;
         }
     }
-
-
 }

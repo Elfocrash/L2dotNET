@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.network.l2recv
         public override void run()
         {
             List<PcTemplate> pcTemp = new List<PcTemplate>();
-            Dictionary < int, PcTemplate > dict = CharTemplateTable.Instance.Templates;
+            Dictionary<int, PcTemplate> dict = CharTemplateTable.Instance.Templates;
             for (int i = 0; i < dict.Count; i++)
                 pcTemp.Add(dict.SingleOrDefault(x => x.Key == i).Value);
 

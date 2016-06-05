@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.network.l2recv
         private int sID;
         private long num;
         private int unk1;
+
         public RequestAddTradeItem(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -24,7 +25,7 @@ namespace L2dotNET.GameService.network.l2recv
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player.TradeState < 3)// умник
+            if (player.TradeState < 3) // умник
             {
                 player.sendActionFailed();
                 return;

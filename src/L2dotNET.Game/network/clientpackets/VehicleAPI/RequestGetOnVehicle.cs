@@ -9,6 +9,7 @@ namespace L2dotNET.GameService.network.l2recv
         private int x;
         private int y;
         private int z;
+
         public RequestGetOnVehicle(GameClient client, byte[] data)
         {
             base.makeme(client, data);

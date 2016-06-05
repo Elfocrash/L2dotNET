@@ -11,6 +11,7 @@ namespace L2dotNET.GameService.network
         private byte[] _packet;
         private int _offset;
         public AuthThread login;
+
         public void makeme(AuthThread login, byte[] packet)
         {
             this.login = login;
@@ -77,12 +78,13 @@ namespace L2dotNET.GameService.network
             }
             catch (Exception ex)
             {
-                log.Error($"while reading string from packet, { ex.Message } { ex.StackTrace }");
+                log.Error($"while reading string from packet, {ex.Message} {ex.StackTrace}");
             }
             return result;
         }
 
         public abstract void read();
+
         public abstract void run();
     }
 }

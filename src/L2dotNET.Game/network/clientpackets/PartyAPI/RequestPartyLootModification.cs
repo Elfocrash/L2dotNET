@@ -3,6 +3,7 @@
     class RequestPartyLootModification : GameServerNetworkRequest
     {
         private byte mode;
+
         public RequestPartyLootModification(GameClient client, byte[] data)
         {
             base.makeme(client, data, 2);

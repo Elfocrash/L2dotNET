@@ -13,6 +13,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
         private int login1;
         private int login2;
         private byte serverId;
+
         public override void Read()
         {
             login1 = ReadInt();
@@ -47,7 +48,6 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 
                 Client.Send(PlayOk.ToPacket(Client));
                 //need to add checks to prevent double logins.
-                
             }
         }
     }

@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.model.zones
         public int _damage_on_hp = 0;
         public int _damage_on_mp = 0;
         public int _message_no;
-        
+
         public int _skill_prob;
         public int _unit_tick = 9;
         public int _initial_delay = 1;
@@ -36,7 +36,10 @@ namespace L2dotNET.GameService.model.zones
 
         public enum ZoneTarget
         {
-            npc, pc, all, only_pc
+            npc,
+            pc,
+            all,
+            only_pc
         }
 
         public enum ZoneType
@@ -67,7 +70,7 @@ namespace L2dotNET.GameService.model.zones
             foreach (string sk in d1.Split(';'))
             {
                 //int id = int.Parse(sk);
-                    
+
                 //TSkill skill = TSkillTable.getInstance().get(sk);
                 //if (skill != null)
                 //    _skills.Add(skill);

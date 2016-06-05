@@ -1,5 +1,4 @@
-﻿
-using L2dotNET.Network;
+﻿using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.OuterNetwork
 {
@@ -16,6 +15,5 @@ namespace L2dotNET.LoginService.Network.OuterNetwork
             p.WriteString(code);
             return p;
         }
-
     }
 }

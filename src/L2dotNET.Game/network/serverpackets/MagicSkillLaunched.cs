@@ -41,7 +41,6 @@ namespace L2dotNET.GameService.network.l2send
             writeD(Targets.Length);
             foreach (int tid in Targets)
                 writeD(tid);
-            
         }
     }
 }

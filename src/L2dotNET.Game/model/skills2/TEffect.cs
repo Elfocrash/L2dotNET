@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.model.skills2
 {
     public class TEffect
     {
-        public virtual TEffectResult onStart(L2Character caster, L2Character target) 
+        public virtual TEffectResult onStart(L2Character caster, L2Character target)
         {
             double[] val = target.CharacterStat.Apply(this);
 
@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.model.skills2
             return nothing;
         }
 
-        public virtual TEffectResult onEnd(L2Character caster, L2Character target) 
+        public virtual TEffectResult onEnd(L2Character caster, L2Character target)
         {
             double[] val = target.CharacterStat.Stop(this);
 
@@ -40,9 +40,9 @@ namespace L2dotNET.GameService.model.skills2
 
         public virtual void build(string str)
         {
-           // string[] v = str.Split(' ');
-          //  SetCondition(v[1]);
-           // SetSup(v[2]);
+            // string[] v = str.Split(' ');
+            //  SetCondition(v[1]);
+            // SetSup(v[2]);
         }
 
         public virtual void SetCondition(string str)
@@ -55,11 +55,21 @@ namespace L2dotNET.GameService.model.skills2
             supMethod = new SupMethod();
             switch (str.ToCharArray()[0])
             {
-                case '*': supMethod.Method = SupMethod.MUL; break;
-                case '+': supMethod.Method = SupMethod.ADD; break;
-                case '-': supMethod.Method = SupMethod.SUB; break;
-                case '/': supMethod.Method = SupMethod.DIV; break;
-                case '=': supMethod.Method = SupMethod.OVR; break;
+                case '*':
+                    supMethod.Method = SupMethod.MUL;
+                    break;
+                case '+':
+                    supMethod.Method = SupMethod.ADD;
+                    break;
+                case '-':
+                    supMethod.Method = SupMethod.SUB;
+                    break;
+                case '/':
+                    supMethod.Method = SupMethod.DIV;
+                    break;
+                case '=':
+                    supMethod.Method = SupMethod.OVR;
+                    break;
             }
 
             supMethod.Value = Convert.ToDouble(str.Substring(1));

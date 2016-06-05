@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2recv
     {
         private string name;
         private int itemDistribution;
+
         public RequestJoinParty(GameClient client, byte[] data)
         {
             base.makeme(client, data);

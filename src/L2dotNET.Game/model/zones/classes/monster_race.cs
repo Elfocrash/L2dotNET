@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.model.zones.classes
 
             if (obj is L2Player)
             {
-               // ((L2Player)obj).sendPacket(new PlaySound("S_Race", true));
+                // ((L2Player)obj).sendPacket(new PlaySound("S_Race", true));
             }
         }
 
@@ -36,7 +36,7 @@ namespace L2dotNET.GameService.model.zones.classes
 
             if (obj is L2Player)
             {
-               // ((L2Player)obj).sendMessage("leaved monster race");
+                // ((L2Player)obj).sendMessage("leaved monster race");
 
                 //    p._stats.p_regen_hp += Template._hp_regen_bonus;
                 //   p._stats.p_regen_mp += Template._mp_regen_bonus;

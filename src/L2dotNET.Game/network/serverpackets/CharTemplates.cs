@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.network.l2send
     class CharTemplates : GameServerNetworkPacket
     {
         private readonly List<PcTemplate> _templates;
+
         public CharTemplates(List<PcTemplate> templates)
         {
             _templates = templates;
@@ -21,7 +22,7 @@ namespace L2dotNET.GameService.network.l2send
                 if (t == null)
                     break;
 
-                writeD((int)t.ClassId.ClassRace);//race id
+                writeD((int)t.ClassId.ClassRace); //race id
                 writeD((int)t.ClassId.Id);
                 writeD(0x46);
                 writeD(t.BaseSTR);

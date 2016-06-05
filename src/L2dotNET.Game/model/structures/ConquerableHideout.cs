@@ -24,9 +24,10 @@ namespace L2dotNET.GameService.model.structures
         public SortedList<int, double> clanDamage;
         public List<int[]> mobSpawns;
         private L2Character npc1, npc2, npc3, npc4;
+
         public virtual void init()
         {
-            Message("Siege registration of "+name+" has begun!");
+            Message("Siege registration of " + name + " has begun!");
             Message("Now its open for 2 hours!");
 
             npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, spawn4[0], spawn4[1], spawn4[2], spawn4[3]);
@@ -38,6 +39,7 @@ namespace L2dotNET.GameService.model.structures
         }
 
         private List<L2Character> mobActive;
+
         public virtual void start()
         {
             isActive = true;
@@ -56,7 +58,7 @@ namespace L2dotNET.GameService.model.structures
             }
 
             TimeSiege = new Timer();
-            TimeSiege.Interval = 3600000;// 60 минут
+            TimeSiege.Interval = 3600000; // 60 минут
             TimeSiege.Elapsed += new ElapsedEventHandler(TimeSiegeEnd);
 
             Message("Guards " + mobActive.Count + "! 60 min left");
@@ -95,7 +97,7 @@ namespace L2dotNET.GameService.model.structures
 
                     if (captured)
                     {
-                        cl.UpdatePledgeNameValue(ReputationCapture);                        
+                        cl.UpdatePledgeNameValue(ReputationCapture);
                         cl.broadcastToMembers(new SystemMessage(SystemMessage.SystemMessageId.CLAN_ADDED_S1S_POINTS_TO_REPUTATION_SCORE).AddNumber(ReputationCapture));
                     }
                     else

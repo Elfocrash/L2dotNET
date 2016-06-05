@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class ShortCutRegister : GameServerNetworkPacket
     {
         private readonly L2Shortcut cut;
+
         public ShortCutRegister(L2Shortcut cut)
         {
             this.cut = cut;

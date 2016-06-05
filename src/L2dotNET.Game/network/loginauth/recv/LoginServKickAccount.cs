@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.loginauth.recv
     class LoginServKickAccount : ReceiveAuthPacket
     {
         private string account;
+
         public LoginServKickAccount(AuthThread login, byte[] db)
         {
             base.makeme(login, db);

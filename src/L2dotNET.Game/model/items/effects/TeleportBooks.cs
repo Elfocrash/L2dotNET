@@ -7,11 +7,10 @@ namespace L2dotNET.GameService.model.items.effects
     {
         public TeleportBooks()
         {
-            ids = new int[] { 
-                13015, //My Teleport Spellbook
-                13301, //My Teleport Spellbook (Event)
-                20025  //My Teleport Spellbook
-            };
+            ids = new int[] { 13015, //My Teleport Spellbook
+                              13301, //My Teleport Spellbook (Event)
+                              20025 //My Teleport Spellbook
+                            };
         }
 
         public override void UsePlayer(L2Player player, L2Item item)

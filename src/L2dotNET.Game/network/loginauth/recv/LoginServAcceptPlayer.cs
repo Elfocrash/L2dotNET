@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.loginauth.recv
     class LoginServAcceptPlayer : ReceiveAuthPacket
     {
         private string account;
+
         public LoginServAcceptPlayer(AuthThread login, byte[] db)
         {
             base.makeme(login, db);
@@ -23,5 +24,4 @@ namespace L2dotNET.GameService.network.loginauth.recv
             AuthThread.Instance.awaitAccount(ta);
         }
     }
-
 }

@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.model.quests.data
         {
             if (player.Level >= 2)
                 player.ShowHtm("miner_bolter_q0005_02.htm", npc, questId);
-            else 
+            else
                 player.ShowHtm("miner_bolter_q0005_01.htm", npc);
         }
 
@@ -121,4 +121,3 @@ namespace L2dotNET.GameService.model.quests.data
         }
     }
 }
-

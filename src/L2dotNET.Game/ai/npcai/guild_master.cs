@@ -203,13 +203,13 @@ namespace L2dotNET.GameService.ai.npcai
                     case 13: //Передать Полномочия Лидера Клана
                         talker.ShowHtm("pl_master.htm", myself);
                         break;
-                    case 14://Запрос Передачи Полномочий Лидера Клана
+                    case 14: //Запрос Передачи Полномочий Лидера Клана
                         if (talker.ClanLeader)
                             talker.ShowHtm("pl_transfer_master.htm", myself);
                         else
                             talker.ShowHtm("pl_err_master.htm", myself);
                         break;
-                    case 15://Отменить Запрос Передачи Полномочий Лидера Клана
+                    case 15: //Отменить Запрос Передачи Полномочий Лидера Клана
                         if (talker.ClanLeader)
                             talker.ShowHtm("pl_cancel_master.htm", myself);
                         else
@@ -340,7 +340,7 @@ namespace L2dotNET.GameService.ai.npcai
                 }
                 else if (reply == 1)
                 {
-                    if(lvl == 11)
+                    if (lvl == 11)
                         talker.ShowHtm(GetDialog("fnFullUpgradeSub"), myself);
                     else
                         talker.ShowHtm(GetDialog("fnLowSkillLvForUpgradeSub"), myself);
@@ -403,27 +403,38 @@ namespace L2dotNET.GameService.ai.npcai
 
                 switch (level)
                 {
-                    case 0: ValidateLevelUp1(talker, 20000, @adena, 650000, 1);
+                    case 0:
+                        ValidateLevelUp1(talker, 20000, @adena, 650000, 1);
                         break;
-                    case 1: ValidateLevelUp1(talker, 100000, @adena, 2500000, 2);
+                    case 1:
+                        ValidateLevelUp1(talker, 100000, @adena, 2500000, 2);
                         break;
-                    case 2: ValidateLevelUp1(talker, 350000, @proof_of_blood, 1, 3);
+                    case 2:
+                        ValidateLevelUp1(talker, 350000, @proof_of_blood, 1, 3);
                         break;
-                    case 3: ValidateLevelUp1(talker, 1000000, @q_proof_of_alliance, 1, 4);
+                    case 3:
+                        ValidateLevelUp1(talker, 1000000, @q_proof_of_alliance, 1, 4);
                         break;
-                    case 4: ValidateLevelUp1(talker, 2500000, @q_proof_of_aspiration, 1, 5);
+                    case 4:
+                        ValidateLevelUp1(talker, 2500000, @q_proof_of_aspiration, 1, 5);
                         break;
-                    case 5: ValidateLevelUp2(talker, 10000, 30, 6);
+                    case 5:
+                        ValidateLevelUp2(talker, 10000, 30, 6);
                         break;
-                    case 6: ValidateLevelUp2(talker, 20000, 80, 7);
+                    case 6:
+                        ValidateLevelUp2(talker, 20000, 80, 7);
                         break;
-                    case 7: ValidateLevelUp2(talker, 40000, 120, 8);
+                    case 7:
+                        ValidateLevelUp2(talker, 40000, 120, 8);
                         break;
-                    case 8: ValidateLevelUp2(talker, 40000, 120, 9, @vow_of_blood, 150);
+                    case 8:
+                        ValidateLevelUp2(talker, 40000, 120, 9, @vow_of_blood, 150);
                         break;
-                    case 9: ValidateLevelUp2(talker, 40000, 140, 10, @oath_of_blood, 5);
+                    case 9:
+                        ValidateLevelUp2(talker, 40000, 140, 10, @oath_of_blood, 5);
                         break;
-                    case 10: ValidateLevelUp2(talker, 75000, 170, 11, @oath_of_blood, 5, true);
+                    case 10:
+                        ValidateLevelUp2(talker, 75000, 170, 11, @oath_of_blood, 5, true);
                         break;
                 }
             }

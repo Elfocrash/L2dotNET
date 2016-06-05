@@ -46,10 +46,7 @@ namespace L2dotNET.GameService.tables
         public SortedList<int, ND_shop> _shops = new SortedList<int, ND_shop>();
         private NDTeleport Teleports;
 
-        public NpcData()
-        {
-            
-        }
+        public NpcData() { }
 
         private void load()
         {
@@ -84,7 +81,7 @@ namespace L2dotNET.GameService.tables
                                     slist.items.Add(new ND_shopItem(it));
                                 }
                                 else
-                                    log.Error($"NpcData: cant find item to trade { i } on npc { shop.id }");
+                                    log.Error($"NpcData: cant find item to trade {i} on npc {shop.id}");
                             }
 
                             shop.lists.Add(slist.id, slist);
@@ -130,7 +127,6 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-
         public void RequestTeleportList(L2Citizen npc, L2Player player, int groupId)
         {
             RequestTeleportList(npc, player, groupId, -1);
@@ -170,7 +166,7 @@ namespace L2dotNET.GameService.tables
             }
             catch
             {
-                log.Error($"ND:RequestTeleport cant find teleport group { type }");
+                log.Error($"ND:RequestTeleport cant find teleport group {type}");
                 player.sendActionFailed();
                 return;
             }

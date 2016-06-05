@@ -8,9 +8,9 @@ namespace L2dotNET.GameService.model.player.telebooks
     {
         public SortedList<byte, TelBook_Mark> bookmarks;
 
-        private readonly int MY_TELEPORT_FLAG            = 20033;
-        private readonly int MY_TELEPORT_SCROLL          = 13016;
-        private readonly int MY_TELEPORT_SCROLL_EVENT    = 13302;
+        private readonly int MY_TELEPORT_FLAG = 20033;
+        private readonly int MY_TELEPORT_SCROLL = 13016;
+        private readonly int MY_TELEPORT_SCROLL_EVENT = 13302;
 
         public TeleportBook()
         {
@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.model.player.telebooks
                 return;
             }
 
-            byte max = (byte)(bookmarks.Count +2), id = 1;
+            byte max = (byte)(bookmarks.Count + 2), id = 1;
 
             for (byte x = 1; x < max; x++)
                 if (!bookmarks.ContainsKey(x))
@@ -71,7 +71,7 @@ namespace L2dotNET.GameService.model.player.telebooks
         {
             if (!bookmarks.ContainsKey(id))
             {
-                player.sendMessage("You do not have bookmark with id #"+id);
+                player.sendMessage("You do not have bookmark with id #" + id);
                 player.sendActionFailed();
                 return;
             }

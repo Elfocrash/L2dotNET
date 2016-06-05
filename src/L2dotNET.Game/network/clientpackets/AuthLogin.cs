@@ -9,7 +9,10 @@ namespace L2dotNET.GameService.network.l2recv
     class AuthLogin : GameServerNetworkRequest
     {
         [Inject]
-        public IAccountService accountService { get { return GameServer.Kernel.Get<IAccountService>(); } }
+        public IAccountService accountService
+        {
+            get { return GameServer.Kernel.Get<IAccountService>(); }
+        }
 
         public AuthLogin(GameClient client, byte[] data)
         {
@@ -43,7 +46,8 @@ namespace L2dotNET.GameService.network.l2recv
                 foreach (int id in players)
                 {
                     L2Player p = new L2Player().RestorePlayer(id, getClient());
-                    p.CharSlot = slot; slot++;
+                    p.CharSlot = slot;
+                    slot++;
                     Client.AccountChars.Add(p);
                 }
 

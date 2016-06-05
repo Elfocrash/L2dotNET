@@ -14,6 +14,7 @@ namespace L2dotNET.GameService.network.l2recv
         private int x;
         private int y;
         private int z;
+
         public RequestMoveToLocationInVehicle(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -21,7 +22,7 @@ namespace L2dotNET.GameService.network.l2recv
 
         public override void read()
         {
-            boatId = readD();   //objectId of boat
+            boatId = readD(); //objectId of boat
             dx = readD();
             dy = readD();
             dz = readD();
@@ -59,7 +60,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (boat == null)
             {
-                log.Error($"User requested null boat { boatId }");
+                log.Error($"User requested null boat {boatId}");
                 player.sendActionFailed();
                 return;
             }

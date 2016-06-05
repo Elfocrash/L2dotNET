@@ -3,6 +3,7 @@
     class TutorialShowHtml : GameServerNetworkPacket
     {
         private string Content;
+
         public TutorialShowHtml(L2Player player, string file, bool admin)
         {
             render(player, file, "", admin);

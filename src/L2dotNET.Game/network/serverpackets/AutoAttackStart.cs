@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class AutoAttackStart : GameServerNetworkPacket
     {
         private readonly int sId;
+
         public AutoAttackStart(int sId)
         {
             this.sId = sId;

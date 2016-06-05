@@ -1,11 +1,11 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class StopRotation : GameServerNetworkPacket
     {
         private readonly int sId;
         private readonly int degree;
         private readonly int speed;
+
         public StopRotation(int sId, int degree, int speed)
         {
             this.sId = sId;

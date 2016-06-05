@@ -10,6 +10,7 @@ namespace L2dotNET.GameService.model.skills2.effects
         }
 
         private int rate;
+
         public override void build(string str)
         {
             string[] v = str.Split(' ');

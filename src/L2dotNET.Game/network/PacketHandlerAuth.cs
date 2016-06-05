@@ -15,15 +15,15 @@ namespace L2dotNET.GameService.network
             byte id = 0;
             try
             {
-               id = buff[0];
+                id = buff[0];
             }
-            catch(IndexOutOfRangeException e)
+            catch (IndexOutOfRangeException e)
             {
-                log.Error($"Something went wrong on PacketHandlerAuth: { e }");
+                log.Error($"Something went wrong on PacketHandlerAuth: {e}");
                 goto SkipLabel;
             }
 
-            log.Info($"login>gs: { id }");
+            log.Info($"login>gs: {id}");
             string cninfo = "handlepacket: request " + id.ToString("x2") + " size " + buff.Length;
 
             ReceiveAuthPacket msg = null;
@@ -53,7 +53,8 @@ namespace L2dotNET.GameService.network
             }
 
             new Thread(new ThreadStart(msg.run)).Start();
-        SkipLabel:;
+            SkipLabel:
+            ;
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class KeyPacket : GameServerNetworkPacket
     {
         private readonly byte[] key;
         private byte next;
+
         public KeyPacket(GameClient client, byte n)
         {
             key = client.enableCrypt();

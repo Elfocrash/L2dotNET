@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.tables.admin
             }
 
             bool x = false;
-            for(int i = idmin; i <= idmax; i++)
+            for (int i = idmin; i <= idmax; i++)
             {
                 ItemTemplate item = ItemTable.Instance.GetItem(i);
 

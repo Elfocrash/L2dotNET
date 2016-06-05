@@ -9,6 +9,7 @@
         private readonly int _grade;
         private int _death;
         private int _souls;
+
         public EtcStatusUpdate(L2Player player)
         {
             _force = player.getForceIncreased();

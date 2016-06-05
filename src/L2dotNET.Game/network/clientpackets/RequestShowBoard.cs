@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2recv
     class RequestShowBoard : GameServerNetworkRequest
     {
         private int type;
+
         public RequestShowBoard(GameClient client, byte[] data)
         {
             base.makeme(client, data);

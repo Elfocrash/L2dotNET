@@ -51,8 +51,8 @@ namespace L2dotNET.Repositories
 
             for (int i = 1; !isHostPinging && i <= PING_RETRY_ATTEMPTS; i++)
             {
-                log.Error($"Ping to database host '{ host }' has FAILED!");
-                log.Warn($"Retrying to ping...Retry attempt: { i }.");
+                log.Error($"Ping to database host '{host}' has FAILED!");
+                log.Warn($"Retrying to ping...Retry attempt: {i}.");
 
                 isHostPinging = HostCheck.IsPingSuccessful(host, PING_TIMEOUT_MS);
 
@@ -61,9 +61,9 @@ namespace L2dotNET.Repositories
             }
 
             if (isHostPinging)
-                log.Info($"Ping to database host '{ host }' was SUCCESSFUL!");
+                log.Info($"Ping to database host '{host}' was SUCCESSFUL!");
             else
-                log.Error($"Ping to database host '{ host }' has FAILED!");
+                log.Error($"Ping to database host '{host}' has FAILED!");
 
             return isHostPinging;
         }
@@ -86,7 +86,7 @@ namespace L2dotNET.Repositories
                 for (int i = 1; !isMySQLServiceRunning && i <= MYSQL_SERVICE_RETRY_ATTEMPTS; i++)
                 {
                     log.Error($"MySQL Service was not found running at localhost!");
-                    log.Warn($"Trying to start MySQL service...Retry attempt: { i }.");
+                    log.Warn($"Trying to start MySQL service...Retry attempt: {i}.");
 
                     HostCheck.StartService(MYSQL_SERVICE_NAME, MYSQL_SERVICE_START_TIMEOUT_MS);
 
@@ -120,9 +120,9 @@ namespace L2dotNET.Repositories
             bool isQuerySuccessful = TryQueryDatabase();
 
             if (isQuerySuccessful)
-                log.Info($"Query to database '{ database }' was SUCCESSFUL!");
+                log.Info($"Query to database '{database}' was SUCCESSFUL!");
             else
-                log.Error($"Query to database '{ database }' has FAILED!");
+                log.Error($"Query to database '{database}' has FAILED!");
 
             return isQuerySuccessful;
         }
@@ -135,7 +135,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Method: { "TryQueryDatabase" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: {"TryQueryDatabase"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
             }
             return false;
         }

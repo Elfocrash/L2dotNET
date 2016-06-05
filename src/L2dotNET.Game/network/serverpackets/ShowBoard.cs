@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly string htmlCode;
         private readonly List<string> arg;
         private static readonly short BBS_MAX = 8180;
+
         public ShowBoard(string htm, string id)
         {
             this.id = id;

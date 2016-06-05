@@ -70,6 +70,7 @@ namespace L2dotNET.GameService
         private byte votesOnStart = 0, votesVoted = 0;
         private Timer voteTimer = null;
         private SortedList<int, byte> votes = null;
+
         public void VoteForLootChange(byte mode)
         {
             VoteId = mode;

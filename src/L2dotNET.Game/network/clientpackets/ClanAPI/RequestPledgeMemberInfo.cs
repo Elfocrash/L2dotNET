@@ -12,6 +12,7 @@ namespace L2dotNET.GameService.network.l2recv
 
         private int _unk1;
         private string _player;
+
         public override void read()
         {
             _unk1 = readD();
@@ -27,7 +28,6 @@ namespace L2dotNET.GameService.network.l2recv
                 player.sendActionFailed();
                 return;
             }
-
 
             L2Clan clan = player.Clan;
 

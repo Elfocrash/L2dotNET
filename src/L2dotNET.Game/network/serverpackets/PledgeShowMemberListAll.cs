@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2send
     {
         private readonly L2Clan clan;
         private readonly e_ClanType type;
+
         public PledgeShowMemberListAll(L2Clan clan, e_ClanType type)
         {
             this.clan = clan;
@@ -47,7 +48,7 @@ namespace L2dotNET.GameService.network.l2send
                 writeD(m.classId);
                 writeD(m.Gender);
                 writeD(m.Race);
-                writeD(m.OnlineID());  // 1=online 0=offline
+                writeD(m.OnlineID()); // 1=online 0=offline
                 writeD(m.haveMaster()); //c5 makes the name yellow. member is in academy and has a sponsor 
             }
         }

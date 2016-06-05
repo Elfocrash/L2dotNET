@@ -12,6 +12,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private int _clanId;
+
         public override void read()
         {
             _clanId = readD();

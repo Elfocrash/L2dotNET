@@ -202,10 +202,7 @@ namespace L2dotNET.GameService.tables
 
         public SortedList<int, L2Clan> _clans = new SortedList<int, L2Clan>();
 
-        public ClanTable()
-        {
-            
-        }
+        public ClanTable() { }
 
         public void Apply(L2Player player)
         {

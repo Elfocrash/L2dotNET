@@ -51,7 +51,8 @@ namespace L2dotNET.GameService.tables
                     for (byte ord = 1; ord < pt.Length; ord++)
                     {
                         string parameter = pt[ord];
-                        string value = parameter.Substring(parameter.IndexOf('{') + 1); value = value.Remove(value.Length - 1);
+                        string value = parameter.Substring(parameter.IndexOf('{') + 1);
+                        value = value.Remove(value.Length - 1);
 
                         switch (parameter.Split('{')[0].ToLower())
                         {
@@ -123,7 +124,7 @@ namespace L2dotNET.GameService.tables
                         }
                         catch (Exception)
                         {
-                            log.Error($"eh { pt[ord] }");
+                            log.Error($"eh {pt[ord]}");
                         }
 
                         switch (parameter.Split('{')[0].ToLower())
@@ -326,7 +327,7 @@ namespace L2dotNET.GameService.tables
                     item.buildEffect();
                     if (_items.ContainsKey(item.ItemID))
                     {
-                        log.Error($"itemtable: dublicate { item.ItemID }");
+                        log.Error($"itemtable: dublicate {item.ItemID}");
                         _items.Remove(item.ItemID);
                     }
 
@@ -355,23 +356,20 @@ namespace L2dotNET.GameService.tables
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            log.Info($"ItemTable: #{ _items.Count } items, #{ _sets.Count } sets, #{ ConvertDataList.Count } convertable.");
+            log.Info($"ItemTable: #{_items.Count} items, #{_sets.Count} sets, #{ConvertDataList.Count} convertable.");
         }
 
         public readonly SortedList<int, ItemTemplate> _items = new SortedList<int, ItemTemplate>();
         public readonly SortedList<int, ItemSetTemplate> _sets = new SortedList<int, ItemSetTemplate>();
         public readonly SortedList<int, int> ConvertDataList = new SortedList<int, int>();
 
-        public ItemTable()
-        {
-            
-        }
+        public ItemTable() { }
 
         public ItemTemplate GetItem(int id)
         {
             if (!_items.ContainsKey(id))
             {
-                log.Error($"itemtable: error, cant find item for id { id }");
+                log.Error($"itemtable: error, cant find item for id {id}");
                 return null;
             }
 
@@ -407,9 +405,12 @@ namespace L2dotNET.GameService.tables
                         break;
                 }
 
-                if (b1) owner.removeSkill(set.set1Id, false, false);
-                if (b2) owner.removeSkill(set.set2Id, false, false);
-                if (b3) owner.removeSkill(set.set3Id, false, false);
+                if (b1)
+                    owner.removeSkill(set.set1Id, false, false);
+                if (b2)
+                    owner.removeSkill(set.set2Id, false, false);
+                if (b3)
+                    owner.removeSkill(set.set3Id, false, false);
 
                 if (b1 || b2 || b3)
                     owner.updateSkillList();
@@ -419,7 +420,6 @@ namespace L2dotNET.GameService.tables
                 set.Validate(owner);
             }
         }
-
 
         public bool CanConvert(int id)
         {
@@ -434,6 +434,7 @@ namespace L2dotNET.GameService.tables
         public int armorId;
 
         public List<int> legs;
+
         public void addLeg(int p)
         {
             if (legs == null)
@@ -443,6 +444,7 @@ namespace L2dotNET.GameService.tables
         }
 
         public List<int> gloves;
+
         public void addGloves(int p)
         {
             if (gloves == null)
@@ -452,6 +454,7 @@ namespace L2dotNET.GameService.tables
         }
 
         public List<int> boots;
+
         public void addBoot(int p)
         {
             if (boots == null)
@@ -461,6 +464,7 @@ namespace L2dotNET.GameService.tables
         }
 
         public List<int> helms;
+
         public void addHelm(int p)
         {
             if (helms == null)
@@ -470,6 +474,7 @@ namespace L2dotNET.GameService.tables
         }
 
         public List<int> shields;
+
         public void addShield(int p)
         {
             if (shields == null)
@@ -479,21 +484,27 @@ namespace L2dotNET.GameService.tables
         }
 
         public int set1Id, set1Lvl;
+
         public void set1(int p, int p2)
         {
-            set1Id = p; set1Lvl = p2;
+            set1Id = p;
+            set1Lvl = p2;
         }
 
         public int set2Id, set2Lvl;
+
         public void set2(int p, int p2)
         {
-            set2Id = p; set2Lvl = p2;
+            set2Id = p;
+            set2Lvl = p2;
         }
 
         public int set3Id, set3Lvl;
+
         public void set3(int p, int p2)
         {
-            set3Id = p; set3Lvl = p2;
+            set3Id = p;
+            set3Lvl = p2;
         }
 
         public void Validate(L2Player owner)
@@ -508,86 +519,86 @@ namespace L2dotNET.GameService.tables
                 {
                     case ItemTemplate.L2ItemBodypart.chest:
                     case ItemTemplate.L2ItemBodypart.onepiece:
+                    {
+                        if (armorId == item.Template.ItemID)
                         {
-                            if (armorId == item.Template.ItemID)
-                            {
-                                set1sum++;
-                                if (item.Enchant >= 6)
-                                    set3sum++;
-                                break;
-                            }
+                            set1sum++;
+                            if (item.Enchant >= 6)
+                                set3sum++;
+                            break;
                         }
+                    }
                         break;
                     case ItemTemplate.L2ItemBodypart.legs:
-                        {
-                            if (legs != null)
-                                foreach (int id in legs)
-                                    if (id == item.Template.ItemID)
-                                    {
-                                        set1sum++;
-                                        if (item.Enchant >= 6)
-                                            set3sum++;
-                                        break;
-                                    }
-                        }
+                    {
+                        if (legs != null)
+                            foreach (int id in legs)
+                                if (id == item.Template.ItemID)
+                                {
+                                    set1sum++;
+                                    if (item.Enchant >= 6)
+                                        set3sum++;
+                                    break;
+                                }
+                    }
                         break;
                     case ItemTemplate.L2ItemBodypart.head:
-                        {
-                            if (helms != null)
-                                foreach (int id in helms)
-                                    if (id == item.Template.ItemID)
-                                    {
-                                        set1sum++;
-                                        if (item.Enchant >= 6)
-                                            set3sum++;
-                                        break;
-                                    }
-                        }
+                    {
+                        if (helms != null)
+                            foreach (int id in helms)
+                                if (id == item.Template.ItemID)
+                                {
+                                    set1sum++;
+                                    if (item.Enchant >= 6)
+                                        set3sum++;
+                                    break;
+                                }
+                    }
                         break;
                     case ItemTemplate.L2ItemBodypart.gloves:
-                        {
-                            if (gloves != null)
-                                foreach (int id in gloves)
-                                    if (id == item.Template.ItemID)
-                                    {
-                                        set1sum++;
-                                        if (item.Enchant >= 6)
-                                            set3sum++;
-                                        break;
-                                    }
-                        }
+                    {
+                        if (gloves != null)
+                            foreach (int id in gloves)
+                                if (id == item.Template.ItemID)
+                                {
+                                    set1sum++;
+                                    if (item.Enchant >= 6)
+                                        set3sum++;
+                                    break;
+                                }
+                    }
                         break;
                     case ItemTemplate.L2ItemBodypart.feet:
-                        {
-                            if (boots != null)
-                                foreach (int id in boots)
-                                    if (id == item.Template.ItemID)
-                                    {
-                                        set1sum++;
-                                        if (item.Enchant >= 6)
-                                            set3sum++;
-                                        break;
-                                    }
-                        }
+                    {
+                        if (boots != null)
+                            foreach (int id in boots)
+                                if (id == item.Template.ItemID)
+                                {
+                                    set1sum++;
+                                    if (item.Enchant >= 6)
+                                        set3sum++;
+                                    break;
+                                }
+                    }
                         break;
                     case ItemTemplate.L2ItemBodypart.lhand:
-                        {
-                            if (shields != null)
-                                foreach (int id in shields)
-                                    if (id == item.Template.ItemID)
-                                    {
-                                        set2sum = 1;
-                                        //   if (item.Enchant >= 6)
-                                        //      set3sum++;
-                                        break;
-                                    }
-                        }
+                    {
+                        if (shields != null)
+                            foreach (int id in shields)
+                                if (id == item.Template.ItemID)
+                                {
+                                    set2sum = 1;
+                                    //   if (item.Enchant >= 6)
+                                    //      set3sum++;
+                                    break;
+                                }
+                    }
                         break;
                 }
             }
 
             byte cnt = count();
-            log.Info($"set validation: cnt { cnt }, s1 { set1sum }, s2 { set2sum }, s3 { set3sum }");
+            log.Info($"set validation: cnt {cnt}, s1 {set1sum}, s2 {set2sum}, s3 {set3sum}");
 
             if (cnt == set1sum) // весь сет
             {
@@ -606,10 +617,14 @@ namespace L2dotNET.GameService.tables
         private byte count()
         {
             byte s = 1;
-            if (legs != null) s++;
-            if (helms != null) s++;
-            if (gloves != null) s++;
-            if (boots != null) s++;
+            if (legs != null)
+                s++;
+            if (helms != null)
+                s++;
+            if (gloves != null)
+                s++;
+            if (boots != null)
+                s++;
             return s;
         }
 
@@ -618,14 +633,18 @@ namespace L2dotNET.GameService.tables
             List<int> list = new List<int>();
             list.Add(armorId);
 
-            if (legs != null) list.AddRange(legs);
-            if (helms != null) list.AddRange(helms);
-            if (gloves != null) list.AddRange(gloves);
-            if (boots != null) list.AddRange(boots);
-            if (shields != null) list.AddRange(shields);
+            if (legs != null)
+                list.AddRange(legs);
+            if (helms != null)
+                list.AddRange(helms);
+            if (gloves != null)
+                list.AddRange(gloves);
+            if (boots != null)
+                list.AddRange(boots);
+            if (shields != null)
+                list.AddRange(shields);
 
             return list;
         }
-
     }
 }

@@ -10,6 +10,7 @@ namespace L2dotNET.GameService.tables.ndextend
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(NDTeleport));
         public SortedList<int, ab_teleport_npc> npcs = new SortedList<int, ab_teleport_npc>();
+
         public NDTeleport()
         {
             reload();
@@ -57,7 +58,7 @@ namespace L2dotNET.GameService.tables.ndextend
                         }
                     }
                     if (npcs.ContainsKey(npc.id))
-                        log.Error($"NpcData(Teleporter) dublicate npc str { npc.id }");
+                        log.Error($"NpcData(Teleporter) dublicate npc str {npc.id}");
                     else
                         npcs.Add(npc.id, npc);
                 }

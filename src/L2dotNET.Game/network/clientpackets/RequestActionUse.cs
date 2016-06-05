@@ -68,7 +68,7 @@ namespace L2dotNET.GameService.network.l2recv
                     if (player.Summon != null)
                         player.Summon.Attack();
                     break;
-                case 17://pet stop
+                case 17: //pet stop
                     if (player.Summon != null)
                         player.Summon.Stop();
                     break;
@@ -80,7 +80,7 @@ namespace L2dotNET.GameService.network.l2recv
                     if (player.Summon != null)
                         player.Summon.ChangeNode();
                     break;
-                case 23://summon stop
+                case 23: //summon stop
                     if (player.Summon != null)
                         player.Summon.Stop();
                     break;
@@ -166,7 +166,7 @@ namespace L2dotNET.GameService.network.l2recv
                     petCast(player, 0, 23168, 1);
                     break;
                 default:
-                    log.Info($"unrecognized action # { _actionId }");
+                    log.Info($"unrecognized action # {_actionId}");
 
                     break;
             }
@@ -236,10 +236,10 @@ namespace L2dotNET.GameService.network.l2recv
             {
                 player.Summon.ChangeTarget(player.CurrentTarget);
                 int result = player.Summon.castSkill(skill);
-                log.Info($"pet cast result { result }");
+                log.Info($"pet cast result {result}");
             }
             else
-                log.Error($"pet { npcId } used null skill { id }-{ lv }");
+                log.Error($"pet {npcId} used null skill {id}-{lv}");
         }
     }
 }

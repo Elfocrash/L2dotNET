@@ -10,10 +10,7 @@ namespace L2dotNET.GameService.managers
         private static volatile ZoneManager instance;
         private static readonly object syncRoot = new object();
 
-        public ZoneManager()
-        {
-
-        }
+        public ZoneManager() { }
 
         public void Initialize()
         {
@@ -24,18 +21,14 @@ namespace L2dotNET.GameService.managers
                 XmlDocument doc = new XmlDocument();
                 int fileCounter = 0;
                 string[] xmlFilesArray = Directory.GetFiles(@"data\xml\zones\");
-                for (int i = 0; i < xmlFilesArray.Length; i++)
-                {
-
-                }
+                for (int i = 0; i < xmlFilesArray.Length; i++) { }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return;
             }
 
             int size = 0;
-            
         }
 
         public static ZoneManager Instance

@@ -10,7 +10,7 @@ namespace L2dotNET.Services.Contracts
 
         void CreatePlayer(PlayerModel player);
 
-        void UpdatePlayer(PlayerModel player);       
+        void UpdatePlayer(PlayerModel player);
 
         PlayerModel GetPlayerModelBySlotId(string accountName, int slotId);
 

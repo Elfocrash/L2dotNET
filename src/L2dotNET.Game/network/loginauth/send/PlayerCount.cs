@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.loginauth.send
+﻿namespace L2dotNET.GameService.network.loginauth.send
 {
     class PlayerCount : GameServerNetworkPacket
     {
         private readonly short cnt;
+
         public PlayerCount(short cnt)
         {
             this.cnt = cnt;

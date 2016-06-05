@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.model.zones.classes
     class hideout_zone : L2Zone
     {
         public structures.Hideout hideout;
+
         public hideout_zone()
         {
             ZoneID = IdFactory.Instance.nextId();
@@ -22,10 +23,8 @@ namespace L2dotNET.GameService.model.zones.classes
 
             if (obj is L2Player)
             {
-                
-
-            //    p._stats.p_regen_hp += Template._hp_regen_bonus;
-             //   p._stats.p_regen_mp += Template._mp_regen_bonus;
+                //    p._stats.p_regen_hp += Template._hp_regen_bonus;
+                //   p._stats.p_regen_mp += Template._mp_regen_bonus;
             }
         }
 
@@ -40,8 +39,6 @@ namespace L2dotNET.GameService.model.zones.classes
 
             if (obj is L2Player)
             {
-                
-
                 //    p._stats.p_regen_hp += Template._hp_regen_bonus;
                 //   p._stats.p_regen_mp += Template._mp_regen_bonus;
             }

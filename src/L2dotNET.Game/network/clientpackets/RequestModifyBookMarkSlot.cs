@@ -1,5 +1,4 @@
-﻿
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -9,6 +8,7 @@ namespace L2dotNET.GameService.network.l2recv
         private int icon;
         private string tag;
         private int id;
+
         public RequestModifyBookMarkSlot(GameClient client, byte[] data)
         {
             base.makeme(client, data, 6);

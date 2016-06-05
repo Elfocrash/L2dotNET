@@ -184,7 +184,7 @@ namespace L2dotNET.GameService.model.inventory
                         SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.EARNED_ITEM_S1);
                         if (enchant > 0)
                         {
-                            sm = new SystemMessage(SystemMessage.SystemMessageId.OBTAINED_S1_S2);                            
+                            sm = new SystemMessage(SystemMessage.SystemMessageId.OBTAINED_S1_S2);
                             sm.AddNumber(enchant);
                             sm.AddItemName(template.ItemID);
                         }
@@ -397,7 +397,7 @@ namespace L2dotNET.GameService.model.inventory
                     {
                         pdollId = EQUIPITEM_REar;
                         if (_paperdoll[EQUIPITEM_REar][PDOLL_OBJID] > 0)
-                           unequipAction.Add(new object[] { getByObject(_paperdoll[EQUIPITEM_REar][PDOLL_OBJID]), EQUIPITEM_REar });
+                            unequipAction.Add(new object[] { getByObject(_paperdoll[EQUIPITEM_REar][PDOLL_OBJID]), EQUIPITEM_REar });
                     }
                     uiUpdate = 2;
                     break;
@@ -455,7 +455,7 @@ namespace L2dotNET.GameService.model.inventory
                         uiUpdate = 1;
                     }
                     break;
-              
+
                 default:
                     if (_paperdoll[pdollId][PDOLL_OBJID] != 0)
                     {
@@ -579,58 +579,74 @@ namespace L2dotNET.GameService.model.inventory
             switch (item.Bodypart)
             {
                 case ItemTemplate.L2ItemBodypart.underwear:
-                    id = EQUIPITEM_Underwear; break;
+                    id = EQUIPITEM_Underwear;
+                    break;
                 case ItemTemplate.L2ItemBodypart.neck:
-                    id = EQUIPITEM_Neck; break;
+                    id = EQUIPITEM_Neck;
+                    break;
                 case ItemTemplate.L2ItemBodypart.head:
-                    id = EQUIPITEM_Head; break;
+                    id = EQUIPITEM_Head;
+                    break;
                 case ItemTemplate.L2ItemBodypart.rhand:
-                    id = EQUIPITEM_RHand; break;
+                    id = EQUIPITEM_RHand;
+                    break;
                 case ItemTemplate.L2ItemBodypart.lhand:
-                    id = EQUIPITEM_LHand; break;
+                    id = EQUIPITEM_LHand;
+                    break;
                 case ItemTemplate.L2ItemBodypart.gloves:
-                    id = EQUIPITEM_Gloves; break;
+                    id = EQUIPITEM_Gloves;
+                    break;
                 case ItemTemplate.L2ItemBodypart.chest:
-                    id = EQUIPITEM_Chest; break;
+                    id = EQUIPITEM_Chest;
+                    break;
                 case ItemTemplate.L2ItemBodypart.legs:
-                    id = EQUIPITEM_Legs; break;
+                    id = EQUIPITEM_Legs;
+                    break;
                 case ItemTemplate.L2ItemBodypart.feet:
-                    id = EQUIPITEM_Feet; break;
+                    id = EQUIPITEM_Feet;
+                    break;
                 case ItemTemplate.L2ItemBodypart.lrhand:
-                    id = EQUIPITEM_RHand; break;
+                    id = EQUIPITEM_RHand;
+                    break;
                 case ItemTemplate.L2ItemBodypart.onepiece:
-                    id = EQUIPITEM_Chest; break;
+                    id = EQUIPITEM_Chest;
+                    break;
                 case ItemTemplate.L2ItemBodypart.hair:
-                    id = EQUIPITEM_Hair; break;
+                    id = EQUIPITEM_Hair;
+                    break;
                 case ItemTemplate.L2ItemBodypart.alldress:
-                    id = EQUIPITEM_Chest; break;
+                    id = EQUIPITEM_Chest;
+                    break;
                 case ItemTemplate.L2ItemBodypart.hair2:
-                    id = EQUIPITEM_Hair2; break;
+                    id = EQUIPITEM_Hair2;
+                    break;
                 case ItemTemplate.L2ItemBodypart.hairall:
-                    id = EQUIPITEM_Hair2; break;
+                    id = EQUIPITEM_Hair2;
+                    break;
                 case ItemTemplate.L2ItemBodypart.ears:
-                    {
-                        if (_paperdoll[EQUIPITEM_REar][PDOLL_OBJID] == 0)
-                            id = EQUIPITEM_REar;
-                        else if (_paperdoll[EQUIPITEM_LEar][PDOLL_OBJID] == 0)
-                            id = EQUIPITEM_LEar;
-                        else
-                            id = EQUIPITEM_LEar;
-                    }
+                {
+                    if (_paperdoll[EQUIPITEM_REar][PDOLL_OBJID] == 0)
+                        id = EQUIPITEM_REar;
+                    else if (_paperdoll[EQUIPITEM_LEar][PDOLL_OBJID] == 0)
+                        id = EQUIPITEM_LEar;
+                    else
+                        id = EQUIPITEM_LEar;
+                }
                     break;
                 case ItemTemplate.L2ItemBodypart.fingers:
-                    {
-                        if (_paperdoll[EQUIPITEM_RFinger][PDOLL_OBJID] == 0)
-                            id = EQUIPITEM_RFinger;
-                        else if (_paperdoll[EQUIPITEM_LFinger][PDOLL_OBJID] == 0)
-                            id = EQUIPITEM_LFinger;
-                        else
-                            id = EQUIPITEM_LFinger;
-                    }
+                {
+                    if (_paperdoll[EQUIPITEM_RFinger][PDOLL_OBJID] == 0)
+                        id = EQUIPITEM_RFinger;
+                    else if (_paperdoll[EQUIPITEM_LFinger][PDOLL_OBJID] == 0)
+                        id = EQUIPITEM_LFinger;
+                    else
+                        id = EQUIPITEM_LFinger;
+                }
                     break;
 
                 case ItemTemplate.L2ItemBodypart.back:
-                    id = EQUIPITEM_Cloak; break;
+                    id = EQUIPITEM_Cloak;
+                    break;
             }
 
             return id;
@@ -735,7 +751,8 @@ namespace L2dotNET.GameService.model.inventory
 
             bool weightUp = false;
             List<int> nulled = new List<int>();
-            bool nonstackmass = false; int iditem = 0;
+            bool nonstackmass = false;
+            int iditem = 0;
             foreach (L2Item item in Items.Values)
             {
                 if (item.Template.ItemID == id)
@@ -839,7 +856,8 @@ namespace L2dotNET.GameService.model.inventory
                 sm = new SystemMessage(count == 1 ? SystemMessage.SystemMessageId.S1_DISAPPEARED : SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
 
             List<int> nulled = new List<int>();
-            bool nonstackmass = false; int iditem = 0;
+            bool nonstackmass = false;
+            int iditem = 0;
 
             if (item.Template.isStackable())
             {
@@ -917,7 +935,6 @@ namespace L2dotNET.GameService.model.inventory
             if (item.Template.Weight > 0)
                 _owner.updateWeight();
         }
-
 
         public void destroyItemAll(int id, bool msg, bool update)
         {
@@ -1085,7 +1102,6 @@ namespace L2dotNET.GameService.model.inventory
                     }
                 }
             }
-
 
             lock (target.Inventory.Items)
             {

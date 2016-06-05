@@ -8,15 +8,17 @@ namespace L2dotNET.GameService.tables
     sealed class IdFactory
     {
         [Inject]
-        public IServerService serverService { get { return GameServer.Kernel.Get<IServerService>(); } }
+        public IServerService serverService
+        {
+            get { return GameServer.Kernel.Get<IServerService>(); }
+        }
 
         private static readonly ILog log = LogManager.GetLogger(typeof(IdFactory));
 
         private static volatile IdFactory instance;
         private static readonly object syncRoot = new object();
 
-        public const int ID_MIN = 0x10000000, 
-                         ID_MAX = 0x7FFFFFFF;
+        public const int ID_MIN = 0x10000000, ID_MAX = 0x7FFFFFFF;
 
         private int currentId = 1;
 
@@ -39,10 +41,7 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-        public IdFactory()
-        {
-
-        }
+        public IdFactory() { }
 
         public int nextId()
         {
@@ -53,8 +52,8 @@ namespace L2dotNET.GameService.tables
         public void Initialize()
         {
             currentId = serverService.GetPlayersObjectIdList().DefaultIfEmpty(ID_MIN).Max();
-            
-            log.Info($"idfactory: used ids { currentId }");
+
+            log.Info($"idfactory: used ids {currentId}");
         }
     }
 }

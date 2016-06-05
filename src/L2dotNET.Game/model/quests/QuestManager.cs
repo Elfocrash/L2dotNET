@@ -56,15 +56,12 @@ namespace L2dotNET.GameService.model.quests
             register(new _0605_alliance_with_ketra_orcs());
             register(new _0606_war_with_varka_silenos());
 
-            log.Info($"QuestManager: loaded { _quests.Count } quests.");
+            log.Info($"QuestManager: loaded {_quests.Count} quests.");
         }
 
         public readonly SortedList<int, QuestOrigin> _quests = new SortedList<int, QuestOrigin>();
 
-        public QuestManager()
-        {
-
-        }
+        public QuestManager() { }
 
         private void register(QuestOrigin qo)
         {

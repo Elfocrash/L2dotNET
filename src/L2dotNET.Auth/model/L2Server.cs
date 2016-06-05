@@ -38,32 +38,32 @@ namespace L2dotNET.LoginService.gscommunication
 
         public byte Connected
         {
-            get { return Thread != null ? (Thread.Connected ? (byte)1 : (byte)0) : (byte)0; } 
+            get { return Thread != null ? (Thread.Connected ? (byte)1 : (byte)0) : (byte)0; }
         }
 
         public short CurrentPlayers
         {
-            get { return Thread != null ? Thread.Curp : (short)0; } 
+            get { return Thread != null ? Thread.Curp : (short)0; }
         }
 
         public short MaxPlayers
         {
-            get { return Thread != null ? Thread.Maxp : (short)0; } 
+            get { return Thread != null ? Thread.Maxp : (short)0; }
         }
 
         public int Port
         {
-            get { return Thread != null ? Thread.Port : 0; } 
+            get { return Thread != null ? Thread.Port : 0; }
         }
 
         public bool TestMode
         {
-            get { return Thread != null ? Thread.TestMode : false; } 
+            get { return Thread != null ? Thread.TestMode : false; }
         }
 
-        public bool GmOnly 
+        public bool GmOnly
         {
-            get { return Thread != null ? Thread.GmOnly :false; } 
+            get { return Thread != null ? Thread.GmOnly : false; }
         }
     }
 }

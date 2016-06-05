@@ -44,11 +44,11 @@ namespace L2dotNET.GameService.network.l2recv
             dz = _z - realZ;
             diffSq = (dx * dx + dy * dy);
 
-            if(diffSq < 360000)
+            if (diffSq < 360000)
             {
-                if(SYNCTYPE == 1)
+                if (SYNCTYPE == 1)
                 {
-                    if(!player.isMoving())
+                    if (!player.isMoving())
                     {
                         if (diffSq < 2500)
                         {
@@ -85,7 +85,7 @@ namespace L2dotNET.GameService.network.l2recv
             player.clientPosZ = _z;
             player.clientHeading = _heading;
 
-            player.validateVisibleObjects(_x, _y, true);         
+            player.validateVisibleObjects(_x, _y, true);
         }
     }
 }

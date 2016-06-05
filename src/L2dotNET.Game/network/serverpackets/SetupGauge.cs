@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class SetupGauge : GameServerNetworkPacket
     {
@@ -14,6 +13,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly SG_color _color;
         private readonly int _time;
         private int _id;
+
         public SetupGauge(int id, SG_color color, int time)
         {
             _id = id;

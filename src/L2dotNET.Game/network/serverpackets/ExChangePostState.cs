@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class ExChangePostState : GameServerNetworkPacket
     {
@@ -19,15 +18,15 @@ namespace L2dotNET.GameService.network.l2send
 
         protected internal override void write()
         {
-		    writeC(0xfe);
-		    writeH(0xb3);
-		    writeD(_receivedBoard ? 1 : 0);
-		    writeD(_msgs.Length);
-		    foreach (int postId in _msgs)
-		    {
-			    writeD(postId);
+            writeC(0xfe);
+            writeH(0xb3);
+            writeD(_receivedBoard ? 1 : 0);
+            writeD(_msgs.Length);
+            foreach (int postId in _msgs)
+            {
+                writeD(postId);
                 writeD(_status);
-		    }
+            }
         }
     }
 }

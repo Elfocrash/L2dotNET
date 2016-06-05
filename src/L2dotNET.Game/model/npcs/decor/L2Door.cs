@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.model.npcs.decor
     public class L2Door : L2StaticObject
     {
         public HideoutTemplate structure;
+
         public L2Door()
         {
             ObjID = IdFactory.Instance.nextId();
@@ -45,6 +46,7 @@ namespace L2dotNET.GameService.model.npcs.decor
         }
 
         private System.Timers.Timer selfClose;
+
         public void OpenForTime()
         {
             Closed = 0;

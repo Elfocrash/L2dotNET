@@ -9,6 +9,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int _blockAct;
         private readonly int _blockSpell;
         private readonly int _blockSkill;
+
         public SkillList(L2Player player, int blockAct, int blockSpell, int blockSkill)
         {
             skills = player._skills.Values;

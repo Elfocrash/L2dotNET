@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.model.skills2.effects
     class a_summon : TEffect
     {
         private int npcId;
+
         public override void build(string str)
         {
             this.npcId = int.Parse(str.Split(' ')[1]);

@@ -48,7 +48,7 @@ namespace L2dotNET.GameService.model.items
             {
                 LifeTimeEndEnabled = true;
                 LifeTimeEndTime = DateTime.Now.AddMinutes(template.LimitedMinutes);
-            //    lifeTimeEnd = DateTime.Now.AddHours(template.LimitedHours).ToString("yyyy-MM-dd HH-mm-ss");
+                //    lifeTimeEnd = DateTime.Now.AddHours(template.LimitedHours).ToString("yyyy-MM-dd HH-mm-ss");
             }
 
             if (template.enchanted > 0)
@@ -240,7 +240,7 @@ namespace L2dotNET.GameService.model.items
                     secondaryId2 = bow ? 22071 : 22148;
                     break;
             }
-            foreach(L2Item sec in owner.Inventory.Items.Values)
+            foreach (L2Item sec in owner.Inventory.Items.Values)
             {
                 if (sec.Template.ItemID == secondaryId1 || sec.Template.ItemID == secondaryId2)
                 {
@@ -257,7 +257,7 @@ namespace L2dotNET.GameService.model.items
             Y = y;
             Z = z;
             L2dotNET.GameService.network.l2send.DropItem pk = new L2dotNET.GameService.network.l2send.DropItem(this);
-            if(dropper != null)
+            if (dropper != null)
                 _dropper = dropper.ObjID;
 
             Location = L2ItemLocation.ground;
@@ -278,7 +278,7 @@ namespace L2dotNET.GameService.model.items
         public override void onAction(L2Player player)
         {
             double dis = Calcs.calculateDistance(this, player, true);
-            player.sendMessage(asString() + " dis "+(int)dis);
+            player.sendMessage(asString() + " dis " + (int)dis);
             if (dis < 80)
             {
                 foreach (L2Object o in knownObjects.Values)
@@ -310,6 +310,7 @@ namespace L2dotNET.GameService.model.items
         public int CustomType1;
         public int CustomType2;
         public bool Soulshot = false, Spiritshot = false, BlessSpiritshot = false;
+
         public int LifeTimeEnd()
         {
             if (!LifeTimeEndEnabled)
@@ -351,7 +352,7 @@ namespace L2dotNET.GameService.model.items
                     LifeTimeEndTime = dt;
                 }
                 //TODO delete me
-            }  
+            }
         }
 
         private string LimitedHourStr()

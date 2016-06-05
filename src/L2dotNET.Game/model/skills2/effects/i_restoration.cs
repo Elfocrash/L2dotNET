@@ -1,10 +1,10 @@
-﻿
-namespace L2dotNET.GameService.model.skills2.effects
+﻿namespace L2dotNET.GameService.model.skills2.effects
 {
     class i_restoration : TEffect
     {
         private int itemId;
         private long count;
+
         public override void build(string str)
         {
             string[] v = str.Split(' ');

@@ -17,6 +17,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int _z;
         private readonly int tz;
         private readonly int _damageSuccess;
+
         public MagicSkillUse(L2Character caster, L2Object target, TSkill skill, int hitTime, int flag = 0)
         {
             _id = skill.skill_id;

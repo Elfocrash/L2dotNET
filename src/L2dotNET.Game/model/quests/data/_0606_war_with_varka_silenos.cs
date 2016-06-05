@@ -27,6 +27,7 @@ namespace L2dotNET.GameService.model.quests.data
         private const int q_buffalo_horn = 7186;
 
         private Random rn;
+
         public _0606_war_with_varka_silenos()
         {
             questId = 606;
@@ -58,7 +59,7 @@ namespace L2dotNET.GameService.model.quests.data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if(npcId == elder_kadun_zu_ketra)
+            if (npcId == elder_kadun_zu_ketra)
             {
                 if (reply == 1)
                 {
@@ -132,12 +133,11 @@ namespace L2dotNET.GameService.model.quests.data
                 case varka_silenos_general:
                 case varka_high_magus:
                 case varka_soothsayer:
-                    {
-                        player.addItemQuest(q_barka_mane, 1);
-                    }
+                {
+                    player.addItemQuest(q_barka_mane, 1);
+                }
                     break;
             }
         }
     }
 }
-

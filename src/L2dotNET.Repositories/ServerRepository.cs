@@ -12,7 +12,6 @@ namespace L2dotNET.Repositories
 {
     public class ServerRepository : IServerRepository
     {
-
         private static readonly ILog log = LogManager.GetLogger(typeof(ServerRepository));
 
         internal IDbConnection db;
@@ -30,7 +29,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Method: { "GetServerList" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: {"GetServerList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return new List<ServerModel>();
             }
         }
@@ -43,7 +42,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Method: { "GetPlayersObjectIdList" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: {"GetPlayersObjectIdList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return new List<int>();
             }
         }
@@ -56,7 +55,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Method: { "GetAnnouncementsList" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: {"GetAnnouncementsList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return new List<AnnouncementModel>();
             }
         }
@@ -69,10 +68,9 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                log.Error($"Method: { "CheckDatabaseQuery" }. Message: '{ ex.Message }' (Error Number: '{ ex.Number }')");
+                log.Error($"Method: {"CheckDatabaseQuery"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
             }
             return false;
         }
-
     }
 }

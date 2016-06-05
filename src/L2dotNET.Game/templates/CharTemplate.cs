@@ -60,6 +60,5 @@
             CollisionRadius = set.GetInt("radius");
             CollisionHeight = set.GetInt("height");
         }
-
     }
 }

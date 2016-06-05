@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.tables.admin
+﻿namespace L2dotNET.GameService.tables.admin
 {
     class AA_test : _adminAlias
     {
@@ -10,9 +9,9 @@ namespace L2dotNET.GameService.tables.admin
 
         private L2Player p = null;
         private int spd = 1000;
+
         protected internal override void use(L2Player admin, string alias)
         {
-
             //p = admin;
             //spd = int.Parse(alias.Split(' ')[1]);
 
@@ -26,9 +25,6 @@ namespace L2dotNET.GameService.tables.admin
 
         private bool lp = false;
 
-        private void loopme()
-        {
-
-        }
+        private void loopme() { }
     }
 }

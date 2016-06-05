@@ -176,19 +176,17 @@ namespace L2dotNET.GameService.model.npcs
                         case 1:
                             //  NpcData.getInstance().multisell(player, this, reply); //TEST
                             break;
-
                     }
                     break;
                 case -1000:
+                {
+                    switch (reply)
                     {
-                        switch (reply)
-                        {
-                            case 1:
-                                //See the lord and get the tax rate information
-                                break;
-
-                        }
+                        case 1:
+                            //See the lord and get the tax rate information
+                            break;
                     }
+                }
                     break;
             }
         }
@@ -218,7 +216,6 @@ namespace L2dotNET.GameService.model.npcs
             {
                 player.sendActionFailed();
             }
-
         }
 
         public void showPrivateWarehouse(L2Player player)
@@ -280,7 +277,7 @@ namespace L2dotNET.GameService.model.npcs
                 items.Add(item);
             }
 
-            if (items.Count == 0)// на случай если вх был создан и убраны вещи до времени выхода с сервера
+            if (items.Count == 0) // на случай если вх был создан и убраны вещи до времени выхода с сервера
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
                 player.sendActionFailed();
@@ -389,6 +386,7 @@ namespace L2dotNET.GameService.model.npcs
 
         private System.Timers.Timer _corpseTimer;
         public int residenceId;
+
         public override void doDie(L2Character killer, bool bytrigger)
         {
             base.doDie(killer, bytrigger);
@@ -467,17 +465,11 @@ namespace L2dotNET.GameService.model.npcs
             return "L2Citizen:" + Template.NpcId + "; id " + ObjID;
         }
 
-        public void CreateOnePrivateEx(int npcId, string ai_type, int x, int y, int z)
-        {
-
-        }
+        public void CreateOnePrivateEx(int npcId, string ai_type, int x, int y, int z) { }
 
         public double MaxHp
         {
-            get
-            {
-                return CharacterStat.getStat(TEffectType.b_max_hp);
-            }
+            get { return CharacterStat.getStat(TEffectType.b_max_hp); }
         }
 
         public void CastBuffForQuestReward(L2Character cha, int skillId)

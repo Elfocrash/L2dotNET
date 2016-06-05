@@ -15,6 +15,7 @@ namespace L2dotNET.GameService.network.l2recv
         private int _id;
         private int _level;
         private int _skillType;
+
         public override void read()
         {
             _id = readD();

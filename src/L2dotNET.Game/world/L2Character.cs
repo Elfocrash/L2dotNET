@@ -29,29 +29,31 @@ namespace L2dotNET.GameService.world
         public int AbnormalBitMaskEx;
         public int AbnormalBitMaskEvent;
 
-        public const int AbnormalMaskBleed              = 0x000001;
+        public const int AbnormalMaskBleed = 0x000001;
 
-        public const int AbnormalMaskExInvincible       = 0x000001;
-        public const int AbnormalMaskExAirStun          = 0x000002;
-        public const int AbnormalMaskExAirRoot          = 0x000004;
-        public const int AbnormalMaskExBagSword         = 0x000008;
-        public const int AbnormalMaskExAfroYellow       = 0x000010;
-        public const int AbnormalMaskExAfroPink         = 0x000020;
-        public const int AbnormalMaskExAfroBlack        = 0x000040;
+        public const int AbnormalMaskExInvincible = 0x000001;
+        public const int AbnormalMaskExAirStun = 0x000002;
+        public const int AbnormalMaskExAirRoot = 0x000004;
+        public const int AbnormalMaskExBagSword = 0x000008;
+        public const int AbnormalMaskExAfroYellow = 0x000010;
+        public const int AbnormalMaskExAfroPink = 0x000020;
+        public const int AbnormalMaskExAfroBlack = 0x000040;
         //unk x80
-        public const int AbnormalMaskExStigmaShillien   = 0x000100;
-        public const int AbnormalMaskExStakatoRoot      = 0x000200;
-        public const int AbnormalMaskExFreezing         = 0x000400;
-        public const int AbnormalMaskExVesper           = 0x000800;
+        public const int AbnormalMaskExStigmaShillien = 0x000100;
+        public const int AbnormalMaskExStakatoRoot = 0x000200;
+        public const int AbnormalMaskExFreezing = 0x000400;
+        public const int AbnormalMaskExVesper = 0x000800;
 
-        public const int AbnormalMaskEventIceHand       = 0x000008;
-        public const int AbnormalMaskEventHeadphone     = 0x000010;
-        public const int AbnormalMaskEventCrown1        = 0x000020;
-        public const int AbnormalMaskEventCrown2        = 0x000040;
-        public const int AbnormalMaskEventCrown3        = 0x000080;
+        public const int AbnormalMaskEventIceHand = 0x000008;
+        public const int AbnormalMaskEventHeadphone = 0x000010;
+        public const int AbnormalMaskEventCrown1 = 0x000020;
+        public const int AbnormalMaskEventCrown2 = 0x000040;
+        public const int AbnormalMaskEventCrown3 = 0x000080;
 
         public virtual void updateAbnormalEffect() { }
+
         public virtual void updateAbnormalExEffect() { }
+
         public virtual void updateAbnormalEventEffect() { }
 
         public StandartAiTemplate AICharacter = new StandartAiTemplate();
@@ -398,10 +400,15 @@ namespace L2dotNET.GameService.world
         }
 
         public virtual void updateMagicEffectIcons() { }
+
         public virtual void updateSkillList() { }
+
         public virtual void sendMessage(string p) { }
+
         public virtual void sendActionFailed() { }
+
         public virtual void sendSystemMessage(SystemMessage.SystemMessageId msgId) { }
+
         public virtual void onPickUp(L2Item item) { }
 
         public int _buffMax = Config.Instance.gameplayConfig.MaxBuffs;
@@ -413,7 +420,7 @@ namespace L2dotNET.GameService.world
             {
                 if (skill.debuff == 1)
                 {
-                    bool success = true;// TODO _stats.calcDebuffSuccess(skill, caster);
+                    bool success = true; // TODO _stats.calcDebuffSuccess(skill, caster);
 
                     if (!success)
                     {
@@ -491,7 +498,8 @@ namespace L2dotNET.GameService.world
                     {
                         ave.forcedStop(false, false);
                         break;
-                    } id++;
+                    }
+                    id++;
                 }
 
                 lock (_effects)
@@ -571,7 +579,8 @@ namespace L2dotNET.GameService.world
                     {
                         ave.forcedStop(false, false);
                         break;
-                    } id++;
+                    }
+                    id++;
                 }
 
                 lock (_effects)
@@ -638,7 +647,7 @@ namespace L2dotNET.GameService.world
                 }
 
                 broadcastPacket(new TeleportToLocation(ObjID, x, y, z, Heading));
-            }  
+            }
         }
 
         public int getSkillLevel(int id)
@@ -652,6 +661,7 @@ namespace L2dotNET.GameService.world
         private System.Timers.Timer _waterTimer;
         private DateTime _waterTimeDamage;
         private bool lastInsideWater = false;
+
         public void waterTimer()
         {
             if (isInWater())
@@ -719,8 +729,6 @@ namespace L2dotNET.GameService.world
             //        _waterTimer.Elapsed += new ElapsedEventHandler(waterActionTime);
             //        _waterTimer.Enabled = true;
             //        _waterTimer.Interval = 3000;
-
-
 
             //        return;
             //    }
@@ -799,7 +807,6 @@ namespace L2dotNET.GameService.world
             AICharacter.NotifyOnHit(attacker, damage);
         }
 
-
         public virtual void doDie(L2Character killer, bool bytrigger)
         {
             Dead = true;
@@ -814,9 +821,9 @@ namespace L2dotNET.GameService.world
             StatusUpdate su = new StatusUpdate(ObjID);
             su.add(StatusUpdate.CUR_HP, 0);
             broadcastPacket(su);
-            
-            sendMessage("You died from "+killer.Name);
-            killer.sendMessage("You killed "+Name);
+
+            sendMessage("You died from " + killer.Name);
+            killer.sendMessage("You killed " + Name);
             broadcastPacket(new Die(this));
 
             updateMagicEffectIcons();
@@ -826,7 +833,6 @@ namespace L2dotNET.GameService.world
 
             AICharacter.Disable();
         }
-
 
         public virtual void DeleteByForce()
         {
@@ -847,22 +853,32 @@ namespace L2dotNET.GameService.world
         public virtual L2Item ActiveWeapon
         {
             get { return null; }
-            set { /*cls*/ }
+            set
+            {
+                /*cls*/
+            }
         }
 
         public virtual L2Item SecondaryWeapon
         {
             get { return null; }
-            set { /*cls*/ }
+            set
+            {
+                /*cls*/
+            }
         }
 
         public virtual L2Item ActiveArmor
         {
             get { return null; }
-            set { /*cls*/ }
-
+            set
+            {
+                /*cls*/
+            }
         }
+
         public L2Character CurrentTarget;
+
         public virtual void doAttack(L2Character target)
         {
             if (target == null)
@@ -1099,7 +1115,7 @@ namespace L2dotNET.GameService.world
             //        }
             //}
 
-           // if (CurrentTarget != null)
+            // if (CurrentTarget != null)
             //    doAttack((L2Character)CurrentTarget);
         }
 
@@ -1162,12 +1178,11 @@ namespace L2dotNET.GameService.world
             if (attack_ToEnd != null && attack_ToEnd.Enabled)
                 attack_ToEnd.Enabled = false;
 
-          //  hit1 = null;
-          //  hit2 = null;
+            //  hit1 = null;
+            //  hit2 = null;
         }
 
         public Timer attack_ToHit, attack_toHitBonus, attack_ToEnd;
-
 
         public int _p_block_spell = 0, _p_block_skill = 0;
         public int _p_block_act = 0;
@@ -1216,7 +1231,7 @@ namespace L2dotNET.GameService.world
 
         public void CStatsInit()
         {
-            if(CharacterStat == null)
+            if (CharacterStat == null)
                 CharacterStat = new CStats(this);
         }
 
@@ -1248,6 +1263,7 @@ namespace L2dotNET.GameService.world
         }
 
         public virtual void OnOldTargetSelection(L2Object target) { }
+
         public virtual void OnNewTargetSelection(L2Object target) { }
 
         public override void RegenUpdateTaskDone(object sender, ElapsedEventArgs e)
@@ -1277,7 +1293,7 @@ namespace L2dotNET.GameService.world
 
                 if (this is L2Player)
                 {
-                    if(((L2Player)this).Party != null)
+                    if (((L2Player)this).Party != null)
                         ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
                 }
             }
@@ -1336,7 +1352,6 @@ namespace L2dotNET.GameService.world
         public System.Timers.Timer castTime;
 
         public SortedList<int, L2SkillCoolTime> _reuse = new SortedList<int, L2SkillCoolTime>();
-
 
         public int castSkill(TSkill skill)
         {
@@ -1511,8 +1526,8 @@ namespace L2dotNET.GameService.world
 
             addEffects(this, currentCast, arr);
             currentCast = null;
-            if(castTime != null)
-                lock(castTime)
+            if (castTime != null)
+                lock (castTime)
                     castTime.Enabled = false;
         }
 
@@ -1557,7 +1572,7 @@ namespace L2dotNET.GameService.world
 
             double speed = CharacterStat.getStat(TEffectType.p_speed);
             double spy = dy / distance, spx = dx / distance;
- 
+
             TicksToMove = 1 + (int)(10 * distance / speed);
             TicksToMoveCompleted = 0;
             XSpeedTicks = (DestX - X) / TicksToMove;
@@ -1570,7 +1585,7 @@ namespace L2dotNET.GameService.world
             updatePositionTime.Enabled = true;
 
             AICharacter.NotifyStartMoving();
-       }
+        }
 
         private void UpdatePositionTask(object sender, ElapsedEventArgs e)
         {
@@ -1585,7 +1600,7 @@ namespace L2dotNET.GameService.world
             if (TicksToMove > TicksToMoveCompleted)
             {
                 TicksToMoveCompleted++;
-                X += (int)XSpeedTicks ;
+                X += (int)XSpeedTicks;
                 Y += (int)YSpeedTicks;
             }
             else
@@ -1618,7 +1633,7 @@ namespace L2dotNET.GameService.world
             TicksToMove = 0;
         }
 
-        public virtual void NotifyArrived() 
+        public virtual void NotifyArrived()
         {
             updatePositionTime.Enabled = false;
 
@@ -1636,9 +1651,6 @@ namespace L2dotNET.GameService.world
         private int TicksToMove, TicksToMoveCompleted = 0;
         private float XSpeedTicks;
         private float YSpeedTicks;
-
-
-
 
         public bool isInFrontOfTarget()
         {
@@ -1663,29 +1675,36 @@ namespace L2dotNET.GameService.world
             return false;
         }
 
-        public virtual int ClanId { get { return 0; } set { } }
-        public virtual int ClanCrestId { get { return 0; } }
-        public virtual int AllianceId { get { return 0; } }
-        public virtual int AllianceCrestId { get { return 0; } }
+        public virtual int ClanId
+        {
+            get { return 0; }
+            set { }
+        }
+
+        public virtual int ClanCrestId
+        {
+            get { return 0; }
+        }
+
+        public virtual int AllianceId
+        {
+            get { return 0; }
+        }
+
+        public virtual int AllianceCrestId
+        {
+            get { return 0; }
+        }
 
         public virtual int MaxHP { get; set; }
         public virtual int MaxCP { get; set; }
         public virtual int MaxMP { get; set; }
 
-        public override double CurHP
-        {
-            get; set;
-        }
+        public override double CurHP { get; set; }
 
-        public override double CurMP
-        {
-            get; set;
-        }
+        public override double CurMP { get; set; }
 
-        public override double CurCP
-        {
-            get; set;
-        }
+        public override double CurCP { get; set; }
 
         public override string asString()
         {
@@ -1700,6 +1719,7 @@ namespace L2dotNET.GameService.world
         private List<long> Muted0;
         private List<long> Muted1;
         private List<long> Muted2;
+
         public void Mute(int type, long hashId, bool start)
         {
             List<long> list = null;
@@ -1736,26 +1756,17 @@ namespace L2dotNET.GameService.world
 
         public bool MutedPhysically
         {
-            get
-            {
-                return Muted0 != null && Muted0.Count > 0;  
-            }
+            get { return Muted0 != null && Muted0.Count > 0; }
         }
 
         public bool MutedMagically
         {
-            get
-            {
-                return Muted1 != null && Muted1.Count > 0;
-            }
+            get { return Muted1 != null && Muted1.Count > 0; }
         }
 
         public bool MutedSpecial
         {
-            get
-            {
-                return Muted2 != null && Muted2.Count > 0;
-            }
+            get { return Muted2 != null && Muted2.Count > 0; }
         }
     }
 }

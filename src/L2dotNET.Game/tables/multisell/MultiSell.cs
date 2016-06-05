@@ -20,11 +20,11 @@ namespace L2dotNET.GameService.tables.multisell
         {
             get
             {
-                if(instance == null)
+                if (instance == null)
                 {
-                    lock(syncRoot)
+                    lock (syncRoot)
                     {
-                        if(instance == null)
+                        if (instance == null)
                         {
                             instance = new MultiSell();
                         }
@@ -40,10 +40,7 @@ namespace L2dotNET.GameService.tables.multisell
             LoadXml();
         }
 
-        public MultiSell()
-        {
-
-        }
+        public MultiSell() { }
 
         public SortedList<int, MultiSellList> lists = new SortedList<int, MultiSellList>();
 
@@ -128,28 +125,28 @@ namespace L2dotNET.GameService.tables.multisell
                                 switch (its.Name.LocalName)
                                 {
                                     case "give":
+                                    {
+                                        MultiSellItem item = new MultiSellItem();
+                                        item.id = Convert.ToInt32(its.Attribute("id").Value);
+                                        item.count = Convert.ToInt64(its.Attribute("count").Value);
+                                        if (item.id > 0)
                                         {
-                                            MultiSellItem item = new MultiSellItem();
-                                            item.id = Convert.ToInt32(its.Attribute("id").Value);
-                                            item.count = Convert.ToInt64(its.Attribute("count").Value);
-                                            if (item.id > 0)
-                                            {
-                                                item.template = ItemTable.Instance.GetItem(item.id);
-                                                if (!item.template.isStackable())
-                                                    entry.Stackable = 0;
-                                            }
-                                            entry.give.Add(item);
+                                            item.template = ItemTable.Instance.GetItem(item.id);
+                                            if (!item.template.isStackable())
+                                                entry.Stackable = 0;
                                         }
+                                        entry.give.Add(item);
+                                    }
                                         break;
                                     case "take":
-                                        {
-                                            MultiSellItem item = new MultiSellItem();
-                                            item.id = Convert.ToInt32(its.Attribute("id").Value);
-                                            item.count = Convert.ToInt64(its.Attribute("count").Value);
-                                            if (item.id > 0)
-                                                item.template = ItemTable.Instance.GetItem(item.id);
-                                            entry.take.Add(item);
-                                        }
+                                    {
+                                        MultiSellItem item = new MultiSellItem();
+                                        item.id = Convert.ToInt32(its.Attribute("id").Value);
+                                        item.count = Convert.ToInt64(its.Attribute("count").Value);
+                                        if (item.id > 0)
+                                            item.template = ItemTable.Instance.GetItem(item.id);
+                                        entry.take.Add(item);
+                                    }
                                         break;
                                     case "duty":
                                         entry.dutyCount = Convert.ToInt64(its.Attribute("count").Value);
@@ -165,7 +162,7 @@ namespace L2dotNET.GameService.tables.multisell
                 }
             }
 
-            log.Info($"MultiSell: { lists.Count } lists");
+            log.Info($"MultiSell: {lists.Count} lists");
         }
 
         public MultiSellList getList(int listId)
@@ -208,6 +205,7 @@ namespace L2dotNET.GameService.tables.multisell
         public int id;
         public long count;
         public model.items.ItemTemplate template;
+
         public short enchant
         {
             get
@@ -224,6 +222,7 @@ namespace L2dotNET.GameService.tables.multisell
 
         public int augment = 0;
         public L2Item l2item;
+
         public short AttrAttackType
         {
             get
@@ -384,10 +383,7 @@ namespace L2dotNET.GameService.tables.multisell
 
         public int ItemID
         {
-            get
-            {
-                return id;
-            }
+            get { return id; }
         }
     }
 }

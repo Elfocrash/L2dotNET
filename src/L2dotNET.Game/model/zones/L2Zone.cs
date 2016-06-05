@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.model.zones
 
         public SortedList<int, L2Object> ObjectsInside = new SortedList<int, L2Object>();
 
-        public virtual void onEnter(L2Object obj) 
+        public virtual void onEnter(L2Object obj)
         {
             if (!ObjectsInside.ContainsKey(obj.ObjID))
                 ObjectsInside.Add(obj.ObjID, obj);
@@ -34,7 +34,7 @@ namespace L2dotNET.GameService.model.zones
                     ((L2Summon)obj).sendPacket(pk);
         }
 
-        public virtual void onExit(L2Object obj, bool cls) 
+        public virtual void onExit(L2Object obj, bool cls)
         {
             if (cls)
             {
@@ -47,10 +47,12 @@ namespace L2dotNET.GameService.model.zones
         }
 
         public virtual void onDie(L2Character obj, L2Character killer) { }
+
         public virtual void onKill(L2Character obj, L2Character target) { }
 
         public System.Timers.Timer _action;
-        public virtual void startTimer() 
+
+        public virtual void startTimer()
         {
             _action = new System.Timers.Timer(Template._unit_tick * 1000);
             _action.Elapsed += new ElapsedEventHandler(onTimerAction);
@@ -59,6 +61,7 @@ namespace L2dotNET.GameService.model.zones
         }
 
         public virtual void stopTimer() { }
+
         public virtual void onTimerAction(object sender, ElapsedEventArgs e) { }
 
         public virtual void onInit() { }
@@ -66,6 +69,7 @@ namespace L2dotNET.GameService.model.zones
         private Timer _selfDestruct;
         public int[] CylinderCenter;
         public string Name;
+
         public void SelfDestruct(int sec)
         {
             _selfDestruct = new Timer(sec * 1000);
@@ -89,7 +93,7 @@ namespace L2dotNET.GameService.model.zones
             L2WorldRegion region = L2World.Instance.GetRegion(CylinderCenter[0], CylinderCenter[1]);
             if (region != null)
             {
-               // region._zoneManager.remZone(this);
+                // region._zoneManager.remZone(this);
             }
         }
     }

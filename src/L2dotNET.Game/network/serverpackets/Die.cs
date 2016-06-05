@@ -72,8 +72,8 @@ namespace L2dotNET.GameService.network.l2send
             writeD(m_nAgathion); //21
             writeD(_items == null ? 0 : _items.Count); //22+
 
-            if(_items != null)
-                foreach(int id in _items)
+            if (_items != null)
+                foreach (int id in _items)
                     writeD(id);
         }
     }

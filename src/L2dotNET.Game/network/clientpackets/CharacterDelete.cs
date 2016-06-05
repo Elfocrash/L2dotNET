@@ -8,7 +8,10 @@ namespace L2dotNET.GameService.network.l2recv
     class CharacterDelete : GameServerNetworkRequest
     {
         [Inject]
-        public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
+        public IPlayerService playerService
+        {
+            get { return GameServer.Kernel.Get<IPlayerService>(); }
+        }
 
         public CharacterDelete(GameClient client, byte[] data)
         {
@@ -59,7 +62,7 @@ namespace L2dotNET.GameService.network.l2recv
                     getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
                     return;
                 }
-                
+
                 getClient().RemoveAccountCharAndResetSlotIndex(_charSlot);
             }
             else

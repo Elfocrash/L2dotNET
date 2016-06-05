@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2recv
+﻿namespace L2dotNET.GameService.network.l2recv
 {
     class RequestQuestAbort : GameServerNetworkRequest
     {
@@ -9,6 +8,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private int _questId;
+
         public override void read()
         {
             _questId = readD();
@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.network.l2recv
                         player.Inventory.destroyItemAll(id, true, false);
                     }
 
-                    player.sendMessage("Quest "+qi._template.questName+" aborted.");
+                    player.sendMessage("Quest " + qi._template.questName + " aborted.");
                     player.stopQuest(qi, true);
                     return;
                 }

@@ -9,6 +9,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int _z;
         private readonly int _objectId;
         private readonly int _targetObjId;
+
         public TargetSelected(int selecterId, L2Object target)
         {
             _objectId = selecterId;

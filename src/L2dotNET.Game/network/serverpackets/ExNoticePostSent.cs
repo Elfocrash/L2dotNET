@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class ExNoticePostSent : GameServerNetworkPacket
     {
         private int anim;
+
         public ExNoticePostSent(int anim)
         {
             anim = anim;

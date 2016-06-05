@@ -31,10 +31,7 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-        public StructureTable()
-        {
-
-        }
+        public StructureTable() { }
 
         public SortedList<int, HideoutTemplate> structures = new SortedList<int, HideoutTemplate>();
         public SortedList<int, StructureSpawn> spawns = new SortedList<int, StructureSpawn>();
@@ -65,7 +62,8 @@ namespace L2dotNET.GameService.tables
                     for (byte ord = 1; ord < pt.Length; ord++)
                     {
                         string parameter = pt[ord];
-                        string value = parameter.Substring(parameter.IndexOf('{') + 1); value = value.Remove(value.Length - 1);
+                        string value = parameter.Substring(parameter.IndexOf('{') + 1);
+                        value = value.Remove(value.Length - 1);
 
                         switch (parameter.Split('{')[0].ToLower())
                         {
@@ -105,21 +103,22 @@ namespace L2dotNET.GameService.tables
                     for (byte ord = 2; ord < pt.Length; ord++)
                     {
                         string parameter = pt[ord];
-                        string value = parameter.Substring(parameter.IndexOf('{') + 1); value = value.Remove(value.Length - 1);
+                        string value = parameter.Substring(parameter.IndexOf('{') + 1);
+                        value = value.Remove(value.Length - 1);
 
                         switch (parameter.Split('{')[0].ToLower())
                         {
                             case "npc":
-                                {
-                                    foreach (string str in value.Split(' '))
-                                        template.SetNpc(Convert.ToInt32(str));
-                                }
+                            {
+                                foreach (string str in value.Split(' '))
+                                    template.SetNpc(Convert.ToInt32(str));
+                            }
                                 break;
                             case "door":
-                                {
-                                    foreach (string str in value.Split(' '))
-                                        template.SetDoor(Convert.ToInt32(str));
-                                }
+                            {
+                                foreach (string str in value.Split(' '))
+                                    template.SetDoor(Convert.ToInt32(str));
+                            }
                                 break;
                             case "spawn":
                                 template.SetOwnerRespawn(value.Split(' '));
@@ -131,12 +130,12 @@ namespace L2dotNET.GameService.tables
                                 template.SetBanishRespawn(value.Split(' '));
                                 break;
                             case "zone":
+                            {
+                                foreach (string str in value.Split(';'))
                                 {
-                                    foreach (string str in value.Split(';'))
-                                    {
-                                        template.SetZoneLoc(str.Split(' '));
-                                    }
+                                    template.SetZoneLoc(str.Split(' '));
                                 }
+                            }
                                 break;
                         }
                     }

@@ -34,8 +34,10 @@ namespace L2dotNET.GameService.tools
 
         public static bool checkIfInRange(int range, L2Object obj1, L2Object obj2, bool includeZAxis)
         {
-            if (obj1 == null || obj2 == null) return false;
-            if (range == -1) return true; // not limited
+            if (obj1 == null || obj2 == null)
+                return false;
+            if (range == -1)
+                return true; // not limited
 
             double rad = obj1.Radius + obj2.Radius;
             double dx = obj1.X - obj2.X;
@@ -56,9 +58,9 @@ namespace L2dotNET.GameService.tools
             }
         }
 
-        public static double calculateDistance(int x1, int y1, int z1, int x2, int y2) 
-        { 
-            return calculateDistance(x1, y1, 0, x2, y2, 0, false); 
+        public static double calculateDistance(int x1, int y1, int z1, int x2, int y2)
+        {
+            return calculateDistance(x1, y1, 0, x2, y2, 0, false);
         }
 
         public static double calculateDistance(int x1, int y1, int z1, int x2, int y2, int z2, bool includeZAxis)
@@ -79,7 +81,5 @@ namespace L2dotNET.GameService.tools
         {
             return calculateDistance(obj1.X, obj1.Y, obj1.Z, obj2.X, obj2.Y, obj2.Z, includeZAxis);
         }
-
-
     }
 }

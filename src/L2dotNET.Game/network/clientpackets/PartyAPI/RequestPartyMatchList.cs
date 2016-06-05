@@ -11,8 +11,8 @@ namespace L2dotNET.GameService.network.l2recv
             base.makeme(client, data);
         }
 
-
         private int _status;
+
         public override void read()
         {
             _status = readD();
@@ -20,8 +20,7 @@ namespace L2dotNET.GameService.network.l2recv
 
         public override void run()
         {
-            log.Info($"party { _status }");
-            
+            log.Info($"party {_status}");
         }
     }
 }

@@ -16,6 +16,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int id;
         private readonly L2Character character;
         private readonly int summonType;
+
         public void addIcon(int id, int lvl, int duration)
         {
             _timers.Add(new int[] { id, lvl, duration });

@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class TutorialShowQuestionMark : GameServerNetworkPacket
     {
         private readonly int QuestionID;
+
         public TutorialShowQuestionMark(int id)
         {
             QuestionID = id;

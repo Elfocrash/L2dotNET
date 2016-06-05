@@ -16,12 +16,13 @@ namespace L2dotNET.GameService.model.structures
         public bool NoTeleports = false;
         public DateTime PayTime = new DateTime(2011, 2, 1, 12, 00, 00);
         public int ownerId;
+
         public override void init()
         {
             GenZone();
             SpawnNpcs();
 
-            log.Info($"Hideout #{ ID } ({ Name }) loaded. { npcs.Count } npcs.");
+            log.Info($"Hideout #{ID} ({Name}) loaded. {npcs.Count} npcs.");
         }
 
         public void Banish()
@@ -38,6 +39,7 @@ namespace L2dotNET.GameService.model.structures
         }
 
         private hideout_zone zone;
+
         public void GenZone()
         {
             zone = new hideout_zone();
@@ -60,12 +62,13 @@ namespace L2dotNET.GameService.model.structures
                 }
                 else
                 {
-                    log.Error($"AreaTable[hideout]: null region at { template._x[i] } { template._y[i] } for zone { zone.Name }");
+                    log.Error($"AreaTable[hideout]: null region at {template._x[i]} {template._y[i]} for zone {zone.Name}");
                 }
             }
         }
 
         public int[] Decoration = new int[13];
+
         public byte MofidyFunc(int decoId, int level)
         {
             if (Decoration[decoId] == level)

@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class CharMoveToLocation : GameServerNetworkPacket
     {
         private readonly L2Object _obj;
+
         public CharMoveToLocation(L2Object obj)
         {
             _obj = obj;

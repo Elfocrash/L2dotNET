@@ -10,13 +10,13 @@ namespace L2dotNET.GameService.managers
         private static readonly ILog log = LogManager.GetLogger(typeof(ThreadPoolManager));
 
         private static readonly ThreadPoolManager instance = new ThreadPoolManager();
+
         public static ThreadPoolManager getInstance()
         {
             return instance;
         }
 
         public Dictionary<object, RThread> threads = new Dictionary<object, RThread>();
-
 
         public void ExecuteGeneral(Action action, int wait = 0, object id = null)
         {
@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.managers
 
             thread.Start();
 
-            log.Info($"threads { threads.Count }");
+            log.Info($"threads {threads.Count}");
         }
 
         public void ExecuteGeneralTicks(Action action, int ticks, int tickWait = 1000, int wait = 0, object id = null)
@@ -104,8 +104,8 @@ namespace L2dotNET.GameService.managers
 
         ~RThread()
         {
-            if (debug)                
-                log.Info($"Thread[{ id }] was erased");
+            if (debug)
+                log.Info($"Thread[{id}] was erased");
         }
 
         public void Start()

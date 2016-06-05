@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.network.l2recv
     class AnswerTradeRequest : GameServerNetworkRequest
     {
         private int response;
+
         public AnswerTradeRequest(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -61,7 +62,6 @@ namespace L2dotNET.GameService.network.l2recv
                     player.requester.sendPacket(new TradeStart(player.requester));
                     break;
             }
-
         }
     }
 }

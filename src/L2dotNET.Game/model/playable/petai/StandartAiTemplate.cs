@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.model.playable.petai
 
         public void Disable()
         {
-            if(ai1sec != null)
+            if (ai1sec != null)
                 ai1sec.Enabled = false;
 
             if (follow != null)
@@ -58,7 +58,7 @@ namespace L2dotNET.GameService.model.playable.petai
 
         public virtual void NotifyOnKill(L2Character target) { }
 
-        public virtual void NotifyOnDie(L2Character killer) 
+        public virtual void NotifyOnDie(L2Character killer)
         {
             SetFollowStatus(false);
         }
@@ -88,6 +88,7 @@ namespace L2dotNET.GameService.model.playable.petai
         }
 
         public virtual void Attack(L2Character target) { }
+
         public virtual void StopAutoAttack() { }
     }
 }

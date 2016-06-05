@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.model.inventory
     public class InvMail : InvTemplate
     {
         private readonly L2Player _owner;
+
         public InvMail(L2Player owner)
         {
             _owner = owner;
@@ -77,7 +78,7 @@ namespace L2dotNET.GameService.model.inventory
                                     ins.Count = itemd[1];
                                     ins.Location = L2Item.L2ItemLocation.mail;
                                     Items.Add(ins.ObjID, ins);
-                                    
+
                                     ins.sql_insert(_owner.ObjID);
                                 }
 
@@ -98,8 +99,7 @@ namespace L2dotNET.GameService.model.inventory
                         }
                     }
                 }
-             }
-
+            }
 
             lock (player.Inventory.Items)
             {

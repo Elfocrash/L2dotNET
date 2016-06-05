@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.managers
     class TradeManager
     {
         private static readonly TradeManager instance = new TradeManager();
+
         public static TradeManager getInstance()
         {
             return instance;
@@ -38,8 +39,8 @@ namespace L2dotNET.GameService.managers
 
                 if (tm.Count > 0)
                 {
-                    lock(player.currentTrade)
-                        foreach(int key in tm.Keys)
+                    lock (player.currentTrade)
+                        foreach (int key in tm.Keys)
                             player.currentTrade[key] = tm[key];
 
                     tm.Clear();

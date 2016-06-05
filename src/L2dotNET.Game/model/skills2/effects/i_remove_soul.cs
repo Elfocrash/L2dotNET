@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.model.skills2.effects
+﻿namespace L2dotNET.GameService.model.skills2.effects
 {
     class i_remove_soul : TEffect
     {
@@ -9,6 +8,7 @@ namespace L2dotNET.GameService.model.skills2.effects
         }
 
         private byte count;
+
         public override void build(string str)
         {
             string[] v = str.Split(' ');

@@ -70,12 +70,13 @@ namespace L2dotNET.LoginService
             }
             catch (Exception ex)
             {
-                log.Error($"While reading string from packet, { ex.Message } { ex.StackTrace }");
+                log.Error($"While reading string from packet, {ex.Message} {ex.StackTrace}");
             }
             return result;
         }
 
         public abstract void Read();
+
         public abstract void Run();
     }
 }

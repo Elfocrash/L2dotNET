@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.model.skills2
+﻿namespace L2dotNET.GameService.model.skills2
 {
     public enum TEffectType
     {
@@ -8,7 +7,6 @@ namespace L2dotNET.GameService.model.skills2
         a_summon,
         a_opendoor,
         a_tele_region,
-
 
         i_restoration,
 
@@ -33,7 +31,6 @@ namespace L2dotNET.GameService.model.skills2
         b_reg_mp,
         b_reg_cp,
         b_mp_use_skill,
-
 
         b_reg_hp_move,
         b_reg_mp_move,
@@ -123,7 +120,5 @@ namespace L2dotNET.GameService.model.skills2
         p_crystal_grade_modify,
         p_cubic_mastery,
         cub_heal,
-
-
     }
 }

@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.model.vehicles
     public class L2Boat : L2Object
     {
         public bool OnRoute = false;
+
         public override void broadcastUserInfo()
         {
             foreach (L2Object obj in knownObjects.Values)

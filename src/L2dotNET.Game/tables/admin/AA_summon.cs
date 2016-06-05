@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.tables.admin
+﻿namespace L2dotNET.GameService.tables.admin
 {
     class AA_summon : _adminAlias
     {

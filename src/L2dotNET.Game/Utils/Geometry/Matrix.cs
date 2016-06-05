@@ -6,8 +6,7 @@ namespace L2dotNET.GameService.Utils
     {
         #region Public Constructors
 
-        public Matrix(double m11, double m12, double m13, double m14, double m21, double m22, double m23, double m24, double m31,
-                      double m32, double m33, double m34, double m41, double m42, double m43, double m44)
+        public Matrix(double m11, double m12, double m13, double m14, double m21, double m22, double m23, double m24, double m31, double m32, double m33, double m34, double m41, double m42, double m43, double m44)
         {
             this.M11 = m11;
             this.M12 = m12;
@@ -28,7 +27,6 @@ namespace L2dotNET.GameService.Utils
         }
 
         #endregion Public Constructors
-
 
         #region Public Fields
 
@@ -51,20 +49,15 @@ namespace L2dotNET.GameService.Utils
 
         #endregion Public Fields
 
-
         #region Private Members
 
         #endregion Private Members
-
 
         #region Public Properties
 
         public Vector3 Backward
         {
-            get
-            {
-                return new Vector3(this.M31, this.M32, this.M33);
-            }
+            get { return new Vector3(this.M31, this.M32, this.M33); }
             set
             {
                 this.M31 = value.X;
@@ -73,13 +66,9 @@ namespace L2dotNET.GameService.Utils
             }
         }
 
-
         public Vector3 Down
         {
-            get
-            {
-                return new Vector3(-this.M21, -this.M22, -this.M23);
-            }
+            get { return new Vector3(-this.M21, -this.M22, -this.M23); }
             set
             {
                 this.M21 = -value.X;
@@ -88,13 +77,9 @@ namespace L2dotNET.GameService.Utils
             }
         }
 
-
         public Vector3 Forward
         {
-            get
-            {
-                return new Vector3(-this.M31, -this.M32, -this.M33);
-            }
+            get { return new Vector3(-this.M31, -this.M32, -this.M33); }
             set
             {
                 this.M31 = -value.X;
@@ -103,30 +88,18 @@ namespace L2dotNET.GameService.Utils
             }
         }
 
-
-        public static Matrix Identity { get; } = new Matrix(1f, 0f, 0f, 0f,
-                       0f, 1f, 0f, 0f,
-                       0f, 0f, 1f, 0f,
-                       0f, 0f, 0f, 1f);
+        public static Matrix Identity { get; } = new Matrix(1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f);
 
         // required for OpenGL 2.0 projection matrix stuff
         public static double[] ToFloatArray(Matrix mat)
         {
-            double[] matarray = {
-                                    mat.M11, mat.M12, mat.M13, mat.M14,
-                                    mat.M21, mat.M22, mat.M23, mat.M24,
-                                    mat.M31, mat.M32, mat.M33, mat.M34,
-                                    mat.M41, mat.M42, mat.M43, mat.M44
-                                };
+            double[] matarray = { mat.M11, mat.M12, mat.M13, mat.M14, mat.M21, mat.M22, mat.M23, mat.M24, mat.M31, mat.M32, mat.M33, mat.M34, mat.M41, mat.M42, mat.M43, mat.M44 };
             return matarray;
         }
 
         public Vector3 Left
         {
-            get
-            {
-                return new Vector3(-this.M11, -this.M12, -this.M13);
-            }
+            get { return new Vector3(-this.M11, -this.M12, -this.M13); }
             set
             {
                 this.M11 = -value.X;
@@ -135,13 +108,9 @@ namespace L2dotNET.GameService.Utils
             }
         }
 
-
         public Vector3 Right
         {
-            get
-            {
-                return new Vector3(this.M11, this.M12, this.M13);
-            }
+            get { return new Vector3(this.M11, this.M12, this.M13); }
             set
             {
                 this.M11 = value.X;
@@ -150,13 +119,9 @@ namespace L2dotNET.GameService.Utils
             }
         }
 
-
         public Vector3 Translation
         {
-            get
-            {
-                return new Vector3(this.M41, this.M42, this.M43);
-            }
+            get { return new Vector3(this.M41, this.M42, this.M43); }
             set
             {
                 this.M41 = value.X;
@@ -165,13 +130,9 @@ namespace L2dotNET.GameService.Utils
             }
         }
 
-
         public Vector3 Up
         {
-            get
-            {
-                return new Vector3(this.M21, this.M22, this.M23);
-            }
+            get { return new Vector3(this.M21, this.M22, this.M23); }
             set
             {
                 this.M21 = value.X;
@@ -179,8 +140,8 @@ namespace L2dotNET.GameService.Utils
                 this.M23 = value.Z;
             }
         }
-        #endregion Public Properties
 
+        #endregion Public Properties
 
         #region Public Methods
 
@@ -205,7 +166,6 @@ namespace L2dotNET.GameService.Utils
             return matrix1;
         }
 
-
         public static void Add(ref Matrix matrix1, ref Matrix matrix2, out Matrix result)
         {
             result.M11 = matrix1.M11 + matrix2.M11;
@@ -224,12 +184,9 @@ namespace L2dotNET.GameService.Utils
             result.M42 = matrix1.M42 + matrix2.M42;
             result.M43 = matrix1.M43 + matrix2.M43;
             result.M44 = matrix1.M44 + matrix2.M44;
-
         }
 
-
-        public static Matrix CreateBillboard(Vector3 objectPosition, Vector3 cameraPosition,
-            Vector3 cameraUpVector, Nullable<Vector3> cameraForwardVector)
+        public static Matrix CreateBillboard(Vector3 objectPosition, Vector3 cameraPosition, Vector3 cameraUpVector, Nullable<Vector3> cameraForwardVector)
         {
             var diff = cameraPosition - objectPosition;
 
@@ -281,9 +238,7 @@ namespace L2dotNET.GameService.Utils
             return matrix;*/
         }
 
-
-        public static void CreateBillboard(ref Vector3 objectPosition, ref Vector3 cameraPosition,
-            ref Vector3 cameraUpVector, Vector3? cameraForwardVector, out Matrix result)
+        public static void CreateBillboard(ref Vector3 objectPosition, ref Vector3 cameraPosition, ref Vector3 cameraUpVector, Vector3? cameraForwardVector, out Matrix result)
         {
             Vector3 vector;
             Vector3 vector2;
@@ -321,9 +276,7 @@ namespace L2dotNET.GameService.Utils
             result.M44 = 1f;
         }
 
-
-        public static Matrix CreateConstrainedBillboard(Vector3 objectPosition, Vector3 cameraPosition,
-            Vector3 rotateAxis, Nullable<Vector3> cameraForwardVector, Nullable<Vector3> objectForwardVector)
+        public static Matrix CreateConstrainedBillboard(Vector3 objectPosition, Vector3 cameraPosition, Vector3 rotateAxis, Nullable<Vector3> cameraForwardVector, Nullable<Vector3> objectForwardVector)
         {
             double num;
             Vector3 vector;
@@ -390,12 +343,9 @@ namespace L2dotNET.GameService.Utils
             matrix.M43 = objectPosition.Z;
             matrix.M44 = 1f;
             return matrix;
-
         }
 
-
-        public static void CreateConstrainedBillboard(ref Vector3 objectPosition, ref Vector3 cameraPosition,
-            ref Vector3 rotateAxis, Vector3? cameraForwardVector, Vector3? objectForwardVector, out Matrix result)
+        public static void CreateConstrainedBillboard(ref Vector3 objectPosition, ref Vector3 cameraPosition, ref Vector3 rotateAxis, Vector3? cameraForwardVector, Vector3? objectForwardVector, out Matrix result)
         {
             double num;
             Vector3 vector;
@@ -460,9 +410,7 @@ namespace L2dotNET.GameService.Utils
             result.M42 = objectPosition.Y;
             result.M43 = objectPosition.Z;
             result.M44 = 1f;
-
         }
-
 
         public static Matrix CreateFromAxisAngle(Vector3 axis, double angle)
         {
@@ -495,9 +443,7 @@ namespace L2dotNET.GameService.Utils
             matrix.M43 = 0f;
             matrix.M44 = 1f;
             return matrix;
-
         }
-
 
         public static void CreateFromAxisAngle(ref Vector3 axis, double angle, out Matrix result)
         {
@@ -530,7 +476,6 @@ namespace L2dotNET.GameService.Utils
             result.M44 = 1f;
         }
 
-
         public static Matrix CreateFromQuaternion(Quaternion quaternion)
         {
             Matrix matrix;
@@ -561,7 +506,6 @@ namespace L2dotNET.GameService.Utils
             matrix.M44 = 1f;
             return matrix;
         }
-
 
         public static void CreateFromQuaternion(ref Quaternion quaternion, out Matrix result)
         {
@@ -601,11 +545,7 @@ namespace L2dotNET.GameService.Utils
             return matrix;
         }
 
-        public static void CreateFromYawPitchRoll(
-         double yaw,
-         double pitch,
-         double roll,
-         out Matrix result)
+        public static void CreateFromYawPitchRoll(double yaw, double pitch, double roll, out Matrix result)
         {
             Quaternion quaternion;
             Quaternion.CreateFromYawPitchRoll(yaw, pitch, roll, out quaternion);
@@ -636,7 +576,6 @@ namespace L2dotNET.GameService.Utils
             matrix.M44 = 1f;
             return matrix;
 
-
             /*
             Matrix m = identity;
             
@@ -664,7 +603,6 @@ namespace L2dotNET.GameService.Utils
             //return m;
         }
 
-
         public static void CreateLookAt(ref Vector3 cameraPosition, ref Vector3 cameraTarget, ref Vector3 cameraUpVector, out Matrix result)
         {
             Vector3 vector = Vector3.Normalize(cameraPosition - cameraTarget);
@@ -688,7 +626,6 @@ namespace L2dotNET.GameService.Utils
             result.M44 = 1f;
         }
 
-
         public static Matrix CreateOrthographic(double width, double height, double zNearPlane, double zFarPlane)
         {
             Matrix matrix;
@@ -704,7 +641,6 @@ namespace L2dotNET.GameService.Utils
             return matrix;
         }
 
-
         public static void CreateOrthographic(double width, double height, double zNearPlane, double zFarPlane, out Matrix result)
         {
             result.M11 = 2f / width;
@@ -717,7 +653,6 @@ namespace L2dotNET.GameService.Utils
             result.M43 = zNearPlane / (zNearPlane - zFarPlane);
             result.M44 = 1f;
         }
-
 
         public static Matrix CreateOrthographicOffCenter(double left, double right, double bottom, double top, double zNearPlane, double zFarPlane)
         {
@@ -740,7 +675,6 @@ namespace L2dotNET.GameService.Utils
             matrix.M44 = 1.0f;
             return matrix;
         }
-
 
         public static void CreateOrthographicOffCenter(double left, double right, double bottom, double top, double zNearPlane, double zFarPlane, out Matrix result)
         {
@@ -789,7 +723,6 @@ namespace L2dotNET.GameService.Utils
             return matrix;
         }
 
-
         public static void CreatePerspective(double width, double height, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
         {
             if (nearPlaneDistance <= 0f)
@@ -814,7 +747,6 @@ namespace L2dotNET.GameService.Utils
             result.M41 = result.M42 = result.M44 = 0f;
             result.M43 = (nearPlaneDistance * farPlaneDistance) / (nearPlaneDistance - farPlaneDistance);
         }
-
 
         public static Matrix CreatePerspectiveFieldOfView(double fieldOfView, double aspectRatio, double nearPlaneDistance, double farPlaneDistance)
         {
@@ -849,7 +781,6 @@ namespace L2dotNET.GameService.Utils
             return matrix;
         }
 
-
         public static void CreatePerspectiveFieldOfView(double fieldOfView, double aspectRatio, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
         {
             if ((fieldOfView <= 0f) || (fieldOfView >= 3.141593f))
@@ -881,7 +812,6 @@ namespace L2dotNET.GameService.Utils
             result.M43 = (nearPlaneDistance * farPlaneDistance) / (nearPlaneDistance - farPlaneDistance);
         }
 
-
         public static Matrix CreatePerspectiveOffCenter(double left, double right, double bottom, double top, double nearPlaneDistance, double farPlaneDistance)
         {
             Matrix matrix;
@@ -910,7 +840,6 @@ namespace L2dotNET.GameService.Utils
             return matrix;
         }
 
-
         public static void CreatePerspectiveOffCenter(double left, double right, double bottom, double top, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
         {
             if (nearPlaneDistance <= 0f)
@@ -937,7 +866,6 @@ namespace L2dotNET.GameService.Utils
             result.M41 = result.M42 = result.M44 = 0f;
         }
 
-
         public static Matrix CreateRotationX(double radians)
         {
             Matrix returnMatrix = Matrix.Identity;
@@ -951,9 +879,7 @@ namespace L2dotNET.GameService.Utils
             returnMatrix.M33 = val1;
 
             return returnMatrix;
-
         }
-
 
         public static void CreateRotationX(double radians, out Matrix result)
         {
@@ -983,7 +909,6 @@ namespace L2dotNET.GameService.Utils
             return returnMatrix;
         }
 
-
         public static void CreateRotationY(double radians, out Matrix result)
         {
             result = Matrix.Identity;
@@ -996,7 +921,6 @@ namespace L2dotNET.GameService.Utils
             result.M31 = val2;
             result.M33 = val1;
         }
-
 
         public static Matrix CreateRotationZ(double radians)
         {
@@ -1013,7 +937,6 @@ namespace L2dotNET.GameService.Utils
             return returnMatrix;
         }
 
-
         public static void CreateRotationZ(double radians, out Matrix result)
         {
             result = Matrix.Identity;
@@ -1026,7 +949,6 @@ namespace L2dotNET.GameService.Utils
             result.M21 = -val2;
             result.M22 = val1;
         }
-
 
         public static Matrix CreateScale(double scale)
         {
@@ -1050,7 +972,6 @@ namespace L2dotNET.GameService.Utils
             return result;
         }
 
-
         public static void CreateScale(double scale, out Matrix result)
         {
             result.M11 = scale;
@@ -1070,7 +991,6 @@ namespace L2dotNET.GameService.Utils
             result.M43 = 0;
             result.M44 = 1;
         }
-
 
         public static Matrix CreateScale(double xScale, double yScale, double zScale)
         {
@@ -1094,7 +1014,6 @@ namespace L2dotNET.GameService.Utils
             return result;
         }
 
-
         public static void CreateScale(double xScale, double yScale, double zScale, out Matrix result)
         {
             result.M11 = xScale;
@@ -1114,7 +1033,6 @@ namespace L2dotNET.GameService.Utils
             result.M43 = 0;
             result.M44 = 1;
         }
-
 
         public static Matrix CreateScale(Vector3 scales)
         {
@@ -1137,7 +1055,6 @@ namespace L2dotNET.GameService.Utils
             result.M44 = 1;
             return result;
         }
-
 
         public static void CreateScale(ref Vector3 scales, out Matrix result)
         {
@@ -1181,7 +1098,6 @@ namespace L2dotNET.GameService.Utils
             return result;
         }
 
-
         public static void CreateTranslation(ref Vector3 position, out Matrix result)
         {
             result.M11 = 1;
@@ -1201,7 +1117,6 @@ namespace L2dotNET.GameService.Utils
             result.M43 = position.Z;
             result.M44 = 1;
         }
-
 
         public static Matrix CreateTranslation(Vector3 position)
         {
@@ -1225,7 +1140,6 @@ namespace L2dotNET.GameService.Utils
             return result;
         }
 
-
         public static void CreateTranslation(double xPosition, double yPosition, double zPosition, out Matrix result)
         {
             result.M11 = 1;
@@ -1245,7 +1159,6 @@ namespace L2dotNET.GameService.Utils
             result.M43 = zPosition;
             result.M44 = 1;
         }
-
 
         public static Matrix CreateWorld(Vector3 position, Vector3 forward, Vector3 up)
         {
@@ -1298,7 +1211,6 @@ namespace L2dotNET.GameService.Utils
             return ((((num22 * (((num11 * num18) - (num10 * num17)) + (num9 * num16))) - (num21 * (((num12 * num18) - (num10 * num15)) + (num9 * num14)))) + (num20 * (((num12 * num17) - (num11 * num15)) + (num9 * num13)))) - (num19 * (((num12 * num16) - (num11 * num14)) + (num10 * num13))));
         }
 
-
         public static Matrix Divide(Matrix matrix1, Matrix matrix2)
         {
             matrix1.M11 = matrix1.M11 / matrix2.M11;
@@ -1320,7 +1232,6 @@ namespace L2dotNET.GameService.Utils
             return matrix1;
         }
 
-
         public static void Divide(ref Matrix matrix1, ref Matrix matrix2, out Matrix result)
         {
             result.M11 = matrix1.M11 / matrix2.M11;
@@ -1340,7 +1251,6 @@ namespace L2dotNET.GameService.Utils
             result.M43 = matrix1.M43 / matrix2.M43;
             result.M44 = matrix1.M44 / matrix2.M44;
         }
-
 
         public static Matrix Divide(Matrix matrix1, double divider)
         {
@@ -1364,7 +1274,6 @@ namespace L2dotNET.GameService.Utils
             return matrix1;
         }
 
-
         public static void Divide(ref Matrix matrix1, double divider, out Matrix result)
         {
             double num = 1f / divider;
@@ -1386,12 +1295,10 @@ namespace L2dotNET.GameService.Utils
             result.M44 = matrix1.M44 * num;
         }
 
-
         public bool Equals(Matrix other)
         {
             return ((((((this.M11 == other.M11) && (this.M22 == other.M22)) && ((this.M33 == other.M33) && (this.M44 == other.M44))) && (((this.M12 == other.M12) && (this.M13 == other.M13)) && ((this.M14 == other.M14) && (this.M21 == other.M21)))) && ((((this.M23 == other.M23) && (this.M24 == other.M24)) && ((this.M31 == other.M31) && (this.M32 == other.M32))) && (((this.M34 == other.M34) && (this.M41 == other.M41)) && (this.M42 == other.M42)))) && (this.M43 == other.M43));
         }
-
 
         public override bool Equals(object obj)
         {
@@ -1403,19 +1310,16 @@ namespace L2dotNET.GameService.Utils
             return flag;
         }
 
-
         public override int GetHashCode()
         {
             return (((((((((((((((this.M11.GetHashCode() + this.M12.GetHashCode()) + this.M13.GetHashCode()) + this.M14.GetHashCode()) + this.M21.GetHashCode()) + this.M22.GetHashCode()) + this.M23.GetHashCode()) + this.M24.GetHashCode()) + this.M31.GetHashCode()) + this.M32.GetHashCode()) + this.M33.GetHashCode()) + this.M34.GetHashCode()) + this.M41.GetHashCode()) + this.M42.GetHashCode()) + this.M43.GetHashCode()) + this.M44.GetHashCode());
         }
-
 
         public static Matrix Invert(Matrix matrix)
         {
             Invert(ref matrix, out matrix);
             return matrix;
         }
-
 
         public static void Invert(ref Matrix matrix, out Matrix result)
         {
@@ -1476,7 +1380,6 @@ namespace L2dotNET.GameService.Utils
             result.M34 = (double)-((double)num1 * (double)num35 - (double)num2 * (double)num37 + (double)num4 * (double)num39) * num27;
             result.M44 = (double)((double)num1 * (double)num36 - (double)num2 * (double)num38 + (double)num3 * (double)num39) * num27;
 
-
             /*
             
             
@@ -1517,7 +1420,6 @@ namespace L2dotNET.GameService.Utils
             */
         }
 
-
         public static Matrix Lerp(Matrix matrix1, Matrix matrix2, double amount)
         {
             matrix1.M11 = matrix1.M11 + ((matrix2.M11 - matrix1.M11) * amount);
@@ -1538,7 +1440,6 @@ namespace L2dotNET.GameService.Utils
             matrix1.M44 = matrix1.M44 + ((matrix2.M44 - matrix1.M44) * amount);
             return matrix1;
         }
-
 
         public static void Lerp(ref Matrix matrix1, ref Matrix matrix2, double amount, out Matrix result)
         {
@@ -1597,7 +1498,6 @@ namespace L2dotNET.GameService.Utils
             return matrix1;
         }
 
-
         public static void Multiply(ref Matrix matrix1, ref Matrix matrix2, out Matrix result)
         {
             var m11 = (((matrix1.M11 * matrix2.M11) + (matrix1.M12 * matrix2.M21)) + (matrix1.M13 * matrix2.M31)) + (matrix1.M14 * matrix2.M41);
@@ -1655,7 +1555,6 @@ namespace L2dotNET.GameService.Utils
             return matrix1;
         }
 
-
         public static void Multiply(ref Matrix matrix1, double factor, out Matrix result)
         {
             result.M11 = matrix1.M11 * factor;
@@ -1674,9 +1573,7 @@ namespace L2dotNET.GameService.Utils
             result.M42 = matrix1.M42 * factor;
             result.M43 = matrix1.M43 * factor;
             result.M44 = matrix1.M44 * factor;
-
         }
-
 
         public static Matrix Negate(Matrix matrix)
         {
@@ -1699,7 +1596,6 @@ namespace L2dotNET.GameService.Utils
             return matrix;
         }
 
-
         public static void Negate(ref Matrix matrix, out Matrix result)
         {
             result.M11 = -matrix.M11;
@@ -1720,13 +1616,11 @@ namespace L2dotNET.GameService.Utils
             result.M44 = -matrix.M44;
         }
 
-
         public static Matrix operator +(Matrix matrix1, Matrix matrix2)
         {
             Matrix.Add(ref matrix1, ref matrix2, out matrix1);
             return matrix1;
         }
-
 
         public static Matrix operator /(Matrix matrix1, Matrix matrix2)
         {
@@ -1748,7 +1642,6 @@ namespace L2dotNET.GameService.Utils
             matrix1.M44 = matrix1.M44 / matrix2.M44;
             return matrix1;
         }
-
 
         public static Matrix operator /(Matrix matrix, double divider)
         {
@@ -1772,52 +1665,15 @@ namespace L2dotNET.GameService.Utils
             return matrix;
         }
 
-
         public static bool operator ==(Matrix matrix1, Matrix matrix2)
         {
-            return (
-                matrix1.M11 == matrix2.M11 &&
-                matrix1.M12 == matrix2.M12 &&
-                matrix1.M13 == matrix2.M13 &&
-                matrix1.M14 == matrix2.M14 &&
-                matrix1.M21 == matrix2.M21 &&
-                matrix1.M22 == matrix2.M22 &&
-                matrix1.M23 == matrix2.M23 &&
-                matrix1.M24 == matrix2.M24 &&
-                matrix1.M31 == matrix2.M31 &&
-                matrix1.M32 == matrix2.M32 &&
-                matrix1.M33 == matrix2.M33 &&
-                matrix1.M34 == matrix2.M34 &&
-                matrix1.M41 == matrix2.M41 &&
-                matrix1.M42 == matrix2.M42 &&
-                matrix1.M43 == matrix2.M43 &&
-                matrix1.M44 == matrix2.M44
-                );
+            return (matrix1.M11 == matrix2.M11 && matrix1.M12 == matrix2.M12 && matrix1.M13 == matrix2.M13 && matrix1.M14 == matrix2.M14 && matrix1.M21 == matrix2.M21 && matrix1.M22 == matrix2.M22 && matrix1.M23 == matrix2.M23 && matrix1.M24 == matrix2.M24 && matrix1.M31 == matrix2.M31 && matrix1.M32 == matrix2.M32 && matrix1.M33 == matrix2.M33 && matrix1.M34 == matrix2.M34 && matrix1.M41 == matrix2.M41 && matrix1.M42 == matrix2.M42 && matrix1.M43 == matrix2.M43 && matrix1.M44 == matrix2.M44);
         }
-
 
         public static bool operator !=(Matrix matrix1, Matrix matrix2)
         {
-            return (
-                matrix1.M11 != matrix2.M11 ||
-                matrix1.M12 != matrix2.M12 ||
-                matrix1.M13 != matrix2.M13 ||
-                matrix1.M14 != matrix2.M14 ||
-                matrix1.M21 != matrix2.M21 ||
-                matrix1.M22 != matrix2.M22 ||
-                matrix1.M23 != matrix2.M23 ||
-                matrix1.M24 != matrix2.M24 ||
-                matrix1.M31 != matrix2.M31 ||
-                matrix1.M32 != matrix2.M32 ||
-                matrix1.M33 != matrix2.M33 ||
-                matrix1.M34 != matrix2.M34 ||
-                matrix1.M41 != matrix2.M41 ||
-                matrix1.M42 != matrix2.M42 ||
-                matrix1.M43 != matrix2.M43 ||
-                matrix1.M44 != matrix2.M44
-                );
+            return (matrix1.M11 != matrix2.M11 || matrix1.M12 != matrix2.M12 || matrix1.M13 != matrix2.M13 || matrix1.M14 != matrix2.M14 || matrix1.M21 != matrix2.M21 || matrix1.M22 != matrix2.M22 || matrix1.M23 != matrix2.M23 || matrix1.M24 != matrix2.M24 || matrix1.M31 != matrix2.M31 || matrix1.M32 != matrix2.M32 || matrix1.M33 != matrix2.M33 || matrix1.M34 != matrix2.M34 || matrix1.M41 != matrix2.M41 || matrix1.M42 != matrix2.M42 || matrix1.M43 != matrix2.M43 || matrix1.M44 != matrix2.M44);
         }
-
 
         public static Matrix operator *(Matrix matrix1, Matrix matrix2)
         {
@@ -1856,7 +1712,6 @@ namespace L2dotNET.GameService.Utils
             return matrix1;
         }
 
-
         public static Matrix operator *(Matrix matrix, double scaleFactor)
         {
             matrix.M11 = matrix.M11 * scaleFactor;
@@ -1877,7 +1732,6 @@ namespace L2dotNET.GameService.Utils
             matrix.M44 = matrix.M44 * scaleFactor;
             return matrix;
         }
-
 
         public static Matrix operator -(Matrix matrix1, Matrix matrix2)
         {
@@ -1900,7 +1754,6 @@ namespace L2dotNET.GameService.Utils
             return matrix1;
         }
 
-
         public static Matrix operator -(Matrix matrix)
         {
             matrix.M11 = -matrix.M11;
@@ -1921,7 +1774,6 @@ namespace L2dotNET.GameService.Utils
             matrix.M44 = -matrix.M44;
             return matrix;
         }
-
 
         public static Matrix Subtract(Matrix matrix1, Matrix matrix2)
         {
@@ -1944,7 +1796,6 @@ namespace L2dotNET.GameService.Utils
             return matrix1;
         }
 
-
         public static void Subtract(ref Matrix matrix1, ref Matrix matrix2, out Matrix result)
         {
             result.M11 = matrix1.M11 - matrix2.M11;
@@ -1965,15 +1816,10 @@ namespace L2dotNET.GameService.Utils
             result.M44 = matrix1.M44 - matrix2.M44;
         }
 
-
         public override string ToString()
         {
-            return "{" + string.Format("M11:{0} M12:{1} M13:{2} M14:{3}", M11, M12, M13, M14) + "}"
-                + " {" + string.Format("M21:{0} M22:{1} M23:{2} M24:{3}", M21, M22, M23, M24) + "}"
-                + " {" + string.Format("M31:{0} M32:{1} M33:{2} M34:{3}", M31, M32, M33, M34) + "}"
-                + " {" + string.Format("M41:{0} M42:{1} M43:{2} M44:{3}", M41, M42, M43, M44) + "}";
+            return "{" + string.Format("M11:{0} M12:{1} M13:{2} M14:{3}", M11, M12, M13, M14) + "}" + " {" + string.Format("M21:{0} M22:{1} M23:{2} M24:{3}", M21, M22, M23, M24) + "}" + " {" + string.Format("M31:{0} M32:{1} M33:{2} M34:{3}", M31, M32, M33, M34) + "}" + " {" + string.Format("M41:{0} M42:{1} M43:{2} M44:{3}", M41, M42, M43, M44) + "}";
         }
-
 
         public static Matrix Transpose(Matrix matrix)
         {
@@ -1981,7 +1827,6 @@ namespace L2dotNET.GameService.Utils
             Transpose(ref matrix, out ret);
             return ret;
         }
-
 
         public static void Transpose(ref Matrix matrix, out Matrix result)
         {
@@ -2005,6 +1850,7 @@ namespace L2dotNET.GameService.Utils
             result.M43 = matrix.M34;
             result.M44 = matrix.M44;
         }
+
         #endregion Public Methods
 
         #region Private Static Methods
@@ -2013,9 +1859,7 @@ namespace L2dotNET.GameService.Utils
         /// Helper method for using the Laplace expansion theorem using two rows expansions to calculate major and 
         /// minor determinants of a 4x4 matrix. This method is used for inverting a matrix.
         /// </summary>
-        private static void findDeterminants(ref Matrix matrix, out double major,
-                                             out double minor1, out double minor2, out double minor3, out double minor4, out double minor5, out double minor6,
-                                             out double minor7, out double minor8, out double minor9, out double minor10, out double minor11, out double minor12)
+        private static void findDeterminants(ref Matrix matrix, out double major, out double minor1, out double minor2, out double minor3, out double minor4, out double minor5, out double minor6, out double minor7, out double minor8, out double minor9, out double minor10, out double minor11, out double minor12)
         {
             double det1 = (double)matrix.M11 * (double)matrix.M22 - (double)matrix.M12 * (double)matrix.M21;
             double det2 = (double)matrix.M11 * (double)matrix.M23 - (double)matrix.M13 * (double)matrix.M21;
@@ -2067,14 +1911,10 @@ namespace L2dotNET.GameService.Utils
                 return false;
             }
 
-            Matrix m1 = new Matrix(this.M11 / scale.X, M12 / scale.X, M13 / scale.X, 0,
-                                      this.M21 / scale.Y, M22 / scale.Y, M23 / scale.Y, 0,
-                                      this.M31 / scale.Z, M32 / scale.Z, M33 / scale.Z, 0,
-                                      0, 0, 0, 1);
+            Matrix m1 = new Matrix(this.M11 / scale.X, M12 / scale.X, M13 / scale.X, 0, this.M21 / scale.Y, M22 / scale.Y, M23 / scale.Y, 0, this.M31 / scale.Z, M32 / scale.Z, M33 / scale.Z, 0, 0, 0, 0, 1);
 
             rotation = Quaternion.CreateFromRotationMatrix(m1);
             return true;
         }
-
     }
 }

@@ -51,43 +51,43 @@ namespace L2dotNET.GameService.tables
                         switch (stp.Name.LocalName)
                         {
                             case "material":
+                            {
+                                rec._mp_consume = int.Parse(stp.Attribute("mp").Value);
+                                foreach (var items in stp.Elements())
                                 {
-                                    rec._mp_consume = int.Parse(stp.Attribute("mp").Value);
-                                    foreach (var items in stp.Elements())
+                                    if (items.Name == "item")
                                     {
-                                        if (items.Name == "item")
-                                        {
-                                            recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
-                                            rec._materials.Add(item);
-                                        }
+                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
+                                        rec._materials.Add(item);
                                     }
                                 }
+                            }
                                 break;
                             case "product":
+                            {
+                                rec._success_rate = int.Parse(stp.Attribute("rate").Value);
+                                foreach (var items in stp.Elements())
                                 {
-                                    rec._success_rate = int.Parse(stp.Attribute("rate").Value);
-                                    foreach (var items in stp.Elements())
+                                    if (items.Name == "item")
                                     {
-                                        if (items.Name == "item")
-                                        {
-                                            recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
-                                            item.rate = double.Parse(items.Attribute("rate").Value);
-                                            rec._products.Add(item);
-                                        }
+                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
+                                        item.rate = double.Parse(items.Attribute("rate").Value);
+                                        rec._products.Add(item);
                                     }
                                 }
+                            }
                                 break;
                             case "fee":
+                            {
+                                foreach (var items in stp.Elements())
                                 {
-                                    foreach (var items in stp.Elements())
+                                    if (items.Name == "item")
                                     {
-                                        if (items.Name == "item")
-                                        {
-                                            recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
-                                            rec._npcFee.Add(item);
-                                        }
+                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
+                                        rec._npcFee.Add(item);
                                     }
                                 }
+                            }
                                 break;
                         }
                     }
@@ -101,10 +101,7 @@ namespace L2dotNET.GameService.tables
 
         public readonly SortedList<int, L2Recipe> _recipes = new SortedList<int, L2Recipe>();
 
-        public RecipeTable()
-        {
-
-        }
+        public RecipeTable() { }
 
         public L2Recipe GetById(int p)
         {
@@ -139,7 +136,7 @@ namespace L2dotNET.GameService.tables
         public List<recipe_item_entry> _materials = new List<recipe_item_entry>();
         public List<recipe_item_entry> _products = new List<recipe_item_entry>();
         public List<recipe_item_entry> _npcFee = new List<recipe_item_entry>();
-        public string mk; 
+        public string mk;
     }
 
     public class recipe_item_entry

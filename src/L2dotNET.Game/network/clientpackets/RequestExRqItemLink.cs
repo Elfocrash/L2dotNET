@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2recv
     class RequestExRqItemLink : GameServerNetworkRequest
     {
         private int _objectId;
+
         public RequestExRqItemLink(GameClient client, byte[] data)
         {
             base.makeme(client, data, 2);

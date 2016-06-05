@@ -75,7 +75,7 @@ namespace L2dotNET.GameService.tables.admin
             target.sendPacket(new AcquireSkillList(0, target));
 
             target.updateSkillList();
-            target.sendMessage("gor all skills [" + skills.skills.Count+ "]["+avail.Count+"] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id.ToString());
+            target.sendMessage("gor all skills [" + skills.skills.Count + "][" + avail.Count + "] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id.ToString());
         }
     }
 }

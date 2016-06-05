@@ -45,10 +45,7 @@ namespace L2dotNET.GameService.model.events
         public List<int[]> zoneLoc;
         public int TICKET = 4443, TICKET_DOUBLE = 4444;
 
-        public MonsterRace()
-        {
-
-        }
+        public MonsterRace() { }
 
         public void Initialize()
         {
@@ -105,6 +102,7 @@ namespace L2dotNET.GameService.model.events
         }
 
         private L2RaceManager raceManager1, raceManager2;
+
         private void GenNpc()
         {
             NpcTemplate nt = NpcTable.Instance.GetNpcTemplate(30995);
@@ -127,6 +125,7 @@ namespace L2dotNET.GameService.model.events
         public int currentRaceId = 1, timeToStart, maxSpd = 0, rnd, raceTimeProgress;
         public System.Timers.Timer raceStartTime, raceInProgress;
         private readonly Random rn = new Random();
+
         public void startRace()
         {
             maxSpd = 0;
@@ -259,7 +258,7 @@ namespace L2dotNET.GameService.model.events
                     secondLine = runners[a + rnd].lineId;
                 }
             }
-            
+
             sm = new SystemMessage(SystemMessage.SystemMessageId.MONSRACE_FIRST_PLACE_S1_SECOND_S2);
             sm.AddNumber(firstLine);
             sm.AddNumber(secondLine);
@@ -301,7 +300,7 @@ namespace L2dotNET.GameService.model.events
                 }
                 else
                 {
-                    log.Info($"AreaTable[hideout]: null region at { template._x[i] } { template._y[i] } for zone { Zone.Name }");
+                    log.Info($"AreaTable[hideout]: null region at {template._x[i]} {template._y[i]} for zone {Zone.Name}");
                 }
             }
         }
@@ -312,11 +311,9 @@ namespace L2dotNET.GameService.model.events
             {
                 player.ShowHtm("mr_keeper.htm", npc);
             }
-            else if (cmd.Equals("_mrvw01"))//View Odds
-            {
-
-            }
-            else if (cmd.Equals("_mrvw20"))//View Monster Information
+            else if (cmd.Equals("_mrvw01")) //View Odds
+            { }
+            else if (cmd.Equals("_mrvw20")) //View Monster Information
             {
                 if (status == 1)
                 {
@@ -335,7 +332,7 @@ namespace L2dotNET.GameService.model.events
                     player.sendPacket(htm);
                 }
             }
-            else if (cmd.Equals("_mrbu01"))//Purchase Ticket
+            else if (cmd.Equals("_mrbu01")) //Purchase Ticket
             {
                 if (status == 1)
                 {
@@ -356,14 +353,10 @@ namespace L2dotNET.GameService.model.events
                     player.sendPacket(htm);
                 }
             }
-            else if (cmd.Equals("_mrsl01"))//Calculate Winnings
-            {
-
-            }
-            else if (cmd.Equals("_mrvw31"))//View Past Results
-            {
-
-            }
+            else if (cmd.Equals("_mrsl01")) //Calculate Winnings
+            { }
+            else if (cmd.Equals("_mrvw31")) //View Past Results
+            { }
             else if (cmd.StartsWith("_mrbu2"))
             {
                 byte line = Convert.ToByte(cmd.Split(' ')[1]);
@@ -372,14 +365,30 @@ namespace L2dotNET.GameService.model.events
                 int adena = 0;
                 switch (cost)
                 {
-                    case 1: adena = 100; break;
-                    case 2: adena = 500; break;
-                    case 3: adena = 1000; break;
-                    case 4: adena = 5000; break;
-                    case 5: adena = 10000; break;
-                    case 6: adena = 20000; break;
-                    case 7: adena = 50000; break;
-                    case 8: adena = 100000; break;
+                    case 1:
+                        adena = 100;
+                        break;
+                    case 2:
+                        adena = 500;
+                        break;
+                    case 3:
+                        adena = 1000;
+                        break;
+                    case 4:
+                        adena = 5000;
+                        break;
+                    case 5:
+                        adena = 10000;
+                        break;
+                    case 6:
+                        adena = 20000;
+                        break;
+                    case 7:
+                        adena = 50000;
+                        break;
+                    case 8:
+                        adena = 100000;
+                        break;
                 }
 
                 MonsterRunner mr = runners[line + rnd];
@@ -405,14 +414,30 @@ namespace L2dotNET.GameService.model.events
                 int adena = 0;
                 switch (cost)
                 {
-                    case 1: adena = 100; break;
-                    case 2: adena = 500; break;
-                    case 3: adena = 1000; break;
-                    case 4: adena = 5000; break;
-                    case 5: adena = 10000; break;
-                    case 6: adena = 20000; break;
-                    case 7: adena = 50000; break;
-                    case 8: adena = 100000; break;
+                    case 1:
+                        adena = 100;
+                        break;
+                    case 2:
+                        adena = 500;
+                        break;
+                    case 3:
+                        adena = 1000;
+                        break;
+                    case 4:
+                        adena = 5000;
+                        break;
+                    case 5:
+                        adena = 10000;
+                        break;
+                    case 6:
+                        adena = 20000;
+                        break;
+                    case 7:
+                        adena = 50000;
+                        break;
+                    case 8:
+                        adena = 100000;
+                        break;
                 }
 
                 MonsterRunner mr = runners[line + rnd];
@@ -439,14 +464,30 @@ namespace L2dotNET.GameService.model.events
                 int adena = 0;
                 switch (cost)
                 {
-                    case 1: adena = 100; break;
-                    case 2: adena = 500; break;
-                    case 3: adena = 1000; break;
-                    case 4: adena = 5000; break;
-                    case 5: adena = 10000; break;
-                    case 6: adena = 20000; break;
-                    case 7: adena = 50000; break;
-                    case 8: adena = 100000; break;
+                    case 1:
+                        adena = 100;
+                        break;
+                    case 2:
+                        adena = 500;
+                        break;
+                    case 3:
+                        adena = 1000;
+                        break;
+                    case 4:
+                        adena = 5000;
+                        break;
+                    case 5:
+                        adena = 10000;
+                        break;
+                    case 6:
+                        adena = 20000;
+                        break;
+                    case 7:
+                        adena = 50000;
+                        break;
+                    case 8:
+                        adena = 100000;
+                        break;
                 }
 
                 if (player.getAdena() < adena)
@@ -473,6 +514,7 @@ namespace L2dotNET.GameService.model.events
         private static readonly ILog log = LogManager.GetLogger(typeof(MonsterRace));
 
         public int id, npcId, sys_string, max_speed, min_speed;
+
         public MonsterRunner(int npcId, int sys_string, int max_speed, int min_speed)
         {
             this.npcId = npcId;
@@ -505,7 +547,7 @@ namespace L2dotNET.GameService.model.events
 
             finishTime = (1 + (int)(10 * 2000 / cur_speed)) * 100;
             runCount++;
-            log.Info($"runner #{ id } spd { cur_speed } , ms { finishTime }");
+            log.Info($"runner #{id} spd {cur_speed} , ms {finishTime}");
             return cur_speed;
         }
     }

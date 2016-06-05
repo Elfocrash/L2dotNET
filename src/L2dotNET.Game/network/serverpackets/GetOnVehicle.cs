@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class GetOnVehicle : GameServerNetworkPacket
     {
         private readonly L2Player player;
+
         public GetOnVehicle(L2Player player)
         {
             this.player = player;

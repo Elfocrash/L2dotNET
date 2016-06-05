@@ -27,6 +27,5 @@ namespace L2dotNET.GameService
 
         [JsonProperty(PropertyName = "max_players")]
         public int MaxPlayers { get; set; }
-
     }
 }

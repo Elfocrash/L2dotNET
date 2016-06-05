@@ -8,9 +8,6 @@
 
         public int Type { get; set; }
 
-        public AnnouncementModel()
-        {
-
-        }
+        public AnnouncementModel() { }
     }
 }

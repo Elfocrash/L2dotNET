@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.network.l2recv
     {
         private int a_sTargetID;
         private int a_sSupportID;
+
         public RequestEnchantItem(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -46,7 +47,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (player.EnchantItem.Enchant < 4)
                 rate = 100;
-            
+
             if (rate > 100)
                 rate = 100;
 
@@ -89,34 +90,34 @@ namespace L2dotNET.GameService.network.l2recv
                         player.sendPacket(new EnchantResult(EnchantResultVal.safeBreak));
                         break;
                     default:
+                    {
+                        if (player.EnchantItem._isEquipped == 1)
                         {
-                            if (player.EnchantItem._isEquipped == 1)
-                            {
-                                int pdollId = player.Inventory.getPaperdollId(player.EnchantItem.Template);
-                                player.setPaperdoll(pdollId, null, false);
-                                equip = true;
-                            }
-
-                            player.Inventory.removeItem(player.EnchantItem);
-                            iu = new InventoryUpdate();
-                            iu.addDelItem(player.EnchantItem);
-
-                            long cry = player.EnchantItem.Template._cryCount;
-
-                            if (cry == 0)
-                                player.sendPacket(new EnchantResult(EnchantResultVal.breakToNothing));
-                            else
-                            {
-                                int id = player.EnchantItem.Template.getCrystallId();
-                                player.sendPacket(new EnchantResult(EnchantResultVal.breakToCount, id, cry));
-                                player.Inventory.addItem(id, cry, true, true);
-                            }
+                            int pdollId = player.Inventory.getPaperdollId(player.EnchantItem.Template);
+                            player.setPaperdoll(pdollId, null, false);
+                            equip = true;
                         }
+
+                        player.Inventory.removeItem(player.EnchantItem);
+                        iu = new InventoryUpdate();
+                        iu.addDelItem(player.EnchantItem);
+
+                        long cry = player.EnchantItem.Template._cryCount;
+
+                        if (cry == 0)
+                            player.sendPacket(new EnchantResult(EnchantResultVal.breakToNothing));
+                        else
+                        {
+                            int id = player.EnchantItem.Template.getCrystallId();
+                            player.sendPacket(new EnchantResult(EnchantResultVal.breakToCount, id, cry));
+                            player.Inventory.addItem(id, cry, true, true);
+                        }
+                    }
                         break;
                 }
             }
 
-            if(player.EnchantStone != null)
+            if (player.EnchantStone != null)
                 player.Inventory.destroyItem(player.EnchantStone, 1, true, true);
 
             player.Inventory.destroyItem(player.EnchantScroll, 1, false, true);

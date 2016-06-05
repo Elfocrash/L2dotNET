@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class ExRpItemLink : GameServerNetworkPacket
     {
         private readonly L2Item item;
+
         public ExRpItemLink(L2Item item)
         {
             this.item = item;

@@ -1,10 +1,10 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class ExBR_GamePoint : GameServerNetworkPacket
     {
         private readonly int id;
         private readonly long points;
+
         public ExBR_GamePoint(int id, long points)
         {
             this.id = id;

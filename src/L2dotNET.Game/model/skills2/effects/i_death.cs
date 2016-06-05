@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.model.skills2.effects
     {
         private int death_type;
         private int rate;
+
         public override void build(string str)
         {
             string[] v = str.Split(' ');
@@ -17,10 +18,9 @@ namespace L2dotNET.GameService.model.skills2.effects
         public override TEffectResult onStart(L2Character caster, world.L2Character target)
         {
             if (new Random().Next(100) < rate)
-                target.sendMessage("i_death "+death_type+" done on you");
+                target.sendMessage("i_death " + death_type + " done on you");
 
             return nothing;
         }
-
     }
 }

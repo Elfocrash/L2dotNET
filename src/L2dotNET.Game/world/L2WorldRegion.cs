@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.world
 
         public string getName()
         {
-            return "WorldRegion:"+_tileX + "_" + _tileY;
+            return "WorldRegion:" + _tileX + "_" + _tileY;
         }
 
         public SortedDictionary<int, L2Object> _objects = new SortedDictionary<int, L2Object>();
@@ -39,8 +39,8 @@ namespace L2dotNET.GameService.world
         public void realiseMe(L2Object obj, GameServerNetworkPacket pk, bool pkuse)
         {
             if (_objects.ContainsKey(obj.ObjID))
-            {                
-                log.Info($"{ getName() } error, object { obj.ObjID } already in here.");
+            {
+                log.Info($"{getName()} error, object {obj.ObjID} already in here.");
                 return;
             }
 
@@ -74,7 +74,6 @@ namespace L2dotNET.GameService.world
 
         public void checkZones(L2Object obj, bool main)
         {
-
             if (main)
                 foreach (L2WorldRegion wrn in _surroundingRegions)
                     wrn.checkZones(obj, false);
@@ -108,7 +107,7 @@ namespace L2dotNET.GameService.world
                     obj.removeKnownObject(ko, true);
                 }
             }
-                
+
             if (main)
                 foreach (L2WorldRegion wrn in _surroundingRegions)
                     wrn.showObjects(obj, false, radius, height, delLongest, zones);

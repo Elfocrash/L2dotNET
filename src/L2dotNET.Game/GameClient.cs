@@ -18,7 +18,10 @@ namespace L2dotNET.GameService
     public class GameClient
     {
         [Inject]
-        public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
+        public IPlayerService playerService
+        {
+            get { return GameServer.Kernel.Get<IPlayerService>(); }
+        }
 
         private static readonly ILog log = LogManager.GetLogger(typeof(GameClient));
 
@@ -40,7 +43,7 @@ namespace L2dotNET.GameService
 
         public GameClient(TcpClient tcpClient)
         {
-            log.Info($"connection from { tcpClient.Client.RemoteEndPoint }");
+            log.Info($"connection from {tcpClient.Client.RemoteEndPoint}");
             _client = tcpClient;
             _stream = tcpClient.GetStream();
             _address = tcpClient.Client.RemoteEndPoint;
@@ -70,7 +73,6 @@ namespace L2dotNET.GameService
 
             if (sbp is CharacterSelectionInfo)
             {
-
                 // byte[] st = ToByteArray();
                 //foreach (byte s in data)
                 //    log.Info($"{ s.ToString("x2") } ");
@@ -83,7 +85,7 @@ namespace L2dotNET.GameService
             }
             catch
             {
-                log.Info($"client { AccountName } terminated.");
+                log.Info($"client {AccountName} terminated.");
                 termination();
             }
         }
@@ -172,10 +174,8 @@ namespace L2dotNET.GameService
         }
 
         public void RemoveAccountCharAndResetSlotIndex(int charSlot)
-        {   
-            AccountChars = AccountChars.Where(filter => filter.CharSlot != charSlot)
-                                       .OrderBy(orderby => orderby.CharSlot)
-                                       .ToList();
+        {
+            AccountChars = AccountChars.Where(filter => filter.CharSlot != charSlot).OrderBy(orderby => orderby.CharSlot).ToList();
 
             for (int i = 0; i < AccountChars.Count; i++)
                 AccountChars[i].CharSlot = i;

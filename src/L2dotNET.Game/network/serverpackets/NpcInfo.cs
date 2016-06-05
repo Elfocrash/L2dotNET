@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.network.l2send
     class NpcInfo : GameServerNetworkPacket
     {
         private readonly L2Citizen npc;
+
         public NpcInfo(L2Citizen npc)
         {
             this.npc = npc;
@@ -33,8 +34,8 @@ namespace L2dotNET.GameService.network.l2send
             writeD(atkspd);
             writeD(spd);
             writeD(spd * .8);
-            writeD(0);  // swimspeed
-            writeD(0);  // swimspeed
+            writeD(0); // swimspeed
+            writeD(0); // swimspeed
             writeD(0);
             writeD(0);
             writeD(0);
@@ -47,7 +48,7 @@ namespace L2dotNET.GameService.network.l2send
             writeD(npc.Template.slot_rhand_id); // right hand weapon
             writeD(0);
             writeD(npc.Template.slot_lhand_id); // left hand weapon
-            writeC(1);	// name above char 1=true ... ??
+            writeC(1); // name above char 1=true ... ??
             writeC(npc.isRunning());
             writeC(npc.isInCombat() ? 1 : 0);
             writeC(npc.isAlikeDead());
@@ -59,7 +60,7 @@ namespace L2dotNET.GameService.network.l2send
             writeD(0x00); // karma
 
             writeD(npc.AbnormalBitMask);
-            writeD(npc.ClanId); 
+            writeD(npc.ClanId);
             writeD(npc.ClanCrestId);
             writeD(npc.AllianceId);
             writeD(npc.AllianceCrestId);
@@ -71,11 +72,11 @@ namespace L2dotNET.GameService.network.l2send
             writeD(0); // enchant
             writeD(npc.isFlying() ? 1 : 0); // C6
             writeD(0x00);
-            writeD(0x00);  //red?
+            writeD(0x00); //red?
             writeC(0x01);
             writeC(0x01);
             writeD(npc.AbnormalBitMaskEx);
-            writeD(0x00);//freya
+            writeD(0x00); //freya
         }
     }
 }

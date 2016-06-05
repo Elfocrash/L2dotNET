@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.model.inventory
     {
         private readonly L2Player _owner;
         public List<L2Item> _items = new List<L2Item>();
+
         public InvRefund(L2Player owner)
         {
             _owner = owner;
@@ -67,7 +68,7 @@ namespace L2dotNET.GameService.model.inventory
                                 ins.Count = itemd[1];
                                 ins.Location = L2Item.L2ItemLocation.refund;
                                 _items.Add(ins);
-                                    
+
                                 ins.sql_insert(_owner.ObjID);
 
                                 if (update)
@@ -87,7 +88,7 @@ namespace L2dotNET.GameService.model.inventory
                         }
                     }
                 }
-             }
+            }
 
             lock (player.Inventory.Items)
             {

@@ -10,7 +10,10 @@ namespace L2dotNET.GameService
         private static readonly ILog log = LogManager.GetLogger(typeof(PreReqValidation));
 
         [Inject]
-        public ICheckService checkService { get { return GameServer.Kernel.Get<ICheckService>(); } }
+        public ICheckService checkService
+        {
+            get { return GameServer.Kernel.Get<ICheckService>(); }
+        }
 
         private static volatile PreReqValidation instance;
         private static readonly object syncRoot = new object();
@@ -34,10 +37,7 @@ namespace L2dotNET.GameService
             }
         }
 
-        public PreReqValidation()
-        {
-
-        }
+        public PreReqValidation() { }
 
         public void Initialize()
         {

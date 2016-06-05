@@ -35,7 +35,7 @@ namespace L2dotNET.GameService.model.items
         public void Initialize()
         {
             LoadXML();
-            log.Info($"Capsule: Loaded { items.Count } items.");
+            log.Info($"Capsule: Loaded {items.Count} items.");
         }
 
         public SortedList<int, CapsuleItem> items = new SortedList<int, CapsuleItem>();
@@ -58,10 +58,7 @@ namespace L2dotNET.GameService.model.items
             }
         }
 
-        public Capsule()
-        {
-
-        }
+        public Capsule() { }
 
         public void LoadXML()
         {
@@ -95,7 +92,6 @@ namespace L2dotNET.GameService.model.items
                                 }
                                 break;
                         }
-
                     }
 
                     items.Add(caps.id, caps);

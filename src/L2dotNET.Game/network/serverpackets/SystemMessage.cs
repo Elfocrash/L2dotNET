@@ -145,7 +145,6 @@ namespace L2dotNET.GameService.network.l2send
             }
         }
 
-
         public enum SystemMessageId
         {
             ///<summary>You have been disconnected from the server.</summary>
@@ -4071,7 +4070,6 @@ namespace L2dotNET.GameService.network.l2send
             CURRENTLY_LOGGING_IN = 2030,
             ///<summary>Please wait a moment.</summary>
             PLEASE_WAIT_A_MOMENT = 2031,
-
 
             //Added (Missing?)
             ///<summary>You can only register 16x12 pixel 256 color bmp files.</summary>            

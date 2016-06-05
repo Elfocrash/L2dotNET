@@ -40,7 +40,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             if (item == null)
             {
-                player.sendMessage("null item " + sID); 
+                player.sendMessage("null item " + sID);
                 player.sendActionFailed();
                 return;
             }

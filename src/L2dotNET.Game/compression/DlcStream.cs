@@ -10,6 +10,7 @@ namespace L2dotNET.GameService.compression
         public GZipStream stream;
         public FileStream stream2;
         private readonly byte[] dlcStr = Encoding.UTF8.GetBytes("DLC");
+
         public DlcStream(FileStream fstream, CompressionMode cm)
         {
             this.stream = new GZipStream(fstream, cm);

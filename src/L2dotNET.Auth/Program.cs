@@ -18,7 +18,7 @@ namespace L2dotNET.LoginService
 
         private static void SetConsoleConfigurations()
         {
-            Console.Title = "L2dotNET LoginServer"; 
+            Console.Title = "L2dotNET LoginServer";
             Console.WindowWidth = (Console.LargestWindowWidth * 7 / 10);
         }
 

@@ -29,6 +29,7 @@ namespace L2dotNET.GameService.model.npcs.cubic
         private L2Character target;
         private L2Player caster;
         private TSkill cast;
+
         public void CallSkill(L2Player caster, TSkill skill, L2Character target)
         {
             if (SkillCast == null)
@@ -74,7 +75,7 @@ namespace L2dotNET.GameService.model.npcs.cubic
                             caster.sendPacket(sm);
                         }
                         else if (ts.TotalMinutes > 0)
-                        {   
+                        {
                             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_MINUTES_S3_SECONDS_REMAINING_IN_S1_REUSE_TIME);
                             sm.AddSkillName(cast.skill_id, cast.level);
                             sm.AddNumber((int)ts.Minutes);
@@ -82,7 +83,7 @@ namespace L2dotNET.GameService.model.npcs.cubic
                             caster.sendPacket(sm);
                         }
                         else
-                        {   
+                        {
                             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_SECONDS_REMAINING_IN_S1_REUSE_TIME);
                             sm.AddSkillName(cast.skill_id, cast.level);
                             sm.AddNumber((int)ts.Seconds);
@@ -93,9 +94,6 @@ namespace L2dotNET.GameService.model.npcs.cubic
                     }
                 }
             }
-
-
-
 
             //do
 

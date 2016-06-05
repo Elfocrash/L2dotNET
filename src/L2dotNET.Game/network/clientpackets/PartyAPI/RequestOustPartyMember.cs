@@ -1,11 +1,11 @@
-﻿
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {
     class RequestOustPartyMember : GameServerNetworkRequest
     {
         private string name;
+
         public RequestOustPartyMember(GameClient client, byte[] data)
         {
             base.makeme(client, data);

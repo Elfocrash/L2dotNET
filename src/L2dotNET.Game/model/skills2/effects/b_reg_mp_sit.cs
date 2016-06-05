@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.model.skills2.effects
     class b_reg_mp_sit : TEffect
     {
         private TSpecEffect ef;
+
         public override void build(string str)
         {
             string val = str.Split(' ')[1];
@@ -27,7 +28,7 @@ namespace L2dotNET.GameService.model.skills2.effects
             if (!(target is L2Player))
                 return nothing;
 
-            lock(((L2Player)target).specEffects)
+            lock (((L2Player)target).specEffects)
                 ((L2Player)target).specEffects.Remove(ef);
 
             return nothing;

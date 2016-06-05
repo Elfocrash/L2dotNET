@@ -25,19 +25,17 @@ namespace L2dotNET.GameService.model.items
 
         public int MpConsume = 0;
         public int LimitedMinutes = 0;
+
         public bool isAutoSS
         {
-            get 
-            {
-                return default_action == "action_soulshot" || default_action == "action_spiritshot" || default_action == "action_summon_soulshot" || default_action == "action_summon_spiritshot";
-            }
+            get { return default_action == "action_soulshot" || default_action == "action_spiritshot" || default_action == "action_summon_soulshot" || default_action == "action_summon_spiritshot"; }
         }
 
         public int SoulshotCount = 0, SpiritshotCount = 0;
         public long Price = 0;
         public int AbnormalMaskEvent = 0;
 
-      //  public TSkill critical_attack_skill, attack_skill, magic_skill;
+        //  public TSkill critical_attack_skill, attack_skill, magic_skill;
 
         public int is_trade = 1, is_drop = 1, is_destruct = 1, enchant_enable = 0;
         public int is_private_store = 1, elemental_enable = 0, is_olympiad_can_use = 1, is_premium = 0;
@@ -104,22 +102,39 @@ namespace L2dotNET.GameService.model.items
 
         public enum L2ItemType
         {
-            weapon, armor, etcitem, questitem, accessary, asset
+            weapon,
+            armor,
+            etcitem,
+            questitem,
+            accessary,
+            asset
         }
 
         public enum L2ItemArmorType
         {
-            none, magic, light, heavy
+            none,
+            magic,
+            light,
+            heavy
         }
 
         public enum L2ItemConsume
         {
-            normal, stackable
+            normal,
+            stackable
         }
 
         public enum L2ItemGrade
         {
-            none, d, c, b, a, s, s80, s84, s86
+            none,
+            d,
+            c,
+            b,
+            a,
+            s,
+            s80,
+            s84,
+            s86
         }
 
         public enum L2ItemWeaponType
@@ -133,7 +148,7 @@ namespace L2dotNET.GameService.model.items
             fist,
             dualfist,
             bow,
-            etc,//book
+            etc, //book
             dual,
             fishingrod,
             rapier,
@@ -147,13 +162,11 @@ namespace L2dotNET.GameService.model.items
         public enum L2ItemBodypart
         {
             none,
-            
-            
+
             lhand,
 
             back, //cloak
-            
-            
+
             hair,
             alldress, //suit
 
@@ -162,8 +175,6 @@ namespace L2dotNET.GameService.model.items
             deco1, //talisman
             sigil,
             waist, //belt
-
-
 
             //pts
             rhand,
@@ -183,6 +194,7 @@ namespace L2dotNET.GameService.model.items
         }
 
         public short can_equip_sex = -1;
+
         public bool canEquipSex(int _sex)
         {
             if (can_equip_sex == -1)
@@ -192,6 +204,7 @@ namespace L2dotNET.GameService.model.items
         }
 
         public short can_equip_agit = -1;
+
         public bool canEquipAgit(int _agitId)
         {
             if (can_equip_agit == -1)
@@ -201,6 +214,7 @@ namespace L2dotNET.GameService.model.items
         }
 
         public short can_equip_castle = -1;
+
         public bool canEquipCastle(int _castleId)
         {
             if (can_equip_castle == -1)
@@ -210,6 +224,7 @@ namespace L2dotNET.GameService.model.items
         }
 
         public short can_equip_hero = -1;
+
         public bool canEquipHeroic(int _heroic)
         {
             if (can_equip_hero == -1)
@@ -219,6 +234,7 @@ namespace L2dotNET.GameService.model.items
         }
 
         public short can_equip_nobless = -1;
+
         public bool canEquipNobless(int _noble)
         {
             if (can_equip_nobless == -1)
@@ -308,49 +324,71 @@ namespace L2dotNET.GameService.model.items
             switch (Bodypart)
             {
                 case L2ItemBodypart.underwear:
-                    id = InvPC.SBT_UNDERWEAR; break;
+                    id = InvPC.SBT_UNDERWEAR;
+                    break;
                 case L2ItemBodypart.ears:
-                    id = InvPC.SBT_RLEAR; break;
+                    id = InvPC.SBT_RLEAR;
+                    break;
                 case L2ItemBodypart.neck:
-                    id = 8; break;
+                    id = 8;
+                    break;
                 case L2ItemBodypart.fingers:
-                    id = 16 | 32; break;
+                    id = 16 | 32;
+                    break;
                 case L2ItemBodypart.head:
-                    id = 64; break;
+                    id = 64;
+                    break;
                 case L2ItemBodypart.rhand:
-                    id = 128; break;
+                    id = 128;
+                    break;
                 case L2ItemBodypart.lhand:
-                    id = 256; break;
+                    id = 256;
+                    break;
                 case L2ItemBodypart.gloves:
-                    id = 512; break;
+                    id = 512;
+                    break;
                 case L2ItemBodypart.chest:
-                    id = 1024; break;
+                    id = 1024;
+                    break;
                 case L2ItemBodypart.legs:
-                    id = 2048; break;
+                    id = 2048;
+                    break;
                 case L2ItemBodypart.feet:
-                    id = 4096; break;
+                    id = 4096;
+                    break;
                 case L2ItemBodypart.back:
-                    id = InvPC.SBT_BACK; break;
+                    id = InvPC.SBT_BACK;
+                    break;
                 case L2ItemBodypart.lrhand:
-                    id = 16384; break;
+                    id = 16384;
+                    break;
                 case L2ItemBodypart.onepiece:
-                    id = InvPC.SBT_ONEPIECE; break;
+                    id = InvPC.SBT_ONEPIECE;
+                    break;
                 case L2ItemBodypart.hair:
-                    id = InvPC.SBT_HAIR; break;
+                    id = InvPC.SBT_HAIR;
+                    break;
                 case L2ItemBodypart.alldress:
-                    id = InvPC.SBT_ALLDRESS; break;
+                    id = InvPC.SBT_ALLDRESS;
+                    break;
                 case L2ItemBodypart.hair2:
-                    id = InvPC.SBT_HAIR2; break;
+                    id = InvPC.SBT_HAIR2;
+                    break;
                 case L2ItemBodypart.hairall:
-                    id = InvPC.SBT_HAIRALL; break;
+                    id = InvPC.SBT_HAIRALL;
+                    break;
                 case L2ItemBodypart.rbracelet:
-                    id = InvPC.SBT_RBracelet; break;
+                    id = InvPC.SBT_RBracelet;
+                    break;
                 case L2ItemBodypart.deco1:
-                    id = InvPC.SBT_Deco1; break;
+                    id = InvPC.SBT_Deco1;
+                    break;
                 case L2ItemBodypart.lbracelet:
-                    id = InvPC.SBT_LBracelet; break;
+                    id = InvPC.SBT_LBracelet;
+                    break;
                 case L2ItemBodypart.waist:
-                    id = InvPC.SBT_Waist; break;
+                    id = InvPC.SBT_Waist;
+                    break;
             }
 
             return id;
@@ -375,9 +413,10 @@ namespace L2dotNET.GameService.model.items
         public int reuse_delay;
         public short enchanted = 0;
         public int for_npc;
+
         public void buildEffect()
         {
-            if(physical_damage > 0)
+            if (physical_damage > 0)
             {
                 p_physical_attack b = new p_physical_attack();
                 b.type = TEffectType.p_physical_defense;
@@ -424,6 +463,7 @@ namespace L2dotNET.GameService.model.items
         }
 
         public List<TSkill> multiSkills;
+
         public void addMultiSkills(string value)
         {
             if (multiSkills == null)
@@ -440,52 +480,31 @@ namespace L2dotNET.GameService.model.items
                 multiSkills = null;
         }
 
-        internal void setReducingSoulShots(string value)
-        {
-            
-        }
+        internal void setReducingSoulShots(string value) { }
 
-        internal void setReducingMpConsume(string value)
-        {
-            
-        }
+        internal void setReducingMpConsume(string value) { }
 
-        internal void setEquipCondition(string value)
-        {
-            
-        }
+        internal void setEquipCondition(string value) { }
 
-        internal void setDamageRange(string value)
-        {
-            
-        }
+        internal void setDamageRange(string value) { }
 
-        internal void setAttributeAttack(string value)
-        {
-            
-        }
+        internal void setAttributeAttack(string value) { }
 
-        internal void setAttributeDefend(string value)
-        {
-           
-        }
+        internal void setAttributeDefend(string value) { }
+
         public TSkill unequip_skill;
+
         public void setUnequipSkill(string value)
         {
             unequip_skill = TSkillTable.Instance.Get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
         }
 
-        internal void setEquipOption(string value)
-        {
-           
-        }
+        internal void setEquipOption(string value) { }
 
-        internal void setUseCondition(string value)
-        {
-            
-        }
+        internal void setUseCondition(string value) { }
 
         public TSkill item_skill;
+
         public void addItemSkill(string value)
         {
             item_skill = TSkillTable.Instance.Get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
@@ -500,6 +519,7 @@ namespace L2dotNET.GameService.model.items
         public short AttrDefenseValueFire;
         public short AttrAttackValue;
         public short AttrAttackType = -2;
+
         public void addItemEnch4(string value)
         {
             item_skill_ench4 = TSkillTable.Instance.Get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));

@@ -8,9 +8,20 @@
         private volatile int y;
         private volatile int z;
 
-        public int X { get { return x; } }
-        public int Y { get { return y; } }
-        public int Z { get { return z; } }
+        public int X
+        {
+            get { return x; }
+        }
+
+        public int Y
+        {
+            get { return y; }
+        }
+
+        public int Z
+        {
+            get { return z; }
+        }
 
         public Location(int x, int y, int z)
         {
@@ -42,7 +53,7 @@
 
         public override bool Equals(object obj)
         {
-            if(obj is Location)
+            if (obj is Location)
             {
                 Location loc = (Location)obj;
                 return (loc.X.Equals(x) && loc.Y.Equals(y) && loc.Z.Equals(z));

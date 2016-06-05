@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class PledgeReceiveMemberInfo : GameServerNetworkPacket
     {
         private readonly ClanMember Member;
+
         public PledgeReceiveMemberInfo(ClanMember cm)
         {
             Member = cm;

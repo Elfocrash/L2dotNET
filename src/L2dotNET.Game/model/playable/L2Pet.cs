@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.model.playable
     public class L2Pet : L2Summon
     {
         public InvPet Inventory;
+
         public L2Pet()
         {
             ObjectSummonType = 2;
@@ -45,6 +46,7 @@ namespace L2dotNET.GameService.model.playable
         }
 
         public bool IsRestored = false;
+
         public void sql_update()
         {
             if (IsRestored)
@@ -77,8 +79,6 @@ namespace L2dotNET.GameService.model.playable
                 //IsRestored = true;
             }
         }
-
-        
 
         public override string asString()
         {

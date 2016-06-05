@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.network.l2send
     class PetInventoryUpdate : GameServerNetworkPacket
     {
         protected List<object[]> _update = new List<object[]>();
+
         public void addNewItem(L2Item item)
         {
             _update.Add(new object[] { item, (short)1 });
@@ -26,9 +27,9 @@ namespace L2dotNET.GameService.network.l2send
             writeC(0xb4);
             writeH(_update.Count);
 
-            foreach (object[] obj in _update) 
+            foreach (object[] obj in _update)
             {
-                writeH((short)obj[1]); 
+                writeH((short)obj[1]);
 
                 L2Item item = (L2Item)obj[0];
 
@@ -61,7 +62,7 @@ namespace L2dotNET.GameService.network.l2send
                 writeH(item.Enchant1);
                 writeH(item.Enchant2);
                 writeH(item.Enchant3);
-		    }
+            }
         }
     }
 }

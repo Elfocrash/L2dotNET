@@ -17,6 +17,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private string _alias;
+
         public override void read()
         {
             _alias = readS();
@@ -24,7 +25,7 @@ namespace L2dotNET.GameService.network.l2recv
 
         private L2Citizen getNpc()
         {
-            log.Info($"bypass '{ _alias }'");
+            log.Info($"bypass '{_alias}'");
             L2Citizen npc = (L2Citizen)getClient().CurrentPlayer.CurrentTarget;
 
             if (npc == null)
@@ -169,7 +170,7 @@ namespace L2dotNET.GameService.network.l2recv
                 MonsterRace.Instance.OnBypass(player, npc, _alias);
             }
             else
-                log.Warn($"Unknown bypass '{ _alias }'");
+                log.Warn($"Unknown bypass '{_alias}'");
         }
     }
 }

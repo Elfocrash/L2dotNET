@@ -12,6 +12,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private int sID;
+
         public override void read()
         {
             sID = readD();
@@ -35,7 +36,7 @@ namespace L2dotNET.GameService.network.l2recv
                 return;
             }
 
-            if(player.TradeState != 0)
+            if (player.TradeState != 0)
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_PICKUP_OR_USE_ITEM_WHILE_TRADING);
                 player.sendActionFailed();
@@ -47,30 +48,28 @@ namespace L2dotNET.GameService.network.l2recv
                 case ItemTemplate.L2ItemType.armor:
                 case ItemTemplate.L2ItemType.weapon:
                 case ItemTemplate.L2ItemType.accessary:
+                {
+                    if (item._isEquipped == 0)
                     {
-                        if (item._isEquipped == 0)
+                        if (!item.Template.canEquipChaotic(player.PkKills))
                         {
-                            if (!item.Template.canEquipChaotic(player.PkKills))
-                            {   
-                                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_ARE_UNABLE_TO_EQUIP_THIS_ITEM_WHEN_YOUR_PK_COUNT_IS_GREATER_THAN_OR_EQUAL_TO_ONE);
-                                player.sendActionFailed();
-                                return;
-                            }
-
-                            if (!item.Template.canEquipHeroic(player.Heroic) ||
-                                !item.Template.canEquipNobless(player.Noblesse) ||
-                                !item.Template.canEquipSex(player.Sex))
-                            {   
-                                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION);
-                                player.sendActionFailed();
-                                return;
-                            }
+                            player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_ARE_UNABLE_TO_EQUIP_THIS_ITEM_WHEN_YOUR_PK_COUNT_IS_GREATER_THAN_OR_EQUAL_TO_ONE);
+                            player.sendActionFailed();
+                            return;
                         }
 
-                        int pdollId = player.Inventory.getPaperdollId(item.Template);
-                        player.setPaperdoll(pdollId, item._isEquipped == 1 ? null : item, true);
-                        player.broadcastUserInfo();
+                        if (!item.Template.canEquipHeroic(player.Heroic) || !item.Template.canEquipNobless(player.Noblesse) || !item.Template.canEquipSex(player.Sex))
+                        {
+                            player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION);
+                            player.sendActionFailed();
+                            return;
+                        }
                     }
+
+                    int pdollId = player.Inventory.getPaperdollId(item.Template);
+                    player.setPaperdoll(pdollId, item._isEquipped == 1 ? null : item, true);
+                    player.broadcastUserInfo();
+                }
                     break;
             }
 
@@ -83,13 +82,13 @@ namespace L2dotNET.GameService.network.l2recv
                     Capsule.Instance.Process(player, item);
                     break;
                 case "action_call_skill":
-                    {
-                        TSkill skill = item.Template.item_skill;
-                        if (skill != null)
-                            player.addEffect(player, skill, true, false);
-                        else
-                            player.sendMessage("skill onCall was not found.");
-                    }
+                {
+                    TSkill skill = item.Template.item_skill;
+                    if (skill != null)
+                        player.addEffect(player, skill, true, false);
+                    else
+                        player.sendMessage("skill onCall was not found.");
+                }
                     break;
             }
 
@@ -157,9 +156,6 @@ namespace L2dotNET.GameService.network.l2recv
             //        }
             //        break;
             //}
-
-
-
         }
     }
 }

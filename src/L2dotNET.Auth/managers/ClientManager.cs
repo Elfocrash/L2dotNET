@@ -40,10 +40,7 @@ namespace L2dotNET.LoginService
             }
         }
 
-        public ClientManager()
-        {
-
-        }
+        public ClientManager() { }
 
         public void Initialize()
         {
@@ -58,7 +55,7 @@ namespace L2dotNET.LoginService
                 ScrambledPairs[i] = new ScrambledKeyPair(ScrambledKeyPair.genKeyPair());
             }
 
-            log.Info($"Scrambled { ScrambledPairs.Length } keypairs.");
+            log.Info($"Scrambled {ScrambledPairs.Length} keypairs.");
             log.Info("Randomize blowfish keys.");
 
             BlowfishKeys = new byte[BlowfishCount][];
@@ -69,7 +66,7 @@ namespace L2dotNET.LoginService
                 new Random().NextBytes(BlowfishKeys[i]);
             }
 
-            log.Info($"Randomized { BlowfishKeys.Length } blowfish keys.");
+            log.Info($"Randomized {BlowfishKeys.Length} blowfish keys.");
         }
 
         private NetworkBlock banned;
@@ -81,12 +78,12 @@ namespace L2dotNET.LoginService
                 banned = NetworkBlock.Instance;
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
-            log.Info($"Connected: { ip }");
+            log.Info($"Connected: {ip}");
             if (flood.ContainsKey(ip))
             {
                 if (flood[ip].CompareTo(DateTime.Now) == 1)
                 {
-                    log.Warn($"Active flooder: { ip }");
+                    log.Warn($"Active flooder: {ip}");
                     client.Close();
                     return;
                 }
@@ -102,7 +99,7 @@ namespace L2dotNET.LoginService
             if (!banned.Allowed(ip))
             {
                 client.Close();
-                log.Error($"NetworkBlock: connection attemp failed. IP: { ip } banned.");
+                log.Error($"NetworkBlock: connection attemp failed. IP: {ip} banned.");
                 return;
             }
 
@@ -127,7 +124,6 @@ namespace L2dotNET.LoginService
         {
             if (!_loggedClients.Contains(loginClient))
                 return;
-
 
             _loggedClients.Remove(loginClient);
         }

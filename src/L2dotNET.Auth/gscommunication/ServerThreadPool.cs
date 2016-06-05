@@ -13,7 +13,10 @@ namespace L2dotNET.LoginService.gscommunication
         private static readonly ILog log = LogManager.GetLogger(typeof(ServerThreadPool));
 
         [Inject]
-        public IServerService serverService { get { return LoginServer.Kernel.Get<IServerService>(); } }
+        public IServerService serverService
+        {
+            get { return LoginServer.Kernel.Get<IServerService>(); }
+        }
 
         private static volatile ServerThreadPool instance;
         private static readonly object syncRoot = new object();
@@ -39,10 +42,7 @@ namespace L2dotNET.LoginService.gscommunication
             }
         }
 
-        public ServerThreadPool()
-        {
-
-        }
+        public ServerThreadPool() { }
 
         public void Initialize()
         {
@@ -57,7 +57,7 @@ namespace L2dotNET.LoginService.gscommunication
                 servers.Add(server);
             }
 
-            log.Info($"GameServerThread: loaded { servers.Count } servers");
+            log.Info($"GameServerThread: loaded {servers.Count} servers");
         }
 
         public L2Server Get(short serverId)
@@ -75,7 +75,7 @@ namespace L2dotNET.LoginService.gscommunication
         {
             listener = new TcpListener(IPAddress.Parse(Config.Instance.serverConfig.Host), Config.Instance.serverConfig.GSPort);
             listener.Start();
-            log.Info($"Auth server listening gameservers at { Config.Instance.serverConfig.Host }:{ Config.Instance.serverConfig.GSPort }");
+            log.Info($"Auth server listening gameservers at {Config.Instance.serverConfig.Host}:{Config.Instance.serverConfig.GSPort}");
             while (true)
             {
                 VerifyClient(listener.AcceptTcpClient());
@@ -97,7 +97,7 @@ namespace L2dotNET.LoginService.gscommunication
                         s.Thread.Stop();
 
                     s.Thread = null;
-                    log.Warn($"ServerThread: #{ id } shutted down");
+                    log.Warn($"ServerThread: #{id} shutted down");
                     break;
                 }
         }
@@ -125,7 +125,6 @@ namespace L2dotNET.LoginService.gscommunication
                     srv.Thread.SendPlayer(client, time);
                     break;
                 }
-
         }
     }
 }

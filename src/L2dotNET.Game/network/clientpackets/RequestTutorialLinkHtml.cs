@@ -10,6 +10,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private string _link;
+
         public override void read()
         {
             _link = readS();
@@ -36,7 +37,6 @@ namespace L2dotNET.GameService.network.l2recv
             {
                 player.sendPacket(new TutorialShowHtml(player, _link, player.ViewingAdminPage > 0));
             }
-
         }
     }
 }

@@ -6,7 +6,7 @@
         {
             writeC(0x9d);
             writeD(1665);
-            writeD(0);//SevenSigns.getInstance().getCurrentPeriod());
+            writeD(0); //SevenSigns.getInstance().getCurrentPeriod());
         }
     }
 }

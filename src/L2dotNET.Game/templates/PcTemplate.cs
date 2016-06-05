@@ -9,7 +9,12 @@ namespace L2dotNET.GameService.templates
         public ClassId ClassId { get; set; }
 
         public int fallingHeight;
-        public int FallingHeight { get { return fallingHeight; } }
+
+        public int FallingHeight
+        {
+            get { return fallingHeight; }
+        }
+
         public int BaseSwimSpd { get; }
 
         public double CollisionRadiusFemale { get; }
@@ -27,8 +32,7 @@ namespace L2dotNET.GameService.templates
 
         public List<L2Item> Items { get; } = new List<L2Item>();
 
-        public PcTemplate(ClassId classId, StatsSet set)
-            :base(set)
+        public PcTemplate(ClassId classId, StatsSet set) : base(set)
         {
             this.ClassId = classId;
 

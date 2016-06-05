@@ -1,5 +1,4 @@
-﻿
-using L2dotNET.GameService.model.skills2;
+﻿using L2dotNET.GameService.model.skills2;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -16,9 +15,9 @@ namespace L2dotNET.GameService.network.l2recv
 
         public override void read()
         {
-            _magicId = readD();              // Identifier of the used skill
-            _ctrlPressed = readD() != 0;         // True if it's a ForceAttack : Ctrl pressed
-            _shiftPressed = readC() != 0;         // True if Shift pressed
+            _magicId = readD(); // Identifier of the used skill
+            _ctrlPressed = readD() != 0; // True if it's a ForceAttack : Ctrl pressed
+            _shiftPressed = readC() != 0; // True if Shift pressed
         }
 
         public override void run()

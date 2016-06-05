@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class StartRotation : GameServerNetworkPacket
     {
@@ -7,6 +6,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int degree;
         private readonly int side;
         private readonly int speed;
+
         public StartRotation(int sId, int degree, int side, int speed)
         {
             this.sId = sId;

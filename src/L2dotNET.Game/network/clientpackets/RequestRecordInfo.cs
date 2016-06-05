@@ -24,9 +24,8 @@ namespace L2dotNET.GameService.network.l2recv
 
             foreach (L2Object obj in player.knownObjects.Values)
             {
-                player.onAddObject(obj, null, "Player "+player.Name+" recording replay with your character.");
+                player.onAddObject(obj, null, "Player " + player.Name + " recording replay with your character.");
             }
-
         }
     }
 }

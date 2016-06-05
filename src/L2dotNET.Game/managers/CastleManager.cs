@@ -14,9 +14,10 @@ namespace L2dotNET.GameService.managers
 
         public Dictionary<int, Castle> castles = new Dictionary<int, Castle>();
         private string[] announcements;
+
         public CastleManager()
         {
-          //  announcements = File.ReadAllLines(@"data\announcements.txt");
+            //  announcements = File.ReadAllLines(@"data\announcements.txt");
         }
 
         public Castle get(int id)
@@ -26,6 +27,5 @@ namespace L2dotNET.GameService.managers
             else
                 return null;
         }
-
     }
 }

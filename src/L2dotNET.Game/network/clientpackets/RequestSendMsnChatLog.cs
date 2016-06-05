@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2recv
+﻿namespace L2dotNET.GameService.network.l2recv
 {
     class RequestSendMsnChatLog : GameServerNetworkRequest
     {
@@ -10,6 +9,7 @@ namespace L2dotNET.GameService.network.l2recv
 
         private string _text, _email;
         private int _type;
+
         public override void read()
         {
             _text = readS();

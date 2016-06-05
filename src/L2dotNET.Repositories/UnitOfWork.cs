@@ -4,15 +4,9 @@ namespace L2dotNET.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
+        public UnitOfWork() { }
 
-        public UnitOfWork()
-        {
-        }
-
-        public UnitOfWork(IPlayerRepository playerRepository,
-                          IAccountRepository accountRepository,
-                          IServerRepository serverRepository,
-                          ICheckRepository checkRepository)
+        public UnitOfWork(IPlayerRepository playerRepository, IAccountRepository accountRepository, IServerRepository serverRepository, ICheckRepository checkRepository)
         {
             this.playerRepository = playerRepository;
             this.accountRepository = accountRepository;
@@ -20,19 +14,14 @@ namespace L2dotNET.Repositories
             this.checkRepository = checkRepository;
         }
 
-        public void Commit()
-        {
+        public void Commit() { }
 
-        }
-
-        public void Dispose()
-        {
-
-        }
+        public void Dispose() { }
 
         #region REPOSITORIES
 
         private IPlayerRepository playerRepository;
+
         public IPlayerRepository PlayerRepository
         {
             get
@@ -45,6 +34,7 @@ namespace L2dotNET.Repositories
         }
 
         private IAccountRepository accountRepository;
+
         public IAccountRepository AccountRepository
         {
             get
@@ -57,6 +47,7 @@ namespace L2dotNET.Repositories
         }
 
         private IServerRepository serverRepository;
+
         public IServerRepository ServerRepository
         {
             get
@@ -69,6 +60,7 @@ namespace L2dotNET.Repositories
         }
 
         private ICheckRepository checkRepository;
+
         public ICheckRepository CheckRepository
         {
             get

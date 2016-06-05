@@ -9,6 +9,7 @@
 
         private int value;
         private string element;
+
         public override void build(string str)
         {
             string[] v = str.Split(' ');
@@ -18,7 +19,6 @@
 
         public override TEffectResult onStart(world.L2Character caster, world.L2Character target)
         {
-
             return nothing;
         }
     }

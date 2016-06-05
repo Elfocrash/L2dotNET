@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class MultiSellListEx : GameServerNetworkPacket
     {
         private readonly L2dotNET.GameService.tables.multisell.MultiSellList list;
+
         public MultiSellListEx(L2Player player, L2dotNET.GameService.tables.multisell.MultiSellList list)
         {
             this.list = list;
@@ -14,15 +15,16 @@ namespace L2dotNET.GameService.network.l2send
         {
             writeC(0xd0);
             writeD(list.id);
-            writeD(1);		// page
-            writeD(1);	// finished
-            writeD(list.container.Count);	// size of pages 40
+            writeD(1); // page
+            writeD(1); // finished
+            writeD(list.container.Count); // size of pages 40
             writeD(list.container.Count);
 
             int inc = 0;
             foreach (MultiSellEntry entry in list.container)
             {
-                writeD(inc); inc++;
+                writeD(inc);
+                inc++;
                 writeC(entry.Stackable);
                 writeH(entry.enchant);
                 writeD(0x00); // C6

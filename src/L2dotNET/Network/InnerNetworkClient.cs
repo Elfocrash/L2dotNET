@@ -33,7 +33,7 @@ namespace L2dotNET
 }
 
 namespace L2dotNET.Network
-{ 
+{
     /// <summary>
     /// Delegate for packet handling
     /// </summary>
@@ -82,8 +82,7 @@ namespace L2dotNET.Network
         /// <param name="serviceType">Remote service type.</param>
         /// <param name="socket"><see cref="Socket"/> used by connection.</param>
         /// <param name="handleDelegate">Service Handle Delegate, if null packet will not be handled</param>
-        public InnerNetworkClient(byte serviceId, ServiceType serviceType, Socket socket, PacketHandleDelegate handleDelegate)
-            : base(socket)
+        public InnerNetworkClient(byte serviceId, ServiceType serviceType, Socket socket, PacketHandleDelegate handleDelegate) : base(socket)
         {
             m_ServiceId = serviceId;
             m_ServiceType = serviceType;
@@ -96,9 +95,7 @@ namespace L2dotNET.Network
         /// <param name="serviceId">Service unique id.</param>
         /// <param name="serviceType">Service type.</param>
         /// <param name="socket">Service <see cref="Socket"/> object.</param>
-        public InnerNetworkClient(byte serviceId, ServiceType serviceType, Socket socket)
-            : this(serviceId, serviceType, socket, null)
-        { }
+        public InnerNetworkClient(byte serviceId, ServiceType serviceType, Socket socket) : this(serviceId, serviceType, socket, null) { }
 
         /// <summary>
         /// Handles incoming packet.

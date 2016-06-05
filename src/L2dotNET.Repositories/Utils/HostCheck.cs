@@ -11,14 +11,19 @@ namespace L2dotNET.Repositories.Utils
     {
         public static bool IsPingSuccessful(string host, int timeoutMs)
         {
-            try { return new Ping().Send(host, timeoutMs, new byte[1]).Status == IPStatus.Success; }
+            try
+            {
+                return new Ping().Send(host, timeoutMs, new byte[1]).Status == IPStatus.Success;
+            }
             catch { }
             return false;
         }
+
         public static bool IsLocalIPAddress(string host)
         {
             try
-            { // get host IP addresses
+            {
+                // get host IP addresses
                 IPAddress[] hostIPs = Dns.GetHostAddresses(host);
                 // get local IP addresses
                 IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
@@ -27,11 +32,13 @@ namespace L2dotNET.Repositories.Utils
                 foreach (IPAddress hostIP in hostIPs)
                 {
                     // is localhost
-                    if (IPAddress.IsLoopback(hostIP)) return true;
+                    if (IPAddress.IsLoopback(hostIP))
+                        return true;
                     // is local address
                     foreach (IPAddress localIP in localIPs)
                     {
-                        if (hostIP.Equals(localIP)) return true;
+                        if (hostIP.Equals(localIP))
+                            return true;
                     }
                 }
             }
@@ -41,7 +48,10 @@ namespace L2dotNET.Repositories.Utils
 
         public static bool ServiceExists(string serviceName)
         {
-            try { return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName)); }
+            try
+            {
+                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName));
+            }
             catch { }
             return false;
         }
@@ -50,8 +60,7 @@ namespace L2dotNET.Repositories.Utils
         {
             try
             {
-                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName) &&
-                                                                      service.Status == ServiceControllerStatus.Running);
+                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName) && service.Status == ServiceControllerStatus.Running);
             }
             catch { }
             return false;

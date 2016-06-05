@@ -12,9 +12,9 @@ namespace L2dotNET.GameService.model.skills2.effects
 
         public override void build(string str)
         {
-             string[] v = str.Split(' ');
-             SetCondition(v[1]);
-             SetSup(v[2]);
+            string[] v = str.Split(' ');
+            SetCondition(v[1]);
+            SetSup(v[2]);
         }
     }
 }

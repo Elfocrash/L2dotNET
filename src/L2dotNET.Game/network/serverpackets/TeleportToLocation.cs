@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class TeleportToLocation : GameServerNetworkPacket
     {
@@ -8,10 +7,11 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int _z;
         private readonly int _id;
         private int _heading;
+
         public TeleportToLocation(int id, int x, int y, int z, int h)
         {
             _x = x;
-            _y = y; 
+            _y = y;
             _z = z;
             _id = id;
             _heading = h;

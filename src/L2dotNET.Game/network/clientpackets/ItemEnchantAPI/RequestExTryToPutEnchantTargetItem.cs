@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2recv
     class RequestExTryToPutEnchantTargetItem : GameServerNetworkRequest
     {
         private int a_sTargetID;
+
         public RequestExTryToPutEnchantTargetItem(GameClient client, byte[] data)
         {
             base.makeme(client, data, 2);

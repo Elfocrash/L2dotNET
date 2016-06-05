@@ -11,14 +11,13 @@ namespace L2dotNET.GameService.network.l2send
         {
             this.book = teleportBook;
             this.current = current;
-
         }
 
         protected internal override void write()
         {
-		    writeC(0xFE);
-		    writeH(0x84);
-		    writeD(0x00);
+            writeC(0xFE);
+            writeH(0x84);
+            writeD(0x00);
             writeD(current);
             writeD(book == null ? 0 : book.bookmarks.Count);
 

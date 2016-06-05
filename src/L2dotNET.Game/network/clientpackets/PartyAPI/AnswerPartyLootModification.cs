@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.l2recv
+﻿namespace L2dotNET.GameService.network.l2recv
 {
     class AnswerPartyLootModification : GameServerNetworkRequest
     {
         private byte answer;
+
         public AnswerPartyLootModification(GameClient client, byte[] data)
         {
             base.makeme(client, data, 2);

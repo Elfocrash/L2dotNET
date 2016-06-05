@@ -17,11 +17,11 @@ namespace L2dotNET.GameService.network.l2recv
 
         public override void read()
         {
-            ServerID = readD(); 
+            ServerID = readD();
             _X = readD();
             _Y = readD();
             _Z = readD();
-            _actionId = readC();   // Action identifier : 0-Simple click, 1-Shift click
+            _actionId = readC(); // Action identifier : 0-Simple click, 1-Shift click
         }
 
         public override void run()
@@ -34,7 +34,7 @@ namespace L2dotNET.GameService.network.l2recv
                 obj = player;
             else
             {
-                if(player.knownObjects.ContainsKey(ServerID))
+                if (player.knownObjects.ContainsKey(ServerID))
                     obj = player.knownObjects[ServerID];
             }
 

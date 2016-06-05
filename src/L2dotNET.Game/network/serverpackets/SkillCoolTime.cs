@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class SkillCoolTime : GameServerNetworkPacket
     {
         private readonly ICollection<L2SkillCoolTime> list;
+
         public SkillCoolTime(L2Player player)
         {
             list = player._reuse.Values;
@@ -17,10 +18,10 @@ namespace L2dotNET.GameService.network.l2send
 
             foreach (L2SkillCoolTime ct in list)
             {
-				writeD(ct.id);
-				writeD(ct.lvl);
-				writeD(ct.total);
-				writeD(ct.getDelay());
+                writeD(ct.id);
+                writeD(ct.lvl);
+                writeD(ct.total);
+                writeD(ct.getDelay());
             }
         }
     }

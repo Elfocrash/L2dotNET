@@ -38,7 +38,6 @@ namespace L2dotNET.GameService.Utils
             this.W = w;
         }
 
-
         public Quaternion(Vector3 vectorPart, double scalarPart)
         {
             this.X = vectorPart.X;
@@ -59,7 +58,6 @@ namespace L2dotNET.GameService.Utils
             quaternion.W = quaternion1.W + quaternion2.W;
             return quaternion;
         }
-
 
         public static void Add(ref Quaternion quaternion1, ref Quaternion quaternion2, out Quaternion result)
         {
@@ -91,7 +89,6 @@ namespace L2dotNET.GameService.Utils
             quaternion.Z = ((z * num) + (num2 * w)) + num10;
             quaternion.W = (w * num) - num9;
             return quaternion;
-
         }
 
         //AÃ±adida por Syderis
@@ -145,7 +142,6 @@ namespace L2dotNET.GameService.Utils
 
         public static Quaternion CreateFromAxisAngle(Vector3 axis, double angle)
         {
-
             Quaternion quaternion;
             double num2 = angle * 0.5f;
             double num = (double)Math.Sin((double)num2);
@@ -155,9 +151,7 @@ namespace L2dotNET.GameService.Utils
             quaternion.Z = axis.Z * num;
             quaternion.W = num3;
             return quaternion;
-
         }
-
 
         public static void CreateFromAxisAngle(ref Vector3 axis, double angle, out Quaternion result)
         {
@@ -168,9 +162,7 @@ namespace L2dotNET.GameService.Utils
             result.Y = axis.Y * num;
             result.Z = axis.Z * num;
             result.W = num3;
-
         }
-
 
         public static Quaternion CreateFromRotationMatrix(Matrix matrix)
         {
@@ -214,9 +206,7 @@ namespace L2dotNET.GameService.Utils
             quaternion.W = (matrix.M12 - matrix.M21) * num2;
 
             return quaternion;
-
         }
-
 
         public static void CreateFromRotationMatrix(ref Matrix matrix, out Quaternion result)
         {
@@ -257,7 +247,6 @@ namespace L2dotNET.GameService.Utils
                 result.Z = 0.5f * num5;
                 result.W = (matrix.M12 - matrix.M21) * num2;
             }
-
         }
 
         public static Quaternion CreateFromYawPitchRoll(double yaw, double pitch, double roll)
@@ -318,7 +307,6 @@ namespace L2dotNET.GameService.Utils
             quaternion.Z = ((z * num) + (num2 * w)) + num11;
             quaternion.W = (w * num) - num10;
             return quaternion;
-
         }
 
         public static void Divide(ref Quaternion quaternion1, ref Quaternion quaternion2, out Quaternion result)
@@ -341,21 +329,17 @@ namespace L2dotNET.GameService.Utils
             result.Y = ((y * num) + (num3 * w)) + num12;
             result.Z = ((z * num) + (num2 * w)) + num11;
             result.W = (w * num) - num10;
-
         }
-
 
         public static double Dot(Quaternion quaternion1, Quaternion quaternion2)
         {
             return ((((quaternion1.X * quaternion2.X) + (quaternion1.Y * quaternion2.Y)) + (quaternion1.Z * quaternion2.Z)) + (quaternion1.W * quaternion2.W));
         }
 
-
         public static void Dot(ref Quaternion quaternion1, ref Quaternion quaternion2, out double result)
         {
             result = (((quaternion1.X * quaternion2.X) + (quaternion1.Y * quaternion2.Y)) + (quaternion1.Z * quaternion2.Z)) + (quaternion1.W * quaternion2.W);
         }
-
 
         public override bool Equals(object obj)
         {
@@ -367,18 +351,15 @@ namespace L2dotNET.GameService.Utils
             return flag;
         }
 
-
         public bool Equals(Quaternion other)
         {
             return ((((this.X == other.X) && (this.Y == other.Y)) && (this.Z == other.Z)) && (this.W == other.W));
         }
 
-
         public override int GetHashCode()
         {
             return (((this.X.GetHashCode() + this.Y.GetHashCode()) + this.Z.GetHashCode()) + this.W.GetHashCode());
         }
-
 
         public static Quaternion Inverse(Quaternion quaternion)
         {
@@ -390,7 +371,6 @@ namespace L2dotNET.GameService.Utils
             quaternion2.Z = -quaternion.Z * num;
             quaternion2.W = quaternion.W * num;
             return quaternion2;
-
         }
 
         public static void Inverse(ref Quaternion quaternion, out Quaternion result)
@@ -409,12 +389,10 @@ namespace L2dotNET.GameService.Utils
             return (double)Math.Sqrt((double)num);
         }
 
-
         public double LengthSquared()
         {
             return ((((this.X * this.X) + (this.Y * this.Y)) + (this.Z * this.Z)) + (this.W * this.W));
         }
-
 
         public static Quaternion Lerp(Quaternion quaternion1, Quaternion quaternion2, double amount)
         {
@@ -445,7 +423,6 @@ namespace L2dotNET.GameService.Utils
             return quaternion;
         }
 
-
         public static void Lerp(ref Quaternion quaternion1, ref Quaternion quaternion2, double amount, out Quaternion result)
         {
             double num = amount;
@@ -471,9 +448,7 @@ namespace L2dotNET.GameService.Utils
             result.Y *= num3;
             result.Z *= num3;
             result.W *= num3;
-
         }
-
 
         public static Quaternion Slerp(Quaternion quaternion1, Quaternion quaternion2, double amount)
         {
@@ -507,7 +482,6 @@ namespace L2dotNET.GameService.Utils
             return quaternion;
         }
 
-
         public static void Slerp(ref Quaternion quaternion1, ref Quaternion quaternion2, double amount, out Quaternion result)
         {
             double num2;
@@ -538,7 +512,6 @@ namespace L2dotNET.GameService.Utils
             result.W = (num3 * quaternion1.W) + (num2 * quaternion2.W);
         }
 
-
         public static Quaternion Subtract(Quaternion quaternion1, Quaternion quaternion2)
         {
             Quaternion quaternion;
@@ -549,7 +522,6 @@ namespace L2dotNET.GameService.Utils
             return quaternion;
         }
 
-
         public static void Subtract(ref Quaternion quaternion1, ref Quaternion quaternion2, out Quaternion result)
         {
             result.X = quaternion1.X - quaternion2.X;
@@ -557,7 +529,6 @@ namespace L2dotNET.GameService.Utils
             result.Z = quaternion1.Z - quaternion2.Z;
             result.W = quaternion1.W - quaternion2.W;
         }
-
 
         public static Quaternion Multiply(Quaternion quaternion1, Quaternion quaternion2)
         {
@@ -581,7 +552,6 @@ namespace L2dotNET.GameService.Utils
             return quaternion;
         }
 
-
         public static Quaternion Multiply(Quaternion quaternion1, double scaleFactor)
         {
             Quaternion quaternion;
@@ -592,7 +562,6 @@ namespace L2dotNET.GameService.Utils
             return quaternion;
         }
 
-
         public static void Multiply(ref Quaternion quaternion1, double scaleFactor, out Quaternion result)
         {
             result.X = quaternion1.X * scaleFactor;
@@ -600,7 +569,6 @@ namespace L2dotNET.GameService.Utils
             result.Z = quaternion1.Z * scaleFactor;
             result.W = quaternion1.W * scaleFactor;
         }
-
 
         public static void Multiply(ref Quaternion quaternion1, ref Quaternion quaternion2, out Quaternion result)
         {
@@ -622,7 +590,6 @@ namespace L2dotNET.GameService.Utils
             result.W = (w * num) - num9;
         }
 
-
         public static Quaternion Negate(Quaternion quaternion)
         {
             Quaternion quaternion2;
@@ -633,7 +600,6 @@ namespace L2dotNET.GameService.Utils
             return quaternion2;
         }
 
-
         public static void Negate(ref Quaternion quaternion, out Quaternion result)
         {
             result.X = -quaternion.X;
@@ -641,7 +607,6 @@ namespace L2dotNET.GameService.Utils
             result.Z = -quaternion.Z;
             result.W = -quaternion.W;
         }
-
 
         public void Normalize()
         {
@@ -652,7 +617,6 @@ namespace L2dotNET.GameService.Utils
             this.Z *= num;
             this.W *= num;
         }
-
 
         public static Quaternion Normalize(Quaternion quaternion)
         {
@@ -666,7 +630,6 @@ namespace L2dotNET.GameService.Utils
             return quaternion2;
         }
 
-
         public static void Normalize(ref Quaternion quaternion, out Quaternion result)
         {
             double num2 = (((quaternion.X * quaternion.X) + (quaternion.Y * quaternion.Y)) + (quaternion.Z * quaternion.Z)) + (quaternion.W * quaternion.W);
@@ -677,7 +640,6 @@ namespace L2dotNET.GameService.Utils
             result.W = quaternion.W * num;
         }
 
-
         public static Quaternion operator +(Quaternion quaternion1, Quaternion quaternion2)
         {
             Quaternion quaternion;
@@ -687,7 +649,6 @@ namespace L2dotNET.GameService.Utils
             quaternion.W = quaternion1.W + quaternion2.W;
             return quaternion;
         }
-
 
         public static Quaternion operator /(Quaternion quaternion1, Quaternion quaternion2)
         {
@@ -713,12 +674,10 @@ namespace L2dotNET.GameService.Utils
             return quaternion;
         }
 
-
         public static bool operator ==(Quaternion quaternion1, Quaternion quaternion2)
         {
             return ((((quaternion1.X == quaternion2.X) && (quaternion1.Y == quaternion2.Y)) && (quaternion1.Z == quaternion2.Z)) && (quaternion1.W == quaternion2.W));
         }
-
 
         public static bool operator !=(Quaternion quaternion1, Quaternion quaternion2)
         {
@@ -728,7 +687,6 @@ namespace L2dotNET.GameService.Utils
             }
             return true;
         }
-
 
         public static Quaternion operator *(Quaternion quaternion1, Quaternion quaternion2)
         {
@@ -752,7 +710,6 @@ namespace L2dotNET.GameService.Utils
             return quaternion;
         }
 
-
         public static Quaternion operator *(Quaternion quaternion1, double scaleFactor)
         {
             Quaternion quaternion;
@@ -763,7 +720,6 @@ namespace L2dotNET.GameService.Utils
             return quaternion;
         }
 
-
         public static Quaternion operator -(Quaternion quaternion1, Quaternion quaternion2)
         {
             Quaternion quaternion;
@@ -772,9 +728,7 @@ namespace L2dotNET.GameService.Utils
             quaternion.Z = quaternion1.Z - quaternion2.Z;
             quaternion.W = quaternion1.W - quaternion2.W;
             return quaternion;
-
         }
-
 
         public static Quaternion operator -(Quaternion quaternion)
         {
@@ -785,7 +739,6 @@ namespace L2dotNET.GameService.Utils
             quaternion2.W = -quaternion.W;
             return quaternion2;
         }
-
 
         public override string ToString()
         {
@@ -816,7 +769,6 @@ namespace L2dotNET.GameService.Utils
 
         internal static void ToMatrix(Quaternion quaternion, out Matrix matrix)
         {
-
             // source -> http://content.gpwiki.org/index.php/OpenGL:Tutorials:Using_Quaternions_to_represent_rotation#Quaternion_to_Matrix
             double x2 = quaternion.X * quaternion.X;
             double y2 = quaternion.Y * quaternion.Y;
@@ -860,10 +812,7 @@ namespace L2dotNET.GameService.Utils
 
         internal Vector3 Xyz
         {
-            get
-            {
-                return new Vector3(X, Y, Z);
-            }
+            get { return new Vector3(X, Y, Z); }
 
             set
             {
@@ -872,7 +821,5 @@ namespace L2dotNET.GameService.Utils
                 Z = value.Z;
             }
         }
-
-
     }
 }

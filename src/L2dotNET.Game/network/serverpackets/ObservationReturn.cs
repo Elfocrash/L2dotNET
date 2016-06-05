@@ -1,11 +1,11 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class ObservationReturn : GameServerNetworkPacket
     {
         private readonly int _x;
         private readonly int _y;
         private readonly int _z;
+
         public ObservationReturn(int x, int y, int z)
         {
             _x = x;

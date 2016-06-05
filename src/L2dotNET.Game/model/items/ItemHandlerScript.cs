@@ -96,7 +96,7 @@ namespace L2dotNET.GameService.model.items
 
                 if (skill == null)
                 {
-                    log.Error($"ItemHandler: item { id } with null effect { EffectID }/{ EffectLv }");
+                    log.Error($"ItemHandler: item {id} with null effect {EffectID}/{EffectLv}");
                     return;
                 }
 
@@ -113,7 +113,7 @@ namespace L2dotNET.GameService.model.items
 
                 if (skill == null)
                 {
-                    log.Error($"ItemHandler: item { id } with null skill { SkillID }/{ SkillLv }");
+                    log.Error($"ItemHandler: item {id} with null skill {SkillID}/{SkillLv}");
                     return;
                 }
 
@@ -123,6 +123,5 @@ namespace L2dotNET.GameService.model.items
                     character.castSkill(skill);
             }
         }
-
     }
 }

@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class NetPing : GameServerNetworkPacket
     {
         private readonly int request;
+
         public NetPing(int request)
         {
             this.request = request;

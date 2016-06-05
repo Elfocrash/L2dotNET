@@ -1,10 +1,10 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class PetDelete : GameServerNetworkPacket
     {
         private readonly byte ObjectSummonType;
         private readonly int ObjID;
+
         public PetDelete(byte ObjectSummonType, int ObjID)
         {
             this.ObjectSummonType = ObjectSummonType;

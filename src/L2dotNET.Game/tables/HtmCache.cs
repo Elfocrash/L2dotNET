@@ -35,22 +35,19 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-        public HtmCache()
-        {
-            
-        }
+        public HtmCache() { }
 
         public void Initialize()
         {
             htmCache = new List<L2Html>();
             htmFiles = DirSearch("./html/");
             BuildHtmCache();
-            log.Info($"HtmCache: Cache Built. Loaded { htmCache.Count } files.");
+            log.Info($"HtmCache: Cache Built. Loaded {htmCache.Count} files.");
         }
 
         public void BuildHtmCache()
         {
-            foreach(string file in htmFiles)
+            foreach (string file in htmFiles)
             {
                 string content = File.ReadAllText(file, Encoding.UTF8);
                 content = content.Replace("\r\n", "\n");

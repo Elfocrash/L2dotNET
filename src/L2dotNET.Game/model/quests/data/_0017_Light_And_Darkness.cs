@@ -55,7 +55,6 @@ namespace L2dotNET.GameService.model.quests.data
                     htmltext = "dark_presbyter_q0017_06.htm";
                     player.changeQuestStage(questId, 0);
                 }
-
             }
             else if (npcId == blessed_altar1)
             {
@@ -120,11 +119,9 @@ namespace L2dotNET.GameService.model.quests.data
             player.ShowHtm(htmltext, npc);
         }
 
-
         public override void onEarnItem(L2Player player, int cond, int id)
         {
             //todo
         }
     }
 }
-

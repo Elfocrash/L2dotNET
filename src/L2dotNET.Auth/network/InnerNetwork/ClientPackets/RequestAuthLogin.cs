@@ -14,7 +14,10 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
     class RequestAuthLogin : ReceiveBasePacket
     {
         [Inject]
-        public IAccountService accountService { get { return LoginServer.Kernel.Get<IAccountService>(); } }
+        public IAccountService accountService
+        {
+            get { return LoginServer.Kernel.Get<IAccountService>(); }
+        }
 
         public RequestAuthLogin(LoginClient Client, byte[] data)
         {
@@ -70,7 +73,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
                     return;
                 }
 
-                if(ServerThreadPool.Instance.LoggedAlready(username.ToLower()))
+                if (ServerThreadPool.Instance.LoggedAlready(username.ToLower()))
                 {
                     Client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCOUNT_IN_USE));
                     Client.close();

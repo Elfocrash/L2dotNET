@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.managers
     public class ItemEnchantManager
     {
         private static readonly ItemEnchantManager instance = new ItemEnchantManager();
+
         public static ItemEnchantManager getInstance()
         {
             return instance;
@@ -15,6 +16,7 @@ namespace L2dotNET.GameService.managers
 
         private readonly SortedList<int, EnchantScroll> items;
         private readonly SortedList<int, EnchantScroll> supports;
+
         public ItemEnchantManager()
         {
             items = new SortedList<int, EnchantScroll>();
@@ -65,7 +67,7 @@ namespace L2dotNET.GameService.managers
             items.Add(22013, new EnchantScroll(EnchantType.bonus, EnchantTarget.armor, ItemTemplate.L2ItemGrade.a, 10));
             items.Add(20517, new EnchantScroll(EnchantType.bonus, EnchantTarget.weapon, ItemTemplate.L2ItemGrade.s, 10));
             items.Add(20518, new EnchantScroll(EnchantType.bonus, EnchantTarget.armor, ItemTemplate.L2ItemGrade.s, 10));
-           
+
             items.Add(22014, new EnchantScroll(EnchantType.ancient, EnchantTarget.weapon, ItemTemplate.L2ItemGrade.b, 10));
             items.Add(22015, new EnchantScroll(EnchantType.ancient, EnchantTarget.weapon, ItemTemplate.L2ItemGrade.a, 10));
             items.Add(22016, new EnchantScroll(EnchantType.ancient, EnchantTarget.armor, ItemTemplate.L2ItemGrade.b, 10));
@@ -235,7 +237,8 @@ namespace L2dotNET.GameService.managers
                 switch (dat.Type)
                 {
                     case EnchantType.auxiliary:
-                        min = player.EnchantItem.Template.Bodypart == ItemTemplate.L2ItemBodypart.onepiece ? (byte)4 : (byte)3; max = 9;
+                        min = player.EnchantItem.Template.Bodypart == ItemTemplate.L2ItemBodypart.onepiece ? (byte)4 : (byte)3;
+                        max = 9;
                         break;
                     case EnchantType.ancient:
                         max = 16;
@@ -261,12 +264,19 @@ namespace L2dotNET.GameService.managers
 
     public enum EnchantType
     {
-        standart, crystal, blessed, auxiliary, bonus, ancient
+        standart,
+        crystal,
+        blessed,
+        auxiliary,
+        bonus,
+        ancient
     }
 
     public enum EnchantTarget
     {
-        weapon, armor, yogi_staff
+        weapon,
+        armor,
+        yogi_staff
     }
 
     public class EnchantScroll
@@ -290,6 +300,5 @@ namespace L2dotNET.GameService.managers
             this.Crystall = enchantCrystall;
             this.bonus = bonus;
         }
-
     }
 }

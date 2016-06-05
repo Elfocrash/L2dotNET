@@ -33,9 +33,6 @@ namespace L2dotNET.GameService.model.playable.petai
             }
         }
 
-        public override void DoThink(object sender = null, System.Timers.ElapsedEventArgs e = null)
-        {
-
-        }
+        public override void DoThink(object sender = null, System.Timers.ElapsedEventArgs e = null) { }
     }
 }

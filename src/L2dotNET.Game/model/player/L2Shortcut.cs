@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.model.player
+﻿namespace L2dotNET.GameService.model.player
 {
     public class L2Shortcut
     {
@@ -15,7 +14,7 @@ namespace L2dotNET.GameService.model.player
         public int Id { get; set; }
         public int Level { get; set; }
         public int CharacterType { get; set; }
-        
+
         public L2Shortcut(int slotId, int pageId, int shortcutType, int shortcutId, int shortcutLevel, int characterType)
         {
             Slot = slotId;

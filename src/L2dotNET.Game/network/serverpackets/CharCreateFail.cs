@@ -23,7 +23,7 @@
         private readonly CharCreateFailReason reason;
 
         public CharCreateFail(CharCreateFailReason reason)
-        {   
+        {
             this.reason = reason;
         }
 

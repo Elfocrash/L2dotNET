@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.geo
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct GeoBlock
-    //internal sealed class GeoBlock
+        //internal sealed class GeoBlock
     {
         /// <summary>
         /// Block heights map.
@@ -88,7 +88,7 @@ namespace L2dotNET.GameService.geo
 
             fixed (short* h = heights, src = m_Heights)
                 while (layersCount < heights.Length)
-                *(h + layersCount++) = *(src + offset++);
+                    *(h + layersCount++) = *(src + offset++);
 
             return heights;
         }

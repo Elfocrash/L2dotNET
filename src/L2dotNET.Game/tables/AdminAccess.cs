@@ -153,7 +153,7 @@ namespace L2dotNET.GameService.tables
             {
                 processor.use(admin, alias);
             }
-            catch(Exception sss)
+            catch (Exception sss)
             {
                 admin.sendMessage("Probably syntax eror.");
                 log.Error(sss);
@@ -165,10 +165,7 @@ namespace L2dotNET.GameService.tables
             _commands.Add(processor.cmd, processor);
         }
 
-        public AdminAccess()
-        {
-            
-        }
+        public AdminAccess() { }
 
         public void ProcessBypass(L2Player player, int ask, int reply)
         {

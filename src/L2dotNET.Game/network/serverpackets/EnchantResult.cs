@@ -1,11 +1,11 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class EnchantResult : GameServerNetworkPacket
     {
         private readonly EnchantResultVal result;
         private int crystal;
         private long count;
+
         public EnchantResult(EnchantResultVal result, int crystal = 0, long count = 0)
         {
             this.result = result;

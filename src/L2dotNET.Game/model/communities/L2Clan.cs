@@ -155,12 +155,30 @@ namespace L2dotNET.GameService.model.communities
             {
                 switch (ct)
                 {
-                    case e_ClanType.CLAN_KNIGHT1: if (Knights_1 != null && Knights_1.LeaderID == ObjID) ret = ct; break;
-                    case e_ClanType.CLAN_KNIGHT2: if (Knights_2 != null && Knights_2.LeaderID == ObjID) ret = ct; break;
-                    case e_ClanType.CLAN_KNIGHT3: if (Knights_1_Order1 != null && Knights_1_Order1.LeaderID == ObjID) ret = ct; break;
-                    case e_ClanType.CLAN_KNIGHT4: if (Knights_1_Order2 != null && Knights_1_Order2.LeaderID == ObjID) ret = ct; break;
-                    case e_ClanType.CLAN_KNIGHT5: if (Knights_2_Order1 != null && Knights_2_Order1.LeaderID == ObjID) ret = ct; break;
-                    case e_ClanType.CLAN_KNIGHT6: if (Knights_2_Order2 != null && Knights_2_Order2.LeaderID == ObjID) ret = ct; break;
+                    case e_ClanType.CLAN_KNIGHT1:
+                        if (Knights_1 != null && Knights_1.LeaderID == ObjID)
+                            ret = ct;
+                        break;
+                    case e_ClanType.CLAN_KNIGHT2:
+                        if (Knights_2 != null && Knights_2.LeaderID == ObjID)
+                            ret = ct;
+                        break;
+                    case e_ClanType.CLAN_KNIGHT3:
+                        if (Knights_1_Order1 != null && Knights_1_Order1.LeaderID == ObjID)
+                            ret = ct;
+                        break;
+                    case e_ClanType.CLAN_KNIGHT4:
+                        if (Knights_1_Order2 != null && Knights_1_Order2.LeaderID == ObjID)
+                            ret = ct;
+                        break;
+                    case e_ClanType.CLAN_KNIGHT5:
+                        if (Knights_2_Order1 != null && Knights_2_Order1.LeaderID == ObjID)
+                            ret = ct;
+                        break;
+                    case e_ClanType.CLAN_KNIGHT6:
+                        if (Knights_2_Order2 != null && Knights_2_Order2.LeaderID == ObjID)
+                            ret = ct;
+                        break;
                 }
             }
 
@@ -196,7 +214,8 @@ namespace L2dotNET.GameService.model.communities
                     FileStream fs = new FileStream(@"crests\c" + CrestID + ".bmp", FileMode.Create, FileAccess.ReadWrite);
                     BinaryWriter bw = new BinaryWriter(fs);
                     bw.Write(picture);
-                    bw.Close(); fs.Close();
+                    bw.Close();
+                    fs.Close();
                 }
                 catch (Exception ex)
                 {
@@ -242,7 +261,8 @@ namespace L2dotNET.GameService.model.communities
                     FileStream fs = new FileStream(@"crests\b" + LargeCrestID + ".bmp", FileMode.Create, FileAccess.ReadWrite);
                     BinaryWriter bw = new BinaryWriter(fs);
                     bw.Write(picture);
-                    bw.Close(); fs.Close();
+                    bw.Close();
+                    fs.Close();
                 }
                 catch (Exception ex)
                 {
@@ -283,10 +303,18 @@ namespace L2dotNET.GameService.model.communities
                 case e_ClanType.CLAN_MAIN:
                     switch (Level)
                     {
-                        case 0: val = 10; break;
-                        case 1: val = 15; break;
-                        case 2: val = 20; break;
-                        case 3: val = 30; break;
+                        case 0:
+                            val = 10;
+                            break;
+                        case 1:
+                            val = 15;
+                            break;
+                        case 2:
+                            val = 20;
+                            break;
+                        case 3:
+                            val = 30;
+                            break;
 
                         default:
                             val = 40;
@@ -344,7 +372,7 @@ namespace L2dotNET.GameService.model.communities
             player.setPenalty_ClanJoin(DateTime.Now.AddHours(24), false);
             player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_MUST_WAIT_BEFORE_JOINING_ANOTHER_CLAN);
 
-           // player.updateDb();
+            // player.updateDb();
         }
 
         private void broadcastToOnline(GameServerNetworkPacket p)
@@ -389,13 +417,20 @@ namespace L2dotNET.GameService.model.communities
         public List<e_ClanSub> getAllSubs()
         {
             List<e_ClanSub> subs = new List<e_ClanSub>();
-            if (Academy != null) subs.Add(Academy);
-            if (Knights_1 != null) subs.Add(Knights_1);
-            if (Knights_2 != null) subs.Add(Knights_2);
-            if (Knights_1_Order1 != null) subs.Add(Knights_1_Order1);
-            if (Knights_1_Order2 != null) subs.Add(Knights_1_Order2);
-            if (Knights_2_Order1 != null) subs.Add(Knights_2_Order1);
-            if (Knights_2_Order2 != null) subs.Add(Knights_2_Order2);
+            if (Academy != null)
+                subs.Add(Academy);
+            if (Knights_1 != null)
+                subs.Add(Knights_1);
+            if (Knights_2 != null)
+                subs.Add(Knights_2);
+            if (Knights_1_Order1 != null)
+                subs.Add(Knights_1_Order1);
+            if (Knights_1_Order2 != null)
+                subs.Add(Knights_1_Order2);
+            if (Knights_2_Order1 != null)
+                subs.Add(Knights_2_Order1);
+            if (Knights_2_Order2 != null)
+                subs.Add(Knights_2_Order2);
 
             return subs;
         }

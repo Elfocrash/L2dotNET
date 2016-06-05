@@ -9,7 +9,10 @@ namespace L2dotNET.GameService.network.l2recv
     class CharacterSelected : GameServerNetworkRequest
     {
         [Inject]
-        public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
+        public IPlayerService playerService
+        {
+            get { return GameServer.Kernel.Get<IPlayerService>(); }
+        }
 
         public CharacterSelected(GameClient client, byte[] data)
         {
@@ -18,10 +21,10 @@ namespace L2dotNET.GameService.network.l2recv
 
         private int _charSlot;
 
-        private int _unk1;  // new in C4
-        private int _unk2;  // new in C4
-        private int _unk3;  // new in C4
-        private int _unk4;	// new in C4
+        private int _unk1; // new in C4
+        private int _unk2; // new in C4
+        private int _unk3; // new in C4
+        private int _unk4; // new in C4
 
         public override void read()
         {
@@ -46,12 +49,10 @@ namespace L2dotNET.GameService.network.l2recv
             client.CurrentPlayer = player;
 
             getClient().sendPacket(new l2send.CharacterSelected(player, client.SessionId));
-
         }
 
         private static void PlayerModelMapping(PlayerModel playerModel, L2Player player)
         {
-
             //AccountName = player.AccountName,
             //ObjectId = player.ObjID,
             //player.Name = playerModel.Name;

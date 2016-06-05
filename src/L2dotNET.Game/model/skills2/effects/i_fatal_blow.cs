@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.model.skills2.effects
     class i_fatal_blow : TEffect
     {
         private int power;
+
         public override void build(string str)
         {
             string[] v = str.Split(' ');
@@ -23,7 +24,7 @@ namespace L2dotNET.GameService.model.skills2.effects
 
             double shieldDef = Formulas.checkShieldDef(caster, target);
             double damage = Formulas.getPhysSkillHitDamage(caster, target, power);
-            
+
             caster.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3).AddPlayerName(caster.Name).AddString(target.Name).AddNumber(damage));
             if (target is L2Player)
                 target.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2).AddPlayerName(target.Name).AddPlayerName(caster.Name).AddNumber(damage));
@@ -36,6 +37,7 @@ namespace L2dotNET.GameService.model.skills2.effects
         private bool tempSuccess = false;
         private int unk1;
         private int unk2;
+
         public byte success(L2Character target)
         {
             tempSuccess = new Random().Next(100) <= 50;

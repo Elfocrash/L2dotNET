@@ -56,12 +56,10 @@ namespace L2dotNET.GameService.model.quests.data
                 {
                     htmltext = "beast_herder_tunatun_q0019_0202.htm";
                 }
-
             }
 
             player.ShowHtm(htmltext, npc);
         }
-
 
         public override void onEarnItem(L2Player player, int cond, int id)
         {
@@ -69,4 +67,3 @@ namespace L2dotNET.GameService.model.quests.data
         }
     }
 }
-

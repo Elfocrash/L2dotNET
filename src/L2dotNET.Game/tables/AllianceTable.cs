@@ -58,10 +58,7 @@ namespace L2dotNET.GameService.tables
 
         public SortedList<int, L2Alliance> _alliances = new SortedList<int, L2Alliance>();
 
-        public AllianceTable()
-        {
-
-        }
+        public AllianceTable() { }
 
         public L2Alliance GetAlliance(int id)
         {

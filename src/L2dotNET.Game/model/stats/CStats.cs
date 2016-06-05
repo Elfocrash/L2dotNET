@@ -13,6 +13,7 @@ namespace L2dotNET.GameService.model.stats
         {
             this.owner = owner;
         }
+
         private readonly L2Character owner;
 
         public Hashtable statTemplate = new Hashtable();
@@ -201,7 +202,7 @@ namespace L2dotNET.GameService.model.stats
 
         public void addTemplate(TEffectType type, double value)
         {
-            if(!statTemplate.Contains(type))
+            if (!statTemplate.Contains(type))
                 statTemplate.Add(type, value);
         }
 
@@ -211,7 +212,7 @@ namespace L2dotNET.GameService.model.stats
             addTemplate(TEffectType.p_physical_defense, template.BasePDef);
             addTemplate(TEffectType.p_magical_attack, template.BaseMAtk);
             addTemplate(TEffectType.p_magical_defense, template.BaseMDef);
-            addTemplate(TEffectType.p_speed, 700);//template.runspd);
+            addTemplate(TEffectType.p_speed, 700); //template.runspd);
 
             addTemplate(TEffectType.b_max_weight, 2500000.0);
             addTemplate(TEffectType.b_accuracy, 50);

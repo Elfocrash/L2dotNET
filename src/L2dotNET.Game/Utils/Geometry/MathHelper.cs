@@ -23,10 +23,7 @@ namespace L2dotNET.GameService.Utils
             // Internally using doubles not to lose precission
             double amountSquared = amount * amount;
             double amountCubed = amountSquared * amount;
-            return (double)(0.5 * (2.0 * value2 +
-                (value3 - value1) * amount +
-                (2.0 * value1 - 5.0 * value2 + 4.0 * value3 - value4) * amountSquared +
-                (3.0 * value2 - value1 - 3.0 * value3 + value4) * amountCubed));
+            return (double)(0.5 * (2.0 * value2 + (value3 - value1) * amount + (2.0 * value1 - 5.0 * value2 + 4.0 * value3 - value4) * amountSquared + (3.0 * value2 - value1 - 3.0 * value3 + value4) * amountCubed));
         }
 
         public static double Clamp(double value, double min, double max)
@@ -59,13 +56,9 @@ namespace L2dotNET.GameService.Utils
             else if (amount == 1f)
                 result = value2;
             else
-                result = (2 * v1 - 2 * v2 + t2 + t1) * sCubed +
-                    (3 * v2 - 3 * v1 - 2 * t1 - t2) * sSquared +
-                    t1 * s +
-                    v1;
+                result = (2 * v1 - 2 * v2 + t2 + t1) * sCubed + (3 * v2 - 3 * v1 - 2 * t1 - t2) * sSquared + t1 * s + v1;
             return (double)result;
         }
-
 
         public static double Lerp(double value1, double value2, double amount)
         {
@@ -153,7 +146,6 @@ namespace L2dotNET.GameService.Utils
                 return true;
 
             return false;
-
         }
     }
 }

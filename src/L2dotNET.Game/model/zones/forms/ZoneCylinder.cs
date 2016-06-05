@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.model.zones.forms
 {
-    public class ZoneCylinder : ZoneForm 
+    public class ZoneCylinder : ZoneForm
     {
         private readonly int _x;
         private readonly int _y;

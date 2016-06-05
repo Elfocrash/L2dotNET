@@ -37,10 +37,7 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-        public CharTemplateTable()
-        {
-
-        }
+        public CharTemplateTable() { }
 
         public void Initialize()
         {
@@ -53,7 +50,6 @@ namespace L2dotNET.GameService.tables
 
                 foreach (XmlNode node in nodes)
                 {
-
                     if ("class".Equals(node.Attributes[0].OwnerElement.Name))
                     {
                         XmlNamedNodeMap attrs = node.Attributes;
@@ -62,7 +58,6 @@ namespace L2dotNET.GameService.tables
 
                         for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
                         {
-
                             if ("set".Equals(cd.NextSibling.Name) && cd.NextSibling != null)
                             {
                                 attrs = cd.NextSibling.Attributes;
@@ -75,14 +70,10 @@ namespace L2dotNET.GameService.tables
                         }
                         PcTemplate pcTempl = new PcTemplate(classId, set);
                         Templates.Add((int)pcTempl.ClassId.Id, pcTempl);
-                        
                     }
-
                 }
-
-
             }
-            Log.Info($"Loaded { Templates.Count } character templates.");
+            Log.Info($"Loaded {Templates.Count} character templates.");
         }
 
         public PcTemplate GetTemplate(ClassIds classId)
@@ -94,6 +85,5 @@ namespace L2dotNET.GameService.tables
         {
             return Templates[classId];
         }
-
     }
 }

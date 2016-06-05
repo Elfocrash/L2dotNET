@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.model.skills2.effects
     class a_tele_region : TEffect
     {
         private string region;
+
         public override void build(string str)
         {
             this.region = str.Split(' ')[1];
@@ -23,7 +24,7 @@ namespace L2dotNET.GameService.model.skills2.effects
 
             //if (loc == null) //ELFOC
             //    loc = MapRegionTable.getInstance().getRespawn(target.X, target.Y, ((L2Player)target).Karma);
-            
+
             ((L2Character)target).teleport(loc[0], loc[1], loc[2]);
             return nothing;
         }

@@ -39,8 +39,10 @@ namespace L2dotNET.GameService
         private static readonly ILog log = LogManager.GetLogger(typeof(L2Player));
 
         [Inject]
-        public IPlayerService playerService { get { return GameServer.Kernel.Get<IPlayerService>(); } }
-
+        public IPlayerService playerService
+        {
+            get { return GameServer.Kernel.Get<IPlayerService>(); }
+        }
 
         public string AccountName { get; set; }
         public ClassId ClassId { get; set; }
@@ -147,7 +149,6 @@ namespace L2dotNET.GameService
             player.Penalty_ClanCreate = playerModel.ClanCreateExpiryTime.ToString();
             player.Penalty_ClanJoin = playerModel.ClanJoinExpiryTime.ToString();
 
-
             player.Inventory = new InvPC();
             player.Inventory._owner = player;
             player.Refund = new InvRefund(player);
@@ -155,7 +156,6 @@ namespace L2dotNET.GameService
             player.CStatsInit();
 
             restoreItems(player);
-
 
             return player;
         }
@@ -173,53 +173,7 @@ namespace L2dotNET.GameService
 
         public void UpdatePlayer()
         {
-            PlayerModel playerModel = new PlayerModel()
-            {
-                ObjectId = ObjID,
-                Level = Level,
-                MaxHp = MaxHP,
-                CurHp = (int)CurHP,
-                MaxCp = MaxCP,
-                CurCp = (int)CurCP,
-                MaxMp = MaxMP,
-                CurMp = (int)CurMP,
-                Face = Face,
-                HairStyle = HairStyle,
-                HairColor = HairColor,
-                Sex = Sex,
-                Heading = Heading,
-                X = X,
-                Y = Y,
-                Z = Z,
-                Exp = Exp,
-                ExpBeforeDeath = ExpOnDeath,
-                Sp = SP,
-                Karma = Karma,
-                PvpKills = PvpKills,
-                PkKills = PkKills,
-                ClanId = ClanId,
-                Race = (int)BaseClass.ClassId.ClassRace,
-                ClassId = (int)ActiveClass.ClassId.Id,
-                BaseClass = (int)BaseClass.ClassId.Id,
-                DeleteTime = DeleteTime,
-                CanCraft = CanCraft,
-                Title = Title,
-                RecHave = RecHave,
-                RecLeft = RecLeft,
-                AccessLevel = AccessLevel,
-                ClanPrivs = ClanPrivs,
-                WantsPeace = WantsPeace,
-                IsIn7sDungeon = IsIn7sDungeon,
-                PunishLevel = PunishLevel,
-                PunishTimer = PunishTimer,
-                PowerGrade = PowerGrade,
-                Nobless = Nobless,
-                Sponsor = Sponsor,
-                VarkaKetraAlly = VarkaKetraAlly,
-                ClanCreateExpiryTime = ClanCreateExpiryTime,
-                ClanJoinExpiryTime = ClanJoinExpiryTime,
-                DeathPenaltyLevel = DeathPenaltyLevel
-            };
+            PlayerModel playerModel = new PlayerModel() { ObjectId = ObjID, Level = Level, MaxHp = MaxHP, CurHp = (int)CurHP, MaxCp = MaxCP, CurCp = (int)CurCP, MaxMp = MaxMP, CurMp = (int)CurMP, Face = Face, HairStyle = HairStyle, HairColor = HairColor, Sex = Sex, Heading = Heading, X = X, Y = Y, Z = Z, Exp = Exp, ExpBeforeDeath = ExpOnDeath, Sp = SP, Karma = Karma, PvpKills = PvpKills, PkKills = PkKills, ClanId = ClanId, Race = (int)BaseClass.ClassId.ClassRace, ClassId = (int)ActiveClass.ClassId.Id, BaseClass = (int)BaseClass.ClassId.Id, DeleteTime = DeleteTime, CanCraft = CanCraft, Title = Title, RecHave = RecHave, RecLeft = RecLeft, AccessLevel = AccessLevel, ClanPrivs = ClanPrivs, WantsPeace = WantsPeace, IsIn7sDungeon = IsIn7sDungeon, PunishLevel = PunishLevel, PunishTimer = PunishTimer, PowerGrade = PowerGrade, Nobless = Nobless, Sponsor = Sponsor, VarkaKetraAlly = VarkaKetraAlly, ClanCreateExpiryTime = ClanCreateExpiryTime, ClanJoinExpiryTime = ClanJoinExpiryTime, DeathPenaltyLevel = DeathPenaltyLevel };
 
             playerService.UpdatePlayer(playerModel);
         }
@@ -243,7 +197,8 @@ namespace L2dotNET.GameService
 
         public int getPaperdollObjectId(int p)
         {
-            return Inventory.getPaperdollObjectId(p); ;
+            return Inventory.getPaperdollObjectId(p);
+            ;
         }
 
         public int getPaperdollItemId(int p)
@@ -256,17 +211,35 @@ namespace L2dotNET.GameService
             return Inventory.getWeaponAugmentation();
         }
 
-        public int INT { get { return ActiveClass.BaseINT; } }
+        public int INT
+        {
+            get { return ActiveClass.BaseINT; }
+        }
 
-        public int STR { get { return ActiveClass.BaseSTR; } }
+        public int STR
+        {
+            get { return ActiveClass.BaseSTR; }
+        }
 
-        public int CON { get { return ActiveClass.BaseCON; } }
+        public int CON
+        {
+            get { return ActiveClass.BaseCON; }
+        }
 
-        public int MEN { get { return ActiveClass.BaseMEN; } }
+        public int MEN
+        {
+            get { return ActiveClass.BaseMEN; }
+        }
 
-        public int DEX { get { return ActiveClass.BaseDEX; } }
+        public int DEX
+        {
+            get { return ActiveClass.BaseDEX; }
+        }
 
-        public int WIT { get { return ActiveClass.BaseWIT; } }
+        public int WIT
+        {
+            get { return ActiveClass.BaseWIT; }
+        }
 
         public int getPaperdollAugmentationId(int p)
         {
@@ -277,8 +250,8 @@ namespace L2dotNET.GameService
         public byte Noblesse = 0;
         public byte Heroic = 0;
 
-
         public byte _privateStoreType = 0;
+
         public byte getPrivateStoreType()
         {
             return _privateStoreType;
@@ -347,7 +320,7 @@ namespace L2dotNET.GameService
             }
             catch
             {
-                log.Info($"player: cant find item obj { itemobj }");
+                log.Info($"player: cant find item obj {itemobj}");
                 return null;
             }
         }
@@ -440,6 +413,7 @@ namespace L2dotNET.GameService
         }
 
         public int _currentFocusEnergy = 0;
+
         public int getForceIncreased()
         {
             return _currentFocusEnergy;
@@ -536,7 +510,6 @@ namespace L2dotNET.GameService
         {
             if (petSummonTime != null)
                 return petSummonTime.Enabled;
-
 
             if (nonpetSummonTime != null)
                 return nonpetSummonTime.Enabled;
@@ -1134,6 +1107,7 @@ namespace L2dotNET.GameService
         }
 
         public InvPrivateWarehouse _warehouse;
+
         public void db_restoreQuests()
         {
             //MySqlConnection connection = SQLjec.getInstance().conn();
@@ -1190,16 +1164,7 @@ namespace L2dotNET.GameService
 
         public L2Clan Clan;
 
-        public int
-            ItemLimit_Inventory = 80,
-            ItemLimit_Selling = 5,
-            ItemLimit_Buying = 5,
-            ItemLimit_RecipeDwarven = 50,
-            ItemLimit_RecipeCommon = 50,
-            ItemLimit_Warehouse = 120,
-            ItemLimit_ClanWarehouse = 150,
-            ItemLimit_Extra = 0,
-            ItemLimit_Quest = 20;
+        public int ItemLimit_Inventory = 80, ItemLimit_Selling = 5, ItemLimit_Buying = 5, ItemLimit_RecipeDwarven = 50, ItemLimit_RecipeCommon = 50, ItemLimit_Warehouse = 120, ItemLimit_ClanWarehouse = 150, ItemLimit_Extra = 0, ItemLimit_Quest = 20;
 
         public L2Citizen FolkNpc;
         public int last_x1 = -4;
@@ -1675,138 +1640,138 @@ namespace L2dotNET.GameService
             switch (ClanType)
             {
                 case (short)e_ClanType.CLAN_MAIN:
+                {
+                    switch (Clan.Level)
                     {
-                        switch (Clan.Level)
-                        {
-                            case 0:
-                            case 1:
-                            case 2:
-                            case 3:
-                                rank = e_ClanRank._1;
-                                break;
-                            case 4:
-                                if (leader)
-                                    rank = e_ClanRank._3;
-                                break;
-                            case 5:
-                                rank = leader ? e_ClanRank._4 : e_ClanRank._3;
-                                break;
-                            case 6:
-                                if (leader)
-                                    rank = e_ClanRank._5;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                    rank = e_ClanRank._4;
-                                else
-                                    rank = e_ClanRank._3;
-                                break;
-                            case 7:
-                                if (leader)
-                                    rank = e_ClanRank._7;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                    rank = e_ClanRank._6;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
-                                    rank = e_ClanRank._5;
-                                else
-                                    rank = e_ClanRank._4;
-                                break;
-                            case 8:
-                                if (leader)
-                                    rank = e_ClanRank._8;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                    rank = e_ClanRank._7;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
-                                    rank = e_ClanRank._6;
-                                else
-                                    rank = e_ClanRank._5;
-                                break;
-                            case 9:
-                                if (leader)
-                                    rank = e_ClanRank._9;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                    rank = e_ClanRank._8;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
-                                    rank = e_ClanRank._7;
-                                else
-                                    rank = e_ClanRank._6;
-                                break;
-                            case 10:
-                                if (leader)
-                                    rank = e_ClanRank._10;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                    rank = e_ClanRank._9;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
-                                    rank = e_ClanRank._8;
-                                else
-                                    rank = e_ClanRank._7;
-                                break;
-                            case 11:
-                                if (leader)
-                                    rank = e_ClanRank._11;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                    rank = e_ClanRank._10;
-                                else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
-                                    rank = e_ClanRank._9;
-                                else
-                                    rank = e_ClanRank._8;
-                                break;
-                        }
+                        case 0:
+                        case 1:
+                        case 2:
+                        case 3:
+                            rank = e_ClanRank._1;
+                            break;
+                        case 4:
+                            if (leader)
+                                rank = e_ClanRank._3;
+                            break;
+                        case 5:
+                            rank = leader ? e_ClanRank._4 : e_ClanRank._3;
+                            break;
+                        case 6:
+                            if (leader)
+                                rank = e_ClanRank._5;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
+                                rank = e_ClanRank._4;
+                            else
+                                rank = e_ClanRank._3;
+                            break;
+                        case 7:
+                            if (leader)
+                                rank = e_ClanRank._7;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
+                                rank = e_ClanRank._6;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
+                                rank = e_ClanRank._5;
+                            else
+                                rank = e_ClanRank._4;
+                            break;
+                        case 8:
+                            if (leader)
+                                rank = e_ClanRank._8;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
+                                rank = e_ClanRank._7;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
+                                rank = e_ClanRank._6;
+                            else
+                                rank = e_ClanRank._5;
+                            break;
+                        case 9:
+                            if (leader)
+                                rank = e_ClanRank._9;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
+                                rank = e_ClanRank._8;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
+                                rank = e_ClanRank._7;
+                            else
+                                rank = e_ClanRank._6;
+                            break;
+                        case 10:
+                            if (leader)
+                                rank = e_ClanRank._10;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
+                                rank = e_ClanRank._9;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
+                                rank = e_ClanRank._8;
+                            else
+                                rank = e_ClanRank._7;
+                            break;
+                        case 11:
+                            if (leader)
+                                rank = e_ClanRank._11;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
+                                rank = e_ClanRank._10;
+                            else if (Clan.isSubLeader(ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
+                                rank = e_ClanRank._9;
+                            else
+                                rank = e_ClanRank._8;
+                            break;
                     }
+                }
                     break;
                 case (short)e_ClanType.CLAN_ACADEMY:
-                    {
-                        rank = e_ClanRank._1;
-                    }
+                {
+                    rank = e_ClanRank._1;
+                }
                     break;
                 case (short)e_ClanType.CLAN_KNIGHT1:
                 case (short)e_ClanType.CLAN_KNIGHT2:
+                {
+                    switch (Clan.Level)
                     {
-                        switch (Clan.Level)
-                        {
-                            case 6:
-                                rank = e_ClanRank._2;
-                                break;
-                            case 7:
-                                rank = e_ClanRank._3;
-                                break;
-                            case 8:
-                                rank = e_ClanRank._4;
-                                break;
-                            case 9:
-                                rank = e_ClanRank._5;
-                                break;
-                            case 10:
-                                rank = e_ClanRank._6;
-                                break;
-                            case 11:
-                                rank = e_ClanRank._7;
-                                break;
-                        }
+                        case 6:
+                            rank = e_ClanRank._2;
+                            break;
+                        case 7:
+                            rank = e_ClanRank._3;
+                            break;
+                        case 8:
+                            rank = e_ClanRank._4;
+                            break;
+                        case 9:
+                            rank = e_ClanRank._5;
+                            break;
+                        case 10:
+                            rank = e_ClanRank._6;
+                            break;
+                        case 11:
+                            rank = e_ClanRank._7;
+                            break;
                     }
+                }
                     break;
                 case (short)e_ClanType.CLAN_KNIGHT3:
                 case (short)e_ClanType.CLAN_KNIGHT4:
                 case (short)e_ClanType.CLAN_KNIGHT5:
                 case (short)e_ClanType.CLAN_KNIGHT6:
+                {
+                    switch (Clan.Level)
                     {
-                        switch (Clan.Level)
-                        {
-                            case 7:
-                                rank = e_ClanRank._2;
-                                break;
-                            case 8:
-                                rank = e_ClanRank._3;
-                                break;
-                            case 9:
-                                rank = e_ClanRank._4;
-                                break;
-                            case 10:
-                                rank = e_ClanRank._5;
-                                break;
-                            case 11:
-                                rank = e_ClanRank._6;
-                                break;
-                        }
+                        case 7:
+                            rank = e_ClanRank._2;
+                            break;
+                        case 8:
+                            rank = e_ClanRank._3;
+                            break;
+                        case 9:
+                            rank = e_ClanRank._4;
+                            break;
+                        case 10:
+                            rank = e_ClanRank._5;
+                            break;
+                        case 11:
+                            rank = e_ClanRank._6;
+                            break;
                     }
+                }
                     break;
             }
 
@@ -1839,10 +1804,7 @@ namespace L2dotNET.GameService
             else
                 Penalty_ClanCreate = "0";
 
-            if (sql)
-            {
-
-            }
+            if (sql) { }
         }
 
         public void setPenalty_ClanJoin(DateTime time, bool sql)
@@ -1852,13 +1814,11 @@ namespace L2dotNET.GameService
             else
                 Penalty_ClanJoin = "0";
 
-            if (sql)
-            {
-
-            }
+            if (sql) { }
         }
 
         public bool IsRestored = false;
+
         public void TotalRestore()
         {
             if (IsRestored)
@@ -2172,6 +2132,7 @@ namespace L2dotNET.GameService
 
         private System.Timers.Timer sitTime;
         private bool IsSitting = false;
+
         public void Sit()
         {
             if (sitTime == null)
@@ -2226,7 +2187,6 @@ namespace L2dotNET.GameService
         {
             return false;
         }
-
 
         // arrow, bolt
         public L2Item SecondaryWeaponSupport;
@@ -2492,7 +2452,6 @@ namespace L2dotNET.GameService
         {
             get
             {
-
                 if (MountType > 0)
                     return MountedTemplate.CollisionRadius;
 
@@ -2544,6 +2503,7 @@ namespace L2dotNET.GameService
 
         public SortedList<int, long> currentTrade;
         public int sstt;
+
         public long AddItemToTrade(int objId, long num)
         {
             if (currentTrade == null)
@@ -2567,7 +2527,6 @@ namespace L2dotNET.GameService
                 AICharacter.NotifyOnStartNight();
             else
                 AICharacter.NotifyOnStartDay();
-
         }
 
         public int VehicleId
@@ -2595,6 +2554,7 @@ namespace L2dotNET.GameService
         public int LastRequestedMultiSellId = -1;
         public int AttackingId;
         public SortedList<int, TAcquireSkill> ActiveSkillTree;
+
         public void RequestPing()
         {
             lastPingId = new Random().Next(int.MaxValue);
@@ -2607,7 +2567,7 @@ namespace L2dotNET.GameService
         {
             if (lastPingId != id)
             {
-                log.Warn($"player fail to ping respond right { id } { lastPingId } at { pingTimeout.ToLocalTime() }");
+                log.Warn($"player fail to ping respond right {id} {lastPingId} at {pingTimeout.ToLocalTime()}");
                 return;
             }
 
@@ -2703,6 +2663,7 @@ namespace L2dotNET.GameService
         }
 
         public List<Cubic> cubics = new List<Cubic>();
+
         public void StopCubic(Cubic cubic)
         {
             foreach (Cubic cub in cubics)

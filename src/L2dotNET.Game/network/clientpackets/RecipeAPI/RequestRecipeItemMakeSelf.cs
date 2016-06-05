@@ -12,6 +12,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private int _id;
+
         public override void read()
         {
             _id = readD();
@@ -22,7 +23,7 @@ namespace L2dotNET.GameService.network.l2recv
             L2Player player = Client.CurrentPlayer;
 
             if (player._recipeBook == null)
-            {   
+            {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
                 player.sendActionFailed();
                 return;
@@ -66,12 +67,12 @@ namespace L2dotNET.GameService.network.l2recv
                 player.sendActionFailed();
                 return;
             }
-            
+
             foreach (recipe_item_entry material in rec._materials)
             {
                 long count = player.Inventory.getItemCount(material.item.ItemID);
                 if (count < material.count)
-                {   
+                {
                     SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.MISSING_S2_S1_TO_CREATE);
                     sm.AddItemName(material.item.ItemID);
                     sm.AddItemCount(material.count - count);
@@ -103,10 +104,9 @@ namespace L2dotNET.GameService.network.l2recv
 
             foreach (recipe_item_entry prod in rec._products)
             {
-               // if(prod.rate == 100)
-                    player.Inventory.addItem(prod.item, prod.count, 0, true, true);
-               // else
-
+                // if(prod.rate == 100)
+                player.Inventory.addItem(prod.item, prod.count, 0, true, true);
+                // else
             }
 
             player.sendPacket(new RecipeItemMakeInfo(player, rec, 1));

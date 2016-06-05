@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class CharacterSelected : GameServerNetworkPacket
     {
@@ -17,12 +16,12 @@ namespace L2dotNET.GameService.network.l2send
             writeC(0x15);
 
             writeS(player.Name);
-            writeD(player.ObjID); 
+            writeD(player.ObjID);
             writeS(player.Title);
             writeD(session);
 
             writeD(player.ClanId);
-            writeD(0x00);  //??
+            writeD(0x00); //??
             writeD(player.Sex);
             writeD((int)player.BaseClass.ClassId.ClassRace);
 
@@ -38,8 +37,8 @@ namespace L2dotNET.GameService.network.l2send
 
             writeQ(player.Exp);
             writeD(player.Level);
-            writeD(player.Karma);	// thx evill33t
-            writeD(0);	//?
+            writeD(player.Karma); // thx evill33t
+            writeD(0); //?
 
             writeD(player.INT);
             writeD(player.STR);

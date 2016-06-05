@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int _x;
         private readonly int _y;
         private readonly int _z;
+
         public TargetUnselected(L2Object obj)
         {
             _id = obj.ObjID;

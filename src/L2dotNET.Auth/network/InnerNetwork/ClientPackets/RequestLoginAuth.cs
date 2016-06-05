@@ -49,7 +49,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
 
             if (server == null)
             {
-                log.Error($"Code '{ code }' for server was not found. Closing");
+                log.Error($"Code '{code}' for server was not found. Closing");
                 thread.close(ServerLoginFail.ToPacket("Code Error"));
                 return;
             }
@@ -64,7 +64,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
             thread.Connected = true;
 
             thread.Send(ServerLoginOk.ToPacket());
-            log.Info($"AuthThread: Server #{ server.Id } connected");
+            log.Info($"AuthThread: Server #{server.Id} connected");
         }
     }
 }

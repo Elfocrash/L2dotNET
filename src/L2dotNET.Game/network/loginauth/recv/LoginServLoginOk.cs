@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.loginauth.recv
+﻿namespace L2dotNET.GameService.network.loginauth.recv
 {
     class LoginServLoginOk : ReceiveAuthPacket
     {
         private string code;
+
         public LoginServLoginOk(AuthThread login, byte[] db)
         {
             base.makeme(login, db);

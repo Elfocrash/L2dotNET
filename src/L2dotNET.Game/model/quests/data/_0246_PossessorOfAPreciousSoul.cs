@@ -106,7 +106,7 @@ namespace L2dotNET.GameService.model.quests.data
                         htmltext = "ossian_q0246_0401.htm";
                         break;
                     case 5:
-                        if(player.hasAllOfThisItems(q_necklace_evergreen, q_ring_waterbinder, q_staff_rainsong))
+                        if (player.hasAllOfThisItems(q_necklace_evergreen, q_ring_waterbinder, q_staff_rainsong))
                             htmltext = "ossian_q0246_0303.htm";
                         else
                             htmltext = "ossian_q0246_0304.htm";
@@ -132,16 +132,16 @@ namespace L2dotNET.GameService.model.quests.data
                 switch (mob.Template.NpcId)
                 {
                     case brilliant_prophet:
-                        {
-                            if (!player.hasItem(q_ring_waterbinder) && rn.Next(100) <= 15)
-                                player.addItemQuest(q_ring_waterbinder, 1);
-                        }
+                    {
+                        if (!player.hasItem(q_ring_waterbinder) && rn.Next(100) <= 15)
+                            player.addItemQuest(q_ring_waterbinder, 1);
+                    }
                         break;
                     case brilliant_justice:
-                        {
-                            if (!player.hasItem(q_necklace_evergreen) && rn.Next(100) <= 10)
-                                player.addItemQuest(q_necklace_evergreen, 1);
-                        }
+                    {
+                        if (!player.hasItem(q_necklace_evergreen) && rn.Next(100) <= 10)
+                            player.addItemQuest(q_necklace_evergreen, 1);
+                    }
                         break;
                 }
             }
@@ -150,10 +150,10 @@ namespace L2dotNET.GameService.model.quests.data
                 switch (mob.Template.NpcId)
                 {
                     case blinding_fire_barakiel:
-                        {
-                            if (!player.hasItem(q_staff_rainsong))
-                                player.addItemQuest(q_staff_rainsong, 1);
-                        }
+                    {
+                        if (!player.hasItem(q_staff_rainsong))
+                            player.addItemQuest(q_staff_rainsong, 1);
+                    }
                         break;
                 }
             }
@@ -179,4 +179,3 @@ namespace L2dotNET.GameService.model.quests.data
         }
     }
 }
-

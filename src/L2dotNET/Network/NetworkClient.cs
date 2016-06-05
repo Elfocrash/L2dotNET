@@ -106,8 +106,7 @@ namespace L2dotNET.Network
         /// Initializes new instance of <see cref="NetworkClient"/> connection.
         /// </summary>
         /// <param name="socket">Client <see cref="Socket"/> object.</param>
-        public NetworkClient(Socket socket)
-            : this()
+        public NetworkClient(Socket socket) : this()
         {
             Logger.WriteLine(Source.Debug, "Try set m_Socket");
             try
@@ -118,7 +117,6 @@ namespace L2dotNET.Network
             {
                 Logger.Exception(ex, "Try set m_Socket");
             }
-
         }
 
         /// <summary>
@@ -204,8 +202,14 @@ namespace L2dotNET.Network
         {
             if (m_Socket != null && m_Socket.Connected)
             {
-                try { m_Socket.Shutdown(SocketShutdown.Both); }
-                catch (Exception e) { Console.WriteLine(e); }
+                try
+                {
+                    m_Socket.Shutdown(SocketShutdown.Both);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
 
                 m_Socket = null;
             }

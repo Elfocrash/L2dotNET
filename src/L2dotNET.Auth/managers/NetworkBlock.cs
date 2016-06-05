@@ -62,7 +62,7 @@ namespace L2dotNET.LoginService.data
                     }
                 }
             }
-            log.Info($"NetworkBlock: { blocks.Count } blocks.");
+            log.Info($"NetworkBlock: {blocks.Count} blocks.");
         }
 
         public bool Allowed(string ip)

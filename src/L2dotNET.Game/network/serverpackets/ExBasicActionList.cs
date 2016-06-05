@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class ExBasicActionList : GameServerNetworkPacket
     {
         private readonly int[] _defaultActionList;
+
         public ExBasicActionList()
         {
             int count1 = 74; // 0 <-> (count1 - 1) //Update by rocknow

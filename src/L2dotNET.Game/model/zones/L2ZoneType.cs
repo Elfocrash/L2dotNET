@@ -9,7 +9,12 @@ namespace L2dotNET.GameService.model.zones
     {
         public int Id { get; }
         protected L2ZoneForm _zone;
-        public L2ZoneForm Zone { get { return _zone; } set { _zone = value; } }
+
+        public L2ZoneForm Zone
+        {
+            get { return _zone; }
+            set { _zone = value; }
+        }
 
         protected List<L2Character> _characterList;
 
@@ -54,9 +59,9 @@ namespace L2dotNET.GameService.model.zones
             if (!IsAffected(character))
                 return;
 
-            if(IsInsideZone(character.X,character.Y,character.Z))
+            if (IsInsideZone(character.X, character.Y, character.Z))
             {
-                if(!_characterList.Contains(character))
+                if (!_characterList.Contains(character))
                 {
                     //quest check here
                     _characterList.Add(character);
@@ -109,13 +114,11 @@ namespace L2dotNET.GameService.model.zones
             if (_characterList.Count == 0)
                 return;
 
-            foreach(L2Character character in _characterList)
+            foreach (L2Character character in _characterList)
             {
                 if (character != null && character is L2Player)
                     character.sendPacket(packet);
             }
         }
-
-
     }
 }

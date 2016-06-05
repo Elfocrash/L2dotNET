@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2send
     class UserInfo : GameServerNetworkPacket
     {
         private readonly L2Player player;
+
         public UserInfo(L2Player player)
         {
             this.player = player;
@@ -37,9 +38,9 @@ namespace L2dotNET.GameService.network.l2send
             writeD(player.WIT);
             writeD(player.MEN);
 
-            writeD(player.CurHP);//max hp
+            writeD(player.CurHP); //max hp
             writeD(player.CurHP);
-            writeD(player.CurMP);//max mp
+            writeD(player.CurMP); //max mp
             writeD(player.CurMP);
             writeD(player.SP);
             writeD(player.CurrentWeight);
@@ -145,7 +146,7 @@ namespace L2dotNET.GameService.network.l2send
 
             writeD(player.sstt); //_relation
             writeC(player.MountType);
-            writeC(player.getPrivateStoreType());//
+            writeC(player.getPrivateStoreType()); //
             writeC(player.p_create_item > 0 ? 1 : 0);
             writeD(player.PkKills);
             writeD(player.PvpKills);
@@ -169,7 +170,7 @@ namespace L2dotNET.GameService.network.l2send
 
             writeH(player.RecHave); //c2  recommendations remaining
             writeH(player.RecLeft); //c2  recommendations received
-            writeD(player.MountType > 0 ? player.MountedTemplate.NpcId + 1000000 : 0);//moun t npcid
+            writeD(player.MountType > 0 ? player.MountedTemplate.NpcId + 1000000 : 0); //moun t npcid
             writeH(player.ItemLimit_Inventory);
 
             writeD((int)player.ActiveClass.ClassId.Id);
@@ -197,7 +198,6 @@ namespace L2dotNET.GameService.network.l2send
 
             writeD(player.getTitleColor());
             writeD(player.CursedWeaponLevel);
-            
         }
     }
 }

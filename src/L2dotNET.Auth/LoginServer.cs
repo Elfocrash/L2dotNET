@@ -17,8 +17,7 @@ namespace L2dotNET.LoginService
 
         public static IKernel Kernel { get; set; }
 
-        public LoginServer()
-        { }
+        public LoginServer() { }
 
         public void Start()
         {
@@ -30,16 +29,19 @@ namespace L2dotNET.LoginService
 
             LoginServerListener = new TcpListener(IPAddress.Parse(Config.Instance.serverConfig.Host), Config.Instance.serverConfig.LoginPort);
 
-            try { LoginServerListener.Start(); }
+            try
+            {
+                LoginServerListener.Start();
+            }
             catch (SocketException ex)
             {
-                log.Error($"Socket Error: '{ ex.SocketErrorCode }'. Message: '{ ex.Message }' (Error Code: '{ ex.NativeErrorCode }')");
+                log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
                 log.Info($"Press ENTER to exit...");
                 Console.Read();
                 Environment.Exit(0);
             }
 
-            log.Info($"Auth server listening clients at { Config.Instance.serverConfig.Host }:{ Config.Instance.serverConfig.LoginPort }");
+            log.Info($"Auth server listening clients at {Config.Instance.serverConfig.Host}:{Config.Instance.serverConfig.LoginPort}");
             new Thread(ServerThreadPool.Instance.Start).Start();
 
             TcpClient clientSocket = default(TcpClient);

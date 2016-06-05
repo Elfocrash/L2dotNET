@@ -112,9 +112,6 @@
 
         public int DeathPenaltyLevel { get; set; }
 
-        public PlayerModel()
-        {
-
-        }
+        public PlayerModel() { }
     }
 }

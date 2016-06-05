@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly L2Item item;
         private readonly long num;
         private readonly byte action;
+
         public TradeUpdate(L2Item item, long num, byte action)
         {
             this.item = item;
@@ -32,7 +33,6 @@ namespace L2dotNET.GameService.network.l2send
             writeH(item.Enchant);
             writeH(0x00); // ?
             writeH(0x00);
-
         }
     }
 }

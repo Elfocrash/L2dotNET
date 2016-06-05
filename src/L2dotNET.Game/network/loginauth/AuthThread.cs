@@ -42,10 +42,7 @@ namespace L2dotNET.GameService.network.loginauth
         public string version = "rcs #216";
         public int build = 0;
 
-        public AuthThread()
-        {
-
-        }
+        public AuthThread() { }
 
         public void Initialize()
         {
@@ -76,7 +73,6 @@ namespace L2dotNET.GameService.network.loginauth
 
             IsConnected = true;
 
-
             sendPacket(new LoginAuth());
             sendPacket(new LoginServPing(this));
             new System.Threading.Thread(read).Start();
@@ -96,7 +92,7 @@ namespace L2dotNET.GameService.network.loginauth
             }
             catch (Exception e)
             {
-                log.Error($"AuthThread: { e.Message }");
+                log.Error($"AuthThread: {e.Message}");
                 termination();
             }
         }
@@ -116,7 +112,7 @@ namespace L2dotNET.GameService.network.loginauth
             }
             catch (Exception e)
             {
-                log.Error($"AuthThread: { e.Message }");
+                log.Error($"AuthThread: {e.Message}");
                 termination();
             }
         }
@@ -158,10 +154,11 @@ namespace L2dotNET.GameService.network.loginauth
         }
 
         private bool paused = false;
+
         public void loginFail(string code)
         {
             paused = true;
-            log.Error($"AuthThread: { code }. Please check configuration, server paused.");
+            log.Error($"AuthThread: {code}. Please check configuration, server paused.");
             try
             {
                 nstream.Close();
@@ -172,7 +169,7 @@ namespace L2dotNET.GameService.network.loginauth
 
         public void loginOk(string code)
         {
-            log.Info($"AuthThread: { code }");
+            log.Info($"AuthThread: {code}");
         }
 
         public void setInGameAccount(string account, bool status = false)
@@ -187,6 +184,7 @@ namespace L2dotNET.GameService.network.loginauth
         }
 
         private readonly SortedList<string, AccountModel> awaitingAccounts = new SortedList<string, AccountModel>();
+
         public void awaitAccount(AccountModel ta)
         {
             if (awaitingAccounts.ContainsKey(ta.Login))

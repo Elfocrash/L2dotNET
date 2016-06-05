@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.model.npcs.decor
         public bool UnlockTrigger = false;
         public bool UnlockSkill = false;
         public bool UnlockNpc = false;
-        
+
         public override void broadcastUserInfo()
         {
             foreach (L2Object obj in knownObjects.Values)

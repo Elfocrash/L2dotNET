@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2recv
+﻿namespace L2dotNET.GameService.network.l2recv
 {
     class RequestTargetCanceld : GameServerNetworkRequest
     {
@@ -8,7 +7,8 @@ namespace L2dotNET.GameService.network.l2recv
             base.makeme(client, data);
         }
 
-        private short _unselect; 
+        private short _unselect;
+
         public override void read()
         {
             _unselect = readH(); //0 esc key, 1 - mouse

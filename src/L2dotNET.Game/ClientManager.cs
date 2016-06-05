@@ -32,10 +32,7 @@ namespace L2dotNET.GameService
             }
         }
 
-        public ClientManager()
-        {
-
-        }
+        public ClientManager() { }
 
         protected SortedList<string, DateTime> _flood = new SortedList<string, DateTime>();
         protected NetworkBlock _banned;
@@ -53,7 +50,7 @@ namespace L2dotNET.GameService
             {
                 if (_flood[ip].CompareTo(DateTime.Now) == 1)
                 {
-                    log.Warn($"Active flooder: { ip }");
+                    log.Warn($"Active flooder: {ip}");
                     client.Close();
                     return;
                 }
@@ -67,14 +64,14 @@ namespace L2dotNET.GameService
             if (!_banned.Allowed(ip))
             {
                 client.Close();
-                log.Error($"NetworkBlock: connection attemp failed. { ip } banned.");
+                log.Error($"NetworkBlock: connection attemp failed. {ip} banned.");
                 return;
             }
 
             GameClient gc = new GameClient(client);
 
             clients.Add(gc._address.ToString(), gc);
-            log.Info($"NetController: { clients.Count } active connections");
+            log.Info($"NetController: {clients.Count} active connections");
         }
 
         public void terminate(string sock)
@@ -82,7 +79,7 @@ namespace L2dotNET.GameService
             lock (clients)
                 clients.Remove(sock);
 
-            log.Info($"NetController: { clients.Count } active connections");
+            log.Info($"NetController: {clients.Count} active connections");
         }
     }
 }

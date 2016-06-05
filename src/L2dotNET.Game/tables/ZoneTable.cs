@@ -33,10 +33,7 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-        public ZoneTable()
-        {
-
-        }
+        public ZoneTable() { }
 
         public void Initialize()
         {
@@ -75,49 +72,49 @@ namespace L2dotNET.GameService.tables
                                     template._map_no = val;
                                     break;
                                 case "type":
-                                    {
-                                        template.Type = (ZoneTemplate.ZoneType)Enum.Parse(typeof(ZoneTemplate.ZoneType), val);
+                                {
+                                    template.Type = (ZoneTemplate.ZoneType)Enum.Parse(typeof(ZoneTemplate.ZoneType), val);
 
-                                        switch (template.Type)
-                                        {
-                                            case ZoneTemplate.ZoneType.battle_zone:
-                                                zone = new battle_zone();
-                                                break;
-                                            case ZoneTemplate.ZoneType.peace_zone:
-                                                zone = new peace_zone();
-                                                break;
-                                            case ZoneTemplate.ZoneType.water:
-                                                zone = new water();
-                                                break;
-                                            case ZoneTemplate.ZoneType.no_restart:
-                                                zone = new no_restart();
-                                                break;
-                                            case ZoneTemplate.ZoneType.ssq_zone:
-                                                zone = new ssq_zone();
-                                                break;
-                                            case ZoneTemplate.ZoneType.mother_tree:
-                                                zone = new mother_tree();
-                                                template._hp_regen_bonus = 2;
-                                                template._mp_regen_bonus = 1;
-                                                break;
-                                            case ZoneTemplate.ZoneType.damage:
-                                                zone = new damage();
-                                                template._damage_on_hp = 200;
-                                                template._damage_on_mp = 0;
-                                                break;
-                                            case ZoneTemplate.ZoneType.poison:
-                                                zone = new poison();
-                                                template.setSkill("s_area_a_speed_down");
-                                                break;
-                                            case ZoneTemplate.ZoneType.swamp:
-                                                zone = new swamp();
-                                                template._move_bonus = -50;
-                                                break;
-                                            case ZoneTemplate.ZoneType.instant_skill:
-                                                zone = new instant_skill();
-                                                break;
-                                        }
+                                    switch (template.Type)
+                                    {
+                                        case ZoneTemplate.ZoneType.battle_zone:
+                                            zone = new battle_zone();
+                                            break;
+                                        case ZoneTemplate.ZoneType.peace_zone:
+                                            zone = new peace_zone();
+                                            break;
+                                        case ZoneTemplate.ZoneType.water:
+                                            zone = new water();
+                                            break;
+                                        case ZoneTemplate.ZoneType.no_restart:
+                                            zone = new no_restart();
+                                            break;
+                                        case ZoneTemplate.ZoneType.ssq_zone:
+                                            zone = new ssq_zone();
+                                            break;
+                                        case ZoneTemplate.ZoneType.mother_tree:
+                                            zone = new mother_tree();
+                                            template._hp_regen_bonus = 2;
+                                            template._mp_regen_bonus = 1;
+                                            break;
+                                        case ZoneTemplate.ZoneType.damage:
+                                            zone = new damage();
+                                            template._damage_on_hp = 200;
+                                            template._damage_on_mp = 0;
+                                            break;
+                                        case ZoneTemplate.ZoneType.poison:
+                                            zone = new poison();
+                                            template.setSkill("s_area_a_speed_down");
+                                            break;
+                                        case ZoneTemplate.ZoneType.swamp:
+                                            zone = new swamp();
+                                            template._move_bonus = -50;
+                                            break;
+                                        case ZoneTemplate.ZoneType.instant_skill:
+                                            zone = new instant_skill();
+                                            break;
                                     }
+                                }
                                     break;
                                 case "affect_race":
                                     template._affect_race = val;
@@ -189,11 +186,10 @@ namespace L2dotNET.GameService.tables
                             }
                             else
                             {
-                                log.Error($"AreaTable: null region at { template._x[i] } { template._y[i] } for zone { zone.Name }");
+                                log.Error($"AreaTable: null region at {template._x[i]} {template._y[i]} for zone {zone.Name}");
                             }
                         }
                     }
-
                 }
             }
             log.Info("AreaTable: intercepted " + ctx + " regions with " + cta + " zones");

@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.model.templates
+﻿namespace L2dotNET.GameService.model.templates
 {
     public class TObject
     {
@@ -67,26 +66,22 @@ namespace L2dotNET.GameService.model.templates
         public int acquire_rp;
         public int fake_class_id = -1;
 
-
-        internal void setNpcSkills(string value)
-        {
-            
-        }
+        internal void setNpcSkills(string value) { }
     }
 
     public enum TObjectCategory
     {
-        warrior, 
-        citizen, 
-        holything, 
-        guard, 
-        merchant, 
-        teleporter, 
-        guild_master, 
-        warehouse_keeper, 
-        ownthing, 
-        package_keeper, 
-        boss, 
+        warrior,
+        citizen,
+        holything,
+        guard,
+        merchant,
+        teleporter,
+        guild_master,
+        warehouse_keeper,
+        ownthing,
+        package_keeper,
+        boss,
         minion,
         xmastree,
         treasure,
@@ -99,8 +94,8 @@ namespace L2dotNET.GameService.model.templates
         mrkeeper,
         monrace,
         siege_attacker,
-        player, 
-        pet, 
+        player,
+        pet,
         summon
     }
 
@@ -135,11 +130,20 @@ namespace L2dotNET.GameService.model.templates
 
     public enum TObjectSex
     {
-        male, female, etc
+        male,
+        female,
+        etc
     }
 
     public enum TObjectBaseAttackType
     {
-        fist, pole, sword, dagger, bow, blunt, dual, dualfist
+        fist,
+        pole,
+        sword,
+        dagger,
+        bow,
+        blunt,
+        dual,
+        dualfist
     }
 }

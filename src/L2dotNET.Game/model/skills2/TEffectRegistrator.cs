@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.model.skills2
     class TEffectRegistrator
     {
         private static readonly TEffectRegistrator st = new TEffectRegistrator();
+
         public static TEffectRegistrator getInstance()
         {
             return st;
@@ -16,13 +17,13 @@ namespace L2dotNET.GameService.model.skills2
             TEffect effect = null;
             switch (type)
             {
-                case TEffectType.p_speed: 
+                case TEffectType.p_speed:
                     effect = new p_speed();
                     break;
-                case TEffectType.p_physical_defense: 
+                case TEffectType.p_physical_defense:
                     effect = new p_physical_defence();
                     break;
-                case TEffectType.i_restoration: 
+                case TEffectType.i_restoration:
                     effect = new i_restoration();
                     break;
                 case TEffectType.i_fatal_blow:

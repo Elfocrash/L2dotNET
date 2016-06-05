@@ -47,7 +47,6 @@ namespace L2dotNET.GameService.network.l2recv
                 case L2Shortcut.TYPE_RECIPE:
                     player.registerShortcut(_slot, _page, _type, _id, _lvl, _characterType);
                     break;
-
             }
         }
     }

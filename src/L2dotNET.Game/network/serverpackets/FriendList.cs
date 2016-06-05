@@ -1,9 +1,7 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class FriendList : GameServerNetworkPacket
     {
-
         protected internal override void write()
         {
             writeC(0xfa);
@@ -11,5 +9,4 @@ namespace L2dotNET.GameService.network.l2send
             writeH(0x00);
         }
     }
-
 }

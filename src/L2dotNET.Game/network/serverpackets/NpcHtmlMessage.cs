@@ -24,7 +24,7 @@ namespace L2dotNET.GameService.network.l2send
 
         public NpcHtmlMessage(L2Player player, string plain, int objId, bool isPlain)
         {
-            _htm = "<html><body>"+plain+"</body></html>";
+            _htm = "<html><body>" + plain + "</body></html>";
             _objId = objId;
             _itemId = 0;
         }

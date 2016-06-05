@@ -44,10 +44,7 @@ namespace L2dotNET.GameService.controllers
         private const int SEC_DAY = 10800, SEC_NIGHT = 3600, SEC_HOUR = 600, SEC_DN = 14400;
         private const int SEC_SCALE = 1800;
 
-        public GameTime()
-        {
-
-        }
+        public GameTime() { }
 
         public void Initialize()
         {

@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class SpawnItem : GameServerNetworkPacket
     {
         private readonly L2Item _item;
+
         public SpawnItem(L2Item item)
         {
             _item = item;

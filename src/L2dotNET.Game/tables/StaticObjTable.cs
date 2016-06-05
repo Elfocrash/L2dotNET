@@ -32,12 +32,10 @@ namespace L2dotNET.GameService.tables
             }
         }
 
-        public StaticObjTable()
-        {
-
-        }
+        public StaticObjTable() { }
 
         public SortedList<int, L2StaticObject> objects;
+
         public void Initialize()
         {
             objects = new SortedList<int, L2StaticObject>();
@@ -74,7 +72,8 @@ namespace L2dotNET.GameService.tables
                     for (byte ord = 2; ord < pt.Length; ord++)
                     {
                         string parameter = pt[ord];
-                        string value = parameter.Substring(parameter.IndexOf('{') + 1); value = value.Remove(value.Length - 1);
+                        string value = parameter.Substring(parameter.IndexOf('{') + 1);
+                        value = value.Remove(value.Length - 1);
 
                         switch (parameter.Split('{')[0].ToLower())
                         {
@@ -95,23 +94,23 @@ namespace L2dotNET.GameService.tables
                                 obj.mdef = Convert.ToInt32(value.Split(' ')[1]);
                                 break;
                             case "unlock":
+                            {
+                                foreach (string str in value.Split(' '))
                                 {
-                                    foreach (string str in value.Split(' '))
+                                    switch (str)
                                     {
-                                        switch (str)
-                                        {
-                                            case "trigger":
-                                                obj.UnlockTrigger = true;
-                                                break;
-                                            case "skill":
-                                                obj.UnlockSkill = true;
-                                                break;
-                                            case "drop":
-                                                obj.UnlockNpc = true;
-                                                break;
-                                        }
+                                        case "trigger":
+                                            obj.UnlockTrigger = true;
+                                            break;
+                                        case "skill":
+                                            obj.UnlockSkill = true;
+                                            break;
+                                        case "drop":
+                                            obj.UnlockNpc = true;
+                                            break;
                                     }
                                 }
+                            }
                                 break;
                         }
                     }
@@ -125,7 +124,7 @@ namespace L2dotNET.GameService.tables
                 o.onSpawn();
             }
 
-            log.Info($"StaticObjTable: Spanwed { objects.Count } objects.");
+            log.Info($"StaticObjTable: Spanwed {objects.Count} objects.");
         }
 
         public L2Door GetDoor(int id)

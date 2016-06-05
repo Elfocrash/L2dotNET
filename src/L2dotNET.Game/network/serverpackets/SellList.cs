@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2send
     {
         private readonly List<L2Item> _sells = new List<L2Item>();
         private readonly long _adena;
+
         public SellList(L2Player player, int npcObj)
         {
             foreach (L2Item item in player.getAllItems())

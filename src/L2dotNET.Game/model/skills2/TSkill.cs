@@ -18,7 +18,6 @@ namespace L2dotNET.GameService.model.skills2
         public int skill_cool_time;
         public double reuse_delay;
 
-
         public short is_magic = 0;
 
         public short activate_rate = -1;
@@ -53,8 +52,6 @@ namespace L2dotNET.GameService.model.skills2
         public long ConsumeItemCount;
 
         public byte EnchantEnabled = 0;
-
-
 
         /// <summary>
         /// (effect) (cond)* (sup)*
@@ -119,32 +116,32 @@ namespace L2dotNET.GameService.model.skills2
             switch (affect_scope)
             {
                 case TSkillScope.single:
+                {
+                    switch (target_type)
                     {
-                        switch (target_type)
-                        {
-                            case TSkillTarget.self:
-                                targets.Add(actor.ObjID, actor);
-                                break;
+                        case TSkillTarget.self:
+                            targets.Add(actor.ObjID, actor);
+                            break;
 
-                            case TSkillTarget.friend:
-                            case TSkillTarget.enemy:
-                            case TSkillTarget.any:
-                            case TSkillTarget.target:
-                                if (actor.CurrentTarget != null)
-                                    targets.Add(actor.CurrentTarget.ObjID, actor.CurrentTarget);
-                                break;
-                            case TSkillTarget.master:
-                                if (actor is L2Summon)
-                                    targets.Add(((L2Summon)actor).Owner.ObjID, ((L2Summon)actor).Owner);
-                                break;
-                            case TSkillTarget.unlockable:
-                                {
-                                    if (actor.CurrentTarget != null && actor.CurrentTarget is L2Door)
-                                        targets.Add(actor.CurrentTarget.ObjID, actor.CurrentTarget);
-                                }
-                                break;
+                        case TSkillTarget.friend:
+                        case TSkillTarget.enemy:
+                        case TSkillTarget.any:
+                        case TSkillTarget.target:
+                            if (actor.CurrentTarget != null)
+                                targets.Add(actor.CurrentTarget.ObjID, actor.CurrentTarget);
+                            break;
+                        case TSkillTarget.master:
+                            if (actor is L2Summon)
+                                targets.Add(((L2Summon)actor).Owner.ObjID, ((L2Summon)actor).Owner);
+                            break;
+                        case TSkillTarget.unlockable:
+                        {
+                            if (actor.CurrentTarget != null && actor.CurrentTarget is L2Door)
+                                targets.Add(actor.CurrentTarget.ObjID, actor.CurrentTarget);
                         }
+                            break;
                     }
+                }
                     break;
                 case TSkillScope.party:
                     L2Character[] members = actor.getPartyCharacters();
@@ -195,10 +192,10 @@ namespace L2dotNET.GameService.model.skills2
                                 target = ((L2Summon)actor).Owner;
                             break;
                         case TSkillTarget.unlockable:
-                            {
-                                if (actor.CurrentTarget != null && actor.CurrentTarget is L2Door)
-                                    target = actor.CurrentTarget;
-                            }
+                        {
+                            if (actor.CurrentTarget != null && actor.CurrentTarget is L2Door)
+                                target = actor.CurrentTarget;
+                        }
                             break;
                     }
                     break;
@@ -214,7 +211,6 @@ namespace L2dotNET.GameService.model.skills2
 
             return target;
         }
-
 
         public bool ConditionOk(L2Player target)
         {

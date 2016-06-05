@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class PetStatusShow : GameServerNetworkPacket
     {
         private readonly byte ObjectSummonType;
+
         public PetStatusShow(byte ObjectSummonType)
         {
             this.ObjectSummonType = ObjectSummonType;

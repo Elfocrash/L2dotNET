@@ -6,6 +6,7 @@
         private int _listId;
         private int _count;
         private int[] _items;
+
         public RequestWearItem(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -40,9 +41,8 @@
             {
                 int itemId = _items[i];
 
-                player.sendMessage("wear item "+itemId);
+                player.sendMessage("wear item " + itemId);
             }
-
         }
     }
 }

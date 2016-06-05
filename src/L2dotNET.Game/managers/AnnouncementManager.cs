@@ -12,7 +12,10 @@ namespace L2dotNET.GameService.Managers
     class AnnouncementManager
     {
         [Inject]
-        public IServerService serverService { get { return GameServer.Kernel.Get<IServerService>(); } }
+        public IServerService serverService
+        {
+            get { return GameServer.Kernel.Get<IServerService>(); }
+        }
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(AnnouncementManager));
 
@@ -43,13 +46,10 @@ namespace L2dotNET.GameService.Managers
         public void Initialize()
         {
             Announcements = serverService.GetAnnouncementsList();
-            Log.Info($"Announcement manager: Loaded { Announcements.Count } annoucements.");
+            Log.Info($"Announcement manager: Loaded {Announcements.Count} annoucements.");
         }
 
-        public AnnouncementManager()
-        {
-
-        }
+        public AnnouncementManager() { }
 
         public void Announce(string text)
         {

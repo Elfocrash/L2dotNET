@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class StopMoveInVehicle : GameServerNetworkPacket
     {
@@ -7,6 +6,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int x;
         private readonly int y;
         private readonly int z;
+
         public StopMoveInVehicle(L2Player player, int x, int y, int z)
         {
             this.player = player;

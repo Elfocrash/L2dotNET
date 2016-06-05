@@ -7,8 +7,8 @@ namespace L2dotNET.GameService.model.skills2
         public SortedList<int, TSkillEnchantInfoDetail> details = new SortedList<int, TSkillEnchantInfoDetail>();
         public int id;
         public int lv;
-
     }
+
     public class TSkillEnchantInfoDetail
     {
         public int route_id;

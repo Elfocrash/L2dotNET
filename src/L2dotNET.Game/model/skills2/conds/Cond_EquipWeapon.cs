@@ -15,7 +15,6 @@ namespace L2dotNET.GameService.model.skills2.conds
 
         public override bool CanUse(L2Player player, TSkill skill)
         {
-
             L2Item item = player.Inventory.getWeapon();
 
             if (item != null)
@@ -26,7 +25,6 @@ namespace L2dotNET.GameService.model.skills2.conds
             }
 
             return false;
-
         }
     }
 }

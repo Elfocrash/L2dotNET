@@ -1,14 +1,14 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class PledgeCrest : GameServerNetworkPacket
     {
         private readonly int id;
         private readonly byte[] picture;
+
         public PledgeCrest(int id, byte[] picture)
         {
             this.id = id;
-            if(picture == null)
+            if (picture == null)
                 picture = new byte[0];
 
             this.picture = picture;

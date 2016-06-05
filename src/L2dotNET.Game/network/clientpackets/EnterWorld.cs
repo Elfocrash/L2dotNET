@@ -57,7 +57,7 @@ namespace L2dotNET.GameService.network.l2recv
             }
 
             player.StartRegeneration();
-           // player.sendItemList(false);
+            // player.sendItemList(false);
             //player.Vitality = 20000;
             player.sendPacket(new FriendList());
             player.sendQuestList();
@@ -70,8 +70,8 @@ namespace L2dotNET.GameService.network.l2recv
             }
 
             player.sendPacket(new ExStorageMaxCount(player));
-           // player.sendPacket(new ExBasicActionList());
-          //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
+            // player.sendPacket(new ExBasicActionList());
+            //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
             player.sendActionFailed();
 
             GameTime.Instance.EnterWorld(player);

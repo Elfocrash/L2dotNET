@@ -32,8 +32,8 @@ namespace L2dotNET.GameService.model.zones.classes
                             return;
                 }
 
-            //    p._stats.p_regen_hp += Template._hp_regen_bonus;
-             //   p._stats.p_regen_mp += Template._mp_regen_bonus;
+                //    p._stats.p_regen_hp += Template._hp_regen_bonus;
+                //   p._stats.p_regen_mp += Template._mp_regen_bonus;
             }
         }
 
@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.model.zones.classes
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.sendSystemMessage((SystemMessage.SystemMessageId)Template._leaving_message_no); 
+                p.sendSystemMessage((SystemMessage.SystemMessageId)Template._leaving_message_no);
                 if (!Template._affect_race.Equals("all"))
                 {
                     if (Template._affect_race.Equals("elf"))
@@ -57,8 +57,8 @@ namespace L2dotNET.GameService.model.zones.classes
                             return;
                 }
 
-             //   p._stats.p_regen_hp -= Template._hp_regen_bonus;
-             //   p._stats.p_regen_mp -= Template._mp_regen_bonus;
+                //   p._stats.p_regen_hp -= Template._hp_regen_bonus;
+                //   p._stats.p_regen_mp -= Template._mp_regen_bonus;
             }
         }
     }

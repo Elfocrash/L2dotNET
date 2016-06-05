@@ -66,7 +66,7 @@ namespace L2dotNET.GameService.ai.npcai
         {
             if (target is L2Summon)
             {
-                if(((L2Summon)target).Owner != null)
+                if (((L2Summon)target).Owner != null)
                     AddAttackDesire(((L2Summon)target).Owner, 500);
             }
         }

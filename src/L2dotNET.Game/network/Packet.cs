@@ -111,8 +111,8 @@ namespace L2dotNET.GameService.network
             ValidateBufferSize(length);
 
             fixed (byte* buf = m_Buffer)
-            fixed (short* w = v)
-                L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                fixed (short* w = v)
+                    L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
         }
 
         /// <summary>
@@ -129,7 +129,6 @@ namespace L2dotNET.GameService.network
             m_Offset += sizeof(int);
         }
 
-
         /// <summary>
         /// Writes array of <see cref="int"/> values into packet buffer.
         /// </summary>
@@ -141,8 +140,8 @@ namespace L2dotNET.GameService.network
             ValidateBufferSize(Length);
 
             fixed (byte* buf = m_Buffer)
-            fixed (int* w = v)
-                L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                fixed (int* w = v)
+                    L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
         }
 
         /// <summary>
@@ -170,8 +169,8 @@ namespace L2dotNET.GameService.network
             ValidateBufferSize(length);
 
             fixed (byte* buf = m_Buffer)
-            fixed (double* w = v)
-                L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                fixed (double* w = v)
+                    L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
         }
 
         /// <summary>
@@ -199,8 +198,8 @@ namespace L2dotNET.GameService.network
             ValidateBufferSize(length);
 
             fixed (byte* buf = m_Buffer)
-            fixed (long* w = v)
-                L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                fixed (long* w = v)
+                    L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
         }
 
         /// <summary>
@@ -215,8 +214,8 @@ namespace L2dotNET.GameService.network
             ValidateBufferSize(length);
 
             fixed (byte* buf = m_Buffer)
-            fixed (char* w = s)
-                L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                fixed (char* w = s)
+                    L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
         }
 
         /// <summary>
@@ -235,8 +234,8 @@ namespace L2dotNET.GameService.network
             ValidateBufferSize(length);
 
             fixed (byte* buf = m_Buffer)
-            fixed (char* w = v)
-                L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                fixed (char* w = v)
+                    L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
         }
 
         /// <summary>
@@ -451,10 +450,7 @@ namespace L2dotNET.GameService.network
         /// </summary>
         public int Length
         {
-            get
-            {
-                return m_ReceivedPacket ? m_Buffer.Length : m_Offset;
-            }
+            get { return m_ReceivedPacket ? m_Buffer.Length : m_Offset; }
         }
 
         /// <summary>

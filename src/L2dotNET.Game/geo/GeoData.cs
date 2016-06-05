@@ -28,16 +28,7 @@ namespace L2dotNET.GameService.geo
 
             try
             {
-                FileInfo[] filesInfoArray = L2FileReader.GetFiles
-                    (
-                        Path.Combine
-                            (
-                                AppDomain.CurrentDomain.BaseDirectory,
-                                @"./geo/"
-                            ),
-                        m_GeoFileMask,
-                        SearchOption.TopDirectoryOnly
-                    );
+                FileInfo[] filesInfoArray = L2FileReader.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"./geo/"), m_GeoFileMask, SearchOption.TopDirectoryOnly);
 
                 FileInfo currentFile;
 
@@ -65,55 +56,55 @@ namespace L2dotNET.GameService.geo
                             switch (*(buffer + reader++))
                             {
                                 case 0x00:
-                                    {
-                                        nextMap[counter] = new GeoBlock(null, null, *(short*)(buffer + reader));
-                                        reader += sizeof(short);
-                                        break;
-                                    }
+                                {
+                                    nextMap[counter] = new GeoBlock(null, null, *(short*)(buffer + reader));
+                                    reader += sizeof(short);
+                                    break;
+                                }
                                 case 0x01:
-                                    {
+                                {
 #if GEO_FIX_DATA
                                         flat = true;
 #endif
-                                        fixed (short* heights = heightsComplex)
+                                    fixed (short* heights = heightsComplex)
+                                    {
+                                        for (j = 0; j < 0x40; reader += sizeof(short), j++)
                                         {
-                                            for (j = 0; j < 0x40; reader += sizeof(short), j++)
-                                            {
-                                                *(heights + j) = (short)(*(short*)(buffer + reader) >> 1);
+                                            *(heights + j) = (short)(*(short*)(buffer + reader) >> 1);
 
 #if GEO_FIX_DATA
                                                 if ( j > 0 && *( heights + j ) != *( heights + j - 1 ) )
                                                     flat = false; // validating that not all heights are same
 #endif
-                                            }
                                         }
+                                    }
 #if GEO_FIX_DATA
                                         if ( flat )
                                             nextMap[counter] = new GeoBlock(null, null, heightsComplex[0]);
                                         else
 #endif
-                                        nextMap[counter] = new GeoBlock(null, null, heightsComplex);
+                                    nextMap[counter] = new GeoBlock(null, null, heightsComplex);
 
-                                        break;
-                                    }
+                                    break;
+                                }
                                 case 0x02:
-                                    {
-                                        fixed (ushort* offsets = offsetsMap)
+                                {
+                                    fixed (ushort* offsets = offsetsMap)
                                         fixed (byte* map = heightsMap)
-                                        fixed (short* heights = heightsMultilayered)
-                                        {
-                                            for (j = 0, m = 0; j < 0x40; j++)
+                                            fixed (short* heights = heightsMultilayered)
                                             {
-                                                *(map + j) = *(byte*)(buffer + reader++);
-
-                                                for (k = 0; k < *(map + j); k++, m++)
+                                                for (j = 0, m = 0; j < 0x40; j++)
                                                 {
-                                                    *(heights + m) = (short)(*(short*)(buffer + reader) >> 1);
-                                                    reader += sizeof(short);
-                                                }
+                                                    *(map + j) = *(byte*)(buffer + reader++);
 
-                                                *(offsets + j) = (ushort)(k + *(offsets + j - 0x01));
-                                            }
+                                                    for (k = 0; k < *(map + j); k++, m++)
+                                                    {
+                                                        *(heights + m) = (short)(*(short*)(buffer + reader) >> 1);
+                                                        reader += sizeof(short);
+                                                    }
+
+                                                    *(offsets + j) = (ushort)(k + *(offsets + j - 0x01));
+                                                }
 
 #if GEO_FIX_DATA
                                             if ( offsetsMap[0x3f] == 0x40 ) // only 64 heights, so block is complex or flat
@@ -136,19 +127,19 @@ namespace L2dotNET.GameService.geo
                                             }
                                             else
 #endif
-                                            nextMap[counter] = new GeoBlock(heightsMap, offsetsMap, L2Buffer.SpecialCopy(heights, offsetsMap[0x3f]));
-                                        }
+                                                nextMap[counter] = new GeoBlock(heightsMap, offsetsMap, L2Buffer.SpecialCopy(heights, offsetsMap[0x3f]));
+                                            }
 
-                                        break;
-                                    }
+                                    break;
+                                }
                                 default:
                                     throw new InvalidOperationException(string.Format("Failed to read geodata file '{0}'", currentFile.FullName));
                             }
 
                             counter++;
 
-                           // if (counter % (ushort.MaxValue / 20) == 0)
-                           //     log.Info(".");
+                            // if (counter % (ushort.MaxValue / 20) == 0)
+                            //     log.Info(".");
                         }
                     }
 

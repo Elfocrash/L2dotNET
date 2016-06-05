@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.model.skills2.effects
+﻿namespace L2dotNET.GameService.model.skills2.effects
 {
     class i_agathion_energy : TEffect
     {
@@ -9,6 +8,7 @@ namespace L2dotNET.GameService.model.skills2.effects
         }
 
         private int count;
+
         public override void build(string str)
         {
             string[] v = str.Split(' ');

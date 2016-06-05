@@ -115,6 +115,7 @@ namespace L2dotNET.GameService.model.playable
         }
 
         private bool IsSpawned = false;
+
         public void SpawmMe()
         {
             X = Owner.X;
@@ -177,10 +178,7 @@ namespace L2dotNET.GameService.model.playable
             AICharacter.ChangeFollowStatus();
         }
 
-        public virtual void Attack()
-        {
-
-        }
+        public virtual void Attack() { }
 
         public virtual void Stop()
         {
@@ -258,7 +256,6 @@ namespace L2dotNET.GameService.model.playable
             nulled.Clear();
             Owner.Party.broadcastToMembers(p);
         }
-
 
         public override string asString()
         {

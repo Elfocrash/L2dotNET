@@ -24,6 +24,5 @@ namespace L2dotNET.GameService.model.npcs.cubic.data
             owner.broadcastPacket(new MagicSkillUse(owner, owner, skill1, skill1.skill_hit_time));
             return 1;
         }
-
     }
 }

@@ -44,7 +44,7 @@ namespace L2dotNET.LoginService.gscommunication
             }
             catch (Exception e)
             {
-                log.Error($"ServerThread: { e.Message }");
+                log.Error($"ServerThread: {e.Message}");
                 Termination();
             }
         }
@@ -64,7 +64,7 @@ namespace L2dotNET.LoginService.gscommunication
             }
             catch (Exception e)
             {
-                log.Error($"ServerThread: { e.Message }");
+                log.Error($"ServerThread: {e.Message}");
                 Termination();
             }
         }
@@ -147,6 +147,7 @@ namespace L2dotNET.LoginService.gscommunication
         }
 
         private readonly List<string> activeInGame = new List<string>();
+
         public void AccountInGame(string account, byte status)
         {
             if (status == 1)

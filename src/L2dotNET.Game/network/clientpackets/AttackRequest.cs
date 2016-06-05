@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.network.l2recv
             _originX = readD();
             _originY = readD();
             _originZ = readD();
-            _attackId = readC(); 	 // 0 for simple click   1 for shift-click
+            _attackId = readC(); // 0 for simple click   1 for shift-click
         }
 
         public override void run()

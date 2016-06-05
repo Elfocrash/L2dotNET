@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.network.l2recv
     {
         private int _count;
         private int[] _items;
+
         public RequestSaveInventoryOrder(GameClient client, byte[] data)
         {
             base.makeme(client, data, 2);
@@ -15,7 +16,7 @@ namespace L2dotNET.GameService.network.l2recv
         {
             _count = readD();
 
-          //  _count = Math.Min(125, _count); мм?зачем
+            //  _count = Math.Min(125, _count); мм?зачем
             _items = new int[_count * 2];
             for (int i = 0; i < _count; i++)
             {

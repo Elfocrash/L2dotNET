@@ -62,6 +62,5 @@ namespace L2dotNET.GameService.model.skills2.effects
 
             return true;
         }
-
     }
 }

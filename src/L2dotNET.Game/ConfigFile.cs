@@ -33,7 +33,7 @@ namespace L2dotNET.GameService
                 _topics.Add(line.Split('=')[0], line.Split('=')[1]);
             }
 
-            log.Info($"Config file { File.Name } loaded with { _topics.Count } parameters.");
+            log.Info($"Config file {File.Name} loaded with {_topics.Count} parameters.");
         }
 
         public string getProperty(string value, string defaultprop)
@@ -46,7 +46,7 @@ namespace L2dotNET.GameService
             catch
             {
                 ret = null;
-                log.Info($"config: error, parameter { value } was not found");
+                log.Info($"config: error, parameter {value} was not found");
             }
 
             return ret == null ? defaultprop : ret;

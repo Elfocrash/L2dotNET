@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class PartySmallWindowAll : GameServerNetworkPacket
     {
         private readonly L2Party party;
+
         public PartySmallWindowAll(L2Party party)
         {
             this.party = party;
@@ -31,10 +32,8 @@ namespace L2dotNET.GameService.network.l2send
                 writeD(member.Level);
 
                 writeD((int)member.ActiveClass.ClassId.Id);
-                writeD(0x00);// writeD(0x01); ??
+                writeD(0x00); // writeD(0x01); ??
                 writeD((int)member.BaseClass.ClassId.ClassRace);
-
-                
             }
         }
     }

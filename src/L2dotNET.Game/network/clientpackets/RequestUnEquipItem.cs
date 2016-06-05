@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2recv
+﻿namespace L2dotNET.GameService.network.l2recv
 {
     class RequestUnEquipItem : GameServerNetworkRequest
     {
@@ -9,6 +8,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private int slotBitType;
+
         public override void read()
         {
             slotBitType = readD();

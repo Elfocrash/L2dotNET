@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.model.skills2.effects
     {
         private int id;
         private int lvl;
+
         public override void build(string str)
         {
             string[] v = str.Split(' ');

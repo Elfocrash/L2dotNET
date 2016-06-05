@@ -83,7 +83,6 @@ namespace L2dotNET.Utility
                 }
 
                 throw new FileLoadException(string.Format("Failed to read {0} bytes from file '{1}'.", lengthToRead, fileName));
-
             }
 
             throw new FileNotFoundException(string.Format("File '{0}' can't be found.", fileName));

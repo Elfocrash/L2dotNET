@@ -106,7 +106,6 @@ namespace L2dotNET.Network
         /// </summary>
         public virtual void Disable()
         {
-
             m_Enabled = false;
 
             if (OnDisabled != null)

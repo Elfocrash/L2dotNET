@@ -6,6 +6,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
     class RequestLoginServPing : ReceiveServerPacket
     {
         private string message;
+
         public RequestLoginServPing(ServerThread server, byte[] data)
         {
             base.CreatePacket(server, data);

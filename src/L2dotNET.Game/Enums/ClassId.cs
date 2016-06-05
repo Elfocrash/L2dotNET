@@ -223,7 +223,6 @@ namespace L2dotNET.GameService.Enums
 
         public static readonly ClassId FORTUNE_SEEKER = new ClassId(ClassIds.FORTUNE_SEEKER, ClassRace.DWARF);
         public static readonly ClassId MAESTRO = new ClassId(ClassIds.MAESTRO, ClassRace.DWARF);
-
     }
 
     public enum ClassIds
@@ -330,5 +329,4 @@ namespace L2dotNET.GameService.Enums
         FORTUNE_SEEKER = 117,
         MAESTRO = 118
     }
-
 }

@@ -63,7 +63,6 @@ namespace L2dotNET.GameService.model.zones.classes
 
             obj.onExitZone(this, cls);
 
-
             if (obj is L2Character)
             {
                 ((L2Character)obj).sendMessage("u lost effect defence.");

@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2recv
     class RequestAnswerJoinParty : GameServerNetworkRequest
     {
         private int response;
+
         public RequestAnswerJoinParty(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -37,11 +38,11 @@ namespace L2dotNET.GameService.network.l2recv
             switch (response)
             {
                 case -1:
-                    {
-                        SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.C1_IS_SET_TO_REFUSE_PARTY_REQUESTS);
-                        sm.AddPlayerName(player.Name);
-                        player.requester.sendPacket(sm);
-                    }
+                {
+                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.C1_IS_SET_TO_REFUSE_PARTY_REQUESTS);
+                    sm.AddPlayerName(player.Name);
+                    player.requester.sendPacket(sm);
+                }
                     break;
                 case 1:
                     acceptPartyInvite(player.requester, player);

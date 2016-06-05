@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class NpcInfoMonrace : GameServerNetworkPacket
     {
         private readonly MonsterRunner runner;
+
         public NpcInfoMonrace(MonsterRunner runner)
         {
             this.runner = runner;
@@ -25,8 +26,8 @@ namespace L2dotNET.GameService.network.l2send
             writeD(0);
             writeD(runner.cur_speed);
             writeD(0);
-            writeD(0);  // swimspeed
-            writeD(0);  // swimspeed
+            writeD(0); // swimspeed
+            writeD(0); // swimspeed
             writeD(runner.cur_speed);
             writeD(0);
             writeD(runner.cur_speed);
@@ -38,18 +39,18 @@ namespace L2dotNET.GameService.network.l2send
             writeD(0); // right hand weapon
             writeD(0);
             writeD(0); // left hand weapon
-            writeC(1);	// name above char 1=true ... ??
+            writeC(1); // name above char 1=true ... ??
             writeC(1);
             writeC(0);
             writeC(0);
             writeC(0); // invisible ?? 0=false  1=true   2=summoned (only works if model has a summon animation)
-            writeS("");//name
-            writeS("");//title
+            writeS(""); //name
+            writeS(""); //title
             writeD(0x00); // Title color 0=client default
             writeD(0x00); //pvp flag
             writeD(0x00); // karma
 
-            writeD(0);  // C2
+            writeD(0); // C2
             writeD(0); //clan id
             writeD(0); //crest id
             writeD(0); // ally id
@@ -62,11 +63,11 @@ namespace L2dotNET.GameService.network.l2send
             writeD(0); // enchant
             writeD(0); // C6
             writeD(0);
-            writeD(0);  //red?
+            writeD(0); //red?
             writeC(0x01);
             writeC(0x01);
             writeD(0);
-            writeD(0);//freya
+            writeD(0); //freya
         }
     }
 }

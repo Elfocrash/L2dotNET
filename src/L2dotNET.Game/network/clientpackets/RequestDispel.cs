@@ -1,11 +1,11 @@
-﻿
-namespace L2dotNET.GameService.network.l2recv
+﻿namespace L2dotNET.GameService.network.l2recv
 {
     class RequestDispel : GameServerNetworkRequest
     {
         private int ownerId;
         private int skillId;
         private int skillLv;
+
         public RequestDispel(GameClient client, byte[] data)
         {
             base.makeme(client, data, 2);

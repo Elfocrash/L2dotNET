@@ -13,7 +13,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork
         /// Packet opcode.
         /// </summary>
         private const byte Opcode = 0x04;
-        
+
         /// <summary>
         /// Returns play accepted server > client packet.
         /// </summary>
@@ -30,11 +30,11 @@ namespace L2dotNET.LoginService.Network.OuterNetwork
                 p.WriteBytesArray(server.GetIP(client));
                 p.WriteInt(server.Port);
                 p.WriteByte(0);
-                p.WriteByte(1);// pvp?
+                p.WriteByte(1); // pvp?
                 p.WriteShort(server.CurrentPlayers);
                 p.WriteShort(server.MaxPlayers);
 
-                p.WriteByte(server.Connected);// status
+                p.WriteByte(server.Connected); // status
 
                 int bits = 0x40;
                 if (server.TestMode)
@@ -46,6 +46,5 @@ namespace L2dotNET.LoginService.Network.OuterNetwork
 
             return p;
         }
-
     }
 }

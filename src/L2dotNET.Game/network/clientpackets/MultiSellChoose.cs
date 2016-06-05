@@ -35,13 +35,13 @@ namespace L2dotNET.GameService.network.l2recv
             _unk2 = readD();
             _unk3 = readD();
             _unk4 = readH(); // elemental attributes
-            _unk5 = readH();// elemental attributes
-            _unk6 = readH();// elemental attributes
-            _unk7 = readH();// elemental attributes
-            _unk8 = readH();// elemental attributes
-            _unk9 = readH();// elemental attributes
-            _unk10 = readH();// elemental attributes
-            _unk11 = readH();// elemental attributes
+            _unk5 = readH(); // elemental attributes
+            _unk6 = readH(); // elemental attributes
+            _unk7 = readH(); // elemental attributes
+            _unk8 = readH(); // elemental attributes
+            _unk9 = readH(); // elemental attributes
+            _unk10 = readH(); // elemental attributes
+            _unk11 = readH(); // elemental attributes
         }
 
         public override void run()
@@ -62,7 +62,7 @@ namespace L2dotNET.GameService.network.l2recv
             if (player.CustomMultiSellList != null)
             {
                 list = player.CustomMultiSellList;
-                if(list.id != _listId)
+                if (list.id != _listId)
                     list = MultiSell.Instance.getList(_listId);
             }
             else
@@ -98,10 +98,9 @@ namespace L2dotNET.GameService.network.l2recv
                             break;
                     }
                 }
-
             }
 
-            if(!ok)
+            if (!ok)
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_REQUIRED_ITEMS);
                 player.sendActionFailed();

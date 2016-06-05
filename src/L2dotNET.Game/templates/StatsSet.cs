@@ -76,12 +76,12 @@ namespace L2dotNET.GameService.templates
                 if (bool.TryParse(value, out toReturn))
                     return toReturn;
                 else
-                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(bool).FullName }'! The function will return the 'defaultValue' parameter.");
+                    log.Error($"Conversion of key '{key}' failed! Cannot convert value '{value}' to '{typeof(bool).FullName}'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
             else
             {
-                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{key}' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultValue;
@@ -98,12 +98,12 @@ namespace L2dotNET.GameService.templates
                 if (byte.TryParse(value, out toReturn))
                     return toReturn;
                 else
-                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(byte).FullName }'! The function will return the 'defaultValue' parameter.");
+                    log.Error($"Conversion of key '{key}' failed! Cannot convert value '{value}' to '{typeof(byte).FullName}'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
             else
             {
-                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{key}' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultValue;
@@ -120,12 +120,12 @@ namespace L2dotNET.GameService.templates
                 if (int.TryParse(value, out toReturn))
                     return toReturn;
                 else
-                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(int).FullName }'! The function return the 'defaultValue' parameter.");
+                    log.Error($"Conversion of key '{key}' failed! Cannot convert value '{value}' to '{typeof(int).FullName}'! The function return the 'defaultValue' parameter.");
                 return defaultValue;
             }
             else
             {
-                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{key}' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultValue;
@@ -142,12 +142,12 @@ namespace L2dotNET.GameService.templates
                 if (float.TryParse(value, out toReturn))
                     return toReturn;
                 else
-                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(float).FullName }'! The function return the 'defaultValue' parameter.");
+                    log.Error($"Conversion of key '{key}' failed! Cannot convert value '{value}' to '{typeof(float).FullName}'! The function return the 'defaultValue' parameter.");
                 return defaultValue;
             }
             else
             {
-                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{key}' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultValue;
@@ -164,12 +164,12 @@ namespace L2dotNET.GameService.templates
                 if (double.TryParse(value, out toReturn))
                     return toReturn;
                 else
-                    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(double).FullName }'! The function will return the 'defaultValue' parameter.");
+                    log.Error($"Conversion of key '{key}' failed! Cannot convert value '{value}' to '{typeof(double).FullName}'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
             else
             {
-                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{key}' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultValue;
@@ -186,7 +186,7 @@ namespace L2dotNET.GameService.templates
             }
             else
             {
-                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{key}' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 //if key doesn't exists,
                 //returns the defaultValue var
                 return defaultValue;
@@ -221,13 +221,13 @@ namespace L2dotNET.GameService.templates
                             return result; //if it returned true, returns converted value
                         else
                         {
-                            log.Error($"Element '{ value }' was not found at the enum '{ typeof(T).FullName }'! The function will return the first enum element.");
+                            log.Error($"Element '{value}' was not found at the enum '{typeof(T).FullName}'! The function will return the first enum element.");
                             return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first element from enum. Default value is always the enum with "0" value, but not every enum has it.
                         }
                     }
                     else
                     {
-                        log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the first enum element.");
+                        log.Error($"Conversion of key '{key}' failed! Cannot convert value '{value}' to '{typeof(T).FullName}'! The function will return the first enum element.");
                         return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first element from enum. Default value is always 0, but not every enum has it.
                     }
                 }
@@ -236,16 +236,14 @@ namespace L2dotNET.GameService.templates
                     //find the TryParse method.
                     MethodInfo parseMethod = typeof(T).GetMethod("TryParse",
                                                                  //We want the public static one
-                                                                 BindingFlags.Public | BindingFlags.Static,
-                                                                 Type.DefaultBinder,
+                                                                 BindingFlags.Public | BindingFlags.Static, Type.DefaultBinder,
                                                                  //where the arguments are (string, out T)
-                                                                 new[] { typeof(string), typeof(T).MakeByRefType() },
-                                                                 null);
+                                                                 new[] { typeof(string), typeof(T).MakeByRefType() }, null);
 
                     if (parseMethod == null)
                     {
                         //You need to know this so you can parse manually
-                        log.Error($"'{ typeof(T).FullName }' doesn't have a 'TryParse(string s, out { typeof(T).FullName } result)' function! The function will return the 'defaultValue' parameter.");
+                        log.Error($"'{typeof(T).FullName}' doesn't have a 'TryParse(string s, out {typeof(T).FullName} result)' function! The function will return the 'defaultValue' parameter.");
                         return defaultValue;
                     }
 
@@ -257,7 +255,7 @@ namespace L2dotNET.GameService.templates
                         return (T)args[1]; //if it returned true, returns converted value
                     else
                     {
-                        log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the 'defaultValue' parameter.");
+                        log.Error($"Conversion of key '{key}' failed! Cannot convert value '{value}' to '{typeof(T).FullName}'! The function will return the 'defaultValue' parameter.");
                         return defaultValue; //if it returned false, returns defaultValue' parameter."
                     }
                 }
@@ -267,11 +265,9 @@ namespace L2dotNET.GameService.templates
                 //if key doesn't exists,
                 //returns the defaultValue var,
                 //when not specified returns the default value of 'T'
-                log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+                log.Warn($"Key '{key}' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
             }
         }
-
-
     }
 }

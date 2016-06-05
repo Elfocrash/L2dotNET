@@ -1,11 +1,11 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class ExCursedWeaponList : GameServerNetworkPacket
     {
         private readonly int[] ids;
 
-        public ExCursedWeaponList(int[] ids) {
+        public ExCursedWeaponList(int[] ids)
+        {
             this.ids = ids;
         }
 

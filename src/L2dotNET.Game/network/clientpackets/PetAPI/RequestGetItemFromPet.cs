@@ -10,6 +10,7 @@ namespace L2dotNET.GameService.network.l2recv
         private int objectId;
         private long count;
         private int equipped;
+
         public RequestGetItemFromPet(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -68,7 +69,7 @@ namespace L2dotNET.GameService.network.l2recv
                 count = item.Count;
 
             List<long[]> items = new List<long[]>();
-            items.Add(new long[] {objectId, count});
+            items.Add(new long[] { objectId, count });
             pet.Inventory.transferFrom(player, items, true);
         }
     }

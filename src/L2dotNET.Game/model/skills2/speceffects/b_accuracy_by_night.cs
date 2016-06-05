@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.model.skills2.speceffects
     public class b_accuracy_by_night : TSpecEffect
     {
         private readonly TEffect effect;
+
         public b_accuracy_by_night(double value, int skillId, int lvl)
         {
             this.value = value;

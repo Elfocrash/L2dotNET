@@ -79,15 +79,42 @@ namespace L2dotNET.GameService.model.zones.classes
 
                 switch (id)
                 {
-                    case 11: x1 = a; x2 = c; break; //bd
-                    case 21: x1 = c; x2 = b; break; //ad
-                    case 31: x1 = a; x2 = b; break; //cd
-                    case 41: x1 = c; x2 = b; break; //ad
-                    case 51: x1 = a; x2 = b; break; //cd
-                    case 61: x1 = a; x2 = c; break; //bd
-                    case 71: x1 = b; x2 = c; break; //ad
-                    case 81: x1 = a; x2 = b; break; //cd
-                    case 91: x1 = a; x2 = c; break; //bd
+                    case 11:
+                        x1 = a;
+                        x2 = c;
+                        break; //bd
+                    case 21:
+                        x1 = c;
+                        x2 = b;
+                        break; //ad
+                    case 31:
+                        x1 = a;
+                        x2 = b;
+                        break; //cd
+                    case 41:
+                        x1 = c;
+                        x2 = b;
+                        break; //ad
+                    case 51:
+                        x1 = a;
+                        x2 = b;
+                        break; //cd
+                    case 61:
+                        x1 = a;
+                        x2 = c;
+                        break; //bd
+                    case 71:
+                        x1 = b;
+                        x2 = c;
+                        break; //ad
+                    case 81:
+                        x1 = a;
+                        x2 = b;
+                        break; //cd
+                    case 91:
+                        x1 = a;
+                        x2 = c;
+                        break; //bd
                 }
 
                 if (rn.Next(0, 100) <= Template._skill_prob)

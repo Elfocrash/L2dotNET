@@ -3,6 +3,7 @@
     class LoginServPingResponse : ReceiveAuthPacket
     {
         private string message;
+
         public LoginServPingResponse(AuthThread login, byte[] db)
         {
             base.makeme(login, db);
@@ -13,9 +14,6 @@
             message = readS();
         }
 
-        public override void run()
-        {
-            
-        }
+        public override void run() { }
     }
 }

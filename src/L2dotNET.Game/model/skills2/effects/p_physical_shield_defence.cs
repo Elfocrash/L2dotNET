@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.model.skills2.effects
+﻿namespace L2dotNET.GameService.model.skills2.effects
 {
     class p_physical_shield_defence : TEffect
     {

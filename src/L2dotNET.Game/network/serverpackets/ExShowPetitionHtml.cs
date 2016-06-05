@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class ExShowPetitionHtml : GameServerNetworkPacket
     {
         private readonly string Content;
+
         public ExShowPetitionHtml(string text)
         {
             Content = text;

@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.managers
     class TransformManager
     {
         private static readonly TransformManager m = new TransformManager();
+
         public static TransformManager getInstance()
         {
             return m;
@@ -48,7 +49,7 @@ namespace L2dotNET.GameService.managers
             if (seconds != -1)
             {
                 tr.timer(seconds);
-                player.sendMessage("transformed for "+seconds+" sec");
+                player.sendMessage("transformed for " + seconds + " sec");
             }
 
             player.setTransform(tr);

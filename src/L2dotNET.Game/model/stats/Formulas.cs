@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.model.stats
     class Formulas
     {
         private static readonly Random rnd = new Random();
+
         public static bool checkMissed(L2Character attacker, L2Character target)
         {
             int delta = (int)(attacker.CharacterStat.getStat(skills2.TEffectType.b_accuracy) - target.CharacterStat.getStat(skills2.TEffectType.b_evasion));

@@ -80,7 +80,7 @@ namespace L2dotNET.GameService.model.npcs.cubic.data
         private int action3(L2Player owner)
         {
             byte n = 0;
-            foreach(AbnormalEffect e in owner._effects)
+            foreach (AbnormalEffect e in owner._effects)
                 if (e.skill.debuff == 1)
                 {
                     n = 1;

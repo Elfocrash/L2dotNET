@@ -41,7 +41,7 @@ namespace L2dotNET.GameService.model.items
             register(new Calculator());
 
             LoadXML();
-            log.Info($"ItemHandler: Loaded { effects } effects with { items.Count } items.");
+            log.Info($"ItemHandler: Loaded {effects} effects with {items.Count} items.");
         }
 
         public SortedList<int, ItemEffect> items = new SortedList<int, ItemEffect>();
@@ -57,12 +57,10 @@ namespace L2dotNET.GameService.model.items
                 return false;
         }
 
-        public ItemHandler()
-        {
-
-        }
+        public ItemHandler() { }
 
         private short effects = 0;
+
         private void register(ItemEffect effect)
         {
             foreach (int id in effect.ids)

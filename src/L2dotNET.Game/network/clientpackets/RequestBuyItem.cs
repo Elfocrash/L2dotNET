@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.network.l2recv
     {
         private int _listId, _count;
         private long[] _items;
+
         public RequestBuyItem(GameClient client, byte[] data)
         {
             base.makeme(client, data);
@@ -18,13 +19,12 @@ namespace L2dotNET.GameService.network.l2recv
             _listId = readD();
             _count = readD();
 
-
             _items = new long[_count * 2];
 
             for (int i = 0; i < _count; i++)
             {
                 _items[i * 2] = readD();
-                 _items[i * 2 + 1] = readQ();
+                _items[i * 2 + 1] = readQ();
             }
         }
 

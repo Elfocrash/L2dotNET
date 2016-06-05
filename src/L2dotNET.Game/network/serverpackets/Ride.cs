@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class Ride : GameServerNetworkPacket
     {
@@ -10,6 +9,7 @@ namespace L2dotNET.GameService.network.l2send
         private int x;
         private int y;
         private int z;
+
         public Ride(L2Player player, bool mount, int npc = 0)
         {
             id = player.ObjID;

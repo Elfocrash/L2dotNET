@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.model.player.transformation
 
         public int[] base_defend, base_magic_defend, basic_stat;
 
-        public virtual void onTransformStart(L2Player player) 
+        public virtual void onTransformStart(L2Player player)
         {
             player.TransformID = id;
             player.MountType = MoveMode;
@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.model.player.transformation
             }
         }
 
-        public virtual void onTransformEnd(L2Player player) 
+        public virtual void onTransformEnd(L2Player player)
         {
             if (MoveMode > 0)
                 player.MountType = 0;
@@ -72,9 +72,9 @@ namespace L2dotNET.GameService.model.player.transformation
             switch (Sex)
             {
                 case 0:
-                    return 0;//coll_r_male;
+                    return 0; //coll_r_male;
                 default:
-                    return 0;//coll_r_female == 0 ? coll_r_male : coll_r_female;
+                    return 0; //coll_r_female == 0 ? coll_r_male : coll_r_female;
             }
         }
 
@@ -83,9 +83,9 @@ namespace L2dotNET.GameService.model.player.transformation
             switch (Sex)
             {
                 case 0:
-                    return 0;//coll_h_male;
+                    return 0; //coll_h_male;
                 default:
-                    return 0;//coll_h_female == 0 ? coll_h_male : coll_h_female;
+                    return 0; //coll_h_female == 0 ? coll_h_male : coll_h_female;
             }
         }
     }

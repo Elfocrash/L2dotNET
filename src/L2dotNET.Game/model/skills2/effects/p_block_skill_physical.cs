@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.model.skills2.effects
+﻿namespace L2dotNET.GameService.model.skills2.effects
 {
     public class p_block_skill_physical : TEffect
     {

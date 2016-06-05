@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.network.l2send
     {
         private readonly L2Item item;
         private long num;
+
         public TradeOtherAdd(L2Item item, long num)
         {
             this.item = item;
@@ -15,10 +16,10 @@ namespace L2dotNET.GameService.network.l2send
         protected internal override void write()
         {
             writeC(0x20);
-            writeH(1); 
+            writeH(1);
 
             writeH(item.Template.Type1());
-            writeD(0);//item.ObjID
+            writeD(0); //item.ObjID
             writeD(item.Template.ItemID);
             writeD(item.Count);
 

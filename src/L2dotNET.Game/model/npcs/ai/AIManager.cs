@@ -33,10 +33,7 @@ namespace L2dotNET.GameService.model.npcs.ai
 
         public SortedList<int, AITemplate> _registeredAis = new SortedList<int, AITemplate>();
 
-        public AIManager()
-        {
-
-        }
+        public AIManager() { }
 
         private void register(AITemplate t)
         {

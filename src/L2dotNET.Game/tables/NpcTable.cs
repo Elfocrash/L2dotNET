@@ -58,7 +58,8 @@ namespace L2dotNET.GameService.tables
                     for (byte ord = 1; ord < pt.Length; ord++)
                     {
                         string parameter = pt[ord];
-                        string value = parameter.Substring(parameter.IndexOf('{') + 1); value = value.Remove(value.Length - 1);
+                        string value = parameter.Substring(parameter.IndexOf('{') + 1);
+                        value = value.Remove(value.Length - 1);
 
                         switch (parameter.Split('{')[0].ToLower())
                         {
@@ -96,7 +97,7 @@ namespace L2dotNET.GameService.tables
                     }
                     catch (Exception)
                     {
-                        log.Error($"Npc category was not found { pt[1] }");
+                        log.Error($"Npc category was not found {pt[1]}");
                         continue;
                     }
 
@@ -111,7 +112,7 @@ namespace L2dotNET.GameService.tables
                     }
                     catch (Exception)
                     {
-                        log.Error($"err2 in #{ template.NpcId } '{ pt[2] }'");
+                        log.Error($"err2 in #{template.NpcId} '{pt[2]}'");
                     }
 
                     for (byte ord = 3; ord < pt.Length; ord++)
@@ -123,11 +124,12 @@ namespace L2dotNET.GameService.tables
 
                         try
                         {
-                            value = parameter.Substring(parameter.IndexOf('{') + 1); value = value.Remove(value.Length - 1);
+                            value = parameter.Substring(parameter.IndexOf('{') + 1);
+                            value = value.Remove(value.Length - 1);
                         }
                         catch (Exception)
                         {
-                            log.Error($"err in #{ template.NpcId } '{ parameter }'");
+                            log.Error($"err in #{template.NpcId} '{parameter}'");
                         }
 
                         switch (parameter.Split('{')[0].ToLower())
@@ -342,108 +344,108 @@ namespace L2dotNET.GameService.tables
                         switch (stp.Name.LocalName)
                         {
                             case "drop":
+                            {
+                                if (template.DropData == null)
+                                    template.DropData = new DropContainer();
+
+                                foreach (var boxes in stp.Elements())
                                 {
-                                    if (template.DropData == null)
-                                        template.DropData = new DropContainer();
-
-                                    foreach (var boxes in stp.Elements())
+                                    if (boxes.Name == "box")
                                     {
-                                        if (boxes.Name == "box")
+                                        DropBox box = new DropBox();
+                                        box.rate = double.Parse(boxes.Attribute("rate").Value);
+                                        foreach (var items in boxes.Elements())
                                         {
-                                            DropBox box = new DropBox();
-                                            box.rate = double.Parse(boxes.Attribute("rate").Value);
-                                            foreach (var items in boxes.Elements())
+                                            if (items.Name == "item")
                                             {
-                                                if (items.Name == "item")
-                                                {
-                                                    DropItem item = new DropItem();
-                                                    item.id = int.Parse(items.Attribute("id").Value);
-                                                    item.min = long.Parse(items.Attribute("min").Value);
-                                                    item.max = long.Parse(items.Attribute("max").Value);
-                                                    item.rate = double.Parse(items.Attribute("rate").Value);
-                                                    item.template = ItemTable.Instance.GetItem(item.id);
-                                                    box.items.Add(item);
-                                                    dropitems++;
-                                                }
+                                                DropItem item = new DropItem();
+                                                item.id = int.Parse(items.Attribute("id").Value);
+                                                item.min = long.Parse(items.Attribute("min").Value);
+                                                item.max = long.Parse(items.Attribute("max").Value);
+                                                item.rate = double.Parse(items.Attribute("rate").Value);
+                                                item.template = ItemTable.Instance.GetItem(item.id);
+                                                box.items.Add(item);
+                                                dropitems++;
                                             }
-
-                                            template.DropData.multidrop.Add(box);
                                         }
+
+                                        template.DropData.multidrop.Add(box);
                                     }
                                 }
+                            }
                                 break;
                             case "drop_ex":
+                            {
+                                if (template.DropData == null)
+                                    template.DropData = new DropContainer();
+
+                                foreach (var boxes in stp.Elements())
                                 {
-                                    if (template.DropData == null)
-                                        template.DropData = new DropContainer();
-
-                                    foreach (var boxes in stp.Elements())
+                                    if (boxes.Name == "box")
                                     {
-                                        if (boxes.Name == "box")
+                                        DropBox box = new DropBox();
+                                        box.rate = double.Parse(boxes.Attribute("rate").Value);
+                                        foreach (var items in boxes.Elements())
                                         {
-                                            DropBox box = new DropBox();
-                                            box.rate = double.Parse(boxes.Attribute("rate").Value);
-                                            foreach (var items in boxes.Elements())
+                                            if (items.Name == "item")
                                             {
-                                                if (items.Name == "item")
-                                                {
-                                                    DropItem item = new DropItem();
-                                                    item.id = int.Parse(items.Attribute("id").Value);
-                                                    item.min = long.Parse(items.Attribute("min").Value);
-                                                    item.max = long.Parse(items.Attribute("max").Value);
-                                                    item.rate = double.Parse(items.Attribute("rate").Value);
-                                                    item.template = ItemTable.Instance.GetItem(item.id);
-                                                    box.items.Add(item);
-                                                    dropitems++;
-                                                }
+                                                DropItem item = new DropItem();
+                                                item.id = int.Parse(items.Attribute("id").Value);
+                                                item.min = long.Parse(items.Attribute("min").Value);
+                                                item.max = long.Parse(items.Attribute("max").Value);
+                                                item.rate = double.Parse(items.Attribute("rate").Value);
+                                                item.template = ItemTable.Instance.GetItem(item.id);
+                                                box.items.Add(item);
+                                                dropitems++;
                                             }
-
-                                            template.DropData.multidrop_ex.Add(box);
                                         }
+
+                                        template.DropData.multidrop_ex.Add(box);
                                     }
                                 }
+                            }
                                 break;
                             case "spoil":
-                                {
-                                    if (template.DropData == null)
-                                        template.DropData = new DropContainer();
+                            {
+                                if (template.DropData == null)
+                                    template.DropData = new DropContainer();
 
-                                    foreach (var boxes in stp.Elements())
+                                foreach (var boxes in stp.Elements())
+                                {
+                                    if (boxes.Name == "item")
                                     {
-                                        if (boxes.Name == "item")
-                                        {
-                                            DropItem item = new DropItem();
-                                            item.id = int.Parse(boxes.Attribute("id").Value);
-                                            item.min = long.Parse(boxes.Attribute("min").Value);
-                                            item.max = long.Parse(boxes.Attribute("max").Value);
-                                            item.rate = double.Parse(boxes.Attribute("rate").Value);
-                                            item.template = ItemTable.Instance.GetItem(item.id);
-                                            template.DropData.spoil.Add(item);
-                                            dropitems++;
-                                        }
+                                        DropItem item = new DropItem();
+                                        item.id = int.Parse(boxes.Attribute("id").Value);
+                                        item.min = long.Parse(boxes.Attribute("min").Value);
+                                        item.max = long.Parse(boxes.Attribute("max").Value);
+                                        item.rate = double.Parse(boxes.Attribute("rate").Value);
+                                        item.template = ItemTable.Instance.GetItem(item.id);
+                                        template.DropData.spoil.Add(item);
+                                        dropitems++;
                                     }
                                 }
+                            }
                                 break;
                             case "qdrop":
-                                {
-                                    if (template.DropData == null)
-                                        template.DropData = new DropContainer();
+                            {
+                                if (template.DropData == null)
+                                    template.DropData = new DropContainer();
 
-                                    foreach (var boxes in stp.Elements())
+                                foreach (var boxes in stp.Elements())
+                                {
+                                    if (boxes.Name == "item")
                                     {
-                                        if (boxes.Name == "item")
-                                        {
-                                            DropItem item = new DropItem();
-                                            item.id = int.Parse(boxes.Attribute("id").Value);
-                                            item.min = long.Parse(boxes.Attribute("min").Value);
-                                            item.max = long.Parse(boxes.Attribute("max").Value);
-                                            item.rate = double.Parse(boxes.Attribute("rate").Value);
-                                            item.template = ItemTable.Instance.GetItem(item.id);
-                                            template.DropData.qdrop.Add(item);
-                                            dropitems++;
-                                        }
+                                        DropItem item = new DropItem();
+                                        item.id = int.Parse(boxes.Attribute("id").Value);
+                                        item.min = long.Parse(boxes.Attribute("min").Value);
+                                        item.max = long.Parse(boxes.Attribute("max").Value);
+                                        item.rate = double.Parse(boxes.Attribute("rate").Value);
+                                        item.template = ItemTable.Instance.GetItem(item.id);
+                                        template.DropData.qdrop.Add(item);
+                                        dropitems++;
                                     }
                                 }
+                            }
                                 break;
                         }
                     }
@@ -455,10 +457,7 @@ namespace L2dotNET.GameService.tables
             log.Info("NpcTable: loaded #" + _npcs.Count + " NPC, #" + npcVids.Count + " VIDs, " + dropitems + " drop items.");
         }
 
-        public NpcTable()
-        {
-
-        }
+        public NpcTable() { }
 
         public NpcTemplate GetNpcTemplate(int id)
         {
@@ -474,7 +473,7 @@ namespace L2dotNET.GameService.tables
 
             if (template == null)
             {
-                log.Info($"null template { id }");
+                log.Info($"null template {id}");
                 return null;
             }
             L2Warrior o = new L2Warrior();

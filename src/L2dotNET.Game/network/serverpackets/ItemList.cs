@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly bool showWindow;
         private readonly List<ItemListItem> items = new List<ItemListItem>();
         private readonly List<int> blocked = new List<int>();
+
         public ItemList(L2Player player, bool showWindow)
         {
             this.showWindow = showWindow;
@@ -16,22 +17,7 @@ namespace L2dotNET.GameService.network.l2send
                 if (item.Template.Type == ItemTemplate.L2ItemType.questitem)
                     continue;
 
-                items.Add(new ItemListItem
-                {
-                    ObjectId = item.ObjID,
-                    ItemId = item.Template.ItemID,
-                    Slot = item.SlotLocation,
-                    Count = item.Count,
-                    Type2 = item.Template.Type2(),
-                    CType1 = item.CustomType1,
-                    Equip = item._isEquipped,
-                    Bodypart = item.Template.BodyPartId(),
-                    Enchant = item.Enchant,
-                    CType2 = item.CustomType2,
-                    Augment = item.AugmentationID,
-                    Mana = item.Durability,
-                    TimeLeft = item.LifeTimeEnd()
-                });
+                items.Add(new ItemListItem { ObjectId = item.ObjID, ItemId = item.Template.ItemID, Slot = item.SlotLocation, Count = item.Count, Type2 = item.Template.Type2(), CType1 = item.CustomType1, Equip = item._isEquipped, Bodypart = item.Template.BodyPartId(), Enchant = item.Enchant, CType2 = item.CustomType2, Augment = item.AugmentationID, Mana = item.Durability, TimeLeft = item.LifeTimeEnd() });
 
                 if (item.Blocked)
                     blocked.Add(item.ObjID);
@@ -59,7 +45,6 @@ namespace L2dotNET.GameService.network.l2send
                 writeD(item.Augment);
                 writeD(item.Mana);
                 //writeD(item.TimeLeft);
-                
             }
 
             //writeH(blocked.Count);

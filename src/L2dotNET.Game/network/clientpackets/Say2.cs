@@ -14,12 +14,13 @@ namespace L2dotNET.GameService.network.l2recv
 
         private string _text, _target = null;
         private SayIDList Type;
+
         public override void read()
         {
             _text = readS();
             int typeId = readD();
 
-            if(typeId < 0 || typeId >= SayID.MaxID)
+            if (typeId < 0 || typeId >= SayID.MaxID)
                 typeId = 0;
 
             Type = SayID.getType((byte)typeId);
@@ -53,61 +54,61 @@ namespace L2dotNET.GameService.network.l2recv
             switch (Type)
             {
                 case SayIDList.CHAT_NORMAL:
+                {
+                    char[] arr = _text.ToCharArray();
+                    if (arr[0] == '.')
                     {
-                        char[] arr = _text.ToCharArray();
-                        if (arr[0] == '.')
-                        {
-                            if(PointCmdManager.getInstance().pointed(player, _text))
-                                return;
-                        }
-
-                        foreach (L2Object o in player.knownObjects.Values)
-                        {
-                            if (o is L2Player)
-                            {
-                                if (player.isInsideRadius(o, 1250, true, false))
-                                    o.sendPacket(cs);
-                            }
-                        }
-
-                        player.sendPacket(cs);
+                        if (PointCmdManager.getInstance().pointed(player, _text))
+                            return;
                     }
+
+                    foreach (L2Object o in player.knownObjects.Values)
+                    {
+                        if (o is L2Player)
+                        {
+                            if (player.isInsideRadius(o, 1250, true, false))
+                                o.sendPacket(cs);
+                        }
+                    }
+
+                    player.sendPacket(cs);
+                }
                     break;
                 case SayIDList.CHAT_SHOUT:
                     L2World.Instance.BroadcastToRegion(player.X, player.Y, cs);
                     break;
                 case SayIDList.CHAT_TELL:
+                {
+                    L2Player target;
+                    if (player.Name.Equals(_target))
+                        target = player;
+                    else
+                        target = L2World.Instance.GetPlayer(_target);
+
+                    if (target == null)
                     {
-                        L2Player target;
-                        if (player.Name.Equals(_target))
-                            target = player;
-                        else
-                            target = L2World.Instance.GetPlayer(_target);
+                        SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_IS_NOT_ONLINE);
+                        sm.AddString(_target);
+                        player.sendPacket(sm);
 
-                        if (target == null)
-                        {   
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_IS_NOT_ONLINE);
-                            sm.AddString(_target);
-                            player.sendPacket(sm);
-
+                        player.sendActionFailed();
+                        return;
+                    }
+                    else
+                    {
+                        if (target.WhieperBlock)
+                        {
+                            player.sendSystemMessage(SystemMessage.SystemMessageId.THE_PERSON_IS_IN_MESSAGE_REFUSAL_MODE);
                             player.sendActionFailed();
                             return;
                         }
                         else
                         {
-                            if (target.WhieperBlock)
-                            {   
-                                player.sendSystemMessage(SystemMessage.SystemMessageId.THE_PERSON_IS_IN_MESSAGE_REFUSAL_MODE);
-                                player.sendActionFailed();
-                                return;
-                            }
-                            else
-                            {
-                                player.sendPacket(new CreatureSay(player.ObjID, Type, "->" + target.Name, _text));
-                                target.sendPacket(cs);
-                            }
+                            player.sendPacket(new CreatureSay(player.ObjID, Type, "->" + target.Name, _text));
+                            target.sendPacket(cs);
                         }
                     }
+                }
                     break;
                 case SayIDList.CHAT_PARTY:
                     if (player.Party != null)
@@ -120,18 +121,16 @@ namespace L2dotNET.GameService.network.l2recv
                     }
                     break;
                 case SayIDList.CHAT_HERO:
+                {
+                    if (player.Heroic == 1)
                     {
-                        if (player.Heroic == 1)
-                        {
-                            foreach (L2Player p in L2World.Instance.GetAllPlayers())
-                                p.sendPacket(cs);
-                        }
-                        else
-                            player.sendActionFailed();
+                        foreach (L2Player p in L2World.Instance.GetAllPlayers())
+                            p.sendPacket(cs);
                     }
+                    else
+                        player.sendActionFailed();
+                }
                     break;
-                
-
             }
         }
     }

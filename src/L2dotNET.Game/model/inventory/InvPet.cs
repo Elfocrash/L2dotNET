@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.model.inventory
     public class InvPet : InvTemplate
     {
         private L2Pet owner;
+
         public InvPet(L2Pet owner)
         {
             this.owner = owner;
@@ -85,7 +86,7 @@ namespace L2dotNET.GameService.model.inventory
                                     ins.Count = itemd[1];
                                     ins.Location = L2Item.L2ItemLocation.pet;
                                     Items.Add(ins.ObjID, ins);
-                                    
+
                                     ins.sql_insert(player.ObjID);
 
                                     if (update)
@@ -112,8 +113,7 @@ namespace L2dotNET.GameService.model.inventory
                         }
                     }
                 }
-             }
-
+            }
 
             lock (player.Inventory.Items)
             {

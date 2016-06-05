@@ -51,7 +51,7 @@ namespace L2dotNET.GameService.network.l2recv
                 //sqb.where("page", _page);
                 //sqb.sql_delete(false);
             }
-            
+
             player.sendPacket(new ShortCutInit(player));
         }
     }

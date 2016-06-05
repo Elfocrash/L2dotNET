@@ -13,6 +13,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private int _protocol;
+
         public override void read()
         {
             _protocol = readD();
@@ -22,25 +23,23 @@ namespace L2dotNET.GameService.network.l2recv
         {
             if (_protocol != 746 && _protocol != 251)
             {
-                log.Error($"Protocol fail { _protocol }");
+                log.Error($"Protocol fail {_protocol}");
                 getClient().sendPacket(new KeyPacket(getClient(), 0));
                 getClient().termination();
                 return;
             }
             else if (_protocol == -1)
             {
-                log.Info($"Ping received { _protocol }");
+                log.Info($"Ping received {_protocol}");
                 getClient().sendPacket(new KeyPacket(getClient(), 0));
                 getClient().termination();
                 return;
             }
 
-            log.Info($"Accepted { _protocol } client");
+            log.Info($"Accepted {_protocol} client");
 
             getClient().sendPacket(new KeyPacket(getClient(), 1));
             getClient().Protocol = _protocol;
-
-
         }
     }
 }

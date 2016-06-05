@@ -11,12 +11,13 @@ namespace L2dotNET.GameService.network.l2send
         public static int ESTT_CLAN = 2;
         public static int ESTT_SUB_CLAN = 3;
         public static int ESTT_TRANSFORM = 4;
-        public static int ESTT_SUBJOB = 5;		// CT1.5
-        public static int ESTT_COLLECT = 6;		// CT2 Final
-        public static int ESTT_BISHOP_SHARING = 7;		// CT2.5 Skill Sharing	
-        public static int ESTT_ELDER_SHARING = 8;		// CT2.5 Skill Sharing	
-        public static int ESTT_SILEN_ELDER_SHARING = 9;			// CT2.5 Skill Sharing
+        public static int ESTT_SUBJOB = 5; // CT1.5
+        public static int ESTT_COLLECT = 6; // CT2 Final
+        public static int ESTT_BISHOP_SHARING = 7; // CT2.5 Skill Sharing	
+        public static int ESTT_ELDER_SHARING = 8; // CT2.5 Skill Sharing	
+        public static int ESTT_SILEN_ELDER_SHARING = 9; // CT2.5 Skill Sharing
         private readonly SortedList<int, TAcquireSkill> _list;
+
         public AcquireSkillList(int type, L2Player player)
         {
             _list = player.ActiveSkillTree;

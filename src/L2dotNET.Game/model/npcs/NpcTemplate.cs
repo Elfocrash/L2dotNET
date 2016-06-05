@@ -6,12 +6,8 @@ namespace L2dotNET.GameService.model.npcs
 {
     public class NpcTemplate : TObject
     {
+        internal void setSkills(string[] p) { }
 
-        internal void setSkills(string[] p)
-        {
-
-        }
- 
         public string Name;
         public string Title;
         public string JClass;
@@ -47,5 +43,4 @@ namespace L2dotNET.GameService.model.npcs
             }
         }
     }
-
 }

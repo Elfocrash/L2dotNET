@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2send
     {
         private readonly L2Item[] _items;
         private readonly List<int> _block = new List<int>();
+
         public ExQuestItemList(L2Player player)
         {
             _items = player.getAllQuestItems();
@@ -22,7 +23,7 @@ namespace L2dotNET.GameService.network.l2send
             writeH(0xC5);
             writeH(_items.Length);
 
-            foreach (L2Item item in _items) 
+            foreach (L2Item item in _items)
             {
                 writeD(item.ObjID);
                 writeD(item.Template.ItemID);
@@ -30,7 +31,7 @@ namespace L2dotNET.GameService.network.l2send
                 writeQ(item.Count);
 
                 writeH(item.Template.Type2());
-			    writeH(0);
+                writeH(0);
                 writeH(item._isEquipped);
 
                 writeD(item.Template.BodyPartId());
@@ -53,7 +54,7 @@ namespace L2dotNET.GameService.network.l2send
                 writeH(item.Enchant1);
                 writeH(item.Enchant2);
                 writeH(item.Enchant3);
-		    }
+            }
 
             writeH(_block.Count);
             if (_block.Count > 0)

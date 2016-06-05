@@ -63,7 +63,6 @@ namespace L2dotNET.LoginService
             _stream.Write(array.ToArray(), 0, array.Count);
             Console.WriteLine("Recieve :\r\n{0}", L2Buffer.ToString(array.ToArray()));
             _stream.Flush();
-
         }
 
         public void read()
@@ -96,7 +95,7 @@ namespace L2dotNET.LoginService
             }
             catch (Exception s)
             {
-                log.Warn(_address + $" was closed by force. { s }");
+                log.Warn(_address + $" was closed by force. {s}");
                 close();
             }
         }
@@ -115,7 +114,7 @@ namespace L2dotNET.LoginService
 
             if (!_loginCrypt.decrypt(ref buff, 0, buff.Length))
             {
-                log.Error($"Blowfish failed on { _address }. Please restart auth server.");
+                log.Error($"Blowfish failed on {_address}. Please restart auth server.");
             }
             else
             {
@@ -145,7 +144,7 @@ namespace L2dotNET.LoginService
                     break;
 
                 default:
-                    log.Warn($"LoginClient: received unk request { id }");
+                    log.Warn($"LoginClient: received unk request {id}");
                     break;
             }
 
@@ -154,6 +153,7 @@ namespace L2dotNET.LoginService
         }
 
         public int login1, login2;
+
         public void setLoginPair(int key1, int key2)
         {
             login1 = key1;
@@ -161,6 +161,7 @@ namespace L2dotNET.LoginService
         }
 
         public int play1, play2;
+
         public void setPlayPair(int key1, int key2)
         {
             play1 = key1;

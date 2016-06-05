@@ -66,11 +66,9 @@ namespace L2dotNET.GameService.model.quests.data
             player.ShowHtm(htmltext, npc);
         }
 
-
         public override void onEarnItem(L2Player player, int cond, int id)
         {
             //todo
         }
     }
 }
-

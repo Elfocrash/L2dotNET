@@ -12,6 +12,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly List<L2Item> _items = new List<L2Item>();
         private readonly short _type;
         private readonly long _adena;
+
         public WareHouseWithdrawalList(L2Player player, List<L2Item> items, short type)
         {
             _type = type;
@@ -26,17 +27,17 @@ namespace L2dotNET.GameService.network.l2send
             writeQ(_adena);
             writeH(_items.Count);
 
-            foreach (L2Item item in _items) 
+            foreach (L2Item item in _items)
             {
                 writeH(item.Template.Type1());
                 writeD(item.ObjID);
                 writeD(item.Template.ItemID);
                 writeD(item.Count);
                 writeH(item.Template.Type2());
-                writeH(0);//custom type 1
+                writeH(0); //custom type 1
                 writeD(item.Template.BodyPartId());
                 writeH(item.Enchant);
-                writeH(0);//custom type 2
+                writeH(0); //custom type 2
                 writeH(0);
                 //writeD(item.AugmentationID);
                 writeD(item.ObjID);

@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2recv
     class FinishRotating : GameServerNetworkRequest
     {
         private int degree;
+
         public FinishRotating(GameClient client, byte[] data)
         {
             base.makeme(client, data);

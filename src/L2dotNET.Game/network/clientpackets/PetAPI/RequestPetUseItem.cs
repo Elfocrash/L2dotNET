@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2recv
     class RequestPetUseItem : GameServerNetworkRequest
     {
         private int sID;
+
         public RequestPetUseItem(GameClient client, byte[] data)
         {
             base.makeme(client, data);

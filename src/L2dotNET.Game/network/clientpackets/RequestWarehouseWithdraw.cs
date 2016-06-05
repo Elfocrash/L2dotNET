@@ -18,6 +18,7 @@ namespace L2dotNET.GameService.network.l2recv
 
         private int _count;
         private int[] _items;
+
         public override void read()
         {
             _count = readD();
@@ -57,7 +58,7 @@ namespace L2dotNET.GameService.network.l2recv
 
                 if (item == null)
                 {
-                    log.Info($"cant find item { objectId } in warehouse { player.Name }");
+                    log.Info($"cant find item {objectId} in warehouse {player.Name}");
                     player.sendActionFailed();
                     return;
                 }
@@ -70,7 +71,7 @@ namespace L2dotNET.GameService.network.l2recv
 
             InvPrivateWarehouse pw = player._warehouse;
             int itsize = 0;
-            if(pw == null)
+            if (pw == null)
                 pw = new InvPrivateWarehouse(player);
             else
                 itsize = pw.Items.Count;

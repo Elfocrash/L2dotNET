@@ -56,7 +56,7 @@ namespace L2dotNET.GameService.scripting
                 CompilerResults result = provider.CompileAssemblyFromFile(cp, fname);
 
                 if (result.Errors.Count > 0)
-                    log.Error($"ScriptCompiler: Failed to compile { fname }.");
+                    log.Error($"ScriptCompiler: Failed to compile {fname}.");
                 else
                     objectList.Add(result.CompiledAssembly.CreateInstance(Path.GetFileNameWithoutExtension(info.Name)));
             }

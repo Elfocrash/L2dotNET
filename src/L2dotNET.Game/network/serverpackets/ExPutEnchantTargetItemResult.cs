@@ -1,9 +1,9 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class ExPutEnchantTargetItemResult : GameServerNetworkPacket
     {
         private readonly int result;
+
         public ExPutEnchantTargetItemResult(int result = 0)
         {
             this.result = result;

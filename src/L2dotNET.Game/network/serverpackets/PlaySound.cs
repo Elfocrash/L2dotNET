@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class PlaySound : GameServerNetworkPacket
     {
@@ -8,6 +7,7 @@ namespace L2dotNET.GameService.network.l2send
         private uint x;
         private uint y;
         private uint z;
+
         public PlaySound(string file, bool ogg = false)
         {
             _file = file;
@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.network.l2send
             writeC(0x9e);
             writeD(type);
             writeS(_file);
-            writeD(0); 
+            writeD(0);
             writeD(0);
             writeD(x);
             writeD(y);

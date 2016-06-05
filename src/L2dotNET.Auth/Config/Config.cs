@@ -29,10 +29,7 @@ namespace L2dotNET.LoginService
 
         public ServerConfig serverConfig;
 
-        public Config()
-        {
-            
-        }
+        public Config() { }
 
         public void Initialize()
         {

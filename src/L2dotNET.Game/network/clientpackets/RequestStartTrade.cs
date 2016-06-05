@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.network.l2recv
     class RequestStartTrade : GameServerNetworkRequest
     {
         private int targetId;
+
         public RequestStartTrade(GameClient client, byte[] data)
         {
             base.makeme(client, data);

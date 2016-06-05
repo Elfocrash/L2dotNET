@@ -1,5 +1,4 @@
-﻿
-using L2dotNET.GameService.network.l2send;
+﻿using L2dotNET.GameService.network.l2send;
 
 namespace L2dotNET.GameService.network.l2recv
 {
@@ -60,7 +59,7 @@ namespace L2dotNET.GameService.network.l2recv
                 return;
             }
 
-           // player.sendMessage("can see: " + GeoData.getInstance().canSeeCoord(player, _targetX, _targetY, _targetZ, true));
+            // player.sendMessage("can see: " + GeoData.getInstance().canSeeCoord(player, _targetX, _targetY, _targetZ, true));
 
             if (player._obsx != -1)
                 player._obsx = -1;

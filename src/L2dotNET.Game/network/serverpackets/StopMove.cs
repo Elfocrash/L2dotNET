@@ -9,6 +9,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int _y;
         private readonly int _z;
         private readonly int _h;
+
         public StopMove(L2Character cha)
         {
             _id = cha.ObjID;

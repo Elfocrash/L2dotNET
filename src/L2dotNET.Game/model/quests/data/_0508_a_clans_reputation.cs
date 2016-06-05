@@ -58,7 +58,7 @@ namespace L2dotNET.GameService.model.quests.data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if(npcId == sir_eric_rodemai)
+            if (npcId == sir_eric_rodemai)
             {
                 switch (reply)
                 {
@@ -124,4 +124,3 @@ namespace L2dotNET.GameService.model.quests.data
         }
     }
 }
-

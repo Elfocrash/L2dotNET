@@ -26,10 +26,7 @@ namespace L2dotNET.GameService.managers.bbs
             }
         }
 
-        public BBSManager()
-        {
-
-        }
+        public BBSManager() { }
 
         public void RequestShow(L2Player player, int type)
         {

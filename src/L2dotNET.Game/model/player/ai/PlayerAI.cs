@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.model.player.ai
     public class PlayerAI : StandartAiTemplate
     {
         private readonly L2Player player;
+
         public PlayerAI(L2Character cha)
         {
             character = cha;
@@ -47,6 +48,7 @@ namespace L2dotNET.GameService.model.player.ai
         }
 
         public System.Timers.Timer attackMove;
+
         public override void Attack(L2Character target)
         {
             if (attackMove == null)
@@ -64,6 +66,7 @@ namespace L2dotNET.GameService.model.player.ai
         private int lasty;
         private int lastz;
         private byte MoveTarget = 0;
+
         private void AttackMoveTask(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (player.isAttacking())
@@ -79,7 +82,7 @@ namespace L2dotNET.GameService.model.player.ai
             if (dis < 80)
             {
                 L2Character target = (L2Character)player.CurrentTarget;
-                if(!target.Dead)
+                if (!target.Dead)
                     player.doAttack(target);
             }
             else

@@ -45,29 +45,14 @@ namespace L2dotNET.GameService.model.zones
             return GetSpawnLoc();
         }
 
-        public override void SetParameter(string name, string value)
-        {
+        public override void SetParameter(string name, string value) { }
 
-        }
+        public override void OnDieInside(L2Character character) { }
 
-        public override void OnDieInside(L2Character character)
-        {
-            
-        }
+        public override void OnReviveInside(L2Character character) { }
 
-        public override void OnReviveInside(L2Character character)
-        {
-            
-        }
+        protected override void OnEnter(L2Character character) { }
 
-        protected override void OnEnter(L2Character character)
-        {
-           
-        }
-
-        protected override void OnExit(L2Character character)
-        {
-            
-        }
+        protected override void OnExit(L2Character character) { }
     }
 }

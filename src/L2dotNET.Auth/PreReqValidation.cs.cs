@@ -10,7 +10,10 @@ namespace L2dotNET.LoginService
         private static readonly ILog log = LogManager.GetLogger(typeof(PreReqValidation));
 
         [Inject]
-        public ICheckService checkService { get { return LoginServer.Kernel.Get<ICheckService>(); } }
+        public ICheckService checkService
+        {
+            get { return LoginServer.Kernel.Get<ICheckService>(); }
+        }
 
         private static volatile PreReqValidation instance;
         private static readonly object syncRoot = new object();
@@ -34,10 +37,7 @@ namespace L2dotNET.LoginService
             }
         }
 
-        public PreReqValidation()
-        {
-
-        }
+        public PreReqValidation() { }
 
         public void Initialize()
         {

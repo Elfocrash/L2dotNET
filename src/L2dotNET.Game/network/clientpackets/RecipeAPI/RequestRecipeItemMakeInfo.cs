@@ -11,6 +11,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private int _id;
+
         public override void read()
         {
             _id = readD();
@@ -21,7 +22,7 @@ namespace L2dotNET.GameService.network.l2recv
             L2Player player = Client.CurrentPlayer;
 
             if (player._recipeBook == null)
-            {   
+            {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
                 player.sendActionFailed();
                 return;
@@ -39,7 +40,7 @@ namespace L2dotNET.GameService.network.l2recv
             }
 
             if (rec == null)
-            {   
+            {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
                 player.sendActionFailed();
                 return;

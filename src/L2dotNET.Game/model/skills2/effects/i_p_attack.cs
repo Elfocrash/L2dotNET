@@ -15,6 +15,7 @@ namespace L2dotNET.GameService.model.skills2.effects
         private int unk1;
         private int unk2;
         private int unk3;
+
         public override void build(string str)
         {
             string[] v = str.Split(' ');
@@ -32,7 +33,7 @@ namespace L2dotNET.GameService.model.skills2.effects
             L2Character tar = (L2Character)target;
             double shieldDef = Formulas.checkShieldDef(caster, tar);
             double damage = Formulas.getPhysSkillHitDamage(caster, tar, power);
-            
+
             caster.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3).AddPlayerName(caster.Name).AddString(tar.Name).AddNumber(damage));
             if (tar is L2Player)
                 tar.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2).AddPlayerName(tar.Name).AddPlayerName(caster.Name).AddNumber(damage));

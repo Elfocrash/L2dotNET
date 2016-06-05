@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.network.l2recv
     {
         private int a_sSupportID;
         private int a_sTargetID;
+
         public RequestExTryToPutEnchantSupportItem(GameClient client, byte[] data)
         {
             base.makeme(client, data, 2);

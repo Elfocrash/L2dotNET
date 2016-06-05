@@ -112,21 +112,21 @@ namespace L2dotNET.GameService.ai.npcai
                 {
                     if (talker.Level > 40 && talker.Level < 46)
                     {
-                            MultiSell.Instance.ShowList(talker, myself, reply);
+                        MultiSell.Instance.ShowList(talker, myself, reply);
                     }
                 }
                 else if (reply == 580)
                 {
                     if (talker.Level >= 46 && talker.Level < 52)
                     {
-                            MultiSell.Instance.ShowList(talker, myself, reply);
+                        MultiSell.Instance.ShowList(talker, myself, reply);
                     }
                 }
                 else if (reply == 581)
                 {
                     if (talker.Level >= 52)
                     {
-                            MultiSell.Instance.ShowList(talker, myself, reply);
+                        MultiSell.Instance.ShowList(talker, myself, reply);
                     }
                 }
                 else
@@ -157,9 +157,9 @@ namespace L2dotNET.GameService.ai.npcai
                 }
                 else if (reply == 2)
                 {
-                    if(talker.Level < 20)
+                    if (talker.Level < 20)
                         MultiSell.Instance.ShowList(talker, myself, 583);
-                    else if(talker.Level >= 20 && talker.Level < 40)
+                    else if (talker.Level >= 20 && talker.Level < 40)
                         MultiSell.Instance.ShowList(talker, myself, 584);
                     else if (talker.Level >= 40 && talker.Level < 52)
                         MultiSell.Instance.ShowList(talker, myself, 585);

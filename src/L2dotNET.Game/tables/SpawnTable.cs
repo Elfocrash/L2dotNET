@@ -43,12 +43,11 @@ namespace L2dotNET.GameService.tables
 
         public readonly SortedList<string, L2Territory> territorries = new SortedList<string, L2Territory>();
         public readonly List<L2Spawn> Spawns = new List<L2Spawn>();
-        public SpawnTable()
-        {
 
-        }
+        public SpawnTable() { }
 
         private long npcs = 0;
+
         public void Read(string path)
         {
             XElement xml = XElement.Parse(File.ReadAllText(path));
@@ -82,7 +81,7 @@ namespace L2dotNET.GameService.tables
 
                     zone.InitZone(); //создаем зону
                     if (territorries.ContainsKey(zone.name))
-                        log.Info($"duplicate zone name { zone.name }");
+                        log.Info($"duplicate zone name {zone.name}");
                     else
                         territorries.Add(zone.name, zone);
                 }
@@ -93,23 +92,22 @@ namespace L2dotNET.GameService.tables
                         switch (stp.Name.LocalName)
                         {
                             case "npc":
-                                {
-                                    string respawn = stp.Attribute("respawn").Value;
-                                    long value = Convert.ToInt32(respawn.Remove(respawn.Length - 1));
-                                    if (respawn.Contains("s"))
-                                        value *= 1000;
-                                    else if (respawn.Contains("m"))
-                                        value *= 60000;
-                                    else if (respawn.Contains("h"))
-                                        value *= 3600000;
-                                    else if (respawn.Contains("d"))
-                                        value *= 86400000;
+                            {
+                                string respawn = stp.Attribute("respawn").Value;
+                                long value = Convert.ToInt32(respawn.Remove(respawn.Length - 1));
+                                if (respawn.Contains("s"))
+                                    value *= 1000;
+                                else if (respawn.Contains("m"))
+                                    value *= 60000;
+                                else if (respawn.Contains("h"))
+                                    value *= 3600000;
+                                else if (respawn.Contains("d"))
+                                    value *= 86400000;
 
-                                    Spawns.Add(new L2Spawn(Convert.ToInt32(stp.Attribute("id").Value), value, stp.Attribute("pos").Value.Split(' ')));
-                                }
+                                Spawns.Add(new L2Spawn(Convert.ToInt32(stp.Attribute("id").Value), value, stp.Attribute("pos").Value.Split(' ')));
+                            }
                                 npcs++;
                                 break;
-
                         }
                     }
                 }
@@ -117,6 +115,7 @@ namespace L2dotNET.GameService.tables
         }
 
         private readonly bool nospawn = true;
+
         public void Spawn()
         {
             log.Info("NpcServer spawn init.");
@@ -136,7 +135,7 @@ namespace L2dotNET.GameService.tables
             foreach (L2Spawn s in Spawns)
                 s.init();
 
-            log.Info("NpcServer spawn done, #"+sp+" npcs.");
+            log.Info("NpcServer spawn done, #" + sp + " npcs.");
         }
 
         public void SunRise(bool y)

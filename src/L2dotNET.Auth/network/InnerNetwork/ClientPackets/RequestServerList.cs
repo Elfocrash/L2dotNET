@@ -1,5 +1,4 @@
-﻿
-using L2dotNET.LoginService.Network.OuterNetwork;
+﻿using L2dotNET.LoginService.Network.OuterNetwork;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork
 {

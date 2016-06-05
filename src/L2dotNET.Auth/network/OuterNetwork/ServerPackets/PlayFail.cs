@@ -24,6 +24,5 @@ namespace L2dotNET.LoginService.Network.OuterNetwork
             p.WriteInt((byte)reason);
             return p;
         }
-
     }
 }

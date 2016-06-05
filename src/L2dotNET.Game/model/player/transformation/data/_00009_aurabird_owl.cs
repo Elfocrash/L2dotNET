@@ -5,7 +5,7 @@
         public _00009_aurabird_owl()
         {
             id = 9;
-            collision_box = new double[] { 40, 18.57};
+            collision_box = new double[] { 40, 18.57 };
             MoveMode = 2;
             npcId = 13145;
         }

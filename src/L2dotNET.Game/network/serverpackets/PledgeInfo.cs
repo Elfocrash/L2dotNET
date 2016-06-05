@@ -5,6 +5,7 @@
         private readonly int _id;
         private readonly string _name;
         private readonly string _ally;
+
         public PledgeInfo(int id, string name, string ally)
         {
             _id = id;

@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.managers
     class PetitionManager
     {
         private static readonly PetitionManager instance = new PetitionManager();
+
         public static PetitionManager getInstance()
         {
             return instance;

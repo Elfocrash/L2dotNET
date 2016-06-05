@@ -40,10 +40,7 @@ namespace L2dotNET.GameService.model.skills2
             loadDLC();
         }
 
-        public TSkillTable()
-        {
-
-        }
+        public TSkillTable() { }
 
         public TSkill Get(int id, int lvl)
         {
@@ -187,7 +184,7 @@ namespace L2dotNET.GameService.model.skills2
                                     lenx = dlc.readD();
                                     skill.abnormal_type = dlc.readS(lenx);
                                     break;
-                                case 39://target_type
+                                case 39: //target_type
                                     lenx = dlc.readD();
                                     value = dlc.readS(lenx);
                                     try
@@ -197,10 +194,10 @@ namespace L2dotNET.GameService.model.skills2
                                     catch (Exception)
                                     {
                                         skill.target_type = TSkillTarget.target;
-                                        log.Error($"skill # { skill.skill_id } invalid target { value }");
+                                        log.Error($"skill # {skill.skill_id} invalid target {value}");
                                     }
                                     break;
-                                case 40://affect_scope
+                                case 40: //affect_scope
                                     lenx = dlc.readD();
                                     value = dlc.readS(lenx);
                                     try
@@ -210,7 +207,7 @@ namespace L2dotNET.GameService.model.skills2
                                     catch
                                     {
                                         skill.affect_scope = TSkillScope.single;
-                                        log.Error($"skill # { skill.skill_id } invalid scope { value }");
+                                        log.Error($"skill # {skill.skill_id} invalid scope {value}");
                                     }
                                     break;
                                 case 49:
@@ -241,7 +238,6 @@ namespace L2dotNET.GameService.model.skills2
 
                         if (!_ids.ContainsKey(skill.skill_id))
                             _ids.Add(skill.skill_id, null);
-
                     }
                 }
             }
@@ -319,19 +315,15 @@ namespace L2dotNET.GameService.model.skills2
             //    }
             //}
 
-            log.Info($"SkillTable: loaded { _ids.Count } skills, { enchantInfo.Count } enchants.");
+            log.Info($"SkillTable: loaded {_ids.Count} skills, {enchantInfo.Count} enchants.");
         }
 
         #region INITREG
 
-        private const byte
-            type_byte = 0;
-        private const byte
-            type_int = 1;
-        private const byte
-            type_double = 2;
-        private const byte
-            type_str = 3;
+        private const byte type_byte = 0;
+        private const byte type_int = 1;
+        private const byte type_double = 2;
+        private const byte type_str = 3;
 
         public void Initreg()
         {
@@ -407,9 +399,11 @@ namespace L2dotNET.GameService.model.skills2
         {
             ps.Add(s.id, s);
         }
+
         #endregion
 
         public Dictionary<string, TAcquireSkillsEntry> AcquireSkills = new Dictionary<string, TAcquireSkillsEntry>();
+
         private void loadDLC()
         {
             FileStream fstream = new FileStream(@"dlc\skilltree.dlc", FileMode.Open, FileAccess.Read);
@@ -436,7 +430,8 @@ namespace L2dotNET.GameService.model.skills2
                     list.skills.AddRange(s);
                 }
 
-                int skLen = dlc.readD(); cntTotal += skLen;
+                int skLen = dlc.readD();
+                cntTotal += skLen;
                 for (int s = 0; s < skLen; s++)
                 {
                     TAcquireSkill skill = new TAcquireSkill();
@@ -476,7 +471,7 @@ namespace L2dotNET.GameService.model.skills2
             }
 
             dlc.close();
-            log.Info($"SkillTable: learnable { AcquireSkills.Count } groups, #{ cntTotal } skills.");
+            log.Info($"SkillTable: learnable {AcquireSkills.Count} groups, #{cntTotal} skills.");
         }
 
         public TAcquireSkillsEntry GetAllRegularSkills(ClassIds id)

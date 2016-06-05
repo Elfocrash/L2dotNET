@@ -12,10 +12,6 @@
 
         public string Code { get; set; }
 
-        public ServerModel()
-        {
-
-        }
-
+        public ServerModel() { }
     }
 }

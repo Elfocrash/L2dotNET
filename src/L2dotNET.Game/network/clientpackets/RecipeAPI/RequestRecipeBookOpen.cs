@@ -10,6 +10,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private int _type;
+
         public override void read()
         {
             _type = readD();

@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class MoveToLocationInVehicle : GameServerNetworkPacket
     {
@@ -7,6 +6,7 @@ namespace L2dotNET.GameService.network.l2send
         private readonly int x;
         private readonly int y;
         private readonly int z;
+
         public MoveToLocationInVehicle(L2Player player, int x, int y, int z)
         {
             this.player = player;

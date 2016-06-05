@@ -14,6 +14,7 @@ namespace L2dotNET.GameService.network.l2recv
         private int _id;
         private int _level;
         private int _skillType;
+
         public override void read()
         {
             _id = readD();
@@ -44,10 +45,10 @@ namespace L2dotNET.GameService.network.l2recv
             {
                 case 0:
                 case 1:
-                    {
-                        if (skill.itemid > 0)
-                            asi._reqs.Add(new int[] { 4, skill.itemid, (int)skill.itemcount, 0 });
-                    }
+                {
+                    if (skill.itemid > 0)
+                        asi._reqs.Add(new int[] { 4, skill.itemid, (int)skill.itemcount, 0 });
+                }
                     break;
             }
 

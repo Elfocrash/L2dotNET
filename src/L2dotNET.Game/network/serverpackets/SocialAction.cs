@@ -1,10 +1,10 @@
-﻿
-namespace L2dotNET.GameService.network.l2send
+﻿namespace L2dotNET.GameService.network.l2send
 {
     class SocialAction : GameServerNetworkPacket
     {
         private readonly int social;
         private readonly int id;
+
         public SocialAction(int id, int social)
         {
             this.social = social;

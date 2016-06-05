@@ -6,6 +6,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
     {
         private string account;
         private byte status;
+
         public RequestPlayerInGame(ServerThread server, byte[] data)
         {
             base.CreatePacket(server, data);

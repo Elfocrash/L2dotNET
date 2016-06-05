@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.model.skills2.effects
     class a_transform : TEffect
     {
         private readonly int transformId;
+
         public a_transform(int transformId)
         {
             this.transformId = transformId;
@@ -34,13 +35,13 @@ namespace L2dotNET.GameService.model.skills2.effects
 
             L2Player player = (L2Player)caster;
             if (player.Summon != null)
-            {   
+            {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHEN_SUMMONED_SERVITOR);
                 return false;
             }
 
             if (player.isSittingInProgress() || player.isSitting())
-            {   
+            {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_TRANSFORM_WHILE_SITTING);
                 player.sendActionFailed();
                 return false;

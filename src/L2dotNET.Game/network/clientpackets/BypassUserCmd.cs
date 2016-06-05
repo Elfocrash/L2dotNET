@@ -11,6 +11,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private int _command;
+
         public override void read()
         {
             _command = readD();
@@ -23,7 +24,7 @@ namespace L2dotNET.GameService.network.l2recv
             switch (_command)
             {
                 case 0: // [loc]
-                    int regId = 0;//MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
+                    int regId = 0; //MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
                     if (regId > 0)
                         player.sendPacket(new SystemMessage((SystemMessage.SystemMessageId)regId).AddNumber(player.X).AddNumber(player.Y).AddNumber(player.Z));
                     else

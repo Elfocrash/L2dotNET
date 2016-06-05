@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class PartySmallWindowUpdate : GameServerNetworkPacket
     {
         private readonly L2Player member;
+
         public PartySmallWindowUpdate(L2Player member)
         {
             this.member = member;

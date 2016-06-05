@@ -42,14 +42,8 @@ namespace L2dotNET.GameService.model.zones.Type
             character.SetInsisdeZone(ZoneId.TOWN, false);
         }
 
-        public override void OnDieInside(L2Character character)
-        {
+        public override void OnDieInside(L2Character character) { }
 
-        }
-
-        public override void OnReviveInside(L2Character character)
-        {
-
-        }
+        public override void OnReviveInside(L2Character character) { }
     }
 }

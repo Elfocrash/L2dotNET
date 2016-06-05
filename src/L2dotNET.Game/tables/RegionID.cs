@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.tables
+﻿namespace L2dotNET.GameService.tables
 {
     public class RegionID
     {

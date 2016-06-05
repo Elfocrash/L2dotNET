@@ -33,10 +33,7 @@ namespace L2dotNET.GameService.network
 
         protected List<NetworkBlockModel> blocks = new List<NetworkBlockModel>();
 
-        public NetworkBlock()
-        {
-
-        }
+        public NetworkBlock() { }
 
         public void Initialize()
         {
@@ -67,7 +64,7 @@ namespace L2dotNET.GameService.network
                     }
                 }
             }
-            log.Info($"NetworkBlock: { blocks.Count } blocks.");
+            log.Info($"NetworkBlock: {blocks.Count} blocks.");
         }
 
         public bool Allowed(string ip)

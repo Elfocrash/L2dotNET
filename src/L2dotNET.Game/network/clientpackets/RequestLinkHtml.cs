@@ -10,6 +10,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private string _link;
+
         public override void read()
         {
             _link = readS();
@@ -19,7 +20,7 @@ namespace L2dotNET.GameService.network.l2recv
         {
             L2Player player = Client.CurrentPlayer;
 
-           // log.Info($"link to '{ _link }'");
+            // log.Info($"link to '{ _link }'");
 
             string file = "";
             int id = 0;

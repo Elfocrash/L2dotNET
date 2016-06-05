@@ -34,7 +34,7 @@ namespace L2dotNET.GameService.network.l2send
                 writeD(player.Sex);
                 writeD((int)player.BaseClass.ClassId.ClassRace);
 
-                if(player.ActiveClass.ClassId.Id == player.BaseClass.ClassId.Id)
+                if (player.ActiveClass.ClassId.Id == player.BaseClass.ClassId.Id)
                     writeD((int)player.ActiveClass.ClassId.Id);
                 else
                     writeD((int)player.BaseClass.ClassId.Id);
@@ -91,7 +91,6 @@ namespace L2dotNET.GameService.network.l2send
 
                 if (charId == -1 && player.LastAccountSelection == 1)
                     selection = 1;
-
 
                 writeD(selection); // auto-select char
                 writeC(player.GetEnchantValue());

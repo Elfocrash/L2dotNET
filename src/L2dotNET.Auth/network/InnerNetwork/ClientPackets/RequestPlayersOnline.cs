@@ -5,6 +5,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork
     class RequestPlayersOnline : ReceiveServerPacket
     {
         private short cnt;
+
         public RequestPlayersOnline(ServerThread server, byte[] data)
         {
             base.CreatePacket(server, data);

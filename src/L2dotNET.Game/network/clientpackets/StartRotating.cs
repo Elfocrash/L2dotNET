@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.network.l2recv
     {
         private int degree;
         private int side;
+
         public StartRotating(GameClient client, byte[] data)
         {
             base.makeme(client, data);

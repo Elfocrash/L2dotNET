@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2recv
     {
         private int itemId;
         private int type;
+
         public RequestAutoSoulShot(GameClient client, byte[] data)
         {
             base.makeme(client, data, 2);

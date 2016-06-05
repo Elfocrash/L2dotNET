@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.model.npcs.ai.ex
+﻿namespace L2dotNET.GameService.model.npcs.ai.ex
 {
     class ai_looser_of_gracia : AITemplate
     {
@@ -8,19 +7,19 @@ namespace L2dotNET.GameService.model.npcs.ai.ex
             switch (ask)
             {
                 case -1425:
+                {
+                    switch (reply)
                     {
-                        switch (reply)
-                        {
-                            case 1:
-                                if (player.Level < 75)
-                                    player.ShowHtm(fnLowLevel, npc);
-                                else if (player.getAdena() >= 150000)
-                                    player.InstantTeleportWithItem(-149406, 255247, -85, 57, 150000);
-                                else
-                                    player.ShowHtm(fnNotHaveAdena, npc);
-                                break;
-                        }
+                        case 1:
+                            if (player.Level < 75)
+                                player.ShowHtm(fnLowLevel, npc);
+                            else if (player.getAdena() >= 150000)
+                                player.InstantTeleportWithItem(-149406, 255247, -85, 57, 150000);
+                            else
+                                player.ShowHtm(fnNotHaveAdena, npc);
+                            break;
                     }
+                }
                     break;
             }
         }

@@ -27,14 +27,13 @@ namespace L2dotNET.GameService
 
         public static IKernel Kernel { get; set; }
 
-        public GameServer()
-        { }
+        public GameServer() { }
 
         public void Start()
         {
             Config.Instance.Initialize();
 
-            PreReqValidation.Instance.Initialize();            
+            PreReqValidation.Instance.Initialize();
 
             CharTemplateTable.Instance.Initialize();
 
@@ -88,16 +87,19 @@ namespace L2dotNET.GameService
 
             GameServerListener = new TcpListener(IPAddress.Any, Config.Instance.serverConfig.Port);
 
-            try { GameServerListener.Start(); }
+            try
+            {
+                GameServerListener.Start();
+            }
             catch (SocketException ex)
             {
-                log.Error($"Socket Error: '{ ex.SocketErrorCode }'. Message: '{ ex.Message }' (Error Code: '{ ex.NativeErrorCode }')");
+                log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
                 log.Info($"Press ENTER to exit...");
                 Console.Read();
                 Environment.Exit(0);
             }
 
-            log.Info($"Listening Gameservers on port { Config.Instance.serverConfig.Port }");
+            log.Info($"Listening Gameservers on port {Config.Instance.serverConfig.Port}");
 
             TcpClient clientSocket = default(TcpClient);
             while (true)

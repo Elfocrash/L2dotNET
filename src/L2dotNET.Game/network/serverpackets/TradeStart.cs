@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.network.l2send
         private L2Player player;
         private readonly List<L2Item> trade = new List<L2Item>();
         private readonly int partnerId;
+
         public TradeStart(L2Player player)
         {
             this.player = player;
@@ -45,7 +46,6 @@ namespace L2dotNET.GameService.network.l2send
                 writeH(item.CustomType2);
 
                 writeH(0x00);
-
             }
         }
     }

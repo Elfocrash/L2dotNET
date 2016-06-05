@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.model.skills2.effects
     public class cub_heal : TEffect
     {
         private int power;
+
         public override void build(string str)
         {
             string[] v = str.Split(' ');
@@ -23,7 +24,7 @@ namespace L2dotNET.GameService.model.skills2.effects
             target.CurHP = power;
             double next = target.CurHP;
 
-            int diff = (int)(next - current);            
+            int diff = (int)(next - current);
             target.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_HP_RESTORED).AddNumber(diff));
             return nothing;
         }

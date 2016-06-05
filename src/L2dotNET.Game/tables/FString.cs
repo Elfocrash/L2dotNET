@@ -5,10 +5,12 @@ namespace L2dotNET.GameService.tables
     class FString
     {
         private static readonly FString inst = new FString();
+
         public static FString getInstance()
         {
             return inst;
         }
+
         public SortedList<int, string> strings = new SortedList<int, string>();
 
         public string get(int p)
@@ -16,7 +18,7 @@ namespace L2dotNET.GameService.tables
             if (strings.ContainsKey(p))
                 return strings[p];
             else
-                return ""+p;
+                return "" + p;
         }
     }
 }

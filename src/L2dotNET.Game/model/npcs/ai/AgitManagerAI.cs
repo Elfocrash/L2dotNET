@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.model.npcs.ai
+﻿namespace L2dotNET.GameService.model.npcs.ai
 {
     public class AgitManagerAI
     {

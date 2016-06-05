@@ -10,6 +10,7 @@ namespace L2dotNET.GameService.tables.admin_bypass
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ABTeleport));
         public SortedList<int, ab_teleport_group> _groups = new SortedList<int, ab_teleport_group>();
+
         public ABTeleport()
         {
             reload();
@@ -64,7 +65,6 @@ namespace L2dotNET.GameService.tables.admin_bypass
             foreach (ab_teleport_entry e in gr._teles.Values)
             {
                 sb.Append("<button value=\"" + e.name + "\" action=\"bypass -h admin?ask=2&reply=" + e.id + "\" width=150 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><br1>");
-
             }
             sb.Append("</center>");
 

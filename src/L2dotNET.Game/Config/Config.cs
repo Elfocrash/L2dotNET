@@ -30,10 +30,7 @@ namespace L2dotNET.GameService
         public ServerConfig serverConfig;
         public GameplayConfig gameplayConfig;
 
-        public Config()
-        {
-
-        }
+        public Config() { }
 
         public void Initialize()
         {

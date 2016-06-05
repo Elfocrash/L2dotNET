@@ -8,8 +8,8 @@ namespace L2dotNET.GameService.model.player.basic
     {
         public static double getPhysDamage(L2Character attacker, L2Character target, double skillPower, bool crt, bool ss)
         {
-            double damage = 1;// attacker._stats.p_physical_attack;
-            double defence = 1;// target._stats.p_physical_defence;
+            double damage = 1; // attacker._stats.p_physical_attack;
+            double defence = 1; // target._stats.p_physical_defence;
 
             if (ss)
                 damage *= 2;

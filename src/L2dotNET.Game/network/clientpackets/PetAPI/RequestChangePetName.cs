@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.network.l2recv
     class RequestChangePetName : GameServerNetworkRequest
     {
         private string name;
+
         public RequestChangePetName(GameClient client, byte[] data)
         {
             base.makeme(client, data);

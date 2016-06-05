@@ -5,9 +5,7 @@ namespace L2dotNET.LoginService
 {
     class LoginCrypt
     {
-        private byte[] key = new byte[] { 
-            (byte) 0x6b, (byte) 0x60, (byte) 0xcb, (byte) 0x5b, (byte) 0x82, (byte) 0xce, (byte) 0x90, (byte) 0xb1,
-            (byte) 0xcc, (byte) 0x2b, (byte) 0x6c, (byte) 0x55, (byte) 0x6c, (byte) 0x6c, (byte) 0x6c, (byte) 0x6c };
+        private byte[] key = new byte[] { (byte)0x6b, (byte)0x60, (byte)0xcb, (byte)0x5b, (byte)0x82, (byte)0xce, (byte)0x90, (byte)0xb1, (byte)0xcc, (byte)0x2b, (byte)0x6c, (byte)0x55, (byte)0x6c, (byte)0x6c, (byte)0x6c, (byte)0x6c };
 
         private bool updatedKey = false;
         private readonly Random rnd = new Random();
@@ -118,7 +116,7 @@ namespace L2dotNET.LoginService
             int stop = size - 8;
             int pos = 4 + offset;
             int edx;
-            int ecx = key; 
+            int ecx = key;
 
             while (pos < stop)
             {

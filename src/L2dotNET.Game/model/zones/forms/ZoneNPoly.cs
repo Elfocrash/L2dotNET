@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.model.zones.forms
 {
-    public class ZoneNPoly : ZoneForm 
+    public class ZoneNPoly : ZoneForm
     {
         public int[] _x;
         public int[] _y;

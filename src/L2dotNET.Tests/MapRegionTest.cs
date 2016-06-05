@@ -21,19 +21,17 @@ namespace L2dotNET.Tests
             int count = 0;
             foreach (XmlNode node in nodes)
             {
-
                 if (node.Attributes[0].OwnerElement.Name.Equals("map"))
                 {
                     XmlNamedNodeMap attrs = node.Attributes;
                     //ClassId classId = ClassId.Values.FirstOrDefault(x => ((int)x.Id).Equals(Convert.ToInt32(attrs.Item(0).Value)));
                     int rY = Convert.ToInt32(attrs.GetNamedItem("geoY").Value) - 10;
-                        for (int rX = 0; rX < REGIONS_X; rX++)
-                        {
-                            _regions[rX,rY] = Convert.ToInt32(attrs.GetNamedItem("geoX_" + (rX + 16)).Value);
-                            count++;
-                        }
+                    for (int rX = 0; rX < REGIONS_X; rX++)
+                    {
+                        _regions[rX, rY] = Convert.ToInt32(attrs.GetNamedItem("geoX_" + (rX + 16)).Value);
+                        count++;
+                    }
                 }
-
             }
         }
     }

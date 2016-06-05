@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class ExReplyDominionInfo : GameServerNetworkPacket
     {
         private readonly List<string> names = new List<string>();
+
         public ExReplyDominionInfo()
         {
             names.Add("gludio");
@@ -17,6 +18,7 @@ namespace L2dotNET.GameService.network.l2send
             names.Add("rune");
             names.Add("schuttgart");
         }
+
         protected internal override void write()
         {
             writeC(0xfe);
@@ -27,12 +29,12 @@ namespace L2dotNET.GameService.network.l2send
             foreach (string str in names)
             {
                 writeD(x); // Territory Id
-			    writeS(str + "_dominion"); // territory name
-			    writeS("");
-			    writeD(0); // Emblem Count
-			  //  for(int i:t.getOwnedWardIds())
-				//    writeD(i); // Emblem ID - should be in for loop for emblem count
-			    writeD(0);
+                writeS(str + "_dominion"); // territory name
+                writeS("");
+                writeD(0); // Emblem Count
+                //  for(int i:t.getOwnedWardIds())
+                //    writeD(i); // Emblem ID - should be in for loop for emblem count
+                writeD(0);
 
                 x++;
             }

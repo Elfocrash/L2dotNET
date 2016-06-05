@@ -8,6 +8,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork
         /// Packet opcode.
         /// </summary>
         private const byte Opcode = 0xA1;
+
         internal static Packet ToPacket()
         {
             Packet p = new Packet(Opcode);

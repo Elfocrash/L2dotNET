@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.network.l2send
     class CharInfo : GameServerNetworkPacket
     {
         private readonly L2Player player;
+
         public CharInfo(L2Player player)
         {
             this.player = player;
@@ -27,8 +28,6 @@ namespace L2dotNET.GameService.network.l2send
             writeD(player.Sex);
             writeD((int)player.ActiveClass.ClassId.Id);
 
-        
-
             writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Hair2][0]);
             writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Head][0]);
             writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_RHand][0]);
@@ -40,7 +39,7 @@ namespace L2dotNET.GameService.network.l2send
             writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Cloak][0]);
             writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_RHand][0]);
             writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Hair][0]);
-            writeD(0x00);//face
+            writeD(0x00); //face
 
             writeH(0x00);
             writeH(0x00);
@@ -71,7 +70,7 @@ namespace L2dotNET.GameService.network.l2send
             writeD(0x00);
             writeD(0x01);
 
-            writeD(player.PvPStatus); 
+            writeD(player.PvPStatus);
             writeD(player.Karma);
 
             double atkspd = player.CharacterStat.getStat(TEffectType.b_attack_spd);
@@ -98,7 +97,7 @@ namespace L2dotNET.GameService.network.l2send
             writeF(anim); //анимация бега
             writeF(anim2); //анимация атаки
 
-            writeF(player.Radius);//elfo
+            writeF(player.Radius); //elfo
             writeF(player.Height);
 
             writeD(player.HairStyle);
@@ -114,7 +113,7 @@ namespace L2dotNET.GameService.network.l2send
 
             writeD(0);
 
-            writeC(player.isSitting() ? 0 : 1);	// standing = 1  sitting = 0
+            writeC(player.isSitting() ? 0 : 1); // standing = 1  sitting = 0
             writeC(player.IsRunning);
             writeC(player.isInCombat() ? 1 : 0);
             writeC(player.isAlikeDead() ? 1 : 0); //if (_activeChar.isInOlympiadMode()) 0 TODO
@@ -135,7 +134,7 @@ namespace L2dotNET.GameService.network.l2send
             writeH(player.RecHave);
             writeD((int)player.ActiveClass.ClassId.Id);
 
-            writeD(player.MaxCP);//max cp here
+            writeD(player.MaxCP); //max cp here
             writeC(player.GetEnchantValue());
             writeC(player.TeamID);
             writeD(player.getClanCrestLargeId());
@@ -155,7 +154,7 @@ namespace L2dotNET.GameService.network.l2send
 
             writeD(player.Heading);
 
-            writeD(player.ClanRank()); 
+            writeD(player.ClanRank());
             writeD(player.ClanType);
 
             writeD(player.getTitleColor());

@@ -10,6 +10,7 @@ namespace L2dotNET.GameService.network.l2recv
         }
 
         private string _alias;
+
         public override void read()
         {
             _alias = readS();

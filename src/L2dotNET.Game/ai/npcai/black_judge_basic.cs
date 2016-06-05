@@ -1,5 +1,4 @@
-﻿
-namespace L2dotNET.GameService.ai.npcai
+﻿namespace L2dotNET.GameService.ai.npcai
 {
     class black_judge_basic : citizen
     {
@@ -17,17 +16,23 @@ namespace L2dotNET.GameService.ai.npcai
             {
                 switch (reply)
                 {
-                    case 1: GetOffPenalty(talker, 76, 99, cost_penaltyoffS);
+                    case 1:
+                        GetOffPenalty(talker, 76, 99, cost_penaltyoffS);
                         break;
-                    case 2: GetOffPenalty(talker, 61, 76, cost_penaltyoffA);
+                    case 2:
+                        GetOffPenalty(talker, 61, 76, cost_penaltyoffA);
                         break;
-                    case 3: GetOffPenalty(talker, 52, 61, cost_penaltyoffB);
+                    case 3:
+                        GetOffPenalty(talker, 52, 61, cost_penaltyoffB);
                         break;
-                    case 4: GetOffPenalty(talker, 40, 52, cost_penaltyoffC);
+                    case 4:
+                        GetOffPenalty(talker, 40, 52, cost_penaltyoffC);
                         break;
-                    case 5: GetOffPenalty(talker, 20, 40, cost_penaltyoffD);
+                    case 5:
+                        GetOffPenalty(talker, 20, 40, cost_penaltyoffD);
                         break;
-                    case 6: GetOffPenalty(talker, 1, 20, cost_penaltyoff0);
+                    case 6:
+                        GetOffPenalty(talker, 1, 20, cost_penaltyoff0);
                         break;
                 }
             }

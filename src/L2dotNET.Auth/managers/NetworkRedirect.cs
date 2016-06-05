@@ -33,10 +33,7 @@ namespace L2dotNET.LoginService.managers
             }
         }
 
-        public NetworkRedirect()
-        {
-
-        }
+        public NetworkRedirect() { }
 
         public void Initialize()
         {
@@ -60,7 +57,7 @@ namespace L2dotNET.LoginService.managers
                         redirects.Add(i);
                 }
             }
-            log.Info($"NetworkRedirect: { redirects.Count } redirects. Global is { (GlobalRedirection == null ? "disabled" : "enabled") }");
+            log.Info($"NetworkRedirect: {redirects.Count} redirects. Global is {(GlobalRedirection == null ? "disabled" : "enabled")}");
         }
 
         public byte[] GetRedirect(LoginClient client, short serverId)
@@ -87,7 +84,7 @@ namespace L2dotNET.LoginService.managers
 
                 if (d.Min() == 1)
                 {
-                    log.Info($"Redirecting client to global { GlobalRedirection.redirect } on #{ serverId }");
+                    log.Info($"Redirecting client to global {GlobalRedirection.redirect} on #{serverId}");
                     return GlobalRedirection.redirectBits;
                 }
             }
@@ -120,7 +117,7 @@ namespace L2dotNET.LoginService.managers
 
                         if (d.Min() == 1)
                         {
-                            log.Info($"Redirecting client to { nr.redirect } on #{ serverId }");
+                            log.Info($"Redirecting client to {nr.redirect} on #{serverId}");
                             return nr.redirectBits;
                         }
                     }

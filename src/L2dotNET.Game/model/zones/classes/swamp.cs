@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.model.zones.classes
                 L2Player p = (L2Player)obj;
                 p.isInDanger = true;
                 p.sendPacket(new EtcStatusUpdate(p));
-              //  p._stats.base_p_speed += Template._move_bonus;
+                //  p._stats.base_p_speed += Template._move_bonus;
                 p.broadcastUserInfo();
             }
         }
@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.model.zones.classes
                 L2Player p = (L2Player)obj;
                 p.isInDanger = false;
                 p.sendPacket(new EtcStatusUpdate(p));
-              //  p._stats.base_p_speed -= Template._move_bonus;
+                //  p._stats.base_p_speed -= Template._move_bonus;
                 p.broadcastUserInfo();
             }
         }

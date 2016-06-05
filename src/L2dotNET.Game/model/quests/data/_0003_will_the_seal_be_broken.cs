@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.model.quests.data
 
         public override void tryAccept(L2Player player, L2Citizen npc)
         {
-            if (player.BaseClass.ClassId.ClassRace != ClassRace.DARK_ELF )
+            if (player.BaseClass.ClassId.ClassRace != ClassRace.DARK_ELF)
             {
                 player.ShowHtm("redry_q0003_00.htm", npc);
             }
@@ -80,25 +80,25 @@ namespace L2dotNET.GameService.model.quests.data
                 switch (mob.Template.NpcId)
                 {
                     case onyx_beast:
-                        {
-                            if (!player.hasItem(onyx_beast_eye))
-                                player.addItemQuest(onyx_beast_eye, 1);
-                        }
+                    {
+                        if (!player.hasItem(onyx_beast_eye))
+                            player.addItemQuest(onyx_beast_eye, 1);
+                    }
                         break;
                     case tainted_zombie:
                     case stink_zombie:
-                        {
-                            if (!player.hasItem(taint_stone))
-                                player.addItemQuest(taint_stone, 1);
-                        }
+                    {
+                        if (!player.hasItem(taint_stone))
+                            player.addItemQuest(taint_stone, 1);
+                    }
                         break;
                     case least_succubus:
                     case least_succubus_turen:
                     case least_succubus_tilfo:
-                        {
-                            if (!player.hasItem(succubus_blood))
-                                player.addItemQuest(succubus_blood, 1);
-                        }
+                    {
+                        if (!player.hasItem(succubus_blood))
+                            player.addItemQuest(succubus_blood, 1);
+                    }
                         break;
                 }
 
@@ -108,4 +108,3 @@ namespace L2dotNET.GameService.model.quests.data
         }
     }
 }
-

@@ -33,6 +33,5 @@ namespace L2dotNET.Services
         {
             return this.unitOfWork.ServerRepository.CheckDatabaseQuery();
         }
-
     }
 }

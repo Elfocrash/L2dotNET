@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.network.l2send
     class ExSendManorList : GameServerNetworkPacket
     {
         private readonly List<string> _list;
+
         public ExSendManorList(List<string> list)
         {
             _list = list;
@@ -19,7 +20,8 @@ namespace L2dotNET.GameService.network.l2send
             int id = 1;
             foreach (string manor in _list)
             {
-                writeD(id); id++;
+                writeD(id);
+                id++;
                 writeS(manor);
             }
         }

@@ -60,10 +60,8 @@ namespace L2dotNET.GameService.model.npcs
 
                             player.sendPacket(new NpcHtmlMessage(player, "AgitJanitorAfterDoorClose.htm", ObjID));
                             break;
-
                     }
                     break;
-
             }
         }
 

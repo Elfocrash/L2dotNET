@@ -32,7 +32,7 @@ namespace L2dotNET.GameService.model.npcs.cubic
             AiAction.Enabled = true;
             SummonEnd.Enabled = true;
 
-            owner.sendMessage("Summoned cubic #" + template.id + " for " + (template.duration/60) + " min.");
+            owner.sendMessage("Summoned cubic #" + template.id + " for " + (template.duration / 60) + " min.");
         }
 
         public void AiActionTask(object sender, System.Timers.ElapsedEventArgs e)
@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.model.npcs.cubic
             if (SummonEnd.Enabled)
                 SummonEnd.Enabled = false;
 
-            if(inheritOwner)
+            if (inheritOwner)
                 owner.StopCubic(this);
         }
 

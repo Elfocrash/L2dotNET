@@ -50,6 +50,7 @@ namespace L2dotNET.GameService.model.quests.data
         private const int q_totem_of_wisdom = 7220;
 
         private readonly Random rn;
+
         public _0605_alliance_with_ketra_orcs()
         {
             questId = 605;
@@ -87,7 +88,7 @@ namespace L2dotNET.GameService.model.quests.data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if(npcId == herald_wakan)
+            if (npcId == herald_wakan)
             {
                 if (reply == 1)
                 {
@@ -198,7 +199,7 @@ namespace L2dotNET.GameService.model.quests.data
                 }
                 else if (cond == 3)
                 {
-                    if (player.hasItem(q_barka_badge_grunt, 300) &&  player.hasItem(q_barka_badge_captn, 200) && player.hasItem(q_barka_badge_officer, 100))
+                    if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 200) && player.hasItem(q_barka_badge_officer, 100))
                     {
                         htmltext = "herald_wakan_q0605_17.htm";
                     }
@@ -249,13 +250,13 @@ namespace L2dotNET.GameService.model.quests.data
                 case varka_silenos_scout:
                 case varka_silenos_hunter:
                 case varka_silenos_shaman:
+                {
+                    if (cond >= 1)
                     {
-                        if (cond >= 1)
-                        {
-                            if (rn.Next(100) <= 80)
-                                player.addItemQuest(q_barka_badge_grunt, 1);
-                        }
+                        if (rn.Next(100) <= 80)
+                            player.addItemQuest(q_barka_badge_grunt, 1);
                     }
+                }
                     break;
                 case varka_silenos_priest:
                 case varka_silenos_warrior:
@@ -264,13 +265,13 @@ namespace L2dotNET.GameService.model.quests.data
                 case varka_silenos_sergeant:
                 case varka_silenos_general:
                 case varka_elite_guard:
+                {
+                    if (cond >= 2)
                     {
-                        if (cond >= 2)
-                        {
-                            if (rn.Next(100) <= 80)
-                                player.addItemQuest(q_barka_badge_captn, 1);
-                        }
+                        if (rn.Next(100) <= 80)
+                            player.addItemQuest(q_barka_badge_captn, 1);
                     }
+                }
                     break;
                 case varka_silenos_seer:
                 case varka_silenos_archmage:
@@ -281,16 +282,15 @@ namespace L2dotNET.GameService.model.quests.data
                 case varka_soothsayer:
                 case soothsayers_escort:
                 case soothsayers_apostle:
+                {
+                    if (cond >= 3)
                     {
-                        if (cond >= 3)
-                        {
-                            if (rn.Next(100) <= 80)
-                                player.addItemQuest(q_barka_badge_officer, 1);
-                        }
+                        if (rn.Next(100) <= 80)
+                            player.addItemQuest(q_barka_badge_officer, 1);
                     }
+                }
                     break;
             }
         }
     }
 }
-

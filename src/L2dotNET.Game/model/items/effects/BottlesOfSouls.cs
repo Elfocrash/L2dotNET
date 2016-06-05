@@ -4,12 +4,11 @@
     {
         public BottlesOfSouls()
         {
-            ids = new int[] { 
-                10409, //A Bottle of Souls
-                10410, //Full Bottle of Souls - 5 Souls
-                10411, //Full Bottle of Souls - 5 Souls (For Combat)
-                10412  //Full Bottle of Souls - 10 Souls
-            };
+            ids = new int[] { 10409, //A Bottle of Souls
+                              10410, //Full Bottle of Souls - 5 Souls
+                              10411, //Full Bottle of Souls - 5 Souls (For Combat)
+                              10412 //Full Bottle of Souls - 10 Souls
+                            };
         }
 
         public override void UsePlayer(L2Player player, L2Item item)
@@ -40,7 +39,7 @@
             }
             else if (method == rem)
             {
-                if(!player.CheckFreeSlotsInventory80(reward, 1, true))
+                if (!player.CheckFreeSlotsInventory80(reward, 1, true))
                     return;
             }
 

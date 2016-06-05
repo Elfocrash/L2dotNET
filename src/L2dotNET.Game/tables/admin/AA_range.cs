@@ -23,17 +23,18 @@ namespace L2dotNET.GameService.tables.admin
         }
 
         private ZoneNPoly np;
+
         protected internal override void use(L2Player admin, string alias)
         {
-          //  double dis = Calcs.calculateDistance(admin, admin._currentTarget, true);
-          //  admin.sendMessage("dis "+dis);
+            //  double dis = Calcs.calculateDistance(admin, admin._currentTarget, true);
+            //  admin.sendMessage("dis "+dis);
 
-          //  foreach (L2SkillCoolTime ct in admin._reuse.Values)
-          //  {
-          //      ct.forcedStop();
-          //  }
-          //  admin._reuse.Clear();
-          //  admin.updateReuse();
+            //  foreach (L2SkillCoolTime ct in admin._reuse.Values)
+            //  {
+            //      ct.forcedStop();
+            //  }
+            //  admin._reuse.Clear();
+            //  admin.updateReuse();
 
             string s = alias.Split(' ')[1];
 
@@ -66,9 +67,8 @@ namespace L2dotNET.GameService.tables.admin
                 for (int i = 0; i < count; i++)
                 {
                     int[] rloc = this.rndXYZ();
-                   // NpcTable.getInstance().spawnNpc("lector", rloc[0], rloc[1], rloc[3], new Random().Next(65000));
+                    // NpcTable.getInstance().spawnNpc("lector", rloc[0], rloc[1], rloc[3], new Random().Next(65000));
                 }
-
             }
             else if (s == "6")
             {
@@ -99,8 +99,8 @@ namespace L2dotNET.GameService.tables.admin
             }
             else if (s == "9")
             {
-                admin.DestX = admin.X +200;
-                admin.DestY = admin.Y +200;
+                admin.DestX = admin.X + 200;
+                admin.DestY = admin.Y + 200;
                 admin.DestZ = admin.Z;
                 admin.sendPacket(new CharMoveToLocation(admin));
             }
@@ -181,15 +181,14 @@ namespace L2dotNET.GameService.tables.admin
                 t.Interval = 2000 * 12;
                 t.Enabled = true;
             }
-           // admin._privateStoreType = byte.Parse(alias.Split(' ')[1]);
-           // admin.broadcastUserInfo();
-            
+            // admin._privateStoreType = byte.Parse(alias.Split(' ')[1]);
+            // admin.broadcastUserInfo();
 
-           // int val = int.Parse(alias.Split(' ')[1]);
+            // int val = int.Parse(alias.Split(' ')[1]);
 
-          //  StatusUpdate su = new StatusUpdate(admin);
-          //  su.add(val, 5000);
-          //  admin.sendPacket(su);
+            //  StatusUpdate su = new StatusUpdate(admin);
+            //  su.add(val, 5000);
+            //  admin.sendPacket(su);
         }
 
         private System.Timers.Timer t;
@@ -206,13 +205,14 @@ namespace L2dotNET.GameService.tables.admin
 
         public int[] rndXYZ()
         {
-            int i; int[] p = new int[4];
+            int i;
+            int[] p = new int[4];
             Random rn = new Random();
             for (i = 0; i < 200; i++)
             {
                 p[0] = rn.Next(np.minX, np.maxX);
                 p[1] = rn.Next(np.minY, np.maxY);
-                log.Info($"rnd xy { p[0] } { p[1] }");
+                log.Info($"rnd xy {p[0]} {p[1]}");
                 if (np.isInsideZone(p[0], p[1]))
                 {
                     double curdistance = -1;
@@ -242,7 +242,7 @@ namespace L2dotNET.GameService.tables.admin
         public void read()
         {
             Thread.Sleep(1000);
-           // _admin.validateVisibleObjects(_admin);
+            // _admin.validateVisibleObjects(_admin);
         }
     }
 }

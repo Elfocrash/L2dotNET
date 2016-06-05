@@ -13,6 +13,7 @@ namespace L2dotNET.GameService.model.structures
         public string Name, Descr;
 
         public SortedList<int, L2Citizen> npcs;
+
         internal void SetNpc(int id)
         {
             if (npcs == null)
@@ -54,6 +55,7 @@ namespace L2dotNET.GameService.model.structures
         }
 
         public List<L2Door> doors;
+
         internal void SetDoor(int id)
         {
             if (doors == null)
@@ -65,24 +67,28 @@ namespace L2dotNET.GameService.model.structures
         }
 
         public int[] ownerLoc;
+
         internal void SetOwnerRespawn(string[] p)
         {
             ownerLoc = new int[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
         }
 
         public int[] outsideLoc;
+
         internal void SetOutsideRespawn(string[] p)
         {
             outsideLoc = new int[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
         }
 
         public int[] banishLoc;
+
         internal void SetBanishRespawn(string[] p)
         {
             banishLoc = new int[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
         }
 
         public List<int[]> zoneLoc;
+
         internal void SetZoneLoc(string[] p)
         {
             if (zoneLoc == null)
@@ -92,7 +98,5 @@ namespace L2dotNET.GameService.model.structures
         }
 
         public virtual void init() { }
-
-
     }
 }

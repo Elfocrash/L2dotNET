@@ -5,6 +5,7 @@ namespace L2dotNET.GameService.model.npcs
     public class L2RaceManager : L2Citizen
     {
         private MonsterRace monsterRace;
+
         public L2RaceManager()
         {
             monsterRace = MonsterRace.Instance;
@@ -20,13 +21,13 @@ namespace L2dotNET.GameService.model.npcs
             switch (ask)
             {
                 case 255:
+                {
+                    switch (reply)
                     {
-                        switch (reply)
-                        {
-                            case 1://Exit the monster race track.
-                                break;
-                        }
+                        case 1: //Exit the monster race track.
+                            break;
                     }
+                }
                     break;
             }
         }

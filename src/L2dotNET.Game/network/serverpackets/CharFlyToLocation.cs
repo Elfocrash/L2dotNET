@@ -6,6 +6,7 @@ namespace L2dotNET.GameService.network.l2send
     {
         private readonly L2Object obj;
         private readonly int id;
+
         public CharFlyToLocation(L2Object obj, FlyType type)
         {
             this.obj = obj;
@@ -31,7 +32,7 @@ namespace L2dotNET.GameService.network.l2send
     }
 
     public enum FlyType
-	{
+    {
         THROW_UP,
         THROW_HORIZONTAL,
         DUMMY

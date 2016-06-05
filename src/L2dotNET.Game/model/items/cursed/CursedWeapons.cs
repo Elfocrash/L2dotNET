@@ -8,6 +8,7 @@ namespace L2dotNET.GameService.model.items.cursed
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(CursedWeapons));
         private static readonly CursedWeapons instance = new CursedWeapons();
+
         public static CursedWeapons getInstance()
         {
             return instance;
@@ -20,13 +21,12 @@ namespace L2dotNET.GameService.model.items.cursed
             items.Add(8190, null);
             items.Add(8689, null);
 
-            log.Info($"CursedWeapons: Loaded { items.Count } items.");
+            log.Info($"CursedWeapons: Loaded {items.Count} items.");
         }
 
         public int[] getWeaponIds()
         {
             return items.Keys.ToArray();
         }
-
     }
 }
