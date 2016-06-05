@@ -41,6 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeoEngine\Geodata\ABlock.cs" />
+    <Compile Include="GeoEngine\Geodata\BlockMultilayer.cs" />
+    <Compile Include="GeoEngine\Geodata\BlockMultilayerDynamic.cs" />
+    <Compile Include="GeoEngine\Geodata\BlockNull.cs" />
+    <Compile Include="GeoEngine\Geodata\GeoStructure.cs" />
+    <Compile Include="GeoEngine\Geodata\IBlockDynamic.cs" />
+    <Compile Include="GeoEngine\Geodata\IGeoObject.cs" />
+    <Compile Include="GeoEngine\Pathfinding\Node.cs" />
     <Compile Include="Network\Firewall.cs" />
     <Compile Include="Network\InnerNetworkClient.cs" />
     <Compile Include="Network\NetworkClient.cs" />

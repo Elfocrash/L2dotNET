@@ -842,6 +842,7 @@
     <Folder Include="Datapacks\Game\cmpl\quests\" />
     <Folder Include="Datapacks\Game\html\scripts\teleports\RaceTrack\" />
     <Folder Include="Datapacks\Game\log\" />
+    <Folder Include="GeoEngine\" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
