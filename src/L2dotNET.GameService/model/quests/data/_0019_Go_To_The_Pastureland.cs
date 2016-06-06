@@ -44,19 +44,19 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == trader_vladimir)
-            {
-                if (cond != 0)
-                    htmltext = "trader_vladimir_q0019_0105.htm";
-            }
-            else if (npcId == beast_herder_tunatun)
-            {
-                if (player.hasItem(q_youngmeat_of_beast))
-                    htmltext = "beast_herder_tunatun_q0019_0101.htm";
-                else
-                {
-                    htmltext = "beast_herder_tunatun_q0019_0202.htm";
-                }
+            switch (npcId) {
+                case trader_vladimir:
+                    if (cond != 0)
+                        htmltext = "trader_vladimir_q0019_0105.htm";
+                    break;
+                case beast_herder_tunatun:
+                    if (player.hasItem(q_youngmeat_of_beast))
+                        htmltext = "beast_herder_tunatun_q0019_0101.htm";
+                    else
+                    {
+                        htmltext = "beast_herder_tunatun_q0019_0202.htm";
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);

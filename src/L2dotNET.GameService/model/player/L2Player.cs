@@ -1432,11 +1432,11 @@ namespace L2dotNET.GameService.Model.Player
             }
             else if (obj is L2Item)
             {
-                sendPacket(pk == null ? new SpawnItem((L2Item)obj) : pk);
+                sendPacket(pk ?? new SpawnItem((L2Item)obj));
             }
             else if (obj is L2Summon)
             {
-                sendPacket(pk == null ? new PetInfo((L2Summon)obj) : pk);
+                sendPacket(pk ?? new PetInfo((L2Summon)obj));
             }
             else if (obj is L2Chair)
             {

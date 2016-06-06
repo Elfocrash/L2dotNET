@@ -49,7 +49,7 @@ namespace L2dotNET.GameService
                 log.Info($"config: error, parameter {value} was not found");
             }
 
-            return ret == null ? defaultprop : ret;
+            return ret ?? defaultprop;
         }
     }
 }

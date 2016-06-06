@@ -73,45 +73,44 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == mint)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "mint_q0007_0105.htm";
-                        break;
-                    case 3:
-                        htmltext = "mint_q0007_0301.htm";
-                        break;
-                }
-            }
-            else if (npcId == ariel)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        if (!player.hasItem(q_recommendation_elf))
-                            htmltext = "ariel_q0007_0101.htm";
-                        break;
-                    case 2:
-                        htmltext = "ariel_q0007_0202.htm";
-                        break;
-                }
-            }
-            else if (npcId == ozzy)
-            {
-                switch (cond)
-                {
-                    case 2:
-                        if (player.hasItem(q_recommendation_elf))
-                            htmltext = "ozzy_q0007_0201.htm";
-                        else
-                            htmltext = "ozzy_q0007_0302.htm";
-                        break;
-                    case 3:
-                        htmltext = "ozzy_q0007_0303.htm";
-                        break;
-                }
+            switch (npcId) {
+                case mint:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "mint_q0007_0105.htm";
+                            break;
+                        case 3:
+                            htmltext = "mint_q0007_0301.htm";
+                            break;
+                    }
+                    break;
+                case ariel:
+                    switch (cond)
+                    {
+                        case 1:
+                            if (!player.hasItem(q_recommendation_elf))
+                                htmltext = "ariel_q0007_0101.htm";
+                            break;
+                        case 2:
+                            htmltext = "ariel_q0007_0202.htm";
+                            break;
+                    }
+                    break;
+                case ozzy:
+                    switch (cond)
+                    {
+                        case 2:
+                            if (player.hasItem(q_recommendation_elf))
+                                htmltext = "ozzy_q0007_0201.htm";
+                            else
+                                htmltext = "ozzy_q0007_0302.htm";
+                            break;
+                        case 3:
+                            htmltext = "ozzy_q0007_0303.htm";
+                            break;
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);

@@ -186,7 +186,7 @@ namespace L2dotNET.Utility.Geometry
             result.M44 = matrix1.M44 + matrix2.M44;
         }
 
-        public static Matrix CreateBillboard(Vector3 objectPosition, Vector3 cameraPosition, Vector3 cameraUpVector, Nullable<Vector3> cameraForwardVector)
+        public static Matrix CreateBillboard(Vector3 objectPosition, Vector3 cameraPosition, Vector3 cameraUpVector, Vector3? cameraForwardVector)
         {
             var diff = cameraPosition - objectPosition;
 
@@ -276,7 +276,7 @@ namespace L2dotNET.Utility.Geometry
             result.M44 = 1f;
         }
 
-        public static Matrix CreateConstrainedBillboard(Vector3 objectPosition, Vector3 cameraPosition, Vector3 rotateAxis, Nullable<Vector3> cameraForwardVector, Nullable<Vector3> objectForwardVector)
+        public static Matrix CreateConstrainedBillboard(Vector3 objectPosition, Vector3 cameraPosition, Vector3 rotateAxis, Vector3? cameraForwardVector, Vector3? objectForwardVector)
         {
             double num;
             Vector3 vector;

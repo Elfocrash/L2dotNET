@@ -75,27 +75,28 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == rapunzel)
-            {
-                if (cond == 1)
-                    htmltext = "rapunzel_q0006_0105.htm";
-                else if (cond == 3)
-                    htmltext = "rapunzel_q0006_0301.htm";
+            switch (npcId) {
+                case rapunzel:
+                    if (cond == 1)
+                        htmltext = "rapunzel_q0006_0105.htm";
+                    else if (cond == 3)
+                        htmltext = "rapunzel_q0006_0301.htm";
+                    break;
+                case baul:
+                    if (cond == 1)
+                        htmltext = "baul_q0006_0101.htm";
+                    else if (cond == 2 && player.hasItem(q_letter_paulo))
+                        htmltext = "baul_q0006_0202.htm";
+                    break;
+                case sir_collin_windawood:
+                    if (cond == 2 && player.hasItem(q_letter_paulo))
+                        htmltext = "sir_collin_windawood_q0006_0201.htm";
+                    else if (cond == 2 && !player.hasItem(q_letter_paulo))
+                        htmltext = "sir_collin_windawood_q0006_0302.htm";
+                    else if (cond == 3)
+                        htmltext = "sir_collin_windawood_q0006_0303.htm";
+                    break;
             }
-            else if (npcId == baul)
-            {
-                if (cond == 1)
-                    htmltext = "baul_q0006_0101.htm";
-                else if (cond == 2 && player.hasItem(q_letter_paulo))
-                    htmltext = "baul_q0006_0202.htm";
-            }
-            else if (npcId == sir_collin_windawood)
-                if (cond == 2 && player.hasItem(q_letter_paulo))
-                    htmltext = "sir_collin_windawood_q0006_0201.htm";
-                else if (cond == 2 && !player.hasItem(q_letter_paulo))
-                    htmltext = "sir_collin_windawood_q0006_0302.htm";
-                else if (cond == 3)
-                    htmltext = "sir_collin_windawood_q0006_0303.htm";
 
             player.ShowHtm(htmltext, npc);
         }

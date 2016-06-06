@@ -226,8 +226,8 @@ namespace L2dotNET.Network
         {
             string v = string.Empty;
 
-            for (int i = 0; i < s.Length; i++)
-                v += s[i] + '\0';
+            foreach (string t in s)
+                v += t + '\0';
 
             int length = v.Length * sizeof(char);
 

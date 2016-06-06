@@ -45,36 +45,35 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == guard_cadmon)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "guard_cadmon_q0012_0105.htm";
-                        break;
-                }
-            }
-            else if (npcId == trader_helmut)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "trader_helmut_q0012_0101.htm";
-                        break;
-                    case 2:
-                        htmltext = "trader_helmut_q0012_0202.htm";
-                        break;
-                }
-            }
-            else if (npcId == herald_naran)
-            {
-                switch (cond)
-                {
-                    case 2:
-                        if (player.hasItem(q_cargo_for_barka))
-                            htmltext = "herald_naran_q0012_0201.htm";
-                        break;
-                }
+            switch (npcId) {
+                case guard_cadmon:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "guard_cadmon_q0012_0105.htm";
+                            break;
+                    }
+                    break;
+                case trader_helmut:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "trader_helmut_q0012_0101.htm";
+                            break;
+                        case 2:
+                            htmltext = "trader_helmut_q0012_0202.htm";
+                            break;
+                    }
+                    break;
+                case herald_naran:
+                    switch (cond)
+                    {
+                        case 2:
+                            if (player.hasItem(q_cargo_for_barka))
+                                htmltext = "herald_naran_q0012_0201.htm";
+                            break;
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);

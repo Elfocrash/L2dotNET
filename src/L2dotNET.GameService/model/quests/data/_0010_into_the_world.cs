@@ -46,16 +46,16 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (reply == 1 && npcId == warehouse_chief_reed)
             {
                 int cond = player.getQuestCond(questId);
-                if (cond == 1)
-                {
-                    player.addItem(q_expensive_necklace, 1);
-                    player.changeQuestStage(questId, 2);
-                    htmltext = "warehouse_chief_reed_q0010_0201.htm";
-                }
-                else if (cond == 3)
-                {
-                    player.changeQuestStage(questId, 4);
-                    htmltext = "warehouse_chief_reed_q0010_0401.htm";
+                switch (cond) {
+                    case 1:
+                        player.addItem(q_expensive_necklace, 1);
+                        player.changeQuestStage(questId, 2);
+                        htmltext = "warehouse_chief_reed_q0010_0201.htm";
+                        break;
+                    case 3:
+                        player.changeQuestStage(questId, 4);
+                        htmltext = "warehouse_chief_reed_q0010_0401.htm";
+                        break;
                 }
             }
             else if (reply == 1 && npcId == gerald_priest_of_earth)
@@ -79,50 +79,49 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == elder_balanki)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "elder_balanki_q0010_0105.htm";
-                        break;
-                    case 4:
-                        htmltext = "elder_balanki_q0010_0401.htm";
-                        break;
-                }
-            }
-            else if (npcId == warehouse_chief_reed)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "warehouse_chief_reed_q0010_0101.htm";
-                        break;
-                    case 2:
-                        htmltext = "warehouse_chief_reed_q0010_0202.htm";
-                        break;
-                    case 3:
-                        htmltext = "warehouse_chief_reed_q0010_0301.htm";
-                        break;
-                    case 4:
-                        htmltext = "warehouse_chief_reed_q0010_0402.htm";
-                        break;
-                }
-            }
-            else if (npcId == gerald_priest_of_earth)
-            {
-                switch (cond)
-                {
-                    case 2:
-                        if (player.hasItem(q_expensive_necklace))
-                            htmltext = "gerald_priest_of_earth_q0010_0201.htm";
-                        else
-                            htmltext = "gerald_priest_of_earth_q0010_0303.htm";
-                        break;
-                    case 3:
-                        htmltext = "gerald_priest_of_earth_q0010_0302.htm";
-                        break;
-                }
+            switch (npcId) {
+                case elder_balanki:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "elder_balanki_q0010_0105.htm";
+                            break;
+                        case 4:
+                            htmltext = "elder_balanki_q0010_0401.htm";
+                            break;
+                    }
+                    break;
+                case warehouse_chief_reed:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "warehouse_chief_reed_q0010_0101.htm";
+                            break;
+                        case 2:
+                            htmltext = "warehouse_chief_reed_q0010_0202.htm";
+                            break;
+                        case 3:
+                            htmltext = "warehouse_chief_reed_q0010_0301.htm";
+                            break;
+                        case 4:
+                            htmltext = "warehouse_chief_reed_q0010_0402.htm";
+                            break;
+                    }
+                    break;
+                case gerald_priest_of_earth:
+                    switch (cond)
+                    {
+                        case 2:
+                            if (player.hasItem(q_expensive_necklace))
+                                htmltext = "gerald_priest_of_earth_q0010_0201.htm";
+                            else
+                                htmltext = "gerald_priest_of_earth_q0010_0303.htm";
+                            break;
+                        case 3:
+                            htmltext = "gerald_priest_of_earth_q0010_0302.htm";
+                            break;
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);

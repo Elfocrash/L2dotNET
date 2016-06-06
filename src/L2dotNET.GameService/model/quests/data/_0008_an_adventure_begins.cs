@@ -70,39 +70,38 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == jasmine)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "jasmine_q0008_0105.htm";
-                        break;
-                    case 3:
-                        htmltext = "jasmine_q0008_0301.htm";
-                        break;
-                }
-            }
-            else if (npcId == sentry_roseline)
-            {
-                if (!player.hasItem(q_roseline_paper))
-                    htmltext = "sentry_roseline_q0008_0101.htm";
-                else
-                    htmltext = "sentry_roseline_q0008_0202.htm";
-            }
-            else if (npcId == harne)
-            {
-                switch (cond)
-                {
-                    case 2:
-                        if (player.hasItem(q_roseline_paper))
-                            htmltext = "harne_q0008_0201.htm";
-                        else if (!player.hasItem(q_roseline_paper))
-                            htmltext = "harne_q0008_0302.htm";
-                        break;
-                    case 3:
-                        htmltext = "harne_q0008_0303.htm";
-                        break;
-                }
+            switch (npcId) {
+                case jasmine:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "jasmine_q0008_0105.htm";
+                            break;
+                        case 3:
+                            htmltext = "jasmine_q0008_0301.htm";
+                            break;
+                    }
+                    break;
+                case sentry_roseline:
+                    if (!player.hasItem(q_roseline_paper))
+                        htmltext = "sentry_roseline_q0008_0101.htm";
+                    else
+                        htmltext = "sentry_roseline_q0008_0202.htm";
+                    break;
+                case harne:
+                    switch (cond)
+                    {
+                        case 2:
+                            if (player.hasItem(q_roseline_paper))
+                                htmltext = "harne_q0008_0201.htm";
+                            else if (!player.hasItem(q_roseline_paper))
+                                htmltext = "harne_q0008_0302.htm";
+                            break;
+                        case 3:
+                            htmltext = "harne_q0008_0303.htm";
+                            break;
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);

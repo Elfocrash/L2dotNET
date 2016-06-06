@@ -1746,26 +1746,25 @@ namespace L2dotNET.GameService.World
         public void Mute(int type, long hashId, bool start)
         {
             List<long> list = null;
-            if (type == 0)
-            {
-                if (Muted0 == null)
-                    Muted0 = new List<long>();
+            switch (type) {
+                case 0:
+                    if (Muted0 == null)
+                        Muted0 = new List<long>();
 
-                list = Muted0;
-            }
-            else if (type == 1)
-            {
-                if (Muted1 == null)
-                    Muted1 = new List<long>();
+                    list = Muted0;
+                    break;
+                case 1:
+                    if (Muted1 == null)
+                        Muted1 = new List<long>();
 
-                list = Muted1;
-            }
-            else if (type == 2)
-            {
-                if (Muted2 == null)
-                    Muted2 = new List<long>();
+                    list = Muted1;
+                    break;
+                case 2:
+                    if (Muted2 == null)
+                        Muted2 = new List<long>();
 
-                list = Muted2;
+                    list = Muted2;
+                    break;
             }
 
             if (start)

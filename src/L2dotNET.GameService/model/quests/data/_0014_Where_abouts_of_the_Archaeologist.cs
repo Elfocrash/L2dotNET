@@ -44,24 +44,24 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == trader_liesel)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "trader_liesel_q0014_0104.htm";
-                        break;
-                }
-            }
-            else if (npcId == explorer_ghost_a)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        if (player.hasItem(q_letter_to_explorer))
-                            htmltext = "explorer_ghost_a_q0014_0101.htm";
-                        break;
-                }
+            switch (npcId) {
+                case trader_liesel:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "trader_liesel_q0014_0104.htm";
+                            break;
+                    }
+                    break;
+                case explorer_ghost_a:
+                    switch (cond)
+                    {
+                        case 1:
+                            if (player.hasItem(q_letter_to_explorer))
+                                htmltext = "explorer_ghost_a_q0014_0101.htm";
+                            break;
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);

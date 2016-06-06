@@ -68,42 +68,43 @@ namespace L2dotNET.GameService.Model.Quests.Data
             }
             else if (cond == 1 && !player.hasItem(bolters_list))
             {
-                if (npcId == trader_chali)
-                {
-                    if (!player.hasItem(boomboom_powder))
-                    {
-                        htmltext = "trader_chali_q0005_01.htm";
-                        player.addItemQuest(boomboom_powder, 1);
-                    }
-                    else
-                        htmltext = "trader_chali_q0005_02.htm";
-                }
-                else if (npcId == trader_garita)
-                {
-                    if (!player.hasItem(mining_boots))
-                    {
-                        htmltext = "trader_garita_q0005_01.htm";
-                        player.addItemQuest(mining_boots, 1);
-                    }
-                    else
-                        htmltext = "trader_garita_q0005_02.htm";
-                }
-                else if (npcId == warehouse_chief_reed)
-                {
-                    if (!player.hasItem(redstone_beer))
-                    {
-                        htmltext = "warehouse_chief_reed_q0005_01.htm";
-                        player.addItemQuest(redstone_beer, 1);
-                    }
-                    else
-                        htmltext = "warehouse_chief_reed_q0005_02.htm";
-                }
-                else if (npcId == blacksmith_bronp && !player.hasItem(bolters_smelly_socks))
-                {
-                    if (!player.hasItem(miners_pick))
-                        htmltext = "blacksmith_bronp_q0005_01.htm";
-                    else
-                        htmltext = "blacksmith_bronp_q0005_03.htm";
+                switch (npcId) {
+                    case trader_chali:
+                        if (!player.hasItem(boomboom_powder))
+                        {
+                            htmltext = "trader_chali_q0005_01.htm";
+                            player.addItemQuest(boomboom_powder, 1);
+                        }
+                        else
+                            htmltext = "trader_chali_q0005_02.htm";
+                        break;
+                    case trader_garita:
+                        if (!player.hasItem(mining_boots))
+                        {
+                            htmltext = "trader_garita_q0005_01.htm";
+                            player.addItemQuest(mining_boots, 1);
+                        }
+                        else
+                            htmltext = "trader_garita_q0005_02.htm";
+                        break;
+                    case warehouse_chief_reed:
+                        if (!player.hasItem(redstone_beer))
+                        {
+                            htmltext = "warehouse_chief_reed_q0005_01.htm";
+                            player.addItemQuest(redstone_beer, 1);
+                        }
+                        else
+                            htmltext = "warehouse_chief_reed_q0005_02.htm";
+                        break;
+                    default:
+                        if (npcId == blacksmith_bronp && !player.hasItem(bolters_smelly_socks))
+                        {
+                            if (!player.hasItem(miners_pick))
+                                htmltext = "blacksmith_bronp_q0005_01.htm";
+                            else
+                                htmltext = "blacksmith_bronp_q0005_03.htm";
+                        }
+                        break;
                 }
             }
 

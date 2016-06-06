@@ -47,75 +47,72 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == dark_presbyter)
-            {
-                if (cond > 0 && cond < 5 && player.hasItem(q_blood_of_saint))
-                    htmltext = "dark_presbyter_q0017_05.htm";
-                else if (cond > 0 && cond < 5 && !player.hasItem(q_blood_of_saint))
-                {
-                    htmltext = "dark_presbyter_q0017_06.htm";
-                    player.changeQuestStage(questId, 0);
-                }
-            }
-            else if (npcId == blessed_altar1)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        if (player.hasItem(q_blood_of_saint))
-                            htmltext = "blessed_altar1_q0017_01.htm";
-                        else
-                            htmltext = "blessed_altar1_q0017_03.htm";
-                        break;
-                    case 2:
-                        htmltext = "blessed_altar1_q0017_05.htm";
-                        break;
-                }
-            }
-            else if (npcId == blessed_altar2)
-            {
-                switch (cond)
-                {
-                    case 2:
-                        if (player.hasItem(q_blood_of_saint))
-                            htmltext = "blessed_altar2_q0017_01.htm";
-                        else
-                            htmltext = "blessed_altar2_q0017_03.htm";
-                        break;
-                    case 3:
-                        htmltext = "blessed_altar2_q0017_05.htm";
-                        break;
-                }
-            }
-            else if (npcId == blessed_altar3)
-            {
-                switch (cond)
-                {
-                    case 3:
-                        if (player.hasItem(q_blood_of_saint))
-                            htmltext = "blessed_altar3_q0017_01.htm";
-                        else
-                            htmltext = "blessed_altar3_q0017_03.htm";
-                        break;
-                    case 4:
-                        htmltext = "blessed_altar3_q0017_05.htm";
-                        break;
-                }
-            }
-            else if (npcId == blessed_altar4)
-            {
-                switch (cond)
-                {
-                    case 4:
-                        if (player.hasItem(q_blood_of_saint))
-                            htmltext = "blessed_altar4_q0017_01.htm";
-                        else
-                            htmltext = "blessed_altar4_q0017_03.htm";
-                        break;
-                    case 5:
-                        htmltext = "blessed_altar4_q0017_05.htm";
-                        break;
-                }
+            switch (npcId) {
+                case dark_presbyter:
+                    if (cond > 0 && cond < 5 && player.hasItem(q_blood_of_saint))
+                        htmltext = "dark_presbyter_q0017_05.htm";
+                    else if (cond > 0 && cond < 5 && !player.hasItem(q_blood_of_saint))
+                    {
+                        htmltext = "dark_presbyter_q0017_06.htm";
+                        player.changeQuestStage(questId, 0);
+                    }
+                    break;
+                case blessed_altar1:
+                    switch (cond)
+                    {
+                        case 1:
+                            if (player.hasItem(q_blood_of_saint))
+                                htmltext = "blessed_altar1_q0017_01.htm";
+                            else
+                                htmltext = "blessed_altar1_q0017_03.htm";
+                            break;
+                        case 2:
+                            htmltext = "blessed_altar1_q0017_05.htm";
+                            break;
+                    }
+                    break;
+                case blessed_altar2:
+                    switch (cond)
+                    {
+                        case 2:
+                            if (player.hasItem(q_blood_of_saint))
+                                htmltext = "blessed_altar2_q0017_01.htm";
+                            else
+                                htmltext = "blessed_altar2_q0017_03.htm";
+                            break;
+                        case 3:
+                            htmltext = "blessed_altar2_q0017_05.htm";
+                            break;
+                    }
+                    break;
+                case blessed_altar3:
+                    switch (cond)
+                    {
+                        case 3:
+                            if (player.hasItem(q_blood_of_saint))
+                                htmltext = "blessed_altar3_q0017_01.htm";
+                            else
+                                htmltext = "blessed_altar3_q0017_03.htm";
+                            break;
+                        case 4:
+                            htmltext = "blessed_altar3_q0017_05.htm";
+                            break;
+                    }
+                    break;
+                case blessed_altar4:
+                    switch (cond)
+                    {
+                        case 4:
+                            if (player.hasItem(q_blood_of_saint))
+                                htmltext = "blessed_altar4_q0017_01.htm";
+                            else
+                                htmltext = "blessed_altar4_q0017_03.htm";
+                            break;
+                        case 5:
+                            htmltext = "blessed_altar4_q0017_05.htm";
+                            break;
+                    }
+                    break;
             }
             player.ShowHtm(htmltext, npc);
         }

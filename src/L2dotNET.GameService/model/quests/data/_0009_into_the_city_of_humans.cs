@@ -62,35 +62,34 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == centurion_petukai)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "centurion_petukai_q0009_0105.htm";
-                        break;
-                }
-            }
-            else if (npcId == seer_tanapi)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "seer_tanapi_q0009_0101.htm";
-                        break;
-                    case 2:
-                        htmltext = "seer_tanapi_q0009_0202.htm";
-                        break;
-                }
-            }
-            else if (npcId == gatekeeper_tamil)
-            {
-                switch (cond)
-                {
-                    case 2:
-                        htmltext = "gatekeeper_tamil_q0009_0201.htm";
-                        break;
-                }
+            switch (npcId) {
+                case centurion_petukai:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "centurion_petukai_q0009_0105.htm";
+                            break;
+                    }
+                    break;
+                case seer_tanapi:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "seer_tanapi_q0009_0101.htm";
+                            break;
+                        case 2:
+                            htmltext = "seer_tanapi_q0009_0202.htm";
+                            break;
+                    }
+                    break;
+                case gatekeeper_tamil:
+                    switch (cond)
+                    {
+                        case 2:
+                            htmltext = "gatekeeper_tamil_q0009_0201.htm";
+                            break;
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);

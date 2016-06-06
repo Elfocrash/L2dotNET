@@ -44,24 +44,24 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == mineral_trader_fundin)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "mineral_trader_fundin_q0013_0105.htm";
-                        break;
-                }
-            }
-            else if (npcId == warsmith_vulcan)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        if (player.hasItem(q_package_to_vulcan))
-                            htmltext = "warsmith_vulcan_q0013_0101.htm";
-                        break;
-                }
+            switch (npcId) {
+                case mineral_trader_fundin:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "mineral_trader_fundin_q0013_0105.htm";
+                            break;
+                    }
+                    break;
+                case warsmith_vulcan:
+                    switch (cond)
+                    {
+                        case 1:
+                            if (player.hasItem(q_package_to_vulcan))
+                                htmltext = "warsmith_vulcan_q0013_0101.htm";
+                            break;
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);
