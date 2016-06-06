@@ -20,7 +20,8 @@ namespace L2dotNET.Tests
                 StatsSet set = new StatsSet();
                 StatsSet petSet = new StatsSet();
 
-                foreach (string i in xmlFilesArray) {
+                foreach (string i in xmlFilesArray)
+                {
                     doc.Load(i);
                     if (doc.DocumentElement != null)
                     {

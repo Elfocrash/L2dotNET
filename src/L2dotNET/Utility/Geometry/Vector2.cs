@@ -369,8 +369,8 @@ namespace L2dotNET.Utility.Geometry
         {
             for (int x = 0; x < length; x++)
             {
-                var position = sourceArray[sourceIndex + x];
-                var destination = destinationArray[destinationIndex + x];
+                Vector2 position = sourceArray[sourceIndex + x];
+                Vector2 destination = destinationArray[destinationIndex + x];
                 destination.X = (position.X * matrix.M11) + (position.Y * matrix.M21) + matrix.M41;
                 destination.Y = (position.X * matrix.M12) + (position.Y * matrix.M22) + matrix.M42;
                 destinationArray[destinationIndex + x] = destination;

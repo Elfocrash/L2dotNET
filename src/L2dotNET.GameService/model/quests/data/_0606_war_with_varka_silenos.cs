@@ -62,7 +62,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             string htmltext = no_action_required;
             if (npcId == elder_kadun_zu_ketra)
             {
-                switch (reply) {
+                switch (reply)
+                {
                     case 1:
                         htmltext = "elder_kadun_zu_ketra_q0606_0106.htm";
                         break;

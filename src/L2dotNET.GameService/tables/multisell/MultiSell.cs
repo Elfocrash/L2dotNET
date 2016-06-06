@@ -108,7 +108,7 @@ namespace L2dotNET.GameService.Tables.Multisell
 
             if (ex != null)
             {
-                foreach (var m in ex.Elements())
+                foreach (XElement m in ex.Elements())
                 {
                     if (m.Name == "multisell")
                     {
@@ -118,12 +118,12 @@ namespace L2dotNET.GameService.Tables.Multisell
                         mlist.save = Convert.ToByte(m.Attribute("save").Value);
                         mlist.all = Convert.ToByte(m.Attribute("all").Value);
 
-                        foreach (var stp in m.Elements())
+                        foreach (XElement stp in m.Elements())
                         {
                             if (stp.Name == "entry")
                             {
                                 MultiSellEntry entry = new MultiSellEntry();
-                                foreach (var its in stp.Elements())
+                                foreach (XElement its in stp.Elements())
                                 {
                                     switch (its.Name.LocalName)
                                     {
@@ -171,10 +171,7 @@ namespace L2dotNET.GameService.Tables.Multisell
 
         public MultiSellList getList(int listId)
         {
-            if (lists.ContainsKey(listId))
-                return lists[listId];
-
-            return null;
+            return lists.ContainsKey(listId) ? lists[listId] : null;
         }
     }
 }

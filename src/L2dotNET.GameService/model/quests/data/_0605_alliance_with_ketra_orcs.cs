@@ -91,7 +91,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             string htmltext = no_action_required;
             if (npcId == herald_wakan)
             {
-                switch (reply) {
+                switch (reply)
+                {
                     case 1:
                         if (player.hasItem(q_barka_badge_grunt, 100))
                         {
@@ -176,7 +177,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             string htmltext = no_action_required;
             if (npcIdh == herald_wakan)
             {
-                switch (cond) {
+                switch (cond)
+                {
                     case 1:
                         if (player.hasItem(q_barka_badge_grunt, 100))
                         {

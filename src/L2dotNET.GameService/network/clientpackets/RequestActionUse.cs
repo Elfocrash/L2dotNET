@@ -193,7 +193,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             int staticId = 0;
-            if (player.CurrentTarget != null && player.CurrentTarget is L2Chair)
+            if (player.CurrentTarget is L2Chair)
             {
                 L2Chair chair = (L2Chair)player.CurrentTarget;
                 if (!chair.IsUsedAlready && chair.ClanID != -1 && player.ClanId == chair.ClanID)

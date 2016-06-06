@@ -26,7 +26,8 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         public override void TalkedReply(L2Player talker, int ask, int reply)
         {
-            switch (ask) {
+            switch (ask)
+            {
                 case -3:
                     L2Clan pledge = talker.Clan;
                     byte pledgLv = pledge != null ? pledge.Level : (byte)0;
@@ -256,9 +257,7 @@ namespace L2dotNET.GameService.AI.NpcAI
                         else if (talker.Clan.HasSubPledge(reply))
                         {
                             NpcHtmlMessage htm = new NpcHtmlMessage(talker, "pl_ch_submaster" + reply + ".htm", myself.ObjID);
-                            string mstr = talker.Clan.GetSubpledgeMasterName(reply);
-                            if (mstr == null)
-                                mstr = FString.getInstance().get(1010642);
+                            string mstr = talker.Clan.GetSubpledgeMasterName(reply) ?? FString.getInstance().get(1010642);
                             htm.replace("<?" + reply + "submaster?>", mstr);
 
                             talker.sendPacket(htm);
@@ -275,9 +274,7 @@ namespace L2dotNET.GameService.AI.NpcAI
                         else if (talker.Clan.HasSubPledge(reply))
                         {
                             NpcHtmlMessage htm = new NpcHtmlMessage(talker, "pl_ch_submaster" + reply + ".htm", myself.ObjID);
-                            string mstr = talker.Clan.GetSubpledgeMasterName(reply);
-                            if (mstr == null)
-                                mstr = FString.getInstance().get(1010642);
+                            string mstr = talker.Clan.GetSubpledgeMasterName(reply) ?? FString.getInstance().get(1010642);
                             htm.replace("<?" + reply + "submaster?>", mstr);
 
                             talker.sendPacket(htm);
@@ -321,7 +318,8 @@ namespace L2dotNET.GameService.AI.NpcAI
                     break;
                 case -223:
                     byte lvl = talker.ClanLevel;
-                    switch (reply) {
+                    switch (reply)
+                    {
                         case 0:
                             switch (lvl)
                             {

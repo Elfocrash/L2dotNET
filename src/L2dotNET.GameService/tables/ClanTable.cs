@@ -218,9 +218,7 @@ namespace L2dotNET.GameService.Tables
 
         public L2Clan GetClan(int id)
         {
-            if (!_clans.ContainsKey(id))
-                return null;
-            return _clans[id];
+            return !_clans.ContainsKey(id) ? null : _clans[id];
         }
     }
 }

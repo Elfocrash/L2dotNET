@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
@@ -30,16 +31,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
                 return;
             }
 
-            L2Recipe rec = null;
-
-            foreach (L2Recipe r in player._recipeBook)
-            {
-                if (r.RecipeID == _id)
-                {
-                    rec = r;
-                    break;
-                }
-            }
+            L2Recipe rec = player._recipeBook.FirstOrDefault(r => r.RecipeID == _id);
 
             if (rec == null)
             {

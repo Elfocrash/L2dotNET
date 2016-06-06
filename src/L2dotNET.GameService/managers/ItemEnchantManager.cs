@@ -121,10 +121,7 @@ namespace L2dotNET.GameService.Managers
 
         public EnchantScroll getSupport(int id)
         {
-            if (supports.ContainsKey(id))
-                return supports[id];
-            else
-                return null;
+            return supports.ContainsKey(id) ? supports[id] : null;
         }
 
         public int[] getIds()

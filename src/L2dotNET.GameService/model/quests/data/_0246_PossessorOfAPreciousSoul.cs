@@ -49,7 +49,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
 
         public override void onTalkToNpcQM(L2Player player, L2Npc npc, int reply)
         {
-            switch (reply) {
+            switch (reply)
+            {
                 case 1:
                     int cond = player.getQuestCond(questId);
                     switch (cond)
@@ -82,7 +83,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            switch (npcId) {
+            switch (npcId)
+            {
                 case caradine:
                     htmltext = "caradine_q0246_0105.htm";
                     break;
@@ -126,7 +128,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
 
         public override void onKill(L2Player player, L2Warrior mob, int stage)
         {
-            switch (stage) {
+            switch (stage)
+            {
                 case 2:
                     Random rn = new Random();
                     switch (mob.Template.NpcId)
@@ -161,7 +164,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
 
         public override void onEarnItem(L2Player player, int cond, int id)
         {
-            switch (cond) {
+            switch (cond)
+            {
                 case 2:
                     if (id == q_ring_waterbinder || id == q_necklace_evergreen)
                     {

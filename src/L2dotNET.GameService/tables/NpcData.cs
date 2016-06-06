@@ -58,9 +58,9 @@ namespace L2dotNET.GameService.Tables
             ItemTable itable = ItemTable.Instance;
             {
                 XElement xml = XElement.Parse(File.ReadAllText(@"scripts\buylists.xml"));
-                foreach (var shops in xml.Elements("shops"))
+                foreach (XElement shops in xml.Elements("shops"))
                 {
-                    foreach (var shopp in shops.Elements("shop"))
+                    foreach (XElement shopp in shops.Elements("shop"))
                     {
                         ND_shop shop = new ND_shop();
                         XElement npcElement = shopp.Element("npc");
@@ -70,7 +70,7 @@ namespace L2dotNET.GameService.Tables
                         if (modElement != null)
                             shop.mod = double.Parse(modElement.Value);
 
-                        foreach (var selllist in shopp.Elements("selllist"))
+                        foreach (XElement selllist in shopp.Elements("selllist"))
                         {
                             ND_shopList slist = new ND_shopList();
                             slist.id = short.Parse(selllist.Attribute("id").Value);

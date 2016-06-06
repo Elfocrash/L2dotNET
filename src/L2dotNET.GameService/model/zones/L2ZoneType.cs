@@ -117,7 +117,7 @@ namespace L2dotNET.GameService.Model.Zones
 
             foreach (L2Character character in _characterList)
             {
-                if (character != null && character is L2Player)
+                if (character is L2Player)
                     character.sendPacket(packet);
             }
         }

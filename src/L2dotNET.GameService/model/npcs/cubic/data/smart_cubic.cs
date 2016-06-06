@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Linq;
 using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Model.Skills;
 
 namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
 {
@@ -82,12 +82,10 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         private int action3(L2Player owner)
         {
             byte n = 0;
-            foreach (AbnormalEffect e in owner._effects)
-                if (e.skill.debuff == 1)
-                {
-                    n = 1;
-                    break;
-                }
+            if (owner._effects.Any(e => e.skill.debuff == 1))
+            {
+                n = 1;
+            }
 
             if (n == 1)
             {

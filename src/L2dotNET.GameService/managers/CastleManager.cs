@@ -22,10 +22,7 @@ namespace L2dotNET.GameService.Managers
 
         public Castle get(int id)
         {
-            if (castles.ContainsKey(id))
-                return castles[id];
-            else
-                return null;
+            return castles.ContainsKey(id) ? castles[id] : null;
         }
     }
 }

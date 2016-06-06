@@ -43,7 +43,8 @@ namespace L2dotNET.GameService.Tables
         {
             XmlDocument doc = new XmlDocument();
             string[] xmlFilesArray = Directory.GetFiles(@"data\xml\classes\");
-            foreach (string i in xmlFilesArray) {
+            foreach (string i in xmlFilesArray)
+            {
                 doc.Load(i);
                 if (doc.DocumentElement != null)
                 {

@@ -33,7 +33,8 @@
             writeC(0xfe);
             writeH(0x5f);
             writeD(_defaultActionList.Length);
-            foreach (int i in _defaultActionList) {
+            foreach (int i in _defaultActionList)
+            {
                 writeD(i);
             }
         }

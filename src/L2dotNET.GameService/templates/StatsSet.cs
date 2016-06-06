@@ -71,13 +71,11 @@ namespace L2dotNET.GameService.Templates
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
-                var value = base[key].ToString();
+                string value = base[key].ToString();
                 bool toReturn;
-                if (bool.TryParse(value, out toReturn))
-                    return toReturn;
+                return bool.TryParse(value, out toReturn) ? toReturn : defaultValue;
                 // else
                 // log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(bool).FullName }'! The function will return the 'defaultValue' parameter.");
-                return defaultValue;
             }
             else
             {
@@ -93,13 +91,11 @@ namespace L2dotNET.GameService.Templates
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
-                var value = base[key].ToString();
+                string value = base[key].ToString();
                 byte toReturn;
-                if (byte.TryParse(value, out toReturn))
-                    return toReturn;
+                return byte.TryParse(value, out toReturn) ? toReturn : defaultValue;
                 //else
                 //     log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(byte).FullName }'! The function will return the 'defaultValue' parameter.");
-                return defaultValue;
             }
             else
             {
@@ -139,13 +135,11 @@ namespace L2dotNET.GameService.Templates
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
-                var value = base[key].ToString();
+                string value = base[key].ToString();
                 int toReturn;
-                if (int.TryParse(value, out toReturn))
-                    return toReturn;
+                return int.TryParse(value, out toReturn) ? toReturn : defaultValue;
                 //else
                 // log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(int).FullName }'! The function return the 'defaultValue' parameter.");
-                return defaultValue;
             }
             else
             {
@@ -161,13 +155,11 @@ namespace L2dotNET.GameService.Templates
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
-                var value = base[key].ToString();
+                string value = base[key].ToString();
                 float toReturn;
-                if (float.TryParse(value, out toReturn))
-                    return toReturn;
+                return float.TryParse(value, out toReturn) ? toReturn : defaultValue;
                 // else
                 //   log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(float).FullName }'! The function return the 'defaultValue' parameter.");
-                return defaultValue;
             }
             else
             {
@@ -183,13 +175,11 @@ namespace L2dotNET.GameService.Templates
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
-                var value = base[key].ToString();
+                string value = base[key].ToString();
                 double toReturn;
-                if (double.TryParse(value, out toReturn))
-                    return toReturn;
+                return double.TryParse(value, out toReturn) ? toReturn : defaultValue;
                 //else
                 //    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(double).FullName }'! The function will return the 'defaultValue' parameter.");
-                return defaultValue;
             }
             else
             {
@@ -205,7 +195,7 @@ namespace L2dotNET.GameService.Templates
             //check if the dictionary contains the key
             if (base.ContainsKey(key))
             {
-                var value = base[key].ToString();
+                string value = base[key].ToString();
                 return value;
             }
             else
@@ -241,13 +231,7 @@ namespace L2dotNET.GameService.Templates
 
                     if (Enum.TryParse<T>(value, out result))
                     {
-                        if (Enum.IsDefined(typeof(T), result)) //checks if enum element exists
-                            return result; //if it returned true, returns converted value
-                        else
-                        {
-                            //  log.Error($"Element '{ value }' was not found at the enum '{ typeof(T).FullName }'! The function will return the first enum element.");
-                            return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first element from enum. Default value is always the enum with "0" value, but not every enum has it.
-                        }
+                        return Enum.IsDefined(typeof(T), result) ? result : Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault();
                     }
                     else
                     {

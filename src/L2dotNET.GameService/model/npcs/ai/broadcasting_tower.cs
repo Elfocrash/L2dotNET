@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 
@@ -74,16 +75,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
         private void observeIt(L2Player player, L2Npc npc, int reply)
         {
-            int[] dx = null;
-
-            foreach (int[] d in data)
-            {
-                if (d[1] == reply)
-                {
-                    dx = d;
-                    break;
-                }
-            }
+            int[] dx = data.FirstOrDefault(d => d[1] == reply);
 
             if (dx != null && player.getAdena() < dx[2])
             {

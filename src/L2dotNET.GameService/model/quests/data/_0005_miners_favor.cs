@@ -68,7 +68,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             }
             else if (cond == 1 && !player.hasItem(bolters_list))
             {
-                switch (npcId) {
+                switch (npcId)
+                {
                     case trader_chali:
                         if (!player.hasItem(boomboom_powder))
                         {

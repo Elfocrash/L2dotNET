@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using log4net;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Structures;
@@ -406,17 +407,7 @@ namespace L2dotNET.GameService.Model.Communities
 
         public List<ClanMember> getClanMembers(e_ClanType type, int myself)
         {
-            List<ClanMember> mems = new List<ClanMember>();
-            foreach (ClanMember cm in members)
-                if (cm.ClanType == (short)type)
-                {
-                    if (myself != 0 && myself == cm.ObjID)
-                        continue;
-
-                    mems.Add(cm);
-                }
-
-            return mems;
+            return members.Where(cm => cm.ClanType == (short)type && (myself == 0 || myself != cm.ObjID)).ToList();
         }
 
         public List<e_ClanSub> getAllSubs()

@@ -44,10 +44,7 @@ namespace L2dotNET.GameService.AI.Template
                 return "dialog.null";
             else
             {
-                if (dialog.ContainsKey(fn))
-                    return dialog[fn];
-                else
-                    return "dialog.not.found";
+                return dialog.ContainsKey(fn) ? dialog[fn] : "dialog.not.found";
             }
         }
 

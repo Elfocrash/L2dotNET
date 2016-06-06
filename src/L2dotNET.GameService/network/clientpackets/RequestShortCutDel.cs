@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using System.Linq;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 
 namespace L2dotNET.GameService.Network.Clientpackets
@@ -24,15 +25,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            L2Shortcut scx = null;
-            foreach (L2Shortcut sc in player._shortcuts)
-            {
-                if (sc.Slot == _slot && sc.Page == _page)
-                {
-                    scx = sc;
-                    break;
-                }
-            }
+            L2Shortcut scx = player._shortcuts.FirstOrDefault(sc => sc.Slot == _slot && sc.Page == _page);
 
             if (scx == null)
             {

@@ -147,10 +147,7 @@ namespace L2dotNET.Utility.Geometry
 
             // Get delta and check if the lines are parallel
             float delta = A1 * B2 - A2 * B1;
-            if (delta == 0)
-                return true;
-
-            return false;
+            return delta == 0;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Timers;
 using L2dotNET.GameService.Enums;
 using L2dotNET.GameService.Model.Items;
@@ -369,15 +370,7 @@ namespace L2dotNET.GameService.World
 
         public void stopEffect(TSkill skill, L2Character caster)
         {
-            AbnormalEffect ex = null;
-            foreach (AbnormalEffect e in _effects)
-            {
-                if (e.id == skill.skill_id)
-                {
-                    ex = e;
-                    break;
-                }
-            }
+            AbnormalEffect ex = _effects.FirstOrDefault(e => e.id == skill.skill_id);
 
             if (ex != null)
             {
@@ -1350,10 +1343,7 @@ namespace L2dotNET.GameService.World
 
         public virtual bool isCastingNow()
         {
-            if (castTime == null)
-                return false;
-
-            return castTime.Enabled;
+            return castTime != null && castTime.Enabled;
         }
 
         public virtual void abortCast()
@@ -1424,13 +1414,7 @@ namespace L2dotNET.GameService.World
 
             if (skill.effects.Count > 0)
             {
-                bool fail = false;
-                foreach (TEffect ef in skill.effects)
-                    if (!ef.canUse(this))
-                    {
-                        fail = true;
-                        break;
-                    }
+                bool fail = skill.effects.Any(ef => !ef.canUse(this));
 
                 if (fail)
                     return 7;
@@ -1557,10 +1541,7 @@ namespace L2dotNET.GameService.World
 
         public bool isMoving()
         {
-            if (updatePositionTime != null)
-                return updatePositionTime.Enabled;
-
-            return false;
+            return updatePositionTime != null && updatePositionTime.Enabled;
         }
 
         public void MoveTo(int x, int y, int z)
@@ -1692,10 +1673,7 @@ namespace L2dotNET.GameService.World
 
         public virtual bool isAttacking()
         {
-            if (attack_ToEnd != null)
-                return attack_ToEnd.Enabled;
-
-            return false;
+            return attack_ToEnd != null && attack_ToEnd.Enabled;
         }
 
         public virtual int ClanId
@@ -1746,7 +1724,8 @@ namespace L2dotNET.GameService.World
         public void Mute(int type, long hashId, bool start)
         {
             List<long> list = null;
-            switch (type) {
+            switch (type)
+            {
                 case 0:
                     if (Muted0 == null)
                         Muted0 = new List<long>();

@@ -26,10 +26,7 @@ namespace L2dotNET.GameService.Model.Communities
 
         public int OnlineID()
         {
-            if (online == 0)
-                return 0;
-
-            return ObjID;
+            return online == 0 ? 0 : ObjID;
         }
     }
 }

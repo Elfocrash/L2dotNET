@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Quests;
@@ -77,30 +78,21 @@ namespace L2dotNET.GameService.Model.Inventory
         {
             int visualId = _paperdollVisual[slot];
 
-            if (visualId > 0)
-                return visualId;
-
-            return _paperdoll[slot][PDOLL_ID];
+            return visualId > 0 ? visualId : _paperdoll[slot][PDOLL_ID];
         }
 
         public int getPaperdollObjectId(int slot)
         {
             int visualId = _paperdollVisual[slot];
 
-            if (visualId > 0)
-                return visualId;
-
-            return _paperdoll[slot][PDOLL_OBJID];
+            return visualId > 0 ? visualId : _paperdoll[slot][PDOLL_OBJID];
         }
 
         public int getPaperdollAugmentId(int slot)
         {
             int visualId = _paperdollVisual[slot];
 
-            if (visualId > 0)
-                return 0;
-
-            return _paperdoll[slot][PDOLL_AUGMENT];
+            return visualId > 0 ? 0 : _paperdoll[slot][PDOLL_AUGMENT];
         }
 
         public int getWeaponEnchanment()
@@ -125,12 +117,7 @@ namespace L2dotNET.GameService.Model.Inventory
         {
             int objId = _paperdoll[EQUIPITEM_RHand][PDOLL_OBJID];
 
-            if (objId > 0)
-            {
-                return getByObject(objId);
-            }
-
-            return null;
+            return objId > 0 ? getByObject(objId) : null;
         }
 
         public int getWeaponAugmentation()
@@ -693,15 +680,7 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public L2Item getItemById(int id)
         {
-            foreach (L2Item item in Items.Values)
-            {
-                if (item.Template.ItemID == id)
-                {
-                    return item;
-                }
-            }
-
-            return null;
+            return Items.Values.FirstOrDefault(item => item.Template.ItemID == id);
         }
 
         public bool hasAllOfThis(int[] px)
@@ -1016,13 +995,7 @@ namespace L2dotNET.GameService.Model.Inventory
                 {
                     if (item.ObjID == itemd[0])
                     {
-                        bool ex = false;
-                        foreach (L2Item itp in Items.Values)
-                            if (itp.Template.ItemID == item.Template.ItemID)
-                            {
-                                ex = true;
-                                break;
-                            }
+                        bool ex = Items.Values.Any(itp => itp.Template.ItemID == item.Template.ItemID);
 
                         if (item.Template.isStackable())
                         {

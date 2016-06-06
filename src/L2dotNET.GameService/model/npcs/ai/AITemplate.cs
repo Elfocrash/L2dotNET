@@ -42,10 +42,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
         public string getValueString(string p)
         {
-            if (parameters.ContainsKey(p))
-                return parameters[p];
-            else
-                return null;
+            return parameters.ContainsKey(p) ? parameters[p] : null;
         }
 
         public string fnLowLevel;

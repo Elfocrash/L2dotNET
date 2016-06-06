@@ -22,7 +22,8 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         public override void TalkedReply(L2Player talker, int ask, int reply)
         {
-            switch (ask) {
+            switch (ask)
+            {
                 case -1:
                     switch (reply)
                     {

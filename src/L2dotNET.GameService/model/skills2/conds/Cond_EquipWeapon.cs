@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 
@@ -20,9 +21,7 @@ namespace L2dotNET.GameService.Model.Skills2.Conds
 
             if (item != null)
             {
-                foreach (string mask in allowed)
-                    if (mask.Equals(item.Template.WeaponType.ToString()))
-                        return true;
+                return allowed.Any(mask => mask.Equals(item.Template.WeaponType.ToString()));
             }
 
             return false;

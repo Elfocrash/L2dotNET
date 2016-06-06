@@ -75,7 +75,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            switch (npcId) {
+            switch (npcId)
+            {
                 case rapunzel:
                     if (cond == 1)
                         htmltext = "rapunzel_q0006_0105.htm";

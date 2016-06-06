@@ -73,18 +73,12 @@ namespace L2dotNET.GameService.Model.Playable
 
         public byte getPvPStatus()
         {
-            if (Owner == null)
-                return 0;
-
-            return Owner.PvPStatus;
+            return Owner == null ? (byte)0 : Owner.PvPStatus;
         }
 
         public int getKarma()
         {
-            if (Owner == null)
-                return 0;
-
-            return Owner.Karma;
+            return Owner == null ? 0 : Owner.Karma;
         }
 
         public virtual long getExpToLevelUp()

@@ -68,14 +68,14 @@ namespace L2dotNET.GameService.Model.Items
 
             if (ex != null)
             {
-                foreach (var m in ex.Elements())
+                foreach (XElement m in ex.Elements())
                 {
                     if (m.Name == "capsule")
                     {
                         CapsuleItem caps = new CapsuleItem();
                         caps.id = Convert.ToInt32(m.Attribute("id").Value);
 
-                        foreach (var stp in m.Elements())
+                        foreach (XElement stp in m.Elements())
                         {
                             switch (stp.Name.LocalName)
                             {

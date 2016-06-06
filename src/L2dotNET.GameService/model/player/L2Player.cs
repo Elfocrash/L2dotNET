@@ -499,10 +499,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public TSkill getSkill(int _magicId)
         {
-            if (_skills.ContainsKey(_magicId))
-                return _skills[_magicId];
-
-            return null;
+            return _skills.ContainsKey(_magicId) ? _skills[_magicId] : null;
         }
 
         public override bool isCastingNow()
@@ -1135,25 +1132,25 @@ namespace L2dotNET.GameService.Model.Player
 
         public L2Item[] getAllNonQuestItems()
         {
-            var sort = from item in Inventory.Items.Values
-                       where item.Template.Type != ItemTemplate.L2ItemType.questitem
-                       select item;
+            IEnumerable<L2Item> sort = from item in Inventory.Items.Values
+                                       where item.Template.Type != ItemTemplate.L2ItemType.questitem
+                                       select item;
             return sort.ToArray();
         }
 
         public L2Item[] getAllWeaponArmorNonQuestItems()
         {
-            var sort = from item in Inventory.Items.Values
-                       where item.Template.Type != ItemTemplate.L2ItemType.questitem && (item.Template.Type == ItemTemplate.L2ItemType.armor || item.Template.Type == ItemTemplate.L2ItemType.weapon)
-                       select item;
+            IEnumerable<L2Item> sort = from item in Inventory.Items.Values
+                                       where item.Template.Type != ItemTemplate.L2ItemType.questitem && (item.Template.Type == ItemTemplate.L2ItemType.armor || item.Template.Type == ItemTemplate.L2ItemType.weapon)
+                                       select item;
             return sort.ToArray();
         }
 
         public L2Item[] getAllQuestItems()
         {
-            var sort = from item in Inventory.Items.Values
-                       where item.Template.Type == ItemTemplate.L2ItemType.questitem
-                       select item;
+            IEnumerable<L2Item> sort = from item in Inventory.Items.Values
+                                       where item.Template.Type == ItemTemplate.L2ItemType.questitem
+                                       select item;
             return sort.ToArray();
         }
 
@@ -1310,10 +1307,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public int getClanCrestLargeId()
         {
-            if (Clan == null)
-                return 0;
-
-            return Clan.LargeCrestID;
+            return Clan == null ? 0 : Clan.LargeCrestID;
         }
 
         public List<L2Shortcut> _shortcuts = new List<L2Shortcut>();
@@ -2629,13 +2623,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public int VehicleId
         {
-            get
-            {
-                if (Boat != null)
-                    return Boat.ObjID;
-
-                return 0;
-            }
+            get { return Boat != null ? Boat.ObjID : 0; }
         }
 
         public void Revive(double percent)
@@ -2714,13 +2702,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public byte ClanLevel
         {
-            get
-            {
-                if (Clan == null)
-                    return 0;
-
-                return Clan.Level;
-            }
+            get { return Clan == null ? (byte)0 : Clan.Level; }
         }
 
         public void broadcastSkillUse(int skillId)
@@ -2742,10 +2724,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public bool HavePledgePower(int bit)
         {
-            if (Clan == null)
-                return false;
-
-            return Clan.hasRights(this, bit);
+            return Clan != null && Clan.hasRights(this, bit);
         }
 
         public override L2Item getWeaponItem()

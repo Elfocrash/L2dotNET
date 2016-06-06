@@ -361,10 +361,7 @@ namespace L2dotNET.GameService.Model.Items
 
         private string LimitedHourStr()
         {
-            if (!LifeTimeEndEnabled)
-                return "-1";
-
-            return LifeTimeEndTime.ToString("yyyy-MM-dd HH-mm-ss");
+            return !LifeTimeEndEnabled ? "-1" : LifeTimeEndTime.ToString("yyyy-MM-dd HH-mm-ss");
         }
 
         public void sql_insert(int id)

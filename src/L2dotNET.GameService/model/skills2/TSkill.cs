@@ -138,7 +138,7 @@ namespace L2dotNET.GameService.Model.Skills2
                             break;
                         case TSkillTarget.unlockable:
                         {
-                            if (actor.CurrentTarget != null && actor.CurrentTarget is L2Door)
+                            if (actor.CurrentTarget is L2Door)
                                 targets.Add(actor.CurrentTarget.ObjID, actor.CurrentTarget);
                         }
                             break;
@@ -195,7 +195,7 @@ namespace L2dotNET.GameService.Model.Skills2
                             break;
                         case TSkillTarget.unlockable:
                         {
-                            if (actor.CurrentTarget != null && actor.CurrentTarget is L2Door)
+                            if (actor.CurrentTarget is L2Door)
                                 target = actor.CurrentTarget;
                         }
                             break;

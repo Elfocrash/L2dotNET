@@ -44,7 +44,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            switch (npcId) {
+            switch (npcId)
+            {
                 case trader_vladimir:
                     if (cond != 0)
                         htmltext = "trader_vladimir_q0019_0105.htm";

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using log4net;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
@@ -116,66 +117,54 @@ namespace L2dotNET.GameService.Tables
                     case ItemTemplate.L2ItemBodypart.legs:
                     {
                         if (legs != null)
-                            foreach (int id in legs)
-                                if (id == item.Template.ItemID)
-                                {
-                                    set1sum++;
-                                    if (item.Enchant >= 6)
-                                        set3sum++;
-                                    break;
-                                }
+                            if (legs.Any(id => id == item.Template.ItemID))
+                            {
+                                set1sum++;
+                                if (item.Enchant >= 6)
+                                    set3sum++;
+                            }
                     }
                         break;
                     case ItemTemplate.L2ItemBodypart.head:
                     {
                         if (helms != null)
-                            foreach (int id in helms)
-                                if (id == item.Template.ItemID)
-                                {
-                                    set1sum++;
-                                    if (item.Enchant >= 6)
-                                        set3sum++;
-                                    break;
-                                }
+                            if (helms.Any(id => id == item.Template.ItemID))
+                            {
+                                set1sum++;
+                                if (item.Enchant >= 6)
+                                    set3sum++;
+                            }
                     }
                         break;
                     case ItemTemplate.L2ItemBodypart.gloves:
                     {
                         if (gloves != null)
-                            foreach (int id in gloves)
-                                if (id == item.Template.ItemID)
-                                {
-                                    set1sum++;
-                                    if (item.Enchant >= 6)
-                                        set3sum++;
-                                    break;
-                                }
+                            if (gloves.Any(id => id == item.Template.ItemID))
+                            {
+                                set1sum++;
+                                if (item.Enchant >= 6)
+                                    set3sum++;
+                            }
                     }
                         break;
                     case ItemTemplate.L2ItemBodypart.feet:
                     {
                         if (boots != null)
-                            foreach (int id in boots)
-                                if (id == item.Template.ItemID)
-                                {
-                                    set1sum++;
-                                    if (item.Enchant >= 6)
-                                        set3sum++;
-                                    break;
-                                }
+                            if (boots.Any(id => id == item.Template.ItemID))
+                            {
+                                set1sum++;
+                                if (item.Enchant >= 6)
+                                    set3sum++;
+                            }
                     }
                         break;
                     case ItemTemplate.L2ItemBodypart.lhand:
                     {
                         if (shields != null)
-                            foreach (int id in shields)
-                                if (id == item.Template.ItemID)
-                                {
-                                    set2sum = 1;
-                                    //   if (item.Enchant >= 6)
-                                    //      set3sum++;
-                                    break;
-                                }
+                            if (shields.Any(id => id == item.Template.ItemID))
+                            {
+                                set2sum = 1;
+                            }
                     }
                         break;
                 }

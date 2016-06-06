@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Timers;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
@@ -124,13 +125,7 @@ namespace L2dotNET.GameService.World
 
             foreach (L2WorldRegion reg in region.GetSurroundingRegions())
             {
-                foreach (L2Player obj in L2World.Instance.GetPlayers()) //reg.getObjects()
-                {
-                    if (obj == this)
-                        continue;
-
-                    result.Add(obj);
-                }
+                result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this));
             }
 
             return result;
@@ -354,10 +349,7 @@ namespace L2dotNET.GameService.World
             }
             else
             {
-                if (_isInsidePeaceZone)
-                    code = ExSetCompassZoneCode.PEACEZONE;
-                else
-                    code = ExSetCompassZoneCode.GENERALZONE; //обычн зона
+                code = _isInsidePeaceZone ? ExSetCompassZoneCode.PEACEZONE : ExSetCompassZoneCode.GENERALZONE;
             }
 
             if (code != 0)
@@ -431,10 +423,7 @@ namespace L2dotNET.GameService.World
 
         public bool isInPeace()
         {
-            if (_isInsidePvpZone)
-                return false;
-
-            return _isInsidePeaceZone;
+            return !_isInsidePvpZone && _isInsidePeaceZone;
         }
 
         public bool isInWater()
@@ -451,14 +440,10 @@ namespace L2dotNET.GameService.World
         {
             bool found = false,
                  old = _isInsidePeaceZone;
-            foreach (L2Zone z in _activeZones.Values)
+            if (_activeZones.Values.OfType<peace_zone>().Any())
             {
-                if (z is peace_zone)
-                {
-                    _isInsidePeaceZone = true;
-                    found = true;
-                    break;
-                }
+                _isInsidePeaceZone = true;
+                found = true;
             }
 
             if (!found)
@@ -486,14 +471,10 @@ namespace L2dotNET.GameService.World
                  old = _isInsidePvpZone;
             if (!ForceSetPvp)
             {
-                foreach (L2Zone z in _activeZones.Values)
+                if (_activeZones.Values.OfType<battle_zone>().Any())
                 {
-                    if (z is battle_zone)
-                    {
-                        _isInsidePvpZone = true;
-                        found = true;
-                        break;
-                    }
+                    _isInsidePvpZone = true;
+                    found = true;
                 }
             }
             else

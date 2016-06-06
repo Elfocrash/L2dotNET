@@ -45,7 +45,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            switch (npcId) {
+            switch (npcId)
+            {
                 case warehouse_chief_donal:
                     switch (cond)
                     {

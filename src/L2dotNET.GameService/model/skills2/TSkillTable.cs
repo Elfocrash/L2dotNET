@@ -45,18 +45,12 @@ namespace L2dotNET.GameService.Model.Skills2
         public TSkill Get(int id, int lvl)
         {
             long hash = id * 65536 + lvl;
-            if (_skills.ContainsKey(hash))
-                return _skills[hash];
-
-            return null;
+            return _skills.ContainsKey(hash) ? _skills[hash] : null;
         }
 
         public TSkill Get(int skillId)
         {
-            if (_skills.ContainsKey(skillId))
-                return _skills[skillId];
-
-            return null;
+            return _skills.ContainsKey(skillId) ? _skills[skillId] : null;
         }
 
         public readonly SortedList<long, TSkillEnchantInfo> enchantInfo = new SortedList<long, TSkillEnchantInfo>();
@@ -426,7 +420,7 @@ namespace L2dotNET.GameService.Model.Skills2
                 if (len > 0)
                 {
                     list.include = dlc.readS(len);
-                    var s = AcquireSkills[list.include].skills;
+                    List<TAcquireSkill> s = AcquireSkills[list.include].skills;
                     cntTotal += s.Count;
                     list.skills.AddRange(s);
                 }

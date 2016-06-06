@@ -45,10 +45,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             if (_registeredAis.ContainsKey(id))
             {
                 AITemplate t = _registeredAis[id];
-                if (t.chatOvr)
-                    return t;
-                else
-                    return null;
+                return t.chatOvr ? t : null;
             }
 
             return null;
@@ -59,10 +56,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             if (_registeredAis.ContainsKey(id))
             {
                 AITemplate t = _registeredAis[id];
-                if (t.dialogOvr)
-                    return t;
-                else
-                    return null;
+                return t.dialogOvr ? t : null;
             }
 
             return null;

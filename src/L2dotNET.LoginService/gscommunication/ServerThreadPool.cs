@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using log4net;
@@ -50,7 +51,7 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             List<ServerModel> serverModels = serverService.GetServerList();
 
-            foreach (var curServ in serverModels)
+            foreach (ServerModel curServ in serverModels)
             {
                 L2Server server = new L2Server();
                 server.Id = (byte)curServ.Id;
@@ -64,11 +65,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public L2Server Get(short serverId)
         {
-            foreach (L2Server s in servers)
-                if (s.Id == serverId)
-                    return s;
-
-            return null;
+            return servers.FirstOrDefault(s => s.Id == serverId);
         }
 
         protected TcpListener listener;

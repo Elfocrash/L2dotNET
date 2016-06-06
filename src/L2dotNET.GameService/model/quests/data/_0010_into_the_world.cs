@@ -46,7 +46,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (reply == 1 && npcId == warehouse_chief_reed)
             {
                 int cond = player.getQuestCond(questId);
-                switch (cond) {
+                switch (cond)
+                {
                     case 1:
                         player.addItem(q_expensive_necklace, 1);
                         player.changeQuestStage(questId, 2);
@@ -79,7 +80,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            switch (npcId) {
+            switch (npcId)
+            {
                 case elder_balanki:
                     switch (cond)
                     {

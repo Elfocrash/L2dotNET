@@ -33,7 +33,8 @@ namespace L2dotNET.GameService.Commands.Admin
 
             string s = alias.Split(' ')[1];
 
-            switch (s) {
+            switch (s)
+            {
                 case "1":
                     admin.AbnormalBitMaskEvent = int.Parse(alias.Split(' ')[2]);
                     admin.updateAbnormalEventEffect();

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Quests;
@@ -25,13 +26,7 @@ namespace L2dotNET.GameService.Model.Inventory
                 {
                     if (item.ObjID == itemd[0])
                     {
-                        bool ex = false;
-                        foreach (L2Item itp in Items.Values)
-                            if (itp.Template.ItemID == item.Template.ItemID)
-                            {
-                                ex = true;
-                                break;
-                            }
+                        bool ex = Items.Values.Any(itp => itp.Template.ItemID == item.Template.ItemID);
 
                         if (item.Template.isStackable())
                         {
@@ -127,13 +122,7 @@ namespace L2dotNET.GameService.Model.Inventory
                 {
                     if (item.ObjID == itemd[0])
                     {
-                        bool ex = false;
-                        foreach (L2Item itp in player.getAllItems())
-                            if (itp.Template.ItemID == item.Template.ItemID)
-                            {
-                                ex = true;
-                                break;
-                            }
+                        bool ex = player.getAllItems().Any(itp => itp.Template.ItemID == item.Template.ItemID);
 
                         if (item.Template.isStackable())
                         {

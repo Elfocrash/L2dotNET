@@ -47,7 +47,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            switch (npcId) {
+            switch (npcId)
+            {
                 case dark_presbyter:
                     if (cond > 0 && cond < 5 && player.hasItem(q_blood_of_saint))
                         htmltext = "dark_presbyter_q0017_05.htm";

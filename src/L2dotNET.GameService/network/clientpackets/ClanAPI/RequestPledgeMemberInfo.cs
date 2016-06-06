@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Communities;
+﻿using System.Linq;
+using L2dotNET.GameService.Model.Communities;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 
@@ -32,15 +33,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
             L2Clan clan = player.Clan;
 
-            ClanMember m = null;
-            foreach (ClanMember cm in clan.getClanMembers())
-            {
-                if (cm.Name.Equals(_player))
-                {
-                    m = cm;
-                    break;
-                }
-            }
+            ClanMember m = clan.getClanMembers().FirstOrDefault(cm => cm.Name.Equals(_player));
 
             if (m == null)
             {
