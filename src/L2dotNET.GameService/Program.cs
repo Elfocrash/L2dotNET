@@ -19,7 +19,6 @@ namespace L2dotNET.GameService
         private static void SetConsoleConfigurations()
         {
             Console.Title = "L2dotNET GameServer";
-            Console.WindowWidth = (Console.LargestWindowWidth * 7 / 10);
         }
 
         //TODO: Temporary fix. Need a better workaround to fix the Culture conversion issues. (Note: parsing error when reading "." in Latin cultures from XML files)
