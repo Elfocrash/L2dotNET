@@ -239,9 +239,8 @@ namespace L2dotNET.Utility.Geometry
                 return false;
 
             // iterate over all concave points and check if one of them lies inside the given triangle
-            for (int i = 0; i < nonConvexPoints.Count; i++)
-            {
-                if (IsInside(A, B, C, nonConvexPoints[i]))
+            foreach (int[] i in nonConvexPoints) {
+                if (IsInside(A, B, C, i))
                     return false;
             }
 

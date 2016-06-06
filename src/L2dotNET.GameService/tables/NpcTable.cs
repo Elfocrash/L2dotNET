@@ -64,9 +64,8 @@ namespace L2dotNET.GameService.Tables
                 StatsSet set = new StatsSet();
                 StatsSet petSet = new StatsSet();
 
-                for (int i = 0; i < xmlFilesArray.Length; i++)
-                {
-                    doc.Load(xmlFilesArray[i]);
+                foreach (string i in xmlFilesArray) {
+                    doc.Load(i);
                     if (doc.DocumentElement != null)
                     {
                         XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/npc");
