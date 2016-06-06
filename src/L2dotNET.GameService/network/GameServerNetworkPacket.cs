@@ -14,9 +14,9 @@ namespace L2dotNET.GameService.Network
             stream.Write(value, 0, value.Length);
         }
 
-        protected void writeB(byte[] value, int Offset, int Length)
+        protected void writeB(byte[] value, int Offset, int length)
         {
-            stream.Write(value, Offset, Length);
+            stream.Write(value, Offset, length);
         }
 
         protected void writeD(uint value = 0)

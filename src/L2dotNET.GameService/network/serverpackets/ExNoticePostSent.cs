@@ -2,11 +2,11 @@
 {
     class ExNoticePostSent : GameServerNetworkPacket
     {
-        private int anim;
+        private readonly int anim;
 
         public ExNoticePostSent(int anim)
         {
-            anim = anim;
+            this.anim = anim;
         }
 
         protected internal override void write()

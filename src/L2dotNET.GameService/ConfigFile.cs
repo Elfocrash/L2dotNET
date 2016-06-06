@@ -23,7 +23,7 @@ namespace L2dotNET.GameService
             StreamReader reader = new StreamReader(File.FullName);
             while (!reader.EndOfStream)
             {
-                string line = reader.ReadLine();
+                string line = reader.ReadLine() ?? string.Empty;
                 if (line.Length == 0)
                     continue;
 

@@ -269,7 +269,7 @@ namespace L2dotNET.Network
         /// <summary>
         /// Reads array of <see cref="byte"/> values from packet buffer.
         /// </summary>
-        /// <param name="length">Length of array to read.</param>
+        /// <param name="length">length of array to read.</param>
         /// <returns>Array of <see cref="byte"/> values.</returns>
         public unsafe byte[] ReadBytesArray(int length)
         {
@@ -280,11 +280,11 @@ namespace L2dotNET.Network
             return dest;
         }
 
-        public byte[] ReadByteArrayAlt(int Length)
+        public byte[] ReadByteArrayAlt(int length)
         {
-            byte[] result = new byte[Length];
-            Array.Copy(this.GetBuffer(), m_Offset, result, 0, Length);
-            m_Offset += Length;
+            byte[] result = new byte[length];
+            Array.Copy(this.GetBuffer(), m_Offset, result, 0, length);
+            m_Offset += length;
             return result;
         }
 
@@ -375,7 +375,7 @@ namespace L2dotNET.Network
         /// <summary>
         /// Validates buffer capacity before writing into it.
         /// </summary>
-        /// <param name="nextValueLength">Length of next bytes sequence to write into buffer.</param>
+        /// <param name="nextValueLength">length of next bytes sequence to write into buffer.</param>
         private void ValidateBufferSize(int nextValueLength)
         {
             if (m_Offset + nextValueLength > m_Buffer.Length)

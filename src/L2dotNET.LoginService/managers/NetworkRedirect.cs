@@ -42,7 +42,7 @@ namespace L2dotNET.LoginService.Managers
             {
                 while (!reader.EndOfStream)
                 {
-                    string line = reader.ReadLine();
+                    string line = reader.ReadLine() ?? string.Empty;
                     if (line.Length == 0 || line.StartsWith("//"))
                         continue;
 

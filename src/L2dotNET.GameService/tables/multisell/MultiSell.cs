@@ -106,60 +106,63 @@ namespace L2dotNET.GameService.Tables.Multisell
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\multisell.xml"));
             XElement ex = xml.Element("list");
 
-            foreach (var m in ex.Elements())
+            if (ex != null)
             {
-                if (m.Name == "multisell")
+                foreach (var m in ex.Elements())
                 {
-                    MultiSellList mlist = new MultiSellList();
-                    mlist.id = Convert.ToInt32(m.Attribute("id").Value);
-                    mlist.dutyf = Convert.ToByte(m.Attribute("dutyf").Value);
-                    mlist.save = Convert.ToByte(m.Attribute("save").Value);
-                    mlist.all = Convert.ToByte(m.Attribute("all").Value);
-
-                    foreach (var stp in m.Elements())
+                    if (m.Name == "multisell")
                     {
-                        if (stp.Name == "entry")
+                        MultiSellList mlist = new MultiSellList();
+                        mlist.id = Convert.ToInt32(m.Attribute("id").Value);
+                        mlist.dutyf = Convert.ToByte(m.Attribute("dutyf").Value);
+                        mlist.save = Convert.ToByte(m.Attribute("save").Value);
+                        mlist.all = Convert.ToByte(m.Attribute("all").Value);
+
+                        foreach (var stp in m.Elements())
                         {
-                            MultiSellEntry entry = new MultiSellEntry();
-                            foreach (var its in stp.Elements())
+                            if (stp.Name == "entry")
                             {
-                                switch (its.Name.LocalName)
+                                MultiSellEntry entry = new MultiSellEntry();
+                                foreach (var its in stp.Elements())
                                 {
-                                    case "give":
+                                    switch (its.Name.LocalName)
                                     {
-                                        MultiSellItem item = new MultiSellItem();
-                                        item.id = Convert.ToInt32(its.Attribute("id").Value);
-                                        item.count = Convert.ToInt64(its.Attribute("count").Value);
-                                        if (item.id > 0)
+                                        case "give":
                                         {
-                                            item.template = ItemTable.Instance.GetItem(item.id);
-                                            if (!item.template.isStackable())
-                                                entry.Stackable = 0;
+                                            MultiSellItem item = new MultiSellItem();
+                                            item.id = Convert.ToInt32(its.Attribute("id").Value);
+                                            item.count = Convert.ToInt64(its.Attribute("count").Value);
+                                            if (item.id > 0)
+                                            {
+                                                item.template = ItemTable.Instance.GetItem(item.id);
+                                                if (!item.template.isStackable())
+                                                    entry.Stackable = 0;
+                                            }
+                                            entry.give.Add(item);
                                         }
-                                        entry.give.Add(item);
+                                            break;
+                                        case "take":
+                                        {
+                                            MultiSellItem item = new MultiSellItem();
+                                            item.id = Convert.ToInt32(its.Attribute("id").Value);
+                                            item.count = Convert.ToInt64(its.Attribute("count").Value);
+                                            if (item.id > 0)
+                                                item.template = ItemTable.Instance.GetItem(item.id);
+                                            entry.take.Add(item);
+                                        }
+                                            break;
+                                        case "duty":
+                                            entry.dutyCount = Convert.ToInt64(its.Attribute("count").Value);
+                                            break;
                                     }
-                                        break;
-                                    case "take":
-                                    {
-                                        MultiSellItem item = new MultiSellItem();
-                                        item.id = Convert.ToInt32(its.Attribute("id").Value);
-                                        item.count = Convert.ToInt64(its.Attribute("count").Value);
-                                        if (item.id > 0)
-                                            item.template = ItemTable.Instance.GetItem(item.id);
-                                        entry.take.Add(item);
-                                    }
-                                        break;
-                                    case "duty":
-                                        entry.dutyCount = Convert.ToInt64(its.Attribute("count").Value);
-                                        break;
                                 }
+
+                                mlist.container.Add(entry);
                             }
-
-                            mlist.container.Add(entry);
                         }
-                    }
 
-                    lists.Add(mlist.id, mlist);
+                        lists.Add(mlist.id, mlist);
+                    }
                 }
             }
 

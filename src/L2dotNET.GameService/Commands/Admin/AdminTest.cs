@@ -9,8 +9,8 @@ namespace L2dotNET.GameService.Commands.Admin
             Cmd = "test";
         }
 
-        private L2Player p = null;
-        private int spd = 1000;
+        //private L2Player p = null;
+        //private int spd = 1000;
 
         protected internal override void Use(L2Player admin, string alias)
         {
@@ -25,7 +25,7 @@ namespace L2dotNET.GameService.Commands.Admin
             //new System.Threading.Thread(loopme).Start();
         }
 
-        private bool lp = false;
+        //private bool lp = false;
 
         private void loopme() { }
     }

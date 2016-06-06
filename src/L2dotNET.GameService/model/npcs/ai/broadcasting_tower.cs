@@ -51,9 +51,9 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
                 ar.Add(d[0]);
             }
 
-            foreach (int id in ar)
+            foreach (int val in ar)
             {
-                text += "<a action=\"bypass -h menu_select?ask=-2&reply=" + id + "\">&$" + id + ";</a><br1>";
+                text += "<a action=\"bypass -h menu_select?ask=-2&reply=" + val + "\">&$" + val + ";</a><br1>";
             }
 
             player.ShowHtmPlain(text, npc);
@@ -85,22 +85,25 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
                 }
             }
 
-            if (player.getAdena() < dx[2])
+            if (dx != null && player.getAdena() < dx[2])
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                 player.sendActionFailed();
                 return;
             }
 
-            player.reduceAdena(dx[2], true, true);
+            if (dx != null)
+            {
+                player.reduceAdena(dx[2], true, true);
 
-            player.clearKnowns(true);
+                player.clearKnowns(true);
 
-            player._obsx = player.X;
-            player._obsy = player.Y;
-            player._obsz = player.Z;
+                player._obsx = player.X;
+                player._obsy = player.Y;
+                player._obsz = player.Z;
 
-            player.sendPacket(new ObservationMode(dx[3], dx[4], dx[5]));
+                player.sendPacket(new ObservationMode(dx[3], dx[4], dx[5]));
+            }
         }
 
         private void showGroup(L2Player player, L2Npc npc, int group)
@@ -114,9 +117,9 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
                     ar.Add(d);
             }
 
-            foreach (int[] id in ar)
+            foreach (int[] val in ar)
             {
-                text += "<a action=\"bypass -h menu_select?ask=-3&reply=" + id[1] + "\">&$" + id[1] + ";</a><br1>";
+                text += "<a action=\"bypass -h menu_select?ask=-3&reply=" + val[1] + "\">&$" + val[1] + ";</a><br1>";
             }
 
             player.ShowHtmPlain(text, npc);

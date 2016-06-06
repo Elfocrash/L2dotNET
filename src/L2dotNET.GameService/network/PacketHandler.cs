@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Network
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(PacketHandler));
 
-        private static int cnt;
+        //private static int cnt;
 
         public static void handlePacket(GameClient client, byte[] buff)
         {
@@ -342,7 +342,8 @@ namespace L2dotNET.GameService.Network
             }
             if (msg == null)
             {
-                log.Info($"{cninfo}, {cnt}");
+                log.Info($"{cninfo}");
+                //log.Info($"{cninfo}, {cnt}");
                 return;
             }
 

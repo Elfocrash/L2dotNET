@@ -1,4 +1,5 @@
 using System;
+using log4net;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.World;
 
@@ -6,6 +7,8 @@ namespace L2dotNET.GameService.Tables
 {
     public class L2Spawn
     {
+        private readonly ILog log = LogManager.GetLogger(typeof(L2Spawn));
+
         public int NpcId;
         public long Respawn;
         public System.Timers.Timer RespawnTimer;
@@ -61,10 +64,11 @@ namespace L2dotNET.GameService.Tables
                 {
                     sp = zone.getSpawnLocation();
                 }
-                catch (Exception asd)
+                catch (Exception e)
                 {
                     sp = new int[] { 0, 0, 0, 0 };
-                    //  throw asd;
+                    //  throw e;
+                    log.Error($"L2Spawn: {e.Message}");
                 }
 
             //obj = NpcTable.Instance.SpawnNpc(NpcId, sp[0], sp[1], sp[2], (zone == null) ? h : zone.rnd.Next(64000));

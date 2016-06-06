@@ -33,12 +33,12 @@ namespace L2dotNET.GameService.Model.Items
             this.id = id;
         }
 
-        public void addExchangeItem(int id, long count)
+        public void addExchangeItem(int itemId, long count)
         {
             if (ExchangeItems == null)
                 ExchangeItems = new SortedList<int, long>();
 
-            ExchangeItems.Add(id, count);
+            ExchangeItems.Add(itemId, count);
         }
 
         public override void UsePlayer(L2Player player, L2Item item)
@@ -56,8 +56,8 @@ namespace L2dotNET.GameService.Model.Items
             calcEffect(player);
 
             if (ExchangeItems != null)
-                foreach (int id in ExchangeItems.Keys)
-                    player.Inventory.addItem(id, ExchangeItems[id], true, true);
+                foreach (int val in ExchangeItems.Keys)
+                    player.Inventory.addItem(val, ExchangeItems[val], true, true);
 
             if (PetID != -1)
                 player.PetSummon(item, PetID);

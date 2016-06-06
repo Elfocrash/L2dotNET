@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Managers
         }
 
         public Dictionary<int, Castle> castles = new Dictionary<int, Castle>();
-        private string[] announcements;
+        //private string[] announcements;
 
         public CastleManager()
         {

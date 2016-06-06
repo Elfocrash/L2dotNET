@@ -1046,7 +1046,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NO_NEW_INVITATIONS_ACCEPTED = 485,
             ///<summary>The following user is not in your friends list.</summary>
             THE_USER_NOT_IN_FRIENDS_LIST = 486,
-            ///<summary>======<Friends List>======</summary>
+            ///<summary>======Friends List======</summary>
             FRIEND_LIST_HEADER = 487,
             ///<summary>$s1 (Currently: Online)</summary>
             S1_ONLINE = 488,
@@ -1054,7 +1054,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_OFFLINE = 489,
             ///<summary>========================</summary>
             FRIEND_LIST_FOOTER = 490,
-            ///<summary>=======<Alliance Information>=======</summary>
+            ///<summary>=======Alliance Information=======</summary>
             ALLIANCE_INFO_HEAD = 491,
             ///<summary>Alliance Name: $s1</summary>
             ALLIANCE_NAME_S1 = 492,
@@ -1064,7 +1064,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ALLIANCE_LEADER_S2_OF_S1 = 494,
             ///<summary>Affiliated clans: Total $s1 clan(s)</summary>
             ALLIANCE_CLAN_TOTAL_S1 = 495,
-            ///<summary>=====<Clan Information>=====</summary>
+            ///<summary>=====Clan Information=====</summary>
             CLAN_INFO_HEAD = 496,
             ///<summary>Clan Name: $s1</summary>
             CLAN_INFO_NAME_S1 = 497,
@@ -1282,7 +1282,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CONFUSING_SUCCEEDED = 611,
             ///<summary>The Spoil condition has been activated.</summary>
             SPOIL_SUCCESS = 612,
-            ///<summary>======<Ignore List>======</summary>
+            ///<summary>======Ignore List======</summary>
             BLOCK_LIST_HEADER = 613,
             ///<summary>$s1 : $s2</summary>
             S1_S2 = 614,
@@ -1406,7 +1406,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             SUBMITTED_A_BID = 678,
             ///<summary>You have canceled your bid.</summary>
             CANCELED_BID = 679,
-            /// You cannot participate in an auction.</summary>
+            ///<summary>You cannot participate in an auction.</summary>
             CANNOT_PARTICIPATE_IN_AUCTION = 680,
             ///<summary>The clan does not own a clan hall.</summary>
             // CLAN_HAS_NO_CLAN_HALL(681) // Doesn't exist in Hellbound anymore = 681,
@@ -1448,7 +1448,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NOT_ENOUGH_REQUIRED_ITEMS = 701,
             ///<summary>There are no GMs currently visible in the public list as they may be performing other functions at the moment.</summary>
             NO_GM_PROVIDING_SERVICE_NOW = 702,
-            ///<summary>======<GM List>======</summary>
+            ///<summary>======GM List======</summary>
             GM_LIST = 703,
             ///<summary>GM : $s1</summary>
             GM_S1 = 704,
@@ -1816,9 +1816,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             UP_TO_S1_RECIPES_CAN_REGISTER = 894,
             ///<summary>No recipes have been registered.</summary>
             NO_RECIPES_REGISTERED = 895,
-            /// Message:The ferry has arrived at Gludin Harbor.</summary>
+            ///<summary>Message:The ferry has arrived at Gludin Harbor.</summary>
             FERRY_AT_GLUDIN = 896,
-            /// Message:The ferry will leave for Talking Island Harbor after anchoring for ten minutes.</summary>
+            ///<summary>Message:The ferry will leave for Talking Island Harbor after anchoring for ten minutes.</summary>
             FERRY_LEAVE_TALKING = 897,
             ///<summary>Only characters of level 10 or above are authorized to make recommendations.</summary>
             ONLY_LEVEL_SUP_10_CAN_RECOMMEND = 898,
@@ -2084,7 +2084,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CRITICAL_HIT_BY_SUMMONED_MOB = 1028,
             ///<summary>Summoned monster uses $s1.</summary>
             SUMMONED_MOB_USES_S1 = 1029,
-            ///<summary><Party Information></summary>
+            ///<summary>Party Information</summary>
             PARTY_INFORMATION = 1030,
             ///<summary>Looting method: Finders keepers</summary>
             LOOTING_FINDERS_KEEPERS = 1031,
@@ -2148,7 +2148,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANT_REGISTER_NO_ABILITY_TO_CRAFT = 1061,
             ///<summary>Writing something new is possible after level 10.</summary>
             WRITING_SOMETHING_NEW_POSSIBLE_AFTER_LEVEL_10 = 1062,
-            /// if you become trapped or unable to move, please use the '/unstuck' command.</summary>
+            ///<summary>if you become trapped or unable to move, please use the '/unstuck' command.</summary>
             PETITION_UNAVAILABLE = 1063,
             ///<summary>The equipment, +$s1 $s2, has been removed.</summary>
             EQUIPMENT_S1_S2_REMOVED = 1064,
@@ -2378,11 +2378,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             QUEST_EVENT_PERIOD = 1176,
             ///<summary>This is the seal validation period.</summary>
             VALIDATION_PERIOD = 1177,
-            /// <Seal of Avarice description></summary>
+            ///<summary>Seal of Avarice description</summary>
             AVARICE_DESCRIPTION = 1178,
-            /// <Seal of Gnosis description></summary>
+            ///<summary>Seal of Gnosis description</summary>
             GNOSIS_DESCRIPTION = 1179,
-            /// <Seal of Strife description></summary>
+            ///<summary>Seal of Strife description</summary>
             STRIFE_DESCRIPTION = 1180,
             ///<summary>Do you really wish to change the title?</summary>
             CHANGE_TITLE_CONFIRM = 1181,
@@ -2420,13 +2420,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
             SUMMONING_SERVITOR_COSTS_S2_S1 = 1197,
             ///<summary>The item has been successfully crystallized.</summary>
             CRYSTALLIZATION_SUCCESSFUL = 1198,
-            ///<summary>=======<Clan War Target>=======</summary>
+            ///<summary>=======Clan War Target=======</summary>
             CLAN_WAR_HEADER = 1199,
-            /// Message:($s1 ($s2 Alliance)</summary>
+            ///<summary>Message:($s1 ($s2 Alliance)</summary>
             S1_S2_ALLIANCE = 1200,
             ///<summary>Please select the quest you wish to abort.</summary>
             SELECT_QUEST_TO_ABOR = 1201,
-            /// Message:($s1 (No alliance exists)</summary>
+            ///<summary>Message:($s1 (No alliance exists)</summary>
             S1_NO_ALLI_EXISTS = 1202,
             ///<summary>There is no clan war in progress.</summary>
             NO_WAR_IN_PROGRESS = 1203,
@@ -2524,7 +2524,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             YOU_MAY_ONLY_RIDE_WYVERN_WHILE_RIDING_STRIDER = 1249,
             ///<summary>Do you really want to surrender? If you surrender during an alliance war, your Exp will drop the same as if you were to die once.</summary>
             SURRENDER_ALLY_WAR_CONFIRM = 1250,
-            /// you will not be able to accept another clan to your alliance for one day.</summary>
+            ///<summary>you will not be able to accept another clan to your alliance for one day.</summary>
             DISMISS_ALLY_CONFIRM = 1251,
             ///<summary>Are you sure you want to surrender? Exp penalty will be the same as death.</summary>
             SURRENDER_CONFIRM1 = 1252,
@@ -2540,7 +2540,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             PET_SKILL_NOT_AS_MACRO = 1257,
             ///<summary>$s1 has been crystallized</summary>
             S1_CRYSTALLIZED = 1258,
-            ///<summary>=======<Alliance Target>=======</summary>
+            ///<summary>=======Alliance Target=======</summary>
             ALLIANCE_TARGET_HEADER = 1259,
             ///<summary>Seven Signs: Preparations have begun for the next quest event.</summary>
             PREPARATIONS_PERIOD_BEGUN = 1260,
@@ -2604,9 +2604,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             SEAL_OWNED_10_MORE_VOTED = 1289,
             ///<summary>Although the seal was not owned, since 35 percent or more people have voted.</summary>
             SEAL_NOT_OWNED_35_MORE_VOTED = 1290,
-            /// because less than 10 percent of people have voted.</summary>
+            ///<summary>because less than 10 percent of people have voted.</summary>
             SEAL_OWNED_10_LESS_VOTED = 1291,
-            /// and since less than 35 percent of people have voted.</summary>
+            ///<summary>and since less than 35 percent of people have voted.</summary>
             SEAL_NOT_OWNED_35_LESS_VOTED = 1292,
             ///<summary>If current trends continue, it will end in a tie.</summary>
             COMPETITION_WILL_TIE = 1293,
@@ -2630,7 +2630,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CAN_BE_USED_BY_DUSK = 1302,
             ///<summary>This may only be used during the quest event period.</summary>
             CAN_BE_USED_DURING_QUEST_EVENT_PERIOD = 1303,
-            /// except for an Alliance with a castle owning clan.</summary>
+            ///<summary>except for an Alliance with a castle owning clan.</summary>
             STRIFE_CANCELED_DEFENSIVE_REGISTRATION = 1304,
             ///<summary>Seal Stones may only be transferred during the quest event period.</summary>
             SEAL_STONES_ONLY_WHILE_QUEST = 1305,
@@ -2640,7 +2640,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             SETTLE_ACCOUNT_ONLY_IN_SEAL_VALIDATION = 1307,
             ///<summary>Congratulations - You've completed a class transfer!</summary>
             CLASS_TRANSFER = 1308,
-            /// Message:To use this option, you must have the lastest version of MSN Messenger installed on your computer.</summary>
+            ///<summary>Message:To use this option, you must have the lastest version of MSN Messenger installed on your computer.</summary>
             LATEST_MSN_REQUIRED = 1309,
             ///<summary>For full functionality, the latest version of MSN Messenger must be installed on your computer.</summary>
             LATEST_MSN_RECOMMENDED = 1310,
@@ -2746,7 +2746,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             GOT_MESSAGE_FROM_S1 = 1360,
             ///<summary>Due to a system error, you have been logged out of the .NET Messenger Service.</summary>
             LOGGED_OUT_DUE_TO_ERROR = 1361,
-            /// click the button next to My Status and then use the Options menu.</summary>
+            ///<summary>click the button next to My Status and then use the Options menu.</summary>
             SELECT_CONTACT_TO_DELETE = 1362,
             ///<summary>Your request to participate in the alliance war has been denied.</summary>
             YOUR_REQUEST_ALLIANCE_WAR_DENIED = 1363,
@@ -3162,9 +3162,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CLAN_WAR_AGAINST_A_ALLIED_CLAN_NOT_WORK = 1569,
             ///<summary>A declaration of war against more than 30 Clans can't be made at the same time</summary>
             TOO_MANY_CLAN_WARS = 1570,
-            ///<summary>======<Clans You've Declared War On>======</summary>
+            ///<summary>======Clans You've Declared War On======</summary>
             CLANS_YOU_DECLARED_WAR_ON = 1571,
-            ///<summary>======<Clans That Have Declared War On You>======</summary>
+            ///<summary>======Clans That Have Declared War On You======</summary>
             CLANS_THAT_HAVE_DECLARED_WAR_ON_YOU = 1572,
             ///<summary>There are no clans that your clan has declared war against.</summary>
             YOU_ARENT_IN_CLAN_WARS = 1573,
@@ -3200,7 +3200,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             COMMAND_CHANNEL_ONLY_AT_LEAST_5_PARTIES = 1588,
             ///<summary>Command Channel authority has been transferred to $s1.</summary>
             COMMAND_CHANNEL_LEADER_NOW_S1 = 1589,
-            ///<summary>===<Guild Info (Total Parties: $s1)>===</summary>
+            ///<summary>===Guild Info (Total Parties: $s1)===</summary>
             GUILD_INFO_HEADER = 1590,
             ///<summary>No user has been invited to the Command Channel.</summary>
             NO_USER_INVITED_TO_COMMAND_CHANNEL = 1591,
@@ -3244,7 +3244,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANNOT_DECLARE_AGAINST_OWN_CLAN = 1610,
             ///<summary>Leader: $s1</summary>
             PARTY_LEADER_S1 = 1611,
-            ///<summary>=====<War List>=====</summary>
+            ///<summary>=====War List=====</summary>
             WAR_LIST = 1612,
             ///<summary>There is no clan listed on War List.</summary>
             NO_CLAN_ON_WAR_LIST = 1613,
@@ -3302,7 +3302,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             OLYMPIAD_PERIOD_S1_HAS_STARTED = 1639,
             ///<summary>Period $s1 of the Grand Olympiad Games has now ended.</summary>
             OLYMPIAD_PERIOD_S1_HAS_ENDED = 1640,
-            /// and make haste to a Grand Olympiad Manager! Battles in the Grand Olympiad Games are now taking place!</summary>
+            ///<summary>and make haste to a Grand Olympiad Manager! Battles in the Grand Olympiad Games are now taking place!</summary>
             THE_OLYMPIAD_GAME_HAS_STARTED = 1641,
             ///<summary>Much carnage has been left for the cleanup crew of the Olympiad Stadium. Battles in the Grand Olympiad Games are now over!</summary>
             THE_OLYMPIAD_GAME_HAS_ENDED = 1642,
@@ -3478,7 +3478,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NEED_BLOODMARK_FOR_ACADEMY = 1732,
             ///<summary>You do not have enough adena to create a Clan Academy.</summary>
             NEED_ADENA_FOR_ACADEMY = 1733,
-            /// not belong another clan and not yet completed their 2nd class transfer.</summary>
+            ///<summary>not belong another clan and not yet completed their 2nd class transfer.</summary>
             ACADEMY_REQUIREMENTS = 1734,
             ///<summary>$s1 does not meet the requirements to join a Clan Academy.</summary>
             S1_DOESNOT_MEET_REQUIREMENTS_TO_JOIN_ACADEMY = 1735,
@@ -3628,7 +3628,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ILLEGAL_USE21 = 1807,
             ///<summary>Your account has been suspended ...</summary>
             ILLEGAL_USE22 = 1808,
-            /// please visit the PlayNC website (http://www.plaync.com/us/support/)</summary>
+            ///<summary>please visit the PlayNC website (http://www.plaync.com/us/support/)</summary>
             ACCOUNT_MUST_VERIFIED = 1809,
             ///<summary>The refuse invitation state has been activated.</summary>
             REFUSE_INVITATION_ACTIVATED = 1810,
@@ -3826,7 +3826,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             SELECT_CHARACTER_WHO_WILL = 1907,
             ///<summary>$s1 in a state which prevents summoning.</summary>
             S1_STATE_FORBIDS_SUMMONING = 1908,
-            ///<summary>==< List of Academy Graduates During the Past Week >==</summary>
+            ///<summary>==List of Academy Graduates During the Past Week==</summary>
             ACADEMY_LIST_HEADER = 1909,
             ///<summary>Graduates: $s1.</summary>
             GRADUATES_S1 = 1910,

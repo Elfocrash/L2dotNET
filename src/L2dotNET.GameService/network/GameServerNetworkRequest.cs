@@ -18,17 +18,17 @@ namespace L2dotNET.GameService.Network
             return Client;
         }
 
-        public void makeme(GameClient Client, byte[] packet)
+        public void makeme(GameClient client, byte[] packet)
         {
-            this.Client = Client;
+            this.Client = client;
             buffer = packet;
             position = 1;
             read();
         }
 
-        public void makeme(GameClient Client, byte[] packet, byte plus)
+        public void makeme(GameClient client, byte[] packet, byte plus)
         {
-            this.Client = Client;
+            this.Client = client;
             buffer = packet;
             position = 1 + plus;
             read();

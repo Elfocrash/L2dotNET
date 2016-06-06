@@ -1,12 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
+using log4net;
 using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Managers
 {
     public class ZoneManager
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ZoneManager));
+
         private static volatile ZoneManager instance;
         private static readonly object syncRoot = new object();
 
@@ -19,16 +22,17 @@ namespace L2dotNET.GameService.Managers
             try
             {
                 XmlDocument doc = new XmlDocument();
-                int fileCounter = 0;
+                //int fileCounter = 0;
                 string[] xmlFilesArray = Directory.GetFiles(@"data\xml\zones\");
                 for (int i = 0; i < xmlFilesArray.Length; i++) { }
             }
             catch (Exception e)
             {
+                log.Error($"ZoneManager: {e.Message}");
                 return;
             }
 
-            int size = 0;
+            //int size = 0;
         }
 
         public static ZoneManager Instance

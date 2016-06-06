@@ -10,12 +10,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
         private readonly int sId;
         private int m_nVillage;
         private int m_nAgit;
-        private int m_nBattleCamp;
+        private readonly int m_nBattleCamp = 0;
         private int m_nCastle;
         private readonly int m_Spoil;
         private int m_nOriginal;
         private int m_nFotress;
-        private int m_nAgathion;
+        private readonly int m_nAgathion = 0;
         private readonly bool m_bShow = false;
 
         private List<int> _items;

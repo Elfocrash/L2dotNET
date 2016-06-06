@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.Tables
             {
                 while (!reader.EndOfStream)
                 {
-                    string line = reader.ReadLine();
+                    string line = reader.ReadLine() ?? string.Empty;
                     if (line.Length == 0 || line.StartsWith("#"))
                         continue;
 
@@ -67,55 +67,58 @@ namespace L2dotNET.GameService.Tables
                             break;
                     }
 
-                    obj.StaticID = Convert.ToInt32(pt[0]);
-
-                    for (byte ord = 2; ord < pt.Length; ord++)
+                    if (obj != null)
                     {
-                        string parameter = pt[ord];
-                        string value = parameter.Substring(parameter.IndexOf('{') + 1);
-                        value = value.Remove(value.Length - 1);
+                        obj.StaticID = Convert.ToInt32(pt[0]);
 
-                        switch (parameter.Split('{')[0].ToLower())
+                        for (byte ord = 2; ord < pt.Length; ord++)
                         {
-                            case "spawn":
-                                obj.setLoc(value.Split(' '));
-                                break;
-                            case "tex":
-                                obj.setTex(value.Split(' '));
-                                break;
-                            case "htm":
-                                obj.htm = value;
-                                break;
-                            case "hp":
-                                obj.MaxHP = Convert.ToInt32(value);
-                                break;
-                            case "defence":
-                                obj.pdef = Convert.ToInt32(value.Split(' ')[0]);
-                                obj.mdef = Convert.ToInt32(value.Split(' ')[1]);
-                                break;
-                            case "unlock":
+                            string parameter = pt[ord];
+                            string value = parameter.Substring(parameter.IndexOf('{') + 1);
+                            value = value.Remove(value.Length - 1);
+
+                            switch (parameter.Split('{')[0].ToLower())
                             {
-                                foreach (string str in value.Split(' '))
+                                case "spawn":
+                                    obj.setLoc(value.Split(' '));
+                                    break;
+                                case "tex":
+                                    obj.setTex(value.Split(' '));
+                                    break;
+                                case "htm":
+                                    obj.htm = value;
+                                    break;
+                                case "hp":
+                                    obj.MaxHP = Convert.ToInt32(value);
+                                    break;
+                                case "defence":
+                                    obj.pdef = Convert.ToInt32(value.Split(' ')[0]);
+                                    obj.mdef = Convert.ToInt32(value.Split(' ')[1]);
+                                    break;
+                                case "unlock":
                                 {
-                                    switch (str)
+                                    foreach (string str in value.Split(' '))
                                     {
-                                        case "trigger":
-                                            obj.UnlockTrigger = true;
-                                            break;
-                                        case "skill":
-                                            obj.UnlockSkill = true;
-                                            break;
-                                        case "drop":
-                                            obj.UnlockNpc = true;
-                                            break;
+                                        switch (str)
+                                        {
+                                            case "trigger":
+                                                obj.UnlockTrigger = true;
+                                                break;
+                                            case "skill":
+                                                obj.UnlockSkill = true;
+                                                break;
+                                            case "drop":
+                                                obj.UnlockNpc = true;
+                                                break;
+                                        }
                                     }
                                 }
+                                    break;
                             }
-                                break;
                         }
-                    }
 
-                    objects.Add(obj.StaticID, obj);
+                        objects.Add(obj.StaticID, obj);
+                    }
                 }
             }
             foreach (L2StaticObject o in objects.Values)

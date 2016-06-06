@@ -37,12 +37,15 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
         private L2Player caster;
         private TSkill cast;
 
-        public void CallSkill(L2Player caster, TSkill skill, L2Character target)
+        public void CallSkill(L2Player casterPlayer, TSkill skill, L2Character targetPlayer)
         {
+            this.caster = casterPlayer;
+            this.cast = skill;
+
             if (SkillCast == null)
                 SkillCast = new System.Timers.Timer();
 
-            this.target = target;
+            this.target = targetPlayer;
             if (skill.skill_hit_time > 0)
             {
                 SkillCast.Interval = skill.skill_hit_time;
@@ -52,7 +55,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
             else
                 SkillCastTask(null, null);
 
-            caster.broadcastPacket(new MagicSkillUse(caster, target, skill, skill.skill_hit_time));
+            casterPlayer.broadcastPacket(new MagicSkillUse(casterPlayer, targetPlayer, skill, skill.skill_hit_time));
         }
 
         private void SkillCastTask(object sender, System.Timers.ElapsedEventArgs e)

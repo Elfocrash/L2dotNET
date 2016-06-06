@@ -63,26 +63,34 @@ namespace L2dotNET.GameService.Tables
                     foreach (var shopp in shops.Elements("shop"))
                     {
                         ND_shop shop = new ND_shop();
-                        shop.id = int.Parse(shopp.Element("npc").Value);
-                        shop.mod = double.Parse(shopp.Element("mod").Value);
+                        XElement npcElement = shopp.Element("npc");
+                        if (npcElement != null)
+                            shop.id = int.Parse(npcElement.Value);
+                        XElement modElement = shopp.Element("mod");
+                        if (modElement != null)
+                            shop.mod = double.Parse(modElement.Value);
 
                         foreach (var selllist in shopp.Elements("selllist"))
                         {
                             ND_shopList slist = new ND_shopList();
                             slist.id = short.Parse(selllist.Attribute("id").Value);
 
-                            string items = selllist.Element("item").Value;
-                            items = items.Replace("\n", "").Replace(" ", "");
-
-                            foreach (string i in items.Split(','))
+                            XElement itemElement = selllist.Element("item");
+                            if (itemElement != null)
                             {
-                                ItemTemplate it = itable.GetItem(Convert.ToInt32(i));
-                                if (it != null)
+                                string items = itemElement.Value;
+                                items = items.Replace("\n", "").Replace(" ", "");
+
+                                foreach (string i in items.Split(','))
                                 {
-                                    slist.items.Add(new ND_shopItem(it));
+                                    ItemTemplate it = itable.GetItem(Convert.ToInt32(i));
+                                    if (it != null)
+                                    {
+                                        slist.items.Add(new ND_shopItem(it));
+                                    }
+                                    else
+                                        log.Error($"NpcData: cant find item to trade {i} on npc {shop.id}");
                                 }
-                                else
-                                    log.Error($"NpcData: cant find item to trade {i} on npc {shop.id}");
                             }
 
                             shop.lists.Add(slist.id, slist);

@@ -76,8 +76,8 @@ namespace L2dotNET.GameService.Commands.Admin
             //  admin.sendPacket(su);
         }
 
-        private System.Timers.Timer t;
-        private L2Player adm;
+        //private System.Timers.Timer t;
+        //private L2Player adm;
 
         private void t_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -85,7 +85,7 @@ namespace L2dotNET.GameService.Commands.Admin
             //l.Add(adm.ObjID);
             //adm.broadcastPacket(new MagicSkillLaunched(adm, l, 261, 1));
             //t.Enabled = false;
-            adm.sendMessage("END!");
+            //adm.sendMessage("END!");
         }
 
         public int[] rndXYZ()

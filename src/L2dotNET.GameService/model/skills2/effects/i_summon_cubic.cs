@@ -27,7 +27,8 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             CubicTemplate template = CubicController.getController().getCubic(id, lvl);
 
             Cubic cub = new Cubic(player, template);
-            player.AddCubic(cub, false);
+            if (player != null)
+                player.AddCubic(cub, false);
 
             return new TEffectResult().AsTotalUI();
         }

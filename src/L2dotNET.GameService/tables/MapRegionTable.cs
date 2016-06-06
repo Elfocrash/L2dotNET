@@ -47,22 +47,30 @@ namespace L2dotNET.GameService.Tables
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(@"data\xml\map_region.xml");
-            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/map");
-            int count = 0;
-            foreach (XmlNode node in nodes)
+            if (doc.DocumentElement != null)
             {
-                if (node.Attributes[0].OwnerElement.Name.Equals("map"))
-                {
-                    XmlNamedNodeMap attrs = node.Attributes;
-                    int rY = Convert.ToInt32(attrs.GetNamedItem("geoY").Value) - 10;
-                    for (int rX = 0; rX < REGIONS_X; rX++)
+                XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/map");
+                int count = 0;
+                if (nodes != null)
+                    foreach (XmlNode node in nodes)
                     {
-                        _regions[rX, rY] = Convert.ToInt32(attrs.GetNamedItem("geoX_" + (rX + 16)).Value);
-                        count++;
+                        if (node.Attributes != null)
+                        {
+                            XmlElement ownerElement = node.Attributes[0].OwnerElement;
+                            if (ownerElement != null && (node.Attributes != null && ownerElement.Name.Equals("map")))
+                            {
+                                XmlNamedNodeMap attrs = node.Attributes;
+                                int rY = Convert.ToInt32(attrs.GetNamedItem("geoY").Value) - 10;
+                                for (int rX = 0; rX < REGIONS_X; rX++)
+                                {
+                                    _regions[rX, rY] = Convert.ToInt32(attrs.GetNamedItem("geoX_" + (rX + 16)).Value);
+                                    count++;
+                                }
+                            }
+                        }
                     }
-                }
+                log.Info($"MapRegionTable: Loaded {count} regions.");
             }
-            log.Info($"MapRegionTable: Loaded {count} regions.");
         }
 
         public static int GetMapRegion(int posX, int posY)

@@ -35,11 +35,11 @@
             this.z = loc.Z;
         }
 
-        public void Set(int x, int y, int z)
+        public void Set(int locX, int locY, int locZ)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
+            this.x = locX;
+            this.y = locY;
+            this.z = locZ;
         }
 
         public void Clear()
@@ -56,7 +56,7 @@
                 Location loc = (Location)obj;
                 return (loc.X.Equals(x) && loc.Y.Equals(y) && loc.Z.Equals(z));
             }
-            return base.Equals(obj);
+            return false;
         }
 
         public override int GetHashCode()

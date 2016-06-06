@@ -679,7 +679,7 @@ namespace L2dotNET.GameService.World
 
         private System.Timers.Timer _waterTimer;
         private DateTime _waterTimeDamage;
-        private bool lastInsideWater = false;
+        //private bool lastInsideWater = false;
 
         public void waterTimer()
         {
@@ -718,7 +718,7 @@ namespace L2dotNET.GameService.World
                     }
                 }
             }
-            /// asd
+
             //if (!isInWater())
             //{
             //    if (_waterTimer == null)
@@ -872,28 +872,19 @@ namespace L2dotNET.GameService.World
         public virtual L2Item ActiveWeapon
         {
             get { return null; }
-            set
-            {
-                /*cls*/
-            }
+            set { }
         }
 
         public virtual L2Item SecondaryWeapon
         {
             get { return null; }
-            set
-            {
-                /*cls*/
-            }
+            set { }
         }
 
         public virtual L2Item ActiveArmor
         {
             get { return null; }
-            set
-            {
-                /*cls*/
-            }
+            set { }
         }
 
         public L2Character CurrentTarget;
@@ -1779,10 +1770,10 @@ namespace L2dotNET.GameService.World
 
             if (start)
             {
-                if (!list.Contains(hashId))
+                if (list != null && !list.Contains(hashId))
                     list.Add(hashId);
             }
-            else
+            else if (list != null)
                 list.Remove(hashId);
         }
 

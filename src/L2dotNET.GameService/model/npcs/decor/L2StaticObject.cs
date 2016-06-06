@@ -16,7 +16,6 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
         public int StructureId = 0;
         public int Type = 0;
         public byte Closed = 1;
-        public int MaxHP = 0;
         public ShowTownMap townMap;
         public string htm;
         public int pdef;

@@ -7,7 +7,7 @@ namespace L2dotNET.Utility.Geometry
 {
     public class Polygon : AShape
     {
-        private static readonly int TRIANGULATION_MAX_LOOPS = 100;
+        private const int TRIANGULATION_MAX_LOOPS = 100;
 
         protected List<AShape> _shapes;
 

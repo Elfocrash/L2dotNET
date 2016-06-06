@@ -28,10 +28,10 @@ namespace L2dotNET.LoginService.GSCommunication
         public bool GmOnly { get; set; }
         public byte Id { get; set; }
 
-        public void ReadData(TcpClient client, ServerThreadPool cn)
+        public void ReadData(TcpClient tcpClient, ServerThreadPool cn)
         {
-            this.nstream = client.GetStream();
-            this.client = client;
+            this.nstream = tcpClient.GetStream();
+            this.client = tcpClient;
 
             new Thread(Read).Start();
         }
@@ -176,9 +176,9 @@ namespace L2dotNET.LoginService.GSCommunication
             Send(PleaseKickAccount.ToPacket(account));
         }
 
-        public void SendPlayer(LoginClient client, string time)
+        public void SendPlayer(LoginClient loginClient, string time)
         {
-            Send(PleaseAcceptPlayer.ToPacket(client.ActiveAccount, time));
+            Send(PleaseAcceptPlayer.ToPacket(loginClient.ActiveAccount, time));
         }
     }
 }

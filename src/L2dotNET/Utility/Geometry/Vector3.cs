@@ -202,7 +202,7 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool Equals(object obj)
         {
-            return (obj is Vector3) ? this == (Vector3)obj : false;
+            return (obj is Vector3) && this == (Vector3)obj;
         }
 
         public bool Equals(Vector3 other)
@@ -441,9 +441,9 @@ namespace L2dotNET.Utility.Geometry
         /// <summary>
         /// Transforms a vector by a quaternion rotation.
         /// </summary>
-        /// <param name="vec">The vector to transform.</param>
-        /// <param name="quat">The quaternion to rotate the vector by.</param>
-        /// <param name="result">The result of the operation.</param>
+        /// <param name="1">The vector to transform.</param>
+        /// <param name="2">The quaternion to rotate the vector by.</param>
+        /// <param name="3">The result of the operation.</param>
         //        public static void Transform(ref Vector3 vec, ref Quaternion quat, out Vector3 result)
         //        {
         //        // Taken from the OpentTK implementation of Vector3

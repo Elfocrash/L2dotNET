@@ -26,7 +26,8 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             //if (loc == null) //ELFOC
             //    loc = MapRegionTable.getInstance().getRespawn(target.X, target.Y, ((L2Player)target).Karma);
 
-            ((L2Character)target).teleport(loc[0], loc[1], loc[2]);
+            if (loc != null)
+                ((L2Character)target).teleport(loc[0], loc[1], loc[2]);
             return nothing;
         }
 

@@ -5,7 +5,7 @@ namespace L2dotNET.GeoEngine.Geodata
 {
     public class BlockMultilayer : ABlock
     {
-        private static readonly int MAX_LAYERS = byte.MaxValue;
+        private const int MAX_LAYERS = byte.MaxValue;
 
         private static MemoryStream _temp;
 
@@ -17,8 +17,7 @@ namespace L2dotNET.GeoEngine.Geodata
 
             if (!BitConverter.IsLittleEndian)
             {
-                byte[] superTemp;
-                superTemp = _temp.ToArray();
+                byte[] superTemp = _temp.ToArray();
                 Array.Reverse(superTemp);
                 _temp.Write(superTemp, 0, _temp.ToArray().Length);
             }

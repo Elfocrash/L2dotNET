@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Timers;
 using L2dotNET.GameService.Model.Items;
-using L2dotNET.GameService.Model.Npcs.Ai;
 using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Model.Quests;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
-using L2dotNET.GameService.Tables.Multisell;
 using L2dotNET.GameService.Templates;
 using L2dotNET.GameService.Tools;
 using L2dotNET.GameService.World;
@@ -102,92 +99,92 @@ namespace L2dotNET.GameService.Model.Npcs
             AIProcessor.TalkedReply(player, ask, reply);
             return;
 
-            if (ask > 0 && ask < 1000)
-            {
-                QuestManager.Instance.OnQuestTalk(player, this, ask, reply);
-                return;
-            }
+            //if (ask > 0 && ask < 1000)
+            //{
+            //    QuestManager.Instance.OnQuestTalk(player, this, ask, reply);
+            //    return;
+            //}
 
-            AITemplate t = AIManager.Instance.CheckDialogResult(Template.NpcId);
-            if (t != null)
-            {
-                t.onDialog(player, ask, reply, this);
-                return;
-            }
+            //AITemplate t = AIManager.Instance.CheckDialogResult(Template.NpcId);
+            //if (t != null)
+            //{
+            //    t.onDialog(player, ask, reply, this);
+            //    return;
+            //}
 
-            switch (ask)
-            {
-                case -1:
-                    switch (reply)
-                    {
-                        case 8:
-                            player.sendPacket(new ExBuySellList_Buy(player.getAdena()));
-                            player.sendPacket(new ExBuySellList_Sell(player));
-                            break;
+            //switch (ask)
+            //{
+            //    case -1:
+            //        switch (reply)
+            //        {
+            //            case 8:
+            //                player.sendPacket(new ExBuySellList_Buy(player.getAdena()));
+            //                player.sendPacket(new ExBuySellList_Sell(player));
+            //                break;
 
-                        default:
-                            NpcData.Instance.Buylist(player, this, (short)reply);
-                            break;
-                    }
-                    break;
-                case -3:
-                    grandmaster_total.onReply(player, reply, this);
-                    break;
-                case -19: //нобл запрос
-                    switch (reply)
-                    {
-                        case 0:
-                        case 1:
-                            player.ShowHtm(player.Noblesse == 1 ? "fornobless.htm" : "fornonobless.htm", this);
-                            break;
-                    }
-                    break;
-                case -20: //нобл запрос
-                    switch (reply)
-                    {
-                        case 2:
-                            NpcData.Instance.RequestTeleportList(this, player, 2);
-                            break;
-                    }
-                    break;
-                case -21: //нобл запрос
-                    switch (reply)
-                    {
-                        case 2:
-                            NpcData.Instance.RequestTeleportList(this, player, 3);
-                            break;
-                    }
-                    break;
-                case -22: //нобл запрос
-                    switch (reply)
-                    {
-                        case 2:
-                            NpcData.Instance.RequestTeleportList(this, player, 1);
-                            break;
-                    }
-                    break;
-                case -303:
-                    MultiSell.Instance.ShowList(player, this, reply);
-                    break;
-                case -305:
-                    switch (reply)
-                    {
-                        case 1:
-                            //  NpcData.getInstance().multisell(player, this, reply); //TEST
-                            break;
-                    }
-                    break;
-                case -1000:
-                {
-                    switch (reply)
-                    {
-                        case 1:
-                            //See the lord and get the tax rate information
-                            break;
-                    }
-                }
-                    break;
-            }
+            //            default:
+            //                NpcData.Instance.Buylist(player, this, (short)reply);
+            //                break;
+            //        }
+            //        break;
+            //    case -3:
+            //        grandmaster_total.onReply(player, reply, this);
+            //        break;
+            //    case -19: //нобл запрос
+            //        switch (reply)
+            //        {
+            //            case 0:
+            //            case 1:
+            //                player.ShowHtm(player.Noblesse == 1 ? "fornobless.htm" : "fornonobless.htm", this);
+            //                break;
+            //        }
+            //        break;
+            //    case -20: //нобл запрос
+            //        switch (reply)
+            //        {
+            //            case 2:
+            //                NpcData.Instance.RequestTeleportList(this, player, 2);
+            //                break;
+            //        }
+            //        break;
+            //    case -21: //нобл запрос
+            //        switch (reply)
+            //        {
+            //            case 2:
+            //                NpcData.Instance.RequestTeleportList(this, player, 3);
+            //                break;
+            //        }
+            //        break;
+            //    case -22: //нобл запрос
+            //        switch (reply)
+            //        {
+            //            case 2:
+            //                NpcData.Instance.RequestTeleportList(this, player, 1);
+            //                break;
+            //        }
+            //        break;
+            //    case -303:
+            //        MultiSell.Instance.ShowList(player, this, reply);
+            //        break;
+            //    case -305:
+            //        switch (reply)
+            //        {
+            //            case 1:
+            //                //  NpcData.getInstance().multisell(player, this, reply); //TEST
+            //                break;
+            //        }
+            //        break;
+            //    case -1000:
+            //    {
+            //        switch (reply)
+            //        {
+            //            case 1:
+            //                //See the lord and get the tax rate information
+            //                break;
+            //        }
+            //    }
+            //        break;
+            //}
         }
 
         public override void onForcedAttack(L2Player player)
@@ -474,7 +471,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {
             cha.sendMessage("L2Npc.CastBuffForQuestReward " + skillId);
-            new BuffForQuestReward(this, cha, skillId);
+            BuffForQuestReward buffForQuestReward = new BuffForQuestReward(this, cha, skillId);
         }
     }
 }

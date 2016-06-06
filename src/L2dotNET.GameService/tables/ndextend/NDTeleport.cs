@@ -20,47 +20,50 @@ namespace L2dotNET.GameService.Tables.Ndextend
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\nd_teleports.xml"));
             XElement ex = xml.Element("list");
-            foreach (var m in ex.Elements())
+            if (ex != null)
             {
-                if (m.Name == "npc")
+                foreach (var m in ex.Elements())
                 {
-                    ab_teleport_npc npc = new ab_teleport_npc();
-                    npc.id = int.Parse(m.Attribute("id").Value);
-
-                    foreach (var x in m.Elements())
+                    if (m.Name == "npc")
                     {
-                        if (x.Name == "group")
+                        ab_teleport_npc npc = new ab_teleport_npc();
+                        npc.id = int.Parse(m.Attribute("id").Value);
+
+                        foreach (var x in m.Elements())
                         {
-                            ab_teleport_group ab = new ab_teleport_group();
-                            ab.id = int.Parse(x.Attribute("id").Value);
-
-                            foreach (var e in x.Elements())
+                            if (x.Name == "group")
                             {
-                                if (e.Name == "e")
+                                ab_teleport_group ab = new ab_teleport_group();
+                                ab.id = int.Parse(x.Attribute("id").Value);
+
+                                foreach (var e in x.Elements())
                                 {
-                                    ab_teleport_entry ae = new ab_teleport_entry();
-                                    ae.name = e.Attribute("name").Value;
-                                    ae.x = int.Parse(e.Attribute("x").Value);
-                                    ae.y = int.Parse(e.Attribute("y").Value);
-                                    ae.z = int.Parse(e.Attribute("z").Value);
-                                    ae.id = ab._teles.Count;
+                                    if (e.Name == "e")
+                                    {
+                                        ab_teleport_entry ae = new ab_teleport_entry();
+                                        ae.name = e.Attribute("name").Value;
+                                        ae.x = int.Parse(e.Attribute("x").Value);
+                                        ae.y = int.Parse(e.Attribute("y").Value);
+                                        ae.z = int.Parse(e.Attribute("z").Value);
+                                        ae.id = ab._teles.Count;
 
-                                    if (e.Attribute("cost") != null)
-                                        ae.cost = long.Parse(e.Attribute("cost").Value);
-                                    if (e.Attribute("itemId") != null)
-                                        ae.itemId = int.Parse(e.Attribute("itemId").Value);
+                                        if (e.Attribute("cost") != null)
+                                            ae.cost = long.Parse(e.Attribute("cost").Value);
+                                        if (e.Attribute("itemId") != null)
+                                            ae.itemId = int.Parse(e.Attribute("itemId").Value);
 
-                                    ab._teles.Add(ae.id, ae);
+                                        ab._teles.Add(ae.id, ae);
+                                    }
                                 }
-                            }
 
-                            npc.groups.Add(ab.id, ab);
+                                npc.groups.Add(ab.id, ab);
+                            }
                         }
+                        if (npcs.ContainsKey(npc.id))
+                            log.Error($"NpcData(Teleporter) dublicate npc str {npc.id}");
+                        else
+                            npcs.Add(npc.id, npc);
                     }
-                    if (npcs.ContainsKey(npc.id))
-                        log.Error($"NpcData(Teleporter) dublicate npc str {npc.id}");
-                    else
-                        npcs.Add(npc.id, npc);
                 }
             }
 

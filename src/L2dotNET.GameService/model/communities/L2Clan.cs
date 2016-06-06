@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using log4net;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Structures;
@@ -120,12 +119,15 @@ namespace L2dotNET.GameService.Model.Communities
         {
             player.Clan = this;
 
-            foreach (ClanMember m in members.Where(m => m.ObjID == player.ObjID))
+            foreach (ClanMember m in members)
             {
-                m.online = 1;
-                m.Level = player.Level;
-                m.Target = player;
-                break;
+                if (m.ObjID == player.ObjID)
+                {
+                    m.online = 1;
+                    m.Level = player.Level;
+                    m.Target = player;
+                    break;
+                }
             }
 
             if (LeaderID == player.ObjID)
@@ -142,8 +144,9 @@ namespace L2dotNET.GameService.Model.Communities
 
         public void broadcastToMembers(GameServerNetworkPacket pk)
         {
-            foreach (ClanMember cm in members.Where(cm => cm.online == 1))
-                cm.Target.sendPacket(pk);
+            foreach (ClanMember cm in members)
+                if (cm.online == 1)
+                    cm.Target.sendPacket(pk);
         }
 
         public e_ClanType isSubLeader(int ObjID, e_ClanType[] types)
@@ -190,8 +193,8 @@ namespace L2dotNET.GameService.Model.Communities
 
         public void updateCrest(int size, byte[] picture)
         {
-            SystemMessage.SystemMessageId msg;
-            msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
+            //SystemMessage.SystemMessageId msg;
+            //msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
 
             CrestPicture = picture;
 
@@ -207,7 +210,7 @@ namespace L2dotNET.GameService.Model.Communities
                 if (CrestID > 0)
                     File.Delete(@"crests\c" + CrestID + ".bmp");
 
-                msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
+                //msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
                 CrestID = IdFactory.Instance.nextId();
                 try
                 {
@@ -239,8 +242,8 @@ namespace L2dotNET.GameService.Model.Communities
 
         public void updateCrestLarge(int size, byte[] picture)
         {
-            SystemMessage.SystemMessageId msg;
-            msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
+            //SystemMessage.SystemMessageId msg;
+            //msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
 
             CrestLargePicture = picture;
 
@@ -256,7 +259,7 @@ namespace L2dotNET.GameService.Model.Communities
                 if (LargeCrestID > 0)
                     File.Delete(@"crests\b" + LargeCrestID + ".bmp");
 
-                msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
+                //msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
                 LargeCrestID = IdFactory.Instance.nextId();
                 try
                 {
@@ -350,12 +353,15 @@ namespace L2dotNET.GameService.Model.Communities
             sm.AddPlayerName(player.Name);
             broadcastToOnline(sm);
 
-            foreach (ClanMember cm in members.Where(cm => cm.ObjID == player.ObjID))
+            foreach (ClanMember cm in members)
             {
-                lock (members)
-                    members.Remove(cm);
+                if (cm.ObjID == player.ObjID)
+                {
+                    lock (members)
+                        members.Remove(cm);
 
-                break;
+                    break;
+                }
             }
 
             player.Clan = null;
@@ -376,15 +382,22 @@ namespace L2dotNET.GameService.Model.Communities
 
         private void broadcastToOnline(GameServerNetworkPacket p)
         {
-            foreach (ClanMember cm in members.Where(cm => cm.online == 1))
-                cm.Target.sendPacket(p);
+            foreach (ClanMember cm in members)
+                if (cm.online == 1)
+                    cm.Target.sendPacket(p);
         }
 
         public byte getClanMemberCount(e_ClanType type, int myself)
         {
             byte cnt = 0;
-            foreach (ClanMember cm in members.Where(cm => cm.ClanType == (short)type && (myself == 0 || myself != cm.ObjID)))
-                cnt++;
+            foreach (ClanMember cm in members)
+                if (cm.ClanType == (short)type)
+                {
+                    if (myself != 0 && myself == cm.ObjID)
+                        continue;
+
+                    cnt++;
+                }
 
             //  var x = from cm in members where cm.Type == type && cm.ObjID != myself let cnt2 = cnt+1 select cnt2;
             //  int cn = x.

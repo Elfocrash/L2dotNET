@@ -199,7 +199,6 @@ namespace L2dotNET.GameService.Model.Player
         public int getPaperdollObjectId(int p)
         {
             return Inventory.getPaperdollObjectId(p);
-            ;
         }
 
         public int getPaperdollItemId(int p)
@@ -271,7 +270,6 @@ namespace L2dotNET.GameService.Model.Player
         public override int ClanId
         {
             get { return Clan == null ? 0 : Clan.ClanID; }
-
             set { Clan = ClanTable.Instance.GetClan(value); }
         }
 
@@ -2032,12 +2030,12 @@ namespace L2dotNET.GameService.Model.Player
         public L2Player requester = null;
         public int itemDistribution;
 
-        public void PendToJoinParty(L2Player asker, int itemDistribution)
+        public void PendToJoinParty(L2Player asker, int askerItemDistribution)
         {
             PartyState = 1;
             requester = asker;
-            requester.itemDistribution = itemDistribution;
-            sendPacket(new AskJoinParty(asker.Name, itemDistribution));
+            requester.itemDistribution = askerItemDistribution;
+            sendPacket(new AskJoinParty(asker.Name, askerItemDistribution));
         }
 
         public void ClearPend()
@@ -2269,11 +2267,11 @@ namespace L2dotNET.GameService.Model.Player
         public int BoatY;
         public int BoatZ;
 
-        public void SetChair(L2Chair chair)
+        public void SetChair(L2Chair chairObj)
         {
-            this.chair = chair;
+            this.chair = chairObj;
             this.chair.IsUsedAlready = true;
-            broadcastPacket(new ChairSit(ObjID, chair.StaticID));
+            broadcastPacket(new ChairSit(ObjID, chairObj.StaticID));
         }
 
         public bool isOnShip()
@@ -2292,7 +2290,6 @@ namespace L2dotNET.GameService.Model.Player
         public override L2Item ActiveWeapon
         {
             get { return Inventory.getWeapon(); }
-            set { ActiveWeapon = value; }
         }
 
         public override void abortAttack()

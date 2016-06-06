@@ -51,7 +51,7 @@ namespace L2dotNET.GameService.Tables
             {
                 while (!reader.EndOfStream)
                 {
-                    string line = reader.ReadLine();
+                    string line = reader.ReadLine() ?? string.Empty;
                     if (line.Length == 0 || line.StartsWith("#"))
                         continue;
 
@@ -84,7 +84,7 @@ namespace L2dotNET.GameService.Tables
             {
                 while (!reader.EndOfStream)
                 {
-                    string line = reader.ReadLine();
+                    string line = reader.ReadLine() ?? string.Empty;
                     if (line.Length == 0 || line.StartsWith("#"))
                         continue;
 
@@ -98,49 +98,52 @@ namespace L2dotNET.GameService.Tables
                             break;
                     }
 
-                    template.ID = Convert.ToInt32(pt[0]);
-
-                    for (byte ord = 2; ord < pt.Length; ord++)
+                    if (template != null)
                     {
-                        string parameter = pt[ord];
-                        string value = parameter.Substring(parameter.IndexOf('{') + 1);
-                        value = value.Remove(value.Length - 1);
+                        template.ID = Convert.ToInt32(pt[0]);
 
-                        switch (parameter.Split('{')[0].ToLower())
+                        for (byte ord = 2; ord < pt.Length; ord++)
                         {
-                            case "npc":
-                            {
-                                foreach (string str in value.Split(' '))
-                                    template.SetNpc(Convert.ToInt32(str));
-                            }
-                                break;
-                            case "door":
-                            {
-                                foreach (string str in value.Split(' '))
-                                    template.SetDoor(Convert.ToInt32(str));
-                            }
-                                break;
-                            case "spawn":
-                                template.SetOwnerRespawn(value.Split(' '));
-                                break;
-                            case "outside":
-                                template.SetOutsideRespawn(value.Split(' '));
-                                break;
-                            case "banish":
-                                template.SetBanishRespawn(value.Split(' '));
-                                break;
-                            case "zone":
-                            {
-                                foreach (string str in value.Split(';'))
-                                {
-                                    template.SetZoneLoc(str.Split(' '));
-                                }
-                            }
-                                break;
-                        }
-                    }
+                            string parameter = pt[ord];
+                            string value = parameter.Substring(parameter.IndexOf('{') + 1);
+                            value = value.Remove(value.Length - 1);
 
-                    structures.Add(template.ID, template);
+                            switch (parameter.Split('{')[0].ToLower())
+                            {
+                                case "npc":
+                                {
+                                    foreach (string str in value.Split(' '))
+                                        template.SetNpc(Convert.ToInt32(str));
+                                }
+                                    break;
+                                case "door":
+                                {
+                                    foreach (string str in value.Split(' '))
+                                        template.SetDoor(Convert.ToInt32(str));
+                                }
+                                    break;
+                                case "spawn":
+                                    template.SetOwnerRespawn(value.Split(' '));
+                                    break;
+                                case "outside":
+                                    template.SetOutsideRespawn(value.Split(' '));
+                                    break;
+                                case "banish":
+                                    template.SetBanishRespawn(value.Split(' '));
+                                    break;
+                                case "zone":
+                                {
+                                    foreach (string str in value.Split(';'))
+                                    {
+                                        template.SetZoneLoc(str.Split(' '));
+                                    }
+                                }
+                                    break;
+                            }
+                        }
+
+                        structures.Add(template.ID, template);
+                    }
                 }
             }
 
