@@ -250,15 +250,13 @@ namespace L2dotNET.Utility
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.AppendFormat("Buffer dump, length: {0}{1}Index   |---------------------------------------------|  |--------------|{1}", buffer.Length, Environment.NewLine);
 
-            int index = 0,
-                i;
-            string hex,
-                   data;
+            string hex = string.Empty,
+                   data = string.Empty;
+            int i,
+                index = 0;
 
             while (index < buffer.Length)
             {
-                hex = data = string.Empty;
-
                 for (i = 0; i < 16 && index + i < buffer.Length; i++)
                 {
                     hex += buffer[index + i].ToString("x2") + " ";

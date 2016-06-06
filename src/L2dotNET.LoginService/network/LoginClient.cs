@@ -75,8 +75,9 @@ namespace L2dotNET.LoginService.Network
             }
             catch (Exception ex)
             {
+                log.Error($"Error: {ex.Message}");
                 close();
-                throw ex;
+                throw;
             }
         }
 

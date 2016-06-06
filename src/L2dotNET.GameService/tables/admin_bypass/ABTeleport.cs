@@ -21,32 +21,35 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\admin\abteleport.xml"));
             XElement ex = xml.Element("list");
-            foreach (var m in ex.Elements())
+            if (ex != null)
             {
-                if (m.Name == "group")
+                foreach (var m in ex.Elements())
                 {
-                    ab_teleport_group ab = new ab_teleport_group();
-                    ab.id = int.Parse(m.Attribute("id").Value);
-                    ab.str = m.Attribute("str").Value;
-                    ab.name = m.Attribute("name").Value;
-                    ab.level = int.Parse(m.Attribute("level").Value);
-
-                    foreach (var e in m.Elements())
+                    if (m.Name == "group")
                     {
-                        if (e.Name == "entry")
+                        ab_teleport_group ab = new ab_teleport_group();
+                        ab.id = int.Parse(m.Attribute("id").Value);
+                        ab.str = m.Attribute("str").Value;
+                        ab.name = m.Attribute("name").Value;
+                        ab.level = int.Parse(m.Attribute("level").Value);
+
+                        foreach (var e in m.Elements())
                         {
-                            ab_teleport_entry ae = new ab_teleport_entry();
-                            ae.name = e.Attribute("name").Value;
-                            ae.x = int.Parse(e.Attribute("x").Value);
-                            ae.y = int.Parse(e.Attribute("y").Value);
-                            ae.z = int.Parse(e.Attribute("z").Value);
-                            ae.id = ab._teles.Count;
+                            if (e.Name == "entry")
+                            {
+                                ab_teleport_entry ae = new ab_teleport_entry();
+                                ae.name = e.Attribute("name").Value;
+                                ae.x = int.Parse(e.Attribute("x").Value);
+                                ae.y = int.Parse(e.Attribute("y").Value);
+                                ae.z = int.Parse(e.Attribute("z").Value);
+                                ae.id = ab._teles.Count;
 
-                            ab._teles.Add(ae.id, ae);
+                                ab._teles.Add(ae.id, ae);
+                            }
                         }
-                    }
 
-                    _groups.Add(ab.id, ab);
+                        _groups.Add(ab.id, ab);
+                    }
                 }
             }
 

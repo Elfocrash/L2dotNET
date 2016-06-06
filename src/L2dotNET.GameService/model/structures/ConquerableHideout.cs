@@ -136,12 +136,12 @@ namespace L2dotNET.GameService.Model.Structures
                 clanDamage.Add(clanId, dmg);
         }
 
-        public void addSpawn(int id, int x, int y, int z, int h)
+        public void addSpawn(int spawnId, int x, int y, int z, int h)
         {
             if (mobSpawns == null)
                 mobSpawns = new List<int[]>();
 
-            mobSpawns.Add(new int[] { id, x, y, z, h });
+            mobSpawns.Add(new int[] { spawnId, x, y, z, h });
         }
     }
 }

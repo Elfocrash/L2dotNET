@@ -45,11 +45,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             PlayerModelMapping(playerModel, player);
 
-            player.Online = 1;
-            player.Gameclient = client;
-            client.CurrentPlayer = player;
+            if (player != null)
+            {
+                player.Online = 1;
+                player.Gameclient = client;
+                client.CurrentPlayer = player;
 
-            getClient().sendPacket(new Serverpackets.CharacterSelected(player, client.SessionId));
+                getClient().sendPacket(new Serverpackets.CharacterSelected(player, client.SessionId));
+            }
         }
 
         private static void PlayerModelMapping(PlayerModel playerModel, L2Player player)

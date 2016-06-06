@@ -40,7 +40,7 @@ namespace L2dotNET.GameService.Tables
             {
                 while (!sreader.EndOfStream)
                 {
-                    string line = sreader.ReadLine();
+                    string line = sreader.ReadLine() ?? string.Empty;
                     if (line.Length == 0 || line.StartsWith("#"))
                         continue;
 
@@ -99,7 +99,7 @@ namespace L2dotNET.GameService.Tables
             {
                 while (!sreader.EndOfStream)
                 {
-                    string line = sreader.ReadLine();
+                    string line = sreader.ReadLine() ?? string.Empty;
                     if (line.Length == 0 || line.StartsWith("#"))
                         continue;
 
@@ -341,7 +341,7 @@ namespace L2dotNET.GameService.Tables
             {
                 while (!sreader.EndOfStream)
                 {
-                    string line = sreader.ReadLine();
+                    string line = sreader.ReadLine() ?? string.Empty;
                     if (line.Length == 0 || line.StartsWith("#"))
                         continue;
 

@@ -67,25 +67,35 @@ namespace L2dotNET.GameService.Tables
                 for (int i = 0; i < xmlFilesArray.Length; i++)
                 {
                     doc.Load(xmlFilesArray[i]);
-                    XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/npc");
-
-                    foreach (XmlNode node in nodes)
+                    if (doc.DocumentElement != null)
                     {
-                        if ("npc".Equals(node.Attributes[0].OwnerElement.Name))
+                        XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/npc");
+
+                        if (nodes != null)
                         {
-                            XmlNamedNodeMap attrs = node.Attributes;
+                            foreach (XmlNode node in nodes)
+                            {
+                                if (node.Attributes != null)
+                                {
+                                    XmlElement ownerElement = node.Attributes[0].OwnerElement;
+                                    if (ownerElement != null && (node.Attributes != null && "npc".Equals(ownerElement.Name)))
+                                    {
+                                        XmlNamedNodeMap attrs = node.Attributes;
 
-                            int npcId = int.Parse(attrs.GetNamedItem("id").Value);
-                            int templateId = attrs.GetNamedItem("idTemplate") == null ? npcId : int.Parse(attrs.GetNamedItem("idTemplate").Value);
+                                        int npcId = int.Parse(attrs.GetNamedItem("id").Value);
+                                        int templateId = attrs.GetNamedItem("idTemplate") == null ? npcId : int.Parse(attrs.GetNamedItem("idTemplate").Value);
 
-                            set.Set("id", npcId);
-                            set.Set("idTemplate", templateId);
-                            set.Set("name", attrs.GetNamedItem("name").Value);
-                            set.Set("title", attrs.GetNamedItem("title").Value);
+                                        set.Set("id", npcId);
+                                        set.Set("idTemplate", templateId);
+                                        set.Set("name", attrs.GetNamedItem("name").Value);
+                                        set.Set("title", attrs.GetNamedItem("title").Value);
 
-                            npcs.Add(npcId, new NpcTemplate(set));
+                                        npcs.Add(npcId, new NpcTemplate(set));
+                                    }
+                                }
+                                set.Clear();
+                            }
                         }
-                        set.Clear();
                     }
                 }
                 log.Info($"Loaded {npcs.Count} npcs.");

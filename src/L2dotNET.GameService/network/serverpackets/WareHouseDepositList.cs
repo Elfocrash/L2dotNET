@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public static short WH_CLAN = 2;
         public static short WH_CASTLE = 3;
         public static short WH_FREIGHT = 4;
-        private readonly List<L2Item> _items = new List<L2Item>();
+        private readonly List<L2Item> _items;
         private readonly short _type;
         private readonly long _adena;
 

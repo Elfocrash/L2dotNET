@@ -209,7 +209,7 @@ namespace L2dotNET.GameService.Model.Playable
             if (Owner != null)
                 chars.Add(Owner);
 
-            if (Owner.Party != null)
+            if (Owner != null && Owner.Party != null)
             {
                 if (chars == null)
                     chars = new List<L2Character>();

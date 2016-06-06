@@ -190,7 +190,9 @@ namespace L2dotNET.GameService.AI.NpcAI
                             talker.ShowHtm("pl_err_master.htm", myself);
                         break;
                     case 12:
-                        if (talker.ClanLeader || talker.HavePledgePower(@PP_MANAGE_GROWTH))
+                        if (pledge == null)
+                            talker.ShowHtm("pl_no_pledgeman.htm", myself);
+                        else if (talker.ClanLeader || talker.HavePledgePower(@PP_MANAGE_GROWTH))
                         {
                             if (pledge.Level > 4)
                                 talker.ShowHtm("pl_create_aca.htm", myself);

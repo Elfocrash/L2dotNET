@@ -11,32 +11,35 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             L2Player player = caster as L2Player;
-            L2Item item = player.getWeaponItem();
-            if (item == null || !ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemID))
+            if (player != null)
             {
-                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
-                return nothing;
+                L2Item item = player.getWeaponItem();
+                if (item == null || !ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemID))
+                {
+                    caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
+                    return nothing;
+                }
+
+                int newid = ItemTable.Instance.ConvertDataList[item.Template.ItemID];
+
+                int pdollId = player.Inventory.getPaperdollId(item.Template);
+                player.setPaperdoll(pdollId, null, false);
+                player.broadcastUserInfo();
+
+                int oldweight = item.Template.Weight;
+                item.Template = ItemTable.Instance.GetItem(newid);
+                item.sql_update();
+
+                if (oldweight != item.Template.Weight)
+                    player.updateWeight();
+
+                player.setPaperdoll(pdollId, item, false);
+                player.broadcastUserInfo();
+
+                InventoryUpdate iu = new InventoryUpdate();
+                iu.addModItem(item);
+                player.sendPacket(iu);
             }
-
-            int newid = ItemTable.Instance.ConvertDataList[item.Template.ItemID];
-
-            int pdollId = player.Inventory.getPaperdollId(item.Template);
-            player.setPaperdoll(pdollId, null, false);
-            player.broadcastUserInfo();
-
-            int oldweight = item.Template.Weight;
-            item.Template = ItemTable.Instance.GetItem(newid);
-            item.sql_update();
-
-            if (oldweight != item.Template.Weight)
-                player.updateWeight();
-
-            player.setPaperdoll(pdollId, item, false);
-            player.broadcastUserInfo();
-
-            InventoryUpdate iu = new InventoryUpdate();
-            iu.addModItem(item);
-            player.sendPacket(iu);
 
             return nothing;
         }

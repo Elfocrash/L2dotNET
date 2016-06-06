@@ -44,10 +44,10 @@ namespace L2dotNET.GameService.Tables
             {
                 zmax = Convert.ToInt32(loc[3]);
             }
-            catch (Exception asd)
+            catch (Exception e)
             {
-                log.Error($"err in {loc[3]}");
-                throw asd;
+                log.Error($"err in {loc[3]}. Message: {e.Message}");
+                throw;
             }
 
             territoryLoc.Add(new int[] { x, y, zmin, zmax });

@@ -60,9 +60,11 @@ namespace L2dotNET.GameService.Tables
             if (string.IsNullOrEmpty(filename))
                 return string.Empty;
 
-            string content = htmCache.FirstOrDefault(x => x.Filename.Equals(filename, StringComparison.InvariantCultureIgnoreCase)).Content;
+            L2Html html = htmCache.FirstOrDefault(x => x.Filename.Equals(filename, StringComparison.InvariantCultureIgnoreCase));
+            if (html != null)
+                return html.Content;
 
-            return content;
+            return string.Empty;
         }
 
         private List<string> DirSearch(string sDir)

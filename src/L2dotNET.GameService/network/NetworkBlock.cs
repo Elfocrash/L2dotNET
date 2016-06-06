@@ -41,7 +41,7 @@ namespace L2dotNET.GameService.Network
             {
                 while (!reader.EndOfStream)
                 {
-                    string line = reader.ReadLine();
+                    string line = reader.ReadLine() ?? string.Empty;
                     if (line.Length == 0)
                         continue;
 

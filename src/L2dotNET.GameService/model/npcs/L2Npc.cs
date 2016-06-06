@@ -471,7 +471,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {
             cha.sendMessage("L2Npc.CastBuffForQuestReward " + skillId);
-            new BuffForQuestReward(this, cha, skillId);
+            BuffForQuestReward buffForQuestReward = new BuffForQuestReward(this, cha, skillId);
         }
     }
 }

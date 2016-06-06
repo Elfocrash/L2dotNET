@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
         public override TEffectResult onStart(L2Character caster, L2Character target)
         {
-            if (!(target is L2Character))
+            if (!(target != null))
                 return nothing;
 
             L2Character tar = (L2Character)target;

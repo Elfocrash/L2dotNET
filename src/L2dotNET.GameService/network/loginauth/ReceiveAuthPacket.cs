@@ -11,9 +11,9 @@ namespace L2dotNET.GameService.Network.LoginAuth
         private int _offset;
         public AuthThread login;
 
-        public void makeme(AuthThread login, byte[] packet)
+        public void makeme(AuthThread authLogin, byte[] packet)
         {
-            this.login = login;
+            this.login = authLogin;
             _packet = packet;
             _offset = 1;
             read();

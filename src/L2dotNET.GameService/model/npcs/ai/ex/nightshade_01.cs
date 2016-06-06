@@ -6,10 +6,10 @@ namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
 {
     class nightshade_01 : AITemplate
     {
-        public override void onActionClicked(L2Player player, L2Summon pet, int id)
+        public override void onActionClicked(L2Player player, L2Summon pet, int actionId)
         {
             string value = null;
-            switch (id)
+            switch (actionId)
             {
                 case 1013:
                     value = "DeBuff1";
@@ -22,11 +22,11 @@ namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
                     break;
 
                 default:
-                    if (id == getValueInt("buff_action3"))
+                    if (actionId == getValueInt("buff_action3"))
                         value = "buff3";
-                    else if (id == getValueInt("buff_action4"))
+                    else if (actionId == getValueInt("buff_action4"))
                         value = "buff4";
-                    else if (id == getValueInt("buff_action5"))
+                    else if (actionId == getValueInt("buff_action5"))
                         value = "buff5";
                     break;
             }

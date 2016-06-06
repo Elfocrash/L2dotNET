@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
         public virtual void onTeleportRequest(L2Player player, int ask, int reply, L2Npc npc) { }
 
-        public virtual void onActionClicked(L2Player player, L2Summon pet, int id) { }
+        public virtual void onActionClicked(L2Player player, L2Summon pet, int actionId) { }
 
         public int getValueInt(string p)
         {

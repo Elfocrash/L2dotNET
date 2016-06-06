@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Commands.Admin
                 return;
             }
 
-            L2Player target = admin.CurrentTarget as L2Player;
+            L2Player target = (L2Player)admin.CurrentTarget;
             TAcquireSkillsEntry skills = TSkillTable.Instance.GetAllRegularSkills(target.ActiveClass.ClassId.Id);
 
             SortedList<int, TAcquireSkill> avail = new SortedList<int, TAcquireSkill>();

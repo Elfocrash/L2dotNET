@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
     class ExBuySellList_Sell : GameServerNetworkPacket
     {
         private readonly List<L2Item> _sells = new List<L2Item>();
-        private readonly List<L2Item> _refund = new List<L2Item>();
+        private readonly List<L2Item> _refund;
 
         public ExBuySellList_Sell(L2Player player)
         {

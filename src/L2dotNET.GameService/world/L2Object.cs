@@ -71,10 +71,7 @@ namespace L2dotNET.GameService.World
                 sendPacket(pk);
 
             foreach (L2Object o in GetKnownPlayers())
-            {
-                if (o is L2Player)
-                    o.sendPacket(pk);
-            }
+                o.sendPacket(pk);
         }
 
         public virtual void broadcastPacket(GameServerNetworkPacket pk)

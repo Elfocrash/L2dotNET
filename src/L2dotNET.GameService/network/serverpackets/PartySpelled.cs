@@ -17,9 +17,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
         private readonly L2Character character;
         private readonly int summonType;
 
-        public void addIcon(int id, int lvl, int duration)
+        public void addIcon(int iconId, int lvl, int duration)
         {
-            _timers.Add(new int[] { id, lvl, duration });
+            _timers.Add(new int[] { iconId, lvl, duration });
         }
 
         protected internal override void write()

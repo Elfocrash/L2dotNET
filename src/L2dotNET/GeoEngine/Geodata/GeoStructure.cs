@@ -14,7 +14,7 @@ namespace L2dotNET.GeoEngine.Geodata
         public static int WORLD_X_MAX = (TILE_X_MAX - 19) * TILE_SIZE;
         public static int WORLD_Y_MIN = (TILE_Y_MIN - 18) * TILE_SIZE;
         public static int WORLD_Y_MAX = (TILE_Y_MAX - 17) * TILE_SIZE;
-        private static readonly int REGION_SIZE = 4096;
+        private const int REGION_SIZE = 4096;
         private static int REGIONS_X = (WORLD_X_MAX - WORLD_X_MIN) / REGION_SIZE;
         private static int REGIONS_Y = (WORLD_Y_MAX - WORLD_Y_MIN) / REGION_SIZE;
         private static int REGION_X_OFFSET = Math.Abs(WORLD_X_MIN / REGION_SIZE);

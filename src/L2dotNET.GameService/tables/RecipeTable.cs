@@ -34,66 +34,67 @@ namespace L2dotNET.GameService.Tables
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\recipes.xml"));
             XElement ex = xml.Element("list");
-            foreach (var m in ex.Elements())
-            {
-                if (m.Name == "recipe")
+            if (ex != null)
+                foreach (var m in ex.Elements())
                 {
-                    L2Recipe rec = new L2Recipe();
-                    rec.RecipeID = int.Parse(m.Attribute("id").Value);
-                    rec.mk = m.Attribute("mk").Value;
-                    rec._level = int.Parse(m.Attribute("level").Value);
-                    rec._item_id = int.Parse(m.Attribute("itemId").Value);
-                    rec._iscommonrecipe = int.Parse(m.Attribute("common").Value);
-
-                    foreach (var stp in m.Elements())
+                    if (m.Name == "recipe")
                     {
-                        switch (stp.Name.LocalName)
-                        {
-                            case "material":
-                            {
-                                rec._mp_consume = int.Parse(stp.Attribute("mp").Value);
-                                foreach (var items in stp.Elements())
-                                {
-                                    if (items.Name == "item")
-                                    {
-                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
-                                        rec._materials.Add(item);
-                                    }
-                                }
-                            }
-                                break;
-                            case "product":
-                            {
-                                rec._success_rate = int.Parse(stp.Attribute("rate").Value);
-                                foreach (var items in stp.Elements())
-                                {
-                                    if (items.Name == "item")
-                                    {
-                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
-                                        item.rate = double.Parse(items.Attribute("rate").Value);
-                                        rec._products.Add(item);
-                                    }
-                                }
-                            }
-                                break;
-                            case "fee":
-                            {
-                                foreach (var items in stp.Elements())
-                                {
-                                    if (items.Name == "item")
-                                    {
-                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
-                                        rec._npcFee.Add(item);
-                                    }
-                                }
-                            }
-                                break;
-                        }
-                    }
+                        L2Recipe rec = new L2Recipe();
+                        rec.RecipeID = int.Parse(m.Attribute("id").Value);
+                        rec.mk = m.Attribute("mk").Value;
+                        rec._level = int.Parse(m.Attribute("level").Value);
+                        rec._item_id = int.Parse(m.Attribute("itemId").Value);
+                        rec._iscommonrecipe = int.Parse(m.Attribute("common").Value);
 
-                    _recipes.Add(rec.RecipeID, rec);
+                        foreach (var stp in m.Elements())
+                        {
+                            switch (stp.Name.LocalName)
+                            {
+                                case "material":
+                                {
+                                    rec._mp_consume = int.Parse(stp.Attribute("mp").Value);
+                                    foreach (var items in stp.Elements())
+                                    {
+                                        if (items.Name == "item")
+                                        {
+                                            recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
+                                            rec._materials.Add(item);
+                                        }
+                                    }
+                                }
+                                    break;
+                                case "product":
+                                {
+                                    rec._success_rate = int.Parse(stp.Attribute("rate").Value);
+                                    foreach (var items in stp.Elements())
+                                    {
+                                        if (items.Name == "item")
+                                        {
+                                            recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
+                                            item.rate = double.Parse(items.Attribute("rate").Value);
+                                            rec._products.Add(item);
+                                        }
+                                    }
+                                }
+                                    break;
+                                case "fee":
+                                {
+                                    foreach (var items in stp.Elements())
+                                    {
+                                        if (items.Name == "item")
+                                        {
+                                            recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
+                                            rec._npcFee.Add(item);
+                                        }
+                                    }
+                                }
+                                    break;
+                            }
+                        }
+
+                        _recipes.Add(rec.RecipeID, rec);
+                    }
                 }
-            }
 
             log.Info("RecipeTable: loaded " + _recipes.Count + " recipes.");
         }
