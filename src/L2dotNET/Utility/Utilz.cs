@@ -4,7 +4,7 @@ using System.Text;
 
 namespace L2dotNET.Utility
 {
-    public class Utilz
+    public static class Utilz
     {
         public static string CurrentTime
         {
@@ -41,6 +41,30 @@ namespace L2dotNET.Utility
         {
             TimeSpan ts = year1970 - DateTime.Now;
             return (int)ts.TotalSeconds * -1;
+        }
+
+        /// <summary>
+        /// String extension method in order
+        /// to check if two strings match no matter the case
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="stringToCompare"></param>
+        /// <returns></returns>
+        public static bool EqualsIgnoreCase(this string str, string stringToCompare)
+        {
+            return str.Equals(stringToCompare, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        /// <summary>
+        /// String extension method in order
+        /// to check if two strings match with the exact the case
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="stringToCompare"></param>
+        /// <returns></returns>
+        public static bool EqualsMatchCase(this string str, string stringToCompare)
+        {
+            return str.Equals(stringToCompare, StringComparison.InvariantCulture);
         }
     }
 }
