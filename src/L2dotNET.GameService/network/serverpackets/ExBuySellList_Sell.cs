@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 
@@ -11,11 +12,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ExBuySellList_Sell(L2Player player)
         {
-            foreach (L2Item item in player.getAllItems())
+            foreach (L2Item item in player.getAllItems().Where(item => !item.NotForTrade()))
             {
-                if (item.NotForTrade())
-                    continue;
-
                 _sells.Add(item);
             }
 

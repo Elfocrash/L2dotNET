@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System.Linq;
+using log4net;
 using L2dotNET.GameService.Model.Npcs.Ai;
 using L2dotNET.GameService.Model.Npcs.Decor;
 using L2dotNET.GameService.Model.Player;
@@ -74,7 +75,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public override void onDialog(L2Player player, int ask, int reply)
         {
             player.FolkNpc = this;
-            short result = 0;
+            short result;
             switch (ask)
             {
                 case 0:
@@ -200,11 +201,8 @@ namespace L2dotNET.GameService.Model.Npcs
                     switch (reply)
                     {
                         case 1: //open doors
-                            foreach (L2Door door in hideout.doors)
+                            foreach (L2Door door in hideout.doors.Where(door => door.Closed != 0))
                             {
-                                if (door.Closed == 0)
-                                    continue;
-
                                 door.Closed = 0;
                                 door.broadcastUserInfo();
                             }
@@ -212,11 +210,8 @@ namespace L2dotNET.GameService.Model.Npcs
                             player.sendPacket(new NpcHtmlMessage(player, ai.fnAfterDoorOpen, ObjID));
                             break;
                         case 2: //close
-                            foreach (L2Door door in hideout.doors)
+                            foreach (L2Door door in hideout.doors.Where(door => door.Closed != 1))
                             {
-                                if (door.Closed == 1)
-                                    continue;
-
                                 door.Closed = 1;
                                 door.broadcastUserInfo();
                             }
@@ -267,8 +262,8 @@ namespace L2dotNET.GameService.Model.Npcs
                 case -270:
                 {
                     string val = reply + "";
-                    int lvl = 0;
-                    int id = 0;
+                    int lvl;
+                    int id;
                     if (val.Length == 5)
                     {
                         id = int.Parse(val.Remove(2));

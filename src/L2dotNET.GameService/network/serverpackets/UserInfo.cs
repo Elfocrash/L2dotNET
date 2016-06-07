@@ -51,15 +51,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
             {
-                int result = 0;
-                result = player.Inventory._paperdoll[id][0];
+                int result = player.Inventory._paperdoll[id][0];
                 writeD(result);
             }
 
             for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
             {
-                int result = 0;
-                result = player.Inventory._paperdoll[id][0];
+                int result = player.Inventory._paperdoll[id][0];
                 writeD(result);
             }
 

@@ -84,10 +84,9 @@ namespace L2dotNET.GameService.World
 
         public void deleteMe()
         {
-            foreach (L2Object o in knownObjects.Values)
+            foreach (L2Player o in knownObjects.Values.OfType<L2Player>())
             {
-                if (o is L2Player)
-                    o.sendPacket(new DeleteObject(ObjID));
+                o.sendPacket(new DeleteObject(ObjID));
             }
 
             StopRegeneration();
@@ -125,6 +124,7 @@ namespace L2dotNET.GameService.World
 
             foreach (L2WorldRegion reg in region.GetSurroundingRegions())
             {
+                //reg.getObjects()
                 result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this));
             }
 
@@ -153,11 +153,8 @@ namespace L2dotNET.GameService.World
             {
                 if (!newAreas.Contains(region))
                 {
-                    foreach (L2Object obj in region.getObjects())
+                    foreach (L2Object obj in region.getObjects().Where(obj => obj != this))
                     {
-                        if (obj == this)
-                            continue;
-
                         obj.RemoveKnownObject(this);
                         RemoveKnownObject(obj);
                     }
@@ -172,11 +169,8 @@ namespace L2dotNET.GameService.World
                 if (!oldAreas.Contains(region))
                 {
                     // Update all objects.
-                    foreach (L2Object obj in region.getObjects())
+                    foreach (L2Object obj in region.getObjects().Where(obj => obj != this))
                     {
-                        if (obj == this)
-                            continue;
-
                         obj.AddKnownObject(this);
                         AddKnownObject(obj);
                     }
@@ -236,10 +230,9 @@ namespace L2dotNET.GameService.World
 
         public void updateVisibleStatus()
         {
-            foreach (L2Object o in knownObjects.Values)
+            foreach (L2Object o in knownObjects.Values.Where(o => o.Visible))
             {
-                if (o.Visible)
-                    onAddObject(o, null);
+                onAddObject(o, null);
             }
         }
 
@@ -342,7 +335,7 @@ namespace L2dotNET.GameService.World
                 }
             }
 
-            int code = 0;
+            int code;
             if (_isInsidePvpZone)
             {
                 code = ExSetCompassZoneCode.PVPZONE;

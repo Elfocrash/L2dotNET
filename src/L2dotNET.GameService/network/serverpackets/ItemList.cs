@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 
@@ -13,11 +14,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public ItemList(L2Player player, bool showWindow)
         {
             this.showWindow = showWindow;
-            foreach (L2Item item in player.Inventory.Items.Values)
+            foreach (L2Item item in player.Inventory.Items.Values.Where(item => item.Template.Type != ItemTemplate.L2ItemType.questitem))
             {
-                if (item.Template.Type == ItemTemplate.L2ItemType.questitem)
-                    continue;
-
                 items.Add(new ItemListItem { ObjectId = item.ObjID, ItemId = item.Template.ItemID, Slot = item.SlotLocation, Count = item.Count, Type2 = item.Template.Type2(), CType1 = item.CustomType1, Equip = item._isEquipped, Bodypart = item.Template.BodyPartId(), Enchant = item.Enchant, CType2 = item.CustomType2, Augment = item.AugmentationID, Mana = item.Durability, TimeLeft = item.LifeTimeEnd() });
 
                 if (item.Blocked)

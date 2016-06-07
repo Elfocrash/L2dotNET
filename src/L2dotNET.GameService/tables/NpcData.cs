@@ -168,7 +168,7 @@ namespace L2dotNET.GameService.Tables
 
         public void RequestTeleport(L2Npc npc, L2Player player, int type, int entryId)
         {
-            ab_teleport_group group = null;
+            ab_teleport_group group;
             try
             {
                 group = Teleports.npcs[npc.Template.NpcId].groups[type];

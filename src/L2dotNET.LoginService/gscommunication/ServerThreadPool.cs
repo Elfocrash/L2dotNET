@@ -89,28 +89,23 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void Shutdown(byte id)
         {
-            foreach (L2Server s in servers)
-                if (s.Id == id)
-                {
-                    if (s.Thread != null)
-                        s.Thread.Stop();
+            foreach (L2Server s in servers.Where(s => s.Id == id))
+            {
+                if (s.Thread != null)
+                    s.Thread.Stop();
 
-                    s.Thread = null;
-                    log.Warn($"ServerThread: #{id} shutted down");
-                    break;
-                }
+                s.Thread = null;
+                log.Warn($"ServerThread: #{id} shutted down");
+                break;
+            }
         }
 
         public bool LoggedAlready(string account)
         {
-            foreach (L2Server srv in servers)
+            foreach (L2Server srv in servers.Where(srv => srv.Thread != null && srv.Thread.LoggedAlready(account)))
             {
-                if (srv.Thread != null)
-                    if (srv.Thread.LoggedAlready(account))
-                    {
-                        srv.Thread.KickAccount(account);
-                        return true;
-                    }
+                srv.Thread.KickAccount(account);
+                return true;
             }
 
             return false;
@@ -118,12 +113,11 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void SendPlayer(byte serverId, LoginClient client, string time)
         {
-            foreach (L2Server srv in servers)
-                if (srv.Id == serverId && srv.Thread != null)
-                {
-                    srv.Thread.SendPlayer(client, time);
-                    break;
-                }
+            foreach (L2Server srv in servers.Where(srv => srv.Id == serverId && srv.Thread != null))
+            {
+                srv.Thread.SendPlayer(client, time);
+                break;
+            }
         }
     }
 }

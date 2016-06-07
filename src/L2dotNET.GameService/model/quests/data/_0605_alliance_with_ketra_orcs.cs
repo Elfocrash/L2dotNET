@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
 
@@ -149,18 +150,15 @@ namespace L2dotNET.GameService.Model.Quests.Data
                         htmltext = "herald_wakan_q0605_25.htm";
                         break;
                     case 6:
-                        foreach (QuestInfo qi in player._quests)
+                        foreach (QuestInfo qi in player._quests.Where(qi => qi.id == questId))
                         {
-                            if (qi.id == questId)
+                            foreach (int id in qi._template.actItems)
                             {
-                                foreach (int id in qi._template.actItems)
-                                {
-                                    player.Inventory.destroyItemAll(id, true, true);
-                                }
-
-                                player.stopQuest(qi, true);
-                                return;
+                                player.Inventory.destroyItemAll(id, true, true);
                             }
+
+                            player.stopQuest(qi, true);
+                            return;
                         }
 
                         htmltext = "herald_wakan_q0605_26.htm";

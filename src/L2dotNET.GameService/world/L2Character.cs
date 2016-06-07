@@ -450,11 +450,8 @@ namespace L2dotNET.GameService.World
             bool cnew = true;
 
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ave in _effects)
+            foreach (AbnormalEffect ave in _effects.Where(ave => ave.active != 0))
             {
-                if (ave.active == 0)
-                    continue;
-
                 if (ave.skill.skill_id == skill.skill_id && ave.skill.level >= skill.level)
                 {
                     cnew = false;
@@ -534,21 +531,15 @@ namespace L2dotNET.GameService.World
             bool addNew = true;
             int lvlnext = 1;
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ave in _effects)
+            foreach (AbnormalEffect ave in _effects.Where(ave => ave.active != 0 && ave.skill.skill_id == skillId))
             {
-                if (ave.active == 0)
-                    continue;
-
-                if (ave.skill.skill_id == skillId)
+                addNew = false;
+                if (ave.skill.level <= 10)
                 {
-                    addNew = false;
-                    if (ave.skill.level <= 10)
-                    {
-                        addNew = true;
-                        lvlnext = ave.skill.level + 1;
-                        nulled.Add(ave);
-                        break;
-                    }
+                    addNew = true;
+                    lvlnext = ave.skill.level + 1;
+                    nulled.Add(ave);
+                    break;
                 }
             }
 

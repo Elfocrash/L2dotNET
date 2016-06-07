@@ -5,9 +5,9 @@ namespace L2dotNET.LoginService.Network.Crypt
 {
     class LoginCrypt
     {
-        private byte[] key = new byte[] { (byte)0x6b, (byte)0x60, (byte)0xcb, (byte)0x5b, (byte)0x82, (byte)0xce, (byte)0x90, (byte)0xb1, (byte)0xcc, (byte)0x2b, (byte)0x6c, (byte)0x55, (byte)0x6c, (byte)0x6c, (byte)0x6c, (byte)0x6c };
+        private byte[] key = { 0x6b, 0x60, 0xcb, 0x5b, 0x82, 0xce, 0x90, 0xb1, 0xcc, 0x2b, 0x6c, 0x55, 0x6c, 0x6c, 0x6c, 0x6c };
 
-        private bool updatedKey = false;
+        private bool updatedKey;
         private readonly Random rnd = new Random();
         private readonly BlowfishCipher cipher;
 
@@ -62,7 +62,7 @@ namespace L2dotNET.LoginService.Network.Crypt
 
             long chksum = 0;
             int count = size - 4;
-            long check = -1;
+            long check;
             int i;
 
             for (i = offset; i < count; i += 4)

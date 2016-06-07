@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using log4net;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Player.Basic;
@@ -85,13 +86,10 @@ namespace L2dotNET.GameService.Managers
                 return;
 
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_ANNOUNCE);
-            foreach (AnnouncementModel announcement in Announcements)
+            foreach (AnnouncementModel announcement in Announcements.Where(announcement => announcement.Type == 0))
             {
-                if (announcement.Type == 0)
-                {
-                    cs.Text = announcement.Text;
-                    player.sendPacket(cs);
-                }
+                cs.Text = announcement.Text;
+                player.sendPacket(cs);
             }
         }
     }

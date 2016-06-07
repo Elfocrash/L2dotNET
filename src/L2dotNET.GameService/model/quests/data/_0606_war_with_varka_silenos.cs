@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
 
@@ -78,18 +79,15 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "elder_kadun_zu_ketra_q0606_0203.htm";
                         break;
                     case 4:
-                        foreach (QuestInfo qi in player._quests)
+                        foreach (QuestInfo qi in player._quests.Where(qi => qi.id == questId))
                         {
-                            if (qi.id == questId)
+                            foreach (int id in qi._template.actItems)
                             {
-                                foreach (int id in qi._template.actItems)
-                                {
-                                    player.Inventory.destroyItemAll(id, true, true);
-                                }
-
-                                player.stopQuest(qi, true);
-                                return;
+                                player.Inventory.destroyItemAll(id, true, true);
                             }
+
+                            player.stopQuest(qi, true);
+                            return;
                         }
 
                         htmltext = "elder_kadun_zu_ketra_q0606_0204.htm";

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using log4net;
 using L2dotNET.GameService.Model.Npcs.Ai;
 using L2dotNET.GameService.Model.Player;
@@ -28,14 +29,9 @@ namespace L2dotNET.GameService.Model.Structures
 
         public void Banish()
         {
-            foreach (L2Object obj in zone.ObjectsInside.Values)
+            foreach (L2Player player in zone.ObjectsInside.Values.OfType<L2Player>().Where(player => player.ClanId != ownerId))
             {
-                if (obj is L2Player)
-                {
-                    L2Player player = (L2Player)obj;
-                    if (player.ClanId != ownerId)
-                        player.teleport(banishLoc[0], banishLoc[1], banishLoc[2]);
-                }
+                player.teleport(banishLoc[0], banishLoc[1], banishLoc[2]);
             }
         }
 
@@ -91,7 +87,7 @@ namespace L2dotNET.GameService.Model.Structures
         public int GetFuncDepth(int decoId)
         {
             int level = Decoration[decoId];
-            int val = 0;
+            int val;
             switch (decoId)
             {
                 case AgitManagerAI.decotype_hpregen:

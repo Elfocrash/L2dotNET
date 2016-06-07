@@ -33,8 +33,6 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
         public SortedList<int, AITemplate> _registeredAis = new SortedList<int, AITemplate>();
 
-        public AIManager() { }
-
         private void register(AITemplate t)
         {
             _registeredAis.Add(t.id, t);

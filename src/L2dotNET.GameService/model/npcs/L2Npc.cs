@@ -291,9 +291,8 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public override void broadcastUserInfo()
         {
-            foreach (L2Object obj in knownObjects.Values)
-                if (obj is L2Player)
-                    obj.sendPacket(new NpcInfo(this));
+            foreach (L2Player obj in knownObjects.Values.OfType<L2Player>())
+                obj.sendPacket(new NpcInfo(this));
         }
 
         public override void onSpawn()

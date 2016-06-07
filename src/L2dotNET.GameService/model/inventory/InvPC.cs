@@ -145,9 +145,8 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public override void addItem(ItemTemplate template, long count, short enchant, bool msg, bool update)
         {
-            foreach (QuestInfo qi in _owner._quests)
-                if (!qi.completed)
-                    qi._template.onEarnItem(_owner, qi.stage, template.ItemID);
+            foreach (QuestInfo qi in _owner._quests.Where(qi => !qi.completed))
+                qi._template.onEarnItem(_owner, qi.stage, template.ItemID);
 
             InventoryUpdate iu = null;
 
@@ -195,19 +194,16 @@ namespace L2dotNET.GameService.Model.Inventory
             else
             {
                 bool find = false;
-                foreach (L2Item it in Items.Values)
+                foreach (L2Item it in Items.Values.Where(it => it.Template.ItemID == template.ItemID))
                 {
-                    if (it.Template.ItemID == template.ItemID)
-                    {
-                        it.Count += count;
+                    it.Count += count;
 
-                        if (update)
-                            iu.addModItem(it);
+                    if (update)
+                        iu.addModItem(it);
 
-                        it.sql_update();
-                        find = true;
-                        break;
-                    }
+                    it.sql_update();
+                    find = true;
+                    break;
                 }
 
                 if (!find)
@@ -225,7 +221,7 @@ namespace L2dotNET.GameService.Model.Inventory
 
                 if (msg)
                 {
-                    SystemMessage sm = null;
+                    SystemMessage sm;
                     if (template.ItemID == 57)
                     {
                         sm = new SystemMessage(SystemMessage.SystemMessageId.EARNED_S1_ADENA);
@@ -257,9 +253,8 @@ namespace L2dotNET.GameService.Model.Inventory
         public void addItem(L2Item item, bool msg, bool update)
         {
             item.Location = L2Item.L2ItemLocation.inventory;
-            foreach (QuestInfo qi in _owner._quests)
-                if (!qi.completed)
-                    qi._template.onEarnItem(_owner, qi.stage, item.Template.ItemID);
+            foreach (QuestInfo qi in _owner._quests.Where(qi => !qi.completed))
+                qi._template.onEarnItem(_owner, qi.stage, item.Template.ItemID);
 
             InventoryUpdate iu = null;
 
@@ -292,19 +287,16 @@ namespace L2dotNET.GameService.Model.Inventory
             else
             {
                 bool find = false;
-                foreach (L2Item it in Items.Values)
+                foreach (L2Item it in Items.Values.Where(it => it.Template.ItemID == item.Template.ItemID))
                 {
-                    if (it.Template.ItemID == item.Template.ItemID)
-                    {
-                        it.Count += item.Count;
+                    it.Count += item.Count;
 
-                        if (update)
-                            iu.addModItem(it);
+                    if (update)
+                        iu.addModItem(it);
 
-                        it.sql_update();
-                        find = true;
-                        break;
-                    }
+                    it.sql_update();
+                    find = true;
+                    break;
                 }
 
                 if (!find)
@@ -319,7 +311,7 @@ namespace L2dotNET.GameService.Model.Inventory
 
                 if (msg)
                 {
-                    SystemMessage sm = null;
+                    SystemMessage sm;
                     if (item.Template.ItemID == 57)
                     {
                         sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_PICKED_UP_S1_ADENA);
@@ -664,15 +656,12 @@ namespace L2dotNET.GameService.Model.Inventory
         public long getItemCount(int id)
         {
             long count = 0;
-            foreach (L2Item item in Items.Values)
+            foreach (L2Item item in Items.Values.Where(item => item.Template.ItemID == id))
             {
-                if (item.Template.ItemID == id)
-                {
-                    count += item.Count;
+                count += item.Count;
 
-                    if (item.Template.isStackable())
-                        break;
-                }
+                if (item.Template.isStackable())
+                    break;
             }
 
             return count;
@@ -689,13 +678,9 @@ namespace L2dotNET.GameService.Model.Inventory
                  ctx = 0;
             foreach (L2Item item in Items.Values)
             {
-                foreach (int i in px)
+                if (px.Any(i => item.Template.ItemID == i))
                 {
-                    if (item.Template.ItemID == i)
-                    {
-                        ctx++;
-                        break;
-                    }
+                    ctx++;
                 }
             }
 
@@ -707,13 +692,9 @@ namespace L2dotNET.GameService.Model.Inventory
             byte ctx = 0;
             foreach (L2Item item in Items.Values)
             {
-                foreach (int i in px)
+                if (px.Any(i => item.Template.ItemID == i))
                 {
-                    if (item.Template.ItemID == i)
-                    {
-                        ctx++;
-                        break;
-                    }
+                    ctx++;
                 }
             }
 
@@ -735,68 +716,65 @@ namespace L2dotNET.GameService.Model.Inventory
             List<int> nulled = new List<int>();
             bool nonstackmass = false;
             int iditem = 0;
-            foreach (L2Item item in Items.Values)
+            foreach (L2Item item in Items.Values.Where(item => item.Template.ItemID == id))
             {
-                if (item.Template.ItemID == id)
+                weightUp = item.Template.Weight > 0;
+
+                if (item.Template.isStackable())
                 {
-                    weightUp = item.Template.Weight > 0;
-
-                    if (item.Template.isStackable())
+                    if (item.Count > count)
                     {
-                        if (item.Count > count)
-                        {
-                            item.Count -= count;
-                            if (update)
-                                iu.addModItem(item);
+                        item.Count -= count;
+                        if (update)
+                            iu.addModItem(item);
 
-                            item.sql_update();
-                        }
-                        else
-                        {
-                            nulled.Add(item.ObjID);
-                            if (update)
-                                iu.addDelItem(item);
+                        item.sql_update();
+                    }
+                    else
+                    {
+                        nulled.Add(item.ObjID);
+                        if (update)
+                            iu.addDelItem(item);
 
-                            item.sql_delete();
-                        }
+                        item.sql_delete();
+                    }
+
+                    if (msg)
+                    {
+                        sm.AddItemName(item.Template.ItemID);
+
+                        if (count > 1)
+                            sm.AddItemCount(count);
+                    }
+
+                    break;
+                }
+                else
+                {
+                    if (count == 1)
+                    {
+                        nulled.Add(item.ObjID);
+
+                        if (update)
+                            iu.addDelItem(item);
 
                         if (msg)
                         {
                             sm.AddItemName(item.Template.ItemID);
-
-                            if (count > 1)
-                                sm.AddItemCount(count);
                         }
 
+                        item.sql_delete();
                         break;
                     }
                     else
                     {
-                        if (count == 1)
-                        {
-                            nulled.Add(item.ObjID);
+                        nonstackmass = true;
+                        iditem = item.Template.ItemID;
+                        nulled.Add(item.ObjID);
+                        if (update)
+                            iu.addDelItem(item);
 
-                            if (update)
-                                iu.addDelItem(item);
-
-                            if (msg)
-                            {
-                                sm.AddItemName(item.Template.ItemID);
-                            }
-
-                            item.sql_delete();
-                            break;
-                        }
-                        else
-                        {
-                            nonstackmass = true;
-                            iditem = item.Template.ItemID;
-                            nulled.Add(item.ObjID);
-                            if (update)
-                                iu.addDelItem(item);
-
-                            item.sql_delete();
-                        }
+                        item.sql_delete();
                     }
                 }
             }
@@ -926,50 +904,47 @@ namespace L2dotNET.GameService.Model.Inventory
 
             bool weightUp = false;
             List<int> nulled = new List<int>();
-            foreach (L2Item item in Items.Values)
+            foreach (L2Item item in Items.Values.Where(item => item.Template.ItemID == id))
             {
-                if (item.Template.ItemID == id)
+                weightUp = item.Template.Weight > 0;
+                if (item.Template.isStackable())
                 {
-                    weightUp = item.Template.Weight > 0;
-                    if (item.Template.isStackable())
+                    long c = item.Count;
+                    nulled.Add(item.ObjID);
+                    if (update)
+                        iu.addDelItem(item);
+
+                    item.sql_delete();
+
+                    if (msg)
                     {
-                        long c = item.Count;
-                        nulled.Add(item.ObjID);
-                        if (update)
-                            iu.addDelItem(item);
+                        SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
+                        sm.AddItemName(item.Template.ItemID);
+                        sm.AddItemCount(c);
 
-                        item.sql_delete();
-
-                        if (msg)
-                        {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
-                            sm.AddItemName(item.Template.ItemID);
-                            sm.AddItemCount(c);
-
-                            _owner.sendPacket(sm);
-                        }
-
-                        break;
+                        _owner.sendPacket(sm);
                     }
-                    else
+
+                    break;
+                }
+                else
+                {
+                    nulled.Add(item.ObjID);
+
+                    if (update)
+                        iu.addDelItem(item);
+
+                    if (msg)
                     {
-                        nulled.Add(item.ObjID);
+                        SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
+                        sm.AddItemName(item.Template.ItemID);
+                        sm.AddNumber(1);
 
-                        if (update)
-                            iu.addDelItem(item);
-
-                        if (msg)
-                        {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
-                            sm.AddItemName(item.Template.ItemID);
-                            sm.AddNumber(1);
-
-                            _owner.sendPacket(sm);
-                        }
-
-                        item.sql_delete();
-                        break;
+                        _owner.sendPacket(sm);
                     }
+
+                    item.sql_delete();
+                    break;
                 }
             }
 
@@ -1004,15 +979,14 @@ namespace L2dotNET.GameService.Model.Inventory
                                 nulled.Add((int)itemd[0]);
                                 if (ex)
                                 {
-                                    foreach (L2Item itp in Items.Values)
-                                        if (itp.Template.ItemID == item.Template.ItemID)
-                                        {
-                                            itp.Count += item.Count;
-                                            itp.sql_update();
-                                            if (update)
-                                                iuMe.addModItem(itp);
-                                            break;
-                                        }
+                                    foreach (L2Item itp in Items.Values.Where(itp => itp.Template.ItemID == item.Template.ItemID))
+                                    {
+                                        itp.Count += item.Count;
+                                        itp.sql_update();
+                                        if (update)
+                                            iuMe.addModItem(itp);
+                                        break;
+                                    }
 
                                     item.sql_delete();
                                 }
@@ -1035,14 +1009,13 @@ namespace L2dotNET.GameService.Model.Inventory
 
                                 if (ex)
                                 {
-                                    foreach (L2Item itp in Items.Values)
-                                        if (itp.Template.ItemID == item.Template.ItemID)
-                                        {
-                                            itp.Count += itemd[1];
-                                            if (update)
-                                                iuMe.addModItem(itp);
-                                            break;
-                                        }
+                                    foreach (L2Item itp in Items.Values.Where(itp => itp.Template.ItemID == item.Template.ItemID))
+                                    {
+                                        itp.Count += itemd[1];
+                                        if (update)
+                                            iuMe.addModItem(itp);
+                                        break;
+                                    }
                                 }
                                 else
                                 {

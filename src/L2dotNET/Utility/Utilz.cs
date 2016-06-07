@@ -24,13 +24,13 @@ namespace L2dotNET.Utility
         public static string SystemSummary()
         {
             StringBuilder m_StrBuilder = new StringBuilder();
-            m_StrBuilder.AppendFormat("Date: {0}\r\n", CurrentTime);
-            m_StrBuilder.AppendFormat("OS: {0}\r\n", Environment.OSVersion);
-            m_StrBuilder.AppendFormat("Environment version: {0}\r\n", Environment.Version.ToString());
-            m_StrBuilder.AppendFormat("Processors count: {0}\r\n", Environment.ProcessorCount);
-            m_StrBuilder.AppendFormat("Working set: {0} bytes\r\n", Environment.WorkingSet);
-            m_StrBuilder.AppendFormat("Domain name: {0}\r\n", AppDomain.CurrentDomain.FriendlyName);
-            m_StrBuilder.AppendFormat("Service Uptime: {0}\r\n", ProcessUptimeAsString);
+            m_StrBuilder.Append($"Date: {CurrentTime}\r\n");
+            m_StrBuilder.Append($"OS: {Environment.OSVersion}\r\n");
+            m_StrBuilder.Append($"Environment version: {Environment.Version.ToString()}\r\n");
+            m_StrBuilder.Append($"Processors count: {Environment.ProcessorCount}\r\n");
+            m_StrBuilder.Append($"Working set: {Environment.WorkingSet} bytes\r\n");
+            m_StrBuilder.Append($"Domain name: {AppDomain.CurrentDomain.FriendlyName}\r\n");
+            m_StrBuilder.Append($"Service Uptime: {ProcessUptimeAsString}\r\n");
             m_StrBuilder.Append(Environment.NewLine);
             return m_StrBuilder.ToString();
         }

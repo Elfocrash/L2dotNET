@@ -44,7 +44,7 @@ namespace L2dotNET.LoginService
             log.Info($"Auth server listening clients at {Config.Config.Instance.serverConfig.Host}:{Config.Config.Instance.serverConfig.LoginPort}");
             new Thread(ServerThreadPool.Instance.Start).Start();
 
-            TcpClient clientSocket = default(TcpClient);
+            TcpClient clientSocket;
             while (true)
             {
                 clientSocket = LoginServerListener.AcceptTcpClient();

@@ -78,24 +78,41 @@ namespace L2dotNET.GameService.Model.Quests.Data
             switch (npcId)
             {
                 case rapunzel:
-                    if (cond == 1)
-                        htmltext = "rapunzel_q0006_0105.htm";
-                    else if (cond == 3)
-                        htmltext = "rapunzel_q0006_0301.htm";
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "rapunzel_q0006_0105.htm";
+                            break;
+                        case 3:
+                            htmltext = "rapunzel_q0006_0301.htm";
+                            break;
+                    }
                     break;
                 case baul:
-                    if (cond == 1)
-                        htmltext = "baul_q0006_0101.htm";
-                    else if (cond == 2 && player.hasItem(q_letter_paulo))
-                        htmltext = "baul_q0006_0202.htm";
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "baul_q0006_0101.htm";
+                            break;
+                        case 2:
+                            if (player.hasItem(q_letter_paulo))
+                                htmltext = "baul_q0006_0202.htm";
+                            break;
+                    }
                     break;
                 case sir_collin_windawood:
-                    if (cond == 2 && player.hasItem(q_letter_paulo))
-                        htmltext = "sir_collin_windawood_q0006_0201.htm";
-                    else if (cond == 2 && !player.hasItem(q_letter_paulo))
-                        htmltext = "sir_collin_windawood_q0006_0302.htm";
-                    else if (cond == 3)
-                        htmltext = "sir_collin_windawood_q0006_0303.htm";
+                    switch (cond)
+                    {
+                        case 2:
+                            if (player.hasItem(q_letter_paulo))
+                                htmltext = "sir_collin_windawood_q0006_0201.htm";
+                            else
+                                htmltext = "sir_collin_windawood_q0006_0302.htm";
+                            break;
+                        case 3:
+                            htmltext = "sir_collin_windawood_q0006_0303.htm";
+                            break;
+                    }
                     break;
             }
 

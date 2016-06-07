@@ -120,15 +120,12 @@ namespace L2dotNET.GameService.Model.Communities
         {
             player.Clan = this;
 
-            foreach (ClanMember m in members)
+            foreach (ClanMember m in members.Where(m => m.ObjID == player.ObjID))
             {
-                if (m.ObjID == player.ObjID)
-                {
-                    m.online = 1;
-                    m.Level = player.Level;
-                    m.Target = player;
-                    break;
-                }
+                m.online = 1;
+                m.Level = player.Level;
+                m.Target = player;
+                break;
             }
 
             if (LeaderID == player.ObjID)
@@ -145,9 +142,8 @@ namespace L2dotNET.GameService.Model.Communities
 
         public void broadcastToMembers(GameServerNetworkPacket pk)
         {
-            foreach (ClanMember cm in members)
-                if (cm.online == 1)
-                    cm.Target.sendPacket(pk);
+            foreach (ClanMember cm in members.Where(cm => cm.online == 1))
+                cm.Target.sendPacket(pk);
         }
 
         public e_ClanType isSubLeader(int ObjID, e_ClanType[] types)
@@ -354,15 +350,12 @@ namespace L2dotNET.GameService.Model.Communities
             sm.AddPlayerName(player.Name);
             broadcastToOnline(sm);
 
-            foreach (ClanMember cm in members)
+            foreach (ClanMember cm in members.Where(cm => cm.ObjID == player.ObjID))
             {
-                if (cm.ObjID == player.ObjID)
-                {
-                    lock (members)
-                        members.Remove(cm);
+                lock (members)
+                    members.Remove(cm);
 
-                    break;
-                }
+                break;
             }
 
             player.Clan = null;
@@ -383,22 +376,15 @@ namespace L2dotNET.GameService.Model.Communities
 
         private void broadcastToOnline(GameServerNetworkPacket p)
         {
-            foreach (ClanMember cm in members)
-                if (cm.online == 1)
-                    cm.Target.sendPacket(p);
+            foreach (ClanMember cm in members.Where(cm => cm.online == 1))
+                cm.Target.sendPacket(p);
         }
 
         public byte getClanMemberCount(e_ClanType type, int myself)
         {
             byte cnt = 0;
-            foreach (ClanMember cm in members)
-                if (cm.ClanType == (short)type)
-                {
-                    if (myself != 0 && myself == cm.ObjID)
-                        continue;
-
-                    cnt++;
-                }
+            foreach (ClanMember cm in members.Where(cm => cm.ClanType == (short)type && (myself == 0 || myself != cm.ObjID)))
+                cnt++;
 
             //  var x = from cm in members where cm.Type == type && cm.ObjID != myself let cnt2 = cnt+1 select cnt2;
             //  int cn = x.

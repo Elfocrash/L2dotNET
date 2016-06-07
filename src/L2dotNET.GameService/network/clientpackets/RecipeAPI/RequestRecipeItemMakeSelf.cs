@@ -47,7 +47,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
                 return;
             }
 
-            bool next = true;
+            bool next;
 
             if (rec._iscommonrecipe == 0)
                 next = player.p_create_item >= rec._level;

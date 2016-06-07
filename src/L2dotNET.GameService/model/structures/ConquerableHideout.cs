@@ -120,7 +120,7 @@ namespace L2dotNET.GameService.Model.Structures
                 else
                 {
                     Message("Nobody won! " + name + " belong to NPC until next siege.");
-                    trigger = true;
+                    //trigger = true;
                 }
             }
 

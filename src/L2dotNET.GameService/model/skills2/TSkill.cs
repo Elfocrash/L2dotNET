@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Npcs.Decor;
 using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Player;
@@ -220,12 +221,11 @@ namespace L2dotNET.GameService.Model.Skills2
                 return true;
 
             sbyte retcode = -2;
-            foreach (TSkillCond cond in Conditions)
-                if (!cond.CanUse(target, this))
-                {
-                    retcode = cond.retcode;
-                    break;
-                }
+            foreach (TSkillCond cond in Conditions.Where(cond => !cond.CanUse(target, this)))
+            {
+                retcode = cond.retcode;
+                break;
+            }
 
             if (retcode == -1)
                 target.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANNOT_BE_USED).AddSkillName(skill_id, level));

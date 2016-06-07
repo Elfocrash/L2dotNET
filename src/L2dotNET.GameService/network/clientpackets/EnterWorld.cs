@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Controllers;
+﻿using System.Linq;
+using L2dotNET.GameService.Controllers;
 using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
@@ -44,11 +45,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             AnnouncementManager.Instance.OnEnter(player);
 
-            foreach (L2Item item in player.Inventory.Items.Values)
+            foreach (L2Item item in player.Inventory.Items.Values.Where(item => item._isEquipped != 0))
             {
-                if (item._isEquipped == 0)
-                    continue;
-
                 item.notifyStats(player);
             }
 

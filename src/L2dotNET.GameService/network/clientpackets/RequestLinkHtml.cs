@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             // log.Info($"link to '{ _link }'");
 
-            string file = "";
+            string file;
             int id = 0;
             if (_link.Contains("#"))
             {

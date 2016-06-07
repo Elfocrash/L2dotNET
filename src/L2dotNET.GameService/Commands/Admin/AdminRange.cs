@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Timers;
 using log4net;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Structures.Conq;
@@ -50,8 +51,8 @@ namespace L2dotNET.GameService.Commands.Admin
                 case "5":
                     if (np == null)
                     {
-                        int[] x = new int[] { -81166, -80913, -81952, -82554 };
-                        int[] y = new int[] { 245118, 246031, 246551, 245619 };
+                        int[] x = { -81166, -80913, -81952, -82554 };
+                        int[] y = { 245118, 246031, 246551, 245619 };
                         np = new ZoneNPoly(x, y, -3727, -3727);
                     }
 
@@ -59,7 +60,7 @@ namespace L2dotNET.GameService.Commands.Admin
 
                     for (int i = 0; i < count; i++)
                     {
-                        int[] rloc = this.rndXYZ();
+                        int[] rloc = rndXYZ();
                         // NpcTable.getInstance().spawnNpc("lector", rloc[0], rloc[1], rloc[3], new Random().Next(65000));
                     }
                     break;
@@ -78,7 +79,7 @@ namespace L2dotNET.GameService.Commands.Admin
         //private System.Timers.Timer t;
         //private L2Player adm;
 
-        private void t_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void t_Elapsed(object sender, ElapsedEventArgs e)
         {
             //List<int> l = new List<int>();
             //l.Add(adm.ObjID);

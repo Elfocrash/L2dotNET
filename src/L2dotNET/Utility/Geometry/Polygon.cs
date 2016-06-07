@@ -22,7 +22,7 @@ namespace L2dotNET.Utility.Geometry
 
         public Polygon(int id, List<int[]> points)
         {
-            List<Triangle> triangles = null;
+            List<Triangle> triangles;
             int size = 0;
             try
             {

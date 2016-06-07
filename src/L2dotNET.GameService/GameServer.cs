@@ -97,7 +97,7 @@ namespace L2dotNET.GameService
 
             log.Info($"Listening Gameservers on port {Config.Config.Instance.serverConfig.Port}");
 
-            TcpClient clientSocket = default(TcpClient);
+            TcpClient clientSocket;
             while (true)
             {
                 clientSocket = GameServerListener.AcceptTcpClient();

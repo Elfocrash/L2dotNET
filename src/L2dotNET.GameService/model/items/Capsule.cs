@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using log4net;
 using L2dotNET.GameService.Model.Player;
@@ -51,10 +52,9 @@ namespace L2dotNET.GameService.Model.Items
                 CapsuleItem caps = items[item.Template.ItemID];
                 Random rn = new Random();
                 ((L2Player)character).Inventory.destroyItem(item, 1, true, true);
-                foreach (CapsuleItemReward rew in caps.rewards)
+                foreach (CapsuleItemReward rew in caps.rewards.Where(rew => rn.Next(100) <= rew.rate))
                 {
-                    if (rn.Next(100) <= rew.rate)
-                        ((L2Player)character).addItem(rew.id, rn.Next(rew.min, rew.max));
+                    ((L2Player)character).addItem(rew.id, rn.Next(rew.min, rew.max));
                 }
             }
         }

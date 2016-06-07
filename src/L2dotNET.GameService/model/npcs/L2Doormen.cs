@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Npcs.Decor;
+﻿using System.Linq;
+using L2dotNET.GameService.Model.Npcs.Decor;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Structures;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -38,11 +39,8 @@ namespace L2dotNET.GameService.Model.Npcs
                     switch (reply)
                     {
                         case 1: //open ch doors
-                            foreach (L2Door door in hideout.doors)
+                            foreach (L2Door door in hideout.doors.Where(door => door.Closed != 0))
                             {
-                                if (door.Closed == 0)
-                                    continue;
-
                                 door.Closed = 0;
                                 door.broadcastUserInfo();
                             }
@@ -50,11 +48,8 @@ namespace L2dotNET.GameService.Model.Npcs
                             player.sendPacket(new NpcHtmlMessage(player, "AgitJanitorAfterDoorOpen.htm", ObjID));
                             break;
                         case 2: //close
-                            foreach (L2Door door in hideout.doors)
+                            foreach (L2Door door in hideout.doors.Where(door => door.Closed != 1))
                             {
-                                if (door.Closed == 1)
-                                    continue;
-
                                 door.Closed = 1;
                                 door.broadcastUserInfo();
                             }

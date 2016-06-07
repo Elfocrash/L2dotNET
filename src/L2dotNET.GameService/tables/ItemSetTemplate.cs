@@ -95,11 +95,8 @@ namespace L2dotNET.GameService.Tables
             byte set1sum = 0,
                  set2sum = 0,
                  set3sum = 0;
-            foreach (L2Item item in owner.Inventory.Items.Values)
+            foreach (L2Item item in owner.Inventory.Items.Values.Where(item => item._isEquipped != 0 && item.Template.Type == ItemTemplate.L2ItemType.armor))
             {
-                if (item._isEquipped == 0 || item.Template.Type != ItemTemplate.L2ItemType.armor)
-                    continue;
-
                 switch (item.Template.Bodypart)
                 {
                     case ItemTemplate.L2ItemBodypart.chest:

@@ -76,16 +76,16 @@ namespace L2dotNET.Utility
                     if (ReadFile(handle, buf, lengthToRead, &lengthToRead, 0x00))
                     {
                         if (!CloseHandle(handle))
-                            throw new IOException(string.Format("Failed to close file handle for '{0}'", fileName));
+                            throw new IOException($"Failed to close file handle for '{fileName}'");
 
                         return buffer;
                     }
                 }
 
-                throw new FileLoadException(string.Format("Failed to read {0} bytes from file '{1}'.", lengthToRead, fileName));
+                throw new FileLoadException($"Failed to read {lengthToRead} bytes from file '{fileName}'.");
             }
 
-            throw new FileNotFoundException(string.Format("File '{0}' can't be found.", fileName));
+            throw new FileNotFoundException($"File '{fileName}' can't be found.");
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace L2dotNET.Utility
             if (Directory.Exists(directory))
                 return new DirectoryInfo(directory).GetFiles(mask, searchHow);
 
-            throw new DirectoryNotFoundException(string.Format("Directory '{0}' can't be found.", directory));
+            throw new DirectoryNotFoundException($"Directory '{directory}' can't be found.");
         }
     }
 }

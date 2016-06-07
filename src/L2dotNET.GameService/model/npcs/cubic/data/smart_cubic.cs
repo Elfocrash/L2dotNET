@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         public override int AiActionTask(L2Player owner)
         {
             int chance = new Random().Next(100);
-            int retval = 0;
+            int retval;
             byte summ = skill1rate;
             if (chance < summ)
                 retval = action1(owner);

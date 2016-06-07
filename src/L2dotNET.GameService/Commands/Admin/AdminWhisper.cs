@@ -17,13 +17,13 @@ namespace L2dotNET.GameService.Commands.Admin
             switch (alias.Split(' ')[1])
             {
                 case "on":
-                    changed = admin.WhieperBlock = false;
-                    admin.WhieperBlock = true;
+                    changed = admin.WhisperBlock = false;
+                    admin.WhisperBlock = true;
                     admin.sendMessage("Whisper blocking enabled.");
                     break;
                 case "off":
-                    changed = admin.WhieperBlock = true;
-                    admin.WhieperBlock = false;
+                    changed = admin.WhisperBlock = true;
+                    admin.WhisperBlock = false;
                     admin.sendMessage("Whisper blocking disabled.");
                     break;
             }

@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Managers;
+﻿using System.Linq;
+using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Player.Basic;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -64,13 +65,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                             return;
                     }
 
-                    foreach (L2Object o in player.knownObjects.Values)
+                    foreach (L2Player o in player.knownObjects.Values.OfType<L2Player>().Where(o => player.isInsideRadius(o, 1250, true, false)))
                     {
-                        if (o is L2Player)
-                        {
-                            if (player.isInsideRadius(o, 1250, true, false))
-                                o.sendPacket(cs);
-                        }
+                        o.sendPacket(cs);
                     }
 
                     player.sendPacket(cs);

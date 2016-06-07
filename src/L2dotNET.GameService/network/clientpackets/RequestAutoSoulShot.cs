@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Items;
+﻿using System.Linq;
+using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 
@@ -46,24 +47,23 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 L2Item weapon = player.Inventory.getWeapon();
                 if (weapon != null)
                 {
-                    foreach (int sid in weapon.Template.getSoulshots())
-                        if (sid == itemId)
+                    foreach (int sid in weapon.Template.getSoulshots().Where(sid => sid == itemId))
+                    {
+                        if (!weapon.Soulshot)
                         {
-                            if (!weapon.Soulshot)
+                            if (!player.hasItem(sid, weapon.Template.SoulshotCount))
                             {
-                                if (!player.hasItem(sid, weapon.Template.SoulshotCount))
-                                {
-                                    player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.CANNOT_AUTO_USE_LACK_OF_S1).AddItemName(itemId));
-                                    player.sendActionFailed();
-                                    return;
-                                }
-
-                                player.Inventory.destroyItem(itemId, weapon.Template.SoulshotCount, false, true);
-                                weapon.Soulshot = true;
-                                player.broadcastSoulshotUse(itemId);
+                                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.CANNOT_AUTO_USE_LACK_OF_S1).AddItemName(itemId));
+                                player.sendActionFailed();
+                                return;
                             }
-                            break;
+
+                            player.Inventory.destroyItem(itemId, weapon.Template.SoulshotCount, false, true);
+                            weapon.Soulshot = true;
+                            player.broadcastSoulshotUse(itemId);
                         }
+                        break;
+                    }
                 }
             }
             else

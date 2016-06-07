@@ -141,10 +141,9 @@ namespace L2dotNET.GameService
 
         private void OnReceiveCallbackStatic(IAsyncResult result)
         {
-            int rs = 0;
             try
             {
-                rs = _stream.EndRead(result);
+                int rs = _stream.EndRead(result);
                 if (rs > 0)
                 {
                     short length = BitConverter.ToInt16(_buffer, 0);

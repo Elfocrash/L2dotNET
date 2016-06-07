@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using log4net;
 
 namespace L2dotNET.LoginService.Managers
@@ -109,9 +110,8 @@ namespace L2dotNET.LoginService.Managers
                     }
 
                     byte cnt = 0;
-                    foreach (bool u in d)
-                        if (u)
-                            cnt++;
+                    foreach (bool u in d.Where(u => u))
+                        cnt++;
 
                     if (cnt >= 4)
                         return false;
