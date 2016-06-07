@@ -45,36 +45,36 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == warehouse_chief_donal)
+            switch (npcId)
             {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "warehouse_chief_donal_q0018_0105.htm";
-                        break;
-                }
-            }
-            else if (npcId == freighter_daisy)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "freighter_daisy_q0018_0101.htm";
-                        break;
-                    case 2:
-                        htmltext = "freighter_daisy_q0018_0202.htm";
-                        break;
-                }
-            }
-            else if (npcId == supplier_abercrombie)
-            {
-                switch (cond)
-                {
-                    case 2:
-                        if (player.hasItem(q_mercs_supplies))
-                            htmltext = "supplier_abercrombie_q0018_0201.htm";
-                        break;
-                }
+                case warehouse_chief_donal:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "warehouse_chief_donal_q0018_0105.htm";
+                            break;
+                    }
+                    break;
+                case freighter_daisy:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "freighter_daisy_q0018_0101.htm";
+                            break;
+                        case 2:
+                            htmltext = "freighter_daisy_q0018_0202.htm";
+                            break;
+                    }
+                    break;
+                case supplier_abercrombie:
+                    switch (cond)
+                    {
+                        case 2:
+                            if (player.hasItem(q_mercs_supplies))
+                                htmltext = "supplier_abercrombie_q0018_0201.htm";
+                            break;
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);

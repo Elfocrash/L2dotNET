@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Playable.PetAI;
+﻿using System.Timers;
+using L2dotNET.GameService.Model.Playable.PetAI;
 using L2dotNET.GameService.Tools;
 using L2dotNET.GameService.World;
 
@@ -11,7 +12,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             character = cha;
         }
 
-        public System.Timers.Timer attackMove;
+        public Timer attackMove;
 
         public override void NotifyOnHit(L2Character attacker, double damage)
         {
@@ -27,15 +28,15 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         {
             if (attackMove == null)
             {
-                attackMove = new System.Timers.Timer();
-                attackMove.Elapsed += new System.Timers.ElapsedEventHandler(AttackMoveTask);
+                attackMove = new Timer();
+                attackMove.Elapsed += AttackMoveTask;
                 attackMove.Interval = 100;
             }
 
             attackMove.Enabled = true;
         }
 
-        private void AttackMoveTask(object sender, System.Timers.ElapsedEventArgs e)
+        private void AttackMoveTask(object sender, ElapsedEventArgs e)
         {
             if (MoveHome > 0)
             {
@@ -50,7 +51,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             if (dis < 80)
             {
                 MoveTarget = 0;
-                L2Character target = (L2Character)character.CurrentTarget;
+                L2Character target = character.CurrentTarget;
                 character.doAttack(target);
             }
             else
@@ -99,8 +100,8 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             base.NotifyTargetNull();
         }
 
-        private byte MoveHome = 0;
-        private byte MoveTarget = 0;
+        private byte MoveHome;
+        private byte MoveTarget;
 
         private void ValidateSpawnLocation()
         {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -45,49 +46,46 @@ namespace L2dotNET.GameService.Model.Inventory
             List<int> nulled = new List<int>();
             foreach (L2Item item in player.Inventory.Items.Values)
             {
-                foreach (long[] itemd in items)
+                foreach (long[] itemd in items.Where(itemd => item.ObjID == itemd[0]))
                 {
-                    if (item.ObjID == itemd[0])
+                    if (item.Template.isStackable())
                     {
-                        if (item.Template.isStackable())
+                        if (itemd[1] >= item.Count)
                         {
-                            if (itemd[1] >= item.Count)
-                            {
-                                nulled.Add((int)itemd[0]);
+                            nulled.Add((int)itemd[0]);
 
-                                item.Location = L2Item.L2ItemLocation.refund;
-                                _items.Add(item);
-                                item.sql_update();
+                            item.Location = L2Item.L2ItemLocation.refund;
+                            _items.Add(item);
+                            item.sql_update();
 
-                                if (update)
-                                    iu.addDelItem(item);
-                            }
-                            else
-                            {
-                                item.Count -= itemd[1];
-
-                                L2Item ins = new L2Item(item.Template);
-                                ins.Count = itemd[1];
-                                ins.Location = L2Item.L2ItemLocation.refund;
-                                _items.Add(ins);
-
-                                ins.sql_insert(_owner.ObjID);
-
-                                if (update)
-                                    iu.addModItem(item);
-                            }
+                            if (update)
+                                iu.addDelItem(item);
                         }
                         else
                         {
-                            nulled.Add((int)itemd[0]);
-                            item.Location = L2Item.L2ItemLocation.refund;
-                            _items.Add(item);
+                            item.Count -= itemd[1];
 
-                            item.sql_update();
+                            L2Item ins = new L2Item(item.Template);
+                            ins.Count = itemd[1];
+                            ins.Location = L2Item.L2ItemLocation.refund;
+                            _items.Add(ins);
+
+                            ins.sql_insert(_owner.ObjID);
 
                             if (update)
                                 iu.addModItem(item);
                         }
+                    }
+                    else
+                    {
+                        nulled.Add((int)itemd[0]);
+                        item.Location = L2Item.L2ItemLocation.refund;
+                        _items.Add(item);
+
+                        item.sql_update();
+
+                        if (update)
+                            iu.addModItem(item);
                     }
                 }
             }

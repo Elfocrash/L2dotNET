@@ -55,7 +55,7 @@ namespace L2dotNET.GameService.Tables
             XElement ex = xml.Element("list");
             if (ex != null)
             {
-                foreach (var m in ex.Elements())
+                foreach (XElement m in ex.Elements())
                 {
                     if (m.Name == "territory")
                     {
@@ -64,7 +64,7 @@ namespace L2dotNET.GameService.Tables
                         zone.controller = m.Attribute("controller").Value;
                         zone.start_active = bool.Parse(m.Attribute("start_active").Value);
 
-                        foreach (var stp in m.Elements())
+                        foreach (XElement stp in m.Elements())
                         {
                             switch (stp.Name.LocalName)
                             {
@@ -90,7 +90,7 @@ namespace L2dotNET.GameService.Tables
                     }
                     else if (m.Name == "spawn")
                     {
-                        foreach (var stp in m.Elements())
+                        foreach (XElement stp in m.Elements())
                         {
                             switch (stp.Name.LocalName)
                             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Timers;
 using L2dotNET.GameService.Enums;
 using L2dotNET.GameService.Model.Items;
@@ -369,15 +370,7 @@ namespace L2dotNET.GameService.World
 
         public void stopEffect(TSkill skill, L2Character caster)
         {
-            AbnormalEffect ex = null;
-            foreach (AbnormalEffect e in _effects)
-            {
-                if (e.id == skill.skill_id)
-                {
-                    ex = e;
-                    break;
-                }
-            }
+            AbnormalEffect ex = _effects.FirstOrDefault(e => e.id == skill.skill_id);
 
             if (ex != null)
             {
@@ -457,11 +450,8 @@ namespace L2dotNET.GameService.World
             bool cnew = true;
 
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ave in _effects)
+            foreach (AbnormalEffect ave in _effects.Where(ave => ave.active != 0))
             {
-                if (ave.active == 0)
-                    continue;
-
                 if (ave.skill.skill_id == skill.skill_id && ave.skill.level >= skill.level)
                 {
                     cnew = false;
@@ -541,21 +531,15 @@ namespace L2dotNET.GameService.World
             bool addNew = true;
             int lvlnext = 1;
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ave in _effects)
+            foreach (AbnormalEffect ave in _effects.Where(ave => ave.active != 0 && ave.skill.skill_id == skillId))
             {
-                if (ave.active == 0)
-                    continue;
-
-                if (ave.skill.skill_id == skillId)
+                addNew = false;
+                if (ave.skill.level <= 10)
                 {
-                    addNew = false;
-                    if (ave.skill.level <= 10)
-                    {
-                        addNew = true;
-                        lvlnext = ave.skill.level + 1;
-                        nulled.Add(ave);
-                        break;
-                    }
+                    addNew = true;
+                    lvlnext = ave.skill.level + 1;
+                    nulled.Add(ave);
+                    break;
                 }
             }
 
@@ -1350,10 +1334,7 @@ namespace L2dotNET.GameService.World
 
         public virtual bool isCastingNow()
         {
-            if (castTime == null)
-                return false;
-
-            return castTime.Enabled;
+            return castTime != null && castTime.Enabled;
         }
 
         public virtual void abortCast()
@@ -1424,13 +1405,7 @@ namespace L2dotNET.GameService.World
 
             if (skill.effects.Count > 0)
             {
-                bool fail = false;
-                foreach (TEffect ef in skill.effects)
-                    if (!ef.canUse(this))
-                    {
-                        fail = true;
-                        break;
-                    }
+                bool fail = skill.effects.Any(ef => !ef.canUse(this));
 
                 if (fail)
                     return 7;
@@ -1557,10 +1532,7 @@ namespace L2dotNET.GameService.World
 
         public bool isMoving()
         {
-            if (updatePositionTime != null)
-                return updatePositionTime.Enabled;
-
-            return false;
+            return updatePositionTime != null && updatePositionTime.Enabled;
         }
 
         public void MoveTo(int x, int y, int z)
@@ -1692,10 +1664,7 @@ namespace L2dotNET.GameService.World
 
         public virtual bool isAttacking()
         {
-            if (attack_ToEnd != null)
-                return attack_ToEnd.Enabled;
-
-            return false;
+            return attack_ToEnd != null && attack_ToEnd.Enabled;
         }
 
         public virtual int ClanId
@@ -1746,26 +1715,26 @@ namespace L2dotNET.GameService.World
         public void Mute(int type, long hashId, bool start)
         {
             List<long> list = null;
-            if (type == 0)
+            switch (type)
             {
-                if (Muted0 == null)
-                    Muted0 = new List<long>();
+                case 0:
+                    if (Muted0 == null)
+                        Muted0 = new List<long>();
 
-                list = Muted0;
-            }
-            else if (type == 1)
-            {
-                if (Muted1 == null)
-                    Muted1 = new List<long>();
+                    list = Muted0;
+                    break;
+                case 1:
+                    if (Muted1 == null)
+                        Muted1 = new List<long>();
 
-                list = Muted1;
-            }
-            else if (type == 2)
-            {
-                if (Muted2 == null)
-                    Muted2 = new List<long>();
+                    list = Muted1;
+                    break;
+                case 2:
+                    if (Muted2 == null)
+                        Muted2 = new List<long>();
 
-                list = Muted2;
+                    list = Muted2;
+                    break;
             }
 
             if (start)

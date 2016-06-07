@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 
@@ -13,9 +14,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             _items = player.getAllQuestItems();
 
-            foreach (L2Item item in _items)
-                if (item.Blocked)
-                    _block.Add(item.ObjID);
+            foreach (L2Item item in _items.Where(item => item.Blocked))
+                _block.Add(item.ObjID);
         }
 
         protected internal override void write()

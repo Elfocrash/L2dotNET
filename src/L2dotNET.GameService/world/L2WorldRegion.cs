@@ -82,12 +82,7 @@ namespace L2dotNET.GameService.World
 
         public bool ContainsZone(int zoneId)
         {
-            foreach (L2ZoneType z in _zones)
-            {
-                if (z.Id == zoneId)
-                    return true;
-            }
-            return false;
+            return _zones.Any(z => z.Id == zoneId);
         }
 
         //     public bool checkEffectRangeInsidePeaceZone(L2Skill skill, final int x, final int y, final int z)

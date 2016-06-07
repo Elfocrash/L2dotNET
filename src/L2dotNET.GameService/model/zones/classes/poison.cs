@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Timers;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
@@ -52,11 +53,8 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             Random rn = new Random();
             if (Template._skills != null)
             {
-                foreach (TSkill sk in Template._skills)
+                foreach (TSkill sk in Template._skills.Where(sk => rn.Next(0, 100) <= Template._skill_prob))
                 {
-                    if (rn.Next(0, 100) > Template._skill_prob)
-                        continue;
-
                     target.addAbnormal(sk, target, true, false);
                 }
             }

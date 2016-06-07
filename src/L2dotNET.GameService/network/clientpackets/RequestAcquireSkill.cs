@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -85,13 +86,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 bool upd = false;
                 lock (player._shortcuts)
                 {
-                    foreach (L2Shortcut sc in player._shortcuts)
+                    foreach (L2Shortcut sc in player._shortcuts.Where(sc => sc.Type == L2Shortcut.TYPE_SKILL && sc.Id == _id))
                     {
-                        if (sc.Type == L2Shortcut.TYPE_SKILL && sc.Id == _id)
-                        {
-                            sc.Level = _level;
-                            upd = true;
-                        }
+                        sc.Level = _level;
+                        upd = true;
                     }
                 }
 

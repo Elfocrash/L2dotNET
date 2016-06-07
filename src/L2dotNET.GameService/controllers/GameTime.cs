@@ -56,8 +56,9 @@ namespace L2dotNET.GameService.Controllers
             Time = 5800 + 0; // 10800 18:00 вечер
             TimeController = new System.Timers.Timer();
             TimeController.Interval = 1000;
-            TimeController.Elapsed += new System.Timers.ElapsedEventHandler(ActionTime);
             TimeController.Enabled = true;
+            TimeController.Elapsed += new System.Timers.ElapsedEventHandler(ActionTime);
+
             log.Info("GameTime Controller: started 18:00 PM.");
         }
 

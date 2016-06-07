@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Templates;
 using L2dotNET.GameService.World;
@@ -75,25 +76,18 @@ namespace L2dotNET.GameService.Model.Stats
             double buffvalue = getStat(effect.type);
 
             List<TEffect> arif = null;
-            foreach (TEffect cc in activeEffects)
+            foreach (TEffect cc in activeEffects.Where(cc => cc.type == effect.type && cc.supMethod != null))
             {
-                if (cc.type != effect.type)
-                    continue;
-
-                if (cc.supMethod != null)
+                if (cc.supMethod.Method <= SupMethod.SUB)
                 {
-                    if (cc.supMethod.Method <= SupMethod.SUB)
-                    {
-                        if (arif == null)
-                            arif = new List<TEffect>();
+                    if (arif == null)
+                        arif = new List<TEffect>();
 
-                        arif.Add(cc);
-                        continue;
-                    }
-
-                    newvalue = calcSupMethod(newvalue, cc.supMethod);
+                    arif.Add(cc);
+                    continue;
                 }
-                //log.Info($"newvalue! #1 { newvalue } { cc.supMethod.Value } { cc.type }");
+
+                newvalue = calcSupMethod(newvalue, cc.supMethod);
             }
 
             if (arif != null)
@@ -139,11 +133,8 @@ namespace L2dotNET.GameService.Model.Stats
             double buffvalue = getStat(effect.type);
 
             List<TEffect> arif = null;
-            foreach (TEffect cc in activeEffects)
+            foreach (TEffect cc in activeEffects.Where(cc => cc.type == effect.type))
             {
-                if (cc.type != effect.type)
-                    continue;
-
                 if (cc.supMethod.Method <= SupMethod.SUB)
                 {
                     if (arif == null)
@@ -195,10 +186,8 @@ namespace L2dotNET.GameService.Model.Stats
 
         public bool calcDebuffSuccess(TSkill skill, L2Character caster)
         {
-            bool success = false;
-
             int rnd = new Random().Next(0, 100);
-            success = rnd <= skill.activate_rate;
+            bool success = rnd <= skill.activate_rate;
 
             caster.sendMessage(skill.skill_id + " success " + rnd + "% (" + skill.activate_rate + "% base)");
 

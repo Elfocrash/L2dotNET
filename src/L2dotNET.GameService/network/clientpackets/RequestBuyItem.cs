@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Npcs;
+﻿using System.Linq;
+using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
@@ -76,25 +77,22 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 int itemId = (int)_items[i * 2];
 
                 bool notfound = true;
-                foreach (ND_shopItem item in list.items)
+                foreach (ND_shopItem item in list.items.Where(item => item.item.ItemID == itemId))
                 {
-                    if (item.item.ItemID == itemId)
+                    adena += item.item.Price * _items[i * 2 + 1];
+
+                    if (!item.item.isStackable())
+                        slots++;
+                    else
                     {
-                        adena += item.item.Price * _items[i * 2 + 1];
-
-                        if (!item.item.isStackable())
+                        if (!player.hasItem(item.item.ItemID))
                             slots++;
-                        else
-                        {
-                            if (!player.hasItem(item.item.ItemID))
-                                slots++;
-                        }
-
-                        weight += (int)(item.item.Weight * _items[i * 2 + 1]);
-
-                        notfound = false;
-                        break;
                     }
+
+                    weight += (int)(item.item.Weight * _items[i * 2 + 1]);
+
+                    notfound = false;
+                    break;
                 }
 
                 if (notfound)

@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.Model.Skills2
 
         public TEffect BuildProc(TEffectType type, string str)
         {
-            TEffect effect = null;
+            TEffect effect;
             switch (type)
             {
                 case TEffectType.p_speed:

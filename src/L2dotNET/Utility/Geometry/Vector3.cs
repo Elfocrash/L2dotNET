@@ -418,9 +418,9 @@ namespace L2dotNET.Utility.Geometry
 
             // TODO: Are there options on some platforms to implement a vectorized version of this?
 
-            for (var i = 0; i < sourceArray.Length; i++)
+            for (int i = 0; i < sourceArray.Length; i++)
             {
-                var position = sourceArray[i];
+                Vector3 position = sourceArray[i];
                 destinationArray[i] = new Vector3((position.X * matrix.M11) + (position.Y * matrix.M21) + (position.Z * matrix.M31) + matrix.M41, (position.X * matrix.M12) + (position.Y * matrix.M22) + (position.Z * matrix.M32) + matrix.M42, (position.X * matrix.M13) + (position.Y * matrix.M23) + (position.Z * matrix.M33) + matrix.M43);
             }
         }

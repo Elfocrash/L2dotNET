@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using log4net;
 using L2dotNET.Models;
 
@@ -110,9 +111,10 @@ namespace L2dotNET.GameService.Network
                         }
                     }
 
-                    foreach (bool u in d)
-                        if (u)
-                            return false;
+                    if (d.Any(u => u))
+                    {
+                        return false;
+                    }
                 }
             }
 

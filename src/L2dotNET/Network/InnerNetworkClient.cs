@@ -16,16 +16,6 @@ namespace L2dotNET.Network
     public class InnerNetworkClient : NetworkClient
     {
         /// <summary>
-        /// Service unique id.
-        /// </summary>
-        private byte m_ServiceId;
-
-        /// <summary>
-        /// Service type.
-        /// </summary>
-        private ServiceType m_ServiceType;
-
-        /// <summary>
         /// Remote service settings.
         /// </summary>
         public RemoteServiceSettings RemoteServiceSettings;
@@ -54,8 +44,8 @@ namespace L2dotNET.Network
         /// <param name="handleDelegate">Service Handle Delegate, if null packet will not be handled</param>
         public InnerNetworkClient(byte serviceId, ServiceType serviceType, Socket socket, PacketHandleDelegate handleDelegate) : base(socket)
         {
-            m_ServiceId = serviceId;
-            m_ServiceType = serviceType;
+            ServiceID = serviceId;
+            ServiceType = serviceType;
             HandleDelegate = handleDelegate;
         }
 
@@ -166,19 +156,11 @@ namespace L2dotNET.Network
         /// <summary>
         /// Gets or sets connected service unique id.
         /// </summary>
-        public byte ServiceID
-        {
-            get { return m_ServiceId; }
-            set { m_ServiceId = value; }
-        }
+        public byte ServiceID { get; set; }
 
         /// <summary>
         /// Gets or sets connected <see cref="ServiceType"/>.
         /// </summary>
-        public ServiceType ServiceType
-        {
-            get { return m_ServiceType; }
-            set { m_ServiceType = value; }
-        }
+        public ServiceType ServiceType { get; set; }
     }
 }

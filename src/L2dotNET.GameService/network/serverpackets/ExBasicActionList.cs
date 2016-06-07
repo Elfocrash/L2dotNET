@@ -33,9 +33,9 @@
             writeC(0xfe);
             writeH(0x5f);
             writeD(_defaultActionList.Length);
-            for (int i = 0; i < _defaultActionList.Length; i++)
+            foreach (int i in _defaultActionList)
             {
-                writeD(_defaultActionList[i]);
+                writeD(i);
             }
         }
     }

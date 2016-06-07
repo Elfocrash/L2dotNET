@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.Tables
             int x = Convert.ToInt32(loc[0]);
             int y = Convert.ToInt32(loc[1]);
             int zmin = Convert.ToInt32(loc[2]);
-            int zmax = zmin;
+            int zmax;
 
             try
             {

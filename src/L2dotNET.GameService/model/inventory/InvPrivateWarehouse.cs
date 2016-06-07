@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Quests;
@@ -25,13 +26,7 @@ namespace L2dotNET.GameService.Model.Inventory
                 {
                     if (item.ObjID == itemd[0])
                     {
-                        bool ex = false;
-                        foreach (L2Item itp in Items.Values)
-                            if (itp.Template.ItemID == item.Template.ItemID)
-                            {
-                                ex = true;
-                                break;
-                            }
+                        bool ex = Items.Values.Any(itp => itp.Template.ItemID == item.Template.ItemID);
 
                         if (item.Template.isStackable())
                         {
@@ -40,13 +35,12 @@ namespace L2dotNET.GameService.Model.Inventory
                                 nulled.Add((int)itemd[0]);
                                 if (ex)
                                 {
-                                    foreach (L2Item itp in Items.Values)
-                                        if (itp.Template.ItemID == item.Template.ItemID)
-                                        {
-                                            itp.Count += item.Count;
-                                            itp.sql_update();
-                                            break;
-                                        }
+                                    foreach (L2Item itp in Items.Values.Where(itp => itp.Template.ItemID == item.Template.ItemID))
+                                    {
+                                        itp.Count += item.Count;
+                                        itp.sql_update();
+                                        break;
+                                    }
 
                                     item.sql_delete();
                                 }
@@ -66,13 +60,12 @@ namespace L2dotNET.GameService.Model.Inventory
 
                                 if (ex)
                                 {
-                                    foreach (L2Item itp in Items.Values)
-                                        if (itp.Template.ItemID == item.Template.ItemID)
-                                        {
-                                            itp.Count += itemd[1];
-                                            itp.sql_update();
-                                            break;
-                                        }
+                                    foreach (L2Item itp in Items.Values.Where(itp => itp.Template.ItemID == item.Template.ItemID))
+                                    {
+                                        itp.Count += itemd[1];
+                                        itp.sql_update();
+                                        break;
+                                    }
                                 }
                                 else
                                 {
@@ -127,13 +120,7 @@ namespace L2dotNET.GameService.Model.Inventory
                 {
                     if (item.ObjID == itemd[0])
                     {
-                        bool ex = false;
-                        foreach (L2Item itp in player.getAllItems())
-                            if (itp.Template.ItemID == item.Template.ItemID)
-                            {
-                                ex = true;
-                                break;
-                            }
+                        bool ex = player.getAllItems().Any(itp => itp.Template.ItemID == item.Template.ItemID);
 
                         if (item.Template.isStackable())
                         {
@@ -142,16 +129,15 @@ namespace L2dotNET.GameService.Model.Inventory
                                 nulled.Add(itemd[0]);
                                 if (ex)
                                 {
-                                    foreach (L2Item itp in player.getAllItems())
-                                        if (itp.Template.ItemID == item.Template.ItemID)
-                                        {
-                                            itp.Count += item.Count;
-                                            itp.sql_update();
-                                            if (update)
-                                                iu.addModItem(itp);
+                                    foreach (L2Item itp in player.getAllItems().Where(itp => itp.Template.ItemID == item.Template.ItemID))
+                                    {
+                                        itp.Count += item.Count;
+                                        itp.sql_update();
+                                        if (update)
+                                            iu.addModItem(itp);
 
-                                            break;
-                                        }
+                                        break;
+                                    }
 
                                     item.sql_delete();
                                 }
@@ -170,16 +156,15 @@ namespace L2dotNET.GameService.Model.Inventory
                                 item.Count -= itemd[1];
                                 if (ex)
                                 {
-                                    foreach (L2Item itp in player.getAllItems())
-                                        if (itp.Template.ItemID == item.Template.ItemID)
-                                        {
-                                            itp.Count += itemd[1];
-                                            itp.sql_update();
-                                            if (update)
-                                                iu.addModItem(itp);
+                                    foreach (L2Item itp in player.getAllItems().Where(itp => itp.Template.ItemID == item.Template.ItemID))
+                                    {
+                                        itp.Count += itemd[1];
+                                        itp.sql_update();
+                                        if (update)
+                                            iu.addModItem(itp);
 
-                                            break;
-                                        }
+                                        break;
+                                    }
                                 }
                                 else
                                 {
@@ -206,9 +191,8 @@ namespace L2dotNET.GameService.Model.Inventory
                                 iu.addNewItem(item);
                         }
 
-                        foreach (QuestInfo qi in _owner._quests)
-                            if (!qi.completed)
-                                qi._template.onEarnItem(_owner, qi.stage, item.Template.ItemID);
+                        foreach (QuestInfo qi in _owner._quests.Where(qi => !qi.completed))
+                            qi._template.onEarnItem(_owner, qi.stage, item.Template.ItemID);
                     }
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
 
@@ -62,26 +63,23 @@ namespace L2dotNET.GameService.Model.Quests.Data
             string htmltext = no_action_required;
             if (npcId == elder_kadun_zu_ketra)
             {
-                if (reply == 1)
+                switch (reply)
                 {
-                    htmltext = "elder_kadun_zu_ketra_q0606_0106.htm";
-                }
-                else if (reply == 3)
-                {
-                    if (player.hasItem(q_barka_mane, 100))
-                    {
-                        player.takeItem(q_barka_mane, 100);
-                        player.addItemQuest(q_buffalo_horn, 100);
-                        htmltext = "elder_kadun_zu_ketra_q0606_0202.htm";
-                    }
-                    else
-                        htmltext = "elder_kadun_zu_ketra_q0606_0203.htm";
-                }
-                else if (reply == 4)
-                {
-                    foreach (QuestInfo qi in player._quests)
-                    {
-                        if (qi.id == questId)
+                    case 1:
+                        htmltext = "elder_kadun_zu_ketra_q0606_0106.htm";
+                        break;
+                    case 3:
+                        if (player.hasItem(q_barka_mane, 100))
+                        {
+                            player.takeItem(q_barka_mane, 100);
+                            player.addItemQuest(q_buffalo_horn, 100);
+                            htmltext = "elder_kadun_zu_ketra_q0606_0202.htm";
+                        }
+                        else
+                            htmltext = "elder_kadun_zu_ketra_q0606_0203.htm";
+                        break;
+                    case 4:
+                        foreach (QuestInfo qi in player._quests.Where(qi => qi.id == questId))
                         {
                             foreach (int id in qi._template.actItems)
                             {
@@ -91,9 +89,9 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             player.stopQuest(qi, true);
                             return;
                         }
-                    }
 
-                    htmltext = "elder_kadun_zu_ketra_q0606_0204.htm";
+                        htmltext = "elder_kadun_zu_ketra_q0606_0204.htm";
+                        break;
                 }
             }
 

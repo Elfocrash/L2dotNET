@@ -24,52 +24,28 @@ namespace L2dotNET.Repositories
 
         public IPlayerRepository PlayerRepository
         {
-            get
-            {
-                if (this.playerRepository == null)
-                    this.playerRepository = new PlayerRepository();
-
-                return this.playerRepository;
-            }
+            get { return this.playerRepository ?? (this.playerRepository = new PlayerRepository()); }
         }
 
         private IAccountRepository accountRepository;
 
         public IAccountRepository AccountRepository
         {
-            get
-            {
-                if (this.accountRepository == null)
-                    this.accountRepository = new AccountRepository();
-
-                return this.accountRepository;
-            }
+            get { return this.accountRepository ?? (this.accountRepository = new AccountRepository()); }
         }
 
         private IServerRepository serverRepository;
 
         public IServerRepository ServerRepository
         {
-            get
-            {
-                if (this.serverRepository == null)
-                    this.serverRepository = new ServerRepository();
-
-                return this.serverRepository;
-            }
+            get { return this.serverRepository ?? (this.serverRepository = new ServerRepository()); }
         }
 
         private ICheckRepository checkRepository;
 
         public ICheckRepository CheckRepository
         {
-            get
-            {
-                if (this.checkRepository == null)
-                    this.checkRepository = new CheckRepository();
-
-                return this.checkRepository;
-            }
+            get { return this.checkRepository ?? (this.checkRepository = new CheckRepository()); }
         }
 
         #endregion

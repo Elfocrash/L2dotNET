@@ -61,10 +61,7 @@ namespace L2dotNET.GameService.Tables
                 return string.Empty;
 
             L2Html html = htmCache.FirstOrDefault(x => x.Filename.Equals(filename, StringComparison.InvariantCultureIgnoreCase));
-            if (html != null)
-                return html.Content;
-
-            return string.Empty;
+            return html != null ? html.Content : string.Empty;
         }
 
         private List<string> DirSearch(string sDir)
@@ -72,10 +69,7 @@ namespace L2dotNET.GameService.Tables
             List<string> files = new List<string>();
             try
             {
-                foreach (string f in Directory.GetFiles(sDir))
-                {
-                    files.Add(f);
-                }
+                files.AddRange(Directory.GetFiles(sDir));
                 foreach (string d in Directory.GetDirectories(sDir))
                 {
                     files.AddRange(DirSearch(d));

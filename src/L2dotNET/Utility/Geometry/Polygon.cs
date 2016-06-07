@@ -17,15 +17,12 @@ namespace L2dotNET.Utility.Geometry
         {
             _shapes = shapes;
 
-            int size = 0;
-            foreach (AShape shape in shapes)
-                size += shape.GetSize();
-            _size = size;
+            _size = shapes.Sum(shape => shape.GetSize());
         }
 
         public Polygon(int id, List<int[]> points)
         {
-            List<Triangle> triangles = null;
+            List<Triangle> triangles;
             int size = 0;
             try
             {
@@ -43,8 +40,7 @@ namespace L2dotNET.Utility.Geometry
                 triangles = DoTriangulationAlgorithm(points, isCw, nonConvexPoints);
 
                 // calculate polygon size
-                foreach (AShape shape in triangles)
-                    size += shape.GetSize();
+                size += triangles.Cast<AShape>().Sum(shape => shape.GetSize());
             }
             catch (Exception e)
             {
@@ -88,20 +84,12 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y)
         {
-            foreach (AShape shape in _shapes)
-                if (shape.IsInside(x, y))
-                    return true;
-
-            return false;
+            return _shapes.Any(shape => shape.IsInside(x, y));
         }
 
         public override bool IsInside(int x, int y, int z)
         {
-            foreach (AShape shape in _shapes)
-                if (shape.IsInside(x, y, z))
-                    return true;
-
-            return false;
+            return _shapes.Any(shape => shape.IsInside(x, y, z));
         }
 
         private static bool GetPolygonOrientation(List<int[]> points)
@@ -142,10 +130,7 @@ namespace L2dotNET.Utility.Geometry
         private static int GetNextIndex(int size, int index)
         {
             // increase index and check for limit
-            if (++index >= size)
-                return 0;
-
-            return index;
+            return ++index >= size ? 0 : index;
         }
 
         private static int GetPrevIndex(int size, int index)
@@ -239,9 +224,9 @@ namespace L2dotNET.Utility.Geometry
                 return false;
 
             // iterate over all concave points and check if one of them lies inside the given triangle
-            for (int i = 0; i < nonConvexPoints.Count; i++)
+            foreach (int[] i in nonConvexPoints)
             {
-                if (IsInside(A, B, C, nonConvexPoints[i]))
+                if (IsInside(A, B, C, i))
                     return false;
             }
 

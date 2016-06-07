@@ -46,10 +46,7 @@ namespace L2dotNET.GameService.Tables.Multisell
                 if (l2item != null)
                     return l2item.AttrAttackValue;
 
-                if (template == null)
-                    return 0;
-                else
-                    return template.AttrAttackValue;
+                return template == null ? (short)0 : template.AttrAttackValue;
             }
         }
 

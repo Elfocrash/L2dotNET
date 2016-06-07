@@ -53,7 +53,7 @@ namespace L2dotNET.GameService.Model.Player
         public int HairStyle { get; set; }
         public int HairColor { get; set; }
         public int Face { get; set; }
-        public bool WhieperBlock { get; set; } = false;
+        public bool WhisperBlock { get; set; } = false;
         public GameClient Gameclient { get; set; }
         public long Exp { get; set; }
         public long ExpOnDeath { get; set; } = 0;
@@ -499,10 +499,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public TSkill getSkill(int _magicId)
         {
-            if (_skills.ContainsKey(_magicId))
-                return _skills[_magicId];
-
-            return null;
+            return _skills.ContainsKey(_magicId) ? _skills[_magicId] : null;
         }
 
         public override bool isCastingNow()
@@ -785,21 +782,18 @@ namespace L2dotNET.GameService.Model.Player
                 p = new PartySpelled(this);
 
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ei in _effects)
+            foreach (AbnormalEffect ei in _effects.Where(ei => ei != null))
             {
-                if (ei != null)
+                if (ei.active == 1)
                 {
-                    if (ei.active == 1)
-                    {
-                        int time = ei.getTime();
-                        m.addIcon(ei.id, ei.lvl, time);
+                    int time = ei.getTime();
+                    m.addIcon(ei.id, ei.lvl, time);
 
-                        if (p != null)
-                            p.addIcon(ei.id, ei.lvl, time);
-                    }
-                    else
-                        nulled.Add(ei);
+                    if (p != null)
+                        p.addIcon(ei.id, ei.lvl, time);
                 }
+                else
+                    nulled.Add(ei);
             }
 
             lock (_effects)
@@ -824,11 +818,8 @@ namespace L2dotNET.GameService.Model.Player
 
         public void quest_Talk(L2Npc npc, int questId)
         {
-            foreach (QuestInfo qi in _quests)
+            foreach (QuestInfo qi in _quests.Where(qi => !qi.completed))
             {
-                if (qi.completed)
-                    continue;
-
                 qi._template.onTalkToNpc(this, npc, qi.stage);
             }
         }
@@ -940,20 +931,17 @@ namespace L2dotNET.GameService.Model.Player
 
         public void changeQuestStage(int questId, int stage)
         {
-            foreach (QuestInfo qi in _quests)
+            foreach (QuestInfo qi in _quests.Where(qi => qi.id == questId))
             {
-                if (qi.id == questId)
-                {
-                    qi.stage = stage;
-                    sendPacket(new PlaySound("ItemSound.quest_middle"));
+                qi.stage = stage;
+                sendPacket(new PlaySound("ItemSound.quest_middle"));
 
-                    //SQL_Block sqb = new SQL_Block("user_quests");
-                    //sqb.param("qstage", stage);
-                    //sqb.where("ownerId", ObjID);
-                    //sqb.where("qid", qi.id);
-                    //sqb.sql_update(false);
-                    break;
-                }
+                //SQL_Block sqb = new SQL_Block("user_quests");
+                //sqb.param("qstage", stage);
+                //sqb.where("ownerId", ObjID);
+                //sqb.where("qid", qi.id);
+                //sqb.sql_update(false);
+                break;
             }
 
             sendQuestList();
@@ -997,31 +985,28 @@ namespace L2dotNET.GameService.Model.Player
 
         public void finishQuest(int questId)
         {
-            foreach (QuestInfo qi in _quests)
+            foreach (QuestInfo qi in _quests.Where(qi => qi.id == questId))
             {
-                if (qi.id == questId)
+                if (!qi._template.repeatable)
                 {
-                    if (!qi._template.repeatable)
-                    {
-                        qi.completed = true;
-                        qi._template = null;
+                    qi.completed = true;
+                    qi._template = null;
 
-                        //SQL_Block sqb = new SQL_Block("user_quests");
-                        //sqb.param("qfin", 1);
-                        //sqb.where("ownerId", ObjID);
-                        //sqb.where("iclass", ActiveClass.id);
-                        //sqb.where("qid", qi.id);
-                        //sqb.sql_update(false);
-                    }
-                    else
-                    {
-                        lock (_quests)
-                            _quests.Remove(qi);
-                    }
-
-                    sendPacket(new PlaySound("ItemSound.quest_finish"));
-                    break;
+                    //SQL_Block sqb = new SQL_Block("user_quests");
+                    //sqb.param("qfin", 1);
+                    //sqb.where("ownerId", ObjID);
+                    //sqb.where("iclass", ActiveClass.id);
+                    //sqb.where("qid", qi.id);
+                    //sqb.sql_update(false);
                 }
+                else
+                {
+                    lock (_quests)
+                        _quests.Remove(qi);
+                }
+
+                sendPacket(new PlaySound("ItemSound.quest_finish"));
+                break;
             }
 
             sendQuestList();
@@ -1135,25 +1120,25 @@ namespace L2dotNET.GameService.Model.Player
 
         public L2Item[] getAllNonQuestItems()
         {
-            var sort = from item in Inventory.Items.Values
-                       where item.Template.Type != ItemTemplate.L2ItemType.questitem
-                       select item;
+            IEnumerable<L2Item> sort = from item in Inventory.Items.Values
+                                       where item.Template.Type != ItemTemplate.L2ItemType.questitem
+                                       select item;
             return sort.ToArray();
         }
 
         public L2Item[] getAllWeaponArmorNonQuestItems()
         {
-            var sort = from item in Inventory.Items.Values
-                       where item.Template.Type != ItemTemplate.L2ItemType.questitem && (item.Template.Type == ItemTemplate.L2ItemType.armor || item.Template.Type == ItemTemplate.L2ItemType.weapon)
-                       select item;
+            IEnumerable<L2Item> sort = from item in Inventory.Items.Values
+                                       where item.Template.Type != ItemTemplate.L2ItemType.questitem && (item.Template.Type == ItemTemplate.L2ItemType.armor || item.Template.Type == ItemTemplate.L2ItemType.weapon)
+                                       select item;
             return sort.ToArray();
         }
 
         public L2Item[] getAllQuestItems()
         {
-            var sort = from item in Inventory.Items.Values
-                       where item.Template.Type == ItemTemplate.L2ItemType.questitem
-                       select item;
+            IEnumerable<L2Item> sort = from item in Inventory.Items.Values
+                                       where item.Template.Type == ItemTemplate.L2ItemType.questitem
+                                       select item;
             return sort.ToArray();
         }
 
@@ -1270,35 +1255,32 @@ namespace L2dotNET.GameService.Model.Player
 
             lock (_recipeBook)
             {
-                foreach (L2Recipe r in _recipeBook)
+                foreach (L2Recipe r in _recipeBook.Where(r => r.RecipeID == rec.RecipeID))
                 {
-                    if (r.RecipeID == rec.RecipeID)
+                    if (updDb)
                     {
-                        if (updDb)
-                        {
-                            //MySqlConnection connection = SQLjec.getInstance().conn();
-                            //MySqlCommand cmd = connection.CreateCommand();
+                        //MySqlConnection connection = SQLjec.getInstance().conn();
+                        //MySqlCommand cmd = connection.CreateCommand();
 
-                            //connection.Open();
+                        //connection.Open();
 
-                            //string query = string.Format(
-                            //    "DELETE FROM user_recipes WHERE ownerId='{0}' AND recid='{1}' AND iclass='{2}'",
-                            //    ObjID,
-                            //    r.RecipeID,
-                            //    ActiveClass.id);
+                        //string query = string.Format(
+                        //    "DELETE FROM user_recipes WHERE ownerId='{0}' AND recid='{1}' AND iclass='{2}'",
+                        //    ObjID,
+                        //    r.RecipeID,
+                        //    ActiveClass.id);
 
-                            //cmd.CommandText = query;
-                            //cmd.CommandType = CommandType.Text;
-                            //cmd.ExecuteNonQuery();
+                        //cmd.CommandText = query;
+                        //cmd.CommandType = CommandType.Text;
+                        //cmd.ExecuteNonQuery();
 
-                            //connection.Close();
-                        }
-
-                        _recipeBook.Remove(r);
-
-                        sendPacket(new RecipeBookItemList(this, rec._iscommonrecipe));
-                        break;
+                        //connection.Close();
                     }
+
+                    _recipeBook.Remove(r);
+
+                    sendPacket(new RecipeBookItemList(this, rec._iscommonrecipe));
+                    break;
                 }
             }
         }
@@ -1310,10 +1292,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public int getClanCrestLargeId()
         {
-            if (Clan == null)
-                return 0;
-
-            return Clan.LargeCrestID;
+            return Clan == null ? 0 : Clan.LargeCrestID;
         }
 
         public List<L2Shortcut> _shortcuts = new List<L2Shortcut>();
@@ -1326,20 +1305,17 @@ namespace L2dotNET.GameService.Model.Player
         {
             lock (_shortcuts)
             {
-                foreach (L2Shortcut sc in _shortcuts)
+                foreach (L2Shortcut sc in _shortcuts.Where(sc => sc.Slot == _slot && sc.Page == _page))
                 {
-                    if (sc.Slot == _slot && sc.Page == _page)
-                    {
-                        _shortcuts.Remove(sc);
+                    _shortcuts.Remove(sc);
 
-                        //SQL_Block sqb = new SQL_Block("user_shortcuts");
-                        //sqb.where("ownerId", ObjID);
-                        //sqb.where("classId", ActiveClass.id);
-                        //sqb.where("slot", _slot);
-                        //sqb.where("page", _page);
-                        //sqb.sql_delete(false);
-                        break;
-                    }
+                    //SQL_Block sqb = new SQL_Block("user_shortcuts");
+                    //sqb.where("ownerId", ObjID);
+                    //sqb.where("classId", ActiveClass.id);
+                    //sqb.where("slot", _slot);
+                    //sqb.where("page", _page);
+                    //sqb.sql_delete(false);
+                    break;
                 }
             }
 
@@ -1432,11 +1408,11 @@ namespace L2dotNET.GameService.Model.Player
             }
             else if (obj is L2Item)
             {
-                sendPacket(pk == null ? new SpawnItem((L2Item)obj) : pk);
+                sendPacket(pk ?? new SpawnItem((L2Item)obj));
             }
             else if (obj is L2Summon)
             {
-                sendPacket(pk == null ? new PetInfo((L2Summon)obj) : pk);
+                sendPacket(pk ?? new PetInfo((L2Summon)obj));
             }
             else if (obj is L2Chair)
             {
@@ -1454,17 +1430,9 @@ namespace L2dotNET.GameService.Model.Player
 
         public void BroadcastCharInfo()
         {
-            foreach (L2Player player in L2World.Instance.GetPlayers())
+            foreach (L2Player player in L2World.Instance.GetPlayers().Where(player => player != this))
             {
-                if (player != this)
-                    player.sendPacket(new CharInfo(this));
-
-                //int relation = getRelation(player);
-                //         bool isAutoAttackable = isAutoAttackable(player);
-
-                //         player.sendPacket(new RelationChanged(this, relation, isAutoAttackable));
-                //    if (getPet() != null)
-                //     player.sendPacket(new RelationChanged(getPet(), relation, isAutoAttackable));
+                player.sendPacket(new CharInfo(this));
             }
         }
 
@@ -1606,11 +1574,8 @@ namespace L2dotNET.GameService.Model.Player
             long total = 0;
             if (!_diet)
             {
-                foreach (L2Item it in Inventory.Items.Values)
+                foreach (L2Item it in Inventory.Items.Values.Where(it => it.Template.Weight != 0))
                 {
-                    if (it.Template.Weight == 0)
-                        continue;
-
                     if (it.Template.isStackable())
                     {
                         total += it.Template.Weight * it.Count;
@@ -1740,7 +1705,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public bool CheckFreeSlotsInventory80(int id, long count, bool msg)
         {
-            long check = 0;
+            long check;
             L2Item item = Inventory.getItemById(id);
 
             if (item != null)
@@ -2177,14 +2142,8 @@ namespace L2dotNET.GameService.Model.Player
 
             if (Party != null)
             {
-                if (chars == null)
-                    chars = new List<L2Character>();
-
-                foreach (L2Player pl in Party.Members)
+                foreach (L2Player pl in Party.Members.Where(pl => pl.ObjID != this.ObjID))
                 {
-                    if (pl.ObjID == this.ObjID)
-                        continue;
-
                     chars.Add(pl);
 
                     if (pl.Summon != null)
@@ -2521,28 +2480,27 @@ namespace L2dotNET.GameService.Model.Player
                 if (weapon.Soulshot)
                     weapon.Soulshot = false;
 
-                foreach (int sid in weapon.Template.getSoulshots())
-                    if (autoSoulshots.Contains(sid))
+                foreach (int sid in weapon.Template.getSoulshots().Where(sid => autoSoulshots.Contains(sid)))
+                {
+                    if (Inventory.getItemCount(sid) < weapon.Template.SoulshotCount)
                     {
-                        if (Inventory.getItemCount(sid) < weapon.Template.SoulshotCount)
-                        {
-                            sendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_CANCELLED_LACK_OF_S1).AddItemName(sid));
+                        sendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_CANCELLED_LACK_OF_S1).AddItemName(sid));
 
-                            lock (autoSoulshots)
-                            {
-                                autoSoulshots.Remove(sid);
-                                sendPacket(new ExAutoSoulShot(sid, 0));
-                            }
-                        }
-                        else
+                        lock (autoSoulshots)
                         {
-                            Inventory.destroyItem(sid, weapon.Template.SoulshotCount, false, true);
-                            weapon.Soulshot = true;
-                            broadcastSoulshotUse(sid);
+                            autoSoulshots.Remove(sid);
+                            sendPacket(new ExAutoSoulShot(sid, 0));
                         }
-
-                        break;
                     }
+                    else
+                    {
+                        Inventory.destroyItem(sid, weapon.Template.SoulshotCount, false, true);
+                        weapon.Soulshot = true;
+                        broadcastSoulshotUse(sid);
+                    }
+
+                    break;
+                }
             }
         }
 
@@ -2629,13 +2587,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public int VehicleId
         {
-            get
-            {
-                if (Boat != null)
-                    return Boat.ObjID;
-
-                return 0;
-            }
+            get { return Boat != null ? Boat.ObjID : 0; }
         }
 
         public void Revive(double percent)
@@ -2714,13 +2666,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public byte ClanLevel
         {
-            get
-            {
-                if (Clan == null)
-                    return 0;
-
-                return Clan.Level;
-            }
+            get { return Clan == null ? (byte)0 : Clan.Level; }
         }
 
         public void broadcastSkillUse(int skillId)
@@ -2742,10 +2688,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public bool HavePledgePower(int bit)
         {
-            if (Clan == null)
-                return false;
-
-            return Clan.hasRights(this, bit);
+            return Clan != null && Clan.hasRights(this, bit);
         }
 
         public override L2Item getWeaponItem()
@@ -2762,15 +2705,14 @@ namespace L2dotNET.GameService.Model.Player
 
         public void StopCubic(Cubic cubic)
         {
-            foreach (Cubic cub in cubics)
-                if (cub.template.id == cubic.template.id)
-                {
-                    lock (cubics)
-                        cubics.Remove(cub);
+            foreach (Cubic cub in cubics.Where(cub => cub.template.id == cubic.template.id))
+            {
+                lock (cubics)
+                    cubics.Remove(cub);
 
-                    this.broadcastUserInfo();
-                    break;
-                }
+                this.broadcastUserInfo();
+                break;
+            }
         }
 
         public void AddCubic(Cubic cubic, bool update)
@@ -2787,16 +2729,15 @@ namespace L2dotNET.GameService.Model.Player
                     cubics.RemoveAt(0);
             }
 
-            foreach (Cubic cub in cubics)
-                if (cub.template.id == cubic.template.id)
+            foreach (Cubic cub in cubics.Where(cub => cub.template.id == cubic.template.id))
+            {
+                lock (cubics)
                 {
-                    lock (cubics)
-                    {
-                        cub.OnEnd(false);
-                        cubics.Remove(cub);
-                    }
-                    break;
+                    cub.OnEnd(false);
+                    cubics.Remove(cub);
                 }
+                break;
+            }
 
             cubic.OnSummon();
             cubics.Add(cubic);

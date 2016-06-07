@@ -26,14 +26,14 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             }
         }
 
+        public AIManager() { }
+
         public void Initialize()
         {
             register(new broadcasting_tower());
         }
 
         public SortedList<int, AITemplate> _registeredAis = new SortedList<int, AITemplate>();
-
-        public AIManager() { }
 
         private void register(AITemplate t)
         {
@@ -45,10 +45,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             if (_registeredAis.ContainsKey(id))
             {
                 AITemplate t = _registeredAis[id];
-                if (t.chatOvr)
-                    return t;
-                else
-                    return null;
+                return t.chatOvr ? t : null;
             }
 
             return null;
@@ -59,10 +56,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             if (_registeredAis.ContainsKey(id))
             {
                 AITemplate t = _registeredAis[id];
-                if (t.dialogOvr)
-                    return t;
-                else
-                    return null;
+                return t.dialogOvr ? t : null;
             }
 
             return null;

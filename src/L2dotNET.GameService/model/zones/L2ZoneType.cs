@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Zones.Forms;
 using L2dotNET.GameService.Network;
@@ -115,10 +116,9 @@ namespace L2dotNET.GameService.Model.Zones
             if (_characterList.Count == 0)
                 return;
 
-            foreach (L2Character character in _characterList)
+            foreach (L2Player character in _characterList.OfType<L2Player>())
             {
-                if (character != null && character is L2Player)
-                    character.sendPacket(packet);
+                character.sendPacket(packet);
             }
         }
     }

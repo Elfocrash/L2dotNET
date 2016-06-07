@@ -183,7 +183,7 @@ namespace L2dotNET.Network
         public virtual void SendData(byte[] buffer)
         {
             //#if DEBUG_NET_CLIENT
-            Console.WriteLine("Sending:\r\n{0}", L2Buffer.ToString(buffer));
+            Console.WriteLine($"Sending:\r\n{L2Buffer.ToString(buffer)}");
             //#endif
             if (m_Socket != null && m_Socket.Connected)
             {

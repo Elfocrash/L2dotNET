@@ -49,10 +49,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
         public CubicTemplate getCubic(int cubId, int skillLv)
         {
             int hash = cubId * 65536 + skillLv;
-            if (cubics.ContainsKey(hash))
-                return cubics[hash];
-            else
-                return null;
+            return cubics.ContainsKey(hash) ? cubics[hash] : null;
         }
     }
 }

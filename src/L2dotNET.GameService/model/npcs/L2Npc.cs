@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Timers;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
@@ -216,14 +217,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public void showPrivateWarehouse(L2Player player)
         {
-            List<L2Item> items = new List<L2Item>();
-            foreach (L2Item item in player.getAllItems())
-            {
-                if (item._isEquipped == 1 || item.Template.Type == ItemTemplate.L2ItemType.questitem)
-                    continue;
-
-                items.Add(item);
-            }
+            List<L2Item> items = player.getAllItems().Where(item => item._isEquipped != 1 && item.Template.Type != ItemTemplate.L2ItemType.questitem).ToList();
 
             player.sendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WH_PRIVATE));
             player.FolkNpc = this;
@@ -245,14 +239,7 @@ namespace L2dotNET.GameService.Model.Npcs
                 return;
             }
 
-            List<L2Item> items = new List<L2Item>();
-            foreach (L2Item item in player.getAllItems())
-            {
-                if (item._isEquipped == 1 || item.Template.Type == ItemTemplate.L2ItemType.questitem)
-                    continue;
-
-                items.Add(item);
-            }
+            List<L2Item> items = player.getAllItems().Where(item => item._isEquipped != 1 && item.Template.Type != ItemTemplate.L2ItemType.questitem).ToList();
 
             player.sendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WH_CLAN));
             player.FolkNpc = this;
@@ -267,11 +254,7 @@ namespace L2dotNET.GameService.Model.Npcs
                 return;
             }
 
-            List<L2Item> items = new List<L2Item>();
-            foreach (L2Item item in player.getAllWarehouseItems())
-            {
-                items.Add(item);
-            }
+            List<L2Item> items = player.getAllWarehouseItems().Cast<L2Item>().ToList();
 
             if (items.Count == 0) // на случай если вх был создан и убраны вещи до времени выхода с сервера
             {
@@ -308,9 +291,8 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public override void broadcastUserInfo()
         {
-            foreach (L2Object obj in knownObjects.Values)
-                if (obj is L2Player)
-                    obj.sendPacket(new NpcInfo(this));
+            foreach (L2Player obj in knownObjects.Values.OfType<L2Player>())
+                obj.sendPacket(new NpcInfo(this));
         }
 
         public override void onSpawn()
@@ -322,10 +304,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public void showAvailRegularSkills(L2Player player, bool backward)
         {
             SortedList<int, TAcquireSkill> list;
-            if (player.ActiveSkillTree != null)
-                list = player.ActiveSkillTree;
-            else
-                list = new SortedList<int, TAcquireSkill>();
+            list = player.ActiveSkillTree ?? new SortedList<int, TAcquireSkill>();
 
             int nextLvl = 800;
             foreach (TAcquireSkill e in TSkillTable.Instance.GetAllRegularSkills(player.ActiveClass.ClassId.Id).skills)
@@ -436,24 +415,12 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public override double Radius
         {
-            get
-            {
-                if (Template.CollisionRadius == 0)
-                    return 12;
-
-                return Template.CollisionRadius;
-            }
+            get { return Template.CollisionRadius == 0 ? 12 : Template.CollisionRadius; }
         }
 
         public override double Height
         {
-            get
-            {
-                if (Template.CollisionHeight == 0)
-                    return 22;
-
-                return Template.CollisionHeight;
-            }
+            get { return Template.CollisionHeight == 0 ? 22 : Template.CollisionHeight; }
         }
 
         public override string asString()

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Tables;
@@ -19,10 +20,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             if (player._recipeBook != null)
             {
-                foreach (L2Recipe rec in player._recipeBook)
+                foreach (L2Recipe rec in player._recipeBook.Where(rec => rec._iscommonrecipe == type))
                 {
-                    if (rec._iscommonrecipe == type)
-                        _book.Add(rec);
+                    _book.Add(rec);
                 }
             }
         }

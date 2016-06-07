@@ -25,10 +25,7 @@ namespace L2dotNET.GameService.Managers
 
         public L2Item getItem(int _objectId)
         {
-            if (_items.ContainsKey(_objectId))
-                return _items[_objectId];
-
-            return null;
+            return _items.ContainsKey(_objectId) ? _items[_objectId] : null;
         }
     }
 }

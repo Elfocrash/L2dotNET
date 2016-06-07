@@ -36,7 +36,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            L2Object obj = null;
+            L2Object obj;
 
             if (_objectId == player.ObjID)
             {

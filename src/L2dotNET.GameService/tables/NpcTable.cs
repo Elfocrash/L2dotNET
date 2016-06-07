@@ -42,12 +42,7 @@ namespace L2dotNET.GameService.Tables
 
         public NpcTemplate GetTemplateByName(string name)
         {
-            foreach (NpcTemplate npcTemplate in npcs.Values)
-            {
-                if (npcTemplate.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
-                    return npcTemplate;
-            }
-            return null;
+            return npcs.Values.FirstOrDefault(npcTemplate => npcTemplate.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
         }
 
         public List<NpcTemplate> GetAllNpcs()
@@ -64,9 +59,9 @@ namespace L2dotNET.GameService.Tables
                 StatsSet set = new StatsSet();
                 StatsSet petSet = new StatsSet();
 
-                for (int i = 0; i < xmlFilesArray.Length; i++)
+                foreach (string i in xmlFilesArray)
                 {
-                    doc.Load(xmlFilesArray[i]);
+                    doc.Load(i);
                     if (doc.DocumentElement != null)
                     {
                         XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/npc");

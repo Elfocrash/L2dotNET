@@ -1,6 +1,6 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using System.Linq;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
-using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 {
@@ -23,23 +23,13 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
         public override void run()
         {
             L2Player player = Client.CurrentPlayer;
-            L2Player target = null;
+            L2Player target = player.knownObjects.Values.OfType<L2Player>().FirstOrDefault(obj => obj.Name.Equals(name));
 
             //if (name.Equals(player.Name))
             //{
             //    player.sendActionFailed();
             //    return;
             //}
-
-            foreach (L2Object obj in player.knownObjects.Values)
-            {
-                if (obj is L2Player)
-                    if (((L2Player)obj).Name.Equals(name))
-                    {
-                        target = (L2Player)obj;
-                        break;
-                    }
-            }
 
             //if (target == null)
             //    target = L2World.Instance.GetPlayer(name);

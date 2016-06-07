@@ -60,7 +60,7 @@ namespace L2dotNET.Utility
             while (index < size)
                 *(dst + index) = *(src + index++);
 
-            srcOffset += size;
+            //srcOffset += size;
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace L2dotNET.Utility
                     i++;
                 }
 
-                sb.AppendFormat("{0}   {1} {2}{3}", index.ToString("X5"), hex, data, Environment.NewLine);
+                sb.Append($"{index.ToString("X5")}   {hex} {data}{Environment.NewLine}");
                 index += 16;
             }
 

@@ -62,9 +62,7 @@ namespace L2dotNET.GameService.Tables
 
         public L2Alliance GetAlliance(int id)
         {
-            if (_alliances.ContainsKey(id))
-                return _alliances[id];
-            return null;
+            return _alliances.ContainsKey(id) ? _alliances[id] : null;
         }
     }
 }

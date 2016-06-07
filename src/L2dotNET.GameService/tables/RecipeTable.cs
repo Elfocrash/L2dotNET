@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using log4net;
 
@@ -35,7 +36,7 @@ namespace L2dotNET.GameService.Tables
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\recipes.xml"));
             XElement ex = xml.Element("list");
             if (ex != null)
-                foreach (var m in ex.Elements())
+                foreach (XElement m in ex.Elements())
                 {
                     if (m.Name == "recipe")
                     {
@@ -46,14 +47,14 @@ namespace L2dotNET.GameService.Tables
                         rec._item_id = int.Parse(m.Attribute("itemId").Value);
                         rec._iscommonrecipe = int.Parse(m.Attribute("common").Value);
 
-                        foreach (var stp in m.Elements())
+                        foreach (XElement stp in m.Elements())
                         {
                             switch (stp.Name.LocalName)
                             {
                                 case "material":
                                 {
                                     rec._mp_consume = int.Parse(stp.Attribute("mp").Value);
-                                    foreach (var items in stp.Elements())
+                                    foreach (XElement items in stp.Elements())
                                     {
                                         if (items.Name == "item")
                                         {
@@ -66,7 +67,7 @@ namespace L2dotNET.GameService.Tables
                                 case "product":
                                 {
                                     rec._success_rate = int.Parse(stp.Attribute("rate").Value);
-                                    foreach (var items in stp.Elements())
+                                    foreach (XElement items in stp.Elements())
                                     {
                                         if (items.Name == "item")
                                         {
@@ -79,7 +80,7 @@ namespace L2dotNET.GameService.Tables
                                     break;
                                 case "fee":
                                 {
-                                    foreach (var items in stp.Elements())
+                                    foreach (XElement items in stp.Elements())
                                     {
                                         if (items.Name == "item")
                                         {
@@ -105,21 +106,12 @@ namespace L2dotNET.GameService.Tables
 
         public L2Recipe GetById(int p)
         {
-            if (!_recipes.ContainsKey(p))
-                return null;
-
-            return _recipes[p];
+            return !_recipes.ContainsKey(p) ? null : _recipes[p];
         }
 
         public L2Recipe GetByItemId(int p)
         {
-            foreach (L2Recipe rec in _recipes.Values)
-            {
-                if (rec._item_id == p)
-                    return rec;
-            }
-
-            return null;
+            return _recipes.Values.FirstOrDefault(rec => rec._item_id == p);
         }
     }
 }

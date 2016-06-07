@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Network
 
         public static void handlePacket(AuthThread login, byte[] buff)
         {
-            byte id = 0;
+            byte id;
             try
             {
                 id = buff[0];

@@ -59,7 +59,7 @@
         public const int decotype_platform = 11;
         public const int decotype_item = 12;
 
-        public double[] regenMax = new double[] { 0, 5000, 10000, 28000, 58000, 103000, 106000, 151000, 196000 };
-        public double[] regenPerSec = new double[] { 9.26, 18.52, 27.78, 61.11, 116.7, 200, 205.6, 288.9, 372.2 };
+        public double[] regenMax = { 0, 5000, 10000, 28000, 58000, 103000, 106000, 151000, 196000 };
+        public double[] regenPerSec = { 9.26, 18.52, 27.78, 61.11, 116.7, 200, 205.6, 288.9, 372.2 };
     }
 }

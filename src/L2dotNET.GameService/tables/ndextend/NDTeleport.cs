@@ -22,21 +22,21 @@ namespace L2dotNET.GameService.Tables.Ndextend
             XElement ex = xml.Element("list");
             if (ex != null)
             {
-                foreach (var m in ex.Elements())
+                foreach (XElement m in ex.Elements())
                 {
                     if (m.Name == "npc")
                     {
                         ab_teleport_npc npc = new ab_teleport_npc();
                         npc.id = int.Parse(m.Attribute("id").Value);
 
-                        foreach (var x in m.Elements())
+                        foreach (XElement x in m.Elements())
                         {
                             if (x.Name == "group")
                             {
                                 ab_teleport_group ab = new ab_teleport_group();
                                 ab.id = int.Parse(x.Attribute("id").Value);
 
-                                foreach (var e in x.Elements())
+                                foreach (XElement e in x.Elements())
                                 {
                                     if (e.Name == "e")
                                     {

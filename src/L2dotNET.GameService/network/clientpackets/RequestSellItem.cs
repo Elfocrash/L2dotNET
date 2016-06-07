@@ -73,12 +73,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            long added = 0,
+            long added,
                  currentAdena = player.getAdena();
             if (currentAdena + totalCost >= int.MaxValue)
-            {
                 added = int.MaxValue - currentAdena;
-            }
             else
                 added = (int)totalCost;
 

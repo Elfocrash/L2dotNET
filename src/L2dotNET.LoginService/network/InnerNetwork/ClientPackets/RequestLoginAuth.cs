@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System.Linq;
+using log4net;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
@@ -36,14 +37,11 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
         public void RunImpl()
         {
             L2Server server = null;
-            foreach (L2Server srv in ServerThreadPool.Instance.servers)
+            foreach (L2Server srv in ServerThreadPool.Instance.servers.Where(srv => srv.Code == code))
             {
-                if (srv.Code == code)
-                {
-                    srv.Thread = thread;
-                    server = srv;
-                    break;
-                }
+                srv.Thread = thread;
+                server = srv;
+                break;
             }
 
             if (server == null)

@@ -39,10 +39,7 @@ namespace L2dotNET.GameService.Tables
 
         public StructureSpawn GetSpawn(int id)
         {
-            if (spawns.ContainsKey(id))
-                return spawns[id];
-
-            return null;
+            return spawns.ContainsKey(id) ? spawns[id] : null;
         }
 
         public void Initialize()

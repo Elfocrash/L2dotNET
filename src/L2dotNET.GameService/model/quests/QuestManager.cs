@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using log4net;
 using L2dotNET.GameService.Model.Npcs;
@@ -149,13 +150,10 @@ namespace L2dotNET.GameService.Model.Quests
 
         public void OnQuestTalk(L2Player player, L2Npc npc, int ask, int reply)
         {
-            foreach (QuestInfo qo in player._quests)
+            foreach (QuestInfo qo in player._quests.Where(qo => qo.id == ask))
             {
-                if (qo.id == ask)
-                {
-                    qo._template.onTalkToNpcQM(player, npc, reply);
-                    break;
-                }
+                qo._template.onTalkToNpcQM(player, npc, reply);
+                break;
             }
         }
 

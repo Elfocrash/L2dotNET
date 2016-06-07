@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             XElement ex = xml.Element("list");
             if (ex != null)
             {
-                foreach (var m in ex.Elements())
+                foreach (XElement m in ex.Elements())
                 {
                     if (m.Name == "group")
                     {
@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                         ab.name = m.Attribute("name").Value;
                         ab.level = int.Parse(m.Attribute("level").Value);
 
-                        foreach (var e in m.Elements())
+                        foreach (XElement e in m.Elements())
                         {
                             if (e.Name == "entry")
                             {

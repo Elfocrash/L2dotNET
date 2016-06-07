@@ -49,32 +49,33 @@ namespace L2dotNET.GameService.Model.Quests.Data
 
         public override void onTalkToNpcQM(L2Player player, L2Npc npc, int reply)
         {
-            if (reply == 1)
+            switch (reply)
             {
-                int cond = player.getQuestCond(questId);
-                switch (cond)
-                {
-                    case 1:
-                        player.ShowHtm("ossian_q0246_0201.htm", npc);
-                        player.changeQuestStage(questId, 2);
-                        break;
-                    case 5:
-                        player.ShowHtm("ossian_q0246_0401.htm", npc);
-                        player.takeItem(q_ring_waterbinder, 1);
-                        player.takeItem(q_necklace_evergreen, 1);
-                        player.takeItem(q_staff_rainsong, 1);
-                        player.addItemQuest(q_red_dust, 1);
-                        player.changeQuestStage(questId, 6);
-                        break;
-                }
-            }
-            else if (reply == 3)
-            {
-                player.ShowHtm("magister_ladd_q0246_0501.htm", npc);
-                player.takeItem(q_red_dust, 1);
-                player.addItemQuest(q_caradines_letter2, 1);
-                player.addExpSp(719843, 0, true);
-                player.finishQuest(questId);
+                case 1:
+                    int cond = player.getQuestCond(questId);
+                    switch (cond)
+                    {
+                        case 1:
+                            player.ShowHtm("ossian_q0246_0201.htm", npc);
+                            player.changeQuestStage(questId, 2);
+                            break;
+                        case 5:
+                            player.ShowHtm("ossian_q0246_0401.htm", npc);
+                            player.takeItem(q_ring_waterbinder, 1);
+                            player.takeItem(q_necklace_evergreen, 1);
+                            player.takeItem(q_staff_rainsong, 1);
+                            player.addItemQuest(q_red_dust, 1);
+                            player.changeQuestStage(questId, 6);
+                            break;
+                    }
+                    break;
+                case 3:
+                    player.ShowHtm("magister_ladd_q0246_0501.htm", npc);
+                    player.takeItem(q_red_dust, 1);
+                    player.addItemQuest(q_caradines_letter2, 1);
+                    player.addExpSp(719843, 0, true);
+                    player.finishQuest(questId);
+                    break;
             }
         }
 
@@ -82,44 +83,44 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == caradine)
+            switch (npcId)
             {
-                htmltext = "caradine_q0246_0105.htm";
-            }
-            else if (npcId == ossian)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "ossian_q0246_0101.htm";
-                        break;
-                    case 2:
-                        if (!player.hasAllOfThisItems(q_ring_waterbinder, q_necklace_evergreen))
-                            htmltext = "ossian_q0246_0203.htm";
-                        else
-                            htmltext = "ossian_q0246_0202.htm";
-                        break;
-                    case 3:
-                        htmltext = "ossian_q0246_0301.htm";
-                        player.changeQuestStage(questId, 4);
-                        break;
-                    case 4:
-                        htmltext = "ossian_q0246_0401.htm";
-                        break;
-                    case 5:
-                        if (player.hasAllOfThisItems(q_necklace_evergreen, q_ring_waterbinder, q_staff_rainsong))
-                            htmltext = "ossian_q0246_0303.htm";
-                        else
-                            htmltext = "ossian_q0246_0304.htm";
-                        break;
-                }
-            }
-            else if (npcId == magister_ladd)
-            {
-                if (cond == 5)
-                {
-                    htmltext = "magister_ladd_q0246_0401.htm";
-                }
+                case caradine:
+                    htmltext = "caradine_q0246_0105.htm";
+                    break;
+                case ossian:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "ossian_q0246_0101.htm";
+                            break;
+                        case 2:
+                            if (!player.hasAllOfThisItems(q_ring_waterbinder, q_necklace_evergreen))
+                                htmltext = "ossian_q0246_0203.htm";
+                            else
+                                htmltext = "ossian_q0246_0202.htm";
+                            break;
+                        case 3:
+                            htmltext = "ossian_q0246_0301.htm";
+                            player.changeQuestStage(questId, 4);
+                            break;
+                        case 4:
+                            htmltext = "ossian_q0246_0401.htm";
+                            break;
+                        case 5:
+                            if (player.hasAllOfThisItems(q_necklace_evergreen, q_ring_waterbinder, q_staff_rainsong))
+                                htmltext = "ossian_q0246_0303.htm";
+                            else
+                                htmltext = "ossian_q0246_0304.htm";
+                            break;
+                    }
+                    break;
+                case magister_ladd:
+                    if (cond == 5)
+                    {
+                        htmltext = "magister_ladd_q0246_0401.htm";
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);
@@ -127,55 +128,57 @@ namespace L2dotNET.GameService.Model.Quests.Data
 
         public override void onKill(L2Player player, L2Warrior mob, int stage)
         {
-            if (stage == 2)
+            switch (stage)
             {
-                Random rn = new Random();
-                switch (mob.Template.NpcId)
-                {
-                    case brilliant_prophet:
+                case 2:
+                    Random rn = new Random();
+                    switch (mob.Template.NpcId)
                     {
-                        if (!player.hasItem(q_ring_waterbinder) && rn.Next(100) <= 15)
-                            player.addItemQuest(q_ring_waterbinder, 1);
+                        case brilliant_prophet:
+                        {
+                            if (!player.hasItem(q_ring_waterbinder) && rn.Next(100) <= 15)
+                                player.addItemQuest(q_ring_waterbinder, 1);
+                        }
+                            break;
+                        case brilliant_justice:
+                        {
+                            if (!player.hasItem(q_necklace_evergreen) && rn.Next(100) <= 10)
+                                player.addItemQuest(q_necklace_evergreen, 1);
+                        }
+                            break;
                     }
-                        break;
-                    case brilliant_justice:
+                    break;
+                case 4:
+                    switch (mob.Template.NpcId)
                     {
-                        if (!player.hasItem(q_necklace_evergreen) && rn.Next(100) <= 10)
-                            player.addItemQuest(q_necklace_evergreen, 1);
+                        case blinding_fire_barakiel:
+                        {
+                            if (!player.hasItem(q_staff_rainsong))
+                                player.addItemQuest(q_staff_rainsong, 1);
+                        }
+                            break;
                     }
-                        break;
-                }
-            }
-            else if (stage == 4)
-            {
-                switch (mob.Template.NpcId)
-                {
-                    case blinding_fire_barakiel:
-                    {
-                        if (!player.hasItem(q_staff_rainsong))
-                            player.addItemQuest(q_staff_rainsong, 1);
-                    }
-                        break;
-                }
+                    break;
             }
         }
 
         public override void onEarnItem(L2Player player, int cond, int id)
         {
-            if (cond == 2)
+            switch (cond)
             {
-                if (id == q_ring_waterbinder || id == q_necklace_evergreen)
-                {
-                    if (player.hasAllOfThisItems(q_ring_waterbinder, q_ring_waterbinder))
-                        player.changeQuestStage(questId, 3);
-                }
-            }
-            else if (cond == 4)
-            {
-                if (id == q_staff_rainsong)
-                {
-                    player.changeQuestStage(questId, 5);
-                }
+                case 2:
+                    if (id == q_ring_waterbinder || id == q_necklace_evergreen)
+                    {
+                        if (player.hasAllOfThisItems(q_ring_waterbinder, q_ring_waterbinder))
+                            player.changeQuestStage(questId, 3);
+                    }
+                    break;
+                case 4:
+                    if (id == q_staff_rainsong)
+                    {
+                        player.changeQuestStage(questId, 5);
+                    }
+                    break;
             }
         }
     }

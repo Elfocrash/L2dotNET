@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Timers;
 using log4net;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Structures.Conq;
@@ -33,37 +34,36 @@ namespace L2dotNET.GameService.Commands.Admin
 
             string s = alias.Split(' ')[1];
 
-            if (s == "1")
+            switch (s)
             {
-                admin.AbnormalBitMaskEvent = int.Parse(alias.Split(' ')[2]);
-                admin.updateAbnormalEventEffect();
-            }
-            else if (s == "2")
-            {
-                int listid = int.Parse(alias.Split(' ')[2]);
-                MultiSell.Instance.ShowList(admin, null, listid);
-            }
-            else if (s == "4")
-            {
-                FortressOfTheDead d = new FortressOfTheDead();
-                d.start();
-            }
-            else if (s == "5")
-            {
-                if (np == null)
-                {
-                    int[] x = new int[] { -81166, -80913, -81952, -82554 };
-                    int[] y = new int[] { 245118, 246031, 246551, 245619 };
-                    np = new ZoneNPoly(x, y, -3727, -3727);
-                }
+                case "1":
+                    admin.AbnormalBitMaskEvent = int.Parse(alias.Split(' ')[2]);
+                    admin.updateAbnormalEventEffect();
+                    break;
+                case "2":
+                    int listid = int.Parse(alias.Split(' ')[2]);
+                    MultiSell.Instance.ShowList(admin, null, listid);
+                    break;
+                case "4":
+                    FortressOfTheDead d = new FortressOfTheDead();
+                    d.start();
+                    break;
+                case "5":
+                    if (np == null)
+                    {
+                        int[] x = { -81166, -80913, -81952, -82554 };
+                        int[] y = { 245118, 246031, 246551, 245619 };
+                        np = new ZoneNPoly(x, y, -3727, -3727);
+                    }
 
-                int count = int.Parse(alias.Split(' ')[2]);
+                    int count = int.Parse(alias.Split(' ')[2]);
 
-                for (int i = 0; i < count; i++)
-                {
-                    int[] rloc = this.rndXYZ();
-                    // NpcTable.getInstance().spawnNpc("lector", rloc[0], rloc[1], rloc[3], new Random().Next(65000));
-                }
+                    for (int i = 0; i < count; i++)
+                    {
+                        int[] rloc = rndXYZ();
+                        // NpcTable.getInstance().spawnNpc("lector", rloc[0], rloc[1], rloc[3], new Random().Next(65000));
+                    }
+                    break;
             }
 
             // admin._privateStoreType = byte.Parse(alias.Split(' ')[1]);
@@ -79,7 +79,7 @@ namespace L2dotNET.GameService.Commands.Admin
         //private System.Timers.Timer t;
         //private L2Player adm;
 
-        private void t_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void t_Elapsed(object sender, ElapsedEventArgs e)
         {
             //List<int> l = new List<int>();
             //l.Add(adm.ObjID);

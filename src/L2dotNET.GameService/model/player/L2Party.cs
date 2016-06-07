@@ -21,10 +21,10 @@ namespace L2dotNET.GameService.Model.Player
             Members.AddLast(player);
             leader = player;
             this.player = player;
-            this.itemDistribution = player.itemDistribution;
+            itemDistribution = player.itemDistribution;
         }
 
-        public double[] bonusExp = new double[] { 1, 1.30, 1.39, 1.50, 1.54, 1.58, 1.63, 1.67, 1.71 };
+        public double[] bonusExp = { 1, 1.30, 1.39, 1.50, 1.54, 1.58, 1.63, 1.67, 1.71 };
         public short[] LOOT_SYSSTRINGS = { 487, 488, 798, 799, 800 };
 
         public byte ITEM_LOOTER = 0;
@@ -63,15 +63,14 @@ namespace L2dotNET.GameService.Model.Player
 
         public void broadcastToMembers(GameServerNetworkPacket pk, int except)
         {
-            foreach (L2Player pl in Members)
-                if (pl.ObjID != except)
-                    pl.sendPacket(pk);
+            foreach (L2Player pl in Members.Where(pl => pl.ObjID != except))
+                pl.sendPacket(pk);
         }
 
-        private byte votesOnStart = 0,
-                     votesVoted = 0;
-        private Timer voteTimer = null;
-        private SortedList<int, byte> votes = null;
+        private byte votesOnStart,
+                     votesVoted;
+        private Timer voteTimer;
+        private SortedList<int, byte> votes;
 
         public void VoteForLootChange(byte mode)
         {
@@ -86,7 +85,7 @@ namespace L2dotNET.GameService.Model.Player
             voteTimer = new Timer();
             voteTimer.Interval = 30000;
             voteTimer.Enabled = true;
-            voteTimer.Elapsed += new ElapsedEventHandler(voteTimer_Elapsed);
+            voteTimer.Elapsed += voteTimer_Elapsed;
             votes = new SortedList<int, byte>(votesOnStart);
         }
 
@@ -112,9 +111,8 @@ namespace L2dotNET.GameService.Model.Player
 
             double half = votesOnStart * 0.5;
             byte agreed = 0;
-            foreach (byte vote in votes.Values)
-                if (vote == 1)
-                    agreed++;
+            foreach (byte vote in votes.Values.Where(vote => vote == 1))
+                agreed++;
 
             votes.Clear();
             SystemMessage sm;

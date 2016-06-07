@@ -74,7 +74,7 @@ namespace L2dotNET.GameService.Model.Items
 
             if (ex != null)
             {
-                foreach (var m in ex.Elements())
+                foreach (XElement m in ex.Elements())
                 {
                     if (m.Name == "item")
                     {

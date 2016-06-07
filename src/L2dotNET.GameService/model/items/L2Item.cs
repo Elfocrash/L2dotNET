@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using L2dotNET.GameService.Model.Inventory;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -213,13 +214,14 @@ namespace L2dotNET.GameService.Model.Items
 
         private void tryEquipSecondary(L2Player owner)
         {
-            int secondaryId1 = 0,
-                secondaryId2 = 0;
+            int secondaryId1,
+                secondaryId2;
             bool bow = Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow;
             switch (Template.CrystallGrade)
             {
                 case ItemTemplate.L2ItemGrade.none:
                     secondaryId1 = bow ? 17 : 9632;
+                    secondaryId2 = 0;
                     break;
                 case ItemTemplate.L2ItemGrade.d:
                     secondaryId1 = bow ? 1341 : 9633;
@@ -242,14 +244,11 @@ namespace L2dotNET.GameService.Model.Items
                     secondaryId2 = bow ? 22071 : 22148;
                     break;
             }
-            foreach (L2Item sec in owner.Inventory.Items.Values)
+            foreach (L2Item sec in owner.Inventory.Items.Values.Where(sec => sec.Template.ItemID == secondaryId1 || sec.Template.ItemID == secondaryId2))
             {
-                if (sec.Template.ItemID == secondaryId1 || sec.Template.ItemID == secondaryId2)
-                {
-                    owner.Inventory.setPaperdoll(InvPC.EQUIPITEM_LHand, sec, true);
-                    owner.SecondaryWeaponSupport = sec;
-                    break;
-                }
+                owner.Inventory.setPaperdoll(InvPC.EQUIPITEM_LHand, sec, true);
+                owner.SecondaryWeaponSupport = sec;
+                break;
             }
         }
 
@@ -283,13 +282,10 @@ namespace L2dotNET.GameService.Model.Items
             player.sendMessage(asString() + " dis " + (int)dis);
             if (dis < 80)
             {
-                foreach (L2Object o in knownObjects.Values)
+                foreach (L2Player o in knownObjects.Values.OfType<L2Player>())
                 {
-                    if (o is L2Player)
-                    {
-                        o.sendPacket(new GetItem(player.ObjID, ObjID, X, Y, Z));
-                        o.sendPacket(new DeleteObject(ObjID));
-                    }
+                    o.sendPacket(new GetItem(player.ObjID, ObjID, X, Y, Z));
+                    o.sendPacket(new DeleteObject(ObjID));
                 }
 
                 player.onPickUp(this);
@@ -361,10 +357,7 @@ namespace L2dotNET.GameService.Model.Items
 
         private string LimitedHourStr()
         {
-            if (!LifeTimeEndEnabled)
-                return "-1";
-
-            return LifeTimeEndTime.ToString("yyyy-MM-dd HH-mm-ss");
+            return !LifeTimeEndEnabled ? "-1" : LifeTimeEndTime.ToString("yyyy-MM-dd HH-mm-ss");
         }
 
         public void sql_insert(int id)

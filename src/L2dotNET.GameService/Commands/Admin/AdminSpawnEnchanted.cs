@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.Commands.Admin
             //summon2 [enchant] [id | name] -- призывает предмет [id | name] , заточенный на [enchant]
 
             short enchant = short.Parse(alias.Split(' ')[1]);
-            int id = id = int.Parse(alias.Split(' ')[2]);
+            int id = int.Parse(alias.Split(' ')[2]);
             admin.Inventory.addItem(id, 1, enchant, true, true);
         }
     }

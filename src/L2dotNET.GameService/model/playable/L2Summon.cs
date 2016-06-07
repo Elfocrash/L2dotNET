@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Playable.PetAI;
 using L2dotNET.GameService.Model.Player;
@@ -66,25 +67,18 @@ namespace L2dotNET.GameService.Model.Playable
 
         public override void broadcastUserInfo()
         {
-            foreach (L2Object obj in knownObjects.Values)
-                if (obj is L2Player)
-                    obj.sendPacket(new PetInfo(this));
+            foreach (L2Player obj in knownObjects.Values.OfType<L2Player>())
+                obj.sendPacket(new PetInfo(this));
         }
 
         public byte getPvPStatus()
         {
-            if (Owner == null)
-                return 0;
-
-            return Owner.PvPStatus;
+            return Owner == null ? (byte)0 : Owner.PvPStatus;
         }
 
         public int getKarma()
         {
-            if (Owner == null)
-                return 0;
-
-            return Owner.Karma;
+            return Owner == null ? 0 : Owner.Karma;
         }
 
         public virtual long getExpToLevelUp()
@@ -211,14 +205,8 @@ namespace L2dotNET.GameService.Model.Playable
 
             if (Owner != null && Owner.Party != null)
             {
-                if (chars == null)
-                    chars = new List<L2Character>();
-
-                foreach (L2Player pl in Owner.Party.Members)
+                foreach (L2Player pl in Owner.Party.Members.Where(pl => pl.ObjID != Owner.ObjID))
                 {
-                    if (pl.ObjID == Owner.ObjID)
-                        continue;
-
                     chars.Add(pl);
 
                     if (pl.Summon != null)
@@ -239,17 +227,14 @@ namespace L2dotNET.GameService.Model.Playable
 
             PartySpelled p = new PartySpelled(this);
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ei in _effects)
+            foreach (AbnormalEffect ei in _effects.Where(ei => ei != null))
             {
-                if (ei != null)
+                if (ei.active == 1)
                 {
-                    if (ei.active == 1)
-                    {
-                        p.addIcon(ei.id, ei.lvl, ei.getTime());
-                    }
-                    else
-                        nulled.Add(ei);
+                    p.addIcon(ei.id, ei.lvl, ei.getTime());
                 }
+                else
+                    nulled.Add(ei);
             }
 
             lock (_effects)

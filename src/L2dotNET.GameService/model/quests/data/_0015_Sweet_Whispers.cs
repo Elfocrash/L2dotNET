@@ -42,35 +42,35 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (npcId == trader_vladimir)
+            switch (npcId)
             {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "trader_vladimir_q0015_0105.htm";
-                        break;
-                }
-            }
-            else if (npcId == dark_necromancer)
-            {
-                switch (cond)
-                {
-                    case 1:
-                        htmltext = "dark_necromancer_q0015_0101.htm";
-                        break;
-                    case 2:
-                        htmltext = "dark_necromancer_q0015_0202.htm";
-                        break;
-                }
-            }
-            else if (npcId == dark_presbyter)
-            {
-                switch (cond)
-                {
-                    case 2:
-                        htmltext = "dark_presbyter_q0015_0201.htm";
-                        break;
-                }
+                case trader_vladimir:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "trader_vladimir_q0015_0105.htm";
+                            break;
+                    }
+                    break;
+                case dark_necromancer:
+                    switch (cond)
+                    {
+                        case 1:
+                            htmltext = "dark_necromancer_q0015_0101.htm";
+                            break;
+                        case 2:
+                            htmltext = "dark_necromancer_q0015_0202.htm";
+                            break;
+                    }
+                    break;
+                case dark_presbyter:
+                    switch (cond)
+                    {
+                        case 2:
+                            htmltext = "dark_presbyter_q0015_0201.htm";
+                            break;
+                    }
+                    break;
             }
 
             player.ShowHtm(htmltext, npc);

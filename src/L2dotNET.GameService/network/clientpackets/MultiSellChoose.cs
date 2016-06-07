@@ -59,7 +59,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            MultiSellList list = null;
+            MultiSellList list;
             if (player.CustomMultiSellList != null)
             {
                 list = player.CustomMultiSellList;

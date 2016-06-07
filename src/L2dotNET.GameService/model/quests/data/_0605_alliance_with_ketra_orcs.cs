@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
 
@@ -91,71 +92,65 @@ namespace L2dotNET.GameService.Model.Quests.Data
             string htmltext = no_action_required;
             if (npcId == herald_wakan)
             {
-                if (reply == 1)
+                switch (reply)
                 {
-                    if (player.hasItem(q_barka_badge_grunt, 100))
-                    {
-                        player.takeItem(q_barka_badge_grunt, 100);
-                        player.addItem(q_ketra_friendship_1, 1);
-                        player.changeQuestStage(questId, 2);
-                        htmltext = "herald_wakan_q0605_12.htm";
-                    }
-                    else
-                        htmltext = "herald_wakan_q0605_12b.htm";
-                }
-                else if (reply == 2)
-                {
-                    if (player.hasItem(q_barka_badge_grunt, 200) && player.hasItem(q_barka_badge_captn, 100) && player.hasItem(q_ketra_friendship_1))
-                    {
-                        player.takeItem(q_barka_badge_grunt, 200);
-                        player.takeItem(q_barka_badge_captn, 100);
-                        player.takeItem(q_ketra_friendship_1, 1);
-                        player.addItem(q_ketra_friendship_2, 1);
-                        player.changeQuestStage(questId, 3);
-                        htmltext = "herald_wakan_q0605_15.htm";
-                    }
-                    else
-                        htmltext = "herald_wakan_q0605_12b.htm";
-                }
-                else if (reply == 3)
-                {
-                    if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 200) && player.hasItem(q_barka_badge_officer, 100) && player.hasItem(q_ketra_friendship_2))
-                    {
-                        player.takeItem(q_barka_badge_grunt, 200);
-                        player.takeItem(q_barka_badge_captn, 100);
-                        player.takeItem(q_ketra_friendship_2, 1);
-                        player.addItem(q_ketra_friendship_3, 1);
-                        player.changeQuestStage(questId, 4);
-                        htmltext = "herald_wakan_q0605_18.htm";
-                    }
-                    else
-                        htmltext = "herald_wakan_q0605_12b.htm";
-                }
-                else if (reply == 4)
-                {
-                    if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 300) && player.hasItem(q_barka_badge_officer, 200) && player.hasItem(q_totem_of_valor) && player.hasItem(q_ketra_friendship_3))
-                    {
-                        player.takeItem(q_barka_badge_grunt, 300);
-                        player.takeItem(q_barka_badge_captn, 300);
-                        player.takeItem(q_barka_badge_officer, 200);
-                        player.takeItem(q_totem_of_valor, 1);
-                        player.takeItem(q_ketra_friendship_3, 1);
-                        player.addItem(q_ketra_friendship_4, 1);
-                        player.changeQuestStage(questId, 5);
-                        htmltext = "herald_wakan_q0605_21.htm";
-                    }
-                    else
-                        htmltext = "herald_wakan_q0605_12b.htm";
-                }
-                else if (reply == 5)
-                {
-                    htmltext = "herald_wakan_q0605_25.htm";
-                }
-                else if (reply == 6)
-                {
-                    foreach (QuestInfo qi in player._quests)
-                    {
-                        if (qi.id == questId)
+                    case 1:
+                        if (player.hasItem(q_barka_badge_grunt, 100))
+                        {
+                            player.takeItem(q_barka_badge_grunt, 100);
+                            player.addItem(q_ketra_friendship_1, 1);
+                            player.changeQuestStage(questId, 2);
+                            htmltext = "herald_wakan_q0605_12.htm";
+                        }
+                        else
+                            htmltext = "herald_wakan_q0605_12b.htm";
+                        break;
+                    case 2:
+                        if (player.hasItem(q_barka_badge_grunt, 200) && player.hasItem(q_barka_badge_captn, 100) && player.hasItem(q_ketra_friendship_1))
+                        {
+                            player.takeItem(q_barka_badge_grunt, 200);
+                            player.takeItem(q_barka_badge_captn, 100);
+                            player.takeItem(q_ketra_friendship_1, 1);
+                            player.addItem(q_ketra_friendship_2, 1);
+                            player.changeQuestStage(questId, 3);
+                            htmltext = "herald_wakan_q0605_15.htm";
+                        }
+                        else
+                            htmltext = "herald_wakan_q0605_12b.htm";
+                        break;
+                    case 3:
+                        if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 200) && player.hasItem(q_barka_badge_officer, 100) && player.hasItem(q_ketra_friendship_2))
+                        {
+                            player.takeItem(q_barka_badge_grunt, 200);
+                            player.takeItem(q_barka_badge_captn, 100);
+                            player.takeItem(q_ketra_friendship_2, 1);
+                            player.addItem(q_ketra_friendship_3, 1);
+                            player.changeQuestStage(questId, 4);
+                            htmltext = "herald_wakan_q0605_18.htm";
+                        }
+                        else
+                            htmltext = "herald_wakan_q0605_12b.htm";
+                        break;
+                    case 4:
+                        if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 300) && player.hasItem(q_barka_badge_officer, 200) && player.hasItem(q_totem_of_valor) && player.hasItem(q_ketra_friendship_3))
+                        {
+                            player.takeItem(q_barka_badge_grunt, 300);
+                            player.takeItem(q_barka_badge_captn, 300);
+                            player.takeItem(q_barka_badge_officer, 200);
+                            player.takeItem(q_totem_of_valor, 1);
+                            player.takeItem(q_ketra_friendship_3, 1);
+                            player.addItem(q_ketra_friendship_4, 1);
+                            player.changeQuestStage(questId, 5);
+                            htmltext = "herald_wakan_q0605_21.htm";
+                        }
+                        else
+                            htmltext = "herald_wakan_q0605_12b.htm";
+                        break;
+                    case 5:
+                        htmltext = "herald_wakan_q0605_25.htm";
+                        break;
+                    case 6:
+                        foreach (QuestInfo qi in player._quests.Where(qi => qi.id == questId))
                         {
                             foreach (int id in qi._template.actItems)
                             {
@@ -165,9 +160,9 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             player.stopQuest(qi, true);
                             return;
                         }
-                    }
 
-                    htmltext = "herald_wakan_q0605_26.htm";
+                        htmltext = "herald_wakan_q0605_26.htm";
+                        break;
                 }
             }
 
@@ -180,60 +175,59 @@ namespace L2dotNET.GameService.Model.Quests.Data
             string htmltext = no_action_required;
             if (npcIdh == herald_wakan)
             {
-                if (cond == 1)
+                switch (cond)
                 {
-                    if (player.hasItem(q_barka_badge_grunt, 100))
-                    {
-                        htmltext = "herald_wakan_q0605_11.htm";
-                    }
-                    else
-                        htmltext = "herald_wakan_q0605_10.htm";
+                    case 1:
+                        if (player.hasItem(q_barka_badge_grunt, 100))
+                        {
+                            htmltext = "herald_wakan_q0605_11.htm";
+                        }
+                        else
+                            htmltext = "herald_wakan_q0605_10.htm";
+                        break;
+                    case 2:
+                        if (player.hasItem(q_barka_badge_grunt, 200) && player.hasItem(q_barka_badge_captn, 100))
+                        {
+                            htmltext = "herald_wakan_q0605_14.htm";
+                        }
+                        else
+                            htmltext = "herald_wakan_q0605_13.htm";
+                        break;
+                    case 3:
+                        if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 200) && player.hasItem(q_barka_badge_officer, 100))
+                        {
+                            htmltext = "herald_wakan_q0605_17.htm";
+                        }
+                        else
+                            htmltext = "herald_wakan_q0605_16.htm";
+                        break;
+                    case 4:
+                        if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 300) && player.hasItem(q_barka_badge_officer, 200) && player.hasItem(q_totem_of_valor))
+                        {
+                            htmltext = "herald_wakan_q0605_20.htm";
+                        }
+                        else
+                            htmltext = "herald_wakan_q0605_19.htm";
+                        break;
+                    case 5:
+                        if (player.hasItem(q_barka_badge_grunt, 400) && player.hasItem(q_barka_badge_captn, 400) && player.hasItem(q_barka_badge_officer, 200) && player.hasItem(q_totem_of_wisdom) && player.hasItem(q_ketra_friendship_4))
+                        {
+                            player.takeItem(q_barka_badge_grunt, 400);
+                            player.takeItem(q_barka_badge_captn, 400);
+                            player.takeItem(q_barka_badge_officer, 200);
+                            player.takeItem(q_totem_of_wisdom, 1);
+                            player.takeItem(q_ketra_friendship_4, 1);
+                            player.addItem(q_ketra_friendship_5, 1);
+                            player.changeQuestStage(questId, 6);
+                            htmltext = "herald_wakan_q0605_23.htm";
+                        }
+                        else
+                            htmltext = "herald_wakan_q0605_22.htm";
+                        break;
+                    case 6:
+                        htmltext = "herald_wakan_q0605_09.htm";
+                        break;
                 }
-                else if (cond == 2)
-                {
-                    if (player.hasItem(q_barka_badge_grunt, 200) && player.hasItem(q_barka_badge_captn, 100))
-                    {
-                        htmltext = "herald_wakan_q0605_14.htm";
-                    }
-                    else
-                        htmltext = "herald_wakan_q0605_13.htm";
-                }
-                else if (cond == 3)
-                {
-                    if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 200) && player.hasItem(q_barka_badge_officer, 100))
-                    {
-                        htmltext = "herald_wakan_q0605_17.htm";
-                    }
-                    else
-                        htmltext = "herald_wakan_q0605_16.htm";
-                }
-                else if (cond == 4)
-                {
-                    if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 300) && player.hasItem(q_barka_badge_officer, 200) && player.hasItem(q_totem_of_valor))
-                    {
-                        htmltext = "herald_wakan_q0605_20.htm";
-                    }
-                    else
-                        htmltext = "herald_wakan_q0605_19.htm";
-                }
-                else if (cond == 5)
-                {
-                    if (player.hasItem(q_barka_badge_grunt, 400) && player.hasItem(q_barka_badge_captn, 400) && player.hasItem(q_barka_badge_officer, 200) && player.hasItem(q_totem_of_wisdom) && player.hasItem(q_ketra_friendship_4))
-                    {
-                        player.takeItem(q_barka_badge_grunt, 400);
-                        player.takeItem(q_barka_badge_captn, 400);
-                        player.takeItem(q_barka_badge_officer, 200);
-                        player.takeItem(q_totem_of_wisdom, 1);
-                        player.takeItem(q_ketra_friendship_4, 1);
-                        player.addItem(q_ketra_friendship_5, 1);
-                        player.changeQuestStage(questId, 6);
-                        htmltext = "herald_wakan_q0605_23.htm";
-                    }
-                    else
-                        htmltext = "herald_wakan_q0605_22.htm";
-                }
-                else if (cond == 6)
-                    htmltext = "herald_wakan_q0605_09.htm";
             }
 
             player.ShowHtm(htmltext, npc);

@@ -62,7 +62,7 @@ namespace L2dotNET.LoginService.Network
             array.AddRange(BitConverter.GetBytes((short)(data.Length + 2)));
             array.AddRange(data);
             NetStream.Write(array.ToArray(), 0, array.Count);
-            Console.WriteLine("Recieve :\r\n{0}", L2Buffer.ToString(array.ToArray()));
+            Console.WriteLine($"Recieve :\r\n{L2Buffer.ToString(array.ToArray())}");
             NetStream.Flush();
         }
 
@@ -83,10 +83,9 @@ namespace L2dotNET.LoginService.Network
 
         private void OnReceiveCallbackStatic(IAsyncResult result)
         {
-            int rs = 0;
             try
             {
-                rs = NetStream.EndRead(result);
+                int rs = NetStream.EndRead(result);
 
                 if (rs > 0)
                 {

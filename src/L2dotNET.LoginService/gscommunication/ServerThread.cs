@@ -52,10 +52,9 @@ namespace L2dotNET.LoginService.GSCommunication
 
         private void OnReceiveCallbackStatic(IAsyncResult result)
         {
-            int rs = 0;
             try
             {
-                rs = nstream.EndRead(result);
+                int rs = nstream.EndRead(result);
                 if (rs > 0)
                 {
                     short length = BitConverter.ToInt16(buffer, 0);

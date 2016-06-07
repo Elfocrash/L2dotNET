@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Npcs;
+﻿using System.Linq;
+using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.World;
@@ -32,15 +33,7 @@ namespace L2dotNET.GameService.Model.Quests
 
         public virtual bool canTalk(L2Player player, L2Npc npc)
         {
-            foreach (int id in talkNpcs)
-            {
-                if (npc.Template.NpcId == id)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return talkNpcs.Any(id => npc.Template.NpcId == id);
         }
 
         public virtual void onTalkToNpcQM(L2Player player, L2Npc npc, int reply) { }
