@@ -85,7 +85,7 @@ namespace L2dotNET.GameService.Model.Player
             voteTimer = new Timer();
             voteTimer.Interval = 30000;
             voteTimer.Enabled = true;
-            voteTimer.Elapsed += voteTimer_Elapsed;
+            voteTimer.Elapsed += new ElapsedEventHandler(voteTimer_Elapsed);
             votes = new SortedList<int, byte>(votesOnStart);
         }
 

@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             if (attackMove == null)
             {
                 attackMove = new Timer();
-                attackMove.Elapsed += AttackMoveTask;
+                attackMove.Elapsed += new ElapsedEventHandler(AttackMoveTask);
                 attackMove.Interval = 100;
             }
 
