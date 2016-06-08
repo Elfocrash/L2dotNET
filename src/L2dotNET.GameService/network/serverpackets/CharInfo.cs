@@ -142,7 +142,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeC(hero);
 
             writeC(player.isFishing() ? 0x01 : 0x00); //Fishing Mode
-            writeD(player.GetFishx()); //fishing x  
+            writeD(player.GetFishx()); //fishing x
             writeD(player.GetFishy()); //fishing y
             writeD(player.GetFishz()); //fishing z
             writeD(player.getNameColor());

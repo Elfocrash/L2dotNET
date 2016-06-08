@@ -41,7 +41,9 @@ namespace L2dotNET.GameService.Model.Skills
         {
             _timer.Enabled = false;
             lock (_owner._reuse)
+            {
                 _owner._reuse.Remove(id);
+            }
         }
     }
 }

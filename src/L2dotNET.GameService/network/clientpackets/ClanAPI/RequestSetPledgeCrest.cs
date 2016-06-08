@@ -11,14 +11,14 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
         public RequestSetPledgeCrest(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
         {
             _size = readD();
 
-            if (_size > 0 && _size <= 256)
+            if ((_size > 0) && (_size <= 256))
                 _picture = readB(_size);
         }
 
@@ -48,7 +48,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
                 return;
             }
 
-            if (_size < 0 || _size > 256)
+            if ((_size < 0) || (_size > 256))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.CAN_ONLY_REGISTER_16_12_PX_256_COLOR_BMP_FILES);
                 player.sendActionFailed();

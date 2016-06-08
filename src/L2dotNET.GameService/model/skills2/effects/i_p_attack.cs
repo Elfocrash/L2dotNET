@@ -31,8 +31,8 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             if (target == null)
                 return nothing;
 
-            L2Character tar = (L2Character)target;
-            double shieldDef = Formulas.checkShieldDef(caster, tar);
+            L2Character tar = target;
+            //double shieldDef = Formulas.checkShieldDef(caster, tar);
             double damage = Formulas.getPhysSkillHitDamage(caster, tar, power);
 
             caster.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3).AddPlayerName(caster.Name).AddString(tar.Name).AddNumber(damage));

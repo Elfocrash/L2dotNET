@@ -18,8 +18,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 17;
             questName = "Light And Darkness";
             startNpc = dark_presbyter;
-            talkNpcs = new int[] { startNpc, blessed_altar1, blessed_altar2, blessed_altar3, blessed_altar4 };
-            actItems = new int[] { q_blood_of_saint };
+            talkNpcs = new[] { startNpc, blessed_altar1, blessed_altar2, blessed_altar3, blessed_altar4 };
+            actItems = new[] { q_blood_of_saint };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
@@ -27,9 +27,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (player.Level >= 61)
                 player.ShowHtm("dark_presbyter_q0017_01.htm", npc);
             else
-            {
                 player.ShowHtm("dark_presbyter_q0017_03.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -50,9 +48,9 @@ namespace L2dotNET.GameService.Model.Quests.Data
             switch (npcId)
             {
                 case dark_presbyter:
-                    if (cond > 0 && cond < 5 && player.hasItem(q_blood_of_saint))
+                    if ((cond > 0) && (cond < 5) && player.hasItem(q_blood_of_saint))
                         htmltext = "dark_presbyter_q0017_05.htm";
-                    else if (cond > 0 && cond < 5 && !player.hasItem(q_blood_of_saint))
+                    else if ((cond > 0) && (cond < 5) && !player.hasItem(q_blood_of_saint))
                     {
                         htmltext = "dark_presbyter_q0017_06.htm";
                         player.changeQuestStage(questId, 0);
@@ -71,6 +69,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "blessed_altar1_q0017_05.htm";
                             break;
                     }
+
                     break;
                 case blessed_altar2:
                     switch (cond)
@@ -85,6 +84,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "blessed_altar2_q0017_05.htm";
                             break;
                     }
+
                     break;
                 case blessed_altar3:
                     switch (cond)
@@ -99,6 +99,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "blessed_altar3_q0017_05.htm";
                             break;
                     }
+
                     break;
                 case blessed_altar4:
                     switch (cond)
@@ -113,8 +114,10 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "blessed_altar4_q0017_05.htm";
                             break;
                     }
+
                     break;
             }
+
             player.ShowHtm(htmltext, npc);
         }
 

@@ -34,7 +34,7 @@ namespace L2dotNET.GameService.Templates
 
         public PcTemplate(ClassId classId, StatsSet set) : base(set)
         {
-            this.ClassId = classId;
+            ClassId = classId;
 
             BaseSwimSpd = set.GetInt("swimSpd", 1);
 

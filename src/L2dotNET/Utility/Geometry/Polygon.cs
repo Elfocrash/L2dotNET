@@ -105,7 +105,7 @@ namespace L2dotNET.Utility.Geometry
                 int[] pt = points[i];
 
                 // x lower, or x same and y higher
-                if ((pt[0] < point[0]) || pt[0] == point[0] && pt[1] > point[1])
+                if ((pt[0] < point[0]) || ((pt[0] == point[0]) && (pt[1] > point[1])))
                 {
                     point = pt;
                     index = i;
@@ -225,10 +225,8 @@ namespace L2dotNET.Utility.Geometry
 
             // iterate over all concave points and check if one of them lies inside the given triangle
             foreach (int[] i in nonConvexPoints)
-            {
                 if (IsInside(A, B, C, i))
                     return false;
-            }
 
             return true;
         }
@@ -264,7 +262,7 @@ namespace L2dotNET.Utility.Geometry
             double ca = (PAx * CAy - CAx * PAy) / detXYZ;
 
             // check coefficients
-            return (ba > 0 && ca > 0 && (ba + ca) < 1);
+            return ((ba > 0) && (ca > 0) && ((ba + ca) < 1));
         }
     }
 }

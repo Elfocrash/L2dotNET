@@ -56,6 +56,7 @@ namespace L2dotNET.GameService.AI.NpcAI
                             talker.sendPacket(new ExBuySellList_Sell(talker));
                             break;
                     }
+
                     break;
                 case -506:
                     MultiSell.Instance.ShowList(talker, myself, 212);
@@ -65,16 +66,14 @@ namespace L2dotNET.GameService.AI.NpcAI
                     break;
                 case -510:
                     if (reply == 1)
-                    {
                         if (talker.Level < 40)
                             talker.ShowHtm("reflect_weapon_none.htm", myself);
-                        else if (talker.Level >= 40 && talker.Level < 46)
+                        else if ((talker.Level >= 40) && (talker.Level < 46))
                             talker.ShowHtm("reflect_weapon_d.htm", myself);
-                        else if (talker.Level >= 46 && talker.Level < 52)
+                        else if ((talker.Level >= 46) && (talker.Level < 52))
                             talker.ShowHtm("reflect_weapon_c.htm", myself);
                         else if (talker.Level >= 52)
                             talker.ShowHtm("reflect_weapon_b.htm", myself);
-                    }
                     break;
                 default:
                     base.TalkedReply(talker, ask, reply);

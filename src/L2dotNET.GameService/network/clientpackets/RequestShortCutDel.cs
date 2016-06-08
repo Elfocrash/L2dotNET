@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestShortCutDel(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _slot;
@@ -25,7 +25,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            L2Shortcut scx = player._shortcuts.FirstOrDefault(sc => sc.Slot == _slot && sc.Page == _page);
+            L2Shortcut scx = player._shortcuts.FirstOrDefault(sc => (sc.Slot == _slot) && (sc.Page == _page));
 
             if (scx == null)
             {

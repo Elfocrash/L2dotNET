@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestSellItem(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _listId;
@@ -49,14 +49,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 int objectId = (int)_items[i * 3 + 0];
                 long count = _items[i * 3 + 2];
 
-                if (count < 0 || count > int.MaxValue)
+                if ((count < 0) || (count > int.MaxValue))
                 {
                     player.sendSystemMessage(SystemMessage.SystemMessageId.SELL_ATTEMPT_FAILED);
                     player.sendActionFailed();
                     return;
                 }
 
-                L2Item item = (L2Item)player.Inventory.Items[objectId];
+                L2Item item = player.Inventory.Items[objectId];
 
                 if (item.Template.isStackable())
                     totalCost += (int)(item.Count * (item.Template.Price * .5));
@@ -81,14 +81,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 added = (int)totalCost;
 
             List<long[]> transfer = new List<long[]>();
-            InventoryUpdate iu = new InventoryUpdate();
+            //InventoryUpdate iu = new InventoryUpdate();
             for (int i = 0; i < _count; i++)
             {
                 int objectId = (int)_items[i * 3 + 0];
                 long count = _items[i * 3 + 2];
 
-                transfer.Add(new long[] { objectId, count });
+                transfer.Add(new[] { objectId, count });
             }
+
             player.Refund.transferHere(player, transfer, false);
             player.Refund.validate();
 

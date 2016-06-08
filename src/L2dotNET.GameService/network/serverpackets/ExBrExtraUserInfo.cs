@@ -7,7 +7,7 @@
 
         public ExBrExtraUserInfo(int id, int value)
         {
-            this.playerId = id;
+            playerId = id;
             this.value = value;
         }
 

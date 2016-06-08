@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 
         public RequestMoveToLocationInVehicle(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -47,7 +47,6 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 
             L2Boat boat = null;
             if (player.Boat != null)
-            {
                 if (player.Boat.ObjID == boatId)
                     boat = player.Boat;
                 else
@@ -55,7 +54,6 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
                     player.sendActionFailed();
                     return;
                 }
-            }
             else if (player.knownObjects.ContainsKey(boatId))
                 boat = (L2Boat)player.knownObjects[boatId];
 

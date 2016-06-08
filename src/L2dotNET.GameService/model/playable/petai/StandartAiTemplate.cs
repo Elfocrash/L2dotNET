@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
         public L2Character character;
         public System.Timers.Timer ai1sec,
                                    follow;
-        private bool FollowStatus = false;
+        private bool FollowStatus;
 
         public void Enable()
         {

@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Model.Player.Transformation
 
         public L2Transform(TransformTemplate tempalte)
         {
-            this.Template = tempalte;
+            Template = tempalte;
         }
 
         public void timer(int seconds)

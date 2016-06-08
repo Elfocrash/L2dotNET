@@ -13,9 +13,9 @@ namespace L2dotNET.LoginService.Managers
 
         private static volatile ClientManager instance;
         private static readonly object syncRoot = new object();
-        private readonly int ScrambleCount = 1;
+        private const int ScrambleCount = 1;
         private ScrambledKeyPair[] ScrambledPairs;
-        private readonly int BlowfishCount = 20;
+        private const int BlowfishCount = 20;
         private byte[][] BlowfishKeys;
 
         private readonly List<LoginClient> _loggedClients = new List<LoginClient>();
@@ -26,15 +26,11 @@ namespace L2dotNET.LoginService.Managers
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new ClientManager();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -51,9 +47,7 @@ namespace L2dotNET.LoginService.Managers
             ScrambledPairs = new ScrambledKeyPair[ScrambleCount];
 
             for (int i = 0; i < ScrambleCount; i++)
-            {
                 ScrambledPairs[i] = new ScrambledKeyPair(ScrambledKeyPair.genKeyPair());
-            }
 
             log.Info($"Scrambled {ScrambledPairs.Length} keypairs.");
             log.Info("Randomize blowfish keys.");
@@ -87,11 +81,11 @@ namespace L2dotNET.LoginService.Managers
                     client.Close();
                     return;
                 }
-                else
-                    lock (flood)
-                    {
-                        flood.Remove(ip);
-                    }
+
+                lock (flood)
+                {
+                    flood.Remove(ip);
+                }
             }
 
             flood.Add(ip, DateTime.Now.AddMilliseconds(3000));

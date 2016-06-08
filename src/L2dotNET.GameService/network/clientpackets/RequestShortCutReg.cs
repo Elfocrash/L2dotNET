@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestShortCutReg(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _type;
@@ -32,7 +32,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (_page > 10 || _page < 0)
+            if ((_page > 10) || (_page < 0))
             {
                 player.sendActionFailed();
                 return;

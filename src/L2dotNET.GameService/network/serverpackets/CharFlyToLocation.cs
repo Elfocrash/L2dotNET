@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public CharFlyToLocation(L2Object obj, FlyType type)
         {
             this.obj = obj;
-            this.id = (int)type;
+            id = (int)type;
         }
 
         protected internal override void write()

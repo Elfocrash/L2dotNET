@@ -66,14 +66,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 writeD(0);
 
                 for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
-                {
                     writeD(player.Inventory._paperdoll[id][0]);
-                }
 
                 for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
-                {
                     writeD(player.Inventory._paperdoll[id][0]);
-                }
 
                 writeD(player.HairStyle);
                 writeD(player.HairColor);
@@ -90,7 +86,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 if (charId != -1)
                     selection = charId == player.ObjID ? 1 : 0;
 
-                if (charId == -1 && player.LastAccountSelection == 1)
+                if ((charId == -1) && (player.LastAccountSelection == 1))
                     selection = 1;
 
                 writeD(selection); // auto-select char

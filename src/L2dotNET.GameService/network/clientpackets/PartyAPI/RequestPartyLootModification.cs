@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 
         public RequestPartyLootModification(GameClient client, byte[] data)
         {
-            base.makeme(client, data, 2);
+            makeme(client, data, 2);
         }
 
         public override void read()
@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
                 return;
             }
 
-            if (mode < player.Party.ITEM_LOOTER || mode > player.Party.ITEM_ORDER_SPOIL || mode == player.Party.itemDistribution || player.Party.leader.ObjID != player.ObjID)
+            if ((mode < player.Party.ITEM_LOOTER) || (mode > player.Party.ITEM_ORDER_SPOIL) || (mode == player.Party.itemDistribution) || (player.Party.leader.ObjID != player.ObjID))
             {
                 player.sendActionFailed();
                 return;

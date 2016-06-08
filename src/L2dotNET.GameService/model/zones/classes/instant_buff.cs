@@ -49,9 +49,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             obj.onEnterZone(this);
 
             if (obj is L2Character)
-            {
                 ((L2Character)obj).sendMessage("u can feel defence.");
-            }
         }
 
         public override void onExit(L2Object obj, bool cls)
@@ -64,9 +62,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             obj.onExitZone(this, cls);
 
             if (obj is L2Character)
-            {
                 ((L2Character)obj).sendMessage("u lost effect defence.");
-            }
         }
     }
 }

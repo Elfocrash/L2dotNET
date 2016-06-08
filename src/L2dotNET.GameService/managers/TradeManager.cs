@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Managers
 
                     long num = player.currentTrade[id];
 
-                    if (!item.Template.isStackable() && num != 1)
+                    if (!item.Template.isStackable() && (num != 1))
                         tm.Add(id, 1);
 
                     if (item.Count < num)
@@ -69,7 +69,7 @@ namespace L2dotNET.GameService.Managers
             if (pl1.currentTrade != null)
             {
                 foreach (int id in pl1.currentTrade.Keys)
-                    list.Add(new long[] { id, pl1.currentTrade[id] });
+                    list.Add(new[] { id, pl1.currentTrade[id] });
 
                 pl2.Inventory.transferHere(pl1, list, false);
                 pl1.currentTrade.Clear();
@@ -80,7 +80,7 @@ namespace L2dotNET.GameService.Managers
                 list.Clear();
 
                 foreach (int id in pl2.currentTrade.Keys)
-                    list.Add(new long[] { id, pl2.currentTrade[id] });
+                    list.Add(new[] { id, pl2.currentTrade[id] });
 
                 pl1.Inventory.transferHere(pl2, list, false);
                 pl2.currentTrade.Clear();

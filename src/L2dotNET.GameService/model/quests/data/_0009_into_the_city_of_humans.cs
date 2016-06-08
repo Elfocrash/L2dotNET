@@ -18,18 +18,16 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 9;
             questName = "Into The City of Humans";
             startNpc = centurion_petukai;
-            talkNpcs = new int[] { startNpc, seer_tanapi, gatekeeper_tamil };
+            talkNpcs = new[] { startNpc, seer_tanapi, gatekeeper_tamil };
             actItems = new int[] { };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
         {
-            if (player.BaseClass.ClassId.ClassRace == ClassRace.ORC && player.Level >= 3)
+            if ((player.BaseClass.ClassId.ClassRace == ClassRace.ORC) && (player.Level >= 3))
                 player.ShowHtm("centurion_petukai_q0009_0101.htm", npc, questId);
             else
-            {
                 player.ShowHtm("centurion_petukai_q0009_0102.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -42,12 +40,12 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (reply == 1 && npcId == seer_tanapi)
+            if ((reply == 1) && (npcId == seer_tanapi))
             {
                 player.changeQuestStage(questId, 2);
                 htmltext = "seer_tanapi_q0009_0201.htm";
             }
-            else if (reply == 3 && npcId == gatekeeper_tamil)
+            else if ((reply == 3) && (npcId == gatekeeper_tamil))
             {
                 htmltext = "gatekeeper_tamil_q0009_0301.htm";
                 player.addItem(escape_scroll_giran, 1);
@@ -71,6 +69,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "centurion_petukai_q0009_0105.htm";
                             break;
                     }
+
                     break;
                 case seer_tanapi:
                     switch (cond)
@@ -82,6 +81,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "seer_tanapi_q0009_0202.htm";
                             break;
                     }
+
                     break;
                 case gatekeeper_tamil:
                     switch (cond)
@@ -90,6 +90,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "gatekeeper_tamil_q0009_0201.htm";
                             break;
                     }
+
                     break;
             }
 

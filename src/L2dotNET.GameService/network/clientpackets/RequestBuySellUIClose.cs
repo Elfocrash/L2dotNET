@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestBuySellUIClose(GameClient client, byte[] data)
         {
-            base.makeme(client, data, 2);
+            makeme(client, data, 2);
         }
 
         public override void read()

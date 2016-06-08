@@ -26,7 +26,7 @@ namespace L2dotNET.GeoEngine.Geodata
         public static readonly byte CELL_FLAG_SE = 1 << 4;
         public static readonly byte CELL_FLAG_SW = 1 << 5;
         public static readonly byte CELL_FLAG_NE = 1 << 6;
-        public static readonly byte CELL_FLAG_NW = (byte)(1 << 7);
+        public static readonly byte CELL_FLAG_NW = 1 << 7;
         public static readonly byte CELL_FLAG_S_AND_E = (byte)(CELL_FLAG_S | CELL_FLAG_E);
         public static readonly byte CELL_FLAG_S_AND_W = (byte)(CELL_FLAG_S | CELL_FLAG_W);
         public static readonly byte CELL_FLAG_N_AND_E = (byte)(CELL_FLAG_N | CELL_FLAG_E);
@@ -37,12 +37,12 @@ namespace L2dotNET.GeoEngine.Geodata
         public static readonly int CELL_IGNORE_HEIGHT = CELL_HEIGHT * 6;
 
         public static readonly byte TYPE_FLAT_L2J_L2OFF = 0;
-        public static readonly byte TYPE_FLAT_L2D = (byte)0xD0;
+        public static readonly byte TYPE_FLAT_L2D = 0xD0;
         public static readonly byte TYPE_COMPLEX_L2J = 1;
         public static readonly byte TYPE_COMPLEX_L2OFF = 0x40;
-        public static readonly byte TYPE_COMPLEX_L2D = (byte)0xD1;
+        public static readonly byte TYPE_COMPLEX_L2D = 0xD1;
         public static readonly byte TYPE_MULTILAYER_L2J = 2;
-        public static readonly byte TYPE_MULTILAYER_L2D = (byte)0xD2;
+        public static readonly byte TYPE_MULTILAYER_L2D = 0xD2;
 
         public static readonly int BLOCK_CELLS_X = 8;
         public static readonly int BLOCK_CELLS_Y = 8;

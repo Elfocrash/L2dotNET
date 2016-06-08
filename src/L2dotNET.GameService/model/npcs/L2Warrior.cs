@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Model.Npcs
     public class L2Warrior : L2Npc
     {
         public bool spoilActive = false;
-        public System.DateTime dtstart;
+        public DateTime dtstart;
         public L2Spawn TerritorySpawn;
         public System.Timers.Timer socialTask;
 
@@ -35,7 +35,7 @@ namespace L2dotNET.GameService.Model.Npcs
             }
             else
             {
-                if (player.CurrentTarget.ObjID != this.ObjID)
+                if (player.CurrentTarget.ObjID != ObjID)
                 {
                     player.CurrentTarget = this;
                     newtarget = true;
@@ -108,10 +108,10 @@ namespace L2dotNET.GameService.Model.Npcs
 
             if (killer is L2Player)
                 ((L2Player)killer).RedistExp(this);
-            else if (killer is L2Summon)
-                ((L2Summon)killer).Owner.RedistExp(this);
             else if (killer is L2Pet)
                 ((L2Pet)killer).Owner.RedistExp(this);
+            else if (killer is L2Summon)
+                ((L2Summon)killer).Owner.RedistExp(this);
 
             //Template.roll_drops(this, killer);
 

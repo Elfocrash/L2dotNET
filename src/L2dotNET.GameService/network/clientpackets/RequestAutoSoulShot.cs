@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestAutoSoulShot(GameClient client, byte[] data)
         {
-            base.makeme(client, data, 2);
+            makeme(client, data, 2);
         }
 
         public override void read()
@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Player player = Client.CurrentPlayer;
 
             L2Item item = player.Inventory.getItemById(itemId);
-            if (item == null || !item.Template.isAutoSS)
+            if ((item == null) || !item.Template.isAutoSS)
             {
                 player.sendActionFailed();
                 return;
@@ -46,7 +46,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 L2Item weapon = player.Inventory.getWeapon();
                 if (weapon != null)
-                {
                     foreach (int sid in weapon.Template.getSoulshots().Where(sid => sid == itemId))
                     {
                         if (!weapon.Soulshot)
@@ -62,14 +61,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
                             weapon.Soulshot = true;
                             player.broadcastSoulshotUse(itemId);
                         }
+
                         break;
                     }
-                }
             }
             else
             {
                 lock (player.autoSoulshots)
+                {
                     player.autoSoulshots.Remove(itemId);
+                }
 
                 player.sendPacket(new ExAutoSoulShot(itemId, 0));
                 player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_OF_S1_CANCELLED).AddItemName(itemId));

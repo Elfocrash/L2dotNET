@@ -58,7 +58,7 @@ namespace L2dotNET.GameService.Templates
             Name = set.GetString("name");
             Title = set.GetString("title", "");
             CantBeChampionMonster = Title.Equals("Quest Monster", StringComparison.InvariantCultureIgnoreCase);
-            Level = set.GetByte("level", (byte)1);
+            Level = set.GetByte("level", 1);
             Exp = set.GetInt("exp", 0);
             Sp = set.GetInt("sp", 0);
             RHand = set.GetInt("rHand", 0);

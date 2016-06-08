@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestUseItem(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int sID;
@@ -71,6 +71,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     player.setPaperdoll(pdollId, item._isEquipped == 1 ? null : item, true);
                     player.broadcastUserInfo();
                 }
+
                     break;
             }
 

@@ -66,18 +66,18 @@ namespace L2dotNET.GameService.Model.Zones
             if (_skills == null)
                 _skills = new List<TSkill>();
 
-            string d1 = val.Substring(1).Replace("}", "").Replace("@", "");
+            //string d1 = val.Substring(1).Replace("}", "").Replace("@", "");
 
-            foreach (string sk in d1.Split(';'))
-            {
-                //int id = int.Parse(sk);
+            //foreach (string sk in d1.Split(';'))
+            //{
+            //    int id = int.Parse(sk);
 
-                //TSkill skill = TSkillTable.getInstance().get(sk);
-                //if (skill != null)
-                //    _skills.Add(skill);
-                //else
-                //    CLogger.error("areatable: null skill " + sk + " for zone " + Name);
-            }
+            //    TSkill skill = TSkillTable.getInstance().get(sk);
+            //    if (skill != null)
+            //        _skills.Add(skill);
+            //    else
+            //        CLogger.error("areatable: null skill " + sk + " for zone " + Name);
+            //}
         }
 
         public void setSkill(string p)

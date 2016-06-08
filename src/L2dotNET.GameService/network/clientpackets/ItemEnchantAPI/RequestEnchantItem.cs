@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
         public RequestEnchantItem(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -54,7 +54,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
             InventoryUpdate iu = null;
             bool equip = false;
-            if (rate == 100 ? true : new Random().Next(100) < rate)
+            if ((rate == 100) || (new Random().Next(100) < rate))
             {
                 player.EnchantItem.Enchant += 1;
                 player.EnchantItem.sql_update();
@@ -66,7 +66,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
                 equip = player.EnchantItem._isEquipped == 1;
 
-                if (equip && player.EnchantItem.Enchant == 4 && player.EnchantItem.Template.item_skill_ench4 != null)
+                if (equip && (player.EnchantItem.Enchant == 4) && (player.EnchantItem.Template.item_skill_ench4 != null))
                 {
                     player.addSkill(player.EnchantItem.Template.item_skill_ench4, false, false);
                     player.updateSkillList();

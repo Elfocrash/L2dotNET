@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             foreach (L2Item item in player.getAllItems())
             {
-                if (item.Template.is_trade == 0 || item.AugmentationID > 0 || item._isEquipped == 1)
+                if ((item.Template.is_trade == 0) || (item.AugmentationID > 0) || (item._isEquipped == 1))
                     continue;
 
                 if (item.Template.Type == ItemTemplate.L2ItemType.asset)

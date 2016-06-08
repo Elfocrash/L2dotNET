@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.LoginAuth.Recv
 
         public LoginServAcceptPlayer(AuthThread login, byte[] db)
         {
-            base.makeme(login, db);
+            makeme(login, db);
         }
 
         public override void read()

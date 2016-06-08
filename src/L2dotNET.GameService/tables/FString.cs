@@ -17,8 +17,8 @@ namespace L2dotNET.GameService.Tables
         {
             if (strings.ContainsKey(p))
                 return strings[p];
-            else
-                return "" + p;
+
+            return "" + p;
         }
     }
 }

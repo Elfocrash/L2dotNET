@@ -57,11 +57,9 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             else
             {
                 if (character.cantMove())
-                {
                     return;
-                }
 
-                if (lastx != character.CurrentTarget.X || lasty != character.CurrentTarget.Y || lastz != character.CurrentTarget.Z)
+                if ((lastx != character.CurrentTarget.X) || (lasty != character.CurrentTarget.Y) || (lastz != character.CurrentTarget.Z))
                     MoveTarget = 0;
 
                 if (MoveTarget == 0)

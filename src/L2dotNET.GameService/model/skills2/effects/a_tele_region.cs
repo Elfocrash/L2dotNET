@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
         public override void build(string str)
         {
-            this.region = str.Split(' ')[1];
+            region = str.Split(' ')[1];
         }
 
         public override TEffectResult onStart(L2Character caster, L2Character target)
@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             if (region.Equals("hideout"))
             {
                 L2Player player = (L2Player)target;
-                if (player.ClanId > 0 && player.Clan.HideoutID > 0)
+                if ((player.ClanId > 0) && (player.Clan.HideoutID > 0))
                     loc = player.Clan.hideout.ownerLoc;
             }
 
@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             //    loc = MapRegionTable.getInstance().getRespawn(target.X, target.Y, ((L2Player)target).Karma);
 
             if (loc != null)
-                ((L2Character)target).teleport(loc[0], loc[1], loc[2]);
+                target.teleport(loc[0], loc[1], loc[2]);
             return nothing;
         }
 

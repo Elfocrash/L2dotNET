@@ -110,9 +110,7 @@ namespace L2dotNET.GameService.Model.Player
             voteTimer.Enabled = false;
 
             double half = votesOnStart * 0.5;
-            byte agreed = 0;
-            foreach (byte vote in votes.Values.Where(vote => vote == 1))
-                agreed++;
+            byte agreed = (byte)votes.Values.Count(vote => vote == 1);
 
             votes.Clear();
             SystemMessage sm;
@@ -136,7 +134,6 @@ namespace L2dotNET.GameService.Model.Player
         public void Leave(L2Player playerMember)
         {
             if (leader.ObjID == playerMember.ObjID)
-            {
                 if (Members.Count > 2)
                 {
                     kick(playerMember);
@@ -160,18 +157,23 @@ namespace L2dotNET.GameService.Model.Player
 
                     Members.Clear();
 
-                    if (voteTimer != null && voteTimer.Enabled)
+                    if ((voteTimer != null) && voteTimer.Enabled)
                         voteTimer.Enabled = false;
                 }
-            }
             else
                 kick(playerMember);
         }
 
-        private void kick(L2Player playerMember, short msg1 = 200, short msg2 = 108)
+        private void kick(L2Player playerMember)
         {
+            //TODO: missing messages packets?
+            //(int)SystemMessage.SystemMessageId.HAVE_BEEN_EXPELLED_FROM_PARTY
+            //(int)SystemMessage.SystemMessageId.S1_WAS_EXPELLED_FROM_PARTY
+
             lock (Members)
+            {
                 Members.Remove(playerMember);
+            }
 
             if (Members.Count > 2)
             {
@@ -211,7 +213,7 @@ namespace L2dotNET.GameService.Model.Player
                 return;
             }
 
-            kick(playerToExpel, (int)SystemMessage.SystemMessageId.HAVE_BEEN_EXPELLED_FROM_PARTY, (int)SystemMessage.SystemMessageId.S1_WAS_EXPELLED_FROM_PARTY);
+            kick(playerToExpel);
         }
     }
 }

@@ -38,19 +38,20 @@ namespace L2dotNET.GameService.AI.NpcAI
                             GetOffPenalty(talker, 1, 20, cost_penaltyoff0);
                             break;
                     }
+
                     break;
                 case -506:
                     if (talker.Level >= 76)
                         talker.ShowHtm("black_judge007.htm", myself);
-                    else if (talker.Level >= 61 && talker.Level < 76)
+                    else if ((talker.Level >= 61) && (talker.Level < 76))
                         talker.ShowHtm("black_judge006.htm", myself);
-                    else if (talker.Level >= 52 && talker.Level < 61)
+                    else if ((talker.Level >= 52) && (talker.Level < 61))
                         talker.ShowHtm("black_judge005.htm", myself);
-                    else if (talker.Level >= 40 && talker.Level < 52)
+                    else if ((talker.Level >= 40) && (talker.Level < 52))
                         talker.ShowHtm("black_judge004.htm", myself);
-                    else if (talker.Level >= 20 && talker.Level < 40)
+                    else if ((talker.Level >= 20) && (talker.Level < 40))
                         talker.ShowHtm("black_judge003.htm", myself);
-                    else if (talker.Level >= 1 && talker.Level < 20)
+                    else if ((talker.Level >= 1) && (talker.Level < 20))
                         talker.ShowHtm("black_judge002.htm", myself);
                     break;
                 default:
@@ -61,21 +62,17 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         private void GetOffPenalty(L2Player talker, byte minLv, byte maxLv, int cost)
         {
-            if (talker.Level >= minLv && talker.Level <= maxLv)
-            {
+            if ((talker.Level >= minLv) && (talker.Level <= maxLv))
                 if (talker.DeathPenaltyLevel > 0)
-                {
-                    if (talker.hasItem(@adena, cost))
+                    if (talker.hasItem(adena, cost))
                     {
-                        talker.takeItem(@adena, cost);
+                        talker.takeItem(adena, cost);
                         myself.CastBuffForQuestReward(talker, s_penaltyoff);
                     }
                     else
                         talker.ShowHtm("black_judge008.htm", myself);
-                }
                 else
                     talker.ShowHtm("black_judge009.htm", myself);
-            }
         }
     }
 }

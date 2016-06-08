@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
         public RequestGiveItemToPet(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player.Summon == null || !(player.Summon is L2Pet) || player.EnchantState != 0)
+            if ((player.Summon == null) || !(player.Summon is L2Pet) || (player.EnchantState != 0))
             {
                 player.sendActionFailed();
                 return;
@@ -43,13 +43,13 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
             L2Item item = player.Inventory.getByObject(sID);
 
-            if (item == null || item.TempBlock)
+            if ((item == null) || item.TempBlock)
             {
                 player.sendActionFailed();
                 return;
             }
 
-            if (item.Template.is_drop == 0 || item.Template.is_destruct == 0 || item.Template.is_trade == 0 || item.Template.can_equip_hero != -1 || pet.ControlItem.ObjID == sID)
+            if ((item.Template.is_drop == 0) || (item.Template.is_destruct == 0) || (item.Template.is_trade == 0) || (item.Template.can_equip_hero != -1) || (pet.ControlItem.ObjID == sID))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.ITEM_NOT_FOR_PETS);
                 player.sendActionFailed();
@@ -62,7 +62,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
                 Num = item.Count;
 
             List<long[]> items = new List<long[]>();
-            items.Add(new long[] { sID, Num });
+            items.Add(new[] { sID, Num });
             pet.Inventory.transferHere(player, items, true);
         }
     }

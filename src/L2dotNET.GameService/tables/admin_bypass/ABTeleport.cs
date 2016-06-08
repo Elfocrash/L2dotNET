@@ -22,9 +22,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\admin\abteleport.xml"));
             XElement ex = xml.Element("list");
             if (ex != null)
-            {
                 foreach (XElement m in ex.Elements())
-                {
                     if (m.Name == "group")
                     {
                         ab_teleport_group ab = new ab_teleport_group();
@@ -34,7 +32,6 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                         ab.level = int.Parse(m.Attribute("level").Value);
 
                         foreach (XElement e in m.Elements())
-                        {
                             if (e.Name == "entry")
                             {
                                 ab_teleport_entry ae = new ab_teleport_entry();
@@ -46,12 +43,9 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
 
                                 ab._teles.Add(ae.id, ae);
                             }
-                        }
 
                         _groups.Add(ab.id, ab);
                     }
-                }
-            }
 
             log.Info("AdminPlugin(Teleport): loaded " + _groups.Count + " groups.");
         }
@@ -64,12 +58,12 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                 player.sendActionFailed();
                 return;
             }
+
             ab_teleport_group gr = _groups[groupId];
             StringBuilder sb = new StringBuilder("<button value=\"Back\" action=\"bypass -h admin?ask=3&reply=0\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><center><font color=\"Blue\">Region : </font><font color=\"LEVEL\">" + gr.name + "</font><br>");
             foreach (ab_teleport_entry e in gr._teles.Values)
-            {
                 sb.Append("<button value=\"" + e.name + "\" action=\"bypass -h admin?ask=2&reply=" + e.id + "\" width=150 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><br1>");
-            }
+
             sb.Append("</center>");
 
             player.ViewingAdminTeleportGroup = gr.id;
@@ -97,6 +91,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                     count = 0;
                 }
             }
+
             sb.Append("</tr>");
             sb.Append("</table>");
             sb.Append("<font color=\"333333\" align=\"center\">_______________________________________</font>");
@@ -107,17 +102,15 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
 
         public void Use(L2Player player, int reply)
         {
-            if (player.ViewingAdminTeleportGroup == -1 || !_groups.ContainsKey(player.ViewingAdminTeleportGroup))
+            if ((player.ViewingAdminTeleportGroup == -1) || !_groups.ContainsKey(player.ViewingAdminTeleportGroup))
             {
                 player.sendMessage("teleport group #" + player.ViewingAdminTeleportGroup + " was not found.");
                 player.sendActionFailed();
-                return;
+                //return;
             }
 
-            ab_teleport_group gr = _groups[player.ViewingAdminTeleportGroup];
-            ab_teleport_entry e = gr._teles[reply];
-
-            player.teleport(e.x, e.y, e.z);
+            //ab_teleport_group gr = _groups[player.ViewingAdminTeleportGroup];
+            //ab_teleport_entry e = gr._teles[reply];
         }
     }
 }

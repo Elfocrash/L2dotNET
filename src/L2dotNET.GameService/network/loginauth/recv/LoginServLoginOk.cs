@@ -6,7 +6,7 @@
 
         public LoginServLoginOk(AuthThread login, byte[] db)
         {
-            base.makeme(login, db);
+            makeme(login, db);
         }
 
         public override void read()

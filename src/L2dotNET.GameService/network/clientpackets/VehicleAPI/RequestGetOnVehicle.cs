@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 
         public RequestGetOnVehicle(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()

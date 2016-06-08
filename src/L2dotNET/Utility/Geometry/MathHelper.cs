@@ -4,13 +4,13 @@ namespace L2dotNET.Utility.Geometry
 {
     public static class MathHelper
     {
-        public const double E = (double)Math.E;
+        public const double E = Math.E;
         public const double Log10E = 0.4342945f;
         public const double Log2E = 1.442695f;
-        public const double Pi = (double)Math.PI;
-        public const double PiOver2 = (double)(Math.PI / 2.0);
-        public const double PiOver4 = (double)(Math.PI / 4.0);
-        public const double TwoPi = (double)(Math.PI * 2.0);
+        public const double Pi = Math.PI;
+        public const double PiOver2 = (Math.PI / 2.0);
+        public const double PiOver4 = (Math.PI / 4.0);
+        public const double TwoPi = (Math.PI * 2.0);
 
         public static double Barycentric(double value1, double value2, double value3, double amount1, double amount2)
         {
@@ -23,7 +23,7 @@ namespace L2dotNET.Utility.Geometry
             // Internally using doubles not to lose precission
             double amountSquared = amount * amount;
             double amountCubed = amountSquared * amount;
-            return (double)(0.5 * (2.0 * value2 + (value3 - value1) * amount + (2.0 * value1 - 5.0 * value2 + 4.0 * value3 - value4) * amountSquared + (3.0 * value2 - value1 - 3.0 * value3 + value4) * amountCubed));
+            return (0.5 * (2.0 * value2 + (value3 - value1) * amount + (2.0 * value1 - 5.0 * value2 + 4.0 * value3 - value4) * amountSquared + (3.0 * value2 - value1 - 3.0 * value3 + value4) * amountCubed));
         }
 
         public static double Clamp(double value, double min, double max)
@@ -62,7 +62,7 @@ namespace L2dotNET.Utility.Geometry
                 result = value2;
             else
                 result = (2 * v1 - 2 * v2 + t2 + t1) * sCubed + (3 * v2 - 3 * v1 - 2 * t1 - t2) * sSquared + t1 * s + v1;
-            return (double)result;
+            return result;
         }
 
         public static double Lerp(double value1, double value2, double amount)
@@ -89,8 +89,8 @@ namespace L2dotNET.Utility.Geometry
             double result = SilverSpriteMathHelper.Clamp(amount, 0f, 1f);
             result = SilverSpriteMathHelper.Hermite(value1, 0f, value2, 0f, result);
 #else
-            double result = MathHelper.Clamp(amount, 0f, 1f);
-            result = MathHelper.Hermite(value1, 0f, value2, 0f, result);
+            double result = Clamp(amount, 0f, 1f);
+            result = Hermite(value1, 0f, value2, 0f, result);
 #endif
             return result;
         }
@@ -100,7 +100,7 @@ namespace L2dotNET.Utility.Geometry
             // This method uses double precission internally,
             // though it returns single double
             // Factor = 180 / pi
-            return (double)(radians * 57.295779513082320876798154814105);
+            return (radians * 57.295779513082320876798154814105);
         }
 
         public static double ToRadians(double degrees)
@@ -108,12 +108,12 @@ namespace L2dotNET.Utility.Geometry
             // This method uses double precission internally,
             // though it returns single double
             // Factor = pi / 180
-            return (double)(degrees * 0.017453292519943295769236907684886);
+            return (degrees * 0.017453292519943295769236907684886);
         }
 
         public static double WrapAngle(double angle)
         {
-            angle = (double)Math.IEEERemainder((double)angle, 6.2831854820251465);
+            angle = Math.IEEERemainder(angle, 6.2831854820251465);
             if (angle <= -3.14159274f)
             {
                 angle += 6.28318548f;
@@ -121,9 +121,7 @@ namespace L2dotNET.Utility.Geometry
             else
             {
                 if (angle > 3.14159274f)
-                {
                     angle -= 6.28318548f;
-                }
             }
             return angle;
         }
@@ -138,12 +136,12 @@ namespace L2dotNET.Utility.Geometry
             // Get A,B,C of first line - points : ps1 to pe1
             float A1 = ay1 - ax1;
             float B1 = by1 - bx1;
-            float C1 = A1 * ax1 + B1 * ay1;
+            //float C1 = A1 * ax1 + B1 * ay1;
 
             // Get A,B,C of second line - points : ps2 to pe2
             float A2 = ay2 - ax2;
             float B2 = by2 - bx2;
-            float C2 = A2 * ax2 + B2 * ay2;
+            //float C2 = A2 * ax2 + B2 * ay2;
 
             // Get delta and check if the lines are parallel
             float delta = A1 * B2 - A2 * B1;

@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Tables.Multisell
                 if (l2item != null)
                     return (short)l2item.Enchant;
 
-                if (template != null && template.enchanted > 0)
+                if ((template != null) && (template.enchanted > 0))
                     return template.enchanted;
 
                 return 0;
@@ -34,8 +34,8 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                 if (template == null)
                     return -2;
-                else
-                    return template.AttrAttackType;
+
+                return template.AttrAttackType;
             }
         }
 
@@ -59,8 +59,8 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                 if (template == null)
                     return 0;
-                else
-                    return template.AttrDefenseValueFire;
+
+                return template.AttrDefenseValueFire;
             }
         }
 
@@ -73,8 +73,8 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                 if (template == null)
                     return 0;
-                else
-                    return template.AttrDefenseValueWater;
+
+                return template.AttrDefenseValueWater;
             }
         }
 
@@ -87,8 +87,8 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                 if (template == null)
                     return 0;
-                else
-                    return template.AttrDefenseValueWind;
+
+                return template.AttrDefenseValueWind;
             }
         }
 
@@ -101,8 +101,8 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                 if (template == null)
                     return 0;
-                else
-                    return template.AttrDefenseValueEarth;
+
+                return template.AttrDefenseValueEarth;
             }
         }
 
@@ -115,8 +115,8 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                 if (template == null)
                     return 0;
-                else
-                    return template.AttrDefenseValueHoly;
+
+                return template.AttrDefenseValueHoly;
             }
         }
 
@@ -129,8 +129,8 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                 if (template == null)
                     return 0;
-                else
-                    return template.AttrDefenseValueUnholy;
+
+                return template.AttrDefenseValueUnholy;
             }
         }
 
@@ -143,8 +143,8 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                 if (template == null)
                     return 0;
-                else
-                    return template.Durability;
+
+                return template.Durability;
             }
         }
 
@@ -154,13 +154,11 @@ namespace L2dotNET.GameService.Tables.Multisell
             {
                 if (template == null)
                     return 0;
-                else
-                {
-                    if (l2item != null)
-                        return l2item.Template.Type2();
 
-                    return template.Type2();
-                }
+                if (l2item != null)
+                    return l2item.Template.Type2();
+
+                return template.Type2();
             }
         }
 
@@ -170,13 +168,11 @@ namespace L2dotNET.GameService.Tables.Multisell
             {
                 if (template == null)
                     return 0;
-                else
-                {
-                    if (l2item != null)
-                        return l2item.Template.BodyPartId();
 
-                    return template.BodyPartId();
-                }
+                if (l2item != null)
+                    return l2item.Template.BodyPartId();
+
+                return template.BodyPartId();
             }
         }
 

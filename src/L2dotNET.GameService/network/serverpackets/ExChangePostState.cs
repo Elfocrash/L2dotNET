@@ -12,7 +12,7 @@
         public ExChangePostState(bool p, int msgId, int status)
         {
             _receivedBoard = p;
-            _msgs = new int[] { msgId };
+            _msgs = new[] { msgId };
             _status = status;
         }
 

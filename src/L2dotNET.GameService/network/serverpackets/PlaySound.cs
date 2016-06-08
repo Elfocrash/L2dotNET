@@ -3,10 +3,10 @@
     class PlaySound : GameServerNetworkPacket
     {
         private readonly string _file;
-        private readonly int type = 0;
-        private readonly uint x = 0;
-        private readonly uint y = 0;
-        private readonly uint z = 0;
+        private readonly int type;
+        private const uint x = 0;
+        private const uint y = 0;
+        private const uint z = 0;
 
         public PlaySound(string file, bool ogg = false)
         {

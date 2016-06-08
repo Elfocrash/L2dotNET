@@ -108,6 +108,7 @@ namespace L2dotNET.GameService.Templates
                 return (int[])val;
             if (val is int)
                 return new[] { int.Parse(val.ToString()) };
+
             if (val is string)
             {
                 string[] vals = ((string)val).Split(';');
@@ -197,10 +198,7 @@ namespace L2dotNET.GameService.Templates
         public T Get<T>(string key, T defaultValue = default(T)) where T : struct, IConvertible
         {
             if (string.IsNullOrWhiteSpace(key))
-            {
-                // log.Error($"Key is 'Null, Empty or White-space'! The function will return the 'defaultValue' parameter.");
                 return defaultValue;
-            }
 
             //check if the dictionary contains the key
             if (ContainsKey(key))
@@ -212,9 +210,7 @@ namespace L2dotNET.GameService.Templates
                     T result;
 
                     if (Enum.TryParse(value, out result))
-                    {
                         return Enum.IsDefined(typeof(T), result) ? result : Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault();
-                    }
                     //  log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the first enum element.");
                     return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first element from enum. Default value is always 0, but not every enum has it.
                 }
@@ -226,11 +222,7 @@ namespace L2dotNET.GameService.Templates
                                                              new[] { typeof(string), typeof(T).MakeByRefType() }, null);
 
                 if (parseMethod == null)
-                {
-                    //You need to know this so you can parse manually
-                    //  log.Error($"'{ typeof(T).FullName }' doesn't have a 'TryParse(string s, out { typeof(T).FullName } result)' function! The function will return the 'defaultValue' parameter.");
                     return defaultValue;
-                }
 
                 //create the parameter list for the function call
                 object[] args = { value, default(T) };

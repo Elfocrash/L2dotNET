@@ -71,7 +71,7 @@ namespace L2dotNET.GameService.World
             }
             else
             {
-                if (player.CurrentTarget.ObjID != this.ObjID)
+                if (player.CurrentTarget.ObjID != ObjID)
                 {
                     player.CurrentTarget = this;
                     newtarget = true;
@@ -79,9 +79,7 @@ namespace L2dotNET.GameService.World
             }
 
             if (newtarget)
-            {
-                player.sendPacket(new MyTargetSelected(this.ObjID, 0));
-            }
+                player.sendPacket(new MyTargetSelected(ObjID, 0));
         }
 
         public override void onForcedAttack(L2Player player)
@@ -94,7 +92,7 @@ namespace L2dotNET.GameService.World
             }
             else
             {
-                if (player.CurrentTarget.ObjID != this.ObjID)
+                if (player.CurrentTarget.ObjID != ObjID)
                 {
                     player.CurrentTarget = this;
                     newtarget = true;
@@ -102,9 +100,7 @@ namespace L2dotNET.GameService.World
             }
 
             if (newtarget)
-            {
-                player.sendPacket(new MyTargetSelected(this.ObjID, 0));
-            }
+                player.sendPacket(new MyTargetSelected(ObjID, 0));
             else
                 player.sendActionFailed();
         }
@@ -113,12 +109,10 @@ namespace L2dotNET.GameService.World
         {
             // confirm revalidation of old region's zones
             if (Region != null)
-            {
                 if (newRegion != null)
                     Region.RevalidateZones(this);
                 else
                     Region.RemoveFromZones(this);
-            }
 
             base.SetRegion(newRegion);
         }
@@ -194,7 +188,7 @@ namespace L2dotNET.GameService.World
 
                             broadcastPacket(su, false);
 
-                            if (this is L2Player && result.HpMpCp == 1 && ((L2Player)this).Party != null)
+                            if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
                                 ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
                         }
                     }
@@ -226,7 +220,7 @@ namespace L2dotNET.GameService.World
 
                             broadcastPacket(su, false);
 
-                            if (this is L2Player && result.HpMpCp == 1 && ((L2Player)this).Party != null)
+                            if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
                                 ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
                         }
                     }
@@ -258,7 +252,7 @@ namespace L2dotNET.GameService.World
 
                         broadcastPacket(su, false);
 
-                        if (this is L2Player && result.HpMpCp == 1 && ((L2Player)this).Party != null)
+                        if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
                             ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
                     }
                 }
@@ -292,7 +286,7 @@ namespace L2dotNET.GameService.World
 
                             broadcastPacket(su, false);
 
-                            if (this is L2Player && result.HpMpCp == 1 && ((L2Player)this).Party != null)
+                            if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
                                 ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
                         }
                     }
@@ -324,7 +318,7 @@ namespace L2dotNET.GameService.World
 
                             broadcastPacket(su, false);
 
-                            if (this is L2Player && result.HpMpCp == 1 && ((L2Player)this).Party != null)
+                            if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
                                 ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
                         }
                     }
@@ -356,7 +350,7 @@ namespace L2dotNET.GameService.World
 
                         broadcastPacket(su, false);
 
-                        if (this is L2Player && result.HpMpCp == 1 && ((L2Player)this).Party != null)
+                        if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
                             ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
                     }
                 }
@@ -373,28 +367,20 @@ namespace L2dotNET.GameService.World
             AbnormalEffect ex = _effects.FirstOrDefault(e => e.id == skill.skill_id);
 
             if (ex != null)
-            {
                 lock (_effects)
                 {
                     ex.forcedStop(true, true);
                     _effects.Remove(ex);
                 }
-            }
         }
 
         public void onAveEnd(AbnormalEffect ave, bool msg, bool icon, L2Character caster)
         {
             int olda = AbnormalBitMask;
             if (ave.skill.abnormal_visual_effect != -1)
-            {
                 AbnormalBitMask &= ~ave.skill.abnormal_visual_effect;
-            }
 
-            bool uis = false;
-            if (AbnormalBitMask != olda)
-            {
-                uis = true;
-            }
+            bool uis = (AbnormalBitMask != olda);
 
             removeStats(ave.skill, caster);
 
@@ -426,7 +412,6 @@ namespace L2dotNET.GameService.World
         public override void addAbnormal(TSkill skill, L2Character caster, bool permanent, bool unlim)
         {
             if (!permanent)
-            {
                 if (skill.debuff == 1)
                 {
                     bool success = true; // TODO _stats.calcDebuffSuccess(skill, caster);
@@ -439,7 +424,6 @@ namespace L2dotNET.GameService.World
                         return;
                     }
                 }
-            }
 
             if (skill.abnormal_time == 0)
             {
@@ -452,23 +436,21 @@ namespace L2dotNET.GameService.World
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
             foreach (AbnormalEffect ave in _effects.Where(ave => ave.active != 0))
             {
-                if (ave.skill.skill_id == skill.skill_id && ave.skill.level >= skill.level)
+                if ((ave.skill.skill_id == skill.skill_id) && (ave.skill.level >= skill.level))
                 {
                     cnew = false;
                     break;
                 }
 
-                if ((ave.skill.abnormal_type != null && skill.abnormal_type != null) && ave.skill.abnormal_type.Equals(skill.abnormal_type))
+                if (((ave.skill.abnormal_type != null) && (skill.abnormal_type != null)) && ave.skill.abnormal_type.Equals(skill.abnormal_type))
                 {
                     if (ave.skill.effect_point > skill.effect_point)
                     {
                         cnew = false;
                         break;
                     }
-                    else
-                    {
-                        nulled.Add(ave);
-                    }
+
+                    nulled.Add(ave);
                 }
             }
 
@@ -505,6 +487,7 @@ namespace L2dotNET.GameService.World
                         ave.forcedStop(false, false);
                         break;
                     }
+
                     id++;
                 }
 
@@ -531,7 +514,7 @@ namespace L2dotNET.GameService.World
             bool addNew = true;
             int lvlnext = 1;
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ave in _effects.Where(ave => ave.active != 0 && ave.skill.skill_id == skillId))
+            foreach (AbnormalEffect ave in _effects.Where(ave => (ave.active != 0) && (ave.skill.skill_id == skillId)))
             {
                 addNew = false;
                 if (ave.skill.level <= 10)
@@ -580,6 +563,7 @@ namespace L2dotNET.GameService.World
                         ave.forcedStop(false, false);
                         break;
                     }
+
                     id++;
                 }
 
@@ -599,15 +583,9 @@ namespace L2dotNET.GameService.World
         {
             int olda = AbnormalBitMask;
             if (skill.abnormal_visual_effect != -1)
-            {
                 AbnormalBitMask |= skill.abnormal_visual_effect;
-            }
 
-            bool uis = false;
-            if (AbnormalBitMask != olda)
-            {
-                uis = true;
-            }
+            bool uis = (AbnormalBitMask != olda);
 
             addStats(skill, caster);
 
@@ -618,9 +596,7 @@ namespace L2dotNET.GameService.World
         public virtual void addEffects(L2Character caster, TSkill skill, SortedList<int, L2Object> objects)
         {
             foreach (L2Object target in objects.Values)
-            {
                 target.addAbnormal(skill, caster, false, false);
-            }
         }
 
         public virtual void addEffect(L2Character caster, TSkill skill, bool permanent, bool unlim)
@@ -661,7 +637,7 @@ namespace L2dotNET.GameService.World
             return -1;
         }
 
-        private System.Timers.Timer _waterTimer;
+        private Timer _waterTimer;
         private DateTime _waterTimeDamage;
         //private bool lastInsideWater = false;
 
@@ -670,9 +646,9 @@ namespace L2dotNET.GameService.World
             if (isInWater())
             {
                 bool next = false;
-                if (_waterTimer == null || !_waterTimer.Enabled)
+                if ((_waterTimer == null) || !_waterTimer.Enabled)
                 {
-                    _waterTimer = new System.Timers.Timer();
+                    _waterTimer = new Timer();
                     _waterTimer.Elapsed += new ElapsedEventHandler(waterActionTime);
                     _waterTimer.Interval = 3000;
                     next = true;
@@ -685,21 +661,17 @@ namespace L2dotNET.GameService.World
                     _waterTimer.Enabled = true;
 
                     if (this is L2Player)
-                    {
                         sendPacket(new SetupGauge(ObjID, SetupGauge.SG_color.cyan, breath * 1000));
-                    }
                 }
             }
             else
             {
-                if (_waterTimer != null && _waterTimer.Enabled)
+                if ((_waterTimer != null) && _waterTimer.Enabled)
                 {
                     _waterTimer.Enabled = false;
 
                     if (this is L2Player)
-                    {
                         sendPacket(new SetupGauge(ObjID, SetupGauge.SG_color.cyan, 1));
-                    }
                 }
             }
 
@@ -742,12 +714,8 @@ namespace L2dotNET.GameService.World
         {
             TimeSpan ts = _waterTimeDamage - DateTime.Now;
             if (ts.TotalMilliseconds < 0) //дыхалка кончилась. лупим по ушам
-            {
                 if (this is L2Player)
-                {
                     reduceHpArea(200, 297);
-                }
-            }
         }
 
         public void reduceHpArea(int damage, int msgId)
@@ -771,7 +739,7 @@ namespace L2dotNET.GameService.World
             }
 
             if (this is L2Player)
-                sendPacket(new SystemMessage((SystemMessage.SystemMessageId)msgId).AddNumber((int)damage));
+                sendPacket(new SystemMessage((SystemMessage.SystemMessageId)msgId).AddNumber(damage));
         }
 
         public override void reduceHp(L2Character attacker, double damage)
@@ -779,8 +747,7 @@ namespace L2dotNET.GameService.World
             if (Dead)
                 return;
 
-            if (this is L2Player && attacker is L2Player || attacker is L2Summon)
-            {
+            if ((this is L2Player && attacker is L2Player) || attacker is L2Summon)
                 if (CurCP > 0)
                 {
                     CurCP -= damage;
@@ -791,7 +758,6 @@ namespace L2dotNET.GameService.World
                         CurCP = 0;
                     }
                 }
-            }
 
             CurHP -= damage;
 
@@ -887,13 +853,11 @@ namespace L2dotNET.GameService.World
                 return;
             }
 
-            if (attack_ToHit != null && attack_ToHit.Enabled)
+            if ((attack_ToHit != null) && attack_ToHit.Enabled)
                 return;
 
-            if (attack_ToEnd != null && attack_ToEnd.Enabled)
-            {
+            if ((attack_ToEnd != null) && attack_ToEnd.Enabled)
                 return;
-            }
 
             double dist = 60,
                    reqMp = 0;
@@ -925,7 +889,8 @@ namespace L2dotNET.GameService.World
                         timeAtk = (1362 * 345 / timeAtk);
                         break;
                 }
-                if (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.crossbow || weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow)
+
+                if ((weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.crossbow) || (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow))
                 {
                     dist += 740;
                     reqMp = weapon.Template.MpConsume;
@@ -942,7 +907,7 @@ namespace L2dotNET.GameService.World
                 return;
             }
 
-            if (reqMp > 0 && reqMp > CurMP)
+            if ((reqMp > 0) && (reqMp > CurMP))
             {
                 sendMessage("no mp " + CurMP + " " + reqMp);
                 AICharacter.NotifyMpEnd(target);
@@ -1015,12 +980,12 @@ namespace L2dotNET.GameService.World
         public Hit genHitSimple(bool dual, bool ss)
         {
             Hit h = new Hit();
-            h.miss = Formulas.checkMissed(this, (L2Character)CurrentTarget);
+            h.miss = Formulas.checkMissed(this, CurrentTarget);
             if (!h.miss)
             {
-                h.shieldDef = Formulas.checkShieldDef(this, (L2Character)CurrentTarget);
-                h.crit = Formulas.checkCrit(this, (L2Character)CurrentTarget);
-                h.damage = Formulas.getPhysHitDamage(this, (L2Character)CurrentTarget, 0);
+                h.shieldDef = Formulas.checkShieldDef(this, CurrentTarget);
+                h.crit = Formulas.checkCrit(this, CurrentTarget);
+                h.damage = Formulas.getPhysHitDamage(this, CurrentTarget, 0);
                 if (dual)
                     h.damage *= .5;
                 if (ss)
@@ -1035,7 +1000,6 @@ namespace L2dotNET.GameService.World
         public virtual void AttackDoHit(object sender, ElapsedEventArgs e)
         {
             if (CurrentTarget != null)
-            {
                 if (!hit1.miss)
                 {
                     CurrentTarget.reduceHp(this, hit1.damage);
@@ -1051,7 +1015,6 @@ namespace L2dotNET.GameService.World
                         ((L2Player)CurrentTarget).AICharacter.NotifyEvaded(this);
                     }
                 }
-            }
 
             attack_ToHit.Enabled = false;
         }
@@ -1059,7 +1022,6 @@ namespace L2dotNET.GameService.World
         public virtual void AttackDoHit2nd(object sender, ElapsedEventArgs e)
         {
             if (CurrentTarget != null)
-            {
                 if (!hit2.miss)
                 {
                     CurrentTarget.reduceHp(this, hit2.damage);
@@ -1074,7 +1036,6 @@ namespace L2dotNET.GameService.World
                         ((L2Player)CurrentTarget).AICharacter.NotifyEvaded(this);
                     }
                 }
-            }
 
             attack_toHitBonus.Enabled = false;
         }
@@ -1167,13 +1128,13 @@ namespace L2dotNET.GameService.World
 
         public virtual void abortAttack()
         {
-            if (attack_ToHit != null && attack_ToHit.Enabled)
+            if ((attack_ToHit != null) && attack_ToHit.Enabled)
                 attack_ToHit.Enabled = false;
 
-            if (attack_toHitBonus != null && attack_toHitBonus.Enabled)
+            if ((attack_toHitBonus != null) && attack_toHitBonus.Enabled)
                 attack_toHitBonus.Enabled = false;
 
-            if (attack_ToEnd != null && attack_ToEnd.Enabled)
+            if ((attack_ToEnd != null) && attack_ToEnd.Enabled)
                 attack_ToEnd.Enabled = false;
 
             //  hit1 = null;
@@ -1289,16 +1250,12 @@ namespace L2dotNET.GameService.World
                 broadcastPacket(su);
 
                 if (this is L2Summon)
-                {
                     if (((L2Summon)this).Owner != null)
                         ((L2Summon)this).Owner.sendPacket(new PetStatusUpdate((L2Summon)this));
-                }
 
                 if (this is L2Player)
-                {
                     if (((L2Player)this).Party != null)
                         ((L2Player)this).Party.broadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                }
             }
         }
 
@@ -1334,50 +1291,41 @@ namespace L2dotNET.GameService.World
 
         public virtual bool isCastingNow()
         {
-            return castTime != null && castTime.Enabled;
+            return (castTime != null) && castTime.Enabled;
         }
 
         public virtual void abortCast()
         {
             if (castTime != null)
-            {
                 castTime.Enabled = false;
-            }
 
             broadcastPacket(new MagicSkillCanceld(ObjID));
             currentCast = null;
         }
 
         public TSkill currentCast;
-        public System.Timers.Timer castTime;
+        public Timer castTime;
 
         public SortedList<int, L2SkillCoolTime> _reuse = new SortedList<int, L2SkillCoolTime>();
 
         public int castSkill(TSkill skill)
         {
             if (isCastingNow())
-            {
                 return 1;
-            }
 
             L2Object target = skill.getTargetCastId(this);
 
             if (target == null)
-            {
                 return 2;
-            }
 
             if (skill.cast_range != -1)
             {
                 double dis = Calcs.calculateDistance(this, target, true);
                 if (dis > skill.cast_range)
-                {
                     return 3;
-                }
             }
 
             if (skill.reuse_delay > 0)
-            {
                 if (_reuse.ContainsKey(skill.skill_id))
                 {
                     TimeSpan ts = _reuse[skill.skill_id].stopTime - DateTime.Now;
@@ -1385,23 +1333,14 @@ namespace L2dotNET.GameService.World
                     if (ts.TotalMilliseconds > 0)
                         return 4;
                 }
-            }
 
-            if (skill.mp_consume1 > 0 || skill.mp_consume2 > 0)
-            {
+            if ((skill.mp_consume1 > 0) || (skill.mp_consume2 > 0))
                 if (CurMP < skill.mp_consume1 + skill.mp_consume2)
-                {
                     return 5;
-                }
-            }
 
             if (skill.hp_consume > 0)
-            {
                 if (CurHP < skill.hp_consume)
-                {
                     return 6;
-                }
-            }
 
             if (skill.effects.Count > 0)
             {
@@ -1448,7 +1387,7 @@ namespace L2dotNET.GameService.World
                 broadcastPacket(su);
             }
 
-            int hitTime = (int)skill.skill_hit_time;
+            int hitTime = skill.skill_hit_time;
 
             int hitT = hitTime > 0 ? (int)(hitTime * 0.95) : 0;
             currentCast = skill;
@@ -1459,7 +1398,7 @@ namespace L2dotNET.GameService.World
             {
                 if (castTime == null)
                 {
-                    castTime = new System.Timers.Timer();
+                    castTime = new Timer();
                     castTime.Elapsed += new ElapsedEventHandler(castEnd);
                 }
 
@@ -1482,14 +1421,12 @@ namespace L2dotNET.GameService.World
                     castTime.Enabled = false;
                     return;
                 }
-                else
-                {
-                    CurMP -= currentCast.mp_consume2;
 
-                    StatusUpdate su = new StatusUpdate(ObjID);
-                    su.add(StatusUpdate.CUR_MP, (int)CurMP);
-                    broadcastPacket(su);
-                }
+                CurMP -= currentCast.mp_consume2;
+
+                StatusUpdate su = new StatusUpdate(ObjID);
+                su.add(StatusUpdate.CUR_MP, (int)CurMP);
+                broadcastPacket(su);
             }
 
             if (currentCast.cast_range != -1)
@@ -1522,17 +1459,19 @@ namespace L2dotNET.GameService.World
             currentCast = null;
             if (castTime != null)
                 lock (castTime)
+                {
                     castTime.Enabled = false;
+                }
         }
 
         public virtual L2Character[] getPartyCharacters()
         {
-            return new L2Character[] { this };
+            return new[] { this };
         }
 
         public bool isMoving()
         {
-            return updatePositionTime != null && updatePositionTime.Enabled;
+            return (updatePositionTime != null) && updatePositionTime.Enabled;
         }
 
         public void MoveTo(int x, int y, int z)
@@ -1549,9 +1488,7 @@ namespace L2dotNET.GameService.World
             else
             {
                 if (updatePositionTime.Enabled) // новый маршрут, но старый не закончен
-                {
                     NotifyStopMove(false);
-                }
             }
 
             DestX = x;
@@ -1559,8 +1496,8 @@ namespace L2dotNET.GameService.World
             DestZ = z;
 
             double dx = (x - X),
-                   dy = (y - Y),
-                   dz = (z - Z);
+                   dy = (y - Y);
+            //dz = (z - Z);
             double distance = Math.Sqrt(dx * dx + dy * dy);
 
             double speed = CharacterStat.getStat(TEffectType.p_speed);
@@ -1585,7 +1522,7 @@ namespace L2dotNET.GameService.World
         {
             validateWaterZones();
 
-            if (DestX == X && DestY == Y && DestZ == Z)
+            if ((DestX == X) && (DestY == Y) && (DestZ == Z))
             {
                 NotifyArrived();
                 return;
@@ -1643,7 +1580,7 @@ namespace L2dotNET.GameService.World
 
         private Timer updatePositionTime;
         private int TicksToMove,
-                    TicksToMoveCompleted = 0;
+                    TicksToMoveCompleted;
         private float XSpeedTicks;
         private float YSpeedTicks;
 
@@ -1664,7 +1601,7 @@ namespace L2dotNET.GameService.World
 
         public virtual bool isAttacking()
         {
-            return attack_ToEnd != null && attack_ToEnd.Enabled;
+            return (attack_ToEnd != null) && attack_ToEnd.Enabled;
         }
 
         public virtual int ClanId
@@ -1739,7 +1676,7 @@ namespace L2dotNET.GameService.World
 
             if (start)
             {
-                if (list != null && !list.Contains(hashId))
+                if ((list != null) && !list.Contains(hashId))
                     list.Add(hashId);
             }
             else if (list != null)
@@ -1748,17 +1685,17 @@ namespace L2dotNET.GameService.World
 
         public bool MutedPhysically
         {
-            get { return Muted0 != null && Muted0.Count > 0; }
+            get { return (Muted0 != null) && (Muted0.Count > 0); }
         }
 
         public bool MutedMagically
         {
-            get { return Muted1 != null && Muted1.Count > 0; }
+            get { return (Muted1 != null) && (Muted1.Count > 0); }
         }
 
         public bool MutedSpecial
         {
-            get { return Muted2 != null && Muted2.Count > 0; }
+            get { return (Muted2 != null) && (Muted2.Count > 0); }
         }
     }
 }

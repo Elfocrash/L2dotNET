@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 
         public RequestJoinParty(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -71,14 +71,14 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
                 return;
             }
 
-            if (target.TradeState == 1 || target.TradeState == 2)
+            if ((target.TradeState == 1) || (target.TradeState == 2))
             {
                 player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_IS_BUSY_TRY_LATER).AddPlayerName(target.Name));
                 player.sendActionFailed();
                 return;
             }
 
-            if (player.Party != null && player.Party.leader.ObjID != player.ObjID)
+            if ((player.Party != null) && (player.Party.leader.ObjID != player.ObjID))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.ONLY_LEADER_CAN_INVITE);
                 player.sendActionFailed();
@@ -92,7 +92,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
                 return;
             }
 
-            if (player.Party != null && player.Party.Members.Count == 9)
+            if ((player.Party != null) && (player.Party.Members.Count == 9))
             {
                 player.requester.sendSystemMessage(SystemMessage.SystemMessageId.PARTY_FULL);
                 player.sendActionFailed();

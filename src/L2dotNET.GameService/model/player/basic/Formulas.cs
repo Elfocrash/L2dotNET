@@ -15,9 +15,7 @@ namespace L2dotNET.GameService.Model.Player.Basic
                 damage *= 2;
 
             if (skillPower != 0)
-            {
                 damage += skillPower;
-            }
 
             damage = 70 * damage / defence;
 

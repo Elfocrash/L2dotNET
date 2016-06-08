@@ -71,7 +71,7 @@ namespace L2dotNET.GameService.World
             if (!excludeYourself)
                 sendPacket(pk);
 
-            foreach (L2Object o in GetKnownPlayers())
+            foreach (L2Player o in GetKnownPlayers())
                 o.sendPacket(pk);
         }
 
@@ -85,9 +85,7 @@ namespace L2dotNET.GameService.World
         public void deleteMe()
         {
             foreach (L2Player o in knownObjects.Values.OfType<L2Player>())
-            {
                 o.sendPacket(new DeleteObject(ObjID));
-            }
 
             StopRegeneration();
 
@@ -101,9 +99,7 @@ namespace L2dotNET.GameService.World
                 o.onClearing(this, deleteMe);
 
                 if (deleteMe && this is L2Player)
-                {
                     sendPacket(new DeleteObject(o.ObjID));
-                }
             }
 
             knownObjects.Clear();
@@ -123,10 +119,7 @@ namespace L2dotNET.GameService.World
             List<L2Player> result = new List<L2Player>();
 
             foreach (L2WorldRegion reg in region.GetSurroundingRegions())
-            {
-                //reg.getObjects()
                 result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this));
-            }
 
             return result;
         }
@@ -150,7 +143,6 @@ namespace L2dotNET.GameService.World
             }
 
             foreach (L2WorldRegion region in oldAreas)
-            {
                 if (!newAreas.Contains(region))
                 {
                     foreach (L2Object obj in region.getObjects().Where(obj => obj != this))
@@ -162,10 +154,8 @@ namespace L2dotNET.GameService.World
                     if (this is L2Player && region.IsEmptyNeighborhood())
                         region.SetActive(false);
                 }
-            }
 
             foreach (L2WorldRegion region in newAreas)
-            {
                 if (!oldAreas.Contains(region))
                 {
                     // Update all objects.
@@ -179,7 +169,6 @@ namespace L2dotNET.GameService.World
                     if (this is L2Player)
                         region.SetActive(true);
                 }
-            }
 
             Region = newRegion;
         }
@@ -192,26 +181,20 @@ namespace L2dotNET.GameService.World
             }
 
             if (deleteMe && target is L2Player)
-            {
                 target.sendPacket(new DeleteObject(ObjID));
-            }
         }
 
         public void setVisible(bool val)
         {
             Visible = val;
             foreach (L2Object o in knownObjects.Values)
-            {
                 o.canView(this);
-            }
         }
 
         private void canView(L2Object target)
         {
             foreach (L2Object o in knownObjects.Values)
-            {
                 o.onClearing(this, true);
-            }
         }
 
         public void addKnownObject(L2Object obj, GameServerNetworkPacket pk, bool pkuse)
@@ -231,9 +214,7 @@ namespace L2dotNET.GameService.World
         public void updateVisibleStatus()
         {
             foreach (L2Object o in knownObjects.Values.Where(o => o.Visible))
-            {
                 onAddObject(o, null);
-            }
         }
 
         public void removeKnownObject(L2Object obj, bool update)
@@ -280,22 +261,20 @@ namespace L2dotNET.GameService.World
             {
                 if (checkZ)
                     return (dx * dx + dy * dy + dz * dz) < radius * radius;
-                else
-                    return (dx * dx + dy * dy) < radius * radius;
+
+                return (dx * dx + dy * dy) < radius * radius;
             }
-            else
-            {
-                if (checkZ)
-                    return (dx * dx + dy * dy + dz * dz) <= radius * radius;
-                else
-                    return (dx * dx + dy * dy) <= radius * radius;
-            }
+
+            if (checkZ)
+                return (dx * dx + dy * dy + dz * dz) <= radius * radius;
+
+            return (dx * dx + dy * dy) <= radius * radius;
         }
 
         public SortedList<int, L2Zone> _activeZones = new SortedList<int, L2Zone>();
-        private bool _isInsidePeaceZone = false,
-                     _isInsidePvpZone = false,
-                     _isInsideWaterZone = false;
+        private bool _isInsidePeaceZone,
+                     _isInsidePvpZone,
+                     _isInsideWaterZone;
         //private bool _isInsideSSQZone = false;
         private readonly bool _isInsideSiegeZone = false;
         private readonly bool _isInsideSomeDungeon = false;
@@ -313,7 +292,7 @@ namespace L2dotNET.GameService.World
         }
 
         public int lastCode = -1;
-        private bool ForceSetPvp = false;
+        private bool ForceSetPvp;
         public bool _isInCombat = false;
 
         public void setForcedPvpZone(bool val)
@@ -326,28 +305,21 @@ namespace L2dotNET.GameService.World
         public virtual void validateZoneCompass()
         {
             if (ForceSetPvp)
-            {
                 if (lastCode != ExSetCompassZoneCode.PVPZONE)
                 {
                     lastCode = ExSetCompassZoneCode.PVPZONE;
                     sendPacket(new ExSetCompassZoneCode(ExSetCompassZoneCode.PVPZONE));
                     return;
                 }
-            }
 
             int code;
             if (_isInsidePvpZone)
-            {
                 code = ExSetCompassZoneCode.PVPZONE;
-            }
             else
-            {
                 code = _isInsidePeaceZone ? ExSetCompassZoneCode.PEACEZONE : ExSetCompassZoneCode.GENERALZONE;
-            }
 
             if (code != 0)
-            {
-                if (lastCode != -1 && lastCode != code)
+                if ((lastCode != -1) && (lastCode != code))
                 {
                     lastCode = code;
                     sendPacket(new ExSetCompassZoneCode(code));
@@ -357,7 +329,6 @@ namespace L2dotNET.GameService.World
                     lastCode = code;
                     sendPacket(new ExSetCompassZoneCode(code));
                 }
-            }
         }
 
         public void onEnterZone(L2Zone z)
@@ -366,9 +337,7 @@ namespace L2dotNET.GameService.World
                 return;
 
             if (this is L2Player)
-            {
                 ((L2Player)this).sendMessage("entered zone " + z.Name);
-            }
 
             _activeZones.Add(z.ZoneID, z);
             z.onEnter(this);
@@ -396,17 +365,11 @@ namespace L2dotNET.GameService.World
         private void revalidateZone(L2Zone z)
         {
             if (z is peace_zone)
-            {
                 validatePeaceZones();
-            }
             else if (z is battle_zone)
-            {
                 validateBattleZones();
-            }
             else if (z is water)
-            {
                 validateWaterZones();
-            }
         }
 
         public bool isInBattle()
@@ -445,16 +408,12 @@ namespace L2dotNET.GameService.World
             if (!old && _isInsidePeaceZone)
             {
                 if (this is L2Player)
-                {
                     ((L2Player)this).sendSystemMessage(SystemMessage.SystemMessageId.ENTER_PEACEFUL_ZONE);
-                }
             }
             else if (old && !_isInsidePeaceZone)
             {
                 if (this is L2Player)
-                {
                     ((L2Player)this).sendSystemMessage(SystemMessage.SystemMessageId.EXIT_PEACEFUL_ZONE);
-                }
             }
         }
 
@@ -483,16 +442,12 @@ namespace L2dotNET.GameService.World
             if (!old && _isInsidePvpZone)
             {
                 if (this is L2Player)
-                {
                     ((L2Player)this).sendSystemMessage(SystemMessage.SystemMessageId.ENTERED_COMBAT_ZONE);
-                }
             }
             else if (old && !_isInsidePvpZone)
             {
                 if (this is L2Player)
-                {
                     ((L2Player)this).sendSystemMessage(SystemMessage.SystemMessageId.LEFT_COMBAT_ZONE);
-                }
             }
         }
 
@@ -511,12 +466,10 @@ namespace L2dotNET.GameService.World
 
             //if(!found)
 
-            _isInsideWaterZone = Z > -4779 && Z < -3779;
+            _isInsideWaterZone = (Z > -4779) && (Z < -3779);
 
             if (this is L2Player)
-            {
                 ((L2Player)this).waterTimer();
-            }
         }
 
         public void validateVisibleObjects(int x, int y, bool zones)

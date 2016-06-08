@@ -15,8 +15,8 @@ namespace L2dotNET.GameService.Tables
         private static volatile MapRegionTable instance;
         private static readonly object syncRoot = new object();
 
-        private static readonly int REGIONS_X = 11;
-        private static readonly int REGIONS_Y = 16;
+        private const int REGIONS_X = 11;
+        private const int REGIONS_Y = 16;
 
         private static readonly int[,] _regions = new int[REGIONS_X, REGIONS_Y];
 
@@ -29,15 +29,11 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new MapRegionTable();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -53,11 +49,10 @@ namespace L2dotNET.GameService.Tables
                 int count = 0;
                 if (nodes != null)
                     foreach (XmlNode node in nodes)
-                    {
                         if (node.Attributes != null)
                         {
                             XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                            if (ownerElement != null && (node.Attributes != null && ownerElement.Name.Equals("map")))
+                            if ((ownerElement != null) && ((node.Attributes != null) && ownerElement.Name.Equals("map")))
                             {
                                 XmlNamedNodeMap attrs = node.Attributes;
                                 int rY = Convert.ToInt32(attrs.GetNamedItem("geoY").Value) - 10;
@@ -68,7 +63,7 @@ namespace L2dotNET.GameService.Tables
                                 }
                             }
                         }
-                    }
+
                 log.Info($"MapRegionTable: Loaded {count} regions.");
             }
         }
@@ -120,7 +115,9 @@ namespace L2dotNET.GameService.Tables
 
                 case 10: // Town of Aden
                 case 11: // Hunters Village
-                default: // Town of Aden
+                    return 5;
+
+                default:
                     return 5;
 
                 case 13: // Heine
@@ -281,6 +278,7 @@ namespace L2dotNET.GameService.Tables
                 case 18: // Primeval Isle
                     return GetTown(19);
             }
+
             return GetTown(16); // Default to floran
         }
 
@@ -343,6 +341,7 @@ namespace L2dotNET.GameService.Tables
                 case 18: // Primeval Isle
                     return GetTown(19);
             }
+
             return GetTown(16); // Default to floran
         }
 
@@ -387,6 +386,7 @@ namespace L2dotNET.GameService.Tables
                 case 18: // Primeval Isle
                     return GetTown(19);
             }
+
             return GetTown(16); // Default to floran
         }
 
@@ -437,6 +437,7 @@ namespace L2dotNET.GameService.Tables
                 case 15: // Goddard
                     return 15;
             }
+
             return 0;
         }
 

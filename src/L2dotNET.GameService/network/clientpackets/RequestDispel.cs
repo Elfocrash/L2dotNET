@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestDispel(GameClient client, byte[] data)
         {
-            base.makeme(client, data, 2);
+            makeme(client, data, 2);
         }
 
         public override void read()
@@ -34,10 +34,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
             AbnormalEffect avestop = null;
             foreach (AbnormalEffect ave in player._effects)
             {
-                if (ave.id != skillId && ave.lvl != skillLv)
+                if ((ave.id != skillId) && (ave.lvl != skillLv))
                     continue;
 
-                if (ave.skill.debuff == 1 && ave.skill.is_magic > 1)
+                if ((ave.skill.debuff == 1) && (ave.skill.is_magic > 1))
                     break;
 
                 avestop = ave;

@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestRecordInfo(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -24,9 +24,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.sendPacket(new ExBrExtraUserInfo(player.ObjID, player.AbnormalBitMaskEvent));
 
             foreach (L2Object obj in player.knownObjects.Values)
-            {
                 player.onAddObject(obj, null, "Player " + player.Name + " recording replay with your character.");
-            }
         }
     }
 }

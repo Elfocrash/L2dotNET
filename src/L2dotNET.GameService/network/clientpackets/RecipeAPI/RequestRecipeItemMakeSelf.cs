@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
     {
         public RequestRecipeItemMakeSelf(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _id;
@@ -81,26 +81,18 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
             player.sendPacket(su);
 
             foreach (recipe_item_entry material in rec._materials)
-            {
                 player.Inventory.destroyItem(material.item.ItemID, material.count, true, true);
-            }
 
             if (rec._success_rate < 100)
-            {
                 if (new Random().Next(0, 100) > rec._success_rate)
                 {
                     player.sendPacket(new RecipeItemMakeInfo(player, rec, 0));
                     player.sendActionFailed();
                     return;
                 }
-            }
 
             foreach (recipe_item_entry prod in rec._products)
-            {
-                // if(prod.rate == 100)
                 player.Inventory.addItem(prod.item, prod.count, 0, true, true);
-                // else
-            }
 
             player.sendPacket(new RecipeItemMakeInfo(player, rec, 1));
         }

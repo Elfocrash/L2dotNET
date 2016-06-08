@@ -7,8 +7,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
     {
         public PartySpelled(L2Character character)
         {
-            this.id = character.ObjID;
-            this.summonType = character.ObjectSummonType;
+            id = character.ObjID;
+            summonType = character.ObjectSummonType;
             this.character = character;
         }
 
@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public void addIcon(int iconId, int lvl, int duration)
         {
-            _timers.Add(new int[] { iconId, lvl, duration });
+            _timers.Add(new[] { iconId, lvl, duration });
         }
 
         protected internal override void write()
@@ -42,7 +42,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 if (f[2] == -1)
                     duration = -1;
 
-                if (f[0] >= 5123 && f[0] <= 5129)
+                if ((f[0] >= 5123) && (f[0] <= 5129))
                     duration = -1;
 
                 writeD(duration);

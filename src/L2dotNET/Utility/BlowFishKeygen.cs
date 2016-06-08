@@ -15,18 +15,16 @@ namespace L2dotNET.Utility
                 CRYPT_KEYS[i] = new byte[16];
 
                 for (int j = 0; j < CRYPT_KEYS[i].Length; j++)
-                {
                     CRYPT_KEYS[i][j] = (byte)Random.Next(255);
-                }
 
-                CRYPT_KEYS[i][8] = (byte)0xc8;
-                CRYPT_KEYS[i][9] = (byte)0x27;
-                CRYPT_KEYS[i][10] = (byte)0x93;
-                CRYPT_KEYS[i][11] = (byte)0x01;
-                CRYPT_KEYS[i][12] = (byte)0xa1;
-                CRYPT_KEYS[i][13] = (byte)0x6c;
-                CRYPT_KEYS[i][14] = (byte)0x31;
-                CRYPT_KEYS[i][15] = (byte)0x97;
+                CRYPT_KEYS[i][8] = 0xc8;
+                CRYPT_KEYS[i][9] = 0x27;
+                CRYPT_KEYS[i][10] = 0x93;
+                CRYPT_KEYS[i][11] = 0x01;
+                CRYPT_KEYS[i][12] = 0xa1;
+                CRYPT_KEYS[i][13] = 0x6c;
+                CRYPT_KEYS[i][14] = 0x31;
+                CRYPT_KEYS[i][15] = 0x97;
             }
         }
 

@@ -15,10 +15,10 @@ namespace L2dotNET.GameService.Tables
 
         public L2Object obj;
         private readonly L2Territory zone;
-        private readonly int x = 0;
-        private readonly int y = 0;
-        private readonly int z = 0;
-        private readonly int h = 0;
+        private readonly int x;
+        private readonly int y;
+        private readonly int z;
+        private readonly int h;
 
         private readonly byte Mode = MODE_ANYTIME;
         private byte STATUS = STATUS_OFFLINE;
@@ -36,10 +36,10 @@ namespace L2dotNET.GameService.Tables
             this.zone = zone;
             if (pos != null)
             {
-                this.x = Convert.ToInt32(pos[0]);
-                this.y = Convert.ToInt32(pos[1]);
-                this.z = Convert.ToInt32(pos[2]);
-                this.h = Convert.ToInt32(pos[3]);
+                x = Convert.ToInt32(pos[0]);
+                y = Convert.ToInt32(pos[1]);
+                z = Convert.ToInt32(pos[2]);
+                h = Convert.ToInt32(pos[3]);
             }
         }
 
@@ -48,17 +48,17 @@ namespace L2dotNET.GameService.Tables
             this.NpcId = NpcId;
             this.Respawn = Respawn;
 
-            this.x = Convert.ToInt32(loc[0]);
-            this.y = Convert.ToInt32(loc[1]);
-            this.z = Convert.ToInt32(loc[2]);
-            this.h = Convert.ToInt32(loc[3]);
+            x = Convert.ToInt32(loc[0]);
+            y = Convert.ToInt32(loc[1]);
+            z = Convert.ToInt32(loc[2]);
+            h = Convert.ToInt32(loc[3]);
         }
 
         public void init()
         {
             int[] sp = null;
-            if (x > 0 || y > 0)
-                sp = new int[] { x, y, z };
+            if ((x > 0) || (y > 0))
+                sp = new[] { x, y, z };
             else
                 try
                 {
@@ -66,7 +66,7 @@ namespace L2dotNET.GameService.Tables
                 }
                 catch (Exception e)
                 {
-                    sp = new int[] { 0, 0, 0, 0 };
+                    sp = new[] { 0, 0, 0, 0 };
                     //  throw e;
                     log.Error($"L2Spawn: {e.Message}");
                 }

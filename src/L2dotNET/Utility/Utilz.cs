@@ -26,7 +26,7 @@ namespace L2dotNET.Utility
             StringBuilder m_StrBuilder = new StringBuilder();
             m_StrBuilder.Append($"Date: {CurrentTime}\r\n");
             m_StrBuilder.Append($"OS: {Environment.OSVersion}\r\n");
-            m_StrBuilder.Append($"Environment version: {Environment.Version.ToString()}\r\n");
+            m_StrBuilder.Append($"Environment version: {Environment.Version}\r\n");
             m_StrBuilder.Append($"Processors count: {Environment.ProcessorCount}\r\n");
             m_StrBuilder.Append($"Working set: {Environment.WorkingSet} bytes\r\n");
             m_StrBuilder.Append($"Domain name: {AppDomain.CurrentDomain.FriendlyName}\r\n");

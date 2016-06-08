@@ -8,7 +8,7 @@
 
         public NetPingResponse(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()

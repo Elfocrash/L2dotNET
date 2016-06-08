@@ -22,15 +22,11 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new MultiSell();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -61,8 +57,7 @@ namespace L2dotNET.GameService.Tables.Multisell
             if (list.all == 1)
             {
                 player.sendPacket(new MultiSellListEx(player, list));
-                if (player.CustomMultiSellList != null)
-                    player.CustomMultiSellList = null;
+                player.CustomMultiSellList = null;
             }
             else
             {
@@ -107,9 +102,7 @@ namespace L2dotNET.GameService.Tables.Multisell
             XElement ex = xml.Element("list");
 
             if (ex != null)
-            {
                 foreach (XElement m in ex.Elements())
-                {
                     if (m.Name == "multisell")
                     {
                         MultiSellList mlist = new MultiSellList();
@@ -119,12 +112,10 @@ namespace L2dotNET.GameService.Tables.Multisell
                         mlist.all = Convert.ToByte(m.Attribute("all").Value);
 
                         foreach (XElement stp in m.Elements())
-                        {
                             if (stp.Name == "entry")
                             {
                                 MultiSellEntry entry = new MultiSellEntry();
                                 foreach (XElement its in stp.Elements())
-                                {
                                     switch (its.Name.LocalName)
                                     {
                                         case "give":
@@ -155,16 +146,12 @@ namespace L2dotNET.GameService.Tables.Multisell
                                             entry.dutyCount = Convert.ToInt64(its.Attribute("count").Value);
                                             break;
                                     }
-                                }
 
                                 mlist.container.Add(entry);
                             }
-                        }
 
                         lists.Add(mlist.id, mlist);
                     }
-                }
-            }
 
             log.Info($"MultiSell: {lists.Count} lists");
         }

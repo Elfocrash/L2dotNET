@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
         public RequestExTryToPutEnchantSupportItem(GameClient client, byte[] data)
         {
-            base.makeme(client, data, 2);
+            makeme(client, data, 2);
         }
 
         public override void read()
@@ -25,7 +25,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player.EnchantState != ItemEnchantManager.STATE_ENCHANT_START || player.EnchantItem.ObjID != a_sTargetID)
+            if ((player.EnchantState != ItemEnchantManager.STATE_ENCHANT_START) || (player.EnchantItem.ObjID != a_sTargetID))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.REGISTRATION_OF_ENHANCEMENT_SPELLBOOK_HAS_FAILED);
                 player.sendActionFailed();

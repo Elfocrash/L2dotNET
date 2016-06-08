@@ -23,15 +23,11 @@ namespace L2dotNET.GameService.Scripting
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new ScriptCompiler();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -60,6 +56,7 @@ namespace L2dotNET.GameService.Scripting
                 else
                     objectList.Add(result.CompiledAssembly.CreateInstance(Path.GetFileNameWithoutExtension(info.Name)));
             }
+
             log.Info($"Script Compiler: Compiled {objectList.Count} scripted quests.");
 
             return objectList.ToArray();

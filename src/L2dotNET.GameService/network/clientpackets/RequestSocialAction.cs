@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestSocialAction(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (player == null)
                 return;
 
-            if (_actionId < 2 || _actionId > 13)
+            if ((_actionId < 2) || (_actionId > 13))
                 return;
 
             player.broadcastPacket(new SocialAction(player.ObjID, _actionId));

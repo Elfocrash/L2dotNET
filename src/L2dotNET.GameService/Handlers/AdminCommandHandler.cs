@@ -21,15 +21,11 @@ namespace L2dotNET.GameService.Handlers
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new AdminCommandHandler();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -104,9 +100,6 @@ namespace L2dotNET.GameService.Handlers
             }
         }
 
-        public void ProcessBypassTp(L2Player player, int x, int y, int z)
-        {
-            player.teleport(x, y, z);
-        }
+        public void ProcessBypassTp(L2Player player, int x, int y, int z) { }
     }
 }

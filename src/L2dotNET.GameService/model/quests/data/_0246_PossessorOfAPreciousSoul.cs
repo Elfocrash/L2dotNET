@@ -26,13 +26,13 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 246;
             questName = "Possessor of a Precious Soul  - 3";
             startNpc = caradine;
-            talkNpcs = new int[] { caradine, ossian, magister_ladd };
-            actItems = new int[] { q_caradines_letter1, q_ring_waterbinder, q_necklace_evergreen, q_staff_rainsong, q_caradines_letter2, q_red_dust };
+            talkNpcs = new[] { caradine, ossian, magister_ladd };
+            actItems = new[] { q_caradines_letter1, q_ring_waterbinder, q_necklace_evergreen, q_staff_rainsong, q_caradines_letter2, q_red_dust };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
         {
-            if (!player.subActive() || !player.hasItem(q_caradines_letter1) || player.Level < 65)
+            if (!player.subActive() || !player.hasItem(q_caradines_letter1) || (player.Level < 65))
             {
                 player.ShowHtm("caradine_q0246_0102.htm", npc);
                 return;
@@ -68,6 +68,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             player.changeQuestStage(questId, 6);
                             break;
                     }
+
                     break;
                 case 3:
                     player.ShowHtm("magister_ladd_q0246_0501.htm", npc);
@@ -114,12 +115,11 @@ namespace L2dotNET.GameService.Model.Quests.Data
                                 htmltext = "ossian_q0246_0304.htm";
                             break;
                     }
+
                     break;
                 case magister_ladd:
                     if (cond == 5)
-                    {
                         htmltext = "magister_ladd_q0246_0401.htm";
-                    }
                     break;
             }
 
@@ -136,17 +136,18 @@ namespace L2dotNET.GameService.Model.Quests.Data
                     {
                         case brilliant_prophet:
                         {
-                            if (!player.hasItem(q_ring_waterbinder) && rn.Next(100) <= 15)
+                            if (!player.hasItem(q_ring_waterbinder) && (rn.Next(100) <= 15))
                                 player.addItemQuest(q_ring_waterbinder, 1);
                         }
                             break;
                         case brilliant_justice:
                         {
-                            if (!player.hasItem(q_necklace_evergreen) && rn.Next(100) <= 10)
+                            if (!player.hasItem(q_necklace_evergreen) && (rn.Next(100) <= 10))
                                 player.addItemQuest(q_necklace_evergreen, 1);
                         }
                             break;
                     }
+
                     break;
                 case 4:
                     switch (mob.Template.NpcId)
@@ -158,6 +159,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                         }
                             break;
                     }
+
                     break;
             }
         }
@@ -167,17 +169,13 @@ namespace L2dotNET.GameService.Model.Quests.Data
             switch (cond)
             {
                 case 2:
-                    if (id == q_ring_waterbinder || id == q_necklace_evergreen)
-                    {
+                    if ((id == q_ring_waterbinder) || (id == q_necklace_evergreen))
                         if (player.hasAllOfThisItems(q_ring_waterbinder, q_ring_waterbinder))
                             player.changeQuestStage(questId, 3);
-                    }
                     break;
                 case 4:
                     if (id == q_staff_rainsong)
-                    {
                         player.changeQuestStage(questId, 5);
-                    }
                     break;
             }
         }

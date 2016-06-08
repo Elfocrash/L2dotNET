@@ -8,18 +8,18 @@ namespace L2dotNET.GameService.Network.Serverpackets
         private readonly string id;
         private readonly string htmlCode;
         private readonly List<string> arg;
-        private static readonly short BBS_MAX = 8180;
+        private const short BBS_MAX = 8180;
 
         public ShowBoard(string htm, string id)
         {
             this.id = id;
-            this.htmlCode = htm;
+            htmlCode = htm;
         }
 
         public ShowBoard(List<string> arg)
         {
-            this.id = "1002";
-            this.htmlCode = null;
+            id = "1002";
+            htmlCode = null;
             this.arg = arg;
         }
 
@@ -64,6 +64,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             else
                 foreach (string s in arg)
                     st += s + " \u0008";
+
             writeS(st);
         }
     }

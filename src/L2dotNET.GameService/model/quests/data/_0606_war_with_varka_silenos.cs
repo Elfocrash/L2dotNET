@@ -35,7 +35,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 606;
             questName = "War with Varka Silenos";
             startNpc = elder_kadun_zu_ketra;
-            talkNpcs = new int[] { startNpc };
+            talkNpcs = new[] { startNpc };
             actItems = new int[] { };
             rn = new Random();
         }
@@ -62,7 +62,6 @@ namespace L2dotNET.GameService.Model.Quests.Data
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
             if (npcId == elder_kadun_zu_ketra)
-            {
                 switch (reply)
                 {
                     case 1:
@@ -82,9 +81,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                         foreach (QuestInfo qi in player._quests.Where(qi => qi.id == questId))
                         {
                             foreach (int id in qi._template.actItems)
-                            {
                                 player.Inventory.destroyItemAll(id, true, true);
-                            }
 
                             player.stopQuest(qi, true);
                             return;
@@ -93,7 +90,6 @@ namespace L2dotNET.GameService.Model.Quests.Data
                         htmltext = "elder_kadun_zu_ketra_q0606_0204.htm";
                         break;
                 }
-            }
 
             player.ShowHtm(htmltext, npc);
         }
@@ -103,12 +99,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             int id = npc.Template.NpcId;
             string htmltext = no_action_required;
             if (id == elder_kadun_zu_ketra)
-            {
                 if (cond == 1)
-                {
                     htmltext = "elder_kadun_zu_ketra_q0606_0105.htm";
-                }
-            }
 
             player.ShowHtm(htmltext, npc);
         }

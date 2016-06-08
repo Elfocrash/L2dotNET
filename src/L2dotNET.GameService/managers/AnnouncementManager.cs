@@ -31,15 +31,11 @@ namespace L2dotNET.GameService.Managers
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new AnnouncementManager();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -57,32 +53,26 @@ namespace L2dotNET.GameService.Managers
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_ANNOUNCE, text);
             foreach (L2Player p in L2World.Instance.GetPlayers())
-            {
                 p.sendPacket(cs);
-            }
         }
 
         public void criticalAnnounce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_CRITICAL_ANNOUNCE, text);
             foreach (L2Player p in L2World.Instance.GetPlayers())
-            {
                 p.sendPacket(cs);
-            }
         }
 
         public void screenAnnounce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_SCREEN_ANNOUNCE, text);
             foreach (L2Player p in L2World.Instance.GetPlayers())
-            {
                 p.sendPacket(cs);
-            }
         }
 
         public void OnEnter(L2Player player)
         {
-            if (Announcements == null || Announcements.Count == 0)
+            if ((Announcements == null) || (Announcements.Count == 0))
                 return;
 
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_ANNOUNCE);

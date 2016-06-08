@@ -16,8 +16,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 18;
             questName = "Meeting with the Golden Ram";
             startNpc = warehouse_chief_donal;
-            talkNpcs = new int[] { startNpc, freighter_daisy, supplier_abercrombie };
-            actItems = new int[] { q_mercs_supplies };
+            talkNpcs = new[] { startNpc, freighter_daisy, supplier_abercrombie };
+            actItems = new[] { q_mercs_supplies };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
@@ -25,9 +25,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (player.Level >= 66)
                 player.ShowHtm("warehouse_chief_donal_q0018_0101.htm", npc);
             else
-            {
                 player.ShowHtm("warehouse_chief_donal_q0018_0103.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -54,6 +52,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "warehouse_chief_donal_q0018_0105.htm";
                             break;
                     }
+
                     break;
                 case freighter_daisy:
                     switch (cond)
@@ -65,6 +64,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "freighter_daisy_q0018_0202.htm";
                             break;
                     }
+
                     break;
                 case supplier_abercrombie:
                     switch (cond)
@@ -74,6 +74,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                                 htmltext = "supplier_abercrombie_q0018_0201.htm";
                             break;
                     }
+
                     break;
             }
 

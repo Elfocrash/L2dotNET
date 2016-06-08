@@ -22,6 +22,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
                             break;
                     }
                 }
+
                     break;
             }
         }

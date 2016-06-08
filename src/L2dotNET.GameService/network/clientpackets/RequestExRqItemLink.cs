@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestExRqItemLink(GameClient client, byte[] data)
         {
-            base.makeme(client, data, 2);
+            makeme(client, data, 2);
         }
 
         public override void read()
@@ -25,14 +25,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             L2Item item = RqItemManager.getInstance().getItem(_objectId);
             if (item == null)
-            {
                 player.sendMessage("That item was deleted or modifyed.");
-                return;
-            }
             else
-            {
                 player.sendPacket(new ExRpItemLink(item));
-            }
         }
     }
 }

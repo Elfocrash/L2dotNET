@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
         public override void build(string str)
         {
-            this.npcId = int.Parse(str.Split(' ')[1]);
+            npcId = int.Parse(str.Split(' ')[1]);
         }
 
         public override TEffectResult onStart(L2Character caster, L2Character target)

@@ -16,8 +16,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 11;
             questName = "Secret Meeting With Ketra Orcs";
             startNpc = guard_cadmon;
-            talkNpcs = new int[] { startNpc, trader_leon, herald_wakan };
-            actItems = new int[] { q_cargo_for_ketra };
+            talkNpcs = new[] { startNpc, trader_leon, herald_wakan };
+            actItems = new[] { q_cargo_for_ketra };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
@@ -25,9 +25,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (player.Level >= 74)
                 player.ShowHtm("guard_cadmon_q0011_0101.htm", npc, questId);
             else
-            {
                 player.ShowHtm("guard_cadmon_q0011_0103.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -40,13 +38,13 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (reply == 1 && npcId == trader_leon)
+            if ((reply == 1) && (npcId == trader_leon))
             {
                 htmltext = "trader_leon_q0011_0201.htm";
                 player.addItem(q_cargo_for_ketra, 1);
                 player.changeQuestStage(questId, 2);
             }
-            else if (reply == 3 && npcId == herald_wakan)
+            else if ((reply == 3) && (npcId == herald_wakan))
             {
                 htmltext = "herald_wakan_q0011_0301.htm";
                 player.takeItem(q_cargo_for_ketra, 1);
@@ -70,6 +68,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "guard_cadmon_q0011_0105.htm";
                             break;
                     }
+
                     break;
                 case trader_leon:
                     switch (cond)
@@ -81,6 +80,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "trader_leon_q0011_0202.htm";
                             break;
                     }
+
                     break;
                 case herald_wakan:
                     switch (cond)
@@ -90,6 +90,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                                 htmltext = "herald_wakan_q0011_0201.htm";
                             break;
                     }
+
                     break;
             }
 

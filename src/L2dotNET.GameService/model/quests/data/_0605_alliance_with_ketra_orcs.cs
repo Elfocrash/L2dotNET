@@ -58,8 +58,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 605;
             questName = "Alliance with Ketra Orcs";
             startNpc = herald_wakan;
-            talkNpcs = new int[] { startNpc };
-            actItems = new int[] { q_ketra_friendship_1, q_ketra_friendship_2, q_ketra_friendship_3, q_ketra_friendship_4, q_ketra_friendship_5 };
+            talkNpcs = new[] { startNpc };
+            actItems = new[] { q_ketra_friendship_1, q_ketra_friendship_2, q_ketra_friendship_3, q_ketra_friendship_4, q_ketra_friendship_5 };
             rn = new Random();
         }
 
@@ -71,7 +71,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                 return;
             }
 
-            if (player.hasSomeOfThisItems(new int[] { q_barka_friendship_1, q_barka_friendship_2, q_barka_friendship_3, q_barka_friendship_4, q_barka_friendship_5 }))
+            if (player.hasSomeOfThisItems(q_barka_friendship_1, q_barka_friendship_2, q_barka_friendship_3, q_barka_friendship_4, q_barka_friendship_5))
             {
                 player.ShowHtm("herald_wakan_q0605_02.htm", npc);
                 return;
@@ -91,7 +91,6 @@ namespace L2dotNET.GameService.Model.Quests.Data
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
             if (npcId == herald_wakan)
-            {
                 switch (reply)
                 {
                     case 1:
@@ -153,9 +152,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                         foreach (QuestInfo qi in player._quests.Where(qi => qi.id == questId))
                         {
                             foreach (int id in qi._template.actItems)
-                            {
                                 player.Inventory.destroyItemAll(id, true, true);
-                            }
 
                             player.stopQuest(qi, true);
                             return;
@@ -164,7 +161,6 @@ namespace L2dotNET.GameService.Model.Quests.Data
                         htmltext = "herald_wakan_q0605_26.htm";
                         break;
                 }
-            }
 
             player.ShowHtm(htmltext, npc);
         }
@@ -174,38 +170,29 @@ namespace L2dotNET.GameService.Model.Quests.Data
             int npcIdh = npc.Template.NpcId;
             string htmltext = no_action_required;
             if (npcIdh == herald_wakan)
-            {
                 switch (cond)
                 {
                     case 1:
                         if (player.hasItem(q_barka_badge_grunt, 100))
-                        {
                             htmltext = "herald_wakan_q0605_11.htm";
-                        }
                         else
                             htmltext = "herald_wakan_q0605_10.htm";
                         break;
                     case 2:
                         if (player.hasItem(q_barka_badge_grunt, 200) && player.hasItem(q_barka_badge_captn, 100))
-                        {
                             htmltext = "herald_wakan_q0605_14.htm";
-                        }
                         else
                             htmltext = "herald_wakan_q0605_13.htm";
                         break;
                     case 3:
                         if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 200) && player.hasItem(q_barka_badge_officer, 100))
-                        {
                             htmltext = "herald_wakan_q0605_17.htm";
-                        }
                         else
                             htmltext = "herald_wakan_q0605_16.htm";
                         break;
                     case 4:
                         if (player.hasItem(q_barka_badge_grunt, 300) && player.hasItem(q_barka_badge_captn, 300) && player.hasItem(q_barka_badge_officer, 200) && player.hasItem(q_totem_of_valor))
-                        {
                             htmltext = "herald_wakan_q0605_20.htm";
-                        }
                         else
                             htmltext = "herald_wakan_q0605_19.htm";
                         break;
@@ -228,7 +215,6 @@ namespace L2dotNET.GameService.Model.Quests.Data
                         htmltext = "herald_wakan_q0605_09.htm";
                         break;
                 }
-            }
 
             player.ShowHtm(htmltext, npc);
         }
@@ -247,10 +233,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
                 case varka_silenos_shaman:
                 {
                     if (cond >= 1)
-                    {
                         if (rn.Next(100) <= 80)
                             player.addItemQuest(q_barka_badge_grunt, 1);
-                    }
                 }
                     break;
                 case varka_silenos_priest:
@@ -262,10 +246,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
                 case varka_elite_guard:
                 {
                     if (cond >= 2)
-                    {
                         if (rn.Next(100) <= 80)
                             player.addItemQuest(q_barka_badge_captn, 1);
-                    }
                 }
                     break;
                 case varka_silenos_seer:
@@ -279,10 +261,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
                 case soothsayers_apostle:
                 {
                     if (cond >= 3)
-                    {
                         if (rn.Next(100) <= 80)
                             player.addItemQuest(q_barka_badge_officer, 1);
-                    }
                 }
                     break;
             }

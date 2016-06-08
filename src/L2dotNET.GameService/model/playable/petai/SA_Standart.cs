@@ -23,8 +23,7 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
             double dis = Calcs.calculateDistance(summon, summon.Owner, true);
 
             if (dis > 120)
-            {
-                if (lastOwnerX != summon.Owner.X && lastOwnerY != summon.Owner.Y && lastOwnerZ != summon.Owner.Z)
+                if ((lastOwnerX != summon.Owner.X) && (lastOwnerY != summon.Owner.Y) && (lastOwnerZ != summon.Owner.Z))
                 {
                     character.MoveTo(summon.Owner.X, summon.Owner.Y, summon.Owner.Z);
 
@@ -32,7 +31,6 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
                     lastOwnerY = summon.Owner.Y;
                     lastOwnerZ = summon.Owner.Z;
                 }
-            }
         }
 
         public override void DoThink(object sender = null, System.Timers.ElapsedEventArgs e = null) { }

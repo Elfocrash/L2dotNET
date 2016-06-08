@@ -16,22 +16,22 @@ namespace L2dotNET.Services
 
         public AccountModel GetAccountByLogin(string login)
         {
-            return this.unitOfWork.AccountRepository.GetAccountByLogin(login);
+            return unitOfWork.AccountRepository.GetAccountByLogin(login);
         }
 
         public AccountModel CreateAccount(string login, string password)
         {
-            return this.unitOfWork.AccountRepository.CreateAccount(login, password);
+            return unitOfWork.AccountRepository.CreateAccount(login, password);
         }
 
         public bool CheckIfAccountIsCorrect(string login, string password)
         {
-            return this.unitOfWork.AccountRepository.CheckIfAccountIsCorrect(login, password);
+            return unitOfWork.AccountRepository.CheckIfAccountIsCorrect(login, password);
         }
 
         public List<int> GetPlayerIdsListByAccountName(string login)
         {
-            return this.unitOfWork.AccountRepository.GetPlayerIdsListByAccountName(login);
+            return unitOfWork.AccountRepository.GetPlayerIdsListByAccountName(login);
         }
     }
 }

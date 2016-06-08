@@ -30,6 +30,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
                     player.ShowHtm("pl005.htm", npc);
                 }
+
                     break;
                 case 1: //Повысить
                     player.ShowHtm("pl013.htm", npc);

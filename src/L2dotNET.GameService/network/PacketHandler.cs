@@ -333,13 +333,11 @@ namespace L2dotNET.GameService.Network
                         case 0x79:
                             msg = new AnswerPartyLootModification(client, buff);
                             break;
-                        default:
-                            break;
                     }
-                    break;
-                default:
+
                     break;
             }
+
             if (msg == null)
             {
                 log.Info($"{cninfo}");
@@ -361,9 +359,7 @@ namespace L2dotNET.GameService.Network
             if (level > 0)
                 s = "Header: ";
             for (byte r = 0; r < level; r++)
-            {
                 s += buff[r].ToString("x2");
-            }
 
             if (level > 0)
                 s += "\n";

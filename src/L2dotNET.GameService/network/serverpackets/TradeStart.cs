@@ -13,10 +13,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public TradeStart(L2Player player)
         {
             this.player = player;
-            this.partnerId = player.requester.ObjID;
+            partnerId = player.requester.ObjID;
             foreach (L2Item item in player.getAllNonQuestItems())
             {
-                if (item.Template.is_trade == 0 || item.AugmentationID > 0 || item._isEquipped == 1)
+                if ((item.Template.is_trade == 0) || (item.AugmentationID > 0) || (item._isEquipped == 1))
                     continue;
 
                 if (item.Template.Type == ItemTemplate.L2ItemType.asset)

@@ -19,18 +19,16 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 10;
             questName = "Into the World";
             startNpc = elder_balanki;
-            talkNpcs = new int[] { startNpc, warehouse_chief_reed, gerald_priest_of_earth };
-            actItems = new int[] { q_expensive_necklace };
+            talkNpcs = new[] { startNpc, warehouse_chief_reed, gerald_priest_of_earth };
+            actItems = new[] { q_expensive_necklace };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
         {
-            if (player.BaseClass.ClassId.ClassRace == ClassRace.DWARF && player.Level >= 3)
+            if ((player.BaseClass.ClassId.ClassRace == ClassRace.DWARF) && (player.Level >= 3))
                 player.ShowHtm("elder_balanki_q0010_0101.htm", npc, questId);
             else
-            {
                 player.ShowHtm("elder_balanki_q0010_0102.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -43,7 +41,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (reply == 1 && npcId == warehouse_chief_reed)
+            if ((reply == 1) && (npcId == warehouse_chief_reed))
             {
                 int cond = player.getQuestCond(questId);
                 switch (cond)
@@ -59,13 +57,13 @@ namespace L2dotNET.GameService.Model.Quests.Data
                         break;
                 }
             }
-            else if (reply == 1 && npcId == gerald_priest_of_earth)
+            else if ((reply == 1) && (npcId == gerald_priest_of_earth))
             {
                 player.takeItem(q_expensive_necklace, 1);
                 player.changeQuestStage(questId, 3);
                 htmltext = "gerald_priest_of_earth_q0010_0301.htm";
             }
-            else if (reply == 3 && npcId == elder_balanki)
+            else if ((reply == 3) && (npcId == elder_balanki))
             {
                 htmltext = "elder_balanki_q0010_0501.htm";
                 player.addItem(escape_scroll_giran, 1);
@@ -92,6 +90,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "elder_balanki_q0010_0401.htm";
                             break;
                     }
+
                     break;
                 case warehouse_chief_reed:
                     switch (cond)
@@ -109,6 +108,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "warehouse_chief_reed_q0010_0402.htm";
                             break;
                     }
+
                     break;
                 case gerald_priest_of_earth:
                     switch (cond)
@@ -123,6 +123,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "gerald_priest_of_earth_q0010_0302.htm";
                             break;
                     }
+
                     break;
             }
 

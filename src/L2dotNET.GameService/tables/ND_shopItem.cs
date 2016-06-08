@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Tables
 
         public ND_shopItem(ItemTemplate it)
         {
-            this.item = it;
+            item = it;
         }
     }
 }

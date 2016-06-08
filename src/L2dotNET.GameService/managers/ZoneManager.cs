@@ -24,12 +24,11 @@ namespace L2dotNET.GameService.Managers
                 XmlDocument doc = new XmlDocument();
                 //int fileCounter = 0;
                 string[] xmlFilesArray = Directory.GetFiles(@"data\xml\zones\");
-                for (int i = 0; i < xmlFilesArray.Length; i++) { }
+                //for (int i = 0; i < xmlFilesArray.Length; i++) { }
             }
             catch (Exception e)
             {
                 log.Error($"ZoneManager: {e.Message}");
-                return;
             }
 
             //int size = 0;
@@ -40,15 +39,11 @@ namespace L2dotNET.GameService.Managers
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new ZoneManager();
-                        }
                     }
-                }
 
                 return instance;
             }

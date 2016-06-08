@@ -16,22 +16,22 @@ namespace L2dotNET.Services
 
         public List<ServerModel> GetServerList()
         {
-            return this.unitOfWork.ServerRepository.GetServerList();
+            return unitOfWork.ServerRepository.GetServerList();
         }
 
         public List<int> GetPlayersObjectIdList()
         {
-            return this.unitOfWork.ServerRepository.GetPlayersObjectIdList();
+            return unitOfWork.ServerRepository.GetPlayersObjectIdList();
         }
 
         public List<AnnouncementModel> GetAnnouncementsList()
         {
-            return this.unitOfWork.ServerRepository.GetAnnouncementsList();
+            return unitOfWork.ServerRepository.GetAnnouncementsList();
         }
 
         public bool CheckDatabaseQuery()
         {
-            return this.unitOfWork.ServerRepository.CheckDatabaseQuery();
+            return unitOfWork.ServerRepository.CheckDatabaseQuery();
         }
     }
 }

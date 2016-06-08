@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 writeD(m.Gender);
                 writeD(m.Race);
                 writeD(m.OnlineID()); // 1=online 0=offline
-                writeD(m.haveMaster()); //c5 makes the name yellow. member is in academy and has a sponsor 
+                writeD(m.haveMaster()); //c5 makes the name yellow. member is in academy and has a sponsor
             }
         }
     }

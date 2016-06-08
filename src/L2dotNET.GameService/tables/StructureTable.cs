@@ -17,15 +17,11 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new StructureTable();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -49,7 +45,7 @@ namespace L2dotNET.GameService.Tables
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine() ?? string.Empty;
-                    if (line.Length == 0 || line.StartsWith("#"))
+                    if ((line.Length == 0) || line.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
                         continue;
 
                     string[] pt = line.Split('\t');
@@ -82,7 +78,7 @@ namespace L2dotNET.GameService.Tables
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine() ?? string.Empty;
-                    if (line.Length == 0 || line.StartsWith("#"))
+                    if ((line.Length == 0) || line.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
                         continue;
 
                     string[] pt = line.Split('\t');
@@ -112,12 +108,14 @@ namespace L2dotNET.GameService.Tables
                                     foreach (string str in value.Split(' '))
                                         template.SetNpc(Convert.ToInt32(str));
                                 }
+
                                     break;
                                 case "door":
                                 {
                                     foreach (string str in value.Split(' '))
                                         template.SetDoor(Convert.ToInt32(str));
                                 }
+
                                     break;
                                 case "spawn":
                                     template.SetOwnerRespawn(value.Split(' '));
@@ -131,10 +129,9 @@ namespace L2dotNET.GameService.Tables
                                 case "zone":
                                 {
                                     foreach (string str in value.Split(';'))
-                                    {
                                         template.SetZoneLoc(str.Split(' '));
-                                    }
                                 }
+
                                     break;
                             }
                         }
@@ -148,9 +145,7 @@ namespace L2dotNET.GameService.Tables
             log.Info("Hideouts: " + hideouts.Count + ".");
 
             foreach (HideoutTemplate st in structures.Values)
-            {
                 st.init();
-            }
         }
     }
 }

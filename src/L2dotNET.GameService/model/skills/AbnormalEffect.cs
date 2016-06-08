@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Model.Skills
         public int lvl;
         public int id;
 
-        public int active = 0;
+        public int active;
 
         public Timer _timer;
         public L2Character _owner;
@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Model.Skills
         public void forcedStop(bool msg, bool icon)
         {
             active = 0;
-            if (_timer != null && _timer.Enabled)
+            if ((_timer != null) && _timer.Enabled)
             {
                 _timer.Stop();
                 _timer.Enabled = false;

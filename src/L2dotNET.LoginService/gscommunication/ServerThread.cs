@@ -30,8 +30,8 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void ReadData(TcpClient tcpClient, ServerThreadPool cn)
         {
-            this.nstream = tcpClient.GetStream();
-            this.client = tcpClient;
+            nstream = tcpClient.GetStream();
+            client = tcpClient;
 
             new Thread(Read).Start();
         }
@@ -87,7 +87,7 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             string str = "header: " + packet.FirstOpcode + "\n";
 
-            log.Info($"{packet.ToString()}");
+            log.Info($"{packet}");
 
             switch (packet.FirstOpcode)
             {

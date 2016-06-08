@@ -23,15 +23,11 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new CharTemplateTable();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -51,21 +47,18 @@ namespace L2dotNET.GameService.Tables
                     XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/class");
 
                     if (nodes != null)
-                    {
                         foreach (XmlNode node in nodes)
-                        {
                             if (node.Attributes != null)
                             {
                                 XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                                if (ownerElement != null && (node.Attributes != null && "class".Equals(ownerElement.Name)))
+                                if ((ownerElement != null) && ((node.Attributes != null) && "class".Equals(ownerElement.Name)))
                                 {
                                     XmlNamedNodeMap attrs = node.Attributes;
                                     ClassId classId = ClassId.Values.FirstOrDefault(x => ((int)x.Id).Equals(Convert.ToInt32(attrs.Item(0).Value)));
                                     StatsSet set = new StatsSet();
 
                                     for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
-                                    {
-                                        if (cd.NextSibling != null && ("set".Equals(cd.NextSibling.Name) && cd.NextSibling != null))
+                                        if ((cd.NextSibling != null) && ("set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null)))
                                         {
                                             attrs = cd.NextSibling.Attributes;
                                             if (attrs != null)
@@ -77,15 +70,14 @@ namespace L2dotNET.GameService.Tables
                                         }
                                         else
                                             break;
-                                    }
+
                                     PcTemplate pcTempl = new PcTemplate(classId, set);
                                     Templates.Add((int)pcTempl.ClassId.Id, pcTempl);
                                 }
                             }
-                        }
-                    }
                 }
             }
+
             Log.Info($"Loaded {Templates.Count} character templates.");
         }
 

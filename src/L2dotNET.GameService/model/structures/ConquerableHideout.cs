@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Model.Structures
                      spawn2,
                      spawn3,
                      spawn4;
-        public bool isActive = false;
+        public bool isActive;
         public Timer TimeWait = null,
                      TimeReg = null,
                      TimeSiege;
@@ -92,13 +92,11 @@ namespace L2dotNET.GameService.Model.Structures
                 double dmg = 0;
                 int tmClanId = 0;
                 foreach (int clanId in clanDamage.Keys)
-                {
                     if (clanDamage[clanId] > dmg)
                     {
                         dmg = clanDamage[clanId];
                         tmClanId = clanId;
                     }
-                }
 
                 if (tmClanId > 0)
                 {
@@ -125,7 +123,7 @@ namespace L2dotNET.GameService.Model.Structures
             }
 
             foreach (L2Character o in mobActive)
-                ((L2Character)o).DeleteByForce();
+                o.DeleteByForce();
         }
 
         public void addDamage(int clanId, double dmg)
@@ -141,7 +139,7 @@ namespace L2dotNET.GameService.Model.Structures
             if (mobSpawns == null)
                 mobSpawns = new List<int[]>();
 
-            mobSpawns.Add(new int[] { spawnId, x, y, z, h });
+            mobSpawns.Add(new[] { spawnId, x, y, z, h });
         }
     }
 }

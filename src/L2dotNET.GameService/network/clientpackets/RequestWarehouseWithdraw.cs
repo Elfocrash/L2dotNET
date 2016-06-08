@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestWarehouseWithdraw(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _count;
@@ -24,10 +24,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             _count = readD();
 
-            if (_count < 0 || _count > 255)
-            {
+            if ((_count < 0) || (_count > 255))
                 _count = 0;
-            }
 
             _items = new int[_count * 2];
             for (int i = 0; i < _count; i++)
@@ -55,7 +53,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 int objectId = _items[i * 2];
                 int count = _items[i * 2 + 1];
 
-                L2Item item = (L2Item)player._warehouse.Items[objectId];
+                L2Item item = player._warehouse.Items[objectId];
 
                 if (item == null)
                 {
@@ -90,7 +88,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 int objectId = _items[i * 2];
                 int count = _items[i * 2 + 1];
 
-                transfer.Add(new int[] { objectId, count });
+                transfer.Add(new[] { objectId, count });
             }
 
             pw.transferFrom(player, transfer, false);

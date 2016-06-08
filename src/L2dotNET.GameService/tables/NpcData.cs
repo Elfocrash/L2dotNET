@@ -25,15 +25,11 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new NpcData();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -59,7 +55,6 @@ namespace L2dotNET.GameService.Tables
             {
                 XElement xml = XElement.Parse(File.ReadAllText(@"scripts\buylists.xml"));
                 foreach (XElement shops in xml.Elements("shops"))
-                {
                     foreach (XElement shopp in shops.Elements("shop"))
                     {
                         ND_shop shop = new ND_shop();
@@ -85,9 +80,7 @@ namespace L2dotNET.GameService.Tables
                                 {
                                     ItemTemplate it = itable.GetItem(Convert.ToInt32(i));
                                     if (it != null)
-                                    {
                                         slist.items.Add(new ND_shopItem(it));
-                                    }
                                     else
                                         log.Error($"NpcData: cant find item to trade {i} on npc {shop.id}");
                                 }
@@ -98,7 +91,6 @@ namespace L2dotNET.GameService.Tables
 
                         _shops.Add(shop.id, shop);
                     }
-                }
             }
 
             log.Info("NpcData: loaded " + _shops.Count + " merchants.");
@@ -124,7 +116,6 @@ namespace L2dotNET.GameService.Tables
                 {
                     player.sendMessage("your shop id was just wrong " + reply);
                     player.sendActionFailed();
-                    return;
                 }
                 else
                     pk = new ShopPreviewList(player, shop.lists[reply], reply);
@@ -212,8 +203,6 @@ namespace L2dotNET.GameService.Tables
                     player.Inventory.destroyItem(e.itemId, e.cost, true, true);
                     break;
             }
-
-            player.teleport(e.x, e.y, e.z);
         }
 
         internal void preview(L2Player talker, L2Npc myself, int p)

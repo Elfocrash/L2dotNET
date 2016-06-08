@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using System;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2.SpecEffects;
 using L2dotNET.GameService.World;
 
@@ -12,7 +13,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         {
             string val = str.Split(' ')[1];
             ef = new b_regen_hp_by_sit(double.Parse(val.Substring(1)));
-            ef.mul = val.StartsWith("*");
+            ef.mul = val.StartsWith("*", StringComparison.InvariantCultureIgnoreCase);
         }
 
         public override TEffectResult onStart(L2Character caster, L2Character target)
@@ -31,7 +32,9 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
                 return nothing;
 
             lock (((L2Player)target).specEffects)
+            {
                 ((L2Player)target).specEffects.Remove(ef);
+            }
 
             return nothing;
         }

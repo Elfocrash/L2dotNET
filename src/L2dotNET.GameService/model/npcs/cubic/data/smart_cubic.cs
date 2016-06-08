@@ -55,21 +55,20 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         {
             if (skill2target == "heal")
             {
-                if (owner.Dead || owner.CurHP / owner.MaxHP > 0.9)
+                if (owner.Dead || (owner.CurHP / owner.MaxHP > 0.9))
                     return 0;
+
                 CallSkill(owner, skill2, owner);
                 return 1;
             }
-            else
-            {
-                if (owner.CurrentTarget != null)
-                {
-                    if (owner.CurrentTarget.Dead)
-                        return 0;
 
-                    CallSkill(owner, skill2, owner.CurrentTarget);
-                    return 1;
-                }
+            if (owner.CurrentTarget != null)
+            {
+                if (owner.CurrentTarget.Dead)
+                    return 0;
+
+                CallSkill(owner, skill2, owner.CurrentTarget);
+                return 1;
             }
 
             return 0;
@@ -83,17 +82,15 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         {
             byte n = 0;
             if (owner._effects.Any(e => e.skill.debuff == 1))
-            {
                 n = 1;
-            }
 
             if (n == 1)
             {
                 CallSkill(owner, skill3, owner);
                 return 1;
             }
-            else
-                return 0;
+
+            return 0;
         }
     }
 }

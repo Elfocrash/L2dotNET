@@ -28,8 +28,7 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
             double dis = Calcs.calculateDistance(pet, pet.Owner, true);
 
             if (dis > 120)
-            {
-                if (lastOwnerX != pet.Owner.X && lastOwnerY != pet.Owner.Y && lastOwnerZ != pet.Owner.Z)
+                if ((lastOwnerX != pet.Owner.X) && (lastOwnerY != pet.Owner.Y) && (lastOwnerZ != pet.Owner.Z))
                 {
                     pet.MoveTo(pet.Owner.X, pet.Owner.Y, pet.Owner.Z);
 
@@ -37,18 +36,14 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
                     lastOwnerY = pet.Owner.Y;
                     lastOwnerZ = pet.Owner.Z;
                 }
-            }
         }
 
         public override void DoThink(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {
             if (pet.CurrentTime / pet.MaxTime < 0.55)
             {
-                if (under55percent == null)
-                {
-                    under55percent = DateTime.Now;
-                    pet.Owner.sendSystemMessage(SystemMessage.SystemMessageId.YOUR_PET_IS_VERY_HUNGRY);
-                }
+                under55percent = DateTime.Now;
+                pet.Owner.sendSystemMessage(SystemMessage.SystemMessageId.YOUR_PET_IS_VERY_HUNGRY);
             }
         }
     }

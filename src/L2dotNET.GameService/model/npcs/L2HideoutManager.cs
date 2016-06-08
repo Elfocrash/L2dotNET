@@ -90,8 +90,6 @@ namespace L2dotNET.GameService.Model.Npcs
                         case 1: //doors
                             if (player.Clan.LeaderID == player.ObjID) //TODO privs
                                 player.sendPacket(new NpcHtmlMessage(player, ai.fnDoor, ObjID));
-                            else
-                                player.teleport(hideout.outsideLoc[0], hideout.outsideLoc[1], hideout.outsideLoc[2]);
                             break;
                         case 2: //banish
                             player.sendPacket(new NpcHtmlMessage(player, ai.fnBanish, ObjID));
@@ -196,6 +194,7 @@ namespace L2dotNET.GameService.Model.Npcs
                         }
                             break;
                     }
+
                     break;
                 case -203:
                     switch (reply)
@@ -219,6 +218,7 @@ namespace L2dotNET.GameService.Model.Npcs
                             player.sendPacket(new NpcHtmlMessage(player, ai.fnAfterDoorClose, ObjID));
                             break;
                     }
+
                     break;
                 case -208: //buffs
                     result = useBuff(reply, player);
@@ -249,6 +249,7 @@ namespace L2dotNET.GameService.Model.Npcs
                         }
                             break;
                     }
+
                     break;
                 case -219:
                     switch (reply)
@@ -258,6 +259,7 @@ namespace L2dotNET.GameService.Model.Npcs
                             player.sendPacket(new NpcHtmlMessage(player, ai.fnAfterBanish, ObjID));
                             break;
                     }
+
                     break;
                 case -270:
                 {
@@ -392,6 +394,7 @@ namespace L2dotNET.GameService.Model.Npcs
                             break;
                     }
                 }
+
                     break;
             }
         }
@@ -555,8 +558,8 @@ namespace L2dotNET.GameService.Model.Npcs
                 return 1;
             }
 
-            this.ChangeTarget(player);
-            return (short)this.castSkill(skill);
+            ChangeTarget(player);
+            return (short)castSkill(skill);
 
             //  CurMP -= (skill.MpConsume1 + skill.MpConsume2);
             // player.addEffect(this, skill, player, true, false);

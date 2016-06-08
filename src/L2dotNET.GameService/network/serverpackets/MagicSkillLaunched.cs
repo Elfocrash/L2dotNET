@@ -26,10 +26,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
         /// <param name="skLv"></param>
         public MagicSkillLaunched(int id, int skId, int skLv)
         {
-            this.CasterId = id;
-            this._id = skId;
-            this._level = skLv;
-            Targets = new int[] { id };
+            CasterId = id;
+            _id = skId;
+            _level = skLv;
+            Targets = new[] { id };
         }
 
         protected internal override void write()

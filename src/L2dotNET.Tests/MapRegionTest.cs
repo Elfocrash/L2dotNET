@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using L2dotNET.GameService.Templates;
@@ -18,7 +19,7 @@ namespace L2dotNET.Tests
             try
             {
                 StatsSet set = new StatsSet();
-                StatsSet petSet = new StatsSet();
+                //StatsSet petSet = new StatsSet();
 
                 foreach (string i in xmlFilesArray)
                 {
@@ -28,13 +29,12 @@ namespace L2dotNET.Tests
                         XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/npc");
 
                         if (nodes != null)
-                        {
                             foreach (XmlNode node in nodes)
                             {
                                 if (node.Attributes != null)
                                 {
                                     XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                                    if (ownerElement != null && (node.Attributes != null && "npc".Equals(ownerElement.Name)))
+                                    if ((ownerElement != null) && ((node.Attributes != null) && "npc".Equals(ownerElement.Name)))
                                     {
                                         XmlNamedNodeMap attrs = node.Attributes;
 
@@ -51,15 +51,14 @@ namespace L2dotNET.Tests
                                 }
                                 set.Clear();
                             }
-                        }
                     }
                 }
             }
-                //catch (Exception e)
-                //{
-                //    //_log.log(Level.SEVERE, "NpcTable: Error parsing NPC templates : ", e);
-                //}
-            finally { }
+            catch (Exception e)
+            {
+                Console.WriteLine($"MapRegionTest Error: {e.Message}");
+                //_log.log(Level.SEVERE, "NpcTable: Error parsing NPC templates : ", e);
+            }
         }
     }
 }

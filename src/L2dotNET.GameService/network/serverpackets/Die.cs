@@ -33,13 +33,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             sId = cha.ObjID;
 
             if (cha is L2Player)
-            {
                 DiePlayer((L2Player)cha);
-            }
             else if (cha is L2Warrior)
-            {
                 m_Spoil = ((L2Warrior)cha).spoilActive ? 1 : 0;
-            }
         }
 
         private void DiePlayer(L2Player player)

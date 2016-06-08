@@ -20,15 +20,11 @@ namespace L2dotNET.GameService.Model.Items
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new Capsule();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -53,9 +49,7 @@ namespace L2dotNET.GameService.Model.Items
                 Random rn = new Random();
                 ((L2Player)character).Inventory.destroyItem(item, 1, true, true);
                 foreach (CapsuleItemReward rew in caps.rewards.Where(rew => rn.Next(100) <= rew.rate))
-                {
                     ((L2Player)character).addItem(rew.id, rn.Next(rew.min, rew.max));
-                }
             }
         }
 
@@ -67,16 +61,13 @@ namespace L2dotNET.GameService.Model.Items
             XElement ex = xml.Element("list");
 
             if (ex != null)
-            {
                 foreach (XElement m in ex.Elements())
-                {
                     if (m.Name == "capsule")
                     {
                         CapsuleItem caps = new CapsuleItem();
                         caps.id = Convert.ToInt32(m.Attribute("id").Value);
 
                         foreach (XElement stp in m.Elements())
-                        {
                             switch (stp.Name.LocalName)
                             {
                                 case "item":
@@ -95,12 +86,9 @@ namespace L2dotNET.GameService.Model.Items
                                     }
                                     break;
                             }
-                        }
 
                         items.Add(caps.id, caps);
                     }
-                }
-            }
         }
     }
 }

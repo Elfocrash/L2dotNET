@@ -14,7 +14,7 @@ namespace L2dotNET.Services
 
         public bool PreCheckRepository()
         {
-            return this.unitOfWork.CheckRepository.PreCheckRepository();
+            return unitOfWork.CheckRepository.PreCheckRepository();
         }
     }
 }

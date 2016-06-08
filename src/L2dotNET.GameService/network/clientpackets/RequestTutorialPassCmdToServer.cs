@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Handlers;
+﻿using System;
+using L2dotNET.GameService.Handlers;
 using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Network.Clientpackets
@@ -7,7 +8,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestTutorialPassCmdToServer(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private string _alias;
@@ -29,17 +30,17 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (_alias.StartsWith("menu_select?"))
+            if (_alias.StartsWith("menu_select?", StringComparison.InvariantCultureIgnoreCase))
             {
-                _alias = _alias.Replace(" ", "");
-                string x1 = _alias.Split('?')[1];
-                string[] x2 = x1.Split('&');
-                int ask = int.Parse(x2[0].Substring(4));
-                int reply = int.Parse(x2[1].Substring(6));
+                //_alias = _alias.Replace(" ", "");
+                //string x1 = _alias.Split('?')[1];
+                //string[] x2 = x1.Split('&');
+                //int ask = int.Parse(x2[0].Substring(4));
+                //int reply = int.Parse(x2[1].Substring(6));
 
                 //  npc.onDialog(player, ask, reply);
             }
-            else if (_alias.StartsWith("admin?"))
+            else if (_alias.StartsWith("admin?", StringComparison.InvariantCultureIgnoreCase))
             {
                 if (player.ViewingAdminPage == 0)
                 {

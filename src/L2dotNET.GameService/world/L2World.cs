@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.World
         public static int WORLD_Y_MAX = (TILE_Y_MAX - 17) * TILE_SIZE;
 
         // Regions and offsets
-        private static readonly int REGION_SIZE = 4096;
+        private const int REGION_SIZE = 4096;
         private static readonly int REGIONS_X = (WORLD_X_MAX - WORLD_X_MIN) / REGION_SIZE;
         private static readonly int REGIONS_Y = (WORLD_Y_MAX - WORLD_Y_MIN) / REGION_SIZE;
         private static readonly int REGION_X_OFFSET = Math.Abs(WORLD_X_MIN / REGION_SIZE);
@@ -46,15 +46,11 @@ namespace L2dotNET.GameService.World
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new L2World();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -63,25 +59,16 @@ namespace L2dotNET.GameService.World
         public void Initialize()
         {
             for (int i = 0; i <= REGIONS_X; i++)
-            {
                 for (int j = 0; j <= REGIONS_Y; j++)
                     _worldRegions[i, j] = new L2WorldRegion(i, j);
-            }
 
             for (int x = 0; x <= REGIONS_X; x++)
-            {
                 for (int y = 0; y <= REGIONS_Y; y++)
-                {
                     for (int a = -1; a <= 1; a++)
-                    {
                         for (int b = -1; b <= 1; b++)
-                        {
                             if (validRegion(x + a, y + b))
                                 _worldRegions[x + a, y + b].AddSurroundingRegion(_worldRegions[x, y]);
-                        }
-                    }
-                }
-            }
+
             log.Info("L2World: WorldRegion grid (" + REGIONS_X + " by " + REGIONS_Y + ") is now setted up.");
         }
 
@@ -144,7 +131,7 @@ namespace L2dotNET.GameService.World
 
         private static bool validRegion(int x, int y)
         {
-            return (x >= 0 && x <= REGIONS_X && y >= 0 && y <= REGIONS_Y);
+            return ((x >= 0) && (x <= REGIONS_X) && (y >= 0) && (y <= REGIONS_Y));
         }
 
         public L2WorldRegion GetRegion(Location point)

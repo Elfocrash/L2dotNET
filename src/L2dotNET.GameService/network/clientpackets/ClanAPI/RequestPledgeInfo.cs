@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
     {
         public RequestPledgeInfo(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _clanId;

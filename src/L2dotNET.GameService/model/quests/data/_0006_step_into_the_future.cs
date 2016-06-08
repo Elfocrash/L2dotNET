@@ -19,18 +19,16 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 6;
             questName = "Step into the Future";
             startNpc = rapunzel;
-            talkNpcs = new int[] { startNpc, baul, sir_collin_windawood };
-            actItems = new int[] { q_letter_paulo };
+            talkNpcs = new[] { startNpc, baul, sir_collin_windawood };
+            actItems = new[] { q_letter_paulo };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
         {
-            if (player.BaseClass.ClassId.ClassRace == ClassRace.HUMAN && player.Level >= 3)
+            if ((player.BaseClass.ClassId.ClassRace == ClassRace.HUMAN) && (player.Level >= 3))
                 player.ShowHtm("rapunzel_q0006_0101.htm", npc, questId);
             else
-            {
                 player.ShowHtm("rapunzel_q0006_0102.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -43,13 +41,13 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (reply == 1 && npcId == baul)
+            if ((reply == 1) && (npcId == baul))
             {
                 player.addItem(q_letter_paulo, 1);
                 htmltext = "baul_q0006_0201.htm";
                 player.changeQuestStage(questId, 2);
             }
-            else if (reply == 1 && npcId == sir_collin_windawood)
+            else if ((reply == 1) && (npcId == sir_collin_windawood))
             {
                 if (player.hasItem(q_letter_paulo))
                 {
@@ -60,7 +58,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                 else
                     htmltext = "sir_collin_windawood_q0006_0302.htm";
             }
-            else if (reply == 3 && npcId == rapunzel)
+            else if ((reply == 3) && (npcId == rapunzel))
             {
                 htmltext = "rapunzel_q0006_0401.htm";
                 player.addItem(escape_scroll_giran, 1);
@@ -87,6 +85,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "rapunzel_q0006_0301.htm";
                             break;
                     }
+
                     break;
                 case baul:
                     switch (cond)
@@ -99,6 +98,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                                 htmltext = "baul_q0006_0202.htm";
                             break;
                     }
+
                     break;
                 case sir_collin_windawood:
                     switch (cond)
@@ -113,6 +113,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "sir_collin_windawood_q0006_0303.htm";
                             break;
                     }
+
                     break;
             }
 

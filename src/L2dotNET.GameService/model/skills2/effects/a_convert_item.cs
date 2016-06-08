@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             if (player != null)
             {
                 L2Item item = player.getWeaponItem();
-                if (item == null || !ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemID))
+                if ((item == null) || !ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemID))
                 {
                     caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
                     return nothing;

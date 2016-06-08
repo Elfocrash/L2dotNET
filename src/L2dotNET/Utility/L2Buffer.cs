@@ -19,7 +19,9 @@ namespace L2dotNET.Utility
         public static unsafe byte[] Copy(byte[] source, int srcOffset, byte[] destination, int destOffset, int size)
         {
             fixed (byte* src = source, dst = destination)
+            {
                 Copy(src, srcOffset, dst, destOffset, size);
+            }
 
             return destination;
         }
@@ -205,7 +207,7 @@ namespace L2dotNET.Utility
         }
 
         /// <summary>
-        /// Replaces part of buffer with replacement buffer. 
+        /// Replaces part of buffer with replacement buffer.
         /// </summary>
         /// <param name="buffer">Destination buffer.</param>
         /// <param name="index">Destination replacement size.</param>
@@ -257,11 +259,11 @@ namespace L2dotNET.Utility
 
             while (index < buffer.Length)
             {
-                for (i = 0; i < 16 && index + i < buffer.Length; i++)
+                for (i = 0; (i < 16) && (index + i < buffer.Length); i++)
                 {
                     hex += buffer[index + i].ToString("x2") + " ";
 
-                    if (buffer[i + index] > 31 && buffer[i + index] < 127)
+                    if ((buffer[i + index] > 31) && (buffer[i + index] < 127))
                         data += (char)buffer[i + index];
                     else
                         data += ".";
@@ -293,12 +295,12 @@ namespace L2dotNET.Utility
         {
             bytesCount = srcOffset + bytesCount;
 
-            while (srcOffset < bytesCount && src[srcOffset] != 0)
+            while ((srcOffset < bytesCount) && (src[srcOffset] != 0))
                 dst += (char)src[srcOffset++];
         }
 
         /// <summary>
-        /// Converts <see cref="byte"/> values array to <see cref="char"/> values array (<see cref="string"/>). 
+        /// Converts <see cref="byte"/> values array to <see cref="char"/> values array (<see cref="string"/>).
         /// </summary>
         /// <param name="src">Source <see cref="byte"/> values buffer.</param>
         /// <param name="srcOffset">Source buffer offset.</param>
@@ -307,7 +309,7 @@ namespace L2dotNET.Utility
         {
             string dst = string.Empty;
 
-            while (src[srcOffset] != 0 && srcOffset + sizeof(char) < maxLength)
+            while ((src[srcOffset] != 0) && (srcOffset + sizeof(char) < maxLength))
             {
                 dst += (char)src[srcOffset];
                 srcOffset += sizeof(char);
@@ -330,7 +332,7 @@ namespace L2dotNET.Utility
         /// <returns>Copied array of generic values.</returns>
         public static U[] Copy<U>(U[] source, long srcOffset, U[] destination, long dstOffset, long length)
         {
-            if (length > source.Length - srcOffset || length > destination.Length - dstOffset)
+            if ((length > source.Length - srcOffset) || (length > destination.Length - dstOffset))
                 throw new InvalidOperationException();
 
             length += srcOffset;

@@ -37,9 +37,7 @@ namespace L2dotNET.GameService.Commands.Admin
                 }
 
                 if (avail.ContainsKey(e.id))
-                {
                     continue;
-                }
 
                 if (target._skills.ContainsKey(e.id))
                 {
@@ -76,7 +74,7 @@ namespace L2dotNET.GameService.Commands.Admin
             target.sendPacket(new AcquireSkillList(0, target));
 
             target.updateSkillList();
-            target.sendMessage("gor all skills [" + skills.skills.Count + "][" + avail.Count + "] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id.ToString());
+            target.sendMessage("gor all skills [" + skills.skills.Count + "][" + avail.Count + "] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id);
         }
     }
 }

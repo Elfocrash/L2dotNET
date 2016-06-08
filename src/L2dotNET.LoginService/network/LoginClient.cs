@@ -121,7 +121,7 @@ namespace L2dotNET.LoginService.Network
             else
             {
                 Handle(new Packet(1, buff));
-                new System.Threading.Thread(read).Start();
+                new Thread(read).Start();
             }
         }
 

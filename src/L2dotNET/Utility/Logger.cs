@@ -161,7 +161,7 @@ namespace L2dotNET.Utility
             StringBuilder m_StrBuilder = new StringBuilder();
             m_StrBuilder.Append($"Date: {ServiceTime.CurrentTime}\r\n");
             m_StrBuilder.Append($"OS: {Environment.OSVersion}\r\n");
-            m_StrBuilder.Append($"Environment version: {Environment.Version.ToString()}\r\n");
+            m_StrBuilder.Append($"Environment version: {Environment.Version}\r\n");
             m_StrBuilder.Append($"Processors count: {Environment.ProcessorCount}\r\n");
             m_StrBuilder.Append($"Working set: {Environment.WorkingSet} bytes\r\n");
             m_StrBuilder.Append($"Domain name: {AppDomain.CurrentDomain.FriendlyName}\r\n");
@@ -176,7 +176,7 @@ namespace L2dotNET.Utility
         public static void Initialize()
         {
             EnsureDirectiries();
-            Output = new StreamWriter(Path.Combine(OutLogsDirectory, $"{ServiceTime.CurrentTime.ToString().Replace(":", "-").Replace("/", "-")}.log"), true);
+            Output = new StreamWriter(Path.Combine(OutLogsDirectory, $"{ServiceTime.CurrentTime.Replace(":", "-").Replace("/", "-")}.log"), true);
             WriteLine(Source.Logger, "Initialized.");
         }
 
@@ -226,7 +226,7 @@ namespace L2dotNET.Utility
         /// <param name="data"><see cref="System.Exception"/> data.</param>
         private static void WriteException(string type, string data)
         {
-            string fp = $"{type}-{ServiceTime.CurrentTime.ToString().Replace(":", "-").Replace("/", "-")}.ex";
+            string fp = $"{type}-{ServiceTime.CurrentTime.Replace(":", "-").Replace("/", "-")}.ex";
 
             using (StreamWriter sw = new StreamWriter(Path.Combine(ExceptionsLogDirectory, fp), true, Encoding.Unicode))
             {

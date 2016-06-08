@@ -13,14 +13,16 @@ namespace L2dotNET.Utility
         /// Native QueryPerformanceCounter function import.
         /// </summary>
         /// <param name="x">Output <paramref name="x"/> value.</param>
-        [DllImport("kernel32.dll"), SuppressUnmanagedCodeSecurity()]
+        [DllImport("kernel32.dll")]
+        [SuppressUnmanagedCodeSecurity]
         private static extern short QueryPerformanceCounter(ref long x);
 
         /// <summary>
         /// Native QueryPerformanceFrequency function import.
         /// </summary>
         /// <param name="x">Output <paramref name="x"/> value.</param>
-        [DllImport("kernel32.dll"), SuppressUnmanagedCodeSecurity()]
+        [DllImport("kernel32.dll")]
+        [SuppressUnmanagedCodeSecurity]
         private static extern short QueryPerformanceFrequency(ref long x);
 
         /// <summary>

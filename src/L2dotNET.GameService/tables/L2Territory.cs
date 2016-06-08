@@ -50,7 +50,7 @@ namespace L2dotNET.GameService.Tables
                 throw;
             }
 
-            territoryLoc.Add(new int[] { x, y, zmin, zmax });
+            territoryLoc.Add(new[] { x, y, zmin, zmax });
         }
 
         public void InitZone()
@@ -86,7 +86,7 @@ namespace L2dotNET.GameService.Tables
                 int rndy = rnd.Next(territory.minY, territory.maxY);
 
                 if (territory.isInsideZone(rndx, rndy))
-                    return new int[] { rndx, rndy, territory.getHighZ() };
+                    return new[] { rndx, rndy, territory.getHighZ() };
             }
 
             log.Error("getSpawnLocation failed after 400 tries. omg!");

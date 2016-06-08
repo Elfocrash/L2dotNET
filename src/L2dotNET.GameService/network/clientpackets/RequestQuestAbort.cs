@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestQuestAbort(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _questId;
@@ -31,9 +31,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 foreach (int id in qi._template.actItems)
-                {
                     player.Inventory.destroyItemAll(id, true, false);
-                }
 
                 player.sendMessage("Quest " + qi._template.questName + " aborted.");
                 player.stopQuest(qi, true);

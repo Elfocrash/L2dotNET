@@ -15,8 +15,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 19;
             questName = "Go To The Pastureland";
             startNpc = trader_vladimir;
-            talkNpcs = new int[] { startNpc, beast_herder_tunatun };
-            actItems = new int[] { q_youngmeat_of_beast };
+            talkNpcs = new[] { startNpc, beast_herder_tunatun };
+            actItems = new[] { q_youngmeat_of_beast };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
@@ -24,9 +24,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (player.Level >= 63)
                 player.ShowHtm("trader_vladimir_q0019_0101.htm", npc);
             else
-            {
                 player.ShowHtm("trader_vladimir_q0019_0103.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -54,9 +52,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                     if (player.hasItem(q_youngmeat_of_beast))
                         htmltext = "beast_herder_tunatun_q0019_0101.htm";
                     else
-                    {
                         htmltext = "beast_herder_tunatun_q0019_0202.htm";
-                    }
                     break;
             }
 

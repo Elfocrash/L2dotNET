@@ -36,7 +36,7 @@ namespace L2dotNET.LoginService
             catch (SocketException ex)
             {
                 log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
-                log.Info($"Press ENTER to exit...");
+                log.Info("Press ENTER to exit...");
                 Console.Read();
                 Environment.Exit(0);
             }

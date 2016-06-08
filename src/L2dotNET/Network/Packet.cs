@@ -60,7 +60,9 @@ namespace L2dotNET.Network
             ValidateBufferSize(sizeof(byte));
 
             fixed (byte* buf = m_Buffer)
+            {
                 *(buf + m_Offset++) = v;
+            }
         }
 
         /// <summary>
@@ -95,7 +97,9 @@ namespace L2dotNET.Network
             ValidateBufferSize(sizeof(short));
 
             fixed (byte* buf = m_Buffer)
+            {
                 *((short*)(buf + m_Offset)) = v;
+            }
 
             m_Offset += sizeof(short);
         }
@@ -112,7 +116,9 @@ namespace L2dotNET.Network
 
             fixed (byte* buf = m_Buffer)
                 fixed (short* w = v)
+                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                }
         }
 
         /// <summary>
@@ -124,7 +130,9 @@ namespace L2dotNET.Network
             ValidateBufferSize(sizeof(int));
 
             fixed (byte* buf = m_Buffer)
+            {
                 *(int*)(buf + m_Offset) = v;
+            }
 
             m_Offset += sizeof(int);
         }
@@ -141,7 +149,9 @@ namespace L2dotNET.Network
 
             fixed (byte* buf = m_Buffer)
                 fixed (int* w = v)
+                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                }
         }
 
         /// <summary>
@@ -153,7 +163,9 @@ namespace L2dotNET.Network
             ValidateBufferSize(sizeof(double));
 
             fixed (byte* buf = m_Buffer)
+            {
                 *(double*)(buf + m_Offset) = v;
+            }
 
             m_Offset += sizeof(double);
         }
@@ -170,7 +182,9 @@ namespace L2dotNET.Network
 
             fixed (byte* buf = m_Buffer)
                 fixed (double* w = v)
+                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                }
         }
 
         /// <summary>
@@ -182,7 +196,9 @@ namespace L2dotNET.Network
             ValidateBufferSize(sizeof(long));
 
             fixed (byte* buf = m_Buffer)
+            {
                 *((long*)(buf + m_Offset)) = v;
+            }
 
             m_Offset += sizeof(long);
         }
@@ -199,7 +215,9 @@ namespace L2dotNET.Network
 
             fixed (byte* buf = m_Buffer)
                 fixed (long* w = v)
+                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                }
         }
 
         /// <summary>
@@ -215,7 +233,9 @@ namespace L2dotNET.Network
 
             fixed (byte* buf = m_Buffer)
                 fixed (char* w = s)
+                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                }
         }
 
         /// <summary>
@@ -235,7 +255,9 @@ namespace L2dotNET.Network
 
             fixed (byte* buf = m_Buffer)
                 fixed (char* w = v)
+                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref m_Offset);
+                }
         }
 
         /// <summary>
@@ -276,14 +298,16 @@ namespace L2dotNET.Network
             byte[] dest = new byte[length];
 
             fixed (byte* buf = m_Buffer, dst = dest)
+            {
                 L2Buffer.Copy(buf, length, dst, ref m_Offset);
+            }
             return dest;
         }
 
         public byte[] ReadByteArrayAlt(int length)
         {
             byte[] result = new byte[length];
-            Array.Copy(this.GetBuffer(), m_Offset, result, 0, length);
+            Array.Copy(GetBuffer(), m_Offset, result, 0, length);
             m_Offset += length;
             return result;
         }

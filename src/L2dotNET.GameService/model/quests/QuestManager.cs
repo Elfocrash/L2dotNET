@@ -20,15 +20,11 @@ namespace L2dotNET.GameService.Model.Quests
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new QuestManager();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -42,9 +38,7 @@ namespace L2dotNET.GameService.Model.Quests
                 return;
 
             foreach (object obj in items)
-            {
                 register((QuestOrigin)obj);
-            }
 
             register(new _0003_will_the_seal_be_broken());
             register(new _0005_miners_favor());
@@ -115,15 +109,13 @@ namespace L2dotNET.GameService.Model.Quests
                 }
             }
 
-            if (!nullex && qlist.Count == 1)
+            if (!nullex && (qlist.Count == 1))
             {
                 foreach (object[] o in qlist)
-                {
                     if (((string)o[1]).Contains("(In Progress)"))
                         player.quest_Talk(npc, ((QuestOrigin)o[0]).questId);
                     else
                         ((QuestOrigin)o[0]).tryAccept(player, npc);
-                }
 
                 return;
             }
@@ -137,9 +129,7 @@ namespace L2dotNET.GameService.Model.Quests
             StringBuilder sb = new StringBuilder();
 
             foreach (object[] ur in qlist)
-            {
                 sb.Append((string)ur[1]);
-            }
 
             player.ShowHtmPlain(sb.ToString(), npc);
 

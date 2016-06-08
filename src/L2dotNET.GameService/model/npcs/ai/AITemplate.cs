@@ -25,6 +25,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         {
             if (parameters.ContainsKey(p))
                 return int.Parse(parameters[p]);
+
             return -1;
         }
 
@@ -35,6 +36,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
                 string[] str = parameters[p].Split('-');
                 return new[] { int.Parse(str[0]), int.Parse(str[1]) }; //;
             }
+
             return null;
         }
 

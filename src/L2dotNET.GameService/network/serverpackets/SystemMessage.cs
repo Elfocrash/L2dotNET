@@ -88,14 +88,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             if (obj is L2Player)
                 return AddPlayerName(((L2Player)obj).Name);
-            else if (obj is L2Npc)
+            if (obj is L2Npc)
                 return AddNpcName(((L2Npc)obj).NpcId);
-            else if (obj is L2Summon)
+            if (obj is L2Summon)
                 return AddNpcName(((L2Summon)obj).NpcId);
-            else if (obj is L2Item)
+            if (obj is L2Item)
                 return AddItemName(((L2Item)obj).Template.ItemID);
-            else
-                return AddString(obj.asString());
+
+            return AddString(obj.asString());
         }
 
         public void AddSysStr(int val)
@@ -4073,12 +4073,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
             PLEASE_WAIT_A_MOMENT = 2031,
 
             //Added (Missing?)
-            ///<summary>You can only register 16x12 pixel 256 color bmp files.</summary>            
+            ///<summary>You can only register 16x12 pixel 256 color bmp files.</summary>
             CAN_ONLY_REGISTER_16_12_PX_256_COLOR_BMP_FILES = 211,
-            ///<summary>Incorrect item.</summary>            
+            ///<summary>Incorrect item.</summary>
             INCORRECT_ITEM = 352,
 
-            //Other messages (Interlude+) being referenced in the project            
+            //Other messages (Interlude+) being referenced in the project
 
             ///<summary>You already polymorphed and cannot polymorph again.</summary>
             ALREADY_POLYMORPHED_CANNOT_POLYMORPH_AGAIN = 2058,
@@ -4140,7 +4140,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANNOT_USE_MY_TELEPORTS_WHILE_DEAD = 2354,
             ///<summary>You cannot use My Teleports underwater.</summary>
             CANNOT_USE_MY_TELEPORTS_UNDERWATER = 2356,
-            ///<summary>You have no space to save the teleport location.</summary>            
+            ///<summary>You have no space to save the teleport location.</summary>
             NO_SPACE_TO_SAVE_TELEPORT_LOCATION = 2358,
             ///<summary>You cannot teleport because you do not have a teleport item.</summary>
             CANNOT_TELEPORT_BECAUSE_DO_NOT_HAVE_TELEPORT_ITEM = 2359,
@@ -4175,7 +4175,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             //No description found
 
-            NOT_IMPLEMENTED_YET_2361 = 2361,
+            NOT_IMPLEMENTED_YET_2361 = 2361
         }
     }
 }

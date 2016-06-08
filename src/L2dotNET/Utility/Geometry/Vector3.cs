@@ -54,23 +54,23 @@ namespace L2dotNET.Utility.Geometry
 
         public Vector3(double x, double y, double z)
         {
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
+            X = x;
+            Y = y;
+            Z = z;
         }
 
         public Vector3(double value)
         {
-            this.X = value;
-            this.Y = value;
-            this.Z = value;
+            X = value;
+            Y = value;
+            Z = value;
         }
 
         public Vector3(Vector2 value, double z)
         {
-            this.X = value.X;
-            this.Y = value.Y;
-            this.Z = z;
+            X = value.X;
+            Y = value.Y;
+            Z = z;
         }
 
         #endregion Constructors
@@ -137,13 +137,13 @@ namespace L2dotNET.Utility.Geometry
         {
             double result;
             DistanceSquared(ref vector1, ref vector2, out result);
-            return (double)Math.Sqrt(result);
+            return Math.Sqrt(result);
         }
 
         public static void Distance(ref Vector3 value1, ref Vector3 value2, out double result)
         {
             DistanceSquared(ref value1, ref value2, out result);
-            result = (double)Math.Sqrt(result);
+            result = Math.Sqrt(result);
         }
 
         public static double DistanceSquared(Vector3 value1, Vector3 value2)
@@ -202,7 +202,7 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool Equals(object obj)
         {
-            return (obj is Vector3) && this == (Vector3)obj;
+            return (obj is Vector3) && (this == (Vector3)obj);
         }
 
         public bool Equals(Vector3 other)
@@ -212,7 +212,7 @@ namespace L2dotNET.Utility.Geometry
 
         public override int GetHashCode()
         {
-            return (int)(this.X + this.Y + this.Z);
+            return (int)(X + Y + Z);
         }
 
         public static Vector3 Hermite(Vector3 value1, Vector3 tangent1, Vector3 value2, Vector3 tangent2, double amount)
@@ -233,7 +233,7 @@ namespace L2dotNET.Utility.Geometry
         {
             double result;
             DistanceSquared(ref this, ref zero, out result);
-            return (double)Math.Sqrt(result);
+            return Math.Sqrt(result);
         }
 
         public double LengthSquared()
@@ -392,11 +392,11 @@ namespace L2dotNET.Utility.Geometry
         {
             StringBuilder sb = new StringBuilder(32);
             sb.Append("{X:");
-            sb.Append(this.X);
+            sb.Append(X);
             sb.Append(" Y:");
-            sb.Append(this.Y);
+            sb.Append(Y);
             sb.Append(" Z:");
-            sb.Append(this.Z);
+            sb.Append(Z);
             sb.Append("}");
             return sb.ToString();
         }
@@ -488,7 +488,7 @@ namespace L2dotNET.Utility.Geometry
 
         public static bool operator ==(Vector3 value1, Vector3 value2)
         {
-            return value1.X == value2.X && value1.Y == value2.Y && value1.Z == value2.Z;
+            return (value1.X == value2.X) && (value1.Y == value2.Y) && (value1.Z == value2.Z);
         }
 
         public static bool operator !=(Vector3 value1, Vector3 value2)

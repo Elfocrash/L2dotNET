@@ -14,8 +14,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             this._id = _id;
             this._level = _level;
-            this._spCost = sp;
-            this._mode = _skillType;
+            _spCost = sp;
+            _mode = _skillType;
         }
 
         protected internal override void write()

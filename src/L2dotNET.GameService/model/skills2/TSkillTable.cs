@@ -20,15 +20,11 @@ namespace L2dotNET.GameService.Model.Skills2
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new TSkillTable();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -221,6 +217,7 @@ namespace L2dotNET.GameService.Model.Skills2
                                             dlc.readS(f);
                                             break;
                                     }
+
                                     break;
                             }
                         }

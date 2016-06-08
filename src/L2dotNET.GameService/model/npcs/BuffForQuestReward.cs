@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public BuffForQuestReward(L2Npc npc, L2Character target, int skillId)
         {
             this.npc = npc;
-            this.cha = target;
+            cha = target;
             this.skillId = skillId;
             skill = TSkillTable.Instance.Get(skillId);
             cha.broadcastPacket(new MagicSkillUse(npc, cha, skill, skill.skill_hit_time));
@@ -25,7 +25,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         private void Run()
         {
-            if (cha == null || npc == null || skill == null)
+            if ((cha == null) || (npc == null) || (skill == null))
                 return;
 
             Thread.Sleep(skill.skill_hit_time);

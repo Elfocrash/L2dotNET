@@ -35,7 +35,7 @@ namespace L2dotNET.GameService.Model.Player.Transformation
             //player.MountedTemplate = NpcTable.Instance.GetNpcTemplate(npcId);
             player.broadcastUserInfo();
 
-            if (_skills != null && _skills.Count > 0)
+            if ((_skills != null) && (_skills.Count > 0))
             {
                 foreach (int[] s in _skills)
                 {
@@ -56,12 +56,10 @@ namespace L2dotNET.GameService.Model.Player.Transformation
             player.TransformID = 0;
             player.broadcastUserInfo();
 
-            if (_skills != null && _skills.Count > 0)
+            if ((_skills != null) && (_skills.Count > 0))
             {
                 foreach (int[] s in _skills)
-                {
                     player.removeSkill(s[0], false, false);
-                }
 
                 player.updateSkillList();
             }

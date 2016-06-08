@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 
         public RequestGetOffVehicle(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player.Boat == null || player.Boat.ObjID != boatId)
+            if ((player.Boat == null) || (player.Boat.ObjID != boatId))
             {
                 player.sendActionFailed();
                 return;

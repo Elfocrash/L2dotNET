@@ -33,7 +33,7 @@ namespace L2dotNET.Network
         /// <summary>
         /// Initializes new instance of <see cref="InnerNetworkClient"/> object.
         /// </summary>
-        public InnerNetworkClient() : base() { }
+        public InnerNetworkClient() { }
 
         /// <summary>
         /// Initializes new instance of <see cref="InnerNetworkClient"/> object.

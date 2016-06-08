@@ -18,14 +18,14 @@ namespace L2dotNET.Repositories
 
         public ServerRepository()
         {
-            this.db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
+            db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
         }
 
         public List<ServerModel> GetServerList()
         {
             try
             {
-                return this.db.Query<ServerModel>("select * from servers").ToList();
+                return db.Query<ServerModel>("select * from servers").ToList();
             }
             catch (MySqlException ex)
             {
@@ -38,7 +38,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return this.db.Query<int>("select obj_Id from characters").ToList();
+                return db.Query<int>("select obj_Id from characters").ToList();
             }
             catch (MySqlException ex)
             {
@@ -51,7 +51,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return this.db.Query<AnnouncementModel>("select * from announcements").ToList();
+                return db.Query<AnnouncementModel>("select * from announcements").ToList();
             }
             catch (MySqlException ex)
             {
@@ -64,12 +64,13 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return this.db.Query("SELECT 1").Any();
+                return db.Query("SELECT 1").Any();
             }
             catch (MySqlException ex)
             {
                 log.Error($"Method: {"CheckDatabaseQuery"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
             }
+
             return false;
         }
     }

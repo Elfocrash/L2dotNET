@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 508;
             questName = "A Clan's Reputation";
             startNpc = sir_eric_rodemai;
-            talkNpcs = new int[] { startNpc };
+            talkNpcs = new[] { startNpc };
             actItems = new int[] { };
         }
 
@@ -37,16 +37,14 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (player.ClanId > 0)
             {
                 L2Clan clan = player.Clan;
-                if (clan.LeaderID == player.ObjID && clan.Level >= 5)
+                if ((clan.LeaderID == player.ObjID) && (clan.Level >= 5))
                     fail = false;
             }
 
             if (fail)
                 player.ShowHtm("sir_eric_rodemai_q0508_02.htm", npc);
             else
-            {
                 player.ShowHtm("sir_eric_rodemai_q0508_01a.htm", npc, questId);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -60,7 +58,6 @@ namespace L2dotNET.GameService.Model.Quests.Data
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
             if (npcId == sir_eric_rodemai)
-            {
                 switch (reply)
                 {
                     case 2:
@@ -96,7 +93,6 @@ namespace L2dotNET.GameService.Model.Quests.Data
                         htmltext = "sir_eric_rodemai_q0508_07.htm";
                         break;
                 }
-            }
 
             player.ShowHtm(htmltext, npc);
         }
@@ -106,9 +102,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
             if (npcId == sir_eric_rodemai)
-            {
                 htmltext = "sir_eric_rodemai_q0508_01.htm";
-            }
 
             player.ShowHtm(htmltext, npc);
         }

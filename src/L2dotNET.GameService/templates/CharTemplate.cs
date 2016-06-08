@@ -45,10 +45,10 @@
             BaseHpReg = set.GetDouble("hpRegen", 1.5d);
             BaseMpReg = set.GetDouble("mpRegen", 0.9d);
 
-            BasePAtk = set.GetDouble("pAtk");
-            BaseMAtk = set.GetDouble("mAtk");
-            BasePDef = set.GetDouble("pDef");
-            BaseMDef = set.GetDouble("mDef");
+            BasePAtk = set.GetDouble("pAtk", 0);
+            BaseMAtk = set.GetDouble("mAtk", 0);
+            BasePDef = set.GetDouble("pDef", 0);
+            BaseMDef = set.GetDouble("mDef", 0);
 
             BasePAtkSpd = set.GetInt("atkSpd", 300);
 
@@ -57,8 +57,8 @@
             BaseWalkSpd = set.GetInt("walkSpd", 0);
             BaseRunSpd = set.GetInt("runSpd", 1);
 
-            CollisionRadius = set.GetInt("radius");
-            CollisionHeight = set.GetInt("height");
+            CollisionRadius = set.GetInt("radius", 0);
+            CollisionHeight = set.GetInt("height", 0);
         }
     }
 }

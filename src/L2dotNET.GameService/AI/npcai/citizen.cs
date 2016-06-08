@@ -52,7 +52,7 @@ namespace L2dotNET.GameService.AI.NpcAI
             if (HavePet == 1)
                 myself.CreateOnePrivateEx(silhouette, ai_type, myself.X + 10, myself.Y + 10, myself.Z);
 
-            if (MoveAroundSocial > 0 || MoveAroundSocial1 > 0)
+            if ((MoveAroundSocial > 0) || (MoveAroundSocial1 > 0))
             {
                 if (socialMoveTimer == null)
                 {
@@ -67,17 +67,15 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         private void SocialTask(object sender, ElapsedEventArgs e)
         {
-            if (myself.CurHP > myself.MaxHp * 0.400000 && !myself.Dead)
-            {
-                if (MoveAroundSocial > 0 && new Random().Next(100) < 40)
+            if ((myself.CurHP > myself.MaxHp * 0.400000) && !myself.Dead)
+                if ((MoveAroundSocial > 0) && (new Random().Next(100) < 40))
                 {
                     //myself::AddEffectActionDesire( myself.sm, 3, MoveAroundSocial * 1000 / 30, 50 );
                 }
-                else if (MoveAroundSocial1 > 0 && new Random().Next(100) < 40)
+                else if ((MoveAroundSocial1 > 0) && (new Random().Next(100) < 40))
                 {
                     //myself::AddEffectActionDesire( myself.sm, 2, MoveAroundSocial1 * 1000 / 30, 50 );
                 }
-            }
         }
 
         public override void TalkedReply(L2Player talker, int ask, int reply)
@@ -107,32 +105,28 @@ namespace L2dotNET.GameService.AI.NpcAI
                             talker.sendPacket(htm);
                             break;
                     }
+
                     break;
                 case -303:
                     switch (reply)
                     {
                         case 579:
-                            if (talker.Level > 40 && talker.Level < 46)
-                            {
+                            if ((talker.Level > 40) && (talker.Level < 46))
                                 MultiSell.Instance.ShowList(talker, myself, reply);
-                            }
                             break;
                         case 580:
-                            if (talker.Level >= 46 && talker.Level < 52)
-                            {
+                            if ((talker.Level >= 46) && (talker.Level < 52))
                                 MultiSell.Instance.ShowList(talker, myself, reply);
-                            }
                             break;
                         case 581:
                             if (talker.Level >= 52)
-                            {
                                 MultiSell.Instance.ShowList(talker, myself, reply);
-                            }
                             break;
                         default:
                             MultiSell.Instance.ShowList(talker, myself, reply);
                             break;
                     }
+
                     break;
                 case -503:
                     switch (reply)
@@ -144,17 +138,15 @@ namespace L2dotNET.GameService.AI.NpcAI
                             ShowVariationCancelWindow(talker);
                             break;
                     }
+
                     break;
                 case -601:
                     if (reply == 0)
-                    {
                         if (!talker.hasAllOfThisItems(8957, 8958, 8959))
                             talker.ShowHtm("welcomeback003.htm", myself);
                         else
                             talker.ShowHtm("welcomeback004.htm", myself);
-                    }
                     else
-                    {
                         switch (reply)
                         {
                             case 0:
@@ -166,13 +158,13 @@ namespace L2dotNET.GameService.AI.NpcAI
                             case 2:
                                 if (talker.Level < 20)
                                     MultiSell.Instance.ShowList(talker, myself, 583);
-                                else if (talker.Level >= 20 && talker.Level < 40)
+                                else if ((talker.Level >= 20) && (talker.Level < 40))
                                     MultiSell.Instance.ShowList(talker, myself, 584);
-                                else if (talker.Level >= 40 && talker.Level < 52)
+                                else if ((talker.Level >= 40) && (talker.Level < 52))
                                     MultiSell.Instance.ShowList(talker, myself, 585);
-                                else if (talker.Level >= 52 && talker.Level < 61)
+                                else if ((talker.Level >= 52) && (talker.Level < 61))
                                     MultiSell.Instance.ShowList(talker, myself, 586);
-                                else if (talker.Level >= 61 && talker.Level < 76)
+                                else if ((talker.Level >= 61) && (talker.Level < 76))
                                     MultiSell.Instance.ShowList(talker, myself, 587);
                                 else if (talker.Level >= 76)
                                     MultiSell.Instance.ShowList(talker, myself, 588);
@@ -180,13 +172,13 @@ namespace L2dotNET.GameService.AI.NpcAI
                             case 3:
                                 if (talker.Level < 20)
                                     MultiSell.Instance.ShowList(talker, myself, 589);
-                                else if (talker.Level >= 20 && talker.Level < 40)
+                                else if ((talker.Level >= 20) && (talker.Level < 40))
                                     MultiSell.Instance.ShowList(talker, myself, 590);
-                                else if (talker.Level >= 40 && talker.Level < 52)
+                                else if ((talker.Level >= 40) && (talker.Level < 52))
                                     MultiSell.Instance.ShowList(talker, myself, 591);
-                                else if (talker.Level >= 52 && talker.Level < 61)
+                                else if ((talker.Level >= 52) && (talker.Level < 61))
                                     MultiSell.Instance.ShowList(talker, myself, 592);
-                                else if (talker.Level >= 61 && talker.Level < 76)
+                                else if ((talker.Level >= 61) && (talker.Level < 76))
                                     MultiSell.Instance.ShowList(talker, myself, 593);
                                 else if (talker.Level >= 76)
                                     MultiSell.Instance.ShowList(talker, myself, 594);
@@ -194,19 +186,19 @@ namespace L2dotNET.GameService.AI.NpcAI
                             case 4:
                                 if (talker.Level < 20)
                                     MultiSell.Instance.ShowList(talker, myself, 595);
-                                else if (talker.Level >= 20 && talker.Level < 40)
+                                else if ((talker.Level >= 20) && (talker.Level < 40))
                                     MultiSell.Instance.ShowList(talker, myself, 596);
-                                else if (talker.Level >= 40 && talker.Level < 52)
+                                else if ((talker.Level >= 40) && (talker.Level < 52))
                                     MultiSell.Instance.ShowList(talker, myself, 597);
-                                else if (talker.Level >= 52 && talker.Level < 61)
+                                else if ((talker.Level >= 52) && (talker.Level < 61))
                                     MultiSell.Instance.ShowList(talker, myself, 598);
-                                else if (talker.Level >= 61 && talker.Level < 76)
+                                else if ((talker.Level >= 61) && (talker.Level < 76))
                                     MultiSell.Instance.ShowList(talker, myself, 601);
                                 else if (talker.Level >= 76)
                                     MultiSell.Instance.ShowList(talker, myself, 600);
                                 break;
                         }
-                    }
+
                     break;
             }
         }

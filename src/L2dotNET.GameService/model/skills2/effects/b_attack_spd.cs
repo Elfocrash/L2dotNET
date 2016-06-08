@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
     {
         public override TEffectResult onStart(L2Character caster, L2Character target)
         {
-            double[] val = ((L2Character)target).CharacterStat.Apply(this);
+            target.CharacterStat.Apply(this);
 
             TEffectResult ter = new TEffectResult();
             ter.TotalUI = 1;
@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
         public override TEffectResult onEnd(L2Character caster, L2Character target)
         {
-            double[] val = ((L2Character)target).CharacterStat.Stop(this);
+            target.CharacterStat.Stop(this);
 
             TEffectResult ter = new TEffectResult();
             ter.TotalUI = 1;
