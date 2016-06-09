@@ -55,10 +55,8 @@ namespace L2dotNET.LoginService.Network.Crypt
 
         private bool veryfyChecksum(byte[] data, int offset, int size)
         {
-            if ((size & 3) != 0 || size <= 4)
-            {
+            if (((size & 3) != 0) || (size <= 4))
                 return false;
-            }
 
             long chksum = 0;
             int count = size - 4;
@@ -68,17 +66,17 @@ namespace L2dotNET.LoginService.Network.Crypt
             for (i = offset; i < count; i += 4)
             {
                 check = data[i] & 255;
-                check |= data[i + 1] << 8 & 65280L;
-                check |= data[i + 2] << 0x10 & 16711680L;
-                check |= data[i + 3] << 0x18 & 4278190080L;
+                check |= (data[i + 1] << 8) & 65280L;
+                check |= (data[i + 2] << 0x10) & 16711680L;
+                check |= (data[i + 3] << 0x18) & 4278190080L;
 
                 chksum ^= check;
             }
 
             check = data[i] & 255;
-            check |= data[i + 1] << 8 & 65280L;
-            check |= data[i + 2] << 0x10 & 16711680L;
-            check |= data[i + 3] << 0x18 & 4278190080L;
+            check |= (data[i + 1] << 8) & 65280L;
+            check |= (data[i + 2] << 0x10) & 16711680L;
+            check |= (data[i + 3] << 0x18) & 4278190080L;
 
             return chksum == 0;
         }
@@ -93,22 +91,22 @@ namespace L2dotNET.LoginService.Network.Crypt
             for (i = offset; i < count; i += 4)
             {
                 ecx = raw[i] & 0xff;
-                ecx |= raw[i + 1] << 0x08 & 0xff00L;
-                ecx |= raw[i + 2] << 0x10 & 0xff0000L;
-                ecx |= raw[i + 3] << 0x18 & 0xff000000L;
+                ecx |= (raw[i + 1] << 0x08) & 0xff00L;
+                ecx |= (raw[i + 2] << 0x10) & 0xff0000L;
+                ecx |= (raw[i + 3] << 0x18) & 0xff000000L;
 
                 chksum ^= ecx;
             }
 
             ecx = raw[i] & 0xff;
-            ecx |= raw[i + 1] << 0x08 & 0xff00L;
-            ecx |= raw[i + 2] << 0x10 & 0xff0000L;
-            ecx |= raw[i + 3] << 0x18 & 0xff000000L;
+            ecx |= (raw[i + 1] << 0x08) & 0xff00L;
+            ecx |= (raw[i + 2] << 0x10) & 0xff0000L;
+            ecx |= (raw[i + 3] << 0x18) & 0xff000000L;
 
             raw[i] = (byte)(chksum & 0xff);
-            raw[i + 1] = (byte)(chksum >> 0x08 & 0xff);
-            raw[i + 2] = (byte)(chksum >> 0x10 & 0xff);
-            raw[i + 3] = (byte)(chksum >> 0x18 & 0xff);
+            raw[i + 1] = (byte)((chksum >> 0x08) & 0xff);
+            raw[i + 2] = (byte)((chksum >> 0x10) & 0xff);
+            raw[i + 3] = (byte)((chksum >> 0x18) & 0xff);
         }
 
         public static void encXORPass(byte[] raw, int offset, int size, int key)
@@ -130,15 +128,15 @@ namespace L2dotNET.LoginService.Network.Crypt
                 edx ^= ecx;
 
                 raw[pos++] = (byte)(edx & 0xFF);
-                raw[pos++] = (byte)(edx >> 8 & 0xFF);
-                raw[pos++] = (byte)(edx >> 16 & 0xFF);
-                raw[pos++] = (byte)(edx >> 24 & 0xFF);
+                raw[pos++] = (byte)((edx >> 8) & 0xFF);
+                raw[pos++] = (byte)((edx >> 16) & 0xFF);
+                raw[pos++] = (byte)((edx >> 24) & 0xFF);
             }
 
             raw[pos++] = (byte)(ecx & 0xFF);
-            raw[pos++] = (byte)(ecx >> 8 & 0xFF);
-            raw[pos++] = (byte)(ecx >> 16 & 0xFF);
-            raw[pos++] = (byte)(ecx >> 24 & 0xFF);
+            raw[pos++] = (byte)((ecx >> 8) & 0xFF);
+            raw[pos++] = (byte)((ecx >> 16) & 0xFF);
+            raw[pos++] = (byte)((ecx >> 24) & 0xFF);
         }
     }
 }

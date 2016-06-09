@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
         {
             _enabled = Template.DefaultStatus;
 
-            if (_enabled && Template._unit_tick > 0)
+            if (_enabled && (Template._unit_tick > 0))
                 startTimer();
         }
 
@@ -28,7 +28,6 @@ namespace L2dotNET.GameService.Model.Zones.Classes
                 return;
 
             foreach (L2Object o in ObjectsInside.Values)
-            {
                 if (o is L2Player)
                 {
                     if (Template._target == ZoneTemplate.ZoneTarget.npc)
@@ -43,7 +42,6 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
                     ((L2Warrior)o).reduceHpArea(Template._damage_on_hp, Template._message_no);
                 }
-            }
         }
 
         public override void onEnter(L2Object obj)

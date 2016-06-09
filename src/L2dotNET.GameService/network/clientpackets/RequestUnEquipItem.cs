@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestUnEquipItem(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int slotBitType;

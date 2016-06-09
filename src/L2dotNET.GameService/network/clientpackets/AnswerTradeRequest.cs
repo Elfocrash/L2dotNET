@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public AnswerTradeRequest(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -36,13 +36,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (response != 0 && player.requester.TradeState != 1)
+            if ((response != 0) && (player.requester.TradeState != 1))
                 response = 0;
 
-            if (response != 0 && player.EnchantState != 0)
+            if ((response != 0) && (player.EnchantState != 0))
                 response = 0;
 
-            if (response != 0 && !Calcs.checkIfInRange(150, player, player.requester, true))
+            if ((response != 0) && !Calcs.checkIfInRange(150, player, player.requester, true))
                 response = 0;
 
             switch (response)

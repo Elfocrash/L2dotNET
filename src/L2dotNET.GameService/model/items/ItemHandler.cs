@@ -19,15 +19,11 @@ namespace L2dotNET.GameService.Model.Items
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new ItemHandler();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -51,13 +47,13 @@ namespace L2dotNET.GameService.Model.Items
                 items[item.Template.ItemID].Use(character, item);
                 return true;
             }
-            else
-                return false;
+
+            return false;
         }
 
         public ItemHandler() { }
 
-        private short effects = 0;
+        private short effects;
 
         private void register(ItemEffect effect)
         {
@@ -73,9 +69,7 @@ namespace L2dotNET.GameService.Model.Items
             XElement ex = xml.Element("list");
 
             if (ex != null)
-            {
                 foreach (XElement m in ex.Elements())
-                {
                     if (m.Name == "item")
                     {
                         int id = Convert.ToInt32(m.Attribute("id").Value);
@@ -123,8 +117,6 @@ namespace L2dotNET.GameService.Model.Items
 
                         items.Add(id, ih);
                     }
-                }
-            }
         }
     }
 }

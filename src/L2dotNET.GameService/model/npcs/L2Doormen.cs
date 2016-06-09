@@ -57,6 +57,7 @@ namespace L2dotNET.GameService.Model.Npcs
                             player.sendPacket(new NpcHtmlMessage(player, "AgitJanitorAfterDoorClose.htm", ObjID));
                             break;
                     }
+
                     break;
             }
         }

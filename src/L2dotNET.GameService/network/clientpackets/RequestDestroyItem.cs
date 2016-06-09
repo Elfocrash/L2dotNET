@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestDestroyItem(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int sID;
@@ -46,7 +46,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (item.Template.can_equip_hero == 1 && item.Template.Type == ItemTemplate.L2ItemType.weapon)
+            if ((item.Template.can_equip_hero == 1) && (item.Template.Type == ItemTemplate.L2ItemType.weapon))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.HERO_WEAPONS_CANT_DESTROYED);
                 player.sendActionFailed();

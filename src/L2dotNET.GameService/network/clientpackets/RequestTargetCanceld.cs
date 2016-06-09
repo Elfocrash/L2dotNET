@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestTargetCanceld(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private short _unselect;
@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (_unselect == 0 && player.isCastingNow())
+            if ((_unselect == 0) && player.isCastingNow())
             {
                 player.abortCast();
                 return;

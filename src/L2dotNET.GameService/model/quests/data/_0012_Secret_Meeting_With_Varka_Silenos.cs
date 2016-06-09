@@ -16,8 +16,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 12;
             questName = "Secret Meeting With Varka Silenos";
             startNpc = guard_cadmon;
-            talkNpcs = new int[] { startNpc, trader_helmut, herald_naran };
-            actItems = new int[] { q_cargo_for_barka };
+            talkNpcs = new[] { startNpc, trader_helmut, herald_naran };
+            actItems = new[] { q_cargo_for_barka };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
@@ -25,9 +25,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (player.Level >= 74)
                 player.ShowHtm("guard_cadmon_q0012_0101.htm", npc);
             else
-            {
                 player.ShowHtm("guard_cadmon_q0012_0103.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -54,6 +52,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "guard_cadmon_q0012_0105.htm";
                             break;
                     }
+
                     break;
                 case trader_helmut:
                     switch (cond)
@@ -65,6 +64,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "trader_helmut_q0012_0202.htm";
                             break;
                     }
+
                     break;
                 case herald_naran:
                     switch (cond)
@@ -74,6 +74,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                                 htmltext = "herald_naran_q0012_0201.htm";
                             break;
                     }
+
                     break;
             }
 

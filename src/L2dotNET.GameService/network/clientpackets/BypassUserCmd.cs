@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public BypassUserCmd(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _command;
@@ -36,7 +36,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     int x = (player.X >> 15) + 9 + 8;
                     int y = (player.Y >> 15) + 10 + 11;
                     player.sendMessage($"Current loc is X:{player.X} Y:{player.Y} Z:{player.Z}");
-                    player.teleport(26807, 41123, -3622);
                     player.BroadcastUserInfo(); //for debug reasons
                     break;
                 case 52: // /unstuck

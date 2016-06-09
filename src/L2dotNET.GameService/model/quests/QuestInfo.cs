@@ -2,7 +2,7 @@
 {
     public class QuestInfo
     {
-        public bool completed = false;
+        public bool completed;
         public QuestOrigin _template;
         public int id;
         public int stage;
@@ -22,9 +22,7 @@
             completed = fin == 1;
 
             if (fin == 0)
-            {
                 _template = QuestManager.Instance._quests[id];
-            }
         }
     }
 }

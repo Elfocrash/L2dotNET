@@ -23,15 +23,11 @@ namespace L2dotNET.LoginService
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new PreReqValidation();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -43,8 +39,8 @@ namespace L2dotNET.LoginService
         {
             if (!checkService.PreCheckRepository())
             {
-                log.Warn($"Some checks have failed. Please correct the errors and try again.");
-                log.Info($"Press ENTER to exit...");
+                log.Warn("Some checks have failed. Please correct the errors and try again.");
+                log.Info("Press ENTER to exit...");
                 Console.Read();
                 Environment.Exit(0);
             }

@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public ValidatePosition(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private const int SYNCTYPE = 1;
@@ -30,58 +30,35 @@ namespace L2dotNET.GameService.Network.Clientpackets
         public override void run()
         {
             L2Player player = getClient().CurrentPlayer;
-            string prevReg = player.CurrentRegion;
+            //string prevReg = player.CurrentRegion;
 
             int realX = player.X;
             int realY = player.Y;
-            int realZ = player.Z;
+            //int realZ = player.Z;
 
-            int dx,
-                dy,
-                dz;
-            double diffSq;
-
-            dx = _x - realX;
-            dy = _y - realY;
-            dz = _z - realZ;
-            diffSq = (dx * dx + dy * dy);
+            int dx = _x - realX;
+            int dy = _y - realY;
+            //int dz = _z - realZ;
+            double diffSq = (dx * dx + dy * dy);
 
             if (diffSq < 360000)
             {
-                if (SYNCTYPE == 1)
-                {
-                    if (!player.isMoving())
+                if (!player.isMoving())
+                    if (diffSq < 2500)
                     {
-                        if (diffSq < 2500)
-                        {
-                            player.X = realX;
-                            player.Y = realY;
-                            player.Z = _z;
-                        }
-                        else
-                        {
-                            player.X = _x;
-                            player.Y = _y;
-                            player.Z = _z;
-                        }
+                        player.X = realX;
+                        player.Y = realY;
+                        player.Z = _z;
                     }
-                    Console.WriteLine($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}"); //debug
-                    player.BroadcastUserInfo();
-                    return;
-                }
-                //else if (diffSq > 250000 || Math.Abs(dz) > 200)
-                //{
-                //    if (Math.Abs(dz) > 200 && Math.Abs(dz) < 1500 && Math.Abs(_z - player.clientHeading) < 800)
-                //    {
-                //        player.X = realX;
-                //        player.Y = realY;
-                //        player.Z = _z;
-                //    }
-                //    else
-                //    {
-                //        player.sendPacket(new ValidateLocation(player));
-                //    }
-                //}
+                    else
+                    {
+                        player.X = _x;
+                        player.Y = _y;
+                        player.Z = _z;
+                    }
+                Console.WriteLine($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}"); //debug
+                player.BroadcastUserInfo();
+                return;
             }
 
             player.X = _x;
@@ -90,7 +67,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.Heading = _heading;
             Console.WriteLine($"Current position: X:{player.clientPosX}, Y:{player.clientPosY}, Z:{player.clientPosZ}"); //debug
             player.BroadcastUserInfo();
-            //player.validateVisibleObjects(_x, _y, true);         
+            //player.validateVisibleObjects(_x, _y, true);
         }
     }
 }

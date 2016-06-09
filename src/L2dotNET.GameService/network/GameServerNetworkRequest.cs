@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Network
 
         public void makeme(GameClient client, byte[] packet)
         {
-            this.Client = client;
+            Client = client;
             buffer = packet;
             position = 1;
             read();
@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.Network
 
         public void makeme(GameClient client, byte[] packet, byte plus)
         {
-            this.Client = client;
+            Client = client;
             buffer = packet;
             position = 1 + plus;
             read();
@@ -85,9 +85,7 @@ namespace L2dotNET.GameService.Network
                 result = System.Text.Encoding.Unicode.GetString(buffer, position, buffer.Length - position);
                 int idx = result.IndexOf((char)0x00);
                 if (idx != -1)
-                {
                     result = result.Substring(0, idx);
-                }
                 position += (result.Length * 2) + 2;
             }
             catch (Exception ex)

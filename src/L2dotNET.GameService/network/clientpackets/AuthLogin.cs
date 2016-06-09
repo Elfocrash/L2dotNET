@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public AuthLogin(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private string _loginName;

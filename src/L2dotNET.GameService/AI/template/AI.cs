@@ -42,15 +42,13 @@ namespace L2dotNET.GameService.AI.Template
         {
             if (dialog == null)
                 return "dialog.null";
-            else
-            {
-                return dialog.ContainsKey(fn) ? dialog[fn] : "dialog.not.found";
-            }
+
+            return dialog.ContainsKey(fn) ? dialog[fn] : "dialog.not.found";
         }
 
-        public const int @adena = 57;
+        public const int adena = 57;
 
-        public const string @summon_npc_group = "@summon_npc_group";
+        public const string summon_npc_group = "@summon_npc_group";
 
         public void AddAttackDesire(L2Character target, int rate) { }
     }

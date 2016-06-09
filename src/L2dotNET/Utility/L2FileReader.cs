@@ -21,7 +21,8 @@ namespace L2dotNET.Utility
         /// <param name="FlagsAndAttributes">Flags and attributes.</param>
         /// <param name="hTemplateFile">Template file.</param>
         /// <returns>True, if file was successfully opened, or created, otherwise false.</returns>
-        [DllImport("kernel32", SetLastError = true), SuppressUnmanagedCodeSecurity]
+        [DllImport("kernel32", SetLastError = true)]
+        [SuppressUnmanagedCodeSecurity]
         internal static extern unsafe IntPtr CreateFile(string FileName, uint DesiredAccess, uint ShareMode, uint SecurityAttributes, uint CreationDisposition, uint FlagsAndAttributes, int hTemplateFile);
 
         /// <summary>
@@ -33,7 +34,8 @@ namespace L2dotNET.Utility
         /// <param name="pNumberOfBytesRead">Count of bytes to read.</param>
         /// <param name="Overlapped">Overlapped value.</param>
         /// <returns>True, if file was succesfully readed, otherwise false.</returns>
-        [DllImport("kernel32", SetLastError = true), SuppressUnmanagedCodeSecurity]
+        [DllImport("kernel32", SetLastError = true)]
+        [SuppressUnmanagedCodeSecurity]
         internal static extern unsafe bool ReadFile(IntPtr hFile, void* pBuffer, int NumberOfBytesToRead, int* pNumberOfBytesRead, int Overlapped);
 
         /// <summary>
@@ -41,7 +43,8 @@ namespace L2dotNET.Utility
         /// </summary>
         /// <param name="hObject">File pointer to close.</param>
         /// <returns>True, if file was closed successfully, otherwise false.</returns>
-        [DllImport("kernel32", SetLastError = true), SuppressUnmanagedCodeSecurity]
+        [DllImport("kernel32", SetLastError = true)]
+        [SuppressUnmanagedCodeSecurity]
         internal static extern unsafe bool CloseHandle(IntPtr hObject);
 
         /// <summary>

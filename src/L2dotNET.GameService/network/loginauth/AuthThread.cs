@@ -19,15 +19,11 @@ namespace L2dotNET.GameService.Network.LoginAuth
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new AuthThread();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -36,7 +32,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
         protected TcpClient lclient;
         protected NetworkStream nstream;
         protected System.Timers.Timer ltimer;
-        public bool IsConnected = false;
+        public bool IsConnected;
         private byte[] buffer;
 
         public string version = "rcs #216";
@@ -68,7 +64,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
                 return;
             }
 
-            if (ltimer != null && ltimer.Enabled)
+            if ((ltimer != null) && ltimer.Enabled)
                 ltimer.Enabled = false;
 
             IsConnected = true;
@@ -152,7 +148,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
             nstream.Flush();
         }
 
-        private bool paused = false;
+        private bool paused;
 
         public void loginFail(string code)
         {
@@ -203,8 +199,8 @@ namespace L2dotNET.GameService.Network.LoginAuth
                 awaitingAccounts.Remove(p);
                 return ta;
             }
-            else
-                return null;
+
+            return null;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace L2dotNET.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            string folderPath = @"./data/xml/classes";
+            const string folderPath = @"./data/xml/classes";
             foreach (string file in Directory.EnumerateFiles(folderPath, "*.xml"))
             {
                 string contents = File.ReadAllText(file);
@@ -31,21 +31,18 @@ namespace L2dotNET.Tests
                     XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/class");
 
                     if (nodes != null)
-                    {
                         foreach (XmlNode node in nodes)
-                        {
                             if (node.Attributes != null)
                             {
                                 XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                                if (ownerElement != null && (node.Attributes != null && "class".Equals(ownerElement.Name)))
+                                if ((ownerElement != null) && ((node.Attributes != null) && "class".Equals(ownerElement.Name)))
                                 {
                                     XmlNamedNodeMap attrs = node.Attributes;
                                     ClassIds classId = (ClassIds)int.Parse(attrs.Item(0).Value);
                                     StatsSet set = new StatsSet();
 
                                     for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
-                                    {
-                                        if (cd.NextSibling != null && ("set".Equals(cd.NextSibling.Name) && cd.NextSibling != null))
+                                        if ((cd.NextSibling != null) && ("set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null)))
                                         {
                                             attrs = cd.NextSibling.Attributes;
                                             if (attrs != null)
@@ -57,14 +54,11 @@ namespace L2dotNET.Tests
                                         }
                                         else
                                             break;
-                                    }
                                     ////PcTemplate pcTempl = new PcTemplate(classId, set);
                                     ////templates.Add((int)pcTempl.ClassId, pcTempl);
                                     //System.Diagnostics.Trace.WriteLine("Added template for: " + pcTempl.ClassId);
                                 }
                             }
-                        }
-                    }
                 }
             }
         }

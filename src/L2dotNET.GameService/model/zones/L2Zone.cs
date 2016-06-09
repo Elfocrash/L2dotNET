@@ -38,24 +38,22 @@ namespace L2dotNET.GameService.Model.Zones
         public virtual void onExit(L2Object obj, bool cls)
         {
             if (cls)
-            {
                 lock (ObjectsInside)
                 {
                     if (ObjectsInside.ContainsKey(obj.ObjID))
                         ObjectsInside.Remove(obj.ObjID);
                 }
-            }
         }
 
         public virtual void onDie(L2Character obj, L2Character killer) { }
 
         public virtual void onKill(L2Character obj, L2Character target) { }
 
-        public System.Timers.Timer _action;
+        public Timer _action;
 
         public virtual void startTimer()
         {
-            _action = new System.Timers.Timer(Template._unit_tick * 1000);
+            _action = new Timer(Template._unit_tick * 1000);
             _action.Elapsed += new ElapsedEventHandler(onTimerAction);
             _action.Interval = Template._unit_tick * 1000;
             _action.Enabled = true;
@@ -85,9 +83,7 @@ namespace L2dotNET.GameService.Model.Zones
             NpcCenter.deleteMe();
 
             foreach (L2Object o in ObjectsInside.Values)
-            {
                 onExit(o, false);
-            }
 
             ObjectsInside.Clear();
 

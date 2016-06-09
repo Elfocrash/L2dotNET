@@ -34,7 +34,7 @@ namespace L2dotNET.GameService.Tools
 
         public static bool checkIfInRange(int range, L2Object obj1, L2Object obj2, bool includeZAxis)
         {
-            if (obj1 == null || obj2 == null)
+            if ((obj1 == null) || (obj2 == null))
                 return false;
             if (range == -1)
                 return true; // not limited
@@ -73,8 +73,8 @@ namespace L2dotNET.GameService.Tools
                 double dz = z1 - z2;
                 return Math.Sqrt((dx * dx) + (dy * dy) + (dz * dz));
             }
-            else
-                return Math.Sqrt((dx * dx) + (dy * dy));
+
+            return Math.Sqrt((dx * dx) + (dy * dy));
         }
 
         public static double calculateDistance(L2Object obj1, L2Object obj2, bool includeZAxis)

@@ -67,7 +67,7 @@ namespace L2dotNET.GameService.Managers
 
         public void ExecuteActionParams(int wait, int tickWait, params Action[] at)
         {
-            ExecuteActions(at, tickWait, wait, null);
+            ExecuteActions(at, tickWait, wait);
         }
 
         public void StopThread(object id)
@@ -80,7 +80,9 @@ namespace L2dotNET.GameService.Managers
         {
             if (thread.id != null)
                 lock (threads)
+                {
                     threads.Remove(thread.id);
+                }
 
             GC.Collect(0, GCCollectionMode.Forced);
             GC.WaitForPendingFinalizers();

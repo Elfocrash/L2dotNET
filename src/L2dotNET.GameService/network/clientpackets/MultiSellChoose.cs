@@ -24,7 +24,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public MultiSellChoose(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -69,7 +69,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             else
                 list = MultiSell.Instance.getList(_listId);
 
-            if (list == null || list.container.Count < _entryId)
+            if ((list == null) || (list.container.Count < _entryId))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
                 player.sendActionFailed();
@@ -80,7 +80,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             bool ok = true;
             foreach (MultiSellItem i in entry.take)
-            {
                 if (i.id > 0)
                 {
                     if (!player.hasItem(i.id, i.count))
@@ -99,7 +98,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
                             break;
                     }
                 }
-            }
 
             if (!ok)
             {
@@ -109,7 +107,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             foreach (MultiSellItem i in entry.take)
-            {
                 if (i.l2item != null)
                     player.Inventory.destroyItem(i.l2item, 1, true, true);
                 else
@@ -117,20 +114,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     if (i.id > 0)
                         player.Inventory.destroyItem(i.id, i.count, true, true);
                     else
-                    {
                         switch (i.id)
                         {
                             case -100: //pvppoint
                                 break;
                         }
-                    }
                 }
-            }
 
             foreach (MultiSellItem i in entry.give)
-            {
                 if (i.id > 0)
-                {
                     if (i.l2item != null)
                     {
                         L2Item item = new L2Item(i.template);
@@ -142,20 +134,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
                         if (i.template.isStackable())
                             player.Inventory.addItem(i.id, i.count * _amount, i.enchant, true, true);
                         else
-                        {
                             player.Inventory.addItem(i.id, 1, i.enchant, true, true);
-                        }
                     }
-                }
                 else
-                {
                     switch (i.id)
                     {
                         case -100: //pvppoint
                             break;
                     }
-                }
-            }
 
             player.sendSystemMessage(SystemMessage.SystemMessageId.SUCCESSFULLY_TRADED_WITH_NPC);
         }

@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public ProtocolVersion(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _protocol;
@@ -21,14 +21,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public override void run()
         {
-            if (_protocol != 746 && _protocol != 251)
+            if ((_protocol != 746) && (_protocol != 251))
             {
                 log.Error($"Protocol fail {_protocol}");
                 getClient().sendPacket(new KeyPacket(getClient(), 0));
                 getClient().termination();
                 return;
             }
-            else if (_protocol == -1)
+
+            if (_protocol == -1)
             {
                 log.Info($"Ping received {_protocol}");
                 getClient().sendPacket(new KeyPacket(getClient(), 0));

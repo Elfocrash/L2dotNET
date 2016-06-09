@@ -50,9 +50,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(player.DEX);
             writeD(player.WIT);
             for (int i = 0; i < 30; i++)
-            {
                 writeD(0x00);
-            }
+
             writeD(0x00); // c3 work
             writeD(0x00); // c3 work
 

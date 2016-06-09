@@ -19,18 +19,16 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 7;
             questName = "A Trip Begins";
             startNpc = mint;
-            talkNpcs = new int[] { startNpc, ariel, ozzy };
-            actItems = new int[] { q_recommendation_elf };
+            talkNpcs = new[] { startNpc, ariel, ozzy };
+            actItems = new[] { q_recommendation_elf };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
         {
-            if (player.BaseClass.ClassId.ClassRace == ClassRace.ELF && player.Level >= 3)
+            if ((player.BaseClass.ClassId.ClassRace == ClassRace.ELF) && (player.Level >= 3))
                 player.ShowHtm("mint_q0007_0101.htm", npc, questId);
             else
-            {
                 player.ShowHtm("mint_q0007_0102.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -43,13 +41,13 @@ namespace L2dotNET.GameService.Model.Quests.Data
         {
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
-            if (reply == 1 && npcId == ariel)
+            if ((reply == 1) && (npcId == ariel))
             {
                 player.addItem(q_recommendation_elf, 1);
                 player.changeQuestStage(questId, 2);
                 htmltext = "ariel_q0007_0201.htm";
             }
-            else if (reply == 1 && npcId == ozzy)
+            else if ((reply == 1) && (npcId == ozzy))
             {
                 if (player.hasItem(q_recommendation_elf))
                 {
@@ -58,7 +56,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                     player.changeQuestStage(questId, 3);
                 }
             }
-            else if (reply == 3 && npcId == mint)
+            else if ((reply == 3) && (npcId == mint))
             {
                 htmltext = "mint_q0007_0401.htm";
                 player.addItem(escape_scroll_giran, 1);
@@ -85,6 +83,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "mint_q0007_0301.htm";
                             break;
                     }
+
                     break;
                 case ariel:
                     switch (cond)
@@ -97,6 +96,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "ariel_q0007_0202.htm";
                             break;
                     }
+
                     break;
                 case ozzy:
                     switch (cond)
@@ -111,6 +111,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "ozzy_q0007_0303.htm";
                             break;
                     }
+
                     break;
             }
 

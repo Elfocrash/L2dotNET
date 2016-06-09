@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestAction(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int ServerID;

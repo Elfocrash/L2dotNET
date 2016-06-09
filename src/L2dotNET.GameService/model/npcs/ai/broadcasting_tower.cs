@@ -45,14 +45,10 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             string text = "";
 
             foreach (int[] d in data.Where(d => !ar.Contains(d[0])))
-            {
                 ar.Add(d[0]);
-            }
 
             foreach (int val in ar)
-            {
                 text += "<a action=\"bypass -h menu_select?ask=-2&reply=" + val + "\">&$" + val + ";</a><br1>";
-            }
 
             player.ShowHtmPlain(text, npc);
         }
@@ -74,7 +70,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         {
             int[] dx = data.FirstOrDefault(d => d[1] == reply);
 
-            if (dx != null && player.getAdena() < dx[2])
+            if ((dx != null) && (player.getAdena() < dx[2]))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                 player.sendActionFailed();
@@ -101,15 +97,11 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             string text = "&$650;<br>";
 
             foreach (int[] d in data)
-            {
                 if (d[0] == group)
                     ar.Add(d);
-            }
 
             foreach (int[] val in ar)
-            {
                 text += "<a action=\"bypass -h menu_select?ask=-3&reply=" + val[1] + "\">&$" + val[1] + ";</a><br1>";
-            }
 
             player.ShowHtmPlain(text, npc);
         }

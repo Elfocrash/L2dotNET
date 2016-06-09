@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public MoveBackwardToLocation(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _targetX;
@@ -62,8 +62,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             // player.sendMessage("can see: " + GeoData.getInstance().canSeeCoord(player, _targetX, _targetY, _targetZ, true));
 
-            if (player._obsx != -1)
-                player._obsx = -1;
+            player._obsx = -1;
 
             double dx = _targetX - _originX;
             double dy = _targetY - _originY;
@@ -73,6 +72,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.sendActionFailed();
                 return;
             }
+
             player.AICharacter.StopAutoAttack();
             player.MoveTo(_targetX, _targetY, _targetZ);
         }

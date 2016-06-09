@@ -18,15 +18,11 @@ namespace L2dotNET.LoginService.Managers
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new NetworkBlock();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -44,17 +40,17 @@ namespace L2dotNET.LoginService.Managers
                     if (line.Length == 0)
                         continue;
 
-                    if (line.StartsWith("//"))
+                    if (line.StartsWith("//", StringComparison.InvariantCultureIgnoreCase))
                         continue;
 
-                    if (line.StartsWith("d"))
+                    if (line.StartsWith("d", StringComparison.InvariantCultureIgnoreCase))
                     {
                         NB_interface i = new NB_interface();
                         i.directIp = line.Split(' ')[1];
                         i.forever = line.Split(' ')[2].Equals("0");
                         blocks.Add(i);
                     }
-                    else if (line.StartsWith("m"))
+                    else if (line.StartsWith("m", StringComparison.InvariantCultureIgnoreCase))
                     {
                         NB_interface i = new NB_interface();
                         i.mask = line.Split(' ')[1];
@@ -63,6 +59,7 @@ namespace L2dotNET.LoginService.Managers
                     }
                 }
             }
+
             log.Info($"NetworkBlock: {blocks.Count} blocks.");
         }
 
@@ -78,13 +75,9 @@ namespace L2dotNET.LoginService.Managers
                     {
                         if (nbi.forever)
                             return false;
-                        else
-                        {
-                            if (nbi.timeEnd.CompareTo(DateTime.Now) == 1)
-                            {
-                                return false;
-                            }
-                        }
+
+                        if (nbi.timeEnd.CompareTo(DateTime.Now) == 1)
+                            return false;
                     }
 
                 if (nbi.mask != null)
@@ -105,13 +98,11 @@ namespace L2dotNET.LoginService.Managers
                             byte n = byte.Parse(b[c].Split('/')[0]),
                                  x = byte.Parse(b[c].Split('/')[1]);
                             byte t = byte.Parse(a[c]);
-                            d[c] = t >= n && t <= x;
+                            d[c] = (t >= n) && (t <= x);
                         }
                     }
 
-                    byte cnt = 0;
-                    foreach (bool u in d.Where(u => u))
-                        cnt++;
+                    byte cnt = (byte)d.Count(u => u);
 
                     if (cnt >= 4)
                         return false;

@@ -75,7 +75,7 @@ namespace L2dotNET.Utility.Geometry
             bool b = (_BAx - dx) * (_CAy - _BAy) - (_CAx - _BAx) * (_BAy - dy) >= 0;
             bool c = (_CAx - dx) * (0 - _CAy) - (0 - _CAx) * (_CAy - dy) >= 0;
 
-            return a == b && b == c;
+            return (a == b) && (b == c);
         }
 
         public override bool IsInside(int x, int y, int z)
@@ -87,7 +87,7 @@ namespace L2dotNET.Utility.Geometry
             bool b = (_BAx - dx) * (_CAy - _BAy) - (_CAx - _BAx) * (_BAy - dy) >= 0;
             bool c = (_CAx - dx) * (0 - _CAy) - (0 - _CAx) * (_CAy - dy) >= 0;
 
-            return a == b && b == c;
+            return (a == b) && (b == c);
         }
     }
 }

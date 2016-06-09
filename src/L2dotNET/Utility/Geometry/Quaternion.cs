@@ -32,18 +32,18 @@ namespace L2dotNET.Utility.Geometry
 
         public Quaternion(double x, double y, double z, double w)
         {
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
-            this.W = w;
+            X = x;
+            Y = y;
+            Z = z;
+            W = w;
         }
 
         public Quaternion(Vector3 vectorPart, double scalarPart)
         {
-            this.X = vectorPart.X;
-            this.Y = vectorPart.Y;
-            this.Z = vectorPart.Z;
-            this.W = scalarPart;
+            X = vectorPart.X;
+            Y = vectorPart.Y;
+            Z = vectorPart.Z;
+            W = scalarPart;
         }
 
         public static Quaternion Identity { get; } = new Quaternion(0, 0, 0, 1);
@@ -115,9 +115,9 @@ namespace L2dotNET.Utility.Geometry
         //AÃ±adida por Syderis
         public void Conjugate()
         {
-            this.X = -this.X;
-            this.Y = -this.Y;
-            this.Z = -this.Z;
+            X = -X;
+            Y = -Y;
+            Z = -Z;
         }
 
         //AÃ±adida por Syderis
@@ -144,8 +144,8 @@ namespace L2dotNET.Utility.Geometry
         {
             Quaternion quaternion;
             double num2 = angle * 0.5f;
-            double num = (double)Math.Sin((double)num2);
-            double num3 = (double)Math.Cos((double)num2);
+            double num = Math.Sin(num2);
+            double num3 = Math.Cos(num2);
             quaternion.X = axis.X * num;
             quaternion.Y = axis.Y * num;
             quaternion.Z = axis.Z * num;
@@ -156,8 +156,8 @@ namespace L2dotNET.Utility.Geometry
         public static void CreateFromAxisAngle(ref Vector3 axis, double angle, out Quaternion result)
         {
             double num2 = angle * 0.5f;
-            double num = (double)Math.Sin((double)num2);
-            double num3 = (double)Math.Cos((double)num2);
+            double num = Math.Sin(num2);
+            double num3 = Math.Cos(num2);
             result.X = axis.X * num;
             result.Y = axis.Y * num;
             result.Z = axis.Z * num;
@@ -170,7 +170,7 @@ namespace L2dotNET.Utility.Geometry
             Quaternion quaternion = new Quaternion();
             if (num8 > 0f)
             {
-                double num = (double)Math.Sqrt((double)(num8 + 1f));
+                double num = Math.Sqrt((num8 + 1f));
                 quaternion.W = num * 0.5f;
                 num = 0.5f / num;
                 quaternion.X = (matrix.M23 - matrix.M32) * num;
@@ -178,9 +178,10 @@ namespace L2dotNET.Utility.Geometry
                 quaternion.Z = (matrix.M12 - matrix.M21) * num;
                 return quaternion;
             }
+
             if ((matrix.M11 >= matrix.M22) && (matrix.M11 >= matrix.M33))
             {
-                double num7 = (double)Math.Sqrt((double)(((1f + matrix.M11) - matrix.M22) - matrix.M33));
+                double num7 = Math.Sqrt((((1f + matrix.M11) - matrix.M22) - matrix.M33));
                 double num4 = 0.5f / num7;
                 quaternion.X = 0.5f * num7;
                 quaternion.Y = (matrix.M12 + matrix.M21) * num4;
@@ -188,9 +189,10 @@ namespace L2dotNET.Utility.Geometry
                 quaternion.W = (matrix.M23 - matrix.M32) * num4;
                 return quaternion;
             }
+
             if (matrix.M22 > matrix.M33)
             {
-                double num6 = (double)Math.Sqrt((double)(((1f + matrix.M22) - matrix.M11) - matrix.M33));
+                double num6 = Math.Sqrt((((1f + matrix.M22) - matrix.M11) - matrix.M33));
                 double num3 = 0.5f / num6;
                 quaternion.X = (matrix.M21 + matrix.M12) * num3;
                 quaternion.Y = 0.5f * num6;
@@ -198,7 +200,8 @@ namespace L2dotNET.Utility.Geometry
                 quaternion.W = (matrix.M31 - matrix.M13) * num3;
                 return quaternion;
             }
-            double num5 = (double)Math.Sqrt((double)(((1f + matrix.M33) - matrix.M11) - matrix.M22));
+
+            double num5 = Math.Sqrt((((1f + matrix.M33) - matrix.M11) - matrix.M22));
             double num2 = 0.5f / num5;
             quaternion.X = (matrix.M31 + matrix.M13) * num2;
             quaternion.Y = (matrix.M32 + matrix.M23) * num2;
@@ -213,7 +216,7 @@ namespace L2dotNET.Utility.Geometry
             double num8 = (matrix.M11 + matrix.M22) + matrix.M33;
             if (num8 > 0f)
             {
-                double num = (double)Math.Sqrt((double)(num8 + 1f));
+                double num = Math.Sqrt((num8 + 1f));
                 result.W = num * 0.5f;
                 num = 0.5f / num;
                 result.X = (matrix.M23 - matrix.M32) * num;
@@ -222,7 +225,7 @@ namespace L2dotNET.Utility.Geometry
             }
             else if ((matrix.M11 >= matrix.M22) && (matrix.M11 >= matrix.M33))
             {
-                double num7 = (double)Math.Sqrt((double)(((1f + matrix.M11) - matrix.M22) - matrix.M33));
+                double num7 = Math.Sqrt((((1f + matrix.M11) - matrix.M22) - matrix.M33));
                 double num4 = 0.5f / num7;
                 result.X = 0.5f * num7;
                 result.Y = (matrix.M12 + matrix.M21) * num4;
@@ -231,7 +234,7 @@ namespace L2dotNET.Utility.Geometry
             }
             else if (matrix.M22 > matrix.M33)
             {
-                double num6 = (double)Math.Sqrt((double)(((1f + matrix.M22) - matrix.M11) - matrix.M33));
+                double num6 = Math.Sqrt((((1f + matrix.M22) - matrix.M11) - matrix.M33));
                 double num3 = 0.5f / num6;
                 result.X = (matrix.M21 + matrix.M12) * num3;
                 result.Y = 0.5f * num6;
@@ -240,7 +243,7 @@ namespace L2dotNET.Utility.Geometry
             }
             else
             {
-                double num5 = (double)Math.Sqrt((double)(((1f + matrix.M33) - matrix.M11) - matrix.M22));
+                double num5 = Math.Sqrt((((1f + matrix.M33) - matrix.M11) - matrix.M22));
                 double num2 = 0.5f / num5;
                 result.X = (matrix.M31 + matrix.M13) * num2;
                 result.Y = (matrix.M32 + matrix.M23) * num2;
@@ -253,14 +256,14 @@ namespace L2dotNET.Utility.Geometry
         {
             Quaternion quaternion;
             double num9 = roll * 0.5f;
-            double num6 = (double)Math.Sin((double)num9);
-            double num5 = (double)Math.Cos((double)num9);
+            double num6 = Math.Sin(num9);
+            double num5 = Math.Cos(num9);
             double num8 = pitch * 0.5f;
-            double num4 = (double)Math.Sin((double)num8);
-            double num3 = (double)Math.Cos((double)num8);
+            double num4 = Math.Sin(num8);
+            double num3 = Math.Cos(num8);
             double num7 = yaw * 0.5f;
-            double num2 = (double)Math.Sin((double)num7);
-            double num = (double)Math.Cos((double)num7);
+            double num2 = Math.Sin(num7);
+            double num = Math.Cos(num7);
             quaternion.X = ((num * num4) * num5) + ((num2 * num3) * num6);
             quaternion.Y = ((num2 * num3) * num5) - ((num * num4) * num6);
             quaternion.Z = ((num * num3) * num6) - ((num2 * num4) * num5);
@@ -271,14 +274,14 @@ namespace L2dotNET.Utility.Geometry
         public static void CreateFromYawPitchRoll(double yaw, double pitch, double roll, out Quaternion result)
         {
             double num9 = roll * 0.5f;
-            double num6 = (double)Math.Sin((double)num9);
-            double num5 = (double)Math.Cos((double)num9);
+            double num6 = Math.Sin(num9);
+            double num5 = Math.Cos(num9);
             double num8 = pitch * 0.5f;
-            double num4 = (double)Math.Sin((double)num8);
-            double num3 = (double)Math.Cos((double)num8);
+            double num4 = Math.Sin(num8);
+            double num3 = Math.Cos(num8);
             double num7 = yaw * 0.5f;
-            double num2 = (double)Math.Sin((double)num7);
-            double num = (double)Math.Cos((double)num7);
+            double num2 = Math.Sin(num7);
+            double num = Math.Cos(num7);
             result.X = ((num * num4) * num5) + ((num2 * num3) * num6);
             result.Y = ((num2 * num3) * num5) - ((num * num4) * num6);
             result.Z = ((num * num3) * num6) - ((num2 * num4) * num5);
@@ -345,20 +348,18 @@ namespace L2dotNET.Utility.Geometry
         {
             bool flag = false;
             if (obj is Quaternion)
-            {
-                flag = this.Equals((Quaternion)obj);
-            }
+                flag = Equals((Quaternion)obj);
             return flag;
         }
 
         public bool Equals(Quaternion other)
         {
-            return ((((this.X == other.X) && (this.Y == other.Y)) && (this.Z == other.Z)) && (this.W == other.W));
+            return ((((X == other.X) && (Y == other.Y)) && (Z == other.Z)) && (W == other.W));
         }
 
         public override int GetHashCode()
         {
-            return (((this.X.GetHashCode() + this.Y.GetHashCode()) + this.Z.GetHashCode()) + this.W.GetHashCode());
+            return (((X.GetHashCode() + Y.GetHashCode()) + Z.GetHashCode()) + W.GetHashCode());
         }
 
         public static Quaternion Inverse(Quaternion quaternion)
@@ -385,13 +386,13 @@ namespace L2dotNET.Utility.Geometry
 
         public double Length()
         {
-            double num = (((this.X * this.X) + (this.Y * this.Y)) + (this.Z * this.Z)) + (this.W * this.W);
-            return (double)Math.Sqrt((double)num);
+            double num = (((X * X) + (Y * Y)) + (Z * Z)) + (W * W);
+            return Math.Sqrt(num);
         }
 
         public double LengthSquared()
         {
-            return ((((this.X * this.X) + (this.Y * this.Y)) + (this.Z * this.Z)) + (this.W * this.W));
+            return ((((X * X) + (Y * Y)) + (Z * Z)) + (W * W));
         }
 
         public static Quaternion Lerp(Quaternion quaternion1, Quaternion quaternion2, double amount)
@@ -415,7 +416,7 @@ namespace L2dotNET.Utility.Geometry
                 quaternion.W = (num2 * quaternion1.W) - (num * quaternion2.W);
             }
             double num4 = (((quaternion.X * quaternion.X) + (quaternion.Y * quaternion.Y)) + (quaternion.Z * quaternion.Z)) + (quaternion.W * quaternion.W);
-            double num3 = 1f / ((double)Math.Sqrt((double)num4));
+            double num3 = 1f / (Math.Sqrt(num4));
             quaternion.X *= num3;
             quaternion.Y *= num3;
             quaternion.Z *= num3;
@@ -443,7 +444,7 @@ namespace L2dotNET.Utility.Geometry
                 result.W = (num2 * quaternion1.W) - (num * quaternion2.W);
             }
             double num4 = (((result.X * result.X) + (result.Y * result.Y)) + (result.Z * result.Z)) + (result.W * result.W);
-            double num3 = 1f / ((double)Math.Sqrt((double)num4));
+            double num3 = 1f / (Math.Sqrt(num4));
             result.X *= num3;
             result.Y *= num3;
             result.Z *= num3;
@@ -470,10 +471,10 @@ namespace L2dotNET.Utility.Geometry
             }
             else
             {
-                double num5 = (double)Math.Acos((double)num4);
-                double num6 = (double)(1.0 / Math.Sin((double)num5));
-                num3 = ((double)Math.Sin((double)((1f - num) * num5))) * num6;
-                num2 = flag ? (((double)-Math.Sin((double)(num * num5))) * num6) : (((double)Math.Sin((double)(num * num5))) * num6);
+                double num5 = Math.Acos(num4);
+                double num6 = (1.0 / Math.Sin(num5));
+                num3 = (Math.Sin(((1f - num) * num5))) * num6;
+                num2 = flag ? ((-Math.Sin((num * num5))) * num6) : ((Math.Sin((num * num5))) * num6);
             }
             quaternion.X = (num3 * quaternion1.X) + (num2 * quaternion2.X);
             quaternion.Y = (num3 * quaternion1.Y) + (num2 * quaternion2.Y);
@@ -501,10 +502,10 @@ namespace L2dotNET.Utility.Geometry
             }
             else
             {
-                double num5 = (double)Math.Acos((double)num4);
-                double num6 = (double)(1.0 / Math.Sin((double)num5));
-                num3 = ((double)Math.Sin((double)((1f - num) * num5))) * num6;
-                num2 = flag ? (((double)-Math.Sin((double)(num * num5))) * num6) : (((double)Math.Sin((double)(num * num5))) * num6);
+                double num5 = Math.Acos(num4);
+                double num6 = (1.0 / Math.Sin(num5));
+                num3 = (Math.Sin(((1f - num) * num5))) * num6;
+                num2 = flag ? ((-Math.Sin((num * num5))) * num6) : ((Math.Sin((num * num5))) * num6);
             }
             result.X = (num3 * quaternion1.X) + (num2 * quaternion2.X);
             result.Y = (num3 * quaternion1.Y) + (num2 * quaternion2.Y);
@@ -610,19 +611,19 @@ namespace L2dotNET.Utility.Geometry
 
         public void Normalize()
         {
-            double num2 = (((this.X * this.X) + (this.Y * this.Y)) + (this.Z * this.Z)) + (this.W * this.W);
-            double num = 1f / ((double)Math.Sqrt((double)num2));
-            this.X *= num;
-            this.Y *= num;
-            this.Z *= num;
-            this.W *= num;
+            double num2 = (((X * X) + (Y * Y)) + (Z * Z)) + (W * W);
+            double num = 1f / (Math.Sqrt(num2));
+            X *= num;
+            Y *= num;
+            Z *= num;
+            W *= num;
         }
 
         public static Quaternion Normalize(Quaternion quaternion)
         {
             Quaternion quaternion2;
             double num2 = (((quaternion.X * quaternion.X) + (quaternion.Y * quaternion.Y)) + (quaternion.Z * quaternion.Z)) + (quaternion.W * quaternion.W);
-            double num = 1f / ((double)Math.Sqrt((double)num2));
+            double num = 1f / (Math.Sqrt(num2));
             quaternion2.X = quaternion.X * num;
             quaternion2.Y = quaternion.Y * num;
             quaternion2.Z = quaternion.Z * num;
@@ -633,7 +634,7 @@ namespace L2dotNET.Utility.Geometry
         public static void Normalize(ref Quaternion quaternion, out Quaternion result)
         {
             double num2 = (((quaternion.X * quaternion.X) + (quaternion.Y * quaternion.Y)) + (quaternion.Z * quaternion.Z)) + (quaternion.W * quaternion.W);
-            double num = 1f / ((double)Math.Sqrt((double)num2));
+            double num = 1f / (Math.Sqrt(num2));
             result.X = quaternion.X * num;
             result.Y = quaternion.Y * num;
             result.Z = quaternion.Z * num;
@@ -682,9 +683,8 @@ namespace L2dotNET.Utility.Geometry
         public static bool operator !=(Quaternion quaternion1, Quaternion quaternion2)
         {
             if (((quaternion1.X == quaternion2.X) && (quaternion1.Y == quaternion2.Y)) && (quaternion1.Z == quaternion2.Z))
-            {
                 return (quaternion1.W != quaternion2.W);
-            }
+
             return true;
         }
 
@@ -744,13 +744,13 @@ namespace L2dotNET.Utility.Geometry
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder(32);
             sb.Append("{X:");
-            sb.Append(this.X);
+            sb.Append(X);
             sb.Append(" Y:");
-            sb.Append(this.Y);
+            sb.Append(Y);
             sb.Append(" Z:");
-            sb.Append(this.Z);
+            sb.Append(Z);
             sb.Append(" W:");
-            sb.Append(this.W);
+            sb.Append(W);
             sb.Append("}");
             return sb.ToString();
         }
@@ -764,7 +764,7 @@ namespace L2dotNET.Utility.Geometry
 
         internal void ToMatrix(out Matrix matrix)
         {
-            Quaternion.ToMatrix(this, out matrix);
+            ToMatrix(this, out matrix);
         }
 
         internal static void ToMatrix(Quaternion quaternion, out Matrix matrix)

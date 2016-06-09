@@ -11,8 +11,8 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
 
         public Cubic(L2Player player, CubicTemplate t)
         {
-            this.owner = player;
-            this.template = t;
+            owner = player;
+            template = t;
         }
 
         public DateTime SummonedTime,
@@ -40,7 +40,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
 
         public void AiActionTask(object sender, System.Timers.ElapsedEventArgs e)
         {
-            this.current_count += template.AiActionTask(owner);
+            current_count += template.AiActionTask(owner);
             if (current_count > template.max_count)
                 OnEnd(true);
         }

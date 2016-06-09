@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Model.Communities
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(L2Clan));
 
-        public byte Level = 0;
+        public byte Level;
         public int LeaderID;
         public string Name;
         public string ClanMasterName;
@@ -96,7 +96,7 @@ namespace L2dotNET.GameService.Model.Communities
             cm.sponsorId = 0;
             cm.NickName = player.Title;
             cm.ClanType = type;
-            cm._pledgeTypeName = this.Name;
+            cm._pledgeTypeName = Name;
             cm.Target = player;
 
             members.Add(cm);
@@ -150,35 +150,33 @@ namespace L2dotNET.GameService.Model.Communities
         {
             e_ClanType ret = e_ClanType.None;
             foreach (e_ClanType ct in types)
-            {
                 switch (ct)
                 {
                     case e_ClanType.CLAN_KNIGHT1:
-                        if (Knights_1 != null && Knights_1.LeaderID == ObjID)
+                        if ((Knights_1 != null) && (Knights_1.LeaderID == ObjID))
                             ret = ct;
                         break;
                     case e_ClanType.CLAN_KNIGHT2:
-                        if (Knights_2 != null && Knights_2.LeaderID == ObjID)
+                        if ((Knights_2 != null) && (Knights_2.LeaderID == ObjID))
                             ret = ct;
                         break;
                     case e_ClanType.CLAN_KNIGHT3:
-                        if (Knights_1_Order1 != null && Knights_1_Order1.LeaderID == ObjID)
+                        if ((Knights_1_Order1 != null) && (Knights_1_Order1.LeaderID == ObjID))
                             ret = ct;
                         break;
                     case e_ClanType.CLAN_KNIGHT4:
-                        if (Knights_1_Order2 != null && Knights_1_Order2.LeaderID == ObjID)
+                        if ((Knights_1_Order2 != null) && (Knights_1_Order2.LeaderID == ObjID))
                             ret = ct;
                         break;
                     case e_ClanType.CLAN_KNIGHT5:
-                        if (Knights_2_Order1 != null && Knights_2_Order1.LeaderID == ObjID)
+                        if ((Knights_2_Order1 != null) && (Knights_2_Order1.LeaderID == ObjID))
                             ret = ct;
                         break;
                     case e_ClanType.CLAN_KNIGHT6:
-                        if (Knights_2_Order2 != null && Knights_2_Order2.LeaderID == ObjID)
+                        if ((Knights_2_Order2 != null) && (Knights_2_Order2.LeaderID == ObjID))
                             ret = ct;
                         break;
                 }
-            }
 
             return ret;
         }
@@ -322,6 +320,7 @@ namespace L2dotNET.GameService.Model.Communities
                             val = 40;
                             break;
                     }
+
                     break;
             }
 
@@ -336,15 +335,13 @@ namespace L2dotNET.GameService.Model.Communities
                 return;
             }
 
-            e_ClanType type = isSubLeader(player.ObjID, new e_ClanType[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2, e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 });
+            e_ClanType type = isSubLeader(player.ObjID, new[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2, e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 });
             if (type != e_ClanType.None)
-            {
                 if (getClanMemberCount(type, player.ObjID) > 0)
                 {
                     player.sendMessage("You are leader of clan sub unit, and while there some members - you cant leave them.");
                     return;
                 }
-            }
 
             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_HAS_WITHDRAWN_FROM_THE_CLAN);
             sm.AddPlayerName(player.Name);
@@ -353,7 +350,9 @@ namespace L2dotNET.GameService.Model.Communities
             foreach (ClanMember cm in members.Where(cm => cm.ObjID == player.ObjID))
             {
                 lock (members)
+                {
                     members.Remove(cm);
+                }
 
                 break;
             }
@@ -382,18 +381,12 @@ namespace L2dotNET.GameService.Model.Communities
 
         public byte getClanMemberCount(e_ClanType type, int myself)
         {
-            byte cnt = 0;
-            foreach (ClanMember cm in members.Where(cm => cm.ClanType == (short)type && (myself == 0 || myself != cm.ObjID)))
-                cnt++;
-
-            //  var x = from cm in members where cm.Type == type && cm.ObjID != myself let cnt2 = cnt+1 select cnt2;
-            //  int cn = x.
-            return cnt;
+            return (byte)members.Count(cm => (cm.ClanType == (short)type) && ((myself == 0) || (myself != cm.ObjID)));
         }
 
         public List<ClanMember> getClanMembers(e_ClanType type, int myself)
         {
-            return members.Where(cm => cm.ClanType == (short)type && (myself == 0 || myself != cm.ObjID)).ToList();
+            return members.Where(cm => (cm.ClanType == (short)type) && ((myself == 0) || (myself != cm.ObjID))).ToList();
         }
 
         public List<e_ClanSub> getAllSubs()

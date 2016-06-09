@@ -11,14 +11,14 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
         public RequestExSetPledgeCrestLarge(GameClient client, byte[] data)
         {
-            base.makeme(client, data, 2);
+            makeme(client, data, 2);
         }
 
         public override void read()
         {
             _size = readD();
 
-            if (_size > 0 && _size <= 2176)
+            if ((_size > 0) && (_size <= 2176))
                 _picture = readB(_size);
         }
 
@@ -34,14 +34,14 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
             L2Clan clan = player.Clan;
 
-            if (clan.HideoutID == 0 || clan.CastleID == 0)
+            if ((clan.HideoutID == 0) || (clan.CastleID == 0))
             {
                 player.sendMessage("You need to own clan hall or castle to assign this emblem.");
                 player.sendActionFailed();
                 return;
             }
 
-            if (_size < 0 || _size > 2176)
+            if ((_size < 0) || (_size > 2176))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.LENGTH_CREST_DOES_NOT_MEET_STANDARD_REQUIREMENTS);
                 player.sendActionFailed();

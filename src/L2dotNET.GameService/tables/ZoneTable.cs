@@ -19,15 +19,11 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new ZoneTable();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -47,10 +43,10 @@ namespace L2dotNET.GameService.Tables
                     if (line.Length == 0)
                         continue;
 
-                    if (line.StartsWith("//"))
+                    if (line.StartsWith("//", StringComparison.InvariantCultureIgnoreCase))
                         continue;
 
-                    if (line.StartsWith("area_begin"))
+                    if (line.StartsWith("area_begin", StringComparison.InvariantCultureIgnoreCase))
                     {
                         L2Zone zone = null;
                         ZoneTemplate template = new ZoneTemplate();
@@ -116,6 +112,7 @@ namespace L2dotNET.GameService.Tables
                                             break;
                                     }
                                 }
+
                                     break;
                                 case "affect_race":
                                     template._affect_race = val;
@@ -173,6 +170,7 @@ namespace L2dotNET.GameService.Tables
                                     break;
                             }
                         }
+
                         zone.Name = template.Name;
                         zone.Template = template;
                         zone.Territory = new ZoneNPoly(template._x, template._y, template._z1, template._z2);
@@ -181,18 +179,14 @@ namespace L2dotNET.GameService.Tables
                         {
                             L2WorldRegion region = L2World.Instance.GetRegion(template._x[i], template._y[i]);
                             if (region != null)
-                            {
                                 ctx++;
-                                // region._zoneManager.addZone(zone);
-                            }
                             else
-                            {
                                 log.Error($"AreaTable: null region at {template._x[i]} {template._y[i]} for zone {zone.Name}");
-                            }
                         }
                     }
                 }
             }
+
             log.Info("AreaTable: intercepted " + ctx + " regions with " + cta + " zones");
         }
     }

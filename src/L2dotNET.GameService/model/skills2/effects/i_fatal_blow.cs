@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             if (!tempSuccess)
                 return nothing;
 
-            double shieldDef = Formulas.checkShieldDef(caster, target);
+            //double shieldDef = Formulas.checkShieldDef(caster, target);
             double damage = Formulas.getPhysSkillHitDamage(caster, target, power);
 
             caster.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3).AddPlayerName(caster.Name).AddString(target.Name).AddNumber(damage));
@@ -35,7 +35,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             return nothing;
         }
 
-        private bool tempSuccess = false;
+        private bool tempSuccess;
         private int unk1;
         private int unk2;
 

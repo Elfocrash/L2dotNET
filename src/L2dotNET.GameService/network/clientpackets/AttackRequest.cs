@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public AttackRequest(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _objectId;
@@ -36,16 +36,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            L2Object obj;
-
             if (_objectId == player.ObjID)
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_ON_YOURSELF);
                 player.sendActionFailed();
                 return;
             }
-            else
-                obj = player.knownObjects[_objectId];
+
+            L2Object obj = player.knownObjects[_objectId];
 
             if (obj == null)
             {

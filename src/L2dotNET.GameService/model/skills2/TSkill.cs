@@ -62,7 +62,7 @@ namespace L2dotNET.GameService.Model.Skills2
         /// <param name="value"></param>
         public void SetEffect_effect(string value)
         {
-            if (value.StartsWith("{"))
+            if (value.StartsWith("{", StringComparison.InvariantCultureIgnoreCase))
                 return;
 
             byte order = 0;
@@ -73,7 +73,7 @@ namespace L2dotNET.GameService.Model.Skills2
                 if (te != null)
                 {
                     te.type = type;
-                    te.HashID = this.HashID();
+                    te.HashID = HashID();
                     te.Order = order;
                     te.SkillId = skill_id;
                     te.SkillLv = level;
@@ -88,7 +88,7 @@ namespace L2dotNET.GameService.Model.Skills2
 
         public void SetOperateCond(string value)
         {
-            if (value.StartsWith("{"))
+            if (value.StartsWith("{", StringComparison.InvariantCultureIgnoreCase))
                 return;
 
             foreach (string str in value.Split(';'))
@@ -109,7 +109,7 @@ namespace L2dotNET.GameService.Model.Skills2
 
         public byte isPassive()
         {
-            return this.OpType == TSkillOperational.P ? (byte)1 : (byte)0;
+            return OpType == TSkillOperational.P ? (byte)1 : (byte)0;
         }
 
         public SortedList<int, L2Object> getAffectedTargets(L2Character actor)
@@ -145,6 +145,7 @@ namespace L2dotNET.GameService.Model.Skills2
                             break;
                     }
                 }
+
                     break;
                 case TSkillScope.party:
                     L2Character[] members = actor.getPartyCharacters();
@@ -154,6 +155,7 @@ namespace L2dotNET.GameService.Model.Skills2
                         if (dis < cast_range)
                             targets.Add(member.ObjID, member);
                     }
+
                     break;
             }
 
@@ -174,21 +176,15 @@ namespace L2dotNET.GameService.Model.Skills2
                         case TSkillTarget.any:
                         case TSkillTarget.target:
                             if (actor.CurrentTarget != null)
-                            {
                                 target = actor.CurrentTarget;
-                            }
                             break;
                         case TSkillTarget.friend:
                             if (actor.CurrentTarget != null)
-                            {
                                 target = actor.CurrentTarget;
-                            }
                             break;
                         case TSkillTarget.enemy:
                             if (actor.CurrentTarget != null)
-                            {
                                 target = actor.CurrentTarget;
-                            }
                             break;
                         case TSkillTarget.master:
                             if (actor is L2Summon)
@@ -201,6 +197,7 @@ namespace L2dotNET.GameService.Model.Skills2
                         }
                             break;
                     }
+
                     break;
                 case TSkillScope.party:
                     switch (target_type)
@@ -209,6 +206,7 @@ namespace L2dotNET.GameService.Model.Skills2
                             target = actor;
                             break;
                     }
+
                     break;
             }
 

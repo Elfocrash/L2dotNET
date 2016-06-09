@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Enums
 
         private ZoneId(ZoneIds zoneId)
         {
-            this.Id = zoneId;
+            Id = zoneId;
         }
 
         public static int GetZoneCount()

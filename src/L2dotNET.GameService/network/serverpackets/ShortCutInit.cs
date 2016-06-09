@@ -35,12 +35,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
                     case L2Shortcut.TYPE_SKILL:
                         writeD(sc.Id);
                         writeD(sc.Level);
-                        writeC(0x00); // C5 
-                        writeD(0x01); // C6 
+                        writeC(0x00); // C5
+                        writeD(0x01); // C6
                         break;
                     default:
                         writeD(sc.Id);
-                        writeD(0x01); // C6 
+                        writeD(0x01); // C6
                         break;
                 }
             }

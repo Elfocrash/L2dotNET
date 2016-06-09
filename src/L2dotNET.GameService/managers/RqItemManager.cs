@@ -18,7 +18,9 @@ namespace L2dotNET.GameService.Managers
         {
             if (_items.ContainsKey(item.ObjID))
                 lock (_items)
+                {
                     _items.Remove(item.ObjID);
+                }
 
             _items.Add(item.ObjID, item);
         }

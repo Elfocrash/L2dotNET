@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestAddTradeItem(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -46,7 +46,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (player.TradeState == 4 || player.requester.TradeState == 4) // подтвердил уже
+            if ((player.TradeState == 4) || (player.requester.TradeState == 4)) // подтвердил уже
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_ADJUST_ITEMS_AFTER_TRADE_CONFIRMED);
                 player.sendActionFailed();
@@ -67,7 +67,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (num > item.Count)
                 num = item.Count;
 
-            if (!item.Template.isStackable() && num > 1)
+            if (!item.Template.isStackable() && (num > 1))
                 num = 1;
 
             long numInList = player.AddItemToTrade(item.ObjID, num);

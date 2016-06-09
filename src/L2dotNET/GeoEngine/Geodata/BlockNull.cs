@@ -8,7 +8,7 @@ namespace L2dotNET.GeoEngine.Geodata
 
         public BlockNull()
         {
-            _nswe = (byte)0xFF;
+            _nswe = 0xFF;
         }
 
         public override short GetHeight(int index)

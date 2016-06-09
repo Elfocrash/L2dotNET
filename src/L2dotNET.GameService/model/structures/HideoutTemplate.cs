@@ -74,21 +74,21 @@ namespace L2dotNET.GameService.Model.Structures
 
         internal void SetOwnerRespawn(string[] p)
         {
-            ownerLoc = new int[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
+            ownerLoc = new[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
         }
 
         public int[] outsideLoc;
 
         internal void SetOutsideRespawn(string[] p)
         {
-            outsideLoc = new int[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
+            outsideLoc = new[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
         }
 
         public int[] banishLoc;
 
         internal void SetBanishRespawn(string[] p)
         {
-            banishLoc = new int[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
+            banishLoc = new[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]) };
         }
 
         public List<int[]> zoneLoc;
@@ -98,7 +98,7 @@ namespace L2dotNET.GameService.Model.Structures
             if (zoneLoc == null)
                 zoneLoc = new List<int[]>();
 
-            zoneLoc.Add(new int[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]), Convert.ToInt32(p[3]) });
+            zoneLoc.Add(new[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]), Convert.ToInt32(p[3]) });
         }
 
         public virtual void init() { }

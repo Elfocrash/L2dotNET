@@ -21,23 +21,19 @@ namespace L2dotNET.GameService.Tables.Ndextend
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\nd_teleports.xml"));
             XElement ex = xml.Element("list");
             if (ex != null)
-            {
                 foreach (XElement m in ex.Elements())
-                {
                     if (m.Name == "npc")
                     {
                         ab_teleport_npc npc = new ab_teleport_npc();
                         npc.id = int.Parse(m.Attribute("id").Value);
 
                         foreach (XElement x in m.Elements())
-                        {
                             if (x.Name == "group")
                             {
                                 ab_teleport_group ab = new ab_teleport_group();
                                 ab.id = int.Parse(x.Attribute("id").Value);
 
                                 foreach (XElement e in x.Elements())
-                                {
                                     if (e.Name == "e")
                                     {
                                         ab_teleport_entry ae = new ab_teleport_entry();
@@ -54,18 +50,15 @@ namespace L2dotNET.GameService.Tables.Ndextend
 
                                         ab._teles.Add(ae.id, ae);
                                     }
-                                }
 
                                 npc.groups.Add(ab.id, ab);
                             }
-                        }
+
                         if (npcs.ContainsKey(npc.id))
                             log.Error($"NpcData(Teleporter) dublicate npc str {npc.id}");
                         else
                             npcs.Add(npc.id, npc);
                     }
-                }
-            }
 
             log.Info("NpcData(Teleporter): loaded " + npcs.Count + " npcs.");
         }

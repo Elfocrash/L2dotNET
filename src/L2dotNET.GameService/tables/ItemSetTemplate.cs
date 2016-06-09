@@ -95,8 +95,7 @@ namespace L2dotNET.GameService.Tables
             byte set1sum = 0,
                  set2sum = 0,
                  set3sum = 0;
-            foreach (L2Item item in owner.Inventory.Items.Values.Where(item => item._isEquipped != 0 && item.Template.Type == ItemTemplate.L2ItemType.armor))
-            {
+            foreach (L2Item item in owner.Inventory.Items.Values.Where(item => (item._isEquipped != 0) && (item.Template.Type == ItemTemplate.L2ItemType.armor)))
                 switch (item.Template.Bodypart)
                 {
                     case ItemTemplate.L2ItemBodypart.chest:
@@ -107,7 +106,6 @@ namespace L2dotNET.GameService.Tables
                             set1sum++;
                             if (item.Enchant >= 6)
                                 set3sum++;
-                            break;
                         }
                     }
                         break;
@@ -159,13 +157,10 @@ namespace L2dotNET.GameService.Tables
                     {
                         if (shields != null)
                             if (shields.Any(id => id == item.Template.ItemID))
-                            {
                                 set2sum = 1;
-                            }
                     }
                         break;
                 }
-            }
 
             byte cnt = count();
             log.Info($"set validation: cnt {cnt}, s1 {set1sum}, s2 {set2sum}, s3 {set3sum}");

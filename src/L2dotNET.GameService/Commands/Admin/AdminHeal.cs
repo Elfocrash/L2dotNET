@@ -17,9 +17,7 @@ namespace L2dotNET.GameService.Commands.Admin
 
             L2Player target;
             if (admin.CurrentTarget is L2Player)
-            {
                 target = (L2Player)admin.CurrentTarget;
-            }
             else
                 target = admin;
 

@@ -7,8 +7,8 @@
 
         public LoginServPing(AuthThread th)
         {
-            this.version = th.version;
-            this.build = th.build;
+            version = th.version;
+            build = th.build;
         }
 
         protected internal override void write()

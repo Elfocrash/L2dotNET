@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestStartTrade(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -42,15 +42,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            L2Player target;
-            if (player.CurrentTarget == null || !(player.CurrentTarget is L2Player))
+            if ((player.CurrentTarget == null) || !(player.CurrentTarget is L2Player))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
                 player.sendActionFailed();
                 return;
             }
 
-            target = (L2Player)player.CurrentTarget;
+            L2Player target = (L2Player)player.CurrentTarget;
             if (target.TradeState != 0)
             {
                 player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_ALREADY_TRADING).AddPlayerName(target.Name));

@@ -13,8 +13,8 @@ namespace L2dotNET.GameService.Compression
 
         public DlcStream(FileStream fstream, CompressionMode cm)
         {
-            this.stream = new GZipStream(fstream, cm);
-            this.stream2 = fstream;
+            stream = new GZipStream(fstream, cm);
+            stream2 = fstream;
             if (cm == CompressionMode.Compress)
                 stream2.Write(dlcStr, 0, dlcStr.Length);
         }

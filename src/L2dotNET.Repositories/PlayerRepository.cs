@@ -17,14 +17,14 @@ namespace L2dotNET.Repositories
 
         public PlayerRepository()
         {
-            this.db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
+            db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
         }
 
         public PlayerModel GetAccountByLogin(int objId)
         {
             try
             {
-                return this.db.Query<PlayerModel>(@"select account_name as AccountName, obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
+                return db.Query<PlayerModel>(@"select account_name as AccountName, obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
                 Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,ClanId,base_class as BaseClass, DeleteTime,CanCraft,Title,
                 rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,IsIn7sDungeon,punish_level as PunishLevel,punish_timer as PunishTimer,
                 power_grade as PowerGrade,Nobless,Hero,Subpledge,last_recom_date as LastRecomDate,char_slot as CharSlot,lvl_joined_academy as LevelJoinedAcademy, Apprentice, Sponsor,
@@ -42,7 +42,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return this.db.Query("select distinct 1 from characters where char_name=@name", new { name = name }).Any();
+                return db.Query("select distinct 1 from characters where char_name=@name", new { name = name }).Any();
             }
             catch (MySqlException ex)
             {
@@ -55,7 +55,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                this.db.Execute(@"insert into characters (account_name, obj_Id, char_name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
+                db.Execute(@"insert into characters (account_name, obj_Id, char_name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
                                 Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,ClanId,Race,classid,base_class, DeleteTime,CanCraft,Title,
                                 rec_have,rec_left,AccessLevel,char_slot,clan_privs, WantsPeace,IsIn7sDungeon,punish_level,punish_timer, power_grade,Nobless,Hero,Subpledge,
                                 last_recom_date,lvl_joined_academy, Apprentice, Sponsor,varka_ketra_ally,clan_join_expiry_time,clan_create_expiry_time, death_penalty_level) 
@@ -74,7 +74,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                this.db.Execute(@"UPDATE characters SET level=@level,maxHp=@maxHp,curHp=@curHp,maxCp=@maxCp,curCp=@curCp,maxMp=@maxMp,curMp=@curMp,face=@face,hairStyle=@hairStyle,
+                db.Execute(@"UPDATE characters SET level=@level,maxHp=@maxHp,curHp=@curHp,maxCp=@maxCp,curCp=@curCp,maxMp=@maxMp,curMp=@curMp,face=@face,hairStyle=@hairStyle,
                                 hairColor=@hairColor,sex=@sex,heading=@heading
                                 ,x=@x,y=@y,z=@z,exp=@exp,expBeforeDeath=@expBeforeDeath,sp=@sp,karma=@karma,pvpkills=@pvpkills,pkkills=@pkkills,rec_have=@rec_have,rec_left=@rec_left,clanid=@clanid,
                                 race=@race,classid=@classid,deletetime=@deletetime,title=@title,accesslevel=@accesslevel
@@ -94,7 +94,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return this.db.Query<PlayerModel>(@"select obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
+                return db.Query<PlayerModel>(@"select obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
                                                   Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,ClanId,base_class as BaseClass, DeleteTime,CanCraft,Title,
                                                   rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,IsIn7sDungeon,punish_level as PunishLevel,punish_timer as PunishTimer,
                                                   power_grade as PowerGrade,Nobless,Hero,Subpledge,last_recom_date as LastRecomDate,lvl_joined_academy as LevelJoinedAcademy, Apprentice, Sponsor,
@@ -113,9 +113,9 @@ namespace L2dotNET.Repositories
             bool success;
             try
             {
-                this.db.Execute(@"UPDATE characters SET deletetime=@deletetime WHERE obj_id=@obj_id", new { deletetime = 1, //TODO: Verify formula
-                                                                                                            //statement.setLong(1, System.currentTimeMillis() + Config.DELETE_DAYS * 86400000L);
-                                                                                                            obj_id = objId, });
+                db.Execute(@"UPDATE characters SET deletetime=@deletetime WHERE obj_id=@obj_id", new { deletetime = 1, //TODO: Verify formula
+                                                                                                       //statement.setLong(1, System.currentTimeMillis() + Config.DELETE_DAYS * 86400000L);
+                                                                                                       obj_id = objId });
 
                 success = true;
             }
@@ -149,7 +149,7 @@ namespace L2dotNET.Repositories
                 //this.db.Execute(@"DELETE FROM augmentations WHERE item_id IN (SELECT object_id FROM items WHERE items.owner_id=@obj_id)", new { obj_id = objId });
                 //this.db.Execute(@"DELETE FROM items WHERE owner_id=@obj_id", new { obj_id = objId });
                 //this.db.Execute(@"DELETE FROM character_raid_points WHERE char_id=@obj_id", new { obj_id = objId });
-                this.db.Execute(@"DELETE FROM characters WHERE obj_Id=@obj_id", new { obj_id = objId });
+                db.Execute(@"DELETE FROM characters WHERE obj_Id=@obj_id", new { obj_id = objId });
 
                 success = true;
             }

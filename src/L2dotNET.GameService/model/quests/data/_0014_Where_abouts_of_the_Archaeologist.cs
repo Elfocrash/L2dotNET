@@ -15,8 +15,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 14;
             questName = "Where abouts of the Archaeologist";
             startNpc = trader_liesel;
-            talkNpcs = new int[] { startNpc, explorer_ghost_a };
-            actItems = new int[] { q_letter_to_explorer };
+            talkNpcs = new[] { startNpc, explorer_ghost_a };
+            actItems = new[] { q_letter_to_explorer };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
@@ -24,9 +24,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (player.Level >= 74)
                 player.ShowHtm("trader_liesel_q0014_0101.htm", npc);
             else
-            {
                 player.ShowHtm("trader_liesel_q0014_0103.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -53,6 +51,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "trader_liesel_q0014_0104.htm";
                             break;
                     }
+
                     break;
                 case explorer_ghost_a:
                     switch (cond)
@@ -62,6 +61,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                                 htmltext = "explorer_ghost_a_q0014_0101.htm";
                             break;
                     }
+
                     break;
             }
 

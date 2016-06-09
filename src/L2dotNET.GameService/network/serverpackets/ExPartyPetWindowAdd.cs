@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ExPartyPetWindowAdd(L2Summon summon)
         {
-            this._summon = summon;
+            _summon = summon;
         }
 
         protected internal override void write()

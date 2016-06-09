@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestSaveInventoryOrder(GameClient client, byte[] data)
         {
-            base.makeme(client, data, 2);
+            makeme(client, data, 2);
         }
 
         public override void read()
@@ -31,18 +31,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Player player = getClient().CurrentPlayer;
 
             foreach (L2Item item in player.Inventory.Items.Values)
-            {
                 for (int i = 0; i < _count; i++)
                 {
                     int objId = _items[i * 2];
                     int loc = _items[i * 2 + 1];
 
                     if (item.ObjID == objId)
-                    {
                         item.SlotLocation = loc;
-                    }
                 }
-            }
         }
     }
 }

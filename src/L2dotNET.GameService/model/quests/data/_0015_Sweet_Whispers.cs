@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 15;
             questName = "Sweet Whispers";
             startNpc = trader_vladimir;
-            talkNpcs = new int[] { startNpc, dark_necromancer, dark_presbyter };
+            talkNpcs = new[] { startNpc, dark_necromancer, dark_presbyter };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
@@ -22,9 +22,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (player.Level >= 60)
                 player.ShowHtm("trader_vladimir_q0015_0101.htm", npc);
             else
-            {
                 player.ShowHtm("trader_vladimir_q0015_0103.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -51,6 +49,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "trader_vladimir_q0015_0105.htm";
                             break;
                     }
+
                     break;
                 case dark_necromancer:
                     switch (cond)
@@ -62,6 +61,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "dark_necromancer_q0015_0202.htm";
                             break;
                     }
+
                     break;
                 case dark_presbyter:
                     switch (cond)
@@ -70,6 +70,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "dark_presbyter_q0015_0201.htm";
                             break;
                     }
+
                     break;
             }
 

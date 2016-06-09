@@ -45,9 +45,7 @@ namespace L2dotNET.GameService.Model.Inventory
             InventoryUpdate iu = update ? new InventoryUpdate() : null;
             List<int> nulled = new List<int>();
             foreach (L2Item item in player.Inventory.Items.Values)
-            {
                 foreach (long[] itemd in items.Where(itemd => item.ObjID == itemd[0]))
-                {
                     if (item.Template.isStackable())
                     {
                         if (itemd[1] >= item.Count)
@@ -87,15 +85,11 @@ namespace L2dotNET.GameService.Model.Inventory
                         if (update)
                             iu.addModItem(item);
                     }
-                }
-            }
 
             lock (player.Inventory.Items)
             {
                 foreach (int itemd in nulled)
-                {
                     player.Inventory.Items.Remove(itemd);
-                }
             }
         }
     }

@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public Logout(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public override void run()
         {
-            AuthThread.Instance.setInGameAccount(Client.AccountName, false);
+            AuthThread.Instance.setInGameAccount(Client.AccountName);
 
             L2Player player = Client.CurrentPlayer;
 

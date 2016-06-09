@@ -125,6 +125,7 @@ namespace L2dotNET.GameService.Model.Stats
                         chance = 275;
                         break;
                 }
+
                 if (!attacker.isInFrontOfTarget())
                 {
                     if (attacker.isBehindTarget())

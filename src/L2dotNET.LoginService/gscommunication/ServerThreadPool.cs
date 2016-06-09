@@ -31,15 +31,11 @@ namespace L2dotNET.LoginService.GSCommunication
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new ServerThreadPool();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -76,9 +72,7 @@ namespace L2dotNET.LoginService.GSCommunication
             listener.Start();
             log.Info($"Auth server listening gameservers at {Config.Config.Instance.serverConfig.Host}:{Config.Config.Instance.serverConfig.GSPort}");
             while (true)
-            {
                 VerifyClient(listener.AcceptTcpClient());
-            }
         }
 
         private void VerifyClient(TcpClient client)
@@ -102,7 +96,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public bool LoggedAlready(string account)
         {
-            foreach (L2Server srv in servers.Where(srv => srv.Thread != null && srv.Thread.LoggedAlready(account)))
+            foreach (L2Server srv in servers.Where(srv => (srv.Thread != null) && srv.Thread.LoggedAlready(account)))
             {
                 srv.Thread.KickAccount(account);
                 return true;
@@ -113,7 +107,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void SendPlayer(byte serverId, LoginClient client, string time)
         {
-            foreach (L2Server srv in servers.Where(srv => srv.Id == serverId && srv.Thread != null))
+            foreach (L2Server srv in servers.Where(srv => (srv.Id == serverId) && (srv.Thread != null)))
             {
                 srv.Thread.SendPlayer(client, time);
                 break;

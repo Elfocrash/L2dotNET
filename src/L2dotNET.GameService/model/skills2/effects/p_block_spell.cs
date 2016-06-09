@@ -11,17 +11,17 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
         public override TEffectResult onStart(L2Character caster, L2Character target)
         {
-            target.Mute(1, this.HashID, true);
+            target.Mute(1, HashID, true);
             return new TEffectResult().AsTotalUI();
         }
 
         public override TEffectResult onEnd(L2Character caster, L2Character target)
         {
-            target.Mute(1, this.HashID, false);
+            target.Mute(1, HashID, false);
             if (target.MutedMagically)
                 return new TEffectResult().AsTotalUI();
-            else
-                return nothing;
+
+            return nothing;
         }
     }
 }

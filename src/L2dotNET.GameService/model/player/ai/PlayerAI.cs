@@ -65,7 +65,7 @@ namespace L2dotNET.GameService.Model.Player.AI
         private int lastx;
         private int lasty;
         private int lastz;
-        private byte MoveTarget = 0;
+        private byte MoveTarget;
 
         private void AttackMoveTask(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -81,7 +81,7 @@ namespace L2dotNET.GameService.Model.Player.AI
             double dis = Calcs.calculateDistance(player, character.CurrentTarget, true);
             if (dis < 80)
             {
-                L2Character target = (L2Character)player.CurrentTarget;
+                L2Character target = player.CurrentTarget;
                 if (!target.Dead)
                     player.doAttack(target);
             }
@@ -90,7 +90,7 @@ namespace L2dotNET.GameService.Model.Player.AI
                 if (player.cantMove())
                     return;
 
-                if (lastx != player.CurrentTarget.X || lasty != player.CurrentTarget.Y || lastz != player.CurrentTarget.Z)
+                if ((lastx != player.CurrentTarget.X) || (lasty != player.CurrentTarget.Y) || (lastz != player.CurrentTarget.Z))
                     MoveTarget = 0;
 
                 if (MoveTarget == 0)

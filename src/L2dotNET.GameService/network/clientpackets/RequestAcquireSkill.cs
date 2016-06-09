@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestAcquireSkill(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _id;
@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             SortedList<int, TAcquireSkill> seq = player.ActiveSkillTree;
 
-            if (seq == null || !seq.ContainsKey(_id))
+            if ((seq == null) || !seq.ContainsKey(_id))
             {
                 player.sendActionFailed();
                 return;
@@ -52,14 +52,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (e.itemid > 0)
-            {
                 if (!player.hasItem(e.itemid, e.itemcount))
                 {
                     player.sendSystemMessage(SystemMessage.SystemMessageId.ITEM_MISSING_TO_LEARN_SKILL);
                     player.sendActionFailed();
                     return;
                 }
-            }
 
             if (e.lv_up_sp > 0)
             {
@@ -86,7 +84,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 bool upd = false;
                 lock (player._shortcuts)
                 {
-                    foreach (L2Shortcut sc in player._shortcuts.Where(sc => sc.Type == L2Shortcut.TYPE_SKILL && sc.Id == _id))
+                    foreach (L2Shortcut sc in player._shortcuts.Where(sc => (sc.Type == L2Shortcut.TYPE_SKILL) && (sc.Id == _id)))
                     {
                         sc.Level = _level;
                         upd = true;

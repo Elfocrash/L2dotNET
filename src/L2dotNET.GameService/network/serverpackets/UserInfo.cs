@@ -113,7 +113,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             double spd = player.CharacterStat.getStat(TEffectType.p_speed);
 
             double anim = spd * 1f / 130;
-            double anim2 = (1.1) * atkspd / 300;
+            //double anim2 = (1.1) * atkspd / 300;
             double runSpd = spd / anim;
             double walkSpd = spd * .8 / anim;
 
@@ -185,7 +185,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeC(hero);
 
             writeC(player.isFishing() ? 0x01 : 0x00); //Fishing Mode
-            writeD(player.GetFishx()); //fishing x  
+            writeD(player.GetFishx()); //fishing x
             writeD(player.GetFishy()); //fishing y
             writeD(player.GetFishz()); //fishing z
             writeD(player.getNameColor());

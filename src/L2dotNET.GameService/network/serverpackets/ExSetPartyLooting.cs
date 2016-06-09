@@ -2,8 +2,8 @@
 {
     class ExSetPartyLooting : GameServerNetworkPacket
     {
-        private readonly int result = 0;
-        private readonly int mode = 0;
+        private readonly int result;
+        private readonly int mode;
 
         public ExSetPartyLooting(short VoteId)
         {

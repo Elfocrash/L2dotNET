@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestWearItem(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -30,9 +30,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             // Fill _items table with all ItemID to Wear
             for (int i = 0; i < _count; i++)
-            {
                 _items[i] = readD();
-            }
         }
 
         public override void run()

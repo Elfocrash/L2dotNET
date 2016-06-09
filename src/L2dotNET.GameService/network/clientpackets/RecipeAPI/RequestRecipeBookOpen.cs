@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
     {
         public RequestRecipeBookOpen(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _type;

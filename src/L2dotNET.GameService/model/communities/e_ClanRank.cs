@@ -13,6 +13,6 @@ namespace L2dotNET.GameService.Model.Communities
         _8,
         _9,
         _10,
-        _11,
+        _11
     }
 }

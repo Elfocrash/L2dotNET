@@ -10,9 +10,9 @@ namespace L2dotNET.GameService.Model.Zones.Forms
         public int _z2;
 
         public int minX = int.MaxValue,
-                   maxX = 0,
+                   maxX,
                    minY = int.MaxValue,
-                   maxY = 0;
+                   maxY;
 
         public ZoneNPoly(int[] x, int[] y, int z1, int z2)
         {
@@ -42,18 +42,15 @@ namespace L2dotNET.GameService.Model.Zones.Forms
 
         public override bool isInsideZone(int x, int y, int z)
         {
-            if (z < _z1 || z > _z2)
+            if ((z < _z1) || (z > _z2))
                 return false;
 
             bool inside = false;
             for (int i = 0,
                      j = _x.Length - 1; i < _x.Length; j = i++)
-            {
                 if ((((_y[i] <= y) && (y < _y[j])) || ((_y[j] <= y) && (y < _y[i]))) && (x < (_x[j] - _x[i]) * (y - _y[i]) / (_y[j] - _y[i]) + _x[i]))
-                {
                     inside = !inside;
-                }
-            }
+
             return inside;
         }
 
@@ -62,12 +59,9 @@ namespace L2dotNET.GameService.Model.Zones.Forms
             bool inside = false;
             for (int i = 0,
                      j = _x.Length - 1; i < _x.Length; j = i++)
-            {
                 if ((((_y[i] <= y) && (y < _y[j])) || ((_y[j] <= y) && (y < _y[i]))) && (x < (_x[j] - _x[i]) * (y - _y[i]) / (_y[j] - _y[i]) + _x[i]))
-                {
                     inside = !inside;
-                }
-            }
+
             return inside;
         }
 

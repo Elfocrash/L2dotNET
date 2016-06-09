@@ -23,9 +23,7 @@ namespace L2dotNET.GameService.Model.Inventory
             PetInventoryUpdate piu = update ? new PetInventoryUpdate() : null;
             List<int> nulled = new List<int>();
             foreach (L2Item item in player.Inventory.Items.Values)
-            {
                 foreach (long[] itemd in items)
-                {
                     if (item.ObjID == itemd[0])
                     {
                         bool ex = Items.Values.Any(itp => itp.Template.ItemID == item.Template.ItemID);
@@ -107,15 +105,11 @@ namespace L2dotNET.GameService.Model.Inventory
                             }
                         }
                     }
-                }
-            }
 
             lock (player.Inventory.Items)
             {
                 foreach (int itemd in nulled)
-                {
                     player.Inventory.Items.Remove(itemd);
-                }
             }
 
             if (update)
@@ -136,9 +130,7 @@ namespace L2dotNET.GameService.Model.Inventory
             PetInventoryUpdate piu = update ? new PetInventoryUpdate() : null;
             List<int> nulled = new List<int>();
             foreach (L2Item item in Items.Values)
-            {
                 foreach (long[] itemd in transfer)
-                {
                     if (item.ObjID == itemd[0])
                     {
                         bool ex = player.getAllItems().Any(itp => itp.Template.ItemID == item.Template.ItemID);
@@ -230,15 +222,11 @@ namespace L2dotNET.GameService.Model.Inventory
                         foreach (QuestInfo qi in player._quests.Where(qi => !qi.completed))
                             qi._template.onEarnItem(player, qi.stage, item.Template.ItemID);
                     }
-                }
-            }
 
             lock (Items)
             {
                 foreach (int itemd in nulled)
-                {
                     Items.Remove(itemd);
-                }
             }
 
             if (update)

@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public bool isAutoSS
         {
-            get { return default_action == "action_soulshot" || default_action == "action_spiritshot" || default_action == "action_summon_soulshot" || default_action == "action_summon_spiritshot"; }
+            get { return (default_action == "action_soulshot") || (default_action == "action_spiritshot") || (default_action == "action_summon_soulshot") || (default_action == "action_summon_spiritshot"); }
         }
 
         public int SoulshotCount = 0,
@@ -97,20 +97,20 @@ namespace L2dotNET.GameService.Model.Items
             switch (CrystallGrade)
             {
                 case L2ItemGrade.none:
-                    return new int[] { 1835, 5789 };
+                    return new[] { 1835, 5789 };
                 case L2ItemGrade.d:
-                    return new int[] { 1463, 22082 };
+                    return new[] { 1463, 22082 };
                 case L2ItemGrade.c:
-                    return new int[] { 1464, 22083 };
+                    return new[] { 1464, 22083 };
                 case L2ItemGrade.b:
-                    return new int[] { 1465, 22084 };
+                    return new[] { 1465, 22084 };
                 case L2ItemGrade.a:
-                    return new int[] { 1466, 22085 };
+                    return new[] { 1466, 22085 };
                 case L2ItemGrade.s:
                 case L2ItemGrade.s80:
                 case L2ItemGrade.s84:
                 case L2ItemGrade.s86:
-                    return new int[] { 1467, 22086 };
+                    return new[] { 1467, 22086 };
             }
 
             return null;
@@ -206,7 +206,7 @@ namespace L2dotNET.GameService.Model.Items
             neck,
             underwear, //shirt
             hair2,
-            hairall,
+            hairall
         }
 
         public short can_equip_sex = -1;
@@ -291,6 +291,7 @@ namespace L2dotNET.GameService.Model.Items
                             val = 0;
                             break;
                     }
+
                     break;
                 case L2ItemType.armor:
                     val = 1;

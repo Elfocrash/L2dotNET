@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using System;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 
 namespace L2dotNET.GameService.Network.Clientpackets
@@ -7,7 +8,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestTutorialLinkHtml(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private string _link;
@@ -26,7 +27,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 string[] link = _link.Split(':');
                 player.sendPacket(new TutorialShowHtml(player, link[0], link[1], player.ViewingAdminPage > 0));
             }
-            else if (_link.StartsWith("tutorial_close_"))
+            else if (_link.StartsWith("tutorial_close_", StringComparison.InvariantCultureIgnoreCase))
                 player.sendPacket(new TutorialCloseHtml());
             else if (_link.Equals("admin_close"))
             {

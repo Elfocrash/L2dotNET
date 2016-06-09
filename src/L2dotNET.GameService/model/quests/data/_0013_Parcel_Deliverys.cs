@@ -15,8 +15,8 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 13;
             questName = "Parcel Deliverys";
             startNpc = mineral_trader_fundin;
-            talkNpcs = new int[] { startNpc, warsmith_vulcan };
-            actItems = new int[] { q_package_to_vulcan };
+            talkNpcs = new[] { startNpc, warsmith_vulcan };
+            actItems = new[] { q_package_to_vulcan };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
@@ -24,9 +24,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
             if (player.Level >= 74)
                 player.ShowHtm("mineral_trader_fundin_q0013_0101.htm", npc);
             else
-            {
                 player.ShowHtm("mineral_trader_fundin_q0013_0103.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -53,6 +51,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                             htmltext = "mineral_trader_fundin_q0013_0105.htm";
                             break;
                     }
+
                     break;
                 case warsmith_vulcan:
                     switch (cond)
@@ -62,6 +61,7 @@ namespace L2dotNET.GameService.Model.Quests.Data
                                 htmltext = "warsmith_vulcan_q0013_0101.htm";
                             break;
                     }
+
                     break;
             }
 

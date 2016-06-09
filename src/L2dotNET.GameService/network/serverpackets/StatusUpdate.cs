@@ -42,7 +42,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public void add(int type, object val)
         {
-            attrs.Add(new object[] { type, val });
+            attrs.Add(new[] { type, val });
         }
 
         public StatusUpdate(int id)

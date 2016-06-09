@@ -18,7 +18,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public void RunImpl()
         {
-            if (client.login1 != login1 && client.login2 != login2)
+            if ((client.login1 != login1) && (client.login2 != login2))
             {
                 client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCESS_FAILED));
                 return;

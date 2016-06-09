@@ -18,15 +18,11 @@ namespace L2dotNET.GameService.Network
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new NetworkBlock();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -46,17 +42,17 @@ namespace L2dotNET.GameService.Network
                     if (line.Length == 0)
                         continue;
 
-                    if (line.StartsWith("//"))
+                    if (line.StartsWith("//", StringComparison.InvariantCultureIgnoreCase))
                         continue;
 
-                    if (line.StartsWith("d"))
+                    if (line.StartsWith("d", StringComparison.InvariantCultureIgnoreCase))
                     {
                         NetworkBlockModel nbModel = new NetworkBlockModel();
                         nbModel.DirectIp = line.Split(' ')[1];
                         nbModel.Permanent = line.Split(' ')[2].Equals("0");
                         blocks.Add(nbModel);
                     }
-                    else if (line.StartsWith("m"))
+                    else if (line.StartsWith("m", StringComparison.InvariantCultureIgnoreCase))
                     {
                         NetworkBlockModel nbModel = new NetworkBlockModel();
                         nbModel.Mask = line.Split(' ')[1];
@@ -65,6 +61,7 @@ namespace L2dotNET.GameService.Network
                     }
                 }
             }
+
             log.Info($"NetworkBlock: {blocks.Count} blocks.");
         }
 
@@ -80,13 +77,9 @@ namespace L2dotNET.GameService.Network
                     {
                         if (nbi.Permanent)
                             return false;
-                        else
-                        {
-                            if (nbi.TimeEnd.CompareTo(DateTime.Now) == 1)
-                            {
-                                return false;
-                            }
-                        }
+
+                        if (nbi.TimeEnd.CompareTo(DateTime.Now) == 1)
+                            return false;
                     }
 
                 if (nbi.Mask != null)
@@ -107,14 +100,12 @@ namespace L2dotNET.GameService.Network
                             short n = short.Parse(b[c].Split('/')[0]),
                                   x = short.Parse(b[c].Split('/')[1]);
                             short t = short.Parse(a[c]);
-                            d[c] = t >= n && t <= x;
+                            d[c] = (t >= n) && (t <= x);
                         }
                     }
 
                     if (d.Any(u => u))
-                    {
                         return false;
-                    }
                 }
             }
 

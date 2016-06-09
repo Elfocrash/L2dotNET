@@ -15,37 +15,37 @@ namespace L2dotNET.Services
 
         public PlayerModel GetAccountByLogin(int objId)
         {
-            return this.unitOfWork.PlayerRepository.GetAccountByLogin(objId);
+            return unitOfWork.PlayerRepository.GetAccountByLogin(objId);
         }
 
         public bool CheckIfPlayerNameExists(string name)
         {
-            return this.unitOfWork.PlayerRepository.CheckIfPlayerNameExists(name);
+            return unitOfWork.PlayerRepository.CheckIfPlayerNameExists(name);
         }
 
         public void CreatePlayer(PlayerModel player)
         {
-            this.unitOfWork.PlayerRepository.CreatePlayer(player);
+            unitOfWork.PlayerRepository.CreatePlayer(player);
         }
 
         public void UpdatePlayer(PlayerModel player)
         {
-            this.unitOfWork.PlayerRepository.UpdatePlayer(player);
+            unitOfWork.PlayerRepository.UpdatePlayer(player);
         }
 
         public PlayerModel GetPlayerModelBySlotId(string accountName, int slotId)
         {
-            return this.unitOfWork.PlayerRepository.GetPlayerModelBySlotId(accountName, slotId);
+            return unitOfWork.PlayerRepository.GetPlayerModelBySlotId(accountName, slotId);
         }
 
         public bool MarkToDeleteChar(int objId)
         {
-            return this.unitOfWork.PlayerRepository.MarkToDeleteChar(objId);
+            return unitOfWork.PlayerRepository.MarkToDeleteChar(objId);
         }
 
         public bool DeleteCharByObjId(int objId)
         {
-            return this.unitOfWork.PlayerRepository.DeleteCharByObjId(objId);
+            return unitOfWork.PlayerRepository.DeleteCharByObjId(objId);
         }
     }
 }

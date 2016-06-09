@@ -17,12 +17,13 @@ namespace L2dotNET.Repositories.Utils
             try
             {
                 PingReply pingReply = new Ping().Send(host, timeoutMs, new byte[1]);
-                return pingReply != null && pingReply.Status == IPStatus.Success;
+                return (pingReply != null) && (pingReply.Status == IPStatus.Success);
             }
             catch (Exception ex)
             {
                 log.Error($"HostCheck: IsPingSuccessful: {ex.Message}");
             }
+
             return false;
         }
 
@@ -51,6 +52,7 @@ namespace L2dotNET.Repositories.Utils
             {
                 log.Error($"HostCheck: IsLocalIPAddress: {ex.Message}");
             }
+
             return false;
         }
 
@@ -58,12 +60,13 @@ namespace L2dotNET.Repositories.Utils
         {
             try
             {
-                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName));
+                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName, StringComparison.InvariantCultureIgnoreCase));
             }
             catch (Exception ex)
             {
                 log.Error($"HostCheck: ServiceExists: {ex.Message}");
             }
+
             return false;
         }
 
@@ -71,18 +74,19 @@ namespace L2dotNET.Repositories.Utils
         {
             try
             {
-                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName) && service.Status == ServiceControllerStatus.Running);
+                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName, StringComparison.InvariantCultureIgnoreCase) && (service.Status == ServiceControllerStatus.Running));
             }
             catch (Exception ex)
             {
                 log.Error($"HostCheck: IsServiceRunning: {ex.Message}");
             }
+
             return false;
         }
 
         public static void StartService(string serviceName, int timeoutMs)
         {
-            ServiceController service = ServiceController.GetServices().FirstOrDefault(filter => filter.ServiceName.StartsWith(serviceName));
+            ServiceController service = ServiceController.GetServices().FirstOrDefault(filter => filter.ServiceName.StartsWith(serviceName, StringComparison.InvariantCultureIgnoreCase));
 
             if (service == null)
                 return;

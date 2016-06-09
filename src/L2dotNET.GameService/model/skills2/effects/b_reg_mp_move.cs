@@ -29,7 +29,9 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
                 return nothing;
 
             lock (((L2Player)target).specEffects)
+            {
                 ((L2Player)target).specEffects.Remove(ef);
+            }
 
             return nothing;
         }

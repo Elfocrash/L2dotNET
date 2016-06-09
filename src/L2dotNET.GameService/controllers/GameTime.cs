@@ -21,15 +21,11 @@ namespace L2dotNET.GameService.Controllers
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new GameTime();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -40,7 +36,7 @@ namespace L2dotNET.GameService.Controllers
         private readonly GameServerNetworkPacket NightPk = new SunSet();
         private System.Timers.Timer TimeController;
         public DateTime serverStartUp;
-        public static bool Night = false;
+        public static bool Night;
 
         private const int SEC_DAY = 10800,
                           SEC_NIGHT = 3600,

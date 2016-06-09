@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.World
         private readonly int _tileY;
 
         private bool _active;
-        private int _playersCount = 0;
+        private int _playersCount;
 
         public L2WorldRegion(int x, int y)
         {
@@ -67,17 +67,13 @@ namespace L2dotNET.GameService.World
             //if (character.isTeleporting())
             //    return;
             foreach (L2ZoneType zone in _zones)
-            {
                 zone.RevalidateInZone(character);
-            }
         }
 
         public void RemoveFromZones(L2Character character)
         {
             foreach (L2ZoneType zone in _zones)
-            {
                 zone.RemoveCharacter(character);
-            }
         }
 
         public bool ContainsZone(int zoneId)
@@ -144,10 +140,9 @@ namespace L2dotNET.GameService.World
         public bool IsEmptyNeighborhood()
         {
             foreach (L2WorldRegion neighbor in _surroundingRegions)
-            {
                 if (neighbor.GetPlayersCount() != 0)
                     return false;
-            }
+
             return true;
         }
 
@@ -158,50 +153,47 @@ namespace L2dotNET.GameService.World
 
         public void SetActive(bool value)
         {
-            if (_active == value)
-                return;
-
             _active = value;
 
-            if (!value)
-            {
-                foreach (L2Object o in _objects.Values)
-                {
-                    //            if (o is L2Attackable)
-                    //{
-                    //                L2Attackable mob = (L2Attackable)o;
+            //if (!value)
+            //{
+            //    foreach (L2Object o in _objects.Values)
+            //    {
+            //        if (o is L2Attackable)
+            //        {
+            //            L2Attackable mob = (L2Attackable)o;
 
-                    //                // Set target to null and cancel Attack or Cast
-                    //                mob.setTarget(null);
+            //            // Set target to null and cancel Attack or Cast
+            //            mob.setTarget(null);
 
-                    //                // Stop movement
-                    //                mob.stopMove(null);
+            //            // Stop movement
+            //            mob.stopMove(null);
 
-                    //                // Stop all active skills effects in progress on the L2Character
-                    //                mob.stopAllEffects();
+            //            // Stop all active skills effects in progress on the L2Character
+            //            mob.stopAllEffects();
 
-                    //                mob.getAggroList().clear();
-                    //                mob.getAttackByList().clear();
+            //            mob.getAggroList().clear();
+            //            mob.getAttackByList().clear();
 
-                    //                // stop the ai tasks
-                    //                if (mob.hasAI())
-                    //                {
-                    //                    mob.getAI().setIntention(CtrlIntention.IDLE);
-                    //                    mob.getAI().stopAITask();
-                    //                }
-                }
-            }
+            //            // stop the ai tasks
+            //            if (mob.hasAI())
+            //            {
+            //                mob.getAI().setIntention(CtrlIntention.IDLE);
+            //                mob.getAI().stopAITask();
+            //            }
+            //        }
+            //    }
 
-            else
-            {
-                //for (L2Object o : _objects.values())
-                //{
-                // if (o instanceof L2Attackable)
-                //  ((L2Attackable) o).getStatus().startHpMpRegeneration();
-                // else if (o instanceof L2Npc)
-                //  ((L2Npc) o).startRandomAnimationTimer();
-                //         }
-            }
+            //else
+            //{
+            //        for (L2Object o : _objects.values())
+            //        {
+            //            if (o instanceof L2Attackable)
+            //      ((L2Attackable)o).getStatus().startHpMpRegeneration();
+            //     else if (o instanceof L2Npc)
+            //      ((L2Npc)o).startRandomAnimationTimer();
+            //    }
+            //}
         }
 
         public void AddVisibleObject(L2Object obj)

@@ -63,6 +63,7 @@ namespace L2dotNET.GameService.Commands.Admin
                         int[] rloc = rndXYZ();
                         // NpcTable.getInstance().spawnNpc("lector", rloc[0], rloc[1], rloc[3], new Random().Next(65000));
                     }
+
                     break;
             }
 
@@ -111,7 +112,7 @@ namespace L2dotNET.GameService.Commands.Admin
                         long dx = p1x - p[0],
                              dy = p1y - p[1];
                         double distance = Math.Sqrt(dx * dx + dy * dy);
-                        if (curdistance == -1 || distance < curdistance)
+                        if ((curdistance == -1) || (distance < curdistance))
                         {
                             curdistance = distance;
                             p[2] = np._z1 + 10;

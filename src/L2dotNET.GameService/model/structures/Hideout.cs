@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq;
 using log4net;
 using L2dotNET.GameService.Model.Npcs.Ai;
-using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Zones;
 using L2dotNET.GameService.Model.Zones.Classes;
 using L2dotNET.GameService.Model.Zones.Forms;
@@ -29,10 +27,7 @@ namespace L2dotNET.GameService.Model.Structures
 
         public void Banish()
         {
-            foreach (L2Player player in zone.ObjectsInside.Values.OfType<L2Player>().Where(player => player.ClanId != ownerId))
-            {
-                player.teleport(banishLoc[0], banishLoc[1], banishLoc[2]);
-            }
+            //foreach (L2Player player in zone.ObjectsInside.Values.OfType<L2Player>().Where(player => player.ClanId != ownerId)) { }
         }
 
         private hideout_zone zone;

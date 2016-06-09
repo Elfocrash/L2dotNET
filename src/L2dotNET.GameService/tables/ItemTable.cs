@@ -19,15 +19,11 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new ItemTable();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -41,7 +37,7 @@ namespace L2dotNET.GameService.Tables
                 while (!sreader.EndOfStream)
                 {
                     string line = sreader.ReadLine() ?? string.Empty;
-                    if (line.Length == 0 || line.StartsWith("#"))
+                    if ((line.Length == 0) || line.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
                         continue;
 
                     string[] pt = line.Split('\t');
@@ -60,22 +56,27 @@ namespace L2dotNET.GameService.Tables
                             case "legs":
                                 foreach (string str in value.Split(' '))
                                     set.addLeg(Convert.ToInt32(str));
+
                                 break;
                             case "helm":
                                 foreach (string str in value.Split(' '))
                                     set.addHelm(Convert.ToInt32(str));
+
                                 break;
                             case "gloves":
                                 foreach (string str in value.Split(' '))
                                     set.addGloves(Convert.ToInt32(str));
+
                                 break;
                             case "boots":
                                 foreach (string str in value.Split(' '))
                                     set.addBoot(Convert.ToInt32(str));
+
                                 break;
                             case "shield":
                                 foreach (string str in value.Split(' '))
                                     set.addShield(Convert.ToInt32(str));
+
                                 break;
 
                             case "set1":
@@ -100,7 +101,7 @@ namespace L2dotNET.GameService.Tables
                 while (!sreader.EndOfStream)
                 {
                     string line = sreader.ReadLine() ?? string.Empty;
-                    if (line.Length == 0 || line.StartsWith("#"))
+                    if ((line.Length == 0) || line.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
                         continue;
 
                     string[] pt = line.Split('\t');
@@ -342,7 +343,7 @@ namespace L2dotNET.GameService.Tables
                 while (!sreader.EndOfStream)
                 {
                     string line = sreader.ReadLine() ?? string.Empty;
-                    if (line.Length == 0 || line.StartsWith("#"))
+                    if ((line.Length == 0) || line.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
                         continue;
 
                     string[] pt = line.Split('>');
@@ -397,11 +398,11 @@ namespace L2dotNET.GameService.Tables
                      b3 = false;
                 foreach (TSkill skill in owner._skills.Values)
                 {
-                    if (set.set1Id > 0 && skill.skill_id == set.set1Id)
+                    if ((set.set1Id > 0) && (skill.skill_id == set.set1Id))
                         b1 = true;
-                    if (set.set2Id > 0 && skill.skill_id == set.set2Id)
+                    if ((set.set2Id > 0) && (skill.skill_id == set.set2Id))
                         b2 = true;
-                    if (set.set3Id > 0 && skill.skill_id == set.set3Id)
+                    if ((set.set3Id > 0) && (skill.skill_id == set.set3Id))
                         b3 = true;
 
                     if (b1 && b2 && b3)

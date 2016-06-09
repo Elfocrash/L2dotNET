@@ -60,12 +60,12 @@ namespace L2dotNET.LoginService.Model
 
         public bool TestMode
         {
-            get { return Thread != null ? Thread.TestMode : false; }
+            get { return (Thread != null) && Thread.TestMode; }
         }
 
         public bool GmOnly
         {
-            get { return Thread != null ? Thread.GmOnly : false; }
+            get { return (Thread != null) && Thread.GmOnly; }
         }
     }
 }

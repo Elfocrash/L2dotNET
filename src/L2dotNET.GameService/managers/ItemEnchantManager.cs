@@ -150,25 +150,23 @@ namespace L2dotNET.GameService.Managers
                     next = item.Template.CrystallGrade == ItemTemplate.L2ItemGrade.a;
                     break;
                 case ItemTemplate.L2ItemGrade.s:
-                    next = item.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s || item.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s80 || item.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s84 || item.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s86;
+                    next = (item.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s) || (item.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s80) || (item.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s84) || (item.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s86);
                     break;
             }
 
             if (next)
-            {
                 switch (dat.Target)
                 {
                     case EnchantTarget.weapon:
                         next = item.Template.Type == ItemTemplate.L2ItemType.weapon;
                         break;
                     case EnchantTarget.armor:
-                        next = item.Template.Type == ItemTemplate.L2ItemType.armor || item.Template.Type == ItemTemplate.L2ItemType.accessary;
+                        next = (item.Template.Type == ItemTemplate.L2ItemType.armor) || (item.Template.Type == ItemTemplate.L2ItemType.accessary);
                         break;
                     case EnchantTarget.yogi_staff:
                         next = item.Template.ItemID == 13539; //Staff of Master Yogi
                         break;
                 }
-            }
 
             if (!next)
             {
@@ -212,22 +210,20 @@ namespace L2dotNET.GameService.Managers
                     next = player.EnchantItem.Template.CrystallGrade == ItemTemplate.L2ItemGrade.a;
                     break;
                 case ItemTemplate.L2ItemGrade.s:
-                    next = player.EnchantItem.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s || player.EnchantItem.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s80 || player.EnchantItem.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s84 || player.EnchantItem.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s86;
+                    next = (player.EnchantItem.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s) || (player.EnchantItem.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s80) || (player.EnchantItem.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s84) || (player.EnchantItem.Template.CrystallGrade == ItemTemplate.L2ItemGrade.s86);
                     break;
             }
 
             if (next)
-            {
                 switch (dat.Target)
                 {
                     case EnchantTarget.weapon:
                         next = player.EnchantItem.Template.Type == ItemTemplate.L2ItemType.weapon;
                         break;
                     case EnchantTarget.armor:
-                        next = player.EnchantItem.Template.Type == ItemTemplate.L2ItemType.armor || player.EnchantItem.Template.Type == ItemTemplate.L2ItemType.accessary;
+                        next = (player.EnchantItem.Template.Type == ItemTemplate.L2ItemType.armor) || (player.EnchantItem.Template.Type == ItemTemplate.L2ItemType.accessary);
                         break;
                 }
-            }
 
             if (next)
             {
@@ -244,7 +240,7 @@ namespace L2dotNET.GameService.Managers
                         break;
                 }
 
-                next = player.EnchantItem.Enchant >= min && player.EnchantItem.Enchant <= max;
+                next = (player.EnchantItem.Enchant >= min) && (player.EnchantItem.Enchant <= max);
             }
 
             if (!next)

@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public CharacterSelected(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _charSlot;

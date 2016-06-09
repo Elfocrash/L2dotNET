@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             ((L2Player)target).specEffects.Add(ef);
 
             TEffectResult ter = new TEffectResult();
-            ter.addSU(StatusUpdate.EVASION, ((L2Character)target).CharacterStat.getStat(TEffectType.b_evasion));
+            ter.addSU(StatusUpdate.EVASION, target.CharacterStat.getStat(TEffectType.b_evasion));
             return nothing;
         }
 
@@ -32,10 +32,12 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
                 return nothing;
 
             lock (((L2Player)target).specEffects)
+            {
                 ((L2Player)target).specEffects.Remove(ef);
+            }
 
             TEffectResult ter = new TEffectResult();
-            ter.addSU(StatusUpdate.EVASION, ((L2Character)target).CharacterStat.getStat(TEffectType.b_evasion));
+            ter.addSU(StatusUpdate.EVASION, target.CharacterStat.getStat(TEffectType.b_evasion));
             return nothing;
         }
     }

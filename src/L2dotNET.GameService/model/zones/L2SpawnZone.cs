@@ -7,8 +7,8 @@ namespace L2dotNET.GameService.Model.Zones
 {
     public class L2SpawnZone : L2ZoneType
     {
-        private List<Location> _spawnLocs = null;
-        private List<Location> _chaoticSpawnLocs = null;
+        private List<Location> _spawnLocs;
+        private List<Location> _chaoticSpawnLocs;
 
         public L2SpawnZone(int id) : base(id) { }
 

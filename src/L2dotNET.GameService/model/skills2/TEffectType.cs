@@ -119,6 +119,6 @@
         p_sp_modify,
         p_crystal_grade_modify,
         p_cubic_mastery,
-        cub_heal,
+        cub_heal
     }
 }

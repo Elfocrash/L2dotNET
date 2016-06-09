@@ -33,11 +33,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
                 byte blocked = 0;
                 if (passive == 0)
-                {
                     if (_blockAct == 1)
                         blocked = 1;
                     else
-                    {
                         switch (skill.is_magic)
                         {
                             case 0:
@@ -50,8 +48,6 @@ namespace L2dotNET.GameService.Network.Serverpackets
                                 blocked = 0;
                                 break;
                         }
-                    }
-                }
 
                 writeC(blocked);
             }

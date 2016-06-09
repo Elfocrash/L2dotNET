@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Npcs.Ai;
@@ -13,7 +14,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestBypassToServer(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private string _alias;
@@ -62,7 +63,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 npc.onTeleportRequest(player);
             }
-            else if (_alias.StartsWith("menu_select?"))
+            else if (_alias.StartsWith("menu_select?", StringComparison.InvariantCultureIgnoreCase))
             {
                 npc = getNpc();
 
@@ -88,7 +89,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 npc = getNpc();
                 QuestManager.Instance.TalkSelection(player, npc);
             }
-            else if (_alias.StartsWith("quest_accept?"))
+            else if (_alias.StartsWith("quest_accept?", StringComparison.InvariantCultureIgnoreCase))
             {
                 npc = getNpc();
                 _alias = _alias.Replace(" ", "");
@@ -97,7 +98,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 QuestManager.Instance.QuestAccept(player, npc, qid);
             }
-            else if (_alias.StartsWith("quest_continue?"))
+            else if (_alias.StartsWith("quest_continue?", StringComparison.InvariantCultureIgnoreCase))
             {
                 npc = getNpc();
                 _alias = _alias.Replace(" ", "");
@@ -106,7 +107,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 QuestManager.Instance.Quest_continue(player, npc, qid);
             }
-            else if (_alias.StartsWith("quest_tryaccept?"))
+            else if (_alias.StartsWith("quest_tryaccept?", StringComparison.InvariantCultureIgnoreCase))
             {
                 npc = getNpc();
                 _alias = _alias.Replace(" ", "");
@@ -115,7 +116,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 QuestManager.Instance.Quest_tryaccept(player, npc, qid);
             }
-            else if (_alias.Equals("deposit"))
+            else if (_alias.Equals("deposit", StringComparison.InvariantCultureIgnoreCase))
             {
                 npc = getNpc();
                 npc.showPrivateWarehouse(player);
@@ -140,7 +141,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 npc = getNpc();
                 npc.showSkillLearn(player, false);
             }
-            else if (_alias.StartsWith("create_pledge?"))
+            else if (_alias.StartsWith("create_pledge?", StringComparison.InvariantCultureIgnoreCase))
             {
                 npc = getNpc();
                 //bypass -h create_pledge?pledge_name= $pledge_name
@@ -150,7 +151,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 grandmaster_total.createClan(player, name, npc);
             }
-            else if (_alias.StartsWith("teleport_next?"))
+            else if (_alias.StartsWith("teleport_next?", StringComparison.InvariantCultureIgnoreCase))
             {
                 npc = getNpc();
                 string x1 = _alias.Split('?')[1];
@@ -160,7 +161,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 npc.UseTeleporter(player, ask, reply);
             }
-            else if (_alias.StartsWith("petitionlink?"))
+            else if (_alias.StartsWith("petitionlink?", StringComparison.InvariantCultureIgnoreCase))
             {
                 PetitionManager.getInstance().petitionlink(player, _alias.Split('?')[1]);
             }

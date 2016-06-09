@@ -59,9 +59,9 @@ namespace L2dotNET.GameService.Model.Inventory
         public int[][] _paperdoll = new int[EQUIPITEM_Max][];
         public int[] _paperdollVisual = new int[EQUIPITEM_Max];
 
-        private readonly byte PDOLL_ID = 0;
-        private readonly byte PDOLL_OBJID = 1;
-        private readonly byte PDOLL_AUGMENT = 2;
+        private const byte PDOLL_ID = 0;
+        private const byte PDOLL_OBJID = 1;
+        private const byte PDOLL_AUGMENT = 2;
 
         public L2Player _owner;
 
@@ -69,7 +69,7 @@ namespace L2dotNET.GameService.Model.Inventory
         {
             for (byte i = 0; i < EQUIPITEM_Max; i++)
             {
-                _paperdoll[i] = new int[] { 0, 0, 0 };
+                _paperdoll[i] = new[] { 0, 0, 0 };
                 _paperdollVisual[i] = 0;
             }
         }
@@ -272,7 +272,7 @@ namespace L2dotNET.GameService.Model.Inventory
                 if (msg)
                 {
                     SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_PICKED_UP_S1);
-                    if (item.Enchant > 0 && item.Template.ItemID != 4443)
+                    if ((item.Enchant > 0) && (item.Template.ItemID != 4443))
                     {
                         sm = new SystemMessage(SystemMessage.SystemMessageId.OBTAINED_S1_S2);
                         sm.AddNumber(item.Enchant);
@@ -367,7 +367,7 @@ namespace L2dotNET.GameService.Model.Inventory
                 iu = new InventoryUpdate();
 
             List<object[]> unequipAction = new List<object[]>();
-            int sbt = item != null ? item.Template.BodyPartId() : -1;
+            //int sbt = item != null ? item.Template.BodyPartId() : -1;
             byte uiUpdate = 0;
             switch (pdollId)
             {
@@ -404,7 +404,7 @@ namespace L2dotNET.GameService.Model.Inventory
                     if (_paperdoll[EQUIPITEM_RHand][PDOLL_OBJID] > 0)
                     {
                         L2Item temp = getByObject(_paperdoll[EQUIPITEM_RHand][PDOLL_OBJID]);
-                        if (temp != null && temp.Template.BodyPartId() == SBT_RLHAND)
+                        if ((temp != null) && (temp.Template.BodyPartId() == SBT_RLHAND))
                         {
                             unequipAction.Add(new object[] { temp, EQUIPITEM_RHand });
                             uiUpdate = 1;
@@ -457,7 +457,6 @@ namespace L2dotNET.GameService.Model.Inventory
             }
 
             if (unequipAction.Count > 0)
-            {
                 foreach (object[] oa in unequipAction)
                 {
                     L2Item temp = oa[0] as L2Item;
@@ -473,7 +472,6 @@ namespace L2dotNET.GameService.Model.Inventory
                     _paperdoll[dollId][PDOLL_OBJID] = 0;
                     _paperdoll[dollId][PDOLL_AUGMENT] = 0;
                 }
-            }
 
             if (item == null)
             {
@@ -503,13 +501,11 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public L2Item getByObject(int obj)
         {
-            return (L2Item)Items[obj];
+            return Items[obj];
         }
 
         public int getPaperdollIdByMask(int mask)
         {
-            int doll = -1;
-
             switch (mask)
             {
                 case SBT_UNDERWEAR:
@@ -551,7 +547,7 @@ namespace L2dotNET.GameService.Model.Inventory
                     return EQUIPITEM_Hair2;
             }
 
-            return doll;
+            return -1;
         }
 
         public int getPaperdollId(ItemTemplate item)
@@ -637,7 +633,9 @@ namespace L2dotNET.GameService.Model.Inventory
         {
             item.sql_delete();
             lock (Items)
+            {
                 Items.Remove(item.ObjID);
+            }
 
             if (item.Template.Weight > 0)
                 _owner.updateWeight();
@@ -677,12 +675,8 @@ namespace L2dotNET.GameService.Model.Inventory
             byte count = (byte)px.Length,
                  ctx = 0;
             foreach (L2Item item in Items.Values)
-            {
                 if (px.Any(i => item.Template.ItemID == i))
-                {
                     ctx++;
-                }
-            }
 
             return count == ctx;
         }
@@ -691,19 +685,15 @@ namespace L2dotNET.GameService.Model.Inventory
         {
             byte ctx = 0;
             foreach (L2Item item in Items.Values)
-            {
                 if (px.Any(i => item.Template.ItemID == i))
-                {
                     ctx++;
-                }
-            }
 
             return ctx > 0;
         }
 
         public void destroyItem(int id, long count, bool msg, bool update)
         {
-            long reqc = count;
+            //long reqc = count;
             InventoryUpdate iu = null;
             if (update)
                 iu = new InventoryUpdate();
@@ -749,42 +739,34 @@ namespace L2dotNET.GameService.Model.Inventory
 
                     break;
                 }
-                else
+
+                if (count == 1)
                 {
-                    if (count == 1)
-                    {
-                        nulled.Add(item.ObjID);
+                    nulled.Add(item.ObjID);
 
-                        if (update)
-                            iu.addDelItem(item);
+                    if (update)
+                        iu.addDelItem(item);
 
-                        if (msg)
-                        {
-                            sm.AddItemName(item.Template.ItemID);
-                        }
+                    if (msg)
+                        sm.AddItemName(item.Template.ItemID);
 
-                        item.sql_delete();
-                        break;
-                    }
-                    else
-                    {
-                        nonstackmass = true;
-                        iditem = item.Template.ItemID;
-                        nulled.Add(item.ObjID);
-                        if (update)
-                            iu.addDelItem(item);
-
-                        item.sql_delete();
-                    }
+                    item.sql_delete();
+                    break;
                 }
+
+                nonstackmass = true;
+                iditem = item.Template.ItemID;
+                nulled.Add(item.ObjID);
+                if (update)
+                    iu.addDelItem(item);
+
+                item.sql_delete();
             }
 
             lock (Items)
             {
                 foreach (int idd in nulled)
-                {
                     Items.Remove(idd);
-                }
             }
 
             if (update)
@@ -856,9 +838,7 @@ namespace L2dotNET.GameService.Model.Inventory
                         iu.addDelItem(item);
 
                     if (msg)
-                    {
                         sm.AddItemName(item.Template.ItemID);
-                    }
 
                     item.sql_delete();
                 }
@@ -927,25 +907,23 @@ namespace L2dotNET.GameService.Model.Inventory
 
                     break;
                 }
-                else
+
+                nulled.Add(item.ObjID);
+
+                if (update)
+                    iu.addDelItem(item);
+
+                if (msg)
                 {
-                    nulled.Add(item.ObjID);
+                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
+                    sm.AddItemName(item.Template.ItemID);
+                    sm.AddNumber(1);
 
-                    if (update)
-                        iu.addDelItem(item);
-
-                    if (msg)
-                    {
-                        SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_S1_DISAPPEARED);
-                        sm.AddItemName(item.Template.ItemID);
-                        sm.AddNumber(1);
-
-                        _owner.sendPacket(sm);
-                    }
-
-                    item.sql_delete();
-                    break;
+                    _owner.sendPacket(sm);
                 }
+
+                item.sql_delete();
+                break;
             }
 
             lock (Items)
@@ -965,9 +943,7 @@ namespace L2dotNET.GameService.Model.Inventory
             InventoryUpdate iuMe = update ? new InventoryUpdate() : null;
             List<int> nulled = new List<int>();
             foreach (L2Item item in target.Inventory.Items.Values)
-            {
                 foreach (long[] itemd in items)
-                {
                     if (item.ObjID == itemd[0])
                     {
                         bool ex = Items.Values.Any(itp => itp.Template.ItemID == item.Template.ItemID);
@@ -1049,15 +1025,11 @@ namespace L2dotNET.GameService.Model.Inventory
                             }
                         }
                     }
-                }
-            }
 
             lock (target.Inventory.Items)
             {
                 foreach (int itemd in nulled)
-                {
                     target.Inventory.Items.Remove(itemd);
-                }
             }
 
             if (update)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using log4net;
@@ -20,15 +21,11 @@ namespace L2dotNET.LoginService.Managers
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new NetworkRedirect();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -43,7 +40,7 @@ namespace L2dotNET.LoginService.Managers
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine() ?? string.Empty;
-                    if (line.Length == 0 || line.StartsWith("//"))
+                    if ((line.Length == 0) || line.StartsWith("//", StringComparison.InvariantCultureIgnoreCase))
                         continue;
 
                     NetRedClass i = new NetRedClass();
@@ -58,6 +55,7 @@ namespace L2dotNET.LoginService.Managers
                         redirects.Add(i);
                 }
             }
+
             log.Info($"NetworkRedirect: {redirects.Count} redirects. Global is {(GlobalRedirection == null ? "disabled" : "enabled")}");
         }
 
@@ -81,7 +79,7 @@ namespace L2dotNET.LoginService.Managers
                         byte n = byte.Parse(b[c].Split('/')[0]),
                              x = byte.Parse(b[c].Split('/')[1]);
                         byte t = byte.Parse(a[c]);
-                        d[c] = (t >= n && t <= x) ? (byte)1 : (byte)0;
+                        d[c] = ((t >= n) && (t <= x)) ? (byte)1 : (byte)0;
                     }
                 }
 
@@ -114,7 +112,7 @@ namespace L2dotNET.LoginService.Managers
                             byte n = byte.Parse(b[c].Split('/')[0]),
                                  x = byte.Parse(b[c].Split('/')[1]);
                             byte t = byte.Parse(a[c]);
-                            d[c] = (t >= n && t <= x) ? (byte)1 : (byte)0;
+                            d[c] = ((t >= n) && (t <= x)) ? (byte)1 : (byte)0;
                         }
                     }
 

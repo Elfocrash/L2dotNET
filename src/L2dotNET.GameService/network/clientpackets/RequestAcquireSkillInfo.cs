@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestAcquireSkillInfo(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int _id;
@@ -48,7 +48,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 case 1:
                 {
                     if (skill.itemid > 0)
-                        asi._reqs.Add(new int[] { 4, skill.itemid, (int)skill.itemcount, 0 });
+                        asi._reqs.Add(new[] { 4, skill.itemid, (int)skill.itemcount, 0 });
                 }
                     break;
             }

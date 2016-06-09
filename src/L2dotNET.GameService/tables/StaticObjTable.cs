@@ -18,15 +18,11 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new StaticObjTable();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -44,7 +40,7 @@ namespace L2dotNET.GameService.Tables
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine() ?? string.Empty;
-                    if (line.Length == 0 || line.StartsWith("#"))
+                    if ((line.Length == 0) || line.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
                         continue;
 
                     string[] pt = line.Split('\t');
@@ -98,7 +94,6 @@ namespace L2dotNET.GameService.Tables
                                 case "unlock":
                                 {
                                     foreach (string str in value.Split(' '))
-                                    {
                                         switch (str)
                                         {
                                             case "trigger":
@@ -111,8 +106,8 @@ namespace L2dotNET.GameService.Tables
                                                 obj.UnlockNpc = true;
                                                 break;
                                         }
-                                    }
                                 }
+
                                     break;
                             }
                         }
@@ -121,6 +116,7 @@ namespace L2dotNET.GameService.Tables
                     }
                 }
             }
+
             foreach (L2StaticObject o in objects.Values)
             {
                 L2World.Instance.AddObject(o);

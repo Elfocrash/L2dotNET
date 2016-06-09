@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public EnterWorld(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private int[][] tracert = new int[5][];
@@ -46,9 +46,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             AnnouncementManager.Instance.OnEnter(player);
 
             foreach (L2Item item in player.Inventory.Items.Values.Where(item => item._isEquipped != 0))
-            {
                 item.notifyStats(player);
-            }
 
             player.StartRegeneration();
             // player.sendItemList(false);
@@ -58,9 +56,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.updateReuse();
 
             if (player.ClanId > 0)
-            {
                 ClanTable.Instance.Apply(player);
-            }
 
             player.sendPacket(new ExStorageMaxCount(player));
             // player.sendPacket(new ExBasicActionList());

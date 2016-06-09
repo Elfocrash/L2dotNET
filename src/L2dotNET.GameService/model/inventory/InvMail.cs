@@ -21,9 +21,7 @@ namespace L2dotNET.GameService.Model.Inventory
             InventoryUpdate iu = update ? new InventoryUpdate() : null;
             List<int> nulled = new List<int>();
             foreach (L2Item item in player.Inventory.Items.Values)
-            {
                 foreach (int[] itemd in items)
-                {
                     if (item.ObjID == itemd[0])
                     {
                         bool ex = Items.Values.Any(itp => itp.Template.ItemID == item.Template.ItemID);
@@ -41,6 +39,7 @@ namespace L2dotNET.GameService.Model.Inventory
                                         itp.sql_update();
                                         break;
                                     }
+
                                     item.sql_delete();
                                 }
                                 else
@@ -92,15 +91,11 @@ namespace L2dotNET.GameService.Model.Inventory
                                 iu.addModItem(item);
                         }
                     }
-                }
-            }
 
             lock (player.Inventory.Items)
             {
                 foreach (int itemd in nulled)
-                {
                     player.Inventory.Items.Remove(itemd);
-                }
             }
         }
 
@@ -114,7 +109,6 @@ namespace L2dotNET.GameService.Model.Inventory
             InventoryUpdate iu = update ? new InventoryUpdate() : null;
             List<int> nulled = new List<int>();
             foreach (L2Item item in Items.Values)
-            {
                 foreach (int[] itemd in transfer)
                 {
                     if (item.ObjID == itemd[0])
@@ -127,7 +121,6 @@ namespace L2dotNET.GameService.Model.Inventory
                             {
                                 nulled.Add(itemd[0]);
                                 if (ex)
-                                {
                                     foreach (L2Item itp in player.getAllItems().Where(itp => itp.Template.ItemID == item.Template.ItemID))
                                     {
                                         itp.Count += item.Count;
@@ -137,7 +130,6 @@ namespace L2dotNET.GameService.Model.Inventory
 
                                         break;
                                     }
-                                }
 
                                 item.sql_delete();
                             }
@@ -194,14 +186,11 @@ namespace L2dotNET.GameService.Model.Inventory
                     foreach (QuestInfo qi in _owner._quests.Where(qi => !qi.completed))
                         qi._template.onEarnItem(_owner, qi.stage, item.Template.ItemID);
                 }
-            }
 
             lock (Items)
             {
                 foreach (int itemd in nulled)
-                {
                     Items.Remove(itemd);
-                }
             }
         }
     }

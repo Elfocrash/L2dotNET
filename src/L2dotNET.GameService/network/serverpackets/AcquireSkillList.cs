@@ -14,8 +14,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public static int ESTT_TRANSFORM = 4;
         public static int ESTT_SUBJOB = 5; // CT1.5
         public static int ESTT_COLLECT = 6; // CT2 Final
-        public static int ESTT_BISHOP_SHARING = 7; // CT2.5 Skill Sharing	
-        public static int ESTT_ELDER_SHARING = 8; // CT2.5 Skill Sharing	
+        public static int ESTT_BISHOP_SHARING = 7; // CT2.5 Skill Sharing
+        public static int ESTT_ELDER_SHARING = 8; // CT2.5 Skill Sharing
         public static int ESTT_SILEN_ELDER_SHARING = 9; // CT2.5 Skill Sharing
         private readonly SortedList<int, TAcquireSkill> _list;
 

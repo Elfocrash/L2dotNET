@@ -36,7 +36,7 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y, int z)
         {
-            if (z < _minZ || z > _maxZ)
+            if ((z < _minZ) || (z > _maxZ))
                 return false;
 
             int dx = x - _x;

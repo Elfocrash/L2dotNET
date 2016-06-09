@@ -18,15 +18,11 @@ namespace L2dotNET.GameService
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new ClientManager();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -54,9 +50,11 @@ namespace L2dotNET.GameService
                     client.Close();
                     return;
                 }
-                else
-                    lock (_flood)
-                        _flood.Remove(ip);
+
+                lock (_flood)
+                {
+                    _flood.Remove(ip);
+                }
             }
 
             _flood.Add(ip, DateTime.Now.AddMilliseconds(3000));
@@ -77,7 +75,9 @@ namespace L2dotNET.GameService
         public void terminate(string sock)
         {
             lock (clients)
+            {
                 clients.Remove(sock);
+            }
 
             log.Info($"NetController: {clients.Count} active connections");
         }

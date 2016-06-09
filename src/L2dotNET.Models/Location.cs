@@ -30,16 +30,16 @@
 
         public Location(Location loc)
         {
-            this.x = loc.X;
-            this.y = loc.Y;
-            this.z = loc.Z;
+            x = loc.X;
+            y = loc.Y;
+            z = loc.Z;
         }
 
         public void Set(int locX, int locY, int locZ)
         {
-            this.x = locX;
-            this.y = locY;
-            this.z = locZ;
+            x = locX;
+            y = locY;
+            z = locZ;
         }
 
         public void Clear()
@@ -56,6 +56,7 @@
                 Location loc = (Location)obj;
                 return (loc.X.Equals(x) && loc.Y.Equals(y) && loc.Z.Equals(z));
             }
+
             return false;
         }
 

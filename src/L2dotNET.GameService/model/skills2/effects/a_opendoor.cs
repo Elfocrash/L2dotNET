@@ -12,8 +12,8 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
         public override void build(string str)
         {
-            this.level = Convert.ToInt32(str.Split(' ')[1]);
-            this.rate = Convert.ToInt32(str.Split(' ')[2]);
+            level = Convert.ToInt32(str.Split(' ')[1]);
+            rate = Convert.ToInt32(str.Split(' ')[2]);
         }
 
         public override TEffectResult onStart(L2Character caster, L2Character target)
@@ -22,14 +22,10 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             {
                 L2Door door = (L2Door)target;
                 if (door.Level <= level)
-                {
                     if (new Random().Next(100) < rate)
-                    {
                         door.OpenForTime();
-                    }
                     else
                         caster.sendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_UNLOCK_DOOR);
-                }
                 else
                     caster.sendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_UNLOCK_DOOR);
             }

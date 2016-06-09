@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
         {
             _enabled = Template.DefaultStatus;
 
-            if (_enabled && Template._unit_tick > 0)
+            if (_enabled && (Template._unit_tick > 0))
                 startTimer();
         }
 
@@ -30,7 +30,6 @@ namespace L2dotNET.GameService.Model.Zones.Classes
                 return;
 
             foreach (L2Object o in ObjectsInside.Values)
-            {
                 if (o is L2Player)
                 {
                     if (Template._target == ZoneTemplate.ZoneTarget.npc)
@@ -40,24 +39,19 @@ namespace L2dotNET.GameService.Model.Zones.Classes
                 }
                 else if (o is L2Warrior)
                 {
-                    if (Template._target == ZoneTemplate.ZoneTarget.pc || Template._target == ZoneTemplate.ZoneTarget.only_pc)
+                    if ((Template._target == ZoneTemplate.ZoneTarget.pc) || (Template._target == ZoneTemplate.ZoneTarget.only_pc))
                         continue;
 
                     affect((L2Character)o);
                 }
-            }
         }
 
         private void affect(L2Character target)
         {
             Random rn = new Random();
             if (Template._skills != null)
-            {
                 foreach (TSkill sk in Template._skills.Where(sk => rn.Next(0, 100) <= Template._skill_prob))
-                {
                     target.addAbnormal(sk, target, true, false);
-                }
-            }
 
             if (Template._skill != null)
             {
@@ -68,16 +62,17 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             }
 
             //надо бы как то найти и вынести эту фичу. она недокументирована
-            if (Template.Name.StartsWith("[spa_") && Template.Name.EndsWith("1]"))
+            if (Template.Name.StartsWith("[spa_", StringComparison.InvariantCultureIgnoreCase) && Template.Name.EndsWith("1]", StringComparison.InvariantCultureIgnoreCase))
             {
                 if (rn.Next(0, 100) > Template._skill_prob)
                     return;
 
-                int a = 4551,
-                    b = 4552,
-                    c = 4553,
-                    d = 4554,
-                    x1 = 0,
+                const int a = 4551,
+                          b = 4552,
+                          c = 4553,
+                          d = 4554;
+
+                int x1 = 0,
                     x2 = 0;
                 int id = int.Parse(Template.Name.Substring(5).Replace("]", ""));
 

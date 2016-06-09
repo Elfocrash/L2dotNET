@@ -20,9 +20,7 @@ namespace L2dotNET.GameService.Model.Skills2.Conds
             L2Item item = player.Inventory.getWeapon();
 
             if (item != null)
-            {
                 return allowed.Any(mask => mask.Equals(item.Template.WeaponType.ToString()));
-            }
 
             return false;
         }

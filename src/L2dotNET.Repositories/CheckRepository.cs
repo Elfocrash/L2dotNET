@@ -26,11 +26,11 @@ namespace L2dotNET.Repositories
 
         public CheckRepository()
         {
-            this.db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
+            db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
 
-            MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(this.db.ConnectionString);
-            this.host = connStrBuilder.Server;
-            this.database = connStrBuilder.Database;
+            MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(db.ConnectionString);
+            host = connStrBuilder.Server;
+            database = connStrBuilder.Database;
         }
 
         public bool PreCheckRepository()
@@ -45,11 +45,11 @@ namespace L2dotNET.Repositories
 
         private bool CheckDatabaseHostPing()
         {
-            log.Info($"Checking ping to database host...");
+            log.Info("Checking ping to database host...");
 
             bool isHostPinging = HostCheck.IsPingSuccessful(host, PING_TIMEOUT_MS);
 
-            for (int i = 1; !isHostPinging && i <= PING_RETRY_ATTEMPTS; i++)
+            for (int i = 1; !isHostPinging && (i <= PING_RETRY_ATTEMPTS); i++)
             {
                 log.Error($"Ping to database host '{host}' has FAILED!");
                 log.Warn($"Retrying to ping...Retry attempt: {i}.");
@@ -72,20 +72,20 @@ namespace L2dotNET.Repositories
         {
             if (HostCheck.IsLocalIPAddress(host))
             {
-                log.Info($"Database host running at localhost.");
-                log.Info($"Checking if MySQL Service is running at localhost...");
+                log.Info("Database host running at localhost.");
+                log.Info("Checking if MySQL Service is running at localhost...");
 
                 if (!HostCheck.ServiceExists(MYSQL_SERVICE_NAME))
                 {
-                    log.Error($"MySQL Service does not exist at localhost Windows Services!");
+                    log.Error("MySQL Service does not exist at localhost Windows Services!");
                     return false;
                 }
 
                 bool isMySQLServiceRunning = HostCheck.IsServiceRunning(MYSQL_SERVICE_NAME);
 
-                for (int i = 1; !isMySQLServiceRunning && i <= MYSQL_SERVICE_RETRY_ATTEMPTS; i++)
+                for (int i = 1; !isMySQLServiceRunning && (i <= MYSQL_SERVICE_RETRY_ATTEMPTS); i++)
                 {
-                    log.Error($"MySQL Service was not found running at localhost!");
+                    log.Error("MySQL Service was not found running at localhost!");
                     log.Warn($"Trying to start MySQL service...Retry attempt: {i}.");
 
                     HostCheck.StartService(MYSQL_SERVICE_NAME, MYSQL_SERVICE_START_TIMEOUT_MS);
@@ -100,22 +100,20 @@ namespace L2dotNET.Repositories
                 }
 
                 if (isMySQLServiceRunning)
-                    log.Info($"MySQL Service running at localhost.");
+                    log.Info("MySQL Service running at localhost.");
                 else
-                    log.Error($"MySQL Service was not found running at localhost!");
+                    log.Error("MySQL Service was not found running at localhost!");
 
                 return isMySQLServiceRunning;
             }
-            else
-            {
-                log.Info($"Database host NOT running at localhost. MySQL Service check skipped.");
-                return true;
-            }
+
+            log.Info("Database host NOT running at localhost. MySQL Service check skipped.");
+            return true;
         }
 
         private bool CheckDatabaseQuery()
         {
-            log.Info($"Checking if query to database works...");
+            log.Info("Checking if query to database works...");
 
             bool isQuerySuccessful = TryQueryDatabase();
 
@@ -131,12 +129,13 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return this.db.Query("SELECT 1").Any();
+                return db.Query("SELECT 1").Any();
             }
             catch (MySqlException ex)
             {
                 log.Error($"Method: {"TryQueryDatabase"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
             }
+
             return false;
         }
     }

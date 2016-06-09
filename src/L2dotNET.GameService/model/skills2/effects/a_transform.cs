@@ -70,7 +70,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
                 return false;
             }
 
-            if (player.isOnShip() || player.Boat != null)
+            if (player.isOnShip() || (player.Boat != null))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHILE_RIDING_BOAT);
                 player.sendActionFailed();

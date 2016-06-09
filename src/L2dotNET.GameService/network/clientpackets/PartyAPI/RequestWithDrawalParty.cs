@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
     {
         public RequestWithDrawalParty(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()

@@ -21,15 +21,11 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new NpcTable();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -57,7 +53,7 @@ namespace L2dotNET.GameService.Tables
             try
             {
                 StatsSet set = new StatsSet();
-                StatsSet petSet = new StatsSet();
+                //StatsSet petSet = new StatsSet();
 
                 foreach (string i in xmlFilesArray)
                 {
@@ -67,13 +63,12 @@ namespace L2dotNET.GameService.Tables
                         XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/npc");
 
                         if (nodes != null)
-                        {
                             foreach (XmlNode node in nodes)
                             {
                                 if (node.Attributes != null)
                                 {
                                     XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                                    if (ownerElement != null && (node.Attributes != null && "npc".Equals(ownerElement.Name)))
+                                    if ((ownerElement != null) && ((node.Attributes != null) && "npc".Equals(ownerElement.Name)))
                                     {
                                         XmlNamedNodeMap attrs = node.Attributes;
 
@@ -90,9 +85,9 @@ namespace L2dotNET.GameService.Tables
                                 }
                                 set.Clear();
                             }
-                        }
                     }
                 }
+
                 log.Info($"Loaded {npcs.Count} npcs.");
             }
             catch (Exception e)

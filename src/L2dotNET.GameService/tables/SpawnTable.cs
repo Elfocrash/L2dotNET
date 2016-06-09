@@ -20,15 +20,11 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new SpawnTable();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -47,16 +43,14 @@ namespace L2dotNET.GameService.Tables
 
         public SpawnTable() { }
 
-        private long npcs = 0;
+        private long npcs;
 
         public void Read(string path)
         {
             XElement xml = XElement.Parse(File.ReadAllText(path));
             XElement ex = xml.Element("list");
             if (ex != null)
-            {
                 foreach (XElement m in ex.Elements())
-                {
                     if (m.Name == "territory")
                     {
                         L2Territory zone = new L2Territory();
@@ -65,7 +59,6 @@ namespace L2dotNET.GameService.Tables
                         zone.start_active = bool.Parse(m.Attribute("start_active").Value);
 
                         foreach (XElement stp in m.Elements())
-                        {
                             switch (stp.Name.LocalName)
                             {
                                 case "npc":
@@ -80,7 +73,6 @@ namespace L2dotNET.GameService.Tables
                                     zone.AddPoint(stp.Attribute("loc").Value.Split(' '));
                                     break;
                             }
-                        }
 
                         zone.InitZone(); //создаем зону
                         if (territorries.ContainsKey(zone.name))
@@ -91,7 +83,6 @@ namespace L2dotNET.GameService.Tables
                     else if (m.Name == "spawn")
                     {
                         foreach (XElement stp in m.Elements())
-                        {
                             switch (stp.Name.LocalName)
                             {
                                 case "npc":
@@ -112,10 +103,7 @@ namespace L2dotNET.GameService.Tables
                                     npcs++;
                                     break;
                             }
-                        }
                     }
-                }
-            }
         }
 
         private readonly bool nospawn = true;
@@ -128,6 +116,7 @@ namespace L2dotNET.GameService.Tables
                 log.Info("NpcServer spawn done (blocked).");
                 return;
             }
+
             long sp = 0;
             foreach (L2Territory t in territorries.Values)
             {

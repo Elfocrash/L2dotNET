@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
         public RequestExTryToPutEnchantTargetItem(GameClient client, byte[] data)
         {
-            base.makeme(client, data, 2);
+            makeme(client, data, 2);
         }
 
         public override void read()

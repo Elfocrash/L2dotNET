@@ -35,8 +35,8 @@ namespace L2dotNET.GameService.Model.Stats
             {
                 if (!statTemplate.ContainsKey(type))
                     return 0;
-                else
-                    return (double)statTemplate[type];
+
+                return (double)statTemplate[type];
             }
 
             return (double)statBuff[type];
@@ -76,7 +76,7 @@ namespace L2dotNET.GameService.Model.Stats
             double buffvalue = getStat(effect.type);
 
             List<TEffect> arif = null;
-            foreach (TEffect cc in activeEffects.Where(cc => cc.type == effect.type && cc.supMethod != null))
+            foreach (TEffect cc in activeEffects.Where(cc => (cc.type == effect.type) && (cc.supMethod != null)))
             {
                 if (cc.supMethod.Method <= SupMethod.SUB)
                 {
@@ -91,20 +91,17 @@ namespace L2dotNET.GameService.Model.Stats
             }
 
             if (arif != null)
-            {
                 foreach (TEffect cc in arif)
-                {
                     newvalue = calcSupMethod(newvalue, cc.supMethod);
-                    //log.Info($"newvalue! arif { newvalue } { cc.supMethod.Value } { cc.type }");                    
-                }
-            }
 
             if (statBuff.ContainsKey(effect.type))
                 lock (statBuff)
+                {
                     statBuff.Remove(effect.type);
+                }
 
             statBuff.Add(effect.type, newvalue);
-            return new double[] { buffvalue, newvalue };
+            return new[] { buffvalue, newvalue };
         }
 
         public TEffectResult Stop(List<TEffect> effects, L2Character caster)
@@ -148,20 +145,18 @@ namespace L2dotNET.GameService.Model.Stats
             }
 
             if (arif != null)
-            {
                 foreach (TEffect cc in arif)
-                {
                     newvalue = calcSupMethod(newvalue, cc.supMethod);
-                }
-            }
 
             if (statBuff.ContainsKey(effect.type))
                 lock (statBuff)
+                {
                     statBuff.Remove(effect.type);
+                }
 
             statBuff.Add(effect.type, newvalue);
 
-            return new double[] { buffvalue, newvalue };
+            return new[] { buffvalue, newvalue };
         }
 
         private double calcSupMethod(double val, SupMethod sup)

@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestActionUse(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player.Dead || player.isCastingNow() || player._p_block_act == 1)
+            if (player.Dead || player.isCastingNow() || (player._p_block_act == 1))
             {
                 player.sendActionFailed();
                 return;
@@ -173,9 +173,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (socialId != -1)
-            {
                 player.broadcastPacket(new SocialAction(player.ObjID, socialId));
-            }
         }
 
         private void CheckSit(L2Player player)
@@ -196,7 +194,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (player.CurrentTarget is L2Chair)
             {
                 L2Chair chair = (L2Chair)player.CurrentTarget;
-                if (!chair.IsUsedAlready && chair.ClanID != -1 && player.ClanId == chair.ClanID)
+                if (!chair.IsUsedAlready && (chair.ClanID != -1) && (player.ClanId == chair.ClanID))
                 {
                     double dis = Calcs.calculateDistance(player, chair, true);
                     if (dis < 150)
@@ -219,7 +217,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         private void petCast(L2Player player, int npcId, int id, int lv, int maxLv = 1)
         {
-            if (player.Summon == null || !(player.Summon is L2Pet))
+            if ((player.Summon == null) || !(player.Summon is L2Pet))
             {
                 player.sendActionFailed();
                 return;

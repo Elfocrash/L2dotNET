@@ -149,7 +149,7 @@ namespace L2dotNET.Network
                 {
                     m_SendReadyFlag = false;
 
-                    while (!m_SendReadyFlag && m_SendQueue.Count > 0)
+                    while (!m_SendReadyFlag && (m_SendQueue.Count > 0))
                     {
                         byte[] buffer = m_SendQueue.Dequeue();
                         m_Socket.BeginSend(buffer, 0, buffer.Length, 0, m_SendCallback, null);
@@ -185,10 +185,12 @@ namespace L2dotNET.Network
             //#if DEBUG_NET_CLIENT
             Console.WriteLine($"Sending:\r\n{L2Buffer.ToString(buffer)}");
             //#endif
-            if (m_Socket != null && m_Socket.Connected)
+            if ((m_Socket != null) && m_Socket.Connected)
             {
                 lock (m_Lock)
+                {
                     m_SendQueue.Enqueue(buffer);
+                }
 
                 if (m_SendReadyFlag)
                     SendCallback(null);
@@ -200,7 +202,7 @@ namespace L2dotNET.Network
         /// </summary>
         public virtual void CloseConnection()
         {
-            if (m_Socket != null && m_Socket.Connected)
+            if ((m_Socket != null) && m_Socket.Connected)
             {
                 try
                 {
@@ -220,7 +222,7 @@ namespace L2dotNET.Network
         /// </summary>
         public virtual bool Connected
         {
-            get { return m_Socket != null && m_Socket.Connected; }
+            get { return (m_Socket != null) && m_Socket.Connected; }
         }
     }
 }

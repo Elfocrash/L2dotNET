@@ -83,7 +83,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(pet.CharacterStat.getStat(TEffectType.p_physical_attack));
             writeD(pet.CharacterStat.getStat(TEffectType.p_physical_defense));
             writeD(pet.CharacterStat.getStat(TEffectType.p_magical_attack));
-            ;
+
             writeD(pet.CharacterStat.getStat(TEffectType.p_magical_defense));
             writeD(pet.CharacterStat.getStat(TEffectType.b_accuracy));
             writeD(pet.CharacterStat.getStat(TEffectType.b_evasion));

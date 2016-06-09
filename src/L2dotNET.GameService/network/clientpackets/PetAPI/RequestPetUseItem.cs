@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
         public RequestPetUseItem(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         public override void read()
@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player.Summon == null || !(player.Summon is L2Pet))
+            if ((player.Summon == null) || !(player.Summon is L2Pet))
             {
                 player.sendActionFailed();
                 return;
@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
             L2Pet pet = (L2Pet)player.Summon;
 
-            if (pet._p_block_act == 1 || pet.Dead)
+            if ((pet._p_block_act == 1) || pet.Dead)
             {
                 player.sendActionFailed();
                 return;

@@ -11,16 +11,16 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public CreatureSay(int id, SayIDList _type, string name, string _text)
         {
-            this._objectId = id;
+            _objectId = id;
             this._type = _type;
-            this._charName = name;
-            this.Text = _text;
+            _charName = name;
+            Text = _text;
         }
 
         public CreatureSay(SayIDList _type, string _text = "")
         {
             this._type = _type;
-            this.Text = _text;
+            Text = _text;
         }
 
         protected internal override void write()

@@ -21,15 +21,11 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (instance == null)
-                {
                     lock (syncRoot)
                     {
                         if (instance == null)
-                        {
                             instance = new HtmCache();
-                        }
                     }
-                }
 
                 return instance;
             }
@@ -71,9 +67,7 @@ namespace L2dotNET.GameService.Tables
             {
                 files.AddRange(Directory.GetFiles(sDir));
                 foreach (string d in Directory.GetDirectories(sDir))
-                {
                     files.AddRange(DirSearch(d));
-                }
             }
             catch (Exception excpt)
             {

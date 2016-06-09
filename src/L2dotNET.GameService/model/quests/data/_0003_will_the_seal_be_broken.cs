@@ -25,24 +25,18 @@ namespace L2dotNET.GameService.Model.Quests.Data
             questId = 3;
             questName = "Will the Seal be Broken";
             startNpc = redry;
-            talkNpcs = new int[] { startNpc };
-            actItems = new int[] { onyx_beast_eye, taint_stone, succubus_blood };
+            talkNpcs = new[] { startNpc };
+            actItems = new[] { onyx_beast_eye, taint_stone, succubus_blood };
         }
 
         public override void tryAccept(L2Player player, L2Npc npc)
         {
             if (player.BaseClass.ClassId.ClassRace != ClassRace.DARK_ELF)
-            {
                 player.ShowHtm("redry_q0003_00.htm", npc);
-            }
             else if (player.Level >= 16)
-            {
                 player.ShowHtm("redry_q0003_02.htm", npc);
-            }
             else
-            {
                 player.ShowHtm("redry_q0003_01.htm", npc);
-            }
         }
 
         public override void onAccept(L2Player player, L2Npc npc)
@@ -56,7 +50,6 @@ namespace L2dotNET.GameService.Model.Quests.Data
             int npcId = npc.Template.NpcId;
             string htmltext = no_action_required;
             if (npcId == redry)
-            {
                 if (cond == 2)
                 {
                     htmltext = "redry_q0003_06.htm";
@@ -65,11 +58,9 @@ namespace L2dotNET.GameService.Model.Quests.Data
                     player.takeItem(succubus_blood, 1);
                     player.addItem(scrl_of_ench_am_d, 1);
                     player.finishQuest(questId);
-                    return;
                 }
                 else
                     htmltext = "redry_q0003_04.htm";
-            }
 
             player.ShowHtm(htmltext, npc);
         }

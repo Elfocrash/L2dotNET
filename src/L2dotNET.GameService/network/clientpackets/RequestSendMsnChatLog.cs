@@ -4,7 +4,7 @@
     {
         public RequestSendMsnChatLog(GameClient client, byte[] data)
         {
-            base.makeme(client, data);
+            makeme(client, data);
         }
 
         private string _text,
@@ -22,7 +22,7 @@
         {
             //            L2Player player = getClient()._player;
 
-            //todo log              
+            //todo log
         }
     }
 }
