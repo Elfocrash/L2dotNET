@@ -93,12 +93,9 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
         private void showGroup(L2Player player, L2Npc npc, int group)
         {
-            List<int[]> ar = new List<int[]>();
             string text = "&$650;<br>";
 
-            foreach (int[] d in data)
-                if (d[0] == group)
-                    ar.Add(d);
+            List<int[]> ar = data.Where(d => d[0] == group).ToList();
 
             foreach (int[] val in ar)
                 text += "<a action=\"bypass -h menu_select?ask=-3&reply=" + val[1] + "\">&$" + val[1] + ";</a><br1>";

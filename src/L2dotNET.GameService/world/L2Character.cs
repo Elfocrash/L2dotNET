@@ -148,11 +148,7 @@ namespace L2dotNET.GameService.World
             if (state)
                 _zones[(int)zone.Id]++;
             else
-            {
                 _zones[(int)zone.Id]--;
-                if (_zones[(int)zone.Id] < 0)
-                    _zones[(int)zone.Id] = 0;
-            }
         }
 
         public virtual void removeSkill(int id, bool updDb, bool update)
@@ -414,15 +410,15 @@ namespace L2dotNET.GameService.World
             if (!permanent)
                 if (skill.debuff == 1)
                 {
-                    bool success = true; // TODO _stats.calcDebuffSuccess(skill, caster);
+                    //const bool success = true; // TODO _stats.calcDebuffSuccess(skill, caster);
 
-                    if (!success)
-                    {
-                        caster.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_RESISTED_YOUR_S2).AddString(Name).AddSkillName(skill.skill_id, skill.level));
+                    //if (!success)
+                    //{
+                    //    caster.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_RESISTED_YOUR_S2).AddString(Name).AddSkillName(skill.skill_id, skill.level));
 
-                        sendPacket(new SystemMessage(SystemMessage.SystemMessageId.RESISTED_S1_MAGIC).AddString(caster.Name));
-                        return;
-                    }
+                    //    sendPacket(new SystemMessage(SystemMessage.SystemMessageId.RESISTED_S1_MAGIC).AddString(caster.Name));
+                    //    return;
+                    //}
                 }
 
             if (skill.abnormal_time == 0)
@@ -918,10 +914,10 @@ namespace L2dotNET.GameService.World
 
             if (dual)
             {
-                hit1 = genHitSimple(dual, ss);
+                hit1 = genHitSimple(true, ss);
                 atk.addHit(target.ObjID, (int)hit1.damage, hit1.miss, hit1.crit, hit1.shieldDef > 0);
 
-                hit2 = genHitSimple(dual, ss);
+                hit2 = genHitSimple(true, ss);
                 atk.addHit(target.ObjID, (int)hit2.damage, hit2.miss, hit2.crit, hit2.shieldDef > 0);
             }
             else

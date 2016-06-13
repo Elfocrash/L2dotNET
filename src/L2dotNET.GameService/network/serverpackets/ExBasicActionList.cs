@@ -6,9 +6,9 @@
 
         public ExBasicActionList()
         {
-            int count1 = 74; // 0 <-> (count1 - 1) //Update by rocknow
-            int count2 = 99; // 1000 <-> (1000 + count2 - 1) //Update by rocknow
-            int count3 = 16; // 5000 <-> (5000 + count3 - 1) //Update by rocknow
+            const int count1 = 74; // 0 <-> (count1 - 1) //Update by rocknow
+            const int count2 = 99; // 1000 <-> (1000 + count2 - 1) //Update by rocknow
+            const int count3 = 16; // 5000 <-> (5000 + count3 - 1) //Update by rocknow
             int[] actionIds = new int[count1 + count2 + count3]; //Update by rocknow
 
             int index = 0;

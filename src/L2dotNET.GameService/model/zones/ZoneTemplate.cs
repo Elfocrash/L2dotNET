@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Model.Zones.Forms;
 
@@ -94,9 +95,8 @@ namespace L2dotNET.GameService.Model.Zones
             _x = new int[s];
             _y = new int[s];
             int y = 0;
-            foreach (string loc in d1.Split('\f'))
+            foreach (string[] xyz in d1.Split('\f').Select(loc => loc.Split(';')))
             {
-                string[] xyz = loc.Split(';');
                 _x[y] = int.Parse(xyz[0]);
                 _y[y] = int.Parse(xyz[1]);
                 _z1 = int.Parse(xyz[2]);

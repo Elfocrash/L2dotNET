@@ -106,16 +106,16 @@ namespace L2dotNET.GameService.Tables
                     }
         }
 
-        private readonly bool nospawn = true;
+        private const bool nospawn = true;
 
         public void Spawn()
         {
             log.Info("NpcServer spawn init.");
-            if (nospawn)
-            {
-                log.Info("NpcServer spawn done (blocked).");
-                return;
-            }
+            //if (nospawn)
+            //{
+            //    log.Info("NpcServer spawn done (blocked).");
+            //    return;
+            //}
 
             long sp = 0;
             foreach (L2Territory t in territorries.Values)

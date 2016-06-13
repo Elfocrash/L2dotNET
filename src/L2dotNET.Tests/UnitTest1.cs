@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-using L2dotNET.GameService.Enums;
 using L2dotNET.GameService.Templates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,11 +14,11 @@ namespace L2dotNET.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            const string folderPath = @"./data/xml/classes";
-            foreach (string file in Directory.EnumerateFiles(folderPath, "*.xml"))
-            {
-                string contents = File.ReadAllText(file);
-            }
+            //const string folderPath = @"./data/xml/classes";
+            //foreach (string file in Directory.EnumerateFiles(folderPath, "*.xml"))
+            //{
+            //    //string contents = File.ReadAllText(file);
+            //}
 
             XmlDocument doc = new XmlDocument();
             string[] xmlFilesArray = Directory.GetFiles(@"data\xml\classes\");
@@ -37,8 +36,8 @@ namespace L2dotNET.Tests
                                 XmlElement ownerElement = node.Attributes[0].OwnerElement;
                                 if ((ownerElement != null) && ((node.Attributes != null) && "class".Equals(ownerElement.Name)))
                                 {
-                                    XmlNamedNodeMap attrs = node.Attributes;
-                                    ClassIds classId = (ClassIds)int.Parse(attrs.Item(0).Value);
+                                    XmlNamedNodeMap attrs;
+                                    //ClassIds classId = (ClassIds)int.Parse(attrs.Item(0).Value);
                                     StatsSet set = new StatsSet();
 
                                     for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)

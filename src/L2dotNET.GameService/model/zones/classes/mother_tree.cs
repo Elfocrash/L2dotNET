@@ -27,10 +27,14 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             {
                 L2Player p = (L2Player)obj;
                 p.sendSystemMessage((SystemMessage.SystemMessageId)Template._entering_message_no);
-                if (!Template._affect_race.Equals("all"))
-                    if (Template._affect_race.Equals("elf"))
-                        if (p.BaseClass.ClassId.ClassRace != ClassRace.ELF)
-                            return;
+                if (Template._affect_race.Equals("all"))
+                    return;
+
+                if (!Template._affect_race.Equals("elf"))
+                    return;
+
+                if (p.BaseClass.ClassId.ClassRace != ClassRace.ELF)
+                    return;
 
                 //   p._stats.p_regen_hp += Template._hp_regen_bonus;
                 //   p._stats.p_regen_mp += Template._mp_regen_bonus;
@@ -50,10 +54,14 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             {
                 L2Player p = (L2Player)obj;
                 p.sendSystemMessage((SystemMessage.SystemMessageId)Template._leaving_message_no);
-                if (!Template._affect_race.Equals("all"))
-                    if (Template._affect_race.Equals("elf"))
-                        if (p.BaseClass.ClassId.ClassRace != ClassRace.ELF)
-                            return;
+                if (Template._affect_race.Equals("all"))
+                    return;
+
+                if (!Template._affect_race.Equals("elf"))
+                    return;
+
+                if (p.BaseClass.ClassId.ClassRace != ClassRace.ELF)
+                    return;
 
                 //   p._stats.p_regen_hp -= Template._hp_regen_bonus;
                 //   p._stats.p_regen_mp -= Template._mp_regen_bonus;

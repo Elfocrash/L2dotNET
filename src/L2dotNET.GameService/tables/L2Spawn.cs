@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Tables
         private readonly int z;
         private readonly int h;
 
-        private readonly byte Mode = MODE_ANYTIME;
+        private const byte Mode = MODE_ANYTIME;
         private byte STATUS = STATUS_OFFLINE;
         public const byte MODE_DAY_ONLY = 1,
                           MODE_NIGHT_ONLY = 2,

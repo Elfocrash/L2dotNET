@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -68,8 +69,7 @@ namespace L2dotNET.GameService.Managers
             List<long[]> list = new List<long[]>();
             if (pl1.currentTrade != null)
             {
-                foreach (int id in pl1.currentTrade.Keys)
-                    list.Add(new[] { id, pl1.currentTrade[id] });
+                list.AddRange(pl1.currentTrade.Keys.Select(id => new[] { id, pl1.currentTrade[id] }));
 
                 pl2.Inventory.transferHere(pl1, list, false);
                 pl1.currentTrade.Clear();
@@ -79,8 +79,7 @@ namespace L2dotNET.GameService.Managers
             {
                 list.Clear();
 
-                foreach (int id in pl2.currentTrade.Keys)
-                    list.Add(new[] { id, pl2.currentTrade[id] });
+                list.AddRange(pl2.currentTrade.Keys.Select(id => new[] { id, pl2.currentTrade[id] }));
 
                 pl1.Inventory.transferHere(pl2, list, false);
                 pl2.currentTrade.Clear();
