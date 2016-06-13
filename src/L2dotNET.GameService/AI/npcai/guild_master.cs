@@ -349,53 +349,51 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         public override void TalkedBypass(L2Player talker, string bypass)
         {
-            switch (bypass)
+            if (bypass == "pledge_levelup")
             {
-                case "pledge_levelup":
-                    byte level = talker.ClanLevel;
+                byte level = talker.ClanLevel;
 
-                    switch (level)
-                    {
-                        case 0:
-                            ValidateLevelUp1(talker, 20000, adena, 650000, 1);
-                            break;
-                        case 1:
-                            ValidateLevelUp1(talker, 100000, adena, 2500000, 2);
-                            break;
-                        case 2:
-                            ValidateLevelUp1(talker, 350000, proof_of_blood, 1, 3);
-                            break;
-                        case 3:
-                            ValidateLevelUp1(talker, 1000000, q_proof_of_alliance, 1, 4);
-                            break;
-                        case 4:
-                            ValidateLevelUp1(talker, 2500000, q_proof_of_aspiration, 1, 5);
-                            break;
-                        case 5:
-                            ValidateLevelUp2(talker, 10000, 30, 6);
-                            break;
-                        case 6:
-                            ValidateLevelUp2(talker, 20000, 80, 7);
-                            break;
-                        case 7:
-                            ValidateLevelUp2(talker, 40000, 120, 8);
-                            break;
-                        case 8:
-                            ValidateLevelUp2(talker, 40000, 120, 9, vow_of_blood, 150);
-                            break;
-                        case 9:
-                            ValidateLevelUp2(talker, 40000, 140, 10, oath_of_blood, 5);
-                            break;
-                        case 10:
-                            ValidateLevelUp2(talker, 75000, 170, 11, oath_of_blood, 5, true);
-                            break;
-                    }
-
-                    break;
-                default:
-                    if (bypass.StartsWith("create_pledge", StringComparison.InvariantCultureIgnoreCase))
-                        CreateClan(talker, bypass.Substring("create_pledge?pledge_name= ".Length));
-                    break;
+                switch (level)
+                {
+                    case 0:
+                        ValidateLevelUp1(talker, 20000, adena, 650000, 1);
+                        break;
+                    case 1:
+                        ValidateLevelUp1(talker, 100000, adena, 2500000, 2);
+                        break;
+                    case 2:
+                        ValidateLevelUp1(talker, 350000, proof_of_blood, 1, 3);
+                        break;
+                    case 3:
+                        ValidateLevelUp1(talker, 1000000, q_proof_of_alliance, 1, 4);
+                        break;
+                    case 4:
+                        ValidateLevelUp1(talker, 2500000, q_proof_of_aspiration, 1, 5);
+                        break;
+                    case 5:
+                        ValidateLevelUp2(talker, 10000, 30, 6);
+                        break;
+                    case 6:
+                        ValidateLevelUp2(talker, 20000, 80, 7);
+                        break;
+                    case 7:
+                        ValidateLevelUp2(talker, 40000, 120, 8);
+                        break;
+                    case 8:
+                        ValidateLevelUp2(talker, 40000, 120, 9, vow_of_blood, 150);
+                        break;
+                    case 9:
+                        ValidateLevelUp2(talker, 40000, 140, 10, oath_of_blood, 5);
+                        break;
+                    case 10:
+                        ValidateLevelUp2(talker, 75000, 170, 11, oath_of_blood, 5, true);
+                        break;
+                }
+            }
+            else
+            {
+                if (bypass.StartsWith("create_pledge", StringComparison.InvariantCultureIgnoreCase))
+                    CreateClan(talker, bypass.Substring("create_pledge?pledge_name= ".Length));
             }
         }
 
