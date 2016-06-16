@@ -7,18 +7,68 @@
     "BBSDefault": "_bbshome"
   },
   "FloodProtector": {
-    "CharacterSelectTime": "3000",
-    "DropItemTime": "1000",
-    "GlobalChatTime": "0",
-    "HeroVoiceTime": "10000",
-    "ManorTime": "3000",
-    "ManufactureTime": "300",
-    "MultisellTime": "100",
-    "RollDiceTime": "4200",
-    "SendMailTime": "10000",
-    "ServerBypassTime": "500",
-    "SocialTime": "2000",
-    "SubclassTime": "2000",
-    "TradeChatTime": "0"
+    "CharacterSelectTime": 3000,
+    "DropItemTime": 1000,
+    "GlobalChatTime": 0,
+    "HeroVoiceTime": 10000,
+    "ManorTime": 3000,
+    "ManufactureTime": 300,
+    "MultisellTime": 100,
+    "RollDiceTime": 4200,
+    "SendMailTime": 10000,
+    "ServerBypassTime": 500,
+    "SocialTime": 2000,
+    "SubclassTime": 2000,
+    "TradeChatTime": 0
+  },
+  "Siege": {
+    "SiegeLength": 120,
+    "MaxFlags": 1,
+    "SiegeClanMinLevel": 4,
+    "AttackerMaxClans": 10,
+    "DefenderMaxClans": 10,
+    "AttackerRespawn": 10000,
+    "AdenFlameTower1": {
+      "Coords": {
+        "x": 149976,
+        "y": 1583,
+        "z": -450
+      },
+      "npcId": 13004,
+      "zoneIds": [ 70001, 71001, 70002, 71002, 70003, 71003, 70004, 71004 ]
+    },
+    "AdenFlameTower2": {
+      "Coords": {
+        "x": 144955,
+        "y": 1603,
+        "z": -450
+      },
+      "npcId": 13004,
+      "zoneIds": [ 70005, 71005, 70006, 71006, 70007, 71007, 70008, 71008 ]
+    },
+    "AdenControlTower1": {
+      "Coords": {
+        "x": 148774,
+        "y": 2351,
+        "z": -389
+      },
+      "npcId": 13002
+    },
+    "AdenControlTower2": {
+      "Coords": {
+        "x": 147456,
+        "y": 5724,
+        "z": -158
+      },
+      "npcId": 13002
+    },
+    "AdenControlTower3": {
+      "Coords": {
+        "x": 146137,
+        "y": 2352,
+        "z": -389
+      },
+      "npcId": 13002
+    }
   }
 }

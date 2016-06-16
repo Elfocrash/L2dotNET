@@ -18,5 +18,8 @@ namespace L2dotNET.GameService.Config
 
         [JsonProperty(PropertyName = "CommunityBoard")]
         public CommunityBoard CommunityBoard { get; set; }
+
+        [JsonProperty(PropertyName = "Siege")]
+        public Siege Siege { get; set; }
     }
 }
