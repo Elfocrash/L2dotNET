@@ -333,14 +333,14 @@ namespace L2dotNET.GameService.AI.NpcAI
                     if (talker.Clan.MainSkill[e.id] >= e.lv)
                         continue;
 
-                    if (!avail.ContainsKey(e.id))
-                    {
-                        avail.Add(e.id, e);
-                        break;
-                    }
-                }
-                else
+                    if (avail.ContainsKey(e.id))
+                        continue;
+
                     avail.Add(e.id, e);
+                    break;
+                }
+
+                avail.Add(e.id, e);
             }
 
             talker.ActiveSkillTree = avail;
@@ -390,9 +390,10 @@ namespace L2dotNET.GameService.AI.NpcAI
                         break;
                 }
             }
-            else if (bypass.StartsWith("create_pledge", StringComparison.InvariantCultureIgnoreCase))
+            else
             {
-                CreateClan(talker, bypass.Substring("create_pledge?pledge_name= ".Length));
+                if (bypass.StartsWith("create_pledge", StringComparison.InvariantCultureIgnoreCase))
+                    CreateClan(talker, bypass.Substring("create_pledge?pledge_name= ".Length));
             }
         }
 

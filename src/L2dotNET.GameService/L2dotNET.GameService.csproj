@@ -102,6 +102,7 @@
     <Compile Include="ClientManager.cs" />
     <Compile Include="Compression\DlcStream.cs" />
     <Compile Include="ConfigFile.cs" />
+    <Compile Include="Config\Siege.cs" />
     <Compile Include="Config\CommunityBoard.cs" />
     <Compile Include="Config\Config.cs" />
     <Compile Include="Config\FloodProtector.cs" />

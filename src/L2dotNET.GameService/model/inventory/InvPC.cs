@@ -672,22 +672,13 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public bool hasAllOfThis(int[] px)
         {
-            byte count = (byte)px.Length,
-                 ctx = 0;
-            foreach (L2Item item in Items.Values)
-                if (px.Any(i => item.Template.ItemID == i))
-                    ctx++;
-
-            return count == ctx;
+            byte ctx = (byte)Items.Values.Count(item => px.Any(i => item.Template.ItemID == i));
+            return (byte)px.Length == ctx;
         }
 
         public bool hasSomeOfThis(int[] px)
         {
-            byte ctx = 0;
-            foreach (L2Item item in Items.Values)
-                if (px.Any(i => item.Template.ItemID == i))
-                    ctx++;
-
+            byte ctx = (byte)Items.Values.Count(item => px.Any(i => item.Template.ItemID == i));
             return ctx > 0;
         }
 

@@ -59,14 +59,14 @@ namespace L2dotNET.GameService.Templates
             Title = set.GetString("title", "");
             CantBeChampionMonster = Title.Equals("Quest Monster", StringComparison.InvariantCultureIgnoreCase);
             Level = set.GetByte("level", 1);
-            Exp = set.GetInt("exp", 0);
-            Sp = set.GetInt("sp", 0);
-            RHand = set.GetInt("rHand", 0);
-            LHand = set.GetInt("lHand", 0);
-            EnchantEffect = set.GetInt("enchant", 0);
+            Exp = set.GetInt("exp");
+            Sp = set.GetInt("sp");
+            RHand = set.GetInt("rHand");
+            LHand = set.GetInt("lHand");
+            EnchantEffect = set.GetInt("enchant");
             CorpseTime = set.GetInt("corpseTime", 7);
 
-            DropHerbGroup = set.GetInt("dropHerbGroup", 0);
+            DropHerbGroup = set.GetInt("dropHerbGroup");
             //if (_dropHerbGroup > 0 && HerbDropTable.getInstance().getHerbDroplist(_dropHerbGroup) == null)
             //{
             //    _log.warning("Missing dropHerbGroup information for npcId: " + _npcId + ", dropHerbGroup: " + _dropHerbGroup);
@@ -78,11 +78,11 @@ namespace L2dotNET.GameService.Templates
 
             //_aiType = set.GetEnumerator(new "aiType", AIType.DEFAULT);
 
-            SsCount = set.GetInt("ssCount", 0);
-            SsRate = set.GetInt("ssRate", 0);
-            SpsCount = set.GetInt("spsCount", 0);
-            SpsRate = set.GetInt("spsRate", 0);
-            AggroRange = set.GetInt("aggro", 0);
+            SsCount = set.GetInt("ssCount");
+            SsRate = set.GetInt("ssRate");
+            SpsCount = set.GetInt("spsCount");
+            SpsRate = set.GetInt("spsRate");
+            AggroRange = set.GetInt("aggro");
 
             if (set.ContainsKey("clan"))
             {
@@ -94,7 +94,7 @@ namespace L2dotNET.GameService.Templates
             }
 
             CanMove = set.GetBool("canMove", true);
-            IsSeedable = set.GetBool("seedable", false);
+            IsSeedable = set.GetBool("seedable");
 
             // _categories = set.getList("drops");
             // _minions = set.getList("minions");

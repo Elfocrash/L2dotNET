@@ -66,12 +66,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 weight += item.Template.Weight;
             }
 
-            if (totalCost > long.MaxValue)
-            {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.SELL_ATTEMPT_FAILED);
-                player.sendActionFailed();
-                return;
-            }
+            //if (totalCost > long.MaxValue)
+            //{
+            //    player.sendSystemMessage(SystemMessage.SystemMessageId.SELL_ATTEMPT_FAILED);
+            //    player.sendActionFailed();
+            //    return;
+            //}
 
             long added,
                  currentAdena = player.getAdena();

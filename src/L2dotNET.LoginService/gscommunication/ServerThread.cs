@@ -85,7 +85,7 @@ namespace L2dotNET.LoginService.GSCommunication
         /// <param name="packet">Incoming packet.</param>
         protected void Handle(Packet packet)
         {
-            string str = "header: " + packet.FirstOpcode + "\n";
+            //string str = "header: " + packet.FirstOpcode + "\n";
 
             log.Info($"{packet}");
 

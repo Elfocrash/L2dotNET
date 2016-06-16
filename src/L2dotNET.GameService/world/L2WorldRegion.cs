@@ -139,11 +139,7 @@ namespace L2dotNET.GameService.World
 
         public bool IsEmptyNeighborhood()
         {
-            foreach (L2WorldRegion neighbor in _surroundingRegions)
-                if (neighbor.GetPlayersCount() != 0)
-                    return false;
-
-            return true;
+            return _surroundingRegions.All(neighbor => neighbor.GetPlayersCount() == 0);
         }
 
         /**

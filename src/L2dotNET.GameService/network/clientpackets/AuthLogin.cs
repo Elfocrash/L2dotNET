@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.LoginAuth;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -44,9 +45,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 List<int> players = accountService.GetPlayerIdsListByAccountName(_loginName);
 
                 int slot = 0;
-                foreach (int id in players)
+                foreach (L2Player p in players.Select(id => new L2Player().RestorePlayer(id, getClient())))
                 {
-                    L2Player p = new L2Player().RestorePlayer(id, getClient());
                     p.CharSlot = slot;
                     slot++;
                     Client.AccountChars.Add(p);

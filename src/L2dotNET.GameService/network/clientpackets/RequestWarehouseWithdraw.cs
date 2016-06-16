@@ -68,12 +68,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     slots += count;
             }
 
-            InvPrivateWarehouse pw = player._warehouse;
-            int itsize = 0;
-            if (pw == null)
-                pw = new InvPrivateWarehouse(player);
-            else
-                itsize = pw.Items.Count;
+            InvPrivateWarehouse pw = player._warehouse ?? new InvPrivateWarehouse(player);
+            //int itsize = 0;
+            //else
+            //    itsize = pw.Items.Count;
 
             if (player.ItemLimit_Inventory < (player.getAllItems().Length + slots))
             {

@@ -473,7 +473,7 @@ namespace L2dotNET.Network
             get
             {
                 fixed (byte* buf = m_Buffer)
-                    return *(byte*)(buf + 1);
+                    return *(buf + 1);
             }
         }
 

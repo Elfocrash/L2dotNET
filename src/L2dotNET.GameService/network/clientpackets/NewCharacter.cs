@@ -20,10 +20,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public override void run()
         {
-            List<PcTemplate> pcTemp = new List<PcTemplate>();
             Dictionary<int, PcTemplate> dict = CharTemplateTable.Instance.Templates;
-            for (int i = 0; i < dict.Count; i++)
-                pcTemp.Add(dict.SingleOrDefault(x => x.Key == i).Value);
+            List<PcTemplate> pcTemp = dict.Select((t, i) => dict.SingleOrDefault(x => x.Key == i).Value).ToList();
 
             Client.sendPacket(new CharTemplates(pcTemp));
         }

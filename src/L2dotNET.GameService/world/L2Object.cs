@@ -142,33 +142,31 @@ namespace L2dotNET.GameService.World
                 newAreas = newRegion.GetSurroundingRegions();
             }
 
-            foreach (L2WorldRegion region in oldAreas)
-                if (!newAreas.Contains(region))
+            foreach (L2WorldRegion region in oldAreas.Where(region => !newAreas.Contains(region)))
+            {
+                foreach (L2Object obj in region.getObjects().Where(obj => obj != this))
                 {
-                    foreach (L2Object obj in region.getObjects().Where(obj => obj != this))
-                    {
-                        obj.RemoveKnownObject(this);
-                        RemoveKnownObject(obj);
-                    }
-
-                    if (this is L2Player && region.IsEmptyNeighborhood())
-                        region.SetActive(false);
+                    obj.RemoveKnownObject(this);
+                    RemoveKnownObject(obj);
                 }
 
-            foreach (L2WorldRegion region in newAreas)
-                if (!oldAreas.Contains(region))
-                {
-                    // Update all objects.
-                    foreach (L2Object obj in region.getObjects().Where(obj => obj != this))
-                    {
-                        obj.AddKnownObject(this);
-                        AddKnownObject(obj);
-                    }
+                if (this is L2Player && region.IsEmptyNeighborhood())
+                    region.SetActive(false);
+            }
 
-                    // Activate the new neighbor region.
-                    if (this is L2Player)
-                        region.SetActive(true);
+            foreach (L2WorldRegion region in newAreas.Where(region => !oldAreas.Contains(region)))
+            {
+                // Update all objects.
+                foreach (L2Object obj in region.getObjects().Where(obj => obj != this))
+                {
+                    obj.AddKnownObject(this);
+                    AddKnownObject(obj);
                 }
+
+                // Activate the new neighbor region.
+                if (this is L2Player)
+                    region.SetActive(true);
+            }
 
             Region = newRegion;
         }
@@ -276,8 +274,8 @@ namespace L2dotNET.GameService.World
                      _isInsidePvpZone,
                      _isInsideWaterZone;
         //private bool _isInsideSSQZone = false;
-        private readonly bool _isInsideSiegeZone = false;
-        private readonly bool _isInsideSomeDungeon = false;
+        private const bool _isInsideSiegeZone = false;
+        private const bool _isInsideSomeDungeon = false;
 
         public bool isInDanger = false;
 

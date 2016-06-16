@@ -10,13 +10,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
         private readonly int sId;
         private int m_nVillage;
         private int m_nAgit;
-        private readonly int m_nBattleCamp = 0;
+        private const int m_nBattleCamp = 0;
         private int m_nCastle;
         private readonly int m_Spoil;
         private int m_nOriginal;
         private int m_nFotress;
-        private readonly int m_nAgathion = 0;
-        private readonly bool m_bShow = false;
+        private const int m_nAgathion = 0;
+        private const bool m_bShow = false;
 
         private List<int> _items;
 
@@ -65,7 +65,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(m_nOriginal); //5
             writeD(m_nFotress); //3
 
-            writeC(m_bShow ? 1 : 0);
+            writeC(0);
+            //writeC(m_bShow ? 1 : 0);
             writeD(m_nAgathion); //21
             writeD(_items == null ? 0 : _items.Count); //22+
 

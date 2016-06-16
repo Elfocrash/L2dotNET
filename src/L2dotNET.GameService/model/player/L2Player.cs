@@ -377,16 +377,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public long getAdena()
         {
-            long adena = 0;
-
-            foreach (L2Item item in Inventory.Items.Values)
-                if (item.Template.ItemID == 57)
-                {
-                    adena = item.Count;
-                    break;
-                }
-
-            return adena;
+            return Inventory.Items.Values.Where(item => item.Template.ItemID == 57).Select(item => item.Count).FirstOrDefault();
         }
 
         public void addAdena(long count, bool msg, bool update)
@@ -860,20 +851,12 @@ namespace L2dotNET.GameService.Model.Player
 
         public bool questComplete(int questId)
         {
-            foreach (QuestInfo qi in _quests)
-                if (qi.id == questId)
-                    return qi.completed;
-
-            return false;
+            return _quests.Where(qi => qi.id == questId).Select(qi => qi.completed).FirstOrDefault();
         }
 
         public bool questInProgress(int questId)
         {
-            foreach (QuestInfo qi in _quests)
-                if ((qi.id == questId) && !qi.completed)
-                    return true;
-
-            return false;
+            return _quests.Any(qi => (qi.id == questId) && !qi.completed);
         }
 
         public void questAccept(QuestInfo qi)
@@ -923,16 +906,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public List<QuestInfo> getAllActiveQuests()
         {
-            List<QuestInfo> qu = new List<QuestInfo>();
-            foreach (QuestInfo qi in _quests)
-            {
-                if (qi.completed)
-                    continue;
-
-                qu.Add(qi);
-            }
-
-            return qu;
+            return _quests.Where(qi => !qi.completed).ToList();
         }
 
         public void sendQuestList()
@@ -1328,20 +1302,12 @@ namespace L2dotNET.GameService.Model.Player
 
         public bool isQuestCompleted(int p)
         {
-            foreach (QuestInfo qi in _quests)
-                if (qi.id == p)
-                    return qi.completed;
-
-            return false;
+            return _quests.Where(qi => qi.id == p).Select(qi => qi.completed).FirstOrDefault();
         }
 
         public int getQuestCond(int questId)
         {
-            foreach (QuestInfo qi in _quests)
-                if (qi.id == questId)
-                    return qi.stage;
-
-            return 0;
+            return _quests.Where(qi => qi.id == questId).Select(qi => qi.stage).FirstOrDefault();
         }
 
         public override void onPickUp(L2Item item)
@@ -2299,10 +2265,10 @@ namespace L2dotNET.GameService.Model.Player
 
             if (dual)
             {
-                hit1 = genHitSimple(dual, ss);
+                hit1 = genHitSimple(true, ss);
                 atk.addHit(target.ObjID, (int)hit1.damage, hit1.miss, hit1.crit, hit1.shieldDef > 0);
 
-                hit2 = genHitSimple(dual, ss);
+                hit2 = genHitSimple(true, ss);
                 atk.addHit(target.ObjID, (int)hit2.damage, hit2.miss, hit2.crit, hit2.shieldDef > 0);
             }
             else

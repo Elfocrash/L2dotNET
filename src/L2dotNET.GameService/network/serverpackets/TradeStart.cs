@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 
@@ -14,16 +15,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             this.player = player;
             partnerId = player.requester.ObjID;
-            foreach (L2Item item in player.getAllNonQuestItems())
-            {
-                if ((item.Template.is_trade == 0) || (item.AugmentationID > 0) || (item._isEquipped == 1))
-                    continue;
-
-                if (item.Template.Type == ItemTemplate.L2ItemType.asset)
-                    continue;
-
+            foreach (L2Item item in player.getAllNonQuestItems().Where(item => (item.Template.is_trade != 0) && (item.AugmentationID <= 0) && (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.asset)))
                 trade.Add(item);
-            }
         }
 
         protected internal override void write()

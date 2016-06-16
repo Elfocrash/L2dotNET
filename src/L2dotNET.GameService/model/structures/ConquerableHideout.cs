@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Timers;
 using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Communities;
@@ -91,12 +92,11 @@ namespace L2dotNET.GameService.Model.Structures
             {
                 double dmg = 0;
                 int tmClanId = 0;
-                foreach (int clanId in clanDamage.Keys)
-                    if (clanDamage[clanId] > dmg)
-                    {
-                        dmg = clanDamage[clanId];
-                        tmClanId = clanId;
-                    }
+                foreach (int clanId in clanDamage.Keys.Where(clanId => clanDamage[clanId] > dmg))
+                {
+                    dmg = clanDamage[clanId];
+                    tmClanId = clanId;
+                }
 
                 if (tmClanId > 0)
                 {

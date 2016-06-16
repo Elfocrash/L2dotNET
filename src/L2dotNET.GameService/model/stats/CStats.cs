@@ -54,9 +54,8 @@ namespace L2dotNET.GameService.Model.Stats
         {
             TEffectResult result = new TEffectResult();
 
-            foreach (TEffect effect in effects)
+            foreach (TEffectResult ter in effects.Select(effect => effect.onStart(caster, owner)))
             {
-                TEffectResult ter = effect.onStart(caster, owner);
                 if (result.TotalUI == 0)
                     result.TotalUI = ter.TotalUI;
 
@@ -108,9 +107,8 @@ namespace L2dotNET.GameService.Model.Stats
         {
             TEffectResult result = new TEffectResult();
 
-            foreach (TEffect effect in effects)
+            foreach (TEffectResult ter in effects.Select(effect => effect.onEnd(caster, owner)))
             {
-                TEffectResult ter = effect.onEnd(caster, owner);
                 if (result.TotalUI == 0)
                     result.TotalUI = ter.TotalUI;
 
