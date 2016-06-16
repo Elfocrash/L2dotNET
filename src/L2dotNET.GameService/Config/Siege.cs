@@ -7,61 +7,42 @@ namespace L2dotNET.GameService.Config
     {
         ///<summary>Length of siege before the countdown(in minutes).</summary>
         [JsonProperty(PropertyName = "SiegeLength")]
-        public string SiegeLength { get; set; }
+        public int SiegeLength { get; set; }
 
         ///<summary>Max numbers of flags per clan.</summary>
         [JsonProperty(PropertyName = "MaxFlags")]
-        public string MaxFlags { get; set; }
+        public int MaxFlags { get; set; }
 
         ///<summary>Minimum clan level to register.</summary>
         [JsonProperty(PropertyName = "SiegeClanMinLevel")]
-        public string SiegeClanMinLevel { get; set; }
+        public int SiegeClanMinLevel { get; set; }
 
         ///<summary>Max numbers of clans that can register on attacker side.</summary>
         [JsonProperty(PropertyName = "AttackerMaxClans")]
-        public string AttackerMaxClans { get; set; }
+        public int AttackerMaxClans { get; set; }
 
         ///<summary>Max numbers of clans that can register on defender side.</summary>
         [JsonProperty(PropertyName = "DefenderMaxClans")]
-        public string DefenderMaxClans { get; set; }
+        public int DefenderMaxClans { get; set; }
 
         ///<summary>Attackers respawn time (in ms).</summary>
         [JsonProperty(PropertyName = "AttackerRespawn")]
-        public string AttackerRespawn { get; set; }
+        public int AttackerRespawn { get; set; }
 
-        ////////////////////////////////////////////////////////////////////
-
-        ///<summary></summary>
-        [JsonProperty(PropertyName = "AdenControlTower1")]
-        public ControlTower AdenControlTower1 { get; set; }
-
-        ///<summary></summary>
-        [JsonProperty(PropertyName = "AdenControlTower2")]
-        public ControlTower AdenControlTower2 { get; set; }
-
-        ///<summary></summary>
-        [JsonProperty(PropertyName = "AdenControlTower3")]
-        public FlameTower AdenControlTower3 { get; set; }
-
-        ///<summary></summary>
-        [JsonProperty(PropertyName = "AdenFlameTower1")]
-        public FlameTower AdenFlameTower1 { get; set; }
-
-        ///<summary></summary>
-        [JsonProperty(PropertyName = "AdenFlameTower2")]
-        public FlameTower AdenFlameTower2 { get; set; }
+        [JsonProperty(PropertyName = "Castles")]
+        public Castles Castles { get; set; }
     }
 
     public class Coordinate
     {
         [JsonProperty(PropertyName = "x")]
-        public string x { get; set; }
+        public int x { get; set; }
 
         [JsonProperty(PropertyName = "y")]
-        public string y { get; set; }
+        public int y { get; set; }
 
         [JsonProperty(PropertyName = "z")]
-        public string z { get; set; }
+        public int z { get; set; }
     }
 
     public class ControlTower
@@ -77,5 +58,53 @@ namespace L2dotNET.GameService.Config
     {
         [JsonProperty(PropertyName = "zoneIds")]
         public int[] zoneIds { get; set; }
+    }
+
+    public class CastleTower
+    {
+        [JsonProperty(PropertyName = "ControlTower1")]
+        private ControlTower ControlTower1 { get; set; }
+
+        [JsonProperty(PropertyName = "ControlTower2")]
+        private ControlTower ControlTower2 { get; set; }
+
+        [JsonProperty(PropertyName = "ControlTower3")]
+        private ControlTower ControlTower3 { get; set; }
+
+        [JsonProperty(PropertyName = "FlameTower1")]
+        private FlameTower FlameTower1 { get; set; }
+
+        [JsonProperty(PropertyName = "FlameTower2")]
+        private FlameTower FlameTower2 { get; set; }
+    }
+
+    public class Castles
+    {
+        [JsonProperty(PropertyName = "Aden")]
+        public CastleTower Aden { get; set; }
+
+        [JsonProperty(PropertyName = "Gludio")]
+        public CastleTower Gludio { get; set; }
+
+        [JsonProperty(PropertyName = "Dion")]
+        public CastleTower Dion { get; set; }
+
+        [JsonProperty(PropertyName = "Giran")]
+        public CastleTower Giran { get; set; }
+
+        [JsonProperty(PropertyName = "Oren")]
+        public CastleTower Oren { get; set; }
+
+        [JsonProperty(PropertyName = "Innadril")]
+        public CastleTower Innadril { get; set; }
+
+        [JsonProperty(PropertyName = "Goddard")]
+        public CastleTower Goddard { get; set; }
+
+        [JsonProperty(PropertyName = "Rune")]
+        public CastleTower Rune { get; set; }
+
+        [JsonProperty(PropertyName = "Schuttgart")]
+        public CastleTower Schuttgart { get; set; }
     }
 }
