@@ -34,7 +34,7 @@ namespace L2dotNET.Tests
                             if (node.Attributes != null)
                             {
                                 XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                                if ((ownerElement != null) && ((node.Attributes != null) && "class".Equals(ownerElement.Name)))
+                                if ((ownerElement != null) && "class".Equals(ownerElement.Name))
                                 {
                                     XmlNamedNodeMap attrs;
                                     //ClassIds classId = (ClassIds)int.Parse(attrs.Item(0).Value);
