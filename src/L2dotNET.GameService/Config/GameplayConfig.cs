@@ -4,13 +4,13 @@ namespace L2dotNET.GameService.Config
 {
     public class GameplayConfig
     {
-        [JsonProperty(PropertyName = "autoloot")]
+        [JsonProperty(PropertyName = "AutoLoot")]
         public bool AutoLoot { get; set; }
 
         [JsonProperty(PropertyName = "DeleteCharAfterDays")]
         public int DeleteDays { get; set; }
 
-        [JsonProperty(PropertyName = "max_buffs")]
+        [JsonProperty(PropertyName = "MaxBuffs")]
         public int MaxBuffs { get; set; }
 
         [JsonProperty(PropertyName = "FloodProtector")]
@@ -27,5 +27,8 @@ namespace L2dotNET.GameService.Config
 
         [JsonProperty(PropertyName = "Event")]
         public Event Event { get; set; }
+
+        [JsonProperty(PropertyName = "Npc")]
+        public Npc Npc { get; set; }
     }
 }

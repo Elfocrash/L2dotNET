@@ -1,7 +1,7 @@
 {
-  "autoloot": true,
+  "AutoLoot": true,
   "DeleteCharAfterDays": "0",
-  "max_buffs": "24",
+  "MaxBuffs": "24",
   "CommunityBoard": {
     "UseCommunityBoard": true,
     "BBSDefault": "_bbshome"
@@ -20,6 +20,108 @@
     "SocialTime": 2000,
     "SubclassTime": 2000,
     "TradeChatTime": 0
+  },
+  "Npc": {
+    "ChampionMobs": {
+      "Frequency": 0,
+      "MinLevel": 20,
+      "MaxLevel": 70,
+      "Hp": 8,
+      "RegenHp": 1.0,
+      "Rewards": 8,
+      "AdenasRewards": 1,
+      "Atk": 1.0,
+      "SpdAtk": 1.0,
+      "RewardItem": 0,
+      "RewardItemID": 6393,
+      "RewardItemQty": 1
+    },
+    "Buffer": {
+      "MaxSchemesPerChar": 4,
+      "MaxSkillsPerScheme": 24,
+      "StaticCostPerBuff": -1
+    },
+    "Misc": {
+
+      "AllowClassMasters": false,
+
+      "AllowEntireTree": false,
+      "FreeTeleporting": false,
+      "AnnounceMammonSpawn": false,
+      "MobAgroInPeaceZone": true,
+      "ShowNpcLevel": false,
+      "ShowNpcCrest": false,
+      "ShowSummonCrest": false
+    },
+    "WyvernManager": {
+      "AllowWyvernUpgrader": true,
+      "RequiredStriderLevel": 55,
+      "RequiredCrystalsNumber": 10
+    },
+    "RaidBoss": {
+      "HpRegenMultiplier": 1.0,
+      "MpRegenMultiplier": 1.0,
+      "DefenceMultiplier": 1.0,
+      "MinionRespawnTime": 300000,
+      "DisableCurse": false,
+      "RaidChaosTime": 30,
+      "GrandChaosTime": 30,
+      "MinionChaosTime": 30
+    },
+    "GrandBosses": {
+      "AntQueen": {
+        "SpawnInterval": 36,
+        "RandomSpawn": 17
+      },
+      "Antharas": {
+        "SpawnInterval": 264,
+        "RandomSpawn": 72,
+        "WaitTime": 30
+      },
+      "Baium": {
+        "SpawnInterval": 168,
+        "RandomSpawn": 48
+      },
+      "Core": {
+        "SpawnInterval": 60,
+        "RandomSpawn": 23
+      },
+      "Frintezza": {
+        "SpawnInterval": 48,
+        "RandomSpawn": 8,
+        "WaitTime": 1
+      },
+      "Orfen": {
+        "SpawnInterval": 48,
+        "RandomSpawn": 20
+      },
+      "Sailren": {
+        "SpawnInterval": 36,
+        "RandomSpawn": 24,
+        "WaitTime": 5
+      },
+      "Valakas": {
+        "SpawnInterval": 264,
+        "RandomSpawn": 72,
+        "WaitTime": 30
+      },
+      "Zaken": {
+        "SpawnInterval": 60,
+        "RandomSpawn": 20
+      }
+    },
+    "IA": {
+      "GuardAttackAggroMob": false,
+      "MaxDriftRange": 200,
+      "KnownListUpdateInterval": 1250,
+      "MinNPCAnimation": 20,
+      "MaxNPCAnimation": 40,
+      "MinMonsterAnimation": 10,
+      "MaxMonsterAnimation": 40,
+      "GridsAlwaysOn": false,
+      "GridNeighborTurnOnTime": 1,
+      "GridNeighborTurnOffTime": 90
+    }
   },
   "Event": {
     "Olympiad": {
@@ -72,7 +174,7 @@
       "TimeOfAttack": 50,
       "TimeOfEntry": 3,
       "TimeOfWarmUp": 2,
-      "NumberOfNecessaryPartyMembers": 4,
+      "NumberOfNecessaryPartyMembers": 4
     },
     "DimensionRift": {
       "RiftMinPartySize": 2,
@@ -193,410 +295,410 @@
         "Lvl1": 3031,
         "Lvl2": 9331
       }
-    },
-    "Siege": {
-      "SiegeLength": 120,
-      "MaxFlags": 1,
-      "SiegeClanMinLevel": 4,
-      "AttackerMaxClans": 10,
-      "DefenderMaxClans": 10,
-      "AttackerRespawn": 10000,
-      "Castles": {
-        "Aden": {
-          "ControlTower1": {
-            "Coords": {
-              "X": 148774,
-              "Y": 2351,
-              "Z": -389
-            },
-            "NpcId": 13002
+    }
+  },
+  "Siege": {
+    "SiegeLength": 120,
+    "MaxFlags": 1,
+    "SiegeClanMinLevel": 4,
+    "AttackerMaxClans": 10,
+    "DefenderMaxClans": 10,
+    "AttackerRespawn": 10000,
+    "Castles": {
+      "Aden": {
+        "ControlTower1": {
+          "Coords": {
+            "X": 148774,
+            "Y": 2351,
+            "Z": -389
           },
-          "ControlTower2": {
-            "Coords": {
-              "X": 147456,
-              "Y": 5724,
-              "Z": -158
-            },
-            "NpcId": 13002
-          },
-          "ControlTower3": {
-            "Coords": {
-              "X": 146137,
-              "Y": 2352,
-              "Z": -389
-            },
-            "NpcId": 13002
-          },
-          "FlameTower1": {
-            "Coords": {
-              "X": 149976,
-              "Y": 1583,
-              "Z": -450
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70001, 71001, 70002, 71002, 70003, 71003, 70004, 71004 ]
-          },
-          "FlameTower2": {
-            "Coords": {
-              "X": 144955,
-              "Y": 1603,
-              "Z": -450
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70005, 71005, 70006, 71006, 70007, 71007, 70008, 71008 ]
-          }
+          "NpcId": 13002
         },
-        "Gludio": {
-          "ControlTower1": {
-            "Coords": {
-              "X": -18325,
-              "Y": 112811,
-              "Z": -2377
-            },
-            "NpcId": 13002
+        "ControlTower2": {
+          "Coords": {
+            "X": 147456,
+            "Y": 5724,
+            "Z": -158
           },
-          "ControlTower2": {
-            "Coords": {
-              "X": -18048,
-              "Y": 107098,
-              "Z": -2378
-            },
-            "NpcId": 13002
-          },
-          "ControlTower3": {
-            "Coords": {
-              "X": -18113,
-              "Y": 108597,
-              "Z": -2343
-            },
-            "NpcId": 13002
-          },
-          "FlameTower1": {
-            "Coords": {
-              "X": -18154,
-              "Y": 107591,
-              "Z": -2560
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70009, 71009 ]
-          },
-          "FlameTower2": {
-            "Coords": {
-              "X": -19329,
-              "Y": 108154,
-              "Z": -2384
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70010, 71010 ]
-          }
+          "NpcId": 13002
         },
-        "Dion": {
-          "ControlTower1": {
-            "Coords": {
-              "X": 22285,
-              "Y": 156939,
-              "Z": -2571
-            },
-            "NpcId": 13002
+        "ControlTower3": {
+          "Coords": {
+            "X": 146137,
+            "Y": 2352,
+            "Z": -389
           },
-          "ControlTower2": {
-            "Coords": {
-              "X": 22008,
-              "Y": 162652,
-              "Z": -2572
-            },
-            "NpcId": 13002
-          },
-          "ControlTower3": {
-            "Coords": {
-              "X": 22073,
-              "Y": 161153,
-              "Z": -2537
-            },
-            "NpcId": 13002
-          },
-          "FlameTower1": {
-            "Coords": {
-              "X": 22114,
-              "Y": 162159,
-              "Z": -2754
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70011, 71011 ]
-          },
-          "FlameTower2": {
-            "Coords": {
-              "X": 23289,
-              "Y": 161596,
-              "Z": -2578
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70012, 71012 ]
-          }
+          "NpcId": 13002
         },
-        "Giran": {
-          "ControlTower1": {
-            "Coords": {
-              "X": 113115,
-              "Y": 144829,
-              "Z": -2446
-            },
-            "NpcId": 13002
+        "FlameTower1": {
+          "Coords": {
+            "X": 149976,
+            "Y": 1583,
+            "Z": -450
           },
-          "ControlTower2": {
-            "Coords": {
-              "X": 118828,
-              "Y": 145106,
-              "Z": -2447
-            },
-            "NpcId": 13002
-          },
-          "ControlTower3": {
-            "Coords": {
-              "X": 117329,
-              "Y": 145041,
-              "Z": -2412
-            },
-            "NpcId": 13002
-          },
-          "FlameTower1": {
-            "Coords": {
-              "X": 118331,
-              "Y": 145055,
-              "Z": -2627
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70013, 71013 ]
-          },
-          "FlameTower2": {
-            "Coords": {
-              "X": 117768,
-              "Y": 143880,
-              "Z": -2451
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70014, 71014 ]
-          }
+          "NpcId": 13004,
+          "ZoneIds": [ 70001, 71001, 70002, 71002, 70003, 71003, 70004, 71004 ]
         },
-        "Oren": {
-          "ControlTower1": {
-            "Coords": {
-              "X": 79193,
-              "Y": 36977,
-              "Z": -2167
-            },
-            "NpcId": 13002
+        "FlameTower2": {
+          "Coords": {
+            "X": 144955,
+            "Y": 1603,
+            "Z": -450
           },
-          "ControlTower2": {
-            "Coords": {
-              "X": 84906,
-              "Y": 37254,
-              "Z": -2168
-            },
-            "NpcId": 13002
+          "NpcId": 13004,
+          "ZoneIds": [ 70005, 71005, 70006, 71006, 70007, 71007, 70008, 71008 ]
+        }
+      },
+      "Gludio": {
+        "ControlTower1": {
+          "Coords": {
+            "X": -18325,
+            "Y": 112811,
+            "Z": -2377
           },
-          "ControlTower3": {
-            "Coords": {
-              "X": 83407,
-              "Y": 37189,
-              "Z": -2133
-            },
-            "NpcId": 13002
-          },
-          "FlameTower1": {
-            "Coords": {
-              "X": 84407,
-              "Y": 37150,
-              "Z": -2354
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70015, 71015 ]
-          },
-          "FlameTower2": {
-            "Coords": {
-              "X": 83844,
-              "Y": 35975,
-              "Z": -2178
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70016, 71016 ]
-          }
+          "NpcId": 13002
         },
-        "Innadril": {
-          "ControlTower1": {
-            "Coords": {
-              "X": 116236,
-              "Y": 245718,
-              "Z": -667
-            },
-            "NpcId": 13002
+        "ControlTower2": {
+          "Coords": {
+            "X": -18048,
+            "Y": 107098,
+            "Z": -2378
           },
-          "ControlTower2": {
-            "Coords": {
-              "X": 115959,
-              "Y": 251431,
-              "Z": -667
-            },
-            "NpcId": 13002
-          },
-          "ControlTower3": {
-            "Coords": {
-              "X": 116024,
-              "Y": 249932,
-              "Z": -633
-            },
-            "NpcId": 13002
-          },
-          "FlameTower1": {
-            "Coords": {
-              "X": 116065,
-              "Y": 250938,
-              "Z": -850
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70017, 71017 ]
-          },
-          "FlameTower2": {
-            "Coords": {
-              "X": 117240,
-              "Y": 250375,
-              "Z": -674
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70018, 71018 ]
-          }
+          "NpcId": 13002
         },
-        "Goddard": {
-          "ControlTower1": {
-            "Coords": {
-              "X": 144672,
-              "Y": -48832,
-              "Z": -1742
-            },
-            "NpcId": 13002
+        "ControlTower3": {
+          "Coords": {
+            "X": -18113,
+            "Y": 108597,
+            "Z": -2343
           },
-          "ControlTower2": {
-            "Coords": {
-              "X": 150240,
-              "Y": -48832,
-              "Z": -1742
-            },
-            "NpcId": 13002
-          },
-          "ControlTower3": {
-            "Coords": {
-              "X": 147456,
-              "Y": -49200,
-              "Z": -1619
-            },
-            "NpcId": 13002
-          },
-          "FlameTower1": {
-            "Coords": {
-              "X": 148144,
-              "Y": -46992,
-              "Z": -1609
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70019, 71019 ]
-          },
-          "FlameTower2": {
-            "Coords": {
-              "X": 146784,
-              "Y": -46992,
-              "Z": -1609
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70020, 71020 ]
-          }
+          "NpcId": 13002
         },
-        "Rune": {
-          "ControlTower1": {
-            "Coords": {
-              "X": 16565,
-              "Y": -50318,
-              "Z": -641
-            },
-            "NpcId": 13002
+        "FlameTower1": {
+          "Coords": {
+            "X": -18154,
+            "Y": 107591,
+            "Z": -2560
           },
-          "ControlTower2": {
-            "Coords": {
-              "X": 16559,
-              "Y": -48000,
-              "Z": -641
-            },
-            "NpcId": 13002
-          },
-          "ControlTower3": {
-            "Coords": {
-              "X": 10775,
-              "Y": -48481,
-              "Z": 83
-            },
-            "NpcId": 13002
-          },
-          "FlameTower1": {
-            "Coords": {
-              "X": 12864,
-              "Y": -47440,
-              "Z": -1087
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70021, 71021 ]
-          },
-          "FlameTower2": {
-            "Coords": {
-              "X": 12225,
-              "Y": -50767,
-              "Z": 1248
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70022, 71022 ]
-          }
+          "NpcId": 13004,
+          "ZoneIds": [ 70009, 71009 ]
         },
-        "Schuttgart": {
-          "ControlTower1": {
-            "Coords": {
-              "X": 80334,
-              "Y": -152898,
-              "Z": -8
-            },
-            "NpcId": 13002
+        "FlameTower2": {
+          "Coords": {
+            "X": -19329,
+            "Y": 108154,
+            "Z": -2384
           },
-          "ControlTower2": {
-            "Coords": {
-              "X": 74775,
-              "Y": -152928,
-              "Z": -8
-            },
-            "NpcId": 13002
+          "NpcId": 13004,
+          "ZoneIds": [ 70010, 71010 ]
+        }
+      },
+      "Dion": {
+        "ControlTower1": {
+          "Coords": {
+            "X": 22285,
+            "Y": 156939,
+            "Z": -2571
           },
-          "ControlTower3": {
-            "Coords": {
-              "X": 77547,
-              "Y": -153246,
-              "Z": 112
-            },
-            "NpcId": 13002
+          "NpcId": 13002
+        },
+        "ControlTower2": {
+          "Coords": {
+            "X": 22008,
+            "Y": 162652,
+            "Z": -2572
           },
-          "FlameTower1": {
-            "Coords": {
-              "X": 76872,
-              "Y": -151043,
-              "Z": 120
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70023, 71023 ]
+          "NpcId": 13002
+        },
+        "ControlTower3": {
+          "Coords": {
+            "X": 22073,
+            "Y": 161153,
+            "Z": -2537
           },
-          "FlameTower2": {
-            "Coords": {
-              "X": 78233,
-              "Y": -151037,
-              "Z": 120
-            },
-            "NpcId": 13004,
-            "ZoneIds": [ 70024, 71024 ]
-          }
+          "NpcId": 13002
+        },
+        "FlameTower1": {
+          "Coords": {
+            "X": 22114,
+            "Y": 162159,
+            "Z": -2754
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70011, 71011 ]
+        },
+        "FlameTower2": {
+          "Coords": {
+            "X": 23289,
+            "Y": 161596,
+            "Z": -2578
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70012, 71012 ]
+        }
+      },
+      "Giran": {
+        "ControlTower1": {
+          "Coords": {
+            "X": 113115,
+            "Y": 144829,
+            "Z": -2446
+          },
+          "NpcId": 13002
+        },
+        "ControlTower2": {
+          "Coords": {
+            "X": 118828,
+            "Y": 145106,
+            "Z": -2447
+          },
+          "NpcId": 13002
+        },
+        "ControlTower3": {
+          "Coords": {
+            "X": 117329,
+            "Y": 145041,
+            "Z": -2412
+          },
+          "NpcId": 13002
+        },
+        "FlameTower1": {
+          "Coords": {
+            "X": 118331,
+            "Y": 145055,
+            "Z": -2627
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70013, 71013 ]
+        },
+        "FlameTower2": {
+          "Coords": {
+            "X": 117768,
+            "Y": 143880,
+            "Z": -2451
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70014, 71014 ]
+        }
+      },
+      "Oren": {
+        "ControlTower1": {
+          "Coords": {
+            "X": 79193,
+            "Y": 36977,
+            "Z": -2167
+          },
+          "NpcId": 13002
+        },
+        "ControlTower2": {
+          "Coords": {
+            "X": 84906,
+            "Y": 37254,
+            "Z": -2168
+          },
+          "NpcId": 13002
+        },
+        "ControlTower3": {
+          "Coords": {
+            "X": 83407,
+            "Y": 37189,
+            "Z": -2133
+          },
+          "NpcId": 13002
+        },
+        "FlameTower1": {
+          "Coords": {
+            "X": 84407,
+            "Y": 37150,
+            "Z": -2354
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70015, 71015 ]
+        },
+        "FlameTower2": {
+          "Coords": {
+            "X": 83844,
+            "Y": 35975,
+            "Z": -2178
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70016, 71016 ]
+        }
+      },
+      "Innadril": {
+        "ControlTower1": {
+          "Coords": {
+            "X": 116236,
+            "Y": 245718,
+            "Z": -667
+          },
+          "NpcId": 13002
+        },
+        "ControlTower2": {
+          "Coords": {
+            "X": 115959,
+            "Y": 251431,
+            "Z": -667
+          },
+          "NpcId": 13002
+        },
+        "ControlTower3": {
+          "Coords": {
+            "X": 116024,
+            "Y": 249932,
+            "Z": -633
+          },
+          "NpcId": 13002
+        },
+        "FlameTower1": {
+          "Coords": {
+            "X": 116065,
+            "Y": 250938,
+            "Z": -850
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70017, 71017 ]
+        },
+        "FlameTower2": {
+          "Coords": {
+            "X": 117240,
+            "Y": 250375,
+            "Z": -674
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70018, 71018 ]
+        }
+      },
+      "Goddard": {
+        "ControlTower1": {
+          "Coords": {
+            "X": 144672,
+            "Y": -48832,
+            "Z": -1742
+          },
+          "NpcId": 13002
+        },
+        "ControlTower2": {
+          "Coords": {
+            "X": 150240,
+            "Y": -48832,
+            "Z": -1742
+          },
+          "NpcId": 13002
+        },
+        "ControlTower3": {
+          "Coords": {
+            "X": 147456,
+            "Y": -49200,
+            "Z": -1619
+          },
+          "NpcId": 13002
+        },
+        "FlameTower1": {
+          "Coords": {
+            "X": 148144,
+            "Y": -46992,
+            "Z": -1609
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70019, 71019 ]
+        },
+        "FlameTower2": {
+          "Coords": {
+            "X": 146784,
+            "Y": -46992,
+            "Z": -1609
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70020, 71020 ]
+        }
+      },
+      "Rune": {
+        "ControlTower1": {
+          "Coords": {
+            "X": 16565,
+            "Y": -50318,
+            "Z": -641
+          },
+          "NpcId": 13002
+        },
+        "ControlTower2": {
+          "Coords": {
+            "X": 16559,
+            "Y": -48000,
+            "Z": -641
+          },
+          "NpcId": 13002
+        },
+        "ControlTower3": {
+          "Coords": {
+            "X": 10775,
+            "Y": -48481,
+            "Z": 83
+          },
+          "NpcId": 13002
+        },
+        "FlameTower1": {
+          "Coords": {
+            "X": 12864,
+            "Y": -47440,
+            "Z": -1087
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70021, 71021 ]
+        },
+        "FlameTower2": {
+          "Coords": {
+            "X": 12225,
+            "Y": -50767,
+            "Z": 1248
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70022, 71022 ]
+        }
+      },
+      "Schuttgart": {
+        "ControlTower1": {
+          "Coords": {
+            "X": 80334,
+            "Y": -152898,
+            "Z": -8
+          },
+          "NpcId": 13002
+        },
+        "ControlTower2": {
+          "Coords": {
+            "X": 74775,
+            "Y": -152928,
+            "Z": -8
+          },
+          "NpcId": 13002
+        },
+        "ControlTower3": {
+          "Coords": {
+            "X": 77547,
+            "Y": -153246,
+            "Z": 112
+          },
+          "NpcId": 13002
+        },
+        "FlameTower1": {
+          "Coords": {
+            "X": 76872,
+            "Y": -151043,
+            "Z": 120
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70023, 71023 ]
+        },
+        "FlameTower2": {
+          "Coords": {
+            "X": 78233,
+            "Y": -151037,
+            "Z": 120
+          },
+          "NpcId": 13004,
+          "ZoneIds": [ 70024, 71024 ]
         }
       }
     }
