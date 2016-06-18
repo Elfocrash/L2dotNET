@@ -1,5 +1,5 @@
 {
-  "autoloot": "true",
+  "autoloot": true,
   "DeleteCharAfterDays": "0",
   "max_buffs": "24",
   "CommunityBoard": {
@@ -20,6 +20,97 @@
     "SocialTime": 2000,
     "SubclassTime": 2000,
     "TradeChatTime": 0
+  },
+  "Event": {
+    "Olympiad": {
+      "StartTime": 18,
+      "Min": "00",
+      "CPeriod": 21600000,
+      "Battle": 360000,
+      "WPeriod": 604800000,
+      "VPeriod": 86400000,
+      "WaitTime": 30,
+      "WaitBattle": 60,
+      "WaitEnd": 40,
+      "StartPoints": 18,
+      "WeeklyPoints": 3,
+      "MinMatchesToBeClassed": 9,
+      "ClassedParticipants": 5,
+      "NonClassedParticipants": 9,
+      "ClassedReward": [ 6651, 50 ],
+      "NonClassedReward": [ 6651, 30 ],
+      "GPPerPoint": 1000,
+      "HeroPoints": 300,
+      "Rank1Points": 100,
+      "Rank2Points": 75,
+      "Rank3Points": 55,
+      "Rank4Points": 40,
+      "Rank5Points": 30,
+      "MaxPoints": 10,
+      "AnnounceGames": true,
+      "DividerClassed": 3,
+      "DividerNonClassed": 5
+    },
+    "SevenSigns": {
+      "CastleForDawn": true,
+      "CastleForDusk": true,
+      "LazyUpdate": true,
+      "Festival": {
+        "ManagerStart": 120000,
+        "Length": 1080000,
+        "CycleLength": 2280000,
+        "MinPlayer": 5,
+        "MaxPlayerContrib": 1000000,
+        "FirstSpawn": 120000,
+        "FirstSwarm": 300000,
+        "SecondSpawn": 540000,
+        "SecondSwarm": 720000,
+        "ChestSpawn": 900000
+      }
+    },
+    "FourSepulchers": {
+      "TimeOfAttack": 50,
+      "TimeOfEntry": 3,
+      "TimeOfWarmUp": 2,
+      "NumberOfNecessaryPartyMembers": 4,
+    },
+    "DimensionRift": {
+      "RiftMinPartySize": 2,
+      "MaxRiftJumps": 4,
+      "RiftSpawnDelay": 10000,
+      "AutoJumpsDelayMin": 480,
+      "AutoJumpsDelayMax": 600,
+      "BossRoomTimeMultiply": "1.",
+      "RecruitCost": 18,
+      "SoldierCost": 21,
+      "OfficerCost": 24,
+      "CaptainCost": 27,
+      "CommanderCost": 30,
+      "HeroCost": 33
+    },
+    "Wedding": {
+      "AllowWedding": false,
+      "WeddingPrice": 1000000,
+      "WeddingAllowSameSex": false,
+      "WeddingFormalWear": true
+    },
+    "Lottery": {
+      "Prize": 50000,
+      "TicketPrice": 2000,
+      "Winning5NumberRate": 0.6,
+      "Winning4NumberRate": 0.2,
+      "Winning3NumberRate": 0.2,
+      "Winning2and1NumberPrize": 200
+    },
+    "Fishing": {
+      "FishChampionshipEnabled": true,
+      "FishChampionshipRewardItemId": 57,
+      "FishChampionshipReward1": 800000,
+      "FishChampionshipReward2": 500000,
+      "FishChampionshipReward3": 300000,
+      "FishChampionshipReward4": 200000,
+      "FishChampionshipReward5": 100000
+    }
   },
   "Clan": {
     "DaysBeforeJoinAClan": 1,

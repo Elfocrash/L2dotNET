@@ -24,5 +24,8 @@ namespace L2dotNET.GameService.Config
 
         [JsonProperty(PropertyName = "Siege")]
         public Siege Siege { get; set; }
+
+        [JsonProperty(PropertyName = "Event")]
+        public Event Event { get; set; }
     }
 }
