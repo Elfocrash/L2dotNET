@@ -7,17 +7,17 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 {
     /// <summary>
     /// Play accepted packet.
-    /// </summary>
+    /// .</summary>
     internal static class ServerList
     {
         /// <summary>
         /// Packet opcode.
-        /// </summary>
+        /// .</summary>
         private const byte Opcode = 0x04;
 
         /// <summary>
         /// Returns play accepted server > client packet.
-        /// </summary>
+        /// .</summary>
         /// <param name="client"><see cref="LoginClient"/> object.</param>
         /// <returns>Play accepted <see cref="Packet"/>.</returns>
         internal static Packet ToPacket(LoginClient client)

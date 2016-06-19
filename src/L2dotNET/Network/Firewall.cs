@@ -4,59 +4,59 @@ namespace L2dotNET.Network
 {
     /// <summary>
     /// <see cref="Firewall"/> enabled action delegate.
-    /// </summary>
+    /// .</summary>
     public delegate void OnFirewallEnabledEventHandler();
 
     /// <summary>
     /// <see cref="Firewall"/> disabled action delegate.
-    /// </summary>
+    /// .</summary>
     public delegate void OnFirewallDisabledEventHandler();
 
     /// <summary>
     /// <see cref="Firewall"/> bypass rejected action delegate.
-    /// </summary>
+    /// .</summary>
     /// <param name="socket">Connected <see cref="Socket"/> object.</param>
     public delegate void OnFirewallBypassRejectedEventHandler(Socket socket);
 
     /// <summary>
     /// <see cref="Firewall"/> bypass allowed action delegate.
-    /// </summary>
+    /// .</summary>
     /// <param name="socket">Connected <see cref="Socket"/> object.</param>
     public delegate void OnFirewallBypassAllowedEventHandler(Socket socket);
 
     /// <summary>
     /// Represents simple firewall class.
-    /// </summary>
+    /// .</summary>
     public class Firewall
     {
         /// <summary>
         /// Indicates if <see cref="Firewall"/> is currently enabled.
-        /// </summary>
+        /// .</summary>
         private volatile bool m_Enabled;
 
         /// <summary>
         /// Raises after firewall was enabled.
-        /// </summary>
+        /// .</summary>
         public event OnFirewallEnabledEventHandler OnEnabled;
 
         /// <summary>
         /// Raises after firewall was disabled.
-        /// </summary>
+        /// .</summary>
         public event OnFirewallDisabledEventHandler OnDisabled;
 
         /// <summary>
         /// Raises after firewall allowed socket.
-        /// </summary>
+        /// .</summary>
         public event OnFirewallBypassAllowedEventHandler OnBypassAllowed;
 
         /// <summary>
         /// Raises after firewall rejected socket.
-        /// </summary>
+        /// .</summary>
         public event OnFirewallBypassRejectedEventHandler OnBypassRejected;
 
         /// <summary>
         /// Validates socket connection. Note: if firewall is disabled and provided socket object is not null, always allows connection.
-        /// </summary>
+        /// .</summary>
         /// <param name="socket"><see cref="Socket"/> to validate.</param>
         /// <returns>True, if socket is valid, otherwise false.</returns>
         public virtual bool ValidateRequest(Socket socket)
@@ -82,7 +82,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Checks that socket is valid for current rules collection.
-        /// </summary>
+        /// .</summary>
         /// <param name="socket"><see cref="Socket"/> object to validate.</param>
         /// <returns>True, if socket is valid, otherwise false.</returns>
         protected virtual bool ValidateRules(Socket socket)
@@ -92,7 +92,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Enables firewall.
-        /// </summary>
+        /// .</summary>
         public virtual void Enable()
         {
             m_Enabled = true;
@@ -103,7 +103,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Disables firewall.
-        /// </summary>
+        /// .</summary>
         public virtual void Disable()
         {
             m_Enabled = false;
@@ -114,7 +114,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Sets firewall enabled / disabled, gets it current state.
-        /// </summary>
+        /// .</summary>
         public bool Enabled
         {
             get { return m_Enabled; }

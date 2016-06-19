@@ -6,38 +6,38 @@ namespace L2dotNET.Network
 {
     /// <summary>
     /// Delegate for packet handling
-    /// </summary>
+    /// .</summary>
     /// <param name="packet">Incoming packet</param>
     public delegate void PacketHandleDelegate(Packet packet);
 
     /// <summary>
     /// Represents inner network client (remote) connection class.
-    /// </summary>
+    /// .</summary>
     public class InnerNetworkClient : NetworkClient
     {
         /// <summary>
         /// Remote service settings.
-        /// </summary>
+        /// .</summary>
         public RemoteServiceSettings RemoteServiceSettings;
 
         /// <summary>
         /// Fires when connection is lost or broken.
-        /// </summary>
+        /// .</summary>
         public override event OnDisconnectedEventHandler OnDisconnected;
 
         /// <summary>
         /// Packet handling method.
-        /// </summary>
+        /// .</summary>
         public PacketHandleDelegate HandleDelegate;
 
         /// <summary>
         /// Initializes new instance of <see cref="InnerNetworkClient"/> object.
-        /// </summary>
+        /// .</summary>
         public InnerNetworkClient() { }
 
         /// <summary>
         /// Initializes new instance of <see cref="InnerNetworkClient"/> object.
-        /// </summary>
+        /// .</summary>
         /// <param name="serviceId">Remote service unique id.</param>
         /// <param name="serviceType">Remote service type.</param>
         /// <param name="socket"><see cref="Socket"/> used by connection.</param>
@@ -51,7 +51,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Creates new instance of <see cref="InnerNetworkClient"/> object.
-        /// </summary>
+        /// .</summary>
         /// <param name="serviceId">Service unique id.</param>
         /// <param name="serviceType">Service type.</param>
         /// <param name="socket">Service <see cref="Socket"/> object.</param>
@@ -59,7 +59,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Handles incoming packet.
-        /// </summary>
+        /// .</summary>
         /// <param name="packet">Incoming packet.</param>
         protected override void Handle(Packet packet)
         {
@@ -71,7 +71,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Begins receive from connection socket.
-        /// </summary>
+        /// .</summary>
         public override void BeginReceive()
         {
             m_Socket.BeginReceive(m_ReceiveBuffer, 0, 4, 0, m_ReceiveCallback, null);
@@ -79,7 +79,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Receive <see cref="AsyncCallback"/> method.
-        /// </summary>
+        /// .</summary>
         /// <exception cref="InvalidOperationException" />
         protected override unsafe void ReceiveCallback(IAsyncResult ar)
         {
@@ -135,7 +135,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Sends <see cref="Packet"/> to remote side.
-        /// </summary>
+        /// .</summary>
         /// <param name="p"><see cref="Packet"/> to send.</param>
         public virtual unsafe void Send(Packet p)
         {
@@ -145,7 +145,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Creates packet from received buffer.
-        /// </summary>
+        /// .</summary>
         /// <param name="buffer">Received buffer.</param>
         /// <param name="length">Received buffer length.</param>
         public override unsafe void ReceiveData(byte[] buffer, int length)
@@ -155,12 +155,12 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Gets or sets connected service unique id.
-        /// </summary>
+        /// .</summary>
         public byte ServiceID { get; set; }
 
         /// <summary>
         /// Gets or sets connected <see cref="ServiceType"/>.
-        /// </summary>
+        /// .</summary>
         public ServiceType ServiceType { get; set; }
     }
 }

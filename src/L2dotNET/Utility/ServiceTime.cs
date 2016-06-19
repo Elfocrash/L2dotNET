@@ -5,12 +5,12 @@ namespace L2dotNET.Utility
 {
     /// <summary>
     /// Provides access to some service time related properties.
-    /// </summary>
+    /// .</summary>
     public static class ServiceTime
     {
         /// <summary>
         /// Gets current time as string.
-        /// </summary>
+        /// .</summary>
         public static string CurrentTime
         {
             get { return DateTime.Now.ToString("d/M/yyyy H:mm:ss.ffff"); }
@@ -18,7 +18,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Gets service uptime as <see cref="TimeSpan"/>.
-        /// </summary>
+        /// .</summary>
         public static TimeSpan ServiceUptime
         {
             get { return DateTime.Now - Process.GetCurrentProcess().StartTime; }
@@ -26,7 +26,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Gets service uptime as string.
-        /// </summary>
+        /// .</summary>
         public static string ServiceUptimeAsString
         {
             get { return DateTime.Now.Subtract(Process.GetCurrentProcess().StartTime).ToString(); }

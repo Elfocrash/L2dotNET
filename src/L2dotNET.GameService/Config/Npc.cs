@@ -176,7 +176,7 @@ namespace L2dotNET.GameService.Config
         public bool ShowSummonCrest { get; set; }
     }
 
-    public class Item
+    public class ItemAmount
     {
         [JsonProperty(PropertyName = "Id")]
         public int Id { get; set; }
@@ -206,9 +206,9 @@ namespace L2dotNET.GameService.Config
     public class Occupation
     {
         [JsonProperty(PropertyName = "ItemsCost")]
-        public Item[] ItemsCost;
+        public ItemAmount[] ItemsCost;
         [JsonProperty(PropertyName = "ItemsReward")]
-        public Item[] ItemsReward;
+        public ItemAmount[] ItemsReward;
     }
 
     ///<summary>Wyvern Manager.</summary>

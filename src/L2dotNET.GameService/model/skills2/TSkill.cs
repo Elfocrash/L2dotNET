@@ -58,7 +58,7 @@ namespace L2dotNET.GameService.Model.Skills2
 
         /// <summary>
         /// (effect) (cond)* (sup)*
-        /// </summary>
+        /// .</summary>
         /// <param name="value"></param>
         public void SetEffect_effect(string value)
         {

@@ -6,32 +6,32 @@ namespace L2dotNET.Utility
 {
     /// <summary>
     /// Represents simple logger class.
-    /// </summary>
+    /// .</summary>
     public static class Logger
     {
         /// <summary>
         /// Common logs directory.
-        /// </summary>
+        /// .</summary>
         private static readonly string CommonLogsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs");
 
         /// <summary>
         /// Output logs directory.
-        /// </summary>
+        /// .</summary>
         private static readonly string OutLogsDirectory = Path.Combine(CommonLogsDirectory, "out");
 
         /// <summary>
         /// Exceptions logs directory.
-        /// </summary>
+        /// .</summary>
         private static readonly string ExceptionsLogDirectory = Path.Combine(CommonLogsDirectory, "ex");
 
         /// <summary>
         /// Common output stream writer.
-        /// </summary>
+        /// .</summary>
         private static StreamWriter Output;
 
         /// <summary>
         /// Writes data to console and common output file.
-        /// </summary>
+        /// .</summary>
         /// <param name="append">True, if current message must continue previous.</param>
         /// <param name="format">Format string.</param>
         /// <param name="args">Arguments.</param>
@@ -47,7 +47,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Appends <see cref="Environment.NewLine"/> value to data, writes it to console and common output file.
-        /// </summary>
+        /// .</summary>
         /// <param name="format">Format string.</param>
         /// <param name="args">Arguments.</param>
         public static void EndWrite(string format, params object[] args)
@@ -57,7 +57,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Writes line to console and common output file.
-        /// </summary>
+        /// .</summary>
         /// <param name="src">Logs <see cref="Source"/>.</param>
         /// <param name="format">Format string.</param>
         /// <param name="args">Arguments.</param>
@@ -79,7 +79,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Writes line to console and common output file.
-        /// </summary>
+        /// .</summary>
         /// <param name="format">Format string.</param>
         /// <param name="args">Arguments.</param>
         public static void WriteLine(string format, params object[] args)
@@ -95,7 +95,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Stores <see cref="System.Exception"/> data and shows message to console.
-        /// </summary>
+        /// .</summary>
         /// <param name="e">Occurred <see cref="System.Exception"/>.</param>
         /// <param name="format">Format string.</param>
         /// <param name="args">Arguments.</param>
@@ -114,7 +114,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Stores <see cref="System.Exception"/> data and shows message on console.
-        /// </summary>
+        /// .</summary>
         /// <param name="e">Occurred <see cref="System.Exception"/>.</param>
         public static void Exception(Exception e)
         {
@@ -123,7 +123,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Formats <see cref="System.Exception"/> object.
-        /// </summary>
+        /// .</summary>
         /// <param name="e"><see cref="System.Exception"/> to format data about.</param>
         /// <returns>Formatted <see cref="System.Exception"/> data.</returns>
         private static string FormatException(Exception e)
@@ -154,7 +154,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Gets system information.
-        /// </summary>
+        /// .</summary>
         /// <returns>Formatted system summary.</returns>
         private static string GetSystemSummary()
         {
@@ -172,7 +172,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Initializes logger.
-        /// </summary>
+        /// .</summary>
         public static void Initialize()
         {
             EnsureDirectiries();
@@ -182,7 +182,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Writes message to common output file.
-        /// </summary>
+        /// .</summary>
         /// <param name="s">Message to write.</param>
         private static void WriteOutputLine(string s)
         {
@@ -195,7 +195,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Writes message to common output file.
-        /// </summary>
+        /// .</summary>
         /// <param name="s">Message to write.</param>
         private static void WriteOutput(string s)
         {
@@ -208,7 +208,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Verifies that used directories exist.
-        /// </summary>
+        /// .</summary>
         private static void EnsureDirectiries()
         {
             if (!Directory.Exists(CommonLogsDirectory))
@@ -221,7 +221,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Writes <see cref="System.Exception"/> data to it's file.
-        /// </summary>
+        /// .</summary>
         /// <param name="type">String representation of <see cref="System.Exception"/> <see cref="System.Type"/>.</param>
         /// <param name="data"><see cref="System.Exception"/> data.</param>
         private static void WriteException(string type, string data)
@@ -238,7 +238,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Appends date and time to provided <see cref="string"/>.
-        /// </summary>
+        /// .</summary>
         /// <param name="s"><see cref="string"/> to format.</param>
         /// <returns>Formatted <see cref="string"/> object.</returns>
         private static string FormatOutputString(string s)

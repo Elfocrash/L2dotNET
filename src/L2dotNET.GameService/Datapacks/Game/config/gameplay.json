@@ -1,25 +1,4 @@
 {
-  "AutoLoot": true,
-  "DeleteCharAfterDays": "0",
-  "CommunityBoard": {
-    "UseCommunityBoard": true,
-    "BBSDefault": "_bbshome"
-  },
-  "FloodProtector": {
-    "CharacterSelectTime": 3000,
-    "DropItemTime": 1000,
-    "GlobalChatTime": 0,
-    "HeroVoiceTime": 10000,
-    "ManorTime": 3000,
-    "ManufactureTime": 300,
-    "MultisellTime": 100,
-    "RollDiceTime": 4200,
-    "SendMailTime": 10000,
-    "ServerBypassTime": 500,
-    "SocialTime": 2000,
-    "SubclassTime": 2000,
-    "TradeChatTime": 0
-  },
   "Player": {
     "StartingAdena": 100,
     "CancelLesserEffect": true,
@@ -1276,6 +1255,195 @@
           "ZoneIds": [ 70024, 71024 ]
         }
       }
+    }
+  },
+  "Server": {
+    "Gameserver": {
+      "GameserverHostname": "*",
+      "GameserverPort": 7777,
+      "ExternalHostname": "127.0.0.1",
+      "InternalHostname": "127.0.0.1",
+      "LoginPort": 9014,
+      "LoginHost": "127.0.0.1",
+      "RequestServerID": 1,
+      "AcceptAlternateID": true
+    },
+    "GameDatabase": {
+      "URL": "",
+      "Login": "",
+      "Password": "",
+      "MaximumDbConnections": 100,
+      "MaximumDbIdleTime": 0
+    },
+    "ServerList": {
+      "ServerListBrackets": false,
+      "ServerListClock": false,
+      "ServerGMOnly": false,
+      "TestServer": false
+    },
+    "Client": {
+      "DeleteCharAfterDays": 7,
+      "MaximumOnlineUsers": 100,
+      "MinProtocolRevision": 730,
+      "MaxProtocolRevision": 746
+    },
+    "Punishement": {
+      "DefaultPunish": 2,
+      "DefaultPunishParam": 0
+    },
+    "Automatic": {
+      "AutoLoot": false,
+      "AutoLootRaid": false,
+      "AutoLootHerbs": false
+    },
+    "ItemManagement": {
+      "AllowDiscardItem": true,
+      "MultipleItemDrop": true,
+      "AutoDestroyHerbTime": 15,
+      "AutoDestroyItemTime": 600,
+      "AutoDestroyEquipableItemTime": 0,
+      "AutoDestroySpecialItemTime": [
+        {
+          "Id": 57,
+          "Timer": 0
+        },
+        {
+          "Id": 5575,
+          "Timer": 0
+        },
+        {
+          "Id": 6673,
+          "Timer": 0
+        }
+      ],
+      "PlayerDroppedItemMultiplier": 1,
+      "SaveDroppedItem": true
+    },
+    "Rates": {
+      "RateXp": 1.0,
+      "RateSp": 1.0,
+      "RatePartyXp": 1.0,
+      "RatePartySp": 1.0,
+      "RateDropAdena": 1.0,
+      "RateConsumableCost": 1.0,
+      "RateDropItems": 1.0,
+      "RateRaidDropItems": 1.0,
+      "RateDropSpoil": 1.0,
+      "RateDropManor": 1,
+      "RateQuestDrop": 1.0,
+      "RateQuestReward": 1.0,
+      "RateQuestRewardXP": 1.0,
+      "RateQuestRewardSP": 1.0,
+      "RateQuestRewardAdena": 1.0,
+      "RateKarmaExpLost": 1,
+      "RateSiegeGuardsPrice": 1,
+      "PlayerDropLimit": 0,
+      "PlayerRateDrop": 0,
+      "PlayerRateDropItem": 0,
+      "PlayerRateDropEquip": 0,
+      "PlayerRateDropEquipWeapon": 0,
+      "KarmaDropLimit": 10,
+      "KarmaRateDrop": 40,
+      "KarmaRateDropItem": 50,
+      "KarmaRateDropEquip": 40,
+      "KarmaRateDropEquipWeapon": 10,
+      "PetXpRate": 1.0,
+      "PetFoodRate": 1,
+      "SinEaterXpRate": 1.0,
+      "RateCommonHerbs": 1.0,
+      "RateHpHerbs": 1.0,
+      "RateMpHerbs": 1.0,
+      "RateSpecialHerbs": 1.0
+    },
+    "AllowedFeatures": {
+      "AllowFreight": true,
+      "AllowWarehouse": true,
+      "AllowWear": true,
+      "WearDelay": 5,
+      "WearPrice": 10,
+      "AllowLottery": true,
+      "AllowWater": true,
+      "AllowCursedWeapons": true,
+      "AllowManor": true,
+      "AllowBoat": true,
+      "AllowFishing": false,
+      "EnableFallingDamage": "Auto"
+    },
+    "GameDeveloperConfig": {
+      "NoSpawns": false,
+      "Debug": false,
+      "Developer": false,
+      "PacketHandlerDebug": false
+    },
+    "DeadLockDetector": {
+      "EnableDeadLockDetector": false,
+      "DeadLockCheckInterval": 20,
+      "RestartOnDeadlock": false
+    },
+    "Logging": {
+      "LogChat": false,
+      "LogItems": false,
+      "GMAudit": false
+    },
+    "CommunityBoard": {
+      "EnableCommunityBoard": false,
+      "BBSDefault": "_bbshome"
+    },
+    "FloodProtector": {
+      "RollDiceTime": 4200,
+      "HeroVoiceTime": 10000,
+      "SubclassTime": 2000,
+      "DropItemTime": 1000,
+      "ServerBypassTime": 500,
+      "MultisellTime": 100,
+      "ManufactureTime": 300,
+      "ManorTime": 3000,
+      "SendMailTime": 10000,
+      "CharacterSelectTime": 3000,
+      "GlobalChatTime": 0,
+      "TradeChatTime": 0,
+      "SocialTime": 2000
+    },
+    "Misc": {
+      "L2WalkerProtection": false,
+      "AutoDeleteInvalidQuestData": false,
+      "ZoneTown": 0,
+      "ShowServerNews": false,
+      "DisableTutorial": false
+    }
+  },
+  "Login": {
+    "LoginServer": {
+      "ExternalHostname": "127.0.0.1",
+      "InternalHostname": "127.0.0.1",
+      "LoginserverHostname": "*",
+      "LoginserverPort": 2106,
+      "LoginTryBeforeBan": 10,
+      "LoginBlockAfterBan": 600,
+      "LoginHostname": "*",
+      "LoginPort": 9014,
+      "AcceptNewGameServer": false,
+      "ShowLicence": true
+    },
+    "LoginDatabase": {
+      "URL": "",
+      "Login": "",
+      "Password": "",
+      "MaximumDbConnections": 10,
+      "AutoCreateAccounts": true
+    },
+    "Security": {
+      "LogLoginController": false,
+      "EnableFloodProtection": true,
+      "FastConnectionLimit": 15,
+      "NormalConnectionTime": 700,
+      "FastConnectionTime": 350,
+      "MaxConnectionPerIP": 50
+    },
+    "LoginDeveloperConfig": {
+      "Debug": false,
+      "Developer": false,
+      "PacketHandlerDebug": false
     }
   }
 }

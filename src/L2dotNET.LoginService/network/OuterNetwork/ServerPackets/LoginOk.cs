@@ -6,7 +6,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
     {
         /// <summary>
         /// Packet opcode.
-        /// </summary>
+        /// .</summary>
         private const byte Opcode = 0x03;
 
         internal static Packet ToPacket(LoginClient client)

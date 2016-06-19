@@ -4,18 +4,6 @@ namespace L2dotNET.GameService.Config
 {
     public class GameplayConfig
     {
-        [JsonProperty(PropertyName = "AutoLoot")]
-        public bool AutoLoot { get; set; }
-
-        [JsonProperty(PropertyName = "DeleteCharAfterDays")]
-        public int DeleteDays { get; set; }
-
-        [JsonProperty(PropertyName = "FloodProtector")]
-        public FloodProtector FloodProtector { get; set; }
-
-        [JsonProperty(PropertyName = "CommunityBoard")]
-        public CommunityBoard CommunityBoard { get; set; }
-
         [JsonProperty(PropertyName = "Clan")]
         public Clan Clan { get; set; }
 
@@ -30,5 +18,11 @@ namespace L2dotNET.GameService.Config
 
         [JsonProperty(PropertyName = "Player")]
         public Player Player { get; set; }
+
+        [JsonProperty(PropertyName = "Server")]
+        public Server2 Server { get; set; }
+
+        [JsonProperty(PropertyName = "Login")]
+        public Login Login { get; set; }
     }
 }

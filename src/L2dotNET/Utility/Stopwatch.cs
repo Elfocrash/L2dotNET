@@ -6,12 +6,12 @@ namespace L2dotNET.Utility
 {
     /// <summary>
     /// Represents extended hight performance counter class.
-    /// </summary>
+    /// .</summary>
     public sealed class Stopwatch
     {
         /// <summary>
         /// Native QueryPerformanceCounter function import.
-        /// </summary>
+        /// .</summary>
         /// <param name="x">Output <paramref name="x"/> value.</param>
         [DllImport("kernel32.dll")]
         [SuppressUnmanagedCodeSecurity]
@@ -19,7 +19,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Native QueryPerformanceFrequency function import.
-        /// </summary>
+        /// .</summary>
         /// <param name="x">Output <paramref name="x"/> value.</param>
         [DllImport("kernel32.dll")]
         [SuppressUnmanagedCodeSecurity]
@@ -27,27 +27,27 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// <see cref="Stopwatch"/> start time value.
-        /// </summary>
+        /// .</summary>
         private long StartTime;
 
         /// <summary>
         /// <see cref="Stopwatch"/> stop time value.
-        /// </summary>
+        /// .</summary>
         private long StopTime;
 
         /// <summary>
         /// <see cref="Stopwatch"/> clack frequency value.
-        /// </summary>
+        /// .</summary>
         private long ClockFrequency;
 
         /// <summary>
         /// <see cref="Stopwatch"/> calibration time value.
-        /// </summary>
+        /// .</summary>
         private long CalibrationTime;
 
         /// <summary>
         /// Initializes new instance of <see cref="Stopwatch"/> object.
-        /// </summary>
+        /// .</summary>
         public Stopwatch()
         {
             StartTime = 0;
@@ -59,7 +59,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Resets <see cref="Stopwatch"/> object: sets it start and stop time to zero values.
-        /// </summary>
+        /// .</summary>
         public void Reset()
         {
             StartTime = 0;
@@ -68,7 +68,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Start <see cref="Stopwatch"/> counter.
-        /// </summary>
+        /// .</summary>
         public void Start()
         {
             QueryPerformanceCounter(ref StartTime);
@@ -76,7 +76,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Stops <see cref="Stopwatch"/> counter.
-        /// </summary>
+        /// .</summary>
         public void Stop()
         {
             QueryPerformanceCounter(ref StopTime);
@@ -84,7 +84,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Gets <see cref="TimeSpan"/> value, elapsed between <see cref="Stopwatch"/> start and stop events.
-        /// </summary>
+        /// .</summary>
         /// <returns><see cref="TimeSpan"/> value between <see cref="Stopwatch"/> has been started and stopped.</returns>
         public TimeSpan GetElapsedTimeSpan()
         {
@@ -93,7 +93,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Gets time, elapsed between <see cref="Stopwatch"/> start and stop events in microseconds.
-        /// </summary>
+        /// .</summary>
         /// <returns><see cref="double"/> value in microseconds between <see cref="Stopwatch"/> has been started and stopped.</returns>
         public double GetElapsedTimeInMicroseconds()
         {
@@ -102,7 +102,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Calibrates <see cref="Stopwatch"/> object.
-        /// </summary>
+        /// .</summary>
         private void Calibrate()
         {
             QueryPerformanceFrequency(ref ClockFrequency);

@@ -152,13 +152,13 @@ namespace L2dotNET.GameService.Config
     ///<summary>Seven Signs Config.</summary>
     public class SevenSigns
     {
-        ///<summary>Dawn:</summary>
+        ///<summary>Dawn:.</summary>
         ///<summary>True - Players not owning castle need pay participation fee.</summary>
         ///<summary>False - Anyone can join Dawn.</summary>
         [JsonProperty(PropertyName = "CastleForDawn")]
         public bool CastleForDawn { get; set; }
 
-        ///<summary>Dusk:</summary>
+        ///<summary>Dusk:.</summary>
         ///<summary>True - Players owning castle can not join Dusk side.</summary>
         ///<summary>False - Anyone can join Dusk.</summary>
         [JsonProperty(PropertyName = "CastleForDusk")]
@@ -303,10 +303,10 @@ namespace L2dotNET.GameService.Config
     }
 
     ///<summary>Wedding Config.</summary>
-    ///<summary>Wedding Manager: //spawn 50007</summary>
+    ///<summary>Wedding Manager: //spawn 50007.</summary>
     public class Wedding
     {
-        ///<summary>True allows Wedding, False disables it.</summary></summary>
+        ///<summary>True allows Wedding, False disables it.</summary>
         ///<summary>The Wedding Manager is disabled until this setting is put to True.</summary>
         [JsonProperty(PropertyName = "AllowWedding")]
         public bool AllowWedding { get; set; }

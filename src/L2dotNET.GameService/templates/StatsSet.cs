@@ -190,7 +190,7 @@ namespace L2dotNET.GameService.Templates
             return defaultValue;
         }
 
-        ///<summary>Gets the 'value' from dictionary based on 'key' parameter and converts it to the type of T.</summary>
+        ///<summary>Gets the 'value' from dictionary based on 'key' parameter and converts it to the type of T..</summary>
         ///<typeparam name="T"></typeparam>
         ///<param name="key">Specific 'key' to get the 'value' from dictionary.</param>
         ///<param name="defaultValue">Optional. When not specified, has a value of 'default(T)'.</param>

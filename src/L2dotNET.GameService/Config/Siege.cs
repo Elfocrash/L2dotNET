@@ -34,7 +34,7 @@ namespace L2dotNET.GameService.Config
         public Castles Castles { get; set; }
     }
 
-    ///<summary>Coordinate</summary>
+    ///<summary>Coordinate.</summary>
     public class Coordinate
     {
         ///<summary>X coord.</summary>

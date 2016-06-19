@@ -91,7 +91,7 @@ namespace L2dotNET.GameService.Config
         [JsonProperty(PropertyName = "Party")]
         public Party Party;
 
-        ///<summary>GMs / Admin Stuff</summary>
+        ///<summary>GMs / Admin Stuff.</summary>
         [JsonProperty(PropertyName = "GM")]
         public GM GM;
 
@@ -107,7 +107,7 @@ namespace L2dotNET.GameService.Config
         [JsonProperty(PropertyName = "Skill")]
         public Skill Skill;
 
-        ///<summary>Buffs Config</summary>
+        ///<summary>Buffs Config.</summary>
         [JsonProperty(PropertyName = "Buff")]
         public Buff Buff;
     }
@@ -359,7 +359,7 @@ namespace L2dotNET.GameService.Config
         public bool LeavePartyLeader { get; set; }
     }
 
-    ///<summary>GMs / Admin Stuff</summary>
+    ///<summary>GMs / Admin Stuff.</summary>
     public class GM
     {
         ///<summary>If next switch is set to true every newly created character will have access level 200.</summary>
@@ -484,7 +484,7 @@ namespace L2dotNET.GameService.Config
         public bool SubClassWithoutQuests { get; set; }
     }
 
-    ///<summary>Buffs Config</summary>
+    ///<summary>Buffs Config.</summary>
     public class Buff
     {
         ///<summary>Maximum number of buffs.</summary>

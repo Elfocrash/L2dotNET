@@ -4,17 +4,17 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 {
     /// <summary>
     /// Login failed packet.
-    /// </summary>
+    /// .</summary>
     internal static class LoginFail
     {
         /// <summary>
         /// Packet opcode.
-        /// </summary>
+        /// .</summary>
         private const byte Opcode = 0x01;
 
         /// <summary>
         /// Login failed server > client packet.
-        /// </summary>
+        /// .</summary>
         /// <param name="response">Login failed reason.</param>
         /// <returns>Login failed <see cref="Packet"/>.</returns>
         internal static Packet ToPacket(LoginFailReason response)

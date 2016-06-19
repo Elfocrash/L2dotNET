@@ -2,22 +2,22 @@ namespace L2dotNET.Network
 {
     /// <summary>
     /// Remote login service settings.
-    /// </summary>
+    /// .</summary>
     public sealed class LoginServiceSettings : RemoteServiceSettings
     {
         /// <summary>
         /// Indicates if cache service can create non-existent user accounts automatically.
-        /// </summary>
+        /// .</summary>
         public bool AutoCreateUser;
 
         /// <summary>
         /// Access level, given to newer created users by default.
-        /// </summary>
+        /// .</summary>
         public byte DefaultAccessLevel;
 
         /// <summary>
         /// Initializes new instance of <see cref="LoginServiceSettings"/> class.
-        /// </summary>
+        /// .</summary>
         /// <param name="serviceID">Service unique id.</param>
         /// <param name="autoCreateAccounts">True, if cache server may create users automatically.</param>
         /// <param name="defaultAccessLevel">Default access level for newer created user.</param>
@@ -30,7 +30,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes login service settings to provided <see cref="Packet"/>.
-        /// </summary>
+        /// .</summary>
         /// <param name="p"><see cref="Packet"/> to write settings in.</param>
         public override void Write(ref Packet p)
         {
@@ -41,7 +41,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Reads login service settings from <see cref="Packet"/>.
-        /// </summary>
+        /// .</summary>
         /// <param name="p"><see cref="Packet"/> to read settings from.</param>
         public override void Read(Packet p)
         {
