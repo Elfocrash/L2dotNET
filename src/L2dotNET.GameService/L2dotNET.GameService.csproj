@@ -105,6 +105,7 @@
     <Compile Include="Config\Clan.cs" />
     <Compile Include="Config\Event.cs" />
     <Compile Include="Config\Npc.cs" />
+    <Compile Include="Config\Player.cs" />
     <Compile Include="Config\Siege.cs" />
     <Compile Include="Config\CommunityBoard.cs" />
     <Compile Include="Config\Config.cs" />

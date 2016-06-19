@@ -10,9 +10,6 @@ namespace L2dotNET.GameService.Config
         [JsonProperty(PropertyName = "DeleteCharAfterDays")]
         public int DeleteDays { get; set; }
 
-        [JsonProperty(PropertyName = "MaxBuffs")]
-        public int MaxBuffs { get; set; }
-
         [JsonProperty(PropertyName = "FloodProtector")]
         public FloodProtector FloodProtector { get; set; }
 
@@ -30,5 +27,8 @@ namespace L2dotNET.GameService.Config
 
         [JsonProperty(PropertyName = "Npc")]
         public Npc Npc { get; set; }
+
+        [JsonProperty(PropertyName = "Player")]
+        public Player Player { get; set; }
     }
 }
