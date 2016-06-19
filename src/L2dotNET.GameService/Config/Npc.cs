@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace L2dotNET.GameService.Config
 {
@@ -102,7 +105,23 @@ namespace L2dotNET.GameService.Config
 
         ///<summary>The list of buffs, under a skillId,buffPrice,groupType format.</summary>
         [JsonProperty(PropertyName = "Buffs")]
-        public int Buffs { get; set; }
+        public BufferBuffs[] Buffs { get; set; }
+    }
+
+    ///<summary>BufferBuffs.</summary>
+    public class BufferBuffs
+    {
+        ///<summary>Skill Id.</summary>
+        [JsonProperty(PropertyName = "SkillId")]
+        public int SkillId { get; set; }
+
+        ///<summary>Cost to buff.</summary>
+        [JsonProperty(PropertyName = "Price")]
+        public int Price { get; set; }
+
+        ///<summary>Name of the group.</summary>
+        [JsonProperty(PropertyName = "GroupType")]
+        public string GroupType { get; set; }
     }
 
     ///<summary>Misc.</summary>
@@ -123,7 +142,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>ConfigClassMaster=1;[];[];2;[];[].</summary>
         ///<summary>Allow only first and second change.</summary>
         [JsonProperty(PropertyName = "ConfigClassMaster")]
-        public int ConfigClassMaster { get; set; }
+        public ConfigClassMaster ConfigClassMaster { get; set; }
 
         ///<summary>Class Masters will allow changing to any occupation on any level inside class tree.</summary>
         ///<summary>For example, Dwarven Fighter will be able to advance to:.</summary>
@@ -158,6 +177,41 @@ namespace L2dotNET.GameService.Config
         ///<summary>Show clan && alliance crests on summons, default: False.</summary>
         [JsonProperty(PropertyName = "ShowSummonCrest")]
         public bool ShowSummonCrest { get; set; }
+    }
+
+    public class Item
+    {
+        [JsonProperty(PropertyName = "Id")]
+        public int Id { get; set; }
+        [JsonProperty(PropertyName = "Amount")]
+        public int Amount { get; set; }
+    }
+
+    ///<summary>ConfigClassMaster=1;[57(100000)];[];2;[57(1000000)];[];3;[57(10000000)],[5575(1000000)];[6622(1)].</summary>
+    ///<summary>1st occupation change for 100.000 Adena (item id 57).</summary>
+    ///<summary>2nd occupation change for 1.000.0000 Adena (item id 57).</summary>
+    ///<summary>3rd occupation change for 10.000.0000 Adena (item id 57) and 1.000.000 Ancient Adena (item id 5575).</summary>
+    ///<summary>on 3rd occupation change player will be rewarded with 1 Book of Giants (item id 6622).</summary>
+    ///<summary>ConfigClassMaster=1;[];[];2;[];[];3;[];[].</summary>
+    ///<summary>1st, 2nd, 3rd occupation change for free, without rewards.</summary>
+    ///<summary>ConfigClassMaster=1;[];[];2;[];[].</summary>
+    ///<summary>Allow only first and second change.</summary>
+    public class ConfigClassMaster
+    {
+        [JsonProperty(PropertyName = "FirstOccupation")]
+        public Occupation FirstOccupation;
+        [JsonProperty(PropertyName = "SecondOccupation")]
+        public Occupation SecondOccupation;
+        [JsonProperty(PropertyName = "ThirdOccupation")]
+        public Occupation ThirdOccupation;
+    }
+
+    public class Occupation
+    {
+        [JsonProperty(PropertyName = "ItemsCost")]
+        public Item[] ItemsCost;
+        [JsonProperty(PropertyName = "ItemsReward")]
+        public Item[] ItemsReward;
     }
 
     ///<summary>Wyvern Manager.</summary>
