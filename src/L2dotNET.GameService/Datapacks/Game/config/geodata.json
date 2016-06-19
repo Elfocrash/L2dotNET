@@ -1,0 +1,15 @@
+{
+  "GeoData": 0,
+  "GeoDataPath": "./data/geodata/",
+  "GeoDataFormat": "L2J",
+  "CoordSynchronize": -1,
+  "PartOfCharacterHeight": 75,
+  "MaxObstacleHeight": 32,
+  "PathFindBuffers": "100x6;128x6;192x6;256x4;320x4;384x4;500x2",
+  "BaseWeight": 10,
+  "DiagonalWeight": 14,
+  "ObstacleMultiplier": 10,
+  "HeuristicWeight": 20,
+  "MaxIterations": 3500,
+  "DebugPath": false
+}

@@ -35,6 +35,7 @@ namespace L2dotNET.GameService.Config
             gameplayConfig.Server = JsonConvert.DeserializeObject<Server2>(File.ReadAllText(@"config\gameplay.json"));
             gameplayConfig.Clan = JsonConvert.DeserializeObject<Clan>(File.ReadAllText(@"config\clan.json"));
             gameplayConfig.Event = JsonConvert.DeserializeObject<Event>(File.ReadAllText(@"config\events.json"));
+            gameplayConfig.Geodata = JsonConvert.DeserializeObject<Geodata>(File.ReadAllText(@"config\geodata.json"));
             gameplayConfig.Login = JsonConvert.DeserializeObject<Login>(File.ReadAllText(@"config\loginserver.json"));
             gameplayConfig.Npc = JsonConvert.DeserializeObject<Npc>(File.ReadAllText(@"config\npcs.json"));
             gameplayConfig.Player = JsonConvert.DeserializeObject<Player>(File.ReadAllText(@"config\player.json"));

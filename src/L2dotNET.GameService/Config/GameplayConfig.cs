@@ -24,5 +24,8 @@ namespace L2dotNET.GameService.Config
 
         [JsonProperty(PropertyName = "Login")]
         public Login Login { get; set; }
+
+        [JsonProperty(PropertyName = "Geodata")]
+        public Geodata Geodata { get; set; }
     }
 }

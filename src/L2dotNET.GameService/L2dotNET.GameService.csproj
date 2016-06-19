@@ -104,6 +104,7 @@
     <Compile Include="ConfigFile.cs" />
     <Compile Include="Config\Clan.cs" />
     <Compile Include="Config\Event.cs" />
+    <Compile Include="Config\Geodata.cs" />
     <Compile Include="Config\Login.cs" />
     <Compile Include="Config\Npc.cs" />
     <Compile Include="Config\Player.cs" />
@@ -664,6 +665,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Datapacks\Game\config\geodata.json" />
     <None Include="Datapacks\Game\config\clan.json" />
     <None Include="Datapacks\Game\config\events.json" />
     <None Include="Datapacks\Game\config\npcs.json" />
