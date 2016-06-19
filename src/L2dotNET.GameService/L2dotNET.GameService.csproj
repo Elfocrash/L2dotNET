@@ -664,6 +664,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Datapacks\Game\config\clan.json" />
+    <None Include="Datapacks\Game\config\events.json" />
+    <None Include="Datapacks\Game\config\npcs.json" />
+    <None Include="Datapacks\Game\config\loginserver.json" />
+    <None Include="Datapacks\Game\config\siege.json" />
+    <None Include="Datapacks\Game\config\player.json" />
     <None Include="Datapacks\Login\config\server.json" />
     <None Include="Datapacks\Game\config\gameplay.json" />
     <None Include="Datapacks\Game\config\server.json" />

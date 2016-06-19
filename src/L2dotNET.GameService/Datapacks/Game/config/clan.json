@@ -1,0 +1,83 @@
+{
+    "DaysBeforeJoinAClan": 1,
+    "DaysBeforeCreateAClan": 10,
+    "DaysToPassToDissolveAClan": 7,
+    "DaysBeforeJoinAllyWhenLeaved": 1,
+    "DaysBeforeJoinAllyWhenDismissed": 1,
+    "DaysBeforeAcceptNewClanWhenDismissed": 1,
+    "DaysBeforeCreateNewAllyWhenDissolved": 10,
+    "MaxNumOfClansInAlly": 3,
+    "ClanMembersForWar": 15,
+    "ClanWarPenaltyWhenEnded": 5,
+    "MembersCanWithdrawFromClanWH": false,
+    "RemoveCastleCirclets": true,
+    "Manor": {
+      "RefreshTime": 20,
+      "RefreshMin": "00",
+      "ApproveTime": 6,
+      "ApproveMin": "00",
+      "MaintenancePeriod": 360000,
+      "SaveAllActions": true,
+      "SavePeriodRate": 2
+    },
+    "ClanHallFunctionsPrice": {
+      "Teleport": {
+        "Lvl1": 7000,
+        "Lvl2": 14000
+      },
+      "Support": {
+        "Lvl1": 17500,
+        "Lvl2": 35000,
+        "Lvl3": 49000,
+        "Lvl4": 77000,
+        "Lvl5": 147000,
+        "Lvl6": 252000,
+        "Lvl7": 259000,
+        "Lvl8": 364000
+      },
+      "MpRegeneration": {
+        "Lvl1": 14000,
+        "Lvl2": 26250,
+        "Lvl3": 45500,
+        "Lvl4": 96250,
+        "Lvl5": 140000
+      },
+      "HpRegeneration": {
+        "Lvl1": 4900,
+        "Lvl2": 5600,
+        "Lvl3": 7000,
+        "Lvl4": 8166,
+        "Lvl5": 10500,
+        "Lvl6": 12250,
+        "Lvl7": 14000,
+        "Lvl8": 15750,
+        "Lvl9": 17500,
+        "Lvl10": 22750,
+        "Lvl11": 26250,
+        "Lvl12": 29750,
+        "Lvl13": 36166
+      },
+      "ExpRegeneration": {
+        "Lvl1": 21000,
+        "Lvl2": 42000,
+        "Lvl3": 63000,
+        "Lvl4": 105000,
+        "Lvl5": 147000,
+        "Lvl6": 163331,
+        "Lvl7": 210000
+      },
+      "ItemCreation": {
+        "Lvl1": 210000,
+        "Lvl2": 490000,
+        "Lvl3": 980000
+      },
+      "Curtain": {
+        "Lvl1": 2002,
+        "Lvl2": 2625
+      },
+      "FrontPlatform": {
+        "Lvl1": 3031,
+        "Lvl2": 9331
+      }
+    }
+  }

@@ -1,0 +1,112 @@
+{
+  "StartingAdena": 100,
+  "CancelLesserEffect": true,
+  "HpRegenMultiplier": 1.0,
+  "MpRegenMultiplier": 1.0,
+  "CpRegenMultiplier": 1.0,
+  "PlayerSpawnProtection": 0,
+  "PlayerFakeDeathUpProtection": 5,
+  "RespawnRestoreHP": 0.7,
+  "MaxPvtStoreSlotsDwarf": 5,
+  "MaxPvtStoreSlotsOther": 4,
+  "UseDeepBlueDropRules": true,
+  "Delevel": true,
+  "DeathPenaltyChance": 20,
+  "Inventory": {
+    "MaximumSlotsForNoDwarf": 80,
+    "MaximumSlotsForDwarf": 100,
+    "MaximumSlotsForQuestItems": 100,
+    "MaximumSlotsForPet": 12,
+    "WeightLimit": 1
+  },
+  "Warehouse": {
+    "MaximumWarehouseSlotsForDwarf": 120,
+    "MaximumWarehouseSlotsForNoDwarf": 100,
+    "MaximumWarehouseSlotsForClan": 200,
+    "MaximumFreightSlots": 20,
+    "GameFreights": false,
+    "GameFreightPrice": 1000
+  },
+  "Enchant": {
+    "ChanceMagicWeapon": 0.4,
+    "ChanceMagicWeapon15Plus": 0.2,
+    "ChanceNonMagicWeapon": 0.7,
+    "ChanceNonMagicWeapon15Plus": 0.35,
+    "ChanceArmor": 0.66,
+    "MaxWeapon": 0,
+    "MaxArmor": 0,
+    "SafeMax": 3,
+    "SafeMaxFull": 4
+  },
+  "Augmentation": {
+    "NGSkillChance": 15,
+    "MidSkillChance": 30,
+    "HighSkillChance": 45,
+    "TopSkillChance": 60,
+    "BaseStatChance": 1,
+    "NGGlowChance": 0,
+    "MidGlowChance": 40,
+    "HighGlowChance": 70,
+    "TopGlowChance": 100
+  },
+  "Combat": {
+    "KarmaPlayerCanBeKilledInPeaceZone": false,
+    "KarmaPlayerCanShop": true,
+    "KarmaPlayerCanTeleport": true,
+    "KarmaPlayerCanUseGK": false,
+    "KarmaPlayerCanTrade": true,
+    "KarmaPlayerCanUseWareHouse": true,
+    "CanGMDropEquipment": false,
+    "ListOfPetItems": [ 2375, 3500, 3501, 3502, 4422, 4423, 4424, 4425, 6648, 6649, 6650 ],
+    "ListOfNonDroppableItemsForPK": [ 57, 1147, 425, 1146, 461, 10, 2368, 7, 6, 2370, 2369 ],
+    "MinimumPKRequiredToDrop": 5,
+    "AwardPKKillPVPPoint": false,
+    "PvPVsNormalTime": 15000,
+    "PvPVsPvPTime": 30000
+  },
+  "Party": {
+    "XpCutoffMethod": "level",
+    "XpCutoffPercent": 3.0,
+    "XpCutoffLevel": 20,
+    "Range": 1600,
+    "Range2": 1400,
+    "LeavePartyLeader": false
+  },
+  "GM": {
+    "EverybodyHasAdminRights": false,
+    "MasterAccessLevel": 127,
+    "MasterNameColor": "00CCFF",
+    "MasterTitleColor": "00CCFF",
+    "GMHeroAura": false,
+    "GMStartupInvulnerable": false,
+    "GMStartupInvisible": false,
+    "GMStartupSilence": false,
+    "GMStartupAutoList": true
+  },
+  "Petition": {
+    "PetitioningAllowed": true,
+    "MaxPetitionsPerPlayer": 5,
+    "MaxPetitionsPending": 25
+  },
+  "Crafting": {
+    "CraftingEnabled": true,
+    "DwarfRecipeLimit": 50,
+    "CommonRecipeLimit": 50,
+    "BlacksmithUseRecipes": true
+  },
+  "Skill": {
+    "AutoLearnSkills": false,
+    "MagicFailures": true,
+    "ShieldBlocks": false,
+    "PerfectShieldBlockRate": 5,
+    "LifeCrystalNeeded": true,
+    "SpBookNeeded": true,
+    "EnchantSkillSpBookNeeded": true,
+    "DivineInspirationSpBookNeeded": true,
+    "SubClassWithoutQuests": false
+  },
+  "Buff": {
+    "MaxBuffsAmount": 20,
+    "StoreSkillCooltime": true
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "LoginServer": {
+    "ExternalHostname": "127.0.0.1",
+    "InternalHostname": "127.0.0.1",
+    "LoginserverHostname": "*",
+    "LoginserverPort": 2106,
+    "LoginTryBeforeBan": 10,
+    "LoginBlockAfterBan": 600,
+    "LoginHostname": "*",
+    "LoginPort": 9014,
+    "AcceptNewGameServer": false,
+    "ShowLicence": true
+  },
+  "LoginDatabase": {
+    "URL": "",
+    "Login": "",
+    "Password": "",
+    "MaximumDbConnections": 10,
+    "AutoCreateAccounts": true
+  },
+  "Security": {
+    "LogLoginController": false,
+    "EnableFloodProtection": true,
+    "FastConnectionLimit": 15,
+    "NormalConnectionTime": 700,
+    "FastConnectionTime": 350,
+    "MaxConnectionPerIP": 50
+  },
+  "LoginDeveloperConfig": {
+    "Debug": false,
+    "Developer": false,
+    "PacketHandlerDebug": false
+  }
+}
