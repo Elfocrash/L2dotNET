@@ -9,9 +9,13 @@
     "AdenasRewards": 1,
     "Atk": 1.0,
     "SpdAtk": 1.0,
-    "RewardItem": 0,
-    "RewardItemID": 6393,
-    "RewardItemQty": 1
+    "RewardItemChance": 0,
+    "RewardItem": [
+      {
+        "ItemId": 6393,
+        "Amount": 1
+      }
+    ]
   },
   "Buffer": {
     "MaxSchemesPerChar": 4,
@@ -442,6 +446,7 @@
   },
   "Misc": {
     "AllowClassMasters": false,
+    "AllowEntireTree": false,
     "ConfigClassMaster": {
       "FirstOccupation": {
         "ItemsCost": [
@@ -486,7 +491,6 @@
         ]
       }
     },
-    "AllowEntireTree": false,
     "FreeTeleporting": false,
     "AnnounceMammonSpawn": false,
     "MobAgroInPeaceZone": true,
