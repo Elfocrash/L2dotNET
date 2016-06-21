@@ -153,7 +153,7 @@ namespace L2dotNET.GameService.Config
         public int MaximumOnlineUsers { get; set; }
 
         ///<summary>Minimum and maximum protocol revision that server allow to connect.</summary>
-        ///<summary>You must keep MinProtocolRevision <= MaxProtocolRevision.</summary>
+        ///<summary>You must keep MinProtocolRevision lesser or equals than MaxProtocolRevision.</summary>
         ///<summary>Default: 730.</summary>
         [JsonProperty(PropertyName = "MinProtocolRevision")]
         public int MinProtocolRevision { get; set; }

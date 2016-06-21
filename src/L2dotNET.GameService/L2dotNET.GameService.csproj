@@ -107,6 +107,7 @@
     <Compile Include="Config\Geodata.cs" />
     <Compile Include="Config\Login.cs" />
     <Compile Include="Config\Npc.cs" />
+    <Compile Include="Config\OtherConfig.cs" />
     <Compile Include="Config\Player.cs" />
     <Compile Include="Config\Server2.cs" />
     <Compile Include="Config\Siege.cs" />
