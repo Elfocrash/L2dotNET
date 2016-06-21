@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace L2dotNET.GameService.Config
 {
@@ -18,11 +19,13 @@ namespace L2dotNET.GameService.Config
         ///<summary>2: GeoData, PathChecking and PathFinding ON.</summary>
         ///<summary>* When LoM check fails, the PathFinding is performed to look for.</summary>
         ///<summary>an alternative path (e.g. walk around obstacle).</summary>
+        [DefaultValue(0)]
         [JsonProperty(PropertyName = "GeoData")]
         public int GeoData { get; set; }
 
         ///<summary>Specifies the path to geodata files. For example, when using L2off geodata files located.</summary>
         ///<summary>at Lineage client folder ("C:/Program Files/Lineage II/system/geodata/"), default: ./data/geodata/.</summary>
+        [DefaultValue("./data/geodata/")]
         [JsonProperty(PropertyName = "GeoDataPath")]
         public string GeoDataPath { get; set; }
 
@@ -30,6 +33,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>L2J:   Geodata are in standard L2J format (using filename e.g. 22_16.l2j).</summary>
         ///<summary>L2OFF: Geodata are in standard L2OFF format (using filename e.g. 22_16_conv.dat).</summary>
         ///<summary>L2D:   Geodata are in diagonal L2D format (using filename e.g. 22_16.l2d).</summary>
+        //TODO: Missing DefaultValue, value Enum based.
         [JsonProperty(PropertyName = "GeoDataFormat")]
         public string GeoDataFormat { get; set; }
 
@@ -37,6 +41,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>1 - partial synchronization Client --> Server ; don't use it with geodata.</summary>
         ///<summary>2 - partial synchronization Server --> Client ; use this setting with geodata.</summary>
         ///<summary>-1 - Old system: will synchronize Z only, default: -1.</summary>
+        [DefaultValue(-1)]
         [JsonProperty(PropertyName = "CoordSynchronize")]
         public int CoordSynchronize { get; set; }
 
@@ -44,10 +49,12 @@ namespace L2dotNET.GameService.Config
         ///<summary>Path checking.</summary>
         ///<summary>=================================================================.</summary>
         ///<summary>Line of sight start at X percent of the character height, default: 75.</summary>
+        [DefaultValue(75)]
         [JsonProperty(PropertyName = "PartOfCharacterHeight")]
         public int PartOfCharacterHeight { get; set; }
 
         ///<summary>Maximum height of an obstacle, which can exceed the line of sight, default: 32.</summary>
+        [DefaultValue(32)]
         [JsonProperty(PropertyName = "MaxObstacleHeight")]
         public int MaxObstacleHeight { get; set; }
 
@@ -55,28 +62,35 @@ namespace L2dotNET.GameService.Config
         ///<summary>Path finding.</summary>
         ///<summary>=================================================================.</summary>
         ///<summary>Pathfinding array buffers configuration, default: 100x6;128x6;192x6;256x4;320x4;384x4;500x2.</summary>
+        //TODO: Make better PathFindBuffers parameters.
+        [DefaultValue("100x6;128x6;192x6;256x4;320x4;384x4;500x2")]
         [JsonProperty(PropertyName = "PathFindBuffers")]
         public string PathFindBuffers { get; set; }
 
         ///<summary>Base path weight, when moving from one node to another on axis direction, default: 10.</summary>
+        [DefaultValue(10)]
         [JsonProperty(PropertyName = "BaseWeight")]
         public int BaseWeight { get; set; }
 
         ///<summary>Path weight, when moving from one node to another on diagonal direction, default: BaseWeight * sqrt(2) = 14.</summary>
+        [DefaultValue(14)]
         [JsonProperty(PropertyName = "DiagonalWeight")]
         public int DiagonalWeight { get; set; }
 
         ///<summary>When movement flags of target node is blocked to any direction, multiply movement weight by this multiplier.</summary>
         ///<summary>This causes pathfinding algorithm to avoid path construction exactly near an obstacle, default: 10.</summary>
+        [DefaultValue(10)]
         [JsonProperty(PropertyName = "ObstacleMultiplier")]
         public int ObstacleMultiplier { get; set; }
 
         ///<summary>Weight of the heuristic algorithm, which is giving estimated cost from node to target, default: 20.</summary>
         ///<summary>For proper function must be higher than BaseWeight and/or DiagonalWeight.</summary>
+        [DefaultValue(20)]
         [JsonProperty(PropertyName = "HeuristicWeight")]
         public int HeuristicWeight { get; set; }
 
         ///<summary>Maximum number of generated nodes per one path-finding process, default 3500.</summary>
+        [DefaultValue(3500)]
         [JsonProperty(PropertyName = "MaxIterations")]
         public int MaxIterations { get; set; }
 
@@ -86,6 +100,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Blue Potion = begining of the path.</summary>
         ///<summary>Green Potion = node removed by LOS post-filter.</summary>
         ///<summary>Red Potion = actual waypoints.</summary>
+        [DefaultValue(false)]
         [JsonProperty(PropertyName = "DebugPath")]
         public bool DebugPath { get; set; }
 
