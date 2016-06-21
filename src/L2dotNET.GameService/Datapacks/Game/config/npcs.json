@@ -446,13 +446,13 @@
       "FirstOccupation": {
         "ItemsCost": [
           {
-            "Id": 57,
+            "ItemId": 57,
             "Amount": 0
           }
         ],
         "ItemsReward": [
           {
-            "Id": 57,
+            "ItemId": 57,
             "Amount": 0
           }
         ]
@@ -460,13 +460,13 @@
       "SecondOccupation": {
         "ItemsCost": [
           {
-            "Id": 57,
+            "ItemId": 57,
             "Amount": 0
           }
         ],
         "ItemsReward": [
           {
-            "Id": 57,
+            "ItemId": 57,
             "Amount": 0
           }
         ]
@@ -474,7 +474,7 @@
       "ThirdOccupation": {
         "ItemsCost": [
           {
-            "Id": 57,
+            "ItemId": 57,
             "Amount": 0
           }
         ],

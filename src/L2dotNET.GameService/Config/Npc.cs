@@ -178,8 +178,12 @@ namespace L2dotNET.GameService.Config
 
     public class ItemAmount
     {
-        [JsonProperty(PropertyName = "Id")]
-        public int Id { get; set; }
+        public ItemAmount(int itemId, int amount) { }
+
+        public ItemAmount() { }
+
+        [JsonProperty(PropertyName = "ItemId")]
+        public int ItemId { get; set; }
         [JsonProperty(PropertyName = "Amount")]
         public int Amount { get; set; }
     }

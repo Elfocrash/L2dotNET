@@ -1,7 +1,7 @@
 {
   "Olympiad": {
     "StartTime": 18,
-    "Min": "00",
+    "Min": 0,
     "CPeriod": 21600000,
     "Battle": 360000,
     "WPeriod": 604800000,
@@ -14,8 +14,18 @@
     "MinMatchesToBeClassed": 9,
     "ClassedParticipants": 5,
     "NonClassedParticipants": 9,
-    "ClassedReward": [ 6651, 50 ],
-    "NonClassedReward": [ 6651, 30 ],
+    "ClassedReward": [
+      {
+        "ItemId": 6651,
+        "Amount": 50
+      }
+    ],
+    "NonClassedReward": [
+      {
+        "ItemId": 6651,
+        "Amount": 30
+      }
+    ],
     "GPPerPoint": 1000,
     "HeroPoints": 300,
     "Rank1Points": 100,
@@ -57,7 +67,7 @@
     "RiftSpawnDelay": 10000,
     "AutoJumpsDelayMin": 480,
     "AutoJumpsDelayMax": 600,
-    "BossRoomTimeMultiply": "1.",
+    "BossRoomTimeMultiply": 1.0,
     "RecruitCost": 18,
     "SoldierCost": 21,
     "OfficerCost": 24,
@@ -81,11 +91,35 @@
   },
   "Fishing": {
     "FishChampionshipEnabled": true,
-    "FishChampionshipRewardItemId": 57,
-    "FishChampionshipReward1": 800000,
-    "FishChampionshipReward2": 500000,
-    "FishChampionshipReward3": 300000,
-    "FishChampionshipReward4": 200000,
-    "FishChampionshipReward5": 100000
+    "FishChampionshipReward1": [
+      {
+        "ItemId": 57,
+        "Amount": 800000
+      }
+    ],
+    "FishChampionshipReward2": [
+      {
+        "ItemId": 57,
+        "Amount": 500000
+      }
+    ],
+    "FishChampionshipReward3": [
+      {
+        "ItemId": 57,
+        "Amount": 300000
+      }
+    ],
+    "FishChampionshipReward4": [
+      {
+        "ItemId": 57,
+        "Amount": 200000
+      }
+    ],
+    "FishChampionshipReward5": [
+      {
+        "ItemId": 57,
+        "Amount": 100000
+      }
+    ]
   }
 }
