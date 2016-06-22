@@ -71,6 +71,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Bind ip of the gameserver, use * to bind on all available IPs.</summary>
         [JsonProperty(PropertyName = "GameserverHostname")]
         public string GameserverHostname { get; set; }
+
         [JsonProperty(PropertyName = "GameserverPort")]
         public int GameserverPort { get; set; }
 
