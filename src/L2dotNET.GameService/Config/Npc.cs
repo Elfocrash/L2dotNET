@@ -197,10 +197,6 @@ namespace L2dotNET.GameService.Config
     //TODO: Implement get;set; for chance?
     public class ItemAmount
     {
-        public ItemAmount(int itemId, int amount) { }
-
-        public ItemAmount() { }
-
         [JsonProperty(PropertyName = "ItemId", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int ItemId { get; set; }
         [JsonProperty(PropertyName = "Amount", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]

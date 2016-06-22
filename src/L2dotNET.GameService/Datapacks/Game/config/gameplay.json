@@ -45,15 +45,15 @@
     "AutoDestroyEquipableItemTime": 0,
     "AutoDestroySpecialItemTime": [
       {
-        "Id": 57,
+        "ItemId": 57,
         "Timer": 0
       },
       {
-        "Id": 5575,
+        "ItemId": 5575,
         "Timer": 0
       },
       {
-        "Id": 6673,
+        "ItemId": 6673,
         "Timer": 0
       }
     ],
