@@ -7,12 +7,12 @@ namespace L2dotNET.Utility
 {
     /// <summary>
     /// Files reader helper.
-    /// .</summary>
+    /// </summary>
     public static class L2FileReader
     {
         /// <summary>
         /// Creates or opens provided file.
-        /// .</summary>
+        /// </summary>
         /// <param name="FileName">File name.</param>
         /// <param name="DesiredAccess">File access.</param>
         /// <param name="ShareMode">Share mode.</param>
@@ -27,7 +27,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Reads provided file.
-        /// .</summary>
+        /// </summary>
         /// <param name="hFile">File pointer.</param>
         /// <param name="pBuffer">Buffer to read into.</param>
         /// <param name="NumberOfBytesToRead">Count of bytes to read.</param>
@@ -40,7 +40,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Closes provided file pointer.
-        /// .</summary>
+        /// </summary>
         /// <param name="hObject">File pointer to close.</param>
         /// <returns>True, if file was closed successfully, otherwise false.</returns>
         [DllImport("kernel32", SetLastError = true)]
@@ -49,7 +49,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Opens provided file to read.
-        /// .</summary>
+        /// </summary>
         /// <param name="fileName">Path to file to open.</param>
         /// <returns>True, if file was opened successfully, otherwise false.</returns>
         internal static IntPtr Open(string fileName)
@@ -59,7 +59,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Reads <see cref="byte"/> array from provided file.
-        /// .</summary>
+        /// </summary>
         /// <param name="fileName">File name to read from.</param>
         /// <param name="lengthToRead">Count of bytes to read.</param>
         /// <returns>Array of <see cref="byte"/> values. </returns>
@@ -93,7 +93,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Gets information ( array of <see cref="FileInfo"/> objects ), found by files <paramref name="mask"/> according to provided <see cref="SearchOption"/>.
-        /// .</summary>
+        /// </summary>
         /// <param name="directory">Directory to search files in.</param>
         /// <param name="mask">Search pattern.</param>
         /// <param name="searchHow">Search option.</param>

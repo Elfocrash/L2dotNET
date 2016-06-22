@@ -81,7 +81,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
         /// <summary>
         /// Handles incoming packet.
-        /// .</summary>
+        /// </summary>
         /// <param name="packet">Incoming packet.</param>
         protected void Handle(Packet packet)
         {

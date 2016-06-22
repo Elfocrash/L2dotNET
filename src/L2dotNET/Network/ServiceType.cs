@@ -2,28 +2,28 @@ namespace L2dotNET.Network
 {
     /// <summary>
     /// Services types.
-    /// .</summary>
+    /// </summary>
     public enum ServiceType : byte
     {
         /// <summary>
         /// Undefined service type.
-        /// .</summary>
+        /// </summary>
         Undefined = 0x00,
         /// <summary>
         /// Login service type.
-        /// .</summary>
+        /// </summary>
         LoginService = 0x01,
         /// <summary>
         /// Cache service type.
-        /// .</summary>
+        /// </summary>
         CacheService = 0x02,
         /// <summary>
         /// Game service type.
-        /// .</summary>
+        /// </summary>
         GameService = 0x03,
         /// <summary>
         /// Npc service type.
-        /// .</summary>
+        /// </summary>
         NpcService = 0x04
     }
 }

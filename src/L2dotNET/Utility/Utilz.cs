@@ -46,7 +46,7 @@ namespace L2dotNET.Utility
         /// <summary>
         /// String extension method in order
         /// to check if two strings match no matter the case
-        /// .</summary>
+        /// </summary>
         /// <param name="str"></param>
         /// <param name="stringToCompare"></param>
         /// <returns></returns>
@@ -58,7 +58,7 @@ namespace L2dotNET.Utility
         /// <summary>
         /// String extension method in order
         /// to check if two strings match with the exact the case
-        /// .</summary>
+        /// </summary>
         /// <param name="str"></param>
         /// <param name="stringToCompare"></param>
         /// <returns></returns>

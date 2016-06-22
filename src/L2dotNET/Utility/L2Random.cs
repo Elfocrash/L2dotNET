@@ -4,17 +4,17 @@ namespace L2dotNET.Utility
 {
     /// <summary>
     /// Provides common randomization methods.
-    /// .</summary>
+    /// </summary>
     public static class L2Random
     {
         /// <summary>
         /// Internal <see cref="Random"/> object.
-        /// .</summary>
+        /// </summary>
         private static readonly Random m_Random = new Random((int)DateTime.Now.Ticks);
 
         /// <summary>
         /// Returns random <see cref="int"/> value.
-        /// .</summary>
+        /// </summary>
         /// <returns>Random <see cref="int"/> value.</returns>
         public static unsafe int Next()
         {
@@ -23,7 +23,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Returns random <see cref="int"/> value.
-        /// .</summary>
+        /// </summary>
         /// <param name="max">Max result value.</param>
         /// <returns>Random <see cref="int"/> value.</returns>
         public static unsafe int Next(int max)
@@ -33,7 +33,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Returns randomly generated array of <see cref="byte"/> values.
-        /// .</summary>
+        /// </summary>
         /// <param name="count">Array length.</param>
         /// <returns>Randomly generated array of <see cref="byte"/> values.</returns>
         public static byte[] NextBytes(int count)
@@ -44,7 +44,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Returns randomly generated array of <see cref="byte"/> values.
-        /// .</summary>
+        /// </summary>
         /// <param name="buffer">Array of <see cref="byte"/> values to randomize.</param>
         /// <returns>Randomly generated array of <see cref="byte"/> values.</returns>
         public static unsafe byte[] NextBytes(ref byte[] buffer)
@@ -58,7 +58,7 @@ namespace L2dotNET.Utility
                 while (j <= i - sizeof(int))
                 {
                     k = m_Random.Next();
-                    *(int*)(buf + j) = *((int*)(&k));
+                    *(int*)(buf + j) = *&k;
                     j += sizeof(int);
                 }
 

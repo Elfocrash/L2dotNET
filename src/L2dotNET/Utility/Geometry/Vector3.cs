@@ -427,7 +427,7 @@ namespace L2dotNET.Utility.Geometry
 
         /// <summary>
         /// Transforms a vector by a quaternion rotation.
-        /// .</summary>
+        /// </summary>
         /// <param name="vec">The vector to transform.</param>
         /// <param name="quat">The quaternion to rotate the vector by.</param>
         /// <returns>The result of the operation.</returns>
@@ -440,7 +440,7 @@ namespace L2dotNET.Utility.Geometry
 
         /// <summary>
         /// Transforms a vector by a quaternion rotation.
-        /// .</summary>
+        /// </summary>
         /// <param name="1">The vector to transform.</param>
         /// <param name="2">The quaternion to rotate the vector by.</param>
         /// <param name="3">The result of the operation.</param>
@@ -459,7 +459,7 @@ namespace L2dotNET.Utility.Geometry
         //        }
         /// <summary>
         /// Transforms a vector by a quaternion rotation.
-        /// .</summary>
+        /// </summary>
         /// <param name="vec">The vector to transform.</param>
         /// <param name="quat">The quaternion to rotate the vector by.</param>
         /// <param name="result">The result of the operation.</param>

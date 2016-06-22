@@ -5,32 +5,32 @@ namespace L2dotNET.Network
 {
     /// <summary>
     /// Represents client packet structure.
-    /// .</summary>
+    /// </summary>
     public struct Packet
     {
         /// <summary>
         /// Default <see cref="Packet"/> overflow value.
-        /// .</summary>
+        /// </summary>
         private const int m_DefaultOverflowValue = 128;
 
         /// <summary>
         /// <see cref="Packet"/> buffer.
-        /// .</summary>
+        /// </summary>
         private byte[] m_Buffer;
 
         /// <summary>
         /// <see cref="Packet"/> reader / writer offset.
-        /// .</summary>
+        /// </summary>
         private int m_Offset;
 
         /// <summary>
         /// Indicates if <see cref="Packet"/> was received or created to be sent.
-        /// .</summary>
+        /// </summary>
         private readonly bool m_ReceivedPacket;
 
         /// <summary>
         /// Initializes new instance of <see cref="Packet"/> (received packet).
-        /// .</summary>
+        /// </summary>
         /// <param name="headerOffset"><see cref="Packet"/> header offset (for opcodes).</param>
         /// <param name="buffer"><see cref="Packet"/> buffer.</param>
         public Packet(int headerOffset, byte[] buffer)
@@ -42,7 +42,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Initializes new instance of <see cref="Packet"/> (packet to send).
-        /// .</summary>
+        /// </summary>
         /// <param name="opcodes">Packet opcodes.</param>
         public Packet(params byte[] opcodes)
         {
@@ -53,7 +53,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes <see cref="byte"/> value into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v"><see cref="byte"/> value to write.</param>
         public unsafe void WriteByte(byte v)
         {
@@ -67,7 +67,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes array of <see cref="byte"/> values into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v">Array of <see cref="byte"/> values.</param>
         public void WriteByte(params byte[] v)
         {
@@ -76,7 +76,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes array of <see cref="byte"/> into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v">Array of <see cref="byte"/> values.</param>
         public unsafe void WriteBytesArray(byte[] v)
         {
@@ -90,7 +90,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes <see cref="short"/> value into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v"><see cref="short"/> value.</param>
         public unsafe void WriteShort(short v)
         {
@@ -106,7 +106,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes array of <see cref="short"/> values into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v">Array of <see cref="short"/> values.</param>
         public unsafe void WriteShort(params short[] v)
         {
@@ -123,7 +123,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes <see cref="int"/> value to packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v"><see cref="int"/> value.</param>
         public unsafe void WriteInt(int v)
         {
@@ -139,7 +139,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes array of <see cref="int"/> values into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v">Array of <see cref="int"/> values.</param>
         public unsafe void WriteInt(params int[] v)
         {
@@ -156,7 +156,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes <see cref="double"/> value into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v"><see cref="double"/> value.</param>
         public unsafe void WriteDouble(double v)
         {
@@ -172,7 +172,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes array of <see cref="double"/> values into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v">Array of <see cref="double"/> values.</param>
         public unsafe void WriteDouble(params double[] v)
         {
@@ -189,7 +189,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes <see cref="long"/> value into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v"><see cref="long"/> value.</param>
         public unsafe void WriteLong(long v)
         {
@@ -205,7 +205,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes array of <see cref="long"/> values into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="v">Array of <see cref="long"/> values.</param>
         public unsafe void WriteLong(params long[] v)
         {
@@ -222,7 +222,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes <see cref="string"/> object into packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="s"><see cref="string"/> value.</param>
         public unsafe void WriteString(string s)
         {
@@ -240,7 +240,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes array of <see cref="string"/> values to packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="s">Array of <see cref="string"/> values.</param>
         public unsafe void WriteString(params string[] s)
         {
@@ -262,7 +262,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes <see cref="bool"/> value to packet buffer. (Inner network only)
-        /// .</summary>
+        /// </summary>
         /// <param name="v"><see cref="bool"/> value.</param>
         public void InternalWriteBool(bool v)
         {
@@ -271,7 +271,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Writes <see cref="DateTime"/> value to packet buffer. (Inner network only)
-        /// .</summary>
+        /// </summary>
         /// <param name="v"><see cref="DateTime"/> value.</param>
         public void InternalWriteDateTime(DateTime v)
         {
@@ -280,7 +280,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Reads <see cref="byte"/> value from packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <returns><see cref="byte"/> value.</returns>
         public unsafe byte ReadByte()
         {
@@ -290,7 +290,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Reads array of <see cref="byte"/> values from packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="length">length of array to read.</param>
         /// <returns>Array of <see cref="byte"/> values.</returns>
         public unsafe byte[] ReadBytesArray(int length)
@@ -314,7 +314,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Reads <see cref="short"/> value from packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <returns><see cref="short"/> value.</returns>
         public unsafe short ReadShort()
         {
@@ -328,7 +328,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Reads <see cref="int"/> value from packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <returns><see cref="int"/> value.</returns>
         public unsafe int ReadInt()
         {
@@ -342,7 +342,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Reads <see cref="double"/> value from packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <returns><see cref="double"/> value.</returns>
         public unsafe double ReadDouble()
         {
@@ -356,7 +356,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Reads <see cref="long"/> value from packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <returns><see cref="long"/> value.</returns>
         public unsafe long ReadLong()
         {
@@ -370,7 +370,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Reads <see cref="string"/> value from packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <returns><see cref="string"/> value.</returns>
         public unsafe string ReadString()
         {
@@ -380,7 +380,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Reads <see cref="bool"/> value from packet buffer. (Inner network only)
-        /// .</summary>
+        /// </summary>
         /// <returns><see cref="bool"/> value.</returns>
         public bool InternalReadBool()
         {
@@ -389,7 +389,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Reads <see cref="DateTime"/> value from packet buffer. (Inner network only)
-        /// .</summary>
+        /// </summary>
         /// <returns><see cref="DateTime"/> value.</returns>
         public DateTime InternalReadDateTime()
         {
@@ -398,7 +398,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Validates buffer capacity before writing into it.
-        /// .</summary>
+        /// </summary>
         /// <param name="nextValueLength">length of next bytes sequence to write into buffer.</param>
         private void ValidateBufferSize(int nextValueLength)
         {
@@ -408,7 +408,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Resizes <see cref="Packet"/> buffer to it's actual capacity and appends buffer length to the beginning of <see cref="Packet"/> buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="headerSize"><see cref="Packet"/> header (opcodes) capacity.</param>
         public unsafe void Prepare(int headerSize)
         {
@@ -427,7 +427,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Returns packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <returns>Packet buffer.</returns>
         public byte[] GetBuffer()
         {
@@ -436,7 +436,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Returns packet buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="skipFirstBytesCount">Amount of first bytes to skip.</param>
         /// <returns>Buffer without provided amount of first bytes.</returns>
         public byte[] GetBuffer(int skipFirstBytesCount)
@@ -446,7 +446,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Moves <see cref="Packet"/> offset position.
-        /// .</summary>
+        /// </summary>
         /// <param name="size">Additional offset length.</param>
         public void MoveOffset(int size)
         {
@@ -455,7 +455,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Gets first packet opcode.
-        /// .</summary>
+        /// </summary>
         public unsafe byte FirstOpcode
         {
             get
@@ -467,7 +467,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Gets second packet opcode.
-        /// .</summary>
+        /// </summary>
         public unsafe int SecondOpcode
         {
             get
@@ -479,7 +479,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Gets packet capacity.
-        /// .</summary>
+        /// </summary>
         public int Length
         {
             get { return m_ReceivedPacket ? m_Buffer.Length : m_Offset; }
@@ -487,7 +487,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Returns string representation of current packet.
-        /// .</summary>
+        /// </summary>
         /// <returns>String representation of current packet.</returns>
         public override string ToString()
         {

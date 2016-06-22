@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Scripting
 {
     /// <summary>
     /// Idea L2cemu
-    /// .</summary>
+    /// </summary>
     public class ScriptCompiler
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ScriptCompiler));

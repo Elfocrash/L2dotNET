@@ -7,7 +7,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
     {
         /// <summary>
         /// Packet opcode.
-        /// .</summary>
+        /// </summary>
         private const byte Opcode = 0xA7;
 
         internal static Packet ToPacket(AccountModel account, string time)

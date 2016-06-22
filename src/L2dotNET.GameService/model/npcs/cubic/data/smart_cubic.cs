@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
 {
     /// <summary>
     /// represents smart cubics id 10-14
-    /// .</summary>
+    /// </summary>
     public class smart_cubic : CubicTemplate
     {
         public override int AiActionTask(L2Player owner)
@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
 
         /// <summary>
         /// cubic main attack
-        /// .</summary>
+        /// </summary>
         /// <param name="owner"></param>
         private int action1(L2Player owner)
         {
@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
 
         /// <summary>
         /// cubic self smart attack
-        /// .</summary>
+        /// </summary>
         /// <param name="owner"></param>
         private int action2(L2Player owner)
         {
@@ -76,7 +76,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
 
         /// <summary>
         /// cubic master support
-        /// .</summary>
+        /// </summary>
         /// <param name="owner"></param>
         private int action3(L2Player owner)
         {

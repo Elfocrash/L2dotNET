@@ -1815,7 +1815,7 @@ namespace L2dotNET.Utility.Geometry
         /// <summary>
         /// Helper method for using the Laplace expansion theorem using two rows expansions to calculate major and
         /// minor determinants of a 4x4 matrix. This method is used for inverting a matrix.
-        /// .</summary>
+        /// </summary>
         private static void findDeterminants(ref Matrix matrix, out double major, out double minor1, out double minor2, out double minor3, out double minor4, out double minor5, out double minor6, out double minor7, out double minor8, out double minor9, out double minor10, out double minor11, out double minor12)
         {
             double det1 = matrix.M11 * matrix.M22 - matrix.M12 * matrix.M21;

@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
     {
         /// <summary>
         /// EL2_DOOR (1), EL2_AIRSHIPKEY (3)
-        /// .</summary>
+        /// </summary>
         public int StaticID;
         public int ClanID = -1;
         public int MeshID = 0;

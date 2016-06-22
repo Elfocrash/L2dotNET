@@ -4,12 +4,12 @@ namespace L2dotNET.Utility
 {
     /// <summary>
     /// Provides some methods for buffers manipulation.
-    /// .</summary>
+    /// </summary>
     public static class L2Buffer
     {
         /// <summary>
         /// Copies array of <see cref="byte"/> values from source to destination buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="source">Source buffer.</param>
         /// <param name="srcOffset">Source buffer offset.</param>
         /// <param name="destination">Destination buffer.</param>
@@ -28,7 +28,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Copies array of <see cref="byte"/> values from source to destination buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="src">Source buffer reference.</param>
         /// <param name="srcOffset">Source buffer offset.</param>
         /// <param name="dst">Destination buffer reference.</param>
@@ -67,7 +67,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Copies array of <see cref="byte"/> values to destination buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="w">Reference to <see cref="byte"/> values array.</param>
         /// <param name="size">Amount of bytes to write into destination buffer.</param>
         /// <param name="dst">Destination <see cref="byte"/>s buffer reference.</param>
@@ -103,7 +103,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Copies array of <see cref="short"/> values to destination buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="w">Reference to <see cref="short"/> values array.</param>
         /// <param name="size">Amount of bytes to write into destination buffer.</param>
         /// <param name="dst">Destination <see cref="byte"/>s buffer reference.</param>
@@ -115,7 +115,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Returns new array of <see cref="short"/> values, copied from the beginning of provided <paramref name="src"/> pointer.
-        /// .</summary>
+        /// </summary>
         /// <param name="src">Source <see cref="short"/> values array pointer.</param>
         /// <param name="length">Length of array to copy.</param>
         /// <returns>New array of <see cref="short"/> values, copied from the beginning of provided <paramref name="src"/> pointer.</returns>
@@ -148,7 +148,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Copies array of <see cref="int"/> values to destination buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="w">Reference to <see cref="int"/> values array.</param>
         /// <param name="size">Amount of bytes to write into destination buffer.</param>
         /// <param name="dst">Destination <see cref="byte"/>s buffer reference.</param>
@@ -160,7 +160,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Copies array of <see cref="double"/> values to destination buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="w">Reference to <see cref="double"/> values array.</param>
         /// <param name="size">Amount of bytes to write into destination buffer.</param>
         /// <param name="dst">Destination buffer reference.</param>
@@ -172,7 +172,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Copies array of <see cref="long"/> values to destination buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="w">Reference to <see cref="long"/> values array.</param>
         /// <param name="size">Amount of bytes to write into destination buffer.</param>
         /// <param name="dst">Destination buffer reference.</param>
@@ -184,7 +184,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Copies array of <see cref="char"/> values to destination buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="w">Reference to <see cref="char"/> values array.</param>
         /// <param name="size">Amount of bytes to write into destination buffer.</param>
         /// <param name="dst">Destination buffer reference.</param>
@@ -196,7 +196,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Cuts some bytes from source buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="source">Source buffer.</param>
         /// <param name="startIndex">Source start size.</param>
         /// <param name="size">Count of bytes to cut.</param>
@@ -208,7 +208,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Replaces part of buffer with replacement buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="buffer">Destination buffer.</param>
         /// <param name="index">Destination replacement size.</param>
         /// <param name="replacement">Replacement buffer.</param>
@@ -221,7 +221,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Extends buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="source">Source buffer.</param>
         /// <param name="sourceIndex">Source buffer start-copy size.</param>
         /// <param name="neededLength">Result buffer capacity.</param>
@@ -233,7 +233,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Extends buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="source">Source buffer.</param>
         /// <param name="additionalLength">Additional capacity.</param>
         /// <returns>Extended buffer.</returns>
@@ -244,7 +244,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Gives string representation of <see cref="byte"/> values buffer.
-        /// .</summary>
+        /// </summary>
         /// <param name="buffer"><see cref="byte"/> values array.</param>
         /// <returns>String representation of <see cref="byte"/> values array.</returns>
         public static string ToString(byte[] buffer)
@@ -286,7 +286,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Converts <see cref="byte"/> values from one array to <see cref="char"/> values array (<see cref="string"/>).
-        /// .</summary>
+        /// </summary>
         /// <param name="src"><see cref="byte"/> values array reference.</param>
         /// <param name="srcOffset"><see cref="byte"/> values array offset.</param>
         /// <param name="dst">Destination string.</param>
@@ -301,7 +301,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Converts <see cref="byte"/> values array to <see cref="char"/> values array (<see cref="string"/>).
-        /// .</summary>
+        /// </summary>
         /// <param name="src">Source <see cref="byte"/> values buffer.</param>
         /// <param name="srcOffset">Source buffer offset.</param>
         /// <param name="maxLength">Max source buffer position, that method can reach.</param>
@@ -322,7 +322,7 @@ namespace L2dotNET.Utility
 
         /// <summary>
         /// Copies array of generic values from one array to an other.
-        /// .</summary>
+        /// </summary>
         /// <typeparam name="U">Some generic type.</typeparam>
         /// <param name="source">Source array.</param>
         /// <param name="srcOffset">Source array offset.</param>

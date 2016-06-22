@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         /// <summary>
         /// self visual cast
-        /// .</summary>
+        /// </summary>
         /// <param name="id"></param>
         /// <param name="skId"></param>
         /// <param name="skLv"></param>

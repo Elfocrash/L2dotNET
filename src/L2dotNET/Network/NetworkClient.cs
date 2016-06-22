@@ -8,92 +8,92 @@ namespace L2dotNET.Network
 {
     /// <summary>
     /// Represents the method that will handle Client.OnConnected" event.
-    /// .</summary>
+    /// </summary>
     public delegate void OnConnectedEventHandler(IPEndPoint endPoint, byte connectionID);
 
     /// <summary>
     /// Represents the method that will handle Client.OnDisconnected" event.
-    /// .</summary>
+    /// </summary>
     public delegate void OnDisconnectedEventHandler(int errorCode, NetworkClient client, byte connectionID);
 
     /// <summary>
     /// Abstract class to all client connections.
-    /// .</summary>
+    /// </summary>
     public abstract class NetworkClient
     {
         /// <summary>
         /// Client <see cref="Socket"/>.
-        /// .</summary>
+        /// </summary>
         public Socket m_Socket;
 
         /// <summary>
         /// Send buffers queue.
-        /// .</summary>
+        /// </summary>
         protected readonly Queue<byte[]> m_SendQueue;
 
         /// <summary>
         /// Connection receive buffer.
-        /// .</summary>
+        /// </summary>
         protected byte[] m_ReceiveBuffer;
 
         /// <summary>
         /// Receive callback.
-        /// .</summary>
+        /// </summary>
         protected readonly AsyncCallback m_ReceiveCallback;
 
         /// <summary>
         /// Send callback.
-        /// .</summary>
+        /// </summary>
         protected readonly AsyncCallback m_SendCallback;
 
         /// <summary>
         /// Indicates if packet header was received.
-        /// .</summary>
+        /// </summary>
         protected bool m_HeaderReceived;
 
         /// <summary>
         /// Packet sending indicator.
-        /// .</summary>
+        /// </summary>
         protected bool m_SendStackFlag;
 
         /// <summary>
         /// Indicates if sending packet is aviable.
-        /// .</summary>
+        /// </summary>
         protected bool m_SendReadyFlag = true;
 
         /// <summary>
         /// Lock object.
-        /// .</summary>
+        /// </summary>
         protected readonly object m_Lock = new object();
 
         /// <summary>
         /// Occurs after <see cref="NetworkClient"/> object was connected (initialized).
-        /// .</summary>
+        /// </summary>
         public virtual event OnConnectedEventHandler OnConnected;
 
         /// <summary>
         /// Occurs after <see cref="NetworkClient"/> object was disconnected.
-        /// .</summary>
+        /// </summary>
         public virtual event OnDisconnectedEventHandler OnDisconnected;
 
         /// <summary>
         /// Default connection buffer.
-        /// .</summary>
+        /// </summary>
         protected static readonly byte[] m_DefaultBuffer = new byte[4];
 
         /// <summary>
         /// Currently received packet capacity.
-        /// .</summary>
+        /// </summary>
         protected int m_ReceivedLength;
 
         /// <summary>
         /// Connection id.
-        /// .</summary>
+        /// </summary>
         public byte ConnectionID = 1;
 
         /// <summary>
         /// Initializes new instance of <see cref="NetworkClient"/> connection.
-        /// .</summary>
+        /// </summary>
         public NetworkClient()
         {
             m_ReceiveCallback = new AsyncCallback(ReceiveCallback);
@@ -104,7 +104,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Initializes new instance of <see cref="NetworkClient"/> connection.
-        /// .</summary>
+        /// </summary>
         /// <param name="socket">Client <see cref="Socket"/> object.</param>
         public NetworkClient(Socket socket) : this()
         {
@@ -121,12 +121,12 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Forces <see cref="NetworkClient"/> to begin receive from socket.
-        /// .</summary>
+        /// </summary>
         public abstract void BeginReceive();
 
         /// <summary>
         /// Handles received <see cref="Packet"/>.
-        /// .</summary>
+        /// </summary>
         /// <param name="packet">Received <see cref="Packet"/>.</param>
         protected virtual void Handle(Packet packet)
         {
@@ -135,12 +135,12 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Receive <see cref="AsyncCallback"/> method.
-        /// .</summary>
+        /// </summary>
         protected abstract unsafe void ReceiveCallback(IAsyncResult ar);
 
         /// <summary>
         /// Send <see cref="AsyncCallback"/> method.
-        /// .</summary>
+        /// </summary>
         protected virtual void SendCallback(IAsyncResult ar)
         {
             try
@@ -171,14 +171,14 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Serves for packet capacity validation and received buffer-><see cref="Packet"/> transforming.
-        /// .</summary>
+        /// </summary>
         /// <param name="buffer">Received buffer.</param>
         /// <param name="length">Received buffer capacity.</param>
         public virtual void ReceiveData(byte[] buffer, int length) { }
 
         /// <summary>
         /// Sends buffer to client socket.
-        /// .</summary>
+        /// </summary>
         /// <param name="buffer">Buffer to send.</param>
         public virtual void SendData(byte[] buffer)
         {
@@ -199,7 +199,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Closes current client connection.
-        /// .</summary>
+        /// </summary>
         public virtual void CloseConnection()
         {
             if ((m_Socket != null) && m_Socket.Connected)
@@ -219,7 +219,7 @@ namespace L2dotNET.Network
 
         /// <summary>
         /// Indicates if client socket is connected.
-        /// .</summary>
+        /// </summary>
         public virtual bool Connected
         {
             get { return (m_Socket != null) && m_Socket.Connected; }
