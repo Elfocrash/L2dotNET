@@ -54,7 +54,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (Config.Config.Instance.gameplayConfig.DeleteDays == 0)
+            if (Config.Config.Instance.gameplayConfig.Server.Client.DeleteCharAfterDays == 0)
             {
                 if (!playerService.DeleteCharByObjId(player.ObjID))
                 {

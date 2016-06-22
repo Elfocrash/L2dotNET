@@ -1,0 +1,570 @@
+{
+  "ChampionMobs": {
+    "Frequency": 0,
+    "MinLevel": 20,
+    "MaxLevel": 70,
+    "Hp": 8,
+    "RegenHp": 1.0,
+    "Rewards": 8,
+    "AdenasRewards": 1,
+    "Atk": 1.0,
+    "SpdAtk": 1.0,
+    "RewardItemChance": 0,
+    "RewardItem": [
+      {
+        "ItemId": 6393,
+        "Amount": 1
+      }
+    ]
+  },
+  "Buffer": {
+    "MaxSchemesPerChar": 4,
+    "MaxSkillsPerScheme": 24,
+    "StaticCostPerBuff": -1,
+    "Buffs": [
+      {
+        "SkillId": 264,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 265,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 266,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 267,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 268,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 269,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 270,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 304,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 305,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 306,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 308,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 349,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 363,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 364,
+        "Price": 0,
+        "GroupType": "Songs"
+      },
+      {
+        "SkillId": 271,
+        "Price": 0,
+        "GroupType": "Dances"
+      },
+      {
+        "SkillId": 272,
+        "Price": 0,
+        "GroupType": "Dances"
+      },
+      {
+        "SkillId": 273,
+        "Price": 0,
+        "GroupType": "Dances"
+      },
+      {
+        "SkillId": 274,
+        "Price": 0,
+        "GroupType": "Dances"
+      },
+      {
+        "SkillId": 275,
+        "Price": 0,
+        "GroupType": "Dances"
+      },
+      {
+        "SkillId": 276,
+        "Price": 0,
+        "GroupType": "Dances"
+      },
+      {
+        "SkillId": 277,
+        "Price": 0,
+        "GroupType": "Dances"
+      },
+      {
+        "SkillId": 309,
+        "Price": 0,
+        "GroupType": "Dances"
+      },
+      {
+        "SkillId": 310,
+        "Price": 0,
+        "GroupType": "Dances"
+      },
+      {
+        "SkillId": 311,
+        "Price": 0,
+        "GroupType": "Dances"
+      },
+      {
+        "SkillId": 1002,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1006,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1007,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1009,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1308,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1309,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1310,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1362,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1390,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1391,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1413,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1416,
+        "Price": 0,
+        "GroupType": "Overlord"
+      },
+      {
+        "SkillId": 1003,
+        "Price": 0,
+        "GroupType": "Overlord"
+      },
+      {
+        "SkillId": 1004,
+        "Price": 0,
+        "GroupType": "Overlord"
+      },
+      {
+        "SkillId": 1005,
+        "Price": 0,
+        "GroupType": "Overlord"
+      },
+      {
+        "SkillId": 1008,
+        "Price": 0,
+        "GroupType": "Overlord"
+      },
+      {
+        "SkillId": 1249,
+        "Price": 0,
+        "GroupType": "Overlord"
+      },
+      {
+        "SkillId": 1364,
+        "Price": 0,
+        "GroupType": "Overlord"
+      },
+      {
+        "SkillId": 1365,
+        "Price": 0,
+        "GroupType": "Overlord"
+      },
+      {
+        "SkillId": 1032,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1033,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1035,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1036,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1040,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1043,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1044,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1045,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1048,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1059,
+        "Price": 0,
+        "GroupType": "Shillen_Elder"
+      },
+      {
+        "SkillId": 1062,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1068,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1073,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1077,
+        "Price": 0,
+        "GroupType": "Shillen_Elder"
+      },
+      {
+        "SkillId": 1078,
+        "Price": 0,
+        "GroupType": "Shillen_Elder"
+      },
+      {
+        "SkillId": 1085,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1086,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1087,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1182,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1189,
+        "Price": 0,
+        "GroupType": "Shillen_Elder"
+      },
+      {
+        "SkillId": 1191,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1204,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1242,
+        "Price": 0,
+        "GroupType": "Shillen_Elder"
+      },
+      {
+        "SkillId": 1243,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1259,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1268,
+        "Price": 0,
+        "GroupType": "Shillen_Elder"
+      },
+      {
+        "SkillId": 1303,
+        "Price": 0,
+        "GroupType": "Shillen_Elder"
+      },
+      {
+        "SkillId": 1304,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1352,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1353,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1354,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1388,
+        "Price": 0,
+        "GroupType": "Shillen_Elder"
+      },
+      {
+        "SkillId": 1389,
+        "Price": 0,
+        "GroupType": "Shillen_Elder"
+      },
+      {
+        "SkillId": 1392,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1393,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1397,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1355,
+        "Price": 0,
+        "GroupType": "Elder"
+      },
+      {
+        "SkillId": 1356,
+        "Price": 0,
+        "GroupType": "Prophet"
+      },
+      {
+        "SkillId": 1357,
+        "Price": 0,
+        "GroupType": "Shillen_Elder"
+      },
+      {
+        "SkillId": 1363,
+        "Price": 0,
+        "GroupType": "Warcryer"
+      },
+      {
+        "SkillId": 1414,
+        "Price": 0,
+        "GroupType": "Overlord"
+      }
+    ]
+  },
+  "Misc": {
+    "AllowClassMasters": false,
+    "AllowEntireTree": false,
+    "ConfigClassMaster": {
+      "FirstOccupation": {
+        "ItemsCost": [
+          {
+            "ItemId": 57,
+            "Amount": 0
+          }
+        ],
+        "ItemsReward": [
+          {
+            "ItemId": 57,
+            "Amount": 0
+          }
+        ]
+      },
+      "SecondOccupation": {
+        "ItemsCost": [
+          {
+            "ItemId": 57,
+            "Amount": 0
+          }
+        ],
+        "ItemsReward": [
+          {
+            "ItemId": 57,
+            "Amount": 0
+          }
+        ]
+      },
+      "ThirdOccupation": {
+        "ItemsCost": [
+          {
+            "ItemId": 57,
+            "Amount": 0
+          }
+        ],
+        "ItemsReward": [
+          {
+            "itemId": 57,
+            "Amount": 0
+          }
+        ]
+      }
+    },
+    "FreeTeleporting": false,
+    "AnnounceMammonSpawn": false,
+    "MobAgroInPeaceZone": true,
+    "ShowNpcLevel": false,
+    "ShowNpcCrest": false,
+    "ShowSummonCrest": false
+  },
+  "WyvernManager": {
+    "AllowWyvernUpgrader": true,
+    "RequiredStriderLevel": 55,
+    "RequiredCrystalsNumber": 10
+  },
+  "RaidBoss": {
+    "HpRegenMultiplier": 1.0,
+    "MpRegenMultiplier": 1.0,
+    "DefenceMultiplier": 1.0,
+    "MinionRespawnTime": 300000,
+    "DisableCurse": false,
+    "RaidChaosTime": 30,
+    "GrandChaosTime": 30,
+    "MinionChaosTime": 30
+  },
+  "GrandBosses": {
+    "AntQueen": {
+      "SpawnInterval": 36,
+      "RandomSpawn": 17
+    },
+    "Antharas": {
+      "SpawnInterval": 264,
+      "RandomSpawn": 72,
+      "WaitTime": 30
+    },
+    "Baium": {
+      "SpawnInterval": 168,
+      "RandomSpawn": 48
+    },
+    "Core": {
+      "SpawnInterval": 60,
+      "RandomSpawn": 23
+    },
+    "Frintezza": {
+      "SpawnInterval": 48,
+      "RandomSpawn": 8,
+      "WaitTime": 1
+    },
+    "Orfen": {
+      "SpawnInterval": 48,
+      "RandomSpawn": 20
+    },
+    "Sailren": {
+      "SpawnInterval": 36,
+      "RandomSpawn": 24,
+      "WaitTime": 5
+    },
+    "Valakas": {
+      "SpawnInterval": 264,
+      "RandomSpawn": 72,
+      "WaitTime": 30
+    },
+    "Zaken": {
+      "SpawnInterval": 60,
+      "RandomSpawn": 20
+    }
+  },
+  "IA": {
+    "GuardAttackAggroMob": false,
+    "MaxDriftRange": 200,
+    "KnownListUpdateInterval": 1250,
+    "MinNPCAnimation": 20,
+    "MaxNPCAnimation": 40,
+    "MinMonsterAnimation": 10,
+    "MaxMonsterAnimation": 40,
+    "GridsAlwaysOn": false,
+    "GridNeighborTurnOnTime": 1,
+    "GridNeighborTurnOffTime": 90
+  }
+}

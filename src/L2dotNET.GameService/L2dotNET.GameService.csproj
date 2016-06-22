@@ -102,10 +102,16 @@
     <Compile Include="ClientManager.cs" />
     <Compile Include="Compression\DlcStream.cs" />
     <Compile Include="ConfigFile.cs" />
+    <Compile Include="Config\Clan.cs" />
+    <Compile Include="Config\Event.cs" />
+    <Compile Include="Config\Geodata.cs" />
+    <Compile Include="Config\Login.cs" />
+    <Compile Include="Config\Npc.cs" />
+    <Compile Include="Config\OtherConfig.cs" />
+    <Compile Include="Config\Player.cs" />
+    <Compile Include="Config\Server2.cs" />
     <Compile Include="Config\Siege.cs" />
-    <Compile Include="Config\CommunityBoard.cs" />
     <Compile Include="Config\Config.cs" />
-    <Compile Include="Config\FloodProtector.cs" />
     <Compile Include="Config\GameplayConfig.cs" />
     <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="Controllers\GameTime.cs" />
@@ -660,6 +666,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Datapacks\Game\config\geodata.json" />
+    <None Include="Datapacks\Game\config\clan.json" />
+    <None Include="Datapacks\Game\config\events.json" />
+    <None Include="Datapacks\Game\config\npcs.json" />
+    <None Include="Datapacks\Game\config\loginserver.json" />
+    <None Include="Datapacks\Game\config\siege.json" />
+    <None Include="Datapacks\Game\config\player.json" />
     <None Include="Datapacks\Login\config\server.json" />
     <None Include="Datapacks\Game\config\gameplay.json" />
     <None Include="Datapacks\Game\config\server.json" />

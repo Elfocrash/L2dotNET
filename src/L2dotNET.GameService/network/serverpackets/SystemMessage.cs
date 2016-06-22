@@ -160,7 +160,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANNOT_INVITE_YOURSELF = 4,
             ///<summary>$s1 already exists.</summary>
             S1_ALREADY_EXISTS = 5,
-            ///<summary>$s1 does not exist</summary>
+            ///<summary>$s1 does not exist.</summary>
             S1_DOES_NOT_EXIST2 = 6,
             ///<summary>You are already a member of $s1.</summary>
             ALREADY_MEMBER_OF_S1 = 7,
@@ -186,7 +186,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CASTLE_SIEGE_HAS_BEGUN = 17,
             ///<summary>The castle siege has ended.</summary>
             CASTLE_SIEGE_HAS_ENDED = 18,
-            ///<summary>There is a new Lord of the castle!</summary>
+            ///<summary>There is a new Lord of the castle!.</summary>
             NEW_CASTLE_LORD = 19,
             ///<summary>The gate is being opened.</summary>
             GATE_IS_OPENING = 20,
@@ -218,7 +218,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANT_MOVE_CASTING = 32,
             ///<summary>Welcome to the World of Lineage II.</summary>
             WELCOME_TO_LINEAGE = 34,
-            ///<summary>You hit for $s1 damage</summary>
+            ///<summary>You hit for $s1 damage.</summary>
             YOU_DID_S1_DMG = 35,
             ///<summary>$s1 hit you for $s2 damage.</summary>
             S1_GAVE_YOU_S2_DMG = 36,
@@ -230,7 +230,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             AVOIDED_S1_ATTACK = 42,
             ///<summary>You have missed.</summary>
             MISSED_TARGET = 43,
-            ///<summary>Critical hit!</summary>
+            ///<summary>Critical hit!.</summary>
             CRITICAL_HIT = 44,
             ///<summary>You have earned $s1 experience.</summary>
             EARNED_S1_EXPERIENCE = 45,
@@ -274,23 +274,23 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ENCHANTMENT_FAILED_S1_EVAPORATED = 64,
             ///<summary>The enchantment has failed! Your +$s1 $s2 has been crystallized.</summary>
             ENCHANTMENT_FAILED_S1_S2_EVAPORATED = 65,
-            ///<summary>$s1 is inviting you to join a party. Do you accept?</summary>
+            ///<summary>$s1 is inviting you to join a party. Do you accept?.</summary>
             S1_INVITED_YOU_TO_PARTY = 66,
-            ///<summary>$s1 has invited you to the join the clan, $s2. Do you wish to join?</summary>
+            ///<summary>$s1 has invited you to the join the clan, $s2. Do you wish to join?.</summary>
             S1_HAS_INVITED_YOU_TO_JOIN_THE_CLAN_S2 = 67,
             ///<summary>Would you like to withdraw from the $s1 clan? If you leave, you will have to wait at least a day before joining another clan.</summary>
             WOULD_YOU_LIKE_TO_WITHDRAW_FROM_THE_S1_CLAN = 68,
             ///<summary>Would you like to dismiss $s1 from the clan? If you do so, you will have to wait at least a day before accepting a new member.</summary>
             WOULD_YOU_LIKE_TO_DISMISS_S1_FROM_THE_CLAN = 69,
-            ///<summary>Do you wish to disperse the clan, $s1?</summary>
+            ///<summary>Do you wish to disperse the clan, $s1?.</summary>
             DO_YOU_WISH_TO_DISPERSE_THE_CLAN_S1 = 70,
-            ///<summary>How many of your $s1(s) do you wish to discard?</summary>
+            ///<summary>How many of your $s1(s) do you wish to discard?.</summary>
             HOW_MANY_S1_DISCARD = 71,
-            ///<summary>How many of your $s1(s) do you wish to move?</summary>
+            ///<summary>How many of your $s1(s) do you wish to move?.</summary>
             HOW_MANY_S1_MOVE = 72,
-            ///<summary>How many of your $s1(s) do you wish to destroy?</summary>
+            ///<summary>How many of your $s1(s) do you wish to destroy?.</summary>
             HOW_MANY_S1_DESTROY = 73,
-            ///<summary>Do you wish to destroy your $s1?</summary>
+            ///<summary>Do you wish to destroy your $s1?.</summary>
             WISH_DESTROY_S1 = 74,
             ///<summary>ID does not exist.</summary>
             ID_NOT_EXIST = 75,
@@ -298,7 +298,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             INCORRECT_PASSWORD = 76,
             ///<summary>You cannot create another character. Please delete the existing character and try again.</summary>
             CANNOT_CREATE_CHARACTER = 77,
-            ///<summary>When you delete a character, any items in his/her possession will also be deleted. Do you really wish to delete $s1%?</summary>
+            ///<summary>When you delete a character, any items in his/her possession will also be deleted. Do you really wish to delete $s1%?.</summary>
             WISH_DELETE_S1 = 78,
             ///<summary>This name already exists.</summary>
             NAMING_NAME_ALREADY_EXISTS = 79,
@@ -334,7 +334,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             COPYRIGHT = 94,
             ///<summary>You have earned $s1 experience and $s2 SP.</summary>
             YOU_EARNED_S1_EXP_AND_S2_SP = 95,
-            ///<summary>Your level has increased!</summary>
+            ///<summary>Your level has increased!.</summary>
             YOU_INCREASED_YOUR_LEVEL = 96,
             ///<summary>This item cannot be moved.</summary>
             CANNOT_MOVE_THIS_ITEM = 97,
@@ -342,7 +342,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANNOT_DISCARD_THIS_ITEM = 98,
             ///<summary>This item cannot be traded or sold.</summary>
             CANNOT_TRADE_THIS_ITEM = 99,
-            ///<summary>$s1 is requesting to trade. Do you wish to continue?</summary>
+            ///<summary>$s1 is requesting to trade. Do you wish to continue?.</summary>
             S1_REQUESTS_TRADE = 100,
             ///<summary>You cannot exit while in combat.</summary>
             CANT_LOGOUT_WHILE_FIGHTING = 101,
@@ -378,7 +378,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ENTER_PEACEFUL_ZONE = 116,
             ///<summary>You have left the peaceful zone.</summary>
             EXIT_PEACEFUL_ZONE = 117,
-            ///<summary>You have requested a trade with $s1</summary>
+            ///<summary>You have requested a trade with $s1.</summary>
             REQUEST_S1_FOR_TRADE = 118,
             ///<summary>$s1 has denied your request to trade.</summary>
             S1_DENIED_TRADE_REQUEST = 119,
@@ -392,9 +392,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             TRADE_SUCCESSFUL = 123,
             ///<summary>$s1 has cancelled the trade.</summary>
             S1_CANCELED_TRADE = 124,
-            ///<summary>Do you wish to exit the game?</summary>
+            ///<summary>Do you wish to exit the game?.</summary>
             WISH_EXIT_GAME = 125,
-            ///<summary>Do you wish to return to the character select screen?</summary>
+            ///<summary>Do you wish to return to the character select screen?.</summary>
             WISH_RESTART_GAME = 126,
             ///<summary>You have been disconnected from the server. Please login again.</summary>
             DISCONNECTED_FROM_SERVER = 127,
@@ -480,7 +480,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_ALREADY_ON_FRIEND_LIST = 167,
             ///<summary>$s1 has sent a friend request.</summary>
             S1_REQUESTED_TO_BECOME_FRIENDS = 168,
-            ///<summary>Accept friendship 0/1 (1 to accept, 0 to deny)</summary>
+            ///<summary>Accept friendship 0/1 (1 to accept, 0 to deny).</summary>
             ACCEPT_THE_FRIENDSHIP = 169,
             ///<summary>The user who requested to become friends is not found in the game.</summary>
             THE_USER_YOU_REQUESTED_IS_NOT_IN_GAME = 170,
@@ -502,13 +502,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
             MESSAGE_ACCEPTANCE_MODE = 178,
             ///<summary>You cannot discard those items here.</summary>
             CANT_DISCARD_HERE = 179,
-            ///<summary>You have $s1 day(s) left until deletion. Do you wish to cancel this action?</summary>
+            ///<summary>You have $s1 day(s) left until deletion. Do you wish to cancel this action?.</summary>
             S1_DAYS_LEFT_CANCEL_ACTION = 180,
             ///<summary>Cannot see target.</summary>
             CANT_SEE_TARGET = 181,
-            ///<summary>Do you want to quit the current quest?</summary>
+            ///<summary>Do you want to quit the current quest?.</summary>
             WANT_QUIT_CURRENT_QUEST = 182,
-            ///<summary>There are too many users on the server. Please try again later</summary>
+            ///<summary>There are too many users on the server. Please try again later.</summary>
             TOO_MANY_USERS = 183,
             ///<summary>Please try again later.</summary>
             TRY_AGAIN_LATER = 184,
@@ -556,7 +556,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             INCORRECT_CHARACTER_NAME_TRY_AGAIN = 205,
             ///<summary>Please enter the name of the clan you wish to declare war on.</summary>
             ENTER_CLAN_NAME_TO_DECLARE_WAR = 206,
-            ///<summary>$s2 of the clan $s1 requests declaration of war. Do you accept?</summary>
+            ///<summary>$s2 of the clan $s1 requests declaration of war. Do you accept?.</summary>
             S2_OF_THE_CLAN_S1_REQUESTS_WAR = 207,
             ///<summary>You are not a clan member and cannot perform this action.</summary>
             YOU_ARE_NOT_A_CLAN_MEMBER = 212,
@@ -568,7 +568,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WAR_WITH_THE_S1_CLAN_HAS_BEGUN = 215,
             ///<summary>War with the $s1 clan has ended.</summary>
             WAR_WITH_THE_S1_CLAN_HAS_ENDED = 216,
-            ///<summary>You have won the war over the $s1 clan!</summary>
+            ///<summary>You have won the war over the $s1 clan!.</summary>
             YOU_HAVE_WON_THE_WAR_OVER_THE_S1_CLAN = 217,
             ///<summary>You have surrendered to the $s1 clan.</summary>
             YOU_HAVE_SURRENDERED_TO_THE_S1_CLAN = 218,
@@ -624,15 +624,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANNOT_DECLARE_WAR_ON_ALLIED_CLAN = 243,
             ///<summary>You are not allowed to issue this challenge.</summary>
             NOT_ALLOWED_TO_CHALLENGE = 244,
-            ///<summary>5 days has not passed since you were refused war. Do you wish to continue?</summary>
+            ///<summary>5 days has not passed since you were refused war. Do you wish to continue?.</summary>
             FIVE_DAYS_NOT_PASSED_SINCE_REFUSED_WAR = 245,
             ///<summary>That clan is currently at war.</summary>
             CLAN_CURRENTLY_AT_WAR = 246,
-            ///<summary>You have already been at war with the $s1 clan: 5 days must pass before you can challenge this clan again</summary>
+            ///<summary>You have already been at war with the $s1 clan: 5 days must pass before you can challenge this clan again.</summary>
             FIVE_DAYS_MUST_PASS_BEFORE_CHALLENGE_S1_AGAIN = 247,
             ///<summary>You cannot proclaim war: the $s1 clan does not have enough members.</summary>
             S1_CLAN_NOT_ENOUGH_MEMBERS_FOR_WAR = 248,
-            ///<summary>Do you wish to surrender to the $s1 clan?</summary>
+            ///<summary>Do you wish to surrender to the $s1 clan?.</summary>
             WISH_SURRENDER_TO_S1_CLAN = 249,
             ///<summary>You have personally surrendered to the $s1 clan. You are no longer participating in this clan war.</summary>
             YOU_HAVE_PERSONALLY_SURRENDERED_TO_THE_S1_CLAN = 250,
@@ -644,17 +644,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ENTER_CLAN_NAME_TO_END_WAR = 253,
             ///<summary>A clan leader cannot personally surrender.</summary>
             LEADER_CANT_PERSONALLY_SURRENDER = 254,
-            ///<summary>The $s1 clan has requested to end war. Do you agree?</summary>
+            ///<summary>The $s1 clan has requested to end war. Do you agree?.</summary>
             S1_CLAN_REQUESTED_END_WAR = 255,
-            ///<summary>Enter title</summary>
+            ///<summary>Enter title.</summary>
             ENTER_TITLE = 256,
-            ///<summary>Do you offer the $s1 clan a proposal to end the war?</summary>
+            ///<summary>Do you offer the $s1 clan a proposal to end the war?.</summary>
             DO_YOU_OFFER_S1_CLAN_END_WAR = 257,
             ///<summary>You are not involved in a clan war.</summary>
             NOT_INVOLVED_CLAN_WAR = 258,
             ///<summary>Select clan members from list.</summary>
             SELECT_MEMBERS_FROM_LIST = 259,
-            ///<summary>Fame level has decreased: 5 days have not passed since you were refused war</summary>
+            ///<summary>Fame level has decreased: 5 days have not passed since you were refused war.</summary>
             FIVE_DAYS_NOT_PASSED_SINCE_YOU_WERE_REFUSED_WAR = 260,
             ///<summary>Clan name is invalid.</summary>
             CLAN_NAME_INVALID = 261,
@@ -676,7 +676,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             YOU_CANNOT_DISMISS_YOURSELF = 269,
             ///<summary>You have already surrendered.</summary>
             YOU_HAVE_ALREADY_SURRENDERED = 270,
-            ///<summary>A player can only be granted a title if the clan is level 3 or above</summary>
+            ///<summary>A player can only be granted a title if the clan is level 3 or above.</summary>
             CLAN_LVL_3_NEEDED_TO_ENDOWE_TITLE = 271,
             ///<summary>A clan crest can only be registered when the clan's skill level is 3 or above.</summary>
             CLAN_LVL_3_NEEDED_TO_SET_CREST = 272,
@@ -704,11 +704,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ENTERED_COMBAT_ZONE = 283,
             ///<summary>You have left a combat zone.</summary>
             LEFT_COMBAT_ZONE = 284,
-            ///<summary>Clan $s1 has succeeded in engraving the ruler!</summary>
+            ///<summary>Clan $s1 has succeeded in engraving the ruler!.</summary>
             CLAN_S1_ENGRAVED_RULER = 285,
             ///<summary>Your base is being attacked.</summary>
             BASE_UNDER_ATTACK = 286,
-            ///<summary>The opposing clan has stared to engrave to monument!</summary>
+            ///<summary>The opposing clan has stared to engrave to monument!.</summary>
             OPPONENT_STARTED_ENGRAVING = 287,
             ///<summary>The castle gate has been broken down.</summary>
             CASTLE_GATE_BROKEN_DOWN = 288,
@@ -716,7 +716,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NOT_ANOTHER_HEADQUARTERS = 289,
             ///<summary>You cannot set up a base here.</summary>
             NOT_SET_UP_BASE_HERE = 290,
-            ///<summary>Clan $s1 is victorious over $s2's castle siege!</summary>
+            ///<summary>Clan $s1 is victorious over $s2's castle siege!.</summary>
             CLAN_S1_VICTORIOUS_OVER_S2_S_SIEGE = 291,
             ///<summary>$s1 has announced the castle siege time.</summary>
             S1_ANNOUNCED_SIEGE_TIME = 292,
@@ -790,7 +790,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ONE_LINE_RESPONSE_NOT_EXCEED_128_CHARACTERS = 330,
             ///<summary>You have acquired $s1 SP.</summary>
             ACQUIRED_S1_SP = 331,
-            ///<summary>Do you want to be restored?</summary>
+            ///<summary>Do you want to be restored?.</summary>
             DO_YOU_WANT_TO_BE_RESTORED = 332,
             ///<summary>You have received $s1 damage by Core's barrier.</summary>
             S1_DAMAGE_BY_CORE_BARRIER = 333,
@@ -798,7 +798,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ENTER_PRIVATE_STORE_MESSAGE = 334,
             ///<summary>$s1 has been aborted.</summary>
             S1_HAS_BEEN_ABORTED = 335,
-            ///<summary>You are attempting to crystallize $s1. Do you wish to continue?</summary>
+            ///<summary>You are attempting to crystallize $s1. Do you wish to continue?.</summary>
             WISH_TO_CRYSTALLIZE_S1 = 336,
             ///<summary>The soulshot you are attempting to use does not match the grade of your equipped weapon.</summary>
             SOULSHOTS_GRADE_MISMATCH = 337,
@@ -842,17 +842,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_HOURS_UNTIL_SIEGE_CONCLUSION = 358,
             ///<summary>$s1 minute(s) until catle siege conclusion.</summary>
             S1_MINUTES_UNTIL_SIEGE_CONCLUSION = 359,
-            ///<summary>Castle siege $s1 second(s) left!</summary>
+            ///<summary>Castle siege $s1 second(s) left!.</summary>
             CASTLE_SIEGE_S1_SECONDS_LEFT = 360,
-            ///<summary>Over-hit!</summary>
+            ///<summary>Over-hit!.</summary>
             OVER_HIT = 361,
             ///<summary>You have acquired $s1 bonus experience from a successful over-hit.</summary>
             ACQUIRED_BONUS_EXPERIENCE_THROUGH_OVER_HIT = 362,
             ///<summary>Chat available time: $s1 minute.</summary>
             CHAT_AVAILABLE_S1_MINUTE = 363,
-            ///<summary>Enter user's name to search</summary>
+            ///<summary>Enter user's name to search.</summary>
             ENTER_USER_NAME_TO_SEARCH = 364,
-            ///<summary>Are you sure?</summary>
+            ///<summary>Are you sure?.</summary>
             ARE_YOU_SURE = 365,
             ///<summary>Please select your hair color.</summary>
             PLEASE_SELECT_HAIR_COLOR = 366,
@@ -868,9 +868,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ACQUIRED_S1_S2 = 371,
             ///<summary>Failed to earn $s1.</summary>
             FAILED_EARN_S1 = 372,
-            ///<summary>You are trying to destroy +$s1 $s2. Do you wish to continue?</summary>
+            ///<summary>You are trying to destroy +$s1 $s2. Do you wish to continue?.</summary>
             WISH_DESTROY_S1_S2 = 373,
-            ///<summary>You are attempting to crystallize +$s1 $s2. Do you wish to continue?</summary>
+            ///<summary>You are attempting to crystallize +$s1 $s2. Do you wish to continue?.</summary>
             WISH_CRYSTALLIZE_S1_S2 = 374,
             ///<summary>You have dropped +$s1 $s2 .</summary>
             DROPPED_S1_S2 = 375,
@@ -920,7 +920,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NO_PAID_ACCOUNT = 397,
             ///<summary>There is no time left on this account.</summary>
             NO_TIME_LEFT_ON_ACCOUNT = 398,
-            ///<summary>You are attempting to drop $s1. Dou you wish to continue?</summary>
+            ///<summary>You are attempting to drop $s1. Dou you wish to continue?.</summary>
             WISH_TO_DROP_S1 = 400,
             ///<summary>You have to many ongoing quests.</summary>
             TOO_MANY_QUESTS = 401,
@@ -936,21 +936,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
             PETITION_APP_ACCEPTED = 406,
             ///<summary>Petition under process.</summary>
             PETITION_UNDER_PROCESS = 407,
-            ///<summary>Set Period</summary>
+            ///<summary>Set Period.</summary>
             SET_PERIOD = 408,
-            ///<summary>Set Time-$s1:$s2:$s3</summary>
+            ///<summary>Set Time-$s1:$s2:$s3.</summary>
             SET_TIME_S1_S2_S3 = 409,
-            ///<summary>Registration Period</summary>
+            ///<summary>Registration Period.</summary>
             REGISTRATION_PERIOD = 410,
-            ///<summary>Registration Time-$s1:$s2:$s3</summary>
+            ///<summary>Registration Time-$s1:$s2:$s3.</summary>
             REGISTRATION_TIME_S1_S2_S3 = 411,
-            ///<summary>Battle begins in $s1:$s2:$s3</summary>
+            ///<summary>Battle begins in $s1:$s2:$s3.</summary>
             BATTLE_BEGINS_S1_S2_S3 = 412,
-            ///<summary>Battle ends in $s1:$s2:$s3</summary>
+            ///<summary>Battle ends in $s1:$s2:$s3.</summary>
             BATTLE_ENDS_S1_S2_S3 = 413,
-            ///<summary>Standby</summary>
+            ///<summary>Standby.</summary>
             STANDBY = 414,
-            ///<summary>Under Siege</summary>
+            ///<summary>Under Siege.</summary>
             UNDER_SIEGE = 415,
             ///<summary>This item cannot be exchanged.</summary>
             ITEM_CANNOT_EXCHANGE = 416,
@@ -970,7 +970,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             DOES_NOT_FIT_SCROLL_CONDITIONS = 424,
             ///<summary>Your Create Item level is too low to register this recipe.</summary>
             CREATE_LVL_TOO_LOW_TO_REGISTER2 = 425,
-            ///<summary>(Reference Number Regarding Membership Withdrawal Request: $s1)</summary>
+            ///<summary>(Reference Number Regarding Membership Withdrawal Request: $s1).</summary>
             REFERENCE_MEMBERSHIP_WITHDRAWAL_S1 = 445,
             ///<summary>.</summary>
             DOT = 447,
@@ -988,7 +988,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ACCOUNT_INFORMATION_INCORRECT = 453,
             ///<summary>Account is already in use. Unable to log in.</summary>
             ACCOUNT_IN_USE = 455,
-            ///<summary>Lineage II game services may be used by individuals 15 years of age or older except for PvP servers,which may only be used by adults 18 years of age and older (Korea Only)</summary>
+            ///<summary>Lineage II game services may be used by individuals 15 years of age or older except for PvP servers,which may only be used by adults 18 years of age and older (Korea Only).</summary>
             LINAGE_MINIMUM_AGE = 456,
             ///<summary>Currently undergoing game server maintenance. Please log in again later.</summary>
             SERVER_MAINTENANCE = 457,
@@ -1046,35 +1046,35 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NO_NEW_INVITATIONS_ACCEPTED = 485,
             ///<summary>The following user is not in your friends list.</summary>
             THE_USER_NOT_IN_FRIENDS_LIST = 486,
-            ///<summary>======Friends List======</summary>
+            ///<summary>======Friends List======.</summary>
             FRIEND_LIST_HEADER = 487,
-            ///<summary>$s1 (Currently: Online)</summary>
+            ///<summary>$s1 (Currently: Online).</summary>
             S1_ONLINE = 488,
-            ///<summary>$s1 (Currently: Offline)</summary>
+            ///<summary>$s1 (Currently: Offline).</summary>
             S1_OFFLINE = 489,
-            ///<summary>========================</summary>
+            ///<summary>========================.</summary>
             FRIEND_LIST_FOOTER = 490,
-            ///<summary>=======Alliance Information=======</summary>
+            ///<summary>=======Alliance Information=======.</summary>
             ALLIANCE_INFO_HEAD = 491,
-            ///<summary>Alliance Name: $s1</summary>
+            ///<summary>Alliance Name: $s1.</summary>
             ALLIANCE_NAME_S1 = 492,
-            ///<summary>Connection: $s1 / Total $s2</summary>
+            ///<summary>Connection: $s1 / Total $s2.</summary>
             CONNECTION_S1_TOTAL_S2 = 493,
-            ///<summary>Alliance Leader: $s2 of $s1</summary>
+            ///<summary>Alliance Leader: $s2 of $s1.</summary>
             ALLIANCE_LEADER_S2_OF_S1 = 494,
-            ///<summary>Affiliated clans: Total $s1 clan(s)</summary>
+            ///<summary>Affiliated clans: Total $s1 clan(s).</summary>
             ALLIANCE_CLAN_TOTAL_S1 = 495,
-            ///<summary>=====Clan Information=====</summary>
+            ///<summary>=====Clan Information=====.</summary>
             CLAN_INFO_HEAD = 496,
-            ///<summary>Clan Name: $s1</summary>
+            ///<summary>Clan Name: $s1.</summary>
             CLAN_INFO_NAME_S1 = 497,
-            ///<summary>Clan Leader: $s1</summary>
+            ///<summary>Clan Leader: $s1.</summary>
             CLAN_INFO_LEADER_S1 = 498,
-            ///<summary>Clan Level: $s1</summary>
+            ///<summary>Clan Level: $s1.</summary>
             CLAN_INFO_LEVEL_S1 = 499,
-            ///<summary>------------------------</summary>
+            ///<summary>------------------------.</summary>
             CLAN_INFO_SEPARATOR = 500,
-            ///<summary>========================</summary>
+            ///<summary>========================.</summary>
             CLAN_INFO_FOOT = 501,
             ///<summary>You already belong to another alliance.</summary>
             ALREADY_JOINED_ALLIANCE = 502,
@@ -1096,11 +1096,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             YOU_INVITED_FOR_ALLIANCE = 510,
             ///<summary>You must first select a user to invite.</summary>
             SELECT_USER_TO_INVITE = 511,
-            ///<summary>Do you really wish to withdraw from the alliance?</summary>
+            ///<summary>Do you really wish to withdraw from the alliance?.</summary>
             DO_YOU_WISH_TO_WITHDRW = 512,
             ///<summary>Enter the name of the clan you wish to expel.</summary>
             ENTER_NAME_CLAN_TO_EXPEL = 513,
-            ///<summary>Do you really wish to dissolve the alliance?</summary>
+            ///<summary>Do you really wish to dissolve the alliance?.</summary>
             DO_YOU_WISH_TO_DISOLVE = 514,
             ///<summary>$s1 has invited you to be their friend.</summary>
             SI_INVITED_YOU_AS_FRIEND = 516,
@@ -1136,9 +1136,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ENABLED_SPIRITSHOT = 533,
             ///<summary>Power of Mana disabled.</summary>
             DISABLED_SPIRITSHOT = 534,
-            ///<summary>How much adena do you wish to transfer to your Inventory?</summary>
+            ///<summary>How much adena do you wish to transfer to your Inventory?.</summary>
             HOW_MUCH_ADENA_TRANSFER = 536,
-            ///<summary>How much will you transfer?</summary>
+            ///<summary>How much will you transfer?.</summary>
             HOW_MUCH_TRANSFER = 537,
             ///<summary>Your SP has decreased by $s1.</summary>
             SP_DECREASED_S1 = 538,
@@ -1174,11 +1174,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             OPPOSING_CLAN_APPLIED_DISPERSION = 553,
             ///<summary>You cannot disperse the clans in your alliance.</summary>
             CANNOT_DISPERSE_THE_CLANS_IN_ALLY = 554,
-            ///<summary>You cannot move - you are too encumbered</summary>
+            ///<summary>You cannot move - you are too encumbered.</summary>
             CANT_MOVE_TOO_ENCUMBERED = 555,
-            ///<summary>You cannot move in this state</summary>
+            ///<summary>You cannot move in this state.</summary>
             CANT_MOVE_IN_THIS_STATE = 556,
-            ///<summary>Your pet has been summoned and may not be destroyed</summary>
+            ///<summary>Your pet has been summoned and may not be destroyed.</summary>
             PET_SUMMONED_MAY_NOT_DESTROYED = 557,
             ///<summary>Your pet has been summoned and may not be let go.</summary>
             PET_SUMMONED_MAY_NOT_LET_GO = 558,
@@ -1202,15 +1202,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
             FEAR_FAILED = 567,
             ///<summary>Cubic Summoning failed.</summary>
             CUBIC_SUMMONING_FAILED = 568,
-            ///<summary>Do you accept $s1's party invitation? (Item Distribution: Finders Keepers.)</summary>
+            ///<summary>Do you accept $s1's party invitation? (Item Distribution: Finders Keepers.).</summary>
             S1_INVITED_YOU_TO_PARTY_FINDERS_KEEPERS = 572,
-            ///<summary>Do you accept $s1's party invitation? (Item Distribution: Random.)</summary>
+            ///<summary>Do you accept $s1's party invitation? (Item Distribution: Random.).</summary>
             S1_INVITED_YOU_TO_PARTY_RANDOM = 573,
             ///<summary>Pets and Servitors are not available at this time.</summary>
             PETS_ARE_NOT_AVAILABLE_AT_THIS_TIME = 574,
-            ///<summary>How much adena do you wish to transfer to your pet?</summary>
+            ///<summary>How much adena do you wish to transfer to your pet?.</summary>
             HOW_MUCH_ADENA_TRANSFER_TO_PET = 575,
-            ///<summary>How much do you wish to transfer?</summary>
+            ///<summary>How much do you wish to transfer?.</summary>
             HOW_MUCH_TRANSFER2 = 576,
             ///<summary>You cannot summon during a trade or while using the private shops.</summary>
             CANNOT_SUMMON_DURING_TRADE_SHOP = 577,
@@ -1240,7 +1240,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANNOT_GIVE_ITEMS_TO_DEAD_PET = 590,
             ///<summary>An invalid character is included in the pet's name.</summary>
             NAMING_PETNAME_CONTAINS_INVALID_CHARS = 591,
-            ///<summary>Do you wish to dismiss your pet? Dismissing your pet will cause the pet necklace to disappear</summary>
+            ///<summary>Do you wish to dismiss your pet? Dismissing your pet will cause the pet necklace to disappear.</summary>
             WISH_TO_DISMISS_PET = 592,
             ///<summary>Starving, grumpy and fed up, your pet has left.</summary>
             STARVING_GRUMPY_AND_FED_UP_YOUR_PET_HAS_LEFT = 593,
@@ -1264,7 +1264,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             PETITION_SYSTEM_CURRENT_UNAVAILABLE = 602,
             ///<summary>That item cannot be discarded or exchanged.</summary>
             CANNOT_DISCARD_EXCHANGE_ITEM = 603,
-            ///<summary>You may not call forth a pet or summoned creature from this location</summary>
+            ///<summary>You may not call forth a pet or summoned creature from this location.</summary>
             NOT_CALL_PET_FROM_THIS_LOCATION = 604,
             ///<summary>You may register up to 64 people on your list.</summary>
             MAY_REGISTER_UP_TO_64_PEOPLE = 605,
@@ -1282,9 +1282,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CONFUSING_SUCCEEDED = 611,
             ///<summary>The Spoil condition has been activated.</summary>
             SPOIL_SUCCESS = 612,
-            ///<summary>======Ignore List======</summary>
+            ///<summary>======Ignore List======.</summary>
             BLOCK_LIST_HEADER = 613,
-            ///<summary>$s1 : $s2</summary>
+            ///<summary>$s1 : $s2.</summary>
             S1_S2 = 614,
             ///<summary>You have failed to register the user to your Ignore List.</summary>
             FAILED_TO_REGISTER_TO_IGNORE_LIST = 615,
@@ -1320,7 +1320,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WAR_WITH_CLAN_BEGUN = 630,
             ///<summary>War with the clan is over.</summary>
             WAR_WITH_CLAN_ENDED = 631,
-            ///<summary>You have won the war over the clan!</summary>
+            ///<summary>You have won the war over the clan!.</summary>
             WON_WAR_OVER_CLAN = 632,
             ///<summary>You have surrendered to the clan.</summary>
             SURRENDERED_TO_CLAN = 633,
@@ -1336,9 +1336,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ALREADY_REQUESTED_SIEGE_BATTLE = 638,
             ///<summary>Your application has been denied because you have already submitted a request for another Siege Battle.</summary>
             APPLICATION_DENIED_BECAUSE_ALREADY_SUBMITTED_A_REQUEST_FOR_ANOTHER_SIEGE_BATTLE = 639,
-            ///<summary>You are already registered to the attacker side and must not cancel your registration before submitting your request</summary>
+            ///<summary>You are already registered to the attacker side and must not cancel your registration before submitting your request.</summary>
             ALREADY_ATTACKER_NOT_CANCEL = 642,
-            ///<summary>You are already registered to the defender side and must not cancel your registration before submitting your request</summary>
+            ///<summary>You are already registered to the defender side and must not cancel your registration before submitting your request.</summary>
             ALREADY_DEFENDER_NOT_CANCEL = 643,
             ///<summary>You are not yet registered for the castle siege.</summary>
             NOT_REGISTERED_FOR_SIEGE = 644,
@@ -1350,7 +1350,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             DEFENDER_SIDE_FULL = 649,
             ///<summary>You may not summon from your current location.</summary>
             YOU_MAY_NOT_SUMMON_FROM_YOUR_CURRENT_LOCATION = 650,
-            ///<summary>Place $s1 in the current location and direction. Do you wish to continue?</summary>
+            ///<summary>Place $s1 in the current location and direction. Do you wish to continue?.</summary>
             PLACE_S1_IN_CURRENT_LOCATION_AND_DIRECTION = 651,
             ///<summary>The target of the summoned monster is wrong.</summary>
             TARGET_OF_SUMMON_WRONG = 652,
@@ -1376,19 +1376,19 @@ namespace L2dotNET.GameService.Network.Serverpackets
             THE_PLAYER_IS_REJECTING_FRIEND_INVITATIONS = 662,
             ///<summary>Please choose a person to receive.</summary>
             CHOOSE_PERSON_TO_RECEIVE = 664,
-            ///<summary>of alliance is applying for alliance war. Do you want to accept the challenge?</summary>
+            ///<summary>of alliance is applying for alliance war. Do you want to accept the challenge?.</summary>
             APPLYING_ALLIANCE_WAR = 665,
-            ///<summary>A request for ceasefire has been received from alliance. Do you agree?</summary>
+            ///<summary>A request for ceasefire has been received from alliance. Do you agree?.</summary>
             REQUEST_FOR_CEASEFIRE = 666,
-            ///<summary>You are registering on the attacking side of the siege. Do you want to continue?</summary>
+            ///<summary>You are registering on the attacking side of the siege. Do you want to continue?.</summary>
             REGISTERING_ON_ATTACKING_SIDE = 667,
-            ///<summary>You are registering on the defending side of the siege. Do you want to continue?</summary>
+            ///<summary>You are registering on the defending side of the siege. Do you want to continue?.</summary>
             REGISTERING_ON_DEFENDING_SIDE = 668,
-            ///<summary>You are canceling your application to participate in the siege battle. Do you want to continue?</summary>
+            ///<summary>You are canceling your application to participate in the siege battle. Do you want to continue?.</summary>
             CANCELING_REGISTRATION = 669,
-            ///<summary>You are refusing the registration of clan on the defending side. Do you want to continue?</summary>
+            ///<summary>You are refusing the registration of clan on the defending side. Do you want to continue?.</summary>
             REFUSING_REGISTRATION = 670,
-            ///<summary>You are agreeing to the registration of clan on the defending side. Do you want to continue?</summary>
+            ///<summary>You are agreeing to the registration of clan on the defending side. Do you want to continue?.</summary>
             AGREEING_REGISTRATION = 671,
             ///<summary>$s1 adena disappeared.</summary>
             S1_DISAPPEARED_ADENA = 672,
@@ -1414,7 +1414,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             SWEEP_NOT_ALLOWED = 683,
             ///<summary>You cannot position mercenaries during a siege.</summary>
             CANNOT_POSITION_MERCS_DURING_SIEGE = 684,
-            ///<summary>You cannot apply for clan war with a clan that belongs to the same alliance</summary>
+            ///<summary>You cannot apply for clan war with a clan that belongs to the same alliance.</summary>
             CANNOT_DECLARE_WAR_ON_ALLY = 685,
             ///<summary>You have received $s1 damage from the fire of magic.</summary>
             S1_DAMAGE_FROM_FIRE_MAGIC = 686,
@@ -1436,7 +1436,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NO_PACKAGES_ARRIVED = 694,
             ///<summary>You cannot set the name of the pet.</summary>
             NAMING_YOU_CANNOT_SET_NAME_OF_THE_PET = 695,
-            ///<summary>The item enchant value is strange</summary>
+            ///<summary>The item enchant value is strange.</summary>
             ITEM_ENCHANT_VALUE_STRANGE = 697,
             ///<summary>The price is different than the same item on the sales list.</summary>
             PRICE_DIFFERENT_FROM_SALES_LIST = 698,
@@ -1448,9 +1448,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NOT_ENOUGH_REQUIRED_ITEMS = 701,
             ///<summary>There are no GMs currently visible in the public list as they may be performing other functions at the moment.</summary>
             NO_GM_PROVIDING_SERVICE_NOW = 702,
-            ///<summary>======GM List======</summary>
+            ///<summary>======GM List======.</summary>
             GM_LIST = 703,
-            ///<summary>GM : $s1</summary>
+            ///<summary>GM : $s1.</summary>
             GM_S1 = 704,
             ///<summary>You cannot exclude yourself.</summary>
             CANNOT_EXCLUDE_SELF = 705,
@@ -1468,7 +1468,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             SIEGE_OF_S1_HAS_STARTED = 711,
             ///<summary>The siege of $s1 has finished.</summary>
             SIEGE_OF_S1_HAS_ENDED = 712,
-            ///<summary>$s1/$s2/$s3 :</summary>
+            ///<summary>$s1/$s2/$s3 :.</summary>
             S1_S2_S3_D = 713,
             ///<summary>A trap device has been tripped.</summary>
             A_TRAP_DEVICE_HAS_BEEN_TRIPPED = 714,
@@ -1476,7 +1476,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             A_TRAP_DEVICE_HAS_BEEN_STOPPED = 715,
             ///<summary>If a base camp does not exist, resurrection is not possible.</summary>
             NO_RESURRECTION_WITHOUT_BASE_CAMP = 716,
-            ///<summary>The guardian tower has been destroyed and resurrection is not possible</summary>
+            ///<summary>The guardian tower has been destroyed and resurrection is not possible.</summary>
             TOWER_DESTROYED_NO_RESURRECTION = 717,
             ///<summary>The castle gates cannot be opened and closed during a siege.</summary>
             GATES_NOT_OPENED_CLOSED_DURING_SIEGE = 718,
@@ -1492,7 +1492,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             OPPOSING_CLAN_IS_PARTICIPATING_IN_SIEGE = 723,
             ///<summary>You cannot leave while participating in a siege battle.</summary>
             CANNOT_LEAVE_WHILE_SIEGE = 724,
-            ///<summary>You cannot banish a clan from an alliance while the clan is participating in a siege</summary>
+            ///<summary>You cannot banish a clan from an alliance while the clan is participating in a siege.</summary>
             CANNOT_DISMISS_WHILE_SIEGE = 725,
             ///<summary>Frozen condition has started. Please wait a moment.</summary>
             FROZEN_CONDITION_STARTED = 726,
@@ -1606,7 +1606,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CLANHALL_SIEGE_TRYOUTS_BEGUN = 789,
             ///<summary>The finals are finished.</summary>
             CLANHALL_SIEGE_FINALS_BEGUN = 790,
-            ///<summary>The final match is about to begin. Line up!</summary>
+            ///<summary>The final match is about to begin. Line up!.</summary>
             FINAL_MATCH_BEGIN = 791,
             ///<summary>The siege of the clan hall is finished.</summary>
             CLANHALL_SIEGE_ENDED = 792,
@@ -1620,7 +1620,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             REMAINING_OBSERVATION_TIME = 796,
             ///<summary>You may create up to 24 macros.</summary>
             YOU_MAY_CREATE_UP_TO_24_MACROS = 797,
-            ///<summary>Item registration is irreversible. Do you wish to continue?</summary>
+            ///<summary>Item registration is irreversible. Do you wish to continue?.</summary>
             ITEM_REGISTRATION_IRREVERSIBLE = 798,
             ///<summary>The observation time has expired.</summary>
             OBSERVATION_TIME_EXPIRED = 799,
@@ -1646,7 +1646,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             STUCK_TRANSPORT_IN_FIVE_MINUTES = 809,
             ///<summary>Invalid macro. Refer to the Help file for instructions.</summary>
             INVALID_MACRO = 810,
-            ///<summary>You will be moved to (). Do you wish to continue?</summary>
+            ///<summary>You will be moved to (). Do you wish to continue?.</summary>
             WILL_BE_MOVED = 811,
             ///<summary>The secret trap has inflicted $s1 damage on you.</summary>
             TRAP_DID_S1_DAMAGE = 812,
@@ -1654,33 +1654,33 @@ namespace L2dotNET.GameService.Network.Serverpackets
             POISONED_BY_TRAP = 813,
             ///<summary>Your speed has been decreased by a Secret Trap.</summary>
             SLOWED_BY_TRAP = 814,
-            ///<summary>The tryouts are about to begin. Line up!</summary>
+            ///<summary>The tryouts are about to begin. Line up!.</summary>
             TRYOUTS_ABOUT_TO_BEGIN = 815,
-            ///<summary>Tickets are now available for Monster Race $s1!</summary>
+            ///<summary>Tickets are now available for Monster Race $s1!.</summary>
             MONSRACE_TICKETS_AVAILABLE_FOR_S1_RACE = 816,
-            ///<summary>Now selling tickets for Monster Race $s1!</summary>
+            ///<summary>Now selling tickets for Monster Race $s1!.</summary>
             MONSRACE_TICKETS_NOW_AVAILABLE_FOR_S1_RACE = 817,
             ///<summary>Ticket sales for the Monster Race will end in $s1 minute(s).</summary>
             MONSRACE_TICKETS_STOP_IN_S1_MINUTES = 818,
             ///<summary>Tickets sales are closed for Monster Race $s1. Odds are posted.</summary>
             MONSRACE_S1_TICKET_SALES_CLOSED = 819,
-            ///<summary>Monster Race $s2 will begin in $s1 minute(s)!</summary>
+            ///<summary>Monster Race $s2 will begin in $s1 minute(s)!.</summary>
             MONSRACE_S2_BEGINS_IN_S1_MINUTES = 820,
-            ///<summary>Monster Race $s1 will begin in 30 seconds!</summary>
+            ///<summary>Monster Race $s1 will begin in 30 seconds!.</summary>
             MONSRACE_S1_BEGINS_IN_30_SECONDS = 821,
-            ///<summary>Monster Race $s1 is about to begin! Countdown in five seconds!</summary>
+            ///<summary>Monster Race $s1 is about to begin! Countdown in five seconds!.</summary>
             MONSRACE_S1_COUNTDOWN_IN_FIVE_SECONDS = 822,
-            ///<summary>The race will begin in $s1 second(s)!</summary>
+            ///<summary>The race will begin in $s1 second(s)!.</summary>
             MONSRACE_BEGINS_IN_S1_SECONDS = 823,
-            ///<summary>They're off!</summary>
+            ///<summary>They're off!.</summary>
             MONSRACE_RACE_START = 824,
-            ///<summary>Monster Race $s1 is finished!</summary>
+            ///<summary>Monster Race $s1 is finished!.</summary>
             MONSRACE_S1_RACE_END = 825,
             ///<summary>First prize goes to the player in lane $s1. Second prize goes to the player in lane $s2.</summary>
             MONSRACE_FIRST_PLACE_S1_SECOND_S2 = 826,
             ///<summary>You may not impose a block on a GM.</summary>
             YOU_MAY_NOT_IMPOSE_A_BLOCK_ON_GM = 827,
-            ///<summary>Are you sure you wish to delete the $s1 macro?</summary>
+            ///<summary>Are you sure you wish to delete the $s1 macro?.</summary>
             WISH_TO_DELETE_S1_MACRO = 828,
             ///<summary>You cannot recommend yourself.</summary>
             YOU_CANNOT_RECOMMEND_YOURSELF = 829,
@@ -1824,7 +1824,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ONLY_LEVEL_SUP_10_CAN_RECOMMEND = 898,
             ///<summary>The symbol cannot be drawn.</summary>
             CANT_DRAW_SYMBOL = 899,
-            ///<summary>No slot exists to draw the symbol</summary>
+            ///<summary>No slot exists to draw the symbol.</summary>
             SYMBOLS_FULL = 900,
             ///<summary>The symbol information cannot be found.</summary>
             SYMBOL_NOT_FOUND = 901,
@@ -1844,39 +1844,39 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ORCS_SCORE_S1 = 908,
             ///<summary>The current score for the Dwarves is $s1.</summary>
             DWARVEN_SCORE_S1 = 909,
-            ///<summary>Current location : $s1, $s2, $s3 (Near Talking Island Village)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near Talking Island Village).</summary>
             LOC_TI_S1_S2_S3 = 910,
-            ///<summary>Current location : $s1, $s2, $s3 (Near Gludin Village)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near Gludin Village).</summary>
             LOC_GLUDIN_S1_S2_S3 = 911,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Town of Gludio)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Town of Gludio).</summary>
             LOC_GLUDIO_S1_S2_S3 = 912,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Neutral Zone)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Neutral Zone).</summary>
             LOC_NEUTRAL_ZONE_S1_S2_S3 = 913,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Elven Village)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Elven Village).</summary>
             LOC_ELVEN_S1_S2_S3 = 914,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Dark Elf Village)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Dark Elf Village).</summary>
             LOC_DARK_ELVEN_S1_S2_S3 = 915,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Town of Dion)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Town of Dion).</summary>
             LOC_DION_S1_S2_S3 = 916,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Floran Village)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Floran Village).</summary>
             LOC_FLORAN_S1_S2_S3 = 917,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Town of Giran)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Town of Giran).</summary>
             LOC_GIRAN_S1_S2_S3 = 918,
-            ///<summary>Current location : $s1, $s2, $s3 (Near Giran Harbor)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near Giran Harbor).</summary>
             LOC_GIRAN_HARBOR_S1_S2_S3 = 919,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Orc Village)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Orc Village).</summary>
             LOC_ORC_S1_S2_S3 = 920,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Dwarven Village)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Dwarven Village).</summary>
             LOC_DWARVEN_S1_S2_S3 = 921,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Town of Oren)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Town of Oren).</summary>
             LOC_OREN_S1_S2_S3 = 922,
-            ///<summary>Current location : $s1, $s2, $s3 (Near Hunters Village)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near Hunters Village).</summary>
             LOC_HUNTER_S1_S2_S3 = 923,
-            ///<summary>Current location : $s1, $s2, $s3 (Near Aden Castle Town)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near Aden Castle Town).</summary>
             LOC_ADEN_S1_S2_S3 = 924,
-            ///<summary>Current location : $s1, $s2, $s3 (Near the Coliseum)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near the Coliseum).</summary>
             LOC_COLISEUM_S1_S2_S3 = 925,
-            ///<summary>Current location : $s1, $s2, $s3 (Near Heine)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (Near Heine).</summary>
             LOC_HEINE_S1_S2_S3 = 926,
             ///<summary>The current time is $s1:$s2.</summary>
             TIME_S1_S2_IN_THE_DAY = 927,
@@ -1910,7 +1910,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             RESTART_AT_TI = 941,
             ///<summary>Restart at Gludin Village.</summary>
             RESTART_AT_GLUDIN = 942,
-            ///<summary>Restart at the Town of Gludin. || guess should be Gludio ;)</summary>
+            ///<summary>Restart at the Town of Gludin. || guess should be Gludio ;).</summary>
             RESTART_AT_GLUDIO = 943,
             ///<summary>Restart at the Neutral Zone.</summary>
             RESTART_AT_NEUTRAL_ZONE = 944,
@@ -1958,11 +1958,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CHATBAN_REMOVED = 965,
             ///<summary>Chatting is currently prohibited. If you try to chat before the prohibition is removed, the prohibition time will become even longer.</summary>
             CHATTING_IS_CURRENTLY_PROHIBITED = 966,
-            ///<summary>Do you accept $s1's party invitation? (Item Distribution: Random including spoil.)</summary>
+            ///<summary>Do you accept $s1's party invitation? (Item Distribution: Random including spoil.).</summary>
             S1_PARTY_INVITE_RANDOM_INCLUDING_SPOIL = 967,
-            ///<summary>Do you accept $s1's party invitation? (Item Distribution: By Turn.)</summary>
+            ///<summary>Do you accept $s1's party invitation? (Item Distribution: By Turn.).</summary>
             S1_PARTY_INVITE_BY_TURN = 968,
-            ///<summary>Do you accept $s1's party invitation? (Item Distribution: By Turn including spoil.)</summary>
+            ///<summary>Do you accept $s1's party invitation? (Item Distribution: By Turn including spoil.).</summary>
             S1_PARTY_INVITE_BY_TURN_INCLUDING_SPOIL = 969,
             ///<summary>$s2's MP has been drained by $s1.</summary>
             S2_MP_HAS_BEEN_DRAINED_BY_S1 = 970,
@@ -2058,7 +2058,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             PET_HIT_FOR_S1_DAMAGE = 1015,
             ///<summary>Pet received $s2 damage by $s1.</summary>
             PET_RECEIVED_S2_DAMAGE_BY_S1 = 1016,
-            ///<summary>Pet's critical hit!</summary>
+            ///<summary>Pet's critical hit!.</summary>
             CRITICAL_HIT_BY_PET = 1017,
             ///<summary>Your pet uses $s1.</summary>
             PET_USES_S1 = 1018,
@@ -2076,25 +2076,25 @@ namespace L2dotNET.GameService.Network.Serverpackets
             PET_PUT_ON_S1 = 1024,
             ///<summary>Your pet took off $s1.</summary>
             PET_TOOK_OFF_S1 = 1025,
-            ///<summary>The summoned monster gave damage of $s1</summary>
+            ///<summary>The summoned monster gave damage of $s1.</summary>
             SUMMON_GAVE_DAMAGE_S1 = 1026,
             ///<summary>Servitor received $s2 damage caused by $s1.</summary>
             SUMMON_RECEIVED_DAMAGE_S2_BY_S1 = 1027,
-            ///<summary>Summoned monster's critical hit!</summary>
+            ///<summary>Summoned monster's critical hit!.</summary>
             CRITICAL_HIT_BY_SUMMONED_MOB = 1028,
             ///<summary>Summoned monster uses $s1.</summary>
             SUMMONED_MOB_USES_S1 = 1029,
-            ///<summary>Party Information</summary>
+            ///<summary>Party Information.</summary>
             PARTY_INFORMATION = 1030,
-            ///<summary>Looting method: Finders keepers</summary>
+            ///<summary>Looting method: Finders keepers.</summary>
             LOOTING_FINDERS_KEEPERS = 1031,
-            ///<summary>Looting method: Random</summary>
+            ///<summary>Looting method: Random.</summary>
             LOOTING_RANDOM = 1032,
-            ///<summary>Looting method: Random including spoil</summary>
+            ///<summary>Looting method: Random including spoil.</summary>
             LOOTING_RANDOM_INCLUDE_SPOIL = 1033,
-            ///<summary>Looting method: By turn</summary>
+            ///<summary>Looting method: By turn.</summary>
             LOOTING_BY_TURN = 1034,
-            ///<summary>Looting method: By turn including spoil</summary>
+            ///<summary>Looting method: By turn including spoil.</summary>
             LOOTING_BY_TURN_INCLUDE_SPOIL = 1035,
             ///<summary>You have exceeded the quantity that can be inputted.</summary>
             YOU_HAVE_EXCEEDED_QUANTITY_THAT_CAN_BE_INPUTTED = 1036,
@@ -2102,9 +2102,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_MANUFACTURED_S2 = 1037,
             ///<summary>$s1 manufactured $s3 $s2(s).</summary>
             S1_MANUFACTURED_S3_S2_S = 1038,
-            ///<summary>Items left at the clan hall warehouse can only be retrieved by the clan leader. Do you want to continue?</summary>
+            ///<summary>Items left at the clan hall warehouse can only be retrieved by the clan leader. Do you want to continue?.</summary>
             ONLY_CLAN_LEADER_CAN_RETRIEVE_ITEMS_FROM_CLAN_WAREHOUSE = 1039,
-            ///<summary>Items sent by freight can be picked up from any Warehouse location. Do you want to continue?</summary>
+            ///<summary>Items sent by freight can be picked up from any Warehouse location. Do you want to continue?.</summary>
             ITEMS_SENT_BY_FREIGHT_PICKED_UP_FROM_ANYWHERE = 1040,
             ///<summary>The next seed purchase price is $s1 adena.</summary>
             THE_NEXT_SEED_PURCHASE_PRICE_IS_S1_ADENA = 1041,
@@ -2156,7 +2156,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANNOT_TRADE_DISCARD_DROP_ITEM_WHILE_IN_SHOPMODE = 1065,
             ///<summary>$s1 HP has been restored.</summary>
             S1_HP_RESTORED = 1066,
-            ///<summary>$s2 HP has been restored by $s1</summary>
+            ///<summary>$s2 HP has been restored by $s1.</summary>
             S2_HP_RESTORED_BY_S1 = 1067,
             ///<summary>$s1 MP has been restored.</summary>
             S1_MP_RESTORED = 1068,
@@ -2166,9 +2166,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NO_READ_PERMISSION = 1070,
             ///<summary>You do not have 'write' permission.</summary>
             NO_WRITE_PERMISSION = 1071,
-            ///<summary>You have obtained a ticket for the Monster Race #$s1 - Single</summary>
+            ///<summary>You have obtained a ticket for the Monster Race #$s1 - Single.</summary>
             OBTAINED_TICKET_FOR_MONS_RACE_S1_SINGLE = 1072,
-            ///<summary>You have obtained a ticket for the Monster Race #$s1 - Single</summary>
+            ///<summary>You have obtained a ticket for the Monster Race #$s1 - Single.</summary>
             OBTAINED_TICKET_FOR_MONS_RACE_S1_SINGLE_ = 1073,
             ///<summary>You do not meet the age requirement to purchase a Monster Race Ticket.</summary>
             NOT_MEET_AGE_REQUIREMENT_FOR_MONS_RACE = 1074,
@@ -2176,15 +2176,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
             BID_AMOUNT_HIGHER_THAN_PREVIOUS_BID = 1075,
             ///<summary>The game cannot be terminated at this time.</summary>
             GAME_CANNOT_TERMINATE_NOW = 1076,
-            ///<summary>A GameGuard Execution error has occurred. Please send the *.erl file(s) located in the GameGuard folder to game@inca.co.kr</summary>
+            ///<summary>A GameGuard Execution error has occurred. Please send the *.erl file(s) located in the GameGuard folder to game@inca.co.kr.</summary>
             GG_EXECUTION_ERROR = 1077,
             ///<summary>When a user's keyboard input exceeds a certain cumulative score a chat ban will be applied. This is done to discourage spamming. Please avoid posting the same message multiple times during a short period.</summary>
             DONT_SPAM = 1078,
             ///<summary>The target is currently banend from chatting.</summary>
             TARGET_IS_CHAT_BANNED = 1079,
-            ///<summary>Being permanent, are you sure you wish to use the facelift potion - Type A?</summary>
+            ///<summary>Being permanent, are you sure you wish to use the facelift potion - Type A?.</summary>
             FACELIFT_POTION_TYPE_A = 1080,
-            ///<summary>Being permanent, are you sure you wish to use the hair dye potion - Type A?</summary>
+            ///<summary>Being permanent, are you sure you wish to use the hair dye potion - Type A?.</summary>
             HAIRDYE_POTION_TYPE_A = 1081,
             ///<summary>Do you wish to use the hair style change potion - Type A? It is permanent.</summary>
             HAIRSTYLE_POTION_TYPE_A = 1082,
@@ -2202,15 +2202,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
             HAIR_STYLE_CHANGED = 1088,
             ///<summary>$s1 has obtained a first anniversary commemorative item.</summary>
             S1_OBTAINED_ANNIVERSARY_ITEM = 1089,
-            ///<summary>Being permanent, are you sure you wish to use the facelift potion - Type B?</summary>
+            ///<summary>Being permanent, are you sure you wish to use the facelift potion - Type B?.</summary>
             FACELIFT_POTION_TYPE_B = 1090,
-            ///<summary>Being permanent, are you sure you wish to use the facelift potion - Type C?</summary>
+            ///<summary>Being permanent, are you sure you wish to use the facelift potion - Type C?.</summary>
             FACELIFT_POTION_TYPE_C = 1091,
-            ///<summary>Being permanent, are you sure you wish to use the hair dye potion - Type B?</summary>
+            ///<summary>Being permanent, are you sure you wish to use the hair dye potion - Type B?.</summary>
             HAIRDYE_POTION_TYPE_B = 1092,
-            ///<summary>Being permanent, are you sure you wish to use the hair dye potion - Type C?</summary>
+            ///<summary>Being permanent, are you sure you wish to use the hair dye potion - Type C?.</summary>
             HAIRDYE_POTION_TYPE_C = 1093,
-            ///<summary>Being permanent, are you sure you wish to use the hair dye potion - Type D?</summary>
+            ///<summary>Being permanent, are you sure you wish to use the hair dye potion - Type D?.</summary>
             HAIRDYE_POTION_TYPE_D = 1094,
             ///<summary>Do you wish to use the hair style change potion - Type B? It is permanent.</summary>
             HAIRSTYLE_POTION_TYPE_B = 1095,
@@ -2302,9 +2302,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_HARVESTED_S2S = 1138,
             ///<summary>The weight and volume limit of your inventory must not be exceeded.</summary>
             INVENTORY_LIMIT_MUST_NOT_BE_EXCEEDED = 1139,
-            ///<summary>Would you like to open the gate?</summary>
+            ///<summary>Would you like to open the gate?.</summary>
             WOULD_YOU_LIKE_TO_OPEN_THE_GATE = 1140,
-            ///<summary>Would you like to close the gate?</summary>
+            ///<summary>Would you like to close the gate?.</summary>
             WOULD_YOU_LIKE_TO_CLOSE_THE_GATE = 1141,
             ///<summary>Since $s1 already exists nearby, you cannot summon it again.</summary>
             CANNOT_SUMMON_S1_AGAIN = 1142,
@@ -2378,15 +2378,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
             QUEST_EVENT_PERIOD = 1176,
             ///<summary>This is the seal validation period.</summary>
             VALIDATION_PERIOD = 1177,
-            ///<summary>Seal of Avarice description</summary>
+            ///<summary>Seal of Avarice description.</summary>
             AVARICE_DESCRIPTION = 1178,
-            ///<summary>Seal of Gnosis description</summary>
+            ///<summary>Seal of Gnosis description.</summary>
             GNOSIS_DESCRIPTION = 1179,
-            ///<summary>Seal of Strife description</summary>
+            ///<summary>Seal of Strife description.</summary>
             STRIFE_DESCRIPTION = 1180,
-            ///<summary>Do you really wish to change the title?</summary>
+            ///<summary>Do you really wish to change the title?.</summary>
             CHANGE_TITLE_CONFIRM = 1181,
-            ///<summary>Are you sure you wish to delete the clan crest?</summary>
+            ///<summary>Are you sure you wish to delete the clan crest?.</summary>
             CREST_DELETE_CONFIRM = 1182,
             ///<summary>This is the initial period.</summary>
             INITIAL_PERIOD = 1183,
@@ -2394,9 +2394,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             RESULTS_PERIOD = 1184,
             ///<summary>days left until deletion.</summary>
             DAYS_LEFT_UNTIL_DELETION = 1185,
-            ///<summary>To create a new account, please visit the PlayNC website (http://www.plaync.com/us/support/)</summary>
+            ///<summary>To create a new account, please visit the PlayNC website (http://www.plaync.com/us/support/).</summary>
             TO_CREATE_ACCOUNT_VISIT_WEBSITE = 1186,
-            ///<summary>If you forgotten your account information or password, please visit the Support Center on the PlayNC website(http://www.plaync.com/us/support/)</summary>
+            ///<summary>If you forgotten your account information or password, please visit the Support Center on the PlayNC website(http://www.plaync.com/us/support/).</summary>
             ACCOUNT_INFORMATION_FORGOTTON_VISIT_WEBSITE = 1187,
             ///<summary>Your selected target can no longer receive a recommendation.</summary>
             YOUR_TARGET_NO_LONGER_RECEIVE_A_RECOMMENDATION = 1188,
@@ -2420,17 +2420,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
             SUMMONING_SERVITOR_COSTS_S2_S1 = 1197,
             ///<summary>The item has been successfully crystallized.</summary>
             CRYSTALLIZATION_SUCCESSFUL = 1198,
-            ///<summary>=======Clan War Target=======</summary>
+            ///<summary>=======Clan War Target=======.</summary>
             CLAN_WAR_HEADER = 1199,
-            ///<summary>Message:($s1 ($s2 Alliance)</summary>
+            ///<summary>Message:($s1 ($s2 Alliance).</summary>
             S1_S2_ALLIANCE = 1200,
             ///<summary>Please select the quest you wish to abort.</summary>
             SELECT_QUEST_TO_ABOR = 1201,
-            ///<summary>Message:($s1 (No alliance exists)</summary>
+            ///<summary>Message:($s1 (No alliance exists).</summary>
             S1_NO_ALLI_EXISTS = 1202,
             ///<summary>There is no clan war in progress.</summary>
             NO_WAR_IN_PROGRESS = 1203,
-            ///<summary>The screenshot has been saved. ($s1 $s2x$s3)</summary>
+            ///<summary>The screenshot has been saved. ($s1 $s2x$s3).</summary>
             SCREENSHOT = 1204,
             ///<summary>Your mailbox is full. There is a 100 message limit.</summary>
             MAILBOX_FULL = 1205,
@@ -2462,17 +2462,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
             SEAL_VALIDATION_PERIOD_BEGUN = 1218,
             ///<summary>Seven Signs: The Seal Validation period has ended.</summary>
             SEAL_VALIDATION_PERIOD_ENDED = 1219,
-            ///<summary>Are you sure you wish to summon it?</summary>
+            ///<summary>Are you sure you wish to summon it?.</summary>
             SUMMON_CONFIRM = 1220,
-            ///<summary>Are you sure you wish to return it?</summary>
+            ///<summary>Are you sure you wish to return it?.</summary>
             RETURN_CONFIRM = 1221,
-            ///<summary>Current location : $s1, $s2, $s3 (GM Consultation Service)</summary>
+            ///<summary>Current location : $s1, $s2, $s3 (GM Consultation Service).</summary>
             LOC_GM_CONSULATION_SERVICE_S1_S2_S3 = 1222,
             ///<summary>We depart for Talking Island in five minutes.</summary>
             DEPART_FOR_TALKING_5_MINUTES = 1223,
             ///<summary>We depart for Talking Island in one minute.</summary>
             DEPART_FOR_TALKING_1_MINUTE = 1224,
-            ///<summary>All aboard for Talking Island</summary>
+            ///<summary>All aboard for Talking Island.</summary>
             DEPART_FOR_TALKING = 1225,
             ///<summary>We are now leaving for Talking Island.</summary>
             LEAVING_FOR_TALKING = 1226,
@@ -2492,7 +2492,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NEW_MAIL = 1233,
             ///<summary>The mail has been stored in your temporary mailbox.</summary>
             MAIL_STORED_IN_MAILBOX = 1234,
-            ///<summary>Do you wish to delete all your friends?</summary>
+            ///<summary>Do you wish to delete all your friends?.</summary>
             ALL_FRIENDS_DELETE_CONFIRM = 1235,
             ///<summary>Please enter security card number.</summary>
             ENTER_SECURITY_CARD_NUMBER = 1236,
@@ -2510,7 +2510,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NOT_VERIFIED_AGE_NO_LOGIN = 1242,
             ///<summary>The security card number is invalid.</summary>
             SECURITY_CARD_NUMBER_INVALID = 1243,
-            ///<summary>Users who have not verified their age may not log in between the hours if 10:00 p.m. and 6:00 a.m. Logging off now</summary>
+            ///<summary>Users who have not verified their age may not log in between the hours if 10:00 p.m. and 6:00 a.m. Logging off now.</summary>
             NOT_VERIFIED_AGE_LOG_OFF = 1244,
             ///<summary>You will be loged out in $s1 minutes.</summary>
             LOGOUT_IN_S1_MINUTES = 1245,
@@ -2538,9 +2538,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             PLEASE_WRITE_NAME_AFTER_COMMAND = 1256,
             ///<summary>The special skill of a servitor or pet cannot be registerd as a macro.</summary>
             PET_SKILL_NOT_AS_MACRO = 1257,
-            ///<summary>$s1 has been crystallized</summary>
+            ///<summary>$s1 has been crystallized.</summary>
             S1_CRYSTALLIZED = 1258,
-            ///<summary>=======Alliance Target=======</summary>
+            ///<summary>=======Alliance Target=======.</summary>
             ALLIANCE_TARGET_HEADER = 1259,
             ///<summary>Seven Signs: Preparations have begun for the next quest event.</summary>
             PREPARATIONS_PERIOD_BEGUN = 1260,
@@ -2558,7 +2558,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             EXCHANGE_HAS_ENDED = 1266,
             ///<summary>Your contribution score is increased by $s1.</summary>
             CONTRIB_SCORE_INCREASED_S1 = 1267,
-            ///<summary>Do you wish to add class as your sub class?</summary>
+            ///<summary>Do you wish to add class as your sub class?.</summary>
             ADD_SUBCLASS_CONFIRM = 1268,
             ///<summary>The new sub class has been added.</summary>
             ADD_NEW_SUBCLASS = 1269,
@@ -2582,11 +2582,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NPC_SERVER_NOT_OPERATING = 1278,
             ///<summary>Contribution level has exceeded the limit. You may not continue.</summary>
             CONTRIB_SCORE_EXCEEDED = 1279,
-            ///<summary>Magic Critical Hit!</summary>
+            ///<summary>Magic Critical Hit!.</summary>
             CRITICAL_HIT_MAGIC = 1280,
-            ///<summary>Your excellent shield defense was a success!</summary>
+            ///<summary>Your excellent shield defense was a success!.</summary>
             YOUR_EXCELLENT_SHIELD_DEFENSE_WAS_A_SUCCESS = 1281,
-            ///<summary>Your Karma has been changed to $s1</summary>
+            ///<summary>Your Karma has been changed to $s1.</summary>
             YOUR_KARMA_HAS_BEEN_CHANGED_TO_S1 = 1282,
             ///<summary>The minimum frame option has been activated.</summary>
             MINIMUM_FRAME_ACTIVATED = 1283,
@@ -2594,13 +2594,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
             MINIMUM_FRAME_DEACTIVATED = 1284,
             ///<summary>No inventory exists: You cannot purchase an item.</summary>
             NO_INVENTORY_CANNOT_PURCHASE = 1285,
-            ///<summary>(Until next Monday at 6:00 p.m.)</summary>
+            ///<summary>(Until next Monday at 6:00 p.m.).</summary>
             UNTIL_MONDAY_6PM = 1286,
-            ///<summary>(Until today at 6:00 p.m.)</summary>
+            ///<summary>(Until today at 6:00 p.m.).</summary>
             UNTIL_TODAY_6PM = 1287,
-            ///<summary>If trends continue, $s1 will win and the seal will belong to:</summary>
+            ///<summary>If trends continue, $s1 will win and the seal will belong to:.</summary>
             S1_WILL_WIN_COMPETITION = 1288,
-            ///<summary>(Until next Monday at 6:00 p.m.)</summary>
+            ///<summary>(Until next Monday at 6:00 p.m.).</summary>
             SEAL_OWNED_10_MORE_VOTED = 1289,
             ///<summary>Although the seal was not owned, since 35 percent or more people have voted.</summary>
             SEAL_NOT_OWNED_35_MORE_VOTED = 1290,
@@ -2638,17 +2638,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NO_LONGER_TRYING_ON = 1306,
             ///<summary>Only during the seal validation period may you settle your account.</summary>
             SETTLE_ACCOUNT_ONLY_IN_SEAL_VALIDATION = 1307,
-            ///<summary>Congratulations - You've completed a class transfer!</summary>
+            ///<summary>Congratulations - You've completed a class transfer!.</summary>
             CLASS_TRANSFER = 1308,
             ///<summary>Message:To use this option, you must have the lastest version of MSN Messenger installed on your computer.</summary>
             LATEST_MSN_REQUIRED = 1309,
             ///<summary>For full functionality, the latest version of MSN Messenger must be installed on your computer.</summary>
             LATEST_MSN_RECOMMENDED = 1310,
-            ///<summary>Previous versions of MSN Messenger only provide the basic features for in-game MSN Messenger Chat. Add/Delete Contacts and other MSN Messenger options are not available</summary>
+            ///<summary>Previous versions of MSN Messenger only provide the basic features for in-game MSN Messenger Chat. Add/Delete Contacts and other MSN Messenger options are not available.</summary>
             MSN_ONLY_BASIC = 1311,
             ///<summary>The latest version of MSN Messenger may be obtained from the MSN web site (http://messenger.msn.com).</summary>
             MSN_OBTAINED_FROM = 1312,
-            ///<summary>$s1, to better serve our customers, all chat histories [...]</summary>
+            ///<summary>$s1, to better serve our customers, all chat histories [...].</summary>
             S1_CHAT_HISTORIES_STORED = 1313,
             ///<summary>Please enter the passport ID of the person you wish to add to your contact list.</summary>
             ENTER_PASSPORT_FOR_ADDING = 1314,
@@ -2656,7 +2656,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             DELETING_A_CONTACT = 1315,
             ///<summary>The contact will be deleted and blocked from your contact list.</summary>
             CONTACT_WILL_DELETED = 1316,
-            ///<summary>Would you like to delete this contact?</summary>
+            ///<summary>Would you like to delete this contact?.</summary>
             CONTACT_DELETE_CONFIRM = 1317,
             ///<summary>Please select the contact you want to block or unblock.</summary>
             SELECT_CONTACT_FOR_BLOCK_UNBLOCK = 1318,
@@ -2670,21 +2670,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
             SELECT_GROUP_ENTER_NAME = 1322,
             ///<summary>Select the group you wish to delete and click the OK button.</summary>
             SELECT_GROUP_TO_DELETE = 1323,
-            ///<summary>Signing in...</summary>
+            ///<summary>Signing in.</summary>
             SIGNING_IN = 1324,
             ///<summary>You've logged into another computer and have been logged out of the .NET Messenger Service on this computer.</summary>
             ANOTHER_COMPUTER_LOGOUT = 1325,
-            ///<summary>$s1 :</summary>
+            ///<summary>$s1 :.</summary>
             S1_D = 1326,
-            ///<summary>The following message could not be delivered:</summary>
+            ///<summary>The following message could not be delivered:.</summary>
             MESSAGE_NOT_DELIVERED = 1327,
             ///<summary>Members of the Revolutionaries of Dusk will not be resurrected.</summary>
             DUSK_NOT_RESURRECTED = 1328,
             ///<summary>You are currently blocked from using the Private Store and Private Workshop.</summary>
             BLOCKED_FROM_USING_STORE = 1329,
-            ///<summary>You may not open a Private Store or Private Workshop for another $s1 minute(s)</summary>
+            ///<summary>You may not open a Private Store or Private Workshop for another $s1 minute(s).</summary>
             NO_STORE_FOR_S1_MINUTES = 1330,
-            ///<summary>You are no longer blocked from using the Private Store and Private Workshop</summary>
+            ///<summary>You are no longer blocked from using the Private Store and Private Workshop.</summary>
             NO_LONGER_BLOCKED_USING_STORE = 1331,
             ///<summary>Items may not be used after your character or pet dies.</summary>
             NO_ITEMS_AFTER_DEATH = 1332,
@@ -2696,7 +2696,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CAMERA_STORING_FAILED = 1335,
             ///<summary>The replay file, $s1.$$s2 has been corrupted, please check the fle.</summary>
             REPLAY_S1_S2_CORRUPTED = 1336,
-            ///<summary>This will terminate the replay. Do you wish to continue?</summary>
+            ///<summary>This will terminate the replay. Do you wish to continue?.</summary>
             REPLAY_TERMINATE_CONFIRM = 1337,
             ///<summary>You have exceeded the maximum amount that may be transferred at one time.</summary>
             EXCEEDED_MAXIMUM_AMOUNT = 1338,
@@ -2738,7 +2738,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CONTACT_CURRENTLY_OFFLINE = 1356,
             ///<summary>You have been blocked from chatting with that contact.</summary>
             YOU_ARE_BLOCKED = 1357,
-            ///<summary>You are being logged out...</summary>
+            ///<summary>You are being logged out.</summary>
             YOU_ARE_LOGGING_OUT = 1358,
             ///<summary>$s1 has logged in.</summary>
             S1_LOGGED_IN2 = 1359,
@@ -2754,7 +2754,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             REQUEST_ALLIANCE_WAR_REJECTED = 1364,
             ///<summary>$s2 of $s1 clan has surrendered as an individual.</summary>
             S2_OF_S1_SURRENDERED_AS_INDIVIDUAL = 1365,
-            ///<summary>In order to delete a group, you must not [...]</summary>
+            ///<summary>In order to delete a group, you must not [...].</summary>
             DELTE_GROUP_INSTRUCTION = 1366,
             ///<summary>Only members of the group are allowed to add records.</summary>
             ONLY_GROUP_CAN_ADD_RECORDS = 1367,
@@ -2786,9 +2786,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANT_SUMMON_S1_ON_BATTLEGROUND = 1380,
             ///<summary>The party leader has obtained $s2 of $s1.</summary>
             LEADER_OBTAINED_S2_OF_S1 = 1381,
-            ///<summary>To fulfill the quest, you must bring the chosen weapon. Are you sure you want to choose this weapon?</summary>
+            ///<summary>To fulfill the quest, you must bring the chosen weapon. Are you sure you want to choose this weapon?.</summary>
             CHOOSE_WEAPON_CONFIRM = 1382,
-            ///<summary>Are you sure you want to exchange?</summary>
+            ///<summary>Are you sure you want to exchange?.</summary>
             EXCHANGE_CONFIRM = 1383,
             ///<summary>$s1 has become the party leader.</summary>
             S1_HAS_BECOME_A_PARTY_LEADER = 1384,
@@ -2866,13 +2866,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
             TEAM_NAME_IDENTICAL = 1420,
             ///<summary>The race setup file has not been designated.</summary>
             RACE_SETUP_FILE1 = 1421,
-            ///<summary>Race setup file error - BuffCnt is not specified</summary>
+            ///<summary>Race setup file error - BuffCnt is not specified.</summary>
             RACE_SETUP_FILE2 = 1422,
             ///<summary>Race setup file error - BuffID$s1 is not specified.</summary>
             RACE_SETUP_FILE3 = 1423,
             ///<summary>Race setup file error - BuffLv$s1 is not specified.</summary>
             RACE_SETUP_FILE4 = 1424,
-            ///<summary>Race setup file error - DefaultAllow is not specified</summary>
+            ///<summary>Race setup file error - DefaultAllow is not specified.</summary>
             RACE_SETUP_FILE5 = 1425,
             ///<summary>Race setup file error - ExpSkillCnt is not specified.</summary>
             RACE_SETUP_FILE6 = 1426,
@@ -2882,7 +2882,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             RACE_SETUP_FILE8 = 1428,
             ///<summary>Race setup file error - ExpItemID$s1 is not specified.</summary>
             RACE_SETUP_FILE9 = 1429,
-            ///<summary>Race setup file error - TeleportDelay is not specified</summary>
+            ///<summary>Race setup file error - TeleportDelay is not specified.</summary>
             RACE_SETUP_FILE10 = 1430,
             ///<summary>The race will be stopped temporarily.</summary>
             RACE_STOPPED_TEMPORARILY = 1431,
@@ -2910,7 +2910,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             YOU_DONT_HAVE_ENOUGH_SP_TO_ENCHANT_THAT_SKILL = 1443,
             ///<summary>You do not have enough experience (Exp) to enchant that skill.</summary>
             YOU_DONT_HAVE_ENOUGH_EXP_TO_ENCHANT_THAT_SKILL = 1444,
-            ///<summary>Your previous subclass will be removed and replaced with the new subclass at level 40. Do you wish to continue?</summary>
+            ///<summary>Your previous subclass will be removed and replaced with the new subclass at level 40. Do you wish to continue?.</summary>
             REPLACE_SUBCLASS_CONFIRM = 1445,
             ///<summary>The ferry from $s1 to $s2 has been delayed.</summary>
             FERRY_FROM_S1_TO_S2_DELAYED = 1446,
@@ -2918,11 +2918,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANNOT_DO_WHILE_FISHING_1 = 1447,
             ///<summary>Only fishing skills may be used at this time.</summary>
             ONLY_FISHING_SKILLS_NOW = 1448,
-            ///<summary>You've got a bite!</summary>
+            ///<summary>You've got a bite!.</summary>
             GOT_A_BITE = 1449,
-            ///<summary>That fish is more determined than you are - it spit the hook!</summary>
+            ///<summary>That fish is more determined than you are - it spit the hook!.</summary>
             FISH_SPIT_THE_HOOK = 1450,
-            ///<summary>Your bait was stolen by that fish!</summary>
+            ///<summary>Your bait was stolen by that fish!.</summary>
             BAIT_STOLEN_BY_FISH = 1451,
             ///<summary>Baits have been lost because the fish got away.</summary>
             BAIT_LOST_FISH_GOT_AWAY = 1452,
@@ -2958,7 +2958,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             REELING_SUCCESFUL_S1_DAMAGE = 1467,
             ///<summary>You failed to reel that fish in further and it regains $s1 HP.</summary>
             FISH_RESISTED_REELING_S1_HP_REGAINED = 1468,
-            ///<summary>You caught something!</summary>
+            ///<summary>You caught something!.</summary>
             YOU_CAUGHT_SOMETHING = 1469,
             ///<summary>You cannot do that while fishing.</summary>
             CANNOT_DO_WHILE_FISHING_2 = 1470,
@@ -2980,13 +2980,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ONLY_64_PIXEL_256_COLOR_BMP = 1478,
             ///<summary>That is the wrong grade of soulshot for that fishing pole.</summary>
             WRONG_FISHINGSHOT_GRADE = 1479,
-            ///<summary>Are you sure you want to remove yourself from the Grand Olympiad Games waiting list?</summary>
+            ///<summary>Are you sure you want to remove yourself from the Grand Olympiad Games waiting list?.</summary>
             OLYMPIAD_REMOVE_CONFIRM = 1480,
-            ///<summary>You have selected a class irrelevant individual match. Do you wish to participate?</summary>
+            ///<summary>You have selected a class irrelevant individual match. Do you wish to participate?.</summary>
             OLYMPIAD_NON_CLASS_CONFIRM = 1481,
-            ///<summary>You've selected to join a class specific game. Continue?</summary>
+            ///<summary>You've selected to join a class specific game. Continue?.</summary>
             OLYMPIAD_CLASS_CONFIRM = 1482,
-            ///<summary>Are you ready to be a Hero?</summary>
+            ///<summary>Are you ready to be a Hero?.</summary>
             HERO_CONFIRM = 1483,
             ///<summary>Are you sure this is the Hero weapon you wish to use? Kamael race cannot use this.</summary>
             HERO_WEAPON_CONFIRM = 1484,
@@ -3012,9 +3012,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             THE_GAME_HAS_BEEN_CANCELLED_BECAUSE_THE_OTHER_PARTY_DOES_NOT_MEET_THE_REQUIREMENTS_FOR_JOINING_THE_GAME = 1494,
             ///<summary>The match will start in $s1 second(s).</summary>
             THE_GAME_WILL_START_IN_S1_SECOND_S = 1495,
-            ///<summary>The match has started, fight!</summary>
+            ///<summary>The match has started, fight!.</summary>
             STARTS_THE_GAME = 1496,
-            ///<summary>Congratulations, $s1! You win the match!</summary>
+            ///<summary>Congratulations, $s1! You win the match!.</summary>
             S1_HAS_WON_THE_GAME = 1497,
             ///<summary>There is no victor, the match ends in a tie.</summary>
             THE_GAME_ENDED_IN_A_TIE = 1498,
@@ -3040,7 +3040,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             THIS_ITEM_IS_NOT_AVAILABLE_FOR_THE_OLYMPIAD_EVENT = 1508,
             ///<summary>You cannot use that skill in a Grand Olympiad Games match.</summary>
             THIS_SKILL_IS_NOT_AVAILABLE_FOR_THE_OLYMPIAD_EVENT = 1509,
-            ///<summary>$s1 is making an attempt at resurrection. Do you want to continue with this resurrection?</summary>
+            ///<summary>$s1 is making an attempt at resurrection. Do you want to continue with this resurrection?.</summary>
             RESSURECTION_REQUEST_BY_S1 = 1510,
             ///<summary>While a pet is attempting to resurrect, it cannot help in resurrecting its master.</summary>
             MASTER_CANNOT_RES = 1511,
@@ -3048,7 +3048,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANNOT_RES_PET = 1512,
             ///<summary>Resurrection has already been proposed.</summary>
             RES_HAS_ALREADY_BEEN_PROPOSED = 1513,
-            ///<summary>You cannot the owner of a pet while their pet is being resurrected</summary>
+            ///<summary>You cannot the owner of a pet while their pet is being resurrected.</summary>
             CANNOT_RES_MASTER = 1514,
             ///<summary>A pet cannot be resurrected while it's owner is in the process of resurrecting.</summary>
             CANNOT_RES_PET2 = 1515,
@@ -3058,15 +3058,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
             BLESSED_ENCHANT_FAILED = 1517,
             ///<summary>You do not meet the required condition to equip that item.</summary>
             CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION = 1518,
-            ///<summary>Your pet has been killed! Make sure you resurrect your pet within 20 minutes or your pet and all of it's items will disappear forever!</summary>
+            ///<summary>Your pet has been killed! Make sure you resurrect your pet within 20 minutes or your pet and all of it's items will disappear forever!.</summary>
             MAKE_SURE_YOU_RESSURECT_YOUR_PET_WITHIN_20_MINUTES = 1519,
             ///<summary>Servitor passed away.</summary>
             SERVITOR_PASSED_AWAY = 1520,
             ///<summary>Your servitor has vanished! You'll need to summon a new one.</summary>
             YOUR_SERVITOR_HAS_VANISHED = 1521,
-            ///<summary>Your pet's corpse has decayed!</summary>
+            ///<summary>Your pet's corpse has decayed!.</summary>
             YOUR_PETS_CORPSE_HAS_DECAYED = 1522,
-            ///<summary>You should release your pet or servitor so that it does not fall off of the boat and drown!</summary>
+            ///<summary>You should release your pet or servitor so that it does not fall off of the boat and drown!.</summary>
             RELEASE_PET_ON_BOAT = 1523,
             ///<summary>$s1's pet gained $s2.</summary>
             S1_PET_GAINED_S2 = 1524,
@@ -3078,7 +3078,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             PET_TOOK_S1_BECAUSE_HE_WAS_HUNGRY = 1527,
             ///<summary>You've sent a petition to the GM staff.</summary>
             SENT_PETITION_TO_GM = 1528,
-            ///<summary>$s1 is inviting you to the command channel. Do you want accept?</summary>
+            ///<summary>$s1 is inviting you to the command channel. Do you want accept?.</summary>
             COMMAND_CHANNEL_CONFIRM_FROM_S1 = 1529,
             ///<summary>Select a target or enter the name.</summary>
             SELECT_TARGET_OR_ENTER_NAME = 1530,
@@ -3094,9 +3094,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ATTENTION_S1_PET_PICKED_UP_S2 = 1535,
             ///<summary>Attention: $s1's pet has picked up +$s2$s3.</summary>
             ATTENTION_S1_PET_PICKED_UP_S2_S3 = 1536,
-            ///<summary>Current Location: $s1, $s2, $s3 (near Rune Village)</summary>
+            ///<summary>Current Location: $s1, $s2, $s3 (near Rune Village).</summary>
             LOC_RUNE_S1_S2_S3 = 1537,
-            ///<summary>Current Location: $s1, $s2, $s3 (near the Town of Goddard)</summary>
+            ///<summary>Current Location: $s1, $s2, $s3 (near the Town of Goddard).</summary>
             LOC_GODDARD_S1_S2_S3 = 1538,
             ///<summary>Cargo has arrived at Talking Island Village.</summary>
             CARGO_AT_TALKING_VILLAGE = 1539,
@@ -3130,7 +3130,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CARGO_AT_RUNE = 1553,
             ///<summary>Cargo has arrived at the Town of Goddard.</summary>
             CARGO_AT_GODDARD = 1554,
-            ///<summary>Do you want to cancel character deletion?</summary>
+            ///<summary>Do you want to cancel character deletion?.</summary>
             CANCEL_CHARACTER_DELETION_CONFIRM = 1555,
             ///<summary>Your clan notice has been saved.</summary>
             CLAN_NOTICE_SAVED = 1556,
@@ -3140,7 +3140,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             THE_QUANTITY_OF_SEED_SHOULD_BE_MORE_THAN_S1_AND_LESS_THAN_S2 = 1558,
             ///<summary>Crop price should be more than $s1 and less than $s2.</summary>
             CROP_PRICE_SHOULD_BE_MORE_THAN_S1_AND_LESS_THAN_S2 = 1559,
-            ///<summary>The quantity of crop should be more than $s1 and less than $s2</summary>
+            ///<summary>The quantity of crop should be more than $s1 and less than $s2.</summary>
             THE_QUANTITY_OF_CROP_SHOULD_BE_MORE_THAN_S1_AND_LESS_THAN_S2 = 1560,
             ///<summary>The clan, $s1, has declared a Clan War.</summary>
             CLAN_S1_DECLARED_WAR = 1561,
@@ -3150,7 +3150,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_CLAN_CANNOT_DECLARE_WAR_TOO_LOW_LEVEL_OR_NOT_ENOUGH_MEMBERS = 1563,
             ///<summary>A Clan War can be declared only if the clan is level three or above, and the number of clan members is fifteen or greater.</summary>
             CLAN_WAR_DECLARED_IF_CLAN_LVL3_OR_15_MEMBER = 1564,
-            ///<summary>A Clan War cannot be declared against a clan that does not exist!</summary>
+            ///<summary>A Clan War cannot be declared against a clan that does not exist!.</summary>
             CLAN_WAR_CANNOT_DECLARED_CLAN_NOT_EXIST = 1565,
             ///<summary>The clan, $s1, has decided to stop the war.</summary>
             CLAN_S1_HAS_DECIDED_TO_STOP = 1566,
@@ -3160,11 +3160,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WRONG_DECLARATION_TARGET = 1568,
             ///<summary>A declaration of Clan War against an allied clan can't be made.</summary>
             CLAN_WAR_AGAINST_A_ALLIED_CLAN_NOT_WORK = 1569,
-            ///<summary>A declaration of war against more than 30 Clans can't be made at the same time</summary>
+            ///<summary>A declaration of war against more than 30 Clans can't be made at the same time.</summary>
             TOO_MANY_CLAN_WARS = 1570,
-            ///<summary>======Clans You've Declared War On======</summary>
+            ///<summary>======Clans You've Declared War On======.</summary>
             CLANS_YOU_DECLARED_WAR_ON = 1571,
-            ///<summary>======Clans That Have Declared War On You======</summary>
+            ///<summary>======Clans That Have Declared War On You======.</summary>
             CLANS_THAT_HAVE_DECLARED_WAR_ON_YOU = 1572,
             ///<summary>There are no clans that your clan has declared war against.</summary>
             YOU_ARENT_IN_CLAN_WARS = 1573,
@@ -3200,7 +3200,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             COMMAND_CHANNEL_ONLY_AT_LEAST_5_PARTIES = 1588,
             ///<summary>Command Channel authority has been transferred to $s1.</summary>
             COMMAND_CHANNEL_LEADER_NOW_S1 = 1589,
-            ///<summary>===Guild Info (Total Parties: $s1)===</summary>
+            ///<summary>===Guild Info (Total Parties: $s1)===.</summary>
             GUILD_INFO_HEADER = 1590,
             ///<summary>No user has been invited to the Command Channel.</summary>
             NO_USER_INVITED_TO_COMMAND_CHANNEL = 1591,
@@ -3212,17 +3212,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_ALREADY_MEMBER_OF_COMMAND_CHANNEL = 1594,
             ///<summary>$s1 has succeeded.</summary>
             S1_SUCCEEDED = 1595,
-            ///<summary>You were hit by $s1!</summary>
+            ///<summary>You were hit by $s1!.</summary>
             HIT_BY_S1 = 1596,
             ///<summary>$s1 has failed.</summary>
             S1_FAILED = 1597,
-            ///<summary>Soulshots and spiritshots are not available for a dead pet or servitor. Sad, isn't it?</summary>
+            ///<summary>Soulshots and spiritshots are not available for a dead pet or servitor. Sad, isn't it?.</summary>
             SOULSHOTS_AND_SPIRITSHOTS_ARE_NOT_AVAILABLE_FOR_A_DEAD_PET = 1598,
-            ///<summary>You cannot observe while you are in combat!</summary>
+            ///<summary>You cannot observe while you are in combat!.</summary>
             CANNOT_OBSERVE_IN_COMBAT = 1599,
-            ///<summary>Tomorrow's items will ALL be set to 0. Do you wish to continue?</summary>
+            ///<summary>Tomorrow's items will ALL be set to 0. Do you wish to continue?.</summary>
             TOMORROW_ITEM_ZERO_CONFIRM = 1600,
-            ///<summary>Tomorrow's items will all be set to the same value as today's items. Do you wish to continue?</summary>
+            ///<summary>Tomorrow's items will all be set to the same value as today's items. Do you wish to continue?.</summary>
             TOMORROW_ITEM_SAME_CONFIRM = 1601,
             ///<summary>Only a party leader can access the Command Channel.</summary>
             COMMAND_CHANNEL_ONLY_FOR_PARTY_LEADER = 1602,
@@ -3232,7 +3232,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CANNOT_USE_ITEMS_SKILLS_WITH_FORMALWEAR = 1604,
             ///<summary>* Here, you can buy only seeds of $s1 Manor.</summary>
             HERE_YOU_CAN_BUY_ONLY_SEEDS_OF_S1_MANOR = 1605,
-            ///<summary>Congratulations - You've completed the third-class transfer quest!</summary>
+            ///<summary>Congratulations - You've completed the third-class transfer quest!.</summary>
             THIRD_CLASS_TRANSFER = 1606,
             ///<summary>$s1 adena has been withdrawn to pay for purchasing fees.</summary>
             S1_ADENA_HAS_BEEN_WITHDRAWN_TO_PAY_FOR_PURCHASING_FEES = 1607,
@@ -3240,17 +3240,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
             INSUFFICIENT_ADENA_TO_BUY_CASTLE = 1608,
             ///<summary>War has already been declared against that clan... but I'll make note that you really don't like them.</summary>
             WAR_ALREADY_DECLARED = 1609,
-            ///<summary>Fool! You cannot declare war against your own clan!</summary>
+            ///<summary>Fool! You cannot declare war against your own clan!.</summary>
             CANNOT_DECLARE_AGAINST_OWN_CLAN = 1610,
-            ///<summary>Leader: $s1</summary>
+            ///<summary>Leader: $s1.</summary>
             PARTY_LEADER_S1 = 1611,
-            ///<summary>=====War List=====</summary>
+            ///<summary>=====War List=====.</summary>
             WAR_LIST = 1612,
             ///<summary>There is no clan listed on War List.</summary>
             NO_CLAN_ON_WAR_LIST = 1613,
             ///<summary>You have joined a channel that was already open.</summary>
             JOINED_CHANNEL_ALREADY_OPEN = 1614,
-            ///<summary>The number of remaining parties is $s1 until a channel is activated</summary>
+            ///<summary>The number of remaining parties is $s1 until a channel is activated.</summary>
             S1_PARTIES_REMAINING_UNTIL_CHANNEL = 1615,
             ///<summary>The Command Channel has been activated.</summary>
             COMMAND_CHANNEL_ACTIVATED = 1616,
@@ -3262,23 +3262,23 @@ namespace L2dotNET.GameService.Network.Serverpackets
             FERRY_GLUDIN_RUNE_DELAYED = 1619,
             ///<summary>Arrived at Rune Harbor.</summary>
             ARRIVED_AT_RUNE = 1620,
-            ///<summary>Departure for Gludin Harbor will take place in five minutes!</summary>
+            ///<summary>Departure for Gludin Harbor will take place in five minutes!.</summary>
             DEPARTURE_FOR_GLUDIN_5_MINUTES = 1621,
-            ///<summary>Departure for Gludin Harbor will take place in one minute!</summary>
+            ///<summary>Departure for Gludin Harbor will take place in one minute!.</summary>
             DEPARTURE_FOR_GLUDIN_1_MINUTE = 1622,
-            ///<summary>Make haste! We will be departing for Gludin Harbor shortly...</summary>
+            ///<summary>Make haste! We will be departing for Gludin Harbor shortly.</summary>
             DEPARTURE_FOR_GLUDIN_SHORTLY = 1623,
-            ///<summary>We are now departing for Gludin Harbor Hold on and enjoy the ride!</summary>
+            ///<summary>We are now departing for Gludin Harbor Hold on and enjoy the ride!.</summary>
             DEPARTURE_FOR_GLUDIN_NOW = 1624,
             ///<summary>Departure for Rune Harbor will take place after anchoring for ten minutes.</summary>
             DEPARTURE_FOR_RUNE_10_MINUTES = 1625,
-            ///<summary>Departure for Rune Harbor will take place in five minutes!</summary>
+            ///<summary>Departure for Rune Harbor will take place in five minutes!.</summary>
             DEPARTURE_FOR_RUNE_5_MINUTES = 1626,
-            ///<summary>Departure for Rune Harbor will take place in one minute!</summary>
+            ///<summary>Departure for Rune Harbor will take place in one minute!.</summary>
             DEPARTURE_FOR_RUNE_1_MINUTE = 1627,
-            ///<summary>Make haste! We will be departing for Gludin Harbor shortly...</summary>
+            ///<summary>Make haste! We will be departing for Gludin Harbor shortly.</summary>
             DEPARTURE_FOR_GLUDIN_SHORTLY2 = 1628,
-            ///<summary>We are now departing for Rune Harbor Hold on and enjoy the ride!</summary>
+            ///<summary>We are now departing for Rune Harbor Hold on and enjoy the ride!.</summary>
             DEPARTURE_FOR_RUNE_NOW = 1629,
             ///<summary>The ferry from Rune Harbor will be arriving at Gludin Harbor in approximately 15 minutes.</summary>
             FERRY_FROM_RUNE_AT_GLUDIN_15_MINUTES = 1630,
@@ -3298,15 +3298,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
             FERRY_FROM_GLUDIN_AT_RUNE_1_MINUTE = 1637,
             ///<summary>You cannot fish while using a recipe book, private manufacture or private store.</summary>
             CANNOT_FISH_WHILE_USING_RECIPE_BOOK = 1638,
-            ///<summary>Period $s1 of the Grand Olympiad Games has started!</summary>
+            ///<summary>Period $s1 of the Grand Olympiad Games has started!.</summary>
             OLYMPIAD_PERIOD_S1_HAS_STARTED = 1639,
             ///<summary>Period $s1 of the Grand Olympiad Games has now ended.</summary>
             OLYMPIAD_PERIOD_S1_HAS_ENDED = 1640,
-            ///<summary>and make haste to a Grand Olympiad Manager! Battles in the Grand Olympiad Games are now taking place!</summary>
+            ///<summary>and make haste to a Grand Olympiad Manager! Battles in the Grand Olympiad Games are now taking place!.</summary>
             THE_OLYMPIAD_GAME_HAS_STARTED = 1641,
-            ///<summary>Much carnage has been left for the cleanup crew of the Olympiad Stadium. Battles in the Grand Olympiad Games are now over!</summary>
+            ///<summary>Much carnage has been left for the cleanup crew of the Olympiad Stadium. Battles in the Grand Olympiad Games are now over!.</summary>
             THE_OLYMPIAD_GAME_HAS_ENDED = 1642,
-            ///<summary>Current Location: $s1, $s2, $s3 (Dimensional Gap)</summary>
+            ///<summary>Current Location: $s1, $s2, $s3 (Dimensional Gap).</summary>
             LOC_DIMENSIONAL_GAP_S1_S2_S3 = 1643,
             ///<summary>Play time is now accumulating.</summary>
             PLAY_TIME_NOW_ACCUMULATING = 1649,
@@ -3316,11 +3316,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             THE_OLYMPIAD_GAME_IS_NOT_CURRENTLY_IN_PROGRESS = 1651,
             ///<summary>You are now recording gameplay.</summary>
             RECORDING_GAMEPLAY_START = 1652,
-            ///<summary>Your recording has been successfully stored. ($s1)</summary>
+            ///<summary>Your recording has been successfully stored. ($s1).</summary>
             RECORDING_GAMEPLAY_STOP_S1 = 1653,
             ///<summary>Your attempt to record the replay file has failed.</summary>
             RECORDING_GAMEPLAY_FAILED = 1654,
-            ///<summary>You caught something smelly and scary, maybe you should throw it back!?</summary>
+            ///<summary>You caught something smelly and scary, maybe you should throw it back!?.</summary>
             YOU_CAUGHT_SOMETHING_SMELLY_THROW_IT_BACK = 1655,
             ///<summary>You have successfully traded the item with the NPC.</summary>
             SUCCESSFULLY_TRADED_WITH_NPC = 1656,
@@ -3328,7 +3328,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_HAS_GAINED_S2_OLYMPIAD_POINTS = 1657,
             ///<summary>$s1 has lost $s2 points in the Grand Olympiad Games.</summary>
             S1_HAS_LOST_S2_OLYMPIAD_POINTS = 1658,
-            ///<summary>Current Location: $s1, $s2, $s3 (Cemetery of the Empire)</summary>
+            ///<summary>Current Location: $s1, $s2, $s3 (Cemetery of the Empire).</summary>
             LOC_CEMETARY_OF_THE_EMPIRE_S1_S2_S3 = 1659,
             ///<summary>Channel Creator: $s1.</summary>
             CHANNEL_CREATOR_S1 = 1660,
@@ -3338,23 +3338,23 @@ namespace L2dotNET.GameService.Network.Serverpackets
             FISH_NO_MORE_BITING_TRY_OTHER_LOCATION = 1662,
             ///<summary>The clan crest was successfully registered. Remember, only a clan that owns a clan hall or castle can have their crest displayed.</summary>
             CLAN_EMBLEM_WAS_SUCCESSFULLY_REGISTERED = 1663,
-            ///<summary>The fish is resisting your efforts to haul it in! Look at that bobber go!</summary>
+            ///<summary>The fish is resisting your efforts to haul it in! Look at that bobber go!.</summary>
             FISH_RESISTING_LOOK_BOBBLER = 1664,
-            ///<summary>You've worn that fish out! It can't even pull the bobber under the water!</summary>
+            ///<summary>You've worn that fish out! It can't even pull the bobber under the water!.</summary>
             YOU_WORN_FISH_OUT = 1665,
             ///<summary>You have obtained +$s1 $s2.</summary>
             OBTAINED_S1_S2 = 1666,
-            ///<summary>Lethal Strike!</summary>
+            ///<summary>Lethal Strike!.</summary>
             LETHAL_STRIKE = 1667,
-            ///<summary>Your lethal strike was successful!</summary>
+            ///<summary>Your lethal strike was successful!.</summary>
             LETHAL_STRIKE_SUCCESSFUL = 1668,
             ///<summary>There was nothing found inside of that.</summary>
             NOTHING_INSIDE_THAT = 1669,
             ///<summary>Due to your Reeling and/or Pumping skill being three or more levels higher than your Fishing skill, a 50 damage penalty will be applied.</summary>
             REELING_PUMPING_3_LEVELS_HIGHER_THAN_FISHING_PENALTY = 1670,
-            ///<summary>Your reeling was successful! (Mastery Penalty:$s1 )</summary>
+            ///<summary>Your reeling was successful! (Mastery Penalty:$s1 ).</summary>
             REELING_SUCCESSFUL_PENALTY_S1 = 1671,
-            ///<summary>Your pumping was successful! (Mastery Penalty:$s1 )</summary>
+            ///<summary>Your pumping was successful! (Mastery Penalty:$s1 ).</summary>
             PUMPING_SUCCESSFUL_PENALTY_S1 = 1672,
             ///<summary>Your current record for this Grand Olympiad is $s1 match(es), $s2 win(s) and $s3 defeat(s). You have earned $s4 Olympiad Point(s).</summary>
             THE_CURRENT_RECORD_FOR_THIS_OLYMPIAD_SESSION_IS_S1_MATCHES_S2_WINS_S3_DEFEATS_YOU_HAVE_EARNED_S4_OLYMPIAD_POINTS = 1673,
@@ -3382,9 +3382,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NO_CLAN_WAR_AGAINST_DISSOLVING_CLAN = 1684,
             ///<summary>You are unable to equip this item when your PK count is greater or equal to one.</summary>
             YOU_ARE_UNABLE_TO_EQUIP_THIS_ITEM_WHEN_YOUR_PK_COUNT_IS_GREATER_THAN_OR_EQUAL_TO_ONE = 1685,
-            ///<summary>Stones and mortar tumble to the earth - the castle wall has taken damage!</summary>
+            ///<summary>Stones and mortar tumble to the earth - the castle wall has taken damage!.</summary>
             CASTLE_WALL_DAMAGED = 1686,
-            ///<summary>This area cannot be entered while mounted atop of a Wyvern. You will be dismounted from your Wyvern if you do not leave!</summary>
+            ///<summary>This area cannot be entered while mounted atop of a Wyvern. You will be dismounted from your Wyvern if you do not leave!.</summary>
             AREA_CANNOT_BE_ENTERED_WHILE_MOUNTED_WYVERN = 1687,
             ///<summary>You cannot enchant while operating a Private Store or Private Workshop.</summary>
             CANNOT_ENCHANT_WHILE_STORE = 1688,
@@ -3392,7 +3392,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             YOU_ARE_ALREADY_ON_THE_WAITING_LIST_TO_PARTICIPATE_IN_THE_GAME_FOR_YOUR_CLASS = 1689,
             ///<summary>You have already joined the waiting list for a non-class specific match.</summary>
             YOU_ARE_ALREADY_ON_THE_WAITING_LIST_FOR_ALL_CLASSES_WAITING_TO_PARTICIPATE_IN_THE_GAME = 1690,
-            ///<summary>You can't join a Grand Olympiad Game match with that much stuff on you! Reduce your weight to below 80 percent full and request to join again!</summary>
+            ///<summary>You can't join a Grand Olympiad Game match with that much stuff on you! Reduce your weight to below 80 percent full and request to join again!.</summary>
             SINCE_80_PERCENT_OR_MORE_OF_YOUR_INVENTORY_SLOTS_ARE_FULL_YOU_CANNOT_PARTICIPATE_IN_THE_OLYMPIAD = 1691,
             ///<summary>You have changed from your main class to a subclass and therefore are removed from the Grand Olympiad Games waiting list.</summary>
             SINCE_YOU_HAVE_CHANGED_YOUR_CLASS_INTO_A_SUB_JOB_YOU_CANNOT_PARTICIPATE_IN_THE_OLYMPIAD = 1692,
@@ -3400,13 +3400,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WHILE_YOU_ARE_ON_THE_WAITING_LIST_YOU_ARE_NOT_ALLOWED_TO_WATCH_THE_GAME = 1693,
             ///<summary>Only a clan leader that is a Noblesse can view the Siege War Status window during a siege war.</summary>
             ONLY_NOBLESSE_LEADER_CAN_VIEW_SIEGE_STATUS_WINDOW = 1694,
-            ///<summary>You can only use that during a Siege War!</summary>
+            ///<summary>You can only use that during a Siege War!.</summary>
             ONLY_DURING_SIEGE = 1695,
             ///<summary>Your accumulated play time is $s1.</summary>
             ACCUMULATED_PLAY_TIME_IS_S1 = 1696,
-            ///<summary>Your accumulated play time has reached Fatigue level, so you will receive experience or item drops at only 50 percent [...]</summary>
+            ///<summary>Your accumulated play time has reached Fatigue level, so you will receive experience or item drops at only 50 percent [...].</summary>
             ACCUMULATED_PLAY_TIME_WARNING1 = 1697,
-            ///<summary>Your accumulated play time has reached Ill-health level, so you will no longer gain experience or item drops. [...}</summary>
+            ///<summary>Your accumulated play time has reached Ill-health level, so you will no longer gain experience or item drops. [...}.</summary>
             ACCUMULATED_PLAY_TIME_WARNING2 = 1698,
             ///<summary>You cannot dismiss a party member by force.</summary>
             CANNOT_DISMISS_PARTY_MEMBER = 1699,
@@ -3416,7 +3416,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             NOT_ENOUGH_SOULSHOTS_FOR_PET = 1701,
             ///<summary>$s1 is using a third party program.</summary>
             S1_USING_THIRD_PARTY_PROGRAM = 1702,
-            ///<summary>The previous investigated user is not using a third party program</summary>
+            ///<summary>The previous investigated user is not using a third party program.</summary>
             NOT_USING_THIRD_PARTY_PROGRAM = 1703,
             ///<summary>Please close the setup window for your private manufacturing store or private store, and try again.</summary>
             CLOSE_STORE_WINDOW_AND_TRY_AGAIN = 1704,
@@ -3438,21 +3438,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
             PCPOINT_ACCUMULATION_PERIOD_EXPIRED = 1712,
             ///<summary>The games may be delayed due to an insufficient number of players waiting.</summary>
             GAMES_DELAYED = 1713,
-            ///<summary>Current Location: $s1, $s2, $s3 (Near the Town of Schuttgart)</summary>
+            ///<summary>Current Location: $s1, $s2, $s3 (Near the Town of Schuttgart).</summary>
             LOC_SCHUTTGART_S1_S2_S3 = 1714,
-            ///<summary>This is a Peaceful Zone</summary>
+            ///<summary>This is a Peaceful Zone.</summary>
             PEACEFUL_ZONE = 1715,
-            ///<summary>Altered Zone</summary>
+            ///<summary>Altered Zone.</summary>
             ALTERED_ZONE = 1716,
-            ///<summary>Siege War Zone</summary>
+            ///<summary>Siege War Zone.</summary>
             SIEGE_ZONE = 1717,
-            ///<summary>General Field</summary>
+            ///<summary>General Field.</summary>
             GENERAL_ZONE = 1718,
-            ///<summary>Seven Signs Zone</summary>
+            ///<summary>Seven Signs Zone.</summary>
             SEVENSIGNS_ZONE = 1719,
-            ///<summary>---</summary>
+            ///<summary>---.</summary>
             UNKNOWN1 = 1720,
-            ///<summary>Combat Zone</summary>
+            ///<summary>Combat Zone.</summary>
             COMBAT_ZONE = 1721,
             ///<summary>Please enter the name of the item you wish to search for.</summary>
             ENTER_ITEM_NAME_SEARCH = 1722,
@@ -3464,7 +3464,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             EARNED_S1_RAID_POINTS = 1725,
             ///<summary>$s1 has disappeared because its time period has expired.</summary>
             S1_PERIOD_EXPIRED_DISAPPEARED = 1726,
-            ///<summary>$s1 has invited you to a party room. Do you accept?</summary>
+            ///<summary>$s1 has invited you to a party room. Do you accept?.</summary>
             S1_INVITED_YOU_TO_PARTY_ROOM_CONFIRM = 1727,
             ///<summary>The recipient of your invitation did not accept the party matching invitation.</summary>
             PARTY_MATCHING_REQUEST_NO_RESPONSE = 1728,
@@ -3488,7 +3488,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CLAN_CAN_CREATE_ACADEMY = 1737,
             ///<summary>Your clan has already established a Clan Academy.</summary>
             CLAN_HAS_ALREADY_ESTABLISHED_A_CLAN_ACADEMY = 1738,
-            ///<summary>Would you like to create a Clan Academy?</summary>
+            ///<summary>Would you like to create a Clan Academy?.</summary>
             CLAN_ACADEMY_CREATE_CONFIRM = 1739,
             ///<summary>Please enter the name of the Clan Academy.</summary>
             ACADEMY_CREATE_ENTER_NAME = 1740,
@@ -3504,7 +3504,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ACADEMY_JOIN_DECLINE = 1745,
             ///<summary>You have already joined a Clan Academy.</summary>
             ALREADY_JOINED_ACADEMY = 1746,
-            ///<summary>$s1 has sent you an invitation to join the Clan Academy belonging to the $s2 clan. Do you accept?</summary>
+            ///<summary>$s1 has sent you an invitation to join the Clan Academy belonging to the $s2 clan. Do you accept?.</summary>
             JOIN_ACADEMY_REQUEST_BY_S1_FOR_CLAN_S2 = 1747,
             ///<summary>Clan Academy member $s1 has successfully completed the 2nd class transfer and obtained $s2 Clan Reputation points.</summary>
             CLAN_MEMBER_GRADUATED_FROM_ACADEMY = 1748,
@@ -3546,9 +3546,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CLAN_JOIN_APPLICATION_SENT_TO_S1_IN_S2 = 1766,
             ///<summary>An application to join the clan Academy has been sent to $s1.</summary>
             ACADEMY_JOIN_APPLICATION_SENT_TO_S1 = 1767,
-            ///<summary>$s1 has invited you to join the Clan Academy of $s2 clan. Would you like to join?</summary>
+            ///<summary>$s1 has invited you to join the Clan Academy of $s2 clan. Would you like to join?.</summary>
             JOIN_REQUEST_BY_S1_TO_CLAN_S2_ACADEMY = 1768,
-            ///<summary>$s1 has sent you an invitation to join the $s3 Order of Knights under the $s2 clan. Would you like to join?</summary>
+            ///<summary>$s1 has sent you an invitation to join the $s3 Order of Knights under the $s2 clan. Would you like to join?.</summary>
             JOIN_REQUEST_BY_S1_TO_ORDER_OF_KNIGHTS_S3_UNDER_CLAN_S2 = 1769,
             ///<summary>The clan's reputation score has dropped below 0. The clan may face certain penalties as a result.</summary>
             CLAN_REPU_0_MAY_FACE_PENALTIES = 1770,
@@ -3602,7 +3602,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             THE_KNIGHTS_OF_S1_HAVE_BEEN_CREATED = 1794,
             ///<summary>The Royal Guard of $s1 have been created.</summary>
             THE_ROYAL_GUARD_OF_S1_HAVE_BEEN_CREATED = 1795,
-            ///<summary>Your account has been suspended ...</summary>
+            ///<summary>Your account has been suspended .</summary>
             ILLEGAL_USE17 = 1796,
             ///<summary>$s1 has been promoted to $s2.</summary>
             S1_PROMOTED_TO_S2 = 1797,
@@ -3618,21 +3618,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
             TRADE_ATTEMPT_FAILED = 1802,
             ///<summary>The request to participate in the game cannot be made starting from 10 minutes before the end of the game.</summary>
             GAME_REQUEST_CANNOT_BE_MADE = 1803,
-            ///<summary>Your account has been suspended ...</summary>
+            ///<summary>Your account has been suspended .</summary>
             ILLEGAL_USE18 = 1804,
-            ///<summary>Your account has been suspended ...</summary>
+            ///<summary>Your account has been suspended .</summary>
             ILLEGAL_USE19 = 1805,
-            ///<summary>Your account has been suspended ...</summary>
+            ///<summary>Your account has been suspended .</summary>
             ILLEGAL_USE20 = 1806,
-            ///<summary>Your account has been suspended ...</summary>
+            ///<summary>Your account has been suspended .</summary>
             ILLEGAL_USE21 = 1807,
-            ///<summary>Your account has been suspended ...</summary>
+            ///<summary>Your account has been suspended .</summary>
             ILLEGAL_USE22 = 1808,
-            ///<summary>please visit the PlayNC website (http://www.plaync.com/us/support/)</summary>
+            ///<summary>please visit the PlayNC website (http://www.plaync.com/us/support/).</summary>
             ACCOUNT_MUST_VERIFIED = 1809,
             ///<summary>The refuse invitation state has been activated.</summary>
             REFUSE_INVITATION_ACTIVATED = 1810,
-            ///<summary>Since the refuse invitation state is currently activated, no invitation can be made</summary>
+            ///<summary>Since the refuse invitation state is currently activated, no invitation can be made.</summary>
             REFUSE_INVITATION_CURRENTLY_ACTIVE = 1812,
             ///<summary>$s1 has $s2 hour(s) of usage time remaining.</summary>
             S2_HOUR_OF_USAGE_TIME_ARE_LEFT_FOR_S1 = 1813,
@@ -3662,7 +3662,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CLANHALL_WAR_REGISTRATION_FAILED = 1825,
             ///<summary>In $s1 minute(s), the game will begin. All players must hurry and move to the left side of the clan hall's arena.</summary>
             CLANHALL_WAR_BEGINS_IN_S1_MINUTES = 1826,
-            ///<summary>In $s1 minute(s), the game will begin. All players must, please enter the arena now</summary>
+            ///<summary>In $s1 minute(s), the game will begin. All players must, please enter the arena now.</summary>
             CLANHALL_WAR_BEGINS_IN_S1_MINUTES_ENTER_NOW = 1827,
             ///<summary>In $s1 seconds(s), the game will begin.</summary>
             CLANHALL_WAR_BEGINS_IN_S1_SECONDS = 1828,
@@ -3674,25 +3674,25 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_NOT_MEET_CONDITIONS_FOR_PARTY_ROOM = 1831,
             ///<summary>Only a room leader may invite others to a party room.</summary>
             ONLY_ROOM_LEADER_CAN_INVITE = 1832,
-            ///<summary>All of $s1 will be dropped. Would you like to continue?</summary>
+            ///<summary>All of $s1 will be dropped. Would you like to continue?.</summary>
             CONFIRM_DROP_ALL_OF_S1 = 1833,
-            ///<summary>The party room is full. No more characters can be invitet in</summary>
+            ///<summary>The party room is full. No more characters can be invitet in.</summary>
             PARTY_ROOM_FULL = 1834,
             ///<summary>$s1 is full and cannot accept additional clan members at this time.</summary>
             S1_CLAN_IS_FULL = 1835,
             ///<summary>You cannot join a Clan Academy because you have successfully completed your 2nd class transfer.</summary>
             CANNOT_JOIN_ACADEMY_AFTER_2ND_OCCUPATION = 1836,
-            ///<summary>$s1 has sent you an invitation to join the $s3 Royal Guard under the $s2 clan. Would you like to join?</summary>
+            ///<summary>$s1 has sent you an invitation to join the $s3 Royal Guard under the $s2 clan. Would you like to join?.</summary>
             S1_SENT_INVITATION_TO_ROYAL_GUARD_S3_OF_CLAN_S2 = 1837,
             ///<summary>1. The coupon an be used once per character.</summary>
             COUPON_ONCE_PER_CHARACTER = 1838,
             ///<summary>2. A used serial number may not be used again.</summary>
             SERIAL_MAY_USED_ONCE = 1839,
-            ///<summary>3. If you enter the incorrect serial number more than 5 times, ...</summary>
+            ///<summary>3. If you enter the incorrect serial number more than 5 times, .</summary>
             SERIAL_INPUT_INCORRECT = 1840,
             ///<summary>The clan hall war has been cancelled. Not enough clans have registered.</summary>
             CLANHALL_WAR_CANCELLED = 1841,
-            ///<summary>$s1 wishes to summon you from $s2. Do you accept?</summary>
+            ///<summary>$s1 wishes to summon you from $s2. Do you accept?.</summary>
             S1_WISHES_TO_SUMMON_YOU_FROM_S2_DO_YOU_ACCEPT = 1842,
             ///<summary>$s1 is engaged in combat and cannot be summoned.</summary>
             S1_IS_ENGAGED_IN_COMBAT_AND_CANNOT_BE_SUMMONED = 1843,
@@ -3704,9 +3704,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             TOO_FAR_AWAY_FROM_STRIDER_TO_MOUNT = 1846,
             ///<summary>You caught a fish $s1 in length.</summary>
             CAUGHT_FISH_S1_LENGTH = 1847,
-            ///<summary>Because of the size of fish caught, you will be registered in the ranking</summary>
+            ///<summary>Because of the size of fish caught, you will be registered in the ranking.</summary>
             REGISTERED_IN_FISH_SIZE_RANKING = 1848,
-            ///<summary>All of $s1 will be discarded. Would you like to continue?</summary>
+            ///<summary>All of $s1 will be discarded. Would you like to continue?.</summary>
             CONFIRM_DISCARD_ALL_OF_S1 = 1849,
             ///<summary>The Captain of the Order of Knights cannot be appointed.</summary>
             CAPTAIN_OF_ORDER_OF_KNIGHTS_CANNOT_BE_APPOINTED = 1850,
@@ -3714,7 +3714,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             CAPTAIN_OF_ROYAL_GUARD_CANNOT_BE_APPOINTED = 1851,
             ///<summary>The attempt to acquire the skill has failed because of an insufficient Clan Reputation Score.</summary>
             ACQUIRE_SKILL_FAILED_BAD_CLAN_REP_SCORE = 1852,
-            ///<summary>Quantity items of the same type cannot be exchanged at the same time</summary>
+            ///<summary>Quantity items of the same type cannot be exchanged at the same time.</summary>
             CANT_EXCHANGE_QUANTITY_ITEMS_OF_SAME_TYPE = 1853,
             ///<summary>The item was converted successfully.</summary>
             ITEM_CONVERTED_SUCCESSFULLY = 1854,
@@ -3750,7 +3750,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_GRANTED_MASTER_PARTY_LOOTING_RIGHTS = 1869,
             ///<summary>A Command Channel with looting rights already exists.</summary>
             COMMAND_CHANNEL_WITH_LOOTING_RIGHTS_EXISTS = 1870,
-            ///<summary>Do you want to dismiss $s1 from the clan?</summary>
+            ///<summary>Do you want to dismiss $s1 from the clan?.</summary>
             CONFIRM_DISMISS_S1_FROM_CLAN = 1871,
             ///<summary>You have $s1 hour(s) and $s2 minute(s) left.</summary>
             S1_HOURS_S2_MINUTES_LEFT = 1872,
@@ -3760,7 +3760,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_MINUTES_LEFT_FOR_THIS_USER = 1874,
             ///<summary>There are $s1 minute(s) left in the fixed use time for this PC Cafe.</summary>
             S1_MINUTES_LEFT_FOR_THIS_PCCAFE = 1875,
-            ///<summary>Do you want to leave $s1 clan?</summary>
+            ///<summary>Do you want to leave $s1 clan?.</summary>
             CONFIRM_LEAVE_S1_CLAN = 1876,
             ///<summary>The game will end in $s1 minutes.</summary>
             GAME_WILL_END_IN_S1_MINUTES = 1877,
@@ -3814,19 +3814,19 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1_INVITED_YOU_TO_PARTY_ROOM = 1901,
             ///<summary>Incompatible item grade. This item cannot be used.</summary>
             INCOMPATIBLE_ITEM_GRADE = 1902,
-            ///<summary>Those of you who have requested NCOTP should run NCOTP by using your cell phone [...]</summary>
+            ///<summary>Those of you who have requested NCOTP should run NCOTP by using your cell phone [...].</summary>
             NCOTP = 1903,
             ///<summary>A sub-class may not be created or changed while a servitor or pet is summoned.</summary>
             CANT_SUBCLASS_WITH_SUMMONED_SERVITOR = 1904,
             ///<summary>$s2 of $s1 will be replaced with $s4 of $s3.</summary>
             S2_OF_S1_WILL_REPLACED_WITH_S4_OF_S3 = 1905,
-            ///<summary>Select the combat unit</summary>
+            ///<summary>Select the combat unit.</summary>
             SELECT_COMBAT_UNIT = 1906,
-            ///<summary>Select the character who will [...]</summary>
+            ///<summary>Select the character who will [...].</summary>
             SELECT_CHARACTER_WHO_WILL = 1907,
             ///<summary>$s1 in a state which prevents summoning.</summary>
             S1_STATE_FORBIDS_SUMMONING = 1908,
-            ///<summary>==List of Academy Graduates During the Past Week==</summary>
+            ///<summary>==List of Academy Graduates During the Past Week==.</summary>
             ACADEMY_LIST_HEADER = 1909,
             ///<summary>Graduates: $s1.</summary>
             GRADUATES_S1 = 1910,
@@ -3854,9 +3854,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S2_HOURS_S3_MINUTES_SINCE_S1_KILLED = 1921,
             ///<summary>Because $s1 has failed to kill for one full day, it has expired.</summary>
             S1_FAILED_KILLING_EXPIRED = 1922,
-            ///<summary>Court Magician: The portal has been created!</summary>
+            ///<summary>Court Magician: The portal has been created!.</summary>
             COURT_MAGICIAN_CREATED_PORTAL = 1923,
-            ///<summary>Current Location: $s1, $s2, $s3 (Near the Primeval Isle)</summary>
+            ///<summary>Current Location: $s1, $s2, $s3 (Near the Primeval Isle).</summary>
             LOC_PRIMEVAL_ISLE_S1_S2_S3 = 1924,
             ///<summary>Due to the affects of the Seal of Strife, it is not possible to summon at this time.</summary>
             SEAL_OF_STRIFE_FORBIDS_SUMMONING = 1925,
@@ -3900,13 +3900,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
             IN_A_MOMENT_YOU_WILL_BE_TRANSPORTED_TO_THE_SITE_WHERE_THE_DUEL_WILL_TAKE_PLACE = 1944,
             ///<summary>The duel will begin in $s1 second(s).</summary>
             THE_DUEL_WILL_BEGIN_IN_S1_SECONDS = 1945,
-            ///<summary>$s1 has challenged you to a duel. Will you accept?</summary>
+            ///<summary>$s1 has challenged you to a duel. Will you accept?.</summary>
             S1_CHALLENGED_YOU_TO_A_DUEL = 1946,
-            ///<summary>$s1's party has challenged your party to a duel. Will you accept?</summary>
+            ///<summary>$s1's party has challenged your party to a duel. Will you accept?.</summary>
             S1_CHALLENGED_YOU_TO_A_PARTY_DUEL = 1947,
             ///<summary>The duel will begin in $s1 second(s).</summary>
             THE_DUEL_WILL_BEGIN_IN_S1_SECONDS2 = 1948,
-            ///<summary>Let the duel begin!</summary>
+            ///<summary>Let the duel begin!.</summary>
             LET_THE_DUEL_BEGIN = 1949,
             ///<summary>$s1 has won the duel.</summary>
             S1_HAS_WON_THE_DUEL = 1950,
@@ -3932,7 +3932,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             THIS_IS_NOT_A_SUITABLE_ITEM = 1960,
             ///<summary>Gemstone quantity is incorrect.</summary>
             GEMSTONE_QUANTITY_IS_INCORRECT = 1961,
-            ///<summary>The item was successfully augmented!</summary>
+            ///<summary>The item was successfully augmented!.</summary>
             THE_ITEM_WAS_SUCCESSFULLY_AUGMENTED = 1962,
             /// ID : 1963
             ///<summary>Select the item from which you wish to remove augmentation.</summary>
@@ -3977,11 +3977,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             S1S_REMAINING_MANA_IS_NOW_0 = 1982,
             ///<summary>Press the Augment button to begin.</summary>
             PRESS_THE_AUGMENT_BUTTON_TO_BEGIN = 1984,
-            ///<summary>$s1's drop area ($s2)</summary>
+            ///<summary>$s1's drop area ($s2).</summary>
             S1_DROP_AREA_S2 = 1985,
-            ///<summary>$s1's owner ($s2)</summary>
+            ///<summary>$s1's owner ($s2).</summary>
             S1_OWNER_S2 = 1986,
-            ///<summary>$s1</summary>
+            ///<summary>$s1.</summary>
             S1 = 1987,
             ///<summary>The ferry has arrived at Primeval Isle.</summary>
             FERRY_ARRIVED_AT_PRIMEVAL = 1988,
@@ -3997,7 +3997,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             FERRY_FROM_PRIMEVAL_TO_RUNE_DELAYED = 1993,
             ///<summary>The ferry from Rune Harbor to Primeval Isle has been delayed.</summary>
             FERRY_FROM_RUNE_TO_PRIMEVAL_DELAYED = 1994,
-            ///<summary>$s1 channel filtering option</summary>
+            ///<summary>$s1 channel filtering option.</summary>
             S1_CHANNEL_FILTER_OPTION = 1995,
             ///<summary>The attack has been blocked.</summary>
             ATTACK_WAS_BLOCKED = 1996,
@@ -4027,7 +4027,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             ENTER_TEXT = 2008,
             ///<summary>You cannot exceed 1500 characters.</summary>
             CANT_EXCEED_1500_CHARACTERS = 2009,
-            ///<summary>$s2 $s1</summary>
+            ///<summary>$s2 $s1.</summary>
             S2_S1 = 2009,
             ///<summary>The augmented item cannot be discarded.</summary>
             AUGMENTED_ITEM_CANNOT_BE_DISCARDED = 2011,
@@ -4114,7 +4114,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             C1_HAS_EVADED_C2_ATTACK = 2264,
             ///<summary>$c1's attack went astray.</summary>
             C1_ATTACK_WENT_ASTRAY = 2265,
-            ///<summary>$c1 landed a critical hit!</summary>
+            ///<summary>$c1 landed a critical hit!.</summary>
             C1_LANDED_A_CRITICAL_HIT = 2266,
             ///<summary>You cannot transform while sitting.</summary>
             CANNOT_TRANSFORM_WHILE_SITTING = 2283,

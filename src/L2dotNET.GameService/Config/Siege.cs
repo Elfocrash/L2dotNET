@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Config
 {
-    ///<summary>Configs for Sieges</summary>
+    ///<summary>Sieges Config.</summary>
     public class Siege
     {
         ///<summary>Length of siege before the countdown(in minutes).</summary>
@@ -29,35 +29,43 @@ namespace L2dotNET.GameService.Config
         [JsonProperty(PropertyName = "AttackerRespawn")]
         public int AttackerRespawn { get; set; }
 
+        ///<summary>Castles.</summary>
         [JsonProperty(PropertyName = "Castles")]
         public Castles Castles { get; set; }
     }
 
+    ///<summary>Coordinate.</summary>
     public class Coordinate
     {
-        [JsonProperty(PropertyName = "x")]
-        public int x { get; set; }
+        ///<summary>X coord.</summary>
+        [JsonProperty(PropertyName = "X")]
+        public int X { get; set; }
 
-        [JsonProperty(PropertyName = "y")]
-        public int y { get; set; }
+        ///<summary>Y coord.</summary>
+        [JsonProperty(PropertyName = "Y")]
+        public int Y { get; set; }
 
-        [JsonProperty(PropertyName = "z")]
-        public int z { get; set; }
+        ///<summary>Z coord.</summary>
+        [JsonProperty(PropertyName = "Z")]
+        public int Z { get; set; }
     }
 
     public class ControlTower
     {
+        ///<summary>x,y,z coords to spawn.</summary>
         [JsonProperty(PropertyName = "Coords")]
         public Coordinate Coords { get; set; }
 
-        [JsonProperty(PropertyName = "npcId")]
-        public int npcId { get; set; }
+        ///<summary>NPC template id.</summary>
+        [JsonProperty(PropertyName = "NpcId")]
+        public int NpcId { get; set; }
     }
 
     public class FlameTower : ControlTower
     {
-        [JsonProperty(PropertyName = "zoneIds")]
-        public int[] zoneIds { get; set; }
+        ///<summary>Related zones ids.</summary>
+        [JsonProperty(PropertyName = "ZoneIds")]
+        public int[] ZoneIds { get; set; }
     }
 
     public class CastleTower

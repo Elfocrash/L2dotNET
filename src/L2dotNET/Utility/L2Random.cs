@@ -58,7 +58,7 @@ namespace L2dotNET.Utility
                 while (j <= i - sizeof(int))
                 {
                     k = m_Random.Next();
-                    *(int*)(buf + j) = *((int*)(&k));
+                    *(int*)(buf + j) = *&k;
                     j += sizeof(int);
                 }
 
