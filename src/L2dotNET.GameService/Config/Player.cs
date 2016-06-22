@@ -1,11 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace L2dotNET.GameService.Config
 {
     public class Player
     {
         ///<summary>Amount of adenas that a new character is given, default is 100.</summary>
-        [JsonProperty(PropertyName = "StartingAdena")]
+        [DefaultValue(100)]
+        [JsonProperty(PropertyName = "StartingAdena", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int StartingAdena { get; set; }
 
         ///<summary>If True, when effects of the same stack group are used, lesser.</summary>
@@ -13,41 +15,50 @@ namespace L2dotNET.GameService.Config
         ///<summary>that are added will be canceled if they are of lesser priority to the old one.</summary>
         ///<summary>If False, they will not be canceled, and it will switch to them after the.</summary>
         ///<summary>stronger one runs out, if the lesser one is still in effect.</summary>
-        [JsonProperty(PropertyName = "CancelLesserEffect")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "CancelLesserEffect", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool CancelLesserEffect { get; set; }
 
         ///<summary>% regeneration of normal regeneration speed - on a base 1 = 100%.</summary>
-        [JsonProperty(PropertyName = "HpRegenMultiplier")]
+        [DefaultValue(1.0)]
+        [JsonProperty(PropertyName = "HpRegenMultiplier", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public double HpRegenMultiplier { get; set; }
 
         ///<summary>% regeneration of normal regeneration speed - on a base 1 = 100%.</summary>
-        [JsonProperty(PropertyName = "MpRegenMultiplier")]
+        [DefaultValue(1.0)]
+        [JsonProperty(PropertyName = "MpRegenMultiplier", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public double MpRegenMultiplier { get; set; }
 
         ///<summary>% regeneration of normal regeneration speed - on a base 1 = 100%.</summary>
-        [JsonProperty(PropertyName = "CpRegenMultiplier")]
+        [DefaultValue(1.0)]
+        [JsonProperty(PropertyName = "CpRegenMultiplier", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public double CpRegenMultiplier { get; set; }
 
         ///<summary>Player Protection after teleporting or login in seconds, 0 for disabled.</summary>
-        [JsonProperty(PropertyName = "PlayerSpawnProtection")]
+        [DefaultValue(0)]
+        [JsonProperty(PropertyName = "PlayerSpawnProtection", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int PlayerSpawnProtection { get; set; }
 
         ///<summary>Player Protection from (agro) mobs after getting up from fake death; in seconds, 0 for disabled.</summary>
-        [JsonProperty(PropertyName = "PlayerFakeDeathUpProtection")]
+        [DefaultValue(0)]
+        [JsonProperty(PropertyName = "PlayerFakeDeathUpProtection", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int PlayerFakeDeathUpProtection { get; set; }
 
         ///<summary>Amount of HP restored at revive - on a base 1 = 100%.</summary>
-        [JsonProperty(PropertyName = "RespawnRestoreHP")]
+        [DefaultValue(0.7)]
+        [JsonProperty(PropertyName = "RespawnRestoreHP", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public double RespawnRestoreHP { get; set; }
 
         ///<summary>Maximum number of allowed slots for Private Stores (sell/buy) for dwarves.</summary>
         ///<summary>Normally, dwarves get 5 slots for pvt stores, while other races get only 4.</summary>
-        [JsonProperty(PropertyName = "MaxPvtStoreSlotsDwarf")]
+        [DefaultValue(5)]
+        [JsonProperty(PropertyName = "MaxPvtStoreSlotsDwarf", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaxPvtStoreSlotsDwarf { get; set; }
 
         ///<summary>Maximum number of allowed slots for Private Stores (sell/buy) for all other races (except dwarves).</summary>
         ///<summary>Normally, dwarves get 5 slots for pvt stores, while other races get only 4.</summary>
-        [JsonProperty(PropertyName = "MaxPvtStoreSlotsOther")]
+        [DefaultValue(4)]
+        [JsonProperty(PropertyName = "MaxPvtStoreSlotsOther", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaxPvtStoreSlotsOther { get; set; }
 
         ///<summary>If True, the following deep blue mobs' drop penalties will be applied:.</summary>
@@ -56,59 +67,62 @@ namespace L2dotNET.GameService.Config
         ///<summary>lowered by 9% each lvl that difference increases. (9lvls diff = -9%; 10lvls diff = -18%; .).</summary>
         ///<summary>NOTE1: These rules are applied to both normal and sweep drops.</summary>
         ///<summary>NOTE2: These rules ignores the server's rate when drop is of adena type (Complies with retail server).</summary>
-        [JsonProperty(PropertyName = "UseDeepBlueDropRules")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "UseDeepBlueDropRules", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool UseDeepBlueDropRules { get; set; }
 
         ///<summary>XP loss (and deleveling) enabled, default is True.</summary>
-        [JsonProperty(PropertyName = "Delevel")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "Delevel", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool Delevel { get; set; }
 
         ///<summary>Death Penalty chance if killed by mob (in %), 20 by default.</summary>
-        [JsonProperty(PropertyName = "DeathPenaltyChance")]
+        [DefaultValue(20)]
+        [JsonProperty(PropertyName = "DeathPenaltyChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int DeathPenaltyChance { get; set; }
 
         ///<summary>Inventory.</summary>
-        [JsonProperty(PropertyName = "Inventory")]
+        [JsonProperty(PropertyName = "Inventory", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Inventory Inventory;
 
         ///<summary>Warehouse.</summary>
-        [JsonProperty(PropertyName = "Warehouse")]
+        [JsonProperty(PropertyName = "Warehouse", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Warehouse Warehouse;
 
         ///<summary>Enchant.</summary>
-        [JsonProperty(PropertyName = "Enchant")]
+        [JsonProperty(PropertyName = "Enchant", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Enchant Enchant;
 
         ///<summary>Augmentation.</summary>
-        [JsonProperty(PropertyName = "Augmentation")]
+        [JsonProperty(PropertyName = "Augmentation", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Augmentation Augmentation;
 
         ///<summary>Karma & PvP.</summary>
-        [JsonProperty(PropertyName = "Combat")]
+        [JsonProperty(PropertyName = "Combat", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Combat Combat;
 
         ///<summary>Party.</summary>
-        [JsonProperty(PropertyName = "Party")]
+        [JsonProperty(PropertyName = "Party", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Party Party;
 
         ///<summary>GMs / Admin Stuff.</summary>
-        [JsonProperty(PropertyName = "GM")]
+        [JsonProperty(PropertyName = "GM", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public GM GM;
 
         ///<summary>Petition.</summary>
-        [JsonProperty(PropertyName = "Petition")]
+        [JsonProperty(PropertyName = "Petition", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Petition Petition;
 
         ///<summary>Crafting.</summary>
-        [JsonProperty(PropertyName = "Crafting")]
+        [JsonProperty(PropertyName = "Crafting", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Crafting Crafting;
 
         ///<summary>Skills / Classes.</summary>
-        [JsonProperty(PropertyName = "Skill")]
+        [JsonProperty(PropertyName = "Skill", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Skill Skill;
 
         ///<summary>Buffs Config.</summary>
-        [JsonProperty(PropertyName = "Buff")]
+        [JsonProperty(PropertyName = "Buff", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Buff Buff;
     }
 
@@ -116,23 +130,29 @@ namespace L2dotNET.GameService.Config
     public class Inventory
     {
         ///<summary>Inventory space limits.</summary>
-        [JsonProperty(PropertyName = "MaximumSlotsForNoDwarf")]
+        [JsonProperty(PropertyName = "MaximumSlotsForNoDwarf", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [DefaultValue(80)]
         public int MaximumSlotsForNoDwarf { get; set; }
 
         ///<summary>Inventory space limits.</summary>
-        [JsonProperty(PropertyName = "MaximumSlotsForDwarf")]
+        [JsonProperty(PropertyName = "MaximumSlotsForDwarf", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [DefaultValue(100)]
         public int MaximumSlotsForDwarf { get; set; }
 
         ///<summary>Inventory space limits.</summary>
-        [JsonProperty(PropertyName = "MaximumSlotsForQuestItems")]
+        [DefaultValue(100)]
+        [JsonProperty(PropertyName = "MaximumSlotsForQuestItems", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaximumSlotsForQuestItems { get; set; }
 
         ///<summary>Inventory space limits.</summary>
-        [JsonProperty(PropertyName = "MaximumSlotsForPet")]
+        [DefaultValue(12)]
+        [JsonProperty(PropertyName = "MaximumSlotsForPet", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaximumSlotsForPet { get; set; }
 
+        ///TODO: Missing MAX_ITEM_IN_PACKET Math.max(INVENTORY_MAXIMUM_NO_DWARF, INVENTORY_MAXIMUM_DWARF);
         ///<summary>Weight Limit multiplier - default 1.</summary>
-        [JsonProperty(PropertyName = "WeightLimit")]
+        [DefaultValue(1)]
+        [JsonProperty(PropertyName = "WeightLimit", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int WeightLimit { get; set; }
     }
 
@@ -141,36 +161,42 @@ namespace L2dotNET.GameService.Config
     {
         ///<summary>Warehouse space limits (Must be lesser than 300 for prevent client crash).</summary>
         ///<summary>Dwarfs will get bonus from lvl 60.</summary>
-        [JsonProperty(PropertyName = "MaximumWarehouseSlotsForDwarf")]
-        public int MaximumWarehouseSlotsForDwarf { get; set; }
-
-        ///<summary>Warehouse space limits (Must be lesser than 300 for prevent client crash).</summary>
-        ///<summary>Dwarfs will get bonus from lvl 60.</summary>
-        [JsonProperty(PropertyName = "MaximumWarehouseSlotsForNoDwarf")]
+        [DefaultValue(100)]
+        [JsonProperty(PropertyName = "MaximumWarehouseSlotsForNoDwarf", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaximumWarehouseSlotsForNoDwarf { get; set; }
 
         ///<summary>Warehouse space limits (Must be lesser than 300 for prevent client crash).</summary>
         ///<summary>Dwarfs will get bonus from lvl 60.</summary>
-        [JsonProperty(PropertyName = "MaximumWarehouseSlotsForClan")]
+        [DefaultValue(120)]
+        [JsonProperty(PropertyName = "MaximumWarehouseSlotsForDwarf", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public int MaximumWarehouseSlotsForDwarf { get; set; }
+
+        ///<summary>Warehouse space limits (Must be lesser than 300 for prevent client crash).</summary>
+        ///<summary>Dwarfs will get bonus from lvl 60.</summary>
+        [DefaultValue(150)]
+        [JsonProperty(PropertyName = "MaximumWarehouseSlotsForClan", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaximumWarehouseSlotsForClan { get; set; }
 
         ///<summary>Warehouse space limits (Must be lesser than 300 for prevent client crash).</summary>
         ///<summary>Dwarfs will get bonus from lvl 60.</summary>
-        [JsonProperty(PropertyName = "MaximumFreightSlots")]
+        [DefaultValue(20)]
+        [JsonProperty(PropertyName = "MaximumFreightSlots", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaximumFreightSlots { get; set; }
 
         ///<summary>Alternative Freight mode. If true, freights can be withdrawed from any place.</summary>
         ///<summary>Also, possibility to change Freight price (in adena) for each item slot in freight.</summary>
         ///<summary>NOTE: AltGameFreightPrice WILL NOT change the value shown to the player, but the.</summary>
         ///<summary>player will actually get charged for the value set in here.</summary>
-        [JsonProperty(PropertyName = "GameFreights")]
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "GameFreights", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool GameFreights { get; set; }
 
         ///<summary>Alternative Freight mode. If true, freights can be withdrawed from any place.</summary>
         ///<summary>Also, possibility to change Freight price (in adena) for each item slot in freight.</summary>
         ///<summary>NOTE: AltGameFreightPrice WILL NOT change the value shown to the player, but the.</summary>
         ///<summary>player will actually get charged for the value set in here.</summary>
-        [JsonProperty(PropertyName = "GameFreightPrice")]
+        [DefaultValue(1000)]
+        [JsonProperty(PropertyName = "GameFreightPrice", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int GameFreightPrice { get; set; }
     }
 
@@ -178,147 +204,179 @@ namespace L2dotNET.GameService.Config
     public class Enchant
     {
         ///<summary>% chance of success to enchant a magic weapon.</summary>
-        [JsonProperty(PropertyName = "ChanceMagicWeapon")]
+        [DefaultValue(0.4)]
+        [JsonProperty(PropertyName = "ChanceMagicWeapon", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public double ChanceMagicWeapon { get; set; }
 
         ///<summary>% chance of success to enchant a magic weapon +15.</summary>
-        [JsonProperty(PropertyName = "ChanceMagicWeapon15Plus")]
+        [DefaultValue(0.2)]
+        [JsonProperty(PropertyName = "ChanceMagicWeapon15Plus", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public double ChanceMagicWeapon15Plus { get; set; }
 
         ///<summary>% chance of success to enchant a non magic weapon.</summary>
-        [JsonProperty(PropertyName = "ChanceNonMagicWeapon")]
+        [DefaultValue(0.7)]
+        [JsonProperty(PropertyName = "ChanceNonMagicWeapon", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public double ChanceNonMagicWeapon { get; set; }
 
         ///<summary>% chance of success to enchant a non magic weapon +15.</summary>
-        [JsonProperty(PropertyName = "ChanceNonMagicWeapon15Plus")]
+        [DefaultValue(0.35)]
+        [JsonProperty(PropertyName = "ChanceNonMagicWeapon15Plus", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public double ChanceNonMagicWeapon15Plus { get; set; }
 
         ///<summary>% chance of success to enchant an armor part (both jewelry or armor).</summary>
-        [JsonProperty(PropertyName = "ChanceArmor")]
+        [DefaultValue(0.66)]
+        [JsonProperty(PropertyName = "ChanceArmor", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public double ChanceArmor { get; set; }
 
         ///<summary>Enchant limit [default = 0].</summary>
-        [JsonProperty(PropertyName = "MaxWeapon")]
+        [DefaultValue(0)]
+        [JsonProperty(PropertyName = "MaxWeapon", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaxWeapon { get; set; }
 
         ///<summary>Enchant limit [default = 0].</summary>
-        [JsonProperty(PropertyName = "MaxArmor")]
+        [DefaultValue(0)]
+        [JsonProperty(PropertyName = "MaxArmor", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaxArmor { get; set; }
 
         ///<summary>if EnchantSafeMax is set to for ex '8' the item will be safly enchanted to '8' regardless of.</summary>
         ///<summary>enchant chance(default = 3 for EnchantSafeMax and default = 4 for EnchantSafeMaxFull).</summary>
         ///<summary>EnchantSafeMaxFull is for full body armor (upper and lower), value should be > 0.</summary>
-        [JsonProperty(PropertyName = "SafeMax")]
+        [DefaultValue(3)]
+        [JsonProperty(PropertyName = "SafeMax", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int SafeMax { get; set; }
 
         ///<summary>if EnchantSafeMax is set to for ex '8' the item will be safly enchanted to '8' regardless of.</summary>
         ///<summary>enchant chance(default = 3 for EnchantSafeMax and default = 4 for EnchantSafeMaxFull).</summary>
         ///<summary>EnchantSafeMaxFull is for full body armor (upper and lower), value should be > 0.</summary>
-        [JsonProperty(PropertyName = "SafeMaxFull")]
+        [DefaultValue(4)]
+        [JsonProperty(PropertyName = "SafeMaxFull", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int SafeMaxFull { get; set; }
     }
 
     ///<summary>Augmentation.</summary>
+    /// TODO: Create attributes to Chance/Glow rate
     public class Augmentation
     {
         ///<summary>Control the chance to get a skill in the augmentation process.</summary>
         ///<summary>Default: 15.</summary>
-        [JsonProperty(PropertyName = "NGSkillChance")]
+        [DefaultValue(15)]
+        [JsonProperty(PropertyName = "NGSkillChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int NGSkillChance { get; set; }
 
         ///<summary>Control the chance to get a skill in the augmentation process.</summary>
         ///<summary>Default: 30.</summary>
-        [JsonProperty(PropertyName = "MidSkillChance")]
+        [DefaultValue(30)]
+        [JsonProperty(PropertyName = "MidSkillChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MidSkillChance { get; set; }
 
         ///<summary>Control the chance to get a skill in the augmentation process.</summary>
         ///<summary>Default: 45.</summary>
-        [JsonProperty(PropertyName = "HighSkillChance")]
+        [DefaultValue(45)]
+        [JsonProperty(PropertyName = "HighSkillChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int HighSkillChance { get; set; }
 
         ///<summary>Control the chance to get a skill in the augmentation process.</summary>
         ///<summary>Default: 60.</summary>
-        [JsonProperty(PropertyName = "TopSkillChance")]
+        [DefaultValue(60)]
+        [JsonProperty(PropertyName = "TopSkillChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int TopSkillChance { get; set; }
 
         ///<summary>This controls the chance to get a base stat modifier in the augmentation process.</summary>
         ///<summary>Notes: This has no dependancy on the grade of Life Stone.</summary>
         ///<summary>Default: 1.</summary>
-        [JsonProperty(PropertyName = "BaseStatChance")]
+        [DefaultValue(1)]
+        [JsonProperty(PropertyName = "BaseStatChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int BaseStatChance { get; set; }
 
         ///<summary>These control the chance to get a glow effect in the augmentation process.</summary>
         ///<summary>Notes: No/Mid Grade Life Stone can't have glow effect if you do not get a skill or base stat modifier.</summary>
         ///<summary>Default: 0.</summary>
-        [JsonProperty(PropertyName = "NGGlowChance")]
+        [DefaultValue(0)]
+        [JsonProperty(PropertyName = "NGGlowChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int NGGlowChance { get; set; }
 
         ///<summary>These control the chance to get a glow effect in the augmentation process.</summary>
         ///<summary>Notes: No/Mid Grade Life Stone can't have glow effect if you do not get a skill or base stat modifier.</summary>
         ///<summary>Default: 40.</summary>
-        [JsonProperty(PropertyName = "MidGlowChance")]
+        [DefaultValue(40)]
+        [JsonProperty(PropertyName = "MidGlowChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MidGlowChance { get; set; }
 
         ///<summary>These control the chance to get a glow effect in the augmentation process.</summary>
         ///<summary>Notes: No/Mid Grade Life Stone can't have glow effect if you do not get a skill or base stat modifier.</summary>
         ///<summary>Default: 70.</summary>
-        [JsonProperty(PropertyName = "HighGlowChance")]
+        [DefaultValue(70)]
+        [JsonProperty(PropertyName = "HighGlowChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int HighGlowChance { get; set; }
 
         ///<summary>These control the chance to get a glow effect in the augmentation process.</summary>
         ///<summary>Notes: No/Mid Grade Life Stone can't have glow effect if you do not get a skill or base stat modifier.</summary>
         ///<summary>Default: 100.</summary>
-        [JsonProperty(PropertyName = "TopGlowChance")]
+        [DefaultValue(100)]
+        [JsonProperty(PropertyName = "TopGlowChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int TopGlowChance { get; set; }
     }
 
     ///<summary>Karma & PvP.</summary>
     public class Combat
     {
-        [JsonProperty(PropertyName = "KarmaPlayerCanBeKilledInPeaceZone")]
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "KarmaPlayerCanBeKilledInPeaceZone", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool KarmaPlayerCanBeKilledInPeaceZone { get; set; }
 
-        [JsonProperty(PropertyName = "KarmaPlayerCanShop")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "KarmaPlayerCanShop", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool KarmaPlayerCanShop { get; set; }
 
-        [JsonProperty(PropertyName = "KarmaPlayerCanTeleport")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "KarmaPlayerCanTeleport", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool KarmaPlayerCanTeleport { get; set; }
 
-        [JsonProperty(PropertyName = "KarmaPlayerCanUseGK")]
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "KarmaPlayerCanUseGK", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool KarmaPlayerCanUseGK { get; set; }
 
-        [JsonProperty(PropertyName = "KarmaPlayerCanTrade")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "KarmaPlayerCanTrade", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool KarmaPlayerCanTrade { get; set; }
 
-        [JsonProperty(PropertyName = "KarmaPlayerCanUseWareHouse")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "KarmaPlayerCanUseWareHouse", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool KarmaPlayerCanUseWareHouse { get; set; }
 
-        ///<summary>Equipment loss.</summary>
-        [JsonProperty(PropertyName = "CanGMDropEquipment")]
+        ///<summary>GM Equipment loss.</summary>
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "CanGMDropEquipment", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool CanGMDropEquipment { get; set; }
 
         ///<summary>List of pet items we cannot drop.</summary>
-        [JsonProperty(PropertyName = "ListOfPetItems")]
+        [DefaultValue(new[] { 2375, 3500, 3501, 3502, 4422, 4423, 4424, 4425, 6648, 6649, 6650 })]
+        [JsonProperty(PropertyName = "ListOfPetItems", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int[] ListOfPetItems { get; set; }
 
         ///<summary>Lists of items which should NEVER be dropped by PKer.</summary>
-        [JsonProperty(PropertyName = "ListOfNonDroppableItemsForPK")]
+        [DefaultValue(new[] { 1147, 425, 1146, 461, 10, 2368, 7, 6, 2370, 2369 })]
+        [JsonProperty(PropertyName = "ListOfNonDroppableItemsForPK", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int[] ListOfNonDroppableItemsForPK { get; set; }
 
         ///<summary>Item drop related min/max.</summary>
-        [JsonProperty(PropertyName = "MinimumPKRequiredToDrop")]
+        [DefaultValue(5)]
+        [JsonProperty(PropertyName = "MinimumPKRequiredToDrop", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MinimumPKRequiredToDrop { get; set; }
 
         ///<summary>Should we award a pvp point for killing a player with karma?.</summary>
-        [JsonProperty(PropertyName = "AwardPKKillPVPPoint")]
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "AwardPKKillPVPPoint", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool AwardPKKillPVPPoint { get; set; }
 
         ///<summary>Length one stays in PvP mode after hitting an innocent (in ms).</summary>
-        [JsonProperty(PropertyName = "PvPVsNormalTime")]
+        [DefaultValue(15000)]
+        [JsonProperty(PropertyName = "PvPVsNormalTime", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int PvPVsNormalTime { get; set; }
 
         ///<summary>Length one stays in PvP mode after hitting a purple player (in ms).</summary>
-        [JsonProperty(PropertyName = "PvPVsPvPTime")]
+        [DefaultValue(30000)]
+        [JsonProperty(PropertyName = "PvPVsPvPTime", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int PvPVsPvPTime { get; set; }
     }
 
@@ -331,31 +389,37 @@ namespace L2dotNET.GameService.Config
         ///<summary>If you don't want to have a cutoff point for party members' XP distribution, set the first option to "none".</summary>
         ///<summary>Available Options: auto, level, percentage, none.</summary>
         ///<summary>Default: level.</summary>
-        [JsonProperty(PropertyName = "XpCutoffMethod")]
+        [DefaultValue("level")]
+        [JsonProperty(PropertyName = "XpCutoffMethod", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public string XpCutoffMethod { get; set; }
 
         ///<summary>This option takes effect when "percentage" method is chosen. Don't use high values for this!.</summary>
         ///<summary>Default: 3.0.</summary>
-        [JsonProperty(PropertyName = "XpCutoffPercent")]
+        [DefaultValue(3.0)]
+        [JsonProperty(PropertyName = "XpCutoffPercent", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public double XpCutoffPercent { get; set; }
 
         ///<summary>This option takes effect when "level" method is chosen. Don't use low values for this!.</summary>
         ///<summary>Default: 20.</summary>
-        [JsonProperty(PropertyName = "XpCutoffLevel")]
+        [DefaultValue(20)]
+        [JsonProperty(PropertyName = "XpCutoffLevel", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int XpCutoffLevel { get; set; }
 
         ///<summary>Party range for l2attackable (default 1600).</summary>
-        [JsonProperty(PropertyName = "Range")]
+        [DefaultValue(1600)]
+        [JsonProperty(PropertyName = "Range", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int Range { get; set; }
 
         ///<summary>Party range for l2party (default 1400).</summary>
-        [JsonProperty(PropertyName = "Range2")]
+        [DefaultValue(1400)]
+        [JsonProperty(PropertyName = "Range2", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int Range2 { get; set; }
 
         ///<summary>If True, when the party leader leaves the party, the next member in party will be the leader.</summary>
         ///<summary>If False, the party will be dispersed.</summary>
         ///<summary>Default: False.</summary>
-        [JsonProperty(PropertyName = "LeavePartyLeader")]
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "LeavePartyLeader", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool LeavePartyLeader { get; set; }
     }
 
@@ -363,43 +427,52 @@ namespace L2dotNET.GameService.Config
     public class GM
     {
         ///<summary>If next switch is set to true every newly created character will have access level 200.</summary>
-        [JsonProperty(PropertyName = "EverybodyHasAdminRights")]
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "EverybodyHasAdminRights", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool EverybodyHasAdminRights { get; set; }
 
         ///<summary>This option will set the default AccessLevel for MasterAccess.</summary>
         ///<summary>Characters set to this AccessLevel will have the right to execute every AdminCommand ingame.</summary>
         ///<summary>Default: 127 (Maximum value: 255).</summary>
-        [JsonProperty(PropertyName = "MasterAccessLevel")]
+        [DefaultValue(127)]
+        [JsonProperty(PropertyName = "MasterAccessLevel", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public byte MasterAccessLevel { get; set; }
 
         ///<summary>Name color for those matching the above MasterAccess AccessLevel.</summary>
         ///<summary>Default: 00CCFF (golden color).</summary>
-        [JsonProperty(PropertyName = "MasterNameColor")]
+        [DefaultValue("00FF00")]
+        [JsonProperty(PropertyName = "MasterNameColor", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public string MasterNameColor { get; set; }
 
         ///<summary>Title color for those matching the above MasterAccess AccessLevel.</summary>
         ///<summary>Default: 00CCFF (golden color).</summary>
-        [JsonProperty(PropertyName = "MasterTitleColor")]
+        [DefaultValue("00FF00")]
+        [JsonProperty(PropertyName = "MasterTitleColor", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public string MasterTitleColor { get; set; }
 
         ///<summary>Enable GMs to have the glowing aura of a Hero character.</summary>
-        [JsonProperty(PropertyName = "GMHeroAura")]
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "GMHeroAura", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool GMHeroAura { get; set; }
 
         ///<summary>Auto set invulnerable status to a GM on login.</summary>
-        [JsonProperty(PropertyName = "GMStartupInvulnerable")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "GMStartupInvulnerable", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool GMStartupInvulnerable { get; set; }
 
         ///<summary>Auto set invisible status to a GM on login.</summary>
-        [JsonProperty(PropertyName = "GMStartupInvisible")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "GMStartupInvisible", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool GMStartupInvisible { get; set; }
 
         ///<summary>Auto block private messages to a GM on login.</summary>
-        [JsonProperty(PropertyName = "GMStartupSilence")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "GMStartupSilence", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool GMStartupSilence { get; set; }
 
         ///<summary>Auto list GMs in GM list (/gmlist) on login.</summary>
-        [JsonProperty(PropertyName = "GMStartupAutoList")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "GMStartupAutoList", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool GMStartupAutoList { get; set; }
     }
 
@@ -407,15 +480,18 @@ namespace L2dotNET.GameService.Config
     public class Petition
     {
         ///<summary>Enable players to send in-game petitions.</summary>
-        [JsonProperty(PropertyName = "PetitioningAllowed")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "PetitioningAllowed", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool PetitioningAllowed { get; set; }
 
         ///<summary>Total number of petitions to allow per player, per session.</summary>
-        [JsonProperty(PropertyName = "MaxPetitionsPerPlayer")]
+        [DefaultValue(5)]
+        [JsonProperty(PropertyName = "MaxPetitionsPerPlayer", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaxPetitionsPerPlayer { get; set; }
 
         ///<summary>Total number of petitions pending, if more are submitted they will be rejected.</summary>
-        [JsonProperty(PropertyName = "MaxPetitionsPending")]
+        [DefaultValue(25)]
+        [JsonProperty(PropertyName = "MaxPetitionsPending", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaxPetitionsPending { get; set; }
     }
 
@@ -423,19 +499,23 @@ namespace L2dotNET.GameService.Config
     public class Crafting
     {
         ///<summary>Crafting enabled/disabled. True by default.</summary>
-        [JsonProperty(PropertyName = "CraftingEnabled")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "CraftingEnabled", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool CraftingEnabled { get; set; }
 
         ///<summary>Limits for recipes (default : 50).</summary>
-        [JsonProperty(PropertyName = "DwarfRecipeLimit")]
+        [DefaultValue(50)]
+        [JsonProperty(PropertyName = "DwarfRecipeLimit", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int DwarfRecipeLimit { get; set; }
 
         ///<summary>Limits for recipes (default : 50).</summary>
-        [JsonProperty(PropertyName = "CommonRecipeLimit")]
+        [DefaultValue(50)]
+        [JsonProperty(PropertyName = "CommonRecipeLimit", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int CommonRecipeLimit { get; set; }
 
         ///<summary>If set to False, blacksmiths don't take recipes from players inventory when crafting. Default = True (retail).</summary>
-        [JsonProperty(PropertyName = "BlacksmithUseRecipes")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "BlacksmithUseRecipes", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool BlacksmithUseRecipes { get; set; }
     }
 
@@ -443,44 +523,53 @@ namespace L2dotNET.GameService.Config
     public class Skill
     {
         ///<summary>AutoLearnSkills. True to enable, False to disable.</summary>
-        [JsonProperty(PropertyName = "AutoLearnSkills")]
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "AutoLearnSkills", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool AutoLearnSkills { get; set; }
 
         ///<summary>If disabled, magic dmg has always 100% chance of success, default is 'true'.</summary>
-        [JsonProperty(PropertyName = "MagicFailures")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "MagicFailures", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool MagicFailures { get; set; }
 
         ///<summary>Alternative rules for shields - if they block, the damage is powerAtk-shieldDef,.</summary>
         ///<summary>otherwice it's powerAttak / (shieldDef + powerDef).</summary>
-        [JsonProperty(PropertyName = "ShieldBlocks")]
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "ShieldBlocks", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool ShieldBlocks { get; set; }
 
         ///<summary>Alternative Rate Value for Perfect Shield Block Rate.</summary>
-        [JsonProperty(PropertyName = "PerfectShieldBlockRate")]
+        [DefaultValue(10)]
+        [JsonProperty(PropertyName = "PerfectShieldBlockRate", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int PerfectShieldBlockRate { get; set; }
 
         ///<summary>Life crystal needed to learn clan skills.</summary>
         ///<summary>Default: True.</summary>
-        [JsonProperty(PropertyName = "LifeCrystalNeeded")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "LifeCrystalNeeded", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool LifeCrystalNeeded { get; set; }
 
         ///<summary>Spell book needed to learn skills.</summary>
         ///<summary>Default: True.</summary>
-        [JsonProperty(PropertyName = "SpBookNeeded")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "SpBookNeeded", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool SpBookNeeded { get; set; }
 
         ///<summary>Spell book needed to enchant skills.</summary>
         ///<summary>Default: True.</summary>
-        [JsonProperty(PropertyName = "EnchantSkillSpBookNeeded")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "EnchantSkillSpBookNeeded", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool EnchantSkillSpBookNeeded { get; set; }
 
         ///<summary>Spell book needed to learn Divine Inspiration.</summary>
         ///<summary>Default: True.</summary>
-        [JsonProperty(PropertyName = "DivineInspirationSpBookNeeded")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "DivineInspirationSpBookNeeded", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool DivineInspirationSpBookNeeded { get; set; }
 
         ///<summary>Allow player subclass addition without checking for unique quest items.</summary>
-        [JsonProperty(PropertyName = "SubClassWithoutQuests")]
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "SubClassWithoutQuests", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool SubClassWithoutQuests { get; set; }
     }
 
@@ -490,11 +579,13 @@ namespace L2dotNET.GameService.Config
         ///<summary>Maximum number of buffs.</summary>
         ///<summary>Remember that Divine Inspiration will give 4 additional buff slots on top of the number specified.</summary>
         ///<summary>Default: 20.</summary>
-        [JsonProperty(PropertyName = "MaxBuffsAmount")]
+        [DefaultValue(20)]
+        [JsonProperty(PropertyName = "MaxBuffsAmount", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaxBuffsAmount { get; set; }
 
         ///<summary>Store buffs/debuffs on user logout?.</summary>
-        [JsonProperty(PropertyName = "StoreSkillCooltime")]
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "StoreSkillCooltime", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool StoreSkillCooltime { get; set; }
     }
 }

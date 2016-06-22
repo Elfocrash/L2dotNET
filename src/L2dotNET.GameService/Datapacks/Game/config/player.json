@@ -20,8 +20,8 @@
     "WeightLimit": 1
   },
   "Warehouse": {
-    "MaximumWarehouseSlotsForDwarf": 120,
     "MaximumWarehouseSlotsForNoDwarf": 100,
+    "MaximumWarehouseSlotsForDwarf": 120,
     "MaximumWarehouseSlotsForClan": 200,
     "MaximumFreightSlots": 20,
     "GameFreights": false,
