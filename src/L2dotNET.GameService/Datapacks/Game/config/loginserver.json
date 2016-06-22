@@ -8,14 +8,17 @@
     "LoginBlockAfterBan": 600,
     "LoginHostname": "*",
     "LoginPort": 9014,
+    "ShowLicence": true,
     "AcceptNewGameServer": false,
-    "ShowLicence": true
+    "RequestServerID": 0,
+    "AcceptAlternateID": false
   },
   "LoginDatabase": {
     "URL": "",
     "Login": "",
     "Password": "",
     "MaximumDbConnections": 10,
+    "MaximumDbIdleTime": 0,
     "AutoCreateAccounts": true
   },
   "Security": {
