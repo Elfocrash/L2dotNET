@@ -30,6 +30,7 @@ using L2dotNET.GameService.Tools;
 using L2dotNET.GameService.World;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
+using L2dotNET.Utility;
 using Ninject;
 
 namespace L2dotNET.GameService.Model.Player
@@ -826,7 +827,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public void ShowHtm(string file, L2Object o)
         {
-            if (file.EndsWith(".htm", StringComparison.InvariantCultureIgnoreCase))
+            if (file.EndsWithIgnoreCase(".htm"))
             {
                 sendPacket(new NpcHtmlMessage(this, file, o.ObjID, 0));
                 if (o is L2Npc)
@@ -838,7 +839,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public void ShowHtm(string file, L2Npc npc, int questId)
         {
-            if (file.EndsWith(".htm", StringComparison.InvariantCultureIgnoreCase))
+            if (file.EndsWithIgnoreCase(".htm"))
             {
                 NpcHtmlMessage htm = new NpcHtmlMessage(this, file, npc.ObjID, 0);
                 htm.replace("<?quest_id?>", questId);

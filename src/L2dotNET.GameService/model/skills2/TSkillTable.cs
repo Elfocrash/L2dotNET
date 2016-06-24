@@ -238,7 +238,7 @@ namespace L2dotNET.GameService.Model.Skills2
             //    while (!sreader.EndOfStream)
             //    {
             //        string line = sreader.ReadLine();
-            //        if (line.Length == 0 || line.StartsWith("#"))
+            //        if (line.Length == 0 || line.StartsWithIgnoreCase("#"))
             //            continue;
 
             //        string[] pt = line.Split('\t');

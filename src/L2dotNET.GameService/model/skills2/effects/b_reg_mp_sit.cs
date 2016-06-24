@@ -1,7 +1,7 @@
-﻿using System;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2.SpecEffects;
 using L2dotNET.GameService.World;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Model.Skills2.Effects
 {
@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         {
             string val = str.Split(' ')[1];
             ef = new b_regen_mp_by_sit(double.Parse(val.Substring(1)));
-            ef.mul = val.StartsWith("*", StringComparison.InvariantCultureIgnoreCase);
+            ef.mul = val.StartsWithIgnoreCase("*");
         }
 
         public override TEffectResult onStart(L2Character caster, L2Character target)

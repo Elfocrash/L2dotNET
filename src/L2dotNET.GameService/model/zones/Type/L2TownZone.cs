@@ -1,6 +1,7 @@
 ﻿using System;
 using L2dotNET.GameService.Enums;
 using L2dotNET.GameService.World;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Model.Zones.Type
 {
@@ -18,11 +19,11 @@ namespace L2dotNET.GameService.Model.Zones.Type
 
         public override void SetParameter(string name, string value)
         {
-            if (name.Equals("townId"))
+            if (name.EqualsIgnoreCase("townId"))
                 TownId = Convert.ToInt32(value);
-            else if (name.Equals("taxById"))
+            else if (name.EqualsIgnoreCase("taxById"))
                 TaxById = Convert.ToInt32(value);
-            else if (name.Equals("isPeaceZone"))
+            else if (name.EqualsIgnoreCase("isPeaceZone"))
                 IsPeaceZone = bool.Parse(value);
         }
 

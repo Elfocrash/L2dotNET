@@ -1,6 +1,6 @@
-﻿using System;
-using L2dotNET.GameService.Handlers;
+﻿using L2dotNET.GameService.Handlers;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (_alias.StartsWith("menu_select?", StringComparison.InvariantCultureIgnoreCase))
+            if (_alias.StartsWithIgnoreCase("menu_select?"))
             {
                 //_alias = _alias.Replace(" ", "");
                 //string x1 = _alias.Split('?')[1];
@@ -40,7 +40,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 //  npc.onDialog(player, ask, reply);
             }
-            else if (_alias.StartsWith("admin?", StringComparison.InvariantCultureIgnoreCase))
+            else if (_alias.StartsWithIgnoreCase("admin?"))
             {
                 if (player.ViewingAdminPage == 0)
                 {

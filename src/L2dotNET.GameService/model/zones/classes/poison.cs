@@ -6,6 +6,7 @@ using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.World;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Model.Zones.Classes
 {
@@ -62,7 +63,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             }
 
             //надо бы как то найти и вынести эту фичу. она недокументирована
-            if (Template.Name.StartsWith("[spa_", StringComparison.InvariantCultureIgnoreCase) && Template.Name.EndsWith("1]", StringComparison.InvariantCultureIgnoreCase))
+            if (Template.Name.StartsWithIgnoreCase("[spa_") && Template.Name.EndsWithIgnoreCase("1]"))
             {
                 if (rn.Next(0, 100) > Template._skill_prob)
                     return;

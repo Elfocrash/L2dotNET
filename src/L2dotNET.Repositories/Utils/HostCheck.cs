@@ -5,6 +5,7 @@ using System.Net.NetworkInformation;
 using System.ServiceProcess;
 using System.Threading;
 using log4net;
+using L2dotNET.Utility;
 
 namespace L2dotNET.Repositories.Utils
 {
@@ -60,7 +61,7 @@ namespace L2dotNET.Repositories.Utils
         {
             try
             {
-                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName, StringComparison.InvariantCultureIgnoreCase));
+                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWithIgnoreCase(serviceName));
             }
             catch (Exception ex)
             {
@@ -74,7 +75,7 @@ namespace L2dotNET.Repositories.Utils
         {
             try
             {
-                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWith(serviceName, StringComparison.InvariantCultureIgnoreCase) && (service.Status == ServiceControllerStatus.Running));
+                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWithIgnoreCase(serviceName) && (service.Status == ServiceControllerStatus.Running));
             }
             catch (Exception ex)
             {
@@ -86,7 +87,7 @@ namespace L2dotNET.Repositories.Utils
 
         public static void StartService(string serviceName, int timeoutMs)
         {
-            ServiceController service = ServiceController.GetServices().FirstOrDefault(filter => filter.ServiceName.StartsWith(serviceName, StringComparison.InvariantCultureIgnoreCase));
+            ServiceController service = ServiceController.GetServices().FirstOrDefault(filter => filter.ServiceName.StartsWithIgnoreCase(serviceName));
 
             if (service == null)
                 return;

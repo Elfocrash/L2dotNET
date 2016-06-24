@@ -1,6 +1,7 @@
 ﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.World;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Model.Skills2.Effects
 {
@@ -16,7 +17,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             int[] loc = null; //для городов не буду писать, пусть тащит как нуль
-            if (region.Equals("hideout"))
+            if (region.EqualsIgnoreCase("hideout"))
             {
                 L2Player player = (L2Player)target;
                 if ((player.ClanId > 0) && (player.Clan.HideoutID > 0))

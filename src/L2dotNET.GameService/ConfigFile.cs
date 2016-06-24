@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using log4net;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService
 {
@@ -28,7 +28,7 @@ namespace L2dotNET.GameService
                 if (line.Length == 0)
                     continue;
 
-                if (line.StartsWith(";", StringComparison.InvariantCultureIgnoreCase))
+                if (line.StartsWithIgnoreCase(";"))
                     continue;
 
                 _topics.Add(line.Split('=')[0], line.Split('=')[1]);

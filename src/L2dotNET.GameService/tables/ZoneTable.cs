@@ -5,6 +5,7 @@ using L2dotNET.GameService.Model.Zones;
 using L2dotNET.GameService.Model.Zones.Classes;
 using L2dotNET.GameService.Model.Zones.Forms;
 using L2dotNET.GameService.World;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -43,10 +44,10 @@ namespace L2dotNET.GameService.Tables
                     if (line.Length == 0)
                         continue;
 
-                    if (line.StartsWith("//", StringComparison.InvariantCultureIgnoreCase))
+                    if (line.StartsWithIgnoreCase("//"))
                         continue;
 
-                    if (line.StartsWith("area_begin", StringComparison.InvariantCultureIgnoreCase))
+                    if (line.StartsWithIgnoreCase("area_begin"))
                     {
                         L2Zone zone = null;
                         ZoneTemplate template = new ZoneTemplate();
@@ -54,7 +55,7 @@ namespace L2dotNET.GameService.Tables
 
                         for (int i = 1; i < d.Length; i++)
                         {
-                            if (d[i].Equals("area_end"))
+                            if (d[i].EqualsIgnoreCase("area_end"))
                                 continue;
 
                             string param = d[i].Split('=')[0];
@@ -130,7 +131,7 @@ namespace L2dotNET.GameService.Tables
                                     template._move_bonus = int.Parse(val);
                                     break;
                                 case "default_status":
-                                    template.DefaultStatus = val.Equals("on");
+                                    template.DefaultStatus = val.EqualsIgnoreCase("on");
                                     break;
                                 case "event_id":
                                     template._event_id = int.Parse(val);
@@ -166,7 +167,7 @@ namespace L2dotNET.GameService.Tables
                                     template._exp_penalty_per = int.Parse(val);
                                     break;
                                 case "item_drop":
-                                    template._item_drop = val.Equals("on");
+                                    template._item_drop = val.EqualsIgnoreCase("on");
                                     break;
                             }
                         }

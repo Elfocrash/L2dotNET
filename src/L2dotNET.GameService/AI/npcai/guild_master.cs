@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using L2dotNET.GameService.Model.Communities;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.AI.NpcAI
 {
@@ -392,7 +392,7 @@ namespace L2dotNET.GameService.AI.NpcAI
             }
             else
             {
-                if (bypass.StartsWith("create_pledge", StringComparison.InvariantCultureIgnoreCase))
+                if (bypass.StartsWithIgnoreCase("create_pledge"))
                     CreateClan(talker, bypass.Substring("create_pledge?pledge_name= ".Length));
             }
         }

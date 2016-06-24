@@ -4,6 +4,7 @@ using System.IO;
 using log4net;
 using L2dotNET.GameService.Model.Npcs.Decor;
 using L2dotNET.GameService.World;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -40,7 +41,7 @@ namespace L2dotNET.GameService.Tables
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine() ?? string.Empty;
-                    if ((line.Length == 0) || line.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
+                    if ((line.Length == 0) || line.StartsWithIgnoreCase("#"))
                         continue;
 
                     string[] pt = line.Split('\t');

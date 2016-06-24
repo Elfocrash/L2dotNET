@@ -3,6 +3,7 @@ using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.World;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Model.Zones.Classes
 {
@@ -27,10 +28,10 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             {
                 L2Player p = (L2Player)obj;
                 p.sendSystemMessage((SystemMessage.SystemMessageId)Template._entering_message_no);
-                if (Template._affect_race.Equals("all"))
+                if (Template._affect_race.EqualsIgnoreCase("all"))
                     return;
 
-                if (!Template._affect_race.Equals("elf"))
+                if (!Template._affect_race.EqualsIgnoreCase("elf"))
                     return;
 
                 if (p.BaseClass.ClassId.ClassRace != ClassRace.ELF)
@@ -54,10 +55,10 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             {
                 L2Player p = (L2Player)obj;
                 p.sendSystemMessage((SystemMessage.SystemMessageId)Template._leaving_message_no);
-                if (Template._affect_race.Equals("all"))
+                if (Template._affect_race.EqualsIgnoreCase("all"))
                     return;
 
-                if (!Template._affect_race.Equals("elf"))
+                if (!Template._affect_race.EqualsIgnoreCase("elf"))
                     return;
 
                 if (p.BaseClass.ClassId.ClassRace != ClassRace.ELF)
