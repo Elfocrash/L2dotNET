@@ -66,5 +66,25 @@ namespace L2dotNET.Utility
         {
             return str.Equals(stringToCompare, StringComparison.InvariantCulture);
         }
+
+        /// <summary> 
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="stringToCompare"></param>
+        /// <returns></returns>
+        public static bool StartsWithIgnoreCase(this string str, string stringToCompare)
+        {
+            return str.StartsWith(stringToCompare, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="stringToCompare"></param>
+        /// <returns></returns>
+        public static bool StartsWithMatchCase(this string str, string stringToCompare)
+        {
+            return str.StartsWith(stringToCompare, StringComparison.InvariantCulture);
+        }
     }
 }
