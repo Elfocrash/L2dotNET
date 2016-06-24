@@ -6,6 +6,7 @@ using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Zones.Type;
 using L2dotNET.GameService.World;
 using L2dotNET.Models;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -52,7 +53,7 @@ namespace L2dotNET.GameService.Tables
                         if (node.Attributes != null)
                         {
                             XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                            if ((ownerElement != null) && ((node.Attributes != null) && ownerElement.Name.Equals("map")))
+                            if ((ownerElement != null) && ((node.Attributes != null) && ownerElement.Name.EqualsIgnoreCase("map")))
                             {
                                 XmlNamedNodeMap attrs = node.Attributes;
                                 int rY = Convert.ToInt32(attrs.GetNamedItem("geoY").Value) - 10;

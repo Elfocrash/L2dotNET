@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using log4net;
 using L2dotNET.Models;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network
 {
@@ -42,21 +43,21 @@ namespace L2dotNET.GameService.Network
                     if (line.Length == 0)
                         continue;
 
-                    if (line.StartsWith("//", StringComparison.InvariantCultureIgnoreCase))
+                    if (line.StartsWithIgnoreCase("//"))
                         continue;
 
-                    if (line.StartsWith("d", StringComparison.InvariantCultureIgnoreCase))
+                    if (line.StartsWithIgnoreCase("d"))
                     {
                         NetworkBlockModel nbModel = new NetworkBlockModel();
                         nbModel.DirectIp = line.Split(' ')[1];
-                        nbModel.Permanent = line.Split(' ')[2].Equals("0");
+                        nbModel.Permanent = line.Split(' ')[2].EqualsIgnoreCase("0");
                         blocks.Add(nbModel);
                     }
-                    else if (line.StartsWith("m", StringComparison.InvariantCultureIgnoreCase))
+                    else if (line.StartsWithIgnoreCase("m"))
                     {
                         NetworkBlockModel nbModel = new NetworkBlockModel();
                         nbModel.Mask = line.Split(' ')[1];
-                        nbModel.Permanent = line.Split(' ')[2].Equals("0");
+                        nbModel.Permanent = line.Split(' ')[2].EqualsIgnoreCase("0");
                         blocks.Add(nbModel);
                     }
                 }

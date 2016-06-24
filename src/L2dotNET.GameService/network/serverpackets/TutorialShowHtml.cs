@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -30,7 +31,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             if (admin)
             {
-                if (back.Equals(""))
+                if (back.EqualsIgnoreCase(""))
                     back = "link main.htm";
 
                 Content = "<html><title>Admin Menu</title><table width=270><tr><td width=45><td width=45><button value=\"Back\" action=\"" + back + "\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>><td width=180><center><td width=45><button value=\"Main\" action=\"link main.htm\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></center></td><td width=45><button value=\"Close\" action=\"link admin_close\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr></table>";
@@ -45,7 +46,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             //if (admin)
             //{
-            //    if (back.Equals(""))
+            //    if (back.EqualsIgnoreCase(""))
             //        back = "link main.htm";
 
             //    replace("<html>", "<html><title>Admin Menu</title><table width=270><tr><td width=45><td width=45><button value=\"Back\" action=\"" + back + "\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>><td width=180><center><td width=45><button value=\"Main\" action=\"link main.htm\" width=45 height=21 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></center></td><td width=45><button value=\"Close\" action=\"link admin_close\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr></table>");

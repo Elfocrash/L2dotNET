@@ -7,6 +7,7 @@ using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tools;
 using L2dotNET.GameService.World;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Model.Skills2
 {
@@ -62,7 +63,7 @@ namespace L2dotNET.GameService.Model.Skills2
         /// <param name="value"></param>
         public void SetEffect_effect(string value)
         {
-            if (value.StartsWith("{", StringComparison.InvariantCultureIgnoreCase))
+            if (value.StartsWithIgnoreCase("{"))
                 return;
 
             byte order = 0;
@@ -88,7 +89,7 @@ namespace L2dotNET.GameService.Model.Skills2
 
         public void SetOperateCond(string value)
         {
-            if (value.StartsWith("{", StringComparison.InvariantCultureIgnoreCase))
+            if (value.StartsWithIgnoreCase("{"))
                 return;
 
             foreach (string str in value.Split(';'))

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -59,7 +60,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeS("bypass bbs_add_fav"); // add fav.
 
             string st = id + "\u0008";
-            if (!id.Equals("1002"))
+            if (!id.EqualsIgnoreCase("1002"))
                 st += htmlCode;
             else
                 foreach (string s in arg)

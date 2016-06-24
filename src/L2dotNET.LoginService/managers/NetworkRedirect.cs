@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using log4net;
 using L2dotNET.LoginService.Network;
+using L2dotNET.Utility;
 
 namespace L2dotNET.LoginService.Managers
 {
@@ -40,7 +40,7 @@ namespace L2dotNET.LoginService.Managers
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine() ?? string.Empty;
-                    if ((line.Length == 0) || line.StartsWith("//", StringComparison.InvariantCultureIgnoreCase))
+                    if ((line.Length == 0) || line.StartsWithIgnoreCase("//"))
                         continue;
 
                     NetRedClass i = new NetRedClass();

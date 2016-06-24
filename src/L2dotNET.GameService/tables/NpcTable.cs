@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml;
 using log4net;
 using L2dotNET.GameService.Templates;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -38,7 +39,7 @@ namespace L2dotNET.GameService.Tables
 
         public NpcTemplate GetTemplateByName(string name)
         {
-            return npcs.Values.FirstOrDefault(npcTemplate => npcTemplate.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+            return npcs.Values.FirstOrDefault(npcTemplate => npcTemplate.Name.EqualsIgnoreCase(name));
         }
 
         public List<NpcTemplate> GetAllNpcs()

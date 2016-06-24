@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using log4net;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -56,7 +57,7 @@ namespace L2dotNET.GameService.Tables
             if (string.IsNullOrEmpty(filename))
                 return string.Empty;
 
-            L2Html html = htmCache.FirstOrDefault(x => x.Filename.Equals(filename, StringComparison.InvariantCultureIgnoreCase));
+            L2Html html = htmCache.FirstOrDefault(x => x.Filename.EqualsIgnoreCase(filename));
             return html != null ? html.Content : string.Empty;
         }
 

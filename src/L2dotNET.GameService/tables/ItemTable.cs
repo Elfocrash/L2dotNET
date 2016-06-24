@@ -5,6 +5,7 @@ using log4net;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -37,7 +38,7 @@ namespace L2dotNET.GameService.Tables
                 while (!sreader.EndOfStream)
                 {
                     string line = sreader.ReadLine() ?? string.Empty;
-                    if ((line.Length == 0) || line.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
+                    if ((line.Length == 0) || line.StartsWithIgnoreCase("#"))
                         continue;
 
                     string[] pt = line.Split('\t');
@@ -101,7 +102,7 @@ namespace L2dotNET.GameService.Tables
                 while (!sreader.EndOfStream)
                 {
                     string line = sreader.ReadLine() ?? string.Empty;
-                    if ((line.Length == 0) || line.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
+                    if ((line.Length == 0) || line.StartsWithIgnoreCase("#"))
                         continue;
 
                     string[] pt = line.Split('\t');
@@ -343,7 +344,7 @@ namespace L2dotNET.GameService.Tables
                 while (!sreader.EndOfStream)
                 {
                     string line = sreader.ReadLine() ?? string.Empty;
-                    if ((line.Length == 0) || line.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
+                    if ((line.Length == 0) || line.StartsWithIgnoreCase("#"))
                         continue;
 
                     string[] pt = line.Split('>');

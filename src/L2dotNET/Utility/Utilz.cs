@@ -86,5 +86,15 @@ namespace L2dotNET.Utility
         {
             return str.StartsWith(stringToCompare, StringComparison.InvariantCulture);
         }
+
+        public static bool EndsWithIgnoreCase(this string str, string stringToCompare)
+        {
+            return str.EndsWith(stringToCompare, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        public static bool EndsWithMatchCase(this string str, string stringToCompare)
+        {
+            return str.EndsWith(stringToCompare, StringComparison.InvariantCulture);
+        }
     }
 }

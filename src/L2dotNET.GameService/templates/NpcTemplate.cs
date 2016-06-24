@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using L2dotNET.GameService.Enums;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Templates
 {
@@ -57,7 +57,7 @@ namespace L2dotNET.GameService.Templates
             Type = set.GetString("type");
             Name = set.GetString("name");
             Title = set.GetString("title", "");
-            CantBeChampionMonster = Title.Equals("Quest Monster", StringComparison.InvariantCultureIgnoreCase);
+            CantBeChampionMonster = Title.EqualsIgnoreCase("Quest Monster");
             Level = set.GetByte("level", 1);
             Exp = set.GetInt("exp");
             Sp = set.GetInt("sp");

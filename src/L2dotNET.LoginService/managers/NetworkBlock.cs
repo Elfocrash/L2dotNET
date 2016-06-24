@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using log4net;
+using L2dotNET.Utility;
 
 namespace L2dotNET.LoginService.Managers
 {
@@ -40,21 +41,21 @@ namespace L2dotNET.LoginService.Managers
                     if (line.Length == 0)
                         continue;
 
-                    if (line.StartsWith("//", StringComparison.InvariantCultureIgnoreCase))
+                    if (line.StartsWithIgnoreCase("//"))
                         continue;
 
-                    if (line.StartsWith("d", StringComparison.InvariantCultureIgnoreCase))
+                    if (line.StartsWithIgnoreCase("d"))
                     {
                         NB_interface i = new NB_interface();
                         i.directIp = line.Split(' ')[1];
-                        i.forever = line.Split(' ')[2].Equals("0");
+                        i.forever = line.Split(' ')[2].EqualsIgnoreCase("0");
                         blocks.Add(i);
                     }
-                    else if (line.StartsWith("m", StringComparison.InvariantCultureIgnoreCase))
+                    else if (line.StartsWithIgnoreCase("m"))
                     {
                         NB_interface i = new NB_interface();
                         i.mask = line.Split(' ')[1];
-                        i.forever = line.Split(' ')[2].Equals("0");
+                        i.forever = line.Split(' ')[2].EqualsIgnoreCase("0");
                         blocks.Add(i);
                     }
                 }
