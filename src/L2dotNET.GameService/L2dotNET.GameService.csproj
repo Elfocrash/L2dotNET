@@ -101,7 +101,6 @@
     <Compile Include="AI\Template\AI.cs" />
     <Compile Include="ClientManager.cs" />
     <Compile Include="Compression\DlcStream.cs" />
-    <Compile Include="ConfigFile.cs" />
     <Compile Include="Config\Clan.cs" />
     <Compile Include="Config\Event.cs" />
     <Compile Include="Config\Geodata.cs" />
@@ -150,6 +149,7 @@
     <Compile Include="Model\Inventory\InvMail.cs" />
     <Compile Include="Model\Inventory\InvTemplate.cs" />
     <Compile Include="Model\Inventory\InvPrivateWarehouse.cs" />
+    <Compile Include="Model\Inventory\ItemContainer.cs" />
     <Compile Include="Model\Items\Capsule.cs" />
     <Compile Include="Model\Items\CapsuleItem.cs" />
     <Compile Include="Model\Items\CapsuleItemReward.cs" />
@@ -157,6 +157,7 @@
     <Compile Include="Model\Items\Cursed\CursedWeapons.cs" />
     <Compile Include="Model\Items\Effects\Calculator.cs" />
     <Compile Include="Model\Items\Effects\EnchantScrolls.cs" />
+    <Compile Include="Model\Items\Henna.cs" />
     <Compile Include="Model\Items\ItemEffect.cs" />
     <Compile Include="Model\Items\ItemHandler.cs" />
     <Compile Include="Model\Items\ItemHandlerScript.cs" />

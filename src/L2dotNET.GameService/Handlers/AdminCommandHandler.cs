@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.Handlers
             Register(new AdminTransform());
             Register(new AdminWhisper());
 
-            log.Info("AdminAccess: loaded " + commands.Count + " commands.");
+            log.Info($"AdminAccess: loaded { commands.Count } commands.");
         }
 
         public void request(L2Player admin, string alias)
@@ -60,7 +60,7 @@ namespace L2dotNET.GameService.Handlers
 
             if (!commands.ContainsKey(cmd))
             {
-                admin.sendMessage("Command " + cmd + " not exists.");
+                admin.sendMessage($"Command { cmd } not exists.");
                 admin.sendActionFailed();
                 return;
             }
@@ -88,13 +88,13 @@ namespace L2dotNET.GameService.Handlers
         {
             switch (ask)
             {
-                case 1: // телепорт группы
+                case 1:
                     Teleports.ShowGroup(player, reply);
                     break;
-                case 2: // телепорт из группы по ячейке
+                case 2:
                     Teleports.Use(player, reply);
                     break;
-                case 3: // список телепорт групп
+                case 3:
                     Teleports.ShowGroupList(player);
                     break;
             }
