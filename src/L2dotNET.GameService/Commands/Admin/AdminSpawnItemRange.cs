@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Commands.Admin
                     admin.sendMessage("Item with id " + i + " not exists.");
                 else
                 {
-                    admin.Inventory.addItem(i, 1, true, false);
+                    admin.AddItem(i, 1);
                     x = true;
                 }
             }

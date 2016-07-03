@@ -44,7 +44,7 @@ namespace L2dotNET.GameService.Tables.Ndextend
                                         ae.id = ab._teles.Count;
 
                                         if (e.Attribute("cost") != null)
-                                            ae.cost = long.Parse(e.Attribute("cost").Value);
+                                            ae.cost = int.Parse(e.Attribute("cost").Value);
                                         if (e.Attribute("itemId") != null)
                                             ae.itemId = int.Parse(e.Attribute("itemId").Value);
 

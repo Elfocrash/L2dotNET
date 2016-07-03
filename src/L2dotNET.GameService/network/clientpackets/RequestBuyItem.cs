@@ -68,7 +68,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            long adena = 0;
+            int adena = 0;
             int slots = 0,
                 weight = 0;
 
@@ -79,14 +79,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 bool notfound = true;
                 foreach (ND_shopItem item in list.items.Where(item => item.item.ItemID == itemId))
                 {
-                    adena += item.item.Price * _items[i * 2 + 1];
+                    adena += item.item.Price * (int)_items[i * 2 + 1];
 
                     if (!item.item.isStackable())
                         slots++;
                     else
                     {
-                        if (!player.hasItem(item.item.ItemID))
-                            slots++;
+                        //if (!player.HasItem(item.item.ItemID))
+                        //    slots++;
                     }
 
                     weight += (int)(item.item.Weight * _items[i * 2 + 1]);
@@ -103,20 +103,20 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
             }
 
-            if (adena > player.getAdena())
+            if (adena > player.GetAdena())
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                 return;
             }
 
-            player.reduceAdena(adena, false, false);
+            player.ReduceAdena(adena);
 
             for (int i = 0; i < _count; i++)
             {
                 int itemId = (int)_items[i * 2];
-                long count = _items[i * 2 + 1];
+                int count = (int)_items[i * 2 + 1];
 
-                player.Inventory.addItem(itemId, count, false, false);
+                player.AddItem(itemId, count);
             }
 
             player.sendPacket(new ExBuySellList_Close());

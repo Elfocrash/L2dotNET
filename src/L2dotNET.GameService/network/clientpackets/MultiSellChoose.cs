@@ -82,7 +82,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             foreach (MultiSellItem i in entry.take)
                 if (i.id > 0)
                 {
-                    if (!player.hasItem(i.id, i.count))
+                    if (!player.HasItem(i.id, i.count))
                     {
                         ok = false;
                         break;
@@ -108,11 +108,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             foreach (MultiSellItem i in entry.take)
                 if (i.l2item != null)
-                    player.Inventory.destroyItem(i.l2item, 1, true, true);
+                    player.DestroyItem(i.l2item, 1);
                 else
                 {
                     if (i.id > 0)
-                        player.Inventory.destroyItem(i.id, i.count, true, true);
+                        player.DestroyItemById(i.id, i.count);
                     else
                         switch (i.id)
                         {
@@ -121,27 +121,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                         }
                 }
 
-            foreach (MultiSellItem i in entry.give)
-                if (i.id > 0)
-                    if (i.l2item != null)
-                    {
-                        L2Item item = new L2Item(i.template);
-                        item.Enchant = i.l2item.Enchant;
-                        player.Inventory.addItem(item, true, true);
-                    }
-                    else
-                    {
-                        if (i.template.isStackable())
-                            player.Inventory.addItem(i.id, i.count * _amount, i.enchant, true, true);
-                        else
-                            player.Inventory.addItem(i.id, 1, i.enchant, true, true);
-                    }
-                else
-                    switch (i.id)
-                    {
-                        case -100: //pvppoint
-                            break;
-                    }
+           
 
             player.sendSystemMessage(SystemMessage.SystemMessageId.SUCCESSFULLY_TRADED_WITH_NPC);
         }

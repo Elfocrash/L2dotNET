@@ -32,7 +32,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                 return;
             }
 
-            L2Item stone = player.Inventory.getByObject(a_sSupportID);
+            L2Item stone = player.GetItemByObjId(a_sSupportID);
 
             if (stone == null)
             {

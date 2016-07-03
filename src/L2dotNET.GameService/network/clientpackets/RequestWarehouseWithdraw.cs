@@ -53,7 +53,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 int objectId = _items[i * 2];
                 int count = _items[i * 2 + 1];
 
-                L2Item item = player._warehouse.Items[objectId];
+                L2Item item = null;//player._warehouse.Items[objectId];
 
                 if (item == null)
                 {
@@ -68,12 +68,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     slots += count;
             }
 
-            InvPrivateWarehouse pw = player._warehouse ?? new InvPrivateWarehouse(player);
+            //InvPrivateWarehouse pw = player._warehouse ?? new InvPrivateWarehouse(player);
             //int itsize = 0;
             //else
             //    itsize = pw.Items.Count;
 
-            if (player.ItemLimit_Inventory < (player.getAllItems().Length + slots))
+            if (player.ItemLimit_Inventory < (player.GetAllItems().Count + slots))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.SLOTS_FULL);
                 player.sendActionFailed();
@@ -89,7 +89,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 transfer.Add(new[] { objectId, count });
             }
 
-            pw.transferFrom(player, transfer, false);
+            //pw.transferFrom(player, transfer, false);
 
             //if(npc.Template.fnBye != null)
             //{

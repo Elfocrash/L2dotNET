@@ -434,12 +434,12 @@ namespace L2dotNET.GameService.AI.NpcAI
             //talker.updateDb();
         }
 
-        private void ValidateLevelUp1(L2Player talker, int sp, int id, long count, byte lvl)
+        private void ValidateLevelUp1(L2Player talker, int sp, int id, int count, byte lvl)
         {
-            if ((talker.SP >= sp) && talker.hasItem(id, count))
+            if ((talker.SP >= sp) && talker.HasItem(id, count))
             {
                 talker.addExpSp(0, -sp, false);
-                talker.takeItem(id, count);
+                talker.DestroyItemById(id, count);
                 talker.broadcastSkillUse(EffectSkill1);
                 talker.Clan.LevelUp(lvl);
             }
@@ -447,17 +447,17 @@ namespace L2dotNET.GameService.AI.NpcAI
                 talker.ShowHtm("pl016.htm", myself);
         }
 
-        private void ValidateLevelUp2(L2Player talker, int rp, byte memCount, byte lvl, int id = 0, long count = 0, bool dominionCheck = false)
+        private void ValidateLevelUp2(L2Player talker, int rp, byte memCount, byte lvl, int id = 0, int count = 0, bool dominionCheck = false)
         {
             if (talker.Clan.ClanNameValue >= rp)
                 if (talker.Clan.getClanMembers().Count >= memCount)
                 {
                     bool yup = false;
                     if (id > 0)
-                        if (talker.hasItem(id, count))
+                        if (talker.HasItem(id, count))
                         {
                             yup = true;
-                            talker.takeItem(id, count);
+                            talker.DestroyItemById(id, count);
                         }
                         else
                             talker.ShowHtm("pl_err_not_enough_items.htm", myself);

@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.Commands.Admin
                 log.Error($"AdminSpawnItem: {e.Message}");
             }
 
-            admin.Inventory.addItem(id, count, true, true);
+            admin.AddItem(id, count);
         }
     }
 }

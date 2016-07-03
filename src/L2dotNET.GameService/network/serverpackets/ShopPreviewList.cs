@@ -5,13 +5,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class ShopPreviewList : GameServerNetworkPacket
     {
-        private readonly long _adena;
+        private readonly int _adena;
         private readonly ND_shopList _shop;
         private readonly int _shopId;
 
         public ShopPreviewList(L2Player player, ND_shopList shop, int shopId)
         {
-            _adena = player.getAdena();
+            _adena = player.GetAdena();
             _shop = shop;
             _shopId = shopId;
         }

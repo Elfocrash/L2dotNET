@@ -26,9 +26,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            int dollId = player.Inventory.getPaperdollIdByMask(slotBitType);
+            //int dollId = player.Inventory.getPaperdollIdByMask(slotBitType);
 
-            player.setPaperdoll(dollId, null, true);
+            //player.setPaperdoll(dollId, null, true);
             player.broadcastUserInfo();
         }
     }

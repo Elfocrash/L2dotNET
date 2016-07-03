@@ -64,9 +64,9 @@ namespace L2dotNET.GameService.AI.NpcAI
         {
             if ((talker.Level >= minLv) && (talker.Level <= maxLv))
                 if (talker.DeathPenaltyLevel > 0)
-                    if (talker.hasItem(adena, cost))
+                    if (talker.ReduceAdena(cost))
                     {
-                        talker.takeItem(adena, cost);
+                        talker.DestroyItemById(adena, cost);
                         myself.CastBuffForQuestReward(talker, s_penaltyoff);
                     }
                     else

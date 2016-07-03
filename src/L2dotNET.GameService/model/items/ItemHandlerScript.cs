@@ -24,7 +24,7 @@ namespace L2dotNET.GameService.Model.Items
         public int SummonID = -1;
         public int SummonStaticID = -1;
 
-        private SortedList<int, long> ExchangeItems;
+        private SortedList<int, int> ExchangeItems;
         public int SkillID;
         public int SkillLv;
 
@@ -33,10 +33,10 @@ namespace L2dotNET.GameService.Model.Items
             this.id = id;
         }
 
-        public void addExchangeItem(int itemId, long count)
+        public void addExchangeItem(int itemId, int count)
         {
             if (ExchangeItems == null)
-                ExchangeItems = new SortedList<int, long>();
+                ExchangeItems = new SortedList<int, int>();
 
             ExchangeItems.Add(itemId, count);
         }
@@ -50,14 +50,14 @@ namespace L2dotNET.GameService.Model.Items
             }
 
             if (Destroy)
-                player.Inventory.destroyItem(item, 1, true, true);
+                player.DestroyItem(item, 1);
 
             calcSkill(player);
             calcEffect(player);
 
             if (ExchangeItems != null)
                 foreach (int val in ExchangeItems.Keys)
-                    player.Inventory.addItem(val, ExchangeItems[val], true, true);
+                    player.AddItem(val, ExchangeItems[val]);
 
             if (PetID != -1)
                 player.PetSummon(item, PetID);

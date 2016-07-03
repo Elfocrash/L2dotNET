@@ -29,24 +29,24 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(player.Sex);
             writeD((int)player.ActiveClass.ClassId.Id);
 
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Hair2][0]);
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Head][0]);
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_RHand][0]);
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_LHand][0]);
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Gloves][0]);
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Chest][0]);
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Legs][0]);
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Feet][0]);
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Cloak][0]);
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_RHand][0]);
-            writeD(player.Inventory._paperdoll[InvPC.EQUIPITEM_Hair][0]);
-            writeD(0x00); //face
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollHair].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollHead].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollRhand].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollLhand].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollGloves].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollChest].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollLegs].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollFeet].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollBack].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollRhand].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollHairall].Template.ItemID);
+            writeD(player.Inventory.Paperdoll[Inventory.PaperdollFace].Template.ItemID);
 
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
-            writeD(player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
+            writeD(0x00);//player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
@@ -59,7 +59,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
-            writeD(player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
+            writeD(0x00);//player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);

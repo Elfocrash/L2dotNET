@@ -47,7 +47,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            long fee = _count * 30;
+            int fee = _count * 30;
             int slots = 0;
             long adenatransfer = 0;
             for (int i = 0; i < _count; i++)
@@ -55,7 +55,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 int objectId = (int)_items[i * 2];
                 long count = _items[i * 2 + 1];
 
-                L2Item item = player.getItemByObjId(objectId);
+                L2Item item = player.GetItemByObjId(objectId);
 
                 if (item == null)
                 {
@@ -73,28 +73,28 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     adenatransfer += count;
             }
 
-            if ((player.getAdena() - adenatransfer) < fee)
+            if ((player.GetAdena() - adenatransfer) < fee)
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA_PAY_FEE);
                 player.sendActionFailed();
                 return;
             }
 
-            InvPrivateWarehouse pw = player._warehouse;
-            int itsize = 0;
-            if (pw == null)
-                pw = new InvPrivateWarehouse(player);
-            else
-                itsize = pw.Items.Count;
+            //InvPrivateWarehouse pw = player._warehouse;
+            //int itsize = 0;
+            //if (pw == null)
+            //    pw = new InvPrivateWarehouse(player);
+            //else
+            //    itsize = pw.Items.Count;
 
-            if (player.ItemLimit_Warehouse < (itsize + slots))
-            {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.WAREHOUSE_FULL);
-                player.sendActionFailed();
-                return;
-            }
+            //if (player.ItemLimit_Warehouse < (itsize + slots))
+            //{
+            //    player.sendSystemMessage(SystemMessage.SystemMessageId.WAREHOUSE_FULL);
+            //    player.sendActionFailed();
+            //    return;
+            //}
 
-            player.reduceAdena(fee, true, false);
+            player.ReduceAdena(fee);
 
             List<long[]> transfer = new List<long[]>();
             for (int i = 0; i < _count; i++)
@@ -105,7 +105,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 transfer.Add(new[] { objectId, count });
             }
 
-            pw.transferHere(player, transfer, false);
+           // pw.transferHere(player, transfer, false);
 
             //if(npc.Template.fnBye != null)
             //{

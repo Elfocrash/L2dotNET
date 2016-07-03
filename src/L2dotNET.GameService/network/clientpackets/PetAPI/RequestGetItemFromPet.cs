@@ -43,11 +43,11 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
                 return;
             }
 
-            if (!pet.Inventory.Items.ContainsKey(objectId))
-            {
-                player.sendActionFailed();
-                return;
-            }
+            //if (!pet.Inventory.Items.Contains(objectId))
+            //{
+            //    player.sendActionFailed();
+            //    return;
+            //}
 
             L2Item item = pet.Inventory.Items[objectId];
 
@@ -71,7 +71,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
             List<long[]> items = new List<long[]>();
             items.Add(new[] { objectId, count });
-            pet.Inventory.transferFrom(player, items, true);
+            //pet.Inventory.transferFrom(player, items, true);
         }
     }
 }

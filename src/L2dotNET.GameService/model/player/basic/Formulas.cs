@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Model.Player.Basic
 
             if (attacker is L2Player)
             {
-                L2Item weapon = ((L2Player)attacker).Inventory.getWeapon();
+                L2Item weapon = null;//((L2Player)attacker).Inventory.getWeapon();
                 if (weapon != null)
                 {
                     double mix = double.Parse("1." + weapon.Template.random_damage);

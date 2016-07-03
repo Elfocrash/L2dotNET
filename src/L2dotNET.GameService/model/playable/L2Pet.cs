@@ -6,14 +6,14 @@ namespace L2dotNET.GameService.Model.Playable
 {
     public class L2Pet : L2Summon
     {
-        public InvPet Inventory;
+        public PetInventory Inventory;
 
         public L2Pet()
         {
             ObjectSummonType = 2;
             ObjID = IdFactory.Instance.nextId();
             Name = "";
-            Inventory = new InvPet(this);
+            Inventory = new PetInventory(this);
         }
 
         public override void onAction(L2Player player)

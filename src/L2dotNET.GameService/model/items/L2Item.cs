@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Model.Items
     public class L2Item : L2Object
     {
         public ItemTemplate Template;
-        public long Count;
+        public int Count;
         public short _isEquipped;
         public int Enchant;
         public short Enchant1;
@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Model.Items
         public short Enchant3;
         public int AugmentationID = 0;
         public int Durability;
-        public L2ItemLocation Location;
+        public ItemLocation Location;
         public int _paperdollSlot = -1;
         public int _petId = -1;
         public int _dropper;
@@ -44,7 +44,7 @@ namespace L2dotNET.GameService.Model.Items
             Template = template;
             Count = 1;
             Durability = template.Durability;
-            Location = L2ItemLocation.none;
+            Location = ItemLocation.Void;
 
             if (template.LimitedMinutes > 0)
             {
@@ -62,16 +62,18 @@ namespace L2dotNET.GameService.Model.Items
             ObjID = IdFactory.Instance.nextId();
         }
 
-        public enum L2ItemLocation
+        /** Enumeration of locations for item */
+        public enum ItemLocation
         {
-            paperdoll,
-            inventory,
-            warehouse,
-            pet,
-            ground,
-            mail,
-            none,
-            refund
+            Void,
+            Inventory,
+            Paperdoll,
+            Warehouse,
+            Clanwh,
+            Pet,
+            PetEquip,
+            Lease,
+            Freight
         }
 
         public void unequip(L2Player owner)
@@ -98,14 +100,14 @@ namespace L2dotNET.GameService.Model.Items
             if (Template.unequip_skill != null)
                 owner.addEffect(owner, Template.unequip_skill, true, false);
 
-            Location = L2ItemLocation.inventory;
+            Location = ItemLocation.Inventory;
 
             if (upsend)
                 owner.updateSkillList();
 
             if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.crossbow))
             {
-                owner.Inventory.setPaperdoll(InvPC.EQUIPITEM_LHand, null, true);
+                //owner.Inventory.setPaperdoll(InvPC.EQUIPITEM_LHand, null, true);
                 owner.SecondaryWeaponSupport = null;
             }
 
@@ -144,13 +146,13 @@ namespace L2dotNET.GameService.Model.Items
                 owner.addSkill(Template.item_skill_ench4, false, false);
             }
 
-            Location = L2ItemLocation.paperdoll;
+            Location = ItemLocation.Paperdoll;
 
             if ((Template.Bodypart == ItemTemplate.L2ItemBodypart.lhand) && (Template.WeaponType == ItemTemplate.L2ItemWeaponType.shield))
             {
-                L2Item weapon = owner.Inventory.getWeapon();
-                if ((weapon != null) && (weapon.Template.Bodypart == ItemTemplate.L2ItemBodypart.lrhand))
-                    owner.Inventory.setPaperdoll(InvPC.EQUIPITEM_RHand, null, true);
+                //L2Item weapon = owner.Inventory.getWeapon();
+                //if ((weapon != null) && (weapon.Template.Bodypart == ItemTemplate.L2ItemBodypart.lrhand))
+                //    owner.Inventory.setPaperdoll(InvPC.EQUIPITEM_RHand, null, true);
             }
 
             if (upsend)
@@ -230,12 +232,12 @@ namespace L2dotNET.GameService.Model.Items
                     break;
             }
 
-            foreach (L2Item sec in owner.Inventory.Items.Values.Where(sec => (sec.Template.ItemID == secondaryId1) || (sec.Template.ItemID == secondaryId2)))
-            {
-                owner.Inventory.setPaperdoll(InvPC.EQUIPITEM_LHand, sec, true);
-                owner.SecondaryWeaponSupport = sec;
-                break;
-            }
+            //foreach (L2Item sec in owner.Inventory.Items.Values.Where(sec => (sec.Template.ItemID == secondaryId1) || (sec.Template.ItemID == secondaryId2)))
+            //{
+            //    //owner.Inventory.setPaperdoll(InvPC.EQUIPITEM_LHand, sec, true);
+            //    owner.SecondaryWeaponSupport = sec;
+            //    break;
+            //}
         }
 
         public void dropMe(int x, int y, int z, L2Character dropper, L2Character killer, int seconds)
@@ -247,10 +249,9 @@ namespace L2dotNET.GameService.Model.Items
             if (dropper != null)
                 _dropper = dropper.ObjID;
 
-            Location = L2ItemLocation.ground;
+            Location = ItemLocation.Void;
 
-            if (killer != null)
-                killer.addKnownObject(this, pk, true);
+            killer?.addKnownObject(this, pk, true);
 
             L2World.Instance.AddObject(this);
         }

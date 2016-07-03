@@ -12,10 +12,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ExBuySellList_Sell(L2Player player)
         {
-            foreach (L2Item item in player.getAllItems().Where(item => !item.NotForTrade()))
+            foreach (L2Item item in player.GetAllItems().Where(item => !item.NotForTrade()))
                 _sells.Add(item);
 
-            _refund = player.Refund._items;
+           // _refund = player.Refund._items;
         }
 
         protected internal override void write()

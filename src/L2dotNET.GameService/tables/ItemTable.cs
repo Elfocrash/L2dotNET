@@ -208,7 +208,7 @@ namespace L2dotNET.GameService.Tables
                                 item.CrystallGrade = (ItemTemplate.L2ItemGrade)Enum.Parse(typeof(ItemTemplate.L2ItemGrade), value);
                                 break;
                             case "crystal_count":
-                                item._cryCount = Convert.ToInt64(value);
+                                item._cryCount = Convert.ToInt32(value);
                                 break;
                             case "keep_type":
                                 item.keep_type = int.Parse(value);

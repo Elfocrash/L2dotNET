@@ -12,12 +12,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
         }
 
         private int sID;
-        private long num;
+        private int num;
 
         public override void read()
         {
             sID = readD();
-            num = readQ();
+            num = readD();
         }
 
         public override void run()
@@ -37,7 +37,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            L2Item item = player.Inventory.getByObject(sID);
+            L2Item item = player.GetItemByObjId(sID);
 
             if (item == null)
             {
@@ -66,14 +66,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (num < 0)
                 num = 1;
 
-            if (item._isEquipped == 1)
-            {
-                int pdollId = player.Inventory.getPaperdollId(item.Template);
-                player.setPaperdoll(pdollId, null, true);
-                player.broadcastUserInfo();
-            }
+            //if (item._isEquipped == 1)
+            //{
+            //    int pdollId = player.Inventory.getPaperdollId(item.Template);
+            //    player.setPaperdoll(pdollId, null, true);
+            //    player.broadcastUserInfo();
+            //}
 
-            player.Inventory.destroyItem(item.Template.ItemID, num, true, true);
+            player.DestroyItemById(item.Template.ItemID, num);
         }
     }
 }

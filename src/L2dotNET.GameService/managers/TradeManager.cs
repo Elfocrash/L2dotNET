@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Managers
                 SortedList<int, long> tm = new SortedList<int, long>();
                 foreach (int id in player.currentTrade.Keys)
                 {
-                    L2Item item = player.Inventory.getByObject(id);
+                    L2Item item = player.Inventory.GetItemByItemId(id);
                     if (item == null)
                         return false;
 
@@ -71,7 +71,7 @@ namespace L2dotNET.GameService.Managers
             {
                 list.AddRange(pl1.currentTrade.Keys.Select(id => new[] { id, pl1.currentTrade[id] }));
 
-                pl2.Inventory.transferHere(pl1, list, false);
+                //pl2.Inventory.transferHere(pl1, list, false);
                 pl1.currentTrade.Clear();
             }
 
@@ -81,7 +81,7 @@ namespace L2dotNET.GameService.Managers
 
                 list.AddRange(pl2.currentTrade.Keys.Select(id => new[] { id, pl2.currentTrade[id] }));
 
-                pl1.Inventory.transferHere(pl2, list, false);
+                //pl1.Inventory.transferHere(pl2, list, false);
                 pl2.currentTrade.Clear();
             }
 

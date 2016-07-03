@@ -63,7 +63,7 @@ namespace L2dotNET.GameService.Tables.Multisell
             {
                 MultiSellList newlist = new MultiSellList();
                 newlist.id = list.id;
-                L2Item[] pitems = player.getAllWeaponArmorNonQuestItems();
+                L2Item[] pitems = player.GetAllItems().ToArray();
                 foreach (MultiSellEntry entry in list.container)
                 {
                     MultiSellItem msitem = entry.take[0];
@@ -122,7 +122,7 @@ namespace L2dotNET.GameService.Tables.Multisell
                                         {
                                             MultiSellItem item = new MultiSellItem();
                                             item.id = Convert.ToInt32(its.Attribute("id").Value);
-                                            item.count = Convert.ToInt64(its.Attribute("count").Value);
+                                            item.count = Convert.ToInt32(its.Attribute("count").Value);
                                             if (item.id > 0)
                                             {
                                                 item.template = ItemTable.Instance.GetItem(item.id);
@@ -136,7 +136,7 @@ namespace L2dotNET.GameService.Tables.Multisell
                                         {
                                             MultiSellItem item = new MultiSellItem();
                                             item.id = Convert.ToInt32(its.Attribute("id").Value);
-                                            item.count = Convert.ToInt64(its.Attribute("count").Value);
+                                            item.count = Convert.ToInt32(its.Attribute("count").Value);
                                             if (item.id > 0)
                                                 item.template = ItemTable.Instance.GetItem(item.id);
                                             entry.take.Add(item);

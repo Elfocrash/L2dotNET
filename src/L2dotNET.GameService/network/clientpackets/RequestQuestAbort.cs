@@ -30,8 +30,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     return;
                 }
 
-                foreach (int id in qi._template.actItems)
-                    player.Inventory.destroyItemAll(id, true, false);
+                //foreach (int id in qi._template.actItems)
+                //    player.Inventory.Dest(id, true, false);
 
                 player.sendMessage("Quest " + qi._template.questName + " aborted.");
                 player.stopQuest(qi, true);

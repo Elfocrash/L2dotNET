@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            L2Item item = player.getItemByObjId(sID);
+            L2Item item = player.GetItemByObjId(sID);
 
             if (item == null)
             {
@@ -67,8 +67,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
                         }
                     }
 
-                    int pdollId = player.Inventory.getPaperdollId(item.Template);
-                    player.setPaperdoll(pdollId, item._isEquipped == 1 ? null : item, true);
+                    //int pdollId = player.Inventory.getPaperdollId(item.Template);
+                    //player.setPaperdoll(pdollId, item._isEquipped == 1 ? null : item, true);
                     player.broadcastUserInfo();
                 }
 

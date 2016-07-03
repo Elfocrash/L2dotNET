@@ -47,9 +47,9 @@ namespace L2dotNET.GameService.Model.Items
             {
                 CapsuleItem caps = items[item.Template.ItemID];
                 Random rn = new Random();
-                ((L2Player)character).Inventory.destroyItem(item, 1, true, true);
+                ((L2Player)character).DestroyItem(item, 1);
                 foreach (CapsuleItemReward rew in caps.rewards.Where(rew => rn.Next(100) <= rew.rate))
-                    ((L2Player)character).addItem(rew.id, rn.Next(rew.min, rew.max));
+                    ((L2Player)character).AddItem(rew.id, rn.Next(rew.min, rew.max));
             }
         }
 

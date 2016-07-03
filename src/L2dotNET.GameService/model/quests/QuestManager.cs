@@ -4,7 +4,6 @@ using System.Text;
 using log4net;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Model.Quests.Data;
 using L2dotNET.GameService.Scripting;
 
 namespace L2dotNET.GameService.Model.Quests
@@ -40,17 +39,7 @@ namespace L2dotNET.GameService.Model.Quests
             foreach (object obj in items)
                 register((QuestOrigin)obj);
 
-            register(new _0003_will_the_seal_be_broken());
-            register(new _0005_miners_favor());
-            register(new _0006_step_into_the_future());
-            register(new _0007_a_trip_begins());
-            register(new _0008_an_adventure_begins());
-            register(new _0009_into_the_city_of_humans());
-            register(new _0010_into_the_world());
-            register(new _0011_secret_meeting_with_ketra_orcs());
-            register(new _0246_PossessorOfAPreciousSoul());
-            register(new _0605_alliance_with_ketra_orcs());
-            register(new _0606_war_with_varka_silenos());
+            //register(new _0003_will_the_seal_be_broken());
 
             log.Info($"QuestManager: loaded {_quests.Count} quests.");
         }

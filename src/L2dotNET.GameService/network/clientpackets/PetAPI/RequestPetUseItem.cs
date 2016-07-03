@@ -37,12 +37,12 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
                 return;
             }
 
-            if (!pet.Inventory.Items.ContainsKey(sID))
-            {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.INCORRECT_ITEM);
-                player.sendActionFailed();
-                return;
-            }
+            //if (!pet.Inventory.Items.ContainsKey(sID))
+            //{
+            //    player.sendSystemMessage(SystemMessage.SystemMessageId.INCORRECT_ITEM);
+            //    player.sendActionFailed();
+            //    return;
+            //}
 
             L2Item item = pet.Inventory.Items[sID];
 

@@ -144,12 +144,10 @@
     <Compile Include="Model\Communities\e_ClanType.cs" />
     <Compile Include="Model\Communities\L2Alliance.cs" />
     <Compile Include="Model\Communities\L2Clan.cs" />
-    <Compile Include="Model\Inventory\InvPet.cs" />
-    <Compile Include="Model\Inventory\InvRefund.cs" />
-    <Compile Include="Model\Inventory\InvMail.cs" />
-    <Compile Include="Model\Inventory\InvTemplate.cs" />
-    <Compile Include="Model\Inventory\InvPrivateWarehouse.cs" />
+    <Compile Include="Model\Inventory\Inventory.cs" />
     <Compile Include="Model\Inventory\ItemContainer.cs" />
+    <Compile Include="Model\Inventory\PcInventory.cs" />
+    <Compile Include="Model\Inventory\PetInventory.cs" />
     <Compile Include="Model\Items\Capsule.cs" />
     <Compile Include="Model\Items\CapsuleItem.cs" />
     <Compile Include="Model\Items\CapsuleItemReward.cs" />
@@ -207,25 +205,6 @@
     <Compile Include="Model\Player\Transformation\Data\_20000_kadomas.cs" />
     <Compile Include="Model\Player\Transformation\L2Transform.cs" />
     <Compile Include="Model\Player\Transformation\TransformTemplate.cs" />
-    <Compile Include="Model\Quests\Data\_0012_Secret_Meeting_With_Varka_Silenos.cs" />
-    <Compile Include="Model\Quests\Data\_0013_Parcel_Deliverys.cs" />
-    <Compile Include="Model\Quests\Data\_0014_Where_abouts_of_the_Archaeologist.cs" />
-    <Compile Include="Model\Quests\Data\_0015_Sweet_Whispers.cs" />
-    <Compile Include="Model\Quests\Data\_0017_Light_And_Darkness.cs" />
-    <Compile Include="Model\Quests\Data\_0018_Meeting_with_the_Golden_Ram.cs" />
-    <Compile Include="Model\Quests\Data\_0019_Go_To_The_Pastureland.cs" />
-    <Compile Include="Model\Quests\Data\_0508_a_clans_reputation.cs" />
-    <Compile Include="Model\Quests\Data\_0606_war_with_varka_silenos.cs" />
-    <Compile Include="Model\Quests\Data\_0605_alliance_with_ketra_orcs.cs" />
-    <Compile Include="Model\Quests\Data\_0005_miners_favor.cs" />
-    <Compile Include="Model\Quests\Data\_0006_step_into_the_future.cs" />
-    <Compile Include="Model\Quests\Data\_0007_a_trip_begins.cs" />
-    <Compile Include="Model\Quests\Data\_0008_an_adventure_begins.cs" />
-    <Compile Include="Model\Quests\Data\_0009_into_the_city_of_humans.cs" />
-    <Compile Include="Model\Quests\Data\_0010_into_the_world.cs" />
-    <Compile Include="Model\Quests\Data\_0011_secret_meeting_with_ketra_orcs.cs" />
-    <Compile Include="Model\Quests\Data\_0246_PossessorOfAPreciousSoul.cs" />
-    <Compile Include="Model\Quests\Data\_0003_will_the_seal_be_broken.cs" />
     <Compile Include="Model\Quests\QuestManager.cs" />
     <Compile Include="Model\Quests\QuestOrigin.cs" />
     <Compile Include="Model\Skills2\Conds\can_summon_cubic.cs" />
@@ -296,7 +275,6 @@
     <Compile Include="Model\Player\L2Party.cs" />
     <Compile Include="Model\Player\L2Player.cs" />
     <Compile Include="Model\Skills\L2SkillCoolTime.cs" />
-    <Compile Include="Model\Inventory\InvPC.cs" />
     <Compile Include="Model\Items\ItemTemplate.cs" />
     <Compile Include="Model\Items\L2Item.cs" />
     <Compile Include="Model\Npcs\L2Npc.cs" />
@@ -813,6 +791,7 @@
     <Folder Include="Datapacks\Login\log\" />
     <Folder Include="Datapacks\Login\sq\" />
     <Folder Include="GeoEngine\" />
+    <Folder Include="Model\Quests\Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

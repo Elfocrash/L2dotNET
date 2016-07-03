@@ -173,34 +173,34 @@ namespace L2dotNET.GameService.Tables
 
             ab_teleport_entry e = group._teles[entryId];
 
-            if (!player.hasItem(e.itemId, e.cost))
-            {
-                switch (e.itemId)
-                {
-                    case 57:
-                        player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
-                        break;
-                    case 6651:
-                        player.ShowHtm("fornonoblessitem.htm", npc);
-                        break;
+            //if (!player.hasItem(e.itemId, e.cost))
+            //{
+            //    switch (e.itemId)
+            //    {
+            //        case 57:
+            //            player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
+            //            break;
+            //        case 6651:
+            //            player.ShowHtm("fornonoblessitem.htm", npc);
+            //            break;
 
-                    default:
-                        player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_REQUIRED_ITEMS);
-                        break;
-                }
+            //        default:
+            //            player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_REQUIRED_ITEMS);
+            //            break;
+            //    }
 
-                player.sendActionFailed();
-                return;
-            }
+            //    player.sendActionFailed();
+            //    return;
+            //}
 
             switch (e.itemId)
             {
                 case 57:
-                    player.reduceAdena(e.cost, true, true);
+                    player.ReduceAdena(e.cost);
                     break;
 
                 default:
-                    player.Inventory.destroyItem(e.itemId, e.cost, true, true);
+                    player.DestroyItemById(e.itemId, e.cost);
                     break;
             }
         }

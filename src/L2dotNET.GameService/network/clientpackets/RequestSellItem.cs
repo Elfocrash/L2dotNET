@@ -73,8 +73,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //    return;
             //}
 
-            long added,
-                 currentAdena = player.getAdena();
+            int added,
+                 currentAdena = player.GetAdena();
             if (currentAdena + totalCost >= int.MaxValue)
                 added = int.MaxValue - currentAdena;
             else
@@ -90,10 +90,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 transfer.Add(new[] { objectId, count });
             }
 
-            player.Refund.transferHere(player, transfer, false);
-            player.Refund.validate();
+            //player.Refund.transferHere(player, transfer, false);
+            //player.Refund.validate();
 
-            player.addAdena(added, false, false);
+            player.AddAdena(added,true);
             player.sendItemList(true);
             player.sendPacket(new ExBuySellList_Close());
 

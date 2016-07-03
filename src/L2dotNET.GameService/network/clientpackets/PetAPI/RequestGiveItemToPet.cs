@@ -41,7 +41,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
                 return;
             }
 
-            L2Item item = player.Inventory.getByObject(sID);
+            L2Item item = player.GetItemByObjId(sID);
 
             if ((item == null) || item.TempBlock)
             {
@@ -63,7 +63,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
             List<long[]> items = new List<long[]>();
             items.Add(new[] { sID, Num });
-            pet.Inventory.transferHere(player, items, true);
+            //pet.Inventory.transferHere(player, items, true);
         }
     }
 }

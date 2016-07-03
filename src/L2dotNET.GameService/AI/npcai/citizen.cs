@@ -37,13 +37,13 @@ namespace L2dotNET.GameService.AI.NpcAI
             if (NoFnHi == 1)
                 return;
 
-            if (FriendShip1 == 0)
-                talker.ShowHtm(GetDialog("fnHi"), myself);
-            else if (talker.hasSomeOfThisItems())
-                talker.ShowHtm(GetDialog("fnFlagMan"), myself);
-            else if (talker.hasSomeOfThisItems(FriendShip1, FriendShip2, FriendShip3, FriendShip4, FriendShip5))
-                talker.ShowHtm(GetDialog("fnHi"), myself);
-            else
+            //if (FriendShip1 == 0)
+            //    talker.ShowHtm(GetDialog("fnHi"), myself);
+            //else if (talker.hasSomeOfThisItems())
+            //    talker.ShowHtm(GetDialog("fnFlagMan"), myself);
+            //else if (talker.hasSomeOfThisItems(FriendShip1, FriendShip2, FriendShip3, FriendShip4, FriendShip5))
+            //    talker.ShowHtm(GetDialog("fnHi"), myself);
+            //else
                 talker.ShowHtm(GetDialog("fnNoFriend"), myself);
         }
 
@@ -141,63 +141,63 @@ namespace L2dotNET.GameService.AI.NpcAI
 
                     break;
                 case -601:
-                    if (reply == 0)
-                        if (!talker.hasAllOfThisItems(8957, 8958, 8959))
-                            talker.ShowHtm("welcomeback003.htm", myself);
-                        else
-                            talker.ShowHtm("welcomeback004.htm", myself);
-                    else
-                        switch (reply)
-                        {
-                            case 0:
-                                if (!talker.hasAllOfThisItems(8957, 8958, 8959))
-                                    talker.ShowHtm("welcome_lin2_cat002.htm", myself);
-                                else
-                                    talker.ShowHtm("welcome_lin2_cat004.htm", myself);
-                                break;
-                            case 2:
-                                if (talker.Level < 20)
-                                    MultiSell.Instance.ShowList(talker, myself, 583);
-                                else if ((talker.Level >= 20) && (talker.Level < 40))
-                                    MultiSell.Instance.ShowList(talker, myself, 584);
-                                else if ((talker.Level >= 40) && (talker.Level < 52))
-                                    MultiSell.Instance.ShowList(talker, myself, 585);
-                                else if ((talker.Level >= 52) && (talker.Level < 61))
-                                    MultiSell.Instance.ShowList(talker, myself, 586);
-                                else if ((talker.Level >= 61) && (talker.Level < 76))
-                                    MultiSell.Instance.ShowList(talker, myself, 587);
-                                else if (talker.Level >= 76)
-                                    MultiSell.Instance.ShowList(talker, myself, 588);
-                                break;
-                            case 3:
-                                if (talker.Level < 20)
-                                    MultiSell.Instance.ShowList(talker, myself, 589);
-                                else if ((talker.Level >= 20) && (talker.Level < 40))
-                                    MultiSell.Instance.ShowList(talker, myself, 590);
-                                else if ((talker.Level >= 40) && (talker.Level < 52))
-                                    MultiSell.Instance.ShowList(talker, myself, 591);
-                                else if ((talker.Level >= 52) && (talker.Level < 61))
-                                    MultiSell.Instance.ShowList(talker, myself, 592);
-                                else if ((talker.Level >= 61) && (talker.Level < 76))
-                                    MultiSell.Instance.ShowList(talker, myself, 593);
-                                else if (talker.Level >= 76)
-                                    MultiSell.Instance.ShowList(talker, myself, 594);
-                                break;
-                            case 4:
-                                if (talker.Level < 20)
-                                    MultiSell.Instance.ShowList(talker, myself, 595);
-                                else if ((talker.Level >= 20) && (talker.Level < 40))
-                                    MultiSell.Instance.ShowList(talker, myself, 596);
-                                else if ((talker.Level >= 40) && (talker.Level < 52))
-                                    MultiSell.Instance.ShowList(talker, myself, 597);
-                                else if ((talker.Level >= 52) && (talker.Level < 61))
-                                    MultiSell.Instance.ShowList(talker, myself, 598);
-                                else if ((talker.Level >= 61) && (talker.Level < 76))
-                                    MultiSell.Instance.ShowList(talker, myself, 601);
-                                else if (talker.Level >= 76)
-                                    MultiSell.Instance.ShowList(talker, myself, 600);
-                                break;
-                        }
+                    //if (reply == 0)
+                    //    if (!talker.hasAllOfThisItems(8957, 8958, 8959))
+                    //        talker.ShowHtm("welcomeback003.htm", myself);
+                    //    else
+                    //        talker.ShowHtm("welcomeback004.htm", myself);
+                    //else
+                    //    switch (reply)
+                    //    {
+                    //        case 0:
+                    //            if (!talker.hasAllOfThisItems(8957, 8958, 8959))
+                    //                talker.ShowHtm("welcome_lin2_cat002.htm", myself);
+                    //            else
+                    //                talker.ShowHtm("welcome_lin2_cat004.htm", myself);
+                    //            break;
+                    //        case 2:
+                    //            if (talker.Level < 20)
+                    //                MultiSell.Instance.ShowList(talker, myself, 583);
+                    //            else if ((talker.Level >= 20) && (talker.Level < 40))
+                    //                MultiSell.Instance.ShowList(talker, myself, 584);
+                    //            else if ((talker.Level >= 40) && (talker.Level < 52))
+                    //                MultiSell.Instance.ShowList(talker, myself, 585);
+                    //            else if ((talker.Level >= 52) && (talker.Level < 61))
+                    //                MultiSell.Instance.ShowList(talker, myself, 586);
+                    //            else if ((talker.Level >= 61) && (talker.Level < 76))
+                    //                MultiSell.Instance.ShowList(talker, myself, 587);
+                    //            else if (talker.Level >= 76)
+                    //                MultiSell.Instance.ShowList(talker, myself, 588);
+                    //            break;
+                    //        case 3:
+                    //            if (talker.Level < 20)
+                    //                MultiSell.Instance.ShowList(talker, myself, 589);
+                    //            else if ((talker.Level >= 20) && (talker.Level < 40))
+                    //                MultiSell.Instance.ShowList(talker, myself, 590);
+                    //            else if ((talker.Level >= 40) && (talker.Level < 52))
+                    //                MultiSell.Instance.ShowList(talker, myself, 591);
+                    //            else if ((talker.Level >= 52) && (talker.Level < 61))
+                    //                MultiSell.Instance.ShowList(talker, myself, 592);
+                    //            else if ((talker.Level >= 61) && (talker.Level < 76))
+                    //                MultiSell.Instance.ShowList(talker, myself, 593);
+                    //            else if (talker.Level >= 76)
+                    //                MultiSell.Instance.ShowList(talker, myself, 594);
+                    //            break;
+                    //        case 4:
+                    //            if (talker.Level < 20)
+                    //                MultiSell.Instance.ShowList(talker, myself, 595);
+                    //            else if ((talker.Level >= 20) && (talker.Level < 40))
+                    //                MultiSell.Instance.ShowList(talker, myself, 596);
+                    //            else if ((talker.Level >= 40) && (talker.Level < 52))
+                    //                MultiSell.Instance.ShowList(talker, myself, 597);
+                    //            else if ((talker.Level >= 52) && (talker.Level < 61))
+                    //                MultiSell.Instance.ShowList(talker, myself, 598);
+                    //            else if ((talker.Level >= 61) && (talker.Level < 76))
+                    //                MultiSell.Instance.ShowList(talker, myself, 601);
+                    //            else if (talker.Level >= 76)
+                    //                MultiSell.Instance.ShowList(talker, myself, 600);
+                    //            break;
+                    //    }
 
                     break;
             }

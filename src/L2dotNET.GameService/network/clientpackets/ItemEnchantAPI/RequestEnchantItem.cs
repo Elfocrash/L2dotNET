@@ -94,16 +94,15 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                     {
                         if (player.EnchantItem._isEquipped == 1)
                         {
-                            int pdollId = player.Inventory.getPaperdollId(player.EnchantItem.Template);
-                            player.setPaperdoll(pdollId, null, false);
+                            //int pdollId = player.Inventory.getPaperdollId(player.EnchantItem.Template);
+                           // player.setPaperdoll(pdollId, null, false);
                             equip = true;
                         }
 
-                        player.Inventory.removeItem(player.EnchantItem);
                         iu = new InventoryUpdate();
                         iu.addDelItem(player.EnchantItem);
 
-                        long cry = player.EnchantItem.Template._cryCount;
+                        int cry = player.EnchantItem.Template._cryCount;
 
                         if (cry == 0)
                             player.sendPacket(new EnchantResult(EnchantResultVal.breakToNothing));
@@ -111,7 +110,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                         {
                             int id = player.EnchantItem.Template.getCrystallId();
                             player.sendPacket(new EnchantResult(EnchantResultVal.breakToCount, id, cry));
-                            player.Inventory.addItem(id, cry, true, true);
+                            player.AddItem(id, cry);
                         }
                     }
                         break;
@@ -119,9 +118,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             }
 
             if (player.EnchantStone != null)
-                player.Inventory.destroyItem(player.EnchantStone, 1, true, true);
+                player.DestroyItem(player.EnchantStone, 1);
 
-            player.Inventory.destroyItem(player.EnchantScroll, 1, false, true);
+            player.DestroyItem(player.EnchantScroll, 1);
 
             if (iu != null)
                 player.sendPacket(iu);

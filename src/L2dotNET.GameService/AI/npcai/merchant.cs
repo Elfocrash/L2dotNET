@@ -52,7 +52,7 @@ namespace L2dotNET.GameService.AI.NpcAI
                             NpcData.Instance.Buylist(talker, myself, 7);
                             break;
                         case 8:
-                            talker.sendPacket(new ExBuySellList_Buy(talker.getAdena()));
+                            talker.sendPacket(new ExBuySellList_Buy(talker.GetAdena()));
                             talker.sendPacket(new ExBuySellList_Sell(talker));
                             break;
                     }

@@ -200,7 +200,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public void showPrivateWarehouse(L2Player player)
         {
-            List<L2Item> items = player.getAllItems().Where(item => (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.questitem)).ToList();
+            List<L2Item> items = player.GetAllItems().Where(item => (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.questitem)).ToList();
 
             player.sendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WH_PRIVATE));
             player.FolkNpc = this;
@@ -222,7 +222,7 @@ namespace L2dotNET.GameService.Model.Npcs
                 return;
             }
 
-            List<L2Item> items = player.getAllItems().Where(item => (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.questitem)).ToList();
+            List<L2Item> items = player.GetAllItems().Where(item => (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.questitem)).ToList();
 
             player.sendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WH_CLAN));
             player.FolkNpc = this;
@@ -230,24 +230,24 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public void showPrivateWarehouseBack(L2Player player)
         {
-            if (player._warehouse == null)
-            {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
-                player.sendActionFailed();
-                return;
-            }
+            //if (player._warehouse == null)
+            //{
+            //    player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
+            //    player.sendActionFailed();
+            //    return;
+            //}
 
-            List<L2Item> items = player.getAllWarehouseItems().Cast<L2Item>().ToList();
+            //List<L2Item> items = player.getAllWarehouseItems().Cast<L2Item>().ToList();
 
-            if (items.Count == 0) // на случай если вх был создан и убраны вещи до времени выхода с сервера
-            {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
-                player.sendActionFailed();
-                return;
-            }
+            //if (items.Count == 0) // на случай если вх был создан и убраны вещи до времени выхода с сервера
+            //{
+            //    player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
+            //    player.sendActionFailed();
+            //    return;
+            //}
 
-            player.sendPacket(new WareHouseWithdrawalList(player, items, WareHouseWithdrawalList.WH_PRIVATE));
-            player.FolkNpc = this;
+            //player.sendPacket(new WareHouseWithdrawalList(player, items, WareHouseWithdrawalList.WH_PRIVATE));
+            //player.FolkNpc = this;
         }
 
         public void showClanWarehouseBack(L2Player player)

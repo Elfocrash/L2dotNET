@@ -65,11 +65,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 writeD(0);
                 writeD(0);
 
-                for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
-                    writeD(player.Inventory._paperdoll[id][0]);
+                for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
+                    writeD(player.Inventory.Paperdoll[id].Template.ItemID);
 
-                for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
-                    writeD(player.Inventory._paperdoll[id][0]);
+                for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
+                    writeD(player.Inventory.Paperdoll[id].Template.ItemID);
 
                 writeD(player.HairStyle);
                 writeD(player.HairColor);

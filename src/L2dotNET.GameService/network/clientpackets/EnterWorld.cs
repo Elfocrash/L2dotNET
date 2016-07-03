@@ -45,7 +45,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             AnnouncementManager.Instance.OnEnter(player);
 
-            foreach (L2Item item in player.Inventory.Items.Values.Where(item => item._isEquipped != 0))
+            foreach (L2Item item in player.Inventory.Items.Where(item => item._isEquipped != 0))
                 item.notifyStats(player);
 
             player.StartRegeneration();

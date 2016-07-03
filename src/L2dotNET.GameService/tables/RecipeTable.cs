@@ -50,7 +50,7 @@ namespace L2dotNET.GameService.Tables
                                     rec._mp_consume = int.Parse(stp.Attribute("mp").Value);
                                     foreach (XElement items in stp.Elements().Where(items => items.Name == "item"))
                                     {
-                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
+                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value));
                                         rec._materials.Add(item);
                                     }
                                 }
@@ -61,7 +61,7 @@ namespace L2dotNET.GameService.Tables
                                     rec._success_rate = int.Parse(stp.Attribute("rate").Value);
                                     foreach (XElement items in stp.Elements().Where(items => items.Name == "item"))
                                     {
-                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
+                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value));
                                         item.rate = double.Parse(items.Attribute("rate").Value);
                                         rec._products.Add(item);
                                     }
@@ -72,7 +72,7 @@ namespace L2dotNET.GameService.Tables
                                 {
                                     foreach (XElement items in stp.Elements().Where(items => items.Name == "item"))
                                     {
-                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), long.Parse(items.Attribute("count").Value));
+                                        recipe_item_entry item = new recipe_item_entry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value));
                                         rec._npcFee.Add(item);
                                     }
                                 }

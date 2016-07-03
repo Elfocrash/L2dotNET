@@ -6,13 +6,13 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
     class i_restoration : TEffect
     {
         private int itemId;
-        private long count;
+        private int count;
 
         public override void build(string str)
         {
             string[] v = str.Split(' ');
             itemId = int.Parse(v[1]);
-            count = long.Parse(v[2]);
+            count = int.Parse(v[2]);
         }
 
         public override TEffectResult onStart(L2Character caster, L2Character target)
@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             if (player == null)
                 return nothing;
 
-            player.addItem(itemId, count);
+            player.AddItem(itemId, count);
 
             return nothing;
         }

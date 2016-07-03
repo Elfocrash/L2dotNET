@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public WareHouseWithdrawalList(L2Player player, List<L2Item> items, short type)
         {
             _type = type;
-            _adena = player.getAdena();
+            _adena = player.GetAdena();
             _items = items;
         }
 

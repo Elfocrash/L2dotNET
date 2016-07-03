@@ -70,7 +70,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         {
             int[] dx = data.FirstOrDefault(d => d[1] == reply);
 
-            if ((dx != null) && (player.getAdena() < dx[2]))
+            if ((dx != null) && (player.GetAdena() < dx[2]))
             {
                 player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                 player.sendActionFailed();
@@ -79,7 +79,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
             if (dx != null)
             {
-                player.reduceAdena(dx[2], true, true);
+                player.ReduceAdena(dx[2]);
 
                 player.clearKnowns(true);
 

@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.Model.Skills2
         public string pledge_type = "";
         public int id_prerequisite_skill;
         public int lv_prerequisite_skill;
-        public long itemcount;
+        public int itemcount;
         public int itemid;
 
         public List<int> quests = new List<int>();

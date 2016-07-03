@@ -53,7 +53,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            L2Item item = player.Inventory.getByObject(sID);
+            L2Item item = player.Inventory.GetItemByObjectId(sID);
 
             if (item == null)
             {

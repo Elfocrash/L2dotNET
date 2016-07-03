@@ -8,14 +8,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
     class SellList : GameServerNetworkPacket
     {
         private readonly List<L2Item> _sells = new List<L2Item>();
-        private readonly long _adena;
+        private readonly int _adena;
 
         public SellList(L2Player player, int npcObj)
         {
-            foreach (L2Item item in player.getAllItems().Where(item => (item.Template.is_trade != 0) && (item.AugmentationID <= 0) && (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.asset)))
+            foreach (L2Item item in player.GetAllItems().Where(item => (item.Template.is_trade != 0) && (item.AugmentationID <= 0) && (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.asset)))
                 _sells.Add(item);
 
-            _adena = player.getAdena();
+            _adena = player.GetAdena();
         }
 
         protected internal override void write()

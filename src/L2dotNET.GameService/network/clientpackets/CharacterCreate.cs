@@ -115,8 +115,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (template.Items != null)
             {
-                player.Inventory = new InvPC();
-                player.Inventory._owner = player;
+                player.Inventory = new PcInventory(player);
 
                 //foreach (PC_item i in template._items)
                 //{

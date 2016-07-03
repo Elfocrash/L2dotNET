@@ -436,7 +436,7 @@ namespace L2dotNET.GameService.Model.Skills2
                     if (dlc.readC() == 1)
                     {
                         skill.itemid = dlc.readD();
-                        skill.itemcount = dlc.readQ();
+                        skill.itemcount = dlc.readD();
                     }
 
                     skill.social_class = dlc.readD();

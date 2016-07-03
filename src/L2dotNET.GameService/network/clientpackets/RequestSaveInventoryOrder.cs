@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            foreach (L2Item item in player.Inventory.Items.Values)
+            foreach (L2Item item in player.Inventory.Items)
                 for (int i = 0; i < _count; i++)
                 {
                     int objId = _items[i * 2];

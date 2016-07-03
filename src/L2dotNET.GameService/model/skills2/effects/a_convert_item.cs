@@ -20,21 +20,21 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
                     return nothing;
                 }
 
-                int newid = ItemTable.Instance.ConvertDataList[item.Template.ItemID];
+                //int newid = ItemTable.Instance.ConvertDataList[item.Template.ItemID];
 
-                int pdollId = player.Inventory.getPaperdollId(item.Template);
-                player.setPaperdoll(pdollId, null, false);
-                player.broadcastUserInfo();
+                //int pdollId = player.Inventory.getPaperdollId(item.Template);
+                //player.setPaperdoll(pdollId, null, false);
+                //player.broadcastUserInfo();
 
-                int oldweight = item.Template.Weight;
-                item.Template = ItemTable.Instance.GetItem(newid);
-                item.sql_update();
+                //int oldweight = item.Template.Weight;
+                //item.Template = ItemTable.Instance.GetItem(newid);
+                //item.sql_update();
 
-                if (oldweight != item.Template.Weight)
-                    player.updateWeight();
+                //if (oldweight != item.Template.Weight)
+                //    player.updateWeight();
 
-                player.setPaperdoll(pdollId, item, false);
-                player.broadcastUserInfo();
+                //player.setPaperdoll(pdollId, item, false);
+                //player.broadcastUserInfo();
 
                 InventoryUpdate iu = new InventoryUpdate();
                 iu.addModItem(item);

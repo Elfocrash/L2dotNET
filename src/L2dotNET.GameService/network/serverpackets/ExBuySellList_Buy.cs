@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public ExBuySellList_Buy(L2Player player, ND_shopList shop, double mod, double tax, int shopId)
         {
             _shop = shop;
-            _adena = player.getAdena();
+            _adena = player.GetAdena();
             _mod = mod;
             _tax = tax;
             _shopId = shopId;

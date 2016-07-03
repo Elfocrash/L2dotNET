@@ -61,27 +61,13 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
                 return;
             }
 
-            foreach (recipe_item_entry material in rec._materials)
-            {
-                long count = player.Inventory.getItemCount(material.item.ItemID);
-                if (count < material.count)
-                {
-                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.MISSING_S2_S1_TO_CREATE);
-                    sm.AddItemName(material.item.ItemID);
-                    sm.AddItemCount(material.count - count);
-                    player.sendPacket(sm);
-                    player.sendActionFailed();
-                    return;
-                }
-            }
-
             player.CurMP -= rec._mp_consume;
             StatusUpdate su = new StatusUpdate(player.ObjID);
             su.add(StatusUpdate.CUR_MP, (int)player.CurMP);
             player.sendPacket(su);
 
             foreach (recipe_item_entry material in rec._materials)
-                player.Inventory.destroyItem(material.item.ItemID, material.count, true, true);
+                player.DestroyItemById(material.item.ItemID, material.count);
 
             if (rec._success_rate < 100)
                 if (new Random().Next(0, 100) > rec._success_rate)
@@ -92,7 +78,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
                 }
 
             foreach (recipe_item_entry prod in rec._products)
-                player.Inventory.addItem(prod.item, prod.count, 0, true, true);
+                player.AddItem(prod.item.ItemID, prod.count);
 
             player.sendPacket(new RecipeItemMakeInfo(player, rec, 1));
         }

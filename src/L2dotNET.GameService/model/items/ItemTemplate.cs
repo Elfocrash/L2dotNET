@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public int _recipeId = 0;
         public int Weight = 0;
-        public long _cryCount = 0;
+        public int _cryCount = 0;
 
         public int MpConsume = 0;
         public int LimitedMinutes = 0;
@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public int SoulshotCount = 0,
                    SpiritshotCount = 0;
-        public long Price = 0;
+        public int Price = 0;
         public int AbnormalMaskEvent = 0;
 
         //  public TSkill critical_attack_skill, attack_skill, magic_skill;
@@ -341,10 +341,10 @@ namespace L2dotNET.GameService.Model.Items
             switch (Bodypart)
             {
                 case L2ItemBodypart.underwear:
-                    id = InvPC.SBT_UNDERWEAR;
+                    id = Inventory.Inventory.PaperdollUnder;
                     break;
                 case L2ItemBodypart.ears:
-                    id = InvPC.SBT_RLEAR;
+                    id = Inventory.Inventory.PaperdollHairall;
                     break;
                 case L2ItemBodypart.neck:
                     id = 8;
@@ -374,37 +374,16 @@ namespace L2dotNET.GameService.Model.Items
                     id = 4096;
                     break;
                 case L2ItemBodypart.back:
-                    id = InvPC.SBT_BACK;
+                    id = Inventory.Inventory.PaperdollBack;
                     break;
                 case L2ItemBodypart.lrhand:
                     id = 16384;
                     break;
-                case L2ItemBodypart.onepiece:
-                    id = InvPC.SBT_ONEPIECE;
-                    break;
                 case L2ItemBodypart.hair:
-                    id = InvPC.SBT_HAIR;
-                    break;
-                case L2ItemBodypart.alldress:
-                    id = InvPC.SBT_ALLDRESS;
-                    break;
-                case L2ItemBodypart.hair2:
-                    id = InvPC.SBT_HAIR2;
+                    id = Inventory.Inventory.PaperdollHair;
                     break;
                 case L2ItemBodypart.hairall:
-                    id = InvPC.SBT_HAIRALL;
-                    break;
-                case L2ItemBodypart.rbracelet:
-                    id = InvPC.SBT_RBracelet;
-                    break;
-                case L2ItemBodypart.deco1:
-                    id = InvPC.SBT_Deco1;
-                    break;
-                case L2ItemBodypart.lbracelet:
-                    id = InvPC.SBT_LBracelet;
-                    break;
-                case L2ItemBodypart.waist:
-                    id = InvPC.SBT_Waist;
+                    id = Inventory.Inventory.PaperdollHairall;
                     break;
             }
 
@@ -430,6 +409,48 @@ namespace L2dotNET.GameService.Model.Items
         public int reuse_delay;
         public short enchanted = 0;
         public int for_npc;
+
+        public static readonly int Type1WeaponRingEarringNecklace = 0;
+        public static readonly int Type1ShieldArmor = 1;
+        public static readonly int Type1ItemQuestitemAdena = 4;
+
+        public static readonly int Type2Weapon = 0;
+        public static readonly int Type2ShieldArmor = 1;
+        public static readonly int Type2Accessory = 2;
+        public static readonly int Type2Quest = 3;
+        public static readonly int Type2Money = 4;
+        public static readonly int Type2Other = 5;
+
+        public static readonly int SlotNone = 0x0000;
+        public static readonly int SlotUnderwear = 0x0001;
+        public static readonly int SlotREar = 0x0002;
+        public static readonly int SlotLEar = 0x0004;
+        public static readonly int SlotLrEar = 0x00006;
+        public static readonly int SlotNeck = 0x0008;
+        public static readonly int SlotRFinger = 0x0010;
+        public static readonly int SlotLFinger = 0x0020;
+        public static readonly int SlotLrFinger = 0x0030;
+        public static readonly int SlotHead = 0x0040;
+        public static readonly int SlotRHand = 0x0080;
+        public static readonly int SlotLHand = 0x0100;
+        public static readonly int SlotGloves = 0x0200;
+        public static readonly int SlotChest = 0x0400;
+        public static readonly int SlotLegs = 0x0800;
+        public static readonly int SlotFeet = 0x1000;
+        public static readonly int SlotBack = 0x2000;
+        public static readonly int SlotLrHand = 0x4000;
+        public static readonly int SlotFullArmor = 0x8000;
+        public static readonly int SlotFace = 0x010000;
+        public static readonly int SlotAlldress = 0x020000;
+        public static readonly int SlotHair = 0x040000;
+        public static readonly int SlotHairall = 0x080000;
+
+        public static readonly int SlotWolf = -100;
+        public static readonly int SlotHatchling = -101;
+        public static readonly int SlotStrider = -102;
+        public static readonly int SlotBabypet = -103;
+
+        public static readonly int SlotAllweapon = SlotLrHand | SlotRHand;
 
         public void buildEffect()
         {

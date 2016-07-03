@@ -51,13 +51,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (e.itemid > 0)
-                if (!player.hasItem(e.itemid, e.itemcount))
-                {
-                    player.sendSystemMessage(SystemMessage.SystemMessageId.ITEM_MISSING_TO_LEARN_SKILL);
-                    player.sendActionFailed();
-                    return;
-                }
+            //if (e.itemid > 0)
+            //    if (!player.hasItem(e.itemid, e.itemcount))
+            //    {
+            //        player.sendSystemMessage(SystemMessage.SystemMessageId.ITEM_MISSING_TO_LEARN_SKILL);
+            //        player.sendActionFailed();
+            //        return;
+            //    }
 
             if (e.lv_up_sp > 0)
             {
@@ -67,7 +67,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.sendPacket(su);
             }
 
-            player.Inventory.destroyItem(e.itemid, e.itemcount, true, true);
+            player.DestroyItemById(e.itemid, e.itemcount);
 
             TSkill skill = TSkillTable.Instance.Get(e.id, e.lv);
             if (skill != null)

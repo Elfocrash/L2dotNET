@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using L2dotNET.GameService.Model.Inventory;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -25,7 +26,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = Client.CurrentPlayer;
 
-            L2Item item = player.Inventory.getItemById(itemId);
+            L2Item item = player.Inventory.GetItemByItemId(itemId);
             if ((item == null) || !item.Template.isAutoSS)
             {
                 player.sendActionFailed();
@@ -44,20 +45,20 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.sendPacket(new ExAutoSoulShot(itemId, type));
                 player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.USE_OF_S1_WILL_BE_AUTO).AddItemName(itemId));
 
-                L2Item weapon = player.Inventory.getWeapon();
+                L2Item weapon = player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand);
                 if (weapon != null)
                     foreach (int sid in weapon.Template.getSoulshots().Where(sid => sid == itemId))
                     {
                         if (!weapon.Soulshot)
                         {
-                            if (!player.hasItem(sid, weapon.Template.SoulshotCount))
+                            if (!player.HasItem(sid, weapon.Template.SoulshotCount))
                             {
                                 player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.CANNOT_AUTO_USE_LACK_OF_S1).AddItemName(itemId));
                                 player.sendActionFailed();
                                 return;
                             }
 
-                            player.Inventory.destroyItem(itemId, weapon.Template.SoulshotCount, false, true);
+                            player.DestroyItemById(itemId, weapon.Template.SoulshotCount);
                             weapon.Soulshot = true;
                             player.broadcastSoulshotUse(itemId);
                         }

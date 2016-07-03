@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Model.Skills2.Conds
 
         public override bool CanUse(L2Player player, TSkill skill)
         {
-            L2Item item = player.Inventory.getWeapon();
+            L2Item item = null;// player.Inventory.getWeapon();
 
             if (item != null)
                 return allowed.Any(mask => mask.Equals(item.Template.WeaponType.ToString()));

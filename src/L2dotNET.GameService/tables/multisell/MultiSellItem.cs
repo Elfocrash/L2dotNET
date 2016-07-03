@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.Tables.Multisell
     public class MultiSellItem
     {
         public int id;
-        public long count;
+        public int count;
         public ItemTemplate template;
 
         public short enchant

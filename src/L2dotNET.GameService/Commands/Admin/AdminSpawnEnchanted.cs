@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Commands.Admin
 
             short enchant = short.Parse(alias.Split(' ')[1]);
             int id = int.Parse(alias.Split(' ')[2]);
-            admin.Inventory.addItem(id, 1, enchant, true, true);
+            admin.AddItem(id, 1);
         }
     }
 }

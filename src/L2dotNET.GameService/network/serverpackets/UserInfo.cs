@@ -47,17 +47,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(player.CurrentWeight);
             writeD(player.CharacterStat.getStat(TEffectType.b_max_weight));
 
-            writeD(player.Inventory.getWeapon() != null ? 40 : 20); // 20 no weapon, 40 weapon equipped
+            writeD(player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand) != null ? 40 : 20); // 20 no weapon, 40 weapon equipped
 
-            for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
+            for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
             {
-                int result = player.Inventory._paperdoll[id][0];
+                int result = player.Inventory.Paperdoll[id].Template.ItemID;
                 writeD(result);
             }
 
-            for (byte id = 0; id < InvPC.EQUIPITEM_Max; id++)
+            for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
             {
-                int result = player.Inventory._paperdoll[id][0];
+                int result = player.Inventory.Paperdoll[id].Template.ItemID;
                 writeD(result);
             }
 
@@ -76,7 +76,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
-            writeD(player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
+            writeD(0x00);//player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
@@ -89,7 +89,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);
-            writeD(player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
+            writeD(0x00);//player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
             writeH(0x00);
             writeH(0x00);
             writeH(0x00);

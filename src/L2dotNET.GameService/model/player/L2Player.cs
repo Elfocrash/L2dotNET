@@ -100,6 +100,8 @@ namespace L2dotNET.GameService.Model.Player
         public int VarkaKetraAlly { get; set; }
         public long ClanJoinExpiryTime { get; set; }
         public int ClanCreateExpiryTime { get; set; }
+        public PcInventory Inventory { get; set; }
+
 
         public L2Player RestorePlayer(int id, GameClient client)
         {
@@ -151,13 +153,11 @@ namespace L2dotNET.GameService.Model.Player
             player.Penalty_ClanCreate = playerModel.ClanCreateExpiryTime.ToString();
             player.Penalty_ClanJoin = playerModel.ClanJoinExpiryTime.ToString();
 
-            player.Inventory = new InvPC();
-            player.Inventory._owner = player;
-            player.Refund = new InvRefund(player);
+            player.Inventory = new PcInventory(this);
 
             player.CStatsInit();
 
-            restoreItems(player);
+            //restoreItems(player);
 
             return player;
         }
@@ -167,11 +167,13 @@ namespace L2dotNET.GameService.Model.Player
             L2Player player = new L2Player();
             player.ObjID = IdFactory.Instance.nextId();
 
-            player.Inventory = new InvPC();
-            player.Inventory._owner = player;
+            //player.Inventory = new InvPC();
+            //player.Inventory._owner = player;
 
             return player;
         }
+
+
 
         public void UpdatePlayer()
         {
@@ -191,61 +193,23 @@ namespace L2dotNET.GameService.Model.Player
                     Summon.unSummon();
 
                 UpdatePlayer();
-                saveInventory();
+                //saveInventory();
 
                 L2World.Instance.RemoveObject(this);
             }
         }
 
-        public int getPaperdollObjectId(int p)
-        {
-            return Inventory.getPaperdollObjectId(p);
-        }
+        public int INT => ActiveClass.BaseINT;
 
-        public int getPaperdollItemId(int p)
-        {
-            return Inventory.getPaperdollId(p);
-        }
+        public int STR => ActiveClass.BaseSTR;
 
-        public int getWeaponAugmentation()
-        {
-            return Inventory.getWeaponAugmentation();
-        }
+        public int CON => ActiveClass.BaseCON;
 
-        public int INT
-        {
-            get { return ActiveClass.BaseINT; }
-        }
+        public int MEN => ActiveClass.BaseMEN;
 
-        public int STR
-        {
-            get { return ActiveClass.BaseSTR; }
-        }
+        public int DEX => ActiveClass.BaseDEX;
 
-        public int CON
-        {
-            get { return ActiveClass.BaseCON; }
-        }
-
-        public int MEN
-        {
-            get { return ActiveClass.BaseMEN; }
-        }
-
-        public int DEX
-        {
-            get { return ActiveClass.BaseDEX; }
-        }
-
-        public int WIT
-        {
-            get { return ActiveClass.BaseWIT; }
-        }
-
-        public int getPaperdollAugmentationId(int p)
-        {
-            return Inventory.getPaperdollAugmentId(p);
-        }
+        public int WIT => ActiveClass.BaseWIT;
 
         public byte Builder = 1;
         public byte Noblesse = 0;
@@ -309,27 +273,6 @@ namespace L2dotNET.GameService.Model.Player
             return false;
         }
 
-        public InvPC Inventory;
-        public InvRefund Refund;
-
-        public L2Item getItemByObjId(int itemobj)
-        {
-            try
-            {
-                return Inventory.getByObject(itemobj);
-            }
-            catch
-            {
-                log.Info($"player: cant find item obj {itemobj}");
-                return null;
-            }
-        }
-
-        public void setPaperdoll(int pdollId, L2Item item, bool update)
-        {
-            Inventory.setPaperdoll(pdollId, item, update);
-        }
-
         public override void sendPacket(GameServerNetworkPacket pk)
         {
             Gameclient.sendPacket(pk);
@@ -376,16 +319,6 @@ namespace L2dotNET.GameService.Model.Player
                 player.sendActionFailed();
         }
 
-        public long getAdena()
-        {
-            return Inventory.Items.Values.Where(item => item.Template.ItemID == 57).Select(item => item.Count).FirstOrDefault();
-        }
-
-        public void addAdena(long count, bool msg, bool update)
-        {
-            Inventory.addItem(57, count, msg, update);
-        }
-
         public override void broadcastUserInfo()
         {
             sendPacket(new UserInfo(this));
@@ -404,83 +337,6 @@ namespace L2dotNET.GameService.Model.Player
         public int getForceIncreased()
         {
             return _currentFocusEnergy;
-        }
-
-        public static void restoreItems(L2Player player)
-        {
-            //MySqlConnection connection = SQLjec.getInstance().conn();
-            //MySqlCommand cmd = connection.CreateCommand();
-
-            //connection.Open();
-
-            //cmd.CommandText = "SELECT * FROM user_items WHERE ownerId=" + player.ObjID;
-            //cmd.CommandType = CommandType.Text;
-
-            //MySqlDataReader reader = cmd.ExecuteReader();
-
-            //while (reader.Read())
-            //{
-            //    int itemId = reader.GetInt32("itemId");
-            //    ItemTemplate template = ItemTable.getInstance().getItem(itemId);
-            //    if (template == null)
-            //        continue;
-
-            //    L2Item item = new L2Item(template, true);
-            //    item.ObjID = reader.GetInt32("iobjectId");
-            //    item.Count = reader.GetInt32("icount");
-            //    item.Enchant = reader.GetInt16("ienchant");
-            //    item.AugmentationID = reader.GetInt32("iaugment");
-            //    item.Durability = reader.GetInt32("imana");
-            //    item.SetLimitedHour(reader.GetString("lifetime"));
-            //    item._isEquipped = reader.GetInt16("iequipped");
-            //    item._paperdollSlot = reader.GetInt32("iequip_data");
-
-            //    string location = reader.GetString("ilocation");
-            //    item.Location = (L2Item.L2ItemLocation)Enum.Parse(typeof(L2Item.L2ItemLocation), location);
-
-            //    switch (item.Location)
-            //    {
-            //        case L2Item.L2ItemLocation.paperdoll:
-            //        case L2Item.L2ItemLocation.inventory:
-            //            {
-            //                item.SlotLocation = reader.GetInt32("iloc_data");
-            //                player.Inventory.Items.Add(item.ObjID, item);
-            //                if (item._isEquipped == 1)
-            //                {
-            //                    player.Inventory.setPaperdollDirect(item._paperdollSlot, item);
-            //                }
-            //            }
-            //            break;
-            //        case L2Item.L2ItemLocation.warehouse:
-            //            {
-            //                if (player._warehouse == null)
-            //                {
-            //                    player._warehouse = new InvPrivateWarehouse(player);
-            //                }
-
-            //                player._warehouse.dbLoad(item);
-            //            }
-            //            break;
-            //        case L2Item.L2ItemLocation.pet:
-            //            {
-            //                item._petId = reader.GetInt32("iloc_data");
-            //                player.Inventory.Items.Add(item.ObjID, item);
-            //            }
-            //            break;
-            //    }
-
-            //    //item.CustomType1 = reader.GetInt32("ict1");
-            //    //item.CustomType2 = reader.GetInt32("ict2");
-            //}
-
-            //reader.Close();
-            //connection.Close();
-        }
-
-        public void saveInventory()
-        {
-            foreach (L2Item item in Inventory.Items.Values)
-                item.sql_update();
         }
 
         public TSkill getSkill(int _magicId)
@@ -597,16 +453,16 @@ namespace L2dotNET.GameService.Model.Player
                     return;
                 }
 
-            if (skill.ConsumeItemId != 0)
-            {
-                long count = Inventory.getItemCount(skill.ConsumeItemId);
-                if (count < skill.ConsumeItemCount)
-                {
-                    sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANNOT_BE_USED).AddSkillName(skill.skill_id, skill.level));
-                    sendActionFailed();
-                    return;
-                }
-            }
+            //if (skill.ConsumeItemId != 0)
+            //{
+            //    long count = Inventory.getItemCount(skill.ConsumeItemId);
+            //    if (count < skill.ConsumeItemCount)
+            //    {
+            //        sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANNOT_BE_USED).AddSkillName(skill.skill_id, skill.level));
+            //        sendActionFailed();
+            //        return;
+            //    }
+            //}
 
             byte blowOk = 0;
             if (skill.effects.Count > 0)
@@ -662,8 +518,8 @@ namespace L2dotNET.GameService.Model.Player
                 broadcastPacket(su);
             }
 
-            if (skill.ConsumeItemId != 0)
-                Inventory.destroyItem(skill.ConsumeItemId, skill.ConsumeItemCount, true, true);
+            //if (skill.ConsumeItemId != 0)
+            //   Inventory.destroyItem(skill.ConsumeItemId, skill.ConsumeItemCount, true, true);
 
             int hitTime = skill.skill_hit_time;
 
@@ -794,37 +650,6 @@ namespace L2dotNET.GameService.Model.Player
                 qi._template.onTalkToNpc(this, npc, qi.stage);
         }
 
-        public bool hasAllOfThisItems(params int[] id)
-        {
-            return Inventory.hasAllOfThis(id);
-        }
-
-        public bool hasSomeOfThisItems(params int[] id)
-        {
-            return Inventory.hasSomeOfThis(id);
-        }
-
-        public bool hasItem(int id, long count = 1)
-        {
-            return Inventory.getItemCount(id) >= count;
-        }
-
-        public void addItem(int id, long count)
-        {
-            Inventory.addItem(id, count, true, true);
-        }
-
-        public void addItemQuest(int id, long count)
-        {
-            sendPacket(new PlaySound("ItemSound.quest_itemget"));
-            Inventory.addItem(id, count, true, true);
-        }
-
-        public void addItem(int id)
-        {
-            Inventory.addItem(id, 1, true, true);
-        }
-
         public void ShowHtm(string file, L2Object o)
         {
             if (file.EndsWithIgnoreCase(".htm"))
@@ -877,14 +702,6 @@ namespace L2dotNET.GameService.Model.Player
             sendPacket(new NpcHtmlMessage(this, plain, o == null ? -1 : o.ObjID, true));
             if (o is L2Npc)
                 FolkNpc = (L2Npc)o;
-        }
-
-        public void takeItem(int id, long count)
-        {
-            if (count > 1)
-                Inventory.destroyItem(id, count, true, true);
-            else
-                Inventory.destroyItemAll(id, true, true);
         }
 
         public void changeQuestStage(int questId, int stage)
@@ -1040,68 +857,6 @@ namespace L2dotNET.GameService.Model.Player
             sendPacket(new PlaySound("ItemSound.quest_giveup"));
         }
 
-        public InvPrivateWarehouse _warehouse;
-
-        public void db_restoreQuests()
-        {
-            //MySqlConnection connection = SQLjec.getInstance().conn();
-            //MySqlCommand cmd = connection.CreateCommand();
-
-            //connection.Open();
-
-            //cmd.CommandText = "SELECT qid,qstage,qfin FROM user_quests WHERE ownerId=" + ObjID + " ORDER BY tact ASC";
-            //cmd.CommandType = CommandType.Text;
-
-            //MySqlDataReader reader = cmd.ExecuteReader();
-
-            //while (reader.Read())
-            //{
-            //    int qid = reader.GetInt32("qid");
-            //    int stage = reader.GetInt32("qstage");
-            //    int fin = reader.GetInt32("qfin");
-
-            //    QuestInfo qi = new QuestInfo(qid, stage, fin);
-            //    _quests.Add(qi);
-            //}
-
-            //reader.Close();
-            //connection.Close();
-        }
-
-        public L2Item[] getAllNonQuestItems()
-        {
-            IEnumerable<L2Item> sort = from item in Inventory.Items.Values
-                                       where item.Template.Type != ItemTemplate.L2ItemType.questitem
-                                       select item;
-            return sort.ToArray();
-        }
-
-        public L2Item[] getAllWeaponArmorNonQuestItems()
-        {
-            IEnumerable<L2Item> sort = from item in Inventory.Items.Values
-                                       where (item.Template.Type != ItemTemplate.L2ItemType.questitem) && ((item.Template.Type == ItemTemplate.L2ItemType.armor) || (item.Template.Type == ItemTemplate.L2ItemType.weapon))
-                                       select item;
-            return sort.ToArray();
-        }
-
-        public L2Item[] getAllQuestItems()
-        {
-            IEnumerable<L2Item> sort = from item in Inventory.Items.Values
-                                       where item.Template.Type == ItemTemplate.L2ItemType.questitem
-                                       select item;
-            return sort.ToArray();
-        }
-
-        public L2Item[] getAllItems()
-        {
-            return Inventory.Items.Values.ToArray();
-        }
-
-        public ICollection getAllWarehouseItems()
-        {
-            return _warehouse.Items;
-        }
-
         public L2Clan Clan;
 
         public int ItemLimit_Inventory = 80,
@@ -1117,11 +872,6 @@ namespace L2dotNET.GameService.Model.Player
         public L2Npc FolkNpc;
         public int last_x1 = -4;
         public int last_y1;
-
-        public void reduceAdena(long count, bool msg, bool upd)
-        {
-            Inventory.destroyItem(57, count, msg, upd);
-        }
 
         public override void updateSkillList()
         {
@@ -1313,8 +1063,56 @@ namespace L2dotNET.GameService.Model.Player
 
         public override void onPickUp(L2Item item)
         {
-            item.Location = L2Item.L2ItemLocation.inventory;
-            Inventory.addItem(item, true, true);
+            //item.Location = L2Item.L2ItemLocation.inventory;
+            //Inventory.addItem(item, true, true);
+        }
+
+        public void AddItem(int itemId, int count)
+        {
+            Inventory.AddItem(itemId, count, this);
+        }
+
+        public void DestroyItem(L2Item item, int count)
+        {
+            Inventory.DestroyItem(item, count, this);
+        }
+
+        public void DestroyItemById(int itemId, int count)
+        {
+            Inventory.DestroyItemById(itemId, count, this);
+        }
+
+        public bool ReduceAdena(int count)
+        {
+            return Inventory.ReduceAdena(count, this);
+        }
+
+        public L2Item GetItemByObjId(int objId)
+        {
+            return Inventory.GetItemByObjectId(objId);
+        }
+
+        public List<L2Item> GetAllItems()
+        {
+            return Inventory.Items;
+        }
+
+        public int GetAdena()
+        {
+            return Inventory.AdenaCount();
+        }
+
+        public void AddAdena(int count, bool sendMessage)
+        {
+            if(sendMessage)
+                sendPacket(new SystemMessage(SystemMessage.SystemMessageId.EARNED_S1_ADENA).AddNumber(count));
+
+            if (count > 0)
+            {
+                InventoryUpdate iu = new InventoryUpdate();
+                iu.addNewItem(Inventory.AddItem(57, count, this));
+                sendPacket(iu);
+            }
         }
 
         public override string asString()
@@ -1411,6 +1209,15 @@ namespace L2dotNET.GameService.Model.Player
             }
         }
 
+        public bool HasItem(int itemId, int count)
+        {
+            foreach (L2Item item in Inventory.Items)
+                if(item.Template.ItemID == itemId)
+                    if (item.Count >= count)
+                        return true;
+            return false;
+        }
+
         public override void SendInfo(L2Player player)
         {
             //if (this.Boa isInBoat())
@@ -1504,12 +1311,12 @@ namespace L2dotNET.GameService.Model.Player
         {
             long oldweight = CurrentWeight;
             long total = 0;
-            if (!_diet)
-                foreach (L2Item it in Inventory.Items.Values.Where(it => it.Template.Weight != 0))
-                    if (it.Template.isStackable())
-                        total += it.Template.Weight * it.Count;
-                    else
-                        total += it.Template.Weight;
+            //if (!_diet)
+            //    foreach (L2Item it in Inventory.Items.Values.Where(it => it.Template.Weight != 0))
+            //        if (it.Template.isStackable())
+            //            total += it.Template.Weight * it.Count;
+            //        else
+            //            total += it.Template.Weight;
 
             CurrentWeight = total >= int.MaxValue ? int.MaxValue : (int)total;
 
@@ -1574,63 +1381,6 @@ namespace L2dotNET.GameService.Model.Player
             onSpawn();
         }
 
-        public bool CheckFreeSlotsInventory(ItemTemplate item, int count)
-        {
-            int check = 0;
-
-            if (item.isStackable())
-            {
-                if (Inventory.getItemById(item.ItemID) == null)
-                    check = 1;
-            }
-            else
-                check = count;
-
-            if (getAllNonQuestItems().Length + check >= ItemLimit_Inventory)
-                return false;
-
-            return true;
-        }
-
-        public bool CheckFreeSlotsInventory80(ItemTemplate item, long count)
-        {
-            long check = 0;
-
-            if (item.isStackable())
-            {
-                if (Inventory.getItemById(item.ItemID) == null)
-                    check = 1;
-            }
-            else
-                check = count;
-
-            if (getAllNonQuestItems().Length + check >= (ItemLimit_Inventory * .8))
-                return false;
-
-            return true;
-        }
-
-        public bool CheckFreeSlotsInventory80(int id, long count, bool msg)
-        {
-            long check;
-            L2Item item = Inventory.getItemById(id);
-
-            if (item != null)
-                if (!item.Template.isStackable())
-                    check = 1;
-                else
-                    check = count;
-            else
-                check = 1;
-
-            if (getAllNonQuestItems().Length + check >= (ItemLimit_Inventory * .8))
-            {
-                sendSystemMessage(SystemMessage.SystemMessageId.YOU_COULD_NOT_RECEIVE_BECAUSE_YOUR_INVENTORY_IS_FULL);
-                return false;
-            }
-
-            return true;
-        }
 
         public byte ClanRank()
         {
@@ -1831,7 +1581,7 @@ namespace L2dotNET.GameService.Model.Player
 
             onGameInit();
             db_restoreSkills();
-            db_restoreQuests();
+            //db_restoreQuests();
             db_restoreRecipes();
             // db_restoreShortcuts(); elfo to be added
 
@@ -1927,7 +1677,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public byte GetEnchantValue()
         {
-            int val = Inventory.getWeaponEnchanment();
+            int val = 0;//Inventory.getWeaponEnchanment();
 
             if (MountType > 0)
                 return 0;
@@ -2148,10 +1898,7 @@ namespace L2dotNET.GameService.Model.Player
         // arrow, bolt
         public L2Item SecondaryWeaponSupport;
 
-        public override L2Item ActiveWeapon
-        {
-            get { return Inventory.getWeapon(); }
-        }
+        public override L2Item ActiveWeapon => null;
 
         public override void abortAttack()
         {
@@ -2259,7 +2006,7 @@ namespace L2dotNET.GameService.Model.Player
             if (ranged)
             {
                 sendPacket(new SetupGauge(ObjID, SetupGauge.SG_color.red, (int)timeAtk));
-                Inventory.destroyItem(SecondaryWeaponSupport, 1, false, true);
+                //Inventory.destroyItem(SecondaryWeaponSupport, 1, false, true);
             }
 
             Attack atk = new Attack(this, target, ss, 5);
@@ -2374,34 +2121,34 @@ namespace L2dotNET.GameService.Model.Player
         {
             attack_ToEnd.Enabled = false;
 
-            L2Item weapon = Inventory.getWeapon();
-            if (weapon != null)
-            {
-                if (weapon.Soulshot)
-                    weapon.Soulshot = false;
+            //L2Item weapon = Inventory.getWeapon();
+            //if (weapon != null)
+            //{
+            //    if (weapon.Soulshot)
+            //        weapon.Soulshot = false;
 
-                foreach (int sid in weapon.Template.getSoulshots().Where(sid => autoSoulshots.Contains(sid)))
-                {
-                    if (Inventory.getItemCount(sid) < weapon.Template.SoulshotCount)
-                    {
-                        sendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_CANCELLED_LACK_OF_S1).AddItemName(sid));
+            //    foreach (int sid in weapon.Template.getSoulshots().Where(sid => autoSoulshots.Contains(sid)))
+            //    {
+            //        if (Inventory.getItemCount(sid) < weapon.Template.SoulshotCount)
+            //        {
+            //            sendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_CANCELLED_LACK_OF_S1).AddItemName(sid));
 
-                        lock (autoSoulshots)
-                        {
-                            autoSoulshots.Remove(sid);
-                            sendPacket(new ExAutoSoulShot(sid, 0));
-                        }
-                    }
-                    else
-                    {
-                        Inventory.destroyItem(sid, weapon.Template.SoulshotCount, false, true);
-                        weapon.Soulshot = true;
-                        broadcastSoulshotUse(sid);
-                    }
+            //            lock (autoSoulshots)
+            //            {
+            //                autoSoulshots.Remove(sid);
+            //                sendPacket(new ExAutoSoulShot(sid, 0));
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Inventory.destroyItem(sid, weapon.Template.SoulshotCount, false, true);
+            //            weapon.Soulshot = true;
+            //            broadcastSoulshotUse(sid);
+            //        }
 
-                    break;
-                }
-            }
+            //        break;
+            //    }
+            //}
         }
 
         public override double Radius
@@ -2526,7 +2273,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public void InstantTeleportWithItem(int x, int y, int z, int id, long cnt)
         {
-            Inventory.destroyItem(id, cnt, true, true);
+            //Inventory.destroyItem(id, cnt, true, true);
         }
 
         public void RedistExp(L2Warrior mob)
@@ -2589,7 +2336,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public override L2Item getWeaponItem()
         {
-            return Inventory.getWeapon();
+            return null;
         }
 
         public void UpdateAgathionEnergy(int count)
