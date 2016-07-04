@@ -118,7 +118,7 @@ namespace L2dotNET.GameService.Model.Items
                 }
 
                 if (character is L2Player)
-                    ((L2Player)character).castSkill(skill, false, false);
+                    ((L2Player)character).CastSkill(skill, false, false);
                 else
                     character.CastSkill(skill);
             }
