@@ -11,31 +11,31 @@ namespace L2dotNET.GameService.Scripting
     /// </summary>
     public class ScriptCompiler
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ScriptCompiler));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ScriptCompiler));
 
-        private readonly CSharpCodeProvider provider;
+        private readonly CSharpCodeProvider _provider;
 
-        private static volatile ScriptCompiler instance;
-        private static readonly object syncRoot = new object();
+        private static volatile ScriptCompiler _instance;
+        private static readonly object SyncRoot = new object();
 
         public static ScriptCompiler Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new ScriptCompiler();
+                        if (_instance == null)
+                            _instance = new ScriptCompiler();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
         public ScriptCompiler()
         {
-            provider = new CSharpCodeProvider();
+            _provider = new CSharpCodeProvider();
         }
 
         public object[] CompileFolder(string path)
@@ -49,15 +49,15 @@ namespace L2dotNET.GameService.Scripting
             foreach (string fname in Directory.GetFiles(path, "*.cs"))
             {
                 FileInfo info = new FileInfo(fname);
-                CompilerResults result = provider.CompileAssemblyFromFile(cp, fname);
+                CompilerResults result = _provider.CompileAssemblyFromFile(cp, fname);
 
                 if (result.Errors.Count > 0)
-                    log.Error($"ScriptCompiler: Failed to compile {fname}.");
+                    Log.Error($"ScriptCompiler: Failed to compile {fname}.");
                 else
                     objectList.Add(result.CompiledAssembly.CreateInstance(Path.GetFileNameWithoutExtension(info.Name)));
             }
 
-            log.Info($"Script Compiler: Compiled {objectList.Count} scripted quests.");
+            Log.Info($"Script Compiler: Compiled {objectList.Count} scripted quests.");
 
             return objectList.ToArray();
         }

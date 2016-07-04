@@ -6,40 +6,40 @@ namespace L2dotNET.GameService.Managers
 {
     public class RThread
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(RThread));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(RThread));
 
         public Action PerformAction;
         public Action[] PerformActions;
-        public RThreadType type;
-        private Thread thread;
-        public object id;
+        public RThreadType Type;
+        private Thread _thread;
+        public object Id;
         public int StartWait;
         public int Ticks;
         public int TickSleep;
-        public bool debug = false;
+        public bool Debug = false;
 
         ~RThread()
         {
-            if (debug)
-                log.Info($"Thread[{id}] was erased");
+            if (Debug)
+                Log.Info($"Thread[{Id}] was erased");
         }
 
         public void Start()
         {
-            switch (type)
+            switch (Type)
             {
-                case RThreadType.general:
-                    thread = new Thread(DoWorkGeneral);
+                case RThreadType.General:
+                    _thread = new Thread(DoWorkGeneral);
                     break;
-                case RThreadType.general_tick:
-                    thread = new Thread(DoWorkGeneralTick);
+                case RThreadType.GeneralTick:
+                    _thread = new Thread(DoWorkGeneralTick);
                     break;
-                case RThreadType.actions:
-                    thread = new Thread(DoWorkActions);
+                case RThreadType.Actions:
+                    _thread = new Thread(DoWorkActions);
                     break;
             }
 
-            thread.Start();
+            _thread.Start();
         }
 
         private void DoWorkActions()
@@ -85,16 +85,16 @@ namespace L2dotNET.GameService.Managers
 
         public void AbortMe()
         {
-            if (thread.IsAlive)
-                thread.Abort();
+            if (_thread.IsAlive)
+                _thread.Abort();
 
-            thread = null;
+            _thread = null;
             OnEnd();
         }
 
         private void OnEnd()
         {
-            ThreadPoolManager.getInstance().CloseMe(this);
+            ThreadPoolManager.GetInstance().CloseMe(this);
         }
     }
 }

@@ -2,9 +2,9 @@
 {
     class LeaveWorld : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x7e);
+            WriteC(0x7e);
         }
     }
 }

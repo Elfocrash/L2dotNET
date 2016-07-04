@@ -5,28 +5,30 @@ namespace L2dotNET.GameService.Managers
 {
     public class PartyRoomManager
     {
-        private static readonly PartyRoomManager m = new PartyRoomManager();
+        private static readonly PartyRoomManager M = new PartyRoomManager();
 
-        public static PartyRoomManager getInstance()
+        public static PartyRoomManager GetInstance()
         {
-            return m;
+            return M;
         }
 
-        public SortedList<int, L2PartyRoom> _rooms = new SortedList<int, L2PartyRoom>();
-        public static int _idFactory = 20;
+        public SortedList<int, L2PartyRoom> Rooms = new SortedList<int, L2PartyRoom>();
+        public static int IdFactory = 20;
 
-        public L2PartyRoom newRoom(L2Player player, int roomId, int maxMembers, int minLevel, int maxLevel, int lootDist, string roomTitle)
+        public L2PartyRoom NewRoom(L2Player player, int roomId, int maxMembers, int minLevel, int maxLevel, int lootDist, string roomTitle)
         {
-            L2PartyRoom room = new L2PartyRoom();
-            room._roomId = roomId;
-            room._maxMembers = maxMembers;
-            room._minLevel = minLevel;
-            room._maxLevel = maxLevel;
-            room._lootDist = lootDist;
-            room._title = roomTitle;
-            room._leaderId = player.ObjId;
-            _idFactory++;
-            _rooms.Add(roomId, room);
+            L2PartyRoom room = new L2PartyRoom
+            {
+                RoomId = roomId,
+                MaxMembers = maxMembers,
+                MinLevel = minLevel,
+                MaxLevel = maxLevel,
+                LootDist = lootDist,
+                Title = roomTitle,
+                LeaderId = player.ObjId
+            };
+            IdFactory++;
+            Rooms.Add(roomId, room);
 
             return room;
         }

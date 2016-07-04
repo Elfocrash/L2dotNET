@@ -13,8 +13,8 @@ namespace L2dotNET.GameService.Tables
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(CharTemplateTable));
 
-        private static volatile CharTemplateTable instance;
-        private static readonly object syncRoot = new object();
+        private static volatile CharTemplateTable _instance;
+        private static readonly object SyncRoot = new object();
 
         public Dictionary<int, PcTemplate> Templates { get; } = new Dictionary<int, PcTemplate>();
 
@@ -22,18 +22,16 @@ namespace L2dotNET.GameService.Tables
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new CharTemplateTable();
+                        if (_instance == null)
+                            _instance = new CharTemplateTable();
                     }
 
-                return instance;
+                return _instance;
             }
         }
-
-        public CharTemplateTable() { }
 
         public void Initialize()
         {

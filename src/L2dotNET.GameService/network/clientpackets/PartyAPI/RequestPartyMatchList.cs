@@ -4,23 +4,23 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 {
     class RequestPartyMatchList : GameServerNetworkRequest
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(RequestPartyMatchList));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestPartyMatchList));
 
         public RequestPartyMatchList(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _status;
 
-        public override void read()
+        public override void Read()
         {
-            _status = readD();
+            _status = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            log.Info($"party {_status}");
+            Log.Info($"party {_status}");
         }
     }
 }

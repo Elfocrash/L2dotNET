@@ -2,9 +2,9 @@
 {
     class ActionFailed : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x25);
+            WriteC(0x25);
         }
     }
 }

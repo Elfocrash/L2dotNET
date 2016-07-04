@@ -5,26 +5,26 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class PartySmallWindowUpdate : GameServerNetworkPacket
     {
-        private readonly L2Player member;
+        private readonly L2Player _member;
 
         public PartySmallWindowUpdate(L2Player member)
         {
-            this.member = member;
+            this._member = member;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x52);
-            writeD(member.ObjId);
-            writeS(member.Name);
-            writeD(member.CurCp);
-            writeD(member.CharacterStat.getStat(TEffectType.b_max_cp));
-            writeD(member.CurHp);
-            writeD(member.CharacterStat.getStat(TEffectType.b_max_hp));
-            writeD(member.CurMp);
-            writeD(member.CharacterStat.getStat(TEffectType.b_max_mp));
-            writeD(member.Level);
-            writeD((int)member.ActiveClass.ClassId.Id);
+            WriteC(0x52);
+            WriteD(_member.ObjId);
+            WriteS(_member.Name);
+            WriteD(_member.CurCp);
+            WriteD(_member.CharacterStat.GetStat(EffectType.BMaxCp));
+            WriteD(_member.CurHp);
+            WriteD(_member.CharacterStat.GetStat(EffectType.BMaxHp));
+            WriteD(_member.CurMp);
+            WriteD(_member.CharacterStat.GetStat(EffectType.BMaxMp));
+            WriteD(_member.Level);
+            WriteD((int)_member.ActiveClass.ClassId.Id);
         }
     }
 }

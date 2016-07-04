@@ -2,17 +2,17 @@
 {
     class ExRaidCharacterSelected : GameServerNetworkPacket
     {
-        private int id;
+        private int _id;
 
         public ExRaidCharacterSelected(int id)
         {
-            this.id = id;
+            this._id = id;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0xBA);
+            WriteC(0xFE);
+            WriteH(0xBA);
 
             //  writeD(id);
             //  writeQ(0);

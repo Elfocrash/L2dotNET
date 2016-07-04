@@ -4,26 +4,26 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class VehicleDeparture : GameServerNetworkPacket
     {
-        private readonly L2Boat boat;
-        private readonly int speed;
-        private readonly int rotationSpd;
+        private readonly L2Boat _boat;
+        private readonly int _speed;
+        private readonly int _rotationSpd;
 
         public VehicleDeparture(L2Boat boat, int speed, int rotationSpd)
         {
-            this.boat = boat;
-            this.speed = speed;
-            this.rotationSpd = rotationSpd;
+            this._boat = boat;
+            this._speed = speed;
+            this._rotationSpd = rotationSpd;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x5A);
-            writeD(boat.ObjId);
-            writeD(speed);
-            writeD(rotationSpd);
-            writeD(boat.DestX);
-            writeD(boat.DestY);
-            writeD(boat.DestZ);
+            WriteC(0x5A);
+            WriteD(_boat.ObjId);
+            WriteD(_speed);
+            WriteD(_rotationSpd);
+            WriteD(_boat.DestX);
+            WriteD(_boat.DestY);
+            WriteD(_boat.DestZ);
         }
     }
 }

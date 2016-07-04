@@ -5,124 +5,124 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Model.Npcs.Ai
 {
-    public class WarriorAI : StandartAiTemplate
+    public class WarriorAi : StandartAiTemplate
     {
-        public WarriorAI(L2Character cha)
+        public WarriorAi(L2Character cha)
         {
-            character = cha;
+            Character = cha;
         }
 
-        public Timer attackMove;
+        public Timer AttackMove;
 
         public override void NotifyOnHit(L2Character attacker, double damage)
         {
-            MoveHome = 0;
-            if (character.IsMoving())
-                character.NotifyStopMove(true, true);
+            _moveHome = 0;
+            if (Character.IsMoving())
+                Character.NotifyStopMove(true, true);
 
-            character.ChangeTarget(attacker);
+            Character.ChangeTarget(attacker);
             attack(attacker);
         }
 
         public void attack(L2Character target)
         {
-            if (attackMove == null)
+            if (AttackMove == null)
             {
-                attackMove = new Timer();
-                attackMove.Elapsed += new ElapsedEventHandler(AttackMoveTask);
-                attackMove.Interval = 100;
+                AttackMove = new Timer();
+                AttackMove.Elapsed += new ElapsedEventHandler(AttackMoveTask);
+                AttackMove.Interval = 100;
             }
 
-            attackMove.Enabled = true;
+            AttackMove.Enabled = true;
         }
 
         private void AttackMoveTask(object sender, ElapsedEventArgs e)
         {
-            if (MoveHome > 0)
+            if (_moveHome > 0)
             {
                 ValidateSpawnLocation();
                 return;
             }
 
-            if (character.IsAttacking())
+            if (Character.IsAttacking())
                 return;
 
-            double dis = Calcs.calculateDistance(character, character.CurrentTarget, true);
+            double dis = Calcs.CalculateDistance(Character, Character.CurrentTarget, true);
             if (dis < 80)
             {
-                MoveTarget = 0;
-                L2Character target = character.CurrentTarget;
-                character.DoAttack(target);
+                _moveTarget = 0;
+                L2Character target = Character.CurrentTarget;
+                Character.DoAttack(target);
             }
             else
             {
-                if (character.CantMove())
+                if (Character.CantMove())
                     return;
 
-                if ((lastx != character.CurrentTarget.X) || (lasty != character.CurrentTarget.Y) || (lastz != character.CurrentTarget.Z))
-                    MoveTarget = 0;
+                if ((Lastx != Character.CurrentTarget.X) || (Lasty != Character.CurrentTarget.Y) || (Lastz != Character.CurrentTarget.Z))
+                    _moveTarget = 0;
 
-                if (MoveTarget == 0)
+                if (_moveTarget == 0)
                 {
-                    MoveTarget = 1;
-                    character.MoveTo(character.CurrentTarget.X, character.CurrentTarget.Y, character.CurrentTarget.Z);
-                    lastx = character.CurrentTarget.X;
-                    lasty = character.CurrentTarget.Y;
-                    lastz = character.CurrentTarget.Z;
+                    _moveTarget = 1;
+                    Character.MoveTo(Character.CurrentTarget.X, Character.CurrentTarget.Y, Character.CurrentTarget.Z);
+                    Lastx = Character.CurrentTarget.X;
+                    Lasty = Character.CurrentTarget.Y;
+                    Lastz = Character.CurrentTarget.Z;
                 }
             }
         }
 
-        public int lastx,
-                   lasty,
-                   lastz;
+        public int Lastx,
+                   Lasty,
+                   Lastz;
 
         public override void NotifyOnDie(L2Character killer)
         {
-            if (attackMove != null)
-                attackMove.Enabled = false;
+            if (AttackMove != null)
+                AttackMove.Enabled = false;
 
             base.NotifyOnDie(killer);
         }
 
         public override void NotifyTargetDead()
         {
-            MoveHome = 1;
+            _moveHome = 1;
             base.NotifyTargetDead();
         }
 
         public override void NotifyTargetNull()
         {
-            character.ChangeTarget();
-            MoveHome = 1;
+            Character.ChangeTarget();
+            _moveHome = 1;
             base.NotifyTargetNull();
         }
 
-        private byte MoveHome;
-        private byte MoveTarget;
+        private byte _moveHome;
+        private byte _moveTarget;
 
         private void ValidateSpawnLocation()
         {
-            if (character.CantMove())
+            if (Character.CantMove())
                 return;
 
-            switch (MoveHome)
+            switch (_moveHome)
             {
                 case 1:
-                    double dis = Calcs.calculateDistance(character.X, character.Y, character.Z, character.SpawnX, character.SpawnZ, character.SpawnZ, true);
+                    double dis = Calcs.CalculateDistance(Character.X, Character.Y, Character.Z, Character.SpawnX, Character.SpawnZ, Character.SpawnZ, true);
                     if (dis > 100)
                     {
-                        MoveHome = 2;
-                        character.MoveTo(character.SpawnX, character.SpawnY, character.SpawnZ);
+                        _moveHome = 2;
+                        Character.MoveTo(Character.SpawnX, Character.SpawnY, Character.SpawnZ);
                     }
                     else
                     {
-                        MoveHome = 3;
+                        _moveHome = 3;
                     }
                     break;
                 case 3:
-                    if (attackMove != null)
-                        attackMove.Enabled = false;
+                    if (AttackMove != null)
+                        AttackMove.Enabled = false;
 
                     break;
             }

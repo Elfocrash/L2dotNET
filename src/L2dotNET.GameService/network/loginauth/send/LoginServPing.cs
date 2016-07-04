@@ -2,20 +2,20 @@
 {
     class LoginServPing : GameServerNetworkPacket
     {
-        public string version;
-        private readonly int build;
+        public string Version;
+        private readonly int _build;
 
         public LoginServPing(AuthThread th)
         {
-            version = th.version;
-            build = th.build;
+            Version = th.Version;
+            _build = th.Build;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xA0);
-            writeS(version);
-            writeD(build);
+            WriteC(0xA0);
+            WriteS(Version);
+            WriteD(_build);
         }
     }
 }

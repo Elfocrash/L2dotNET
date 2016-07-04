@@ -6,11 +6,11 @@ namespace L2dotNET.GameService.Model.Stats
 {
     class Formulas
     {
-        private static readonly Random rnd = new Random();
+        private static readonly Random Rnd = new Random();
 
-        public static bool checkMissed(L2Character attacker, L2Character target)
+        public static bool CheckMissed(L2Character attacker, L2Character target)
         {
-            int delta = (int)(attacker.CharacterStat.getStat(TEffectType.b_accuracy) - target.CharacterStat.getStat(TEffectType.b_evasion));
+            int delta = (int)(attacker.CharacterStat.GetStat(EffectType.BAccuracy) - target.CharacterStat.GetStat(EffectType.BEvasion));
 
             double chance;
             if (delta >= 10)
@@ -138,33 +138,33 @@ namespace L2dotNET.GameService.Model.Stats
                 }
             }
 
-            return chance < rnd.Next(1000);
+            return chance < Rnd.Next(1000);
         }
 
-        public static double checkShieldDef(L2Character attacker, L2Character target)
+        public static double CheckShieldDef(L2Character attacker, L2Character target)
         {
-            double rate = target.CharacterStat.getStat(TEffectType.b_shield_rate);
+            double rate = target.CharacterStat.GetStat(EffectType.BShieldRate);
 
-            if (rnd.Next(100) > rate)
+            if (Rnd.Next(100) > rate)
                 return 0;
 
-            return target.CharacterStat.getStat(TEffectType.p_physical_shield_defence);
+            return target.CharacterStat.GetStat(EffectType.PPhysicalShieldDefence);
         }
 
-        public static bool checkCrit(L2Character attacker, L2Character target)
+        public static bool CheckCrit(L2Character attacker, L2Character target)
         {
-            double rate = attacker.CharacterStat.getStat(TEffectType.b_critical_rate);
+            double rate = attacker.CharacterStat.GetStat(EffectType.BCriticalRate);
 
-            if (rnd.Next(1000) <= rate)
+            if (Rnd.Next(1000) <= rate)
                 return true;
 
             return false;
         }
 
-        public static double getPhysHitDamage(L2Character attacker, L2Character target, double sdef)
+        public static double GetPhysHitDamage(L2Character attacker, L2Character target, double sdef)
         {
-            double atk = attacker.CharacterStat.getStat(TEffectType.p_physical_attack);
-            double def = target.CharacterStat.getStat(TEffectType.p_physical_defense);
+            double atk = attacker.CharacterStat.GetStat(EffectType.PPhysicalAttack);
+            double def = target.CharacterStat.GetStat(EffectType.PPhysicalDefense);
 
             double basedamage = 70 * atk / def;
 
@@ -173,15 +173,15 @@ namespace L2dotNET.GameService.Model.Stats
                 basedamage = 0;
 
             int rnddmg = (int)(basedamage * 0.2);
-            basedamage += rnd.Next(-rnddmg, rnddmg);
+            basedamage += Rnd.Next(-rnddmg, rnddmg);
 
             return basedamage;
         }
 
-        public static double getPhysSkillHitDamage(L2Character attacker, L2Character target, int power)
+        public static double GetPhysSkillHitDamage(L2Character attacker, L2Character target, int power)
         {
-            double atk = attacker.CharacterStat.getStat(TEffectType.p_physical_attack);
-            double def = target.CharacterStat.getStat(TEffectType.p_physical_defense);
+            double atk = attacker.CharacterStat.GetStat(EffectType.PPhysicalAttack);
+            double def = target.CharacterStat.GetStat(EffectType.PPhysicalDefense);
 
             atk += power;
             double basedamage = 70 * atk / def;

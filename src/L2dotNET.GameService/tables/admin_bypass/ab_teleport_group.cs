@@ -2,12 +2,12 @@ using System.Collections.Generic;
 
 namespace L2dotNET.GameService.Tables.Admin_Bypass
 {
-    public class ab_teleport_group
+    public class AbTeleportGroup
     {
-        public SortedList<int, ab_teleport_entry> _teles = new SortedList<int, ab_teleport_entry>();
-        public int level;
-        public string name;
-        public int id;
-        public string str;
+        public SortedList<int, AbTeleportEntry> Teles = new SortedList<int, AbTeleportEntry>();
+        public int Level;
+        public string Name;
+        public int Id;
+        public string Str;
     }
 }

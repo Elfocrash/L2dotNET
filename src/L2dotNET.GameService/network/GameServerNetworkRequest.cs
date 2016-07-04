@@ -7,96 +7,96 @@ namespace L2dotNET.GameService.Network
     [Synchronization]
     public abstract class GameServerNetworkRequest
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(GameServerNetworkRequest));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(GameServerNetworkRequest));
 
-        private byte[] buffer;
-        private int position;
+        private byte[] _buffer;
+        private int _position;
         public GameClient Client;
 
-        public GameClient getClient()
+        public GameClient GetClient()
         {
             return Client;
         }
 
-        public void makeme(GameClient client, byte[] packet)
+        public void Makeme(GameClient client, byte[] packet)
         {
             Client = client;
-            buffer = packet;
-            position = 1;
-            read();
+            _buffer = packet;
+            _position = 1;
+            Read();
         }
 
-        public void makeme(GameClient client, byte[] packet, byte plus)
+        public void Makeme(GameClient client, byte[] packet, byte plus)
         {
             Client = client;
-            buffer = packet;
-            position = 1 + plus;
-            read();
+            _buffer = packet;
+            _position = 1 + plus;
+            Read();
         }
 
-        public byte readC()
+        public byte ReadC()
         {
-            byte result = buffer[position];
-            position += 1;
+            byte result = _buffer[_position];
+            _position += 1;
             return result;
         }
 
-        public short readH()
+        public short ReadH()
         {
-            short result = BitConverter.ToInt16(buffer, position);
-            position += 2;
+            short result = BitConverter.ToInt16(_buffer, _position);
+            _position += 2;
             return result;
         }
 
-        public int readD()
+        public int ReadD()
         {
-            int result = BitConverter.ToInt32(buffer, position);
-            position += 4;
+            int result = BitConverter.ToInt32(_buffer, _position);
+            _position += 4;
             return result;
         }
 
-        public long readQ()
+        public long ReadQ()
         {
-            long result = BitConverter.ToInt64(buffer, position);
-            position += 8;
+            long result = BitConverter.ToInt64(_buffer, _position);
+            _position += 8;
             return result;
         }
 
-        public byte[] readB(int len)
+        public byte[] ReadB(int len)
         {
             byte[] result = new byte[len];
-            Array.Copy(buffer, position, result, 0, len);
-            position += len;
+            Array.Copy(_buffer, _position, result, 0, len);
+            _position += len;
             return result;
         }
 
-        public double readF()
+        public double ReadF()
         {
-            double result = BitConverter.ToDouble(buffer, position);
-            position += 8;
+            double result = BitConverter.ToDouble(_buffer, _position);
+            _position += 8;
             return result;
         }
 
-        public string readS()
+        public string ReadS()
         {
             string result = "";
             try
             {
-                result = System.Text.Encoding.Unicode.GetString(buffer, position, buffer.Length - position);
+                result = System.Text.Encoding.Unicode.GetString(_buffer, _position, _buffer.Length - _position);
                 int idx = result.IndexOf((char)0x00);
                 if (idx != -1)
                     result = result.Substring(0, idx);
-                position += (result.Length * 2) + 2;
+                _position += (result.Length * 2) + 2;
             }
             catch (Exception ex)
             {
-                log.Error($"while reading string from packet, {ex.Message} {ex.StackTrace}");
+                Log.Error($"while reading string from packet, {ex.Message} {ex.StackTrace}");
             }
             return result;
         }
 
-        public abstract void read();
+        public abstract void Read();
 
-        public abstract void run();
+        public abstract void Run();
     }
 }

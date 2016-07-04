@@ -2,18 +2,18 @@
 {
     class ExPutEnchantSupportItemResult : GameServerNetworkPacket
     {
-        private readonly int result;
+        private readonly int _result;
 
         public ExPutEnchantSupportItemResult(int result = 0)
         {
-            this.result = result;
+            this._result = result;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0x82);
-            writeD(result);
+            WriteC(0xfe);
+            WriteH(0x82);
+            WriteD(_result);
         }
     }
 }

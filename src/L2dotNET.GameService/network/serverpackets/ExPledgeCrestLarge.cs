@@ -2,27 +2,27 @@
 {
     class ExPledgeCrestLarge : GameServerNetworkPacket
     {
-        private readonly int id;
-        private readonly byte[] picture;
+        private readonly int _id;
+        private readonly byte[] _picture;
 
         public ExPledgeCrestLarge(int id, byte[] picture)
         {
-            this.id = id;
+            this._id = id;
             if (picture == null)
                 picture = new byte[0];
 
-            this.picture = picture;
+            this._picture = picture;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0x1b);
+            WriteC(0xfe);
+            WriteH(0x1b);
 
-            writeD(0x00); //???
-            writeD(id);
-            writeD(picture.Length);
-            writeB(picture);
+            WriteD(0x00); //???
+            WriteD(_id);
+            WriteD(_picture.Length);
+            WriteB(_picture);
         }
     }
 }

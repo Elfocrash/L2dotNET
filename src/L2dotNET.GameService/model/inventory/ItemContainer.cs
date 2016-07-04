@@ -1,7 +1,6 @@
 ﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.World;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using L2dotNET.GameService.Model.Player;
 
@@ -42,7 +41,7 @@ namespace L2dotNET.GameService.Model.Inventory
             List<L2Item> list = new List<L2Item>();
             foreach (L2Item item in Items)
             {
-                if(item.Template.ItemID == itemId)
+                if(item.Template.ItemId == itemId)
                     list.Add(item);
             }
             return list;
@@ -52,7 +51,7 @@ namespace L2dotNET.GameService.Model.Inventory
         {
             foreach (L2Item item in Items)
             {
-                if (item.Template.ItemID == itemId)
+                if (item.Template.ItemId == itemId)
                     return item;
             }
             return null;
@@ -101,7 +100,7 @@ namespace L2dotNET.GameService.Model.Inventory
         public int AdenaCount()
         {
             foreach (L2Item item in Items)
-                if (item.Template.ItemID == 57)
+                if (item.Template.ItemId == 57)
                     return item.Count;
 
             return 0;

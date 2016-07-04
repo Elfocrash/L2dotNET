@@ -6,25 +6,25 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 {
     class RequestGetOnVehicle : GameServerNetworkRequest
     {
-        private int boatId;
-        private int x;
-        private int y;
-        private int z;
+        private int _boatId;
+        private int _x;
+        private int _y;
+        private int _z;
 
         public RequestGetOnVehicle(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            boatId = readD();
-            x = readD();
-            y = readD();
-            z = readD();
+            _boatId = ReadD();
+            _x = ReadD();
+            _y = ReadD();
+            _z = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -36,17 +36,17 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 
             if (player.Summon != null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.RELEASE_PET_ON_BOAT);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ReleasePetOnBoat);
                 player.SendActionFailed();
                 return;
             }
 
-            player.BoatX = x;
-            player.BoatY = y;
-            player.BoatZ = z;
+            player.BoatX = _x;
+            player.BoatY = _y;
+            player.BoatZ = _z;
 
-            if (player.KnownObjects.ContainsKey(boatId))
-                player.Boat = (L2Boat)player.KnownObjects[boatId];
+            if (player.KnownObjects.ContainsKey(_boatId))
+                player.Boat = (L2Boat)player.KnownObjects[_boatId];
 
             player.BroadcastPacket(new GetOnVehicle(player));
         }

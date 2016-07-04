@@ -4,37 +4,37 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class ExReplyDominionInfo : GameServerNetworkPacket
     {
-        private readonly List<string> names = new List<string>();
+        private readonly List<string> _names = new List<string>();
 
         public ExReplyDominionInfo()
         {
-            names.Add("gludio");
-            names.Add("dion");
-            names.Add("giran");
-            names.Add("oren");
-            names.Add("aden");
-            names.Add("innadril");
-            names.Add("goddard");
-            names.Add("rune");
-            names.Add("schuttgart");
+            _names.Add("gludio");
+            _names.Add("dion");
+            _names.Add("giran");
+            _names.Add("oren");
+            _names.Add("aden");
+            _names.Add("innadril");
+            _names.Add("goddard");
+            _names.Add("rune");
+            _names.Add("schuttgart");
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0x92);
-            writeD(names.Count);
+            WriteC(0xfe);
+            WriteH(0x92);
+            WriteD(_names.Count);
 
             byte x = 81;
-            foreach (string str in names)
+            foreach (string str in _names)
             {
-                writeD(x); // Territory Id
-                writeS(str + "_dominion"); // territory name
-                writeS("");
-                writeD(0); // Emblem Count
+                WriteD(x); // Territory Id
+                WriteS(str + "_dominion"); // territory name
+                WriteS("");
+                WriteD(0); // Emblem Count
                 //  for(int i:t.getOwnedWardIds())
                 //    writeD(i); // Emblem ID - should be in for loop for emblem count
-                writeD(0);
+                WriteD(0);
 
                 x++;
             }

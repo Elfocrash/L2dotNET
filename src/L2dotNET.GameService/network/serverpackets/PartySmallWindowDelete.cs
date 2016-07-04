@@ -2,20 +2,20 @@
 {
     class PartySmallWindowDelete : GameServerNetworkPacket
     {
-        private readonly int id;
-        private readonly string name;
+        private readonly int _id;
+        private readonly string _name;
 
         public PartySmallWindowDelete(int id, string name)
         {
-            this.id = id;
-            this.name = name;
+            this._id = id;
+            this._name = name;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x51);
-            writeD(id);
-            writeS(name);
+            WriteC(0x51);
+            WriteD(_id);
+            WriteS(_name);
         }
     }
 }

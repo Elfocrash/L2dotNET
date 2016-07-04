@@ -8,12 +8,7 @@ namespace L2dotNET.GameService.Templates
     {
         public ClassId ClassId { get; set; }
 
-        public int fallingHeight;
-
-        public int FallingHeight
-        {
-            get { return fallingHeight; }
-        }
+        public int FallingHeight { get; }
 
         public int BaseSwimSpd { get; }
 
@@ -38,7 +33,7 @@ namespace L2dotNET.GameService.Templates
 
             BaseSwimSpd = set.GetInt("swimSpd", 1);
 
-            fallingHeight = set.GetInt("falling_height", 333);
+            FallingHeight = set.GetInt("falling_height", 333);
 
             CollisionRadiusFemale = set.GetDouble("radiusFemale");
             CollisionHeightFemale = set.GetDouble("heightFemale");
@@ -49,24 +44,24 @@ namespace L2dotNET.GameService.Templates
 
             ClassBaseLevel = set.GetInt("baseLvl");
 
-            string[] _hpTable = set.GetString("hpTable").Split(';');
+            string[] hpTable = set.GetString("hpTable").Split(';');
 
-            HpTable = new double[_hpTable.Length];
+            HpTable = new double[hpTable.Length];
 
-            for (int i = 0; i < _hpTable.Length; i++)
-                HpTable[i] = double.Parse(_hpTable[i]);
+            for (int i = 0; i < hpTable.Length; i++)
+                HpTable[i] = double.Parse(hpTable[i]);
 
-            string[] _mpTable = set.GetString("mpTable").Split(';');
+            string[] mpTable = set.GetString("mpTable").Split(';');
 
-            MpTable = new double[_mpTable.Length];
-            for (int i = 0; i < _mpTable.Length; i++)
-                MpTable[i] = double.Parse(_mpTable[i]);
+            MpTable = new double[mpTable.Length];
+            for (int i = 0; i < mpTable.Length; i++)
+                MpTable[i] = double.Parse(mpTable[i]);
 
-            string[] _cpTable = set.GetString("cpTable").Split(';');
+            string[] cpTable = set.GetString("cpTable").Split(';');
 
-            CpTable = new double[_cpTable.Length];
-            for (int i = 0; i < _cpTable.Length; i++)
-                CpTable[i] = double.Parse(_cpTable[i]);
+            CpTable = new double[cpTable.Length];
+            for (int i = 0; i < cpTable.Length; i++)
+                CpTable[i] = double.Parse(cpTable[i]);
         }
     }
 }

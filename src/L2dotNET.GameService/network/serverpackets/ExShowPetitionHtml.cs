@@ -2,21 +2,21 @@
 {
     class ExShowPetitionHtml : GameServerNetworkPacket
     {
-        private readonly string Content;
+        private readonly string _content;
 
         public ExShowPetitionHtml(string text)
         {
-            Content = text;
+            _content = text;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0xB1);
+            WriteC(0xFE);
+            WriteH(0xB1);
 
-            writeD(0);
-            writeC(0);
-            writeS(Content);
+            WriteD(0);
+            WriteC(0);
+            WriteS(_content);
         }
     }
 }

@@ -11,14 +11,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class AuthLogin : GameServerNetworkRequest
     {
         [Inject]
-        public IAccountService accountService
+        public IAccountService AccountService
         {
             get { return GameServer.Kernel.Get<IAccountService>(); }
         }
 
         public AuthLogin(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private string _loginName;
@@ -27,36 +27,36 @@ namespace L2dotNET.GameService.Network.Clientpackets
         private int _loginKey1;
         private int _loginKey2;
 
-        public override void read()
+        public override void Read()
         {
-            _loginName = readS();
-            _playKey2 = readD();
-            _playKey1 = readD();
-            _loginKey1 = readD();
-            _loginKey2 = readD();
+            _loginName = ReadS();
+            _playKey2 = ReadD();
+            _playKey1 = ReadD();
+            _loginKey1 = ReadD();
+            _loginKey2 = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            if (getClient().AccountName == null)
+            if (GetClient().AccountName == null)
             {
-                getClient().AccountName = _loginName;
+                GetClient().AccountName = _loginName;
 
-                List<int> players = accountService.GetPlayerIdsListByAccountName(_loginName);
+                List<int> players = AccountService.GetPlayerIdsListByAccountName(_loginName);
 
                 int slot = 0;
-                foreach (L2Player p in players.Select(id => new L2Player().RestorePlayer(id, getClient())))
+                foreach (L2Player p in players.Select(id => new L2Player().RestorePlayer(id, GetClient())))
                 {
                     p.CharSlot = slot;
                     slot++;
                     Client.AccountChars.Add(p);
                 }
 
-                getClient().SendPacket(new CharacterSelectionInfo(getClient().AccountName, getClient().AccountChars, getClient().SessionId));
-                AuthThread.Instance.setInGameAccount(getClient().AccountName, true);
+                GetClient().SendPacket(new CharacterSelectionInfo(GetClient().AccountName, GetClient().AccountChars, GetClient().SessionId));
+                AuthThread.Instance.SetInGameAccount(GetClient().AccountName, true);
             }
             else
-                getClient().Termination();
+                GetClient().Termination();
         }
     }
 }

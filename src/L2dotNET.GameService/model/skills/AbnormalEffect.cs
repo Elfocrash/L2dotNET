@@ -7,56 +7,56 @@ namespace L2dotNET.GameService.Model.Skills
 {
     public class AbnormalEffect
     {
-        public int time;
-        public int lvl;
-        public int id;
+        public int Time;
+        public int Lvl;
+        public int Id;
 
-        public int active;
+        public int Active;
 
-        public Timer _timer;
-        public L2Character _owner;
+        public Timer MTimer;
+        public L2Character Owner;
 
-        public DateTime stopTime;
-        public TSkill skill;
+        public DateTime StopTime;
+        public Skill Skill;
 
-        public void forcedStop(bool msg, bool icon)
+        public void ForcedStop(bool msg, bool icon)
         {
-            active = 0;
-            if ((_timer != null) && _timer.Enabled)
+            Active = 0;
+            if ((MTimer != null) && MTimer.Enabled)
             {
-                _timer.Stop();
-                _timer.Enabled = false;
+                MTimer.Stop();
+                MTimer.Enabled = false;
             }
 
-            _owner.OnAveEnd(this, msg, icon, null);
+            Owner.OnAveEnd(this, msg, icon, null);
         }
 
-        public int getTime()
+        public int GetTime()
         {
-            if (time == -2) //unlimit buff time
+            if (Time == -2) //unlimit buff time
                 return -1;
 
-            long elapsedTicks = stopTime.Ticks - DateTime.Now.Ticks;
+            long elapsedTicks = StopTime.Ticks - DateTime.Now.Ticks;
             int res = (int)(elapsedTicks * 1E-7);
             return res;
         }
 
-        public void timer()
+        public void Timer()
         {
-            if (time == -2)
+            if (Time == -2)
                 return;
 
-            stopTime = DateTime.Now.AddSeconds(time);
-            _timer = new Timer(time * 1000);
-            _timer.Elapsed += new ElapsedEventHandler(_timer_Elapsed);
-            _timer.Enabled = true;
+            StopTime = DateTime.Now.AddSeconds(Time);
+            MTimer = new Timer(Time * 1000);
+            MTimer.Elapsed += Timer_Elapsed;
+            MTimer.Enabled = true;
         }
 
-        private void _timer_Elapsed(object sender, ElapsedEventArgs e)
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            _timer.Stop();
-            active = 0;
-            _owner.OnAveEnd(this, true, true, null);
+            MTimer.Stop();
+            Active = 0;
+            Owner.OnAveEnd(this, true, true, null);
         }
     }
 }

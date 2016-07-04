@@ -2,17 +2,17 @@
 {
     class TutorialShowQuestionMark : GameServerNetworkPacket
     {
-        private readonly int QuestionID;
+        private readonly int _questionId;
 
         public TutorialShowQuestionMark(int id)
         {
-            QuestionID = id;
+            _questionId = id;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xa1);
-            writeD(QuestionID);
+            WriteC(0xa1);
+            WriteD(_questionId);
         }
     }
 }

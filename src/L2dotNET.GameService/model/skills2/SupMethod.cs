@@ -5,10 +5,10 @@
         public byte Method;
         public double Value;
 
-        public const byte ADD = 1;
-        public const byte SUB = 2;
-        public const byte MUL = 3;
-        public const byte DIV = 4;
-        public const byte OVR = 5;
+        public const byte Add = 1;
+        public const byte Sub = 2;
+        public const byte Mul = 3;
+        public const byte Div = 4;
+        public const byte Ovr = 5;
     }
 }

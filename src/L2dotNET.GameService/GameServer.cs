@@ -59,7 +59,7 @@ namespace L2dotNET.GameService
             Capsule.Instance.Initialize();
             RecipeTable.Instance.Initialize();
 
-            AIManager.Instance.Initialize();
+            AiManager.Instance.Initialize();
 
             BlowFishKeygen.GenerateKeys();
 

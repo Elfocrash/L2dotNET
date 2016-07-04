@@ -6,19 +6,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestTradeDone : GameServerNetworkRequest
     {
-        private bool bDone;
+        private bool _bDone;
 
         public RequestTradeDone(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            bDone = readD() == 1;
+            _bDone = ReadD() == 1;
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -28,38 +28,38 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (player.requester == null)
+            if (player.Requester == null)
             {
                 player.SendMessage("Your trade requestor has logged off.");
                 player.SendActionFailed();
                 player.TradeState = 0;
 
-                if (player.currentTrade != null)
-                    player.currentTrade.Clear();
+                if (player.CurrentTrade != null)
+                    player.CurrentTrade.Clear();
 
                 return;
             }
 
-            if (bDone)
+            if (_bDone)
             {
                 player.TradeState = 4;
-                player.requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CONFIRMED_TRADE).AddPlayerName(player.Name));
+                player.Requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1ConfirmedTrade).AddPlayerName(player.Name));
 
-                if (player.requester.TradeState == 4)
-                    TradeManager.getInstance().PersonalTrade(player, player.requester);
+                if (player.Requester.TradeState == 4)
+                    TradeManager.GetInstance().PersonalTrade(player, player.Requester);
             }
             else
             {
                 TradeDone end = new TradeDone(false);
                 player.TradeState = 0;
-                player.currentTrade.Clear();
+                player.CurrentTrade.Clear();
                 player.SendPacket(end);
-                player.requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(player.Name));
+                player.Requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1CanceledTrade).AddPlayerName(player.Name));
 
-                player.requester.TradeState = 0;
-                player.requester.currentTrade.Clear();
-                player.requester.SendPacket(end);
-                player.requester = null;
+                player.Requester.TradeState = 0;
+                player.Requester.CurrentTrade.Clear();
+                player.Requester.SendPacket(end);
+                player.Requester = null;
             }
         }
     }

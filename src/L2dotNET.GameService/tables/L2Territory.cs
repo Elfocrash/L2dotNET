@@ -7,14 +7,14 @@ namespace L2dotNET.GameService.Tables
 {
     public class L2Territory
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(L2Territory));
-        public string name;
-        public string controller;
-        public bool start_active;
-        public List<L2Spawn> spawns = new List<L2Spawn>();
-        public List<int[]> territoryLoc = new List<int[]>();
-        public Random rnd = new Random();
-        public ZoneNPoly territory;
+        private static readonly ILog Log = LogManager.GetLogger(typeof(L2Territory));
+        public string Name;
+        public string Controller;
+        public bool StartActive;
+        public List<L2Spawn> Spawns = new List<L2Spawn>();
+        public List<int[]> TerritoryLoc = new List<int[]>();
+        public Random Rnd = new Random();
+        public ZoneNPoly Territory;
 
         public void AddNpc(int id, int count, string respawn, string pos)
         {
@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Tables
                 value *= 86400000;
 
             for (int a = 0; a < count; a++)
-                spawns.Add(new L2Spawn(id, value, this, pos));
+                Spawns.Add(new L2Spawn(id, value, this, pos));
         }
 
         public void AddPoint(string[] loc)
@@ -46,21 +46,21 @@ namespace L2dotNET.GameService.Tables
             }
             catch (Exception e)
             {
-                log.Error($"err in {loc[3]}. Message: {e.Message}");
+                Log.Error($"err in {loc[3]}. Message: {e.Message}");
                 throw;
             }
 
-            territoryLoc.Add(new[] { x, y, zmin, zmax });
+            TerritoryLoc.Add(new[] { x, y, zmin, zmax });
         }
 
         public void InitZone()
         {
             int z1 = 0,
                 z2 = 0;
-            int[] x = new int[territoryLoc.Count];
-            int[] y = new int[territoryLoc.Count];
+            int[] x = new int[TerritoryLoc.Count];
+            int[] y = new int[TerritoryLoc.Count];
             byte i = 0;
-            foreach (int[] l in territoryLoc)
+            foreach (int[] l in TerritoryLoc)
             {
                 x[i] = l[0];
                 y[i] = l[1];
@@ -69,33 +69,33 @@ namespace L2dotNET.GameService.Tables
                 i++;
             }
 
-            territory = new ZoneNPoly(x, y, z1, z2);
+            Territory = new ZoneNPoly(x, y, z1, z2);
         }
 
         public void Spawn()
         {
-            foreach (L2Spawn sp in spawns)
-                sp.init();
+            foreach (L2Spawn sp in Spawns)
+                sp.Init();
         }
 
-        public int[] getSpawnLocation()
+        public int[] GetSpawnLocation()
         {
             for (short a = 0; a < short.MaxValue; a++) //TODO FIX
             {
-                int rndx = rnd.Next(territory.minX, territory.maxX);
-                int rndy = rnd.Next(territory.minY, territory.maxY);
+                int rndx = Rnd.Next(Territory.minX, Territory.maxX);
+                int rndy = Rnd.Next(Territory.minY, Territory.maxY);
 
-                if (territory.isInsideZone(rndx, rndy))
-                    return new[] { rndx, rndy, territory.getHighZ() };
+                if (Territory.isInsideZone(rndx, rndy))
+                    return new[] { rndx, rndy, Territory.getHighZ() };
             }
 
-            log.Error("getSpawnLocation failed after 400 tries. omg!");
+            Log.Error("getSpawnLocation failed after 400 tries. omg!");
             return null;
         }
 
         public void SunRise(bool y)
         {
-            foreach (L2Spawn sp in spawns)
+            foreach (L2Spawn sp in Spawns)
                 sp.SunRise(y);
         }
     }

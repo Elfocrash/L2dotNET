@@ -2,20 +2,20 @@
 {
     class VehicleStarted : GameServerNetworkPacket
     {
-        private readonly int sId;
-        private readonly int type;
+        private readonly int _sId;
+        private readonly int _type;
 
         public VehicleStarted(int sId, int type)
         {
-            this.sId = sId;
-            this.type = type;
+            this._sId = sId;
+            this._type = type;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xBA);
-            writeD(sId);
-            writeD(type);
+            WriteC(0xBA);
+            WriteD(_sId);
+            WriteD(_type);
         }
     }
 }

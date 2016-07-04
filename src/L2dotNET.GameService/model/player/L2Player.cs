@@ -14,7 +14,6 @@ using L2dotNET.GameService.Model.Npcs.Cubic;
 using L2dotNET.GameService.Model.Npcs.Decor;
 using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Player.AI;
-using L2dotNET.GameService.Model.Player.Partials;
 using L2dotNET.GameService.Model.Player.Transformation;
 using L2dotNET.GameService.Model.Quests;
 using L2dotNET.GameService.Model.Skills;
@@ -38,10 +37,10 @@ namespace L2dotNET.GameService.Model.Player
     [Synchronization]
     public class L2Player : L2Character
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(L2Player));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(L2Player));
 
         [Inject]
-        public IPlayerService playerService
+        public IPlayerService PlayerService
         {
             get { return GameServer.Kernel.Get<IPlayerService>(); }
         }
@@ -59,7 +58,7 @@ namespace L2dotNET.GameService.Model.Player
         public long Exp { get; set; }
         public long ExpOnDeath { get; set; }
         public long ExpAfterLogin { get; set; }
-        public int SP { get; set; }
+        public int Sp { get; set; }
         public override int MaxHp { get; set; }
         public override double CurHp { get; set; }
         public override int MaxCp { get; set; }
@@ -86,7 +85,7 @@ namespace L2dotNET.GameService.Model.Player
         public long LastAccess { get; set; }
         public int ClanPrivs { get; set; }
         public int WantsPeace { get; set; }
-        public int IsIn7sDungeon { get; set; }
+        public int IsIn7SDungeon { get; set; }
         public int PunishLevel { get; set; }
         public int PunishTimer { get; set; }
         public int PowerGrade { get; set; }
@@ -110,7 +109,7 @@ namespace L2dotNET.GameService.Model.Player
 
             player.Gameclient = client;
 
-            PlayerModel playerModel = playerService.GetAccountByLogin(id);
+            PlayerModel playerModel = PlayerService.GetAccountByLogin(id);
 
             player.Name = playerModel.Name;
             player.Title = playerModel.Title;
@@ -132,7 +131,7 @@ namespace L2dotNET.GameService.Model.Player
             player.Exp = playerModel.Exp;
             player.ExpOnDeath = playerModel.ExpBeforeDeath;
 
-            player.SP = playerModel.Sp;
+            player.Sp = playerModel.Sp;
             player.Karma = playerModel.Karma;
             player.PvpKills = playerModel.PvpKills;
             player.PkKills = playerModel.PkKills;
@@ -150,8 +149,8 @@ namespace L2dotNET.GameService.Model.Player
             player.ClanId = playerModel.ClanId;
             player.ClanPrivs = playerModel.ClanPrivs;
 
-            player.Penalty_ClanCreate = playerModel.ClanCreateExpiryTime.ToString();
-            player.Penalty_ClanJoin = playerModel.ClanJoinExpiryTime.ToString();
+            player.PenaltyClanCreate = playerModel.ClanCreateExpiryTime.ToString();
+            player.PenaltyClanJoin = playerModel.ClanJoinExpiryTime.ToString();
 
             player.Inventory = new PcInventory(this);
 
@@ -162,10 +161,10 @@ namespace L2dotNET.GameService.Model.Player
             return player;
         }
 
-        public static L2Player create()
+        public static L2Player Create()
         {
             L2Player player = new L2Player();
-            player.ObjId = IdFactory.Instance.nextId();
+            player.ObjId = IdFactory.Instance.NextId();
 
             //player.Inventory = new InvPC();
             //player.Inventory._owner = player;
@@ -177,9 +176,9 @@ namespace L2dotNET.GameService.Model.Player
 
         public void UpdatePlayer()
         {
-            PlayerModel playerModel = new PlayerModel { ObjectId = ObjId, Level = Level, MaxHp = MaxHp, CurHp = (int)CurHp, MaxCp = MaxCp, CurCp = (int)CurCp, MaxMp = MaxMp, CurMp = (int)CurMp, Face = Face, HairStyle = HairStyle, HairColor = HairColor, Sex = Sex, Heading = Heading, X = X, Y = Y, Z = Z, Exp = Exp, ExpBeforeDeath = ExpOnDeath, Sp = SP, Karma = Karma, PvpKills = PvpKills, PkKills = PkKills, ClanId = ClanId, Race = (int)BaseClass.ClassId.ClassRace, ClassId = (int)ActiveClass.ClassId.Id, BaseClass = (int)BaseClass.ClassId.Id, DeleteTime = DeleteTime, CanCraft = CanCraft, Title = Title, RecHave = RecHave, RecLeft = RecLeft, AccessLevel = AccessLevel, ClanPrivs = ClanPrivs, WantsPeace = WantsPeace, IsIn7SDungeon = IsIn7sDungeon, PunishLevel = PunishLevel, PunishTimer = PunishTimer, PowerGrade = PowerGrade, Nobless = Nobless, Sponsor = Sponsor, VarkaKetraAlly = VarkaKetraAlly, ClanCreateExpiryTime = ClanCreateExpiryTime, ClanJoinExpiryTime = ClanJoinExpiryTime, DeathPenaltyLevel = DeathPenaltyLevel };
+            PlayerModel playerModel = new PlayerModel { ObjectId = ObjId, Level = Level, MaxHp = MaxHp, CurHp = (int)CurHp, MaxCp = MaxCp, CurCp = (int)CurCp, MaxMp = MaxMp, CurMp = (int)CurMp, Face = Face, HairStyle = HairStyle, HairColor = HairColor, Sex = Sex, Heading = Heading, X = X, Y = Y, Z = Z, Exp = Exp, ExpBeforeDeath = ExpOnDeath, Sp = Sp, Karma = Karma, PvpKills = PvpKills, PkKills = PkKills, ClanId = ClanId, Race = (int)BaseClass.ClassId.ClassRace, ClassId = (int)ActiveClass.ClassId.Id, BaseClass = (int)BaseClass.ClassId.Id, DeleteTime = DeleteTime, CanCraft = CanCraft, Title = Title, RecHave = RecHave, RecLeft = RecLeft, AccessLevel = AccessLevel, ClanPrivs = ClanPrivs, WantsPeace = WantsPeace, IsIn7SDungeon = IsIn7SDungeon, PunishLevel = PunishLevel, PunishTimer = PunishTimer, PowerGrade = PowerGrade, Nobless = Nobless, Sponsor = Sponsor, VarkaKetraAlly = VarkaKetraAlly, ClanCreateExpiryTime = ClanCreateExpiryTime, ClanJoinExpiryTime = ClanJoinExpiryTime, DeathPenaltyLevel = DeathPenaltyLevel };
 
-            playerService.UpdatePlayer(playerModel);
+            PlayerService.UpdatePlayer(playerModel);
         }
 
         public void Termination()
@@ -190,7 +189,7 @@ namespace L2dotNET.GameService.Model.Player
                     Party.Leave(this);
 
                 if (Summon != null)
-                    Summon.unSummon();
+                    Summon.UnSummon();
 
                 UpdatePlayer();
                 //saveInventory();
@@ -199,27 +198,27 @@ namespace L2dotNET.GameService.Model.Player
             }
         }
 
-        public int INT => ActiveClass.BaseINT;
+        public int Int => ActiveClass.BaseInt;
 
-        public int STR => ActiveClass.BaseSTR;
+        public int Str => ActiveClass.BaseStr;
 
-        public int CON => ActiveClass.BaseCON;
+        public int Con => ActiveClass.BaseCon;
 
-        public int MEN => ActiveClass.BaseMEN;
+        public int Men => ActiveClass.BaseMen;
 
-        public int DEX => ActiveClass.BaseDEX;
+        public int Dex => ActiveClass.BaseDex;
 
-        public int WIT => ActiveClass.BaseWIT;
+        public int Wit => ActiveClass.BaseWit;
 
         public byte Builder = 1;
         public byte Noblesse = 0;
         public byte Heroic = 0;
 
-        public byte _privateStoreType = 0;
+        public byte PrivateStoreType = 0;
 
-        public byte getPrivateStoreType()
+        public byte GetPrivateStoreType()
         {
-            return _privateStoreType;
+            return PrivateStoreType;
         }
 
         public override int AllianceCrestId
@@ -229,26 +228,26 @@ namespace L2dotNET.GameService.Model.Player
 
         public override int AllianceId
         {
-            get { return Clan == null ? 0 : Clan.AllianceID; }
+            get { return Clan == null ? 0 : Clan.AllianceId; }
         }
 
         public override int ClanId
         {
-            get { return Clan == null ? 0 : Clan.ClanID; }
+            get { return Clan == null ? 0 : Clan.ClanId; }
             set { Clan = ClanTable.Instance.GetClan(value); }
         }
 
         public override int ClanCrestId
         {
-            get { return Clan == null ? 0 : Clan.CrestID; }
+            get { return Clan == null ? 0 : Clan.CrestId; }
         }
 
-        public int getTitleColor()
+        public int GetTitleColor()
         {
             return 0xFFFF77;
         }
 
-        public int getNameColor()
+        public int GetNameColor()
         {
             return 0xFFFFFF;
         }
@@ -268,7 +267,7 @@ namespace L2dotNET.GameService.Model.Player
             return 0;
         }
 
-        internal bool isFishing()
+        internal bool IsFishing()
         {
             return false;
         }
@@ -278,14 +277,14 @@ namespace L2dotNET.GameService.Model.Player
             Gameclient.SendPacket(pk);
         }
 
-        private ActionFailed af;
+        private ActionFailed _af;
 
         public override void SendActionFailed()
         {
-            if (af == null)
-                af = new ActionFailed();
+            if (_af == null)
+                _af = new ActionFailed();
 
-            SendPacket(af);
+            SendPacket(_af);
         }
 
         public override void SendSystemMessage(SystemMessage.SystemMessageId msgId)
@@ -293,8 +292,8 @@ namespace L2dotNET.GameService.Model.Player
             SendPacket(new SystemMessage(msgId));
         }
 
-        public int _penaltyWeight;
-        public int _penalty_grade = 0;
+        public int PenaltyWeight;
+        public int PenaltyGrade = 0;
 
         public override void OnAction(L2Player player)
         {
@@ -324,35 +323,35 @@ namespace L2dotNET.GameService.Model.Player
             SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1).AddString(p));
         }
 
-        public int _currentFocusEnergy = 0;
+        public int CurrentFocusEnergy = 0;
 
-        public int getForceIncreased()
+        public int GetForceIncreased()
         {
-            return _currentFocusEnergy;
+            return CurrentFocusEnergy;
         }
 
-        public TSkill getSkill(int magicId)
+        public Skill GetSkill(int magicId)
         {
             return Skills.ContainsKey(magicId) ? Skills[magicId] : null;
         }
 
         public override bool IsCastingNow()
         {
-            if (petSummonTime != null)
-                return petSummonTime.Enabled;
+            if (_petSummonTime != null)
+                return _petSummonTime.Enabled;
 
-            if (nonpetSummonTime != null)
-                return nonpetSummonTime.Enabled;
+            if (_nonpetSummonTime != null)
+                return _nonpetSummonTime.Enabled;
 
             return base.IsCastingNow();
         }
 
-        public void updateReuse()
+        public void UpdateReuse()
         {
             SendPacket(new SkillCoolTime(this));
         }
 
-        public void castSkill(TSkill skill, bool ctrlPressed, bool shiftPressed)
+        public void CastSkill(Skill skill, bool ctrlPressed, bool shiftPressed)
         {
             if (IsCastingNow())
             {
@@ -360,7 +359,7 @@ namespace L2dotNET.GameService.Model.Player
                 return;
             }
 
-            if (isSittingInProgress() || isSitting())
+            if (IsSittingInProgress() || IsSitting())
             {
                 SendActionFailed();
                 return;
@@ -372,19 +371,19 @@ namespace L2dotNET.GameService.Model.Player
                 return;
             }
 
-            L2Character target = skill.getTargetCastId(this);
+            L2Character target = skill.GetTargetCastId(this);
 
             if (target == null)
             {
-                SendSystemMessage(SystemMessage.SystemMessageId.TARGET_CANT_FOUND);
+                SendSystemMessage(SystemMessage.SystemMessageId.TargetCantFound);
                 SendActionFailed();
                 return;
             }
 
-            if (skill.cast_range != -1)
+            if (skill.CastRange != -1)
             {
-                double dis = Calcs.calculateDistance(this, target, true);
-                if (dis > skill.cast_range)
+                double dis = Calcs.CalculateDistance(this, target, true);
+                if (dis > skill.CastRange)
                 {
                     TryMoveTo(target.X, target.Y, target.Z);
                     SendActionFailed();
@@ -392,17 +391,17 @@ namespace L2dotNET.GameService.Model.Player
                 }
             }
 
-            if (skill.reuse_delay > 0)
-                if (Reuse.ContainsKey(skill.skill_id))
+            if (skill.ReuseDelay > 0)
+                if (Reuse.ContainsKey(skill.SkillId))
                 {
-                    TimeSpan ts = Reuse[skill.skill_id].stopTime - DateTime.Now;
+                    TimeSpan ts = Reuse[skill.SkillId].StopTime - DateTime.Now;
 
                     if (ts.TotalMilliseconds > 0)
                     {
                         if (ts.TotalHours > 0)
                         {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_HOURS_S3_MINUTES_S4_SECONDS_REMAINING_IN_S1_REUSE_TIME);
-                            sm.AddSkillName(skill.skill_id, skill.level);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2HoursS3MinutesS4SecondsRemainingInS1ReuseTime);
+                            sm.AddSkillName(skill.SkillId, skill.Level);
                             sm.AddNumber(ts.Hours);
                             sm.AddNumber(ts.Minutes);
                             sm.AddNumber(ts.Seconds);
@@ -410,16 +409,16 @@ namespace L2dotNET.GameService.Model.Player
                         }
                         else if (ts.TotalMinutes > 0)
                         {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_MINUTES_S3_SECONDS_REMAINING_IN_S1_REUSE_TIME);
-                            sm.AddSkillName(skill.skill_id, skill.level);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2MinutesS3SecondsRemainingInS1ReuseTime);
+                            sm.AddSkillName(skill.SkillId, skill.Level);
                             sm.AddNumber(ts.Minutes);
                             sm.AddNumber(ts.Seconds);
                             SendPacket(sm);
                         }
                         else
                         {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_SECONDS_REMAINING_IN_S1_REUSE_TIME);
-                            sm.AddSkillName(skill.skill_id, skill.level);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2SecondsRemainingInS1ReuseTime);
+                            sm.AddSkillName(skill.SkillId, skill.Level);
                             sm.AddNumber(ts.Seconds);
                             SendPacket(sm);
                         }
@@ -429,18 +428,18 @@ namespace L2dotNET.GameService.Model.Player
                     }
                 }
 
-            if ((skill.mp_consume1 > 0) || (skill.mp_consume2 > 0))
-                if (CurMp < skill.mp_consume1 + skill.mp_consume2)
+            if ((skill.MpConsume1 > 0) || (skill.MpConsume2 > 0))
+                if (CurMp < skill.MpConsume1 + skill.MpConsume2)
                 {
-                    SendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_MP);
+                    SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughMp);
                     SendActionFailed();
                     return;
                 }
 
-            if (skill.hp_consume > 0)
-                if (CurHp < skill.hp_consume)
+            if (skill.HpConsume > 0)
+                if (CurHp < skill.HpConsume)
                 {
-                    SendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_HP);
+                    SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughHp);
                     SendActionFailed();
                     return;
                 }
@@ -457,69 +456,69 @@ namespace L2dotNET.GameService.Model.Player
             //}
 
             byte blowOk = 0;
-            if (skill.effects.Count > 0)
+            if (skill.Effects.Count > 0)
             {
                 bool fail = false;
-                foreach (TEffect ef in skill.effects)
+                foreach (Effect ef in skill.Effects)
                 {
-                    if (!ef.canUse(this))
+                    if (!ef.CanUse(this))
                     {
                         SendActionFailed();
                         fail = true;
                         break;
                     }
 
-                    if (ef is i_fatal_blow && (blowOk == 0))
-                        blowOk = ((i_fatal_blow)ef).success(target);
+                    if (ef is FatalBlow && (blowOk == 0))
+                        blowOk = ((FatalBlow)ef).Success(target);
                 }
 
                 if (fail)
                     return;
             }
 
-            if (skill.reuse_delay > 0)
+            if (skill.ReuseDelay > 0)
             {
                 L2SkillCoolTime reuse = new L2SkillCoolTime();
-                reuse.id = skill.skill_id;
-                reuse.lvl = skill.level;
-                reuse.total = (int)skill.reuse_delay;
-                reuse.delay = reuse.total;
-                reuse._owner = this;
-                reuse.timer();
-                Reuse.Add(reuse.id, reuse);
-                updateReuse();
+                reuse.Id = skill.SkillId;
+                reuse.Lvl = skill.Level;
+                reuse.Total = (int)skill.ReuseDelay;
+                reuse.Delay = reuse.Total;
+                reuse.Owner = this;
+                reuse.Timer();
+                Reuse.Add(reuse.Id, reuse);
+                UpdateReuse();
             }
 
-            SendPacket(new SystemMessage(SystemMessage.SystemMessageId.USE_S1).AddSkillName(skill.skill_id, skill.level));
+            //SendPacket(new SystemMessage(SystemMessage.SystemMessageId.UseS1).AddSkillName(skill.skill_id, skill.level));
 
-            if (skill.hp_consume > 0)
+            if (skill.HpConsume > 0)
             {
-                CurHp -= skill.hp_consume;
+                CurHp -= skill.HpConsume;
 
                 StatusUpdate su = new StatusUpdate(ObjId);
-                su.add(StatusUpdate.CUR_HP, (int)CurHp);
+                su.Add(StatusUpdate.CurHp, (int)CurHp);
                 BroadcastPacket(su);
             }
 
-            if (skill.mp_consume1 > 0)
+            if (skill.MpConsume1 > 0)
             {
-                CurMp -= skill.mp_consume1;
+                CurMp -= skill.MpConsume1;
 
                 StatusUpdate su = new StatusUpdate(ObjId);
-                su.add(StatusUpdate.CUR_MP, (int)CurMp);
+                su.Add(StatusUpdate.CurMp, (int)CurMp);
                 BroadcastPacket(su);
             }
 
             //if (skill.ConsumeItemId != 0)
             //   Inventory.destroyItem(skill.ConsumeItemId, skill.ConsumeItemCount, true, true);
 
-            int hitTime = skill.skill_hit_time;
+            int hitTime = skill.SkillHitTime;
 
             int hitT = hitTime > 0 ? (int)(hitTime * 0.95) : 0;
             CurrentCast = skill;
 
             if (hitTime > 0)
-                SendPacket(new SetupGauge(ObjId, SetupGauge.SG_color.blue, hitTime - 20));
+                SendPacket(new SetupGauge(ObjId, SetupGauge.SgColor.Blue, hitTime - 20));
 
             BroadcastPacket(new MagicSkillUse(this, target, skill, hitTime == 0 ? 20 : hitTime, blowOk));
             if (hitTime > 50)
@@ -527,7 +526,7 @@ namespace L2dotNET.GameService.Model.Player
                 if (CastTime == null)
                 {
                     CastTime = new Timer();
-                    CastTime.Elapsed += new ElapsedEventHandler(castEnd);
+                    CastTime.Elapsed += castEnd;
                 }
 
                 CastTime.Interval = hitT;
@@ -539,11 +538,11 @@ namespace L2dotNET.GameService.Model.Player
 
         private void castEnd(object sender = null, ElapsedEventArgs e = null)
         {
-            if (CurrentCast.mp_consume2 > 0)
+            if (CurrentCast.MpConsume2 > 0)
             {
-                if (CurMp < CurrentCast.mp_consume2)
+                if (CurMp < CurrentCast.MpConsume2)
                 {
-                    SendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_MP);
+                    SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughMp);
                     SendActionFailed();
 
                     CurrentCast = null;
@@ -551,20 +550,20 @@ namespace L2dotNET.GameService.Model.Player
                     return;
                 }
 
-                CurMp -= CurrentCast.mp_consume2;
+                CurMp -= CurrentCast.MpConsume2;
 
                 StatusUpdate su = new StatusUpdate(ObjId);
-                su.add(StatusUpdate.CUR_MP, (int)CurMp);
+                su.Add(StatusUpdate.CurMp, (int)CurMp);
                 BroadcastPacket(su);
             }
 
-            if (CurrentCast.cast_range != -1)
+            if (CurrentCast.CastRange != -1)
             {
                 bool block = false;
                 if (CurrentTarget != null)
                 {
-                    double dis = Calcs.calculateDistance(this, CurrentTarget, true);
-                    if (dis > CurrentCast.effective_range)
+                    double dis = Calcs.CalculateDistance(this, CurrentTarget, true);
+                    if (dis > CurrentCast.EffectiveRange)
                         block = true;
                 }
                 else
@@ -572,7 +571,7 @@ namespace L2dotNET.GameService.Model.Player
 
                 if (block)
                 {
-                    SendSystemMessage(SystemMessage.SystemMessageId.DIST_TOO_FAR_CASTING_STOPPED);
+                    SendSystemMessage(SystemMessage.SystemMessageId.DistTooFarCastingStopped);
                     SendActionFailed();
 
                     CurrentCast = null;
@@ -581,11 +580,11 @@ namespace L2dotNET.GameService.Model.Player
                 }
             }
 
-            SortedList<int, L2Object> arr = CurrentCast.getAffectedTargets(this);
+            SortedList<int, L2Object> arr = CurrentCast.GetAffectedTargets(this);
             List<int> broadcast = new List<int>();
             broadcast.AddRange(arr.Keys);
 
-            BroadcastPacket(new MagicSkillLaunched(this, broadcast, CurrentCast.skill_id, CurrentCast.level));
+            BroadcastPacket(new MagicSkillLaunched(this, broadcast, CurrentCast.SkillId, CurrentCast.Level));
 
             AddEffects(this, CurrentCast, arr);
             CurrentCast = null;
@@ -593,7 +592,7 @@ namespace L2dotNET.GameService.Model.Player
                 CastTime.Enabled = false;
         }
 
-        public bool _diet = false;
+        public bool Diet = false;
 
         public override void UpdateMagicEffectIcons()
         {
@@ -605,13 +604,13 @@ namespace L2dotNET.GameService.Model.Player
 
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
             foreach (AbnormalEffect ei in Effects.Where(ei => ei != null))
-                if (ei.active == 1)
+                if (ei.Active == 1)
                 {
-                    int time = ei.getTime();
-                    m.addIcon(ei.id, ei.lvl, time);
+                    int time = ei.GetTime();
+                    m.AddIcon(ei.Id, ei.Lvl, time);
 
                     if (p != null)
-                        p.addIcon(ei.id, ei.lvl, time);
+                        p.AddIcon(ei.Id, ei.Lvl, time);
                 }
                 else
                     nulled.Add(ei);
@@ -624,22 +623,22 @@ namespace L2dotNET.GameService.Model.Player
             SendPacket(m);
 
             if ((p != null) && (Party != null))
-                Party.broadcastToMembers(p);
+                Party.BroadcastToMembers(p);
         }
 
-        public void onGameInit()
+        public void OnGameInit()
         {
             CStatsInit();
-            CharacterStat.setTemplate(ActiveClass);
+            CharacterStat.SetTemplate(ActiveClass);
             ExpAfterLogin = 0;
         }
 
-        public List<QuestInfo> _quests = new List<QuestInfo>();
+        public List<QuestInfo> Quests = new List<QuestInfo>();
 
         public void quest_Talk(L2Npc npc, int questId)
         {
-            foreach (QuestInfo qi in _quests.Where(qi => !qi.completed))
-                qi._template.onTalkToNpc(this, npc, qi.stage);
+            foreach (QuestInfo qi in Quests.Where(qi => !qi.Completed))
+                qi.Template.OnTalkToNpc(this, npc, qi.Stage);
         }
 
         public void ShowHtm(string file, L2Object o)
@@ -659,7 +658,7 @@ namespace L2dotNET.GameService.Model.Player
             if (file.EndsWithIgnoreCase(".htm"))
             {
                 NpcHtmlMessage htm = new NpcHtmlMessage(this, file, npc.ObjId, 0);
-                htm.replace("<?quest_id?>", questId);
+                htm.Replace("<?quest_id?>", questId);
                 SendPacket(htm);
                 FolkNpc = npc;
             }
@@ -667,21 +666,21 @@ namespace L2dotNET.GameService.Model.Player
                 ShowHtmPlain(file, npc);
         }
 
-        public bool questComplete(int questId)
+        public bool QuestComplete(int questId)
         {
-            return _quests.Where(qi => qi.id == questId).Select(qi => qi.completed).FirstOrDefault();
+            return Quests.Where(qi => qi.Id == questId).Select(qi => qi.Completed).FirstOrDefault();
         }
 
-        public bool questInProgress(int questId)
+        public bool QuestInProgress(int questId)
         {
-            return _quests.Any(qi => (qi.id == questId) && !qi.completed);
+            return Quests.Any(qi => (qi.Id == questId) && !qi.Completed);
         }
 
-        public void questAccept(QuestInfo qi)
+        public void QuestAccept(QuestInfo qi)
         {
-            _quests.Add(qi);
+            Quests.Add(qi);
             SendPacket(new PlaySound("ItemSound.quest_accept"));
-            sendQuestList();
+            SendQuestList();
 
             //SQL_Block sqb = new SQL_Block("user_quests");
             //sqb.param("ownerId", ObjID);
@@ -696,11 +695,11 @@ namespace L2dotNET.GameService.Model.Player
                 FolkNpc = (L2Npc)o;
         }
 
-        public void changeQuestStage(int questId, int stage)
+        public void ChangeQuestStage(int questId, int stage)
         {
-            foreach (QuestInfo qi in _quests.Where(qi => qi.id == questId))
+            foreach (QuestInfo qi in Quests.Where(qi => qi.Id == questId))
             {
-                qi.stage = stage;
+                qi.Stage = stage;
                 SendPacket(new PlaySound("ItemSound.quest_middle"));
 
                 //SQL_Block sqb = new SQL_Block("user_quests");
@@ -711,43 +710,43 @@ namespace L2dotNET.GameService.Model.Player
                 break;
             }
 
-            sendQuestList();
+            SendQuestList();
         }
 
-        public List<QuestInfo> getAllActiveQuests()
+        public List<QuestInfo> GetAllActiveQuests()
         {
-            return _quests.Where(qi => !qi.completed).ToList();
+            return Quests.Where(qi => !qi.Completed).ToList();
         }
 
-        public void sendQuestList()
+        public void SendQuestList()
         {
             SendPacket(new QuestList(this));
         }
 
-        public void addExpSp(int exp, int sp, bool msg)
+        public void AddExpSp(int exp, int sp, bool msg)
         {
-            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_EARNED_S1_EXP_AND_S2_SP);
+            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YouEarnedS1ExpAndS2Sp);
             sm.AddNumber(exp);
             sm.AddNumber(sp);
             SendPacket(sm);
 
             Exp += exp;
-            SP += sp;
+            Sp += sp;
 
             StatusUpdate su = new StatusUpdate(ObjId);
-            su.add(StatusUpdate.EXP, (int)Exp);
-            su.add(StatusUpdate.SP, SP);
+            su.Add(StatusUpdate.Exp, (int)Exp);
+            su.Add(StatusUpdate.Sp, Sp);
             SendPacket(su);
         }
 
-        public void finishQuest(int questId)
+        public void FinishQuest(int questId)
         {
-            foreach (QuestInfo qi in _quests.Where(qi => qi.id == questId))
+            foreach (QuestInfo qi in Quests.Where(qi => qi.Id == questId))
             {
-                if (!qi._template.repeatable)
+                if (!qi.Template.Repeatable)
                 {
-                    qi.completed = true;
-                    qi._template = null;
+                    qi.Completed = true;
+                    qi.Template = null;
 
                     //SQL_Block sqb = new SQL_Block("user_quests");
                     //sqb.param("qfin", 1);
@@ -758,9 +757,9 @@ namespace L2dotNET.GameService.Model.Player
                 }
                 else
                 {
-                    lock (_quests)
+                    lock (Quests)
                     {
-                        _quests.Remove(qi);
+                        Quests.Remove(qi);
                     }
                 }
 
@@ -768,7 +767,7 @@ namespace L2dotNET.GameService.Model.Player
                 break;
             }
 
-            sendQuestList();
+            SendQuestList();
         }
 
         public void db_restoreSkills()
@@ -799,7 +798,7 @@ namespace L2dotNET.GameService.Model.Player
             //connection.Close();
         }
 
-        public override void AddSkill(TSkill newsk, bool updDb, bool update)
+        public override void AddSkill(Skill newsk, bool updDb, bool update)
         {
             base.AddSkill(newsk, updDb, update);
 
@@ -834,7 +833,7 @@ namespace L2dotNET.GameService.Model.Player
             }
         }
 
-        public void stopQuest(QuestInfo qi, bool updDb)
+        public void StopQuest(QuestInfo qi, bool updDb)
         {
             if (updDb)
             {
@@ -845,25 +844,25 @@ namespace L2dotNET.GameService.Model.Player
                 //sqb.sql_delete(false);
             }
 
-            _quests.Remove(qi);
+            Quests.Remove(qi);
             SendPacket(new PlaySound("ItemSound.quest_giveup"));
         }
 
         public L2Clan Clan;
 
-        public int ItemLimit_Inventory = 80,
-                   ItemLimit_Selling = 5,
-                   ItemLimit_Buying = 5,
-                   ItemLimit_RecipeDwarven = 50,
-                   ItemLimit_RecipeCommon = 50,
-                   ItemLimit_Warehouse = 120,
-                   ItemLimit_ClanWarehouse = 150,
-                   ItemLimit_Extra = 0,
-                   ItemLimit_Quest = 20;
+        public int ItemLimitInventory = 80,
+                   ItemLimitSelling = 5,
+                   ItemLimitBuying = 5,
+                   ItemLimitRecipeDwarven = 50,
+                   ItemLimitRecipeCommon = 50,
+                   ItemLimitWarehouse = 120,
+                   ItemLimitClanWarehouse = 150,
+                   ItemLimitExtra = 0,
+                   ItemLimitQuest = 20;
 
         public L2Npc FolkNpc;
-        public int last_x1 = -4;
-        public int last_y1;
+        public int LastX1 = -4;
+        public int LastY1;
 
         public override void UpdateSkillList()
         {
@@ -871,12 +870,12 @@ namespace L2dotNET.GameService.Model.Player
         }
 
         private Timer _timerTooFar;
-        public string _locale = "en";
+        public string Locale = "en";
 
-        public void timer()
+        public void Timer()
         {
             _timerTooFar = new Timer(30 * 1000);
-            _timerTooFar.Elapsed += new ElapsedEventHandler(_timeToFarTimerTask);
+            _timerTooFar.Elapsed += _timeToFarTimerTask;
             _timerTooFar.Interval = 10000;
             _timerTooFar.Enabled = true;
         }
@@ -886,19 +885,19 @@ namespace L2dotNET.GameService.Model.Player
             ValidateVisibleObjects(X, Y, true);
         }
 
-        public int p_create_common_item = 0;
-        public int p_create_item = 0;
-        public List<L2Recipe> _recipeBook;
+        public int PCreateCommonItem = 0;
+        public int PCreateItem = 0;
+        public List<L2Recipe> RecipeBook;
 
-        public void registerRecipe(L2Recipe newr, bool updDb, bool cleanup)
+        public void RegisterRecipe(L2Recipe newr, bool updDb, bool cleanup)
         {
-            if (_recipeBook == null)
-                _recipeBook = new List<L2Recipe>();
+            if (RecipeBook == null)
+                RecipeBook = new List<L2Recipe>();
 
             if (cleanup)
-                _recipeBook.Clear();
+                RecipeBook.Clear();
 
-            _recipeBook.Add(newr);
+            RecipeBook.Add(newr);
 
             if (updDb)
             {
@@ -940,14 +939,14 @@ namespace L2dotNET.GameService.Model.Player
             //connection.Close();
         }
 
-        public void unregisterRecipe(L2Recipe rec, bool updDb)
+        public void UnregisterRecipe(L2Recipe rec, bool updDb)
         {
-            if (_recipeBook == null)
+            if (RecipeBook == null)
                 return;
 
-            lock (_recipeBook)
+            lock (RecipeBook)
             {
-                foreach (L2Recipe r in _recipeBook.Where(r => r.RecipeID == rec.RecipeID))
+                foreach (L2Recipe r in RecipeBook.Where(r => r.RecipeId == rec.RecipeId))
                 {
                     if (updDb)
                     {
@@ -969,37 +968,37 @@ namespace L2dotNET.GameService.Model.Player
                         //connection.Close();
                     }
 
-                    _recipeBook.Remove(r);
+                    RecipeBook.Remove(r);
 
-                    SendPacket(new RecipeBookItemList(this, rec._iscommonrecipe));
+                    SendPacket(new RecipeBookItemList(this, rec.Iscommonrecipe));
                     break;
                 }
             }
         }
 
-        public bool isAlikeDead()
+        public bool IsAlikeDead()
         {
             return false;
         }
 
-        public int getClanCrestLargeId()
+        public int GetClanCrestLargeId()
         {
-            return Clan == null ? 0 : Clan.LargeCrestID;
+            return Clan == null ? 0 : Clan.LargeCrestId;
         }
 
-        public List<L2Shortcut> _shortcuts = new List<L2Shortcut>();
-        public int zoneId = -1;
-        public int _obsx = -1;
-        public int _obsy;
-        public int _obsz;
+        public List<L2Shortcut> Shortcuts = new List<L2Shortcut>();
+        public int ZoneId = -1;
+        public int Obsx = -1;
+        public int Obsy;
+        public int Obsz;
 
-        public void registerShortcut(int slot, int page, int type, int id, int level, int characterType)
+        public void RegisterShortcut(int slot, int page, int type, int id, int level, int characterType)
         {
-            lock (_shortcuts)
+            lock (Shortcuts)
             {
-                foreach (L2Shortcut sc in _shortcuts.Where(sc => (sc.Slot == slot) && (sc.Page == page)))
+                foreach (L2Shortcut sc in Shortcuts.Where(sc => (sc.Slot == slot) && (sc.Page == page)))
                 {
-                    _shortcuts.Remove(sc);
+                    Shortcuts.Remove(sc);
 
                     //SQL_Block sqb = new SQL_Block("user_shortcuts");
                     //sqb.where("ownerId", ObjID);
@@ -1013,7 +1012,10 @@ namespace L2dotNET.GameService.Model.Player
 
             {
                 L2Shortcut sc = new L2Shortcut(slot, page, type, id, level, characterType);
-                _shortcuts.Add(sc);
+                lock (Shortcuts)
+                {
+                    Shortcuts.Add(sc);
+                }
 
                 SendPacket(new ShortCutRegister(sc));
 
@@ -1031,26 +1033,26 @@ namespace L2dotNET.GameService.Model.Player
         }
 
         public int Souls;
-        public int TransformID = 0;
+        public int TransformId = 0;
         public L2Transform Transform;
-        public int AgationID;
+        public int AgationId;
 
         public PcTemplate BaseClass;
         public PcTemplate ActiveClass;
 
-        public bool subActive()
+        public bool SubActive()
         {
             return ActiveClass != BaseClass;
         }
 
-        public bool isQuestCompleted(int p)
+        public bool IsQuestCompleted(int p)
         {
-            return _quests.Where(qi => qi.id == p).Select(qi => qi.completed).FirstOrDefault();
+            return Quests.Where(qi => qi.Id == p).Select(qi => qi.Completed).FirstOrDefault();
         }
 
-        public int getQuestCond(int questId)
+        public int GetQuestCond(int questId)
         {
-            return _quests.Where(qi => qi.id == questId).Select(qi => qi.stage).FirstOrDefault();
+            return Quests.Where(qi => qi.Id == questId).Select(qi => qi.Stage).FirstOrDefault();
         }
 
         public override void OnPickUp(L2Item item)
@@ -1097,12 +1099,12 @@ namespace L2dotNET.GameService.Model.Player
         public void AddAdena(int count, bool sendMessage)
         {
             if(sendMessage)
-                SendPacket(new SystemMessage(SystemMessage.SystemMessageId.EARNED_S1_ADENA).AddNumber(count));
+                SendPacket(new SystemMessage(SystemMessage.SystemMessageId.EarnedS1Adena).AddNumber(count));
 
             if (count > 0)
             {
                 InventoryUpdate iu = new InventoryUpdate();
-                iu.addNewItem(Inventory.AddItem(57, count, this));
+                iu.AddNewItem(Inventory.AddItem(57, count, this));
                 SendPacket(iu);
             }
         }
@@ -1192,11 +1194,11 @@ namespace L2dotNET.GameService.Model.Player
             //     }
         }
 
-        public void untransform()
+        public void Untransform()
         {
             if (Transform != null)
             {
-                Transform.Template.onTransformEnd(this);
+                Transform.Template.OnTransformEnd(this);
                 Transform = null;
             }
         }
@@ -1204,7 +1206,7 @@ namespace L2dotNET.GameService.Model.Player
         public bool HasItem(int itemId, int count)
         {
             foreach (L2Item item in Inventory.Items)
-                if(item.Template.ItemID == itemId)
+                if(item.Template.ItemId == itemId)
                     if (item.Count >= count)
                         return true;
             return false;
@@ -1221,7 +1223,7 @@ namespace L2dotNET.GameService.Model.Player
             //{
             player.SendPacket(new CharInfo(this));
 
-            if (IsSitting)
+            if (_isSitting)
             {
                 //               L2Object obj = World.getInstance().getObject(_throneId);
                 //               if (obj is L2StaticObject)
@@ -1263,43 +1265,39 @@ namespace L2dotNET.GameService.Model.Player
             //}
         }
 
-        public void setTransform(L2Transform tr)
+        public void SetTransform(L2Transform tr)
         {
             Transform = tr;
-            Transform.owner = this;
-            Transform.Template.onTransformStart(this);
+            Transform.Owner = this;
+            Transform.Template.OnTransformStart(this);
         }
 
-        public SortedList<int, db_InstanceReuse> InstanceReuse = new SortedList<int, db_InstanceReuse>();
         public int ViewingAdminPage;
         public int ViewingAdminTeleportGroup = -1;
-        public int TeleportPayID;
+        public int TeleportPayId;
         public int LastMinigameScore;
         public short ClanType;
         public int Fame;
 
         public void ShowHtmAdmin(string val, bool plain)
         {
-            if (plain)
-                SendPacket(new TutorialShowHtml(this, val, true, true));
-            else
-                SendPacket(new TutorialShowHtml(this, val, true));
+            SendPacket(plain ? new TutorialShowHtml(this, val, true, true) : new TutorialShowHtml(this, val, true));
 
             ViewingAdminPage = 1;
         }
 
-        public void ShowHtmBBS(string val)
+        public void ShowHtmBbs(string val)
         {
-            ShowBoard.separateAndSend(val, this);
+            ShowBoard.SeparateAndSend(val, this);
         }
 
-        public void sendItemList(bool open = false)
+        public void SendItemList(bool open = false)
         {
             SendPacket(new ItemList(this, open));
             SendPacket(new ExQuestItemList(this));
         }
 
-        public void updateWeight()
+        public void UpdateWeight()
         {
             long oldweight = CurrentWeight;
             long total = 0;
@@ -1315,10 +1313,10 @@ namespace L2dotNET.GameService.Model.Player
             if (oldweight != total)
             {
                 StatusUpdate su = new StatusUpdate(ObjId);
-                su.add(StatusUpdate.CUR_LOAD, CurrentWeight);
+                su.Add(StatusUpdate.CurLoad, CurrentWeight);
                 SendPacket(su);
 
-                long weightproc = total * 1000 / (int)CharacterStat.getStat(TEffectType.b_max_weight);
+                long weightproc = total * 1000 / (int)CharacterStat.GetStat(EffectType.BMaxWeight);
 
                 int newWeightPenalty;
                 if (weightproc < 500)
@@ -1332,14 +1330,14 @@ namespace L2dotNET.GameService.Model.Player
                 else
                     newWeightPenalty = 4;
 
-                if (_penaltyWeight != newWeightPenalty)
+                if (PenaltyWeight != newWeightPenalty)
                 {
                     if (newWeightPenalty > 0)
                         AddSkill(4270, newWeightPenalty, false, true);
                     else
                         RemoveSkill(4270, false, true);
 
-                    _penaltyWeight = newWeightPenalty;
+                    PenaltyWeight = newWeightPenalty;
 
                     SendPacket(new EtcStatusUpdate(this));
                 }
@@ -1348,7 +1346,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public bool CheckFreeWeight(int weight)
         {
-            if (CurrentWeight + weight >= CharacterStat.getStat(TEffectType.b_max_weight))
+            if (CurrentWeight + weight >= CharacterStat.GetStat(EffectType.BMaxWeight))
                 return false;
 
             return true;
@@ -1356,7 +1354,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public bool CheckFreeWeight80(int weight)
         {
-            if (CurrentWeight + weight >= (CharacterStat.getStat(TEffectType.b_max_weight) * .8))
+            if (CurrentWeight + weight >= (CharacterStat.GetStat(EffectType.BMaxWeight) * .8))
                 return false;
 
             return true;
@@ -1379,11 +1377,11 @@ namespace L2dotNET.GameService.Model.Player
             if ((ClanId == 0) || (Clan == null))
                 return 0;
 
-            bool leader = Clan.LeaderID == ObjId;
-            e_ClanRank rank = e_ClanRank.vagabond;
+            bool leader = Clan.LeaderId == ObjId;
+            EClanRank rank = EClanRank.Vagabond;
             switch (ClanType)
             {
-                case (short)e_ClanType.CLAN_MAIN:
+                case (short)EClanType.ClanMain:
                 {
                     switch (Clan.Level)
                     {
@@ -1391,130 +1389,130 @@ namespace L2dotNET.GameService.Model.Player
                         case 1:
                         case 2:
                         case 3:
-                            rank = e_ClanRank._1;
+                            rank = EClanRank._1;
                             break;
                         case 4:
                             if (leader)
-                                rank = e_ClanRank._3;
+                                rank = EClanRank._3;
                             break;
                         case 5:
-                            rank = leader ? e_ClanRank._4 : e_ClanRank._3;
+                            rank = leader ? EClanRank._4 : EClanRank._3;
                             break;
                         case 6:
                             if (leader)
-                                rank = e_ClanRank._5;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                rank = e_ClanRank._4;
+                                rank = EClanRank._5;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                rank = EClanRank._4;
                             else
-                                rank = e_ClanRank._3;
+                                rank = EClanRank._3;
                             break;
                         case 7:
                             if (leader)
-                                rank = e_ClanRank._7;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                rank = e_ClanRank._6;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
-                                rank = e_ClanRank._5;
+                                rank = EClanRank._7;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                rank = EClanRank._6;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                rank = EClanRank._5;
                             else
-                                rank = e_ClanRank._4;
+                                rank = EClanRank._4;
                             break;
                         case 8:
                             if (leader)
-                                rank = e_ClanRank._8;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                rank = e_ClanRank._7;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
-                                rank = e_ClanRank._6;
+                                rank = EClanRank._8;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                rank = EClanRank._7;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                rank = EClanRank._6;
                             else
-                                rank = e_ClanRank._5;
+                                rank = EClanRank._5;
                             break;
                         case 9:
                             if (leader)
-                                rank = e_ClanRank._9;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                rank = e_ClanRank._8;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
-                                rank = e_ClanRank._7;
+                                rank = EClanRank._9;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                rank = EClanRank._8;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                rank = EClanRank._7;
                             else
-                                rank = e_ClanRank._6;
+                                rank = EClanRank._6;
                             break;
                         case 10:
                             if (leader)
-                                rank = e_ClanRank._10;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                rank = e_ClanRank._9;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
-                                rank = e_ClanRank._8;
+                                rank = EClanRank._10;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                rank = EClanRank._9;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                rank = EClanRank._8;
                             else
-                                rank = e_ClanRank._7;
+                                rank = EClanRank._7;
                             break;
                         case 11:
                             if (leader)
-                                rank = e_ClanRank._11;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2 }) != e_ClanType.None)
-                                rank = e_ClanRank._10;
-                            else if (Clan.isSubLeader(ObjId, new[] { e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 }) != e_ClanType.None)
-                                rank = e_ClanRank._9;
+                                rank = EClanRank._11;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                rank = EClanRank._10;
+                            else if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                rank = EClanRank._9;
                             else
-                                rank = e_ClanRank._8;
+                                rank = EClanRank._8;
                             break;
                     }
                 }
 
                     break;
-                case (short)e_ClanType.CLAN_ACADEMY:
+                case (short)EClanType.ClanAcademy:
                 {
-                    rank = e_ClanRank._1;
+                    rank = EClanRank._1;
                 }
                     break;
-                case (short)e_ClanType.CLAN_KNIGHT1:
-                case (short)e_ClanType.CLAN_KNIGHT2:
+                case (short)EClanType.ClanKnight1:
+                case (short)EClanType.ClanKnight2:
                 {
                     switch (Clan.Level)
                     {
                         case 6:
-                            rank = e_ClanRank._2;
+                            rank = EClanRank._2;
                             break;
                         case 7:
-                            rank = e_ClanRank._3;
+                            rank = EClanRank._3;
                             break;
                         case 8:
-                            rank = e_ClanRank._4;
+                            rank = EClanRank._4;
                             break;
                         case 9:
-                            rank = e_ClanRank._5;
+                            rank = EClanRank._5;
                             break;
                         case 10:
-                            rank = e_ClanRank._6;
+                            rank = EClanRank._6;
                             break;
                         case 11:
-                            rank = e_ClanRank._7;
+                            rank = EClanRank._7;
                             break;
                     }
                 }
 
                     break;
-                case (short)e_ClanType.CLAN_KNIGHT3:
-                case (short)e_ClanType.CLAN_KNIGHT4:
-                case (short)e_ClanType.CLAN_KNIGHT5:
-                case (short)e_ClanType.CLAN_KNIGHT6:
+                case (short)EClanType.ClanKnight3:
+                case (short)EClanType.ClanKnight4:
+                case (short)EClanType.ClanKnight5:
+                case (short)EClanType.ClanKnight6:
                 {
                     switch (Clan.Level)
                     {
                         case 7:
-                            rank = e_ClanRank._2;
+                            rank = EClanRank._2;
                             break;
                         case 8:
-                            rank = e_ClanRank._3;
+                            rank = EClanRank._3;
                             break;
                         case 9:
-                            rank = e_ClanRank._4;
+                            rank = EClanRank._4;
                             break;
                         case 10:
-                            rank = e_ClanRank._5;
+                            rank = EClanRank._5;
                             break;
                         case 11:
-                            rank = e_ClanRank._6;
+                            rank = EClanRank._6;
                             break;
                     }
                 }
@@ -1523,10 +1521,10 @@ namespace L2dotNET.GameService.Model.Player
             }
 
             if ((Noblesse == 1) && ((byte)rank < 5))
-                rank = e_ClanRank._5;
+                rank = EClanRank._5;
 
             if ((Heroic == 1) && ((byte)rank < 8))
-                rank = e_ClanRank._8;
+                rank = EClanRank._8;
 
             return (byte)rank;
         }
@@ -1541,15 +1539,15 @@ namespace L2dotNET.GameService.Model.Player
             BroadcastUserInfo();
         }
 
-        public string Penalty_ClanCreate = "0";
-        public string Penalty_ClanJoin = "0";
+        public string PenaltyClanCreate = "0";
+        public string PenaltyClanJoin = "0";
 
         public void setPenalty_ClanCreate(DateTime time, bool sql)
         {
             if (DateTime.Now < time)
-                Penalty_ClanCreate = time.ToString("yyyy-MM-dd HH-mm-ss");
+                PenaltyClanCreate = time.ToString("yyyy-MM-dd HH-mm-ss");
             else
-                Penalty_ClanCreate = "0";
+                PenaltyClanCreate = "0";
 
             if (sql) { }
         }
@@ -1557,9 +1555,9 @@ namespace L2dotNET.GameService.Model.Player
         public void setPenalty_ClanJoin(DateTime time, bool sql)
         {
             if (DateTime.Now < time)
-                Penalty_ClanJoin = time.ToString("yyyy-MM-dd HH-mm-ss");
+                PenaltyClanJoin = time.ToString("yyyy-MM-dd HH-mm-ss");
             else
-                Penalty_ClanJoin = "0";
+                PenaltyClanJoin = "0";
 
             if (sql) { }
         }
@@ -1571,7 +1569,7 @@ namespace L2dotNET.GameService.Model.Player
             if (IsRestored)
                 return;
 
-            onGameInit();
+            OnGameInit();
             db_restoreSkills();
             //db_restoreQuests();
             db_restoreRecipes();
@@ -1620,7 +1618,7 @@ namespace L2dotNET.GameService.Model.Player
             Souls += count;
             SendPacket(new EtcStatusUpdate(this));
 
-            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YOUR_SOUL_COUNT_HAS_INCREASED_BY_S1_NOW_AT_S2);
+            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YourSoulCountHasIncreasedByS1NowAtS2);
             sm.AddNumber(count);
             sm.AddNumber(Souls);
             SendPacket(sm);
@@ -1630,7 +1628,7 @@ namespace L2dotNET.GameService.Model.Player
         {
             if ((Souls + 1 > 45) || (Souls == 45))
             {
-                SendSystemMessage(SystemMessage.SystemMessageId.SOUL_CANNOT_BE_INCREASED_ANYMORE);
+                SendSystemMessage(SystemMessage.SystemMessageId.SoulCannotBeIncreasedAnymore);
                 return;
             }
 
@@ -1640,21 +1638,21 @@ namespace L2dotNET.GameService.Model.Player
         public bool IsCursed = false;
 
         public byte PartyState;
-        public L2Player requester;
-        public int itemDistribution;
+        public L2Player Requester;
+        public int ItemDistribution;
 
         public void PendToJoinParty(L2Player asker, int askerItemDistribution)
         {
             PartyState = 1;
-            requester = asker;
-            requester.itemDistribution = askerItemDistribution;
+            Requester = asker;
+            Requester.ItemDistribution = askerItemDistribution;
             SendPacket(new AskJoinParty(asker.Name, askerItemDistribution));
         }
 
         public void ClearPend()
         {
             PartyState = 0;
-            requester = null;
+            Requester = null;
         }
 
         public L2Summon Summon;
@@ -1693,7 +1691,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public override void OnOldTargetSelection(L2Object target)
         {
-            double dis = Calcs.calculateDistance(this, target, true);
+            double dis = Calcs.CalculateDistance(this, target, true);
             if (dis < 151)
                 target.NotifyAction(this);
             else
@@ -1702,78 +1700,78 @@ namespace L2dotNET.GameService.Model.Player
             SendActionFailed();
         }
 
-        private Timer petSummonTime,
-                      nonpetSummonTime;
-        private int PetID = -1;
-        private L2Item PetControlItem;
+        private Timer _petSummonTime,
+                      _nonpetSummonTime;
+        private int _petId = -1;
+        private L2Item _petControlItem;
 
-        public void PetSummon(L2Item item, int NpcID, bool isPet = true)
+        public void PetSummon(L2Item item, int npcId, bool isPet = true)
         {
             if (Summon != null)
             {
-                SendSystemMessage(SystemMessage.SystemMessageId.YOU_ALREADY_HAVE_A_PET);
+                SendSystemMessage(SystemMessage.SystemMessageId.YouAlreadyHaveAPet);
                 return;
             }
 
             if (isPet)
             {
-                if (petSummonTime == null)
+                if (_petSummonTime == null)
                 {
-                    petSummonTime = new Timer();
-                    petSummonTime.Interval = 5000;
-                    petSummonTime.Elapsed += new ElapsedEventHandler(PetSummonEnd);
+                    _petSummonTime = new Timer();
+                    _petSummonTime.Interval = 5000;
+                    _petSummonTime.Elapsed += PetSummonEnd;
                 }
 
-                petSummonTime.Enabled = true;
-                SendSystemMessage(SystemMessage.SystemMessageId.SUMMON_A_PET);
+                _petSummonTime.Enabled = true;
+                SendSystemMessage(SystemMessage.SystemMessageId.SummonAPet);
             }
             else
             {
-                if (nonpetSummonTime == null)
+                if (_nonpetSummonTime == null)
                 {
-                    nonpetSummonTime = new Timer();
-                    nonpetSummonTime.Interval = 5000;
-                    nonpetSummonTime.Elapsed += new ElapsedEventHandler(NonpetSummonEnd);
+                    _nonpetSummonTime = new Timer();
+                    _nonpetSummonTime.Interval = 5000;
+                    _nonpetSummonTime.Elapsed += NonpetSummonEnd;
                 }
 
-                nonpetSummonTime.Enabled = true;
+                _nonpetSummonTime.Enabled = true;
             }
 
-            PetID = NpcID;
-            PetControlItem = item;
+            _petId = npcId;
+            _petControlItem = item;
 
             BroadcastPacket(new MagicSkillUse(this, this, 1111, 1, 5000));
-            SendPacket(new SetupGauge(ObjId, SetupGauge.SG_color.blue, 4900));
+            SendPacket(new SetupGauge(ObjId, SetupGauge.SgColor.Blue, 4900));
         }
 
         private void PetSummonEnd(object sender, ElapsedEventArgs e)
         {
             L2Pet pet = new L2Pet();
             //pet.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
-            pet.setOwner(this);
-            pet.ControlItem = PetControlItem;
+            pet.SetOwner(this);
+            pet.ControlItem = _petControlItem;
             // pet.sql_restore();
             pet.SpawmMe();
 
-            petSummonTime.Enabled = false;
+            _petSummonTime.Enabled = false;
         }
 
         private void NonpetSummonEnd(object sender, ElapsedEventArgs e)
         {
             L2Summon summon = new L2Summon();
             //summon.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
-            summon.setOwner(this);
-            summon.ControlItem = PetControlItem;
+            summon.SetOwner(this);
+            summon.ControlItem = _petControlItem;
             summon.SpawmMe();
 
-            nonpetSummonTime.Enabled = false;
+            _nonpetSummonTime.Enabled = false;
         }
 
         public override bool CantMove()
         {
-            if ((petSummonTime != null) && petSummonTime.Enabled)
+            if ((_petSummonTime != null) && _petSummonTime.Enabled)
                 return true;
-            if ((nonpetSummonTime != null) && nonpetSummonTime.Enabled)
+            if ((_nonpetSummonTime != null) && _nonpetSummonTime.Enabled)
                 return true;
 
             return base.CantMove();
@@ -1800,71 +1798,71 @@ namespace L2dotNET.GameService.Model.Player
 
         public override void AbortCast()
         {
-            if ((petSummonTime != null) && petSummonTime.Enabled)
-                petSummonTime.Enabled = false;
+            if ((_petSummonTime != null) && _petSummonTime.Enabled)
+                _petSummonTime.Enabled = false;
 
-            if ((nonpetSummonTime != null) && nonpetSummonTime.Enabled)
-                nonpetSummonTime.Enabled = false;
+            if ((_nonpetSummonTime != null) && _nonpetSummonTime.Enabled)
+                _nonpetSummonTime.Enabled = false;
 
             base.AbortCast();
         }
 
         public override void StartAi()
         {
-            AiCharacter = new PlayerAI(this);
+            AiCharacter = new PlayerAi(this);
         }
 
-        public List<TSpecEffect> specEffects = new List<TSpecEffect>();
+        public List<SpecEffect> SpecEffects = new List<SpecEffect>();
 
-        public bool isSittingInProgress()
+        public bool IsSittingInProgress()
         {
-            if (sitTime != null)
-                return sitTime.Enabled;
+            if (_sitTime != null)
+                return _sitTime.Enabled;
 
             return false;
         }
 
-        public bool isSitting()
+        public bool IsSitting()
         {
-            return IsSitting;
+            return _isSitting;
         }
 
-        private Timer sitTime;
-        private bool IsSitting;
+        private Timer _sitTime;
+        private bool _isSitting;
 
         public void Sit()
         {
-            if (sitTime == null)
+            if (_sitTime == null)
             {
-                sitTime = new Timer();
-                sitTime.Interval = 2500;
-                sitTime.Elapsed += new ElapsedEventHandler(SitEnd);
+                _sitTime = new Timer();
+                _sitTime.Interval = 2500;
+                _sitTime.Elapsed += SitEnd;
             }
 
-            sitTime.Enabled = true;
-            BroadcastPacket(new ChangeWaitType(this, ChangeWaitType.SIT));
+            _sitTime.Enabled = true;
+            BroadcastPacket(new ChangeWaitType(this, ChangeWaitType.Sit));
         }
 
         public void Stand()
         {
-            sitTime.Enabled = true;
-            BroadcastPacket(new ChangeWaitType(this, ChangeWaitType.STAND));
+            _sitTime.Enabled = true;
+            BroadcastPacket(new ChangeWaitType(this, ChangeWaitType.Stand));
             //TODO stop relax effect
         }
 
         private void SitEnd(object sender, ElapsedEventArgs e)
         {
-            sitTime.Enabled = false;
-            IsSitting = !IsSitting;
+            _sitTime.Enabled = false;
+            _isSitting = !_isSitting;
 
-            if (!IsSitting && (chair != null))
+            if (!_isSitting && (_chair != null))
             {
-                chair.IsUsedAlready = false;
-                chair = null;
+                _chair.IsUsedAlready = false;
+                _chair = null;
             }
         }
 
-        private L2Chair chair;
+        private L2Chair _chair;
         public L2Boat Boat;
         public int BoatX;
         public int BoatY;
@@ -1872,12 +1870,12 @@ namespace L2dotNET.GameService.Model.Player
 
         public void SetChair(L2Chair chairObj)
         {
-            chair = chairObj;
-            chair.IsUsedAlready = true;
-            BroadcastPacket(new ChairSit(ObjId, chairObj.StaticID));
+            _chair = chairObj;
+            _chair.IsUsedAlready = true;
+            BroadcastPacket(new ChairSit(ObjId, chairObj.StaticId));
         }
 
-        public bool isOnShip()
+        public bool IsOnShip()
         {
             return false;
         }
@@ -1932,7 +1930,7 @@ namespace L2dotNET.GameService.Model.Player
                    reqMp = 0;
 
             L2Item weapon = ActiveWeapon;
-            double timeAtk = CharacterStat.getStat(TEffectType.b_attack_spd);
+            double timeAtk = CharacterStat.GetStat(EffectType.BAttackSpd);
             bool dual = false,
                  ranged = false,
                  ss = false;
@@ -1941,16 +1939,16 @@ namespace L2dotNET.GameService.Model.Player
                 ss = weapon.Soulshot;
                 switch (weapon.Template.WeaponType)
                 {
-                    case ItemTemplate.L2ItemWeaponType.bow:
+                    case ItemTemplate.L2ItemWeaponType.Bow:
                         timeAtk = (1500 * 345 / timeAtk);
                         ranged = true;
                         break;
-                    case ItemTemplate.L2ItemWeaponType.crossbow:
+                    case ItemTemplate.L2ItemWeaponType.Crossbow:
                         timeAtk = (1200 * 345 / timeAtk);
                         ranged = true;
                         break;
-                    case ItemTemplate.L2ItemWeaponType.dualdagger:
-                    case ItemTemplate.L2ItemWeaponType.dual:
+                    case ItemTemplate.L2ItemWeaponType.Dualdagger:
+                    case ItemTemplate.L2ItemWeaponType.Dual:
                         timeAtk = (1362 * 345 / timeAtk);
                         dual = true;
                         break;
@@ -1959,17 +1957,17 @@ namespace L2dotNET.GameService.Model.Player
                         break;
                 }
 
-                if ((weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.crossbow) || (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow))
+                if ((weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.Crossbow) || (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow))
                 {
                     dist += 740;
                     reqMp = weapon.Template.MpConsume;
 
                     if ((SecondaryWeaponSupport == null) || (SecondaryWeaponSupport.Count < weapon.Template.SoulshotCount))
                     {
-                        if (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow)
-                            SendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_ARROWS);
+                        if (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow)
+                            SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughArrows);
                         else
-                            SendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_BOLTS);
+                            SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughBolts);
                         SendActionFailed();
                         return;
                     }
@@ -1981,7 +1979,7 @@ namespace L2dotNET.GameService.Model.Player
                 dual = true;
             }
 
-            if (!Calcs.checkIfInRange((int)dist, this, target, true))
+            if (!Calcs.CheckIfInRange((int)dist, this, target, true))
             {
                 SendMessage("too far " + dist);
                 TryMoveTo(target.X, target.Y, target.Z);
@@ -1997,7 +1995,7 @@ namespace L2dotNET.GameService.Model.Player
 
             if (ranged)
             {
-                SendPacket(new SetupGauge(ObjId, SetupGauge.SG_color.red, (int)timeAtk));
+                SendPacket(new SetupGauge(ObjId, SetupGauge.SgColor.Red, (int)timeAtk));
                 //Inventory.destroyItem(SecondaryWeaponSupport, 1, false, true);
             }
 
@@ -2006,15 +2004,15 @@ namespace L2dotNET.GameService.Model.Player
             if (dual)
             {
                 Hit1 = GenHitSimple(true, ss);
-                atk.addHit(target.ObjId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
+                atk.AddHit(target.ObjId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
 
                 Hit2 = GenHitSimple(true, ss);
-                atk.addHit(target.ObjId, (int)Hit2.Damage, Hit2.Miss, Hit2.Crit, Hit2.ShieldDef > 0);
+                atk.AddHit(target.ObjId, (int)Hit2.Damage, Hit2.Miss, Hit2.Crit, Hit2.ShieldDef > 0);
             }
             else
             {
                 Hit1 = GenHitSimple(false, ss);
-                atk.addHit(target.ObjId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
+                atk.AddHit(target.ObjId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
             }
 
             CurrentTarget = target;
@@ -2022,7 +2020,7 @@ namespace L2dotNET.GameService.Model.Player
             if (AttackToHit == null)
             {
                 AttackToHit = new Timer();
-                AttackToHit.Elapsed += new ElapsedEventHandler(AttackDoHit);
+                AttackToHit.Elapsed += AttackDoHit;
             }
 
             double timeToHit = ranged ? timeAtk * 0.5 : timeAtk * 0.6;
@@ -2034,7 +2032,7 @@ namespace L2dotNET.GameService.Model.Player
                 if (AttackToHitBonus == null)
                 {
                     AttackToHitBonus = new Timer();
-                    AttackToHitBonus.Elapsed += new ElapsedEventHandler(AttackDoHit2Nd);
+                    AttackToHitBonus.Elapsed += AttackDoHit2Nd;
                 }
 
                 AttackToHitBonus.Interval = timeAtk * 0.78;
@@ -2044,7 +2042,7 @@ namespace L2dotNET.GameService.Model.Player
             if (AttackToEnd == null)
             {
                 AttackToEnd = new Timer();
-                AttackToEnd.Elapsed += new ElapsedEventHandler(AttackDoEnd);
+                AttackToEnd.Elapsed += AttackDoEnd;
             }
 
             AttackToEnd.Interval = timeAtk;
@@ -2059,21 +2057,21 @@ namespace L2dotNET.GameService.Model.Player
                 if (!Hit1.Miss)
                 {
                     if (Hit1.Crit)
-                        SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_LANDED_A_CRITICAL_HIT).AddPlayerName(Name));
+                        SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1LandedACriticalHit).AddPlayerName(Name));
 
-                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3).AddPlayerName(Name).AddName(CurrentTarget).AddNumber(Hit1.Damage));
+                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddPlayerName(Name).AddName(CurrentTarget).AddNumber(Hit1.Damage));
                     CurrentTarget.ReduceHp(this, Hit1.Damage);
 
                     if (CurrentTarget is L2Player)
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2).AddName(CurrentTarget).AddName(this).AddNumber(Hit1.Damage));
+                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(CurrentTarget).AddName(this).AddNumber(Hit1.Damage));
                 }
                 else
                 {
-                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_ATTACK_WENT_ASTRAY).AddPlayerName(Name));
+                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1AttackWentAstray).AddPlayerName(Name));
 
                     if (CurrentTarget is L2Player)
                     {
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_EVADED_C2_ATTACK).AddName(CurrentTarget).AddName(this));
+                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(CurrentTarget).AddName(this));
                         ((L2Player)CurrentTarget).AiCharacter.NotifyEvaded(this);
                     }
                 }
@@ -2087,21 +2085,21 @@ namespace L2dotNET.GameService.Model.Player
                 if (!Hit2.Miss)
                 {
                     if (Hit2.Crit)
-                        SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_LANDED_A_CRITICAL_HIT).AddName(this));
+                        SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1LandedACriticalHit).AddName(this));
 
-                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3).AddName(this).AddName(CurrentTarget).AddNumber(Hit2.Damage));
+                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddName(this).AddName(CurrentTarget).AddNumber(Hit2.Damage));
                     CurrentTarget.ReduceHp(this, Hit2.Damage);
 
                     if (CurrentTarget is L2Player)
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2).AddName(CurrentTarget).AddName(this).AddNumber(Hit2.Damage));
+                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(CurrentTarget).AddName(this).AddNumber(Hit2.Damage));
                 }
                 else
                 {
-                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_ATTACK_WENT_ASTRAY).AddPlayerName(Name));
+                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1AttackWentAstray).AddPlayerName(Name));
 
                     if (CurrentTarget is L2Player)
                     {
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_EVADED_C2_ATTACK).AddName(CurrentTarget).AddName(this));
+                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(CurrentTarget).AddName(this));
                         ((L2Player)CurrentTarget).AiCharacter.NotifyEvaded(this);
                     }
                 }
@@ -2158,8 +2156,8 @@ namespace L2dotNET.GameService.Model.Player
         {
             get
             {
-                if (TransformID > 0)
-                    return Transform.Template.getHeight(Sex);
+                if (TransformId > 0)
+                    return Transform.Template.GetHeight(Sex);
 
                 if (MountType > 0)
                     return MountedTemplate.CollisionHeight;
@@ -2168,9 +2166,9 @@ namespace L2dotNET.GameService.Model.Player
             }
         }
 
-        public List<int> autoSoulshots = new List<int>();
-        public List<int> setKeyItems;
-        public int setKeyId;
+        public List<int> AutoSoulshots = new List<int>();
+        public List<int> SetKeyItems;
+        public int SetKeyId;
 
         public int MountType;
         public NpcTemplate MountedTemplate;
@@ -2189,28 +2187,28 @@ namespace L2dotNET.GameService.Model.Player
                 Mount(Summon.Template);
         }
 
-        public void unMount()
+        public void UnMount()
         {
             BroadcastPacket(new Ride(this, false));
             MountedTemplate = null;
             BroadcastUserInfo();
         }
 
-        public SortedList<int, long> currentTrade;
-        public int sstt;
+        public SortedList<int, long> CurrentTrade;
+        public int Sstt;
 
         public long AddItemToTrade(int objId, long num)
         {
-            if (currentTrade == null)
-                currentTrade = new SortedList<int, long>();
+            if (CurrentTrade == null)
+                CurrentTrade = new SortedList<int, long>();
 
-            if (currentTrade.ContainsKey(objId))
+            if (CurrentTrade.ContainsKey(objId))
             {
-                currentTrade[objId] += num;
-                return currentTrade[objId];
+                CurrentTrade[objId] += num;
+                return CurrentTrade[objId];
             }
 
-            currentTrade.Add(objId, num);
+            CurrentTrade.Add(objId, num);
             return num;
         }
 
@@ -2235,27 +2233,27 @@ namespace L2dotNET.GameService.Model.Player
             StartRegeneration();
         }
 
-        private DateTime pingTimeout;
-        private int lastPingId;
+        private DateTime _pingTimeout;
+        private int _lastPingId;
         public int Ping = -1;
         public MultiSellList CustomMultiSellList;
         public int LastRequestedMultiSellId = -1;
         public int AttackingId;
-        public SortedList<int, TAcquireSkill> ActiveSkillTree;
+        public SortedList<int, AcquireSkill> ActiveSkillTree;
 
         public void RequestPing()
         {
-            lastPingId = new Random().Next(int.MaxValue);
-            NetPing ping = new NetPing(lastPingId);
-            pingTimeout = DateTime.Now;
+            _lastPingId = new Random().Next(int.MaxValue);
+            NetPing ping = new NetPing(_lastPingId);
+            _pingTimeout = DateTime.Now;
             SendPacket(ping);
         }
 
         public void UpdatePing(int id, int ms, int unk)
         {
-            if (lastPingId != id)
+            if (_lastPingId != id)
             {
-                log.Warn($"player fail to ping respond right {id} {lastPingId} at {pingTimeout.ToLocalTime()}");
+                Log.Warn($"player fail to ping respond right {id} {_lastPingId} at {_pingTimeout.ToLocalTime()}");
                 return;
             }
 
@@ -2283,7 +2281,7 @@ namespace L2dotNET.GameService.Model.Player
 
             byte oldLvl = Level;
             Exp += (long)expReward;
-            byte newLvl = Experience.getLevel(Exp);
+            byte newLvl = Experience.GetLevel(Exp);
             bool lvlChanged = oldLvl != newLvl;
 
             Exp += (long)expReward;
@@ -2304,10 +2302,10 @@ namespace L2dotNET.GameService.Model.Player
             get { return Clan == null ? (byte)0 : Clan.Level; }
         }
 
-        public void broadcastSkillUse(int skillId)
+        public void BroadcastSkillUse(int skillId)
         {
-            TSkill skill = TSkillTable.Instance.Get(skillId);
-            BroadcastPacket(new MagicSkillUse(this, this, skill.skill_id, skill.level, skill.skill_hit_time));
+            Skill skill = SkillTable.Instance.Get(skillId);
+            BroadcastPacket(new MagicSkillUse(this, this, skill.SkillId, skill.Level, skill.SkillHitTime));
         }
 
         public bool ClanLeader
@@ -2317,13 +2315,13 @@ namespace L2dotNET.GameService.Model.Player
                 if (Clan == null)
                     return false;
 
-                return Clan.LeaderID == ObjId;
+                return Clan.LeaderId == ObjId;
             }
         }
 
         public bool HavePledgePower(int bit)
         {
-            return (Clan != null) && Clan.hasRights(this, bit);
+            return (Clan != null) && Clan.HasRights(this, bit);
         }
 
         public override L2Item GetWeaponItem()
@@ -2336,15 +2334,15 @@ namespace L2dotNET.GameService.Model.Player
             SendMessage("@UpdateAgathionEnergy " + count);
         }
 
-        public List<Cubic> cubics = new List<Cubic>();
+        public List<Cubic> Cubics = new List<Cubic>();
 
         public void StopCubic(Cubic cubic)
         {
-            foreach (Cubic cub in cubics.Where(cub => cub.template.id == cubic.template.id))
+            foreach (Cubic cub in Cubics.Where(cub => cub.Template.Id == cubic.Template.Id))
             {
-                lock (cubics)
+                lock (Cubics)
                 {
-                    cubics.Remove(cub);
+                    Cubics.Remove(cub);
                 }
 
                 BroadcastUserInfo();
@@ -2354,44 +2352,44 @@ namespace L2dotNET.GameService.Model.Player
 
         public void AddCubic(Cubic cubic, bool update)
         {
-            int max = (int)CharacterStat.getStat(TEffectType.p_cubic_mastery);
+            int max = (int)CharacterStat.GetStat(EffectType.PCubicMastery);
             if (max == 0)
                 max = 1;
 
-            if (cubics.Count == max)
+            if (Cubics.Count == max)
             {
-                Cubic cub = cubics[0];
+                Cubic cub = Cubics[0];
                 cub.OnEnd(false);
-                lock (cubics)
+                lock (Cubics)
                 {
-                    cubics.RemoveAt(0);
+                    Cubics.RemoveAt(0);
                 }
             }
 
-            foreach (Cubic cub in cubics.Where(cub => cub.template.id == cubic.template.id))
+            foreach (Cubic cub in Cubics.Where(cub => cub.Template.Id == cubic.Template.Id))
             {
-                lock (cubics)
+                lock (Cubics)
                 {
                     cub.OnEnd(false);
-                    cubics.Remove(cub);
+                    Cubics.Remove(cub);
                 }
                 break;
             }
 
             cubic.OnSummon();
-            cubics.Add(cubic);
+            Cubics.Add(cubic);
             if (update)
                 BroadcastUserInfo();
         }
 
         public override void DoDie(L2Character killer, bool bytrigger)
         {
-            if (cubics.Count > 0)
+            if (Cubics.Count > 0)
             {
-                foreach (Cubic cub in cubics)
+                foreach (Cubic cub in Cubics)
                     cub.OnEnd(false);
 
-                cubics.Clear();
+                Cubics.Clear();
             }
 
             base.DoDie(killer, bytrigger);

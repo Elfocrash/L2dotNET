@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Templates
 {
     public class StatsSet : Dictionary<string, object>
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(StatsSet));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(StatsSet));
 
         public StatsSet() { }
 

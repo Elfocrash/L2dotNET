@@ -8,32 +8,32 @@ namespace L2dotNET.GameService.Network.Serverpackets
         private readonly int _level;
         private readonly int _spCost;
         private readonly int _mode;
-        public List<int[]> _reqs = new List<int[]>();
+        public List<int[]> Reqs = new List<int[]>();
 
-        public AcquireSkillInfo(int _id, int level, int sp, int skillType)
+        public AcquireSkillInfo(int id, int level, int sp, int skillType)
         {
-            this._id = _id;
+            this._id = id;
             this._level = level;
             _spCost = sp;
             _mode = skillType;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x8b);
-            writeD(_id);
-            writeD(_level);
-            writeD(_spCost);
-            writeD(_mode);
+            WriteC(0x8b);
+            WriteD(_id);
+            WriteD(_level);
+            WriteD(_spCost);
+            WriteD(_mode);
 
-            writeD(_reqs.Count);
+            WriteD(Reqs.Count);
 
-            foreach (int[] r in _reqs)
+            foreach (int[] r in Reqs)
             {
-                writeD(r[0]);
-                writeD(r[1]);
-                writeD(r[2]);
-                writeD(r[3]);
+                WriteD(r[0]);
+                WriteD(r[1]);
+                WriteD(r[2]);
+                WriteD(r[3]);
             }
         }
     }

@@ -4,21 +4,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class VehicleInfo : GameServerNetworkPacket
     {
-        private readonly L2Boat boat;
+        private readonly L2Boat _boat;
 
         public VehicleInfo(L2Boat boat)
         {
-            this.boat = boat;
+            this._boat = boat;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x59);
-            writeD(boat.ObjId);
-            writeD(boat.X);
-            writeD(boat.Y);
-            writeD(boat.Z);
-            writeD(boat.Heading);
+            WriteC(0x59);
+            WriteD(_boat.ObjId);
+            WriteD(_boat.X);
+            WriteD(_boat.Y);
+            WriteD(_boat.Z);
+            WriteD(_boat.Heading);
         }
     }
 }

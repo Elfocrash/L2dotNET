@@ -11,22 +11,22 @@ namespace L2dotNET.GameService.Model.Zones
     public class L2Zone
     {
         public ZoneForm Territory;
-        public int ZoneID;
-        public string _zonePch;
-        public bool _enabled = false;
+        public int ZoneId;
+        public string ZonePch;
+        public bool Enabled = false;
         public ZoneTemplate Template;
-        public int InstanceID = -1;
+        public int InstanceId = -1;
         public L2Object NpcCenter;
 
         public SortedList<int, L2Object> ObjectsInside = new SortedList<int, L2Object>();
 
-        public virtual void onEnter(L2Object obj)
+        public virtual void OnEnter(L2Object obj)
         {
             if (!ObjectsInside.ContainsKey(obj.ObjId))
                 ObjectsInside.Add(obj.ObjId, obj);
         }
 
-        public void broadcastPacket(GameServerNetworkPacket pk)
+        public void BroadcastPacket(GameServerNetworkPacket pk)
         {
             foreach (L2Object obj in ObjectsInside.Values)
                 if (obj is L2Player)
@@ -35,7 +35,7 @@ namespace L2dotNET.GameService.Model.Zones
                     ((L2Summon)obj).SendPacket(pk);
         }
 
-        public virtual void onExit(L2Object obj, bool cls)
+        public virtual void OnExit(L2Object obj, bool cls)
         {
             if (cls)
                 lock (ObjectsInside)
@@ -45,25 +45,25 @@ namespace L2dotNET.GameService.Model.Zones
                 }
         }
 
-        public virtual void onDie(L2Character obj, L2Character killer) { }
+        public virtual void OnDie(L2Character obj, L2Character killer) { }
 
-        public virtual void onKill(L2Character obj, L2Character target) { }
+        public virtual void OnKill(L2Character obj, L2Character target) { }
 
-        public Timer _action;
+        public Timer Action;
 
-        public virtual void startTimer()
+        public virtual void StartTimer()
         {
-            _action = new Timer(Template._unit_tick * 1000);
-            _action.Elapsed += new ElapsedEventHandler(onTimerAction);
-            _action.Interval = Template._unit_tick * 1000;
-            _action.Enabled = true;
+            Action = new Timer(Template.UnitTick * 1000);
+            Action.Elapsed += OnTimerAction;
+            Action.Interval = Template.UnitTick * 1000;
+            Action.Enabled = true;
         }
 
-        public virtual void stopTimer() { }
+        public virtual void StopTimer() { }
 
-        public virtual void onTimerAction(object sender, ElapsedEventArgs e) { }
+        public virtual void OnTimerAction(object sender, ElapsedEventArgs e) { }
 
-        public virtual void onInit() { }
+        public virtual void OnInit() { }
 
         private Timer _selfDestruct;
         public int[] CylinderCenter;
@@ -72,18 +72,18 @@ namespace L2dotNET.GameService.Model.Zones
         public void SelfDestruct(int sec)
         {
             _selfDestruct = new Timer(sec * 1000);
-            _selfDestruct.Elapsed += new ElapsedEventHandler(desctructTime);
+            _selfDestruct.Elapsed += DesctructTime;
             _selfDestruct.Enabled = true;
         }
 
-        private void desctructTime(object sender, ElapsedEventArgs e)
+        private void DesctructTime(object sender, ElapsedEventArgs e)
         {
             _selfDestruct.Enabled = false;
 
             NpcCenter.DeleteMe();
 
             foreach (L2Object o in ObjectsInside.Values)
-                onExit(o, false);
+                OnExit(o, false);
 
             ObjectsInside.Clear();
 

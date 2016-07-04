@@ -9,17 +9,17 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestSocialAction(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            _actionId = readD();
+            _actionId = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
             if (player == null)
                 return;
 

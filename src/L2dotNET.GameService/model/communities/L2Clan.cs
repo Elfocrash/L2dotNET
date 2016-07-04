@@ -13,72 +13,72 @@ namespace L2dotNET.GameService.Model.Communities
 {
     public class L2Clan
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(L2Clan));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(L2Clan));
 
         public byte Level;
-        public int LeaderID;
+        public int LeaderId;
         public string Name;
         public string ClanMasterName;
-        public int CrestID;
+        public int CrestId;
         public byte[] CrestPicture;
         public byte[] CrestLargePicture;
-        public int CastleID;
-        public int HideoutID;
+        public int CastleId;
+        public int HideoutId;
         public int ClanRank;
         public int ClanNameValue;
-        public int AllianceID;
+        public int AllianceId;
         public int InWar;
-        public int JoinDominionWarID;
+        public int JoinDominionWarId;
 
         public L2Alliance Alliance;
 
-        public Hideout hideout;
+        public Hideout Hideout;
 
-        public List<ClanMember> members = new List<ClanMember>();
-        public int LargeCrestID;
-        public int ClanID;
+        public List<ClanMember> Members = new List<ClanMember>();
+        public int LargeCrestId;
+        public int ClanId;
         public int Status;
         public int Guilty;
-        public int FortressID;
+        public int FortressId;
 
         public Dictionary<int, int> MainSkill = new Dictionary<int, int>();
 
-        public e_ClanSub Knights_1;
-        public e_ClanSub Knights_1_Order1;
-        public e_ClanSub Knights_1_Order2;
-        public e_ClanSub Knights_2;
-        public e_ClanSub Knights_2_Order1;
-        public e_ClanSub Knights_2_Order2;
-        public e_ClanSub Academy;
+        public EClanSub Knights1;
+        public EClanSub Knights1Order1;
+        public EClanSub Knights1Order2;
+        public EClanSub Knights2;
+        public EClanSub Knights2Order1;
+        public EClanSub Knights2Order2;
+        public EClanSub Academy;
 
-        public static int CP_CL_JOIN_CLAN = 2;
-        public static int CP_CL_GIVE_TITLE = 4;
-        public static int CP_CL_VIEW_WAREHOUSE = 8;
-        public static int CP_CL_MANAGE_RANKS = 16;
-        public static int CP_CL_PLEDGE_WAR = 32;
-        public static int CP_CL_DISMISS = 64;
-        public static int CP_CL_REGISTER_CREST = 128;
-        public static int CP_CL_APPRENTICE = 256;
-        public static int CP_CL_TROOPS_FAME = 512;
-        public static int CP_CL_SUMMON_AIRSHIP = 1024;
-        public static int CP_CH_OPEN_DOOR = 2048;
-        public static int CP_CH_OTHER_RIGHTS = 4096;
-        public static int CP_CH_AUCTION = 8192;
-        public static int CP_CH_DISMISS = 16384;
-        public static int CP_CH_SET_FUNCTIONS = 32768;
-        public static int CP_CS_OPEN_DOOR = 65536;
-        public static int CP_CS_MANOR_ADMIN = 131072;
-        public static int CP_CS_MANAGE_SIEGE = 262144;
-        public static int CP_CS_USE_FUNCTIONS = 524288;
-        public static int CP_CS_DISMISS = 1048576;
-        public static int CP_CS_TAXES = 2097152;
-        public static int CP_CS_MERCENARIES = 4194304;
-        public static int CP_CS_SET_FUNCTIONS = 8388608;
-        public static int CP_ALL = 16777214;
+        public static int CpClJoinClan = 2;
+        public static int CpClGiveTitle = 4;
+        public static int CpClViewWarehouse = 8;
+        public static int CpClManageRanks = 16;
+        public static int CpClPledgeWar = 32;
+        public static int CpClDismiss = 64;
+        public static int CpClRegisterCrest = 128;
+        public static int CpClApprentice = 256;
+        public static int CpClTroopsFame = 512;
+        public static int CpClSummonAirship = 1024;
+        public static int CpChOpenDoor = 2048;
+        public static int CpChOtherRights = 4096;
+        public static int CpChAuction = 8192;
+        public static int CpChDismiss = 16384;
+        public static int CpChSetFunctions = 32768;
+        public static int CpCsOpenDoor = 65536;
+        public static int CpCsManorAdmin = 131072;
+        public static int CpCsManageSiege = 262144;
+        public static int CpCsUseFunctions = 524288;
+        public static int CpCsDismiss = 1048576;
+        public static int CpCsTaxes = 2097152;
+        public static int CpCsMercenaries = 4194304;
+        public static int CpCsSetFunctions = 8388608;
+        public static int CpAll = 16777214;
 
         public int AllianceCrestId
         {
-            get { return Alliance == null ? 0 : Alliance.CrestID; }
+            get { return Alliance == null ? 0 : Alliance.CrestId; }
         }
 
         public string AllianceName
@@ -86,28 +86,28 @@ namespace L2dotNET.GameService.Model.Communities
             get { return Alliance == null ? "" : Alliance.Name; }
         }
 
-        public void addMember(L2Player player, short type)
+        public void AddMember(L2Player player, short type)
         {
             ClanMember cm = new ClanMember();
-            cm.classId = (byte)player.ActiveClass.ClassId.Id;
+            cm.ClassId = (byte)player.ActiveClass.ClassId.Id;
             cm.Level = player.Level;
             cm.Name = player.Name;
-            cm.ObjID = player.ObjId;
-            cm.sponsorId = 0;
+            cm.ObjId = player.ObjId;
+            cm.SponsorId = 0;
             cm.NickName = player.Title;
             cm.ClanType = type;
-            cm._pledgeTypeName = Name;
+            cm.PledgeTypeName = Name;
             cm.Target = player;
 
-            members.Add(cm);
+            Members.Add(cm);
 
             player.Clan = this;
             player.ClanType = type;
         }
 
-        public List<ClanMember> getClanMembers()
+        public List<ClanMember> GetClanMembers()
         {
-            return members;
+            return Members;
         }
 
         public void UpdatePledgeNameValue(int count)
@@ -116,64 +116,64 @@ namespace L2dotNET.GameService.Model.Communities
             //TODO packets
         }
 
-        public void onEnter(L2Player player)
+        public void OnEnter(L2Player player)
         {
             player.Clan = this;
 
-            foreach (ClanMember m in members.Where(m => m.ObjID == player.ObjId))
+            foreach (ClanMember m in Members.Where(m => m.ObjId == player.ObjId))
             {
-                m.online = 1;
+                m.Online = 1;
                 m.Level = player.Level;
                 m.Target = player;
                 break;
             }
 
-            if (LeaderID == player.ObjId)
-                player.ClanPrivs = CP_ALL;
+            if (LeaderId == player.ObjId)
+                player.ClanPrivs = CpAll;
 
-            player.SendPacket(new PledgeShowMemberListAll(this, e_ClanType.CLAN_MAIN));
+            player.SendPacket(new PledgeShowMemberListAll(this, EClanType.ClanMain));
 
-            foreach (e_ClanSub sub in getAllSubs())
+            foreach (EClanSub sub in GetAllSubs())
             {
                 player.SendPacket(new PledgeReceiveSubPledgeCreated(sub));
                 player.SendPacket(new PledgeShowMemberListAll(this, sub.Type));
             }
         }
 
-        public void broadcastToMembers(GameServerNetworkPacket pk)
+        public void BroadcastToMembers(GameServerNetworkPacket pk)
         {
-            foreach (ClanMember cm in members.Where(cm => cm.online == 1))
+            foreach (ClanMember cm in Members.Where(cm => cm.Online == 1))
                 cm.Target.SendPacket(pk);
         }
 
-        public e_ClanType isSubLeader(int objId, e_ClanType[] types)
+        public EClanType IsSubLeader(int objId, EClanType[] types)
         {
-            e_ClanType ret = e_ClanType.None;
-            foreach (e_ClanType ct in types)
+            EClanType ret = EClanType.None;
+            foreach (EClanType ct in types)
                 switch (ct)
                 {
-                    case e_ClanType.CLAN_KNIGHT1:
-                        if ((Knights_1 != null) && (Knights_1.LeaderID == objId))
+                    case EClanType.ClanKnight1:
+                        if ((Knights1 != null) && (Knights1.LeaderId == objId))
                             ret = ct;
                         break;
-                    case e_ClanType.CLAN_KNIGHT2:
-                        if ((Knights_2 != null) && (Knights_2.LeaderID == objId))
+                    case EClanType.ClanKnight2:
+                        if ((Knights2 != null) && (Knights2.LeaderId == objId))
                             ret = ct;
                         break;
-                    case e_ClanType.CLAN_KNIGHT3:
-                        if ((Knights_1_Order1 != null) && (Knights_1_Order1.LeaderID == objId))
+                    case EClanType.ClanKnight3:
+                        if ((Knights1Order1 != null) && (Knights1Order1.LeaderId == objId))
                             ret = ct;
                         break;
-                    case e_ClanType.CLAN_KNIGHT4:
-                        if ((Knights_1_Order2 != null) && (Knights_1_Order2.LeaderID == objId))
+                    case EClanType.ClanKnight4:
+                        if ((Knights1Order2 != null) && (Knights1Order2.LeaderId == objId))
                             ret = ct;
                         break;
-                    case e_ClanType.CLAN_KNIGHT5:
-                        if ((Knights_2_Order1 != null) && (Knights_2_Order1.LeaderID == objId))
+                    case EClanType.ClanKnight5:
+                        if ((Knights2Order1 != null) && (Knights2Order1.LeaderId == objId))
                             ret = ct;
                         break;
-                    case e_ClanType.CLAN_KNIGHT6:
-                        if ((Knights_2_Order2 != null) && (Knights_2_Order2.LeaderID == objId))
+                    case EClanType.ClanKnight6:
+                        if ((Knights2Order2 != null) && (Knights2Order2.LeaderId == objId))
                             ret = ct;
                         break;
                 }
@@ -186,7 +186,7 @@ namespace L2dotNET.GameService.Model.Communities
             return false;
         }
 
-        public void updateCrest(int size, byte[] picture)
+        public void UpdateCrest(int size, byte[] picture)
         {
             //SystemMessage.SystemMessageId msg;
             //msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
@@ -195,21 +195,21 @@ namespace L2dotNET.GameService.Model.Communities
 
             if (size == 0)
             {
-                if (CrestID > 0)
-                    File.Delete(@"crests\c" + CrestID + ".bmp");
+                if (CrestId > 0)
+                    File.Delete(@"crests\c" + CrestId + ".bmp");
 
-                CrestID = 0;
+                CrestId = 0;
             }
             else
             {
-                if (CrestID > 0)
-                    File.Delete(@"crests\c" + CrestID + ".bmp");
+                if (CrestId > 0)
+                    File.Delete(@"crests\c" + CrestId + ".bmp");
 
                 //msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
-                CrestID = IdFactory.Instance.nextId();
+                CrestId = IdFactory.Instance.NextId();
                 try
                 {
-                    FileStream fs = new FileStream(@"crests\c" + CrestID + ".bmp", FileMode.Create, FileAccess.ReadWrite);
+                    FileStream fs = new FileStream(@"crests\c" + CrestId + ".bmp", FileMode.Create, FileAccess.ReadWrite);
                     BinaryWriter bw = new BinaryWriter(fs);
                     bw.Write(picture);
                     bw.Close();
@@ -217,7 +217,7 @@ namespace L2dotNET.GameService.Model.Communities
                 }
                 catch (Exception ex)
                 {
-                    log.Error(ex.Message);
+                    Log.Error(ex.Message);
                 }
             }
 
@@ -235,7 +235,7 @@ namespace L2dotNET.GameService.Model.Communities
             //    }
         }
 
-        public void updateCrestLarge(int size, byte[] picture)
+        public void UpdateCrestLarge(int size, byte[] picture)
         {
             //SystemMessage.SystemMessageId msg;
             //msg = SystemMessage.SystemMessageId.CLAN_CREST_HAS_BEEN_DELETED;
@@ -244,21 +244,21 @@ namespace L2dotNET.GameService.Model.Communities
 
             if (size == 0)
             {
-                if (LargeCrestID > 0)
-                    File.Delete(@"crests\b" + LargeCrestID + ".bmp");
+                if (LargeCrestId > 0)
+                    File.Delete(@"crests\b" + LargeCrestId + ".bmp");
 
-                LargeCrestID = 0;
+                LargeCrestId = 0;
             }
             else
             {
-                if (LargeCrestID > 0)
-                    File.Delete(@"crests\b" + LargeCrestID + ".bmp");
+                if (LargeCrestId > 0)
+                    File.Delete(@"crests\b" + LargeCrestId + ".bmp");
 
                 //msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
-                LargeCrestID = IdFactory.Instance.nextId();
+                LargeCrestId = IdFactory.Instance.NextId();
                 try
                 {
-                    FileStream fs = new FileStream(@"crests\b" + LargeCrestID + ".bmp", FileMode.Create, FileAccess.ReadWrite);
+                    FileStream fs = new FileStream(@"crests\b" + LargeCrestId + ".bmp", FileMode.Create, FileAccess.ReadWrite);
                     BinaryWriter bw = new BinaryWriter(fs);
                     bw.Write(picture);
                     bw.Close();
@@ -266,7 +266,7 @@ namespace L2dotNET.GameService.Model.Communities
                 }
                 catch (Exception ex)
                 {
-                    log.Error(ex.Message);
+                    Log.Error(ex.Message);
                 }
             }
 
@@ -284,23 +284,23 @@ namespace L2dotNET.GameService.Model.Communities
             //    }
         }
 
-        public byte MaxMembers(e_ClanType type)
+        public byte MaxMembers(EClanType type)
         {
             byte val = 0;
             switch (type)
             {
-                case e_ClanType.CLAN_ACADEMY:
-                case e_ClanType.CLAN_KNIGHT1:
-                case e_ClanType.CLAN_KNIGHT2:
+                case EClanType.ClanAcademy:
+                case EClanType.ClanKnight1:
+                case EClanType.ClanKnight2:
                     val = 20;
                     break;
-                case e_ClanType.CLAN_KNIGHT3:
-                case e_ClanType.CLAN_KNIGHT4:
-                case e_ClanType.CLAN_KNIGHT5:
-                case e_ClanType.CLAN_KNIGHT6:
+                case EClanType.ClanKnight3:
+                case EClanType.ClanKnight4:
+                case EClanType.ClanKnight5:
+                case EClanType.ClanKnight6:
                     val = 10;
                     break;
-                case e_ClanType.CLAN_MAIN:
+                case EClanType.ClanMain:
                     switch (Level)
                     {
                         case 0:
@@ -329,29 +329,29 @@ namespace L2dotNET.GameService.Model.Communities
 
         public void Leave(L2Player player)
         {
-            if (player.ObjId == LeaderID)
+            if (player.ObjId == LeaderId)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CLAN_LEADER_CANNOT_WITHDRAW);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ClanLeaderCannotWithdraw);
                 return;
             }
 
-            e_ClanType type = isSubLeader(player.ObjId, new[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2, e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 });
-            if (type != e_ClanType.None)
-                if (getClanMemberCount(type, player.ObjId) > 0)
+            EClanType type = IsSubLeader(player.ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2, EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 });
+            if (type != EClanType.None)
+                if (GetClanMemberCount(type, player.ObjId) > 0)
                 {
                     player.SendMessage("You are leader of clan sub unit, and while there some members - you cant leave them.");
                     return;
                 }
 
-            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_HAS_WITHDRAWN_FROM_THE_CLAN);
+            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1HasWithdrawnFromTheClan);
             sm.AddPlayerName(player.Name);
-            broadcastToOnline(sm);
+            BroadcastToOnline(sm);
 
-            foreach (ClanMember cm in members.Where(cm => cm.ObjID == player.ObjId))
+            foreach (ClanMember cm in Members.Where(cm => cm.ObjId == player.ObjId))
             {
-                lock (members)
+                lock (Members)
                 {
-                    members.Remove(cm);
+                    Members.Remove(cm);
                 }
 
                 break;
@@ -363,49 +363,49 @@ namespace L2dotNET.GameService.Model.Communities
             player.ClanType = 0;
 
             player.Title = "";
-            player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_HAVE_WITHDRAWN_FROM_CLAN);
+            player.SendSystemMessage(SystemMessage.SystemMessageId.YouHaveWithdrawnFromClan);
             player.SendPacket(new PledgeShowMemberListDeleteAll());
             player.BroadcastUserInfo();
 
             player.setPenalty_ClanJoin(DateTime.Now.AddHours(24), false);
-            player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_MUST_WAIT_BEFORE_JOINING_ANOTHER_CLAN);
+            player.SendSystemMessage(SystemMessage.SystemMessageId.YouMustWaitBeforeJoiningAnotherClan);
 
             // player.updateDb();
         }
 
-        private void broadcastToOnline(GameServerNetworkPacket p)
+        private void BroadcastToOnline(GameServerNetworkPacket p)
         {
-            foreach (ClanMember cm in members.Where(cm => cm.online == 1))
+            foreach (ClanMember cm in Members.Where(cm => cm.Online == 1))
                 cm.Target.SendPacket(p);
         }
 
-        public byte getClanMemberCount(e_ClanType type, int myself)
+        public byte GetClanMemberCount(EClanType type, int myself)
         {
-            return (byte)members.Count(cm => (cm.ClanType == (short)type) && ((myself == 0) || (myself != cm.ObjID)));
+            return (byte)Members.Count(cm => (cm.ClanType == (short)type) && ((myself == 0) || (myself != cm.ObjId)));
         }
 
-        public List<ClanMember> getClanMembers(e_ClanType type, int myself)
+        public List<ClanMember> GetClanMembers(EClanType type, int myself)
         {
-            return members.Where(cm => (cm.ClanType == (short)type) && ((myself == 0) || (myself != cm.ObjID))).ToList();
+            return Members.Where(cm => (cm.ClanType == (short)type) && ((myself == 0) || (myself != cm.ObjId))).ToList();
         }
 
-        public List<e_ClanSub> getAllSubs()
+        public List<EClanSub> GetAllSubs()
         {
-            List<e_ClanSub> subs = new List<e_ClanSub>();
+            List<EClanSub> subs = new List<EClanSub>();
             if (Academy != null)
                 subs.Add(Academy);
-            if (Knights_1 != null)
-                subs.Add(Knights_1);
-            if (Knights_2 != null)
-                subs.Add(Knights_2);
-            if (Knights_1_Order1 != null)
-                subs.Add(Knights_1_Order1);
-            if (Knights_1_Order2 != null)
-                subs.Add(Knights_1_Order2);
-            if (Knights_2_Order1 != null)
-                subs.Add(Knights_2_Order1);
-            if (Knights_2_Order2 != null)
-                subs.Add(Knights_2_Order2);
+            if (Knights1 != null)
+                subs.Add(Knights1);
+            if (Knights2 != null)
+                subs.Add(Knights2);
+            if (Knights1Order1 != null)
+                subs.Add(Knights1Order1);
+            if (Knights1Order2 != null)
+                subs.Add(Knights1Order2);
+            if (Knights2Order1 != null)
+                subs.Add(Knights2Order1);
+            if (Knights2Order2 != null)
+                subs.Add(Knights2Order2);
 
             return subs;
         }
@@ -417,10 +417,10 @@ namespace L2dotNET.GameService.Model.Communities
 
         public bool DominionLord()
         {
-            return CastleID > 0; //TODO dom winner
+            return CastleId > 0; //TODO dom winner
         }
 
-        public bool hasRights(L2Player player, int bits)
+        public bool HasRights(L2Player player, int bits)
         {
             //TODO rights
             return false;

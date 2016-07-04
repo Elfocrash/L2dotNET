@@ -9,11 +9,11 @@
             _id = id;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x12);
-            writeD(_id);
-            writeD(0);
+            WriteC(0x12);
+            WriteD(_id);
+            WriteD(0);
         }
     }
 }

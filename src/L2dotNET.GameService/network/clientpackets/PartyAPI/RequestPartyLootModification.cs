@@ -4,19 +4,19 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 {
     class RequestPartyLootModification : GameServerNetworkRequest
     {
-        private byte mode;
+        private byte _mode;
 
         public RequestPartyLootModification(GameClient client, byte[] data)
         {
-            makeme(client, data, 2);
+            Makeme(client, data, 2);
         }
 
-        public override void read()
+        public override void Read()
         {
-            mode = (byte)readD();
+            _mode = (byte)ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -26,13 +26,13 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
                 return;
             }
 
-            if ((mode < player.Party.ITEM_LOOTER) || (mode > player.Party.ITEM_ORDER_SPOIL) || (mode == player.Party.itemDistribution) || (player.Party.leader.ObjId != player.ObjId))
+            if ((_mode < player.Party.ItemLooter) || (_mode > player.Party.ItemOrderSpoil) || (_mode == player.Party.ItemDistribution) || (player.Party.Leader.ObjId != player.ObjId))
             {
                 player.SendActionFailed();
                 return;
             }
 
-            player.Party.VoteForLootChange(mode);
+            player.Party.VoteForLootChange(_mode);
         }
     }
 }

@@ -10,26 +10,26 @@ namespace L2dotNET.GameService.Network
 {
     class NetworkBlock
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(NetworkBlock));
-        private static volatile NetworkBlock instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(NetworkBlock));
+        private static volatile NetworkBlock _instance;
+        private static readonly object SyncRoot = new object();
 
         public static NetworkBlock Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new NetworkBlock();
+                        if (_instance == null)
+                            _instance = new NetworkBlock();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
-        protected List<NetworkBlockModel> blocks = new List<NetworkBlockModel>();
+        protected List<NetworkBlockModel> Blocks = new List<NetworkBlockModel>();
 
         public NetworkBlock() { }
 
@@ -51,27 +51,27 @@ namespace L2dotNET.GameService.Network
                         NetworkBlockModel nbModel = new NetworkBlockModel();
                         nbModel.DirectIp = line.Split(' ')[1];
                         nbModel.Permanent = line.Split(' ')[2].EqualsIgnoreCase("0");
-                        blocks.Add(nbModel);
+                        Blocks.Add(nbModel);
                     }
                     else if (line.StartsWithIgnoreCase("m"))
                     {
                         NetworkBlockModel nbModel = new NetworkBlockModel();
                         nbModel.Mask = line.Split(' ')[1];
                         nbModel.Permanent = line.Split(' ')[2].EqualsIgnoreCase("0");
-                        blocks.Add(nbModel);
+                        Blocks.Add(nbModel);
                     }
                 }
             }
 
-            log.Info($"NetworkBlock: {blocks.Count} blocks.");
+            Log.Info($"NetworkBlock: {Blocks.Count} blocks.");
         }
 
         public bool Allowed(string ip)
         {
-            if (blocks.Count == 0)
+            if (Blocks.Count == 0)
                 return true;
 
-            foreach (NetworkBlockModel nbi in blocks)
+            foreach (NetworkBlockModel nbi in Blocks)
             {
                 if (nbi.DirectIp != null)
                     if (nbi.DirectIp.Equals(ip))

@@ -1,13 +1,13 @@
 namespace L2dotNET.GameService.Tables.Admin_Bypass
 {
-    public class ab_teleport_entry
+    public class AbTeleportEntry
     {
-        public string name;
-        public int x;
-        public int y;
-        public int z;
-        public int id;
-        public int cost = 0;
-        public int itemId = 57;
+        public string Name;
+        public int X;
+        public int Y;
+        public int Z;
+        public int Id;
+        public int Cost = 0;
+        public int ItemId = 57;
     }
 }

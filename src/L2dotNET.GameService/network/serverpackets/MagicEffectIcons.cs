@@ -6,20 +6,20 @@ namespace L2dotNET.GameService.Network.Serverpackets
     {
         private readonly List<int[]> _timers = new List<int[]>();
 
-        public void addIcon(int id, int lvl, int duration)
+        public void AddIcon(int id, int lvl, int duration)
         {
             _timers.Add(new[] { id, lvl, duration });
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x85);
-            writeH((short)_timers.Count);
+            WriteC(0x85);
+            WriteH((short)_timers.Count);
 
             foreach (int[] f in _timers)
             {
-                writeD(f[0]); //id
-                writeH((short)f[1]); //lvl
+                WriteD(f[0]); //id
+                WriteH((short)f[1]); //lvl
 
                 int duration = f[2];
 
@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 if ((f[0] >= 5123) && (f[0] <= 5129))
                     duration = -1;
 
-                writeD(duration);
+                WriteD(duration);
             }
         }
     }

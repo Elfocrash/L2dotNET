@@ -4,27 +4,27 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestRestartPoint : GameServerNetworkRequest
     {
-        private int type;
-        private int keyItem = -1;
+        private int _type;
+        private int _keyItem = -1;
 
         public RequestRestartPoint(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            type = readD();
+            _type = ReadD();
 
-            if (type == 22)
-                keyItem = readD();
+            if (_type == 22)
+                _keyItem = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
-            switch (type)
+            switch (_type)
             {
                 case 0: //village
                     break;

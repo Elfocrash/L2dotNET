@@ -3,15 +3,15 @@ using L2dotNET.GameService.Tables;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExBuySellList_Buy : GameServerNetworkPacket
+    class ExBuySellListBuy : GameServerNetworkPacket
     {
-        private readonly ND_shopList _shop;
+        private readonly NdShopList _shop;
         private readonly long _adena;
         private readonly double _mod;
         private readonly double _tax;
         private readonly int _shopId;
 
-        public ExBuySellList_Buy(L2Player player, ND_shopList shop, double mod, double tax, int shopId)
+        public ExBuySellListBuy(L2Player player, NdShopList shop, double mod, double tax, int shopId)
         {
             _shop = shop;
             _adena = player.GetAdena();
@@ -20,58 +20,58 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _shopId = shopId;
         }
 
-        public ExBuySellList_Buy(long adena)
+        public ExBuySellListBuy(long adena)
         {
             _adena = adena;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0xB7);
-            writeD(0);
-            writeQ(_adena);
-            writeD(_shopId);
+            WriteC(0xFE);
+            WriteH(0xB7);
+            WriteD(0);
+            WriteQ(_adena);
+            WriteD(_shopId);
 
             if (_shop == null)
             {
-                writeH(0);
+                WriteH(0);
                 return;
             }
 
-            writeH(_shop.items.Count);
-            foreach (ND_shopItem si in _shop.items)
+            WriteH(_shop.Items.Count);
+            foreach (NdShopItem si in _shop.Items)
             {
-                writeD(0); //objectId
-                writeD(si.item.ItemID);
-                writeD(0);
-                writeQ(si.count < 0 ? 0 : si.count);
-                writeH(si.item.Type2());
-                writeH(0);
-                writeH(0);
-                writeD(si.item.BodyPartId());
+                WriteD(0); //objectId
+                WriteD(si.Item.ItemId);
+                WriteD(0);
+                WriteQ(si.Count < 0 ? 0 : si.Count);
+                WriteH(si.Item.Type2());
+                WriteH(0);
+                WriteH(0);
+                WriteD(si.Item.BodyPartId());
 
-                writeH(0);
-                writeH(0);
-                writeD(0);
-                writeD(si.item.Durability);
-                writeD(-9999);
+                WriteH(0);
+                WriteH(0);
+                WriteD(0);
+                WriteD(si.Item.Durability);
+                WriteD(-9999);
 
-                writeH(si.item.BaseAttrAttackType);
-                writeH(si.item.BaseAttrAttackValue);
-                writeH(si.item.BaseAttrDefenseValueFire);
-                writeH(si.item.BaseAttrDefenseValueWater);
-                writeH(si.item.BaseAttrDefenseValueWind);
-                writeH(si.item.BaseAttrDefenseValueEarth);
-                writeH(si.item.BaseAttrDefenseValueHoly);
-                writeH(si.item.BaseAttrDefenseValueUnholy);
+                WriteH(si.Item.BaseAttrAttackType);
+                WriteH(si.Item.BaseAttrAttackValue);
+                WriteH(si.Item.BaseAttrDefenseValueFire);
+                WriteH(si.Item.BaseAttrDefenseValueWater);
+                WriteH(si.Item.BaseAttrDefenseValueWind);
+                WriteH(si.Item.BaseAttrDefenseValueEarth);
+                WriteH(si.Item.BaseAttrDefenseValueHoly);
+                WriteH(si.Item.BaseAttrDefenseValueUnholy);
 
                 // Enchant Effects
-                writeH(0x00);
-                writeH(0x00);
-                writeH(0x00);
+                WriteH(0x00);
+                WriteH(0x00);
+                WriteH(0x00);
 
-                writeQ((long)(si.item.Price * _mod * _tax));
+                WriteQ((long)(si.Item.Price * _mod * _tax));
             }
         }
     }

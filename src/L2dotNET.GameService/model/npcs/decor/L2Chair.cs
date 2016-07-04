@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
     {
         public L2Chair()
         {
-            ObjId = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.NextId();
             Closed = 0;
             MaxHp = 0;
             CurHp = 0;
@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
 
         public override string AsString()
         {
-            return "L2Chair:" + ObjId + " " + StaticID + " " + ClanID;
+            return "L2Chair:" + ObjId + " " + StaticId + " " + ClanID;
         }
     }
 }

@@ -2,11 +2,11 @@
 
 namespace L2dotNET.GameService.Model.Npcs.Ai
 {
-    class grandmaster_total
+    class GrandmasterTotal
     {
-        public static void createClan(L2Player player, string name, L2Npc npc) { }
+        public static void CreateClan(L2Player player, string name, L2Npc npc) { }
 
-        public static void onReply(L2Player player, int reply, L2Npc npc)
+        public static void OnReply(L2Player player, int reply, L2Npc npc)
         {
             switch (reply)
             {
@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
                     if (player.Clan != null)
                     {
-                        if (player.Clan.LeaderID == player.ObjId)
+                        if (player.Clan.LeaderId == player.ObjId)
                             player.ShowHtm("pl003.htm", npc);
                         else
                             player.ShowHtm("pl004.htm", npc);

@@ -4,33 +4,33 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class ChangeWaitType : GameServerNetworkPacket
     {
-        private readonly int sId;
-        private readonly int type;
-        private readonly int x;
-        private readonly int y;
-        private readonly int z;
-        public static int SIT = 0;
-        public static int STAND = 1;
-        public static int FAKE = 2;
-        public static int FAKE_STOP = 3;
+        private readonly int _sId;
+        private readonly int _type;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
+        public static int Sit = 0;
+        public static int Stand = 1;
+        public static int Fake = 2;
+        public static int FakeStop = 3;
 
         public ChangeWaitType(L2Player player, int type)
         {
-            sId = player.ObjId;
-            x = player.X;
-            y = player.Y;
-            z = player.Z;
-            this.type = type;
+            _sId = player.ObjId;
+            _x = player.X;
+            _y = player.Y;
+            _z = player.Z;
+            this._type = type;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x2f);
-            writeD(sId);
-            writeD(type);
-            writeD(x);
-            writeD(y);
-            writeD(z);
+            WriteC(0x2f);
+            WriteD(_sId);
+            WriteD(_type);
+            WriteD(_x);
+            WriteD(_y);
+            WriteD(_z);
         }
     }
 }

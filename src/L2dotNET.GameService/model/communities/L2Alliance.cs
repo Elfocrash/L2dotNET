@@ -2,9 +2,9 @@
 {
     public class L2Alliance
     {
-        public int ID;
+        public int Id;
         public string Name;
-        public int CrestID;
-        public int LeaderID;
+        public int CrestId;
+        public int LeaderId;
     }
 }

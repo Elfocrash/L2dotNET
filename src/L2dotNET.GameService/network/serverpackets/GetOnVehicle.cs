@@ -4,21 +4,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class GetOnVehicle : GameServerNetworkPacket
     {
-        private readonly L2Player player;
+        private readonly L2Player _player;
 
         public GetOnVehicle(L2Player player)
         {
-            this.player = player;
+            this._player = player;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x5C);
-            writeD(player.ObjId);
-            writeD(player.Boat.ObjId);
-            writeD(player.BoatX);
-            writeD(player.BoatY);
-            writeD(player.BoatZ);
+            WriteC(0x5C);
+            WriteD(_player.ObjId);
+            WriteD(_player.Boat.ObjId);
+            WriteD(_player.BoatX);
+            WriteD(_player.BoatY);
+            WriteD(_player.BoatZ);
         }
     }
 }

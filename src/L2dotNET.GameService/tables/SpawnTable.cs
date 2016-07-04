@@ -11,22 +11,22 @@ namespace L2dotNET.GameService.Tables
 {
     public class SpawnTable
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(SpawnTable));
-        private static volatile SpawnTable instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(SpawnTable));
+        private static volatile SpawnTable _instance;
+        private static readonly object SyncRoot = new object();
 
         public static SpawnTable Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new SpawnTable();
+                        if (_instance == null)
+                            _instance = new SpawnTable();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
@@ -35,15 +35,13 @@ namespace L2dotNET.GameService.Tables
             foreach (string path in Directory.EnumerateFiles(@"scripts\spawn\", "*.xml"))
                 Read(path);
 
-            log.Info("SpawnTable: Created " + territorries.Count + " territories with " + npcs + " monsters.");
+            Log.Info("SpawnTable: Created " + Territorries.Count + " territories with " + _npcs + " monsters.");
         }
 
-        public readonly SortedList<string, L2Territory> territorries = new SortedList<string, L2Territory>();
+        public readonly SortedList<string, L2Territory> Territorries = new SortedList<string, L2Territory>();
         public readonly List<L2Spawn> Spawns = new List<L2Spawn>();
 
-        public SpawnTable() { }
-
-        private long npcs;
+        private long _npcs;
 
         public void Read(string path)
         {
@@ -54,9 +52,9 @@ namespace L2dotNET.GameService.Tables
                     if (m.Name == "territory")
                     {
                         L2Territory zone = new L2Territory();
-                        zone.name = m.Attribute("name").Value;
-                        zone.controller = m.Attribute("controller").Value;
-                        zone.start_active = bool.Parse(m.Attribute("start_active").Value);
+                        zone.Name = m.Attribute("name").Value;
+                        zone.Controller = m.Attribute("controller").Value;
+                        zone.StartActive = bool.Parse(m.Attribute("start_active").Value);
 
                         foreach (XElement stp in m.Elements())
                             switch (stp.Name.LocalName)
@@ -67,7 +65,7 @@ namespace L2dotNET.GameService.Tables
                                     if (stp.Attribute("pos") != null)
                                         pos = stp.Attribute("pos").Value;
                                     zone.AddNpc(Convert.ToInt32(stp.Attribute("id").Value), cnt, stp.Attribute("respawn").Value, pos);
-                                    npcs += cnt;
+                                    _npcs += cnt;
                                     break;
                                 case "zone":
                                     zone.AddPoint(stp.Attribute("loc").Value.Split(' '));
@@ -75,10 +73,10 @@ namespace L2dotNET.GameService.Tables
                             }
 
                         zone.InitZone(); //создаем зону
-                        if (territorries.ContainsKey(zone.name))
-                            log.Info($"duplicate zone name {zone.name}");
+                        if (Territorries.ContainsKey(zone.Name))
+                            Log.Info($"duplicate zone name {zone.Name}");
                         else
-                            territorries.Add(zone.name, zone);
+                            Territorries.Add(zone.Name, zone);
                     }
                     else if (m.Name == "spawn")
                     {
@@ -100,17 +98,17 @@ namespace L2dotNET.GameService.Tables
 
                                     Spawns.Add(new L2Spawn(Convert.ToInt32(stp.Attribute("id").Value), value, stp.Attribute("pos").Value.Split(' ')));
                                 }
-                                    npcs++;
+                                    _npcs++;
                                     break;
                             }
                     }
         }
 
-        private const bool nospawn = true;
+        private const bool Nospawn = true;
 
         public void Spawn()
         {
-            log.Info("NpcServer spawn init.");
+            Log.Info("NpcServer spawn init.");
             //if (nospawn)
             //{
             //    log.Info("NpcServer spawn done (blocked).");
@@ -118,22 +116,22 @@ namespace L2dotNET.GameService.Tables
             //}
 
             long sp = 0;
-            foreach (L2Territory t in territorries.Values)
+            foreach (L2Territory t in Territorries.Values)
             {
-                sp += t.spawns.Count;
+                sp += t.Spawns.Count;
                 t.Spawn();
             }
 
             sp += Spawns.Count;
             foreach (L2Spawn s in Spawns)
-                s.init();
+                s.Init();
 
-            log.Info("NpcServer spawn done, #" + sp + " npcs.");
+            Log.Info("NpcServer spawn done, #" + sp + " npcs.");
         }
 
         public void SunRise(bool y)
         {
-            foreach (L2Territory t in territorries.Values)
+            foreach (L2Territory t in Territorries.Values)
                 t.SunRise(y);
 
             foreach (L2Spawn s in Spawns)

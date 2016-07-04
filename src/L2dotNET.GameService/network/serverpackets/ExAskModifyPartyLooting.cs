@@ -2,21 +2,21 @@
 {
     class ExAskModifyPartyLooting : GameServerNetworkPacket
     {
-        private readonly string leader;
-        private readonly byte mode;
+        private readonly string _leader;
+        private readonly byte _mode;
 
         public ExAskModifyPartyLooting(string leader, byte mode)
         {
-            this.leader = leader;
-            this.mode = mode;
+            this._leader = leader;
+            this._mode = mode;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0xBE);
-            writeS(leader);
-            writeD(mode);
+            WriteC(0xFE);
+            WriteH(0xBE);
+            WriteS(_leader);
+            WriteD(_mode);
         }
     }
 }

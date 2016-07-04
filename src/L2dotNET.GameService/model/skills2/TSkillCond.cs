@@ -2,15 +2,15 @@
 
 namespace L2dotNET.GameService.Model.Skills2
 {
-    public class TSkillCond
+    public class SkillCond
     {
-        public sbyte retcode = -1;
+        public sbyte Retcode = -1;
 
-        public virtual bool CanUse(L2Player player, TSkill skill)
+        public virtual bool CanUse(L2Player player, Skill skill)
         {
             return true;
         }
 
-        public virtual void build(string str) { }
+        public virtual void Build(string str) { }
     }
 }

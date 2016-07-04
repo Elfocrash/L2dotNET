@@ -52,8 +52,8 @@ namespace L2dotNET.GameService.AI.NpcAI
                             NpcData.Instance.Buylist(talker, Myself, 7);
                             break;
                         case 8:
-                            talker.SendPacket(new ExBuySellList_Buy(talker.GetAdena()));
-                            talker.SendPacket(new ExBuySellList_Sell(talker));
+                            talker.SendPacket(new ExBuySellListBuy(talker.GetAdena()));
+                            talker.SendPacket(new ExBuySellListSell(talker));
                             break;
                     }
 

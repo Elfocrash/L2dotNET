@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Model.Inventory
 {
     public class PetInventory : Inventory
     {
-        public PetInventory(L2Character owner)
+        public PetInventory(L2Character owner) : base(owner)
         {
             Owner = owner;
         }

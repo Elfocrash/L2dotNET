@@ -9,10 +9,10 @@
             _id = id;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x49);
-            writeD(_id);
+            WriteC(0x49);
+            WriteD(_id);
         }
     }
 }

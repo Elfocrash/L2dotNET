@@ -2,24 +2,24 @@
 {
     class StopRotation : GameServerNetworkPacket
     {
-        private readonly int sId;
-        private readonly int degree;
-        private readonly int speed;
+        private readonly int _sId;
+        private readonly int _degree;
+        private readonly int _speed;
 
         public StopRotation(int sId, int degree, int speed)
         {
-            this.sId = sId;
-            this.degree = degree;
-            this.speed = speed;
+            this._sId = sId;
+            this._degree = degree;
+            this._speed = speed;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x63);
-            writeD(sId);
-            writeD(degree);
-            writeD(speed);
-            writeC(degree);
+            WriteC(0x63);
+            WriteD(_sId);
+            WriteD(_degree);
+            WriteD(_speed);
+            WriteC(_degree);
         }
     }
 }

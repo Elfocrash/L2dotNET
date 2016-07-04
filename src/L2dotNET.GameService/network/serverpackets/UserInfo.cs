@@ -7,196 +7,196 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class UserInfo : GameServerNetworkPacket
     {
-        private readonly L2Player player;
+        private readonly L2Player _player;
 
         public UserInfo(L2Player player)
         {
-            this.player = player;
+            this._player = player;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x04);
+            WriteC(0x04);
 
-            writeD(player.X);
-            writeD(player.Y);
-            writeD(player.Z);
-            writeD(player.Heading);
-            writeD(player.ObjId);
+            WriteD(_player.X);
+            WriteD(_player.Y);
+            WriteD(_player.Z);
+            WriteD(_player.Heading);
+            WriteD(_player.ObjId);
 
-            writeS(player.Name);
+            WriteS(_player.Name);
 
-            writeD((int)player.BaseClass.ClassId.ClassRace);
-            writeD(player.Sex);
-            writeD((int)player.BaseClass.ClassId.Id);
-            writeD(player.Level);
-            writeQ(player.Exp);
+            WriteD((int)_player.BaseClass.ClassId.ClassRace);
+            WriteD(_player.Sex);
+            WriteD((int)_player.BaseClass.ClassId.Id);
+            WriteD(_player.Level);
+            WriteQ(_player.Exp);
 
-            writeD(player.STR);
-            writeD(player.DEX);
-            writeD(player.CON);
-            writeD(player.INT);
-            writeD(player.WIT);
-            writeD(player.MEN);
+            WriteD(_player.Str);
+            WriteD(_player.Dex);
+            WriteD(_player.Con);
+            WriteD(_player.Int);
+            WriteD(_player.Wit);
+            WriteD(_player.Men);
 
-            writeD(player.CurHp); //max hp
-            writeD(player.CurHp);
-            writeD(player.CurMp); //max mp
-            writeD(player.CurMp);
-            writeD(player.SP);
-            writeD(player.CurrentWeight);
-            writeD(player.CharacterStat.getStat(TEffectType.b_max_weight));
+            WriteD(_player.CurHp); //max hp
+            WriteD(_player.CurHp);
+            WriteD(_player.CurMp); //max mp
+            WriteD(_player.CurMp);
+            WriteD(_player.Sp);
+            WriteD(_player.CurrentWeight);
+            WriteD(_player.CharacterStat.GetStat(EffectType.BMaxWeight));
 
-            writeD(player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand) != null ? 40 : 20); // 20 no weapon, 40 weapon equipped
+            WriteD(_player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand) != null ? 40 : 20); // 20 no weapon, 40 weapon equipped
 
             for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
             {
-                int result = player.Inventory.Paperdoll[id].Template.ItemID;
-                writeD(result);
+                int result = _player.Inventory.Paperdoll[id].Template.ItemId;
+                WriteD(result);
             }
 
             for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
             {
-                int result = player.Inventory.Paperdoll[id].Template.ItemID;
-                writeD(result);
+                int result = _player.Inventory.Paperdoll[id].Template.ItemId;
+                WriteD(result);
             }
 
             // c6 new h's
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeD(0x00);//player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeD(0x00);//player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
-            writeH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteD(0x00);//player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteD(0x00);//player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
+            WriteH(0x00);
 
-            double atkspd = player.CharacterStat.getStat(TEffectType.b_attack_spd);
-            writeD(player.CharacterStat.getStat(TEffectType.p_physical_attack));
-            writeD(atkspd);
-            writeD(player.CharacterStat.getStat(TEffectType.p_physical_defense));
-            writeD(player.CharacterStat.getStat(TEffectType.b_evasion));
-            writeD(player.CharacterStat.getStat(TEffectType.b_accuracy));
-            writeD(player.CharacterStat.getStat(TEffectType.b_critical_rate));
-            writeD(player.CharacterStat.getStat(TEffectType.p_magical_attack));
-            writeD(player.CharacterStat.getStat(TEffectType.b_casting_spd));
-            writeD(atkspd); //? еще раз?
-            writeD(player.CharacterStat.getStat(TEffectType.p_magical_defense));
+            double atkspd = _player.CharacterStat.GetStat(EffectType.BAttackSpd);
+            WriteD(_player.CharacterStat.GetStat(EffectType.PPhysicalAttack));
+            WriteD(atkspd);
+            WriteD(_player.CharacterStat.GetStat(EffectType.PPhysicalDefense));
+            WriteD(_player.CharacterStat.GetStat(EffectType.BEvasion));
+            WriteD(_player.CharacterStat.GetStat(EffectType.BAccuracy));
+            WriteD(_player.CharacterStat.GetStat(EffectType.BCriticalRate));
+            WriteD(_player.CharacterStat.GetStat(EffectType.PMagicalAttack));
+            WriteD(_player.CharacterStat.GetStat(EffectType.BCastingSpd));
+            WriteD(atkspd); //? еще раз?
+            WriteD(_player.CharacterStat.GetStat(EffectType.PMagicalDefense));
 
-            writeD(player.PvPStatus);
-            writeD(player.Karma);
+            WriteD(_player.PvPStatus);
+            WriteD(_player.Karma);
 
-            double spd = player.CharacterStat.getStat(TEffectType.p_speed);
+            double spd = _player.CharacterStat.GetStat(EffectType.PSpeed);
 
             double anim = spd * 1f / 130;
             //double anim2 = (1.1) * atkspd / 300;
             double runSpd = spd / anim;
             double walkSpd = spd * .8 / anim;
 
-            writeD(runSpd);
-            writeD(walkSpd);
-            writeD(50); // swimspeed
-            writeD(50); // swimspeed
-            writeD(0); //?
-            writeD(0); //?
-            writeD(runSpd); //fly run
-            writeD(walkSpd); //fly walk ?
-            writeF(1); //run speed multiplier
-            writeF(1); //atk speed multiplier
+            WriteD(runSpd);
+            WriteD(walkSpd);
+            WriteD(50); // swimspeed
+            WriteD(50); // swimspeed
+            WriteD(0); //?
+            WriteD(0); //?
+            WriteD(runSpd); //fly run
+            WriteD(walkSpd); //fly walk ?
+            WriteF(1); //run speed multiplier
+            WriteF(1); //atk speed multiplier
 
-            writeF(player.Radius);
-            writeF(player.Height);
+            WriteF(_player.Radius);
+            WriteF(_player.Height);
 
-            writeD(player.HairStyle);
-            writeD(player.HairColor);
-            writeD(player.Face);
-            writeD(player.Builder);
+            WriteD(_player.HairStyle);
+            WriteD(_player.HairColor);
+            WriteD(_player.Face);
+            WriteD(_player.Builder);
 
-            writeS(player.Title);
+            WriteS(_player.Title);
 
-            writeD(player.ClanId);
-            writeD(player.ClanCrestId);
-            writeD(player.AllianceId);
-            writeD(player.AllianceCrestId);
+            WriteD(_player.ClanId);
+            WriteD(_player.ClanCrestId);
+            WriteD(_player.AllianceId);
+            WriteD(_player.AllianceCrestId);
 
-            writeD(player.sstt); //_relation
-            writeC(player.MountType);
-            writeC(player.getPrivateStoreType()); //
-            writeC(player.p_create_item > 0 ? 1 : 0);
-            writeD(player.PkKills);
-            writeD(player.PvpKills);
+            WriteD(_player.Sstt); //_relation
+            WriteC(_player.MountType);
+            WriteC(_player.GetPrivateStoreType()); //
+            WriteC(_player.PCreateItem > 0 ? 1 : 0);
+            WriteD(_player.PkKills);
+            WriteD(_player.PvpKills);
 
-            writeH(player.cubics.Count);
-            foreach (Cubic cub in player.cubics)
-                writeH(cub.template.id);
+            WriteH(_player.Cubics.Count);
+            foreach (Cubic cub in _player.Cubics)
+                WriteH(cub.Template.Id);
 
-            writeC(0); //1-isInPartyMatchRoom
+            WriteC(0); //1-isInPartyMatchRoom
 
-            writeD(player.AbnormalBitMask);
+            WriteD(_player.AbnormalBitMask);
 
             //byte flymode = 0;
 
             //if (player.TransformID > 0)
             //    flymode = player.Transform.Template.MoveMode;
 
-            writeC(0x00);
+            WriteC(0x00);
 
-            writeD(player.ClanPrivs);
+            WriteD(_player.ClanPrivs);
 
-            writeH(player.RecHave); //c2  recommendations remaining
-            writeH(player.RecLeft); //c2  recommendations received
-            writeD(player.MountType > 0 ? player.MountedTemplate.NpcId + 1000000 : 0); //moun t npcid
-            writeH(player.ItemLimit_Inventory);
+            WriteH(_player.RecHave); //c2  recommendations remaining
+            WriteH(_player.RecLeft); //c2  recommendations received
+            WriteD(_player.MountType > 0 ? _player.MountedTemplate.NpcId + 1000000 : 0); //moun t npcid
+            WriteH(_player.ItemLimitInventory);
 
-            writeD((int)player.ActiveClass.ClassId.Id);
-            writeD(0); // special effects? circles around player...
-            writeD(player.CurCp); //max cp
-            writeD(player.CurCp);
-            writeC(player.GetEnchantValue());
-            writeC(player.TeamId);
-            writeD(player.getClanCrestLargeId());
-            writeC(player.Noblesse);
+            WriteD((int)_player.ActiveClass.ClassId.Id);
+            WriteD(0); // special effects? circles around player...
+            WriteD(_player.CurCp); //max cp
+            WriteD(_player.CurCp);
+            WriteC(_player.GetEnchantValue());
+            WriteC(_player.TeamId);
+            WriteD(_player.GetClanCrestLargeId());
+            WriteC(_player.Noblesse);
 
-            byte hero = player.Heroic;
-            writeC(hero);
+            byte hero = _player.Heroic;
+            WriteC(hero);
 
-            writeC(player.isFishing() ? 0x01 : 0x00); //Fishing Mode
-            writeD(player.GetFishx()); //fishing x
-            writeD(player.GetFishy()); //fishing y
-            writeD(player.GetFishz()); //fishing z
-            writeD(player.getNameColor());
+            WriteC(_player.IsFishing() ? 0x01 : 0x00); //Fishing Mode
+            WriteD(_player.GetFishx()); //fishing x
+            WriteD(_player.GetFishy()); //fishing y
+            WriteD(_player.GetFishz()); //fishing z
+            WriteD(_player.GetNameColor());
 
-            writeC(player.IsRunning);
+            WriteC(_player.IsRunning);
 
-            writeD(player.ClanRank());
-            writeD(player.ClanType);
+            WriteD(_player.ClanRank());
+            WriteD(_player.ClanType);
 
-            writeD(player.getTitleColor());
-            writeD(player.CursedWeaponLevel);
+            WriteD(_player.GetTitleColor());
+            WriteD(_player.CursedWeaponLevel);
         }
     }
 }

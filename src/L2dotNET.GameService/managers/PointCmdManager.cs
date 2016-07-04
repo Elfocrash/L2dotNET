@@ -4,14 +4,14 @@ namespace L2dotNET.GameService.Managers
 {
     public class PointCmdManager
     {
-        private static readonly PointCmdManager m = new PointCmdManager();
+        private static readonly PointCmdManager M = new PointCmdManager();
 
-        public static PointCmdManager getInstance()
+        public static PointCmdManager GetInstance()
         {
-            return m;
+            return M;
         }
 
-        public bool pointed(L2Player player, string text)
+        public bool Pointed(L2Player player, string text)
         {
             text = text.Substring(1);
 

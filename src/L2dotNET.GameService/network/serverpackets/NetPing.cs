@@ -2,17 +2,17 @@
 {
     class NetPing : GameServerNetworkPacket
     {
-        private readonly int request;
+        private readonly int _request;
 
         public NetPing(int request)
         {
-            this.request = request;
+            this._request = request;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xd9);
-            writeD(request);
+            WriteC(0xd9);
+            WriteD(_request);
         }
     }
 }

@@ -21,60 +21,60 @@ namespace L2dotNET.GameService.Commands.Admin
             }
 
             L2Player target = (L2Player)admin.CurrentTarget;
-            TAcquireSkillsEntry skills = TSkillTable.Instance.GetAllRegularSkills(target.ActiveClass.ClassId.Id);
+            AcquireSkillsEntry skills = SkillTable.Instance.GetAllRegularSkills(target.ActiveClass.ClassId.Id);
 
-            SortedList<int, TAcquireSkill> avail = new SortedList<int, TAcquireSkill>();
+            SortedList<int, AcquireSkill> avail = new SortedList<int, AcquireSkill>();
             Dictionary<int, int> updDel = new Dictionary<int, int>();
 
             int nextLvl = 800;
-            foreach (TAcquireSkill e in skills.skills)
+            foreach (AcquireSkill e in skills.Skills)
             {
-                if (e.get_lv > target.Level)
+                if (e.GetLv > target.Level)
                 {
-                    if (nextLvl > e.get_lv)
-                        nextLvl = e.get_lv;
+                    if (nextLvl > e.GetLv)
+                        nextLvl = e.GetLv;
                     continue;
                 }
 
-                if (avail.ContainsKey(e.id))
+                if (avail.ContainsKey(e.Id))
                     continue;
 
-                if (target.Skills.ContainsKey(e.id))
+                if (target.Skills.ContainsKey(e.Id))
                 {
-                    TSkill skill = target.Skills[e.id];
+                    Skill skill = target.Skills[e.Id];
 
-                    if (skill.level >= e.lv)
+                    if (skill.Level >= e.Lv)
                         continue;
 
-                    if (!avail.ContainsKey(e.id))
+                    if (!avail.ContainsKey(e.Id))
                     {
-                        avail.Add(e.id, e);
-                        updDel.Add(e.id, e.lv);
+                        avail.Add(e.Id, e);
+                        updDel.Add(e.Id, e.Lv);
                         break;
                     }
                 }
                 else
-                    avail.Add(e.id, e);
+                    avail.Add(e.Id, e);
             }
 
             //foreach (int a in updDel.Keys)
             //    target.removeSkill(a, true, false);
             //updDel.Clear();
 
-            foreach (TAcquireSkill sk in avail.Values)
+            foreach (AcquireSkill sk in avail.Values)
             {
-                TSkill skill = TSkillTable.Instance.Get(sk.id, sk.lv);
+                Skill skill = SkillTable.Instance.Get(sk.Id, sk.Lv);
                 if (skill != null)
                     target.AddSkill(skill, false, false);
                 else
-                    target.SendMessage("no skill #" + sk.id + "-" + sk.lv);
+                    target.SendMessage("no skill #" + sk.Id + "-" + sk.Lv);
             }
 
             target.ActiveSkillTree = avail;
             target.SendPacket(new AcquireSkillList(0, target));
 
             target.UpdateSkillList();
-            target.SendMessage("gor all skills [" + skills.skills.Count + "][" + avail.Count + "] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id);
+            target.SendMessage("gor all skills [" + skills.Skills.Count + "][" + avail.Count + "] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id);
         }
     }
 }

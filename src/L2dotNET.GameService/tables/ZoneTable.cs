@@ -11,26 +11,24 @@ namespace L2dotNET.GameService.Tables
 {
     class ZoneTable
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ZoneTable));
-        private static volatile ZoneTable instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ZoneTable));
+        private static volatile ZoneTable _instance;
+        private static readonly object SyncRoot = new object();
 
         public static ZoneTable Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new ZoneTable();
+                        if (_instance == null)
+                            _instance = new ZoneTable();
                     }
 
-                return instance;
+                return _instance;
             }
         }
-
-        public ZoneTable() { }
 
         public void Initialize()
         {
@@ -67,7 +65,7 @@ namespace L2dotNET.GameService.Tables
                                     template.Name = val;
                                     break;
                                 case "map_no":
-                                    template._map_no = val;
+                                    template.MapNo = val;
                                     break;
                                 case "type":
                                 {
@@ -75,40 +73,40 @@ namespace L2dotNET.GameService.Tables
 
                                     switch (template.Type)
                                     {
-                                        case ZoneTemplate.ZoneType.battle_zone:
+                                        case ZoneTemplate.ZoneType.BattleZone:
                                             zone = new battle_zone();
                                             break;
-                                        case ZoneTemplate.ZoneType.peace_zone:
+                                        case ZoneTemplate.ZoneType.PeaceZone:
                                             zone = new peace_zone();
                                             break;
-                                        case ZoneTemplate.ZoneType.water:
+                                        case ZoneTemplate.ZoneType.Water:
                                             zone = new water();
                                             break;
-                                        case ZoneTemplate.ZoneType.no_restart:
+                                        case ZoneTemplate.ZoneType.NoRestart:
                                             zone = new no_restart();
                                             break;
-                                        case ZoneTemplate.ZoneType.ssq_zone:
+                                        case ZoneTemplate.ZoneType.SsqZone:
                                             zone = new ssq_zone();
                                             break;
-                                        case ZoneTemplate.ZoneType.mother_tree:
+                                        case ZoneTemplate.ZoneType.MotherTree:
                                             zone = new mother_tree();
-                                            template._hp_regen_bonus = 2;
-                                            template._mp_regen_bonus = 1;
+                                            template.HpRegenBonus = 2;
+                                            template.MpRegenBonus = 1;
                                             break;
-                                        case ZoneTemplate.ZoneType.damage:
+                                        case ZoneTemplate.ZoneType.Damage:
                                             zone = new damage();
-                                            template._damage_on_hp = 200;
-                                            template._damage_on_mp = 0;
+                                            template.DamageOnHp = 200;
+                                            template.DamageOnMp = 0;
                                             break;
-                                        case ZoneTemplate.ZoneType.poison:
+                                        case ZoneTemplate.ZoneType.Poison:
                                             zone = new poison();
-                                            template.setSkill("s_area_a_speed_down");
+                                            template.SetSkill("s_area_a_speed_down");
                                             break;
-                                        case ZoneTemplate.ZoneType.swamp:
+                                        case ZoneTemplate.ZoneType.Swamp:
                                             zone = new swamp();
-                                            template._move_bonus = -50;
+                                            template.MoveBonus = -50;
                                             break;
-                                        case ZoneTemplate.ZoneType.instant_skill:
+                                        case ZoneTemplate.ZoneType.InstantSkill:
                                             zone = new instant_skill();
                                             break;
                                     }
@@ -116,79 +114,79 @@ namespace L2dotNET.GameService.Tables
 
                                     break;
                                 case "affect_race":
-                                    template._affect_race = val;
+                                    template.AffectRace = val;
                                     break;
                                 case "entering_message_no":
-                                    template._entering_message_no = int.Parse(val);
+                                    template.EnteringMessageNo = int.Parse(val);
                                     break;
                                 case "leaving_message_no":
-                                    template._leaving_message_no = int.Parse(val);
+                                    template.LeavingMessageNo = int.Parse(val);
                                     break;
                                 case "range":
-                                    template.setRange(val);
+                                    template.SetRange(val);
                                     break;
                                 case "move_bonus":
-                                    template._move_bonus = int.Parse(val);
+                                    template.MoveBonus = int.Parse(val);
                                     break;
                                 case "default_status":
                                     template.DefaultStatus = val.EqualsIgnoreCase("on");
                                     break;
                                 case "event_id":
-                                    template._event_id = int.Parse(val);
+                                    template.EventId = int.Parse(val);
                                     break;
                                 case "damage_on_hp":
-                                    template._damage_on_hp = int.Parse(val);
+                                    template.DamageOnHp = int.Parse(val);
                                     break;
                                 case "damage_on_mp":
-                                    template._damage_on_mp = int.Parse(val);
+                                    template.DamageOnMp = int.Parse(val);
                                     break;
                                 case "message_no":
-                                    template._message_no = int.Parse(val);
+                                    template.MessageNo = int.Parse(val);
                                     break;
                                 case "target":
-                                    template._target = (ZoneTemplate.ZoneTarget)Enum.Parse(typeof(ZoneTemplate.ZoneTarget), val);
+                                    template.Target = (ZoneTemplate.ZoneTarget)Enum.Parse(typeof(ZoneTemplate.ZoneTarget), val);
                                     break;
                                 case "skill_prob":
-                                    template._skill_prob = int.Parse(val);
+                                    template.SkillProb = int.Parse(val);
                                     break;
                                 case "unit_tick":
-                                    template._unit_tick = int.Parse(val);
+                                    template.UnitTick = int.Parse(val);
                                     break;
                                 case "initial_delay":
-                                    template._initial_delay = int.Parse(val);
+                                    template.InitialDelay = int.Parse(val);
                                     break;
                                 case "skill_list":
-                                    template.setSkillList(val);
+                                    template.SetSkillList(val);
                                     break;
                                 case "skill_name":
-                                    template.setSkill(val.Substring(1).Replace("]", ""));
+                                    template.SetSkill(val.Substring(1).Replace("]", ""));
                                     break;
                                 case "exp_penalty_per":
-                                    template._exp_penalty_per = int.Parse(val);
+                                    template.ExpPenaltyPer = int.Parse(val);
                                     break;
                                 case "item_drop":
-                                    template._item_drop = val.EqualsIgnoreCase("on");
+                                    template.ItemDrop = val.EqualsIgnoreCase("on");
                                     break;
                             }
                         }
 
                         zone.Name = template.Name;
                         zone.Template = template;
-                        zone.Territory = new ZoneNPoly(template._x, template._y, template._z1, template._z2);
+                        zone.Territory = new ZoneNPoly(template.X, template.Y, template.Z1, template.Z2);
                         cta++;
-                        for (int i = 0; i < template._x.Length; i++)
+                        for (int i = 0; i < template.X.Length; i++)
                         {
-                            L2WorldRegion region = L2World.Instance.GetRegion(template._x[i], template._y[i]);
+                            L2WorldRegion region = L2World.Instance.GetRegion(template.X[i], template.Y[i]);
                             if (region != null)
                                 ctx++;
                             else
-                                log.Error($"AreaTable: null region at {template._x[i]} {template._y[i]} for zone {zone.Name}");
+                                Log.Error($"AreaTable: null region at {template.X[i]} {template.Y[i]} for zone {zone.Name}");
                         }
                     }
                 }
             }
 
-            log.Info("AreaTable: intercepted " + ctx + " regions with " + cta + " zones");
+            Log.Info("AreaTable: intercepted " + ctx + " regions with " + cta + " zones");
         }
     }
 }

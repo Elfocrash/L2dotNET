@@ -21,8 +21,8 @@ namespace L2dotNET.GameService.Templates
         public int CorpseTime { get; set; }
 
         public int DropHerbGroup { get; set; }
-        public Race race = Race.UNKNOWN;
-        public AIType AiType { get; set; }
+        public Race race = Race.Unknown;
+        public AiType AiType { get; set; }
 
         public int SsCount { get; set; }
         public int SsRate { get; set; }

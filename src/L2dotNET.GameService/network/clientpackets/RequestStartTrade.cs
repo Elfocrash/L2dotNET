@@ -6,32 +6,32 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestStartTrade : GameServerNetworkRequest
     {
-        private int targetId;
+        private int _targetId;
 
         public RequestStartTrade(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            targetId = readD();
+            _targetId = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
             if (player.TradeState != 0)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.ALREADY_TRADING);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.AlreadyTrading);
                 player.SendActionFailed();
                 return;
             }
 
-            if (player.ObjId == targetId)
+            if (player.ObjId == _targetId)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_ON_YOURSELF);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotUseOnYourself);
                 player.SendActionFailed();
                 return;
             }
@@ -44,7 +44,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if ((player.CurrentTarget == null) || !(player.CurrentTarget is L2Player))
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TargetIsIncorrect);
                 player.SendActionFailed();
                 return;
             }
@@ -52,27 +52,27 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Player target = (L2Player)player.CurrentTarget;
             if (target.TradeState != 0)
             {
-                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_ALREADY_TRADING).AddPlayerName(target.Name));
+                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1AlreadyTrading).AddPlayerName(target.Name));
                 player.SendActionFailed();
                 return;
             }
 
             if (target.PartyState == 1)
             {
-                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_IS_BUSY_TRY_LATER).AddPlayerName(target.Name));
+                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1IsBusyTryLater).AddPlayerName(target.Name));
                 player.SendActionFailed();
                 return;
             }
 
-            if (!Calcs.checkIfInRange(150, player, target, true))
+            if (!Calcs.CheckIfInRange(150, player, target, true))
             {
                 player.SendActionFailed();
                 return;
             }
 
-            player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.REQUEST_S1_FOR_TRADE).AddPlayerName(target.Name));
-            target.requester = player;
-            player.requester = target;
+            player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.RequestS1ForTrade).AddPlayerName(target.Name));
+            target.Requester = player;
+            player.Requester = target;
             target.SendPacket(new SendTradeRequest(player.ObjId));
             target.TradeState = 2; // жмакает ответ
             player.TradeState = 1; // запросил

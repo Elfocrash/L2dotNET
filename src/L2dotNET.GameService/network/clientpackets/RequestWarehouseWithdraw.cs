@@ -10,19 +10,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestWarehouseWithdraw : GameServerNetworkRequest
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(RequestBypassToServer));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestBypassToServer));
 
         public RequestWarehouseWithdraw(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _count;
         private int[] _items;
 
-        public override void read()
+        public override void Read()
         {
-            _count = readD();
+            _count = ReadD();
 
             if ((_count < 0) || (_count > 255))
                 _count = 0;
@@ -30,14 +30,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _items = new int[_count * 2];
             for (int i = 0; i < _count; i++)
             {
-                _items[i * 2] = readD();
-                _items[i * 2 + 1] = readD();
+                _items[i * 2] = ReadD();
+                _items[i * 2 + 1] = ReadD();
             }
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
             L2Npc npc = player.FolkNpc;
 
             if (npc == null)
@@ -57,12 +57,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 if (item == null)
                 {
-                    log.Info($"cant find item {objectId} in warehouse {player.Name}");
+                    Log.Info($"cant find item {objectId} in warehouse {player.Name}");
                     player.SendActionFailed();
                     return;
                 }
 
-                if (item.Template.isStackable())
+                if (item.Template.IsStackable())
                     slots += 1;
                 else
                     slots += count;
@@ -73,9 +73,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //else
             //    itsize = pw.Items.Count;
 
-            if (player.ItemLimit_Inventory < (player.GetAllItems().Count + slots))
+            if (player.ItemLimitInventory < (player.GetAllItems().Count + slots))
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.SLOTS_FULL);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.SlotsFull);
                 player.SendActionFailed();
                 return;
             }
@@ -96,7 +96,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //    player.sendPacket(new NpcHtmlMessage(player, npc.Template.fnBye, npc.ObjID, 0));
             //}
 
-            player.sendItemList(true);
+            player.SendItemList(true);
         }
     }
 }

@@ -2,11 +2,11 @@
 {
     public class L2Shortcut
     {
-        public const int TYPE_ITEM = 1;
-        public const int TYPE_SKILL = 2;
-        public const int TYPE_ACTION = 3;
-        public const int TYPE_MACRO = 4;
-        public const int TYPE_RECIPE = 5;
+        public const int TypeItem = 1;
+        public const int TypeSkill = 2;
+        public const int TypeAction = 3;
+        public const int TypeMacro = 4;
+        public const int TypeRecipe = 5;
 
         public int Slot { get; set; }
         public int Page { get; set; }

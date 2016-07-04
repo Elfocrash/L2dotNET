@@ -38,23 +38,23 @@ namespace L2dotNET.GameService.Model.Structures
             zone.hideout = this;
             ZoneTemplate template = new ZoneTemplate();
             template.Name = "hideout #" + ID;
-            template.Type = ZoneTemplate.ZoneType.hideout;
-            template.setRange(zoneLoc);
+            template.Type = ZoneTemplate.ZoneType.Hideout;
+            template.SetRange(zoneLoc);
 
             zone.Name = template.Name;
             zone.Template = template;
-            zone.Territory = new ZoneNPoly(template._x, template._y, template._z1, template._z2);
+            zone.Territory = new ZoneNPoly(template.X, template.Y, template.Z1, template.Z2);
 
-            for (int i = 0; i < template._x.Length; i++)
+            for (int i = 0; i < template.X.Length; i++)
             {
-                L2WorldRegion region = L2World.Instance.GetRegion(template._x[i], template._y[i]);
+                L2WorldRegion region = L2World.Instance.GetRegion(template.X[i], template.Y[i]);
                 if (region != null)
                 {
                     // region._zoneManager.addZone(zone);
                 }
                 else
                 {
-                    log.Error($"AreaTable[hideout]: null region at {template._x[i]} {template._y[i]} for zone {zone.Name}");
+                    log.Error($"AreaTable[hideout]: null region at {template.X[i]} {template.Y[i]} for zone {zone.Name}");
                 }
             }
         }
@@ -85,11 +85,11 @@ namespace L2dotNET.GameService.Model.Structures
             int val;
             switch (decoId)
             {
-                case AgitManagerAI.decotype_hpregen:
+                case AgitManagerAi.DecotypeHpregen:
                     val = level * 20;
                     break;
-                case AgitManagerAI.decotype_mpregen:
-                case AgitManagerAI.decotype_xprestore:
+                case AgitManagerAi.DecotypeMpregen:
+                case AgitManagerAi.DecotypeXprestore:
                     val = level * 5;
                     break;
                 default:

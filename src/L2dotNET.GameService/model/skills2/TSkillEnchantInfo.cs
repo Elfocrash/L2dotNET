@@ -2,10 +2,10 @@
 
 namespace L2dotNET.GameService.Model.Skills2
 {
-    public class TSkillEnchantInfo
+    public class SkillEnchantInfo
     {
-        public SortedList<int, TSkillEnchantInfoDetail> details = new SortedList<int, TSkillEnchantInfoDetail>();
-        public int id;
-        public int lv;
+        public SortedList<int, SkillEnchantInfoDetail> Details = new SortedList<int, SkillEnchantInfoDetail>();
+        public int Id;
+        public int Lv;
     }
 }

@@ -6,25 +6,25 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class QuestList : GameServerNetworkPacket
     {
-        private readonly List<QuestInfo> list;
+        private readonly List<QuestInfo> _list;
 
         public QuestList(L2Player player)
         {
-            list = player.getAllActiveQuests();
+            _list = player.GetAllActiveQuests();
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x86);
-            writeH((short)list.Count);
+            WriteC(0x86);
+            WriteH((short)_list.Count);
 
-            foreach (QuestInfo qi in list)
+            foreach (QuestInfo qi in _list)
             {
-                writeD(qi.id);
-                writeD(qi.stage);
+                WriteD(qi.Id);
+                WriteD(qi.Stage);
             }
 
-            writeB(new byte[128]);
+            WriteB(new byte[128]);
         }
     }
 }

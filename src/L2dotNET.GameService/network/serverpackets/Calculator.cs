@@ -2,10 +2,10 @@
 {
     class Calculator : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xe2);
-            writeD(4393);
+            WriteC(0xe2);
+            WriteD(4393);
         }
     }
 }

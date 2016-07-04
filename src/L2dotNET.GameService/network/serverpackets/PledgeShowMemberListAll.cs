@@ -5,51 +5,51 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class PledgeShowMemberListAll : GameServerNetworkPacket
     {
-        private readonly L2Clan clan;
-        private readonly e_ClanType type;
+        private readonly L2Clan _clan;
+        private readonly EClanType _type;
 
-        public PledgeShowMemberListAll(L2Clan clan, e_ClanType type)
+        public PledgeShowMemberListAll(L2Clan clan, EClanType type)
         {
-            this.clan = clan;
-            this.type = type;
+            this._clan = clan;
+            this._type = type;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x5a);
+            WriteC(0x5a);
 
-            writeD((short)type == 0 ? 0 : 1);
-            writeD(clan.ClanID);
-            writeD((short)type);
-            writeS(clan.Name);
-            writeS(clan.ClanMasterName);
+            WriteD((short)_type == 0 ? 0 : 1);
+            WriteD(_clan.ClanId);
+            WriteD((short)_type);
+            WriteS(_clan.Name);
+            WriteS(_clan.ClanMasterName);
 
-            writeD(clan.CrestID);
-            writeD(clan.Level);
-            writeD(clan.CastleID);
-            writeD(clan.HideoutID);
-            writeD(clan.FortressID);
-            writeD(clan.ClanRank);
-            writeD(clan.ClanNameValue);
-            writeD(clan.Status);
-            writeD(clan.Guilty);
-            writeD(clan.AllianceID);
-            writeS(clan.AllianceName);
-            writeD(clan.AllianceCrestId);
-            writeD(clan.InWar);
-            writeD(clan.JoinDominionWarID);
-            List<ClanMember> members = clan.getClanMembers(type, 0);
-            writeD(members.Count);
+            WriteD(_clan.CrestId);
+            WriteD(_clan.Level);
+            WriteD(_clan.CastleId);
+            WriteD(_clan.HideoutId);
+            WriteD(_clan.FortressId);
+            WriteD(_clan.ClanRank);
+            WriteD(_clan.ClanNameValue);
+            WriteD(_clan.Status);
+            WriteD(_clan.Guilty);
+            WriteD(_clan.AllianceId);
+            WriteS(_clan.AllianceName);
+            WriteD(_clan.AllianceCrestId);
+            WriteD(_clan.InWar);
+            WriteD(_clan.JoinDominionWarId);
+            List<ClanMember> members = _clan.GetClanMembers(_type, 0);
+            WriteD(members.Count);
 
             foreach (ClanMember m in members)
             {
-                writeS(m.Name);
-                writeD(m.Level);
-                writeD(m.classId);
-                writeD(m.Gender);
-                writeD(m.Race);
-                writeD(m.OnlineID()); // 1=online 0=offline
-                writeD(m.haveMaster()); //c5 makes the name yellow. member is in academy and has a sponsor
+                WriteS(m.Name);
+                WriteD(m.Level);
+                WriteD(m.ClassId);
+                WriteD(m.Gender);
+                WriteD(m.Race);
+                WriteD(m.OnlineId()); // 1=online 0=offline
+                WriteD(m.HaveMaster()); //c5 makes the name yellow. member is in academy and has a sponsor
             }
         }
     }

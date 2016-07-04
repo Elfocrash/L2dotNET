@@ -16,16 +16,16 @@
             _status = status;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0xb3);
-            writeD(_receivedBoard ? 1 : 0);
-            writeD(_msgs.Length);
+            WriteC(0xfe);
+            WriteH(0xb3);
+            WriteD(_receivedBoard ? 1 : 0);
+            WriteD(_msgs.Length);
             foreach (int postId in _msgs)
             {
-                writeD(postId);
-                writeD(_status);
+                WriteD(postId);
+                WriteD(_status);
             }
         }
     }

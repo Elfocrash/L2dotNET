@@ -10,30 +10,30 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestSellItem(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _listId;
         private int _count;
         private long[] _items;
 
-        public override void read()
+        public override void Read()
         {
-            _listId = readD();
-            _count = readD();
+            _listId = ReadD();
+            _count = ReadD();
             _items = new long[_count * 3];
 
             for (int i = 0; i < _count; i++)
             {
-                _items[i * 3 + 0] = readD();
-                _items[i * 3 + 1] = readD();
-                _items[i * 3 + 2] = readQ();
+                _items[i * 3 + 0] = ReadD();
+                _items[i * 3 + 1] = ReadD();
+                _items[i * 3 + 2] = ReadQ();
             }
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
             L2Npc npc = player.FolkNpc;
 
             if (npc == null)
@@ -51,14 +51,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 if ((count < 0) || (count > int.MaxValue))
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.SELL_ATTEMPT_FAILED);
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.SellAttemptFailed);
                     player.SendActionFailed();
                     return;
                 }
 
                 L2Item item = player.Inventory.Items[objectId];
 
-                if (item.Template.isStackable())
+                if (item.Template.IsStackable())
                     totalCost += (int)(item.Count * (item.Template.Price * .5));
                 else
                     totalCost += (int)(item.Template.Price * .5);
@@ -94,11 +94,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //player.Refund.validate();
 
             player.AddAdena(added,true);
-            player.sendItemList(true);
-            player.SendPacket(new ExBuySellList_Close());
+            player.SendItemList(true);
+            player.SendPacket(new ExBuySellListClose());
 
             if (weight != 0)
-                player.updateWeight();
+                player.UpdateWeight();
 
             //if (npc.Template.fnSell != null)
             //{

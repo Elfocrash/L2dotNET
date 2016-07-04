@@ -14,26 +14,26 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestBuyItem(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            _listId = readD();
-            _count = readD();
+            _listId = ReadD();
+            _count = ReadD();
 
             _items = new long[_count * 2];
 
             for (int i = 0; i < _count; i++)
             {
-                _items[i * 2] = readD();
-                _items[i * 2 + 1] = readQ();
+                _items[i * 2] = ReadD();
+                _items[i * 2 + 1] = ReadQ();
             }
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if (_count <= 0)
             {
@@ -45,25 +45,25 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (trader == null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TradeAttemptFailed);
                 player.SendActionFailed();
                 return;
             }
 
-            ND_shop shop = NpcData.Instance._shops[trader.Template.NpcId];
+            NdShop shop = NpcData.Instance.Shops[trader.Template.NpcId];
 
             if (shop == null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TradeAttemptFailed);
                 player.SendActionFailed();
                 return;
             }
 
-            ND_shopList list = shop.lists[(short)_listId];
+            NdShopList list = shop.Lists[(short)_listId];
 
             if (list == null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TradeAttemptFailed);
                 player.SendActionFailed();
                 return;
             }
@@ -77,11 +77,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 int itemId = (int)_items[i * 2];
 
                 bool notfound = true;
-                foreach (ND_shopItem item in list.items.Where(item => item.item.ItemID == itemId))
+                foreach (NdShopItem item in list.Items.Where(item => item.Item.ItemId == itemId))
                 {
-                    adena += item.item.Price * (int)_items[i * 2 + 1];
+                    adena += item.Item.Price * (int)_items[i * 2 + 1];
 
-                    if (!item.item.isStackable())
+                    if (!item.Item.IsStackable())
                         slots++;
                     else
                     {
@@ -89,7 +89,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                         //    slots++;
                     }
 
-                    weight += (int)(item.item.Weight * _items[i * 2 + 1]);
+                    weight += (int)(item.Item.Weight * _items[i * 2 + 1]);
 
                     notfound = false;
                     break;
@@ -97,7 +97,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 if (notfound)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.TradeAttemptFailed);
                     player.SendActionFailed();
                     return;
                 }
@@ -105,7 +105,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (adena > player.GetAdena())
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.YouNotEnoughAdena);
                 return;
             }
 
@@ -119,7 +119,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.AddItem(itemId, count);
             }
 
-            player.SendPacket(new ExBuySellList_Close());
+            player.SendPacket(new ExBuySellListClose());
         }
     }
 }

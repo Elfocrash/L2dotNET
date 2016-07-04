@@ -10,38 +10,38 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestBypassToServer : GameServerNetworkRequest
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(RequestBypassToServer));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestBypassToServer));
 
         public RequestBypassToServer(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private string _alias;
 
-        public override void read()
+        public override void Read()
         {
-            _alias = readS();
+            _alias = ReadS();
         }
 
-        private L2Npc getNpc()
+        private L2Npc GetNpc()
         {
-            log.Info($"bypass '{_alias}'");
-            L2Npc npc = (L2Npc)getClient().CurrentPlayer.CurrentTarget;
+            Log.Info($"bypass '{_alias}'");
+            L2Npc npc = (L2Npc)GetClient().CurrentPlayer.CurrentTarget;
 
             if (npc == null)
             {
-                getClient().CurrentPlayer.SendMessage("no npc found");
-                getClient().CurrentPlayer.SendActionFailed();
+                GetClient().CurrentPlayer.SendMessage("no npc found");
+                GetClient().CurrentPlayer.SendActionFailed();
                 return null;
             }
 
             return npc;
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {
@@ -53,7 +53,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (_alias.EqualsIgnoreCase("teleport_request"))
             {
-                npc = getNpc();
+                npc = GetNpc();
 
                 if (npc == null)
                 {
@@ -61,11 +61,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     return;
                 }
 
-                npc.onTeleportRequest(player);
+                npc.OnTeleportRequest(player);
             }
             else if (_alias.StartsWithIgnoreCase("menu_select?"))
             {
-                npc = getNpc();
+                npc = GetNpc();
 
                 _alias = _alias.Replace(" ", "");
                 string x1 = _alias.Split('?')[1];
@@ -82,16 +82,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     reply = 0;
                 }
 
-                npc.onDialog(player, ask, reply);
+                npc.OnDialog(player, ask, reply);
             }
             else if (_alias.EqualsIgnoreCase("talk_select"))
             {
-                npc = getNpc();
+                npc = GetNpc();
                 QuestManager.Instance.TalkSelection(player, npc);
             }
             else if (_alias.StartsWithIgnoreCase("quest_accept?"))
             {
-                npc = getNpc();
+                npc = GetNpc();
                 _alias = _alias.Replace(" ", "");
                 string x1 = _alias.Split('?')[1];
                 int qid = int.Parse(x1.Split('=')[1]);
@@ -100,7 +100,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
             else if (_alias.StartsWithIgnoreCase("quest_continue?"))
             {
-                npc = getNpc();
+                npc = GetNpc();
                 _alias = _alias.Replace(" ", "");
                 string x1 = _alias.Split('?')[1];
                 int qid = int.Parse(x1.Split('=')[1]);
@@ -109,7 +109,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
             else if (_alias.StartsWithIgnoreCase("quest_tryaccept?"))
             {
-                npc = getNpc();
+                npc = GetNpc();
                 _alias = _alias.Replace(" ", "");
                 string x1 = _alias.Split('?')[1];
                 int qid = int.Parse(x1.Split('=')[1]);
@@ -118,42 +118,42 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
             else if (_alias.EqualsIgnoreCase("deposit"))
             {
-                npc = getNpc();
-                npc.showPrivateWarehouse(player);
+                npc = GetNpc();
+                npc.ShowPrivateWarehouse(player);
             }
             else if (_alias.EqualsIgnoreCase("withdraw"))
             {
-                npc = getNpc();
-                npc.showPrivateWarehouseBack(player);
+                npc = GetNpc();
+                npc.ShowPrivateWarehouseBack(player);
             }
             else if (_alias.EqualsIgnoreCase("deposit_pledge"))
             {
-                npc = getNpc();
-                npc.showClanWarehouse(player);
+                npc = GetNpc();
+                npc.ShowClanWarehouse(player);
             }
             else if (_alias.EqualsIgnoreCase("withdraw_pledge"))
             {
-                npc = getNpc();
-                npc.showClanWarehouseBack(player);
+                npc = GetNpc();
+                npc.ShowClanWarehouseBack(player);
             }
             else if (_alias.EqualsIgnoreCase("learn_skill"))
             {
-                npc = getNpc();
-                npc.showSkillLearn(player, false);
+                npc = GetNpc();
+                npc.ShowSkillLearn(player, false);
             }
             else if (_alias.StartsWithIgnoreCase("create_pledge?"))
             {
-                npc = getNpc();
+                npc = GetNpc();
                 //bypass -h create_pledge?pledge_name= $pledge_name
                 string x1 = _alias.Split('?')[1];
                 string name = x1.Split('=')[1];
                 name = name.Substring(1);
 
-                grandmaster_total.createClan(player, name, npc);
+                GrandmasterTotal.CreateClan(player, name, npc);
             }
             else if (_alias.StartsWithIgnoreCase("teleport_next?"))
             {
-                npc = getNpc();
+                npc = GetNpc();
                 string x1 = _alias.Split('?')[1];
                 string[] x2 = x1.Split('&');
                 int ask = int.Parse(x2[0].Substring(4));
@@ -163,10 +163,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
             else if (_alias.StartsWithIgnoreCase("petitionlink?"))
             {
-                PetitionManager.getInstance().petitionlink(player, _alias.Split('?')[1]);
+                PetitionManager.GetInstance().Petitionlink(player, _alias.Split('?')[1]);
             }
             else
-                log.Warn($"Unknown bypass '{_alias}'");
+                Log.Warn($"Unknown bypass '{_alias}'");
         }
     }
 }

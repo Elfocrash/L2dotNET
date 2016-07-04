@@ -4,36 +4,36 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class ShortCutRegister : GameServerNetworkPacket
     {
-        private readonly L2Shortcut cut;
+        private readonly L2Shortcut _cut;
 
         public ShortCutRegister(L2Shortcut cut)
         {
-            this.cut = cut;
+            this._cut = cut;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x44);
+            WriteC(0x44);
 
-            writeD(cut.Type);
-            writeD(cut.Slot + cut.Page * 12);
+            WriteD(_cut.Type);
+            WriteD(_cut.Slot + _cut.Page * 12);
 
-            switch (cut.Type)
+            switch (_cut.Type)
             {
-                case L2Shortcut.TYPE_ITEM:
-                    writeD(cut.Id);
-                    writeD(cut.CharacterType);
-                    writeD(-1); //getSharedReuseGroup
+                case L2Shortcut.TypeItem:
+                    WriteD(_cut.Id);
+                    WriteD(_cut.CharacterType);
+                    WriteD(-1); //getSharedReuseGroup
                     break;
-                case L2Shortcut.TYPE_SKILL:
-                    writeD(cut.Id);
-                    writeD(cut.Level);
-                    writeC(0x00); // C5
-                    writeD(cut.CharacterType);
+                case L2Shortcut.TypeSkill:
+                    WriteD(_cut.Id);
+                    WriteD(_cut.Level);
+                    WriteC(0x00); // C5
+                    WriteD(_cut.CharacterType);
                     break;
                 default:
-                    writeD(cut.Id);
-                    writeD(cut.CharacterType);
+                    WriteD(_cut.Id);
+                    WriteD(_cut.CharacterType);
                     break;
             }
         }

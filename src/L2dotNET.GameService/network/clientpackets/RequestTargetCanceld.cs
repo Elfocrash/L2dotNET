@@ -6,19 +6,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestTargetCanceld(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private short _unselect;
 
-        public override void read()
+        public override void Read()
         {
-            _unselect = readH(); //0 esc key, 1 - mouse
+            _unselect = ReadH(); //0 esc key, 1 - mouse
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if ((_unselect == 0) && player.IsCastingNow())
             {

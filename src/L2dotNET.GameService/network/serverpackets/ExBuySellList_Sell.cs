@@ -5,12 +5,12 @@ using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExBuySellList_Sell : GameServerNetworkPacket
+    class ExBuySellListSell : GameServerNetworkPacket
     {
         private readonly List<L2Item> _sells = new List<L2Item>();
         private readonly List<L2Item> _refund;
 
-        public ExBuySellList_Sell(L2Player player)
+        public ExBuySellListSell(L2Player player)
         {
             foreach (L2Item item in player.GetAllItems().Where(item => !item.NotForTrade()))
                 _sells.Add(item);
@@ -18,82 +18,82 @@ namespace L2dotNET.GameService.Network.Serverpackets
            // _refund = player.Refund._items;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0xB7);
-            writeD(1);
-            writeH(_sells.Count);
+            WriteC(0xFE);
+            WriteH(0xB7);
+            WriteD(1);
+            WriteH(_sells.Count);
 
             foreach (L2Item item in _sells)
             {
-                writeD(item.ObjId);
-                writeD(item.Template.ItemID);
-                writeD(0);
-                writeQ(item.Count);
-                writeH(item.Template.Type2());
-                writeH(item.CustomType1);
-                writeH(0);
-                writeD(item.Template.BodyPartId());
-                writeH(item.Enchant);
-                writeH(item.CustomType2);
-                writeD(item.AugmentationId);
-                writeD(item.Durability);
-                writeD(item.LifeTimeEnd());
+                WriteD(item.ObjId);
+                WriteD(item.Template.ItemId);
+                WriteD(0);
+                WriteQ(item.Count);
+                WriteH(item.Template.Type2());
+                WriteH(item.CustomType1);
+                WriteH(0);
+                WriteD(item.Template.BodyPartId());
+                WriteH(item.Enchant);
+                WriteH(item.CustomType2);
+                WriteD(item.AugmentationId);
+                WriteD(item.Durability);
+                WriteD(item.LifeTimeEnd());
 
-                writeH(item.AttrAttackType);
-                writeH(item.AttrAttackValue);
-                writeH(item.AttrDefenseValueFire);
-                writeH(item.AttrDefenseValueWater);
-                writeH(item.AttrDefenseValueWind);
-                writeH(item.AttrDefenseValueEarth);
-                writeH(item.AttrDefenseValueHoly);
-                writeH(item.AttrDefenseValueUnholy);
+                WriteH(item.AttrAttackType);
+                WriteH(item.AttrAttackValue);
+                WriteH(item.AttrDefenseValueFire);
+                WriteH(item.AttrDefenseValueWater);
+                WriteH(item.AttrDefenseValueWind);
+                WriteH(item.AttrDefenseValueEarth);
+                WriteH(item.AttrDefenseValueHoly);
+                WriteH(item.AttrDefenseValueUnholy);
 
-                writeH(item.Enchant1);
-                writeH(item.Enchant2);
-                writeH(item.Enchant3);
+                WriteH(item.Enchant1);
+                WriteH(item.Enchant2);
+                WriteH(item.Enchant3);
 
-                writeQ(item.Template.Price / 2);
+                WriteQ(item.Template.Price / 2);
             }
 
-            writeH(_refund.Count);
+            WriteH(_refund.Count);
 
             int idx = 0;
             foreach (L2Item item in _refund)
             {
-                writeD(item.ObjId);
-                writeD(item.Template.ItemID);
-                writeD(0);
-                writeQ(item.Count);
-                writeH(item.Template.Type2());
-                writeH(item.CustomType1);
-                writeH(0);
-                writeD(item.Template.BodyPartId());
-                writeH(item.Enchant);
-                writeH(item.CustomType2);
-                writeD(item.AugmentationId);
-                writeD(item.Durability);
-                writeD(item.LifeTimeEnd());
+                WriteD(item.ObjId);
+                WriteD(item.Template.ItemId);
+                WriteD(0);
+                WriteQ(item.Count);
+                WriteH(item.Template.Type2());
+                WriteH(item.CustomType1);
+                WriteH(0);
+                WriteD(item.Template.BodyPartId());
+                WriteH(item.Enchant);
+                WriteH(item.CustomType2);
+                WriteD(item.AugmentationId);
+                WriteD(item.Durability);
+                WriteD(item.LifeTimeEnd());
 
-                writeH(item.AttrAttackType);
-                writeH(item.AttrAttackValue);
-                writeH(item.AttrDefenseValueFire);
-                writeH(item.AttrDefenseValueWater);
-                writeH(item.AttrDefenseValueWind);
-                writeH(item.AttrDefenseValueEarth);
-                writeH(item.AttrDefenseValueHoly);
-                writeH(item.AttrDefenseValueUnholy);
+                WriteH(item.AttrAttackType);
+                WriteH(item.AttrAttackValue);
+                WriteH(item.AttrDefenseValueFire);
+                WriteH(item.AttrDefenseValueWater);
+                WriteH(item.AttrDefenseValueWind);
+                WriteH(item.AttrDefenseValueEarth);
+                WriteH(item.AttrDefenseValueHoly);
+                WriteH(item.AttrDefenseValueUnholy);
 
-                writeH(item.Enchant1);
-                writeH(item.Enchant2);
-                writeH(item.Enchant3);
+                WriteH(item.Enchant1);
+                WriteH(item.Enchant2);
+                WriteH(item.Enchant3);
 
-                writeD(idx++);
-                writeQ(item.Template.Price / 2 * item.Count);
+                WriteD(idx++);
+                WriteQ(item.Template.Price / 2 * item.Count);
             }
 
-            writeC(0);
+            WriteC(0);
         }
     }
 }

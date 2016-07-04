@@ -5,32 +5,32 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class PetStatusUpdate : GameServerNetworkPacket
     {
-        private readonly L2Summon pet;
+        private readonly L2Summon _pet;
 
         public PetStatusUpdate(L2Summon pet)
         {
-            this.pet = pet;
+            this._pet = pet;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xb6);
-            writeD(pet.ObjectSummonType);
-            writeD(pet.ObjId);
-            writeD(pet.X);
-            writeD(pet.Y);
-            writeD(pet.Z);
-            writeS("");
-            writeD(pet.CurrentTime);
-            writeD(pet.MaxTime);
-            writeD(pet.CurHp);
-            writeD(pet.CharacterStat.getStat(TEffectType.b_max_hp));
-            writeD(pet.CurMp);
-            writeD(pet.CharacterStat.getStat(TEffectType.b_max_mp));
-            writeD(pet.Level);
-            writeQ(pet.StatusExp);
-            writeQ(pet.getExpCurrentLevel());
-            writeQ(pet.getExpToLevelUp());
+            WriteC(0xb6);
+            WriteD(_pet.ObjectSummonType);
+            WriteD(_pet.ObjId);
+            WriteD(_pet.X);
+            WriteD(_pet.Y);
+            WriteD(_pet.Z);
+            WriteS("");
+            WriteD(_pet.CurrentTime);
+            WriteD(_pet.MaxTime);
+            WriteD(_pet.CurHp);
+            WriteD(_pet.CharacterStat.GetStat(EffectType.BMaxHp));
+            WriteD(_pet.CurMp);
+            WriteD(_pet.CharacterStat.GetStat(EffectType.BMaxMp));
+            WriteD(_pet.Level);
+            WriteQ(_pet.StatusExp);
+            WriteQ(_pet.GetExpCurrentLevel());
+            WriteQ(_pet.GetExpToLevelUp());
         }
     }
 }

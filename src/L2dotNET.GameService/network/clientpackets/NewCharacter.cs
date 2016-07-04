@@ -10,15 +10,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public NewCharacter(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
             // do nothing
         }
 
-        public override void run()
+        public override void Run()
         {
             Dictionary<int, PcTemplate> dict = CharTemplateTable.Instance.Templates;
             List<PcTemplate> pcTemp = dict.Select((t, i) => dict.SingleOrDefault(x => x.Key == i).Value).ToList();

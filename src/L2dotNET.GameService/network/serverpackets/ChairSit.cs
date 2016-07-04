@@ -2,20 +2,20 @@
 {
     class ChairSit : GameServerNetworkPacket
     {
-        private readonly int sId;
-        private readonly int staticId;
+        private readonly int _sId;
+        private readonly int _staticId;
 
         public ChairSit(int sId, int staticId)
         {
-            this.sId = sId;
-            this.staticId = staticId;
+            this._sId = sId;
+            this._staticId = staticId;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xe1);
-            writeD(sId);
-            writeD(staticId);
+            WriteC(0xe1);
+            WriteD(_sId);
+            WriteD(_staticId);
         }
     }
 }

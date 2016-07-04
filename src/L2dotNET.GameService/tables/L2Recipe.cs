@@ -4,17 +4,17 @@ namespace L2dotNET.GameService.Tables
 {
     public class L2Recipe
     {
-        public string name;
-        public int RecipeID;
-        public int _level;
-        public int _iscommonrecipe;
-        public int _item_id;
-        public int _success_rate;
-        public int _mp_consume;
+        public string Name;
+        public int RecipeId;
+        public int Level;
+        public int Iscommonrecipe;
+        public int ItemId;
+        public int SuccessRate;
+        public int MpConsume;
 
-        public List<recipe_item_entry> _materials = new List<recipe_item_entry>();
-        public List<recipe_item_entry> _products = new List<recipe_item_entry>();
-        public List<recipe_item_entry> _npcFee = new List<recipe_item_entry>();
-        public string mk;
+        public List<RecipeItemEntry> Materials = new List<RecipeItemEntry>();
+        public List<RecipeItemEntry> Products = new List<RecipeItemEntry>();
+        public List<RecipeItemEntry> NpcFee = new List<RecipeItemEntry>();
+        public string Mk;
     }
 }

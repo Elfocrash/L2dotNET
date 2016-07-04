@@ -11,30 +11,30 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public Say2(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private string _text,
                        _target;
-        private SayIDList Type;
+        private SayIDList _type;
 
-        public override void read()
+        public override void Read()
         {
-            _text = readS();
-            int typeId = readD();
+            _text = ReadS();
+            int typeId = ReadD();
 
-            if ((typeId < 0) || (typeId >= SayID.MaxID))
+            if ((typeId < 0) || (typeId >= SayId.MaxId))
                 typeId = 0;
 
-            Type = SayID.getType((byte)typeId);
+            _type = SayId.getType((byte)typeId);
 
-            if (Type == SayIDList.CHAT_TELL)
-                _target = readS();
+            if (_type == SayIDList.CHAT_TELL)
+                _target = ReadS();
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             //if (_text.Contains("	Type=1 	ID=") && _text.Contains("	Color=0 	Underline=0 	Title="))
             //{
@@ -52,15 +52,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //        RqItemManager.getInstance().postItem(item);
             //}
 
-            CreatureSay cs = new CreatureSay(player.ObjId, Type, player.Name, _text);
+            CreatureSay cs = new CreatureSay(player.ObjId, _type, player.Name, _text);
 
-            switch (Type)
+            switch (_type)
             {
                 case SayIDList.CHAT_NORMAL:
                 {
                     char[] arr = _text.ToCharArray();
                     if (arr[0] == '.')
-                        if (PointCmdManager.getInstance().pointed(player, _text))
+                        if (PointCmdManager.GetInstance().Pointed(player, _text))
                             return;
 
                     foreach (L2Player o in player.KnownObjects.Values.OfType<L2Player>().Where(o => player.IsInsideRadius(o, 1250, true, false)))
@@ -108,7 +108,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 case SayIDList.CHAT_PARTY:
                     if (player.Party != null)
-                        player.Party.broadcastToMembers(cs);
+                        player.Party.BroadcastToMembers(cs);
                     break;
                 case SayIDList.CHAT_MARKET:
                     foreach (L2Player p in L2World.Instance.GetPlayers())

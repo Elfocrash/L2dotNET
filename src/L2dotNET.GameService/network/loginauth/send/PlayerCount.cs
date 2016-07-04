@@ -2,17 +2,17 @@
 {
     class PlayerCount : GameServerNetworkPacket
     {
-        private readonly short cnt;
+        private readonly short _cnt;
 
         public PlayerCount(short cnt)
         {
-            this.cnt = cnt;
+            this._cnt = cnt;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xA3);
-            writeH(cnt);
+            WriteC(0xA3);
+            WriteH(_cnt);
         }
     }
 }

@@ -1,24 +1,24 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExBR_GamePoint : GameServerNetworkPacket
+    class ExBrGamePoint : GameServerNetworkPacket
     {
-        private readonly int id;
-        private readonly long points;
+        private readonly int _id;
+        private readonly long _points;
 
-        public ExBR_GamePoint(int id, long points)
+        public ExBrGamePoint(int id, long points)
         {
-            this.id = id;
-            this.points = points;
+            this._id = id;
+            this._points = points;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0xC9);
+            WriteC(0xFE);
+            WriteH(0xC9);
 
-            writeD(id);
-            writeQ(points);
-            writeD(0);
+            WriteD(_id);
+            WriteQ(_points);
+            WriteD(0);
         }
     }
 }

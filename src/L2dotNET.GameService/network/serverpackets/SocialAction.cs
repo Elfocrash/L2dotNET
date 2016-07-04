@@ -2,20 +2,20 @@
 {
     class SocialAction : GameServerNetworkPacket
     {
-        private readonly int social;
-        private readonly int id;
+        private readonly int _social;
+        private readonly int _id;
 
         public SocialAction(int id, int social)
         {
-            this.social = social;
-            this.id = id;
+            this._social = social;
+            this._id = id;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x2d);
-            writeD(id);
-            writeD(social);
+            WriteC(0x2d);
+            WriteD(_id);
+            WriteD(_social);
         }
     }
 }

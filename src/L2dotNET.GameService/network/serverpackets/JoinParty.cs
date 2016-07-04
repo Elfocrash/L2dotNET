@@ -2,17 +2,17 @@
 {
     class JoinParty : GameServerNetworkPacket
     {
-        private readonly int response;
+        private readonly int _response;
 
         public JoinParty(int response)
         {
-            this.response = response;
+            this._response = response;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x3a);
-            writeD(response);
+            WriteC(0x3a);
+            WriteD(_response);
         }
     }
 }

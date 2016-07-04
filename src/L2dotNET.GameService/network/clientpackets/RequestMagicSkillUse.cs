@@ -7,23 +7,23 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestMagicSkillUse(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _magicId;
         private bool _ctrlPressed;
         private bool _shiftPressed;
 
-        public override void read()
+        public override void Read()
         {
-            _magicId = readD(); // Identifier of the used skill
-            _ctrlPressed = readD() != 0; // True if it's a ForceAttack : Ctrl pressed
-            _shiftPressed = readC() != 0; // True if Shift pressed
+            _magicId = ReadD(); // Identifier of the used skill
+            _ctrlPressed = ReadD() != 0; // True if it's a ForceAttack : Ctrl pressed
+            _shiftPressed = ReadC() != 0; // True if Shift pressed
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {
@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            TSkill skill = player.getSkill(_magicId);
+            Skill skill = player.GetSkill(_magicId);
 
             if (skill == null)
             {
@@ -41,7 +41,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             bool muted = false;
-            switch (skill.is_magic)
+            switch (skill.IsMagic)
             {
                 case 0:
                     muted = player.PBlockSkill == 1;
@@ -57,7 +57,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            player.castSkill(skill, _ctrlPressed, _shiftPressed);
+            player.CastSkill(skill, _ctrlPressed, _shiftPressed);
         }
     }
 }

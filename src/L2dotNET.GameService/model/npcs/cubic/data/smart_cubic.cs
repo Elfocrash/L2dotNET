@@ -7,22 +7,22 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
     /// <summary>
     /// represents smart cubics id 10-14
     /// </summary>
-    public class smart_cubic : CubicTemplate
+    public class SmartCubic : CubicTemplate
     {
         public override int AiActionTask(L2Player owner)
         {
             int chance = new Random().Next(100);
             int retval;
-            byte summ = skill1rate;
+            byte summ = Skill1Rate;
             if (chance < summ)
-                retval = action1(owner);
+                retval = Action1(owner);
             else
             {
-                summ += skill2rate;
+                summ += Skill2Rate;
                 if (chance < summ)
-                    retval = action2(owner);
+                    retval = Action2(owner);
                 else
-                    retval = action3(owner);
+                    retval = Action3(owner);
             }
 
             return retval;
@@ -32,7 +32,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         /// cubic main attack
         /// </summary>
         /// <param name="owner"></param>
-        private int action1(L2Player owner)
+        private int Action1(L2Player owner)
         {
             if (owner.CurrentTarget != null)
             {
@@ -40,7 +40,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
                 if (owner.CurrentTarget.Dead)
                     return 0;
 
-                CallSkill(owner, skill1, owner.CurrentTarget);
+                CallSkill(owner, Skill1, owner.CurrentTarget);
                 return 1;
             }
 
@@ -51,14 +51,14 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         /// cubic self smart attack
         /// </summary>
         /// <param name="owner"></param>
-        private int action2(L2Player owner)
+        private int Action2(L2Player owner)
         {
-            if (skill2target == "heal")
+            if (Skill2Target == "heal")
             {
                 if (owner.Dead || (owner.CurHp / owner.MaxHp > 0.9))
                     return 0;
 
-                CallSkill(owner, skill2, owner);
+                CallSkill(owner, Skill2, owner);
                 return 1;
             }
 
@@ -67,7 +67,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
                 if (owner.CurrentTarget.Dead)
                     return 0;
 
-                CallSkill(owner, skill2, owner.CurrentTarget);
+                CallSkill(owner, Skill2, owner.CurrentTarget);
                 return 1;
             }
 
@@ -78,15 +78,15 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         /// cubic master support
         /// </summary>
         /// <param name="owner"></param>
-        private int action3(L2Player owner)
+        private int Action3(L2Player owner)
         {
             byte n = 0;
-            if (owner.Effects.Any(e => e.skill.debuff == 1))
+            if (owner.Effects.Any(e => e.Skill.Debuff == 1))
                 n = 1;
 
             if (n == 1)
             {
-                CallSkill(owner, skill3, owner);
+                CallSkill(owner, Skill3, owner);
                 return 1;
             }
 

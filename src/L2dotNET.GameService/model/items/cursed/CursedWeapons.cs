@@ -6,27 +6,27 @@ namespace L2dotNET.GameService.Model.Items.Cursed
 {
     class CursedWeapons
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(CursedWeapons));
-        private static readonly CursedWeapons instance = new CursedWeapons();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(CursedWeapons));
+        private static readonly CursedWeapons Instance = new CursedWeapons();
 
-        public static CursedWeapons getInstance()
+        public static CursedWeapons GetInstance()
         {
-            return instance;
+            return Instance;
         }
 
-        private readonly SortedList<int, CursedWeapon> items = new SortedList<int, CursedWeapon>();
+        private readonly SortedList<int, CursedWeapon> _items = new SortedList<int, CursedWeapon>();
 
         public CursedWeapons()
         {
-            items.Add(8190, null);
-            items.Add(8689, null);
+            _items.Add(8190, null);
+            _items.Add(8689, null);
 
-            log.Info($"CursedWeapons: Loaded {items.Count} items.");
+            Log.Info($"CursedWeapons: Loaded {_items.Count} items.");
         }
 
-        public int[] getWeaponIds()
+        public int[] GetWeaponIds()
         {
-            return items.Keys.ToArray();
+            return _items.Keys.ToArray();
         }
     }
 }

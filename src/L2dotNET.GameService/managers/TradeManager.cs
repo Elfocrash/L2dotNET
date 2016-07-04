@@ -8,31 +8,31 @@ namespace L2dotNET.GameService.Managers
 {
     class TradeManager
     {
-        private static readonly TradeManager instance = new TradeManager();
+        private static readonly TradeManager Instance = new TradeManager();
 
-        public static TradeManager getInstance()
+        public static TradeManager GetInstance()
         {
-            return instance;
+            return Instance;
         }
 
-        public TradeDone trade_success = new TradeDone();
-        public TradeDone trade_fail = new TradeDone(false);
-        public SystemMessage trade_ok = new SystemMessage(SystemMessage.SystemMessageId.TRADE_SUCCESSFUL);
+        public TradeDone TradeSuccess = new TradeDone();
+        public TradeDone TradeFail = new TradeDone(false);
+        public SystemMessage TradeOk = new SystemMessage(SystemMessage.SystemMessageId.TradeSuccessful);
 
-        private bool validateList(L2Player player)
+        private bool ValidateList(L2Player player)
         {
-            if (player.currentTrade != null)
+            if (player.CurrentTrade != null)
             {
                 SortedList<int, long> tm = new SortedList<int, long>();
-                foreach (int id in player.currentTrade.Keys)
+                foreach (int id in player.CurrentTrade.Keys)
                 {
                     L2Item item = player.Inventory.GetItemByItemId(id);
                     if (item == null)
                         return false;
 
-                    long num = player.currentTrade[id];
+                    long num = player.CurrentTrade[id];
 
-                    if (!item.Template.isStackable() && (num != 1))
+                    if (!item.Template.IsStackable() && (num != 1))
                         tm.Add(id, 1);
 
                     if (item.Count < num)
@@ -41,9 +41,9 @@ namespace L2dotNET.GameService.Managers
 
                 if (tm.Count > 0)
                 {
-                    lock (player.currentTrade)
+                    lock (player.CurrentTrade)
                         foreach (int key in tm.Keys)
-                            player.currentTrade[key] = tm[key];
+                            player.CurrentTrade[key] = tm[key];
 
                     tm.Clear();
                 }
@@ -54,61 +54,61 @@ namespace L2dotNET.GameService.Managers
 
         public void PersonalTrade(L2Player pl1, L2Player pl2)
         {
-            if (!validateList(pl1))
+            if (!ValidateList(pl1))
             {
                 StopTrade(pl1, pl2, pl1.Name);
                 return;
             }
 
-            if (!validateList(pl2))
+            if (!ValidateList(pl2))
             {
                 StopTrade(pl1, pl2, pl2.Name);
                 return;
             }
 
             List<long[]> list = new List<long[]>();
-            if (pl1.currentTrade != null)
+            if (pl1.CurrentTrade != null)
             {
-                list.AddRange(pl1.currentTrade.Keys.Select(id => new[] { id, pl1.currentTrade[id] }));
+                list.AddRange(pl1.CurrentTrade.Keys.Select(id => new[] { id, pl1.CurrentTrade[id] }));
 
                 //pl2.Inventory.transferHere(pl1, list, false);
-                pl1.currentTrade.Clear();
+                pl1.CurrentTrade.Clear();
             }
 
-            if (pl2.currentTrade != null)
+            if (pl2.CurrentTrade != null)
             {
                 list.Clear();
 
-                list.AddRange(pl2.currentTrade.Keys.Select(id => new[] { id, pl2.currentTrade[id] }));
+                list.AddRange(pl2.CurrentTrade.Keys.Select(id => new[] { id, pl2.CurrentTrade[id] }));
 
                 //pl1.Inventory.transferHere(pl2, list, false);
-                pl2.currentTrade.Clear();
+                pl2.CurrentTrade.Clear();
             }
 
-            pl1.SendPacket(trade_ok);
-            pl1.SendPacket(trade_success);
-            pl1.sendItemList(true);
+            pl1.SendPacket(TradeOk);
+            pl1.SendPacket(TradeSuccess);
+            pl1.SendItemList(true);
             pl1.TradeState = 0;
 
-            pl2.SendPacket(trade_ok);
-            pl2.SendPacket(trade_success);
-            pl2.sendItemList(true);
+            pl2.SendPacket(TradeOk);
+            pl2.SendPacket(TradeSuccess);
+            pl2.SendItemList(true);
             pl2.TradeState = 0;
         }
 
         private void StopTrade(L2Player pl1, L2Player pl2, string name)
         {
             pl1.TradeState = 0;
-            pl1.currentTrade.Clear();
-            pl1.SendPacket(trade_fail);
-            pl1.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(name));
-            pl1.requester = null;
+            pl1.CurrentTrade.Clear();
+            pl1.SendPacket(TradeFail);
+            pl1.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1CanceledTrade).AddPlayerName(name));
+            pl1.Requester = null;
 
             pl2.TradeState = 0;
-            pl2.currentTrade.Clear();
-            pl2.SendPacket(trade_fail);
-            pl2.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(name));
-            pl2.requester = null;
+            pl2.CurrentTrade.Clear();
+            pl2.SendPacket(TradeFail);
+            pl2.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1CanceledTrade).AddPlayerName(name));
+            pl2.Requester = null;
         }
     }
 }

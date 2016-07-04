@@ -3,38 +3,38 @@ using L2dotNET.GameService.Network.Serverpackets;
 
 namespace L2dotNET.GameService.Model.Skills2
 {
-    public class TEffectResult
+    public class EffectResult
     {
-        public byte TotalUI;
-        public SortedList<int, double> sus;
+        public byte TotalUi;
+        public SortedList<int, double> Sus;
         public byte HpMpCp;
 
-        public void addSU(int stat, double value)
+        public void AddSu(int stat, double value)
         {
-            if (sus == null)
-                sus = new SortedList<int, double>();
+            if (Sus == null)
+                Sus = new SortedList<int, double>();
 
-            if (sus.ContainsKey(stat))
-                lock (sus)
+            if (Sus.ContainsKey(stat))
+                lock (Sus)
                 {
-                    sus.Remove(stat);
+                    Sus.Remove(stat);
                 }
 
-            sus.Add(stat, value);
+            Sus.Add(stat, value);
 
-            if (((HpMpCp == 0) && (stat == StatusUpdate.MAX_HP)) || (stat == StatusUpdate.MAX_MP) || (stat == StatusUpdate.MAX_CP) || (stat == StatusUpdate.CUR_HP) || (stat == StatusUpdate.CUR_MP) || (stat == StatusUpdate.CUR_CP))
+            if (((HpMpCp == 0) && (stat == StatusUpdate.MaxHp)) || (stat == StatusUpdate.MaxMp) || (stat == StatusUpdate.MaxCp) || (stat == StatusUpdate.CurHp) || (stat == StatusUpdate.CurMp) || (stat == StatusUpdate.CurCp))
                 HpMpCp = 1;
         }
 
-        public void addAll(SortedList<int, double> newlist)
+        public void AddAll(SortedList<int, double> newlist)
         {
             foreach (int stat in newlist.Keys)
-                addSU(stat, newlist[stat]);
+                AddSu(stat, newlist[stat]);
         }
 
-        public TEffectResult AsTotalUI()
+        public EffectResult AsTotalUi()
         {
-            TotalUI = 1;
+            TotalUi = 1;
             return this;
         }
     }

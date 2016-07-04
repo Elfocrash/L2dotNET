@@ -9,21 +9,21 @@ namespace L2dotNET.GameService.Model.Zones.Classes
     {
         public swamp()
         {
-            ZoneID = IdFactory.Instance.nextId();
+            ZoneId = IdFactory.Instance.NextId();
         }
 
-        public override void onInit()
+        public override void OnInit()
         {
-            base.onInit();
-            _enabled = Template.DefaultStatus;
+            base.OnInit();
+            Enabled = Template.DefaultStatus;
         }
 
-        public override void onEnter(L2Object obj)
+        public override void OnEnter(L2Object obj)
         {
-            if (!_enabled)
+            if (!Enabled)
                 return;
 
-            base.onEnter(obj);
+            base.OnEnter(obj);
 
             obj.OnEnterZone(this);
 
@@ -37,12 +37,12 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             }
         }
 
-        public override void onExit(L2Object obj, bool cls)
+        public override void OnExit(L2Object obj, bool cls)
         {
-            if (!_enabled)
+            if (!Enabled)
                 return;
 
-            base.onExit(obj, cls);
+            base.OnExit(obj, cls);
 
             obj.OnExitZone(this, cls);
 

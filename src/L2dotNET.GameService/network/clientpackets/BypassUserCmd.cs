@@ -10,19 +10,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public BypassUserCmd(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _command;
 
-        public override void read()
+        public override void Read()
         {
-            _command = readD();
+            _command = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             switch (_command)
             {
@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     if (regId > 0)
                         player.SendPacket(new SystemMessage((SystemMessage.SystemMessageId)regId).AddNumber(player.X).AddNumber(player.Y).AddNumber(player.Z));
                     else
-                        player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.NOT_IMPLEMENTED_YET_2361).AddString("Nowhere"));
+                        player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.NotImplementedYet2361).AddString("Nowhere"));
 
                     int x = (player.X >> 15) + 9 + 8;
                     int y = (player.Y >> 15) + 10 + 11;

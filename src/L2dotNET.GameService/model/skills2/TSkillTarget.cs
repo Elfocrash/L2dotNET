@@ -1,28 +1,28 @@
 ﻿namespace L2dotNET.GameService.Model.Skills2
 {
-    public enum TSkillTarget
+    public enum SkillTarget
     {
-        enemy,
-        enemy_only,
-        friend,
-        self,
-        any,
-        master,
-        unlockable,
-        others,
-        pc_body,
-        summon,
-        item,
-        ground,
-        enemy_not,
-        door_treasure,
-        npc_body,
-        target,
-        holything,
-        advance_base,
-        wyvern_target,
-        artillery,
-        fortress_flagpole,
-        none
+        Enemy,
+        EnemyOnly,
+        Friend,
+        Self,
+        Any,
+        Master,
+        Unlockable,
+        Others,
+        PcBody,
+        Summon,
+        Item,
+        Ground,
+        EnemyNot,
+        DoorTreasure,
+        NpcBody,
+        Target,
+        Holything,
+        AdvanceBase,
+        WyvernTarget,
+        Artillery,
+        FortressFlagpole,
+        None
     }
 }

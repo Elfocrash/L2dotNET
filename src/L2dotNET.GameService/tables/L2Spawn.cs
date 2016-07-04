@@ -7,84 +7,84 @@ namespace L2dotNET.GameService.Tables
 {
     public class L2Spawn
     {
-        private readonly ILog log = LogManager.GetLogger(typeof(L2Spawn));
+        private readonly ILog _log = LogManager.GetLogger(typeof(L2Spawn));
 
         public int NpcId;
         public long Respawn;
         public System.Timers.Timer RespawnTimer;
 
-        public L2Object obj;
-        private readonly L2Territory zone;
-        private readonly int x;
-        private readonly int y;
-        private readonly int z;
-        private readonly int h;
+        public L2Object Obj;
+        private readonly L2Territory _zone;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
+        private readonly int _h;
 
-        private const byte Mode = MODE_ANYTIME;
-        private byte STATUS = STATUS_OFFLINE;
-        public const byte MODE_DAY_ONLY = 1,
-                          MODE_NIGHT_ONLY = 2,
-                          MODE_ANYTIME = 0,
-                          STATUS_ACTIVE = 1,
-                          STATUS_OFFLINE = 2,
-                          STATUS_INACTIVE = 0;
+        private const byte Mode = ModeAnytime;
+        private byte _status = StatusOffline;
+        public const byte ModeDayOnly = 1,
+                          ModeNightOnly = 2,
+                          ModeAnytime = 0,
+                          StatusActive = 1,
+                          StatusOffline = 2,
+                          StatusInactive = 0;
 
-        public L2Spawn(int NpcId, long respawn, L2Territory zone, string pos)
+        public L2Spawn(int npcId, long respawn, L2Territory zone, string pos)
         {
-            this.NpcId = NpcId;
+            this.NpcId = npcId;
             this.Respawn = respawn;
-            this.zone = zone;
+            this._zone = zone;
             if (pos != null)
             {
-                x = Convert.ToInt32(pos[0]);
-                y = Convert.ToInt32(pos[1]);
-                z = Convert.ToInt32(pos[2]);
-                h = Convert.ToInt32(pos[3]);
+                _x = Convert.ToInt32(pos[0]);
+                _y = Convert.ToInt32(pos[1]);
+                _z = Convert.ToInt32(pos[2]);
+                _h = Convert.ToInt32(pos[3]);
             }
         }
 
-        public L2Spawn(int NpcId, long respawn, string[] loc)
+        public L2Spawn(int npcId, long respawn, string[] loc)
         {
-            this.NpcId = NpcId;
+            this.NpcId = npcId;
             this.Respawn = respawn;
 
-            x = Convert.ToInt32(loc[0]);
-            y = Convert.ToInt32(loc[1]);
-            z = Convert.ToInt32(loc[2]);
-            h = Convert.ToInt32(loc[3]);
+            _x = Convert.ToInt32(loc[0]);
+            _y = Convert.ToInt32(loc[1]);
+            _z = Convert.ToInt32(loc[2]);
+            _h = Convert.ToInt32(loc[3]);
         }
 
-        public void init()
+        public void Init()
         {
             int[] sp = null;
-            if ((x > 0) || (y > 0))
-                sp = new[] { x, y, z };
+            if ((_x > 0) || (_y > 0))
+                sp = new[] { _x, _y, _z };
             else
                 try
                 {
-                    sp = zone.getSpawnLocation();
+                    sp = _zone.GetSpawnLocation();
                 }
                 catch (Exception e)
                 {
                     sp = new[] { 0, 0, 0, 0 };
                     //  throw e;
-                    log.Error($"L2Spawn: {e.Message}");
+                    _log.Error($"L2Spawn: {e.Message}");
                 }
 
             //obj = NpcTable.Instance.SpawnNpc(NpcId, sp[0], sp[1], sp[2], (zone == null) ? h : zone.rnd.Next(64000));
 
-            if (obj == null)
+            if (Obj == null)
                 return;
 
-            if (obj is L2Warrior)
-                ((L2Warrior)obj).TerritorySpawn = this;
+            if (Obj is L2Warrior)
+                ((L2Warrior)Obj).TerritorySpawn = this;
 
-            STATUS = STATUS_ACTIVE;
+            _status = StatusActive;
         }
 
-        public void onDie(L2Warrior warrior, L2Character killer)
+        public void OnDie(L2Warrior warrior, L2Character killer)
         {
-            obj = null;
+            Obj = null;
             if (RespawnTimer == null)
             {
                 RespawnTimer = new System.Timers.Timer();
@@ -98,45 +98,45 @@ namespace L2dotNET.GameService.Tables
         private void OnRespawnTime(object sender, System.Timers.ElapsedEventArgs e)
         {
             RespawnTimer.Enabled = false;
-            init();
+            Init();
         }
 
         public void SunRise(bool rise)
         {
             switch (Mode)
             {
-                case MODE_DAY_ONLY:
+                case ModeDayOnly:
                     if (!rise)
                     {
-                        if (STATUS == STATUS_ACTIVE)
-                            clear();
+                        if (_status == StatusActive)
+                            Clear();
                     }
                     else
                     {
-                        if (STATUS != STATUS_ACTIVE)
-                            init();
+                        if (_status != StatusActive)
+                            Init();
                     }
                     break;
-                case MODE_NIGHT_ONLY:
+                case ModeNightOnly:
                     if (rise)
                     {
-                        if (STATUS == STATUS_ACTIVE)
-                            clear();
+                        if (_status == StatusActive)
+                            Clear();
                     }
                     else
                     {
-                        if (STATUS != STATUS_ACTIVE)
-                            init();
+                        if (_status != StatusActive)
+                            Init();
                     }
                     break;
             }
         }
 
-        private void clear()
+        private void Clear()
         {
-            if (obj != null)
-                if (obj is L2Character)
-                    ((L2Character)obj).DeleteByForce();
+            if (Obj != null)
+                if (Obj is L2Character)
+                    ((L2Character)Obj).DeleteByForce();
         }
     }
 }

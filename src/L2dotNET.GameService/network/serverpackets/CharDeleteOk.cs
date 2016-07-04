@@ -2,9 +2,9 @@
 {
     class CharDeleteOk : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x23);
+            WriteC(0x23);
         }
     }
 }

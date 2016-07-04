@@ -9,46 +9,46 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestAcquireSkillInfo(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _id;
         private int _level;
         private int _skillType;
 
-        public override void read()
+        public override void Read()
         {
-            _id = readD();
-            _level = readD();
-            _skillType = readD();
+            _id = ReadD();
+            _level = ReadD();
+            _skillType = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
-            SortedList<int, TAcquireSkill> seq = player.ActiveSkillTree;
+            SortedList<int, AcquireSkill> seq = player.ActiveSkillTree;
             if (!seq.ContainsKey(_id))
             {
                 player.SendActionFailed();
                 return;
             }
 
-            TAcquireSkill skill = seq[_id];
-            if (skill.lv != _level)
+            AcquireSkill skill = seq[_id];
+            if (skill.Lv != _level)
             {
                 player.SendActionFailed();
                 return;
             }
 
-            AcquireSkillInfo asi = new AcquireSkillInfo(_id, _level, skill.lv_up_sp, _skillType);
+            AcquireSkillInfo asi = new AcquireSkillInfo(_id, _level, skill.LvUpSp, _skillType);
             switch (_skillType)
             {
                 case 0:
                 case 1:
                 {
-                    if (skill.itemid > 0)
-                        asi._reqs.Add(new[] { 4, skill.itemid, (int)skill.itemcount, 0 });
+                    if (skill.Itemid > 0)
+                        asi.Reqs.Add(new[] { 4, skill.Itemid, (int)skill.Itemcount, 0 });
                 }
                     break;
             }

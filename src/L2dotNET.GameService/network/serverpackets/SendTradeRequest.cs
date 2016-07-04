@@ -2,17 +2,17 @@
 {
     class SendTradeRequest : GameServerNetworkPacket
     {
-        private readonly int sId;
+        private readonly int _sId;
 
         public SendTradeRequest(int sId)
         {
-            this.sId = sId;
+            this._sId = sId;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x5e);
-            writeD(sId);
+            WriteC(0x5e);
+            WriteD(_sId);
         }
     }
 }

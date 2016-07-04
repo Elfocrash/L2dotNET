@@ -4,24 +4,24 @@ namespace L2dotNET.GameService.Network.LoginAuth.Recv
 {
     class LoginServAcceptPlayer : ReceiveAuthPacket
     {
-        private string account;
+        private string _account;
 
         public LoginServAcceptPlayer(AuthThread login, byte[] db)
         {
-            makeme(login, db);
+            Makeme(login, db);
         }
 
-        public override void read()
+        public override void Read()
         {
-            account = readS();
+            _account = ReadS();
         }
 
-        public override void run()
+        public override void Run()
         {
             AccountModel ta = new AccountModel();
-            ta.Login = account;
+            ta.Login = _account;
 
-            AuthThread.Instance.awaitAccount(ta);
+            AuthThread.Instance.AwaitAccount(ta);
         }
     }
 }

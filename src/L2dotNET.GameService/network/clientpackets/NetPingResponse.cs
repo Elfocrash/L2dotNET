@@ -2,25 +2,25 @@
 {
     class NetPingResponse : GameServerNetworkRequest
     {
-        private int request;
-        private int msec;
-        private int unk2;
+        private int _request;
+        private int _msec;
+        private int _unk2;
 
         public NetPingResponse(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            request = readD();
-            msec = readD();
-            unk2 = readD();
+            _request = ReadD();
+            _msec = ReadD();
+            _unk2 = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            Client.CurrentPlayer.UpdatePing(request, msec, unk2);
+            Client.CurrentPlayer.UpdatePing(_request, _msec, _unk2);
         }
     }
 }

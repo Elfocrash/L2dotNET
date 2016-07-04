@@ -4,15 +4,15 @@ namespace L2dotNET.GameService.Model.Player
 {
     public class L2PartyRoom
     {
-        public int _roomId;
-        public int _maxMembers;
-        public int _minLevel;
-        public int _maxLevel;
-        public int _lootDist;
-        public string _title;
-        public uint _location = 1;
-        public int _leaderId;
+        public int RoomId;
+        public int MaxMembers;
+        public int MinLevel;
+        public int MaxLevel;
+        public int LootDist;
+        public string Title;
+        public uint Location = 1;
+        public int LeaderId;
 
-        public List<L2Player> _players = new List<L2Player>();
+        public List<L2Player> Players = new List<L2Player>();
     }
 }

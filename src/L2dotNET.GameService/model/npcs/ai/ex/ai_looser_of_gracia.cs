@@ -2,9 +2,9 @@
 
 namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
 {
-    class ai_looser_of_gracia : AITemplate
+    class AiLooserOfGracia : AiTemplate
     {
-        public override void onDialog(L2Player player, int ask, int reply, L2Npc npc)
+        public override void OnDialog(L2Player player, int ask, int reply, L2Npc npc)
         {
             switch (ask)
             {
@@ -14,11 +14,11 @@ namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
                     {
                         case 1:
                             if (player.Level < 75)
-                                player.ShowHtm(fnLowLevel, npc);
+                                player.ShowHtm(FnLowLevel, npc);
                             else if (player.GetAdena() >= 150000)
                                 player.InstantTeleportWithItem(-149406, 255247, -85, 57, 150000);
                             else
-                                player.ShowHtm(fnNotHaveAdena, npc);
+                                player.ShowHtm(FnNotHaveAdena, npc);
                             break;
                     }
                 }

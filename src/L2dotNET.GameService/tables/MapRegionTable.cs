@@ -12,31 +12,29 @@ namespace L2dotNET.GameService.Tables
 {
     class MapRegionTable
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(MapRegionTable));
-        private static volatile MapRegionTable instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(MapRegionTable));
+        private static volatile MapRegionTable _instance;
+        private static readonly object SyncRoot = new object();
 
-        private const int REGIONS_X = 11;
-        private const int REGIONS_Y = 16;
+        private const int RegionsX = 11;
+        private const int RegionsY = 16;
 
-        private static readonly int[,] _regions = new int[REGIONS_X, REGIONS_Y];
+        private static readonly int[,] Regions = new int[RegionsX, RegionsY];
 
         private static int[] _castleIdArray = { 0, 0, 0, 0, 0, 1, 0, 2, 3, 4, 5, 0, 0, 6, 8, 7, 9, 0, 0 };
-
-        public MapRegionTable() { }
 
         public static MapRegionTable Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new MapRegionTable();
+                        if (_instance == null)
+                            _instance = new MapRegionTable();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
@@ -57,15 +55,15 @@ namespace L2dotNET.GameService.Tables
                             {
                                 XmlNamedNodeMap attrs = node.Attributes;
                                 int rY = Convert.ToInt32(attrs.GetNamedItem("geoY").Value) - 10;
-                                for (int rX = 0; rX < REGIONS_X; rX++)
+                                for (int rX = 0; rX < RegionsX; rX++)
                                 {
-                                    _regions[rX, rY] = Convert.ToInt32(attrs.GetNamedItem("geoX_" + (rX + 16)).Value);
+                                    Regions[rX, rY] = Convert.ToInt32(attrs.GetNamedItem("geoX_" + (rX + 16)).Value);
                                     count++;
                                 }
                             }
                         }
 
-                log.Info($"MapRegionTable: Loaded {count} regions.");
+                Log.Info($"MapRegionTable: Loaded {count} regions.");
             }
         }
 
@@ -73,11 +71,11 @@ namespace L2dotNET.GameService.Tables
         {
             try
             {
-                return _regions[GetMapRegionX(posX), GetMapRegionY(posY)];
+                return Regions[GetMapRegionX(posX), GetMapRegionY(posY)];
             }
             catch (Exception e)
             {
-                log.Error($"Exception in GetMapRegion: {e}");
+                Log.Error($"Exception in GetMapRegion: {e}");
                 return 0;
             }
         }

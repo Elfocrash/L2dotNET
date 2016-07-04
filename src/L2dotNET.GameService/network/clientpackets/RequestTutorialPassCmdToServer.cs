@@ -8,21 +8,21 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestTutorialPassCmdToServer(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private string _alias;
 
-        public override void read()
+        public override void Read()
         {
-            _alias = readS();
+            _alias = ReadS();
             if (_alias.Contains("\n"))
                 _alias = _alias.Replace("\n", "");
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {

@@ -11,40 +11,40 @@ namespace L2dotNET.GameService.Tables
 {
     class NpcTable
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(NpcTable));
-        private static volatile NpcTable instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(NpcTable));
+        private static volatile NpcTable _instance;
+        private static readonly object SyncRoot = new object();
 
-        private readonly Dictionary<int, NpcTemplate> npcs = new Dictionary<int, NpcTemplate>();
+        private readonly Dictionary<int, NpcTemplate> _npcs = new Dictionary<int, NpcTemplate>();
 
         public static NpcTable Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new NpcTable();
+                        if (_instance == null)
+                            _instance = new NpcTable();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
         public NpcTemplate GetTemplate(int id)
         {
-            return npcs[id];
+            return _npcs[id];
         }
 
         public NpcTemplate GetTemplateByName(string name)
         {
-            return npcs.Values.FirstOrDefault(npcTemplate => npcTemplate.Name.EqualsIgnoreCase(name));
+            return _npcs.Values.FirstOrDefault(npcTemplate => npcTemplate.Name.EqualsIgnoreCase(name));
         }
 
         public List<NpcTemplate> GetAllNpcs()
         {
-            return npcs.Values.ToList();
+            return _npcs.Values.ToList();
         }
 
         public void Initialize()
@@ -81,7 +81,7 @@ namespace L2dotNET.GameService.Tables
                                         set.Set("name", attrs.GetNamedItem("name").Value);
                                         set.Set("title", attrs.GetNamedItem("title").Value);
 
-                                        npcs.Add(npcId, new NpcTemplate(set));
+                                        _npcs.Add(npcId, new NpcTemplate(set));
                                     }
                                 }
                                 set.Clear();
@@ -89,11 +89,11 @@ namespace L2dotNET.GameService.Tables
                     }
                 }
 
-                log.Info($"Loaded {npcs.Count} npcs.");
+                Log.Info($"Loaded {_npcs.Count} npcs.");
             }
             catch (Exception e)
             {
-                log.Error("NpcTable: Error parsing NPC templates : ", e);
+                Log.Error("NpcTable: Error parsing NPC templates : ", e);
             }
         }
     }

@@ -4,19 +4,19 @@ namespace L2dotNET.GameService.Tables
 {
     class StructureSpawn
     {
-        public int x,
-                   y,
-                   z,
-                   heading;
-        public int respawnSec = 60;
-        public int npcId;
+        public int X,
+                   Y,
+                   Z,
+                   Heading;
+        public int RespawnSec = 60;
+        public int NpcId;
 
         internal void SetLocation(string[] loc)
         {
-            x = Convert.ToInt32(loc[0]);
-            y = Convert.ToInt32(loc[1]);
-            z = Convert.ToInt32(loc[2]);
-            heading = Convert.ToInt32(loc[3]);
+            X = Convert.ToInt32(loc[0]);
+            Y = Convert.ToInt32(loc[1]);
+            Z = Convert.ToInt32(loc[2]);
+            Heading = Convert.ToInt32(loc[3]);
         }
     }
 }

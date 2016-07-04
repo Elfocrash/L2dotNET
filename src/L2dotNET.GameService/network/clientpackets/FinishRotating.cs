@@ -5,23 +5,23 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class FinishRotating : GameServerNetworkRequest
     {
-        private int degree;
+        private int _degree;
 
         public FinishRotating(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            degree = readD();
+            _degree = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
-            player.BroadcastPacket(new StopRotation(player.ObjId, degree, 0));
+            player.BroadcastPacket(new StopRotation(player.ObjId, _degree, 0));
         }
     }
 }

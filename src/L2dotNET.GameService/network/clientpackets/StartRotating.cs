@@ -5,25 +5,25 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class StartRotating : GameServerNetworkRequest
     {
-        private int degree;
-        private int side;
+        private int _degree;
+        private int _side;
 
         public StartRotating(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            degree = readD();
-            side = readD();
+            _degree = ReadD();
+            _side = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
-            player.BroadcastPacket(new StartRotation(player.ObjId, degree, side, 0));
+            player.BroadcastPacket(new StartRotation(player.ObjId, _degree, _side, 0));
         }
     }
 }

@@ -2,12 +2,12 @@
 {
     public class CharTemplate
     {
-        public int BaseSTR { get; }
-        public int BaseCON { get; }
-        public int BaseDEX { get; }
-        public int BaseINT { get; }
-        public int BaseWIT { get; }
-        public int BaseMEN { get; }
+        public int BaseStr { get; }
+        public int BaseCon { get; }
+        public int BaseDex { get; }
+        public int BaseInt { get; }
+        public int BaseWit { get; }
+        public int BaseMen { get; }
 
         public double BaseHpMax { get; }
         public double BaseMpMax { get; }
@@ -32,12 +32,12 @@
 
         public CharTemplate(StatsSet set)
         {
-            BaseSTR = set.GetInt("str", 40);
-            BaseCON = set.GetInt("con", 21);
-            BaseDEX = set.GetInt("dex", 30);
-            BaseINT = set.GetInt("int", 20);
-            BaseWIT = set.GetInt("wit", 43);
-            BaseMEN = set.GetInt("men", 20);
+            BaseStr = set.GetInt("str", 40);
+            BaseCon = set.GetInt("con", 21);
+            BaseDex = set.GetInt("dex", 30);
+            BaseInt = set.GetInt("int", 20);
+            BaseWit = set.GetInt("wit", 43);
+            BaseMen = set.GetInt("men", 20);
 
             BaseHpMax = set.GetDouble("hp");
             BaseMpMax = set.GetDouble("mp");

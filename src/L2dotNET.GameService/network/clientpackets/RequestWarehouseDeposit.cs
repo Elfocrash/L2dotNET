@@ -10,19 +10,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestWarehouseDeposit : GameServerNetworkRequest
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(RequestBypassToServer));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestBypassToServer));
 
         public RequestWarehouseDeposit(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _count;
         private long[] _items;
 
-        public override void read()
+        public override void Read()
         {
-            _count = readD();
+            _count = ReadD();
 
             if ((_count < 0) || (_count > 255))
                 _count = 0;
@@ -30,14 +30,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _items = new long[_count * 2];
             for (int i = 0; i < _count; i++)
             {
-                _items[i * 2] = readD();
-                _items[i * 2 + 1] = readQ();
+                _items[i * 2] = ReadD();
+                _items[i * 2 + 1] = ReadQ();
             }
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             L2Npc npc = player.FolkNpc;
 
@@ -59,23 +59,23 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 if (item == null)
                 {
-                    log.Info($"cant find item {objectId} in inventory {player.Name}");
+                    Log.Info($"cant find item {objectId} in inventory {player.Name}");
                     player.SendActionFailed();
                     return;
                 }
 
-                if (item.Template.isStackable())
+                if (item.Template.IsStackable())
                     slots += 1;
                 else
                     slots += (int)count;
 
-                if (item.Template.ItemID == 57)
+                if (item.Template.ItemId == 57)
                     adenatransfer += count;
             }
 
             if ((player.GetAdena() - adenatransfer) < fee)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA_PAY_FEE);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.YouNotEnoughAdenaPayFee);
                 player.SendActionFailed();
                 return;
             }
@@ -112,7 +112,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //    player.sendPacket(new NpcHtmlMessage(player, npc.Template.fnBye, npc.ObjID, 0));
             //}
 
-            player.sendItemList(true);
+            player.SendItemList(true);
         }
     }
 }

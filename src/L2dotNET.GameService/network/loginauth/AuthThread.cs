@@ -10,33 +10,33 @@ namespace L2dotNET.GameService.Network.LoginAuth
 {
     public class AuthThread
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(AuthThread));
-        private static volatile AuthThread instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(AuthThread));
+        private static volatile AuthThread _instance;
+        private static readonly object SyncRoot = new object();
 
         public static AuthThread Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new AuthThread();
+                        if (_instance == null)
+                            _instance = new AuthThread();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
-        protected TcpClient lclient;
-        protected NetworkStream nstream;
-        protected System.Timers.Timer ltimer;
+        protected TcpClient Lclient;
+        protected NetworkStream Nstream;
+        protected System.Timers.Timer Ltimer;
         public bool IsConnected;
-        private byte[] buffer;
+        private byte[] _buffer;
 
-        public string version = "rcs #216";
-        public int build = 0;
+        public string Version = "rcs #216";
+        public int Build = 0;
 
         public AuthThread() { }
 
@@ -45,33 +45,33 @@ namespace L2dotNET.GameService.Network.LoginAuth
             IsConnected = false;
             try
             {
-                lclient = new TcpClient(Config.Config.Instance.ServerConfig.AuthHost, Config.Config.Instance.ServerConfig.AuthPort);
-                nstream = lclient.GetStream();
+                Lclient = new TcpClient(Config.Config.Instance.ServerConfig.AuthHost, Config.Config.Instance.ServerConfig.AuthPort);
+                Nstream = Lclient.GetStream();
             }
             catch (SocketException)
             {
-                log.Warn("Login server is not responding. Retrying");
-                if (ltimer == null)
+                Log.Warn("Login server is not responding. Retrying");
+                if (Ltimer == null)
                 {
-                    ltimer = new System.Timers.Timer();
-                    ltimer.Interval = 2000;
-                    ltimer.Elapsed += new System.Timers.ElapsedEventHandler(ltimer_Elapsed);
+                    Ltimer = new System.Timers.Timer();
+                    Ltimer.Interval = 2000;
+                    Ltimer.Elapsed += new System.Timers.ElapsedEventHandler(ltimer_Elapsed);
                 }
 
-                if (!ltimer.Enabled)
-                    ltimer.Enabled = true;
+                if (!Ltimer.Enabled)
+                    Ltimer.Enabled = true;
 
                 return;
             }
 
-            if ((ltimer != null) && ltimer.Enabled)
-                ltimer.Enabled = false;
+            if ((Ltimer != null) && Ltimer.Enabled)
+                Ltimer.Enabled = false;
 
             IsConnected = true;
 
-            sendPacket(new Send.LoginAuth());
-            sendPacket(new LoginServPing(this));
-            new System.Threading.Thread(read).Start();
+            SendPacket(new Send.LoginAuth());
+            SendPacket(new LoginServPing(this));
+            new System.Threading.Thread(Read).Start();
         }
 
         private void ltimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -79,17 +79,17 @@ namespace L2dotNET.GameService.Network.LoginAuth
             Initialize();
         }
 
-        public void read()
+        public void Read()
         {
             try
             {
-                buffer = new byte[2];
-                nstream.BeginRead(buffer, 0, 2, new AsyncCallback(OnReceiveCallbackStatic), null);
+                _buffer = new byte[2];
+                Nstream.BeginRead(_buffer, 0, 2, new AsyncCallback(OnReceiveCallbackStatic), null);
             }
             catch (Exception e)
             {
-                log.Error($"AuthThread: {e.Message}");
-                termination();
+                Log.Error($"AuthThread: {e.Message}");
+                Termination();
             }
         }
 
@@ -97,45 +97,45 @@ namespace L2dotNET.GameService.Network.LoginAuth
         {
             try
             {
-                int rs = nstream.EndRead(result);
+                int rs = Nstream.EndRead(result);
                 if (rs > 0)
                 {
-                    short length = BitConverter.ToInt16(buffer, 0);
-                    buffer = new byte[length];
-                    nstream.BeginRead(buffer, 0, length, new AsyncCallback(OnReceiveCallback), result.AsyncState);
+                    short length = BitConverter.ToInt16(_buffer, 0);
+                    _buffer = new byte[length];
+                    Nstream.BeginRead(_buffer, 0, length, new AsyncCallback(OnReceiveCallback), result.AsyncState);
                 }
             }
             catch (Exception e)
             {
-                log.Error($"AuthThread: {e.Message}");
-                termination();
+                Log.Error($"AuthThread: {e.Message}");
+                Termination();
             }
         }
 
         private void OnReceiveCallback(IAsyncResult result)
         {
-            nstream.EndRead(result);
+            Nstream.EndRead(result);
 
-            byte[] buff = new byte[buffer.Length];
-            buffer.CopyTo(buff, 0);
+            byte[] buff = new byte[_buffer.Length];
+            _buffer.CopyTo(buff, 0);
 
-            PacketHandlerAuth.handlePacket(this, buff);
+            PacketHandlerAuth.HandlePacket(this, buff);
 
-            new System.Threading.Thread(read).Start();
+            new System.Threading.Thread(Read).Start();
         }
 
-        private void termination()
+        private void Termination()
         {
-            if (paused)
+            if (_paused)
                 return;
 
-            log.Error("AuthThread: reconnecting...");
+            Log.Error("AuthThread: reconnecting...");
             Initialize();
         }
 
-        public void sendPacket(GameServerNetworkPacket pk)
+        public void SendPacket(GameServerNetworkPacket pk)
         {
-            pk.write();
+            pk.Write();
 
             List<byte> blist = new List<byte>();
             byte[] db = pk.ToByteArray();
@@ -144,59 +144,59 @@ namespace L2dotNET.GameService.Network.LoginAuth
             blist.AddRange(BitConverter.GetBytes(len));
             blist.AddRange(db);
 
-            nstream.Write(blist.ToArray(), 0, blist.Count);
-            nstream.Flush();
+            Nstream.Write(blist.ToArray(), 0, blist.Count);
+            Nstream.Flush();
         }
 
-        private bool paused;
+        private bool _paused;
 
-        public void loginFail(string code)
+        public void LoginFail(string code)
         {
-            paused = true;
-            log.Error($"AuthThread: {code}. Please check configuration, server paused.");
+            _paused = true;
+            Log.Error($"AuthThread: {code}. Please check configuration, server paused.");
             try
             {
-                nstream.Close();
-                lclient.Close();
+                Nstream.Close();
+                Lclient.Close();
             }
             catch (Exception e)
             {
-                log.Error($"AuthThread: {e.Message}");
+                Log.Error($"AuthThread: {e.Message}");
             }
         }
 
-        public void loginOk(string code)
+        public void LoginOk(string code)
         {
-            log.Info($"AuthThread: {code}");
+            Log.Info($"AuthThread: {code}");
         }
 
-        public void setInGameAccount(string account, bool status = false)
+        public void SetInGameAccount(string account, bool status = false)
         {
-            sendPacket(new AccountInGame(account, status));
+            SendPacket(new AccountInGame(account, status));
         }
 
         public void UpdatePlayersOnline()
         {
             short cnt = (short)L2World.Instance.GetPlayers().Count;
-            sendPacket(new PlayerCount(cnt));
+            SendPacket(new PlayerCount(cnt));
         }
 
-        private readonly SortedList<string, AccountModel> awaitingAccounts = new SortedList<string, AccountModel>();
+        private readonly SortedList<string, AccountModel> _awaitingAccounts = new SortedList<string, AccountModel>();
 
-        public void awaitAccount(AccountModel ta)
+        public void AwaitAccount(AccountModel ta)
         {
-            if (awaitingAccounts.ContainsKey(ta.Login))
-                awaitingAccounts.Remove(ta.Login);
+            if (_awaitingAccounts.ContainsKey(ta.Login))
+                _awaitingAccounts.Remove(ta.Login);
 
-            awaitingAccounts.Add(ta.Login, ta);
+            _awaitingAccounts.Add(ta.Login, ta);
         }
 
-        public AccountModel getTA(string p)
+        public AccountModel GetTa(string p)
         {
-            if (awaitingAccounts.ContainsKey(p))
+            if (_awaitingAccounts.ContainsKey(p))
             {
-                AccountModel ta = awaitingAccounts[p];
-                awaitingAccounts.Remove(p);
+                AccountModel ta = _awaitingAccounts[p];
+                _awaitingAccounts.Remove(p);
                 return ta;
             }
 

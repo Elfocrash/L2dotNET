@@ -19,14 +19,14 @@ namespace L2dotNET.GameService.Model.Playable
         public NpcTemplate Template;
         public int CurrentTime;
         public int MaxTime;
-        public int StatusSP;
+        public int StatusSp;
         public long StatusExp;
         public L2Item ControlItem;
 
         public L2Summon()
         {
             ObjectSummonType = 1;
-            ObjId = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.NextId();
         }
 
         public override void OnAction(L2Player player)
@@ -42,12 +42,12 @@ namespace L2dotNET.GameService.Model.Playable
                 player.SendPacket(new PetStatusShow(ObjectSummonType));
         }
 
-        public virtual void setTemplate(NpcTemplate template)
+        public virtual void SetTemplate(NpcTemplate template)
         {
             Template = template;
             CStatsInit();
             //CharacterStat.setTemplate(template);
-            CurHp = CharacterStat.getStat(TEffectType.b_max_hp);
+            CurHp = CharacterStat.GetStat(EffectType.BMaxHp);
             MaxTime = 1200; //20 минут
             CurrentTime = MaxTime;
             Level = template.Level;
@@ -69,22 +69,22 @@ namespace L2dotNET.GameService.Model.Playable
                 obj.SendPacket(new PetInfo(this));
         }
 
-        public byte getPvPStatus()
+        public byte GetPvPStatus()
         {
             return Owner == null ? (byte)0 : Owner.PvPStatus;
         }
 
-        public int getKarma()
+        public int GetKarma()
         {
             return Owner == null ? 0 : Owner.Karma;
         }
 
-        public virtual long getExpToLevelUp()
+        public virtual long GetExpToLevelUp()
         {
             return 0;
         }
 
-        public virtual long getExpCurrentLevel()
+        public virtual long GetExpCurrentLevel()
         {
             return 0;
         }
@@ -104,12 +104,12 @@ namespace L2dotNET.GameService.Model.Playable
             return 0;
         }
 
-        public virtual int getForm()
+        public virtual int GetForm()
         {
             return 0;
         }
 
-        private bool IsSpawned;
+        private bool _isSpawned;
 
         public void SpawmMe()
         {
@@ -121,48 +121,48 @@ namespace L2dotNET.GameService.Model.Playable
             Owner.SendPacket(new PetStatusUpdate(this));
 
             L2World.Instance.AddObject(this); //to add pet
-            IsSpawned = true;
+            _isSpawned = true;
             OnSpawn();
 
             StartRegeneration();
 
-            AiCharacter = new SA_Standart(this);
+            AiCharacter = new SaStandart(this);
             AiCharacter.Enable();
         }
 
-        public void setOwner(L2Player owner)
+        public void SetOwner(L2Player owner)
         {
             Owner = owner;
             owner.Summon = this;
 
             if (owner.Party != null)
-                owner.Party.broadcastToMembers(new ExPartyPetWindowAdd(this));
+                owner.Party.BroadcastToMembers(new ExPartyPetWindowAdd(this));
 
             Title = owner.Name;
         }
 
-        public virtual void unSummon()
+        public virtual void UnSummon()
         {
             AiCharacter.Disable();
 
             Owner.SendPacket(new PetDelete(ObjectSummonType, ObjId));
 
             if (Owner.Party != null)
-                Owner.Party.broadcastToMembers(new ExPartyPetWindowDelete(ObjId, Owner.ObjId, Name));
+                Owner.Party.BroadcastToMembers(new ExPartyPetWindowDelete(ObjId, Owner.ObjId, Name));
 
             Owner.Summon = null;
             DeleteMe();
         }
 
-        public bool isTeleporting = false;
+        public bool IsTeleporting = false;
         public double ConsumeExp = 30.0;
         // 0 - teleport, 1 - default, 2 - summoned
         public byte AppearMethod()
         {
-            if (!IsSpawned)
+            if (!_isSpawned)
                 return 2;
 
-            if (isTeleporting)
+            if (IsTeleporting)
                 return 0;
 
             return 1;
@@ -185,7 +185,7 @@ namespace L2dotNET.GameService.Model.Playable
             if (Owner.CurrentTarget == null)
                 return;
 
-            double dis = Calcs.calculateDistance(this, Owner.CurrentTarget, true);
+            double dis = Calcs.CalculateDistance(this, Owner.CurrentTarget, true);
 
             if ((dis > 40) && (dis < 2300))
                 if (!CantMove())
@@ -222,8 +222,8 @@ namespace L2dotNET.GameService.Model.Playable
             PartySpelled p = new PartySpelled(this);
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
             foreach (AbnormalEffect ei in Effects.Where(ei => ei != null))
-                if (ei.active == 1)
-                    p.addIcon(ei.id, ei.lvl, ei.getTime());
+                if (ei.Active == 1)
+                    p.AddIcon(ei.Id, ei.Lvl, ei.GetTime());
                 else
                     nulled.Add(ei);
 
@@ -232,7 +232,7 @@ namespace L2dotNET.GameService.Model.Playable
                     Effects.Remove(ei);
 
             nulled.Clear();
-            Owner.Party.broadcastToMembers(p);
+            Owner.Party.BroadcastToMembers(p);
         }
 
         public override string AsString()

@@ -6,24 +6,24 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class SkillCoolTime : GameServerNetworkPacket
     {
-        private readonly ICollection<L2SkillCoolTime> list;
+        private readonly ICollection<L2SkillCoolTime> _list;
 
         public SkillCoolTime(L2Player player)
         {
-            list = player.Reuse.Values;
+            _list = player.Reuse.Values;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xc1);
-            writeD(list.Count);
+            WriteC(0xc1);
+            WriteD(_list.Count);
 
-            foreach (L2SkillCoolTime ct in list)
+            foreach (L2SkillCoolTime ct in _list)
             {
-                writeD(ct.id);
-                writeD(ct.lvl);
-                writeD(ct.total);
-                writeD(ct.getDelay());
+                WriteD(ct.Id);
+                WriteD(ct.Lvl);
+                WriteD(ct.Total);
+                WriteD(ct.GetDelay());
             }
         }
     }

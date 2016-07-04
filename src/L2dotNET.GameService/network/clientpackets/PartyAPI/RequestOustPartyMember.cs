@@ -5,19 +5,19 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 {
     class RequestOustPartyMember : GameServerNetworkRequest
     {
-        private string name;
+        private string _name;
 
         public RequestOustPartyMember(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            name = readS();
+            _name = ReadS();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -27,14 +27,14 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
                 return;
             }
 
-            if (player.Party.leader.ObjId != player.ObjId)
+            if (player.Party.Leader.ObjId != player.ObjId)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_EXPEL_THE_PARTY_MEMBER);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.FailedToExpelThePartyMember);
                 player.SendActionFailed();
                 return;
             }
 
-            player.Party.Expel(name);
+            player.Party.Expel(_name);
         }
     }
 }

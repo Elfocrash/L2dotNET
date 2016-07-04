@@ -2,14 +2,14 @@ using L2dotNET.GameService.Model.Items;
 
 namespace L2dotNET.GameService.Tables
 {
-    public class ND_shopItem
+    public class NdShopItem
     {
-        public ItemTemplate item;
-        public int count = -1;
+        public ItemTemplate Item;
+        public int Count = -1;
 
-        public ND_shopItem(ItemTemplate it)
+        public NdShopItem(ItemTemplate it)
         {
-            item = it;
+            Item = it;
         }
     }
 }

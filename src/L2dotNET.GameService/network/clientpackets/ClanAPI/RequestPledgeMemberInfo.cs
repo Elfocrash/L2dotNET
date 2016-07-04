@@ -9,19 +9,19 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
     {
         public RequestPledgeMemberInfo(GameClient client, byte[] data)
         {
-            makeme(client, data, 2);
+            Makeme(client, data, 2);
         }
 
         private int _unk1;
         private string _player;
 
-        public override void read()
+        public override void Read()
         {
-            _unk1 = readD();
-            _player = readS();
+            _unk1 = ReadD();
+            _player = ReadS();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
             L2Clan clan = player.Clan;
 
-            ClanMember m = clan.getClanMembers().FirstOrDefault(cm => cm.Name.Equals(_player));
+            ClanMember m = clan.GetClanMembers().FirstOrDefault(cm => cm.Name.Equals(_player));
 
             if (m == null)
             {

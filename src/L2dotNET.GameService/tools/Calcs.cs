@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.Tools
 {
     class Calcs
     {
-        public static bool checkIfInRange(int range, L2Object obj1, int x, int y, int z, bool includeZAxis)
+        public static bool CheckIfInRange(int range, L2Object obj1, int x, int y, int z, bool includeZAxis)
         {
             if (obj1 == null)
                 return false;
@@ -32,7 +32,7 @@ namespace L2dotNET.GameService.Tools
             }
         }
 
-        public static bool checkIfInRange(int range, L2Object obj1, L2Object obj2, bool includeZAxis)
+        public static bool CheckIfInRange(int range, L2Object obj1, L2Object obj2, bool includeZAxis)
         {
             if ((obj1 == null) || (obj2 == null))
                 return false;
@@ -58,12 +58,12 @@ namespace L2dotNET.GameService.Tools
             }
         }
 
-        public static double calculateDistance(int x1, int y1, int z1, int x2, int y2)
+        public static double CalculateDistance(int x1, int y1, int z1, int x2, int y2)
         {
-            return calculateDistance(x1, y1, 0, x2, y2, 0, false);
+            return CalculateDistance(x1, y1, 0, x2, y2, 0, false);
         }
 
-        public static double calculateDistance(int x1, int y1, int z1, int x2, int y2, int z2, bool includeZAxis)
+        public static double CalculateDistance(int x1, int y1, int z1, int x2, int y2, int z2, bool includeZAxis)
         {
             double dx = (double)x1 - x2;
             double dy = (double)y1 - y2;
@@ -77,9 +77,9 @@ namespace L2dotNET.GameService.Tools
             return Math.Sqrt((dx * dx) + (dy * dy));
         }
 
-        public static double calculateDistance(L2Object obj1, L2Object obj2, bool includeZAxis)
+        public static double CalculateDistance(L2Object obj1, L2Object obj2, bool includeZAxis)
         {
-            return calculateDistance(obj1.X, obj1.Y, obj1.Z, obj2.X, obj2.Y, obj2.Z, includeZAxis);
+            return CalculateDistance(obj1.X, obj1.Y, obj1.Z, obj2.X, obj2.Y, obj2.Z, includeZAxis);
         }
     }
 }

@@ -2,26 +2,26 @@
 {
     class StartRotation : GameServerNetworkPacket
     {
-        private readonly int sId;
-        private readonly int degree;
-        private readonly int side;
-        private readonly int speed;
+        private readonly int _sId;
+        private readonly int _degree;
+        private readonly int _side;
+        private readonly int _speed;
 
         public StartRotation(int sId, int degree, int side, int speed)
         {
-            this.sId = sId;
-            this.degree = degree;
-            this.side = side;
-            this.speed = speed;
+            this._sId = sId;
+            this._degree = degree;
+            this._side = side;
+            this._speed = speed;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x62);
-            writeD(sId);
-            writeD(degree);
-            writeD(side);
-            writeD(speed);
+            WriteC(0x62);
+            WriteD(_sId);
+            WriteD(_degree);
+            WriteD(_side);
+            WriteD(_speed);
         }
     }
 }

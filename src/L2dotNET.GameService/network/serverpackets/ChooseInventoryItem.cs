@@ -2,17 +2,17 @@
 {
     class ChooseInventoryItem : GameServerNetworkPacket
     {
-        private readonly int itemId;
+        private readonly int _itemId;
 
         public ChooseInventoryItem(int itemId)
         {
-            this.itemId = itemId;
+            this._itemId = itemId;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x6f);
-            writeD(itemId);
+            WriteC(0x6f);
+            WriteD(_itemId);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public AttackRequest(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _objectId;
@@ -17,18 +17,18 @@ namespace L2dotNET.GameService.Network.Clientpackets
         private int _originZ;
         private int _attackId;
 
-        public override void read()
+        public override void Read()
         {
-            _objectId = readD();
-            _originX = readD();
-            _originY = readD();
-            _originZ = readD();
-            _attackId = readC(); // 0 for simple click   1 for shift-click
+            _objectId = ReadD();
+            _originX = ReadD();
+            _originY = ReadD();
+            _originZ = ReadD();
+            _attackId = ReadC(); // 0 for simple click   1 for shift-click
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {
@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (_objectId == player.ObjId)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_ON_YOURSELF);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotUseOnYourself);
                 player.SendActionFailed();
                 return;
             }

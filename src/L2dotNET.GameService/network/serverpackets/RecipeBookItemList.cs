@@ -15,27 +15,27 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public RecipeBookItemList(L2Player player, int type)
         {
             _type = type;
-            _mp = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
+            _mp = (int)player.CharacterStat.GetStat(EffectType.BMaxMp);
             _book = new List<L2Recipe>();
 
-            if (player._recipeBook != null)
-                foreach (L2Recipe rec in player._recipeBook.Where(rec => rec._iscommonrecipe == type))
+            if (player.RecipeBook != null)
+                foreach (L2Recipe rec in player.RecipeBook.Where(rec => rec.Iscommonrecipe == type))
                     _book.Add(rec);
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xdc);
-            writeD(_type);
-            writeD(_mp);
+            WriteC(0xdc);
+            WriteD(_type);
+            WriteD(_mp);
 
-            writeD(_book.Count);
+            WriteD(_book.Count);
 
             int x = 0;
             foreach (L2Recipe rec in _book)
             {
-                writeD(rec.RecipeID);
-                writeD(x);
+                WriteD(rec.RecipeId);
+                WriteD(x);
                 x++; //?
             }
         }

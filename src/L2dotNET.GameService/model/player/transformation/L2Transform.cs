@@ -5,25 +5,25 @@ namespace L2dotNET.GameService.Model.Player.Transformation
     public class L2Transform
     {
         public TransformTemplate Template;
-        public Timer _timer;
-        public L2Player owner;
+        public Timer MTimer;
+        public L2Player Owner;
 
         public L2Transform(TransformTemplate tempalte)
         {
             Template = tempalte;
         }
 
-        public void timer(int seconds)
+        public void Timer(int seconds)
         {
-            _timer = new Timer(seconds * 1000);
-            _timer.Elapsed += new ElapsedEventHandler(actionTimeEnd);
-            _timer.Enabled = true;
+            MTimer = new Timer(seconds * 1000);
+            MTimer.Elapsed += ActionTimeEnd;
+            MTimer.Enabled = true;
         }
 
-        private void actionTimeEnd(object sender, ElapsedEventArgs e)
+        private void ActionTimeEnd(object sender, ElapsedEventArgs e)
         {
-            _timer.Enabled = false;
-            owner.untransform();
+            MTimer.Enabled = false;
+            Owner.Untransform();
         }
     }
 }

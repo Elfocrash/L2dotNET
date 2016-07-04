@@ -16,29 +16,29 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ExStorageMaxCount(L2Player player)
         {
-            _inventory = player.ItemLimit_Inventory;
-            _warehouse = player.ItemLimit_Warehouse;
-            _clan = player.ItemLimit_ClanWarehouse;
-            _privateSell = player.ItemLimit_Selling;
-            _privateBuy = player.ItemLimit_Buying;
-            _receipeD = player.ItemLimit_RecipeDwarven;
-            _recipe = player.ItemLimit_Warehouse;
+            _inventory = player.ItemLimitInventory;
+            _warehouse = player.ItemLimitWarehouse;
+            _clan = player.ItemLimitClanWarehouse;
+            _privateSell = player.ItemLimitSelling;
+            _privateBuy = player.ItemLimitBuying;
+            _receipeD = player.ItemLimitRecipeDwarven;
+            _recipe = player.ItemLimitWarehouse;
             //_extra = player.ItemLimit_Extra;
             //_quest = player.ItemLimit_Quest;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0x2e);
+            WriteC(0xfe);
+            WriteH(0x2e);
 
-            writeD(_inventory);
-            writeD(_warehouse);
-            writeD(_clan);
-            writeD(_privateSell);
-            writeD(_privateBuy);
-            writeD(_receipeD);
-            writeD(_recipe);
+            WriteD(_inventory);
+            WriteD(_warehouse);
+            WriteD(_clan);
+            WriteD(_privateSell);
+            WriteD(_privateBuy);
+            WriteD(_receipeD);
+            WriteD(_recipe);
             //writeD(_extra);
             //writeD(_quest);
         }

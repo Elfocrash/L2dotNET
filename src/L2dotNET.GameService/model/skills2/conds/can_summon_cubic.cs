@@ -2,9 +2,9 @@
 
 namespace L2dotNET.GameService.Model.Skills2.Conds
 {
-    public class can_summon_cubic : TSkillCond
+    public class CanSummonCubic : SkillCond
     {
-        public override bool CanUse(L2Player player, TSkill skill)
+        public override bool CanUse(L2Player player, Skill skill)
         {
             //int len = player.cubics.Count;
             //int max = (int)player.CharacterStat.getStat(TEffectType.p_cubic_mastery);

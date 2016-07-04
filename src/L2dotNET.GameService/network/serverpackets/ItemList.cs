@@ -7,42 +7,42 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class ItemList : GameServerNetworkPacket
     {
-        private readonly bool showWindow;
-        private readonly List<ItemListItem> items = new List<ItemListItem>();
-        private readonly List<int> blocked = new List<int>();
+        private readonly bool _showWindow;
+        private readonly List<ItemListItem> _items = new List<ItemListItem>();
+        private readonly List<int> _blocked = new List<int>();
 
         public ItemList(L2Player player, bool showWindow)
         {
-            this.showWindow = showWindow;
-            foreach (L2Item item in player.Inventory.Items.Where(item => item.Template.Type != ItemTemplate.L2ItemType.questitem))
+            this._showWindow = showWindow;
+            foreach (L2Item item in player.Inventory.Items.Where(item => item.Template.Type != ItemTemplate.L2ItemType.Questitem))
             {
-                items.Add(new ItemListItem { ObjectId = item.ObjId, ItemId = item.Template.ItemID, Slot = item.SlotLocation, Count = item.Count, Type2 = item.Template.Type2(), CType1 = item.CustomType1, Equip = item.IsEquipped, Bodypart = item.Template.BodyPartId(), Enchant = item.Enchant, CType2 = item.CustomType2, Augment = item.AugmentationId, Mana = item.Durability, TimeLeft = item.LifeTimeEnd() });
+                _items.Add(new ItemListItem { ObjectId = item.ObjId, ItemId = item.Template.ItemId, Slot = item.SlotLocation, Count = item.Count, Type2 = item.Template.Type2(), CType1 = item.CustomType1, Equip = item.IsEquipped, Bodypart = item.Template.BodyPartId(), Enchant = item.Enchant, CType2 = item.CustomType2, Augment = item.AugmentationId, Mana = item.Durability, TimeLeft = item.LifeTimeEnd() });
 
                 if (item.Blocked)
-                    blocked.Add(item.ObjId);
+                    _blocked.Add(item.ObjId);
             }
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x1b);
-            writeH(showWindow ? 1 : 0);
-            writeH(items.Count);
+            WriteC(0x1b);
+            WriteH(_showWindow ? 1 : 0);
+            WriteH(_items.Count);
 
-            foreach (ItemListItem item in items)
+            foreach (ItemListItem item in _items)
             {
-                writeD(item.ObjectId);
-                writeD(item.ItemId);
-                writeD(item.Slot);
-                writeQ(item.Count);
-                writeH(item.Type2);
-                writeH(item.CType1);
-                writeH(item.Equip);
-                writeD(item.Bodypart);
-                writeH(item.Enchant);
-                writeH(item.CType2);
-                writeD(item.Augment);
-                writeD(item.Mana);
+                WriteD(item.ObjectId);
+                WriteD(item.ItemId);
+                WriteD(item.Slot);
+                WriteQ(item.Count);
+                WriteH(item.Type2);
+                WriteH(item.CType1);
+                WriteH(item.Equip);
+                WriteD(item.Bodypart);
+                WriteH(item.Enchant);
+                WriteH(item.CType2);
+                WriteD(item.Augment);
+                WriteD(item.Mana);
                 //writeD(item.TimeLeft);
             }
 

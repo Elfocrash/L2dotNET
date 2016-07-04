@@ -4,30 +4,30 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class CharFlyToLocation : GameServerNetworkPacket
     {
-        private readonly L2Object obj;
-        private readonly int id;
+        private readonly L2Object _obj;
+        private readonly int _id;
 
         public CharFlyToLocation(L2Object obj, FlyType type)
         {
-            this.obj = obj;
-            id = (int)type;
+            this._obj = obj;
+            _id = (int)type;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xC5);
+            WriteC(0xC5);
 
-            writeD(obj.ObjId);
+            WriteD(_obj.ObjId);
 
-            writeD(obj.DestX);
-            writeD(obj.DestY);
-            writeD(obj.DestZ);
+            WriteD(_obj.DestX);
+            WriteD(_obj.DestY);
+            WriteD(_obj.DestZ);
 
-            writeD(obj.X);
-            writeD(obj.Y);
-            writeD(obj.Z);
+            WriteD(_obj.X);
+            WriteD(_obj.Y);
+            WriteD(_obj.Z);
 
-            writeD(id);
+            WriteD(_id);
         }
     }
 }

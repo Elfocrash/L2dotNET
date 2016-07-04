@@ -4,10 +4,10 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Model.Skills2
 {
-    public class TSpecEffect
+    public class SpecEffect
     {
-        public double value;
-        public bool mul = false;
+        public double Value;
+        public bool Mul = false;
 
         public virtual void OnStartMoving(L2Player player) { }
 
@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Model.Skills2
 
         public virtual void OnGaveDamage(L2Player player, L2Character target, bool crit) { }
 
-        public virtual void OnCastSkill(L2Player player, L2Character target, TSkill skill) { }
+        public virtual void OnCastSkill(L2Player player, L2Character target, Skill skill) { }
 
         public virtual void OnStand(L2Player player) { }
 

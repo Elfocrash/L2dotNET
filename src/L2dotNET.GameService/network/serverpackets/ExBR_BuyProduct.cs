@@ -1,19 +1,19 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExBR_BuyProduct : GameServerNetworkPacket
+    class ExBrBuyProduct : GameServerNetworkPacket
     {
-        private readonly int result;
+        private readonly int _result;
 
-        public ExBR_BuyProduct(int result)
+        public ExBrBuyProduct(int result)
         {
-            this.result = result;
+            this._result = result;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0xCC);
-            writeD(result);
+            WriteC(0xFE);
+            WriteH(0xCC);
+            WriteD(_result);
         }
     }
 }

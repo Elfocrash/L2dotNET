@@ -19,14 +19,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _z = target.Z;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x29);
-            writeD(_objectId);
-            writeD(_targetObjId);
-            writeD(_x);
-            writeD(_y);
-            writeD(_z);
+            WriteC(0x29);
+            WriteD(_objectId);
+            WriteD(_targetObjId);
+            WriteD(_x);
+            WriteD(_y);
+            WriteD(_z);
         }
     }
 }

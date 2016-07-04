@@ -13,15 +13,15 @@
             _z = z;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xdf);
-            writeD(_x);
-            writeD(_y);
-            writeD(_z);
-            writeC(0x00);
-            writeC(0xc0);
-            writeC(0x00);
+            WriteC(0xdf);
+            WriteD(_x);
+            WriteD(_y);
+            WriteD(_z);
+            WriteC(0x00);
+            WriteC(0xc0);
+            WriteC(0x00);
         }
     }
 }

@@ -2,20 +2,20 @@
 {
     class PetDelete : GameServerNetworkPacket
     {
-        private readonly byte ObjectSummonType;
-        private readonly int ObjID;
+        private readonly byte _objectSummonType;
+        private readonly int _objId;
 
-        public PetDelete(byte ObjectSummonType, int objId)
+        public PetDelete(byte objectSummonType, int objId)
         {
-            this.ObjectSummonType = ObjectSummonType;
-            this.ObjID = objId;
+            this._objectSummonType = objectSummonType;
+            this._objId = objId;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xb6);
-            writeD(ObjectSummonType);
-            writeD(ObjID);
+            WriteC(0xb6);
+            WriteD(_objectSummonType);
+            WriteD(_objId);
         }
     }
 }

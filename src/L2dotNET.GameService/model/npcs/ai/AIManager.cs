@@ -2,57 +2,57 @@
 
 namespace L2dotNET.GameService.Model.Npcs.Ai
 {
-    public class AIManager
+    public class AiManager
     {
-        private static volatile AIManager instance;
-        private static readonly object syncRoot = new object();
+        private static volatile AiManager _instance;
+        private static readonly object SyncRoot = new object();
 
-        public static AIManager Instance
+        public static AiManager Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new AIManager();
+                        if (_instance == null)
+                            _instance = new AiManager();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
-        public AIManager() { }
+        public AiManager() { }
 
         public void Initialize()
         {
-            register(new broadcasting_tower());
+            Register(new BroadcastingTower());
         }
 
-        public SortedList<int, AITemplate> _registeredAis = new SortedList<int, AITemplate>();
+        public SortedList<int, AiTemplate> RegisteredAis = new SortedList<int, AiTemplate>();
 
-        private void register(AITemplate t)
+        private void Register(AiTemplate t)
         {
-            _registeredAis.Add(t.id, t);
+            RegisteredAis.Add(t.Id, t);
         }
 
-        public AITemplate CheckChatWindow(int id)
+        public AiTemplate CheckChatWindow(int id)
         {
-            if (_registeredAis.ContainsKey(id))
+            if (RegisteredAis.ContainsKey(id))
             {
-                AITemplate t = _registeredAis[id];
-                return t.chatOvr ? t : null;
+                AiTemplate t = RegisteredAis[id];
+                return t.ChatOvr ? t : null;
             }
 
             return null;
         }
 
-        public AITemplate CheckDialogResult(int id)
+        public AiTemplate CheckDialogResult(int id)
         {
-            if (_registeredAis.ContainsKey(id))
+            if (RegisteredAis.ContainsKey(id))
             {
-                AITemplate t = _registeredAis[id];
-                return t.dialogOvr ? t : null;
+                AiTemplate t = RegisteredAis[id];
+                return t.DialogOvr ? t : null;
             }
 
             return null;

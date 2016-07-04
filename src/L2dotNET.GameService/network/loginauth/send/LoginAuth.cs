@@ -2,17 +2,17 @@
 {
     class LoginAuth : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xA1);
-            writeH(Config.Config.Instance.ServerConfig.Port);
-            writeS(Config.Config.Instance.ServerConfig.Host);
-            writeS("");
-            writeS(Config.Config.Instance.ServerConfig.AuthCode);
-            writeD(0);
-            writeH(Config.Config.Instance.ServerConfig.MaxPlayers);
-            writeC(Config.Config.Instance.ServerConfig.IsGmOnly ? 0x01 : 0x00);
-            writeC(Config.Config.Instance.ServerConfig.IsTestServer ? 0x01 : 0x00);
+            WriteC(0xA1);
+            WriteH(Config.Config.Instance.ServerConfig.Port);
+            WriteS(Config.Config.Instance.ServerConfig.Host);
+            WriteS("");
+            WriteS(Config.Config.Instance.ServerConfig.AuthCode);
+            WriteD(0);
+            WriteH(Config.Config.Instance.ServerConfig.MaxPlayers);
+            WriteC(Config.Config.Instance.ServerConfig.IsGmOnly ? 0x01 : 0x00);
+            WriteC(Config.Config.Instance.ServerConfig.IsTestServer ? 0x01 : 0x00);
         }
     }
 }

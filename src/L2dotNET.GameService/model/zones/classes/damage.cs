@@ -11,18 +11,18 @@ namespace L2dotNET.GameService.Model.Zones.Classes
     {
         public damage()
         {
-            ZoneID = IdFactory.Instance.nextId();
+            ZoneId = IdFactory.Instance.NextId();
         }
 
-        public override void onInit()
+        public override void OnInit()
         {
-            _enabled = Template.DefaultStatus;
+            Enabled = Template.DefaultStatus;
 
-            if (_enabled && (Template._unit_tick > 0))
-                startTimer();
+            if (Enabled && (Template.UnitTick > 0))
+                StartTimer();
         }
 
-        public override void onTimerAction(object sender, ElapsedEventArgs e)
+        public override void OnTimerAction(object sender, ElapsedEventArgs e)
         {
             if (ObjectsInside.Count == 0)
                 return;
@@ -30,26 +30,26 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             foreach (L2Object o in ObjectsInside.Values)
                 if (o is L2Player)
                 {
-                    if (Template._target == ZoneTemplate.ZoneTarget.npc)
+                    if (Template.Target == ZoneTemplate.ZoneTarget.Npc)
                         continue;
 
-                    ((L2Player)o).ReduceHpArea(Template._damage_on_hp, Template._message_no);
+                    ((L2Player)o).ReduceHpArea(Template.DamageOnHp, Template.MessageNo);
                 }
                 else if (o is L2Warrior)
                 {
-                    if (Template._target == ZoneTemplate.ZoneTarget.pc)
+                    if (Template.Target == ZoneTemplate.ZoneTarget.Pc)
                         continue;
 
-                    ((L2Warrior)o).ReduceHpArea(Template._damage_on_hp, Template._message_no);
+                    ((L2Warrior)o).ReduceHpArea(Template.DamageOnHp, Template.MessageNo);
                 }
         }
 
-        public override void onEnter(L2Object obj)
+        public override void OnEnter(L2Object obj)
         {
-            if (!_enabled)
+            if (!Enabled)
                 return;
 
-            base.onEnter(obj);
+            base.OnEnter(obj);
 
             obj.OnEnterZone(this);
 
@@ -61,12 +61,12 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             }
         }
 
-        public override void onExit(L2Object obj, bool cls)
+        public override void OnExit(L2Object obj, bool cls)
         {
-            if (!_enabled)
+            if (!Enabled)
                 return;
 
-            base.onExit(obj, cls);
+            base.OnExit(obj, cls);
 
             obj.OnExitZone(this, cls);
             if (obj is L2Player)

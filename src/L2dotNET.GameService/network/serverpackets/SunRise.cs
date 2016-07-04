@@ -2,9 +2,9 @@
 {
     class SunRise : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x1c);
+            WriteC(0x1c);
         }
     }
 }

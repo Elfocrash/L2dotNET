@@ -5,14 +5,14 @@ namespace L2dotNET.GameService.Managers
 {
     class PetitionManager
     {
-        private static readonly PetitionManager instance = new PetitionManager();
+        private static readonly PetitionManager Instance = new PetitionManager();
 
-        public static PetitionManager getInstance()
+        public static PetitionManager GetInstance()
         {
-            return instance;
+            return Instance;
         }
 
-        internal void petitionlink(L2Player player, string p)
+        internal void Petitionlink(L2Player player, string p)
         {
             throw new NotImplementedException();
         }

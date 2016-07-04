@@ -5,24 +5,19 @@ namespace L2dotNET.GameService.Managers
 {
     class CastleManager
     {
-        private static readonly CastleManager inst = new CastleManager();
+        private static readonly CastleManager Inst = new CastleManager();
 
-        public static CastleManager getInstance()
+        public static CastleManager GetInstance()
         {
-            return inst;
+            return Inst;
         }
 
-        public Dictionary<int, Castle> castles = new Dictionary<int, Castle>();
+        public Dictionary<int, Castle> Castles = new Dictionary<int, Castle>();
         //private string[] announcements;
 
-        public CastleManager()
+        public Castle Get(int id)
         {
-            //  announcements = File.ReadAllLines(@"data\announcements.txt");
-        }
-
-        public Castle get(int id)
-        {
-            return castles.ContainsKey(id) ? castles[id] : null;
+            return Castles.ContainsKey(id) ? Castles[id] : null;
         }
     }
 }

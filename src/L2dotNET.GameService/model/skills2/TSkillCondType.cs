@@ -1,7 +1,7 @@
 ﻿namespace L2dotNET.GameService.Model.Skills2
 {
-    public enum TSkillCondType
+    public enum SkillCondType
     {
-        can_summon_cubic
+        CanSummonCubic
     }
 }

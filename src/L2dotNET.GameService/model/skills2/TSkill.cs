@@ -11,46 +11,46 @@ using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Model.Skills2
 {
-    public class TSkill
+    public class Skill
     {
-        public int skill_id;
-        public int level;
-        public TSkillOperational OpType;
-        public int magic_level;
-        public int cast_range,
-                   effective_range;
-        public int skill_cool_time;
-        public double reuse_delay;
+        public int SkillId;
+        public int Level;
+        public SkillOperational OpType;
+        public int MagicLevel;
+        public int CastRange,
+                   EffectiveRange;
+        public int SkillCoolTime;
+        public double ReuseDelay;
 
-        public short is_magic = 0;
+        public short IsMagic = 0;
 
-        public short activate_rate = -1;
-        public short skill_hit_time;
+        public short ActivateRate = -1;
+        public short SkillHitTime;
 
-        public TSkillScope affect_scope;
-        public TSkillTarget target_type;
+        public SkillScope AffectScope;
+        public SkillTarget TargetType;
 
-        public List<TSkillCond> Conditions;
+        public List<SkillCond> Conditions;
 
-        public bool Bonus_Overhit = false;
-        public bool Bonus_SSBoost = false;
+        public bool BonusOverhit = false;
+        public bool BonusSsBoost = false;
 
-        public List<TEffect> start_effect;
-        public List<TEffect> tick_effect;
-        public List<TEffect> effects = new List<TEffect>();
-        public List<TEffect> pvp_effect;
-        public List<TEffect> pve_effect;
-        public List<TEffect> end_effect;
+        public List<Effect> StartEffect;
+        public List<Effect> TickEffect;
+        public List<Effect> Effects = new List<Effect>();
+        public List<Effect> PvpEffect;
+        public List<Effect> PveEffect;
+        public List<Effect> EndEffect;
 
-        public int abnormal_visual_effect = -1;
-        public string abnormal_type = null;
-        public int abnormal_time;
-        public int abnormal_lv;
-        public int debuff;
-        public int effect_point;
-        public int mp_consume1;
-        public int mp_consume2;
-        public int hp_consume;
+        public int AbnormalVisualEffect = -1;
+        public string AbnormalType = null;
+        public int AbnormalTime;
+        public int AbnormalLv;
+        public int Debuff;
+        public int EffectPoint;
+        public int MpConsume1;
+        public int MpConsume2;
+        public int HpConsume;
 
         public int ConsumeItemId;
         public long ConsumeItemCount;
@@ -69,16 +69,16 @@ namespace L2dotNET.GameService.Model.Skills2
             byte order = 0;
             foreach (string str in value.Split(';'))
             {
-                TEffectType type = (TEffectType)Enum.Parse(typeof(TEffectType), str.Split(' ')[0]);
-                TEffect te = TEffectRegistrator.getInstance().BuildProc(type, str);
+                EffectType type = (EffectType)Enum.Parse(typeof(EffectType), str.Split(' ')[0]);
+                Effect te = EffectRegistrator.GetInstance().BuildProc(type, str);
                 if (te != null)
                 {
-                    te.type = type;
-                    te.HashID = HashID();
+                    te.Type = type;
+                    te.HashId = HashId();
                     te.Order = order;
-                    te.SkillId = skill_id;
-                    te.SkillLv = level;
-                    effects.Add(te);
+                    te.SkillId = SkillId;
+                    te.SkillLv = Level;
+                    Effects.Add(te);
                     order++;
                 }
                 // else
@@ -94,51 +94,51 @@ namespace L2dotNET.GameService.Model.Skills2
 
             foreach (string str in value.Split(';'))
             {
-                TSkillCondType type = (TSkillCondType)Enum.Parse(typeof(TSkillCondType), str.Split(' ')[0]);
-                TSkillCond cond = TEffectRegistrator.getInstance().BuildCond(type, str);
+                SkillCondType type = (SkillCondType)Enum.Parse(typeof(SkillCondType), str.Split(' ')[0]);
+                SkillCond cond = EffectRegistrator.GetInstance().BuildCond(type, str);
                 if (Conditions == null)
-                    Conditions = new List<TSkillCond>();
+                    Conditions = new List<SkillCond>();
 
                 Conditions.Add(cond);
             }
         }
 
-        public long HashID()
+        public long HashId()
         {
-            return skill_id * 65536 + level;
+            return SkillId * 65536 + Level;
         }
 
-        public byte isPassive()
+        public byte IsPassive()
         {
-            return OpType == TSkillOperational.P ? (byte)1 : (byte)0;
+            return OpType == SkillOperational.P ? (byte)1 : (byte)0;
         }
 
-        public SortedList<int, L2Object> getAffectedTargets(L2Character actor)
+        public SortedList<int, L2Object> GetAffectedTargets(L2Character actor)
         {
             SortedList<int, L2Object> targets = new SortedList<int, L2Object>();
 
-            switch (affect_scope)
+            switch (AffectScope)
             {
-                case TSkillScope.single:
+                case SkillScope.Single:
                 {
-                    switch (target_type)
+                    switch (TargetType)
                     {
-                        case TSkillTarget.self:
+                        case SkillTarget.Self:
                             targets.Add(actor.ObjId, actor);
                             break;
 
-                        case TSkillTarget.friend:
-                        case TSkillTarget.enemy:
-                        case TSkillTarget.any:
-                        case TSkillTarget.target:
+                        case SkillTarget.Friend:
+                        case SkillTarget.Enemy:
+                        case SkillTarget.Any:
+                        case SkillTarget.Target:
                             if (actor.CurrentTarget != null)
                                 targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
                             break;
-                        case TSkillTarget.master:
+                        case SkillTarget.Master:
                             if (actor is L2Summon)
                                 targets.Add(((L2Summon)actor).Owner.ObjId, ((L2Summon)actor).Owner);
                             break;
-                        case TSkillTarget.unlockable:
+                        case SkillTarget.Unlockable:
                         {
                             if (actor.CurrentTarget is L2Door)
                                 targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
@@ -148,12 +148,12 @@ namespace L2dotNET.GameService.Model.Skills2
                 }
 
                     break;
-                case TSkillScope.party:
+                case SkillScope.Party:
                     L2Character[] members = actor.GetPartyCharacters();
                     foreach (L2Character member in members)
                     {
-                        double dis = Calcs.calculateDistance(actor, member, true);
-                        if (dis < cast_range)
+                        double dis = Calcs.CalculateDistance(actor, member, true);
+                        if (dis < CastRange)
                             targets.Add(member.ObjId, member);
                     }
 
@@ -163,35 +163,35 @@ namespace L2dotNET.GameService.Model.Skills2
             return targets;
         }
 
-        public L2Character getTargetCastId(L2Character actor)
+        public L2Character GetTargetCastId(L2Character actor)
         {
             L2Character target = null;
-            switch (affect_scope)
+            switch (AffectScope)
             {
-                case TSkillScope.single:
-                    switch (target_type)
+                case SkillScope.Single:
+                    switch (TargetType)
                     {
-                        case TSkillTarget.self:
+                        case SkillTarget.Self:
                             target = actor;
                             break;
-                        case TSkillTarget.any:
-                        case TSkillTarget.target:
+                        case SkillTarget.Any:
+                        case SkillTarget.Target:
                             if (actor.CurrentTarget != null)
                                 target = actor.CurrentTarget;
                             break;
-                        case TSkillTarget.friend:
+                        case SkillTarget.Friend:
                             if (actor.CurrentTarget != null)
                                 target = actor.CurrentTarget;
                             break;
-                        case TSkillTarget.enemy:
+                        case SkillTarget.Enemy:
                             if (actor.CurrentTarget != null)
                                 target = actor.CurrentTarget;
                             break;
-                        case TSkillTarget.master:
+                        case SkillTarget.Master:
                             if (actor is L2Summon)
                                 target = ((L2Summon)actor).Owner;
                             break;
-                        case TSkillTarget.unlockable:
+                        case SkillTarget.Unlockable:
                         {
                             if (actor.CurrentTarget is L2Door)
                                 target = actor.CurrentTarget;
@@ -200,10 +200,10 @@ namespace L2dotNET.GameService.Model.Skills2
                     }
 
                     break;
-                case TSkillScope.party:
-                    switch (target_type)
+                case SkillScope.Party:
+                    switch (TargetType)
                     {
-                        case TSkillTarget.self:
+                        case SkillTarget.Self:
                             target = actor;
                             break;
                     }
@@ -220,14 +220,14 @@ namespace L2dotNET.GameService.Model.Skills2
                 return true;
 
             sbyte retcode = -2;
-            foreach (TSkillCond cond in Conditions.Where(cond => !cond.CanUse(target, this)))
+            foreach (SkillCond cond in Conditions.Where(cond => !cond.CanUse(target, this)))
             {
-                retcode = cond.retcode;
+                retcode = cond.Retcode;
                 break;
             }
 
             if (retcode == -1)
-                target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANNOT_BE_USED).AddSkillName(skill_id, level));
+                target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1CannotBeUsed).AddSkillName(SkillId, Level));
 
             return retcode == -2;
         }

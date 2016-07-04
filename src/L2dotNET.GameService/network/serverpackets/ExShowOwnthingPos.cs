@@ -2,13 +2,13 @@
 {
     class ExShowOwnthingPos : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0x93);
+            WriteC(0xfe);
+            WriteH(0x93);
 
-            writeD(0);
-            writeD(0);
+            WriteD(0);
+            WriteD(0);
         }
     }
 }

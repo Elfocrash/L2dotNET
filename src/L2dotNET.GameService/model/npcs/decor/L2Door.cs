@@ -7,14 +7,14 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
 {
     public class L2Door : L2StaticObject
     {
-        public HideoutTemplate structure;
+        public HideoutTemplate Structure;
 
         public L2Door()
         {
-            ObjId = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.NextId();
             Type = 1;
             Closed = 1;
-            MeshID = 1;
+            MeshId = 1;
             Level = 1;
         }
 
@@ -46,21 +46,21 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
             return dmg;
         }
 
-        private System.Timers.Timer selfClose;
+        private System.Timers.Timer _selfClose;
 
         public void OpenForTime()
         {
             Closed = 0;
             BroadcastUserInfo();
 
-            if (selfClose == null)
+            if (_selfClose == null)
             {
-                selfClose = new System.Timers.Timer();
-                selfClose.Interval = 60000;
-                selfClose.Elapsed += new System.Timers.ElapsedEventHandler(SelfClose);
+                _selfClose = new System.Timers.Timer();
+                _selfClose.Interval = 60000;
+                _selfClose.Elapsed += new System.Timers.ElapsedEventHandler(SelfClose);
             }
 
-            selfClose.Enabled = true;
+            _selfClose.Enabled = true;
         }
 
         private void SelfClose(object sender, System.Timers.ElapsedEventArgs e)
@@ -71,12 +71,12 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
                 BroadcastUserInfo();
             }
 
-            selfClose.Enabled = false;
+            _selfClose.Enabled = false;
         }
 
         public override string AsString()
         {
-            return "L2Door:" + ObjId + " " + StaticID + " " + ClanID;
+            return "L2Door:" + ObjId + " " + StaticId + " " + ClanID;
         }
     }
 }

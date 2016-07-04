@@ -2,21 +2,21 @@
 {
     class LoginServLoginOk : ReceiveAuthPacket
     {
-        private string code;
+        private string _code;
 
         public LoginServLoginOk(AuthThread login, byte[] db)
         {
-            makeme(login, db);
+            Makeme(login, db);
         }
 
-        public override void read()
+        public override void Read()
         {
-            code = readS();
+            _code = ReadS();
         }
 
-        public override void run()
+        public override void Run()
         {
-            login.loginOk(code);
+            Login.LoginOk(_code);
         }
     }
 }

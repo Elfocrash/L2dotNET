@@ -9,19 +9,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestUseItem(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        private int sID;
+        private int _sId;
 
-        public override void read()
+        public override void Read()
         {
-            sID = readD();
+            _sId = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {
@@ -29,39 +29,39 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            L2Item item = player.GetItemByObjId(sID);
+            L2Item item = player.GetItemByObjId(_sId);
 
             if (item == null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.INCORRECT_ITEM);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.IncorrectItem);
                 return;
             }
 
             if (player.TradeState != 0)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_PICKUP_OR_USE_ITEM_WHILE_TRADING);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotPickupOrUseItemWhileTrading);
                 player.SendActionFailed();
                 return;
             }
 
             switch (item.Template.Type)
             {
-                case ItemTemplate.L2ItemType.armor:
-                case ItemTemplate.L2ItemType.weapon:
-                case ItemTemplate.L2ItemType.accessary:
+                case ItemTemplate.L2ItemType.Armor:
+                case ItemTemplate.L2ItemType.Weapon:
+                case ItemTemplate.L2ItemType.Accessary:
                 {
                     if (item.IsEquipped == 0)
                     {
-                        if (!item.Template.canEquipChaotic(player.PkKills))
+                        if (!item.Template.CanEquipChaotic(player.PkKills))
                         {
-                            player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_ARE_UNABLE_TO_EQUIP_THIS_ITEM_WHEN_YOUR_PK_COUNT_IS_GREATER_THAN_OR_EQUAL_TO_ONE);
+                            player.SendSystemMessage(SystemMessage.SystemMessageId.YouAreUnableToEquipThisItemWhenYourPkCountIsGreaterThanOrEqualToOne);
                             player.SendActionFailed();
                             return;
                         }
 
-                        if (!item.Template.canEquipHeroic(player.Heroic) || !item.Template.canEquipNobless(player.Noblesse) || !item.Template.canEquipSex(player.Sex))
+                        if (!item.Template.CanEquipHeroic(player.Heroic) || !item.Template.CanEquipNobless(player.Noblesse) || !item.Template.CanEquipSex(player.Sex))
                         {
-                            player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION);
+                            player.SendSystemMessage(SystemMessage.SystemMessageId.CannotEquipItemDueToBadCondition);
                             player.SendActionFailed();
                             return;
                         }
@@ -78,14 +78,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (ItemHandler.Instance.Process(player, item))
                 return;
 
-            switch (item.Template.default_action)
+            switch (item.Template.DefaultAction)
             {
                 case "action_capsule":
                     Capsule.Instance.Process(player, item);
                     break;
                 case "action_call_skill":
                 {
-                    TSkill skill = item.Template.item_skill;
+                    Skill skill = item.Template.ItemSkill;
                     if (skill != null)
                         player.AddEffect(player, skill, true, false);
                     else

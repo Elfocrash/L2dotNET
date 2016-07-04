@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Model.Inventory
 {
     public class PcInventory : Inventory
     {
-        public PcInventory(L2Character owner)
+        public PcInventory(L2Character owner) : base(owner)
         {
             Owner = owner;
         }

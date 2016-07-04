@@ -2,23 +2,23 @@
 {
     class PremiumStatusUpdate : GameServerNetworkPacket
     {
-        private readonly string account;
-        private readonly byte status;
-        private readonly long points;
+        private readonly string _account;
+        private readonly byte _status;
+        private readonly long _points;
 
         public PremiumStatusUpdate(string account, byte status, long points)
         {
-            this.account = account;
-            this.status = status;
-            this.points = points;
+            this._account = account;
+            this._status = status;
+            this._points = points;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xA4);
-            writeS(account.ToLower());
-            writeC(status);
-            writeQ(points);
+            WriteC(0xA4);
+            WriteS(_account.ToLower());
+            WriteC(_status);
+            WriteQ(_points);
         }
     }
 }

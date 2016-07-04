@@ -2,9 +2,9 @@
 {
     class PartySmallWindowDeleteAll : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x50);
+            WriteC(0x50);
         }
     }
 }

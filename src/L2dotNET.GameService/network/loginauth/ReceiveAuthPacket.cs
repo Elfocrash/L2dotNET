@@ -5,49 +5,49 @@ namespace L2dotNET.GameService.Network.LoginAuth
 {
     public abstract class ReceiveAuthPacket
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ReceiveAuthPacket));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ReceiveAuthPacket));
 
         private byte[] _packet;
         private int _offset;
-        public AuthThread login;
+        public AuthThread Login;
 
-        public void makeme(AuthThread authLogin, byte[] packet)
+        public void Makeme(AuthThread authLogin, byte[] packet)
         {
-            login = authLogin;
+            Login = authLogin;
             _packet = packet;
             _offset = 1;
-            read();
+            Read();
         }
 
-        public byte readC()
+        public byte ReadC()
         {
             byte result = _packet[_offset];
             _offset += 1;
             return result;
         }
 
-        public short readH()
+        public short ReadH()
         {
             short result = BitConverter.ToInt16(_packet, _offset);
             _offset += 2;
             return result;
         }
 
-        public int readD()
+        public int ReadD()
         {
             int result = BitConverter.ToInt32(_packet, _offset);
             _offset += 4;
             return result;
         }
 
-        public long readQ()
+        public long ReadQ()
         {
             long result = BitConverter.ToInt64(_packet, _offset);
             _offset += 8;
             return result;
         }
 
-        public byte[] readB(int length)
+        public byte[] ReadB(int length)
         {
             byte[] result = new byte[length];
             Array.Copy(_packet, _offset, result, 0, length);
@@ -55,14 +55,14 @@ namespace L2dotNET.GameService.Network.LoginAuth
             return result;
         }
 
-        public double readF()
+        public double ReadF()
         {
             double result = BitConverter.ToDouble(_packet, _offset);
             _offset += 8;
             return result;
         }
 
-        public string readS()
+        public string ReadS()
         {
             string result = "";
             try
@@ -75,13 +75,13 @@ namespace L2dotNET.GameService.Network.LoginAuth
             }
             catch (Exception ex)
             {
-                log.Error($"while reading string from packet, {ex.Message} {ex.StackTrace}");
+                Log.Error($"while reading string from packet, {ex.Message} {ex.StackTrace}");
             }
             return result;
         }
 
-        public abstract void read();
+        public abstract void Read();
 
-        public abstract void run();
+        public abstract void Run();
     }
 }

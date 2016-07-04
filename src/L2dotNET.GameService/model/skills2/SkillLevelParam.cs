@@ -2,15 +2,15 @@
 {
     public class SkillLevelParam
     {
-        public string pch;
-        public byte type;
-        public byte id;
+        public string Pch;
+        public byte Type;
+        public byte Id;
 
         public SkillLevelParam(string pch, byte type, byte id)
         {
-            this.pch = pch;
-            this.type = type;
-            this.id = id;
+            this.Pch = pch;
+            this.Type = type;
+            this.Id = id;
         }
     }
 }

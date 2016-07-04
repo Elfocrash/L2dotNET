@@ -2,10 +2,10 @@
 
 namespace L2dotNET.GameService.Model.Skills2
 {
-    public class TAcquireSkillsEntry
+    public class AcquireSkillsEntry
     {
-        public string include = "",
-                      type;
-        public List<TAcquireSkill> skills = new List<TAcquireSkill>();
+        public string Include = "",
+                      Type;
+        public List<AcquireSkill> Skills = new List<AcquireSkill>();
     }
 }

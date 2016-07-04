@@ -2,9 +2,9 @@
 {
     class PledgeShowMemberListDeleteAll : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x88);
+            WriteC(0x88);
         }
     }
 }

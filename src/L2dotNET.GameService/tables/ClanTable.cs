@@ -6,21 +6,21 @@ namespace L2dotNET.GameService.Tables
 {
     class ClanTable
     {
-        private static volatile ClanTable instance;
-        private static readonly object syncRoot = new object();
+        private static volatile ClanTable _instance;
+        private static readonly object SyncRoot = new object();
 
         public static ClanTable Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new ClanTable();
+                        if (_instance == null)
+                            _instance = new ClanTable();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
@@ -197,24 +197,22 @@ namespace L2dotNET.GameService.Tables
             //CLogger.info("Community: loaded " + _clans.Count + " clans.");
         }
 
-        public SortedList<int, L2Clan> _clans = new SortedList<int, L2Clan>();
-
-        public ClanTable() { }
+        public SortedList<int, L2Clan> Clans = new SortedList<int, L2Clan>();
 
         public void Apply(L2Player player)
         {
-            if (!_clans.ContainsKey(player.ClanId))
+            if (!Clans.ContainsKey(player.ClanId))
             {
                 player.ClanId = 0;
                 return;
             }
 
-            _clans[player.ClanId].onEnter(player);
+            Clans[player.ClanId].OnEnter(player);
         }
 
         public L2Clan GetClan(int id)
         {
-            return !_clans.ContainsKey(id) ? null : _clans[id];
+            return !Clans.ContainsKey(id) ? null : Clans[id];
         }
     }
 }

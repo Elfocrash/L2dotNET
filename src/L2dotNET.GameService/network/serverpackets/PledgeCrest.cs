@@ -2,24 +2,24 @@
 {
     class PledgeCrest : GameServerNetworkPacket
     {
-        private readonly int id;
-        private readonly byte[] picture;
+        private readonly int _id;
+        private readonly byte[] _picture;
 
         public PledgeCrest(int id, byte[] picture)
         {
-            this.id = id;
+            this._id = id;
             if (picture == null)
                 picture = new byte[0];
 
-            this.picture = picture;
+            this._picture = picture;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x6a);
-            writeD(id);
-            writeD(picture.Length);
-            writeB(picture);
+            WriteC(0x6a);
+            WriteD(_id);
+            WriteD(_picture.Length);
+            WriteB(_picture);
         }
     }
 }

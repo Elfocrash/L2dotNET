@@ -7,15 +7,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestRestart(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
             // do nothing
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (player.isInCombat())
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CANT_RESTART_WHILE_FIGHTING);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CantRestartWhileFighting);
                 player.SendActionFailed();
                 return;
             }
@@ -36,7 +36,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.SendPacket(new RestartResponse());
 
             CharacterSelectionInfo csl = new CharacterSelectionInfo(Client.AccountName, Client.AccountChars, Client.SessionId);
-            csl.charId = player.ObjId;
+            csl.CharId = player.ObjId;
             player.SendPacket(csl);
         }
     }

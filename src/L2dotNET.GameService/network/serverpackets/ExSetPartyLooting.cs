@@ -2,24 +2,24 @@
 {
     class ExSetPartyLooting : GameServerNetworkPacket
     {
-        private readonly int result;
-        private readonly int mode;
+        private readonly int _result;
+        private readonly int _mode;
 
-        public ExSetPartyLooting(short VoteId)
+        public ExSetPartyLooting(short voteId)
         {
-            if (VoteId != -1)
+            if (voteId != -1)
             {
-                result = 1;
-                mode = VoteId;
+                _result = 1;
+                _mode = voteId;
             }
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0xBF);
-            writeD(result);
-            writeD(mode);
+            WriteC(0xFE);
+            WriteH(0xBF);
+            WriteD(_result);
+            WriteD(_mode);
         }
     }
 }

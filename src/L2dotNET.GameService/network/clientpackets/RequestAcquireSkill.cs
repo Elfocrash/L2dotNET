@@ -10,25 +10,25 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestAcquireSkill(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _id;
         private int _level;
         private int _skillType;
 
-        public override void read()
+        public override void Read()
         {
-            _id = readD();
-            _level = readD();
-            _skillType = readD();
+            _id = ReadD();
+            _level = ReadD();
+            _skillType = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
-            SortedList<int, TAcquireSkill> seq = player.ActiveSkillTree;
+            SortedList<int, AcquireSkill> seq = player.ActiveSkillTree;
 
             if ((seq == null) || !seq.ContainsKey(_id))
             {
@@ -36,17 +36,17 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            TAcquireSkill e = seq[_id];
+            AcquireSkill e = seq[_id];
 
-            if (e.lv != _level)
+            if (e.Lv != _level)
             {
                 player.SendActionFailed();
                 return;
             }
 
-            if (e.lv_up_sp > player.SP)
+            if (e.LvUpSp > player.Sp)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_SP_TO_LEARN_SKILL);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughSpToLearnSkill);
                 player.SendActionFailed();
                 return;
             }
@@ -59,17 +59,17 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //        return;
             //    }
 
-            if (e.lv_up_sp > 0)
+            if (e.LvUpSp > 0)
             {
-                player.SP -= e.lv_up_sp;
+                player.Sp -= e.LvUpSp;
                 StatusUpdate su = new StatusUpdate(player.ObjId);
-                su.add(StatusUpdate.SP, player.SP);
+                su.Add(StatusUpdate.Sp, player.Sp);
                 player.SendPacket(su);
             }
 
-            player.DestroyItemById(e.itemid, e.itemcount);
+            player.DestroyItemById(e.Itemid, e.Itemcount);
 
-            TSkill skill = TSkillTable.Instance.Get(e.id, e.lv);
+            Skill skill = SkillTable.Instance.Get(e.Id, e.Lv);
             if (skill != null)
                 player.AddSkill(skill, true, true);
             else
@@ -82,9 +82,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (_level > 1)
             {
                 bool upd = false;
-                lock (player._shortcuts)
+                lock (player.Shortcuts)
                 {
-                    foreach (L2Shortcut sc in player._shortcuts.Where(sc => (sc.Type == L2Shortcut.TYPE_SKILL) && (sc.Id == _id)))
+                    foreach (L2Shortcut sc in player.Shortcuts.Where(sc => (sc.Type == L2Shortcut.TypeSkill) && (sc.Id == _id)))
                     {
                         sc.Level = _level;
                         upd = true;
@@ -96,7 +96,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             player.ActiveSkillTree.Remove(_id);
-            player.FolkNpc.showAvailRegularSkills(player, true);
+            player.FolkNpc.ShowAvailRegularSkills(player, true);
         }
     }
 }

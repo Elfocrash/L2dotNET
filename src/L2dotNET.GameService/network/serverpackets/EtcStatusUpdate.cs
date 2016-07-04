@@ -14,24 +14,24 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public EtcStatusUpdate(L2Player player)
         {
-            _force = player.getForceIncreased();
-            _weight = player._penaltyWeight;
+            _force = player.GetForceIncreased();
+            _weight = player.PenaltyWeight;
             _whisper = player.WhisperBlock ? 1 : 0;
             _danger = player.IsInDanger ? 1 : 0;
-            _grade = player._penalty_grade;
+            _grade = player.PenaltyGrade;
             _death = player.DeathPenaltyLevel;
             _souls = player.Souls;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xF3);
-            writeD(_force);
-            writeD(_weight);
-            writeD(_whisper);
-            writeD(_danger); // 1 = danger area
-            writeD(_grade);
-            writeD(0); // 1 = charm of courage (no xp loss in siege..)
+            WriteC(0xF3);
+            WriteD(_force);
+            WriteD(_weight);
+            WriteD(_whisper);
+            WriteD(_danger); // 1 = danger area
+            WriteD(_grade);
+            WriteD(0); // 1 = charm of courage (no xp loss in siege..)
             //writeD(_death);
             //writeD(_souls);
         }

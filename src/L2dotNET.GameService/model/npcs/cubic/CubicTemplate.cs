@@ -9,94 +9,94 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
 {
     public class CubicTemplate
     {
-        public int id,
-                   level = 1,
-                   duration = 900,
-                   delay,
-                   max_count,
-                   use_up;
-        public byte slot;
-        public double power;
-        public TSkill skill1;
-        public byte skill1rate;
-        public string skill1target = "target";
-        public TSkill skill2;
-        public byte skill2rate;
-        public string skill2target = "target";
-        public TSkill skill3;
-        public byte skill3rate;
-        public string skill3target = "target";
+        public int Id,
+                   Level = 1,
+                   Duration = 900,
+                   Delay,
+                   MaxCount,
+                   UseUp;
+        public byte Slot;
+        public double Power;
+        public Skill Skill1;
+        public byte Skill1Rate;
+        public string Skill1Target = "target";
+        public Skill Skill2;
+        public byte Skill2Rate;
+        public string Skill2Target = "target";
+        public Skill Skill3;
+        public byte Skill3Rate;
+        public string Skill3Target = "target";
 
         public virtual int AiActionTask(L2Player owner)
         {
             return 0;
         }
 
-        private System.Timers.Timer SkillCast;
-        private L2Character target;
-        private L2Player caster;
-        private TSkill cast;
+        private System.Timers.Timer _skillCast;
+        private L2Character _target;
+        private L2Player _caster;
+        private Skill _cast;
 
-        public void CallSkill(L2Player casterPlayer, TSkill skill, L2Character targetPlayer)
+        public void CallSkill(L2Player casterPlayer, Skill skill, L2Character targetPlayer)
         {
-            caster = casterPlayer;
-            cast = skill;
+            _caster = casterPlayer;
+            _cast = skill;
 
-            if (SkillCast == null)
-                SkillCast = new System.Timers.Timer();
+            if (_skillCast == null)
+                _skillCast = new System.Timers.Timer();
 
-            target = targetPlayer;
-            if (skill.skill_hit_time > 0)
+            _target = targetPlayer;
+            if (skill.SkillHitTime > 0)
             {
-                SkillCast.Interval = skill.skill_hit_time;
-                SkillCast.Elapsed += new System.Timers.ElapsedEventHandler(SkillCastTask);
-                SkillCast.Enabled = true;
+                _skillCast.Interval = skill.SkillHitTime;
+                _skillCast.Elapsed += new System.Timers.ElapsedEventHandler(SkillCastTask);
+                _skillCast.Enabled = true;
             }
             else
                 SkillCastTask(null, null);
 
-            casterPlayer.BroadcastPacket(new MagicSkillUse(casterPlayer, targetPlayer, skill, skill.skill_hit_time));
+            casterPlayer.BroadcastPacket(new MagicSkillUse(casterPlayer, targetPlayer, skill, skill.SkillHitTime));
         }
 
         private void SkillCastTask(object sender, System.Timers.ElapsedEventArgs e)
         {
-            SkillCast.Enabled = false;
-            if ((target == null) || (caster == null))
+            _skillCast.Enabled = false;
+            if ((_target == null) || (_caster == null))
                 return;
 
-            if (!cast.ConditionOk(caster))
+            if (!_cast.ConditionOk(_caster))
                 return;
 
-            if (cast.reuse_delay > 0)
-                if (caster.Reuse.ContainsKey(cast.skill_id))
+            if (_cast.ReuseDelay > 0)
+                if (_caster.Reuse.ContainsKey(_cast.SkillId))
                 {
-                    TimeSpan ts = caster.Reuse[cast.skill_id].stopTime - DateTime.Now;
+                    TimeSpan ts = _caster.Reuse[_cast.SkillId].StopTime - DateTime.Now;
 
                     if (ts.TotalMilliseconds > 0)
                     {
                         if (ts.TotalHours > 0)
                         {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_HOURS_S3_MINUTES_S4_SECONDS_REMAINING_IN_S1_REUSE_TIME);
-                            sm.AddSkillName(cast.skill_id, cast.level);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2HoursS3MinutesS4SecondsRemainingInS1ReuseTime);
+                            sm.AddSkillName(_cast.SkillId, _cast.Level);
                             sm.AddNumber(ts.Hours);
                             sm.AddNumber(ts.Minutes);
                             sm.AddNumber(ts.Seconds);
-                            caster.SendPacket(sm);
+                            _caster.SendPacket(sm);
                         }
                         else if (ts.TotalMinutes > 0)
                         {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_MINUTES_S3_SECONDS_REMAINING_IN_S1_REUSE_TIME);
-                            sm.AddSkillName(cast.skill_id, cast.level);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2MinutesS3SecondsRemainingInS1ReuseTime);
+                            sm.AddSkillName(_cast.SkillId, _cast.Level);
                             sm.AddNumber(ts.Minutes);
                             sm.AddNumber(ts.Seconds);
-                            caster.SendPacket(sm);
+                            _caster.SendPacket(sm);
                         }
                         else
                         {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_SECONDS_REMAINING_IN_S1_REUSE_TIME);
-                            sm.AddSkillName(cast.skill_id, cast.level);
+                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2SecondsRemainingInS1ReuseTime);
+                            sm.AddSkillName(_cast.SkillId, _cast.Level);
                             sm.AddNumber(ts.Seconds);
-                            caster.SendPacket(sm);
+                            _caster.SendPacket(sm);
                         }
 
                         return;
@@ -105,19 +105,19 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
 
             //do
 
-            if (cast.reuse_delay > 0)
+            if (_cast.ReuseDelay > 0)
             {
                 L2SkillCoolTime reuse = new L2SkillCoolTime();
-                reuse.id = cast.skill_id;
-                reuse.lvl = cast.level;
-                reuse.total = (int)cast.reuse_delay;
-                reuse.delay = reuse.total;
-                reuse._owner = caster;
-                reuse.timer();
-                caster.Reuse.Add(reuse.id, reuse);
+                reuse.Id = _cast.SkillId;
+                reuse.Lvl = _cast.Level;
+                reuse.Total = (int)_cast.ReuseDelay;
+                reuse.Delay = reuse.Total;
+                reuse.Owner = _caster;
+                reuse.Timer();
+                _caster.Reuse.Add(reuse.Id, reuse);
             }
 
-            target.AddAbnormal(cast, caster, false, false);
+            _target.AddAbnormal(_cast, _caster, false, false);
         }
     }
 }

@@ -11,20 +11,20 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
         public RequestSetPledgeCrest(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            _size = readD();
+            _size = ReadD();
 
             if ((_size > 0) && (_size <= 256))
-                _picture = readB(_size);
+                _picture = ReadB(_size);
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if (player.ClanId == 0)
             {
@@ -36,33 +36,33 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
             if (clan.Level < 3)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CLAN_LVL_3_NEEDED_TO_SET_CREST);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ClanLvl3NeededToSetCrest);
                 player.SendActionFailed();
                 return;
             }
 
             if (clan.IsDissolving())
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_SET_CREST_WHILE_DISSOLUTION_IN_PROGRESS);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotSetCrestWhileDissolutionInProgress);
                 player.SendActionFailed();
                 return;
             }
 
             if ((_size < 0) || (_size > 256))
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CAN_ONLY_REGISTER_16_12_PX_256_COLOR_BMP_FILES);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CanOnlyRegister1612Px256ColorBmpFiles);
                 player.SendActionFailed();
                 return;
             }
 
-            if ((player.ClanPrivs & L2Clan.CP_CL_REGISTER_CREST) != L2Clan.CP_CL_REGISTER_CREST)
+            if ((player.ClanPrivs & L2Clan.CpClRegisterCrest) != L2Clan.CpClRegisterCrest)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.NOT_AUTHORIZED_TO_BESTOW_RIGHTS);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.NotAuthorizedToBestowRights);
                 player.SendActionFailed();
                 return;
             }
 
-            clan.updateCrest(_size, _picture);
+            clan.UpdateCrest(_size, _picture);
         }
     }
 }

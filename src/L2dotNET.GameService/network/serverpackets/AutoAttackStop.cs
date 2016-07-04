@@ -2,17 +2,17 @@
 {
     class AutoAttackStop : GameServerNetworkPacket
     {
-        private readonly int sId;
+        private readonly int _sId;
 
         public AutoAttackStop(int sId)
         {
-            this.sId = sId;
+            this._sId = sId;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x2c);
-            writeD(sId);
+            WriteC(0x2c);
+            WriteD(_sId);
         }
     }
 }

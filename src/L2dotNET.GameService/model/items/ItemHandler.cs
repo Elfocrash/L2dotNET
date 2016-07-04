@@ -10,41 +10,41 @@ namespace L2dotNET.GameService.Model.Items
 {
     public class ItemHandler
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ItemHandler));
-        private static volatile ItemHandler instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ItemHandler));
+        private static volatile ItemHandler _instance;
+        private static readonly object SyncRoot = new object();
 
         public static ItemHandler Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new ItemHandler();
+                        if (_instance == null)
+                            _instance = new ItemHandler();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
         public void Initialize()
         {
-            register(new EnchantScrolls());
-            register(new Calculator());
+            Register(new EnchantScrolls());
+            Register(new Calculator());
 
-            LoadXML();
-            log.Info($"ItemHandler: Loaded {effects} effects with {items.Count} items.");
+            LoadXml();
+            Log.Info($"ItemHandler: Loaded {_effects} effects with {Items.Count} items.");
         }
 
-        public SortedList<int, ItemEffect> items = new SortedList<int, ItemEffect>();
+        public SortedList<int, ItemEffect> Items = new SortedList<int, ItemEffect>();
 
         public bool Process(L2Character character, L2Item item)
         {
-            if (items.ContainsKey(item.Template.ItemID))
+            if (Items.ContainsKey(item.Template.ItemId))
             {
-                items[item.Template.ItemID].Use(character, item);
+                Items[item.Template.ItemId].Use(character, item);
                 return true;
             }
 
@@ -53,17 +53,17 @@ namespace L2dotNET.GameService.Model.Items
 
         public ItemHandler() { }
 
-        private short effects;
+        private short _effects;
 
-        private void register(ItemEffect effect)
+        private void Register(ItemEffect effect)
         {
-            foreach (int id in effect.ids)
-                items.Add(id, effect);
+            foreach (int id in effect.Ids)
+                Items.Add(id, effect);
 
-            effects++;
+            _effects++;
         }
 
-        public void LoadXML()
+        public void LoadXml()
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\itemhandler.xml"));
             XElement ex = xml.Element("list");
@@ -79,14 +79,14 @@ namespace L2dotNET.GameService.Model.Items
                         if (m.Attribute("effect") != null)
                         {
                             string str = m.Attribute("effect").Value;
-                            ih.EffectID = Convert.ToInt32(str.Split('-')[0]);
+                            ih.EffectId = Convert.ToInt32(str.Split('-')[0]);
                             ih.EffectLv = Convert.ToInt32(str.Split('-')[1]);
                         }
 
                         if (m.Attribute("skill") != null)
                         {
                             string str = m.Attribute("skill").Value;
-                            ih.SkillID = Convert.ToInt32(str.Split('-')[0]);
+                            ih.SkillId = Convert.ToInt32(str.Split('-')[0]);
                             ih.SkillLv = Convert.ToInt32(str.Split('-')[1]);
                         }
 
@@ -94,7 +94,7 @@ namespace L2dotNET.GameService.Model.Items
                         {
                             string str = m.Attribute("exchange").Value;
                             foreach (string st in str.Split(';'))
-                                ih.addExchangeItem(Convert.ToInt32(st.Split('-')[0]), Convert.ToInt32(st.Split('-')[1]));
+                                ih.AddExchangeItem(Convert.ToInt32(st.Split('-')[0]), Convert.ToInt32(st.Split('-')[1]));
                         }
 
                         if (m.Attribute("pet") != null)
@@ -107,15 +107,15 @@ namespace L2dotNET.GameService.Model.Items
                             ih.Destroy = Convert.ToBoolean(m.Attribute("destroy").Value);
 
                         if (m.Attribute("petId") != null)
-                            ih.PetID = Convert.ToInt32(m.Attribute("petId").Value);
+                            ih.PetId = Convert.ToInt32(m.Attribute("petId").Value);
 
                         if (m.Attribute("summonId") != null)
-                            ih.SummonID = Convert.ToInt32(m.Attribute("summonId").Value);
+                            ih.SummonId = Convert.ToInt32(m.Attribute("summonId").Value);
 
                         if (m.Attribute("summonStaticId") != null)
-                            ih.SummonStaticID = Convert.ToInt32(m.Attribute("summonStaticId").Value);
+                            ih.SummonStaticId = Convert.ToInt32(m.Attribute("summonStaticId").Value);
 
-                        items.Add(id, ih);
+                        Items.Add(id, ih);
                     }
         }
     }

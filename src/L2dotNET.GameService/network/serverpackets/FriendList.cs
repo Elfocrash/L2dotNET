@@ -2,11 +2,11 @@
 {
     class FriendList : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfa);
-            writeH(0x00);
-            writeH(0x00);
+            WriteC(0xfa);
+            WriteH(0x00);
+            WriteH(0x00);
         }
     }
 }

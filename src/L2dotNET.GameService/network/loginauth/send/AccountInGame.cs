@@ -2,20 +2,20 @@
 {
     class AccountInGame : GameServerNetworkPacket
     {
-        private readonly string account;
-        private readonly bool status;
+        private readonly string _account;
+        private readonly bool _status;
 
         public AccountInGame(string account, bool status)
         {
-            this.account = account;
-            this.status = status;
+            this._account = account;
+            this._status = status;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x03);
-            writeS(account.ToLower());
-            writeC(status ? (byte)1 : (byte)0);
+            WriteC(0x03);
+            WriteS(_account.ToLower());
+            WriteC(_status ? (byte)1 : (byte)0);
         }
     }
 }

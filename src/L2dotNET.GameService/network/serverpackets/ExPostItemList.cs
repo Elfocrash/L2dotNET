@@ -5,50 +5,50 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class ExPostItemList : GameServerNetworkPacket
     {
-        private readonly List<L2Item> list;
+        private readonly List<L2Item> _list;
 
         public ExPostItemList(List<L2Item> list)
         {
-            this.list = list;
+            this._list = list;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0xb2);
-            writeD(list.Count);
+            WriteC(0xfe);
+            WriteH(0xb2);
+            WriteD(_list.Count);
 
-            foreach (L2Item item in list)
+            foreach (L2Item item in _list)
             {
-                writeD(item.ObjId);
-                writeD(item.Template.ItemID);
-                writeD(0);
-                writeQ(item.Count);
+                WriteD(item.ObjId);
+                WriteD(item.Template.ItemId);
+                WriteD(0);
+                WriteQ(item.Count);
 
-                writeH(item.Template.Type2());
-                writeH(0);
-                writeH(0);
+                WriteH(item.Template.Type2());
+                WriteH(0);
+                WriteH(0);
 
-                writeD(item.Template.BodyPartId());
-                writeH(item.Enchant);
-                writeH(0);
+                WriteD(item.Template.BodyPartId());
+                WriteH(item.Enchant);
+                WriteH(0);
 
-                writeD(item.AugmentationId);
-                writeD(item.Durability);
-                writeD(item.LifeTimeEnd());
+                WriteD(item.AugmentationId);
+                WriteD(item.Durability);
+                WriteD(item.LifeTimeEnd());
 
-                writeH(item.AttrAttackType);
-                writeH(item.AttrAttackValue);
-                writeH(item.AttrDefenseValueFire);
-                writeH(item.AttrDefenseValueWater);
-                writeH(item.AttrDefenseValueWind);
-                writeH(item.AttrDefenseValueEarth);
-                writeH(item.AttrDefenseValueHoly);
-                writeH(item.AttrDefenseValueUnholy);
+                WriteH(item.AttrAttackType);
+                WriteH(item.AttrAttackValue);
+                WriteH(item.AttrDefenseValueFire);
+                WriteH(item.AttrDefenseValueWater);
+                WriteH(item.AttrDefenseValueWind);
+                WriteH(item.AttrDefenseValueEarth);
+                WriteH(item.AttrDefenseValueHoly);
+                WriteH(item.AttrDefenseValueUnholy);
 
-                writeH(item.Enchant1);
-                writeH(item.Enchant2);
-                writeH(item.Enchant3);
+                WriteH(item.Enchant1);
+                WriteH(item.Enchant2);
+                WriteH(item.Enchant3);
             }
         }
     }

@@ -2,21 +2,21 @@
 {
     class ExAutoSoulShot : GameServerNetworkPacket
     {
-        private readonly int itemId;
-        private readonly int type;
+        private readonly int _itemId;
+        private readonly int _type;
 
         public ExAutoSoulShot(int itemId, int type)
         {
-            this.itemId = itemId;
-            this.type = type;
+            this._itemId = itemId;
+            this._type = type;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0x12);
-            writeD(itemId);
-            writeD(type);
+            WriteC(0xFE);
+            WriteH(0x12);
+            WriteD(_itemId);
+            WriteD(_type);
         }
     }
 }

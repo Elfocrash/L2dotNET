@@ -6,14 +6,14 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
 {
     public class CubicController
     {
-        private static readonly CubicController instance = new CubicController();
+        private static readonly CubicController Instance = new CubicController();
 
-        public static CubicController getController()
+        public static CubicController GetController()
         {
-            return instance;
+            return Instance;
         }
 
-        public SortedList<int, CubicTemplate> cubics = new SortedList<int, CubicTemplate>();
+        public SortedList<int, CubicTemplate> Cubics = new SortedList<int, CubicTemplate>();
 
         public CubicController()
         {
@@ -24,32 +24,32 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
                 if (lv == 8)
                     lv = 101;
 
-                register(new heal_cubic(3, lv, 4051, a));
+                Register(new HealCubic(3, lv, 4051, a));
                 lv++;
             }
             //nub heal
-            register(new heal_cubic(3, 20, 4051, 20, 3600));
+            Register(new HealCubic(3, 20, 4051, 20, 3600));
 
-            register(new smart_cubic { id = 10, delay = 10, max_count = 50, power = 2106, skill1 = TSkillTable.Instance.Get(4165, 9), skill1rate = 25, skill2 = TSkillTable.Instance.Get(4053, 8), skill2rate = 25, skill3 = TSkillTable.Instance.Get(5579, 1), skill3rate = 50, skill3target = "master" });
+            Register(new SmartCubic { Id = 10, Delay = 10, MaxCount = 50, Power = 2106, Skill1 = SkillTable.Instance.Get(4165, 9), Skill1Rate = 25, Skill2 = SkillTable.Instance.Get(4053, 8), Skill2Rate = 25, Skill3 = SkillTable.Instance.Get(5579, 1), Skill3Rate = 50, Skill3Target = "master" });
 
-            register(new smart_cubic { id = 11, delay = 10, max_count = 50, power = 2106, skill1 = TSkillTable.Instance.Get(5115, 4), skill1rate = 40, skill2 = TSkillTable.Instance.Get(4049, 8), skill2rate = 15, skill3 = TSkillTable.Instance.Get(5579, 1), skill3rate = 45, skill3target = "master" });
+            Register(new SmartCubic { Id = 11, Delay = 10, MaxCount = 50, Power = 2106, Skill1 = SkillTable.Instance.Get(5115, 4), Skill1Rate = 40, Skill2 = SkillTable.Instance.Get(4049, 8), Skill2Rate = 15, Skill3 = SkillTable.Instance.Get(5579, 1), Skill3Rate = 45, Skill3Target = "master" });
 
-            register(new smart_cubic { id = 12, delay = 13, max_count = 50, power = 2106, skill1 = TSkillTable.Instance.Get(4165, 9), skill1rate = 20, skill2 = TSkillTable.Instance.Get(4051, 1), skill2rate = 30, skill2target = "heal", skill3 = TSkillTable.Instance.Get(5579, 1), skill3rate = 50, skill3target = "master" });
+            Register(new SmartCubic { Id = 12, Delay = 13, MaxCount = 50, Power = 2106, Skill1 = SkillTable.Instance.Get(4165, 9), Skill1Rate = 20, Skill2 = SkillTable.Instance.Get(4051, 1), Skill2Rate = 30, Skill2Target = "heal", Skill3 = SkillTable.Instance.Get(5579, 1), Skill3Rate = 50, Skill3Target = "master" });
 
-            register(new smart_cubic { id = 13, delay = 13, max_count = 50, power = 2106, skill1 = TSkillTable.Instance.Get(4049, 8), skill1rate = 25, skill2 = TSkillTable.Instance.Get(4166, 9), skill2rate = 25, skill3 = TSkillTable.Instance.Get(5579, 1), skill3rate = 50, skill3target = "master" });
+            Register(new SmartCubic { Id = 13, Delay = 13, MaxCount = 50, Power = 2106, Skill1 = SkillTable.Instance.Get(4049, 8), Skill1Rate = 25, Skill2 = SkillTable.Instance.Get(4166, 9), Skill2Rate = 25, Skill3 = SkillTable.Instance.Get(5579, 1), Skill3Rate = 50, Skill3Target = "master" });
 
-            register(new smart_cubic { id = 14, delay = 13, max_count = 50, power = 2106, skill1 = TSkillTable.Instance.Get(4049, 8), skill1rate = 30, skill2 = TSkillTable.Instance.Get(4052, 6), skill2rate = 20, skill3 = TSkillTable.Instance.Get(5579, 1), skill3rate = 50, skill3target = "master" });
+            Register(new SmartCubic { Id = 14, Delay = 13, MaxCount = 50, Power = 2106, Skill1 = SkillTable.Instance.Get(4049, 8), Skill1Rate = 30, Skill2 = SkillTable.Instance.Get(4052, 6), Skill2Rate = 20, Skill3 = SkillTable.Instance.Get(5579, 1), Skill3Rate = 50, Skill3Target = "master" });
         }
 
-        public void register(CubicTemplate t)
+        public void Register(CubicTemplate t)
         {
-            cubics.Add(t.id * 65536 + t.level, t);
+            Cubics.Add(t.Id * 65536 + t.Level, t);
         }
 
-        public CubicTemplate getCubic(int cubId, int skillLv)
+        public CubicTemplate GetCubic(int cubId, int skillLv)
         {
             int hash = cubId * 65536 + skillLv;
-            return cubics.ContainsKey(hash) ? cubics[hash] : null;
+            return Cubics.ContainsKey(hash) ? Cubics[hash] : null;
         }
     }
 }

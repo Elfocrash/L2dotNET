@@ -11,8 +11,9 @@ namespace L2dotNET.GameService.Model.Inventory
 {
     public class Inventory : ItemContainer
     {
-        public Inventory()
+        public Inventory(L2Character owner)
         {
+            Owner = owner;
             Paperdoll = (L2Item[]) new ArrayList().ToArray(typeof(L2Item));
         }
 

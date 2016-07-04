@@ -6,27 +6,27 @@ namespace L2dotNET.GameService.Model.Communities
     {
         public string Name;
         public byte Level;
-        public byte classId;
-        public int ObjID;
-        public int sponsorId;
+        public byte ClassId;
+        public int ObjId;
+        public int SponsorId;
         public short ClanType;
         public string NickName,
-                      _pledgeTypeName;
+                      PledgeTypeName;
         public int ClanPrivs;
-        public string _ownerName = "";
+        public string OwnerName = "";
         public int Gender;
         public int Race;
-        public int online;
+        public int Online;
         public L2Player Target;
 
-        internal int haveMaster()
+        internal int HaveMaster()
         {
             return 0;
         }
 
-        public int OnlineID()
+        public int OnlineId()
         {
-            return online == 0 ? 0 : ObjID;
+            return Online == 0 ? 0 : ObjId;
         }
     }
 }

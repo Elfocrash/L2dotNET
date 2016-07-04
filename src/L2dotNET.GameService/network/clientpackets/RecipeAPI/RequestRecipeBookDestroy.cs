@@ -9,37 +9,37 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
     {
         public RequestRecipeBookDestroy(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _id;
 
-        public override void read()
+        public override void Read()
         {
-            _id = readD();
+            _id = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player._recipeBook == null)
+            if (player.RecipeBook == null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.RecipeIncorrect);
                 player.SendActionFailed();
                 return;
             }
 
-            L2Recipe rec = player._recipeBook.FirstOrDefault(r => r.RecipeID == _id);
+            L2Recipe rec = player.RecipeBook.FirstOrDefault(r => r.RecipeId == _id);
 
             if (rec == null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.RecipeIncorrect);
                 player.SendActionFailed();
                 return;
             }
 
-            player.unregisterRecipe(rec, true);
+            player.UnregisterRecipe(rec, true);
         }
     }
 }

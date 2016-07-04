@@ -7,39 +7,39 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class TradeStart : GameServerNetworkPacket
     {
-        private L2Player player;
-        private readonly List<L2Item> trade = new List<L2Item>();
-        private readonly int partnerId;
+        private L2Player _player;
+        private readonly List<L2Item> _trade = new List<L2Item>();
+        private readonly int _partnerId;
 
         public TradeStart(L2Player player)
         {
-            this.player = player;
-            partnerId = player.requester.ObjId;
+            this._player = player;
+            _partnerId = player.Requester.ObjId;
             //foreach (L2Item item in player.getAllNonQuestItems().Where(item => (item.Template.is_trade != 0) && (item.AugmentationID <= 0) && (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.asset)))
             //    trade.Add(item);
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x1E);
-            writeD(partnerId);
-            writeH(trade.Count);
+            WriteC(0x1E);
+            WriteD(_partnerId);
+            WriteH(_trade.Count);
 
-            foreach (L2Item item in trade)
+            foreach (L2Item item in _trade)
             {
-                writeH(item.Template.Type1());
-                writeD(item.ObjId);
-                writeD(item.Template.ItemID);
-                writeD(item.Count);
+                WriteH(item.Template.Type1());
+                WriteD(item.ObjId);
+                WriteD(item.Template.ItemId);
+                WriteD(item.Count);
 
-                writeH(item.Template.Type2());
-                writeH(item.CustomType1);
+                WriteH(item.Template.Type2());
+                WriteH(item.CustomType1);
 
-                writeD(item.Template.BodyPartId());
-                writeH(item.Enchant);
-                writeH(item.CustomType2);
+                WriteD(item.Template.BodyPartId());
+                WriteH(item.Enchant);
+                WriteH(item.CustomType2);
 
-                writeH(0x00);
+                WriteH(0x00);
             }
         }
     }

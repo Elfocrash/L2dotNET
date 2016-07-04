@@ -7,32 +7,32 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 {
     class RequestMoveToLocationInVehicle : GameServerNetworkRequest
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(RequestMoveToLocationInVehicle));
-        private int boatId;
-        private int dx;
-        private int dy;
-        private int dz;
-        private int x;
-        private int y;
-        private int z;
+        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestMoveToLocationInVehicle));
+        private int _boatId;
+        private int _dx;
+        private int _dy;
+        private int _dz;
+        private int _x;
+        private int _y;
+        private int _z;
 
         public RequestMoveToLocationInVehicle(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            boatId = readD(); //objectId of boat
-            dx = readD();
-            dy = readD();
-            dz = readD();
-            x = readD();
-            y = readD();
-            z = readD();
+            _boatId = ReadD(); //objectId of boat
+            _dx = ReadD();
+            _dy = ReadD();
+            _dz = ReadD();
+            _x = ReadD();
+            _y = ReadD();
+            _z = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -40,26 +40,26 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 
             if (player.Summon != null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.RELEASE_PET_ON_BOAT);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ReleasePetOnBoat);
                 player.SendActionFailed();
                 return;
             }
 
             L2Boat boat = null;
             if (player.Boat != null)
-                if (player.Boat.ObjId == boatId)
+                if (player.Boat.ObjId == _boatId)
                     boat = player.Boat;
                 else
                 {
                     player.SendActionFailed();
                     return;
                 }
-            else if (player.KnownObjects.ContainsKey(boatId))
-                boat = (L2Boat)player.KnownObjects[boatId];
+            else if (player.KnownObjects.ContainsKey(_boatId))
+                boat = (L2Boat)player.KnownObjects[_boatId];
 
             if (boat == null)
             {
-                log.Error($"User requested null boat {boatId}");
+                Log.Error($"User requested null boat {_boatId}");
                 player.SendActionFailed();
                 return;
             }
@@ -67,10 +67,10 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
             if (player.Boat == null)
                 player.Boat = boat;
 
-            player.BoatX = dx;
-            player.BoatY = dy;
-            player.BoatZ = dz;
-            player.BroadcastPacket(new MoveToLocationInVehicle(player, x, y, z));
+            player.BoatX = _dx;
+            player.BoatY = _dy;
+            player.BoatZ = _dz;
+            player.BroadcastPacket(new MoveToLocationInVehicle(player, _x, _y, _z));
         }
     }
 }

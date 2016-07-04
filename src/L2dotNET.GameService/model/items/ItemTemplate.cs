@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.Inventory;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Model.Skills2.Effects;
 
@@ -7,28 +6,28 @@ namespace L2dotNET.GameService.Model.Items
 {
     public class ItemTemplate
     {
-        public int ItemID;
+        public int ItemId;
 
         public L2ItemBodypart Bodypart;
 
         public int Durability = -1;
 
-        public L2ItemType Type = L2ItemType.etcitem;
-        public L2ItemArmorType _type_armor = L2ItemArmorType.none;
-        public L2ItemConsume StackType = L2ItemConsume.normal;
-        public L2ItemGrade CrystallGrade = L2ItemGrade.none;
-        public L2ItemWeaponType WeaponType = L2ItemWeaponType.sword;
+        public L2ItemType Type = L2ItemType.Etcitem;
+        public L2ItemArmorType TypeArmor = L2ItemArmorType.None;
+        public L2ItemConsume StackType = L2ItemConsume.Normal;
+        public L2ItemGrade CrystallGrade = L2ItemGrade.None;
+        public L2ItemWeaponType WeaponType = L2ItemWeaponType.Sword;
 
-        public int _recipeId = 0;
+        public int RecipeId = 0;
         public int Weight = 0;
-        public int _cryCount = 0;
+        public int CryCount = 0;
 
         public int MpConsume = 0;
         public int LimitedMinutes = 0;
 
-        public bool isAutoSS
+        public bool IsAutoSs
         {
-            get { return (default_action == "action_soulshot") || (default_action == "action_spiritshot") || (default_action == "action_summon_soulshot") || (default_action == "action_summon_spiritshot"); }
+            get { return (DefaultAction == "action_soulshot") || (DefaultAction == "action_spiritshot") || (DefaultAction == "action_summon_soulshot") || (DefaultAction == "action_summon_spiritshot"); }
         }
 
         public int SoulshotCount = 0,
@@ -38,28 +37,28 @@ namespace L2dotNET.GameService.Model.Items
 
         //  public TSkill critical_attack_skill, attack_skill, magic_skill;
 
-        public int is_trade = 1,
-                   is_drop = 1,
-                   is_destruct = 1,
-                   enchant_enable = 0;
-        public int is_private_store = 1,
-                   elemental_enable = 0,
-                   is_olympiad_can_use = 1,
-                   is_premium = 0;
-        public int physical_damage,
-                   random_damage,
-                   attack_range,
-                   attack_speed,
-                   magical_damage;
-        public int physical_defense,
-                   magical_defense,
-                   mp_bonus,
-                   magic_weapon;
+        public int IsTrade = 1,
+                   IsDrop = 1,
+                   IsDestruct = 1,
+                   EnchantEnable = 0;
+        public int IsPrivateStore = 1,
+                   ElementalEnable = 0,
+                   IsOlympiadCanUse = 1,
+                   IsPremium = 0;
+        public int PhysicalDamage,
+                   RandomDamage,
+                   AttackRange,
+                   AttackSpeed,
+                   MagicalDamage;
+        public int PhysicalDefense,
+                   MagicalDefense,
+                   MpBonus,
+                   MagicWeapon;
 
-        public int avoid_modify,
-                   shield_defense,
-                   shield_defense_rate;
-        public double hit_modify;
+        public int AvoidModify,
+                   ShieldDefense,
+                   ShieldDefenseRate;
+        public double HitModify;
 
         public int BaseAttrAttackType = -2;
         public int BaseAttrAttackValue;
@@ -70,46 +69,46 @@ namespace L2dotNET.GameService.Model.Items
         public int BaseAttrDefenseValueHoly;
         public int BaseAttrDefenseValueUnholy;
 
-        public int getCrystallId()
+        public int GetCrystallId()
         {
             switch (CrystallGrade)
             {
-                case L2ItemGrade.d:
+                case L2ItemGrade.D:
                     return 1458;
-                case L2ItemGrade.c:
+                case L2ItemGrade.C:
                     return 1459;
-                case L2ItemGrade.b:
+                case L2ItemGrade.B:
                     return 1460;
-                case L2ItemGrade.a:
+                case L2ItemGrade.A:
                     return 1461;
-                case L2ItemGrade.s:
-                case L2ItemGrade.s80:
-                case L2ItemGrade.s84:
-                case L2ItemGrade.s86:
+                case L2ItemGrade.S:
+                case L2ItemGrade.S80:
+                case L2ItemGrade.S84:
+                case L2ItemGrade.S86:
                     return 1462;
             }
 
             return 0;
         }
 
-        public int[] getSoulshots()
+        public int[] GetSoulshots()
         {
             switch (CrystallGrade)
             {
-                case L2ItemGrade.none:
+                case L2ItemGrade.None:
                     return new[] { 1835, 5789 };
-                case L2ItemGrade.d:
+                case L2ItemGrade.D:
                     return new[] { 1463, 22082 };
-                case L2ItemGrade.c:
+                case L2ItemGrade.C:
                     return new[] { 1464, 22083 };
-                case L2ItemGrade.b:
+                case L2ItemGrade.B:
                     return new[] { 1465, 22084 };
-                case L2ItemGrade.a:
+                case L2ItemGrade.A:
                     return new[] { 1466, 22085 };
-                case L2ItemGrade.s:
-                case L2ItemGrade.s80:
-                case L2ItemGrade.s84:
-                case L2ItemGrade.s86:
+                case L2ItemGrade.S:
+                case L2ItemGrade.S80:
+                case L2ItemGrade.S84:
+                case L2ItemGrade.S86:
                     return new[] { 1467, 22086 };
             }
 
@@ -118,161 +117,151 @@ namespace L2dotNET.GameService.Model.Items
 
         public enum L2ItemType
         {
-            weapon,
-            armor,
-            etcitem,
-            questitem,
-            accessary,
-            asset
+            Weapon,
+            Armor,
+            Etcitem,
+            Questitem,
+            Accessary,
+            Asset
         }
 
         public enum L2ItemArmorType
         {
-            none,
-            magic,
-            light,
-            heavy
+            None,
+            Magic,
+            Light,
+            Heavy
         }
 
         public enum L2ItemConsume
         {
-            normal,
-            stackable
+            Normal,
+            Stackable
         }
 
         public enum L2ItemGrade
         {
-            none,
-            d,
-            c,
-            b,
-            a,
-            s,
-            s80,
-            s84,
-            s86
+            None,
+            D,
+            C,
+            B,
+            A,
+            S,
+            S80,
+            S84,
+            S86
         }
 
         public enum L2ItemWeaponType
         {
-            none,
-            shield,
-            sword,
-            blunt,
-            dagger,
-            pole,
-            fist,
-            dualfist,
-            bow,
-            etc, //book
-            dual,
-            fishingrod,
-            rapier,
-            crossbow,
-            ancientsword,
-            dualdagger,
-            flag,
-            ownthing
+            None,
+            Shield,
+            Sword,
+            Blunt,
+            Dagger,
+            Pole,
+            Fist,
+            Dualfist,
+            Bow,
+            Etc, //book
+            Dual,
+            Fishingrod,
+            Rapier,
+            Crossbow,
+            Ancientsword,
+            Dualdagger,
+            Flag,
+            Ownthing
         }
 
         public enum L2ItemBodypart
         {
-            none,
+            None,
 
-            lhand,
+            Lhand,
 
-            back, //cloak
+            Back, //cloak
 
-            hair,
-            alldress, //suit
+            Hair,
+            Alldress, //suit
 
-            rbracelet, //belt? the same as lbracelet
-            lbracelet, //bracelet
-            deco1, //talisman
-            sigil,
-            waist, //belt
+            Rbracelet, //belt? the same as lbracelet
+            Lbracelet, //bracelet
+            Deco1, //talisman
+            Sigil,
+            Waist, //belt
 
             //pts
-            rhand,
-            lrhand,
-            chest,
-            legs,
-            feet,
-            head,
-            gloves,
-            onepiece,
-            ears,
-            fingers,
-            neck,
-            underwear, //shirt
-            hair2,
-            hairall
+            Rhand,
+            Lrhand,
+            Chest,
+            Legs,
+            Feet,
+            Head,
+            Gloves,
+            Onepiece,
+            Ears,
+            Fingers,
+            Neck,
+            Underwear, //shirt
+            Hair2,
+            Hairall
         }
 
-        public short can_equip_sex = -1;
+        private short _canEquipSex = -1;
 
-        public bool canEquipSex(int sex)
+        public bool CanEquipSex(int sex)
         {
-            if (can_equip_sex == -1)
+            if (_canEquipSex == -1)
                 return true;
 
-            return sex == can_equip_sex;
+            return sex == _canEquipSex;
         }
 
-        public short can_equip_agit = -1;
+        private short _canEquipCastle = -1;
 
-        public bool canEquipAgit(int agitId)
+        public bool CanEquipCastle(int castleId)
         {
-            if (can_equip_agit == -1)
+            if (_canEquipCastle == -1)
                 return true;
 
-            return agitId == can_equip_agit;
+            return castleId == _canEquipCastle;
         }
 
-        public short can_equip_castle = -1;
+        public short CanEquipHero = -1;
 
-        public bool canEquipCastle(int castleId)
+        public bool CanEquipHeroic(int heroic)
         {
-            if (can_equip_castle == -1)
+            if (CanEquipHero == -1)
                 return true;
 
-            return castleId == can_equip_castle;
+            return heroic == CanEquipHero;
         }
 
-        public short can_equip_hero = -1;
+        private short _canEquipNobless = -1;
 
-        public bool canEquipHeroic(int heroic)
+        public bool CanEquipNobless(int noble)
         {
-            if (can_equip_hero == -1)
+            if (_canEquipNobless == -1)
                 return true;
 
-            return heroic == can_equip_hero;
+            return noble == _canEquipNobless;
         }
 
-        public short can_equip_nobless = -1;
+        private short _canEquipChaotic = -1;
+        public string HtmFile;
 
-        public bool canEquipNobless(int noble)
+        public bool CanEquipChaotic(int pkkills)
         {
-            if (can_equip_nobless == -1)
-                return true;
-
-            return noble == can_equip_nobless;
-        }
-
-        public short can_equip_chaotic = -1;
-        public string _htmFile;
-
-        public bool canEquipChaotic(int pkkills)
-        {
-            if (can_equip_chaotic == -1)
+            if (_canEquipChaotic == -1)
                 return true;
 
             return pkkills == 0;
         }
 
-        public bool isStackable()
+        public bool IsStackable()
         {
-            return StackType == L2ItemConsume.stackable;
+            return StackType == L2ItemConsume.Stackable;
         }
 
         public short Type1()
@@ -280,10 +269,10 @@ namespace L2dotNET.GameService.Model.Items
             short val = 0;
             switch (Type)
             {
-                case L2ItemType.weapon:
+                case L2ItemType.Weapon:
                     switch (WeaponType)
                     {
-                        case L2ItemWeaponType.shield:
+                        case L2ItemWeaponType.Shield:
                             val = 2;
                             break;
 
@@ -293,13 +282,13 @@ namespace L2dotNET.GameService.Model.Items
                     }
 
                     break;
-                case L2ItemType.armor:
+                case L2ItemType.Armor:
                     val = 1;
                     break;
-                case L2ItemType.accessary:
+                case L2ItemType.Accessary:
                     val = 3;
                     break;
-                case L2ItemType.questitem:
+                case L2ItemType.Questitem:
                     val = 4;
                     break;
             }
@@ -312,22 +301,22 @@ namespace L2dotNET.GameService.Model.Items
             short val = 0;
             switch (Type)
             {
-                case L2ItemType.weapon:
+                case L2ItemType.Weapon:
                     val = 0;
                     break;
-                case L2ItemType.armor:
+                case L2ItemType.Armor:
                     val = 1;
                     break;
-                case L2ItemType.accessary:
+                case L2ItemType.Accessary:
                     val = 2;
                     break;
-                case L2ItemType.questitem:
+                case L2ItemType.Questitem:
                     val = 3;
                     break;
-                case L2ItemType.asset:
+                case L2ItemType.Asset:
                     val = 4;
                     break;
-                case L2ItemType.etcitem:
+                case L2ItemType.Etcitem:
                     val = 5;
                     break;
             }
@@ -340,49 +329,49 @@ namespace L2dotNET.GameService.Model.Items
             int id = 0;
             switch (Bodypart)
             {
-                case L2ItemBodypart.underwear:
+                case L2ItemBodypart.Underwear:
                     id = Inventory.Inventory.PaperdollUnder;
                     break;
-                case L2ItemBodypart.ears:
+                case L2ItemBodypart.Ears:
                     id = Inventory.Inventory.PaperdollHairall;
                     break;
-                case L2ItemBodypart.neck:
+                case L2ItemBodypart.Neck:
                     id = 8;
                     break;
-                case L2ItemBodypart.fingers:
+                case L2ItemBodypart.Fingers:
                     id = 16 | 32;
                     break;
-                case L2ItemBodypart.head:
+                case L2ItemBodypart.Head:
                     id = 64;
                     break;
-                case L2ItemBodypart.rhand:
+                case L2ItemBodypart.Rhand:
                     id = 128;
                     break;
-                case L2ItemBodypart.lhand:
+                case L2ItemBodypart.Lhand:
                     id = 256;
                     break;
-                case L2ItemBodypart.gloves:
+                case L2ItemBodypart.Gloves:
                     id = 512;
                     break;
-                case L2ItemBodypart.chest:
+                case L2ItemBodypart.Chest:
                     id = 1024;
                     break;
-                case L2ItemBodypart.legs:
+                case L2ItemBodypart.Legs:
                     id = 2048;
                     break;
-                case L2ItemBodypart.feet:
+                case L2ItemBodypart.Feet:
                     id = 4096;
                     break;
-                case L2ItemBodypart.back:
+                case L2ItemBodypart.Back:
                     id = Inventory.Inventory.PaperdollBack;
                     break;
-                case L2ItemBodypart.lrhand:
+                case L2ItemBodypart.Lrhand:
                     id = 16384;
                     break;
-                case L2ItemBodypart.hair:
+                case L2ItemBodypart.Hair:
                     id = Inventory.Inventory.PaperdollHair;
                     break;
-                case L2ItemBodypart.hairall:
+                case L2ItemBodypart.Hairall:
                     id = Inventory.Inventory.PaperdollHairall;
                     break;
             }
@@ -391,24 +380,24 @@ namespace L2dotNET.GameService.Model.Items
         }
 
         public bool SetItem = false;
-        public List<TEffect> stats = new List<TEffect>();
-        public string default_action;
-        public int immediate_effect = 1;
-        public string armor_type;
-        public string etcitem_type;
-        public int delay_share_group = -1;
-        public int blessed = 0;
-        public int ex_immediate_effect;
-        public int drop_period = 10;
-        public int ex_drop_period;
-        public int use_skill_distime;
-        public int equip_reuse_delay;
-        public int keep_type;
-        public int can_move;
-        public int critical;
-        public int reuse_delay;
-        public short enchanted = 0;
-        public int for_npc;
+        public List<Effect> Stats = new List<Effect>();
+        public string DefaultAction;
+        public int ImmediateEffect = 1;
+        public string ArmorType;
+        public string EtcitemType;
+        public int DelayShareGroup = -1;
+        public int Blessed = 0;
+        public int ExImmediateEffect;
+        public int DropPeriod = 10;
+        public int ExDropPeriod;
+        public int UseSkillDistime;
+        public int EquipReuseDelay;
+        public int KeepType;
+        public int CanMove;
+        public int Critical;
+        public int ReuseDelay;
+        public short Enchanted = 0;
+        public int ForNpc;
 
         public static readonly int Type1WeaponRingEarringNecklace = 0;
         public static readonly int Type1ShieldArmor = 1;
@@ -452,103 +441,103 @@ namespace L2dotNET.GameService.Model.Items
 
         public static readonly int SlotAllweapon = SlotLrHand | SlotRHand;
 
-        public void buildEffect()
+        public void BuildEffect()
         {
-            if (physical_damage > 0)
+            if (PhysicalDamage > 0)
             {
-                p_physical_attack b = new p_physical_attack();
-                b.type = TEffectType.p_physical_defense;
-                b.HashID = ItemID;
-                b.build("p_physical_attack all +" + physical_damage);
-                stats.Add(b);
+                PPhysicalAttack b = new PPhysicalAttack();
+                b.Type = EffectType.PPhysicalDefense;
+                b.HashId = ItemId;
+                b.Build("p_physical_attack all +" + PhysicalDamage);
+                Stats.Add(b);
             }
 
-            if (physical_defense > 0)
+            if (PhysicalDefense > 0)
             {
-                p_physical_defence b = new p_physical_defence();
-                b.type = TEffectType.p_physical_defense;
-                b.HashID = ItemID;
-                b.build("p_physical_defense all +" + physical_defense);
-                stats.Add(b);
+                PPhysicalDefence b = new PPhysicalDefence();
+                b.Type = EffectType.PPhysicalDefense;
+                b.HashId = ItemId;
+                b.Build("p_physical_defense all +" + PhysicalDefense);
+                Stats.Add(b);
             }
 
-            if (magical_damage > 0)
+            if (MagicalDamage > 0)
             {
-                p_magical_attack b = new p_magical_attack();
-                b.type = TEffectType.p_magical_attack;
-                b.HashID = ItemID;
-                b.build("p_magical_attack all +" + magical_damage);
-                stats.Add(b);
+                PMagicalAttack b = new PMagicalAttack();
+                b.Type = EffectType.PMagicalAttack;
+                b.HashId = ItemId;
+                b.Build("p_magical_attack all +" + MagicalDamage);
+                Stats.Add(b);
             }
 
-            if (magical_defense > 0)
+            if (MagicalDefense > 0)
             {
-                p_magical_defence b = new p_magical_defence();
-                b.type = TEffectType.p_magical_defense;
-                b.HashID = ItemID;
-                b.build("p_magical_defense all +" + magical_defense);
-                stats.Add(b);
+                PMagicalDefence b = new PMagicalDefence();
+                b.Type = EffectType.PMagicalDefense;
+                b.HashId = ItemId;
+                b.Build("p_magical_defense all +" + MagicalDefense);
+                Stats.Add(b);
             }
 
-            if (shield_defense > 0)
+            if (ShieldDefense > 0)
             {
-                p_physical_shield_defence b = new p_physical_shield_defence();
-                b.type = TEffectType.p_physical_shield_defence;
-                b.HashID = ItemID;
-                b.build("p_physical_shield_defence +" + shield_defense);
-                stats.Add(b);
+                PPhysicalShieldDefence b = new PPhysicalShieldDefence();
+                b.Type = EffectType.PPhysicalShieldDefence;
+                b.HashId = ItemId;
+                b.Build("p_physical_shield_defence +" + ShieldDefense);
+                Stats.Add(b);
             }
         }
 
-        public List<TSkill> multiSkills;
+        public List<Skill> MultiSkills;
 
-        public void addMultiSkills(string value)
+        public void AddMultiSkills(string value)
         {
-            if (multiSkills == null)
-                multiSkills = new List<TSkill>();
+            if (MultiSkills == null)
+                MultiSkills = new List<Skill>();
 
             foreach (string v in value.Split(';'))
             {
-                TSkill sk = TSkillTable.Instance.Get(int.Parse(v.Split('-')[0]), int.Parse(v.Split('-')[1]));
+                Skill sk = SkillTable.Instance.Get(int.Parse(v.Split('-')[0]), int.Parse(v.Split('-')[1]));
                 if (sk != null)
-                    multiSkills.Add(sk);
+                    MultiSkills.Add(sk);
             }
 
-            if (multiSkills.Count == 0)
-                multiSkills = null;
+            if (MultiSkills.Count == 0)
+                MultiSkills = null;
         }
 
-        internal void setReducingSoulShots(string value) { }
+        internal void SetReducingSoulShots(string value) { }
 
-        internal void setReducingMpConsume(string value) { }
+        internal void SetReducingMpConsume(string value) { }
 
-        internal void setEquipCondition(string value) { }
+        internal void SetEquipCondition(string value) { }
 
-        internal void setDamageRange(string value) { }
+        internal void SetDamageRange(string value) { }
 
-        internal void setAttributeAttack(string value) { }
+        internal void SetAttributeAttack(string value) { }
 
-        internal void setAttributeDefend(string value) { }
+        internal void SetAttributeDefend(string value) { }
 
-        public TSkill unequip_skill;
+        public Skill UnequipSkill;
 
-        public void setUnequipSkill(string value)
+        public void SetUnequipSkill(string value)
         {
-            unequip_skill = TSkillTable.Instance.Get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
+            UnequipSkill = SkillTable.Instance.Get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
         }
 
-        internal void setEquipOption(string value) { }
+        internal void SetEquipOption(string value) { }
 
-        internal void setUseCondition(string value) { }
+        internal void SetUseCondition(string value) { }
 
-        public TSkill item_skill;
+        public Skill ItemSkill;
 
-        public void addItemSkill(string value)
+        public void AddItemSkill(string value)
         {
-            item_skill = TSkillTable.Instance.Get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
+            ItemSkill = SkillTable.Instance.Get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
         }
 
-        public TSkill item_skill_ench4;
+        public Skill ItemSkillEnch4;
         public short AttrDefenseValueUnholy;
         public short AttrDefenseValueHoly;
         public short AttrDefenseValueEarth;
@@ -558,9 +547,9 @@ namespace L2dotNET.GameService.Model.Items
         public short AttrAttackValue;
         public short AttrAttackType = -2;
 
-        public void addItemEnch4(string value)
+        public void AddItemEnch4(string value)
         {
-            item_skill_ench4 = TSkillTable.Instance.Get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
+            ItemSkillEnch4 = SkillTable.Instance.Get(int.Parse(value.Split('-')[0]), int.Parse(value.Split('-')[1]));
         }
     }
 }

@@ -10,26 +10,26 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestActionUse : GameServerNetworkRequest
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(RequestActionUse));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestActionUse));
         private int _actionId;
         private bool _ctrlPressed;
         private bool _shiftPressed;
 
         public RequestActionUse(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            _actionId = readD();
-            _ctrlPressed = (readD() == 1);
-            _shiftPressed = (readC() == 1);
+            _actionId = ReadD();
+            _ctrlPressed = (ReadD() == 1);
+            _shiftPressed = (ReadC() == 1);
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if (player.Dead || player.IsCastingNow() || (player.PBlockAct == 1))
             {
@@ -75,7 +75,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 case 19: //pet unsummon
                     if (player.Summon != null)
-                        player.Summon.unSummon();
+                        player.Summon.UnSummon();
                     break;
                 case 21: //summon change node
                     if (player.Summon != null)
@@ -114,13 +114,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 case 38: //mount\dismount
                     if (player.MountType > 0)
-                        player.unMount();
+                        player.UnMount();
                     else
                         player.MountPet();
                     break;
                 case 52: //summon unsummon
                     if (player.Summon != null)
-                        player.Summon.unSummon();
+                        player.Summon.UnSummon();
                     break;
                 case 53: //summon move
                     if (player.Summon != null)
@@ -146,28 +146,28 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     socialId = 18;
                     break;
                 case 1093: //Maguen Strike
-                    petCast(player, 16071, 6618, 1, 7);
+                    PetCast(player, 16071, 6618, 1, 7);
                     break;
                 case 1094: //Maguen Speed Walk
-                    petCast(player, 16071, 6681, 1);
+                    PetCast(player, 16071, 6681, 1);
                     break;
                 case 1095: //Maguen Power Strike
-                    petCast(player, 16072, 6619, 1, 7);
+                    PetCast(player, 16072, 6619, 1, 7);
                     break;
                 case 1096: //Elite Maguen Speed Walk
-                    petCast(player, 16072, 6682, 1);
+                    PetCast(player, 16072, 6682, 1);
                     break;
                 case 1097: //Maguen Recall
-                    petCast(player, 16071, 6683, 1);
+                    PetCast(player, 16071, 6683, 1);
                     break;
                 case 1098: //Maguen Party Recall
-                    petCast(player, 16072, 6684, 1);
+                    PetCast(player, 16072, 6684, 1);
                     break;
                 case 5002: //Critical Seduction
-                    petCast(player, 0, 23168, 1);
+                    PetCast(player, 0, 23168, 1);
                     break;
                 default:
-                    log.Info($"unrecognized action # {_actionId}");
+                    Log.Info($"unrecognized action # {_actionId}");
 
                     break;
             }
@@ -178,13 +178,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         private void CheckSit(L2Player player)
         {
-            if (player.IsCastingNow() || player.CantMove() || player.isSittingInProgress())
+            if (player.IsCastingNow() || player.CantMove() || player.IsSittingInProgress())
             {
                 player.SendActionFailed();
                 return;
             }
 
-            if (player.isSitting())
+            if (player.IsSitting())
             {
                 player.Stand();
                 return;
@@ -196,16 +196,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 L2Chair chair = (L2Chair)player.CurrentTarget;
                 if (!chair.IsUsedAlready && (chair.ClanID != -1) && (player.ClanId == chair.ClanID))
                 {
-                    double dis = Calcs.calculateDistance(player, chair, true);
+                    double dis = Calcs.CalculateDistance(player, chair, true);
                     if (dis < 150)
-                        staticId = chair.StaticID;
+                        staticId = chair.StaticId;
                 }
 
                 if (player.Builder == 1)
                 {
-                    double dis = Calcs.calculateDistance(player, chair, true);
+                    double dis = Calcs.CalculateDistance(player, chair, true);
                     if (dis < 150)
-                        staticId = chair.StaticID;
+                        staticId = chair.StaticId;
                 }
 
                 if (staticId > 0)
@@ -215,7 +215,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.Sit();
         }
 
-        private void petCast(L2Player player, int npcId, int id, int lv, int maxLv = 1)
+        private void PetCast(L2Player player, int npcId, int id, int lv, int maxLv = 1)
         {
             if ((player.Summon == null) || !(player.Summon is L2Pet))
             {
@@ -229,16 +229,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //    return;
             //}
 
-            TSkill skill = TSkillTable.Instance.Get(id, lv);
+            Skill skill = SkillTable.Instance.Get(id, lv);
 
             if (skill != null)
             {
                 player.Summon.ChangeTarget(player.CurrentTarget);
                 int result = player.Summon.CastSkill(skill);
-                log.Info($"pet cast result {result}");
+                Log.Info($"pet cast result {result}");
             }
             else
-                log.Error($"pet {npcId} used null skill {id}-{lv}");
+                Log.Error($"pet {npcId} used null skill {id}-{lv}");
         }
     }
 }

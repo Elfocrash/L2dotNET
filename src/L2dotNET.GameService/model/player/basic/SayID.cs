@@ -1,8 +1,8 @@
 ﻿namespace L2dotNET.GameService.Model.Player.Basic
 {
-    public class SayID
+    public class SayId
     {
-        public static byte MaxID = (byte)SayIDList.CHAT_MPCC_ROOM;
+        public static byte MaxId = (byte)SayIDList.CHAT_MPCC_ROOM;
 
         public static SayIDList getType(byte id)
         {

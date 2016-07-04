@@ -2,7 +2,7 @@
 {
     public class Experience
     {
-        public static long[] _exp = { -1L, // level 0 (unreachable)
+        public static long[] Exp = { -1L, // level 0 (unreachable)
                                       0L, 68L, 363L, 1168L, 2884L, 6038L, 11287L, 19423L, 31378L, 48229L, // level 10
                                       71201L, 101676L, 141192L, 191452L, 254327L, 331864L, 426284L, 539995L, 675590L, 835854L, // level 20
                                       1023775L, 1242536L, 1495531L, 1786365L, 2118860L, 2497059L, 2925229L, 3407873L, 3949727L, 4555766L, // level 30
@@ -13,12 +13,12 @@
                                       474205751L, 532692055L, 606319094L, 696376867L, 804219972L, 931275828L, 1151275834L, 1511275834L, 2099275834L, 4200000000L, // level 80
                                       6299994999L };
 
-        public static readonly byte MAX_LEVEL = 81;
+        public static readonly byte MaxLevel = 81;
 
-        public static byte getLevel(long exp)
+        public static byte GetLevel(long exp)
         {
             byte lvl = 0;
-            foreach (long e in _exp)
+            foreach (long e in Exp)
                 if (e < exp)
                     lvl++;
                 else

@@ -8,15 +8,15 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
     {
         public RequestExCancelEnchantItem(GameClient client, byte[] data)
         {
-            makeme(client, data, 2);
+            Makeme(client, data, 2);
         }
 
-        public override void read()
+        public override void Read()
         {
             // nothing
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -24,13 +24,13 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
             switch (player.EnchantState)
             {
-                case ItemEnchantManager.STATE_ENCHANT_START:
+                case ItemEnchantManager.StateEnchantStart:
                     player.EnchantItem = null;
                     break;
             }
 
             player.EnchantState = 0;
-            player.SendPacket(new EnchantResult(EnchantResultVal.closeWindow));
+            player.SendPacket(new EnchantResult(EnchantResultVal.CloseWindow));
         }
     }
 }

@@ -4,22 +4,22 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class PledgeReceiveSubPledgeCreated : GameServerNetworkPacket
     {
-        private readonly e_ClanSub sub;
+        private readonly EClanSub _sub;
 
-        public PledgeReceiveSubPledgeCreated(e_ClanSub sub)
+        public PledgeReceiveSubPledgeCreated(EClanSub sub)
         {
-            this.sub = sub;
+            this._sub = sub;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0x40);
+            WriteC(0xfe);
+            WriteH(0x40);
 
-            writeD(0x01);
-            writeD((short)sub.Type);
-            writeS(sub.Name);
-            writeS(sub.LeaderName);
+            WriteD(0x01);
+            WriteD((short)_sub.Type);
+            WriteS(_sub.Name);
+            WriteS(_sub.LeaderName);
         }
     }
 }

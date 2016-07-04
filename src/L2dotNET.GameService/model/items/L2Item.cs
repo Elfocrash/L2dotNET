@@ -40,7 +40,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public L2Item(ItemTemplate template)
         {
-            ObjId = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.NextId();
             Template = template;
             Count = 1;
             Durability = template.Durability;
@@ -53,13 +53,13 @@ namespace L2dotNET.GameService.Model.Items
                 //    lifeTimeEnd = DateTime.Now.AddHours(template.LimitedHours).ToString("yyyy-MM-dd HH-mm-ss");
             }
 
-            if (template.enchanted > 0)
-                Enchant = template.enchanted;
+            if (template.Enchanted > 0)
+                Enchant = template.Enchanted;
         }
 
-        public void genId()
+        public void GenId()
         {
-            ObjId = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.NextId();
         }
 
         /** Enumeration of locations for item */
@@ -85,27 +85,27 @@ namespace L2dotNET.GameService.Model.Items
                 owner.AbnormalBitMaskEvent &= ~Template.AbnormalMaskEvent;
 
             bool upsend = false;
-            if (Template.item_skill != null)
+            if (Template.ItemSkill != null)
             {
                 upsend = true;
-                owner.RemoveSkill(Template.item_skill.skill_id, false, false);
+                owner.RemoveSkill(Template.ItemSkill.SkillId, false, false);
             }
 
-            if (Template.item_skill_ench4 != null)
+            if (Template.ItemSkillEnch4 != null)
             {
                 upsend = true;
-                owner.RemoveSkill(Template.item_skill_ench4.skill_id, false, false);
+                owner.RemoveSkill(Template.ItemSkillEnch4.SkillId, false, false);
             }
 
-            if (Template.unequip_skill != null)
-                owner.AddEffect(owner, Template.unequip_skill, true, false);
+            if (Template.UnequipSkill != null)
+                owner.AddEffect(owner, Template.UnequipSkill, true, false);
 
             Location = ItemLocation.Inventory;
 
             if (upsend)
                 owner.UpdateSkillList();
 
-            if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.crossbow))
+            if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.Crossbow))
             {
                 //owner.Inventory.setPaperdoll(InvPC.EQUIPITEM_LHand, null, true);
                 owner.SecondaryWeaponSupport = null;
@@ -114,14 +114,14 @@ namespace L2dotNET.GameService.Model.Items
             if (Template.SetItem)
                 ItemTable.Instance.NotifyKeySetItem(owner, this, false);
 
-            if ((Template.Type == ItemTemplate.L2ItemType.armor) && (owner.setKeyItems != null) && owner.setKeyItems.Contains(Template.ItemID))
+            if ((Template.Type == ItemTemplate.L2ItemType.Armor) && (owner.SetKeyItems != null) && owner.SetKeyItems.Contains(Template.ItemId))
                 ItemTable.Instance.NotifySetItemEquip(owner, this, false);
 
-            if ((Template.Type == ItemTemplate.L2ItemType.armor) || (Template.Type == ItemTemplate.L2ItemType.weapon) || (Template.Type == ItemTemplate.L2ItemType.accessary))
+            if ((Template.Type == ItemTemplate.L2ItemType.Armor) || (Template.Type == ItemTemplate.L2ItemType.Weapon) || (Template.Type == ItemTemplate.L2ItemType.Accessary))
                 if (Enchant == 0)
-                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_DISARMED).AddItemName(Template.ItemID));
+                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1Disarmed).AddItemName(Template.ItemId));
                 else
-                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.EQUIPMENT_S1_S2_REMOVED).AddNumber(Enchant).AddItemName(Template.ItemID));
+                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.EquipmentS1S2Removed).AddNumber(Enchant).AddItemName(Template.ItemId));
 
             owner.RemoveStats(this);
         }
@@ -134,21 +134,21 @@ namespace L2dotNET.GameService.Model.Items
                 owner.AbnormalBitMaskEvent |= Template.AbnormalMaskEvent;
 
             bool upsend = false;
-            if (Template.item_skill != null)
+            if (Template.ItemSkill != null)
             {
                 upsend = true;
-                owner.AddSkill(Template.item_skill, false, false);
+                owner.AddSkill(Template.ItemSkill, false, false);
             }
 
-            if ((Template.item_skill_ench4 != null) && (Enchant >= 4))
+            if ((Template.ItemSkillEnch4 != null) && (Enchant >= 4))
             {
                 upsend = true;
-                owner.AddSkill(Template.item_skill_ench4, false, false);
+                owner.AddSkill(Template.ItemSkillEnch4, false, false);
             }
 
             Location = ItemLocation.Paperdoll;
 
-            if ((Template.Bodypart == ItemTemplate.L2ItemBodypart.lhand) && (Template.WeaponType == ItemTemplate.L2ItemWeaponType.shield))
+            if ((Template.Bodypart == ItemTemplate.L2ItemBodypart.Lhand) && (Template.WeaponType == ItemTemplate.L2ItemWeaponType.Shield))
             {
                 //L2Item weapon = owner.Inventory.getWeapon();
                 //if ((weapon != null) && (weapon.Template.Bodypart == ItemTemplate.L2ItemBodypart.lrhand))
@@ -158,20 +158,20 @@ namespace L2dotNET.GameService.Model.Items
             if (upsend)
                 owner.UpdateSkillList();
 
-            if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.crossbow))
+            if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.Crossbow))
                 TryEquipSecondary(owner);
 
             if (Template.SetItem)
                 ItemTable.Instance.NotifyKeySetItem(owner, this, true);
 
-            if ((Template.Type == ItemTemplate.L2ItemType.armor) && (owner.setKeyItems != null) && owner.setKeyItems.Contains(Template.ItemID))
+            if ((Template.Type == ItemTemplate.L2ItemType.Armor) && (owner.SetKeyItems != null) && owner.SetKeyItems.Contains(Template.ItemId))
                 ItemTable.Instance.NotifySetItemEquip(owner, this, true);
 
-            if ((Template.Type == ItemTemplate.L2ItemType.armor) || (Template.Type == ItemTemplate.L2ItemType.weapon) || (Template.Type == ItemTemplate.L2ItemType.accessary))
+            if ((Template.Type == ItemTemplate.L2ItemType.Armor) || (Template.Type == ItemTemplate.L2ItemType.Weapon) || (Template.Type == ItemTemplate.L2ItemType.Accessary))
                 if (Enchant == 0)
-                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_EQUIPPED).AddItemName(Template.ItemID));
+                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1Equipped).AddItemName(Template.ItemId));
                 else
-                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_S2_EQUIPPED).AddNumber(Enchant).AddItemName(Template.ItemID));
+                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1S2Equipped).AddNumber(Enchant).AddItemName(Template.ItemId));
 
             owner.AddStats(this);
         }
@@ -181,19 +181,19 @@ namespace L2dotNET.GameService.Model.Items
             if (Template.AbnormalMaskEvent > 0)
                 owner.AbnormalBitMaskEvent |= Template.AbnormalMaskEvent;
 
-            if (Template.item_skill != null)
-                owner.AddSkill(Template.item_skill, false, false);
+            if (Template.ItemSkill != null)
+                owner.AddSkill(Template.ItemSkill, false, false);
 
-            if ((Template.item_skill_ench4 != null) && (Enchant >= 4))
-                owner.AddSkill(Template.item_skill_ench4, false, false);
+            if ((Template.ItemSkillEnch4 != null) && (Enchant >= 4))
+                owner.AddSkill(Template.ItemSkillEnch4, false, false);
 
-            if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.crossbow))
+            if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.Crossbow))
                 TryEquipSecondary(owner);
 
             if (Template.SetItem)
                 ItemTable.Instance.NotifyKeySetItem(owner, this, true);
 
-            if ((Template.Type == ItemTemplate.L2ItemType.armor) && (owner.setKeyItems != null) && owner.setKeyItems.Contains(Template.ItemID))
+            if ((Template.Type == ItemTemplate.L2ItemType.Armor) && (owner.SetKeyItems != null) && owner.SetKeyItems.Contains(Template.ItemId))
                 ItemTable.Instance.NotifySetItemEquip(owner, this, true);
 
             owner.AddStats(this);
@@ -203,26 +203,26 @@ namespace L2dotNET.GameService.Model.Items
         {
             int secondaryId1,
                 secondaryId2;
-            bool bow = Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow;
+            bool bow = Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow;
             switch (Template.CrystallGrade)
             {
-                case ItemTemplate.L2ItemGrade.none:
+                case ItemTemplate.L2ItemGrade.None:
                     secondaryId1 = bow ? 17 : 9632;
                     secondaryId2 = 0;
                     break;
-                case ItemTemplate.L2ItemGrade.d:
+                case ItemTemplate.L2ItemGrade.D:
                     secondaryId1 = bow ? 1341 : 9633;
                     secondaryId2 = bow ? 22067 : 22144;
                     break;
-                case ItemTemplate.L2ItemGrade.c:
+                case ItemTemplate.L2ItemGrade.C:
                     secondaryId1 = bow ? 1342 : 9634;
                     secondaryId2 = bow ? 22068 : 22145;
                     break;
-                case ItemTemplate.L2ItemGrade.b:
+                case ItemTemplate.L2ItemGrade.B:
                     secondaryId1 = bow ? 1343 : 9635;
                     secondaryId2 = bow ? 22069 : 22146;
                     break;
-                case ItemTemplate.L2ItemGrade.a:
+                case ItemTemplate.L2ItemGrade.A:
                     secondaryId1 = bow ? 1344 : 9636;
                     secondaryId2 = bow ? 22070 : 22147;
                     break;
@@ -263,7 +263,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public override void OnAction(L2Player player)
         {
-            double dis = Calcs.calculateDistance(this, player, true);
+            double dis = Calcs.CalculateDistance(this, player, true);
             player.SendMessage(AsString() + " dis " + (int)dis);
             if (dis < 80)
             {
@@ -388,17 +388,17 @@ namespace L2dotNET.GameService.Model.Items
 
         public override string AsString()
         {
-            return "L2Item:" + Template.ItemID + "; count " + Count + "; enchant " + Enchant + "; id " + ObjId;
+            return "L2Item:" + Template.ItemId + "; count " + Count + "; enchant " + Enchant + "; id " + ObjId;
         }
 
         public bool NotForTrade()
         {
-            return (Template.is_trade == 0) || (AugmentationId > 0) || (IsEquipped == 1);
+            return (Template.IsTrade == 0) || (AugmentationId > 0) || (IsEquipped == 1);
         }
 
         public bool NotForSale()
         {
-            return (Template.is_trade == 0) || (IsEquipped == 1);
+            return (Template.IsTrade == 0) || (IsEquipped == 1);
         }
     }
 }

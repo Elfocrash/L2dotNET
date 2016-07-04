@@ -35,7 +35,7 @@ namespace L2dotNET.GameService.Model.Zones
 
         public Location GetSpawnLoc()
         {
-            return (Location)Rnd.Get(_spawnLocs);
+            return (Location) Rnd.Get(_spawnLocs);
         }
 
         public Location GetChaoticSpawnLoc()

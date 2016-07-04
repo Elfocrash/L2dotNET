@@ -2,18 +2,18 @@
 {
     class ExNoticePostSent : GameServerNetworkPacket
     {
-        private readonly int anim;
+        private readonly int _anim;
 
         public ExNoticePostSent(int anim)
         {
-            this.anim = anim;
+            this._anim = anim;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0xb4);
-            writeD(anim);
+            WriteC(0xfe);
+            WriteH(0xb4);
+            WriteD(_anim);
         }
     }
 }

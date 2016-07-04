@@ -4,32 +4,32 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class PledgeShowInfoUpdate : GameServerNetworkPacket
     {
-        private readonly L2Clan Clan;
+        private readonly L2Clan _clan;
 
         public PledgeShowInfoUpdate(L2Clan clan)
         {
-            Clan = clan;
+            _clan = clan;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x8e);
-            writeD(Clan.ClanID);
-            writeD(Clan.CrestID);
-            writeD(Clan.Level);
-            writeD(Clan.CastleID);
-            writeD(Clan.HideoutID);
-            writeD(Clan.FortressID);
-            writeD(Clan.ClanRank);
-            writeD(Clan.ClanNameValue);
-            writeD(Clan.Status);
-            writeD(Clan.Guilty);
-            writeD(Clan.AllianceID);
-            writeS(Clan.AllianceName);
-            writeD(Clan.AllianceCrestId);
-            writeD(Clan.InWar);
-            writeD(Clan.LargeCrestID);
-            writeD(Clan.JoinDominionWarID);
+            WriteC(0x8e);
+            WriteD(_clan.ClanId);
+            WriteD(_clan.CrestId);
+            WriteD(_clan.Level);
+            WriteD(_clan.CastleId);
+            WriteD(_clan.HideoutId);
+            WriteD(_clan.FortressId);
+            WriteD(_clan.ClanRank);
+            WriteD(_clan.ClanNameValue);
+            WriteD(_clan.Status);
+            WriteD(_clan.Guilty);
+            WriteD(_clan.AllianceId);
+            WriteS(_clan.AllianceName);
+            WriteD(_clan.AllianceCrestId);
+            WriteD(_clan.InWar);
+            WriteD(_clan.LargeCrestId);
+            WriteD(_clan.JoinDominionWarId);
         }
     }
 }

@@ -5,101 +5,101 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Model.Player.AI
 {
-    public class PlayerAI : StandartAiTemplate
+    public class PlayerAi : StandartAiTemplate
     {
-        private readonly L2Player player;
+        private readonly L2Player _player;
 
-        public PlayerAI(L2Character cha)
+        public PlayerAi(L2Character cha)
         {
-            character = cha;
-            player = (L2Player)cha;
+            Character = cha;
+            _player = (L2Player)cha;
         }
 
         public override void NotifyStartMoving()
         {
-            foreach (TSpecEffect ef in player.specEffects)
-                ef.OnStartMoving(player);
+            foreach (SpecEffect ef in _player.SpecEffects)
+                ef.OnStartMoving(_player);
         }
 
         public override void NotifyStopMoving()
         {
-            foreach (TSpecEffect ef in player.specEffects)
-                ef.OnStopMoving(player);
+            foreach (SpecEffect ef in _player.SpecEffects)
+                ef.OnStopMoving(_player);
         }
 
         public override void NotifyOnStartDay()
         {
-            foreach (TSpecEffect ef in player.specEffects)
-                ef.OnStartDay(player);
+            foreach (SpecEffect ef in _player.SpecEffects)
+                ef.OnStartDay(_player);
         }
 
         public override void NotifyOnStartNight()
         {
-            foreach (TSpecEffect ef in player.specEffects)
-                ef.OnStartNight(player);
+            foreach (SpecEffect ef in _player.SpecEffects)
+                ef.OnStartNight(_player);
         }
 
         public override void StopAutoAttack()
         {
-            if (attackMove != null)
-                attackMove.Enabled = false;
+            if (AttackMove != null)
+                AttackMove.Enabled = false;
 
-            MoveTarget = 0;
+            _moveTarget = 0;
         }
 
-        public System.Timers.Timer attackMove;
+        public System.Timers.Timer AttackMove;
 
         public override void Attack(L2Character target)
         {
-            if (attackMove == null)
+            if (AttackMove == null)
             {
-                attackMove = new System.Timers.Timer();
-                attackMove.Elapsed += new System.Timers.ElapsedEventHandler(AttackMoveTask);
-                attackMove.Interval = 100;
+                AttackMove = new System.Timers.Timer();
+                AttackMove.Elapsed += AttackMoveTask;
+                AttackMove.Interval = 100;
             }
 
-            MoveTarget = 0;
-            attackMove.Enabled = true;
+            _moveTarget = 0;
+            AttackMove.Enabled = true;
         }
 
-        private int lastx;
-        private int lasty;
-        private int lastz;
-        private byte MoveTarget;
+        private int _lastx;
+        private int _lasty;
+        private int _lastz;
+        private byte _moveTarget;
 
         private void AttackMoveTask(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (player.IsAttacking())
+            if (_player.IsAttacking())
                 return;
 
-            if (player.CurrentTarget == null)
+            if (_player.CurrentTarget == null)
             {
-                attackMove.Enabled = false;
+                AttackMove.Enabled = false;
                 return;
             }
 
-            double dis = Calcs.calculateDistance(player, character.CurrentTarget, true);
+            double dis = Calcs.CalculateDistance(_player, Character.CurrentTarget, true);
             if (dis < 80)
             {
-                L2Character target = player.CurrentTarget;
+                L2Character target = _player.CurrentTarget;
                 if (!target.Dead)
-                    player.DoAttack(target);
+                    _player.DoAttack(target);
             }
             else
             {
-                if (player.CantMove())
+                if (_player.CantMove())
                     return;
 
-                if ((lastx != player.CurrentTarget.X) || (lasty != player.CurrentTarget.Y) || (lastz != player.CurrentTarget.Z))
-                    MoveTarget = 0;
+                if ((_lastx != _player.CurrentTarget.X) || (_lasty != _player.CurrentTarget.Y) || (_lastz != _player.CurrentTarget.Z))
+                    _moveTarget = 0;
 
-                if (MoveTarget == 0)
+                if (_moveTarget == 0)
                 {
-                    player.MoveTo(player.CurrentTarget.X, player.CurrentTarget.Y, player.CurrentTarget.Z);
-                    MoveTarget = 1;
-                    lastx = character.CurrentTarget.X;
-                    lasty = character.CurrentTarget.Y;
-                    lastz = character.CurrentTarget.Z;
+                    _player.MoveTo(_player.CurrentTarget.X, _player.CurrentTarget.Y, _player.CurrentTarget.Z);
+                    _moveTarget = 1;
+                    _lastx = Character.CurrentTarget.X;
+                    _lasty = Character.CurrentTarget.Y;
+                    _lastz = Character.CurrentTarget.Z;
                 }
             }
         }

@@ -12,12 +12,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public EnterWorld(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        private int[][] tracert = new int[5][];
+        private int[][] _tracert = new int[5][];
 
-        public override void read()
+        public override void Read()
         {
             //readB(32);
             //readD();
@@ -35,13 +35,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //}
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             player.TotalRestore();
 
-            player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.WELCOME_TO_LINEAGE));
+            player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.WelcomeToLineage));
 
             AnnouncementManager.Instance.OnEnter(player);
 
@@ -51,9 +51,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.StartRegeneration();
             // player.sendItemList(false);
             player.SendPacket(new FriendList());
-            player.sendQuestList();
+            player.SendQuestList();
             player.UpdateSkillList();
-            player.updateReuse();
+            player.UpdateReuse();
 
             if (player.ClanId > 0)
                 ClanTable.Instance.Apply(player);
@@ -65,7 +65,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             GameTime.Instance.EnterWorld(player);
 
-            player.timer();
+            player.Timer();
 
             player.SpawnMe();
             //L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);

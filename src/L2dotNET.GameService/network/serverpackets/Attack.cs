@@ -4,32 +4,32 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class Attack : GameServerNetworkPacket
     {
-        protected int _attackerObjId;
-        public bool soulshot;
-        public int _grade;
+        protected int AttackerObjId;
+        public bool Soulshot;
+        public int Grade;
         private readonly int _x;
-        private int tx;
+        private int _tx;
         private readonly int _y;
-        private int ty;
+        private int _ty;
         private readonly int _z;
-        private int tz;
+        private int _tz;
         private Hit[] _hits;
 
         public Attack(L2Character player, L2Object target, bool ss, int grade)
         {
-            _attackerObjId = player.ObjId;
-            soulshot = ss;
-            _grade = grade;
+            AttackerObjId = player.ObjId;
+            Soulshot = ss;
+            Grade = grade;
             _x = player.X;
             _y = player.Y;
             _z = player.Z;
-            tx = target.X;
-            ty = target.Y;
-            tz = target.Z;
+            _tx = target.X;
+            _ty = target.Y;
+            _tz = target.Z;
             _hits = new Hit[0];
         }
 
-        public void addHit(int targetId, int damage, bool miss, bool crit, bool shld)
+        public void AddHit(int targetId, int damage, bool miss, bool crit, bool shld)
         {
             int pos = _hits.Length;
             Hit[] tmp = new Hit[pos + 1];
@@ -37,32 +37,32 @@ namespace L2dotNET.GameService.Network.Serverpackets
             for (int i = 0; i < _hits.Length; i++)
                 tmp[i] = _hits[i];
 
-            tmp[pos] = new Hit(targetId, damage, miss, crit, shld, soulshot, _grade);
+            tmp[pos] = new Hit(targetId, damage, miss, crit, shld, Soulshot, Grade);
             _hits = tmp;
         }
 
-        public bool hasHits()
+        public bool HasHits()
         {
             return _hits.Length > 0;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x05);
+            WriteC(0x05);
 
-            writeD(_attackerObjId);
-            writeD(_hits[0]._targetId);
-            writeD(_hits[0]._damage);
-            writeC(_hits[0]._flags);
-            writeD(_x);
-            writeD(_y);
-            writeD(_z);
-            writeH((short)(_hits.Length - 1));
+            WriteD(AttackerObjId);
+            WriteD(_hits[0].TargetId);
+            WriteD(_hits[0].Damage);
+            WriteC(_hits[0].Flags);
+            WriteD(_x);
+            WriteD(_y);
+            WriteD(_z);
+            WriteH((short)(_hits.Length - 1));
             for (int i = 1; i < _hits.Length; i++)
             {
-                writeD(_hits[i]._targetId);
-                writeD(_hits[i]._damage);
-                writeC(_hits[i]._flags);
+                WriteD(_hits[i].TargetId);
+                WriteD(_hits[i].Damage);
+                WriteC(_hits[i].Flags);
             }
             //writeD(tx);
             //writeD(ty);

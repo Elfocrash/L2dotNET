@@ -2,10 +2,10 @@
 {
     class RestartResponse : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x5f);
-            writeD(0x01);
+            WriteC(0x5f);
+            WriteD(0x01);
         }
     }
 }

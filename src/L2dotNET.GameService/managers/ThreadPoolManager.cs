@@ -6,61 +6,67 @@ namespace L2dotNET.GameService.Managers
 {
     public class ThreadPoolManager
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ThreadPoolManager));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ThreadPoolManager));
 
-        private static readonly ThreadPoolManager instance = new ThreadPoolManager();
+        private static readonly ThreadPoolManager Instance = new ThreadPoolManager();
 
-        public static ThreadPoolManager getInstance()
+        public static ThreadPoolManager GetInstance()
         {
-            return instance;
+            return Instance;
         }
 
-        public Dictionary<object, RThread> threads = new Dictionary<object, RThread>();
+        public Dictionary<object, RThread> Threads = new Dictionary<object, RThread>();
 
         public void ExecuteGeneral(Action action, int wait = 0, object id = null)
         {
-            RThread thread = new RThread();
-            thread.type = RThreadType.general;
-            thread.id = id;
-            thread.StartWait = wait;
-            thread.PerformAction = action;
+            RThread thread = new RThread
+            {
+                Type = RThreadType.General,
+                Id = id,
+                StartWait = wait,
+                PerformAction = action
+            };
 
             if (id != null)
-                threads.Add(thread.id, thread);
+                Threads.Add(thread.Id, thread);
 
             thread.Start();
 
-            log.Info($"threads {threads.Count}");
+            Log.Info($"threads {Threads.Count}");
         }
 
         public void ExecuteGeneralTicks(Action action, int ticks, int tickWait = 1000, int wait = 0, object id = null)
         {
-            RThread thread = new RThread();
-            thread.type = RThreadType.general_tick;
-            thread.id = id;
-            thread.StartWait = wait;
-            thread.PerformAction = action;
-            thread.Ticks = ticks;
-            thread.TickSleep = tickWait;
+            RThread thread = new RThread
+            {
+                Type = RThreadType.GeneralTick,
+                Id = id,
+                StartWait = wait,
+                PerformAction = action,
+                Ticks = ticks,
+                TickSleep = tickWait
+            };
 
             if (id != null)
-                threads.Add(thread.id, thread);
+                Threads.Add(thread.Id, thread);
 
             thread.Start();
         }
 
         public void ExecuteActions(Action[] actions, int tickWait = 1000, int wait = 0, object id = null)
         {
-            RThread thread = new RThread();
-            thread.type = RThreadType.actions;
-            thread.id = id;
-            thread.StartWait = wait;
-            thread.PerformActions = actions;
-            thread.Ticks = actions.Length;
-            thread.TickSleep = tickWait;
+            RThread thread = new RThread
+            {
+                Type = RThreadType.Actions,
+                Id = id,
+                StartWait = wait,
+                PerformActions = actions,
+                Ticks = actions.Length,
+                TickSleep = tickWait
+            };
 
             if (id != null)
-                threads.Add(thread.id, thread);
+                Threads.Add(thread.Id, thread);
 
             thread.Start();
         }
@@ -72,16 +78,16 @@ namespace L2dotNET.GameService.Managers
 
         public void StopThread(object id)
         {
-            if (threads.ContainsKey(id))
-                threads[id].AbortMe();
+            if (Threads.ContainsKey(id))
+                Threads[id].AbortMe();
         }
 
         public void CloseMe(RThread thread)
         {
-            if (thread.id != null)
-                lock (threads)
+            if (thread.Id != null)
+                lock (Threads)
                 {
-                    threads.Remove(thread.id);
+                    Threads.Remove(thread.Id);
                 }
 
             GC.Collect(0, GCCollectionMode.Forced);

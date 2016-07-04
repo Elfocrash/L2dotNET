@@ -37,7 +37,7 @@ namespace L2dotNET.GameService.Commands.Admin
             }
 
             if (x)
-                admin.sendItemList(true);
+                admin.SendItemList(true);
         }
     }
 }

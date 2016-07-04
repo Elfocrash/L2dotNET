@@ -7,35 +7,21 @@ namespace L2dotNET.GameService.Managers
 {
     class TransformManager
     {
-        private static readonly TransformManager m = new TransformManager();
+        private static readonly TransformManager M = new TransformManager();
 
-        public static TransformManager getInstance()
+        public static TransformManager GetInstance()
         {
-            return m;
+            return M;
         }
 
         private readonly SortedList<int, TransformTemplate> _templates = new SortedList<int, TransformTemplate>();
 
-        public TransformManager()
+        private void Register(TransformTemplate t)
         {
-            register(new _00009_aurabird_owl());
-            register(new _00125_aqua_elf());
-            register(new _00126_treykan());
-
-            register(new _00260_final_form_air());
-
-            register(new _20000_kadomas());
-            register(new _20001_jet_bike());
-            register(new _20002_trejuo());
-            register(new _20003_sujin());
+            _templates.Add(t.Id, t);
         }
 
-        private void register(TransformTemplate t)
-        {
-            _templates.Add(t.id, t);
-        }
-
-        public void transformTo(int id, L2Player player, int seconds)
+        public void TransformTo(int id, L2Player player, int seconds)
         {
             if (!_templates.ContainsKey(id))
             {
@@ -44,16 +30,16 @@ namespace L2dotNET.GameService.Managers
             }
 
             L2Transform tr = new L2Transform(_templates[id]);
-            if (tr.Template.startFailed(player))
+            if (tr.Template.StartFailed(player))
                 return;
 
             if (seconds != -1)
             {
-                tr.timer(seconds);
+                tr.Timer(seconds);
                 player.SendMessage("transformed for " + seconds + " sec");
             }
 
-            player.setTransform(tr);
+            player.SetTransform(tr);
         }
     }
 }

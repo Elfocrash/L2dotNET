@@ -6,23 +6,23 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestAddTradeItem : GameServerNetworkRequest
     {
-        private int sID;
-        private long num;
-        private int unk1;
+        private int _sId;
+        private long _num;
+        private int _unk1;
 
         public RequestAddTradeItem(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            unk1 = readD(); // постоянно 1. в клиенте нет инфы что это
-            sID = readD();
-            num = readD();
+            _unk1 = ReadD(); // постоянно 1. в клиенте нет инфы что это
+            _sId = ReadD();
+            _num = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (player.requester == null)
+            if (player.Requester == null)
             {
                 player.SendMessage("Your trade requestor has logged off.");
                 player.SendActionFailed();
@@ -46,14 +46,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if ((player.TradeState == 4) || (player.requester.TradeState == 4)) // подтвердил уже
+            if ((player.TradeState == 4) || (player.Requester.TradeState == 4)) // подтвердил уже
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_ADJUST_ITEMS_AFTER_TRADE_CONFIRMED);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotAdjustItemsAfterTradeConfirmed);
                 player.SendActionFailed();
                 return;
             }
 
-            L2Item item = player.Inventory.GetItemByObjectId(sID);
+            L2Item item = player.Inventory.GetItemByObjectId(_sId);
 
             if (item == null)
             {
@@ -61,22 +61,22 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (num < 0)
-                num = 1;
+            if (_num < 0)
+                _num = 1;
 
-            if (num > item.Count)
-                num = item.Count;
+            if (_num > item.Count)
+                _num = item.Count;
 
-            if (!item.Template.isStackable() && (num > 1))
-                num = 1;
+            if (!item.Template.IsStackable() && (_num > 1))
+                _num = 1;
 
-            long numInList = player.AddItemToTrade(item.ObjId, num);
+            long numInList = player.AddItemToTrade(item.ObjId, _num);
             long numCurrent = item.Count - numInList;
             player.SendPacket(new TradeOwnAdd(item, numInList));
-            player.requester.SendPacket(new TradeOtherAdd(item, numInList));
+            player.Requester.SendPacket(new TradeOtherAdd(item, numInList));
 
             byte action = 2; //mod, 2-del
-            if (item.Template.isStackable())
+            if (item.Template.IsStackable())
             {
                 action = 3;
                 if (numCurrent < 1)

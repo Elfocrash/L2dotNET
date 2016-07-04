@@ -7,15 +7,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestManorList(GameClient client, byte[] data)
         {
-            makeme(client, data, 2);
+            Makeme(client, data, 2);
         }
 
-        public override void read()
+        public override void Read()
         {
             // do nothing
         }
 
-        public override void run()
+        public override void Run()
         {
             List<string> manorsName = new List<string>();
             manorsName.Add("gludio");
@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             manorsName.Add("goddard");
             manorsName.Add("rune");
             manorsName.Add("schuttgart");
-            getClient().SendPacket(new ExSendManorList(manorsName));
+            GetClient().SendPacket(new ExSendManorList(manorsName));
         }
     }
 }

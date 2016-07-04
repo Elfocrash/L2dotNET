@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Handlers
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(AdminCommandHandler));
         private readonly SortedList<string, AAdminCommand> _commands = new SortedList<string, AAdminCommand>();
-        private ABTeleport _teleports;
+        private AbTeleport _teleports;
 
         private static volatile AdminCommandHandler _instance;
         private static readonly object SyncRoot = new object();
@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.Handlers
 
         public void Initialize()
         {
-            _teleports = new ABTeleport();
+            _teleports = new AbTeleport();
 
             Register(new AdminAddSkill());
             Register(new AdminChat());
@@ -81,8 +81,6 @@ namespace L2dotNET.GameService.Handlers
         {
             _commands.Add(processor.Cmd, processor);
         }
-
-        public AdminCommandHandler() { }
 
         public void ProcessBypass(L2Player player, int ask, int reply)
         {

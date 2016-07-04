@@ -17,13 +17,13 @@
             _heading = h;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x28);
-            writeD(_id);
-            writeD(_x);
-            writeD(_y);
-            writeD(_z);
+            WriteC(0x28);
+            WriteD(_id);
+            WriteD(_x);
+            WriteD(_y);
+            WriteD(_z);
         }
     }
 }

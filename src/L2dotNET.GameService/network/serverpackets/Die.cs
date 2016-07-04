@@ -7,20 +7,20 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class Die : GameServerNetworkPacket
     {
-        private readonly int sId;
-        private int m_nVillage;
-        private int m_nAgit;
-        private const int m_nBattleCamp = 0;
-        private int m_nCastle;
-        private readonly int m_Spoil;
-        private int m_nOriginal;
-        private int m_nFotress;
-        private const int m_nAgathion = 0;
-        private const bool m_bShow = false;
+        private readonly int _sId;
+        private int _mNVillage;
+        private int _mNAgit;
+        private const int MNBattleCamp = 0;
+        private int _mNCastle;
+        private readonly int _mSpoil;
+        private int _mNOriginal;
+        private int _mNFotress;
+        private const int MNAgathion = 0;
+        private const bool MBShow = false;
 
         private List<int> _items;
 
-        public void addItem(int id)
+        public void AddItem(int id)
         {
             if (_items == null)
                 _items = new List<int>();
@@ -30,49 +30,49 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public Die(L2Character cha)
         {
-            sId = cha.ObjId;
+            _sId = cha.ObjId;
 
             if (cha is L2Player)
                 DiePlayer((L2Player)cha);
             else if (cha is L2Warrior)
-                m_Spoil = ((L2Warrior)cha).spoilActive ? 1 : 0;
+                _mSpoil = ((L2Warrior)cha).SpoilActive ? 1 : 0;
         }
 
         private void DiePlayer(L2Player player)
         {
-            m_nVillage = 1;
-            m_nOriginal = player.Builder;
+            _mNVillage = 1;
+            _mNOriginal = player.Builder;
 
             if (player.ClanId > 0)
             {
-                m_nAgit = player.Clan.HideoutID > 0 ? 1 : 0;
-                m_nCastle = player.Clan.CastleID > 0 ? 1 : 0;
-                m_nFotress = player.Clan.FortressID > 0 ? 1 : 0;
+                _mNAgit = player.Clan.HideoutId > 0 ? 1 : 0;
+                _mNCastle = player.Clan.CastleId > 0 ? 1 : 0;
+                _mNFotress = player.Clan.FortressId > 0 ? 1 : 0;
             }
 
-            addItem(57);
+            AddItem(57);
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x06);
-            writeD(sId);
-            writeD(m_nVillage); //0
-            writeD(m_nAgit); //1
-            writeD(m_nCastle); //2
-            writeD(m_nBattleCamp); //4
-            writeD(m_Spoil);
-            writeD(m_nOriginal); //5
-            writeD(m_nFotress); //3
+            WriteC(0x06);
+            WriteD(_sId);
+            WriteD(_mNVillage); //0
+            WriteD(_mNAgit); //1
+            WriteD(_mNCastle); //2
+            WriteD(MNBattleCamp); //4
+            WriteD(_mSpoil);
+            WriteD(_mNOriginal); //5
+            WriteD(_mNFotress); //3
 
-            writeC(0);
+            WriteC(0);
             //writeC(m_bShow ? 1 : 0);
-            writeD(m_nAgathion); //21
-            writeD(_items == null ? 0 : _items.Count); //22+
+            WriteD(MNAgathion); //21
+            WriteD(_items == null ? 0 : _items.Count); //22+
 
             if (_items != null)
                 foreach (int id in _items)
-                    writeD(id);
+                    WriteD(id);
         }
     }
 }

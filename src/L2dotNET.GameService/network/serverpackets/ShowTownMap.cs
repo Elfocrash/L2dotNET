@@ -2,23 +2,23 @@
 {
     public class ShowTownMap : GameServerNetworkPacket
     {
-        private readonly string texture;
-        private readonly int x;
-        private readonly int y;
+        private readonly string _texture;
+        private readonly int _x;
+        private readonly int _y;
 
         public ShowTownMap(string texture, int x, int y)
         {
-            this.texture = texture;
-            this.x = x;
-            this.y = y;
+            this._texture = texture;
+            this._x = x;
+            this._y = y;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xde);
-            writeS(texture);
-            writeD(x);
-            writeD(y);
+            WriteC(0xde);
+            WriteS(_texture);
+            WriteD(_x);
+            WriteD(_y);
         }
     }
 }

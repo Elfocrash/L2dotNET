@@ -1,11 +1,11 @@
 namespace L2dotNET.GameService.Templates
 {
-    public enum AIType
+    public enum AiType
     {
-        DEFAULT,
-        ARCHER,
-        MAGE,
-        HEALER,
-        CORPSE
+        Default,
+        Archer,
+        Mage,
+        Healer,
+        Corpse
     }
 }

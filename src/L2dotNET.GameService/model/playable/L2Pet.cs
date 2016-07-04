@@ -4,14 +4,14 @@ using L2dotNET.GameService.Tables;
 
 namespace L2dotNET.GameService.Model.Playable
 {
-    public class L2Pet : L2Summon
+    public sealed class L2Pet : L2Summon
     {
         public PetInventory Inventory;
 
         public L2Pet()
         {
             ObjectSummonType = 2;
-            ObjId = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.NextId();
             Name = "";
             Inventory = new PetInventory(this);
         }
@@ -39,10 +39,10 @@ namespace L2dotNET.GameService.Model.Playable
             return 300000;
         }
 
-        public override void unSummon()
+        public override void UnSummon()
         {
             sql_update();
-            base.unSummon();
+            base.UnSummon();
         }
 
         public bool IsRestored = false;

@@ -7,41 +7,41 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 {
     class RequestExTryToPutEnchantSupportItem : GameServerNetworkRequest
     {
-        private int a_sSupportID;
-        private int a_sTargetID;
+        private int _aSSupportId;
+        private int _aSTargetId;
 
         public RequestExTryToPutEnchantSupportItem(GameClient client, byte[] data)
         {
-            makeme(client, data, 2);
+            Makeme(client, data, 2);
         }
 
-        public override void read()
+        public override void Read()
         {
-            a_sSupportID = readD();
-            a_sTargetID = readD();
+            _aSSupportId = ReadD();
+            _aSTargetId = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
-            if ((player.EnchantState != ItemEnchantManager.STATE_ENCHANT_START) || (player.EnchantItem.ObjId != a_sTargetID))
+            if ((player.EnchantState != ItemEnchantManager.StateEnchantStart) || (player.EnchantItem.ObjId != _aSTargetId))
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.REGISTRATION_OF_ENHANCEMENT_SPELLBOOK_HAS_FAILED);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.RegistrationOfEnhancementSpellbookHasFailed);
                 player.SendActionFailed();
                 return;
             }
 
-            L2Item stone = player.GetItemByObjId(a_sSupportID);
+            L2Item stone = player.GetItemByObjId(_aSSupportId);
 
             if (stone == null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.REGISTRATION_OF_ENHANCEMENT_SPELLBOOK_HAS_FAILED);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.RegistrationOfEnhancementSpellbookHasFailed);
                 player.SendActionFailed();
                 return;
             }
 
-            ItemEnchantManager.getInstance().tryPutStone(player, stone);
+            ItemEnchantManager.GetInstance().TryPutStone(player, stone);
         }
     }
 }

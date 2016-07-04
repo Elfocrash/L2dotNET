@@ -6,29 +6,29 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class RecipeItemMakeInfo : GameServerNetworkPacket
     {
-        private readonly int RecipeID;
-        private readonly int Type;
-        private readonly int CurrentMP;
-        private readonly int MaxMP;
-        private readonly int MakingResult;
+        private readonly int _recipeId;
+        private readonly int _type;
+        private readonly int _currentMp;
+        private readonly int _maxMp;
+        private readonly int _makingResult;
 
         public RecipeItemMakeInfo(L2Player player, L2Recipe rec, int result)
         {
-            RecipeID = rec.RecipeID;
-            Type = rec._iscommonrecipe;
-            CurrentMP = (int)player.CurMp;
-            MaxMP = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
-            MakingResult = result;
+            _recipeId = rec.RecipeId;
+            _type = rec.Iscommonrecipe;
+            _currentMp = (int)player.CurMp;
+            _maxMp = (int)player.CharacterStat.GetStat(EffectType.BMaxMp);
+            _makingResult = result;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xdd);
-            writeD(RecipeID);
-            writeD(Type);
-            writeD(CurrentMP);
-            writeD(MaxMP);
-            writeD(MakingResult);
+            WriteC(0xdd);
+            WriteD(_recipeId);
+            WriteD(_type);
+            WriteD(_currentMp);
+            WriteD(_maxMp);
+            WriteD(_makingResult);
         }
     }
 }

@@ -4,50 +4,50 @@ using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Model.Npcs.Ai
 {
-    public class AITemplate
+    public class AiTemplate
     {
-        public SortedList<string, string> parameters = new SortedList<string, string>();
-        public bool chatOvr = false,
-                    dialogOvr = false,
-                    teleportOvr = false;
-        public int id;
-        public string ainame = "default01";
+        public SortedList<string, string> Parameters = new SortedList<string, string>();
+        public bool ChatOvr = false,
+                    DialogOvr = false,
+                    TeleportOvr = false;
+        public int Id;
+        public string Ainame = "default01";
 
-        public virtual void onShowChat(L2Player player, L2Npc npc) { }
+        public virtual void OnShowChat(L2Player player, L2Npc npc) { }
 
-        public virtual void onDialog(L2Player player, int ask, int reply, L2Npc npc) { }
+        public virtual void OnDialog(L2Player player, int ask, int reply, L2Npc npc) { }
 
-        public virtual void onTeleportRequest(L2Player player, int ask, int reply, L2Npc npc) { }
+        public virtual void OnTeleportRequest(L2Player player, int ask, int reply, L2Npc npc) { }
 
-        public virtual void onActionClicked(L2Player player, L2Summon pet, int actionId) { }
+        public virtual void OnActionClicked(L2Player player, L2Summon pet, int actionId) { }
 
-        public int getValueInt(string p)
+        public int GetValueInt(string p)
         {
-            if (parameters.ContainsKey(p))
-                return int.Parse(parameters[p]);
+            if (Parameters.ContainsKey(p))
+                return int.Parse(Parameters[p]);
 
             return -1;
         }
 
-        public int[] getValueSkill(string p)
+        public int[] GetValueSkill(string p)
         {
-            if (parameters.ContainsKey(p))
+            if (Parameters.ContainsKey(p))
             {
-                string[] str = parameters[p].Split('-');
+                string[] str = Parameters[p].Split('-');
                 return new[] { int.Parse(str[0]), int.Parse(str[1]) }; //;
             }
 
             return null;
         }
 
-        public string getValueString(string p)
+        public string GetValueString(string p)
         {
-            return parameters.ContainsKey(p) ? parameters[p] : null;
+            return Parameters.ContainsKey(p) ? Parameters[p] : null;
         }
 
-        public string fnLowLevel;
-        public string fnNotHaveAdena;
-        public string fnLowLevel2;
-        public string fnLowLeve3l;
+        public string FnLowLevel;
+        public string FnNotHaveAdena;
+        public string FnLowLevel2;
+        public string FnLowLeve3L;
     }
 }

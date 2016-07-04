@@ -5,79 +5,79 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class MultiSellListEx : GameServerNetworkPacket
     {
-        private readonly MultiSellList list;
+        private readonly MultiSellList _list;
 
         public MultiSellListEx(L2Player player, MultiSellList list)
         {
-            this.list = list;
+            this._list = list;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xd0);
-            writeD(list.id);
-            writeD(1); // page
-            writeD(1); // finished
-            writeD(list.container.Count); // size of pages 40
-            writeD(list.container.Count);
+            WriteC(0xd0);
+            WriteD(_list.Id);
+            WriteD(1); // page
+            WriteD(1); // finished
+            WriteD(_list.Container.Count); // size of pages 40
+            WriteD(_list.Container.Count);
 
             int inc = 0;
-            foreach (MultiSellEntry entry in list.container)
+            foreach (MultiSellEntry entry in _list.Container)
             {
-                writeD(inc);
+                WriteD(inc);
                 inc++;
-                writeC(entry.Stackable);
-                writeH(entry.enchant);
-                writeD(0x00); // C6
-                writeD(0x00); // T1
+                WriteC(entry.Stackable);
+                WriteH(entry.Enchant);
+                WriteD(0x00); // C6
+                WriteD(0x00); // T1
 
-                writeH(entry.AttrAttackType);
-                writeH(entry.AttrAttackValue);
-                writeH(entry.AttrDefenseValueFire);
-                writeH(entry.AttrDefenseValueWater);
-                writeH(entry.AttrDefenseValueWind);
-                writeH(entry.AttrDefenseValueEarth);
-                writeH(entry.AttrDefenseValueHoly);
-                writeH(entry.AttrDefenseValueUnholy);
+                WriteH(entry.AttrAttackType);
+                WriteH(entry.AttrAttackValue);
+                WriteH(entry.AttrDefenseValueFire);
+                WriteH(entry.AttrDefenseValueWater);
+                WriteH(entry.AttrDefenseValueWind);
+                WriteH(entry.AttrDefenseValueEarth);
+                WriteH(entry.AttrDefenseValueHoly);
+                WriteH(entry.AttrDefenseValueUnholy);
 
-                writeH(entry.give.Count);
-                writeH(entry.take.Count);
+                WriteH(entry.Give.Count);
+                WriteH(entry.Take.Count);
 
-                foreach (MultiSellItem item in entry.give)
+                foreach (MultiSellItem item in entry.Give)
                 {
-                    writeD(item.ItemID);
-                    writeD(item.BodyPartId);
-                    writeH(item.Type2);
-                    writeQ(item.count);
-                    writeH(item.enchant);
-                    writeD(item.augment);
-                    writeD(item.Durability);
-                    writeH(item.AttrAttackType);
-                    writeH(item.AttrAttackValue);
-                    writeH(item.AttrDefenseValueFire);
-                    writeH(item.AttrDefenseValueWater);
-                    writeH(item.AttrDefenseValueWind);
-                    writeH(item.AttrDefenseValueEarth);
-                    writeH(item.AttrDefenseValueHoly);
-                    writeH(item.AttrDefenseValueUnholy);
+                    WriteD(item.ItemId);
+                    WriteD(item.BodyPartId);
+                    WriteH(item.Type2);
+                    WriteQ(item.Count);
+                    WriteH(item.Enchant);
+                    WriteD(item.Augment);
+                    WriteD(item.Durability);
+                    WriteH(item.AttrAttackType);
+                    WriteH(item.AttrAttackValue);
+                    WriteH(item.AttrDefenseValueFire);
+                    WriteH(item.AttrDefenseValueWater);
+                    WriteH(item.AttrDefenseValueWind);
+                    WriteH(item.AttrDefenseValueEarth);
+                    WriteH(item.AttrDefenseValueHoly);
+                    WriteH(item.AttrDefenseValueUnholy);
                 }
 
-                foreach (MultiSellItem item in entry.take)
+                foreach (MultiSellItem item in entry.Take)
                 {
-                    writeD(item.ItemID);
-                    writeH(item.Type2);
-                    writeQ(item.count);
-                    writeH(item.enchant);
-                    writeD(item.augment);
-                    writeD(item.Durability);
-                    writeH(item.AttrAttackType);
-                    writeH(item.AttrAttackValue);
-                    writeH(item.AttrDefenseValueFire);
-                    writeH(item.AttrDefenseValueWater);
-                    writeH(item.AttrDefenseValueWind);
-                    writeH(item.AttrDefenseValueEarth);
-                    writeH(item.AttrDefenseValueHoly);
-                    writeH(item.AttrDefenseValueUnholy);
+                    WriteD(item.ItemId);
+                    WriteH(item.Type2);
+                    WriteQ(item.Count);
+                    WriteH(item.Enchant);
+                    WriteD(item.Augment);
+                    WriteD(item.Durability);
+                    WriteH(item.AttrAttackType);
+                    WriteH(item.AttrAttackValue);
+                    WriteH(item.AttrDefenseValueFire);
+                    WriteH(item.AttrDefenseValueWater);
+                    WriteH(item.AttrDefenseValueWind);
+                    WriteH(item.AttrDefenseValueEarth);
+                    WriteH(item.AttrDefenseValueHoly);
+                    WriteH(item.AttrDefenseValueUnholy);
                 }
             }
         }

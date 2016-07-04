@@ -8,59 +8,59 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestAutoSoulShot : GameServerNetworkRequest
     {
-        private int itemId;
-        private int type;
+        private int _itemId;
+        private int _type;
 
         public RequestAutoSoulShot(GameClient client, byte[] data)
         {
-            makeme(client, data, 2);
+            Makeme(client, data, 2);
         }
 
-        public override void read()
+        public override void Read()
         {
-            itemId = readD();
-            type = readD(); //1 - enable
+            _itemId = ReadD();
+            _type = ReadD(); //1 - enable
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
-            L2Item item = player.Inventory.GetItemByItemId(itemId);
-            if ((item == null) || !item.Template.isAutoSS)
+            L2Item item = player.Inventory.GetItemByItemId(_itemId);
+            if ((item == null) || !item.Template.IsAutoSs)
             {
                 player.SendActionFailed();
                 return;
             }
 
-            if (type == 1)
+            if (_type == 1)
             {
-                if (player.autoSoulshots.Contains(itemId))
+                if (player.AutoSoulshots.Contains(_itemId))
                 {
                     player.SendActionFailed();
                     return;
                 }
 
-                player.autoSoulshots.Add(itemId);
-                player.SendPacket(new ExAutoSoulShot(itemId, type));
-                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.USE_OF_S1_WILL_BE_AUTO).AddItemName(itemId));
+                player.AutoSoulshots.Add(_itemId);
+                player.SendPacket(new ExAutoSoulShot(_itemId, _type));
+                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.UseOfS1WillBeAuto).AddItemName(_itemId));
 
                 L2Item weapon = player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand);
                 if (weapon != null)
-                    foreach (int sid in weapon.Template.getSoulshots().Where(sid => sid == itemId))
+                    foreach (int sid in weapon.Template.GetSoulshots().Where(sid => sid == _itemId))
                     {
                         if (!weapon.Soulshot)
                         {
                             if (!player.HasItem(sid, weapon.Template.SoulshotCount))
                             {
-                                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.CANNOT_AUTO_USE_LACK_OF_S1).AddItemName(itemId));
+                                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.CannotAutoUseLackOfS1).AddItemName(_itemId));
                                 player.SendActionFailed();
                                 return;
                             }
 
-                            player.DestroyItemById(itemId, weapon.Template.SoulshotCount);
+                            player.DestroyItemById(_itemId, weapon.Template.SoulshotCount);
                             weapon.Soulshot = true;
-                            player.BroadcastSoulshotUse(itemId);
+                            player.BroadcastSoulshotUse(_itemId);
                         }
 
                         break;
@@ -68,13 +68,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
             else
             {
-                lock (player.autoSoulshots)
+                lock (player.AutoSoulshots)
                 {
-                    player.autoSoulshots.Remove(itemId);
+                    player.AutoSoulshots.Remove(_itemId);
                 }
 
-                player.SendPacket(new ExAutoSoulShot(itemId, 0));
-                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_OF_S1_CANCELLED).AddItemName(itemId));
+                player.SendPacket(new ExAutoSoulShot(_itemId, 0));
+                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.AutoUseOfS1Cancelled).AddItemName(_itemId));
             }
         }
     }

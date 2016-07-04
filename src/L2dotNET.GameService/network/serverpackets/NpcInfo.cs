@@ -5,78 +5,78 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class NpcInfo : GameServerNetworkPacket
     {
-        private readonly L2Npc npc;
+        private readonly L2Npc _npc;
 
         public NpcInfo(L2Npc npc)
         {
-            this.npc = npc;
+            this._npc = npc;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x0c);
-            writeD(npc.ObjId);
-            writeD(npc.NpcHashId);
-            writeD(npc.Attackable);
-            writeD(npc.X);
-            writeD(npc.Y);
-            writeD(npc.Z);
-            writeD(npc.Heading);
-            writeD(0x00);
+            WriteC(0x0c);
+            WriteD(_npc.ObjId);
+            WriteD(_npc.NpcHashId);
+            WriteD(_npc.Attackable);
+            WriteD(_npc.X);
+            WriteD(_npc.Y);
+            WriteD(_npc.Z);
+            WriteD(_npc.Heading);
+            WriteD(0x00);
 
-            double spd = npc.CharacterStat.getStat(TEffectType.p_speed);
-            double atkspd = npc.CharacterStat.getStat(TEffectType.b_attack_spd);
-            double cast = npc.CharacterStat.getStat(TEffectType.b_casting_spd);
+            double spd = _npc.CharacterStat.GetStat(EffectType.PSpeed);
+            double atkspd = _npc.CharacterStat.GetStat(EffectType.BAttackSpd);
+            double cast = _npc.CharacterStat.GetStat(EffectType.BCastingSpd);
             double anim = spd * 1f / 120;
             double anim2 = (1.1) * atkspd / 277;
 
-            writeD(cast);
-            writeD(atkspd);
-            writeD(spd);
-            writeD(spd * .8);
-            writeD(0); // swimspeed
-            writeD(0); // swimspeed
-            writeD(0);
-            writeD(0);
-            writeD(0);
-            writeD(0);
+            WriteD(cast);
+            WriteD(atkspd);
+            WriteD(spd);
+            WriteD(spd * .8);
+            WriteD(0); // swimspeed
+            WriteD(0); // swimspeed
+            WriteD(0);
+            WriteD(0);
+            WriteD(0);
+            WriteD(0);
 
-            writeF(anim);
-            writeF(anim2);
-            writeF(npc.Radius);
-            writeF(npc.Height);
-            writeD(npc.Template.RHand); // right hand weapon
-            writeD(0);
-            writeD(npc.Template.LHand); // left hand weapon
-            writeC(1); // name above char 1=true ... ??
-            writeC(npc.isRunning());
-            writeC(npc.isInCombat() ? 1 : 0);
-            writeC(npc.isAlikeDead());
-            writeC(npc._summoned ? 2 : 0); // invisible ?? 0=false  1=true   2=summoned (only works if model has a summon animation)
-            writeS(npc.Name);
-            writeS(npc.Template.Title);
-            writeD(0x00); // Title color 0=client default
-            writeD(0x00); //pvp flag
-            writeD(0x00); // karma
+            WriteF(anim);
+            WriteF(anim2);
+            WriteF(_npc.Radius);
+            WriteF(_npc.Height);
+            WriteD(_npc.Template.RHand); // right hand weapon
+            WriteD(0);
+            WriteD(_npc.Template.LHand); // left hand weapon
+            WriteC(1); // name above char 1=true ... ??
+            WriteC(_npc.isRunning());
+            WriteC(_npc.isInCombat() ? 1 : 0);
+            WriteC(_npc.IsAlikeDead());
+            WriteC(_npc.Summoned ? 2 : 0); // invisible ?? 0=false  1=true   2=summoned (only works if model has a summon animation)
+            WriteS(_npc.Name);
+            WriteS(_npc.Template.Title);
+            WriteD(0x00); // Title color 0=client default
+            WriteD(0x00); //pvp flag
+            WriteD(0x00); // karma
 
-            writeD(npc.AbnormalBitMask);
-            writeD(npc.ClanId);
-            writeD(npc.ClanCrestId);
-            writeD(npc.AllianceId);
-            writeD(npc.AllianceCrestId);
-            writeC(npc.isFlying() ? 2 : 0); // C2
+            WriteD(_npc.AbnormalBitMask);
+            WriteD(_npc.ClanId);
+            WriteD(_npc.ClanCrestId);
+            WriteD(_npc.AllianceId);
+            WriteD(_npc.AllianceCrestId);
+            WriteC(_npc.IsFlying() ? 2 : 0); // C2
 
-            writeC(npc.TeamId);
-            writeF(npc.Template.CollisionRadius);
-            writeF(npc.Template.CollisionHeight);
-            writeD(0); // enchant
-            writeD(npc.isFlying() ? 1 : 0); // C6
-            writeD(0x00);
-            writeD(0x00); //red?
-            writeC(0x01);
-            writeC(0x01);
-            writeD(npc.AbnormalBitMaskEx);
-            writeD(0x00); //freya
+            WriteC(_npc.TeamId);
+            WriteF(_npc.Template.CollisionRadius);
+            WriteF(_npc.Template.CollisionHeight);
+            WriteD(0); // enchant
+            WriteD(_npc.IsFlying() ? 1 : 0); // C6
+            WriteD(0x00);
+            WriteD(0x00); //red?
+            WriteC(0x01);
+            WriteC(0x01);
+            WriteD(_npc.AbnormalBitMaskEx);
+            WriteD(0x00); //freya
         }
     }
 }

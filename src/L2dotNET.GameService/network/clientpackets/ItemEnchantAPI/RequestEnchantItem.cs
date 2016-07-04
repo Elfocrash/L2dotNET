@@ -7,34 +7,34 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 {
     class RequestEnchantItem : GameServerNetworkRequest
     {
-        private int a_sTargetID;
-        private int a_sSupportID;
+        private int _aSTargetId;
+        private int _aSSupportId;
 
         public RequestEnchantItem(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            a_sTargetID = readD();
-            a_sSupportID = readD();
+            _aSTargetId = ReadD();
+            _aSSupportId = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player.EnchantState != ItemEnchantManager.STATE_ENCHANT_START)
+            if (player.EnchantState != ItemEnchantManager.StateEnchantStart)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
                 player.SendActionFailed();
                 return;
             }
 
-            if (a_sTargetID != player.EnchantItem.ObjId)
+            if (_aSTargetId != player.EnchantItem.ObjId)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
                 player.SendActionFailed();
                 return;
             }
@@ -42,8 +42,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             short rate = 50;
             if (player.EnchantStone != null)
             {
-                EnchantScroll stone = ItemEnchantManager.getInstance().getSupport(player.EnchantStone.Template.ItemID);
-                rate += stone.bonus;
+                EnchantScroll stone = ItemEnchantManager.GetInstance().GetSupport(player.EnchantStone.Template.ItemId);
+                rate += stone.Bonus;
             }
 
             if (player.EnchantItem.Enchant < 4)
@@ -60,35 +60,35 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                 player.EnchantItem.sql_update();
 
                 iu = new InventoryUpdate();
-                iu.addModItem(player.EnchantItem);
+                iu.AddModItem(player.EnchantItem);
 
-                player.SendPacket(new EnchantResult(EnchantResultVal.success));
+                player.SendPacket(new EnchantResult(EnchantResultVal.Success));
 
                 equip = player.EnchantItem.IsEquipped == 1;
 
-                if (equip && (player.EnchantItem.Enchant == 4) && (player.EnchantItem.Template.item_skill_ench4 != null))
+                if (equip && (player.EnchantItem.Enchant == 4) && (player.EnchantItem.Template.ItemSkillEnch4 != null))
                 {
-                    player.AddSkill(player.EnchantItem.Template.item_skill_ench4, false, false);
+                    player.AddSkill(player.EnchantItem.Template.ItemSkillEnch4, false, false);
                     player.UpdateSkillList();
                 }
                 //todo check +6 set
             }
             else
             {
-                EnchantScroll scr = ItemEnchantManager.getInstance().getScroll(player.EnchantScroll.Template.ItemID);
+                EnchantScroll scr = ItemEnchantManager.GetInstance().GetScroll(player.EnchantScroll.Template.ItemId);
                 switch (scr.Type)
                 {
-                    case EnchantType.blessed:
+                    case EnchantType.Blessed:
                         player.EnchantItem.Enchant = 0;
                         player.EnchantItem.sql_update();
 
                         iu = new InventoryUpdate();
-                        iu.addModItem(player.EnchantItem);
+                        iu.AddModItem(player.EnchantItem);
 
-                        player.SendPacket(new EnchantResult(EnchantResultVal.breakToOne));
+                        player.SendPacket(new EnchantResult(EnchantResultVal.BreakToOne));
                         break;
-                    case EnchantType.ancient:
-                        player.SendPacket(new EnchantResult(EnchantResultVal.safeBreak));
+                    case EnchantType.Ancient:
+                        player.SendPacket(new EnchantResult(EnchantResultVal.SafeBreak));
                         break;
                     default:
                     {
@@ -100,16 +100,16 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                         }
 
                         iu = new InventoryUpdate();
-                        iu.addDelItem(player.EnchantItem);
+                        iu.AddDelItem(player.EnchantItem);
 
-                        int cry = player.EnchantItem.Template._cryCount;
+                        int cry = player.EnchantItem.Template.CryCount;
 
                         if (cry == 0)
-                            player.SendPacket(new EnchantResult(EnchantResultVal.breakToNothing));
+                            player.SendPacket(new EnchantResult(EnchantResultVal.BreakToNothing));
                         else
                         {
-                            int id = player.EnchantItem.Template.getCrystallId();
-                            player.SendPacket(new EnchantResult(EnchantResultVal.breakToCount, id, cry));
+                            int id = player.EnchantItem.Template.GetCrystallId();
+                            player.SendPacket(new EnchantResult(EnchantResultVal.BreakToCount, id, cry));
                             player.AddItem(id, cry);
                         }
                     }

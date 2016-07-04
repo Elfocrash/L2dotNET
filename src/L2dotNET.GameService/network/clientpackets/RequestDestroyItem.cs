@@ -8,21 +8,21 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public RequestDestroyItem(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        private int sID;
-        private int num;
+        private int _sId;
+        private int _num;
 
-        public override void read()
+        public override void Read()
         {
-            sID = readD();
-            num = readD();
+            _sId = ReadD();
+            _num = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {
@@ -37,34 +37,34 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            L2Item item = player.GetItemByObjId(sID);
+            L2Item item = player.GetItemByObjId(_sId);
 
             if (item == null)
             {
-                player.SendMessage("null item " + sID);
+                player.SendMessage("null item " + _sId);
                 player.SendActionFailed();
                 return;
             }
 
-            if ((item.Template.can_equip_hero == 1) && (item.Template.Type == ItemTemplate.L2ItemType.weapon))
+            if ((item.Template.CanEquipHero == 1) && (item.Template.Type == ItemTemplate.L2ItemType.Weapon))
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.HERO_WEAPONS_CANT_DESTROYED);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.HeroWeaponsCantDestroyed);
                 player.SendActionFailed();
                 return;
             }
 
-            if (item.Template.is_destruct == 0)
+            if (item.Template.IsDestruct == 0)
             {
-                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_S2);
-                sm.AddItemName(item.Template.ItemID);
+                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1S2);
+                sm.AddItemName(item.Template.ItemId);
                 sm.AddString("cannot be destroyed.");
                 player.SendPacket(sm);
                 player.SendActionFailed();
                 return;
             }
 
-            if (num < 0)
-                num = 1;
+            if (_num < 0)
+                _num = 1;
 
             //if (item._isEquipped == 1)
             //{
@@ -73,7 +73,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //    player.broadcastUserInfo();
             //}
 
-            player.DestroyItemById(item.Template.ItemID, num);
+            player.DestroyItemById(item.Template.ItemId, _num);
         }
     }
 }

@@ -2,19 +2,19 @@
 {
     class LoginServKickAccount : ReceiveAuthPacket
     {
-        private string account;
+        private string _account;
 
         public LoginServKickAccount(AuthThread login, byte[] db)
         {
-            makeme(login, db);
+            Makeme(login, db);
         }
 
-        public override void read()
+        public override void Read()
         {
-            account = readS();
+            _account = ReadS();
         }
 
-        public override void run()
+        public override void Run()
         {
             //L2World.Instance.KickAccount(account);
         }

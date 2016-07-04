@@ -37,10 +37,10 @@ namespace L2dotNET.GameService.Model.Structures
             if (npc != null)
             {
                 StructureSpawn ss = StructureTable.Instance.GetSpawn(id);
-                npc.X = ss.x;
-                npc.Y = ss.y;
-                npc.Z = ss.z;
-                npc.Heading = ss.heading;
+                npc.X = ss.X;
+                npc.Y = ss.Y;
+                npc.Z = ss.Z;
+                npc.Heading = ss.Heading;
 
                 npcs.Add(t.NpcId, npc);
             }
@@ -66,7 +66,7 @@ namespace L2dotNET.GameService.Model.Structures
                 doors = new List<L2Door>();
 
             L2Door door = StaticObjTable.Instance.GetDoor(id);
-            door.structure = this;
+            door.Structure = this;
             doors.Add(door);
         }
 

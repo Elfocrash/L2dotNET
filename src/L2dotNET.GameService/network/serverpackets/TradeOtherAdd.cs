@@ -4,32 +4,32 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class TradeOtherAdd : GameServerNetworkPacket
     {
-        private readonly L2Item item;
-        private long num;
+        private readonly L2Item _item;
+        private long _num;
 
         public TradeOtherAdd(L2Item item, long num)
         {
-            this.item = item;
-            this.num = num;
+            this._item = item;
+            this._num = num;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x20);
-            writeH(1);
+            WriteC(0x20);
+            WriteH(1);
 
-            writeH(item.Template.Type1());
-            writeD(0); //item.ObjID
-            writeD(item.Template.ItemID);
-            writeD(item.Count);
+            WriteH(_item.Template.Type1());
+            WriteD(0); //item.ObjID
+            WriteD(_item.Template.ItemId);
+            WriteD(_item.Count);
 
-            writeH(item.Template.Type2());
-            writeH(0); // ??
+            WriteH(_item.Template.Type2());
+            WriteH(0); // ??
 
-            writeD(item.Template.BodyPartId());
-            writeH(item.Enchant);
-            writeH(0x00); // ?
-            writeH(0x00);
+            WriteD(_item.Template.BodyPartId());
+            WriteH(_item.Enchant);
+            WriteH(0x00); // ?
+            WriteH(0x00);
         }
     }
 }

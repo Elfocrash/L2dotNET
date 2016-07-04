@@ -2,17 +2,17 @@
 {
     class Revive : GameServerNetworkPacket
     {
-        private readonly int ObjID;
+        private readonly int _objId;
 
-        public Revive(int ObjID)
+        public Revive(int objId)
         {
-            this.ObjID = ObjID;
+            this._objId = objId;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x07);
-            writeD(ObjID);
+            WriteC(0x07);
+            WriteD(_objId);
         }
     }
 }

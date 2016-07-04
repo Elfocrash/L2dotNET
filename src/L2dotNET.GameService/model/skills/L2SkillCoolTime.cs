@@ -6,43 +6,43 @@ namespace L2dotNET.GameService.Model.Skills
 {
     public class L2SkillCoolTime
     {
-        public int id,
-                   lvl,
-                   total,
-                   delay;
+        public int Id,
+                   Lvl,
+                   Total,
+                   Delay;
 
         private Timer _timer;
-        public L2Character _owner;
-        public DateTime stopTime;
+        public L2Character Owner;
+        public DateTime StopTime;
 
-        public void forcedStop()
+        public void ForcedStop()
         {
             _timer.Stop();
         }
 
-        public int getDelay()
+        public int GetDelay()
         {
-            TimeSpan ts = stopTime - DateTime.Now;
+            TimeSpan ts = StopTime - DateTime.Now;
             return (int)ts.TotalSeconds;
         }
 
-        public void timer()
+        public void Timer()
         {
-            if (delay == 0)
+            if (Delay == 0)
                 return;
 
-            stopTime = DateTime.Now.AddSeconds(delay);
-            _timer = new Timer(delay * 1000);
-            _timer.Elapsed += new ElapsedEventHandler(actionTime);
+            StopTime = DateTime.Now.AddSeconds(Delay);
+            _timer = new Timer(Delay * 1000);
+            _timer.Elapsed += ActionTime;
             _timer.Enabled = true;
         }
 
-        private void actionTime(object sender, ElapsedEventArgs e)
+        private void ActionTime(object sender, ElapsedEventArgs e)
         {
             _timer.Enabled = false;
-            lock (_owner.Reuse)
+            lock (Owner.Reuse)
             {
-                _owner.Reuse.Remove(id);
+                Owner.Reuse.Remove(Id);
             }
         }
     }

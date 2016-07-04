@@ -9,39 +9,39 @@ namespace L2dotNET.GameService.Model.Zones.Classes
     {
         public ssq_zone()
         {
-            ZoneID = IdFactory.Instance.nextId();
-            _enabled = true;
+            ZoneId = IdFactory.Instance.NextId();
+            Enabled = true;
         }
 
-        public override void onEnter(L2Object obj)
+        public override void OnEnter(L2Object obj)
         {
-            if (!_enabled)
+            if (!Enabled)
                 return;
 
-            base.onEnter(obj);
+            base.OnEnter(obj);
 
             obj.OnEnterZone(this);
 
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.SendSystemMessage((SystemMessage.SystemMessageId)Template._entering_message_no);
+                p.SendSystemMessage((SystemMessage.SystemMessageId)Template.EnteringMessageNo);
             }
         }
 
-        public override void onExit(L2Object obj, bool cls)
+        public override void OnExit(L2Object obj, bool cls)
         {
-            if (!_enabled)
+            if (!Enabled)
                 return;
 
-            base.onExit(obj, cls);
+            base.OnExit(obj, cls);
 
             obj.OnExitZone(this, cls);
 
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.SendSystemMessage((SystemMessage.SystemMessageId)Template._leaving_message_no);
+                p.SendSystemMessage((SystemMessage.SystemMessageId)Template.LeavingMessageNo);
             }
         }
     }

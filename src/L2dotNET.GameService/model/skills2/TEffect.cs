@@ -3,42 +3,42 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Model.Skills2
 {
-    public class TEffect
+    public class Effect
     {
-        public virtual TEffectResult onStart(L2Character caster, L2Character target)
+        public virtual EffectResult OnStart(L2Character caster, L2Character target)
         {
             double[] val = target.CharacterStat.Apply(this);
 
-            if ((SU_ID != -1) && (val[0] != val[1]))
+            if ((SuId != -1) && (val[0] != val[1]))
             {
-                TEffectResult ter = new TEffectResult();
-                ter.addSU(SU_ID, val[1]);
+                EffectResult ter = new EffectResult();
+                ter.AddSu(SuId, val[1]);
                 return ter;
             }
 
-            return nothing;
+            return Nothing;
         }
 
-        public virtual TEffectResult onEnd(L2Character caster, L2Character target)
+        public virtual EffectResult OnEnd(L2Character caster, L2Character target)
         {
             double[] val = target.CharacterStat.Stop(this);
 
-            if ((SU_ID != -1) && (val[0] != val[1]))
+            if ((SuId != -1) && (val[0] != val[1]))
             {
-                TEffectResult ter = new TEffectResult();
-                ter.addSU(SU_ID, val[1]);
+                EffectResult ter = new EffectResult();
+                ter.AddSu(SuId, val[1]);
                 return ter;
             }
 
-            return nothing;
+            return Nothing;
         }
 
-        public virtual bool canUse(L2Character caster)
+        public virtual bool CanUse(L2Character caster)
         {
             return true;
         }
 
-        public virtual void build(string str)
+        public virtual void Build(string str)
         {
             // string[] v = str.Split(' ');
             //  SetCondition(v[1]);
@@ -47,43 +47,43 @@ namespace L2dotNET.GameService.Model.Skills2
 
         public virtual void SetCondition(string str)
         {
-            ConditionStr = str;
+            _conditionStr = str;
         }
 
         public void SetSup(string str)
         {
-            supMethod = new SupMethod();
+            SupMethod = new SupMethod();
             switch (str.ToCharArray()[0])
             {
                 case '*':
-                    supMethod.Method = SupMethod.MUL;
+                    SupMethod.Method = SupMethod.Mul;
                     break;
                 case '+':
-                    supMethod.Method = SupMethod.ADD;
+                    SupMethod.Method = SupMethod.Add;
                     break;
                 case '-':
-                    supMethod.Method = SupMethod.SUB;
+                    SupMethod.Method = SupMethod.Sub;
                     break;
                 case '/':
-                    supMethod.Method = SupMethod.DIV;
+                    SupMethod.Method = SupMethod.Div;
                     break;
                 case '=':
-                    supMethod.Method = SupMethod.OVR;
+                    SupMethod.Method = SupMethod.Ovr;
                     break;
             }
 
-            supMethod.Value = Convert.ToDouble(str.Substring(1));
+            SupMethod.Value = Convert.ToDouble(str.Substring(1));
         }
 
-        public TEffectResult nothing = new TEffectResult();
+        public EffectResult Nothing = new EffectResult();
 
-        public SupMethod supMethod;
-        public TEffectType type;
-        public long HashID;
+        public SupMethod SupMethod;
+        public EffectType Type;
+        public long HashId;
         public byte Order;
-        public int SU_ID;
+        public int SuId;
         public int SkillId;
         public int SkillLv;
-        private string ConditionStr;
+        private string _conditionStr;
     }
 }

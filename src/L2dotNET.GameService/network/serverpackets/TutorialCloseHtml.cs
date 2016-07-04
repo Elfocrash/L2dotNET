@@ -2,9 +2,9 @@
 {
     class TutorialCloseHtml : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xa3);
+            WriteC(0xa3);
         }
     }
 }

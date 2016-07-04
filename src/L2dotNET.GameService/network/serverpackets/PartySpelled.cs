@@ -7,35 +7,35 @@ namespace L2dotNET.GameService.Network.Serverpackets
     {
         public PartySpelled(L2Character character)
         {
-            id = character.ObjId;
-            summonType = character.ObjectSummonType;
-            this.character = character;
+            _id = character.ObjId;
+            _summonType = character.ObjectSummonType;
+            this._character = character;
         }
 
         private readonly List<int[]> _timers = new List<int[]>();
-        private readonly int id;
-        private readonly L2Character character;
-        private readonly int summonType;
+        private readonly int _id;
+        private readonly L2Character _character;
+        private readonly int _summonType;
 
-        public void addIcon(int iconId, int lvl, int duration)
+        public void AddIcon(int iconId, int lvl, int duration)
         {
             _timers.Add(new[] { iconId, lvl, duration });
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            if (character == null)
+            if (_character == null)
                 return;
 
-            writeC(0xee);
-            writeD(summonType);
-            writeD(id);
-            writeD(_timers.Count);
+            WriteC(0xee);
+            WriteD(_summonType);
+            WriteD(_id);
+            WriteD(_timers.Count);
 
             foreach (int[] f in _timers)
             {
-                writeD(f[0]); //id
-                writeH((short)f[1]); //lvl
+                WriteD(f[0]); //id
+                WriteH((short)f[1]); //lvl
 
                 int duration = f[2];
 
@@ -45,7 +45,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 if ((f[0] >= 5123) && (f[0] <= 5129))
                     duration = -1;
 
-                writeD(duration);
+                WriteD(duration);
             }
         }
     }

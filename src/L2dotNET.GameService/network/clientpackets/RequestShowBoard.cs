@@ -4,21 +4,21 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestShowBoard : GameServerNetworkRequest
     {
-        private int type;
+        private int _type;
 
         public RequestShowBoard(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            type = readD();
+            _type = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            BBSManager.Instance.RequestShow(Client.CurrentPlayer, type);
+            BbsManager.Instance.RequestShow(Client.CurrentPlayer, _type);
         }
     }
 }

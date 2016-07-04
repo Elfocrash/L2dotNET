@@ -2,22 +2,22 @@
 
 namespace L2dotNET.GameService.Model.Skills2
 {
-    public class TAcquireSkill
+    public class AcquireSkill
     {
-        public int get_lv;
-        public int lv_up_sp;
-        public bool auto_get = false;
-        public int id;
-        public int lv;
-        public int social_class;
-        public bool residence_skill;
-        public string pledge_type = "";
-        public int id_prerequisite_skill;
-        public int lv_prerequisite_skill;
-        public int itemcount;
-        public int itemid;
+        public int GetLv;
+        public int LvUpSp;
+        public bool AutoGet = false;
+        public int Id;
+        public int Lv;
+        public int SocialClass;
+        public bool ResidenceSkill;
+        public string PledgeType = "";
+        public int IdPrerequisiteSkill;
+        public int LvPrerequisiteSkill;
+        public int Itemcount;
+        public int Itemid;
 
-        public List<int> quests = new List<int>();
-        public List<byte> races = new List<byte>();
+        public List<int> Quests = new List<int>();
+        public List<byte> Races = new List<byte>();
     }
 }

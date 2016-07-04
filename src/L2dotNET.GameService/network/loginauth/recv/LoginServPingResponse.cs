@@ -2,18 +2,18 @@
 {
     class LoginServPingResponse : ReceiveAuthPacket
     {
-        private string message;
+        private string _message;
 
         public LoginServPingResponse(AuthThread login, byte[] db)
         {
-            makeme(login, db);
+            Makeme(login, db);
         }
 
-        public override void read()
+        public override void Read()
         {
-            message = readS();
+            _message = ReadS();
         }
 
-        public override void run() { }
+        public override void Run() { }
     }
 }

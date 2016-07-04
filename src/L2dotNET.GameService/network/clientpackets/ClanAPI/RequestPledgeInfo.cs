@@ -9,23 +9,23 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
     {
         public RequestPledgeInfo(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private int _clanId;
 
-        public override void read()
+        public override void Read()
         {
-            _clanId = readD();
+            _clanId = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
             L2Clan clan = ClanTable.Instance.GetClan(_clanId);
             if (clan != null)
-                player.SendPacket(new PledgeInfo(clan.ClanID, clan.Name, clan.AllianceName));
+                player.SendPacket(new PledgeInfo(clan.ClanId, clan.Name, clan.AllianceName));
         }
     }
 }

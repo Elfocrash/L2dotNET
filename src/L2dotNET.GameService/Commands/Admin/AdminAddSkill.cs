@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Commands.Admin
             int id = int.Parse(alias.Split(' ')[1]);
             int lvl = int.Parse(alias.Split(' ')[2]);
 
-            TSkill skill = TSkillTable.Instance.Get(id, lvl);
+            Skill skill = SkillTable.Instance.Get(id, lvl);
 
             if (skill == null)
                 admin.SendMessage("Skill " + id + "/" + lvl + " is missing.");

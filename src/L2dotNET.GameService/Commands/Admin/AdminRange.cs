@@ -46,7 +46,7 @@ namespace L2dotNET.GameService.Commands.Admin
                     break;
                 case "4":
                     FortressOfTheDead d = new FortressOfTheDead();
-                    d.start();
+                    d.Start();
                     break;
                 case "5":
                     if (_np == null)

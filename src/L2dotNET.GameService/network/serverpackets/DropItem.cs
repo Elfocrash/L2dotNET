@@ -4,27 +4,27 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class DropItem : GameServerNetworkPacket
     {
-        private readonly int id;
-        private readonly L2Item item;
+        private readonly int _id;
+        private readonly L2Item _item;
 
         public DropItem(L2Item item)
         {
-            this.item = item;
-            id = item.Dropper;
+            this._item = item;
+            _id = item.Dropper;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x0c);
-            writeD(id);
-            writeD(item.ObjId);
-            writeD(item.Template.ItemID);
-            writeD(item.X);
-            writeD(item.Y);
-            writeD(item.Z);
-            writeD(item.Template.isStackable() ? 1 : 0);
-            writeQ(item.Count);
-            writeD(1); // ?
+            WriteC(0x0c);
+            WriteD(_id);
+            WriteD(_item.ObjId);
+            WriteD(_item.Template.ItemId);
+            WriteD(_item.X);
+            WriteD(_item.Y);
+            WriteD(_item.Z);
+            WriteD(_item.Template.IsStackable() ? 1 : 0);
+            WriteQ(_item.Count);
+            WriteD(1); // ?
         }
     }
 }

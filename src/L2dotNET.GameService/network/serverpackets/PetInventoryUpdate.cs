@@ -5,63 +5,63 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class PetInventoryUpdate : GameServerNetworkPacket
     {
-        protected List<object[]> _update = new List<object[]>();
+        protected List<object[]> Update = new List<object[]>();
 
-        public void addNewItem(L2Item item)
+        public void AddNewItem(L2Item item)
         {
-            _update.Add(new object[] { item, (short)1 });
+            Update.Add(new object[] { item, (short)1 });
         }
 
-        public void addModItem(L2Item item)
+        public void AddModItem(L2Item item)
         {
-            _update.Add(new object[] { item, (short)2 });
+            Update.Add(new object[] { item, (short)2 });
         }
 
-        public void addDelItem(L2Item item)
+        public void AddDelItem(L2Item item)
         {
-            _update.Add(new object[] { item, (short)3 });
+            Update.Add(new object[] { item, (short)3 });
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xb4);
-            writeH(_update.Count);
+            WriteC(0xb4);
+            WriteH(Update.Count);
 
-            foreach (object[] obj in _update)
+            foreach (object[] obj in Update)
             {
-                writeH((short)obj[1]);
+                WriteH((short)obj[1]);
 
                 L2Item item = (L2Item)obj[0];
 
-                writeD(item.ObjId);
-                writeD(item.Template.ItemID);
-                writeD(0); //loc
-                writeQ(item.Count);
+                WriteD(item.ObjId);
+                WriteD(item.Template.ItemId);
+                WriteD(0); //loc
+                WriteQ(item.Count);
 
-                writeH(item.Template.Type2());
-                writeH(0);
-                writeH(item.IsEquipped);
+                WriteH(item.Template.Type2());
+                WriteH(0);
+                WriteH(item.IsEquipped);
 
-                writeD(item.Template.BodyPartId());
-                writeH(item.Enchant);
-                writeH(0);
+                WriteD(item.Template.BodyPartId());
+                WriteH(item.Enchant);
+                WriteH(0);
 
-                writeD(item.AugmentationId);
-                writeD(item.Durability);
-                writeD(item.LifeTimeEnd());
+                WriteD(item.AugmentationId);
+                WriteD(item.Durability);
+                WriteD(item.LifeTimeEnd());
 
-                writeH(item.AttrAttackType);
-                writeH(item.AttrAttackValue);
-                writeH(item.AttrDefenseValueFire);
-                writeH(item.AttrDefenseValueWater);
-                writeH(item.AttrDefenseValueWind);
-                writeH(item.AttrDefenseValueEarth);
-                writeH(item.AttrDefenseValueHoly);
-                writeH(item.AttrDefenseValueUnholy);
+                WriteH(item.AttrAttackType);
+                WriteH(item.AttrAttackValue);
+                WriteH(item.AttrDefenseValueFire);
+                WriteH(item.AttrDefenseValueWater);
+                WriteH(item.AttrDefenseValueWind);
+                WriteH(item.AttrDefenseValueEarth);
+                WriteH(item.AttrDefenseValueHoly);
+                WriteH(item.AttrDefenseValueUnholy);
 
-                writeH(item.Enchant1);
-                writeH(item.Enchant2);
-                writeH(item.Enchant3);
+                WriteH(item.Enchant1);
+                WriteH(item.Enchant2);
+                WriteH(item.Enchant3);
             }
         }
     }

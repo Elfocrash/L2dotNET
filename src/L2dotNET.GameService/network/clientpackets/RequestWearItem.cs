@@ -11,14 +11,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public RequestWearItem(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            _unknow = readD();
-            _listId = readD(); // List of ItemID to Wear
-            _count = readD(); // Number of Item to Wear
+            _unknow = ReadD();
+            _listId = ReadD(); // List of ItemID to Wear
+            _count = ReadD(); // Number of Item to Wear
 
             if (_count < 0)
                 _count = 0;
@@ -30,12 +30,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             // Fill _items table with all ItemID to Wear
             for (int i = 0; i < _count; i++)
-                _items[i] = readD();
+                _items[i] = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             for (int i = 0; i < _count; i++)
             {

@@ -1,14 +1,14 @@
 namespace L2dotNET.GameService.Model.Templates
 {
-    public enum TObjectBaseAttackType
+    public enum ObjectBaseAttackType
     {
-        fist,
-        pole,
-        sword,
-        dagger,
-        bow,
-        blunt,
-        dual,
-        dualfist
+        Fist,
+        Pole,
+        Sword,
+        Dagger,
+        Bow,
+        Blunt,
+        Dual,
+        Dualfist
     }
 }

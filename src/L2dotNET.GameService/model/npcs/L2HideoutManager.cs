@@ -12,38 +12,38 @@ namespace L2dotNET.GameService.Model.Npcs
 {
     class L2HideoutManager : L2Npc
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(L2HideoutManager));
-        private readonly Hideout hideout;
-        private readonly AgitManagerAI ai;
+        private static readonly ILog Log = LogManager.GetLogger(typeof(L2HideoutManager));
+        private readonly Hideout _hideout;
+        private readonly AgitManagerAi _ai;
 
         public L2HideoutManager(HideoutTemplate hideout)
         {
-            this.hideout = (Hideout)hideout;
-            structureControlled = true;
-            ai = new AgitManagerAI();
+            this._hideout = (Hideout)hideout;
+            StructureControlled = true;
+            _ai = new AgitManagerAi();
             CurMp = 5000;
         }
 
-        private System.Timers.Timer regenMpTime;
+        private System.Timers.Timer _regenMpTime;
 
         public void StartRegenTime()
         {
-            if (regenMpTime == null)
+            if (_regenMpTime == null)
             {
-                regenMpTime = new System.Timers.Timer();
-                regenMpTime.Interval = 2000;
-                regenMpTime.Elapsed += new System.Timers.ElapsedEventHandler(RegenTask);
+                _regenMpTime = new System.Timers.Timer();
+                _regenMpTime.Interval = 2000;
+                _regenMpTime.Elapsed += new System.Timers.ElapsedEventHandler(RegenTask);
             }
 
-            regenMpTime.Enabled = true;
+            _regenMpTime.Enabled = true;
         }
 
         private void RegenTask(object sender, System.Timers.ElapsedEventArgs e)
         {
-            int lvl = hideout.GetFuncLevel(AgitManagerAI.decotype_buff);
-            CurMp += ai.regenPerSec[lvl];
-            if (CurMp >= ai.regenMax[lvl])
-                CurMp = ai.regenMax[lvl];
+            int lvl = _hideout.GetFuncLevel(AgitManagerAi.DecotypeBuff);
+            CurMp += _ai.RegenPerSec[lvl];
+            if (CurMp >= _ai.RegenMax[lvl])
+                CurMp = _ai.RegenMax[lvl];
         }
 
         public override void OnSpawn()
@@ -54,25 +54,25 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public override void NotifyAction(L2Player player)
         {
-            player.SendPacket(new NpcHtmlMessage(player, ai.fnHi, ObjId));
+            player.SendPacket(new NpcHtmlMessage(player, _ai.FnHi, ObjId));
         }
 
-        public override void onTeleportRequest(L2Player player)
+        public override void OnTeleportRequest(L2Player player)
         {
-            if (hideout.NoTeleports)
+            if (_hideout.NoTeleports)
             {
-                player.SendPacket(new NpcHtmlMessage(player, ai.fnTeleportLevelZero, ObjId));
+                player.SendPacket(new NpcHtmlMessage(player, _ai.FnTeleportLevelZero, ObjId));
                 return;
             }
 
-            int level = hideout.GetFuncLevel(AgitManagerAI.decotype_teleport);
+            int level = _hideout.GetFuncLevel(AgitManagerAi.DecotypeTeleport);
             if (level == 0)
-                player.SendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjId));
+                player.SendPacket(new NpcHtmlMessage(player, _ai.FnFuncDisabled, ObjId));
             else
                 NpcData.Instance.RequestTeleportList(this, player, level);
         }
 
-        public override void onDialog(L2Player player, int ask, int reply)
+        public override void OnDialog(L2Player player, int ask, int reply)
         {
             player.FolkNpc = this;
             short result;
@@ -88,108 +88,108 @@ namespace L2dotNET.GameService.Model.Npcs
                             NotifyAction(player);
                             break;
                         case 1: //doors
-                            if (player.Clan.LeaderID == player.ObjId) //TODO privs
-                                player.SendPacket(new NpcHtmlMessage(player, ai.fnDoor, ObjId));
+                            if (player.Clan.LeaderId == player.ObjId) //TODO privs
+                                player.SendPacket(new NpcHtmlMessage(player, _ai.FnDoor, ObjId));
                             break;
                         case 2: //banish
-                            player.SendPacket(new NpcHtmlMessage(player, ai.fnBanish, ObjId));
+                            player.SendPacket(new NpcHtmlMessage(player, _ai.FnBanish, ObjId));
                             break;
                         case 3: //functions
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnDecoFunction, ObjId);
-                            htm.replace("<?HPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_hpregen));
-                            htm.replace("<?MPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_mpregen));
-                            htm.replace("<?XPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_xprestore));
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnDecoFunction, ObjId);
+                            htm.Replace("<?HPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeHpregen));
+                            htm.Replace("<?MPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeMpregen));
+                            htm.Replace("<?XPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeXprestore));
                             player.SendPacket(htm);
                         }
                             break;
                         case 4: // warehouse
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnWarehouse, ObjId);
-                            htm.replace("<?agit_lease?>", hideout.RentCost);
-                            htm.replace("<?pay_time?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnWarehouse, ObjId);
+                            htm.Replace("<?agit_lease?>", _hideout.RentCost);
+                            htm.Replace("<?pay_time?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
                             player.SendPacket(htm);
                         }
                             break;
                         case 5: // manage
-                            player.SendPacket(new NpcHtmlMessage(player, ai.fnManage, ObjId));
+                            player.SendPacket(new NpcHtmlMessage(player, _ai.FnManage, ObjId));
                             break;
                         case 7: //use buff
                         {
-                            int level = hideout.GetFuncLevel(AgitManagerAI.decotype_buff);
+                            int level = _hideout.GetFuncLevel(AgitManagerAi.DecotypeBuff);
                             if (level == 0)
                             {
-                                player.SendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjId));
+                                player.SendPacket(new NpcHtmlMessage(player, _ai.FnFuncDisabled, ObjId));
                             }
                             else
                             {
-                                NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnAgitBuff + "_" + level + ".htm", ObjId);
-                                htm.replace("<?MPLeft?>", (int)CurMp);
+                                NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnAgitBuff + "_" + level + ".htm", ObjId);
+                                htm.Replace("<?MPLeft?>", (int)CurMp);
                                 player.SendPacket(htm);
                             }
                         }
                             break;
                         case 12: //use itemcreate
                         {
-                            int level = hideout.GetFuncLevel(AgitManagerAI.decotype_item);
+                            int level = _hideout.GetFuncLevel(AgitManagerAi.DecotypeItem);
                             if (level == 0)
-                                player.SendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjId));
+                                player.SendPacket(new NpcHtmlMessage(player, _ai.FnFuncDisabled, ObjId));
                             else
                                 NpcData.Instance.Buylist(player, this, (short)level);
                         }
                             break;
                         case 51: // manage regen
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnManageRegen, ObjId);
-                            htm.replace("<?HPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_hpregen));
-                            htm.replace("<?HPCost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_hpregen));
-                            htm.replace("<?HPExpire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.replace("<?HPReset?>", "");
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnManageRegen, ObjId);
+                            htm.Replace("<?HPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeHpregen));
+                            htm.Replace("<?HPCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeHpregen));
+                            htm.Replace("<?HPExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
+                            htm.Replace("<?HPReset?>", "");
 
-                            htm.replace("<?MPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_mpregen));
-                            htm.replace("<?MPCost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_mpregen));
-                            htm.replace("<?MPExpire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.replace("<?MPReset?>", "");
+                            htm.Replace("<?MPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeMpregen));
+                            htm.Replace("<?MPCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeMpregen));
+                            htm.Replace("<?MPExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
+                            htm.Replace("<?MPReset?>", "");
 
-                            htm.replace("<?XPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_xprestore));
-                            htm.replace("<?XPCost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_xprestore));
-                            htm.replace("<?XPExpire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.replace("<?XPReset?>", "");
+                            htm.Replace("<?XPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeXprestore));
+                            htm.Replace("<?XPCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeXprestore));
+                            htm.Replace("<?XPExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
+                            htm.Replace("<?XPReset?>", "");
                             player.SendPacket(htm);
                         }
                             break;
                         case 52: // manage etc
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnManageEtc, ObjId);
-                            htm.replace("<?TPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_teleport));
-                            htm.replace("<?TPCost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_teleport));
-                            htm.replace("<?TPExpire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.replace("<?TPReset?>", "");
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnManageEtc, ObjId);
+                            htm.Replace("<?TPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeTeleport));
+                            htm.Replace("<?TPCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeTeleport));
+                            htm.Replace("<?TPExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
+                            htm.Replace("<?TPReset?>", "");
 
-                            htm.replace("<?BFDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_buff));
-                            htm.replace("<?BFCost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_buff));
-                            htm.replace("<?BFExpire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.replace("<?BFReset?>", "");
+                            htm.Replace("<?BFDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeBuff));
+                            htm.Replace("<?BFCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeBuff));
+                            htm.Replace("<?BFExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
+                            htm.Replace("<?BFReset?>", "");
 
-                            htm.replace("<?ICDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_item));
-                            htm.replace("<?ICCost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_item));
-                            htm.replace("<?ICExpire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.replace("<?ICReset?>", "");
+                            htm.Replace("<?ICDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeItem));
+                            htm.Replace("<?ICCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeItem));
+                            htm.Replace("<?ICExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
+                            htm.Replace("<?ICReset?>", "");
                             player.SendPacket(htm);
                         }
                             break;
                         case 53: // manage deco
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnManageDeco, ObjId);
-                            htm.replace("<?7_Depth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_curtain));
-                            htm.replace("<?7_Cost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_curtain));
-                            htm.replace("<?7_Expire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.replace("<?7_Reset?>", "");
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnManageDeco, ObjId);
+                            htm.Replace("<?7_Depth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeCurtain));
+                            htm.Replace("<?7_Cost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeCurtain));
+                            htm.Replace("<?7_Expire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
+                            htm.Replace("<?7_Reset?>", "");
 
-                            htm.replace("<?11_Depth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_platform));
-                            htm.replace("<?11_Cost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_platform));
-                            htm.replace("<?11_Expire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.replace("<?11_Reset?>", "");
+                            htm.Replace("<?11_Depth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypePlatform));
+                            htm.Replace("<?11_Cost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypePlatform));
+                            htm.Replace("<?11_Expire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
+                            htm.Replace("<?11_Reset?>", "");
                             player.SendPacket(htm);
                         }
                             break;
@@ -200,51 +200,51 @@ namespace L2dotNET.GameService.Model.Npcs
                     switch (reply)
                     {
                         case 1: //open doors
-                            foreach (L2Door door in hideout.doors.Where(door => door.Closed != 0))
+                            foreach (L2Door door in _hideout.doors.Where(door => door.Closed != 0))
                             {
                                 door.Closed = 0;
                                 door.BroadcastUserInfo();
                             }
 
-                            player.SendPacket(new NpcHtmlMessage(player, ai.fnAfterDoorOpen, ObjId));
+                            player.SendPacket(new NpcHtmlMessage(player, _ai.FnAfterDoorOpen, ObjId));
                             break;
                         case 2: //close
-                            foreach (L2Door door in hideout.doors.Where(door => door.Closed != 1))
+                            foreach (L2Door door in _hideout.doors.Where(door => door.Closed != 1))
                             {
                                 door.Closed = 1;
                                 door.BroadcastUserInfo();
                             }
 
-                            player.SendPacket(new NpcHtmlMessage(player, ai.fnAfterDoorClose, ObjId));
+                            player.SendPacket(new NpcHtmlMessage(player, _ai.FnAfterDoorClose, ObjId));
                             break;
                     }
 
                     break;
                 case -208: //buffs
-                    result = useBuff(reply, player);
+                    result = UseBuff(reply, player);
 
                     switch (result)
                     {
                         case 5:
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnNotEnoughMP, ObjId);
-                            htm.replace("<?MPLeft?>", (int)CurMp);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnNotEnoughMp, ObjId);
+                            htm.Replace("<?MPLeft?>", (int)CurMp);
                             player.SendPacket(htm);
                         }
                             break;
                         case 1:
                         case 4:
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnNeedCoolTime, ObjId);
-                            htm.replace("<?MPLeft?>", (int)CurMp);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnNeedCoolTime, ObjId);
+                            htm.Replace("<?MPLeft?>", (int)CurMp);
                             player.SendPacket(htm);
                         }
                             break;
 
                         case -1:
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnAfterBuff, ObjId);
-                            htm.replace("<?MPLeft?>", (int)CurMp);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnAfterBuff, ObjId);
+                            htm.Replace("<?MPLeft?>", (int)CurMp);
                             player.SendPacket(htm);
                         }
                             break;
@@ -255,8 +255,8 @@ namespace L2dotNET.GameService.Model.Npcs
                     switch (reply)
                     {
                         case 1: //banish action
-                            hideout.Banish();
-                            player.SendPacket(new NpcHtmlMessage(player, ai.fnAfterBanish, ObjId));
+                            _hideout.Banish();
+                            player.SendPacket(new NpcHtmlMessage(player, _ai.FnAfterBanish, ObjId));
                             break;
                     }
 
@@ -278,9 +278,9 @@ namespace L2dotNET.GameService.Model.Npcs
                     }
 
                     NpcHtmlMessage htm = new NpcHtmlMessage(player, "agitdeco__" + id + ".htm", ObjId);
-                    htm.replace("<?AgitDecoCost?>", hideout.GetDecoCost(id, lvl));
-                    htm.replace("<?AgitDecoEffect?>", hideout.GetDecoEffect(id, lvl));
-                    htm.replace("<?AgitDecoSubmit?>", reply);
+                    htm.Replace("<?AgitDecoCost?>", _hideout.GetDecoCost(id, lvl));
+                    htm.Replace("<?AgitDecoEffect?>", _hideout.GetDecoEffect(id, lvl));
+                    htm.Replace("<?AgitDecoSubmit?>", reply);
                     player.SendPacket(htm);
                 }
                     break;
@@ -290,89 +290,89 @@ namespace L2dotNET.GameService.Model.Npcs
                     switch (reply)
                     {
                         case 1004: //hp 80%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_hpregen, 4);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeHpregen, 4);
                             break;
                         case 1006: //hp 120%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_hpregen, 6);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeHpregen, 6);
                             break;
                         case 1009: //hp 180%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_hpregen, 9);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeHpregen, 9);
                             break;
                         case 1012: //hp 240%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_hpregen, 12);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeHpregen, 12);
                             break;
                         case 1015: //hp 300%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_hpregen, 15);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeHpregen, 15);
                             break;
 
                         case 2001: // mp 5%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_mpregen, 1);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeMpregen, 1);
                             break;
                         case 2003: //mp 15%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_mpregen, 3);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeMpregen, 3);
                             break;
                         case 2006: //mp 30%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_mpregen, 6);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeMpregen, 6);
                             break;
                         case 2008: //mp 40%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_mpregen, 8);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeMpregen, 8);
                             break;
 
                         case 4003: // xp 15%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_xprestore, 3);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeXprestore, 3);
                             break;
                         case 4005: //xp 25%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_xprestore, 5);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeXprestore, 5);
                             break;
                         case 4007: //xp 35%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_xprestore, 7);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeXprestore, 7);
                             break;
                         case 4010: //xp 50%
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_xprestore, 10);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeXprestore, 10);
                             break;
 
                         case 5001: // teleport lv 1
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_teleport, 1);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeTeleport, 1);
                             break;
                         case 5002: //teleport lv 2
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_teleport, 2);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeTeleport, 2);
                             break;
 
                         case 7001:
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_curtain, 1);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeCurtain, 1);
                             break;
                         case 7002:
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_curtain, 2);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeCurtain, 2);
                             break;
 
                         case 9003: // buff lv 3
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_buff, 3);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeBuff, 3);
                             break;
                         case 9005: //buff lv 5
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_buff, 5);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeBuff, 5);
                             break;
                         case 9007: // buff lv 7
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_buff, 7);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeBuff, 7);
                             break;
                         case 9008: //buff lv 8
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_buff, 8);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeBuff, 8);
                             break;
 
                         case 11001: // deco 11 lv 1
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_platform, 1);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypePlatform, 1);
                             break;
                         case 11002: //deco 11 lv 2
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_platform, 2);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypePlatform, 2);
                             break;
 
                         case 12001: // itemcreate lv 1
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_item, 1);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeItem, 1);
                             break;
                         case 12002: //itemcreate lv 2
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_item, 2);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeItem, 2);
                             break;
                         case 12003: // itemcreate lv 3
-                            result = hideout.MofidyFunc(AgitManagerAI.decotype_item, 3);
+                            result = _hideout.MofidyFunc(AgitManagerAi.DecotypeItem, 3);
                             break;
                     }
 
@@ -380,17 +380,17 @@ namespace L2dotNET.GameService.Model.Npcs
                     {
                         case 1:
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnDecoAlreadySet, ObjId);
-                            htm.replace("<?AgitDecoEffect?>", "Decoration"); //TODO name
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnDecoAlreadySet, ObjId);
+                            htm.Replace("<?AgitDecoEffect?>", "Decoration"); //TODO name
                             player.SendPacket(htm);
                         }
                             break;
                         case 2:
-                            player.SendPacket(new NpcHtmlMessage(player, ai.fnFailtoSetDeco, ObjId));
+                            player.SendPacket(new NpcHtmlMessage(player, _ai.FnFailtoSetDeco, ObjId));
                             break;
                         case 5:
-                            player.SendPacket(new NpcHtmlMessage(player, ai.fnAfterSetDeco, ObjId));
-                            broadcastHideoutUpdate(player);
+                            player.SendPacket(new NpcHtmlMessage(player, _ai.FnAfterSetDeco, ObjId));
+                            BroadcastHideoutUpdate(player);
                             break;
                     }
                 }
@@ -399,7 +399,7 @@ namespace L2dotNET.GameService.Model.Npcs
             }
         }
 
-        private short useBuff(int reply, L2Player player)
+        private short UseBuff(int reply, L2Player player)
         {
             int id = 0,
                 lvl = 1;
@@ -546,15 +546,15 @@ namespace L2dotNET.GameService.Model.Npcs
 
             if (id == 0)
             {
-                log.Error($"hideout manager has invalid buff request {reply}");
+                Log.Error($"hideout manager has invalid buff request {reply}");
                 return 1;
             }
 
-            TSkill skill = TSkillTable.Instance.Get(id, lvl);
+            Skill skill = SkillTable.Instance.Get(id, lvl);
 
             if (skill == null)
             {
-                log.Error($"hideout manager has null buff skill {id}-{lvl}");
+                Log.Error($"hideout manager has null buff skill {id}-{lvl}");
                 return 1;
             }
 
@@ -566,14 +566,14 @@ namespace L2dotNET.GameService.Model.Npcs
             //  return 5;
         }
 
-        public void broadcastHideoutUpdate(L2Player p)
+        public void BroadcastHideoutUpdate(L2Player p)
         {
-            p.BroadcastPacket(new AgitDecoInfo(hideout));
+            p.BroadcastPacket(new AgitDecoInfo(_hideout));
         }
 
         public override string AsString()
         {
-            return "L2HideoutManager:" + Template.NpcId + "; id " + ObjId + "; " + hideout.ID + " " + hideout.ownerId;
+            return "L2HideoutManager:" + Template.NpcId + "; id " + ObjId + "; " + _hideout.ID + " " + _hideout.ownerId;
         }
     }
 }

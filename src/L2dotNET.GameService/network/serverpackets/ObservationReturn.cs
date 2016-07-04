@@ -13,12 +13,12 @@
             _z = z;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xe0);
-            writeD(_x);
-            writeD(_y);
-            writeD(_z);
+            WriteC(0xe0);
+            WriteD(_x);
+            WriteD(_y);
+            WriteD(_z);
         }
     }
 }

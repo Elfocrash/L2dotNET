@@ -22,13 +22,13 @@
             _defaultActionList = actionIds;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0x5f);
-            writeD(_defaultActionList.Length);
+            WriteC(0xfe);
+            WriteH(0x5f);
+            WriteD(_defaultActionList.Length);
             foreach (int i in _defaultActionList)
-                writeD(i);
+                WriteD(i);
         }
     }
 }

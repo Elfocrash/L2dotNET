@@ -4,25 +4,25 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class CannotMoveAnymore : GameServerNetworkRequest
     {
-        private int x;
-        private int y;
-        private int z;
-        private int heading;
+        private int _x;
+        private int _y;
+        private int _z;
+        private int _heading;
 
         public CannotMoveAnymore(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            x = readD();
-            y = readD();
-            z = readD();
-            heading = readD();
+            _x = ReadD();
+            _y = ReadD();
+            _z = ReadD();
+            _heading = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 

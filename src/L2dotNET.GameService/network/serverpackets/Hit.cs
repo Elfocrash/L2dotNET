@@ -2,23 +2,23 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     public class Hit
     {
-        public int _targetId;
-        public int _damage;
-        public int _flags;
+        public int TargetId;
+        public int Damage;
+        public int Flags;
 
-        public Hit(int targetId, int damage, bool miss, bool crit, bool shld, bool soulshot, int _grade)
+        public Hit(int targetId, int damage, bool miss, bool crit, bool shld, bool soulshot, int grade)
         {
-            _targetId = targetId;
-            _damage = damage;
+            TargetId = targetId;
+            Damage = damage;
             if (soulshot)
-                _flags |= 0x10 | _grade;
+                Flags |= 0x10 | grade;
 
             if (crit)
-                _flags |= 0x20;
+                Flags |= 0x20;
             if (shld)
-                _flags |= 0x40;
+                Flags |= 0x40;
             if (miss)
-                _flags |= 0x80;
+                Flags |= 0x80;
         }
     }
 }

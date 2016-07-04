@@ -2,10 +2,10 @@
 {
     class CharCreateOk : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x19);
-            writeD(0x01);
+            WriteC(0x19);
+            WriteD(0x01);
         }
     }
 }

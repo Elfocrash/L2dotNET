@@ -4,31 +4,31 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class MoveToLocationInVehicle : GameServerNetworkPacket
     {
-        private readonly L2Player player;
-        private readonly int x;
-        private readonly int y;
-        private readonly int z;
+        private readonly L2Player _player;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
 
         public MoveToLocationInVehicle(L2Player player, int x, int y, int z)
         {
-            this.player = player;
-            this.x = x;
-            this.y = y;
-            this.z = z;
+            this._player = player;
+            this._x = x;
+            this._y = y;
+            this._z = z;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x71);
+            WriteC(0x71);
 
-            writeD(player.ObjId);
-            writeD(player.Boat.ObjId);
-            writeD(player.BoatX);
-            writeD(player.BoatY);
-            writeD(player.BoatZ);
-            writeD(x);
-            writeD(y);
-            writeD(z);
+            WriteD(_player.ObjId);
+            WriteD(_player.Boat.ObjId);
+            WriteD(_player.BoatX);
+            WriteD(_player.BoatY);
+            WriteD(_player.BoatZ);
+            WriteD(_x);
+            WriteD(_y);
+            WriteD(_z);
         }
     }
 }

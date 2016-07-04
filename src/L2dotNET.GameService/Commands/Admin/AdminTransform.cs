@@ -17,11 +17,11 @@ namespace L2dotNET.GameService.Commands.Admin
             {
                 int id = int.Parse(alias.Split(' ')[2]);
                 int seconds = int.Parse(alias.Split(' ')[3]);
-                TransformManager.getInstance().transformTo(id, admin, seconds);
+                TransformManager.GetInstance().TransformTo(id, admin, seconds);
             }
             else
             {
-                admin.untransform();
+                admin.Untransform();
             }
         }
     }

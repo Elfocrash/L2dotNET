@@ -8,21 +8,21 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 {
     class RequestGiveItemToPet : GameServerNetworkRequest
     {
-        private int sID;
-        private long Num;
+        private int _sId;
+        private long _num;
 
         public RequestGiveItemToPet(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            sID = readD();
-            Num = readQ();
+            _sId = ReadD();
+            _num = ReadQ();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -36,12 +36,12 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
             if (pet.Dead)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_GIVE_ITEMS_TO_DEAD_PET);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotGiveItemsToDeadPet);
                 player.SendActionFailed();
                 return;
             }
 
-            L2Item item = player.GetItemByObjId(sID);
+            L2Item item = player.GetItemByObjId(_sId);
 
             if ((item == null) || item.TempBlock)
             {
@@ -49,20 +49,20 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
                 return;
             }
 
-            if ((item.Template.is_drop == 0) || (item.Template.is_destruct == 0) || (item.Template.is_trade == 0) || (item.Template.can_equip_hero != -1) || (pet.ControlItem.ObjId == sID))
+            if ((item.Template.IsDrop == 0) || (item.Template.IsDestruct == 0) || (item.Template.IsTrade == 0) || (item.Template.CanEquipHero != -1) || (pet.ControlItem.ObjId == _sId))
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.ITEM_NOT_FOR_PETS);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ItemNotForPets);
                 player.SendActionFailed();
                 return;
             }
 
-            if (Num < 0)
-                Num = 1;
-            else if (Num > item.Count)
-                Num = item.Count;
+            if (_num < 0)
+                _num = 1;
+            else if (_num > item.Count)
+                _num = item.Count;
 
             List<long[]> items = new List<long[]>();
-            items.Add(new[] { sID, Num });
+            items.Add(new[] { _sId, _num });
             //pet.Inventory.transferHere(player, items, true);
         }
     }

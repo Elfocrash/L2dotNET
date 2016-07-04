@@ -8,17 +8,17 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public Logout(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
             // nothing
         }
 
-        public override void run()
+        public override void Run()
         {
-            AuthThread.Instance.setInGameAccount(Client.AccountName);
+            AuthThread.Instance.SetInGameAccount(Client.AccountName);
 
             L2Player player = Client.CurrentPlayer;
 
@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (player.isInCombat())
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CANT_LOGOUT_WHILE_FIGHTING);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CantLogoutWhileFighting);
                 player.SendActionFailed();
                 return;
             }

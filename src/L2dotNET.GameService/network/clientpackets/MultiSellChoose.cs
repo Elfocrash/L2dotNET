@@ -24,30 +24,30 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public MultiSellChoose(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            _listId = readD();
-            _entryId = readD();
-            _amount = readQ();
-            _enchant = readH();
-            _unk2 = readD();
-            _unk3 = readD();
-            _unk4 = readH(); // elemental attributes
-            _unk5 = readH(); // elemental attributes
-            _unk6 = readH(); // elemental attributes
-            _unk7 = readH(); // elemental attributes
-            _unk8 = readH(); // elemental attributes
-            _unk9 = readH(); // elemental attributes
-            _unk10 = readH(); // elemental attributes
-            _unk11 = readH(); // elemental attributes
+            _listId = ReadD();
+            _entryId = ReadD();
+            _amount = ReadQ();
+            _enchant = ReadH();
+            _unk2 = ReadD();
+            _unk3 = ReadD();
+            _unk4 = ReadH(); // elemental attributes
+            _unk5 = ReadH(); // elemental attributes
+            _unk6 = ReadH(); // elemental attributes
+            _unk7 = ReadH(); // elemental attributes
+            _unk8 = ReadH(); // elemental attributes
+            _unk9 = ReadH(); // elemental attributes
+            _unk10 = ReadH(); // elemental attributes
+            _unk11 = ReadH(); // elemental attributes
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             if (_amount < 0)
                 _amount = 1;
@@ -63,26 +63,26 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (player.CustomMultiSellList != null)
             {
                 list = player.CustomMultiSellList;
-                if (list.id != _listId)
-                    list = MultiSell.Instance.getList(_listId);
+                if (list.Id != _listId)
+                    list = MultiSell.Instance.GetList(_listId);
             }
             else
-                list = MultiSell.Instance.getList(_listId);
+                list = MultiSell.Instance.GetList(_listId);
 
-            if ((list == null) || (list.container.Count < _entryId))
+            if ((list == null) || (list.Container.Count < _entryId))
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TradeAttemptFailed);
                 player.SendActionFailed();
                 return;
             }
 
-            MultiSellEntry entry = list.container[_entryId];
+            MultiSellEntry entry = list.Container[_entryId];
 
             bool ok = true;
-            foreach (MultiSellItem i in entry.take)
-                if (i.id > 0)
+            foreach (MultiSellItem i in entry.Take)
+                if (i.Id > 0)
                 {
-                    if (!player.HasItem(i.id, i.count))
+                    if (!player.HasItem(i.Id, i.Count))
                     {
                         ok = false;
                         break;
@@ -90,10 +90,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
                 else
                 {
-                    switch (i.id)
+                    switch (i.Id)
                     {
                         case -100: //pvppoint
-                            if (player.Fame < i.count * _amount)
+                            if (player.Fame < i.Count * _amount)
                                 ok = false;
                             break;
                     }
@@ -101,20 +101,20 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (!ok)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_REQUIRED_ITEMS);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughRequiredItems);
                 player.SendActionFailed();
                 return;
             }
 
-            foreach (MultiSellItem i in entry.take)
-                if (i.l2item != null)
-                    player.DestroyItem(i.l2item, 1);
+            foreach (MultiSellItem i in entry.Take)
+                if (i.L2Item != null)
+                    player.DestroyItem(i.L2Item, 1);
                 else
                 {
-                    if (i.id > 0)
-                        player.DestroyItemById(i.id, i.count);
+                    if (i.Id > 0)
+                        player.DestroyItemById(i.Id, i.Count);
                     else
-                        switch (i.id)
+                        switch (i.Id)
                         {
                             case -100: //pvppoint
                                 break;
@@ -123,7 +123,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
            
 
-            player.SendSystemMessage(SystemMessage.SystemMessageId.SUCCESSFULLY_TRADED_WITH_NPC);
+            player.SendSystemMessage(SystemMessage.SystemMessageId.SuccessfullyTradedWithNpc);
         }
     }
 }

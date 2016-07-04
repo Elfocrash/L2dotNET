@@ -4,19 +4,19 @@ namespace L2dotNET.GameService.Tables
 {
     class FString
     {
-        private static readonly FString inst = new FString();
+        private static readonly FString Inst = new FString();
 
-        public static FString getInstance()
+        public static FString GetInstance()
         {
-            return inst;
+            return Inst;
         }
 
-        public SortedList<int, string> strings = new SortedList<int, string>();
+        public SortedList<int, string> Strings = new SortedList<int, string>();
 
-        public string get(int p)
+        public string Get(int p)
         {
-            if (strings.ContainsKey(p))
-                return strings[p];
+            if (Strings.ContainsKey(p))
+                return Strings[p];
 
             return "" + p;
         }

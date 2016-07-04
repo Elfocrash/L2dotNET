@@ -2,17 +2,17 @@
 {
     class TradeDone : GameServerNetworkPacket
     {
-        private readonly bool done;
+        private readonly bool _done;
 
         public TradeDone(bool done = true)
         {
-            this.done = done;
+            this._done = done;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x1c);
-            writeD(done ? 1 : 0);
+            WriteC(0x1c);
+            WriteD(_done ? 1 : 0);
         }
     }
 }

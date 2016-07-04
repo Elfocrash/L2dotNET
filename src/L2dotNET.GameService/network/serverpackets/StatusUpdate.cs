@@ -4,45 +4,45 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     public class StatusUpdate : GameServerNetworkPacket
     {
-        public static int LEVEL = 0x01;
-        public static int EXP = 0x02;
-        public static int STR = 0x03;
-        public static int DEX = 0x04;
-        public static int CON = 0x05;
-        public static int INT = 0x06;
-        public static int WIT = 0x07;
-        public static int MEN = 0x08;
+        public static int Level = 0x01;
+        public static int Exp = 0x02;
+        public static int Str = 0x03;
+        public static int Dex = 0x04;
+        public static int Con = 0x05;
+        public static int Int = 0x06;
+        public static int Wit = 0x07;
+        public static int Men = 0x08;
 
-        public static int CUR_HP = 0x09;
-        public static int MAX_HP = 0x0a;
-        public static int CUR_MP = 0x0b;
-        public static int MAX_MP = 0x0c;
+        public static int CurHp = 0x09;
+        public static int MaxHp = 0x0a;
+        public static int CurMp = 0x0b;
+        public static int MaxMp = 0x0c;
 
-        public static int SP = 0x0d;
-        public static int CUR_LOAD = 0x0e;
-        public static int MAX_LOAD = 0x0f;
+        public static int Sp = 0x0d;
+        public static int CurLoad = 0x0e;
+        public static int MaxLoad = 0x0f;
 
-        public static int P_ATK = 0x11;
-        public static int ATK_SPD = 0x12;
-        public static int P_DEF = 0x13;
-        public static int EVASION = 0x14;
-        public static int ACCURACY = 0x15;
-        public static int CRITICAL = 0x16;
-        public static int M_ATK = 0x17;
-        public static int CAST_SPD = 0x18;
-        public static int M_DEF = 0x19;
-        public static int PVP_FLAG = 0x1a;
-        public static int KARMA = 0x1b;
+        public static int PAtk = 0x11;
+        public static int AtkSpd = 0x12;
+        public static int PDef = 0x13;
+        public static int Evasion = 0x14;
+        public static int Accuracy = 0x15;
+        public static int Critical = 0x16;
+        public static int MAtk = 0x17;
+        public static int CastSpd = 0x18;
+        public static int MDef = 0x19;
+        public static int PvpFlag = 0x1a;
+        public static int Karma = 0x1b;
 
-        public static int CUR_CP = 0x21;
-        public static int MAX_CP = 0x22;
+        public static int CurCp = 0x21;
+        public static int MaxCp = 0x22;
 
-        public List<object[]> attrs = new List<object[]>();
+        public List<object[]> Attrs = new List<object[]>();
         private readonly int _id;
 
-        public void add(int type, object val)
+        public void Add(int type, object val)
         {
-            attrs.Add(new[] { type, val });
+            Attrs.Add(new[] { type, val });
         }
 
         public StatusUpdate(int id)
@@ -50,20 +50,20 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _id = id;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x0e);
-            writeD(_id);
-            writeD(attrs.Count);
+            WriteC(0x0e);
+            WriteD(_id);
+            WriteD(Attrs.Count);
 
-            foreach (object[] d in attrs)
+            foreach (object[] d in Attrs)
             {
                 int type = (int)d[0];
-                writeD(type);
+                WriteD(type);
                 //if(type == EXP)
                 //    writeQ((long)d[1]);
                 //else
-                writeD((int)d[1]);
+                WriteD((int)d[1]);
             }
         }
     }

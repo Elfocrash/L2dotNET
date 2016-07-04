@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.World
 
         public virtual void SendPacket(GameServerNetworkPacket pk) { }
 
-        public virtual void AddAbnormal(TSkill skill, L2Character caster, bool permanent, bool unlim) { }
+        public virtual void AddAbnormal(Skill skill, L2Character caster, bool permanent, bool unlim) { }
 
         public virtual void OnRemObject(L2Object obj) { }
 
@@ -303,18 +303,18 @@ namespace L2dotNET.GameService.World
         public virtual void ValidateZoneCompass()
         {
             if (_forceSetPvp)
-                if (LastCode != ExSetCompassZoneCode.PVPZONE)
+                if (LastCode != ExSetCompassZoneCode.Pvpzone)
                 {
-                    LastCode = ExSetCompassZoneCode.PVPZONE;
-                    SendPacket(new ExSetCompassZoneCode(ExSetCompassZoneCode.PVPZONE));
+                    LastCode = ExSetCompassZoneCode.Pvpzone;
+                    SendPacket(new ExSetCompassZoneCode(ExSetCompassZoneCode.Pvpzone));
                     return;
                 }
 
             int code;
             if (_isInsidePvpZone)
-                code = ExSetCompassZoneCode.PVPZONE;
+                code = ExSetCompassZoneCode.Pvpzone;
             else
-                code = _isInsidePeaceZone ? ExSetCompassZoneCode.PEACEZONE : ExSetCompassZoneCode.GENERALZONE;
+                code = _isInsidePeaceZone ? ExSetCompassZoneCode.Peacezone : ExSetCompassZoneCode.Generalzone;
 
             if (code != 0)
                 if ((LastCode != -1) && (LastCode != code))
@@ -331,14 +331,14 @@ namespace L2dotNET.GameService.World
 
         public void OnEnterZone(L2Zone z)
         {
-            if (ActiveZones.ContainsKey(z.ZoneID))
+            if (ActiveZones.ContainsKey(z.ZoneId))
                 return;
 
             if (this is L2Player)
                 ((L2Player)this).SendMessage("entered zone " + z.Name);
 
-            ActiveZones.Add(z.ZoneID, z);
-            z.onEnter(this);
+            ActiveZones.Add(z.ZoneId, z);
+            z.OnEnter(this);
 
             RevalidateZone(z);
             ValidateZoneCompass();
@@ -346,15 +346,15 @@ namespace L2dotNET.GameService.World
 
         public void OnExitZone(L2Zone z, bool cls)
         {
-            if (!ActiveZones.ContainsKey(z.ZoneID))
+            if (!ActiveZones.ContainsKey(z.ZoneId))
                 return;
 
             lock (ActiveZones)
             {
-                ActiveZones.Remove(z.ZoneID);
+                ActiveZones.Remove(z.ZoneId);
             }
 
-            z.onExit(this, cls);
+            z.OnExit(this, cls);
 
             RevalidateZone(z);
             ValidateZoneCompass();
@@ -406,12 +406,12 @@ namespace L2dotNET.GameService.World
             if (!old && _isInsidePeaceZone)
             {
                 if (this is L2Player)
-                    ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.ENTER_PEACEFUL_ZONE);
+                    ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.EnterPeacefulZone);
             }
             else if (old && !_isInsidePeaceZone)
             {
                 if (this is L2Player)
-                    ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.EXIT_PEACEFUL_ZONE);
+                    ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.ExitPeacefulZone);
             }
         }
 
@@ -440,12 +440,12 @@ namespace L2dotNET.GameService.World
             if (!old && _isInsidePvpZone)
             {
                 if (this is L2Player)
-                    ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.ENTERED_COMBAT_ZONE);
+                    ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.EnteredCombatZone);
             }
             else if (old && !_isInsidePvpZone)
             {
                 if (this is L2Player)
-                    ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.LEFT_COMBAT_ZONE);
+                    ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.LeftCombatZone);
             }
         }
 

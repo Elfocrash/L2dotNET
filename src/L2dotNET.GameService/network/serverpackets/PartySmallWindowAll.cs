@@ -5,36 +5,36 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class PartySmallWindowAll : GameServerNetworkPacket
     {
-        private readonly L2Party party;
+        private readonly L2Party _party;
 
         public PartySmallWindowAll(L2Party party)
         {
-            this.party = party;
+            this._party = party;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x4e);
-            writeD(party.leader.ObjId);
-            writeD(party.itemDistribution);
-            writeD(party.Members.Count);
+            WriteC(0x4e);
+            WriteD(_party.Leader.ObjId);
+            WriteD(_party.ItemDistribution);
+            WriteD(_party.Members.Count);
 
-            foreach (L2Player member in party.Members)
+            foreach (L2Player member in _party.Members)
             {
-                writeD(member.ObjId);
-                writeS(member.Name);
+                WriteD(member.ObjId);
+                WriteS(member.Name);
 
-                writeD(member.CurCp);
-                writeD(member.CharacterStat.getStat(TEffectType.b_max_cp));
-                writeD(member.CurHp);
-                writeD(member.CharacterStat.getStat(TEffectType.b_max_hp));
-                writeD(member.CurMp);
-                writeD(member.CharacterStat.getStat(TEffectType.b_max_mp));
-                writeD(member.Level);
+                WriteD(member.CurCp);
+                WriteD(member.CharacterStat.GetStat(EffectType.BMaxCp));
+                WriteD(member.CurHp);
+                WriteD(member.CharacterStat.GetStat(EffectType.BMaxHp));
+                WriteD(member.CurMp);
+                WriteD(member.CharacterStat.GetStat(EffectType.BMaxMp));
+                WriteD(member.Level);
 
-                writeD((int)member.ActiveClass.ClassId.Id);
-                writeD(0x00); // writeD(0x01); ??
-                writeD((int)member.BaseClass.ClassId.ClassRace);
+                WriteD((int)member.ActiveClass.ClassId.Id);
+                WriteD(0x00); // writeD(0x01); ??
+                WriteD((int)member.BaseClass.ClassId.ClassRace);
             }
         }
     }

@@ -7,39 +7,39 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 {
     class RequestExTryToPutEnchantTargetItem : GameServerNetworkRequest
     {
-        private int a_sTargetID;
+        private int _aSTargetId;
 
         public RequestExTryToPutEnchantTargetItem(GameClient client, byte[] data)
         {
-            makeme(client, data, 2);
+            Makeme(client, data, 2);
         }
 
-        public override void read()
+        public override void Read()
         {
-            a_sTargetID = readD();
+            _aSTargetId = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player.EnchantState != ItemEnchantManager.STATE_PUT_ITEM)
+            if (player.EnchantState != ItemEnchantManager.StatePutItem)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
                 player.SendActionFailed();
                 return;
             }
 
-            L2Item item = player.GetItemByObjId(a_sTargetID);
+            L2Item item = player.GetItemByObjId(_aSTargetId);
 
             if (item == null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
                 player.SendActionFailed();
                 return;
             }
 
-            ItemEnchantManager.getInstance().tryPutItem(player, item);
+            ItemEnchantManager.GetInstance().TryPutItem(player, item);
         }
     }
 }

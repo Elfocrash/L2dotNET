@@ -9,205 +9,205 @@ namespace L2dotNET.GameService.Tables
 {
     public class ItemSetTemplate
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ItemSetTemplate));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ItemSetTemplate));
 
-        public int armorId;
+        public int ArmorId;
 
-        public List<int> legs;
+        public List<int> Legs;
 
-        public void addLeg(int p)
+        public void AddLeg(int p)
         {
-            if (legs == null)
-                legs = new List<int>();
+            if (Legs == null)
+                Legs = new List<int>();
 
-            legs.Add(p);
+            Legs.Add(p);
         }
 
-        public List<int> gloves;
+        public List<int> Gloves;
 
-        public void addGloves(int p)
+        public void AddGloves(int p)
         {
-            if (gloves == null)
-                gloves = new List<int>();
+            if (Gloves == null)
+                Gloves = new List<int>();
 
-            gloves.Add(p);
+            Gloves.Add(p);
         }
 
-        public List<int> boots;
+        public List<int> Boots;
 
-        public void addBoot(int p)
+        public void AddBoot(int p)
         {
-            if (boots == null)
-                boots = new List<int>();
+            if (Boots == null)
+                Boots = new List<int>();
 
-            boots.Add(p);
+            Boots.Add(p);
         }
 
-        public List<int> helms;
+        public List<int> Helms;
 
-        public void addHelm(int p)
+        public void AddHelm(int p)
         {
-            if (helms == null)
-                helms = new List<int>();
+            if (Helms == null)
+                Helms = new List<int>();
 
-            helms.Add(p);
+            Helms.Add(p);
         }
 
-        public List<int> shields;
+        public List<int> Shields;
 
-        public void addShield(int p)
+        public void AddShield(int p)
         {
-            if (shields == null)
-                shields = new List<int>();
+            if (Shields == null)
+                Shields = new List<int>();
 
-            shields.Add(p);
+            Shields.Add(p);
         }
 
-        public int set1Id,
-                   set1Lvl;
+        public int Set1Id,
+                   Set1Lvl;
 
-        public void set1(int p, int p2)
+        public void Set1(int p, int p2)
         {
-            set1Id = p;
-            set1Lvl = p2;
+            Set1Id = p;
+            Set1Lvl = p2;
         }
 
-        public int set2Id,
-                   set2Lvl;
+        public int Set2Id,
+                   Set2Lvl;
 
-        public void set2(int p, int p2)
+        public void Set2(int p, int p2)
         {
-            set2Id = p;
-            set2Lvl = p2;
+            Set2Id = p;
+            Set2Lvl = p2;
         }
 
-        public int set3Id,
-                   set3Lvl;
+        public int Set3Id,
+                   Set3Lvl;
 
-        public void set3(int p, int p2)
+        public void Set3(int p, int p2)
         {
-            set3Id = p;
-            set3Lvl = p2;
+            Set3Id = p;
+            Set3Lvl = p2;
         }
 
         public void Validate(L2Player owner)
         {
-            byte set1sum = 0,
-                 set2sum = 0,
-                 set3sum = 0;
-            foreach (L2Item item in owner.Inventory.Items.Where(item => (item.IsEquipped != 0) && (item.Template.Type == ItemTemplate.L2ItemType.armor)))
+            byte set1Sum = 0,
+                 set2Sum = 0,
+                 set3Sum = 0;
+            foreach (L2Item item in owner.Inventory.Items.Where(item => (item.IsEquipped != 0) && (item.Template.Type == ItemTemplate.L2ItemType.Armor)))
                 switch (item.Template.Bodypart)
                 {
-                    case ItemTemplate.L2ItemBodypart.chest:
-                    case ItemTemplate.L2ItemBodypart.onepiece:
+                    case ItemTemplate.L2ItemBodypart.Chest:
+                    case ItemTemplate.L2ItemBodypart.Onepiece:
                     {
-                        if (armorId == item.Template.ItemID)
+                        if (ArmorId == item.Template.ItemId)
                         {
-                            set1sum++;
+                            set1Sum++;
                             if (item.Enchant >= 6)
-                                set3sum++;
+                                set3Sum++;
                         }
                     }
                         break;
-                    case ItemTemplate.L2ItemBodypart.legs:
+                    case ItemTemplate.L2ItemBodypart.Legs:
                     {
-                        if (legs != null)
-                            if (legs.Any(id => id == item.Template.ItemID))
+                        if (Legs != null)
+                            if (Legs.Any(id => id == item.Template.ItemId))
                             {
-                                set1sum++;
+                                set1Sum++;
                                 if (item.Enchant >= 6)
-                                    set3sum++;
+                                    set3Sum++;
                             }
                     }
                         break;
-                    case ItemTemplate.L2ItemBodypart.head:
+                    case ItemTemplate.L2ItemBodypart.Head:
                     {
-                        if (helms != null)
-                            if (helms.Any(id => id == item.Template.ItemID))
+                        if (Helms != null)
+                            if (Helms.Any(id => id == item.Template.ItemId))
                             {
-                                set1sum++;
+                                set1Sum++;
                                 if (item.Enchant >= 6)
-                                    set3sum++;
+                                    set3Sum++;
                             }
                     }
                         break;
-                    case ItemTemplate.L2ItemBodypart.gloves:
+                    case ItemTemplate.L2ItemBodypart.Gloves:
                     {
-                        if (gloves != null)
-                            if (gloves.Any(id => id == item.Template.ItemID))
+                        if (Gloves != null)
+                            if (Gloves.Any(id => id == item.Template.ItemId))
                             {
-                                set1sum++;
+                                set1Sum++;
                                 if (item.Enchant >= 6)
-                                    set3sum++;
+                                    set3Sum++;
                             }
                     }
                         break;
-                    case ItemTemplate.L2ItemBodypart.feet:
+                    case ItemTemplate.L2ItemBodypart.Feet:
                     {
-                        if (boots != null)
-                            if (boots.Any(id => id == item.Template.ItemID))
+                        if (Boots != null)
+                            if (Boots.Any(id => id == item.Template.ItemId))
                             {
-                                set1sum++;
+                                set1Sum++;
                                 if (item.Enchant >= 6)
-                                    set3sum++;
+                                    set3Sum++;
                             }
                     }
                         break;
-                    case ItemTemplate.L2ItemBodypart.lhand:
+                    case ItemTemplate.L2ItemBodypart.Lhand:
                     {
-                        if (shields != null)
-                            if (shields.Any(id => id == item.Template.ItemID))
-                                set2sum = 1;
+                        if (Shields != null)
+                            if (Shields.Any(id => id == item.Template.ItemId))
+                                set2Sum = 1;
                     }
                         break;
                 }
 
-            byte cnt = count();
-            log.Info($"set validation: cnt {cnt}, s1 {set1sum}, s2 {set2sum}, s3 {set3sum}");
+            byte cnt = Count();
+            Log.Info($"set validation: cnt {cnt}, s1 {set1Sum}, s2 {set2Sum}, s3 {set3Sum}");
 
-            if (cnt == set1sum) // весь сет
+            if (cnt == set1Sum) // весь сет
             {
-                owner.AddSkill(TSkillTable.Instance.Get(set1Id, set1Lvl), false, false);
+                owner.AddSkill(SkillTable.Instance.Get(Set1Id, Set1Lvl), false, false);
 
-                if (set2sum == 1) //со щитом
-                    owner.AddSkill(TSkillTable.Instance.Get(set2Id, set2Lvl), false, false);
+                if (set2Sum == 1) //со щитом
+                    owner.AddSkill(SkillTable.Instance.Get(Set2Id, Set2Lvl), false, false);
 
-                if (set3sum == cnt) //весь сет +6
-                    owner.AddSkill(TSkillTable.Instance.Get(set3Id, set3Lvl), false, false);
+                if (set3Sum == cnt) //весь сет +6
+                    owner.AddSkill(SkillTable.Instance.Get(Set3Id, Set3Lvl), false, false);
 
                 owner.UpdateSkillList();
             }
         }
 
-        private byte count()
+        private byte Count()
         {
             byte s = 1;
-            if (legs != null)
+            if (Legs != null)
                 s++;
-            if (helms != null)
+            if (Helms != null)
                 s++;
-            if (gloves != null)
+            if (Gloves != null)
                 s++;
-            if (boots != null)
+            if (Boots != null)
                 s++;
             return s;
         }
 
-        public List<int> getAllSetIds()
+        public List<int> GetAllSetIds()
         {
             List<int> list = new List<int>();
-            list.Add(armorId);
+            list.Add(ArmorId);
 
-            if (legs != null)
-                list.AddRange(legs);
-            if (helms != null)
-                list.AddRange(helms);
-            if (gloves != null)
-                list.AddRange(gloves);
-            if (boots != null)
-                list.AddRange(boots);
-            if (shields != null)
-                list.AddRange(shields);
+            if (Legs != null)
+                list.AddRange(Legs);
+            if (Helms != null)
+                list.AddRange(Helms);
+            if (Gloves != null)
+                list.AddRange(Gloves);
+            if (Boots != null)
+                list.AddRange(Boots);
+            if (Shields != null)
+                list.AddRange(Shields);
 
             return list;
         }

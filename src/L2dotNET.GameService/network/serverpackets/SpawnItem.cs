@@ -11,17 +11,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _item = item;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x0b);
-            writeD(_item.ObjId);
-            writeD(_item.Template.ItemID);
-            writeD(_item.X);
-            writeD(_item.Y);
-            writeD(_item.Z);
-            writeD(_item.Template.isStackable() ? 1 : 0);
-            writeD((int)_item.Count);
-            writeD(0); // ?
+            WriteC(0x0b);
+            WriteD(_item.ObjId);
+            WriteD(_item.Template.ItemId);
+            WriteD(_item.X);
+            WriteD(_item.Y);
+            WriteD(_item.Z);
+            WriteD(_item.Template.IsStackable() ? 1 : 0);
+            WriteD((int)_item.Count);
+            WriteD(0); // ?
         }
     }
 }

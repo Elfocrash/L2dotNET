@@ -9,38 +9,38 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ShortCutInit(L2Player player)
         {
-            _shortcuts = player._shortcuts;
+            _shortcuts = player.Shortcuts;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x45);
-            writeD(_shortcuts.Count);
+            WriteC(0x45);
+            WriteD(_shortcuts.Count);
 
             foreach (L2Shortcut sc in _shortcuts)
             {
-                writeD(sc.Type);
-                writeD(sc.Slot + sc.Page * 12);
+                WriteD(sc.Type);
+                WriteD(sc.Slot + sc.Page * 12);
 
                 switch (sc.Type)
                 {
-                    case L2Shortcut.TYPE_ITEM:
-                        writeD(sc.Id);
-                        writeD(0x01);
-                        writeD(-1); //getSharedReuseGroup
-                        writeD(0x00);
-                        writeD(0x00);
-                        writeD(0x00);
+                    case L2Shortcut.TypeItem:
+                        WriteD(sc.Id);
+                        WriteD(0x01);
+                        WriteD(-1); //getSharedReuseGroup
+                        WriteD(0x00);
+                        WriteD(0x00);
+                        WriteD(0x00);
                         break;
-                    case L2Shortcut.TYPE_SKILL:
-                        writeD(sc.Id);
-                        writeD(sc.Level);
-                        writeC(0x00); // C5
-                        writeD(0x01); // C6
+                    case L2Shortcut.TypeSkill:
+                        WriteD(sc.Id);
+                        WriteD(sc.Level);
+                        WriteC(0x00); // C5
+                        WriteD(0x01); // C6
                         break;
                     default:
-                        writeD(sc.Id);
-                        writeD(0x01); // C6
+                        WriteD(sc.Id);
+                        WriteD(0x01); // C6
                         break;
                 }
             }

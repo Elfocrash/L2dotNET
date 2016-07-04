@@ -7,87 +7,87 @@ namespace L2dotNET.GameService.Network
     [Synchronization]
     public abstract class GameServerNetworkPacket
     {
-        private readonly MemoryStream stream = new MemoryStream();
+        private readonly MemoryStream _stream = new MemoryStream();
 
-        protected void writeB(byte[] value)
+        protected void WriteB(byte[] value)
         {
-            stream.Write(value, 0, value.Length);
+            _stream.Write(value, 0, value.Length);
         }
 
-        protected void writeB(byte[] value, int offset, int length)
+        protected void WriteB(byte[] value, int offset, int length)
         {
-            stream.Write(value, offset, length);
+            _stream.Write(value, offset, length);
         }
 
-        protected void writeD(uint value = 0)
+        protected void WriteD(uint value = 0)
         {
-            writeB(BitConverter.GetBytes(value));
+            WriteB(BitConverter.GetBytes(value));
         }
 
-        protected void writeD(int value = 0)
+        protected void WriteD(int value = 0)
         {
-            writeB(BitConverter.GetBytes(value));
+            WriteB(BitConverter.GetBytes(value));
         }
 
-        protected void writeD(double value = 0.0)
+        protected void WriteD(double value = 0.0)
         {
-            writeB(BitConverter.GetBytes((int)value));
+            WriteB(BitConverter.GetBytes((int)value));
         }
 
-        protected void writeH(ushort value = 0)
+        protected void WriteH(ushort value = 0)
         {
-            writeB(BitConverter.GetBytes(value));
+            WriteB(BitConverter.GetBytes(value));
         }
 
-        protected void writeH(short value = 0)
+        protected void WriteH(short value = 0)
         {
-            writeB(BitConverter.GetBytes(value));
+            WriteB(BitConverter.GetBytes(value));
         }
 
-        protected void writeH(int value = 0)
+        protected void WriteH(int value = 0)
         {
-            writeB(BitConverter.GetBytes((short)value));
+            WriteB(BitConverter.GetBytes((short)value));
         }
 
-        protected void writeC(byte value)
+        protected void WriteC(byte value)
         {
-            stream.WriteByte(value);
+            _stream.WriteByte(value);
         }
 
-        protected void writeC(int value)
+        protected void WriteC(int value)
         {
-            stream.WriteByte((byte)value);
+            _stream.WriteByte((byte)value);
         }
 
-        protected void writeF(double value)
+        protected void WriteF(double value)
         {
-            writeB(BitConverter.GetBytes(value));
+            WriteB(BitConverter.GetBytes(value));
         }
 
-        protected void writeS(string value)
+        protected void WriteS(string value)
         {
             if (value != null)
-                writeB(System.Text.Encoding.Unicode.GetBytes(value));
+                WriteB(System.Text.Encoding.Unicode.GetBytes(value));
 
-            stream.WriteByte(0);
-            stream.WriteByte(0);
+            _stream.WriteByte(0);
+            _stream.WriteByte(0);
         }
 
-        protected void writeQ(long value)
+        protected void WriteQ(long value)
         {
-            writeB(BitConverter.GetBytes(value));
+            WriteB(BitConverter.GetBytes(value));
         }
 
         public byte[] ToByteArray()
         {
-            return stream.ToArray();
+            return _stream.ToArray();
         }
 
         public long Length
         {
-            get { return stream.Length; }
+            get { return _stream.Length; }
         }
 
-        protected internal abstract void write();
+        protected internal abstract void Write();
     }
 }

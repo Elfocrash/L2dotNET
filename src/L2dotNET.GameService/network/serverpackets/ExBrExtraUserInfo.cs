@@ -2,21 +2,21 @@
 {
     class ExBrExtraUserInfo : GameServerNetworkPacket
     {
-        private readonly int playerId;
-        private readonly int value;
+        private readonly int _playerId;
+        private readonly int _value;
 
         public ExBrExtraUserInfo(int id, int value)
         {
-            playerId = id;
-            this.value = value;
+            _playerId = id;
+            this._value = value;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0xcf);
-            writeD(playerId);
-            writeD(value); // event effect id
+            WriteC(0xfe);
+            WriteH(0xcf);
+            WriteD(_playerId);
+            WriteD(_value); // event effect id
             //writeC(0x00);		// Event flag, added only if event is active
         }
     }

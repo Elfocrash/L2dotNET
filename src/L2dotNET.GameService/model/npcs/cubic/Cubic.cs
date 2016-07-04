@@ -5,14 +5,14 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
 {
     public class Cubic
     {
-        public CubicTemplate template;
-        public int current_count;
-        public L2Player owner;
+        public CubicTemplate Template;
+        public int CurrentCount;
+        public L2Player Owner;
 
         public Cubic(L2Player player, CubicTemplate t)
         {
-            owner = player;
-            template = t;
+            Owner = player;
+            Template = t;
         }
 
         public DateTime SummonedTime,
@@ -23,25 +23,25 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
         public virtual void OnSummon()
         {
             SummonedTime = DateTime.Now;
-            SummonEndTime = DateTime.Now.AddSeconds(template.duration);
+            SummonEndTime = DateTime.Now.AddSeconds(Template.Duration);
             AiAction = new System.Timers.Timer();
-            AiAction.Interval = template.delay * 1000;
+            AiAction.Interval = Template.Delay * 1000;
             AiAction.Elapsed += new System.Timers.ElapsedEventHandler(AiActionTask);
 
             SummonEnd = new System.Timers.Timer();
-            SummonEnd.Interval = template.duration * 1000;
+            SummonEnd.Interval = Template.Duration * 1000;
             SummonEnd.Elapsed += new System.Timers.ElapsedEventHandler(SummonEndTask);
 
             AiAction.Enabled = true;
             SummonEnd.Enabled = true;
 
-            owner.SendMessage("Summoned cubic #" + template.id + " for " + (template.duration / 60) + " min.");
+            Owner.SendMessage("Summoned cubic #" + Template.Id + " for " + (Template.Duration / 60) + " min.");
         }
 
         public void AiActionTask(object sender, System.Timers.ElapsedEventArgs e)
         {
-            current_count += template.AiActionTask(owner);
-            if (current_count > template.max_count)
+            CurrentCount += Template.AiActionTask(Owner);
+            if (CurrentCount > Template.MaxCount)
                 OnEnd(true);
         }
 
@@ -53,7 +53,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
                 SummonEnd.Enabled = false;
 
             if (inheritOwner)
-                owner.StopCubic(this);
+                Owner.StopCubic(this);
         }
 
         public void SummonEndTask(object sender, System.Timers.ElapsedEventArgs e)

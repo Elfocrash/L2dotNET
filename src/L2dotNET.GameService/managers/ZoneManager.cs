@@ -8,12 +8,10 @@ namespace L2dotNET.GameService.Managers
 {
     public class ZoneManager
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ZoneManager));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ZoneManager));
 
-        private static volatile ZoneManager instance;
-        private static readonly object syncRoot = new object();
-
-        public ZoneManager() { }
+        private static volatile ZoneManager _instance;
+        private static readonly object SyncRoot = new object();
 
         public void Initialize()
         {
@@ -28,7 +26,7 @@ namespace L2dotNET.GameService.Managers
             }
             catch (Exception e)
             {
-                log.Error($"ZoneManager: {e.Message}");
+                Log.Error($"ZoneManager: {e.Message}");
             }
 
             //int size = 0;
@@ -38,14 +36,14 @@ namespace L2dotNET.GameService.Managers
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new ZoneManager();
+                        if (_instance == null)
+                            _instance = new ZoneManager();
                     }
 
-                return instance;
+                return _instance;
             }
         }
     }

@@ -4,9 +4,9 @@ using L2dotNET.GameService.Model.Skills2;
 
 namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
 {
-    class nightshade_01 : AITemplate
+    class Nightshade01 : AiTemplate
     {
-        public override void onActionClicked(L2Player player, L2Summon pet, int actionId)
+        public override void OnActionClicked(L2Player player, L2Summon pet, int actionId)
         {
             string value = null;
             switch (actionId)
@@ -22,19 +22,19 @@ namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
                     break;
 
                 default:
-                    if (actionId == getValueInt("buff_action3"))
+                    if (actionId == GetValueInt("buff_action3"))
                         value = "buff3";
-                    else if (actionId == getValueInt("buff_action4"))
+                    else if (actionId == GetValueInt("buff_action4"))
                         value = "buff4";
-                    else if (actionId == getValueInt("buff_action5"))
+                    else if (actionId == GetValueInt("buff_action5"))
                         value = "buff5";
                     break;
             }
 
             if (value != null)
             {
-                int[] skill = getValueSkill(value);
-                pet.CastSkill(TSkillTable.Instance.Get(skill[0], skill[1]));
+                int[] skill = GetValueSkill(value);
+                pet.CastSkill(SkillTable.Instance.Get(skill[0], skill[1]));
             }
         }
     }

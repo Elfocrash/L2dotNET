@@ -13,12 +13,12 @@
             _ally = ally;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x89);
-            writeD(_id);
-            writeS(_name);
-            writeS(_ally);
+            WriteC(0x89);
+            WriteD(_id);
+            WriteS(_name);
+            WriteS(_ally);
         }
     }
 }

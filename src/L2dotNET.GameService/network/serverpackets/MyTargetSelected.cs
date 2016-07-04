@@ -11,11 +11,11 @@
             _color = (short)color;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xa6);
-            writeD(_targetId);
-            writeH(_color);
+            WriteC(0xa6);
+            WriteD(_targetId);
+            WriteH(_color);
         }
     }
 }

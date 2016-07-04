@@ -2,26 +2,26 @@
 {
     class ExSetCompassZoneCode : GameServerNetworkPacket
     {
-        public static int ALTEREDZONE = 0x08;
-        public static int SIEGEWARZONE1 = 0x0A;
-        public static int SIEGEWARZONE2 = 0x0B;
-        public static int PEACEZONE = 0x0C;
-        public static int SEVENSIGNSZONE = 0x0D;
-        public static int PVPZONE = 0x0E;
-        public static int GENERALZONE = 0x0F;
+        public static int Alteredzone = 0x08;
+        public static int Siegewarzone1 = 0x0A;
+        public static int Siegewarzone2 = 0x0B;
+        public static int Peacezone = 0x0C;
+        public static int Sevensignszone = 0x0D;
+        public static int Pvpzone = 0x0E;
+        public static int Generalzone = 0x0F;
 
-        private readonly int ZoneCode;
+        private readonly int _zoneCode;
 
         public ExSetCompassZoneCode(int type)
         {
-            ZoneCode = type;
+            _zoneCode = type;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0x33);
-            writeD(ZoneCode);
+            WriteC(0xFE);
+            WriteH(0x33);
+            WriteD(_zoneCode);
         }
     }
 }

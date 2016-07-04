@@ -4,46 +4,46 @@ using L2dotNET.GameService.Tools;
 
 namespace L2dotNET.GameService.Model.Playable.PetAI
 {
-    public class PA_Standart : StandartAiTemplate
+    public class PaStandart : StandartAiTemplate
     {
-        private readonly L2Pet pet;
+        private readonly L2Pet _pet;
 
-        public PA_Standart(L2Summon s)
+        public PaStandart(L2Summon s)
         {
-            character = s;
-            pet = (L2Pet)character;
+            Character = s;
+            _pet = (L2Pet)Character;
         }
 
-        private DateTime under55percent;
+        private DateTime _under55Percent;
 
-        private int lastOwnerX,
-                    lastOwnerY,
-                    lastOwnerZ;
+        private int _lastOwnerX,
+                    _lastOwnerY,
+                    _lastOwnerZ;
 
         public override void DoFollow(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {
-            if (pet.CantMove())
+            if (_pet.CantMove())
                 return;
 
-            double dis = Calcs.calculateDistance(pet, pet.Owner, true);
+            double dis = Calcs.CalculateDistance(_pet, _pet.Owner, true);
 
             if (dis > 120)
-                if ((lastOwnerX != pet.Owner.X) && (lastOwnerY != pet.Owner.Y) && (lastOwnerZ != pet.Owner.Z))
+                if ((_lastOwnerX != _pet.Owner.X) && (_lastOwnerY != _pet.Owner.Y) && (_lastOwnerZ != _pet.Owner.Z))
                 {
-                    pet.MoveTo(pet.Owner.X, pet.Owner.Y, pet.Owner.Z);
+                    _pet.MoveTo(_pet.Owner.X, _pet.Owner.Y, _pet.Owner.Z);
 
-                    lastOwnerX = pet.Owner.X;
-                    lastOwnerY = pet.Owner.Y;
-                    lastOwnerZ = pet.Owner.Z;
+                    _lastOwnerX = _pet.Owner.X;
+                    _lastOwnerY = _pet.Owner.Y;
+                    _lastOwnerZ = _pet.Owner.Z;
                 }
         }
 
         public override void DoThink(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {
-            if (pet.CurrentTime / pet.MaxTime < 0.55)
+            if (_pet.CurrentTime / _pet.MaxTime < 0.55)
             {
-                under55percent = DateTime.Now;
-                pet.Owner.SendSystemMessage(SystemMessage.SystemMessageId.YOUR_PET_IS_VERY_HUNGRY);
+                _under55Percent = DateTime.Now;
+                _pet.Owner.SendSystemMessage(SystemMessage.SystemMessageId.YourPetIsVeryHungry);
             }
         }
     }

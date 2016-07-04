@@ -10,32 +10,30 @@ namespace L2dotNET.GameService.Tables
 {
     class StaticObjTable
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(StaticObjTable));
-        private static volatile StaticObjTable instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(StaticObjTable));
+        private static volatile StaticObjTable _instance;
+        private static readonly object SyncRoot = new object();
 
         public static StaticObjTable Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new StaticObjTable();
+                        if (_instance == null)
+                            _instance = new StaticObjTable();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
-        public StaticObjTable() { }
-
-        public SortedList<int, L2StaticObject> objects;
+        public SortedList<int, L2StaticObject> Objects;
 
         public void Initialize()
         {
-            objects = new SortedList<int, L2StaticObject>();
+            Objects = new SortedList<int, L2StaticObject>();
             using (StreamReader reader = new StreamReader(new FileInfo(@"scripts\staticobjects.txt").FullName))
             {
                 while (!reader.EndOfStream)
@@ -66,7 +64,7 @@ namespace L2dotNET.GameService.Tables
 
                     if (obj != null)
                     {
-                        obj.StaticID = Convert.ToInt32(pt[0]);
+                        obj.StaticId = Convert.ToInt32(pt[0]);
 
                         for (byte ord = 2; ord < pt.Length; ord++)
                         {
@@ -77,20 +75,20 @@ namespace L2dotNET.GameService.Tables
                             switch (parameter.Split('{')[0].ToLower())
                             {
                                 case "spawn":
-                                    obj.setLoc(value.Split(' '));
+                                    obj.SetLoc(value.Split(' '));
                                     break;
                                 case "tex":
-                                    obj.setTex(value.Split(' '));
+                                    obj.SetTex(value.Split(' '));
                                     break;
                                 case "htm":
-                                    obj.htm = value;
+                                    obj.Htm = value;
                                     break;
                                 case "hp":
                                     obj.MaxHp = Convert.ToInt32(value);
                                     break;
                                 case "defence":
-                                    obj.pdef = Convert.ToInt32(value.Split(' ')[0]);
-                                    obj.mdef = Convert.ToInt32(value.Split(' ')[1]);
+                                    obj.Pdef = Convert.ToInt32(value.Split(' ')[0]);
+                                    obj.Mdef = Convert.ToInt32(value.Split(' ')[1]);
                                     break;
                                 case "unlock":
                                 {
@@ -113,24 +111,24 @@ namespace L2dotNET.GameService.Tables
                             }
                         }
 
-                        objects.Add(obj.StaticID, obj);
+                        Objects.Add(obj.StaticId, obj);
                     }
                 }
             }
 
-            foreach (L2StaticObject o in objects.Values)
+            foreach (L2StaticObject o in Objects.Values)
             {
                 L2World.Instance.AddObject(o);
                 o.OnSpawn();
             }
 
-            log.Info($"StaticObjTable: Spanwed {objects.Count} objects.");
+            Log.Info($"StaticObjTable: Spanwed {Objects.Count} objects.");
         }
 
         public L2Door GetDoor(int id)
         {
-            if (objects.ContainsKey(id))
-                return (L2Door)objects[id];
+            if (Objects.ContainsKey(id))
+                return (L2Door)Objects[id];
 
             return null;
         }

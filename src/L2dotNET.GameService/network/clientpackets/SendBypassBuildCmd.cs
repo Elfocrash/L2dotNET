@@ -7,20 +7,20 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public SendBypassBuildCmd(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
         private string _alias;
 
-        public override void read()
+        public override void Read()
         {
-            _alias = readS();
+            _alias = ReadS();
             _alias = _alias.Trim();
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
 
             AdminCommandHandler.Instance.Request(player, _alias);
         }

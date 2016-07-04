@@ -11,22 +11,22 @@ namespace L2dotNET.GameService.Tables
 {
     class ItemTable
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ItemTable));
-        private static volatile ItemTable instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ItemTable));
+        private static volatile ItemTable _instance;
+        private static readonly object SyncRoot = new object();
 
         public static ItemTable Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new ItemTable();
+                        if (_instance == null)
+                            _instance = new ItemTable();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
@@ -44,7 +44,7 @@ namespace L2dotNET.GameService.Tables
                     string[] pt = line.Split('\t');
 
                     ItemSetTemplate set = new ItemSetTemplate();
-                    set.armorId = Convert.ToInt32(pt[0]);
+                    set.ArmorId = Convert.ToInt32(pt[0]);
 
                     for (byte ord = 1; ord < pt.Length; ord++)
                     {
@@ -56,43 +56,43 @@ namespace L2dotNET.GameService.Tables
                         {
                             case "legs":
                                 foreach (string str in value.Split(' '))
-                                    set.addLeg(Convert.ToInt32(str));
+                                    set.AddLeg(Convert.ToInt32(str));
 
                                 break;
                             case "helm":
                                 foreach (string str in value.Split(' '))
-                                    set.addHelm(Convert.ToInt32(str));
+                                    set.AddHelm(Convert.ToInt32(str));
 
                                 break;
                             case "gloves":
                                 foreach (string str in value.Split(' '))
-                                    set.addGloves(Convert.ToInt32(str));
+                                    set.AddGloves(Convert.ToInt32(str));
 
                                 break;
                             case "boots":
                                 foreach (string str in value.Split(' '))
-                                    set.addBoot(Convert.ToInt32(str));
+                                    set.AddBoot(Convert.ToInt32(str));
 
                                 break;
                             case "shield":
                                 foreach (string str in value.Split(' '))
-                                    set.addShield(Convert.ToInt32(str));
+                                    set.AddShield(Convert.ToInt32(str));
 
                                 break;
 
                             case "set1":
-                                set.set1(Convert.ToInt32(value.Split('-')[0]), Convert.ToInt32(value.Split('-')[1]));
+                                set.Set1(Convert.ToInt32(value.Split('-')[0]), Convert.ToInt32(value.Split('-')[1]));
                                 break;
                             case "set2":
-                                set.set2(Convert.ToInt32(value.Split('-')[0]), Convert.ToInt32(value.Split('-')[1]));
+                                set.Set2(Convert.ToInt32(value.Split('-')[0]), Convert.ToInt32(value.Split('-')[1]));
                                 break;
                             case "set3":
-                                set.set3(Convert.ToInt32(value.Split('-')[0]), Convert.ToInt32(value.Split('-')[1]));
+                                set.Set3(Convert.ToInt32(value.Split('-')[0]), Convert.ToInt32(value.Split('-')[1]));
                                 break;
                         }
                     }
 
-                    _sets.Add(set.armorId, set);
+                    Sets.Add(set.ArmorId, set);
                 }
             }
 
@@ -108,10 +108,10 @@ namespace L2dotNET.GameService.Tables
                     string[] pt = line.Split('\t');
 
                     ItemTemplate item = new ItemTemplate();
-                    item.ItemID = Convert.ToInt32(pt[1]);
+                    item.ItemId = Convert.ToInt32(pt[1]);
                     item.Type = (ItemTemplate.L2ItemType)Enum.Parse(typeof(ItemTemplate.L2ItemType), pt[0]);
 
-                    if (_sets.ContainsKey(item.ItemID))
+                    if (Sets.ContainsKey(item.ItemId))
                         item.SetItem = true;
 
                     for (byte ord = 2; ord < pt.Length; ord++)
@@ -127,7 +127,7 @@ namespace L2dotNET.GameService.Tables
                         }
                         catch (Exception)
                         {
-                            log.Error($"eh {pt[ord]}");
+                            Log.Error($"eh {pt[ord]}");
                         }
 
                         switch (parameter.Split('{')[0].ToLower())
@@ -136,37 +136,37 @@ namespace L2dotNET.GameService.Tables
                                 item.Bodypart = (ItemTemplate.L2ItemBodypart)Enum.Parse(typeof(ItemTemplate.L2ItemBodypart), value);
                                 break;
                             case "armor_type":
-                                item.armor_type = value;
+                                item.ArmorType = value;
                                 break;
                             case "etcitem_type":
-                                item.etcitem_type = value;
+                                item.EtcitemType = value;
                                 break;
                             case "delay_share_group":
-                                item.delay_share_group = int.Parse(value);
+                                item.DelayShareGroup = int.Parse(value);
                                 break;
                             case "item_multi_skill_list":
-                                item.addMultiSkills(value);
+                                item.AddMultiSkills(value);
                                 break;
                             case "item_skill":
-                                item.addItemSkill(value);
+                                item.AddItemSkill(value);
                                 break;
                             case "item_skill_enchanted_four":
-                                item.addItemEnch4(value);
+                                item.AddItemEnch4(value);
                                 break;
                             case "recipe_id":
-                                item._recipeId = int.Parse(value);
+                                item.RecipeId = int.Parse(value);
                                 break;
                             case "blessed":
-                                item.blessed = int.Parse(value);
+                                item.Blessed = int.Parse(value);
                                 break;
                             case "weight":
                                 item.Weight = Convert.ToInt32(value);
                                 break;
                             case "default_action":
-                                item.default_action = value;
+                                item.DefaultAction = value;
                                 break;
                             case "consume_type":
-                                item.StackType = value != "normal" ? ItemTemplate.L2ItemConsume.stackable : ItemTemplate.L2ItemConsume.normal;
+                                item.StackType = value != "normal" ? ItemTemplate.L2ItemConsume.Stackable : ItemTemplate.L2ItemConsume.Normal;
                                 break;
                             case "soulshot_count":
                                 item.SoulshotCount = int.Parse(value);
@@ -175,31 +175,31 @@ namespace L2dotNET.GameService.Tables
                                 item.SpiritshotCount = int.Parse(value);
                                 break;
                             case "reduced_soulshot":
-                                item.setReducingSoulShots(value);
+                                item.SetReducingSoulShots(value);
                                 break;
                             case "reduced_mp_consume":
-                                item.setReducingMpConsume(value);
+                                item.SetReducingMpConsume(value);
                                 break;
                             case "immediate_effect":
-                                item.immediate_effect = int.Parse(value);
+                                item.ImmediateEffect = int.Parse(value);
                                 break;
                             case "ex_immediate_effect":
-                                item.ex_immediate_effect = int.Parse(value);
+                                item.ExImmediateEffect = int.Parse(value);
                                 break;
                             case "drop_period":
-                                item.drop_period = int.Parse(value);
+                                item.DropPeriod = int.Parse(value);
                                 break;
                             case "ex_drop_period":
-                                item.ex_drop_period = int.Parse(value);
+                                item.ExDropPeriod = int.Parse(value);
                                 break;
                             case "duration":
                                 item.Durability = Convert.ToInt32(value);
                                 break;
                             case "use_skill_distime":
-                                item.use_skill_distime = int.Parse(value);
+                                item.UseSkillDistime = int.Parse(value);
                                 break;
                             case "equip_reuse_delay":
-                                item.equip_reuse_delay = int.Parse(value);
+                                item.EquipReuseDelay = int.Parse(value);
                                 break;
                             case "default_price":
                                 item.Price = Convert.ToInt32(value);
@@ -208,88 +208,88 @@ namespace L2dotNET.GameService.Tables
                                 item.CrystallGrade = (ItemTemplate.L2ItemGrade)Enum.Parse(typeof(ItemTemplate.L2ItemGrade), value);
                                 break;
                             case "crystal_count":
-                                item._cryCount = Convert.ToInt32(value);
+                                item.CryCount = Convert.ToInt32(value);
                                 break;
                             case "keep_type":
-                                item.keep_type = int.Parse(value);
+                                item.KeepType = int.Parse(value);
                                 break;
                             case "avoid_modify":
-                                item.avoid_modify = Convert.ToInt32(value);
+                                item.AvoidModify = Convert.ToInt32(value);
                                 break;
                             case "pdef":
-                                item.physical_defense = Convert.ToInt32(value);
+                                item.PhysicalDefense = Convert.ToInt32(value);
                                 break;
                             case "mdef":
-                                item.magical_defense = Convert.ToInt32(value);
+                                item.MagicalDefense = Convert.ToInt32(value);
                                 break;
                             case "mp_bonus":
-                                item.mp_bonus = Convert.ToInt32(value);
+                                item.MpBonus = Convert.ToInt32(value);
                                 break;
                             case "enchanted":
-                                item.enchanted = Convert.ToInt16(value);
+                                item.Enchanted = Convert.ToInt16(value);
                                 break;
                             case "patk":
-                                item.physical_damage = Convert.ToInt32(value);
+                                item.PhysicalDamage = Convert.ToInt32(value);
                                 break;
                             case "random_damage":
-                                item.random_damage = Convert.ToInt32(value);
+                                item.RandomDamage = Convert.ToInt32(value);
                                 break;
                             case "equip_condition":
-                                item.setEquipCondition(value);
+                                item.SetEquipCondition(value);
                                 break;
                             case "item_equip_option":
-                                item.setEquipOption(value);
+                                item.SetEquipOption(value);
                                 break;
                             case "use_condition":
-                                item.setUseCondition(value);
+                                item.SetUseCondition(value);
                                 break;
                             case "base_attribute_attack":
-                                item.setAttributeAttack(value);
+                                item.SetAttributeAttack(value);
                                 break;
                             case "base_attribute_defend":
-                                item.setAttributeDefend(value);
+                                item.SetAttributeDefend(value);
                                 break;
                             case "can_move":
-                                item.can_move = Convert.ToInt32(value);
+                                item.CanMove = Convert.ToInt32(value);
                                 break;
                             case "html":
-                                item._htmFile = value;
+                                item.HtmFile = value;
                                 break;
                             case "magic_weapon":
-                                item.magic_weapon = Convert.ToInt32(value);
+                                item.MagicWeapon = Convert.ToInt32(value);
                                 break;
                             case "unequip_skill":
-                                item.setUnequipSkill(value);
+                                item.SetUnequipSkill(value);
                                 break;
                             case "for_npc":
-                                item.for_npc = Convert.ToInt32(value);
+                                item.ForNpc = Convert.ToInt32(value);
                                 break;
                             case "weapon_type":
                                 item.WeaponType = (ItemTemplate.L2ItemWeaponType)Enum.Parse(typeof(ItemTemplate.L2ItemWeaponType), value);
                                 break;
                             case "critical":
-                                item.critical = Convert.ToInt32(value);
+                                item.Critical = Convert.ToInt32(value);
                                 break;
                             case "hit_modify":
-                                item.hit_modify = Convert.ToDouble(value);
+                                item.HitModify = Convert.ToDouble(value);
                                 break;
                             case "attack_range":
-                                item.attack_range = Convert.ToInt32(value);
+                                item.AttackRange = Convert.ToInt32(value);
                                 break;
                             case "damage_range":
-                                item.setDamageRange(value);
+                                item.SetDamageRange(value);
                                 break;
                             case "attack_speed":
-                                item.attack_speed = Convert.ToInt32(value);
+                                item.AttackSpeed = Convert.ToInt32(value);
                                 break;
                             case "matk":
-                                item.magical_damage = Convert.ToInt32(value);
+                                item.MagicalDamage = Convert.ToInt32(value);
                                 break;
                             case "shield_defense":
-                                item.shield_defense = Convert.ToInt32(value);
+                                item.ShieldDefense = Convert.ToInt32(value);
                                 break;
                             case "shield_defense_rate":
-                                item.shield_defense_rate = Convert.ToInt32(value);
+                                item.ShieldDefenseRate = Convert.ToInt32(value);
                                 break;
                             case "mp_consume":
                                 item.MpConsume = Convert.ToInt32(value);
@@ -298,43 +298,43 @@ namespace L2dotNET.GameService.Tables
                                 item.LimitedMinutes = Convert.ToInt32(value);
                                 break;
                             case "reuse_delay":
-                                item.reuse_delay = Convert.ToInt32(value);
+                                item.ReuseDelay = Convert.ToInt32(value);
                                 break;
                             case "is_trade":
-                                item.is_trade = int.Parse(value);
+                                item.IsTrade = int.Parse(value);
                                 break;
                             case "is_destruct":
-                                item.is_destruct = int.Parse(value);
+                                item.IsDestruct = int.Parse(value);
                                 break;
                             case "is_drop":
-                                item.is_drop = int.Parse(value);
+                                item.IsDrop = int.Parse(value);
                                 break;
                             case "is_premium":
-                                item.is_premium = int.Parse(value);
+                                item.IsPremium = int.Parse(value);
                                 break;
                             case "is_private_store":
-                                item.is_private_store = int.Parse(value);
+                                item.IsPrivateStore = int.Parse(value);
                                 break;
                             case "enchant_enable":
-                                item.enchant_enable = int.Parse(value);
+                                item.EnchantEnable = int.Parse(value);
                                 break;
                             case "elemental_enable":
-                                item.elemental_enable = int.Parse(value);
+                                item.ElementalEnable = int.Parse(value);
                                 break;
                             case "is_olympiad_can_use":
-                                item.is_olympiad_can_use = int.Parse(value);
+                                item.IsOlympiadCanUse = int.Parse(value);
                                 break;
                         }
                     }
 
-                    item.buildEffect();
-                    if (_items.ContainsKey(item.ItemID))
+                    item.BuildEffect();
+                    if (Items.ContainsKey(item.ItemId))
                     {
-                        log.Error($"itemtable: dublicate {item.ItemID}");
-                        _items.Remove(item.ItemID);
+                        Log.Error($"itemtable: dublicate {item.ItemId}");
+                        Items.Remove(item.ItemId);
                     }
 
-                    _items.Add(item.ItemID, item);
+                    Items.Add(item.ItemId, item);
                 }
             }
 
@@ -359,51 +359,49 @@ namespace L2dotNET.GameService.Tables
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            log.Info($"ItemTable: #{_items.Count} items, #{_sets.Count} sets, #{ConvertDataList.Count} convertable.");
+            Log.Info($"ItemTable: #{Items.Count} items, #{Sets.Count} sets, #{ConvertDataList.Count} convertable.");
         }
 
-        public readonly SortedList<int, ItemTemplate> _items = new SortedList<int, ItemTemplate>();
-        public readonly SortedList<int, ItemSetTemplate> _sets = new SortedList<int, ItemSetTemplate>();
+        public readonly SortedList<int, ItemTemplate> Items = new SortedList<int, ItemTemplate>();
+        public readonly SortedList<int, ItemSetTemplate> Sets = new SortedList<int, ItemSetTemplate>();
         public readonly SortedList<int, int> ConvertDataList = new SortedList<int, int>();
-
-        public ItemTable() { }
 
         public ItemTemplate GetItem(int id)
         {
-            if (!_items.ContainsKey(id))
+            if (!Items.ContainsKey(id))
             {
-                log.Error($"itemtable: error, cant find item for id {id}");
+                Log.Error($"itemtable: error, cant find item for id {id}");
                 return null;
             }
 
-            return _items[id];
+            return Items[id];
         }
 
         public void NotifyKeySetItem(L2Player owner, L2Item item, bool equip)
         {
-            ItemSetTemplate set = _sets[item.Template.ItemID];
-            owner.setKeyItems = set.getAllSetIds();
-            owner.setKeyId = set.armorId;
+            ItemSetTemplate set = Sets[item.Template.ItemId];
+            owner.SetKeyItems = set.GetAllSetIds();
+            owner.SetKeyId = set.ArmorId;
 
             NotifySetItemEquip(owner, item, equip);
         }
 
         public void NotifySetItemEquip(L2Player owner, L2Item item, bool equip)
         {
-            ItemSetTemplate set = _sets[owner.setKeyId];
+            ItemSetTemplate set = Sets[owner.SetKeyId];
 
             if (!equip)
             {
                 bool b1 = false,
                      b2 = false,
                      b3 = false;
-                foreach (TSkill skill in owner.Skills.Values)
+                foreach (Skill skill in owner.Skills.Values)
                 {
-                    if ((set.set1Id > 0) && (skill.skill_id == set.set1Id))
+                    if ((set.Set1Id > 0) && (skill.SkillId == set.Set1Id))
                         b1 = true;
-                    if ((set.set2Id > 0) && (skill.skill_id == set.set2Id))
+                    if ((set.Set2Id > 0) && (skill.SkillId == set.Set2Id))
                         b2 = true;
-                    if ((set.set3Id > 0) && (skill.skill_id == set.set3Id))
+                    if ((set.Set3Id > 0) && (skill.SkillId == set.Set3Id))
                         b3 = true;
 
                     if (b1 && b2 && b3)
@@ -411,11 +409,11 @@ namespace L2dotNET.GameService.Tables
                 }
 
                 if (b1)
-                    owner.RemoveSkill(set.set1Id, false, false);
+                    owner.RemoveSkill(set.Set1Id, false, false);
                 if (b2)
-                    owner.RemoveSkill(set.set2Id, false, false);
+                    owner.RemoveSkill(set.Set2Id, false, false);
                 if (b3)
-                    owner.RemoveSkill(set.set3Id, false, false);
+                    owner.RemoveSkill(set.Set3Id, false, false);
 
                 if (b1 || b2 || b3)
                     owner.UpdateSkillList();

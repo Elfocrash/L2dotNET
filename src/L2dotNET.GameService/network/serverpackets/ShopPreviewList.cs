@@ -6,32 +6,32 @@ namespace L2dotNET.GameService.Network.Serverpackets
     class ShopPreviewList : GameServerNetworkPacket
     {
         private readonly int _adena;
-        private readonly ND_shopList _shop;
+        private readonly NdShopList _shop;
         private readonly int _shopId;
 
-        public ShopPreviewList(L2Player player, ND_shopList shop, int shopId)
+        public ShopPreviewList(L2Player player, NdShopList shop, int shopId)
         {
             _adena = player.GetAdena();
             _shop = shop;
             _shopId = shopId;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xef);
-            writeC(0xc0); // ?
-            writeC(0x13); // ?
-            writeC(0x00); // ?
-            writeC(0x00); // ?
-            writeD(_adena); // current money
-            writeD(_shopId);
+            WriteC(0xef);
+            WriteC(0xc0); // ?
+            WriteC(0x13); // ?
+            WriteC(0x00); // ?
+            WriteC(0x00); // ?
+            WriteD(_adena); // current money
+            WriteD(_shopId);
 
-            foreach (ND_shopItem si in _shop.items)
+            foreach (NdShopItem si in _shop.Items)
             {
-                writeD(si.item.ItemID);
-                writeH(si.item.Type2());
-                writeH(si.item.BodyPartId());
-                writeD(10);
+                WriteD(si.Item.ItemId);
+                WriteH(si.Item.Type2());
+                WriteH(si.Item.BodyPartId());
+                WriteD(10);
             }
         }
     }

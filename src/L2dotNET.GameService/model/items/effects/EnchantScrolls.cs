@@ -8,22 +8,22 @@ namespace L2dotNET.GameService.Model.Items.Effects
     {
         public EnchantScrolls()
         {
-            ids = ItemEnchantManager.getInstance().getIds();
+            Ids = ItemEnchantManager.GetInstance().GetIds();
         }
 
         public override void UsePlayer(L2Player player, L2Item item)
         {
             if (player.EnchantState != 0)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.ANOTHER_ENCHANTMENT_IS_IN_PROGRESS);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.AnotherEnchantmentIsInProgress);
                 player.SendActionFailed();
                 return;
             }
 
-            player.SendPacket(new ChooseInventoryItem(item.Template.ItemID));
+            player.SendPacket(new ChooseInventoryItem(item.Template.ItemId));
             player.EnchantScroll = item;
-            player.EnchantState = ItemEnchantManager.STATE_PUT_ITEM;
-            player.SendSystemMessage(SystemMessage.SystemMessageId.SELECT_ITEM_TO_ENCHANT);
+            player.EnchantState = ItemEnchantManager.StatePutItem;
+            player.SendSystemMessage(SystemMessage.SystemMessageId.SelectItemToEnchant);
         }
     }
 }

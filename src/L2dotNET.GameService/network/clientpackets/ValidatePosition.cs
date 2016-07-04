@@ -7,10 +7,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         public ValidatePosition(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        private const int SYNCTYPE = 1;
+        private const int Synctype = 1;
 
         private int _x;
         private int _y;
@@ -18,18 +18,18 @@ namespace L2dotNET.GameService.Network.Clientpackets
         private int _heading;
         private int _data;
 
-        public override void read()
+        public override void Read()
         {
-            _x = readD();
-            _y = readD();
-            _z = readD();
-            _heading = readD();
-            _data = readD();
+            _x = ReadD();
+            _y = ReadD();
+            _z = ReadD();
+            _heading = ReadD();
+            _data = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
-            L2Player player = getClient().CurrentPlayer;
+            L2Player player = GetClient().CurrentPlayer;
             //string prevReg = player.CurrentRegion;
 
             int realX = player.X;

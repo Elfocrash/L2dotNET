@@ -2,17 +2,17 @@
 {
     class PetStatusShow : GameServerNetworkPacket
     {
-        private readonly byte ObjectSummonType;
+        private readonly byte _objectSummonType;
 
-        public PetStatusShow(byte ObjectSummonType)
+        public PetStatusShow(byte objectSummonType)
         {
-            this.ObjectSummonType = ObjectSummonType;
+            this._objectSummonType = objectSummonType;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xb1);
-            writeD(ObjectSummonType);
+            WriteC(0xb1);
+            WriteD(_objectSummonType);
         }
     }
 }

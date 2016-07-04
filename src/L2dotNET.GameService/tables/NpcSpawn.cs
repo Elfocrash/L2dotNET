@@ -2,11 +2,11 @@
 {
     class NpcSpawn
     {
-        private static readonly NpcSpawn ns = new NpcSpawn();
+        private static readonly NpcSpawn Ns = new NpcSpawn();
 
-        public static NpcSpawn getInstance()
+        public static NpcSpawn GetInstance()
         {
-            return ns;
+            return Ns;
         }
     }
 }

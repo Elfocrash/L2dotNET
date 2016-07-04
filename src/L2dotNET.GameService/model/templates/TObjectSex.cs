@@ -1,9 +1,9 @@
 namespace L2dotNET.GameService.Model.Templates
 {
-    public enum TObjectSex
+    public enum ObjectSex
     {
-        male,
-        female,
-        etc
+        Male,
+        Female,
+        Etc
     }
 }

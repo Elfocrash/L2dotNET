@@ -2,9 +2,9 @@
 {
     class SunSet : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x1d);
+            WriteC(0x1d);
         }
     }
 }

@@ -4,35 +4,35 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class TradeUpdate : GameServerNetworkPacket
     {
-        private readonly L2Item item;
-        private readonly long num;
-        private readonly byte action;
+        private readonly L2Item _item;
+        private readonly long _num;
+        private readonly byte _action;
 
         public TradeUpdate(L2Item item, long num, byte action)
         {
-            this.item = item;
-            this.num = num;
-            this.action = action;
+            this._item = item;
+            this._num = num;
+            this._action = action;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x74);
-            writeH(1);
-            writeH(action);
+            WriteC(0x74);
+            WriteH(1);
+            WriteH(_action);
 
-            writeH(item.Template.Type1());
-            writeD(item.ObjId);
-            writeD(item.Template.ItemID);
-            writeD(num);
+            WriteH(_item.Template.Type1());
+            WriteD(_item.ObjId);
+            WriteD(_item.Template.ItemId);
+            WriteD(_num);
 
-            writeH(item.Template.Type2());
-            writeH(0);
+            WriteH(_item.Template.Type2());
+            WriteH(0);
 
-            writeD(item.Template.BodyPartId());
-            writeH(item.Enchant);
-            writeH(0x00); // ?
-            writeH(0x00);
+            WriteD(_item.Template.BodyPartId());
+            WriteH(_item.Enchant);
+            WriteH(0x00); // ?
+            WriteH(0x00);
         }
     }
 }

@@ -7,15 +7,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
     {
         private readonly int _level;
         private readonly int _id;
-        private readonly int CasterId;
-        private readonly int[] Targets;
+        private readonly int _casterId;
+        private readonly int[] _targets;
 
         public MagicSkillLaunched(L2Character caster, List<int> targets, int id, int lvl)
         {
             _id = id;
             _level = lvl;
-            Targets = targets.ToArray();
-            CasterId = caster.ObjId;
+            _targets = targets.ToArray();
+            _casterId = caster.ObjId;
         }
 
         /// <summary>
@@ -26,21 +26,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
         /// <param name="skLv"></param>
         public MagicSkillLaunched(int id, int skId, int skLv)
         {
-            CasterId = id;
+            _casterId = id;
             _id = skId;
             _level = skLv;
-            Targets = new[] { id };
+            _targets = new[] { id };
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x76);
-            writeD(CasterId);
-            writeD(_id);
-            writeD(_level);
-            writeD(Targets.Length);
-            foreach (int tid in Targets)
-                writeD(tid);
+            WriteC(0x76);
+            WriteD(_casterId);
+            WriteD(_id);
+            WriteD(_level);
+            WriteD(_targets.Length);
+            foreach (int tid in _targets)
+                WriteD(tid);
         }
     }
 }

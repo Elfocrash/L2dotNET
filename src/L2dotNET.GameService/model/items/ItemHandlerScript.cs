@@ -10,35 +10,35 @@ namespace L2dotNET.GameService.Model.Items
 {
     class ItemHandlerScript : ItemEffect
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ItemHandlerScript));
-        private readonly int id;
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ItemHandlerScript));
+        private readonly int _id;
 
-        public int EffectID = -1;
+        public int EffectId = -1;
         public int EffectLv;
 
         public bool Pet = false;
         public bool Player = true;
         public bool Destroy = true;
 
-        public int PetID = -1;
-        public int SummonID = -1;
-        public int SummonStaticID = -1;
+        public int PetId = -1;
+        public int SummonId = -1;
+        public int SummonStaticId = -1;
 
-        private SortedList<int, int> ExchangeItems;
-        public int SkillID;
+        private SortedList<int, int> _exchangeItems;
+        public int SkillId;
         public int SkillLv;
 
         public ItemHandlerScript(int id)
         {
-            this.id = id;
+            this._id = id;
         }
 
-        public void addExchangeItem(int itemId, int count)
+        public void AddExchangeItem(int itemId, int count)
         {
-            if (ExchangeItems == null)
-                ExchangeItems = new SortedList<int, int>();
+            if (_exchangeItems == null)
+                _exchangeItems = new SortedList<int, int>();
 
-            ExchangeItems.Add(itemId, count);
+            _exchangeItems.Add(itemId, count);
         }
 
         public override void UsePlayer(L2Player player, L2Item item)
@@ -52,20 +52,20 @@ namespace L2dotNET.GameService.Model.Items
             if (Destroy)
                 player.DestroyItem(item, 1);
 
-            calcSkill(player);
-            calcEffect(player);
+            CalcSkill(player);
+            CalcEffect(player);
 
-            if (ExchangeItems != null)
-                foreach (int val in ExchangeItems.Keys)
-                    player.AddItem(val, ExchangeItems[val]);
+            if (_exchangeItems != null)
+                foreach (int val in _exchangeItems.Keys)
+                    player.AddItem(val, _exchangeItems[val]);
 
-            if (PetID != -1)
-                player.PetSummon(item, PetID);
+            if (PetId != -1)
+                player.PetSummon(item, PetId);
 
-            if (SummonID != -1)
-                player.PetSummon(item, SummonID, false);
+            if (SummonId != -1)
+                player.PetSummon(item, SummonId, false);
 
-            if (SummonStaticID != -1)
+            if (SummonStaticId != -1)
             {
                 //NpcTable.Instance.SpawnNpc(SummonStaticID, player.X, player.Y, player.Z, player.Heading);
             }
@@ -79,24 +79,24 @@ namespace L2dotNET.GameService.Model.Items
                 return;
             }
 
-            calcSkill(pet);
-            calcEffect(pet);
+            CalcSkill(pet);
+            CalcEffect(pet);
 
-            if (SummonStaticID != -1)
+            if (SummonStaticId != -1)
             {
                 //NpcTable.Instance.SpawnNpc(SummonStaticID, pet.X, pet.Y, pet.Z, pet.Heading);
             }
         }
 
-        private void calcEffect(L2Character character)
+        private void CalcEffect(L2Character character)
         {
-            if (EffectID != -1)
+            if (EffectId != -1)
             {
-                TSkill skill = TSkillTable.Instance.Get(EffectID, EffectLv);
+                Skill skill = SkillTable.Instance.Get(EffectId, EffectLv);
 
                 if (skill == null)
                 {
-                    log.Error($"ItemHandler: item {id} with null effect {EffectID}/{EffectLv}");
+                    Log.Error($"ItemHandler: item {_id} with null effect {EffectId}/{EffectLv}");
                     return;
                 }
 
@@ -105,15 +105,15 @@ namespace L2dotNET.GameService.Model.Items
             }
         }
 
-        private void calcSkill(L2Character character)
+        private void CalcSkill(L2Character character)
         {
-            if (SkillID != -1)
+            if (SkillId != -1)
             {
-                TSkill skill = TSkillTable.Instance.Get(SkillID, SkillLv);
+                Skill skill = SkillTable.Instance.Get(SkillId, SkillLv);
 
                 if (skill == null)
                 {
-                    log.Error($"ItemHandler: item {id} with null skill {SkillID}/{SkillLv}");
+                    Log.Error($"ItemHandler: item {_id} with null skill {SkillId}/{SkillLv}");
                     return;
                 }
 

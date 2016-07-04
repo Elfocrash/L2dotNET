@@ -3,85 +3,85 @@ using L2dotNET.GameService.Model.Skills2.Effects;
 
 namespace L2dotNET.GameService.Model.Skills2
 {
-    class TEffectRegistrator
+    class EffectRegistrator
     {
-        private static readonly TEffectRegistrator st = new TEffectRegistrator();
+        private static readonly EffectRegistrator St = new EffectRegistrator();
 
-        public static TEffectRegistrator getInstance()
+        public static EffectRegistrator GetInstance()
         {
-            return st;
+            return St;
         }
 
-        public TEffect BuildProc(TEffectType type, string str)
+        public Effect BuildProc(EffectType type, string str)
         {
-            TEffect effect;
+            Effect effect;
             switch (type)
             {
-                case TEffectType.p_speed:
-                    effect = new p_speed();
+                case EffectType.PSpeed:
+                    effect = new PSpeed();
                     break;
-                case TEffectType.p_physical_defense:
-                    effect = new p_physical_defence();
+                case EffectType.PPhysicalDefense:
+                    effect = new PPhysicalDefence();
                     break;
-                case TEffectType.i_restoration:
-                    effect = new i_restoration();
+                case EffectType.IRestoration:
+                    effect = new Restoration();
                     break;
-                case TEffectType.i_fatal_blow:
-                    effect = new i_fatal_blow();
+                case EffectType.IFatalBlow:
+                    effect = new FatalBlow();
                     break;
-                case TEffectType.i_death:
-                    effect = new i_death();
+                case EffectType.IDeath:
+                    effect = new Death();
                     break;
-                case TEffectType.p_block_skill_physical:
-                    effect = new p_block_skill_physical();
+                case EffectType.PBlockSkillPhysical:
+                    effect = new PBlockSkillPhysical();
                     break;
-                case TEffectType.p_block_skill_special:
-                    effect = new p_block_skill_special();
+                case EffectType.PBlockSkillSpecial:
+                    effect = new PBlockSkillSpecial();
                     break;
-                case TEffectType.p_block_spell:
-                    effect = new p_block_spell();
+                case EffectType.PBlockSpell:
+                    effect = new PBlockSpell();
                     break;
-                case TEffectType.i_target_cancel:
-                    effect = new i_target_cancel();
+                case EffectType.ITargetCancel:
+                    effect = new TargetCancel();
                     break;
-                case TEffectType.p_defence_attribute:
-                    effect = new p_defence_attribute();
+                case EffectType.PDefenceAttribute:
+                    effect = new PDefenceAttribute();
                     break;
-                case TEffectType.i_p_attack:
-                    effect = new i_p_attack();
+                case EffectType.IPAttack:
+                    effect = new IpAttack();
                     break;
-                case TEffectType.i_remove_soul:
-                    effect = new i_remove_soul();
+                case EffectType.IRemoveSoul:
+                    effect = new RemoveSoul();
                     break;
-                case TEffectType.i_agathion_energy:
-                    effect = new i_agathion_energy();
+                case EffectType.IAgathionEnergy:
+                    effect = new AgathionEnergy();
                     break;
-                case TEffectType.i_summon_cubic:
-                    effect = new i_summon_cubic();
+                case EffectType.ISummonCubic:
+                    effect = new SummonCubic();
                     break;
-                case TEffectType.cub_heal:
-                    effect = new cub_heal();
+                case EffectType.CubHeal:
+                    effect = new CubHeal();
                     break;
                 default:
                     return null;
             }
 
-            effect.build(str);
+            effect.Build(str);
             return effect;
         }
 
-        public TSkillCond BuildCond(TSkillCondType type, string str)
+        public SkillCond BuildCond(SkillCondType type, string str)
         {
-            TSkillCond cond = null;
+            SkillCond cond = null;
             switch (type)
             {
-                case TSkillCondType.can_summon_cubic:
-                    cond = new can_summon_cubic();
+                case SkillCondType.CanSummonCubic:
+                    cond = new CanSummonCubic();
                     break;
             }
 
             if (cond != null)
-                cond.build(str);
+                cond.Build(str);
 
             return cond;
         }

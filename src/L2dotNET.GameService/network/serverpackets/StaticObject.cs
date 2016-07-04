@@ -4,18 +4,18 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class StaticObject : GameServerNetworkPacket
     {
-        private readonly L2StaticObject obj;
+        private readonly L2StaticObject _obj;
 
         public StaticObject(L2StaticObject obj)
         {
-            this.obj = obj;
+            this._obj = obj;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x99);
-            writeD(obj.StaticID);
-            writeD(obj.ObjId);
+            WriteC(0x99);
+            WriteD(_obj.StaticId);
+            WriteD(_obj.ObjId);
         }
     }
 }

@@ -1,12 +1,12 @@
 ﻿namespace L2dotNET.GameService.Tables
 {
-    public class RegionID
+    public class RegionId
     {
-        public short id;
-        public string name;
-        public int sysId;
-        public short castleId;
-        public int bbsId;
-        public short townId;
+        public short Id;
+        public string Name;
+        public int SysId;
+        public short CastleId;
+        public int BbsId;
+        public short TownId;
     }
 }

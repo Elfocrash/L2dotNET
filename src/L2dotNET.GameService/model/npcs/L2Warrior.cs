@@ -12,8 +12,8 @@ namespace L2dotNET.GameService.Model.Npcs
 {
     public class L2Warrior : L2Npc
     {
-        public bool spoilActive = false;
-        public DateTime dtstart;
+        public bool SpoilActive = false;
+        public DateTime Dtstart;
         public L2Spawn TerritorySpawn;
         public System.Timers.Timer socialTask;
 
@@ -47,8 +47,8 @@ namespace L2dotNET.GameService.Model.Npcs
                 player.SendPacket(new MyTargetSelected(ObjId, player.Level - Template.Level));
 
                 StatusUpdate su = new StatusUpdate(ObjId);
-                su.add(StatusUpdate.CUR_HP, (int)CurHp);
-                su.add(StatusUpdate.MAX_HP, (int)CharacterStat.getStat(TEffectType.b_max_hp));
+                su.Add(StatusUpdate.CurHp, (int)CurHp);
+                su.Add(StatusUpdate.MaxHp, (int)CharacterStat.GetStat(EffectType.BMaxHp));
                 player.SendPacket(su);
             }
             else
@@ -57,7 +57,7 @@ namespace L2dotNET.GameService.Model.Npcs
             }
         }
 
-        private readonly Random rnd = new Random();
+        private readonly Random _rnd = new Random();
 
         public override void OnSpawn()
         {
@@ -80,14 +80,14 @@ namespace L2dotNET.GameService.Model.Npcs
             if (CantMove() || IsAttacking())
                 return;
 
-            MoveTo(rnd.Next(SpawnX - 90, SpawnX + 90), rnd.Next(SpawnY - 90, SpawnY + 90), Z);
+            MoveTo(_rnd.Next(SpawnX - 90, SpawnX + 90), _rnd.Next(SpawnY - 90, SpawnY + 90), Z);
 
             // broadcastPacket(new SocialAction(ObjID, rnd.Next(8)));
         }
 
         public override void StartAi()
         {
-            AiCharacter = new WarriorAI(this);
+            AiCharacter = new WarriorAi(this);
         }
 
         public override void OnForcedAttack(L2Player player)
@@ -116,7 +116,7 @@ namespace L2dotNET.GameService.Model.Npcs
             //Template.roll_drops(this, killer);
 
             if (TerritorySpawn != null)
-                TerritorySpawn.onDie(this, killer);
+                TerritorySpawn.OnDie(this, killer);
 
             //socialTask.Enabled = false;
         }
@@ -125,12 +125,12 @@ namespace L2dotNET.GameService.Model.Npcs
         {
             string text = "";
 
-            text += "pdef: " + CharacterStat.getStat(TEffectType.p_physical_defense) + "<br>";
-            text += "patk: " + CharacterStat.getStat(TEffectType.p_physical_attack) + "<br>";
+            text += "pdef: " + CharacterStat.GetStat(EffectType.PPhysicalDefense) + "<br>";
+            text += "patk: " + CharacterStat.GetStat(EffectType.PPhysicalAttack) + "<br>";
             text += "curhp: " + CurHp + "<br>";
-            text += "maxhp: " + CharacterStat.getStat(TEffectType.b_max_hp) + "<br>";
-            text += "mdef: " + CharacterStat.getStat(TEffectType.p_magical_attack) + "<br>";
-            text += "matk: " + CharacterStat.getStat(TEffectType.p_magical_defense) + "<br>";
+            text += "maxhp: " + CharacterStat.GetStat(EffectType.BMaxHp) + "<br>";
+            text += "mdef: " + CharacterStat.GetStat(EffectType.PMagicalAttack) + "<br>";
+            text += "matk: " + CharacterStat.GetStat(EffectType.PMagicalDefense) + "<br>";
 
             player.ShowHtmPlain(text, null);
             player.SendActionFailed();

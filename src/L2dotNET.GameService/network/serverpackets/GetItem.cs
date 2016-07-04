@@ -17,14 +17,14 @@
             _z = z;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x0d);
-            writeD(_id);
-            writeD(_itemId);
-            writeD(_x);
-            writeD(_y);
-            writeD(_z);
+            WriteC(0x0d);
+            WriteD(_id);
+            WriteD(_itemId);
+            WriteD(_x);
+            WriteD(_y);
+            WriteD(_z);
         }
     }
 }

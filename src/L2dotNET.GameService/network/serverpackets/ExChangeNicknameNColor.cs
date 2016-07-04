@@ -2,10 +2,10 @@
 {
     class ExChangeNicknameNColor : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xFE);
-            writeH(0x83);
+            WriteC(0xFE);
+            WriteH(0x83);
         }
     }
 }

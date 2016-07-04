@@ -11,17 +11,17 @@ namespace L2dotNET.GameService.Model.Structures
 {
     class ConquerableHideout
     {
-        public string name;
-        public int id;
+        public string Name;
+        public int Id;
         public int BossId,
                    Minion1Id,
                    Minion2Id,
                    MessengerId;
-        public int[] spawn1,
-                     spawn2,
-                     spawn3,
-                     spawn4;
-        public bool isActive;
+        public int[] Spawn1,
+                     Spawn2,
+                     Spawn3,
+                     Spawn4;
+        public bool IsActive;
         public Timer TimeWait = null,
                      TimeReg = null,
                      TimeSiege;
@@ -30,19 +30,19 @@ namespace L2dotNET.GameService.Model.Structures
         public int ReputationCapture = 600;
         public int ReputationLosing = 600;
 
-        public SortedList<int, double> clanDamage;
-        public List<int[]> mobSpawns;
-        private L2Character npc1,
-                            npc2,
-                            npc3,
-                            npc4;
+        public SortedList<int, double> ClanDamage;
+        public List<int[]> MobSpawns;
+        private L2Character _npc1,
+                            _npc2,
+                            _npc3,
+                            _npc4;
 
-        public virtual void init()
+        public virtual void Init()
         {
-            Message("Siege registration of " + name + " has begun!");
+            Message("Siege registration of " + Name + " has begun!");
             Message("Now its open for 2 hours!");
 
-            npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, spawn4[0], spawn4[1], spawn4[2], spawn4[3]);
+            _npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, Spawn4[0], Spawn4[1], Spawn4[2], Spawn4[3]);
         }
 
         public void Message(string text)
@@ -50,30 +50,30 @@ namespace L2dotNET.GameService.Model.Structures
             AnnouncementManager.Instance.Announce(text);
         }
 
-        private List<L2Character> mobActive;
+        private List<L2Character> _mobActive;
 
-        public virtual void start()
+        public virtual void Start()
         {
-            isActive = true;
-            Message("Siege of " + name + " has begun!");
-            npc1 = (L2Character)SpawnTable.Instance.SpawnOne(BossId, spawn1[0], spawn1[1], spawn1[2], spawn1[3]);
-            npc2 = (L2Character)SpawnTable.Instance.SpawnOne(Minion1Id, spawn2[0], spawn2[1], spawn2[2], spawn2[3]);
-            npc3 = (L2Character)SpawnTable.Instance.SpawnOne(Minion2Id, spawn3[0], spawn3[1], spawn3[2], spawn3[3]);
-            npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, spawn4[0], spawn4[1], spawn4[2], spawn4[3]);
-            clanDamage = new SortedList<int, double>();
-            mobActive = new List<L2Character>();
+            IsActive = true;
+            Message("Siege of " + Name + " has begun!");
+            _npc1 = (L2Character)SpawnTable.Instance.SpawnOne(BossId, Spawn1[0], Spawn1[1], Spawn1[2], Spawn1[3]);
+            _npc2 = (L2Character)SpawnTable.Instance.SpawnOne(Minion1Id, Spawn2[0], Spawn2[1], Spawn2[2], Spawn2[3]);
+            _npc3 = (L2Character)SpawnTable.Instance.SpawnOne(Minion2Id, Spawn3[0], Spawn3[1], Spawn3[2], Spawn3[3]);
+            _npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, Spawn4[0], Spawn4[1], Spawn4[2], Spawn4[3]);
+            ClanDamage = new SortedList<int, double>();
+            _mobActive = new List<L2Character>();
 
-            foreach (int[] sp in mobSpawns)
+            foreach (int[] sp in MobSpawns)
             {
                 L2Character o = (L2Character)SpawnTable.Instance.SpawnOne(sp[0], sp[1], sp[2], sp[3], sp[4]);
-                mobActive.Add(o);
+                _mobActive.Add(o);
             }
 
-            TimeSiege = new Timer();
-            TimeSiege.Interval = 3600000; // 60 минут
-            TimeSiege.Elapsed += new ElapsedEventHandler(TimeSiegeEnd);
+            TimeSiege = new Timer {Interval = 3600000};
+            // 60 минут
+            TimeSiege.Elapsed += TimeSiegeEnd;
 
-            Message("Guards " + mobActive.Count + "! 60 min left");
+            Message("Guards " + _mobActive.Count + "! 60 min left");
         }
 
         private void TimeSiegeEnd(object sender, ElapsedEventArgs e)
@@ -84,17 +84,17 @@ namespace L2dotNET.GameService.Model.Structures
 
         public void SiegeEnd(bool trigger)
         {
-            isActive = false;
-            Message("Siege of " + name + " is over.");
+            IsActive = false;
+            Message("Siege of " + Name + " is over.");
             if (trigger)
-                Message("Nobody won! " + name + " belong to NPC until next siege.");
+                Message("Nobody won! " + Name + " belong to NPC until next siege.");
             else
             {
                 double dmg = 0;
                 int tmClanId = 0;
-                foreach (int clanId in clanDamage.Keys.Where(clanId => clanDamage[clanId] > dmg))
+                foreach (int clanId in ClanDamage.Keys.Where(clanId => ClanDamage[clanId] > dmg))
                 {
-                    dmg = clanDamage[clanId];
+                    dmg = ClanDamage[clanId];
                     tmClanId = clanId;
                 }
 
@@ -107,39 +107,39 @@ namespace L2dotNET.GameService.Model.Structures
                     if (captured)
                     {
                         cl.UpdatePledgeNameValue(ReputationCapture);
-                        cl.broadcastToMembers(new SystemMessage(SystemMessage.SystemMessageId.CLAN_ADDED_S1S_POINTS_TO_REPUTATION_SCORE).AddNumber(ReputationCapture));
+                        cl.BroadcastToMembers(new SystemMessage(SystemMessage.SystemMessageId.ClanAddedS1SPointsToReputationScore).AddNumber(ReputationCapture));
                     }
                     else
                     {
                         cl.UpdatePledgeNameValue(ReputationNothing);
-                        cl.broadcastToMembers(new SystemMessage(SystemMessage.SystemMessageId.CLAN_ACQUIRED_CONTESTED_CLAN_HALL_AND_S1_REPUTATION_POINTS).AddNumber(ReputationNothing));
+                        cl.BroadcastToMembers(new SystemMessage(SystemMessage.SystemMessageId.ClanAcquiredContestedClanHallAndS1ReputationPoints).AddNumber(ReputationNothing));
                     }
                 }
                 else
                 {
-                    Message("Nobody won! " + name + " belong to NPC until next siege.");
+                    Message("Nobody won! " + Name + " belong to NPC until next siege.");
                     //trigger = true;
                 }
             }
 
-            foreach (L2Character o in mobActive)
+            foreach (L2Character o in _mobActive)
                 o.DeleteByForce();
         }
 
-        public void addDamage(int clanId, double dmg)
+        public void AddDamage(int clanId, double dmg)
         {
-            if (clanDamage.ContainsKey(clanId))
-                clanDamage[clanId] += dmg;
+            if (ClanDamage.ContainsKey(clanId))
+                ClanDamage[clanId] += dmg;
             else
-                clanDamage.Add(clanId, dmg);
+                ClanDamage.Add(clanId, dmg);
         }
 
-        public void addSpawn(int spawnId, int x, int y, int z, int h)
+        public void AddSpawn(int spawnId, int x, int y, int z, int h)
         {
-            if (mobSpawns == null)
-                mobSpawns = new List<int[]>();
+            if (MobSpawns == null)
+                MobSpawns = new List<int[]>();
 
-            mobSpawns.Add(new[] { spawnId, x, y, z, h });
+            MobSpawns.Add(new[] { spawnId, x, y, z, h });
         }
     }
 }

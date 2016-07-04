@@ -7,19 +7,19 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 {
     class RequestPetUseItem : GameServerNetworkRequest
     {
-        private int sID;
+        private int _sId;
 
         public RequestPetUseItem(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            sID = readD();
+            _sId = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
@@ -44,7 +44,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
             //    return;
             //}
 
-            L2Item item = pet.Inventory.Items[sID];
+            L2Item item = pet.Inventory.Items[_sId];
 
             if (ItemHandler.Instance.Process(pet, item))
                 return;

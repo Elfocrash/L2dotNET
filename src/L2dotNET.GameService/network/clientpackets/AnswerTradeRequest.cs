@@ -6,29 +6,29 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class AnswerTradeRequest : GameServerNetworkRequest
     {
-        private int response;
+        private int _response;
 
         public AnswerTradeRequest(GameClient client, byte[] data)
         {
-            makeme(client, data);
+            Makeme(client, data);
         }
 
-        public override void read()
+        public override void Read()
         {
-            response = readD();
+            _response = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
             if (player.TradeState != 2)
             {
                 player.SendMessage("Stupid.");
-                response = 0;
+                _response = 0;
             }
 
-            if (player.requester == null)
+            if (player.Requester == null)
             {
                 player.SendMessage("Your trade requestor has logged off.");
                 player.SendActionFailed();
@@ -36,31 +36,31 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if ((response != 0) && (player.requester.TradeState != 1))
-                response = 0;
+            if ((_response != 0) && (player.Requester.TradeState != 1))
+                _response = 0;
 
-            if ((response != 0) && (player.EnchantState != 0))
-                response = 0;
+            if ((_response != 0) && (player.EnchantState != 0))
+                _response = 0;
 
-            if ((response != 0) && !Calcs.checkIfInRange(150, player, player.requester, true))
-                response = 0;
+            if ((_response != 0) && !Calcs.CheckIfInRange(150, player, player.Requester, true))
+                _response = 0;
 
-            switch (response)
+            switch (_response)
             {
                 case 0:
                     player.TradeState = 0;
-                    player.requester.TradeState = 0;
-                    player.requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_DENIED_TRADE_REQUEST).AddPlayerName(player.Name));
-                    player.requester.requester = null;
-                    player.requester = null;
+                    player.Requester.TradeState = 0;
+                    player.Requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1DeniedTradeRequest).AddPlayerName(player.Name));
+                    player.Requester.Requester = null;
+                    player.Requester = null;
                     break;
                 case 1:
-                    player.requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.BEGIN_TRADE_WITH_S1).AddPlayerName(player.Name));
-                    player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.BEGIN_TRADE_WITH_S1).AddPlayerName(player.requester.Name));
+                    player.Requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.BeginTradeWithS1).AddPlayerName(player.Name));
+                    player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.BeginTradeWithS1).AddPlayerName(player.Requester.Name));
                     player.TradeState = 3;
-                    player.requester.TradeState = 3;
+                    player.Requester.TradeState = 3;
                     player.SendPacket(new TradeStart(player));
-                    player.requester.SendPacket(new TradeStart(player.requester));
+                    player.Requester.SendPacket(new TradeStart(player.Requester));
                     break;
             }
         }

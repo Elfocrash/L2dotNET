@@ -58,7 +58,7 @@ namespace L2dotNET.GameService.AI.NpcAI
                 {
                     SocialMoveTimer = new Timer();
                     SocialMoveTimer.Interval = 10000;
-                    SocialMoveTimer.Elapsed += new ElapsedEventHandler(SocialTask);
+                    SocialMoveTimer.Elapsed += SocialTask;
                 }
 
                 SocialMoveTimer.Enabled = true;
@@ -89,18 +89,18 @@ namespace L2dotNET.GameService.AI.NpcAI
                             talker.ShowHtm(GetDialog("fnHi"), Myself);
                             break;
                         case 1:
-                            NpcHtmlMessage htm = new NpcHtmlMessage(talker, GetDialog(Myself.residenceId > 0 ? "fnFeudInfo" : "fnNoFeudInfo"), Myself.ObjId);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(talker, GetDialog(Myself.ResidenceId > 0 ? "fnFeudInfo" : "fnNoFeudInfo"), Myself.ObjId);
 
-                            if (Myself.residenceId > 0)
+                            if (Myself.ResidenceId > 0)
                             {
-                                Castle castle = CastleManager.getInstance().get(Myself.residenceId);
-                                htm.replace("<?my_pledge_name?>", castle.OwningClanName);
-                                htm.replace("<?my_owner_name?>", castle.OwningPlayerName);
-                                htm.replace("<?current_tax_rate?>", (int)castle.Tax);
+                                Castle castle = CastleManager.GetInstance().Get(Myself.ResidenceId);
+                                htm.Replace("<?my_pledge_name?>", castle.OwningClanName);
+                                htm.Replace("<?my_owner_name?>", castle.OwningPlayerName);
+                                htm.Replace("<?current_tax_rate?>", (int)castle.Tax);
                             }
 
-                            htm.replace("<?kingdom_name?>", FString.getInstance().get(Myself.residenceId < 7 ? 1001000 : 1001100));
-                            htm.replace("<?feud_name?>", FString.getInstance().get(Myself.residenceId + 1001000));
+                            htm.Replace("<?kingdom_name?>", FString.GetInstance().Get(Myself.ResidenceId < 7 ? 1001000 : 1001100));
+                            htm.Replace("<?feud_name?>", FString.GetInstance().Get(Myself.ResidenceId + 1001000));
 
                             talker.SendPacket(htm);
                             break;

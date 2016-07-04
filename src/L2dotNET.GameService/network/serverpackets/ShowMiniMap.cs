@@ -2,11 +2,11 @@
 {
     class ShowMiniMap : GameServerNetworkPacket
     {
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x9d);
-            writeD(1665);
-            writeD(0); //SevenSigns.getInstance().getCurrentPeriod());
+            WriteC(0x9d);
+            WriteD(1665);
+            WriteD(0); //SevenSigns.getInstance().getCurrentPeriod());
         }
     }
 }

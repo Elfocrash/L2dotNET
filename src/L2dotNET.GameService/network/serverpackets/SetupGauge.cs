@@ -2,32 +2,32 @@
 {
     class SetupGauge : GameServerNetworkPacket
     {
-        public enum SG_color
+        public enum SgColor
         {
-            blue = 0,
-            red = 1,
-            cyan = 2,
-            green = 3
+            Blue = 0,
+            Red = 1,
+            Cyan = 2,
+            Green = 3
         }
 
-        private readonly SG_color _color;
+        private readonly SgColor _color;
         private readonly int _time;
         private int _id;
 
-        public SetupGauge(int id, SG_color color, int time)
+        public SetupGauge(int id, SgColor color, int time)
         {
             _id = id;
             _color = color;
             _time = time;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x6d);
+            WriteC(0x6d);
             //writeD(_id);
-            writeD((int)_color);
-            writeD(_time);
-            writeD(_time); //c2
+            WriteD((int)_color);
+            WriteD(_time);
+            WriteD(_time); //c2
         }
     }
 }

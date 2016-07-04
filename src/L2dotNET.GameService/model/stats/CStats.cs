@@ -12,164 +12,164 @@ namespace L2dotNET.GameService.Model.Stats
     {
         public CStats(L2Character owner)
         {
-            this.owner = owner;
+            _owner = owner;
         }
 
-        private readonly L2Character owner;
+        private readonly L2Character _owner;
 
-        public Hashtable statTemplate = new Hashtable();
-        public Hashtable statBuff = new Hashtable();
+        public Hashtable StatTemplate = new Hashtable();
+        public Hashtable StatBuff = new Hashtable();
 
-        private readonly List<TEffect> activeEffects = new List<TEffect>();
+        private readonly List<Effect> _activeEffects = new List<Effect>();
 
-        public double SpecBonusRegHP,
+        public double SpecBonusRegHp,
                       URegHpMul = 1.0,
-                      SpecBonusRegMP,
+                      SpecBonusRegMp,
                       URegMpMul = 1.0,
-                      SpecBonusRegCP,
+                      SpecBonusRegCp,
                       SpecBonusEvasion;
 
-        public double getStat(TEffectType type)
+        public double GetStat(EffectType type)
         {
-            if (!statBuff.ContainsKey(type))
+            if (!StatBuff.ContainsKey(type))
             {
-                if (!statTemplate.ContainsKey(type))
+                if (!StatTemplate.ContainsKey(type))
                     return 0;
 
-                return (double)statTemplate[type];
+                return (double)StatTemplate[type];
             }
 
-            return (double)statBuff[type];
+            return (double)StatBuff[type];
         }
 
-        private double getTemplate(TEffectType type)
+        private double GetTemplate(EffectType type)
         {
-            if (!statTemplate.ContainsKey(type))
+            if (!StatTemplate.ContainsKey(type))
                 return 0;
 
-            return (double)statTemplate[type];
+            return (double)StatTemplate[type];
         }
 
-        public TEffectResult Apply(List<TEffect> effects, L2Character caster)
+        public EffectResult Apply(List<Effect> effects, L2Character caster)
         {
-            TEffectResult result = new TEffectResult();
+            EffectResult result = new EffectResult();
 
-            foreach (TEffectResult ter in effects.Select(effect => effect.onStart(caster, owner)))
+            foreach (EffectResult ter in effects.Select(effect => effect.OnStart(caster, _owner)))
             {
-                if (result.TotalUI == 0)
-                    result.TotalUI = ter.TotalUI;
+                if (result.TotalUi == 0)
+                    result.TotalUi = ter.TotalUi;
 
-                if (ter.sus != null)
-                    result.addAll(ter.sus);
+                if (ter.Sus != null)
+                    result.AddAll(ter.Sus);
             }
 
             return result;
         }
 
-        public double[] Apply(TEffect effect)
+        public double[] Apply(Effect effect)
         {
-            activeEffects.Add(effect);
+            _activeEffects.Add(effect);
 
-            double basevalue = getTemplate(effect.type);
+            double basevalue = GetTemplate(effect.Type);
             double newvalue = basevalue;
-            double buffvalue = getStat(effect.type);
+            double buffvalue = GetStat(effect.Type);
 
-            List<TEffect> arif = null;
-            foreach (TEffect cc in activeEffects.Where(cc => (cc.type == effect.type) && (cc.supMethod != null)))
+            List<Effect> arif = null;
+            foreach (Effect cc in _activeEffects.Where(cc => (cc.Type == effect.Type) && (cc.SupMethod != null)))
             {
-                if (cc.supMethod.Method <= SupMethod.SUB)
+                if (cc.SupMethod.Method <= SupMethod.Sub)
                 {
                     if (arif == null)
-                        arif = new List<TEffect>();
+                        arif = new List<Effect>();
 
                     arif.Add(cc);
                     continue;
                 }
 
-                newvalue = calcSupMethod(newvalue, cc.supMethod);
+                newvalue = CalcSupMethod(newvalue, cc.SupMethod);
             }
 
             if (arif != null)
-                foreach (TEffect cc in arif)
-                    newvalue = calcSupMethod(newvalue, cc.supMethod);
+                foreach (Effect cc in arif)
+                    newvalue = CalcSupMethod(newvalue, cc.SupMethod);
 
-            if (statBuff.ContainsKey(effect.type))
-                lock (statBuff)
+            if (StatBuff.ContainsKey(effect.Type))
+                lock (StatBuff)
                 {
-                    statBuff.Remove(effect.type);
+                    StatBuff.Remove(effect.Type);
                 }
 
-            statBuff.Add(effect.type, newvalue);
+            StatBuff.Add(effect.Type, newvalue);
             return new[] { buffvalue, newvalue };
         }
 
-        public TEffectResult Stop(List<TEffect> effects, L2Character caster)
+        public EffectResult Stop(List<Effect> effects, L2Character caster)
         {
-            TEffectResult result = new TEffectResult();
+            EffectResult result = new EffectResult();
 
-            foreach (TEffectResult ter in effects.Select(effect => effect.onEnd(caster, owner)))
+            foreach (EffectResult ter in effects.Select(effect => effect.OnEnd(caster, _owner)))
             {
-                if (result.TotalUI == 0)
-                    result.TotalUI = ter.TotalUI;
+                if (result.TotalUi == 0)
+                    result.TotalUi = ter.TotalUi;
 
-                if (ter.sus != null)
-                    result.addAll(ter.sus);
+                if (ter.Sus != null)
+                    result.AddAll(ter.Sus);
             }
 
             return result;
         }
 
-        public double[] Stop(TEffect effect)
+        public double[] Stop(Effect effect)
         {
-            activeEffects.Remove(effect);
+            _activeEffects.Remove(effect);
 
-            double basevalue = getTemplate(effect.type);
+            double basevalue = GetTemplate(effect.Type);
             double newvalue = basevalue;
-            double buffvalue = getStat(effect.type);
+            double buffvalue = GetStat(effect.Type);
 
-            List<TEffect> arif = null;
-            foreach (TEffect cc in activeEffects.Where(cc => cc.type == effect.type))
+            List<Effect> arif = null;
+            foreach (Effect cc in _activeEffects.Where(cc => cc.Type == effect.Type))
             {
-                if (cc.supMethod.Method <= SupMethod.SUB)
+                if (cc.SupMethod.Method <= SupMethod.Sub)
                 {
                     if (arif == null)
-                        arif = new List<TEffect>();
+                        arif = new List<Effect>();
 
                     arif.Add(cc);
                     continue;
                 }
 
-                newvalue = calcSupMethod(newvalue, cc.supMethod);
+                newvalue = CalcSupMethod(newvalue, cc.SupMethod);
             }
 
             if (arif != null)
-                foreach (TEffect cc in arif)
-                    newvalue = calcSupMethod(newvalue, cc.supMethod);
+                foreach (Effect cc in arif)
+                    newvalue = CalcSupMethod(newvalue, cc.SupMethod);
 
-            if (statBuff.ContainsKey(effect.type))
-                lock (statBuff)
+            if (StatBuff.ContainsKey(effect.Type))
+                lock (StatBuff)
                 {
-                    statBuff.Remove(effect.type);
+                    StatBuff.Remove(effect.Type);
                 }
 
-            statBuff.Add(effect.type, newvalue);
+            StatBuff.Add(effect.Type, newvalue);
 
             return new[] { buffvalue, newvalue };
         }
 
-        private double calcSupMethod(double val, SupMethod sup)
+        private double CalcSupMethod(double val, SupMethod sup)
         {
             double retval = 0;
             switch (sup.Method)
             {
-                case SupMethod.MUL:
+                case SupMethod.Mul:
                     retval = val * sup.Value;
                     break;
-                case SupMethod.DIV:
+                case SupMethod.Div:
                     retval = val / sup.Value;
                     break;
-                case SupMethod.ADD:
-                case SupMethod.SUB:
+                case SupMethod.Add:
+                case SupMethod.Sub:
                     retval = val + sup.Value;
                     break;
             }
@@ -177,45 +177,45 @@ namespace L2dotNET.GameService.Model.Stats
             return retval;
         }
 
-        public bool calcDebuffSuccess(TSkill skill, L2Character caster)
+        public bool CalcDebuffSuccess(Skill skill, L2Character caster)
         {
             int rnd = new Random().Next(0, 100);
-            bool success = rnd <= skill.activate_rate;
+            bool success = rnd <= skill.ActivateRate;
 
-            caster.SendMessage(skill.skill_id + " success " + rnd + "% (" + skill.activate_rate + "% base)");
+            caster.SendMessage(skill.SkillId + " success " + rnd + "% (" + skill.ActivateRate + "% base)");
 
             return success;
         }
 
-        public void addTemplate(TEffectType type, double value)
+        public void AddTemplate(EffectType type, double value)
         {
-            if (!statTemplate.Contains(type))
-                statTemplate.Add(type, value);
+            if (!StatTemplate.Contains(type))
+                StatTemplate.Add(type, value);
         }
 
-        public void setTemplate(PcTemplate template)
+        public void SetTemplate(PcTemplate template)
         {
-            addTemplate(TEffectType.p_physical_attack, template.BasePAtk);
-            addTemplate(TEffectType.p_physical_defense, template.BasePDef);
-            addTemplate(TEffectType.p_magical_attack, template.BaseMAtk);
-            addTemplate(TEffectType.p_magical_defense, template.BaseMDef);
-            addTemplate(TEffectType.p_speed, 700); //template.runspd);
+            AddTemplate(EffectType.PPhysicalAttack, template.BasePAtk);
+            AddTemplate(EffectType.PPhysicalDefense, template.BasePDef);
+            AddTemplate(EffectType.PMagicalAttack, template.BaseMAtk);
+            AddTemplate(EffectType.PMagicalDefense, template.BaseMDef);
+            AddTemplate(EffectType.PSpeed, 700); //template.runspd);
 
-            addTemplate(TEffectType.b_max_weight, 2500000.0);
-            addTemplate(TEffectType.b_accuracy, 50);
-            addTemplate(TEffectType.b_critical_rate, 100);
-            addTemplate(TEffectType.b_evasion, 50);
+            AddTemplate(EffectType.BMaxWeight, 2500000.0);
+            AddTemplate(EffectType.BAccuracy, 50);
+            AddTemplate(EffectType.BCriticalRate, 100);
+            AddTemplate(EffectType.BEvasion, 50);
             //addTemplate(TEffectType.b_breath, template.B);
 
-            addTemplate(TEffectType.b_attack_spd, template.BasePAtkSpd);
-            addTemplate(TEffectType.b_casting_spd, 333);
+            AddTemplate(EffectType.BAttackSpd, template.BasePAtkSpd);
+            AddTemplate(EffectType.BCastingSpd, 333);
 
-            addTemplate(TEffectType.b_max_hp, template.HpTable[owner.Level]);
-            addTemplate(TEffectType.b_reg_hp, template.BaseHpReg);
-            addTemplate(TEffectType.b_max_mp, template.MpTable[owner.Level]);
-            addTemplate(TEffectType.b_reg_mp, template.BaseMpReg);
-            addTemplate(TEffectType.b_max_cp, template.CpTable[owner.Level]);
-            addTemplate(TEffectType.b_reg_cp, 50);
+            AddTemplate(EffectType.BMaxHp, template.HpTable[_owner.Level]);
+            AddTemplate(EffectType.BRegHp, template.BaseHpReg);
+            AddTemplate(EffectType.BMaxMp, template.MpTable[_owner.Level]);
+            AddTemplate(EffectType.BRegMp, template.BaseMpReg);
+            AddTemplate(EffectType.BMaxCp, template.CpTable[_owner.Level]);
+            AddTemplate(EffectType.BRegCp, 50);
         }
 
         //public void setTemplate(npcs.NpcTemplate template)

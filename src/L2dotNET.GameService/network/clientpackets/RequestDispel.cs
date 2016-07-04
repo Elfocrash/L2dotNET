@@ -5,27 +5,27 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestDispel : GameServerNetworkRequest
     {
-        private int ownerId;
-        private int skillId;
-        private int skillLv;
+        private int _ownerId;
+        private int _skillId;
+        private int _skillLv;
 
         public RequestDispel(GameClient client, byte[] data)
         {
-            makeme(client, data, 2);
+            Makeme(client, data, 2);
         }
 
-        public override void read()
+        public override void Read()
         {
-            ownerId = readD();
-            skillId = readD();
-            skillLv = readD();
+            _ownerId = ReadD();
+            _skillId = ReadD();
+            _skillLv = ReadD();
         }
 
-        public override void run()
+        public override void Run()
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (ownerId != player.ObjId)
+            if (_ownerId != player.ObjId)
             {
                 player.SendActionFailed();
                 return;
@@ -34,10 +34,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
             AbnormalEffect avestop = null;
             foreach (AbnormalEffect ave in player.Effects)
             {
-                if ((ave.id != skillId) && (ave.lvl != skillLv))
+                if ((ave.Id != _skillId) && (ave.Lvl != _skillLv))
                     continue;
 
-                if ((ave.skill.debuff == 1) && (ave.skill.is_magic > 1))
+                if ((ave.Skill.Debuff == 1) && (ave.Skill.IsMagic > 1))
                     break;
 
                 avestop = ave;
@@ -52,7 +52,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             lock (player.Effects)
             {
-                avestop.forcedStop(true, true);
+                avestop.ForcedStop(true, true);
                 player.Effects.Remove(avestop);
             }
         }

@@ -4,67 +4,67 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class CharacterSelected : GameServerNetworkPacket
     {
-        private readonly int session;
-        private readonly L2Player player;
+        private readonly int _session;
+        private readonly L2Player _player;
 
         public CharacterSelected(L2Player player, int session)
         {
-            this.player = player;
-            this.session = session;
+            this._player = player;
+            this._session = session;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x15);
+            WriteC(0x15);
 
-            writeS(player.Name);
-            writeD(player.ObjId);
-            writeS(player.Title);
-            writeD(session);
+            WriteS(_player.Name);
+            WriteD(_player.ObjId);
+            WriteS(_player.Title);
+            WriteD(_session);
 
-            writeD(player.ClanId);
-            writeD(0x00); //??
-            writeD(player.Sex);
-            writeD((int)player.BaseClass.ClassId.ClassRace);
+            WriteD(_player.ClanId);
+            WriteD(0x00); //??
+            WriteD(_player.Sex);
+            WriteD((int)_player.BaseClass.ClassId.ClassRace);
 
-            writeD((int)player.ActiveClass.ClassId.Id);
-            writeD(0x01); // active ??
-            writeD(player.X);
-            writeD(player.Y);
+            WriteD((int)_player.ActiveClass.ClassId.Id);
+            WriteD(0x01); // active ??
+            WriteD(_player.X);
+            WriteD(_player.Y);
 
-            writeD(player.Z);
-            writeF(player.CurHp);
-            writeF(player.CurMp);
-            writeD(player.SP);
+            WriteD(_player.Z);
+            WriteF(_player.CurHp);
+            WriteF(_player.CurMp);
+            WriteD(_player.Sp);
 
-            writeQ(player.Exp);
-            writeD(player.Level);
-            writeD(player.Karma); // thx evill33t
-            writeD(0); //?
+            WriteQ(_player.Exp);
+            WriteD(_player.Level);
+            WriteD(_player.Karma); // thx evill33t
+            WriteD(0); //?
 
-            writeD(player.INT);
-            writeD(player.STR);
-            writeD(player.CON);
-            writeD(player.MEN);
+            WriteD(_player.Int);
+            WriteD(_player.Str);
+            WriteD(_player.Con);
+            WriteD(_player.Men);
 
-            writeD(player.DEX);
-            writeD(player.WIT);
+            WriteD(_player.Dex);
+            WriteD(_player.Wit);
             for (int i = 0; i < 30; i++)
-                writeD(0x00);
+                WriteD(0x00);
 
-            writeD(0x00); // c3 work
-            writeD(0x00); // c3 work
+            WriteD(0x00); // c3 work
+            WriteD(0x00); // c3 work
 
-            writeD(0x00);
+            WriteD(0x00);
 
-            writeD(0x00); // c3
+            WriteD(0x00); // c3
 
-            writeD((int)player.ActiveClass.ClassId.Id);
+            WriteD((int)_player.ActiveClass.ClassId.Id);
 
-            writeD(0x00); // c3 InspectorBin
-            writeD(0x00); // c3
-            writeD(0x00); // c3
-            writeD(0x00); // c3
+            WriteD(0x00); // c3 InspectorBin
+            WriteD(0x00); // c3
+            WriteD(0x00); // c3
+            WriteD(0x00); // c3
         }
     }
 }

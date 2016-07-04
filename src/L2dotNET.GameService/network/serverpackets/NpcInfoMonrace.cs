@@ -8,9 +8,9 @@
         //    this.runner = runner;
         //}
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x0c);
+            WriteC(0x0c);
             //writeD(runner.id);
             //writeD(runner.npcId + 1000000);
             //writeD(0);

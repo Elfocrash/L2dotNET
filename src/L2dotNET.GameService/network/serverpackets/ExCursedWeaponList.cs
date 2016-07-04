@@ -2,21 +2,21 @@
 {
     class ExCursedWeaponList : GameServerNetworkPacket
     {
-        private readonly int[] ids;
+        private readonly int[] _ids;
 
         public ExCursedWeaponList(int[] ids)
         {
-            this.ids = ids;
+            this._ids = ids;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0xfe);
-            writeH(0x46);
-            writeD(ids.Length);
+            WriteC(0xfe);
+            WriteH(0x46);
+            WriteD(_ids.Length);
 
-            foreach (int id in ids)
-                writeD(id);
+            foreach (int id in _ids)
+                WriteD(id);
         }
     }
 }

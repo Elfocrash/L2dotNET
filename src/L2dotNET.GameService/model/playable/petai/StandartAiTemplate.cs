@@ -5,46 +5,46 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
 {
     public class StandartAiTemplate
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(StandartAiTemplate));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(StandartAiTemplate));
 
-        public L2Character character;
-        public System.Timers.Timer ai1sec,
-                                   follow;
-        private bool FollowStatus;
+        public L2Character Character;
+        public System.Timers.Timer Ai1Sec,
+                                   Follow;
+        private bool _followStatus;
 
         public void Enable()
         {
-            ai1sec = new System.Timers.Timer();
-            ai1sec.Interval = 1000;
-            ai1sec.Elapsed += new System.Timers.ElapsedEventHandler(DoThink);
-            ai1sec.Enabled = true;
+            Ai1Sec = new System.Timers.Timer();
+            Ai1Sec.Interval = 1000;
+            Ai1Sec.Elapsed += new System.Timers.ElapsedEventHandler(DoThink);
+            Ai1Sec.Enabled = true;
         }
 
         public void Disable()
         {
-            if (ai1sec != null)
-                ai1sec.Enabled = false;
+            if (Ai1Sec != null)
+                Ai1Sec.Enabled = false;
 
-            if (follow != null)
-                follow.Enabled = false;
+            if (Follow != null)
+                Follow.Enabled = false;
         }
 
         public void SetFollowStatus(bool value)
         {
-            if (follow == null)
+            if (Follow == null)
             {
-                follow = new System.Timers.Timer();
-                follow.Interval = 200;
-                follow.Elapsed += new System.Timers.ElapsedEventHandler(DoFollow);
+                Follow = new System.Timers.Timer();
+                Follow.Interval = 200;
+                Follow.Elapsed += new System.Timers.ElapsedEventHandler(DoFollow);
             }
 
-            follow.Enabled = value;
-            FollowStatus = value;
+            Follow.Enabled = value;
+            _followStatus = value;
         }
 
         public void ChangeFollowStatus()
         {
-            SetFollowStatus(!FollowStatus);
+            SetFollowStatus(!_followStatus);
         }
 
         public virtual void DoThink(object sender = null, System.Timers.ElapsedEventArgs e = null) { }
@@ -70,22 +70,22 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
 
         public virtual void NotifyTargetNull()
         {
-            log.Info("NotifyTargetNull");
+            Log.Info("NotifyTargetNull");
         }
 
         public virtual void NotifyTargetDead()
         {
-            log.Info("NotifyTargetDead");
+            Log.Info("NotifyTargetDead");
         }
 
         public virtual void NotifyMpEnd(L2Character target)
         {
-            log.Info("NotifyMpEnd");
+            Log.Info("NotifyMpEnd");
         }
 
         public virtual void NotifyEvaded(L2Character target)
         {
-            log.Info("NotifyEvaded");
+            Log.Info("NotifyEvaded");
         }
 
         public virtual void Attack(L2Character target) { }

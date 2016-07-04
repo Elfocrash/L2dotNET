@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.Managers
         public EnchantType Type;
         public EnchantTarget Target;
         public ItemTemplate.L2ItemGrade Crystall;
-        public byte bonus;
+        public byte Bonus;
 
         public EnchantScroll(EnchantType enchantType, EnchantTarget enchantTarget, ItemTemplate.L2ItemGrade enchantCrystall)
         {
@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Managers
             Type = enchantType;
             Target = enchantTarget;
             Crystall = enchantCrystall;
-            this.bonus = bonus;
+            Bonus = bonus;
         }
     }
 }

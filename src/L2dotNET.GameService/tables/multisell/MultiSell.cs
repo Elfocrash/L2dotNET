@@ -12,23 +12,23 @@ namespace L2dotNET.GameService.Tables.Multisell
 {
     public class MultiSell
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(MultiSell));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(MultiSell));
 
-        private static volatile MultiSell instance;
-        private static readonly object syncRoot = new object();
+        private static volatile MultiSell _instance;
+        private static readonly object SyncRoot = new object();
 
         public static MultiSell Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new MultiSell();
+                        if (_instance == null)
+                            _instance = new MultiSell();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
@@ -37,24 +37,22 @@ namespace L2dotNET.GameService.Tables.Multisell
             LoadXml();
         }
 
-        public MultiSell() { }
-
-        public SortedList<int, MultiSellList> lists = new SortedList<int, MultiSellList>();
+        public SortedList<int, MultiSellList> Lists = new SortedList<int, MultiSellList>();
 
         public void ShowList(L2Player player, L2Npc npc, int listId)
         {
-            if (!lists.ContainsKey(listId))
+            if (!Lists.ContainsKey(listId))
             {
                 player.SendMessage("Multsell list #" + listId + " was not found");
                 player.SendActionFailed();
                 return;
             }
 
-            MultiSellList list = lists[listId];
+            MultiSellList list = Lists[listId];
 
             player.LastRequestedMultiSellId = listId;
 
-            if (list.all == 1)
+            if (list.All == 1)
             {
                 player.SendPacket(new MultiSellListEx(player, list));
                 player.CustomMultiSellList = null;
@@ -62,13 +60,13 @@ namespace L2dotNET.GameService.Tables.Multisell
             else
             {
                 MultiSellList newlist = new MultiSellList();
-                newlist.id = list.id;
+                newlist.Id = list.Id;
                 L2Item[] pitems = player.GetAllItems().ToArray();
-                foreach (MultiSellEntry entry in list.container)
+                foreach (MultiSellEntry entry in list.Container)
                 {
-                    MultiSellItem msitem = entry.take[0];
+                    MultiSellItem msitem = entry.Take[0];
 
-                    if (msitem.template == null)
+                    if (msitem.Template == null)
                         continue;
 
                     foreach (L2Item item in pitems)
@@ -76,16 +74,16 @@ namespace L2dotNET.GameService.Tables.Multisell
                         if (item.IsEquipped == 1)
                             continue;
 
-                        if (item.Template.ItemID == msitem.id)
+                        if (item.Template.ItemId == msitem.Id)
                         {
                             MultiSellEntry edentry = new MultiSellEntry();
-                            edentry.take.AddRange(entry.take);
-                            edentry.give.AddRange(entry.give);
+                            edentry.Take.AddRange(entry.Take);
+                            edentry.Give.AddRange(entry.Give);
 
-                            edentry.take[0].l2item = item;
-                            edentry.give[0].l2item = item;
+                            edentry.Take[0].L2Item = item;
+                            edentry.Give[0].L2Item = item;
 
-                            newlist.container.Add(edentry);
+                            newlist.Container.Add(edentry);
                         }
                     }
                 }
@@ -106,10 +104,10 @@ namespace L2dotNET.GameService.Tables.Multisell
                     if (m.Name == "multisell")
                     {
                         MultiSellList mlist = new MultiSellList();
-                        mlist.id = Convert.ToInt32(m.Attribute("id").Value);
-                        mlist.dutyf = Convert.ToByte(m.Attribute("dutyf").Value);
-                        mlist.save = Convert.ToByte(m.Attribute("save").Value);
-                        mlist.all = Convert.ToByte(m.Attribute("all").Value);
+                        mlist.Id = Convert.ToInt32(m.Attribute("id").Value);
+                        mlist.Dutyf = Convert.ToByte(m.Attribute("dutyf").Value);
+                        mlist.Save = Convert.ToByte(m.Attribute("save").Value);
+                        mlist.All = Convert.ToByte(m.Attribute("all").Value);
 
                         foreach (XElement stp in m.Elements())
                             if (stp.Name == "entry")
@@ -121,44 +119,44 @@ namespace L2dotNET.GameService.Tables.Multisell
                                         case "give":
                                         {
                                             MultiSellItem item = new MultiSellItem();
-                                            item.id = Convert.ToInt32(its.Attribute("id").Value);
-                                            item.count = Convert.ToInt32(its.Attribute("count").Value);
-                                            if (item.id > 0)
+                                            item.Id = Convert.ToInt32(its.Attribute("id").Value);
+                                            item.Count = Convert.ToInt32(its.Attribute("count").Value);
+                                            if (item.Id > 0)
                                             {
-                                                item.template = ItemTable.Instance.GetItem(item.id);
-                                                if (!item.template.isStackable())
+                                                item.Template = ItemTable.Instance.GetItem(item.Id);
+                                                if (!item.Template.IsStackable())
                                                     entry.Stackable = 0;
                                             }
-                                            entry.give.Add(item);
+                                            entry.Give.Add(item);
                                         }
                                             break;
                                         case "take":
                                         {
                                             MultiSellItem item = new MultiSellItem();
-                                            item.id = Convert.ToInt32(its.Attribute("id").Value);
-                                            item.count = Convert.ToInt32(its.Attribute("count").Value);
-                                            if (item.id > 0)
-                                                item.template = ItemTable.Instance.GetItem(item.id);
-                                            entry.take.Add(item);
+                                            item.Id = Convert.ToInt32(its.Attribute("id").Value);
+                                            item.Count = Convert.ToInt32(its.Attribute("count").Value);
+                                            if (item.Id > 0)
+                                                item.Template = ItemTable.Instance.GetItem(item.Id);
+                                            entry.Take.Add(item);
                                         }
                                             break;
                                         case "duty":
-                                            entry.dutyCount = Convert.ToInt64(its.Attribute("count").Value);
+                                            entry.DutyCount = Convert.ToInt64(its.Attribute("count").Value);
                                             break;
                                     }
 
-                                mlist.container.Add(entry);
+                                mlist.Container.Add(entry);
                             }
 
-                        lists.Add(mlist.id, mlist);
+                        Lists.Add(mlist.Id, mlist);
                     }
 
-            log.Info($"MultiSell: {lists.Count} lists");
+            Log.Info($"MultiSell: {Lists.Count} lists");
         }
 
-        public MultiSellList getList(int listId)
+        public MultiSellList GetList(int listId)
         {
-            return lists.ContainsKey(listId) ? lists[listId] : null;
+            return Lists.ContainsKey(listId) ? Lists[listId] : null;
         }
     }
 }

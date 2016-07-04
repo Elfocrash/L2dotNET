@@ -2,27 +2,27 @@
 {
     public class QuestInfo
     {
-        public bool completed;
-        public QuestOrigin _template;
-        public int id;
-        public int stage;
+        public bool Completed;
+        public QuestOrigin Template;
+        public int Id;
+        public int Stage;
 
         public QuestInfo(QuestOrigin quest)
         {
-            id = quest.questId;
-            stage = 1;
-            _template = quest;
-            completed = false;
+            Id = quest.QuestId;
+            Stage = 1;
+            Template = quest;
+            Completed = false;
         }
 
-        public QuestInfo(int _id, int _stage, int fin)
+        public QuestInfo(int id, int stage, int fin)
         {
-            id = _id;
-            stage = _stage;
-            completed = fin == 1;
+            Id = id;
+            Stage = stage;
+            Completed = fin == 1;
 
             if (fin == 0)
-                _template = QuestManager.Instance._quests[id];
+                Template = QuestManager.Instance.Quests[Id];
         }
     }
 }

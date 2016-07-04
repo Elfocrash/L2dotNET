@@ -5,21 +5,21 @@ namespace L2dotNET.GameService.Tables
 {
     class AllianceTable
     {
-        private static volatile AllianceTable instance;
-        private static readonly object syncRoot = new object();
+        private static volatile AllianceTable _instance;
+        private static readonly object SyncRoot = new object();
 
         public static AllianceTable Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new AllianceTable();
+                        if (_instance == null)
+                            _instance = new AllianceTable();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
@@ -52,13 +52,11 @@ namespace L2dotNET.GameService.Tables
             //CLogger.info("Community: loaded "+_alliances.Count+" alliances.");
         }
 
-        public SortedList<int, L2Alliance> _alliances = new SortedList<int, L2Alliance>();
-
-        public AllianceTable() { }
+        public SortedList<int, L2Alliance> Alliances = new SortedList<int, L2Alliance>();
 
         public L2Alliance GetAlliance(int id)
         {
-            return _alliances.ContainsKey(id) ? _alliances[id] : null;
+            return Alliances.ContainsKey(id) ? Alliances[id] : null;
         }
     }
 }

@@ -2,20 +2,20 @@
 {
     class AskJoinParty : GameServerNetworkPacket
     {
-        private readonly string asker;
-        private readonly int itemDistribution;
+        private readonly string _asker;
+        private readonly int _itemDistribution;
 
         public AskJoinParty(string asker, int itemDistribution)
         {
-            this.asker = asker;
-            this.itemDistribution = itemDistribution;
+            this._asker = asker;
+            this._itemDistribution = itemDistribution;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x39);
-            writeS(asker);
-            writeD(itemDistribution);
+            WriteC(0x39);
+            WriteS(_asker);
+            WriteD(_itemDistribution);
         }
     }
 }

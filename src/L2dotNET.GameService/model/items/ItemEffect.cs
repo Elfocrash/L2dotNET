@@ -8,8 +8,8 @@ namespace L2dotNET.GameService.Model.Items
 {
     public class ItemEffect
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ItemEffect));
-        public int[] ids;
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ItemEffect));
+        public int[] Ids;
 
         public void Use(L2Character character, L2Item item)
         {
@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.Model.Items
             else if (character is L2Pet)
                 UsePet((L2Pet)character, item);
             else
-                log.Warn($"Unk object {character.Name} tried to use {item.Template.ItemID}");
+                Log.Warn($"Unk object {character.Name} tried to use {item.Template.ItemId}");
         }
 
         public virtual void UsePlayer(L2Player player, L2Item item)
@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public virtual void UsePet(L2Pet pet, L2Item item)
         {
-            pet.Owner.SendSystemMessage(SystemMessage.SystemMessageId.PET_CANNOT_USE_ITEM);
+            pet.Owner.SendSystemMessage(SystemMessage.SystemMessageId.PetCannotUseItem);
         }
     }
 }

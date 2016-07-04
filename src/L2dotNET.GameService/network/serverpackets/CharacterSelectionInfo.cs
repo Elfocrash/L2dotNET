@@ -6,92 +6,92 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class CharacterSelectionInfo : GameServerNetworkPacket
     {
-        private readonly List<L2Player> players;
-        public int charId = -1;
-        private readonly string account;
-        private readonly int sessionId;
+        private readonly List<L2Player> _players;
+        public int CharId = -1;
+        private readonly string _account;
+        private readonly int _sessionId;
 
         public CharacterSelectionInfo(string account, List<L2Player> players, int sessionId)
         {
-            this.players = players;
-            this.account = account;
-            this.sessionId = sessionId;
+            this._players = players;
+            this._account = account;
+            this._sessionId = sessionId;
         }
 
-        protected internal override void write()
+        protected internal override void Write()
         {
-            writeC(0x13);
-            writeD(players.Count);
+            WriteC(0x13);
+            WriteD(_players.Count);
 
-            foreach (L2Player player in players)
+            foreach (L2Player player in _players)
             {
-                writeS(player.Name);
-                writeD(player.ObjId);
-                writeS(account);
-                writeD(sessionId);
-                writeD(player.ClanId);
-                writeD(0x00); // ??
+                WriteS(player.Name);
+                WriteD(player.ObjId);
+                WriteS(_account);
+                WriteD(_sessionId);
+                WriteD(player.ClanId);
+                WriteD(0x00); // ??
 
-                writeD(player.Sex);
-                writeD((int)player.BaseClass.ClassId.ClassRace);
+                WriteD(player.Sex);
+                WriteD((int)player.BaseClass.ClassId.ClassRace);
 
                 if (player.ActiveClass.ClassId.Id == player.BaseClass.ClassId.Id)
-                    writeD((int)player.ActiveClass.ClassId.Id);
+                    WriteD((int)player.ActiveClass.ClassId.Id);
                 else
-                    writeD((int)player.BaseClass.ClassId.Id);
+                    WriteD((int)player.BaseClass.ClassId.Id);
 
-                writeD(0x01); // active ??
+                WriteD(0x01); // active ??
 
-                writeD(player.X);
-                writeD(player.Y);
-                writeD(player.Z);
+                WriteD(player.X);
+                WriteD(player.Y);
+                WriteD(player.Z);
 
-                writeF(player.CurHp);
-                writeF(player.CurMp);
+                WriteF(player.CurHp);
+                WriteF(player.CurMp);
 
-                writeD(player.SP);
-                writeQ(player.Exp);
+                WriteD(player.Sp);
+                WriteQ(player.Exp);
 
-                writeD(player.Level);
-                writeD(player.Karma);
-                writeD(player.PkKills);
-                writeD(player.PvpKills);
+                WriteD(player.Level);
+                WriteD(player.Karma);
+                WriteD(player.PkKills);
+                WriteD(player.PvpKills);
 
-                writeD(0);
-                writeD(0);
-                writeD(0);
-                writeD(0);
-                writeD(0);
-                writeD(0);
-                writeD(0);
-
-                for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
-                    writeD(player.Inventory.Paperdoll[id].Template.ItemID);
+                WriteD(0);
+                WriteD(0);
+                WriteD(0);
+                WriteD(0);
+                WriteD(0);
+                WriteD(0);
+                WriteD(0);
 
                 for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
-                    writeD(player.Inventory.Paperdoll[id].Template.ItemID);
+                    WriteD(player.Inventory.Paperdoll[id].Template.ItemId);
 
-                writeD(player.HairStyle);
-                writeD(player.HairColor);
+                for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
+                    WriteD(player.Inventory.Paperdoll[id].Template.ItemId);
 
-                writeD(player.Face);
-                writeF(player.CurHp); // hp max TODO
-                writeF(player.CurMp); // mp max TODO
-                writeD(0); // days left before TODO
+                WriteD(player.HairStyle);
+                WriteD(player.HairColor);
 
-                writeD((int)player.ActiveClass.ClassId.Id);
+                WriteD(player.Face);
+                WriteF(player.CurHp); // hp max TODO
+                WriteF(player.CurMp); // mp max TODO
+                WriteD(0); // days left before TODO
+
+                WriteD((int)player.ActiveClass.ClassId.Id);
 
                 int selection = 0;
 
-                if (charId != -1)
-                    selection = charId == player.ObjId ? 1 : 0;
+                if (CharId != -1)
+                    selection = CharId == player.ObjId ? 1 : 0;
 
-                if ((charId == -1) && (player.LastAccountSelection == 1))
+                if ((CharId == -1) && (player.LastAccountSelection == 1))
                     selection = 1;
 
-                writeD(selection); // auto-select char
-                writeC(player.GetEnchantValue());
-                writeD(0x00); // augment
+                WriteD(selection); // auto-select char
+                WriteC(player.GetEnchantValue());
+                WriteD(0x00); // augment
             }
         }
     }

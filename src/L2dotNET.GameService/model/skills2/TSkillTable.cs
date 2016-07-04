@@ -9,48 +9,48 @@ using L2dotNET.GameService.Enums;
 
 namespace L2dotNET.GameService.Model.Skills2
 {
-    class TSkillTable
+    class SkillTable
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(TSkillTable));
-        private static volatile TSkillTable instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(SkillTable));
+        private static volatile SkillTable _instance;
+        private static readonly object SyncRoot = new object();
 
-        public static TSkillTable Instance
+        public static SkillTable Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new TSkillTable();
+                        if (_instance == null)
+                            _instance = new SkillTable();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
         public void Initialize()
         {
             Read();
-            loadDLC();
+            LoadDlc();
         }
 
-        public TSkillTable() { }
+        public SkillTable() { }
 
-        public TSkill Get(int id, int lvl)
+        public Skill Get(int id, int lvl)
         {
             long hash = id * 65536 + lvl;
-            return _skills.ContainsKey(hash) ? _skills[hash] : null;
+            return Skills.ContainsKey(hash) ? Skills[hash] : null;
         }
 
-        public TSkill Get(int skillId)
+        public Skill Get(int skillId)
         {
-            return _skills.ContainsKey(skillId) ? _skills[skillId] : null;
+            return Skills.ContainsKey(skillId) ? Skills[skillId] : null;
         }
 
-        public readonly SortedList<long, TSkillEnchantInfo> enchantInfo = new SortedList<long, TSkillEnchantInfo>();
-        public readonly SortedList<long, TSkill> _skills = new SortedList<long, TSkill>();
+        public readonly SortedList<long, SkillEnchantInfo> EnchantInfo = new SortedList<long, SkillEnchantInfo>();
+        public readonly SortedList<long, Skill> Skills = new SortedList<long, Skill>();
 
         public void Read()
         {
@@ -64,32 +64,32 @@ namespace L2dotNET.GameService.Model.Skills2
                     int cnt = dlc.ReadD();
                     for (int a = 0; a < cnt; a++)
                     {
-                        TSkillEnchantInfo inf = new TSkillEnchantInfo();
-                        inf.id = dlc.ReadD();
-                        inf.lv = dlc.ReadD();
+                        SkillEnchantInfo inf = new SkillEnchantInfo();
+                        inf.Id = dlc.ReadD();
+                        inf.Lv = dlc.ReadD();
                         int len = dlc.ReadD();
                         for (int b = 0; b < len; b++)
                         {
-                            TSkillEnchantInfoDetail nfo = new TSkillEnchantInfoDetail();
-                            nfo.route_id = dlc.ReadD();
-                            nfo.enchant_id = dlc.ReadD();
-                            nfo.enchanted_skill_level = dlc.ReadD();
-                            nfo.importance = dlc.ReadC();
-                            nfo.r1 = dlc.ReadD();
-                            nfo.r2 = dlc.ReadD();
-                            nfo.r3 = dlc.ReadD();
-                            nfo.r4 = dlc.ReadD();
+                            SkillEnchantInfoDetail nfo = new SkillEnchantInfoDetail();
+                            nfo.RouteId = dlc.ReadD();
+                            nfo.EnchantId = dlc.ReadD();
+                            nfo.EnchantedSkillLevel = dlc.ReadD();
+                            nfo.Importance = dlc.ReadC();
+                            nfo.R1 = dlc.ReadD();
+                            nfo.R2 = dlc.ReadD();
+                            nfo.R3 = dlc.ReadD();
+                            nfo.R4 = dlc.ReadD();
                             dlc.ReadS(10);
 
-                            inf.details.Add(nfo.enchanted_skill_level, nfo);
+                            inf.Details.Add(nfo.EnchantedSkillLevel, nfo);
                         }
 
-                        enchantInfo.Add(inf.id * 65536 + inf.lv, inf);
+                        EnchantInfo.Add(inf.Id * 65536 + inf.Lv, inf);
                     }
                 }
             }
 
-            SortedList<int, object> _ids = new SortedList<int, object>();
+            SortedList<int, object> ids = new SortedList<int, object>();
             Initreg();
             using (FileStream fstream = File.Open(@"dlc\skilldb_edit.dlc", FileMode.Open, FileAccess.Read))
             {
@@ -102,28 +102,28 @@ namespace L2dotNET.GameService.Model.Skills2
                     for (int a = 0; a < cnt; a++)
                     {
                         byte len = dlc.ReadC();
-                        TSkill skill = new TSkill();
+                        Skill skill = new Skill();
                         for (byte p = 0; p < len; p++)
                         {
                             byte keyId = dlc.ReadC();
-                            SkillLevelParam slp = ps[keyId];
+                            SkillLevelParam slp = _ps[keyId];
                             int lenx;
                             string value;
-                            switch (slp.id)
+                            switch (slp.Id)
                             {
                                 case 1:
-                                    skill.skill_id = dlc.ReadD();
+                                    skill.SkillId = dlc.ReadD();
                                     break;
                                 case 2:
-                                    skill.level = dlc.ReadD();
+                                    skill.Level = dlc.ReadD();
                                     break;
                                 case 3:
                                     lenx = dlc.ReadD();
                                     value = dlc.ReadS(lenx);
-                                    skill.OpType = (TSkillOperational)Enum.Parse(typeof(TSkillOperational), value);
+                                    skill.OpType = (SkillOperational)Enum.Parse(typeof(SkillOperational), value);
                                     break;
                                 case 4:
-                                    skill.magic_level = dlc.ReadD();
+                                    skill.MagicLevel = dlc.ReadD();
                                     break;
                                 case 6:
                                     lenx = dlc.ReadD();
@@ -136,55 +136,55 @@ namespace L2dotNET.GameService.Model.Skills2
                                     skill.SetOperateCond(value);
                                     break;
                                 case 15:
-                                    skill.is_magic = (short)dlc.ReadD();
+                                    skill.IsMagic = (short)dlc.ReadD();
                                     break;
                                 case 16:
-                                    skill.mp_consume1 = dlc.ReadD();
+                                    skill.MpConsume1 = dlc.ReadD();
                                     break;
                                 case 17:
-                                    skill.mp_consume2 = dlc.ReadD();
+                                    skill.MpConsume2 = dlc.ReadD();
                                     break;
                                 case 18:
-                                    skill.cast_range = dlc.ReadD();
+                                    skill.CastRange = dlc.ReadD();
                                     break;
                                 case 19:
-                                    skill.effective_range = dlc.ReadD();
+                                    skill.EffectiveRange = dlc.ReadD();
                                     break;
                                 case 20:
-                                    skill.skill_hit_time = (short)(dlc.ReadF() * 1000);
+                                    skill.SkillHitTime = (short)(dlc.ReadF() * 1000);
                                     break;
                                 case 21:
-                                    skill.skill_cool_time = (short)(dlc.ReadF() * 1000);
+                                    skill.SkillCoolTime = (short)(dlc.ReadF() * 1000);
                                     break;
                                 case 23:
-                                    skill.reuse_delay = dlc.ReadF();
+                                    skill.ReuseDelay = dlc.ReadF();
                                     break;
                                 case 26:
                                     double rate = dlc.ReadF();
                                     if (rate != -1)
-                                        skill.activate_rate = (short)(rate * 1000);
+                                        skill.ActivateRate = (short)(rate * 1000);
                                     break;
                                 case 29:
-                                    skill.abnormal_time = dlc.ReadD();
+                                    skill.AbnormalTime = dlc.ReadD();
                                     break;
                                 case 30:
-                                    skill.abnormal_lv = dlc.ReadD();
+                                    skill.AbnormalLv = dlc.ReadD();
                                     break;
                                 case 31:
                                     lenx = dlc.ReadD();
-                                    skill.abnormal_type = dlc.ReadS(lenx);
+                                    skill.AbnormalType = dlc.ReadS(lenx);
                                     break;
                                 case 39: //target_type
                                     lenx = dlc.ReadD();
                                     value = dlc.ReadS(lenx);
                                     try
                                     {
-                                        skill.target_type = (TSkillTarget)Enum.Parse(typeof(TSkillTarget), value);
+                                        skill.TargetType = (SkillTarget)Enum.Parse(typeof(SkillTarget), value);
                                     }
                                     catch (Exception)
                                     {
-                                        skill.target_type = TSkillTarget.target;
-                                        log.Error($"skill # {skill.skill_id} invalid target {value}");
+                                        skill.TargetType = SkillTarget.Target;
+                                        Log.Error($"skill # {skill.SkillId} invalid target {value}");
                                     }
                                     break;
                                 case 40: //affect_scope
@@ -192,19 +192,19 @@ namespace L2dotNET.GameService.Model.Skills2
                                     value = dlc.ReadS(lenx);
                                     try
                                     {
-                                        skill.affect_scope = (TSkillScope)Enum.Parse(typeof(TSkillScope), value);
+                                        skill.AffectScope = (SkillScope)Enum.Parse(typeof(SkillScope), value);
                                     }
                                     catch
                                     {
-                                        skill.affect_scope = TSkillScope.single;
-                                        log.Error($"skill # {skill.skill_id} invalid scope {value}");
+                                        skill.AffectScope = SkillScope.Single;
+                                        Log.Error($"skill # {skill.SkillId} invalid scope {value}");
                                     }
                                     break;
                                 case 49:
-                                    skill.hp_consume = dlc.ReadD();
+                                    skill.HpConsume = dlc.ReadD();
                                     break;
                                 default:
-                                    switch (slp.type)
+                                    switch (slp.Type)
                                     {
                                         case 1:
                                             dlc.ReadD();
@@ -222,13 +222,13 @@ namespace L2dotNET.GameService.Model.Skills2
                             }
                         }
 
-                        if (enchantInfo.ContainsKey(skill.HashID()))
+                        if (EnchantInfo.ContainsKey(skill.HashId()))
                             skill.EnchantEnabled = 1;
 
-                        _skills.Add(skill.HashID(), skill);
+                        Skills.Add(skill.HashId(), skill);
 
-                        if (!_ids.ContainsKey(skill.skill_id))
-                            _ids.Add(skill.skill_id, null);
+                        if (!ids.ContainsKey(skill.SkillId))
+                            ids.Add(skill.SkillId, null);
                     }
                 }
             }
@@ -306,96 +306,96 @@ namespace L2dotNET.GameService.Model.Skills2
             //    }
             //}
 
-            log.Info($"SkillTable: loaded {_ids.Count} skills, {enchantInfo.Count} enchants.");
+            Log.Info($"SkillTable: loaded {ids.Count} skills, {EnchantInfo.Count} enchants.");
         }
 
         #region INITREG
 
-        private const byte type_byte = 0;
-        private const byte type_int = 1;
-        private const byte type_double = 2;
-        private const byte type_str = 3;
+        private const byte TypeByte = 0;
+        private const byte TypeInt = 1;
+        private const byte TypeDouble = 2;
+        private const byte TypeStr = 3;
 
         public void Initreg()
         {
-            if (ps.Count != 0)
+            if (_ps.Count != 0)
                 return;
 
-            reg(new SkillLevelParam("skill_id", type_int, 1));
-            reg(new SkillLevelParam("level", type_int, 2));
-            reg(new SkillLevelParam("operate_type", type_str, 3));
-            reg(new SkillLevelParam("magic_level", type_int, 4));
-            reg(new SkillLevelParam("self_effect", type_str, 5));
-            reg(new SkillLevelParam("effect", type_str, 6));
-            reg(new SkillLevelParam("end_effect", type_str, 7));
-            reg(new SkillLevelParam("operate_cond", type_str, 8));
-            reg(new SkillLevelParam("pvp_effect", type_str, 9));
-            reg(new SkillLevelParam("pve_effect", type_str, 10));
-            reg(new SkillLevelParam("fail_effect", type_str, 11));
-            reg(new SkillLevelParam("start_effect", type_str, 12));
-            reg(new SkillLevelParam("tick_effect", type_str, 13));
-            reg(new SkillLevelParam("item_consume", type_str, 14));
-            reg(new SkillLevelParam("is_magic", type_int, 15));
-            reg(new SkillLevelParam("mp_consume1", type_int, 16));
-            reg(new SkillLevelParam("mp_consume2", type_int, 17));
-            reg(new SkillLevelParam("cast_range", type_int, 18));
-            reg(new SkillLevelParam("effective_range", type_int, 19));
-            reg(new SkillLevelParam("skill_hit_time", type_double, 20));
-            reg(new SkillLevelParam("skill_cool_time", type_double, 21));
-            reg(new SkillLevelParam("skill_hit_cancel_time", type_double, 22));
-            reg(new SkillLevelParam("reuse_delay", type_double, 23));
-            reg(new SkillLevelParam("reuse_delay_lock", type_int, 24));
-            reg(new SkillLevelParam("reuse_delay_type", type_str, 25));
-            reg(new SkillLevelParam("activate_rate", type_double, 26));
-            reg(new SkillLevelParam("lv_bonus_rate", type_int, 27));
-            reg(new SkillLevelParam("basic_property", type_str, 28));
-            reg(new SkillLevelParam("abnormal_time", type_int, 29));
-            reg(new SkillLevelParam("abnormal_lv", type_int, 30));
-            reg(new SkillLevelParam("abnormal_type", type_str, 31));
-            reg(new SkillLevelParam("abnormal_instant", type_int, 32));
-            reg(new SkillLevelParam("irreplaceable_buff", type_int, 33));
-            reg(new SkillLevelParam("buff_protect_level", type_int, 34));
-            reg(new SkillLevelParam("debuff", type_int, 35));
-            reg(new SkillLevelParam("attribute", type_str, 36));
-            reg(new SkillLevelParam("trait", type_str, 37));
-            reg(new SkillLevelParam("effect_point", type_int, 38));
-            reg(new SkillLevelParam("target_type", type_str, 39));
-            reg(new SkillLevelParam("affect_scope", type_str, 40));
-            reg(new SkillLevelParam("affect_range", type_int, 41));
-            reg(new SkillLevelParam("affect_object", type_str, 42));
-            reg(new SkillLevelParam("affect_limit", type_str, 43));
-            reg(new SkillLevelParam("next_action", type_str, 44));
-            reg(new SkillLevelParam("ride_state", type_str, 45));
-            reg(new SkillLevelParam("multi_class", type_int, 46));
-            reg(new SkillLevelParam("olympiad_use", type_int, 47));
-            reg(new SkillLevelParam("abnormal_visual_effect", type_str, 48));
-            reg(new SkillLevelParam("hp_consume", type_int, 49));
-            reg(new SkillLevelParam("consume_etc", type_str, 50));
-            reg(new SkillLevelParam("fan_range", type_str, 51));
-            reg(new SkillLevelParam("target_operate_cond", type_str, 52));
-            reg(new SkillLevelParam("tick_interval", type_double, 53));
-            reg(new SkillLevelParam("attached_skill", type_str, 54));
-            reg(new SkillLevelParam("mp_consume_tick", type_int, 55));
-            reg(new SkillLevelParam("passive_conditions", type_str, 56));
-            reg(new SkillLevelParam("transform_type", type_str, 57));
-            reg(new SkillLevelParam("abnormal_delete_leaveworld", type_int, 58));
-            reg(new SkillLevelParam("affect_scope_height", type_str, 59));
-            reg(new SkillLevelParam("npc_notice", type_int, 60));
-            reg(new SkillLevelParam("block_action_use_skill", type_int, 61));
+            Reg(new SkillLevelParam("skill_id", TypeInt, 1));
+            Reg(new SkillLevelParam("level", TypeInt, 2));
+            Reg(new SkillLevelParam("operate_type", TypeStr, 3));
+            Reg(new SkillLevelParam("magic_level", TypeInt, 4));
+            Reg(new SkillLevelParam("self_effect", TypeStr, 5));
+            Reg(new SkillLevelParam("effect", TypeStr, 6));
+            Reg(new SkillLevelParam("end_effect", TypeStr, 7));
+            Reg(new SkillLevelParam("operate_cond", TypeStr, 8));
+            Reg(new SkillLevelParam("pvp_effect", TypeStr, 9));
+            Reg(new SkillLevelParam("pve_effect", TypeStr, 10));
+            Reg(new SkillLevelParam("fail_effect", TypeStr, 11));
+            Reg(new SkillLevelParam("start_effect", TypeStr, 12));
+            Reg(new SkillLevelParam("tick_effect", TypeStr, 13));
+            Reg(new SkillLevelParam("item_consume", TypeStr, 14));
+            Reg(new SkillLevelParam("is_magic", TypeInt, 15));
+            Reg(new SkillLevelParam("mp_consume1", TypeInt, 16));
+            Reg(new SkillLevelParam("mp_consume2", TypeInt, 17));
+            Reg(new SkillLevelParam("cast_range", TypeInt, 18));
+            Reg(new SkillLevelParam("effective_range", TypeInt, 19));
+            Reg(new SkillLevelParam("skill_hit_time", TypeDouble, 20));
+            Reg(new SkillLevelParam("skill_cool_time", TypeDouble, 21));
+            Reg(new SkillLevelParam("skill_hit_cancel_time", TypeDouble, 22));
+            Reg(new SkillLevelParam("reuse_delay", TypeDouble, 23));
+            Reg(new SkillLevelParam("reuse_delay_lock", TypeInt, 24));
+            Reg(new SkillLevelParam("reuse_delay_type", TypeStr, 25));
+            Reg(new SkillLevelParam("activate_rate", TypeDouble, 26));
+            Reg(new SkillLevelParam("lv_bonus_rate", TypeInt, 27));
+            Reg(new SkillLevelParam("basic_property", TypeStr, 28));
+            Reg(new SkillLevelParam("abnormal_time", TypeInt, 29));
+            Reg(new SkillLevelParam("abnormal_lv", TypeInt, 30));
+            Reg(new SkillLevelParam("abnormal_type", TypeStr, 31));
+            Reg(new SkillLevelParam("abnormal_instant", TypeInt, 32));
+            Reg(new SkillLevelParam("irreplaceable_buff", TypeInt, 33));
+            Reg(new SkillLevelParam("buff_protect_level", TypeInt, 34));
+            Reg(new SkillLevelParam("debuff", TypeInt, 35));
+            Reg(new SkillLevelParam("attribute", TypeStr, 36));
+            Reg(new SkillLevelParam("trait", TypeStr, 37));
+            Reg(new SkillLevelParam("effect_point", TypeInt, 38));
+            Reg(new SkillLevelParam("target_type", TypeStr, 39));
+            Reg(new SkillLevelParam("affect_scope", TypeStr, 40));
+            Reg(new SkillLevelParam("affect_range", TypeInt, 41));
+            Reg(new SkillLevelParam("affect_object", TypeStr, 42));
+            Reg(new SkillLevelParam("affect_limit", TypeStr, 43));
+            Reg(new SkillLevelParam("next_action", TypeStr, 44));
+            Reg(new SkillLevelParam("ride_state", TypeStr, 45));
+            Reg(new SkillLevelParam("multi_class", TypeInt, 46));
+            Reg(new SkillLevelParam("olympiad_use", TypeInt, 47));
+            Reg(new SkillLevelParam("abnormal_visual_effect", TypeStr, 48));
+            Reg(new SkillLevelParam("hp_consume", TypeInt, 49));
+            Reg(new SkillLevelParam("consume_etc", TypeStr, 50));
+            Reg(new SkillLevelParam("fan_range", TypeStr, 51));
+            Reg(new SkillLevelParam("target_operate_cond", TypeStr, 52));
+            Reg(new SkillLevelParam("tick_interval", TypeDouble, 53));
+            Reg(new SkillLevelParam("attached_skill", TypeStr, 54));
+            Reg(new SkillLevelParam("mp_consume_tick", TypeInt, 55));
+            Reg(new SkillLevelParam("passive_conditions", TypeStr, 56));
+            Reg(new SkillLevelParam("transform_type", TypeStr, 57));
+            Reg(new SkillLevelParam("abnormal_delete_leaveworld", TypeInt, 58));
+            Reg(new SkillLevelParam("affect_scope_height", TypeStr, 59));
+            Reg(new SkillLevelParam("npc_notice", TypeInt, 60));
+            Reg(new SkillLevelParam("block_action_use_skill", TypeInt, 61));
         }
 
-        private readonly SortedList<byte, SkillLevelParam> ps = new SortedList<byte, SkillLevelParam>();
+        private readonly SortedList<byte, SkillLevelParam> _ps = new SortedList<byte, SkillLevelParam>();
 
-        private void reg(SkillLevelParam s)
+        private void Reg(SkillLevelParam s)
         {
-            ps.Add(s.id, s);
+            _ps.Add(s.Id, s);
         }
 
         #endregion
 
-        public Dictionary<string, TAcquireSkillsEntry> AcquireSkills = new Dictionary<string, TAcquireSkillsEntry>();
+        public Dictionary<string, AcquireSkillsEntry> AcquireSkills = new Dictionary<string, AcquireSkillsEntry>();
 
-        private void loadDLC()
+        private void LoadDlc()
         {
             FileStream fstream = new FileStream(@"dlc\skilltree.dlc", FileMode.Open, FileAccess.Read);
             byte[] dlcheader = new byte[3];
@@ -403,75 +403,75 @@ namespace L2dotNET.GameService.Model.Skills2
             if (Encoding.UTF8.GetString(dlcheader) != "DLC")
                 return;
 
-            AcquireSkills = new Dictionary<string, TAcquireSkillsEntry>();
+            AcquireSkills = new Dictionary<string, AcquireSkillsEntry>();
             DlcStream dlc = new DlcStream(fstream, CompressionMode.Decompress);
             int cnt = dlc.ReadD(),
                 cntTotal = 0;
             for (int a = 0; a < cnt; a++)
             {
-                TAcquireSkillsEntry list = new TAcquireSkillsEntry();
+                AcquireSkillsEntry list = new AcquireSkillsEntry();
                 byte len = dlc.ReadC();
-                list.type = dlc.ReadS(len);
+                list.Type = dlc.ReadS(len);
                 len = dlc.ReadC();
 
                 if (len > 0)
                 {
-                    list.include = dlc.ReadS(len);
-                    List<TAcquireSkill> s = AcquireSkills[list.include].skills;
+                    list.Include = dlc.ReadS(len);
+                    List<AcquireSkill> s = AcquireSkills[list.Include].Skills;
                     cntTotal += s.Count;
-                    list.skills.AddRange(s);
+                    list.Skills.AddRange(s);
                 }
 
                 int skLen = dlc.ReadD();
                 cntTotal += skLen;
                 for (int s = 0; s < skLen; s++)
                 {
-                    TAcquireSkill skill = new TAcquireSkill();
-                    skill.id = dlc.ReadD();
-                    skill.lv = dlc.ReadD();
-                    skill.get_lv = dlc.ReadD();
-                    skill.lv_up_sp = dlc.ReadD();
-                    skill.auto_get = dlc.ReadC() == 1;
+                    AcquireSkill skill = new AcquireSkill();
+                    skill.Id = dlc.ReadD();
+                    skill.Lv = dlc.ReadD();
+                    skill.GetLv = dlc.ReadD();
+                    skill.LvUpSp = dlc.ReadD();
+                    skill.AutoGet = dlc.ReadC() == 1;
 
                     if (dlc.ReadC() == 1)
                     {
-                        skill.itemid = dlc.ReadD();
-                        skill.itemcount = dlc.ReadD();
+                        skill.Itemid = dlc.ReadD();
+                        skill.Itemcount = dlc.ReadD();
                     }
 
-                    skill.social_class = dlc.ReadD();
-                    skill.residence_skill = dlc.ReadC() == 1;
+                    skill.SocialClass = dlc.ReadD();
+                    skill.ResidenceSkill = dlc.ReadC() == 1;
                     len = dlc.ReadC();
                     if (len > 0)
-                        skill.pledge_type = dlc.ReadS(len);
+                        skill.PledgeType = dlc.ReadS(len);
 
                     len = dlc.ReadC();
                     for (byte b = 0; b < len; b++)
-                        skill.races.Add(dlc.ReadC());
+                        skill.Races.Add(dlc.ReadC());
 
-                    skill.id_prerequisite_skill = dlc.ReadD();
-                    skill.lv_prerequisite_skill = dlc.ReadD();
+                    skill.IdPrerequisiteSkill = dlc.ReadD();
+                    skill.LvPrerequisiteSkill = dlc.ReadD();
 
                     int qcn = dlc.ReadD();
                     for (int i = 0; i < qcn; i++)
-                        skill.quests.Add(dlc.ReadD());
+                        skill.Quests.Add(dlc.ReadD());
 
-                    list.skills.Add(skill);
+                    list.Skills.Add(skill);
                 }
 
-                AcquireSkills.Add(list.type, list);
+                AcquireSkills.Add(list.Type, list);
             }
 
             dlc.Close();
-            log.Info($"SkillTable: learnable {AcquireSkills.Count} groups, #{cntTotal} skills.");
+            Log.Info($"SkillTable: learnable {AcquireSkills.Count} groups, #{cntTotal} skills.");
         }
 
-        public TAcquireSkillsEntry GetAllRegularSkills(ClassIds id)
+        public AcquireSkillsEntry GetAllRegularSkills(ClassIds id)
         {
             return AcquireSkills[id.ToString()];
         }
 
-        public TAcquireSkillsEntry GetSharingSkills(ClassIds id)
+        public AcquireSkillsEntry GetSharingSkills(ClassIds id)
         {
             switch (id)
             {
@@ -487,32 +487,32 @@ namespace L2dotNET.GameService.Model.Skills2
             }
         }
 
-        public TAcquireSkillsEntry GetCollectingSkills()
+        public AcquireSkillsEntry GetCollectingSkills()
         {
             return AcquireSkills["collect"];
         }
 
-        public TAcquireSkillsEntry GetSubjobSkills()
+        public AcquireSkillsEntry GetSubjobSkills()
         {
             return AcquireSkills["subjob"];
         }
 
-        public TAcquireSkillsEntry GetTransformSkills()
+        public AcquireSkillsEntry GetTransformSkills()
         {
             return AcquireSkills["transform"];
         }
 
-        public TAcquireSkillsEntry GetSubpledgeSkills()
+        public AcquireSkillsEntry GetSubpledgeSkills()
         {
             return AcquireSkills["sub_pledge"];
         }
 
-        public TAcquireSkillsEntry GetPledgeSkills()
+        public AcquireSkillsEntry GetPledgeSkills()
         {
             return AcquireSkills["pledge"];
         }
 
-        public TAcquireSkillsEntry GetFishingSkills()
+        public AcquireSkillsEntry GetFishingSkills()
         {
             return AcquireSkills["fishing"];
         }

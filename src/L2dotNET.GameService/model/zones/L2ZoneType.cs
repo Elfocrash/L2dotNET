@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Model.Zones
     public abstract class L2ZoneType
     {
         public int Id { get; }
-        protected L2ZoneForm _zone;
+        private L2ZoneForm _zone;
 
         public L2ZoneForm Zone
         {
@@ -18,12 +18,12 @@ namespace L2dotNET.GameService.Model.Zones
             set { _zone = value; }
         }
 
-        protected List<L2Character> _characterList;
+        protected List<L2Character> CharacterList;
 
-        public L2ZoneType(int id)
+        protected L2ZoneType(int id)
         {
             Id = id;
-            _characterList = new List<L2Character>();
+            CharacterList = new List<L2Character>();
         }
 
         public bool IsInsideZone(int x, int y)
@@ -63,19 +63,19 @@ namespace L2dotNET.GameService.Model.Zones
 
             if (IsInsideZone(character.X, character.Y, character.Z))
             {
-                if (!_characterList.Contains(character))
+                if (!CharacterList.Contains(character))
                 {
                     //quest check here
-                    _characterList.Add(character);
+                    CharacterList.Add(character);
                     OnEnter(character);
                 }
             }
             else
             {
-                if (_characterList.Contains(character))
+                if (CharacterList.Contains(character))
                 {
                     //quest check here
-                    _characterList.Remove(character);
+                    CharacterList.Remove(character);
                     OnExit(character);
                 }
             }
@@ -83,17 +83,17 @@ namespace L2dotNET.GameService.Model.Zones
 
         public void RemoveCharacter(L2Character character)
         {
-            if (_characterList.Contains(character))
+            if (CharacterList.Contains(character))
             {
                 //quest check here
-                _characterList.Remove(character);
+                CharacterList.Remove(character);
                 OnEnter(character);
             }
         }
 
         public bool IsCharacterInZone(L2Character character)
         {
-            return _characterList.Contains(character);
+            return CharacterList.Contains(character);
         }
 
         protected abstract void OnEnter(L2Character character);
@@ -108,15 +108,15 @@ namespace L2dotNET.GameService.Model.Zones
 
         public List<L2Character> GetCharactersInside()
         {
-            return _characterList;
+            return CharacterList;
         }
 
         public void BroadcastPacket(GameServerNetworkPacket packet)
         {
-            if (_characterList.Count == 0)
+            if (CharacterList.Count == 0)
                 return;
 
-            foreach (L2Player character in _characterList.OfType<L2Player>())
+            foreach (L2Player character in CharacterList.OfType<L2Player>())
                 character.SendPacket(packet);
         }
     }
