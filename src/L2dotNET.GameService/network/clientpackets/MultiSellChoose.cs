@@ -54,8 +54,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (player.LastRequestedMultiSellId != _listId)
             {
-                player.sendMessage("You are not authorized to use this list now.");
-                player.sendActionFailed();
+                player.SendMessage("You are not authorized to use this list now.");
+                player.SendActionFailed();
                 return;
             }
 
@@ -71,8 +71,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if ((list == null) || (list.container.Count < _entryId))
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
+                player.SendActionFailed();
                 return;
             }
 
@@ -101,8 +101,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (!ok)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_REQUIRED_ITEMS);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_REQUIRED_ITEMS);
+                player.SendActionFailed();
                 return;
             }
 
@@ -123,7 +123,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
            
 
-            player.sendSystemMessage(SystemMessage.SystemMessageId.SUCCESSFULLY_TRADED_WITH_NPC);
+            player.SendSystemMessage(SystemMessage.SystemMessageId.SUCCESSFULLY_TRADED_WITH_NPC);
         }
     }
 }

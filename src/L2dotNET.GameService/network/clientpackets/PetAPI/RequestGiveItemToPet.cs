@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
             if ((player.Summon == null) || !(player.Summon is L2Pet) || (player.EnchantState != 0))
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -36,8 +36,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
             if (pet.Dead)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_GIVE_ITEMS_TO_DEAD_PET);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_GIVE_ITEMS_TO_DEAD_PET);
+                player.SendActionFailed();
                 return;
             }
 
@@ -45,14 +45,14 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
             if ((item == null) || item.TempBlock)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
-            if ((item.Template.is_drop == 0) || (item.Template.is_destruct == 0) || (item.Template.is_trade == 0) || (item.Template.can_equip_hero != -1) || (pet.ControlItem.ObjID == sID))
+            if ((item.Template.is_drop == 0) || (item.Template.is_destruct == 0) || (item.Template.is_trade == 0) || (item.Template.can_equip_hero != -1) || (pet.ControlItem.ObjId == sID))
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.ITEM_NOT_FOR_PETS);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ITEM_NOT_FOR_PETS);
+                player.SendActionFailed();
                 return;
             }
 

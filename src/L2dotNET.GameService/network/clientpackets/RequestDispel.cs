@@ -25,14 +25,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (ownerId != player.ObjID)
+            if (ownerId != player.ObjId)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             AbnormalEffect avestop = null;
-            foreach (AbnormalEffect ave in player._effects)
+            foreach (AbnormalEffect ave in player.Effects)
             {
                 if ((ave.id != skillId) && (ave.lvl != skillLv))
                     continue;
@@ -46,14 +46,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (avestop == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
-            lock (player._effects)
+            lock (player.Effects)
             {
                 avestop.forcedStop(true, true);
-                player._effects.Remove(avestop);
+                player.Effects.Remove(avestop);
             }
         }
     }

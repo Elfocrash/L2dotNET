@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Commands.Admin
         {
             if (!(admin.CurrentTarget is L2Player))
             {
-                admin.sendMessage("target is not a player.");
+                admin.SendMessage("target is not a player.");
                 return;
             }
 
@@ -39,9 +39,9 @@ namespace L2dotNET.GameService.Commands.Admin
                 if (avail.ContainsKey(e.id))
                     continue;
 
-                if (target._skills.ContainsKey(e.id))
+                if (target.Skills.ContainsKey(e.id))
                 {
-                    TSkill skill = target._skills[e.id];
+                    TSkill skill = target.Skills[e.id];
 
                     if (skill.level >= e.lv)
                         continue;
@@ -65,16 +65,16 @@ namespace L2dotNET.GameService.Commands.Admin
             {
                 TSkill skill = TSkillTable.Instance.Get(sk.id, sk.lv);
                 if (skill != null)
-                    target.addSkill(skill, false, false);
+                    target.AddSkill(skill, false, false);
                 else
-                    target.sendMessage("no skill #" + sk.id + "-" + sk.lv);
+                    target.SendMessage("no skill #" + sk.id + "-" + sk.lv);
             }
 
             target.ActiveSkillTree = avail;
-            target.sendPacket(new AcquireSkillList(0, target));
+            target.SendPacket(new AcquireSkillList(0, target));
 
-            target.updateSkillList();
-            target.sendMessage("gor all skills [" + skills.skills.Count + "][" + avail.Count + "] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id);
+            target.UpdateSkillList();
+            target.SendMessage("gor all skills [" + skills.skills.Count + "][" + avail.Count + "] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id);
         }
     }
 }

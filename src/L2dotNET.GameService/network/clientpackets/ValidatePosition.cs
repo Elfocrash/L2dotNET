@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (diffSq < 360000)
             {
-                if (!player.isMoving())
+                if (!player.IsMoving())
                     if (diffSq < 2500)
                     {
                         player.X = realX;
@@ -65,7 +65,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.Y = _y;
             player.Z = _z;
             player.Heading = _heading;
-            Console.WriteLine($"Current position: X:{player.clientPosX}, Y:{player.clientPosY}, Z:{player.clientPosZ}"); //debug
+            Console.WriteLine($"Current position: X:{player.ClientPosX}, Y:{player.ClientPosY}, Z:{player.ClientPosZ}"); //debug
             player.BroadcastUserInfo();
             //player.validateVisibleObjects(_x, _y, true);
         }

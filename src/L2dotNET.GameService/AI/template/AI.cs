@@ -5,9 +5,9 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.AI.Template
 {
-    public class AI
+    public class Ai
     {
-        public L2Npc myself;
+        public L2Npc Myself;
 
         public virtual void Created() { }
 
@@ -36,19 +36,19 @@ namespace L2dotNET.GameService.AI.Template
             return true;
         }
 
-        public Dictionary<string, string> dialog;
+        public Dictionary<string, string> Dialog;
 
         public string GetDialog(string fn)
         {
-            if (dialog == null)
+            if (Dialog == null)
                 return "dialog.null";
 
-            return dialog.ContainsKey(fn) ? dialog[fn] : "dialog.not.found";
+            return Dialog.ContainsKey(fn) ? Dialog[fn] : "dialog.not.found";
         }
 
-        public const int adena = 57;
+        public const int Adena = 57;
 
-        public const string summon_npc_group = "@summon_npc_group";
+        public const string SummonNpcGroup = "@summon_npc_group";
 
         public void AddAttackDesire(L2Character target, int rate) { }
     }

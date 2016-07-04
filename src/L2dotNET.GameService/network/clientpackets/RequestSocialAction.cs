@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if ((_actionId < 2) || (_actionId > 13))
                 return;
 
-            player.broadcastPacket(new SocialAction(player.ObjID, _actionId));
+            player.BroadcastPacket(new SocialAction(player.ObjId, _actionId));
         }
     }
 }

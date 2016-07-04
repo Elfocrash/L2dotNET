@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
     {
         public PartySpelled(L2Character character)
         {
-            id = character.ObjID;
+            id = character.ObjId;
             summonType = character.ObjectSummonType;
             this.character = character;
         }

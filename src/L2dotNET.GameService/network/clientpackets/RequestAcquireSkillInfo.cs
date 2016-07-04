@@ -30,14 +30,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             SortedList<int, TAcquireSkill> seq = player.ActiveSkillTree;
             if (!seq.ContainsKey(_id))
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             TAcquireSkill skill = seq[_id];
             if (skill.lv != _level)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -53,7 +53,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
             }
 
-            player.sendPacket(asi);
+            player.SendPacket(asi);
         }
     }
 }

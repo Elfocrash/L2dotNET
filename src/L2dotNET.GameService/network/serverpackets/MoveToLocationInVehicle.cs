@@ -21,8 +21,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             writeC(0x71);
 
-            writeD(player.ObjID);
-            writeD(player.Boat.ObjID);
+            writeD(player.ObjId);
+            writeD(player.Boat.ObjId);
             writeD(player.BoatX);
             writeD(player.BoatY);
             writeD(player.BoatZ);

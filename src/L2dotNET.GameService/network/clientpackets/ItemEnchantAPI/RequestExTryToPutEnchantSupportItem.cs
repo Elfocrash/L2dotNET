@@ -25,10 +25,10 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
         {
             L2Player player = Client.CurrentPlayer;
 
-            if ((player.EnchantState != ItemEnchantManager.STATE_ENCHANT_START) || (player.EnchantItem.ObjID != a_sTargetID))
+            if ((player.EnchantState != ItemEnchantManager.STATE_ENCHANT_START) || (player.EnchantItem.ObjId != a_sTargetID))
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.REGISTRATION_OF_ENHANCEMENT_SPELLBOOK_HAS_FAILED);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.REGISTRATION_OF_ENHANCEMENT_SPELLBOOK_HAS_FAILED);
+                player.SendActionFailed();
                 return;
             }
 
@@ -36,8 +36,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
             if (stone == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.REGISTRATION_OF_ENHANCEMENT_SPELLBOOK_HAS_FAILED);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.REGISTRATION_OF_ENHANCEMENT_SPELLBOOK_HAS_FAILED);
+                player.SendActionFailed();
                 return;
             }
 

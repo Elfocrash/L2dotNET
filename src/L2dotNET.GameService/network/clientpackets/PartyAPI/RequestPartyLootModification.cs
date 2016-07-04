@@ -22,13 +22,13 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 
             if (player.Party == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
-            if ((mode < player.Party.ITEM_LOOTER) || (mode > player.Party.ITEM_ORDER_SPOIL) || (mode == player.Party.itemDistribution) || (player.Party.leader.ObjID != player.ObjID))
+            if ((mode < player.Party.ITEM_LOOTER) || (mode > player.Party.ITEM_ORDER_SPOIL) || (mode == player.Party.itemDistribution) || (player.Party.leader.ObjId != player.ObjId))
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 

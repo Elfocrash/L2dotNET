@@ -22,13 +22,13 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
         /// <returns>Play accepted <see cref="Packet"/>.</returns>
         internal static Packet ToPacket(LoginClient client)
         {
-            List<L2Server> servers = ServerThreadPool.Instance.servers;
+            List<L2Server> servers = ServerThreadPool.Instance.Servers;
             Packet p = new Packet(Opcode);
             p.WriteByte((byte)servers.Count, (byte)client.ActiveAccount.LastServer);
             foreach (L2Server server in servers)
             {
                 p.WriteByte(server.Id);
-                p.WriteBytesArray(server.GetIP(client));
+                p.WriteBytesArray(server.GetIp(client));
                 p.WriteInt(server.Port);
                 p.WriteByte(0);
                 p.WriteByte(1); // pvp?

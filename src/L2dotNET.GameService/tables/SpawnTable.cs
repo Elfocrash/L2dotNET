@@ -171,7 +171,7 @@ namespace L2dotNET.GameService.Tables
             o.SpawnZ = z;
 
             L2World.Instance.AddObject(o);
-            o.onSpawn();
+            o.OnSpawn();
 
             return o;
         }

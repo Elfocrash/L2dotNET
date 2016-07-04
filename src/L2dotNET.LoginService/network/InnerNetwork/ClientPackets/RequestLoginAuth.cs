@@ -9,59 +9,59 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestLoginAuth
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(RequestLoginAuth));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestLoginAuth));
 
-        private readonly short port;
-        private readonly string host;
-        private readonly string info;
-        private readonly string code;
-        private int curp;
-        private readonly short maxp;
-        private readonly byte gmonly;
-        private readonly byte test;
-        private readonly ServerThread thread;
+        private readonly short _port;
+        private readonly string _host;
+        private readonly string _info;
+        private readonly string _code;
+        private int _curp;
+        private readonly short _maxp;
+        private readonly byte _gmonly;
+        private readonly byte _test;
+        private readonly ServerThread _thread;
 
         public RequestLoginAuth(Packet p, ServerThread server)
         {
-            thread = server;
-            port = p.ReadShort();
-            host = p.ReadString().ToLower();
-            info = p.ReadString().ToLower();
-            code = p.ReadString().ToLower();
-            curp = p.ReadInt();
-            maxp = p.ReadShort();
-            gmonly = p.ReadByte();
-            test = p.ReadByte();
+            _thread = server;
+            _port = p.ReadShort();
+            _host = p.ReadString().ToLower();
+            _info = p.ReadString().ToLower();
+            _code = p.ReadString().ToLower();
+            _curp = p.ReadInt();
+            _maxp = p.ReadShort();
+            _gmonly = p.ReadByte();
+            _test = p.ReadByte();
         }
 
         public void RunImpl()
         {
             L2Server server = null;
-            foreach (L2Server srv in ServerThreadPool.Instance.servers.Where(srv => srv.Code == code))
+            foreach (L2Server srv in ServerThreadPool.Instance.Servers.Where(srv => srv.Code == _code))
             {
-                srv.Thread = thread;
+                srv.Thread = _thread;
                 server = srv;
                 break;
             }
 
             if (server == null)
             {
-                log.Error($"Code '{code}' for server was not found. Closing");
-                thread.close(ServerLoginFail.ToPacket("Code Error"));
+                Log.Error($"Code '{_code}' for server was not found. Closing");
+                _thread.Close(ServerLoginFail.ToPacket("Code Error"));
                 return;
             }
 
-            thread.Id = server.Id;
-            thread.Info = info;
-            thread.Wan = host;
-            thread.Port = port;
-            thread.Maxp = maxp;
-            thread.GmOnly = gmonly == 1;
-            thread.TestMode = test == 1;
-            thread.Connected = true;
+            _thread.Id = server.Id;
+            _thread.Info = _info;
+            _thread.Wan = _host;
+            _thread.Port = _port;
+            _thread.Maxp = _maxp;
+            _thread.GmOnly = _gmonly == 1;
+            _thread.TestMode = _test == 1;
+            _thread.Connected = true;
 
-            thread.Send(ServerLoginOk.ToPacket());
-            log.Info($"AuthThread: Server #{server.Id} connected");
+            _thread.Send(ServerLoginOk.ToPacket());
+            Log.Info($"AuthThread: Server #{server.Id} connected");
         }
     }
 }

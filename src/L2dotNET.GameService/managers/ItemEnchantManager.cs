@@ -170,16 +170,16 @@ namespace L2dotNET.GameService.Managers
 
             if (!next)
             {
-                player.sendPacket(new ExPutEnchantTargetItemResult());
+                player.SendPacket(new ExPutEnchantTargetItemResult());
                 player.EnchantScroll = null;
                 player.EnchantState = 0;
-                player.sendSystemMessage(SystemMessage.SystemMessageId.DOES_NOT_FIT_SCROLL_CONDITIONS);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.DOES_NOT_FIT_SCROLL_CONDITIONS);
             }
             else
             {
                 player.EnchantState = STATE_ENCHANT_START;
                 player.EnchantItem = item;
-                player.sendPacket(new ExPutEnchantTargetItemResult(item.ObjID));
+                player.SendPacket(new ExPutEnchantTargetItemResult(item.ObjId));
             }
         }
 
@@ -187,8 +187,8 @@ namespace L2dotNET.GameService.Managers
         {
             if (!supports.ContainsKey(stone.Template.ItemID))
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.INCORRECT_SUPPORT_ENHANCEMENT_SPELLBOOK);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.INCORRECT_SUPPORT_ENHANCEMENT_SPELLBOOK);
+                player.SendActionFailed();
                 return;
             }
 
@@ -245,14 +245,14 @@ namespace L2dotNET.GameService.Managers
 
             if (!next)
             {
-                player.sendPacket(new ExPutEnchantSupportItemResult());
+                player.SendPacket(new ExPutEnchantSupportItemResult());
                 player.EnchantStone = null;
-                player.sendSystemMessage(SystemMessage.SystemMessageId.ITEM_DOES_NOT_MEET_REQUIREMENTS_FOR_SUPPORT_ENHANCEMENT_SPELLBOOK);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ITEM_DOES_NOT_MEET_REQUIREMENTS_FOR_SUPPORT_ENHANCEMENT_SPELLBOOK);
             }
             else
             {
                 player.EnchantStone = stone;
-                player.sendPacket(new ExPutEnchantSupportItemResult(stone.ObjID));
+                player.SendPacket(new ExPutEnchantSupportItemResult(stone.ObjId));
             }
         }
     }

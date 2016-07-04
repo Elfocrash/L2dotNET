@@ -11,7 +11,7 @@ namespace L2dotNET.LoginService.Config
         public int LoginPort { get; set; }
 
         [JsonProperty(PropertyName = "gsport")]
-        public int GSPort { get; set; }
+        public int GsPort { get; set; }
 
         [JsonProperty(PropertyName = "autocreate")]
         public bool AutoCreate { get; set; }

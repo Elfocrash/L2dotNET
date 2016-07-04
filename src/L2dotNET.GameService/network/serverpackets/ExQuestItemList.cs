@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _items = null;//player.getAllQuestItems();
 
             foreach (L2Item item in _items.Where(item => item.Blocked))
-                _block.Add(item.ObjID);
+                _block.Add(item.ObjId);
         }
 
         protected internal override void write()
@@ -26,20 +26,20 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             foreach (L2Item item in _items)
             {
-                writeD(item.ObjID);
+                writeD(item.ObjId);
                 writeD(item.Template.ItemID);
                 writeD(0);
                 writeQ(item.Count);
 
                 writeH(item.Template.Type2());
                 writeH(0);
-                writeH(item._isEquipped);
+                writeH(item.IsEquipped);
 
                 writeD(item.Template.BodyPartId());
                 writeH(item.Enchant);
                 writeH(0);
 
-                writeD(item.AugmentationID);
+                writeD(item.AugmentationId);
                 writeD(item.Durability);
                 writeD(item.LifeTimeEnd());
 

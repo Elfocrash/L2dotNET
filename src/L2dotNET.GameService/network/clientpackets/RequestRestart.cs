@@ -19,25 +19,25 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = Client.CurrentPlayer;
 
-            if (player._p_block_act == 1)
+            if (player.PBlockAct == 1)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             if (player.isInCombat())
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANT_RESTART_WHILE_FIGHTING);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANT_RESTART_WHILE_FIGHTING);
+                player.SendActionFailed();
                 return;
             }
 
             player.Termination();
-            player.sendPacket(new RestartResponse());
+            player.SendPacket(new RestartResponse());
 
             CharacterSelectionInfo csl = new CharacterSelectionInfo(Client.AccountName, Client.AccountChars, Client.SessionId);
-            csl.charId = player.ObjID;
-            player.sendPacket(csl);
+            csl.charId = player.ObjId;
+            player.SendPacket(csl);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             }
 
             player.EnchantState = 0;
-            player.sendPacket(new EnchantResult(EnchantResultVal.closeWindow));
+            player.SendPacket(new EnchantResult(EnchantResultVal.closeWindow));
         }
     }
 }

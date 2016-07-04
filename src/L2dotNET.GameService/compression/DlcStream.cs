@@ -7,89 +7,89 @@ namespace L2dotNET.GameService.Compression
 {
     class DlcStream
     {
-        public GZipStream stream;
-        public FileStream stream2;
-        private readonly byte[] dlcStr = Encoding.UTF8.GetBytes("DLC");
+        public GZipStream Stream;
+        public FileStream Stream2;
+        private readonly byte[] _dlcStr = Encoding.UTF8.GetBytes("DLC");
 
         public DlcStream(FileStream fstream, CompressionMode cm)
         {
-            stream = new GZipStream(fstream, cm);
-            stream2 = fstream;
+            Stream = new GZipStream(fstream, cm);
+            Stream2 = fstream;
             if (cm == CompressionMode.Compress)
-                stream2.Write(dlcStr, 0, dlcStr.Length);
+                Stream2.Write(_dlcStr, 0, _dlcStr.Length);
         }
 
-        public void close()
+        public void Close()
         {
-            stream.Close();
-            stream.Dispose();
+            Stream.Close();
+            Stream.Dispose();
 
-            stream2.Close();
-            stream2.Dispose();
+            Stream2.Close();
+            Stream2.Dispose();
         }
 
-        public int readD()
+        public int ReadD()
         {
             byte[] buff = new byte[4];
-            stream.Read(buff, 0, buff.Length);
+            Stream.Read(buff, 0, buff.Length);
             return BitConverter.ToInt32(buff, 0);
         }
 
-        public long readQ()
+        public long ReadQ()
         {
             byte[] buff = new byte[8];
-            stream.Read(buff, 0, buff.Length);
+            Stream.Read(buff, 0, buff.Length);
             return BitConverter.ToInt64(buff, 0);
         }
 
-        public double readF()
+        public double ReadF()
         {
             byte[] buff = new byte[8];
-            stream.Read(buff, 0, buff.Length);
+            Stream.Read(buff, 0, buff.Length);
             return BitConverter.ToDouble(buff, 0);
         }
 
-        public byte readC()
+        public byte ReadC()
         {
             byte[] buff = new byte[1];
-            stream.Read(buff, 0, buff.Length);
+            Stream.Read(buff, 0, buff.Length);
             return buff[0];
         }
 
-        public string readS(int len)
+        public string ReadS(int len)
         {
             byte[] buff = new byte[len];
-            stream.Read(buff, 0, buff.Length);
+            Stream.Read(buff, 0, buff.Length);
             return Encoding.UTF8.GetString(buff);
         }
 
-        public void writeD(int d)
+        public void WriteD(int d)
         {
             byte[] buff = BitConverter.GetBytes(d);
-            stream.Write(buff, 0, buff.Length);
+            Stream.Write(buff, 0, buff.Length);
         }
 
-        public void writeQ(long q)
+        public void WriteQ(long q)
         {
             byte[] buff = BitConverter.GetBytes(q);
-            stream.Write(buff, 0, buff.Length);
+            Stream.Write(buff, 0, buff.Length);
         }
 
-        public void writeC(byte c)
+        public void WriteC(byte c)
         {
-            stream.WriteByte(c);
+            Stream.WriteByte(c);
         }
 
-        public void writeS(string str)
+        public void WriteS(string str)
         {
             byte[] buff = Encoding.UTF8.GetBytes(str);
-            stream.Write(buff, 0, buff.Length);
+            Stream.Write(buff, 0, buff.Length);
         }
 
-        public void writeF(double f)
+        public void WriteF(double f)
         {
             byte[] buff = BitConverter.GetBytes(f);
-            stream.Write(buff, 0, buff.Length);
+            Stream.Write(buff, 0, buff.Length);
         }
     }
 }

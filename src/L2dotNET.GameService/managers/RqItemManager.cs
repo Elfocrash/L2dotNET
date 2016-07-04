@@ -16,18 +16,18 @@ namespace L2dotNET.GameService.Managers
 
         public void postItem(L2Item item)
         {
-            if (_items.ContainsKey(item.ObjID))
+            if (_items.ContainsKey(item.ObjId))
                 lock (_items)
                 {
-                    _items.Remove(item.ObjID);
+                    _items.Remove(item.ObjId);
                 }
 
-            _items.Add(item.ObjID, item);
+            _items.Add(item.ObjId, item);
         }
 
-        public L2Item getItem(int _objectId)
+        public L2Item getItem(int objectId)
         {
-            return _items.ContainsKey(_objectId) ? _items[_objectId] : null;
+            return _items.ContainsKey(objectId) ? _items[objectId] : null;
         }
     }
 }

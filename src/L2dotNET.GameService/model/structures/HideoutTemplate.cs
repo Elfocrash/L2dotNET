@@ -54,7 +54,7 @@ namespace L2dotNET.GameService.Model.Structures
             foreach (L2Npc npc in npcs.Values)
             {
                 L2World.Instance.AddObject(npc);
-                npc.onSpawn();
+                npc.OnSpawn();
             }
         }
 

@@ -30,17 +30,17 @@ namespace L2dotNET.GameService.Model.Zones.Type
         protected override void OnEnter(L2Character character)
         {
             if (IsPeaceZone)
-                character.SetInsisdeZone(ZoneId.PEACE, true);
+                character.SetInsisdeZone(ZoneId.Peace, true);
 
-            character.SetInsisdeZone(ZoneId.TOWN, true);
+            character.SetInsisdeZone(ZoneId.Town, true);
         }
 
         protected override void OnExit(L2Character character)
         {
             if (IsPeaceZone)
-                character.SetInsisdeZone(ZoneId.PEACE, false);
+                character.SetInsisdeZone(ZoneId.Peace, false);
 
-            character.SetInsisdeZone(ZoneId.TOWN, false);
+            character.SetInsisdeZone(ZoneId.Town, false);
         }
 
         public override void OnDieInside(L2Character character) { }

@@ -32,7 +32,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if ((seq == null) || !seq.ContainsKey(_id))
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -40,14 +40,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (e.lv != _level)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             if (e.lv_up_sp > player.SP)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_SP_TO_LEARN_SKILL);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_SP_TO_LEARN_SKILL);
+                player.SendActionFailed();
                 return;
             }
 
@@ -62,20 +62,20 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (e.lv_up_sp > 0)
             {
                 player.SP -= e.lv_up_sp;
-                StatusUpdate su = new StatusUpdate(player.ObjID);
+                StatusUpdate su = new StatusUpdate(player.ObjId);
                 su.add(StatusUpdate.SP, player.SP);
-                player.sendPacket(su);
+                player.SendPacket(su);
             }
 
             player.DestroyItemById(e.itemid, e.itemcount);
 
             TSkill skill = TSkillTable.Instance.Get(e.id, e.lv);
             if (skill != null)
-                player.addSkill(skill, true, true);
+                player.AddSkill(skill, true, true);
             else
             {
-                player.sendMessage("failed to learn null skill");
-                player.sendActionFailed();
+                player.SendMessage("failed to learn null skill");
+                player.SendActionFailed();
                 return;
             }
 
@@ -92,7 +92,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (upd)
-                    player.sendPacket(new ShortCutInit(player));
+                    player.SendPacket(new ShortCutInit(player));
             }
 
             player.ActiveSkillTree.Remove(_id);

@@ -9,31 +9,31 @@ namespace L2dotNET.GameService.Handlers
 {
     public class AdminCommandHandler
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(AdminCommandHandler));
-        private readonly SortedList<string, AAdminCommand> commands = new SortedList<string, AAdminCommand>();
-        private ABTeleport Teleports;
+        private static readonly ILog Log = LogManager.GetLogger(typeof(AdminCommandHandler));
+        private readonly SortedList<string, AAdminCommand> _commands = new SortedList<string, AAdminCommand>();
+        private ABTeleport _teleports;
 
-        private static volatile AdminCommandHandler instance;
-        private static readonly object syncRoot = new object();
+        private static volatile AdminCommandHandler _instance;
+        private static readonly object SyncRoot = new object();
 
         public static AdminCommandHandler Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new AdminCommandHandler();
+                        if (_instance == null)
+                            _instance = new AdminCommandHandler();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
         public void Initialize()
         {
-            Teleports = new ABTeleport();
+            _teleports = new ABTeleport();
 
             Register(new AdminAddSkill());
             Register(new AdminChat());
@@ -49,37 +49,37 @@ namespace L2dotNET.GameService.Handlers
             Register(new AdminTransform());
             Register(new AdminWhisper());
 
-            log.Info($"AdminAccess: loaded { commands.Count } commands.");
+            Log.Info($"AdminAccess: loaded { _commands.Count } commands.");
         }
 
-        public void request(L2Player admin, string alias)
+        public void Request(L2Player admin, string alias)
         {
             string cmd = alias;
             if (alias.Contains(" "))
                 cmd = alias.Split(' ')[0];
 
-            if (!commands.ContainsKey(cmd))
+            if (!_commands.ContainsKey(cmd))
             {
-                admin.sendMessage($"Command { cmd } not exists.");
-                admin.sendActionFailed();
+                admin.SendMessage($"Command { cmd } not exists.");
+                admin.SendActionFailed();
                 return;
             }
 
-            AAdminCommand processor = commands[cmd];
+            AAdminCommand processor = _commands[cmd];
             try
             {
                 processor.Use(admin, alias);
             }
             catch (Exception sss)
             {
-                admin.sendMessage("Probably syntax eror.");
-                log.Error(sss);
+                admin.SendMessage("Probably syntax eror.");
+                Log.Error(sss);
             }
         }
 
         private void Register(AAdminCommand processor)
         {
-            commands.Add(processor.Cmd, processor);
+            _commands.Add(processor.Cmd, processor);
         }
 
         public AdminCommandHandler() { }
@@ -89,13 +89,13 @@ namespace L2dotNET.GameService.Handlers
             switch (ask)
             {
                 case 1:
-                    Teleports.ShowGroup(player, reply);
+                    _teleports.ShowGroup(player, reply);
                     break;
                 case 2:
-                    Teleports.Use(player, reply);
+                    _teleports.Use(player, reply);
                     break;
                 case 3:
-                    Teleports.ShowGroupList(player);
+                    _teleports.ShowGroupList(player);
                     break;
             }
         }

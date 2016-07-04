@@ -5,14 +5,14 @@
         protected internal override void write()
         {
             writeC(0xA1);
-            writeH(Config.Config.Instance.serverConfig.Port);
-            writeS(Config.Config.Instance.serverConfig.Host);
+            writeH(Config.Config.Instance.ServerConfig.Port);
+            writeS(Config.Config.Instance.ServerConfig.Host);
             writeS("");
-            writeS(Config.Config.Instance.serverConfig.AuthCode);
+            writeS(Config.Config.Instance.ServerConfig.AuthCode);
             writeD(0);
-            writeH(Config.Config.Instance.serverConfig.MaxPlayers);
-            writeC(Config.Config.Instance.serverConfig.IsGmOnly ? 0x01 : 0x00);
-            writeC(Config.Config.Instance.serverConfig.IsTestServer ? 0x01 : 0x00);
+            writeH(Config.Config.Instance.ServerConfig.MaxPlayers);
+            writeC(Config.Config.Instance.ServerConfig.IsGmOnly ? 0x01 : 0x00);
+            writeC(Config.Config.Instance.ServerConfig.IsTestServer ? 0x01 : 0x00);
         }
     }
 }

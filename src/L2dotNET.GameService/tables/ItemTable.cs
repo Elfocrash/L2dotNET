@@ -397,7 +397,7 @@ namespace L2dotNET.GameService.Tables
                 bool b1 = false,
                      b2 = false,
                      b3 = false;
-                foreach (TSkill skill in owner._skills.Values)
+                foreach (TSkill skill in owner.Skills.Values)
                 {
                     if ((set.set1Id > 0) && (skill.skill_id == set.set1Id))
                         b1 = true;
@@ -411,14 +411,14 @@ namespace L2dotNET.GameService.Tables
                 }
 
                 if (b1)
-                    owner.removeSkill(set.set1Id, false, false);
+                    owner.RemoveSkill(set.set1Id, false, false);
                 if (b2)
-                    owner.removeSkill(set.set2Id, false, false);
+                    owner.RemoveSkill(set.set2Id, false, false);
                 if (b3)
-                    owner.removeSkill(set.set3Id, false, false);
+                    owner.RemoveSkill(set.set3Id, false, false);
 
                 if (b1 || b2 || b3)
-                    owner.updateSkillList();
+                    owner.UpdateSkillList();
             }
             else
             {

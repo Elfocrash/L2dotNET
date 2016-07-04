@@ -51,7 +51,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.Gameclient = client;
                 client.CurrentPlayer = player;
 
-                getClient().sendPacket(new Serverpackets.CharacterSelected(player, client.SessionId));
+                getClient().SendPacket(new Serverpackets.CharacterSelected(player, client.SessionId));
             }
         }
 
@@ -61,12 +61,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //ObjectId = player.ObjID,
             //player.Name = playerModel.Name;
             player.Level = (byte)playerModel.Level;
-            player.MaxHP = playerModel.MaxHp;
-            player.CurHP = playerModel.CurHp;
-            player.MaxCP = playerModel.MaxCp;
-            player.CurCP = playerModel.CurCp;
-            player.MaxMP = playerModel.MaxMp;
-            player.CurMP = playerModel.CurMp;
+            player.MaxHp = playerModel.MaxHp;
+            player.CurHp = playerModel.CurHp;
+            player.MaxCp = playerModel.MaxCp;
+            player.CurCp = playerModel.CurCp;
+            player.MaxMp = playerModel.MaxMp;
+            player.CurMp = playerModel.CurMp;
             player.Face = playerModel.Face;
             player.HairStyle = playerModel.HairStyle;
             player.HairColor = playerModel.HairColor;
@@ -96,7 +96,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.LastAccess = playerModel.LastAccess;
             player.ClanPrivs = playerModel.ClanPrivs;
             player.WantsPeace = playerModel.WantsPeace;
-            player.IsIn7sDungeon = playerModel.IsIn7sDungeon;
+            player.IsIn7sDungeon = playerModel.IsIn7SDungeon;
             player.PunishLevel = playerModel.PunishLevel;
             player.PunishTimer = playerModel.PunishLevel;
             player.PowerGrade = playerModel.PowerGrade;

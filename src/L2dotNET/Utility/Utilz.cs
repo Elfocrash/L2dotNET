@@ -35,11 +35,11 @@ namespace L2dotNET.Utility
             return strBuilder.ToString();
         }
 
-        private static readonly DateTime year1970 = new DateTime(1970, 1, 1);
+        private static readonly DateTime Year1970 = new DateTime(1970, 1, 1);
 
         public static int CurrentSeconds()
         {
-            TimeSpan ts = year1970 - DateTime.Now;
+            TimeSpan ts = Year1970 - DateTime.Now;
             return (int)ts.TotalSeconds * -1;
         }
 

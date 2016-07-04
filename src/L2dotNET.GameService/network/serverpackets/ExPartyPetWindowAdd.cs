@@ -16,14 +16,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             writeC(0xfe);
             writeH(0x18);
-            writeD(_summon.ObjID);
+            writeD(_summon.ObjId);
             writeD(_summon.Template.NpcId + 1000000);
             writeD(_summon.ObjectSummonType);
-            writeD(_summon.Owner.ObjID);
+            writeD(_summon.Owner.ObjId);
             writeS(_summon.Name);
-            writeD(_summon.CurHP);
+            writeD(_summon.CurHp);
             writeD(_summon.CharacterStat.getStat(TEffectType.b_max_hp));
-            writeD(_summon.CurMP);
+            writeD(_summon.CurMp);
             writeD(_summon.CharacterStat.getStat(TEffectType.b_max_mp));
             writeD(_summon.Level);
         }

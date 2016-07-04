@@ -40,9 +40,9 @@ namespace L2dotNET.GameService.Model.Skills
         private void actionTime(object sender, ElapsedEventArgs e)
         {
             _timer.Enabled = false;
-            lock (_owner._reuse)
+            lock (_owner.Reuse)
             {
-                _owner._reuse.Remove(id);
+                _owner.Reuse.Remove(id);
             }
         }
     }

@@ -22,19 +22,19 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onEnter(obj);
 
-            obj.onEnterZone(this);
+            obj.OnEnterZone(this);
 
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.sendSystemMessage((SystemMessage.SystemMessageId)Template._entering_message_no);
+                p.SendSystemMessage((SystemMessage.SystemMessageId)Template._entering_message_no);
                 if (Template._affect_race.EqualsIgnoreCase("all"))
                     return;
 
                 if (!Template._affect_race.EqualsIgnoreCase("elf"))
                     return;
 
-                if (p.BaseClass.ClassId.ClassRace != ClassRace.ELF)
+                if (p.BaseClass.ClassId.ClassRace != ClassRace.Elf)
                     return;
 
                 //   p._stats.p_regen_hp += Template._hp_regen_bonus;
@@ -49,19 +49,19 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onExit(obj, cls);
 
-            obj.onExitZone(this, cls);
+            obj.OnExitZone(this, cls);
 
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.sendSystemMessage((SystemMessage.SystemMessageId)Template._leaving_message_no);
+                p.SendSystemMessage((SystemMessage.SystemMessageId)Template._leaving_message_no);
                 if (Template._affect_race.EqualsIgnoreCase("all"))
                     return;
 
                 if (!Template._affect_race.EqualsIgnoreCase("elf"))
                     return;
 
-                if (p.BaseClass.ClassId.ClassRace != ClassRace.ELF)
+                if (p.BaseClass.ClassId.ClassRace != ClassRace.Elf)
                     return;
 
                 //   p._stats.p_regen_hp -= Template._hp_regen_bonus;

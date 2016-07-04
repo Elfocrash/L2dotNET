@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.Model.Npcs
             cha = target;
             this.skillId = skillId;
             skill = TSkillTable.Instance.Get(skillId);
-            cha.broadcastPacket(new MagicSkillUse(npc, cha, skill, skill.skill_hit_time));
+            cha.BroadcastPacket(new MagicSkillUse(npc, cha, skill, skill.skill_hit_time));
 
             new Thread(Run).Start();
         }
@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.Model.Npcs
                 return;
 
             Thread.Sleep(skill.skill_hit_time);
-            cha.addEffect(npc, skill, true, false);
+            cha.AddEffect(npc, skill, true, false);
         }
     }
 }

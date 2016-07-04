@@ -9,27 +9,27 @@ namespace L2dotNET.LoginService.Managers
 {
     sealed class NetworkBlock
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(NetworkBlock));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(NetworkBlock));
 
-        private static volatile NetworkBlock instance;
-        private static readonly object syncRoot = new object();
+        private static volatile NetworkBlock _instance;
+        private static readonly object SyncRoot = new object();
 
         public static NetworkBlock Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new NetworkBlock();
+                        if (_instance == null)
+                            _instance = new NetworkBlock();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
-        private readonly List<NB_interface> blocks = new List<NB_interface>();
+        private readonly List<NbInterface> _blocks = new List<NbInterface>();
 
         public NetworkBlock()
         {
@@ -46,45 +46,45 @@ namespace L2dotNET.LoginService.Managers
 
                     if (line.StartsWithIgnoreCase("d"))
                     {
-                        NB_interface i = new NB_interface();
-                        i.directIp = line.Split(' ')[1];
-                        i.forever = line.Split(' ')[2].EqualsIgnoreCase("0");
-                        blocks.Add(i);
+                        NbInterface i = new NbInterface();
+                        i.DirectIp = line.Split(' ')[1];
+                        i.Forever = line.Split(' ')[2].EqualsIgnoreCase("0");
+                        _blocks.Add(i);
                     }
                     else if (line.StartsWithIgnoreCase("m"))
                     {
-                        NB_interface i = new NB_interface();
-                        i.mask = line.Split(' ')[1];
-                        i.forever = line.Split(' ')[2].EqualsIgnoreCase("0");
-                        blocks.Add(i);
+                        NbInterface i = new NbInterface();
+                        i.Mask = line.Split(' ')[1];
+                        i.Forever = line.Split(' ')[2].EqualsIgnoreCase("0");
+                        _blocks.Add(i);
                     }
                 }
             }
 
-            log.Info($"NetworkBlock: {blocks.Count} blocks.");
+            Log.Info($"NetworkBlock: {_blocks.Count} blocks.");
         }
 
         public bool Allowed(string ip)
         {
-            if (blocks.Count == 0)
+            if (_blocks.Count == 0)
                 return true;
 
-            foreach (NB_interface nbi in blocks)
+            foreach (NbInterface nbi in _blocks)
             {
-                if (nbi.directIp != null)
-                    if (nbi.directIp.Equals(ip))
+                if (nbi.DirectIp != null)
+                    if (nbi.DirectIp.Equals(ip))
                     {
-                        if (nbi.forever)
+                        if (nbi.Forever)
                             return false;
 
-                        if (nbi.timeEnd.CompareTo(DateTime.Now) == 1)
+                        if (nbi.TimeEnd.CompareTo(DateTime.Now) == 1)
                             return false;
                     }
 
-                if (nbi.mask != null)
+                if (nbi.Mask != null)
                 {
                     string[] a = ip.Split('.'),
-                             b = nbi.mask.Split('.');
+                             b = nbi.Mask.Split('.');
                     bool[] d = new bool[4];
                     for (byte c = 0; c < 4; c++)
                     {

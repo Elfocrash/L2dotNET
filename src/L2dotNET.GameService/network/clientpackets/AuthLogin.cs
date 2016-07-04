@@ -52,11 +52,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     Client.AccountChars.Add(p);
                 }
 
-                getClient().sendPacket(new CharacterSelectionInfo(getClient().AccountName, getClient().AccountChars, getClient().SessionId));
+                getClient().SendPacket(new CharacterSelectionInfo(getClient().AccountName, getClient().AccountChars, getClient().SessionId));
                 AuthThread.Instance.setInGameAccount(getClient().AccountName, true);
             }
             else
-                getClient().termination();
+                getClient().Termination();
         }
     }
 }

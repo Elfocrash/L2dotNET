@@ -92,7 +92,7 @@ namespace L2dotNET.GameService.Model.Communities
             cm.classId = (byte)player.ActiveClass.ClassId.Id;
             cm.Level = player.Level;
             cm.Name = player.Name;
-            cm.ObjID = player.ObjID;
+            cm.ObjID = player.ObjId;
             cm.sponsorId = 0;
             cm.NickName = player.Title;
             cm.ClanType = type;
@@ -120,7 +120,7 @@ namespace L2dotNET.GameService.Model.Communities
         {
             player.Clan = this;
 
-            foreach (ClanMember m in members.Where(m => m.ObjID == player.ObjID))
+            foreach (ClanMember m in members.Where(m => m.ObjID == player.ObjId))
             {
                 m.online = 1;
                 m.Level = player.Level;
@@ -128,52 +128,52 @@ namespace L2dotNET.GameService.Model.Communities
                 break;
             }
 
-            if (LeaderID == player.ObjID)
+            if (LeaderID == player.ObjId)
                 player.ClanPrivs = CP_ALL;
 
-            player.sendPacket(new PledgeShowMemberListAll(this, e_ClanType.CLAN_MAIN));
+            player.SendPacket(new PledgeShowMemberListAll(this, e_ClanType.CLAN_MAIN));
 
             foreach (e_ClanSub sub in getAllSubs())
             {
-                player.sendPacket(new PledgeReceiveSubPledgeCreated(sub));
-                player.sendPacket(new PledgeShowMemberListAll(this, sub.Type));
+                player.SendPacket(new PledgeReceiveSubPledgeCreated(sub));
+                player.SendPacket(new PledgeShowMemberListAll(this, sub.Type));
             }
         }
 
         public void broadcastToMembers(GameServerNetworkPacket pk)
         {
             foreach (ClanMember cm in members.Where(cm => cm.online == 1))
-                cm.Target.sendPacket(pk);
+                cm.Target.SendPacket(pk);
         }
 
-        public e_ClanType isSubLeader(int ObjID, e_ClanType[] types)
+        public e_ClanType isSubLeader(int objId, e_ClanType[] types)
         {
             e_ClanType ret = e_ClanType.None;
             foreach (e_ClanType ct in types)
                 switch (ct)
                 {
                     case e_ClanType.CLAN_KNIGHT1:
-                        if ((Knights_1 != null) && (Knights_1.LeaderID == ObjID))
+                        if ((Knights_1 != null) && (Knights_1.LeaderID == objId))
                             ret = ct;
                         break;
                     case e_ClanType.CLAN_KNIGHT2:
-                        if ((Knights_2 != null) && (Knights_2.LeaderID == ObjID))
+                        if ((Knights_2 != null) && (Knights_2.LeaderID == objId))
                             ret = ct;
                         break;
                     case e_ClanType.CLAN_KNIGHT3:
-                        if ((Knights_1_Order1 != null) && (Knights_1_Order1.LeaderID == ObjID))
+                        if ((Knights_1_Order1 != null) && (Knights_1_Order1.LeaderID == objId))
                             ret = ct;
                         break;
                     case e_ClanType.CLAN_KNIGHT4:
-                        if ((Knights_1_Order2 != null) && (Knights_1_Order2.LeaderID == ObjID))
+                        if ((Knights_1_Order2 != null) && (Knights_1_Order2.LeaderID == objId))
                             ret = ct;
                         break;
                     case e_ClanType.CLAN_KNIGHT5:
-                        if ((Knights_2_Order1 != null) && (Knights_2_Order1.LeaderID == ObjID))
+                        if ((Knights_2_Order1 != null) && (Knights_2_Order1.LeaderID == objId))
                             ret = ct;
                         break;
                     case e_ClanType.CLAN_KNIGHT6:
-                        if ((Knights_2_Order2 != null) && (Knights_2_Order2.LeaderID == ObjID))
+                        if ((Knights_2_Order2 != null) && (Knights_2_Order2.LeaderID == objId))
                             ret = ct;
                         break;
                 }
@@ -329,17 +329,17 @@ namespace L2dotNET.GameService.Model.Communities
 
         public void Leave(L2Player player)
         {
-            if (player.ObjID == LeaderID)
+            if (player.ObjId == LeaderID)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CLAN_LEADER_CANNOT_WITHDRAW);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CLAN_LEADER_CANNOT_WITHDRAW);
                 return;
             }
 
-            e_ClanType type = isSubLeader(player.ObjID, new[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2, e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 });
+            e_ClanType type = isSubLeader(player.ObjId, new[] { e_ClanType.CLAN_KNIGHT1, e_ClanType.CLAN_KNIGHT2, e_ClanType.CLAN_KNIGHT3, e_ClanType.CLAN_KNIGHT4, e_ClanType.CLAN_KNIGHT5, e_ClanType.CLAN_KNIGHT6 });
             if (type != e_ClanType.None)
-                if (getClanMemberCount(type, player.ObjID) > 0)
+                if (getClanMemberCount(type, player.ObjId) > 0)
                 {
-                    player.sendMessage("You are leader of clan sub unit, and while there some members - you cant leave them.");
+                    player.SendMessage("You are leader of clan sub unit, and while there some members - you cant leave them.");
                     return;
                 }
 
@@ -347,7 +347,7 @@ namespace L2dotNET.GameService.Model.Communities
             sm.AddPlayerName(player.Name);
             broadcastToOnline(sm);
 
-            foreach (ClanMember cm in members.Where(cm => cm.ObjID == player.ObjID))
+            foreach (ClanMember cm in members.Where(cm => cm.ObjID == player.ObjId))
             {
                 lock (members)
                 {
@@ -363,12 +363,12 @@ namespace L2dotNET.GameService.Model.Communities
             player.ClanType = 0;
 
             player.Title = "";
-            player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_HAVE_WITHDRAWN_FROM_CLAN);
-            player.sendPacket(new PledgeShowMemberListDeleteAll());
-            player.broadcastUserInfo();
+            player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_HAVE_WITHDRAWN_FROM_CLAN);
+            player.SendPacket(new PledgeShowMemberListDeleteAll());
+            player.BroadcastUserInfo();
 
             player.setPenalty_ClanJoin(DateTime.Now.AddHours(24), false);
-            player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_MUST_WAIT_BEFORE_JOINING_ANOTHER_CLAN);
+            player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_MUST_WAIT_BEFORE_JOINING_ANOTHER_CLAN);
 
             // player.updateDb();
         }
@@ -376,7 +376,7 @@ namespace L2dotNET.GameService.Model.Communities
         private void broadcastToOnline(GameServerNetworkPacket p)
         {
             foreach (ClanMember cm in members.Where(cm => cm.online == 1))
-                cm.Target.sendPacket(p);
+                cm.Target.SendPacket(p);
         }
 
         public byte getClanMemberCount(e_ClanType type, int myself)

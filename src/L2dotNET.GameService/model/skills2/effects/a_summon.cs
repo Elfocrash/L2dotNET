@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             L2Player player = (L2Player)caster;
             if (player.Summon != null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_ALREADY_HAVE_A_PET);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_ALREADY_HAVE_A_PET);
                 return false;
             }
 

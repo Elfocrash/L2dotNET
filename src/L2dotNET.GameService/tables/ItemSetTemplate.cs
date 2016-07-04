@@ -95,7 +95,7 @@ namespace L2dotNET.GameService.Tables
             byte set1sum = 0,
                  set2sum = 0,
                  set3sum = 0;
-            foreach (L2Item item in owner.Inventory.Items.Where(item => (item._isEquipped != 0) && (item.Template.Type == ItemTemplate.L2ItemType.armor)))
+            foreach (L2Item item in owner.Inventory.Items.Where(item => (item.IsEquipped != 0) && (item.Template.Type == ItemTemplate.L2ItemType.armor)))
                 switch (item.Template.Bodypart)
                 {
                     case ItemTemplate.L2ItemBodypart.chest:
@@ -167,15 +167,15 @@ namespace L2dotNET.GameService.Tables
 
             if (cnt == set1sum) // весь сет
             {
-                owner.addSkill(TSkillTable.Instance.Get(set1Id, set1Lvl), false, false);
+                owner.AddSkill(TSkillTable.Instance.Get(set1Id, set1Lvl), false, false);
 
                 if (set2sum == 1) //со щитом
-                    owner.addSkill(TSkillTable.Instance.Get(set2Id, set2Lvl), false, false);
+                    owner.AddSkill(TSkillTable.Instance.Get(set2Id, set2Lvl), false, false);
 
                 if (set3sum == cnt) //весь сет +6
-                    owner.addSkill(TSkillTable.Instance.Get(set3Id, set3Lvl), false, false);
+                    owner.AddSkill(TSkillTable.Instance.Get(set3Id, set3Lvl), false, false);
 
-                owner.updateSkillList();
+                owner.UpdateSkillList();
             }
         }
 

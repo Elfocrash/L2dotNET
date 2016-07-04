@@ -5,31 +5,29 @@ namespace L2dotNET.LoginService.Config
 {
     public sealed class Config
     {
-        private static volatile Config instance;
-        private static readonly object syncRoot = new object();
+        private static volatile Config _instance;
+        private static readonly object SyncRoot = new object();
 
         public static Config Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new Config();
+                        if (_instance == null)
+                            _instance = new Config();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
-        public ServerConfig serverConfig;
-
-        public Config() { }
+        public ServerConfig ServerConfig;
 
         public void Initialize()
         {
-            serverConfig = JsonConvert.DeserializeObject<ServerConfig>(File.ReadAllText(@"config\server.json"));
+            ServerConfig = JsonConvert.DeserializeObject<ServerConfig>(File.ReadAllText(@"config\server.json"));
         }
     }
 }

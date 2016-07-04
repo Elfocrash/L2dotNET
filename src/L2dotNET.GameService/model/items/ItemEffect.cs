@@ -23,12 +23,12 @@ namespace L2dotNET.GameService.Model.Items
 
         public virtual void UsePlayer(L2Player player, L2Item item)
         {
-            player.sendMessage("You cannot use this item.");
+            player.SendMessage("You cannot use this item.");
         }
 
         public virtual void UsePet(L2Pet pet, L2Item item)
         {
-            pet.Owner.sendSystemMessage(SystemMessage.SystemMessageId.PET_CANNOT_USE_ITEM);
+            pet.Owner.SendSystemMessage(SystemMessage.SystemMessageId.PET_CANNOT_USE_ITEM);
         }
     }
 }

@@ -25,13 +25,13 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
                     if (new Random().Next(100) < rate)
                         door.OpenForTime();
                     else
-                        caster.sendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_UNLOCK_DOOR);
+                        caster.SendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_UNLOCK_DOOR);
                 else
-                    caster.sendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_UNLOCK_DOOR);
+                    caster.SendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_UNLOCK_DOOR);
             }
             else
             {
-                caster.sendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
+                caster.SendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
             }
 
             return nothing;
@@ -45,19 +45,19 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
                 L2Door door = target as L2Door;
                 if (door.Closed == 0)
                 {
-                    caster.sendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
+                    caster.SendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
                     return false;
                 }
 
                 if (!door.UnlockSkill)
                 {
-                    caster.sendSystemMessage(SystemMessage.SystemMessageId.UNABLE_TO_UNLOCK_DOOR);
+                    caster.SendSystemMessage(SystemMessage.SystemMessageId.UNABLE_TO_UNLOCK_DOOR);
                     return false;
                 }
             }
             else
             {
-                caster.sendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
+                caster.SendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
                 return false;
             }
 

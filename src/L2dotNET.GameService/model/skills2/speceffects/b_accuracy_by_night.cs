@@ -20,14 +20,14 @@ namespace L2dotNET.GameService.Model.Skills2.SpecEffects
 
         public override void OnStartNight(L2Player player)
         {
-            player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.NIGHT_S1_EFFECT_APPLIES).AddSkillName(effect.SkillId, effect.SkillLv));
-            player.addStat(effect);
+            player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.NIGHT_S1_EFFECT_APPLIES).AddSkillName(effect.SkillId, effect.SkillLv));
+            player.AddStat(effect);
         }
 
         public override void OnStartDay(L2Player player)
         {
-            player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.DAY_S1_EFFECT_DISAPPEARS).AddSkillName(effect.SkillId, effect.SkillLv));
-            player.removeStat(effect);
+            player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.DAY_S1_EFFECT_DISAPPEARS).AddSkillName(effect.SkillId, effect.SkillLv));
+            player.RemoveStat(effect);
         }
     }
 }

@@ -13,10 +13,10 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             L2Player player = caster as L2Player;
             if (player != null)
             {
-                L2Item item = player.getWeaponItem();
+                L2Item item = player.GetWeaponItem();
                 if ((item == null) || !ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemID))
                 {
-                    caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
+                    caster.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
                     return nothing;
                 }
 
@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
                 InventoryUpdate iu = new InventoryUpdate();
                 iu.addModItem(item);
-                player.sendPacket(iu);
+                player.SendPacket(iu);
             }
 
             return nothing;
@@ -46,22 +46,22 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
         public override bool canUse(L2Character caster)
         {
-            L2Item item = caster.getWeaponItem();
+            L2Item item = caster.GetWeaponItem();
             if (item == null)
             {
-                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
+                caster.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
                 return false;
             }
 
-            if (item.AugmentationID > 0)
+            if (item.AugmentationId > 0)
             {
-                caster.sendSystemMessage(SystemMessage.SystemMessageId.AUGMENTED_ITEM_CANNOT_BE_CONVERTED);
+                caster.SendSystemMessage(SystemMessage.SystemMessageId.AUGMENTED_ITEM_CANNOT_BE_CONVERTED);
                 return false;
             }
 
             if (!ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemID))
             {
-                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
+                caster.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_CONVERT_THIS_ITEM);
                 return false;
             }
 

@@ -17,14 +17,14 @@ namespace L2dotNET.GameService.Model.Npcs
         public L2Spawn TerritorySpawn;
         public System.Timers.Timer socialTask;
 
-        public override string asString()
+        public override string AsString()
         {
-            return base.asString().Replace("L2Npc", "L2Warrior");
+            return base.AsString().Replace("L2Npc", "L2Warrior");
         }
 
-        public override void onAction(L2Player player)
+        public override void OnAction(L2Player player)
         {
-            player.sendMessage(asString());
+            player.SendMessage(AsString());
             //    TimeSpan ts = dtstart - DateTime.Now;
             //    player.sendMessage("timems "+(ts.TotalMilliseconds));
             bool newtarget = false;
@@ -35,7 +35,7 @@ namespace L2dotNET.GameService.Model.Npcs
             }
             else
             {
-                if (player.CurrentTarget.ObjID != ObjID)
+                if (player.CurrentTarget.ObjId != ObjId)
                 {
                     player.CurrentTarget = this;
                     newtarget = true;
@@ -44,26 +44,26 @@ namespace L2dotNET.GameService.Model.Npcs
 
             if (newtarget)
             {
-                player.sendPacket(new MyTargetSelected(ObjID, player.Level - Template.Level));
+                player.SendPacket(new MyTargetSelected(ObjId, player.Level - Template.Level));
 
-                StatusUpdate su = new StatusUpdate(ObjID);
-                su.add(StatusUpdate.CUR_HP, (int)CurHP);
+                StatusUpdate su = new StatusUpdate(ObjId);
+                su.add(StatusUpdate.CUR_HP, (int)CurHp);
                 su.add(StatusUpdate.MAX_HP, (int)CharacterStat.getStat(TEffectType.b_max_hp));
-                player.sendPacket(su);
+                player.SendPacket(su);
             }
             else
             {
-                player.AICharacter.Attack(this);
+                player.AiCharacter.Attack(this);
             }
         }
 
         private readonly Random rnd = new Random();
 
-        public override void onSpawn()
+        public override void OnSpawn()
         {
-            base.onSpawn();
+            base.OnSpawn();
             if (Template.AggroRange > 0)
-                AICharacter.Enable();
+                AiCharacter.Enable();
 
             SpawnX = X;
             SpawnY = Y;
@@ -77,7 +77,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         private void SocialTask(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (cantMove() || isAttacking())
+            if (CantMove() || IsAttacking())
                 return;
 
             MoveTo(rnd.Next(SpawnX - 90, SpawnX + 90), rnd.Next(SpawnY - 90, SpawnY + 90), Z);
@@ -85,26 +85,26 @@ namespace L2dotNET.GameService.Model.Npcs
             // broadcastPacket(new SocialAction(ObjID, rnd.Next(8)));
         }
 
-        public override void StartAI()
+        public override void StartAi()
         {
-            AICharacter = new WarriorAI(this);
+            AiCharacter = new WarriorAI(this);
         }
 
-        public override void onForcedAttack(L2Player player)
+        public override void OnForcedAttack(L2Player player)
         {
-            player.AttackingId = ObjID;
-            player.AICharacter.Attack(this);
+            player.AttackingId = ObjId;
+            player.AiCharacter.Attack(this);
         }
 
-        public override void broadcastUserInfo()
+        public override void BroadcastUserInfo()
         {
-            foreach (L2Player obj in knownObjects.Values.OfType<L2Player>())
-                obj.sendPacket(new NpcInfo(this));
+            foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
+                obj.SendPacket(new NpcInfo(this));
         }
 
-        public override void doDie(L2Character killer, bool bytrigger)
+        public override void DoDie(L2Character killer, bool bytrigger)
         {
-            base.doDie(killer, bytrigger);
+            base.DoDie(killer, bytrigger);
 
             if (killer is L2Player)
                 ((L2Player)killer).RedistExp(this);
@@ -121,19 +121,19 @@ namespace L2dotNET.GameService.Model.Npcs
             //socialTask.Enabled = false;
         }
 
-        public override void onActionShift(L2Player player)
+        public override void OnActionShift(L2Player player)
         {
             string text = "";
 
             text += "pdef: " + CharacterStat.getStat(TEffectType.p_physical_defense) + "<br>";
             text += "patk: " + CharacterStat.getStat(TEffectType.p_physical_attack) + "<br>";
-            text += "curhp: " + CurHP + "<br>";
+            text += "curhp: " + CurHp + "<br>";
             text += "maxhp: " + CharacterStat.getStat(TEffectType.b_max_hp) + "<br>";
             text += "mdef: " + CharacterStat.getStat(TEffectType.p_magical_attack) + "<br>";
             text += "matk: " + CharacterStat.getStat(TEffectType.p_magical_defense) + "<br>";
 
             player.ShowHtmPlain(text, null);
-            player.sendActionFailed();
+            player.SendActionFailed();
         }
 
         public override int Attackable

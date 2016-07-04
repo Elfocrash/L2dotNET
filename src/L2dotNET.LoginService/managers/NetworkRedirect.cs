@@ -9,29 +9,27 @@ namespace L2dotNET.LoginService.Managers
 {
     class NetworkRedirect
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(NetworkRedirect));
-        private static volatile NetworkRedirect instance;
-        private static readonly object syncRoot = new object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(NetworkRedirect));
+        private static volatile NetworkRedirect _instance;
+        private static readonly object SyncRoot = new object();
 
-        protected List<NetRedClass> redirects = new List<NetRedClass>();
+        protected List<NetRedClass> Redirects = new List<NetRedClass>();
         public NetRedClass GlobalRedirection { get; set; }
 
         public static NetworkRedirect Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new NetworkRedirect();
+                        if (_instance == null)
+                            _instance = new NetworkRedirect();
                     }
 
-                return instance;
+                return _instance;
             }
         }
-
-        public NetworkRedirect() { }
 
         public void Initialize()
         {
@@ -45,18 +43,18 @@ namespace L2dotNET.LoginService.Managers
 
                     NetRedClass i = new NetRedClass();
                     string[] sp = line.Split(' ');
-                    i.serverId = short.Parse(sp[0]);
-                    i.mask = sp[1];
-                    i.setRedirect(sp[2]);
+                    i.ServerId = short.Parse(sp[0]);
+                    i.Mask = sp[1];
+                    i.SetRedirect(sp[2]);
 
-                    if (i.serverId == -1)
+                    if (i.ServerId == -1)
                         GlobalRedirection = i;
                     else
-                        redirects.Add(i);
+                        Redirects.Add(i);
                 }
             }
 
-            log.Info($"NetworkRedirect: {redirects.Count} redirects. Global is {(GlobalRedirection == null ? "disabled" : "enabled")}");
+            Log.Info($"NetworkRedirect: {Redirects.Count} redirects. Global is {(GlobalRedirection == null ? "disabled" : "enabled")}");
         }
 
         public byte[] GetRedirect(LoginClient client, short serverId)
@@ -64,7 +62,7 @@ namespace L2dotNET.LoginService.Managers
             if (GlobalRedirection != null)
             {
                 string[] a = client.Address.ToString().Split(':')[0].Split('.'),
-                         b = GlobalRedirection.mask.Split('.');
+                         b = GlobalRedirection.Mask.Split('.');
                 byte[] d = new byte[4];
                 for (byte c = 0; c < 4; c++)
                 {
@@ -85,19 +83,19 @@ namespace L2dotNET.LoginService.Managers
 
                 if (d.Min() == 1)
                 {
-                    log.Info($"Redirecting client to global {GlobalRedirection.redirect} on #{serverId}");
-                    return GlobalRedirection.redirectBits;
+                    Log.Info($"Redirecting client to global {GlobalRedirection.Redirect} on #{serverId}");
+                    return GlobalRedirection.RedirectBits;
                 }
             }
             else
             {
-                if (redirects.Count == 0)
+                if (Redirects.Count == 0)
                     return null;
 
-                foreach (NetRedClass nr in redirects.Where(nr => nr.serverId == serverId))
+                foreach (NetRedClass nr in Redirects.Where(nr => nr.ServerId == serverId))
                 {
                     string[] a = client.Address.ToString().Split(':')[0].Split('.'),
-                             b = nr.mask.Split('.');
+                             b = nr.Mask.Split('.');
                     byte[] d = new byte[4];
                     for (byte c = 0; c < 4; c++)
                     {
@@ -118,8 +116,8 @@ namespace L2dotNET.LoginService.Managers
 
                     if (d.Min() == 1)
                     {
-                        log.Info($"Redirecting client to {nr.redirect} on #{serverId}");
-                        return nr.redirectBits;
+                        Log.Info($"Redirecting client to {nr.Redirect} on #{serverId}");
+                        return nr.RedirectBits;
                     }
                 }
             }

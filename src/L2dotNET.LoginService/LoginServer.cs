@@ -11,13 +11,11 @@ namespace L2dotNET.LoginService
 {
     class LoginServer
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(LoginServer));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(LoginServer));
 
-        private TcpListener LoginServerListener;
+        private TcpListener _loginServerListener;
 
         public static IKernel Kernel { get; set; }
-
-        public LoginServer() { }
 
         public void Start()
         {
@@ -27,34 +25,34 @@ namespace L2dotNET.LoginService
             ServerThreadPool.Instance.Initialize();
             NetworkRedirect.Instance.Initialize();
 
-            LoginServerListener = new TcpListener(IPAddress.Parse(Config.Config.Instance.serverConfig.Host), Config.Config.Instance.serverConfig.LoginPort);
+            _loginServerListener = new TcpListener(IPAddress.Parse(Config.Config.Instance.ServerConfig.Host), Config.Config.Instance.ServerConfig.LoginPort);
 
             try
             {
-                LoginServerListener.Start();
+                _loginServerListener.Start();
             }
             catch (SocketException ex)
             {
-                log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
-                log.Info("Press ENTER to exit...");
+                Log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
+                Log.Info("Press ENTER to exit...");
                 Console.Read();
                 Environment.Exit(0);
             }
 
-            log.Info($"Auth server listening clients at {Config.Config.Instance.serverConfig.Host}:{Config.Config.Instance.serverConfig.LoginPort}");
+            Log.Info($"Auth server listening clients at {Config.Config.Instance.ServerConfig.Host}:{Config.Config.Instance.ServerConfig.LoginPort}");
             new Thread(ServerThreadPool.Instance.Start).Start();
 
             TcpClient clientSocket;
             while (true)
             {
-                clientSocket = LoginServerListener.AcceptTcpClient();
+                clientSocket = _loginServerListener.AcceptTcpClient();
                 AcceptClient(clientSocket);
             }
         }
 
         private void AcceptClient(TcpClient client)
         {
-            ClientManager.Instance.addClient(client);
+            ClientManager.Instance.AddClient(client);
         }
     }
 }

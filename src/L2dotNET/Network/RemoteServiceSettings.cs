@@ -8,7 +8,7 @@
         /// <summary>
         /// Remote service unique id.
         /// </summary>
-        public byte ServiceUniqueID;
+        public byte ServiceUniqueId;
 
         /// <summary>
         /// Writes service settings to provided <see cref="Packet"/> struct.

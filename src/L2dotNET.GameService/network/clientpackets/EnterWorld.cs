@@ -41,27 +41,27 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             player.TotalRestore();
 
-            player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.WELCOME_TO_LINEAGE));
+            player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.WELCOME_TO_LINEAGE));
 
             AnnouncementManager.Instance.OnEnter(player);
 
-            foreach (L2Item item in player.Inventory.Items.Where(item => item._isEquipped != 0))
-                item.notifyStats(player);
+            foreach (L2Item item in player.Inventory.Items.Where(item => item.IsEquipped != 0))
+                item.NotifyStats(player);
 
             player.StartRegeneration();
             // player.sendItemList(false);
-            player.sendPacket(new FriendList());
+            player.SendPacket(new FriendList());
             player.sendQuestList();
-            player.updateSkillList();
+            player.UpdateSkillList();
             player.updateReuse();
 
             if (player.ClanId > 0)
                 ClanTable.Instance.Apply(player);
 
-            player.sendPacket(new ExStorageMaxCount(player));
+            player.SendPacket(new ExStorageMaxCount(player));
             // player.sendPacket(new ExBasicActionList());
             //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
-            player.sendActionFailed();
+            player.SendActionFailed();
 
             GameTime.Instance.EnterWorld(player);
 
@@ -72,11 +72,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //player.SetRegion(worldRegion);
             //player.getKnowns(500, 500, false);
 
-            player.sendPacket(new UserInfo(player));
-            player.sendPacket(new UserInfo(player));
+            player.SendPacket(new UserInfo(player));
+            player.SendPacket(new UserInfo(player));
 
             //player.sendPacket(new ShortCutInit(player));
-            player.StartAI();
+            player.StartAi();
 
             player.RequestPing();
         }

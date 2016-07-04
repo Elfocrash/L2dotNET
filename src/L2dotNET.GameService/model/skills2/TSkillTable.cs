@@ -61,25 +61,25 @@ namespace L2dotNET.GameService.Model.Skills2
                 if (Encoding.UTF8.GetString(dlcheader) == "DLC")
                 {
                     DlcStream dlc = new DlcStream(fstream, CompressionMode.Decompress);
-                    int cnt = dlc.readD();
+                    int cnt = dlc.ReadD();
                     for (int a = 0; a < cnt; a++)
                     {
                         TSkillEnchantInfo inf = new TSkillEnchantInfo();
-                        inf.id = dlc.readD();
-                        inf.lv = dlc.readD();
-                        int len = dlc.readD();
+                        inf.id = dlc.ReadD();
+                        inf.lv = dlc.ReadD();
+                        int len = dlc.ReadD();
                         for (int b = 0; b < len; b++)
                         {
                             TSkillEnchantInfoDetail nfo = new TSkillEnchantInfoDetail();
-                            nfo.route_id = dlc.readD();
-                            nfo.enchant_id = dlc.readD();
-                            nfo.enchanted_skill_level = dlc.readD();
-                            nfo.importance = dlc.readC();
-                            nfo.r1 = dlc.readD();
-                            nfo.r2 = dlc.readD();
-                            nfo.r3 = dlc.readD();
-                            nfo.r4 = dlc.readD();
-                            dlc.readS(10);
+                            nfo.route_id = dlc.ReadD();
+                            nfo.enchant_id = dlc.ReadD();
+                            nfo.enchanted_skill_level = dlc.ReadD();
+                            nfo.importance = dlc.ReadC();
+                            nfo.r1 = dlc.ReadD();
+                            nfo.r2 = dlc.ReadD();
+                            nfo.r3 = dlc.ReadD();
+                            nfo.r4 = dlc.ReadD();
+                            dlc.ReadS(10);
 
                             inf.details.Add(nfo.enchanted_skill_level, nfo);
                         }
@@ -98,85 +98,85 @@ namespace L2dotNET.GameService.Model.Skills2
                 if (Encoding.UTF8.GetString(dlcheader) == "DLC")
                 {
                     DlcStream dlc = new DlcStream(fstream, CompressionMode.Decompress);
-                    int cnt = dlc.readD();
+                    int cnt = dlc.ReadD();
                     for (int a = 0; a < cnt; a++)
                     {
-                        byte len = dlc.readC();
+                        byte len = dlc.ReadC();
                         TSkill skill = new TSkill();
                         for (byte p = 0; p < len; p++)
                         {
-                            byte keyId = dlc.readC();
+                            byte keyId = dlc.ReadC();
                             SkillLevelParam slp = ps[keyId];
                             int lenx;
                             string value;
                             switch (slp.id)
                             {
                                 case 1:
-                                    skill.skill_id = dlc.readD();
+                                    skill.skill_id = dlc.ReadD();
                                     break;
                                 case 2:
-                                    skill.level = dlc.readD();
+                                    skill.level = dlc.ReadD();
                                     break;
                                 case 3:
-                                    lenx = dlc.readD();
-                                    value = dlc.readS(lenx);
+                                    lenx = dlc.ReadD();
+                                    value = dlc.ReadS(lenx);
                                     skill.OpType = (TSkillOperational)Enum.Parse(typeof(TSkillOperational), value);
                                     break;
                                 case 4:
-                                    skill.magic_level = dlc.readD();
+                                    skill.magic_level = dlc.ReadD();
                                     break;
                                 case 6:
-                                    lenx = dlc.readD();
-                                    value = dlc.readS(lenx);
+                                    lenx = dlc.ReadD();
+                                    value = dlc.ReadS(lenx);
                                     skill.SetEffect_effect(value);
                                     break;
                                 case 8:
-                                    lenx = dlc.readD();
-                                    value = dlc.readS(lenx);
+                                    lenx = dlc.ReadD();
+                                    value = dlc.ReadS(lenx);
                                     skill.SetOperateCond(value);
                                     break;
                                 case 15:
-                                    skill.is_magic = (short)dlc.readD();
+                                    skill.is_magic = (short)dlc.ReadD();
                                     break;
                                 case 16:
-                                    skill.mp_consume1 = dlc.readD();
+                                    skill.mp_consume1 = dlc.ReadD();
                                     break;
                                 case 17:
-                                    skill.mp_consume2 = dlc.readD();
+                                    skill.mp_consume2 = dlc.ReadD();
                                     break;
                                 case 18:
-                                    skill.cast_range = dlc.readD();
+                                    skill.cast_range = dlc.ReadD();
                                     break;
                                 case 19:
-                                    skill.effective_range = dlc.readD();
+                                    skill.effective_range = dlc.ReadD();
                                     break;
                                 case 20:
-                                    skill.skill_hit_time = (short)(dlc.readF() * 1000);
+                                    skill.skill_hit_time = (short)(dlc.ReadF() * 1000);
                                     break;
                                 case 21:
-                                    skill.skill_cool_time = (short)(dlc.readF() * 1000);
+                                    skill.skill_cool_time = (short)(dlc.ReadF() * 1000);
                                     break;
                                 case 23:
-                                    skill.reuse_delay = dlc.readF();
+                                    skill.reuse_delay = dlc.ReadF();
                                     break;
                                 case 26:
-                                    double rate = dlc.readF();
+                                    double rate = dlc.ReadF();
                                     if (rate != -1)
                                         skill.activate_rate = (short)(rate * 1000);
                                     break;
                                 case 29:
-                                    skill.abnormal_time = dlc.readD();
+                                    skill.abnormal_time = dlc.ReadD();
                                     break;
                                 case 30:
-                                    skill.abnormal_lv = dlc.readD();
+                                    skill.abnormal_lv = dlc.ReadD();
                                     break;
                                 case 31:
-                                    lenx = dlc.readD();
-                                    skill.abnormal_type = dlc.readS(lenx);
+                                    lenx = dlc.ReadD();
+                                    skill.abnormal_type = dlc.ReadS(lenx);
                                     break;
                                 case 39: //target_type
-                                    lenx = dlc.readD();
-                                    value = dlc.readS(lenx);
+                                    lenx = dlc.ReadD();
+                                    value = dlc.ReadS(lenx);
                                     try
                                     {
                                         skill.target_type = (TSkillTarget)Enum.Parse(typeof(TSkillTarget), value);
@@ -188,8 +188,8 @@ namespace L2dotNET.GameService.Model.Skills2
                                     }
                                     break;
                                 case 40: //affect_scope
-                                    lenx = dlc.readD();
-                                    value = dlc.readS(lenx);
+                                    lenx = dlc.ReadD();
+                                    value = dlc.ReadS(lenx);
                                     try
                                     {
                                         skill.affect_scope = (TSkillScope)Enum.Parse(typeof(TSkillScope), value);
@@ -201,20 +201,20 @@ namespace L2dotNET.GameService.Model.Skills2
                                     }
                                     break;
                                 case 49:
-                                    skill.hp_consume = dlc.readD();
+                                    skill.hp_consume = dlc.ReadD();
                                     break;
                                 default:
                                     switch (slp.type)
                                     {
                                         case 1:
-                                            dlc.readD();
+                                            dlc.ReadD();
                                             break;
                                         case 2:
-                                            dlc.readF();
+                                            dlc.ReadF();
                                             break;
                                         case 3:
-                                            int f = dlc.readD();
-                                            dlc.readS(f);
+                                            int f = dlc.ReadD();
+                                            dlc.ReadS(f);
                                             break;
                                     }
 
@@ -405,56 +405,56 @@ namespace L2dotNET.GameService.Model.Skills2
 
             AcquireSkills = new Dictionary<string, TAcquireSkillsEntry>();
             DlcStream dlc = new DlcStream(fstream, CompressionMode.Decompress);
-            int cnt = dlc.readD(),
+            int cnt = dlc.ReadD(),
                 cntTotal = 0;
             for (int a = 0; a < cnt; a++)
             {
                 TAcquireSkillsEntry list = new TAcquireSkillsEntry();
-                byte len = dlc.readC();
-                list.type = dlc.readS(len);
-                len = dlc.readC();
+                byte len = dlc.ReadC();
+                list.type = dlc.ReadS(len);
+                len = dlc.ReadC();
 
                 if (len > 0)
                 {
-                    list.include = dlc.readS(len);
+                    list.include = dlc.ReadS(len);
                     List<TAcquireSkill> s = AcquireSkills[list.include].skills;
                     cntTotal += s.Count;
                     list.skills.AddRange(s);
                 }
 
-                int skLen = dlc.readD();
+                int skLen = dlc.ReadD();
                 cntTotal += skLen;
                 for (int s = 0; s < skLen; s++)
                 {
                     TAcquireSkill skill = new TAcquireSkill();
-                    skill.id = dlc.readD();
-                    skill.lv = dlc.readD();
-                    skill.get_lv = dlc.readD();
-                    skill.lv_up_sp = dlc.readD();
-                    skill.auto_get = dlc.readC() == 1;
+                    skill.id = dlc.ReadD();
+                    skill.lv = dlc.ReadD();
+                    skill.get_lv = dlc.ReadD();
+                    skill.lv_up_sp = dlc.ReadD();
+                    skill.auto_get = dlc.ReadC() == 1;
 
-                    if (dlc.readC() == 1)
+                    if (dlc.ReadC() == 1)
                     {
-                        skill.itemid = dlc.readD();
-                        skill.itemcount = dlc.readD();
+                        skill.itemid = dlc.ReadD();
+                        skill.itemcount = dlc.ReadD();
                     }
 
-                    skill.social_class = dlc.readD();
-                    skill.residence_skill = dlc.readC() == 1;
-                    len = dlc.readC();
+                    skill.social_class = dlc.ReadD();
+                    skill.residence_skill = dlc.ReadC() == 1;
+                    len = dlc.ReadC();
                     if (len > 0)
-                        skill.pledge_type = dlc.readS(len);
+                        skill.pledge_type = dlc.ReadS(len);
 
-                    len = dlc.readC();
+                    len = dlc.ReadC();
                     for (byte b = 0; b < len; b++)
-                        skill.races.Add(dlc.readC());
+                        skill.races.Add(dlc.ReadC());
 
-                    skill.id_prerequisite_skill = dlc.readD();
-                    skill.lv_prerequisite_skill = dlc.readD();
+                    skill.id_prerequisite_skill = dlc.ReadD();
+                    skill.lv_prerequisite_skill = dlc.ReadD();
 
-                    int qcn = dlc.readD();
+                    int qcn = dlc.ReadD();
                     for (int i = 0; i < qcn; i++)
-                        skill.quests.Add(dlc.readD());
+                        skill.quests.Add(dlc.ReadD());
 
                     list.skills.Add(skill);
                 }
@@ -462,7 +462,7 @@ namespace L2dotNET.GameService.Model.Skills2
                 AcquireSkills.Add(list.type, list);
             }
 
-            dlc.close();
+            dlc.Close();
             log.Info($"SkillTable: learnable {AcquireSkills.Count} groups, #{cntTotal} skills.");
         }
 
@@ -475,11 +475,11 @@ namespace L2dotNET.GameService.Model.Skills2
         {
             switch (id)
             {
-                case ClassIds.SHILLIEN_ELDER:
+                case ClassIds.ShillienElder:
                     return AcquireSkills["silen_elder_sharing"];
-                case ClassIds.ELVEN_ELDER:
+                case ClassIds.ElvenElder:
                     return AcquireSkills["elder_sharing"];
-                case ClassIds.BISHOP:
+                case ClassIds.Bishop:
                     return AcquireSkills["bishop_sharing"];
 
                 default:

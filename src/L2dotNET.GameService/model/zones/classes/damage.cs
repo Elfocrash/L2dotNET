@@ -33,14 +33,14 @@ namespace L2dotNET.GameService.Model.Zones.Classes
                     if (Template._target == ZoneTemplate.ZoneTarget.npc)
                         continue;
 
-                    ((L2Player)o).reduceHpArea(Template._damage_on_hp, Template._message_no);
+                    ((L2Player)o).ReduceHpArea(Template._damage_on_hp, Template._message_no);
                 }
                 else if (o is L2Warrior)
                 {
                     if (Template._target == ZoneTemplate.ZoneTarget.pc)
                         continue;
 
-                    ((L2Warrior)o).reduceHpArea(Template._damage_on_hp, Template._message_no);
+                    ((L2Warrior)o).ReduceHpArea(Template._damage_on_hp, Template._message_no);
                 }
         }
 
@@ -51,13 +51,13 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onEnter(obj);
 
-            obj.onEnterZone(this);
+            obj.OnEnterZone(this);
 
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.isInDanger = true;
-                p.sendPacket(new EtcStatusUpdate(p));
+                p.IsInDanger = true;
+                p.SendPacket(new EtcStatusUpdate(p));
             }
         }
 
@@ -68,12 +68,12 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onExit(obj, cls);
 
-            obj.onExitZone(this, cls);
+            obj.OnExitZone(this, cls);
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.isInDanger = false;
-                p.sendPacket(new EtcStatusUpdate(p));
+                p.IsInDanger = false;
+                p.SendPacket(new EtcStatusUpdate(p));
             }
         }
     }

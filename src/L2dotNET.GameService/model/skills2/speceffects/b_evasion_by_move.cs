@@ -14,18 +14,18 @@ namespace L2dotNET.GameService.Model.Skills2.SpecEffects
         {
             player.CharacterStat.SpecBonusEvasion += value;
 
-            StatusUpdate su = new StatusUpdate(player.ObjID);
+            StatusUpdate su = new StatusUpdate(player.ObjId);
             su.add(StatusUpdate.EVASION, (int)player.CharacterStat.getStat(TEffectType.b_evasion));
-            player.sendPacket(su);
+            player.SendPacket(su);
         }
 
         public override void OnStopMoving(L2Player player)
         {
             player.CharacterStat.SpecBonusEvasion -= value;
 
-            StatusUpdate su = new StatusUpdate(player.ObjID);
+            StatusUpdate su = new StatusUpdate(player.ObjId);
             su.add(StatusUpdate.EVASION, (int)player.CharacterStat.getStat(TEffectType.b_evasion));
-            player.sendPacket(su);
+            player.SendPacket(su);
         }
     }
 }

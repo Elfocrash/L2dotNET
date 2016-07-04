@@ -6,46 +6,46 @@ namespace L2dotNET.Services
 {
     public class PlayerService : IPlayerService
     {
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public PlayerService(IUnitOfWork unitOfWork)
         {
-            this.unitOfWork = unitOfWork;
+            this._unitOfWork = unitOfWork;
         }
 
         public PlayerModel GetAccountByLogin(int objId)
         {
-            return unitOfWork.PlayerRepository.GetAccountByLogin(objId);
+            return _unitOfWork.PlayerRepository.GetAccountByLogin(objId);
         }
 
         public bool CheckIfPlayerNameExists(string name)
         {
-            return unitOfWork.PlayerRepository.CheckIfPlayerNameExists(name);
+            return _unitOfWork.PlayerRepository.CheckIfPlayerNameExists(name);
         }
 
         public void CreatePlayer(PlayerModel player)
         {
-            unitOfWork.PlayerRepository.CreatePlayer(player);
+            _unitOfWork.PlayerRepository.CreatePlayer(player);
         }
 
         public void UpdatePlayer(PlayerModel player)
         {
-            unitOfWork.PlayerRepository.UpdatePlayer(player);
+            _unitOfWork.PlayerRepository.UpdatePlayer(player);
         }
 
         public PlayerModel GetPlayerModelBySlotId(string accountName, int slotId)
         {
-            return unitOfWork.PlayerRepository.GetPlayerModelBySlotId(accountName, slotId);
+            return _unitOfWork.PlayerRepository.GetPlayerModelBySlotId(accountName, slotId);
         }
 
         public bool MarkToDeleteChar(int objId)
         {
-            return unitOfWork.PlayerRepository.MarkToDeleteChar(objId);
+            return _unitOfWork.PlayerRepository.MarkToDeleteChar(objId);
         }
 
         public bool DeleteCharByObjId(int objId)
         {
-            return unitOfWork.PlayerRepository.DeleteCharByObjId(objId);
+            return _unitOfWork.PlayerRepository.DeleteCharByObjId(objId);
         }
     }
 }

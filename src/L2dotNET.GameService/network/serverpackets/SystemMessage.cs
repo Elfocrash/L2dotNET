@@ -95,7 +95,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             if (obj is L2Item)
                 return AddItemName(((L2Item)obj).Template.ItemID);
 
-            return AddString(obj.asString());
+            return AddString(obj.AsString());
         }
 
         public void AddSysStr(int val)

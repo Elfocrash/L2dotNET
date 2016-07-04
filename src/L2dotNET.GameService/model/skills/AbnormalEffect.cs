@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.Model.Skills
                 _timer.Enabled = false;
             }
 
-            _owner.onAveEnd(this, msg, icon, null);
+            _owner.OnAveEnd(this, msg, icon, null);
         }
 
         public int getTime()
@@ -56,7 +56,7 @@ namespace L2dotNET.GameService.Model.Skills
         {
             _timer.Stop();
             active = 0;
-            _owner.onAveEnd(this, true, true, null);
+            _owner.OnAveEnd(this, true, true, null);
         }
     }
 }

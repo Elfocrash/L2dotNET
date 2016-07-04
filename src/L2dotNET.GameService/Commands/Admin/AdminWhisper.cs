@@ -19,17 +19,17 @@ namespace L2dotNET.GameService.Commands.Admin
                 case "on":
                     changed = admin.WhisperBlock = false;
                     admin.WhisperBlock = true;
-                    admin.sendMessage("Whisper blocking enabled.");
+                    admin.SendMessage("Whisper blocking enabled.");
                     break;
                 case "off":
                     changed = admin.WhisperBlock = true;
                     admin.WhisperBlock = false;
-                    admin.sendMessage("Whisper blocking disabled.");
+                    admin.SendMessage("Whisper blocking disabled.");
                     break;
             }
 
             if (changed)
-                admin.sendPacket(new EtcStatusUpdate(admin));
+                admin.SendPacket(new EtcStatusUpdate(admin));
         }
     }
 }

@@ -13,17 +13,17 @@ namespace L2dotNET.GameService.Model.Items
     {
         public ItemTemplate Template;
         public int Count;
-        public short _isEquipped;
+        public short IsEquipped;
         public int Enchant;
         public short Enchant1;
         public short Enchant2;
         public short Enchant3;
-        public int AugmentationID = 0;
+        public int AugmentationId = 0;
         public int Durability;
         public ItemLocation Location;
-        public int _paperdollSlot = -1;
-        public int _petId = -1;
-        public int _dropper;
+        public int PaperdollSlot = -1;
+        public int PetId = -1;
+        public int Dropper;
         public int SlotLocation = 0;
 
         public short AttrAttackType = -2;
@@ -40,7 +40,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public L2Item(ItemTemplate template)
         {
-            ObjID = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.nextId();
             Template = template;
             Count = 1;
             Durability = template.Durability;
@@ -48,8 +48,8 @@ namespace L2dotNET.GameService.Model.Items
 
             if (template.LimitedMinutes > 0)
             {
-                LifeTimeEndEnabled = true;
-                LifeTimeEndTime = DateTime.Now.AddMinutes(template.LimitedMinutes);
+                _lifeTimeEndEnabled = true;
+                _lifeTimeEndTime = DateTime.Now.AddMinutes(template.LimitedMinutes);
                 //    lifeTimeEnd = DateTime.Now.AddHours(template.LimitedHours).ToString("yyyy-MM-dd HH-mm-ss");
             }
 
@@ -59,7 +59,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public void genId()
         {
-            ObjID = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.nextId();
         }
 
         /** Enumeration of locations for item */
@@ -76,10 +76,10 @@ namespace L2dotNET.GameService.Model.Items
             Freight
         }
 
-        public void unequip(L2Player owner)
+        public void Unequip(L2Player owner)
         {
-            _isEquipped = 0;
-            _paperdollSlot = -1;
+            IsEquipped = 0;
+            PaperdollSlot = -1;
 
             if (Template.AbnormalMaskEvent > 0)
                 owner.AbnormalBitMaskEvent &= ~Template.AbnormalMaskEvent;
@@ -88,22 +88,22 @@ namespace L2dotNET.GameService.Model.Items
             if (Template.item_skill != null)
             {
                 upsend = true;
-                owner.removeSkill(Template.item_skill.skill_id, false, false);
+                owner.RemoveSkill(Template.item_skill.skill_id, false, false);
             }
 
             if (Template.item_skill_ench4 != null)
             {
                 upsend = true;
-                owner.removeSkill(Template.item_skill_ench4.skill_id, false, false);
+                owner.RemoveSkill(Template.item_skill_ench4.skill_id, false, false);
             }
 
             if (Template.unequip_skill != null)
-                owner.addEffect(owner, Template.unequip_skill, true, false);
+                owner.AddEffect(owner, Template.unequip_skill, true, false);
 
             Location = ItemLocation.Inventory;
 
             if (upsend)
-                owner.updateSkillList();
+                owner.UpdateSkillList();
 
             if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.crossbow))
             {
@@ -119,16 +119,16 @@ namespace L2dotNET.GameService.Model.Items
 
             if ((Template.Type == ItemTemplate.L2ItemType.armor) || (Template.Type == ItemTemplate.L2ItemType.weapon) || (Template.Type == ItemTemplate.L2ItemType.accessary))
                 if (Enchant == 0)
-                    owner.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_DISARMED).AddItemName(Template.ItemID));
+                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_DISARMED).AddItemName(Template.ItemID));
                 else
-                    owner.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.EQUIPMENT_S1_S2_REMOVED).AddNumber(Enchant).AddItemName(Template.ItemID));
+                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.EQUIPMENT_S1_S2_REMOVED).AddNumber(Enchant).AddItemName(Template.ItemID));
 
-            owner.removeStats(this);
+            owner.RemoveStats(this);
         }
 
-        public void equip(L2Player owner)
+        public void Equip(L2Player owner)
         {
-            _isEquipped = 1;
+            IsEquipped = 1;
 
             if (Template.AbnormalMaskEvent > 0)
                 owner.AbnormalBitMaskEvent |= Template.AbnormalMaskEvent;
@@ -137,13 +137,13 @@ namespace L2dotNET.GameService.Model.Items
             if (Template.item_skill != null)
             {
                 upsend = true;
-                owner.addSkill(Template.item_skill, false, false);
+                owner.AddSkill(Template.item_skill, false, false);
             }
 
             if ((Template.item_skill_ench4 != null) && (Enchant >= 4))
             {
                 upsend = true;
-                owner.addSkill(Template.item_skill_ench4, false, false);
+                owner.AddSkill(Template.item_skill_ench4, false, false);
             }
 
             Location = ItemLocation.Paperdoll;
@@ -156,10 +156,10 @@ namespace L2dotNET.GameService.Model.Items
             }
 
             if (upsend)
-                owner.updateSkillList();
+                owner.UpdateSkillList();
 
             if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.crossbow))
-                tryEquipSecondary(owner);
+                TryEquipSecondary(owner);
 
             if (Template.SetItem)
                 ItemTable.Instance.NotifyKeySetItem(owner, this, true);
@@ -169,26 +169,26 @@ namespace L2dotNET.GameService.Model.Items
 
             if ((Template.Type == ItemTemplate.L2ItemType.armor) || (Template.Type == ItemTemplate.L2ItemType.weapon) || (Template.Type == ItemTemplate.L2ItemType.accessary))
                 if (Enchant == 0)
-                    owner.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_EQUIPPED).AddItemName(Template.ItemID));
+                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_EQUIPPED).AddItemName(Template.ItemID));
                 else
-                    owner.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_S2_EQUIPPED).AddNumber(Enchant).AddItemName(Template.ItemID));
+                    owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_S2_EQUIPPED).AddNumber(Enchant).AddItemName(Template.ItemID));
 
-            owner.addStats(this);
+            owner.AddStats(this);
         }
 
-        public void notifyStats(L2Player owner)
+        public void NotifyStats(L2Player owner)
         {
             if (Template.AbnormalMaskEvent > 0)
                 owner.AbnormalBitMaskEvent |= Template.AbnormalMaskEvent;
 
             if (Template.item_skill != null)
-                owner.addSkill(Template.item_skill, false, false);
+                owner.AddSkill(Template.item_skill, false, false);
 
             if ((Template.item_skill_ench4 != null) && (Enchant >= 4))
-                owner.addSkill(Template.item_skill_ench4, false, false);
+                owner.AddSkill(Template.item_skill_ench4, false, false);
 
             if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.crossbow))
-                tryEquipSecondary(owner);
+                TryEquipSecondary(owner);
 
             if (Template.SetItem)
                 ItemTable.Instance.NotifyKeySetItem(owner, this, true);
@@ -196,10 +196,10 @@ namespace L2dotNET.GameService.Model.Items
             if ((Template.Type == ItemTemplate.L2ItemType.armor) && (owner.setKeyItems != null) && owner.setKeyItems.Contains(Template.ItemID))
                 ItemTable.Instance.NotifySetItemEquip(owner, this, true);
 
-            owner.addStats(this);
+            owner.AddStats(this);
         }
 
-        private void tryEquipSecondary(L2Player owner)
+        private void TryEquipSecondary(L2Player owner)
         {
             int secondaryId1,
                 secondaryId2;
@@ -240,56 +240,56 @@ namespace L2dotNET.GameService.Model.Items
             //}
         }
 
-        public void dropMe(int x, int y, int z, L2Character dropper, L2Character killer, int seconds)
+        public void DropMe(int x, int y, int z, L2Character dropper, L2Character killer, int seconds)
         {
             X = x;
             Y = y;
             Z = z;
             DropItem pk = new DropItem(this);
             if (dropper != null)
-                _dropper = dropper.ObjID;
+                Dropper = dropper.ObjId;
 
             Location = ItemLocation.Void;
 
-            killer?.addKnownObject(this, pk, true);
+            killer?.AddKnownObject(this, pk, true);
 
             L2World.Instance.AddObject(this);
         }
 
-        public void dropMe(int x, int y, int z)
+        public void DropMe(int x, int y, int z)
         {
-            dropMe(x, y, z, null, null, 0);
+            DropMe(x, y, z, null, null, 0);
         }
 
-        public override void onAction(L2Player player)
+        public override void OnAction(L2Player player)
         {
             double dis = Calcs.calculateDistance(this, player, true);
-            player.sendMessage(asString() + " dis " + (int)dis);
+            player.SendMessage(AsString() + " dis " + (int)dis);
             if (dis < 80)
             {
-                foreach (L2Player o in knownObjects.Values.OfType<L2Player>())
+                foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
                 {
-                    o.sendPacket(new GetItem(player.ObjID, ObjID, X, Y, Z));
-                    o.sendPacket(new DeleteObject(ObjID));
+                    o.SendPacket(new GetItem(player.ObjId, ObjId, X, Y, Z));
+                    o.SendPacket(new DeleteObject(ObjId));
                 }
 
-                player.onPickUp(this);
+                player.OnPickUp(this);
 
                 L2World.Instance.RemoveObject(this);
             }
             else
             {
-                player.tryMoveTo(X, Y, Z);
+                player.TryMoveTo(X, Y, Z);
             }
         }
 
-        public override void onForcedAttack(L2Player player)
+        public override void OnForcedAttack(L2Player player)
         {
-            player.sendActionFailed();
+            player.SendActionFailed();
         }
 
-        private bool LifeTimeEndEnabled;
-        private DateTime LifeTimeEndTime;
+        private bool _lifeTimeEndEnabled;
+        private DateTime _lifeTimeEndTime;
         public int CustomType1;
         public int CustomType2;
         public bool Soulshot = false,
@@ -298,23 +298,23 @@ namespace L2dotNET.GameService.Model.Items
 
         public int LifeTimeEnd()
         {
-            if (!LifeTimeEndEnabled)
+            if (!_lifeTimeEndEnabled)
                 return -9999;
 
-            TimeSpan ts = LifeTimeEndTime - DateTime.Now;
+            TimeSpan ts = _lifeTimeEndTime - DateTime.Now;
             return (int)ts.TotalSeconds;
         }
 
         public void AddLimitedHour(int hours)
         {
-            if (LifeTimeEndEnabled)
+            if (_lifeTimeEndEnabled)
             {
-                LifeTimeEndTime = LifeTimeEndTime.AddHours(hours);
+                _lifeTimeEndTime = _lifeTimeEndTime.AddHours(hours);
             }
             else
             {
-                LifeTimeEndEnabled = true;
-                LifeTimeEndTime = DateTime.Now.AddHours(hours);
+                _lifeTimeEndEnabled = true;
+                _lifeTimeEndTime = DateTime.Now.AddHours(hours);
             }
         }
 
@@ -333,16 +333,11 @@ namespace L2dotNET.GameService.Model.Items
                 DateTime dt = new DateTime(yy, mm, dd, hh, m, ss);
                 if (dt > DateTime.Now)
                 {
-                    LifeTimeEndEnabled = true;
-                    LifeTimeEndTime = dt;
+                    _lifeTimeEndEnabled = true;
+                    _lifeTimeEndTime = dt;
                 }
                 //TODO delete me
             }
-        }
-
-        private string LimitedHourStr()
-        {
-            return !LifeTimeEndEnabled ? "-1" : LifeTimeEndTime.ToString("yyyy-MM-dd HH-mm-ss");
         }
 
         public void sql_insert(int id)
@@ -391,19 +386,19 @@ namespace L2dotNET.GameService.Model.Items
             //sqb.sql_update(false);
         }
 
-        public override string asString()
+        public override string AsString()
         {
-            return "L2Item:" + Template.ItemID + "; count " + Count + "; enchant " + Enchant + "; id " + ObjID;
+            return "L2Item:" + Template.ItemID + "; count " + Count + "; enchant " + Enchant + "; id " + ObjId;
         }
 
         public bool NotForTrade()
         {
-            return (Template.is_trade == 0) || (AugmentationID > 0) || (_isEquipped == 1);
+            return (Template.is_trade == 0) || (AugmentationId > 0) || (IsEquipped == 1);
         }
 
         public bool NotForSale()
         {
-            return (Template.is_trade == 0) || (_isEquipped == 1);
+            return (Template.is_trade == 0) || (IsEquipped == 1);
         }
     }
 }

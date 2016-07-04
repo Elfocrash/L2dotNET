@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             foreach (L2Item item in list)
             {
-                writeD(item.ObjID);
+                writeD(item.ObjId);
                 writeD(item.Template.ItemID);
                 writeD(0);
                 writeQ(item.Count);
@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 writeH(item.Enchant);
                 writeH(0);
 
-                writeD(item.AugmentationID);
+                writeD(item.AugmentationId);
                 writeD(item.Durability);
                 writeD(item.LifeTimeEnd());
 

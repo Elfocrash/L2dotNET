@@ -7,40 +7,35 @@ namespace L2dotNET.GameService
 {
     public class PreReqValidation
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(PreReqValidation));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(PreReqValidation));
 
         [Inject]
-        public ICheckService checkService
-        {
-            get { return GameServer.Kernel.Get<ICheckService>(); }
-        }
+        public ICheckService CheckService => GameServer.Kernel.Get<ICheckService>();
 
-        private static volatile PreReqValidation instance;
-        private static readonly object syncRoot = new object();
+        private static volatile PreReqValidation _instance;
+        private static readonly object SyncRoot = new object();
 
         public static PreReqValidation Instance
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new PreReqValidation();
+                        if (_instance == null)
+                            _instance = new PreReqValidation();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
-        public PreReqValidation() { }
-
         public void Initialize()
         {
-            if (!checkService.PreCheckRepository())
+            if (!CheckService.PreCheckRepository())
             {
-                log.Warn("Some checks have failed. Please correct the errors and try again.");
-                log.Info("Press ENTER to exit...");
+                Log.Warn("Some checks have failed. Please correct the errors and try again.");
+                Log.Info("Press ENTER to exit...");
                 Console.Read();
                 Environment.Exit(0);
             }

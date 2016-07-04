@@ -34,7 +34,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if ((_page > 10) || (_page < 0))
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 

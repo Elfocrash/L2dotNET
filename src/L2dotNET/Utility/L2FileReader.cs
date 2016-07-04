@@ -13,30 +13,30 @@ namespace L2dotNET.Utility
         /// <summary>
         /// Creates or opens provided file.
         /// </summary>
-        /// <param name="FileName">File name.</param>
-        /// <param name="DesiredAccess">File access.</param>
-        /// <param name="ShareMode">Share mode.</param>
-        /// <param name="SecurityAttributes">Security attributes.</param>
-        /// <param name="CreationDisposition">Creation disposition.</param>
-        /// <param name="FlagsAndAttributes">Flags and attributes.</param>
+        /// <param name="fileName">File name.</param>
+        /// <param name="desiredAccess">File access.</param>
+        /// <param name="shareMode">Share mode.</param>
+        /// <param name="securityAttributes">Security attributes.</param>
+        /// <param name="creationDisposition">Creation disposition.</param>
+        /// <param name="flagsAndAttributes">Flags and attributes.</param>
         /// <param name="hTemplateFile">Template file.</param>
         /// <returns>True, if file was successfully opened, or created, otherwise false.</returns>
         [DllImport("kernel32", SetLastError = true)]
         [SuppressUnmanagedCodeSecurity]
-        internal static extern unsafe IntPtr CreateFile(string FileName, uint DesiredAccess, uint ShareMode, uint SecurityAttributes, uint CreationDisposition, uint FlagsAndAttributes, int hTemplateFile);
+        internal static extern IntPtr CreateFile(string fileName, uint desiredAccess, uint shareMode, uint securityAttributes, uint creationDisposition, uint flagsAndAttributes, int hTemplateFile);
 
         /// <summary>
         /// Reads provided file.
         /// </summary>
         /// <param name="hFile">File pointer.</param>
         /// <param name="pBuffer">Buffer to read into.</param>
-        /// <param name="NumberOfBytesToRead">Count of bytes to read.</param>
+        /// <param name="numberOfBytesToRead">Count of bytes to read.</param>
         /// <param name="pNumberOfBytesRead">Count of bytes to read.</param>
-        /// <param name="Overlapped">Overlapped value.</param>
+        /// <param name="overlapped">Overlapped value.</param>
         /// <returns>True, if file was succesfully readed, otherwise false.</returns>
         [DllImport("kernel32", SetLastError = true)]
         [SuppressUnmanagedCodeSecurity]
-        internal static extern unsafe bool ReadFile(IntPtr hFile, void* pBuffer, int NumberOfBytesToRead, int* pNumberOfBytesRead, int Overlapped);
+        internal static extern unsafe bool ReadFile(IntPtr hFile, void* pBuffer, int numberOfBytesToRead, int* pNumberOfBytesRead, int overlapped);
 
         /// <summary>
         /// Closes provided file pointer.
@@ -45,7 +45,7 @@ namespace L2dotNET.Utility
         /// <returns>True, if file was closed successfully, otherwise false.</returns>
         [DllImport("kernel32", SetLastError = true)]
         [SuppressUnmanagedCodeSecurity]
-        internal static extern unsafe bool CloseHandle(IntPtr hObject);
+        internal static extern bool CloseHandle(IntPtr hObject);
 
         /// <summary>
         /// Opens provided file to read.

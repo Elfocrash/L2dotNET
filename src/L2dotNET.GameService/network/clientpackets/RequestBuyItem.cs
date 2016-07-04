@@ -37,7 +37,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (_count <= 0)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -45,8 +45,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (trader == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
+                player.SendActionFailed();
                 return;
             }
 
@@ -54,8 +54,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (shop == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
+                player.SendActionFailed();
                 return;
             }
 
@@ -63,8 +63,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (list == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
+                player.SendActionFailed();
                 return;
             }
 
@@ -97,15 +97,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 if (notfound)
                 {
-                    player.sendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
-                    player.sendActionFailed();
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.TRADE_ATTEMPT_FAILED);
+                    player.SendActionFailed();
                     return;
                 }
             }
 
             if (adena > player.GetAdena())
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                 return;
             }
 
@@ -119,7 +119,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.AddItem(itemId, count);
             }
 
-            player.sendPacket(new ExBuySellList_Close());
+            player.SendPacket(new ExBuySellList_Close());
         }
     }
 }

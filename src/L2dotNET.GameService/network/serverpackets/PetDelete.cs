@@ -5,10 +5,10 @@
         private readonly byte ObjectSummonType;
         private readonly int ObjID;
 
-        public PetDelete(byte ObjectSummonType, int ObjID)
+        public PetDelete(byte ObjectSummonType, int objId)
         {
             this.ObjectSummonType = ObjectSummonType;
-            this.ObjID = ObjID;
+            this.ObjID = objId;
         }
 
         protected internal override void write()

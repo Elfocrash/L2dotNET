@@ -25,8 +25,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
 
             if (player._recipeBook == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
+                player.SendActionFailed();
                 return;
             }
 
@@ -34,12 +34,12 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
 
             if (rec == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
+                player.SendActionFailed();
                 return;
             }
 
-            player.sendPacket(new RecipeItemMakeInfo(player, rec, 2));
+            player.SendPacket(new RecipeItemMakeInfo(player, rec, 2));
         }
     }
 }

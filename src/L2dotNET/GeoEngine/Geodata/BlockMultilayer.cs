@@ -5,15 +5,15 @@ namespace L2dotNET.GeoEngine.Geodata
 {
     public class BlockMultilayer : ABlock
     {
-        private const int MAX_LAYERS = byte.MaxValue;
+        private const int MaxLayers = byte.MaxValue;
 
         private static MemoryStream _temp;
 
-        protected byte[] _buffer;
+        protected byte[] Buffer;
 
         public static void Initialize()
         {
-            _temp = new MemoryStream(GeoStructure.BLOCK_CELLS * MAX_LAYERS * 3);
+            _temp = new MemoryStream(GeoStructure.BlockCells * MaxLayers * 3);
 
             if (!BitConverter.IsLittleEndian)
             {
@@ -30,12 +30,12 @@ namespace L2dotNET.GeoEngine.Geodata
 
         protected BlockMultilayer()
         {
-            _buffer = null;
+            Buffer = null;
         }
 
         public BlockMultilayer(MemoryStream ms)
         {
-            for (int cell = 0; cell < GeoStructure.BLOCK_CELLS; cell++)
+            for (int cell = 0; cell < GeoStructure.BlockCells; cell++)
             {
                 byte layers = (byte)ms.ReadByte();
 
@@ -52,27 +52,27 @@ namespace L2dotNET.GeoEngine.Geodata
                 }
             }
 
-            Array.Copy(_temp.ToArray(), _buffer, _temp.Position);
+            Array.Copy(_temp.ToArray(), Buffer, _temp.Position);
             _temp.SetLength(0);
         }
 
         public override short GetHeight(int index)
         {
-            return (short)((_buffer[index + 1] & 0x00FF) | (_buffer[index + 2] << 8));
+            return (short)((Buffer[index + 1] & 0x00FF) | (Buffer[index + 2] << 8));
         }
 
         public override short GetHeightAbove(int geoX, int geoY, int worldZ)
         {
             int index = 0;
-            for (int i = 0; i < (geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y); i++)
-                index += _buffer[index] * 3 + 1;
+            for (int i = 0; i < (geoX % GeoStructure.BlockCellsX) * GeoStructure.BlockCellsY + (geoY % GeoStructure.BlockCellsY); i++)
+                index += Buffer[index] * 3 + 1;
 
-            byte layers = _buffer[index++];
+            byte layers = Buffer[index++];
             index += (layers - 1) * 3;
 
             while (layers-- > 0)
             {
-                int height = (_buffer[index + 1] & 0x00FF) | (_buffer[index + 2] << 8);
+                int height = (Buffer[index + 1] & 0x00FF) | (Buffer[index + 2] << 8);
 
                 if (height > worldZ)
                     return (short)height;
@@ -86,14 +86,14 @@ namespace L2dotNET.GeoEngine.Geodata
         public override short GetHeightBelow(int geoX, int geoY, int worldZ)
         {
             int index = 0;
-            for (int i = 0; i < (geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y); i++)
-                index += _buffer[index] * 3 + 1;
+            for (int i = 0; i < (geoX % GeoStructure.BlockCellsX) * GeoStructure.BlockCellsY + (geoY % GeoStructure.BlockCellsY); i++)
+                index += Buffer[index] * 3 + 1;
 
-            byte layers = _buffer[index++];
+            byte layers = Buffer[index++];
 
             while (layers-- > 0)
             {
-                int height = (_buffer[index + 1] & 0x00FF) | (_buffer[index + 2] << 8);
+                int height = (Buffer[index + 1] & 0x00FF) | (Buffer[index + 2] << 8);
 
                 if (height < worldZ)
                     return (short)height;
@@ -108,7 +108,7 @@ namespace L2dotNET.GeoEngine.Geodata
         {
             int index = GetIndexNearest(geoX, geoY, worldZ);
 
-            return (short)((_buffer[index + 1] & 0x00FF) | (_buffer[index + 2] << 8));
+            return (short)((Buffer[index + 1] & 0x00FF) | (Buffer[index + 2] << 8));
         }
 
         public override short GetHeightNearestOriginal(int geoX, int geoY, int worldZ)
@@ -118,21 +118,21 @@ namespace L2dotNET.GeoEngine.Geodata
 
         public override short GetHeightOriginal(int index)
         {
-            return (short)((_buffer[index + 1] & 0x00FF) | (_buffer[index + 2] << 8));
+            return (short)((Buffer[index + 1] & 0x00FF) | (Buffer[index + 2] << 8));
         }
 
         public override int GetIndexAbove(int geoX, int geoY, int worldZ)
         {
             int index = 0;
-            for (int i = 0; i < (geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y); i++)
-                index += _buffer[index] * 3 + 1;
+            for (int i = 0; i < (geoX % GeoStructure.BlockCellsX) * GeoStructure.BlockCellsY + (geoY % GeoStructure.BlockCellsY); i++)
+                index += Buffer[index] * 3 + 1;
 
-            byte layers = _buffer[index++];
+            byte layers = Buffer[index++];
             index += (layers - 1) * 3;
 
             while (layers-- > 0)
             {
-                int height = (_buffer[index + 1] & 0x00FF) | (_buffer[index + 2] << 8);
+                int height = (Buffer[index + 1] & 0x00FF) | (Buffer[index + 2] << 8);
 
                 if (height > worldZ)
                     return index;
@@ -151,14 +151,14 @@ namespace L2dotNET.GeoEngine.Geodata
         public override int GetIndexBelow(int geoX, int geoY, int worldZ)
         {
             int index = 0;
-            for (int i = 0; i < (geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y); i++)
-                index += _buffer[index] * 3 + 1;
+            for (int i = 0; i < (geoX % GeoStructure.BlockCellsX) * GeoStructure.BlockCellsY + (geoY % GeoStructure.BlockCellsY); i++)
+                index += Buffer[index] * 3 + 1;
 
-            byte layers = _buffer[index++];
+            byte layers = Buffer[index++];
 
             while (layers-- > 0)
             {
-                int height = (_buffer[index + 1] & 0x00FF) | (_buffer[index + 2] << 8);
+                int height = (Buffer[index + 1] & 0x00FF) | (Buffer[index + 2] << 8);
 
                 if (height < worldZ)
                     return index;
@@ -177,15 +177,15 @@ namespace L2dotNET.GeoEngine.Geodata
         public override int GetIndexNearest(int geoX, int geoY, int worldZ)
         {
             int index = 0;
-            for (int i = 0; i < (geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y); i++)
-                index += _buffer[index] * 3 + 1;
+            for (int i = 0; i < (geoX % GeoStructure.BlockCellsX) * GeoStructure.BlockCellsY + (geoY % GeoStructure.BlockCellsY); i++)
+                index += Buffer[index] * 3 + 1;
 
-            byte layers = _buffer[index++];
+            byte layers = Buffer[index++];
 
             int limit = int.MaxValue;
             while (layers-- > 0)
             {
-                int height = (_buffer[index + 1] & 0x00FF) | (_buffer[index + 2] << 8);
+                int height = (Buffer[index + 1] & 0x00FF) | (Buffer[index + 2] << 8);
 
                 int distance = Math.Abs(height - worldZ);
                 if (distance > limit)
@@ -200,24 +200,24 @@ namespace L2dotNET.GeoEngine.Geodata
 
         public override byte GetNswe(int index)
         {
-            return _buffer[index];
+            return Buffer[index];
         }
 
         public override byte GetNsweAbove(int geoX, int geoY, int worldZ)
         {
             int index = 0;
-            for (int i = 0; i < (geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y); i++)
-                index += _buffer[index] * 3 + 1;
+            for (int i = 0; i < (geoX % GeoStructure.BlockCellsX) * GeoStructure.BlockCellsY + (geoY % GeoStructure.BlockCellsY); i++)
+                index += Buffer[index] * 3 + 1;
 
-            byte layers = _buffer[index++];
+            byte layers = Buffer[index++];
             index += (layers - 1) * 3;
 
             while (layers-- > 0)
             {
-                int height = (_buffer[index + 1] & 0x00FF) | (_buffer[index + 2] << 8);
+                int height = (Buffer[index + 1] & 0x00FF) | (Buffer[index + 2] << 8);
 
                 if (height > worldZ)
-                    return _buffer[index];
+                    return Buffer[index];
 
                 index -= 3;
             }
@@ -228,17 +228,17 @@ namespace L2dotNET.GeoEngine.Geodata
         public override byte GetNsweBelow(int geoX, int geoY, int worldZ)
         {
             int index = 0;
-            for (int i = 0; i < (geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y); i++)
-                index += _buffer[index] * 3 + 1;
+            for (int i = 0; i < (geoX % GeoStructure.BlockCellsX) * GeoStructure.BlockCellsY + (geoY % GeoStructure.BlockCellsY); i++)
+                index += Buffer[index] * 3 + 1;
 
-            byte layers = _buffer[index++];
+            byte layers = Buffer[index++];
 
             while (layers-- > 0)
             {
-                int height = (_buffer[index + 1] & 0x00FF) | (_buffer[index + 2] << 8);
+                int height = (Buffer[index + 1] & 0x00FF) | (Buffer[index + 2] << 8);
 
                 if (height < worldZ)
-                    return _buffer[index];
+                    return Buffer[index];
 
                 index += 3;
             }
@@ -250,7 +250,7 @@ namespace L2dotNET.GeoEngine.Geodata
         {
             int index = GetIndexNearest(geoX, geoY, worldZ);
 
-            return _buffer[index];
+            return Buffer[index];
         }
 
         public override byte GetNsweNearestOriginal(int geoX, int geoY, int worldZ)
@@ -260,7 +260,7 @@ namespace L2dotNET.GeoEngine.Geodata
 
         public override byte GetNsweOriginal(int index)
         {
-            return _buffer[index];
+            return Buffer[index];
         }
 
         public override bool HasGeoPos()
@@ -270,15 +270,15 @@ namespace L2dotNET.GeoEngine.Geodata
 
         public override void SaveBlock(BufferedStream stream)
         {
-            stream.WriteByte(GeoStructure.TYPE_MULTILAYER_L2D);
+            stream.WriteByte(GeoStructure.TypeMultilayerL2D);
 
             int index = 0;
-            for (int i = 0; i < GeoStructure.BLOCK_CELLS; i++)
+            for (int i = 0; i < GeoStructure.BlockCells; i++)
             {
-                byte layers = _buffer[index++];
+                byte layers = Buffer[index++];
                 stream.WriteByte(layers);
 
-                stream.Write(_buffer, index, layers * 3);
+                stream.Write(Buffer, index, layers * 3);
 
                 index += layers * 3;
             }
@@ -286,7 +286,7 @@ namespace L2dotNET.GeoEngine.Geodata
 
         public override void SetNswe(int index, byte nswe)
         {
-            _buffer[index] = nswe;
+            Buffer[index] = nswe;
         }
     }
 }

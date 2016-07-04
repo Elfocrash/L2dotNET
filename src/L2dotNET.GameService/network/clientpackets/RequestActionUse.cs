@@ -31,9 +31,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player.Dead || player.isCastingNow() || (player._p_block_act == 1))
+            if (player.Dead || player.IsCastingNow() || (player.PBlockAct == 1))
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     else
                         player.IsRunning = 1;
 
-                    player.broadcastUserInfo();
+                    player.BroadcastUserInfo();
                     break;
 
                 case 12: // Greeting
@@ -173,14 +173,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (socialId != -1)
-                player.broadcastPacket(new SocialAction(player.ObjID, socialId));
+                player.BroadcastPacket(new SocialAction(player.ObjId, socialId));
         }
 
         private void CheckSit(L2Player player)
         {
-            if (player.isCastingNow() || player.cantMove() || player.isSittingInProgress())
+            if (player.IsCastingNow() || player.CantMove() || player.isSittingInProgress())
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -219,7 +219,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             if ((player.Summon == null) || !(player.Summon is L2Pet))
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -234,7 +234,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (skill != null)
             {
                 player.Summon.ChangeTarget(player.CurrentTarget);
-                int result = player.Summon.castSkill(skill);
+                int result = player.Summon.CastSkill(skill);
                 log.Info($"pet cast result {result}");
             }
             else

@@ -29,10 +29,10 @@ namespace L2dotNET.GameService.Tables
                           STATUS_OFFLINE = 2,
                           STATUS_INACTIVE = 0;
 
-        public L2Spawn(int NpcId, long Respawn, L2Territory zone, string pos)
+        public L2Spawn(int NpcId, long respawn, L2Territory zone, string pos)
         {
             this.NpcId = NpcId;
-            this.Respawn = Respawn;
+            this.Respawn = respawn;
             this.zone = zone;
             if (pos != null)
             {
@@ -43,10 +43,10 @@ namespace L2dotNET.GameService.Tables
             }
         }
 
-        public L2Spawn(int NpcId, long Respawn, string[] loc)
+        public L2Spawn(int NpcId, long respawn, string[] loc)
         {
             this.NpcId = NpcId;
-            this.Respawn = Respawn;
+            this.Respawn = respawn;
 
             x = Convert.ToInt32(loc[0]);
             y = Convert.ToInt32(loc[1]);

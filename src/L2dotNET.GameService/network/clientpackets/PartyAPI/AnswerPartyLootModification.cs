@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 
             if (player.Party == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 

@@ -25,9 +25,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             L2Item item = RqItemManager.getInstance().getItem(_objectId);
             if (item == null)
-                player.sendMessage("That item was deleted or modifyed.");
+                player.SendMessage("That item was deleted or modifyed.");
             else
-                player.sendPacket(new ExRpItemLink(item));
+                player.SendPacket(new ExRpItemLink(item));
         }
     }
 }

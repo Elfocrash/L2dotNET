@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             int[] ids = CursedWeapons.getInstance().getWeaponIds();
 
-            Client.sendPacket(new ExCursedWeaponList(ids));
+            Client.SendPacket(new ExCursedWeaponList(ids));
         }
     }
 }

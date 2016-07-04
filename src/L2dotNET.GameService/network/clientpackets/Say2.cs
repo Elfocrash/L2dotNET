@@ -52,7 +52,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //        RqItemManager.getInstance().postItem(item);
             //}
 
-            CreatureSay cs = new CreatureSay(player.ObjID, Type, player.Name, _text);
+            CreatureSay cs = new CreatureSay(player.ObjId, Type, player.Name, _text);
 
             switch (Type)
             {
@@ -63,10 +63,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
                         if (PointCmdManager.getInstance().pointed(player, _text))
                             return;
 
-                    foreach (L2Player o in player.knownObjects.Values.OfType<L2Player>().Where(o => player.isInsideRadius(o, 1250, true, false)))
-                        o.sendPacket(cs);
+                    foreach (L2Player o in player.KnownObjects.Values.OfType<L2Player>().Where(o => player.IsInsideRadius(o, 1250, true, false)))
+                        o.SendPacket(cs);
 
-                    player.sendPacket(cs);
+                    player.SendPacket(cs);
                 }
 
                     break;
@@ -112,16 +112,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 case SayIDList.CHAT_MARKET:
                     foreach (L2Player p in L2World.Instance.GetPlayers())
-                        p.sendPacket(cs);
+                        p.SendPacket(cs);
 
                     break;
                 case SayIDList.CHAT_HERO:
                 {
                     if (player.Heroic == 1)
                         foreach (L2Player p in L2World.Instance.GetPlayers())
-                            p.sendPacket(cs);
+                            p.SendPacket(cs);
                     else
-                        player.sendActionFailed();
+                        player.SendActionFailed();
                 }
 
                     break;

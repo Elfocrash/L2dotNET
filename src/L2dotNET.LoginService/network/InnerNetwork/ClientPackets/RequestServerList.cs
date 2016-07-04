@@ -5,26 +5,26 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestServerList
     {
-        private readonly int login1;
-        private readonly int login2;
-        private readonly LoginClient client;
+        private readonly int _login1;
+        private readonly int _login2;
+        private readonly LoginClient _client;
 
         public RequestServerList(Packet p, LoginClient client)
         {
-            this.client = client;
-            login1 = p.ReadInt();
-            login2 = p.ReadInt();
+            this._client = client;
+            _login1 = p.ReadInt();
+            _login2 = p.ReadInt();
         }
 
         public void RunImpl()
         {
-            if ((client.login1 != login1) && (client.login2 != login2))
+            if ((_client.Login1 != _login1) && (_client.Login2 != _login2))
             {
-                client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCESS_FAILED));
+                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
                 return;
             }
 
-            client.Send(ServerList.ToPacket(client));
+            _client.Send(ServerList.ToPacket(_client));
         }
     }
 }

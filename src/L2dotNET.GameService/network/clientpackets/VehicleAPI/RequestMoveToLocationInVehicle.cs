@@ -40,27 +40,27 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 
             if (player.Summon != null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.RELEASE_PET_ON_BOAT);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.RELEASE_PET_ON_BOAT);
+                player.SendActionFailed();
                 return;
             }
 
             L2Boat boat = null;
             if (player.Boat != null)
-                if (player.Boat.ObjID == boatId)
+                if (player.Boat.ObjId == boatId)
                     boat = player.Boat;
                 else
                 {
-                    player.sendActionFailed();
+                    player.SendActionFailed();
                     return;
                 }
-            else if (player.knownObjects.ContainsKey(boatId))
-                boat = (L2Boat)player.knownObjects[boatId];
+            else if (player.KnownObjects.ContainsKey(boatId))
+                boat = (L2Boat)player.KnownObjects[boatId];
 
             if (boat == null)
             {
                 log.Error($"User requested null boat {boatId}");
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -70,7 +70,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
             player.BoatX = dx;
             player.BoatY = dy;
             player.BoatZ = dz;
-            player.broadcastPacket(new MoveToLocationInVehicle(player, x, y, z));
+            player.BroadcastPacket(new MoveToLocationInVehicle(player, x, y, z));
         }
     }
 }

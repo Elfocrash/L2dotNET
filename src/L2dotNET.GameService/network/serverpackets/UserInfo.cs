@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(player.Y);
             writeD(player.Z);
             writeD(player.Heading);
-            writeD(player.ObjID);
+            writeD(player.ObjId);
 
             writeS(player.Name);
 
@@ -39,10 +39,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(player.WIT);
             writeD(player.MEN);
 
-            writeD(player.CurHP); //max hp
-            writeD(player.CurHP);
-            writeD(player.CurMP); //max mp
-            writeD(player.CurMP);
+            writeD(player.CurHp); //max hp
+            writeD(player.CurHp);
+            writeD(player.CurMp); //max mp
+            writeD(player.CurMp);
             writeD(player.SP);
             writeD(player.CurrentWeight);
             writeD(player.CharacterStat.getStat(TEffectType.b_max_weight));
@@ -174,10 +174,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             writeD((int)player.ActiveClass.ClassId.Id);
             writeD(0); // special effects? circles around player...
-            writeD(player.CurCP); //max cp
-            writeD(player.CurCP);
+            writeD(player.CurCp); //max cp
+            writeD(player.CurCp);
             writeC(player.GetEnchantValue());
-            writeC(player.TeamID);
+            writeC(player.TeamId);
             writeD(player.getClanCrestLargeId());
             writeC(player.Noblesse);
 

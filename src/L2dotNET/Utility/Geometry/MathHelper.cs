@@ -134,17 +134,17 @@ namespace L2dotNET.Utility.Geometry
         public static bool LineIntersect(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2)
         {
             // Get A,B,C of first line - points : ps1 to pe1
-            float A1 = ay1 - ax1;
-            float B1 = by1 - bx1;
+            float a1 = ay1 - ax1;
+            float b1 = by1 - bx1;
             //float C1 = A1 * ax1 + B1 * ay1;
 
             // Get A,B,C of second line - points : ps2 to pe2
-            float A2 = ay2 - ax2;
-            float B2 = by2 - bx2;
+            float a2 = ay2 - ax2;
+            float b2 = by2 - bx2;
             //float C2 = A2 * ax2 + B2 * ay2;
 
             // Get delta and check if the lines are parallel
-            float delta = A1 * B2 - A2 * B1;
+            float delta = a1 * b2 - a2 * b1;
             return delta == 0;
         }
     }

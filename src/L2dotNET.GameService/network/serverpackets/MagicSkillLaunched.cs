@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _id = id;
             _level = lvl;
             Targets = targets.ToArray();
-            CasterId = caster.ObjID;
+            CasterId = caster.ObjId;
         }
 
         /// <summary>

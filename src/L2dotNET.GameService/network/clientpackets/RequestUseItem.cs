@@ -23,9 +23,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player._p_block_act == 1)
+            if (player.PBlockAct == 1)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -33,14 +33,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (item == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.INCORRECT_ITEM);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.INCORRECT_ITEM);
                 return;
             }
 
             if (player.TradeState != 0)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_PICKUP_OR_USE_ITEM_WHILE_TRADING);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_PICKUP_OR_USE_ITEM_WHILE_TRADING);
+                player.SendActionFailed();
                 return;
             }
 
@@ -50,26 +50,26 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 case ItemTemplate.L2ItemType.weapon:
                 case ItemTemplate.L2ItemType.accessary:
                 {
-                    if (item._isEquipped == 0)
+                    if (item.IsEquipped == 0)
                     {
                         if (!item.Template.canEquipChaotic(player.PkKills))
                         {
-                            player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_ARE_UNABLE_TO_EQUIP_THIS_ITEM_WHEN_YOUR_PK_COUNT_IS_GREATER_THAN_OR_EQUAL_TO_ONE);
-                            player.sendActionFailed();
+                            player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_ARE_UNABLE_TO_EQUIP_THIS_ITEM_WHEN_YOUR_PK_COUNT_IS_GREATER_THAN_OR_EQUAL_TO_ONE);
+                            player.SendActionFailed();
                             return;
                         }
 
                         if (!item.Template.canEquipHeroic(player.Heroic) || !item.Template.canEquipNobless(player.Noblesse) || !item.Template.canEquipSex(player.Sex))
                         {
-                            player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION);
-                            player.sendActionFailed();
+                            player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION);
+                            player.SendActionFailed();
                             return;
                         }
                     }
 
                     //int pdollId = player.Inventory.getPaperdollId(item.Template);
                     //player.setPaperdoll(pdollId, item._isEquipped == 1 ? null : item, true);
-                    player.broadcastUserInfo();
+                    player.BroadcastUserInfo();
                 }
 
                     break;
@@ -87,9 +87,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 {
                     TSkill skill = item.Template.item_skill;
                     if (skill != null)
-                        player.addEffect(player, skill, true, false);
+                        player.AddEffect(player, skill, true, false);
                     else
-                        player.sendMessage("skill onCall was not found.");
+                        player.SendMessage("skill onCall was not found.");
                 }
                     break;
             }

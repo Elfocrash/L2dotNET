@@ -19,20 +19,17 @@ namespace L2dotNET.GameService
     public class GameClient
     {
         [Inject]
-        public IPlayerService playerService
-        {
-            get { return GameServer.Kernel.Get<IPlayerService>(); }
-        }
+        public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
 
-        private static readonly ILog log = LogManager.GetLogger(typeof(GameClient));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(GameClient));
 
-        public EndPoint _address;
-        public TcpClient _client;
-        public NetworkStream _stream;
+        public EndPoint Address;
+        public TcpClient Client;
+        public NetworkStream Stream;
         private byte[] _buffer;
         private readonly GameCrypt _crypt;
-        public byte[] _blowfishKey;
-        public ScrambledKeyPair _scrambledPair;
+        public byte[] BlowfishKey;
+        public ScrambledKeyPair ScrambledPair;
 
         public L2Player CurrentPlayer;
 
@@ -45,22 +42,22 @@ namespace L2dotNET.GameService
 
         public GameClient(TcpClient tcpClient)
         {
-            log.Info($"connection from {tcpClient.Client.RemoteEndPoint}");
-            _client = tcpClient;
-            _stream = tcpClient.GetStream();
-            _address = tcpClient.Client.RemoteEndPoint;
+            Log.Info($"connection from {tcpClient.Client.RemoteEndPoint}");
+            Client = tcpClient;
+            Stream = tcpClient.GetStream();
+            Address = tcpClient.Client.RemoteEndPoint;
             _crypt = new GameCrypt();
-            new System.Threading.Thread(read).Start();
+            new System.Threading.Thread(Read).Start();
         }
 
-        public byte[] enableCrypt()
+        public byte[] EnableCrypt()
         {
-            byte[] key = BlowFishKeygen.getRandomKey();
+            byte[] key = BlowFishKeygen.GetRandomKey();
             _crypt.setKey(key);
             return key;
         }
 
-        public void sendPacket(GameServerNetworkPacket sbp)
+        public void SendPacket(GameServerNetworkPacket sbp)
         {
             if (IsTerminated)
                 return;
@@ -82,35 +79,34 @@ namespace L2dotNET.GameService
 
             try
             {
-                _stream.Write(bytes.ToArray(), 0, bytes.Count);
+                Stream.Write(bytes.ToArray(), 0, bytes.Count);
                 //  _stream.Flush();
             }
             catch
             {
-                log.Info($"client {AccountName} terminated.");
-                termination();
+                Log.Info($"client {AccountName} terminated.");
+                Termination();
             }
         }
 
-        public void termination()
+        public void Termination()
         {
-            log.Info("termination");
+            Log.Info("termination");
             IsTerminated = true;
-            _stream.Close();
-            _client.Close();
+            Stream.Close();
+            Client.Close();
 
-            if (CurrentPlayer != null)
-                CurrentPlayer.Termination();
+            CurrentPlayer?.Termination();
 
             foreach (L2Player p in _accountChars)
                 p.Termination();
 
             _accountChars.Clear();
 
-            ClientManager.Instance.terminate(_address.ToString());
+            ClientManager.Instance.Terminate(Address.ToString());
         }
 
-        public void read()
+        public void Read()
         {
             if (IsTerminated)
                 return;
@@ -118,17 +114,17 @@ namespace L2dotNET.GameService
             try
             {
                 _buffer = new byte[2];
-                _stream.BeginRead(_buffer, 0, 2, new AsyncCallback(OnReceiveCallbackStatic), null);
+                Stream.BeginRead(_buffer, 0, 2, OnReceiveCallbackStatic, null);
             }
             catch
             {
-                termination();
+                Termination();
             }
         }
 
         public PlayerModel LoadPlayerInSlot(string accName, int charSlot)
         {
-            PlayerModel player = playerService.GetPlayerModelBySlotId(accName, charSlot);
+            PlayerModel player = PlayerService.GetPlayerModelBySlotId(accName, charSlot);
             return player;
         }
 
@@ -143,17 +139,17 @@ namespace L2dotNET.GameService
         {
             try
             {
-                int rs = _stream.EndRead(result);
+                int rs = Stream.EndRead(result);
                 if (rs > 0)
                 {
                     short length = BitConverter.ToInt16(_buffer, 0);
                     _buffer = new byte[length - 2];
-                    _stream.BeginRead(_buffer, 0, length - 2, new AsyncCallback(OnReceiveCallback), result.AsyncState);
+                    Stream.BeginRead(_buffer, 0, length - 2, OnReceiveCallback, result.AsyncState);
                 }
             }
             catch
             {
-                termination();
+                Termination();
             }
         }
 
@@ -162,7 +158,7 @@ namespace L2dotNET.GameService
             if (IsTerminated)
                 return;
 
-            _stream.EndRead(result);
+            Stream.EndRead(result);
 
             byte[] buff = new byte[_buffer.Length];
             _buffer.CopyTo(buff, 0);
@@ -171,7 +167,7 @@ namespace L2dotNET.GameService
 
             PacketHandler.handlePacket(this, buff);
 
-            new System.Threading.Thread(read).Start();
+            new System.Threading.Thread(Read).Start();
         }
 
         public void RemoveAccountCharAndResetSlotIndex(int charSlot)

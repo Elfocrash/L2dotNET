@@ -18,11 +18,11 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
 
         public override int AiActionTask(L2Player owner)
         {
-            if (owner.Dead || (owner.CurHP / owner.MaxHP > 0.9))
+            if (owner.Dead || (owner.CurHp / owner.MaxHp > 0.9))
                 return 0;
 
-            owner.addAbnormal(skill1, owner, true, false);
-            owner.broadcastPacket(new MagicSkillUse(owner, owner, skill1, skill1.skill_hit_time));
+            owner.AddAbnormal(skill1, owner, true, false);
+            owner.BroadcastPacket(new MagicSkillUse(owner, owner, skill1, skill1.skill_hit_time));
             return 1;
         }
     }

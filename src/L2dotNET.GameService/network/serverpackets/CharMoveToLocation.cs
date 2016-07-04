@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             writeC(0x01);
 
-            writeD(_obj.ObjID);
+            writeD(_obj.ObjId);
 
             writeD(_obj.DestX);
             writeD(_obj.DestY);

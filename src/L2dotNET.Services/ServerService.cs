@@ -7,31 +7,31 @@ namespace L2dotNET.Services
 {
     public class ServerService : IServerService
     {
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public ServerService(IUnitOfWork unitOfWork)
         {
-            this.unitOfWork = unitOfWork;
+            this._unitOfWork = unitOfWork;
         }
 
         public List<ServerModel> GetServerList()
         {
-            return unitOfWork.ServerRepository.GetServerList();
+            return _unitOfWork.ServerRepository.GetServerList();
         }
 
         public List<int> GetPlayersObjectIdList()
         {
-            return unitOfWork.ServerRepository.GetPlayersObjectIdList();
+            return _unitOfWork.ServerRepository.GetPlayersObjectIdList();
         }
 
         public List<AnnouncementModel> GetAnnouncementsList()
         {
-            return unitOfWork.ServerRepository.GetAnnouncementsList();
+            return _unitOfWork.ServerRepository.GetAnnouncementsList();
         }
 
         public bool CheckDatabaseQuery()
         {
-            return unitOfWork.ServerRepository.CheckDatabaseQuery();
+            return _unitOfWork.ServerRepository.CheckDatabaseQuery();
         }
     }
 }

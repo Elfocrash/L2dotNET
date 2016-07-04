@@ -12,24 +12,24 @@ namespace L2dotNET.Repositories
 {
     public class ServerRepository : IServerRepository
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ServerRepository));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ServerRepository));
 
-        internal IDbConnection db;
+        internal IDbConnection Db;
 
         public ServerRepository()
         {
-            db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
+            Db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
         }
 
         public List<ServerModel> GetServerList()
         {
             try
             {
-                return db.Query<ServerModel>("select * from servers").ToList();
+                return Db.Query<ServerModel>("select * from servers").ToList();
             }
             catch (MySqlException ex)
             {
-                log.Error($"Method: {"GetServerList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {"GetServerList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return new List<ServerModel>();
             }
         }
@@ -38,11 +38,11 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return db.Query<int>("select obj_Id from characters").ToList();
+                return Db.Query<int>("select obj_Id from characters").ToList();
             }
             catch (MySqlException ex)
             {
-                log.Error($"Method: {"GetPlayersObjectIdList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {"GetPlayersObjectIdList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return new List<int>();
             }
         }
@@ -51,11 +51,11 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return db.Query<AnnouncementModel>("select * from announcements").ToList();
+                return Db.Query<AnnouncementModel>("select * from announcements").ToList();
             }
             catch (MySqlException ex)
             {
-                log.Error($"Method: {"GetAnnouncementsList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {"GetAnnouncementsList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return new List<AnnouncementModel>();
             }
         }
@@ -64,11 +64,11 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return db.Query("SELECT 1").Any();
+                return Db.Query("SELECT 1").Any();
             }
             catch (MySqlException ex)
             {
-                log.Error($"Method: {"CheckDatabaseQuery"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {"CheckDatabaseQuery"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
             }
 
             return false;

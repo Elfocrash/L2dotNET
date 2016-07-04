@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            AdminCommandHandler.Instance.request(player, _alias);
+            AdminCommandHandler.Instance.Request(player, _alias);
         }
     }
 }

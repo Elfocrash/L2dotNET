@@ -16,10 +16,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
             this.showWindow = showWindow;
             foreach (L2Item item in player.Inventory.Items.Where(item => item.Template.Type != ItemTemplate.L2ItemType.questitem))
             {
-                items.Add(new ItemListItem { ObjectId = item.ObjID, ItemId = item.Template.ItemID, Slot = item.SlotLocation, Count = item.Count, Type2 = item.Template.Type2(), CType1 = item.CustomType1, Equip = item._isEquipped, Bodypart = item.Template.BodyPartId(), Enchant = item.Enchant, CType2 = item.CustomType2, Augment = item.AugmentationID, Mana = item.Durability, TimeLeft = item.LifeTimeEnd() });
+                items.Add(new ItemListItem { ObjectId = item.ObjId, ItemId = item.Template.ItemID, Slot = item.SlotLocation, Count = item.Count, Type2 = item.Template.Type2(), CType1 = item.CustomType1, Equip = item.IsEquipped, Bodypart = item.Template.BodyPartId(), Enchant = item.Enchant, CType2 = item.CustomType2, Augment = item.AugmentationId, Mana = item.Durability, TimeLeft = item.LifeTimeEnd() });
 
                 if (item.Blocked)
-                    blocked.Add(item.ObjID);
+                    blocked.Add(item.ObjId);
             }
         }
 

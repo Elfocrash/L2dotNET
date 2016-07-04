@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Model.Npcs
             this.hideout = (Hideout)hideout;
             structureControlled = true;
             ai = new AgitManagerAI();
-            CurMP = 5000;
+            CurMp = 5000;
         }
 
         private System.Timers.Timer regenMpTime;
@@ -41,33 +41,33 @@ namespace L2dotNET.GameService.Model.Npcs
         private void RegenTask(object sender, System.Timers.ElapsedEventArgs e)
         {
             int lvl = hideout.GetFuncLevel(AgitManagerAI.decotype_buff);
-            CurMP += ai.regenPerSec[lvl];
-            if (CurMP >= ai.regenMax[lvl])
-                CurMP = ai.regenMax[lvl];
+            CurMp += ai.regenPerSec[lvl];
+            if (CurMp >= ai.regenMax[lvl])
+                CurMp = ai.regenMax[lvl];
         }
 
-        public override void onSpawn()
+        public override void OnSpawn()
         {
-            base.onSpawn();
+            base.OnSpawn();
             StartRegenTime();
         }
 
         public override void NotifyAction(L2Player player)
         {
-            player.sendPacket(new NpcHtmlMessage(player, ai.fnHi, ObjID));
+            player.SendPacket(new NpcHtmlMessage(player, ai.fnHi, ObjId));
         }
 
         public override void onTeleportRequest(L2Player player)
         {
             if (hideout.NoTeleports)
             {
-                player.sendPacket(new NpcHtmlMessage(player, ai.fnTeleportLevelZero, ObjID));
+                player.SendPacket(new NpcHtmlMessage(player, ai.fnTeleportLevelZero, ObjId));
                 return;
             }
 
             int level = hideout.GetFuncLevel(AgitManagerAI.decotype_teleport);
             if (level == 0)
-                player.sendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjID));
+                player.SendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjId));
             else
                 NpcData.Instance.RequestTeleportList(this, player, level);
         }
@@ -88,44 +88,44 @@ namespace L2dotNET.GameService.Model.Npcs
                             NotifyAction(player);
                             break;
                         case 1: //doors
-                            if (player.Clan.LeaderID == player.ObjID) //TODO privs
-                                player.sendPacket(new NpcHtmlMessage(player, ai.fnDoor, ObjID));
+                            if (player.Clan.LeaderID == player.ObjId) //TODO privs
+                                player.SendPacket(new NpcHtmlMessage(player, ai.fnDoor, ObjId));
                             break;
                         case 2: //banish
-                            player.sendPacket(new NpcHtmlMessage(player, ai.fnBanish, ObjID));
+                            player.SendPacket(new NpcHtmlMessage(player, ai.fnBanish, ObjId));
                             break;
                         case 3: //functions
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnDecoFunction, ObjID);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnDecoFunction, ObjId);
                             htm.replace("<?HPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_hpregen));
                             htm.replace("<?MPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_mpregen));
                             htm.replace("<?XPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_xprestore));
-                            player.sendPacket(htm);
+                            player.SendPacket(htm);
                         }
                             break;
                         case 4: // warehouse
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnWarehouse, ObjID);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnWarehouse, ObjId);
                             htm.replace("<?agit_lease?>", hideout.RentCost);
                             htm.replace("<?pay_time?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            player.sendPacket(htm);
+                            player.SendPacket(htm);
                         }
                             break;
                         case 5: // manage
-                            player.sendPacket(new NpcHtmlMessage(player, ai.fnManage, ObjID));
+                            player.SendPacket(new NpcHtmlMessage(player, ai.fnManage, ObjId));
                             break;
                         case 7: //use buff
                         {
                             int level = hideout.GetFuncLevel(AgitManagerAI.decotype_buff);
                             if (level == 0)
                             {
-                                player.sendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjID));
+                                player.SendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjId));
                             }
                             else
                             {
-                                NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnAgitBuff + "_" + level + ".htm", ObjID);
-                                htm.replace("<?MPLeft?>", (int)CurMP);
-                                player.sendPacket(htm);
+                                NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnAgitBuff + "_" + level + ".htm", ObjId);
+                                htm.replace("<?MPLeft?>", (int)CurMp);
+                                player.SendPacket(htm);
                             }
                         }
                             break;
@@ -133,14 +133,14 @@ namespace L2dotNET.GameService.Model.Npcs
                         {
                             int level = hideout.GetFuncLevel(AgitManagerAI.decotype_item);
                             if (level == 0)
-                                player.sendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjID));
+                                player.SendPacket(new NpcHtmlMessage(player, ai.fnFuncDisabled, ObjId));
                             else
                                 NpcData.Instance.Buylist(player, this, (short)level);
                         }
                             break;
                         case 51: // manage regen
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnManageRegen, ObjID);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnManageRegen, ObjId);
                             htm.replace("<?HPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_hpregen));
                             htm.replace("<?HPCost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_hpregen));
                             htm.replace("<?HPExpire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
@@ -155,12 +155,12 @@ namespace L2dotNET.GameService.Model.Npcs
                             htm.replace("<?XPCost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_xprestore));
                             htm.replace("<?XPExpire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
                             htm.replace("<?XPReset?>", "");
-                            player.sendPacket(htm);
+                            player.SendPacket(htm);
                         }
                             break;
                         case 52: // manage etc
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnManageEtc, ObjID);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnManageEtc, ObjId);
                             htm.replace("<?TPDepth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_teleport));
                             htm.replace("<?TPCost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_teleport));
                             htm.replace("<?TPExpire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
@@ -175,12 +175,12 @@ namespace L2dotNET.GameService.Model.Npcs
                             htm.replace("<?ICCost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_item));
                             htm.replace("<?ICExpire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
                             htm.replace("<?ICReset?>", "");
-                            player.sendPacket(htm);
+                            player.SendPacket(htm);
                         }
                             break;
                         case 53: // manage deco
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnManageDeco, ObjID);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnManageDeco, ObjId);
                             htm.replace("<?7_Depth?>", hideout.GetFuncDepth(AgitManagerAI.decotype_curtain));
                             htm.replace("<?7_Cost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_curtain));
                             htm.replace("<?7_Expire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
@@ -190,7 +190,7 @@ namespace L2dotNET.GameService.Model.Npcs
                             htm.replace("<?11_Cost?>", hideout.GetCurrentDecoCost(AgitManagerAI.decotype_platform));
                             htm.replace("<?11_Expire?>", hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
                             htm.replace("<?11_Reset?>", "");
-                            player.sendPacket(htm);
+                            player.SendPacket(htm);
                         }
                             break;
                     }
@@ -203,19 +203,19 @@ namespace L2dotNET.GameService.Model.Npcs
                             foreach (L2Door door in hideout.doors.Where(door => door.Closed != 0))
                             {
                                 door.Closed = 0;
-                                door.broadcastUserInfo();
+                                door.BroadcastUserInfo();
                             }
 
-                            player.sendPacket(new NpcHtmlMessage(player, ai.fnAfterDoorOpen, ObjID));
+                            player.SendPacket(new NpcHtmlMessage(player, ai.fnAfterDoorOpen, ObjId));
                             break;
                         case 2: //close
                             foreach (L2Door door in hideout.doors.Where(door => door.Closed != 1))
                             {
                                 door.Closed = 1;
-                                door.broadcastUserInfo();
+                                door.BroadcastUserInfo();
                             }
 
-                            player.sendPacket(new NpcHtmlMessage(player, ai.fnAfterDoorClose, ObjID));
+                            player.SendPacket(new NpcHtmlMessage(player, ai.fnAfterDoorClose, ObjId));
                             break;
                     }
 
@@ -227,25 +227,25 @@ namespace L2dotNET.GameService.Model.Npcs
                     {
                         case 5:
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnNotEnoughMP, ObjID);
-                            htm.replace("<?MPLeft?>", (int)CurMP);
-                            player.sendPacket(htm);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnNotEnoughMP, ObjId);
+                            htm.replace("<?MPLeft?>", (int)CurMp);
+                            player.SendPacket(htm);
                         }
                             break;
                         case 1:
                         case 4:
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnNeedCoolTime, ObjID);
-                            htm.replace("<?MPLeft?>", (int)CurMP);
-                            player.sendPacket(htm);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnNeedCoolTime, ObjId);
+                            htm.replace("<?MPLeft?>", (int)CurMp);
+                            player.SendPacket(htm);
                         }
                             break;
 
                         case -1:
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnAfterBuff, ObjID);
-                            htm.replace("<?MPLeft?>", (int)CurMP);
-                            player.sendPacket(htm);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnAfterBuff, ObjId);
+                            htm.replace("<?MPLeft?>", (int)CurMp);
+                            player.SendPacket(htm);
                         }
                             break;
                     }
@@ -256,7 +256,7 @@ namespace L2dotNET.GameService.Model.Npcs
                     {
                         case 1: //banish action
                             hideout.Banish();
-                            player.sendPacket(new NpcHtmlMessage(player, ai.fnAfterBanish, ObjID));
+                            player.SendPacket(new NpcHtmlMessage(player, ai.fnAfterBanish, ObjId));
                             break;
                     }
 
@@ -277,11 +277,11 @@ namespace L2dotNET.GameService.Model.Npcs
                         id = int.Parse(val.Remove(1));
                     }
 
-                    NpcHtmlMessage htm = new NpcHtmlMessage(player, "agitdeco__" + id + ".htm", ObjID);
+                    NpcHtmlMessage htm = new NpcHtmlMessage(player, "agitdeco__" + id + ".htm", ObjId);
                     htm.replace("<?AgitDecoCost?>", hideout.GetDecoCost(id, lvl));
                     htm.replace("<?AgitDecoEffect?>", hideout.GetDecoEffect(id, lvl));
                     htm.replace("<?AgitDecoSubmit?>", reply);
-                    player.sendPacket(htm);
+                    player.SendPacket(htm);
                 }
                     break;
                 case -271:
@@ -380,16 +380,16 @@ namespace L2dotNET.GameService.Model.Npcs
                     {
                         case 1:
                         {
-                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnDecoAlreadySet, ObjID);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(player, ai.fnDecoAlreadySet, ObjId);
                             htm.replace("<?AgitDecoEffect?>", "Decoration"); //TODO name
-                            player.sendPacket(htm);
+                            player.SendPacket(htm);
                         }
                             break;
                         case 2:
-                            player.sendPacket(new NpcHtmlMessage(player, ai.fnFailtoSetDeco, ObjID));
+                            player.SendPacket(new NpcHtmlMessage(player, ai.fnFailtoSetDeco, ObjId));
                             break;
                         case 5:
-                            player.sendPacket(new NpcHtmlMessage(player, ai.fnAfterSetDeco, ObjID));
+                            player.SendPacket(new NpcHtmlMessage(player, ai.fnAfterSetDeco, ObjId));
                             broadcastHideoutUpdate(player);
                             break;
                     }
@@ -559,7 +559,7 @@ namespace L2dotNET.GameService.Model.Npcs
             }
 
             ChangeTarget(player);
-            return (short)castSkill(skill);
+            return (short)CastSkill(skill);
 
             //  CurMP -= (skill.MpConsume1 + skill.MpConsume2);
             // player.addEffect(this, skill, player, true, false);
@@ -568,12 +568,12 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public void broadcastHideoutUpdate(L2Player p)
         {
-            p.broadcastPacket(new AgitDecoInfo(hideout));
+            p.BroadcastPacket(new AgitDecoInfo(hideout));
         }
 
-        public override string asString()
+        public override string AsString()
         {
-            return "L2HideoutManager:" + Template.NpcId + "; id " + ObjID + "; " + hideout.ID + " " + hideout.ownerId;
+            return "L2HideoutManager:" + Template.NpcId + "; id " + ObjId + "; " + hideout.ID + " " + hideout.ownerId;
         }
     }
 }

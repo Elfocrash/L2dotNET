@@ -31,27 +31,27 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             L2Object obj = null;
 
-            if (ServerID == player.ObjID)
+            if (ServerID == player.ObjId)
                 obj = player;
             else
             {
-                if (player.knownObjects.ContainsKey(ServerID))
-                    obj = player.knownObjects[ServerID];
+                if (player.KnownObjects.ContainsKey(ServerID))
+                    obj = player.KnownObjects[ServerID];
             }
 
             if (obj == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             switch (_actionId)
             {
                 case 0:
-                    obj.onAction(player);
+                    obj.OnAction(player);
                     break;
                 case 1:
-                    obj.onActionShift(player);
+                    obj.OnActionShift(player);
                     break;
             }
         }

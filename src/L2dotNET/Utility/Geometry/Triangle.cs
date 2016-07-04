@@ -6,37 +6,37 @@ namespace L2dotNET.Utility.Geometry
     public class Triangle : AShape
     {
         // A point
-        protected int _Ax;
-        protected int _Ay;
+        protected int Ax;
+        protected int Ay;
 
         // BA vector coordinates
-        protected int _BAx;
-        protected int _BAy;
+        protected int BAx;
+        protected int BAy;
 
         // CA vector coordinates
-        protected int _CAx;
-        protected int _CAy;
+        protected int CAx;
+        protected int CAy;
 
         // size
-        protected int _size;
+        protected int Size;
 
-        public Triangle(int[] A, int[] B, int[] C)
+        public Triangle(int[] a, int[] b, int[] c)
         {
-            _Ax = A[0];
-            _Ay = A[1];
+            Ax = a[0];
+            Ay = a[1];
 
-            _BAx = B[0] - A[0];
-            _BAy = B[1] - A[1];
+            BAx = b[0] - a[0];
+            BAy = b[1] - a[1];
 
-            _CAx = C[0] - A[0];
-            _CAy = C[1] - A[1];
+            CAx = c[0] - a[0];
+            CAy = c[1] - a[1];
 
-            _size = Math.Abs(_BAx * _CAy - _CAx * _BAy) / 2;
+            Size = Math.Abs(BAx * CAy - CAx * BAy) / 2;
         }
 
         public override double GetArea()
         {
-            return _size;
+            return Size;
         }
 
         public override Location GetRandomLocation()
@@ -50,15 +50,15 @@ namespace L2dotNET.Utility.Geometry
                 ca = 1 - ca;
             }
 
-            int x = _Ax + (int)(ba * _BAx + ca * _CAx);
-            int y = _Ay + (int)(ba * _BAy + ca * _CAy);
+            int x = Ax + (int)(ba * BAx + ca * CAx);
+            int y = Ay + (int)(ba * BAy + ca * CAy);
 
             return new Location(x, y, 0);
         }
 
         public override int GetSize()
         {
-            return _size;
+            return Size;
         }
 
         public override double GetVolume()
@@ -68,24 +68,24 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y)
         {
-            long dx = x - _Ax;
-            long dy = y - _Ay;
+            long dx = x - Ax;
+            long dy = y - Ay;
 
-            bool a = (0 - dx) * (_BAy - 0) - (_BAx - 0) * (0 - dy) >= 0;
-            bool b = (_BAx - dx) * (_CAy - _BAy) - (_CAx - _BAx) * (_BAy - dy) >= 0;
-            bool c = (_CAx - dx) * (0 - _CAy) - (0 - _CAx) * (_CAy - dy) >= 0;
+            bool a = (0 - dx) * (BAy - 0) - (BAx - 0) * (0 - dy) >= 0;
+            bool b = (BAx - dx) * (CAy - BAy) - (CAx - BAx) * (BAy - dy) >= 0;
+            bool c = (CAx - dx) * (0 - CAy) - (0 - CAx) * (CAy - dy) >= 0;
 
             return (a == b) && (b == c);
         }
 
         public override bool IsInside(int x, int y, int z)
         {
-            long dx = x - _Ax;
-            long dy = y - _Ay;
+            long dx = x - Ax;
+            long dy = y - Ay;
 
-            bool a = (0 - dx) * (_BAy - 0) - (_BAx - 0) * (0 - dy) >= 0;
-            bool b = (_BAx - dx) * (_CAy - _BAy) - (_CAx - _BAx) * (_BAy - dy) >= 0;
-            bool c = (_CAx - dx) * (0 - _CAy) - (0 - _CAx) * (_CAy - dy) >= 0;
+            bool a = (0 - dx) * (BAy - 0) - (BAx - 0) * (0 - dy) >= 0;
+            bool b = (BAx - dx) * (CAy - BAy) - (CAx - BAx) * (BAy - dy) >= 0;
+            bool c = (CAx - dx) * (0 - CAy) - (0 - CAx) * (CAy - dy) >= 0;
 
             return (a == b) && (b == c);
         }

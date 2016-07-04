@@ -26,11 +26,11 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             //double shieldDef = Formulas.checkShieldDef(caster, target);
             double damage = Formulas.getPhysSkillHitDamage(caster, target, power);
 
-            caster.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3).AddPlayerName(caster.Name).AddString(target.Name).AddNumber(damage));
+            caster.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_GIVEN_C2_DAMAGE_OF_S3).AddPlayerName(caster.Name).AddString(target.Name).AddNumber(damage));
             if (target is L2Player)
-                target.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2).AddPlayerName(target.Name).AddPlayerName(caster.Name).AddNumber(damage));
+                target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1_HAS_RECEIVED_S3_DAMAGE_FROM_C2).AddPlayerName(target.Name).AddPlayerName(caster.Name).AddNumber(damage));
 
-            target.reduceHp(caster, damage);
+            target.ReduceHp(caster, damage);
 
             return nothing;
         }

@@ -10,12 +10,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
         private readonly int _mode;
         public List<int[]> _reqs = new List<int[]>();
 
-        public AcquireSkillInfo(int _id, int _level, int sp, int _skillType)
+        public AcquireSkillInfo(int _id, int level, int sp, int skillType)
         {
             this._id = _id;
-            this._level = _level;
+            this._level = level;
             _spCost = sp;
-            _mode = _skillType;
+            _mode = skillType;
         }
 
         protected internal override void write()

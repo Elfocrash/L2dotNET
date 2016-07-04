@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.Model.Player.Transformation
             player.TransformID = id;
             player.MountType = MoveMode;
             //player.MountedTemplate = NpcTable.Instance.GetNpcTemplate(npcId);
-            player.broadcastUserInfo();
+            player.BroadcastUserInfo();
 
             if ((_skills != null) && (_skills.Count > 0))
             {
@@ -41,10 +41,10 @@ namespace L2dotNET.GameService.Model.Player.Transformation
                 {
                     TSkill sk = TSkillTable.Instance.Get(s[0], s[1]);
                     if (sk != null)
-                        player.addSkill(sk, false, false);
+                        player.AddSkill(sk, false, false);
                 }
 
-                player.updateSkillList();
+                player.UpdateSkillList();
             }
         }
 
@@ -54,14 +54,14 @@ namespace L2dotNET.GameService.Model.Player.Transformation
                 player.MountType = 0;
             player.MountedTemplate = null;
             player.TransformID = 0;
-            player.broadcastUserInfo();
+            player.BroadcastUserInfo();
 
             if ((_skills != null) && (_skills.Count > 0))
             {
                 foreach (int[] s in _skills)
-                    player.removeSkill(s[0], false, false);
+                    player.RemoveSkill(s[0], false, false);
 
-                player.updateSkillList();
+                player.UpdateSkillList();
             }
         }
 
@@ -70,9 +70,9 @@ namespace L2dotNET.GameService.Model.Player.Transformation
             return false;
         }
 
-        public double getRadius(byte Sex)
+        public double getRadius(byte sex)
         {
-            switch (Sex)
+            switch (sex)
             {
                 case 0:
                     return 0; //coll_r_male;
@@ -81,9 +81,9 @@ namespace L2dotNET.GameService.Model.Player.Transformation
             }
         }
 
-        public double getHeight(byte Sex)
+        public double getHeight(byte sex)
         {
-            switch (Sex)
+            switch (sex)
             {
                 case 0:
                     return 0; //coll_h_male;

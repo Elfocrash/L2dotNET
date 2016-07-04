@@ -33,20 +33,20 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
                 L2Item item = (L2Item)obj[0];
 
-                writeD(item.ObjID);
+                writeD(item.ObjId);
                 writeD(item.Template.ItemID);
                 writeD(0); //loc
                 writeQ(item.Count);
 
                 writeH(item.Template.Type2());
                 writeH(0);
-                writeH(item._isEquipped);
+                writeH(item.IsEquipped);
 
                 writeD(item.Template.BodyPartId());
                 writeH(item.Enchant);
                 writeH(0);
 
-                writeD(item.AugmentationID);
+                writeD(item.AugmentationId);
                 writeD(item.Durability);
                 writeD(item.LifeTimeEnd());
 

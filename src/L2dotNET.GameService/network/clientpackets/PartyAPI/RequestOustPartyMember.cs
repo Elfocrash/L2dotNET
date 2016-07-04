@@ -23,14 +23,14 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 
             if (player.Party == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
-            if (player.Party.leader.ObjID != player.ObjID)
+            if (player.Party.leader.ObjId != player.ObjId)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_EXPEL_THE_PARTY_MEMBER);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_EXPEL_THE_PARTY_MEMBER);
+                player.SendActionFailed();
                 return;
             }
 

@@ -2,15 +2,15 @@
 
 namespace L2dotNET.GameService.AI.NpcAI
 {
-    class black_judge_basic : citizen
+    class BlackJudgeBasic : Citizen
     {
-        public int s_penaltyoff = 458752001;
-        public int cost_penaltyoffS = 0;
-        public int cost_penaltyoffA = 0;
-        public int cost_penaltyoffB = 0;
-        public int cost_penaltyoffC = 0;
-        public int cost_penaltyoffD = 0;
-        public int cost_penaltyoff0 = 0;
+        public int SPenaltyoff = 458752001;
+        public int CostPenaltyoffS = 0;
+        public int CostPenaltyoffA = 0;
+        public int CostPenaltyoffB = 0;
+        public int CostPenaltyoffC = 0;
+        public int CostPenaltyoffD = 0;
+        public int CostPenaltyoff0 = 0;
 
         public override void TalkedReply(L2Player talker, int ask, int reply)
         {
@@ -20,39 +20,39 @@ namespace L2dotNET.GameService.AI.NpcAI
                     switch (reply)
                     {
                         case 1:
-                            GetOffPenalty(talker, 76, 99, cost_penaltyoffS);
+                            GetOffPenalty(talker, 76, 99, CostPenaltyoffS);
                             break;
                         case 2:
-                            GetOffPenalty(talker, 61, 76, cost_penaltyoffA);
+                            GetOffPenalty(talker, 61, 76, CostPenaltyoffA);
                             break;
                         case 3:
-                            GetOffPenalty(talker, 52, 61, cost_penaltyoffB);
+                            GetOffPenalty(talker, 52, 61, CostPenaltyoffB);
                             break;
                         case 4:
-                            GetOffPenalty(talker, 40, 52, cost_penaltyoffC);
+                            GetOffPenalty(talker, 40, 52, CostPenaltyoffC);
                             break;
                         case 5:
-                            GetOffPenalty(talker, 20, 40, cost_penaltyoffD);
+                            GetOffPenalty(talker, 20, 40, CostPenaltyoffD);
                             break;
                         case 6:
-                            GetOffPenalty(talker, 1, 20, cost_penaltyoff0);
+                            GetOffPenalty(talker, 1, 20, CostPenaltyoff0);
                             break;
                     }
 
                     break;
                 case -506:
                     if (talker.Level >= 76)
-                        talker.ShowHtm("black_judge007.htm", myself);
+                        talker.ShowHtm("black_judge007.htm", Myself);
                     else if ((talker.Level >= 61) && (talker.Level < 76))
-                        talker.ShowHtm("black_judge006.htm", myself);
+                        talker.ShowHtm("black_judge006.htm", Myself);
                     else if ((talker.Level >= 52) && (talker.Level < 61))
-                        talker.ShowHtm("black_judge005.htm", myself);
+                        talker.ShowHtm("black_judge005.htm", Myself);
                     else if ((talker.Level >= 40) && (talker.Level < 52))
-                        talker.ShowHtm("black_judge004.htm", myself);
+                        talker.ShowHtm("black_judge004.htm", Myself);
                     else if ((talker.Level >= 20) && (talker.Level < 40))
-                        talker.ShowHtm("black_judge003.htm", myself);
+                        talker.ShowHtm("black_judge003.htm", Myself);
                     else if ((talker.Level >= 1) && (talker.Level < 20))
-                        talker.ShowHtm("black_judge002.htm", myself);
+                        talker.ShowHtm("black_judge002.htm", Myself);
                     break;
                 default:
                     base.TalkedReply(talker, ask, reply);
@@ -66,13 +66,13 @@ namespace L2dotNET.GameService.AI.NpcAI
                 if (talker.DeathPenaltyLevel > 0)
                     if (talker.ReduceAdena(cost))
                     {
-                        talker.DestroyItemById(adena, cost);
-                        myself.CastBuffForQuestReward(talker, s_penaltyoff);
+                        talker.DestroyItemById(Adena, cost);
+                        Myself.CastBuffForQuestReward(talker, SPenaltyoff);
                     }
                     else
-                        talker.ShowHtm("black_judge008.htm", myself);
+                        talker.ShowHtm("black_judge008.htm", Myself);
                 else
-                    talker.ShowHtm("black_judge009.htm", myself);
+                    talker.ShowHtm("black_judge009.htm", Myself);
         }
     }
 }

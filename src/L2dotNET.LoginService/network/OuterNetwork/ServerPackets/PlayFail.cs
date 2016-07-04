@@ -11,11 +11,11 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 
         public enum PlayFailReason
         {
-            REASON_SYSTEM_ERROR = 0x01,
-            REASON_USER_OR_PASS_WRONG = 0x02,
-            REASON3 = 0x03,
-            REASON4 = 0x04,
-            REASON_TOO_MANY_PLAYERS = 0x0f
+            ReasonSystemError = 0x01,
+            ReasonUserOrPassWrong = 0x02,
+            Reason3 = 0x03,
+            Reason4 = 0x04,
+            ReasonTooManyPlayers = 0x0f
         }
 
         internal static Packet ToPacket(LoginClient client, PlayFailReason reason)

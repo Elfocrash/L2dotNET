@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public StopMove(L2Character cha)
         {
-            _id = cha.ObjID;
+            _id = cha.ObjId;
             _x = cha.X;
             _y = cha.Y;
             _z = cha.Z;

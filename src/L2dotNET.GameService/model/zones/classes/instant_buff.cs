@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
         private void affect(L2Character target)
         {
-            target.sendMessage("u can feel defence.");
+            target.SendMessage("u can feel defence.");
             //Random rn = new Random();
             //if (Zone._skills != null)
             //{
@@ -46,10 +46,10 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onEnter(obj);
 
-            obj.onEnterZone(this);
+            obj.OnEnterZone(this);
 
             if (obj is L2Character)
-                ((L2Character)obj).sendMessage("u can feel defence.");
+                ((L2Character)obj).SendMessage("u can feel defence.");
         }
 
         public override void onExit(L2Object obj, bool cls)
@@ -59,10 +59,10 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onExit(obj, cls);
 
-            obj.onExitZone(this, cls);
+            obj.OnExitZone(this, cls);
 
             if (obj is L2Character)
-                ((L2Character)obj).sendMessage("u lost effect defence.");
+                ((L2Character)obj).SendMessage("u lost effect defence.");
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.AI.NpcAI
 {
-    class henna_manager : citizen
+    class HennaManager : Citizen
     {
         public override void TalkedReply(L2Player talker, int ask, int reply)
         {
@@ -20,12 +20,12 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         private void OpenHennaListForUnquip(L2Player talker)
         {
-            talker.sendMessage("henna_manager.OpenHennaListForUnquip");
+            talker.SendMessage("henna_manager.OpenHennaListForUnquip");
         }
 
         private void OpenHennaItemListForEquip(L2Player talker)
         {
-            talker.sendMessage("henna_manager.OpenHennaItemListForEquip");
+            talker.SendMessage("henna_manager.OpenHennaItemListForEquip");
         }
     }
 }

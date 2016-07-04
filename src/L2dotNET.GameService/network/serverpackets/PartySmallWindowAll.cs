@@ -15,20 +15,20 @@ namespace L2dotNET.GameService.Network.Serverpackets
         protected internal override void write()
         {
             writeC(0x4e);
-            writeD(party.leader.ObjID);
+            writeD(party.leader.ObjId);
             writeD(party.itemDistribution);
             writeD(party.Members.Count);
 
             foreach (L2Player member in party.Members)
             {
-                writeD(member.ObjID);
+                writeD(member.ObjId);
                 writeS(member.Name);
 
-                writeD(member.CurCP);
+                writeD(member.CurCp);
                 writeD(member.CharacterStat.getStat(TEffectType.b_max_cp));
-                writeD(member.CurHP);
+                writeD(member.CurHp);
                 writeD(member.CharacterStat.getStat(TEffectType.b_max_hp));
-                writeD(member.CurMP);
+                writeD(member.CurMp);
                 writeD(member.CharacterStat.getStat(TEffectType.b_max_mp));
                 writeD(member.Level);
 

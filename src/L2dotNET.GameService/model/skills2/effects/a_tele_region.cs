@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             //    loc = MapRegionTable.getInstance().getRespawn(target.X, target.Y, ((L2Player)target).Karma);
 
             if (loc != null)
-                target.teleport(loc[0], loc[1], loc[2]);
+                target.Teleport(loc[0], loc[1], loc[2]);
             return nothing;
         }
 
@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
             if (player.IsWard())
             {
-                caster.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_TELEPORT_WHILE_POSSESSION_WARD);
+                caster.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_TELEPORT_WHILE_POSSESSION_WARD);
                 return false;
             }
 

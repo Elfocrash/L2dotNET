@@ -25,15 +25,15 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 
             if ((player.Summon == null) || !(player.Summon is L2Pet))
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             L2Pet pet = (L2Pet)player.Summon;
 
-            if ((pet._p_block_act == 1) || pet.Dead)
+            if ((pet.PBlockAct == 1) || pet.Dead)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
             if (ItemHandler.Instance.Process(pet, item))
                 return;
 
-            player.sendActionFailed();
+            player.SendActionFailed();
         }
     }
 }

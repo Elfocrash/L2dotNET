@@ -47,11 +47,11 @@ namespace L2dotNET.GameService.Network.LoginAuth
             return result;
         }
 
-        public byte[] readB(int Length)
+        public byte[] readB(int length)
         {
-            byte[] result = new byte[Length];
-            Array.Copy(_packet, _offset, result, 0, Length);
-            _offset += Length;
+            byte[] result = new byte[length];
+            Array.Copy(_packet, _offset, result, 0, length);
+            _offset += length;
             return result;
         }
 

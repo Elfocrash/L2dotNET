@@ -6,17 +6,17 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
     {
         public L2Chair()
         {
-            ObjID = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.nextId();
             Closed = 0;
-            MaxHP = 0;
-            CurHP = 0;
+            MaxHp = 0;
+            CurHp = 0;
         }
 
         public bool IsUsedAlready = false;
 
-        public override string asString()
+        public override string AsString()
         {
-            return "L2Chair:" + ObjID + " " + StaticID + " " + ClanID;
+            return "L2Chair:" + ObjId + " " + StaticID + " " + ClanID;
         }
     }
 }

@@ -42,7 +42,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (npc == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -58,7 +58,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 if (item == null)
                 {
                     log.Info($"cant find item {objectId} in warehouse {player.Name}");
-                    player.sendActionFailed();
+                    player.SendActionFailed();
                     return;
                 }
 
@@ -75,8 +75,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (player.ItemLimit_Inventory < (player.GetAllItems().Count + slots))
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.SLOTS_FULL);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.SLOTS_FULL);
+                player.SendActionFailed();
                 return;
             }
 

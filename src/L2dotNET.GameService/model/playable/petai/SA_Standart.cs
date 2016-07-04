@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
 
         public override void DoFollow(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {
-            if (summon.cantMove())
+            if (summon.CantMove())
                 return;
 
             double dis = Calcs.calculateDistance(summon, summon.Owner, true);

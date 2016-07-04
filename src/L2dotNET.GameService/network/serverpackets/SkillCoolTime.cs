@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public SkillCoolTime(L2Player player)
         {
-            list = player._reuse.Values;
+            list = player.Reuse.Values;
         }
 
         protected internal override void write()

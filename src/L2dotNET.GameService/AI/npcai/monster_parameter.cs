@@ -3,14 +3,14 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.AI.NpcAI
 {
-    public class monster_parameter : Template.AI
+    public class MonsterParameter : Template.Ai
     {
         public int AttackLowLevel = 0;
         public int RunAway = 1;
         public int SetCurse = 0;
-        public int AttackLowHP = 0;
+        public int AttackLowHp = 0;
         public int HelpHeroSilhouette = 0;
-        public string HelpHeroAI = "warrior_hero";
+        public string HelpHeroAi = "warrior_hero";
         public int SetAggressiveTime = -1;
         public int HalfAggressive = 0;
         public int RandomAggressive = 0;
@@ -21,9 +21,9 @@ namespace L2dotNET.GameService.AI.NpcAI
         public int SetHateRace = -1;
         public int SetHateRaceRatio = 0;
         public int IsTransform = 0;
-        public int step1 = 20130;
-        public int step2 = 20006;
-        public int step3 = 20853;
+        public int Step1 = 20130;
+        public int Step2 = 20006;
+        public int Step3 = 20853;
         public int DaggerBackAttack = 458752001;
         public int IsVs = 0;
         public int SpecialSkill = 458752001;
@@ -35,14 +35,14 @@ namespace L2dotNET.GameService.AI.NpcAI
         public int ShoutMsg2 = 0;
         public int ShoutMsg3 = 0;
         public int ShoutMsg4 = 0;
-        public int SSQLoserTeleport = 0;
-        public int SSQTelPosX = 0;
-        public int SSQTelPosY = 0;
-        public int SSQTelPosZ = 0;
+        public int SsqLoserTeleport = 0;
+        public int SsqTelPosX = 0;
+        public int SsqTelPosY = 0;
+        public int SsqTelPosZ = 0;
         public int SwapPosition = 0;
         public int FriendShip = 0;
         public int DungeonType = 0;
-        public int DungeonTypeAI = 0;
+        public int DungeonTypeAi = 0;
         public string DungeonTypePrivate = "";
         public int ShoutTarget = 0;
         public int AcceptShoutTarget = 0;

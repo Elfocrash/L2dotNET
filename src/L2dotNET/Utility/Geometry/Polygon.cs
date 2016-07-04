@@ -7,17 +7,17 @@ namespace L2dotNET.Utility.Geometry
 {
     public class Polygon : AShape
     {
-        private const int TRIANGULATION_MAX_LOOPS = 100;
+        private const int TriangulationMaxLoops = 100;
 
-        protected List<AShape> _shapes;
+        protected List<AShape> Shapes;
 
-        protected int _size;
+        protected int Size;
 
         public Polygon(List<AShape> shapes)
         {
-            _shapes = shapes;
+            Shapes = shapes;
 
-            _size = shapes.Sum(shape => shape.GetSize());
+            Size = shapes.Sum(shape => shape.GetSize());
         }
 
         public Polygon(int id, List<int[]> points)
@@ -48,8 +48,8 @@ namespace L2dotNET.Utility.Geometry
                 triangles = new List<Triangle>();
             }
 
-            _shapes = triangles.Cast<AShape>().ToList();
-            _size = size;
+            Shapes = triangles.Cast<AShape>().ToList();
+            Size = size;
         }
 
         public override double GetArea()
@@ -59,9 +59,9 @@ namespace L2dotNET.Utility.Geometry
 
         public override Location GetRandomLocation()
         {
-            int size = Rnd.Get(_size);
+            int size = Rnd.Get(Size);
 
-            foreach (AShape shape in _shapes)
+            foreach (AShape shape in Shapes)
             {
                 size -= shape.GetSize();
                 if (size < 0)
@@ -74,7 +74,7 @@ namespace L2dotNET.Utility.Geometry
 
         public override int GetSize()
         {
-            return _size;
+            return Size;
         }
 
         public override double GetVolume()
@@ -84,12 +84,12 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y)
         {
-            return _shapes.Any(shape => shape.IsInside(x, y));
+            return Shapes.Any(shape => shape.IsInside(x, y));
         }
 
         public override bool IsInside(int x, int y, int z)
         {
-            return _shapes.Any(shape => shape.IsInside(x, y, z));
+            return Shapes.Any(shape => shape.IsInside(x, y, z));
         }
 
         private static bool GetPolygonOrientation(List<int[]> points)
@@ -206,7 +206,7 @@ namespace L2dotNET.Utility.Geometry
                     index = indexNext;
                 }
 
-                if (++loops == TRIANGULATION_MAX_LOOPS)
+                if (++loops == TriangulationMaxLoops)
                     throw new Exception("Coordinates are not aligned to form monotone polygon.");
             }
 
@@ -217,45 +217,45 @@ namespace L2dotNET.Utility.Geometry
             return triangles;
         }
 
-        private static bool IsEar(bool isCw, List<int[]> nonConvexPoints, int[] A, int[] B, int[] C)
+        private static bool IsEar(bool isCw, List<int[]> nonConvexPoints, int[] a, int[] b, int[] c)
         {
             // ABC triangle
-            if (!(IsConvex(isCw, A, B, C)))
+            if (!(IsConvex(isCw, a, b, c)))
                 return false;
 
             // iterate over all concave points and check if one of them lies inside the given triangle
-            return nonConvexPoints.All(i => !IsInside(A, B, C, i));
+            return nonConvexPoints.All(i => !IsInside(a, b, c, i));
         }
 
-        private static bool IsConvex(bool isCw, int[] A, int[] B, int[] C)
+        private static bool IsConvex(bool isCw, int[] a, int[] b, int[] c)
         {
             // get vector coordinates
-            int BAx = B[0] - A[0];
-            int BAy = B[1] - A[1];
+            int bAx = b[0] - a[0];
+            int bAy = b[1] - a[1];
 
             // get virtual triangle orientation
-            bool cw = (C[0] * BAy - C[1] * BAx + BAx * A[1] - BAy * A[0]) > 0;
+            bool cw = (c[0] * bAy - c[1] * bAx + bAx * a[1] - bAy * a[0]) > 0;
 
             // compare with orientation of polygon
             return cw != isCw;
         }
 
-        private static bool IsInside(int[] A, int[] B, int[] C, int[] P)
+        private static bool IsInside(int[] a, int[] b, int[] c, int[] p)
         {
             // get vector coordinates
-            int BAx = B[0] - A[0];
-            int BAy = B[1] - A[1];
-            int CAx = C[0] - A[0];
-            int CAy = C[1] - A[1];
-            int PAx = P[0] - A[0];
-            int PAy = P[1] - A[1];
+            int bAx = b[0] - a[0];
+            int bAy = b[1] - a[1];
+            int cAx = c[0] - a[0];
+            int cAy = c[1] - a[1];
+            int pAx = p[0] - a[0];
+            int pAy = p[1] - a[1];
 
             // get determinant
-            double detXYZ = BAx * CAy - CAx * BAy;
+            double detXyz = bAx * cAy - cAx * bAy;
 
             // calculate BA and CA coefficient to each P from A
-            double ba = (BAx * PAy - PAx * BAy) / detXYZ;
-            double ca = (PAx * CAy - CAx * PAy) / detXYZ;
+            double ba = (bAx * pAy - pAx * bAy) / detXyz;
+            double ca = (pAx * cAy - cAx * pAy) / detXyz;
 
             // check coefficients
             return ((ba > 0) && (ca > 0) && ((ba + ca) < 1));

@@ -21,46 +21,46 @@ namespace L2dotNET.GameService.Enums
         {
             get
             {
-                yield return PVP;
-                yield return PEACE;
-                yield return SIEGE;
-                yield return MOTHER_TREE;
-                yield return CLAN_HALL;
-                yield return NO_LANDING;
-                yield return WATER;
-                yield return JAIL;
-                yield return MONSTER_TRACK;
-                yield return CASTLE;
-                yield return SWAMP;
-                yield return NO_SUMMON_FRIEND;
-                yield return NO_STORE;
-                yield return TOWN;
-                yield return HQ;
-                yield return DANGER_AREA;
-                yield return CAST_ON_ARTIFACT;
-                yield return NO_RESTART;
-                yield return SCRIPT;
+                yield return Pvp;
+                yield return Peace;
+                yield return Siege;
+                yield return MotherTree;
+                yield return ClanHall;
+                yield return NoLanding;
+                yield return Water;
+                yield return Jail;
+                yield return MonsterTrack;
+                yield return Castle;
+                yield return Swamp;
+                yield return NoSummonFriend;
+                yield return NoStore;
+                yield return Town;
+                yield return Hq;
+                yield return DangerArea;
+                yield return CastOnArtifact;
+                yield return NoRestart;
+                yield return Script;
             }
         }
 
-        public static readonly ZoneId PVP = new ZoneId(ZoneIds.PVP);
-        public static readonly ZoneId PEACE = new ZoneId(ZoneIds.PEACE);
-        public static readonly ZoneId SIEGE = new ZoneId(ZoneIds.SIEGE);
-        public static readonly ZoneId MOTHER_TREE = new ZoneId(ZoneIds.MOTHER_TREE);
-        public static readonly ZoneId CLAN_HALL = new ZoneId(ZoneIds.CLAN_HALL);
-        public static readonly ZoneId NO_LANDING = new ZoneId(ZoneIds.NO_LANDING);
-        public static readonly ZoneId WATER = new ZoneId(ZoneIds.WATER);
-        public static readonly ZoneId JAIL = new ZoneId(ZoneIds.JAIL);
-        public static readonly ZoneId MONSTER_TRACK = new ZoneId(ZoneIds.MONSTER_TRACK);
-        public static readonly ZoneId CASTLE = new ZoneId(ZoneIds.CASTLE);
-        public static readonly ZoneId SWAMP = new ZoneId(ZoneIds.SWAMP);
-        public static readonly ZoneId NO_SUMMON_FRIEND = new ZoneId(ZoneIds.NO_SUMMON_FRIEND);
-        public static readonly ZoneId NO_STORE = new ZoneId(ZoneIds.NO_STORE);
-        public static readonly ZoneId TOWN = new ZoneId(ZoneIds.TOWN);
-        public static readonly ZoneId HQ = new ZoneId(ZoneIds.HQ);
-        public static readonly ZoneId DANGER_AREA = new ZoneId(ZoneIds.DANGER_AREA);
-        public static readonly ZoneId CAST_ON_ARTIFACT = new ZoneId(ZoneIds.CAST_ON_ARTIFACT);
-        public static readonly ZoneId NO_RESTART = new ZoneId(ZoneIds.NO_RESTART);
-        public static readonly ZoneId SCRIPT = new ZoneId(ZoneIds.SCRIPT);
+        public static readonly ZoneId Pvp = new ZoneId(ZoneIds.Pvp);
+        public static readonly ZoneId Peace = new ZoneId(ZoneIds.Peace);
+        public static readonly ZoneId Siege = new ZoneId(ZoneIds.Siege);
+        public static readonly ZoneId MotherTree = new ZoneId(ZoneIds.MotherTree);
+        public static readonly ZoneId ClanHall = new ZoneId(ZoneIds.ClanHall);
+        public static readonly ZoneId NoLanding = new ZoneId(ZoneIds.NoLanding);
+        public static readonly ZoneId Water = new ZoneId(ZoneIds.Water);
+        public static readonly ZoneId Jail = new ZoneId(ZoneIds.Jail);
+        public static readonly ZoneId MonsterTrack = new ZoneId(ZoneIds.MonsterTrack);
+        public static readonly ZoneId Castle = new ZoneId(ZoneIds.Castle);
+        public static readonly ZoneId Swamp = new ZoneId(ZoneIds.Swamp);
+        public static readonly ZoneId NoSummonFriend = new ZoneId(ZoneIds.NoSummonFriend);
+        public static readonly ZoneId NoStore = new ZoneId(ZoneIds.NoStore);
+        public static readonly ZoneId Town = new ZoneId(ZoneIds.Town);
+        public static readonly ZoneId Hq = new ZoneId(ZoneIds.Hq);
+        public static readonly ZoneId DangerArea = new ZoneId(ZoneIds.DangerArea);
+        public static readonly ZoneId CastOnArtifact = new ZoneId(ZoneIds.CastOnArtifact);
+        public static readonly ZoneId NoRestart = new ZoneId(ZoneIds.NoRestart);
+        public static readonly ZoneId Script = new ZoneId(ZoneIds.Script);
     }
 }

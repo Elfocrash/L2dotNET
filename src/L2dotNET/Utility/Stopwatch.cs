@@ -28,32 +28,32 @@ namespace L2dotNET.Utility
         /// <summary>
         /// <see cref="Stopwatch"/> start time value.
         /// </summary>
-        private long StartTime;
+        private long _startTime;
 
         /// <summary>
         /// <see cref="Stopwatch"/> stop time value.
         /// </summary>
-        private long StopTime;
+        private long _stopTime;
 
         /// <summary>
         /// <see cref="Stopwatch"/> clack frequency value.
         /// </summary>
-        private long ClockFrequency;
+        private long _clockFrequency;
 
         /// <summary>
         /// <see cref="Stopwatch"/> calibration time value.
         /// </summary>
-        private long CalibrationTime;
+        private long _calibrationTime;
 
         /// <summary>
         /// Initializes new instance of <see cref="Stopwatch"/> object.
         /// </summary>
         public Stopwatch()
         {
-            StartTime = 0;
-            StopTime = 0;
-            ClockFrequency = 0;
-            CalibrationTime = 0;
+            _startTime = 0;
+            _stopTime = 0;
+            _clockFrequency = 0;
+            _calibrationTime = 0;
             Calibrate();
         }
 
@@ -62,8 +62,8 @@ namespace L2dotNET.Utility
         /// </summary>
         public void Reset()
         {
-            StartTime = 0;
-            StopTime = 0;
+            _startTime = 0;
+            _stopTime = 0;
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace L2dotNET.Utility
         /// </summary>
         public void Start()
         {
-            QueryPerformanceCounter(ref StartTime);
+            QueryPerformanceCounter(ref _startTime);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace L2dotNET.Utility
         /// </summary>
         public void Stop()
         {
-            QueryPerformanceCounter(ref StopTime);
+            QueryPerformanceCounter(ref _stopTime);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace L2dotNET.Utility
         /// <returns><see cref="TimeSpan"/> value between <see cref="Stopwatch"/> has been started and stopped.</returns>
         public TimeSpan GetElapsedTimeSpan()
         {
-            return TimeSpan.FromMilliseconds(InternalGetElapsedTimeMS());
+            return TimeSpan.FromMilliseconds(InternalGetElapsedTimeMs());
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace L2dotNET.Utility
         /// <returns><see cref="double"/> value in microseconds between <see cref="Stopwatch"/> has been started and stopped.</returns>
         public double GetElapsedTimeInMicroseconds()
         {
-            return (((StopTime - StartTime - CalibrationTime) * 1000000.0 / ClockFrequency));
+            return (((_stopTime - _startTime - _calibrationTime) * 1000000.0 / _clockFrequency));
         }
 
         /// <summary>
@@ -105,21 +105,21 @@ namespace L2dotNET.Utility
         /// </summary>
         private void Calibrate()
         {
-            QueryPerformanceFrequency(ref ClockFrequency);
+            QueryPerformanceFrequency(ref _clockFrequency);
 
             for (int i = 0; i < 1000; i++)
             {
                 Start();
                 Stop();
-                CalibrationTime += StopTime - StartTime;
+                _calibrationTime += _stopTime - _startTime;
             }
 
-            CalibrationTime /= 1000;
+            _calibrationTime /= 1000;
         }
 
-        private double InternalGetElapsedTimeMS()
+        private double InternalGetElapsedTimeMs()
         {
-            return (((StopTime - StartTime - CalibrationTime) * 1000000.0 / ClockFrequency) / 1000.0);
+            return (((_stopTime - _startTime - _calibrationTime) * 1000000.0 / _clockFrequency) / 1000.0);
         }
     }
 }

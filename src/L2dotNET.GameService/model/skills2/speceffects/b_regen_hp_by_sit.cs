@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Model.Skills2.SpecEffects
             else
                 player.CharacterStat.SpecBonusRegHP -= value;
 
-            player.sendMessage("reg hp lowered");
+            player.SendMessage("reg hp lowered");
         }
 
         public override void OnSit(L2Player player)
@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Model.Skills2.SpecEffects
             else
                 player.CharacterStat.SpecBonusRegHP += value;
 
-            player.sendMessage("reg hp inc");
+            player.SendMessage("reg hp inc");
         }
     }
 }

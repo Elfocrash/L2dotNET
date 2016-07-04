@@ -27,15 +27,15 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
             if (player.EnchantState != ItemEnchantManager.STATE_ENCHANT_START)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
+                player.SendActionFailed();
                 return;
             }
 
-            if (a_sTargetID != player.EnchantItem.ObjID)
+            if (a_sTargetID != player.EnchantItem.ObjId)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
+                player.SendActionFailed();
                 return;
             }
 
@@ -62,14 +62,14 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                 iu = new InventoryUpdate();
                 iu.addModItem(player.EnchantItem);
 
-                player.sendPacket(new EnchantResult(EnchantResultVal.success));
+                player.SendPacket(new EnchantResult(EnchantResultVal.success));
 
-                equip = player.EnchantItem._isEquipped == 1;
+                equip = player.EnchantItem.IsEquipped == 1;
 
                 if (equip && (player.EnchantItem.Enchant == 4) && (player.EnchantItem.Template.item_skill_ench4 != null))
                 {
-                    player.addSkill(player.EnchantItem.Template.item_skill_ench4, false, false);
-                    player.updateSkillList();
+                    player.AddSkill(player.EnchantItem.Template.item_skill_ench4, false, false);
+                    player.UpdateSkillList();
                 }
                 //todo check +6 set
             }
@@ -85,14 +85,14 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                         iu = new InventoryUpdate();
                         iu.addModItem(player.EnchantItem);
 
-                        player.sendPacket(new EnchantResult(EnchantResultVal.breakToOne));
+                        player.SendPacket(new EnchantResult(EnchantResultVal.breakToOne));
                         break;
                     case EnchantType.ancient:
-                        player.sendPacket(new EnchantResult(EnchantResultVal.safeBreak));
+                        player.SendPacket(new EnchantResult(EnchantResultVal.safeBreak));
                         break;
                     default:
                     {
-                        if (player.EnchantItem._isEquipped == 1)
+                        if (player.EnchantItem.IsEquipped == 1)
                         {
                             //int pdollId = player.Inventory.getPaperdollId(player.EnchantItem.Template);
                            // player.setPaperdoll(pdollId, null, false);
@@ -105,11 +105,11 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                         int cry = player.EnchantItem.Template._cryCount;
 
                         if (cry == 0)
-                            player.sendPacket(new EnchantResult(EnchantResultVal.breakToNothing));
+                            player.SendPacket(new EnchantResult(EnchantResultVal.breakToNothing));
                         else
                         {
                             int id = player.EnchantItem.Template.getCrystallId();
-                            player.sendPacket(new EnchantResult(EnchantResultVal.breakToCount, id, cry));
+                            player.SendPacket(new EnchantResult(EnchantResultVal.breakToCount, id, cry));
                             player.AddItem(id, cry);
                         }
                     }
@@ -123,7 +123,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             player.DestroyItem(player.EnchantScroll, 1);
 
             if (iu != null)
-                player.sendPacket(iu);
+                player.SendPacket(iu);
 
             player.EnchantItem = null;
             player.EnchantScroll = null;
@@ -131,7 +131,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             player.EnchantState = 0;
 
             if (equip)
-                player.broadcastUserInfo();
+                player.BroadcastUserInfo();
         }
     }
 }

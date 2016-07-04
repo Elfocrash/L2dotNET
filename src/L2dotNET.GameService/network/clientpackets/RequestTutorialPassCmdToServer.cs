@@ -24,9 +24,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player._p_block_act == 1)
+            if (player.PBlockAct == 1)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -44,7 +44,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             {
                 if (player.ViewingAdminPage == 0)
                 {
-                    player.sendActionFailed();
+                    player.SendActionFailed();
                     return;
                 }
 
@@ -56,7 +56,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                         z;
                     if (!int.TryParse(coord[1], out x) || !int.TryParse(coord[2], out y) || !int.TryParse(coord[3], out z))
                     {
-                        player.sendMessage("Only numbers allowed in box.");
+                        player.SendMessage("Only numbers allowed in box.");
                         return;
                     }
 

@@ -25,8 +25,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
             if (player.EnchantState != ItemEnchantManager.STATE_PUT_ITEM)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
+                player.SendActionFailed();
                 return;
             }
 
@@ -34,8 +34,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
             if (item == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITION);
+                player.SendActionFailed();
                 return;
             }
 

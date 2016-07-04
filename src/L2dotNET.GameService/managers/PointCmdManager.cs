@@ -11,19 +11,19 @@ namespace L2dotNET.GameService.Managers
             return m;
         }
 
-        public bool pointed(L2Player player, string _text)
+        public bool pointed(L2Player player, string text)
         {
-            _text = _text.Substring(1);
+            text = text.Substring(1);
 
-            switch (_text)
+            switch (text)
             {
                 case "traffic":
-                    player.sendMessage("Down: " + player.Gameclient.TrafficDown / 1024 + " kb");
-                    player.sendMessage("Up: " + player.Gameclient.TrafficUp / 1024 + " kb");
+                    player.SendMessage("Down: " + player.Gameclient.TrafficDown / 1024 + " kb");
+                    player.SendMessage("Up: " + player.Gameclient.TrafficUp / 1024 + " kb");
                     break;
 
                 default:
-                    player.sendMessage("accepted point cmd " + _text);
+                    player.SendMessage("accepted point cmd " + text);
                     break;
             }
 

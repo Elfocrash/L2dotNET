@@ -24,56 +24,56 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (player.TradeState != 0)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.ALREADY_TRADING);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ALREADY_TRADING);
+                player.SendActionFailed();
                 return;
             }
 
-            if (player.ObjID == targetId)
+            if (player.ObjId == targetId)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_ON_YOURSELF);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_ON_YOURSELF);
+                player.SendActionFailed();
                 return;
             }
 
             if (player.EnchantState != 0)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             if ((player.CurrentTarget == null) || !(player.CurrentTarget is L2Player))
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TARGET_IS_INCORRECT);
+                player.SendActionFailed();
                 return;
             }
 
             L2Player target = (L2Player)player.CurrentTarget;
             if (target.TradeState != 0)
             {
-                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_ALREADY_TRADING).AddPlayerName(target.Name));
-                player.sendActionFailed();
+                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_ALREADY_TRADING).AddPlayerName(target.Name));
+                player.SendActionFailed();
                 return;
             }
 
             if (target.PartyState == 1)
             {
-                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_IS_BUSY_TRY_LATER).AddPlayerName(target.Name));
-                player.sendActionFailed();
+                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_IS_BUSY_TRY_LATER).AddPlayerName(target.Name));
+                player.SendActionFailed();
                 return;
             }
 
             if (!Calcs.checkIfInRange(150, player, target, true))
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
-            player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.REQUEST_S1_FOR_TRADE).AddPlayerName(target.Name));
+            player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.REQUEST_S1_FOR_TRADE).AddPlayerName(target.Name));
             target.requester = player;
             player.requester = target;
-            target.sendPacket(new SendTradeRequest(player.ObjID));
+            target.SendPacket(new SendTradeRequest(player.ObjId));
             target.TradeState = 2; // жмакает ответ
             player.TradeState = 1; // запросил
         }

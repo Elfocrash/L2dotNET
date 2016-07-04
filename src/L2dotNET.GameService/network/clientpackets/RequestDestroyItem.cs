@@ -24,16 +24,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player._p_block_act == 1)
+            if (player.PBlockAct == 1)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             if (player.TradeState != 0)
             {
-                player.sendMessage("You cannot destroy items while trading.");
-                player.sendActionFailed();
+                player.SendMessage("You cannot destroy items while trading.");
+                player.SendActionFailed();
                 return;
             }
 
@@ -41,15 +41,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (item == null)
             {
-                player.sendMessage("null item " + sID);
-                player.sendActionFailed();
+                player.SendMessage("null item " + sID);
+                player.SendActionFailed();
                 return;
             }
 
             if ((item.Template.can_equip_hero == 1) && (item.Template.Type == ItemTemplate.L2ItemType.weapon))
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.HERO_WEAPONS_CANT_DESTROYED);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.HERO_WEAPONS_CANT_DESTROYED);
+                player.SendActionFailed();
                 return;
             }
 
@@ -58,8 +58,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_S2);
                 sm.AddItemName(item.Template.ItemID);
                 sm.AddString("cannot be destroyed.");
-                player.sendPacket(sm);
-                player.sendActionFailed();
+                player.SendPacket(sm);
+                player.SendActionFailed();
                 return;
             }
 

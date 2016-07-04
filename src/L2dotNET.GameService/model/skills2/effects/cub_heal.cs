@@ -20,12 +20,12 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
         public override TEffectResult onStart(L2Character caster, L2Character target)
         {
-            double current = target.CurHP;
-            target.CurHP = power;
-            double next = target.CurHP;
+            double current = target.CurHp;
+            target.CurHp = power;
+            double next = target.CurHp;
 
             int diff = (int)(next - current);
-            target.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_HP_RESTORED).AddNumber(diff));
+            target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_HP_RESTORED).AddNumber(diff));
             return nothing;
         }
     }

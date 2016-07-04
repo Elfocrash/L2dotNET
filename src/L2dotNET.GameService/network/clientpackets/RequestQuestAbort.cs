@@ -26,19 +26,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
             {
                 if (qi.completed)
                 {
-                    player.sendActionFailed();
+                    player.SendActionFailed();
                     return;
                 }
 
                 //foreach (int id in qi._template.actItems)
                 //    player.Inventory.Dest(id, true, false);
 
-                player.sendMessage("Quest " + qi._template.questName + " aborted.");
+                player.SendMessage("Quest " + qi._template.questName + " aborted.");
                 player.stopQuest(qi, true);
                 return;
             }
 
-            player.sendActionFailed();
+            player.SendActionFailed();
         }
     }
 }

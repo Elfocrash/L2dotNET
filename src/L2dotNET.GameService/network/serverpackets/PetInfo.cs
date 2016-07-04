@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             writeC(0xb1);
             writeD(pet.ObjectSummonType);
-            writeD(pet.ObjID);
+            writeD(pet.ObjId);
             int npcId = pet.Template.NpcId;
             writeD(npcId + 1000000);
             writeD(0); // 1=attackable
@@ -67,9 +67,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(pet.getKarma());
             writeD(pet.CurrentTime);
             writeD(pet.MaxTime);
-            writeD(pet.CurHP);
+            writeD(pet.CurHp);
             writeD(pet.CharacterStat.getStat(TEffectType.b_max_hp));
-            writeD(pet.CurMP);
+            writeD(pet.CurMp);
             writeD(pet.CharacterStat.getStat(TEffectType.b_max_mp));
 
             writeD(pet.StatusSP);
@@ -98,7 +98,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeC(0); // c2
             writeH(0); // ??
 
-            writeC(pet.TeamID);
+            writeC(pet.TeamId);
             writeD(pet.Template.SsCount);
             writeD(pet.Template.SpsCount);
             writeD(pet.getForm());

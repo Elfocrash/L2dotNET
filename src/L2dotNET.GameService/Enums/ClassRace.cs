@@ -2,10 +2,10 @@
 {
     public enum ClassRace
     {
-        HUMAN,
-        ELF,
-        DARK_ELF,
-        ORC,
-        DWARF
+        Human,
+        Elf,
+        DarkElf,
+        Orc,
+        Dwarf
     }
 }

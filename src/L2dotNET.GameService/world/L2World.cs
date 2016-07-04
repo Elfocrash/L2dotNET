@@ -9,35 +9,35 @@ namespace L2dotNET.GameService.World
 {
     public class L2World
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(L2World));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(L2World));
 
-        private static volatile L2World instance;
-        private static readonly object syncRoot = new object();
+        private static volatile L2World _instance;
+        private static readonly object SyncRoot = new object();
 
         // Geodata min/max tiles
-        public static int TILE_X_MIN = 16;
-        public static int TILE_X_MAX = 26;
-        public static int TILE_Y_MIN = 10;
-        public static int TILE_Y_MAX = 25;
+        public static int TileXMin = 16;
+        public static int TileXMax = 26;
+        public static int TileYMin = 10;
+        public static int TileYMax = 25;
 
         // Map dimensions
-        public static int TILE_SIZE = 32768;
-        public static int WORLD_X_MIN = (TILE_X_MIN - 20) * TILE_SIZE;
-        public static int WORLD_X_MAX = (TILE_X_MAX - 19) * TILE_SIZE;
-        public static int WORLD_Y_MIN = (TILE_Y_MIN - 18) * TILE_SIZE;
-        public static int WORLD_Y_MAX = (TILE_Y_MAX - 17) * TILE_SIZE;
+        public static int TileSize = 32768;
+        public static int WorldXMin = (TileXMin - 20) * TileSize;
+        public static int WorldXMax = (TileXMax - 19) * TileSize;
+        public static int WorldYMin = (TileYMin - 18) * TileSize;
+        public static int WorldYMax = (TileYMax - 17) * TileSize;
 
         // Regions and offsets
-        private const int REGION_SIZE = 4096;
-        private static readonly int REGIONS_X = (WORLD_X_MAX - WORLD_X_MIN) / REGION_SIZE;
-        private static readonly int REGIONS_Y = (WORLD_Y_MAX - WORLD_Y_MIN) / REGION_SIZE;
-        private static readonly int REGION_X_OFFSET = Math.Abs(WORLD_X_MIN / REGION_SIZE);
-        private static readonly int REGION_Y_OFFSET = Math.Abs(WORLD_Y_MIN / REGION_SIZE);
+        private const int RegionSize = 4096;
+        private static readonly int RegionsX = (WorldXMax - WorldXMin) / RegionSize;
+        private static readonly int RegionsY = (WorldYMax - WorldYMin) / RegionSize;
+        private static readonly int RegionXOffset = Math.Abs(WorldXMin / RegionSize);
+        private static readonly int RegionYOffset = Math.Abs(WorldYMin / RegionSize);
 
         private readonly Dictionary<int, L2Object> _objects = new Dictionary<int, L2Object>();
         private readonly Dictionary<int, L2Player> _players = new Dictionary<int, L2Player>();
 
-        private readonly L2WorldRegion[,] _worldRegions = new L2WorldRegion[REGIONS_X + 1, REGIONS_Y + 1];
+        private readonly L2WorldRegion[,] _worldRegions = new L2WorldRegion[RegionsX + 1, RegionsY + 1];
 
         private L2World() { }
 
@@ -45,45 +45,45 @@ namespace L2dotNET.GameService.World
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new L2World();
+                        if (_instance == null)
+                            _instance = new L2World();
                     }
 
-                return instance;
+                return _instance;
             }
         }
 
         public void Initialize()
         {
-            for (int i = 0; i <= REGIONS_X; i++)
-                for (int j = 0; j <= REGIONS_Y; j++)
+            for (int i = 0; i <= RegionsX; i++)
+                for (int j = 0; j <= RegionsY; j++)
                     _worldRegions[i, j] = new L2WorldRegion(i, j);
 
-            for (int x = 0; x <= REGIONS_X; x++)
-                for (int y = 0; y <= REGIONS_Y; y++)
+            for (int x = 0; x <= RegionsX; x++)
+                for (int y = 0; y <= RegionsY; y++)
                     for (int a = -1; a <= 1; a++)
                         for (int b = -1; b <= 1; b++)
-                            if (validRegion(x + a, y + b))
+                            if (ValidRegion(x + a, y + b))
                                 _worldRegions[x + a, y + b].AddSurroundingRegion(_worldRegions[x, y]);
 
-            log.Info("L2World: WorldRegion grid (" + REGIONS_X + " by " + REGIONS_Y + ") is now setted up.");
+            Log.Info("L2World: WorldRegion grid (" + RegionsX + " by " + RegionsY + ") is now setted up.");
         }
 
         public void AddObject(L2Object obj)
         {
-            if (!_objects.ContainsKey(obj.ObjID))
-                _objects.Add(obj.ObjID, obj);
+            if (!_objects.ContainsKey(obj.ObjId))
+                _objects.Add(obj.ObjId, obj);
         }
 
         public void RemoveObject(L2Object obj)
         {
-            _objects.Remove(obj.ObjID);
+            _objects.Remove(obj.ObjId);
         }
 
-        public List<L2Object> getObjects()
+        public List<L2Object> GetObjects()
         {
             return _objects.Values.ToList();
         }
@@ -95,13 +95,13 @@ namespace L2dotNET.GameService.World
 
         public void AddPlayer(L2Player cha)
         {
-            if (!_players.ContainsKey(cha.ObjID))
-                _players.Add(cha.ObjID, cha);
+            if (!_players.ContainsKey(cha.ObjId))
+                _players.Add(cha.ObjId, cha);
         }
 
-        public void removePlayer(L2Player cha)
+        public void RemovePlayer(L2Player cha)
         {
-            _players.Remove(cha.ObjID);
+            _players.Remove(cha.ObjId);
         }
 
         public List<L2Player> GetPlayers()
@@ -119,19 +119,19 @@ namespace L2dotNET.GameService.World
             return _players[objectId];
         }
 
-        public static int getRegionX(int regionX)
+        public static int GetRegionX(int regionX)
         {
-            return (regionX - REGION_X_OFFSET) * REGION_SIZE;
+            return (regionX - RegionXOffset) * RegionSize;
         }
 
-        public static int getRegionY(int regionY)
+        public static int GetRegionY(int regionY)
         {
-            return (regionY - REGION_Y_OFFSET) * REGION_SIZE;
+            return (regionY - RegionYOffset) * RegionSize;
         }
 
-        private static bool validRegion(int x, int y)
+        private static bool ValidRegion(int x, int y)
         {
-            return ((x >= 0) && (x <= REGIONS_X) && (y >= 0) && (y <= REGIONS_Y));
+            return ((x >= 0) && (x <= RegionsX) && (y >= 0) && (y <= RegionsY));
         }
 
         public L2WorldRegion GetRegion(Location point)
@@ -141,7 +141,7 @@ namespace L2dotNET.GameService.World
 
         public L2WorldRegion GetRegion(int x, int y)
         {
-            return _worldRegions[(x - WORLD_X_MIN) / REGION_SIZE, (y - WORLD_Y_MIN) / REGION_SIZE];
+            return _worldRegions[(x - WorldXMin) / RegionSize, (y - WorldYMin) / RegionSize];
         }
 
         public L2WorldRegion[,] GetWorldRegions()
@@ -149,7 +149,7 @@ namespace L2dotNET.GameService.World
             return _worldRegions;
         }
 
-        public void deleteVisibleNpcSpawns()
+        public void DeleteVisibleNpcSpawns()
         {
             //_log.info("Deleting all visible NPCs.");
             //       for (int i = 0; i <= REGIONS_X; i++)

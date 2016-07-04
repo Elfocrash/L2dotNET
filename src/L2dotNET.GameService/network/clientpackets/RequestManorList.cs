@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             manorsName.Add("goddard");
             manorsName.Add("rune");
             manorsName.Add("schuttgart");
-            getClient().sendPacket(new ExSendManorList(manorsName));
+            getClient().SendPacket(new ExSendManorList(manorsName));
         }
     }
 }

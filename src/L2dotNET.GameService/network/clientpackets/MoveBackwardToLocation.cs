@@ -42,21 +42,21 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (player.isSittingInProgress() || player.isSitting())
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANT_MOVE_SITTING);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANT_MOVE_SITTING);
+                player.SendActionFailed();
                 return;
             }
 
             if (player.Boat != null)
             {
-                player.sendMessage("cant leave boat.");
-                player.sendActionFailed();
+                player.SendMessage("cant leave boat.");
+                player.SendActionFailed();
                 return;
             }
 
-            if (player.cantMove())
+            if (player.CantMove())
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -69,11 +69,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if ((dx * dx + dy * dy) > 98010000) // 9900*9900
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
-            player.AICharacter.StopAutoAttack();
+            player.AiCharacter.StopAutoAttack();
             player.MoveTo(_targetX, _targetY, _targetZ);
         }
     }

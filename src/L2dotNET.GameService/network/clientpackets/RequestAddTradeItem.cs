@@ -28,28 +28,28 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (player.TradeState < 3) // умник
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             if (player.EnchantState != 0)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             if (player.requester == null)
             {
-                player.sendMessage("Your trade requestor has logged off.");
-                player.sendActionFailed();
+                player.SendMessage("Your trade requestor has logged off.");
+                player.SendActionFailed();
                 player.TradeState = 0;
                 return;
             }
 
             if ((player.TradeState == 4) || (player.requester.TradeState == 4)) // подтвердил уже
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_ADJUST_ITEMS_AFTER_TRADE_CONFIRMED);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_ADJUST_ITEMS_AFTER_TRADE_CONFIRMED);
+                player.SendActionFailed();
                 return;
             }
 
@@ -57,7 +57,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (item == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -70,10 +70,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (!item.Template.isStackable() && (num > 1))
                 num = 1;
 
-            long numInList = player.AddItemToTrade(item.ObjID, num);
+            long numInList = player.AddItemToTrade(item.ObjId, num);
             long numCurrent = item.Count - numInList;
-            player.sendPacket(new TradeOwnAdd(item, numInList));
-            player.requester.sendPacket(new TradeOtherAdd(item, numInList));
+            player.SendPacket(new TradeOwnAdd(item, numInList));
+            player.requester.SendPacket(new TradeOtherAdd(item, numInList));
 
             byte action = 2; //mod, 2-del
             if (item.Template.isStackable())
@@ -83,7 +83,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     action = 2;
             }
 
-            player.sendPacket(new TradeUpdate(item, numCurrent, action));
+            player.SendPacket(new TradeUpdate(item, numCurrent, action));
         }
     }
 }

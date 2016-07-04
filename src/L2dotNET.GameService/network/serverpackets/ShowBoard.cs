@@ -28,21 +28,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             if (html.Length < BBS_MAX)
             {
-                player.sendPacket(new ShowBoard(html, "101"));
-                player.sendPacket(new ShowBoard(null, "102"));
-                player.sendPacket(new ShowBoard(null, "103"));
+                player.SendPacket(new ShowBoard(html, "101"));
+                player.SendPacket(new ShowBoard(null, "102"));
+                player.SendPacket(new ShowBoard(null, "103"));
             }
             else if (html.Length < BBS_MAX * 2)
             {
-                player.sendPacket(new ShowBoard(html.Remove(BBS_MAX), "101"));
-                player.sendPacket(new ShowBoard(html.Substring(BBS_MAX), "102"));
-                player.sendPacket(new ShowBoard(null, "103"));
+                player.SendPacket(new ShowBoard(html.Remove(BBS_MAX), "101"));
+                player.SendPacket(new ShowBoard(html.Substring(BBS_MAX), "102"));
+                player.SendPacket(new ShowBoard(null, "103"));
             }
             else if (html.Length < BBS_MAX * 3)
             {
-                player.sendPacket(new ShowBoard(html.Remove(BBS_MAX), "101"));
-                player.sendPacket(new ShowBoard(html.Substring(BBS_MAX).Remove(BBS_MAX), "102"));
-                player.sendPacket(new ShowBoard(html.Substring(BBS_MAX * 2), "103"));
+                player.SendPacket(new ShowBoard(html.Remove(BBS_MAX), "101"));
+                player.SendPacket(new ShowBoard(html.Substring(BBS_MAX).Remove(BBS_MAX), "102"));
+                player.SendPacket(new ShowBoard(html.Substring(BBS_MAX * 2), "103"));
             }
         }
 

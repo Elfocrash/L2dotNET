@@ -5,20 +5,20 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestPlayerInGame
     {
-        private readonly string account;
-        private readonly byte status;
-        private readonly ServerThread thread;
+        private readonly string _account;
+        private readonly byte _status;
+        private readonly ServerThread _thread;
 
         public RequestPlayerInGame(Packet p, ServerThread server)
         {
-            thread = server;
-            account = p.ReadString();
-            status = p.ReadByte();
+            _thread = server;
+            _account = p.ReadString();
+            _status = p.ReadByte();
         }
 
         public void RunImpl()
         {
-            thread.AccountInGame(account, status);
+            _thread.AccountInGame(_account, _status);
         }
     }
 }

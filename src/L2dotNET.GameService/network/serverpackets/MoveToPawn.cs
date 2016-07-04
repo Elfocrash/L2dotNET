@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public MoveToPawn(int id, L2Object target, int dist, int x, int y, int z)
         {
             _id = id;
-            _target = target.ObjID;
+            _target = target.ObjId;
             _dist = dist;
             _x = x;
             _y = y;

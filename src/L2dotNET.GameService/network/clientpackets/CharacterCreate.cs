@@ -59,26 +59,26 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             if (_name.Length > 16)
             {
-                getClient().sendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TOO_LONG_16_CHARS));
+                getClient().SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TOO_LONG_16_CHARS));
                 return;
             }
 
             if (getClient().AccountChars.Count > 7)
             {
-                getClient().sendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TOO_MANY_CHARS_ON_ACCOUNT));
+                getClient().SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TOO_MANY_CHARS_ON_ACCOUNT));
                 return;
             }
 
             if (playerService.CheckIfPlayerNameExists(_name))
             {
-                getClient().sendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.NAME_EXISTS));
+                getClient().SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.NAME_EXISTS));
                 return;
             }
 
             PcTemplate template = CharTemplateTable.Instance.GetTemplate((byte)_classId);
             if (template == null)
             {
-                getClient().sendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.CREATION_RESTRICTION));
+                getClient().SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.CREATION_RESTRICTION));
                 return;
             }
 
@@ -102,12 +102,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.BaseClass = template;
             player.ActiveClass = template;
 
-            player.CurHP = template.HpTable[player.Level];
-            player.CurMP = template.MpTable[player.Level];
-            player.CurCP = template.CpTable[player.Level];
-            player.MaxMP = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
-            player.MaxCP = (int)player.CharacterStat.getStat(TEffectType.b_max_cp);
-            player.MaxHP = (int)player.CharacterStat.getStat(TEffectType.b_max_hp);
+            player.CurHp = template.HpTable[player.Level];
+            player.CurMp = template.MpTable[player.Level];
+            player.CurCp = template.CpTable[player.Level];
+            player.MaxMp = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
+            player.MaxCp = (int)player.CharacterStat.getStat(TEffectType.b_max_cp);
+            player.MaxHp = (int)player.CharacterStat.getStat(TEffectType.b_max_hp);
 
             player.X = 45901;
             player.Y = 41329;
@@ -145,14 +145,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             player.CharSlot = player.Gameclient.AccountChars.Count;
 
-            PlayerModel playerModel = new PlayerModel { AccountName = player.AccountName, ObjectId = player.ObjID, Name = player.Name, Level = player.Level, MaxHp = player.MaxHP, CurHp = (int)player.CurHP, MaxCp = player.MaxCP, CurCp = (int)player.CurCP, MaxMp = player.MaxMP, CurMp = (int)player.CurMP, Face = player.Face, HairStyle = player.HairStyle, HairColor = player.HairColor, Sex = player.Sex, Heading = player.Heading, X = player.X, Y = player.Y, Z = player.Z, Exp = player.Exp, ExpBeforeDeath = player.ExpOnDeath, Sp = player.SP, Karma = player.Karma, PvpKills = player.PvpKills, PkKills = player.PkKills, ClanId = player.ClanId, Race = (int)player.BaseClass.ClassId.ClassRace, ClassId = (int)player.ActiveClass.ClassId.Id, BaseClass = (int)player.BaseClass.ClassId.Id, DeleteTime = player.DeleteTime, CanCraft = player.CanCraft, Title = player.Title, RecHave = player.RecHave, RecLeft = player.RecLeft, AccessLevel = player.AccessLevel, Online = player.Online, OnlineTime = player.OnlineTime, CharSlot = player.CharSlot, LastAccess = player.LastAccess, ClanPrivs = player.ClanPrivs, WantsPeace = player.WantsPeace, IsIn7sDungeon = player.IsIn7sDungeon, PunishLevel = player.PunishLevel, PunishTimer = player.PunishTimer, PowerGrade = player.PowerGrade, Nobless = player.Nobless, Hero = player.Hero, Subpledge = player.Subpledge, LastRecomDate = player.LastRecomDate, LevelJoinedAcademy = player.LevelJoinedAcademy, Apprentice = player.Apprentice, Sponsor = player.Sponsor, VarkaKetraAlly = player.VarkaKetraAlly, ClanJoinExpiryTime = player.ClanJoinExpiryTime, ClanCreateExpiryTime = player.ClanCreateExpiryTime, DeathPenaltyLevel = player.DeathPenaltyLevel };
+            PlayerModel playerModel = new PlayerModel { AccountName = player.AccountName, ObjectId = player.ObjId, Name = player.Name, Level = player.Level, MaxHp = player.MaxHp, CurHp = (int)player.CurHp, MaxCp = player.MaxCp, CurCp = (int)player.CurCp, MaxMp = player.MaxMp, CurMp = (int)player.CurMp, Face = player.Face, HairStyle = player.HairStyle, HairColor = player.HairColor, Sex = player.Sex, Heading = player.Heading, X = player.X, Y = player.Y, Z = player.Z, Exp = player.Exp, ExpBeforeDeath = player.ExpOnDeath, Sp = player.SP, Karma = player.Karma, PvpKills = player.PvpKills, PkKills = player.PkKills, ClanId = player.ClanId, Race = (int)player.BaseClass.ClassId.ClassRace, ClassId = (int)player.ActiveClass.ClassId.Id, BaseClass = (int)player.BaseClass.ClassId.Id, DeleteTime = player.DeleteTime, CanCraft = player.CanCraft, Title = player.Title, RecHave = player.RecHave, RecLeft = player.RecLeft, AccessLevel = player.AccessLevel, Online = player.Online, OnlineTime = player.OnlineTime, CharSlot = player.CharSlot, LastAccess = player.LastAccess, ClanPrivs = player.ClanPrivs, WantsPeace = player.WantsPeace, IsIn7SDungeon = player.IsIn7sDungeon, PunishLevel = player.PunishLevel, PunishTimer = player.PunishTimer, PowerGrade = player.PowerGrade, Nobless = player.Nobless, Hero = player.Hero, Subpledge = player.Subpledge, LastRecomDate = player.LastRecomDate, LevelJoinedAcademy = player.LevelJoinedAcademy, Apprentice = player.Apprentice, Sponsor = player.Sponsor, VarkaKetraAlly = player.VarkaKetraAlly, ClanJoinExpiryTime = player.ClanJoinExpiryTime, ClanCreateExpiryTime = player.ClanCreateExpiryTime, DeathPenaltyLevel = player.DeathPenaltyLevel };
             playerService.CreatePlayer(playerModel);
             player.Gameclient.AccountChars.Add(player);
-            getClient().sendPacket(new CharCreateOk());
+            getClient().SendPacket(new CharCreateOk());
             L2World.Instance.AddPlayer(player);
             CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient().AccountChars, getClient().SessionId);
-            csl.charId = player.ObjID;
-            getClient().sendPacket(csl);
+            csl.charId = player.ObjId;
+            getClient().SendPacket(csl);
         }
     }
 }

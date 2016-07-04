@@ -52,14 +52,14 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             Random rn = new Random();
             if (Template._skills != null)
                 foreach (TSkill sk in Template._skills.Where(sk => rn.Next(0, 100) <= Template._skill_prob))
-                    target.addAbnormal(sk, target, true, false);
+                    target.AddAbnormal(sk, target, true, false);
 
             if (Template._skill != null)
             {
                 if (rn.Next(0, 100) > Template._skill_prob)
                     return;
 
-                target.addAbnormal(Template._skill, target, true, false);
+                target.AddAbnormal(Template._skill, target, true, false);
             }
 
             //надо бы как то найти и вынести эту фичу. она недокументирована
@@ -118,13 +118,13 @@ namespace L2dotNET.GameService.Model.Zones.Classes
                 }
 
                 if (rn.Next(0, 100) <= Template._skill_prob)
-                    target.addAbnormalSPA(x1, false);
+                    target.AddAbnormalSpa(x1, false);
 
                 if (rn.Next(0, 100) <= Template._skill_prob)
-                    target.addAbnormalSPA(x2, false);
+                    target.AddAbnormalSpa(x2, false);
 
                 if (rn.Next(0, 100) <= Template._skill_prob)
-                    target.addAbnormalSPA(d, false);
+                    target.AddAbnormalSpa(d, false);
             }
         }
 
@@ -135,7 +135,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onEnter(obj);
 
-            obj.onEnterZone(this);
+            obj.OnEnterZone(this);
         }
 
         public override void onExit(L2Object obj, bool cls)
@@ -145,7 +145,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onExit(obj, cls);
 
-            obj.onExitZone(this, cls);
+            obj.OnExitZone(this, cls);
         }
     }
 }

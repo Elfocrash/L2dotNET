@@ -2,21 +2,21 @@
 {
     class NetRedClass
     {
-        public string mask,
-                      redirect;
-        public short serverId;
-        public byte[] redirectBits;
+        public string Mask,
+                      Redirect;
+        public short ServerId;
+        public byte[] RedirectBits;
 
-        public void setRedirect(string p)
+        public void SetRedirect(string p)
         {
-            redirect = p;
-            redirectBits = new byte[4];
+            Redirect = p;
+            RedirectBits = new byte[4];
 
-            string[] w = redirect.Split('.');
-            redirectBits[0] = byte.Parse(w[0]);
-            redirectBits[1] = byte.Parse(w[1]);
-            redirectBits[2] = byte.Parse(w[2]);
-            redirectBits[3] = byte.Parse(w[3]);
+            string[] w = Redirect.Split('.');
+            RedirectBits[0] = byte.Parse(w[0]);
+            RedirectBits[1] = byte.Parse(w[1]);
+            RedirectBits[2] = byte.Parse(w[2]);
+            RedirectBits[3] = byte.Parse(w[3]);
         }
     }
 }

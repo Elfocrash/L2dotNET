@@ -7,38 +7,38 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestServerLogin
     {
-        private readonly LoginClient client;
-        private readonly int login1;
-        private readonly int login2;
-        private readonly byte serverId;
+        private readonly LoginClient _client;
+        private readonly int _login1;
+        private readonly int _login2;
+        private readonly byte _serverId;
 
         public RequestServerLogin(Packet p, LoginClient client)
         {
-            this.client = client;
-            login1 = p.ReadInt();
-            login2 = p.ReadInt();
-            serverId = p.ReadByte();
+            this._client = client;
+            _login1 = p.ReadInt();
+            _login2 = p.ReadInt();
+            _serverId = p.ReadByte();
         }
 
         public void RunImpl()
         {
-            if ((client.login1 != login1) && (client.login2 != login2))
+            if ((_client.Login1 != _login1) && (_client.Login2 != _login2))
             {
-                client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCESS_FAILED));
+                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
                 return;
             }
 
-            L2Server server = ServerThreadPool.Instance.Get(serverId);
+            L2Server server = ServerThreadPool.Instance.Get(_serverId);
             if (server == null)
             {
-                client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCESS_FAILED));
+                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
                 return;
             }
 
             if (server.Connected == 0)
-                client.Send(LoginFail.ToPacket(LoginFailReason.REASON_SERVER_MAINTENANCE));
+                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonServerMaintenance));
             else
-                client.Send(PlayOk.ToPacket(client));
+                _client.Send(PlayOk.ToPacket(_client));
         }
     }
 }

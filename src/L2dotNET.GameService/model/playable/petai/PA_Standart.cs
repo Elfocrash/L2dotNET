@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
 
         public override void DoFollow(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {
-            if (pet.cantMove())
+            if (pet.CantMove())
                 return;
 
             double dis = Calcs.calculateDistance(pet, pet.Owner, true);
@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
             if (pet.CurrentTime / pet.MaxTime < 0.55)
             {
                 under55percent = DateTime.Now;
-                pet.Owner.sendSystemMessage(SystemMessage.SystemMessageId.YOUR_PET_IS_VERY_HUNGRY);
+                pet.Owner.SendSystemMessage(SystemMessage.SystemMessageId.YOUR_PET_IS_VERY_HUNGRY);
             }
         }
     }

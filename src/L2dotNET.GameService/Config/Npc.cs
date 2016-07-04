@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Config
 
         ///<summary>IA.</summary>
         [JsonProperty(PropertyName = "IA", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public IA IA { get; set; }
+        public Ia Ia { get; set; }
     }
 
     ///<summary>Champion mobs.</summary>
@@ -352,7 +352,7 @@ namespace L2dotNET.GameService.Config
     }
 
     ///<summary>IA.</summary>
-    public class IA
+    public class Ia
     {
         ///<summary>If True, guards will attack at sight aggressive monsters.</summary>
         ///<summary>Default: False.</summary>
@@ -377,13 +377,13 @@ namespace L2dotNET.GameService.Config
         ///<summary>You must keep MinNPCAnimation lesser or equals than MaxNPCAnimation.</summary>
         [DefaultValue(20)]
         [JsonProperty(PropertyName = "MinNPCAnimation", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int MinNPCAnimation { get; set; }
+        public int MinNpcAnimation { get; set; }
 
         ///<summary>Maximum maximum variable in seconds for npc animation delay.</summary>
         ///<summary>You must keep MinNPCAnimation lesser or equals than MaxNPCAnimation.</summary>
         [DefaultValue(40)]
         [JsonProperty(PropertyName = "MaxNPCAnimation", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int MaxNPCAnimation { get; set; }
+        public int MaxNpcAnimation { get; set; }
 
         ///<summary>Minimum variable in seconds for monster animation delay.</summary>
         ///<summary>You must keep MinMonsterAnimation lesser or equals than MaxMonsterAnimation.</summary>

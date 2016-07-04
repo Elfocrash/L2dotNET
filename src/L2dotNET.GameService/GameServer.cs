@@ -81,7 +81,7 @@ namespace L2dotNET.GameService
 
             AuthThread.Instance.Initialize();
 
-            GameServerListener = new TcpListener(IPAddress.Any, Config.Config.Instance.serverConfig.Port);
+            GameServerListener = new TcpListener(IPAddress.Any, Config.Config.Instance.ServerConfig.Port);
 
             try
             {
@@ -95,7 +95,7 @@ namespace L2dotNET.GameService
                 Environment.Exit(0);
             }
 
-            log.Info($"Listening Gameservers on port {Config.Config.Instance.serverConfig.Port}");
+            log.Info($"Listening Gameservers on port {Config.Config.Instance.ServerConfig.Port}");
 
             TcpClient clientSocket;
             while (true)
@@ -107,7 +107,7 @@ namespace L2dotNET.GameService
 
         private void Accept(TcpClient clientSocket)
         {
-            ClientManager.Instance.addClient(clientSocket);
+            ClientManager.Instance.AddClient(clientSocket);
         }
     }
 }

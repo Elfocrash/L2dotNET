@@ -40,7 +40,7 @@ namespace L2dotNET.GameService.Model.Player
             Members.AddLast(playerMember);
 
             if (!onCreate)
-                playerMember.sendPacket(new PartySmallWindowAll(this));
+                playerMember.SendPacket(new PartySmallWindowAll(this));
             else
                 broadcastToMembers(new PartySmallWindowAll(this));
 
@@ -48,23 +48,23 @@ namespace L2dotNET.GameService.Model.Player
 
             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YOU_JOINED_S1_PARTY);
             sm.AddPlayerName(leader.Name);
-            playerMember.sendPacket(sm);
+            playerMember.SendPacket(sm);
 
             sm = new SystemMessage(SystemMessage.SystemMessageId.S1_JOINED_PARTY);
             sm.AddPlayerName(leader.Name);
-            broadcastToMembers(sm, playerMember.ObjID);
+            broadcastToMembers(sm, playerMember.ObjId);
         }
 
         public void broadcastToMembers(GameServerNetworkPacket pk)
         {
             foreach (L2Player pl in Members)
-                pl.sendPacket(pk);
+                pl.SendPacket(pk);
         }
 
         public void broadcastToMembers(GameServerNetworkPacket pk, int except)
         {
-            foreach (L2Player pl in Members.Where(pl => pl.ObjID != except))
-                pl.sendPacket(pk);
+            foreach (L2Player pl in Members.Where(pl => pl.ObjId != except))
+                pl.SendPacket(pk);
         }
 
         private byte votesOnStart,
@@ -78,7 +78,7 @@ namespace L2dotNET.GameService.Model.Player
             broadcastToMembers(new ExAskModifyPartyLooting(leader.Name, mode));
             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.REQUESTING_APPROVAL_FOR_CHANGING_PARTY_LOOT_TO_S1);
             sm.AddSysStr(LOOT_SYSSTRINGS[mode]);
-            leader.sendPacket(sm);
+            leader.SendPacket(sm);
 
             votesOnStart = (byte)Members.Count;
 
@@ -98,8 +98,8 @@ namespace L2dotNET.GameService.Model.Player
         {
             votesVoted++;
 
-            if (!votes.ContainsKey(playerMember.ObjID))
-                votes.Add(playerMember.ObjID, answer);
+            if (!votes.ContainsKey(playerMember.ObjId))
+                votes.Add(playerMember.ObjId, answer);
 
             if (votes.Count == votesOnStart)
                 FinishVoting();
@@ -133,7 +133,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public void Leave(L2Player playerMember)
         {
-            if (leader.ObjID == playerMember.ObjID)
+            if (leader.ObjId == playerMember.ObjId)
                 if (Members.Count > 2)
                 {
                     kick(playerMember);
@@ -150,8 +150,8 @@ namespace L2dotNET.GameService.Model.Player
                 {
                     foreach (L2Player pl in Members)
                     {
-                        pl.sendSystemMessage(SystemMessage.SystemMessageId.PARTY_DISPERSED);
-                        pl.sendPacket(new PartySmallWindowDeleteAll());
+                        pl.SendSystemMessage(SystemMessage.SystemMessageId.PARTY_DISPERSED);
+                        pl.SendPacket(new PartySmallWindowDeleteAll());
                         pl.Party = null;
                     }
 
@@ -177,24 +177,24 @@ namespace L2dotNET.GameService.Model.Player
 
             if (Members.Count > 2)
             {
-                playerMember.sendSystemMessage(SystemMessage.SystemMessageId.YOU_LEFT_PARTY);
-                playerMember.sendPacket(new PartySmallWindowDeleteAll());
+                playerMember.SendSystemMessage(SystemMessage.SystemMessageId.YOU_LEFT_PARTY);
+                playerMember.SendPacket(new PartySmallWindowDeleteAll());
                 playerMember.Party = null;
 
                 SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_LEFT_PARTY);
                 sm.AddPlayerName(playerMember.Name);
                 broadcastToMembers(sm);
-                broadcastToMembers(new PartySmallWindowDelete(playerMember.ObjID, playerMember.Name));
+                broadcastToMembers(new PartySmallWindowDelete(playerMember.ObjId, playerMember.Name));
 
                 if (playerMember.Summon != null)
-                    broadcastToMembers(new ExPartyPetWindowDelete(playerMember.Summon.ObjID, playerMember.ObjID, playerMember.Summon.Name));
+                    broadcastToMembers(new ExPartyPetWindowDelete(playerMember.Summon.ObjId, playerMember.ObjId, playerMember.Summon.Name));
             }
             else
             {
                 foreach (L2Player pl in Members)
                 {
-                    pl.sendSystemMessage(SystemMessage.SystemMessageId.PARTY_DISPERSED);
-                    pl.sendPacket(new PartySmallWindowDeleteAll());
+                    pl.SendSystemMessage(SystemMessage.SystemMessageId.PARTY_DISPERSED);
+                    pl.SendPacket(new PartySmallWindowDeleteAll());
                     pl.Party = null;
                 }
 
@@ -208,8 +208,8 @@ namespace L2dotNET.GameService.Model.Player
 
             if (playerToExpel == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_EXPEL_THE_PARTY_MEMBER);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.FAILED_TO_EXPEL_THE_PARTY_MEMBER);
+                player.SendActionFailed();
                 return;
             }
 

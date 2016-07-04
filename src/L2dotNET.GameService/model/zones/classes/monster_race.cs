@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onEnter(obj);
 
-            obj.onEnterZone(this);
+            obj.OnEnterZone(this);
 
             if (obj is L2Player)
             {
@@ -34,7 +34,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onExit(obj, cls);
 
-            obj.onExitZone(this, cls);
+            obj.OnExitZone(this, cls);
 
             if (obj is L2Player)
             {

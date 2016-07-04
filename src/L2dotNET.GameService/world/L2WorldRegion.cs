@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.World
 {
     public class L2WorldRegion
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(L2WorldRegion));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(L2WorldRegion));
 
         private readonly Dictionary<int, L2Object> _objects = new Dictionary<int, L2Object>();
 
@@ -27,12 +27,12 @@ namespace L2dotNET.GameService.World
             _tileY = y;
         }
 
-        public string getName()
+        public string GetName()
         {
             return "WorldRegion:" + _tileX + "_" + _tileY;
         }
 
-        public List<L2Object> getObjects()
+        public List<L2Object> GetObjects()
         {
             return _objects.Values.ToList();
         }
@@ -197,8 +197,8 @@ namespace L2dotNET.GameService.World
             if (obj == null)
                 return;
 
-            if (!_objects.ContainsKey(obj.ObjID))
-                _objects.Add(obj.ObjID, obj);
+            if (!_objects.ContainsKey(obj.ObjId))
+                _objects.Add(obj.ObjId, obj);
 
             if (obj is L2Player)
                 _playersCount += 1;
@@ -209,7 +209,7 @@ namespace L2dotNET.GameService.World
             if (obj == null)
                 return;
 
-            _objects.Remove(obj.ObjID);
+            _objects.Remove(obj.ObjId);
 
             if (obj is L2Player)
                 _playersCount -= 1;

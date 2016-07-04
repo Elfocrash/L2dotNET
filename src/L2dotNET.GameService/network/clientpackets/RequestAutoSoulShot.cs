@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Item item = player.Inventory.GetItemByItemId(itemId);
             if ((item == null) || !item.Template.isAutoSS)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -37,13 +37,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
             {
                 if (player.autoSoulshots.Contains(itemId))
                 {
-                    player.sendActionFailed();
+                    player.SendActionFailed();
                     return;
                 }
 
                 player.autoSoulshots.Add(itemId);
-                player.sendPacket(new ExAutoSoulShot(itemId, type));
-                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.USE_OF_S1_WILL_BE_AUTO).AddItemName(itemId));
+                player.SendPacket(new ExAutoSoulShot(itemId, type));
+                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.USE_OF_S1_WILL_BE_AUTO).AddItemName(itemId));
 
                 L2Item weapon = player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand);
                 if (weapon != null)
@@ -53,14 +53,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
                         {
                             if (!player.HasItem(sid, weapon.Template.SoulshotCount))
                             {
-                                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.CANNOT_AUTO_USE_LACK_OF_S1).AddItemName(itemId));
-                                player.sendActionFailed();
+                                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.CANNOT_AUTO_USE_LACK_OF_S1).AddItemName(itemId));
+                                player.SendActionFailed();
                                 return;
                             }
 
                             player.DestroyItemById(itemId, weapon.Template.SoulshotCount);
                             weapon.Soulshot = true;
-                            player.broadcastSoulshotUse(itemId);
+                            player.BroadcastSoulshotUse(itemId);
                         }
 
                         break;
@@ -73,8 +73,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     player.autoSoulshots.Remove(itemId);
                 }
 
-                player.sendPacket(new ExAutoSoulShot(itemId, 0));
-                player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_OF_S1_CANCELLED).AddItemName(itemId));
+                player.SendPacket(new ExAutoSoulShot(itemId, 0));
+                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_OF_S1_CANCELLED).AddItemName(itemId));
             }
         }
     }

@@ -55,7 +55,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
             else
                 SkillCastTask(null, null);
 
-            casterPlayer.broadcastPacket(new MagicSkillUse(casterPlayer, targetPlayer, skill, skill.skill_hit_time));
+            casterPlayer.BroadcastPacket(new MagicSkillUse(casterPlayer, targetPlayer, skill, skill.skill_hit_time));
         }
 
         private void SkillCastTask(object sender, System.Timers.ElapsedEventArgs e)
@@ -68,9 +68,9 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
                 return;
 
             if (cast.reuse_delay > 0)
-                if (caster._reuse.ContainsKey(cast.skill_id))
+                if (caster.Reuse.ContainsKey(cast.skill_id))
                 {
-                    TimeSpan ts = caster._reuse[cast.skill_id].stopTime - DateTime.Now;
+                    TimeSpan ts = caster.Reuse[cast.skill_id].stopTime - DateTime.Now;
 
                     if (ts.TotalMilliseconds > 0)
                     {
@@ -81,7 +81,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
                             sm.AddNumber(ts.Hours);
                             sm.AddNumber(ts.Minutes);
                             sm.AddNumber(ts.Seconds);
-                            caster.sendPacket(sm);
+                            caster.SendPacket(sm);
                         }
                         else if (ts.TotalMinutes > 0)
                         {
@@ -89,14 +89,14 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
                             sm.AddSkillName(cast.skill_id, cast.level);
                             sm.AddNumber(ts.Minutes);
                             sm.AddNumber(ts.Seconds);
-                            caster.sendPacket(sm);
+                            caster.SendPacket(sm);
                         }
                         else
                         {
                             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2_SECONDS_REMAINING_IN_S1_REUSE_TIME);
                             sm.AddSkillName(cast.skill_id, cast.level);
                             sm.AddNumber(ts.Seconds);
-                            caster.sendPacket(sm);
+                            caster.SendPacket(sm);
                         }
 
                         return;
@@ -114,10 +114,10 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
                 reuse.delay = reuse.total;
                 reuse._owner = caster;
                 reuse.timer();
-                caster._reuse.Add(reuse.id, reuse);
+                caster.Reuse.Add(reuse.id, reuse);
             }
 
-            target.addAbnormal(cast, caster, false, false);
+            target.AddAbnormal(cast, caster, false, false);
         }
     }
 }

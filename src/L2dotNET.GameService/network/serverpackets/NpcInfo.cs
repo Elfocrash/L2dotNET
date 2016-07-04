@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         protected internal override void write()
         {
             writeC(0x0c);
-            writeD(npc.ObjID);
+            writeD(npc.ObjId);
             writeD(npc.NpcHashId);
             writeD(npc.Attackable);
             writeD(npc.X);
@@ -66,7 +66,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(npc.AllianceCrestId);
             writeC(npc.isFlying() ? 2 : 0); // C2
 
-            writeC(npc.TeamID);
+            writeC(npc.TeamId);
             writeF(npc.Template.CollisionRadius);
             writeF(npc.Template.CollisionHeight);
             writeD(0); // enchant

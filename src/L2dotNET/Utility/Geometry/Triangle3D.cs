@@ -10,24 +10,24 @@ namespace L2dotNET.Utility.Geometry
 
         private readonly double _length;
 
-        public Triangle3D(int[] A, int[] B, int[] C) : base(A, B, C)
+        public Triangle3D(int[] a, int[] b, int[] c) : base(a, b, c)
         {
-            _minZ = Math.Min(A[2], Math.Min(B[2], C[2]));
-            _maxZ = Math.Max(A[2], Math.Max(B[2], C[2]));
+            _minZ = Math.Min(a[2], Math.Min(b[2], c[2]));
+            _maxZ = Math.Max(a[2], Math.Max(b[2], c[2]));
 
-            int CBx = _CAx - _BAx;
-            int CBy = _CAy - _BAy;
-            _length = Math.Sqrt(_BAx * _BAx + _BAy * _BAy) + Math.Sqrt(_CAx * _CAx + _CAy * _CAy) + Math.Sqrt(CBx * CBx + CBy * CBy);
+            int cBx = CAx - BAx;
+            int cBy = CAy - BAy;
+            _length = Math.Sqrt(BAx * BAx + BAy * BAy) + Math.Sqrt(CAx * CAx + CAy * CAy) + Math.Sqrt(cBx * cBx + cBy * cBy);
         }
 
         public override double GetArea()
         {
-            return _size * 2 + _length * (_maxZ - _minZ);
+            return Size * 2 + _length * (_maxZ - _minZ);
         }
 
         public override double GetVolume()
         {
-            return _size * (_maxZ - _minZ);
+            return Size * (_maxZ - _minZ);
         }
 
         public override bool IsInside(int x, int y, int z)
@@ -49,8 +49,8 @@ namespace L2dotNET.Utility.Geometry
                 ca = 1 - ca;
             }
 
-            int x = _Ax + (int)(ba * _BAx + ca * _CAx);
-            int y = _Ay + (int)(ba * _BAy + ca * _CAy);
+            int x = Ax + (int)(ba * BAx + ca * CAx);
+            int y = Ay + (int)(ba * BAy + ca * CAy);
 
             return new Location(x, y, Rnd.Get(_minZ, _maxZ));
         }

@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = Client.CurrentPlayer;
 
-            player.broadcastPacket(new StartRotation(player.ObjID, degree, side, 0));
+            player.BroadcastPacket(new StartRotation(player.ObjId, degree, side, 0));
         }
     }
 }

@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override TEffectResult onStart(L2Character caster, L2Character target)
         {
             if (new Random().Next(100) < rate)
-                target.sendMessage("i_death " + death_type + " done on you");
+                target.SendMessage("i_death " + death_type + " done on you");
 
             return nothing;
         }

@@ -27,20 +27,20 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
         {
             L2Player player = Client.CurrentPlayer;
 
-            if ((player.Boat == null) || (player.Boat.ObjID != boatId))
+            if ((player.Boat == null) || (player.Boat.ObjId != boatId))
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             if (player.Boat.OnRoute)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
-            player.broadcastPacket(new StopMoveInVehicle(player, x, y, z));
-            player.broadcastPacket(new GetOffVehicle(player, x, y, z));
+            player.BroadcastPacket(new StopMoveInVehicle(player, x, y, z));
+            player.BroadcastPacket(new GetOffVehicle(player, x, y, z));
             player.Boat = null;
         }
     }

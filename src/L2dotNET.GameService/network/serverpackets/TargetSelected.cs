@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public TargetSelected(int selecterId, L2Object target)
         {
             _objectId = selecterId;
-            _targetObjId = target.ObjID;
+            _targetObjId = target.ObjId;
             _x = target.X;
             _y = target.Y;
             _z = target.Z;

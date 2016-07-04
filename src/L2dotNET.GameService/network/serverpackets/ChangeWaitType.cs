@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ChangeWaitType(L2Player player, int type)
         {
-            sId = player.ObjID;
+            sId = player.ObjId;
             x = player.X;
             y = player.Y;
             z = player.Z;

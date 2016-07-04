@@ -39,7 +39,7 @@ namespace L2dotNET.GameService.Managers
         {
             if (!_templates.ContainsKey(id))
             {
-                player.sendMessage("Transform type #" + id + " is not registered");
+                player.SendMessage("Transform type #" + id + " is not registered");
                 return;
             }
 
@@ -50,7 +50,7 @@ namespace L2dotNET.GameService.Managers
             if (seconds != -1)
             {
                 tr.timer(seconds);
-                player.sendMessage("transformed for " + seconds + " sec");
+                player.SendMessage("transformed for " + seconds + " sec");
             }
 
             player.setTransform(tr);

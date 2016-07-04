@@ -10,18 +10,18 @@ namespace L2dotNET.GameService.Network.Serverpackets
         private readonly int _z;
         private readonly int _heading;
 
-        public ValidateLocation(int _id, int _x, int _y, int _z, int _heading)
+        public ValidateLocation(int _id, int x, int y, int z, int heading)
         {
             this._id = _id;
-            this._x = _x;
-            this._y = _y;
-            this._z = _z;
-            this._heading = _heading;
+            this._x = x;
+            this._y = y;
+            this._z = z;
+            this._heading = heading;
         }
 
         public ValidateLocation(L2Character character)
         {
-            _id = character.ObjID;
+            _id = character.ObjId;
             _x = character.X;
             _y = character.Y;
             _z = character.Z;

@@ -15,13 +15,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
         protected internal override void write()
         {
             writeC(0x52);
-            writeD(member.ObjID);
+            writeD(member.ObjId);
             writeS(member.Name);
-            writeD(member.CurCP);
+            writeD(member.CurCp);
             writeD(member.CharacterStat.getStat(TEffectType.b_max_cp));
-            writeD(member.CurHP);
+            writeD(member.CurHp);
             writeD(member.CharacterStat.getStat(TEffectType.b_max_hp));
-            writeD(member.CurMP);
+            writeD(member.CurMp);
             writeD(member.CharacterStat.getStat(TEffectType.b_max_mp));
             writeD(member.Level);
             writeD((int)member.ActiveClass.ClassId.Id);

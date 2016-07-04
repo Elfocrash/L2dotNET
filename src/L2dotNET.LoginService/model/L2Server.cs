@@ -12,7 +12,7 @@ namespace L2dotNET.LoginService.Model
         public string Info { get; set; }
         public byte Id { get; set; }
 
-        public byte[] GetIP(LoginClient client)
+        public byte[] GetIp(LoginClient client)
         {
             if (DefaultAddress == null)
             {

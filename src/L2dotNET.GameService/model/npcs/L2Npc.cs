@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public NpcTemplate Template;
         public bool _summoned;
         public bool structureControlled = false;
-        public AI.Template.AI AIProcessor;
+        public AI.Template.Ai AIProcessor;
 
         //public virtual void setTemplate(NpcTemplate template)
         //{
@@ -41,7 +41,7 @@ namespace L2dotNET.GameService.Model.Npcs
             if (dis < 151)
                 AIProcessor.Talked(player);
             else
-                tryMoveTo(X, Y, Z);
+                TryMoveTo(X, Y, Z);
         }
 
         public int NpcId
@@ -64,9 +64,9 @@ namespace L2dotNET.GameService.Model.Npcs
             return 0;
         }
 
-        public override void onAction(L2Player player)
+        public override void OnAction(L2Player player)
         {
-            player.sendMessage("onAction " + asString());
+            player.SendMessage("onAction " + AsString());
 
             player.ChangeTarget(this);
         }
@@ -175,7 +175,7 @@ namespace L2dotNET.GameService.Model.Npcs
             //}
         }
 
-        public override void onForcedAttack(L2Player player)
+        public override void OnForcedAttack(L2Player player)
         {
             bool newtarget = false;
             if (player.CurrentTarget == null)
@@ -185,7 +185,7 @@ namespace L2dotNET.GameService.Model.Npcs
             }
             else
             {
-                if (player.CurrentTarget.ObjID != ObjID)
+                if (player.CurrentTarget.ObjId != ObjId)
                 {
                     player.CurrentTarget = this;
                     newtarget = true;
@@ -193,16 +193,16 @@ namespace L2dotNET.GameService.Model.Npcs
             }
 
             if (newtarget)
-                player.sendPacket(new MyTargetSelected(ObjID, 0));
+                player.SendPacket(new MyTargetSelected(ObjId, 0));
             else
-                player.sendActionFailed();
+                player.SendActionFailed();
         }
 
         public void showPrivateWarehouse(L2Player player)
         {
-            List<L2Item> items = player.GetAllItems().Where(item => (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.questitem)).ToList();
+            List<L2Item> items = player.GetAllItems().Where(item => (item.IsEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.questitem)).ToList();
 
-            player.sendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WH_PRIVATE));
+            player.SendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WH_PRIVATE));
             player.FolkNpc = this;
         }
 
@@ -210,21 +210,21 @@ namespace L2dotNET.GameService.Model.Npcs
         {
             if (player.Clan == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_CLAN_WAREHOUSE);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_CLAN_WAREHOUSE);
+                player.SendActionFailed();
                 return;
             }
 
             if (player.Clan.Level == 0)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.ONLY_LEVEL_1_CLAN_OR_HIGHER_CAN_USE_WAREHOUSE);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ONLY_LEVEL_1_CLAN_OR_HIGHER_CAN_USE_WAREHOUSE);
+                player.SendActionFailed();
                 return;
             }
 
-            List<L2Item> items = player.GetAllItems().Where(item => (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.questitem)).ToList();
+            List<L2Item> items = player.GetAllItems().Where(item => (item.IsEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.questitem)).ToList();
 
-            player.sendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WH_CLAN));
+            player.SendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WH_CLAN));
             player.FolkNpc = this;
         }
 
@@ -254,34 +254,34 @@ namespace L2dotNET.GameService.Model.Npcs
         {
             if (player.Clan == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_CLAN_WAREHOUSE);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_CLAN_WAREHOUSE);
+                player.SendActionFailed();
             }
             else
             {
                 if (player.Clan.Level == 0)
                 {
-                    player.sendSystemMessage(SystemMessage.SystemMessageId.ONLY_LEVEL_1_CLAN_OR_HIGHER_CAN_USE_WAREHOUSE);
-                    player.sendActionFailed();
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.ONLY_LEVEL_1_CLAN_OR_HIGHER_CAN_USE_WAREHOUSE);
+                    player.SendActionFailed();
                 }
             }
         }
 
         public virtual void showSkillLearn(L2Player player, bool backward)
         {
-            player.sendMessage("I cannot teach you anything.");
+            player.SendMessage("I cannot teach you anything.");
         }
 
-        public override void broadcastUserInfo()
+        public override void BroadcastUserInfo()
         {
-            foreach (L2Player obj in knownObjects.Values.OfType<L2Player>())
-                obj.sendPacket(new NpcInfo(this));
+            foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
+                obj.SendPacket(new NpcInfo(this));
         }
 
-        public override void onSpawn()
+        public override void OnSpawn()
         {
-            broadcastUserInfo();
-            StartAI();
+            BroadcastUserInfo();
+            StartAi();
         }
 
         public void showAvailRegularSkills(L2Player player, bool backward)
@@ -301,9 +301,9 @@ namespace L2dotNET.GameService.Model.Npcs
                 if (list.ContainsKey(e.id))
                     continue;
 
-                if (player._skills.ContainsKey(e.id))
+                if (player.Skills.ContainsKey(e.id))
                 {
-                    TSkill skill = player._skills[e.id];
+                    TSkill skill = player.Skills[e.id];
 
                     if (skill.level >= e.lv)
                         continue;
@@ -324,29 +324,29 @@ namespace L2dotNET.GameService.Model.Npcs
                 {
                     list.Clear();
                     player.ActiveSkillTree = list;
-                    player.sendPacket(new AcquireSkillList(AcquireSkillList.ESTT_NORMAL, player));
+                    player.SendPacket(new AcquireSkillList(AcquireSkillList.ESTT_NORMAL, player));
                 }
 
                 if (nextLvl != 800)
-                    player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.DO_NOT_HAVE_FURTHER_SKILLS_TO_LEARN_S1).AddNumber(nextLvl));
+                    player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.DO_NOT_HAVE_FURTHER_SKILLS_TO_LEARN_S1).AddNumber(nextLvl));
                 else
-                    player.sendSystemMessage(SystemMessage.SystemMessageId.NO_MORE_SKILLS_TO_LEARN);
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.NO_MORE_SKILLS_TO_LEARN);
 
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             player.ActiveSkillTree = list;
-            player.sendPacket(new AcquireSkillList(AcquireSkillList.ESTT_NORMAL, player));
+            player.SendPacket(new AcquireSkillList(AcquireSkillList.ESTT_NORMAL, player));
             player.FolkNpc = this;
         }
 
         private Timer _corpseTimer;
         public int residenceId;
 
-        public override void doDie(L2Character killer, bool bytrigger)
+        public override void DoDie(L2Character killer, bool bytrigger)
         {
-            base.doDie(killer, bytrigger);
+            base.DoDie(killer, bytrigger);
 
             if (Template.CorpseTime > 0)
             {
@@ -358,7 +358,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         private void removeCorpse(object sender, ElapsedEventArgs e)
         {
-            broadcastPacket(new DeleteObject(ObjID));
+            BroadcastPacket(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }
 
@@ -405,9 +405,9 @@ namespace L2dotNET.GameService.Model.Npcs
             get { return Template.CollisionHeight == 0 ? 22 : Template.CollisionHeight; }
         }
 
-        public override string asString()
+        public override string AsString()
         {
-            return "L2Npc:" + Template.NpcId + "; id " + ObjID;
+            return "L2Npc:" + Template.NpcId + "; id " + ObjId;
         }
 
         public void CreateOnePrivateEx(int npcId, string ai_type, int x, int y, int z) { }
@@ -419,7 +419,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {
-            cha.sendMessage("L2Npc.CastBuffForQuestReward " + skillId);
+            cha.SendMessage("L2Npc.CastBuffForQuestReward " + skillId);
             new BuffForQuestReward(this, cha, skillId);
         }
     }

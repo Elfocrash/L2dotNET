@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (scx == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -45,7 +45,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 //sqb.sql_delete(false);
             }
 
-            player.sendPacket(new ShortCutInit(player));
+            player.SendPacket(new ShortCutInit(player));
         }
     }
 }

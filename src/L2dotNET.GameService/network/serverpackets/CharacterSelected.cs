@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeC(0x15);
 
             writeS(player.Name);
-            writeD(player.ObjID);
+            writeD(player.ObjId);
             writeS(player.Title);
             writeD(session);
 
@@ -33,8 +33,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(player.Y);
 
             writeD(player.Z);
-            writeF(player.CurHP);
-            writeF(player.CurMP);
+            writeF(player.CurHp);
+            writeF(player.CurMp);
             writeD(player.SP);
 
             writeQ(player.Exp);

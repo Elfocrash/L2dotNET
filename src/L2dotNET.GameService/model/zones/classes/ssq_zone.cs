@@ -20,12 +20,12 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onEnter(obj);
 
-            obj.onEnterZone(this);
+            obj.OnEnterZone(this);
 
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.sendSystemMessage((SystemMessage.SystemMessageId)Template._entering_message_no);
+                p.SendSystemMessage((SystemMessage.SystemMessageId)Template._entering_message_no);
             }
         }
 
@@ -36,12 +36,12 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onExit(obj, cls);
 
-            obj.onExitZone(this, cls);
+            obj.OnExitZone(this, cls);
 
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.sendSystemMessage((SystemMessage.SystemMessageId)Template._leaving_message_no);
+                p.SendSystemMessage((SystemMessage.SystemMessageId)Template._leaving_message_no);
             }
         }
     }

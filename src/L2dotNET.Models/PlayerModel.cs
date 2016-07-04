@@ -82,7 +82,7 @@
 
         public int WantsPeace { get; set; }
 
-        public int IsIn7sDungeon { get; set; }
+        public int IsIn7SDungeon { get; set; }
 
         public int PunishLevel { get; set; }
 

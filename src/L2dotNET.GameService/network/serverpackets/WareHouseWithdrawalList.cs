@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             foreach (L2Item item in _items)
             {
                 writeH(item.Template.Type1());
-                writeD(item.ObjID);
+                writeD(item.ObjId);
                 writeD(item.Template.ItemID);
                 writeD(item.Count);
                 writeH(item.Template.Type2());
@@ -41,7 +41,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 writeH(0); //custom type 2
                 writeH(0);
                 //writeD(item.AugmentationID);
-                writeD(item.ObjID);
+                writeD(item.ObjId);
                 writeQ(0x00);
             }
         }

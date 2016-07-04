@@ -5,55 +5,55 @@ namespace L2dotNET.LoginService.Network.Crypt
 {
     class LoginCrypt
     {
-        private byte[] key = { 0x6b, 0x60, 0xcb, 0x5b, 0x82, 0xce, 0x90, 0xb1, 0xcc, 0x2b, 0x6c, 0x55, 0x6c, 0x6c, 0x6c, 0x6c };
+        private byte[] _key = { 0x6b, 0x60, 0xcb, 0x5b, 0x82, 0xce, 0x90, 0xb1, 0xcc, 0x2b, 0x6c, 0x55, 0x6c, 0x6c, 0x6c, 0x6c };
 
-        private bool updatedKey;
-        private readonly Random rnd = new Random();
-        private readonly BlowfishCipher cipher;
+        private bool _updatedKey;
+        private readonly Random _rnd = new Random();
+        private readonly BlowfishCipher _cipher;
 
         public LoginCrypt()
         {
-            cipher = new BlowfishCipher(key);
+            _cipher = new BlowfishCipher(_key);
         }
 
-        internal void updateKey(byte[] _blowfishKey)
+        internal void UpdateKey(byte[] blowfishKey)
         {
-            key = _blowfishKey;
+            _key = blowfishKey;
         }
 
-        public bool decrypt(ref byte[] data, int offset, int size)
+        public bool Decrypt(ref byte[] data, int offset, int size)
         {
-            cipher.decipher(data, offset, size);
+            _cipher.decipher(data, offset, size);
 
-            return veryfyChecksum(data, offset, size);
+            return VeryfyChecksum(data, offset, size);
         }
 
-        public byte[] encrypt(byte[] data, int offset, int size)
+        public byte[] Encrypt(byte[] data, int offset, int size)
         {
             size += 4;
 
-            if (!updatedKey)
+            if (!_updatedKey)
             {
                 size += 4;
                 size += 8 - size % 8;
                 Array.Resize(ref data, size);
-                encXORPass(data, offset, size, rnd.Next());
-                cipher.cipher(data, offset, size);
-                cipher.updateKey(key);
-                updatedKey = true;
+                EncXorPass(data, offset, size, _rnd.Next());
+                _cipher.cipher(data, offset, size);
+                _cipher.updateKey(_key);
+                _updatedKey = true;
             }
             else
             {
                 size += 8 - size % 8;
                 Array.Resize(ref data, size);
-                appendChecksum(data, offset, size);
-                cipher.cipher(data, offset, size);
+                AppendChecksum(data, offset, size);
+                _cipher.cipher(data, offset, size);
             }
 
             return data;
         }
 
-        private bool veryfyChecksum(byte[] data, int offset, int size)
+        private bool VeryfyChecksum(byte[] data, int offset, int size)
         {
             if (((size & 3) != 0) || (size <= 4))
                 return false;
@@ -81,7 +81,7 @@ namespace L2dotNET.LoginService.Network.Crypt
             return chksum == 0;
         }
 
-        public static void appendChecksum(byte[] raw, int offset, int size)
+        public static void AppendChecksum(byte[] raw, int offset, int size)
         {
             long chksum = 0;
             int count = size - 4;
@@ -109,7 +109,7 @@ namespace L2dotNET.LoginService.Network.Crypt
             raw[i + 3] = (byte)((chksum >> 0x18) & 0xff);
         }
 
-        public static void encXORPass(byte[] raw, int offset, int size, int key)
+        public static void EncXorPass(byte[] raw, int offset, int size, int key)
         {
             int stop = size - 8;
             int pos = 4 + offset;

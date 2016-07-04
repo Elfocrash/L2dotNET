@@ -6,7 +6,7 @@ namespace L2dotNET.LoginService
 {
     class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             SetConsoleConfigurations();
             SetNumberDecimalSeparator();

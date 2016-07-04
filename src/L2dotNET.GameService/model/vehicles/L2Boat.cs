@@ -9,10 +9,10 @@ namespace L2dotNET.GameService.Model.Vehicles
     {
         public bool OnRoute = false;
 
-        public override void broadcastUserInfo()
+        public override void BroadcastUserInfo()
         {
-            foreach (L2Player obj in knownObjects.Values.OfType<L2Player>())
-                obj.sendPacket(new VehicleInfo(this));
+            foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
+                obj.SendPacket(new VehicleInfo(this));
         }
     }
 }

@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
             if (player.Clan == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -37,11 +37,11 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
             if (m == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
-            player.sendPacket(new PledgeReceiveMemberInfo(m));
+            player.SendPacket(new PledgeReceiveMemberInfo(m));
         }
     }
 }

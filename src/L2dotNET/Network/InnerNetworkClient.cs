@@ -44,7 +44,7 @@ namespace L2dotNET.Network
         /// <param name="handleDelegate">Service Handle Delegate, if null packet will not be handled</param>
         public InnerNetworkClient(byte serviceId, ServiceType serviceType, Socket socket, PacketHandleDelegate handleDelegate) : base(socket)
         {
-            ServiceID = serviceId;
+            ServiceId = serviceId;
             ServiceType = serviceType;
             HandleDelegate = handleDelegate;
         }
@@ -74,7 +74,7 @@ namespace L2dotNET.Network
         /// </summary>
         public override void BeginReceive()
         {
-            m_Socket.BeginReceive(m_ReceiveBuffer, 0, 4, 0, m_ReceiveCallback, null);
+            MSocket.BeginReceive(MReceiveBuffer, 0, 4, 0, MReceiveCallback, null);
         }
 
         /// <summary>
@@ -85,29 +85,29 @@ namespace L2dotNET.Network
         {
             try
             {
-                m_ReceivedLength += m_Socket.EndReceive(ar);
+                MReceivedLength += MSocket.EndReceive(ar);
 
-                fixed (byte* buf = m_ReceiveBuffer)
+                fixed (byte* buf = MReceiveBuffer)
                 {
-                    if (!m_HeaderReceived) //get packet capacity
+                    if (!MHeaderReceived) //get packet capacity
                     {
-                        L2Buffer.Extend(ref m_ReceiveBuffer, 0, *((int*)(buf)) - sizeof(int));
-                        m_ReceivedLength = 0;
-                        m_HeaderReceived = true;
+                        L2Buffer.Extend(ref MReceiveBuffer, 0, *((int*)(buf)) - sizeof(int));
+                        MReceivedLength = 0;
+                        MHeaderReceived = true;
                     }
 
-                    if (m_ReceivedLength == m_ReceiveBuffer.Length) // all data received
+                    if (MReceivedLength == MReceiveBuffer.Length) // all data received
                     {
-                        Handle(new Packet(2, m_ReceiveBuffer));
+                        Handle(new Packet(2, MReceiveBuffer));
 
-                        m_ReceivedLength = 0;
-                        m_ReceiveBuffer = m_DefaultBuffer;
-                        m_HeaderReceived = false;
+                        MReceivedLength = 0;
+                        MReceiveBuffer = MDefaultBuffer;
+                        MHeaderReceived = false;
 
-                        m_Socket.BeginReceive(m_ReceiveBuffer, 0, 4, 0, ReceiveCallback, null);
+                        MSocket.BeginReceive(MReceiveBuffer, 0, 4, 0, ReceiveCallback, null);
                     }
-                    else if (m_ReceivedLength < m_ReceiveBuffer.Length) // not all data received
-                        m_Socket.BeginReceive(m_ReceiveBuffer, m_ReceivedLength, m_ReceiveBuffer.Length - m_ReceivedLength, 0, m_ReceiveCallback, null);
+                    else if (MReceivedLength < MReceiveBuffer.Length) // not all data received
+                        MSocket.BeginReceive(MReceiveBuffer, MReceivedLength, MReceiveBuffer.Length - MReceivedLength, 0, MReceiveCallback, null);
                     else
                         throw new InvalidOperationException();
                 }
@@ -115,7 +115,7 @@ namespace L2dotNET.Network
             catch (SocketException se)
             {
                 if (OnDisconnected != null)
-                    OnDisconnected(se.ErrorCode, this, ConnectionID);
+                    OnDisconnected(se.ErrorCode, this, ConnectionId);
                 else
                 {
                     Logger.WriteLine(Source.InnerNetwork, "{0} \r\nError code: {1}", se.ToString(), se.ErrorCode);
@@ -127,7 +127,7 @@ namespace L2dotNET.Network
                 Logger.Exception(e);
 
                 if (OnDisconnected != null)
-                    OnDisconnected(-1, this, ConnectionID);
+                    OnDisconnected(-1, this, ConnectionId);
                 else
                     CloseConnection();
             }
@@ -156,7 +156,7 @@ namespace L2dotNET.Network
         /// <summary>
         /// Gets or sets connected service unique id.
         /// </summary>
-        public byte ServiceID { get; set; }
+        public byte ServiceId { get; set; }
 
         /// <summary>
         /// Gets or sets connected <see cref="ServiceType"/>.

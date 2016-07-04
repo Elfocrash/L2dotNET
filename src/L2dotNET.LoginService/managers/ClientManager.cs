@@ -9,14 +9,14 @@ namespace L2dotNET.LoginService.Managers
 {
     sealed class ClientManager
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ClientManager));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ClientManager));
 
-        private static volatile ClientManager instance;
-        private static readonly object syncRoot = new object();
+        private static volatile ClientManager _instance;
+        private static readonly object SyncRoot = new object();
         private const int ScrambleCount = 1;
-        private ScrambledKeyPair[] ScrambledPairs;
+        private ScrambledKeyPair[] _scrambledPairs;
         private const int BlowfishCount = 20;
-        private byte[][] BlowfishKeys;
+        private byte[][] _blowfishKeys;
 
         private readonly List<LoginClient> _loggedClients = new List<LoginClient>();
         private SortedList<string, LoginClient> _waitingAcc = new SortedList<string, LoginClient>();
@@ -25,75 +25,73 @@ namespace L2dotNET.LoginService.Managers
         {
             get
             {
-                if (instance == null)
-                    lock (syncRoot)
+                if (_instance == null)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new ClientManager();
+                        if (_instance == null)
+                            _instance = new ClientManager();
                     }
 
-                return instance;
+                return _instance;
             }
         }
-
-        public ClientManager() { }
 
         public void Initialize()
         {
-            log.Info("Loading client manager.");
+            Log.Info("Loading client manager.");
 
-            log.Info("Scrambling keypairs.");
+            Log.Info("Scrambling keypairs.");
 
-            ScrambledPairs = new ScrambledKeyPair[ScrambleCount];
+            _scrambledPairs = new ScrambledKeyPair[ScrambleCount];
 
             for (int i = 0; i < ScrambleCount; i++)
-                ScrambledPairs[i] = new ScrambledKeyPair(ScrambledKeyPair.genKeyPair());
+                _scrambledPairs[i] = new ScrambledKeyPair(ScrambledKeyPair.genKeyPair());
 
-            log.Info($"Scrambled {ScrambledPairs.Length} keypairs.");
-            log.Info("Randomize blowfish keys.");
+            Log.Info($"Scrambled {_scrambledPairs.Length} keypairs.");
+            Log.Info("Randomize blowfish keys.");
 
-            BlowfishKeys = new byte[BlowfishCount][];
+            _blowfishKeys = new byte[BlowfishCount][];
 
             for (int i = 0; i < BlowfishCount; i++)
             {
-                BlowfishKeys[i] = new byte[16];
-                new Random().NextBytes(BlowfishKeys[i]);
+                _blowfishKeys[i] = new byte[16];
+                new Random().NextBytes(_blowfishKeys[i]);
             }
 
-            log.Info($"Randomized {BlowfishKeys.Length} blowfish keys.");
+            Log.Info($"Randomized {_blowfishKeys.Length} blowfish keys.");
         }
 
-        private NetworkBlock banned;
-        private readonly SortedList<string, DateTime> flood = new SortedList<string, DateTime>();
+        private NetworkBlock _banned;
+        private readonly SortedList<string, DateTime> _flood = new SortedList<string, DateTime>();
 
-        public void addClient(TcpClient client)
+        public void AddClient(TcpClient client)
         {
-            if (banned == null)
-                banned = NetworkBlock.Instance;
+            if (_banned == null)
+                _banned = NetworkBlock.Instance;
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
-            log.Info($"Connected: {ip}");
-            if (flood.ContainsKey(ip))
+            Log.Info($"Connected: {ip}");
+            if (_flood.ContainsKey(ip))
             {
-                if (flood[ip].CompareTo(DateTime.Now) == 1)
+                if (_flood[ip].CompareTo(DateTime.Now) == 1)
                 {
-                    log.Warn($"Active flooder: {ip}");
+                    Log.Warn($"Active flooder: {ip}");
                     client.Close();
                     return;
                 }
 
-                lock (flood)
+                lock (_flood)
                 {
-                    flood.Remove(ip);
+                    _flood.Remove(ip);
                 }
             }
 
-            flood.Add(ip, DateTime.Now.AddMilliseconds(3000));
+            _flood.Add(ip, DateTime.Now.AddMilliseconds(3000));
 
-            if (!banned.Allowed(ip))
+            if (!_banned.Allowed(ip))
             {
                 client.Close();
-                log.Error($"NetworkBlock: connection attemp failed. IP: {ip} banned.");
+                Log.Error($"NetworkBlock: connection attemp failed. IP: {ip} banned.");
                 return;
             }
 
@@ -106,12 +104,12 @@ namespace L2dotNET.LoginService.Managers
 
         public ScrambledKeyPair GetScrambledKeyPair()
         {
-            return ScrambledPairs[0];
+            return _scrambledPairs[0];
         }
 
         public byte[] GetBlowfishKey()
         {
-            return BlowfishKeys[new Random().Next(BlowfishCount - 1)];
+            return _blowfishKeys[new Random().Next(BlowfishCount - 1)];
         }
 
         public void RemoveClient(LoginClient loginClient)

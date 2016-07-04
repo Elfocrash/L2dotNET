@@ -5,35 +5,35 @@ namespace L2dotNET.Utility.Geometry
     public class Rectangle : AShape
     {
         // rectangle origin coordinates
-        protected int _x;
-        protected int _y;
+        protected int X;
+        protected int Y;
 
         // rectangle width and height
-        protected int _w;
-        protected int _h;
+        protected int W;
+        protected int H;
 
         public Rectangle(int x, int y, int w, int h)
         {
-            _x = x;
-            _y = y;
+            X = x;
+            Y = y;
 
-            _w = w;
-            _h = h;
+            W = w;
+            H = h;
         }
 
         public override double GetArea()
         {
-            return _w * _h;
+            return W * H;
         }
 
         public override Location GetRandomLocation()
         {
-            return new Location(_x + Rnd.Get(_w), _y + Rnd.Get(_h), 0);
+            return new Location(X + Rnd.Get(W), Y + Rnd.Get(H), 0);
         }
 
         public override int GetSize()
         {
-            return _w * _h;
+            return W * H;
         }
 
         public override double GetVolume()
@@ -43,12 +43,12 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y)
         {
-            int d = x - _x;
-            if ((d < 0) || (d > _w))
+            int d = x - X;
+            if ((d < 0) || (d > W))
                 return false;
 
-            d = y - _y;
-            if ((d < 0) || (d > _h))
+            d = y - Y;
+            if ((d < 0) || (d > H))
                 return false;
 
             return true;
@@ -56,12 +56,12 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y, int z)
         {
-            int d = x - _x;
-            if ((d < 0) || (d > _w))
+            int d = x - X;
+            if ((d < 0) || (d > W))
                 return false;
 
-            d = y - _y;
-            if ((d < 0) || (d > _h))
+            d = y - Y;
+            if ((d < 0) || (d > H))
                 return false;
 
             return true;

@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public TargetUnselected(L2Object obj)
         {
-            _id = obj.ObjID;
+            _id = obj.ObjId;
             _x = obj.X;
             _y = obj.Y;
             _z = obj.Z;

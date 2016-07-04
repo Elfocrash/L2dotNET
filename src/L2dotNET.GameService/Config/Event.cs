@@ -122,7 +122,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Rate to exchange points to reward item, default: 1000.</summary>
         [DefaultValue(1000)]
         [JsonProperty(PropertyName = "GPPerPoint", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int GPPerPoint { get; set; }
+        public int GpPerPoint { get; set; }
 
         ///<summary>CRPs for heroes in clan, default: 300.</summary>
         [DefaultValue(300)]

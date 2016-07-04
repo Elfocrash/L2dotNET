@@ -9,7 +9,7 @@ namespace L2dotNET.Utility.Geometry
     {
         #region Private Fields
 
-        private static Vector3 zero = new Vector3(0f, 0f, 0f);
+        private static Vector3 _zero = new Vector3(0f, 0f, 0f);
 
         #endregion Private Fields
 
@@ -25,7 +25,7 @@ namespace L2dotNET.Utility.Geometry
 
         public static Vector3 Zero
         {
-            get { return zero; }
+            get { return _zero; }
         }
 
         public static Vector3 One { get; } = new Vector3(1f, 1f, 1f);
@@ -232,14 +232,14 @@ namespace L2dotNET.Utility.Geometry
         public double Length()
         {
             double result;
-            DistanceSquared(ref this, ref zero, out result);
+            DistanceSquared(ref this, ref _zero, out result);
             return Math.Sqrt(result);
         }
 
         public double LengthSquared()
         {
             double result;
-            DistanceSquared(ref this, ref zero, out result);
+            DistanceSquared(ref this, ref _zero, out result);
             return result;
         }
 
@@ -328,7 +328,7 @@ namespace L2dotNET.Utility.Geometry
         public static void Normalize(ref Vector3 value, out Vector3 result)
         {
             double factor;
-            Distance(ref value, ref zero, out factor);
+            Distance(ref value, ref _zero, out factor);
             factor = 1f / factor;
             result.X = value.X * factor;
             result.Y = value.Y * factor;

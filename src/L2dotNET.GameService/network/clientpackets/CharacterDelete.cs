@@ -38,27 +38,27 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (player == null)
             {
-                getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
+                getClient().SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
                 return;
             }
 
             if ((player.ClanId != 0) && (player.Clan != null))
             {
-                if (player.Clan.LeaderID == player.ObjID)
+                if (player.Clan.LeaderID == player.ObjId)
                 {
-                    getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.CLAN_LEADERS_MAY_NOT_BE_DELETED));
+                    getClient().SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.CLAN_LEADERS_MAY_NOT_BE_DELETED));
                     return;
                 }
 
-                getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.YOU_MAY_NOT_DELETE_CLAN_MEMBER));
+                getClient().SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.YOU_MAY_NOT_DELETE_CLAN_MEMBER));
                 return;
             }
 
-            if (Config.Config.Instance.gameplayConfig.Server.Client.DeleteCharAfterDays == 0)
+            if (Config.Config.Instance.GameplayConfig.Server.Client.DeleteCharAfterDays == 0)
             {
-                if (!playerService.DeleteCharByObjId(player.ObjID))
+                if (!playerService.DeleteCharByObjId(player.ObjId))
                 {
-                    getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
+                    getClient().SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
                     return;
                 }
 
@@ -66,16 +66,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
             else
             {
-                if (!playerService.MarkToDeleteChar(player.ObjID))
+                if (!playerService.MarkToDeleteChar(player.ObjId))
                 {
-                    getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
+                    getClient().SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
                     return;
                 }
             }
 
-            getClient().sendPacket(new CharDeleteOk());
+            getClient().SendPacket(new CharDeleteOk());
             CharacterSelectionInfo csl = new CharacterSelectionInfo(getClient().AccountName, getClient().AccountChars, getClient().SessionId);
-            getClient().sendPacket(csl);
+            getClient().SendPacket(csl);
         }
     }
 }

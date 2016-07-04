@@ -100,8 +100,8 @@ namespace L2dotNET.GameService.Model.Items
                     return;
                 }
 
-                character.addAbnormal(skill, character, true, false);
-                character.broadcastPacket(new MagicSkillUse(character, character, skill, 100));
+                character.AddAbnormal(skill, character, true, false);
+                character.BroadcastPacket(new MagicSkillUse(character, character, skill, 100));
             }
         }
 
@@ -120,7 +120,7 @@ namespace L2dotNET.GameService.Model.Items
                 if (character is L2Player)
                     ((L2Player)character).castSkill(skill, false, false);
                 else
-                    character.castSkill(skill);
+                    character.CastSkill(skill);
             }
         }
     }

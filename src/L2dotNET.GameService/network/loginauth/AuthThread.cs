@@ -45,7 +45,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
             IsConnected = false;
             try
             {
-                lclient = new TcpClient(Config.Config.Instance.serverConfig.AuthHost, Config.Config.Instance.serverConfig.AuthPort);
+                lclient = new TcpClient(Config.Config.Instance.ServerConfig.AuthHost, Config.Config.Instance.ServerConfig.AuthPort);
                 nstream = lclient.GetStream();
             }
             catch (SocketException)

@@ -103,12 +103,12 @@ namespace L2dotNET.GameService.Config
         ///<summary>This is the server id that the gameserver will request.</summary>
         [DefaultValue(1)]
         [JsonProperty(PropertyName = "RequestServerID", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int RequestServerID { get; set; }
+        public int RequestServerId { get; set; }
 
         ///<summary>If set to true, the login will give an other id to the server (if the requested id is already reserved).</summary>
         [DefaultValue(true)]
         [JsonProperty(PropertyName = "AcceptAlternateID", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool AcceptAlternateID { get; set; }
+        public bool AcceptAlternateId { get; set; }
     }
 
     ///<summary>Database informations.</summary>
@@ -116,7 +116,7 @@ namespace L2dotNET.GameService.Config
     {
         [DefaultValue("")]
         [JsonProperty(PropertyName = "URL", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [DefaultValue("root")]
         [JsonProperty(PropertyName = "Login", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
@@ -153,7 +153,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>If True, the server will be set as GM only.</summary>
         [DefaultValue(false)]
         [JsonProperty(PropertyName = "ServerGMOnly", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool ServerGMOnly { get; set; }
+        public bool ServerGmOnly { get; set; }
 
         ///<summary>If True, the server will be a test server (listed by testserver clients only).</summary>
         [DefaultValue(false)]
@@ -336,11 +336,11 @@ namespace L2dotNET.GameService.Config
 
         [DefaultValue(1.0)]
         [JsonProperty(PropertyName = "RateQuestRewardXP", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public double RateQuestRewardXP { get; set; }
+        public double RateQuestRewardXp { get; set; }
 
         [DefaultValue(1.0)]
         [JsonProperty(PropertyName = "RateQuestRewardSP", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public double RateQuestRewardSP { get; set; }
+        public double RateQuestRewardSp { get; set; }
 
         [DefaultValue(1.0)]
         [JsonProperty(PropertyName = "RateQuestRewardAdena", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
@@ -549,7 +549,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Log GM actions.</summary>
         [DefaultValue(false)]
         [JsonProperty(PropertyName = "GMAudit", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool GMAudit { get; set; }
+        public bool GmAudit { get; set; }
     }
 
     ///<summary>Community board configuration.</summary>
@@ -563,7 +563,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Show this community board section when you open it.</summary>
         [DefaultValue("_bbshome")]
         [JsonProperty(PropertyName = "BBSDefault", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public string BBSDefault { get; set; }
+        public string BbsDefault { get; set; }
     }
 
     ///<summary>Flood Protectors.</summary>

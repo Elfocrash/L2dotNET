@@ -9,28 +9,28 @@ using L2dotNET.GameService.Tables.Multisell;
 
 namespace L2dotNET.GameService.AI.NpcAI
 {
-    class citizen : Template.AI
+    class Citizen : Template.Ai
     {
-        public string fnHi = "lector001.htm";
-        public string fnFeudInfo = "gludio_feud_manager001.htm";
-        public string fnNoFeudInfo = "farm_messenger002.htm";
-        public string fnBracketL = "[";
-        public string fnBracketR = "]";
-        public string fnFlagMan = "flagman.htm";
+        public string FnHi = "lector001.htm";
+        public string FnFeudInfo = "gludio_feud_manager001.htm";
+        public string FnNoFeudInfo = "farm_messenger002.htm";
+        public string FnBracketL = "[";
+        public string FnBracketR = "]";
+        public string FnFlagMan = "flagman.htm";
         public int MoveAroundSocial = 0;
         public int MoveAroundSocial1 = 0;
-        public string ai_type = "pet_around_pet_manager";
+        public string AiType = "pet_around_pet_manager";
         public int HavePet = 0;
-        public int silhouette = 20130;
+        public int Silhouette = 20130;
         public int FriendShip1 = 0;
         public int FriendShip2 = 0;
         public int FriendShip3 = 0;
         public int FriendShip4 = 0;
         public int FriendShip5 = 0;
-        public string fnNoFriend = "citizen_html";
+        public string FnNoFriend = "citizen_html";
         public int NoFnHi = 0;
 
-        public Timer socialMoveTimer;
+        public Timer SocialMoveTimer;
 
         public override void Talked(L2Player talker)
         {
@@ -44,30 +44,30 @@ namespace L2dotNET.GameService.AI.NpcAI
             //else if (talker.hasSomeOfThisItems(FriendShip1, FriendShip2, FriendShip3, FriendShip4, FriendShip5))
             //    talker.ShowHtm(GetDialog("fnHi"), myself);
             //else
-                talker.ShowHtm(GetDialog("fnNoFriend"), myself);
+                talker.ShowHtm(GetDialog("fnNoFriend"), Myself);
         }
 
         public override void Created()
         {
             if (HavePet == 1)
-                myself.CreateOnePrivateEx(silhouette, ai_type, myself.X + 10, myself.Y + 10, myself.Z);
+                Myself.CreateOnePrivateEx(Silhouette, AiType, Myself.X + 10, Myself.Y + 10, Myself.Z);
 
             if ((MoveAroundSocial > 0) || (MoveAroundSocial1 > 0))
             {
-                if (socialMoveTimer == null)
+                if (SocialMoveTimer == null)
                 {
-                    socialMoveTimer = new Timer();
-                    socialMoveTimer.Interval = 10000;
-                    socialMoveTimer.Elapsed += new ElapsedEventHandler(SocialTask);
+                    SocialMoveTimer = new Timer();
+                    SocialMoveTimer.Interval = 10000;
+                    SocialMoveTimer.Elapsed += new ElapsedEventHandler(SocialTask);
                 }
 
-                socialMoveTimer.Enabled = true;
+                SocialMoveTimer.Enabled = true;
             }
         }
 
         private void SocialTask(object sender, ElapsedEventArgs e)
         {
-            if ((myself.CurHP > myself.MaxHp * 0.400000) && !myself.Dead)
+            if ((Myself.CurHp > Myself.MaxHp * 0.400000) && !Myself.Dead)
                 if ((MoveAroundSocial > 0) && (new Random().Next(100) < 40))
                 {
                     //myself::AddEffectActionDesire( myself.sm, 3, MoveAroundSocial * 1000 / 30, 50 );
@@ -86,23 +86,23 @@ namespace L2dotNET.GameService.AI.NpcAI
                     switch (reply)
                     {
                         case 0:
-                            talker.ShowHtm(GetDialog("fnHi"), myself);
+                            talker.ShowHtm(GetDialog("fnHi"), Myself);
                             break;
                         case 1:
-                            NpcHtmlMessage htm = new NpcHtmlMessage(talker, GetDialog(myself.residenceId > 0 ? "fnFeudInfo" : "fnNoFeudInfo"), myself.ObjID);
+                            NpcHtmlMessage htm = new NpcHtmlMessage(talker, GetDialog(Myself.residenceId > 0 ? "fnFeudInfo" : "fnNoFeudInfo"), Myself.ObjId);
 
-                            if (myself.residenceId > 0)
+                            if (Myself.residenceId > 0)
                             {
-                                Castle castle = CastleManager.getInstance().get(myself.residenceId);
+                                Castle castle = CastleManager.getInstance().get(Myself.residenceId);
                                 htm.replace("<?my_pledge_name?>", castle.OwningClanName);
                                 htm.replace("<?my_owner_name?>", castle.OwningPlayerName);
                                 htm.replace("<?current_tax_rate?>", (int)castle.Tax);
                             }
 
-                            htm.replace("<?kingdom_name?>", FString.getInstance().get(myself.residenceId < 7 ? 1001000 : 1001100));
-                            htm.replace("<?feud_name?>", FString.getInstance().get(myself.residenceId + 1001000));
+                            htm.replace("<?kingdom_name?>", FString.getInstance().get(Myself.residenceId < 7 ? 1001000 : 1001100));
+                            htm.replace("<?feud_name?>", FString.getInstance().get(Myself.residenceId + 1001000));
 
-                            talker.sendPacket(htm);
+                            talker.SendPacket(htm);
                             break;
                     }
 
@@ -112,18 +112,18 @@ namespace L2dotNET.GameService.AI.NpcAI
                     {
                         case 579:
                             if ((talker.Level > 40) && (talker.Level < 46))
-                                MultiSell.Instance.ShowList(talker, myself, reply);
+                                MultiSell.Instance.ShowList(talker, Myself, reply);
                             break;
                         case 580:
                             if ((talker.Level >= 46) && (talker.Level < 52))
-                                MultiSell.Instance.ShowList(talker, myself, reply);
+                                MultiSell.Instance.ShowList(talker, Myself, reply);
                             break;
                         case 581:
                             if (talker.Level >= 52)
-                                MultiSell.Instance.ShowList(talker, myself, reply);
+                                MultiSell.Instance.ShowList(talker, Myself, reply);
                             break;
                         default:
-                            MultiSell.Instance.ShowList(talker, myself, reply);
+                            MultiSell.Instance.ShowList(talker, Myself, reply);
                             break;
                     }
 
@@ -205,12 +205,12 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         public void ShowVariationCancelWindow(L2Player talker)
         {
-            talker.sendMessage("citizen.ShowVariationCancelWindow");
+            talker.SendMessage("citizen.ShowVariationCancelWindow");
         }
 
         public void ShowVariationMakeWindow(L2Player talker)
         {
-            talker.sendMessage("citizen.ShowVariationMakeWindow");
+            talker.SendMessage("citizen.ShowVariationMakeWindow");
         }
     }
 }

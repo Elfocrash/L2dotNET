@@ -15,18 +15,18 @@ namespace L2dotNET.GameService.Managers
         public SortedList<int, L2PartyRoom> _rooms = new SortedList<int, L2PartyRoom>();
         public static int _idFactory = 20;
 
-        public L2PartyRoom newRoom(L2Player player, int _roomId, int _maxMembers, int _minLevel, int _maxLevel, int _lootDist, string _roomTitle)
+        public L2PartyRoom newRoom(L2Player player, int roomId, int maxMembers, int minLevel, int maxLevel, int lootDist, string roomTitle)
         {
             L2PartyRoom room = new L2PartyRoom();
-            room._roomId = _roomId;
-            room._maxMembers = _maxMembers;
-            room._minLevel = _minLevel;
-            room._maxLevel = _maxLevel;
-            room._lootDist = _lootDist;
-            room._title = _roomTitle;
-            room._leaderId = player.ObjID;
+            room._roomId = roomId;
+            room._maxMembers = maxMembers;
+            room._minLevel = minLevel;
+            room._maxLevel = maxLevel;
+            room._lootDist = lootDist;
+            room._title = roomTitle;
+            room._leaderId = player.ObjId;
             _idFactory++;
-            _rooms.Add(_roomId, room);
+            _rooms.Add(roomId, room);
 
             return room;
         }

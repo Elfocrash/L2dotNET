@@ -86,7 +86,7 @@ namespace L2dotNET.GameService.Tables
                                     obj.htm = value;
                                     break;
                                 case "hp":
-                                    obj.MaxHP = Convert.ToInt32(value);
+                                    obj.MaxHp = Convert.ToInt32(value);
                                     break;
                                 case "defence":
                                     obj.pdef = Convert.ToInt32(value.Split(' ')[0]);
@@ -121,7 +121,7 @@ namespace L2dotNET.GameService.Tables
             foreach (L2StaticObject o in objects.Values)
             {
                 L2World.Instance.AddObject(o);
-                o.onSpawn();
+                o.OnSpawn();
             }
 
             log.Info($"StaticObjTable: Spanwed {objects.Count} objects.");

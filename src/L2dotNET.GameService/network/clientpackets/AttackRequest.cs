@@ -30,24 +30,24 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player._p_block_act == 1)
+            if (player.PBlockAct == 1)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
-            if (_objectId == player.ObjID)
+            if (_objectId == player.ObjId)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_ON_YOURSELF);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_USE_ON_YOURSELF);
+                player.SendActionFailed();
                 return;
             }
 
-            L2Object obj = player.knownObjects[_objectId];
+            L2Object obj = player.KnownObjects[_objectId];
 
             if (obj == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -61,7 +61,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //    }
             //}
 
-            obj.onForcedAttack(player);
+            obj.OnForcedAttack(player);
         }
     }
 }

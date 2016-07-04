@@ -24,14 +24,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (player.TradeState < 3) // умник
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             if (player.requester == null)
             {
-                player.sendMessage("Your trade requestor has logged off.");
-                player.sendActionFailed();
+                player.SendMessage("Your trade requestor has logged off.");
+                player.SendActionFailed();
                 player.TradeState = 0;
 
                 if (player.currentTrade != null)
@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (bDone)
             {
                 player.TradeState = 4;
-                player.requester.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CONFIRMED_TRADE).AddPlayerName(player.Name));
+                player.requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CONFIRMED_TRADE).AddPlayerName(player.Name));
 
                 if (player.requester.TradeState == 4)
                     TradeManager.getInstance().PersonalTrade(player, player.requester);
@@ -53,12 +53,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 TradeDone end = new TradeDone(false);
                 player.TradeState = 0;
                 player.currentTrade.Clear();
-                player.sendPacket(end);
-                player.requester.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(player.Name));
+                player.SendPacket(end);
+                player.requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(player.Name));
 
                 player.requester.TradeState = 0;
                 player.requester.currentTrade.Clear();
-                player.requester.sendPacket(end);
+                player.requester.SendPacket(end);
                 player.requester = null;
             }
         }

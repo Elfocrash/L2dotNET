@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Model.Inventory
 
         protected abstract L2Item.ItemLocation BaseLocation { get; }
 
-        public int OwnerId => Owner?.ObjID ?? 0;
+        public int OwnerId => Owner?.ObjId ?? 0;
 
         public int Count => Items.Count;
 
@@ -62,7 +62,7 @@ namespace L2dotNET.GameService.Model.Inventory
         {
             foreach (L2Item item in Items)
             {
-                if (item.ObjID == objectId)
+                if (item.ObjId == objectId)
                     return item;
             }
             return null;

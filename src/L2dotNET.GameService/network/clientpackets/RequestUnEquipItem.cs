@@ -20,16 +20,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player._p_block_act == 1)
+            if (player.PBlockAct == 1)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             //int dollId = player.Inventory.getPaperdollIdByMask(slotBitType);
 
             //player.setPaperdoll(dollId, null, true);
-            player.broadcastUserInfo();
+            player.BroadcastUserInfo();
         }
     }
 }

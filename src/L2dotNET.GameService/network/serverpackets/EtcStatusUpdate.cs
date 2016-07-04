@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _force = player.getForceIncreased();
             _weight = player._penaltyWeight;
             _whisper = player.WhisperBlock ? 1 : 0;
-            _danger = player.isInDanger ? 1 : 0;
+            _danger = player.IsInDanger ? 1 : 0;
             _grade = player._penalty_grade;
             _death = player.DeathPenaltyLevel;
             _souls = player.Souls;

@@ -20,9 +20,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if ((_unselect == 0) && player.isCastingNow())
+            if ((_unselect == 0) && player.IsCastingNow())
             {
-                player.abortCast();
+                player.AbortCast();
                 return;
             }
 

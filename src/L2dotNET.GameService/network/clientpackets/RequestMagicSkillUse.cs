@@ -25,9 +25,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player._p_block_act == 1)
+            if (player.PBlockAct == 1)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -35,8 +35,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (skill == null)
             {
-                player.sendMessage("no skill found");
-                player.sendActionFailed();
+                player.SendMessage("no skill found");
+                player.SendActionFailed();
                 return;
             }
 
@@ -44,16 +44,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
             switch (skill.is_magic)
             {
                 case 0:
-                    muted = player._p_block_skill == 1;
+                    muted = player.PBlockSkill == 1;
                     break;
                 case 1:
-                    muted = player._p_block_spell == 1;
+                    muted = player.PBlockSpell == 1;
                     break;
             }
 
             if (muted)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 

@@ -9,12 +9,12 @@ namespace L2dotNET.Network
     /// <summary>
     /// Represents the method that will handle Client.OnConnected" event.
     /// </summary>
-    public delegate void OnConnectedEventHandler(IPEndPoint endPoint, byte connectionID);
+    public delegate void OnConnectedEventHandler(IPEndPoint endPoint, byte connectionId);
 
     /// <summary>
     /// Represents the method that will handle Client.OnDisconnected" event.
     /// </summary>
-    public delegate void OnDisconnectedEventHandler(int errorCode, NetworkClient client, byte connectionID);
+    public delegate void OnDisconnectedEventHandler(int errorCode, NetworkClient client, byte connectionId);
 
     /// <summary>
     /// Abstract class to all client connections.
@@ -24,47 +24,47 @@ namespace L2dotNET.Network
         /// <summary>
         /// Client <see cref="Socket"/>.
         /// </summary>
-        public Socket m_Socket;
+        public Socket MSocket;
 
         /// <summary>
         /// Send buffers queue.
         /// </summary>
-        protected readonly Queue<byte[]> m_SendQueue;
+        protected readonly Queue<byte[]> MSendQueue;
 
         /// <summary>
         /// Connection receive buffer.
         /// </summary>
-        protected byte[] m_ReceiveBuffer;
+        protected byte[] MReceiveBuffer;
 
         /// <summary>
         /// Receive callback.
         /// </summary>
-        protected readonly AsyncCallback m_ReceiveCallback;
+        protected readonly AsyncCallback MReceiveCallback;
 
         /// <summary>
         /// Send callback.
         /// </summary>
-        protected readonly AsyncCallback m_SendCallback;
+        protected readonly AsyncCallback MSendCallback;
 
         /// <summary>
         /// Indicates if packet header was received.
         /// </summary>
-        protected bool m_HeaderReceived;
+        protected bool MHeaderReceived;
 
         /// <summary>
         /// Packet sending indicator.
         /// </summary>
-        protected bool m_SendStackFlag;
+        protected bool MSendStackFlag;
 
         /// <summary>
         /// Indicates if sending packet is aviable.
         /// </summary>
-        protected bool m_SendReadyFlag = true;
+        protected bool MSendReadyFlag = true;
 
         /// <summary>
         /// Lock object.
         /// </summary>
-        protected readonly object m_Lock = new object();
+        protected readonly object MLock = new object();
 
         /// <summary>
         /// Occurs after <see cref="NetworkClient"/> object was connected (initialized).
@@ -79,27 +79,27 @@ namespace L2dotNET.Network
         /// <summary>
         /// Default connection buffer.
         /// </summary>
-        protected static readonly byte[] m_DefaultBuffer = new byte[4];
+        protected static readonly byte[] MDefaultBuffer = new byte[4];
 
         /// <summary>
         /// Currently received packet capacity.
         /// </summary>
-        protected int m_ReceivedLength;
+        protected int MReceivedLength;
 
         /// <summary>
         /// Connection id.
         /// </summary>
-        public byte ConnectionID = 1;
+        public byte ConnectionId = 1;
 
         /// <summary>
         /// Initializes new instance of <see cref="NetworkClient"/> connection.
         /// </summary>
         public NetworkClient()
         {
-            m_ReceiveCallback = new AsyncCallback(ReceiveCallback);
-            m_SendCallback = new AsyncCallback(SendCallback);
-            m_SendQueue = new Queue<byte[]>();
-            m_ReceiveBuffer = m_DefaultBuffer;
+            MReceiveCallback = new AsyncCallback(ReceiveCallback);
+            MSendCallback = new AsyncCallback(SendCallback);
+            MSendQueue = new Queue<byte[]>();
+            MReceiveBuffer = MDefaultBuffer;
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace L2dotNET.Network
             Logger.WriteLine(Source.Debug, "Try set m_Socket");
             try
             {
-                m_Socket = socket;
+                MSocket = socket;
             }
             catch (Exception ex)
             {
@@ -145,17 +145,17 @@ namespace L2dotNET.Network
         {
             try
             {
-                lock (m_Lock)
+                lock (MLock)
                 {
-                    m_SendReadyFlag = false;
+                    MSendReadyFlag = false;
 
-                    while (!m_SendReadyFlag && (m_SendQueue.Count > 0))
+                    while (!MSendReadyFlag && (MSendQueue.Count > 0))
                     {
-                        byte[] buffer = m_SendQueue.Dequeue();
-                        m_Socket.BeginSend(buffer, 0, buffer.Length, 0, m_SendCallback, null);
+                        byte[] buffer = MSendQueue.Dequeue();
+                        MSocket.BeginSend(buffer, 0, buffer.Length, 0, MSendCallback, null);
                     }
 
-                    m_SendReadyFlag = true;
+                    MSendReadyFlag = true;
                 }
             }
             catch (Exception e)
@@ -165,7 +165,7 @@ namespace L2dotNET.Network
                 CloseConnection();
 
                 if (OnDisconnected != null)
-                    OnDisconnected(-1, this, ConnectionID);
+                    OnDisconnected(-1, this, ConnectionId);
             }
         }
 
@@ -185,14 +185,14 @@ namespace L2dotNET.Network
             //#if DEBUG_NET_CLIENT
             Console.WriteLine($"Sending:\r\n{L2Buffer.ToString(buffer)}");
             //#endif
-            if ((m_Socket != null) && m_Socket.Connected)
+            if ((MSocket != null) && MSocket.Connected)
             {
-                lock (m_Lock)
+                lock (MLock)
                 {
-                    m_SendQueue.Enqueue(buffer);
+                    MSendQueue.Enqueue(buffer);
                 }
 
-                if (m_SendReadyFlag)
+                if (MSendReadyFlag)
                     SendCallback(null);
             }
         }
@@ -202,18 +202,18 @@ namespace L2dotNET.Network
         /// </summary>
         public virtual void CloseConnection()
         {
-            if ((m_Socket != null) && m_Socket.Connected)
+            if ((MSocket != null) && MSocket.Connected)
             {
                 try
                 {
-                    m_Socket.Shutdown(SocketShutdown.Both);
+                    MSocket.Shutdown(SocketShutdown.Both);
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
                 }
 
-                m_Socket = null;
+                MSocket = null;
             }
         }
 
@@ -222,7 +222,7 @@ namespace L2dotNET.Network
         /// </summary>
         public virtual bool Connected
         {
-            get { return (m_Socket != null) && m_Socket.Connected; }
+            get { return (MSocket != null) && MSocket.Connected; }
         }
     }
 }

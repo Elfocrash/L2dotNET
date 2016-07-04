@@ -11,17 +11,17 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
 
         public L2Door()
         {
-            ObjID = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.nextId();
             Type = 1;
             Closed = 1;
             MeshID = 1;
             Level = 1;
         }
 
-        public override void onSpawn()
+        public override void OnSpawn()
         {
-            CurHP = MaxHP;
-            base.onSpawn();
+            CurHp = MaxHp;
+            base.OnSpawn();
         }
 
         public override void NotifyAction(L2Player player)
@@ -31,12 +31,12 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
             else
                 Closed = 1;
 
-            broadcastUserInfo();
+            BroadcastUserInfo();
         }
 
         public override int GetDamage()
         {
-            int dmg = 6 - (int)Math.Ceiling(CurHP / MaxHP * 6);
+            int dmg = 6 - (int)Math.Ceiling(CurHp / MaxHp * 6);
             if (dmg > 6)
                 return 6;
 
@@ -51,7 +51,7 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
         public void OpenForTime()
         {
             Closed = 0;
-            broadcastUserInfo();
+            BroadcastUserInfo();
 
             if (selfClose == null)
             {
@@ -68,15 +68,15 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
             if (Closed == 0)
             {
                 Closed = 1;
-                broadcastUserInfo();
+                BroadcastUserInfo();
             }
 
             selfClose.Enabled = false;
         }
 
-        public override string asString()
+        public override string AsString()
         {
-            return "L2Door:" + ObjID + " " + StaticID + " " + ClanID;
+            return "L2Door:" + ObjId + " " + StaticID + " " + ClanID;
         }
     }
 }

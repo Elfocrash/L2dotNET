@@ -47,7 +47,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Amount of HP restored at revive - on a base 1 = 100%.</summary>
         [DefaultValue(0.7)]
         [JsonProperty(PropertyName = "RespawnRestoreHP", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public double RespawnRestoreHP { get; set; }
+        public double RespawnRestoreHp { get; set; }
 
         ///<summary>Maximum number of allowed slots for Private Stores (sell/buy) for dwarves.</summary>
         ///<summary>Normally, dwarves get 5 slots for pvt stores, while other races get only 4.</summary>
@@ -107,7 +107,7 @@ namespace L2dotNET.GameService.Config
 
         ///<summary>GMs / Admin Stuff.</summary>
         [JsonProperty(PropertyName = "GM", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public GM GM;
+        public Gm Gm;
 
         ///<summary>Petition.</summary>
         [JsonProperty(PropertyName = "Petition", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
@@ -261,7 +261,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Default: 15.</summary>
         [DefaultValue(15)]
         [JsonProperty(PropertyName = "NGSkillChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int NGSkillChance { get; set; }
+        public int NgSkillChance { get; set; }
 
         ///<summary>Control the chance to get a skill in the augmentation process.</summary>
         ///<summary>Default: 30.</summary>
@@ -293,7 +293,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Default: 0.</summary>
         [DefaultValue(0)]
         [JsonProperty(PropertyName = "NGGlowChance", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int NGGlowChance { get; set; }
+        public int NgGlowChance { get; set; }
 
         ///<summary>These control the chance to get a glow effect in the augmentation process.</summary>
         ///<summary>Notes: No/Mid Grade Life Stone can't have glow effect if you do not get a skill or base stat modifier.</summary>
@@ -334,7 +334,7 @@ namespace L2dotNET.GameService.Config
 
         [DefaultValue(false)]
         [JsonProperty(PropertyName = "KarmaPlayerCanUseGK", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool KarmaPlayerCanUseGK { get; set; }
+        public bool KarmaPlayerCanUseGk { get; set; }
 
         [DefaultValue(true)]
         [JsonProperty(PropertyName = "KarmaPlayerCanTrade", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
@@ -347,7 +347,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>GM Equipment loss.</summary>
         [DefaultValue(false)]
         [JsonProperty(PropertyName = "CanGMDropEquipment", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool CanGMDropEquipment { get; set; }
+        public bool CanGmDropEquipment { get; set; }
 
         ///<summary>List of pet items we cannot drop.</summary>
         [DefaultValue(new[] { 2375, 3500, 3501, 3502, 4422, 4423, 4424, 4425, 6648, 6649, 6650 })]
@@ -357,17 +357,17 @@ namespace L2dotNET.GameService.Config
         ///<summary>Lists of items which should NEVER be dropped by PKer.</summary>
         [DefaultValue(new[] { 1147, 425, 1146, 461, 10, 2368, 7, 6, 2370, 2369 })]
         [JsonProperty(PropertyName = "ListOfNonDroppableItemsForPK", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int[] ListOfNonDroppableItemsForPK { get; set; }
+        public int[] ListOfNonDroppableItemsForPk { get; set; }
 
         ///<summary>Item drop related min/max.</summary>
         [DefaultValue(5)]
         [JsonProperty(PropertyName = "MinimumPKRequiredToDrop", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int MinimumPKRequiredToDrop { get; set; }
+        public int MinimumPkRequiredToDrop { get; set; }
 
         ///<summary>Should we award a pvp point for killing a player with karma?.</summary>
         [DefaultValue(false)]
         [JsonProperty(PropertyName = "AwardPKKillPVPPoint", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool AwardPKKillPVPPoint { get; set; }
+        public bool AwardPkKillPvpPoint { get; set; }
 
         ///<summary>Length one stays in PvP mode after hitting an innocent (in ms).</summary>
         [DefaultValue(15000)]
@@ -377,7 +377,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Length one stays in PvP mode after hitting a purple player (in ms).</summary>
         [DefaultValue(30000)]
         [JsonProperty(PropertyName = "PvPVsPvPTime", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int PvPVsPvPTime { get; set; }
+        public int PvPvsPvPTime { get; set; }
     }
 
     ///<summary>Party.</summary>
@@ -424,7 +424,7 @@ namespace L2dotNET.GameService.Config
     }
 
     ///<summary>GMs / Admin Stuff.</summary>
-    public class GM
+    public class Gm
     {
         ///<summary>If next switch is set to true every newly created character will have access level 200.</summary>
         [DefaultValue(false)]
@@ -453,27 +453,27 @@ namespace L2dotNET.GameService.Config
         ///<summary>Enable GMs to have the glowing aura of a Hero character.</summary>
         [DefaultValue(false)]
         [JsonProperty(PropertyName = "GMHeroAura", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool GMHeroAura { get; set; }
+        public bool GmHeroAura { get; set; }
 
         ///<summary>Auto set invulnerable status to a GM on login.</summary>
         [DefaultValue(true)]
         [JsonProperty(PropertyName = "GMStartupInvulnerable", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool GMStartupInvulnerable { get; set; }
+        public bool GmStartupInvulnerable { get; set; }
 
         ///<summary>Auto set invisible status to a GM on login.</summary>
         [DefaultValue(true)]
         [JsonProperty(PropertyName = "GMStartupInvisible", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool GMStartupInvisible { get; set; }
+        public bool GmStartupInvisible { get; set; }
 
         ///<summary>Auto block private messages to a GM on login.</summary>
         [DefaultValue(true)]
         [JsonProperty(PropertyName = "GMStartupSilence", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool GMStartupSilence { get; set; }
+        public bool GmStartupSilence { get; set; }
 
         ///<summary>Auto list GMs in GM list (/gmlist) on login.</summary>
         [DefaultValue(true)]
         [JsonProperty(PropertyName = "GMStartupAutoList", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool GMStartupAutoList { get; set; }
+        public bool GmStartupAutoList { get; set; }
     }
 
     ///<summary>Petition.</summary>

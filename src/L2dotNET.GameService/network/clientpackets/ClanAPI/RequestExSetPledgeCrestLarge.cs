@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
             if (player.ClanId == 0)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -36,22 +36,22 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
             if ((clan.HideoutID == 0) || (clan.CastleID == 0))
             {
-                player.sendMessage("You need to own clan hall or castle to assign this emblem.");
-                player.sendActionFailed();
+                player.SendMessage("You need to own clan hall or castle to assign this emblem.");
+                player.SendActionFailed();
                 return;
             }
 
             if ((_size < 0) || (_size > 2176))
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.LENGTH_CREST_DOES_NOT_MEET_STANDARD_REQUIREMENTS);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.LENGTH_CREST_DOES_NOT_MEET_STANDARD_REQUIREMENTS);
+                player.SendActionFailed();
                 return;
             }
 
             if ((player.ClanPrivs & L2Clan.CP_CL_REGISTER_CREST) != L2Clan.CP_CL_REGISTER_CREST)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_AUTHORIZED_TO_BESTOW_RIGHTS);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.NOT_AUTHORIZED_TO_BESTOW_RIGHTS);
+                player.SendActionFailed();
                 return;
             }
 

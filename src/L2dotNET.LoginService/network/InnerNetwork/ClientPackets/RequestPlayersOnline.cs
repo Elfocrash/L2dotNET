@@ -5,18 +5,18 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestPlayersOnline
     {
-        private readonly short cnt;
-        private readonly ServerThread thread;
+        private readonly short _cnt;
+        private readonly ServerThread _thread;
 
         public RequestPlayersOnline(Packet p, ServerThread server)
         {
-            thread = server;
-            cnt = p.ReadShort();
+            _thread = server;
+            _cnt = p.ReadShort();
         }
 
         public void RunImpl()
         {
-            thread.Curp = cnt;
+            _thread.Curp = _cnt;
         }
     }
 }

@@ -5,17 +5,17 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class AuthGameGuard
     {
-        private readonly LoginClient client;
+        private readonly LoginClient _client;
 
         public AuthGameGuard(Packet p, LoginClient client)
         {
-            this.client = client;
+            this._client = client;
             // do nothing
         }
 
         public void RunImpl()
         {
-            client.Send(GGAuth.ToPacket(client));
+            _client.Send(GgAuth.ToPacket(_client));
         }
     }
 }

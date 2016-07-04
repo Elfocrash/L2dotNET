@@ -11,14 +11,14 @@ namespace L2dotNET.GameService.Model.Playable
         public L2Pet()
         {
             ObjectSummonType = 2;
-            ObjID = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.nextId();
             Name = "";
             Inventory = new PetInventory(this);
         }
 
-        public override void onAction(L2Player player)
+        public override void OnAction(L2Player player)
         {
-            player.sendMessage(asString());
+            player.SendMessage(AsString());
 
             player.ChangeTarget(this);
         }
@@ -80,9 +80,9 @@ namespace L2dotNET.GameService.Model.Playable
             //}
         }
 
-        public override string asString()
+        public override string AsString()
         {
-            return "L2Pet:" + ObjID + "";
+            return "L2Pet:" + ObjId + "";
         }
     }
 }

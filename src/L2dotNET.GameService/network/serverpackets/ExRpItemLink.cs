@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeC(0xfe);
             writeH(0x6c);
 
-            writeD(item.ObjID);
+            writeD(item.ObjId);
             writeD(item.Template.ItemID);
             writeD(0);
             writeQ(item.Count);
@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(item.Template.BodyPartId());
             writeH(item.Enchant);
             writeH(0);
-            writeD(item.AugmentationID);
+            writeD(item.AugmentationId);
             writeD(item.Durability);
             writeD(item.LifeTimeEnd());
 

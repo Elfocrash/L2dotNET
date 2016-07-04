@@ -25,15 +25,15 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
         public bool UnlockSkill = false;
         public bool UnlockNpc = false;
 
-        public override void broadcastUserInfo()
+        public override void BroadcastUserInfo()
         {
-            foreach (L2Player obj in knownObjects.Values.OfType<L2Player>())
-                obj.sendPacket(new StaticObject(this));
+            foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
+                obj.SendPacket(new StaticObject(this));
         }
 
-        public override void onAction(L2Player player)
+        public override void OnAction(L2Player player)
         {
-            player.sendMessage(asString());
+            player.SendMessage(AsString());
 
             player.ChangeTarget(this);
         }

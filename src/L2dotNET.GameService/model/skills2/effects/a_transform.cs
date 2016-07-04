@@ -38,42 +38,42 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             L2Player player = (L2Player)caster;
             if (player.Summon != null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHEN_SUMMONED_SERVITOR);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHEN_SUMMONED_SERVITOR);
                 return false;
             }
 
             if (player.isSittingInProgress() || player.isSitting())
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_TRANSFORM_WHILE_SITTING);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_TRANSFORM_WHILE_SITTING);
+                player.SendActionFailed();
                 return false;
             }
 
-            if (player.isInWater())
+            if (player.IsInWater())
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_INTO_THE_DESIRED_FORM_IN_WATER);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_INTO_THE_DESIRED_FORM_IN_WATER);
+                player.SendActionFailed();
                 return false;
             }
 
             if (player.MountType > 0)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHILE_RIDING_PET);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHILE_RIDING_PET);
+                player.SendActionFailed();
                 return false;
             }
 
             if (player.TransformID != 0)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.ALREADY_POLYMORPHED_CANNOT_POLYMORPH_AGAIN);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ALREADY_POLYMORPHED_CANNOT_POLYMORPH_AGAIN);
+                player.SendActionFailed();
                 return false;
             }
 
             if (player.isOnShip() || (player.Boat != null))
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHILE_RIDING_BOAT);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_POLYMORPH_WHILE_RIDING_BOAT);
+                player.SendActionFailed();
                 return false;
             }
 

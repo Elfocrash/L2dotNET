@@ -31,8 +31,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (npc == null)
             {
-                getClient().CurrentPlayer.sendMessage("no npc found");
-                getClient().CurrentPlayer.sendActionFailed();
+                getClient().CurrentPlayer.SendMessage("no npc found");
+                getClient().CurrentPlayer.SendActionFailed();
                 return null;
             }
 
@@ -43,9 +43,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = getClient().CurrentPlayer;
 
-            if (player._p_block_act == 1)
+            if (player.PBlockAct == 1)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -57,7 +57,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 if (npc == null)
                 {
-                    player.sendActionFailed();
+                    player.SendActionFailed();
                     return;
                 }
 

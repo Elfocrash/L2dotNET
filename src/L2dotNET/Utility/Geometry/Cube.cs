@@ -14,26 +14,26 @@ namespace L2dotNET.Utility.Geometry
 
         public override double GetArea()
         {
-            return 6 * _a * _a;
+            return 6 * A * A;
         }
 
         public override double GetVolume()
         {
-            return _a * _a * _a;
+            return A * A * A;
         }
 
         public override bool IsInside(int x, int y, int z)
         {
             int d = z - _z;
-            if ((d < 0) || (d > _a))
+            if ((d < 0) || (d > A))
                 return false;
 
-            d = x - _x;
-            if ((d < 0) || (d > _a))
+            d = x - X;
+            if ((d < 0) || (d > A))
                 return false;
 
-            d = y - _y;
-            if ((d < 0) || (d > _a))
+            d = y - Y;
+            if ((d < 0) || (d > A))
                 return false;
 
             return true;
@@ -41,7 +41,7 @@ namespace L2dotNET.Utility.Geometry
 
         public override Location GetRandomLocation()
         {
-            return new Location(_x + Rnd.Get(_a), _y + Rnd.Get(_a), _z + Rnd.Get(_a));
+            return new Location(X + Rnd.Get(A), Y + Rnd.Get(A), _z + Rnd.Get(A));
         }
     }
 }

@@ -26,8 +26,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
 
             if (player._recipeBook == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
+                player.SendActionFailed();
                 return;
             }
 
@@ -35,15 +35,15 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
 
             if (rec == null)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.RECIPE_INCORRECT);
+                player.SendActionFailed();
                 return;
             }
 
-            if (player.CurMP < rec._mp_consume)
+            if (player.CurMp < rec._mp_consume)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_MP);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.NOT_ENOUGH_MP);
+                player.SendActionFailed();
                 return;
             }
 
@@ -56,15 +56,15 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
 
             if (!next)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CREATE_LVL_TOO_LOW_TO_REGISTER);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CREATE_LVL_TOO_LOW_TO_REGISTER);
+                player.SendActionFailed();
                 return;
             }
 
-            player.CurMP -= rec._mp_consume;
-            StatusUpdate su = new StatusUpdate(player.ObjID);
-            su.add(StatusUpdate.CUR_MP, (int)player.CurMP);
-            player.sendPacket(su);
+            player.CurMp -= rec._mp_consume;
+            StatusUpdate su = new StatusUpdate(player.ObjId);
+            su.add(StatusUpdate.CUR_MP, (int)player.CurMp);
+            player.SendPacket(su);
 
             foreach (recipe_item_entry material in rec._materials)
                 player.DestroyItemById(material.item.ItemID, material.count);
@@ -72,15 +72,15 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
             if (rec._success_rate < 100)
                 if (new Random().Next(0, 100) > rec._success_rate)
                 {
-                    player.sendPacket(new RecipeItemMakeInfo(player, rec, 0));
-                    player.sendActionFailed();
+                    player.SendPacket(new RecipeItemMakeInfo(player, rec, 0));
+                    player.SendActionFailed();
                     return;
                 }
 
             foreach (recipe_item_entry prod in rec._products)
                 player.AddItem(prod.item.ItemID, prod.count);
 
-            player.sendPacket(new RecipeItemMakeInfo(player, rec, 1));
+            player.SendPacket(new RecipeItemMakeInfo(player, rec, 1));
         }
     }
 }

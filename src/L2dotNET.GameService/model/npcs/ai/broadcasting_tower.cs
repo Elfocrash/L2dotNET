@@ -72,8 +72,8 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
             if ((dx != null) && (player.GetAdena() < dx[2]))
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA);
+                player.SendActionFailed();
                 return;
             }
 
@@ -81,13 +81,13 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             {
                 player.ReduceAdena(dx[2]);
 
-                player.clearKnowns(true);
+                player.ClearKnowns(true);
 
                 player._obsx = player.X;
                 player._obsy = player.Y;
                 player._obsz = player.Z;
 
-                player.sendPacket(new ObservationMode(dx[3], dx[4], dx[5]));
+                player.SendPacket(new ObservationMode(dx[3], dx[4], dx[5]));
             }
         }
 

@@ -4,33 +4,33 @@ namespace L2dotNET.Utility.Geometry
 {
     public class Square : AShape
     {
-        protected int _x;
-        protected int _y;
+        protected int X;
+        protected int Y;
 
         // square side
-        protected int _a;
+        protected int A;
 
         public Square(int x, int y, int a)
         {
-            _x = x;
-            _y = y;
+            X = x;
+            Y = y;
 
-            _a = a;
+            A = a;
         }
 
         public override double GetArea()
         {
-            return _a * _a;
+            return A * A;
         }
 
         public override Location GetRandomLocation()
         {
-            return new Location(_x + Rnd.Get(_a), _y + Rnd.Get(_a), 0);
+            return new Location(X + Rnd.Get(A), Y + Rnd.Get(A), 0);
         }
 
         public override int GetSize()
         {
-            return _a * _a;
+            return A * A;
         }
 
         public override double GetVolume()
@@ -40,12 +40,12 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y)
         {
-            int d = x - _x;
-            if ((d < 0) || (d > _a))
+            int d = x - X;
+            if ((d < 0) || (d > A))
                 return false;
 
-            d = y - _y;
-            if ((d < 0) || (d > _a))
+            d = y - Y;
+            if ((d < 0) || (d > A))
                 return false;
 
             return true;
@@ -53,12 +53,12 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y, int z)
         {
-            int d = x - _x;
-            if ((d < 0) || (d > _a))
+            int d = x - X;
+            if ((d < 0) || (d > A))
                 return false;
 
-            d = y - _y;
-            if ((d < 0) || (d > _a))
+            d = y - Y;
+            if ((d < 0) || (d > A))
                 return false;
 
             return true;

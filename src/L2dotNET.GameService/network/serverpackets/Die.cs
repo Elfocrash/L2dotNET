@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public Die(L2Character cha)
         {
-            sId = cha.ObjID;
+            sId = cha.ObjId;
 
             if (cha is L2Player)
                 DiePlayer((L2Player)cha);

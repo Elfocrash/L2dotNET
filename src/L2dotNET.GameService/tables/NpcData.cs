@@ -101,8 +101,8 @@ namespace L2dotNET.GameService.Tables
         {
             if (!_shops.ContainsKey(trader.Template.NpcId))
             {
-                player.sendMessage("you shop was not found");
-                player.sendActionFailed();
+                player.SendMessage("you shop was not found");
+                player.SendActionFailed();
                 return;
             }
 
@@ -114,16 +114,16 @@ namespace L2dotNET.GameService.Tables
 
                 if (!shop.lists.ContainsKey(reply))
                 {
-                    player.sendMessage("your shop id was just wrong " + reply);
-                    player.sendActionFailed();
+                    player.SendMessage("your shop id was just wrong " + reply);
+                    player.SendActionFailed();
                 }
                 else
                     pk = new ShopPreviewList(player, shop.lists[reply], reply);
             }
             else
             {
-                player.sendPacket(new ExBuySellList_Buy(player, shop.lists[reply], 1.10, 1.0, reply));
-                player.sendPacket(new ExBuySellList_Sell(player));
+                player.SendPacket(new ExBuySellList_Buy(player, shop.lists[reply], 1.10, 1.0, reply));
+                player.SendPacket(new ExBuySellList_Sell(player));
             }
         }
 
@@ -137,7 +137,7 @@ namespace L2dotNET.GameService.Tables
             if (!Teleports.npcs.ContainsKey(npc.Template.NpcId))
             {
                 player.ShowHtmPlain("no teleports available for you", npc);
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -167,7 +167,7 @@ namespace L2dotNET.GameService.Tables
             catch
             {
                 log.Error($"ND:RequestTeleport cant find teleport group {type}");
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 

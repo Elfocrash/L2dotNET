@@ -211,63 +211,63 @@ namespace L2dotNET.GameService.Model.Items
 
         public short can_equip_sex = -1;
 
-        public bool canEquipSex(int _sex)
+        public bool canEquipSex(int sex)
         {
             if (can_equip_sex == -1)
                 return true;
 
-            return _sex == can_equip_sex;
+            return sex == can_equip_sex;
         }
 
         public short can_equip_agit = -1;
 
-        public bool canEquipAgit(int _agitId)
+        public bool canEquipAgit(int agitId)
         {
             if (can_equip_agit == -1)
                 return true;
 
-            return _agitId == can_equip_agit;
+            return agitId == can_equip_agit;
         }
 
         public short can_equip_castle = -1;
 
-        public bool canEquipCastle(int _castleId)
+        public bool canEquipCastle(int castleId)
         {
             if (can_equip_castle == -1)
                 return true;
 
-            return _castleId == can_equip_castle;
+            return castleId == can_equip_castle;
         }
 
         public short can_equip_hero = -1;
 
-        public bool canEquipHeroic(int _heroic)
+        public bool canEquipHeroic(int heroic)
         {
             if (can_equip_hero == -1)
                 return true;
 
-            return _heroic == can_equip_hero;
+            return heroic == can_equip_hero;
         }
 
         public short can_equip_nobless = -1;
 
-        public bool canEquipNobless(int _noble)
+        public bool canEquipNobless(int noble)
         {
             if (can_equip_nobless == -1)
                 return true;
 
-            return _noble == can_equip_nobless;
+            return noble == can_equip_nobless;
         }
 
         public short can_equip_chaotic = -1;
         public string _htmFile;
 
-        public bool canEquipChaotic(int _pkkills)
+        public bool canEquipChaotic(int pkkills)
         {
             if (can_equip_chaotic == -1)
                 return true;
 
-            return _pkkills == 0;
+            return pkkills == 0;
         }
 
         public bool isStackable()

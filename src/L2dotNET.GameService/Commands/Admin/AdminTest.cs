@@ -27,6 +27,6 @@ namespace L2dotNET.GameService.Commands.Admin
 
         //private bool lp = false;
 
-        private void loopme() { }
+        private void Loopme() { }
     }
 }

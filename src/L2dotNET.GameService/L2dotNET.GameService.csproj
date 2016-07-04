@@ -593,7 +593,6 @@
     <Compile Include="Commands\Admin\AdminTransform.cs" />
     <Compile Include="Commands\Admin\AdminChat.cs" />
     <Compile Include="Commands\Admin\AAdminCommand.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="Tables\Admin_Bypass\ABTeleport.cs" />
     <Compile Include="Tables\Admin_Bypass\ab_teleport_entry.cs" />
     <Compile Include="Tables\Admin_Bypass\ab_teleport_group.cs" />

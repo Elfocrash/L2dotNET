@@ -30,36 +30,39 @@ namespace L2dotNET.GameService
 
         public ClientManager() { }
 
-        protected SortedList<string, DateTime> _flood = new SortedList<string, DateTime>();
-        protected NetworkBlock _banned;
+        protected SortedList<string, DateTime> Flood = new SortedList<string, DateTime>();
+        protected NetworkBlock Banned;
 
-        public SortedList<string, GameClient> clients = new SortedList<string, GameClient>();
+        public SortedList<string, GameClient> Clients = new SortedList<string, GameClient>();
 
-        public void addClient(TcpClient client)
+        public void AddClient(TcpClient client)
         {
-            if (_banned == null)
-                _banned = NetworkBlock.Instance;
+            if (Banned == null)
+                Banned = NetworkBlock.Instance;
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
 
-            if (_flood.ContainsKey(ip))
+            lock (Flood)
             {
-                if (_flood[ip].CompareTo(DateTime.Now) == 1)
+                if (Flood.ContainsKey(ip))
                 {
-                    log.Warn($"Active flooder: {ip}");
-                    client.Close();
-                    return;
-                }
+                    if (Flood[ip].CompareTo(DateTime.Now) == 1)
+                    {
+                        log.Warn($"Active flooder: {ip}");
+                        client.Close();
+                        return;
+                    }
 
-                lock (_flood)
-                {
-                    _flood.Remove(ip);
+                    lock (Flood)
+                    {
+                        Flood.Remove(ip);
+                    }
                 }
             }
 
-            _flood.Add(ip, DateTime.Now.AddMilliseconds(3000));
+            Flood.Add(ip, DateTime.Now.AddMilliseconds(3000));
 
-            if (!_banned.Allowed(ip))
+            if (!Banned.Allowed(ip))
             {
                 client.Close();
                 log.Error($"NetworkBlock: connection attemp failed. {ip} banned.");
@@ -68,18 +71,21 @@ namespace L2dotNET.GameService
 
             GameClient gc = new GameClient(client);
 
-            clients.Add(gc._address.ToString(), gc);
-            log.Info($"NetController: {clients.Count} active connections");
+            lock (Clients)
+            {
+                Clients.Add(gc.Address.ToString(), gc);
+            }
+            log.Info($"NetController: {Clients.Count} active connections");
         }
 
-        public void terminate(string sock)
+        public void Terminate(string sock)
         {
-            lock (clients)
+            lock (Clients)
             {
-                clients.Remove(sock);
+                Clients.Remove(sock);
             }
 
-            log.Info($"NetController: {clients.Count} active connections");
+            log.Info($"NetController: {Clients.Count} active connections");
         }
     }
 }

@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeH(action);
 
             writeH(item.Template.Type1());
-            writeD(item.ObjID);
+            writeD(item.ObjId);
             writeD(item.Template.ItemID);
             writeD(num);
 

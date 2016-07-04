@@ -24,14 +24,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (player.TradeState != 2)
             {
-                player.sendMessage("Stupid.");
+                player.SendMessage("Stupid.");
                 response = 0;
             }
 
             if (player.requester == null)
             {
-                player.sendMessage("Your trade requestor has logged off.");
-                player.sendActionFailed();
+                player.SendMessage("Your trade requestor has logged off.");
+                player.SendActionFailed();
                 player.TradeState = 0;
                 return;
             }
@@ -50,17 +50,17 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 case 0:
                     player.TradeState = 0;
                     player.requester.TradeState = 0;
-                    player.requester.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_DENIED_TRADE_REQUEST).AddPlayerName(player.Name));
+                    player.requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_DENIED_TRADE_REQUEST).AddPlayerName(player.Name));
                     player.requester.requester = null;
                     player.requester = null;
                     break;
                 case 1:
-                    player.requester.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.BEGIN_TRADE_WITH_S1).AddPlayerName(player.Name));
-                    player.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.BEGIN_TRADE_WITH_S1).AddPlayerName(player.requester.Name));
+                    player.requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.BEGIN_TRADE_WITH_S1).AddPlayerName(player.Name));
+                    player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.BEGIN_TRADE_WITH_S1).AddPlayerName(player.requester.Name));
                     player.TradeState = 3;
                     player.requester.TradeState = 3;
-                    player.sendPacket(new TradeStart(player));
-                    player.requester.sendPacket(new TradeStart(player.requester));
+                    player.SendPacket(new TradeStart(player));
+                    player.requester.SendPacket(new TradeStart(player.requester));
                     break;
             }
         }

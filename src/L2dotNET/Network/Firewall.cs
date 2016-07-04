@@ -32,7 +32,7 @@ namespace L2dotNET.Network
         /// <summary>
         /// Indicates if <see cref="Firewall"/> is currently enabled.
         /// </summary>
-        private volatile bool m_Enabled;
+        private volatile bool _mEnabled;
 
         /// <summary>
         /// Raises after firewall was enabled.
@@ -64,7 +64,7 @@ namespace L2dotNET.Network
             if ((socket == null) || !socket.Connected)
                 return false;
 
-            if (!m_Enabled)
+            if (!_mEnabled)
                 return true;
 
             if (ValidateRules(socket))
@@ -95,7 +95,7 @@ namespace L2dotNET.Network
         /// </summary>
         public virtual void Enable()
         {
-            m_Enabled = true;
+            _mEnabled = true;
 
             if (OnEnabled != null)
                 OnEnabled();
@@ -106,7 +106,7 @@ namespace L2dotNET.Network
         /// </summary>
         public virtual void Disable()
         {
-            m_Enabled = false;
+            _mEnabled = false;
 
             if (OnDisabled != null)
                 OnDisabled();
@@ -117,10 +117,10 @@ namespace L2dotNET.Network
         /// </summary>
         public bool Enabled
         {
-            get { return m_Enabled; }
+            get { return _mEnabled; }
             set
             {
-                if (m_Enabled != value)
+                if (_mEnabled != value)
                     if (value)
                         Enable();
                     else

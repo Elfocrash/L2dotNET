@@ -8,10 +8,10 @@ namespace L2dotNET.Repositories
 
         public UnitOfWork(IPlayerRepository playerRepository, IAccountRepository accountRepository, IServerRepository serverRepository, ICheckRepository checkRepository)
         {
-            this.playerRepository = playerRepository;
-            this.accountRepository = accountRepository;
-            this.serverRepository = serverRepository;
-            this.checkRepository = checkRepository;
+            this._playerRepository = playerRepository;
+            this._accountRepository = accountRepository;
+            this._serverRepository = serverRepository;
+            this._checkRepository = checkRepository;
         }
 
         public void Commit() { }
@@ -20,32 +20,32 @@ namespace L2dotNET.Repositories
 
         #region REPOSITORIES
 
-        private IPlayerRepository playerRepository;
+        private IPlayerRepository _playerRepository;
 
         public IPlayerRepository PlayerRepository
         {
-            get { return playerRepository ?? (playerRepository = new PlayerRepository()); }
+            get { return _playerRepository ?? (_playerRepository = new PlayerRepository()); }
         }
 
-        private IAccountRepository accountRepository;
+        private IAccountRepository _accountRepository;
 
         public IAccountRepository AccountRepository
         {
-            get { return accountRepository ?? (accountRepository = new AccountRepository()); }
+            get { return _accountRepository ?? (_accountRepository = new AccountRepository()); }
         }
 
-        private IServerRepository serverRepository;
+        private IServerRepository _serverRepository;
 
         public IServerRepository ServerRepository
         {
-            get { return serverRepository ?? (serverRepository = new ServerRepository()); }
+            get { return _serverRepository ?? (_serverRepository = new ServerRepository()); }
         }
 
-        private ICheckRepository checkRepository;
+        private ICheckRepository _checkRepository;
 
         public ICheckRepository CheckRepository
         {
-            get { return checkRepository ?? (checkRepository = new CheckRepository()); }
+            get { return _checkRepository ?? (_checkRepository = new CheckRepository()); }
         }
 
         #endregion

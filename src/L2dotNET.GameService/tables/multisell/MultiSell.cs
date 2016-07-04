@@ -45,8 +45,8 @@ namespace L2dotNET.GameService.Tables.Multisell
         {
             if (!lists.ContainsKey(listId))
             {
-                player.sendMessage("Multsell list #" + listId + " was not found");
-                player.sendActionFailed();
+                player.SendMessage("Multsell list #" + listId + " was not found");
+                player.SendActionFailed();
                 return;
             }
 
@@ -56,7 +56,7 @@ namespace L2dotNET.GameService.Tables.Multisell
 
             if (list.all == 1)
             {
-                player.sendPacket(new MultiSellListEx(player, list));
+                player.SendPacket(new MultiSellListEx(player, list));
                 player.CustomMultiSellList = null;
             }
             else
@@ -73,7 +73,7 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                     foreach (L2Item item in pitems)
                     {
-                        if (item._isEquipped == 1)
+                        if (item.IsEquipped == 1)
                             continue;
 
                         if (item.Template.ItemID == msitem.id)
@@ -92,7 +92,7 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                 MultiSellListEx mlist = new MultiSellListEx(player, newlist);
                 player.CustomMultiSellList = newlist;
-                player.sendPacket(mlist);
+                player.SendPacket(mlist);
             }
         }
 

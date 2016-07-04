@@ -24,17 +24,17 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 
             if (player.requester == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             if (player.requester.IsInOlympiad)
             {
                 response = 0;
-                player.requester.sendSystemMessage(SystemMessage.SystemMessageId.USER_CURRENTLY_PARTICIPATING_IN_OLYMPIAD_CANNOT_SEND_PARTY_AND_FRIEND_INVITATIONS);
+                player.requester.SendSystemMessage(SystemMessage.SystemMessageId.USER_CURRENTLY_PARTICIPATING_IN_OLYMPIAD_CANNOT_SEND_PARTY_AND_FRIEND_INVITATIONS);
             }
 
-            player.requester.sendPacket(new JoinParty(response));
+            player.requester.SendPacket(new JoinParty(response));
 
             switch (response)
             {
@@ -42,7 +42,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
                 {
                     SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.C1_IS_SET_TO_REFUSE_PARTY_REQUESTS);
                     sm.AddPlayerName(player.Name);
-                    player.requester.sendPacket(sm);
+                    player.requester.SendPacket(sm);
                 }
                     break;
                 case 1:
@@ -58,7 +58,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 
             if (leader.Party.Members.Count == 9)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANNOT_ENTER_DUE_PARTY_HAVING_EXCEED_LIMIT);
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANNOT_ENTER_DUE_PARTY_HAVING_EXCEED_LIMIT);
                 return;
             }
 

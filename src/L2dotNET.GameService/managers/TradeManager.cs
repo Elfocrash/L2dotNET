@@ -85,13 +85,13 @@ namespace L2dotNET.GameService.Managers
                 pl2.currentTrade.Clear();
             }
 
-            pl1.sendPacket(trade_ok);
-            pl1.sendPacket(trade_success);
+            pl1.SendPacket(trade_ok);
+            pl1.SendPacket(trade_success);
             pl1.sendItemList(true);
             pl1.TradeState = 0;
 
-            pl2.sendPacket(trade_ok);
-            pl2.sendPacket(trade_success);
+            pl2.SendPacket(trade_ok);
+            pl2.SendPacket(trade_success);
             pl2.sendItemList(true);
             pl2.TradeState = 0;
         }
@@ -100,14 +100,14 @@ namespace L2dotNET.GameService.Managers
         {
             pl1.TradeState = 0;
             pl1.currentTrade.Clear();
-            pl1.sendPacket(trade_fail);
-            pl1.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(name));
+            pl1.SendPacket(trade_fail);
+            pl1.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(name));
             pl1.requester = null;
 
             pl2.TradeState = 0;
             pl2.currentTrade.Clear();
-            pl2.sendPacket(trade_fail);
-            pl2.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(name));
+            pl2.SendPacket(trade_fail);
+            pl2.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANCELED_TRADE).AddPlayerName(name));
             pl2.requester = null;
         }
     }

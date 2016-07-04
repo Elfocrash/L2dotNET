@@ -28,17 +28,17 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 y = player._obsy;
             }
 
-            player.sendPacket(new UserInfo(player));
-            player.validateVisibleObjects(x, y, false);
-            player.updateVisibleStatus();
+            player.SendPacket(new UserInfo(player));
+            player.ValidateVisibleObjects(x, y, false);
+            player.UpdateVisibleStatus();
 
             if (player.Summon != null)
             {
-                player.Summon.validateVisibleObjects(x, y, false);
+                player.Summon.ValidateVisibleObjects(x, y, false);
                 player.Summon.isTeleporting = false;
             }
 
-            player.sendActionFailed();
+            player.SendActionFailed();
         }
     }
 }

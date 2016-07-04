@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         protected internal override void write()
         {
             writeC(0x59);
-            writeD(boat.ObjID);
+            writeD(boat.ObjId);
             writeD(boat.X);
             writeD(boat.Y);
             writeD(boat.Z);

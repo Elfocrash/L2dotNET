@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public SkillList(L2Player player, int blockAct, int blockSpell, int blockSkill)
         {
-            skills = player._skills.Values;
+            skills = player.Skills.Values;
             _blockAct = blockAct;
             _blockSpell = blockSpell;
             _blockSkill = blockSkill;

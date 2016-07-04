@@ -12,11 +12,11 @@ namespace L2dotNET.LoginService.GSCommunication
 {
     public class ServerThread
     {
-        private readonly ILog log = LogManager.GetLogger(typeof(ServerThread));
+        private readonly ILog _log = LogManager.GetLogger(typeof(ServerThread));
 
-        private NetworkStream nstream;
-        private TcpClient client;
-        private byte[] buffer;
+        private NetworkStream _nstream;
+        private TcpClient _client;
+        private byte[] _buffer;
 
         public string Wan { get; set; }
         public short Port { get; set; }
@@ -30,8 +30,8 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void ReadData(TcpClient tcpClient, ServerThreadPool cn)
         {
-            nstream = tcpClient.GetStream();
-            client = tcpClient;
+            _nstream = tcpClient.GetStream();
+            _client = tcpClient;
 
             new Thread(Read).Start();
         }
@@ -40,12 +40,12 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             try
             {
-                buffer = new byte[2];
-                nstream.BeginRead(buffer, 0, 2, new AsyncCallback(OnReceiveCallbackStatic), null);
+                _buffer = new byte[2];
+                _nstream.BeginRead(_buffer, 0, 2, new AsyncCallback(OnReceiveCallbackStatic), null);
             }
             catch (Exception e)
             {
-                log.Error($"ServerThread: {e.Message}");
+                _log.Error($"ServerThread: {e.Message}");
                 Termination();
             }
         }
@@ -54,27 +54,27 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             try
             {
-                int rs = nstream.EndRead(result);
+                int rs = _nstream.EndRead(result);
                 if (rs > 0)
                 {
-                    short length = BitConverter.ToInt16(buffer, 0);
-                    buffer = new byte[length];
-                    nstream.BeginRead(buffer, 0, length, new AsyncCallback(OnReceiveCallback), result.AsyncState);
+                    short length = BitConverter.ToInt16(_buffer, 0);
+                    _buffer = new byte[length];
+                    _nstream.BeginRead(_buffer, 0, length, new AsyncCallback(OnReceiveCallback), result.AsyncState);
                 }
             }
             catch (Exception e)
             {
-                log.Error($"ServerThread: {e.Message}");
+                _log.Error($"ServerThread: {e.Message}");
                 Termination();
             }
         }
 
         private void OnReceiveCallback(IAsyncResult result)
         {
-            nstream.EndRead(result);
+            _nstream.EndRead(result);
 
-            byte[] buff = new byte[buffer.Length];
-            buffer.CopyTo(buff, 0);
+            byte[] buff = new byte[_buffer.Length];
+            _buffer.CopyTo(buff, 0);
             Handle(new Packet(1, buff));
             new Thread(Read).Start();
         }
@@ -87,7 +87,7 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             //string str = "header: " + packet.FirstOpcode + "\n";
 
-            log.Info($"{packet}");
+            _log.Info($"{packet}");
 
             switch (packet.FirstOpcode)
             {
@@ -123,11 +123,11 @@ namespace L2dotNET.LoginService.GSCommunication
             short len = (short)db.Length;
             blist.AddRange(BitConverter.GetBytes(len));
             blist.AddRange(db);
-            nstream.Write(blist.ToArray(), 0, blist.Count);
-            nstream.Flush();
+            _nstream.Write(blist.ToArray(), 0, blist.Count);
+            _nstream.Flush();
         }
 
-        public void close(Packet pk)
+        public void Close(Packet pk)
         {
             Send(pk);
             ServerThreadPool.Instance.Shutdown(Id);
@@ -137,41 +137,41 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             try
             {
-                nstream.Close();
-                client.Close();
+                _nstream.Close();
+                _client.Close();
             }
             catch (Exception e)
             {
-                log.Error($"ServerThread: {e.Message}");
+                _log.Error($"ServerThread: {e.Message}");
             }
 
-            activeInGame.Clear();
+            _activeInGame.Clear();
         }
 
-        private readonly List<string> activeInGame = new List<string>();
+        private readonly List<string> _activeInGame = new List<string>();
 
         public void AccountInGame(string account, byte status)
         {
             if (status == 1)
             {
-                if (!activeInGame.Contains(account))
-                    activeInGame.Add(account);
+                if (!_activeInGame.Contains(account))
+                    _activeInGame.Add(account);
             }
             else
             {
-                if (activeInGame.Contains(account))
-                    activeInGame.Remove(account);
+                if (_activeInGame.Contains(account))
+                    _activeInGame.Remove(account);
             }
         }
 
         public bool LoggedAlready(string account)
         {
-            return activeInGame.Contains(account);
+            return _activeInGame.Contains(account);
         }
 
         public void KickAccount(string account)
         {
-            activeInGame.Remove(account);
+            _activeInGame.Remove(account);
             Send(PleaseKickAccount.ToPacket(account));
         }
 

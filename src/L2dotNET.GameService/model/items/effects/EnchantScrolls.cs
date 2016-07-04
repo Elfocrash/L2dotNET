@@ -15,15 +15,15 @@ namespace L2dotNET.GameService.Model.Items.Effects
         {
             if (player.EnchantState != 0)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.ANOTHER_ENCHANTMENT_IS_IN_PROGRESS);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.ANOTHER_ENCHANTMENT_IS_IN_PROGRESS);
+                player.SendActionFailed();
                 return;
             }
 
-            player.sendPacket(new ChooseInventoryItem(item.Template.ItemID));
+            player.SendPacket(new ChooseInventoryItem(item.Template.ItemID));
             player.EnchantScroll = item;
             player.EnchantState = ItemEnchantManager.STATE_PUT_ITEM;
-            player.sendSystemMessage(SystemMessage.SystemMessageId.SELECT_ITEM_TO_ENCHANT);
+            player.SendSystemMessage(SystemMessage.SystemMessageId.SELECT_ITEM_TO_ENCHANT);
         }
     }
 }

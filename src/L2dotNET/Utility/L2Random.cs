@@ -10,7 +10,7 @@ namespace L2dotNET.Utility
         /// <summary>
         /// Internal <see cref="Random"/> object.
         /// </summary>
-        private static readonly Random m_Random = new Random((int)DateTime.Now.Ticks);
+        private static readonly Random MRandom = new Random((int)DateTime.Now.Ticks);
 
         /// <summary>
         /// Returns random <see cref="int"/> value.
@@ -18,7 +18,7 @@ namespace L2dotNET.Utility
         /// <returns>Random <see cref="int"/> value.</returns>
         public static unsafe int Next()
         {
-            return m_Random.Next();
+            return MRandom.Next();
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace L2dotNET.Utility
         /// <returns>Random <see cref="int"/> value.</returns>
         public static unsafe int Next(int max)
         {
-            return m_Random.Next(0, max);
+            return MRandom.Next(0, max);
         }
 
         /// <summary>
@@ -57,14 +57,14 @@ namespace L2dotNET.Utility
             {
                 while (j <= i - sizeof(int))
                 {
-                    k = m_Random.Next();
+                    k = MRandom.Next();
                     *(int*)(buf + j) = *&k;
                     j += sizeof(int);
                 }
 
                 while (j != i)
                 {
-                    k = m_Random.Next();
+                    k = MRandom.Next();
                     *(buf + j) = *(((byte*)&k) + j++ % sizeof(int));
                 }
             }

@@ -25,15 +25,15 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onEnter(obj);
 
-            obj.onEnterZone(this);
+            obj.OnEnterZone(this);
 
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.isInDanger = true;
-                p.sendPacket(new EtcStatusUpdate(p));
+                p.IsInDanger = true;
+                p.SendPacket(new EtcStatusUpdate(p));
                 //  p._stats.base_p_speed += Template._move_bonus;
-                p.broadcastUserInfo();
+                p.BroadcastUserInfo();
             }
         }
 
@@ -44,15 +44,15 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             base.onExit(obj, cls);
 
-            obj.onExitZone(this, cls);
+            obj.OnExitZone(this, cls);
 
             if (obj is L2Player)
             {
                 L2Player p = (L2Player)obj;
-                p.isInDanger = false;
-                p.sendPacket(new EtcStatusUpdate(p));
+                p.IsInDanger = false;
+                p.SendPacket(new EtcStatusUpdate(p));
                 //  p._stats.base_p_speed -= Template._move_bonus;
-                p.broadcastUserInfo();
+                p.BroadcastUserInfo();
             }
         }
     }

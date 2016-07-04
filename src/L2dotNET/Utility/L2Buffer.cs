@@ -323,14 +323,14 @@ namespace L2dotNET.Utility
         /// <summary>
         /// Copies array of generic values from one array to an other.
         /// </summary>
-        /// <typeparam name="U">Some generic type.</typeparam>
+        /// <typeparam name="TU">Some generic type.</typeparam>
         /// <param name="source">Source array.</param>
         /// <param name="srcOffset">Source array offset.</param>
         /// <param name="destination">Destination array.</param>
         /// <param name="dstOffset">Destination array offset.</param>
         /// <param name="length">Values to copy count.</param>
         /// <returns>Copied array of generic values.</returns>
-        public static U[] Copy<U>(U[] source, long srcOffset, U[] destination, long dstOffset, long length)
+        public static TU[] Copy<TU>(TU[] source, long srcOffset, TU[] destination, long dstOffset, long length)
         {
             if ((length > source.Length - srcOffset) || (length > destination.Length - dstOffset))
                 throw new InvalidOperationException();

@@ -124,7 +124,7 @@ namespace L2dotNET.GameService.Model.Skills2
                     switch (target_type)
                     {
                         case TSkillTarget.self:
-                            targets.Add(actor.ObjID, actor);
+                            targets.Add(actor.ObjId, actor);
                             break;
 
                         case TSkillTarget.friend:
@@ -132,16 +132,16 @@ namespace L2dotNET.GameService.Model.Skills2
                         case TSkillTarget.any:
                         case TSkillTarget.target:
                             if (actor.CurrentTarget != null)
-                                targets.Add(actor.CurrentTarget.ObjID, actor.CurrentTarget);
+                                targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
                             break;
                         case TSkillTarget.master:
                             if (actor is L2Summon)
-                                targets.Add(((L2Summon)actor).Owner.ObjID, ((L2Summon)actor).Owner);
+                                targets.Add(((L2Summon)actor).Owner.ObjId, ((L2Summon)actor).Owner);
                             break;
                         case TSkillTarget.unlockable:
                         {
                             if (actor.CurrentTarget is L2Door)
-                                targets.Add(actor.CurrentTarget.ObjID, actor.CurrentTarget);
+                                targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
                         }
                             break;
                     }
@@ -149,12 +149,12 @@ namespace L2dotNET.GameService.Model.Skills2
 
                     break;
                 case TSkillScope.party:
-                    L2Character[] members = actor.getPartyCharacters();
+                    L2Character[] members = actor.GetPartyCharacters();
                     foreach (L2Character member in members)
                     {
                         double dis = Calcs.calculateDistance(actor, member, true);
                         if (dis < cast_range)
-                            targets.Add(member.ObjID, member);
+                            targets.Add(member.ObjId, member);
                     }
 
                     break;
@@ -227,7 +227,7 @@ namespace L2dotNET.GameService.Model.Skills2
             }
 
             if (retcode == -1)
-                target.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANNOT_BE_USED).AddSkillName(skill_id, level));
+                target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANNOT_BE_USED).AddSkillName(skill_id, level));
 
             return retcode == -2;
         }

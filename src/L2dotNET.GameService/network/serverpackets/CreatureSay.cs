@@ -9,18 +9,18 @@ namespace L2dotNET.GameService.Network.Serverpackets
         private readonly string _charName;
         public string Text { get; set; }
 
-        public CreatureSay(int id, SayIDList _type, string name, string _text)
+        public CreatureSay(int id, SayIDList _type, string name, string text)
         {
             _objectId = id;
             this._type = _type;
             _charName = name;
-            Text = _text;
+            Text = text;
         }
 
-        public CreatureSay(SayIDList _type, string _text = "")
+        public CreatureSay(SayIDList _type, string text = "")
         {
             this._type = _type;
-            Text = _text;
+            Text = text;
         }
 
         protected internal override void write()

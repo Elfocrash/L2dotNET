@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             foreach (L2Item item in _sells)
             {
-                writeD(item.ObjID);
+                writeD(item.ObjId);
                 writeD(item.Template.ItemID);
                 writeD(0);
                 writeQ(item.Count);
@@ -37,7 +37,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 writeD(item.Template.BodyPartId());
                 writeH(item.Enchant);
                 writeH(item.CustomType2);
-                writeD(item.AugmentationID);
+                writeD(item.AugmentationId);
                 writeD(item.Durability);
                 writeD(item.LifeTimeEnd());
 
@@ -62,7 +62,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             int idx = 0;
             foreach (L2Item item in _refund)
             {
-                writeD(item.ObjID);
+                writeD(item.ObjId);
                 writeD(item.Template.ItemID);
                 writeD(0);
                 writeQ(item.Count);
@@ -72,7 +72,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 writeD(item.Template.BodyPartId());
                 writeH(item.Enchant);
                 writeH(item.CustomType2);
-                writeD(item.AugmentationID);
+                writeD(item.AugmentationId);
                 writeD(item.Durability);
                 writeD(item.LifeTimeEnd());
 

@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         public override void NotifyOnHit(L2Character attacker, double damage)
         {
             MoveHome = 0;
-            if (character.isMoving())
+            if (character.IsMoving())
                 character.NotifyStopMove(true, true);
 
             character.ChangeTarget(attacker);
@@ -44,7 +44,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
                 return;
             }
 
-            if (character.isAttacking())
+            if (character.IsAttacking())
                 return;
 
             double dis = Calcs.calculateDistance(character, character.CurrentTarget, true);
@@ -52,11 +52,11 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             {
                 MoveTarget = 0;
                 L2Character target = character.CurrentTarget;
-                character.doAttack(target);
+                character.DoAttack(target);
             }
             else
             {
-                if (character.cantMove())
+                if (character.CantMove())
                     return;
 
                 if ((lastx != character.CurrentTarget.X) || (lasty != character.CurrentTarget.Y) || (lastz != character.CurrentTarget.Z))
@@ -103,7 +103,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
         private void ValidateSpawnLocation()
         {
-            if (character.cantMove())
+            if (character.CantMove())
                 return;
 
             switch (MoveHome)

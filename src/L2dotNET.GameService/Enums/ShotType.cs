@@ -2,9 +2,9 @@
 {
     public enum ShotType
     {
-        SOULSHOT,
-        SPIRITSHOT,
-        BLESSED_SPIRITSHOT,
-        FISH_SOULSHOT
+        Soulshot,
+        Spiritshot,
+        BlessedSpiritshot,
+        FishSoulshot
     }
 }

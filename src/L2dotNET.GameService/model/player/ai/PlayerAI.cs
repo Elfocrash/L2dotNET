@@ -69,7 +69,7 @@ namespace L2dotNET.GameService.Model.Player.AI
 
         private void AttackMoveTask(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (player.isAttacking())
+            if (player.IsAttacking())
                 return;
 
             if (player.CurrentTarget == null)
@@ -83,11 +83,11 @@ namespace L2dotNET.GameService.Model.Player.AI
             {
                 L2Character target = player.CurrentTarget;
                 if (!target.Dead)
-                    player.doAttack(target);
+                    player.DoAttack(target);
             }
             else
             {
-                if (player.cantMove())
+                if (player.CantMove())
                     return;
 
                 if ((lastx != player.CurrentTarget.X) || (lasty != player.CurrentTarget.Y) || (lastz != player.CurrentTarget.Z))

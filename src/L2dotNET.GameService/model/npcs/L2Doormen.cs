@@ -20,9 +20,9 @@ namespace L2dotNET.GameService.Model.Npcs
         {
             if (hideout.ownerId == player.ClanId)
             {
-                NpcHtmlMessage htm = new NpcHtmlMessage(player, "agitjanitorhi.htm", ObjID);
+                NpcHtmlMessage htm = new NpcHtmlMessage(player, "agitjanitorhi.htm", ObjId);
                 htm.replace("<?my_pledge_name?>", player.Clan.Name);
-                player.sendPacket(htm);
+                player.SendPacket(htm);
             }
         }
 
@@ -42,19 +42,19 @@ namespace L2dotNET.GameService.Model.Npcs
                             foreach (L2Door door in hideout.doors.Where(door => door.Closed != 0))
                             {
                                 door.Closed = 0;
-                                door.broadcastUserInfo();
+                                door.BroadcastUserInfo();
                             }
 
-                            player.sendPacket(new NpcHtmlMessage(player, "AgitJanitorAfterDoorOpen.htm", ObjID));
+                            player.SendPacket(new NpcHtmlMessage(player, "AgitJanitorAfterDoorOpen.htm", ObjId));
                             break;
                         case 2: //close
                             foreach (L2Door door in hideout.doors.Where(door => door.Closed != 1))
                             {
                                 door.Closed = 1;
-                                door.broadcastUserInfo();
+                                door.BroadcastUserInfo();
                             }
 
-                            player.sendPacket(new NpcHtmlMessage(player, "AgitJanitorAfterDoorClose.htm", ObjID));
+                            player.SendPacket(new NpcHtmlMessage(player, "AgitJanitorAfterDoorClose.htm", ObjId));
                             break;
                     }
 
@@ -62,9 +62,9 @@ namespace L2dotNET.GameService.Model.Npcs
             }
         }
 
-        public override string asString()
+        public override string AsString()
         {
-            return "L2Doormen:" + Template.NpcId + "; id " + ObjID + "; " + hideout.ID;
+            return "L2Doormen:" + Template.NpcId + "; id " + ObjId + "; " + hideout.ID;
         }
     }
 }

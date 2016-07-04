@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (npc == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -60,7 +60,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 if (item == null)
                 {
                     log.Info($"cant find item {objectId} in inventory {player.Name}");
-                    player.sendActionFailed();
+                    player.SendActionFailed();
                     return;
                 }
 
@@ -75,8 +75,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if ((player.GetAdena() - adenatransfer) < fee)
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA_PAY_FEE);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.YOU_NOT_ENOUGH_ADENA_PAY_FEE);
+                player.SendActionFailed();
                 return;
             }
 

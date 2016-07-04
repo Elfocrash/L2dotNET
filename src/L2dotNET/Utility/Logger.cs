@@ -27,7 +27,7 @@ namespace L2dotNET.Utility
         /// <summary>
         /// Common output stream writer.
         /// </summary>
-        private static StreamWriter Output;
+        private static StreamWriter _output;
 
         /// <summary>
         /// Writes data to console and common output file.
@@ -158,16 +158,16 @@ namespace L2dotNET.Utility
         /// <returns>Formatted system summary.</returns>
         private static string GetSystemSummary()
         {
-            StringBuilder m_StrBuilder = new StringBuilder();
-            m_StrBuilder.Append($"Date: {ServiceTime.CurrentTime}\r\n");
-            m_StrBuilder.Append($"OS: {Environment.OSVersion}\r\n");
-            m_StrBuilder.Append($"Environment version: {Environment.Version}\r\n");
-            m_StrBuilder.Append($"Processors count: {Environment.ProcessorCount}\r\n");
-            m_StrBuilder.Append($"Working set: {Environment.WorkingSet} bytes\r\n");
-            m_StrBuilder.Append($"Domain name: {AppDomain.CurrentDomain.FriendlyName}\r\n");
-            m_StrBuilder.Append($"Service Uptime: {ServiceTime.ServiceUptimeAsString}\r\n");
-            m_StrBuilder.Append(Environment.NewLine);
-            return m_StrBuilder.ToString();
+            StringBuilder mStrBuilder = new StringBuilder();
+            mStrBuilder.Append($"Date: {ServiceTime.CurrentTime}\r\n");
+            mStrBuilder.Append($"OS: {Environment.OSVersion}\r\n");
+            mStrBuilder.Append($"Environment version: {Environment.Version}\r\n");
+            mStrBuilder.Append($"Processors count: {Environment.ProcessorCount}\r\n");
+            mStrBuilder.Append($"Working set: {Environment.WorkingSet} bytes\r\n");
+            mStrBuilder.Append($"Domain name: {AppDomain.CurrentDomain.FriendlyName}\r\n");
+            mStrBuilder.Append($"Service Uptime: {ServiceTime.ServiceUptimeAsString}\r\n");
+            mStrBuilder.Append(Environment.NewLine);
+            return mStrBuilder.ToString();
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace L2dotNET.Utility
         public static void Initialize()
         {
             EnsureDirectiries();
-            Output = new StreamWriter(Path.Combine(OutLogsDirectory, $"{ServiceTime.CurrentTime.Replace(":", "-").Replace("/", "-")}.log"), true);
+            _output = new StreamWriter(Path.Combine(OutLogsDirectory, $"{ServiceTime.CurrentTime.Replace(":", "-").Replace("/", "-")}.log"), true);
             WriteLine(Source.Logger, "Initialized.");
         }
 
@@ -186,10 +186,10 @@ namespace L2dotNET.Utility
         /// <param name="s">Message to write.</param>
         private static void WriteOutputLine(string s)
         {
-            if (Output != null)
+            if (_output != null)
             {
-                Output.WriteLine(s);
-                Output.Flush();
+                _output.WriteLine(s);
+                _output.Flush();
             }
         }
 
@@ -199,10 +199,10 @@ namespace L2dotNET.Utility
         /// <param name="s">Message to write.</param>
         private static void WriteOutput(string s)
         {
-            if (Output != null)
+            if (_output != null)
             {
-                Output.Write(s);
-                Output.Flush();
+                _output.Write(s);
+                _output.Flush();
             }
         }
 

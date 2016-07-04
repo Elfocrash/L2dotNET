@@ -7,7 +7,7 @@
 
         public KeyPacket(GameClient client, byte n)
         {
-            key = client.enableCrypt();
+            key = client.EnableCrypt();
             next = n;
         }
 

@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeH(0x20);
 
             writeH(item.Template.Type1());
-            writeD(item.ObjID); //item.ObjID
+            writeD(item.ObjId); //item.ObjID
             writeD(item.Template.ItemID);
             writeD(num);
 

@@ -11,14 +11,14 @@ namespace L2dotNET.GameService.Commands.Admin
 {
     class AdminRange : AAdminCommand
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(AdminRange));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(AdminRange));
 
         public AdminRange()
         {
             Cmd = "range";
         }
 
-        private ZoneNPoly np;
+        private ZoneNPoly _np;
 
         protected internal override void Use(L2Player admin, string alias)
         {
@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.Commands.Admin
             {
                 case "1":
                     admin.AbnormalBitMaskEvent = int.Parse(alias.Split(' ')[2]);
-                    admin.updateAbnormalEventEffect();
+                    admin.UpdateAbnormalEventEffect();
                     break;
                 case "2":
                     int listid = int.Parse(alias.Split(' ')[2]);
@@ -49,18 +49,18 @@ namespace L2dotNET.GameService.Commands.Admin
                     d.start();
                     break;
                 case "5":
-                    if (np == null)
+                    if (_np == null)
                     {
                         int[] x = { -81166, -80913, -81952, -82554 };
                         int[] y = { 245118, 246031, 246551, 245619 };
-                        np = new ZoneNPoly(x, y, -3727, -3727);
+                        _np = new ZoneNPoly(x, y, -3727, -3727);
                     }
 
                     int count = int.Parse(alias.Split(' ')[2]);
 
                     for (int i = 0; i < count; i++)
                     {
-                        int[] rloc = rndXYZ();
+                        int[] rloc = RndXyz();
                         // NpcTable.getInstance().spawnNpc("lector", rloc[0], rloc[1], rloc[3], new Random().Next(65000));
                     }
 
@@ -89,33 +89,33 @@ namespace L2dotNET.GameService.Commands.Admin
             //adm.sendMessage("END!");
         }
 
-        public int[] rndXYZ()
+        public int[] RndXyz()
         {
             int i;
             int[] p = new int[4];
             Random rn = new Random();
             for (i = 0; i < 200; i++)
             {
-                p[0] = rn.Next(np.minX, np.maxX);
-                p[1] = rn.Next(np.minY, np.maxY);
-                log.Info($"rnd xy {p[0]} {p[1]}");
-                if (np.isInsideZone(p[0], p[1]))
+                p[0] = rn.Next(_np.minX, _np.maxX);
+                p[1] = rn.Next(_np.minY, _np.maxY);
+                Log.Info($"rnd xy {p[0]} {p[1]}");
+                if (_np.isInsideZone(p[0], p[1]))
                 {
                     double curdistance = -1;
-                    p[2] = np.getLowZ() + 10;
-                    p[3] = np.getHighZ();
+                    p[2] = _np.getLowZ() + 10;
+                    p[3] = _np.getHighZ();
 
-                    for (i = 0; i < np._x.Length; i++)
+                    for (i = 0; i < _np._x.Length; i++)
                     {
-                        int p1x = np._x[i];
-                        int p1y = np._y[i];
-                        long dx = p1x - p[0],
-                             dy = p1y - p[1];
+                        int p1X = _np._x[i];
+                        int p1Y = _np._y[i];
+                        long dx = p1X - p[0],
+                             dy = p1Y - p[1];
                         double distance = Math.Sqrt(dx * dx + dy * dy);
                         if ((curdistance == -1) || (distance < curdistance))
                         {
                             curdistance = distance;
-                            p[2] = np._z1 + 10;
+                            p[2] = _np._z1 + 10;
                         }
                     }
 
@@ -126,7 +126,7 @@ namespace L2dotNET.GameService.Commands.Admin
             return p;
         }
 
-        public void read()
+        public void Read()
         {
             Thread.Sleep(1000);
             // _admin.validateVisibleObjects(_admin);

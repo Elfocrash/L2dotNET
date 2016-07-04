@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             foreach (L2Player player in players)
             {
                 writeS(player.Name);
-                writeD(player.ObjID);
+                writeD(player.ObjId);
                 writeS(account);
                 writeD(sessionId);
                 writeD(player.ClanId);
@@ -46,8 +46,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 writeD(player.Y);
                 writeD(player.Z);
 
-                writeF(player.CurHP);
-                writeF(player.CurMP);
+                writeF(player.CurHp);
+                writeF(player.CurMp);
 
                 writeD(player.SP);
                 writeQ(player.Exp);
@@ -75,8 +75,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 writeD(player.HairColor);
 
                 writeD(player.Face);
-                writeF(player.CurHP); // hp max TODO
-                writeF(player.CurMP); // mp max TODO
+                writeF(player.CurHp); // hp max TODO
+                writeF(player.CurMp); // mp max TODO
                 writeD(0); // days left before TODO
 
                 writeD((int)player.ActiveClass.ClassId.Id);
@@ -84,7 +84,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 int selection = 0;
 
                 if (charId != -1)
-                    selection = charId == player.ObjID ? 1 : 0;
+                    selection = charId == player.ObjId ? 1 : 0;
 
                 if ((charId == -1) && (player.LastAccountSelection == 1))
                     selection = 1;

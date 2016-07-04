@@ -15,27 +15,27 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
     class RequestAuthLogin
     {
         [Inject]
-        public IAccountService accountService
+        public IAccountService AccountService
         {
             get { return LoginServer.Kernel.Get<IAccountService>(); }
         }
 
-        protected byte[] _raw;
-        private readonly LoginClient client;
+        protected byte[] Raw;
+        private readonly LoginClient _client;
 
         public RequestAuthLogin(Packet p, LoginClient client)
         {
-            this.client = client;
-            _raw = p.ReadByteArrayAlt(128);
+            this._client = client;
+            Raw = p.ReadByteArrayAlt(128);
         }
 
         public void RunImpl()
         {
-            CipherParameters key = client.RsaPair._privateKey;
+            CipherParameters key = _client.RsaPair._privateKey;
             RSAEngine rsa = new RSAEngine();
             rsa.init(false, key);
 
-            byte[] decrypt = rsa.processBlock(_raw, 0, 128);
+            byte[] decrypt = rsa.processBlock(Raw, 0, 128);
 
             if (decrypt.Length < 128)
             {
@@ -47,43 +47,43 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             string username = Encoding.ASCII.GetString(decrypt, 0x5e, 14).Replace("\0", "");
             string password = Encoding.ASCII.GetString(decrypt, 0x6c, 16).Replace("\0", "");
 
-            AccountModel account = accountService.GetAccountByLogin(username);
+            AccountModel account = AccountService.GetAccountByLogin(username);
 
             if (account == null)
             {
-                if (Config.Config.Instance.serverConfig.AutoCreate)
-                    account = accountService.CreateAccount(username, L2Security.HashPassword(password));
+                if (Config.Config.Instance.ServerConfig.AutoCreate)
+                    account = AccountService.CreateAccount(username, L2Security.HashPassword(password));
                 else
                 {
-                    client.Send(LoginFail.ToPacket(LoginFailReason.REASON_USER_OR_PASS_WRONG));
-                    client.close();
+                    _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonUserOrPassWrong));
+                    _client.Close();
                     return;
                 }
             }
             else
             {
-                if (!accountService.CheckIfAccountIsCorrect(username, L2Security.HashPassword(password)))
+                if (!AccountService.CheckIfAccountIsCorrect(username, L2Security.HashPassword(password)))
                 {
-                    client.Send(LoginFail.ToPacket(LoginFailReason.REASON_USER_OR_PASS_WRONG));
-                    client.close();
+                    _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonUserOrPassWrong));
+                    _client.Close();
                     return;
                 }
 
                 if (ServerThreadPool.Instance.LoggedAlready(username.ToLower()))
                 {
-                    client.Send(LoginFail.ToPacket(LoginFailReason.REASON_ACCOUNT_IN_USE));
-                    client.close();
+                    _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccountInUse));
+                    _client.Close();
                     return;
                 }
             }
 
             Random rnd = new Random();
 
-            client.ActiveAccount = account;
-            client.setLoginPair(rnd.Next(), rnd.Next());
-            client.setPlayPair(rnd.Next(), rnd.Next());
+            _client.ActiveAccount = account;
+            _client.SetLoginPair(rnd.Next(), rnd.Next());
+            _client.SetPlayPair(rnd.Next(), rnd.Next());
 
-            client.Send(LoginOk.ToPacket(client));
+            _client.Send(LoginOk.ToPacket(_client));
         }
     }
 }

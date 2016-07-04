@@ -6,18 +6,18 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestLoginServPing
     {
-        private string message;
-        private readonly ServerThread thread;
+        private string _message;
+        private readonly ServerThread _thread;
 
         public RequestLoginServPing(Packet p, ServerThread server)
         {
-            thread = server;
-            message = p.ReadString();
+            _thread = server;
+            _message = p.ReadString();
         }
 
         public void RunImpl()
         {
-            thread.Send(LoginServPing.ToPacket());
+            _thread.Send(LoginServPing.ToPacket());
         }
     }
 }

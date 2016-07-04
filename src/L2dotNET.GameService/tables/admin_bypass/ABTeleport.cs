@@ -54,8 +54,8 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
         {
             if (!_groups.ContainsKey(groupId))
             {
-                player.sendMessage("teleport group #" + groupId + " was not found.");
-                player.sendActionFailed();
+                player.SendMessage("teleport group #" + groupId + " was not found.");
+                player.SendActionFailed();
                 return;
             }
 
@@ -104,8 +104,8 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
         {
             if ((player.ViewingAdminTeleportGroup == -1) || !_groups.ContainsKey(player.ViewingAdminTeleportGroup))
             {
-                player.sendMessage("teleport group #" + player.ViewingAdminTeleportGroup + " was not found.");
-                player.sendActionFailed();
+                player.SendMessage("teleport group #" + player.ViewingAdminTeleportGroup + " was not found.");
+                player.SendActionFailed();
                 //return;
             }
 

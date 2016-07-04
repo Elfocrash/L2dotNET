@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public TradeStart(L2Player player)
         {
             this.player = player;
-            partnerId = player.requester.ObjID;
+            partnerId = player.requester.ObjId;
             //foreach (L2Item item in player.getAllNonQuestItems().Where(item => (item.Template.is_trade != 0) && (item.AugmentationID <= 0) && (item._isEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.asset)))
             //    trade.Add(item);
         }
@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             foreach (L2Item item in trade)
             {
                 writeH(item.Template.Type1());
-                writeD(item.ObjID);
+                writeD(item.ObjId);
                 writeD(item.Template.ItemID);
                 writeD(item.Count);
 

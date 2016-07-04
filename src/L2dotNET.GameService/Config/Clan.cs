@@ -60,7 +60,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Privilege browse warehouse enables at the same time also withdraw from warehouse!.</summary>
         [DefaultValue(false)]
         [JsonProperty(PropertyName = "MembersCanWithdrawFromClanWH", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool MembersCanWithdrawFromClanWH { get; set; }
+        public bool MembersCanWithdrawFromClanWh { get; set; }
 
         ///<summary>Remove Castle circlets after a clan lose its castle or a player leaves a clan? - default true.</summary>
         [DefaultValue(true)]

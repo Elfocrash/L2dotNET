@@ -18,12 +18,12 @@ namespace L2dotNET.Network
         /// <summary>
         /// Initializes new instance of <see cref="LoginServiceSettings"/> class.
         /// </summary>
-        /// <param name="serviceID">Service unique id.</param>
+        /// <param name="serviceId">Service unique id.</param>
         /// <param name="autoCreateAccounts">True, if cache server may create users automatically.</param>
         /// <param name="defaultAccessLevel">Default access level for newer created user.</param>
-        public LoginServiceSettings(byte serviceID, bool autoCreateAccounts, byte defaultAccessLevel)
+        public LoginServiceSettings(byte serviceId, bool autoCreateAccounts, byte defaultAccessLevel)
         {
-            ServiceUniqueID = serviceID;
+            ServiceUniqueId = serviceId;
             AutoCreateUser = autoCreateAccounts;
             DefaultAccessLevel = defaultAccessLevel;
         }
@@ -34,7 +34,7 @@ namespace L2dotNET.Network
         /// <param name="p"><see cref="Packet"/> to write settings in.</param>
         public override void Write(ref Packet p)
         {
-            p.WriteByte(ServiceUniqueID);
+            p.WriteByte(ServiceUniqueId);
             p.InternalWriteBool(AutoCreateUser);
             p.WriteByte(DefaultAccessLevel);
         }
@@ -45,7 +45,7 @@ namespace L2dotNET.Network
         /// <param name="p"><see cref="Packet"/> to read settings from.</param>
         public override void Read(Packet p)
         {
-            ServiceUniqueID = p.ReadByte();
+            ServiceUniqueId = p.ReadByte();
             AutoCreateUser = p.InternalReadBool();
             DefaultAccessLevel = p.ReadByte();
         }

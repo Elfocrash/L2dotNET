@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeD(player.Y);
             writeD(player.Z);
             writeD(player.Heading);
-            writeD(player.ObjID);
+            writeD(player.ObjId);
             writeS(player.Name);
 
             writeD((int)player.BaseClass.ClassId.ClassRace);
@@ -128,10 +128,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
             writeH(player.RecHave);
             writeD((int)player.ActiveClass.ClassId.Id);
 
-            writeD(player.MaxCP); //max cp here
-            writeD((int)player.CurCP);
+            writeD(player.MaxCp); //max cp here
+            writeD((int)player.CurCp);
             writeC(player.GetEnchantValue());
-            writeC(player.TeamID);
+            writeC(player.TeamId);
             writeD(player.getClanCrestLargeId());
             writeC(player.Noblesse);
 

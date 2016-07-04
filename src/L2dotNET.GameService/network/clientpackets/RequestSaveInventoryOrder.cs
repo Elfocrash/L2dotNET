@@ -36,7 +36,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     int objId = _items[i * 2];
                     int loc = _items[i * 2 + 1];
 
-                    if (item.ObjID == objId)
+                    if (item.ObjId == objId)
                         item.SlotLocation = loc;
                 }
         }

@@ -25,21 +25,21 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if (player == null) //re-login на выборе чаров
                 return;
 
-            if (player._p_block_act == 1)
+            if (player.PBlockAct == 1)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
             if (player.isInCombat())
             {
-                player.sendSystemMessage(SystemMessage.SystemMessageId.CANT_LOGOUT_WHILE_FIGHTING);
-                player.sendActionFailed();
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CANT_LOGOUT_WHILE_FIGHTING);
+                player.SendActionFailed();
                 return;
             }
 
             player.Termination();
-            player.sendPacket(new LeaveWorld());
+            player.SendPacket(new LeaveWorld());
         }
     }
 }

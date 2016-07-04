@@ -8,17 +8,17 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
     {
         public L2PvPSign()
         {
-            ObjID = IdFactory.Instance.nextId();
+            ObjId = IdFactory.Instance.nextId();
         }
 
         public override void NotifyAction(L2Player player)
         {
-            player.sendPacket(new NpcHtmlMessage(player, htm, ObjID, 0));
+            player.SendPacket(new NpcHtmlMessage(player, htm, ObjId, 0));
         }
 
-        public override string asString()
+        public override string AsString()
         {
-            return "L2PvP Sign:" + ObjID + " " + StaticID + " " + ClanID;
+            return "L2PvP Sign:" + ObjId + " " + StaticID + " " + ClanID;
         }
     }
 }

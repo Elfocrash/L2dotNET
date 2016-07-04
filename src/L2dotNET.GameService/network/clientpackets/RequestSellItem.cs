@@ -38,7 +38,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (npc == null)
             {
-                player.sendActionFailed();
+                player.SendActionFailed();
                 return;
             }
 
@@ -51,8 +51,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 if ((count < 0) || (count > int.MaxValue))
                 {
-                    player.sendSystemMessage(SystemMessage.SystemMessageId.SELL_ATTEMPT_FAILED);
-                    player.sendActionFailed();
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.SELL_ATTEMPT_FAILED);
+                    player.SendActionFailed();
                     return;
                 }
 
@@ -95,7 +95,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             player.AddAdena(added,true);
             player.sendItemList(true);
-            player.sendPacket(new ExBuySellList_Close());
+            player.SendPacket(new ExBuySellList_Close());
 
             if (weight != 0)
                 player.updateWeight();

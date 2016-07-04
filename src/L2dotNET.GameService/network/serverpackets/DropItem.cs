@@ -10,14 +10,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public DropItem(L2Item item)
         {
             this.item = item;
-            id = item._dropper;
+            id = item.Dropper;
         }
 
         protected internal override void write()
         {
             writeC(0x0c);
             writeD(id);
-            writeD(item.ObjID);
+            writeD(item.ObjId);
             writeD(item.Template.ItemID);
             writeD(item.X);
             writeD(item.Y);

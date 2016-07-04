@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             RecipeID = rec.RecipeID;
             Type = rec._iscommonrecipe;
-            CurrentMP = (int)player.CurMP;
+            CurrentMP = (int)player.CurMp;
             MaxMP = (int)player.CharacterStat.getStat(TEffectType.b_max_mp);
             MakingResult = result;
         }

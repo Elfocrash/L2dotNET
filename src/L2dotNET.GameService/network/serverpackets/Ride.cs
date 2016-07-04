@@ -14,7 +14,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public Ride(L2Player player, bool mount, int npc = 0)
         {
-            id = player.ObjID;
+            id = player.ObjId;
             bRide = mount ? 1 : 0;
             npcID = npc + 1000000;
             x = player.X;

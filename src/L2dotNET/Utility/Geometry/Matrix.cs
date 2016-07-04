@@ -545,25 +545,25 @@ namespace L2dotNET.Utility.Geometry
 
         public static Matrix CreateLookAt(Vector3 cameraPosition, Vector3 cameraTarget, Vector3 cameraUpVector)
         {
-            Vector3 vector3_1 = Vector3.Normalize(cameraPosition - cameraTarget);
-            Vector3 vector3_2 = Vector3.Normalize(Vector3.Cross(cameraUpVector, vector3_1));
-            Vector3 vector1 = Vector3.Cross(vector3_1, vector3_2);
+            Vector3 vector31 = Vector3.Normalize(cameraPosition - cameraTarget);
+            Vector3 vector32 = Vector3.Normalize(Vector3.Cross(cameraUpVector, vector31));
+            Vector3 vector1 = Vector3.Cross(vector31, vector32);
             Matrix matrix;
-            matrix.M11 = vector3_2.X;
+            matrix.M11 = vector32.X;
             matrix.M12 = vector1.X;
-            matrix.M13 = vector3_1.X;
+            matrix.M13 = vector31.X;
             matrix.M14 = 0.0f;
-            matrix.M21 = vector3_2.Y;
+            matrix.M21 = vector32.Y;
             matrix.M22 = vector1.Y;
-            matrix.M23 = vector3_1.Y;
+            matrix.M23 = vector31.Y;
             matrix.M24 = 0.0f;
-            matrix.M31 = vector3_2.Z;
+            matrix.M31 = vector32.Z;
             matrix.M32 = vector1.Z;
-            matrix.M33 = vector3_1.Z;
+            matrix.M33 = vector31.Z;
             matrix.M34 = 0.0f;
-            matrix.M41 = -Vector3.Dot(vector3_2, cameraPosition);
+            matrix.M41 = -Vector3.Dot(vector32, cameraPosition);
             matrix.M42 = -Vector3.Dot(vector1, cameraPosition);
-            matrix.M43 = -Vector3.Dot(vector3_1, cameraPosition);
+            matrix.M43 = -Vector3.Dot(vector31, cameraPosition);
             matrix.M44 = 1f;
             return matrix;
 
@@ -1816,7 +1816,7 @@ namespace L2dotNET.Utility.Geometry
         /// Helper method for using the Laplace expansion theorem using two rows expansions to calculate major and
         /// minor determinants of a 4x4 matrix. This method is used for inverting a matrix.
         /// </summary>
-        private static void findDeterminants(ref Matrix matrix, out double major, out double minor1, out double minor2, out double minor3, out double minor4, out double minor5, out double minor6, out double minor7, out double minor8, out double minor9, out double minor10, out double minor11, out double minor12)
+        private static void FindDeterminants(ref Matrix matrix, out double major, out double minor1, out double minor2, out double minor3, out double minor4, out double minor5, out double minor6, out double minor7, out double minor8, out double minor9, out double minor10, out double minor11, out double minor12)
         {
             double det1 = matrix.M11 * matrix.M22 - matrix.M12 * matrix.M21;
             double det2 = matrix.M11 * matrix.M23 - matrix.M13 * matrix.M21;

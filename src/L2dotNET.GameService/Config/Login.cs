@@ -78,11 +78,11 @@ namespace L2dotNET.GameService.Config
 
         [DefaultValue(0)]
         [JsonProperty(PropertyName = "RequestServerID", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int RequestServerID { get; set; }
+        public int RequestServerId { get; set; }
 
         [DefaultValue(true)]
         [JsonProperty(PropertyName = "AcceptAlternateID", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public bool AcceptAlternateID { get; set; }
+        public bool AcceptAlternateId { get; set; }
     }
 
     ///<summary>Database informations.</summary>
@@ -90,7 +90,7 @@ namespace L2dotNET.GameService.Config
     {
         [DefaultValue("")]
         [JsonProperty(PropertyName = "URL", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [DefaultValue("root")]
         [JsonProperty(PropertyName = "Login", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
@@ -141,7 +141,7 @@ namespace L2dotNET.GameService.Config
 
         [DefaultValue(50)]
         [JsonProperty(PropertyName = "MaxConnectionPerIP", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int MaxConnectionPerIP { get; set; }
+        public int MaxConnectionPerIp { get; set; }
     }
 
     ///<summary>Test server, shoudnt be touched in live server.</summary>
