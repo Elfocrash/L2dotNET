@@ -224,9 +224,6 @@ namespace L2dotNET.Network
         /// <summary>
         /// Indicates if client socket is connected.
         /// </summary>
-        public virtual bool Connected
-        {
-            get { return (MSocket != null) && MSocket.Connected; }
-        }
+        public virtual bool Connected => (MSocket != null) && MSocket.Connected;
     }
 }

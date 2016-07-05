@@ -16,10 +16,7 @@ namespace L2dotNET.LoginService.GSCommunication
         private static readonly ILog Log = LogManager.GetLogger(typeof(ServerThreadPool));
 
         [Inject]
-        public IServerService ServerService
-        {
-            get { return LoginServer.Kernel.Get<IServerService>(); }
-        }
+        public IServerService ServerService => ResolutionExtensions.Get<IServerService>(LoginServer.Kernel);
 
         private static volatile ServerThreadPool _instance;
         private static readonly object SyncRoot = new object();

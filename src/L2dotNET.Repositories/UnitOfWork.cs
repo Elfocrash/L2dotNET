@@ -22,31 +22,19 @@ namespace L2dotNET.Repositories
 
         private IPlayerRepository _playerRepository;
 
-        public IPlayerRepository PlayerRepository
-        {
-            get { return _playerRepository ?? (_playerRepository = new PlayerRepository()); }
-        }
+        public IPlayerRepository PlayerRepository => _playerRepository ?? (_playerRepository = new PlayerRepository());
 
         private IAccountRepository _accountRepository;
 
-        public IAccountRepository AccountRepository
-        {
-            get { return _accountRepository ?? (_accountRepository = new AccountRepository()); }
-        }
+        public IAccountRepository AccountRepository => _accountRepository ?? (_accountRepository = new AccountRepository());
 
         private IServerRepository _serverRepository;
 
-        public IServerRepository ServerRepository
-        {
-            get { return _serverRepository ?? (_serverRepository = new ServerRepository()); }
-        }
+        public IServerRepository ServerRepository => _serverRepository ?? (_serverRepository = new ServerRepository());
 
         private ICheckRepository _checkRepository;
 
-        public ICheckRepository CheckRepository
-        {
-            get { return _checkRepository ?? (_checkRepository = new CheckRepository()); }
-        }
+        public ICheckRepository CheckRepository => _checkRepository ?? (_checkRepository = new CheckRepository());
 
         #endregion
     }

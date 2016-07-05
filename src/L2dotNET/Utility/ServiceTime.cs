@@ -11,25 +11,16 @@ namespace L2dotNET.Utility
         /// <summary>
         /// Gets current time as string.
         /// </summary>
-        public static string CurrentTime
-        {
-            get { return DateTime.Now.ToString("d/M/yyyy H:mm:ss.ffff"); }
-        }
+        public static string CurrentTime => DateTime.Now.ToString("d/M/yyyy H:mm:ss.ffff");
 
         /// <summary>
         /// Gets service uptime as <see cref="TimeSpan"/>.
         /// </summary>
-        public static TimeSpan ServiceUptime
-        {
-            get { return DateTime.Now - Process.GetCurrentProcess().StartTime; }
-        }
+        public static TimeSpan ServiceUptime => DateTime.Now - Process.GetCurrentProcess().StartTime;
 
         /// <summary>
         /// Gets service uptime as string.
         /// </summary>
-        public static string ServiceUptimeAsString
-        {
-            get { return DateTime.Now.Subtract(Process.GetCurrentProcess().StartTime).ToString(); }
-        }
+        public static string ServiceUptimeAsString => DateTime.Now.Subtract(Process.GetCurrentProcess().StartTime).ToString();
     }
 }

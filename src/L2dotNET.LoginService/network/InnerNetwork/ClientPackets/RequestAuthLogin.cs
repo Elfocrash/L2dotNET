@@ -15,10 +15,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
     class RequestAuthLogin
     {
         [Inject]
-        public IAccountService AccountService
-        {
-            get { return LoginServer.Kernel.Get<IAccountService>(); }
-        }
+        public IAccountService AccountService => LoginServer.Kernel.Get<IAccountService>();
 
         protected byte[] Raw;
         private readonly LoginClient _client;

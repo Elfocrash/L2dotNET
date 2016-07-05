@@ -23,10 +23,7 @@ namespace L2dotNET.Utility.Geometry
 
         #region Properties
 
-        public static Vector3 Zero
-        {
-            get { return _zero; }
-        }
+        public static Vector3 Zero => _zero;
 
         public static Vector3 One { get; } = new Vector3(1f, 1f, 1f);
 

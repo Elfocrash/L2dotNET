@@ -508,10 +508,7 @@ namespace L2dotNET.Network
         /// <summary>
         /// Gets packet capacity.
         /// </summary>
-        public int Length
-        {
-            get { return _mReceivedPacket ? _mBuffer.Length : _mOffset; }
-        }
+        public int Length => _mReceivedPacket ? _mBuffer.Length : _mOffset;
 
         /// <summary>
         /// Returns string representation of current packet.

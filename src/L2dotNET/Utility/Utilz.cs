@@ -6,20 +6,11 @@ namespace L2dotNET.Utility
 {
     public static class Utilz
     {
-        public static string CurrentTime
-        {
-            get { return DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss"); }
-        }
+        public static string CurrentTime => DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
 
-        public static TimeSpan ProcessUptime
-        {
-            get { return DateTime.Now - Process.GetCurrentProcess().StartTime; }
-        }
+        public static TimeSpan ProcessUptime => DateTime.Now - Process.GetCurrentProcess().StartTime;
 
-        public static string ProcessUptimeAsString
-        {
-            get { return DateTime.Now.Subtract(Process.GetCurrentProcess().StartTime).ToString(); }
-        }
+        public static string ProcessUptimeAsString => DateTime.Now.Subtract(Process.GetCurrentProcess().StartTime).ToString();
 
         public static string SystemSummary()
         {
