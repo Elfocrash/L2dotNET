@@ -64,9 +64,6 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteD(_hits[i].Damage);
                 WriteC(_hits[i].Flags);
             }
-            //writeD(tx);
-            //writeD(ty);
-            //writeD(tz);
         }
     }
 }

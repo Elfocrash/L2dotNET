@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Controllers
             }
         }
 
-        private int _time;
+        public int Time;
         private readonly GameServerNetworkPacket _dayPk = new SunRise();
         private readonly GameServerNetworkPacket _nightPk = new SunSet();
         private System.Timers.Timer _timeController;
@@ -44,25 +44,25 @@ namespace L2dotNET.GameService.Controllers
                           SecDn = 14400;
         private const int SecScale = 1800;
 
-        public GameTime() { }
-
         public void Initialize()
         {
             ServerStartUp = DateTime.Now;
-            _time = 5800 + 0; // 10800 18:00 вечер
-            _timeController = new System.Timers.Timer();
-            _timeController.Interval = 1000;
-            _timeController.Enabled = true;
-            _timeController.Elapsed += new System.Timers.ElapsedEventHandler(ActionTime);
+            Time = 5800 + 0; // 10800 18:00 вечер
+            _timeController = new System.Timers.Timer
+            {
+                Interval = 1000,
+                Enabled = true
+            };
+            _timeController.Elapsed += ActionTime;
 
             Log.Info("GameTime Controller: started 18:00 PM.");
         }
 
         private void ActionTime(object sender, System.Timers.ElapsedEventArgs e)
         {
-            _time++;
+            Time++;
 
-            switch (_time)
+            switch (Time)
             {
                 case SecDay + SecScale: // 21:00
                     NotifyStartNight();
@@ -72,8 +72,8 @@ namespace L2dotNET.GameService.Controllers
                     break;
             }
 
-            if (_time == SecDn)
-                _time = 0;
+            if (Time == SecDn)
+                Time = 0;
         }
 
         private void NotifyStartDay()
@@ -99,7 +99,7 @@ namespace L2dotNET.GameService.Controllers
 
         public void ShowInfo(L2Player player)
         {
-            DateTime dt = new DateTime(2000, 1, 1, 0, 0, 0).AddSeconds(_time * 6);
+            DateTime dt = new DateTime(2000, 1, 1, 0, 0, 0).AddSeconds(Time * 6);
 
             SystemMessage sm = new SystemMessage(Night ? SystemMessage.SystemMessageId.TimeS1S2InTheNight : SystemMessage.SystemMessageId.TimeS1S2InTheDay);
             sm.AddString(dt.Hour < 10 ? "0" + dt.Hour : "" + dt.Hour);

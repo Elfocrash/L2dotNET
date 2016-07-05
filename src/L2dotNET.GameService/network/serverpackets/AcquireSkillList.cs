@@ -6,32 +6,28 @@ namespace L2dotNET.GameService.Network.Serverpackets
 {
     class AcquireSkillList : GameServerNetworkPacket
     {
-        private readonly int _type;
-        public static int EsttNormal = 0;
-        public static int EsttFishing = 1;
-        public static int EsttClan = 2;
-        public static int EsttSubClan = 3;
-        public static int EsttTransform = 4;
-        public static int EsttSubjob = 5; // CT1.5
-        public static int EsttCollect = 6; // CT2 Final
-        public static int EsttBishopSharing = 7; // CT2.5 Skill Sharing
-        public static int EsttElderSharing = 8; // CT2.5 Skill Sharing
-        public static int EsttSilenElderSharing = 9; // CT2.5 Skill Sharing
-        private readonly SortedList<int, AcquireSkill> _list;
-
-        public AcquireSkillList(int type, L2Player player)
+        public enum SkillType
         {
-            _list = player.ActiveSkillTree;
-            _type = type;
+            Usual = 0,
+            Fishing = 1,
+            Clan = 2
+        }
+
+        private List<AcquireSkill> _list;
+        private readonly SkillType _skillType;
+
+        public AcquireSkillList(SkillType type)
+        {
+            _skillType = type;
         }
 
         protected internal override void Write()
         {
             WriteC(0x8a);
-            WriteD(_type);
+            WriteD((int)_skillType);
             WriteD(_list.Count);
 
-            foreach (AcquireSkill sk in _list.Values)
+            foreach (AcquireSkill sk in _list)
             {
                 WriteD(sk.Id);
                 WriteD(sk.Lv);
@@ -39,6 +35,24 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteD(sk.LvUpSp);
                 WriteD(0); //reqs
             }
+        }
+    }
+
+    internal class Skill
+    {
+        public int Id;
+        public int NextLevel;
+        public int MaxLevel;
+        public int SpCost;
+        public int Requirements;
+
+        public Skill(int pId, int pNextLevel, int pMaxLevel, int pSpCost, int pRequirements)
+        {
+            Id = pId;
+            NextLevel = pNextLevel;
+            MaxLevel = pMaxLevel;
+            SpCost = pSpCost;
+            Requirements = pRequirements;
         }
     }
 }
