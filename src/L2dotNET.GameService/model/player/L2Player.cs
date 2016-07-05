@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Timers;
@@ -98,7 +98,7 @@ namespace L2dotNET.GameService.Model.Player
         public long ClanJoinExpiryTime { get; set; }
         public int ClanCreateExpiryTime { get; set; }
         public PcInventory Inventory { get; set; }
-
+        public dynamic SessionData { get; set; }
 
         public L2Player RestorePlayer(int id, GameClient client)
         {
@@ -153,7 +153,7 @@ namespace L2dotNET.GameService.Model.Player
             player.Inventory = new PcInventory(this);
 
             player.CStatsInit();
-
+            SessionData = new PlayerBag();
             //restoreItems(player);
 
             return player;
@@ -2378,4 +2378,5 @@ namespace L2dotNET.GameService.Model.Player
             base.DoDie(killer, bytrigger);
         }
     }
+
 }

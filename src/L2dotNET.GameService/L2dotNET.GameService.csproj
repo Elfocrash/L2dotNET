@@ -73,6 +73,7 @@
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
@@ -195,6 +196,7 @@
     <Compile Include="Model\Player\Experience.cs" />
     <Compile Include="Model\Player\General\L2Macro.cs" />
     <Compile Include="Model\Player\General\L2Radar.cs" />
+    <Compile Include="Model\Player\General\PlayerBag.cs" />
     <Compile Include="Model\Player\L2PartyRoom.cs" />
     <Compile Include="Model\Player\General\L2Shortcut.cs" />
     <Compile Include="Model\Player\Transformation\Data\_00001_1.cs" />
