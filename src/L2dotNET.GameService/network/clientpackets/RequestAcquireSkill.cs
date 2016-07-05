@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Model.Player.General;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;
 

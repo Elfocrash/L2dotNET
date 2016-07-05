@@ -190,8 +190,10 @@
     <Compile Include="Model\Player\Basic\SayID.cs" />
     <Compile Include="Model\Player\Basic\SayIDList.cs" />
     <Compile Include="Model\Player\Experience.cs" />
+    <Compile Include="Model\Player\General\L2Macro.cs" />
+    <Compile Include="Model\Player\General\L2Radar.cs" />
     <Compile Include="Model\Player\L2PartyRoom.cs" />
-    <Compile Include="Model\Player\L2Shortcut.cs" />
+    <Compile Include="Model\Player\General\L2Shortcut.cs" />
     <Compile Include="Model\Player\Transformation\Data\_00001_1.cs" />
     <Compile Include="Model\Player\Transformation\L2Transform.cs" />
     <Compile Include="Model\Player\Transformation\TransformTemplate.cs" />
@@ -275,11 +277,11 @@
     <Compile Include="Model\Structures\Conq\FortressOfTheDead.cs" />
     <Compile Include="Model\Structures\Hideout.cs" />
     <Compile Include="Model\Structures\HideoutTemplate.cs" />
-    <Compile Include="Model\Templates\TObject.cs" />
-    <Compile Include="Model\Templates\TObjectBaseAttackType.cs" />
-    <Compile Include="Model\Templates\TObjectCategory.cs" />
-    <Compile Include="Model\Templates\TObjectRace.cs" />
-    <Compile Include="Model\Templates\TObjectSex.cs" />
+    <Compile Include="Model\Templates\Object.cs" />
+    <Compile Include="Model\Templates\ObjectBaseAttackType.cs" />
+    <Compile Include="Model\Templates\ObjectCategory.cs" />
+    <Compile Include="Model\Templates\ObjectRace.cs" />
+    <Compile Include="Model\Templates\ObjectSex.cs" />
     <Compile Include="Model\Vehicles\L2Boat.cs" />
     <Compile Include="Model\Zones\Classes\battle_zone.cs" />
     <Compile Include="Model\Zones\Classes\monster_race.cs" />
@@ -433,6 +435,7 @@
     <Compile Include="Network\Serverpackets\ItemListItem.cs" />
     <Compile Include="Network\Serverpackets\MultiSellListEx.cs" />
     <Compile Include="Network\Serverpackets\NetPing.cs" />
+    <Compile Include="Network\Serverpackets\RadarControl.cs" />
     <Compile Include="Network\Serverpackets\ShowBoard.cs" />
     <Compile Include="Network\Serverpackets\StopRotation.cs" />
     <Compile Include="Network\Serverpackets\StartRotation.cs" />

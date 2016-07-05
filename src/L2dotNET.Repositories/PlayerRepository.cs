@@ -86,7 +86,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"UpdatePlayer"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: UpdatePlayer. Message: \'{ex.Message}\' (Error Number: \'{ex.Number}\')");
             }
         }
 
@@ -103,7 +103,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"GetPlayerModelBySlotId"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: GetPlayerModelBySlotId. Message: \'{ex.Message}\' (Error Number: \'{ex.Number}\')");
                 return null;
             }
         }
@@ -121,7 +121,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"MarkToDeleteChar"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: MarkToDeleteChar. Message: \'{ex.Message}\' (Error Number: \'{ex.Number}\')");
 
                 success = false;
             }
@@ -155,7 +155,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"DeleteCharByObjId"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: DeleteCharByObjId. Message: \'{ex.Message}\' (Error Number: \'{ex.Number}\')");
 
                 success = false;
             }

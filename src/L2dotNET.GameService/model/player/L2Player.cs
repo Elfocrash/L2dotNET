@@ -14,6 +14,7 @@ using L2dotNET.GameService.Model.Npcs.Cubic;
 using L2dotNET.GameService.Model.Npcs.Decor;
 using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Player.AI;
+using L2dotNET.GameService.Model.Player.General;
 using L2dotNET.GameService.Model.Player.Transformation;
 using L2dotNET.GameService.Model.Quests;
 using L2dotNET.GameService.Model.Skills;

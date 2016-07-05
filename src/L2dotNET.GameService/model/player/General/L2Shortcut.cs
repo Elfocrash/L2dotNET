@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Model.Player
+﻿namespace L2dotNET.GameService.Model.Player.General
 {
     public class L2Shortcut
     {
