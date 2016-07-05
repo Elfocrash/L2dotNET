@@ -176,9 +176,6 @@ namespace L2dotNET.GameService.Tables.Multisell
             }
         }
 
-        public int ItemId
-        {
-            get { return Id; }
-        }
+        public int ItemId => Id;
     }
 }

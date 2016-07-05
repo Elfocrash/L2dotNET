@@ -41,10 +41,7 @@ namespace L2dotNET.GameService.Model.Player
         private static readonly ILog Log = LogManager.GetLogger(typeof(L2Player));
 
         [Inject]
-        public IPlayerService PlayerService
-        {
-            get { return GameServer.Kernel.Get<IPlayerService>(); }
-        }
+        public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
 
         public string AccountName { get; set; }
         public ClassId ClassId { get; set; }
@@ -222,26 +219,17 @@ namespace L2dotNET.GameService.Model.Player
             return PrivateStoreType;
         }
 
-        public override int AllianceCrestId
-        {
-            get { return Clan == null ? 0 : Clan.AllianceCrestId; }
-        }
+        public override int AllianceCrestId => Clan == null ? 0 : Clan.AllianceCrestId;
 
-        public override int AllianceId
-        {
-            get { return Clan == null ? 0 : Clan.AllianceId; }
-        }
+        public override int AllianceId => Clan == null ? 0 : Clan.AllianceId;
 
         public override int ClanId
         {
-            get { return Clan == null ? 0 : Clan.ClanId; }
+            get { return Clan?.ClanId ?? 0; }
             set { Clan = ClanTable.Instance.GetClan(value); }
         }
 
-        public override int ClanCrestId
-        {
-            get { return Clan == null ? 0 : Clan.CrestId; }
-        }
+        public override int ClanCrestId => Clan?.CrestId ?? 0;
 
         public int GetTitleColor()
         {
@@ -2222,10 +2210,7 @@ namespace L2dotNET.GameService.Model.Player
                 AiCharacter.NotifyOnStartDay();
         }
 
-        public int VehicleId
-        {
-            get { return Boat != null ? Boat.ObjId : 0; }
-        }
+        public int VehicleId => Boat != null ? Boat.ObjId : 0;
 
         public void Revive(double percent)
         {
@@ -2298,10 +2283,7 @@ namespace L2dotNET.GameService.Model.Player
                 BroadcastUserInfo();
         }
 
-        public byte ClanLevel
-        {
-            get { return Clan == null ? (byte)0 : Clan.Level; }
-        }
+        public byte ClanLevel => Clan == null ? (byte)0 : Clan.Level;
 
         public void BroadcastSkillUse(int skillId)
         {

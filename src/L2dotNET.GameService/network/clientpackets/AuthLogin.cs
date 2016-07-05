@@ -11,10 +11,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class AuthLogin : GameServerNetworkRequest
     {
         [Inject]
-        public IAccountService AccountService
-        {
-            get { return GameServer.Kernel.Get<IAccountService>(); }
-        }
+        public IAccountService AccountService => GameServer.Kernel.Get<IAccountService>();
 
         public AuthLogin(GameClient client, byte[] data)
         {

@@ -25,10 +25,7 @@ namespace L2dotNET.GameService.Model.Items
         public int MpConsume = 0;
         public int LimitedMinutes = 0;
 
-        public bool IsAutoSs
-        {
-            get { return (DefaultAction == "action_soulshot") || (DefaultAction == "action_spiritshot") || (DefaultAction == "action_summon_soulshot") || (DefaultAction == "action_summon_spiritshot"); }
-        }
+        public bool IsAutoSs => (DefaultAction == "action_soulshot") || (DefaultAction == "action_spiritshot") || (DefaultAction == "action_summon_soulshot") || (DefaultAction == "action_summon_spiritshot");
 
         public int SoulshotCount = 0,
                    SpiritshotCount = 0;

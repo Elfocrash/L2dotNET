@@ -36,8 +36,6 @@ namespace L2dotNET.GameService.Model.Skills2
             LoadDlc();
         }
 
-        public SkillTable() { }
-
         public Skill Get(int id, int lvl)
         {
             long hash = id * 65536 + lvl;

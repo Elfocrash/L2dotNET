@@ -9,10 +9,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class CharacterDelete : GameServerNetworkRequest
     {
         [Inject]
-        public IPlayerService PlayerService
-        {
-            get { return GameServer.Kernel.Get<IPlayerService>(); }
-        }
+        public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
 
         public CharacterDelete(GameClient client, byte[] data)
         {

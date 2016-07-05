@@ -818,22 +818,11 @@ namespace L2dotNET.GameService.World
             L2World.Instance.RemoveObject(this);
         }
 
-        public virtual L2Item ActiveWeapon
-        {
-            get { return null; }
-            set { }
-        }
+        public virtual L2Item ActiveWeapon => null;
 
-        public virtual L2Item SecondaryWeapon
-        {
-            get { return null; }
-        }
+        public virtual L2Item SecondaryWeapon => null;
 
-        public virtual L2Item ActiveArmor
-        {
-            get { return null; }
-            set { }
-        }
+        public virtual L2Item ActiveArmor => null;
 
         public L2Character CurrentTarget;
 
@@ -1478,8 +1467,7 @@ namespace L2dotNET.GameService.World
 
             if (_updatePositionTime == null)
             {
-                _updatePositionTime = new Timer();
-                _updatePositionTime.Interval = 100;
+                _updatePositionTime = new Timer {Interval = 100};
                 _updatePositionTime.Elapsed += UpdatePositionTask;
             }
             else
@@ -1601,17 +1589,13 @@ namespace L2dotNET.GameService.World
             return (AttackToEnd != null) && AttackToEnd.Enabled;
         }
 
-        public virtual int ClanId
-        {
-            get { return 0; }
-            set { }
-        }
+        public virtual int ClanId { get; set; } = 0;
 
-        public virtual int ClanCrestId => 0;
+        public virtual int ClanCrestId { get; set; } = 0;
 
-        public virtual int AllianceId => 0;
+        public virtual int AllianceId { get; set; } = 0;
 
-        public virtual int AllianceCrestId => 0;
+        public virtual int AllianceCrestId { get; set; } = 0;
 
         public virtual int MaxHp { get; set; }
         public virtual int MaxCp { get; set; }
@@ -1667,23 +1651,16 @@ namespace L2dotNET.GameService.World
                 if ((list != null) && !list.Contains(hashId))
                     list.Add(hashId);
             }
-            else if (list != null)
-                list.Remove(hashId);
+            else
+            {
+                list?.Remove(hashId);
+            }
         }
 
-        public bool MutedPhysically
-        {
-            get { return (_muted0 != null) && (_muted0.Count > 0); }
-        }
+        public bool MutedPhysically => (_muted0 != null) && (_muted0.Count > 0);
 
-        public bool MutedMagically
-        {
-            get { return (_muted1 != null) && (_muted1.Count > 0); }
-        }
+        public bool MutedMagically => (_muted1 != null) && (_muted1.Count > 0);
 
-        public bool MutedSpecial
-        {
-            get { return (_muted2 != null) && (_muted2.Count > 0); }
-        }
+        public bool MutedSpecial => (_muted2 != null) && (_muted2.Count > 0);
     }
 }

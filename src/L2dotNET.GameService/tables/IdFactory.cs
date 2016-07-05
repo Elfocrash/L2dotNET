@@ -8,10 +8,7 @@ namespace L2dotNET.GameService.Tables
     sealed class IdFactory
     {
         [Inject]
-        public IServerService ServerService
-        {
-            get { return GameServer.Kernel.Get<IServerService>(); }
-        }
+        public IServerService ServerService => GameServer.Kernel.Get<IServerService>();
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(IdFactory));
 

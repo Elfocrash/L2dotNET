@@ -53,15 +53,9 @@ namespace L2dotNET.GameService.Model.Playable
             Level = template.Level;
         }
 
-        public int NpcId
-        {
-            get { return Template.NpcId; }
-        }
+        public int NpcId => Template.NpcId;
 
-        public int NpcHashId
-        {
-            get { return Template.NpcId + 1000000; }
-        }
+        public int NpcHashId => Template.NpcId + 1000000;
 
         public override void BroadcastUserInfo()
         {
@@ -71,12 +65,12 @@ namespace L2dotNET.GameService.Model.Playable
 
         public byte GetPvPStatus()
         {
-            return Owner == null ? (byte)0 : Owner.PvPStatus;
+            return Owner?.PvPStatus ?? (byte)0;
         }
 
         public int GetKarma()
         {
-            return Owner == null ? 0 : Owner.Karma;
+            return Owner?.Karma ?? 0;
         }
 
         public virtual long GetExpToLevelUp()
@@ -135,8 +129,7 @@ namespace L2dotNET.GameService.Model.Playable
             Owner = owner;
             owner.Summon = this;
 
-            if (owner.Party != null)
-                owner.Party.BroadcastToMembers(new ExPartyPetWindowAdd(this));
+            owner.Party?.BroadcastToMembers(new ExPartyPetWindowAdd(this));
 
             Title = owner.Name;
         }
@@ -221,15 +214,17 @@ namespace L2dotNET.GameService.Model.Playable
 
             PartySpelled p = new PartySpelled(this);
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ei in Effects.Where(ei => ei != null))
-                if (ei.Active == 1)
-                    p.AddIcon(ei.Id, ei.Lvl, ei.GetTime());
-                else
-                    nulled.Add(ei);
-
             lock (Effects)
+            {
+                foreach (AbnormalEffect ei in Effects.Where(ei => ei != null))
+                    if (ei.Active == 1)
+                        p.AddIcon(ei.Id, ei.Lvl, ei.GetTime());
+                    else
+                        nulled.Add(ei);
+
                 foreach (AbnormalEffect ei in nulled)
                     Effects.Remove(ei);
+            }
 
             nulled.Clear();
             Owner.Party.BroadcastToMembers(p);

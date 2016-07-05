@@ -22,8 +22,6 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             }
         }
 
-        public AiManager() { }
-
         public void Initialize()
         {
             Register(new BroadcastingTower());

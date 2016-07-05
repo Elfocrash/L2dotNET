@@ -32,7 +32,7 @@ namespace L2dotNET.GameService.Model.Items
             StatWit = set.GetInt("WIT");
         }
 
-        public static int AmountRequired { get { return 10; } }
+        public static int AmountRequired => 10;
     }
 
     

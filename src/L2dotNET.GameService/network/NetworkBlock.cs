@@ -31,8 +31,6 @@ namespace L2dotNET.GameService.Network
 
         protected List<NetworkBlockModel> Blocks = new List<NetworkBlockModel>();
 
-        public NetworkBlock() { }
-
         public void Initialize()
         {
             using (StreamReader reader = new StreamReader(new FileInfo(@"sq\blocks.txt").FullName))

@@ -120,6 +120,9 @@
     <Compile Include="Enums\ShotType.cs" />
     <Compile Include="Enums\ZoneId.cs" />
     <Compile Include="Enums\ZoneIds.cs" />
+    <Compile Include="Handlers\ChatHandler.cs" />
+    <Compile Include="Handlers\IAdminCommandHandler.cs" />
+    <Compile Include="Handlers\IChatHandler.cs" />
     <Compile Include="Managers\AnnouncementManager.cs" />
     <Compile Include="Managers\BBS\BBSManager.cs" />
     <Compile Include="Managers\CastleManager.cs" />

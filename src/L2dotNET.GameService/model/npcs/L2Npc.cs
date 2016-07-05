@@ -44,15 +44,9 @@ namespace L2dotNET.GameService.Model.Npcs
                 TryMoveTo(X, Y, Z);
         }
 
-        public int NpcId
-        {
-            get { return Template.NpcId; }
-        }
+        public int NpcId => Template.NpcId;
 
-        public int NpcHashId
-        {
-            get { return Template.NpcId + 1000000; }
-        }
+        public int NpcHashId => Template.NpcId + 1000000;
 
         public byte isRunning()
         {
@@ -390,20 +384,11 @@ namespace L2dotNET.GameService.Model.Npcs
             return false;
         }
 
-        public virtual int Attackable
-        {
-            get { return 0; }
-        }
+        public virtual int Attackable => 0;
 
-        public override double Radius
-        {
-            get { return Template.CollisionRadius == 0 ? 12 : Template.CollisionRadius; }
-        }
+        public override double Radius => Template.CollisionRadius == 0 ? 12 : Template.CollisionRadius;
 
-        public override double Height
-        {
-            get { return Template.CollisionHeight == 0 ? 22 : Template.CollisionHeight; }
-        }
+        public override double Height => Template.CollisionHeight == 0 ? 22 : Template.CollisionHeight;
 
         public override string AsString()
         {
@@ -412,10 +397,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public void CreateOnePrivateEx(int npcId, string aiType, int x, int y, int z) { }
 
-        public double MaxHp
-        {
-            get { return CharacterStat.GetStat(EffectType.BMaxHp); }
-        }
+        public double MaxHp => CharacterStat.GetStat(EffectType.BMaxHp);
 
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {

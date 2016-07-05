@@ -83,10 +83,7 @@ namespace L2dotNET.GameService.Network
             return _stream.ToArray();
         }
 
-        public long Length
-        {
-            get { return _stream.Length; }
-        }
+        public long Length => _stream.Length;
 
         protected internal abstract void Write();
     }

@@ -53,8 +53,6 @@ namespace L2dotNET.GameService.Model.Items
             }
         }
 
-        public Capsule() { }
-
         public void LoadXml()
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\extractable.xml"));

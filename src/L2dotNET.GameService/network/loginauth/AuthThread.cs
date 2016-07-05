@@ -38,8 +38,6 @@ namespace L2dotNET.GameService.Network.LoginAuth
         public string Version = "rcs #216";
         public int Build = 0;
 
-        public AuthThread() { }
-
         public void Initialize()
         {
             IsConnected = false;

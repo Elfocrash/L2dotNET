@@ -521,15 +521,9 @@ namespace L2dotNET.GameService.World
                 RegenUpdate.Enabled = false;
         }
 
-        public virtual double Radius
-        {
-            get { return 11; }
-        }
+        public virtual double Radius => 11;
 
-        public virtual double Height
-        {
-            get { return 22; }
-        }
+        public virtual double Height => 22;
 
         public virtual string AsString()
         {
