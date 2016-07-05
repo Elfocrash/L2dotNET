@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using log4net;
-using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Model.Skills2;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -18,7 +15,9 @@ namespace L2dotNET.GameService.Tables
         public void AddLeg(int p)
         {
             if (Legs == null)
+            {
                 Legs = new List<int>();
+            }
 
             Legs.Add(p);
         }
@@ -28,7 +27,9 @@ namespace L2dotNET.GameService.Tables
         public void AddGloves(int p)
         {
             if (Gloves == null)
+            {
                 Gloves = new List<int>();
+            }
 
             Gloves.Add(p);
         }
@@ -38,7 +39,9 @@ namespace L2dotNET.GameService.Tables
         public void AddBoot(int p)
         {
             if (Boots == null)
+            {
                 Boots = new List<int>();
+            }
 
             Boots.Add(p);
         }
@@ -48,7 +51,9 @@ namespace L2dotNET.GameService.Tables
         public void AddHelm(int p)
         {
             if (Helms == null)
+            {
                 Helms = new List<int>();
+            }
 
             Helms.Add(p);
         }
@@ -58,7 +63,9 @@ namespace L2dotNET.GameService.Tables
         public void AddShield(int p)
         {
             if (Shields == null)
+            {
                 Shields = new List<int>();
+            }
 
             Shields.Add(p);
         }
@@ -90,22 +97,27 @@ namespace L2dotNET.GameService.Tables
             Set3Lvl = p2;
         }
 
-        public void Validate(L2Player owner)
-        {
-           
-        }
+        public void Validate(L2Player owner) { }
 
         private byte Count()
         {
             byte s = 1;
             if (Legs != null)
+            {
                 s++;
+            }
             if (Helms != null)
+            {
                 s++;
+            }
             if (Gloves != null)
+            {
                 s++;
+            }
             if (Boots != null)
+            {
                 s++;
+            }
             return s;
         }
 
@@ -115,15 +127,25 @@ namespace L2dotNET.GameService.Tables
             list.Add(ArmorId);
 
             if (Legs != null)
+            {
                 list.AddRange(Legs);
+            }
             if (Helms != null)
+            {
                 list.AddRange(Helms);
+            }
             if (Gloves != null)
+            {
                 list.AddRange(Gloves);
+            }
             if (Boots != null)
+            {
                 list.AddRange(Boots);
+            }
             if (Shields != null)
+            {
                 list.AddRange(Shields);
+            }
 
             return list;
         }

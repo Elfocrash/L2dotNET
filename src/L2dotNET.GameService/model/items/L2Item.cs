@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using L2dotNET.GameService.Model.Inventory;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
@@ -44,7 +43,6 @@ namespace L2dotNET.GameService.Model.Items
             Template = template;
             Count = 1;
             Location = ItemLocation.Void;
-
         }
 
         public void GenId()
@@ -53,6 +51,7 @@ namespace L2dotNET.GameService.Model.Items
         }
 
         /** Enumeration of locations for item */
+
         public enum ItemLocation
         {
             Void,
@@ -71,7 +70,6 @@ namespace L2dotNET.GameService.Model.Items
             IsEquipped = 0;
             PaperdollSlot = -1;
 
-            
             owner.RemoveStats(this);
         }
 
@@ -83,20 +81,15 @@ namespace L2dotNET.GameService.Model.Items
 
             Location = ItemLocation.Paperdoll;
 
-            
             owner.AddStats(this);
         }
 
         public void NotifyStats(L2Player owner)
         {
-
             owner.AddStats(this);
         }
 
-        private void TryEquipSecondary(L2Player owner)
-        {
-
-        }
+        private void TryEquipSecondary(L2Player owner) { }
 
         public void DropMe(int x, int y, int z, L2Character dropper, L2Character killer, int seconds)
         {
@@ -105,7 +98,9 @@ namespace L2dotNET.GameService.Model.Items
             Z = z;
             DropItem pk = new DropItem(this);
             if (dropper != null)
+            {
                 Dropper = dropper.ObjId;
+            }
 
             Location = ItemLocation.Void;
 
@@ -157,7 +152,9 @@ namespace L2dotNET.GameService.Model.Items
         public int LifeTimeEnd()
         {
             if (!_lifeTimeEndEnabled)
+            {
                 return -9999;
+            }
 
             TimeSpan ts = _lifeTimeEndTime - DateTime.Now;
             return (int)ts.TotalSeconds;

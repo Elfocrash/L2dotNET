@@ -1,8 +1,5 @@
-﻿using System.Linq;
-using L2dotNET.GameService.Model.Inventory;
-using L2dotNET.GameService.Model.Items;
+﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Network.Serverpackets;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
@@ -27,7 +24,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Player player = Client.CurrentPlayer;
 
             L2Item item = player.Inventory.GetItemByItemId(_itemId);
-            
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 

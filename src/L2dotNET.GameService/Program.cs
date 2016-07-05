@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Xml;
-using L2dotNET.GameService.Model.Items;
-using L2dotNET.GameService.Tables;
-using L2dotNET.GameService.Templates;
 using Ninject;
 
 namespace L2dotNET.GameService
@@ -34,6 +28,5 @@ namespace L2dotNET.GameService
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
         }
-
     }
 }

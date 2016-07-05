@@ -1,5 +1,4 @@
 using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.Model.Items;
 
 namespace L2dotNET.GameService.Managers
 {

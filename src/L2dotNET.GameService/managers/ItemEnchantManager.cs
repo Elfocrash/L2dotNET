@@ -56,7 +56,6 @@ namespace L2dotNET.GameService.Managers
             _items.Add(6576, new EnchantScroll(EnchantType.Blessed, EnchantTarget.Armor, CrystalTypeId.D));
             _items.Add(6577, new EnchantScroll(EnchantType.Blessed, EnchantTarget.Weapon, CrystalTypeId.S));
             _items.Add(6578, new EnchantScroll(EnchantType.Blessed, EnchantTarget.Armor, CrystalTypeId.S));
-
         }
 
         public const byte StatePutItem = 1;

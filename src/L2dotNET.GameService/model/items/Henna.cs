@@ -1,9 +1,4 @@
 ﻿using L2dotNET.GameService.Templates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.GameService.Model.Items
 {
@@ -34,6 +29,4 @@ namespace L2dotNET.GameService.Model.Items
 
         public static int AmountRequired => 10;
     }
-
-    
 }

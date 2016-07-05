@@ -13,7 +13,9 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return (short)L2Item.Enchant;
+                }
 
                 return 0;
             }
@@ -21,7 +23,7 @@ namespace L2dotNET.GameService.Tables.Multisell
 
         public int Augment = 0;
         public L2Item L2Item;
-        
+
         public int Durability { get; set; }
 
         public short Type2
@@ -29,10 +31,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 if (L2Item != null)
+                {
                     return (short)L2Item.Template.Type2;
+                }
 
                 return (short)Template.Type2;
             }
@@ -43,10 +49,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 if (L2Item != null)
+                {
                     return L2Item.Template.BodyPart;
+                }
 
                 return Template.BodyPart;
             }

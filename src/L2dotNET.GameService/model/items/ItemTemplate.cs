@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.Model.Skills2;
-using L2dotNET.GameService.Model.Skills2.Effects;
-using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.Model.Items
@@ -83,21 +79,21 @@ namespace L2dotNET.GameService.Model.Items
             Name = set.GetString("name");
             Weight = set.GetInt("weight", 0);
             MaterialType = (MaterialType)set.GetInt("material");
-		    Duration = set.GetInt("duration", -1);
-		    //_bodyPart = ItemTable.Slots.get(set.GetString("bodypart", "none"));
-		    ReferencePrice = set.GetInt("price");
-            CrystalType = CrystalType.Values.FirstOrDefault(x => x.Id == (CrystalTypeId) set.GetInt("crystal_type"));
+            Duration = set.GetInt("duration", -1);
+            //_bodyPart = ItemTable.Slots.get(set.GetString("bodypart", "none"));
+            ReferencePrice = set.GetInt("price");
+            CrystalType = CrystalType.Values.FirstOrDefault(x => x.Id == (CrystalTypeId)set.GetInt("crystal_type"));
             _crystalCount = set.GetInt("crystal_count");
-		
-		    Stackable = set.GetBool("is_stackable");
-		    Sellable = set.GetBool("is_sellable", true);
-		    Dropable = set.GetBool("is_dropable", true);
-		    Destroyable = set.GetBool("is_destroyable", true);
-		    Tradable = set.GetBool("is_tradable", true);
-		    Depositable = set.GetBool("is_depositable", true);
-		
-		    HeroItem = (ItemId >= 6611 && ItemId <= 6621) || ItemId == 6842;
-		    IsOlyRestricted = set.GetBool("is_oly_restricted", false);
+
+            Stackable = set.GetBool("is_stackable");
+            Sellable = set.GetBool("is_sellable", true);
+            Dropable = set.GetBool("is_dropable", true);
+            Destroyable = set.GetBool("is_destroyable", true);
+            Tradable = set.GetBool("is_tradable", true);
+            Depositable = set.GetBool("is_depositable", true);
+
+            HeroItem = ((ItemId >= 6611) && (ItemId <= 6621)) || (ItemId == 6842);
+            IsOlyRestricted = set.GetBool("is_oly_restricted", false);
 
             DefaultAction = (ActionType)set.GetInt("default_action");
         }
@@ -110,10 +106,10 @@ namespace L2dotNET.GameService.Model.Items
                 {
                     case 1:
                     case 2:
-                        return _crystalCount + CrystalType.CrystalEnchantBonusArmor * (3 * enchantLevel - 6);
+                        return _crystalCount + (CrystalType.CrystalEnchantBonusArmor * ((3 * enchantLevel) - 6));
 
                     case 0:
-                        return _crystalCount + CrystalType.CrystalEnchantBonusWeapon * (2 * enchantLevel - 3);
+                        return _crystalCount + (CrystalType.CrystalEnchantBonusWeapon * ((2 * enchantLevel) - 3));
 
                     default:
                         return _crystalCount;
@@ -125,13 +121,14 @@ namespace L2dotNET.GameService.Model.Items
                 {
                     case 1:
                     case 2:
-                        return _crystalCount + CrystalType.CrystalEnchantBonusArmor * enchantLevel;
+                        return _crystalCount + (CrystalType.CrystalEnchantBonusArmor * enchantLevel);
                     case 0:
-                        return _crystalCount + CrystalType.CrystalEnchantBonusWeapon * enchantLevel;
+                        return _crystalCount + (CrystalType.CrystalEnchantBonusWeapon * enchantLevel);
                     default:
                         return _crystalCount;
                 }
             }
+
             return _crystalCount;
         }
     }

@@ -1,6 +1,5 @@
 ﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;
 
 namespace L2dotNET.GameService.Network.Clientpackets
@@ -76,7 +75,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //}
 
             if (ItemHandler.Instance.Process(player, item))
+            {
                 return;
+            }
 
             //switch (item.Template.DefaultAction)
             //{
@@ -93,7 +94,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //    }
             //        break;
             //}
-            
         }
     }
 }

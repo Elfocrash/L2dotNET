@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.GameService.Model.Player.General
-{ 
+{
     public class PlayerBag : DynamicObject
     {
         private readonly Dictionary<string, dynamic> _properties = new Dictionary<string, dynamic>(StringComparer.InvariantCultureIgnoreCase);
@@ -23,10 +20,14 @@ namespace L2dotNET.GameService.Model.Player.General
             if (value == null)
             {
                 if (_properties.ContainsKey(binder.Name))
+                {
                     _properties.Remove(binder.Name);
+                }
             }
             else
+            {
                 _properties[binder.Name] = value;
+            }
 
             return true;
         }

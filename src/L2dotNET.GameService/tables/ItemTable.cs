@@ -4,10 +4,7 @@ using System.IO;
 using System.Xml;
 using log4net;
 using L2dotNET.GameService.Model.Items;
-using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Templates;
-using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -30,11 +27,15 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new ItemTable();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -42,7 +43,6 @@ namespace L2dotNET.GameService.Tables
 
         public void Initialize()
         {
-
             Slots.Add("chest", ItemTemplate.SlotChest);
             Slots.Add("fullarmor", ItemTemplate.SlotFullArmor);
             Slots.Add("alldress", ItemTemplate.SlotAlldress);
@@ -80,11 +80,11 @@ namespace L2dotNET.GameService.Tables
                 doc.Load(i);
                 XmlNodeList nodes = doc.DocumentElement?.SelectNodes("/list/item");
                 if (nodes != null)
+                {
                     foreach (XmlNode node in nodes)
                     {
                         XmlElement ownerElement = node.Attributes?[0].OwnerElement;
-                        if (ownerElement != null &&
-                            ((node.Attributes != null) && "item".Equals(ownerElement.Name)))
+                        if ((ownerElement != null) && ((node.Attributes != null) && "item".Equals(ownerElement.Name)))
                         {
                             XmlNamedNodeMap attrs = node.Attributes;
                             currentItem = new NewItem();
@@ -99,19 +99,17 @@ namespace L2dotNET.GameService.Tables
                             currentItem.Set.Set("item_id", itemId);
                             currentItem.Set.Set("name", itemName);
 
-
                             //itemsInFile.Add(currentItem.Item);
                         }
                     }
+                }
             }
-
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
             Log.Info($"ItemTable: #{Armors.Count} armors.");
         }
     }
-
 
     public class NewItem
     {

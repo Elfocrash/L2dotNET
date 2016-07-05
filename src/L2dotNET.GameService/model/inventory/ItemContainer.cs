@@ -87,10 +87,10 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public L2Item AddItem(int itemId, int count, L2Player player)
         {
-            if(count <= 0)
+            if (count <= 0)
+            {
                 return null;
-
-            
+            }
 
             return null;
         }

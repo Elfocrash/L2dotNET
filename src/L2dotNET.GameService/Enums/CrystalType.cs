@@ -36,7 +36,6 @@ namespace L2dotNET.GameService.Enums
                 yield return S;
             }
         }
-
     }
 
     public enum CrystalTypeId

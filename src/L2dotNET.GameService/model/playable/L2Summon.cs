@@ -39,7 +39,9 @@ namespace L2dotNET.GameService.Model.Playable
         public override void NotifyAction(L2Player player)
         {
             if ((Owner != null) && (Owner.ObjId == player.ObjId))
+            {
                 player.SendPacket(new PetStatusShow(ObjectSummonType));
+            }
         }
 
         public virtual void SetTemplate(NpcTemplate template)
@@ -60,7 +62,9 @@ namespace L2dotNET.GameService.Model.Playable
         public override void BroadcastUserInfo()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
+            {
                 obj.SendPacket(new PetInfo(this));
+            }
         }
 
         public byte GetPvPStatus()
@@ -141,7 +145,9 @@ namespace L2dotNET.GameService.Model.Playable
             Owner.SendPacket(new PetDelete(ObjectSummonType, ObjId));
 
             if (Owner.Party != null)
+            {
                 Owner.Party.BroadcastToMembers(new ExPartyPetWindowDelete(ObjId, Owner.ObjId, Name));
+            }
 
             Owner.Summon = null;
             DeleteMe();
@@ -153,10 +159,14 @@ namespace L2dotNET.GameService.Model.Playable
         public byte AppearMethod()
         {
             if (!_isSpawned)
+            {
                 return 2;
+            }
 
             if (IsTeleporting)
+            {
                 return 0;
+            }
 
             return 1;
         }
@@ -176,13 +186,19 @@ namespace L2dotNET.GameService.Model.Playable
         public virtual void Move()
         {
             if (Owner.CurrentTarget == null)
+            {
                 return;
+            }
 
             double dis = Calcs.CalculateDistance(this, Owner.CurrentTarget, true);
 
             if ((dis > 40) && (dis < 2300))
+            {
                 if (!CantMove())
+                {
                     MoveTo(Owner.CurrentTarget.X, Owner.CurrentTarget.Y, Owner.CurrentTarget.Z);
+                }
+            }
         }
 
         public override L2Character[] GetPartyCharacters()
@@ -190,16 +206,22 @@ namespace L2dotNET.GameService.Model.Playable
             List<L2Character> chars = new List<L2Character>();
             chars.Add(this);
             if (Owner != null)
+            {
                 chars.Add(Owner);
+            }
 
             if ((Owner != null) && (Owner.Party != null))
+            {
                 foreach (L2Player pl in Owner.Party.Members.Where(pl => pl.ObjId != Owner.ObjId))
                 {
                     chars.Add(pl);
 
                     if (pl.Summon != null)
+                    {
                         chars.Add(pl.Summon);
+                    }
                 }
+            }
 
             return chars.ToArray();
         }
@@ -207,10 +229,14 @@ namespace L2dotNET.GameService.Model.Playable
         public override void UpdateAbnormalEffect()
         {
             if ((Owner == null) || (Owner.Party == null))
+            {
                 return;
+            }
 
             if (Effects.Count == 0)
+            {
                 return;
+            }
 
             PartySpelled p = new PartySpelled(this);
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
@@ -218,12 +244,18 @@ namespace L2dotNET.GameService.Model.Playable
             {
                 foreach (AbnormalEffect ei in Effects.Where(ei => ei != null))
                     if (ei.Active == 1)
+                    {
                         p.AddIcon(ei.Id, ei.Lvl, ei.GetTime());
+                    }
                     else
+                    {
                         nulled.Add(ei);
+                    }
 
                 foreach (AbnormalEffect ei in nulled)
+                {
                     Effects.Remove(ei);
+                }
             }
 
             nulled.Clear();

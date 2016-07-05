@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Xml.Linq;
+﻿using System.Collections.Generic;
 using log4net;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Npcs;
@@ -22,11 +19,15 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new MultiSell();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -67,12 +68,16 @@ namespace L2dotNET.GameService.Tables.Multisell
                     MultiSellItem msitem = entry.Take[0];
 
                     if (msitem.Template == null)
+                    {
                         continue;
+                    }
 
                     foreach (L2Item item in pitems)
                     {
                         if (item.IsEquipped == 1)
+                        {
                             continue;
+                        }
 
                         if (item.Template.ItemId == msitem.Id)
                         {
@@ -96,8 +101,6 @@ namespace L2dotNET.GameService.Tables.Multisell
 
         public void LoadXml()
         {
-            
-
             Log.Info($"MultiSell: {Lists.Count} lists");
         }
 

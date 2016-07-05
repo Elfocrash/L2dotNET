@@ -1,11 +1,4 @@
-﻿using System;
-using System.IO;
-using log4net;
-using L2dotNET.GameService.Model.Zones;
-using L2dotNET.GameService.Model.Zones.Classes;
-using L2dotNET.GameService.Model.Zones.Forms;
-using L2dotNET.GameService.World;
-using L2dotNET.Utility;
+﻿using log4net;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -20,19 +13,20 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new ZoneTable();
+                        }
                     }
+                }
 
                 return _instance;
             }
         }
 
-        public void Initialize()
-        {
-       
-        }
+        public void Initialize() { }
     }
 }

@@ -47,10 +47,14 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             }
 
             if (player.EnchantItem.Enchant < 4)
+            {
                 rate = 100;
+            }
 
             if (rate > 100)
+            {
                 rate = 100;
+            }
 
             InventoryUpdate iu = null;
             bool equip = false;
@@ -95,30 +99,32 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                         if (player.EnchantItem.IsEquipped == 1)
                         {
                             //int pdollId = player.Inventory.getPaperdollId(player.EnchantItem.Template);
-                           // player.setPaperdoll(pdollId, null, false);
+                            // player.setPaperdoll(pdollId, null, false);
                             equip = true;
                         }
 
                         iu = new InventoryUpdate();
                         iu.AddDelItem(player.EnchantItem);
 
-
                         //int id = player.EnchantItem.Template.CrystalType.CrystalId;
                         //player.SendPacket(new EnchantResult(EnchantResultVal.BreakToCount, id, cry));
                         //player.AddItem(id, cry);
-
                     }
                         break;
                 }
             }
 
             if (player.EnchantStone != null)
+            {
                 player.DestroyItem(player.EnchantStone, 1);
+            }
 
             player.DestroyItem(player.EnchantScroll, 1);
 
             if (iu != null)
+            {
                 player.SendPacket(iu);
+            }
 
             player.EnchantItem = null;
             player.EnchantScroll = null;
@@ -126,7 +132,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             player.EnchantState = 0;
 
             if (equip)
+            {
                 player.BroadcastUserInfo();
+            }
         }
     }
 }

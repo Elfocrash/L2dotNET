@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.GameService.Enums
 {
@@ -22,7 +19,7 @@ namespace L2dotNET.GameService.Enums
         private ArmorType(ArmorTypeId id, string name)
         {
             Name = name;
-            _mask = 1 << ((int) id + Enum.GetNames(typeof(WeaponTypeId)).Length);
+            _mask = 1 << ((int)id + Enum.GetNames(typeof(WeaponTypeId)).Length);
         }
 
         public static IEnumerable<ArmorType> Values
