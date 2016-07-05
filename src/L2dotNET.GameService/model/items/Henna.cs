@@ -1,9 +1,4 @@
 ﻿using L2dotNET.GameService.Templates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace L2dotNET.GameService.Model.Items
 {
@@ -32,8 +27,9 @@ namespace L2dotNET.GameService.Model.Items
             StatWit = set.GetInt("WIT");
         }
 
-        public static int AmountRequired { get { return 10; } }
+        public static int AmountRequired
+        {
+            get { return 10; }
+        }
     }
-
-    
 }

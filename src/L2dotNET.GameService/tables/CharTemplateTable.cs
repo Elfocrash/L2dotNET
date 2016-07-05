@@ -23,11 +23,15 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new CharTemplateTable();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -45,6 +49,7 @@ namespace L2dotNET.GameService.Tables
                     XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/class");
 
                     if (nodes != null)
+                    {
                         foreach (XmlNode node in nodes)
                             if (node.Attributes != null)
                             {
@@ -67,12 +72,15 @@ namespace L2dotNET.GameService.Tables
                                             }
                                         }
                                         else
+                                        {
                                             break;
+                                        }
 
                                     PcTemplate pcTempl = new PcTemplate(classId, set);
                                     Templates.Add((int)pcTempl.ClassId.Id, pcTempl);
                                 }
                             }
+                    }
                 }
             }
 

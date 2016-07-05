@@ -159,7 +159,9 @@ namespace L2dotNET.Utility.Geometry
         public override bool Equals(object obj)
         {
             if (obj is Vector2)
+            {
                 return Equals(this);
+            }
 
             return false;
         }

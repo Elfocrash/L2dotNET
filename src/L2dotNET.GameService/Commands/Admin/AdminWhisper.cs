@@ -29,7 +29,9 @@ namespace L2dotNET.GameService.Commands.Admin
             }
 
             if (changed)
+            {
                 admin.SendPacket(new EtcStatusUpdate(admin));
+            }
         }
     }
 }

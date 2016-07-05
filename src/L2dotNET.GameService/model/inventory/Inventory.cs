@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.World;
 
@@ -14,7 +10,7 @@ namespace L2dotNET.GameService.Model.Inventory
         public Inventory(L2Character owner)
         {
             Owner = owner;
-            Paperdoll = (L2Item[]) new ArrayList().ToArray(typeof(L2Item));
+            Paperdoll = (L2Item[])new ArrayList().ToArray(typeof(L2Item));
         }
 
         protected override L2Character Owner { get; }
@@ -52,9 +48,12 @@ namespace L2dotNET.GameService.Model.Inventory
 
             foreach (L2Item item in Paperdoll)
             {
-                if(item != null)
+                if (item != null)
+                {
                     itemList.Add(item);
+                }
             }
+
             return itemList;
         }
     }

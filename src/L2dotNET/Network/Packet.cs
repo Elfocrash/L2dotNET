@@ -247,7 +247,9 @@ namespace L2dotNET.Network
             string v = string.Empty;
 
             foreach (string t in s)
+            {
                 v += t + '\0';
+            }
 
             int length = v.Length * sizeof(char);
 
@@ -402,8 +404,10 @@ namespace L2dotNET.Network
         /// <param name="nextValueLength">length of next bytes sequence to write into buffer.</param>
         private void ValidateBufferSize(int nextValueLength)
         {
-            if (_mOffset + nextValueLength > _mBuffer.Length)
+            if ((_mOffset + nextValueLength) > _mBuffer.Length)
+            {
                 L2Buffer.Extend(ref _mBuffer, nextValueLength + MDefaultOverflowValue);
+            }
         }
 
         /// <summary>
@@ -419,9 +423,13 @@ namespace L2dotNET.Network
             fixed (byte* buf = _mBuffer)
             {
                 if (headerSize == sizeof(short))
+                {
                     *((short*)(buf)) = (short)_mOffset;
+                }
                 else
+                {
                     *((int*)(buf)) = _mOffset;
+                }
             }
         }
 

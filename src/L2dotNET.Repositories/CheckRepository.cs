@@ -36,9 +36,15 @@ namespace L2dotNET.Repositories
         public bool PreCheckRepository()
         {
             if (CheckDatabaseHostPing())
+            {
                 if (CheckMySqlService())
+                {
                     if (CheckDatabaseQuery())
+                    {
                         return true;
+                    }
+                }
+            }
 
             return false;
         }
@@ -57,13 +63,19 @@ namespace L2dotNET.Repositories
                 isHostPinging = HostCheck.IsPingSuccessful(_host, PingTimeoutMs);
 
                 if (isHostPinging)
+                {
                     break;
+                }
             }
 
             if (isHostPinging)
+            {
                 Log.Info($"Ping to database host '{_host}' was SUCCESSFUL!");
+            }
             else
+            {
                 Log.Error($"Ping to database host '{_host}' has FAILED!");
+            }
 
             return isHostPinging;
         }
@@ -100,9 +112,13 @@ namespace L2dotNET.Repositories
                 }
 
                 if (isMySqlServiceRunning)
+                {
                     Log.Info("MySQL Service running at localhost.");
+                }
                 else
+                {
                     Log.Error("MySQL Service was not found running at localhost!");
+                }
 
                 return isMySqlServiceRunning;
             }
@@ -118,9 +134,13 @@ namespace L2dotNET.Repositories
             bool isQuerySuccessful = TryQueryDatabase();
 
             if (isQuerySuccessful)
+            {
                 Log.Info($"Query to database '{_database}' was SUCCESSFUL!");
+            }
             else
+            {
                 Log.Error($"Query to database '{_database}' has FAILED!");
+            }
 
             return isQuerySuccessful;
         }

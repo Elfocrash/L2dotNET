@@ -48,7 +48,7 @@ namespace L2dotNET.Utility.Geometry
             int dx = x - X;
             int dy = y - Y;
 
-            return (dx * dx + dy * dy) <= R * R;
+            return ((dx * dx) + (dy * dy)) <= (R * R);
         }
 
         public override bool IsInside(int x, int y, int z)
@@ -56,7 +56,7 @@ namespace L2dotNET.Utility.Geometry
             int dx = x - X;
             int dy = y - Y;
 
-            return (dx * dx + dy * dy) <= R * R;
+            return ((dx * dx) + (dy * dy)) <= (R * R);
         }
     }
 }

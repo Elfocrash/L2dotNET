@@ -35,7 +35,9 @@ namespace L2dotNET.GameService.AI.NpcAI
         public override void Talked(L2Player talker)
         {
             if (NoFnHi == 1)
+            {
                 return;
+            }
 
             //if (FriendShip1 == 0)
             //    talker.ShowHtm(GetDialog("fnHi"), myself);
@@ -44,13 +46,15 @@ namespace L2dotNET.GameService.AI.NpcAI
             //else if (talker.hasSomeOfThisItems(FriendShip1, FriendShip2, FriendShip3, FriendShip4, FriendShip5))
             //    talker.ShowHtm(GetDialog("fnHi"), myself);
             //else
-                talker.ShowHtm(GetDialog("fnNoFriend"), Myself);
+            talker.ShowHtm(GetDialog("fnNoFriend"), Myself);
         }
 
         public override void Created()
         {
             if (HavePet == 1)
+            {
                 Myself.CreateOnePrivateEx(Silhouette, AiType, Myself.X + 10, Myself.Y + 10, Myself.Z);
+            }
 
             if ((MoveAroundSocial > 0) || (MoveAroundSocial1 > 0))
             {
@@ -67,7 +71,8 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         private void SocialTask(object sender, ElapsedEventArgs e)
         {
-            if ((Myself.CurHp > Myself.MaxHp * 0.400000) && !Myself.Dead)
+            if ((Myself.CurHp > (Myself.MaxHp * 0.400000)) && !Myself.Dead)
+            {
                 if ((MoveAroundSocial > 0) && (new Random().Next(100) < 40))
                 {
                     //myself::AddEffectActionDesire( myself.sm, 3, MoveAroundSocial * 1000 / 30, 50 );
@@ -76,6 +81,7 @@ namespace L2dotNET.GameService.AI.NpcAI
                 {
                     //myself::AddEffectActionDesire( myself.sm, 2, MoveAroundSocial1 * 1000 / 30, 50 );
                 }
+            }
         }
 
         public override void TalkedReply(L2Player talker, int ask, int reply)
@@ -112,15 +118,21 @@ namespace L2dotNET.GameService.AI.NpcAI
                     {
                         case 579:
                             if ((talker.Level > 40) && (talker.Level < 46))
+                            {
                                 MultiSell.Instance.ShowList(talker, Myself, reply);
+                            }
                             break;
                         case 580:
                             if ((talker.Level >= 46) && (talker.Level < 52))
+                            {
                                 MultiSell.Instance.ShowList(talker, Myself, reply);
+                            }
                             break;
                         case 581:
                             if (talker.Level >= 52)
+                            {
                                 MultiSell.Instance.ShowList(talker, Myself, reply);
+                            }
                             break;
                         default:
                             MultiSell.Instance.ShowList(talker, Myself, reply);

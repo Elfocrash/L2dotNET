@@ -30,6 +30,7 @@ namespace L2dotNET.Tests
                     XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/class");
 
                     if (nodes != null)
+                    {
                         foreach (XmlNode node in nodes)
                             if (node.Attributes != null)
                             {
@@ -52,12 +53,15 @@ namespace L2dotNET.Tests
                                             }
                                         }
                                         else
+                                        {
                                             break;
+                                        }
                                     ////PcTemplate pcTempl = new PcTemplate(classId, set);
                                     ////templates.Add((int)pcTempl.ClassId, pcTempl);
                                     //System.Diagnostics.Trace.WriteLine("Added template for: " + pcTempl.ClassId);
                                 }
                             }
+                    }
                 }
             }
         }

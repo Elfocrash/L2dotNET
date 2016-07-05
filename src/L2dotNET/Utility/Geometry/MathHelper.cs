@@ -14,7 +14,7 @@ namespace L2dotNET.Utility.Geometry
 
         public static double Barycentric(double value1, double value2, double value3, double amount1, double amount2)
         {
-            return value1 + (value2 - value1) * amount1 + (value3 - value1) * amount2;
+            return value1 + ((value2 - value1) * amount1) + ((value3 - value1) * amount2);
         }
 
         public static double CatmullRom(double value1, double value2, double value3, double value4, double amount)
@@ -23,7 +23,7 @@ namespace L2dotNET.Utility.Geometry
             // Internally using doubles not to lose precission
             double amountSquared = amount * amount;
             double amountCubed = amountSquared * amount;
-            return (0.5 * (2.0 * value2 + (value3 - value1) * amount + (2.0 * value1 - 5.0 * value2 + 4.0 * value3 - value4) * amountSquared + (3.0 * value2 - value1 - 3.0 * value3 + value4) * amountCubed));
+            return (0.5 * ((2.0 * value2) + ((value3 - value1) * amount) + (((((2.0 * value1) - (5.0 * value2)) + (4.0 * value3)) - value4) * amountSquared) + ((((3.0 * value2) - value1 - (3.0 * value3)) + value4) * amountCubed)));
         }
 
         public static double Clamp(double value, double min, double max)
@@ -57,17 +57,23 @@ namespace L2dotNET.Utility.Geometry
             double sSquared = s * s;
 
             if (amount == 0f)
+            {
                 result = value1;
+            }
             else if (amount == 1f)
+            {
                 result = value2;
+            }
             else
-                result = (2 * v1 - 2 * v2 + t2 + t1) * sCubed + (3 * v2 - 3 * v1 - 2 * t1 - t2) * sSquared + t1 * s + v1;
+            {
+                result = ((((2 * v1) - (2 * v2)) + t2 + t1) * sCubed) + (((3 * v2) - (3 * v1) - (2 * t1) - t2) * sSquared) + (t1 * s) + v1;
+            }
             return result;
         }
 
         public static double Lerp(double value1, double value2, double amount)
         {
-            return value1 + (value2 - value1) * amount;
+            return value1 + ((value2 - value1) * amount);
         }
 
         public static double Max(double value1, double value2)
@@ -121,7 +127,9 @@ namespace L2dotNET.Utility.Geometry
             else
             {
                 if (angle > 3.14159274f)
+                {
                     angle -= 6.28318548f;
+                }
             }
             return angle;
         }
@@ -144,7 +152,7 @@ namespace L2dotNET.Utility.Geometry
             //float C2 = A2 * ax2 + B2 * ay2;
 
             // Get delta and check if the lines are parallel
-            float delta = a1 * b2 - a2 * b1;
+            float delta = (a1 * b2) - (a2 * b1);
             return delta == 0;
         }
     }

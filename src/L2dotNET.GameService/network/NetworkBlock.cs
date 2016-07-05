@@ -19,11 +19,15 @@ namespace L2dotNET.GameService.Network
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new NetworkBlock();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -41,10 +45,14 @@ namespace L2dotNET.GameService.Network
                 {
                     string line = reader.ReadLine() ?? string.Empty;
                     if (line.Length == 0)
+                    {
                         continue;
+                    }
 
                     if (line.StartsWithIgnoreCase("//"))
+                    {
                         continue;
+                    }
 
                     if (line.StartsWithIgnoreCase("d"))
                     {
@@ -69,19 +77,27 @@ namespace L2dotNET.GameService.Network
         public bool Allowed(string ip)
         {
             if (Blocks.Count == 0)
+            {
                 return true;
+            }
 
             foreach (NetworkBlockModel nbi in Blocks)
             {
                 if (nbi.DirectIp != null)
+                {
                     if (nbi.DirectIp.Equals(ip))
                     {
                         if (nbi.Permanent)
+                        {
                             return false;
+                        }
 
                         if (nbi.TimeEnd.CompareTo(DateTime.Now) == 1)
+                        {
                             return false;
+                        }
                     }
+                }
 
                 if (nbi.Mask != null)
                 {
@@ -93,9 +109,13 @@ namespace L2dotNET.GameService.Network
                         d[c] = false;
 
                         if (b[c] == "*")
+                        {
                             d[c] = true;
+                        }
                         else if (b[c] == a[c])
+                        {
                             d[c] = true;
+                        }
                         else if (b[c].Contains("/"))
                         {
                             short n = short.Parse(b[c].Split('/')[0]),
@@ -106,7 +126,9 @@ namespace L2dotNET.GameService.Network
                     }
 
                     if (d.Any(u => u))
+                    {
                         return false;
+                    }
                 }
             }
 

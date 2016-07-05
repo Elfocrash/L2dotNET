@@ -20,7 +20,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             foreach (PcTemplate t in _templates)
             {
                 if (t == null)
+                {
                     break;
+                }
 
                 WriteD((int)t.ClassId.ClassRace); //race id
                 WriteD((int)t.ClassId.Id);

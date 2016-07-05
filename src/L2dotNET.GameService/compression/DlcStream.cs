@@ -16,7 +16,9 @@ namespace L2dotNET.GameService.Compression
             Stream = new GZipStream(fstream, cm);
             Stream2 = fstream;
             if (cm == CompressionMode.Compress)
+            {
                 Stream2.Write(_dlcStr, 0, _dlcStr.Length);
+            }
         }
 
         public void Close()

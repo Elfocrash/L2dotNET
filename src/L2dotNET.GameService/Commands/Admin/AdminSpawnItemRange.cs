@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Commands.Admin
             int idmin = int.Parse(alias.Split(' ')[1]);
             int idmax = int.Parse(alias.Split(' ')[2]);
 
-            if (idmax - idmin > 200)
+            if ((idmax - idmin) > 200)
             {
                 admin.SendMessage("Too big id range.");
                 return;
@@ -28,7 +28,9 @@ namespace L2dotNET.GameService.Commands.Admin
                 ItemTemplate item = ItemTable.Instance.GetItem(i);
 
                 if (item == null)
+                {
                     admin.SendMessage("Item with id " + i + " not exists.");
+                }
                 else
                 {
                     admin.AddItem(i, 1);
@@ -37,7 +39,9 @@ namespace L2dotNET.GameService.Commands.Admin
             }
 
             if (x)
+            {
                 admin.SendItemList(true);
+            }
         }
     }
 }

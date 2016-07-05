@@ -65,9 +65,13 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
             }
 
             if (_count < 0)
+            {
                 _count = 1;
+            }
             else if (_count > item.Count)
+            {
                 _count = item.Count;
+            }
 
             List<long[]> items = new List<long[]>();
             items.Add(new[] { _objectId, _count });

@@ -17,7 +17,7 @@ namespace L2dotNET.Utility.Geometry
 
         public override double GetArea()
         {
-            return 2 * Math.PI * R * (R + _maxZ - _minZ);
+            return 2 * Math.PI * R * ((R + _maxZ) - _minZ);
         }
 
         public override Location GetRandomLocation()
@@ -37,12 +37,14 @@ namespace L2dotNET.Utility.Geometry
         public override bool IsInside(int x, int y, int z)
         {
             if ((z < _minZ) || (z > _maxZ))
+            {
                 return false;
+            }
 
             int dx = x - X;
             int dy = y - Y;
 
-            return (dx * dx + dy * dy) <= R * R;
+            return ((dx * dx) + (dy * dy)) <= (R * R);
         }
     }
 }

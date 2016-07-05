@@ -31,7 +31,7 @@ namespace L2dotNET.Utility.Geometry
             CAx = c[0] - a[0];
             CAy = c[1] - a[1];
 
-            Size = Math.Abs(BAx * CAy - CAx * BAy) / 2;
+            Size = Math.Abs((BAx * CAy) - (CAx * BAy)) / 2;
         }
 
         public override double GetArea()
@@ -44,14 +44,14 @@ namespace L2dotNET.Utility.Geometry
             double ba = Rnd.NextDouble();
             double ca = Rnd.NextDouble();
 
-            if (ba + ca > 1)
+            if ((ba + ca) > 1)
             {
                 ba = 1 - ba;
                 ca = 1 - ca;
             }
 
-            int x = Ax + (int)(ba * BAx + ca * CAx);
-            int y = Ay + (int)(ba * BAy + ca * CAy);
+            int x = Ax + (int)((ba * BAx) + (ca * CAx));
+            int y = Ay + (int)((ba * BAy) + (ca * CAy));
 
             return new Location(x, y, 0);
         }
@@ -71,9 +71,9 @@ namespace L2dotNET.Utility.Geometry
             long dx = x - Ax;
             long dy = y - Ay;
 
-            bool a = (0 - dx) * (BAy - 0) - (BAx - 0) * (0 - dy) >= 0;
-            bool b = (BAx - dx) * (CAy - BAy) - (CAx - BAx) * (BAy - dy) >= 0;
-            bool c = (CAx - dx) * (0 - CAy) - (0 - CAx) * (CAy - dy) >= 0;
+            bool a = (((0 - dx) * (BAy - 0)) - ((BAx - 0) * (0 - dy))) >= 0;
+            bool b = (((BAx - dx) * (CAy - BAy)) - ((CAx - BAx) * (BAy - dy))) >= 0;
+            bool c = (((CAx - dx) * (0 - CAy)) - ((0 - CAx) * (CAy - dy))) >= 0;
 
             return (a == b) && (b == c);
         }
@@ -83,9 +83,9 @@ namespace L2dotNET.Utility.Geometry
             long dx = x - Ax;
             long dy = y - Ay;
 
-            bool a = (0 - dx) * (BAy - 0) - (BAx - 0) * (0 - dy) >= 0;
-            bool b = (BAx - dx) * (CAy - BAy) - (CAx - BAx) * (BAy - dy) >= 0;
-            bool c = (CAx - dx) * (0 - CAy) - (0 - CAx) * (CAy - dy) >= 0;
+            bool a = (((0 - dx) * (BAy - 0)) - ((BAx - 0) * (0 - dy))) >= 0;
+            bool b = (((BAx - dx) * (CAy - BAy)) - ((CAx - BAx) * (BAy - dy))) >= 0;
+            bool c = (((CAx - dx) * (0 - CAy)) - ((0 - CAx) * (CAy - dy))) >= 0;
 
             return (a == b) && (b == c);
         }

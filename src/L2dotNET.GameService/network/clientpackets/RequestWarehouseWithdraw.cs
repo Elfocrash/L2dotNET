@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using log4net;
-using L2dotNET.GameService.Model.Inventory;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
@@ -25,13 +24,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _count = ReadD();
 
             if ((_count < 0) || (_count > 255))
+            {
                 _count = 0;
+            }
 
             _items = new int[_count * 2];
             for (int i = 0; i < _count; i++)
             {
                 _items[i * 2] = ReadD();
-                _items[i * 2 + 1] = ReadD();
+                _items[(i * 2) + 1] = ReadD();
             }
         }
 
@@ -51,9 +52,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             for (int i = 0; i < _count; i++)
             {
                 int objectId = _items[i * 2];
-                int count = _items[i * 2 + 1];
+                int count = _items[(i * 2) + 1];
 
-                L2Item item = null;//player._warehouse.Items[objectId];
+                L2Item item = null; //player._warehouse.Items[objectId];
 
                 if (item == null)
                 {
@@ -63,9 +64,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (item.Template.IsStackable())
+                {
                     slots += 1;
+                }
                 else
+                {
                     slots += count;
+                }
             }
 
             //InvPrivateWarehouse pw = player._warehouse ?? new InvPrivateWarehouse(player);
@@ -84,7 +89,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             for (int i = 0; i < _count; i++)
             {
                 int objectId = _items[i * 2];
-                int count = _items[i * 2 + 1];
+                int count = _items[(i * 2) + 1];
 
                 transfer.Add(new[] { objectId, count });
             }

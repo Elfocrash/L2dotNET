@@ -13,7 +13,9 @@
             _file = file;
 
             if (ogg)
+            {
                 _type = 1;
+            }
         }
 
         protected internal override void Write()

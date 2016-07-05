@@ -11,12 +11,7 @@ namespace L2dotNET.GameService.Model.Skills2.SpecEffects
         public BAccuracyByNight(double value, int skillId, int lvl)
         {
             this.Value = value;
-            _effect = new BAccuracy
-            {
-                HashId = skillId*65536 + lvl,
-                SkillId = skillId,
-                SkillLv = lvl
-            };
+            _effect = new BAccuracy { HashId = (skillId * 65536) + lvl, SkillId = skillId, SkillLv = lvl };
             _effect.Build("st +" + value);
         }
 

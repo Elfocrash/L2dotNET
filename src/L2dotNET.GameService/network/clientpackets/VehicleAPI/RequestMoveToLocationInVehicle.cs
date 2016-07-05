@@ -47,15 +47,21 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 
             L2Boat boat = null;
             if (player.Boat != null)
+            {
                 if (player.Boat.ObjId == _boatId)
+                {
                     boat = player.Boat;
+                }
                 else
                 {
                     player.SendActionFailed();
                     return;
                 }
+            }
             else if (player.KnownObjects.ContainsKey(_boatId))
+            {
                 boat = (L2Boat)player.KnownObjects[_boatId];
+            }
 
             if (boat == null)
             {
@@ -65,7 +71,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
             }
 
             if (player.Boat == null)
+            {
                 player.Boat = boat;
+            }
 
             player.BoatX = _dx;
             player.BoatY = _dy;

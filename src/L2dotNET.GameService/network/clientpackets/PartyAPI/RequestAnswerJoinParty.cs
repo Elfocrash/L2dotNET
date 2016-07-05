@@ -54,7 +54,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
         private void AcceptPartyInvite(L2Player leader, L2Player player)
         {
             if (leader.Party == null)
+            {
                 leader.Party = new L2Party(leader);
+            }
 
             if (leader.Party.Members.Count == 9)
             {

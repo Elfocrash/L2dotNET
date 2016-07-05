@@ -27,21 +27,29 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
         public override void NotifyAction(L2Player player)
         {
             if (Closed == 1)
+            {
                 Closed = 0;
+            }
             else
+            {
                 Closed = 1;
+            }
 
             BroadcastUserInfo();
         }
 
         public override int GetDamage()
         {
-            int dmg = 6 - (int)Math.Ceiling(CurHp / MaxHp * 6);
+            int dmg = 6 - (int)Math.Ceiling((CurHp / MaxHp) * 6);
             if (dmg > 6)
+            {
                 return 6;
+            }
 
             if (dmg < 0)
+            {
                 return 0;
+            }
 
             return dmg;
         }

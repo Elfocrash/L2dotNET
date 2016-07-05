@@ -27,7 +27,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (player.CurrentTarget != null)
+            {
                 player.ChangeTarget();
+            }
         }
     }
 }

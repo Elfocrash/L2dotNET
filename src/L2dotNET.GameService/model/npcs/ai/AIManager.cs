@@ -12,11 +12,15 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new AiManager();
+                        }
                     }
+                }
 
                 return _instance;
             }

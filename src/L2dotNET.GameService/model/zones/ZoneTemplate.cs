@@ -65,7 +65,9 @@ namespace L2dotNET.GameService.Model.Zones
         public void SetSkillList(string val)
         {
             if (Skills == null)
+            {
                 Skills = new List<Skill>();
+            }
 
             //string d1 = val.Substring(1).Replace("}", "").Replace("@", "");
 

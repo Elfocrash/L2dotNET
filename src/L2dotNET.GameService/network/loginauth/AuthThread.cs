@@ -19,11 +19,15 @@ namespace L2dotNET.GameService.Network.LoginAuth
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new AuthThread();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -59,13 +63,17 @@ namespace L2dotNET.GameService.Network.LoginAuth
                 }
 
                 if (!Ltimer.Enabled)
+                {
                     Ltimer.Enabled = true;
+                }
 
                 return;
             }
 
             if ((Ltimer != null) && Ltimer.Enabled)
+            {
                 Ltimer.Enabled = false;
+            }
 
             IsConnected = true;
 
@@ -127,7 +135,9 @@ namespace L2dotNET.GameService.Network.LoginAuth
         private void Termination()
         {
             if (_paused)
+            {
                 return;
+            }
 
             Log.Error("AuthThread: reconnecting...");
             Initialize();
@@ -186,7 +196,9 @@ namespace L2dotNET.GameService.Network.LoginAuth
         public void AwaitAccount(AccountModel ta)
         {
             if (_awaitingAccounts.ContainsKey(ta.Login))
+            {
                 _awaitingAccounts.Remove(ta.Login);
+            }
 
             _awaitingAccounts.Add(ta.Login, ta);
         }

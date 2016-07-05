@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 
 namespace L2dotNET.GameService.Network.Serverpackets

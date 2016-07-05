@@ -19,11 +19,15 @@ namespace L2dotNET.GameService.Model.Items
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new ItemHandler();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -58,7 +62,9 @@ namespace L2dotNET.GameService.Model.Items
         private void Register(ItemEffect effect)
         {
             foreach (int id in effect.Ids)
+            {
                 Items.Add(id, effect);
+            }
 
             _effects++;
         }
@@ -69,6 +75,7 @@ namespace L2dotNET.GameService.Model.Items
             XElement ex = xml.Element("list");
 
             if (ex != null)
+            {
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "item")
                     {
@@ -94,29 +101,44 @@ namespace L2dotNET.GameService.Model.Items
                         {
                             string str = m.Attribute("exchange").Value;
                             foreach (string st in str.Split(';'))
+                            {
                                 ih.AddExchangeItem(Convert.ToInt32(st.Split('-')[0]), Convert.ToInt32(st.Split('-')[1]));
+                            }
                         }
 
                         if (m.Attribute("pet") != null)
+                        {
                             ih.Pet = Convert.ToBoolean(m.Attribute("pet").Value);
+                        }
 
                         if (m.Attribute("player") != null)
+                        {
                             ih.Player = Convert.ToBoolean(m.Attribute("player").Value);
+                        }
 
                         if (m.Attribute("destroy") != null)
+                        {
                             ih.Destroy = Convert.ToBoolean(m.Attribute("destroy").Value);
+                        }
 
                         if (m.Attribute("petId") != null)
+                        {
                             ih.PetId = Convert.ToInt32(m.Attribute("petId").Value);
+                        }
 
                         if (m.Attribute("summonId") != null)
+                        {
                             ih.SummonId = Convert.ToInt32(m.Attribute("summonId").Value);
+                        }
 
                         if (m.Attribute("summonStaticId") != null)
+                        {
                             ih.SummonStaticId = Convert.ToInt32(m.Attribute("summonStaticId").Value);
+                        }
 
                         Items.Add(id, ih);
                     }
+            }
         }
     }
 }

@@ -21,11 +21,15 @@ namespace L2dotNET.GameService.Controllers
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new GameTime();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -48,11 +52,7 @@ namespace L2dotNET.GameService.Controllers
         {
             ServerStartUp = DateTime.Now;
             Time = 5800 + 0; // 10800 18:00 вечер
-            _timeController = new System.Timers.Timer
-            {
-                Interval = 1000,
-                Enabled = true
-            };
+            _timeController = new System.Timers.Timer { Interval = 1000, Enabled = true };
             _timeController.Elapsed += ActionTime;
 
             Log.Info("GameTime Controller: started 18:00 PM.");
@@ -73,7 +73,9 @@ namespace L2dotNET.GameService.Controllers
             }
 
             if (Time == SecDn)
+            {
                 Time = 0;
+            }
         }
 
         private void NotifyStartDay()
@@ -81,7 +83,9 @@ namespace L2dotNET.GameService.Controllers
             Night = false;
 
             foreach (L2Player p in L2World.Instance.GetPlayers())
+            {
                 p.NotifyDayChange(_dayPk);
+            }
         }
 
         private void NotifyStartNight()
@@ -89,7 +93,9 @@ namespace L2dotNET.GameService.Controllers
             Night = true;
 
             foreach (L2Player p in L2World.Instance.GetPlayers())
+            {
                 p.NotifyDayChange(_nightPk);
+            }
         }
 
         public void EnterWorld(L2Player p)

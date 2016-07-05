@@ -74,7 +74,9 @@ namespace L2dotNET.GameService.Templates
             //}
 
             if (set.ContainsKey("raceId"))
+            {
                 race = (Race)set.GetInt("raceId");
+            }
 
             //_aiType = set.GetEnumerator(new "aiType", AIType.DEFAULT);
 
@@ -90,7 +92,9 @@ namespace L2dotNET.GameService.Templates
                 ClanRange = set.GetInt("clanRange");
 
                 if (set.ContainsKey("ignoredIds"))
+                {
                     IgnoredIds = set.GetIntegerArray("ignoredIds");
+                }
             }
 
             CanMove = set.GetBool("canMove", true);

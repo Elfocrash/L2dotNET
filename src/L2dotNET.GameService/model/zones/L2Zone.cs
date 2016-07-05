@@ -23,26 +23,36 @@ namespace L2dotNET.GameService.Model.Zones
         public virtual void OnEnter(L2Object obj)
         {
             if (!ObjectsInside.ContainsKey(obj.ObjId))
+            {
                 ObjectsInside.Add(obj.ObjId, obj);
+            }
         }
 
         public void BroadcastPacket(GameServerNetworkPacket pk)
         {
             foreach (L2Object obj in ObjectsInside.Values)
                 if (obj is L2Player)
+                {
                     obj.SendPacket(pk);
+                }
                 else if (obj is L2Summon)
+                {
                     ((L2Summon)obj).SendPacket(pk);
+                }
         }
 
         public virtual void OnExit(L2Object obj, bool cls)
         {
             if (cls)
+            {
                 lock (ObjectsInside)
                 {
                     if (ObjectsInside.ContainsKey(obj.ObjId))
+                    {
                         ObjectsInside.Remove(obj.ObjId);
+                    }
                 }
+            }
         }
 
         public virtual void OnDie(L2Character obj, L2Character killer) { }
@@ -83,7 +93,9 @@ namespace L2dotNET.GameService.Model.Zones
             NpcCenter.DeleteMe();
 
             foreach (L2Object o in ObjectsInside.Values)
+            {
                 OnExit(o, false);
+            }
 
             ObjectsInside.Clear();
 

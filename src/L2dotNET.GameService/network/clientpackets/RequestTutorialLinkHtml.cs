@@ -28,7 +28,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.SendPacket(new TutorialShowHtml(player, link[0], link[1], player.ViewingAdminPage > 0));
             }
             else if (_link.StartsWithIgnoreCase("tutorial_close_"))
+            {
                 player.SendPacket(new TutorialCloseHtml());
+            }
             else if (_link.EqualsIgnoreCase("admin_close"))
             {
                 player.SendPacket(new TutorialCloseHtml());

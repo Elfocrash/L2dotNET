@@ -67,7 +67,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             double dx = _targetX - _originX;
             double dy = _targetY - _originY;
 
-            if ((dx * dx + dy * dy) > 98010000) // 9900*9900
+            if (((dx * dx) + (dy * dy)) > 98010000) // 9900*9900
             {
                 player.SendActionFailed();
                 return;

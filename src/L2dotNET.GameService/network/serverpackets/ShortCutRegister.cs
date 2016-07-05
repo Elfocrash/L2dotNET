@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Model.Player.General;
+﻿using L2dotNET.GameService.Model.Player.General;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -17,7 +16,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteC(0x44);
 
             WriteD(_cut.Type);
-            WriteD(_cut.Slot + _cut.Page * 12);
+            WriteD(_cut.Slot + (_cut.Page * 12));
 
             switch (_cut.Type)
             {

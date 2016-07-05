@@ -20,11 +20,15 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new ZoneTable();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -40,10 +44,14 @@ namespace L2dotNET.GameService.Tables
                 {
                     string line = reader.ReadLine();
                     if (line.Length == 0)
+                    {
                         continue;
+                    }
 
                     if (line.StartsWithIgnoreCase("//"))
+                    {
                         continue;
+                    }
 
                     if (line.StartsWithIgnoreCase("area_begin"))
                     {
@@ -54,7 +62,9 @@ namespace L2dotNET.GameService.Tables
                         for (int i = 1; i < d.Length; i++)
                         {
                             if (d[i].EqualsIgnoreCase("area_end"))
+                            {
                                 continue;
+                            }
 
                             string param = d[i].Split('=')[0];
                             string val = d[i].Substring(param.Length + 1);
@@ -178,9 +188,13 @@ namespace L2dotNET.GameService.Tables
                         {
                             L2WorldRegion region = L2World.Instance.GetRegion(template.X[i], template.Y[i]);
                             if (region != null)
+                            {
                                 ctx++;
+                            }
                             else
+                            {
                                 Log.Error($"AreaTable: null region at {template.X[i]} {template.Y[i]} for zone {zone.Name}");
+                            }
                         }
                     }
                 }

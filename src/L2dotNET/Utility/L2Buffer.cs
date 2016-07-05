@@ -41,26 +41,28 @@ namespace L2dotNET.Utility
             src += srcOffset;
             dst += dstOffset;
 
-            while (size - index >= sizeof(long))
+            while ((size - index) >= sizeof(long))
             {
                 *((long*)(dst + index)) = *((long*)(src + index));
                 index += sizeof(long);
             }
 
-            while (size - index >= sizeof(int))
+            while ((size - index) >= sizeof(int))
             {
                 *((int*)(dst + index)) = *((int*)(src + index));
                 index += sizeof(int);
             }
 
-            while (size - index >= sizeof(short))
+            while ((size - index) >= sizeof(short))
             {
                 *((short*)(dst + index)) = *((short*)(src + index));
                 index += sizeof(short);
             }
 
             while (index < size)
+            {
                 *(dst + index) = *(src + index++);
+            }
 
             //srcOffset += size;
         }
@@ -79,26 +81,28 @@ namespace L2dotNET.Utility
             dst += offset;
             offset += size;
 
-            while (size - index >= sizeof(long))
+            while ((size - index) >= sizeof(long))
             {
                 *((long*)(dst + index)) = *((long*)(w + index));
                 index += sizeof(long);
             }
 
-            while (size - index >= sizeof(int))
+            while ((size - index) >= sizeof(int))
             {
                 *((int*)(dst + index)) = *((int*)(w + index));
                 index += sizeof(int);
             }
 
-            while (size - index >= sizeof(short))
+            while ((size - index) >= sizeof(short))
             {
                 *((short*)(dst + index)) = *((short*)(w + index));
                 index += sizeof(short);
             }
 
             while (index < size)
+            {
                 *(dst + index) = *(w + index++);
+            }
         }
 
         /// <summary>
@@ -127,20 +131,22 @@ namespace L2dotNET.Utility
             {
                 int index = 0;
 
-                while (length - index >= sizeof(long) / sizeof(short))
+                while ((length - index) >= (sizeof(long) / sizeof(short)))
                 {
                     *((long*)(dst + index)) = *((long*)(src + index));
                     index += sizeof(long) / sizeof(short);
                 }
 
-                while (length - index >= sizeof(int) / sizeof(short))
+                while ((length - index) >= (sizeof(int) / sizeof(short)))
                 {
                     *((int*)(dst + index)) = *((int*)(src + index));
                     index += sizeof(int) / sizeof(short);
                 }
 
-                while (length - index > 0)
+                while ((length - index) > 0)
+                {
                     *(dst + index) = *(src + index++);
+                }
             }
 
             return destiny;
@@ -259,14 +265,18 @@ namespace L2dotNET.Utility
 
             while (index < buffer.Length)
             {
-                for (i = 0; (i < 16) && (index + i < buffer.Length); i++)
+                for (i = 0; (i < 16) && ((index + i) < buffer.Length); i++)
                 {
                     hex += buffer[index + i].ToString("x2") + " ";
 
                     if ((buffer[i + index] > 31) && (buffer[i + index] < 127))
+                    {
                         data += (char)buffer[i + index];
+                    }
                     else
+                    {
                         data += ".";
+                    }
                 }
 
                 while (i < 16)
@@ -296,7 +306,9 @@ namespace L2dotNET.Utility
             bytesCount = srcOffset + bytesCount;
 
             while ((srcOffset < bytesCount) && (src[srcOffset] != 0))
+            {
                 dst += (char)src[srcOffset++];
+            }
         }
 
         /// <summary>
@@ -309,7 +321,7 @@ namespace L2dotNET.Utility
         {
             string dst = string.Empty;
 
-            while ((src[srcOffset] != 0) && (srcOffset + sizeof(char) < maxLength))
+            while ((src[srcOffset] != 0) && ((srcOffset + sizeof(char)) < maxLength))
             {
                 dst += (char)src[srcOffset];
                 srcOffset += sizeof(char);
@@ -332,13 +344,17 @@ namespace L2dotNET.Utility
         /// <returns>Copied array of generic values.</returns>
         public static TU[] Copy<TU>(TU[] source, long srcOffset, TU[] destination, long dstOffset, long length)
         {
-            if ((length > source.Length - srcOffset) || (length > destination.Length - dstOffset))
+            if ((length > (source.Length - srcOffset)) || (length > (destination.Length - dstOffset)))
+            {
                 throw new InvalidOperationException();
+            }
 
             length += srcOffset;
 
             while (srcOffset < length)
+            {
                 destination[dstOffset++] = source[srcOffset++];
+            }
 
             return destination;
         }

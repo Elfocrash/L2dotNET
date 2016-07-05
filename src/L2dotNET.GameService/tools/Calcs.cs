@@ -8,9 +8,13 @@ namespace L2dotNET.GameService.Tools
         public static bool CheckIfInRange(int range, L2Object obj1, int x, int y, int z, bool includeZAxis)
         {
             if (obj1 == null)
+            {
                 return false;
+            }
             if (range == -1)
+            {
                 return true; // not limited
+            }
 
             double rad = obj1.Radius;
 
@@ -20,24 +24,28 @@ namespace L2dotNET.GameService.Tools
             if (includeZAxis)
             {
                 double dz = obj1.Z - z;
-                double d = dx * dx + dy * dy + dz * dz;
+                double d = (dx * dx) + (dy * dy) + (dz * dz);
 
-                return d <= range * range + 2 * range * rad + rad * rad;
+                return d <= ((range * range) + (2 * range * rad) + (rad * rad));
             }
             else
             {
-                double d = dx * dx + dy * dy;
+                double d = (dx * dx) + (dy * dy);
 
-                return d <= range * range + 2 * range * rad + rad * rad;
+                return d <= ((range * range) + (2 * range * rad) + (rad * rad));
             }
         }
 
         public static bool CheckIfInRange(int range, L2Object obj1, L2Object obj2, bool includeZAxis)
         {
             if ((obj1 == null) || (obj2 == null))
+            {
                 return false;
+            }
             if (range == -1)
+            {
                 return true; // not limited
+            }
 
             double rad = obj1.Radius + obj2.Radius;
             double dx = obj1.X - obj2.X;
@@ -46,15 +54,15 @@ namespace L2dotNET.GameService.Tools
             if (includeZAxis)
             {
                 double dz = obj1.Z - obj2.Z;
-                double d = dx * dx + dy * dy + dz * dz;
+                double d = (dx * dx) + (dy * dy) + (dz * dz);
 
-                return d <= range * range + 2 * range * rad + rad * rad;
+                return d <= ((range * range) + (2 * range * rad) + (rad * rad));
             }
             else
             {
-                double d = dx * dx + dy * dy;
+                double d = (dx * dx) + (dy * dy);
 
-                return d <= range * range + 2 * range * rad + rad * rad;
+                return d <= ((range * range) + (2 * range * rad) + (rad * rad));
             }
         }
 

@@ -21,7 +21,9 @@ namespace L2dotNET.GameService.Managers
         ~RThread()
         {
             if (Debug)
+            {
                 Log.Info($"Thread[{Id}] was erased");
+            }
         }
 
         public void Start()
@@ -45,12 +47,16 @@ namespace L2dotNET.GameService.Managers
         private void DoWorkActions()
         {
             if (StartWait > 0)
+            {
                 Thread.Sleep(StartWait);
+            }
 
             for (int a = 0; a < Ticks; a++)
             {
                 if (TickSleep > 0)
+                {
                     Thread.Sleep(TickSleep);
+                }
 
                 PerformActions[a]();
             }
@@ -61,12 +67,16 @@ namespace L2dotNET.GameService.Managers
         private void DoWorkGeneralTick()
         {
             if (StartWait > 0)
+            {
                 Thread.Sleep(StartWait);
+            }
 
             for (int a = 0; a < Ticks; a++)
             {
                 if (TickSleep > 0)
+                {
                     Thread.Sleep(TickSleep);
+                }
 
                 PerformAction();
             }
@@ -77,7 +87,9 @@ namespace L2dotNET.GameService.Managers
         private void DoWorkGeneral()
         {
             if (StartWait > 0)
+            {
                 Thread.Sleep(StartWait);
+            }
 
             PerformAction();
             OnEnd();
@@ -86,7 +98,9 @@ namespace L2dotNET.GameService.Managers
         public void AbortMe()
         {
             if (_thread.IsAlive)
+            {
                 _thread.Abort();
+            }
 
             _thread = null;
             OnEnd();

@@ -1,7 +1,6 @@
 ﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Network.Serverpackets;
 
 namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 {
@@ -47,7 +46,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
             L2Item item = pet.Inventory.Items[_sId];
 
             if (ItemHandler.Instance.Process(pet, item))
+            {
                 return;
+            }
 
             player.SendActionFailed();
         }

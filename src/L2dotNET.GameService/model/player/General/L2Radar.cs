@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using L2dotNET.GameService.Network.Serverpackets;
 
 namespace L2dotNET.GameService.Model.Player.General
@@ -10,7 +6,7 @@ namespace L2dotNET.GameService.Model.Player.General
     public class L2Radar
     {
         private readonly L2Player _player;
-	    private readonly List<RadarMarker> _markers;
+        private readonly List<RadarMarker> _markers;
 
         public L2Radar(L2Player player)
         {
@@ -38,7 +34,9 @@ namespace L2dotNET.GameService.Model.Player.General
         public void RemoveAllMarkers()
         {
             foreach (RadarMarker tempMarker in _markers)
+            {
                 _player.SendPacket(new RadarControl(2, 2, tempMarker._x, tempMarker._y, tempMarker._z));
+            }
 
             _markers.Clear();
         }
@@ -47,13 +45,18 @@ namespace L2dotNET.GameService.Model.Player.General
         {
             _player.SendPacket(new RadarControl(2, 2, _player.X, _player.Y, _player.Z));
             foreach (RadarMarker tempMarker in _markers)
+            {
                 _player.SendPacket(new RadarControl(0, 1, tempMarker._x, tempMarker._y, tempMarker._z));
+            }
         }
     }
 
     public class RadarMarker
     {
-        public int _type, _x, _y, _z;
+        public int _type,
+                   _x,
+                   _y,
+                   _z;
 
         public RadarMarker(int type, int x, int y, int z)
         {

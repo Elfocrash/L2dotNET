@@ -28,7 +28,9 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
         public override void BroadcastUserInfo()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
+            {
                 obj.SendPacket(new StaticObject(this));
+            }
         }
 
         public override void OnAction(L2Player player)

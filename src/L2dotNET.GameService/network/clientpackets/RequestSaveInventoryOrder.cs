@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             for (int i = 0; i < _count; i++)
             {
                 _items[i * 2] = ReadD();
-                _items[i * 2 + 1] = ReadD();
+                _items[(i * 2) + 1] = ReadD();
             }
         }
 
@@ -34,10 +34,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 for (int i = 0; i < _count; i++)
                 {
                     int objId = _items[i * 2];
-                    int loc = _items[i * 2 + 1];
+                    int loc = _items[(i * 2) + 1];
 
                     if (item.ObjId == objId)
+                    {
                         item.SlotLocation = loc;
+                    }
                 }
         }
     }

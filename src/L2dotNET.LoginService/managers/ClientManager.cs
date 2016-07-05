@@ -26,11 +26,15 @@ namespace L2dotNET.LoginService.Managers
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new ClientManager();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -45,7 +49,9 @@ namespace L2dotNET.LoginService.Managers
             _scrambledPairs = new ScrambledKeyPair[ScrambleCount];
 
             for (int i = 0; i < ScrambleCount; i++)
+            {
                 _scrambledPairs[i] = new ScrambledKeyPair(ScrambledKeyPair.genKeyPair());
+            }
 
             Log.Info($"Scrambled {_scrambledPairs.Length} keypairs.");
             Log.Info("Randomize blowfish keys.");
@@ -67,7 +73,9 @@ namespace L2dotNET.LoginService.Managers
         public void AddClient(TcpClient client)
         {
             if (_banned == null)
+            {
                 _banned = NetworkBlock.Instance;
+            }
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
             Log.Info($"Connected: {ip}");
@@ -97,7 +105,9 @@ namespace L2dotNET.LoginService.Managers
 
             LoginClient lc = new LoginClient(client);
             if (_loggedClients.Contains(lc))
+            {
                 return;
+            }
 
             _loggedClients.Add(lc);
         }
@@ -115,7 +125,9 @@ namespace L2dotNET.LoginService.Managers
         public void RemoveClient(LoginClient loginClient)
         {
             if (!_loggedClients.Contains(loginClient))
+            {
                 return;
+            }
 
             _loggedClients.Remove(loginClient);
         }

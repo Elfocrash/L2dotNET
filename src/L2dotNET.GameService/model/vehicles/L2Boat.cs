@@ -12,7 +12,9 @@ namespace L2dotNET.GameService.Model.Vehicles
         public override void BroadcastUserInfo()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
+            {
                 obj.SendPacket(new VehicleInfo(this));
+            }
         }
     }
 }

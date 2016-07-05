@@ -22,11 +22,15 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new MultiSell();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -67,12 +71,16 @@ namespace L2dotNET.GameService.Tables.Multisell
                     MultiSellItem msitem = entry.Take[0];
 
                     if (msitem.Template == null)
+                    {
                         continue;
+                    }
 
                     foreach (L2Item item in pitems)
                     {
                         if (item.IsEquipped == 1)
+                        {
                             continue;
+                        }
 
                         if (item.Template.ItemId == msitem.Id)
                         {
@@ -100,6 +108,7 @@ namespace L2dotNET.GameService.Tables.Multisell
             XElement ex = xml.Element("list");
 
             if (ex != null)
+            {
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "multisell")
                     {
@@ -125,7 +134,9 @@ namespace L2dotNET.GameService.Tables.Multisell
                                             {
                                                 item.Template = ItemTable.Instance.GetItem(item.Id);
                                                 if (!item.Template.IsStackable())
+                                                {
                                                     entry.Stackable = 0;
+                                                }
                                             }
                                             entry.Give.Add(item);
                                         }
@@ -136,7 +147,9 @@ namespace L2dotNET.GameService.Tables.Multisell
                                             item.Id = Convert.ToInt32(its.Attribute("id").Value);
                                             item.Count = Convert.ToInt32(its.Attribute("count").Value);
                                             if (item.Id > 0)
+                                            {
                                                 item.Template = ItemTable.Instance.GetItem(item.Id);
+                                            }
                                             entry.Take.Add(item);
                                         }
                                             break;
@@ -150,6 +163,7 @@ namespace L2dotNET.GameService.Tables.Multisell
 
                         Lists.Add(mlist.Id, mlist);
                     }
+            }
 
             Log.Info($"MultiSell: {Lists.Count} lists");
         }

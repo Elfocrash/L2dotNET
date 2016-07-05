@@ -21,7 +21,9 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
             if (new Random().Next(100) < _rate)
+            {
                 target.ChangeTarget();
+            }
 
             return Nothing;
         }

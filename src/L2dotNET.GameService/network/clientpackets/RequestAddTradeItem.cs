@@ -62,13 +62,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (_num < 0)
+            {
                 _num = 1;
+            }
 
             if (_num > item.Count)
+            {
                 _num = item.Count;
+            }
 
             if (!item.Template.IsStackable() && (_num > 1))
+            {
                 _num = 1;
+            }
 
             long numInList = player.AddItemToTrade(item.ObjId, _num);
             long numCurrent = item.Count - numInList;
@@ -80,7 +86,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             {
                 action = 3;
                 if (numCurrent < 1)
+                {
                     action = 2;
+                }
             }
 
             player.SendPacket(new TradeUpdate(item, numCurrent, action));

@@ -36,37 +36,61 @@ namespace L2dotNET.GameService.AI.NpcAI
                     {
                         case 0: //new clan
                             if (talker.Level < 10)
+                            {
                                 talker.ShowHtm("pl002.htm", Myself);
+                            }
                             else if ((talker.Clan != null) && (talker.Clan.LeaderId == talker.ObjId))
+                            {
                                 talker.ShowHtm("pl003.htm", Myself);
+                            }
                             else if ((talker.Clan != null) && (talker.Clan.LeaderId != talker.ObjId))
+                            {
                                 talker.ShowHtm("pl004.htm", Myself);
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl005.htm", Myself);
+                            }
                             break;
                         case 1: //Повысить
                             if (talker.ClanLeader)
+                            {
                                 talker.ShowHtm("pl013.htm", Myself);
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl014.htm", Myself);
+                            }
                             break;
                         case 2: //Распустить
                             if (talker.ClanLeader || talker.HavePledgePower(PpManageGrowth))
+                            {
                                 talker.ShowHtm("pl007.htm", Myself);
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl008.htm", Myself);
+                            }
                             break;
                         case 3: //Восстановить
                             if (talker.ClanLeader || talker.HavePledgePower(PpManageGrowth))
+                            {
                                 talker.ShowHtm("pl010.htm", Myself);
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl011.htm", Myself);
+                            }
                             break;
                         case 4: //Умения
                             if (talker.ClanLeader)
+                            {
                                 ShowEtcSkillList(talker, 2);
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl017.htm", Myself);
+                            }
                             break;
                         case 5: //Управлять Академией
                             talker.ShowHtm("pl_aca_help.htm", Myself);
@@ -76,130 +100,244 @@ namespace L2dotNET.GameService.AI.NpcAI
                             break;
                         case 7:
                             if (pledge == null)
+                            {
                                 talker.ShowHtm("pl_no_pledgeman.htm", Myself);
+                            }
                             else if (talker.ClanLeader || talker.HavePledgePower(PpManageGrowth))
+                            {
                                 if (pledge.Level > 5)
+                                {
                                     if (pledge.HasSubPledge(100))
+                                    {
                                         if (pledge.HasSubPledge(200))
+                                        {
                                             talker.ShowHtm("pl_err_more_sub.htm", Myself);
+                                        }
                                         else
+                                        {
                                             talker.ShowHtm("pl_create_sub200.htm", Myself);
+                                        }
+                                    }
                                     else
+                                    {
                                         talker.ShowHtm("pl_create_sub100.htm", Myself);
+                                    }
+                                }
                                 else
+                                {
                                     talker.ShowHtm("pl_err_plv.htm", Myself);
+                                }
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl_err_master.htm", Myself);
+                            }
                             break;
                         case 8:
                             if (pledge == null)
+                            {
                                 talker.ShowHtm("pl_no_pledgeman.htm", Myself);
+                            }
                             else if (talker.ClanLeader || talker.HavePledgePower(PpManageGrowth))
+                            {
                                 if (pledge.Level > 5)
+                                {
                                     if (pledge.HasSubPledge(100))
+                                    {
                                         talker.ShowHtm("pl_submaster.htm", Myself);
+                                    }
                                     else
+                                    {
                                         talker.ShowHtm("pl_err_more_sm.htm", Myself);
+                                    }
+                                }
                                 else
+                                {
                                     talker.ShowHtm("pl_err_plv.htm", Myself);
+                                }
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl_err_master.htm", Myself);
+                            }
                             break;
                         case 9: //Управлять Подразделениями Рыцарей
                             talker.ShowHtm("pl_sub2_help.htm", Myself);
                             break;
                         case 10:
                             if (pledge == null)
+                            {
                                 talker.ShowHtm("pl_no_pledgeman.htm", Myself);
+                            }
                             else if (talker.ClanLeader || talker.HavePledgePower(PpManageGrowth))
+                            {
                                 if (pledge.Level > 6)
+                                {
                                     if (pledge.HasSubPledge(100))
+                                    {
                                         if (pledge.HasSubPledge(10001))
+                                        {
                                             if (pledge.HasSubPledge(1002))
+                                            {
                                                 if (pledge.HasSubPledge(200))
+                                                {
                                                     if (pledge.HasSubPledge(2001))
+                                                    {
                                                         if (pledge.HasSubPledge(2002))
+                                                        {
                                                             talker.ShowHtm("pl_err_more_sub2.htm", Myself);
+                                                        }
                                                         else
+                                                        {
                                                             talker.ShowHtm("pl_create_sub2002.htm", Myself);
+                                                        }
+                                                    }
                                                     else
+                                                    {
                                                         talker.ShowHtm("pl_create_sub2001.htm", Myself);
+                                                    }
+                                                }
                                                 else
+                                                {
                                                     talker.ShowHtm("pl_need_high_lv_sub.htm", Myself);
+                                                }
+                                            }
                                             else
+                                            {
                                                 talker.ShowHtm("pl_create_sub1002.htm", Myself);
+                                            }
+                                        }
                                         else
+                                        {
                                             talker.ShowHtm("pl_create_sub1001.htm", Myself);
+                                        }
+                                    }
                                     else
+                                    {
                                         talker.ShowHtm("pl_need_high_lv_sub.htm", Myself);
+                                    }
+                                }
                                 else
+                                {
                                     talker.ShowHtm("pl_err_plv.htm", Myself);
+                                }
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl_err_master.htm", Myself);
+                            }
                             break;
                         case 11:
                             if (pledge == null)
+                            {
                                 talker.ShowHtm("pl_no_pledgeman.htm", Myself);
+                            }
                             else if (talker.ClanLeader || talker.HavePledgePower(PpManageGrowth))
+                            {
                                 if (pledge.Level > 6)
+                                {
                                     if (pledge.HasSubPledge(100))
+                                    {
                                         if (pledge.HasSubPledge(1001))
+                                        {
                                             talker.ShowHtm("pl_submaster2.htm", Myself);
+                                        }
                                         else
+                                        {
                                             talker.ShowHtm("pl_err_more_sm2.htm", Myself);
+                                        }
+                                    }
                                     else
+                                    {
                                         talker.ShowHtm("pl_need_high_lv_sub.htm", Myself);
+                                    }
+                                }
                                 else
+                                {
                                     talker.ShowHtm("pl_err_plv.htm", Myself);
+                                }
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl_err_master.htm", Myself);
+                            }
                             break;
                         case 12:
                             if (pledge == null)
+                            {
                                 talker.ShowHtm("pl_no_pledgeman.htm", Myself);
+                            }
                             else if (talker.ClanLeader || talker.HavePledgePower(PpManageGrowth))
+                            {
                                 if (pledge.Level > 4)
+                                {
                                     talker.ShowHtm("pl_create_aca.htm", Myself);
+                                }
                                 else
+                                {
                                     talker.ShowHtm("pl_err_plv.htm", Myself);
+                                }
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl_err_master.htm", Myself);
+                            }
                             break;
                         case 13: //Передать Полномочия Лидера Клана
                             talker.ShowHtm("pl_master.htm", Myself);
                             break;
                         case 14: //Запрос Передачи Полномочий Лидера Клана
                             if (talker.ClanLeader)
+                            {
                                 talker.ShowHtm("pl_transfer_master.htm", Myself);
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl_err_master.htm", Myself);
+                            }
                             break;
                         case 15: //Отменить Запрос Передачи Полномочий Лидера Клана
                             if (talker.ClanLeader)
+                            {
                                 talker.ShowHtm("pl_cancel_master.htm", Myself);
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl_err_master.htm", Myself);
+                            }
                             break;
                         case 16:
                             if (talker.ClanLeader || talker.HavePledgePower(PpManageGrowth))
+                            {
                                 talker.ShowHtm("pl_rename.htm", Myself);
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl_err_master.htm", Myself);
+                            }
                             break;
                         case 17:
                             if (talker.ClanLeader || talker.HavePledgePower(PpManageGrowth))
+                            {
                                 talker.ShowHtm("pl_rename2.htm", Myself);
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl_err_master.htm", Myself);
+                            }
                             break;
                         case 100: //main
                             talker.ShowHtm("pl001.htm", Myself);
                             break;
                         case 101:
                             if (talker.ClanLeader)
+                            {
                                 ShowChangePledgeNameUi(talker);
+                            }
                             else
+                            {
                                 talker.ShowHtm("pl_err_master.htm", Myself);
+                            }
                             break;
                     }
 
@@ -212,10 +350,15 @@ namespace L2dotNET.GameService.AI.NpcAI
                     }
 
                     if (reply < 1000)
+                    {
                         if (reply < 100)
+                        {
                             talker.ShowHtm("pl_err_rename_aca.htm", Myself);
-                        else if (reply / 100 > RoyalGuard)
+                        }
+                        else if ((reply / 100) > RoyalGuard)
+                        {
                             talker.ShowHtm("pl_err_more_sub.htm", Myself);
+                        }
                         else if (talker.Clan.HasSubPledge(reply))
                         {
                             NpcHtmlMessage htm = new NpcHtmlMessage(talker, "pl_ch_submaster" + reply + ".htm", Myself.ObjId);
@@ -225,12 +368,20 @@ namespace L2dotNET.GameService.AI.NpcAI
                             talker.SendPacket(htm);
                         }
                         else
+                        {
                             talker.ShowHtm("pl_err_more_sm.htm", Myself);
+                        }
+                    }
                     else if (reply < 10000)
-                        if ((reply <= 1000) && (reply % 1000 == 0))
+                    {
+                        if ((reply <= 1000) && ((reply % 1000) == 0))
+                        {
                             talker.ShowHtm("pl_err_more_sm2.htm", Myself);
-                        else if (reply % 1000 > Knights / RoyalGuard)
+                        }
+                        else if ((reply % 1000) > (Knights / RoyalGuard))
+                        {
                             talker.ShowHtm("pl_err_more_sub2.htm", Myself);
+                        }
                         else if (talker.Clan.HasSubPledge(reply))
                         {
                             NpcHtmlMessage htm = new NpcHtmlMessage(talker, "pl_ch_submaster" + reply + ".htm", Myself.ObjId);
@@ -240,7 +391,10 @@ namespace L2dotNET.GameService.AI.NpcAI
                             talker.SendPacket(htm);
                         }
                         else
+                        {
                             talker.ShowHtm("pl_err_more_sm2.htm", Myself);
+                        }
+                    }
                     break;
                 case -222:
                     if (!talker.ClanLeader || !talker.HavePledgePower(PpManageGrowth))
@@ -250,24 +404,46 @@ namespace L2dotNET.GameService.AI.NpcAI
                     }
 
                     if (reply == -1)
+                    {
                         if (talker.Clan.HasSubPledge(reply))
+                        {
                             talker.ShowHtm("pl_ch_rename_aca.htm", Myself);
+                        }
                         else
+                        {
                             talker.ShowHtm("pl_err_rename_aca.htm", Myself);
+                        }
+                    }
                     else if (reply < 1000)
-                        if (reply / 100 > RoyalGuard)
+                    {
+                        if ((reply / 100) > RoyalGuard)
+                        {
                             talker.ShowHtm("pl_err_more_sub.htm", Myself);
+                        }
                         else if (talker.Clan.HasSubPledge(reply))
+                        {
                             talker.ShowHtm("pl_ch_rename" + reply + ".htm", Myself);
+                        }
                         else
+                        {
                             talker.ShowHtm("pl_err_rename_sub.htm", Myself);
+                        }
+                    }
                     else if (reply < 10000)
-                        if (reply % 1000 > Knights / RoyalGuard)
+                    {
+                        if ((reply % 1000) > (Knights / RoyalGuard))
+                        {
                             talker.ShowHtm("pl_err_more_sub2.htm", Myself);
+                        }
                         else if (talker.Clan.HasSubPledge(reply))
+                        {
                             talker.ShowHtm("pl_ch_rename" + reply + ".htm", Myself);
+                        }
                         else
+                        {
                             talker.ShowHtm("pl_err_rename_sub2.htm", Myself);
+                        }
+                    }
                     break;
                 case -223:
                     byte lvl = talker.ClanLevel;
@@ -291,16 +467,22 @@ namespace L2dotNET.GameService.AI.NpcAI
                             break;
                         case 1:
                             if (lvl == 11)
+                            {
                                 talker.ShowHtm(GetDialog("fnFullUpgradeSub"), Myself);
+                            }
                             else
+                            {
                                 talker.ShowHtm(GetDialog("fnLowSkillLvForUpgradeSub"), Myself);
+                            }
                             break;
                     }
 
                     break;
                 case -4:
                     if (reply == 0)
+                    {
                         talker.ShowHtm("al005.htm", Myself);
+                    }
                     break;
             }
         }
@@ -321,20 +503,28 @@ namespace L2dotNET.GameService.AI.NpcAI
                 if (e.GetLv > talker.Clan.Level)
                 {
                     if (nextLvl > e.GetLv)
+                    {
                         nextLvl = e.GetLv;
+                    }
                     continue;
                 }
 
                 if (avail.ContainsKey(e.Id))
+                {
                     continue;
+                }
 
                 if (talker.Clan.MainSkill.ContainsKey(e.Id))
                 {
                     if (talker.Clan.MainSkill[e.Id] >= e.Lv)
+                    {
                         continue;
+                    }
 
                     if (avail.ContainsKey(e.Id))
+                    {
                         continue;
+                    }
 
                     avail.Add(e.Id, e);
                     break;
@@ -393,7 +583,9 @@ namespace L2dotNET.GameService.AI.NpcAI
             else
             {
                 if (bypass.StartsWithIgnoreCase("create_pledge"))
+                {
                     CreateClan(talker, bypass.Substring("create_pledge?pledge_name= ".Length));
+                }
             }
         }
 
@@ -444,34 +636,47 @@ namespace L2dotNET.GameService.AI.NpcAI
                 talker.Clan.LevelUp(lvl);
             }
             else
+            {
                 talker.ShowHtm("pl016.htm", Myself);
+            }
         }
 
         private void ValidateLevelUp2(L2Player talker, int rp, byte memCount, byte lvl, int id = 0, int count = 0, bool dominionCheck = false)
         {
             if (talker.Clan.ClanNameValue >= rp)
+            {
                 if (talker.Clan.GetClanMembers().Count >= memCount)
                 {
                     bool yup = false;
                     if (id > 0)
+                    {
                         if (talker.HasItem(id, count))
                         {
                             yup = true;
                             talker.DestroyItemById(id, count);
                         }
                         else
+                        {
                             talker.ShowHtm("pl_err_not_enough_items.htm", Myself);
+                        }
+                    }
                     else
+                    {
                         yup = true;
+                    }
 
                     if (dominionCheck)
+                    {
                         if (talker.Clan.DominionLord())
+                        {
                             yup = true;
+                        }
                         else
                         {
                             yup = false;
                             talker.ShowHtm("pl_err_not_lord_yet.htm", Myself);
                         }
+                    }
 
                     if (yup)
                     {
@@ -481,9 +686,14 @@ namespace L2dotNET.GameService.AI.NpcAI
                     }
                 }
                 else
+                {
                     talker.ShowHtm("pl_err_total_member.htm", Myself);
+                }
+            }
             else
+            {
                 talker.ShowHtm("pl_err_fame.htm", Myself);
+            }
         }
     }
 }

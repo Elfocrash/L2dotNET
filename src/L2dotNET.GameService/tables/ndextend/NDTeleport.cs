@@ -21,6 +21,7 @@ namespace L2dotNET.GameService.Tables.Ndextend
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\nd_teleports.xml"));
             XElement ex = xml.Element("list");
             if (ex != null)
+            {
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "npc")
                     {
@@ -44,9 +45,13 @@ namespace L2dotNET.GameService.Tables.Ndextend
                                         ae.Id = ab.Teles.Count;
 
                                         if (e.Attribute("cost") != null)
+                                        {
                                             ae.Cost = int.Parse(e.Attribute("cost").Value);
+                                        }
                                         if (e.Attribute("itemId") != null)
+                                        {
                                             ae.ItemId = int.Parse(e.Attribute("itemId").Value);
+                                        }
 
                                         ab.Teles.Add(ae.Id, ae);
                                     }
@@ -55,10 +60,15 @@ namespace L2dotNET.GameService.Tables.Ndextend
                             }
 
                         if (Npcs.ContainsKey(npc.Id))
+                        {
                             Log.Error($"NpcData(Teleporter) dublicate npc str {npc.Id}");
+                        }
                         else
+                        {
                             Npcs.Add(npc.Id, npc);
+                        }
                     }
+            }
 
             Log.Info("NpcData(Teleporter): loaded " + Npcs.Count + " npcs.");
         }

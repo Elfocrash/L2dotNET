@@ -17,10 +17,12 @@ namespace L2dotNET.GameService.Managers
         public void PostItem(L2Item item)
         {
             if (Items.ContainsKey(item.ObjId))
+            {
                 lock (Items)
                 {
                     Items.Remove(item.ObjId);
                 }
+            }
 
             Items.Add(item.ObjId, item);
         }

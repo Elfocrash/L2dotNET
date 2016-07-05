@@ -15,7 +15,9 @@ namespace L2dotNET.Utility
                 CryptKeys[i] = new byte[16];
 
                 for (int j = 0; j < CryptKeys[i].Length; j++)
+                {
                     CryptKeys[i][j] = (byte)Random.Next(255);
+                }
 
                 CryptKeys[i][8] = 0xc8;
                 CryptKeys[i][9] = 0x27;

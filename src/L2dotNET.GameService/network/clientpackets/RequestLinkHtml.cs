@@ -31,7 +31,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 id = int.Parse(_link.Split('#')[1]);
             }
             else
+            {
                 file = _link;
+            }
 
             int idx = player.CurrentTarget != null ? player.CurrentTarget.ObjId : player.ObjId;
 

@@ -63,7 +63,9 @@ namespace L2dotNET.GameService.Model.Npcs
         {
             base.OnSpawn();
             if (Template.AggroRange > 0)
+            {
                 AiCharacter.Enable();
+            }
 
             SpawnX = X;
             SpawnY = Y;
@@ -78,7 +80,9 @@ namespace L2dotNET.GameService.Model.Npcs
         private void SocialTask(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (CantMove() || IsAttacking())
+            {
                 return;
+            }
 
             MoveTo(_rnd.Next(SpawnX - 90, SpawnX + 90), _rnd.Next(SpawnY - 90, SpawnY + 90), Z);
 
@@ -99,7 +103,9 @@ namespace L2dotNET.GameService.Model.Npcs
         public override void BroadcastUserInfo()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
+            {
                 obj.SendPacket(new NpcInfo(this));
+            }
         }
 
         public override void DoDie(L2Character killer, bool bytrigger)
@@ -107,16 +113,24 @@ namespace L2dotNET.GameService.Model.Npcs
             base.DoDie(killer, bytrigger);
 
             if (killer is L2Player)
+            {
                 ((L2Player)killer).RedistExp(this);
+            }
             else if (killer is L2Pet)
+            {
                 ((L2Pet)killer).Owner.RedistExp(this);
+            }
             else if (killer is L2Summon)
+            {
                 ((L2Summon)killer).Owner.RedistExp(this);
+            }
 
             //Template.roll_drops(this, killer);
 
             if (TerritorySpawn != null)
+            {
                 TerritorySpawn.OnDie(this, killer);
+            }
 
             //socialTask.Enabled = false;
         }

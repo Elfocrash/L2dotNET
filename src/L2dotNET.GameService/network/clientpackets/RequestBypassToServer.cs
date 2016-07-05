@@ -166,7 +166,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 PetitionManager.GetInstance().Petitionlink(player, _alias.Split('?')[1]);
             }
             else
+            {
                 Log.Warn($"Unknown bypass '{_alias}'");
+            }
         }
     }
 }

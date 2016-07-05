@@ -46,7 +46,9 @@ namespace L2dotNET.Utility.Geometry
         public static IEnumerable<T> Get<T>(List<T> list)
         {
             if ((list == null) || (list.Count == 0))
+            {
                 return null;
+            }
 
             return list.Shuffle().Take(list.Count);
         }

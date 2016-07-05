@@ -43,7 +43,9 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
             _cast = skill;
 
             if (_skillCast == null)
+            {
                 _skillCast = new System.Timers.Timer();
+            }
 
             _target = targetPlayer;
             if (skill.SkillHitTime > 0)
@@ -53,7 +55,9 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
                 _skillCast.Enabled = true;
             }
             else
+            {
                 SkillCastTask(null, null);
+            }
 
             casterPlayer.BroadcastPacket(new MagicSkillUse(casterPlayer, targetPlayer, skill, skill.SkillHitTime));
         }
@@ -62,12 +66,17 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
         {
             _skillCast.Enabled = false;
             if ((_target == null) || (_caster == null))
+            {
                 return;
+            }
 
             if (!_cast.ConditionOk(_caster))
+            {
                 return;
+            }
 
             if (_cast.ReuseDelay > 0)
+            {
                 if (_caster.Reuse.ContainsKey(_cast.SkillId))
                 {
                     TimeSpan ts = _caster.Reuse[_cast.SkillId].StopTime - DateTime.Now;
@@ -102,6 +111,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
                         return;
                     }
                 }
+            }
 
             //do
 

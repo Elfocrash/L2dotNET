@@ -13,11 +13,17 @@
 
             int index = 0;
             for (int i = 0; i < count1; i++)
+            {
                 actionIds[index++] = i;
+            }
             for (int i = 0; i < count2; i++)
+            {
                 actionIds[index++] = 1000 + i;
+            }
             for (int i = 0; i < count3; i++) //Update by rocknow
+            {
                 actionIds[index++] = 5000 + i;
+            }
 
             _defaultActionList = actionIds;
         }
@@ -28,7 +34,9 @@
             WriteH(0x5f);
             WriteD(_defaultActionList.Length);
             foreach (int i in _defaultActionList)
+            {
                 WriteD(i);
+            }
         }
     }
 }

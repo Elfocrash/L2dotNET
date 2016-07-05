@@ -25,7 +25,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
         protected internal override void Write()
         {
             if (_character == null)
+            {
                 return;
+            }
 
             WriteC(0xee);
             WriteD(_summonType);
@@ -40,10 +42,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 int duration = f[2];
 
                 if (f[2] == -1)
+                {
                     duration = -1;
+                }
 
                 if ((f[0] >= 5123) && (f[0] <= 5129))
+                {
                     duration = -1;
+                }
 
                 WriteD(duration);
             }

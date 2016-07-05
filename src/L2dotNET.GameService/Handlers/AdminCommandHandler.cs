@@ -21,11 +21,15 @@ namespace L2dotNET.GameService.Handlers
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new AdminCommandHandler();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -49,18 +53,20 @@ namespace L2dotNET.GameService.Handlers
             Register(new AdminTransform());
             Register(new AdminWhisper());
 
-            Log.Info($"AdminAccess: loaded { _commands.Count } commands.");
+            Log.Info($"AdminAccess: loaded {_commands.Count} commands.");
         }
 
         public void Request(L2Player admin, string alias)
         {
             string cmd = alias;
             if (alias.Contains(" "))
+            {
                 cmd = alias.Split(' ')[0];
+            }
 
             if (!_commands.ContainsKey(cmd))
             {
-                admin.SendMessage($"Command { cmd } not exists.");
+                admin.SendMessage($"Command {cmd} not exists.");
                 admin.SendActionFailed();
                 return;
             }

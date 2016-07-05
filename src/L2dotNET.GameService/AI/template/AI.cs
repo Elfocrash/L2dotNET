@@ -41,7 +41,9 @@ namespace L2dotNET.GameService.AI.Template
         public string GetDialog(string fn)
         {
             if (Dialog == null)
+            {
                 return "dialog.null";
+            }
 
             return Dialog.ContainsKey(fn) ? Dialog[fn] : "dialog.not.found";
         }

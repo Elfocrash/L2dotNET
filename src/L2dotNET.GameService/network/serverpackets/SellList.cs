@@ -13,7 +13,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public SellList(L2Player player, int npcObj)
         {
             foreach (L2Item item in player.GetAllItems().Where(item => (item.Template.IsTrade != 0) && (item.AugmentationId <= 0) && (item.IsEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.Asset)))
+            {
                 _sells.Add(item);
+            }
 
             _adena = player.GetAdena();
         }

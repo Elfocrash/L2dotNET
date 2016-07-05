@@ -42,18 +42,26 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
         {
             CurrentCount += Template.AiActionTask(Owner);
             if (CurrentCount > Template.MaxCount)
+            {
                 OnEnd(true);
+            }
         }
 
         public void OnEnd(bool inheritOwner)
         {
             if (AiAction.Enabled)
+            {
                 AiAction.Enabled = false;
+            }
             if (SummonEnd.Enabled)
+            {
                 SummonEnd.Enabled = false;
+            }
 
             if (inheritOwner)
+            {
                 Owner.StopCubic(this);
+            }
         }
 
         public void SummonEndTask(object sender, System.Timers.ElapsedEventArgs e)

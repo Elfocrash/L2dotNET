@@ -85,7 +85,9 @@ namespace L2dotNET.GameService.Network
                 result = System.Text.Encoding.Unicode.GetString(_buffer, _position, _buffer.Length - _position);
                 int idx = result.IndexOf((char)0x00);
                 if (idx != -1)
+                {
                     result = result.Substring(0, idx);
+                }
                 _position += (result.Length * 2) + 2;
             }
             catch (Exception ex)

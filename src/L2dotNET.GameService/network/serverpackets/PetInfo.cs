@@ -29,10 +29,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             double atkspd = _pet.CharacterStat.GetStat(EffectType.BAttackSpd);
             double spd = _pet.CharacterStat.GetStat(EffectType.PSpeed);
-            double anim = spd * 1f / 130;
-            double anim2 = (1.1) * atkspd / 300;
+            double anim = (spd * 1f) / 130;
+            double anim2 = ((1.1) * atkspd) / 300;
             double runSpd = spd / anim;
-            double walkSpd = spd * .8 / anim;
+            double walkSpd = (spd * .8) / anim;
             double cast = _pet.CharacterStat.GetStat(EffectType.BCastingSpd);
             WriteD(cast);
             WriteD(atkspd);

@@ -22,7 +22,9 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
             for (byte a = 1; a <= 16; a++)
             {
                 if (lv == 8)
+                {
                     lv = 101;
+                }
 
                 Register(new HealCubic(3, lv, 4051, a));
                 lv++;
@@ -43,12 +45,12 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
 
         public void Register(CubicTemplate t)
         {
-            Cubics.Add(t.Id * 65536 + t.Level, t);
+            Cubics.Add((t.Id * 65536) + t.Level, t);
         }
 
         public CubicTemplate GetCubic(int cubId, int skillLv)
         {
-            int hash = cubId * 65536 + skillLv;
+            int hash = (cubId * 65536) + skillLv;
             return Cubics.ContainsKey(hash) ? Cubics[hash] : null;
         }
     }

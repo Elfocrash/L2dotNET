@@ -47,6 +47,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 L2Item weapon = player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand);
                 if (weapon != null)
+                {
                     foreach (int sid in weapon.Template.GetSoulshots().Where(sid => sid == _itemId))
                     {
                         if (!weapon.Soulshot)
@@ -65,6 +66,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                         break;
                     }
+                }
             }
             else
             {

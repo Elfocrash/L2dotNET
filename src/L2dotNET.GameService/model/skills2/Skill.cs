@@ -64,7 +64,9 @@ namespace L2dotNET.GameService.Model.Skills2
         public void SetEffect_effect(string value)
         {
             if (value.StartsWithIgnoreCase("{"))
+            {
                 return;
+            }
 
             byte order = 0;
             foreach (string str in value.Split(';'))
@@ -90,14 +92,18 @@ namespace L2dotNET.GameService.Model.Skills2
         public void SetOperateCond(string value)
         {
             if (value.StartsWithIgnoreCase("{"))
+            {
                 return;
+            }
 
             foreach (string str in value.Split(';'))
             {
                 SkillCondType type = (SkillCondType)Enum.Parse(typeof(SkillCondType), str.Split(' ')[0]);
                 SkillCond cond = EffectRegistrator.GetInstance().BuildCond(type, str);
                 if (Conditions == null)
+                {
                     Conditions = new List<SkillCond>();
+                }
 
                 Conditions.Add(cond);
             }
@@ -105,7 +111,7 @@ namespace L2dotNET.GameService.Model.Skills2
 
         public long HashId()
         {
-            return SkillId * 65536 + Level;
+            return (SkillId * 65536) + Level;
         }
 
         public byte IsPassive()
@@ -132,16 +138,22 @@ namespace L2dotNET.GameService.Model.Skills2
                         case SkillTarget.Any:
                         case SkillTarget.Target:
                             if (actor.CurrentTarget != null)
+                            {
                                 targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
+                            }
                             break;
                         case SkillTarget.Master:
                             if (actor is L2Summon)
+                            {
                                 targets.Add(((L2Summon)actor).Owner.ObjId, ((L2Summon)actor).Owner);
+                            }
                             break;
                         case SkillTarget.Unlockable:
                         {
                             if (actor.CurrentTarget is L2Door)
+                            {
                                 targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
+                            }
                         }
                             break;
                     }
@@ -154,7 +166,9 @@ namespace L2dotNET.GameService.Model.Skills2
                     {
                         double dis = Calcs.CalculateDistance(actor, member, true);
                         if (dis < CastRange)
+                        {
                             targets.Add(member.ObjId, member);
+                        }
                     }
 
                     break;
@@ -177,24 +191,34 @@ namespace L2dotNET.GameService.Model.Skills2
                         case SkillTarget.Any:
                         case SkillTarget.Target:
                             if (actor.CurrentTarget != null)
+                            {
                                 target = actor.CurrentTarget;
+                            }
                             break;
                         case SkillTarget.Friend:
                             if (actor.CurrentTarget != null)
+                            {
                                 target = actor.CurrentTarget;
+                            }
                             break;
                         case SkillTarget.Enemy:
                             if (actor.CurrentTarget != null)
+                            {
                                 target = actor.CurrentTarget;
+                            }
                             break;
                         case SkillTarget.Master:
                             if (actor is L2Summon)
+                            {
                                 target = ((L2Summon)actor).Owner;
+                            }
                             break;
                         case SkillTarget.Unlockable:
                         {
                             if (actor.CurrentTarget is L2Door)
+                            {
                                 target = actor.CurrentTarget;
+                            }
                         }
                             break;
                     }
@@ -217,7 +241,9 @@ namespace L2dotNET.GameService.Model.Skills2
         public bool ConditionOk(L2Player target)
         {
             if (Conditions == null)
+            {
                 return true;
+            }
 
             sbyte retcode = -2;
             foreach (SkillCond cond in Conditions.Where(cond => !cond.CanUse(target, this)))
@@ -227,7 +253,9 @@ namespace L2dotNET.GameService.Model.Skills2
             }
 
             if (retcode == -1)
+            {
                 target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1CannotBeUsed).AddSkillName(SkillId, Level));
+            }
 
             return retcode == -2;
         }

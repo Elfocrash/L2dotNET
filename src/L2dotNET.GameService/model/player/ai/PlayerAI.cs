@@ -18,31 +18,41 @@ namespace L2dotNET.GameService.Model.Player.AI
         public override void NotifyStartMoving()
         {
             foreach (SpecEffect ef in _player.SpecEffects)
+            {
                 ef.OnStartMoving(_player);
+            }
         }
 
         public override void NotifyStopMoving()
         {
             foreach (SpecEffect ef in _player.SpecEffects)
+            {
                 ef.OnStopMoving(_player);
+            }
         }
 
         public override void NotifyOnStartDay()
         {
             foreach (SpecEffect ef in _player.SpecEffects)
+            {
                 ef.OnStartDay(_player);
+            }
         }
 
         public override void NotifyOnStartNight()
         {
             foreach (SpecEffect ef in _player.SpecEffects)
+            {
                 ef.OnStartNight(_player);
+            }
         }
 
         public override void StopAutoAttack()
         {
             if (AttackMove != null)
+            {
                 AttackMove.Enabled = false;
+            }
 
             _moveTarget = 0;
         }
@@ -70,7 +80,9 @@ namespace L2dotNET.GameService.Model.Player.AI
         private void AttackMoveTask(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (_player.IsAttacking())
+            {
                 return;
+            }
 
             if (_player.CurrentTarget == null)
             {
@@ -83,15 +95,21 @@ namespace L2dotNET.GameService.Model.Player.AI
             {
                 L2Character target = _player.CurrentTarget;
                 if (!target.Dead)
+                {
                     _player.DoAttack(target);
+                }
             }
             else
             {
                 if (_player.CantMove())
+                {
                     return;
+                }
 
                 if ((_lastx != _player.CurrentTarget.X) || (_lasty != _player.CurrentTarget.Y) || (_lastz != _player.CurrentTarget.Z))
+                {
                     _moveTarget = 0;
+                }
 
                 if (_moveTarget == 0)
                 {

@@ -12,9 +12,13 @@ namespace L2dotNET.GameService.Model.Skills2.SpecEffects
         public override void OnStand(L2Player player)
         {
             if (Mul)
+            {
                 player.CharacterStat.URegHpMul -= Value;
+            }
             else
+            {
                 player.CharacterStat.SpecBonusRegHp -= Value;
+            }
 
             player.SendMessage("reg hp lowered");
         }
@@ -22,9 +26,13 @@ namespace L2dotNET.GameService.Model.Skills2.SpecEffects
         public override void OnSit(L2Player player)
         {
             if (Mul)
+            {
                 player.CharacterStat.URegHpMul += Value;
+            }
             else
+            {
                 player.CharacterStat.SpecBonusRegHp += Value;
+            }
 
             player.SendMessage("reg hp inc");
         }

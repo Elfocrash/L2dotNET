@@ -13,10 +13,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return (short)L2Item.Enchant;
+                }
 
                 if ((Template != null) && (Template.Enchanted > 0))
+                {
                     return Template.Enchanted;
+                }
 
                 return 0;
             }
@@ -30,10 +34,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return L2Item.AttrAttackType;
+                }
 
                 if (Template == null)
+                {
                     return -2;
+                }
 
                 return Template.AttrAttackType;
             }
@@ -44,7 +52,9 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return L2Item.AttrAttackValue;
+                }
 
                 return Template == null ? (short)0 : Template.AttrAttackValue;
             }
@@ -55,10 +65,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return L2Item.AttrDefenseValueFire;
+                }
 
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 return Template.AttrDefenseValueFire;
             }
@@ -69,10 +83,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return L2Item.AttrDefenseValueWater;
+                }
 
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 return Template.AttrDefenseValueWater;
             }
@@ -83,10 +101,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return L2Item.AttrDefenseValueWind;
+                }
 
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 return Template.AttrDefenseValueWind;
             }
@@ -97,10 +119,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return L2Item.AttrDefenseValueEarth;
+                }
 
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 return Template.AttrDefenseValueEarth;
             }
@@ -111,10 +137,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return L2Item.AttrDefenseValueHoly;
+                }
 
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 return Template.AttrDefenseValueHoly;
             }
@@ -125,10 +155,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return L2Item.AttrDefenseValueUnholy;
+                }
 
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 return Template.AttrDefenseValueUnholy;
             }
@@ -139,10 +173,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (L2Item != null)
+                {
                     return L2Item.Template.Durability;
+                }
 
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 return Template.Durability;
             }
@@ -153,10 +191,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 if (L2Item != null)
+                {
                     return L2Item.Template.Type2();
+                }
 
                 return Template.Type2();
             }
@@ -167,10 +209,14 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (Template == null)
+                {
                     return 0;
+                }
 
                 if (L2Item != null)
+                {
                     return L2Item.Template.BodyPartId();
+                }
 
                 return Template.BodyPartId();
             }

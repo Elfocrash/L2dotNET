@@ -9,7 +9,9 @@
         {
             this._id = id;
             if (picture == null)
+            {
                 picture = new byte[0];
+            }
 
             this._picture = picture;
         }

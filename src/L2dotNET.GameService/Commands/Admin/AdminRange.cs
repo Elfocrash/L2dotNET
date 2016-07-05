@@ -111,7 +111,7 @@ namespace L2dotNET.GameService.Commands.Admin
                         int p1Y = _np._y[i];
                         long dx = p1X - p[0],
                              dy = p1Y - p[1];
-                        double distance = Math.Sqrt(dx * dx + dy * dy);
+                        double distance = Math.Sqrt((dx * dx) + (dy * dy));
                         if ((curdistance == -1) || (distance < curdistance))
                         {
                             curdistance = distance;

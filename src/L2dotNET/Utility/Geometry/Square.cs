@@ -42,11 +42,15 @@ namespace L2dotNET.Utility.Geometry
         {
             int d = x - X;
             if ((d < 0) || (d > A))
+            {
                 return false;
+            }
 
             d = y - Y;
             if ((d < 0) || (d > A))
+            {
                 return false;
+            }
 
             return true;
         }
@@ -55,11 +59,15 @@ namespace L2dotNET.Utility.Geometry
         {
             int d = x - X;
             if ((d < 0) || (d > A))
+            {
                 return false;
+            }
 
             d = y - Y;
             if ((d < 0) || (d > A))
+            {
                 return false;
+            }
 
             return true;
         }

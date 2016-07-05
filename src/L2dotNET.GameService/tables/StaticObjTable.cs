@@ -19,11 +19,15 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new StaticObjTable();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -40,7 +44,9 @@ namespace L2dotNET.GameService.Tables
                 {
                     string line = reader.ReadLine() ?? string.Empty;
                     if ((line.Length == 0) || line.StartsWithIgnoreCase("#"))
+                    {
                         continue;
+                    }
 
                     string[] pt = line.Split('\t');
 
@@ -128,7 +134,9 @@ namespace L2dotNET.GameService.Tables
         public L2Door GetDoor(int id)
         {
             if (Objects.ContainsKey(id))
+            {
                 return (L2Door)Objects[id];
+            }
 
             return null;
         }

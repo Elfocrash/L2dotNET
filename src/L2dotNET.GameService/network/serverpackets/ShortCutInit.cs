@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             foreach (L2Shortcut sc in _shortcuts)
             {
                 WriteD(sc.Type);
-                WriteD(sc.Slot + sc.Page * 12);
+                WriteD(sc.Slot + (sc.Page * 12));
 
                 switch (sc.Type)
                 {

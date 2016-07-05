@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using L2dotNET.GameService.Model.Inventory;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
@@ -54,7 +53,9 @@ namespace L2dotNET.GameService.Model.Items
             }
 
             if (template.Enchanted > 0)
+            {
                 Enchant = template.Enchanted;
+            }
         }
 
         public void GenId()
@@ -63,6 +64,7 @@ namespace L2dotNET.GameService.Model.Items
         }
 
         /** Enumeration of locations for item */
+
         public enum ItemLocation
         {
             Void,
@@ -82,7 +84,9 @@ namespace L2dotNET.GameService.Model.Items
             PaperdollSlot = -1;
 
             if (Template.AbnormalMaskEvent > 0)
+            {
                 owner.AbnormalBitMaskEvent &= ~Template.AbnormalMaskEvent;
+            }
 
             bool upsend = false;
             if (Template.ItemSkill != null)
@@ -98,12 +102,16 @@ namespace L2dotNET.GameService.Model.Items
             }
 
             if (Template.UnequipSkill != null)
+            {
                 owner.AddEffect(owner, Template.UnequipSkill, true, false);
+            }
 
             Location = ItemLocation.Inventory;
 
             if (upsend)
+            {
                 owner.UpdateSkillList();
+            }
 
             if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.Crossbow))
             {
@@ -112,16 +120,26 @@ namespace L2dotNET.GameService.Model.Items
             }
 
             if (Template.SetItem)
+            {
                 ItemTable.Instance.NotifyKeySetItem(owner, this, false);
+            }
 
             if ((Template.Type == ItemTemplate.L2ItemType.Armor) && (owner.SetKeyItems != null) && owner.SetKeyItems.Contains(Template.ItemId))
+            {
                 ItemTable.Instance.NotifySetItemEquip(owner, this, false);
+            }
 
             if ((Template.Type == ItemTemplate.L2ItemType.Armor) || (Template.Type == ItemTemplate.L2ItemType.Weapon) || (Template.Type == ItemTemplate.L2ItemType.Accessary))
+            {
                 if (Enchant == 0)
+                {
                     owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1Disarmed).AddItemName(Template.ItemId));
+                }
                 else
+                {
                     owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.EquipmentS1S2Removed).AddNumber(Enchant).AddItemName(Template.ItemId));
+                }
+            }
 
             owner.RemoveStats(this);
         }
@@ -131,7 +149,9 @@ namespace L2dotNET.GameService.Model.Items
             IsEquipped = 1;
 
             if (Template.AbnormalMaskEvent > 0)
+            {
                 owner.AbnormalBitMaskEvent |= Template.AbnormalMaskEvent;
+            }
 
             bool upsend = false;
             if (Template.ItemSkill != null)
@@ -156,22 +176,36 @@ namespace L2dotNET.GameService.Model.Items
             }
 
             if (upsend)
+            {
                 owner.UpdateSkillList();
+            }
 
             if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.Crossbow))
+            {
                 TryEquipSecondary(owner);
+            }
 
             if (Template.SetItem)
+            {
                 ItemTable.Instance.NotifyKeySetItem(owner, this, true);
+            }
 
             if ((Template.Type == ItemTemplate.L2ItemType.Armor) && (owner.SetKeyItems != null) && owner.SetKeyItems.Contains(Template.ItemId))
+            {
                 ItemTable.Instance.NotifySetItemEquip(owner, this, true);
+            }
 
             if ((Template.Type == ItemTemplate.L2ItemType.Armor) || (Template.Type == ItemTemplate.L2ItemType.Weapon) || (Template.Type == ItemTemplate.L2ItemType.Accessary))
+            {
                 if (Enchant == 0)
+                {
                     owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1Equipped).AddItemName(Template.ItemId));
+                }
                 else
+                {
                     owner.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1S2Equipped).AddNumber(Enchant).AddItemName(Template.ItemId));
+                }
+            }
 
             owner.AddStats(this);
         }
@@ -179,22 +213,34 @@ namespace L2dotNET.GameService.Model.Items
         public void NotifyStats(L2Player owner)
         {
             if (Template.AbnormalMaskEvent > 0)
+            {
                 owner.AbnormalBitMaskEvent |= Template.AbnormalMaskEvent;
+            }
 
             if (Template.ItemSkill != null)
+            {
                 owner.AddSkill(Template.ItemSkill, false, false);
+            }
 
             if ((Template.ItemSkillEnch4 != null) && (Enchant >= 4))
+            {
                 owner.AddSkill(Template.ItemSkillEnch4, false, false);
+            }
 
             if ((Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow) || (Template.WeaponType == ItemTemplate.L2ItemWeaponType.Crossbow))
+            {
                 TryEquipSecondary(owner);
+            }
 
             if (Template.SetItem)
+            {
                 ItemTable.Instance.NotifyKeySetItem(owner, this, true);
+            }
 
             if ((Template.Type == ItemTemplate.L2ItemType.Armor) && (owner.SetKeyItems != null) && owner.SetKeyItems.Contains(Template.ItemId))
+            {
                 ItemTable.Instance.NotifySetItemEquip(owner, this, true);
+            }
 
             owner.AddStats(this);
         }
@@ -247,7 +293,9 @@ namespace L2dotNET.GameService.Model.Items
             Z = z;
             DropItem pk = new DropItem(this);
             if (dropper != null)
+            {
                 Dropper = dropper.ObjId;
+            }
 
             Location = ItemLocation.Void;
 
@@ -299,7 +347,9 @@ namespace L2dotNET.GameService.Model.Items
         public int LifeTimeEnd()
         {
             if (!_lifeTimeEndEnabled)
+            {
                 return -9999;
+            }
 
             TimeSpan ts = _lifeTimeEndTime - DateTime.Now;
             return (int)ts.TotalSeconds;
