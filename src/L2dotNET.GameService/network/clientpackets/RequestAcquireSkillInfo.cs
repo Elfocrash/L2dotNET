@@ -48,7 +48,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 case 1:
                 {
                     if (skill.Itemid > 0)
+                    {
                         asi.Reqs.Add(new[] { 4, skill.Itemid, (int)skill.Itemcount, 0 });
+                    }
                 }
                     break;
             }

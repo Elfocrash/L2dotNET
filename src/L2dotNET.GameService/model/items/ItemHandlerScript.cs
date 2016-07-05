@@ -36,7 +36,9 @@ namespace L2dotNET.GameService.Model.Items
         public void AddExchangeItem(int itemId, int count)
         {
             if (_exchangeItems == null)
+            {
                 _exchangeItems = new SortedList<int, int>();
+            }
 
             _exchangeItems.Add(itemId, count);
         }
@@ -50,20 +52,30 @@ namespace L2dotNET.GameService.Model.Items
             }
 
             if (Destroy)
+            {
                 player.DestroyItem(item, 1);
+            }
 
             CalcSkill(player);
             CalcEffect(player);
 
             if (_exchangeItems != null)
+            {
                 foreach (int val in _exchangeItems.Keys)
+                {
                     player.AddItem(val, _exchangeItems[val]);
+                }
+            }
 
             if (PetId != -1)
+            {
                 player.PetSummon(item, PetId);
+            }
 
             if (SummonId != -1)
+            {
                 player.PetSummon(item, SummonId, false);
+            }
 
             if (SummonStaticId != -1)
             {
@@ -118,9 +130,13 @@ namespace L2dotNET.GameService.Model.Items
                 }
 
                 if (character is L2Player)
+                {
                     ((L2Player)character).CastSkill(skill, false, false);
+                }
                 else
+                {
                     character.CastSkill(skill);
+                }
             }
         }
     }

@@ -76,7 +76,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (ItemHandler.Instance.Process(player, item))
+            {
                 return;
+            }
 
             switch (item.Template.DefaultAction)
             {
@@ -87,9 +89,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 {
                     Skill skill = item.Template.ItemSkill;
                     if (skill != null)
+                    {
                         player.AddEffect(player, skill, true, false);
+                    }
                     else
+                    {
                         player.SendMessage("skill onCall was not found.");
+                    }
                 }
                     break;
             }

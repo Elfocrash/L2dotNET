@@ -62,20 +62,28 @@ namespace L2dotNET.Network
         public virtual bool ValidateRequest(Socket socket)
         {
             if ((socket == null) || !socket.Connected)
+            {
                 return false;
+            }
 
             if (!_mEnabled)
+            {
                 return true;
+            }
 
             if (ValidateRules(socket))
             {
                 if (OnBypassAllowed != null)
+                {
                     OnBypassAllowed(socket);
+                }
                 return true;
             }
 
             if (OnBypassRejected != null)
+            {
                 OnBypassRejected(socket);
+            }
 
             return false;
         }
@@ -98,7 +106,9 @@ namespace L2dotNET.Network
             _mEnabled = true;
 
             if (OnEnabled != null)
+            {
                 OnEnabled();
+            }
         }
 
         /// <summary>
@@ -109,7 +119,9 @@ namespace L2dotNET.Network
             _mEnabled = false;
 
             if (OnDisabled != null)
+            {
                 OnDisabled();
+            }
         }
 
         /// <summary>
@@ -121,10 +133,16 @@ namespace L2dotNET.Network
             set
             {
                 if (_mEnabled != value)
+                {
                     if (value)
+                    {
                         Enable();
+                    }
                     else
+                    {
                         Disable();
+                    }
+                }
             }
         }
     }

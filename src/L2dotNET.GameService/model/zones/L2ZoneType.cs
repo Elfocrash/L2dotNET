@@ -10,13 +10,8 @@ namespace L2dotNET.GameService.Model.Zones
     public abstract class L2ZoneType
     {
         public int Id { get; }
-        private L2ZoneForm _zone;
 
-        public L2ZoneForm Zone
-        {
-            get { return _zone; }
-            set { _zone = value; }
-        }
+        public L2ZoneForm Zone { get; set; }
 
         protected List<L2Character> CharacterList;
 
@@ -28,12 +23,12 @@ namespace L2dotNET.GameService.Model.Zones
 
         public bool IsInsideZone(int x, int y)
         {
-            return _zone.IsInsideZone(x, y, _zone.GetHighZ());
+            return Zone.IsInsideZone(x, y, Zone.GetHighZ());
         }
 
         public bool IsInsideZone(int x, int y, int z)
         {
-            return _zone.IsInsideZone(x, y, z);
+            return Zone.IsInsideZone(x, y, z);
         }
 
         public bool IsInsideZone(L2Object obj)
@@ -59,7 +54,9 @@ namespace L2dotNET.GameService.Model.Zones
         public void RevalidateInZone(L2Character character)
         {
             if (!IsAffected(character))
+            {
                 return;
+            }
 
             if (IsInsideZone(character.X, character.Y, character.Z))
             {
@@ -114,10 +111,14 @@ namespace L2dotNET.GameService.Model.Zones
         public void BroadcastPacket(GameServerNetworkPacket packet)
         {
             if (CharacterList.Count == 0)
+            {
                 return;
+            }
 
             foreach (L2Player character in CharacterList.OfType<L2Player>())
+            {
                 character.SendPacket(packet);
+            }
         }
     }
 }

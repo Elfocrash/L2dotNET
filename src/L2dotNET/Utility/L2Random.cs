@@ -55,7 +55,7 @@ namespace L2dotNET.Utility
 
             fixed (byte* buf = buffer)
             {
-                while (j <= i - sizeof(int))
+                while (j <= (i - sizeof(int)))
                 {
                     k = MRandom.Next();
                     *(int*)(buf + j) = *&k;
@@ -65,7 +65,7 @@ namespace L2dotNET.Utility
                 while (j != i)
                 {
                     k = MRandom.Next();
-                    *(buf + j) = *(((byte*)&k) + j++ % sizeof(int));
+                    *(buf + j) = *(((byte*)&k) + (j++ % sizeof(int)));
                 }
             }
 

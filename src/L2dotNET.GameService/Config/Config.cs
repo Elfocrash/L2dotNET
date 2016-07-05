@@ -13,11 +13,15 @@ namespace L2dotNET.GameService.Config
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new Config();
+                        }
                     }
+                }
 
                 return _instance;
             }

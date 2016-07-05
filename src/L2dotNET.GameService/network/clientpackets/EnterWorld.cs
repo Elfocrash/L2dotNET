@@ -46,7 +46,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             AnnouncementManager.Instance.OnEnter(player);
 
             foreach (L2Item item in player.Inventory.Items.Where(item => item.IsEquipped != 0))
+            {
                 item.NotifyStats(player);
+            }
 
             player.StartRegeneration();
             // player.sendItemList(false);
@@ -56,7 +58,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.UpdateReuse();
 
             if (player.ClanId > 0)
+            {
                 ClanTable.Instance.Apply(player);
+            }
 
             player.SendPacket(new ExStorageMaxCount(player));
             // player.sendPacket(new ExBasicActionList());

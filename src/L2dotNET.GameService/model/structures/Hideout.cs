@@ -64,7 +64,9 @@ namespace L2dotNET.GameService.Model.Structures
         public byte MofidyFunc(int decoId, int level)
         {
             if (Decoration[decoId] == level)
+            {
                 return 1;
+            }
 
             //if (Decoration[decoId] > 0 && Decoration[decoId] < level)
             //    return 2;

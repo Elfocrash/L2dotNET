@@ -66,14 +66,24 @@ namespace L2dotNET.GameService.AI.NpcAI
                     break;
                 case -510:
                     if (reply == 1)
+                    {
                         if (talker.Level < 40)
+                        {
                             talker.ShowHtm("reflect_weapon_none.htm", Myself);
+                        }
                         else if ((talker.Level >= 40) && (talker.Level < 46))
+                        {
                             talker.ShowHtm("reflect_weapon_d.htm", Myself);
+                        }
                         else if ((talker.Level >= 46) && (talker.Level < 52))
+                        {
                             talker.ShowHtm("reflect_weapon_c.htm", Myself);
+                        }
                         else if (talker.Level >= 52)
+                        {
                             talker.ShowHtm("reflect_weapon_b.htm", Myself);
+                        }
+                    }
                     break;
                 default:
                     base.TalkedReply(talker, ask, reply);

@@ -24,32 +24,44 @@ namespace L2dotNET.GameService.Model.Zones.Forms
             foreach (int a in x)
             {
                 if (a > maxX)
+                {
                     maxX = a;
+                }
 
                 if (a < minX)
+                {
                     minX = a;
+                }
             }
 
             foreach (int a in y)
             {
                 if (a > maxY)
+                {
                     maxY = a;
+                }
 
                 if (a < minY)
+                {
                     minY = a;
+                }
             }
         }
 
         public override bool isInsideZone(int x, int y, int z)
         {
             if ((z < _z1) || (z > _z2))
+            {
                 return false;
+            }
 
             bool inside = false;
             for (int i = 0,
                      j = _x.Length - 1; i < _x.Length; j = i++)
-                if ((((_y[i] <= y) && (y < _y[j])) || ((_y[j] <= y) && (y < _y[i]))) && (x < (_x[j] - _x[i]) * (y - _y[i]) / (_y[j] - _y[i]) + _x[i]))
+                if ((((_y[i] <= y) && (y < _y[j])) || ((_y[j] <= y) && (y < _y[i]))) && (x < ((((_x[j] - _x[i]) * (y - _y[i])) / (_y[j] - _y[i])) + _x[i])))
+                {
                     inside = !inside;
+                }
 
             return inside;
         }
@@ -59,8 +71,10 @@ namespace L2dotNET.GameService.Model.Zones.Forms
             bool inside = false;
             for (int i = 0,
                      j = _x.Length - 1; i < _x.Length; j = i++)
-                if ((((_y[i] <= y) && (y < _y[j])) || ((_y[j] <= y) && (y < _y[i]))) && (x < (_x[j] - _x[i]) * (y - _y[i]) / (_y[j] - _y[i]) + _x[i]))
+                if ((((_y[i] <= y) && (y < _y[j])) || ((_y[j] <= y) && (y < _y[i]))) && (x < ((((_x[j] - _x[i]) * (y - _y[i])) / (_y[j] - _y[i])) + _x[i])))
+                {
                     inside = !inside;
+                }
 
             return inside;
         }
@@ -74,7 +88,9 @@ namespace L2dotNET.GameService.Model.Zones.Forms
             {
                 test = Math.Pow(_x[i] - x, 2) + Math.Pow(_y[i] - y, 2);
                 if (test < shortestDist)
+                {
                     shortestDist = test;
+                }
             }
 
             return Math.Sqrt(shortestDist);

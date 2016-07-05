@@ -19,7 +19,9 @@ namespace L2dotNET.GameService.Model.Structures
         internal void SetNpc(int id)
         {
             if (npcs == null)
+            {
                 npcs = new SortedList<int, L2Npc>();
+            }
 
             NpcTemplate t = new NpcTemplate(new StatsSet()); //NpcTable.Instance.GetNpcTemplate(id);
             L2Npc npc = null;
@@ -49,7 +51,9 @@ namespace L2dotNET.GameService.Model.Structures
         public void SpawnNpcs()
         {
             if (npcs == null)
+            {
                 return;
+            }
 
             foreach (L2Npc npc in npcs.Values)
             {
@@ -63,7 +67,9 @@ namespace L2dotNET.GameService.Model.Structures
         internal void SetDoor(int id)
         {
             if (doors == null)
+            {
                 doors = new List<L2Door>();
+            }
 
             L2Door door = StaticObjTable.Instance.GetDoor(id);
             door.Structure = this;
@@ -96,7 +102,9 @@ namespace L2dotNET.GameService.Model.Structures
         internal void SetZoneLoc(string[] p)
         {
             if (zoneLoc == null)
+            {
                 zoneLoc = new List<int[]>();
+            }
 
             zoneLoc.Add(new[] { Convert.ToInt32(p[0]), Convert.ToInt32(p[1]), Convert.ToInt32(p[2]), Convert.ToInt32(p[3]) });
         }

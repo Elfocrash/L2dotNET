@@ -348,7 +348,9 @@ namespace L2dotNET.Utility.Geometry
         {
             bool flag = false;
             if (obj is Quaternion)
+            {
                 flag = Equals((Quaternion)obj);
+            }
             return flag;
         }
 
@@ -683,7 +685,9 @@ namespace L2dotNET.Utility.Geometry
         public static bool operator !=(Quaternion quaternion1, Quaternion quaternion2)
         {
             if (((quaternion1.X == quaternion2.X) && (quaternion1.Y == quaternion2.Y)) && (quaternion1.Z == quaternion2.Z))
+            {
                 return (quaternion1.W != quaternion2.W);
+            }
 
             return true;
         }
@@ -783,24 +787,24 @@ namespace L2dotNET.Utility.Geometry
             // This calculation would be a lot more complicated for non-unit length quaternions
             // Note: The constructor of Matrix4 expects the Matrix in column-major format like expected by
             //   OpenGL
-            matrix.M11 = 1.0f - 2.0f * (y2 + z2);
+            matrix.M11 = 1.0f - (2.0f * (y2 + z2));
             matrix.M12 = 2.0f * (xy - wz);
             matrix.M13 = 2.0f * (xz + wy);
             matrix.M14 = 0.0f;
 
             matrix.M21 = 2.0f * (xy + wz);
-            matrix.M22 = 1.0f - 2.0f * (x2 + z2);
+            matrix.M22 = 1.0f - (2.0f * (x2 + z2));
             matrix.M23 = 2.0f * (yz - wx);
             matrix.M24 = 0.0f;
 
             matrix.M31 = 2.0f * (xz - wy);
             matrix.M32 = 2.0f * (yz + wx);
-            matrix.M33 = 1.0f - 2.0f * (x2 + y2);
+            matrix.M33 = 1.0f - (2.0f * (x2 + y2));
             matrix.M34 = 0.0f;
 
             matrix.M41 = 2.0f * (xz - wy);
             matrix.M42 = 2.0f * (yz + wx);
-            matrix.M43 = 1.0f - 2.0f * (x2 + y2);
+            matrix.M43 = 1.0f - (2.0f * (x2 + y2));
             matrix.M44 = 0.0f;
 
             //return Matrix4( 1.0f - 2.0f * (y2 + z2), 2.0f * (xy - wz), 2.0f * (xz + wy), 0.0f,

@@ -20,17 +20,25 @@ namespace L2dotNET.GameService.Model.Zones.Type
         public override void SetParameter(string name, string value)
         {
             if (name.EqualsIgnoreCase("townId"))
+            {
                 TownId = Convert.ToInt32(value);
+            }
             else if (name.EqualsIgnoreCase("taxById"))
+            {
                 TaxById = Convert.ToInt32(value);
+            }
             else if (name.EqualsIgnoreCase("isPeaceZone"))
+            {
                 IsPeaceZone = bool.Parse(value);
+            }
         }
 
         protected override void OnEnter(L2Character character)
         {
             if (IsPeaceZone)
+            {
                 character.SetInsisdeZone(ZoneId.Peace, true);
+            }
 
             character.SetInsisdeZone(ZoneId.Town, true);
         }
@@ -38,7 +46,9 @@ namespace L2dotNET.GameService.Model.Zones.Type
         protected override void OnExit(L2Character character)
         {
             if (IsPeaceZone)
+            {
                 character.SetInsisdeZone(ZoneId.Peace, false);
+            }
 
             character.SetInsisdeZone(ZoneId.Town, false);
         }

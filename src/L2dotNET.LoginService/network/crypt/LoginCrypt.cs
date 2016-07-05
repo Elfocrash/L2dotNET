@@ -35,7 +35,7 @@ namespace L2dotNET.LoginService.Network.Crypt
             if (!_updatedKey)
             {
                 size += 4;
-                size += 8 - size % 8;
+                size += 8 - (size % 8);
                 Array.Resize(ref data, size);
                 EncXorPass(data, offset, size, _rnd.Next());
                 _cipher.cipher(data, offset, size);
@@ -44,7 +44,7 @@ namespace L2dotNET.LoginService.Network.Crypt
             }
             else
             {
-                size += 8 - size % 8;
+                size += 8 - (size % 8);
                 Array.Resize(ref data, size);
                 AppendChecksum(data, offset, size);
                 _cipher.cipher(data, offset, size);
@@ -56,7 +56,9 @@ namespace L2dotNET.LoginService.Network.Crypt
         private bool VeryfyChecksum(byte[] data, int offset, int size)
         {
             if (((size & 3) != 0) || (size <= 4))
+            {
                 return false;
+            }
 
             long chksum = 0;
             int count = size - 4;

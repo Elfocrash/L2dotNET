@@ -1,8 +1,8 @@
-﻿using L2dotNET.GameService.Model.Items;
-using L2dotNET.GameService.World;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Remoting.Contexts;
+using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Model.Inventory
 {
@@ -31,8 +31,11 @@ namespace L2dotNET.GameService.Model.Inventory
             foreach (int itemId in itemIds)
             {
                 if (GetItemsByItemId(itemId) != null)
+                {
                     return true;
+                }
             }
+
             return false;
         }
 
@@ -41,9 +44,12 @@ namespace L2dotNET.GameService.Model.Inventory
             List<L2Item> list = new List<L2Item>();
             foreach (L2Item item in Items)
             {
-                if(item.Template.ItemId == itemId)
+                if (item.Template.ItemId == itemId)
+                {
                     list.Add(item);
+                }
             }
+
             return list;
         }
 
@@ -52,8 +58,11 @@ namespace L2dotNET.GameService.Model.Inventory
             foreach (L2Item item in Items)
             {
                 if (item.Template.ItemId == itemId)
+                {
                     return item;
+                }
             }
+
             return null;
         }
 
@@ -62,8 +71,11 @@ namespace L2dotNET.GameService.Model.Inventory
             foreach (L2Item item in Items)
             {
                 if (item.ObjId == objectId)
+                {
                     return item;
+                }
             }
+
             return null;
         }
 
@@ -94,14 +106,18 @@ namespace L2dotNET.GameService.Model.Inventory
         public void DestroyAllItems(L2Player player)
         {
             foreach (L2Item item in Items)
+            {
                 DestroyItem(item, item.Count, player);
+            }
         }
 
         public int AdenaCount()
         {
             foreach (L2Item item in Items)
                 if (item.Template.ItemId == 57)
+                {
                     return item.Count;
+                }
 
             return 0;
         }
@@ -117,20 +133,11 @@ namespace L2dotNET.GameService.Model.Inventory
             return Items.Remove(item);
         }
 
-        public void RestoreInv()
-        {
-            
-        }
+        public void RestoreInv() { }
 
-        public void DeleteMe()
-        {
+        public void DeleteMe() { }
 
-        }
-
-        public void UpdateDatabase()
-        {
-
-        }
+        public void UpdateDatabase() { }
 
         public bool ValidateCapacity(int slots)
         {
@@ -141,6 +148,5 @@ namespace L2dotNET.GameService.Model.Inventory
         {
             return true;
         }
-
     }
 }

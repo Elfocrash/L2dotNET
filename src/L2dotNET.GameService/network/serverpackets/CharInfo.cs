@@ -46,7 +46,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteH(0x00);
             WriteH(0x00);
             WriteH(0x00);
-            WriteD(0x00);//player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
+            WriteD(0x00); //player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
             WriteH(0x00);
             WriteH(0x00);
             WriteH(0x00);
@@ -59,7 +59,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteH(0x00);
             WriteH(0x00);
             WriteH(0x00);
-            WriteD(0x00);//player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
+            WriteD(0x00); //player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
             WriteH(0x00);
             WriteH(0x00);
             WriteH(0x00);
@@ -75,10 +75,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(_player.Karma);
 
             double spd = _player.CharacterStat.GetStat(EffectType.PSpeed);
-            double anim = spd * 1f / 130;
-            double anim2 = (1.1) * _player.CharacterStat.GetStat(EffectType.BAttackSpd) / 300;
+            double anim = (spd * 1f) / 130;
+            double anim2 = ((1.1) * _player.CharacterStat.GetStat(EffectType.BAttackSpd)) / 300;
             double runSpd = spd / anim;
-            double walkSpd = spd * .8 / anim;
+            double walkSpd = (spd * .8) / anim;
 
             WriteD(runSpd);
             WriteD(walkSpd);
@@ -118,7 +118,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             WriteH(_player.Cubics.Count);
             foreach (Cubic cub in _player.Cubics)
+            {
                 WriteH(cub.Template.Id);
+            }
 
             WriteC(0x00); //1-_activeChar.isInPartyMatchRoom()
 
@@ -137,7 +139,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             byte hero = _player.Heroic;
             if (_player.TransformId != 0)
+            {
                 hero = 0;
+            }
 
             WriteC(hero);
 

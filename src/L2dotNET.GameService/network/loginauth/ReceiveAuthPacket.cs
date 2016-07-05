@@ -70,7 +70,9 @@ namespace L2dotNET.GameService.Network.LoginAuth
                 result = System.Text.Encoding.Unicode.GetString(_packet, _offset, _packet.Length - _offset);
                 int idx = result.IndexOf((char)0x00);
                 if (idx != -1)
+                {
                     result = result.Substring(0, idx);
+                }
                 _offset += (result.Length * 2) + 2;
             }
             catch (Exception ex)

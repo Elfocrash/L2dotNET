@@ -17,7 +17,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             _alias = ReadS();
             if (_alias.Contains("\n"))
+            {
                 _alias = _alias.Replace("\n", "");
+            }
         }
 
         public override void Run()

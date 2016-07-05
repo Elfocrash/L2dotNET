@@ -248,9 +248,13 @@ namespace L2dotNET.Utility.Geometry
             vector.Z = objectPosition.Z - cameraPosition.Z;
             double num = vector.LengthSquared();
             if (num < 0.0001f)
+            {
                 vector = cameraForwardVector.HasValue ? -cameraForwardVector.Value : Vector3.Forward;
+            }
             else
+            {
                 Vector3.Multiply(ref vector, (1f / Math.Sqrt(num)), out vector);
+            }
 
             Vector3.Cross(ref cameraUpVector, ref vector, out vector3);
             vector3.Normalize();
@@ -285,9 +289,13 @@ namespace L2dotNET.Utility.Geometry
             vector2.Z = objectPosition.Z - cameraPosition.Z;
             double num2 = vector2.LengthSquared();
             if (num2 < 0.0001f)
+            {
                 vector2 = cameraForwardVector.HasValue ? -cameraForwardVector.Value : Vector3.Forward;
+            }
             else
+            {
                 Vector3.Multiply(ref vector2, 1f / Math.Sqrt(num2), out vector2);
+            }
 
             Vector3 vector4 = rotateAxis;
             Vector3.Dot(ref rotateAxis, ref vector2, out num);
@@ -350,9 +358,13 @@ namespace L2dotNET.Utility.Geometry
             vector2.Z = objectPosition.Z - cameraPosition.Z;
             double num2 = vector2.LengthSquared();
             if (num2 < 0.0001f)
+            {
                 vector2 = cameraForwardVector.HasValue ? -cameraForwardVector.Value : Vector3.Forward;
+            }
             else
+            {
                 Vector3.Multiply(ref vector2, 1f / Math.Sqrt(num2), out vector2);
+            }
 
             Vector3 vector4 = rotateAxis;
             Vector3.Dot(ref rotateAxis, ref vector2, out num);
@@ -691,11 +703,17 @@ namespace L2dotNET.Utility.Geometry
         {
             Matrix matrix;
             if (nearPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
+            }
             if (farPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("farPlaneDistance <= 0");
+            }
             if (nearPlaneDistance >= farPlaneDistance)
+            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
+            }
 
             matrix.M11 = (2f * nearPlaneDistance) / width;
             matrix.M12 = matrix.M13 = matrix.M14 = 0f;
@@ -712,11 +730,17 @@ namespace L2dotNET.Utility.Geometry
         public static void CreatePerspective(double width, double height, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
         {
             if (nearPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
+            }
             if (farPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("farPlaneDistance <= 0");
+            }
             if (nearPlaneDistance >= farPlaneDistance)
+            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
+            }
 
             result.M11 = (2f * nearPlaneDistance) / width;
             result.M12 = result.M13 = result.M14 = 0f;
@@ -733,13 +757,21 @@ namespace L2dotNET.Utility.Geometry
         {
             Matrix matrix;
             if ((fieldOfView <= 0f) || (fieldOfView >= 3.141593f))
+            {
                 throw new ArgumentException("fieldOfView <= 0 O >= PI");
+            }
             if (nearPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
+            }
             if (farPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("farPlaneDistance <= 0");
+            }
             if (nearPlaneDistance >= farPlaneDistance)
+            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
+            }
 
             double num = 1f / (Math.Tan(fieldOfView * 0.5f));
             double num9 = num / aspectRatio;
@@ -758,13 +790,21 @@ namespace L2dotNET.Utility.Geometry
         public static void CreatePerspectiveFieldOfView(double fieldOfView, double aspectRatio, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
         {
             if ((fieldOfView <= 0f) || (fieldOfView >= 3.141593f))
+            {
                 throw new ArgumentException("fieldOfView <= 0 or >= PI");
+            }
             if (nearPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
+            }
             if (farPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("farPlaneDistance <= 0");
+            }
             if (nearPlaneDistance >= farPlaneDistance)
+            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
+            }
 
             double num = 1f / (Math.Tan(fieldOfView * 0.5f));
             double num9 = num / aspectRatio;
@@ -783,11 +823,17 @@ namespace L2dotNET.Utility.Geometry
         {
             Matrix matrix;
             if (nearPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
+            }
             if (farPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("farPlaneDistance <= 0");
+            }
             if (nearPlaneDistance >= farPlaneDistance)
+            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
+            }
 
             matrix.M11 = (2f * nearPlaneDistance) / (right - left);
             matrix.M12 = matrix.M13 = matrix.M14 = 0f;
@@ -805,11 +851,17 @@ namespace L2dotNET.Utility.Geometry
         public static void CreatePerspectiveOffCenter(double left, double right, double bottom, double top, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
         {
             if (nearPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
+            }
             if (farPlaneDistance <= 0f)
+            {
                 throw new ArgumentException("farPlaneDistance <= 0");
+            }
             if (nearPlaneDistance >= farPlaneDistance)
+            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
+            }
 
             result.M11 = (2f * nearPlaneDistance) / (right - left);
             result.M12 = result.M13 = result.M14 = 0f;
@@ -1263,7 +1315,9 @@ namespace L2dotNET.Utility.Geometry
         {
             bool flag = false;
             if (obj is Matrix)
+            {
                 flag = Equals((Matrix)obj);
+            }
             return flag;
         }
 
@@ -1296,46 +1350,46 @@ namespace L2dotNET.Utility.Geometry
             double num14 = matrix.M42;
             double num15 = matrix.M43;
             double num16 = matrix.M44;
-            double num17 = (num11 * num16 - num12 * num15);
-            double num18 = (num10 * num16 - num12 * num14);
-            double num19 = (num10 * num15 - num11 * num14);
-            double num20 = (num9 * num16 - num12 * num13);
-            double num21 = (num9 * num15 - num11 * num13);
-            double num22 = (num9 * num14 - num10 * num13);
-            double num23 = (num6 * num17 - num7 * num18 + num8 * num19);
-            double num24 = -(num5 * num17 - num7 * num20 + num8 * num21);
-            double num25 = (num5 * num18 - num6 * num20 + num8 * num22);
-            double num26 = -(num5 * num19 - num6 * num21 + num7 * num22);
-            double num27 = (1.0 / (num1 * num23 + num2 * num24 + num3 * num25 + num4 * num26));
+            double num17 = ((num11 * num16) - (num12 * num15));
+            double num18 = ((num10 * num16) - (num12 * num14));
+            double num19 = ((num10 * num15) - (num11 * num14));
+            double num20 = ((num9 * num16) - (num12 * num13));
+            double num21 = ((num9 * num15) - (num11 * num13));
+            double num22 = ((num9 * num14) - (num10 * num13));
+            double num23 = (((num6 * num17) - (num7 * num18)) + (num8 * num19));
+            double num24 = -(((num5 * num17) - (num7 * num20)) + (num8 * num21));
+            double num25 = (((num5 * num18) - (num6 * num20)) + (num8 * num22));
+            double num26 = -(((num5 * num19) - (num6 * num21)) + (num7 * num22));
+            double num27 = (1.0 / ((num1 * num23) + (num2 * num24) + (num3 * num25) + (num4 * num26)));
 
             result.M11 = num23 * num27;
             result.M21 = num24 * num27;
             result.M31 = num25 * num27;
             result.M41 = num26 * num27;
-            result.M12 = -(num2 * num17 - num3 * num18 + num4 * num19) * num27;
-            result.M22 = (num1 * num17 - num3 * num20 + num4 * num21) * num27;
-            result.M32 = -(num1 * num18 - num2 * num20 + num4 * num22) * num27;
-            result.M42 = (num1 * num19 - num2 * num21 + num3 * num22) * num27;
-            double num28 = (num7 * num16 - num8 * num15);
-            double num29 = (num6 * num16 - num8 * num14);
-            double num30 = (num6 * num15 - num7 * num14);
-            double num31 = (num5 * num16 - num8 * num13);
-            double num32 = (num5 * num15 - num7 * num13);
-            double num33 = (num5 * num14 - num6 * num13);
-            result.M13 = (num2 * num28 - num3 * num29 + num4 * num30) * num27;
-            result.M23 = -(num1 * num28 - num3 * num31 + num4 * num32) * num27;
-            result.M33 = (num1 * num29 - num2 * num31 + num4 * num33) * num27;
-            result.M43 = -(num1 * num30 - num2 * num32 + num3 * num33) * num27;
-            double num34 = (num7 * num12 - num8 * num11);
-            double num35 = (num6 * num12 - num8 * num10);
-            double num36 = (num6 * num11 - num7 * num10);
-            double num37 = (num5 * num12 - num8 * num9);
-            double num38 = (num5 * num11 - num7 * num9);
-            double num39 = (num5 * num10 - num6 * num9);
-            result.M14 = -(num2 * num34 - num3 * num35 + num4 * num36) * num27;
-            result.M24 = (num1 * num34 - num3 * num37 + num4 * num38) * num27;
-            result.M34 = -(num1 * num35 - num2 * num37 + num4 * num39) * num27;
-            result.M44 = (num1 * num36 - num2 * num38 + num3 * num39) * num27;
+            result.M12 = -(((num2 * num17) - (num3 * num18)) + (num4 * num19)) * num27;
+            result.M22 = (((num1 * num17) - (num3 * num20)) + (num4 * num21)) * num27;
+            result.M32 = -(((num1 * num18) - (num2 * num20)) + (num4 * num22)) * num27;
+            result.M42 = (((num1 * num19) - (num2 * num21)) + (num3 * num22)) * num27;
+            double num28 = ((num7 * num16) - (num8 * num15));
+            double num29 = ((num6 * num16) - (num8 * num14));
+            double num30 = ((num6 * num15) - (num7 * num14));
+            double num31 = ((num5 * num16) - (num8 * num13));
+            double num32 = ((num5 * num15) - (num7 * num13));
+            double num33 = ((num5 * num14) - (num6 * num13));
+            result.M13 = (((num2 * num28) - (num3 * num29)) + (num4 * num30)) * num27;
+            result.M23 = -(((num1 * num28) - (num3 * num31)) + (num4 * num32)) * num27;
+            result.M33 = (((num1 * num29) - (num2 * num31)) + (num4 * num33)) * num27;
+            result.M43 = -(((num1 * num30) - (num2 * num32)) + (num3 * num33)) * num27;
+            double num34 = ((num7 * num12) - (num8 * num11));
+            double num35 = ((num6 * num12) - (num8 * num10));
+            double num36 = ((num6 * num11) - (num7 * num10));
+            double num37 = ((num5 * num12) - (num8 * num9));
+            double num38 = ((num5 * num11) - (num7 * num9));
+            double num39 = ((num5 * num10) - (num6 * num9));
+            result.M14 = -(((num2 * num34) - (num3 * num35)) + (num4 * num36)) * num27;
+            result.M24 = (((num1 * num34) - (num3 * num37)) + (num4 * num38)) * num27;
+            result.M34 = -(((num1 * num35) - (num2 * num37)) + (num4 * num39)) * num27;
+            result.M44 = (((num1 * num36) - (num2 * num38)) + (num3 * num39)) * num27;
 
             /*
             
@@ -1818,20 +1872,20 @@ namespace L2dotNET.Utility.Geometry
         /// </summary>
         private static void FindDeterminants(ref Matrix matrix, out double major, out double minor1, out double minor2, out double minor3, out double minor4, out double minor5, out double minor6, out double minor7, out double minor8, out double minor9, out double minor10, out double minor11, out double minor12)
         {
-            double det1 = matrix.M11 * matrix.M22 - matrix.M12 * matrix.M21;
-            double det2 = matrix.M11 * matrix.M23 - matrix.M13 * matrix.M21;
-            double det3 = matrix.M11 * matrix.M24 - matrix.M14 * matrix.M21;
-            double det4 = matrix.M12 * matrix.M23 - matrix.M13 * matrix.M22;
-            double det5 = matrix.M12 * matrix.M24 - matrix.M14 * matrix.M22;
-            double det6 = matrix.M13 * matrix.M24 - matrix.M14 * matrix.M23;
-            double det7 = matrix.M31 * matrix.M42 - matrix.M32 * matrix.M41;
-            double det8 = matrix.M31 * matrix.M43 - matrix.M33 * matrix.M41;
-            double det9 = matrix.M31 * matrix.M44 - matrix.M34 * matrix.M41;
-            double det10 = matrix.M32 * matrix.M43 - matrix.M33 * matrix.M42;
-            double det11 = matrix.M32 * matrix.M44 - matrix.M34 * matrix.M42;
-            double det12 = matrix.M33 * matrix.M44 - matrix.M34 * matrix.M43;
+            double det1 = (matrix.M11 * matrix.M22) - (matrix.M12 * matrix.M21);
+            double det2 = (matrix.M11 * matrix.M23) - (matrix.M13 * matrix.M21);
+            double det3 = (matrix.M11 * matrix.M24) - (matrix.M14 * matrix.M21);
+            double det4 = (matrix.M12 * matrix.M23) - (matrix.M13 * matrix.M22);
+            double det5 = (matrix.M12 * matrix.M24) - (matrix.M14 * matrix.M22);
+            double det6 = (matrix.M13 * matrix.M24) - (matrix.M14 * matrix.M23);
+            double det7 = (matrix.M31 * matrix.M42) - (matrix.M32 * matrix.M41);
+            double det8 = (matrix.M31 * matrix.M43) - (matrix.M33 * matrix.M41);
+            double det9 = (matrix.M31 * matrix.M44) - (matrix.M34 * matrix.M41);
+            double det10 = (matrix.M32 * matrix.M43) - (matrix.M33 * matrix.M42);
+            double det11 = (matrix.M32 * matrix.M44) - (matrix.M34 * matrix.M42);
+            double det12 = (matrix.M33 * matrix.M44) - (matrix.M34 * matrix.M43);
 
-            major = (det1 * det12 - det2 * det11 + det3 * det10 + det4 * det9 - det5 * det8 + det6 * det7);
+            major = (((((det1 * det12) - (det2 * det11)) + (det3 * det10) + (det4 * det9)) - (det5 * det8)) + (det6 * det7));
             minor1 = det1;
             minor2 = det2;
             minor3 = det3;
@@ -1858,9 +1912,9 @@ namespace L2dotNET.Utility.Geometry
             double ys = (Math.Sign(M21 * M22 * M23 * M24) < 0) ? -1f : 1f;
             double zs = (Math.Sign(M31 * M32 * M33 * M34) < 0) ? -1f : 1f;
 
-            scale.X = xs * Math.Sqrt(M11 * M11 + M12 * M12 + M13 * M13);
-            scale.Y = ys * Math.Sqrt(M21 * M21 + M22 * M22 + M23 * M23);
-            scale.Z = zs * Math.Sqrt(M31 * M31 + M32 * M32 + M33 * M33);
+            scale.X = xs * Math.Sqrt((M11 * M11) + (M12 * M12) + (M13 * M13));
+            scale.Y = ys * Math.Sqrt((M21 * M21) + (M22 * M22) + (M23 * M23));
+            scale.Z = zs * Math.Sqrt((M31 * M31) + (M32 * M32) + (M33 * M33));
 
             if ((scale.X == 0.0) || (scale.Y == 0.0) || (scale.Z == 0.0))
             {

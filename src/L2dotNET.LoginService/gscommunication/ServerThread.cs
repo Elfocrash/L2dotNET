@@ -155,12 +155,16 @@ namespace L2dotNET.LoginService.GSCommunication
             if (status == 1)
             {
                 if (!_activeInGame.Contains(account))
+                {
                     _activeInGame.Add(account);
+                }
             }
             else
             {
                 if (_activeInGame.Contains(account))
+                {
                     _activeInGame.Remove(account);
+                }
             }
         }
 

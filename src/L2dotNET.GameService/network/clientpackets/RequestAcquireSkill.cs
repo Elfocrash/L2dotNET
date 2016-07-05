@@ -72,7 +72,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             Skill skill = SkillTable.Instance.Get(e.Id, e.Lv);
             if (skill != null)
+            {
                 player.AddSkill(skill, true, true);
+            }
             else
             {
                 player.SendMessage("failed to learn null skill");
@@ -93,7 +95,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (upd)
+                {
                     player.SendPacket(new ShortCutInit(player));
+                }
             }
 
             player.ActiveSkillTree.Remove(_id);

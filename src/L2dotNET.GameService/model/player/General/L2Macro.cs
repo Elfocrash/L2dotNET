@@ -9,9 +9,9 @@
         public int Id;
         public int Icon;
         public string Name;
-	    public string Descr;
-	    public string Acronym;
-	    public L2MacroCmd[] Commands;
+        public string Descr;
+        public string Acronym;
+        public L2MacroCmd[] Commands;
     }
 
     public class L2MacroCmd
@@ -21,8 +21,8 @@
         public int D1; // skill_id or page for shortcuts
         public int D2; // shortcut
         public string Cmd;
-		
-		public L2MacroCmd(int pEntry, int pType, int pD1, int pD2, string pCmd)
+
+        public L2MacroCmd(int pEntry, int pType, int pD1, int pD2, string pCmd)
         {
             Entry = pEntry;
             Type = pType;

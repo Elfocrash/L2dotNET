@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using log4net;
-using L2dotNET.GameService.Model.Inventory;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
@@ -25,13 +24,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _count = ReadD();
 
             if ((_count < 0) || (_count > 255))
+            {
                 _count = 0;
+            }
 
             _items = new long[_count * 2];
             for (int i = 0; i < _count; i++)
             {
                 _items[i * 2] = ReadD();
-                _items[i * 2 + 1] = ReadQ();
+                _items[(i * 2) + 1] = ReadQ();
             }
         }
 
@@ -53,7 +54,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             for (int i = 0; i < _count; i++)
             {
                 int objectId = (int)_items[i * 2];
-                long count = _items[i * 2 + 1];
+                long count = _items[(i * 2) + 1];
 
                 L2Item item = player.GetItemByObjId(objectId);
 
@@ -65,12 +66,18 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (item.Template.IsStackable())
+                {
                     slots += 1;
+                }
                 else
+                {
                     slots += (int)count;
+                }
 
                 if (item.Template.ItemId == 57)
+                {
                     adenatransfer += count;
+                }
             }
 
             if ((player.GetAdena() - adenatransfer) < fee)
@@ -100,12 +107,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
             for (int i = 0; i < _count; i++)
             {
                 int objectId = (int)_items[i * 2];
-                long count = _items[i * 2 + 1];
+                long count = _items[(i * 2) + 1];
 
                 transfer.Add(new[] { objectId, count });
             }
 
-           // pw.transferHere(player, transfer, false);
+            // pw.transferHere(player, transfer, false);
 
             //if(npc.Template.fnBye != null)
             //{

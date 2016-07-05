@@ -60,7 +60,9 @@ namespace L2dotNET.GameService
         public void SendPacket(GameServerNetworkPacket sbp)
         {
             if (IsTerminated)
+            {
                 return;
+            }
 
             sbp.Write();
             byte[] data = sbp.ToByteArray();
@@ -99,7 +101,9 @@ namespace L2dotNET.GameService
             CurrentPlayer?.Termination();
 
             foreach (L2Player p in _accountChars)
+            {
                 p.Termination();
+            }
 
             _accountChars.Clear();
 
@@ -109,7 +113,9 @@ namespace L2dotNET.GameService
         public void Read()
         {
             if (IsTerminated)
+            {
                 return;
+            }
 
             try
             {
@@ -156,7 +162,9 @@ namespace L2dotNET.GameService
         private void OnReceiveCallback(IAsyncResult result)
         {
             if (IsTerminated)
+            {
                 return;
+            }
 
             Stream.EndRead(result);
 
@@ -175,7 +183,9 @@ namespace L2dotNET.GameService
             AccountChars = AccountChars.Where(filter => filter.CharSlot != charSlot).OrderBy(orderby => orderby.CharSlot).ToList();
 
             for (int i = 0; i < AccountChars.Count; i++)
+            {
                 AccountChars[i].CharSlot = i;
+            }
         }
 
         public string AccountName { get; set; }

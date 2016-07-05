@@ -79,7 +79,9 @@ namespace L2dotNET.Utility
                     if (ReadFile(handle, buf, lengthToRead, &lengthToRead, 0x00))
                     {
                         if (!CloseHandle(handle))
+                        {
                             throw new IOException($"Failed to close file handle for '{fileName}'");
+                        }
 
                         return buffer;
                     }
@@ -102,7 +104,9 @@ namespace L2dotNET.Utility
         public static FileInfo[] GetFiles(string directory, string mask, SearchOption searchHow)
         {
             if (Directory.Exists(directory))
+            {
                 return new DirectoryInfo(directory).GetFiles(mask, searchHow);
+            }
 
             throw new DirectoryNotFoundException($"Directory '{directory}' can't be found.");
         }

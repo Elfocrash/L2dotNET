@@ -69,7 +69,7 @@ namespace L2dotNET.GameService.Model.Structures
                 _mobActive.Add(o);
             }
 
-            TimeSiege = new Timer {Interval = 3600000};
+            TimeSiege = new Timer { Interval = 3600000 };
             // 60 минут
             TimeSiege.Elapsed += TimeSiegeEnd;
 
@@ -87,7 +87,9 @@ namespace L2dotNET.GameService.Model.Structures
             IsActive = false;
             Message("Siege of " + Name + " is over.");
             if (trigger)
+            {
                 Message("Nobody won! " + Name + " belong to NPC until next siege.");
+            }
             else
             {
                 double dmg = 0;
@@ -123,21 +125,29 @@ namespace L2dotNET.GameService.Model.Structures
             }
 
             foreach (L2Character o in _mobActive)
+            {
                 o.DeleteByForce();
+            }
         }
 
         public void AddDamage(int clanId, double dmg)
         {
             if (ClanDamage.ContainsKey(clanId))
+            {
                 ClanDamage[clanId] += dmg;
+            }
             else
+            {
                 ClanDamage.Add(clanId, dmg);
+            }
         }
 
         public void AddSpawn(int spawnId, int x, int y, int z, int h)
         {
             if (MobSpawns == null)
+            {
                 MobSpawns = new List<int[]>();
+            }
 
             MobSpawns.Add(new[] { spawnId, x, y, z, h });
         }

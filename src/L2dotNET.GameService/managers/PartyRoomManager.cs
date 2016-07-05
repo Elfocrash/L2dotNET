@@ -17,16 +17,7 @@ namespace L2dotNET.GameService.Managers
 
         public L2PartyRoom NewRoom(L2Player player, int roomId, int maxMembers, int minLevel, int maxLevel, int lootDist, string roomTitle)
         {
-            L2PartyRoom room = new L2PartyRoom
-            {
-                RoomId = roomId,
-                MaxMembers = maxMembers,
-                MinLevel = minLevel,
-                MaxLevel = maxLevel,
-                LootDist = lootDist,
-                Title = roomTitle,
-                LeaderId = player.ObjId
-            };
+            L2PartyRoom room = new L2PartyRoom { RoomId = roomId, MaxMembers = maxMembers, MinLevel = minLevel, MaxLevel = maxLevel, LootDist = lootDist, Title = roomTitle, LeaderId = player.ObjId };
             IdFactory++;
             Rooms.Add(roomId, room);
 

@@ -19,26 +19,34 @@ namespace L2dotNET.GameService.Model.Zones.Classes
             Enabled = Template.DefaultStatus;
 
             if (Enabled && (Template.UnitTick > 0))
+            {
                 StartTimer();
+            }
         }
 
         public override void OnTimerAction(object sender, ElapsedEventArgs e)
         {
             if (ObjectsInside.Count == 0)
+            {
                 return;
+            }
 
             foreach (L2Object o in ObjectsInside.Values)
                 if (o is L2Player)
                 {
                     if (Template.Target == ZoneTemplate.ZoneTarget.Npc)
+                    {
                         continue;
+                    }
 
                     ((L2Player)o).ReduceHpArea(Template.DamageOnHp, Template.MessageNo);
                 }
                 else if (o is L2Warrior)
                 {
                     if (Template.Target == ZoneTemplate.ZoneTarget.Pc)
+                    {
                         continue;
+                    }
 
                     ((L2Warrior)o).ReduceHpArea(Template.DamageOnHp, Template.MessageNo);
                 }
@@ -47,7 +55,9 @@ namespace L2dotNET.GameService.Model.Zones.Classes
         public override void OnEnter(L2Object obj)
         {
             if (!Enabled)
+            {
                 return;
+            }
 
             base.OnEnter(obj);
 
@@ -64,7 +74,9 @@ namespace L2dotNET.GameService.Model.Zones.Classes
         public override void OnExit(L2Object obj, bool cls)
         {
             if (!Enabled)
+            {
                 return;
+            }
 
             base.OnExit(obj, cls);
 

@@ -23,10 +23,14 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
         public void Disable()
         {
             if (Ai1Sec != null)
+            {
                 Ai1Sec.Enabled = false;
+            }
 
             if (Follow != null)
+            {
                 Follow.Enabled = false;
+            }
         }
 
         public void SetFollowStatus(bool value)

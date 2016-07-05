@@ -42,27 +42,35 @@ namespace L2dotNET.GameService.Model.Zones.Classes
         public override void OnEnter(L2Object obj)
         {
             if (!Enabled)
+            {
                 return;
+            }
 
             base.OnEnter(obj);
 
             obj.OnEnterZone(this);
 
             if (obj is L2Character)
+            {
                 ((L2Character)obj).SendMessage("u can feel defence.");
+            }
         }
 
         public override void OnExit(L2Object obj, bool cls)
         {
             if (!Enabled)
+            {
                 return;
+            }
 
             base.OnExit(obj, cls);
 
             obj.OnExitZone(this, cls);
 
             if (obj is L2Character)
+            {
                 ((L2Character)obj).SendMessage("u lost effect defence.");
+            }
         }
     }
 }

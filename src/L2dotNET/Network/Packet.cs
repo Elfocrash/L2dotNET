@@ -115,10 +115,12 @@ namespace L2dotNET.Network
             ValidateBufferSize(length);
 
             fixed (byte* buf = _mBuffer)
+            {
                 fixed (short* w = v)
                 {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
                 }
+            }
         }
 
         /// <summary>
@@ -148,10 +150,12 @@ namespace L2dotNET.Network
             ValidateBufferSize(Length);
 
             fixed (byte* buf = _mBuffer)
+            {
                 fixed (int* w = v)
                 {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
                 }
+            }
         }
 
         /// <summary>
@@ -181,10 +185,12 @@ namespace L2dotNET.Network
             ValidateBufferSize(length);
 
             fixed (byte* buf = _mBuffer)
+            {
                 fixed (double* w = v)
                 {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
                 }
+            }
         }
 
         /// <summary>
@@ -214,10 +220,12 @@ namespace L2dotNET.Network
             ValidateBufferSize(length);
 
             fixed (byte* buf = _mBuffer)
+            {
                 fixed (long* w = v)
                 {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
                 }
+            }
         }
 
         /// <summary>
@@ -232,10 +240,12 @@ namespace L2dotNET.Network
             ValidateBufferSize(length);
 
             fixed (byte* buf = _mBuffer)
+            {
                 fixed (char* w = s)
                 {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
                 }
+            }
         }
 
         /// <summary>
@@ -247,17 +257,21 @@ namespace L2dotNET.Network
             string v = string.Empty;
 
             foreach (string t in s)
+            {
                 v += t + '\0';
+            }
 
             int length = v.Length * sizeof(char);
 
             ValidateBufferSize(length);
 
             fixed (byte* buf = _mBuffer)
+            {
                 fixed (char* w = v)
                 {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
                 }
+            }
         }
 
         /// <summary>
@@ -285,7 +299,9 @@ namespace L2dotNET.Network
         public unsafe byte ReadByte()
         {
             fixed (byte* buf = _mBuffer)
+            {
                 return *(buf + _mOffset++);
+            }
         }
 
         /// <summary>
@@ -375,7 +391,9 @@ namespace L2dotNET.Network
         public unsafe string ReadString()
         {
             fixed (byte* buf = _mBuffer)
+            {
                 return L2Buffer.GetTrimmedString(buf, ref _mOffset, _mBuffer.Length);
+            }
         }
 
         /// <summary>
@@ -402,8 +420,10 @@ namespace L2dotNET.Network
         /// <param name="nextValueLength">length of next bytes sequence to write into buffer.</param>
         private void ValidateBufferSize(int nextValueLength)
         {
-            if (_mOffset + nextValueLength > _mBuffer.Length)
+            if ((_mOffset + nextValueLength) > _mBuffer.Length)
+            {
                 L2Buffer.Extend(ref _mBuffer, nextValueLength + MDefaultOverflowValue);
+            }
         }
 
         /// <summary>
@@ -419,9 +439,13 @@ namespace L2dotNET.Network
             fixed (byte* buf = _mBuffer)
             {
                 if (headerSize == sizeof(short))
+                {
                     *((short*)(buf)) = (short)_mOffset;
+                }
                 else
+                {
                     *((int*)(buf)) = _mOffset;
+                }
             }
         }
 
@@ -461,7 +485,9 @@ namespace L2dotNET.Network
             get
             {
                 fixed (byte* buf = _mBuffer)
+                {
                     return *(buf);
+                }
             }
         }
 
@@ -473,7 +499,9 @@ namespace L2dotNET.Network
             get
             {
                 fixed (byte* buf = _mBuffer)
+                {
                     return *(buf + 1);
+                }
             }
         }
 

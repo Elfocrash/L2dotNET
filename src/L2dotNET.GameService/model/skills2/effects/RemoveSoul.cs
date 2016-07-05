@@ -22,7 +22,9 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         {
             L2Player player = target as L2Player;
             if (player == null)
+            {
                 return Nothing;
+            }
 
             player.ReduceSouls(_count);
 

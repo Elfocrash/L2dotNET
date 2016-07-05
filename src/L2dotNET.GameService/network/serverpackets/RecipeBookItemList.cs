@@ -19,8 +19,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _book = new List<L2Recipe>();
 
             if (player.RecipeBook != null)
+            {
                 foreach (L2Recipe rec in player.RecipeBook.Where(rec => rec.Iscommonrecipe == type))
+                {
                     _book.Add(rec);
+                }
+            }
         }
 
         protected internal override void Write()

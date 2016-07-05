@@ -18,7 +18,9 @@ namespace L2dotNET.LoginService.Model
             {
                 string ip = "0.0.0.0";
                 if (Thread != null)
+                {
                     ip = Thread.Wan;
+                }
 
                 DefaultAddress = new byte[4];
                 string[] w = ip.Split('.');
@@ -32,7 +34,9 @@ namespace L2dotNET.LoginService.Model
             {
                 byte[] redirect = NetworkRedirect.Instance.GetRedirect(client, Id);
                 if (redirect != null)
+                {
                     return redirect;
+                }
             }
 
             return DefaultAddress;

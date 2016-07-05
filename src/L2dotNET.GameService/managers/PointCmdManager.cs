@@ -18,8 +18,8 @@ namespace L2dotNET.GameService.Managers
             switch (text)
             {
                 case "traffic":
-                    player.SendMessage("Down: " + player.Gameclient.TrafficDown / 1024 + " kb");
-                    player.SendMessage("Up: " + player.Gameclient.TrafficUp / 1024 + " kb");
+                    player.SendMessage("Down: " + (player.Gameclient.TrafficDown / 1024) + " kb");
+                    player.SendMessage("Up: " + (player.Gameclient.TrafficUp / 1024) + " kb");
                     break;
 
                 default:

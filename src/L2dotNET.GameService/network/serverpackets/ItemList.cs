@@ -19,7 +19,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 _items.Add(new ItemListItem { ObjectId = item.ObjId, ItemId = item.Template.ItemId, Slot = item.SlotLocation, Count = item.Count, Type2 = item.Template.Type2(), CType1 = item.CustomType1, Equip = item.IsEquipped, Bodypart = item.Template.BodyPartId(), Enchant = item.Enchant, CType2 = item.CustomType2, Augment = item.AugmentationId, Mana = item.Durability, TimeLeft = item.LifeTimeEnd() });
 
                 if (item.Blocked)
+                {
                     _blocked.Add(item.ObjId);
+                }
             }
         }
 

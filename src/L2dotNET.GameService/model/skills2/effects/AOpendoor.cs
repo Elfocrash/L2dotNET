@@ -22,12 +22,20 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             {
                 L2Door door = (L2Door)target;
                 if (door.Level <= _level)
+                {
                     if (new Random().Next(100) < _rate)
+                    {
                         door.OpenForTime();
+                    }
                     else
+                    {
                         caster.SendSystemMessage(SystemMessage.SystemMessageId.FailedToUnlockDoor);
+                    }
+                }
                 else
+                {
                     caster.SendSystemMessage(SystemMessage.SystemMessageId.FailedToUnlockDoor);
+                }
             }
             else
             {

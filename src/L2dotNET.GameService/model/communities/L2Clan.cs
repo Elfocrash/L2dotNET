@@ -129,7 +129,9 @@ namespace L2dotNET.GameService.Model.Communities
             }
 
             if (LeaderId == player.ObjId)
+            {
                 player.ClanPrivs = CpAll;
+            }
 
             player.SendPacket(new PledgeShowMemberListAll(this, EClanType.ClanMain));
 
@@ -143,7 +145,9 @@ namespace L2dotNET.GameService.Model.Communities
         public void BroadcastToMembers(GameServerNetworkPacket pk)
         {
             foreach (ClanMember cm in Members.Where(cm => cm.Online == 1))
+            {
                 cm.Target.SendPacket(pk);
+            }
         }
 
         public EClanType IsSubLeader(int objId, EClanType[] types)
@@ -154,27 +158,39 @@ namespace L2dotNET.GameService.Model.Communities
                 {
                     case EClanType.ClanKnight1:
                         if ((Knights1 != null) && (Knights1.LeaderId == objId))
+                        {
                             ret = ct;
+                        }
                         break;
                     case EClanType.ClanKnight2:
                         if ((Knights2 != null) && (Knights2.LeaderId == objId))
+                        {
                             ret = ct;
+                        }
                         break;
                     case EClanType.ClanKnight3:
                         if ((Knights1Order1 != null) && (Knights1Order1.LeaderId == objId))
+                        {
                             ret = ct;
+                        }
                         break;
                     case EClanType.ClanKnight4:
                         if ((Knights1Order2 != null) && (Knights1Order2.LeaderId == objId))
+                        {
                             ret = ct;
+                        }
                         break;
                     case EClanType.ClanKnight5:
                         if ((Knights2Order1 != null) && (Knights2Order1.LeaderId == objId))
+                        {
                             ret = ct;
+                        }
                         break;
                     case EClanType.ClanKnight6:
                         if ((Knights2Order2 != null) && (Knights2Order2.LeaderId == objId))
+                        {
                             ret = ct;
+                        }
                         break;
                 }
 
@@ -196,14 +212,18 @@ namespace L2dotNET.GameService.Model.Communities
             if (size == 0)
             {
                 if (CrestId > 0)
+                {
                     File.Delete(@"crests\c" + CrestId + ".bmp");
+                }
 
                 CrestId = 0;
             }
             else
             {
                 if (CrestId > 0)
+                {
                     File.Delete(@"crests\c" + CrestId + ".bmp");
+                }
 
                 //msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
                 CrestId = IdFactory.Instance.NextId();
@@ -245,14 +265,18 @@ namespace L2dotNET.GameService.Model.Communities
             if (size == 0)
             {
                 if (LargeCrestId > 0)
+                {
                     File.Delete(@"crests\b" + LargeCrestId + ".bmp");
+                }
 
                 LargeCrestId = 0;
             }
             else
             {
                 if (LargeCrestId > 0)
+                {
                     File.Delete(@"crests\b" + LargeCrestId + ".bmp");
+                }
 
                 //msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
                 LargeCrestId = IdFactory.Instance.NextId();
@@ -337,11 +361,13 @@ namespace L2dotNET.GameService.Model.Communities
 
             EClanType type = IsSubLeader(player.ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2, EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 });
             if (type != EClanType.None)
+            {
                 if (GetClanMemberCount(type, player.ObjId) > 0)
                 {
                     player.SendMessage("You are leader of clan sub unit, and while there some members - you cant leave them.");
                     return;
                 }
+            }
 
             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1HasWithdrawnFromTheClan);
             sm.AddPlayerName(player.Name);
@@ -376,7 +402,9 @@ namespace L2dotNET.GameService.Model.Communities
         private void BroadcastToOnline(GameServerNetworkPacket p)
         {
             foreach (ClanMember cm in Members.Where(cm => cm.Online == 1))
+            {
                 cm.Target.SendPacket(p);
+            }
         }
 
         public byte GetClanMemberCount(EClanType type, int myself)
@@ -393,19 +421,33 @@ namespace L2dotNET.GameService.Model.Communities
         {
             List<EClanSub> subs = new List<EClanSub>();
             if (Academy != null)
+            {
                 subs.Add(Academy);
+            }
             if (Knights1 != null)
+            {
                 subs.Add(Knights1);
+            }
             if (Knights2 != null)
+            {
                 subs.Add(Knights2);
+            }
             if (Knights1Order1 != null)
+            {
                 subs.Add(Knights1Order1);
+            }
             if (Knights1Order2 != null)
+            {
                 subs.Add(Knights1Order2);
+            }
             if (Knights2Order1 != null)
+            {
                 subs.Add(Knights2Order1);
+            }
             if (Knights2Order2 != null)
+            {
                 subs.Add(Knights2Order2);
+            }
 
             return subs;
         }

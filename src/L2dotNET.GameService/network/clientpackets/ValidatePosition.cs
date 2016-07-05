@@ -39,11 +39,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
             int dx = _x - realX;
             int dy = _y - realY;
             //int dz = _z - realZ;
-            double diffSq = (dx * dx + dy * dy);
+            double diffSq = ((dx * dx) + (dy * dy));
 
             if (diffSq < 360000)
             {
                 if (!player.IsMoving())
+                {
                     if (diffSq < 2500)
                     {
                         player.X = realX;
@@ -56,6 +57,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                         player.Y = _y;
                         player.Z = _z;
                     }
+                }
                 Console.WriteLine($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}"); //debug
                 player.BroadcastUserInfo();
                 return;

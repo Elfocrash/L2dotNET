@@ -17,11 +17,15 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new RecipeTable();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -32,6 +36,7 @@ namespace L2dotNET.GameService.Tables
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\recipes.xml"));
             XElement ex = xml.Element("list");
             if (ex != null)
+            {
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "recipe")
                     {
@@ -82,6 +87,7 @@ namespace L2dotNET.GameService.Tables
 
                         Recipes.Add(rec.RecipeId, rec);
                     }
+            }
 
             Log.Info("RecipeTable: loaded " + Recipes.Count + " recipes.");
         }

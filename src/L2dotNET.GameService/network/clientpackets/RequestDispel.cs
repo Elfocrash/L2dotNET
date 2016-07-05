@@ -35,10 +35,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             foreach (AbnormalEffect ave in player.Effects)
             {
                 if ((ave.Id != _skillId) && (ave.Lvl != _skillLv))
+                {
                     continue;
+                }
 
                 if ((ave.Skill.Debuff == 1) && (ave.Skill.IsMagic > 1))
+                {
                     break;
+                }
 
                 avestop = ave;
                 break;

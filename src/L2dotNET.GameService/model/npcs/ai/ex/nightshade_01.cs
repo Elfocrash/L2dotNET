@@ -23,11 +23,17 @@ namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
 
                 default:
                     if (actionId == GetValueInt("buff_action3"))
+                    {
                         value = "buff3";
+                    }
                     else if (actionId == GetValueInt("buff_action4"))
+                    {
                         value = "buff4";
+                    }
                     else if (actionId == GetValueInt("buff_action5"))
+                    {
                         value = "buff5";
+                    }
                     break;
             }
 

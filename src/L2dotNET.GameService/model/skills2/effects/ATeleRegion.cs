@@ -21,14 +21,18 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             {
                 L2Player player = (L2Player)target;
                 if ((player.ClanId > 0) && (player.Clan.HideoutId > 0))
+                {
                     loc = player.Clan.Hideout.ownerLoc;
+                }
             }
 
             //if (loc == null) //ELFOC
             //    loc = MapRegionTable.getInstance().getRespawn(target.X, target.Y, ((L2Player)target).Karma);
 
             if (loc != null)
+            {
                 target.Teleport(loc[0], loc[1], loc[2]);
+            }
             return Nothing;
         }
 

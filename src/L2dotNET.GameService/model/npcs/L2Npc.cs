@@ -39,9 +39,13 @@ namespace L2dotNET.GameService.Model.Npcs
         {
             double dis = Calcs.CalculateDistance(player, this, true);
             if (dis < 151)
+            {
                 AiProcessor.Talked(player);
+            }
             else
+            {
                 TryMoveTo(X, Y, Z);
+            }
         }
 
         public int NpcId
@@ -193,9 +197,13 @@ namespace L2dotNET.GameService.Model.Npcs
             }
 
             if (newtarget)
+            {
                 player.SendPacket(new MyTargetSelected(ObjId, 0));
+            }
             else
+            {
                 player.SendActionFailed();
+            }
         }
 
         public void ShowPrivateWarehouse(L2Player player)
@@ -275,7 +283,9 @@ namespace L2dotNET.GameService.Model.Npcs
         public override void BroadcastUserInfo()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
+            {
                 obj.SendPacket(new NpcInfo(this));
+            }
         }
 
         public override void OnSpawn()
@@ -294,19 +304,25 @@ namespace L2dotNET.GameService.Model.Npcs
                 if (e.GetLv > player.Level)
                 {
                     if (nextLvl > e.GetLv)
+                    {
                         nextLvl = e.GetLv;
+                    }
                     continue;
                 }
 
                 if (list.ContainsKey(e.Id))
+                {
                     continue;
+                }
 
                 if (player.Skills.ContainsKey(e.Id))
                 {
                     Skill skill = player.Skills[e.Id];
 
                     if (skill.Level >= e.Lv)
+                    {
                         continue;
+                    }
 
                     if (!list.ContainsKey(e.Id))
                     {
@@ -315,7 +331,9 @@ namespace L2dotNET.GameService.Model.Npcs
                     }
                 }
                 else
+                {
                     list.Add(e.Id, e);
+                }
             }
 
             if (list.Count == 0)
@@ -328,9 +346,13 @@ namespace L2dotNET.GameService.Model.Npcs
                 }
 
                 if (nextLvl != 800)
+                {
                     player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.DoNotHaveFurtherSkillsToLearnS1).AddNumber(nextLvl));
+                }
                 else
+                {
                     player.SendSystemMessage(SystemMessage.SystemMessageId.NoMoreSkillsToLearn);
+                }
 
                 player.SendActionFailed();
                 return;
@@ -365,7 +387,9 @@ namespace L2dotNET.GameService.Model.Npcs
         public override void DeleteByForce()
         {
             if ((_corpseTimer != null) && _corpseTimer.Enabled)
+            {
                 _corpseTimer.Enabled = false;
+            }
 
             base.DeleteByForce();
         }
@@ -378,7 +402,9 @@ namespace L2dotNET.GameService.Model.Npcs
         public void ConsumeBody()
         {
             if (_corpseTimer != null)
+            {
                 _corpseTimer.Enabled = false;
+            }
 
             _corpseTimer = null;
 

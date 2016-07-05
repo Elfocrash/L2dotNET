@@ -46,7 +46,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
             player.BoatZ = _z;
 
             if (player.KnownObjects.ContainsKey(_boatId))
+            {
                 player.Boat = (L2Boat)player.KnownObjects[_boatId];
+            }
 
             player.BroadcastPacket(new GetOnVehicle(player));
         }

@@ -208,22 +208,26 @@ namespace L2dotNET.GameService.Model.Items
             Hairall
         }
 
-        private short _canEquipSex = -1;
+        private readonly short _canEquipSex = -1;
 
         public bool CanEquipSex(int sex)
         {
             if (_canEquipSex == -1)
+            {
                 return true;
+            }
 
             return sex == _canEquipSex;
         }
 
-        private short _canEquipCastle = -1;
+        private readonly short _canEquipCastle = -1;
 
         public bool CanEquipCastle(int castleId)
         {
             if (_canEquipCastle == -1)
+            {
                 return true;
+            }
 
             return castleId == _canEquipCastle;
         }
@@ -233,28 +237,34 @@ namespace L2dotNET.GameService.Model.Items
         public bool CanEquipHeroic(int heroic)
         {
             if (CanEquipHero == -1)
+            {
                 return true;
+            }
 
             return heroic == CanEquipHero;
         }
 
-        private short _canEquipNobless = -1;
+        private readonly short _canEquipNobless = -1;
 
         public bool CanEquipNobless(int noble)
         {
             if (_canEquipNobless == -1)
+            {
                 return true;
+            }
 
             return noble == _canEquipNobless;
         }
 
-        private short _canEquipChaotic = -1;
+        private readonly short _canEquipChaotic = -1;
         public string HtmFile;
 
         public bool CanEquipChaotic(int pkkills)
         {
             if (_canEquipChaotic == -1)
+            {
                 return true;
+            }
 
             return pkkills == 0;
         }
@@ -494,17 +504,23 @@ namespace L2dotNET.GameService.Model.Items
         public void AddMultiSkills(string value)
         {
             if (MultiSkills == null)
+            {
                 MultiSkills = new List<Skill>();
+            }
 
             foreach (string v in value.Split(';'))
             {
                 Skill sk = SkillTable.Instance.Get(int.Parse(v.Split('-')[0]), int.Parse(v.Split('-')[1]));
                 if (sk != null)
+                {
                     MultiSkills.Add(sk);
+                }
             }
 
             if (MultiSkills.Count == 0)
+            {
                 MultiSkills = null;
+            }
         }
 
         internal void SetReducingSoulShots(string value) { }

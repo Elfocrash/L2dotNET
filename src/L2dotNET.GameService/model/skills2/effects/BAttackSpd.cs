@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         {
             target.CharacterStat.Apply(this);
 
-            EffectResult ter = new EffectResult {TotalUi = 1};
+            EffectResult ter = new EffectResult { TotalUi = 1 };
             return ter;
         }
 
@@ -16,7 +16,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         {
             target.CharacterStat.Stop(this);
 
-            EffectResult ter = new EffectResult {TotalUi = 1};
+            EffectResult ter = new EffectResult { TotalUi = 1 };
             return ter;
         }
     }

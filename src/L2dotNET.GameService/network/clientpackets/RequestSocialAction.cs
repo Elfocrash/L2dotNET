@@ -21,10 +21,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = GetClient().CurrentPlayer;
             if (player == null)
+            {
                 return;
+            }
 
             if ((_actionId < 2) || (_actionId > 13))
+            {
                 return;
+            }
 
             player.BroadcastPacket(new SocialAction(player.ObjId, _actionId));
         }

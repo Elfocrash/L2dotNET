@@ -42,17 +42,29 @@ namespace L2dotNET.GameService.AI.NpcAI
                     break;
                 case -506:
                     if (talker.Level >= 76)
+                    {
                         talker.ShowHtm("black_judge007.htm", Myself);
+                    }
                     else if ((talker.Level >= 61) && (talker.Level < 76))
+                    {
                         talker.ShowHtm("black_judge006.htm", Myself);
+                    }
                     else if ((talker.Level >= 52) && (talker.Level < 61))
+                    {
                         talker.ShowHtm("black_judge005.htm", Myself);
+                    }
                     else if ((talker.Level >= 40) && (talker.Level < 52))
+                    {
                         talker.ShowHtm("black_judge004.htm", Myself);
+                    }
                     else if ((talker.Level >= 20) && (talker.Level < 40))
+                    {
                         talker.ShowHtm("black_judge003.htm", Myself);
+                    }
                     else if ((talker.Level >= 1) && (talker.Level < 20))
+                    {
                         talker.ShowHtm("black_judge002.htm", Myself);
+                    }
                     break;
                 default:
                     base.TalkedReply(talker, ask, reply);
@@ -63,16 +75,24 @@ namespace L2dotNET.GameService.AI.NpcAI
         private void GetOffPenalty(L2Player talker, byte minLv, byte maxLv, int cost)
         {
             if ((talker.Level >= minLv) && (talker.Level <= maxLv))
+            {
                 if (talker.DeathPenaltyLevel > 0)
+                {
                     if (talker.ReduceAdena(cost))
                     {
                         talker.DestroyItemById(Adena, cost);
                         Myself.CastBuffForQuestReward(talker, SPenaltyoff);
                     }
                     else
+                    {
                         talker.ShowHtm("black_judge008.htm", Myself);
+                    }
+                }
                 else
+                {
                     talker.ShowHtm("black_judge009.htm", Myself);
+                }
+            }
         }
     }
 }

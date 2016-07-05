@@ -22,11 +22,15 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new HtmCache();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -53,7 +57,9 @@ namespace L2dotNET.GameService.Tables
         public string GetHtmByFilename(string filename)
         {
             if (string.IsNullOrEmpty(filename))
+            {
                 return string.Empty;
+            }
 
             L2Html html = _htmCache.FirstOrDefault(x => x.Filename.EqualsIgnoreCase(filename));
             return html != null ? html.Content : string.Empty;
@@ -66,7 +72,9 @@ namespace L2dotNET.GameService.Tables
             {
                 files.AddRange(Directory.GetFiles(sDir));
                 foreach (string d in Directory.GetDirectories(sDir))
+                {
                     files.AddRange(DirSearch(d));
+                }
             }
             catch (Exception excpt)
             {

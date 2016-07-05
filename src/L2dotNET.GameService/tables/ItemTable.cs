@@ -20,11 +20,15 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new ItemTable();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -39,7 +43,9 @@ namespace L2dotNET.GameService.Tables
                 {
                     string line = sreader.ReadLine() ?? string.Empty;
                     if ((line.Length == 0) || line.StartsWithIgnoreCase("#"))
+                    {
                         continue;
+                    }
 
                     string[] pt = line.Split('\t');
 
@@ -56,27 +62,37 @@ namespace L2dotNET.GameService.Tables
                         {
                             case "legs":
                                 foreach (string str in value.Split(' '))
+                                {
                                     set.AddLeg(Convert.ToInt32(str));
+                                }
 
                                 break;
                             case "helm":
                                 foreach (string str in value.Split(' '))
+                                {
                                     set.AddHelm(Convert.ToInt32(str));
+                                }
 
                                 break;
                             case "gloves":
                                 foreach (string str in value.Split(' '))
+                                {
                                     set.AddGloves(Convert.ToInt32(str));
+                                }
 
                                 break;
                             case "boots":
                                 foreach (string str in value.Split(' '))
+                                {
                                     set.AddBoot(Convert.ToInt32(str));
+                                }
 
                                 break;
                             case "shield":
                                 foreach (string str in value.Split(' '))
+                                {
                                     set.AddShield(Convert.ToInt32(str));
+                                }
 
                                 break;
 
@@ -103,7 +119,9 @@ namespace L2dotNET.GameService.Tables
                 {
                     string line = sreader.ReadLine() ?? string.Empty;
                     if ((line.Length == 0) || line.StartsWithIgnoreCase("#"))
+                    {
                         continue;
+                    }
 
                     string[] pt = line.Split('\t');
 
@@ -112,13 +130,17 @@ namespace L2dotNET.GameService.Tables
                     item.Type = (ItemTemplate.L2ItemType)Enum.Parse(typeof(ItemTemplate.L2ItemType), pt[0]);
 
                     if (Sets.ContainsKey(item.ItemId))
+                    {
                         item.SetItem = true;
+                    }
 
                     for (byte ord = 2; ord < pt.Length; ord++)
                     {
                         string parameter = pt[ord];
                         if (parameter.Length == 0)
+                        {
                             continue;
+                        }
 
                         string value = parameter.Substring(parameter.IndexOf('{') + 1);
                         try
@@ -345,7 +367,9 @@ namespace L2dotNET.GameService.Tables
                 {
                     string line = sreader.ReadLine() ?? string.Empty;
                     if ((line.Length == 0) || line.StartsWithIgnoreCase("#"))
+                    {
                         continue;
+                    }
 
                     string[] pt = line.Split('>');
 
@@ -398,25 +422,41 @@ namespace L2dotNET.GameService.Tables
                 foreach (Skill skill in owner.Skills.Values)
                 {
                     if ((set.Set1Id > 0) && (skill.SkillId == set.Set1Id))
+                    {
                         b1 = true;
+                    }
                     if ((set.Set2Id > 0) && (skill.SkillId == set.Set2Id))
+                    {
                         b2 = true;
+                    }
                     if ((set.Set3Id > 0) && (skill.SkillId == set.Set3Id))
+                    {
                         b3 = true;
+                    }
 
                     if (b1 && b2 && b3)
+                    {
                         break;
+                    }
                 }
 
                 if (b1)
+                {
                     owner.RemoveSkill(set.Set1Id, false, false);
+                }
                 if (b2)
+                {
                     owner.RemoveSkill(set.Set2Id, false, false);
+                }
                 if (b3)
+                {
                     owner.RemoveSkill(set.Set3Id, false, false);
+                }
 
                 if (b1 || b2 || b3)
+                {
                     owner.UpdateSkillList();
+                }
             }
             else
             {

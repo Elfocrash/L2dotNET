@@ -22,11 +22,15 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new NpcTable();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -64,6 +68,7 @@ namespace L2dotNET.GameService.Tables
                         XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/npc");
 
                         if (nodes != null)
+                        {
                             foreach (XmlNode node in nodes)
                             {
                                 if (node.Attributes != null)
@@ -86,6 +91,7 @@ namespace L2dotNET.GameService.Tables
                                 }
                                 set.Clear();
                             }
+                        }
                     }
                 }
 

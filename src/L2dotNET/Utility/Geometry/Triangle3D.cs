@@ -17,12 +17,12 @@ namespace L2dotNET.Utility.Geometry
 
             int cBx = CAx - BAx;
             int cBy = CAy - BAy;
-            _length = Math.Sqrt(BAx * BAx + BAy * BAy) + Math.Sqrt(CAx * CAx + CAy * CAy) + Math.Sqrt(cBx * cBx + cBy * cBy);
+            _length = Math.Sqrt((BAx * BAx) + (BAy * BAy)) + Math.Sqrt((CAx * CAx) + (CAy * CAy)) + Math.Sqrt((cBx * cBx) + (cBy * cBy));
         }
 
         public override double GetArea()
         {
-            return Size * 2 + _length * (_maxZ - _minZ);
+            return (Size * 2) + (_length * (_maxZ - _minZ));
         }
 
         public override double GetVolume()
@@ -33,7 +33,9 @@ namespace L2dotNET.Utility.Geometry
         public override bool IsInside(int x, int y, int z)
         {
             if ((z < _minZ) || (z > _maxZ))
+            {
                 return false;
+            }
 
             return base.IsInside(x, y, z);
         }
@@ -43,14 +45,14 @@ namespace L2dotNET.Utility.Geometry
             double ba = Rnd.NextDouble();
             double ca = Rnd.NextDouble();
 
-            if (ba + ca > 1)
+            if ((ba + ca) > 1)
             {
                 ba = 1 - ba;
                 ca = 1 - ca;
             }
 
-            int x = Ax + (int)(ba * BAx + ca * CAx);
-            int y = Ay + (int)(ba * BAy + ca * CAy);
+            int x = Ax + (int)((ba * BAx) + (ca * CAx));
+            int y = Ay + (int)((ba * BAy) + (ca * CAy));
 
             return new Location(x, y, Rnd.Get(_minZ, _maxZ));
         }

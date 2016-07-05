@@ -165,7 +165,9 @@ namespace L2dotNET.Network
                 CloseConnection();
 
                 if (OnDisconnected != null)
+                {
                     OnDisconnected(-1, this, ConnectionId);
+                }
             }
         }
 
@@ -193,7 +195,9 @@ namespace L2dotNET.Network
                 }
 
                 if (MSendReadyFlag)
+                {
                     SendCallback(null);
+                }
             }
         }
 

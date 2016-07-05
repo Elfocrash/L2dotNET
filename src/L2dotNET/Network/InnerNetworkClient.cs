@@ -64,9 +64,13 @@ namespace L2dotNET.Network
         protected override void Handle(Packet packet)
         {
             if (HandleDelegate == null)
+            {
                 Console.WriteLine("Skipping handling");
+            }
             else
+            {
                 HandleDelegate(packet);
+            }
         }
 
         /// <summary>
@@ -107,15 +111,21 @@ namespace L2dotNET.Network
                         MSocket.BeginReceive(MReceiveBuffer, 0, 4, 0, ReceiveCallback, null);
                     }
                     else if (MReceivedLength < MReceiveBuffer.Length) // not all data received
+                    {
                         MSocket.BeginReceive(MReceiveBuffer, MReceivedLength, MReceiveBuffer.Length - MReceivedLength, 0, MReceiveCallback, null);
+                    }
                     else
+                    {
                         throw new InvalidOperationException();
+                    }
                 }
             }
             catch (SocketException se)
             {
                 if (OnDisconnected != null)
+                {
                     OnDisconnected(se.ErrorCode, this, ConnectionId);
+                }
                 else
                 {
                     Logger.WriteLine(Source.InnerNetwork, "{0} \r\nError code: {1}", se.ToString(), se.ErrorCode);
@@ -127,9 +137,13 @@ namespace L2dotNET.Network
                 Logger.Exception(e);
 
                 if (OnDisconnected != null)
+                {
                     OnDisconnected(-1, this, ConnectionId);
+                }
                 else
+                {
                     CloseConnection();
+                }
             }
         }
 

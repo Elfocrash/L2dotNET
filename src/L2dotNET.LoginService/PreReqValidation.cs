@@ -20,11 +20,15 @@ namespace L2dotNET.LoginService
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new PreReqValidation();
+                        }
                     }
+                }
 
                 return _instance;
             }

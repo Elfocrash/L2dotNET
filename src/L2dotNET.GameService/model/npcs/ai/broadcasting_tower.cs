@@ -45,10 +45,14 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             string text = "";
 
             foreach (int[] d in _data.Where(d => !ar.Contains(d[0])))
+            {
                 ar.Add(d[0]);
+            }
 
             foreach (int val in ar)
+            {
                 text += "<a action=\"bypass -h menu_select?ask=-2&reply=" + val + "\">&$" + val + ";</a><br1>";
+            }
 
             player.ShowHtmPlain(text, npc);
         }
@@ -98,7 +102,9 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             List<int[]> ar = _data.Where(d => d[0] == group).ToList();
 
             foreach (int[] val in ar)
+            {
                 text += "<a action=\"bypass -h menu_select?ask=-3&reply=" + val[1] + "\">&$" + val[1] + ";</a><br1>";
+            }
 
             player.ShowHtmPlain(text, npc);
         }

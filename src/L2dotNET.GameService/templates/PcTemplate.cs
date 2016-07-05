@@ -49,19 +49,25 @@ namespace L2dotNET.GameService.Templates
             HpTable = new double[hpTable.Length];
 
             for (int i = 0; i < hpTable.Length; i++)
+            {
                 HpTable[i] = double.Parse(hpTable[i]);
+            }
 
             string[] mpTable = set.GetString("mpTable").Split(';');
 
             MpTable = new double[mpTable.Length];
             for (int i = 0; i < mpTable.Length; i++)
+            {
                 MpTable[i] = double.Parse(mpTable[i]);
+            }
 
             string[] cpTable = set.GetString("cpTable").Split(';');
 
             CpTable = new double[cpTable.Length];
             for (int i = 0; i < cpTable.Length; i++)
+            {
                 CpTable[i] = double.Parse(cpTable[i]);
+            }
         }
     }
 }

@@ -68,7 +68,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteH(0x00);
             }
             else
+            {
                 WriteD(0x00);
+            }
             WriteD(_tx);
             WriteD(_ty);
             WriteD(_tz);

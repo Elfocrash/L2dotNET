@@ -18,11 +18,15 @@ namespace L2dotNET.GameService
             get
             {
                 if (instance == null)
+                {
                     lock (syncRoot)
                     {
                         if (instance == null)
+                        {
                             instance = new ClientManager();
+                        }
                     }
+                }
 
                 return instance;
             }
@@ -38,7 +42,9 @@ namespace L2dotNET.GameService
         public void AddClient(TcpClient client)
         {
             if (Banned == null)
+            {
                 Banned = NetworkBlock.Instance;
+            }
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
 

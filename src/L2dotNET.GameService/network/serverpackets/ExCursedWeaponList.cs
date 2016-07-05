@@ -16,7 +16,9 @@
             WriteD(_ids.Length);
 
             foreach (int id in _ids)
+            {
                 WriteD(id);
+            }
         }
     }
 }

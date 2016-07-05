@@ -25,7 +25,9 @@ namespace L2dotNET.GameService.Network
 
             string str = "header: " + buff[0].ToString("x2") + "\n";
             foreach (byte b in buff)
+            {
                 str += b.ToString("x2") + " ";
+            }
 
             Log.Info(str);
             GameServerNetworkRequest msg = null;
@@ -346,7 +348,9 @@ namespace L2dotNET.GameService.Network
             }
 
             if (msg.Client.IsTerminated)
+            {
                 return;
+            }
 
             new Thread(new ThreadStart(msg.Run)).Start();
         }
@@ -357,12 +361,18 @@ namespace L2dotNET.GameService.Network
             byte d = 0;
 
             if (level > 0)
+            {
                 s = "Header: ";
+            }
             for (byte r = 0; r < level; r++)
+            {
                 s += buff[r].ToString("x2");
+            }
 
             if (level > 0)
+            {
                 s += "\n";
+            }
 
             for (int a = level; a < buff.Length; a++)
             {

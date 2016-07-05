@@ -20,11 +20,15 @@ namespace L2dotNET.GameService.Model.Skills2
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new SkillTable();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -40,7 +44,7 @@ namespace L2dotNET.GameService.Model.Skills2
 
         public Skill Get(int id, int lvl)
         {
-            long hash = id * 65536 + lvl;
+            long hash = (id * 65536) + lvl;
             return Skills.ContainsKey(hash) ? Skills[hash] : null;
         }
 
@@ -84,7 +88,7 @@ namespace L2dotNET.GameService.Model.Skills2
                             inf.Details.Add(nfo.EnchantedSkillLevel, nfo);
                         }
 
-                        EnchantInfo.Add(inf.Id * 65536 + inf.Lv, inf);
+                        EnchantInfo.Add((inf.Id * 65536) + inf.Lv, inf);
                     }
                 }
             }
@@ -162,7 +166,9 @@ namespace L2dotNET.GameService.Model.Skills2
                                 case 26:
                                     double rate = dlc.ReadF();
                                     if (rate != -1)
+                                    {
                                         skill.ActivateRate = (short)(rate * 1000);
+                                    }
                                     break;
                                 case 29:
                                     skill.AbnormalTime = dlc.ReadD();
@@ -223,12 +229,16 @@ namespace L2dotNET.GameService.Model.Skills2
                         }
 
                         if (EnchantInfo.ContainsKey(skill.HashId()))
+                        {
                             skill.EnchantEnabled = 1;
+                        }
 
                         Skills.Add(skill.HashId(), skill);
 
                         if (!ids.ContainsKey(skill.SkillId))
+                        {
                             ids.Add(skill.SkillId, null);
+                        }
                     }
                 }
             }
@@ -319,7 +329,9 @@ namespace L2dotNET.GameService.Model.Skills2
         public void Initreg()
         {
             if (_ps.Count != 0)
+            {
                 return;
+            }
 
             Reg(new SkillLevelParam("skill_id", TypeInt, 1));
             Reg(new SkillLevelParam("level", TypeInt, 2));
@@ -401,7 +413,9 @@ namespace L2dotNET.GameService.Model.Skills2
             byte[] dlcheader = new byte[3];
             fstream.Read(dlcheader, 0, dlcheader.Length);
             if (Encoding.UTF8.GetString(dlcheader) != "DLC")
+            {
                 return;
+            }
 
             AcquireSkills = new Dictionary<string, AcquireSkillsEntry>();
             DlcStream dlc = new DlcStream(fstream, CompressionMode.Decompress);
@@ -443,18 +457,24 @@ namespace L2dotNET.GameService.Model.Skills2
                     skill.ResidenceSkill = dlc.ReadC() == 1;
                     len = dlc.ReadC();
                     if (len > 0)
+                    {
                         skill.PledgeType = dlc.ReadS(len);
+                    }
 
                     len = dlc.ReadC();
                     for (byte b = 0; b < len; b++)
+                    {
                         skill.Races.Add(dlc.ReadC());
+                    }
 
                     skill.IdPrerequisiteSkill = dlc.ReadD();
                     skill.LvPrerequisiteSkill = dlc.ReadD();
 
                     int qcn = dlc.ReadD();
                     for (int i = 0; i < qcn; i++)
+                    {
                         skill.Quests.Add(dlc.ReadD());
+                    }
 
                     list.Skills.Add(skill);
                 }

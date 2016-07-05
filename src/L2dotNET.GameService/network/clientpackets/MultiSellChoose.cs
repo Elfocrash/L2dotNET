@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Model.Items;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables.Multisell;
 
@@ -50,7 +49,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Player player = GetClient().CurrentPlayer;
 
             if (_amount < 0)
+            {
                 _amount = 1;
+            }
 
             if (player.LastRequestedMultiSellId != _listId)
             {
@@ -64,10 +65,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             {
                 list = player.CustomMultiSellList;
                 if (list.Id != _listId)
+                {
                     list = MultiSell.Instance.GetList(_listId);
+                }
             }
             else
+            {
                 list = MultiSell.Instance.GetList(_listId);
+            }
 
             if ((list == null) || (list.Container.Count < _entryId))
             {
@@ -93,8 +98,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     switch (i.Id)
                     {
                         case -100: //pvppoint
-                            if (player.Fame < i.Count * _amount)
+                            if (player.Fame < (i.Count * _amount))
+                            {
                                 ok = false;
+                            }
                             break;
                     }
                 }
@@ -108,20 +115,24 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             foreach (MultiSellItem i in entry.Take)
                 if (i.L2Item != null)
+                {
                     player.DestroyItem(i.L2Item, 1);
+                }
                 else
                 {
                     if (i.Id > 0)
+                    {
                         player.DestroyItemById(i.Id, i.Count);
+                    }
                     else
+                    {
                         switch (i.Id)
                         {
                             case -100: //pvppoint
                                 break;
                         }
+                    }
                 }
-
-           
 
             player.SendSystemMessage(SystemMessage.SystemMessageId.SuccessfullyTradedWithNpc);
         }

@@ -22,6 +22,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\admin\abteleport.xml"));
             XElement ex = xml.Element("list");
             if (ex != null)
+            {
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "group")
                     {
@@ -46,6 +47,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
 
                         Groups.Add(ab.Id, ab);
                     }
+            }
 
             Log.Info("AdminPlugin(Teleport): loaded " + Groups.Count + " groups.");
         }
@@ -62,7 +64,9 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             AbTeleportGroup gr = Groups[groupId];
             StringBuilder sb = new StringBuilder("<button value=\"Back\" action=\"bypass -h admin?ask=3&reply=0\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><center><font color=\"Blue\">Region : </font><font color=\"LEVEL\">" + gr.Name + "</font><br>");
             foreach (AbTeleportEntry e in gr.Teles.Values)
+            {
                 sb.Append("<button value=\"" + e.Name + "\" action=\"bypass -h admin?ask=2&reply=" + e.Id + "\" width=150 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><br1>");
+            }
 
             sb.Append("</center>");
 

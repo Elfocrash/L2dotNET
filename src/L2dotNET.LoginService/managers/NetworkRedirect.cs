@@ -21,11 +21,15 @@ namespace L2dotNET.LoginService.Managers
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new NetworkRedirect();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -39,7 +43,9 @@ namespace L2dotNET.LoginService.Managers
                 {
                     string line = reader.ReadLine() ?? string.Empty;
                     if ((line.Length == 0) || line.StartsWithIgnoreCase("//"))
+                    {
                         continue;
+                    }
 
                     NetRedClass i = new NetRedClass();
                     string[] sp = line.Split(' ');
@@ -48,9 +54,13 @@ namespace L2dotNET.LoginService.Managers
                     i.SetRedirect(sp[2]);
 
                     if (i.ServerId == -1)
+                    {
                         GlobalRedirection = i;
+                    }
                     else
+                    {
                         Redirects.Add(i);
+                    }
                 }
             }
 
@@ -69,9 +79,13 @@ namespace L2dotNET.LoginService.Managers
                     d[c] = 0;
 
                     if (b[c] == "*")
+                    {
                         d[c] = 1;
+                    }
                     else if (b[c] == a[c])
+                    {
                         d[c] = 1;
+                    }
                     else if (b[c].Contains("/"))
                     {
                         byte n = byte.Parse(b[c].Split('/')[0]),
@@ -90,7 +104,9 @@ namespace L2dotNET.LoginService.Managers
             else
             {
                 if (Redirects.Count == 0)
+                {
                     return null;
+                }
 
                 foreach (NetRedClass nr in Redirects.Where(nr => nr.ServerId == serverId))
                 {
@@ -102,9 +118,13 @@ namespace L2dotNET.LoginService.Managers
                         d[c] = 0;
 
                         if (b[c] == "*")
+                        {
                             d[c] = 1;
+                        }
                         else if (b[c] == a[c])
+                        {
                             d[c] = 1;
+                        }
                         else if (b[c].Contains("/"))
                         {
                             byte n = byte.Parse(b[c].Split('/')[0]),

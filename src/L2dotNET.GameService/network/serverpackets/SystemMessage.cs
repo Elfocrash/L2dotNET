@@ -87,13 +87,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public SystemMessage AddName(L2Object obj)
         {
             if (obj is L2Player)
+            {
                 return AddPlayerName(((L2Player)obj).Name);
+            }
             if (obj is L2Npc)
+            {
                 return AddNpcName(((L2Npc)obj).NpcId);
+            }
             if (obj is L2Summon)
+            {
                 return AddNpcName(((L2Summon)obj).NpcId);
+            }
             if (obj is L2Item)
+            {
                 return AddItemName(((L2Item)obj).Template.ItemId);
+            }
 
             return AddString(obj.AsString());
         }

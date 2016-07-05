@@ -22,7 +22,7 @@ namespace L2dotNET.Utility.Geometry
             // get uniform distance and angles
             double r = Math.Ceiling(Math.Pow((Rnd.NextDouble()) * R, (double)1 / 3));
             double phi = Rnd.NextDouble() * 2 * Math.PI;
-            double theta = Math.Acos(2 * Rnd.NextDouble() - 1);
+            double theta = Math.Acos((2 * Rnd.NextDouble()) - 1);
 
             // calculate coordinates
             int x = (int)(X + (r * Math.Cos(phi) * Math.Sin(theta)));
@@ -44,7 +44,7 @@ namespace L2dotNET.Utility.Geometry
             int dy = y - Y;
             int dz = z - _z;
 
-            return (dx * dx + dy * dy + dz * dz) <= R * R;
+            return ((dx * dx) + (dy * dy) + (dz * dz)) <= (R * R);
         }
     }
 }

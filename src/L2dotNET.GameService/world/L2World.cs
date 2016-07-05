@@ -46,11 +46,15 @@ namespace L2dotNET.GameService.World
             get
             {
                 if (_instance == null)
+                {
                     lock (SyncRoot)
                     {
                         if (_instance == null)
+                        {
                             _instance = new L2World();
+                        }
                     }
+                }
 
                 return _instance;
             }
@@ -60,14 +64,18 @@ namespace L2dotNET.GameService.World
         {
             for (int i = 0; i <= RegionsX; i++)
                 for (int j = 0; j <= RegionsY; j++)
+                {
                     _worldRegions[i, j] = new L2WorldRegion(i, j);
+                }
 
             for (int x = 0; x <= RegionsX; x++)
                 for (int y = 0; y <= RegionsY; y++)
                     for (int a = -1; a <= 1; a++)
                         for (int b = -1; b <= 1; b++)
                             if (ValidRegion(x + a, y + b))
+                            {
                                 _worldRegions[x + a, y + b].AddSurroundingRegion(_worldRegions[x, y]);
+                            }
 
             Log.Info("L2World: WorldRegion grid (" + RegionsX + " by " + RegionsY + ") is now setted up.");
         }
@@ -75,7 +83,9 @@ namespace L2dotNET.GameService.World
         public void AddObject(L2Object obj)
         {
             if (!_objects.ContainsKey(obj.ObjId))
+            {
                 _objects.Add(obj.ObjId, obj);
+            }
         }
 
         public void RemoveObject(L2Object obj)
@@ -96,7 +106,9 @@ namespace L2dotNET.GameService.World
         public void AddPlayer(L2Player cha)
         {
             if (!_players.ContainsKey(cha.ObjId))
+            {
                 _players.Add(cha.ObjId, cha);
+            }
         }
 
         public void RemovePlayer(L2Player cha)

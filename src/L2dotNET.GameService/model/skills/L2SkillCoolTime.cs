@@ -29,7 +29,9 @@ namespace L2dotNET.GameService.Model.Skills
         public void Timer()
         {
             if (Delay == 0)
+            {
                 return;
+            }
 
             StopTime = DateTime.Now.AddSeconds(Delay);
             _timer = new Timer(Delay * 1000);

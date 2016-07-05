@@ -67,13 +67,17 @@ namespace L2dotNET.GameService.World
             //if (character.isTeleporting())
             //    return;
             foreach (L2ZoneType zone in _zones)
+            {
                 zone.RevalidateInZone(character);
+            }
         }
 
         public void RemoveFromZones(L2Character character)
         {
             foreach (L2ZoneType zone in _zones)
+            {
                 zone.RemoveCharacter(character);
+            }
         }
 
         public bool ContainsZone(int zoneId)
@@ -195,24 +199,34 @@ namespace L2dotNET.GameService.World
         public void AddVisibleObject(L2Object obj)
         {
             if (obj == null)
+            {
                 return;
+            }
 
             if (!_objects.ContainsKey(obj.ObjId))
+            {
                 _objects.Add(obj.ObjId, obj);
+            }
 
             if (obj is L2Player)
+            {
                 _playersCount += 1;
+            }
         }
 
         public void RemoveVisibleObject(L2Object obj)
         {
             if (obj == null)
+            {
                 return;
+            }
 
             _objects.Remove(obj.ObjId);
 
             if (obj is L2Player)
+            {
                 _playersCount -= 1;
+            }
         }
     }
 }

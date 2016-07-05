@@ -58,8 +58,11 @@ namespace L2dotNET.GameService.Tables
         {
             int[] sp = null;
             if ((_x > 0) || (_y > 0))
+            {
                 sp = new[] { _x, _y, _z };
+            }
             else
+            {
                 try
                 {
                     sp = _zone.GetSpawnLocation();
@@ -70,14 +73,19 @@ namespace L2dotNET.GameService.Tables
                     //  throw e;
                     _log.Error($"L2Spawn: {e.Message}");
                 }
+            }
 
             //obj = NpcTable.Instance.SpawnNpc(NpcId, sp[0], sp[1], sp[2], (zone == null) ? h : zone.rnd.Next(64000));
 
             if (Obj == null)
+            {
                 return;
+            }
 
             if (Obj is L2Warrior)
+            {
                 ((L2Warrior)Obj).TerritorySpawn = this;
+            }
 
             _status = StatusActive;
         }
@@ -109,24 +117,32 @@ namespace L2dotNET.GameService.Tables
                     if (!rise)
                     {
                         if (_status == StatusActive)
+                        {
                             Clear();
+                        }
                     }
                     else
                     {
                         if (_status != StatusActive)
+                        {
                             Init();
+                        }
                     }
                     break;
                 case ModeNightOnly:
                     if (rise)
                     {
                         if (_status == StatusActive)
+                        {
                             Clear();
+                        }
                     }
                     else
                     {
                         if (_status != StatusActive)
+                        {
                             Init();
+                        }
                     }
                     break;
             }
@@ -135,8 +151,12 @@ namespace L2dotNET.GameService.Tables
         private void Clear()
         {
             if (Obj != null)
+            {
                 if (Obj is L2Character)
+                {
                     ((L2Character)Obj).DeleteByForce();
+                }
+            }
         }
     }
 }

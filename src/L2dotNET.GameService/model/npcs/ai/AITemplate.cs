@@ -24,7 +24,9 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         public int GetValueInt(string p)
         {
             if (Parameters.ContainsKey(p))
+            {
                 return int.Parse(Parameters[p]);
+            }
 
             return -1;
         }

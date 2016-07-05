@@ -45,9 +45,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 case 1:
                     if (player.IsRunning == 1)
+                    {
                         player.IsRunning = 0;
+                    }
                     else
+                    {
                         player.IsRunning = 1;
+                    }
 
                     player.BroadcastUserInfo();
                     break;
@@ -63,27 +67,39 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 case 15: //pet change node
                     if (player.Summon != null)
+                    {
                         player.Summon.ChangeNode();
+                    }
                     break;
                 case 16: //pet attack
                     if (player.Summon != null)
+                    {
                         player.Summon.Attack();
+                    }
                     break;
                 case 17: //pet stop
                     if (player.Summon != null)
+                    {
                         player.Summon.Stop();
+                    }
                     break;
                 case 19: //pet unsummon
                     if (player.Summon != null)
+                    {
                         player.Summon.UnSummon();
+                    }
                     break;
                 case 21: //summon change node
                     if (player.Summon != null)
+                    {
                         player.Summon.ChangeNode();
+                    }
                     break;
                 case 23: //summon stop
                     if (player.Summon != null)
+                    {
                         player.Summon.Stop();
+                    }
                     break;
                 case 24: // Yes
                     socialId = 6;
@@ -114,21 +130,31 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 case 38: //mount\dismount
                     if (player.MountType > 0)
+                    {
                         player.UnMount();
+                    }
                     else
+                    {
                         player.MountPet();
+                    }
                     break;
                 case 52: //summon unsummon
                     if (player.Summon != null)
+                    {
                         player.Summon.UnSummon();
+                    }
                     break;
                 case 53: //summon move
                     if (player.Summon != null)
+                    {
                         player.Summon.Move();
+                    }
                     break;
                 case 54: //pet stop
                     if (player.Summon != null)
+                    {
                         player.Summon.Stop();
+                    }
                     break;
                 case 62: // Charm
                     socialId = 14;
@@ -173,7 +199,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (socialId != -1)
+            {
                 player.BroadcastPacket(new SocialAction(player.ObjId, socialId));
+            }
         }
 
         private void CheckSit(L2Player player)
@@ -198,18 +226,24 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 {
                     double dis = Calcs.CalculateDistance(player, chair, true);
                     if (dis < 150)
+                    {
                         staticId = chair.StaticId;
+                    }
                 }
 
                 if (player.Builder == 1)
                 {
                     double dis = Calcs.CalculateDistance(player, chair, true);
                     if (dis < 150)
+                    {
                         staticId = chair.StaticId;
+                    }
                 }
 
                 if (staticId > 0)
+                {
                     player.SetChair(chair);
+                }
             }
 
             player.Sit();
@@ -238,7 +272,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 Log.Info($"pet cast result {result}");
             }
             else
+            {
                 Log.Error($"pet {npcId} used null skill {id}-{lv}");
+            }
         }
     }
 }

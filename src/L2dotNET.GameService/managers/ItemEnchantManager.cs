@@ -155,6 +155,7 @@ namespace L2dotNET.GameService.Managers
             }
 
             if (next)
+            {
                 switch (dat.Target)
                 {
                     case EnchantTarget.Weapon:
@@ -167,6 +168,7 @@ namespace L2dotNET.GameService.Managers
                         next = item.Template.ItemId == 13539; //Staff of Master Yogi
                         break;
                 }
+            }
 
             if (!next)
             {
@@ -215,6 +217,7 @@ namespace L2dotNET.GameService.Managers
             }
 
             if (next)
+            {
                 switch (dat.Target)
                 {
                     case EnchantTarget.Weapon:
@@ -224,6 +227,7 @@ namespace L2dotNET.GameService.Managers
                         next = (player.EnchantItem.Template.Type == ItemTemplate.L2ItemType.Armor) || (player.EnchantItem.Template.Type == ItemTemplate.L2ItemType.Accessary);
                         break;
                 }
+            }
 
             if (next)
             {

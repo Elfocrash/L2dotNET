@@ -130,7 +130,7 @@ namespace L2dotNET.Utility.Geometry
 
         public static void Cross(ref Vector3 vector1, ref Vector3 vector2, out Vector3 result)
         {
-            result = new Vector3(vector1.Y * vector2.Z - vector2.Y * vector1.Z, -(vector1.X * vector2.Z - vector2.X * vector1.Z), vector1.X * vector2.Y - vector2.X * vector1.Y);
+            result = new Vector3((vector1.Y * vector2.Z) - (vector2.Y * vector1.Z), -((vector1.X * vector2.Z) - (vector2.X * vector1.Z)), (vector1.X * vector2.Y) - (vector2.X * vector1.Y));
         }
 
         public static double Distance(Vector3 vector1, Vector3 vector2)
@@ -155,7 +155,7 @@ namespace L2dotNET.Utility.Geometry
 
         public static void DistanceSquared(ref Vector3 value1, ref Vector3 value2, out double result)
         {
-            result = (value1.X - value2.X) * (value1.X - value2.X) + (value1.Y - value2.Y) * (value1.Y - value2.Y) + (value1.Z - value2.Z) * (value1.Z - value2.Z);
+            result = ((value1.X - value2.X) * (value1.X - value2.X)) + ((value1.Y - value2.Y) * (value1.Y - value2.Y)) + ((value1.Z - value2.Z) * (value1.Z - value2.Z));
         }
 
         public static Vector3 Divide(Vector3 value1, Vector3 value2)
@@ -192,12 +192,12 @@ namespace L2dotNET.Utility.Geometry
 
         public static double Dot(Vector3 vector1, Vector3 vector2)
         {
-            return vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z;
+            return (vector1.X * vector2.X) + (vector1.Y * vector2.Y) + (vector1.Z * vector2.Z);
         }
 
         public static void Dot(ref Vector3 vector1, ref Vector3 vector2, out double result)
         {
-            result = vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z;
+            result = (vector1.X * vector2.X) + (vector1.Y * vector2.Y) + (vector1.Z * vector2.Z);
         }
 
         public override bool Equals(object obj)
@@ -343,9 +343,9 @@ namespace L2dotNET.Utility.Geometry
             Vector3 reflectedVector;
             // inline the dotProduct here instead of calling method
             double dotProduct = ((vector.X * normal.X) + (vector.Y * normal.Y)) + (vector.Z * normal.Z);
-            reflectedVector.X = vector.X - (2.0f * normal.X) * dotProduct;
-            reflectedVector.Y = vector.Y - (2.0f * normal.Y) * dotProduct;
-            reflectedVector.Z = vector.Z - (2.0f * normal.Z) * dotProduct;
+            reflectedVector.X = vector.X - ((2.0f * normal.X) * dotProduct);
+            reflectedVector.Y = vector.Y - ((2.0f * normal.Y) * dotProduct);
+            reflectedVector.Z = vector.Z - ((2.0f * normal.Z) * dotProduct);
 
             return reflectedVector;
         }
@@ -358,9 +358,9 @@ namespace L2dotNET.Utility.Geometry
 
             // inline the dotProduct here instead of calling method
             double dotProduct = ((vector.X * normal.X) + (vector.Y * normal.Y)) + (vector.Z * normal.Z);
-            result.X = vector.X - (2.0f * normal.X) * dotProduct;
-            result.Y = vector.Y - (2.0f * normal.Y) * dotProduct;
-            result.Z = vector.Z - (2.0f * normal.Z) * dotProduct;
+            result.X = vector.X - ((2.0f * normal.X) * dotProduct);
+            result.Y = vector.Y - ((2.0f * normal.Y) * dotProduct);
+            result.Z = vector.Z - ((2.0f * normal.Z) * dotProduct);
         }
 
         public static Vector3 SmoothStep(Vector3 value1, Vector3 value2, double amount)

@@ -12,10 +12,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ExQuestItemList(L2Player player)
         {
-            _items = null;//player.getAllQuestItems();
+            _items = null; //player.getAllQuestItems();
 
             foreach (L2Item item in _items.Where(item => item.Blocked))
+            {
                 _block.Add(item.ObjId);
+            }
         }
 
         protected internal override void Write()
@@ -62,7 +64,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             {
                 WriteC(1);
                 foreach (int id in _block)
+                {
                     WriteD(id);
+                }
             }
         }
     }

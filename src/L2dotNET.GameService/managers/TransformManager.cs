@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Player.Transformation;
-using L2dotNET.GameService.Model.Player.Transformation.Data;
 
 namespace L2dotNET.GameService.Managers
 {
@@ -31,7 +30,9 @@ namespace L2dotNET.GameService.Managers
 
             L2Transform tr = new L2Transform(_templates[id]);
             if (tr.Template.StartFailed(player))
+            {
                 return;
+            }
 
             if (seconds != -1)
             {

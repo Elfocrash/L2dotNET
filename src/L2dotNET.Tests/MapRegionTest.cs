@@ -29,6 +29,7 @@ namespace L2dotNET.Tests
                         XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/npc");
 
                         if (nodes != null)
+                        {
                             foreach (XmlNode node in nodes)
                             {
                                 if (node.Attributes != null)
@@ -51,6 +52,7 @@ namespace L2dotNET.Tests
                                 }
                                 set.Clear();
                             }
+                        }
                     }
                 }
             }

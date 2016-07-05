@@ -69,10 +69,14 @@ namespace L2dotNET.GameService.World
         public virtual void BroadcastPacket(GameServerNetworkPacket pk, bool excludeYourself)
         {
             if (!excludeYourself)
+            {
                 SendPacket(pk);
+            }
 
             foreach (L2Player o in GetKnownPlayers())
+            {
                 o.SendPacket(pk);
+            }
         }
 
         public virtual void BroadcastPacket(GameServerNetworkPacket pk)
@@ -85,7 +89,9 @@ namespace L2dotNET.GameService.World
         public void DeleteMe()
         {
             foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
+            {
                 o.SendPacket(new DeleteObject(ObjId));
+            }
 
             StopRegeneration();
 
@@ -99,7 +105,9 @@ namespace L2dotNET.GameService.World
                 o.OnClearing(this, deleteMe);
 
                 if (deleteMe && this is L2Player)
+                {
                     SendPacket(new DeleteObject(o.ObjId));
+                }
             }
 
             KnownObjects.Clear();
@@ -114,12 +122,16 @@ namespace L2dotNET.GameService.World
         {
             L2WorldRegion region = Region;
             if (region == null)
+            {
                 return new List<L2Player>();
+            }
 
             List<L2Player> result = new List<L2Player>();
 
             foreach (L2WorldRegion reg in region.GetSurroundingRegions())
+            {
                 result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this));
+            }
 
             return result;
         }
@@ -151,7 +163,9 @@ namespace L2dotNET.GameService.World
                 }
 
                 if (this is L2Player && region.IsEmptyNeighborhood())
+                {
                     region.SetActive(false);
+                }
             }
 
             foreach (L2WorldRegion region in newAreas.Where(region => !oldAreas.Contains(region)))
@@ -165,7 +179,9 @@ namespace L2dotNET.GameService.World
 
                 // Activate the new neighbor region.
                 if (this is L2Player)
+                {
                     region.SetActive(true);
+                }
             }
 
             Region = newRegion;
@@ -179,40 +195,54 @@ namespace L2dotNET.GameService.World
             }
 
             if (deleteMe && target is L2Player)
+            {
                 target.SendPacket(new DeleteObject(ObjId));
+            }
         }
 
         public void SetVisible(bool val)
         {
             Visible = val;
             foreach (L2Object o in KnownObjects.Values)
+            {
                 o.CanView(this);
+            }
         }
 
         private void CanView(L2Object target)
         {
             foreach (L2Object o in KnownObjects.Values)
+            {
                 o.OnClearing(this, true);
+            }
         }
 
         public void AddKnownObject(L2Object obj, GameServerNetworkPacket pk, bool pkuse)
         {
             if (KnownObjects.ContainsKey(obj.ObjId))
+            {
                 return;
+            }
 
             KnownObjects.Add(obj.ObjId, obj);
 
             if (!obj.Visible)
+            {
                 return;
+            }
 
             if (pkuse)
+            {
                 OnAddObject(obj, pk);
+            }
         }
 
         public void UpdateVisibleStatus()
         {
             foreach (L2Object o in KnownObjects.Values.Where(o => o.Visible))
+            {
                 OnAddObject(o, null);
+            }
         }
 
         public void RemoveKnownObject(L2Object obj, bool update)
@@ -235,7 +265,9 @@ namespace L2dotNET.GameService.World
                 KnownObjects.Add(obj.ObjId, obj);
 
                 if (obj.Visible)
+                {
                     OnAddObject(obj, null);
+                }
             }
         }
 
@@ -258,15 +290,19 @@ namespace L2dotNET.GameService.World
             if (strictCheck)
             {
                 if (checkZ)
-                    return (dx * dx + dy * dy + dz * dz) < radius * radius;
+                {
+                    return ((dx * dx) + (dy * dy) + (dz * dz)) < (radius * radius);
+                }
 
-                return (dx * dx + dy * dy) < radius * radius;
+                return ((dx * dx) + (dy * dy)) < (radius * radius);
             }
 
             if (checkZ)
-                return (dx * dx + dy * dy + dz * dz) <= radius * radius;
+            {
+                return ((dx * dx) + (dy * dy) + (dz * dz)) <= (radius * radius);
+            }
 
-            return (dx * dx + dy * dy) <= radius * radius;
+            return ((dx * dx) + (dy * dy)) <= (radius * radius);
         }
 
         public SortedList<int, L2Zone> ActiveZones = new SortedList<int, L2Zone>();
@@ -303,20 +339,27 @@ namespace L2dotNET.GameService.World
         public virtual void ValidateZoneCompass()
         {
             if (_forceSetPvp)
+            {
                 if (LastCode != ExSetCompassZoneCode.Pvpzone)
                 {
                     LastCode = ExSetCompassZoneCode.Pvpzone;
                     SendPacket(new ExSetCompassZoneCode(ExSetCompassZoneCode.Pvpzone));
                     return;
                 }
+            }
 
             int code;
             if (_isInsidePvpZone)
+            {
                 code = ExSetCompassZoneCode.Pvpzone;
+            }
             else
+            {
                 code = _isInsidePeaceZone ? ExSetCompassZoneCode.Peacezone : ExSetCompassZoneCode.Generalzone;
+            }
 
             if (code != 0)
+            {
                 if ((LastCode != -1) && (LastCode != code))
                 {
                     LastCode = code;
@@ -327,15 +370,20 @@ namespace L2dotNET.GameService.World
                     LastCode = code;
                     SendPacket(new ExSetCompassZoneCode(code));
                 }
+            }
         }
 
         public void OnEnterZone(L2Zone z)
         {
             if (ActiveZones.ContainsKey(z.ZoneId))
+            {
                 return;
+            }
 
             if (this is L2Player)
+            {
                 ((L2Player)this).SendMessage("entered zone " + z.Name);
+            }
 
             ActiveZones.Add(z.ZoneId, z);
             z.OnEnter(this);
@@ -347,7 +395,9 @@ namespace L2dotNET.GameService.World
         public void OnExitZone(L2Zone z, bool cls)
         {
             if (!ActiveZones.ContainsKey(z.ZoneId))
+            {
                 return;
+            }
 
             lock (ActiveZones)
             {
@@ -363,11 +413,17 @@ namespace L2dotNET.GameService.World
         private void RevalidateZone(L2Zone z)
         {
             if (z is peace_zone)
+            {
                 ValidatePeaceZones();
+            }
             else if (z is battle_zone)
+            {
                 ValidateBattleZones();
+            }
             else if (z is water)
+            {
                 ValidateWaterZones();
+            }
         }
 
         public bool IsInBattle()
@@ -401,17 +457,23 @@ namespace L2dotNET.GameService.World
             }
 
             if (!found)
+            {
                 _isInsidePeaceZone = false;
+            }
 
             if (!old && _isInsidePeaceZone)
             {
                 if (this is L2Player)
+                {
                     ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.EnterPeacefulZone);
+                }
             }
             else if (old && !_isInsidePeaceZone)
             {
                 if (this is L2Player)
+                {
                     ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.ExitPeacefulZone);
+                }
             }
         }
 
@@ -435,17 +497,23 @@ namespace L2dotNET.GameService.World
             }
 
             if (!found)
+            {
                 _isInsidePvpZone = false;
+            }
 
             if (!old && _isInsidePvpZone)
             {
                 if (this is L2Player)
+                {
                     ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.EnteredCombatZone);
+                }
             }
             else if (old && !_isInsidePvpZone)
             {
                 if (this is L2Player)
+                {
                     ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.LeftCombatZone);
+                }
             }
         }
 
@@ -467,7 +535,9 @@ namespace L2dotNET.GameService.World
             _isInsideWaterZone = (Z > -4779) && (Z < -3779);
 
             if (this is L2Player)
+            {
                 ((L2Player)this).WaterTimer();
+            }
         }
 
         public void ValidateVisibleObjects(int x, int y, bool zones)
@@ -515,10 +585,14 @@ namespace L2dotNET.GameService.World
         public void StopRegeneration()
         {
             if (RegenerationMethod_1S != null)
+            {
                 RegenerationMethod_1S.Enabled = false;
+            }
 
             if (RegenUpdate != null)
+            {
                 RegenUpdate.Enabled = false;
+            }
         }
 
         public virtual double Radius

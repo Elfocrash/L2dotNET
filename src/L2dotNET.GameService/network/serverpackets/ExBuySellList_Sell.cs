@@ -13,9 +13,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public ExBuySellListSell(L2Player player)
         {
             foreach (L2Item item in player.GetAllItems().Where(item => !item.NotForTrade()))
+            {
                 _sells.Add(item);
+            }
 
-           // _refund = player.Refund._items;
+            // _refund = player.Refund._items;
         }
 
         protected internal override void Write()
@@ -90,7 +92,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteH(item.Enchant3);
 
                 WriteD(idx++);
-                WriteQ(item.Template.Price / 2 * item.Count);
+                WriteQ((item.Template.Price / 2) * item.Count);
             }
 
             WriteC(0);

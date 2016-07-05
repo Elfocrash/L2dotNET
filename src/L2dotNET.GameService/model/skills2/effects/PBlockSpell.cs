@@ -19,7 +19,9 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         {
             target.Mute(1, HashId, false);
             if (target.MutedMagically)
+            {
                 return new EffectResult().AsTotalUi();
+            }
 
             return Nothing;
         }
