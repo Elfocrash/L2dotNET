@@ -29,8 +29,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
             foreach (NdShopItem si in _shop.Items)
             {
                 WriteD(si.Item.ItemId);
-                WriteH(si.Item.Type2());
-                WriteH(si.Item.BodyPartId());
+                WriteH(si.Item.Type2);
+                WriteH(si.Item.BodyPart);
                 WriteD(10);
             }
         }

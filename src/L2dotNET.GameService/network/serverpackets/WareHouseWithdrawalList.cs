@@ -30,13 +30,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             foreach (L2Item item in _items)
             {
-                WriteH(item.Template.Type1());
+                WriteH(item.Template.Type1);
                 WriteD(item.ObjId);
                 WriteD(item.Template.ItemId);
                 WriteD(item.Count);
-                WriteH(item.Template.Type2());
+                WriteH(item.Template.Type2);
                 WriteH(0); //custom type 1
-                WriteD(item.Template.BodyPartId());
+                WriteD(item.Template.BodyPart);
                 WriteH(item.Enchant);
                 WriteH(0); //custom type 2
                 WriteH(0);

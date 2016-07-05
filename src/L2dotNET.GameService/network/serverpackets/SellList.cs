@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public SellList(L2Player player, int npcObj)
         {
-            foreach (L2Item item in player.GetAllItems().Where(item => (item.Template.IsTrade != 0) && (item.AugmentationId <= 0) && (item.IsEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.Asset)))
+            foreach (L2Item item in player.GetAllItems().Where(item => (item.Template.Tradable) && (item.AugmentationId <= 0) && (item.IsEquipped != 1)))
                 _sells.Add(item);
 
             _adena = player.GetAdena();
@@ -31,14 +31,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteD(item.Template.ItemId);
                 WriteQ(item.Count);
 
-                WriteH(item.Template.Type2());
-                WriteH(item.Template.Type1());
-                WriteD(item.Template.BodyPartId());
+                WriteH(item.Template.Type2);
+                WriteH(item.Template.Type1);
+                WriteD(item.Template.BodyPart);
 
                 WriteH(item.Enchant);
-                WriteH(item.Template.Type2());
+                WriteH(item.Template.Type2);
                 WriteH(0x00);
-                WriteD((int)(item.Template.Price * 0.5));
+                WriteD((int)(item.Template.ReferencePrice * 0.5));
             }
         }
     }

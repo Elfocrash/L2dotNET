@@ -102,59 +102,47 @@ namespace L2dotNET.GameService.Model.Player
 
         public L2Player RestorePlayer(int id, GameClient client)
         {
-            L2Player player = new L2Player();
-            player.ObjId = id;
-
-            player.Gameclient = client;
 
             PlayerModel playerModel = PlayerService.GetAccountByLogin(id);
-
-            player.Name = playerModel.Name;
-            player.Title = playerModel.Title;
-            player.Level = (byte)playerModel.Level;
-            player.CurHp = playerModel.CurHp;
-            player.CurMp = playerModel.CurMp;
-            player.CurCp = playerModel.CurCp;
-
-            player.Face = playerModel.Face;
-            player.HairStyle = playerModel.HairStyle;
-            player.HairColor = playerModel.HairColor;
-            player.Sex = (byte)playerModel.Sex;
-
-            player.X = playerModel.X;
-            player.Y = playerModel.Y;
-            player.Z = playerModel.Z;
-            player.Heading = playerModel.Heading;
-
-            player.Exp = playerModel.Exp;
-            player.ExpOnDeath = playerModel.ExpBeforeDeath;
-
-            player.Sp = playerModel.Sp;
-            player.Karma = playerModel.Karma;
-            player.PvpKills = playerModel.PvpKills;
-            player.PkKills = playerModel.PkKills;
-            //byte bclass = (byte)playerModel.BaseClass;
-            //byte aclass = (byte)playerModel.ClassId;
-
-            player.BaseClass = CharTemplateTable.Instance.GetTemplate(playerModel.BaseClass);
-            player.ActiveClass = CharTemplateTable.Instance.GetTemplate(playerModel.ClassId);
-
-            player.RecLeft = playerModel.RecLeft;
-            player.RecHave = playerModel.RecHave;
-
-            player.CharSlot = playerModel.CharSlot;
-            player.DeathPenaltyLevel = playerModel.DeathPenaltyLevel;
-            player.ClanId = playerModel.ClanId;
-            player.ClanPrivs = playerModel.ClanPrivs;
-
-            player.PenaltyClanCreate = playerModel.ClanCreateExpiryTime.ToString();
-            player.PenaltyClanJoin = playerModel.ClanJoinExpiryTime.ToString();
-
-            player.Inventory = new PcInventory(this);
+            L2Player player = new L2Player
+            {
+                ObjId = id,
+                Gameclient = client,
+                Name = playerModel.Name,
+                Title = playerModel.Title,
+                Level = (byte) playerModel.Level,
+                CurHp = playerModel.CurHp,
+                CurMp = playerModel.CurMp,
+                CurCp = playerModel.CurCp,
+                Face = playerModel.Face,
+                HairStyle = playerModel.HairStyle,
+                HairColor = playerModel.HairColor,
+                Sex = (byte) playerModel.Sex,
+                X = playerModel.X,
+                Y = playerModel.Y,
+                Z = playerModel.Z,
+                Heading = playerModel.Heading,
+                Exp = playerModel.Exp,
+                ExpOnDeath = playerModel.ExpBeforeDeath,
+                Sp = playerModel.Sp,
+                Karma = playerModel.Karma,
+                PvpKills = playerModel.PvpKills,
+                PkKills = playerModel.PkKills,
+                BaseClass = CharTemplateTable.Instance.GetTemplate(playerModel.BaseClass),
+                ActiveClass = CharTemplateTable.Instance.GetTemplate(playerModel.ClassId),
+                RecLeft = playerModel.RecLeft,
+                RecHave = playerModel.RecHave,
+                CharSlot = playerModel.CharSlot,
+                DeathPenaltyLevel = playerModel.DeathPenaltyLevel,
+                ClanId = playerModel.ClanId,
+                ClanPrivs = playerModel.ClanPrivs,
+                PenaltyClanCreate = playerModel.ClanCreateExpiryTime.ToString(),
+                PenaltyClanJoin = playerModel.ClanJoinExpiryTime.ToString(),
+                Inventory = new PcInventory(this)
+            };
 
             player.CStatsInit();
             SessionData = new PlayerBag();
-            //restoreItems(player);
 
             return player;
         }
@@ -1926,41 +1914,7 @@ namespace L2dotNET.GameService.Model.Player
             if (weapon != null)
             {
                 ss = weapon.Soulshot;
-                switch (weapon.Template.WeaponType)
-                {
-                    case ItemTemplate.L2ItemWeaponType.Bow:
-                        timeAtk = (1500 * 345 / timeAtk);
-                        ranged = true;
-                        break;
-                    case ItemTemplate.L2ItemWeaponType.Crossbow:
-                        timeAtk = (1200 * 345 / timeAtk);
-                        ranged = true;
-                        break;
-                    case ItemTemplate.L2ItemWeaponType.Dualdagger:
-                    case ItemTemplate.L2ItemWeaponType.Dual:
-                        timeAtk = (1362 * 345 / timeAtk);
-                        dual = true;
-                        break;
-                    default:
-                        timeAtk = (1362 * 345 / timeAtk);
-                        break;
-                }
-
-                if ((weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.Crossbow) || (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow))
-                {
-                    dist += 740;
-                    reqMp = weapon.Template.MpConsume;
-
-                    if ((SecondaryWeaponSupport == null) || (SecondaryWeaponSupport.Count < weapon.Template.SoulshotCount))
-                    {
-                        if (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow)
-                            SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughArrows);
-                        else
-                            SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughBolts);
-                        SendActionFailed();
-                        return;
-                    }
-                }
+               
             }
             else
             {
@@ -2283,7 +2237,7 @@ namespace L2dotNET.GameService.Model.Player
                 BroadcastUserInfo();
         }
 
-        public byte ClanLevel => Clan == null ? (byte)0 : Clan.Level;
+        public byte ClanLevel => Clan?.Level ?? (byte)0;
 
         public void BroadcastSkillUse(int skillId)
         {
@@ -2291,16 +2245,7 @@ namespace L2dotNET.GameService.Model.Player
             BroadcastPacket(new MagicSkillUse(this, this, skill.SkillId, skill.Level, skill.SkillHitTime));
         }
 
-        public bool ClanLeader
-        {
-            get
-            {
-                if (Clan == null)
-                    return false;
-
-                return Clan.LeaderId == ObjId;
-            }
-        }
+        public bool ClanLeader => Clan?.LeaderId == ObjId;
 
         public bool HavePledgePower(int bit)
         {

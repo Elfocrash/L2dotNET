@@ -115,10 +115,15 @@
     <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="Controllers\GameTime.cs" />
     <Compile Include="DepInjectionModule.cs" />
+    <Compile Include="Enums\ActionType.cs" />
+    <Compile Include="Enums\ArmorType.cs" />
     <Compile Include="Enums\ClassId.cs" />
-    <Compile Include="Enums\ClassIds.cs" />
     <Compile Include="Enums\ClassRace.cs" />
+    <Compile Include="Enums\CrystalType.cs" />
+    <Compile Include="Enums\ItemType.cs" />
+    <Compile Include="Enums\MaterialType.cs" />
     <Compile Include="Enums\ShotType.cs" />
+    <Compile Include="Enums\WeaponType.cs" />
     <Compile Include="Enums\ZoneId.cs" />
     <Compile Include="Enums\ZoneIds.cs" />
     <Compile Include="Handlers\ChatHandler.cs" />
@@ -151,6 +156,7 @@
     <Compile Include="Model\Inventory\ItemContainer.cs" />
     <Compile Include="Model\Inventory\PcInventory.cs" />
     <Compile Include="Model\Inventory\PetInventory.cs" />
+    <Compile Include="Model\Items\Armor.cs" />
     <Compile Include="Model\Items\Capsule.cs" />
     <Compile Include="Model\Items\CapsuleItem.cs" />
     <Compile Include="Model\Items\CapsuleItemReward.cs" />

@@ -66,11 +66,11 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 
                 equip = player.EnchantItem.IsEquipped == 1;
 
-                if (equip && (player.EnchantItem.Enchant == 4) && (player.EnchantItem.Template.ItemSkillEnch4 != null))
-                {
-                    player.AddSkill(player.EnchantItem.Template.ItemSkillEnch4, false, false);
-                    player.UpdateSkillList();
-                }
+                //if (equip && (player.EnchantItem.Enchant == 4) && (player.EnchantItem.Template.ItemSkillEnch4 != null))
+                //{
+                //    player.AddSkill(player.EnchantItem.Template.ItemSkillEnch4, false, false);
+                //    player.UpdateSkillList();
+                //}
                 //todo check +6 set
             }
             else
@@ -102,16 +102,11 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                         iu = new InventoryUpdate();
                         iu.AddDelItem(player.EnchantItem);
 
-                        int cry = player.EnchantItem.Template.CryCount;
 
-                        if (cry == 0)
-                            player.SendPacket(new EnchantResult(EnchantResultVal.BreakToNothing));
-                        else
-                        {
-                            int id = player.EnchantItem.Template.GetCrystallId();
-                            player.SendPacket(new EnchantResult(EnchantResultVal.BreakToCount, id, cry));
-                            player.AddItem(id, cry);
-                        }
+                        //int id = player.EnchantItem.Template.CrystalType.CrystalId;
+                        //player.SendPacket(new EnchantResult(EnchantResultVal.BreakToCount, id, cry));
+                        //player.AddItem(id, cry);
+
                     }
                         break;
                 }

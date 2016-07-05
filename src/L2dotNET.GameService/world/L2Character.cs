@@ -199,34 +199,7 @@ namespace L2dotNET.GameService.World
 
         public void RemoveStats(L2Item item)
         {
-            if (item.Template.Stats.Count > 0)
-            {
-                EffectResult result = CharacterStat.Stop(item.Template.Stats, this);
-                if (this is L2Player)
-                {
-                    if (result.TotalUi == 1)
-                        BroadcastUserInfo();
-                    else
-                    {
-                        if (result.Sus != null)
-                        {
-                            StatusUpdate su = new StatusUpdate(ObjId);
-                            foreach (int stat in result.Sus.Keys)
-                                su.Add(stat, (int)result.Sus[stat]);
-
-                            BroadcastPacket(su, false);
-
-                            if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
-                                ((L2Player)this).Party.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                        }
-                    }
-                }
-                else
-                {
-                    if (result.TotalUi == 1)
-                        BroadcastUserInfo();
-                }
-            }
+          
         }
 
         public void RemoveStat(Effect effect)
@@ -297,34 +270,7 @@ namespace L2dotNET.GameService.World
 
         public void AddStats(L2Item item)
         {
-            if (item.Template.Stats.Count > 0)
-            {
-                EffectResult result = CharacterStat.Apply(item.Template.Stats, this);
-                if (this is L2Player)
-                {
-                    if (result.TotalUi == 1)
-                        BroadcastUserInfo();
-                    else
-                    {
-                        if (result.Sus != null)
-                        {
-                            StatusUpdate su = new StatusUpdate(ObjId);
-                            foreach (int stat in result.Sus.Keys)
-                                su.Add(stat, (int)result.Sus[stat]);
-
-                            BroadcastPacket(su, false);
-
-                            if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
-                                ((L2Player)this).Party.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                        }
-                    }
-                }
-                else
-                {
-                    if (result.TotalUi == 1)
-                        BroadcastUserInfo();
-                }
-            }
+           
         }
 
         public void AddStat(Effect effect)
@@ -856,32 +802,7 @@ namespace L2dotNET.GameService.World
                  ss = false;
             if (weapon != null)
             {
-                ss = weapon.Soulshot;
-                switch (weapon.Template.WeaponType)
-                {
-                    case ItemTemplate.L2ItemWeaponType.Bow:
-                        timeAtk = (1500 * 345 / timeAtk);
-                        ranged = true;
-                        break;
-                    case ItemTemplate.L2ItemWeaponType.Crossbow:
-                        timeAtk = (1200 * 345 / timeAtk);
-                        ranged = true;
-                        break;
-                    case ItemTemplate.L2ItemWeaponType.Dualdagger:
-                    case ItemTemplate.L2ItemWeaponType.Dual:
-                        timeAtk = (1362 * 345 / timeAtk);
-                        dual = true;
-                        break;
-                    default:
-                        timeAtk = (1362 * 345 / timeAtk);
-                        break;
-                }
-
-                if ((weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.Crossbow) || (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow))
-                {
-                    dist += 740;
-                    reqMp = weapon.Template.MpConsume;
-                }
+                
             }
             else
             {
@@ -1236,12 +1157,14 @@ namespace L2dotNET.GameService.World
                 BroadcastPacket(su);
 
                 if (this is L2Summon)
-                    if (((L2Summon)this).Owner != null)
-                        ((L2Summon)this).Owner.SendPacket(new PetStatusUpdate((L2Summon)this));
+                {
+                    ((L2Summon) this).Owner?.SendPacket(new PetStatusUpdate((L2Summon)this));
+                }
 
                 if (this is L2Player)
-                    if (((L2Player)this).Party != null)
-                        ((L2Player)this).Party.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
+                {
+                    ((L2Player) this).Party?.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
+                }
             }
         }
 

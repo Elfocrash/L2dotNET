@@ -31,10 +31,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteD(item.Template.ItemId);
                 WriteD(0);
                 WriteQ(item.Count);
-                WriteH(item.Template.Type2());
+                WriteH(item.Template.Type2);
                 WriteH(item.CustomType1);
                 WriteH(0);
-                WriteD(item.Template.BodyPartId());
+                WriteD(item.Template.BodyPart);
                 WriteH(item.Enchant);
                 WriteH(item.CustomType2);
                 WriteD(item.AugmentationId);
@@ -54,7 +54,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteH(item.Enchant2);
                 WriteH(item.Enchant3);
 
-                WriteQ(item.Template.Price / 2);
+                WriteQ(item.Template.ReferencePrice / 2);
             }
 
             WriteH(_refund.Count);
@@ -66,10 +66,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteD(item.Template.ItemId);
                 WriteD(0);
                 WriteQ(item.Count);
-                WriteH(item.Template.Type2());
+                WriteH(item.Template.Type2);
                 WriteH(item.CustomType1);
                 WriteH(0);
-                WriteD(item.Template.BodyPartId());
+                WriteD(item.Template.BodyPart);
                 WriteH(item.Enchant);
                 WriteH(item.CustomType2);
                 WriteD(item.AugmentationId);
@@ -90,7 +90,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteH(item.Enchant3);
 
                 WriteD(idx++);
-                WriteQ(item.Template.Price / 2 * item.Count);
+                WriteQ(item.Template.ReferencePrice / 2 * item.Count);
             }
 
             WriteC(0);

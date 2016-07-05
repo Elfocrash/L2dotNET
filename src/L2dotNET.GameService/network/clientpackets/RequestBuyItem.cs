@@ -79,9 +79,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 bool notfound = true;
                 foreach (NdShopItem item in list.Items.Where(item => item.Item.ItemId == itemId))
                 {
-                    adena += item.Item.Price * (int)_items[i * 2 + 1];
+                    adena += item.Item.ReferencePrice * (int)_items[i * 2 + 1];
 
-                    if (!item.Item.IsStackable())
+                    if (!item.Item.Stackable)
                         slots++;
                     else
                     {

@@ -194,7 +194,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public void ShowPrivateWarehouse(L2Player player)
         {
-            List<L2Item> items = player.GetAllItems().Where(item => (item.IsEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.Questitem)).ToList();
+            List<L2Item> items = player.GetAllItems().Where(item => (item.IsEquipped != 1)).ToList();
 
             player.SendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WhPrivate));
             player.FolkNpc = this;
@@ -216,7 +216,7 @@ namespace L2dotNET.GameService.Model.Npcs
                 return;
             }
 
-            List<L2Item> items = player.GetAllItems().Where(item => (item.IsEquipped != 1) && (item.Template.Type != ItemTemplate.L2ItemType.Questitem)).ToList();
+            List<L2Item> items = player.GetAllItems().Where(item => (item.IsEquipped != 1) ).ToList();
 
             player.SendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WhClan));
             player.FolkNpc = this;

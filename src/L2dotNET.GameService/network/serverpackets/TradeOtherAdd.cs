@@ -18,15 +18,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteC(0x20);
             WriteH(1);
 
-            WriteH(_item.Template.Type1());
+            WriteH(_item.Template.Type1);
             WriteD(0); //item.ObjID
             WriteD(_item.Template.ItemId);
             WriteD(_item.Count);
 
-            WriteH(_item.Template.Type2());
+            WriteH(_item.Template.Type2);
             WriteH(0); // ??
 
-            WriteD(_item.Template.BodyPartId());
+            WriteD(_item.Template.BodyPart);
             WriteH(_item.Enchant);
             WriteH(0x00); // ?
             WriteH(0x00);

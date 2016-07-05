@@ -64,7 +64,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     return;
                 }
 
-                if (item.Template.IsStackable())
+                if (item.Template.Stackable)
                     slots += 1;
                 else
                     slots += (int)count;

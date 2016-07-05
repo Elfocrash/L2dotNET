@@ -96,60 +96,7 @@ namespace L2dotNET.GameService.Tables.Multisell
 
         public void LoadXml()
         {
-            XElement xml = XElement.Parse(File.ReadAllText(@"scripts\multisell.xml"));
-            XElement ex = xml.Element("list");
-
-            if (ex != null)
-                foreach (XElement m in ex.Elements())
-                    if (m.Name == "multisell")
-                    {
-                        MultiSellList mlist = new MultiSellList();
-                        mlist.Id = Convert.ToInt32(m.Attribute("id").Value);
-                        mlist.Dutyf = Convert.ToByte(m.Attribute("dutyf").Value);
-                        mlist.Save = Convert.ToByte(m.Attribute("save").Value);
-                        mlist.All = Convert.ToByte(m.Attribute("all").Value);
-
-                        foreach (XElement stp in m.Elements())
-                            if (stp.Name == "entry")
-                            {
-                                MultiSellEntry entry = new MultiSellEntry();
-                                foreach (XElement its in stp.Elements())
-                                    switch (its.Name.LocalName)
-                                    {
-                                        case "give":
-                                        {
-                                            MultiSellItem item = new MultiSellItem();
-                                            item.Id = Convert.ToInt32(its.Attribute("id").Value);
-                                            item.Count = Convert.ToInt32(its.Attribute("count").Value);
-                                            if (item.Id > 0)
-                                            {
-                                                item.Template = ItemTable.Instance.GetItem(item.Id);
-                                                if (!item.Template.IsStackable())
-                                                    entry.Stackable = 0;
-                                            }
-                                            entry.Give.Add(item);
-                                        }
-                                            break;
-                                        case "take":
-                                        {
-                                            MultiSellItem item = new MultiSellItem();
-                                            item.Id = Convert.ToInt32(its.Attribute("id").Value);
-                                            item.Count = Convert.ToInt32(its.Attribute("count").Value);
-                                            if (item.Id > 0)
-                                                item.Template = ItemTable.Instance.GetItem(item.Id);
-                                            entry.Take.Add(item);
-                                        }
-                                            break;
-                                        case "duty":
-                                            entry.DutyCount = Convert.ToInt64(its.Attribute("count").Value);
-                                            break;
-                                    }
-
-                                mlist.Container.Add(entry);
-                            }
-
-                        Lists.Add(mlist.Id, mlist);
-                    }
+            
 
             Log.Info($"MultiSell: {Lists.Count} lists");
         }
