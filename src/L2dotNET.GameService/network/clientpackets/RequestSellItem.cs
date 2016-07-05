@@ -25,9 +25,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             for (int i = 0; i < _count; i++)
             {
-                _items[(i * 3) + 0] = ReadD();
-                _items[(i * 3) + 1] = ReadD();
-                _items[(i * 3) + 2] = ReadQ();
+                _items[i * 3 + 0] = ReadD();
+                _items[i * 3 + 1] = ReadD();
+                _items[i * 3 + 2] = ReadQ();
             }
         }
 
@@ -46,8 +46,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
             int weight = 0;
             for (int i = 0; i < _count; i++)
             {
-                int objectId = (int)_items[(i * 3) + 0];
-                long count = _items[(i * 3) + 2];
+                int objectId = (int)_items[i * 3 + 0];
+                long count = _items[i * 3 + 2];
 
                 if ((count < 0) || (count > int.MaxValue))
                 {
@@ -58,14 +58,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 L2Item item = player.Inventory.Items[objectId];
 
-                if (item.Template.IsStackable())
-                {
-                    totalCost += (int)(item.Count * (item.Template.Price * .5));
-                }
+                if (item.Template.Stackable)
+                    totalCost += (int)(item.Count * (item.Template.ReferencePrice * .5));
                 else
-                {
-                    totalCost += (int)(item.Template.Price * .5);
-                }
+                    totalCost += (int)(item.Template.ReferencePrice * .5);
 
                 weight += item.Template.Weight;
             }
@@ -78,22 +74,18 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //}
 
             int added,
-                currentAdena = player.GetAdena();
-            if ((currentAdena + totalCost) >= int.MaxValue)
-            {
+                 currentAdena = player.GetAdena();
+            if (currentAdena + totalCost >= int.MaxValue)
                 added = int.MaxValue - currentAdena;
-            }
             else
-            {
                 added = (int)totalCost;
-            }
 
             List<long[]> transfer = new List<long[]>();
             //InventoryUpdate iu = new InventoryUpdate();
             for (int i = 0; i < _count; i++)
             {
-                int objectId = (int)_items[(i * 3) + 0];
-                long count = _items[(i * 3) + 2];
+                int objectId = (int)_items[i * 3 + 0];
+                long count = _items[i * 3 + 2];
 
                 transfer.Add(new[] { objectId, count });
             }
@@ -101,14 +93,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //player.Refund.transferHere(player, transfer, false);
             //player.Refund.validate();
 
-            player.AddAdena(added, true);
+            player.AddAdena(added,true);
             player.SendItemList(true);
             player.SendPacket(new ExBuySellListClose());
 
             if (weight != 0)
-            {
                 player.UpdateWeight();
-            }
 
             //if (npc.Template.fnSell != null)
             //{

@@ -38,11 +38,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteD(0); //loc
                 WriteQ(item.Count);
 
-                WriteH(item.Template.Type2());
+                WriteH(item.Template.Type2);
                 WriteH(0);
                 WriteH(item.IsEquipped);
 
-                WriteD(item.Template.BodyPartId());
+                WriteD(item.Template.BodyPart);
                 WriteH(item.Enchant);
                 WriteH(0);
 

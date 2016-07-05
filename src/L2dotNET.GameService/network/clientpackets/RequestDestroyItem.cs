@@ -46,14 +46,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if ((item.Template.CanEquipHero == 1) && (item.Template.Type == ItemTemplate.L2ItemType.Weapon))
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.HeroWeaponsCantDestroyed);
-                player.SendActionFailed();
-                return;
-            }
-
-            if (item.Template.IsDestruct == 0)
+            if (!item.Template.Destroyable)
             {
                 SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1S2);
                 sm.AddItemName(item.Template.ItemId);

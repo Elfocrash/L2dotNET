@@ -7,7 +7,7 @@ using L2dotNET.GameService.Tables.Admin_Bypass;
 
 namespace L2dotNET.GameService.Handlers
 {
-    public class AdminCommandHandler
+    public class AdminCommandHandler : IAdminCommandHandler
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(AdminCommandHandler));
         private readonly SortedList<string, AAdminCommand> _commands = new SortedList<string, AAdminCommand>();
@@ -83,7 +83,7 @@ namespace L2dotNET.GameService.Handlers
             }
         }
 
-        private void Register(AAdminCommand processor)
+        public void Register(AAdminCommand processor)
         {
             _commands.Add(processor.Cmd, processor);
         }

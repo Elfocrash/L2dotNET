@@ -32,8 +32,6 @@ namespace L2dotNET.GameService
             }
         }
 
-        public ClientManager() { }
-
         protected SortedList<string, DateTime> Flood = new SortedList<string, DateTime>();
         protected NetworkBlock Banned;
 

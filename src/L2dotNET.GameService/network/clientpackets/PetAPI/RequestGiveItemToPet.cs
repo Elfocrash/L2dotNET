@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
                 return;
             }
 
-            if ((item.Template.IsDrop == 0) || (item.Template.IsDestruct == 0) || (item.Template.IsTrade == 0) || (item.Template.CanEquipHero != -1) || (pet.ControlItem.ObjId == _sId))
+            if ((!item.Template.Dropable) || (!item.Template.Destroyable) || (!item.Template.Tradable) || (!item.Template.HeroItem) || (pet.ControlItem.ObjId == _sId))
             {
                 player.SendSystemMessage(SystemMessage.SystemMessageId.ItemNotForPets);
                 player.SendActionFailed();

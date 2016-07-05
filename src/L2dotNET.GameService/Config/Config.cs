@@ -30,8 +30,6 @@ namespace L2dotNET.GameService.Config
         public ServerConfig ServerConfig;
         public GameplayConfig GameplayConfig;
 
-        public Config() { }
-
         public void Initialize()
         {
             ServerConfig = JsonConvert.DeserializeObject<ServerConfig>(File.ReadAllText(@"config\server.json"));

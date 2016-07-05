@@ -71,7 +71,7 @@ namespace L2dotNET.LoginService.Network
             try
             {
                 _buffer = new byte[2];
-                NetStream.BeginRead(_buffer, 0, 2, new AsyncCallback(OnReceiveCallbackStatic), null);
+                NetStream.BeginRead(_buffer, 0, 2, OnReceiveCallbackStatic, null);
             }
             catch (Exception ex)
             {
@@ -91,7 +91,7 @@ namespace L2dotNET.LoginService.Network
                 {
                     short length = BitConverter.ToInt16(_buffer, 0);
                     _buffer = new byte[length - 2];
-                    NetStream.BeginRead(_buffer, 0, length - 2, new AsyncCallback(OnReceiveCallback), result.AsyncState);
+                    NetStream.BeginRead(_buffer, 0, length - 2, OnReceiveCallback, result.AsyncState);
                 }
             }
             catch (Exception s)

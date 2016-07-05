@@ -20,10 +20,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(_item.Template.ItemId);
             WriteD(0);
             WriteQ(_item.Count);
-            WriteH(_item.Template.Type2());
+            WriteH(_item.Template.Type2);
             WriteH(0);
             WriteH(0);
-            WriteD(_item.Template.BodyPartId());
+            WriteD(_item.Template.BodyPart);
             WriteH(_item.Enchant);
             WriteH(0);
             WriteD(_item.AugmentationId);

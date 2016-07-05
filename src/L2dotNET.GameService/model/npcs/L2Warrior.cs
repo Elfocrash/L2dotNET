@@ -150,9 +150,6 @@ namespace L2dotNET.GameService.Model.Npcs
             player.SendActionFailed();
         }
 
-        public override int Attackable
-        {
-            get { return 1; }
-        }
+        public override int Attackable => 1;
     }
 }

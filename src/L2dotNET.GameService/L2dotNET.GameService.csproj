@@ -73,6 +73,7 @@
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
@@ -114,12 +115,20 @@
     <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="Controllers\GameTime.cs" />
     <Compile Include="DepInjectionModule.cs" />
+    <Compile Include="Enums\ActionType.cs" />
+    <Compile Include="Enums\ArmorType.cs" />
     <Compile Include="Enums\ClassId.cs" />
-    <Compile Include="Enums\ClassIds.cs" />
     <Compile Include="Enums\ClassRace.cs" />
+    <Compile Include="Enums\CrystalType.cs" />
+    <Compile Include="Enums\ItemType.cs" />
+    <Compile Include="Enums\MaterialType.cs" />
     <Compile Include="Enums\ShotType.cs" />
+    <Compile Include="Enums\WeaponType.cs" />
     <Compile Include="Enums\ZoneId.cs" />
     <Compile Include="Enums\ZoneIds.cs" />
+    <Compile Include="Handlers\ChatHandler.cs" />
+    <Compile Include="Handlers\IAdminCommandHandler.cs" />
+    <Compile Include="Handlers\IChatHandler.cs" />
     <Compile Include="Managers\AnnouncementManager.cs" />
     <Compile Include="Managers\BBS\BBSManager.cs" />
     <Compile Include="Managers\CastleManager.cs" />
@@ -147,6 +156,7 @@
     <Compile Include="Model\Inventory\ItemContainer.cs" />
     <Compile Include="Model\Inventory\PcInventory.cs" />
     <Compile Include="Model\Inventory\PetInventory.cs" />
+    <Compile Include="Model\Items\Armor.cs" />
     <Compile Include="Model\Items\Capsule.cs" />
     <Compile Include="Model\Items\CapsuleItem.cs" />
     <Compile Include="Model\Items\CapsuleItemReward.cs" />
@@ -192,6 +202,7 @@
     <Compile Include="Model\Player\Experience.cs" />
     <Compile Include="Model\Player\General\L2Macro.cs" />
     <Compile Include="Model\Player\General\L2Radar.cs" />
+    <Compile Include="Model\Player\General\PlayerBag.cs" />
     <Compile Include="Model\Player\L2PartyRoom.cs" />
     <Compile Include="Model\Player\General\L2Shortcut.cs" />
     <Compile Include="Model\Player\Transformation\Data\_00001_1.cs" />

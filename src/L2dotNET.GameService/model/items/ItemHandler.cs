@@ -55,8 +55,6 @@ namespace L2dotNET.GameService.Model.Items
             return false;
         }
 
-        public ItemHandler() { }
-
         private short _effects;
 
         private void Register(ItemEffect effect)

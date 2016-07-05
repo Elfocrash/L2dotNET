@@ -38,11 +38,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteD(item.SlotLocation); //loc
                 WriteQ(item.Count);
 
-                WriteH(item.Template.Type2());
+                WriteH(item.Template.Type2);
                 WriteH(item.CustomType1);
                 WriteH(item.IsEquipped);
 
-                WriteD(item.Template.BodyPartId());
+                WriteD(item.Template.BodyPart);
                 WriteH(item.Enchant);
                 WriteH(item.CustomType2);
 

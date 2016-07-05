@@ -79,9 +79,7 @@ namespace L2dotNET.GameService.World
             }
 
             if (newtarget)
-            {
                 player.SendPacket(new MyTargetSelected(ObjId, 0));
-            }
         }
 
         public override void OnForcedAttack(L2Player player)
@@ -102,29 +100,19 @@ namespace L2dotNET.GameService.World
             }
 
             if (newtarget)
-            {
                 player.SendPacket(new MyTargetSelected(ObjId, 0));
-            }
             else
-            {
                 player.SendActionFailed();
-            }
         }
 
         public override void SetRegion(L2WorldRegion newRegion)
         {
             // confirm revalidation of old region's zones
             if (Region != null)
-            {
                 if (newRegion != null)
-                {
                     Region.RevalidateZones(this);
-                }
                 else
-                {
                     Region.RemoveFromZones(this);
-                }
-            }
 
             base.SetRegion(newRegion);
         }
@@ -133,9 +121,7 @@ namespace L2dotNET.GameService.World
         {
             Skill skill = SkillTable.Instance.Get(id, lvl);
             if (skill != null)
-            {
                 AddSkill(skill, updDb, update);
-            }
         }
 
         public virtual void AddSkill(Skill newsk, bool updDb, bool update)
@@ -145,32 +131,24 @@ namespace L2dotNET.GameService.World
                 if (Skills.ContainsKey(newsk.SkillId))
                 {
                     if (newsk.OpType == SkillOperational.P)
-                    {
                         RemoveStats(Skills[newsk.SkillId], this);
-                    }
 
                     Skills.Remove(newsk.SkillId);
                 }
-
+            
                 Skills.Add(newsk.SkillId, newsk);
             }
 
             if (newsk.OpType == SkillOperational.P)
-            {
                 AddStats(newsk, this);
-            }
         }
 
         public void SetInsisdeZone(ZoneId zone, bool state)
         {
             if (state)
-            {
                 _zones[(int)zone.Id]++;
-            }
             else
-            {
                 _zones[(int)zone.Id]--;
-            }
         }
 
         public virtual void RemoveSkill(int id, bool updDb, bool update)
@@ -180,9 +158,7 @@ namespace L2dotNET.GameService.World
                 if (Skills.ContainsKey(id))
                 {
                     if (Skills[id].OpType == SkillOperational.P)
-                    {
                         RemoveStats(Skills[id], this);
-                    }
 
                     Skills.Remove(id);
                 }
@@ -197,76 +173,33 @@ namespace L2dotNET.GameService.World
                 if (this is L2Player)
                 {
                     if (result.TotalUi == 1)
-                    {
                         BroadcastUserInfo();
-                    }
                     else
                     {
                         if (result.Sus != null)
                         {
                             StatusUpdate su = new StatusUpdate(ObjId);
                             foreach (int stat in result.Sus.Keys)
-                            {
                                 su.Add(stat, (int)result.Sus[stat]);
-                            }
 
                             BroadcastPacket(su, false);
 
                             if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
-                            {
                                 ((L2Player)this).Party.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                            }
                         }
                     }
                 }
                 else
                 {
                     if (result.TotalUi == 1)
-                    {
                         BroadcastUserInfo();
-                    }
                 }
             }
         }
 
         public void RemoveStats(L2Item item)
         {
-            if (item.Template.Stats.Count > 0)
-            {
-                EffectResult result = CharacterStat.Stop(item.Template.Stats, this);
-                if (this is L2Player)
-                {
-                    if (result.TotalUi == 1)
-                    {
-                        BroadcastUserInfo();
-                    }
-                    else
-                    {
-                        if (result.Sus != null)
-                        {
-                            StatusUpdate su = new StatusUpdate(ObjId);
-                            foreach (int stat in result.Sus.Keys)
-                            {
-                                su.Add(stat, (int)result.Sus[stat]);
-                            }
-
-                            BroadcastPacket(su, false);
-
-                            if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
-                            {
-                                ((L2Player)this).Party.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    if (result.TotalUi == 1)
-                    {
-                        BroadcastUserInfo();
-                    }
-                }
-            }
+          
         }
 
         public void RemoveStat(Effect effect)
@@ -277,43 +210,33 @@ namespace L2dotNET.GameService.World
             if (this is L2Player)
             {
                 if (result.TotalUi == 1)
-                {
                     BroadcastUserInfo();
-                }
                 else
                 {
                     if (result.Sus != null)
                     {
                         StatusUpdate su = new StatusUpdate(ObjId);
                         foreach (int stat in result.Sus.Keys)
-                        {
                             su.Add(stat, (int)result.Sus[stat]);
-                        }
 
                         BroadcastPacket(su, false);
 
                         if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
-                        {
                             ((L2Player)this).Party.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                        }
                     }
                 }
             }
             else
             {
                 if (result.TotalUi == 1)
-                {
                     BroadcastUserInfo();
-                }
             }
         }
 
         private void AddStats(Skill skill, L2Character caster)
         {
             if (skill.Effects == null)
-            {
                 return;
-            }
 
             if (skill.Effects.Count > 0)
             {
@@ -321,76 +244,33 @@ namespace L2dotNET.GameService.World
                 if (this is L2Player)
                 {
                     if (result.TotalUi == 1)
-                    {
                         BroadcastUserInfo();
-                    }
                     else
                     {
                         if (result.Sus != null)
                         {
                             StatusUpdate su = new StatusUpdate(ObjId);
                             foreach (int stat in result.Sus.Keys)
-                            {
                                 su.Add(stat, (int)result.Sus[stat]);
-                            }
 
                             BroadcastPacket(su, false);
 
                             if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
-                            {
                                 ((L2Player)this).Party.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                            }
                         }
                     }
                 }
                 else
                 {
                     if (result.TotalUi == 1)
-                    {
                         BroadcastUserInfo();
-                    }
                 }
             }
         }
 
         public void AddStats(L2Item item)
         {
-            if (item.Template.Stats.Count > 0)
-            {
-                EffectResult result = CharacterStat.Apply(item.Template.Stats, this);
-                if (this is L2Player)
-                {
-                    if (result.TotalUi == 1)
-                    {
-                        BroadcastUserInfo();
-                    }
-                    else
-                    {
-                        if (result.Sus != null)
-                        {
-                            StatusUpdate su = new StatusUpdate(ObjId);
-                            foreach (int stat in result.Sus.Keys)
-                            {
-                                su.Add(stat, (int)result.Sus[stat]);
-                            }
-
-                            BroadcastPacket(su, false);
-
-                            if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
-                            {
-                                ((L2Player)this).Party.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    if (result.TotalUi == 1)
-                    {
-                        BroadcastUserInfo();
-                    }
-                }
-            }
+           
         }
 
         public void AddStat(Effect effect)
@@ -401,34 +281,26 @@ namespace L2dotNET.GameService.World
             if (this is L2Player)
             {
                 if (result.TotalUi == 1)
-                {
                     BroadcastUserInfo();
-                }
                 else
                 {
                     if (result.Sus != null)
                     {
                         StatusUpdate su = new StatusUpdate(ObjId);
                         foreach (int stat in result.Sus.Keys)
-                        {
                             su.Add(stat, (int)result.Sus[stat]);
-                        }
 
                         BroadcastPacket(su, false);
 
                         if (this is L2Player && (result.HpMpCp == 1) && (((L2Player)this).Party != null))
-                        {
                             ((L2Player)this).Party.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                        }
                     }
                 }
             }
             else
             {
                 if (result.TotalUi == 1)
-                {
                     BroadcastUserInfo();
-                }
             }
         }
 
@@ -437,41 +309,31 @@ namespace L2dotNET.GameService.World
             AbnormalEffect ex = Effects.FirstOrDefault(e => e.Id == skill.SkillId);
 
             if (ex != null)
-            {
                 lock (Effects)
                 {
                     ex.ForcedStop(true, true);
                     Effects.Remove(ex);
                 }
-            }
         }
 
         public void OnAveEnd(AbnormalEffect ave, bool msg, bool icon, L2Character caster)
         {
             int olda = AbnormalBitMask;
             if (ave.Skill.AbnormalVisualEffect != -1)
-            {
                 AbnormalBitMask &= ~ave.Skill.AbnormalVisualEffect;
-            }
 
             bool uis = (AbnormalBitMask != olda);
 
             RemoveStats(ave.Skill, caster);
 
             if (msg)
-            {
                 SendPacket(new SystemMessage(SystemMessage.SystemMessageId.EffectS1Disappeared).AddSkillName(ave.Id, ave.Lvl));
-            }
 
             if (uis)
-            {
                 BroadcastUserInfo();
-            }
 
             if (icon)
-            {
                 UpdateMagicEffectIcons();
-            }
         }
 
         public virtual void UpdateMagicEffectIcons() { }
@@ -492,7 +354,6 @@ namespace L2dotNET.GameService.World
         public override void AddAbnormal(Skill skill, L2Character caster, bool permanent, bool unlim)
         {
             if (!permanent)
-            {
                 if (skill.Debuff == 1)
                 {
                     //const bool success = true; // TODO _stats.calcDebuffSuccess(skill, caster);
@@ -505,7 +366,6 @@ namespace L2dotNET.GameService.World
                     //    return;
                     //}
                 }
-            }
 
             if (skill.AbnormalTime == 0)
             {
@@ -548,9 +408,7 @@ namespace L2dotNET.GameService.World
             nulled.Clear();
 
             if (!cnew)
-            {
                 return;
-            }
 
             AbnormalEffect ic = new AbnormalEffect();
             ic.Id = skill.SkillId;
@@ -625,9 +483,7 @@ namespace L2dotNET.GameService.World
             }
 
             if (!addNew)
-            {
                 return;
-            }
 
             Skill newsk = SkillTable.Instance.Get(skillId, lvlnext);
             AbnormalEffect ic = new AbnormalEffect();
@@ -669,26 +525,20 @@ namespace L2dotNET.GameService.World
         {
             int olda = AbnormalBitMask;
             if (skill.AbnormalVisualEffect != -1)
-            {
                 AbnormalBitMask |= skill.AbnormalVisualEffect;
-            }
 
             bool uis = (AbnormalBitMask != olda);
 
             AddStats(skill, caster);
 
             if (uis)
-            {
                 BroadcastUserInfo();
-            }
         }
 
         public virtual void AddEffects(L2Character caster, Skill skill, SortedList<int, L2Object> objects)
         {
             foreach (L2Object target in objects.Values)
-            {
                 target.AddAbnormal(skill, caster, false, false);
-            }
         }
 
         public virtual void AddEffect(L2Character caster, Skill skill, bool permanent, bool unlim)
@@ -724,15 +574,11 @@ namespace L2dotNET.GameService.World
         public int GetSkillLevel(int id)
         {
             if (Skills != null)
-            {
                 lock (Skills)
                 {
                     if (Skills.ContainsKey(id))
-                    {
                         return Skills[id].Level;
-                    }
                 }
-            }
 
             return -1;
         }
@@ -761,9 +607,7 @@ namespace L2dotNET.GameService.World
                     _waterTimer.Enabled = true;
 
                     if (this is L2Player)
-                    {
                         SendPacket(new SetupGauge(ObjId, SetupGauge.SgColor.Cyan, breath * 1000));
-                    }
                 }
             }
             else
@@ -773,9 +617,7 @@ namespace L2dotNET.GameService.World
                     _waterTimer.Enabled = false;
 
                     if (this is L2Player)
-                    {
                         SendPacket(new SetupGauge(ObjId, SetupGauge.SgColor.Cyan, 1));
-                    }
                 }
             }
 
@@ -818,20 +660,14 @@ namespace L2dotNET.GameService.World
         {
             TimeSpan ts = _waterTimeDamage - DateTime.Now;
             if (ts.TotalMilliseconds < 0) //дыхалка кончилась. лупим по ушам
-            {
                 if (this is L2Player)
-                {
                     ReduceHpArea(200, 297);
-                }
-            }
         }
 
         public void ReduceHpArea(int damage, int msgId)
         {
             if (Dead)
-            {
                 return;
-            }
 
             CurHp -= damage;
 
@@ -849,20 +685,15 @@ namespace L2dotNET.GameService.World
             }
 
             if (this is L2Player)
-            {
                 SendPacket(new SystemMessage((SystemMessage.SystemMessageId)msgId).AddNumber(damage));
-            }
         }
 
         public override void ReduceHp(L2Character attacker, double damage)
         {
             if (Dead)
-            {
                 return;
-            }
 
             if ((this is L2Player && attacker is L2Player) || attacker is L2Summon)
-            {
                 if (CurCp > 0)
                 {
                     CurCp -= damage;
@@ -873,7 +704,6 @@ namespace L2dotNET.GameService.World
                         CurCp = 0;
                     }
                 }
-            }
 
             CurHp -= damage;
 
@@ -897,14 +727,10 @@ namespace L2dotNET.GameService.World
             Dead = true;
             StopRegeneration();
             if (IsAttacking())
-            {
                 AbortAttack();
-            }
 
             if (IsCastingNow())
-            {
                 AbortCast();
-            }
 
             CurHp = 0;
             StatusUpdate su = new StatusUpdate(ObjId);
@@ -930,9 +756,7 @@ namespace L2dotNET.GameService.World
             StopRegeneration();
 
             foreach (AbnormalEffect a in Effects)
-            {
                 a.MTimer.Enabled = false;
-            }
 
             Effects.Clear();
 
@@ -940,22 +764,11 @@ namespace L2dotNET.GameService.World
             L2World.Instance.RemoveObject(this);
         }
 
-        public virtual L2Item ActiveWeapon
-        {
-            get { return null; }
-            set { }
-        }
+        public virtual L2Item ActiveWeapon => null;
 
-        public virtual L2Item SecondaryWeapon
-        {
-            get { return null; }
-        }
+        public virtual L2Item SecondaryWeapon => null;
 
-        public virtual L2Item ActiveArmor
-        {
-            get { return null; }
-            set { }
-        }
+        public virtual L2Item ActiveArmor => null;
 
         public L2Character CurrentTarget;
 
@@ -974,14 +787,10 @@ namespace L2dotNET.GameService.World
             }
 
             if ((AttackToHit != null) && AttackToHit.Enabled)
-            {
                 return;
-            }
 
             if ((AttackToEnd != null) && AttackToEnd.Enabled)
-            {
                 return;
-            }
 
             double dist = 60,
                    reqMp = 0;
@@ -993,36 +802,11 @@ namespace L2dotNET.GameService.World
                  ss = false;
             if (weapon != null)
             {
-                ss = weapon.Soulshot;
-                switch (weapon.Template.WeaponType)
-                {
-                    case ItemTemplate.L2ItemWeaponType.Bow:
-                        timeAtk = ((1500 * 345) / timeAtk);
-                        ranged = true;
-                        break;
-                    case ItemTemplate.L2ItemWeaponType.Crossbow:
-                        timeAtk = ((1200 * 345) / timeAtk);
-                        ranged = true;
-                        break;
-                    case ItemTemplate.L2ItemWeaponType.Dualdagger:
-                    case ItemTemplate.L2ItemWeaponType.Dual:
-                        timeAtk = ((1362 * 345) / timeAtk);
-                        dual = true;
-                        break;
-                    default:
-                        timeAtk = ((1362 * 345) / timeAtk);
-                        break;
-                }
-
-                if ((weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.Crossbow) || (weapon.Template.WeaponType == ItemTemplate.L2ItemWeaponType.Bow))
-                {
-                    dist += 740;
-                    reqMp = weapon.Template.MpConsume;
-                }
+                
             }
             else
             {
-                timeAtk = ((1362 * 345) / timeAtk);
+                timeAtk = (1362 * 345 / timeAtk);
             }
 
             if (!Calcs.CheckIfInRange((int)dist, this, target, true))
@@ -1103,24 +887,18 @@ namespace L2dotNET.GameService.World
 
         public Hit GenHitSimple(bool dual, bool ss)
         {
-            Hit h = new Hit { Miss = Formulas.CheckMissed(this, CurrentTarget) };
+            Hit h = new Hit {Miss = Formulas.CheckMissed(this, CurrentTarget)};
             if (!h.Miss)
             {
                 h.ShieldDef = Formulas.CheckShieldDef(this, CurrentTarget);
                 h.Crit = Formulas.CheckCrit(this, CurrentTarget);
                 h.Damage = Formulas.GetPhysHitDamage(this, CurrentTarget, 0);
                 if (dual)
-                {
                     h.Damage *= .5;
-                }
                 if (ss)
-                {
                     h.Damage *= 2;
-                }
                 if (h.Crit)
-                {
                     h.Damage *= 2;
-                }
             }
 
             return h;
@@ -1129,15 +907,12 @@ namespace L2dotNET.GameService.World
         public virtual void AttackDoHit(object sender, ElapsedEventArgs e)
         {
             if (CurrentTarget != null)
-            {
                 if (!Hit1.Miss)
                 {
                     CurrentTarget.ReduceHp(this, Hit1.Damage);
 
                     if (CurrentTarget is L2Player)
-                    {
                         CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(CurrentTarget).AddName(this).AddNumber(Hit1.Damage));
-                    }
                 }
                 else
                 {
@@ -1147,7 +922,6 @@ namespace L2dotNET.GameService.World
                         ((L2Player)CurrentTarget).AiCharacter.NotifyEvaded(this);
                     }
                 }
-            }
 
             AttackToHit.Enabled = false;
         }
@@ -1155,14 +929,11 @@ namespace L2dotNET.GameService.World
         public virtual void AttackDoHit2Nd(object sender, ElapsedEventArgs e)
         {
             if (CurrentTarget != null)
-            {
                 if (!Hit2.Miss)
                 {
                     CurrentTarget.ReduceHp(this, Hit2.Damage);
                     if (CurrentTarget is L2Player)
-                    {
                         CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(CurrentTarget).AddName(this).AddNumber(Hit2.Damage));
-                    }
                 }
                 else
                 {
@@ -1172,7 +943,6 @@ namespace L2dotNET.GameService.World
                         ((L2Player)CurrentTarget).AiCharacter.NotifyEvaded(this);
                     }
                 }
-            }
 
             AttackToHitBonus.Enabled = false;
         }
@@ -1266,19 +1036,13 @@ namespace L2dotNET.GameService.World
         public virtual void AbortAttack()
         {
             if ((AttackToHit != null) && AttackToHit.Enabled)
-            {
                 AttackToHit.Enabled = false;
-            }
 
             if ((AttackToHitBonus != null) && AttackToHitBonus.Enabled)
-            {
                 AttackToHitBonus.Enabled = false;
-            }
 
             if ((AttackToEnd != null) && AttackToEnd.Enabled)
-            {
                 AttackToEnd.Enabled = false;
-            }
 
             //  hit1 = null;
             //  hit2 = null;
@@ -1295,19 +1059,13 @@ namespace L2dotNET.GameService.World
         public virtual bool CantMove()
         {
             if (PBlockAct == 1)
-            {
                 return true;
-            }
 
             if ((AbnormalBitMaskEx & AbnormalMaskExFreezing) == AbnormalMaskExFreezing)
-            {
                 return true;
-            }
 
             if (IsCastingNow())
-            {
                 return true;
-            }
 
             return false;
         }
@@ -1330,18 +1088,12 @@ namespace L2dotNET.GameService.World
         public void Status_FreezeMe(bool status, bool update)
         {
             if (status)
-            {
                 AbnormalBitMaskEx |= AbnormalMaskExFreezing;
-            }
             else
-            {
                 AbnormalBitMaskEx &= ~AbnormalMaskExFreezing;
-            }
 
             if (update)
-            {
                 UpdateAbnormalExEffect();
-            }
         }
 
         public CStats CharacterStat;
@@ -1349,9 +1101,7 @@ namespace L2dotNET.GameService.World
         public void CStatsInit()
         {
             if (CharacterStat == null)
-            {
                 CharacterStat = new CStats(this);
-            }
         }
 
         public void ChangeTarget(L2Character target = null)
@@ -1364,7 +1114,6 @@ namespace L2dotNET.GameService.World
             else
             {
                 if (CurrentTarget != null)
-                {
                     if (CurrentTarget.ObjId != target.ObjId)
                     {
                         BroadcastPacket(new TargetUnselected(this));
@@ -1374,7 +1123,6 @@ namespace L2dotNET.GameService.World
                         OnOldTargetSelection(target);
                         return;
                     }
-                }
 
                 CurrentTarget = target;
 
@@ -1394,42 +1142,28 @@ namespace L2dotNET.GameService.World
                  cp = false;
 
             if (this is L2Player)
-            {
                 cp = CurCp < CharacterStat.GetStat(EffectType.BMaxCp);
-            }
 
             if (hp || mp || cp)
             {
                 StatusUpdate su = new StatusUpdate(ObjId);
                 if (hp)
-                {
                     su.Add(StatusUpdate.CurHp, (int)CurHp);
-                }
                 if (mp)
-                {
                     su.Add(StatusUpdate.CurMp, (int)CurMp);
-                }
                 if (cp)
-                {
                     su.Add(StatusUpdate.CurCp, (int)CurCp);
-                }
 
                 BroadcastPacket(su);
 
                 if (this is L2Summon)
                 {
-                    if (((L2Summon)this).Owner != null)
-                    {
-                        ((L2Summon)this).Owner.SendPacket(new PetStatusUpdate((L2Summon)this));
-                    }
+                    ((L2Summon) this).Owner?.SendPacket(new PetStatusUpdate((L2Summon)this));
                 }
 
                 if (this is L2Player)
                 {
-                    if (((L2Player)this).Party != null)
-                    {
-                        ((L2Player)this).Party.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                    }
+                    ((L2Player) this).Party?.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
                 }
             }
         }
@@ -1441,9 +1175,7 @@ namespace L2dotNET.GameService.World
             {
                 CurHp += CharacterStat.GetStat(EffectType.BRegHp);
                 if (CurHp > maxhp)
-                {
                     CurHp = maxhp;
-                }
             }
 
             double maxmp = CharacterStat.GetStat(EffectType.BMaxMp);
@@ -1451,9 +1183,7 @@ namespace L2dotNET.GameService.World
             {
                 CurMp += CharacterStat.GetStat(EffectType.BRegMp);
                 if (CurMp > maxmp)
-                {
                     CurMp = maxmp;
-                }
             }
 
             if (this is L2Player)
@@ -1463,9 +1193,7 @@ namespace L2dotNET.GameService.World
                 {
                     CurCp += CharacterStat.GetStat(EffectType.BRegCp);
                     if (CurCp > maxcp)
-                    {
                         CurCp = maxcp;
-                    }
                 }
             }
         }
@@ -1478,9 +1206,7 @@ namespace L2dotNET.GameService.World
         public virtual void AbortCast()
         {
             if (CastTime != null)
-            {
                 CastTime.Enabled = false;
-            }
 
             BroadcastPacket(new MagicSkillCanceld(ObjId));
             CurrentCast = null;
@@ -1494,63 +1220,43 @@ namespace L2dotNET.GameService.World
         public int CastSkill(Skill skill)
         {
             if (IsCastingNow())
-            {
                 return 1;
-            }
 
             L2Object target = skill.GetTargetCastId(this);
 
             if (target == null)
-            {
                 return 2;
-            }
 
             if (skill.CastRange != -1)
             {
                 double dis = Calcs.CalculateDistance(this, target, true);
                 if (dis > skill.CastRange)
-                {
                     return 3;
-                }
             }
 
             if (skill.ReuseDelay > 0)
-            {
                 if (Reuse.ContainsKey(skill.SkillId))
                 {
                     TimeSpan ts = Reuse[skill.SkillId].StopTime - DateTime.Now;
 
                     if (ts.TotalMilliseconds > 0)
-                    {
                         return 4;
-                    }
                 }
-            }
 
             if ((skill.MpConsume1 > 0) || (skill.MpConsume2 > 0))
-            {
-                if (CurMp < (skill.MpConsume1 + skill.MpConsume2))
-                {
+                if (CurMp < skill.MpConsume1 + skill.MpConsume2)
                     return 5;
-                }
-            }
 
             if (skill.HpConsume > 0)
-            {
                 if (CurHp < skill.HpConsume)
-                {
                     return 6;
-                }
-            }
 
             if (skill.Effects.Count > 0)
             {
                 bool fail = skill.Effects.Any(ef => !ef.CanUse(this));
 
                 if (fail)
-                {
                     return 7;
-                }
             }
 
             if (skill.ReuseDelay > 0)
@@ -1609,9 +1315,7 @@ namespace L2dotNET.GameService.World
                 CastTime.Enabled = true;
             }
             else
-            {
                 CastEnd();
-            }
 
             return -1;
         }
@@ -1641,14 +1345,10 @@ namespace L2dotNET.GameService.World
                 {
                     double dis = Calcs.CalculateDistance(this, CurrentTarget, true);
                     if (dis > CurrentCast.EffectiveRange)
-                    {
                         block = true;
-                    }
                 }
                 else
-                {
                     block = true;
-                }
 
                 if (block)
                 {
@@ -1667,12 +1367,10 @@ namespace L2dotNET.GameService.World
             AddEffects(this, CurrentCast, arr);
             CurrentCast = null;
             if (CastTime != null)
-            {
                 lock (CastTime)
                 {
                     CastTime.Enabled = false;
                 }
-            }
         }
 
         public virtual L2Character[] GetPartyCharacters()
@@ -1688,22 +1386,17 @@ namespace L2dotNET.GameService.World
         public void MoveTo(int x, int y, int z)
         {
             if (IsAttacking())
-            {
                 AbortAttack();
-            }
 
             if (_updatePositionTime == null)
             {
-                _updatePositionTime = new Timer();
-                _updatePositionTime.Interval = 100;
+                _updatePositionTime = new Timer {Interval = 100};
                 _updatePositionTime.Elapsed += UpdatePositionTask;
             }
             else
             {
                 if (_updatePositionTime.Enabled) // новый маршрут, но старый не закончен
-                {
                     NotifyStopMove(false);
-                }
             }
 
             DestX = x;
@@ -1713,13 +1406,13 @@ namespace L2dotNET.GameService.World
             double dx = (x - X),
                    dy = (y - Y);
             //dz = (z - Z);
-            double distance = Math.Sqrt((dx * dx) + (dy * dy));
+            double distance = Math.Sqrt(dx * dx + dy * dy);
 
             double speed = CharacterStat.GetStat(EffectType.PSpeed);
             double spy = dy / distance,
                    spx = dx / distance;
 
-            _ticksToMove = 1 + (int)((10 * distance) / speed);
+            _ticksToMove = 1 + (int)(10 * distance / speed);
             _ticksToMoveCompleted = 0;
             _xSpeedTicks = (DestX - X) / _ticksToMove;
             _ySpeedTicks = (DestY - Y) / _ticksToMove;
@@ -1765,14 +1458,10 @@ namespace L2dotNET.GameService.World
                 _updatePositionTime.Enabled = false;
 
                 if (broadcast)
-                {
                     AiCharacter.NotifyStopMoving();
-                }
 
                 if (update)
-                {
                     BroadcastPacket(new StopMove(this));
-                }
             }
 
             DestX = 0;
@@ -1823,17 +1512,13 @@ namespace L2dotNET.GameService.World
             return (AttackToEnd != null) && AttackToEnd.Enabled;
         }
 
-        public virtual int ClanId
-        {
-            get { return 0; }
-            set { }
-        }
+        public virtual int ClanId { get; set; } = 0;
 
-        public virtual int ClanCrestId => 0;
+        public virtual int ClanCrestId { get; set; } = 0;
 
-        public virtual int AllianceId => 0;
+        public virtual int AllianceId { get; set; } = 0;
 
-        public virtual int AllianceCrestId => 0;
+        public virtual int AllianceCrestId { get; set; } = 0;
 
         public virtual int MaxHp { get; set; }
         public virtual int MaxCp { get; set; }
@@ -1866,25 +1551,19 @@ namespace L2dotNET.GameService.World
             {
                 case 0:
                     if (_muted0 == null)
-                    {
                         _muted0 = new List<long>();
-                    }
 
                     list = _muted0;
                     break;
                 case 1:
                     if (_muted1 == null)
-                    {
                         _muted1 = new List<long>();
-                    }
 
                     list = _muted1;
                     break;
                 case 2:
                     if (_muted2 == null)
-                    {
                         _muted2 = new List<long>();
-                    }
 
                     list = _muted2;
                     break;
@@ -1893,29 +1572,18 @@ namespace L2dotNET.GameService.World
             if (start)
             {
                 if ((list != null) && !list.Contains(hashId))
-                {
                     list.Add(hashId);
-                }
             }
-            else if (list != null)
+            else
             {
-                list.Remove(hashId);
+                list?.Remove(hashId);
             }
         }
 
-        public bool MutedPhysically
-        {
-            get { return (_muted0 != null) && (_muted0.Count > 0); }
-        }
+        public bool MutedPhysically => (_muted0 != null) && (_muted0.Count > 0);
 
-        public bool MutedMagically
-        {
-            get { return (_muted1 != null) && (_muted1.Count > 0); }
-        }
+        public bool MutedMagically => (_muted1 != null) && (_muted1.Count > 0);
 
-        public bool MutedSpecial
-        {
-            get { return (_muted2 != null) && (_muted2.Count > 0); }
-        }
+        public bool MutedSpecial => (_muted2 != null) && (_muted2.Count > 0);
     }
 }

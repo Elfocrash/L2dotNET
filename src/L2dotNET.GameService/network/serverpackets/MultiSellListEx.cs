@@ -52,14 +52,6 @@ namespace L2dotNET.GameService.Network.Serverpackets
                     WriteH(item.Enchant);
                     WriteD(item.Augment);
                     WriteD(item.Durability);
-                    WriteH(item.AttrAttackType);
-                    WriteH(item.AttrAttackValue);
-                    WriteH(item.AttrDefenseValueFire);
-                    WriteH(item.AttrDefenseValueWater);
-                    WriteH(item.AttrDefenseValueWind);
-                    WriteH(item.AttrDefenseValueEarth);
-                    WriteH(item.AttrDefenseValueHoly);
-                    WriteH(item.AttrDefenseValueUnholy);
                 }
 
                 foreach (MultiSellItem item in entry.Take)
@@ -70,14 +62,6 @@ namespace L2dotNET.GameService.Network.Serverpackets
                     WriteH(item.Enchant);
                     WriteD(item.Augment);
                     WriteD(item.Durability);
-                    WriteH(item.AttrAttackType);
-                    WriteH(item.AttrAttackValue);
-                    WriteH(item.AttrDefenseValueFire);
-                    WriteH(item.AttrDefenseValueWater);
-                    WriteH(item.AttrDefenseValueWind);
-                    WriteH(item.AttrDefenseValueEarth);
-                    WriteH(item.AttrDefenseValueHoly);
-                    WriteH(item.AttrDefenseValueUnholy);
                 }
             }
         }

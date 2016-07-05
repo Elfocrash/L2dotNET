@@ -14,11 +14,6 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             if (player != null)
             {
                 L2Item item = player.GetWeaponItem();
-                if ((item == null) || !ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemId))
-                {
-                    caster.SendSystemMessage(SystemMessage.SystemMessageId.CannotConvertThisItem);
-                    return Nothing;
-                }
 
                 //int newid = ItemTable.Instance.ConvertDataList[item.Template.ItemID];
 
@@ -59,11 +54,11 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
                 return false;
             }
 
-            if (!ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemId))
-            {
-                caster.SendSystemMessage(SystemMessage.SystemMessageId.CannotConvertThisItem);
-                return false;
-            }
+            //if (!ItemTable.Instance.ConvertDataList.ContainsKey(item.Template.ItemId))
+            //{
+            //    caster.SendSystemMessage(SystemMessage.SystemMessageId.CannotConvertThisItem);
+            //    return false;
+            //}
 
             return true;
         }

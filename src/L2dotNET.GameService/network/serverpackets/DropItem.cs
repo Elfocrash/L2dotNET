@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(_item.X);
             WriteD(_item.Y);
             WriteD(_item.Z);
-            WriteD(_item.Template.IsStackable() ? 1 : 0);
+            WriteD(_item.Template.Stackable ? 1 : 0);
             WriteQ(_item.Count);
             WriteD(1); // ?
         }

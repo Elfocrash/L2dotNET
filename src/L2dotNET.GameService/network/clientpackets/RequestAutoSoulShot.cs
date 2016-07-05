@@ -27,57 +27,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Player player = Client.CurrentPlayer;
 
             L2Item item = player.Inventory.GetItemByItemId(_itemId);
-            if ((item == null) || !item.Template.IsAutoSs)
-            {
-                player.SendActionFailed();
-                return;
-            }
-
-            if (_type == 1)
-            {
-                if (player.AutoSoulshots.Contains(_itemId))
-                {
-                    player.SendActionFailed();
-                    return;
-                }
-
-                player.AutoSoulshots.Add(_itemId);
-                player.SendPacket(new ExAutoSoulShot(_itemId, _type));
-                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.UseOfS1WillBeAuto).AddItemName(_itemId));
-
-                L2Item weapon = player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand);
-                if (weapon != null)
-                {
-                    foreach (int sid in weapon.Template.GetSoulshots().Where(sid => sid == _itemId))
-                    {
-                        if (!weapon.Soulshot)
-                        {
-                            if (!player.HasItem(sid, weapon.Template.SoulshotCount))
-                            {
-                                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.CannotAutoUseLackOfS1).AddItemName(_itemId));
-                                player.SendActionFailed();
-                                return;
-                            }
-
-                            player.DestroyItemById(_itemId, weapon.Template.SoulshotCount);
-                            weapon.Soulshot = true;
-                            player.BroadcastSoulshotUse(_itemId);
-                        }
-
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                lock (player.AutoSoulshots)
-                {
-                    player.AutoSoulshots.Remove(_itemId);
-                }
-
-                player.SendPacket(new ExAutoSoulShot(_itemId, 0));
-                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.AutoUseOfS1Cancelled).AddItemName(_itemId));
-            }
+            
         }
     }
 }

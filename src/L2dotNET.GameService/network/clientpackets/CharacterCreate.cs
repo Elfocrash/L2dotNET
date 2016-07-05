@@ -14,10 +14,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class CharacterCreate : GameServerNetworkRequest
     {
         [Inject]
-        public IPlayerService PlayerService
-        {
-            get { return GameServer.Kernel.Get<IPlayerService>(); }
-        }
+        public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
 
         public CharacterCreate(GameClient client, byte[] data)
         {

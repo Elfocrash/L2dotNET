@@ -28,30 +28,22 @@ namespace L2dotNET.GameService.Managers
                 {
                     L2Item item = player.Inventory.GetItemByItemId(id);
                     if (item == null)
-                    {
                         return false;
-                    }
 
                     long num = player.CurrentTrade[id];
 
-                    if (!item.Template.IsStackable() && (num != 1))
-                    {
+                    if (!item.Template.Stackable && (num != 1))
                         tm.Add(id, 1);
-                    }
 
                     if (item.Count < num)
-                    {
                         tm.Add(id, item.Count);
-                    }
                 }
 
                 if (tm.Count > 0)
                 {
                     lock (player.CurrentTrade)
                         foreach (int key in tm.Keys)
-                        {
                             player.CurrentTrade[key] = tm[key];
-                        }
 
                     tm.Clear();
                 }

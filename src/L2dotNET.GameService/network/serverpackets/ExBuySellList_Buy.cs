@@ -46,32 +46,23 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteD(si.Item.ItemId);
                 WriteD(0);
                 WriteQ(si.Count < 0 ? 0 : si.Count);
-                WriteH(si.Item.Type2());
+                WriteH(si.Item.Type2);
                 WriteH(0);
                 WriteH(0);
-                WriteD(si.Item.BodyPartId());
+                WriteD(si.Item.BodyPart);
 
                 WriteH(0);
                 WriteH(0);
                 WriteD(0);
-                WriteD(si.Item.Durability);
+                WriteD(0);
                 WriteD(-9999);
-
-                WriteH(si.Item.BaseAttrAttackType);
-                WriteH(si.Item.BaseAttrAttackValue);
-                WriteH(si.Item.BaseAttrDefenseValueFire);
-                WriteH(si.Item.BaseAttrDefenseValueWater);
-                WriteH(si.Item.BaseAttrDefenseValueWind);
-                WriteH(si.Item.BaseAttrDefenseValueEarth);
-                WriteH(si.Item.BaseAttrDefenseValueHoly);
-                WriteH(si.Item.BaseAttrDefenseValueUnholy);
 
                 // Enchant Effects
                 WriteH(0x00);
                 WriteH(0x00);
                 WriteH(0x00);
 
-                WriteQ((long)(si.Item.Price * _mod * _tax));
+                WriteQ((long)(si.Item.ReferencePrice * _mod * _tax));
             }
         }
     }

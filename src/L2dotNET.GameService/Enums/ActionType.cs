@@ -1,0 +1,32 @@
+﻿namespace L2dotNET.GameService.Enums
+{
+    public enum ActionType
+    {
+        Calc,
+        CallSkill,
+        Capsule,
+        CreateMpcc,
+        Dice,
+        Equip,
+        Fishingshot,
+        Harvest,
+        HideName,
+        KeepExp,
+        NickColor,
+        None,
+        Peel,
+        Recipe,
+        Seed,
+        ShowAdventurerGuideBook,
+        ShowHtml,
+        ShowSsqStatus,
+        SkillMaintain,
+        SkillReduce,
+        Soulshot,
+        Spiritshot,
+        StartQuest,
+        SummonSoulshot,
+        SummonSpiritshot,
+        XmasOpen
+    }
+}
