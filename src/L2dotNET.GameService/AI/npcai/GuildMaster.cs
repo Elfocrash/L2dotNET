@@ -344,7 +344,7 @@ namespace L2dotNET.GameService.AI.NpcAI
             }
 
             talker.ActiveSkillTree = avail;
-            talker.SendPacket(new AcquireSkillList(AcquireSkillList.EsttClan, talker));
+            talker.SendPacket(new AcquireSkillList(AcquireSkillList.SkillType.Clan));
         }
 
         public override void TalkedBypass(L2Player talker, string bypass)

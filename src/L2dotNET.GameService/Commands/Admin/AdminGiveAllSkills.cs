@@ -71,7 +71,7 @@ namespace L2dotNET.GameService.Commands.Admin
             }
 
             target.ActiveSkillTree = avail;
-            target.SendPacket(new AcquireSkillList(0, target));
+            target.SendPacket(new AcquireSkillList(AcquireSkillList.SkillType.Usual));
 
             target.UpdateSkillList();
             target.SendMessage("gor all skills [" + skills.Skills.Count + "][" + avail.Count + "] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id);

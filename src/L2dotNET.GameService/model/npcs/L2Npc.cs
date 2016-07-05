@@ -324,7 +324,7 @@ namespace L2dotNET.GameService.Model.Npcs
                 {
                     list.Clear();
                     player.ActiveSkillTree = list;
-                    player.SendPacket(new AcquireSkillList(AcquireSkillList.EsttNormal, player));
+                    player.SendPacket(new AcquireSkillList(AcquireSkillList.SkillType.Usual));
                 }
 
                 if (nextLvl != 800)
@@ -337,7 +337,7 @@ namespace L2dotNET.GameService.Model.Npcs
             }
 
             player.ActiveSkillTree = list;
-            player.SendPacket(new AcquireSkillList(AcquireSkillList.EsttNormal, player));
+            player.SendPacket(new AcquireSkillList(AcquireSkillList.SkillType.Usual));
             player.FolkNpc = this;
         }
 

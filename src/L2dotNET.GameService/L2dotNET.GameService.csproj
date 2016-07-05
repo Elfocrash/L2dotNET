@@ -251,7 +251,7 @@
     <Compile Include="Model\Skills2\TEffectRegistrator.cs" />
     <Compile Include="Model\Skills2\TEffectResult.cs" />
     <Compile Include="Model\Skills2\TEffectType.cs" />
-    <Compile Include="Model\Skills2\TSkill.cs" />
+    <Compile Include="Model\Skills2\Skill.cs" />
     <Compile Include="Model\Skills2\TSkillCond.cs" />
     <Compile Include="Model\Skills2\TSkillCondType.cs" />
     <Compile Include="Model\Skills2\TSkillEnchantInfo.cs" />

@@ -37,22 +37,4 @@ namespace L2dotNET.GameService.Network.Serverpackets
             }
         }
     }
-
-    internal class Skill
-    {
-        public int Id;
-        public int NextLevel;
-        public int MaxLevel;
-        public int SpCost;
-        public int Requirements;
-
-        public Skill(int pId, int pNextLevel, int pMaxLevel, int pSpCost, int pRequirements)
-        {
-            Id = pId;
-            NextLevel = pNextLevel;
-            MaxLevel = pMaxLevel;
-            SpCost = pSpCost;
-            Requirements = pRequirements;
-        }
-    }
 }
