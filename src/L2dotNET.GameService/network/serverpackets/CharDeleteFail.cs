@@ -16,7 +16,7 @@
 
         public CharDeleteFail(CharDeleteFailReason reason)
         {
-            this._reason = reason;
+            _reason = reason;
         }
 
         protected internal override void Write()

@@ -9,7 +9,7 @@ namespace L2dotNET.Services
 
         public CheckService(IUnitOfWork unitOfWork)
         {
-            this._unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
         }
 
         public bool PreCheckRepository()

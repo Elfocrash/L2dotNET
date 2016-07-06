@@ -2,7 +2,7 @@
 
 namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 {
-    internal static class ServerLoginFail
+    static class ServerLoginFail
     {
         /// <summary>
         /// Packet opcode.

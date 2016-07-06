@@ -4,7 +4,7 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Model.Skills2.Effects
 {
-    internal class BAccuracyNight : Effect
+    class BAccuracyNight : Effect
     {
         private SpecEffect _ef;
 

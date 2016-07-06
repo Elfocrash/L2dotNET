@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Skills2;
 
 namespace L2dotNET.GameService.Model.Player.Transformation
@@ -40,13 +41,9 @@ namespace L2dotNET.GameService.Model.Player.Transformation
 
             if ((Skills != null) && (Skills.Count > 0))
             {
-                foreach (int[] s in Skills)
+                foreach (Skill sk in Skills.Select(s => SkillTable.Instance.Get(s[0], s[1])).Where(sk => sk != null))
                 {
-                    Skill sk = SkillTable.Instance.Get(s[0], s[1]);
-                    if (sk != null)
-                    {
-                        player.AddSkill(sk, false, false);
-                    }
+                    player.AddSkill(sk, false, false);
                 }
 
                 player.UpdateSkillList();

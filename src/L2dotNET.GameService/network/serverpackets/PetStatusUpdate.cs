@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public PetStatusUpdate(L2Summon pet)
         {
-            this._pet = pet;
+            _pet = pet;
         }
 
         protected internal override void Write()

@@ -24,7 +24,7 @@
 
         public CharCreateFail(CharCreateFailReason reason)
         {
-            this._reason = reason;
+            _reason = reason;
         }
 
         protected internal override void Write()

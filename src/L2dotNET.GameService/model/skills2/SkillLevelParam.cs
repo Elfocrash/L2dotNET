@@ -8,9 +8,9 @@
 
         public SkillLevelParam(string pch, byte type, byte id)
         {
-            this.Pch = pch;
-            this.Type = type;
-            this.Id = id;
+            Pch = pch;
+            Type = type;
+            Id = id;
         }
     }
 }

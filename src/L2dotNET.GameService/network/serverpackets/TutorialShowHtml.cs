@@ -12,19 +12,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
             Render(player, file, "", admin);
         }
 
-        public TutorialShowHtml(L2Player player, string file, string back, bool admin)
-        {
-            Render(player, file, back, admin);
-        }
-
-        public TutorialShowHtml(L2Player player, string text, string back, bool plain, bool admin)
+        public TutorialShowHtml(L2Player player, string text, string back, bool admin)
         {
             RenderPlain(player, text, back, admin);
-        }
-
-        public TutorialShowHtml(L2Player player, string text, bool plain, bool admin)
-        {
-            RenderPlain(player, text, "", admin);
         }
 
         private void RenderPlain(L2Player player, string text, string back, bool admin)

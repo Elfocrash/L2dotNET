@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public PartySmallWindowUpdate(L2Player member)
         {
-            this._member = member;
+            _member = member;
         }
 
         protected internal override void Write()

@@ -77,8 +77,6 @@ namespace L2dotNET.GameService.Model.Items
         {
             IsEquipped = 1;
 
-            bool upsend = false;
-
             Location = ItemLocation.Paperdoll;
 
             owner.AddStats(this);

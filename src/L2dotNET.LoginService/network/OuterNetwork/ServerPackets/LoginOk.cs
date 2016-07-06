@@ -2,7 +2,7 @@
 
 namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 {
-    internal static class LoginOk
+    static class LoginOk
     {
         /// <summary>
         /// Packet opcode.

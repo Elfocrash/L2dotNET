@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Tables
         public RecipeItemEntry(int id, int count)
         {
             Item = ItemTable.Instance.GetItem(id);
-            this.Count = count;
+            Count = count;
         }
     }
 }

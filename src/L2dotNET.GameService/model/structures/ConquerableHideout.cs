@@ -63,9 +63,8 @@ namespace L2dotNET.GameService.Model.Structures
             ClanDamage = new SortedList<int, double>();
             _mobActive = new List<L2Character>();
 
-            foreach (int[] sp in MobSpawns)
+            foreach (L2Character o in MobSpawns.Select(sp => (L2Character)SpawnTable.Instance.SpawnOne(sp[0], sp[1], sp[2], sp[3], sp[4])))
             {
-                L2Character o = (L2Character)SpawnTable.Instance.SpawnOne(sp[0], sp[1], sp[2], sp[3], sp[4]);
                 _mobActive.Add(o);
             }
 

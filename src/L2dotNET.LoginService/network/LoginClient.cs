@@ -143,7 +143,7 @@ namespace L2dotNET.LoginService.Network
                     new RequestServerList(packet, this).RunImpl();
                     break;
                 case 0x07:
-                    new AuthGameGuard(packet, this).RunImpl();
+                    new AuthGameGuard(this).RunImpl();
                     break;
 
                 default:

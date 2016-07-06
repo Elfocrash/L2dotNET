@@ -11,7 +11,7 @@ namespace L2dotNET.Services
 
         public AccountService(IUnitOfWork unitOfWork)
         {
-            this._unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
         }
 
         public AccountModel GetAccountByLogin(string login)

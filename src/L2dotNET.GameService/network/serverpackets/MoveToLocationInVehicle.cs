@@ -11,10 +11,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public MoveToLocationInVehicle(L2Player player, int x, int y, int z)
         {
-            this._player = player;
-            this._x = x;
-            this._y = y;
-            this._z = z;
+            _player = player;
+            _x = x;
+            _y = y;
+            _z = z;
         }
 
         protected internal override void Write()

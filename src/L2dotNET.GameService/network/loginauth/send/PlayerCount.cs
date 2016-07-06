@@ -6,7 +6,7 @@
 
         public PlayerCount(short cnt)
         {
-            this._cnt = cnt;
+            _cnt = cnt;
         }
 
         protected internal override void Write()

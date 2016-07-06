@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.AI.NpcAI
 {
-    internal class HennaManager : Citizen
+    class HennaManager : Citizen
     {
         public override void TalkedReply(L2Player talker, int ask, int reply)
         {

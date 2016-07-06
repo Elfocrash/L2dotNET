@@ -6,7 +6,7 @@
 
         public ChooseInventoryItem(int itemId)
         {
-            this._itemId = itemId;
+            _itemId = itemId;
         }
 
         protected internal override void Write()

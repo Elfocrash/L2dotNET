@@ -1,5 +1,4 @@
 ﻿using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
-using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
@@ -7,9 +6,9 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
     {
         private readonly LoginClient _client;
 
-        public AuthGameGuard(Packet p, LoginClient client)
+        public AuthGameGuard(LoginClient client)
         {
-            this._client = client;
+            _client = client;
             // do nothing
         }
 

@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public L2HideoutManager(HideoutTemplate hideout)
         {
-            this._hideout = (Hideout)hideout;
+            _hideout = (Hideout)hideout;
             StructureControlled = true;
             _ai = new AgitManagerAi();
             CurMp = 5000;

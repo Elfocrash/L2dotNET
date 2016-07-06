@@ -10,9 +10,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public VehicleDeparture(L2Boat boat, int speed, int rotationSpd)
         {
-            this._boat = boat;
-            this._speed = speed;
-            this._rotationSpd = rotationSpd;
+            _boat = boat;
+            _speed = speed;
+            _rotationSpd = rotationSpd;
         }
 
         protected internal override void Write()

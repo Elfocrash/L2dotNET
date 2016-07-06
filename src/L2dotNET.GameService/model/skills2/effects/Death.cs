@@ -3,7 +3,7 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Model.Skills2.Effects
 {
-    internal class Death : Effect
+    class Death : Effect
     {
         private int _deathType;
         private int _rate;

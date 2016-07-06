@@ -7,8 +7,8 @@
 
         public ExBrGamePoint(int id, long points)
         {
-            this._id = id;
-            this._points = points;
+            _id = id;
+            _points = points;
         }
 
         protected internal override void Write()

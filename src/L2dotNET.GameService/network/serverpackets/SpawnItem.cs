@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(_item.Y);
             WriteD(_item.Z);
             WriteD(_item.Template.Stackable ? 1 : 0);
-            WriteD((int)_item.Count);
+            WriteD(_item.Count);
             WriteD(0); // ?
         }
     }

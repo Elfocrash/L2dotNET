@@ -447,8 +447,8 @@ namespace L2dotNET.GameService.Model.Skills2
 
                     if (dlc.ReadC() == 1)
                     {
-                        skill.Itemid = dlc.ReadD();
-                        skill.Itemcount = dlc.ReadD();
+                        skill.ItemId = dlc.ReadD();
+                        skill.ItemCount = dlc.ReadD();
                     }
 
                     skill.SocialClass = dlc.ReadD();

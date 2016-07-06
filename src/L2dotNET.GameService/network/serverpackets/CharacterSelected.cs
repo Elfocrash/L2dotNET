@@ -9,8 +9,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public CharacterSelected(L2Player player, int session)
         {
-            this._player = player;
-            this._session = session;
+            _player = player;
+            _session = session;
         }
 
         protected internal override void Write()

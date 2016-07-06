@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Model.Skills2.Effects
 {
-    internal class PPhysicalDefence : Effect
+    class PPhysicalDefence : Effect
     {
         public PPhysicalDefence()
         {

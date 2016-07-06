@@ -22,7 +22,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public RequestAuthLogin(Packet p, LoginClient client)
         {
-            this._client = client;
+            _client = client;
             Raw = p.ReadByteArrayAlt(128);
         }
 

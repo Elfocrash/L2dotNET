@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public VehicleInfo(L2Boat boat)
         {
-            this._boat = boat;
+            _boat = boat;
         }
 
         protected internal override void Write()

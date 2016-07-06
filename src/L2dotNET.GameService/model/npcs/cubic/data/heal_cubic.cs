@@ -8,11 +8,11 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
     {
         public HealCubic(int id, byte lv, int skillId, int skilllv, int duration = 900)
         {
-            this.Id = id;
+            Id = id;
             Level = lv;
             Skill1 = SkillTable.Instance.Get(skillId, skilllv);
             Delay = 13;
-            this.Duration = duration;
+            Duration = duration;
             MaxCount = 20;
         }
 

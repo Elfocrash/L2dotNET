@@ -2,7 +2,7 @@
 
 namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 {
-    internal static class Init
+    static class Init
     {
         /// <summary>
         /// Packet opcode.

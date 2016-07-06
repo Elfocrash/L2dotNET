@@ -7,7 +7,5 @@
         public string Text { get; set; }
 
         public int Type { get; set; }
-
-        public AnnouncementModel() { }
     }
 }

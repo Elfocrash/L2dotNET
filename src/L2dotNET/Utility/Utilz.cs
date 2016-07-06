@@ -58,7 +58,7 @@ namespace L2dotNET.Utility
             return str.Equals(stringToCompare, StringComparison.InvariantCulture);
         }
 
-        /// <summary> 
+        /// <summary>
         /// </summary>
         /// <param name="str"></param>
         /// <param name="stringToCompare"></param>

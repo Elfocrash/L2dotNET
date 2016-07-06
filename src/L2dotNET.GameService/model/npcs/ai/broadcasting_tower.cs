@@ -65,12 +65,12 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
                     ShowGroup(player, npc, reply);
                     break;
                 case -3:
-                    ObserveIt(player, npc, reply);
+                    ObserveIt(player, reply);
                     break;
             }
         }
 
-        private void ObserveIt(L2Player player, L2Npc npc, int reply)
+        private void ObserveIt(L2Player player, int reply)
         {
             int[] dx = _data.FirstOrDefault(d => d[1] == reply);
 

@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ShortCutRegister(L2Shortcut cut)
         {
-            this._cut = cut;
+            _cut = cut;
         }
 
         protected internal override void Write()

@@ -5,7 +5,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
     /// <summary>
     /// Play accepted packet.
     /// </summary>
-    internal static class PlayOk
+    static class PlayOk
     {
         /// <summary>
         /// Packet opcode.

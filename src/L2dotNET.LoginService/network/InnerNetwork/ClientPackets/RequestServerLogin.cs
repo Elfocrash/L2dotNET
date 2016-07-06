@@ -14,7 +14,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public RequestServerLogin(Packet p, LoginClient client)
         {
-            this._client = client;
+            _client = client;
             _login1 = p.ReadInt();
             _login2 = p.ReadInt();
             _serverId = p.ReadByte();

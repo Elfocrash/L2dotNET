@@ -14,9 +14,9 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public BuffForQuestReward(L2Npc npc, L2Character target, int skillId)
         {
-            this._npc = npc;
+            _npc = npc;
             Cha = target;
-            this._skillId = skillId;
+            _skillId = skillId;
             _skill = SkillTable.Instance.Get(skillId);
             Cha.BroadcastPacket(new MagicSkillUse(npc, Cha, _skill, _skill.SkillHitTime));
 

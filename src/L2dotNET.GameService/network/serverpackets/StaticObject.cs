@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public StaticObject(L2StaticObject obj)
         {
-            this._obj = obj;
+            _obj = obj;
         }
 
         protected internal override void Write()

@@ -10,9 +10,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public TradeUpdate(L2Item item, long num, byte action)
         {
-            this._item = item;
-            this._num = num;
-            this._action = action;
+            _item = item;
+            _num = num;
+            _action = action;
         }
 
         protected internal override void Write()

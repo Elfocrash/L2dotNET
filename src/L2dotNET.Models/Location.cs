@@ -14,9 +14,9 @@
 
         public Location(int x, int y, int z)
         {
-            this._x = x;
-            this._y = y;
-            this._z = z;
+            _x = x;
+            _y = y;
+            _z = z;
         }
 
         public Location(Location loc)

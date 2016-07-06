@@ -6,7 +6,7 @@
 
         public NetPing(int request)
         {
-            this._request = request;
+            _request = request;
         }
 
         protected internal override void Write()

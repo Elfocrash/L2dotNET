@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Tables.Multisell;
+﻿using L2dotNET.GameService.Tables.Multisell;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -7,9 +6,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
     {
         private readonly MultiSellList _list;
 
-        public MultiSellListEx(L2Player player, MultiSellList list)
+        public MultiSellListEx(MultiSellList list)
         {
-            this._list = list;
+            _list = list;
         }
 
         protected internal override void Write()

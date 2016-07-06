@@ -8,9 +8,9 @@
 
         public ExPartyPetWindowDelete(int petId, int playerId, string petName)
         {
-            this._petId = petId;
-            this._playerId = playerId;
-            this._petName = petName;
+            _petId = petId;
+            _playerId = playerId;
+            _petName = petName;
         }
 
         protected internal override void Write()

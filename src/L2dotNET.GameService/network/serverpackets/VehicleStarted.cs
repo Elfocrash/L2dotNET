@@ -7,8 +7,8 @@
 
         public VehicleStarted(int sId, int type)
         {
-            this._sId = sId;
-            this._type = type;
+            _sId = sId;
+            _type = type;
         }
 
         protected internal override void Write()

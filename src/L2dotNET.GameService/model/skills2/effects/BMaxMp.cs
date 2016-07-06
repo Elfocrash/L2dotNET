@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Model.Skills2.Effects
 {
-    internal class BMaxMp : Effect
+    class BMaxMp : Effect
     {
         public BMaxMp()
         {

@@ -9,10 +9,10 @@
 
         public StartRotation(int sId, int degree, int side, int speed)
         {
-            this._sId = sId;
-            this._degree = degree;
-            this._side = side;
-            this._speed = speed;
+            _sId = sId;
+            _degree = degree;
+            _side = side;
+            _speed = speed;
         }
 
         protected internal override void Write()

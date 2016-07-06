@@ -6,7 +6,7 @@
 
         public ExPutEnchantSupportItemResult(int result = 0)
         {
-            this._result = result;
+            _result = result;
         }
 
         protected internal override void Write()

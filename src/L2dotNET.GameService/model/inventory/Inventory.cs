@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.World;
 
@@ -44,17 +45,7 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public List<L2Item> GetPaperdollItems()
         {
-            List<L2Item> itemList = new List<L2Item>();
-
-            foreach (L2Item item in Paperdoll)
-            {
-                if (item != null)
-                {
-                    itemList.Add(item);
-                }
-            }
-
-            return itemList;
+            return Paperdoll.Where(item => item != null).ToList();
         }
     }
 }

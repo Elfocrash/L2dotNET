@@ -55,7 +55,7 @@ namespace L2dotNET.GameService.Tables.Multisell
 
             if (list.All == 1)
             {
-                player.SendPacket(new MultiSellListEx(player, list));
+                player.SendPacket(new MultiSellListEx(list));
                 player.CustomMultiSellList = null;
             }
             else
@@ -93,7 +93,7 @@ namespace L2dotNET.GameService.Tables.Multisell
                     }
                 }
 
-                MultiSellListEx mlist = new MultiSellListEx(player, newlist);
+                MultiSellListEx mlist = new MultiSellListEx(newlist);
                 player.CustomMultiSellList = newlist;
                 player.SendPacket(mlist);
             }

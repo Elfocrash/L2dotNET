@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public AgitDecoInfo(Hideout hideout)
         {
-            this._hideout = hideout;
+            _hideout = hideout;
         }
 
         protected internal override void Write()

@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Model.Skills2.SpecEffects
     {
         public BRegenMpByMove(double value)
         {
-            this.Value = value;
+            Value = value;
         }
 
         public override void OnStartMoving(L2Player player)

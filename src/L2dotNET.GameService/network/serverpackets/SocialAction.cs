@@ -7,8 +7,8 @@
 
         public SocialAction(int id, int social)
         {
-            this._social = social;
-            this._id = id;
+            _social = social;
+            _id = id;
         }
 
         protected internal override void Write()

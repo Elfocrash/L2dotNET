@@ -6,7 +6,7 @@
 
         public Revive(int objId)
         {
-            this._objId = objId;
+            _objId = objId;
         }
 
         protected internal override void Write()

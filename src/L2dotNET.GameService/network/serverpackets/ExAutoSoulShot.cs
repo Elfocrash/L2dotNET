@@ -7,8 +7,8 @@
 
         public ExAutoSoulShot(int itemId, int type)
         {
-            this._itemId = itemId;
-            this._type = type;
+            _itemId = itemId;
+            _type = type;
         }
 
         protected internal override void Write()

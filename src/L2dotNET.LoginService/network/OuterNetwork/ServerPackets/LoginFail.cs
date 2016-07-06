@@ -5,7 +5,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
     /// <summary>
     /// Login failed packet.
     /// </summary>
-    internal static class LoginFail
+    static class LoginFail
     {
         /// <summary>
         /// Packet opcode.

@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Model.Skills2.Effects
 {
-    internal class PSpeed : Effect
+    class PSpeed : Effect
     {
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {

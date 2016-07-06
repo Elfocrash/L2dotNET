@@ -8,9 +8,9 @@
 
         public StopRotation(int sId, int degree, int speed)
         {
-            this._sId = sId;
-            this._degree = degree;
-            this._speed = speed;
+            _sId = sId;
+            _degree = degree;
+            _speed = speed;
         }
 
         protected internal override void Write()

@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ExPostItemList(List<L2Item> list)
         {
-            this._list = list;
+            _list = list;
         }
 
         protected internal override void Write()

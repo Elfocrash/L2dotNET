@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ExRpItemLink(L2Item item)
         {
-            this._item = item;
+            _item = item;
         }
 
         protected internal override void Write()

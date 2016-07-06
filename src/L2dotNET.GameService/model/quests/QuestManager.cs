@@ -86,24 +86,16 @@ namespace L2dotNET.GameService.Model.Quests
                 }
             }
 
-            foreach (QuestOrigin qo in Quests.Values)
+            foreach (QuestOrigin qo in Quests.Values.Where(qo => !ilist.Contains(qo.QuestId)).Where(qo => qo.StartNpc == npc.Template.NpcId))
             {
-                if (ilist.Contains(qo.QuestId))
+                if (clist.Contains(qo.QuestId))
                 {
+                    qlist.Add(new object[] { null, "[" + qo.QuestName + " (Completed)]<br1>", 0 });
+                    nullex = true;
                     continue;
                 }
 
-                if (qo.StartNpc == npc.Template.NpcId)
-                {
-                    if (clist.Contains(qo.QuestId))
-                    {
-                        qlist.Add(new object[] { null, "[" + qo.QuestName + " (Completed)]<br1>", 0 });
-                        nullex = true;
-                        continue;
-                    }
-
-                    qlist.Add(new object[] { qo, "<a action=\"bypass -h quest_tryaccept?quest_id=" + qo.QuestId + "\">[" + qo.QuestName + "]</a><br1>", qo.QuestId });
-                }
+                qlist.Add(new object[] { qo, "<a action=\"bypass -h quest_tryaccept?quest_id=" + qo.QuestId + "\">[" + qo.QuestName + "]</a><br1>", qo.QuestId });
             }
 
             if (!nullex && (qlist.Count == 1))

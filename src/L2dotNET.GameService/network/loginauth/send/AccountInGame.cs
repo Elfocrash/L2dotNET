@@ -7,8 +7,8 @@
 
         public AccountInGame(string account, bool status)
         {
-            this._account = account;
-            this._status = status;
+            _account = account;
+            _status = status;
         }
 
         protected internal override void Write()

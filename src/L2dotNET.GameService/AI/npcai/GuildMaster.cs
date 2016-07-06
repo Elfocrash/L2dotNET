@@ -85,7 +85,7 @@ namespace L2dotNET.GameService.AI.NpcAI
                         case 4: //Умения
                             if (talker.ClanLeader)
                             {
-                                ShowEtcSkillList(talker, 2);
+                                ShowEtcSkillList(talker);
                             }
                             else
                             {
@@ -492,7 +492,7 @@ namespace L2dotNET.GameService.AI.NpcAI
             talker.SendMessage("ai.ShowChangePledgeNameUI");
         }
 
-        private void ShowEtcSkillList(L2Player talker, int type)
+        private void ShowEtcSkillList(L2Player talker)
         {
             AcquireSkillsEntry skills = SkillTable.Instance.GetPledgeSkills();
             SortedList<int, AcquireSkill> avail = new SortedList<int, AcquireSkill>();

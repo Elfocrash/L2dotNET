@@ -7,13 +7,13 @@
 
         public PledgeCrest(int id, byte[] picture)
         {
-            this._id = id;
+            _id = id;
             if (picture == null)
             {
                 picture = new byte[0];
             }
 
-            this._picture = picture;
+            _picture = picture;
         }
 
         protected internal override void Write()

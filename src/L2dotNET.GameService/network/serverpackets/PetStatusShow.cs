@@ -6,7 +6,7 @@
 
         public PetStatusShow(byte objectSummonType)
         {
-            this._objectSummonType = objectSummonType;
+            _objectSummonType = objectSummonType;
         }
 
         protected internal override void Write()

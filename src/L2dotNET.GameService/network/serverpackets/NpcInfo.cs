@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public NpcInfo(L2Npc npc)
         {
-            this._npc = npc;
+            _npc = npc;
         }
 
         protected internal override void Write()

@@ -10,8 +10,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public PledgeShowMemberListAll(L2Clan clan, EClanType type)
         {
-            this._clan = clan;
-            this._type = type;
+            _clan = clan;
+            _type = type;
         }
 
         protected internal override void Write()

@@ -8,7 +8,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
     /// <summary>
     /// Play accepted packet.
     /// </summary>
-    internal static class ServerList
+    static class ServerList
     {
         /// <summary>
         /// Packet opcode.

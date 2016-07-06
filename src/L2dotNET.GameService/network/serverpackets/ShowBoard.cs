@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ShowBoard(string htm, string id)
         {
-            this._id = id;
+            _id = id;
             _htmlCode = htm;
         }
 
@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             _id = "1002";
             _htmlCode = null;
-            this._arg = arg;
+            _arg = arg;
         }
 
         public static void SeparateAndSend(string html, L2Player player)

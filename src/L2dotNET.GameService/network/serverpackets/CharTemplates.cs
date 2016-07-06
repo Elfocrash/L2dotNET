@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.Network.Serverpackets
@@ -17,13 +18,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteC(0x17);
             WriteD(_templates.Count);
 
-            foreach (PcTemplate t in _templates)
+            foreach (PcTemplate t in _templates.TakeWhile(t => t != null))
             {
-                if (t == null)
-                {
-                    break;
-                }
-
                 WriteD((int)t.ClassId.ClassRace); //race id
                 WriteD((int)t.ClassId.Id);
                 WriteD(0x46);

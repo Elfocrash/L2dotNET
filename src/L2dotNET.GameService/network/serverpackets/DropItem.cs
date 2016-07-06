@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public DropItem(L2Item item)
         {
-            this._item = item;
+            _item = item;
             _id = item.Dropper;
         }
 

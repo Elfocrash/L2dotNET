@@ -6,7 +6,7 @@
 
         public ExCursedWeaponList(int[] ids)
         {
-            this._ids = ids;
+            _ids = ids;
         }
 
         protected internal override void Write()

@@ -12,14 +12,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public CreatureSay(int id, SayIDList type, string name, string text)
         {
             _objectId = id;
-            this._type = type;
+            _type = type;
             _charName = name;
             Text = text;
         }
 
         public CreatureSay(SayIDList type, string text = "")
         {
-            this._type = type;
+            _type = type;
             Text = text;
         }
 

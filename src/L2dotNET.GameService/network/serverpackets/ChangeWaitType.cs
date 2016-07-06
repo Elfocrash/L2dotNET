@@ -20,7 +20,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _x = player.X;
             _y = player.Y;
             _z = player.Z;
-            this._type = type;
+            _type = type;
         }
 
         protected internal override void Write()

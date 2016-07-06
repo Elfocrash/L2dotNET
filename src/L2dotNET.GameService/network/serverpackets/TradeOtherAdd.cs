@@ -9,8 +9,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public TradeOtherAdd(L2Item item, long num)
         {
-            this._item = item;
-            this._num = num;
+            _item = item;
+            _num = num;
         }
 
         protected internal override void Write()

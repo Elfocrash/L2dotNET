@@ -31,9 +31,9 @@ namespace L2dotNET.GameService.Tables
 
         public L2Spawn(int npcId, long respawn, L2Territory zone, string pos)
         {
-            this.NpcId = npcId;
-            this.Respawn = respawn;
-            this._zone = zone;
+            NpcId = npcId;
+            Respawn = respawn;
+            _zone = zone;
             if (pos != null)
             {
                 _x = Convert.ToInt32(pos[0]);
@@ -45,8 +45,8 @@ namespace L2dotNET.GameService.Tables
 
         public L2Spawn(int npcId, long respawn, string[] loc)
         {
-            this.NpcId = npcId;
-            this.Respawn = respawn;
+            NpcId = npcId;
+            Respawn = respawn;
 
             _x = Convert.ToInt32(loc[0]);
             _y = Convert.ToInt32(loc[1]);

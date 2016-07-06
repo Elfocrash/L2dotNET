@@ -5,7 +5,7 @@ using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Model.Skills2.Effects
 {
-    internal class BRegHpSit : Effect
+    class BRegHpSit : Effect
     {
         private SpecEffect _ef;
 

@@ -6,7 +6,7 @@
 
         public ExBrBuyProduct(int result)
         {
-            this._result = result;
+            _result = result;
         }
 
         protected internal override void Write()

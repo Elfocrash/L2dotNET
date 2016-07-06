@@ -85,11 +85,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     {
                         slots++;
                     }
-                    else
-                    {
-                        //if (!player.HasItem(item.item.ItemID))
-                        //    slots++;
-                    }
+                    //else
+                    //{
+                    //    if (!player.HasItem(item.item.ItemID))
+                    //        slots++;
+                    //}
 
                     weight += (int)(item.Item.Weight * _items[(i * 2) + 1]);
 

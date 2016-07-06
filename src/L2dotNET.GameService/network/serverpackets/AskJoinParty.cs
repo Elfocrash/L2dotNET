@@ -7,8 +7,8 @@
 
         public AskJoinParty(string asker, int itemDistribution)
         {
-            this._asker = asker;
-            this._itemDistribution = itemDistribution;
+            _asker = asker;
+            _itemDistribution = itemDistribution;
         }
 
         protected internal override void Write()

@@ -13,9 +13,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public CharacterSelectionInfo(string account, List<L2Player> players, int sessionId)
         {
-            this._players = players;
-            this._account = account;
-            this._sessionId = sessionId;
+            _players = players;
+            _account = account;
+            _sessionId = sessionId;
         }
 
         protected internal override void Write()

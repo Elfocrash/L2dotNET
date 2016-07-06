@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             _id = character.ObjId;
             _summonType = character.ObjectSummonType;
-            this._character = character;
+            _character = character;
         }
 
         private readonly List<int[]> _timers = new List<int[]>();

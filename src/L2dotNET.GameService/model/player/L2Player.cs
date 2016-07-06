@@ -1213,16 +1213,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public bool HasItem(int itemId, int count)
         {
-            foreach (L2Item item in Inventory.Items)
-                if (item.Template.ItemId == itemId)
-                {
-                    if (item.Count >= count)
-                    {
-                        return true;
-                    }
-                }
-
-            return false;
+            return Inventory.Items.Where(item => item.Template.ItemId == itemId).Any(item => item.Count >= count);
         }
 
         public override void SendInfo(L2Player player)
@@ -1294,7 +1285,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public void ShowHtmAdmin(string val, bool plain)
         {
-            SendPacket(plain ? new TutorialShowHtml(this, val, true, true) : new TutorialShowHtml(this, val, true));
+            SendPacket(new TutorialShowHtml(this, val, true));
 
             ViewingAdminPage = 1;
         }

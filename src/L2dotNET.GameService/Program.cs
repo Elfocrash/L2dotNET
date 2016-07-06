@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using L2dotNET.Utility.Geometry;
 using Ninject;
 
 namespace L2dotNET.GameService
@@ -8,6 +9,7 @@ namespace L2dotNET.GameService
     {
         private static void Main()
         {
+            Vector3.Hermite(new Vector3(), new Vector3(), new Vector3(), new Vector3(), 2);
             SetConsoleConfigurations();
             SetNumberDecimalSeparator();
             GameServer.Kernel = new StandardKernel(new DepInjectionModule());

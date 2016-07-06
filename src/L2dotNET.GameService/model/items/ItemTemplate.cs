@@ -77,7 +77,7 @@ namespace L2dotNET.GameService.Model.Items
         {
             ItemId = set.GetInt("item_id");
             Name = set.GetString("name");
-            Weight = set.GetInt("weight", 0);
+            Weight = set.GetInt("weight");
             MaterialType = (MaterialType)set.GetInt("material");
             Duration = set.GetInt("duration", -1);
             //_bodyPart = ItemTable.Slots.get(set.GetString("bodypart", "none"));
@@ -93,7 +93,7 @@ namespace L2dotNET.GameService.Model.Items
             Depositable = set.GetBool("is_depositable", true);
 
             HeroItem = ((ItemId >= 6611) && (ItemId <= 6621)) || (ItemId == 6842);
-            IsOlyRestricted = set.GetBool("is_oly_restricted", false);
+            IsOlyRestricted = set.GetBool("is_oly_restricted");
 
             DefaultAction = (ActionType)set.GetInt("default_action");
         }

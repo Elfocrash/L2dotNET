@@ -8,9 +8,9 @@
 
         public PremiumStatusUpdate(string account, byte status, long points)
         {
-            this._account = account;
-            this._status = status;
-            this._points = points;
+            _account = account;
+            _status = status;
+            _points = points;
         }
 
         protected internal override void Write()

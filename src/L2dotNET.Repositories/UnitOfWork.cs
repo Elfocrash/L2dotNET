@@ -8,10 +8,10 @@ namespace L2dotNET.Repositories
 
         public UnitOfWork(IPlayerRepository playerRepository, IAccountRepository accountRepository, IServerRepository serverRepository, ICheckRepository checkRepository)
         {
-            this._playerRepository = playerRepository;
-            this._accountRepository = accountRepository;
-            this._serverRepository = serverRepository;
-            this._checkRepository = checkRepository;
+            _playerRepository = playerRepository;
+            _accountRepository = accountRepository;
+            _serverRepository = serverRepository;
+            _checkRepository = checkRepository;
         }
 
         public void Commit() { }

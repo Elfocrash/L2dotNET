@@ -7,8 +7,8 @@
 
         public PartySmallWindowDelete(int id, string name)
         {
-            this._id = id;
-            this._name = name;
+            _id = id;
+            _name = name;
         }
 
         protected internal override void Write()

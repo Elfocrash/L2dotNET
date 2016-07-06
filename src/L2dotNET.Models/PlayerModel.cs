@@ -111,7 +111,5 @@
         public int ClanCreateExpiryTime { get; set; }
 
         public int DeathPenaltyLevel { get; set; }
-
-        public PlayerModel() { }
     }
 }

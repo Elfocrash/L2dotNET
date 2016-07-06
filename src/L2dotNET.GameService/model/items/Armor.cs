@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public Armor(StatsSet set) : base(set)
         {
-            var firstOrDefault = ArmorType.Values.FirstOrDefault(x => x.Name == set.GetString("armor_type", "none").ToUpper());
+            ArmorType firstOrDefault = ArmorType.Values.FirstOrDefault(x => x.Name == set.GetString("armor_type", "none").ToUpper());
             _type = firstOrDefault?.Id ?? ArmorType.None.Id;
 
             int bodyPart = BodyPart;
@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public override int GetItemMask()
         {
-            var firstOrDefault = ArmorType.Values.FirstOrDefault(x => x.Id == _type);
+            ArmorType firstOrDefault = ArmorType.Values.FirstOrDefault(x => x.Id == _type);
             return firstOrDefault != null ? (int)firstOrDefault : 0;
         }
     }

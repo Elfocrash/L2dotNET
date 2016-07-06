@@ -12,11 +12,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public ValidateLocation(int id, int x, int y, int z, int heading)
         {
-            this._id = id;
-            this._x = x;
-            this._y = y;
-            this._z = z;
-            this._heading = heading;
+            _id = id;
+            _x = x;
+            _y = y;
+            _z = z;
+            _heading = heading;
         }
 
         public ValidateLocation(L2Character character)

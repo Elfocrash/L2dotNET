@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Model.Player.General
 
         public override bool TryGetMember(GetMemberBinder binder, out dynamic result)
         {
-            result = this._properties.ContainsKey(binder.Name) ? this._properties[binder.Name] : null;
+            result = _properties.ContainsKey(binder.Name) ? _properties[binder.Name] : null;
 
             return true;
         }

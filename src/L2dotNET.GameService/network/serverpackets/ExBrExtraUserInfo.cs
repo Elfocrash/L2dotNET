@@ -8,7 +8,7 @@
         public ExBrExtraUserInfo(int id, int value)
         {
             _playerId = id;
-            this._value = value;
+            _value = value;
         }
 
         protected internal override void Write()

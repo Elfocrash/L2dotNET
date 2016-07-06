@@ -7,8 +7,8 @@
 
         public ChairSit(int sId, int staticId)
         {
-            this._sId = sId;
-            this._staticId = staticId;
+            _sId = sId;
+            _staticId = staticId;
         }
 
         protected internal override void Write()

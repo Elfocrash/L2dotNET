@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public UserInfo(L2Player player)
         {
-            this._player = player;
+            _player = player;
         }
 
         protected internal override void Write()

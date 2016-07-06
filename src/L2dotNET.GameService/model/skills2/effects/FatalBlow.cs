@@ -6,7 +6,7 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Model.Skills2.Effects
 {
-    internal class FatalBlow : Effect
+    class FatalBlow : Effect
     {
         private int _power;
 

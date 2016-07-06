@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public ItemHandlerScript(int id)
         {
-            this._id = id;
+            _id = id;
         }
 
         public void AddExchangeItem(int itemId, int count)

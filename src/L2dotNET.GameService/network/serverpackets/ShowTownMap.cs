@@ -8,9 +8,9 @@
 
         public ShowTownMap(string texture, int x, int y)
         {
-            this._texture = texture;
-            this._x = x;
-            this._y = y;
+            _texture = texture;
+            _x = x;
+            _y = y;
         }
 
         protected internal override void Write()

@@ -7,8 +7,8 @@
 
         public PetDelete(byte objectSummonType, int objId)
         {
-            this._objectSummonType = objectSummonType;
-            this._objId = objId;
+            _objectSummonType = objectSummonType;
+            _objId = objId;
         }
 
         protected internal override void Write()

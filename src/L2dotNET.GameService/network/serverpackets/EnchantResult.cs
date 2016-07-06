@@ -8,9 +8,9 @@
 
         public EnchantResult(EnchantResultVal result, int crystal = 0, long count = 0)
         {
-            this._result = result;
-            this._crystal = crystal;
-            this._count = count;
+            _result = result;
+            _crystal = crystal;
+            _count = count;
         }
 
         protected internal override void Write()

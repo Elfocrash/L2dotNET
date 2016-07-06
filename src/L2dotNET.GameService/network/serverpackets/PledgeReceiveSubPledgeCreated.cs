@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public PledgeReceiveSubPledgeCreated(EClanSub sub)
         {
-            this._sub = sub;
+            _sub = sub;
         }
 
         protected internal override void Write()

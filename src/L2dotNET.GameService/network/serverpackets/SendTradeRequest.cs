@@ -6,7 +6,7 @@
 
         public SendTradeRequest(int sId)
         {
-            this._sId = sId;
+            _sId = sId;
         }
 
         protected internal override void Write()

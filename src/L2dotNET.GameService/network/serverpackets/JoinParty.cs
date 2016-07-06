@@ -6,7 +6,7 @@
 
         public JoinParty(int response)
         {
-            this._response = response;
+            _response = response;
         }
 
         protected internal override void Write()

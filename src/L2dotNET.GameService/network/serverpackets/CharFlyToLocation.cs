@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public CharFlyToLocation(L2Object obj, FlyType type)
         {
-            this._obj = obj;
+            _obj = obj;
             _id = (int)type;
         }
 

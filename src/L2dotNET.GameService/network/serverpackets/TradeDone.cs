@@ -6,7 +6,7 @@
 
         public TradeDone(bool done = true)
         {
-            this._done = done;
+            _done = done;
         }
 
         protected internal override void Write()

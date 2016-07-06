@@ -7,8 +7,8 @@
 
         public ExAskModifyPartyLooting(string leader, byte mode)
         {
-            this._leader = leader;
-            this._mode = mode;
+            _leader = leader;
+            _mode = mode;
         }
 
         protected internal override void Write()

@@ -12,8 +12,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public AcquireSkillInfo(int id, int level, int sp, int skillType)
         {
-            this._id = id;
-            this._level = level;
+            _id = id;
+            _level = level;
             _spCost = sp;
             _mode = skillType;
         }

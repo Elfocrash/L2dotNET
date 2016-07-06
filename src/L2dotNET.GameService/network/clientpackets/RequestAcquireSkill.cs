@@ -68,7 +68,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.SendPacket(su);
             }
 
-            player.DestroyItemById(e.Itemid, e.Itemcount);
+            player.DestroyItemById(e.ItemId, e.ItemCount);
 
             Skill skill = SkillTable.Instance.Get(e.Id, e.Lv);
             if (skill != null)

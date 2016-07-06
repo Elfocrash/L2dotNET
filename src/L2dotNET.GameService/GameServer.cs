@@ -94,7 +94,7 @@ namespace L2dotNET.GameService
 
             while (true)
             {
-                var clientSocket = GameServerListener.AcceptTcpClient();
+                TcpClient clientSocket = GameServerListener.AcceptTcpClient();
                 Accept(clientSocket);
             }
         }

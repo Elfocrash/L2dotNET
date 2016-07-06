@@ -6,7 +6,7 @@
 
         public ExRaidCharacterSelected(int id)
         {
-            this._id = id;
+            _id = id;
         }
 
         protected internal override void Write()

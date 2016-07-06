@@ -11,7 +11,5 @@
         public int Port { get; set; }
 
         public string Code { get; set; }
-
-        public ServerModel() { }
     }
 }

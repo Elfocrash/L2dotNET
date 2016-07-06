@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public L2Doormen(HideoutTemplate hideout)
         {
-            this._hideout = (Hideout)hideout;
+            _hideout = (Hideout)hideout;
             StructureControlled = true;
         }
 

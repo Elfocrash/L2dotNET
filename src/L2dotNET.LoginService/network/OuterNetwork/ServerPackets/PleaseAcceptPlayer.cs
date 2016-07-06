@@ -3,7 +3,7 @@ using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 {
-    internal static class PleaseAcceptPlayer
+    static class PleaseAcceptPlayer
     {
         /// <summary>
         /// Packet opcode.

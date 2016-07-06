@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
@@ -28,55 +29,22 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public bool HasAtLeaseOneItem(params int[] itemIds)
         {
-            foreach (int itemId in itemIds)
-            {
-                if (GetItemsByItemId(itemId) != null)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return itemIds.Any(itemId => GetItemsByItemId(itemId) != null);
         }
 
         public List<L2Item> GetItemsByItemId(int itemId)
         {
-            List<L2Item> list = new List<L2Item>();
-            foreach (L2Item item in Items)
-            {
-                if (item.Template.ItemId == itemId)
-                {
-                    list.Add(item);
-                }
-            }
-
-            return list;
+            return Items.Where(item => item.Template.ItemId == itemId).ToList();
         }
 
         public L2Item GetItemByItemId(int itemId)
         {
-            foreach (L2Item item in Items)
-            {
-                if (item.Template.ItemId == itemId)
-                {
-                    return item;
-                }
-            }
-
-            return null;
+            return Items.FirstOrDefault(item => item.Template.ItemId == itemId);
         }
 
         public L2Item GetItemByObjectId(int objectId)
         {
-            foreach (L2Item item in Items)
-            {
-                if (item.ObjId == objectId)
-                {
-                    return item;
-                }
-            }
-
-            return null;
+            return Items.FirstOrDefault(item => item.ObjId == objectId);
         }
 
         public L2Item AddItem(L2Item item, L2Player player)
@@ -117,13 +85,7 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public int AdenaCount()
         {
-            foreach (L2Item item in Items)
-                if (item.Template.ItemId == 57)
-                {
-                    return item.Count;
-                }
-
-            return 0;
+            return (Items.Where(item => item.Template.ItemId == 57).Select(item => item.Count)).FirstOrDefault();
         }
 
         public L2Item AddItem(L2Item item)
