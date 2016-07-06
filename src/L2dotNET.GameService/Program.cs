@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using L2dotNET.Utility.Geometry;
 using Ninject;
 
 namespace L2dotNET.GameService

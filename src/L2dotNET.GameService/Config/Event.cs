@@ -111,13 +111,21 @@ namespace L2dotNET.GameService.Config
         ///<summary>Format: itemId1,itemNum1;itemId2,itemNum2.</summary>
         ///<summary>Default: 6651,50.</summary>
         [JsonProperty(PropertyName = "ClassedReward", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public ItemAmount[] ClassedReward { get; set; } = /*DefaultValue*/ { new ItemAmount { ItemId = 6651, Amount = 50 } };
+        public ItemAmount[] ClassedReward { get; set; } = /*DefaultValue*/ { new ItemAmount
+                                                                             {
+                                                                                 ItemId = 6651,
+                                                                                 Amount = 50
+                                                                             } };
 
         ///<summary>Reward for the non-class based games.</summary>
         ///<summary>Format: itemId1,itemNum1;itemId2,itemNum2.</summary>
         ///<summary>Default: 6651,30.</summary>
         [JsonProperty(PropertyName = "NonClassedReward", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public ItemAmount[] NonClassedReward { get; set; } = /*DefaultValue*/ { new ItemAmount { ItemId = 6651, Amount = 30 } };
+        public ItemAmount[] NonClassedReward { get; set; } = /*DefaultValue*/ { new ItemAmount
+                                                                                {
+                                                                                    ItemId = 6651,
+                                                                                    Amount = 30
+                                                                                } };
 
         ///<summary>Rate to exchange points to reward item, default: 1000.</summary>
         [DefaultValue(1000)]
@@ -428,26 +436,46 @@ namespace L2dotNET.GameService.Config
         ///<summary>Item Id used as reward.Item count used as reward (for the 5 first winners) - 1.</summary>
         [DefaultValue(800000)]
         [JsonProperty(PropertyName = "FishChampionshipReward1", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public ItemAmount[] FishChampionshipReward1 { get; set; } = /*DefaultValue*/ { new ItemAmount { ItemId = 57, Amount = 800000 } };
+        public ItemAmount[] FishChampionshipReward1 { get; set; } = /*DefaultValue*/ { new ItemAmount
+                                                                                       {
+                                                                                           ItemId = 57,
+                                                                                           Amount = 800000
+                                                                                       } };
 
         ///<summary>Item Id used as reward.Item count used as reward (for the 5 first winners) - 2.</summary>
         [DefaultValue(500000)]
         [JsonProperty(PropertyName = "FishChampionshipReward2", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public ItemAmount[] FishChampionshipReward2 { get; set; } = /*DefaultValue*/ { new ItemAmount { ItemId = 57, Amount = 500000 } };
+        public ItemAmount[] FishChampionshipReward2 { get; set; } = /*DefaultValue*/ { new ItemAmount
+                                                                                       {
+                                                                                           ItemId = 57,
+                                                                                           Amount = 500000
+                                                                                       } };
 
         ///<summary>Item Id used as reward.Item count used as reward (for the 5 first winners) - 3.</summary>
         [DefaultValue(300000)]
         [JsonProperty(PropertyName = "FishChampionshipReward3", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public ItemAmount[] FishChampionshipReward3 { get; set; } = /*DefaultValue*/ { new ItemAmount { ItemId = 57, Amount = 300000 } };
+        public ItemAmount[] FishChampionshipReward3 { get; set; } = /*DefaultValue*/ { new ItemAmount
+                                                                                       {
+                                                                                           ItemId = 57,
+                                                                                           Amount = 300000
+                                                                                       } };
 
         ///<summary>Item Id used as reward.Item count used as reward (for the 5 first winners) - 4.</summary>
         [DefaultValue(200000)]
         [JsonProperty(PropertyName = "FishChampionshipReward4", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public ItemAmount[] FishChampionshipReward4 { get; set; } = /*DefaultValue*/ { new ItemAmount { ItemId = 57, Amount = 200000 } };
+        public ItemAmount[] FishChampionshipReward4 { get; set; } = /*DefaultValue*/ { new ItemAmount
+                                                                                       {
+                                                                                           ItemId = 57,
+                                                                                           Amount = 200000
+                                                                                       } };
 
         ///<summary>Item Id used as reward.Item count used as reward (for the 5 first winners) - 5.</summary>
         [DefaultValue(100000)]
         [JsonProperty(PropertyName = "FishChampionshipReward5", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public ItemAmount[] FishChampionshipReward5 { get; set; } = /*DefaultValue*/ { new ItemAmount { ItemId = 57, Amount = 100000 } };
+        public ItemAmount[] FishChampionshipReward5 { get; set; } = /*DefaultValue*/ { new ItemAmount
+                                                                                       {
+                                                                                           ItemId = 57,
+                                                                                           Amount = 100000
+                                                                                       } };
     }
 }

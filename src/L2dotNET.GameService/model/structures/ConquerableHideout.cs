@@ -68,7 +68,10 @@ namespace L2dotNET.GameService.Model.Structures
                 _mobActive.Add(o);
             }
 
-            TimeSiege = new Timer { Interval = 3600000 };
+            TimeSiege = new Timer
+                        {
+                            Interval = 3600000
+                        };
             // 60 минут
             TimeSiege.Elapsed += TimeSiegeEnd;
 

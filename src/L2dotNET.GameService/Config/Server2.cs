@@ -267,7 +267,21 @@ namespace L2dotNET.GameService.Config
         ///<summary>57-0: Item id 57 will never be destroyed.</summary>
         ///<summary>57-600: Item id 57 will be destroyed after 600 seconds/10 minutes.</summary>
         [JsonProperty(PropertyName = "AutoDestroySpecialItemTime", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public ItemTimer[] AutoDestroySpecialItemTime { get; set; } = { new ItemTimer { ItemId = 57, Timer = 0 }, new ItemTimer { ItemId = 5575, Timer = 0 }, new ItemTimer { ItemId = 6673, Timer = 0 } };
+        public ItemTimer[] AutoDestroySpecialItemTime { get; set; } = { new ItemTimer
+                                                                        {
+                                                                            ItemId = 57,
+                                                                            Timer = 0
+                                                                        },
+                                                                        new ItemTimer
+                                                                        {
+                                                                            ItemId = 5575,
+                                                                            Timer = 0
+                                                                        },
+                                                                        new ItemTimer
+                                                                        {
+                                                                            ItemId = 6673,
+                                                                            Timer = 0
+                                                                        } };
 
         ///<summary>Items dropped by players will have destroy time multiplied by X, default 1.</summary>
         ///<summary>0: Items dropped by players will never be destroyed.</summary>

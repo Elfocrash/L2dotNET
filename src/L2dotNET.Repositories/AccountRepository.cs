@@ -26,7 +26,10 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return Db.Query<AccountModel>("select Login,Password,LastActive,access_level as AccessLevel,LastServer from accounts where login=@login", new { login = login }).FirstOrDefault();
+                return Db.Query<AccountModel>("select Login,Password,LastActive,access_level as AccessLevel,LastServer from accounts where login=@login", new
+                                                                                                                                                          {
+                                                                                                                                                              login = login
+                                                                                                                                                          }).FirstOrDefault();
             }
             catch (MySqlException ex)
             {
@@ -39,9 +42,23 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                Db.Execute("insert into accounts (Login,Password,LastActive,access_level,LastServer) Values (@login,@pass,@lastactive,@access,@lastServer)", new { login = login, pass = password, lastactive = DateTime.Now.Ticks, access = 0, lastServer = 1 }); //to be edited
+                Db.Execute("insert into accounts (Login,Password,LastActive,access_level,LastServer) Values (@login,@pass,@lastactive,@access,@lastServer)", new
+                                                                                                                                                             {
+                                                                                                                                                                 login = login,
+                                                                                                                                                                 pass = password,
+                                                                                                                                                                 lastactive = DateTime.Now.Ticks,
+                                                                                                                                                                 access = 0,
+                                                                                                                                                                 lastServer = 1
+                                                                                                                                                             }); //to be edited
 
-                AccountModel accModel = new AccountModel { Login = login, Password = password, LastActive = DateTime.Now.Ticks, AccessLevel = 0, LastServer = 1 };
+                AccountModel accModel = new AccountModel
+                                        {
+                                            Login = login,
+                                            Password = password,
+                                            LastActive = DateTime.Now.Ticks,
+                                            AccessLevel = 0,
+                                            LastServer = 1
+                                        };
 
                 return accModel;
             }
@@ -56,7 +73,11 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return Db.Query("select distinct 1 from accounts where login=@login AND password=@pass", new { login = login, pass = password }).Any();
+                return Db.Query("select distinct 1 from accounts where login=@login AND password=@pass", new
+                                                                                                         {
+                                                                                                             login = login,
+                                                                                                             pass = password
+                                                                                                         }).Any();
             }
             catch (MySqlException ex)
             {
@@ -69,7 +90,10 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return Db.Query<int>("select obj_Id from characters where account_name=@acc", new { acc = login }).ToList();
+                return Db.Query<int>("select obj_Id from characters where account_name=@acc", new
+                                                                                              {
+                                                                                                  acc = login
+                                                                                              }).ToList();
             }
             catch (MySqlException ex)
             {

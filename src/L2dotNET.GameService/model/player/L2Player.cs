@@ -102,7 +102,42 @@ namespace L2dotNET.GameService.Model.Player
         public L2Player RestorePlayer(int id, GameClient client)
         {
             PlayerModel playerModel = PlayerService.GetAccountByLogin(id);
-            L2Player player = new L2Player { ObjId = id, Gameclient = client, Name = playerModel.Name, Title = playerModel.Title, Level = (byte)playerModel.Level, CurHp = playerModel.CurHp, CurMp = playerModel.CurMp, CurCp = playerModel.CurCp, Face = playerModel.Face, HairStyle = playerModel.HairStyle, HairColor = playerModel.HairColor, Sex = (byte)playerModel.Sex, X = playerModel.X, Y = playerModel.Y, Z = playerModel.Z, Heading = playerModel.Heading, Exp = playerModel.Exp, ExpOnDeath = playerModel.ExpBeforeDeath, Sp = playerModel.Sp, Karma = playerModel.Karma, PvpKills = playerModel.PvpKills, PkKills = playerModel.PkKills, BaseClass = CharTemplateTable.Instance.GetTemplate(playerModel.BaseClass), ActiveClass = CharTemplateTable.Instance.GetTemplate(playerModel.ClassId), RecLeft = playerModel.RecLeft, RecHave = playerModel.RecHave, CharSlot = playerModel.CharSlot, DeathPenaltyLevel = playerModel.DeathPenaltyLevel, ClanId = playerModel.ClanId, ClanPrivs = playerModel.ClanPrivs, PenaltyClanCreate = playerModel.ClanCreateExpiryTime.ToString(), PenaltyClanJoin = playerModel.ClanJoinExpiryTime.ToString(), Inventory = new PcInventory(this) };
+            L2Player player = new L2Player
+                              {
+                                  ObjId = id,
+                                  Gameclient = client,
+                                  Name = playerModel.Name,
+                                  Title = playerModel.Title,
+                                  Level = (byte)playerModel.Level,
+                                  CurHp = playerModel.CurHp,
+                                  CurMp = playerModel.CurMp,
+                                  CurCp = playerModel.CurCp,
+                                  Face = playerModel.Face,
+                                  HairStyle = playerModel.HairStyle,
+                                  HairColor = playerModel.HairColor,
+                                  Sex = (byte)playerModel.Sex,
+                                  X = playerModel.X,
+                                  Y = playerModel.Y,
+                                  Z = playerModel.Z,
+                                  Heading = playerModel.Heading,
+                                  Exp = playerModel.Exp,
+                                  ExpOnDeath = playerModel.ExpBeforeDeath,
+                                  Sp = playerModel.Sp,
+                                  Karma = playerModel.Karma,
+                                  PvpKills = playerModel.PvpKills,
+                                  PkKills = playerModel.PkKills,
+                                  BaseClass = CharTemplateTable.Instance.GetTemplate(playerModel.BaseClass),
+                                  ActiveClass = CharTemplateTable.Instance.GetTemplate(playerModel.ClassId),
+                                  RecLeft = playerModel.RecLeft,
+                                  RecHave = playerModel.RecHave,
+                                  CharSlot = playerModel.CharSlot,
+                                  DeathPenaltyLevel = playerModel.DeathPenaltyLevel,
+                                  ClanId = playerModel.ClanId,
+                                  ClanPrivs = playerModel.ClanPrivs,
+                                  PenaltyClanCreate = playerModel.ClanCreateExpiryTime.ToString(),
+                                  PenaltyClanJoin = playerModel.ClanJoinExpiryTime.ToString(),
+                                  Inventory = new PcInventory(this)
+                              };
 
             player.CStatsInit();
             SessionData = new PlayerBag();
@@ -123,7 +158,53 @@ namespace L2dotNET.GameService.Model.Player
 
         public void UpdatePlayer()
         {
-            PlayerModel playerModel = new PlayerModel { ObjectId = ObjId, Level = Level, MaxHp = MaxHp, CurHp = (int)CurHp, MaxCp = MaxCp, CurCp = (int)CurCp, MaxMp = MaxMp, CurMp = (int)CurMp, Face = Face, HairStyle = HairStyle, HairColor = HairColor, Sex = Sex, Heading = Heading, X = X, Y = Y, Z = Z, Exp = Exp, ExpBeforeDeath = ExpOnDeath, Sp = Sp, Karma = Karma, PvpKills = PvpKills, PkKills = PkKills, ClanId = ClanId, Race = (int)BaseClass.ClassId.ClassRace, ClassId = (int)ActiveClass.ClassId.Id, BaseClass = (int)BaseClass.ClassId.Id, DeleteTime = DeleteTime, CanCraft = CanCraft, Title = Title, RecHave = RecHave, RecLeft = RecLeft, AccessLevel = AccessLevel, ClanPrivs = ClanPrivs, WantsPeace = WantsPeace, IsIn7SDungeon = IsIn7SDungeon, PunishLevel = PunishLevel, PunishTimer = PunishTimer, PowerGrade = PowerGrade, Nobless = Nobless, Sponsor = Sponsor, VarkaKetraAlly = VarkaKetraAlly, ClanCreateExpiryTime = ClanCreateExpiryTime, ClanJoinExpiryTime = ClanJoinExpiryTime, DeathPenaltyLevel = DeathPenaltyLevel };
+            PlayerModel playerModel = new PlayerModel
+                                      {
+                                          ObjectId = ObjId,
+                                          Level = Level,
+                                          MaxHp = MaxHp,
+                                          CurHp = (int)CurHp,
+                                          MaxCp = MaxCp,
+                                          CurCp = (int)CurCp,
+                                          MaxMp = MaxMp,
+                                          CurMp = (int)CurMp,
+                                          Face = Face,
+                                          HairStyle = HairStyle,
+                                          HairColor = HairColor,
+                                          Sex = Sex,
+                                          Heading = Heading,
+                                          X = X,
+                                          Y = Y,
+                                          Z = Z,
+                                          Exp = Exp,
+                                          ExpBeforeDeath = ExpOnDeath,
+                                          Sp = Sp,
+                                          Karma = Karma,
+                                          PvpKills = PvpKills,
+                                          PkKills = PkKills,
+                                          ClanId = ClanId,
+                                          Race = (int)BaseClass.ClassId.ClassRace,
+                                          ClassId = (int)ActiveClass.ClassId.Id,
+                                          BaseClass = (int)BaseClass.ClassId.Id,
+                                          DeleteTime = DeleteTime,
+                                          CanCraft = CanCraft,
+                                          Title = Title,
+                                          RecHave = RecHave,
+                                          RecLeft = RecLeft,
+                                          AccessLevel = AccessLevel,
+                                          ClanPrivs = ClanPrivs,
+                                          WantsPeace = WantsPeace,
+                                          IsIn7SDungeon = IsIn7SDungeon,
+                                          PunishLevel = PunishLevel,
+                                          PunishTimer = PunishTimer,
+                                          PowerGrade = PowerGrade,
+                                          Nobless = Nobless,
+                                          Sponsor = Sponsor,
+                                          VarkaKetraAlly = VarkaKetraAlly,
+                                          ClanCreateExpiryTime = ClanCreateExpiryTime,
+                                          ClanJoinExpiryTime = ClanJoinExpiryTime,
+                                          DeathPenaltyLevel = DeathPenaltyLevel
+                                      };
 
             PlayerService.UpdatePlayer(playerModel);
         }

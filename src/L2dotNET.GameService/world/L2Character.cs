@@ -988,7 +988,10 @@ namespace L2dotNET.GameService.World
 
         public Hit GenHitSimple(bool dual, bool ss)
         {
-            Hit h = new Hit { Miss = Formulas.CheckMissed(this, CurrentTarget) };
+            Hit h = new Hit
+                    {
+                        Miss = Formulas.CheckMissed(this, CurrentTarget)
+                    };
             if (!h.Miss)
             {
                 h.ShieldDef = Formulas.CheckShieldDef(this, CurrentTarget);
@@ -1573,7 +1576,10 @@ namespace L2dotNET.GameService.World
 
             if (_updatePositionTime == null)
             {
-                _updatePositionTime = new Timer { Interval = 100 };
+                _updatePositionTime = new Timer
+                                      {
+                                          Interval = 100
+                                      };
                 _updatePositionTime.Elapsed += UpdatePositionTask;
             }
             else
