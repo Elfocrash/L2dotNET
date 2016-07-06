@@ -21,6 +21,8 @@ namespace L2dotNET.GameService.Tables
         private static readonly object SyncRoot = new object();
         public Dictionary<string, int> Slots = new Dictionary<string, int>();
         public Dictionary<int, Armor> Armors = new Dictionary<int, Armor>();
+        //public Dictionary<int, Weapon> Weapons = new Dictionary<int, Weapon>();
+        //public Dictionary<int, EtcItem> Armors = new Dictionary<int, Armor>();
 
         public static ItemTable Instance
         {
@@ -69,55 +71,11 @@ namespace L2dotNET.GameService.Tables
             Slots.Add("babypet", ItemTemplate.SlotBabypet);
 
             int highest = 0;
-            XmlDocument doc = new XmlDocument();
-            string[] xmlFilesArray = Directory.GetFiles(@"data\xml\items\");
-            NewItem currentItem;
-
-            List<ItemTemplate> itemsInFile = new List<ItemTemplate>();
-
-            foreach (string i in xmlFilesArray)
-            {
-                doc.Load(i);
-                XmlNodeList nodes = doc.DocumentElement?.SelectNodes("/list/item");
-                if (nodes != null)
-                {
-                    foreach (XmlNode node in nodes)
-                    {
-                        XmlElement ownerElement = node.Attributes?[0].OwnerElement;
-                        if ((ownerElement != null) && ((node.Attributes != null) && "item".Equals(ownerElement.Name)))
-                        {
-                            XmlNamedNodeMap attrs = node.Attributes;
-                            currentItem = new NewItem();
-                            int itemId = int.Parse(attrs.GetNamedItem("id").Value);
-                            string className = attrs.GetNamedItem("type").Value;
-                            string itemName = attrs.GetNamedItem("name").Value;
-
-                            currentItem.Id = itemId;
-                            currentItem.Name = itemName;
-                            currentItem.Type = className;
-                            currentItem.Set = new StatsSet();
-                            currentItem.Set.Set("item_id", itemId);
-                            currentItem.Set.Set("name", itemName);
-
-                            //itemsInFile.Add(currentItem.Item);
-                        }
-                    }
-                }
-            }
+            
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
             Log.Info($"ItemTable: #{Armors.Count} armors.");
         }
-    }
-
-    public class NewItem
-    {
-        public int Id { get; set; }
-        public string Type { get; set; }
-        public string Name { get; set; }
-        public StatsSet Set { get; set; }
-        public int CurrentLevel { get; set; }
-        public ItemTemplate Item { get; set; }
     }
 }

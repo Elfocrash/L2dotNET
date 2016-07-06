@@ -164,6 +164,7 @@
     <Compile Include="Model\Items\Cursed\CursedWeapons.cs" />
     <Compile Include="Model\Items\Effects\Calculator.cs" />
     <Compile Include="Model\Items\Effects\EnchantScrolls.cs" />
+    <Compile Include="Model\Items\EtcItem.cs" />
     <Compile Include="Model\Items\Henna.cs" />
     <Compile Include="Model\Items\ItemEffect.cs" />
     <Compile Include="Model\Items\ItemHandler.cs" />
