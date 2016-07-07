@@ -227,7 +227,7 @@ namespace L2dotNET.Utility.Geometry
             return triangles;
         }
 
-        private static bool IsEar(bool isCw, List<int[]> nonConvexPoints, int[] a, int[] b, int[] c)
+        private static bool IsEar(bool isCw, IEnumerable<int[]> nonConvexPoints, int[] a, int[] b, int[] c)
         {
             // ABC triangle
             if (!(IsConvex(isCw, a, b, c)))

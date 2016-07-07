@@ -73,8 +73,10 @@ namespace L2dotNET.GameService.Tables
 
                         foreach (XElement selllist in shopp.Elements("selllist"))
                         {
-                            NdShopList slist = new NdShopList();
-                            slist.Id = short.Parse(selllist.Attribute("id").Value);
+                            NdShopList slist = new NdShopList
+                                               {
+                                                   Id = short.Parse(selllist.Attribute("id").Value)
+                                               };
 
                             XElement itemElement = selllist.Element("item");
                             if (itemElement != null)

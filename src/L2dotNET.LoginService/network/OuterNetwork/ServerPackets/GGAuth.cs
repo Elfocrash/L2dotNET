@@ -2,7 +2,7 @@
 
 namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 {
-    static class GgAuth
+    static class GGAuth
     {
         /// <summary>
         /// Packet opcode.

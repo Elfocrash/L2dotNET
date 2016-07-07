@@ -55,8 +55,10 @@ namespace L2dotNET.GameService.Network.LoginAuth
                 Log.Warn("Login server is not responding. Retrying");
                 if (Ltimer == null)
                 {
-                    Ltimer = new System.Timers.Timer();
-                    Ltimer.Interval = 2000;
+                    Ltimer = new System.Timers.Timer
+                             {
+                                 Interval = 2000
+                             };
                     Ltimer.Elapsed += new System.Timers.ElapsedEventHandler(ltimer_Elapsed);
                 }
 

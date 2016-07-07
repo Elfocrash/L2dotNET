@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public Armor(StatsSet set) : base(set)
         {
-            _type = GetEnumFromString(set.GetString("armor_type", "none"),ArmorTypeId.None);
+            _type = GetEnumFromString(set.GetString("armor_type", "none"), ArmorTypeId.None);
 
             int bodyPart = BodyPart;
             if ((bodyPart == SlotNeck) || (bodyPart == SlotFace) || (bodyPart == SlotHair) || (bodyPart == SlotHairall) || ((bodyPart & SlotREar) != 0) || ((bodyPart & SlotLFinger) != 0) || ((bodyPart & SlotBack) != 0))

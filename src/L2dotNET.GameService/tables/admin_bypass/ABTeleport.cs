@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using log4net;
@@ -26,24 +27,27 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "group")
                     {
-                        AbTeleportGroup ab = new AbTeleportGroup();
-                        ab.Id = int.Parse(m.Attribute("id").Value);
-                        ab.Str = m.Attribute("str").Value;
-                        ab.Name = m.Attribute("name").Value;
-                        ab.Level = int.Parse(m.Attribute("level").Value);
+                        AbTeleportGroup ab = new AbTeleportGroup
+                                             {
+                                                 Id = int.Parse(m.Attribute("id").Value),
+                                                 Str = m.Attribute("str").Value,
+                                                 Name = m.Attribute("name").Value,
+                                                 Level = int.Parse(m.Attribute("level").Value)
+                                             };
 
-                        foreach (XElement e in m.Elements())
-                            if (e.Name == "entry")
-                            {
-                                AbTeleportEntry ae = new AbTeleportEntry();
-                                ae.Name = e.Attribute("name").Value;
-                                ae.X = int.Parse(e.Attribute("x").Value);
-                                ae.Y = int.Parse(e.Attribute("y").Value);
-                                ae.Z = int.Parse(e.Attribute("z").Value);
-                                ae.Id = ab.Teles.Count;
-
-                                ab.Teles.Add(ae.Id, ae);
-                            }
+                        foreach (AbTeleportEntry ae in from e in m.Elements()
+                                                       where e.Name == "entry"
+                                                       select new AbTeleportEntry
+                                                              {
+                                                                  Name = e.Attribute("name").Value,
+                                                                  X = int.Parse(e.Attribute("x").Value),
+                                                                  Y = int.Parse(e.Attribute("y").Value),
+                                                                  Z = int.Parse(e.Attribute("z").Value),
+                                                                  Id = ab.Teles.Count
+                                                              })
+                        {
+                            ab.Teles.Add(ae.Id, ae);
+                        }
 
                         Groups.Add(ab.Id, ab);
                     }

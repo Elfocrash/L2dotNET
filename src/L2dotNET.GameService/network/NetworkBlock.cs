@@ -54,16 +54,20 @@ namespace L2dotNET.GameService.Network
 
                     if (line.StartsWithIgnoreCase("d"))
                     {
-                        NetworkBlockModel nbModel = new NetworkBlockModel();
-                        nbModel.DirectIp = line.Split(' ')[1];
-                        nbModel.Permanent = line.Split(' ')[2].EqualsIgnoreCase("0");
+                        NetworkBlockModel nbModel = new NetworkBlockModel
+                                                    {
+                                                        DirectIp = line.Split(' ')[1],
+                                                        Permanent = line.Split(' ')[2].EqualsIgnoreCase("0")
+                                                    };
                         Blocks.Add(nbModel);
                     }
                     else if (line.StartsWithIgnoreCase("m"))
                     {
-                        NetworkBlockModel nbModel = new NetworkBlockModel();
-                        nbModel.Mask = line.Split(' ')[1];
-                        nbModel.Permanent = line.Split(' ')[2].EqualsIgnoreCase("0");
+                        NetworkBlockModel nbModel = new NetworkBlockModel
+                                                    {
+                                                        Mask = line.Split(' ')[1],
+                                                        Permanent = line.Split(' ')[2].EqualsIgnoreCase("0")
+                                                    };
                         Blocks.Add(nbModel);
                     }
                 }

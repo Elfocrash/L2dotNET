@@ -203,8 +203,10 @@ namespace L2dotNET.GameService.Model.Playable
 
         public override L2Character[] GetPartyCharacters()
         {
-            List<L2Character> chars = new List<L2Character>();
-            chars.Add(this);
+            List<L2Character> chars = new List<L2Character>
+                                      {
+                                          this
+                                      };
             if (Owner != null)
             {
                 chars.Add(Owner);

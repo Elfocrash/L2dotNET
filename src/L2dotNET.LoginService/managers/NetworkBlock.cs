@@ -54,16 +54,20 @@ namespace L2dotNET.LoginService.Managers
 
                     if (line.StartsWithIgnoreCase("d"))
                     {
-                        NbInterface i = new NbInterface();
-                        i.DirectIp = line.Split(' ')[1];
-                        i.Forever = line.Split(' ')[2].EqualsIgnoreCase("0");
+                        NbInterface i = new NbInterface
+                                        {
+                                            DirectIp = line.Split(' ')[1],
+                                            Forever = line.Split(' ')[2].EqualsIgnoreCase("0")
+                                        };
                         _blocks.Add(i);
                     }
                     else if (line.StartsWithIgnoreCase("m"))
                     {
-                        NbInterface i = new NbInterface();
-                        i.Mask = line.Split(' ')[1];
-                        i.Forever = line.Split(' ')[2].EqualsIgnoreCase("0");
+                        NbInterface i = new NbInterface
+                                        {
+                                            Mask = line.Split(' ')[1],
+                                            Forever = line.Split(' ')[2].EqualsIgnoreCase("0")
+                                        };
                         _blocks.Add(i);
                     }
                 }

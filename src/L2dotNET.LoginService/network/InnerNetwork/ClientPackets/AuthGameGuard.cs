@@ -14,7 +14,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public void RunImpl()
         {
-            _client.Send(GgAuth.ToPacket(_client));
+            _client.Send(GGAuth.ToPacket(_client));
         }
     }
 }

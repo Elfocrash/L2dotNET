@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using L2dotNET.GameService.Model.Items;
+﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -65,8 +64,10 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
                 _num = item.Count;
             }
 
-            List<long[]> items = new List<long[]>();
-            items.Add(new[] { _sId, _num });
+            //List<long[]> items = new List<long[]>
+            //                     {
+            //                         new[] { _sId, _num }
+            //                     };
             //pet.Inventory.transferHere(player, items, true);
         }
     }

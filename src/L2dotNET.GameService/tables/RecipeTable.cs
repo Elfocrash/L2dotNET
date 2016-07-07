@@ -40,12 +40,14 @@ namespace L2dotNET.GameService.Tables
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "recipe")
                     {
-                        L2Recipe rec = new L2Recipe();
-                        rec.RecipeId = int.Parse(m.Attribute("id").Value);
-                        rec.Mk = m.Attribute("mk").Value;
-                        rec.Level = int.Parse(m.Attribute("level").Value);
-                        rec.ItemId = int.Parse(m.Attribute("itemId").Value);
-                        rec.Iscommonrecipe = int.Parse(m.Attribute("common").Value);
+                        L2Recipe rec = new L2Recipe
+                                       {
+                                           RecipeId = int.Parse(m.Attribute("id").Value),
+                                           Mk = m.Attribute("mk").Value,
+                                           Level = int.Parse(m.Attribute("level").Value),
+                                           ItemId = int.Parse(m.Attribute("itemId").Value),
+                                           Iscommonrecipe = int.Parse(m.Attribute("common").Value)
+                                       };
 
                         foreach (XElement stp in m.Elements())
                             switch (stp.Name.LocalName)
@@ -66,8 +68,10 @@ namespace L2dotNET.GameService.Tables
                                     rec.SuccessRate = int.Parse(stp.Attribute("rate").Value);
                                     foreach (XElement items in stp.Elements().Where(items => items.Name == "item"))
                                     {
-                                        RecipeItemEntry item = new RecipeItemEntry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value));
-                                        item.Rate = double.Parse(items.Attribute("rate").Value);
+                                        RecipeItemEntry item = new RecipeItemEntry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value))
+                                                               {
+                                                                   Rate = double.Parse(items.Attribute("rate").Value)
+                                                               };
                                         rec.Products.Add(item);
                                     }
                                 }

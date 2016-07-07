@@ -71,8 +71,10 @@ namespace L2dotNET.GameService.Model.Items
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "capsule")
                     {
-                        CapsuleItem caps = new CapsuleItem();
-                        caps.Id = Convert.ToInt32(m.Attribute("id").Value);
+                        CapsuleItem caps = new CapsuleItem
+                                           {
+                                               Id = Convert.ToInt32(m.Attribute("id").Value)
+                                           };
 
                         foreach (XElement stp in m.Elements())
                             switch (stp.Name.LocalName)
@@ -80,11 +82,13 @@ namespace L2dotNET.GameService.Model.Items
                                 case "item":
                                     try
                                     {
-                                        CapsuleItemReward rew = new CapsuleItemReward();
-                                        rew.Id = int.Parse(stp.Attribute("id").Value);
-                                        rew.Min = int.Parse(stp.Attribute("min").Value);
-                                        rew.Max = int.Parse(stp.Attribute("max").Value);
-                                        rew.Rate = int.Parse(stp.Attribute("rate").Value);
+                                        CapsuleItemReward rew = new CapsuleItemReward
+                                                                {
+                                                                    Id = int.Parse(stp.Attribute("id").Value),
+                                                                    Min = int.Parse(stp.Attribute("min").Value),
+                                                                    Max = int.Parse(stp.Attribute("max").Value),
+                                                                    Rate = int.Parse(stp.Attribute("rate").Value)
+                                                                };
                                         caps.Rewards.Add(rew);
                                     }
                                     catch (Exception)

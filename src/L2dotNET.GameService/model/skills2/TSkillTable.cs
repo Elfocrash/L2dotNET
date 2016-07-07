@@ -66,21 +66,25 @@ namespace L2dotNET.GameService.Model.Skills2
                     int cnt = dlc.ReadD();
                     for (int a = 0; a < cnt; a++)
                     {
-                        SkillEnchantInfo inf = new SkillEnchantInfo();
-                        inf.Id = dlc.ReadD();
-                        inf.Lv = dlc.ReadD();
+                        SkillEnchantInfo inf = new SkillEnchantInfo
+                                               {
+                                                   Id = dlc.ReadD(),
+                                                   Lv = dlc.ReadD()
+                                               };
                         int len = dlc.ReadD();
                         for (int b = 0; b < len; b++)
                         {
-                            SkillEnchantInfoDetail nfo = new SkillEnchantInfoDetail();
-                            nfo.RouteId = dlc.ReadD();
-                            nfo.EnchantId = dlc.ReadD();
-                            nfo.EnchantedSkillLevel = dlc.ReadD();
-                            nfo.Importance = dlc.ReadC();
-                            nfo.R1 = dlc.ReadD();
-                            nfo.R2 = dlc.ReadD();
-                            nfo.R3 = dlc.ReadD();
-                            nfo.R4 = dlc.ReadD();
+                            SkillEnchantInfoDetail nfo = new SkillEnchantInfoDetail
+                                                         {
+                                                             RouteId = dlc.ReadD(),
+                                                             EnchantId = dlc.ReadD(),
+                                                             EnchantedSkillLevel = dlc.ReadD(),
+                                                             Importance = dlc.ReadC(),
+                                                             R1 = dlc.ReadD(),
+                                                             R2 = dlc.ReadD(),
+                                                             R3 = dlc.ReadD(),
+                                                             R4 = dlc.ReadD()
+                                                         };
                             dlc.ReadS(10);
 
                             inf.Details.Add(nfo.EnchantedSkillLevel, nfo);
@@ -438,12 +442,14 @@ namespace L2dotNET.GameService.Model.Skills2
                 cntTotal += skLen;
                 for (int s = 0; s < skLen; s++)
                 {
-                    AcquireSkill skill = new AcquireSkill();
-                    skill.Id = dlc.ReadD();
-                    skill.Lv = dlc.ReadD();
-                    skill.GetLv = dlc.ReadD();
-                    skill.LvUpSp = dlc.ReadD();
-                    skill.AutoGet = dlc.ReadC() == 1;
+                    AcquireSkill skill = new AcquireSkill
+                                         {
+                                             Id = dlc.ReadD(),
+                                             Lv = dlc.ReadD(),
+                                             GetLv = dlc.ReadD(),
+                                             LvUpSp = dlc.ReadD(),
+                                             AutoGet = dlc.ReadC() == 1
+                                         };
 
                     if (dlc.ReadC() == 1)
                     {

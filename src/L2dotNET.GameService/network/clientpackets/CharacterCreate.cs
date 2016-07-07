@@ -204,8 +204,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.Gameclient.AccountChars.Add(player);
             GetClient().SendPacket(new CharCreateOk());
             L2World.Instance.AddPlayer(player);
-            CharacterSelectionInfo csl = new CharacterSelectionInfo(GetClient().AccountName, GetClient().AccountChars, GetClient().SessionId);
-            csl.CharId = player.ObjId;
+            CharacterSelectionInfo csl = new CharacterSelectionInfo(GetClient().AccountName, GetClient().AccountChars, GetClient().SessionId)
+                                         {
+                                             CharId = player.ObjId
+                                         };
             GetClient().SendPacket(csl);
         }
     }

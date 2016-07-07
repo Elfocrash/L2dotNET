@@ -57,10 +57,12 @@ namespace L2dotNET.GameService.Tables
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "territory")
                     {
-                        L2Territory zone = new L2Territory();
-                        zone.Name = m.Attribute("name").Value;
-                        zone.Controller = m.Attribute("controller").Value;
-                        zone.StartActive = bool.Parse(m.Attribute("start_active").Value);
+                        L2Territory zone = new L2Territory
+                                           {
+                                               Name = m.Attribute("name").Value,
+                                               Controller = m.Attribute("controller").Value,
+                                               StartActive = bool.Parse(m.Attribute("start_active").Value)
+                                           };
 
                         foreach (XElement stp in m.Elements())
                             switch (stp.Name.LocalName)
@@ -169,7 +171,16 @@ namespace L2dotNET.GameService.Tables
         {
             //NpcTemplate template = new NpcTemplate(new StatsSet()); //NpcTable.Instance.GetNpcTemplate(id);
 
-            L2Warrior o = new L2Warrior();
+            L2Warrior o = new L2Warrior
+                          {
+                              X = x,
+                              Y = y,
+                              Z = z,
+                              Heading = h,
+                              SpawnX = x,
+                              SpawnY = y,
+                              SpawnZ = z
+                          };
             //o.setTemplate(template);
             //switch (template._type)
             //{
@@ -186,14 +197,6 @@ namespace L2dotNET.GameService.Tables
             //        ((L2Npc)o).setTemplate(template);
             //        break;
             //}
-            o.X = x;
-            o.Y = y;
-            o.Z = z;
-            o.Heading = h;
-
-            o.SpawnX = x;
-            o.SpawnY = y;
-            o.SpawnZ = z;
 
             L2World.Instance.AddObject(o);
             o.OnSpawn();

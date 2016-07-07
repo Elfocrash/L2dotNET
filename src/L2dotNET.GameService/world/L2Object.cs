@@ -562,15 +562,19 @@ namespace L2dotNET.GameService.World
         {
             if (RegenerationMethod_1S == null)
             {
-                RegenerationMethod_1S = new Timer();
-                RegenerationMethod_1S.Interval = 1000;
+                RegenerationMethod_1S = new Timer
+                                        {
+                                            Interval = 1000
+                                        };
                 RegenerationMethod_1S.Elapsed += new ElapsedEventHandler(RegenTaskDone);
             }
 
             if (RegenUpdate == null)
             {
-                RegenUpdate = new Timer();
-                RegenUpdate.Interval = RegenUpdateInterval;
+                RegenUpdate = new Timer
+                              {
+                                  Interval = RegenUpdateInterval
+                              };
                 RegenUpdate.Elapsed += new ElapsedEventHandler(RegenUpdateTaskDone);
             }
 

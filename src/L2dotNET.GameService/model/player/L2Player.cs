@@ -147,8 +147,10 @@ namespace L2dotNET.GameService.Model.Player
 
         public static L2Player Create()
         {
-            L2Player player = new L2Player();
-            player.ObjId = IdFactory.Instance.NextId();
+            L2Player player = new L2Player
+                              {
+                                  ObjId = IdFactory.Instance.NextId()
+                              };
 
             //player.Inventory = new InvPC();
             //player.Inventory._owner = player;
@@ -521,12 +523,14 @@ namespace L2dotNET.GameService.Model.Player
 
             if (skill.ReuseDelay > 0)
             {
-                L2SkillCoolTime reuse = new L2SkillCoolTime();
-                reuse.Id = skill.SkillId;
-                reuse.Lvl = skill.Level;
-                reuse.Total = (int)skill.ReuseDelay;
+                L2SkillCoolTime reuse = new L2SkillCoolTime
+                                        {
+                                            Id = skill.SkillId,
+                                            Lvl = skill.Level,
+                                            Total = (int)skill.ReuseDelay,
+                                            Owner = this
+                                        };
                 reuse.Delay = reuse.Total;
-                reuse.Owner = this;
                 reuse.Timer();
                 Reuse.Add(reuse.Id, reuse);
                 UpdateReuse();
@@ -1895,8 +1899,10 @@ namespace L2dotNET.GameService.Model.Player
             {
                 if (_petSummonTime == null)
                 {
-                    _petSummonTime = new Timer();
-                    _petSummonTime.Interval = 5000;
+                    _petSummonTime = new Timer
+                                     {
+                                         Interval = 5000
+                                     };
                     _petSummonTime.Elapsed += PetSummonEnd;
                 }
 
@@ -1907,8 +1913,10 @@ namespace L2dotNET.GameService.Model.Player
             {
                 if (_nonpetSummonTime == null)
                 {
-                    _nonpetSummonTime = new Timer();
-                    _nonpetSummonTime.Interval = 5000;
+                    _nonpetSummonTime = new Timer
+                                        {
+                                            Interval = 5000
+                                        };
                     _nonpetSummonTime.Elapsed += NonpetSummonEnd;
                 }
 
@@ -2028,8 +2036,10 @@ namespace L2dotNET.GameService.Model.Player
         {
             if (_sitTime == null)
             {
-                _sitTime = new Timer();
-                _sitTime.Interval = 2500;
+                _sitTime = new Timer
+                           {
+                               Interval = 2500
+                           };
                 _sitTime.Elapsed += SitEnd;
             }
 

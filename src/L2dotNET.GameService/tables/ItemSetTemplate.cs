@@ -123,8 +123,10 @@ namespace L2dotNET.GameService.Tables
 
         public List<int> GetAllSetIds()
         {
-            List<int> list = new List<int>();
-            list.Add(ArmorId);
+            List<int> list = new List<int>
+                             {
+                                 ArmorId
+                             };
 
             if (Legs != null)
             {

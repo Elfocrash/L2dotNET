@@ -17,16 +17,18 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public override void Run()
         {
-            List<string> manorsName = new List<string>();
-            manorsName.Add("gludio");
-            manorsName.Add("dion");
-            manorsName.Add("giran");
-            manorsName.Add("oren");
-            manorsName.Add("aden");
-            manorsName.Add("innadril");
-            manorsName.Add("goddard");
-            manorsName.Add("rune");
-            manorsName.Add("schuttgart");
+            List<string> manorsName = new List<string>
+                                      {
+                                          "gludio",
+                                          "dion",
+                                          "giran",
+                                          "oren",
+                                          "aden",
+                                          "innadril",
+                                          "goddard",
+                                          "rune",
+                                          "schuttgart"
+                                      };
             GetClient().SendPacket(new ExSendManorList(manorsName));
         }
     }

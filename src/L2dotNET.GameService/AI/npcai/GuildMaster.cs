@@ -591,12 +591,14 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         private void CreateClan(L2Player talker, string name)
         {
-            L2Clan clan = new L2Clan();
-            clan.LeaderId = talker.ObjId;
-            clan.ClanMasterName = talker.Name;
-            clan.Name = name;
-            clan.Level = 0;
-            clan.ClanId = IdFactory.Instance.NextId();
+            L2Clan clan = new L2Clan
+                          {
+                              LeaderId = talker.ObjId,
+                              ClanMasterName = talker.Name,
+                              Name = name,
+                              Level = 0,
+                              ClanId = IdFactory.Instance.NextId()
+                          };
 
             clan.AddMember(talker, 0);
 

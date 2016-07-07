@@ -30,8 +30,10 @@ namespace L2dotNET.GameService.Model.Npcs
         {
             if (_regenMpTime == null)
             {
-                _regenMpTime = new System.Timers.Timer();
-                _regenMpTime.Interval = 2000;
+                _regenMpTime = new System.Timers.Timer
+                               {
+                                   Interval = 2000
+                               };
                 _regenMpTime.Elapsed += new System.Timers.ElapsedEventHandler(RegenTask);
             }
 

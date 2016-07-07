@@ -48,10 +48,12 @@ namespace L2dotNET.LoginService.GSCommunication
 
             foreach (ServerModel curServ in serverModels)
             {
-                L2Server server = new L2Server();
-                server.Id = (byte)curServ.Id;
-                server.Info = curServ.Name;
-                server.Code = curServ.Code;
+                L2Server server = new L2Server
+                                  {
+                                      Id = (byte)curServ.Id,
+                                      Info = curServ.Name,
+                                      Code = curServ.Code
+                                  };
                 Servers.Add(server);
             }
 

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Xml;
 using log4net;
 using L2dotNET.GameService.Model.Items;
-using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.Tables
 {
@@ -71,7 +68,6 @@ namespace L2dotNET.GameService.Tables
             Slots.Add("babypet", ItemTemplate.SlotBabypet);
 
             int highest = 0;
-            
 
             GC.Collect();
             GC.WaitForPendingFinalizers();

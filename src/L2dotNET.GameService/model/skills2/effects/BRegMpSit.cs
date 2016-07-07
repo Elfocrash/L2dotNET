@@ -12,8 +12,10 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override void Build(string str)
         {
             string val = str.Split(' ')[1];
-            _ef = new BRegenMpBySit(double.Parse(val.Substring(1)));
-            _ef.Mul = val.StartsWithIgnoreCase("*");
+            _ef = new BRegenMpBySit(double.Parse(val.Substring(1)))
+                  {
+                      Mul = val.StartsWithIgnoreCase("*")
+                  };
         }
 
         public override EffectResult OnStart(L2Character caster, L2Character target)
