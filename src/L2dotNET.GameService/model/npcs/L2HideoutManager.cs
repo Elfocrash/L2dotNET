@@ -10,7 +10,7 @@ using L2dotNET.GameService.Tables;
 
 namespace L2dotNET.GameService.Model.Npcs
 {
-    class L2HideoutManager : L2Npc
+    sealed class L2HideoutManager : L2Npc
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(L2HideoutManager));
         private readonly Hideout _hideout;

@@ -5,7 +5,7 @@ using L2dotNET.GameService.Tables;
 
 namespace L2dotNET.GameService.Model.Npcs.Decor
 {
-    public class L2Door : L2StaticObject
+    public sealed class L2Door : L2StaticObject
     {
         public HideoutTemplate Structure;
 

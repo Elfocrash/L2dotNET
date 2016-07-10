@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Model.Npcs.Decor
 {
-    public class L2Chair : L2StaticObject
+    public sealed class L2Chair : L2StaticObject
     {
         public L2Chair()
         {
