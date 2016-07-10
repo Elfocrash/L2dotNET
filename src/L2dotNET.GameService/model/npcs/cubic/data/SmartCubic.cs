@@ -40,19 +40,14 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         /// <param name="owner"></param>
         private int Action1(L2Player owner)
         {
-            if (owner.CurrentTarget != null)
+            //todo target was attacked some time ago with myself
+            if (owner.CurrentTarget?.Dead ?? true)
             {
-                //todo target was attacked some time ago with myself
-                if (owner.CurrentTarget.Dead)
-                {
-                    return 0;
-                }
-
-                CallSkill(owner, Skill1, owner.CurrentTarget);
-                return 1;
+                return 0;
             }
 
-            return 0;
+            CallSkill(owner, Skill1, owner.CurrentTarget);
+            return 1;
         }
 
         /// <summary>
@@ -72,18 +67,13 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
                 return 1;
             }
 
-            if (owner.CurrentTarget != null)
+            if (owner.CurrentTarget?.Dead ?? true)
             {
-                if (owner.CurrentTarget.Dead)
-                {
-                    return 0;
-                }
-
-                CallSkill(owner, Skill2, owner.CurrentTarget);
-                return 1;
+                return 0;
             }
 
-            return 0;
+            CallSkill(owner, Skill2, owner.CurrentTarget);
+            return 1;
         }
 
         /// <summary>
@@ -98,13 +88,13 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
                 n = 1;
             }
 
-            if (n == 1)
+            if (n != 1)
             {
-                CallSkill(owner, Skill3, owner);
-                return 1;
+                return 0;
             }
 
-            return 0;
+            CallSkill(owner, Skill3, owner);
+            return 1;
         }
     }
 }

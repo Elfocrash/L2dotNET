@@ -18,12 +18,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _mp = (int)player.CharacterStat.GetStat(EffectType.BMaxMp);
             _book = new List<L2Recipe>();
 
-            if (player.RecipeBook != null)
+            if (player.RecipeBook == null)
             {
-                foreach (L2Recipe rec in player.RecipeBook.Where(rec => rec.Iscommonrecipe == type))
-                {
-                    _book.Add(rec);
-                }
+                return;
+            }
+
+            foreach (L2Recipe rec in player.RecipeBook.Where(rec => rec.Iscommonrecipe == type))
+            {
+                _book.Add(rec);
             }
         }
 

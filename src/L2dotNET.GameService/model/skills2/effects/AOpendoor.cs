@@ -57,19 +57,17 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
                     return false;
                 }
 
-                if (!door.UnlockSkill)
+                if (door.UnlockSkill)
                 {
-                    caster.SendSystemMessage(SystemMessage.SystemMessageId.UnableToUnlockDoor);
-                    return false;
+                    return true;
                 }
-            }
-            else
-            {
-                caster.SendSystemMessage(SystemMessage.SystemMessageId.TargetIsIncorrect);
+
+                caster.SendSystemMessage(SystemMessage.SystemMessageId.UnableToUnlockDoor);
                 return false;
             }
 
-            return true;
+            caster.SendSystemMessage(SystemMessage.SystemMessageId.TargetIsIncorrect);
+            return false;
         }
     }
 }

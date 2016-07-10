@@ -17,14 +17,16 @@ namespace L2dotNET.GameService.Tables
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new StructureTable();
-                        }
+                        _instance = new StructureTable();
                     }
                 }
 
@@ -100,59 +102,61 @@ namespace L2dotNET.GameService.Tables
                             break;
                     }
 
-                    if (template != null)
+                    if (template == null)
                     {
-                        template.ID = Convert.ToInt32(pt[0]);
-
-                        for (byte ord = 2; ord < pt.Length; ord++)
-                        {
-                            string parameter = pt[ord];
-                            string value = parameter.Substring(parameter.IndexOf('{') + 1);
-                            value = value.Remove(value.Length - 1);
-
-                            switch (parameter.Split('{')[0].ToLower())
-                            {
-                                case "npc":
-                                {
-                                    foreach (string str in value.Split(' '))
-                                    {
-                                        template.SetNpc(Convert.ToInt32(str));
-                                    }
-                                }
-
-                                    break;
-                                case "door":
-                                {
-                                    foreach (string str in value.Split(' '))
-                                    {
-                                        template.SetDoor(Convert.ToInt32(str));
-                                    }
-                                }
-
-                                    break;
-                                case "spawn":
-                                    template.SetOwnerRespawn(value.Split(' '));
-                                    break;
-                                case "outside":
-                                    template.SetOutsideRespawn(value.Split(' '));
-                                    break;
-                                case "banish":
-                                    template.SetBanishRespawn(value.Split(' '));
-                                    break;
-                                case "zone":
-                                {
-                                    foreach (string str in value.Split(';'))
-                                    {
-                                        template.SetZoneLoc(str.Split(' '));
-                                    }
-                                }
-
-                                    break;
-                            }
-                        }
-
-                        Structures.Add(template.ID, template);
+                        continue;
                     }
+
+                    template.ID = Convert.ToInt32(pt[0]);
+
+                    for (byte ord = 2; ord < pt.Length; ord++)
+                    {
+                        string parameter = pt[ord];
+                        string value = parameter.Substring(parameter.IndexOf('{') + 1);
+                        value = value.Remove(value.Length - 1);
+
+                        switch (parameter.Split('{')[0].ToLower())
+                        {
+                            case "npc":
+                            {
+                                foreach (string str in value.Split(' '))
+                                {
+                                    template.SetNpc(Convert.ToInt32(str));
+                                }
+                            }
+
+                                break;
+                            case "door":
+                            {
+                                foreach (string str in value.Split(' '))
+                                {
+                                    template.SetDoor(Convert.ToInt32(str));
+                                }
+                            }
+
+                                break;
+                            case "spawn":
+                                template.SetOwnerRespawn(value.Split(' '));
+                                break;
+                            case "outside":
+                                template.SetOutsideRespawn(value.Split(' '));
+                                break;
+                            case "banish":
+                                template.SetBanishRespawn(value.Split(' '));
+                                break;
+                            case "zone":
+                            {
+                                foreach (string str in value.Split(';'))
+                                {
+                                    template.SetZoneLoc(str.Split(' '));
+                                }
+                            }
+
+                                break;
+                        }
+                    }
+
+                    Structures.Add(template.ID, template);
                 }
             }
 

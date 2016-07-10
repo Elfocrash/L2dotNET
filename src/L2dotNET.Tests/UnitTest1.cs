@@ -25,43 +25,46 @@ namespace L2dotNET.Tests
             foreach (string i in xmlFilesArray)
             {
                 doc.Load(i);
-                if (doc.DocumentElement != null)
+
+                XmlNodeList nodes = doc.DocumentElement?.SelectNodes("/list/class");
+
+                if (nodes == null)
                 {
-                    XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/class");
+                    continue;
+                }
 
-                    if (nodes != null)
+                foreach (XmlNode node in nodes)
+                {
+                    XmlElement ownerElement = node.Attributes?[0].OwnerElement;
+                    if ((ownerElement == null) || !"class".Equals(ownerElement.Name))
                     {
-                        foreach (XmlNode node in nodes)
-                            if (node.Attributes != null)
-                            {
-                                XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                                if ((ownerElement != null) && "class".Equals(ownerElement.Name))
-                                {
-                                    XmlNamedNodeMap attrs;
-                                    //ClassIds classId = (ClassIds)int.Parse(attrs.Item(0).Value);
-                                    StatsSet set = new StatsSet();
-
-                                    for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
-                                        if ((cd.NextSibling != null) && ("set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null)))
-                                        {
-                                            attrs = cd.NextSibling.Attributes;
-                                            if (attrs != null)
-                                            {
-                                                string name = attrs.GetNamedItem("name").Value;
-                                                string value = attrs.GetNamedItem("val").Value;
-                                                set.Set(name, value);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            break;
-                                        }
-                                    ////PcTemplate pcTempl = new PcTemplate(classId, set);
-                                    ////templates.Add((int)pcTempl.ClassId, pcTempl);
-                                    //System.Diagnostics.Trace.WriteLine("Added template for: " + pcTempl.ClassId);
-                                }
-                            }
+                        continue;
                     }
+
+                    XmlNamedNodeMap attrs;
+                    //ClassIds classId = (ClassIds)int.Parse(attrs.Item(0).Value);
+                    StatsSet set = new StatsSet();
+
+                    for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
+                        if ((cd.NextSibling != null) && ("set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null)))
+                        {
+                            attrs = cd.NextSibling.Attributes;
+                            if (attrs == null)
+                            {
+                                continue;
+                            }
+
+                            string name = attrs.GetNamedItem("name").Value;
+                            string value = attrs.GetNamedItem("val").Value;
+                            set.Set(name, value);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    ////PcTemplate pcTempl = new PcTemplate(classId, set);
+                    ////templates.Add((int)pcTempl.ClassId, pcTempl);
+                    //System.Diagnostics.Trace.WriteLine("Added template for: " + pcTempl.ClassId);
                 }
             }
         }

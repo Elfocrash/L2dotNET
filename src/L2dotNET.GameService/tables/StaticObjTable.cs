@@ -18,14 +18,16 @@ namespace L2dotNET.GameService.Tables
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new StaticObjTable();
-                        }
+                        _instance = new StaticObjTable();
                     }
                 }
 
@@ -68,57 +70,59 @@ namespace L2dotNET.GameService.Tables
                             break;
                     }
 
-                    if (obj != null)
+                    if (obj == null)
                     {
-                        obj.StaticId = Convert.ToInt32(pt[0]);
-
-                        for (byte ord = 2; ord < pt.Length; ord++)
-                        {
-                            string parameter = pt[ord];
-                            string value = parameter.Substring(parameter.IndexOf('{') + 1);
-                            value = value.Remove(value.Length - 1);
-
-                            switch (parameter.Split('{')[0].ToLower())
-                            {
-                                case "spawn":
-                                    obj.SetLoc(value.Split(' '));
-                                    break;
-                                case "tex":
-                                    obj.SetTex(value.Split(' '));
-                                    break;
-                                case "htm":
-                                    obj.Htm = value;
-                                    break;
-                                case "hp":
-                                    obj.MaxHp = Convert.ToInt32(value);
-                                    break;
-                                case "defence":
-                                    obj.Pdef = Convert.ToInt32(value.Split(' ')[0]);
-                                    obj.Mdef = Convert.ToInt32(value.Split(' ')[1]);
-                                    break;
-                                case "unlock":
-                                {
-                                    foreach (string str in value.Split(' '))
-                                        switch (str)
-                                        {
-                                            case "trigger":
-                                                obj.UnlockTrigger = true;
-                                                break;
-                                            case "skill":
-                                                obj.UnlockSkill = true;
-                                                break;
-                                            case "drop":
-                                                obj.UnlockNpc = true;
-                                                break;
-                                        }
-                                }
-
-                                    break;
-                            }
-                        }
-
-                        Objects.Add(obj.StaticId, obj);
+                        continue;
                     }
+
+                    obj.StaticId = Convert.ToInt32(pt[0]);
+
+                    for (byte ord = 2; ord < pt.Length; ord++)
+                    {
+                        string parameter = pt[ord];
+                        string value = parameter.Substring(parameter.IndexOf('{') + 1);
+                        value = value.Remove(value.Length - 1);
+
+                        switch (parameter.Split('{')[0].ToLower())
+                        {
+                            case "spawn":
+                                obj.SetLoc(value.Split(' '));
+                                break;
+                            case "tex":
+                                obj.SetTex(value.Split(' '));
+                                break;
+                            case "htm":
+                                obj.Htm = value;
+                                break;
+                            case "hp":
+                                obj.MaxHp = Convert.ToInt32(value);
+                                break;
+                            case "defence":
+                                obj.Pdef = Convert.ToInt32(value.Split(' ')[0]);
+                                obj.Mdef = Convert.ToInt32(value.Split(' ')[1]);
+                                break;
+                            case "unlock":
+                            {
+                                foreach (string str in value.Split(' '))
+                                    switch (str)
+                                    {
+                                        case "trigger":
+                                            obj.UnlockTrigger = true;
+                                            break;
+                                        case "skill":
+                                            obj.UnlockSkill = true;
+                                            break;
+                                        case "drop":
+                                            obj.UnlockNpc = true;
+                                            break;
+                                    }
+                            }
+
+                                break;
+                        }
+                    }
+
+                    Objects.Add(obj.StaticId, obj);
                 }
             }
 

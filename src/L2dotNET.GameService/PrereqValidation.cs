@@ -19,14 +19,16 @@ namespace L2dotNET.GameService
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new PreReqValidation();
-                        }
+                        _instance = new PreReqValidation();
                     }
                 }
 
@@ -36,13 +38,15 @@ namespace L2dotNET.GameService
 
         public void Initialize()
         {
-            if (!CheckService.PreCheckRepository())
+            if (CheckService.PreCheckRepository())
             {
-                Log.Warn("Some checks have failed. Please correct the errors and try again.");
-                Log.Info("Press ENTER to exit...");
-                Console.Read();
-                Environment.Exit(0);
+                return;
             }
+
+            Log.Warn("Some checks have failed. Please correct the errors and try again.");
+            Log.Info("Press ENTER to exit...");
+            Console.Read();
+            Environment.Exit(0);
         }
     }
 }

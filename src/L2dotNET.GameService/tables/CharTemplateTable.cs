@@ -22,14 +22,16 @@ namespace L2dotNET.GameService.Tables
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new CharTemplateTable();
-                        }
+                        _instance = new CharTemplateTable();
                     }
                 }
 
@@ -44,43 +46,46 @@ namespace L2dotNET.GameService.Tables
             foreach (string i in xmlFilesArray)
             {
                 doc.Load(i);
-                if (doc.DocumentElement != null)
+
+                XmlNodeList nodes = doc.DocumentElement?.SelectNodes("/list/class");
+
+                if (nodes == null)
                 {
-                    XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/class");
+                    continue;
+                }
 
-                    if (nodes != null)
+                foreach (XmlNode node in nodes)
+                {
+                    XmlElement ownerElement = node.Attributes?[0].OwnerElement;
+                    if ((ownerElement == null) || ((node.Attributes == null) || !"class".Equals(ownerElement.Name)))
                     {
-                        foreach (XmlNode node in nodes)
-                            if (node.Attributes != null)
-                            {
-                                XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                                if ((ownerElement != null) && ((node.Attributes != null) && "class".Equals(ownerElement.Name)))
-                                {
-                                    XmlNamedNodeMap attrs = node.Attributes;
-                                    ClassId classId = ClassId.Values.FirstOrDefault(x => ((int)x.Id).Equals(Convert.ToInt32(attrs.Item(0).Value)));
-                                    StatsSet set = new StatsSet();
-
-                                    for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
-                                        if ((cd.NextSibling != null) && ("set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null)))
-                                        {
-                                            attrs = cd.NextSibling.Attributes;
-                                            if (attrs != null)
-                                            {
-                                                string name = attrs.GetNamedItem("name").Value;
-                                                string value = attrs.GetNamedItem("val").Value;
-                                                set.Set(name, value);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            break;
-                                        }
-
-                                    PcTemplate pcTempl = new PcTemplate(classId, set);
-                                    Templates.Add((int)pcTempl.ClassId.Id, pcTempl);
-                                }
-                            }
+                        continue;
                     }
+
+                    XmlNamedNodeMap attrs = node.Attributes;
+                    ClassId classId = ClassId.Values.FirstOrDefault(x => ((int)x.Id).Equals(Convert.ToInt32(attrs.Item(0).Value)));
+                    StatsSet set = new StatsSet();
+
+                    for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
+                        if ((cd.NextSibling != null) && ("set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null)))
+                        {
+                            attrs = cd.NextSibling.Attributes;
+                            if (attrs == null)
+                            {
+                                continue;
+                            }
+
+                            string name = attrs.GetNamedItem("name").Value;
+                            string value = attrs.GetNamedItem("val").Value;
+                            set.Set(name, value);
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                    PcTemplate pcTempl = new PcTemplate(classId, set);
+                    Templates.Add((int)pcTempl.ClassId.Id, pcTempl);
                 }
             }
 

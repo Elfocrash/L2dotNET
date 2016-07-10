@@ -30,16 +30,13 @@ namespace L2dotNET.LoginService.Model
                 DefaultAddress[3] = byte.Parse(w[3]);
             }
 
-            if (Thread != null)
+            if (Thread == null)
             {
-                byte[] redirect = NetworkRedirect.Instance.GetRedirect(client, Id);
-                if (redirect != null)
-                {
-                    return redirect;
-                }
+                return DefaultAddress;
             }
 
-            return DefaultAddress;
+            byte[] redirect = NetworkRedirect.Instance.GetRedirect(client, Id);
+            return redirect ?? DefaultAddress;
         }
 
         public byte Connected => Thread != null ? (Thread.Connected ? (byte)1 : (byte)0) : (byte)0;

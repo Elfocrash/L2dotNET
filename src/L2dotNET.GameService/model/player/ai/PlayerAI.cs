@@ -111,14 +111,16 @@ namespace L2dotNET.GameService.Model.Player.AI
                     _moveTarget = 0;
                 }
 
-                if (_moveTarget == 0)
+                if (_moveTarget != 0)
                 {
-                    _player.MoveTo(_player.CurrentTarget.X, _player.CurrentTarget.Y, _player.CurrentTarget.Z);
-                    _moveTarget = 1;
-                    _lastx = Character.CurrentTarget.X;
-                    _lasty = Character.CurrentTarget.Y;
-                    _lastz = Character.CurrentTarget.Z;
+                    return;
                 }
+
+                _player.MoveTo(_player.CurrentTarget.X, _player.CurrentTarget.Y, _player.CurrentTarget.Z);
+                _moveTarget = 1;
+                _lastx = Character.CurrentTarget.X;
+                _lasty = Character.CurrentTarget.Y;
+                _lastz = Character.CurrentTarget.Z;
             }
         }
     }

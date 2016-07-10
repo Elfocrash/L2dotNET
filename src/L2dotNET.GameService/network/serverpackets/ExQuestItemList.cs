@@ -60,13 +60,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
             }
 
             WriteH(_block.Count);
-            if (_block.Count > 0)
+            if (_block.Count <= 0)
             {
-                WriteC(1);
-                foreach (int id in _block)
-                {
-                    WriteD(id);
-                }
+                return;
+            }
+
+            WriteC(1);
+            foreach (int id in _block)
+            {
+                WriteD(id);
             }
         }
     }

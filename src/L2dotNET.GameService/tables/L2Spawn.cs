@@ -34,13 +34,15 @@ namespace L2dotNET.GameService.Tables
             NpcId = npcId;
             Respawn = respawn;
             _zone = zone;
-            if (pos != null)
+            if (pos == null)
             {
-                _x = Convert.ToInt32(pos[0]);
-                _y = Convert.ToInt32(pos[1]);
-                _z = Convert.ToInt32(pos[2]);
-                _h = Convert.ToInt32(pos[3]);
+                return;
             }
+
+            _x = Convert.ToInt32(pos[0]);
+            _y = Convert.ToInt32(pos[1]);
+            _z = Convert.ToInt32(pos[2]);
+            _h = Convert.ToInt32(pos[3]);
         }
 
         public L2Spawn(int npcId, long respawn, string[] loc)
@@ -150,12 +152,14 @@ namespace L2dotNET.GameService.Tables
 
         private void Clear()
         {
-            if (Obj != null)
+            if (Obj == null)
             {
-                if (Obj is L2Character)
-                {
-                    ((L2Character)Obj).DeleteByForce();
-                }
+                return;
+            }
+
+            if (Obj is L2Character)
+            {
+                ((L2Character)Obj).DeleteByForce();
             }
         }
     }

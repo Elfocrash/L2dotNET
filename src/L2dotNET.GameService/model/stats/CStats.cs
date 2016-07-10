@@ -31,17 +31,17 @@ namespace L2dotNET.GameService.Model.Stats
 
         public double GetStat(EffectType type)
         {
-            if (!StatBuff.ContainsKey(type))
+            if (StatBuff.ContainsKey(type))
             {
-                if (!StatTemplate.ContainsKey(type))
-                {
-                    return 0;
-                }
-
-                return (double)StatTemplate[type];
+                return (double)StatBuff[type];
             }
 
-            return (double)StatBuff[type];
+            if (!StatTemplate.ContainsKey(type))
+            {
+                return 0;
+            }
+
+            return (double)StatTemplate[type];
         }
 
         private double GetTemplate(EffectType type)

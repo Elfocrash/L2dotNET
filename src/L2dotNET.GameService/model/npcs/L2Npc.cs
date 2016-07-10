@@ -261,11 +261,13 @@ namespace L2dotNET.GameService.Model.Npcs
             }
             else
             {
-                if (player.Clan.Level == 0)
+                if (player.Clan.Level != 0)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
-                    player.SendActionFailed();
+                    return;
                 }
+
+                player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
+                player.SendActionFailed();
             }
         }
 
@@ -318,16 +320,16 @@ namespace L2dotNET.GameService.Model.Npcs
                         continue;
                     }
 
-                    if (!list.ContainsKey(e.Id))
+                    if (list.ContainsKey(e.Id))
                     {
-                        list.Add(e.Id, e);
-                        break;
+                        continue;
                     }
-                }
-                else
-                {
+
                     list.Add(e.Id, e);
+                    break;
                 }
+
+                list.Add(e.Id, e);
             }
 
             if (list.Count == 0)
@@ -364,12 +366,14 @@ namespace L2dotNET.GameService.Model.Npcs
         {
             base.DoDie(killer, bytrigger);
 
-            if (Template.CorpseTime > 0)
+            if (Template.CorpseTime <= 0)
             {
-                _corpseTimer = new Timer(Template.CorpseTime * 1000);
-                _corpseTimer.Elapsed += new ElapsedEventHandler(RemoveCorpse);
-                _corpseTimer.Enabled = true;
+                return;
             }
+
+            _corpseTimer = new Timer(Template.CorpseTime * 1000);
+            _corpseTimer.Elapsed += new ElapsedEventHandler(RemoveCorpse);
+            _corpseTimer.Enabled = true;
         }
 
         private void RemoveCorpse(object sender, ElapsedEventArgs e)

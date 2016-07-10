@@ -19,14 +19,16 @@ namespace L2dotNET.GameService.Model.Items
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new Capsule();
-                        }
+                        _instance = new Capsule();
                     }
                 }
 
@@ -49,15 +51,17 @@ namespace L2dotNET.GameService.Model.Items
                 return;
             }
 
-            if (Items.ContainsKey(item.Template.ItemId))
+            if (!Items.ContainsKey(item.Template.ItemId))
             {
-                CapsuleItem caps = Items[item.Template.ItemId];
-                Random rn = new Random();
-                ((L2Player)character).DestroyItem(item, 1);
-                foreach (CapsuleItemReward rew in caps.Rewards.Where(rew => rn.Next(100) <= rew.Rate))
-                {
-                    ((L2Player)character).AddItem(rew.Id, rn.Next(rew.Min, rew.Max));
-                }
+                return;
+            }
+
+            CapsuleItem caps = Items[item.Template.ItemId];
+            Random rn = new Random();
+            ((L2Player)character).DestroyItem(item, 1);
+            foreach (CapsuleItemReward rew in caps.Rewards.Where(rew => rn.Next(100) <= rew.Rate))
+            {
+                ((L2Player)character).AddItem(rew.Id, rn.Next(rew.Min, rew.Max));
             }
         }
 
@@ -66,41 +70,43 @@ namespace L2dotNET.GameService.Model.Items
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\extractable.xml"));
             XElement ex = xml.Element("list");
 
-            if (ex != null)
+            if (ex == null)
             {
-                foreach (XElement m in ex.Elements())
-                    if (m.Name == "capsule")
-                    {
-                        CapsuleItem caps = new CapsuleItem
-                                           {
-                                               Id = Convert.ToInt32(m.Attribute("id").Value)
-                                           };
-
-                        foreach (XElement stp in m.Elements())
-                            switch (stp.Name.LocalName)
-                            {
-                                case "item":
-                                    try
-                                    {
-                                        CapsuleItemReward rew = new CapsuleItemReward
-                                                                {
-                                                                    Id = int.Parse(stp.Attribute("id").Value),
-                                                                    Min = int.Parse(stp.Attribute("min").Value),
-                                                                    Max = int.Parse(stp.Attribute("max").Value),
-                                                                    Rate = int.Parse(stp.Attribute("rate").Value)
-                                                                };
-                                        caps.Rewards.Add(rew);
-                                    }
-                                    catch (Exception)
-                                    {
-                                        Log.Error("cant parse capsule " + caps.Id);
-                                    }
-                                    break;
-                            }
-
-                        Items.Add(caps.Id, caps);
-                    }
+                return;
             }
+
+            foreach (XElement m in ex.Elements())
+                if (m.Name == "capsule")
+                {
+                    CapsuleItem caps = new CapsuleItem
+                                       {
+                                           Id = Convert.ToInt32(m.Attribute("id").Value)
+                                       };
+
+                    foreach (XElement stp in m.Elements())
+                        switch (stp.Name.LocalName)
+                        {
+                            case "item":
+                                try
+                                {
+                                    CapsuleItemReward rew = new CapsuleItemReward
+                                                            {
+                                                                Id = int.Parse(stp.Attribute("id").Value),
+                                                                Min = int.Parse(stp.Attribute("min").Value),
+                                                                Max = int.Parse(stp.Attribute("max").Value),
+                                                                Rate = int.Parse(stp.Attribute("rate").Value)
+                                                            };
+                                    caps.Rewards.Add(rew);
+                                }
+                                catch (Exception)
+                                {
+                                    Log.Error("cant parse capsule " + caps.Id);
+                                }
+                                break;
+                        }
+
+                    Items.Add(caps.Id, caps);
+                }
         }
     }
 }

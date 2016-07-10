@@ -76,13 +76,13 @@ namespace L2dotNET.GameService.Tools
             double dx = (double)x1 - x2;
             double dy = (double)y1 - y2;
 
-            if (includeZAxis)
+            if (!includeZAxis)
             {
-                double dz = z1 - z2;
-                return Math.Sqrt((dx * dx) + (dy * dy) + (dz * dz));
+                return Math.Sqrt((dx * dx) + (dy * dy));
             }
 
-            return Math.Sqrt((dx * dx) + (dy * dy));
+            double dz = z1 - z2;
+            return Math.Sqrt((dx * dx) + (dy * dy) + (dz * dz));
         }
 
         public static double CalculateDistance(L2Object obj1, L2Object obj2, bool includeZAxis)

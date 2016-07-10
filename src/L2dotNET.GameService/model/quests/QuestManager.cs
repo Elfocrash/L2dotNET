@@ -18,14 +18,16 @@ namespace L2dotNET.GameService.Model.Quests
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new QuestManager();
-                        }
+                        _instance = new QuestManager();
                     }
                 }
 
@@ -79,11 +81,13 @@ namespace L2dotNET.GameService.Model.Quests
                     continue;
                 }
 
-                if (qi.Template.CanTalk(player, npc))
+                if (!qi.Template.CanTalk(player, npc))
                 {
-                    qlist.Add(new object[] { qi.Template, "<a action=\"bypass -h quest_continue?quest_id=" + qi.Id + "\">[" + qi.Template.QuestName + " (In Progress)]</a><br1>", qi.Template.QuestId });
-                    ilist.Add(qi.Id);
+                    continue;
                 }
+
+                qlist.Add(new object[] { qi.Template, "<a action=\"bypass -h quest_continue?quest_id=" + qi.Id + "\">[" + qi.Template.QuestName + " (In Progress)]</a><br1>", qi.Template.QuestId });
+                ilist.Add(qi.Id);
             }
 
             foreach (QuestOrigin qo in Quests.Values.Where(qo => !ilist.Contains(qo.QuestId)).Where(qo => qo.StartNpc == npc.Template.NpcId))

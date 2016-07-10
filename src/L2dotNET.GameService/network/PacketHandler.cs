@@ -381,11 +381,13 @@ namespace L2dotNET.GameService.Network
                 d++;
                 s += t + " ";
 
-                if (d == 4)
+                if (d != 4)
                 {
-                    d = 0;
-                    s += "\n";
+                    continue;
                 }
+
+                d = 0;
+                s += "\n";
             }
 
             Log.Info(s);

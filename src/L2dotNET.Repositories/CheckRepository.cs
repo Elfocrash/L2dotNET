@@ -35,18 +35,22 @@ namespace L2dotNET.Repositories
 
         public bool PreCheckRepository()
         {
-            if (CheckDatabaseHostPing())
+            if (!CheckDatabaseHostPing())
             {
-                if (CheckMySqlService())
-                {
-                    if (CheckDatabaseQuery())
-                    {
-                        return true;
-                    }
-                }
+                return false;
             }
 
-            return false;
+            if (!CheckMySqlService())
+            {
+                return false;
+            }
+
+            if (!CheckDatabaseQuery())
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private bool CheckDatabaseHostPing()
@@ -104,11 +108,13 @@ namespace L2dotNET.Repositories
 
                     isMySqlServiceRunning = HostCheck.IsServiceRunning(MysqlServiceName);
 
-                    if (isMySqlServiceRunning)
+                    if (!isMySqlServiceRunning)
                     {
-                        Log.Info("MySQL Service started!");
-                        break;
+                        continue;
                     }
+
+                    Log.Info("MySQL Service started!");
+                    break;
                 }
 
                 if (isMySqlServiceRunning)

@@ -52,17 +52,17 @@ namespace L2dotNET.GameService.Commands.Admin
                         continue;
                     }
 
-                    if (!avail.ContainsKey(e.Id))
+                    if (avail.ContainsKey(e.Id))
                     {
-                        avail.Add(e.Id, e);
-                        updDel.Add(e.Id, e.Lv);
-                        break;
+                        continue;
                     }
-                }
-                else
-                {
+
                     avail.Add(e.Id, e);
+                    updDel.Add(e.Id, e.Lv);
+                    break;
                 }
+
+                avail.Add(e.Id, e);
             }
 
             //foreach (int a in updDel.Keys)

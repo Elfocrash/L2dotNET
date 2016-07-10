@@ -33,11 +33,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.SendMessage("Your trade requestor has logged off.");
                 player.SendActionFailed();
                 player.TradeState = 0;
-
-                if (player.CurrentTrade != null)
-                {
-                    player.CurrentTrade.Clear();
-                }
+                player.CurrentTrade?.Clear();
 
                 return;
             }

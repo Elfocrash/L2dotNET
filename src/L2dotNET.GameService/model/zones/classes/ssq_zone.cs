@@ -24,11 +24,13 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             obj.OnEnterZone(this);
 
-            if (obj is L2Player)
+            if (!(obj is L2Player))
             {
-                L2Player p = (L2Player)obj;
-                p.SendSystemMessage((SystemMessage.SystemMessageId)Template.EnteringMessageNo);
+                return;
             }
+
+            L2Player p = (L2Player)obj;
+            p.SendSystemMessage((SystemMessage.SystemMessageId)Template.EnteringMessageNo);
         }
 
         public override void OnExit(L2Object obj, bool cls)
@@ -42,11 +44,13 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             obj.OnExitZone(this, cls);
 
-            if (obj is L2Player)
+            if (!(obj is L2Player))
             {
-                L2Player p = (L2Player)obj;
-                p.SendSystemMessage((SystemMessage.SystemMessageId)Template.LeavingMessageNo);
+                return;
             }
+
+            L2Player p = (L2Player)obj;
+            p.SendSystemMessage((SystemMessage.SystemMessageId)Template.LeavingMessageNo);
         }
     }
 }

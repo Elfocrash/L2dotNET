@@ -128,21 +128,23 @@ namespace L2dotNET.GameService.Model.Stats
                         break;
                 }
 
-                if (!attacker.IsInFrontOfTarget())
+                if (attacker.IsInFrontOfTarget())
                 {
-                    if (attacker.IsBehindTarget())
-                    {
-                        chance *= 1.2;
-                    }
-                    else
-                    {
-                        chance *= 1.1;
-                    }
+                    return chance < Rnd.Next(1000);
+                }
 
-                    if (chance > 980)
-                    {
-                        chance = 980;
-                    }
+                if (attacker.IsBehindTarget())
+                {
+                    chance *= 1.2;
+                }
+                else
+                {
+                    chance *= 1.1;
+                }
+
+                if (chance > 980)
+                {
+                    chance = 980;
                 }
             }
 

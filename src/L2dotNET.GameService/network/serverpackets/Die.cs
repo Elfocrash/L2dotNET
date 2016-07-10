@@ -76,12 +76,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(MNAgathion); //21
             WriteD(_items?.Count ?? 0); //22+
 
-            if (_items != null)
+            if (_items == null)
             {
-                foreach (int id in _items)
-                {
-                    WriteD(id);
-                }
+                return;
+            }
+
+            foreach (int id in _items)
+            {
+                WriteD(id);
             }
         }
     }

@@ -18,14 +18,16 @@ namespace L2dotNET.GameService.Tables
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new SpawnTable();
-                        }
+                        _instance = new SpawnTable();
                     }
                 }
 
@@ -52,79 +54,81 @@ namespace L2dotNET.GameService.Tables
         {
             XElement xml = XElement.Parse(File.ReadAllText(path));
             XElement ex = xml.Element("list");
-            if (ex != null)
+            if (ex == null)
             {
-                foreach (XElement m in ex.Elements())
-                    if (m.Name == "territory")
-                    {
-                        L2Territory zone = new L2Territory
-                                           {
-                                               Name = m.Attribute("name").Value,
-                                               Controller = m.Attribute("controller").Value,
-                                               StartActive = bool.Parse(m.Attribute("start_active").Value)
-                                           };
-
-                        foreach (XElement stp in m.Elements())
-                            switch (stp.Name.LocalName)
-                            {
-                                case "npc":
-                                    int cnt = Convert.ToInt32(stp.Attribute("count").Value);
-                                    string pos = null;
-                                    if (stp.Attribute("pos") != null)
-                                    {
-                                        pos = stp.Attribute("pos").Value;
-                                    }
-                                    zone.AddNpc(Convert.ToInt32(stp.Attribute("id").Value), cnt, stp.Attribute("respawn").Value, pos);
-                                    _npcs += cnt;
-                                    break;
-                                case "zone":
-                                    zone.AddPoint(stp.Attribute("loc").Value.Split(' '));
-                                    break;
-                            }
-
-                        zone.InitZone(); //создаем зону
-                        if (Territorries.ContainsKey(zone.Name))
-                        {
-                            Log.Info($"duplicate zone name {zone.Name}");
-                        }
-                        else
-                        {
-                            Territorries.Add(zone.Name, zone);
-                        }
-                    }
-                    else if (m.Name == "spawn")
-                    {
-                        foreach (XElement stp in m.Elements())
-                            switch (stp.Name.LocalName)
-                            {
-                                case "npc":
-                                {
-                                    string respawn = stp.Attribute("respawn").Value;
-                                    long value = Convert.ToInt32(respawn.Remove(respawn.Length - 1));
-                                    if (respawn.Contains("s"))
-                                    {
-                                        value *= 1000;
-                                    }
-                                    else if (respawn.Contains("m"))
-                                    {
-                                        value *= 60000;
-                                    }
-                                    else if (respawn.Contains("h"))
-                                    {
-                                        value *= 3600000;
-                                    }
-                                    else if (respawn.Contains("d"))
-                                    {
-                                        value *= 86400000;
-                                    }
-
-                                    Spawns.Add(new L2Spawn(Convert.ToInt32(stp.Attribute("id").Value), value, stp.Attribute("pos").Value.Split(' ')));
-                                }
-                                    _npcs++;
-                                    break;
-                            }
-                    }
+                return;
             }
+
+            foreach (XElement m in ex.Elements())
+                if (m.Name == "territory")
+                {
+                    L2Territory zone = new L2Territory
+                                       {
+                                           Name = m.Attribute("name").Value,
+                                           Controller = m.Attribute("controller").Value,
+                                           StartActive = bool.Parse(m.Attribute("start_active").Value)
+                                       };
+
+                    foreach (XElement stp in m.Elements())
+                        switch (stp.Name.LocalName)
+                        {
+                            case "npc":
+                                int cnt = Convert.ToInt32(stp.Attribute("count").Value);
+                                string pos = null;
+                                if (stp.Attribute("pos") != null)
+                                {
+                                    pos = stp.Attribute("pos").Value;
+                                }
+                                zone.AddNpc(Convert.ToInt32(stp.Attribute("id").Value), cnt, stp.Attribute("respawn").Value, pos);
+                                _npcs += cnt;
+                                break;
+                            case "zone":
+                                zone.AddPoint(stp.Attribute("loc").Value.Split(' '));
+                                break;
+                        }
+
+                    zone.InitZone(); //создаем зону
+                    if (Territorries.ContainsKey(zone.Name))
+                    {
+                        Log.Info($"duplicate zone name {zone.Name}");
+                    }
+                    else
+                    {
+                        Territorries.Add(zone.Name, zone);
+                    }
+                }
+                else if (m.Name == "spawn")
+                {
+                    foreach (XElement stp in m.Elements())
+                        switch (stp.Name.LocalName)
+                        {
+                            case "npc":
+                            {
+                                string respawn = stp.Attribute("respawn").Value;
+                                long value = Convert.ToInt32(respawn.Remove(respawn.Length - 1));
+                                if (respawn.Contains("s"))
+                                {
+                                    value *= 1000;
+                                }
+                                else if (respawn.Contains("m"))
+                                {
+                                    value *= 60000;
+                                }
+                                else if (respawn.Contains("h"))
+                                {
+                                    value *= 3600000;
+                                }
+                                else if (respawn.Contains("d"))
+                                {
+                                    value *= 86400000;
+                                }
+
+                                Spawns.Add(new L2Spawn(Convert.ToInt32(stp.Attribute("id").Value), value, stp.Attribute("pos").Value.Split(' ')));
+                            }
+                                _npcs++;
+                                break;
+                        }
+                }
         }
 
         private const bool Nospawn = true;

@@ -11,14 +11,16 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new AiManager();
-                        }
+                        _instance = new AiManager();
                     }
                 }
 
@@ -40,24 +42,24 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
 
         public AiTemplate CheckChatWindow(int id)
         {
-            if (RegisteredAis.ContainsKey(id))
+            if (!RegisteredAis.ContainsKey(id))
             {
-                AiTemplate t = RegisteredAis[id];
-                return t.ChatOvr ? t : null;
+                return null;
             }
 
-            return null;
+            AiTemplate t = RegisteredAis[id];
+            return t.ChatOvr ? t : null;
         }
 
         public AiTemplate CheckDialogResult(int id)
         {
-            if (RegisteredAis.ContainsKey(id))
+            if (!RegisteredAis.ContainsKey(id))
             {
-                AiTemplate t = RegisteredAis[id];
-                return t.DialogOvr ? t : null;
+                return null;
             }
 
-            return null;
+            AiTemplate t = RegisteredAis[id];
+            return t.DialogOvr ? t : null;
         }
     }
 }

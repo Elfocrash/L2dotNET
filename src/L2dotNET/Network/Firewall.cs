@@ -73,17 +73,11 @@ namespace L2dotNET.Network
 
             if (ValidateRules(socket))
             {
-                if (OnBypassAllowed != null)
-                {
-                    OnBypassAllowed(socket);
-                }
+                OnBypassAllowed?.Invoke(socket);
                 return true;
             }
 
-            if (OnBypassRejected != null)
-            {
-                OnBypassRejected(socket);
-            }
+            OnBypassRejected?.Invoke(socket);
 
             return false;
         }
@@ -105,10 +99,7 @@ namespace L2dotNET.Network
         {
             _mEnabled = true;
 
-            if (OnEnabled != null)
-            {
-                OnEnabled();
-            }
+            OnEnabled?.Invoke();
         }
 
         /// <summary>
@@ -118,10 +109,7 @@ namespace L2dotNET.Network
         {
             _mEnabled = false;
 
-            if (OnDisabled != null)
-            {
-                OnDisabled();
-            }
+            OnDisabled?.Invoke();
         }
 
         /// <summary>
@@ -132,16 +120,18 @@ namespace L2dotNET.Network
             get { return _mEnabled; }
             set
             {
-                if (_mEnabled != value)
+                if (_mEnabled == value)
                 {
-                    if (value)
-                    {
-                        Enable();
-                    }
-                    else
-                    {
-                        Disable();
-                    }
+                    return;
+                }
+
+                if (value)
+                {
+                    Enable();
+                }
+                else
+                {
+                    Disable();
                 }
             }
         }

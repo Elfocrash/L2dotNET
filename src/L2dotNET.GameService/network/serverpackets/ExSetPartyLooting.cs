@@ -7,11 +7,13 @@
 
         public ExSetPartyLooting(short voteId)
         {
-            if (voteId != -1)
+            if (voteId == -1)
             {
-                _result = 1;
-                _mode = voteId;
+                return;
             }
+
+            _result = 1;
+            _mode = voteId;
         }
 
         protected internal override void Write()

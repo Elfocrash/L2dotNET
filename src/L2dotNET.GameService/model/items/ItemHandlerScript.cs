@@ -102,41 +102,45 @@ namespace L2dotNET.GameService.Model.Items
 
         private void CalcEffect(L2Character character)
         {
-            if (EffectId != -1)
+            if (EffectId == -1)
             {
-                Skill skill = SkillTable.Instance.Get(EffectId, EffectLv);
-
-                if (skill == null)
-                {
-                    Log.Error($"ItemHandler: item {_id} with null effect {EffectId}/{EffectLv}");
-                    return;
-                }
-
-                character.AddAbnormal(skill, character, true, false);
-                character.BroadcastPacket(new MagicSkillUse(character, character, skill, 100));
+                return;
             }
+
+            Skill skill = SkillTable.Instance.Get(EffectId, EffectLv);
+
+            if (skill == null)
+            {
+                Log.Error($"ItemHandler: item {_id} with null effect {EffectId}/{EffectLv}");
+                return;
+            }
+
+            character.AddAbnormal(skill, character, true, false);
+            character.BroadcastPacket(new MagicSkillUse(character, character, skill, 100));
         }
 
         private void CalcSkill(L2Character character)
         {
-            if (SkillId != -1)
+            if (SkillId == -1)
             {
-                Skill skill = SkillTable.Instance.Get(SkillId, SkillLv);
+                return;
+            }
 
-                if (skill == null)
-                {
-                    Log.Error($"ItemHandler: item {_id} with null skill {SkillId}/{SkillLv}");
-                    return;
-                }
+            Skill skill = SkillTable.Instance.Get(SkillId, SkillLv);
 
-                if (character is L2Player)
-                {
-                    ((L2Player)character).CastSkill(skill, false, false);
-                }
-                else
-                {
-                    character.CastSkill(skill);
-                }
+            if (skill == null)
+            {
+                Log.Error($"ItemHandler: item {_id} with null skill {SkillId}/{SkillLv}");
+                return;
+            }
+
+            if (character is L2Player)
+            {
+                ((L2Player)character).CastSkill(skill, false, false);
+            }
+            else
+            {
+                character.CastSkill(skill);
             }
         }
     }

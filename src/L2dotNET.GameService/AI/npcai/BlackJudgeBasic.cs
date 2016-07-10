@@ -74,24 +74,26 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         private void GetOffPenalty(L2Player talker, byte minLv, byte maxLv, int cost)
         {
-            if ((talker.Level >= minLv) && (talker.Level <= maxLv))
+            if ((talker.Level < minLv) || (talker.Level > maxLv))
             {
-                if (talker.DeathPenaltyLevel > 0)
+                return;
+            }
+
+            if (talker.DeathPenaltyLevel > 0)
+            {
+                if (talker.ReduceAdena(cost))
                 {
-                    if (talker.ReduceAdena(cost))
-                    {
-                        talker.DestroyItemById(Adena, cost);
-                        Myself.CastBuffForQuestReward(talker, SPenaltyoff);
-                    }
-                    else
-                    {
-                        talker.ShowHtm("black_judge008.htm", Myself);
-                    }
+                    talker.DestroyItemById(Adena, cost);
+                    Myself.CastBuffForQuestReward(talker, SPenaltyoff);
                 }
                 else
                 {
-                    talker.ShowHtm("black_judge009.htm", Myself);
+                    talker.ShowHtm("black_judge008.htm", Myself);
                 }
+            }
+            else
+            {
+                talker.ShowHtm("black_judge009.htm", Myself);
             }
         }
     }

@@ -119,10 +119,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
                     break;
                 case SayIDList.CHAT_PARTY:
-                    if (player.Party != null)
-                    {
-                        player.Party.BroadcastToMembers(cs);
-                    }
+                    player.Party?.BroadcastToMembers(cs);
                     break;
                 case SayIDList.CHAT_MARKET:
                     foreach (L2Player p in L2World.Instance.GetPlayers())

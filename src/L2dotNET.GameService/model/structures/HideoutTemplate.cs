@@ -36,16 +36,18 @@ namespace L2dotNET.GameService.Model.Structures
             }
 
             //npc.setTemplate(t);
-            if (npc != null)
+            if (npc == null)
             {
-                StructureSpawn ss = StructureTable.Instance.GetSpawn(id);
-                npc.X = ss.X;
-                npc.Y = ss.Y;
-                npc.Z = ss.Z;
-                npc.Heading = ss.Heading;
-
-                npcs.Add(t.NpcId, npc);
+                return;
             }
+
+            StructureSpawn ss = StructureTable.Instance.GetSpawn(id);
+            npc.X = ss.X;
+            npc.Y = ss.Y;
+            npc.Z = ss.Z;
+            npc.Heading = ss.Heading;
+
+            npcs.Add(t.NpcId, npc);
         }
 
         public void SpawnNpcs()

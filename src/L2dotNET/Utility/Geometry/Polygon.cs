@@ -109,11 +109,13 @@ namespace L2dotNET.Utility.Geometry
                 int[] pt = points[i];
 
                 // x lower, or x same and y higher
-                if ((pt[0] < point[0]) || ((pt[0] == point[0]) && (pt[1] > point[1])))
+                if ((pt[0] >= point[0]) && ((pt[0] != point[0]) || (pt[1] <= point[1])))
                 {
-                    point = pt;
-                    index = i;
+                    continue;
                 }
+
+                point = pt;
+                index = i;
             }
 
             // get previous point

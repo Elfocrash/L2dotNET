@@ -21,14 +21,16 @@ namespace L2dotNET.GameService.Tables
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new NpcTable();
-                        }
+                        _instance = new NpcTable();
                     }
                 }
 
@@ -63,35 +65,32 @@ namespace L2dotNET.GameService.Tables
                 foreach (string i in xmlFilesArray)
                 {
                     doc.Load(i);
-                    if (doc.DocumentElement != null)
+
+                    XmlNodeList nodes = doc.DocumentElement?.SelectNodes("/list/npc");
+
+                    if (nodes == null)
                     {
-                        XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/npc");
+                        continue;
+                    }
 
-                        if (nodes != null)
+                    foreach (XmlNode node in nodes)
+                    {
+                        XmlElement ownerElement = node.Attributes?[0].OwnerElement;
+                        if ((ownerElement != null) && ((node.Attributes != null) && "npc".Equals(ownerElement.Name)))
                         {
-                            foreach (XmlNode node in nodes)
-                            {
-                                if (node.Attributes != null)
-                                {
-                                    XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                                    if ((ownerElement != null) && ((node.Attributes != null) && "npc".Equals(ownerElement.Name)))
-                                    {
-                                        XmlNamedNodeMap attrs = node.Attributes;
+                            XmlNamedNodeMap attrs = node.Attributes;
 
-                                        int npcId = int.Parse(attrs.GetNamedItem("id").Value);
-                                        int templateId = attrs.GetNamedItem("idTemplate") == null ? npcId : int.Parse(attrs.GetNamedItem("idTemplate").Value);
+                            int npcId = int.Parse(attrs.GetNamedItem("id").Value);
+                            int templateId = attrs.GetNamedItem("idTemplate") == null ? npcId : int.Parse(attrs.GetNamedItem("idTemplate").Value);
 
-                                        set.Set("id", npcId);
-                                        set.Set("idTemplate", templateId);
-                                        set.Set("name", attrs.GetNamedItem("name").Value);
-                                        set.Set("title", attrs.GetNamedItem("title").Value);
+                            set.Set("id", npcId);
+                            set.Set("idTemplate", templateId);
+                            set.Set("name", attrs.GetNamedItem("name").Value);
+                            set.Set("title", attrs.GetNamedItem("title").Value);
 
-                                        _npcs.Add(npcId, new NpcTemplate(set));
-                                    }
-                                }
-                                set.Clear();
-                            }
+                            _npcs.Add(npcId, new NpcTemplate(set));
                         }
+                        set.Clear();
                     }
                 }
 

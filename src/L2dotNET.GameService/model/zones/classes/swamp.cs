@@ -29,14 +29,16 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             obj.OnEnterZone(this);
 
-            if (obj is L2Player)
+            if (!(obj is L2Player))
             {
-                L2Player p = (L2Player)obj;
-                p.IsInDanger = true;
-                p.SendPacket(new EtcStatusUpdate(p));
-                //  p._stats.base_p_speed += Template._move_bonus;
-                p.BroadcastUserInfo();
+                return;
             }
+
+            L2Player p = (L2Player)obj;
+            p.IsInDanger = true;
+            p.SendPacket(new EtcStatusUpdate(p));
+            //  p._stats.base_p_speed += Template._move_bonus;
+            p.BroadcastUserInfo();
         }
 
         public override void OnExit(L2Object obj, bool cls)
@@ -50,14 +52,16 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             obj.OnExitZone(this, cls);
 
-            if (obj is L2Player)
+            if (!(obj is L2Player))
             {
-                L2Player p = (L2Player)obj;
-                p.IsInDanger = false;
-                p.SendPacket(new EtcStatusUpdate(p));
-                //  p._stats.base_p_speed -= Template._move_bonus;
-                p.BroadcastUserInfo();
+                return;
             }
+
+            L2Player p = (L2Player)obj;
+            p.IsInDanger = false;
+            p.SendPacket(new EtcStatusUpdate(p));
+            //  p._stats.base_p_speed -= Template._move_bonus;
+            p.BroadcastUserInfo();
         }
     }
 }

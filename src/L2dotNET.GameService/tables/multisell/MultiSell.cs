@@ -18,14 +18,16 @@ namespace L2dotNET.GameService.Tables.Multisell
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new MultiSell();
-                        }
+                        _instance = new MultiSell();
                     }
                 }
 
@@ -81,17 +83,19 @@ namespace L2dotNET.GameService.Tables.Multisell
                             continue;
                         }
 
-                        if (item.Template.ItemId == msitem.Id)
+                        if (item.Template.ItemId != msitem.Id)
                         {
-                            MultiSellEntry edentry = new MultiSellEntry();
-                            edentry.Take.AddRange(entry.Take);
-                            edentry.Give.AddRange(entry.Give);
-
-                            edentry.Take[0].L2Item = item;
-                            edentry.Give[0].L2Item = item;
-
-                            newlist.Container.Add(edentry);
+                            continue;
                         }
+
+                        MultiSellEntry edentry = new MultiSellEntry();
+                        edentry.Take.AddRange(entry.Take);
+                        edentry.Give.AddRange(entry.Give);
+
+                        edentry.Take[0].L2Item = item;
+                        edentry.Give[0].L2Item = item;
+
+                        newlist.Container.Add(edentry);
                     }
                 }
 

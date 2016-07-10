@@ -65,15 +65,17 @@ namespace L2dotNET.GameService.Model.Zones.Classes
                 }
             }
 
-            if (Template.Skill != null)
+            if (Template.Skill == null)
             {
-                if (rn.Next(0, 100) > Template.SkillProb)
-                {
-                    return;
-                }
-
-                target.AddAbnormal(Template.Skill, null, true, false);
+                return;
             }
+
+            if (rn.Next(0, 100) > Template.SkillProb)
+            {
+                return;
+            }
+
+            target.AddAbnormal(Template.Skill, null, true, false);
         }
 
         public override void OnEnter(L2Object obj)

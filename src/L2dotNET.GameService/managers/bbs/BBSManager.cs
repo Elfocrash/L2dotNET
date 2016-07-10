@@ -12,14 +12,16 @@ namespace L2dotNET.GameService.Managers.BBS
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new BbsManager();
-                        }
+                        _instance = new BbsManager();
                     }
                 }
 

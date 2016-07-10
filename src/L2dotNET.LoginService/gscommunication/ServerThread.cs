@@ -55,12 +55,14 @@ namespace L2dotNET.LoginService.GSCommunication
             try
             {
                 int rs = _nstream.EndRead(result);
-                if (rs > 0)
+                if (rs <= 0)
                 {
-                    short length = BitConverter.ToInt16(_buffer, 0);
-                    _buffer = new byte[length];
-                    _nstream.BeginRead(_buffer, 0, length, new AsyncCallback(OnReceiveCallback), result.AsyncState);
+                    return;
                 }
+
+                short length = BitConverter.ToInt16(_buffer, 0);
+                _buffer = new byte[length];
+                _nstream.BeginRead(_buffer, 0, length, new AsyncCallback(OnReceiveCallback), result.AsyncState);
             }
             catch (Exception e)
             {

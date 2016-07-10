@@ -116,21 +116,22 @@ namespace L2dotNET.GameService.Model.Items
                         return _crystalCount;
                 }
             }
-            if (enchantLevel > 0)
+
+            if (enchantLevel <= 0)
             {
-                switch (Type2)
-                {
-                    case 1:
-                    case 2:
-                        return _crystalCount + (CrystalType.CrystalEnchantBonusArmor * enchantLevel);
-                    case 0:
-                        return _crystalCount + (CrystalType.CrystalEnchantBonusWeapon * enchantLevel);
-                    default:
-                        return _crystalCount;
-                }
+                return _crystalCount;
             }
 
-            return _crystalCount;
+            switch (Type2)
+            {
+                case 1:
+                case 2:
+                    return _crystalCount + (CrystalType.CrystalEnchantBonusArmor * enchantLevel);
+                case 0:
+                    return _crystalCount + (CrystalType.CrystalEnchantBonusWeapon * enchantLevel);
+                default:
+                    return _crystalCount;
+            }
         }
 
         public T GetEnumFromString<T>(string value, T defaultValue) where T : struct, IConvertible

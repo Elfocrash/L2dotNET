@@ -27,14 +27,16 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new ServerThreadPool();
-                        }
+                        _instance = new ServerThreadPool();
                     }
                 }
 
@@ -88,10 +90,7 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             foreach (L2Server s in Servers.Where(s => s.Id == id))
             {
-                if (s.Thread != null)
-                {
-                    s.Thread.Stop();
-                }
+                s.Thread?.Stop();
 
                 s.Thread = null;
                 Log.Warn($"ServerThread: #{id} shutted down");

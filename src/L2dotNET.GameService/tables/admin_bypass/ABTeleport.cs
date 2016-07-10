@@ -92,12 +92,14 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             {
                 count++;
                 sb.Append("<td><button value=\"" + gr.Name + "\" action=\"bypass -h admin?ask=1&reply=" + gr.Id + "\" width=135 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>");
-                if (count == 2)
+                if (count != 2)
                 {
-                    sb.Append("</tr>");
-                    sb.Append("<tr>");
-                    count = 0;
+                    continue;
                 }
+
+                sb.Append("</tr>");
+                sb.Append("<tr>");
+                count = 0;
             }
 
             sb.Append("</tr>");
@@ -110,12 +112,14 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
 
         public void Use(L2Player player, int reply)
         {
-            if ((player.ViewingAdminTeleportGroup == -1) || !Groups.ContainsKey(player.ViewingAdminTeleportGroup))
+            if ((player.ViewingAdminTeleportGroup != -1) && Groups.ContainsKey(player.ViewingAdminTeleportGroup))
             {
-                player.SendMessage("teleport group #" + player.ViewingAdminTeleportGroup + " was not found.");
-                player.SendActionFailed();
-                //return;
+                return;
             }
+
+            player.SendMessage("teleport group #" + player.ViewingAdminTeleportGroup + " was not found.");
+            player.SendActionFailed();
+            //return;
 
             //ab_teleport_group gr = _groups[player.ViewingAdminTeleportGroup];
             //ab_teleport_entry e = gr._teles[reply];

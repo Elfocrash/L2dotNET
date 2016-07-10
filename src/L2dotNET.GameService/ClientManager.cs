@@ -17,14 +17,16 @@ namespace L2dotNET.GameService
         {
             get
             {
-                if (instance == null)
+                if (instance != null)
                 {
-                    lock (syncRoot)
+                    return instance;
+                }
+
+                lock (syncRoot)
+                {
+                    if (instance == null)
                     {
-                        if (instance == null)
-                        {
-                            instance = new ClientManager();
-                        }
+                        instance = new ClientManager();
                     }
                 }
 

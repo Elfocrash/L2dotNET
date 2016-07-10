@@ -40,13 +40,13 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         {
             L2Player player = (L2Player)caster;
 
-            if (player.IsWard())
+            if (!player.IsWard())
             {
-                caster.SendSystemMessage(SystemMessage.SystemMessageId.CannotTeleportWhilePossessionWard);
-                return false;
+                return true;
             }
 
-            return true;
+            caster.SendSystemMessage(SystemMessage.SystemMessageId.CannotTeleportWhilePossessionWard);
+            return false;
         }
     }
 }

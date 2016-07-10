@@ -76,14 +76,14 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
                 return false;
             }
 
-            if (player.IsOnShip() || (player.Boat != null))
+            if (!player.IsOnShip() && (player.Boat == null))
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotPolymorphWhileRidingBoat);
-                player.SendActionFailed();
-                return false;
+                return true;
             }
 
-            return true;
+            player.SendSystemMessage(SystemMessage.SystemMessageId.CannotPolymorphWhileRidingBoat);
+            player.SendActionFailed();
+            return false;
         }
     }
 }

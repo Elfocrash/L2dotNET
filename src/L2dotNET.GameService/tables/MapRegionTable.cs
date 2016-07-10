@@ -27,14 +27,16 @@ namespace L2dotNET.GameService.Tables
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new MapRegionTable();
-                        }
+                        _instance = new MapRegionTable();
                     }
                 }
 
@@ -46,31 +48,34 @@ namespace L2dotNET.GameService.Tables
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(@"data\xml\map_region.xml");
-            if (doc.DocumentElement != null)
+            if (doc.DocumentElement == null)
             {
-                XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/map");
-                int count = 0;
-                if (nodes != null)
-                {
-                    foreach (XmlNode node in nodes)
-                        if (node.Attributes != null)
-                        {
-                            XmlElement ownerElement = node.Attributes[0].OwnerElement;
-                            if ((ownerElement != null) && ((node.Attributes != null) && ownerElement.Name.EqualsIgnoreCase("map")))
-                            {
-                                XmlNamedNodeMap attrs = node.Attributes;
-                                int rY = Convert.ToInt32(attrs.GetNamedItem("geoY").Value) - 10;
-                                for (int rX = 0; rX < RegionsX; rX++)
-                                {
-                                    Regions[rX, rY] = Convert.ToInt32(attrs.GetNamedItem("geoX_" + (rX + 16)).Value);
-                                    count++;
-                                }
-                            }
-                        }
-                }
-
-                Log.Info($"MapRegionTable: Loaded {count} regions.");
+                return;
             }
+
+            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/map");
+            int count = 0;
+            if (nodes != null)
+            {
+                foreach (XmlNode node in nodes)
+                {
+                    XmlElement ownerElement = node.Attributes?[0].OwnerElement;
+                    if ((ownerElement == null) || ((node.Attributes == null) || !ownerElement.Name.EqualsIgnoreCase("map")))
+                    {
+                        continue;
+                    }
+
+                    XmlNamedNodeMap attrs = node.Attributes;
+                    int rY = Convert.ToInt32(attrs.GetNamedItem("geoY").Value) - 10;
+                    for (int rX = 0; rX < RegionsX; rX++)
+                    {
+                        Regions[rX, rY] = Convert.ToInt32(attrs.GetNamedItem("geoX_" + (rX + 16)).Value);
+                        count++;
+                    }
+                }
+            }
+
+            Log.Info($"MapRegionTable: Loaded {count} regions.");
         }
 
         public static int GetMapRegion(int posX, int posY)
@@ -215,13 +220,13 @@ namespace L2dotNET.GameService.Tables
 
         public Location GetTeleToLocation(L2Character _player, TeleportWhereType teleportWhere)
         {
-            if (_player is L2Player)
+            if (!(_player is L2Player))
             {
-                L2Player player = (L2Player)_player;
-                return GetClosestTown(player.ClassId.ClassRace, player.X, player.Y).GetSpawnLoc();
+                return GetClosestTown(_player.X, _player.Y).GetSpawnLoc();
             }
 
-            return GetClosestTown(_player.X, _player.Y).GetSpawnLoc();
+            L2Player player = (L2Player)_player;
+            return GetClosestTown(player.ClassId.ClassRace, player.X, player.Y).GetSpawnLoc();
         }
 
         public static L2TownZone GetClosestTown(ClassRace race, int x, int y)

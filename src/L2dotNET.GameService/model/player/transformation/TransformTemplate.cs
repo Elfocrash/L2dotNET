@@ -39,15 +39,17 @@ namespace L2dotNET.GameService.Model.Player.Transformation
             //player.MountedTemplate = NpcTable.Instance.GetNpcTemplate(npcId);
             player.BroadcastUserInfo();
 
-            if ((Skills != null) && (Skills.Count > 0))
+            if ((Skills == null) || (Skills.Count <= 0))
             {
-                foreach (Skill sk in Skills.Select(s => SkillTable.Instance.Get(s[0], s[1])).Where(sk => sk != null))
-                {
-                    player.AddSkill(sk, false, false);
-                }
-
-                player.UpdateSkillList();
+                return;
             }
+
+            foreach (Skill sk in Skills.Select(s => SkillTable.Instance.Get(s[0], s[1])).Where(sk => sk != null))
+            {
+                player.AddSkill(sk, false, false);
+            }
+
+            player.UpdateSkillList();
         }
 
         public virtual void OnTransformEnd(L2Player player)
@@ -60,15 +62,17 @@ namespace L2dotNET.GameService.Model.Player.Transformation
             player.TransformId = 0;
             player.BroadcastUserInfo();
 
-            if ((Skills != null) && (Skills.Count > 0))
+            if ((Skills == null) || (Skills.Count <= 0))
             {
-                foreach (int[] s in Skills)
-                {
-                    player.RemoveSkill(s[0], false, false);
-                }
-
-                player.UpdateSkillList();
+                return;
             }
+
+            foreach (int[] s in Skills)
+            {
+                player.RemoveSkill(s[0], false, false);
+            }
+
+            player.UpdateSkillList();
         }
 
         public virtual bool StartFailed(L2Player player)

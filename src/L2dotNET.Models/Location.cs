@@ -42,13 +42,13 @@
 
         public override bool Equals(object obj)
         {
-            if (obj is Location)
+            if (!(obj is Location))
             {
-                Location loc = (Location)obj;
-                return (loc.X.Equals(_x) && loc.Y.Equals(_y) && loc.Z.Equals(_z));
+                return false;
             }
 
-            return false;
+            Location loc = (Location)obj;
+            return (loc.X.Equals(_x) && loc.Y.Equals(_y) && loc.Z.Equals(_z));
         }
 
         public override int GetHashCode()

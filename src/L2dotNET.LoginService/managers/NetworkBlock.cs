@@ -18,14 +18,16 @@ namespace L2dotNET.LoginService.Managers
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new NetworkBlock();
-                        }
+                        _instance = new NetworkBlock();
                     }
                 }
 
@@ -85,54 +87,53 @@ namespace L2dotNET.LoginService.Managers
 
             foreach (NBInterface nbi in _blocks)
             {
-                if (nbi.DirectIp != null)
+                if (nbi.DirectIp?.Equals(ip) ?? false)
                 {
-                    if (nbi.DirectIp.Equals(ip))
-                    {
-                        if (nbi.Forever)
-                        {
-                            return false;
-                        }
-
-                        if (nbi.TimeEnd.CompareTo(DateTime.Now) == 1)
-                        {
-                            return false;
-                        }
-                    }
-                }
-
-                if (nbi.Mask != null)
-                {
-                    string[] a = ip.Split('.'),
-                             b = nbi.Mask.Split('.');
-                    bool[] d = new bool[4];
-                    for (byte c = 0; c < 4; c++)
-                    {
-                        d[c] = false;
-
-                        if (b[c] == "*")
-                        {
-                            d[c] = true;
-                        }
-                        else if (b[c] == a[c])
-                        {
-                            d[c] = true;
-                        }
-                        else if (b[c].Contains("/"))
-                        {
-                            byte n = byte.Parse(b[c].Split('/')[0]),
-                                 x = byte.Parse(b[c].Split('/')[1]);
-                            byte t = byte.Parse(a[c]);
-                            d[c] = (t >= n) && (t <= x);
-                        }
-                    }
-
-                    byte cnt = (byte)d.Count(u => u);
-
-                    if (cnt >= 4)
+                    if (nbi.Forever)
                     {
                         return false;
                     }
+
+                    if (nbi.TimeEnd.CompareTo(DateTime.Now) == 1)
+                    {
+                        return false;
+                    }
+                }
+
+                if (nbi.Mask == null)
+                {
+                    continue;
+                }
+
+                string[] a = ip.Split('.'),
+                         b = nbi.Mask.Split('.');
+                bool[] d = new bool[4];
+                for (byte c = 0; c < 4; c++)
+                {
+                    d[c] = false;
+
+                    if (b[c] == "*")
+                    {
+                        d[c] = true;
+                    }
+                    else if (b[c] == a[c])
+                    {
+                        d[c] = true;
+                    }
+                    else if (b[c].Contains("/"))
+                    {
+                        byte n = byte.Parse(b[c].Split('/')[0]),
+                             x = byte.Parse(b[c].Split('/')[1]);
+                        byte t = byte.Parse(a[c]);
+                        d[c] = (t >= n) && (t <= x);
+                    }
+                }
+
+                byte cnt = (byte)d.Count(u => u);
+
+                if (cnt >= 4)
+                {
+                    return false;
                 }
             }
 

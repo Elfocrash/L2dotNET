@@ -247,27 +247,31 @@ namespace L2dotNET.GameService.World
 
         public void RemoveKnownObject(L2Object obj, bool update)
         {
-            if (KnownObjects.ContainsKey(obj.ObjId))
+            if (!KnownObjects.ContainsKey(obj.ObjId))
             {
-                OnRemObject(obj);
+                return;
+            }
 
-                lock (KnownObjects)
-                {
-                    KnownObjects.Remove(obj.ObjId);
-                }
+            OnRemObject(obj);
+
+            lock (KnownObjects)
+            {
+                KnownObjects.Remove(obj.ObjId);
             }
         }
 
         public void Revalidate(L2Object obj)
         {
-            if (!KnownObjects.ContainsKey(obj.ObjId))
+            if (KnownObjects.ContainsKey(obj.ObjId))
             {
-                KnownObjects.Add(obj.ObjId, obj);
+                return;
+            }
 
-                if (obj.Visible)
-                {
-                    OnAddObject(obj, null);
-                }
+            KnownObjects.Add(obj.ObjId, obj);
+
+            if (obj.Visible)
+            {
+                OnAddObject(obj, null);
             }
         }
 
@@ -358,18 +362,20 @@ namespace L2dotNET.GameService.World
                 code = _isInsidePeaceZone ? ExSetCompassZoneCode.Peacezone : ExSetCompassZoneCode.Generalzone;
             }
 
-            if (code != 0)
+            if (code == 0)
             {
-                if ((LastCode != -1) && (LastCode != code))
-                {
-                    LastCode = code;
-                    SendPacket(new ExSetCompassZoneCode(code));
-                }
-                else
-                {
-                    LastCode = code;
-                    SendPacket(new ExSetCompassZoneCode(code));
-                }
+                return;
+            }
+
+            if ((LastCode != -1) && (LastCode != code))
+            {
+                LastCode = code;
+                SendPacket(new ExSetCompassZoneCode(code));
+            }
+            else
+            {
+                LastCode = code;
+                SendPacket(new ExSetCompassZoneCode(code));
             }
         }
 

@@ -56,33 +56,37 @@ namespace L2dotNET.GameService.AI.NpcAI
                 Myself.CreateOnePrivateEx(Silhouette, AiType, Myself.X + 10, Myself.Y + 10, Myself.Z);
             }
 
-            if ((MoveAroundSocial > 0) || (MoveAroundSocial1 > 0))
+            if ((MoveAroundSocial <= 0) && (MoveAroundSocial1 <= 0))
             {
-                if (SocialMoveTimer == null)
-                {
-                    SocialMoveTimer = new Timer
-                                      {
-                                          Interval = 10000
-                                      };
-                    SocialMoveTimer.Elapsed += SocialTask;
-                }
-
-                SocialMoveTimer.Enabled = true;
+                return;
             }
+
+            if (SocialMoveTimer == null)
+            {
+                SocialMoveTimer = new Timer
+                                  {
+                                      Interval = 10000
+                                  };
+                SocialMoveTimer.Elapsed += SocialTask;
+            }
+
+            SocialMoveTimer.Enabled = true;
         }
 
         private void SocialTask(object sender, ElapsedEventArgs e)
         {
-            if ((Myself.CurHp > (Myself.MaxHp * 0.400000)) && !Myself.Dead)
+            if ((!(Myself.CurHp > (Myself.MaxHp * 0.400000))) || Myself.Dead)
             {
-                if ((MoveAroundSocial > 0) && (new Random().Next(100) < 40))
-                {
-                    //myself::AddEffectActionDesire( myself.sm, 3, MoveAroundSocial * 1000 / 30, 50 );
-                }
-                else if ((MoveAroundSocial1 > 0) && (new Random().Next(100) < 40))
-                {
-                    //myself::AddEffectActionDesire( myself.sm, 2, MoveAroundSocial1 * 1000 / 30, 50 );
-                }
+                return;
+            }
+
+            if ((MoveAroundSocial > 0) && (new Random().Next(100) < 40))
+            {
+                //myself::AddEffectActionDesire( myself.sm, 3, MoveAroundSocial * 1000 / 30, 50 );
+            }
+            else if ((MoveAroundSocial1 > 0) && (new Random().Next(100) < 40))
+            {
+                //myself::AddEffectActionDesire( myself.sm, 2, MoveAroundSocial1 * 1000 / 30, 50 );
             }
         }
 

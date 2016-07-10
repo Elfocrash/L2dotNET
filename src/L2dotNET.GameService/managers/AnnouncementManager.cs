@@ -27,14 +27,16 @@ namespace L2dotNET.GameService.Managers
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new AnnouncementManager();
-                        }
+                        _instance = new AnnouncementManager();
                     }
                 }
 

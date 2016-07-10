@@ -70,27 +70,27 @@ namespace L2dotNET.Utility
         {
             IntPtr handle = Open(fileName);
 
-            if (handle != IntPtr.Zero)
+            if (handle == IntPtr.Zero)
             {
-                byte[] buffer = new byte[lengthToRead];
-
-                fixed (byte* buf = buffer)
-                {
-                    if (ReadFile(handle, buf, lengthToRead, &lengthToRead, 0x00))
-                    {
-                        if (!CloseHandle(handle))
-                        {
-                            throw new IOException($"Failed to close file handle for '{fileName}'");
-                        }
-
-                        return buffer;
-                    }
-                }
-
-                throw new FileLoadException($"Failed to read {lengthToRead} bytes from file '{fileName}'.");
+                throw new FileNotFoundException($"File '{fileName}' can't be found.");
             }
 
-            throw new FileNotFoundException($"File '{fileName}' can't be found.");
+            byte[] buffer = new byte[lengthToRead];
+
+            fixed (byte* buf = buffer)
+            {
+                if (!ReadFile(handle, buf, lengthToRead, &lengthToRead, 0x00))
+                {
+                    throw new FileLoadException($"Failed to read {lengthToRead} bytes from file '{fileName}'.");
+                }
+
+                if (!CloseHandle(handle))
+                {
+                    throw new IOException($"Failed to close file handle for '{fileName}'");
+                }
+
+                return buffer;
+            }
         }
 
         /// <summary>

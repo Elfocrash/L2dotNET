@@ -99,28 +99,32 @@ namespace L2dotNET.GameService.Commands.Admin
                 p[0] = rn.Next(_np.minX, _np.maxX);
                 p[1] = rn.Next(_np.minY, _np.maxY);
                 Log.Info($"rnd xy {p[0]} {p[1]}");
-                if (_np.isInsideZone(p[0], p[1]))
+                if (!_np.isInsideZone(p[0], p[1]))
                 {
-                    double curdistance = -1;
-                    p[2] = _np.getLowZ() + 10;
-                    p[3] = _np.getHighZ();
+                    continue;
+                }
 
-                    for (i = 0; i < _np._x.Length; i++)
+                double curdistance = -1;
+                p[2] = _np.getLowZ() + 10;
+                p[3] = _np.getHighZ();
+
+                for (i = 0; i < _np._x.Length; i++)
+                {
+                    int p1X = _np._x[i];
+                    int p1Y = _np._y[i];
+                    long dx = p1X - p[0],
+                         dy = p1Y - p[1];
+                    double distance = Math.Sqrt((dx * dx) + (dy * dy));
+                    if ((curdistance != -1) && (!(distance < curdistance)))
                     {
-                        int p1X = _np._x[i];
-                        int p1Y = _np._y[i];
-                        long dx = p1X - p[0],
-                             dy = p1Y - p[1];
-                        double distance = Math.Sqrt((dx * dx) + (dy * dy));
-                        if ((curdistance == -1) || (distance < curdistance))
-                        {
-                            curdistance = distance;
-                            p[2] = _np._z1 + 10;
-                        }
+                        continue;
                     }
 
-                    return p;
+                    curdistance = distance;
+                    p[2] = _np._z1 + 10;
                 }
+
+                return p;
             }
 
             return p;

@@ -26,28 +26,30 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             obj.OnEnterZone(this);
 
-            if (obj is L2Player)
+            if (!(obj is L2Player))
             {
-                L2Player p = (L2Player)obj;
-                p.SendSystemMessage((SystemMessage.SystemMessageId)Template.EnteringMessageNo);
-                if (Template.AffectRace.EqualsIgnoreCase("all"))
-                {
-                    return;
-                }
-
-                if (!Template.AffectRace.EqualsIgnoreCase("elf"))
-                {
-                    return;
-                }
-
-                if (p.BaseClass.ClassId.ClassRace != ClassRace.Elf)
-                {
-                    return;
-                }
-
-                //   p._stats.p_regen_hp += Template._hp_regen_bonus;
-                //   p._stats.p_regen_mp += Template._mp_regen_bonus;
+                return;
             }
+
+            L2Player p = (L2Player)obj;
+            p.SendSystemMessage((SystemMessage.SystemMessageId)Template.EnteringMessageNo);
+            if (Template.AffectRace.EqualsIgnoreCase("all"))
+            {
+                return;
+            }
+
+            if (!Template.AffectRace.EqualsIgnoreCase("elf"))
+            {
+                return;
+            }
+
+            if (p.BaseClass.ClassId.ClassRace != ClassRace.Elf)
+            {
+                return;
+            }
+
+            //   p._stats.p_regen_hp += Template._hp_regen_bonus;
+            //   p._stats.p_regen_mp += Template._mp_regen_bonus;
         }
 
         public override void OnExit(L2Object obj, bool cls)

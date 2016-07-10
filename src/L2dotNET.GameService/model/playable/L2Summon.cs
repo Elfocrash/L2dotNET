@@ -144,10 +144,7 @@ namespace L2dotNET.GameService.Model.Playable
 
             Owner.SendPacket(new PetDelete(ObjectSummonType, ObjId));
 
-            if (Owner.Party != null)
-            {
-                Owner.Party.BroadcastToMembers(new ExPartyPetWindowDelete(ObjId, Owner.ObjId, Name));
-            }
+            Owner.Party?.BroadcastToMembers(new ExPartyPetWindowDelete(ObjId, Owner.ObjId, Name));
 
             Owner.Summon = null;
             DeleteMe();
@@ -192,12 +189,14 @@ namespace L2dotNET.GameService.Model.Playable
 
             double dis = Calcs.CalculateDistance(this, Owner.CurrentTarget, true);
 
-            if ((dis > 40) && (dis < 2300))
+            if ((!(dis > 40)) || (!(dis < 2300)))
             {
-                if (!CantMove())
-                {
-                    MoveTo(Owner.CurrentTarget.X, Owner.CurrentTarget.Y, Owner.CurrentTarget.Z);
-                }
+                return;
+            }
+
+            if (!CantMove())
+            {
+                MoveTo(Owner.CurrentTarget.X, Owner.CurrentTarget.Y, Owner.CurrentTarget.Z);
             }
         }
 
@@ -212,16 +211,18 @@ namespace L2dotNET.GameService.Model.Playable
                 chars.Add(Owner);
             }
 
-            if ((Owner != null) && (Owner.Party != null))
+            if ((Owner == null) || (Owner.Party == null))
             {
-                foreach (L2Player pl in Owner.Party.Members.Where(pl => pl.ObjId != Owner.ObjId))
-                {
-                    chars.Add(pl);
+                return chars.ToArray();
+            }
 
-                    if (pl.Summon != null)
-                    {
-                        chars.Add(pl.Summon);
-                    }
+            foreach (L2Player pl in Owner.Party.Members.Where(pl => pl.ObjId != Owner.ObjId))
+            {
+                chars.Add(pl);
+
+                if (pl.Summon != null)
+                {
+                    chars.Add(pl.Summon);
                 }
             }
 

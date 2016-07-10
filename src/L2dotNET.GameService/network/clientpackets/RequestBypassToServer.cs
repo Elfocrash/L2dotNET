@@ -29,14 +29,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             Log.Info($"bypass '{_alias}'");
             L2Npc npc = (L2Npc)GetClient().CurrentPlayer.CurrentTarget;
 
-            if (npc == null)
+            if (npc != null)
             {
-                GetClient().CurrentPlayer.SendMessage("no npc found");
-                GetClient().CurrentPlayer.SendActionFailed();
-                return null;
+                return npc;
             }
 
-            return npc;
+            GetClient().CurrentPlayer.SendMessage("no npc found");
+            GetClient().CurrentPlayer.SendActionFailed();
+            return null;
         }
 
         public override void Run()

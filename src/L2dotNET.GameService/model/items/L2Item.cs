@@ -173,24 +173,28 @@ namespace L2dotNET.GameService.Model.Items
 
         public void SetLimitedHour(string str)
         {
-            if (str != "-1")
+            if (str == "-1")
             {
-                string[] x1 = str.Split(' ');
-                int yy = Convert.ToInt32(x1[0].Split('-')[0]);
-                int mm = Convert.ToInt32(x1[0].Split('-')[1]);
-                int dd = Convert.ToInt32(x1[0].Split('-')[2]);
-                int hh = Convert.ToInt32(x1[1].Split('-')[0]);
-                int m = Convert.ToInt32(x1[1].Split('-')[1]);
-                int ss = Convert.ToInt32(x1[1].Split('-')[2]);
-
-                DateTime dt = new DateTime(yy, mm, dd, hh, m, ss);
-                if (dt > DateTime.Now)
-                {
-                    _lifeTimeEndEnabled = true;
-                    _lifeTimeEndTime = dt;
-                }
-                //TODO delete me
+                return;
             }
+
+            string[] x1 = str.Split(' ');
+            int yy = Convert.ToInt32(x1[0].Split('-')[0]);
+            int mm = Convert.ToInt32(x1[0].Split('-')[1]);
+            int dd = Convert.ToInt32(x1[0].Split('-')[2]);
+            int hh = Convert.ToInt32(x1[1].Split('-')[0]);
+            int m = Convert.ToInt32(x1[1].Split('-')[1]);
+            int ss = Convert.ToInt32(x1[1].Split('-')[2]);
+
+            DateTime dt = new DateTime(yy, mm, dd, hh, m, ss);
+            if (dt <= DateTime.Now)
+            {
+                return;
+            }
+
+            _lifeTimeEndEnabled = true;
+            _lifeTimeEndTime = dt;
+            //TODO delete me
         }
 
         public void sql_insert(int id)

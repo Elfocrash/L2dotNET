@@ -25,14 +25,16 @@ namespace L2dotNET.LoginService.Managers
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new ClientManager();
-                        }
+                        _instance = new ClientManager();
                     }
                 }
 

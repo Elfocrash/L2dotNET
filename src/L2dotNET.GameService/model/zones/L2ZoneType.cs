@@ -60,32 +60,35 @@ namespace L2dotNET.GameService.Model.Zones
 
             if (IsInsideZone(character.X, character.Y, character.Z))
             {
-                if (!CharacterList.Contains(character))
+                if (CharacterList.Contains(character))
                 {
-                    //quest check here
-                    CharacterList.Add(character);
-                    OnEnter(character);
+                    return;
                 }
+                //quest check here
+                CharacterList.Add(character);
+                OnEnter(character);
             }
             else
             {
-                if (CharacterList.Contains(character))
+                if (!CharacterList.Contains(character))
                 {
-                    //quest check here
-                    CharacterList.Remove(character);
-                    OnExit(character);
+                    return;
                 }
+                //quest check here
+                CharacterList.Remove(character);
+                OnExit(character);
             }
         }
 
         public void RemoveCharacter(L2Character character)
         {
-            if (CharacterList.Contains(character))
+            if (!CharacterList.Contains(character))
             {
-                //quest check here
-                CharacterList.Remove(character);
-                OnEnter(character);
+                return;
             }
+            //quest check here
+            CharacterList.Remove(character);
+            OnEnter(character);
         }
 
         public bool IsCharacterInZone(L2Character character)

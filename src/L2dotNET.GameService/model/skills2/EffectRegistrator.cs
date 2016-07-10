@@ -80,10 +80,7 @@ namespace L2dotNET.GameService.Model.Skills2
                     break;
             }
 
-            if (cond != null)
-            {
-                cond.Build(str);
-            }
+            cond?.Build(str);
 
             return cond;
         }

@@ -81,18 +81,20 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
                 return;
             }
 
-            if (dx != null)
+            if (dx == null)
             {
-                player.ReduceAdena(dx[2]);
-
-                player.ClearKnowns(true);
-
-                player.Obsx = player.X;
-                player.Obsy = player.Y;
-                player.Obsz = player.Z;
-
-                player.SendPacket(new ObservationMode(dx[3], dx[4], dx[5]));
+                return;
             }
+
+            player.ReduceAdena(dx[2]);
+
+            player.ClearKnowns(true);
+
+            player.Obsx = player.X;
+            player.Obsy = player.Y;
+            player.Obsz = player.Z;
+
+            player.SendPacket(new ObservationMode(dx[3], dx[4], dx[5]));
         }
 
         private void ShowGroup(L2Player player, L2Npc npc, int group)

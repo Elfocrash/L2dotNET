@@ -184,17 +184,19 @@ namespace L2dotNET.Network
             //#if DEBUG_NET_CLIENT
             Console.WriteLine($"Sending:\r\n{L2Buffer.ToString(buffer)}");
             //#endif
-            if ((MSocket != null) && MSocket.Connected)
+            if ((MSocket == null) || !MSocket.Connected)
             {
-                lock (MLock)
-                {
-                    MSendQueue.Enqueue(buffer);
-                }
+                return;
+            }
 
-                if (MSendReadyFlag)
-                {
-                    SendCallback(null);
-                }
+            lock (MLock)
+            {
+                MSendQueue.Enqueue(buffer);
+            }
+
+            if (MSendReadyFlag)
+            {
+                SendCallback(null);
             }
         }
 
@@ -203,19 +205,21 @@ namespace L2dotNET.Network
         /// </summary>
         public virtual void CloseConnection()
         {
-            if ((MSocket != null) && MSocket.Connected)
+            if ((MSocket == null) || !MSocket.Connected)
             {
-                try
-                {
-                    MSocket.Shutdown(SocketShutdown.Both);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
-
-                MSocket = null;
+                return;
             }
+
+            try
+            {
+                MSocket.Shutdown(SocketShutdown.Both);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            MSocket = null;
         }
 
         /// <summary>

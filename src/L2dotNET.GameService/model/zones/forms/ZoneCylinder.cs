@@ -77,16 +77,19 @@ namespace L2dotNET.GameService.Model.Zones.Forms
                 }
             }
 
-            if ((_y > ay1) && (_y < ay2))
+            if ((_y <= ay1) || (_y >= ay2))
             {
-                if (Math.Abs(_x - ax2) < _rad)
-                {
-                    return true;
-                }
-                if (Math.Abs(_x - ax1) < _rad)
-                {
-                    return true;
-                }
+                return false;
+            }
+
+            if (Math.Abs(_x - ax2) < _rad)
+            {
+                return true;
+            }
+
+            if (Math.Abs(_x - ax1) < _rad)
+            {
+                return true;
             }
 
             return false;

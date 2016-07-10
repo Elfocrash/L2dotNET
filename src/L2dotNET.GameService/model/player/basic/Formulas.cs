@@ -23,16 +23,20 @@ namespace L2dotNET.GameService.Model.Player.Basic
 
             damage = (70 * damage) / defence;
 
-            if (attacker is L2Player)
+            if (!(attacker is L2Player))
             {
-                L2Item weapon = null; //((L2Player)attacker).Inventory.getWeapon();
-                if (weapon != null)
-                {
-                    double mix = double.Parse("1.");
-                    mix = (damage * mix) - damage;
-                    damage += new Random().Next((int)-mix, (int)mix);
-                }
+                return damage;
             }
+
+            L2Item weapon = null; //((L2Player)attacker).Inventory.getWeapon();
+            if (weapon == null)
+            {
+                return damage;
+            }
+
+            double mix = double.Parse("1.");
+            mix = (damage * mix) - damage;
+            damage += new Random().Next((int)-mix, (int)mix);
 
             return damage;
         }

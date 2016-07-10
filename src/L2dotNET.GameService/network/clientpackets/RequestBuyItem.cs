@@ -97,12 +97,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 }
 
-                if (notfound)
+                if (!notfound)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.TradeAttemptFailed);
-                    player.SendActionFailed();
-                    return;
+                    continue;
                 }
+
+                player.SendSystemMessage(SystemMessage.SystemMessageId.TradeAttemptFailed);
+                player.SendActionFailed();
+                return;
             }
 
             if (adena > player.GetAdena())

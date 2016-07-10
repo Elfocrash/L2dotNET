@@ -87,12 +87,14 @@ namespace L2dotNET.LoginService.Network
             {
                 int rs = NetStream.EndRead(result);
 
-                if (rs > 0)
+                if (rs <= 0)
                 {
-                    short length = BitConverter.ToInt16(_buffer, 0);
-                    _buffer = new byte[length - 2];
-                    NetStream.BeginRead(_buffer, 0, length - 2, OnReceiveCallback, result.AsyncState);
+                    return;
                 }
+
+                short length = BitConverter.ToInt16(_buffer, 0);
+                _buffer = new byte[length - 2];
+                NetStream.BeginRead(_buffer, 0, length - 2, OnReceiveCallback, result.AsyncState);
             }
             catch (Exception s)
             {

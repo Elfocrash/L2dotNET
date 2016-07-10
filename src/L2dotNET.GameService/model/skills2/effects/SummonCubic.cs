@@ -23,13 +23,15 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
-            if (caster is L2Player)
+            if (!(caster is L2Player))
             {
-                L2Player player = (L2Player)caster;
-                CubicTemplate template = CubicController.GetController().GetCubic(_id, _lvl);
-                Cubic cub = new Cubic(player, template);
-                player.AddCubic(cub, false);
+                return new EffectResult().AsTotalUi();
             }
+
+            L2Player player = (L2Player)caster;
+            CubicTemplate template = CubicController.GetController().GetCubic(_id, _lvl);
+            Cubic cub = new Cubic(player, template);
+            player.AddCubic(cub, false);
 
             return new EffectResult().AsTotalUi();
         }

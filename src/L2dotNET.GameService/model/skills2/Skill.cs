@@ -73,16 +73,18 @@ namespace L2dotNET.GameService.Model.Skills2
             {
                 EffectType type = (EffectType)Enum.Parse(typeof(EffectType), str.Split(' ')[0]);
                 Effect te = EffectRegistrator.GetInstance().BuildProc(type, str);
-                if (te != null)
+                if (te == null)
                 {
-                    te.Type = type;
-                    te.HashId = HashId();
-                    te.Order = order;
-                    te.SkillId = SkillId;
-                    te.SkillLv = Level;
-                    Effects.Add(te);
-                    order++;
+                    continue;
                 }
+
+                te.Type = type;
+                te.HashId = HashId();
+                te.Order = order;
+                te.SkillId = SkillId;
+                te.SkillLv = Level;
+                Effects.Add(te);
+                order++;
                 // else
                 //     CLogger.error("skill #" + skill_id + " requested unregistered effect " + str);
                 //  order++;

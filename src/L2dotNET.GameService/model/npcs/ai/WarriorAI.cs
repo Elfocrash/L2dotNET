@@ -70,14 +70,16 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
                     _moveTarget = 0;
                 }
 
-                if (_moveTarget == 0)
+                if (_moveTarget != 0)
                 {
-                    _moveTarget = 1;
-                    Character.MoveTo(Character.CurrentTarget.X, Character.CurrentTarget.Y, Character.CurrentTarget.Z);
-                    Lastx = Character.CurrentTarget.X;
-                    Lasty = Character.CurrentTarget.Y;
-                    Lastz = Character.CurrentTarget.Z;
+                    return;
                 }
+
+                _moveTarget = 1;
+                Character.MoveTo(Character.CurrentTarget.X, Character.CurrentTarget.Y, Character.CurrentTarget.Z);
+                Lastx = Character.CurrentTarget.X;
+                Lasty = Character.CurrentTarget.Y;
+                Lastz = Character.CurrentTarget.Z;
             }
         }
 

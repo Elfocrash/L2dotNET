@@ -87,11 +87,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
             foreach (MultiSellItem i in entry.Take)
                 if (i.Id > 0)
                 {
-                    if (!player.HasItem(i.Id, i.Count))
+                    if (player.HasItem(i.Id, i.Count))
                     {
-                        ok = false;
-                        break;
+                        continue;
                     }
+
+                    ok = false;
+                    break;
                 }
                 else
                 {

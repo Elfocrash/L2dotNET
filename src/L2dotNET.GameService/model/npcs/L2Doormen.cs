@@ -18,12 +18,14 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public override void NotifyAction(L2Player player)
         {
-            if (_hideout.ownerId == player.ClanId)
+            if (_hideout.ownerId != player.ClanId)
             {
-                NpcHtmlMessage htm = new NpcHtmlMessage(player, "agitjanitorhi.htm", ObjId);
-                htm.Replace("<?my_pledge_name?>", player.Clan.Name);
-                player.SendPacket(htm);
+                return;
             }
+
+            NpcHtmlMessage htm = new NpcHtmlMessage(player, "agitjanitorhi.htm", ObjId);
+            htm.Replace("<?my_pledge_name?>", player.Clan.Name);
+            player.SendPacket(htm);
         }
 
         public override void OnDialog(L2Player player, int ask, int reply)

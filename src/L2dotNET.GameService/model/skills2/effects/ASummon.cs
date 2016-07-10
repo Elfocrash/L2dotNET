@@ -27,13 +27,13 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override bool CanUse(L2Character caster)
         {
             L2Player player = (L2Player)caster;
-            if (player.Summon != null)
+            if (player.Summon == null)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.YouAlreadyHaveAPet);
-                return false;
+                return true;
             }
 
-            return true;
+            player.SendSystemMessage(SystemMessage.SystemMessageId.YouAlreadyHaveAPet);
+            return false;
         }
     }
 }

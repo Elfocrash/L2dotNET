@@ -59,40 +59,22 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     socialId = 4;
                     break;
                 case 15: //pet change node
-                    if (player.Summon != null)
-                    {
-                        player.Summon.ChangeNode();
-                    }
+                    player.Summon?.ChangeNode();
                     break;
                 case 16: //pet attack
-                    if (player.Summon != null)
-                    {
-                        player.Summon.Attack();
-                    }
+                    player.Summon?.Attack();
                     break;
                 case 17: //pet stop
-                    if (player.Summon != null)
-                    {
-                        player.Summon.Stop();
-                    }
+                    player.Summon?.Stop();
                     break;
                 case 19: //pet unsummon
-                    if (player.Summon != null)
-                    {
-                        player.Summon.UnSummon();
-                    }
+                    player.Summon?.UnSummon();
                     break;
                 case 21: //summon change node
-                    if (player.Summon != null)
-                    {
-                        player.Summon.ChangeNode();
-                    }
+                    player.Summon?.ChangeNode();
                     break;
                 case 23: //summon stop
-                    if (player.Summon != null)
-                    {
-                        player.Summon.Stop();
-                    }
+                    player.Summon?.Stop();
                     break;
                 case 24: // Yes
                     socialId = 6;
@@ -132,22 +114,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     }
                     break;
                 case 52: //summon unsummon
-                    if (player.Summon != null)
-                    {
-                        player.Summon.UnSummon();
-                    }
+                    player.Summon?.UnSummon();
                     break;
                 case 53: //summon move
-                    if (player.Summon != null)
-                    {
-                        player.Summon.Move();
-                    }
+                    player.Summon?.Move();
                     break;
                 case 54: //pet stop
-                    if (player.Summon != null)
-                    {
-                        player.Summon.Stop();
-                    }
+                    player.Summon?.Stop();
                     break;
                 case 62: // Charm
                     socialId = 14;

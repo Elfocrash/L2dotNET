@@ -15,12 +15,14 @@ namespace L2dotNET.GeoEngine.Geodata
         {
             _temp = new MemoryStream(GeoStructure.BlockCells * MaxLayers * 3);
 
-            if (!BitConverter.IsLittleEndian)
+            if (BitConverter.IsLittleEndian)
             {
-                byte[] superTemp = _temp.ToArray();
-                Array.Reverse(superTemp);
-                _temp.Write(superTemp, 0, _temp.ToArray().Length);
+                return;
             }
+
+            byte[] superTemp = _temp.ToArray();
+            Array.Reverse(superTemp);
+            _temp.Write(superTemp, 0, _temp.ToArray().Length);
         }
 
         public static void Release()

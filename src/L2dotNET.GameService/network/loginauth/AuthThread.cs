@@ -18,14 +18,16 @@ namespace L2dotNET.GameService.Network.LoginAuth
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new AuthThread();
-                        }
+                        _instance = new AuthThread();
                     }
                 }
 
@@ -106,12 +108,14 @@ namespace L2dotNET.GameService.Network.LoginAuth
             try
             {
                 int rs = Nstream.EndRead(result);
-                if (rs > 0)
+                if (rs <= 0)
                 {
-                    short length = BitConverter.ToInt16(_buffer, 0);
-                    _buffer = new byte[length];
-                    Nstream.BeginRead(_buffer, 0, length, new AsyncCallback(OnReceiveCallback), result.AsyncState);
+                    return;
                 }
+
+                short length = BitConverter.ToInt16(_buffer, 0);
+                _buffer = new byte[length];
+                Nstream.BeginRead(_buffer, 0, length, new AsyncCallback(OnReceiveCallback), result.AsyncState);
             }
             catch (Exception e)
             {
@@ -205,14 +209,14 @@ namespace L2dotNET.GameService.Network.LoginAuth
 
         public AccountModel GetTa(string p)
         {
-            if (_awaitingAccounts.ContainsKey(p))
+            if (!_awaitingAccounts.ContainsKey(p))
             {
-                AccountModel ta = _awaitingAccounts[p];
-                _awaitingAccounts.Remove(p);
-                return ta;
+                return null;
             }
 
-            return null;
+            AccountModel ta = _awaitingAccounts[p];
+            _awaitingAccounts.Remove(p);
+            return ta;
         }
     }
 }

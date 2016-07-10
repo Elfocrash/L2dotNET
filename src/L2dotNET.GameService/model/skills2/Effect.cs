@@ -9,28 +9,28 @@ namespace L2dotNET.GameService.Model.Skills2
         {
             double[] val = target.CharacterStat.Apply(this);
 
-            if ((SuId != -1) && (val[0] != val[1]))
+            if ((SuId == -1) || (val[0] == val[1]))
             {
-                EffectResult ter = new EffectResult();
-                ter.AddSu(SuId, val[1]);
-                return ter;
+                return Nothing;
             }
 
-            return Nothing;
+            EffectResult ter = new EffectResult();
+            ter.AddSu(SuId, val[1]);
+            return ter;
         }
 
         public virtual EffectResult OnEnd(L2Character caster, L2Character target)
         {
             double[] val = target.CharacterStat.Stop(this);
 
-            if ((SuId != -1) && (val[0] != val[1]))
+            if ((SuId == -1) || (val[0] == val[1]))
             {
-                EffectResult ter = new EffectResult();
-                ter.AddSu(SuId, val[1]);
-                return ter;
+                return Nothing;
             }
 
-            return Nothing;
+            EffectResult ter = new EffectResult();
+            ter.AddSu(SuId, val[1]);
+            return ter;
         }
 
         public virtual bool CanUse(L2Character caster)

@@ -22,14 +22,16 @@ namespace L2dotNET.GameService.Scripting
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    lock (SyncRoot)
+                    return _instance;
+                }
+
+                lock (SyncRoot)
+                {
+                    if (_instance == null)
                     {
-                        if (_instance == null)
-                        {
-                            _instance = new ScriptCompiler();
-                        }
+                        _instance = new ScriptCompiler();
                     }
                 }
 

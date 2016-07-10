@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.Model.Zones
             foreach (L2Object obj in ObjectsInside.Values)
                 if (obj is L2Player)
                 {
-                    obj.SendPacket(pk);
+                    ((L2Player)obj).SendPacket(pk);
                 }
                 else if (obj is L2Summon)
                 {
@@ -43,14 +43,16 @@ namespace L2dotNET.GameService.Model.Zones
 
         public virtual void OnExit(L2Object obj, bool cls)
         {
-            if (cls)
+            if (!cls)
             {
-                lock (ObjectsInside)
+                return;
+            }
+
+            lock (ObjectsInside)
+            {
+                if (ObjectsInside.ContainsKey(obj.ObjId))
                 {
-                    if (ObjectsInside.ContainsKey(obj.ObjId))
-                    {
-                        ObjectsInside.Remove(obj.ObjId);
-                    }
+                    ObjectsInside.Remove(obj.ObjId);
                 }
             }
         }

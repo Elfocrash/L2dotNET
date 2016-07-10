@@ -29,26 +29,32 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
 
             double dis = Calcs.CalculateDistance(_pet, _pet.Owner, true);
 
-            if (dis > 120)
+            if (!(dis > 120))
             {
-                if ((_lastOwnerX != _pet.Owner.X) && (_lastOwnerY != _pet.Owner.Y) && (_lastOwnerZ != _pet.Owner.Z))
-                {
-                    _pet.MoveTo(_pet.Owner.X, _pet.Owner.Y, _pet.Owner.Z);
-
-                    _lastOwnerX = _pet.Owner.X;
-                    _lastOwnerY = _pet.Owner.Y;
-                    _lastOwnerZ = _pet.Owner.Z;
-                }
+                return;
             }
+
+            if ((_lastOwnerX == _pet.Owner.X) || (_lastOwnerY == _pet.Owner.Y) || (_lastOwnerZ == _pet.Owner.Z))
+            {
+                return;
+            }
+
+            _pet.MoveTo(_pet.Owner.X, _pet.Owner.Y, _pet.Owner.Z);
+
+            _lastOwnerX = _pet.Owner.X;
+            _lastOwnerY = _pet.Owner.Y;
+            _lastOwnerZ = _pet.Owner.Z;
         }
 
         public override void DoThink(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {
-            if ((_pet.CurrentTime / (float)_pet.MaxTime) < 0.55)
+            if (!((_pet.CurrentTime / (float)_pet.MaxTime) < 0.55))
             {
-                _under55Percent = DateTime.Now;
-                _pet.Owner.SendSystemMessage(SystemMessage.SystemMessageId.YourPetIsVeryHungry);
+                return;
             }
+
+            _under55Percent = DateTime.Now;
+            _pet.Owner.SendSystemMessage(SystemMessage.SystemMessageId.YourPetIsVeryHungry);
         }
     }
 }

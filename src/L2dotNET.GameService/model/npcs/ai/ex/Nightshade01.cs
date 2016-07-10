@@ -37,11 +37,13 @@ namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
                     break;
             }
 
-            if (value != null)
+            if (value == null)
             {
-                int[] skill = GetValueSkill(value);
-                pet.CastSkill(SkillTable.Instance.Get(skill[0], skill[1]));
+                return;
             }
+
+            int[] skill = GetValueSkill(value);
+            pet.CastSkill(SkillTable.Instance.Get(skill[0], skill[1]));
         }
     }
 }

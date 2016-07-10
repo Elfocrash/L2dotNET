@@ -6,17 +6,19 @@ namespace L2dotNET.GameService.AI.NpcAI
     {
         public override void TalkedReply(L2Player talker, int ask, int reply)
         {
-            if (ask == -16)
+            if (ask != -16)
             {
-                switch (reply)
-                {
-                    case 1:
-                        OpenHennaItemListForEquip(talker);
-                        break;
-                    case 2:
-                        OpenHennaListForUnquip(talker);
-                        break;
-                }
+                return;
+            }
+
+            switch (reply)
+            {
+                case 1:
+                    OpenHennaItemListForEquip(talker);
+                    break;
+                case 2:
+                    OpenHennaListForUnquip(talker);
+                    break;
             }
         }
 

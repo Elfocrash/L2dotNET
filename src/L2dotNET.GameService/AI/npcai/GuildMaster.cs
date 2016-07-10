@@ -680,12 +680,14 @@ namespace L2dotNET.GameService.AI.NpcAI
                         }
                     }
 
-                    if (yup)
+                    if (!yup)
                     {
-                        talker.Clan.UpdatePledgeNameValue(rp);
-                        talker.BroadcastSkillUse(EffectSkill1);
-                        talker.Clan.LevelUp(lvl);
+                        return;
                     }
+
+                    talker.Clan.UpdatePledgeNameValue(rp);
+                    talker.BroadcastSkillUse(EffectSkill1);
+                    talker.Clan.LevelUp(lvl);
                 }
                 else
                 {
