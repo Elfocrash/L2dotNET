@@ -1,6 +1,6 @@
 namespace L2dotNET.GameService.Tables.Admin_Bypass
 {
-    public class AbTeleportEntry
+    public class ABTeleportEntry
     {
         public string Name;
         public int X;

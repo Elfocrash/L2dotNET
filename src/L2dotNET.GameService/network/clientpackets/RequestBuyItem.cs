@@ -50,7 +50,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            NdShop shop = NpcData.Instance.Shops[trader.Template.NpcId];
+            NDShop shop = NpcData.Instance.Shops[trader.Template.NpcId];
 
             if (shop == null)
             {
@@ -77,7 +77,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 int itemId = (int)_items[i * 2];
 
                 bool notfound = true;
-                foreach (NdShopItem item in list.Items.Where(item => item.Item.ItemId == itemId))
+                foreach (NDShopItem item in list.Items.Where(item => item.Item.ItemId == itemId))
                 {
                     adena += item.Item.ReferencePrice * (int)_items[(i * 2) + 1];
 

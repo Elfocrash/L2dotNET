@@ -34,7 +34,6 @@ namespace L2dotNET.GameService.Config
         public Castles Castles { get; set; }
     }
 
-
     public class Castles
     {
         [JsonProperty(PropertyName = "Aden")]

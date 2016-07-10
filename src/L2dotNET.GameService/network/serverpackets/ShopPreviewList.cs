@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(_adena); // current money
             WriteD(_shopId);
 
-            foreach (NdShopItem si in _shop.Items)
+            foreach (NDShopItem si in _shop.Items)
             {
                 WriteD(si.Item.ItemId);
                 WriteH(si.Item.Type2);

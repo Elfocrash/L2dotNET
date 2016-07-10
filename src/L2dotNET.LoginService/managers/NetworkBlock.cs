@@ -33,7 +33,7 @@ namespace L2dotNET.LoginService.Managers
             }
         }
 
-        private readonly List<NbInterface> _blocks = new List<NbInterface>();
+        private readonly List<NBInterface> _blocks = new List<NBInterface>();
 
         public NetworkBlock()
         {
@@ -54,7 +54,7 @@ namespace L2dotNET.LoginService.Managers
 
                     if (line.StartsWithIgnoreCase("d"))
                     {
-                        NbInterface i = new NbInterface
+                        NBInterface i = new NBInterface
                                         {
                                             DirectIp = line.Split(' ')[1],
                                             Forever = line.Split(' ')[2].EqualsIgnoreCase("0")
@@ -63,7 +63,7 @@ namespace L2dotNET.LoginService.Managers
                     }
                     else if (line.StartsWithIgnoreCase("m"))
                     {
-                        NbInterface i = new NbInterface
+                        NBInterface i = new NBInterface
                                         {
                                             Mask = line.Split(' ')[1],
                                             Forever = line.Split(' ')[2].EqualsIgnoreCase("0")
@@ -83,7 +83,7 @@ namespace L2dotNET.LoginService.Managers
                 return true;
             }
 
-            foreach (NbInterface nbi in _blocks)
+            foreach (NBInterface nbi in _blocks)
             {
                 if (nbi.DirectIp != null)
                 {

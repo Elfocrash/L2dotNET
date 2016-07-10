@@ -2,7 +2,7 @@ using System;
 
 namespace L2dotNET.LoginService.Managers
 {
-    public class NbInterface
+    public class NBInterface
     {
         public string DirectIp = null;
         public string Mask = null;

@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.Tables
 {
     public class NdShopList
     {
-        public List<NdShopItem> Items = new List<NdShopItem>();
+        public List<NDShopItem> Items = new List<NDShopItem>();
         public short Id;
     }
 }

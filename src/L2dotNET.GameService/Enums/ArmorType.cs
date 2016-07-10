@@ -45,14 +45,4 @@ namespace L2dotNET.GameService.Enums
             throw new NotImplementedException();
         }
     }
-
-    public enum ArmorTypeId
-    {
-        None,
-        Light,
-        Heavy,
-        Magic,
-        Pet,
-        Shield
-    }
 }

@@ -44,14 +44,14 @@ namespace L2dotNET.GameService.Tables
             Load();
         }
 
-        public SortedList<int, NdShop> Shops = new SortedList<int, NdShop>();
-        private NdTeleport _teleports;
+        public SortedList<int, NDShop> Shops = new SortedList<int, NDShop>();
+        private NDTeleport _teleports;
 
         private void Load()
         {
-            Shops = new SortedList<int, NdShop>();
+            Shops = new SortedList<int, NDShop>();
 
-            _teleports = new NdTeleport();
+            _teleports = new NDTeleport();
 
             ItemTable itable = ItemTable.Instance;
             {
@@ -59,7 +59,7 @@ namespace L2dotNET.GameService.Tables
                 foreach (XElement shops in xml.Elements("shops"))
                     foreach (XElement shopp in shops.Elements("shop"))
                     {
-                        NdShop shop = new NdShop();
+                        NDShop shop = new NDShop();
                         XElement npcElement = shopp.Element("npc");
                         if (npcElement != null)
                         {
@@ -89,7 +89,7 @@ namespace L2dotNET.GameService.Tables
                                     ItemTemplate it = itable.GetItem(Convert.ToInt32(i));
                                     if (it != null)
                                     {
-                                        slist.Items.Add(new NdShopItem(it));
+                                        slist.Items.Add(new NDShopItem(it));
                                     }
                                     else
                                     {
@@ -118,7 +118,7 @@ namespace L2dotNET.GameService.Tables
                 return;
             }
 
-            NdShop shop = Shops[trader.Template.NpcId];
+            NDShop shop = Shops[trader.Template.NpcId];
             GameServerNetworkPacket pk;
             if (!shop.Lists.ContainsKey(reply))
             {
@@ -155,9 +155,9 @@ namespace L2dotNET.GameService.Tables
                 return;
             }
 
-            AbTeleportGroup group = _teleports.Npcs[npc.Template.NpcId].Groups[groupId];
+            ABTeleportGroup group = _teleports.Npcs[npc.Template.NpcId].Groups[groupId];
             StringBuilder sb = new StringBuilder("&$556;<br><br>");
-            foreach (AbTeleportEntry e in group.Teles.Values)
+            foreach (ABTeleportEntry e in group.Teles.Values)
             {
                 string cost = "";
                 int id = itemId != -1 ? itemId : e.ItemId;
@@ -175,7 +175,7 @@ namespace L2dotNET.GameService.Tables
 
         public void RequestTeleport(L2Npc npc, L2Player player, int type, int entryId)
         {
-            AbTeleportGroup group;
+            ABTeleportGroup group;
             try
             {
                 group = _teleports.Npcs[npc.Template.NpcId].Groups[type];
@@ -187,7 +187,7 @@ namespace L2dotNET.GameService.Tables
                 return;
             }
 
-            AbTeleportEntry e = group.Teles[entryId];
+            ABTeleportEntry e = group.Teles[entryId];
 
             //if (!player.hasItem(e.itemId, e.cost))
             //{

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace L2dotNET.GameService.Tables
 {
-    public class NdShop
+    public class NDShop
     {
         public SortedList<short, NdShopList> Lists = new SortedList<short, NdShopList>();
         public double Mod;

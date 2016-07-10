@@ -40,7 +40,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             }
 
             WriteH(_shop.Items.Count);
-            foreach (NdShopItem si in _shop.Items)
+            foreach (NDShopItem si in _shop.Items)
             {
                 WriteD(0); //objectId
                 WriteD(si.Item.ItemId);

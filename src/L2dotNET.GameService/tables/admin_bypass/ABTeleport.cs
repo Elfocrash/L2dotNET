@@ -8,12 +8,12 @@ using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Tables.Admin_Bypass
 {
-    public class AbTeleport
+    public class ABTeleport
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(AbTeleport));
-        public SortedList<int, AbTeleportGroup> Groups = new SortedList<int, AbTeleportGroup>();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ABTeleport));
+        public SortedList<int, ABTeleportGroup> Groups = new SortedList<int, ABTeleportGroup>();
 
-        public AbTeleport()
+        public ABTeleport()
         {
             Reload();
         }
@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "group")
                     {
-                        AbTeleportGroup ab = new AbTeleportGroup
+                        ABTeleportGroup ab = new ABTeleportGroup
                                              {
                                                  Id = int.Parse(m.Attribute("id").Value),
                                                  Str = m.Attribute("str").Value,
@@ -35,9 +35,9 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                                                  Level = int.Parse(m.Attribute("level").Value)
                                              };
 
-                        foreach (AbTeleportEntry ae in from e in m.Elements()
+                        foreach (ABTeleportEntry ae in from e in m.Elements()
                                                        where e.Name == "entry"
-                                                       select new AbTeleportEntry
+                                                       select new ABTeleportEntry
                                                               {
                                                                   Name = e.Attribute("name").Value,
                                                                   X = int.Parse(e.Attribute("x").Value),
@@ -65,9 +65,9 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                 return;
             }
 
-            AbTeleportGroup gr = Groups[groupId];
+            ABTeleportGroup gr = Groups[groupId];
             StringBuilder sb = new StringBuilder("<button value=\"Back\" action=\"bypass -h admin?ask=3&reply=0\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><center><font color=\"Blue\">Region : </font><font color=\"LEVEL\">" + gr.Name + "</font><br>");
-            foreach (AbTeleportEntry e in gr.Teles.Values)
+            foreach (ABTeleportEntry e in gr.Teles.Values)
             {
                 sb.Append("<button value=\"" + e.Name + "\" action=\"bypass -h admin?ask=2&reply=" + e.Id + "\" width=150 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><br1>");
             }
@@ -88,7 +88,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             sb.Append("<table width=270>");
             sb.Append("<tr>");
             int count = 0;
-            foreach (AbTeleportGroup gr in Groups.Values)
+            foreach (ABTeleportGroup gr in Groups.Values)
             {
                 count++;
                 sb.Append("<td><button value=\"" + gr.Name + "\" action=\"bypass -h admin?ask=1&reply=" + gr.Id + "\" width=135 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>");

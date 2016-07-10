@@ -6,12 +6,12 @@ using L2dotNET.GameService.Tables.Admin_Bypass;
 
 namespace L2dotNET.GameService.Tables.Ndextend
 {
-    class NdTeleport
+    class NDTeleport
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(NdTeleport));
-        public SortedList<int, AbTeleportNpc> Npcs = new SortedList<int, AbTeleportNpc>();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(NDTeleport));
+        public SortedList<int, ABTeleportNpc> Npcs = new SortedList<int, ABTeleportNpc>();
 
-        public NdTeleport()
+        public NDTeleport()
         {
             Reload();
         }
@@ -25,7 +25,7 @@ namespace L2dotNET.GameService.Tables.Ndextend
                 foreach (XElement m in ex.Elements())
                     if (m.Name == "npc")
                     {
-                        AbTeleportNpc npc = new AbTeleportNpc
+                        ABTeleportNpc npc = new ABTeleportNpc
                                             {
                                                 Id = int.Parse(m.Attribute("id").Value)
                                             };
@@ -33,7 +33,7 @@ namespace L2dotNET.GameService.Tables.Ndextend
                         foreach (XElement x in m.Elements())
                             if (x.Name == "group")
                             {
-                                AbTeleportGroup ab = new AbTeleportGroup
+                                ABTeleportGroup ab = new ABTeleportGroup
                                                      {
                                                          Id = int.Parse(x.Attribute("id").Value)
                                                      };
@@ -41,7 +41,7 @@ namespace L2dotNET.GameService.Tables.Ndextend
                                 foreach (XElement e in x.Elements())
                                     if (e.Name == "e")
                                     {
-                                        AbTeleportEntry ae = new AbTeleportEntry
+                                        ABTeleportEntry ae = new ABTeleportEntry
                                                              {
                                                                  Name = e.Attribute("name").Value,
                                                                  X = int.Parse(e.Attribute("x").Value),
