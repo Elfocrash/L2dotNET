@@ -414,7 +414,7 @@ namespace L2dotNET.GameService.World
 
         public virtual void OnPickUp(L2Item item) { }
 
-        public int BuffMax = Config.Config.Instance.GameplayConfig.Player.Buff.MaxBuffsAmount;
+        public int BuffMax = Config.Config.Instance.GameplayConfig.PlayerConfig.Buff.MaxBuffsAmount;
         public LinkedList<AbnormalEffect> Effects = new LinkedList<AbnormalEffect>();
 
         public override void AddAbnormal(Skill skill, L2Character caster, bool permanent, bool unlim)

@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace L2dotNET.GameService.Config
 {
-    ///<summary>Clans Config.</summary>
+    ///<summary>Clan Config.</summary>
     ///TODO: Create mapping for cost/level/regeneration
-    public class Clan
+    public class ClanConfig
     {
         ///<summary>Number of days you have to wait before joining another clan.</summary>
         [DefaultValue(5)]
@@ -151,15 +151,8 @@ namespace L2dotNET.GameService.Config
         public FrontPlatform FrontPlatform { get; set; }
     }
 
-    public interface IClanHallFunction
-    {
-        ///<summary>Fee ratio of the function.</summary>
-        [JsonProperty(PropertyName = "FeeRatio", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        int FeeRatio { get; set; }
-    }
-
     ///<summary>Teleport function price.</summary>
-    public class Teleport : IClanHallFunction
+    public class Teleport
     {
         ///<summary>Fee ratio of the function.</summary>
         [DefaultValue(86400000)]
@@ -178,7 +171,7 @@ namespace L2dotNET.GameService.Config
     }
 
     ///<summary>Support magic buff function price.</summary>
-    public class Support : IClanHallFunction
+    public class Support
     {
         ///<summary>Fee ratio of the function.</summary>
         [DefaultValue(86400000)]
@@ -227,7 +220,7 @@ namespace L2dotNET.GameService.Config
     }
 
     ///<summary>MpRegeneration function price.</summary>
-    public class MpRegeneration : IClanHallFunction
+    public class MpRegeneration
     {
         ///<summary>Fee ratio of the function.</summary>
         [DefaultValue(86400000)]
@@ -261,7 +254,7 @@ namespace L2dotNET.GameService.Config
     }
 
     ///<summary>HpRegeneration function price.</summary>
-    public class HpRegeneration : IClanHallFunction
+    public class HpRegeneration
     {
         ///<summary>Fee ratio of the function.</summary>
         [DefaultValue(86400000)]
@@ -335,7 +328,7 @@ namespace L2dotNET.GameService.Config
     }
 
     ///<summary>ExpRegeneration function price.</summary>
-    public class ExpRegeneration : IClanHallFunction
+    public class ExpRegeneration
     {
         ///<summary>Fee ratio of the function.</summary>
         [DefaultValue(86400000)]
@@ -379,7 +372,7 @@ namespace L2dotNET.GameService.Config
     }
 
     ///<summary>Creation item function price.</summary>
-    public class ItemCreation : IClanHallFunction
+    public class ItemCreation
     {
         ///<summary>Fee ratio of the function.</summary>
         [DefaultValue(86400000)]
@@ -404,7 +397,7 @@ namespace L2dotNET.GameService.Config
 
     ///<summary>Need core support, need more information on functions in different. Clan Hall in different Towns.</summary>
     ///<summary>Decor curtain function price.</summary>
-    public class Curtain : IClanHallFunction
+    public class Curtain
     {
         ///<summary>Fee ratio of the function.</summary>
         [DefaultValue(86400000)]
@@ -424,7 +417,7 @@ namespace L2dotNET.GameService.Config
 
     ///<summary>Need core support, need more information on functions in different. Clan Hall in different Towns.</summary>
     ///<summary>Decor front platform function price.</summary>
-    public class FrontPlatform : IClanHallFunction
+    public class FrontPlatform
     {
         ///<summary>Fee ratio of the function.</summary>
         [DefaultValue(86400000)]

@@ -2,6 +2,7 @@
 
 namespace L2dotNET.GameService.Config
 {
+    ///<summary>Server Config.</summary>
     public class ServerConfig
     {
         [JsonProperty(PropertyName = "host")]

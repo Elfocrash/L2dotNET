@@ -35,14 +35,14 @@ namespace L2dotNET.GameService.Config
             ServerConfig = JsonConvert.DeserializeObject<ServerConfig>(File.ReadAllText(@"config\server.json"));
             GameplayConfig = new GameplayConfig
                              {
-                                 Server = JsonConvert.DeserializeObject<Server2>(File.ReadAllText(@"config\gameplay.json")),
-                                 Clan = JsonConvert.DeserializeObject<Clan>(File.ReadAllText(@"config\clan.json")),
-                                 Event = JsonConvert.DeserializeObject<Event>(File.ReadAllText(@"config\events.json")),
-                                 Geodata = JsonConvert.DeserializeObject<Geodata>(File.ReadAllText(@"config\geodata.json")),
-                                 Login = JsonConvert.DeserializeObject<Login>(File.ReadAllText(@"config\loginserver.json")),
-                                 Npc = JsonConvert.DeserializeObject<Npc>(File.ReadAllText(@"config\npcs.json")),
-                                 Player = JsonConvert.DeserializeObject<Player>(File.ReadAllText(@"config\player.json")),
-                                 Siege = JsonConvert.DeserializeObject<Siege>(File.ReadAllText(@"config\siege.json"))
+                                 ClanConfig = JsonConvert.DeserializeObject<ClanConfig>(File.ReadAllText(@"config\clan.json")),
+                                 EventConfig = JsonConvert.DeserializeObject<EventConfig>(File.ReadAllText(@"config\events.json")),
+                                 GeodataConfig = JsonConvert.DeserializeObject<GeodataConfig>(File.ReadAllText(@"config\geodata.json")),
+                                 LoginConfig = JsonConvert.DeserializeObject<LoginConfig>(File.ReadAllText(@"config\loginserver.json")),
+                                 NpcConfig = JsonConvert.DeserializeObject<NpcConfig>(File.ReadAllText(@"config\npcs.json")),
+                                 PlayerConfig = JsonConvert.DeserializeObject<PlayerConfig>(File.ReadAllText(@"config\player.json")),
+                                 Server = JsonConvert.DeserializeObject<ServerConfig2>(File.ReadAllText(@"config\gameplay.json")),
+                                 SiegeConfig = JsonConvert.DeserializeObject<SiegeConfig>(File.ReadAllText(@"config\siege.json"))
                              };
         }
     }

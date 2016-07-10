@@ -3,8 +3,8 @@ using Newtonsoft.Json;
 
 namespace L2dotNET.GameService.Config
 {
-    ///<summary>Geodata.</summary>
-    public class Geodata
+    ///<summary>Geodata Config.</summary>
+    public class GeodataConfig
     {
         ///<summary>GeoData options, default 0.</summary>
         ///<summary>0: GeoData, PathChecking and PathFinding OFF.</summary>

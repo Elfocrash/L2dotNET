@@ -3,7 +3,8 @@ using Newtonsoft.Json;
 
 namespace L2dotNET.GameService.Config
 {
-    public class Login
+    ///<summary>Login Config.</summary>
+    public class LoginConfig
 
     {
         ///<summary>LoginServer setting.</summary>

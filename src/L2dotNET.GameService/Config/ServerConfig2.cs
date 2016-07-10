@@ -3,7 +3,8 @@ using Newtonsoft.Json;
 
 namespace L2dotNET.GameService.Config
 {
-    public class Server2
+    ///<summary>Server Config.</summary>
+    public class ServerConfig2
     {
         ///<summary>Gameserver setting.</summary>
         [JsonProperty(PropertyName = "GameServer", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
@@ -490,7 +491,7 @@ namespace L2dotNET.GameService.Config
         [JsonProperty(PropertyName = "AllowBoat", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool AllowBoat { get; set; }
 
-        ///<summary>NOTE : Fishing will "bug" without geodata (if you activate w/o geodata, fishing is possible everywhere).</summary>
+        ///<summary>NOTE: Fishing will "bug" without geodata (if you activate w/o geodata, fishing is possible everywhere).</summary>
         [DefaultValue(false)]
         [JsonProperty(PropertyName = "AllowFishing", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool AllowFishing { get; set; }
@@ -577,7 +578,7 @@ namespace L2dotNET.GameService.Config
         ///<summary>Show this community board section when you open it.</summary>
         [DefaultValue("_bbshome")]
         [JsonProperty(PropertyName = "BBSDefault", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public string BbsDefault { get; set; }
+        public string BBSDefault { get; set; }
     }
 
     ///<summary>Flood Protectors.</summary>

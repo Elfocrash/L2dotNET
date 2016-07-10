@@ -3,7 +3,8 @@ using Newtonsoft.Json;
 
 namespace L2dotNET.GameService.Config
 {
-    public class Npc
+    ///<summary>NPC Config.</summary>
+    public class NpcConfig
     {
         ///<summary>Champion mobs.</summary>
         [JsonProperty(PropertyName = "ChampionMobs", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]

@@ -3,7 +3,8 @@ using Newtonsoft.Json;
 
 namespace L2dotNET.GameService.Config
 {
-    public class Player
+    ///<summary>Player Config.</summary>
+    public class PlayerConfig
     {
         ///<summary>Amount of adenas that a new character is given, default is 100.</summary>
         [DefaultValue(100)]
@@ -503,12 +504,12 @@ namespace L2dotNET.GameService.Config
         [JsonProperty(PropertyName = "CraftingEnabled", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool CraftingEnabled { get; set; }
 
-        ///<summary>Limits for recipes (default : 50).</summary>
+        ///<summary>Limits for recipes (Default: 50).</summary>
         [DefaultValue(50)]
         [JsonProperty(PropertyName = "DwarfRecipeLimit", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int DwarfRecipeLimit { get; set; }
 
-        ///<summary>Limits for recipes (default : 50).</summary>
+        ///<summary>Limits for recipes (Default: 50).</summary>
         [DefaultValue(50)]
         [JsonProperty(PropertyName = "CommonRecipeLimit", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int CommonRecipeLimit { get; set; }

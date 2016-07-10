@@ -3,7 +3,8 @@ using Newtonsoft.Json;
 
 namespace L2dotNET.GameService.Config
 {
-    public class Event
+    ///<summary>Event Config.</summary>
+    public class EventConfig
     {
         ///<summary>Olympiad Config.</summary>
         [JsonProperty(PropertyName = "Olympiad", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
@@ -216,7 +217,7 @@ namespace L2dotNET.GameService.Config
     public class Festival
     {
         ///<summary>Minimum Players for participate in SevenSigns Festival.</summary>
-        ///<summary>Default : 5.</summary>
+        ///<summary>Default: 5.</summary>
         [DefaultValue(5)]
         [JsonProperty(PropertyName = "MinPlayer", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MinPlayer { get; set; }
@@ -228,49 +229,49 @@ namespace L2dotNET.GameService.Config
         public int MaxPlayerContrib { get; set; }
 
         ///<summary>Festival Manager Start time.</summary>
-        ///<summary>Default : 2 minutes.</summary>
+        ///<summary>Default: 2 minutes.</summary>
         [DefaultValue(120000)]
         [JsonProperty(PropertyName = "ManagerStart", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int ManagerStart { get; set; }
 
         ///<summary>Festival Length.</summary>
-        ///<summary>Default : 18 minutes.</summary>
+        ///<summary>Default: 18 minutes.</summary>
         [DefaultValue(1080000)]
         [JsonProperty(PropertyName = "Length", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int Length { get; set; }
 
         ///<summary>Festival Cycle Length.</summary>
-        ///<summary>Default : 38 Minutes (20 minutes wait time, + Festival time).</summary>
+        ///<summary>Default: 38 Minutes (20 minutes wait time, + Festival time).</summary>
         [DefaultValue(2280000)]
         [JsonProperty(PropertyName = "CycleLength", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int CycleLength { get; set; }
 
         ///<summary>At what point the first festival spawn occures.</summary>
-        ///<summary>Default : 2 minutes.</summary>
+        ///<summary>Default: 2 minutes.</summary>
         [DefaultValue(120000)]
         [JsonProperty(PropertyName = "FirstSpawn", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int FirstSpawn { get; set; }
 
         ///<summary>At what Point the first festival swarm occures.</summary>
-        ///<summary>Default : 5 minutes.</summary>
+        ///<summary>Default: 5 minutes.</summary>
         [DefaultValue(300000)]
         [JsonProperty(PropertyName = "FirstSwarm", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int FirstSwarm { get; set; }
 
         ///<summary>At what Point the Second Festival spawn occures.</summary>
-        ///<summary>Default : 9 minutes.</summary>
+        ///<summary>Default: 9 minutes.</summary>
         [DefaultValue(540000)]
         [JsonProperty(PropertyName = "SecondSpawn", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int SecondSpawn { get; set; }
 
         ///<summary>At what Point the Second Festival Swarm occures.</summary>
-        ///<summary>Default : 12 minutes.</summary>
+        ///<summary>Default: 12 minutes.</summary>
         [DefaultValue(720000)]
         [JsonProperty(PropertyName = "SecondSwarm", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int SecondSwarm { get; set; }
 
         ///<summary>At what point the Chests Spawn in.</summary>
-        ///<summary>Default : 15 minutes.</summary>
+        ///<summary>Default: 15 minutes.</summary>
         [DefaultValue(900000)]
         [JsonProperty(PropertyName = "ChestSpawn", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int ChestSpawn { get; set; }
@@ -319,12 +320,12 @@ namespace L2dotNET.GameService.Config
         [JsonProperty(PropertyName = "RiftSpawnDelay", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int RiftSpawnDelay { get; set; }
 
-        ///<summary>Time between automatic jumps in seconds (retail : 8min(480sec) - 10min(600sec)).</summary>
+        ///<summary>Time between automatic jumps in seconds (retail: 8min(480sec) - 10min(600sec)).</summary>
         [DefaultValue(480)]
         [JsonProperty(PropertyName = "AutoJumpsDelayMin", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int AutoJumpsDelayMin { get; set; }
 
-        ///<summary>Time between automatic jumps in seconds (retail : 8min(480sec) - 10min(600sec)).</summary>
+        ///<summary>Time between automatic jumps in seconds (retail: 8min(480sec) - 10min(600sec)).</summary>
         [DefaultValue(600)]
         [JsonProperty(PropertyName = "AutoJumpsDelayMax", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int AutoJumpsDelayMax { get; set; }

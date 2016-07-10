@@ -5,27 +5,27 @@ namespace L2dotNET.GameService.Config
     public class GameplayConfig
     {
         [JsonProperty(PropertyName = "Clan")]
-        public Clan Clan { get; set; }
+        public ClanConfig ClanConfig { get; set; }
 
         [JsonProperty(PropertyName = "Siege")]
-        public Siege Siege { get; set; }
+        public SiegeConfig SiegeConfig { get; set; }
 
         [JsonProperty(PropertyName = "Event")]
-        public Event Event { get; set; }
+        public EventConfig EventConfig { get; set; }
 
         [JsonProperty(PropertyName = "Npc")]
-        public Npc Npc { get; set; }
+        public NpcConfig NpcConfig { get; set; }
 
         [JsonProperty(PropertyName = "Player")]
-        public Player Player { get; set; }
+        public PlayerConfig PlayerConfig { get; set; }
 
         [JsonProperty(PropertyName = "Server")]
-        public Server2 Server { get; set; }
+        public ServerConfig2 Server { get; set; }
 
         [JsonProperty(PropertyName = "Login")]
-        public Login Login { get; set; }
+        public LoginConfig LoginConfig { get; set; }
 
         [JsonProperty(PropertyName = "Geodata")]
-        public Geodata Geodata { get; set; }
+        public GeodataConfig GeodataConfig { get; set; }
     }
 }
