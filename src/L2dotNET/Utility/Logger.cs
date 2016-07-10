@@ -146,19 +146,21 @@ namespace L2dotNET.Utility
             {
                 sb.Append($"StackTrace: {e.StackTrace}{Environment.NewLine}");
             }
-            if (e.InnerException != null)
+            if (e.InnerException == null)
             {
-                sb.AppendLine("Inner exception data:");
+                return sb.ToString();
+            }
 
-                if (!string.IsNullOrEmpty(e.InnerException.Message))
-                {
-                    sb.Append($"\tMessage: {e.InnerException.Message}{Environment.NewLine}");
-                }
+            sb.AppendLine("Inner exception data:");
 
-                if (!string.IsNullOrEmpty(e.InnerException.StackTrace))
-                {
-                    sb.Append($"\tStackTrace: {e.InnerException.StackTrace}{Environment.NewLine}");
-                }
+            if (!string.IsNullOrEmpty(e.InnerException.Message))
+            {
+                sb.Append($"\tMessage: {e.InnerException.Message}{Environment.NewLine}");
+            }
+
+            if (!string.IsNullOrEmpty(e.InnerException.StackTrace))
+            {
+                sb.Append($"\tStackTrace: {e.InnerException.StackTrace}{Environment.NewLine}");
             }
 
             return sb.ToString();
@@ -198,11 +200,8 @@ namespace L2dotNET.Utility
         /// <param name="s">Message to write.</param>
         private static void WriteOutputLine(string s)
         {
-            if (_output != null)
-            {
-                _output.WriteLine(s);
-                _output.Flush();
-            }
+            _output?.WriteLine(s);
+            _output?.Flush();
         }
 
         /// <summary>
@@ -211,11 +210,8 @@ namespace L2dotNET.Utility
         /// <param name="s">Message to write.</param>
         private static void WriteOutput(string s)
         {
-            if (_output != null)
-            {
-                _output.Write(s);
-                _output.Flush();
-            }
+            _output?.Write(s);
+            _output?.Flush();
         }
 
         /// <summary>
