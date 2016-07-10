@@ -44,7 +44,7 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
 
         public override void DoThink(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {
-            if ((_pet.CurrentTime / _pet.MaxTime) < 0.55)
+            if ((_pet.CurrentTime / (float)_pet.MaxTime) < 0.55)
             {
                 _under55Percent = DateTime.Now;
                 _pet.Owner.SendSystemMessage(SystemMessage.SystemMessageId.YourPetIsVeryHungry);

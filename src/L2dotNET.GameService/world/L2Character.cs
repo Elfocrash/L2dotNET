@@ -1615,8 +1615,8 @@ namespace L2dotNET.GameService.World
 
             _ticksToMove = 1 + (int)((10 * distance) / speed);
             _ticksToMoveCompleted = 0;
-            _xSpeedTicks = (DestX - X) / _ticksToMove;
-            _ySpeedTicks = (DestY - Y) / _ticksToMove;
+            _xSpeedTicks = (DestX - X) / (float)_ticksToMove;
+            _ySpeedTicks = (DestY - Y) / (float)_ticksToMove;
 
             Heading = (int)((Math.Atan2(-spx, -spy) * 10430.378) + short.MaxValue);
 
