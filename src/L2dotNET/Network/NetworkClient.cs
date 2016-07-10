@@ -160,14 +160,11 @@ namespace L2dotNET.Network
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Logger.Exception(e);
 
                 CloseConnection();
 
-                if (OnDisconnected != null)
-                {
-                    OnDisconnected(-1, this, ConnectionId);
-                }
+                OnDisconnected?.Invoke(-1, this, ConnectionId);
             }
         }
 

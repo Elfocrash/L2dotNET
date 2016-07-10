@@ -662,27 +662,29 @@ namespace L2dotNET.GameService.Model.Player
             }
 
             List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ei in Effects.Where(ei => ei != null))
-                if (ei.Active == 1)
-                {
-                    int time = ei.GetTime();
-                    m.AddIcon(ei.Id, ei.Lvl, time);
-
-                    if (p != null)
-                    {
-                        p.AddIcon(ei.Id, ei.Lvl, time);
-                    }
-                }
-                else
-                {
-                    nulled.Add(ei);
-                }
-
             lock (Effects)
+            {
+                foreach (AbnormalEffect ei in Effects.Where(ei => ei != null))
+                    if (ei.Active == 1)
+                    {
+                        int time = ei.GetTime();
+                        m.AddIcon(ei.Id, ei.Lvl, time);
+
+                        if (p != null)
+                        {
+                            p.AddIcon(ei.Id, ei.Lvl, time);
+                        }
+                    }
+                    else
+                    {
+                        nulled.Add(ei);
+                    }
+
                 foreach (AbnormalEffect ei in nulled)
                 {
                     Effects.Remove(ei);
                 }
+            }
 
             nulled.Clear();
             SendPacket(m);
@@ -1969,8 +1971,10 @@ namespace L2dotNET.GameService.Model.Player
 
         public override L2Character[] GetPartyCharacters()
         {
-            List<L2Character> chars = new List<L2Character>();
-            chars.Add(this);
+            List<L2Character> chars = new List<L2Character>
+                                      {
+                                          this
+                                      };
             if (Summon != null)
             {
                 chars.Add(Summon);

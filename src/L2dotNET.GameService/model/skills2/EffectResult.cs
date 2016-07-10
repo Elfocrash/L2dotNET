@@ -6,25 +6,20 @@ namespace L2dotNET.GameService.Model.Skills2
     public class EffectResult
     {
         public byte TotalUi;
-        public SortedList<int, double> Sus;
+        public SortedList<int, double> Sus = new SortedList<int, double>();
         public byte HpMpCp;
 
         public void AddSu(int stat, double value)
         {
-            if (Sus == null)
+            lock (Sus)
             {
-                Sus = new SortedList<int, double>();
-            }
-
-            if (Sus.ContainsKey(stat))
-            {
-                lock (Sus)
+                if (Sus.ContainsKey(stat))
                 {
                     Sus.Remove(stat);
                 }
-            }
 
-            Sus.Add(stat, value);
+                Sus.Add(stat, value);
+            }
 
             if (((HpMpCp == 0) && (stat == StatusUpdate.MaxHp)) || (stat == StatusUpdate.MaxMp) || (stat == StatusUpdate.MaxCp) || (stat == StatusUpdate.CurHp) || (stat == StatusUpdate.CurMp) || (stat == StatusUpdate.CurCp))
             {

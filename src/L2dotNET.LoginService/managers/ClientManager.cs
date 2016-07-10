@@ -79,17 +79,18 @@ namespace L2dotNET.LoginService.Managers
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
             Log.Info($"Connected: {ip}");
-            if (_flood.ContainsKey(ip))
-            {
-                if (_flood[ip].CompareTo(DateTime.Now) == 1)
-                {
-                    Log.Warn($"Active flooder: {ip}");
-                    client.Close();
-                    return;
-                }
 
-                lock (_flood)
+            lock (_flood)
+            {
+                if (_flood.ContainsKey(ip))
                 {
+                    if (_flood[ip].CompareTo(DateTime.Now) == 1)
+                    {
+                        Log.Warn($"Active flooder: {ip}");
+                        client.Close();
+                        return;
+                    }
+
                     _flood.Remove(ip);
                 }
             }

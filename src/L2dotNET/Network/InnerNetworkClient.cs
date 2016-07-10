@@ -122,28 +122,19 @@ namespace L2dotNET.Network
             }
             catch (SocketException se)
             {
-                if (OnDisconnected != null)
-                {
-                    OnDisconnected(se.ErrorCode, this, ConnectionId);
-                }
-                else
-                {
-                    Logger.WriteLine(Source.InnerNetwork, "{0} \r\nError code: {1}", se.ToString(), se.ErrorCode);
-                    CloseConnection();
-                }
+                Logger.WriteLine(Source.InnerNetwork, "{0} \r\nError code: {1}", se.ToString(), se.ErrorCode);
+
+                CloseConnection();
+
+                OnDisconnected?.Invoke(se.ErrorCode, this, ConnectionId);
             }
             catch (Exception e)
             {
                 Logger.Exception(e);
 
-                if (OnDisconnected != null)
-                {
-                    OnDisconnected(-1, this, ConnectionId);
-                }
-                else
-                {
-                    CloseConnection();
-                }
+                CloseConnection();
+
+                OnDisconnected?.Invoke(-1, this, ConnectionId);
             }
         }
 
