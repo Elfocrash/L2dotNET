@@ -260,11 +260,11 @@ namespace L2dotNET.Utility
 
             string hex = string.Empty,
                    data = string.Empty;
-            int i,
-                index = 0;
+            int index = 0;
 
             while (index < buffer.Length)
             {
+                int i;
                 for (i = 0; (i < 16) && ((index + i) < buffer.Length); i++)
                 {
                     hex += buffer[index + i].ToString("x2") + " ";

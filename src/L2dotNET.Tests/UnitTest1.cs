@@ -41,14 +41,13 @@ namespace L2dotNET.Tests
                         continue;
                     }
 
-                    XmlNamedNodeMap attrs;
                     //ClassIds classId = (ClassIds)int.Parse(attrs.Item(0).Value);
                     StatsSet set = new StatsSet();
 
                     for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
                         if ((cd.NextSibling != null) && "set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null))
                         {
-                            attrs = cd.NextSibling.Attributes;
+                            XmlNamedNodeMap attrs = cd.NextSibling.Attributes;
                             if (attrs == null)
                             {
                                 continue;

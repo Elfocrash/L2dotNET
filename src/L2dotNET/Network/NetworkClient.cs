@@ -94,7 +94,7 @@ namespace L2dotNET.Network
         /// <summary>
         /// Initializes new instance of <see cref="NetworkClient"/> connection.
         /// </summary>
-        public NetworkClient()
+        protected NetworkClient()
         {
             MReceiveCallback = new AsyncCallback(ReceiveCallback);
             MSendCallback = new AsyncCallback(SendCallback);
@@ -106,7 +106,7 @@ namespace L2dotNET.Network
         /// Initializes new instance of <see cref="NetworkClient"/> connection.
         /// </summary>
         /// <param name="socket">Client <see cref="Socket"/> object.</param>
-        public NetworkClient(Socket socket) : this()
+        protected NetworkClient(Socket socket) : this()
         {
             Logger.WriteLine(Source.Debug, "Try set m_Socket");
             try

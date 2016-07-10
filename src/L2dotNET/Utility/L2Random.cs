@@ -50,11 +50,11 @@ namespace L2dotNET.Utility
         public static unsafe byte[] NextBytes(ref byte[] buffer)
         {
             int i = buffer.Length,
-                j = 0,
-                k;
+                j = 0;
 
             fixed (byte* buf = buffer)
             {
+                int k;
                 while (j <= (i - sizeof(int)))
                 {
                     k = MRandom.Next();

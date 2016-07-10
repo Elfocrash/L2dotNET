@@ -81,12 +81,11 @@ namespace L2dotNET.GameService.Model.Zones.Forms
 
         public override double getDistanceToZone(int x, int y)
         {
-            double test,
-                   shortestDist = Math.Pow(_x[0] - x, 2) + Math.Pow(_y[0] - y, 2);
+            double shortestDist = Math.Pow(_x[0] - x, 2) + Math.Pow(_y[0] - y, 2);
 
             for (int i = 1; i < _y.Length; i++)
             {
-                test = Math.Pow(_x[i] - x, 2) + Math.Pow(_y[i] - y, 2);
+                double test = Math.Pow(_x[i] - x, 2) + Math.Pow(_y[i] - y, 2);
                 if (test < shortestDist)
                 {
                     shortestDist = test;
