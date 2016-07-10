@@ -69,8 +69,6 @@ namespace L2dotNET.GameService.Tables
             Slots.Add("strider", ItemTemplate.SlotStrider);
             Slots.Add("babypet", ItemTemplate.SlotBabypet);
 
-            int highest = 0;
-
             GC.Collect();
             GC.WaitForPendingFinalizers();
             Log.Info($"ItemTable: #{Armors.Count} armors.");
