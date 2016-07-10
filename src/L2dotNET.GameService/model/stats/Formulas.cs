@@ -153,24 +153,14 @@ namespace L2dotNET.GameService.Model.Stats
         {
             double rate = target.CharacterStat.GetStat(EffectType.BShieldRate);
 
-            if (Rnd.Next(100) > rate)
-            {
-                return 0;
-            }
-
-            return target.CharacterStat.GetStat(EffectType.PPhysicalShieldDefence);
+            return Rnd.Next(100) > rate ? 0 : target.CharacterStat.GetStat(EffectType.PPhysicalShieldDefence);
         }
 
         public static bool CheckCrit(L2Character attacker, L2Character target)
         {
             double rate = attacker.CharacterStat.GetStat(EffectType.BCriticalRate);
 
-            if (Rnd.Next(1000) <= rate)
-            {
-                return true;
-            }
-
-            return false;
+            return Rnd.Next(1000) <= rate;
         }
 
         public static double GetPhysHitDamage(L2Character attacker, L2Character target, double sdef)

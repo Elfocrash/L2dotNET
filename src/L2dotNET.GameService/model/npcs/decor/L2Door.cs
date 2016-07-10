@@ -26,14 +26,7 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
 
         public override void NotifyAction(L2Player player)
         {
-            if (Closed == 1)
-            {
-                Closed = 0;
-            }
-            else
-            {
-                Closed = 1;
-            }
+            Closed = (byte)(Closed == 1 ? 0 : 1);
 
             BroadcastUserInfo();
         }

@@ -255,9 +255,9 @@ namespace L2dotNET.GameService.Model.Player
             return PrivateStoreType;
         }
 
-        public override int AllianceCrestId => Clan == null ? 0 : Clan.AllianceCrestId;
+        public override int AllianceCrestId => Clan?.AllianceCrestId ?? 0;
 
-        public override int AllianceId => Clan == null ? 0 : Clan.AllianceId;
+        public override int AllianceId => Clan?.AllianceId ?? 0;
 
         public override int ClanId
         {
@@ -767,7 +767,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public void ShowHtmPlain(string plain, L2Object o)
         {
-            SendPacket(new NpcHtmlMessage(this, plain, o == null ? -1 : o.ObjId, true));
+            SendPacket(new NpcHtmlMessage(this, plain, o?.ObjId ?? -1, true));
             if (o is L2Npc)
             {
                 FolkNpc = (L2Npc)o;
@@ -1065,7 +1065,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public int GetClanCrestLargeId()
         {
-            return Clan == null ? 0 : Clan.LargeCrestId;
+            return Clan?.LargeCrestId ?? 0;
         }
 
         public List<L2Shortcut> Shortcuts = new List<L2Shortcut>();
@@ -1699,28 +1699,14 @@ namespace L2dotNET.GameService.Model.Player
 
         public void setPenalty_ClanCreate(DateTime time, bool sql)
         {
-            if (DateTime.Now < time)
-            {
-                PenaltyClanCreate = time.ToString("yyyy-MM-dd HH-mm-ss");
-            }
-            else
-            {
-                PenaltyClanCreate = "0";
-            }
+            PenaltyClanCreate = DateTime.Now < time ? time.ToString("yyyy-MM-dd HH-mm-ss") : "0";
 
             if (sql) { }
         }
 
         public void setPenalty_ClanJoin(DateTime time, bool sql)
         {
-            if (DateTime.Now < time)
-            {
-                PenaltyClanJoin = time.ToString("yyyy-MM-dd HH-mm-ss");
-            }
-            else
-            {
-                PenaltyClanJoin = "0";
-            }
+            PenaltyClanJoin = DateTime.Now < time ? time.ToString("yyyy-MM-dd HH-mm-ss") : "0";
 
             if (sql) { }
         }
@@ -2013,12 +1999,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public bool IsSittingInProgress()
         {
-            if (_sitTime != null)
-            {
-                return _sitTime.Enabled;
-            }
-
-            return false;
+            return (_sitTime != null) && _sitTime.Enabled;
         }
 
         public bool IsSitting()
@@ -2413,7 +2394,7 @@ namespace L2dotNET.GameService.Model.Player
             }
         }
 
-        public int VehicleId => Boat != null ? Boat.ObjId : 0;
+        public int VehicleId => Boat?.ObjId ?? 0;
 
         public void Revive(double percent)
         {

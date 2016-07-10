@@ -18,12 +18,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override EffectResult OnEnd(L2Character caster, L2Character target)
         {
             target.Mute(1, HashId, false);
-            if (target.MutedMagically)
-            {
-                return new EffectResult().AsTotalUi();
-            }
-
-            return Nothing;
+            return target.MutedMagically ? new EffectResult().AsTotalUi() : Nothing;
         }
     }
 }

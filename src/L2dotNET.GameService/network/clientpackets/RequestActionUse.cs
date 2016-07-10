@@ -44,14 +44,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     CheckSit(player);
                     break;
                 case 1:
-                    if (player.IsRunning == 1)
-                    {
-                        player.IsRunning = 0;
-                    }
-                    else
-                    {
-                        player.IsRunning = 1;
-                    }
+                    player.IsRunning = (byte)(player.IsRunning == 1 ? 0 : 1);
 
                     player.BroadcastUserInfo();
                     break;

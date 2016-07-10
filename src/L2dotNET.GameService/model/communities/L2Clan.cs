@@ -76,7 +76,7 @@ namespace L2dotNET.GameService.Model.Communities
         public static int CpCsSetFunctions = 8388608;
         public static int CpAll = 16777214;
 
-        public int AllianceCrestId => Alliance == null ? 0 : Alliance.CrestId;
+        public int AllianceCrestId => Alliance?.CrestId ?? 0;
 
         public string AllianceName => Alliance == null ? "" : Alliance.Name;
 

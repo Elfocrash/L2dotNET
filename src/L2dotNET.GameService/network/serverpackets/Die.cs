@@ -74,7 +74,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteC(0);
             //writeC(m_bShow ? 1 : 0);
             WriteD(MNAgathion); //21
-            WriteD(_items == null ? 0 : _items.Count); //22+
+            WriteD(_items?.Count ?? 0); //22+
 
             if (_items != null)
             {

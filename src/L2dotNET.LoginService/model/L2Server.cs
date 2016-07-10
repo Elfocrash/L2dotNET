@@ -44,11 +44,11 @@ namespace L2dotNET.LoginService.Model
 
         public byte Connected => Thread != null ? (Thread.Connected ? (byte)1 : (byte)0) : (byte)0;
 
-        public short CurrentPlayers => Thread != null ? Thread.Curp : (short)0;
+        public short CurrentPlayers => Thread?.Curp ?? (short)0;
 
-        public short MaxPlayers => Thread != null ? Thread.Maxp : (short)0;
+        public short MaxPlayers => Thread?.Maxp ?? (short)0;
 
-        public int Port => Thread != null ? Thread.Port : 0;
+        public int Port => Thread?.Port ?? 0;
 
         public bool TestMode => (Thread != null) && Thread.TestMode;
 
