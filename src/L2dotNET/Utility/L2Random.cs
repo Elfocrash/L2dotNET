@@ -16,7 +16,7 @@ namespace L2dotNET.Utility
         /// Returns random <see cref="int"/> value.
         /// </summary>
         /// <returns>Random <see cref="int"/> value.</returns>
-        public static unsafe int Next()
+        public static int Next()
         {
             return MRandom.Next();
         }
@@ -26,7 +26,7 @@ namespace L2dotNET.Utility
         /// </summary>
         /// <param name="max">Max result value.</param>
         /// <returns>Random <see cref="int"/> value.</returns>
-        public static unsafe int Next(int max)
+        public static int Next(int max)
         {
             return MRandom.Next(0, max);
         }

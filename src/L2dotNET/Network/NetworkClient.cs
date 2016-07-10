@@ -136,7 +136,7 @@ namespace L2dotNET.Network
         /// <summary>
         /// Receive <see cref="AsyncCallback"/> method.
         /// </summary>
-        protected abstract unsafe void ReceiveCallback(IAsyncResult ar);
+        protected abstract void ReceiveCallback(IAsyncResult ar);
 
         /// <summary>
         /// Send <see cref="AsyncCallback"/> method.

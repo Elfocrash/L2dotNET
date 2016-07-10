@@ -142,7 +142,7 @@ namespace L2dotNET.Network
         /// Sends <see cref="Packet"/> to remote side.
         /// </summary>
         /// <param name="p"><see cref="Packet"/> to send.</param>
-        public virtual unsafe void Send(Packet p)
+        public virtual void Send(Packet p)
         {
             p.Prepare(sizeof(int));
             SendData(p.GetBuffer());
@@ -153,7 +153,7 @@ namespace L2dotNET.Network
         /// </summary>
         /// <param name="buffer">Received buffer.</param>
         /// <param name="length">Received buffer length.</param>
-        public override unsafe void ReceiveData(byte[] buffer, int length)
+        public override void ReceiveData(byte[] buffer, int length)
         {
             Handle(new Packet(sizeof(int), buffer));
         }
