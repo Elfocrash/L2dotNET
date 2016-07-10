@@ -9,9 +9,9 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
     {
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
-            L2Player player = caster as L2Player;
-            if (player != null)
+            if (caster is L2Player)
             {
+                L2Player player = (L2Player)caster;
                 L2Item item = player.GetWeaponItem();
 
                 //int newid = ItemTable.Instance.ConvertDataList[item.Template.ItemID];

@@ -50,7 +50,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             L2Object target = caster.CurrentTarget;
             if (target is L2Door)
             {
-                L2Door door = target as L2Door;
+                L2Door door = (L2Door)target;
                 if (door.Closed == 0)
                 {
                     caster.SendSystemMessage(SystemMessage.SystemMessageId.TargetIsIncorrect);

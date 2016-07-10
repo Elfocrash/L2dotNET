@@ -17,13 +17,11 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
-            L2Player player = target as L2Player;
-            if (player == null)
+            if (target is L2Player)
             {
-                return Nothing;
+                L2Player player = (L2Player)target;
+                player.AddItem(_itemId, _count);
             }
-
-            player.AddItem(_itemId, _count);
 
             return Nothing;
         }
