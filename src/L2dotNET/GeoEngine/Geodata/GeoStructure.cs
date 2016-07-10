@@ -55,8 +55,8 @@ namespace L2dotNET.GeoEngine.Geodata
         public static readonly int RegionCellsX = RegionBlocksX * BlockCellsX;
         public static readonly int RegionCellsY = RegionBlocksY * BlockCellsY;
 
-        public static readonly int GeoRegionsX = ((TileXMax - TileXMin) + 1);
-        public static readonly int GeoRegionsY = ((TileYMax - TileYMin) + 1);
+        public static readonly int GeoRegionsX = (TileXMax - TileXMin) + 1;
+        public static readonly int GeoRegionsY = (TileYMax - TileYMin) + 1;
 
         public static readonly int GeoBlocksX = GeoRegionsX * RegionBlocksX;
         public static readonly int GeoBlocksY = GeoRegionsY * RegionBlocksY;

@@ -42,7 +42,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if ((player.CurrentTarget == null) || !(player.CurrentTarget is L2Player))
+            if (!(player.CurrentTarget is L2Player))
             {
                 player.SendSystemMessage(SystemMessage.SystemMessageId.TargetIsIncorrect);
                 player.SendActionFailed();

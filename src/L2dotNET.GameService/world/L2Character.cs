@@ -393,7 +393,7 @@ namespace L2dotNET.GameService.World
                 AbnormalBitMask &= ~ave.Skill.AbnormalVisualEffect;
             }
 
-            bool uis = (AbnormalBitMask != olda);
+            bool uis = AbnormalBitMask != olda;
 
             RemoveStats(ave.Skill, caster);
 
@@ -463,7 +463,7 @@ namespace L2dotNET.GameService.World
                     break;
                 }
 
-                if (((ave.Skill.AbnormalType == null) || (skill.AbnormalType == null)) || !ave.Skill.AbnormalType.Equals(skill.AbnormalType))
+                if ((ave.Skill.AbnormalType == null) || (skill.AbnormalType == null) || !ave.Skill.AbnormalType.Equals(skill.AbnormalType))
                 {
                     continue;
                 }
@@ -620,7 +620,7 @@ namespace L2dotNET.GameService.World
                 AbnormalBitMask |= skill.AbnormalVisualEffect;
             }
 
-            bool uis = (AbnormalBitMask != olda);
+            bool uis = AbnormalBitMask != olda;
 
             AddStats(skill, caster);
 
@@ -941,7 +941,7 @@ namespace L2dotNET.GameService.World
             if (weapon != null) { }
             else
             {
-                timeAtk = ((1362 * 345) / timeAtk);
+                timeAtk = (1362 * 345) / timeAtk;
             }
 
             if (!Calcs.CheckIfInRange((int)dist, this, target, true))
@@ -1642,8 +1642,8 @@ namespace L2dotNET.GameService.World
             DestY = y;
             DestZ = z;
 
-            double dx = (x - X),
-                   dy = (y - Y);
+            double dx = x - X,
+                   dy = y - Y;
             //dz = (z - Z);
             double distance = Math.Sqrt((dx * dx) + (dy * dy));
 

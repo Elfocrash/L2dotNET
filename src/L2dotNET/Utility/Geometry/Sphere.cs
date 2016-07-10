@@ -20,7 +20,7 @@ namespace L2dotNET.Utility.Geometry
         public override Location GetRandomLocation()
         {
             // get uniform distance and angles
-            double r = Math.Ceiling(Math.Pow((Rnd.NextDouble()) * R, (double)1 / 3));
+            double r = Math.Ceiling(Math.Pow(Rnd.NextDouble() * R, (double)1 / 3));
             double phi = Rnd.NextDouble() * 2 * Math.PI;
             double theta = Math.Acos((2 * Rnd.NextDouble()) - 1);
 

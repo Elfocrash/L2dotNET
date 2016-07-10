@@ -97,7 +97,7 @@ namespace L2dotNET.Utility
         /// <returns><see cref="double"/> value in microseconds between <see cref="Stopwatch"/> has been started and stopped.</returns>
         public double GetElapsedTimeInMicroseconds()
         {
-            return ((((_stopTime - _startTime - _calibrationTime) * 1000000.0) / _clockFrequency));
+            return ((_stopTime - _startTime - _calibrationTime) * 1000000.0) / _clockFrequency;
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace L2dotNET.Utility
 
         private double InternalGetElapsedTimeMs()
         {
-            return ((((_stopTime - _startTime - _calibrationTime) * 1000000.0) / _clockFrequency) / 1000.0);
+            return ((_stopTime - _startTime - _calibrationTime) * 1000000.0) / _clockFrequency / 1000.0;
         }
     }
 }

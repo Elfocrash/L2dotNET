@@ -95,7 +95,7 @@ namespace L2dotNET.Network
                 {
                     if (!MHeaderReceived) //get packet capacity
                     {
-                        L2Buffer.Extend(ref MReceiveBuffer, 0, *((int*)(buf)) - sizeof(int));
+                        L2Buffer.Extend(ref MReceiveBuffer, 0, *(int*)buf - sizeof(int));
                         MReceivedLength = 0;
                         MHeaderReceived = true;
                     }

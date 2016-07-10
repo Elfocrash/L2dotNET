@@ -60,7 +60,7 @@ namespace L2dotNET.GameService.Tables
                 foreach (XmlNode node in nodes)
                 {
                     XmlElement ownerElement = node.Attributes?[0].OwnerElement;
-                    if ((ownerElement == null) || ((node.Attributes == null) || !ownerElement.Name.EqualsIgnoreCase("map")))
+                    if ((ownerElement == null) || (node.Attributes == null) || !ownerElement.Name.EqualsIgnoreCase("map"))
                     {
                         continue;
                     }
@@ -237,10 +237,10 @@ namespace L2dotNET.GameService.Tables
                     return GetTown(2);
 
                 case 1: // Elven
-                    return GetTown((race == ClassRace.DarkElf) ? 1 : 3);
+                    return GetTown(race == ClassRace.DarkElf ? 1 : 3);
 
                 case 2: // DE
-                    return GetTown((race == ClassRace.Elf) ? 3 : 1);
+                    return GetTown(race == ClassRace.Elf ? 3 : 1);
 
                 case 3: // Orc
                     return GetTown(4);

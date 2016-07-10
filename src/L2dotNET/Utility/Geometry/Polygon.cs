@@ -232,7 +232,7 @@ namespace L2dotNET.Utility.Geometry
         private static bool IsEar(bool isCw, IEnumerable<int[]> nonConvexPoints, int[] a, int[] b, int[] c)
         {
             // ABC triangle
-            if (!(IsConvex(isCw, a, b, c)))
+            if (!IsConvex(isCw, a, b, c))
             {
                 return false;
             }
@@ -272,7 +272,7 @@ namespace L2dotNET.Utility.Geometry
             double ca = ((pAx * cAy) - (cAx * pAy)) / detXyz;
 
             // check coefficients
-            return ((ba > 0) && (ca > 0) && ((ba + ca) < 1));
+            return (ba > 0) && (ca > 0) && ((ba + ca) < 1);
         }
     }
 }

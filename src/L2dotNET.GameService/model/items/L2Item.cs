@@ -250,12 +250,12 @@ namespace L2dotNET.GameService.Model.Items
 
         public bool NotForTrade()
         {
-            return (!Template.Tradable) || (AugmentationId > 0) || (IsEquipped == 1);
+            return !Template.Tradable || (AugmentationId > 0) || (IsEquipped == 1);
         }
 
         public bool NotForSale()
         {
-            return (!Template.Tradable) || (IsEquipped == 1);
+            return !Template.Tradable || (IsEquipped == 1);
         }
     }
 }

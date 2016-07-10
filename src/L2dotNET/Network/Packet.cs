@@ -98,7 +98,7 @@ namespace L2dotNET.Network
 
             fixed (byte* buf = _mBuffer)
             {
-                *((short*)(buf + _mOffset)) = v;
+                *(short*)(buf + _mOffset) = v;
             }
 
             _mOffset += sizeof(short);
@@ -203,7 +203,7 @@ namespace L2dotNET.Network
 
             fixed (byte* buf = _mBuffer)
             {
-                *((long*)(buf + _mOffset)) = v;
+                *(long*)(buf + _mOffset) = v;
             }
 
             _mOffset += sizeof(long);
@@ -336,7 +336,7 @@ namespace L2dotNET.Network
         {
             fixed (byte* buf = _mBuffer)
             {
-                short v = *((short*)(buf + _mOffset));
+                short v = *(short*)(buf + _mOffset);
                 _mOffset += sizeof(short);
                 return v;
             }
@@ -350,7 +350,7 @@ namespace L2dotNET.Network
         {
             fixed (byte* buf = _mBuffer)
             {
-                int v = *((int*)(buf + _mOffset));
+                int v = *(int*)(buf + _mOffset);
                 _mOffset += sizeof(int);
                 return v;
             }
@@ -364,7 +364,7 @@ namespace L2dotNET.Network
         {
             fixed (byte* buf = _mBuffer)
             {
-                double v = *((double*)(buf + _mOffset));
+                double v = *(double*)(buf + _mOffset);
                 _mOffset += sizeof(double);
                 return v;
             }
@@ -378,7 +378,7 @@ namespace L2dotNET.Network
         {
             fixed (byte* buf = _mBuffer)
             {
-                long v = *((long*)(buf + _mOffset));
+                long v = *(long*)(buf + _mOffset);
                 _mOffset += sizeof(long);
                 return v;
             }
@@ -440,11 +440,11 @@ namespace L2dotNET.Network
             {
                 if (headerSize == sizeof(short))
                 {
-                    *((short*)(buf)) = (short)_mOffset;
+                    *(short*)buf = (short)_mOffset;
                 }
                 else
                 {
-                    *((int*)(buf)) = _mOffset;
+                    *(int*)buf = _mOffset;
                 }
             }
         }
@@ -486,7 +486,7 @@ namespace L2dotNET.Network
             {
                 fixed (byte* buf = _mBuffer)
                 {
-                    return *(buf);
+                    return *buf;
                 }
             }
         }

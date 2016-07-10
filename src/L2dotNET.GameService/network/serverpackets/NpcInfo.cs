@@ -28,7 +28,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             double atkspd = _npc.CharacterStat.GetStat(EffectType.BAttackSpd);
             double cast = _npc.CharacterStat.GetStat(EffectType.BCastingSpd);
             double anim = (spd * 1f) / 120;
-            double anim2 = ((1.1) * atkspd) / 277;
+            double anim2 = (1.1 * atkspd) / 277;
 
             WriteD(cast);
             WriteD(atkspd);

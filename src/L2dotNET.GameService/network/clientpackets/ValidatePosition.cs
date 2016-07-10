@@ -39,7 +39,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             int dx = _x - realX;
             int dy = _y - realY;
             //int dz = _z - realZ;
-            double diffSq = ((dx * dx) + (dy * dy));
+            double diffSq = (dx * dx) + (dy * dy);
 
             if (diffSq < 360000)
             {

@@ -93,7 +93,7 @@ namespace L2dotNET.LoginService.Managers
                         byte n = byte.Parse(b[c].Split('/')[0]),
                              x = byte.Parse(b[c].Split('/')[1]);
                         byte t = byte.Parse(a[c]);
-                        d[c] = ((t >= n) && (t <= x)) ? (byte)1 : (byte)0;
+                        d[c] = (t >= n) && (t <= x) ? (byte)1 : (byte)0;
                     }
                 }
 
@@ -132,7 +132,7 @@ namespace L2dotNET.LoginService.Managers
                             byte n = byte.Parse(b[c].Split('/')[0]),
                                  x = byte.Parse(b[c].Split('/')[1]);
                             byte t = byte.Parse(a[c]);
-                            d[c] = ((t >= n) && (t <= x)) ? (byte)1 : (byte)0;
+                            d[c] = (t >= n) && (t <= x) ? (byte)1 : (byte)0;
                         }
                     }
 

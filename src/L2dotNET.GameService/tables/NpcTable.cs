@@ -76,7 +76,7 @@ namespace L2dotNET.GameService.Tables
                     foreach (XmlNode node in nodes)
                     {
                         XmlElement ownerElement = node.Attributes?[0].OwnerElement;
-                        if ((ownerElement != null) && ((node.Attributes != null) && "npc".Equals(ownerElement.Name)))
+                        if ((ownerElement != null) && (node.Attributes != null) && "npc".Equals(ownerElement.Name))
                         {
                             XmlNamedNodeMap attrs = node.Attributes;
 

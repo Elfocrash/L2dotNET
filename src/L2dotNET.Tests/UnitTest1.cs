@@ -46,7 +46,7 @@ namespace L2dotNET.Tests
                     StatsSet set = new StatsSet();
 
                     for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
-                        if ((cd.NextSibling != null) && ("set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null)))
+                        if ((cd.NextSibling != null) && "set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null))
                         {
                             attrs = cd.NextSibling.Attributes;
                             if (attrs == null)

@@ -48,7 +48,7 @@
             }
 
             Location loc = (Location)obj;
-            return (loc.X.Equals(_x) && loc.Y.Equals(_y) && loc.Z.Equals(_z));
+            return loc.X.Equals(_x) && loc.Y.Equals(_y) && loc.Z.Equals(_z);
         }
 
         public override int GetHashCode()

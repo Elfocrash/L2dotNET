@@ -199,7 +199,7 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool Equals(object obj)
         {
-            return (obj is Vector3) && (this == (Vector3)obj);
+            return obj is Vector3 && (this == (Vector3)obj);
         }
 
         public bool Equals(Vector3 other)
@@ -339,10 +339,10 @@ namespace L2dotNET.Utility.Geometry
             // R = I - (2 * N * ( DotProduct[ I,N] ))
             Vector3 reflectedVector;
             // inline the dotProduct here instead of calling method
-            double dotProduct = ((vector.X * normal.X) + (vector.Y * normal.Y)) + (vector.Z * normal.Z);
-            reflectedVector.X = vector.X - ((2.0f * normal.X) * dotProduct);
-            reflectedVector.Y = vector.Y - ((2.0f * normal.Y) * dotProduct);
-            reflectedVector.Z = vector.Z - ((2.0f * normal.Z) * dotProduct);
+            double dotProduct = (vector.X * normal.X) + (vector.Y * normal.Y) + (vector.Z * normal.Z);
+            reflectedVector.X = vector.X - (2.0f * normal.X * dotProduct);
+            reflectedVector.Y = vector.Y - (2.0f * normal.Y * dotProduct);
+            reflectedVector.Z = vector.Z - (2.0f * normal.Z * dotProduct);
 
             return reflectedVector;
         }
@@ -354,10 +354,10 @@ namespace L2dotNET.Utility.Geometry
             // R = I - (2 * N * ( DotProduct[ I,N] ))
 
             // inline the dotProduct here instead of calling method
-            double dotProduct = ((vector.X * normal.X) + (vector.Y * normal.Y)) + (vector.Z * normal.Z);
-            result.X = vector.X - ((2.0f * normal.X) * dotProduct);
-            result.Y = vector.Y - ((2.0f * normal.Y) * dotProduct);
-            result.Z = vector.Z - ((2.0f * normal.Z) * dotProduct);
+            double dotProduct = (vector.X * normal.X) + (vector.Y * normal.Y) + (vector.Z * normal.Z);
+            result.X = vector.X - (2.0f * normal.X * dotProduct);
+            result.Y = vector.Y - (2.0f * normal.Y * dotProduct);
+            result.Z = vector.Z - (2.0f * normal.Z * dotProduct);
         }
 
         public static Vector3 SmoothStep(Vector3 value1, Vector3 value2, double amount)

@@ -115,7 +115,7 @@ namespace L2dotNET.GameService.Commands.Admin
                     long dx = p1X - p[0],
                          dy = p1Y - p[1];
                     double distance = Math.Sqrt((dx * dx) + (dy * dy));
-                    if ((curdistance != -1) && (!(distance < curdistance)))
+                    if ((curdistance != -1) && !(distance < curdistance))
                     {
                         continue;
                     }

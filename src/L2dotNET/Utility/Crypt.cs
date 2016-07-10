@@ -43,9 +43,9 @@
             }
 
             long old = _key[8] & 0xff; //0
-            old |= (((_key[9]) << 8) & 0xff00); //1
-            old |= (((_key[10]) << 0x10) & 0xff0000); //2
-            old |= (((_key[11]) << 0x18) & 0xff000000); //3
+            old |= (_key[9] << 8) & 0xff00; //1
+            old |= (_key[10] << 0x10) & 0xff0000; //2
+            old |= (_key[11] << 0x18) & 0xff000000; //3
 
             old += raw.Length;
 
@@ -99,9 +99,9 @@
             }
 
             uint old = _key[8] & (uint)0xff; //0
-            old |= (((uint)_key[9]) << 8) & 0xff00; //1
-            old |= (((uint)_key[10]) << 0x10) & 0xff0000; //2
-            old |= (((uint)_key[11]) << 0x18) & 0xff000000; //3
+            old |= ((uint)_key[9] << 8) & 0xff00; //1
+            old |= ((uint)_key[10] << 0x10) & 0xff0000; //2
+            old |= ((uint)_key[11] << 0x18) & 0xff000000; //3
 
             old += (uint)size;
 
@@ -122,12 +122,12 @@
             for (int i = 0; i < raw.Length; i++)
             {
                 uint temp2 = raw[i] & (uint)0xff;
-                temp = (temp2 ^ _key[i & 15] ^ temp);
+                temp = temp2 ^ _key[i & 15] ^ temp;
                 raw[i] = (byte)temp;
             }
 
             uint old = _key[8] & (uint)0xff;
-            old |= (((uint)_key[9]) << 8) & 0xff00;
+            old |= ((uint)_key[9] << 8) & 0xff00;
             old |= ((uint)_key[10] << 0x10) & 0xff0000;
             old |= ((uint)_key[11] << 0x18) & 0xff000000;
 
@@ -150,12 +150,12 @@
             for (uint i = 0; i < size; i++)
             {
                 uint temp2 = raw[i] & (uint)0xff;
-                temp = (temp2 ^ _key[i & 15] ^ temp);
+                temp = temp2 ^ _key[i & 15] ^ temp;
                 raw[i] = (byte)temp;
             }
 
             uint old = _key[8] & (uint)0xff;
-            old |= (((uint)_key[9]) << 8) & 0xff00;
+            old |= ((uint)_key[9] << 8) & 0xff00;
             old |= ((uint)_key[10] << 0x10) & 0xff0000;
             old |= ((uint)_key[11] << 0x18) & 0xff000000;
 

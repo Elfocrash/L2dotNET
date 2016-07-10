@@ -253,7 +253,7 @@ namespace L2dotNET.Utility.Geometry
             }
             else
             {
-                Vector3.Multiply(ref vector, (1f / Math.Sqrt(num)), out vector);
+                Vector3.Multiply(ref vector, 1f / Math.Sqrt(num), out vector);
             }
 
             Vector3.Cross(ref cameraUpVector, ref vector, out vector3);
@@ -307,14 +307,14 @@ namespace L2dotNET.Utility.Geometry
                     Vector3.Dot(ref rotateAxis, ref vector, out num);
                     if (Math.Abs(num) > 0.9982547f)
                     {
-                        num = ((rotateAxis.X * Vector3.Forward.X) + (rotateAxis.Y * Vector3.Forward.Y)) + (rotateAxis.Z * Vector3.Forward.Z);
-                        vector = (Math.Abs(num) > 0.9982547f) ? Vector3.Right : Vector3.Forward;
+                        num = (rotateAxis.X * Vector3.Forward.X) + (rotateAxis.Y * Vector3.Forward.Y) + (rotateAxis.Z * Vector3.Forward.Z);
+                        vector = Math.Abs(num) > 0.9982547f ? Vector3.Right : Vector3.Forward;
                     }
                 }
                 else
                 {
-                    num = ((rotateAxis.X * Vector3.Forward.X) + (rotateAxis.Y * Vector3.Forward.Y)) + (rotateAxis.Z * Vector3.Forward.Z);
-                    vector = (Math.Abs(num) > 0.9982547f) ? Vector3.Right : Vector3.Forward;
+                    num = (rotateAxis.X * Vector3.Forward.X) + (rotateAxis.Y * Vector3.Forward.Y) + (rotateAxis.Z * Vector3.Forward.Z);
+                    vector = Math.Abs(num) > 0.9982547f ? Vector3.Right : Vector3.Forward;
                 }
                 Vector3.Cross(ref rotateAxis, ref vector, out vector3);
                 vector3.Normalize();
@@ -376,14 +376,14 @@ namespace L2dotNET.Utility.Geometry
                     Vector3.Dot(ref rotateAxis, ref vector, out num);
                     if (Math.Abs(num) > 0.9982547f)
                     {
-                        num = ((rotateAxis.X * Vector3.Forward.X) + (rotateAxis.Y * Vector3.Forward.Y)) + (rotateAxis.Z * Vector3.Forward.Z);
-                        vector = (Math.Abs(num) > 0.9982547f) ? Vector3.Right : Vector3.Forward;
+                        num = (rotateAxis.X * Vector3.Forward.X) + (rotateAxis.Y * Vector3.Forward.Y) + (rotateAxis.Z * Vector3.Forward.Z);
+                        vector = Math.Abs(num) > 0.9982547f ? Vector3.Right : Vector3.Forward;
                     }
                 }
                 else
                 {
-                    num = ((rotateAxis.X * Vector3.Forward.X) + (rotateAxis.Y * Vector3.Forward.Y)) + (rotateAxis.Z * Vector3.Forward.Z);
-                    vector = (Math.Abs(num) > 0.9982547f) ? Vector3.Right : Vector3.Forward;
+                    num = (rotateAxis.X * Vector3.Forward.X) + (rotateAxis.Y * Vector3.Forward.Y) + (rotateAxis.Z * Vector3.Forward.Z);
+                    vector = Math.Abs(num) > 0.9982547f ? Vector3.Right : Vector3.Forward;
                 }
                 Vector3.Cross(ref rotateAxis, ref vector, out vector3);
                 vector3.Normalize();
@@ -431,14 +431,14 @@ namespace L2dotNET.Utility.Geometry
             double num6 = y * z;
             matrix.M11 = num11 + (num * (1f - num11));
             matrix.M12 = (num8 - (num * num8)) + (num2 * z);
-            matrix.M13 = (num7 - (num * num7)) - (num2 * y);
+            matrix.M13 = num7 - (num * num7) - (num2 * y);
             matrix.M14 = 0f;
-            matrix.M21 = (num8 - (num * num8)) - (num2 * z);
+            matrix.M21 = num8 - (num * num8) - (num2 * z);
             matrix.M22 = num10 + (num * (1f - num10));
             matrix.M23 = (num6 - (num * num6)) + (num2 * x);
             matrix.M24 = 0f;
             matrix.M31 = (num7 - (num * num7)) + (num2 * y);
-            matrix.M32 = (num6 - (num * num6)) - (num2 * x);
+            matrix.M32 = num6 - (num * num6) - (num2 * x);
             matrix.M33 = num9 + (num * (1f - num9));
             matrix.M34 = 0f;
             matrix.M41 = 0f;
@@ -463,14 +463,14 @@ namespace L2dotNET.Utility.Geometry
             double num6 = y * z;
             result.M11 = num11 + (num * (1f - num11));
             result.M12 = (num8 - (num * num8)) + (num2 * z);
-            result.M13 = (num7 - (num * num7)) - (num2 * y);
+            result.M13 = num7 - (num * num7) - (num2 * y);
             result.M14 = 0f;
-            result.M21 = (num8 - (num * num8)) - (num2 * z);
+            result.M21 = num8 - (num * num8) - (num2 * z);
             result.M22 = num10 + (num * (1f - num10));
             result.M23 = (num6 - (num * num6)) + (num2 * x);
             result.M24 = 0f;
             result.M31 = (num7 - (num * num7)) + (num2 * y);
-            result.M32 = (num6 - (num * num6)) - (num2 * x);
+            result.M32 = num6 - (num * num6) - (num2 * x);
             result.M33 = num9 + (num * (1f - num9));
             result.M34 = 0f;
             result.M41 = 0f;
@@ -673,29 +673,29 @@ namespace L2dotNET.Utility.Geometry
             matrix.M33 = 1.0 / (zNearPlane - zFarPlane);
             matrix.M34 = 0.0f;
             matrix.M41 = (left + right) / (left - right);
-            matrix.M42 = ((top + bottom) / (bottom - top));
-            matrix.M43 = (zNearPlane / (zNearPlane - zFarPlane));
+            matrix.M42 = (top + bottom) / (bottom - top);
+            matrix.M43 = zNearPlane / (zNearPlane - zFarPlane);
             matrix.M44 = 1.0f;
             return matrix;
         }
 
         public static void CreateOrthographicOffCenter(double left, double right, double bottom, double top, double zNearPlane, double zFarPlane, out Matrix result)
         {
-            result.M11 = (2.0 / (right - left));
+            result.M11 = 2.0 / (right - left);
             result.M12 = 0.0f;
             result.M13 = 0.0f;
             result.M14 = 0.0f;
             result.M21 = 0.0f;
-            result.M22 = (2.0 / (top - bottom));
+            result.M22 = 2.0 / (top - bottom);
             result.M23 = 0.0f;
             result.M24 = 0.0f;
             result.M31 = 0.0f;
             result.M32 = 0.0f;
-            result.M33 = (1.0 / (zNearPlane - zFarPlane));
+            result.M33 = 1.0 / (zNearPlane - zFarPlane);
             result.M34 = 0.0f;
-            result.M41 = ((left + right) / (left - right));
-            result.M42 = ((top + bottom) / (bottom - top));
-            result.M43 = (zNearPlane / (zNearPlane - zFarPlane));
+            result.M41 = (left + right) / (left - right);
+            result.M42 = (top + bottom) / (bottom - top);
+            result.M43 = zNearPlane / (zNearPlane - zFarPlane);
             result.M44 = 1.0f;
         }
 
@@ -773,7 +773,7 @@ namespace L2dotNET.Utility.Geometry
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
             }
 
-            double num = 1f / (Math.Tan(fieldOfView * 0.5f));
+            double num = 1f / Math.Tan(fieldOfView * 0.5f);
             double num9 = num / aspectRatio;
             matrix.M11 = num9;
             matrix.M12 = matrix.M13 = matrix.M14 = 0f;
@@ -806,7 +806,7 @@ namespace L2dotNET.Utility.Geometry
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
             }
 
-            double num = 1f / (Math.Tan(fieldOfView * 0.5f));
+            double num = 1f / Math.Tan(fieldOfView * 0.5f);
             double num9 = num / aspectRatio;
             result.M11 = num9;
             result.M12 = result.M13 = result.M14 = 0f;
@@ -1221,7 +1221,7 @@ namespace L2dotNET.Utility.Geometry
             double num15 = (num8 * num) - (num5 * num4);
             double num14 = (num8 * num2) - (num6 * num4);
             double num13 = (num8 * num3) - (num7 * num4);
-            return ((((num22 * (((num11 * num18) - (num10 * num17)) + (num9 * num16))) - (num21 * (((num12 * num18) - (num10 * num15)) + (num9 * num14)))) + (num20 * (((num12 * num17) - (num11 * num15)) + (num9 * num13)))) - (num19 * (((num12 * num16) - (num11 * num14)) + (num10 * num13))));
+            return (((num22 * (((num11 * num18) - (num10 * num17)) + (num9 * num16))) - (num21 * (((num12 * num18) - (num10 * num15)) + (num9 * num14)))) + (num20 * (((num12 * num17) - (num11 * num15)) + (num9 * num13)))) - (num19 * (((num12 * num16) - (num11 * num14)) + (num10 * num13)));
         }
 
         public static Matrix Divide(Matrix matrix1, Matrix matrix2)
@@ -1310,7 +1310,7 @@ namespace L2dotNET.Utility.Geometry
 
         public bool Equals(Matrix other)
         {
-            return ((((((M11 == other.M11) && (M22 == other.M22)) && ((M33 == other.M33) && (M44 == other.M44))) && (((M12 == other.M12) && (M13 == other.M13)) && ((M14 == other.M14) && (M21 == other.M21)))) && ((((M23 == other.M23) && (M24 == other.M24)) && ((M31 == other.M31) && (M32 == other.M32))) && (((M34 == other.M34) && (M41 == other.M41)) && (M42 == other.M42)))) && (M43 == other.M43));
+            return (M11 == other.M11) && (M22 == other.M22) && (M33 == other.M33) && (M44 == other.M44) && (M12 == other.M12) && (M13 == other.M13) && (M14 == other.M14) && (M21 == other.M21) && (M23 == other.M23) && (M24 == other.M24) && (M31 == other.M31) && (M32 == other.M32) && (M34 == other.M34) && (M41 == other.M41) && (M42 == other.M42) && (M43 == other.M43);
         }
 
         public override bool Equals(object obj)
@@ -1325,7 +1325,7 @@ namespace L2dotNET.Utility.Geometry
 
         public override int GetHashCode()
         {
-            return (((((((((((((((M11.GetHashCode() + M12.GetHashCode()) + M13.GetHashCode()) + M14.GetHashCode()) + M21.GetHashCode()) + M22.GetHashCode()) + M23.GetHashCode()) + M24.GetHashCode()) + M31.GetHashCode()) + M32.GetHashCode()) + M33.GetHashCode()) + M34.GetHashCode()) + M41.GetHashCode()) + M42.GetHashCode()) + M43.GetHashCode()) + M44.GetHashCode());
+            return M11.GetHashCode() + M12.GetHashCode() + M13.GetHashCode() + M14.GetHashCode() + M21.GetHashCode() + M22.GetHashCode() + M23.GetHashCode() + M24.GetHashCode() + M31.GetHashCode() + M32.GetHashCode() + M33.GetHashCode() + M34.GetHashCode() + M41.GetHashCode() + M42.GetHashCode() + M43.GetHashCode() + M44.GetHashCode();
         }
 
         public static Matrix Invert(Matrix matrix)
@@ -1352,17 +1352,17 @@ namespace L2dotNET.Utility.Geometry
             double num14 = matrix.M42;
             double num15 = matrix.M43;
             double num16 = matrix.M44;
-            double num17 = ((num11 * num16) - (num12 * num15));
-            double num18 = ((num10 * num16) - (num12 * num14));
-            double num19 = ((num10 * num15) - (num11 * num14));
-            double num20 = ((num9 * num16) - (num12 * num13));
-            double num21 = ((num9 * num15) - (num11 * num13));
-            double num22 = ((num9 * num14) - (num10 * num13));
-            double num23 = (((num6 * num17) - (num7 * num18)) + (num8 * num19));
+            double num17 = (num11 * num16) - (num12 * num15);
+            double num18 = (num10 * num16) - (num12 * num14);
+            double num19 = (num10 * num15) - (num11 * num14);
+            double num20 = (num9 * num16) - (num12 * num13);
+            double num21 = (num9 * num15) - (num11 * num13);
+            double num22 = (num9 * num14) - (num10 * num13);
+            double num23 = ((num6 * num17) - (num7 * num18)) + (num8 * num19);
             double num24 = -(((num5 * num17) - (num7 * num20)) + (num8 * num21));
-            double num25 = (((num5 * num18) - (num6 * num20)) + (num8 * num22));
+            double num25 = ((num5 * num18) - (num6 * num20)) + (num8 * num22);
             double num26 = -(((num5 * num19) - (num6 * num21)) + (num7 * num22));
-            double num27 = (1.0 / ((num1 * num23) + (num2 * num24) + (num3 * num25) + (num4 * num26)));
+            double num27 = 1.0 / ((num1 * num23) + (num2 * num24) + (num3 * num25) + (num4 * num26));
 
             result.M11 = num23 * num27;
             result.M21 = num24 * num27;
@@ -1372,22 +1372,22 @@ namespace L2dotNET.Utility.Geometry
             result.M22 = (((num1 * num17) - (num3 * num20)) + (num4 * num21)) * num27;
             result.M32 = -(((num1 * num18) - (num2 * num20)) + (num4 * num22)) * num27;
             result.M42 = (((num1 * num19) - (num2 * num21)) + (num3 * num22)) * num27;
-            double num28 = ((num7 * num16) - (num8 * num15));
-            double num29 = ((num6 * num16) - (num8 * num14));
-            double num30 = ((num6 * num15) - (num7 * num14));
-            double num31 = ((num5 * num16) - (num8 * num13));
-            double num32 = ((num5 * num15) - (num7 * num13));
-            double num33 = ((num5 * num14) - (num6 * num13));
+            double num28 = (num7 * num16) - (num8 * num15);
+            double num29 = (num6 * num16) - (num8 * num14);
+            double num30 = (num6 * num15) - (num7 * num14);
+            double num31 = (num5 * num16) - (num8 * num13);
+            double num32 = (num5 * num15) - (num7 * num13);
+            double num33 = (num5 * num14) - (num6 * num13);
             result.M13 = (((num2 * num28) - (num3 * num29)) + (num4 * num30)) * num27;
             result.M23 = -(((num1 * num28) - (num3 * num31)) + (num4 * num32)) * num27;
             result.M33 = (((num1 * num29) - (num2 * num31)) + (num4 * num33)) * num27;
             result.M43 = -(((num1 * num30) - (num2 * num32)) + (num3 * num33)) * num27;
-            double num34 = ((num7 * num12) - (num8 * num11));
-            double num35 = ((num6 * num12) - (num8 * num10));
-            double num36 = ((num6 * num11) - (num7 * num10));
-            double num37 = ((num5 * num12) - (num8 * num9));
-            double num38 = ((num5 * num11) - (num7 * num9));
-            double num39 = ((num5 * num10) - (num6 * num9));
+            double num34 = (num7 * num12) - (num8 * num11);
+            double num35 = (num6 * num12) - (num8 * num10);
+            double num36 = (num6 * num11) - (num7 * num10);
+            double num37 = (num5 * num12) - (num8 * num9);
+            double num38 = (num5 * num11) - (num7 * num9);
+            double num39 = (num5 * num10) - (num6 * num9);
             result.M14 = -(((num2 * num34) - (num3 * num35)) + (num4 * num36)) * num27;
             result.M24 = (((num1 * num34) - (num3 * num37)) + (num4 * num38)) * num27;
             result.M34 = -(((num1 * num35) - (num2 * num37)) + (num4 * num39)) * num27;
@@ -1476,22 +1476,22 @@ namespace L2dotNET.Utility.Geometry
 
         public static Matrix Multiply(Matrix matrix1, Matrix matrix2)
         {
-            double m11 = (((matrix1.M11 * matrix2.M11) + (matrix1.M12 * matrix2.M21)) + (matrix1.M13 * matrix2.M31)) + (matrix1.M14 * matrix2.M41);
-            double m12 = (((matrix1.M11 * matrix2.M12) + (matrix1.M12 * matrix2.M22)) + (matrix1.M13 * matrix2.M32)) + (matrix1.M14 * matrix2.M42);
-            double m13 = (((matrix1.M11 * matrix2.M13) + (matrix1.M12 * matrix2.M23)) + (matrix1.M13 * matrix2.M33)) + (matrix1.M14 * matrix2.M43);
-            double m14 = (((matrix1.M11 * matrix2.M14) + (matrix1.M12 * matrix2.M24)) + (matrix1.M13 * matrix2.M34)) + (matrix1.M14 * matrix2.M44);
-            double m21 = (((matrix1.M21 * matrix2.M11) + (matrix1.M22 * matrix2.M21)) + (matrix1.M23 * matrix2.M31)) + (matrix1.M24 * matrix2.M41);
-            double m22 = (((matrix1.M21 * matrix2.M12) + (matrix1.M22 * matrix2.M22)) + (matrix1.M23 * matrix2.M32)) + (matrix1.M24 * matrix2.M42);
-            double m23 = (((matrix1.M21 * matrix2.M13) + (matrix1.M22 * matrix2.M23)) + (matrix1.M23 * matrix2.M33)) + (matrix1.M24 * matrix2.M43);
-            double m24 = (((matrix1.M21 * matrix2.M14) + (matrix1.M22 * matrix2.M24)) + (matrix1.M23 * matrix2.M34)) + (matrix1.M24 * matrix2.M44);
-            double m31 = (((matrix1.M31 * matrix2.M11) + (matrix1.M32 * matrix2.M21)) + (matrix1.M33 * matrix2.M31)) + (matrix1.M34 * matrix2.M41);
-            double m32 = (((matrix1.M31 * matrix2.M12) + (matrix1.M32 * matrix2.M22)) + (matrix1.M33 * matrix2.M32)) + (matrix1.M34 * matrix2.M42);
-            double m33 = (((matrix1.M31 * matrix2.M13) + (matrix1.M32 * matrix2.M23)) + (matrix1.M33 * matrix2.M33)) + (matrix1.M34 * matrix2.M43);
-            double m34 = (((matrix1.M31 * matrix2.M14) + (matrix1.M32 * matrix2.M24)) + (matrix1.M33 * matrix2.M34)) + (matrix1.M34 * matrix2.M44);
-            double m41 = (((matrix1.M41 * matrix2.M11) + (matrix1.M42 * matrix2.M21)) + (matrix1.M43 * matrix2.M31)) + (matrix1.M44 * matrix2.M41);
-            double m42 = (((matrix1.M41 * matrix2.M12) + (matrix1.M42 * matrix2.M22)) + (matrix1.M43 * matrix2.M32)) + (matrix1.M44 * matrix2.M42);
-            double m43 = (((matrix1.M41 * matrix2.M13) + (matrix1.M42 * matrix2.M23)) + (matrix1.M43 * matrix2.M33)) + (matrix1.M44 * matrix2.M43);
-            double m44 = (((matrix1.M41 * matrix2.M14) + (matrix1.M42 * matrix2.M24)) + (matrix1.M43 * matrix2.M34)) + (matrix1.M44 * matrix2.M44);
+            double m11 = (matrix1.M11 * matrix2.M11) + (matrix1.M12 * matrix2.M21) + (matrix1.M13 * matrix2.M31) + (matrix1.M14 * matrix2.M41);
+            double m12 = (matrix1.M11 * matrix2.M12) + (matrix1.M12 * matrix2.M22) + (matrix1.M13 * matrix2.M32) + (matrix1.M14 * matrix2.M42);
+            double m13 = (matrix1.M11 * matrix2.M13) + (matrix1.M12 * matrix2.M23) + (matrix1.M13 * matrix2.M33) + (matrix1.M14 * matrix2.M43);
+            double m14 = (matrix1.M11 * matrix2.M14) + (matrix1.M12 * matrix2.M24) + (matrix1.M13 * matrix2.M34) + (matrix1.M14 * matrix2.M44);
+            double m21 = (matrix1.M21 * matrix2.M11) + (matrix1.M22 * matrix2.M21) + (matrix1.M23 * matrix2.M31) + (matrix1.M24 * matrix2.M41);
+            double m22 = (matrix1.M21 * matrix2.M12) + (matrix1.M22 * matrix2.M22) + (matrix1.M23 * matrix2.M32) + (matrix1.M24 * matrix2.M42);
+            double m23 = (matrix1.M21 * matrix2.M13) + (matrix1.M22 * matrix2.M23) + (matrix1.M23 * matrix2.M33) + (matrix1.M24 * matrix2.M43);
+            double m24 = (matrix1.M21 * matrix2.M14) + (matrix1.M22 * matrix2.M24) + (matrix1.M23 * matrix2.M34) + (matrix1.M24 * matrix2.M44);
+            double m31 = (matrix1.M31 * matrix2.M11) + (matrix1.M32 * matrix2.M21) + (matrix1.M33 * matrix2.M31) + (matrix1.M34 * matrix2.M41);
+            double m32 = (matrix1.M31 * matrix2.M12) + (matrix1.M32 * matrix2.M22) + (matrix1.M33 * matrix2.M32) + (matrix1.M34 * matrix2.M42);
+            double m33 = (matrix1.M31 * matrix2.M13) + (matrix1.M32 * matrix2.M23) + (matrix1.M33 * matrix2.M33) + (matrix1.M34 * matrix2.M43);
+            double m34 = (matrix1.M31 * matrix2.M14) + (matrix1.M32 * matrix2.M24) + (matrix1.M33 * matrix2.M34) + (matrix1.M34 * matrix2.M44);
+            double m41 = (matrix1.M41 * matrix2.M11) + (matrix1.M42 * matrix2.M21) + (matrix1.M43 * matrix2.M31) + (matrix1.M44 * matrix2.M41);
+            double m42 = (matrix1.M41 * matrix2.M12) + (matrix1.M42 * matrix2.M22) + (matrix1.M43 * matrix2.M32) + (matrix1.M44 * matrix2.M42);
+            double m43 = (matrix1.M41 * matrix2.M13) + (matrix1.M42 * matrix2.M23) + (matrix1.M43 * matrix2.M33) + (matrix1.M44 * matrix2.M43);
+            double m44 = (matrix1.M41 * matrix2.M14) + (matrix1.M42 * matrix2.M24) + (matrix1.M43 * matrix2.M34) + (matrix1.M44 * matrix2.M44);
             matrix1.M11 = m11;
             matrix1.M12 = m12;
             matrix1.M13 = m13;
@@ -1513,22 +1513,22 @@ namespace L2dotNET.Utility.Geometry
 
         public static void Multiply(ref Matrix matrix1, ref Matrix matrix2, out Matrix result)
         {
-            double m11 = (((matrix1.M11 * matrix2.M11) + (matrix1.M12 * matrix2.M21)) + (matrix1.M13 * matrix2.M31)) + (matrix1.M14 * matrix2.M41);
-            double m12 = (((matrix1.M11 * matrix2.M12) + (matrix1.M12 * matrix2.M22)) + (matrix1.M13 * matrix2.M32)) + (matrix1.M14 * matrix2.M42);
-            double m13 = (((matrix1.M11 * matrix2.M13) + (matrix1.M12 * matrix2.M23)) + (matrix1.M13 * matrix2.M33)) + (matrix1.M14 * matrix2.M43);
-            double m14 = (((matrix1.M11 * matrix2.M14) + (matrix1.M12 * matrix2.M24)) + (matrix1.M13 * matrix2.M34)) + (matrix1.M14 * matrix2.M44);
-            double m21 = (((matrix1.M21 * matrix2.M11) + (matrix1.M22 * matrix2.M21)) + (matrix1.M23 * matrix2.M31)) + (matrix1.M24 * matrix2.M41);
-            double m22 = (((matrix1.M21 * matrix2.M12) + (matrix1.M22 * matrix2.M22)) + (matrix1.M23 * matrix2.M32)) + (matrix1.M24 * matrix2.M42);
-            double m23 = (((matrix1.M21 * matrix2.M13) + (matrix1.M22 * matrix2.M23)) + (matrix1.M23 * matrix2.M33)) + (matrix1.M24 * matrix2.M43);
-            double m24 = (((matrix1.M21 * matrix2.M14) + (matrix1.M22 * matrix2.M24)) + (matrix1.M23 * matrix2.M34)) + (matrix1.M24 * matrix2.M44);
-            double m31 = (((matrix1.M31 * matrix2.M11) + (matrix1.M32 * matrix2.M21)) + (matrix1.M33 * matrix2.M31)) + (matrix1.M34 * matrix2.M41);
-            double m32 = (((matrix1.M31 * matrix2.M12) + (matrix1.M32 * matrix2.M22)) + (matrix1.M33 * matrix2.M32)) + (matrix1.M34 * matrix2.M42);
-            double m33 = (((matrix1.M31 * matrix2.M13) + (matrix1.M32 * matrix2.M23)) + (matrix1.M33 * matrix2.M33)) + (matrix1.M34 * matrix2.M43);
-            double m34 = (((matrix1.M31 * matrix2.M14) + (matrix1.M32 * matrix2.M24)) + (matrix1.M33 * matrix2.M34)) + (matrix1.M34 * matrix2.M44);
-            double m41 = (((matrix1.M41 * matrix2.M11) + (matrix1.M42 * matrix2.M21)) + (matrix1.M43 * matrix2.M31)) + (matrix1.M44 * matrix2.M41);
-            double m42 = (((matrix1.M41 * matrix2.M12) + (matrix1.M42 * matrix2.M22)) + (matrix1.M43 * matrix2.M32)) + (matrix1.M44 * matrix2.M42);
-            double m43 = (((matrix1.M41 * matrix2.M13) + (matrix1.M42 * matrix2.M23)) + (matrix1.M43 * matrix2.M33)) + (matrix1.M44 * matrix2.M43);
-            double m44 = (((matrix1.M41 * matrix2.M14) + (matrix1.M42 * matrix2.M24)) + (matrix1.M43 * matrix2.M34)) + (matrix1.M44 * matrix2.M44);
+            double m11 = (matrix1.M11 * matrix2.M11) + (matrix1.M12 * matrix2.M21) + (matrix1.M13 * matrix2.M31) + (matrix1.M14 * matrix2.M41);
+            double m12 = (matrix1.M11 * matrix2.M12) + (matrix1.M12 * matrix2.M22) + (matrix1.M13 * matrix2.M32) + (matrix1.M14 * matrix2.M42);
+            double m13 = (matrix1.M11 * matrix2.M13) + (matrix1.M12 * matrix2.M23) + (matrix1.M13 * matrix2.M33) + (matrix1.M14 * matrix2.M43);
+            double m14 = (matrix1.M11 * matrix2.M14) + (matrix1.M12 * matrix2.M24) + (matrix1.M13 * matrix2.M34) + (matrix1.M14 * matrix2.M44);
+            double m21 = (matrix1.M21 * matrix2.M11) + (matrix1.M22 * matrix2.M21) + (matrix1.M23 * matrix2.M31) + (matrix1.M24 * matrix2.M41);
+            double m22 = (matrix1.M21 * matrix2.M12) + (matrix1.M22 * matrix2.M22) + (matrix1.M23 * matrix2.M32) + (matrix1.M24 * matrix2.M42);
+            double m23 = (matrix1.M21 * matrix2.M13) + (matrix1.M22 * matrix2.M23) + (matrix1.M23 * matrix2.M33) + (matrix1.M24 * matrix2.M43);
+            double m24 = (matrix1.M21 * matrix2.M14) + (matrix1.M22 * matrix2.M24) + (matrix1.M23 * matrix2.M34) + (matrix1.M24 * matrix2.M44);
+            double m31 = (matrix1.M31 * matrix2.M11) + (matrix1.M32 * matrix2.M21) + (matrix1.M33 * matrix2.M31) + (matrix1.M34 * matrix2.M41);
+            double m32 = (matrix1.M31 * matrix2.M12) + (matrix1.M32 * matrix2.M22) + (matrix1.M33 * matrix2.M32) + (matrix1.M34 * matrix2.M42);
+            double m33 = (matrix1.M31 * matrix2.M13) + (matrix1.M32 * matrix2.M23) + (matrix1.M33 * matrix2.M33) + (matrix1.M34 * matrix2.M43);
+            double m34 = (matrix1.M31 * matrix2.M14) + (matrix1.M32 * matrix2.M24) + (matrix1.M33 * matrix2.M34) + (matrix1.M34 * matrix2.M44);
+            double m41 = (matrix1.M41 * matrix2.M11) + (matrix1.M42 * matrix2.M21) + (matrix1.M43 * matrix2.M31) + (matrix1.M44 * matrix2.M41);
+            double m42 = (matrix1.M41 * matrix2.M12) + (matrix1.M42 * matrix2.M22) + (matrix1.M43 * matrix2.M32) + (matrix1.M44 * matrix2.M42);
+            double m43 = (matrix1.M41 * matrix2.M13) + (matrix1.M42 * matrix2.M23) + (matrix1.M43 * matrix2.M33) + (matrix1.M44 * matrix2.M43);
+            double m44 = (matrix1.M41 * matrix2.M14) + (matrix1.M42 * matrix2.M24) + (matrix1.M43 * matrix2.M34) + (matrix1.M44 * matrix2.M44);
             result.M11 = m11;
             result.M12 = m12;
             result.M13 = m13;
@@ -1680,32 +1680,32 @@ namespace L2dotNET.Utility.Geometry
 
         public static bool operator ==(Matrix matrix1, Matrix matrix2)
         {
-            return ((matrix1.M11 == matrix2.M11) && (matrix1.M12 == matrix2.M12) && (matrix1.M13 == matrix2.M13) && (matrix1.M14 == matrix2.M14) && (matrix1.M21 == matrix2.M21) && (matrix1.M22 == matrix2.M22) && (matrix1.M23 == matrix2.M23) && (matrix1.M24 == matrix2.M24) && (matrix1.M31 == matrix2.M31) && (matrix1.M32 == matrix2.M32) && (matrix1.M33 == matrix2.M33) && (matrix1.M34 == matrix2.M34) && (matrix1.M41 == matrix2.M41) && (matrix1.M42 == matrix2.M42) && (matrix1.M43 == matrix2.M43) && (matrix1.M44 == matrix2.M44));
+            return (matrix1.M11 == matrix2.M11) && (matrix1.M12 == matrix2.M12) && (matrix1.M13 == matrix2.M13) && (matrix1.M14 == matrix2.M14) && (matrix1.M21 == matrix2.M21) && (matrix1.M22 == matrix2.M22) && (matrix1.M23 == matrix2.M23) && (matrix1.M24 == matrix2.M24) && (matrix1.M31 == matrix2.M31) && (matrix1.M32 == matrix2.M32) && (matrix1.M33 == matrix2.M33) && (matrix1.M34 == matrix2.M34) && (matrix1.M41 == matrix2.M41) && (matrix1.M42 == matrix2.M42) && (matrix1.M43 == matrix2.M43) && (matrix1.M44 == matrix2.M44);
         }
 
         public static bool operator !=(Matrix matrix1, Matrix matrix2)
         {
-            return ((matrix1.M11 != matrix2.M11) || (matrix1.M12 != matrix2.M12) || (matrix1.M13 != matrix2.M13) || (matrix1.M14 != matrix2.M14) || (matrix1.M21 != matrix2.M21) || (matrix1.M22 != matrix2.M22) || (matrix1.M23 != matrix2.M23) || (matrix1.M24 != matrix2.M24) || (matrix1.M31 != matrix2.M31) || (matrix1.M32 != matrix2.M32) || (matrix1.M33 != matrix2.M33) || (matrix1.M34 != matrix2.M34) || (matrix1.M41 != matrix2.M41) || (matrix1.M42 != matrix2.M42) || (matrix1.M43 != matrix2.M43) || (matrix1.M44 != matrix2.M44));
+            return (matrix1.M11 != matrix2.M11) || (matrix1.M12 != matrix2.M12) || (matrix1.M13 != matrix2.M13) || (matrix1.M14 != matrix2.M14) || (matrix1.M21 != matrix2.M21) || (matrix1.M22 != matrix2.M22) || (matrix1.M23 != matrix2.M23) || (matrix1.M24 != matrix2.M24) || (matrix1.M31 != matrix2.M31) || (matrix1.M32 != matrix2.M32) || (matrix1.M33 != matrix2.M33) || (matrix1.M34 != matrix2.M34) || (matrix1.M41 != matrix2.M41) || (matrix1.M42 != matrix2.M42) || (matrix1.M43 != matrix2.M43) || (matrix1.M44 != matrix2.M44);
         }
 
         public static Matrix operator *(Matrix matrix1, Matrix matrix2)
         {
-            double m11 = (((matrix1.M11 * matrix2.M11) + (matrix1.M12 * matrix2.M21)) + (matrix1.M13 * matrix2.M31)) + (matrix1.M14 * matrix2.M41);
-            double m12 = (((matrix1.M11 * matrix2.M12) + (matrix1.M12 * matrix2.M22)) + (matrix1.M13 * matrix2.M32)) + (matrix1.M14 * matrix2.M42);
-            double m13 = (((matrix1.M11 * matrix2.M13) + (matrix1.M12 * matrix2.M23)) + (matrix1.M13 * matrix2.M33)) + (matrix1.M14 * matrix2.M43);
-            double m14 = (((matrix1.M11 * matrix2.M14) + (matrix1.M12 * matrix2.M24)) + (matrix1.M13 * matrix2.M34)) + (matrix1.M14 * matrix2.M44);
-            double m21 = (((matrix1.M21 * matrix2.M11) + (matrix1.M22 * matrix2.M21)) + (matrix1.M23 * matrix2.M31)) + (matrix1.M24 * matrix2.M41);
-            double m22 = (((matrix1.M21 * matrix2.M12) + (matrix1.M22 * matrix2.M22)) + (matrix1.M23 * matrix2.M32)) + (matrix1.M24 * matrix2.M42);
-            double m23 = (((matrix1.M21 * matrix2.M13) + (matrix1.M22 * matrix2.M23)) + (matrix1.M23 * matrix2.M33)) + (matrix1.M24 * matrix2.M43);
-            double m24 = (((matrix1.M21 * matrix2.M14) + (matrix1.M22 * matrix2.M24)) + (matrix1.M23 * matrix2.M34)) + (matrix1.M24 * matrix2.M44);
-            double m31 = (((matrix1.M31 * matrix2.M11) + (matrix1.M32 * matrix2.M21)) + (matrix1.M33 * matrix2.M31)) + (matrix1.M34 * matrix2.M41);
-            double m32 = (((matrix1.M31 * matrix2.M12) + (matrix1.M32 * matrix2.M22)) + (matrix1.M33 * matrix2.M32)) + (matrix1.M34 * matrix2.M42);
-            double m33 = (((matrix1.M31 * matrix2.M13) + (matrix1.M32 * matrix2.M23)) + (matrix1.M33 * matrix2.M33)) + (matrix1.M34 * matrix2.M43);
-            double m34 = (((matrix1.M31 * matrix2.M14) + (matrix1.M32 * matrix2.M24)) + (matrix1.M33 * matrix2.M34)) + (matrix1.M34 * matrix2.M44);
-            double m41 = (((matrix1.M41 * matrix2.M11) + (matrix1.M42 * matrix2.M21)) + (matrix1.M43 * matrix2.M31)) + (matrix1.M44 * matrix2.M41);
-            double m42 = (((matrix1.M41 * matrix2.M12) + (matrix1.M42 * matrix2.M22)) + (matrix1.M43 * matrix2.M32)) + (matrix1.M44 * matrix2.M42);
-            double m43 = (((matrix1.M41 * matrix2.M13) + (matrix1.M42 * matrix2.M23)) + (matrix1.M43 * matrix2.M33)) + (matrix1.M44 * matrix2.M43);
-            double m44 = (((matrix1.M41 * matrix2.M14) + (matrix1.M42 * matrix2.M24)) + (matrix1.M43 * matrix2.M34)) + (matrix1.M44 * matrix2.M44);
+            double m11 = (matrix1.M11 * matrix2.M11) + (matrix1.M12 * matrix2.M21) + (matrix1.M13 * matrix2.M31) + (matrix1.M14 * matrix2.M41);
+            double m12 = (matrix1.M11 * matrix2.M12) + (matrix1.M12 * matrix2.M22) + (matrix1.M13 * matrix2.M32) + (matrix1.M14 * matrix2.M42);
+            double m13 = (matrix1.M11 * matrix2.M13) + (matrix1.M12 * matrix2.M23) + (matrix1.M13 * matrix2.M33) + (matrix1.M14 * matrix2.M43);
+            double m14 = (matrix1.M11 * matrix2.M14) + (matrix1.M12 * matrix2.M24) + (matrix1.M13 * matrix2.M34) + (matrix1.M14 * matrix2.M44);
+            double m21 = (matrix1.M21 * matrix2.M11) + (matrix1.M22 * matrix2.M21) + (matrix1.M23 * matrix2.M31) + (matrix1.M24 * matrix2.M41);
+            double m22 = (matrix1.M21 * matrix2.M12) + (matrix1.M22 * matrix2.M22) + (matrix1.M23 * matrix2.M32) + (matrix1.M24 * matrix2.M42);
+            double m23 = (matrix1.M21 * matrix2.M13) + (matrix1.M22 * matrix2.M23) + (matrix1.M23 * matrix2.M33) + (matrix1.M24 * matrix2.M43);
+            double m24 = (matrix1.M21 * matrix2.M14) + (matrix1.M22 * matrix2.M24) + (matrix1.M23 * matrix2.M34) + (matrix1.M24 * matrix2.M44);
+            double m31 = (matrix1.M31 * matrix2.M11) + (matrix1.M32 * matrix2.M21) + (matrix1.M33 * matrix2.M31) + (matrix1.M34 * matrix2.M41);
+            double m32 = (matrix1.M31 * matrix2.M12) + (matrix1.M32 * matrix2.M22) + (matrix1.M33 * matrix2.M32) + (matrix1.M34 * matrix2.M42);
+            double m33 = (matrix1.M31 * matrix2.M13) + (matrix1.M32 * matrix2.M23) + (matrix1.M33 * matrix2.M33) + (matrix1.M34 * matrix2.M43);
+            double m34 = (matrix1.M31 * matrix2.M14) + (matrix1.M32 * matrix2.M24) + (matrix1.M33 * matrix2.M34) + (matrix1.M34 * matrix2.M44);
+            double m41 = (matrix1.M41 * matrix2.M11) + (matrix1.M42 * matrix2.M21) + (matrix1.M43 * matrix2.M31) + (matrix1.M44 * matrix2.M41);
+            double m42 = (matrix1.M41 * matrix2.M12) + (matrix1.M42 * matrix2.M22) + (matrix1.M43 * matrix2.M32) + (matrix1.M44 * matrix2.M42);
+            double m43 = (matrix1.M41 * matrix2.M13) + (matrix1.M42 * matrix2.M23) + (matrix1.M43 * matrix2.M33) + (matrix1.M44 * matrix2.M43);
+            double m44 = (matrix1.M41 * matrix2.M14) + (matrix1.M42 * matrix2.M24) + (matrix1.M43 * matrix2.M34) + (matrix1.M44 * matrix2.M44);
             matrix1.M11 = m11;
             matrix1.M12 = m12;
             matrix1.M13 = m13;
@@ -1887,7 +1887,7 @@ namespace L2dotNET.Utility.Geometry
             double det11 = (matrix.M32 * matrix.M44) - (matrix.M34 * matrix.M42);
             double det12 = (matrix.M33 * matrix.M44) - (matrix.M34 * matrix.M43);
 
-            major = (((((det1 * det12) - (det2 * det11)) + (det3 * det10) + (det4 * det9)) - (det5 * det8)) + (det6 * det7));
+            major = ((((det1 * det12) - (det2 * det11)) + (det3 * det10) + (det4 * det9)) - (det5 * det8)) + (det6 * det7);
             minor1 = det1;
             minor2 = det2;
             minor3 = det3;
@@ -1910,9 +1910,9 @@ namespace L2dotNET.Utility.Geometry
             translation.Y = M42;
             translation.Z = M43;
 
-            double xs = (Math.Sign(M11 * M12 * M13 * M14) < 0) ? -1f : 1f;
-            double ys = (Math.Sign(M21 * M22 * M23 * M24) < 0) ? -1f : 1f;
-            double zs = (Math.Sign(M31 * M32 * M33 * M34) < 0) ? -1f : 1f;
+            double xs = Math.Sign(M11 * M12 * M13 * M14) < 0 ? -1f : 1f;
+            double ys = Math.Sign(M21 * M22 * M23 * M24) < 0 ? -1f : 1f;
+            double zs = Math.Sign(M31 * M32 * M33 * M34) < 0 ? -1f : 1f;
 
             scale.X = xs * Math.Sqrt((M11 * M11) + (M12 * M12) + (M13 * M13));
             scale.Y = ys * Math.Sqrt((M21 * M21) + (M22 * M22) + (M23 * M23));

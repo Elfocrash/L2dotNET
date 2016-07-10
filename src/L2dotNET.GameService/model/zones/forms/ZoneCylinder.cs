@@ -97,7 +97,7 @@ namespace L2dotNET.GameService.Model.Zones.Forms
 
         public override double getDistanceToZone(int x, int y)
         {
-            return (Math.Sqrt((Math.Pow(_x - x, 2) + Math.Pow(_y - y, 2))) - _rad);
+            return Math.Sqrt(Math.Pow(_x - x, 2) + Math.Pow(_y - y, 2)) - _rad;
         }
 
         public override int getLowZ()

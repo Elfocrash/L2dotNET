@@ -85,7 +85,7 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public int AdenaCount()
         {
-            return (Items.Where(item => item.Template.ItemId == 57).Select(item => item.Count)).FirstOrDefault();
+            return Items.Where(item => item.Template.ItemId == 57).Select(item => item.Count).FirstOrDefault();
         }
 
         public L2Item AddItem(L2Item item)

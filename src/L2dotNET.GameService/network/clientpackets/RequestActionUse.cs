@@ -23,8 +23,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
         public override void Read()
         {
             _actionId = ReadD();
-            _ctrlPressed = (ReadD() == 1);
-            _shiftPressed = (ReadC() == 1);
+            _ctrlPressed = ReadD() == 1;
+            _shiftPressed = ReadC() == 1;
         }
 
         public override void Run()
@@ -217,7 +217,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         private void PetCast(L2Player player, int npcId, int id, int lv, int maxLv = 1)
         {
-            if ((player.Summon == null) || !(player.Summon is L2Pet))
+            if (!(player.Summon is L2Pet))
             {
                 player.SendActionFailed();
                 return;

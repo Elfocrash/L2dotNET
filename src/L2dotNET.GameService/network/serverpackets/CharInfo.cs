@@ -76,7 +76,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             double spd = _player.CharacterStat.GetStat(EffectType.PSpeed);
             double anim = (spd * 1f) / 130;
-            double anim2 = ((1.1) * _player.CharacterStat.GetStat(EffectType.BAttackSpd)) / 300;
+            double anim2 = (1.1 * _player.CharacterStat.GetStat(EffectType.BAttackSpd)) / 300;
             double runSpd = spd / anim;
             double walkSpd = (spd * .8) / anim;
 

@@ -65,7 +65,7 @@ namespace L2dotNET.Utility
                 while (j != i)
                 {
                     k = MRandom.Next();
-                    *(buf + j) = *(((byte*)&k) + (j++ % sizeof(int)));
+                    *(buf + j) = *((byte*)&k + (j++ % sizeof(int)));
                 }
             }
 

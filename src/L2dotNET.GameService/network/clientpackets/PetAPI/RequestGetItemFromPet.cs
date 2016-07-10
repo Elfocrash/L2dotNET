@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
         {
             L2Player player = Client.CurrentPlayer;
 
-            if ((player.Summon == null) || !(player.Summon is L2Pet) || (player.EnchantState != 0))
+            if (!(player.Summon is L2Pet) || (player.EnchantState != 0))
             {
                 player.SendActionFailed();
                 return;
@@ -56,7 +56,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
                 return;
             }
 
-            if ((!item.Template.Dropable) || (!item.Template.Destroyable) || (!item.Template.Tradable) || (!item.Template.HeroItem) || (pet.ControlItem.ObjId == _objectId))
+            if (!item.Template.Dropable || !item.Template.Destroyable || !item.Template.Tradable || !item.Template.HeroItem || (pet.ControlItem.ObjId == _objectId))
             {
                 player.SendSystemMessage(SystemMessage.SystemMessageId.ItemNotForPets);
                 player.SendActionFailed();

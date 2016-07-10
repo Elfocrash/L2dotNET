@@ -189,7 +189,7 @@ namespace L2dotNET.GameService.Model.Playable
 
             double dis = Calcs.CalculateDistance(this, Owner.CurrentTarget, true);
 
-            if ((!(dis > 40)) || (!(dis < 2300)))
+            if (!(dis > 40) || !(dis < 2300))
             {
                 return;
             }
@@ -211,7 +211,7 @@ namespace L2dotNET.GameService.Model.Playable
                 chars.Add(Owner);
             }
 
-            if ((Owner == null) || (Owner.Party == null))
+            if (Owner?.Party == null)
             {
                 return chars.ToArray();
             }
@@ -231,7 +231,7 @@ namespace L2dotNET.GameService.Model.Playable
 
         public override void UpdateAbnormalEffect()
         {
-            if ((Owner == null) || (Owner.Party == null))
+            if (Owner?.Party == null)
             {
                 return;
             }

@@ -43,19 +43,19 @@ namespace L2dotNET.Utility
 
             while ((size - index) >= sizeof(long))
             {
-                *((long*)(dst + index)) = *((long*)(src + index));
+                *(long*)(dst + index) = *(long*)(src + index);
                 index += sizeof(long);
             }
 
             while ((size - index) >= sizeof(int))
             {
-                *((int*)(dst + index)) = *((int*)(src + index));
+                *(int*)(dst + index) = *(int*)(src + index);
                 index += sizeof(int);
             }
 
             while ((size - index) >= sizeof(short))
             {
-                *((short*)(dst + index)) = *((short*)(src + index));
+                *(short*)(dst + index) = *(short*)(src + index);
                 index += sizeof(short);
             }
 
@@ -83,19 +83,19 @@ namespace L2dotNET.Utility
 
             while ((size - index) >= sizeof(long))
             {
-                *((long*)(dst + index)) = *((long*)(w + index));
+                *(long*)(dst + index) = *(long*)(w + index);
                 index += sizeof(long);
             }
 
             while ((size - index) >= sizeof(int))
             {
-                *((int*)(dst + index)) = *((int*)(w + index));
+                *(int*)(dst + index) = *(int*)(w + index);
                 index += sizeof(int);
             }
 
             while ((size - index) >= sizeof(short))
             {
-                *((short*)(dst + index)) = *((short*)(w + index));
+                *(short*)(dst + index) = *(short*)(w + index);
                 index += sizeof(short);
             }
 
@@ -133,13 +133,13 @@ namespace L2dotNET.Utility
 
                 while ((length - index) >= (sizeof(long) / sizeof(short)))
                 {
-                    *((long*)(dst + index)) = *((long*)(src + index));
+                    *(long*)(dst + index) = *(long*)(src + index);
                     index += sizeof(long) / sizeof(short);
                 }
 
                 while ((length - index) >= (sizeof(int) / sizeof(short)))
                 {
-                    *((int*)(dst + index)) = *((int*)(src + index));
+                    *(int*)(dst + index) = *(int*)(src + index);
                     index += sizeof(int) / sizeof(short);
                 }
 

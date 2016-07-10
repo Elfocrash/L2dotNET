@@ -57,7 +57,7 @@ namespace L2dotNET.GameService.Tables
                 foreach (XmlNode node in nodes)
                 {
                     XmlElement ownerElement = node.Attributes?[0].OwnerElement;
-                    if ((ownerElement == null) || ((node.Attributes == null) || !"class".Equals(ownerElement.Name)))
+                    if ((ownerElement == null) || (node.Attributes == null) || !"class".Equals(ownerElement.Name))
                     {
                         continue;
                     }
@@ -67,7 +67,7 @@ namespace L2dotNET.GameService.Tables
                     StatsSet set = new StatsSet();
 
                     for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
-                        if ((cd.NextSibling != null) && ("set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null)))
+                        if ((cd.NextSibling != null) && "set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null))
                         {
                             attrs = cd.NextSibling.Attributes;
                             if (attrs == null)

@@ -75,7 +75,7 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         private void SocialTask(object sender, ElapsedEventArgs e)
         {
-            if ((!(Myself.CurHp > (Myself.MaxHp * 0.400000))) || Myself.Dead)
+            if (!(Myself.CurHp > (Myself.MaxHp * 0.400000)) || Myself.Dead)
             {
                 return;
             }

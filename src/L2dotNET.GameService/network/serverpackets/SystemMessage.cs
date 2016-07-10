@@ -37,7 +37,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public SystemMessage AddNpcName(int val)
         {
-            _data.Add(new object[] { 2, (1000000 + val) });
+            _data.Add(new object[] { 2, 1000000 + val });
             return this;
         }
 

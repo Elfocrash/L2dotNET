@@ -145,7 +145,7 @@ namespace L2dotNET.GameService.World
 
         private static bool ValidRegion(int x, int y)
         {
-            return ((x >= 0) && (x <= RegionsX) && (y >= 0) && (y <= RegionsY));
+            return (x >= 0) && (x <= RegionsX) && (y >= 0) && (y <= RegionsY);
         }
 
         public L2WorldRegion GetRegion(Location point)

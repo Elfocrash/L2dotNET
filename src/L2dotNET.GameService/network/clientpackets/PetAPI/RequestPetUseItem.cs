@@ -22,7 +22,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
         {
             L2Player player = Client.CurrentPlayer;
 
-            if ((player.Summon == null) || !(player.Summon is L2Pet))
+            if (!(player.Summon is L2Pet))
             {
                 player.SendActionFailed();
                 return;

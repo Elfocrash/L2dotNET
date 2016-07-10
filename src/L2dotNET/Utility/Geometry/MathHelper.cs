@@ -8,9 +8,9 @@ namespace L2dotNET.Utility.Geometry
         public const double Log10E = 0.4342945f;
         public const double Log2E = 1.442695f;
         public const double Pi = Math.PI;
-        public const double PiOver2 = (Math.PI / 2.0);
-        public const double PiOver4 = (Math.PI / 4.0);
-        public const double TwoPi = (Math.PI * 2.0);
+        public const double PiOver2 = Math.PI / 2.0;
+        public const double PiOver4 = Math.PI / 4.0;
+        public const double TwoPi = Math.PI * 2.0;
 
         public static double Barycentric(double value1, double value2, double value3, double amount1, double amount2)
         {
@@ -23,16 +23,16 @@ namespace L2dotNET.Utility.Geometry
             // Internally using doubles not to lose precission
             double amountSquared = amount * amount;
             double amountCubed = amountSquared * amount;
-            return (0.5 * ((2.0 * value2) + ((value3 - value1) * amount) + (((((2.0 * value1) - (5.0 * value2)) + (4.0 * value3)) - value4) * amountSquared) + ((((3.0 * value2) - value1 - (3.0 * value3)) + value4) * amountCubed)));
+            return 0.5 * ((2.0 * value2) + ((value3 - value1) * amount) + (((((2.0 * value1) - (5.0 * value2)) + (4.0 * value3)) - value4) * amountSquared) + ((((3.0 * value2) - value1 - (3.0 * value3)) + value4) * amountCubed));
         }
 
         public static double Clamp(double value, double min, double max)
         {
             // First we check to see if we're greater than the max
-            value = (value > max) ? max : value;
+            value = value > max ? max : value;
 
             // Then we check to see if we're less than the min.
-            value = (value < min) ? min : value;
+            value = value < min ? min : value;
 
             // There's no check to see if min > max.
             return value;
@@ -106,7 +106,7 @@ namespace L2dotNET.Utility.Geometry
             // This method uses double precission internally,
             // though it returns single double
             // Factor = 180 / pi
-            return (radians * 57.295779513082320876798154814105);
+            return radians * 57.295779513082320876798154814105;
         }
 
         public static double ToRadians(double degrees)
@@ -114,7 +114,7 @@ namespace L2dotNET.Utility.Geometry
             // This method uses double precission internally,
             // though it returns single double
             // Factor = pi / 180
-            return (degrees * 0.017453292519943295769236907684886);
+            return degrees * 0.017453292519943295769236907684886;
         }
 
         public static double WrapAngle(double angle)

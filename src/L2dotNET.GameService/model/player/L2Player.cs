@@ -682,7 +682,7 @@ namespace L2dotNET.GameService.Model.Player
             nulled.Clear();
             SendPacket(m);
 
-            if ((p != null))
+            if (p != null)
             {
                 Party?.BroadcastToMembers(p);
             }
@@ -2127,7 +2127,7 @@ namespace L2dotNET.GameService.Model.Player
             }
             else
             {
-                timeAtk = ((1362 * 345) / timeAtk);
+                timeAtk = (1362 * 345) / timeAtk;
                 dual = true;
             }
 
@@ -2449,7 +2449,7 @@ namespace L2dotNET.GameService.Model.Player
                 expPet = (Summon.ConsumeExp / 100.0) + 1;
             }
 
-            double expReward = mob.Template.Exp / (1.0);
+            double expReward = mob.Template.Exp / 1.0;
             int sp = mob.Template.Sp;
             SendMessage("debug: expPet " + expPet);
             SendMessage("debug: mob.Template " + mob.Template.Exp + " @");
