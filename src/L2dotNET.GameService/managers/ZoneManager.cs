@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Xml;
 using log4net;
 using L2dotNET.GameService.World;
 
@@ -19,9 +17,9 @@ namespace L2dotNET.GameService.Managers
 
             try
             {
-                XmlDocument doc = new XmlDocument();
+                //XmlDocument doc = new XmlDocument();
                 //int fileCounter = 0;
-                string[] xmlFilesArray = Directory.GetFiles(@"data\xml\zones\");
+                //string[] xmlFilesArray = Directory.GetFiles(@"data\xml\zones\");
                 //for (int i = 0; i < xmlFilesArray.Length; i++) { }
             }
             catch (Exception e)

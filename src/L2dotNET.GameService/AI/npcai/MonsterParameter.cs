@@ -64,12 +64,14 @@ namespace L2dotNET.GameService.AI.NpcAI
 
         public override void AttackFinished(L2Character target)
         {
-            if (target is L2Summon)
+            if (!(target is L2Summon))
             {
-                if (((L2Summon)target).Owner != null)
-                {
-                    AddAttackDesire(((L2Summon)target).Owner, 500);
-                }
+                return;
+            }
+
+            if (((L2Summon)target).Owner != null)
+            {
+                AddAttackDesire(((L2Summon)target).Owner, 500);
             }
         }
     }

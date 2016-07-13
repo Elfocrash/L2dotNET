@@ -214,7 +214,7 @@ namespace L2dotNET.Utility.Geometry
 
         public static Vector3 Hermite(Vector3 value1, Vector3 tangent1, Vector3 value2, Vector3 tangent2, double amount)
         {
-            Vector3 result = new Vector3();
+            Vector3 result;
             Hermite(ref value1, ref tangent1, ref value2, ref tangent2, amount, out result);
             return result;
         }

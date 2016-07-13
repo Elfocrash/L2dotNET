@@ -428,12 +428,12 @@ namespace L2dotNET.GameService.Model.Npcs
         public void CreateOnePrivateEx(int npcId, string aiType, int x, int y, int z) { }
 
         //TODO: Check variable, master class uses as "int"
-        public double MaxHp => CharacterStat.GetStat(EffectType.BMaxHp);
+        public override int MaxHp => (int)CharacterStat.GetStat(EffectType.BMaxHp);
 
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {
             cha.SendMessage("L2Npc.CastBuffForQuestReward " + skillId);
-            BuffForQuestReward buffForQuestReward = new BuffForQuestReward(this, cha, skillId);
+            new BuffForQuestReward(this, cha, skillId);
         }
     }
 }

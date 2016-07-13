@@ -14,6 +14,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
         {
             _items = null; //player.getAllQuestItems();
 
+            if (_items == null)
+            {
+                return;
+            }
+
             foreach (L2Item item in _items.Where(item => item.Blocked))
             {
                 _block.Add(item.ObjId);

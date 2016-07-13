@@ -52,6 +52,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _face = (byte)ReadD();
         }
 
+        //TODO: Simplify method body
         public override void Run()
         {
             if (_name.Length > 16)

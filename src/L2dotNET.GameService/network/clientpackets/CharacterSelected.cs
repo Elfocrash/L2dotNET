@@ -54,6 +54,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             GetClient().SendPacket(new Serverpackets.CharacterSelected(player, client.SessionId));
         }
 
+        //TODO: Simplify method body
         private static void PlayerModelMapping(PlayerModel playerModel, L2Player player)
         {
             //AccountName = player.AccountName,

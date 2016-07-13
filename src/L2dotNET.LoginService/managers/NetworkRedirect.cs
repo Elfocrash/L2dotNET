@@ -97,51 +97,53 @@ namespace L2dotNET.LoginService.Managers
                     }
                 }
 
-                if (d.Min() == 1)
-                {
-                    Log.Info($"Redirecting client to global {GlobalRedirection.Redirect} on #{serverId}");
-                    return GlobalRedirection.RedirectBits;
-                }
-            }
-            else
-            {
-                if (Redirects.Count == 0)
+                if (d.Min() != 1)
                 {
                     return null;
                 }
 
-                foreach (NetRedClass nr in Redirects.Where(nr => nr.ServerId == serverId))
+                Log.Info($"Redirecting client to global {GlobalRedirection.Redirect} on #{serverId}");
+                return GlobalRedirection.RedirectBits;
+            }
+
+            if (Redirects.Count == 0)
+            {
+                return null;
+            }
+
+            foreach (NetRedClass nr in Redirects.Where(nr => nr.ServerId == serverId))
+            {
+                string[] a = client.Address.ToString().Split(':')[0].Split('.'),
+                         b = nr.Mask.Split('.');
+                byte[] d = new byte[4];
+                for (byte c = 0; c < 4; c++)
                 {
-                    string[] a = client.Address.ToString().Split(':')[0].Split('.'),
-                             b = nr.Mask.Split('.');
-                    byte[] d = new byte[4];
-                    for (byte c = 0; c < 4; c++)
-                    {
-                        d[c] = 0;
+                    d[c] = 0;
 
-                        if (b[c] == "*")
-                        {
-                            d[c] = 1;
-                        }
-                        else if (b[c] == a[c])
-                        {
-                            d[c] = 1;
-                        }
-                        else if (b[c].Contains("/"))
-                        {
-                            byte n = byte.Parse(b[c].Split('/')[0]),
-                                 x = byte.Parse(b[c].Split('/')[1]);
-                            byte t = byte.Parse(a[c]);
-                            d[c] = (t >= n) && (t <= x) ? (byte)1 : (byte)0;
-                        }
+                    if (b[c] == "*")
+                    {
+                        d[c] = 1;
                     }
-
-                    if (d.Min() == 1)
+                    else if (b[c] == a[c])
                     {
-                        Log.Info($"Redirecting client to {nr.Redirect} on #{serverId}");
-                        return nr.RedirectBits;
+                        d[c] = 1;
+                    }
+                    else if (b[c].Contains("/"))
+                    {
+                        byte n = byte.Parse(b[c].Split('/')[0]),
+                             x = byte.Parse(b[c].Split('/')[1]);
+                        byte t = byte.Parse(a[c]);
+                        d[c] = (t >= n) && (t <= x) ? (byte)1 : (byte)0;
                     }
                 }
+
+                if (d.Min() != 1)
+                {
+                    continue;
+                }
+
+                Log.Info($"Redirecting client to {nr.Redirect} on #{serverId}");
+                return nr.RedirectBits;
             }
 
             return null;

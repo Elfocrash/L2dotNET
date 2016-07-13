@@ -56,6 +56,7 @@ namespace L2dotNET.GameService.Model.Skills2
         public readonly SortedList<long, SkillEnchantInfo> EnchantInfo = new SortedList<long, SkillEnchantInfo>();
         public readonly SortedList<long, Skill> Skills = new SortedList<long, Skill>();
 
+        //TODO: Simplify method body
         public void Read()
         {
             using (FileStream fstream = File.Open(@"dlc\skillenchant.dlc", FileMode.Open, FileAccess.Read))

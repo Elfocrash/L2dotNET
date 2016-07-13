@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using L2dotNET.GameService.Enums;
 using L2dotNET.GameService.Templates;
@@ -146,12 +147,8 @@ namespace L2dotNET.GameService.Model.Items
                 return defaultValue;
             }
 
-            foreach (T item in Enum.GetValues(typeof(T)))
-            {
-                if (item.ToString().ToLower().Equals(value.Trim().ToLower()))
-                {
-                    return item;
-                }
+            foreach (T item in Enum.GetValues(typeof(T)).Cast<T>().Where(item => item.ToString(CultureInfo.InvariantCulture).ToLower().Equals(value.Trim().ToLower()))) {
+                return item;
             }
 
             return defaultValue;

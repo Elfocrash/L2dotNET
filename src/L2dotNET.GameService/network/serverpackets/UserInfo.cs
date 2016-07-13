@@ -14,6 +14,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _player = player;
         }
 
+        //TODO: Simplify method body
         protected internal override void Write()
         {
             WriteC(0x04);

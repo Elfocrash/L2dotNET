@@ -761,7 +761,7 @@ namespace L2dotNET.Utility.Geometry
 
         internal Matrix ToMatrix()
         {
-            Matrix matrix = Matrix.Identity;
+            Matrix matrix;
             ToMatrix(out matrix);
             return matrix;
         }
