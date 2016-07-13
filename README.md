@@ -3,7 +3,12 @@ A server emulator for Lineage2 Interlude written in C#
 
 Join the chat: [![Join the chat at https://gitter.im/Elfocrash/L2dotNET](https://badges.gitter.im/Elfocrash/L2dotNET.svg)](https://gitter.im/Elfocrash/L2dotNET?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Latest CI Build: [![Build status](https://ci.appveyor.com/api/projects/status/wfiyl4ve9uj0rhtx?svg=true)](https://ci.appveyor.com/project/Elfocrash/l2dotnet)
+###CI Status per branch
+
+| Branch        | CI status        |
+| ------------- |:-------------:|
+| master      | [![Build status](https://ci.appveyor.com/api/projects/status/wfiyl4ve9uj0rhtx/branch/master?svg=true)](https://ci.appveyor.com/project/Elfocrash/l2dotnet/branch/master) |
+| GameservicePacketRework      | [![Build status](https://ci.appveyor.com/api/projects/status/wfiyl4ve9uj0rhtx/branch/gameservcicepacketrework?svg=true)](https://ci.appveyor.com/project/Elfocrash/l2dotnet/branch/gameservcicepacketrework)      |
 
 ## What is this?
 L2dotNET is a server emulator for L2.
