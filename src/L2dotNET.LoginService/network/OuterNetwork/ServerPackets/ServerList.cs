@@ -39,9 +39,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 
                 int bits = 0x40;
                 if (server.TestMode)
-                {
                     bits |= 0x04;
-                }
 
                 p.WriteInt(bits);
                 p.WriteByte(0); //brackets

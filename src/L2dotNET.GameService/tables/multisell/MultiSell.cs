@@ -19,16 +19,12 @@ namespace L2dotNET.GameService.Tables.Multisell
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new MultiSell();
-                    }
                 }
 
                 return _instance;
@@ -72,21 +68,15 @@ namespace L2dotNET.GameService.Tables.Multisell
                     MultiSellItem msitem = entry.Take[0];
 
                     if (msitem.Template == null)
-                    {
                         continue;
-                    }
 
                     foreach (L2Item item in pitems)
                     {
                         if (item.IsEquipped == 1)
-                        {
                             continue;
-                        }
 
                         if (item.Template.ItemId != msitem.Id)
-                        {
                             continue;
-                        }
 
                         MultiSellEntry edentry = new MultiSellEntry();
                         edentry.Take.AddRange(entry.Take);

@@ -18,16 +18,12 @@ namespace L2dotNET.GameService
             get
             {
                 if (instance != null)
-                {
                     return instance;
-                }
 
                 lock (syncRoot)
                 {
                     if (instance == null)
-                    {
                         instance = new ClientManager();
-                    }
                 }
 
                 return instance;
@@ -42,9 +38,7 @@ namespace L2dotNET.GameService
         public void AddClient(TcpClient client)
         {
             if (Banned == null)
-            {
                 Banned = NetworkBlock.Instance;
-            }
 
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
 
@@ -60,9 +54,7 @@ namespace L2dotNET.GameService
                     }
 
                     lock (Flood)
-                    {
                         Flood.Remove(ip);
-                    }
                 }
             }
 
@@ -78,18 +70,14 @@ namespace L2dotNET.GameService
             GameClient gc = new GameClient(client);
 
             lock (Clients)
-            {
                 Clients.Add(gc.Address.ToString(), gc);
-            }
             log.Info($"NetController: {Clients.Count} active connections");
         }
 
         public void Terminate(string sock)
         {
             lock (Clients)
-            {
                 Clients.Remove(sock);
-            }
 
             log.Info($"NetController: {Clients.Count} active connections");
         }

@@ -40,9 +40,7 @@ namespace L2dotNET.Utility
             string s = string.Format(format, args);
 
             if (!append)
-            {
                 s = FormatOutputString(s);
-            }
 
             Console.Write(s);
         }
@@ -131,37 +129,25 @@ namespace L2dotNET.Utility
         private static string FormatException(Exception e)
         {
             if (e == null)
-            {
                 return string.Empty;
-            }
 
             StringBuilder sb = new StringBuilder();
             sb.Append($"{e.GetType()} occurred on {ServiceTime.CurrentTime}{Environment.NewLine}");
 
             if (!string.IsNullOrEmpty(e.Message))
-            {
                 sb.Append($"Message: {e.Message}{Environment.NewLine}");
-            }
             if (!string.IsNullOrEmpty(e.StackTrace))
-            {
                 sb.Append($"StackTrace: {e.StackTrace}{Environment.NewLine}");
-            }
             if (e.InnerException == null)
-            {
                 return sb.ToString();
-            }
 
             sb.AppendLine("Inner exception data:");
 
             if (!string.IsNullOrEmpty(e.InnerException.Message))
-            {
                 sb.Append($"\tMessage: {e.InnerException.Message}{Environment.NewLine}");
-            }
 
             if (!string.IsNullOrEmpty(e.InnerException.StackTrace))
-            {
                 sb.Append($"\tStackTrace: {e.InnerException.StackTrace}{Environment.NewLine}");
-            }
 
             return sb.ToString();
         }
@@ -220,17 +206,11 @@ namespace L2dotNET.Utility
         private static void EnsureDirectiries()
         {
             if (!Directory.Exists(CommonLogsDirectory))
-            {
                 Directory.CreateDirectory(CommonLogsDirectory);
-            }
             if (!Directory.Exists(OutLogsDirectory))
-            {
                 Directory.CreateDirectory(OutLogsDirectory);
-            }
             if (!Directory.Exists(ExceptionsLogDirectory))
-            {
                 Directory.CreateDirectory(ExceptionsLogDirectory);
-            }
         }
 
         /// <summary>

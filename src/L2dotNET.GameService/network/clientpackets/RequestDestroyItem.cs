@@ -57,9 +57,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (_num < 0)
-            {
                 _num = 1;
-            }
 
             //if (item._isEquipped == 1)
             //{

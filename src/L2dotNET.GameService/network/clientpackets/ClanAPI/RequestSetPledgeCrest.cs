@@ -19,9 +19,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
             _size = ReadD();
 
             if ((_size > 0) && (_size <= 256))
-            {
                 _picture = ReadB(_size);
-            }
         }
 
         public override void Run()

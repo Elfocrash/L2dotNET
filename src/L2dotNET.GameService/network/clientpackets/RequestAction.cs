@@ -32,15 +32,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Object obj = null;
 
             if (_serverId == player.ObjId)
-            {
                 obj = player;
-            }
             else
             {
                 if (player.KnownObjects.ContainsKey(_serverId))
-                {
                     obj = player.KnownObjects[_serverId];
-                }
             }
 
             if (obj == null)

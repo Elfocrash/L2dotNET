@@ -24,14 +24,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 int duration = f[2];
 
                 if (f[2] == -1)
-                {
                     duration = -1;
-                }
 
                 if ((f[0] >= 5123) && (f[0] <= 5129))
-                {
                     duration = -1;
-                }
 
                 WriteD(duration);
             }

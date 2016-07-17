@@ -23,9 +23,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Player player = Client.CurrentPlayer;
 
             if (player == null) //re-login на выборе чаров
-            {
                 return;
-            }
 
             if (player.PBlockAct == 1)
             {

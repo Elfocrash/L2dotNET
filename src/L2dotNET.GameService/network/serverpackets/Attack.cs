@@ -35,9 +35,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             Hit[] tmp = new Hit[pos + 1];
 
             for (int i = 0; i < _hits.Length; i++)
-            {
                 tmp[i] = _hits[i];
-            }
 
             tmp[pos] = new Hit(targetId, damage, miss, crit, shld, Soulshot, Grade);
             _hits = tmp;

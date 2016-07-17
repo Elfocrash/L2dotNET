@@ -17,13 +17,9 @@ namespace L2dotNET.GameService.Commands.Admin
 
             L2Player target;
             if (admin.CurrentTarget is L2Player)
-            {
                 target = (L2Player)admin.CurrentTarget;
-            }
             else
-            {
                 target = admin;
-            }
 
             double hpval = target.CharacterStat.GetStat(EffectType.BMaxHp) - target.CurHp;
             double mpval = target.CharacterStat.GetStat(EffectType.BMaxMp) - target.CurMp;

@@ -96,9 +96,7 @@ namespace L2dotNET.GameService.Model.Items
             Z = z;
             DropItem pk = new DropItem(this);
             if (dropper != null)
-            {
                 Dropper = dropper.ObjId;
-            }
 
             Location = ItemLocation.Void;
 
@@ -129,9 +127,7 @@ namespace L2dotNET.GameService.Model.Items
                 L2World.Instance.RemoveObject(this);
             }
             else
-            {
                 player.TryMoveTo(X, Y, Z);
-            }
         }
 
         public override void OnForcedAttack(L2Player player)
@@ -150,9 +146,7 @@ namespace L2dotNET.GameService.Model.Items
         public int LifeTimeEnd()
         {
             if (!_lifeTimeEndEnabled)
-            {
                 return -9999;
-            }
 
             TimeSpan ts = _lifeTimeEndTime - DateTime.Now;
             return (int)ts.TotalSeconds;
@@ -161,9 +155,7 @@ namespace L2dotNET.GameService.Model.Items
         public void AddLimitedHour(int hours)
         {
             if (_lifeTimeEndEnabled)
-            {
                 _lifeTimeEndTime = _lifeTimeEndTime.AddHours(hours);
-            }
             else
             {
                 _lifeTimeEndEnabled = true;
@@ -174,9 +166,7 @@ namespace L2dotNET.GameService.Model.Items
         public void SetLimitedHour(string str)
         {
             if (str == "-1")
-            {
                 return;
-            }
 
             string[] x1 = str.Split(' ');
             int yy = Convert.ToInt32(x1[0].Split('-')[0]);
@@ -188,9 +178,7 @@ namespace L2dotNET.GameService.Model.Items
 
             DateTime dt = new DateTime(yy, mm, dd, hh, m, ss);
             if (dt <= DateTime.Now)
-            {
                 return;
-            }
 
             _lifeTimeEndEnabled = true;
             _lifeTimeEndTime = dt;

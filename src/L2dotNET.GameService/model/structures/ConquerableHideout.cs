@@ -64,9 +64,7 @@ namespace L2dotNET.GameService.Model.Structures
             _mobActive = new List<L2Character>();
 
             foreach (L2Character o in MobSpawns.Select(sp => (L2Character)SpawnTable.Instance.SpawnOne(sp[0], sp[1], sp[2], sp[3], sp[4])))
-            {
                 _mobActive.Add(o);
-            }
 
             TimeSiege = new Timer
                         {
@@ -89,9 +87,7 @@ namespace L2dotNET.GameService.Model.Structures
             IsActive = false;
             Message("Siege of " + Name + " is over.");
             if (trigger)
-            {
                 Message("Nobody won! " + Name + " belong to NPC until next siege.");
-            }
             else
             {
                 double dmg = 0;
@@ -127,29 +123,21 @@ namespace L2dotNET.GameService.Model.Structures
             }
 
             foreach (L2Character o in _mobActive)
-            {
                 o.DeleteByForce();
-            }
         }
 
         public void AddDamage(int clanId, double dmg)
         {
             if (ClanDamage.ContainsKey(clanId))
-            {
                 ClanDamage[clanId] += dmg;
-            }
             else
-            {
                 ClanDamage.Add(clanId, dmg);
-            }
         }
 
         public void AddSpawn(int spawnId, int x, int y, int z, int h)
         {
             if (MobSpawns == null)
-            {
                 MobSpawns = new List<int[]>();
-            }
 
             MobSpawns.Add(new[] { spawnId, x, y, z, h });
         }

@@ -29,9 +29,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
             if (target == null)
-            {
                 return Nothing;
-            }
 
             L2Character tar = target;
             //double shieldDef = Formulas.checkShieldDef(caster, tar);
@@ -39,9 +37,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
 
             caster.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddPlayerName(caster.Name).AddString(tar.Name).AddNumber(damage));
             if (tar is L2Player)
-            {
                 tar.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddPlayerName(tar.Name).AddPlayerName(caster.Name).AddNumber(damage));
-            }
 
             tar.ReduceHp(caster, damage);
 

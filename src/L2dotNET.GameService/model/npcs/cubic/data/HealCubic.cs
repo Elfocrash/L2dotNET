@@ -19,9 +19,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         public override int AiActionTask(L2Player owner)
         {
             if (owner.Dead || ((owner.CurHp / owner.MaxHp) > 0.9))
-            {
                 return 0;
-            }
 
             owner.AddAbnormal(Skill1, owner, true, false);
             owner.BroadcastPacket(new MagicSkillUse(owner, owner, Skill1, Skill1.SkillHitTime));

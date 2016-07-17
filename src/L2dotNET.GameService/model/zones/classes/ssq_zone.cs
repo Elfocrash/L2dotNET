@@ -16,18 +16,14 @@ namespace L2dotNET.GameService.Model.Zones.Classes
         public override void OnEnter(L2Object obj)
         {
             if (!Enabled)
-            {
                 return;
-            }
 
             base.OnEnter(obj);
 
             obj.OnEnterZone(this);
 
             if (!(obj is L2Player))
-            {
                 return;
-            }
 
             L2Player p = (L2Player)obj;
             p.SendSystemMessage((SystemMessage.SystemMessageId)Template.EnteringMessageNo);
@@ -36,18 +32,14 @@ namespace L2dotNET.GameService.Model.Zones.Classes
         public override void OnExit(L2Object obj, bool cls)
         {
             if (!Enabled)
-            {
                 return;
-            }
 
             base.OnExit(obj, cls);
 
             obj.OnExitZone(this, cls);
 
             if (!(obj is L2Player))
-            {
                 return;
-            }
 
             L2Player p = (L2Player)obj;
             p.SendSystemMessage((SystemMessage.SystemMessageId)Template.LeavingMessageNo);

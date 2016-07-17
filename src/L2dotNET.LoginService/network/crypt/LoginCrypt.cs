@@ -56,9 +56,7 @@ namespace L2dotNET.LoginService.Network.Crypt
         private bool VeryfyChecksum(byte[] data, int offset, int size)
         {
             if (((size & 3) != 0) || (size <= 4))
-            {
                 return false;
-            }
 
             long chksum = 0;
             int count = size - 4;

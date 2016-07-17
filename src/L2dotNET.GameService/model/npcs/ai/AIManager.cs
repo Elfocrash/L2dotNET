@@ -12,16 +12,12 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new AiManager();
-                    }
                 }
 
                 return _instance;
@@ -43,9 +39,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         public AiTemplate CheckChatWindow(int id)
         {
             if (!RegisteredAis.ContainsKey(id))
-            {
                 return null;
-            }
 
             AiTemplate t = RegisteredAis[id];
             return t.ChatOvr ? t : null;
@@ -54,9 +48,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         public AiTemplate CheckDialogResult(int id)
         {
             if (!RegisteredAis.ContainsKey(id))
-            {
                 return null;
-            }
 
             AiTemplate t = RegisteredAis[id];
             return t.DialogOvr ? t : null;

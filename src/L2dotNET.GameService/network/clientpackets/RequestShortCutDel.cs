@@ -35,16 +35,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             lock (player.Shortcuts)
-            {
                 player.Shortcuts.Remove(scx);
-
-                //SQL_Block sqb = new SQL_Block("user_shortcuts");
-                //sqb.where("ownerId", player.ObjID);
-                //sqb.where("classId", player.ActiveClass.id);
-                //sqb.where("slot", _slot);
-                //sqb.where("page", _page);
-                //sqb.sql_delete(false);
-            }
 
             player.SendPacket(new ShortCutInit(player));
         }

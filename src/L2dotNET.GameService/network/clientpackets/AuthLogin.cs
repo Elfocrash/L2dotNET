@@ -53,9 +53,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 AuthThread.Instance.SetInGameAccount(GetClient().AccountName, true);
             }
             else
-            {
                 GetClient().Termination();
-            }
         }
     }
 }

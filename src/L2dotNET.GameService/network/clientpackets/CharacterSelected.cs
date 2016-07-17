@@ -43,9 +43,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             PlayerModelMapping(playerModel, player);
 
             if (player == null)
-            {
                 return;
-            }
 
             player.Online = 1;
             player.Gameclient = client;

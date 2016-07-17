@@ -35,16 +35,12 @@ namespace L2dotNET.GameService.Managers
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new ZoneManager();
-                    }
                 }
 
                 return _instance;

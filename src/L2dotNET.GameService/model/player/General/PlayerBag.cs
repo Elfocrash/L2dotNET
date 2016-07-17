@@ -20,14 +20,10 @@ namespace L2dotNET.GameService.Model.Player.General
             if (value == null)
             {
                 if (_properties.ContainsKey(binder.Name))
-                {
                     _properties.Remove(binder.Name);
-                }
             }
             else
-            {
                 _properties[binder.Name] = value;
-            }
 
             return true;
         }

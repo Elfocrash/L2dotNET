@@ -15,20 +15,14 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
             int retval;
             byte summ = Skill1Rate;
             if (chance < summ)
-            {
                 retval = Action1(owner);
-            }
             else
             {
                 summ += Skill2Rate;
                 if (chance < summ)
-                {
                     retval = Action2(owner);
-                }
                 else
-                {
                     retval = Action3(owner);
-                }
             }
 
             return retval;
@@ -42,9 +36,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         {
             //todo target was attacked some time ago with myself
             if (owner.CurrentTarget?.Dead ?? true)
-            {
                 return 0;
-            }
 
             CallSkill(owner, Skill1, owner.CurrentTarget);
             return 1;
@@ -59,18 +51,14 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
             if (Skill2Target == "heal")
             {
                 if (owner.Dead || ((owner.CurHp / owner.MaxHp) > 0.9))
-                {
                     return 0;
-                }
 
                 CallSkill(owner, Skill2, owner);
                 return 1;
             }
 
             if (owner.CurrentTarget?.Dead ?? true)
-            {
                 return 0;
-            }
 
             CallSkill(owner, Skill2, owner.CurrentTarget);
             return 1;
@@ -84,14 +72,10 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic.Data
         {
             byte n = 0;
             if (owner.Effects.Any(e => e.Skill.Debuff == 1))
-            {
                 n = 1;
-            }
 
             if (n != 1)
-            {
                 return 0;
-            }
 
             CallSkill(owner, Skill3, owner);
             return 1;

@@ -25,16 +25,12 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new NpcData();
-                    }
                 }
 
                 return _instance;
@@ -64,14 +60,10 @@ namespace L2dotNET.GameService.Tables
                         NDShop shop = new NDShop();
                         XElement npcElement = shopp.Element("npc");
                         if (npcElement != null)
-                        {
                             shop.Id = int.Parse(npcElement.Value);
-                        }
                         XElement modElement = shopp.Element("mod");
                         if (modElement != null)
-                        {
                             shop.Mod = double.Parse(modElement.Value);
-                        }
 
                         foreach (XElement selllist in shopp.Elements("selllist"))
                         {
@@ -90,13 +82,9 @@ namespace L2dotNET.GameService.Tables
                                 {
                                     ItemTemplate it = itable.GetItem(Convert.ToInt32(i));
                                     if (it != null)
-                                    {
                                         slist.Items.Add(new NDShopItem(it));
-                                    }
                                     else
-                                    {
                                         Log.Error($"NpcData: cant find item to trade {i} on npc {shop.Id}");
-                                    }
                                 }
                             }
 
@@ -132,9 +120,7 @@ namespace L2dotNET.GameService.Tables
                     player.SendActionFailed();
                 }
                 else
-                {
                     pk = new ShopPreviewList(player, shop.Lists[reply], reply);
-                }
             }
             else
             {
@@ -164,9 +150,7 @@ namespace L2dotNET.GameService.Tables
                 string cost = "";
                 int id = itemId != -1 ? itemId : e.ItemId;
                 if (player.Level >= 40)
-                {
                     cost = " - " + e.Cost + " &#" + id + ";";
-                }
 
                 sb.Append("<a action=\"bypass -h teleport_next?ask=" + groupId + "&reply=" + e.Id + "\" msg=\"811;" + e.Name + "\">" + e.Name + "" + cost + "</a><br1>");
             }

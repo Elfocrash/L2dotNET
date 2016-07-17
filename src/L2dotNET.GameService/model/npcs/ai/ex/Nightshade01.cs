@@ -23,24 +23,22 @@ namespace L2dotNET.GameService.Model.Npcs.Ai.Ex
 
                 default:
                     if (actionId == GetValueInt("buff_action3"))
-                    {
                         value = "buff3";
-                    }
-                    else if (actionId == GetValueInt("buff_action4"))
+                    else
                     {
-                        value = "buff4";
-                    }
-                    else if (actionId == GetValueInt("buff_action5"))
-                    {
-                        value = "buff5";
+                        if (actionId == GetValueInt("buff_action4"))
+                            value = "buff4";
+                        else
+                        {
+                            if (actionId == GetValueInt("buff_action5"))
+                                value = "buff5";
+                        }
                     }
                     break;
             }
 
             if (value == null)
-            {
                 return;
-            }
 
             int[] skill = GetValueSkill(value);
             pet.CastSkill(SkillTable.Instance.Get(skill[0], skill[1]));

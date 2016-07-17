@@ -17,9 +17,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
             if (!(target is L2Player))
-            {
                 return Nothing;
-            }
 
             ((L2Player)target).SpecEffects.Add(_ef);
 
@@ -31,14 +29,10 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override EffectResult OnEnd(L2Character caster, L2Character target)
         {
             if (!(target is L2Player))
-            {
                 return Nothing;
-            }
 
             lock (((L2Player)target).SpecEffects)
-            {
                 ((L2Player)target).SpecEffects.Remove(_ef);
-            }
 
             EffectResult ter = new EffectResult();
             ter.AddSu(StatusUpdate.Evasion, target.CharacterStat.GetStat(EffectType.BEvasion));

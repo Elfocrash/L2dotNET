@@ -7,9 +7,7 @@ namespace L2dotNET.GameService.AI.NpcAI
         public override void TalkedReply(L2Player talker, int ask, int reply)
         {
             if (ask != -16)
-            {
                 return;
-            }
 
             switch (reply)
             {

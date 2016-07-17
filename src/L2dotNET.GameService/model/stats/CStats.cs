@@ -32,14 +32,10 @@ namespace L2dotNET.GameService.Model.Stats
         public double GetStat(EffectType type)
         {
             if (StatBuff.ContainsKey(type))
-            {
                 return (double)StatBuff[type];
-            }
 
             if (!StatTemplate.ContainsKey(type))
-            {
                 return 0;
-            }
 
             return (double)StatTemplate[type];
         }
@@ -47,9 +43,7 @@ namespace L2dotNET.GameService.Model.Stats
         private double GetTemplate(EffectType type)
         {
             if (!StatTemplate.ContainsKey(type))
-            {
                 return 0;
-            }
 
             return (double)StatTemplate[type];
         }
@@ -61,14 +55,10 @@ namespace L2dotNET.GameService.Model.Stats
             foreach (EffectResult ter in effects.Select(effect => effect.OnStart(caster, _owner)))
             {
                 if (result.TotalUi == 0)
-                {
                     result.TotalUi = ter.TotalUi;
-                }
 
                 if (ter.Sus != null)
-                {
                     result.AddAll(ter.Sus);
-                }
             }
 
             return result;
@@ -88,9 +78,7 @@ namespace L2dotNET.GameService.Model.Stats
                 if (cc.SupMethod.Method <= SupMethod.Sub)
                 {
                     if (arif == null)
-                    {
                         arif = new List<Effect>();
-                    }
 
                     arif.Add(cc);
                     continue;
@@ -102,17 +90,13 @@ namespace L2dotNET.GameService.Model.Stats
             if (arif != null)
             {
                 foreach (Effect cc in arif)
-                {
                     newvalue = CalcSupMethod(newvalue, cc.SupMethod);
-                }
             }
 
             if (StatBuff.ContainsKey(effect.Type))
             {
                 lock (StatBuff)
-                {
                     StatBuff.Remove(effect.Type);
-                }
             }
 
             StatBuff.Add(effect.Type, newvalue);
@@ -126,14 +110,10 @@ namespace L2dotNET.GameService.Model.Stats
             foreach (EffectResult ter in effects.Select(effect => effect.OnEnd(caster, _owner)))
             {
                 if (result.TotalUi == 0)
-                {
                     result.TotalUi = ter.TotalUi;
-                }
 
                 if (ter.Sus != null)
-                {
                     result.AddAll(ter.Sus);
-                }
             }
 
             return result;
@@ -153,9 +133,7 @@ namespace L2dotNET.GameService.Model.Stats
                 if (cc.SupMethod.Method <= SupMethod.Sub)
                 {
                     if (arif == null)
-                    {
                         arif = new List<Effect>();
-                    }
 
                     arif.Add(cc);
                     continue;
@@ -167,17 +145,13 @@ namespace L2dotNET.GameService.Model.Stats
             if (arif != null)
             {
                 foreach (Effect cc in arif)
-                {
                     newvalue = CalcSupMethod(newvalue, cc.SupMethod);
-                }
             }
 
             if (StatBuff.ContainsKey(effect.Type))
             {
                 lock (StatBuff)
-                {
                     StatBuff.Remove(effect.Type);
-                }
             }
 
             StatBuff.Add(effect.Type, newvalue);
@@ -218,9 +192,7 @@ namespace L2dotNET.GameService.Model.Stats
         public void AddTemplate(EffectType type, double value)
         {
             if (!StatTemplate.Contains(type))
-            {
                 StatTemplate.Add(type, value);
-            }
         }
 
         public void SetTemplate(PcTemplate template)

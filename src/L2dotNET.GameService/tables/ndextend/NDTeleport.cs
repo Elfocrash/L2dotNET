@@ -51,13 +51,9 @@ namespace L2dotNET.GameService.Tables.Ndextend
                                                              };
 
                                         if (e.Attribute("cost") != null)
-                                        {
                                             ae.Cost = int.Parse(e.Attribute("cost").Value);
-                                        }
                                         if (e.Attribute("itemId") != null)
-                                        {
                                             ae.ItemId = int.Parse(e.Attribute("itemId").Value);
-                                        }
 
                                         ab.Teles.Add(ae.Id, ae);
                                     }
@@ -66,13 +62,9 @@ namespace L2dotNET.GameService.Tables.Ndextend
                             }
 
                         if (Npcs.ContainsKey(npc.Id))
-                        {
                             Log.Error($"NpcData(Teleporter) dublicate npc str {npc.Id}");
-                        }
                         else
-                        {
                             Npcs.Add(npc.Id, npc);
-                        }
                     }
             }
 

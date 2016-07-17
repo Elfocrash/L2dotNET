@@ -56,9 +56,7 @@ namespace L2dotNET.GameService.Model.Inventory
         public L2Item AddItem(int itemId, int count, L2Player player)
         {
             if (count <= 0)
-            {
                 return null;
-            }
 
             return null;
         }
@@ -78,9 +76,7 @@ namespace L2dotNET.GameService.Model.Inventory
         public void DestroyAllItems(L2Player player)
         {
             foreach (L2Item item in Items)
-            {
                 DestroyItem(item, item.Count, player);
-            }
         }
 
         public int AdenaCount()

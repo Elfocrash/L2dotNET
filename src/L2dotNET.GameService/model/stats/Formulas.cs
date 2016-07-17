@@ -14,9 +14,7 @@ namespace L2dotNET.GameService.Model.Stats
 
             double chance;
             if (delta >= 10)
-            {
                 chance = 980;
-            }
             else
             {
                 switch (delta)
@@ -129,23 +127,15 @@ namespace L2dotNET.GameService.Model.Stats
                 }
 
                 if (attacker.IsInFrontOfTarget())
-                {
                     return chance < Rnd.Next(1000);
-                }
 
                 if (attacker.IsBehindTarget())
-                {
                     chance *= 1.2;
-                }
                 else
-                {
                     chance *= 1.1;
-                }
 
                 if (chance > 980)
-                {
                     chance = 980;
-                }
             }
 
             return chance < Rnd.Next(1000);
@@ -174,9 +164,7 @@ namespace L2dotNET.GameService.Model.Stats
 
             basedamage -= sdef;
             if (basedamage < 0)
-            {
                 basedamage = 0;
-            }
 
             int rnddmg = (int)(basedamage * 0.2);
             basedamage += Rnd.Next(-rnddmg, rnddmg);
@@ -193,9 +181,7 @@ namespace L2dotNET.GameService.Model.Stats
             double basedamage = (70 * atk) / def;
 
             if (basedamage < 0)
-            {
                 basedamage = 0;
-            }
 
             return basedamage;
         }

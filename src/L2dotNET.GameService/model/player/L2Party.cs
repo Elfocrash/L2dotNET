@@ -40,13 +40,9 @@ namespace L2dotNET.GameService.Model.Player
             Members.AddLast(playerMember);
 
             if (!onCreate)
-            {
                 playerMember.SendPacket(new PartySmallWindowAll(this));
-            }
             else
-            {
                 BroadcastToMembers(new PartySmallWindowAll(this));
-            }
 
             playerMember.Party = this;
 
@@ -62,17 +58,13 @@ namespace L2dotNET.GameService.Model.Player
         public void BroadcastToMembers(GameServerNetworkPacket pk)
         {
             foreach (L2Player pl in Members)
-            {
                 pl.SendPacket(pk);
-            }
         }
 
         public void BroadcastToMembers(GameServerNetworkPacket pk, int except)
         {
             foreach (L2Player pl in Members.Where(pl => pl.ObjId != except))
-            {
                 pl.SendPacket(pk);
-            }
         }
 
         private byte _votesOnStart,
@@ -109,14 +101,10 @@ namespace L2dotNET.GameService.Model.Player
             _votesVoted++;
 
             if (!_votes.ContainsKey(playerMember.ObjId))
-            {
                 _votes.Add(playerMember.ObjId, answer);
-            }
 
             if (_votes.Count == _votesOnStart)
-            {
                 FinishVoting();
-            }
         }
 
         private void FinishVoting()
@@ -173,15 +161,11 @@ namespace L2dotNET.GameService.Model.Player
                     Members.Clear();
 
                     if ((_voteTimer != null) && _voteTimer.Enabled)
-                    {
                         _voteTimer.Enabled = false;
-                    }
                 }
             }
             else
-            {
                 Kick(playerMember);
-            }
         }
 
         private void Kick(L2Player playerMember)
@@ -191,9 +175,7 @@ namespace L2dotNET.GameService.Model.Player
             //(int)SystemMessage.SystemMessageId.S1_WAS_EXPELLED_FROM_PARTY
 
             lock (Members)
-            {
                 Members.Remove(playerMember);
-            }
 
             if (Members.Count > 2)
             {
@@ -207,9 +189,7 @@ namespace L2dotNET.GameService.Model.Player
                 BroadcastToMembers(new PartySmallWindowDelete(playerMember.ObjId, playerMember.Name));
 
                 if (playerMember.Summon != null)
-                {
                     BroadcastToMembers(new ExPartyPetWindowDelete(playerMember.Summon.ObjId, playerMember.ObjId, playerMember.Summon.Name));
-                }
             }
             else
             {

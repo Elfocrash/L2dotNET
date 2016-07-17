@@ -75,9 +75,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //}
 
             if (ItemHandler.Instance.Process(player, item))
-            {
                 return;
-            }
 
             //switch (item.Template.DefaultAction)
             //{

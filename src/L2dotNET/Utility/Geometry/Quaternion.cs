@@ -223,32 +223,38 @@ namespace L2dotNET.Utility.Geometry
                 result.Y = (matrix.M31 - matrix.M13) * num;
                 result.Z = (matrix.M12 - matrix.M21) * num;
             }
-            else if ((matrix.M11 >= matrix.M22) && (matrix.M11 >= matrix.M33))
-            {
-                double num7 = Math.Sqrt((1f + matrix.M11) - matrix.M22 - matrix.M33);
-                double num4 = 0.5f / num7;
-                result.X = 0.5f * num7;
-                result.Y = (matrix.M12 + matrix.M21) * num4;
-                result.Z = (matrix.M13 + matrix.M31) * num4;
-                result.W = (matrix.M23 - matrix.M32) * num4;
-            }
-            else if (matrix.M22 > matrix.M33)
-            {
-                double num6 = Math.Sqrt((1f + matrix.M22) - matrix.M11 - matrix.M33);
-                double num3 = 0.5f / num6;
-                result.X = (matrix.M21 + matrix.M12) * num3;
-                result.Y = 0.5f * num6;
-                result.Z = (matrix.M32 + matrix.M23) * num3;
-                result.W = (matrix.M31 - matrix.M13) * num3;
-            }
             else
             {
-                double num5 = Math.Sqrt((1f + matrix.M33) - matrix.M11 - matrix.M22);
-                double num2 = 0.5f / num5;
-                result.X = (matrix.M31 + matrix.M13) * num2;
-                result.Y = (matrix.M32 + matrix.M23) * num2;
-                result.Z = 0.5f * num5;
-                result.W = (matrix.M12 - matrix.M21) * num2;
+                if ((matrix.M11 >= matrix.M22) && (matrix.M11 >= matrix.M33))
+                {
+                    double num7 = Math.Sqrt((1f + matrix.M11) - matrix.M22 - matrix.M33);
+                    double num4 = 0.5f / num7;
+                    result.X = 0.5f * num7;
+                    result.Y = (matrix.M12 + matrix.M21) * num4;
+                    result.Z = (matrix.M13 + matrix.M31) * num4;
+                    result.W = (matrix.M23 - matrix.M32) * num4;
+                }
+                else
+                {
+                    if (matrix.M22 > matrix.M33)
+                    {
+                        double num6 = Math.Sqrt((1f + matrix.M22) - matrix.M11 - matrix.M33);
+                        double num3 = 0.5f / num6;
+                        result.X = (matrix.M21 + matrix.M12) * num3;
+                        result.Y = 0.5f * num6;
+                        result.Z = (matrix.M32 + matrix.M23) * num3;
+                        result.W = (matrix.M31 - matrix.M13) * num3;
+                    }
+                    else
+                    {
+                        double num5 = Math.Sqrt((1f + matrix.M33) - matrix.M11 - matrix.M22);
+                        double num2 = 0.5f / num5;
+                        result.X = (matrix.M31 + matrix.M13) * num2;
+                        result.Y = (matrix.M32 + matrix.M23) * num2;
+                        result.Z = 0.5f * num5;
+                        result.W = (matrix.M12 - matrix.M21) * num2;
+                    }
+                }
             }
         }
 
@@ -348,9 +354,7 @@ namespace L2dotNET.Utility.Geometry
         {
             bool flag = false;
             if (obj is Quaternion)
-            {
                 flag = Equals((Quaternion)obj);
-            }
             return flag;
         }
 
@@ -685,9 +689,7 @@ namespace L2dotNET.Utility.Geometry
         public static bool operator !=(Quaternion quaternion1, Quaternion quaternion2)
         {
             if ((quaternion1.X == quaternion2.X) && (quaternion1.Y == quaternion2.Y) && (quaternion1.Z == quaternion2.Z))
-            {
                 return quaternion1.W != quaternion2.W;
-            }
 
             return true;
         }

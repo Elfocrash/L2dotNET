@@ -35,14 +35,10 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
         {
             int dmg = 6 - (int)Math.Ceiling((CurHp / MaxHp) * 6);
             if (dmg > 6)
-            {
                 return 6;
-            }
 
             if (dmg < 0)
-            {
                 return 0;
-            }
 
             return dmg;
         }

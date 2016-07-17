@@ -82,9 +82,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     adena += item.Item.ReferencePrice * (int)_items[(i * 2) + 1];
 
                     if (!item.Item.Stackable)
-                    {
                         slots++;
-                    }
                     //else
                     //{
                     //    if (!player.HasItem(item.item.ItemID))
@@ -98,9 +96,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (!notfound)
-                {
                     continue;
-                }
 
                 player.SendSystemMessage(SystemMessage.SystemMessageId.TradeAttemptFailed);
                 player.SendActionFailed();

@@ -33,9 +33,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                            });
 
                 if (item.Blocked)
-                {
                     _blocked.Add(item.ObjId);
-                }
             }
         }
 

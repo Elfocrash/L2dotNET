@@ -57,16 +57,13 @@ namespace L2dotNET.Utility.Geometry
             double sSquared = s * s;
 
             if (amount == 0f)
-            {
                 result = value1;
-            }
-            else if (amount == 1f)
-            {
-                result = value2;
-            }
             else
             {
-                result = ((((2 * v1) - (2 * v2)) + t2 + t1) * sCubed) + (((3 * v2) - (3 * v1) - (2 * t1) - t2) * sSquared) + (t1 * s) + v1;
+                if (amount == 1f)
+                    result = value2;
+                else
+                    result = ((((2 * v1) - (2 * v2)) + t2 + t1) * sCubed) + (((3 * v2) - (3 * v1) - (2 * t1) - t2) * sSquared) + (t1 * s) + v1;
             }
             return result;
         }
@@ -121,15 +118,11 @@ namespace L2dotNET.Utility.Geometry
         {
             angle = Math.IEEERemainder(angle, 6.2831854820251465);
             if (angle <= -3.14159274f)
-            {
                 angle += 6.28318548f;
-            }
             else
             {
                 if (angle > 3.14159274f)
-                {
                     angle -= 6.28318548f;
-                }
             }
             return angle;
         }

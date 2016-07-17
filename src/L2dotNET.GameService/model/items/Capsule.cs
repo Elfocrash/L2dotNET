@@ -20,16 +20,12 @@ namespace L2dotNET.GameService.Model.Items
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new Capsule();
-                    }
                 }
 
                 return _instance;
@@ -47,22 +43,16 @@ namespace L2dotNET.GameService.Model.Items
         public void Process(L2Character character, L2Item item)
         {
             if (!(character is L2Player))
-            {
                 return;
-            }
 
             if (!Items.ContainsKey(item.Template.ItemId))
-            {
                 return;
-            }
 
             CapsuleItem caps = Items[item.Template.ItemId];
             Random rn = new Random();
             ((L2Player)character).DestroyItem(item, 1);
             foreach (CapsuleItemReward rew in caps.Rewards.Where(rew => rn.Next(100) <= rew.Rate))
-            {
                 ((L2Player)character).AddItem(rew.Id, rn.Next(rew.Min, rew.Max));
-            }
         }
 
         public void LoadXml()
@@ -71,9 +61,7 @@ namespace L2dotNET.GameService.Model.Items
             XElement ex = xml.Element("list");
 
             if (ex == null)
-            {
                 return;
-            }
 
             foreach (XElement m in ex.Elements())
                 if (m.Name == "capsule")

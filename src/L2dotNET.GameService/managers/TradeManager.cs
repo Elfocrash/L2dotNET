@@ -22,43 +22,31 @@ namespace L2dotNET.GameService.Managers
         private bool ValidateList(L2Player player)
         {
             if (player.CurrentTrade == null)
-            {
                 return true;
-            }
 
             SortedList<int, long> tm = new SortedList<int, long>();
             foreach (int id in player.CurrentTrade.Keys)
             {
                 L2Item item = player.Inventory.GetItemByItemId(id);
                 if (item == null)
-                {
                     return false;
-                }
 
                 long num = player.CurrentTrade[id];
 
                 if (!item.Template.Stackable && (num != 1))
-                {
                     tm.Add(id, 1);
-                }
 
                 if (item.Count < num)
-                {
                     tm.Add(id, item.Count);
-                }
             }
 
             if (tm.Count <= 0)
-            {
                 return true;
-            }
 
             lock (player.CurrentTrade)
             {
                 foreach (int key in tm.Keys)
-                {
                     player.CurrentTrade[key] = tm[key];
-                }
             }
 
             tm.Clear();

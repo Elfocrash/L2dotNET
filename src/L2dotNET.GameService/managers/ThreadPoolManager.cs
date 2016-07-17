@@ -28,9 +28,7 @@ namespace L2dotNET.GameService.Managers
                              };
 
             if (id != null)
-            {
                 Threads.Add(thread.Id, thread);
-            }
 
             thread.Start();
 
@@ -50,9 +48,7 @@ namespace L2dotNET.GameService.Managers
                              };
 
             if (id != null)
-            {
                 Threads.Add(thread.Id, thread);
-            }
 
             thread.Start();
         }
@@ -70,9 +66,7 @@ namespace L2dotNET.GameService.Managers
                              };
 
             if (id != null)
-            {
                 Threads.Add(thread.Id, thread);
-            }
 
             thread.Start();
         }
@@ -85,9 +79,7 @@ namespace L2dotNET.GameService.Managers
         public void StopThread(object id)
         {
             if (Threads.ContainsKey(id))
-            {
                 Threads[id].AbortMe();
-            }
         }
 
         public void CloseMe(RThread thread)
@@ -95,9 +87,7 @@ namespace L2dotNET.GameService.Managers
             if (thread.Id != null)
             {
                 lock (Threads)
-                {
                     Threads.Remove(thread.Id);
-                }
             }
 
             GC.Collect(0, GCCollectionMode.Forced);

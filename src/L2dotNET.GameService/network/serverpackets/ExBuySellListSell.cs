@@ -13,9 +13,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public ExBuySellListSell(L2Player player)
         {
             foreach (L2Item item in player.GetAllItems().Where(item => !item.NotForTrade()))
-            {
                 _sells.Add(item);
-            }
 
             // _refund = player.Refund._items;
         }

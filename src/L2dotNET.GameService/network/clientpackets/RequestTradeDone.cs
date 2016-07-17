@@ -44,9 +44,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.Requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1ConfirmedTrade).AddPlayerName(player.Name));
 
                 if (player.Requester.TradeState == 4)
-                {
                     TradeManager.GetInstance().PersonalTrade(player, player.Requester);
-                }
             }
             else
             {

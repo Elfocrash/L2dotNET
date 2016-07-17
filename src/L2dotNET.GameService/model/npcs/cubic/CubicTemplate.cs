@@ -43,9 +43,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
             _cast = skill;
 
             if (_skillCast == null)
-            {
                 _skillCast = new System.Timers.Timer();
-            }
 
             _target = targetPlayer;
             if (skill.SkillHitTime > 0)
@@ -55,9 +53,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
                 _skillCast.Enabled = true;
             }
             else
-            {
                 SkillCastTask(null, null);
-            }
 
             casterPlayer.BroadcastPacket(new MagicSkillUse(casterPlayer, targetPlayer, skill, skill.SkillHitTime));
         }
@@ -66,14 +62,10 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
         {
             _skillCast.Enabled = false;
             if ((_target == null) || (_caster == null))
-            {
                 return;
-            }
 
             if (!_cast.ConditionOk(_caster))
-            {
                 return;
-            }
 
             if (_cast.ReuseDelay > 0)
             {
@@ -92,20 +84,23 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
                             sm.AddNumber(ts.Seconds);
                             _caster.SendPacket(sm);
                         }
-                        else if (ts.TotalMinutes > 0)
-                        {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2MinutesS3SecondsRemainingInS1ReuseTime);
-                            sm.AddSkillName(_cast.SkillId, _cast.Level);
-                            sm.AddNumber(ts.Minutes);
-                            sm.AddNumber(ts.Seconds);
-                            _caster.SendPacket(sm);
-                        }
                         else
                         {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2SecondsRemainingInS1ReuseTime);
-                            sm.AddSkillName(_cast.SkillId, _cast.Level);
-                            sm.AddNumber(ts.Seconds);
-                            _caster.SendPacket(sm);
+                            if (ts.TotalMinutes > 0)
+                            {
+                                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2MinutesS3SecondsRemainingInS1ReuseTime);
+                                sm.AddSkillName(_cast.SkillId, _cast.Level);
+                                sm.AddNumber(ts.Minutes);
+                                sm.AddNumber(ts.Seconds);
+                                _caster.SendPacket(sm);
+                            }
+                            else
+                            {
+                                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2SecondsRemainingInS1ReuseTime);
+                                sm.AddSkillName(_cast.SkillId, _cast.Level);
+                                sm.AddNumber(ts.Seconds);
+                                _caster.SendPacket(sm);
+                            }
                         }
 
                         return;

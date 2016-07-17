@@ -22,9 +22,7 @@
             Completed = fin == 1;
 
             if (fin == 0)
-            {
                 Template = QuestManager.Instance.Quests[Id];
-            }
         }
     }
 }

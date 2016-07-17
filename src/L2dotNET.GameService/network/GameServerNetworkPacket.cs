@@ -67,9 +67,7 @@ namespace L2dotNET.GameService.Network
         protected void WriteS(string value)
         {
             if (value != null)
-            {
                 WriteB(System.Text.Encoding.Unicode.GetBytes(value));
-            }
 
             _stream.WriteByte(0);
             _stream.WriteByte(0);

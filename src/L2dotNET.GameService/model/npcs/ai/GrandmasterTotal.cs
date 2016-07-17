@@ -21,13 +21,9 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
                     if (player.Clan != null)
                     {
                         if (player.Clan.LeaderId == player.ObjId)
-                        {
                             player.ShowHtm("pl003.htm", npc);
-                        }
                         else
-                        {
                             player.ShowHtm("pl004.htm", npc);
-                        }
 
                         return;
                     }

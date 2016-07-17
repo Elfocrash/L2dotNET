@@ -19,16 +19,12 @@ namespace L2dotNET.LoginService.Managers
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new NetworkBlock();
-                    }
                 }
 
                 return _instance;
@@ -45,14 +41,10 @@ namespace L2dotNET.LoginService.Managers
                 {
                     string line = reader.ReadLine() ?? string.Empty;
                     if (line.Length == 0)
-                    {
                         continue;
-                    }
 
                     if (line.StartsWithIgnoreCase("//"))
-                    {
                         continue;
-                    }
 
                     if (line.StartsWithIgnoreCase("d"))
                     {
@@ -63,8 +55,11 @@ namespace L2dotNET.LoginService.Managers
                                         };
                         _blocks.Add(i);
                     }
-                    else if (line.StartsWithIgnoreCase("m"))
+                    else
                     {
+                        if (!line.StartsWithIgnoreCase("m"))
+                            continue;
+
                         NBInterface i = new NBInterface
                                         {
                                             Mask = line.Split(' ')[1],
@@ -81,29 +76,21 @@ namespace L2dotNET.LoginService.Managers
         public bool Allowed(string ip)
         {
             if (_blocks.Count == 0)
-            {
                 return true;
-            }
 
             foreach (NBInterface nbi in _blocks)
             {
                 if (nbi.DirectIp?.Equals(ip) ?? false)
                 {
                     if (nbi.Forever)
-                    {
                         return false;
-                    }
 
                     if (nbi.TimeEnd.CompareTo(DateTime.Now) == 1)
-                    {
                         return false;
-                    }
                 }
 
                 if (nbi.Mask == null)
-                {
                     continue;
-                }
 
                 string[] a = ip.Split('.'),
                          b = nbi.Mask.Split('.');
@@ -113,28 +100,28 @@ namespace L2dotNET.LoginService.Managers
                     d[c] = false;
 
                     if (b[c] == "*")
-                    {
                         d[c] = true;
-                    }
-                    else if (b[c] == a[c])
+                    else
                     {
-                        d[c] = true;
-                    }
-                    else if (b[c].Contains("/"))
-                    {
-                        byte n = byte.Parse(b[c].Split('/')[0]),
-                             x = byte.Parse(b[c].Split('/')[1]);
-                        byte t = byte.Parse(a[c]);
-                        d[c] = (t >= n) && (t <= x);
+                        if (b[c] == a[c])
+                            d[c] = true;
+                        else
+                        {
+                            if (!b[c].Contains("/"))
+                                continue;
+
+                            byte n = byte.Parse(b[c].Split('/')[0]),
+                                 x = byte.Parse(b[c].Split('/')[1]);
+                            byte t = byte.Parse(a[c]);
+                            d[c] = (t >= n) && (t <= x);
+                        }
                     }
                 }
 
                 byte cnt = (byte)d.Count(u => u);
 
                 if (cnt >= 4)
-                {
                     return false;
-                }
             }
 
             return true;

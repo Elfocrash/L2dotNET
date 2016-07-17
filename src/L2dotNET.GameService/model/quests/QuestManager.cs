@@ -19,16 +19,12 @@ namespace L2dotNET.GameService.Model.Quests
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new QuestManager();
-                    }
                 }
 
                 return _instance;
@@ -40,14 +36,10 @@ namespace L2dotNET.GameService.Model.Quests
             object[] items = ScriptCompiler.Instance.CompileFolder(@"cmpl\quests");
 
             if (items == null)
-            {
                 return;
-            }
 
             foreach (object obj in items)
-            {
                 Register((QuestOrigin)obj);
-            }
 
             //register(new _0003_will_the_seal_be_broken());
 
@@ -82,9 +74,7 @@ namespace L2dotNET.GameService.Model.Quests
                 }
 
                 if (!qi.Template.CanTalk(player, npc))
-                {
                     continue;
-                }
 
                 qlist.Add(new object[] { qi.Template, "<a action=\"bypass -h quest_continue?quest_id=" + qi.Id + "\">[" + qi.Template.QuestName + " (In Progress)]</a><br1>", qi.Template.QuestId });
                 ilist.Add(qi.Id);
@@ -106,13 +96,9 @@ namespace L2dotNET.GameService.Model.Quests
             {
                 foreach (object[] o in qlist)
                     if (((string)o[1]).Contains("(In Progress)"))
-                    {
                         player.quest_Talk(npc, ((QuestOrigin)o[0]).QuestId);
-                    }
                     else
-                    {
                         ((QuestOrigin)o[0]).TryAccept(player, npc);
-                    }
 
                 return;
             }
@@ -126,9 +112,7 @@ namespace L2dotNET.GameService.Model.Quests
             StringBuilder sb = new StringBuilder();
 
             foreach (object[] ur in qlist)
-            {
                 sb.Append((string)ur[1]);
-            }
 
             player.ShowHtmPlain(sb.ToString(), npc);
 

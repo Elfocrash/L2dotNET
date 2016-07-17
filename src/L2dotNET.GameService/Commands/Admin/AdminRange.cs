@@ -100,9 +100,7 @@ namespace L2dotNET.GameService.Commands.Admin
                 p[1] = rn.Next(_np.minY, _np.maxY);
                 Log.Info($"rnd xy {p[0]} {p[1]}");
                 if (!_np.isInsideZone(p[0], p[1]))
-                {
                     continue;
-                }
 
                 double curdistance = -1;
                 p[2] = _np.getLowZ() + 10;
@@ -116,9 +114,7 @@ namespace L2dotNET.GameService.Commands.Admin
                          dy = p1Y - p[1];
                     double distance = Math.Sqrt((dx * dx) + (dy * dy));
                     if ((curdistance != -1) && !(distance < curdistance))
-                    {
                         continue;
-                    }
 
                     curdistance = distance;
                     p[2] = _np._z1 + 10;

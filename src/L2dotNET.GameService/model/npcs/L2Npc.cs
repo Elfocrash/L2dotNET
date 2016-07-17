@@ -39,13 +39,9 @@ namespace L2dotNET.GameService.Model.Npcs
         {
             double dis = Calcs.CalculateDistance(player, this, true);
             if (dis < 151)
-            {
                 AiProcessor.Talked(player);
-            }
             else
-            {
                 TryMoveTo(X, Y, Z);
-            }
         }
 
         public int NpcId => Template.NpcId;
@@ -191,13 +187,9 @@ namespace L2dotNET.GameService.Model.Npcs
             }
 
             if (newtarget)
-            {
                 player.SendPacket(new MyTargetSelected(ObjId, 0));
-            }
             else
-            {
                 player.SendActionFailed();
-            }
         }
 
         public void ShowPrivateWarehouse(L2Player player)
@@ -262,9 +254,7 @@ namespace L2dotNET.GameService.Model.Npcs
             else
             {
                 if (player.Clan.Level != 0)
-                {
                     return;
-                }
 
                 player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
                 player.SendActionFailed();
@@ -279,9 +269,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public override void BroadcastUserInfo()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
-            {
                 obj.SendPacket(new NpcInfo(this));
-            }
         }
 
         public override void OnSpawn()
@@ -300,30 +288,22 @@ namespace L2dotNET.GameService.Model.Npcs
                 if (e.GetLv > player.Level)
                 {
                     if (nextLvl > e.GetLv)
-                    {
                         nextLvl = e.GetLv;
-                    }
                     continue;
                 }
 
                 if (list.ContainsKey(e.Id))
-                {
                     continue;
-                }
 
                 if (player.Skills.ContainsKey(e.Id))
                 {
                     Skill skill = player.Skills[e.Id];
 
                     if (skill.Level >= e.Lv)
-                    {
                         continue;
-                    }
 
                     if (list.ContainsKey(e.Id))
-                    {
                         continue;
-                    }
 
                     list.Add(e.Id, e);
                     break;
@@ -342,13 +322,9 @@ namespace L2dotNET.GameService.Model.Npcs
                 }
 
                 if (nextLvl != 800)
-                {
                     player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.DoNotHaveFurtherSkillsToLearnS1).AddNumber(nextLvl));
-                }
                 else
-                {
                     player.SendSystemMessage(SystemMessage.SystemMessageId.NoMoreSkillsToLearn);
-                }
 
                 player.SendActionFailed();
                 return;
@@ -367,9 +343,7 @@ namespace L2dotNET.GameService.Model.Npcs
             base.DoDie(killer, bytrigger);
 
             if (Template.CorpseTime <= 0)
-            {
                 return;
-            }
 
             _corpseTimer = new Timer(Template.CorpseTime * 1000);
             _corpseTimer.Elapsed += new ElapsedEventHandler(RemoveCorpse);
@@ -385,9 +359,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public override void DeleteByForce()
         {
             if ((_corpseTimer != null) && _corpseTimer.Enabled)
-            {
                 _corpseTimer.Enabled = false;
-            }
 
             base.DeleteByForce();
         }
@@ -400,9 +372,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public void ConsumeBody()
         {
             if (_corpseTimer != null)
-            {
                 _corpseTimer.Enabled = false;
-            }
 
             _corpseTimer = null;
 
@@ -433,6 +403,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {
             cha.SendMessage("L2Npc.CastBuffForQuestReward " + skillId);
+            //TODO: Fix the unassigned objected created
             new BuffForQuestReward(this, cha, skillId);
         }
     }

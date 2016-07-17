@@ -68,20 +68,21 @@ namespace L2dotNET.GameService.AI.NpcAI
                     if (reply == 1)
                     {
                         if (talker.Level < 40)
-                        {
                             talker.ShowHtm("reflect_weapon_none.htm", Myself);
-                        }
-                        else if ((talker.Level >= 40) && (talker.Level < 46))
+                        else
                         {
-                            talker.ShowHtm("reflect_weapon_d.htm", Myself);
-                        }
-                        else if ((talker.Level >= 46) && (talker.Level < 52))
-                        {
-                            talker.ShowHtm("reflect_weapon_c.htm", Myself);
-                        }
-                        else if (talker.Level >= 52)
-                        {
-                            talker.ShowHtm("reflect_weapon_b.htm", Myself);
+                            if ((talker.Level >= 40) && (talker.Level < 46))
+                                talker.ShowHtm("reflect_weapon_d.htm", Myself);
+                            else
+                            {
+                                if ((talker.Level >= 46) && (talker.Level < 52))
+                                    talker.ShowHtm("reflect_weapon_c.htm", Myself);
+                                else
+                                {
+                                    if (talker.Level >= 52)
+                                        talker.ShowHtm("reflect_weapon_b.htm", Myself);
+                                }
+                            }
                         }
                     }
                     break;

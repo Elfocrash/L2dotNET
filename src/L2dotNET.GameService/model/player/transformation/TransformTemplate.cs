@@ -40,14 +40,10 @@ namespace L2dotNET.GameService.Model.Player.Transformation
             player.BroadcastUserInfo();
 
             if ((Skills == null) || (Skills.Count <= 0))
-            {
                 return;
-            }
 
             foreach (Skill sk in Skills.Select(s => SkillTable.Instance.Get(s[0], s[1])).Where(sk => sk != null))
-            {
                 player.AddSkill(sk, false, false);
-            }
 
             player.UpdateSkillList();
         }
@@ -55,22 +51,16 @@ namespace L2dotNET.GameService.Model.Player.Transformation
         public virtual void OnTransformEnd(L2Player player)
         {
             if (MoveMode > 0)
-            {
                 player.MountType = 0;
-            }
             player.MountedTemplate = null;
             player.TransformId = 0;
             player.BroadcastUserInfo();
 
             if ((Skills == null) || (Skills.Count <= 0))
-            {
                 return;
-            }
 
             foreach (int[] s in Skills)
-            {
                 player.RemoveSkill(s[0], false, false);
-            }
 
             player.UpdateSkillList();
         }

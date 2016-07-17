@@ -51,14 +51,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(_player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand) != null ? 40 : 20); // 20 no weapon, 40 weapon equipped
 
             for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
-            {
                 WriteD(_player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
-            }
 
             for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
-            {
                 WriteD(_player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
-            }
 
             // c6 new h's
             WriteH(0x00);
@@ -151,9 +147,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             WriteH(_player.Cubics.Count);
             foreach (Cubic cub in _player.Cubics)
-            {
                 WriteH(cub.Template.Id);
-            }
 
             WriteC(0); //1-isInPartyMatchRoom
 

@@ -62,14 +62,10 @@ namespace L2dotNET.Network
         public virtual bool ValidateRequest(Socket socket)
         {
             if ((socket == null) || !socket.Connected)
-            {
                 return false;
-            }
 
             if (!_mEnabled)
-            {
                 return true;
-            }
 
             if (ValidateRules(socket))
             {
@@ -121,18 +117,12 @@ namespace L2dotNET.Network
             set
             {
                 if (_mEnabled == value)
-                {
                     return;
-                }
 
                 if (value)
-                {
                     Enable();
-                }
                 else
-                {
                     Disable();
-                }
             }
         }
     }

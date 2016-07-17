@@ -185,19 +185,13 @@ namespace L2dotNET.Network
             Console.WriteLine($"Sending:\r\n{L2Buffer.ToString(buffer)}");
             //#endif
             if ((MSocket == null) || !MSocket.Connected)
-            {
                 return;
-            }
 
             lock (MLock)
-            {
                 MSendQueue.Enqueue(buffer);
-            }
 
             if (MSendReadyFlag)
-            {
                 SendCallback(null);
-            }
         }
 
         /// <summary>
@@ -206,9 +200,7 @@ namespace L2dotNET.Network
         public virtual void CloseConnection()
         {
             if ((MSocket == null) || !MSocket.Connected)
-            {
                 return;
-            }
 
             try
             {

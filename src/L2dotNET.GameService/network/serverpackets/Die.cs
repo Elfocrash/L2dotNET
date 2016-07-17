@@ -23,9 +23,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public void AddItem(int id)
         {
             if (_items == null)
-            {
                 _items = new List<int>();
-            }
 
             _items.Add(id);
         }
@@ -35,12 +33,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _sId = cha.ObjId;
 
             if (cha is L2Player)
-            {
                 DiePlayer((L2Player)cha);
-            }
-            else if (cha is L2Warrior)
+            else
             {
-                _mSpoil = ((L2Warrior)cha).SpoilActive ? 1 : 0;
+                if (cha is L2Warrior)
+                    _mSpoil = ((L2Warrior)cha).SpoilActive ? 1 : 0;
             }
         }
 
@@ -77,14 +74,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(_items?.Count ?? 0); //22+
 
             if (_items == null)
-            {
                 return;
-            }
 
             foreach (int id in _items)
-            {
                 WriteD(id);
-            }
         }
     }
 }

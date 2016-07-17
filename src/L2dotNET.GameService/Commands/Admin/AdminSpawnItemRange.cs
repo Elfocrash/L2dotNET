@@ -28,9 +28,7 @@ namespace L2dotNET.GameService.Commands.Admin
                 ItemTemplate item = ItemTable.Instance.GetItem(i);
 
                 if (item == null)
-                {
                     admin.SendMessage("Item with id " + i + " not exists.");
-                }
                 else
                 {
                     admin.AddItem(i, 1);
@@ -39,9 +37,7 @@ namespace L2dotNET.GameService.Commands.Admin
             }
 
             if (x)
-            {
                 admin.SendItemList(true);
-            }
         }
     }
 }

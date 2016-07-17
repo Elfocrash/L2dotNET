@@ -21,18 +21,14 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
             if (!_tempSuccess)
-            {
                 return Nothing;
-            }
 
             //double shieldDef = Formulas.checkShieldDef(caster, target);
             double damage = Formulas.GetPhysSkillHitDamage(caster, target, _power);
 
             caster.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddPlayerName(caster.Name).AddString(target.Name).AddNumber(damage));
             if (target is L2Player)
-            {
                 target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddPlayerName(target.Name).AddPlayerName(caster.Name).AddNumber(damage));
-            }
 
             target.ReduceHp(caster, damage);
 

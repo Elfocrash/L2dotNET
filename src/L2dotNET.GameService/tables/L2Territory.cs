@@ -21,26 +21,25 @@ namespace L2dotNET.GameService.Tables
             long value = Convert.ToInt32(respawn.Remove(respawn.Length - 1));
 
             if (respawn.Contains("s"))
-            {
                 value *= 1000;
-            }
-            else if (respawn.Contains("m"))
+            else
             {
-                value *= 60000;
-            }
-            else if (respawn.Contains("h"))
-            {
-                value *= 3600000;
-            }
-            else if (respawn.Contains("d"))
-            {
-                value *= 86400000;
+                if (respawn.Contains("m"))
+                    value *= 60000;
+                else
+                {
+                    if (respawn.Contains("h"))
+                        value *= 3600000;
+                    else
+                    {
+                        if (respawn.Contains("d"))
+                            value *= 86400000;
+                    }
+                }
             }
 
             for (int a = 0; a < count; a++)
-            {
                 Spawns.Add(new L2Spawn(id, value, this, pos));
-            }
         }
 
         public void AddPoint(string[] loc)
@@ -85,9 +84,7 @@ namespace L2dotNET.GameService.Tables
         public void Spawn()
         {
             foreach (L2Spawn sp in Spawns)
-            {
                 sp.Init();
-            }
         }
 
         public int[] GetSpawnLocation()
@@ -98,9 +95,7 @@ namespace L2dotNET.GameService.Tables
                 int rndy = Rnd.Next(Territory.minY, Territory.maxY);
 
                 if (Territory.isInsideZone(rndx, rndy))
-                {
                     return new[] { rndx, rndy, Territory.getHighZ() };
-                }
             }
 
             Log.Error("getSpawnLocation failed after 400 tries. omg!");
@@ -110,9 +105,7 @@ namespace L2dotNET.GameService.Tables
         public void SunRise(bool y)
         {
             foreach (L2Spawn sp in Spawns)
-            {
                 sp.SunRise(y);
-            }
         }
     }
 }

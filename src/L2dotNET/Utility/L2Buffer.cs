@@ -19,9 +19,7 @@ namespace L2dotNET.Utility
         public static unsafe byte[] Copy(byte[] source, int srcOffset, byte[] destination, int destOffset, int size)
         {
             fixed (byte* src = source, dst = destination)
-            {
                 Copy(src, srcOffset, dst, destOffset, size);
-            }
 
             return destination;
         }
@@ -60,9 +58,7 @@ namespace L2dotNET.Utility
             }
 
             while (index < size)
-            {
                 *(dst + index) = *(src + index++);
-            }
 
             //srcOffset += size;
         }
@@ -100,9 +96,7 @@ namespace L2dotNET.Utility
             }
 
             while (index < size)
-            {
                 *(dst + index) = *(w + index++);
-            }
         }
 
         /// <summary>
@@ -144,9 +138,7 @@ namespace L2dotNET.Utility
                 }
 
                 while ((length - index) > 0)
-                {
                     *(dst + index) = *(src + index++);
-                }
             }
 
             return destiny;
@@ -270,13 +262,9 @@ namespace L2dotNET.Utility
                     hex += buffer[index + i].ToString("x2") + " ";
 
                     if ((buffer[i + index] > 31) && (buffer[i + index] < 127))
-                    {
                         data += (char)buffer[i + index];
-                    }
                     else
-                    {
                         data += ".";
-                    }
                 }
 
                 while (i < 16)
@@ -306,9 +294,7 @@ namespace L2dotNET.Utility
             bytesCount = srcOffset + bytesCount;
 
             while ((srcOffset < bytesCount) && (src[srcOffset] != 0))
-            {
                 dst += (char)src[srcOffset++];
-            }
         }
 
         /// <summary>
@@ -345,16 +331,12 @@ namespace L2dotNET.Utility
         public static TU[] Copy<TU>(TU[] source, long srcOffset, TU[] destination, long dstOffset, long length)
         {
             if ((length > (source.Length - srcOffset)) || (length > (destination.Length - dstOffset)))
-            {
                 throw new InvalidOperationException();
-            }
 
             length += srcOffset;
 
             while (srcOffset < length)
-            {
                 destination[dstOffset++] = source[srcOffset++];
-            }
 
             return destination;
         }

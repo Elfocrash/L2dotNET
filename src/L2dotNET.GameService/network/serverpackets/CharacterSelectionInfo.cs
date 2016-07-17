@@ -36,13 +36,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteD((int)player.BaseClass.ClassId.ClassRace);
 
                 if (player.ActiveClass.ClassId.Id == player.BaseClass.ClassId.Id)
-                {
                     WriteD((int)player.ActiveClass.ClassId.Id);
-                }
                 else
-                {
                     WriteD((int)player.BaseClass.ClassId.Id);
-                }
 
                 WriteD(0x01); // active ??
 
@@ -70,14 +66,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteD(0);
 
                 for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
-                {
                     WriteD(player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
-                }
 
                 for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
-                {
                     WriteD(player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
-                }
 
                 WriteD(player.HairStyle);
                 WriteD(player.HairColor);
@@ -92,14 +84,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 int selection = 0;
 
                 if (CharId != -1)
-                {
                     selection = CharId == player.ObjId ? 1 : 0;
-                }
 
                 if ((CharId == -1) && (player.LastAccountSelection == 1))
-                {
                     selection = 1;
-                }
 
                 WriteD(selection); // auto-select char
                 WriteC(player.GetEnchantValue());

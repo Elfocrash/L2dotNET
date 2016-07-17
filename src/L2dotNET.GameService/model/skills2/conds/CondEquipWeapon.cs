@@ -10,9 +10,7 @@ namespace L2dotNET.GameService.Model.Skills2.Conds
         public void Add(string mask)
         {
             if (!_allowed.Contains(mask))
-            {
                 _allowed.Add(mask);
-            }
         }
 
         public override bool CanUse(L2Player player, Skill skill)

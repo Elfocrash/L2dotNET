@@ -32,17 +32,23 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 player.SendPacket(new ShowBoard(null, "102"));
                 player.SendPacket(new ShowBoard(null, "103"));
             }
-            else if (html.Length < (BbsMax * 2))
+            else
             {
-                player.SendPacket(new ShowBoard(html.Remove(BbsMax), "101"));
-                player.SendPacket(new ShowBoard(html.Substring(BbsMax), "102"));
-                player.SendPacket(new ShowBoard(null, "103"));
-            }
-            else if (html.Length < (BbsMax * 3))
-            {
-                player.SendPacket(new ShowBoard(html.Remove(BbsMax), "101"));
-                player.SendPacket(new ShowBoard(html.Substring(BbsMax).Remove(BbsMax), "102"));
-                player.SendPacket(new ShowBoard(html.Substring(BbsMax * 2), "103"));
+                if (html.Length < (BbsMax * 2))
+                {
+                    player.SendPacket(new ShowBoard(html.Remove(BbsMax), "101"));
+                    player.SendPacket(new ShowBoard(html.Substring(BbsMax), "102"));
+                    player.SendPacket(new ShowBoard(null, "103"));
+                }
+                else
+                {
+                    if (html.Length >= (BbsMax * 3))
+                        return;
+
+                    player.SendPacket(new ShowBoard(html.Remove(BbsMax), "101"));
+                    player.SendPacket(new ShowBoard(html.Substring(BbsMax).Remove(BbsMax), "102"));
+                    player.SendPacket(new ShowBoard(html.Substring(BbsMax * 2), "103"));
+                }
             }
         }
 
@@ -61,15 +67,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             string st = _id + "\u0008";
             if (!_id.EqualsIgnoreCase("1002"))
-            {
                 st += _htmlCode;
-            }
             else
             {
                 foreach (string s in _arg)
-                {
                     st += s + " \u0008";
-                }
             }
 
             WriteS(st);

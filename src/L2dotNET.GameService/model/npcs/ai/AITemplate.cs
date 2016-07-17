@@ -24,9 +24,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         public int GetValueInt(string p)
         {
             if (Parameters.ContainsKey(p))
-            {
                 return int.Parse(Parameters[p]);
-            }
 
             return -1;
         }
@@ -34,9 +32,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         public int[] GetValueSkill(string p)
         {
             if (!Parameters.ContainsKey(p))
-            {
                 return null;
-            }
 
             string[] str = Parameters[p].Split('-');
             return new[] { int.Parse(str[0]), int.Parse(str[1]) }; //;

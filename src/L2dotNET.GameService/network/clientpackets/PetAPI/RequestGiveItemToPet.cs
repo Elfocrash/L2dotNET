@@ -56,12 +56,11 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
             }
 
             if (_num < 0)
-            {
                 _num = 1;
-            }
-            else if (_num > item.Count)
+            else
             {
-                _num = item.Count;
+                if (_num > item.Count)
+                    _num = item.Count;
             }
 
             //List<long[]> items = new List<long[]>

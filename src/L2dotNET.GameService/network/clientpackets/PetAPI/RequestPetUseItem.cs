@@ -46,9 +46,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
             L2Item item = pet.Inventory.Items[_sId];
 
             if (ItemHandler.Instance.Process(pet, item))
-            {
                 return;
-            }
 
             player.SendActionFailed();
         }

@@ -24,9 +24,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _count = ReadD();
 
             if ((_count < 0) || (_count > 255))
-            {
                 _count = 0;
-            }
 
             _items = new long[_count * 2];
             for (int i = 0; i < _count; i++)
@@ -66,18 +64,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (item.Template.Stackable)
-                {
                     slots += 1;
-                }
                 else
-                {
                     slots += (int)count;
-                }
 
                 if (item.Template.ItemId == 57)
-                {
                     adenatransfer += count;
-                }
             }
 
             if ((player.GetAdena() - adenatransfer) < fee)

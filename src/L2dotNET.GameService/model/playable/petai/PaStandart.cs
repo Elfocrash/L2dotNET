@@ -23,21 +23,15 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
         public override void DoFollow(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {
             if (_pet.CantMove())
-            {
                 return;
-            }
 
             double dis = Calcs.CalculateDistance(_pet, _pet.Owner, true);
 
             if (!(dis > 120))
-            {
                 return;
-            }
 
             if ((_lastOwnerX == _pet.Owner.X) || (_lastOwnerY == _pet.Owner.Y) || (_lastOwnerZ == _pet.Owner.Z))
-            {
                 return;
-            }
 
             _pet.MoveTo(_pet.Owner.X, _pet.Owner.Y, _pet.Owner.Z);
 
@@ -49,9 +43,7 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
         public override void DoThink(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {
             if (!((_pet.CurrentTime / (float)_pet.MaxTime) < 0.55))
-            {
                 return;
-            }
 
             _under55Percent = DateTime.Now;
             _pet.Owner.SendSystemMessage(SystemMessage.SystemMessageId.YourPetIsVeryHungry);

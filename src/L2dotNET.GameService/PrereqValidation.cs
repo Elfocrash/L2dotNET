@@ -20,16 +20,12 @@ namespace L2dotNET.GameService
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new PreReqValidation();
-                    }
                 }
 
                 return _instance;
@@ -39,9 +35,7 @@ namespace L2dotNET.GameService
         public void Initialize()
         {
             if (CheckService.PreCheckRepository())
-            {
                 return;
-            }
 
             Log.Warn("Some checks have failed. Please correct the errors and try again.");
             Log.Info("Press ENTER to exit...");

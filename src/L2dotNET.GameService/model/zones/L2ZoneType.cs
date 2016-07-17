@@ -54,16 +54,12 @@ namespace L2dotNET.GameService.Model.Zones
         public void RevalidateInZone(L2Character character)
         {
             if (!IsAffected(character))
-            {
                 return;
-            }
 
             if (IsInsideZone(character.X, character.Y, character.Z))
             {
                 if (CharacterList.Contains(character))
-                {
                     return;
-                }
                 //quest check here
                 CharacterList.Add(character);
                 OnEnter(character);
@@ -71,9 +67,7 @@ namespace L2dotNET.GameService.Model.Zones
             else
             {
                 if (!CharacterList.Contains(character))
-                {
                     return;
-                }
                 //quest check here
                 CharacterList.Remove(character);
                 OnExit(character);
@@ -83,9 +77,7 @@ namespace L2dotNET.GameService.Model.Zones
         public void RemoveCharacter(L2Character character)
         {
             if (!CharacterList.Contains(character))
-            {
                 return;
-            }
             //quest check here
             CharacterList.Remove(character);
             OnEnter(character);
@@ -114,14 +106,10 @@ namespace L2dotNET.GameService.Model.Zones
         public void BroadcastPacket(GameServerNetworkPacket packet)
         {
             if (CharacterList.Count == 0)
-            {
                 return;
-            }
 
             foreach (L2Player character in CharacterList.OfType<L2Player>())
-            {
                 character.SendPacket(packet);
-            }
         }
     }
 }

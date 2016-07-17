@@ -49,9 +49,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             if (account == null)
             {
                 if (Config.Config.Instance.ServerConfig.AutoCreate)
-                {
                     account = AccountService.CreateAccount(username, L2Security.HashPassword(password));
-                }
                 else
                 {
                     _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonUserOrPassWrong));

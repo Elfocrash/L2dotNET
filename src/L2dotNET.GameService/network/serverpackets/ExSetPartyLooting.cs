@@ -8,9 +8,7 @@
         public ExSetPartyLooting(short voteId)
         {
             if (voteId == -1)
-            {
                 return;
-            }
 
             _result = 1;
             _mode = voteId;

@@ -17,9 +17,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
             if (target is L2Player)
-            {
                 TransformManager.GetInstance().TransformTo(_transformId, (L2Player)target, -1);
-            }
 
             return Nothing;
         }
@@ -27,9 +25,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override EffectResult OnEnd(L2Character caster, L2Character target)
         {
             if (target is L2Player)
-            {
                 ((L2Player)target).Untransform();
-            }
 
             return Nothing;
         }
@@ -37,9 +33,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override bool CanUse(L2Character caster)
         {
             if (!(caster is L2Player))
-            {
                 return false;
-            }
 
             L2Player player = (L2Player)caster;
             if (player.Summon != null)
@@ -77,9 +71,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             }
 
             if (!player.IsOnShip() && (player.Boat == null))
-            {
                 return true;
-            }
 
             player.SendSystemMessage(SystemMessage.SystemMessageId.CannotPolymorphWhileRidingBoat);
             player.SendActionFailed();

@@ -45,9 +45,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                                                                   Z = int.Parse(e.Attribute("z").Value),
                                                                   Id = ab.Teles.Count
                                                               })
-                        {
                             ab.Teles.Add(ae.Id, ae);
-                        }
 
                         Groups.Add(ab.Id, ab);
                     }
@@ -68,9 +66,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             ABTeleportGroup gr = Groups[groupId];
             StringBuilder sb = new StringBuilder("<button value=\"Back\" action=\"bypass -h admin?ask=3&reply=0\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><center><font color=\"Blue\">Region : </font><font color=\"LEVEL\">" + gr.Name + "</font><br>");
             foreach (ABTeleportEntry e in gr.Teles.Values)
-            {
                 sb.Append("<button value=\"" + e.Name + "\" action=\"bypass -h admin?ask=2&reply=" + e.Id + "\" width=150 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><br1>");
-            }
 
             sb.Append("</center>");
 
@@ -93,9 +89,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                 count++;
                 sb.Append("<td><button value=\"" + gr.Name + "\" action=\"bypass -h admin?ask=1&reply=" + gr.Id + "\" width=135 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>");
                 if (count != 2)
-                {
                     continue;
-                }
 
                 sb.Append("</tr>");
                 sb.Append("<tr>");
@@ -113,9 +107,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
         public void Use(L2Player player, int reply)
         {
             if ((player.ViewingAdminTeleportGroup != -1) && Groups.ContainsKey(player.ViewingAdminTeleportGroup))
-            {
                 return;
-            }
 
             player.SendMessage("teleport group #" + player.ViewingAdminTeleportGroup + " was not found.");
             player.SendActionFailed();

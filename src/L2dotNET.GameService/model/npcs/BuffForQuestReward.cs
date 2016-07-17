@@ -26,9 +26,7 @@ namespace L2dotNET.GameService.Model.Npcs
         private void Run()
         {
             if ((Cha == null) || (_npc == null) || (_skill == null))
-            {
                 return;
-            }
 
             Thread.Sleep(_skill.SkillHitTime);
             Cha.AddEffect(_npc, _skill, true, false);

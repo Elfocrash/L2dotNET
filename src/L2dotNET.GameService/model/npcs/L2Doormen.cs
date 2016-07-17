@@ -19,9 +19,7 @@ namespace L2dotNET.GameService.Model.Npcs
         public override void NotifyAction(L2Player player)
         {
             if (_hideout.ownerId != player.ClanId)
-            {
                 return;
-            }
 
             NpcHtmlMessage htm = new NpcHtmlMessage(player, "agitjanitorhi.htm", ObjId);
             htm.Replace("<?my_pledge_name?>", player.Clan.Name);

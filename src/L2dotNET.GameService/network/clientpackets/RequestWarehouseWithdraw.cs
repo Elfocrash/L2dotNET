@@ -24,9 +24,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _count = ReadD();
 
             if ((_count < 0) || (_count > 255))
-            {
                 _count = 0;
-            }
 
             _items = new int[_count * 2];
             for (int i = 0; i < _count; i++)
@@ -64,13 +62,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (item.Template.Stackable)
-                {
                     slots += 1;
-                }
                 else
-                {
                     slots += count;
-                }
             }
 
             //InvPrivateWarehouse pw = player._warehouse ?? new InvPrivateWarehouse(player);

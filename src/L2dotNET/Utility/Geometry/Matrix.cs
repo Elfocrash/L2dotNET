@@ -248,13 +248,9 @@ namespace L2dotNET.Utility.Geometry
             vector.Z = objectPosition.Z - cameraPosition.Z;
             double num = vector.LengthSquared();
             if (num < 0.0001f)
-            {
                 vector = cameraForwardVector.HasValue ? -cameraForwardVector.Value : Vector3.Forward;
-            }
             else
-            {
                 Vector3.Multiply(ref vector, 1f / Math.Sqrt(num), out vector);
-            }
 
             Vector3.Cross(ref cameraUpVector, ref vector, out vector3);
             vector3.Normalize();
@@ -289,13 +285,9 @@ namespace L2dotNET.Utility.Geometry
             vector2.Z = objectPosition.Z - cameraPosition.Z;
             double num2 = vector2.LengthSquared();
             if (num2 < 0.0001f)
-            {
                 vector2 = cameraForwardVector.HasValue ? -cameraForwardVector.Value : Vector3.Forward;
-            }
             else
-            {
                 Vector3.Multiply(ref vector2, 1f / Math.Sqrt(num2), out vector2);
-            }
 
             Vector3 vector4 = rotateAxis;
             Vector3.Dot(ref rotateAxis, ref vector2, out num);
@@ -358,13 +350,9 @@ namespace L2dotNET.Utility.Geometry
             vector2.Z = objectPosition.Z - cameraPosition.Z;
             double num2 = vector2.LengthSquared();
             if (num2 < 0.0001f)
-            {
                 vector2 = cameraForwardVector.HasValue ? -cameraForwardVector.Value : Vector3.Forward;
-            }
             else
-            {
                 Vector3.Multiply(ref vector2, 1f / Math.Sqrt(num2), out vector2);
-            }
 
             Vector3 vector4 = rotateAxis;
             Vector3.Dot(ref rotateAxis, ref vector2, out num);
@@ -703,17 +691,11 @@ namespace L2dotNET.Utility.Geometry
         {
             Matrix matrix;
             if (nearPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
-            }
             if (farPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("farPlaneDistance <= 0");
-            }
             if (nearPlaneDistance >= farPlaneDistance)
-            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
-            }
 
             matrix.M11 = (2f * nearPlaneDistance) / width;
             matrix.M12 = matrix.M13 = matrix.M14 = 0f;
@@ -730,17 +712,11 @@ namespace L2dotNET.Utility.Geometry
         public static void CreatePerspective(double width, double height, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
         {
             if (nearPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
-            }
             if (farPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("farPlaneDistance <= 0");
-            }
             if (nearPlaneDistance >= farPlaneDistance)
-            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
-            }
 
             result.M11 = (2f * nearPlaneDistance) / width;
             result.M12 = result.M13 = result.M14 = 0f;
@@ -757,21 +733,13 @@ namespace L2dotNET.Utility.Geometry
         {
             Matrix matrix;
             if ((fieldOfView <= 0f) || (fieldOfView >= 3.141593f))
-            {
                 throw new ArgumentException("fieldOfView <= 0 O >= PI");
-            }
             if (nearPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
-            }
             if (farPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("farPlaneDistance <= 0");
-            }
             if (nearPlaneDistance >= farPlaneDistance)
-            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
-            }
 
             double num = 1f / Math.Tan(fieldOfView * 0.5f);
             double num9 = num / aspectRatio;
@@ -790,21 +758,13 @@ namespace L2dotNET.Utility.Geometry
         public static void CreatePerspectiveFieldOfView(double fieldOfView, double aspectRatio, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
         {
             if ((fieldOfView <= 0f) || (fieldOfView >= 3.141593f))
-            {
                 throw new ArgumentException("fieldOfView <= 0 or >= PI");
-            }
             if (nearPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
-            }
             if (farPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("farPlaneDistance <= 0");
-            }
             if (nearPlaneDistance >= farPlaneDistance)
-            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
-            }
 
             double num = 1f / Math.Tan(fieldOfView * 0.5f);
             double num9 = num / aspectRatio;
@@ -823,17 +783,11 @@ namespace L2dotNET.Utility.Geometry
         {
             Matrix matrix;
             if (nearPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
-            }
             if (farPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("farPlaneDistance <= 0");
-            }
             if (nearPlaneDistance >= farPlaneDistance)
-            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
-            }
 
             matrix.M11 = (2f * nearPlaneDistance) / (right - left);
             matrix.M12 = matrix.M13 = matrix.M14 = 0f;
@@ -851,17 +805,11 @@ namespace L2dotNET.Utility.Geometry
         public static void CreatePerspectiveOffCenter(double left, double right, double bottom, double top, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
         {
             if (nearPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("nearPlaneDistance <= 0");
-            }
             if (farPlaneDistance <= 0f)
-            {
                 throw new ArgumentException("farPlaneDistance <= 0");
-            }
             if (nearPlaneDistance >= farPlaneDistance)
-            {
                 throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
-            }
 
             result.M11 = (2f * nearPlaneDistance) / (right - left);
             result.M12 = result.M13 = result.M14 = 0f;
@@ -1317,9 +1265,7 @@ namespace L2dotNET.Utility.Geometry
         {
             bool flag = false;
             if (obj is Matrix)
-            {
                 flag = Equals((Matrix)obj);
-            }
             return flag;
         }
 

@@ -40,9 +40,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(_level);
             WriteD(_targets.Length);
             foreach (int tid in _targets)
-            {
                 WriteD(tid);
-            }
         }
     }
 }

@@ -43,34 +43,30 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y)
         {
-            int d = x - X;
+            int d;
+
+            d = x - X;
             if ((d < 0) || (d > W))
-            {
                 return false;
-            }
 
             d = y - Y;
             if ((d < 0) || (d > H))
-            {
                 return false;
-            }
 
             return true;
         }
 
         public override bool IsInside(int x, int y, int z)
         {
-            int d = x - X;
+            int d;
+
+            d = x - X;
             if ((d < 0) || (d > W))
-            {
                 return false;
-            }
 
             d = y - Y;
             if ((d < 0) || (d > H))
-            {
                 return false;
-            }
 
             return true;
         }

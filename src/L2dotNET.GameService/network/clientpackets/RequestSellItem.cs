@@ -59,13 +59,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 L2Item item = player.Inventory.Items[objectId];
 
                 if (item.Template.Stackable)
-                {
                     totalCost += (int)(item.Count * (item.Template.ReferencePrice * .5));
-                }
                 else
-                {
                     totalCost += (int)(item.Template.ReferencePrice * .5);
-                }
 
                 weight += item.Template.Weight;
             }
@@ -80,13 +76,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             int added,
                 currentAdena = player.GetAdena();
             if ((currentAdena + totalCost) >= int.MaxValue)
-            {
                 added = int.MaxValue - currentAdena;
-            }
             else
-            {
                 added = (int)totalCost;
-            }
 
             List<long[]> transfer = new List<long[]>();
             //InventoryUpdate iu = new InventoryUpdate();
@@ -106,9 +98,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.SendPacket(new ExBuySellListClose());
 
             if (weight != 0)
-            {
                 player.UpdateWeight();
-            }
 
             //if (npc.Template.fnSell != null)
             //{

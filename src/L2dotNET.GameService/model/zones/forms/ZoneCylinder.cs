@@ -28,53 +28,33 @@ namespace L2dotNET.GameService.Model.Zones.Forms
         public override bool intersectsRectangle(int ax1, int ax2, int ay1, int ay2)
         {
             if ((_x > ax1) && (_x < ax2) && (_y > ay1) && (_y < ay2))
-            {
                 return true;
-            }
 
             if ((Math.Pow(ax1 - _x, 2) + Math.Pow(ay1 - _y, 2)) < _radS)
-            {
                 return true;
-            }
             if ((Math.Pow(ax1 - _x, 2) + Math.Pow(ay2 - _y, 2)) < _radS)
-            {
                 return true;
-            }
             if ((Math.Pow(ax2 - _x, 2) + Math.Pow(ay1 - _y, 2)) < _radS)
-            {
                 return true;
-            }
             if ((Math.Pow(ax2 - _x, 2) + Math.Pow(ay2 - _y, 2)) < _radS)
-            {
                 return true;
-            }
 
             if ((_x > ax1) && (_x < ax2))
             {
                 if (Math.Abs(_y - ay2) < _rad)
-                {
                     return true;
-                }
                 if (Math.Abs(_y - ay1) < _rad)
-                {
                     return true;
-                }
             }
 
             if ((_y <= ay1) || (_y >= ay2))
-            {
                 return false;
-            }
 
             if (Math.Abs(_x - ax2) < _rad)
-            {
                 return true;
-            }
 
             if (Math.Abs(_x - ax1) < _rad)
-            {
                 return true;
-            }
 
             return false;
         }

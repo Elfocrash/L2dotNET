@@ -119,9 +119,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             WriteH(_player.Cubics.Count);
             foreach (Cubic cub in _player.Cubics)
-            {
                 WriteH(cub.Template.Id);
-            }
 
             WriteC(0x00); //1-_activeChar.isInPartyMatchRoom()
 
@@ -140,9 +138,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             byte hero = _player.Heroic;
             if (_player.TransformId != 0)
-            {
                 hero = 0;
-            }
 
             WriteC(hero);
 

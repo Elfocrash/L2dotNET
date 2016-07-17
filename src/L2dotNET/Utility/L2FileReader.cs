@@ -71,23 +71,17 @@ namespace L2dotNET.Utility
             IntPtr handle = Open(fileName);
 
             if (handle == IntPtr.Zero)
-            {
                 throw new FileNotFoundException($"File '{fileName}' can't be found.");
-            }
 
             byte[] buffer = new byte[lengthToRead];
 
             fixed (byte* buf = buffer)
             {
                 if (!ReadFile(handle, buf, lengthToRead, &lengthToRead, 0x00))
-                {
                     throw new FileLoadException($"Failed to read {lengthToRead} bytes from file '{fileName}'.");
-                }
 
                 if (!CloseHandle(handle))
-                {
                     throw new IOException($"Failed to close file handle for '{fileName}'");
-                }
 
                 return buffer;
             }
@@ -104,9 +98,7 @@ namespace L2dotNET.Utility
         public static FileInfo[] GetFiles(string directory, string mask, SearchOption searchHow)
         {
             if (Directory.Exists(directory))
-            {
                 return new DirectoryInfo(directory).GetFiles(mask, searchHow);
-            }
 
             throw new DirectoryNotFoundException($"Directory '{directory}' can't be found.");
         }

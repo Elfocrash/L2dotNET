@@ -22,9 +22,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
             for (byte a = 1; a <= 16; a++)
             {
                 if (lv == 8)
-                {
                     lv = 101;
-                }
 
                 Register(new HealCubic(3, lv, 4051, a));
                 lv++;

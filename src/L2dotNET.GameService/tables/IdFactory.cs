@@ -25,16 +25,12 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new IdFactory();
-                    }
                 }
 
                 return _instance;

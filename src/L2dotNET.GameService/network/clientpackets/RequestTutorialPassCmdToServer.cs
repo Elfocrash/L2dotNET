@@ -17,9 +17,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             _alias = ReadS();
             if (_alias.Contains("\n"))
-            {
                 _alias = _alias.Replace("\n", "");
-            }
         }
 
         public override void Run()
@@ -42,8 +40,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 //  npc.onDialog(player, ask, reply);
             }
-            else if (_alias.StartsWithIgnoreCase("admin?"))
+            else
             {
+                if (!_alias.StartsWithIgnoreCase("admin?"))
+                    return;
+
                 if (player.ViewingAdminPage == 0)
                 {
                     player.SendActionFailed();

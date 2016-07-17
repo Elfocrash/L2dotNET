@@ -28,9 +28,7 @@ namespace L2dotNET.Tests
                     XmlNodeList nodes = doc.DocumentElement?.SelectNodes("/list/npc");
 
                     if (nodes == null)
-                    {
                         continue;
-                    }
 
                     foreach (XmlNode node in nodes)
                     {

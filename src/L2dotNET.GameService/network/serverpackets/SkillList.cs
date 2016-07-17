@@ -35,9 +35,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 if (passive == 0)
                 {
                     if (_blockAct == 1)
-                    {
                         blocked = 1;
-                    }
                     else
                     {
                         switch (skill.IsMagic)

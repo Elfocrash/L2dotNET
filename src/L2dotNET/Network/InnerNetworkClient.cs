@@ -64,13 +64,9 @@ namespace L2dotNET.Network
         protected override void Handle(Packet packet)
         {
             if (HandleDelegate == null)
-            {
                 Console.WriteLine("Skipping handling");
-            }
             else
-            {
                 HandleDelegate(packet);
-            }
         }
 
         /// <summary>
@@ -110,13 +106,12 @@ namespace L2dotNET.Network
 
                         MSocket.BeginReceive(MReceiveBuffer, 0, 4, 0, ReceiveCallback, null);
                     }
-                    else if (MReceivedLength < MReceiveBuffer.Length) // not all data received
-                    {
-                        MSocket.BeginReceive(MReceiveBuffer, MReceivedLength, MReceiveBuffer.Length - MReceivedLength, 0, MReceiveCallback, null);
-                    }
                     else
                     {
-                        throw new InvalidOperationException();
+                        if (MReceivedLength < MReceiveBuffer.Length) // not all data received
+                            MSocket.BeginReceive(MReceiveBuffer, MReceivedLength, MReceiveBuffer.Length - MReceivedLength, 0, MReceiveCallback, null);
+                        else
+                            throw new InvalidOperationException();
                     }
                 }
             }

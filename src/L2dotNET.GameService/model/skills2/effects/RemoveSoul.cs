@@ -21,9 +21,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
             if (!(target is L2Player))
-            {
                 return Nothing;
-            }
 
             L2Player player = (L2Player)target;
             player.ReduceSouls(_count);

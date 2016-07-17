@@ -19,16 +19,12 @@ namespace L2dotNET.GameService.Network.LoginAuth
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new AuthThread();
-                    }
                 }
 
                 return _instance;
@@ -65,17 +61,13 @@ namespace L2dotNET.GameService.Network.LoginAuth
                 }
 
                 if (!Ltimer.Enabled)
-                {
                     Ltimer.Enabled = true;
-                }
 
                 return;
             }
 
             if ((Ltimer != null) && Ltimer.Enabled)
-            {
                 Ltimer.Enabled = false;
-            }
 
             IsConnected = true;
 
@@ -109,9 +101,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
             {
                 int rs = Nstream.EndRead(result);
                 if (rs <= 0)
-                {
                     return;
-                }
 
                 short length = BitConverter.ToInt16(_buffer, 0);
                 _buffer = new byte[length];
@@ -139,9 +129,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
         private void Termination()
         {
             if (_paused)
-            {
                 return;
-            }
 
             Log.Error("AuthThread: reconnecting...");
             Initialize();
@@ -200,9 +188,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
         public void AwaitAccount(AccountModel ta)
         {
             if (_awaitingAccounts.ContainsKey(ta.Login))
-            {
                 _awaitingAccounts.Remove(ta.Login);
-            }
 
             _awaitingAccounts.Add(ta.Login, ta);
         }
@@ -210,9 +196,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
         public AccountModel GetTa(string p)
         {
             if (!_awaitingAccounts.ContainsKey(p))
-            {
                 return null;
-            }
 
             AccountModel ta = _awaitingAccounts[p];
             _awaitingAccounts.Remove(p);

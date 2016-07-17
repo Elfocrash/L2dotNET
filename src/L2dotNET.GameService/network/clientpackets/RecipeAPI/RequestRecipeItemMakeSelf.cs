@@ -50,13 +50,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
             bool next;
 
             if (rec.Iscommonrecipe == 0)
-            {
                 next = player.PCreateItem >= rec.Level;
-            }
             else
-            {
                 next = player.PCreateCommonItem >= rec.Level;
-            }
 
             if (!next)
             {
@@ -71,9 +67,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
             player.SendPacket(su);
 
             foreach (RecipeItemEntry material in rec.Materials)
-            {
                 player.DestroyItemById(material.Item.ItemId, material.Count);
-            }
 
             if (rec.SuccessRate < 100)
             {
@@ -86,9 +80,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
             }
 
             foreach (RecipeItemEntry prod in rec.Products)
-            {
                 player.AddItem(prod.Item.ItemId, prod.Count);
-            }
 
             player.SendPacket(new RecipeItemMakeInfo(player, rec, 1));
         }

@@ -28,16 +28,12 @@ namespace L2dotNET.LoginService.GSCommunication
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new ServerThreadPool();
-                    }
                 }
 
                 return _instance;
@@ -75,9 +71,7 @@ namespace L2dotNET.LoginService.GSCommunication
             Listener.Start();
             Log.Info($"Auth server listening gameservers at {Config.Config.Instance.ServerConfig.Host}:{Config.Config.Instance.ServerConfig.GsPort}");
             while (true)
-            {
                 VerifyClient(Listener.AcceptTcpClient());
-            }
         }
 
         private void VerifyClient(TcpClient client)

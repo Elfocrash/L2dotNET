@@ -36,13 +36,9 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             }
 
             if (server.Connected == 0)
-            {
                 _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonServerMaintenance));
-            }
             else
-            {
                 _client.Send(PlayOk.ToPacket(_client));
-            }
         }
     }
 }

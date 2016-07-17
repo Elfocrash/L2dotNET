@@ -19,16 +19,12 @@ namespace L2dotNET.GameService.Network
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new NetworkBlock();
-                    }
                 }
 
                 return _instance;
@@ -45,14 +41,10 @@ namespace L2dotNET.GameService.Network
                 {
                     string line = reader.ReadLine() ?? string.Empty;
                     if (line.Length == 0)
-                    {
                         continue;
-                    }
 
                     if (line.StartsWithIgnoreCase("//"))
-                    {
                         continue;
-                    }
 
                     if (line.StartsWithIgnoreCase("d"))
                     {
@@ -63,8 +55,11 @@ namespace L2dotNET.GameService.Network
                                                     };
                         Blocks.Add(nbModel);
                     }
-                    else if (line.StartsWithIgnoreCase("m"))
+                    else
                     {
+                        if (!line.StartsWithIgnoreCase("m"))
+                            continue;
+
                         NetworkBlockModel nbModel = new NetworkBlockModel
                                                     {
                                                         Mask = line.Split(' ')[1],
@@ -81,29 +76,21 @@ namespace L2dotNET.GameService.Network
         public bool Allowed(string ip)
         {
             if (Blocks.Count == 0)
-            {
                 return true;
-            }
 
             foreach (NetworkBlockModel nbi in Blocks)
             {
                 if (nbi.DirectIp?.Equals(ip) ?? false)
                 {
                     if (nbi.Permanent)
-                    {
                         return false;
-                    }
 
                     if (nbi.TimeEnd.CompareTo(DateTime.Now) == 1)
-                    {
                         return false;
-                    }
                 }
 
                 if (nbi.Mask == null)
-                {
                     continue;
-                }
 
                 string[] a = ip.Split('.'),
                          b = nbi.Mask.Split('.');
@@ -113,26 +100,26 @@ namespace L2dotNET.GameService.Network
                     d[c] = false;
 
                     if (b[c] == "*")
-                    {
                         d[c] = true;
-                    }
-                    else if (b[c] == a[c])
+                    else
                     {
-                        d[c] = true;
-                    }
-                    else if (b[c].Contains("/"))
-                    {
-                        short n = short.Parse(b[c].Split('/')[0]),
-                              x = short.Parse(b[c].Split('/')[1]);
-                        short t = short.Parse(a[c]);
-                        d[c] = (t >= n) && (t <= x);
+                        if (b[c] == a[c])
+                            d[c] = true;
+                        else
+                        {
+                            if (!b[c].Contains("/"))
+                                continue;
+
+                            short n = short.Parse(b[c].Split('/')[0]),
+                                  x = short.Parse(b[c].Split('/')[1]);
+                            short t = short.Parse(a[c]);
+                            d[c] = (t >= n) && (t <= x);
+                        }
                     }
                 }
 
                 if (d.Any(u => u))
-                {
                     return false;
-                }
             }
 
             return true;

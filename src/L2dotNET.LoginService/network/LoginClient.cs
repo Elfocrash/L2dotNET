@@ -88,9 +88,7 @@ namespace L2dotNET.LoginService.Network
                 int rs = NetStream.EndRead(result);
 
                 if (rs <= 0)
-                {
                     return;
-                }
 
                 short length = BitConverter.ToInt16(_buffer, 0);
                 _buffer = new byte[length - 2];
@@ -117,9 +115,7 @@ namespace L2dotNET.LoginService.Network
             _buffer.CopyTo(buff, 0);
 
             if (!_loginCrypt.Decrypt(ref buff, 0, buff.Length))
-            {
                 Log.Error($"Blowfish failed on {Address}. Please restart auth server.");
-            }
             else
             {
                 Handle(new Packet(1, buff));

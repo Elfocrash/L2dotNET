@@ -10,9 +10,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
             if (!(caster is L2Player))
-            {
                 return Nothing;
-            }
 
             L2Player player = (L2Player)caster;
             L2Item item = player.GetWeaponItem();
@@ -50,9 +48,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
             }
 
             if (item.AugmentationId <= 0)
-            {
                 return true;
-            }
 
             caster.SendSystemMessage(SystemMessage.SystemMessageId.AugmentedItemCannotBeConverted);
             return false;

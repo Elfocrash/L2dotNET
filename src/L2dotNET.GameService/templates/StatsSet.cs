@@ -70,9 +70,7 @@ namespace L2dotNET.GameService.Templates
         {
             //check if the dictionary contains the key
             if (!ContainsKey(key))
-            {
                 return defaultValue;
-            }
 
             string value = base[key].ToString();
             bool toReturn;
@@ -88,9 +86,7 @@ namespace L2dotNET.GameService.Templates
         {
             //check if the dictionary contains the key
             if (!ContainsKey(key))
-            {
                 return defaultValue;
-            }
 
             string value = base[key].ToString();
             byte toReturn;
@@ -107,18 +103,12 @@ namespace L2dotNET.GameService.Templates
             object val = this[key];
 
             if (val is int[])
-            {
                 return (int[])val;
-            }
             if (val is int)
-            {
                 return new[] { int.Parse(val.ToString()) };
-            }
 
             if (!(val is string))
-            {
                 return null;
-            }
 
             string[] vals = ((string)val).Split(';');
 
@@ -126,9 +116,7 @@ namespace L2dotNET.GameService.Templates
 
             int i = 0;
             foreach (string v in vals)
-            {
                 result[i++] = int.Parse(v);
-            }
 
             return result;
         }
@@ -137,9 +125,7 @@ namespace L2dotNET.GameService.Templates
         {
             //check if the dictionary contains the key
             if (!ContainsKey(key))
-            {
                 return defaultValue;
-            }
 
             string value = base[key].ToString();
             int toReturn;
@@ -155,9 +141,7 @@ namespace L2dotNET.GameService.Templates
         {
             //check if the dictionary contains the key
             if (!ContainsKey(key))
-            {
                 return defaultValue;
-            }
 
             string value = base[key].ToString();
             float toReturn;
@@ -173,9 +157,7 @@ namespace L2dotNET.GameService.Templates
         {
             //check if the dictionary contains the key
             if (!ContainsKey(key))
-            {
                 return defaultValue;
-            }
 
             string value = base[key].ToString();
             double toReturn;
@@ -191,9 +173,7 @@ namespace L2dotNET.GameService.Templates
         {
             //check if the dictionary contains the key
             if (!ContainsKey(key))
-            {
                 return defaultValue;
-            }
 
             string value = base[key].ToString();
             return value;
@@ -210,15 +190,11 @@ namespace L2dotNET.GameService.Templates
         public T Get<T>(string key, T defaultValue = default(T)) where T : struct, IConvertible
         {
             if (string.IsNullOrWhiteSpace(key))
-            {
                 return defaultValue;
-            }
 
             //check if the dictionary contains the key
             if (!ContainsKey(key))
-            {
                 return defaultValue;
-            }
 
             string value = base[key].ToString();
 
@@ -227,9 +203,7 @@ namespace L2dotNET.GameService.Templates
                 T result;
 
                 if (Enum.TryParse(value, out result))
-                {
                     return Enum.IsDefined(typeof(T), result) ? result : Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault();
-                }
                 //  log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the first enum element.");
                 return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first element from enum. Default value is always 0, but not every enum has it.
             }
@@ -241,18 +215,14 @@ namespace L2dotNET.GameService.Templates
                                                          new[] { typeof(string), typeof(T).MakeByRefType() }, null);
 
             if (parseMethod == null)
-            {
                 return defaultValue;
-            }
 
             //create the parameter list for the function call
             object[] args = { value, default(T) };
 
             //and then call the function.
             if ((bool)parseMethod.Invoke(null, args))
-            {
                 return (T)args[1]; //if it returned true, returns converted value
-            }
             // log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the 'defaultValue' parameter.");
             return defaultValue; //if it returned false, returns defaultValue' parameter."
             //if key doesn't exists,
@@ -266,13 +236,9 @@ namespace L2dotNET.GameService.Templates
             object val = this[key];
 
             if (val is string[])
-            {
                 return (string[])val;
-            }
             if (val is string)
-            {
                 return ((string)val).Split(';');
-            }
 
             return null;
             //throw new IllegalArgumentException("StatsSet : String array required, but found: " + val + " for key: " + key + ".");

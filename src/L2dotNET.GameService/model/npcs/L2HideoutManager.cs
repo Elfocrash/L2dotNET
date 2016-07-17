@@ -45,9 +45,7 @@ namespace L2dotNET.GameService.Model.Npcs
             int lvl = _hideout.GetFuncLevel(AgitManagerAi.DecotypeBuff);
             CurMp += _ai.RegenPerSec[lvl];
             if (CurMp >= _ai.RegenMax[lvl])
-            {
                 CurMp = _ai.RegenMax[lvl];
-            }
         }
 
         public override void OnSpawn()
@@ -71,13 +69,9 @@ namespace L2dotNET.GameService.Model.Npcs
 
             int level = _hideout.GetFuncLevel(AgitManagerAi.DecotypeTeleport);
             if (level == 0)
-            {
                 player.SendPacket(new NpcHtmlMessage(player, _ai.FnFuncDisabled, ObjId));
-            }
             else
-            {
                 NpcData.Instance.RequestTeleportList(this, player, level);
-            }
         }
 
         public override void OnDialog(L2Player player, int ask, int reply)
@@ -97,9 +91,7 @@ namespace L2dotNET.GameService.Model.Npcs
                             break;
                         case 1: //doors
                             if (player.Clan.LeaderId == player.ObjId) //TODO privs
-                            {
                                 player.SendPacket(new NpcHtmlMessage(player, _ai.FnDoor, ObjId));
-                            }
                             break;
                         case 2: //banish
                             player.SendPacket(new NpcHtmlMessage(player, _ai.FnBanish, ObjId));
@@ -128,9 +120,7 @@ namespace L2dotNET.GameService.Model.Npcs
                         {
                             int level = _hideout.GetFuncLevel(AgitManagerAi.DecotypeBuff);
                             if (level == 0)
-                            {
                                 player.SendPacket(new NpcHtmlMessage(player, _ai.FnFuncDisabled, ObjId));
-                            }
                             else
                             {
                                 NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnAgitBuff + "_" + level + ".htm", ObjId);
@@ -143,13 +133,9 @@ namespace L2dotNET.GameService.Model.Npcs
                         {
                             int level = _hideout.GetFuncLevel(AgitManagerAi.DecotypeItem);
                             if (level == 0)
-                            {
                                 player.SendPacket(new NpcHtmlMessage(player, _ai.FnFuncDisabled, ObjId));
-                            }
                             else
-                            {
                                 NpcData.Instance.Buylist(player, this, (short)level);
-                            }
                         }
                             break;
                         case 51: // manage regen

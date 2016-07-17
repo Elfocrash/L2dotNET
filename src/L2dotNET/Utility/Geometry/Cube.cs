@@ -24,23 +24,19 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y, int z)
         {
-            int d = z - _z;
+            int d;
+
+            d = z - _z;
             if ((d < 0) || (d > A))
-            {
                 return false;
-            }
 
             d = x - X;
             if ((d < 0) || (d > A))
-            {
                 return false;
-            }
 
             d = y - Y;
             if ((d < 0) || (d > A))
-            {
                 return false;
-            }
 
             return true;
         }

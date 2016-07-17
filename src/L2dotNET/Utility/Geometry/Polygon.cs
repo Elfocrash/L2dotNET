@@ -28,9 +28,7 @@ namespace L2dotNET.Utility.Geometry
             {
                 // not a polygon, throw exception
                 if (points.Count < 3)
-                {
                     throw new IndexOutOfRangeException("Can not create Polygon (id=" + id + ") from less than 3 coordinates.");
-                }
 
                 // get polygon orientation
                 bool isCw = GetPolygonOrientation(points);
@@ -67,9 +65,7 @@ namespace L2dotNET.Utility.Geometry
             {
                 size -= shape.GetSize();
                 if (size < 0)
-                {
                     return shape.GetRandomLocation();
-                }
             }
 
             // should never happen
@@ -110,9 +106,7 @@ namespace L2dotNET.Utility.Geometry
 
                 // x lower, or x same and y higher
                 if ((pt[0] >= point[0]) && ((pt[0] != point[0]) || (pt[1] <= point[1])))
-                {
                     continue;
-                }
 
                 point = pt;
                 index = i;
@@ -143,9 +137,7 @@ namespace L2dotNET.Utility.Geometry
         {
             // decrease index and check for limit
             if (--index < 0)
-            {
                 return size - 1;
-            }
 
             return index;
         }
@@ -170,9 +162,7 @@ namespace L2dotNET.Utility.Geometry
                 // note: cw means res/newres is <= 0
                 bool res = ((((pointNextNext[0] * vy) - (pointNextNext[1] * vx)) + (vx * point[1])) - (vy * point[0])) > 0;
                 if (res == isCw)
-                {
                     nonConvexPoints.Add(pointNext);
-                }
             }
 
             return nonConvexPoints;
@@ -217,9 +207,7 @@ namespace L2dotNET.Utility.Geometry
                 }
 
                 if (++loops == TriangulationMaxLoops)
-                {
                     throw new Exception("Coordinates are not aligned to form monotone polygon.");
-                }
             }
 
             // add last triangle
@@ -233,9 +221,7 @@ namespace L2dotNET.Utility.Geometry
         {
             // ABC triangle
             if (!IsConvex(isCw, a, b, c))
-            {
                 return false;
-            }
 
             // iterate over all concave points and check if one of them lies inside the given triangle
             return nonConvexPoints.All(i => !IsInside(a, b, c, i));

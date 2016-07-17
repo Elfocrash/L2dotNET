@@ -28,9 +28,7 @@ namespace L2dotNET.GameService.Model.Skills2.Effects
         {
             L2Player player = (L2Player)caster;
             if (player.Summon == null)
-            {
                 return true;
-            }
 
             player.SendSystemMessage(SystemMessage.SystemMessageId.YouAlreadyHaveAPet);
             return false;

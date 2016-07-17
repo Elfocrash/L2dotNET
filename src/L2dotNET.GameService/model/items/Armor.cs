@@ -21,9 +21,7 @@ namespace L2dotNET.GameService.Model.Items
             else
             {
                 if ((_type == ArmorType.None.Id) && (BodyPart == SlotLHand)) // retail define shield as NONE
-                {
                     _type = ArmorType.Shield.Id;
-                }
 
                 Type1 = Type1ShieldArmor;
                 Type2 = Type2ShieldArmor;

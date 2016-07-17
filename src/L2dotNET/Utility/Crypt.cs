@@ -30,9 +30,7 @@
         public void Decrypt(byte[] raw)
         {
             if (!_enabled)
-            {
                 return;
-            }
 
             int temp = 0;
             for (int i = 0; i < raw.Length; i++)
@@ -58,9 +56,7 @@
         public void Decrypt(byte[] raw, int offset, int size)
         {
             if (!_enabled)
-            {
                 return;
-            }
 
             int temp = 0;
             for (int i = 0; i < size; i++)
@@ -86,9 +82,7 @@
         public void Decrypt(byte[] raw, int size)
         {
             if (!_enabled)
-            {
                 return;
-            }
 
             uint temp = 0;
             for (uint i = 0; i < size; i++)
@@ -114,9 +108,7 @@
         public void Encrypt(byte[] raw)
         {
             if (!_enabled)
-            {
                 return;
-            }
 
             uint temp = 0;
             for (int i = 0; i < raw.Length; i++)
@@ -142,9 +134,7 @@
         public void Encrypt(byte[] raw, uint size)
         {
             if (!_enabled)
-            {
                 return;
-            }
 
             uint temp = 0;
             for (uint i = 0; i < size; i++)

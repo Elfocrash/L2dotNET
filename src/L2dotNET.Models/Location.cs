@@ -43,9 +43,7 @@
         public override bool Equals(object obj)
         {
             if (!(obj is Location))
-            {
                 return false;
-            }
 
             Location loc = (Location)obj;
             return loc.X.Equals(_x) && loc.Y.Equals(_y) && loc.Z.Equals(_z);

@@ -21,22 +21,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _count = ReadD(); // Number of Item to Wear
 
             if (_count < 0)
-            {
                 _count = 0;
-            }
             if (_count > 100)
-            {
                 _count = 0; // prevent too long lists
-            }
 
             // Create _items table that will contain all ItemID to Wear
             _items = new int[_count];
 
             // Fill _items table with all ItemID to Wear
             for (int i = 0; i < _count; i++)
-            {
                 _items[i] = ReadD();
-            }
         }
 
         public override void Run()

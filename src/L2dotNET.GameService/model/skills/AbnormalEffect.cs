@@ -34,9 +34,7 @@ namespace L2dotNET.GameService.Model.Skills
         public int GetTime()
         {
             if (Time == -2) //unlimit buff time
-            {
                 return -1;
-            }
 
             long elapsedTicks = StopTime.Ticks - DateTime.Now.Ticks;
             int res = (int)(elapsedTicks * 1E-7);
@@ -46,9 +44,7 @@ namespace L2dotNET.GameService.Model.Skills
         public void Timer()
         {
             if (Time == -2)
-            {
                 return;
-            }
 
             StopTime = DateTime.Now.AddSeconds(Time);
             MTimer = new Timer(Time * 1000);

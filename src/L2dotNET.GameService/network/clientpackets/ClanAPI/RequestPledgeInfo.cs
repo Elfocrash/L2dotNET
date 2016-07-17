@@ -25,9 +25,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
             L2Clan clan = ClanTable.Instance.GetClan(_clanId);
             if (clan != null)
-            {
                 player.SendPacket(new PledgeInfo(clan.ClanId, clan.Name, clan.AllianceName));
-            }
         }
     }
 }

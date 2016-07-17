@@ -21,16 +21,12 @@ namespace L2dotNET.GameService.Handlers
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new AdminCommandHandler();
-                    }
                 }
 
                 return _instance;
@@ -62,9 +58,7 @@ namespace L2dotNET.GameService.Handlers
         {
             string cmd = alias;
             if (alias.Contains(" "))
-            {
                 cmd = alias.Split(' ')[0];
-            }
 
             if (!_commands.ContainsKey(cmd))
             {

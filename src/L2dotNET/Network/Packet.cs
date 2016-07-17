@@ -60,9 +60,7 @@ namespace L2dotNET.Network
             ValidateBufferSize(sizeof(byte));
 
             fixed (byte* buf = _mBuffer)
-            {
                 *(buf + _mOffset++) = v;
-            }
         }
 
         /// <summary>
@@ -97,9 +95,7 @@ namespace L2dotNET.Network
             ValidateBufferSize(sizeof(short));
 
             fixed (byte* buf = _mBuffer)
-            {
                 *(short*)(buf + _mOffset) = v;
-            }
 
             _mOffset += sizeof(short);
         }
@@ -117,9 +113,7 @@ namespace L2dotNET.Network
             fixed (byte* buf = _mBuffer)
             {
                 fixed (short* w = v)
-                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
-                }
             }
         }
 
@@ -132,9 +126,7 @@ namespace L2dotNET.Network
             ValidateBufferSize(sizeof(int));
 
             fixed (byte* buf = _mBuffer)
-            {
                 *(int*)(buf + _mOffset) = v;
-            }
 
             _mOffset += sizeof(int);
         }
@@ -152,9 +144,7 @@ namespace L2dotNET.Network
             fixed (byte* buf = _mBuffer)
             {
                 fixed (int* w = v)
-                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
-                }
             }
         }
 
@@ -167,9 +157,7 @@ namespace L2dotNET.Network
             ValidateBufferSize(sizeof(double));
 
             fixed (byte* buf = _mBuffer)
-            {
                 *(double*)(buf + _mOffset) = v;
-            }
 
             _mOffset += sizeof(double);
         }
@@ -187,9 +175,7 @@ namespace L2dotNET.Network
             fixed (byte* buf = _mBuffer)
             {
                 fixed (double* w = v)
-                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
-                }
             }
         }
 
@@ -202,9 +188,7 @@ namespace L2dotNET.Network
             ValidateBufferSize(sizeof(long));
 
             fixed (byte* buf = _mBuffer)
-            {
                 *(long*)(buf + _mOffset) = v;
-            }
 
             _mOffset += sizeof(long);
         }
@@ -222,9 +206,7 @@ namespace L2dotNET.Network
             fixed (byte* buf = _mBuffer)
             {
                 fixed (long* w = v)
-                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
-                }
             }
         }
 
@@ -242,9 +224,7 @@ namespace L2dotNET.Network
             fixed (byte* buf = _mBuffer)
             {
                 fixed (char* w = s)
-                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
-                }
             }
         }
 
@@ -257,9 +237,7 @@ namespace L2dotNET.Network
             string v = string.Empty;
 
             foreach (string t in s)
-            {
                 v += t + '\0';
-            }
 
             int length = v.Length * sizeof(char);
 
@@ -268,9 +246,7 @@ namespace L2dotNET.Network
             fixed (byte* buf = _mBuffer)
             {
                 fixed (char* w = v)
-                {
                     L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
-                }
             }
         }
 
@@ -299,9 +275,7 @@ namespace L2dotNET.Network
         public unsafe byte ReadByte()
         {
             fixed (byte* buf = _mBuffer)
-            {
                 return *(buf + _mOffset++);
-            }
         }
 
         /// <summary>
@@ -314,9 +288,7 @@ namespace L2dotNET.Network
             byte[] dest = new byte[length];
 
             fixed (byte* buf = _mBuffer, dst = dest)
-            {
                 L2Buffer.Copy(buf, length, dst, ref _mOffset);
-            }
             return dest;
         }
 
@@ -391,9 +363,7 @@ namespace L2dotNET.Network
         public unsafe string ReadString()
         {
             fixed (byte* buf = _mBuffer)
-            {
                 return L2Buffer.GetTrimmedString(buf, ref _mOffset, _mBuffer.Length);
-            }
         }
 
         /// <summary>
@@ -421,9 +391,7 @@ namespace L2dotNET.Network
         private void ValidateBufferSize(int nextValueLength)
         {
             if ((_mOffset + nextValueLength) > _mBuffer.Length)
-            {
                 L2Buffer.Extend(ref _mBuffer, nextValueLength + MDefaultOverflowValue);
-            }
         }
 
         /// <summary>
@@ -439,13 +407,9 @@ namespace L2dotNET.Network
             fixed (byte* buf = _mBuffer)
             {
                 if (headerSize == sizeof(short))
-                {
                     *(short*)buf = (short)_mOffset;
-                }
                 else
-                {
                     *(int*)buf = _mOffset;
-                }
             }
         }
 
@@ -485,9 +449,7 @@ namespace L2dotNET.Network
             get
             {
                 fixed (byte* buf = _mBuffer)
-                {
                     return *buf;
-                }
             }
         }
 
@@ -499,9 +461,7 @@ namespace L2dotNET.Network
             get
             {
                 fixed (byte* buf = _mBuffer)
-                {
                     return *(buf + 1);
-                }
             }
         }
 

@@ -10,9 +10,7 @@ namespace L2dotNET.GameService.Model.Skills2
             double[] val = target.CharacterStat.Apply(this);
 
             if ((SuId == -1) || (val[0] == val[1]))
-            {
                 return Nothing;
-            }
 
             EffectResult ter = new EffectResult();
             ter.AddSu(SuId, val[1]);
@@ -24,9 +22,7 @@ namespace L2dotNET.GameService.Model.Skills2
             double[] val = target.CharacterStat.Stop(this);
 
             if ((SuId == -1) || (val[0] == val[1]))
-            {
                 return Nothing;
-            }
 
             EffectResult ter = new EffectResult();
             ter.AddSu(SuId, val[1]);

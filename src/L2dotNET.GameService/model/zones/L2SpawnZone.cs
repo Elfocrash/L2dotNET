@@ -15,9 +15,7 @@ namespace L2dotNET.GameService.Model.Zones
         public void AddSpawn(int x, int y, int z)
         {
             if (_spawnLocs == null)
-            {
                 _spawnLocs = new List<Location>();
-            }
 
             _spawnLocs.Add(new Location(x, y, z));
         }
@@ -25,9 +23,7 @@ namespace L2dotNET.GameService.Model.Zones
         public void AddChaoticSpawn(int x, int y, int z)
         {
             if (_chaoticSpawnLocs == null)
-            {
                 _chaoticSpawnLocs = new List<Location>();
-            }
 
             _chaoticSpawnLocs.Add(new Location(x, y, z));
         }
@@ -45,9 +41,7 @@ namespace L2dotNET.GameService.Model.Zones
         public Location GetChaoticSpawnLoc()
         {
             if (_chaoticSpawnLocs != null)
-            {
                 return (Location)Rnd.Get(_chaoticSpawnLocs);
-            }
 
             return GetSpawnLoc();
         }

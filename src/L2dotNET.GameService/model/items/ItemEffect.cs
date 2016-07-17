@@ -14,16 +14,13 @@ namespace L2dotNET.GameService.Model.Items
         public void Use(L2Character character, L2Item item)
         {
             if (character is L2Player)
-            {
                 UsePlayer((L2Player)character, item);
-            }
-            else if (character is L2Pet)
-            {
-                UsePet((L2Pet)character, item);
-            }
             else
             {
-                Log.Warn($"Unk object {character.Name} tried to use {item.Template.ItemId}");
+                if (character is L2Pet)
+                    UsePet((L2Pet)character, item);
+                else
+                    Log.Warn($"Unk object {character.Name} tried to use {item.Template.ItemId}");
             }
         }
 

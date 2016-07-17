@@ -15,14 +15,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _items = null; //player.getAllQuestItems();
 
             if (_items == null)
-            {
                 return;
-            }
 
             foreach (L2Item item in _items.Where(item => item.Blocked))
-            {
                 _block.Add(item.ObjId);
-            }
         }
 
         protected internal override void Write()
@@ -66,15 +62,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             WriteH(_block.Count);
             if (_block.Count <= 0)
-            {
                 return;
-            }
 
             WriteC(1);
             foreach (int id in _block)
-            {
                 WriteD(id);
-            }
         }
     }
 }

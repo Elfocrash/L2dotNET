@@ -11,22 +11,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
             TargetId = targetId;
             Damage = damage;
             if (soulshot)
-            {
                 Flags |= 0x10 | grade;
-            }
 
             if (crit)
-            {
                 Flags |= 0x20;
-            }
             if (shld)
-            {
                 Flags |= 0x40;
-            }
             if (miss)
-            {
                 Flags |= 0x80;
-            }
         }
     }
 }

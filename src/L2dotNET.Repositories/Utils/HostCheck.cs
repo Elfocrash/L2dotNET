@@ -42,15 +42,11 @@ namespace L2dotNET.Repositories.Utils
                 {
                     // is localhost
                     if (IPAddress.IsLoopback(hostIp))
-                    {
                         return true;
-                    }
 
                     // is local address
                     if (localIPs.Contains(hostIp))
-                    {
                         return true;
-                    }
                 }
             }
             catch (Exception ex)
@@ -94,9 +90,7 @@ namespace L2dotNET.Repositories.Utils
             ServiceController service = ServiceController.GetServices().FirstOrDefault(filter => filter.ServiceName.StartsWithIgnoreCase(serviceName));
 
             if (service == null)
-            {
                 return;
-            }
 
             switch (service.Status)
             {

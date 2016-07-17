@@ -18,21 +18,15 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
         public override void DoFollow(object sender = null, System.Timers.ElapsedEventArgs e = null)
         {
             if (_summon.CantMove())
-            {
                 return;
-            }
 
             double dis = Calcs.CalculateDistance(_summon, _summon.Owner, true);
 
             if (!(dis > 120))
-            {
                 return;
-            }
 
             if ((_lastOwnerX == _summon.Owner.X) || (_lastOwnerY == _summon.Owner.Y) || (_lastOwnerZ == _summon.Owner.Z))
-            {
                 return;
-            }
 
             Character.MoveTo(_summon.Owner.X, _summon.Owner.Y, _summon.Owner.Z);
 

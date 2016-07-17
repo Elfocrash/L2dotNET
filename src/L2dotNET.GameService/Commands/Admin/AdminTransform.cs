@@ -20,9 +20,7 @@ namespace L2dotNET.GameService.Commands.Admin
                 TransformManager.GetInstance().TransformTo(id, admin, seconds);
             }
             else
-            {
                 admin.Untransform();
-            }
         }
     }
 }

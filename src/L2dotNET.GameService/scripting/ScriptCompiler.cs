@@ -23,16 +23,12 @@ namespace L2dotNET.GameService.Scripting
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new ScriptCompiler();
-                    }
                 }
 
                 return _instance;
@@ -58,13 +54,9 @@ namespace L2dotNET.GameService.Scripting
                 CompilerResults result = _provider.CompileAssemblyFromFile(cp, fname);
 
                 if (result.Errors.Count > 0)
-                {
                     Log.Error($"ScriptCompiler: Failed to compile {fname}.");
-                }
                 else
-                {
                     objectList.Add(result.CompiledAssembly.CreateInstance(Path.GetFileNameWithoutExtension(info.Name)));
-                }
             }
 
             Log.Info($"Script Compiler: Compiled {objectList.Count} scripted quests.");

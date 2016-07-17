@@ -17,9 +17,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _type = ReadD();
 
             if (_type == 22)
-            {
                 _keyItem = ReadD();
-            }
         }
 
         public override void Run()

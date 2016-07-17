@@ -9,9 +9,7 @@
         {
             _id = id;
             if (picture == null)
-            {
                 picture = new byte[0];
-            }
 
             _picture = picture;
         }

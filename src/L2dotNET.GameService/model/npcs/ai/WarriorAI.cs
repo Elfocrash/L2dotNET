@@ -18,9 +18,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         {
             _moveHome = 0;
             if (Character.IsMoving())
-            {
                 Character.NotifyStopMove(true, true);
-            }
 
             Character.ChangeTarget(attacker);
             attack(attacker);
@@ -47,9 +45,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             }
 
             if (Character.IsAttacking())
-            {
                 return;
-            }
 
             double dis = Calcs.CalculateDistance(Character, Character.CurrentTarget, true);
             if (dis < 80)
@@ -61,19 +57,13 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
             else
             {
                 if (Character.CantMove())
-                {
                     return;
-                }
 
                 if ((Lastx != Character.CurrentTarget.X) || (Lasty != Character.CurrentTarget.Y) || (Lastz != Character.CurrentTarget.Z))
-                {
                     _moveTarget = 0;
-                }
 
                 if (_moveTarget != 0)
-                {
                     return;
-                }
 
                 _moveTarget = 1;
                 Character.MoveTo(Character.CurrentTarget.X, Character.CurrentTarget.Y, Character.CurrentTarget.Z);
@@ -90,9 +80,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         public override void NotifyOnDie(L2Character killer)
         {
             if (AttackMove != null)
-            {
                 AttackMove.Enabled = false;
-            }
 
             base.NotifyOnDie(killer);
         }
@@ -116,9 +104,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         private void ValidateSpawnLocation()
         {
             if (Character.CantMove())
-            {
                 return;
-            }
 
             switch (_moveHome)
             {
@@ -130,15 +116,11 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
                         Character.MoveTo(Character.SpawnX, Character.SpawnY, Character.SpawnZ);
                     }
                     else
-                    {
                         _moveHome = 3;
-                    }
                     break;
                 case 3:
                     if (AttackMove != null)
-                    {
                         AttackMove.Enabled = false;
-                    }
 
                     break;
             }

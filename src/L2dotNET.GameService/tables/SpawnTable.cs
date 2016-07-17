@@ -19,16 +19,12 @@ namespace L2dotNET.GameService.Tables
             get
             {
                 if (_instance != null)
-                {
                     return _instance;
-                }
 
                 lock (SyncRoot)
                 {
                     if (_instance == null)
-                    {
                         _instance = new SpawnTable();
-                    }
                 }
 
                 return _instance;
@@ -38,9 +34,7 @@ namespace L2dotNET.GameService.Tables
         public void Initialize()
         {
             foreach (string path in Directory.EnumerateFiles(@"scripts\spawn\", "*.xml"))
-            {
                 Read(path);
-            }
 
             Log.Info("SpawnTable: Created " + Territorries.Count + " territories with " + _npcs + " monsters.");
         }
@@ -55,9 +49,7 @@ namespace L2dotNET.GameService.Tables
             XElement xml = XElement.Parse(File.ReadAllText(path));
             XElement ex = xml.Element("list");
             if (ex == null)
-            {
                 return;
-            }
 
             foreach (XElement m in ex.Elements())
                 if (m.Name == "territory")
@@ -76,9 +68,7 @@ namespace L2dotNET.GameService.Tables
                                 int cnt = Convert.ToInt32(stp.Attribute("count").Value);
                                 string pos = null;
                                 if (stp.Attribute("pos") != null)
-                                {
                                     pos = stp.Attribute("pos").Value;
-                                }
                                 zone.AddNpc(Convert.ToInt32(stp.Attribute("id").Value), cnt, stp.Attribute("respawn").Value, pos);
                                 _npcs += cnt;
                                 break;
@@ -89,16 +79,15 @@ namespace L2dotNET.GameService.Tables
 
                     zone.InitZone(); //создаем зону
                     if (Territorries.ContainsKey(zone.Name))
-                    {
                         Log.Info($"duplicate zone name {zone.Name}");
-                    }
                     else
-                    {
                         Territorries.Add(zone.Name, zone);
-                    }
                 }
-                else if (m.Name == "spawn")
+                else
                 {
+                    if (m.Name != "spawn")
+                        continue;
+
                     foreach (XElement stp in m.Elements())
                         switch (stp.Name.LocalName)
                         {
@@ -107,20 +96,21 @@ namespace L2dotNET.GameService.Tables
                                 string respawn = stp.Attribute("respawn").Value;
                                 long value = Convert.ToInt32(respawn.Remove(respawn.Length - 1));
                                 if (respawn.Contains("s"))
-                                {
                                     value *= 1000;
-                                }
-                                else if (respawn.Contains("m"))
+                                else
                                 {
-                                    value *= 60000;
-                                }
-                                else if (respawn.Contains("h"))
-                                {
-                                    value *= 3600000;
-                                }
-                                else if (respawn.Contains("d"))
-                                {
-                                    value *= 86400000;
+                                    if (respawn.Contains("m"))
+                                        value *= 60000;
+                                    else
+                                    {
+                                        if (respawn.Contains("h"))
+                                            value *= 3600000;
+                                        else
+                                        {
+                                            if (respawn.Contains("d"))
+                                                value *= 86400000;
+                                        }
+                                    }
                                 }
 
                                 Spawns.Add(new L2Spawn(Convert.ToInt32(stp.Attribute("id").Value), value, stp.Attribute("pos").Value.Split(' ')));
@@ -151,9 +141,7 @@ namespace L2dotNET.GameService.Tables
 
             sp += Spawns.Count;
             foreach (L2Spawn s in Spawns)
-            {
                 s.Init();
-            }
 
             Log.Info("NpcServer spawn done, #" + sp + " npcs.");
         }
@@ -161,14 +149,10 @@ namespace L2dotNET.GameService.Tables
         public void SunRise(bool y)
         {
             foreach (L2Territory t in Territorries.Values)
-            {
                 t.SunRise(y);
-            }
 
             foreach (L2Spawn s in Spawns)
-            {
                 s.SunRise(y);
-            }
         }
 
         public L2Object SpawnOne(int id, int x, int y, int z, int h)

@@ -29,17 +29,13 @@ namespace L2dotNET.Tests
                 XmlNodeList nodes = doc.DocumentElement?.SelectNodes("/list/class");
 
                 if (nodes == null)
-                {
                     continue;
-                }
 
                 foreach (XmlNode node in nodes)
                 {
                     XmlElement ownerElement = node.Attributes?[0].OwnerElement;
                     if ((ownerElement == null) || !"class".Equals(ownerElement.Name))
-                    {
                         continue;
-                    }
 
                     //ClassIds classId = (ClassIds)int.Parse(attrs.Item(0).Value);
                     StatsSet set = new StatsSet();
@@ -49,18 +45,14 @@ namespace L2dotNET.Tests
                         {
                             XmlNamedNodeMap attrs = cd.NextSibling.Attributes;
                             if (attrs == null)
-                            {
                                 continue;
-                            }
 
                             string name = attrs.GetNamedItem("name").Value;
                             string value = attrs.GetNamedItem("val").Value;
                             set.Set(name, value);
                         }
                         else
-                        {
                             break;
-                        }
                     ////PcTemplate pcTempl = new PcTemplate(classId, set);
                     ////templates.Add((int)pcTempl.ClassId, pcTempl);
                     //System.Diagnostics.Trace.WriteLine("Added template for: " + pcTempl.ClassId);

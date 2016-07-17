@@ -20,9 +20,7 @@
             byte lvl = 0;
             foreach (long e in Exp)
                 if (e < exp)
-                {
                     lvl++;
-                }
                 else
                 {
                     lvl--;

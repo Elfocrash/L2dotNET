@@ -56,9 +56,7 @@ namespace L2dotNET.LoginService.GSCommunication
             {
                 int rs = _nstream.EndRead(result);
                 if (rs <= 0)
-                {
                     return;
-                }
 
                 short length = BitConverter.ToInt16(_buffer, 0);
                 _buffer = new byte[length];
@@ -157,16 +155,12 @@ namespace L2dotNET.LoginService.GSCommunication
             if (status == 1)
             {
                 if (!_activeInGame.Contains(account))
-                {
                     _activeInGame.Add(account);
-                }
             }
             else
             {
                 if (_activeInGame.Contains(account))
-                {
                     _activeInGame.Remove(account);
-                }
             }
         }
 
