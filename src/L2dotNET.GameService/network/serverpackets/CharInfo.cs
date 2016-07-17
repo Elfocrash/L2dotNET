@@ -30,18 +30,18 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(_player.Sex);
             WriteD((int)_player.ActiveClass.ClassId.Id);
 
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollHair].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollHead].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollRhand].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollLhand].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollGloves].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollChest].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollLegs].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollFeet].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollBack].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollRhand].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollHairall].Template.ItemId);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollFace].Template.ItemId);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollHair]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollHead]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollRhand]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollLhand]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollGloves]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollChest]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollLegs]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollFeet]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollBack]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollRhand]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollHairall]?.Template.ItemId ?? 0);
+            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollFace]?.Template.ItemId ?? 0);
 
             WriteH(0x00);
             WriteH(0x00);
@@ -89,8 +89,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteD(walkSpd);
             WriteD(runSpd);
             WriteD(walkSpd);
-            WriteF(anim);
-            WriteF(anim2);
+            WriteF(1);
+            WriteF(1);
 
             WriteF(_player.Radius);
             WriteF(_player.Height);

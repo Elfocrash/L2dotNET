@@ -71,12 +71,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
                 for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
                 {
-                    WriteD(player.Inventory.Paperdoll[id].Template.ItemId);
+                    WriteD(player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
                 }
 
                 for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
                 {
-                    WriteD(player.Inventory.Paperdoll[id].Template.ItemId);
+                    WriteD(player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
                 }
 
                 WriteD(player.HairStyle);

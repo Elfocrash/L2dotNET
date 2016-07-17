@@ -52,14 +52,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
             {
-                int result = _player.Inventory.Paperdoll[id].Template.ItemId;
-                WriteD(result);
+                WriteD(_player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
             }
 
             for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
             {
-                int result = _player.Inventory.Paperdoll[id].Template.ItemId;
-                WriteD(result);
+                WriteD(_player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
             }
 
             // c6 new h's
