@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.Model.Npcs.Decor;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -11,7 +12,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _obj = obj;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x99);
             WriteInt(_obj.StaticId);

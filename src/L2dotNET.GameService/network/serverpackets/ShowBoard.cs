@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network.Serverpackets
@@ -52,7 +53,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             }
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x6e);
             WriteByte(0x01); // c4 1 to show community 00 to hide

@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using L2dotNET.GameService.Enums;
+using L2dotNET.Enums;
 using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.Model.Items

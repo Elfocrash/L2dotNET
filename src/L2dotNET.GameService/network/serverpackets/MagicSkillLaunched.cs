@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.World;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -32,7 +33,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _targets = new[] { id };
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x76);
             WriteInt(_casterId);

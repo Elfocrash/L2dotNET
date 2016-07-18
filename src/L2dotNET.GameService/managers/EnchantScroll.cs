@@ -1,4 +1,4 @@
-using L2dotNET.GameService.Enums;
+using L2dotNET.Enums;
 
 namespace L2dotNET.GameService.Managers
 {

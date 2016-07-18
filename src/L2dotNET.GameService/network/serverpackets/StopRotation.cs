@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class StopRotation : GameserverPacket
     {
@@ -13,7 +15,7 @@
             _speed = speed;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x63);
             WriteInt(_sId);

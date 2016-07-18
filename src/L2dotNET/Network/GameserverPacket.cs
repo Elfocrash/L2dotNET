@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Remoting.Contexts;
 
-namespace L2dotNET.GameService.Network
+namespace L2dotNET.Network
 {
     [Synchronization]
     public abstract class GameserverPacket
@@ -85,6 +85,6 @@ namespace L2dotNET.GameService.Network
 
         public long Length => _stream.Length;
 
-        protected internal abstract void Write();
+        public abstract void Write();
     }
 }

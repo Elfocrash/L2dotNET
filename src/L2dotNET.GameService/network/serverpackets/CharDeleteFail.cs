@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class CharDeleteFail : GameserverPacket
     {
@@ -19,7 +21,7 @@
             _reason = reason;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x24);
             WriteInt((int)_reason);

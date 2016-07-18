@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Quests;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -13,7 +14,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _list = player.GetAllActiveQuests();
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x86);
             WriteShort((short)_list.Count);

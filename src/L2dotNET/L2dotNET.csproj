@@ -35,6 +35,22 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compression\DlcStream.cs" />
+    <Compile Include="Enums\ActionType.cs" />
+    <Compile Include="Enums\ArmorType.cs" />
+    <Compile Include="Enums\ArmorTypeId.cs" />
+    <Compile Include="Enums\ClassId.cs" />
+    <Compile Include="Enums\ClassIds.cs" />
+    <Compile Include="Enums\ClassRace.cs" />
+    <Compile Include="Enums\CrystalType.cs" />
+    <Compile Include="Enums\CrystalTypeId.cs" />
+    <Compile Include="Enums\ItemType.cs" />
+    <Compile Include="Enums\MaterialType.cs" />
+    <Compile Include="Enums\ShotType.cs" />
+    <Compile Include="Enums\WeaponType.cs" />
+    <Compile Include="Enums\WeaponTypeId.cs" />
+    <Compile Include="Enums\ZoneId.cs" />
+    <Compile Include="Enums\ZoneIds.cs" />
     <Compile Include="GeoEngine\Geodata\ABlock.cs" />
     <Compile Include="GeoEngine\Geodata\BlockMultilayer.cs" />
     <Compile Include="GeoEngine\Geodata\BlockMultilayerDynamic.cs" />
@@ -44,6 +60,7 @@
     <Compile Include="GeoEngine\Geodata\IGeoObject.cs" />
     <Compile Include="GeoEngine\Pathfinding\Node.cs" />
     <Compile Include="Network\Firewall.cs" />
+    <Compile Include="Network\GameserverPacket.cs" />
     <Compile Include="Network\InnerNetworkClient.cs" />
     <Compile Include="Network\LoginServiceSettings.cs" />
     <Compile Include="Network\NetworkClient.cs" />

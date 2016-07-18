@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -13,7 +14,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _list = player.Reuse.Values;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xc1);
             WriteInt(_list.Count);

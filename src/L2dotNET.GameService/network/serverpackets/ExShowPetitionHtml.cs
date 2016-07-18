@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class ExShowPetitionHtml : GameserverPacket
     {
@@ -9,7 +11,7 @@
             _content = text;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xFE);
             WriteShort(0xB1);

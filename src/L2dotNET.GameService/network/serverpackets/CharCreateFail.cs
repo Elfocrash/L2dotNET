@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class CharCreateFail : GameserverPacket
     {
@@ -27,7 +29,7 @@
             _reason = reason;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x1a);
             WriteInt((int)_reason);

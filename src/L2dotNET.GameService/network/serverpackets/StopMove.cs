@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.World;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -19,7 +20,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _h = cha.Heading;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x47);
             WriteInt(_id);

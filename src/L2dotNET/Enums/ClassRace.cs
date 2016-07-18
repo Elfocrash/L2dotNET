@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.GameService.Enums
+﻿namespace L2dotNET.Enums
 {
     public enum ClassRace
     {

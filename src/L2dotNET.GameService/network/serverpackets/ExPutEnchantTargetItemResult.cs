@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class ExPutEnchantTargetItemResult : GameserverPacket
     {
@@ -9,7 +11,7 @@
             _result = result;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xfe);
             WriteShort(0x81);

@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class TeleportToLocation : GameserverPacket
     {
@@ -17,7 +19,7 @@
             _heading = h;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x28);
             WriteInt(_id);

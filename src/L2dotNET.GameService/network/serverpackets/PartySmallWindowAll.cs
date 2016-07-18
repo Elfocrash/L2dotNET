@@ -1,5 +1,6 @@
 ﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -12,7 +13,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _party = party;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x4e);
             WriteInt(_party.Leader.ObjId);

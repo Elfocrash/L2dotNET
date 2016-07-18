@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -21,7 +22,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _items = items;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x42);
             WriteShort(_type);

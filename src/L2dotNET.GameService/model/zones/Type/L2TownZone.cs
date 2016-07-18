@@ -1,5 +1,5 @@
 ﻿using System;
-using L2dotNET.GameService.Enums;
+using L2dotNET.Enums;
 using L2dotNET.GameService.World;
 using L2dotNET.Utility;
 

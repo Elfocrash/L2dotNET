@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class KeyPacket : GameserverPacket
     {
@@ -11,7 +13,7 @@
             _next = n;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x00);
             WriteByte(0x01);

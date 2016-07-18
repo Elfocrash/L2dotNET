@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.LoginAuth.Send
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.LoginAuth.Send
 {
     class LoginServPing : GameserverPacket
     {
@@ -11,7 +13,7 @@
             _build = th.Build;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xA0);
             WriteString(Version);

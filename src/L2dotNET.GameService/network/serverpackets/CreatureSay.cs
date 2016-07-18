@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.Model.Player.Basic;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -23,7 +24,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             Text = text;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x4a);
             WriteInt(_objectId);

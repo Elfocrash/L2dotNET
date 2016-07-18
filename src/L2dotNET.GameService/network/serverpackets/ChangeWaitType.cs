@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -23,7 +24,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _type = type;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x2f);
             WriteInt(_sId);

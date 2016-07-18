@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Enums;
-using L2dotNET.GameService.Model.Inventory;
+﻿using L2dotNET.GameService.Model.Inventory;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;

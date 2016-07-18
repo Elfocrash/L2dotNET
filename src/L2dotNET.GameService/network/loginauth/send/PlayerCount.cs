@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.LoginAuth.Send
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.LoginAuth.Send
 {
     class PlayerCount : GameserverPacket
     {
@@ -9,7 +11,7 @@
             _cnt = cnt;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xA3);
             WriteShort(_cnt);

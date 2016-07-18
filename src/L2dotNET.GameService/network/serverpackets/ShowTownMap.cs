@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     public class ShowTownMap : GameserverPacket
     {
@@ -13,7 +15,7 @@
             _y = y;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xde);
             WriteString(_texture);

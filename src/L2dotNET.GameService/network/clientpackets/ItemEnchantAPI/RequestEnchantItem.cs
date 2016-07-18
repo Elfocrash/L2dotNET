@@ -1,6 +1,5 @@
 ﻿using System;
 using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Enums;
 using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;

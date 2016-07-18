@@ -4,8 +4,8 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 using log4net;
-using L2dotNET.GameService.Compression;
-using L2dotNET.GameService.Enums;
+using L2dotNET.Compression;
+using L2dotNET.Enums;
 
 namespace L2dotNET.GameService.Model.Skills2
 {

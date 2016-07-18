@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -20,7 +21,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _skillType = type;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x8a);
             WriteInt((int)_skillType);

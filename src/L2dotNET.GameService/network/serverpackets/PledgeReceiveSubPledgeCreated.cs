@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.Model.Communities;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -11,7 +12,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _sub = sub;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xfe);
             WriteShort(0x40);

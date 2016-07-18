@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -19,7 +20,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _names.Add("schuttgart");
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xfe);
             WriteShort(0x92);

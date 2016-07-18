@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class ExPledgeCrestLarge : GameserverPacket
     {
@@ -14,7 +16,7 @@
             _picture = picture;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xfe);
             WriteShort(0x1b);

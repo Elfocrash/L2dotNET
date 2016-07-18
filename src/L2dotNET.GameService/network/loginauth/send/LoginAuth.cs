@@ -1,8 +1,10 @@
-﻿namespace L2dotNET.GameService.Network.LoginAuth.Send
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.LoginAuth.Send
 {
     class LoginAuth : GameserverPacket
     {
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xA1);
             WriteShort(Config.Config.Instance.ServerConfig.Port);

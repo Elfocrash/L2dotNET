@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.LoginAuth.Send
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.LoginAuth.Send
 {
     class PremiumStatusUpdate : GameserverPacket
     {
@@ -13,7 +15,7 @@
             _points = points;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xA4);
             WriteString(_account.ToLower());

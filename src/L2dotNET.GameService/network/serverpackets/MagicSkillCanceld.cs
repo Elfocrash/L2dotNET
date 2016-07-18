@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     public class MagicSkillCanceld : GameserverPacket
     {
@@ -9,7 +11,7 @@
             _id = id;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x49);
             WriteInt(_id);

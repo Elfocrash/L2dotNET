@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.World;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -46,7 +47,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             return _hits.Length > 0;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x05);
 

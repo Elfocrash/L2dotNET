@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class PetDelete : GameserverPacket
     {
@@ -11,7 +13,7 @@
             _objId = objId;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xb6);
             WriteInt(_objectSummonType);

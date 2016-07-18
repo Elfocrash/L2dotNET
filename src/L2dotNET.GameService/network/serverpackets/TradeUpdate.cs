@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.Model.Items;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -15,7 +16,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _action = action;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x74);
             WriteShort(1);

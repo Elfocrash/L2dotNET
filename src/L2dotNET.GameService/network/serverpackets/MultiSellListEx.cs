@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.Tables.Multisell;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -11,7 +12,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _list = list;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xd0);
             WriteInt(_list.Id);

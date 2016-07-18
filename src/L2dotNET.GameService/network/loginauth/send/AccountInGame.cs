@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.LoginAuth.Send
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.LoginAuth.Send
 {
     class AccountInGame : GameserverPacket
     {
@@ -11,7 +13,7 @@
             _status = status;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x03);
             WriteString(_account.ToLower());

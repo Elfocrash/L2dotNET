@@ -1,5 +1,6 @@
 ﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Tables;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -16,7 +17,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _shopId = shopId;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xef);
             WriteByte(0xc0); // ?

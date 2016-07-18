@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network.Serverpackets
@@ -48,7 +49,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _content = _content.Replace(p, t.ToString());
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xa0);
             WriteString(_content);

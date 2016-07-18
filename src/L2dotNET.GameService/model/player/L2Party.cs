@@ -4,6 +4,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Timers;
 using L2dotNET.GameService.Network;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Model.Player
 {

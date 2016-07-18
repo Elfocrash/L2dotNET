@@ -1,5 +1,6 @@
 ﻿using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Skills2;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -12,7 +13,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _summon = summon;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xfe);
             WriteShort(0x18);

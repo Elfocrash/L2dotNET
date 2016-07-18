@@ -2,6 +2,7 @@
 using System.Linq;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -18,7 +19,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             // _refund = player.Refund._items;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xFE);
             WriteShort(0xB7);

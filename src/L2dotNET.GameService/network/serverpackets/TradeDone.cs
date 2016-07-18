@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class TradeDone : GameserverPacket
     {
@@ -9,7 +11,7 @@
             _done = done;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x1c);
             WriteInt(_done ? 1 : 0);

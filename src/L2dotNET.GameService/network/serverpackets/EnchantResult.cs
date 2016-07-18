@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class EnchantResult : GameserverPacket
     {
@@ -13,7 +15,7 @@
             _count = count;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x81);
             WriteInt((int)_result);

@@ -4,6 +4,7 @@ using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.World;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -103,7 +104,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _data.Add(new object[] { 13, val });
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x64);
             WriteInt(MessgeId);

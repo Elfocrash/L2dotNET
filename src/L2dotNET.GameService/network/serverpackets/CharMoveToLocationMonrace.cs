@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class CharMoveToLocationMonrace : GameserverPacket
     {
@@ -8,7 +10,7 @@
         //    this.runner = runner;
         //}
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x2f);
 

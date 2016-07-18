@@ -96,7 +96,6 @@
     <Compile Include="AI\NpcAI\MonsterParameter.cs" />
     <Compile Include="AI\Template\AI.cs" />
     <Compile Include="ClientManager.cs" />
-    <Compile Include="Compression\DlcStream.cs" />
     <Compile Include="Config\ClanConfig.cs" />
     <Compile Include="Config\EventConfig.cs" />
     <Compile Include="Config\GeodataConfig.cs" />
@@ -111,21 +110,6 @@
     <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="Controllers\GameTime.cs" />
     <Compile Include="DepInjectionModule.cs" />
-    <Compile Include="Enums\ActionType.cs" />
-    <Compile Include="Enums\ArmorType.cs" />
-    <Compile Include="Enums\ArmorTypeId.cs" />
-    <Compile Include="Enums\ClassId.cs" />
-    <Compile Include="Enums\ClassIds.cs" />
-    <Compile Include="Enums\ClassRace.cs" />
-    <Compile Include="Enums\CrystalType.cs" />
-    <Compile Include="Enums\CrystalTypeId.cs" />
-    <Compile Include="Enums\ItemType.cs" />
-    <Compile Include="Enums\MaterialType.cs" />
-    <Compile Include="Enums\ShotType.cs" />
-    <Compile Include="Enums\WeaponType.cs" />
-    <Compile Include="Enums\WeaponTypeId.cs" />
-    <Compile Include="Enums\ZoneId.cs" />
-    <Compile Include="Enums\ZoneIds.cs" />
     <Compile Include="Handlers\ChatHandler.cs" />
     <Compile Include="Handlers\IAdminCommandHandler.cs" />
     <Compile Include="Handlers\IChatHandler.cs" />
@@ -575,7 +559,6 @@
     <Compile Include="Network\LoginAuth\Send\LoginServPing.cs" />
     <Compile Include="Network\NetworkBlock.cs" />
     <Compile Include="Network\PacketHandler.cs" />
-    <Compile Include="Network\GameServerNetworkRequest.cs" />
     <Compile Include="PreReqValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -585,7 +568,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Network\GameserverPacket.cs" />
     <Compile Include="Scripting\ScriptCompiler.cs" />
     <Compile Include="Handlers\AdminCommandHandler.cs" />
     <Compile Include="Commands\Admin\AdminHeal.cs" />

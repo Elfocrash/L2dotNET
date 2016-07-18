@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Model.Communities;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -14,7 +15,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _type = type;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x5a);
 

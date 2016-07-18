@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.GameService.Network.Serverpackets
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Serverpackets
 {
     class MyTargetSelected : GameserverPacket
     {
@@ -11,7 +13,7 @@
             _color = (short)color;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xa6);
             WriteInt(_targetId);

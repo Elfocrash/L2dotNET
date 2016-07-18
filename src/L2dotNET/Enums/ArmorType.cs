@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace L2dotNET.GameService.Enums
+namespace L2dotNET.Enums
 {
     public class ArmorType : ItemType
     {

@@ -1,5 +1,6 @@
 ﻿using L2dotNET.GameService.Model.Npcs.Ai;
 using L2dotNET.GameService.Model.Structures;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -12,7 +13,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _hideout = hideout;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0xf7);
             WriteInt(_hideout.ID); // clanhall id

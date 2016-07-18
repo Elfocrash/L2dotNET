@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Player.General;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -13,7 +14,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _shortcuts = player.Shortcuts;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x45);
             WriteInt(_shortcuts.Count);

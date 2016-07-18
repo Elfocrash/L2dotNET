@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -11,7 +12,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _timers.Add(new[] { id, lvl, duration });
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x85);
             WriteShort((short)_timers.Count);

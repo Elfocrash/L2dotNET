@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using log4net;
-using L2dotNET.GameService.Enums;
+using L2dotNET.Enums;
 using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.Tables

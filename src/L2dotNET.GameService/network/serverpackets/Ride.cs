@@ -1,4 +1,5 @@
 ﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
@@ -52,7 +53,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             player.MountType = _rideType;
         }
 
-        protected internal override void Write()
+        public override void Write()
         {
             WriteByte(0x86);
             WriteInt(_id);

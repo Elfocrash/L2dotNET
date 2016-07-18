@@ -3,9 +3,9 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 
-namespace L2dotNET.GameService.Compression
+namespace L2dotNET.Compression
 {
-    class DlcStream
+    public class DlcStream
     {
         public GZipStream Stream;
         public FileStream Stream2;
