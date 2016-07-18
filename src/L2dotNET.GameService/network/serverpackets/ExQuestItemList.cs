@@ -23,50 +23,50 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xFE);
-            WriteH(0xC5);
-            WriteH(_items.Length);
+            //WriteC(0xFE);
+            //WriteH(0xC5);
+            //WriteH(_items.Length);
 
-            foreach (L2Item item in _items)
-            {
-                WriteD(item.ObjId);
-                WriteD(item.Template.ItemId);
-                WriteD(0);
-                WriteQ(item.Count);
+            //foreach (L2Item item in _items)
+            //{
+            //    WriteD(item.ObjId);
+            //    WriteD(item.Template.ItemId);
+            //    WriteD(0);
+            //    WriteQ(item.Count);
 
-                WriteH(item.Template.Type2);
-                WriteH(0);
-                WriteH(item.IsEquipped);
+            //    WriteH(item.Template.Type2);
+            //    WriteH(0);
+            //    WriteH(item.IsEquipped);
 
-                WriteD(item.Template.BodyPart);
-                WriteH(item.Enchant);
-                WriteH(0);
+            //    WriteD(item.Template.BodyPart);
+            //    WriteH(item.Enchant);
+            //    WriteH(0);
 
-                WriteD(item.AugmentationId);
-                WriteD(item.Durability);
-                WriteD(item.LifeTimeEnd());
+            //    WriteD(item.AugmentationId);
+            //    WriteD(item.Durability);
+            //    WriteD(item.LifeTimeEnd());
 
-                WriteH(item.AttrAttackType);
-                WriteH(item.AttrAttackValue);
-                WriteH(item.AttrDefenseValueFire);
-                WriteH(item.AttrDefenseValueWater);
-                WriteH(item.AttrDefenseValueWind);
-                WriteH(item.AttrDefenseValueEarth);
-                WriteH(item.AttrDefenseValueHoly);
-                WriteH(item.AttrDefenseValueUnholy);
+            //    WriteH(item.AttrAttackType);
+            //    WriteH(item.AttrAttackValue);
+            //    WriteH(item.AttrDefenseValueFire);
+            //    WriteH(item.AttrDefenseValueWater);
+            //    WriteH(item.AttrDefenseValueWind);
+            //    WriteH(item.AttrDefenseValueEarth);
+            //    WriteH(item.AttrDefenseValueHoly);
+            //    WriteH(item.AttrDefenseValueUnholy);
 
-                WriteH(item.Enchant1);
-                WriteH(item.Enchant2);
-                WriteH(item.Enchant3);
-            }
+            //    WriteH(item.Enchant1);
+            //    WriteH(item.Enchant2);
+            //    WriteH(item.Enchant3);
+            //}
 
-            WriteH(_block.Count);
-            if (_block.Count <= 0)
-                return;
+            //WriteH(_block.Count);
+            //if (_block.Count <= 0)
+            //    return;
 
-            WriteC(1);
-            foreach (int id in _block)
-                WriteD(id);
+            //WriteC(1);
+            //foreach (int id in _block)
+            //    WriteD(id);
         }
     }
 }
