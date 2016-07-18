@@ -18,7 +18,7 @@ namespace L2dotNET.GameService.Tables
 
         public void AddNpc(int id, int count, string respawn, string pos)
         {
-            long value = Convert.ToInt32(respawn.Remove(respawn.Length - 1));
+            int value = Convert.ToInt32(respawn.Remove(respawn.Length - 1));
 
             if (respawn.Contains("s"))
                 value *= 1000;

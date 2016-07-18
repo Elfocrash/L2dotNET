@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using L2dotNET.GameService.Config;
 using L2dotNET.GameService.Model.Communities;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -10,9 +9,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
     class RequestPledgeMemberInfo : PacketBase
     {
         private readonly GameClient _client;
-
-        private int _unk1;
-        private string _player;
+        private readonly int _unk1;
+        private readonly string _player;
 
         public RequestPledgeMemberInfo(Packet packet, GameClient client)
         {

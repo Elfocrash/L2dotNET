@@ -20,7 +20,6 @@ using L2dotNET.GameService.Model.Skills;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Model.Skills2.Effects;
 using L2dotNET.GameService.Model.Vehicles;
-using L2dotNET.GameService.Network;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Tables.Multisell;
@@ -475,7 +474,7 @@ namespace L2dotNET.GameService.Model.Player
 
             //if (skill.ConsumeItemId != 0)
             //{
-            //    long count = Inventory.getItemCount(skill.ConsumeItemId);
+            //    int count = Inventory.getItemCount(skill.ConsumeItemId);
             //    if (count < skill.ConsumeItemCount)
             //    {
             //        sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANNOT_BE_USED).AddSkillName(skill.skill_id, skill.level));
@@ -1326,8 +1325,8 @@ namespace L2dotNET.GameService.Model.Player
 
         public void UpdateWeight()
         {
-            long oldweight = CurrentWeight;
-            long total = 0;
+            int oldweight = CurrentWeight;
+            int total = 0;
             //if (!_diet)
             //    foreach (L2Item it in Inventory.Items.Values.Where(it => it.Template.Weight != 0))
             //        if (it.Template.isStackable())
@@ -1344,7 +1343,7 @@ namespace L2dotNET.GameService.Model.Player
             su.Add(StatusUpdate.CurLoad, CurrentWeight);
             SendPacket(su);
 
-            long weightproc = (total * 1000) / (int)CharacterStat.GetStat(EffectType.BMaxWeight);
+            int weightproc = (total * 1000) / (int)CharacterStat.GetStat(EffectType.BMaxWeight);
 
             int newWeightPenalty;
             if (weightproc < 500)
@@ -2296,7 +2295,7 @@ namespace L2dotNET.GameService.Model.Player
             SendMessage("Your connection latency is " + ms);
         }
 
-        public void InstantTeleportWithItem(int x, int y, int z, int id, long cnt)
+        public void InstantTeleportWithItem(int x, int y, int z, int id, int cnt)
         {
             //Inventory.destroyItem(id, cnt, true, true);
         }

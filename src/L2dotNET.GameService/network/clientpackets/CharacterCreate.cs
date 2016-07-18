@@ -17,20 +17,20 @@ namespace L2dotNET.GameService.Network.Clientpackets
         [Inject]
         public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
 
-        private GameClient _client;
-        private string _name;
-        private int _race;
-        private byte _sex;
-        private int _classId;
-        private int _int;
-        private int _str;
-        private int _con;
-        private int _men;
-        private int _dex;
-        private int _wit;
-        private byte _hairStyle;
-        private byte _hairColor;
-        private byte _face;
+        private readonly GameClient _client;
+        private readonly string _name;
+        private readonly int _race;
+        private readonly byte _sex;
+        private readonly int _classId;
+        private readonly int _int;
+        private readonly int _str;
+        private readonly int _con;
+        private readonly int _men;
+        private readonly int _dex;
+        private readonly int _wit;
+        private readonly byte _hairStyle;
+        private readonly byte _hairColor;
+        private readonly byte _face;
 
         public CharacterCreate(Packet packet, GameClient client)
         {
@@ -204,9 +204,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _client.SendPacket(new CharCreateOk());
             L2World.Instance.AddPlayer(player);
             CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId)
-            {
-                CharId = player.ObjId
-            };
+                                         {
+                                             CharId = player.ObjId
+                                         };
             _client.SendPacket(csl);
         }
     }

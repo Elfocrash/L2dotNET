@@ -5,8 +5,9 @@ namespace L2dotNET.GameService.Network.LoginAuth.Recv
 {
     class LoginServAcceptPlayer : PacketBase
     {
-        private string _account;
         private readonly AuthThread _login;
+        private readonly string _account;
+
         public LoginServAcceptPlayer(Packet p, AuthThread login)
         {
             _login = login;

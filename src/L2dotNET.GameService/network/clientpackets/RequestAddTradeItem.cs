@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Items;
+﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.Network;
@@ -8,16 +7,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestAddTradeItem : PacketBase
     {
-        private int _sId;
-        private int _num;
-        private int _unk1;
         private readonly GameClient _client;
+        private readonly int _sId;
+        private int _num;
+        private readonly int _unk1;
+
         public RequestAddTradeItem(Packet packet, GameClient client)
         {
             _client = client;
             _unk1 = packet.ReadInt(); // постоянно 1. в клиенте нет инфы что это
             _sId = packet.ReadInt();
             _num = packet.ReadInt();
+            if (_num < 0)
+                _num = 1;
         }
 
         public override void RunImpl()
@@ -59,20 +61,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            if (_num < 0)
-            {
-                _num = 1;
-            }
-
             if (_num > item.Count)
-            {
                 _num = item.Count;
-            }
 
             if (!item.Template.Stackable && (_num > 1))
-            {
                 _num = 1;
-            }
 
             int numInList = player.AddItemToTrade(item.ObjId, _num);
             int numCurrent = item.Count - numInList;
@@ -84,9 +77,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             {
                 action = 3;
                 if (numCurrent < 1)
-                {
                     action = 2;
-                }
             }
 
             player.SendPacket(new TradeUpdate(item, numCurrent, 0));

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.GameService.Config;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.LoginAuth;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -15,12 +14,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
         [Inject]
         public IAccountService AccountService => GameServer.Kernel.Get<IAccountService>();
 
-        private string _loginName;
-        private int _playKey1;
-        private int _playKey2;
-        private int _loginKey1;
-        private int _loginKey2;
-        private GameClient _client;
+        private readonly GameClient _client;
+        private readonly string _loginName;
+        private readonly int _playKey1;
+        private readonly int _playKey2;
+        private readonly int _loginKey1;
+        private readonly int _loginKey2;
 
         public AuthLogin(Packet packet, GameClient client)
         {
@@ -52,9 +51,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 AuthThread.Instance.SetInGameAccount(_client.AccountName, true);
             }
             else
-            {
                 _client.Termination();
-            }
         }
     }
 }

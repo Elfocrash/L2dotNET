@@ -7,13 +7,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class MultiSellChoose : PacketBase
     {
-        private int _listId;
-        private int _entryId;
-        private long _amount;
-        private short _enchant;
-        private int _unk2;
-        private int _unk3;
         private readonly GameClient _client;
+        private readonly int _listId;
+        private readonly int _entryId;
+        private readonly int _amount;
+        private readonly short _enchant;
+        private readonly int _unk2;
+        private readonly int _unk3;
 
         public MultiSellChoose(Packet packet, GameClient client)
         {
@@ -21,6 +21,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _listId = packet.ReadInt();
             _entryId = packet.ReadInt();
             _amount = packet.ReadInt();
+            if (_amount < 0)
+                _amount = 1;
             _enchant = packet.ReadShort();
             _unk2 = packet.ReadInt();
             _unk3 = packet.ReadInt();
@@ -29,11 +31,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
         public override void RunImpl()
         {
             L2Player player = _client.CurrentPlayer;
-
-            if (_amount < 0)
-            {
-                _amount = 1;
-            }
 
             if (player.LastRequestedMultiSellId != _listId)
             {
@@ -47,14 +44,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
             {
                 list = player.CustomMultiSellList;
                 if (list.Id != _listId)
-                {
                     list = MultiSell.Instance.GetList(_listId);
-                }
             }
             else
-            {
                 list = MultiSell.Instance.GetList(_listId);
-            }
 
             if ((list == null) || (list.Container.Count < _entryId))
             {
@@ -70,9 +63,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 if (i.Id > 0)
                 {
                     if (player.HasItem(i.Id, i.Count))
-                    {
                         continue;
-                    }
 
                     ok = false;
                     break;
@@ -83,9 +74,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     {
                         case -100: //pvppoint
                             if (player.Fame < (i.Count * _amount))
-                            {
                                 ok = false;
-                            }
                             break;
                     }
                 }
@@ -99,15 +88,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             foreach (MultiSellItem i in entry.Take)
                 if (i.L2Item != null)
-                {
                     player.DestroyItem(i.L2Item, 1);
-                }
                 else
                 {
                     if (i.Id > 0)
-                    {
                         player.DestroyItemById(i.Id, i.Count);
-                    }
                     else
                     {
                         switch (i.Id)

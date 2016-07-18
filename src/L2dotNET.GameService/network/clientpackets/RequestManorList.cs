@@ -7,6 +7,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class RequestManorList : PacketBase
     {
         private readonly GameClient _client;
+
         public RequestManorList(Packet packet, GameClient client)
         {
             packet.MoveOffset(2);

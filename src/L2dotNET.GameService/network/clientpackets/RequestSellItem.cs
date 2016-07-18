@@ -9,10 +9,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestSellItem : PacketBase
     {
-        private int _listId;
-        private int _count;
-        private int[] _items;
         private readonly GameClient _client;
+        private int _listId;
+        private readonly int _count;
+        private readonly int[] _items;
 
         public RequestSellItem(Packet packet, GameClient client)
         {
@@ -40,12 +40,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            long totalCost = 0;
+            int totalCost = 0;
             int weight = 0;
             for (int i = 0; i < _count; i++)
             {
                 int objectId = (int)_items[(i * 3) + 0];
-                long count = _items[(i * 3) + 2];
+                int count = _items[(i * 3) + 2];
 
                 if ((count < 0) || (count > int.MaxValue))
                 {
@@ -57,13 +57,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 L2Item item = player.Inventory.Items[objectId];
 
                 if (item.Template.Stackable)
-                {
                     totalCost += (int)(item.Count * (item.Template.ReferencePrice * .5));
-                }
                 else
-                {
                     totalCost += (int)(item.Template.ReferencePrice * .5);
-                }
 
                 weight += item.Template.Weight;
             }
@@ -78,20 +74,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
             int added,
                 currentAdena = player.GetAdena();
             if ((currentAdena + totalCost) >= int.MaxValue)
-            {
                 added = int.MaxValue - currentAdena;
-            }
             else
-            {
                 added = (int)totalCost;
-            }
 
-            List<long[]> transfer = new List<long[]>();
+            List<int[]> transfer = new List<int[]>();
             //InventoryUpdate iu = new InventoryUpdate();
             for (int i = 0; i < _count; i++)
             {
                 int objectId = (int)_items[(i * 3) + 0];
-                long count = _items[(i * 3) + 2];
+                int count = _items[(i * 3) + 2];
 
                 transfer.Add(new[] { objectId, count });
             }
@@ -104,9 +96,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.SendPacket(new ExBuySellListClose());
 
             if (weight != 0)
-            {
                 player.UpdateWeight();
-            }
 
             //if (npc.Template.fnSell != null)
             //{

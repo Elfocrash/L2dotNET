@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI

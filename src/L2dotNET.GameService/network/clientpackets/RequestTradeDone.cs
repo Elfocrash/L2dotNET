@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Managers;
+﻿using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.Network;
@@ -8,8 +7,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestTradeDone : PacketBase
     {
-        private bool _bDone;
         private readonly GameClient _client;
+        private readonly bool _bDone;
+
         public RequestTradeDone(Packet packet, GameClient client)
         {
             _client = client;
@@ -42,9 +42,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.Requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1ConfirmedTrade).AddPlayerName(player.Name));
 
                 if (player.Requester.TradeState == 4)
-                {
                     TradeManager.GetInstance().PersonalTrade(player, player.Requester);
-                }
             }
             else
             {

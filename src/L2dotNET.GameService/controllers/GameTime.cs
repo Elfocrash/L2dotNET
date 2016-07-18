@@ -2,7 +2,6 @@
 using System.Runtime.Remoting.Contexts;
 using log4net;
 using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Network;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.World;
 using L2dotNET.Network;

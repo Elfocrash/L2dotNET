@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tools;
 using L2dotNET.Network;
@@ -8,8 +7,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestStartTrade : PacketBase
     {
-        private int _targetId;
         private readonly GameClient _client;
+        private readonly int _targetId;
+
         public RequestStartTrade(Packet packet, GameClient client)
         {
             _client = client;

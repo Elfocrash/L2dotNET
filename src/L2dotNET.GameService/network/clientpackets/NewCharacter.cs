@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.GameService.Config;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Templates;
@@ -10,7 +9,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class NewCharacter : PacketBase
     {
-        private GameClient _client;
+        private readonly GameClient _client;
+
         public NewCharacter(Packet packet, GameClient client)
         {
             _client = client;

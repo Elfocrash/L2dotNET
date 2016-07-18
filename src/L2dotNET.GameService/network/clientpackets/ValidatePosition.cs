@@ -8,12 +8,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         private const int Synctype = 1;
 
-        private int _x;
-        private int _y;
-        private int _z;
-        private int _heading;
-        private int _data;
         private readonly GameClient _client;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
+        private readonly int _heading;
+        private readonly int _data;
 
         public ValidatePosition(Packet packet, GameClient client)
         {

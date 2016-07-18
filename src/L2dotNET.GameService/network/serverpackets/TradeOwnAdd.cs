@@ -6,9 +6,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
     class TradeOwnAdd : GameserverPacket
     {
         private readonly L2Item _item;
-        private readonly long _num;
+        private readonly int _num;
 
-        public TradeOwnAdd(L2Item item, long num)
+        public TradeOwnAdd(L2Item item, int num)
         {
             _item = item;
             _num = num;

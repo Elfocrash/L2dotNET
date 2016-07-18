@@ -9,10 +9,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestBuyItem : PacketBase
     {
-        private int _listId,
-                    _count;
-        private int[] _items;
         private readonly GameClient _client;
+        private readonly int _listId;
+        private readonly int _count;
+        private readonly int[] _items;
 
         public RequestBuyItem(Packet packet, GameClient client)
         {
@@ -21,7 +21,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _count = packet.ReadInt();
 
             _items = new int[_count * 2];
-
             for (int i = 0; i < _count; i++)
             {
                 _items[i * 2] = packet.ReadInt();
@@ -80,9 +79,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     adena += item.Item.ReferencePrice * (int)_items[(i * 2) + 1];
 
                     if (!item.Item.Stackable)
-                    {
                         slots++;
-                    }
                     //else
                     //{
                     //    if (!player.HasItem(item.item.ItemID))
@@ -96,9 +93,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (!notfound)
-                {
                     continue;
-                }
 
                 player.SendSystemMessage(SystemMessage.SystemMessageId.TradeAttemptFailed);
                 player.SendActionFailed();

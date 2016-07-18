@@ -1,5 +1,4 @@
 ﻿using System;
-using L2dotNET.GameService.Config;
 using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -9,9 +8,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 {
     class RequestEnchantItem : PacketBase
     {
-        private int _aSTargetId;
-        private int _aSSupportId;
         private readonly GameClient _client;
+        private readonly int _aSTargetId;
+        private readonly int _aSSupportId;
 
         public RequestEnchantItem(Packet packet, GameClient client)
         {
@@ -46,14 +45,10 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             }
 
             if (player.EnchantItem.Enchant < 4)
-            {
                 rate = 100;
-            }
 
             if (rate > 100)
-            {
                 rate = 100;
-            }
 
             InventoryUpdate iu = null;
             bool equip = false;
@@ -114,16 +109,12 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             }
 
             if (player.EnchantStone != null)
-            {
                 player.DestroyItem(player.EnchantStone, 1);
-            }
 
             player.DestroyItem(player.EnchantScroll, 1);
 
             if (iu != null)
-            {
                 player.SendPacket(iu);
-            }
 
             player.EnchantItem = null;
             player.EnchantScroll = null;
@@ -131,9 +122,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             player.EnchantState = 0;
 
             if (equip)
-            {
                 player.BroadcastUserInfo();
-            }
         }
     }
 }

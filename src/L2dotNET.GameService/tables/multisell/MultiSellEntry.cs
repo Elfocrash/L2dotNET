@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Tables.Multisell
     {
         public readonly List<MultiSellItem> Take = new List<MultiSellItem>();
         public readonly List<MultiSellItem> Give = new List<MultiSellItem>();
-        public long DutyCount;
+        public int DutyCount;
         public byte Stackable = 1;
         public short Enchant;
         public short AttrAttackType = -2;

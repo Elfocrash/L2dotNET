@@ -10,15 +10,16 @@ namespace L2dotNET.Encryption
     public class ScrambledKeyPair
     {
         private AsymmetricCipherKeyPair _pair;
-        private AsymmetricKeyParameter _publicKey;
         public byte[] ScrambledModulus;
         public AsymmetricKeyParameter PrivateKey;
 
         public ScrambledKeyPair(AsymmetricCipherKeyPair pPair)
         {
             _pair = pPair;
-            _publicKey = pPair.getPublic();
-            ScrambledModulus = ScrambleModulus((_publicKey as RSAKeyParameters).getModulus());
+            AsymmetricKeyParameter publicKey = pPair.getPublic();
+            RSAKeyParameters rsaKeyParameters = publicKey as RSAKeyParameters;
+            if (rsaKeyParameters != null)
+                ScrambledModulus = ScrambleModulus(rsaKeyParameters.getModulus());
             PrivateKey = pPair.getPrivate();
         }
 
@@ -33,7 +34,7 @@ namespace L2dotNET.Encryption
         public byte[] ScrambleModulus(BigInteger modulus)
         {
             byte[] numArray1 = modulus.toByteArray();
-            if (numArray1.Length == 129 && numArray1[0] == 0)
+            if ((numArray1.Length == 129) && (numArray1[0] == 0))
             {
                 byte[] numArray2 = new byte[128];
                 Array.Copy(numArray1, 1, numArray2, 0, 128);
@@ -51,6 +52,7 @@ namespace L2dotNET.Encryption
                 numArray1[13 + index] = (byte)(numArray1[13 + index] ^ (uint)numArray1[52 + index]);
             for (int index = 0; index < 64; ++index)
                 numArray1[64 + index] = (byte)(numArray1[64 + index] ^ (uint)numArray1[index]);
+
             return numArray1;
         }
     }

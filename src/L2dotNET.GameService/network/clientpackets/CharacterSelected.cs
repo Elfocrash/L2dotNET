@@ -13,8 +13,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
         [Inject]
         public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
 
-        private GameClient _client;
-        private int _charSlot;
+        private readonly GameClient _client;
+        private readonly int _charSlot;
         private int _unk1; // new in C4
         private int _unk2; // new in C4
         private int _unk3; // new in C4
@@ -32,16 +32,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public override void RunImpl()
         {
-
             PlayerModel playerModel = PlayerService.GetPlayerModelBySlotId(_client.AccountName, _charSlot);
             L2Player player = _client.AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
 
             PlayerModelMapping(playerModel, player);
 
             if (player == null)
-            {
                 return;
-            }
 
             player.Online = 1;
             player.Gameclient = _client;

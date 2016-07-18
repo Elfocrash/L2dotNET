@@ -1,16 +1,15 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
     class CannotMoveAnymore : PacketBase
     {
-        private int _x;
-        private int _y;
-        private int _z;
-        private int _heading;
         private readonly GameClient _client;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
+        private readonly int _heading;
 
         public CannotMoveAnymore(Packet packet, GameClient client)
         {

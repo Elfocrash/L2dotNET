@@ -6,15 +6,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class MoveBackwardToLocation : PacketBase
     {
-        private GameClient _client;
-
-        private int _targetX;
-        private int _targetY;
-        private int _targetZ;
-        private int _originX;
-        private int _originY;
-        private int _originZ;
-        private int _moveMovement;
+        private readonly GameClient _client;
+        private readonly int _targetX;
+        private readonly int _targetY;
+        private readonly int _targetZ;
+        private readonly int _originX;
+        private readonly int _originY;
+        private readonly int _originZ;
+        private readonly int _moveMovement;
 
         public MoveBackwardToLocation(Packet packet, GameClient client)
         {

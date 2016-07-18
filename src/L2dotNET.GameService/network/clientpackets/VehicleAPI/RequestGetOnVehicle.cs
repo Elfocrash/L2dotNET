@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Vehicles;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.Network;
@@ -8,11 +7,11 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 {
     class RequestGetOnVehicle : PacketBase
     {
-        private int _boatId;
-        private int _x;
-        private int _y;
-        private int _z;
         private readonly GameClient _client;
+        private readonly int _boatId;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
 
         public RequestGetOnVehicle(Packet packet, GameClient client)
         {
@@ -45,9 +44,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
             player.BoatZ = _z;
 
             if (player.KnownObjects.ContainsKey(_boatId))
-            {
                 player.Boat = (L2Boat)player.KnownObjects[_boatId];
-            }
 
             player.BroadcastPacket(new GetOnVehicle(player));
         }

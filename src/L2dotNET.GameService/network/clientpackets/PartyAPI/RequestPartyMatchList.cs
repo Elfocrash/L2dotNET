@@ -7,8 +7,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(RequestPartyMatchList));
 
-        private int _status;
         private readonly GameClient _client;
+        private readonly int _status;
 
         public RequestPartyMatchList(Packet packet, GameClient client)
         {

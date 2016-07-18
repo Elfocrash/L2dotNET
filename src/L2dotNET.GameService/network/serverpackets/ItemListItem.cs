@@ -5,7 +5,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public int ObjectId;
         public int ItemId;
         public int Slot;
-        public long Count;
+        public int Count;
         public short Type2;
         public int CType1;
         public short Equip;

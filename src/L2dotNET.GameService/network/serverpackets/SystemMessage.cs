@@ -59,7 +59,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _data.Add(new object[] { 5, val });
         }
 
-        public void AddItemCount(long val)
+        public void AddItemCount(int val)
         {
             _data.Add(new object[] { 6, val });
         }

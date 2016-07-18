@@ -6,9 +6,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestSaveInventoryOrder : PacketBase
     {
-        private int _count;
-        private int[] _items;
-        private GameClient _client;
+        private readonly GameClient _client;
+        private readonly int _count;
+        private readonly int[] _items;
+
         public RequestSaveInventoryOrder(Packet packet, GameClient client)
         {
             packet.MoveOffset(2);
@@ -35,9 +36,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     int loc = _items[(i * 2) + 1];
 
                     if (item.ObjId == objId)
-                    {
                         item.SlotLocation = loc;
-                    }
                 }
         }
     }

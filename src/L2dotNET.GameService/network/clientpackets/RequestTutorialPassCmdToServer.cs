@@ -7,16 +7,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestTutorialPassCmdToServer : PacketBase
     {
-        private string _alias;
         private readonly GameClient _client;
+        private readonly string _alias;
+
         public RequestTutorialPassCmdToServer(Packet packet, GameClient client)
         {
             _client = client;
             _alias = packet.ReadString();
             if (_alias.Contains("\n"))
-            {
                 _alias = _alias.Replace("\n", "");
-            }
         }
 
         public override void RunImpl()
@@ -39,36 +38,39 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 //  npc.onDialog(player, ask, reply);
             }
-            else if (_alias.StartsWithIgnoreCase("admin?"))
+            else
             {
-                if (player.ViewingAdminPage == 0)
+                if (_alias.StartsWithIgnoreCase("admin?"))
                 {
-                    player.SendActionFailed();
-                    return;
-                }
-
-                if (_alias.Contains("tp"))
-                {
-                    string[] coord = _alias.Split(' ');
-                    int x,
-                        y,
-                        z;
-                    if (!int.TryParse(coord[1], out x) || !int.TryParse(coord[2], out y) || !int.TryParse(coord[3], out z))
+                    if (player.ViewingAdminPage == 0)
                     {
-                        player.SendMessage("Only numbers allowed in box.");
+                        player.SendActionFailed();
                         return;
                     }
 
-                    AdminCommandHandler.Instance.ProcessBypassTp(player, x, y, z);
-                }
-                else
-                {
-                    string x1 = _alias.Split('?')[1];
-                    string[] x2 = x1.Split('&');
-                    int ask = int.Parse(x2[0].Substring(4));
-                    int reply = int.Parse(x2[1].Substring(6));
+                    if (_alias.Contains("tp"))
+                    {
+                        string[] coord = _alias.Split(' ');
+                        int x,
+                            y,
+                            z;
+                        if (!int.TryParse(coord[1], out x) || !int.TryParse(coord[2], out y) || !int.TryParse(coord[3], out z))
+                        {
+                            player.SendMessage("Only numbers allowed in box.");
+                            return;
+                        }
 
-                    AdminCommandHandler.Instance.ProcessBypass(player, ask, reply);
+                        AdminCommandHandler.Instance.ProcessBypassTp(player, x, y, z);
+                    }
+                    else
+                    {
+                        string x1 = _alias.Split('?')[1];
+                        string[] x2 = x1.Split('&');
+                        int ask = int.Parse(x2[0].Substring(4));
+                        int reply = int.Parse(x2[1].Substring(6));
+
+                        AdminCommandHandler.Instance.ProcessBypass(player, ask, reply);
+                    }
                 }
             }
         }

@@ -7,7 +7,6 @@ using log4net;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Network;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables.Admin_Bypass;
 using L2dotNET.GameService.Tables.Ndextend;

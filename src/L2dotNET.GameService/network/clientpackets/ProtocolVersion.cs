@@ -7,14 +7,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class ProtocolVersion : PacketBase
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(ProtocolVersion));
-        private GameClient _client;
+
+        private readonly GameClient _client;
+        private readonly int _protocol;
+
         public ProtocolVersion(Packet packet, GameClient client)
         {
             _client = client;
             _protocol = packet.ReadInt();
         }
-
-        private int _protocol;
 
         public override void RunImpl()
         {

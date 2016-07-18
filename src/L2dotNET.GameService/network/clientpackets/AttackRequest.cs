@@ -8,11 +8,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class AttackRequest : PacketBase
     {
         private readonly GameClient _client;
-        private int _objectId;
-        private int _originX;
-        private int _originY;
-        private int _originZ;
-        private int _attackId;
+        private readonly int _objectId;
+        private readonly int _originX;
+        private readonly int _originY;
+        private readonly int _originZ;
+        private readonly int _attackId;
 
         public AttackRequest(Packet packet, GameClient client)
         {

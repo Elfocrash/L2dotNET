@@ -1,13 +1,12 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 {
     class RequestPartyLootModification : PacketBase
     {
-        private byte _mode;
         private readonly GameClient _client;
+        private readonly byte _mode;
 
         public RequestPartyLootModification(Packet packet, GameClient client)
         {

@@ -4,8 +4,9 @@ namespace L2dotNET.GameService.Network.LoginAuth.Recv
 {
     class LoginServKickAccount : PacketBase
     {
-        private string _account;
         private readonly AuthThread _login;
+        private readonly string _account;
+
         public LoginServKickAccount(Packet p, AuthThread login)
         {
             _login = login;

@@ -8,7 +8,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class RequestUseItem : PacketBase
     {
         private readonly GameClient _client;
-        private int _sId;
+        private readonly int _sId;
+
         public RequestUseItem(Packet packet, GameClient client)
         {
             _client = client;
@@ -72,9 +73,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //}
 
             if (ItemHandler.Instance.Process(player, item))
-            {
                 return;
-            }
 
             //switch (item.Template.DefaultAction)
             //{

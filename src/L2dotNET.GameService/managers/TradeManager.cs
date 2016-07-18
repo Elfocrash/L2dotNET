@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Managers
                 if (item == null)
                     return false;
 
-                long num = player.CurrentTrade[id];
+                int num = player.CurrentTrade[id];
 
                 if (!item.Template.Stackable && (num != 1))
                     tm.Add(id, 1);

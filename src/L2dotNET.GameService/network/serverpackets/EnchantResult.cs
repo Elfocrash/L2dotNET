@@ -6,9 +6,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
     {
         private readonly EnchantResultVal _result;
         private int _crystal;
-        private long _count;
+        private int _count;
 
-        public EnchantResult(EnchantResultVal result, int crystal = 0, long count = 0)
+        public EnchantResult(EnchantResultVal result, int crystal = 0, int count = 0)
         {
             _result = result;
             _crystal = crystal;

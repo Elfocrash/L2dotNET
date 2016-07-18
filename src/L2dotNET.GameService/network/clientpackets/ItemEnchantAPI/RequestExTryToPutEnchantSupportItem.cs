@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Managers;
+﻿using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -9,9 +8,10 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 {
     class RequestExTryToPutEnchantSupportItem : PacketBase
     {
-        private int _aSSupportId;
-        private int _aSTargetId;
-        private GameClient _client;
+        private readonly GameClient _client;
+        private readonly int _aSSupportId;
+        private readonly int _aSTargetId;
+
         public RequestExTryToPutEnchantSupportItem(Packet packet, GameClient client)
         {
             packet.MoveOffset(2);

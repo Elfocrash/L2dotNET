@@ -1,14 +1,13 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.Network;
+﻿using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
     class NetPingResponse : PacketBase
     {
+        private readonly GameClient _client;
         private int _request;
         private int _msec;
         private int _unk2;
-        private readonly GameClient _client;
 
         public NetPingResponse(Packet packet, GameClient client)
         {
@@ -18,9 +17,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _unk2 = packet.ReadInt();
         }
 
-        public override void RunImpl()
-        {
-            
-        }
+        public override void RunImpl() { }
     }
 }

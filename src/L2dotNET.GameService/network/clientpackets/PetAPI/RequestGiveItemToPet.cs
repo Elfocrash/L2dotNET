@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Items;
+﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -9,14 +8,17 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 {
     class RequestGiveItemToPet : PacketBase
     {
-        private int _sId;
-        private long _num;
         private readonly GameClient _client;
+        private readonly int _sId;
+        private int _num;
+
         public RequestGiveItemToPet(Packet packet, GameClient client)
         {
             _client = client;
             _sId = packet.ReadInt();
             _num = packet.ReadInt();
+            if (_num < 0)
+                _num = 1;
         }
 
         public override void RunImpl()
@@ -53,14 +55,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
                 return;
             }
 
-            if (_num < 0)
-            {
-                _num = 1;
-            }
-            else if (_num > item.Count)
-            {
+            if (_num > item.Count)
                 _num = item.Count;
-            }
 
             //List<long[]> items = new List<long[]>
             //                     {

@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         public static short WhFreight = 4;
         private readonly List<L2Item> _items;
         private readonly short _type;
-        private readonly long _adena;
+        private readonly int _adena;
 
         public WareHouseWithdrawalList(L2Player player, List<L2Item> items, short type)
         {

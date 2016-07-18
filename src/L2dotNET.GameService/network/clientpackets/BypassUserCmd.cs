@@ -9,8 +9,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class BypassUserCmd : PacketBase
     {
-        private int _command;
         private readonly GameClient _client;
+        private readonly int _command;
 
         public BypassUserCmd(Packet packet, GameClient client)
         {
@@ -27,13 +27,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 case 0: // [loc]
                     int regId = 0; //MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
                     if (regId > 0)
-                    {
                         player.SendPacket(new SystemMessage((SystemMessage.SystemMessageId)regId).AddNumber(player.X).AddNumber(player.Y).AddNumber(player.Z));
-                    }
                     else
-                    {
                         player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.NotImplementedYet2361).AddString("Nowhere"));
-                    }
 
                     int x = (player.X >> 15) + 9 + 8;
                     int y = (player.Y >> 15) + 10 + 11;

@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Items;
+﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.Network;
 
@@ -7,9 +6,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestAutoSoulShot : PacketBase
     {
-        private int _itemId;
-        private int _type;
         private readonly GameClient _client;
+        private readonly int _itemId;
+        private readonly int _type;
 
         public RequestAutoSoulShot(Packet packet, GameClient client)
         {

@@ -1,14 +1,13 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestRestartPoint : PacketBase
     {
-        private int _type;
-        private int _keyItem = -1;
         private readonly GameClient _client;
+        private readonly int _type;
+        private readonly int _keyItem = -1;
 
         public RequestRestartPoint(Packet packet, GameClient client)
         {
@@ -16,9 +15,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _type = packet.ReadInt();
 
             if (_type == 22)
-            {
                 _keyItem = packet.ReadInt();
-            }
         }
 
         public override void RunImpl()

@@ -12,10 +12,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class RequestActionUse : PacketBase
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(RequestActionUse));
-        private int _actionId;
-        private bool _ctrlPressed;
-        private bool _shiftPressed;
+
         private readonly GameClient _client;
+        private readonly int _actionId;
+        private readonly bool _ctrlPressed;
+        private readonly bool _shiftPressed;
 
         public RequestActionUse(Packet packet, GameClient client)
         {
@@ -103,13 +104,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 case 38: //mount\dismount
                     if (player.MountType > 0)
-                    {
                         player.UnMount();
-                    }
                     else
-                    {
                         player.MountPet();
-                    }
                     break;
                 case 52: //summon unsummon
                     player.Summon?.UnSummon();
@@ -163,9 +160,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (socialId != -1)
-            {
                 player.BroadcastPacket(new SocialAction(player.ObjId, socialId));
-            }
         }
 
         private void CheckSit(L2Player player)
@@ -190,24 +185,18 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 {
                     double dis = Calcs.CalculateDistance(player, chair, true);
                     if (dis < 150)
-                    {
                         staticId = chair.StaticId;
-                    }
                 }
 
                 if (player.Builder == 1)
                 {
                     double dis = Calcs.CalculateDistance(player, chair, true);
                     if (dis < 150)
-                    {
                         staticId = chair.StaticId;
-                    }
                 }
 
                 if (staticId > 0)
-                {
                     player.SetChair(chair);
-                }
             }
 
             player.Sit();
@@ -236,9 +225,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 Log.Info($"pet cast result {result}");
             }
             else
-            {
                 Log.Error($"pet {npcId} used null skill {id}-{lv}");
-            }
         }
     }
 }

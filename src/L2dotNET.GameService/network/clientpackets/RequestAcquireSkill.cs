@@ -10,10 +10,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestAcquireSkill : PacketBase
     {
-        private int _id;
-        private int _level;
-        private int _skillType;
         private readonly GameClient _client;
+        private readonly int _id;
+        private readonly int _level;
+        private int _skillType;
 
         public RequestAcquireSkill(Packet packet, GameClient client)
         {
@@ -70,9 +70,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             Skill skill = SkillTable.Instance.Get(e.Id, e.Lv);
             if (skill != null)
-            {
                 player.AddSkill(skill, true, true);
-            }
             else
             {
                 player.SendMessage("failed to learn null skill");
@@ -93,9 +91,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (upd)
-                {
                     player.SendPacket(new ShortCutInit(player));
-                }
             }
 
             player.ActiveSkillTree.Remove(_id);

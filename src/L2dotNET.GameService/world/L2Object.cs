@@ -5,7 +5,6 @@ using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Model.Zones;
 using L2dotNET.GameService.Model.Zones.Classes;
-using L2dotNET.GameService.Network;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.Network;
 

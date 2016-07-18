@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using L2dotNET.GameService.Config;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Quests;
 using L2dotNET.Network;
@@ -8,8 +7,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestQuestAbort : PacketBase
     {
-        private int _questId;
         private readonly GameClient _client;
+        private readonly int _questId;
 
         public RequestQuestAbort(Packet packet, GameClient client)
         {

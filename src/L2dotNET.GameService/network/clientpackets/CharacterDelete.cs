@@ -11,14 +11,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         [Inject]
         public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
-        private GameClient _client;
+
+        private readonly GameClient _client;
+        private readonly int _charSlot;
+
         public CharacterDelete(Packet packet, GameClient client)
         {
             _client = client;
             _charSlot = packet.ReadInt();
         }
-
-        private int _charSlot;
 
         public override void RunImpl()
         {

@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Items;
+﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.Network;
@@ -8,8 +7,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 {
     class RequestPetUseItem : PacketBase
     {
-        private int _sId;
         private readonly GameClient _client;
+        private readonly int _sId;
 
         public RequestPetUseItem(Packet packet, GameClient client)
         {
@@ -45,9 +44,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
             L2Item item = pet.Inventory.Items[_sId];
 
             if (ItemHandler.Instance.Process(pet, item))
-            {
                 return;
-            }
 
             player.SendActionFailed();
         }

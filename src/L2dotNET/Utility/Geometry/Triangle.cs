@@ -68,8 +68,8 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y)
         {
-            long dx = x - Ax;
-            long dy = y - Ay;
+            int dx = x - Ax;
+            int dy = y - Ay;
 
             bool a = (((0 - dx) * (BAy - 0)) - ((BAx - 0) * (0 - dy))) >= 0;
             bool b = (((BAx - dx) * (CAy - BAy)) - ((CAx - BAx) * (BAy - dy))) >= 0;
@@ -80,8 +80,8 @@ namespace L2dotNET.Utility.Geometry
 
         public override bool IsInside(int x, int y, int z)
         {
-            long dx = x - Ax;
-            long dy = y - Ay;
+            int dx = x - Ax;
+            int dy = y - Ay;
 
             bool a = (((0 - dx) * (BAy - 0)) - ((BAx - 0) * (0 - dy))) >= 0;
             bool b = (((BAx - dx) * (CAy - BAy)) - ((CAx - BAx) * (BAy - dy))) >= 0;

@@ -9,14 +9,15 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
     class RequestMoveToLocationInVehicle : PacketBase
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(RequestMoveToLocationInVehicle));
-        private int _boatId;
-        private int _dx;
-        private int _dy;
-        private int _dz;
-        private int _x;
-        private int _y;
-        private int _z;
-        private GameClient _client;
+
+        private readonly GameClient _client;
+        private readonly int _boatId;
+        private readonly int _dx;
+        private readonly int _dy;
+        private readonly int _dz;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
 
         public RequestMoveToLocationInVehicle(Packet packet, GameClient client)
         {
@@ -47,18 +48,17 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
             if (player.Boat != null)
             {
                 if (player.Boat.ObjId == _boatId)
-                {
                     boat = player.Boat;
-                }
                 else
                 {
                     player.SendActionFailed();
                     return;
                 }
             }
-            else if (player.KnownObjects.ContainsKey(_boatId))
+            else
             {
-                boat = (L2Boat)player.KnownObjects[_boatId];
+                if (player.KnownObjects.ContainsKey(_boatId))
+                    boat = (L2Boat)player.KnownObjects[_boatId];
             }
 
             if (boat == null)
@@ -69,9 +69,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
             }
 
             if (player.Boat == null)
-            {
                 player.Boat = boat;
-            }
 
             player.BoatX = _dx;
             player.BoatY = _dy;

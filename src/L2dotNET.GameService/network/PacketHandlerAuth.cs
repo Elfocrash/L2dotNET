@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.Remoting.Contexts;
+﻿using System.Runtime.Remoting.Contexts;
 using System.Threading;
 using log4net;
 using L2dotNET.GameService.Network.LoginAuth;
@@ -37,7 +36,6 @@ namespace L2dotNET.GameService.Network
 
             if (packetBase != null)
                 new Thread(packetBase.RunImpl).Start();
-
         }
     }
 }

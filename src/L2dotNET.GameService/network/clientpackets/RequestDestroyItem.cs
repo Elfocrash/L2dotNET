@@ -7,15 +7,17 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestDestroyItem : PacketBase
     {
-        private int _sId;
-        private int _num;
         private readonly GameClient _client;
+        private readonly int _sId;
+        private readonly int _num;
 
         public RequestDestroyItem(Packet packet, GameClient client)
         {
             _client = client;
             _sId = packet.ReadInt();
             _num = packet.ReadInt();
+            if (_num < 0)
+                _num = 1;
         }
 
         public override void RunImpl()
@@ -52,11 +54,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.SendPacket(sm);
                 player.SendActionFailed();
                 return;
-            }
-
-            if (_num < 0)
-            {
-                _num = 1;
             }
 
             //if (item._isEquipped == 1)

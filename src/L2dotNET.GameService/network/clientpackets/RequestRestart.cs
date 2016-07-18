@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.Network;
 
@@ -8,6 +7,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class RequestRestart : PacketBase
     {
         private readonly GameClient _client;
+
         public RequestRestart(Packet packet, GameClient client)
         {
             _client = client;
@@ -34,9 +34,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.SendPacket(new RestartResponse());
 
             CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId)
-            {
-                CharId = player.ObjId
-            };
+                                         {
+                                             CharId = player.ObjId
+                                         };
             player.SendPacket(csl);
         }
     }

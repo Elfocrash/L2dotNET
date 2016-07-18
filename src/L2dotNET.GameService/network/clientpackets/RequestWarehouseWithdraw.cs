@@ -12,8 +12,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(RequestBypassToServer));
 
-        private int _count;
-        private int[] _items;
+        private readonly int _count;
+        private readonly int[] _items;
         private readonly GameClient _client;
 
         public RequestWarehouseWithdraw(Packet packet, GameClient client)
@@ -22,9 +22,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _count = packet.ReadInt();
 
             if ((_count < 0) || (_count > 255))
-            {
                 _count = 0;
-            }
 
             _items = new int[_count * 2];
             for (int i = 0; i < _count; i++)
@@ -59,13 +57,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
 
                 if (item.Template.Stackable)
-                {
                     slots += 1;
-                }
                 else
-                {
                     slots += count;
-                }
             }
 
             //InvPrivateWarehouse pw = player._warehouse ?? new InvPrivateWarehouse(player);

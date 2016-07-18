@@ -10,10 +10,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class Say2 : PacketBase
     {
-        private string _text,
-                       _target;
-        private SayIDList _type;
         private readonly GameClient _client;
+        private readonly string _text;
+        private readonly SayIDList _type;
+        private readonly string _target;
 
         public Say2(Packet packet, GameClient client)
         {
@@ -22,16 +22,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
             int typeId = packet.ReadInt();
 
             if ((typeId < 0) || (typeId >= SayId.MaxId))
-            {
                 typeId = 0;
-            }
 
             _type = SayId.getType((byte)typeId);
 
             if (_type == SayIDList.CHAT_TELL)
-            {
                 _target = packet.ReadString();
-            }
         }
 
         public override void RunImpl()
@@ -64,15 +60,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     if (arr[0] == '.')
                     {
                         if (PointCmdManager.GetInstance().Pointed(player, _text))
-                        {
                             return;
-                        }
                     }
 
                     foreach (L2Player o in player.KnownObjects.Values.OfType<L2Player>().Where(o => player.IsInsideRadius(o, 1250, true, false)))
-                    {
                         o.SendPacket(cs);
-                    }
 
                     player.SendPacket(cs);
                 }
@@ -85,9 +77,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 {
                     L2Player target;
                     if (player.Name.Equals(_target))
-                    {
                         target = player;
-                    }
                     //else
                     //    target = L2World.Instance.GetPlayer(_target);
 
@@ -121,9 +111,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 case SayIDList.CHAT_MARKET:
                     foreach (L2Player p in L2World.Instance.GetPlayers())
-                    {
                         p.SendPacket(cs);
-                    }
 
                     break;
                 case SayIDList.CHAT_HERO:
@@ -131,14 +119,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     if (player.Heroic == 1)
                     {
                         foreach (L2Player p in L2World.Instance.GetPlayers())
-                        {
                             p.SendPacket(cs);
-                        }
                     }
                     else
-                    {
                         player.SendActionFailed();
-                    }
                 }
 
                     break;

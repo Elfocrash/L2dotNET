@@ -7,9 +7,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 {
     class RequestExSetPledgeCrestLarge : PacketBase
     {
-        private int _size;
-        private byte[] _picture;
         private readonly GameClient _client;
+        private readonly int _size;
+        private readonly byte[] _picture;
 
         public RequestExSetPledgeCrestLarge(Packet packet, GameClient client)
         {
@@ -18,9 +18,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
             _size = packet.ReadInt();
 
             if ((_size > 0) && (_size <= 2176))
-            {
                 _picture = packet.ReadByteArrayAlt(_size);
-            }
         }
 
         public override void RunImpl()

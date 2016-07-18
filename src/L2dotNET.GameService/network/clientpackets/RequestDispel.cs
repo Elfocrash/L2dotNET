@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills;
 using L2dotNET.Network;
 
@@ -7,10 +6,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestDispel : PacketBase
     {
-        private int _ownerId;
-        private int _skillId;
-        private int _skillLv;
-        private GameClient _client;
+        private readonly GameClient _client;
+        private readonly int _ownerId;
+        private readonly int _skillId;
+        private readonly int _skillLv;
+
         public RequestDispel(Packet packet, GameClient client)
         {
             packet.MoveOffset(2);
@@ -34,14 +34,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
             foreach (AbnormalEffect ave in player.Effects)
             {
                 if ((ave.Id != _skillId) && (ave.Lvl != _skillLv))
-                {
                     continue;
-                }
 
                 if ((ave.Skill.Debuff == 1) && (ave.Skill.IsMagic > 1))
-                {
                     break;
-                }
 
                 avestop = ave;
                 break;

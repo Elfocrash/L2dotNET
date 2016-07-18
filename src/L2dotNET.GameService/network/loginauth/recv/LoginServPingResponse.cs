@@ -4,8 +4,9 @@ namespace L2dotNET.GameService.Network.LoginAuth.Recv
 {
     class LoginServPingResponse : PacketBase
     {
-        private string _message;
         private readonly AuthThread _login;
+        private readonly string _message;
+
         public LoginServPingResponse(Packet p, AuthThread login)
         {
             _login = login;

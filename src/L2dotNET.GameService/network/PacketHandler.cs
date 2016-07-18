@@ -276,31 +276,31 @@ namespace L2dotNET.GameService.Network
                             packetBase = new RequestCursedWeaponList(packet, client);
                             break;
 
-                            //case 0x4B:
-                            //    packetBase = new RequestDispel(packet, client);
-                            //    break;
-                            //case 0x4C:
-                            //    packetBase = new RequestExTryToPutEnchantTargetItem(packet, client);
-                            //    break;
-                            //case 0x4D:
-                            //    packetBase = new RequestExTryToPutEnchantSupportItem(packet, client);
-                            //    break;
-                            //case 0x4E:
-                            //    packetBase = new RequestExCancelEnchantItem(packet, client);
-                            //    break;
-                            //case 0x58:
-                            //    packetBase = new RequestDominionInfo(packet, client);
-                            //    break;
-                            //case 0x76:
-                            //    packetBase = new RequestBuySellUiClose(packet, client);
-                            //    break;
+                        //case 0x4B:
+                        //    packetBase = new RequestDispel(packet, client);
+                        //    break;
+                        //case 0x4C:
+                        //    packetBase = new RequestExTryToPutEnchantTargetItem(packet, client);
+                        //    break;
+                        //case 0x4D:
+                        //    packetBase = new RequestExTryToPutEnchantSupportItem(packet, client);
+                        //    break;
+                        //case 0x4E:
+                        //    packetBase = new RequestExCancelEnchantItem(packet, client);
+                        //    break;
+                        //case 0x58:
+                        //    packetBase = new RequestDominionInfo(packet, client);
+                        //    break;
+                        //case 0x76:
+                        //    packetBase = new RequestBuySellUiClose(packet, client);
+                        //    break;
 
-                            //case 0x78:
-                            //    packetBase = new RequestPartyLootModification(packet, client);
-                            //    break;
-                            //case 0x79:
-                            //    packetBase = new AnswerPartyLootModification(packet, client);
-                            //    break;
+                        //case 0x78:
+                        //    packetBase = new RequestPartyLootModification(packet, client);
+                        //    break;
+                        //case 0x79:
+                        //    packetBase = new AnswerPartyLootModification(packet, client);
+                        //    break;
                     }
 
                     break;
@@ -314,9 +314,7 @@ namespace L2dotNET.GameService.Network
             }
 
             if (client.IsTerminated)
-            {
                 return;
-            }
 
             new Thread(packetBase.RunImpl).Start();
         }
@@ -327,18 +325,12 @@ namespace L2dotNET.GameService.Network
             byte d = 0;
 
             if (level > 0)
-            {
                 s = "Header: ";
-            }
             for (byte r = 0; r < level; r++)
-            {
                 s += buff[r].ToString("x2");
-            }
 
             if (level > 0)
-            {
                 s += "\n";
-            }
 
             for (int a = level; a < buff.Length; a++)
             {
@@ -348,9 +340,7 @@ namespace L2dotNET.GameService.Network
                 s += t + " ";
 
                 if (d != 4)
-                {
                     continue;
-                }
 
                 d = 0;
                 s += "\n";

@@ -53,7 +53,7 @@ namespace L2dotNET.GameService.Model.Skills2
         public int HpConsume;
 
         public int ConsumeItemId;
-        public long ConsumeItemCount;
+        public int ConsumeItemCount;
 
         public byte EnchantEnabled = 0;
 

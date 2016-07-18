@@ -7,11 +7,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class RequestAction : PacketBase
     {
         private readonly GameClient _client;
-        private int _serverId;
-        private int _x;
-        private int _y;
-        private int _z;
-        private int _actionId;
+        private readonly int _serverId;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly int _z;
+        private readonly int _actionId;
 
         public RequestAction(Packet packet, GameClient client)
         {
@@ -30,15 +30,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Object obj = null;
 
             if (_serverId == player.ObjId)
-            {
                 obj = player;
-            }
             else
             {
                 if (player.KnownObjects.ContainsKey(_serverId))
-                {
                     obj = player.KnownObjects[_serverId];
-                }
             }
 
             if (obj == null)

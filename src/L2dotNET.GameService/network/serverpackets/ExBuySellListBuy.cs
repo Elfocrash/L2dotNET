@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
     class ExBuySellListBuy : GameserverPacket
     {
         private readonly NdShopList _shop;
-        private readonly long _adena;
+        private readonly int _adena;
         private readonly double _mod;
         private readonly double _tax;
         private readonly int _shopId;
@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             _shopId = shopId;
         }
 
-        public ExBuySellListBuy(long adena)
+        public ExBuySellListBuy(int adena)
         {
             _adena = adena;
         }

@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Communities;
+﻿using L2dotNET.GameService.Model.Communities;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
@@ -9,8 +8,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 {
     class RequestPledgeInfo : PacketBase
     {
-        private int _clanId;
         private readonly GameClient _client;
+        private readonly int _clanId;
 
         public RequestPledgeInfo(Packet packet, GameClient client)
         {
@@ -24,9 +23,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 
             L2Clan clan = ClanTable.Instance.GetClan(_clanId);
             if (clan != null)
-            {
                 player.SendPacket(new PledgeInfo(clan.ClanId, clan.Name, clan.AllianceName));
-            }
         }
     }
 }

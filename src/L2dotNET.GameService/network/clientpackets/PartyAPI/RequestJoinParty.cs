@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using L2dotNET.GameService.Config;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.Network;
@@ -8,9 +7,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 {
     class RequestJoinParty : PacketBase
     {
-        private string _name;
-        private int _itemDistribution;
         private readonly GameClient _client;
+        private readonly string _name;
+        private readonly int _itemDistribution;
 
         public RequestJoinParty(Packet packet, GameClient client)
         {

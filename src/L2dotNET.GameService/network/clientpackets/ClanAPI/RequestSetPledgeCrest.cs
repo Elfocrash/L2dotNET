@@ -7,18 +7,17 @@ namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 {
     class RequestSetPledgeCrest : PacketBase
     {
-        private int _size;
-        private byte[] _picture;
-        private GameClient _client;
+        private readonly GameClient _client;
+        private readonly int _size;
+        private readonly byte[] _picture;
+
         public RequestSetPledgeCrest(Packet packet, GameClient client)
         {
             _client = client;
             _size = packet.ReadInt();
 
             if ((_size > 0) && (_size <= 256))
-            {
                 _picture = packet.ReadByteArrayAlt(_size);
-            }
         }
 
         public override void RunImpl()

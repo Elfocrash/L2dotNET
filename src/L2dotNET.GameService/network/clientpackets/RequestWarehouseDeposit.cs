@@ -12,9 +12,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(RequestBypassToServer));
 
-        private int _count;
-        private int[] _items;
         private readonly GameClient _client;
+        private readonly int _count;
+        private readonly int[] _items;
 
         public RequestWarehouseDeposit(Packet packet, GameClient client)
         {
@@ -22,9 +22,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _count = packet.ReadInt();
 
             if ((_count < 0) || (_count > 255))
-            {
                 _count = 0;
-            }
 
             _items = new int[_count * 2];
             for (int i = 0; i < _count; i++)
@@ -48,11 +46,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             int fee = _count * 30;
             int slots = 0;
-            long adenatransfer = 0;
+            int adenatransfer = 0;
             for (int i = 0; i < _count; i++)
             {
                 int objectId = (int)_items[i * 2];
-                long count = _items[(i * 2) + 1];
+                int count = _items[(i * 2) + 1];
 
                 L2Item item = player.GetItemByObjId(objectId);
 
@@ -64,18 +62,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (item.Template.Stackable)
-                {
                     slots += 1;
-                }
                 else
-                {
                     slots += (int)count;
-                }
 
                 if (item.Template.ItemId == 57)
-                {
                     adenatransfer += count;
-                }
             }
 
             if ((player.GetAdena() - adenatransfer) < fee)
@@ -101,11 +93,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             player.ReduceAdena(fee);
 
-            List<long[]> transfer = new List<long[]>();
+            List<int[]> transfer = new List<int[]>();
             for (int i = 0; i < _count; i++)
             {
                 int objectId = (int)_items[i * 2];
-                long count = _items[(i * 2) + 1];
+                int count = _items[(i * 2) + 1];
 
                 transfer.Add(new[] { objectId, count });
             }

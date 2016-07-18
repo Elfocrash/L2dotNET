@@ -6,10 +6,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestMagicSkillUse : PacketBase
     {
-        private int _magicId;
-        private bool _ctrlPressed;
-        private bool _shiftPressed;
         private readonly GameClient _client;
+        private readonly int _magicId;
+        private readonly bool _ctrlPressed;
+        private readonly bool _shiftPressed;
 
         public RequestMagicSkillUse(Packet packet, GameClient client)
         {

@@ -1,5 +1,4 @@
-﻿using L2dotNET.GameService.Config;
-using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tools;
 using L2dotNET.Network;
@@ -36,19 +35,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if ((_response != 0) && (player.Requester.TradeState != 1))
-            {
                 _response = 0;
-            }
 
             if ((_response != 0) && (player.EnchantState != 0))
-            {
                 _response = 0;
-            }
 
             if ((_response != 0) && !Calcs.CheckIfInRange(150, player, player.Requester, true))
-            {
                 _response = 0;
-            }
 
             switch (_response)
             {

@@ -8,10 +8,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestAcquireSkillInfo : PacketBase
     {
-        private int _id;
-        private int _level;
-        private int _skillType;
         private readonly GameClient _client;
+        private readonly int _id;
+        private readonly int _level;
+        private readonly int _skillType;
 
         public RequestAcquireSkillInfo(Packet packet, GameClient client)
         {
@@ -46,9 +46,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 case 1:
                 {
                     if (skill.ItemId > 0)
-                    {
                         asi.Reqs.Add(new[] { 4, skill.ItemId, skill.ItemCount, 0 });
-                    }
                 }
                     break;
             }

@@ -5,7 +5,6 @@ using System.Linq;
 using log4net;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Structures;
-using L2dotNET.GameService.Network;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
 using L2dotNET.Network;

@@ -6,8 +6,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class SendBypassBuildCmd : PacketBase
     {
-        private string _alias;
         private readonly GameClient _client;
+        private readonly string _alias;
 
         public SendBypassBuildCmd(Packet packet, GameClient client)
         {

@@ -6,13 +6,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestShortCutReg : PacketBase
     {
-        private int _type;
-        private int _id;
-        private int _slot;
-        private int _page;
-        private int _lvl;
-        private int _characterType; // 1 - player, 2 - pet
         private readonly GameClient _client;
+        private readonly int _type;
+        private readonly int _id;
+        private readonly int _slot;
+        private readonly int _page;
+        private readonly int _lvl;
+        private readonly int _characterType; // 1 - player, 2 - pet
 
         public RequestShortCutReg(Packet packet, GameClient client)
         {

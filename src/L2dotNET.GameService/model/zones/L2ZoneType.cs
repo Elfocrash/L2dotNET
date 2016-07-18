@@ -2,7 +2,6 @@
 using System.Linq;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Zones.Forms;
-using L2dotNET.GameService.Network;
 using L2dotNET.GameService.World;
 using L2dotNET.Network;
 

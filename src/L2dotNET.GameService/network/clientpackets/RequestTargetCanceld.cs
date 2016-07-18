@@ -5,8 +5,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestTargetCanceld : PacketBase
     {
-        private short _unselect;
         private readonly GameClient _client;
+        private readonly short _unselect;
 
         public RequestTargetCanceld(Packet packet, GameClient client)
         {
@@ -25,9 +25,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (player.CurrentTarget != null)
-            {
                 player.ChangeTarget();
-            }
         }
     }
 }
