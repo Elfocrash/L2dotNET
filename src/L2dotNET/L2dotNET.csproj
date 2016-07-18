@@ -31,11 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Org.BouncyCastle">
+      <HintPath>..\L2dotNET.GameService\Datapacks\Game\Org.BouncyCastle.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Compression\DlcStream.cs" />
+    <Compile Include="Encryption\BlowfishCipher.cs" />
+    <Compile Include="Encryption\BlowfishKeygen.cs" />
+    <Compile Include="Encryption\GameCrypt.cs" />
+    <Compile Include="Encryption\ScrambledKeyPair.cs" />
     <Compile Include="Enums\ActionType.cs" />
     <Compile Include="Enums\ArmorType.cs" />
     <Compile Include="Enums\ArmorTypeId.cs" />
@@ -105,6 +112,9 @@
       <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
       <Name>L2dotNET.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\Org.BouncyCastle.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

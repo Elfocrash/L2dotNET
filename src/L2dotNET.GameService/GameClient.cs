@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using log4net;
-using L2Crypt;
+using L2dotNET.Encryption;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -54,7 +54,7 @@ namespace L2dotNET.GameService
         public byte[] EnableCrypt()
         {
             byte[] key = BlowFishKeygen.GetRandomKey();
-            _crypt.setKey(key);
+            _crypt.SetKey(key);
             return key;
         }
 
@@ -65,7 +65,7 @@ namespace L2dotNET.GameService
 
             sbp.Write();
             byte[] data = sbp.ToByteArray();
-            _crypt.encrypt(data);
+            _crypt.Encrypt(data);
             List<byte> bytes = new List<byte>();
             bytes.AddRange(BitConverter.GetBytes((short)(data.Length + 2)));
             bytes.AddRange(data);
@@ -163,7 +163,7 @@ namespace L2dotNET.GameService
 
             byte[] buff = new byte[_buffer.Length];
             _buffer.CopyTo(buff, 0);
-            _crypt.decrypt(buff);
+            _crypt.Decrypt(buff);
             TrafficUp += _buffer.Length;
 
             PacketHandler.HandlePacket(new Packet(1, buff), this);

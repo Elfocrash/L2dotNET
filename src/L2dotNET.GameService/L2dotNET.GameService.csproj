@@ -66,8 +66,9 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="L2Crypt">
-      <HintPath>..\..\c_auth\c_auth\lib\L2Crypt.dll</HintPath>
+    <Reference Include="AutoMapper, Version=5.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
@@ -740,8 +741,6 @@
     <Content Include="Datapacks\Game\data\xml\npcs\32000-32999.xml" />
     <Content Include="Datapacks\Game\data\xml\npcs\35000-35999.xml" />
     <Content Include="Datapacks\Game\data\xml\npcs\50000-50999.xml" />
-    <Content Include="Datapacks\Game\L2Crypt.dll" />
-    <Content Include="Datapacks\Game\Org.BouncyCastle.dll" />
     <Content Include="Datapacks\Game\pk.txt" />
     <Content Include="Datapacks\Game\scripts\admin\abteleport.xml" />
     <Content Include="Datapacks\Game\scripts\areadata.txt" />
@@ -785,6 +784,7 @@
     <Folder Include="Datapacks\Login\log\" />
     <Folder Include="Datapacks\Login\sq\" />
     <Folder Include="GeoEngine\" />
+    <Folder Include="Mapping\" />
     <Folder Include="Model\Quests\Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
