@@ -2,29 +2,27 @@
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Player.General;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestShortCutDel : GameServerNetworkRequest
+    class RequestShortCutDel : PacketBase
     {
-        public RequestShortCutDel(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private int _slot;
         private int _page;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestShortCutDel(Packet packet, GameClient client)
         {
-            int id = ReadD();
+            _client = client;
+            int id = packet.ReadInt();
             _slot = id % 12;
             _page = id / 12;
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             L2Shortcut scx = player.Shortcuts.FirstOrDefault(sc => (sc.Slot == _slot) && (sc.Page == _page));
 
@@ -35,7 +33,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             lock (player.Shortcuts)
+            {
                 player.Shortcuts.Remove(scx);
+
+                //SQL_Block sqb = new SQL_Block("user_shortcuts");
+                //sqb.where("ownerId", player.ObjID);
+                //sqb.where("classId", player.ActiveClass.id);
+                //sqb.where("slot", _slot);
+                //sqb.where("page", _page);
+                //sqb.sql_delete(false);
+            }
 
             player.SendPacket(new ShortCutInit(player));
         }

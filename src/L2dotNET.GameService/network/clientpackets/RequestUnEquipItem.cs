@@ -1,24 +1,21 @@
 ﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestUnEquipItem : GameServerNetworkRequest
+    class RequestUnEquipItem : PacketBase
     {
-        public RequestUnEquipItem(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
+        private readonly GameClient _client;
         private int _slotBitType;
-
-        public override void Read()
+        public RequestUnEquipItem(Packet packet, GameClient client)
         {
-            _slotBitType = ReadD();
+            _client = client;
+            _slotBitType = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {

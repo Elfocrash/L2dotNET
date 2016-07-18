@@ -24,7 +24,7 @@ namespace L2dotNET.GameService.Managers
             if (player.CurrentTrade == null)
                 return true;
 
-            SortedList<int, long> tm = new SortedList<int, long>();
+            SortedList<int, int> tm = new SortedList<int, int>();
             foreach (int id in player.CurrentTrade.Keys)
             {
                 L2Item item = player.Inventory.GetItemByItemId(id);
@@ -68,7 +68,7 @@ namespace L2dotNET.GameService.Managers
                 return;
             }
 
-            List<long[]> list = new List<long[]>();
+            List<int[]> list = new List<int[]>();
             if (pl1.CurrentTrade != null)
             {
                 list.AddRange(pl1.CurrentTrade.Keys.Select(id => new[] { id, pl1.CurrentTrade[id] }));

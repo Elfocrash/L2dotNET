@@ -1,23 +1,21 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class Appearing : GameServerNetworkRequest
+    class Appearing : PacketBase
     {
-        public Appearing(GameClient client, byte[] data)
+        private readonly GameClient _client;
+        public Appearing(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            // nothing
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             int x = player.X;
             int y = player.Y;

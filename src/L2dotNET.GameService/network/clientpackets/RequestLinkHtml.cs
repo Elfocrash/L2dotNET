@@ -1,25 +1,24 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestLinkHtml : GameServerNetworkRequest
+    class RequestLinkHtml : PacketBase
     {
-        public RequestLinkHtml(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private string _link;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestLinkHtml(Packet packet, GameClient client)
         {
-            _link = ReadS();
+            _client = client;
+            _link = packet.ReadString();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             // log.Info($"link to '{ _link }'");
 
@@ -31,7 +30,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 id = int.Parse(_link.Split('#')[1]);
             }
             else
+            {
                 file = _link;
+            }
 
             int idx = player.CurrentTarget?.ObjId ?? player.ObjId;
 

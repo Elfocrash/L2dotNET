@@ -1,59 +1,60 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using L2dotNET.GameService.Config;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.LoginAuth;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
 using Ninject;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class AuthLogin : GameServerNetworkRequest
+    class AuthLogin : PacketBase
     {
         [Inject]
         public IAccountService AccountService => GameServer.Kernel.Get<IAccountService>();
-
-        public AuthLogin(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
 
         private string _loginName;
         private int _playKey1;
         private int _playKey2;
         private int _loginKey1;
         private int _loginKey2;
+        private GameClient _client;
 
-        public override void Read()
+        public AuthLogin(Packet packet, GameClient client)
         {
-            _loginName = ReadS();
-            _playKey2 = ReadD();
-            _playKey1 = ReadD();
-            _loginKey1 = ReadD();
-            _loginKey2 = ReadD();
+            _client = client;
+            _loginName = packet.ReadString();
+            _playKey2 = packet.ReadInt();
+            _playKey1 = packet.ReadInt();
+            _loginKey1 = packet.ReadInt();
+            _loginKey2 = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            if (GetClient().AccountName == null)
+            if (_client.AccountName == null)
             {
-                GetClient().AccountName = _loginName;
+                _client.AccountName = _loginName;
 
                 List<int> players = AccountService.GetPlayerIdsListByAccountName(_loginName);
 
                 int slot = 0;
-                foreach (L2Player p in players.Select(id => new L2Player().RestorePlayer(id, GetClient())))
+                foreach (L2Player p in players.Select(id => new L2Player().RestorePlayer(id, _client)))
                 {
                     p.CharSlot = slot;
                     slot++;
-                    Client.AccountChars.Add(p);
+                    _client.AccountChars.Add(p);
                 }
 
-                GetClient().SendPacket(new CharacterSelectionInfo(GetClient().AccountName, GetClient().AccountChars, GetClient().SessionId));
-                AuthThread.Instance.SetInGameAccount(GetClient().AccountName, true);
+                _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId));
+                AuthThread.Instance.SetInGameAccount(_client.AccountName, true);
             }
             else
-                GetClient().Termination();
+            {
+                _client.Termination();
+            }
         }
     }
 }

@@ -1,31 +1,30 @@
-﻿using L2dotNET.GameService.Model.Items;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 {
-    class RequestGetItemFromPet : GameServerNetworkRequest
+    class RequestGetItemFromPet : PacketBase
     {
         private int _objectId;
         private long _count;
         private int _equipped;
+        private readonly GameClient _client;
 
-        public RequestGetItemFromPet(GameClient client, byte[] data)
+        public RequestGetItemFromPet(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _objectId = packet.ReadInt();
+            _count = packet.ReadInt();
+            _equipped = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _objectId = ReadD();
-            _count = ReadQ();
-            _equipped = ReadD();
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (!(player.Summon is L2Pet) || (player.EnchantState != 0))
             {
@@ -64,11 +63,12 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
             }
 
             if (_count < 0)
-                _count = 1;
-            else
             {
-                if (_count > item.Count)
-                    _count = item.Count;
+                _count = 1;
+            }
+            else if (_count > item.Count)
+            {
+                _count = item.Count;
             }
 
             //List<long[]> items = new List<long[]>

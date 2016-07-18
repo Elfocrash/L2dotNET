@@ -1,15 +1,11 @@
 ﻿using System;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class ValidatePosition : GameServerNetworkRequest
+    class ValidatePosition : PacketBase
     {
-        public ValidatePosition(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private const int Synctype = 1;
 
         private int _x;
@@ -17,19 +13,21 @@ namespace L2dotNET.GameService.Network.Clientpackets
         private int _z;
         private int _heading;
         private int _data;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public ValidatePosition(Packet packet, GameClient client)
         {
-            _x = ReadD();
-            _y = ReadD();
-            _z = ReadD();
-            _heading = ReadD();
-            _data = ReadD();
+            _client = client;
+            _x = packet.ReadInt();
+            _y = packet.ReadInt();
+            _z = packet.ReadInt();
+            _heading = packet.ReadInt();
+            _data = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
             //string prevReg = player.CurrentRegion;
 
             int realX = player.X;

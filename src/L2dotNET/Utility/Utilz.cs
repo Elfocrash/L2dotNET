@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text;
+using L2dotNET.Network;
 
 namespace L2dotNET.Utility
 {
@@ -44,6 +45,11 @@ namespace L2dotNET.Utility
         public static bool EqualsIgnoreCase(this string str, string stringToCompare)
         {
             return str.Equals(stringToCompare, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        public static Packet ToPacket(this byte[] byteArray, int extraBytes = 0)
+        {
+            return new Packet(1 + extraBytes, byteArray);
         }
 
         /// <summary>

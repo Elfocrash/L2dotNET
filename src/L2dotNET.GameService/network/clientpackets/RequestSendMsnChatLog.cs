@@ -1,24 +1,23 @@
-﻿namespace L2dotNET.GameService.Network.Clientpackets
-{
-    class RequestSendMsnChatLog : GameServerNetworkRequest
-    {
-        public RequestSendMsnChatLog(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
+﻿using L2dotNET.Network;
 
+namespace L2dotNET.GameService.Network.Clientpackets
+{
+    class RequestSendMsnChatLog : PacketBase
+    {
         private string _text,
                        _email;
         private int _type;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestSendMsnChatLog(Packet packet, GameClient client)
         {
-            _text = ReadS();
-            _email = ReadS();
-            _type = ReadD();
+            _client = client;
+            _text = packet.ReadString();
+            _email = packet.ReadString();
+            _type = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
             //            L2Player player = getClient()._player;
 

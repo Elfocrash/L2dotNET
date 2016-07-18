@@ -8,7 +8,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
         private readonly long _num;
         private readonly byte _action;
 
-        public TradeUpdate(L2Item item, long num, byte action)
+        public TradeUpdate(L2Item item, int num, byte action)
         {
             _item = item;
             _num = num;

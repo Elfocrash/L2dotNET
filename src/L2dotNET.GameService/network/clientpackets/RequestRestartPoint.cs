@@ -1,28 +1,29 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestRestartPoint : GameServerNetworkRequest
+    class RequestRestartPoint : PacketBase
     {
         private int _type;
         private int _keyItem = -1;
+        private readonly GameClient _client;
 
-        public RequestRestartPoint(GameClient client, byte[] data)
+        public RequestRestartPoint(Packet packet, GameClient client)
         {
-            Makeme(client, data);
-        }
-
-        public override void Read()
-        {
-            _type = ReadD();
+            _client = client;
+            _type = packet.ReadInt();
 
             if (_type == 22)
-                _keyItem = ReadD();
+            {
+                _keyItem = packet.ReadInt();
+            }
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             switch (_type)
             {

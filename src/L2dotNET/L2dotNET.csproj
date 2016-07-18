@@ -48,6 +48,7 @@
     <Compile Include="Network\LoginServiceSettings.cs" />
     <Compile Include="Network\NetworkClient.cs" />
     <Compile Include="Network\Packet.cs" />
+    <Compile Include="Network\PacketBase.cs" />
     <Compile Include="Network\RemoteServiceSettings.cs" />
     <Compile Include="Network\ServiceShutdownEventArgs.cs" />
     <Compile Include="Network\ServiceShutdownType.cs" />

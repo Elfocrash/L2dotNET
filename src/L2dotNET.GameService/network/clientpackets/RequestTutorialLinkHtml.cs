@@ -1,26 +1,25 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestTutorialLinkHtml : GameServerNetworkRequest
+    class RequestTutorialLinkHtml : PacketBase
     {
-        public RequestTutorialLinkHtml(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private string _link;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestTutorialLinkHtml(Packet packet, GameClient client)
         {
-            _link = ReadS();
+            _client = client;
+            _link = packet.ReadString();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (_link.Contains(":"))
             {

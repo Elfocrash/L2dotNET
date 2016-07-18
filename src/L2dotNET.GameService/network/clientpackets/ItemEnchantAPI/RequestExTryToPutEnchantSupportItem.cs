@@ -1,29 +1,28 @@
-﻿using L2dotNET.GameService.Managers;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 {
-    class RequestExTryToPutEnchantSupportItem : GameServerNetworkRequest
+    class RequestExTryToPutEnchantSupportItem : PacketBase
     {
         private int _aSSupportId;
         private int _aSTargetId;
-
-        public RequestExTryToPutEnchantSupportItem(GameClient client, byte[] data)
+        private GameClient _client;
+        public RequestExTryToPutEnchantSupportItem(Packet packet, GameClient client)
         {
-            Makeme(client, data, 2);
+            packet.MoveOffset(2);
+            _client = client;
+            _aSSupportId = packet.ReadInt();
+            _aSTargetId = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _aSSupportId = ReadD();
-            _aSTargetId = ReadD();
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if ((player.EnchantState != ItemEnchantManager.StateEnchantStart) || (player.EnchantItem.ObjId != _aSTargetId))
             {

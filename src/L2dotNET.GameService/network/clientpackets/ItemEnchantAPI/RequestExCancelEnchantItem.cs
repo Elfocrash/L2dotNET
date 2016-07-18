@@ -1,24 +1,24 @@
-﻿using L2dotNET.GameService.Managers;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
 {
-    class RequestExCancelEnchantItem : GameServerNetworkRequest
+    class RequestExCancelEnchantItem : PacketBase
     {
-        public RequestExCancelEnchantItem(GameClient client, byte[] data)
+        private readonly GameClient _client;
+        public RequestExCancelEnchantItem(Packet packet, GameClient client)
         {
-            Makeme(client, data, 2);
+            packet.MoveOffset(2);
+            _client = client;
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            // nothing
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             player.EnchantScroll = null;
 

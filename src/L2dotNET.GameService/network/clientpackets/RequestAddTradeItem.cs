@@ -1,30 +1,28 @@
-﻿using L2dotNET.GameService.Model.Items;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestAddTradeItem : GameServerNetworkRequest
+    class RequestAddTradeItem : PacketBase
     {
         private int _sId;
-        private long _num;
+        private int _num;
         private int _unk1;
-
-        public RequestAddTradeItem(GameClient client, byte[] data)
+        private readonly GameClient _client;
+        public RequestAddTradeItem(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _unk1 = packet.ReadInt(); // постоянно 1. в клиенте нет инфы что это
+            _sId = packet.ReadInt();
+            _num = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _unk1 = ReadD(); // постоянно 1. в клиенте нет инфы что это
-            _sId = ReadD();
-            _num = ReadD();
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.TradeState < 3) // умник
             {
@@ -62,16 +60,22 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (_num < 0)
+            {
                 _num = 1;
+            }
 
             if (_num > item.Count)
+            {
                 _num = item.Count;
+            }
 
             if (!item.Template.Stackable && (_num > 1))
+            {
                 _num = 1;
+            }
 
-            long numInList = player.AddItemToTrade(item.ObjId, _num);
-            long numCurrent = item.Count - numInList;
+            int numInList = player.AddItemToTrade(item.ObjId, _num);
+            int numCurrent = item.Count - numInList;
             player.SendPacket(new TradeOwnAdd(item, numInList));
             player.Requester.SendPacket(new TradeOtherAdd(item, numInList));
 
@@ -80,10 +84,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
             {
                 action = 3;
                 if (numCurrent < 1)
+                {
                     action = 2;
+                }
             }
 
-            player.SendPacket(new TradeUpdate(item, numCurrent, action));
+            player.SendPacket(new TradeUpdate(item, numCurrent, 0));
         }
     }
 }

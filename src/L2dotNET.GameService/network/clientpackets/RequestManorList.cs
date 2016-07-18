@@ -1,21 +1,19 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestManorList : GameServerNetworkRequest
+    class RequestManorList : PacketBase
     {
-        public RequestManorList(GameClient client, byte[] data)
+        private readonly GameClient _client;
+        public RequestManorList(Packet packet, GameClient client)
         {
-            Makeme(client, data, 2);
+            packet.MoveOffset(2);
+            _client = client;
         }
 
-        public override void Read()
-        {
-            // do nothing
-        }
-
-        public override void Run()
+        public override void RunImpl()
         {
             List<string> manorsName = new List<string>
                                       {
@@ -29,7 +27,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                                           "rune",
                                           "schuttgart"
                                       };
-            GetClient().SendPacket(new ExSendManorList(manorsName));
+            _client.SendPacket(new ExSendManorList(manorsName));
         }
     }
 }

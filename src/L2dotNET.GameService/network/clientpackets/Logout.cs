@@ -1,29 +1,29 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.LoginAuth;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class Logout : GameServerNetworkRequest
+    class Logout : PacketBase
     {
-        public Logout(GameClient client, byte[] data)
+        private GameClient _client;
+        public Logout(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            // nothing
-        }
+            AuthThread.Instance.SetInGameAccount(_client.AccountName);
 
-        public override void Run()
-        {
-            AuthThread.Instance.SetInGameAccount(Client.AccountName);
+            L2Player player = _client.CurrentPlayer;
 
-            L2Player player = Client.CurrentPlayer;
-
-            if (player == null) //re-login на выборе чаров
+            if (player == null)
+            {
                 return;
+            }
 
             if (player.PBlockAct == 1)
             {

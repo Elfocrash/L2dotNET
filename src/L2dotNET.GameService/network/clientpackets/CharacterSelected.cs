@@ -2,54 +2,52 @@
 using L2dotNET.GameService.Enums;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.Models;
+using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
 using Ninject;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class CharacterSelected : GameServerNetworkRequest
+    class CharacterSelected : PacketBase
     {
         [Inject]
         public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
 
-        public CharacterSelected(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
+        private GameClient _client;
         private int _charSlot;
-
         private int _unk1; // new in C4
         private int _unk2; // new in C4
         private int _unk3; // new in C4
         private int _unk4; // new in C4
 
-        public override void Read()
+        public CharacterSelected(Packet packet, GameClient client)
         {
-            _charSlot = ReadD();
-            _unk1 = ReadH();
-            _unk2 = ReadD();
-            _unk3 = ReadD();
-            _unk4 = ReadD();
+            _client = client;
+            _charSlot = packet.ReadInt();
+            _unk1 = packet.ReadShort();
+            _unk2 = packet.ReadInt();
+            _unk3 = packet.ReadInt();
+            _unk4 = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            GameClient client = GetClient();
 
-            PlayerModel playerModel = PlayerService.GetPlayerModelBySlotId(client.AccountName, _charSlot);
-            L2Player player = GetClient().AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
+            PlayerModel playerModel = PlayerService.GetPlayerModelBySlotId(_client.AccountName, _charSlot);
+            L2Player player = _client.AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
 
             PlayerModelMapping(playerModel, player);
 
             if (player == null)
+            {
                 return;
+            }
 
             player.Online = 1;
-            player.Gameclient = client;
-            client.CurrentPlayer = player;
+            player.Gameclient = _client;
+            _client.CurrentPlayer = player;
 
-            GetClient().SendPacket(new Serverpackets.CharacterSelected(player, client.SessionId));
+            _client.SendPacket(new Serverpackets.CharacterSelected(player, _client.SessionId));
         }
 
         //TODO: Simplify method body
@@ -80,7 +78,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.PvpKills = playerModel.PvpKills;
             player.PkKills = playerModel.PkKills;
             player.ClanId = playerModel.ClanId;
-            // player.BaseClass.ClassId.ClassRace = (ClassRace)playerModel.BaseClass;
             player.ActiveClass.ClassId.Id = (ClassIds)playerModel.ClassId;
             player.BaseClass.ClassId.Id = (ClassIds)playerModel.BaseClass;
             player.DeleteTime = playerModel.DeleteTime;

@@ -1,28 +1,27 @@
 ﻿using System.Linq;
+using L2dotNET.GameService.Config;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 {
-    class RequestJoinParty : GameServerNetworkRequest
+    class RequestJoinParty : PacketBase
     {
         private string _name;
         private int _itemDistribution;
+        private readonly GameClient _client;
 
-        public RequestJoinParty(GameClient client, byte[] data)
+        public RequestJoinParty(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _name = packet.ReadString();
+            _itemDistribution = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _name = ReadS();
-            _itemDistribution = ReadD();
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
             L2Player target = player.KnownObjects.Values.OfType<L2Player>().FirstOrDefault(obj => obj.Name.Equals(_name));
 
             //if (name.Equals(player.Name))

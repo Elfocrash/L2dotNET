@@ -8,6 +8,7 @@ using L2dotNET.GameService.Network.Clientpackets.PartyAPI;
 using L2dotNET.GameService.Network.Clientpackets.PetAPI;
 using L2dotNET.GameService.Network.Clientpackets.RecipeAPI;
 using L2dotNET.GameService.Network.Clientpackets.VehicleAPI;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network
 {
@@ -16,339 +17,308 @@ namespace L2dotNET.GameService.Network
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(PacketHandler));
 
-        //private static int cnt;
-
-        public static void HandlePacket(GameClient client, byte[] buff)
+        public static void HandlePacket(Packet packet, GameClient client)
         {
-            byte id = buff[0];
-            string cninfo = "handlepacket: request " + id.ToString("x2") + " size " + buff.Length;
+            PacketBase packetBase = null;
 
-            string str = "header: " + buff[0].ToString("x2") + "\n";
-            foreach (byte b in buff)
-                str += b.ToString("x2") + " ";
-
-            Log.Info(str);
-            GameServerNetworkRequest msg = null;
-            switch (id)
+            switch (packet.FirstOpcode)
             {
                 case 0x00:
-                    msg = new ProtocolVersion(client, buff);
+                    packetBase = new ProtocolVersion(packet, client);
                     break;
                 case 0x08:
-                    msg = new AuthLogin(client, buff);
+                    packetBase = new AuthLogin(packet, client);
                     break;
                 case 0x09:
-                    msg = new Logout(client, buff);
+                    packetBase = new Logout(packet, client);
                     break;
                 case 0x0b:
-                    msg = new CharacterCreate(client, buff);
+                    packetBase = new CharacterCreate(packet, client);
                     break;
-                //case 0x0c:
-                //    msg = new CharacterDelete(client, buff);
-                //    break;
+
                 case 0x0d:
-                    msg = new CharacterSelected(client, buff);
+                    packetBase = new CharacterSelected(packet, client);
                     break;
                 case 0x0e:
-                    msg = new NewCharacter(client, buff);
+                    packetBase = new NewCharacter(packet, client);
                     break;
-                //case 0x62:
-                //    msg = new CharacterRestore(client, buff);
-                //    break;
-                //case 0x68:
-                //    msg = new RequestPledgeCrest(client, buff);
-                //    break;
-
-                //case 0x0c:
-                //    msg = new CharacterCreate(client, buff);
-                //    break;
-                //case 0x00:
-                //    msg = new ProtocolVersion(client, buff);
-                //    break;
-                //case 0x09:
-                //    msg = new RequestSetPledgeCrest(client, buff);
-                //    break;
                 case 0x01:
-                    msg = new MoveBackwardToLocation(client, buff);
+                    packetBase = new MoveBackwardToLocation(packet, client);
                     break;
                 case 0x03:
-                    msg = new EnterWorld(client, buff);
+                    packetBase = new EnterWorld(packet, client);
                     break;
                 case 0x0f:
-                    msg = new RequestItemList(client, buff);
+                    packetBase = new RequestItemList(packet, client);
                     break;
                 case 0x0a:
-                    msg = new AttackRequest(client, buff);
+                    packetBase = new AttackRequest(packet, client);
                     break;
                 case 0x11:
-                    msg = new RequestUnEquipItem(client, buff);
+                    packetBase = new RequestUnEquipItem(packet, client);
                     break;
                 case 0x14:
-                    msg = new RequestUseItem(client, buff);
+                    packetBase = new RequestUseItem(packet, client);
                     break;
                 case 0x1A:
-                    msg = new RequestStartTrade(client, buff);
+                    packetBase = new RequestStartTrade(packet, client);
                     break;
                 case 0x16:
-                    msg = new RequestAddTradeItem(client, buff);
+                    packetBase = new RequestAddTradeItem(packet, client);
                     break;
                 case 0x17:
-                    msg = new RequestTradeDone(client, buff);
+                    packetBase = new RequestTradeDone(packet, client);
                     break;
                 case 0x04:
-                    msg = new RequestAction(client, buff);
+                    packetBase = new RequestAction(packet, client);
                     break;
 
                 case 0x20:
-                    msg = new RequestLinkHtml(client, buff);
+                    packetBase = new RequestLinkHtml(packet, client);
                     break;
                 case 0x21:
-                    msg = new RequestBypassToServer(client, buff);
+                    packetBase = new RequestBypassToServer(packet, client);
                     break;
                 case 0x26:
-                    msg = new RequestWithdrawalPledge(client, buff);
+                    packetBase = new RequestWithdrawalPledge(packet, client);
                     break;
                 case 0x8c:
-                    msg = new RequestGetItemFromPet(client, buff);
+                    packetBase = new RequestGetItemFromPet(packet, client);
                     break;
 
                 case 0x1b:
-                    msg = new RequestSocialAction(client, buff);
+                    packetBase = new RequestSocialAction(packet, client);
                     break;
                 case 0x1e:
-                    msg = new RequestSellItem(client, buff);
+                    packetBase = new RequestSellItem(packet, client);
                     break;
                 case 0x2f:
-                    msg = new RequestMagicSkillUse(client, buff);
+                    packetBase = new RequestMagicSkillUse(packet, client);
                     break;
                 case 0x30:
-                    msg = new Appearing(client, buff);
+                    packetBase = new Appearing(packet, client);
                     break;
                 case 0x3B:
-                    msg = new RequestWarehouseDeposit(client, buff);
+                    packetBase = new RequestWarehouseDeposit(packet, client);
                     break;
                 case 0x32:
-                    msg = new RequestWarehouseWithdraw(client, buff);
+                    packetBase = new RequestWarehouseWithdraw(packet, client);
                     break;
                 case 0x33:
-                    msg = new RequestShortCutReg(client, buff);
+                    packetBase = new RequestShortCutReg(packet, client);
                     break;
                 case 0x35:
-                    msg = new RequestShortCutDel(client, buff);
+                    packetBase = new RequestShortCutDel(packet, client);
                     break;
                 case 0x1f:
-                    msg = new RequestBuyItem(client, buff);
+                    packetBase = new RequestBuyItem(packet, client);
                     break;
                 case 0x29:
-                    msg = new RequestJoinParty(client, buff);
+                    packetBase = new RequestJoinParty(packet, client);
                     break;
                 case 0x2a:
-                    msg = new RequestAnswerJoinParty(client, buff);
+                    packetBase = new RequestAnswerJoinParty(packet, client);
                     break;
                 case 0x2b:
-                    msg = new RequestWithDrawalParty(client, buff);
+                    packetBase = new RequestWithDrawalParty(packet, client);
                     break;
                 case 0x2c:
-                    msg = new RequestOustPartyMember(client, buff);
+                    packetBase = new RequestOustPartyMember(packet, client);
                     break;
                 case 0x36:
-                    msg = new CannotMoveAnymore(client, buff);
+                    packetBase = new CannotMoveAnymore(packet, client);
                     break;
                 case 0x37:
-                    msg = new RequestTargetCanceld(client, buff);
+                    packetBase = new RequestTargetCanceld(packet, client);
                     break;
                 case 0x38:
-                    msg = new Say2(client, buff);
+                    packetBase = new Say2(packet, client);
                     break;
                 case 0x42:
-                    msg = new RequestGetOnVehicle(client, buff);
+                    packetBase = new RequestGetOnVehicle(packet, client);
                     break;
                 case 0x43:
-                    msg = new RequestGetOffVehicle(client, buff);
+                    packetBase = new RequestGetOffVehicle(packet, client);
                     break;
                 case 0x44:
-                    msg = new AnswerTradeRequest(client, buff);
+                    packetBase = new AnswerTradeRequest(packet, client);
                     break;
                 case 0x45:
-                    msg = new RequestActionUse(client, buff);
+                    packetBase = new RequestActionUse(packet, client);
                     break;
                 case 0x46:
-                    msg = new RequestRestart(client, buff);
+                    packetBase = new RequestRestart(packet, client);
                     break;
                 case 0x48:
-                    msg = new ValidatePosition(client, buff);
+                    packetBase = new ValidatePosition(packet, client);
                     break;
 
                 case 0x4a:
-                    msg = new StartRotating(client, buff);
+                    packetBase = new StartRotating(packet, client);
                     break;
                 case 0x4b:
-                    msg = new FinishRotating(client, buff);
+                    packetBase = new FinishRotating(packet, client);
                     break;
 
                 case 0x57:
-                    msg = new RequestShowBoard(client, buff);
+                    packetBase = new RequestShowBoard(packet, client);
                     break;
                 case 0x58:
-                    msg = new RequestEnchantItem(client, buff);
+                    packetBase = new RequestEnchantItem(packet, client);
                     break;
                 case 0x59:
-                    msg = new RequestDestroyItem(client, buff);
+                    packetBase = new RequestDestroyItem(packet, client);
                     break;
                 case 0x64:
-                    msg = new RequestQuestAbort(client, buff);
+                    packetBase = new RequestQuestAbort(packet, client);
                     break;
                 case 0x66:
-                    msg = new RequestPledgeInfo(client, buff);
+                    packetBase = new RequestPledgeInfo(packet, client);
                     break;
                 case 0xcd:
-                    msg = new RequestShowMiniMap(client, buff);
+                    packetBase = new RequestShowMiniMap(packet, client);
                     break;
                 case 0x6D:
-                    msg = new RequestSendMsnChatLog(client, buff);
+                    packetBase = new RequestSendMsnChatLog(packet, client);
                     break;
                 case 0xcf:
-                    msg = new RequestRecordInfo(client, buff);
+                    packetBase = new RequestRecordInfo(packet, client);
                     break;
                 case 0x73:
-                    msg = new RequestAcquireSkillInfo(client, buff);
+                    packetBase = new RequestAcquireSkillInfo(packet, client);
                     break;
                 case 0x74:
-                    msg = new SendBypassBuildCmd(client, buff);
+                    packetBase = new SendBypassBuildCmd(packet, client);
                     break;
                 case 0x75:
-                    msg = new RequestMoveToLocationInVehicle(client, buff);
+                    packetBase = new RequestMoveToLocationInVehicle(packet, client);
                     break;
 
                 case 0x7C:
-                    msg = new RequestAcquireSkill(client, buff);
+                    packetBase = new RequestAcquireSkill(packet, client);
                     break;
                 case 0x7D:
-                    msg = new RequestRestartPoint(client, buff);
+                    packetBase = new RequestRestartPoint(packet, client);
                     break;
                 case 0x80:
-                    msg = new RequestPartyMatchList(client, buff);
+                    packetBase = new RequestPartyMatchList(packet, client);
                     break;
 
                 case 0x85:
-                    msg = new RequestTutorialLinkHtml(client, buff);
+                    packetBase = new RequestTutorialLinkHtml(packet, client);
                     break;
                 case 0x86:
-                    msg = new RequestTutorialPassCmdToServer(client, buff);
+                    packetBase = new RequestTutorialPassCmdToServer(packet, client);
                     break;
                 //  case 0x87:
                 //      msg = new RequestTutorialQuestionMark();
                 //     break;
 
                 case 0x93:
-                    msg = new RequestChangePetName(client, buff);
+                    packetBase = new RequestChangePetName(packet, client);
                     break;
                 case 0x94:
-                    msg = new RequestPetUseItem(client, buff);
+                    packetBase = new RequestPetUseItem(packet, client);
                     break;
                 case 0x95:
-                    msg = new RequestGiveItemToPet(client, buff);
+                    packetBase = new RequestGiveItemToPet(packet, client);
                     break;
 
                 case 0xB0:
-                    msg = new MultiSellChoose(client, buff);
+                    packetBase = new MultiSellChoose(packet, client);
                     break;
                 case 0xB1:
-                    msg = new NetPingResponse(client, buff);
+                    packetBase = new NetPingResponse(packet, client);
                     break;
                 case 0xaa:
-                    msg = new BypassUserCmd(client, buff);
+                    packetBase = new BypassUserCmd(packet, client);
                     break;
                 case 0xB5:
-                    msg = new RequestRecipeBookOpen(client, buff);
+                    packetBase = new RequestRecipeBookOpen(packet, client);
                     break;
                 case 0xB6:
-                    msg = new RequestRecipeBookDestroy(client, buff);
+                    packetBase = new RequestRecipeBookDestroy(packet, client);
                     break;
                 case 0xB7:
-                    msg = new RequestRecipeItemMakeInfo(client, buff);
+                    packetBase = new RequestRecipeItemMakeInfo(packet, client);
                     break;
                 case 0xB8:
-                    msg = new RequestRecipeItemMakeSelf(client, buff);
+                    packetBase = new RequestRecipeItemMakeSelf(packet, client);
                     break;
                 case 0xC1:
-                    msg = new ObserverReturn(client, buff);
+                    packetBase = new ObserverReturn(packet, client);
                     break;
                 case 0xC7:
-                    msg = new RequestWearItem(client, buff);
+                    packetBase = new RequestWearItem(packet, client);
                     break;
                 case 0xD0:
-                    byte id2 = buff[1];
-                    cninfo = "handlepacket: request unk id2 " + id2.ToString("x2") + " size " + buff.Length;
-                    switch (id2)
+                    switch (packet.SecondOpcode)
                     {
-                        case 8:
-                            msg = new RequestManorList(client, buff);
+                        case 0x08:
+                            packetBase = new RequestManorList(packet, client);
                             break;
                         case 0x11:
-                            msg = new RequestExSetPledgeCrestLarge(client, buff);
+                            packetBase = new RequestExSetPledgeCrestLarge(packet, client);
                             break;
 
-                        case 5:
-                            msg = new RequestAutoSoulShot(client, buff);
+                        case 0x05:
+                            packetBase = new RequestAutoSoulShot(packet, client);
                             break;
 
-                        case 0x16:
-                            msg = new RequestPledgeMemberInfo(client, buff);
+                        case 0x1d:
+                            packetBase = new RequestPledgeMemberInfo(packet, client);
                             break;
-
-                        case 0x1E:
-                            msg = new RequestExRqItemLink(client, buff);
-                            break;
-                        case 0x24:
-                            msg = new RequestSaveInventoryOrder(client, buff);
-                            break;
+                        //case 0x24:
+                        //    packetBase = new RequestSaveInventoryOrder(packet, client);
+                        //    break;
 
                         case 0x22:
-                            msg = new RequestCursedWeaponList(client, buff);
+                            packetBase = new RequestCursedWeaponList(packet, client);
                             break;
 
-                        case 0x4B:
-                            msg = new RequestDispel(client, buff);
-                            break;
-                        case 0x4C:
-                            msg = new RequestExTryToPutEnchantTargetItem(client, buff);
-                            break;
-                        case 0x4D:
-                            msg = new RequestExTryToPutEnchantSupportItem(client, buff);
-                            break;
-                        case 0x4E:
-                            msg = new RequestExCancelEnchantItem(client, buff);
-                            break;
-                        case 0x58:
-                            msg = new RequestDominionInfo(client, buff);
-                            break;
-                        case 0x76:
-                            msg = new RequestBuySellUiClose(client, buff);
-                            break;
+                            //case 0x4B:
+                            //    packetBase = new RequestDispel(packet, client);
+                            //    break;
+                            //case 0x4C:
+                            //    packetBase = new RequestExTryToPutEnchantTargetItem(packet, client);
+                            //    break;
+                            //case 0x4D:
+                            //    packetBase = new RequestExTryToPutEnchantSupportItem(packet, client);
+                            //    break;
+                            //case 0x4E:
+                            //    packetBase = new RequestExCancelEnchantItem(packet, client);
+                            //    break;
+                            //case 0x58:
+                            //    packetBase = new RequestDominionInfo(packet, client);
+                            //    break;
+                            //case 0x76:
+                            //    packetBase = new RequestBuySellUiClose(packet, client);
+                            //    break;
 
-                        case 0x78:
-                            msg = new RequestPartyLootModification(client, buff);
-                            break;
-                        case 0x79:
-                            msg = new AnswerPartyLootModification(client, buff);
-                            break;
+                            //case 0x78:
+                            //    packetBase = new RequestPartyLootModification(packet, client);
+                            //    break;
+                            //case 0x79:
+                            //    packetBase = new AnswerPartyLootModification(packet, client);
+                            //    break;
                     }
 
                     break;
             }
 
-            if (msg == null)
+            if (packetBase == null)
             {
-                Log.Info($"{cninfo}");
+                //Log.Info($"{cninfo}");
                 //log.Info($"{cninfo}, {cnt}");
                 return;
             }
 
-            if (msg.Client.IsTerminated)
+            if (client.IsTerminated)
+            {
                 return;
+            }
 
-            new Thread(new ThreadStart(msg.Run)).Start();
+            new Thread(packetBase.RunImpl).Start();
         }
 
         private static void out_debug(byte level, byte[] buff)
@@ -357,12 +327,18 @@ namespace L2dotNET.GameService.Network
             byte d = 0;
 
             if (level > 0)
+            {
                 s = "Header: ";
+            }
             for (byte r = 0; r < level; r++)
+            {
                 s += buff[r].ToString("x2");
+            }
 
             if (level > 0)
+            {
                 s += "\n";
+            }
 
             for (int a = level; a < buff.Length; a++)
             {
@@ -372,7 +348,9 @@ namespace L2dotNET.GameService.Network
                 s += t + " ";
 
                 if (d != 4)
+                {
                     continue;
+                }
 
                 d = 0;
                 s += "\n";

@@ -1,34 +1,32 @@
 ﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestSaveInventoryOrder : GameServerNetworkRequest
+    class RequestSaveInventoryOrder : PacketBase
     {
         private int _count;
         private int[] _items;
-
-        public RequestSaveInventoryOrder(GameClient client, byte[] data)
+        private GameClient _client;
+        public RequestSaveInventoryOrder(Packet packet, GameClient client)
         {
-            Makeme(client, data, 2);
-        }
-
-        public override void Read()
-        {
-            _count = ReadD();
+            packet.MoveOffset(2);
+            _client = client;
+            _count = packet.ReadInt();
 
             //  _count = Math.Min(125, _count); мм?зачем
             _items = new int[_count * 2];
             for (int i = 0; i < _count; i++)
             {
-                _items[i * 2] = ReadD();
-                _items[(i * 2) + 1] = ReadD();
+                _items[i * 2] = packet.ReadInt();
+                _items[(i * 2) + 1] = packet.ReadInt();
             }
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             foreach (L2Item item in player.Inventory.Items)
                 for (int i = 0; i < _count; i++)
@@ -37,7 +35,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     int loc = _items[(i * 2) + 1];
 
                     if (item.ObjId == objId)
+                    {
                         item.SlotLocation = loc;
+                    }
                 }
         }
     }

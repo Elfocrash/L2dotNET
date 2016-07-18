@@ -5,6 +5,8 @@ using log4net;
 using L2dotNET.GameService.Network.LoginAuth.Send;
 using L2dotNET.GameService.World;
 using L2dotNET.Models;
+using L2dotNET.Network;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network.LoginAuth
 {
@@ -120,8 +122,9 @@ namespace L2dotNET.GameService.Network.LoginAuth
 
             byte[] buff = new byte[_buffer.Length];
             _buffer.CopyTo(buff, 0);
+            Packet packet = buff.ToPacket();
 
-            PacketHandlerAuth.HandlePacket(this, buff);
+            PacketHandlerAuth.HandlePacket(packet, this);
 
             new System.Threading.Thread(Read).Start();
         }

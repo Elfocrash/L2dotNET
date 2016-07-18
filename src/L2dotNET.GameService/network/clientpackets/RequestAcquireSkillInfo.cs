@@ -2,30 +2,28 @@
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestAcquireSkillInfo : GameServerNetworkRequest
+    class RequestAcquireSkillInfo : PacketBase
     {
-        public RequestAcquireSkillInfo(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private int _id;
         private int _level;
         private int _skillType;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestAcquireSkillInfo(Packet packet, GameClient client)
         {
-            _id = ReadD();
-            _level = ReadD();
-            _skillType = ReadD();
+            _client = client;
+            _id = packet.ReadInt();
+            _level = packet.ReadInt();
+            _skillType = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             SortedList<int, AcquireSkill> seq = player.ActiveSkillTree;
             if (!seq.ContainsKey(_id))
@@ -48,7 +46,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 case 1:
                 {
                     if (skill.ItemId > 0)
+                    {
                         asi.Reqs.Add(new[] { 4, skill.ItemId, skill.ItemCount, 0 });
+                    }
                 }
                     break;
             }

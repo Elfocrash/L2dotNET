@@ -3,37 +3,35 @@ using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestSellItem : GameServerNetworkRequest
+    class RequestSellItem : PacketBase
     {
-        public RequestSellItem(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private int _listId;
         private int _count;
-        private long[] _items;
+        private int[] _items;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestSellItem(Packet packet, GameClient client)
         {
-            _listId = ReadD();
-            _count = ReadD();
-            _items = new long[_count * 3];
+            _client = client;
+            _listId = packet.ReadInt();
+            _count = packet.ReadInt();
+            _items = new int[_count * 3];
 
             for (int i = 0; i < _count; i++)
             {
-                _items[(i * 3) + 0] = ReadD();
-                _items[(i * 3) + 1] = ReadD();
-                _items[(i * 3) + 2] = ReadQ();
+                _items[(i * 3) + 0] = packet.ReadInt();
+                _items[(i * 3) + 1] = packet.ReadInt();
+                _items[(i * 3) + 2] = packet.ReadInt();
             }
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
             L2Npc npc = player.FolkNpc;
 
             if (npc == null)
@@ -59,9 +57,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 L2Item item = player.Inventory.Items[objectId];
 
                 if (item.Template.Stackable)
+                {
                     totalCost += (int)(item.Count * (item.Template.ReferencePrice * .5));
+                }
                 else
+                {
                     totalCost += (int)(item.Template.ReferencePrice * .5);
+                }
 
                 weight += item.Template.Weight;
             }
@@ -76,9 +78,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
             int added,
                 currentAdena = player.GetAdena();
             if ((currentAdena + totalCost) >= int.MaxValue)
+            {
                 added = int.MaxValue - currentAdena;
+            }
             else
+            {
                 added = (int)totalCost;
+            }
 
             List<long[]> transfer = new List<long[]>();
             //InventoryUpdate iu = new InventoryUpdate();
@@ -98,7 +104,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.SendPacket(new ExBuySellListClose());
 
             if (weight != 0)
+            {
                 player.UpdateWeight();
+            }
 
             //if (npc.Template.fnSell != null)
             //{

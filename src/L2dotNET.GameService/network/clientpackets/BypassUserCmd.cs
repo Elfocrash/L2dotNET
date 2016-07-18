@@ -3,35 +3,37 @@ using L2dotNET.GameService.Controllers;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.World;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class BypassUserCmd : GameServerNetworkRequest
+    class BypassUserCmd : PacketBase
     {
-        public BypassUserCmd(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private int _command;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public BypassUserCmd(Packet packet, GameClient client)
         {
-            _command = ReadD();
+            _client = client;
+            _command = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             switch (_command)
             {
                 case 0: // [loc]
                     int regId = 0; //MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
                     if (regId > 0)
+                    {
                         player.SendPacket(new SystemMessage((SystemMessage.SystemMessageId)regId).AddNumber(player.X).AddNumber(player.Y).AddNumber(player.Z));
+                    }
                     else
+                    {
                         player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.NotImplementedYet2361).AddString("Nowhere"));
+                    }
 
                     int x = (player.X >> 15) + 9 + 8;
                     int y = (player.Y >> 15) + 10 + 11;

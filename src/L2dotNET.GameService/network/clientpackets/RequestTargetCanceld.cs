@@ -1,24 +1,22 @@
 ﻿using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestTargetCanceld : GameServerNetworkRequest
+    class RequestTargetCanceld : PacketBase
     {
-        public RequestTargetCanceld(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private short _unselect;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestTargetCanceld(Packet packet, GameClient client)
         {
-            _unselect = ReadH(); //0 esc key, 1 - mouse
+            _client = client;
+            _unselect = packet.ReadShort(); //0 esc key, 1 - mouse
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if ((_unselect == 0) && player.IsCastingNow())
             {
@@ -27,7 +25,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (player.CurrentTarget != null)
+            {
                 player.ChangeTarget();
+            }
         }
     }
 }

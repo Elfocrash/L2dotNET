@@ -1,28 +1,27 @@
 ﻿using L2dotNET.GameService.Handlers;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestTutorialPassCmdToServer : GameServerNetworkRequest
+    class RequestTutorialPassCmdToServer : PacketBase
     {
-        public RequestTutorialPassCmdToServer(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private string _alias;
-
-        public override void Read()
+        private readonly GameClient _client;
+        public RequestTutorialPassCmdToServer(Packet packet, GameClient client)
         {
-            _alias = ReadS();
+            _client = client;
+            _alias = packet.ReadString();
             if (_alias.Contains("\n"))
+            {
                 _alias = _alias.Replace("\n", "");
+            }
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {
@@ -40,11 +39,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
                 //  npc.onDialog(player, ask, reply);
             }
-            else
+            else if (_alias.StartsWithIgnoreCase("admin?"))
             {
-                if (!_alias.StartsWithIgnoreCase("admin?"))
-                    return;
-
                 if (player.ViewingAdminPage == 0)
                 {
                     player.SendActionFailed();

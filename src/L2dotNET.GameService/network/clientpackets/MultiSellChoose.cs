@@ -1,10 +1,11 @@
 ﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables.Multisell;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class MultiSellChoose : GameServerNetworkRequest
+    class MultiSellChoose : PacketBase
     {
         private int _listId;
         private int _entryId;
@@ -12,44 +13,27 @@ namespace L2dotNET.GameService.Network.Clientpackets
         private short _enchant;
         private int _unk2;
         private int _unk3;
-        private short _unk4;
-        private short _unk5;
-        private short _unk6;
-        private short _unk7;
-        private short _unk8;
-        private short _unk9;
-        private short _unk10;
-        private short _unk11;
+        private readonly GameClient _client;
 
-        public MultiSellChoose(GameClient client, byte[] data)
+        public MultiSellChoose(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _listId = packet.ReadInt();
+            _entryId = packet.ReadInt();
+            _amount = packet.ReadInt();
+            _enchant = packet.ReadShort();
+            _unk2 = packet.ReadInt();
+            _unk3 = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _listId = ReadD();
-            _entryId = ReadD();
-            _amount = ReadQ();
-            _enchant = ReadH();
-            _unk2 = ReadD();
-            _unk3 = ReadD();
-            _unk4 = ReadH(); // elemental attributes
-            _unk5 = ReadH(); // elemental attributes
-            _unk6 = ReadH(); // elemental attributes
-            _unk7 = ReadH(); // elemental attributes
-            _unk8 = ReadH(); // elemental attributes
-            _unk9 = ReadH(); // elemental attributes
-            _unk10 = ReadH(); // elemental attributes
-            _unk11 = ReadH(); // elemental attributes
-        }
-
-        public override void Run()
-        {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (_amount < 0)
+            {
                 _amount = 1;
+            }
 
             if (player.LastRequestedMultiSellId != _listId)
             {
@@ -63,10 +47,14 @@ namespace L2dotNET.GameService.Network.Clientpackets
             {
                 list = player.CustomMultiSellList;
                 if (list.Id != _listId)
+                {
                     list = MultiSell.Instance.GetList(_listId);
+                }
             }
             else
+            {
                 list = MultiSell.Instance.GetList(_listId);
+            }
 
             if ((list == null) || (list.Container.Count < _entryId))
             {
@@ -82,7 +70,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 if (i.Id > 0)
                 {
                     if (player.HasItem(i.Id, i.Count))
+                    {
                         continue;
+                    }
 
                     ok = false;
                     break;
@@ -93,7 +83,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     {
                         case -100: //pvppoint
                             if (player.Fame < (i.Count * _amount))
+                            {
                                 ok = false;
+                            }
                             break;
                     }
                 }
@@ -107,11 +99,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             foreach (MultiSellItem i in entry.Take)
                 if (i.L2Item != null)
+                {
                     player.DestroyItem(i.L2Item, 1);
+                }
                 else
                 {
                     if (i.Id > 0)
+                    {
                         player.DestroyItemById(i.Id, i.Count);
+                    }
                     else
                     {
                         switch (i.Id)

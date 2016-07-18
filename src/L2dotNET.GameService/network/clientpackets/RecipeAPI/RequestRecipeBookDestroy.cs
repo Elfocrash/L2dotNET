@@ -1,27 +1,26 @@
 ﻿using System.Linq;
+using L2dotNET.GameService.Config;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
 {
-    class RequestRecipeBookDestroy : GameServerNetworkRequest
+    class RequestRecipeBookDestroy : PacketBase
     {
-        public RequestRecipeBookDestroy(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private int _id;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestRecipeBookDestroy(Packet packet, GameClient client)
         {
-            _id = ReadD();
+            _client = client;
+            _id = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.RecipeBook == null)
             {

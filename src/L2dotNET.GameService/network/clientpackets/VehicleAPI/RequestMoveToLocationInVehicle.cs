@@ -2,10 +2,11 @@
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Vehicles;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
 {
-    class RequestMoveToLocationInVehicle : GameServerNetworkRequest
+    class RequestMoveToLocationInVehicle : PacketBase
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(RequestMoveToLocationInVehicle));
         private int _boatId;
@@ -15,26 +16,23 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
         private int _x;
         private int _y;
         private int _z;
+        private GameClient _client;
 
-        public RequestMoveToLocationInVehicle(GameClient client, byte[] data)
+        public RequestMoveToLocationInVehicle(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _boatId = packet.ReadInt(); //objectId of boat
+            _dx = packet.ReadInt();
+            _dy = packet.ReadInt();
+            _dz = packet.ReadInt();
+            _x = packet.ReadInt();
+            _y = packet.ReadInt();
+            _z = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _boatId = ReadD(); //objectId of boat
-            _dx = ReadD();
-            _dy = ReadD();
-            _dz = ReadD();
-            _x = ReadD();
-            _y = ReadD();
-            _z = ReadD();
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             //You do not possess the correct ticket to board the boat.
 
@@ -49,17 +47,18 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
             if (player.Boat != null)
             {
                 if (player.Boat.ObjId == _boatId)
+                {
                     boat = player.Boat;
+                }
                 else
                 {
                     player.SendActionFailed();
                     return;
                 }
             }
-            else
+            else if (player.KnownObjects.ContainsKey(_boatId))
             {
-                if (player.KnownObjects.ContainsKey(_boatId))
-                    boat = (L2Boat)player.KnownObjects[_boatId];
+                boat = (L2Boat)player.KnownObjects[_boatId];
             }
 
             if (boat == null)
@@ -70,7 +69,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.VehicleAPI
             }
 
             if (player.Boat == null)
+            {
                 player.Boat = boat;
+            }
 
             player.BoatX = _dx;
             player.BoatY = _dy;

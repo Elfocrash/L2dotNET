@@ -1,22 +1,19 @@
 ﻿using L2dotNET.Models;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.LoginAuth.Recv
 {
-    class LoginServAcceptPlayer : ReceiveAuthPacket
+    class LoginServAcceptPlayer : PacketBase
     {
         private string _account;
-
-        public LoginServAcceptPlayer(AuthThread login, byte[] db)
+        private readonly AuthThread _login;
+        public LoginServAcceptPlayer(Packet p, AuthThread login)
         {
-            Makeme(login, db);
+            _login = login;
+            _account = p.ReadString();
         }
 
-        public override void Read()
-        {
-            _account = ReadS();
-        }
-
-        public override void Run()
+        public override void RunImpl()
         {
             AccountModel ta = new AccountModel
                               {

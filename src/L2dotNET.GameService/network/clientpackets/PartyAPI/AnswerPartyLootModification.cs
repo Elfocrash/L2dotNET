@@ -1,24 +1,24 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 {
-    class AnswerPartyLootModification : GameServerNetworkRequest
+    class AnswerPartyLootModification : PacketBase
     {
         private byte _answer;
+        private readonly GameClient _client;
 
-        public AnswerPartyLootModification(GameClient client, byte[] data)
+        public AnswerPartyLootModification(Packet packet, GameClient client)
         {
-            Makeme(client, data, 2);
+            packet.MoveOffset(2);
+            _client = client;
+            _answer = (byte)packet.ReadByte();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _answer = (byte)ReadD();
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.Party == null)
             {

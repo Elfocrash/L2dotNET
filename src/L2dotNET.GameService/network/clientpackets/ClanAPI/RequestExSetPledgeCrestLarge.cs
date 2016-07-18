@@ -1,30 +1,31 @@
 ﻿using L2dotNET.GameService.Model.Communities;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.ClanAPI
 {
-    class RequestExSetPledgeCrestLarge : GameServerNetworkRequest
+    class RequestExSetPledgeCrestLarge : PacketBase
     {
         private int _size;
         private byte[] _picture;
+        private readonly GameClient _client;
 
-        public RequestExSetPledgeCrestLarge(GameClient client, byte[] data)
+        public RequestExSetPledgeCrestLarge(Packet packet, GameClient client)
         {
-            Makeme(client, data, 2);
-        }
-
-        public override void Read()
-        {
-            _size = ReadD();
+            packet.MoveOffset(2);
+            _client = client;
+            _size = packet.ReadInt();
 
             if ((_size > 0) && (_size <= 2176))
-                _picture = ReadB(_size);
+            {
+                _picture = packet.ReadByteArrayAlt(_size);
+            }
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.ClanId == 0)
             {

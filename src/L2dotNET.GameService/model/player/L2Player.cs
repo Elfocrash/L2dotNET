@@ -2231,13 +2231,13 @@ namespace L2dotNET.GameService.Model.Player
             BroadcastUserInfo();
         }
 
-        public SortedList<int, long> CurrentTrade;
+        public SortedList<int, int> CurrentTrade;
         public int Sstt;
 
-        public long AddItemToTrade(int objId, long num)
+        public int AddItemToTrade(int objId, int num)
         {
             if (CurrentTrade == null)
-                CurrentTrade = new SortedList<int, long>();
+                CurrentTrade = new SortedList<int, int>();
 
             if (CurrentTrade.ContainsKey(objId))
             {

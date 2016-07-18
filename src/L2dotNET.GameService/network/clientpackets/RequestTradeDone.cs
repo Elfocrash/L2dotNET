@@ -1,26 +1,24 @@
-﻿using L2dotNET.GameService.Managers;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestTradeDone : GameServerNetworkRequest
+    class RequestTradeDone : PacketBase
     {
         private bool _bDone;
-
-        public RequestTradeDone(GameClient client, byte[] data)
+        private readonly GameClient _client;
+        public RequestTradeDone(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _bDone = packet.ReadInt() == 1;
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _bDone = ReadD() == 1;
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.TradeState < 3) // умник
             {
@@ -44,7 +42,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.Requester.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1ConfirmedTrade).AddPlayerName(player.Name));
 
                 if (player.Requester.TradeState == 4)
+                {
                     TradeManager.GetInstance().PersonalTrade(player, player.Requester);
+                }
             }
             else
             {

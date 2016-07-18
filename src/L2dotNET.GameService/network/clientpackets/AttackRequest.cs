@@ -1,34 +1,32 @@
 ﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.World;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class AttackRequest : GameServerNetworkRequest
+    class AttackRequest : PacketBase
     {
-        public AttackRequest(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
+        private readonly GameClient _client;
         private int _objectId;
         private int _originX;
         private int _originY;
         private int _originZ;
         private int _attackId;
 
-        public override void Read()
+        public AttackRequest(Packet packet, GameClient client)
         {
-            _objectId = ReadD();
-            _originX = ReadD();
-            _originY = ReadD();
-            _originZ = ReadD();
-            _attackId = ReadC(); // 0 for simple click   1 for shift-click
+            _client = client;
+            _objectId = packet.ReadInt();
+            _originX = packet.ReadInt();
+            _originY = packet.ReadInt();
+            _originZ = packet.ReadInt();
+            _attackId = packet.ReadByte(); // 0 for simple click   1 for shift-click
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {

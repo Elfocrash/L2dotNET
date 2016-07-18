@@ -1,26 +1,26 @@
-﻿namespace L2dotNET.GameService.Network.Clientpackets
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class NetPingResponse : GameServerNetworkRequest
+    class NetPingResponse : PacketBase
     {
         private int _request;
         private int _msec;
         private int _unk2;
+        private readonly GameClient _client;
 
-        public NetPingResponse(GameClient client, byte[] data)
+        public NetPingResponse(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _request = packet.ReadInt();
+            _msec = packet.ReadInt();
+            _unk2 = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _request = ReadD();
-            _msec = ReadD();
-            _unk2 = ReadD();
-        }
-
-        public override void Run()
-        {
-            Client.CurrentPlayer.UpdatePing(_request, _msec, _unk2);
+            
         }
     }
 }

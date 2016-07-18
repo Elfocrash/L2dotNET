@@ -1,30 +1,32 @@
 ﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestSocialAction : GameServerNetworkRequest
+    class RequestSocialAction : PacketBase
     {
         private int _actionId;
+        private readonly GameClient _client;
 
-        public RequestSocialAction(GameClient client, byte[] data)
+        public RequestSocialAction(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _actionId = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _actionId = ReadD();
-        }
-
-        public override void Run()
-        {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
             if (player == null)
+            {
                 return;
+            }
 
             if ((_actionId < 2) || (_actionId > 13))
+            {
                 return;
+            }
 
             player.BroadcastPacket(new SocialAction(player.ObjId, _actionId));
         }

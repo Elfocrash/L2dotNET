@@ -1,26 +1,25 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tools;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class AnswerTradeRequest : GameServerNetworkRequest
+    class AnswerTradeRequest : PacketBase
     {
         private int _response;
+        private readonly GameClient _client;
 
-        public AnswerTradeRequest(GameClient client, byte[] data)
+        public AnswerTradeRequest(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _response = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _response = ReadD();
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.TradeState != 2)
             {
@@ -37,13 +36,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if ((_response != 0) && (player.Requester.TradeState != 1))
+            {
                 _response = 0;
+            }
 
             if ((_response != 0) && (player.EnchantState != 0))
+            {
                 _response = 0;
+            }
 
             if ((_response != 0) && !Calcs.CheckIfInRange(150, player, player.Requester, true))
+            {
                 _response = 0;
+            }
 
             switch (_response)
             {

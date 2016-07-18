@@ -1,26 +1,25 @@
-﻿using L2dotNET.GameService.Model.Items;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Playable;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
 {
-    class RequestPetUseItem : GameServerNetworkRequest
+    class RequestPetUseItem : PacketBase
     {
         private int _sId;
+        private readonly GameClient _client;
 
-        public RequestPetUseItem(GameClient client, byte[] data)
+        public RequestPetUseItem(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _sId = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _sId = ReadD();
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (!(player.Summon is L2Pet))
             {
@@ -46,7 +45,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.PetAPI
             L2Item item = pet.Inventory.Items[_sId];
 
             if (ItemHandler.Instance.Process(pet, item))
+            {
                 return;
+            }
 
             player.SendActionFailed();
         }

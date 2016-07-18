@@ -1,28 +1,26 @@
 ﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestDestroyItem : GameServerNetworkRequest
+    class RequestDestroyItem : PacketBase
     {
-        public RequestDestroyItem(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private int _sId;
         private int _num;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestDestroyItem(Packet packet, GameClient client)
         {
-            _sId = ReadD();
-            _num = ReadD();
+            _client = client;
+            _sId = packet.ReadInt();
+            _num = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {
@@ -57,7 +55,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (_num < 0)
+            {
                 _num = 1;
+            }
 
             //if (item._isEquipped == 1)
             //{

@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Inventory;
+﻿using L2dotNET.GameService.Enums;
+using L2dotNET.GameService.Model.Inventory;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;
@@ -6,21 +7,18 @@ using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Templates;
 using L2dotNET.GameService.World;
 using L2dotNET.Models;
+using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
 using Ninject;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class CharacterCreate : GameServerNetworkRequest
+    class CharacterCreate : PacketBase
     {
         [Inject]
         public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
 
-        public CharacterCreate(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
+        private GameClient _client;
         private string _name;
         private int _race;
         private byte _sex;
@@ -35,54 +33,55 @@ namespace L2dotNET.GameService.Network.Clientpackets
         private byte _hairColor;
         private byte _face;
 
-        public override void Read()
+        public CharacterCreate(Packet packet, GameClient client)
         {
-            _name = ReadS();
-            _race = ReadD();
-            _sex = (byte)ReadD();
-            _classId = ReadD();
-            _int = ReadD();
-            _str = ReadD();
-            _con = ReadD();
-            _men = ReadD();
-            _dex = ReadD();
-            _wit = ReadD();
-            _hairStyle = (byte)ReadD();
-            _hairColor = (byte)ReadD();
-            _face = (byte)ReadD();
+            _client = client;
+            _name = packet.ReadString();
+            _race = packet.ReadInt();
+            _sex = (byte)packet.ReadInt();
+            _classId = packet.ReadInt();
+            _int = packet.ReadInt();
+            _str = packet.ReadInt();
+            _con = packet.ReadInt();
+            _men = packet.ReadInt();
+            _dex = packet.ReadInt();
+            _wit = packet.ReadInt();
+            _hairStyle = (byte)packet.ReadInt();
+            _hairColor = (byte)packet.ReadInt();
+            _face = (byte)packet.ReadInt();
         }
 
         //TODO: Simplify method body
-        public override void Run()
+        public override void RunImpl()
         {
             if (_name.Length > 16)
             {
-                GetClient().SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TooLong16Chars));
+                _client.SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TooLong16Chars));
                 return;
             }
 
-            if (GetClient().AccountChars.Count > 7)
+            if (_client.AccountChars.Count > 7)
             {
-                GetClient().SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TooManyCharsOnAccount));
+                _client.SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TooManyCharsOnAccount));
                 return;
             }
 
             if (PlayerService.CheckIfPlayerNameExists(_name))
             {
-                GetClient().SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.NameExists));
+                _client.SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.NameExists));
                 return;
             }
 
             PcTemplate template = CharTemplateTable.Instance.GetTemplate((byte)_classId);
             if (template == null)
             {
-                GetClient().SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.CreationRestriction));
+                _client.SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.CreationRestriction));
                 return;
             }
 
             L2Player player = L2Player.Create();
             player.Name = _name;
-            player.AccountName = GetClient().AccountName;
+            player.AccountName = _client.AccountName;
             player.Title = "";
             player.Sex = _sex;
 
@@ -90,7 +89,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.HairColor = _hairColor;
             player.Face = _face;
             player.Level = 1;
-            player.Gameclient = GetClient();
+            player.Gameclient = _client;
 
             player.Exp = 0;
 
@@ -203,13 +202,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                                       };
             PlayerService.CreatePlayer(playerModel);
             player.Gameclient.AccountChars.Add(player);
-            GetClient().SendPacket(new CharCreateOk());
+            _client.SendPacket(new CharCreateOk());
             L2World.Instance.AddPlayer(player);
-            CharacterSelectionInfo csl = new CharacterSelectionInfo(GetClient().AccountName, GetClient().AccountChars, GetClient().SessionId)
-                                         {
-                                             CharId = player.ObjId
-                                         };
-            GetClient().SendPacket(csl);
+            CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId)
+            {
+                CharId = player.ObjId
+            };
+            _client.SendPacket(csl);
         }
     }
 }

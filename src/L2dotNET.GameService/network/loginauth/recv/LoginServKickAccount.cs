@@ -1,20 +1,18 @@
-﻿namespace L2dotNET.GameService.Network.LoginAuth.Recv
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.LoginAuth.Recv
 {
-    class LoginServKickAccount : ReceiveAuthPacket
+    class LoginServKickAccount : PacketBase
     {
         private string _account;
-
-        public LoginServKickAccount(AuthThread login, byte[] db)
+        private readonly AuthThread _login;
+        public LoginServKickAccount(Packet p, AuthThread login)
         {
-            Makeme(login, db);
+            _login = login;
+            _account = p.ReadString();
         }
 
-        public override void Read()
-        {
-            _account = ReadS();
-        }
-
-        public override void Run()
+        public override void RunImpl()
         {
             //L2World.Instance.KickAccount(account);
         }

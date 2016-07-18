@@ -4,30 +4,28 @@ using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Player.General;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestAcquireSkill : GameServerNetworkRequest
+    class RequestAcquireSkill : PacketBase
     {
-        public RequestAcquireSkill(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private int _id;
         private int _level;
         private int _skillType;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestAcquireSkill(Packet packet, GameClient client)
         {
-            _id = ReadD();
-            _level = ReadD();
-            _skillType = ReadD();
+            _client = client;
+            _id = packet.ReadInt();
+            _level = packet.ReadInt();
+            _skillType = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             SortedList<int, AcquireSkill> seq = player.ActiveSkillTree;
 
@@ -72,7 +70,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             Skill skill = SkillTable.Instance.Get(e.Id, e.Lv);
             if (skill != null)
+            {
                 player.AddSkill(skill, true, true);
+            }
             else
             {
                 player.SendMessage("failed to learn null skill");
@@ -93,7 +93,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (upd)
+                {
                     player.SendPacket(new ShortCutInit(player));
+                }
             }
 
             player.ActiveSkillTree.Remove(_id);

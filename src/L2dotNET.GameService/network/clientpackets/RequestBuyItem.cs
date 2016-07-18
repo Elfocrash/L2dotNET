@@ -3,37 +3,35 @@ using L2dotNET.GameService.Model.Npcs;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestBuyItem : GameServerNetworkRequest
+    class RequestBuyItem : PacketBase
     {
         private int _listId,
                     _count;
-        private long[] _items;
+        private int[] _items;
+        private readonly GameClient _client;
 
-        public RequestBuyItem(GameClient client, byte[] data)
+        public RequestBuyItem(Packet packet, GameClient client)
         {
-            Makeme(client, data);
-        }
+            _client = client;
+            _listId = packet.ReadInt();
+            _count = packet.ReadInt();
 
-        public override void Read()
-        {
-            _listId = ReadD();
-            _count = ReadD();
-
-            _items = new long[_count * 2];
+            _items = new int[_count * 2];
 
             for (int i = 0; i < _count; i++)
             {
-                _items[i * 2] = ReadD();
-                _items[(i * 2) + 1] = ReadQ();
+                _items[i * 2] = packet.ReadInt();
+                _items[(i * 2) + 1] = packet.ReadInt();
             }
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (_count <= 0)
             {
@@ -82,7 +80,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     adena += item.Item.ReferencePrice * (int)_items[(i * 2) + 1];
 
                     if (!item.Item.Stackable)
+                    {
                         slots++;
+                    }
                     //else
                     //{
                     //    if (!player.HasItem(item.item.ItemID))
@@ -96,7 +96,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 }
 
                 if (!notfound)
+                {
                     continue;
+                }
 
                 player.SendSystemMessage(SystemMessage.SystemMessageId.TradeAttemptFailed);
                 player.SendActionFailed();

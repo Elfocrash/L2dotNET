@@ -1,28 +1,27 @@
 ﻿using System;
 using System.Linq;
+using L2dotNET.GameService.Config;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
 {
-    class RequestRecipeItemMakeSelf : GameServerNetworkRequest
+    class RequestRecipeItemMakeSelf : PacketBase
     {
-        public RequestRecipeItemMakeSelf(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private int _id;
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestRecipeItemMakeSelf(Packet packet, GameClient client)
         {
-            _id = ReadD();
+            _client = client;
+            _id = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.RecipeBook == null)
             {
@@ -50,9 +49,13 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
             bool next;
 
             if (rec.Iscommonrecipe == 0)
+            {
                 next = player.PCreateItem >= rec.Level;
+            }
             else
+            {
                 next = player.PCreateCommonItem >= rec.Level;
+            }
 
             if (!next)
             {
@@ -67,7 +70,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
             player.SendPacket(su);
 
             foreach (RecipeItemEntry material in rec.Materials)
+            {
                 player.DestroyItemById(material.Item.ItemId, material.Count);
+            }
 
             if (rec.SuccessRate < 100)
             {
@@ -80,7 +85,9 @@ namespace L2dotNET.GameService.Network.Clientpackets.RecipeAPI
             }
 
             foreach (RecipeItemEntry prod in rec.Products)
+            {
                 player.AddItem(prod.Item.ItemId, prod.Count);
+            }
 
             player.SendPacket(new RecipeItemMakeInfo(player, rec, 1));
         }

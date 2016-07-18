@@ -10,6 +10,7 @@ using L2dotNET.GameService.Network;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.World;
 using L2dotNET.Models;
+using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;
 using Ninject;
@@ -165,7 +166,7 @@ namespace L2dotNET.GameService
             _crypt.decrypt(buff);
             TrafficUp += _buffer.Length;
 
-            PacketHandler.HandlePacket(this, buff);
+            PacketHandler.HandlePacket(new Packet(1, buff), this);
 
             new System.Threading.Thread(Read).Start();
         }

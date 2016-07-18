@@ -1,14 +1,12 @@
 ﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class MoveBackwardToLocation : GameServerNetworkRequest
+    class MoveBackwardToLocation : PacketBase
     {
-        public MoveBackwardToLocation(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
+        private GameClient _client;
 
         private int _targetX;
         private int _targetY;
@@ -18,17 +16,18 @@ namespace L2dotNET.GameService.Network.Clientpackets
         private int _originZ;
         private int _moveMovement;
 
-        public override void Read()
+        public MoveBackwardToLocation(Packet packet, GameClient client)
         {
-            _targetX = ReadD();
-            _targetY = ReadD();
-            _targetZ = ReadD();
-            _originX = ReadD();
-            _originY = ReadD();
-            _originZ = ReadD();
+            _client = client;
+            _targetX = packet.ReadInt();
+            _targetY = packet.ReadInt();
+            _targetZ = packet.ReadInt();
+            _originX = packet.ReadInt();
+            _originY = packet.ReadInt();
+            _originZ = packet.ReadInt();
             try
             {
-                _moveMovement = ReadD(); // is 0 if cursor keys are used  1 if mouse is used
+                _moveMovement = packet.ReadInt(); // is 0 if cursor keys are used  1 if mouse is used
             }
             catch
             {
@@ -36,9 +35,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.IsSittingInProgress() || player.IsSitting())
             {

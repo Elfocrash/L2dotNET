@@ -1,30 +1,29 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Player;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class CannotMoveAnymore : GameServerNetworkRequest
+    class CannotMoveAnymore : PacketBase
     {
         private int _x;
         private int _y;
         private int _z;
         private int _heading;
+        private readonly GameClient _client;
 
-        public CannotMoveAnymore(GameClient client, byte[] data)
+        public CannotMoveAnymore(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _x = packet.ReadInt();
+            _y = packet.ReadInt();
+            _z = packet.ReadInt();
+            _heading = packet.ReadInt();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _x = ReadD();
-            _y = ReadD();
-            _z = ReadD();
-            _heading = ReadD();
-        }
-
-        public override void Run()
-        {
-            L2Player player = Client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             player.NotifyStopMove(true, true);
         }

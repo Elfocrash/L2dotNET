@@ -5,31 +5,29 @@ using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tools;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestActionUse : GameServerNetworkRequest
+    class RequestActionUse : PacketBase
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(RequestActionUse));
         private int _actionId;
         private bool _ctrlPressed;
         private bool _shiftPressed;
+        private readonly GameClient _client;
 
-        public RequestActionUse(GameClient client, byte[] data)
+        public RequestActionUse(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
+            _actionId = packet.ReadInt();
+            _ctrlPressed = packet.ReadInt() == 1;
+            _shiftPressed = packet.ReadByte() == 1;
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _actionId = ReadD();
-            _ctrlPressed = ReadD() == 1;
-            _shiftPressed = ReadC() == 1;
-        }
-
-        public override void Run()
-        {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.Dead || player.IsCastingNow() || (player.PBlockAct == 1))
             {
@@ -105,9 +103,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     break;
                 case 38: //mount\dismount
                     if (player.MountType > 0)
+                    {
                         player.UnMount();
+                    }
                     else
+                    {
                         player.MountPet();
+                    }
                     break;
                 case 52: //summon unsummon
                     player.Summon?.UnSummon();
@@ -161,7 +163,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             if (socialId != -1)
+            {
                 player.BroadcastPacket(new SocialAction(player.ObjId, socialId));
+            }
         }
 
         private void CheckSit(L2Player player)
@@ -186,18 +190,24 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 {
                     double dis = Calcs.CalculateDistance(player, chair, true);
                     if (dis < 150)
+                    {
                         staticId = chair.StaticId;
+                    }
                 }
 
                 if (player.Builder == 1)
                 {
                     double dis = Calcs.CalculateDistance(player, chair, true);
                     if (dis < 150)
+                    {
                         staticId = chair.StaticId;
+                    }
                 }
 
                 if (staticId > 0)
+                {
                     player.SetChair(chair);
+                }
             }
 
             player.Sit();
@@ -226,7 +236,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 Log.Info($"pet cast result {result}");
             }
             else
+            {
                 Log.Error($"pet {npcId} used null skill {id}-{lv}");
+            }
         }
     }
 }

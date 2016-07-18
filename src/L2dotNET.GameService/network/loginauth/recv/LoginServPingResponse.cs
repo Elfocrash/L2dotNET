@@ -1,19 +1,17 @@
-﻿namespace L2dotNET.GameService.Network.LoginAuth.Recv
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.LoginAuth.Recv
 {
-    class LoginServPingResponse : ReceiveAuthPacket
+    class LoginServPingResponse : PacketBase
     {
         private string _message;
-
-        public LoginServPingResponse(AuthThread login, byte[] db)
+        private readonly AuthThread _login;
+        public LoginServPingResponse(Packet p, AuthThread login)
         {
-            Makeme(login, db);
+            _login = login;
+            _message = p.ReadString();
         }
 
-        public override void Read()
-        {
-            _message = ReadS();
-        }
-
-        public override void Run() { }
+        public override void RunImpl() { }
     }
 }

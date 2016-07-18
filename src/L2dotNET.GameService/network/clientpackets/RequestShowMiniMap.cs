@@ -1,22 +1,20 @@
-﻿using L2dotNET.GameService.Network.Serverpackets;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestShowMiniMap : GameServerNetworkRequest
+    class RequestShowMiniMap : PacketBase
     {
-        public RequestShowMiniMap(GameClient client, byte[] data)
+        private readonly GameClient _client;
+        public RequestShowMiniMap(Packet packet, GameClient client)
         {
-            Makeme(client, data);
+            _client = client;
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            // do nothing
-        }
-
-        public override void Run()
-        {
-            Client.SendPacket(new ShowMiniMap());
+            _client.SendPacket(new ShowMiniMap());
         }
     }
 }

@@ -1,25 +1,24 @@
-﻿using L2dotNET.GameService.Model.Items.Cursed;
+﻿using L2dotNET.GameService.Config;
+using L2dotNET.GameService.Model.Items.Cursed;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestCursedWeaponList : GameServerNetworkRequest
+    class RequestCursedWeaponList : PacketBase
     {
-        public RequestCursedWeaponList(GameClient client, byte[] data)
+        private GameClient _client;
+        public RequestCursedWeaponList(Packet packet, GameClient client)
         {
-            Makeme(client, data, 2);
+            packet.MoveOffset(2);
+            _client = client;
         }
 
-        public override void Read()
-        {
-            // nothing
-        }
-
-        public override void Run()
+        public override void RunImpl()
         {
             int[] ids = CursedWeapons.GetInstance().GetWeaponIds();
 
-            Client.SendPacket(new ExCursedWeaponList(ids));
+            _client.SendPacket(new ExCursedWeaponList(ids));
         }
     }
 }

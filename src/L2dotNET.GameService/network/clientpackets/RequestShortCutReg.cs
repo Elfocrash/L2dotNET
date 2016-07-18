@@ -1,37 +1,35 @@
 ﻿using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Player.General;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestShortCutReg : GameServerNetworkRequest
+    class RequestShortCutReg : PacketBase
     {
-        public RequestShortCutReg(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
         private int _type;
         private int _id;
         private int _slot;
         private int _page;
         private int _lvl;
         private int _characterType; // 1 - player, 2 - pet
+        private readonly GameClient _client;
 
-        public override void Read()
+        public RequestShortCutReg(Packet packet, GameClient client)
         {
-            _type = ReadD();
-            int slot = ReadD();
-            _id = ReadD();
-            _lvl = ReadD();
-            _characterType = ReadD();
+            _client = client;
+            _type = packet.ReadInt();
+            int slot = packet.ReadInt();
+            _id = packet.ReadInt();
+            _lvl = packet.ReadInt();
+            _characterType = packet.ReadInt();
 
             _slot = slot % 12;
             _page = slot / 12;
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if ((_page > 10) || (_page < 0))
             {

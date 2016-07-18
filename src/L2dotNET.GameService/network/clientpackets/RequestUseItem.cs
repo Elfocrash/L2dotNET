@@ -1,26 +1,23 @@
 ﻿using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Network;
 
 namespace L2dotNET.GameService.Network.Clientpackets
 {
-    class RequestUseItem : GameServerNetworkRequest
+    class RequestUseItem : PacketBase
     {
-        public RequestUseItem(GameClient client, byte[] data)
-        {
-            Makeme(client, data);
-        }
-
+        private readonly GameClient _client;
         private int _sId;
-
-        public override void Read()
+        public RequestUseItem(Packet packet, GameClient client)
         {
-            _sId = ReadD();
+            _client = client;
+            _sId = packet.ReadInt();
         }
 
-        public override void Run()
+        public override void RunImpl()
         {
-            L2Player player = GetClient().CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
             if (player.PBlockAct == 1)
             {
@@ -75,7 +72,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //}
 
             if (ItemHandler.Instance.Process(player, item))
+            {
                 return;
+            }
 
             //switch (item.Template.DefaultAction)
             //{

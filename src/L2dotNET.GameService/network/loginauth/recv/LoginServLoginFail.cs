@@ -1,22 +1,20 @@
-﻿namespace L2dotNET.GameService.Network.LoginAuth.Recv
+﻿using L2dotNET.Network;
+
+namespace L2dotNET.GameService.Network.LoginAuth.Recv
 {
-    class LoginServLoginFail : ReceiveAuthPacket
+    class LoginServLoginFail : PacketBase
     {
-        private string _code;
-
-        public LoginServLoginFail(AuthThread login, byte[] db)
+        private readonly string _code;
+        private readonly AuthThread _login;
+        public LoginServLoginFail(Packet p, AuthThread login)
         {
-            Makeme(login, db);
+            _login = login;
+            _code = p.ReadString();
         }
 
-        public override void Read()
+        public override void RunImpl()
         {
-            _code = ReadS();
-        }
-
-        public override void Run()
-        {
-            Login.LoginFail(_code);
+            _login.LoginFail(_code);
         }
     }
 }
