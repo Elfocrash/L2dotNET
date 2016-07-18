@@ -3,7 +3,7 @@ using L2dotNET.GameService.Tables;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ShopPreviewList : GameServerNetworkPacket
+    class ShopPreviewList : GameserverPacket
     {
         private readonly int _adena;
         private readonly NdShopList _shop;
@@ -18,20 +18,20 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xef);
-            WriteC(0xc0); // ?
-            WriteC(0x13); // ?
-            WriteC(0x00); // ?
-            WriteC(0x00); // ?
-            WriteD(_adena); // current money
-            WriteD(_shopId);
+            WriteByte(0xef);
+            WriteByte(0xc0); // ?
+            WriteByte(0x13); // ?
+            WriteByte(0x00); // ?
+            WriteByte(0x00); // ?
+            WriteInt(_adena); // current money
+            WriteInt(_shopId);
 
             foreach (NDShopItem si in _shop.Items)
             {
-                WriteD(si.Item.ItemId);
-                WriteH(si.Item.Type2);
-                WriteH(si.Item.BodyPart);
-                WriteD(10);
+                WriteInt(si.Item.ItemId);
+                WriteShort(si.Item.Type2);
+                WriteShort(si.Item.BodyPart);
+                WriteInt(10);
             }
         }
     }

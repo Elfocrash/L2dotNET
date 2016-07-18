@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExChangePostState : GameServerNetworkPacket
+    class ExChangePostState : GameserverPacket
     {
         private readonly bool _receivedBoard;
         private readonly int[] _msgs;
@@ -18,14 +18,14 @@
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0xb3);
-            WriteD(_receivedBoard ? 1 : 0);
-            WriteD(_msgs.Length);
+            WriteByte(0xfe);
+            WriteShort(0xb3);
+            WriteInt(_receivedBoard ? 1 : 0);
+            WriteInt(_msgs.Length);
             foreach (int postId in _msgs)
             {
-                WriteD(postId);
-                WriteD(_status);
+                WriteInt(postId);
+                WriteInt(_status);
             }
         }
     }

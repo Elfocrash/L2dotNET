@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class StopRotation : GameServerNetworkPacket
+    class StopRotation : GameserverPacket
     {
         private readonly int _sId;
         private readonly int _degree;
@@ -15,11 +15,11 @@
 
         protected internal override void Write()
         {
-            WriteC(0x63);
-            WriteD(_sId);
-            WriteD(_degree);
-            WriteD(_speed);
-            WriteC(_degree);
+            WriteByte(0x63);
+            WriteInt(_sId);
+            WriteInt(_degree);
+            WriteInt(_speed);
+            WriteByte(_degree);
         }
     }
 }

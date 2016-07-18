@@ -1,10 +1,10 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ActionFailed : GameServerNetworkPacket
+    class ActionFailed : GameserverPacket
     {
         protected internal override void Write()
         {
-            WriteC(0x25);
+            WriteByte(0x25);
         }
     }
 }

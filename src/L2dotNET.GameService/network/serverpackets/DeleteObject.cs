@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class DeleteObject : GameServerNetworkPacket
+    class DeleteObject : GameserverPacket
     {
         private readonly int _id;
 
@@ -11,9 +11,9 @@
 
         protected internal override void Write()
         {
-            WriteC(0x12);
-            WriteD(_id);
-            WriteD(0);
+            WriteByte(0x12);
+            WriteInt(_id);
+            WriteInt(0);
         }
     }
 }

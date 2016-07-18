@@ -1,11 +1,11 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class CharCreateOk : GameServerNetworkPacket
+    class CharCreateOk : GameserverPacket
     {
         protected internal override void Write()
         {
-            WriteC(0x19);
-            WriteD(0x01);
+            WriteByte(0x19);
+            WriteInt(0x01);
         }
     }
 }

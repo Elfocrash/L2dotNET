@@ -5,7 +5,7 @@ using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class SellList : GameServerNetworkPacket
+    class SellList : GameserverPacket
     {
         private readonly List<L2Item> _sells = new List<L2Item>();
         private readonly int _adena;
@@ -20,25 +20,25 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x10);
-            WriteD(_adena);
-            WriteD(0);
-            WriteH(_sells.Count);
+            WriteByte(0x10);
+            WriteInt(_adena);
+            WriteInt(0);
+            WriteShort(_sells.Count);
 
             foreach (L2Item item in _sells)
             {
-                WriteD(item.ObjId);
-                WriteD(item.Template.ItemId);
-                WriteQ(item.Count);
+                WriteInt(item.ObjId);
+                WriteInt(item.Template.ItemId);
+                WriteLong(item.Count);
 
-                WriteH(item.Template.Type2);
-                WriteH(item.Template.Type1);
-                WriteD(item.Template.BodyPart);
+                WriteShort(item.Template.Type2);
+                WriteShort(item.Template.Type1);
+                WriteInt(item.Template.BodyPart);
 
-                WriteH(item.Enchant);
-                WriteH(item.Template.Type2);
-                WriteH(0x00);
-                WriteD((int)(item.Template.ReferencePrice * 0.5));
+                WriteShort(item.Enchant);
+                WriteShort(item.Template.Type2);
+                WriteShort(0x00);
+                WriteInt((int)(item.Template.ReferencePrice * 0.5));
             }
         }
     }

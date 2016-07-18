@@ -4,7 +4,7 @@ using L2dotNET.GameService.Model.Player.General;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ShortCutInit : GameServerNetworkPacket
+    class ShortCutInit : GameserverPacket
     {
         private readonly List<L2Shortcut> _shortcuts;
 
@@ -15,33 +15,33 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x45);
-            WriteD(_shortcuts.Count);
+            WriteByte(0x45);
+            WriteInt(_shortcuts.Count);
 
             foreach (L2Shortcut sc in _shortcuts)
             {
-                WriteD(sc.Type);
-                WriteD(sc.Slot + (sc.Page * 12));
+                WriteInt(sc.Type);
+                WriteInt(sc.Slot + (sc.Page * 12));
 
                 switch (sc.Type)
                 {
                     case L2Shortcut.TypeItem:
-                        WriteD(sc.Id);
-                        WriteD(0x01);
-                        WriteD(-1); //getSharedReuseGroup
-                        WriteD(0x00);
-                        WriteD(0x00);
-                        WriteD(0x00);
+                        WriteInt(sc.Id);
+                        WriteInt(0x01);
+                        WriteInt(-1); //getSharedReuseGroup
+                        WriteInt(0x00);
+                        WriteInt(0x00);
+                        WriteInt(0x00);
                         break;
                     case L2Shortcut.TypeSkill:
-                        WriteD(sc.Id);
-                        WriteD(sc.Level);
-                        WriteC(0x00); // C5
-                        WriteD(0x01); // C6
+                        WriteInt(sc.Id);
+                        WriteInt(sc.Level);
+                        WriteByte(0x00); // C5
+                        WriteInt(0x01); // C6
                         break;
                     default:
-                        WriteD(sc.Id);
-                        WriteD(0x01); // C6
+                        WriteInt(sc.Id);
+                        WriteInt(0x01); // C6
                         break;
                 }
             }

@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    public class MagicEffectIcons : GameServerNetworkPacket
+    public class MagicEffectIcons : GameserverPacket
     {
         private readonly List<int[]> _timers = new List<int[]>();
 
@@ -13,13 +13,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x85);
-            WriteH((short)_timers.Count);
+            WriteByte(0x85);
+            WriteShort((short)_timers.Count);
 
             foreach (int[] f in _timers)
             {
-                WriteD(f[0]); //id
-                WriteH((short)f[1]); //lvl
+                WriteInt(f[0]); //id
+                WriteShort((short)f[1]); //lvl
 
                 int duration = f[2];
 
@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 if ((f[0] >= 5123) && (f[0] <= 5129))
                     duration = -1;
 
-                WriteD(duration);
+                WriteInt(duration);
             }
         }
     }

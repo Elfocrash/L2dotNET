@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExReplyDominionInfo : GameServerNetworkPacket
+    class ExReplyDominionInfo : GameserverPacket
     {
         private readonly List<string> _names = new List<string>();
 
@@ -21,20 +21,20 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0x92);
-            WriteD(_names.Count);
+            WriteByte(0xfe);
+            WriteShort(0x92);
+            WriteInt(_names.Count);
 
             byte x = 81;
             foreach (string str in _names)
             {
-                WriteD(x); // Territory Id
-                WriteS(str + "_dominion"); // territory name
-                WriteS("");
-                WriteD(0); // Emblem Count
+                WriteInt(x); // Territory Id
+                WriteString(str + "_dominion"); // territory name
+                WriteString("");
+                WriteInt(0); // Emblem Count
                 //  for(int i:t.getOwnedWardIds())
                 //    writeD(i); // Emblem ID - should be in for loop for emblem count
-                WriteD(0);
+                WriteInt(0);
 
                 x++;
             }

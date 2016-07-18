@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class AskJoinParty : GameServerNetworkPacket
+    class AskJoinParty : GameserverPacket
     {
         private readonly string _asker;
         private readonly int _itemDistribution;
@@ -13,9 +13,9 @@
 
         protected internal override void Write()
         {
-            WriteC(0x39);
-            WriteS(_asker);
-            WriteD(_itemDistribution);
+            WriteByte(0x39);
+            WriteString(_asker);
+            WriteInt(_itemDistribution);
         }
     }
 }

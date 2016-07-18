@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class SpawnItem : GameServerNetworkPacket
+    class SpawnItem : GameserverPacket
     {
         private readonly L2Item _item;
 
@@ -13,15 +13,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x0b);
-            WriteD(_item.ObjId);
-            WriteD(_item.Template.ItemId);
-            WriteD(_item.X);
-            WriteD(_item.Y);
-            WriteD(_item.Z);
-            WriteD(_item.Template.Stackable ? 1 : 0);
-            WriteD(_item.Count);
-            WriteD(0); // ?
+            WriteByte(0x0b);
+            WriteInt(_item.ObjId);
+            WriteInt(_item.Template.ItemId);
+            WriteInt(_item.X);
+            WriteInt(_item.Y);
+            WriteInt(_item.Z);
+            WriteInt(_item.Template.Stackable ? 1 : 0);
+            WriteInt(_item.Count);
+            WriteInt(0); // ?
         }
     }
 }

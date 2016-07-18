@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    public class StatusUpdate : GameServerNetworkPacket
+    public class StatusUpdate : GameserverPacket
     {
         public static int Level = 0x01;
         public static int Exp = 0x02;
@@ -52,18 +52,18 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x0e);
-            WriteD(_id);
-            WriteD(Attrs.Count);
+            WriteByte(0x0e);
+            WriteInt(_id);
+            WriteInt(Attrs.Count);
 
             foreach (object[] d in Attrs)
             {
                 int type = (int)d[0];
-                WriteD(type);
+                WriteInt(type);
                 //if(type == EXP)
                 //    writeQ((long)d[1]);
                 //else
-                WriteD((int)d[1]);
+                WriteInt((int)d[1]);
             }
         }
     }

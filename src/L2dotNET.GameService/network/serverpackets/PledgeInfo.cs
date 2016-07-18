@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PledgeInfo : GameServerNetworkPacket
+    class PledgeInfo : GameserverPacket
     {
         private readonly int _id;
         private readonly string _name;
@@ -15,10 +15,10 @@
 
         protected internal override void Write()
         {
-            WriteC(0x89);
-            WriteD(_id);
-            WriteS(_name);
-            WriteS(_ally);
+            WriteByte(0x89);
+            WriteInt(_id);
+            WriteString(_name);
+            WriteString(_ally);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExRaidCharacterSelected : GameServerNetworkPacket
+    class ExRaidCharacterSelected : GameserverPacket
     {
         private int _id;
 
@@ -11,8 +11,8 @@
 
         protected internal override void Write()
         {
-            WriteC(0xFE);
-            WriteH(0xBA);
+            WriteByte(0xFE);
+            WriteShort(0xBA);
 
             //  writeD(id);
             //  writeQ(0);

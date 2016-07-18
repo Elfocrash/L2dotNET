@@ -3,7 +3,7 @@ using L2dotNET.GameService.Model.Skills2;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExPartyPetWindowAdd : GameServerNetworkPacket
+    class ExPartyPetWindowAdd : GameserverPacket
     {
         private readonly L2Summon _summon;
 
@@ -14,18 +14,18 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0x18);
-            WriteD(_summon.ObjId);
-            WriteD(_summon.Template.NpcId + 1000000);
-            WriteD(_summon.ObjectSummonType);
-            WriteD(_summon.Owner.ObjId);
-            WriteS(_summon.Name);
-            WriteD(_summon.CurHp);
-            WriteD(_summon.CharacterStat.GetStat(EffectType.BMaxHp));
-            WriteD(_summon.CurMp);
-            WriteD(_summon.CharacterStat.GetStat(EffectType.BMaxMp));
-            WriteD(_summon.Level);
+            WriteByte(0xfe);
+            WriteShort(0x18);
+            WriteInt(_summon.ObjId);
+            WriteInt(_summon.Template.NpcId + 1000000);
+            WriteInt(_summon.ObjectSummonType);
+            WriteInt(_summon.Owner.ObjId);
+            WriteString(_summon.Name);
+            WriteInt(_summon.CurHp);
+            WriteInt(_summon.CharacterStat.GetStat(EffectType.BMaxHp));
+            WriteInt(_summon.CurMp);
+            WriteInt(_summon.CharacterStat.GetStat(EffectType.BMaxMp));
+            WriteInt(_summon.Level);
         }
     }
 }

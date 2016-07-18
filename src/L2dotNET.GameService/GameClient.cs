@@ -58,7 +58,7 @@ namespace L2dotNET.GameService
             return key;
         }
 
-        public void SendPacket(GameServerNetworkPacket sbp)
+        public void SendPacket(GameserverPacket sbp)
         {
             if (IsTerminated)
                 return;

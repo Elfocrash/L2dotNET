@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExBrExtraUserInfo : GameServerNetworkPacket
+    class ExBrExtraUserInfo : GameserverPacket
     {
         private readonly int _playerId;
         private readonly int _value;
@@ -13,10 +13,10 @@
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0xcf);
-            WriteD(_playerId);
-            WriteD(_value); // event effect id
+            WriteByte(0xfe);
+            WriteShort(0xcf);
+            WriteInt(_playerId);
+            WriteInt(_value); // event effect id
             //writeC(0x00);		// Event flag, added only if event is active
         }
     }

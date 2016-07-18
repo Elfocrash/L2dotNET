@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ChangeWaitType : GameServerNetworkPacket
+    class ChangeWaitType : GameserverPacket
     {
         private readonly int _sId;
         private readonly int _type;
@@ -25,12 +25,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x2f);
-            WriteD(_sId);
-            WriteD(_type);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
+            WriteByte(0x2f);
+            WriteInt(_sId);
+            WriteInt(_type);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
         }
     }
 }

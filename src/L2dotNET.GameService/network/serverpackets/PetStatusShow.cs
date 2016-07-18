@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PetStatusShow : GameServerNetworkPacket
+    class PetStatusShow : GameserverPacket
     {
         private readonly byte _objectSummonType;
 
@@ -11,8 +11,8 @@
 
         protected internal override void Write()
         {
-            WriteC(0xb1);
-            WriteD(_objectSummonType);
+            WriteByte(0xb1);
+            WriteInt(_objectSummonType);
         }
     }
 }

@@ -4,7 +4,7 @@ using L2dotNET.GameService.Model.Quests;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class QuestList : GameServerNetworkPacket
+    class QuestList : GameserverPacket
     {
         private readonly List<QuestInfo> _list;
 
@@ -15,16 +15,16 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x86);
-            WriteH((short)_list.Count);
+            WriteByte(0x86);
+            WriteShort((short)_list.Count);
 
             foreach (QuestInfo qi in _list)
             {
-                WriteD(qi.Id);
-                WriteD(qi.Stage);
+                WriteInt(qi.Id);
+                WriteInt(qi.Stage);
             }
 
-            WriteB(new byte[128]);
+            WriteBytesArray(new byte[128]);
         }
     }
 }

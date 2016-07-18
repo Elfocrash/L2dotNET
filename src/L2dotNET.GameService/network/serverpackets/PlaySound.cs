@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PlaySound : GameServerNetworkPacket
+    class PlaySound : GameserverPacket
     {
         private readonly string _file;
         private readonly int _type;
@@ -18,14 +18,14 @@
 
         protected internal override void Write()
         {
-            WriteC(0x9e);
-            WriteD(_type);
-            WriteS(_file);
-            WriteD(0);
-            WriteD(0);
-            WriteD(X);
-            WriteD(Y);
-            WriteD(Z);
+            WriteByte(0x9e);
+            WriteInt(_type);
+            WriteString(_file);
+            WriteInt(0);
+            WriteInt(0);
+            WriteInt(X);
+            WriteInt(Y);
+            WriteInt(Z);
         }
     }
 }

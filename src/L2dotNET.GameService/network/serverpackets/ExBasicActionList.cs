@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExBasicActionList : GameServerNetworkPacket
+    class ExBasicActionList : GameserverPacket
     {
         private readonly int[] _defaultActionList;
 
@@ -24,11 +24,11 @@
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0x5f);
-            WriteD(_defaultActionList.Length);
+            WriteByte(0xfe);
+            WriteShort(0x5f);
+            WriteInt(_defaultActionList.Length);
             foreach (int i in _defaultActionList)
-                WriteD(i);
+                WriteInt(i);
         }
     }
 }

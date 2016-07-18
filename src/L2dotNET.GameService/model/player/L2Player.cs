@@ -291,7 +291,7 @@ namespace L2dotNET.GameService.Model.Player
             return false;
         }
 
-        public override void SendPacket(GameServerNetworkPacket pk)
+        public override void SendPacket(GameserverPacket pk)
         {
             Gameclient.SendPacket(pk);
         }
@@ -1143,7 +1143,7 @@ namespace L2dotNET.GameService.Model.Player
             SendPacket(new DeleteObject(obj.ObjId));
         }
 
-        public override void OnAddObject(L2Object obj, GameServerNetworkPacket pk, string msg = null)
+        public override void OnAddObject(L2Object obj, GameserverPacket pk, string msg = null)
         {
             if (obj is L2Npc)
                 SendPacket(new NpcInfo((L2Npc)obj));
@@ -2249,7 +2249,7 @@ namespace L2dotNET.GameService.Model.Player
             return num;
         }
 
-        public void NotifyDayChange(GameServerNetworkPacket pk)
+        public void NotifyDayChange(GameserverPacket pk)
         {
             SendPacket(pk);
             if (pk is SunSet) //включаем ночные скилы

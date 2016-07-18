@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class VehicleDeparture : GameServerNetworkPacket
+    class VehicleDeparture : GameserverPacket
     {
         private readonly L2Boat _boat;
         private readonly int _speed;
@@ -17,13 +17,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x5A);
-            WriteD(_boat.ObjId);
-            WriteD(_speed);
-            WriteD(_rotationSpd);
-            WriteD(_boat.DestX);
-            WriteD(_boat.DestY);
-            WriteD(_boat.DestZ);
+            WriteByte(0x5A);
+            WriteInt(_boat.ObjId);
+            WriteInt(_speed);
+            WriteInt(_rotationSpd);
+            WriteInt(_boat.DestX);
+            WriteInt(_boat.DestY);
+            WriteInt(_boat.DestZ);
         }
     }
 }

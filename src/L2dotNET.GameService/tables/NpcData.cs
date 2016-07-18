@@ -109,7 +109,7 @@ namespace L2dotNET.GameService.Tables
             }
 
             NDShop shop = Shops[trader.Template.NpcId];
-            GameServerNetworkPacket pk;
+            GameserverPacket pk;
             if (!shop.Lists.ContainsKey(reply))
             {
                 reply -= 2; // примерка

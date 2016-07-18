@@ -3,7 +3,7 @@ using L2dotNET.GameService.Model.Items;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PetInventoryUpdate : GameServerNetworkPacket
+    class PetInventoryUpdate : GameserverPacket
     {
         protected List<object[]> Update = new List<object[]>();
 
@@ -24,44 +24,44 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xb4);
-            WriteH(Update.Count);
+            WriteByte(0xb4);
+            WriteShort(Update.Count);
 
             foreach (object[] obj in Update)
             {
-                WriteH((short)obj[1]);
+                WriteShort((short)obj[1]);
 
                 L2Item item = (L2Item)obj[0];
 
-                WriteD(item.ObjId);
-                WriteD(item.Template.ItemId);
-                WriteD(0); //loc
-                WriteQ(item.Count);
+                WriteInt(item.ObjId);
+                WriteInt(item.Template.ItemId);
+                WriteInt(0); //loc
+                WriteLong(item.Count);
 
-                WriteH(item.Template.Type2);
-                WriteH(0);
-                WriteH(item.IsEquipped);
+                WriteShort(item.Template.Type2);
+                WriteShort(0);
+                WriteShort(item.IsEquipped);
 
-                WriteD(item.Template.BodyPart);
-                WriteH(item.Enchant);
-                WriteH(0);
+                WriteInt(item.Template.BodyPart);
+                WriteShort(item.Enchant);
+                WriteShort(0);
 
-                WriteD(item.AugmentationId);
-                WriteD(item.Durability);
-                WriteD(item.LifeTimeEnd());
+                WriteInt(item.AugmentationId);
+                WriteInt(item.Durability);
+                WriteInt(item.LifeTimeEnd());
 
-                WriteH(item.AttrAttackType);
-                WriteH(item.AttrAttackValue);
-                WriteH(item.AttrDefenseValueFire);
-                WriteH(item.AttrDefenseValueWater);
-                WriteH(item.AttrDefenseValueWind);
-                WriteH(item.AttrDefenseValueEarth);
-                WriteH(item.AttrDefenseValueHoly);
-                WriteH(item.AttrDefenseValueUnholy);
+                WriteShort(item.AttrAttackType);
+                WriteShort(item.AttrAttackValue);
+                WriteShort(item.AttrDefenseValueFire);
+                WriteShort(item.AttrDefenseValueWater);
+                WriteShort(item.AttrDefenseValueWind);
+                WriteShort(item.AttrDefenseValueEarth);
+                WriteShort(item.AttrDefenseValueHoly);
+                WriteShort(item.AttrDefenseValueUnholy);
 
-                WriteH(item.Enchant1);
-                WriteH(item.Enchant2);
-                WriteH(item.Enchant3);
+                WriteShort(item.Enchant1);
+                WriteShort(item.Enchant2);
+                WriteShort(item.Enchant3);
             }
         }
     }

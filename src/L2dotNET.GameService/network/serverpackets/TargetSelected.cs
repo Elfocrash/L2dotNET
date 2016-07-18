@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class TargetSelected : GameServerNetworkPacket
+    class TargetSelected : GameserverPacket
     {
         private readonly int _x;
         private readonly int _y;
@@ -21,12 +21,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x29);
-            WriteD(_objectId);
-            WriteD(_targetObjId);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
+            WriteByte(0x29);
+            WriteInt(_objectId);
+            WriteInt(_targetObjId);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
         }
     }
 }

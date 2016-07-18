@@ -5,7 +5,7 @@ using L2dotNET.GameService.Model.Skills2;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class CharInfo : GameServerNetworkPacket
+    class CharInfo : GameserverPacket
     {
         private readonly L2Player _player;
 
@@ -17,63 +17,63 @@ namespace L2dotNET.GameService.Network.Serverpackets
         //TODO: Simplify method body
         protected internal override void Write()
         {
-            WriteC(0x03);
+            WriteByte(0x03);
 
-            WriteD(_player.X);
-            WriteD(_player.Y);
-            WriteD(_player.Z);
-            WriteD(_player.Heading);
-            WriteD(_player.ObjId);
-            WriteS(_player.Name);
+            WriteInt(_player.X);
+            WriteInt(_player.Y);
+            WriteInt(_player.Z);
+            WriteInt(_player.Heading);
+            WriteInt(_player.ObjId);
+            WriteString(_player.Name);
 
-            WriteD((int)_player.BaseClass.ClassId.ClassRace);
-            WriteD(_player.Sex);
-            WriteD((int)_player.ActiveClass.ClassId.Id);
+            WriteInt((int)_player.BaseClass.ClassId.ClassRace);
+            WriteInt(_player.Sex);
+            WriteInt((int)_player.ActiveClass.ClassId.Id);
 
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollHair]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollHead]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollRhand]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollLhand]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollGloves]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollChest]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollLegs]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollFeet]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollBack]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollRhand]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollHairall]?.Template.ItemId ?? 0);
-            WriteD(_player.Inventory.Paperdoll[Inventory.PaperdollFace]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollHair]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollHead]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollRhand]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollLhand]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollGloves]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollChest]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollLegs]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollFeet]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollBack]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollRhand]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollHairall]?.Template.ItemId ?? 0);
+            WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollFace]?.Template.ItemId ?? 0);
 
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteD(0x00); //player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteD(0x00); //player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
-            WriteH(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteInt(0x00); //player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_RHand));
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteInt(0x00); //player.Inventory.getPaperdollAugmentId(InvPC.EQUIPITEM_LHand));
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
+            WriteShort(0x00);
 
-            WriteD(_player.PvPStatus);
-            WriteD(_player.Karma);
+            WriteInt(_player.PvPStatus);
+            WriteInt(_player.Karma);
 
-            WriteD(_player.CharacterStat.GetStat(EffectType.BAttackSpd)); //matkspeed
-            WriteD(_player.CharacterStat.GetStat(EffectType.BCastingSpd));
+            WriteInt(_player.CharacterStat.GetStat(EffectType.BAttackSpd)); //matkspeed
+            WriteInt(_player.CharacterStat.GetStat(EffectType.BCastingSpd));
 
-            WriteD(_player.PvPStatus);
-            WriteD(_player.Karma);
+            WriteInt(_player.PvPStatus);
+            WriteInt(_player.Karma);
 
             double spd = _player.CharacterStat.GetStat(EffectType.PSpeed);
             double anim = (spd * 1f) / 130;
@@ -81,80 +81,80 @@ namespace L2dotNET.GameService.Network.Serverpackets
             double runSpd = spd / anim;
             double walkSpd = (spd * .8) / anim;
 
-            WriteD(runSpd);
-            WriteD(walkSpd);
-            WriteD(50); // swimspeed
-            WriteD(50); // swimspeed
-            WriteD(runSpd);
-            WriteD(walkSpd);
-            WriteD(runSpd);
-            WriteD(walkSpd);
-            WriteF(1);
-            WriteF(1);
+            WriteInt(runSpd);
+            WriteInt(walkSpd);
+            WriteInt(50); // swimspeed
+            WriteInt(50); // swimspeed
+            WriteInt(runSpd);
+            WriteInt(walkSpd);
+            WriteInt(runSpd);
+            WriteInt(walkSpd);
+            WriteDouble(1);
+            WriteDouble(1);
 
-            WriteF(_player.Radius);
-            WriteF(_player.Height);
+            WriteDouble(_player.Radius);
+            WriteDouble(_player.Height);
 
-            WriteD(_player.HairStyle);
-            WriteD(_player.HairColor);
-            WriteD(_player.Face);
+            WriteInt(_player.HairStyle);
+            WriteInt(_player.HairColor);
+            WriteInt(_player.Face);
 
-            WriteS(_player.Title);
+            WriteString(_player.Title);
 
-            WriteD(_player.ClanId);
-            WriteD(_player.ClanCrestId);
-            WriteD(_player.AllianceId);
-            WriteD(_player.AllianceCrestId);
+            WriteInt(_player.ClanId);
+            WriteInt(_player.ClanCrestId);
+            WriteInt(_player.AllianceId);
+            WriteInt(_player.AllianceCrestId);
 
-            WriteD(0);
+            WriteInt(0);
 
-            WriteC(_player.IsSitting() ? 0 : 1); // standing = 1  sitting = 0
-            WriteC(_player.IsRunning);
-            WriteC(_player.isInCombat() ? 1 : 0);
-            WriteC(_player.IsAlikeDead() ? 1 : 0); //if (_activeChar.isInOlympiadMode()) 0 TODO
-            WriteC(_player.Visible ? 0 : 1);
+            WriteByte(_player.IsSitting() ? 0 : 1); // standing = 1  sitting = 0
+            WriteByte(_player.IsRunning);
+            WriteByte(_player.isInCombat() ? 1 : 0);
+            WriteByte(_player.IsAlikeDead() ? 1 : 0); //if (_activeChar.isInOlympiadMode()) 0 TODO
+            WriteByte(_player.Visible ? 0 : 1);
 
-            WriteC(_player.MountType);
-            WriteC(_player.GetPrivateStoreType());
+            WriteByte(_player.MountType);
+            WriteByte(_player.GetPrivateStoreType());
 
-            WriteH(_player.Cubics.Count);
+            WriteShort(_player.Cubics.Count);
             foreach (Cubic cub in _player.Cubics)
-                WriteH(cub.Template.Id);
+                WriteShort(cub.Template.Id);
 
-            WriteC(0x00); //1-_activeChar.isInPartyMatchRoom()
+            WriteByte(0x00); //1-_activeChar.isInPartyMatchRoom()
 
-            WriteD(_player.AbnormalBitMask);
+            WriteInt(_player.AbnormalBitMask);
 
-            WriteC(0); //_activeChar.isFlyingMounted() ? 2 : 0);
-            WriteH(_player.RecHave);
-            WriteD((int)_player.ActiveClass.ClassId.Id);
+            WriteByte(0); //_activeChar.isFlyingMounted() ? 2 : 0);
+            WriteShort(_player.RecHave);
+            WriteInt((int)_player.ActiveClass.ClassId.Id);
 
-            WriteD(_player.MaxCp); //max cp here
-            WriteD((int)_player.CurCp);
-            WriteC(_player.GetEnchantValue());
-            WriteC(_player.TeamId);
-            WriteD(_player.GetClanCrestLargeId());
-            WriteC(_player.Noblesse);
+            WriteInt(_player.MaxCp); //max cp here
+            WriteInt((int)_player.CurCp);
+            WriteByte(_player.GetEnchantValue());
+            WriteByte(_player.TeamId);
+            WriteInt(_player.GetClanCrestLargeId());
+            WriteByte(_player.Noblesse);
 
             byte hero = _player.Heroic;
             if (_player.TransformId != 0)
                 hero = 0;
 
-            WriteC(hero);
+            WriteByte(hero);
 
-            WriteC(_player.IsFishing() ? 0x01 : 0x00); //Fishing Mode
-            WriteD(_player.GetFishx()); //fishing x
-            WriteD(_player.GetFishy()); //fishing y
-            WriteD(_player.GetFishz()); //fishing z
-            WriteD(_player.GetNameColor());
+            WriteByte(_player.IsFishing() ? 0x01 : 0x00); //Fishing Mode
+            WriteInt(_player.GetFishx()); //fishing x
+            WriteInt(_player.GetFishy()); //fishing y
+            WriteInt(_player.GetFishz()); //fishing z
+            WriteInt(_player.GetNameColor());
 
-            WriteD(0x00);
+            WriteInt(0x00);
 
-            WriteD(_player.ClanRank());
-            WriteD(_player.ClanType);
+            WriteInt(_player.ClanRank());
+            WriteInt(_player.ClanType);
 
-            WriteD(_player.GetTitleColor());
-            WriteD(0x00); //titlecolor
+            WriteInt(_player.GetTitleColor());
+            WriteInt(0x00); //titlecolor
         }
     }
 }

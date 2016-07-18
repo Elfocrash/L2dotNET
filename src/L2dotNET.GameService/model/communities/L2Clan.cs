@@ -136,7 +136,7 @@ namespace L2dotNET.GameService.Model.Communities
             }
         }
 
-        public void BroadcastToMembers(GameServerNetworkPacket pk)
+        public void BroadcastToMembers(GameserverPacket pk)
         {
             foreach (ClanMember cm in Members.Where(cm => cm.Online == 1))
                 cm.Target.SendPacket(pk);
@@ -370,7 +370,7 @@ namespace L2dotNET.GameService.Model.Communities
             // player.updateDb();
         }
 
-        private void BroadcastToOnline(GameServerNetworkPacket p)
+        private void BroadcastToOnline(GameserverPacket p)
         {
             foreach (ClanMember cm in Members.Where(cm => cm.Online == 1))
                 cm.Target.SendPacket(p);

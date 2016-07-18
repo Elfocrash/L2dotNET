@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class TutorialShowQuestionMark : GameServerNetworkPacket
+    class TutorialShowQuestionMark : GameserverPacket
     {
         private readonly int _questionId;
 
@@ -11,8 +11,8 @@
 
         protected internal override void Write()
         {
-            WriteC(0xa1);
-            WriteD(_questionId);
+            WriteByte(0xa1);
+            WriteInt(_questionId);
         }
     }
 }

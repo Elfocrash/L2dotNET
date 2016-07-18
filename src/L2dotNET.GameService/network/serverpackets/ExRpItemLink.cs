@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExRpItemLink : GameServerNetworkPacket
+    class ExRpItemLink : GameserverPacket
     {
         private readonly L2Item _item;
 
@@ -13,35 +13,35 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0x6c);
+            WriteByte(0xfe);
+            WriteShort(0x6c);
 
-            WriteD(_item.ObjId);
-            WriteD(_item.Template.ItemId);
-            WriteD(0);
-            WriteQ(_item.Count);
-            WriteH(_item.Template.Type2);
-            WriteH(0);
-            WriteH(0);
-            WriteD(_item.Template.BodyPart);
-            WriteH(_item.Enchant);
-            WriteH(0);
-            WriteD(_item.AugmentationId);
-            WriteD(_item.Durability);
-            WriteD(_item.LifeTimeEnd());
+            WriteInt(_item.ObjId);
+            WriteInt(_item.Template.ItemId);
+            WriteInt(0);
+            WriteLong(_item.Count);
+            WriteShort(_item.Template.Type2);
+            WriteShort(0);
+            WriteShort(0);
+            WriteInt(_item.Template.BodyPart);
+            WriteShort(_item.Enchant);
+            WriteShort(0);
+            WriteInt(_item.AugmentationId);
+            WriteInt(_item.Durability);
+            WriteInt(_item.LifeTimeEnd());
 
-            WriteH(_item.AttrAttackType);
-            WriteH(_item.AttrAttackValue);
-            WriteH(_item.AttrDefenseValueFire);
-            WriteH(_item.AttrDefenseValueWater);
-            WriteH(_item.AttrDefenseValueWind);
-            WriteH(_item.AttrDefenseValueEarth);
-            WriteH(_item.AttrDefenseValueHoly);
-            WriteH(_item.AttrDefenseValueUnholy);
+            WriteShort(_item.AttrAttackType);
+            WriteShort(_item.AttrAttackValue);
+            WriteShort(_item.AttrDefenseValueFire);
+            WriteShort(_item.AttrDefenseValueWater);
+            WriteShort(_item.AttrDefenseValueWind);
+            WriteShort(_item.AttrDefenseValueEarth);
+            WriteShort(_item.AttrDefenseValueHoly);
+            WriteShort(_item.AttrDefenseValueUnholy);
 
-            WriteH(_item.Enchant1);
-            WriteH(_item.Enchant2);
-            WriteH(_item.Enchant3);
+            WriteShort(_item.Enchant1);
+            WriteShort(_item.Enchant2);
+            WriteShort(_item.Enchant3);
         }
     }
 }

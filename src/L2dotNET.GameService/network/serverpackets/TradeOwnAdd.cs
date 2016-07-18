@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class TradeOwnAdd : GameServerNetworkPacket
+    class TradeOwnAdd : GameserverPacket
     {
         private readonly L2Item _item;
         private readonly long _num;
@@ -15,21 +15,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x1a);
-            WriteH(0x20);
+            WriteByte(0x1a);
+            WriteShort(0x20);
 
-            WriteH(_item.Template.Type1);
-            WriteD(_item.ObjId); //item.ObjID
-            WriteD(_item.Template.ItemId);
-            WriteD(_num);
+            WriteShort(_item.Template.Type1);
+            WriteInt(_item.ObjId); //item.ObjID
+            WriteInt(_item.Template.ItemId);
+            WriteInt(_num);
 
-            WriteH(_item.Template.Type2);
-            WriteH(0);
+            WriteShort(_item.Template.Type2);
+            WriteShort(0);
 
-            WriteD(_item.Template.BodyPart);
-            WriteH(_item.Enchant);
-            WriteH(0x00); // ?
-            WriteH(0x00);
+            WriteInt(_item.Template.BodyPart);
+            WriteShort(_item.Enchant);
+            WriteShort(0x00); // ?
+            WriteShort(0x00);
         }
     }
 }

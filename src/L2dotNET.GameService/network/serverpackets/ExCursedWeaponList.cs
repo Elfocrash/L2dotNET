@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExCursedWeaponList : GameServerNetworkPacket
+    class ExCursedWeaponList : GameserverPacket
     {
         private readonly int[] _ids;
 
@@ -11,12 +11,12 @@
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0x46);
-            WriteD(_ids.Length);
+            WriteByte(0xfe);
+            WriteShort(0x46);
+            WriteInt(_ids.Length);
 
             foreach (int id in _ids)
-                WriteD(id);
+                WriteInt(id);
         }
     }
 }

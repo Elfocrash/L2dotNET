@@ -4,7 +4,7 @@ using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class CharTemplates : GameServerNetworkPacket
+    class CharTemplates : GameserverPacket
     {
         private readonly List<PcTemplate> _templates;
 
@@ -15,31 +15,31 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x17);
-            WriteD(_templates.Count);
+            WriteByte(0x17);
+            WriteInt(_templates.Count);
 
             foreach (PcTemplate t in _templates.TakeWhile(t => t != null))
             {
-                WriteD((int)t.ClassId.ClassRace); //race id
-                WriteD((int)t.ClassId.Id);
-                WriteD(0x46);
-                WriteD(t.BaseStr);
-                WriteD(0x0a);
-                WriteD(0x46);
-                WriteD(t.BaseDex);
-                WriteD(0x0a);
-                WriteD(0x46);
-                WriteD(t.BaseCon);
-                WriteD(0x0a);
-                WriteD(0x46);
-                WriteD(t.BaseInt);
-                WriteD(0x0a);
-                WriteD(0x46);
-                WriteD(t.BaseWit);
-                WriteD(0x0a);
-                WriteD(0x46);
-                WriteD(t.BaseMen);
-                WriteD(0x0a);
+                WriteInt((int)t.ClassId.ClassRace); //race id
+                WriteInt((int)t.ClassId.Id);
+                WriteInt(0x46);
+                WriteInt(t.BaseStr);
+                WriteInt(0x0a);
+                WriteInt(0x46);
+                WriteInt(t.BaseDex);
+                WriteInt(0x0a);
+                WriteInt(0x46);
+                WriteInt(t.BaseCon);
+                WriteInt(0x0a);
+                WriteInt(0x46);
+                WriteInt(t.BaseInt);
+                WriteInt(0x0a);
+                WriteInt(0x46);
+                WriteInt(t.BaseWit);
+                WriteInt(0x0a);
+                WriteInt(0x46);
+                WriteInt(t.BaseMen);
+                WriteInt(0x0a);
             }
         }
     }

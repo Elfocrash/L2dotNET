@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class KeyPacket : GameServerNetworkPacket
+    class KeyPacket : GameserverPacket
     {
         private readonly byte[] _key;
         private byte _next;
@@ -13,11 +13,11 @@
 
         protected internal override void Write()
         {
-            WriteC(0x00);
-            WriteC(0x01);
-            WriteB(_key);
-            WriteD(0x01);
-            WriteD(0x01);
+            WriteByte(0x00);
+            WriteByte(0x01);
+            WriteBytesArray(_key);
+            WriteInt(0x01);
+            WriteInt(0x01);
         }
     }
 }

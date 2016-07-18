@@ -4,7 +4,7 @@ using L2dotNET.GameService.Model.Skills;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class SkillCoolTime : GameServerNetworkPacket
+    class SkillCoolTime : GameserverPacket
     {
         private readonly ICollection<L2SkillCoolTime> _list;
 
@@ -15,15 +15,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xc1);
-            WriteD(_list.Count);
+            WriteByte(0xc1);
+            WriteInt(_list.Count);
 
             foreach (L2SkillCoolTime ct in _list)
             {
-                WriteD(ct.Id);
-                WriteD(ct.Lvl);
-                WriteD(ct.Total);
-                WriteD(ct.GetDelay());
+                WriteInt(ct.Id);
+                WriteInt(ct.Lvl);
+                WriteInt(ct.Total);
+                WriteInt(ct.GetDelay());
             }
         }
     }

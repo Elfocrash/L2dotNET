@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class EnchantResult : GameServerNetworkPacket
+    class EnchantResult : GameserverPacket
     {
         private readonly EnchantResultVal _result;
         private int _crystal;
@@ -15,8 +15,8 @@
 
         protected internal override void Write()
         {
-            WriteC(0x81);
-            WriteD((int)_result);
+            WriteByte(0x81);
+            WriteInt((int)_result);
             //writeD(crystal);
             //writeQ(count);
         }

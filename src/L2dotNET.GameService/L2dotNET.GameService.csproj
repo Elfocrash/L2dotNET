@@ -585,7 +585,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Network\GameServerNetworkPacket.cs" />
+    <Compile Include="Network\GameserverPacket.cs" />
     <Compile Include="Scripting\ScriptCompiler.cs" />
     <Compile Include="Handlers\AdminCommandHandler.cs" />
     <Compile Include="Commands\Admin\AdminHeal.cs" />

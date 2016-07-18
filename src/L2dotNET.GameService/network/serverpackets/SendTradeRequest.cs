@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class SendTradeRequest : GameServerNetworkPacket
+    class SendTradeRequest : GameserverPacket
     {
         private readonly int _sId;
 
@@ -11,8 +11,8 @@
 
         protected internal override void Write()
         {
-            WriteC(0x5e);
-            WriteD(_sId);
+            WriteByte(0x5e);
+            WriteInt(_sId);
         }
     }
 }

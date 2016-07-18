@@ -55,13 +55,13 @@ namespace L2dotNET.GameService.Model.Player
             BroadcastToMembers(sm, playerMember.ObjId);
         }
 
-        public void BroadcastToMembers(GameServerNetworkPacket pk)
+        public void BroadcastToMembers(GameserverPacket pk)
         {
             foreach (L2Player pl in Members)
                 pl.SendPacket(pk);
         }
 
-        public void BroadcastToMembers(GameServerNetworkPacket pk, int except)
+        public void BroadcastToMembers(GameserverPacket pk, int except)
         {
             foreach (L2Player pl in Members.Where(pl => pl.ObjId != except))
                 pl.SendPacket(pk);

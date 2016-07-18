@@ -3,7 +3,7 @@ using L2dotNET.GameService.Tables;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExBuySellListBuy : GameServerNetworkPacket
+    class ExBuySellListBuy : GameserverPacket
     {
         private readonly NdShopList _shop;
         private readonly long _adena;
@@ -27,42 +27,42 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xFE);
-            WriteH(0xB7);
-            WriteD(0);
-            WriteQ(_adena);
-            WriteD(_shopId);
+            WriteByte(0xFE);
+            WriteShort(0xB7);
+            WriteInt(0);
+            WriteLong(_adena);
+            WriteInt(_shopId);
 
             if (_shop == null)
             {
-                WriteH(0);
+                WriteShort(0);
                 return;
             }
 
-            WriteH(_shop.Items.Count);
+            WriteShort(_shop.Items.Count);
             foreach (NDShopItem si in _shop.Items)
             {
-                WriteD(0); //objectId
-                WriteD(si.Item.ItemId);
-                WriteD(0);
-                WriteQ(si.Count < 0 ? 0 : si.Count);
-                WriteH(si.Item.Type2);
-                WriteH(0);
-                WriteH(0);
-                WriteD(si.Item.BodyPart);
+                WriteInt(0); //objectId
+                WriteInt(si.Item.ItemId);
+                WriteInt(0);
+                WriteLong(si.Count < 0 ? 0 : si.Count);
+                WriteShort(si.Item.Type2);
+                WriteShort(0);
+                WriteShort(0);
+                WriteInt(si.Item.BodyPart);
 
-                WriteH(0);
-                WriteH(0);
-                WriteD(0);
-                WriteD(0);
-                WriteD(-9999);
+                WriteShort(0);
+                WriteShort(0);
+                WriteInt(0);
+                WriteInt(0);
+                WriteInt(-9999);
 
                 // Enchant Effects
-                WriteH(0x00);
-                WriteH(0x00);
-                WriteH(0x00);
+                WriteShort(0x00);
+                WriteShort(0x00);
+                WriteShort(0x00);
 
-                WriteQ((long)(si.Item.ReferencePrice * _mod * _tax));
+                WriteLong((long)(si.Item.ReferencePrice * _mod * _tax));
             }
         }
     }

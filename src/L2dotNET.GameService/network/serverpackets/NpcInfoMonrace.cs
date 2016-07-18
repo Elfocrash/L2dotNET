@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class NpcInfoMonrace : GameServerNetworkPacket
+    class NpcInfoMonrace : GameserverPacket
     {
         //private MonsterRunner runner;
         //public NpcInfoMonrace(MonsterRunner runner)
@@ -10,7 +10,7 @@
 
         protected internal override void Write()
         {
-            WriteC(0x0c);
+            WriteByte(0x0c);
             //writeD(runner.id);
             //writeD(runner.npcId + 1000000);
             //writeD(0);

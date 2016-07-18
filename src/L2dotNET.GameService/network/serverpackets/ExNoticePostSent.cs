@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExNoticePostSent : GameServerNetworkPacket
+    class ExNoticePostSent : GameserverPacket
     {
         private readonly int _anim;
 
@@ -11,9 +11,9 @@
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0xb4);
-            WriteD(_anim);
+            WriteByte(0xfe);
+            WriteShort(0xb4);
+            WriteInt(_anim);
         }
     }
 }

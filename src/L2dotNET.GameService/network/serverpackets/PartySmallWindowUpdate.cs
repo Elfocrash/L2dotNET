@@ -3,7 +3,7 @@ using L2dotNET.GameService.Model.Skills2;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PartySmallWindowUpdate : GameServerNetworkPacket
+    class PartySmallWindowUpdate : GameserverPacket
     {
         private readonly L2Player _member;
 
@@ -14,17 +14,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x52);
-            WriteD(_member.ObjId);
-            WriteS(_member.Name);
-            WriteD(_member.CurCp);
-            WriteD(_member.CharacterStat.GetStat(EffectType.BMaxCp));
-            WriteD(_member.CurHp);
-            WriteD(_member.CharacterStat.GetStat(EffectType.BMaxHp));
-            WriteD(_member.CurMp);
-            WriteD(_member.CharacterStat.GetStat(EffectType.BMaxMp));
-            WriteD(_member.Level);
-            WriteD((int)_member.ActiveClass.ClassId.Id);
+            WriteByte(0x52);
+            WriteInt(_member.ObjId);
+            WriteString(_member.Name);
+            WriteInt(_member.CurCp);
+            WriteInt(_member.CharacterStat.GetStat(EffectType.BMaxCp));
+            WriteInt(_member.CurHp);
+            WriteInt(_member.CharacterStat.GetStat(EffectType.BMaxHp));
+            WriteInt(_member.CurMp);
+            WriteInt(_member.CharacterStat.GetStat(EffectType.BMaxMp));
+            WriteInt(_member.Level);
+            WriteInt((int)_member.ActiveClass.ClassId.Id);
         }
     }
 }

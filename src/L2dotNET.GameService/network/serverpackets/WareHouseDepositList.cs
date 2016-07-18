@@ -4,7 +4,7 @@ using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class WareHouseDepositList : GameServerNetworkPacket
+    class WareHouseDepositList : GameserverPacket
     {
         public static short WhPrivate = 1;
         public static short WhClan = 2;
@@ -23,26 +23,26 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x41);
-            WriteH(_type);
-            WriteD(_adena);
-            WriteH(_items.Count);
+            WriteByte(0x41);
+            WriteShort(_type);
+            WriteInt(_adena);
+            WriteShort(_items.Count);
 
             foreach (L2Item item in _items)
             {
-                WriteH(item.Template.Type1);
-                WriteD(item.ObjId);
-                WriteD(item.Template.ItemId);
-                WriteD(item.Count);
-                WriteH(item.Template.Type2);
-                WriteH(0); //custom type 1
-                WriteD(item.Template.BodyPart);
-                WriteH(item.Enchant);
-                WriteH(0); //custom type 2
-                WriteH(0);
+                WriteShort(item.Template.Type1);
+                WriteInt(item.ObjId);
+                WriteInt(item.Template.ItemId);
+                WriteInt(item.Count);
+                WriteShort(item.Template.Type2);
+                WriteShort(0); //custom type 1
+                WriteInt(item.Template.BodyPart);
+                WriteShort(item.Enchant);
+                WriteShort(0); //custom type 2
+                WriteShort(0);
                 //writeD(item.AugmentationID);
-                WriteD(item.ObjId);
-                WriteQ(0x00);
+                WriteInt(item.ObjId);
+                WriteLong(0x00);
                 _items.Clear();
             }
         }

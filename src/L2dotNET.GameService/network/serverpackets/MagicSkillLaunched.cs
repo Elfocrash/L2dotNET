@@ -3,7 +3,7 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    public class MagicSkillLaunched : GameServerNetworkPacket
+    public class MagicSkillLaunched : GameserverPacket
     {
         private readonly int _level;
         private readonly int _id;
@@ -34,13 +34,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x76);
-            WriteD(_casterId);
-            WriteD(_id);
-            WriteD(_level);
-            WriteD(_targets.Length);
+            WriteByte(0x76);
+            WriteInt(_casterId);
+            WriteInt(_id);
+            WriteInt(_level);
+            WriteInt(_targets.Length);
             foreach (int tid in _targets)
-                WriteD(tid);
+                WriteInt(tid);
         }
     }
 }

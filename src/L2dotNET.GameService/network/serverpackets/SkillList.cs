@@ -4,7 +4,7 @@ using L2dotNET.GameService.Model.Skills2;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class SkillList : GameServerNetworkPacket
+    class SkillList : GameserverPacket
     {
         private readonly IList<Skill> _skills;
         private readonly int _blockAct;
@@ -21,15 +21,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x58);
-            WriteD(_skills.Count);
+            WriteByte(0x58);
+            WriteInt(_skills.Count);
 
             foreach (Skill skill in _skills)
             {
                 int passive = skill.IsPassive();
-                WriteD(passive);
-                WriteD(skill.Level);
-                WriteD(skill.SkillId);
+                WriteInt(passive);
+                WriteInt(skill.Level);
+                WriteInt(skill.SkillId);
 
                 byte blocked = 0;
                 if (passive == 0)
@@ -53,7 +53,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                     }
                 }
 
-                WriteC(blocked);
+                WriteByte(blocked);
             }
         }
     }

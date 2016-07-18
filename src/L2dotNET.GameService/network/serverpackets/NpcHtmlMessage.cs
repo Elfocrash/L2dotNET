@@ -3,7 +3,7 @@ using L2dotNET.GameService.Tables;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class NpcHtmlMessage : GameServerNetworkPacket
+    class NpcHtmlMessage : GameserverPacket
     {
         public string Htm;
         private readonly int _objId;
@@ -32,10 +32,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x0f);
-            WriteD(_objId);
-            WriteS(Htm);
-            WriteD(_itemId);
+            WriteByte(0x0f);
+            WriteInt(_objId);
+            WriteString(Htm);
+            WriteInt(_itemId);
         }
 
         public void Replace(string p, object t)

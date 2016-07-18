@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class Attack : GameServerNetworkPacket
+    class Attack : GameserverPacket
     {
         protected int AttackerObjId;
         public bool Soulshot;
@@ -48,21 +48,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x05);
+            WriteByte(0x05);
 
-            WriteD(AttackerObjId);
-            WriteD(_hits[0].TargetId);
-            WriteD(_hits[0].Damage);
-            WriteC(_hits[0].Flags);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
-            WriteH((short)(_hits.Length - 1));
+            WriteInt(AttackerObjId);
+            WriteInt(_hits[0].TargetId);
+            WriteInt(_hits[0].Damage);
+            WriteByte(_hits[0].Flags);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
+            WriteShort((short)(_hits.Length - 1));
             for (int i = 1; i < _hits.Length; i++)
             {
-                WriteD(_hits[i].TargetId);
-                WriteD(_hits[i].Damage);
-                WriteC(_hits[i].Flags);
+                WriteInt(_hits[i].TargetId);
+                WriteInt(_hits[i].Damage);
+                WriteByte(_hits[i].Flags);
             }
         }
     }

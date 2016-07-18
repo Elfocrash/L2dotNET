@@ -103,7 +103,7 @@ namespace L2dotNET.GameService.Model.Zones
             return CharacterList;
         }
 
-        public void BroadcastPacket(GameServerNetworkPacket packet)
+        public void BroadcastPacket(GameserverPacket packet)
         {
             if (CharacterList.Count == 0)
                 return;

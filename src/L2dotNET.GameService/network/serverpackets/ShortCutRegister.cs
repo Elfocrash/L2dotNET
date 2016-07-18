@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ShortCutRegister : GameServerNetworkPacket
+    class ShortCutRegister : GameserverPacket
     {
         private readonly L2Shortcut _cut;
 
@@ -13,27 +13,27 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x44);
+            WriteByte(0x44);
 
-            WriteD(_cut.Type);
-            WriteD(_cut.Slot + (_cut.Page * 12));
+            WriteInt(_cut.Type);
+            WriteInt(_cut.Slot + (_cut.Page * 12));
 
             switch (_cut.Type)
             {
                 case L2Shortcut.TypeItem:
-                    WriteD(_cut.Id);
-                    WriteD(_cut.CharacterType);
-                    WriteD(-1); //getSharedReuseGroup
+                    WriteInt(_cut.Id);
+                    WriteInt(_cut.CharacterType);
+                    WriteInt(-1); //getSharedReuseGroup
                     break;
                 case L2Shortcut.TypeSkill:
-                    WriteD(_cut.Id);
-                    WriteD(_cut.Level);
-                    WriteC(0x00); // C5
-                    WriteD(_cut.CharacterType);
+                    WriteInt(_cut.Id);
+                    WriteInt(_cut.Level);
+                    WriteByte(0x00); // C5
+                    WriteInt(_cut.CharacterType);
                     break;
                 default:
-                    WriteD(_cut.Id);
-                    WriteD(_cut.CharacterType);
+                    WriteInt(_cut.Id);
+                    WriteInt(_cut.CharacterType);
                     break;
             }
         }

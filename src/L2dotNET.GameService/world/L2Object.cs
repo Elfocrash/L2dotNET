@@ -41,13 +41,13 @@ namespace L2dotNET.GameService.World
 
         public virtual void OnForcedAttack(L2Player player) { }
 
-        public virtual void SendPacket(GameServerNetworkPacket pk) { }
+        public virtual void SendPacket(GameserverPacket pk) { }
 
         public virtual void AddAbnormal(Skill skill, L2Character caster, bool permanent, bool unlim) { }
 
         public virtual void OnRemObject(L2Object obj) { }
 
-        public virtual void OnAddObject(L2Object obj, GameServerNetworkPacket pk, string msg = null) { }
+        public virtual void OnAddObject(L2Object obj, GameserverPacket pk, string msg = null) { }
 
         public virtual void BroadcastUserInfo() { }
 
@@ -66,7 +66,7 @@ namespace L2dotNET.GameService.World
             BroadcastUserInfo();
         }
 
-        public virtual void BroadcastPacket(GameServerNetworkPacket pk, bool excludeYourself)
+        public virtual void BroadcastPacket(GameserverPacket pk, bool excludeYourself)
         {
             if (!excludeYourself)
                 SendPacket(pk);
@@ -75,7 +75,7 @@ namespace L2dotNET.GameService.World
                 o.SendPacket(pk);
         }
 
-        public virtual void BroadcastPacket(GameServerNetworkPacket pk)
+        public virtual void BroadcastPacket(GameserverPacket pk)
         {
             BroadcastPacket(pk, false);
         }
@@ -193,7 +193,7 @@ namespace L2dotNET.GameService.World
                 o.OnClearing(this, true);
         }
 
-        public void AddKnownObject(L2Object obj, GameServerNetworkPacket pk, bool pkuse)
+        public void AddKnownObject(L2Object obj, GameserverPacket pk, bool pkuse)
         {
             if (KnownObjects.ContainsKey(obj.ObjId))
                 return;

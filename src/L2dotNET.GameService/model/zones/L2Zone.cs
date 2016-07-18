@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Model.Zones
                 ObjectsInside.Add(obj.ObjId, obj);
         }
 
-        public void BroadcastPacket(GameServerNetworkPacket pk)
+        public void BroadcastPacket(GameserverPacket pk)
         {
             foreach (L2Object obj in ObjectsInside.Values)
                 if (obj is L2Player)

@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExAutoSoulShot : GameServerNetworkPacket
+    class ExAutoSoulShot : GameserverPacket
     {
         private readonly int _itemId;
         private readonly int _type;
@@ -13,10 +13,10 @@
 
         protected internal override void Write()
         {
-            WriteC(0xFE);
-            WriteH(0x12);
-            WriteD(_itemId);
-            WriteD(_type);
+            WriteByte(0xFE);
+            WriteShort(0x12);
+            WriteInt(_itemId);
+            WriteInt(_type);
         }
     }
 }

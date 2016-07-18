@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class VehicleStarted : GameServerNetworkPacket
+    class VehicleStarted : GameserverPacket
     {
         private readonly int _sId;
         private readonly int _type;
@@ -13,9 +13,9 @@
 
         protected internal override void Write()
         {
-            WriteC(0xBA);
-            WriteD(_sId);
-            WriteD(_type);
+            WriteByte(0xBA);
+            WriteInt(_sId);
+            WriteInt(_type);
         }
     }
 }

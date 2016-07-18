@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class StaticObject : GameServerNetworkPacket
+    class StaticObject : GameserverPacket
     {
         private readonly L2StaticObject _obj;
 
@@ -13,9 +13,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x99);
-            WriteD(_obj.StaticId);
-            WriteD(_obj.ObjId);
+            WriteByte(0x99);
+            WriteInt(_obj.StaticId);
+            WriteInt(_obj.ObjId);
         }
     }
 }

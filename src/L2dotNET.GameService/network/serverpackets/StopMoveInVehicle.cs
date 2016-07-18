@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class StopMoveInVehicle : GameServerNetworkPacket
+    class StopMoveInVehicle : GameserverPacket
     {
         private readonly L2Player _player;
         private readonly int _x;
@@ -19,13 +19,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x72);
-            WriteD(_player.ObjId);
-            WriteD(_player.Boat.ObjId);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
-            WriteD(_player.Heading);
+            WriteByte(0x72);
+            WriteInt(_player.ObjId);
+            WriteInt(_player.Boat.ObjId);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
+            WriteInt(_player.Heading);
         }
     }
 }

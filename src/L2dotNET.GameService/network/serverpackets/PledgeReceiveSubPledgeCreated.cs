@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PledgeReceiveSubPledgeCreated : GameServerNetworkPacket
+    class PledgeReceiveSubPledgeCreated : GameserverPacket
     {
         private readonly EClanSub _sub;
 
@@ -13,13 +13,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0x40);
+            WriteByte(0xfe);
+            WriteShort(0x40);
 
-            WriteD(0x01);
-            WriteD((short)_sub.Type);
-            WriteS(_sub.Name);
-            WriteS(_sub.LeaderName);
+            WriteInt(0x01);
+            WriteInt((short)_sub.Type);
+            WriteString(_sub.Name);
+            WriteString(_sub.LeaderName);
         }
     }
 }

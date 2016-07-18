@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ChooseInventoryItem : GameServerNetworkPacket
+    class ChooseInventoryItem : GameserverPacket
     {
         private readonly int _itemId;
 
@@ -11,8 +11,8 @@
 
         protected internal override void Write()
         {
-            WriteC(0x6f);
-            WriteD(_itemId);
+            WriteByte(0x6f);
+            WriteInt(_itemId);
         }
     }
 }

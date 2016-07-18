@@ -1,10 +1,10 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PartySmallWindowDeleteAll : GameServerNetworkPacket
+    class PartySmallWindowDeleteAll : GameserverPacket
     {
         protected internal override void Write()
         {
-            WriteC(0x50);
+            WriteByte(0x50);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PledgeCrest : GameServerNetworkPacket
+    class PledgeCrest : GameserverPacket
     {
         private readonly int _id;
         private readonly byte[] _picture;
@@ -16,10 +16,10 @@
 
         protected internal override void Write()
         {
-            WriteC(0x6a);
-            WriteD(_id);
-            WriteD(_picture.Length);
-            WriteB(_picture);
+            WriteByte(0x6a);
+            WriteInt(_id);
+            WriteInt(_picture.Length);
+            WriteBytesArray(_picture);
         }
     }
 }

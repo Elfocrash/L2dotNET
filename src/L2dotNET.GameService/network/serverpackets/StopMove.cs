@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class StopMove : GameServerNetworkPacket
+    class StopMove : GameserverPacket
     {
         private readonly int _id;
         private readonly int _x;
@@ -21,12 +21,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x47);
-            WriteD(_id);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
-            WriteD(_h);
+            WriteByte(0x47);
+            WriteInt(_id);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
+            WriteInt(_h);
         }
     }
 }

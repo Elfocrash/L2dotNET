@@ -4,7 +4,7 @@ using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ShowBoard : GameServerNetworkPacket
+    class ShowBoard : GameserverPacket
     {
         private readonly string _id;
         private readonly string _htmlCode;
@@ -54,16 +54,16 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x6e);
-            WriteC(0x01); // c4 1 to show community 00 to hide
-            WriteS("bypass _bbshome"); // top
-            WriteS("bypass _bbsgetfav"); // favorite
-            WriteS("bypass _bbsloc"); // region
-            WriteS("bypass _bbsclan"); // clan
-            WriteS("bypass _bbsmemo"); // memo
-            WriteS("bypass _maillist_0_1_0_"); // mail
-            WriteS("bypass _friendlist_0_"); // friends
-            WriteS("bypass bbs_add_fav"); // add fav.
+            WriteByte(0x6e);
+            WriteByte(0x01); // c4 1 to show community 00 to hide
+            WriteString("bypass _bbshome"); // top
+            WriteString("bypass _bbsgetfav"); // favorite
+            WriteString("bypass _bbsloc"); // region
+            WriteString("bypass _bbsclan"); // clan
+            WriteString("bypass _bbsmemo"); // memo
+            WriteString("bypass _maillist_0_1_0_"); // mail
+            WriteString("bypass _friendlist_0_"); // friends
+            WriteString("bypass bbs_add_fav"); // add fav.
 
             string st = _id + "\u0008";
             if (!_id.EqualsIgnoreCase("1002"))
@@ -74,7 +74,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                     st += s + " \u0008";
             }
 
-            WriteS(st);
+            WriteString(st);
         }
     }
 }

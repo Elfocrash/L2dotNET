@@ -34,8 +34,8 @@ namespace L2dotNET.GameService.Controllers
         }
 
         public int Time;
-        private readonly GameServerNetworkPacket _dayPk = new SunRise();
-        private readonly GameServerNetworkPacket _nightPk = new SunSet();
+        private readonly GameserverPacket _dayPk = new SunRise();
+        private readonly GameserverPacket _nightPk = new SunSet();
         private System.Timers.Timer _timeController;
         public DateTime ServerStartUp;
         public static bool Night;

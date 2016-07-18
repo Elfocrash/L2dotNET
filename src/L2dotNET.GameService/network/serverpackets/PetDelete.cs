@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PetDelete : GameServerNetworkPacket
+    class PetDelete : GameserverPacket
     {
         private readonly byte _objectSummonType;
         private readonly int _objId;
@@ -13,9 +13,9 @@
 
         protected internal override void Write()
         {
-            WriteC(0xb6);
-            WriteD(_objectSummonType);
-            WriteD(_objId);
+            WriteByte(0xb6);
+            WriteInt(_objectSummonType);
+            WriteInt(_objId);
         }
     }
 }

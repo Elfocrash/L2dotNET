@@ -5,7 +5,7 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class Die : GameServerNetworkPacket
+    class Die : GameserverPacket
     {
         private readonly int _sId;
         private int _mNVillage;
@@ -58,26 +58,26 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x06);
-            WriteD(_sId);
-            WriteD(_mNVillage); //0
-            WriteD(_mNAgit); //1
-            WriteD(_mNCastle); //2
-            WriteD(MNBattleCamp); //4
-            WriteD(_mSpoil);
-            WriteD(_mNOriginal); //5
-            WriteD(_mNFotress); //3
+            WriteByte(0x06);
+            WriteInt(_sId);
+            WriteInt(_mNVillage); //0
+            WriteInt(_mNAgit); //1
+            WriteInt(_mNCastle); //2
+            WriteInt(MNBattleCamp); //4
+            WriteInt(_mSpoil);
+            WriteInt(_mNOriginal); //5
+            WriteInt(_mNFotress); //3
 
-            WriteC(0);
+            WriteByte(0);
             //writeC(m_bShow ? 1 : 0);
-            WriteD(MNAgathion); //21
-            WriteD(_items?.Count ?? 0); //22+
+            WriteInt(MNAgathion); //21
+            WriteInt(_items?.Count ?? 0); //22+
 
             if (_items == null)
                 return;
 
             foreach (int id in _items)
-                WriteD(id);
+                WriteInt(id);
         }
     }
 }

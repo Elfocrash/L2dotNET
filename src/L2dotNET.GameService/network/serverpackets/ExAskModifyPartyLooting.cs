@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExAskModifyPartyLooting : GameServerNetworkPacket
+    class ExAskModifyPartyLooting : GameserverPacket
     {
         private readonly string _leader;
         private readonly byte _mode;
@@ -13,10 +13,10 @@
 
         protected internal override void Write()
         {
-            WriteC(0xFE);
-            WriteH(0xBE);
-            WriteS(_leader);
-            WriteD(_mode);
+            WriteByte(0xFE);
+            WriteShort(0xBE);
+            WriteString(_leader);
+            WriteInt(_mode);
         }
     }
 }

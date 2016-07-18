@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class CreatureSay : GameServerNetworkPacket
+    class CreatureSay : GameserverPacket
     {
         private readonly int _objectId;
         private readonly SayIDList _type;
@@ -25,11 +25,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x4a);
-            WriteD(_objectId);
-            WriteD((byte)_type);
-            WriteS(_charName);
-            WriteS(Text);
+            WriteByte(0x4a);
+            WriteInt(_objectId);
+            WriteInt((byte)_type);
+            WriteString(_charName);
+            WriteString(Text);
         }
     }
 }

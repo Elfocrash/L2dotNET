@@ -3,7 +3,7 @@ using L2dotNET.GameService.Model.Skills2;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PetStatusUpdate : GameServerNetworkPacket
+    class PetStatusUpdate : GameserverPacket
     {
         private readonly L2Summon _pet;
 
@@ -14,23 +14,23 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xb6);
-            WriteD(_pet.ObjectSummonType);
-            WriteD(_pet.ObjId);
-            WriteD(_pet.X);
-            WriteD(_pet.Y);
-            WriteD(_pet.Z);
-            WriteS("");
-            WriteD(_pet.CurrentTime);
-            WriteD(_pet.MaxTime);
-            WriteD(_pet.CurHp);
-            WriteD(_pet.CharacterStat.GetStat(EffectType.BMaxHp));
-            WriteD(_pet.CurMp);
-            WriteD(_pet.CharacterStat.GetStat(EffectType.BMaxMp));
-            WriteD(_pet.Level);
-            WriteQ(_pet.StatusExp);
-            WriteQ(_pet.GetExpCurrentLevel());
-            WriteQ(_pet.GetExpToLevelUp());
+            WriteByte(0xb6);
+            WriteInt(_pet.ObjectSummonType);
+            WriteInt(_pet.ObjId);
+            WriteInt(_pet.X);
+            WriteInt(_pet.Y);
+            WriteInt(_pet.Z);
+            WriteString("");
+            WriteInt(_pet.CurrentTime);
+            WriteInt(_pet.MaxTime);
+            WriteInt(_pet.CurHp);
+            WriteInt(_pet.CharacterStat.GetStat(EffectType.BMaxHp));
+            WriteInt(_pet.CurMp);
+            WriteInt(_pet.CharacterStat.GetStat(EffectType.BMaxMp));
+            WriteInt(_pet.Level);
+            WriteLong(_pet.StatusExp);
+            WriteLong(_pet.GetExpCurrentLevel());
+            WriteLong(_pet.GetExpToLevelUp());
         }
     }
 }

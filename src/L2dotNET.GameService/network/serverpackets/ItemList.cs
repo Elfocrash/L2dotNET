@@ -4,7 +4,7 @@ using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ItemList : GameServerNetworkPacket
+    class ItemList : GameserverPacket
     {
         private readonly bool _showWindow;
         private readonly List<ItemListItem> _items = new List<ItemListItem>();
@@ -39,24 +39,24 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x1b);
-            WriteH(_showWindow ? 1 : 0);
-            WriteH(_items.Count);
+            WriteByte(0x1b);
+            WriteShort(_showWindow ? 1 : 0);
+            WriteShort(_items.Count);
 
             foreach (ItemListItem item in _items)
             {
-                WriteD(item.ObjectId);
-                WriteD(item.ItemId);
-                WriteD(item.Slot);
-                WriteQ(item.Count);
-                WriteH(item.Type2);
-                WriteH(item.CType1);
-                WriteH(item.Equip);
-                WriteD(item.Bodypart);
-                WriteH(item.Enchant);
-                WriteH(item.CType2);
-                WriteD(item.Augment);
-                WriteD(item.Mana);
+                WriteInt(item.ObjectId);
+                WriteInt(item.ItemId);
+                WriteInt(item.Slot);
+                WriteLong(item.Count);
+                WriteShort(item.Type2);
+                WriteShort(item.CType1);
+                WriteShort(item.Equip);
+                WriteInt(item.Bodypart);
+                WriteShort(item.Enchant);
+                WriteShort(item.CType2);
+                WriteInt(item.Augment);
+                WriteInt(item.Mana);
                 //writeD(item.TimeLeft);
             }
 

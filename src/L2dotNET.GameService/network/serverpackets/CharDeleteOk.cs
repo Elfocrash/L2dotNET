@@ -1,10 +1,10 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class CharDeleteOk : GameServerNetworkPacket
+    class CharDeleteOk : GameserverPacket
     {
         protected internal override void Write()
         {
-            WriteC(0x23);
+            WriteByte(0x23);
         }
     }
 }

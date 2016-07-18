@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PartySmallWindowDelete : GameServerNetworkPacket
+    class PartySmallWindowDelete : GameserverPacket
     {
         private readonly int _id;
         private readonly string _name;
@@ -13,9 +13,9 @@
 
         protected internal override void Write()
         {
-            WriteC(0x51);
-            WriteD(_id);
-            WriteS(_name);
+            WriteByte(0x51);
+            WriteInt(_id);
+            WriteString(_name);
         }
     }
 }

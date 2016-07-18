@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class Revive : GameServerNetworkPacket
+    class Revive : GameserverPacket
     {
         private readonly int _objId;
 
@@ -11,8 +11,8 @@
 
         protected internal override void Write()
         {
-            WriteC(0x07);
-            WriteD(_objId);
+            WriteByte(0x07);
+            WriteInt(_objId);
         }
     }
 }

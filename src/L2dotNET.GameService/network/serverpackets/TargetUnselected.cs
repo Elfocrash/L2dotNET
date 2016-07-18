@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class TargetUnselected : GameServerNetworkPacket
+    class TargetUnselected : GameserverPacket
     {
         private readonly int _id;
         private readonly int _x;
@@ -19,11 +19,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x2a);
-            WriteD(_id);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
+            WriteByte(0x2a);
+            WriteInt(_id);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
         }
     }
 }

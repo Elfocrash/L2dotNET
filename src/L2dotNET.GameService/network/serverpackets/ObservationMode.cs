@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ObservationMode : GameServerNetworkPacket
+    class ObservationMode : GameserverPacket
     {
         private readonly int _x;
         private readonly int _y;
@@ -15,13 +15,13 @@
 
         protected internal override void Write()
         {
-            WriteC(0xdf);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
-            WriteC(0x00);
-            WriteC(0xc0);
-            WriteC(0x00);
+            WriteByte(0xdf);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
+            WriteByte(0x00);
+            WriteByte(0xc0);
+            WriteByte(0x00);
         }
     }
 }

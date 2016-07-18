@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class TeleportToLocation : GameServerNetworkPacket
+    class TeleportToLocation : GameserverPacket
     {
         private readonly int _x;
         private readonly int _y;
@@ -19,11 +19,11 @@
 
         protected internal override void Write()
         {
-            WriteC(0x28);
-            WriteD(_id);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
+            WriteByte(0x28);
+            WriteInt(_id);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
         }
     }
 }

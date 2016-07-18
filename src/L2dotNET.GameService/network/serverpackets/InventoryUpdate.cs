@@ -3,7 +3,7 @@ using L2dotNET.GameService.Model.Items;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class InventoryUpdate : GameServerNetworkPacket
+    class InventoryUpdate : GameserverPacket
     {
         protected List<object[]> Update = new List<object[]>();
 
@@ -24,30 +24,30 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x27);
-            WriteH(Update.Count);
+            WriteByte(0x27);
+            WriteShort(Update.Count);
 
             foreach (object[] obj in Update)
             {
-                WriteH((short)obj[1]);
+                WriteShort((short)obj[1]);
 
                 L2Item item = (L2Item)obj[0];
 
-                WriteD(item.ObjId);
-                WriteD(item.Template.ItemId);
-                WriteD(item.SlotLocation); //loc
-                WriteQ(item.Count);
+                WriteInt(item.ObjId);
+                WriteInt(item.Template.ItemId);
+                WriteInt(item.SlotLocation); //loc
+                WriteLong(item.Count);
 
-                WriteH(item.Template.Type2);
-                WriteH(item.CustomType1);
-                WriteH(item.IsEquipped);
+                WriteShort(item.Template.Type2);
+                WriteShort(item.CustomType1);
+                WriteShort(item.IsEquipped);
 
-                WriteD(item.Template.BodyPart);
-                WriteH(item.Enchant);
-                WriteH(item.CustomType2);
+                WriteInt(item.Template.BodyPart);
+                WriteShort(item.Enchant);
+                WriteShort(item.CustomType2);
 
-                WriteD(item.AugmentationId);
-                WriteD(item.Durability);
+                WriteInt(item.AugmentationId);
+                WriteInt(item.Durability);
                 //writeD(item.LifeTimeEnd());
             }
         }

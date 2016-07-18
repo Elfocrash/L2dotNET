@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExBrBuyProduct : GameServerNetworkPacket
+    class ExBrBuyProduct : GameserverPacket
     {
         private readonly int _result;
 
@@ -11,9 +11,9 @@
 
         protected internal override void Write()
         {
-            WriteC(0xFE);
-            WriteH(0xCC);
-            WriteD(_result);
+            WriteByte(0xFE);
+            WriteShort(0xCC);
+            WriteInt(_result);
         }
     }
 }

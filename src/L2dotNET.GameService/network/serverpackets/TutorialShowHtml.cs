@@ -3,7 +3,7 @@ using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class TutorialShowHtml : GameServerNetworkPacket
+    class TutorialShowHtml : GameserverPacket
     {
         private string _content;
 
@@ -50,8 +50,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xa0);
-            WriteS(_content);
+            WriteByte(0xa0);
+            WriteString(_content);
         }
     }
 }

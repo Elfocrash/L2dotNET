@@ -5,7 +5,7 @@ using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExQuestItemList : GameServerNetworkPacket
+    class ExQuestItemList : GameserverPacket
     {
         private readonly L2Item[] _items;
         private readonly List<int> _block = new List<int>();
@@ -23,50 +23,50 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            //WriteC(0xFE);
-            //WriteH(0xC5);
-            //WriteH(_items.Length);
+            //WriteByte(0xFE);
+            //WriteShort(0xC5);
+            //WriteShort(_items.Length);
 
             //foreach (L2Item item in _items)
             //{
-            //    WriteD(item.ObjId);
-            //    WriteD(item.Template.ItemId);
-            //    WriteD(0);
-            //    WriteQ(item.Count);
+            //    WriteInt(item.ObjId);
+            //    WriteInt(item.Template.ItemId);
+            //    WriteInt(0);
+            //    WriteLong(item.Count);
 
-            //    WriteH(item.Template.Type2);
-            //    WriteH(0);
-            //    WriteH(item.IsEquipped);
+            //    WriteShort(item.Template.Type2);
+            //    WriteShort(0);
+            //    WriteShort(item.IsEquipped);
 
-            //    WriteD(item.Template.BodyPart);
-            //    WriteH(item.Enchant);
-            //    WriteH(0);
+            //    WriteInt(item.Template.BodyPart);
+            //    WriteShort(item.Enchant);
+            //    WriteShort(0);
 
-            //    WriteD(item.AugmentationId);
-            //    WriteD(item.Durability);
-            //    WriteD(item.LifeTimeEnd());
+            //    WriteInt(item.AugmentationId);
+            //    WriteInt(item.Durability);
+            //    WriteInt(item.LifeTimeEnd());
 
-            //    WriteH(item.AttrAttackType);
-            //    WriteH(item.AttrAttackValue);
-            //    WriteH(item.AttrDefenseValueFire);
-            //    WriteH(item.AttrDefenseValueWater);
-            //    WriteH(item.AttrDefenseValueWind);
-            //    WriteH(item.AttrDefenseValueEarth);
-            //    WriteH(item.AttrDefenseValueHoly);
-            //    WriteH(item.AttrDefenseValueUnholy);
+            //    WriteShort(item.AttrAttackType);
+            //    WriteShort(item.AttrAttackValue);
+            //    WriteShort(item.AttrDefenseValueFire);
+            //    WriteShort(item.AttrDefenseValueWater);
+            //    WriteShort(item.AttrDefenseValueWind);
+            //    WriteShort(item.AttrDefenseValueEarth);
+            //    WriteShort(item.AttrDefenseValueHoly);
+            //    WriteShort(item.AttrDefenseValueUnholy);
 
-            //    WriteH(item.Enchant1);
-            //    WriteH(item.Enchant2);
-            //    WriteH(item.Enchant3);
+            //    WriteShort(item.Enchant1);
+            //    WriteShort(item.Enchant2);
+            //    WriteShort(item.Enchant3);
             //}
 
-            //WriteH(_block.Count);
+            //WriteShort(_block.Count);
             //if (_block.Count <= 0)
             //    return;
 
-            //WriteC(1);
+            //WriteByte(1);
             //foreach (int id in _block)
-            //    WriteD(id);
+            //    WriteInt(id);
         }
     }
 }

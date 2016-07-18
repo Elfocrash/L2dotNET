@@ -1,12 +1,12 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class FriendList : GameServerNetworkPacket
+    class FriendList : GameserverPacket
     {
         protected internal override void Write()
         {
-            WriteC(0xfa);
-            WriteH(0x00);
-            WriteH(0x00);
+            WriteByte(0xfa);
+            WriteShort(0x00);
+            WriteShort(0x00);
         }
     }
 }

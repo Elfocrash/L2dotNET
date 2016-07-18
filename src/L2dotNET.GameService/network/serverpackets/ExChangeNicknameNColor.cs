@@ -1,11 +1,11 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExChangeNicknameNColor : GameServerNetworkPacket
+    class ExChangeNicknameNColor : GameserverPacket
     {
         protected internal override void Write()
         {
-            WriteC(0xFE);
-            WriteH(0x83);
+            WriteByte(0xFE);
+            WriteShort(0x83);
         }
     }
 }

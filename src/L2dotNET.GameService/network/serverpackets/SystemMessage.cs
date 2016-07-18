@@ -7,7 +7,7 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    public class SystemMessage : GameServerNetworkPacket
+    public class SystemMessage : GameserverPacket
     {
         private readonly List<object[]> _data = new List<object[]>();
         public int MessgeId;
@@ -105,21 +105,21 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x64);
-            WriteD(MessgeId);
-            WriteD(_data.Count);
+            WriteByte(0x64);
+            WriteInt(MessgeId);
+            WriteInt(_data.Count);
 
             foreach (object[] d in _data)
             {
                 int type = (int)d[0];
 
-                WriteD(type);
+                WriteInt(type);
 
                 switch (type)
                 {
                     case 0: //text
                     case 12:
-                        WriteS((string)d[1]);
+                        WriteString((string)d[1]);
                         break;
                     case 1: //number
                     case 2: //npcid
@@ -128,19 +128,19 @@ namespace L2dotNET.GameService.Network.Serverpackets
                     case 9:
                     case 10:
                     case 13:
-                        WriteD((int)d[1]);
+                        WriteInt((int)d[1]);
                         break;
                     case 4: //skillname
-                        WriteD((int)d[1]);
-                        WriteD((int)d[2]);
+                        WriteInt((int)d[1]);
+                        WriteInt((int)d[2]);
                         break;
                     case 6:
-                        WriteQ((long)d[1]);
+                        WriteLong((long)d[1]);
                         break;
                     case 7: //zone
-                        WriteD((int)d[1]);
-                        WriteD((int)d[2]);
-                        WriteD((int)d[3]);
+                        WriteInt((int)d[1]);
+                        WriteInt((int)d[2]);
+                        WriteInt((int)d[3]);
                         break;
                 }
             }

@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class CharMoveToLocation : GameServerNetworkPacket
+    class CharMoveToLocation : GameserverPacket
     {
         private readonly L2Object _obj;
 
@@ -13,17 +13,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x01);
+            WriteByte(0x01);
 
-            WriteD(_obj.ObjId);
+            WriteInt(_obj.ObjId);
 
-            WriteD(_obj.DestX);
-            WriteD(_obj.DestY);
-            WriteD(_obj.DestZ);
+            WriteInt(_obj.DestX);
+            WriteInt(_obj.DestY);
+            WriteInt(_obj.DestZ);
 
-            WriteD(_obj.X);
-            WriteD(_obj.Y);
-            WriteD(_obj.Z);
+            WriteInt(_obj.X);
+            WriteInt(_obj.Y);
+            WriteInt(_obj.Z);
         }
     }
 }

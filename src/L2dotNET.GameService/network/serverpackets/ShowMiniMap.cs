@@ -1,12 +1,12 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ShowMiniMap : GameServerNetworkPacket
+    class ShowMiniMap : GameserverPacket
     {
         protected internal override void Write()
         {
-            WriteC(0x9d);
-            WriteD(1665);
-            WriteD(0); //SevenSigns.getInstance().getCurrentPeriod());
+            WriteByte(0x9d);
+            WriteInt(1665);
+            WriteInt(0); //SevenSigns.getInstance().getCurrentPeriod());
         }
     }
 }

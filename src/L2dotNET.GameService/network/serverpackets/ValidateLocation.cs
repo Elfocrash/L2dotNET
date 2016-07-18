@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ValidateLocation : GameServerNetworkPacket
+    class ValidateLocation : GameserverPacket
     {
         private readonly int _x;
         private readonly int _id;
@@ -30,13 +30,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x61);
+            WriteByte(0x61);
 
-            WriteD(_id);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
-            WriteD(_heading);
+            WriteInt(_id);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
+            WriteInt(_heading);
         }
     }
 }

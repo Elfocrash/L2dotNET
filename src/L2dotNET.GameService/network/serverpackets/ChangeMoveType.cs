@@ -3,7 +3,7 @@ using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ChangeMoveType : GameServerNetworkPacket
+    class ChangeMoveType : GameserverPacket
     {
         public static readonly int Walk = 0;
         public static readonly int Run = 1;
@@ -19,10 +19,10 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x2e);
-            WriteD(_charObjId);
-            WriteD(_running ? Run : Walk);
-            WriteD(0); // c2
+            WriteByte(0x2e);
+            WriteInt(_charObjId);
+            WriteInt(_running ? Run : Walk);
+            WriteInt(0); // c2
         }
     }
 }

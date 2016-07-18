@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    public class ShowTownMap : GameServerNetworkPacket
+    public class ShowTownMap : GameserverPacket
     {
         private readonly string _texture;
         private readonly int _x;
@@ -15,10 +15,10 @@
 
         protected internal override void Write()
         {
-            WriteC(0xde);
-            WriteS(_texture);
-            WriteD(_x);
-            WriteD(_y);
+            WriteByte(0xde);
+            WriteString(_texture);
+            WriteInt(_x);
+            WriteInt(_y);
         }
     }
 }

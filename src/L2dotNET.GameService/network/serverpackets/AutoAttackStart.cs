@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class AutoAttackStart : GameServerNetworkPacket
+    class AutoAttackStart : GameserverPacket
     {
         private readonly int _sId;
 
@@ -11,8 +11,8 @@
 
         protected internal override void Write()
         {
-            WriteC(0x2b);
-            WriteD(_sId);
+            WriteByte(0x2b);
+            WriteInt(_sId);
         }
     }
 }

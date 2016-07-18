@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ObservationReturn : GameServerNetworkPacket
+    class ObservationReturn : GameserverPacket
     {
         private readonly int _x;
         private readonly int _y;
@@ -15,10 +15,10 @@
 
         protected internal override void Write()
         {
-            WriteC(0xe0);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
+            WriteByte(0xe0);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
         }
     }
 }

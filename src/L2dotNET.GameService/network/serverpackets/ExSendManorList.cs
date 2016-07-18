@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExSendManorList : GameServerNetworkPacket
+    class ExSendManorList : GameserverPacket
     {
         private readonly List<string> _list;
 
@@ -13,16 +13,16 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xFE);
-            WriteH(0x1B);
-            WriteD(_list.Count);
+            WriteByte(0xFE);
+            WriteShort(0x1B);
+            WriteInt(_list.Count);
 
             int id = 1;
             foreach (string manor in _list)
             {
-                WriteD(id);
+                WriteInt(id);
                 id++;
-                WriteS(manor);
+                WriteString(manor);
             }
         }
     }

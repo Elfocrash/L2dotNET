@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class MyTargetSelected : GameServerNetworkPacket
+    class MyTargetSelected : GameserverPacket
     {
         private readonly int _targetId;
         private readonly short _color;
@@ -13,9 +13,9 @@
 
         protected internal override void Write()
         {
-            WriteC(0xa6);
-            WriteD(_targetId);
-            WriteH(_color);
+            WriteByte(0xa6);
+            WriteInt(_targetId);
+            WriteShort(_color);
         }
     }
 }

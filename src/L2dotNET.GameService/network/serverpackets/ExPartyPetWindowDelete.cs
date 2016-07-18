@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExPartyPetWindowDelete : GameServerNetworkPacket
+    class ExPartyPetWindowDelete : GameserverPacket
     {
         private readonly int _petId;
         private readonly int _playerId;
@@ -15,11 +15,11 @@
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0x6a);
-            WriteD(_petId);
-            WriteD(_playerId);
-            WriteS(_petName);
+            WriteByte(0xfe);
+            WriteShort(0x6a);
+            WriteInt(_petId);
+            WriteInt(_playerId);
+            WriteString(_petName);
         }
     }
 }

@@ -4,7 +4,7 @@ using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class TradeStart : GameServerNetworkPacket
+    class TradeStart : GameserverPacket
     {
         private L2Player _player;
         private readonly List<L2Item> _trade = new List<L2Item>();
@@ -20,25 +20,25 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x1E);
-            WriteD(_partnerId);
-            WriteH(_trade.Count);
+            WriteByte(0x1E);
+            WriteInt(_partnerId);
+            WriteShort(_trade.Count);
 
             foreach (L2Item item in _trade)
             {
-                WriteH(item.Template.Type1);
-                WriteD(item.ObjId);
-                WriteD(item.Template.ItemId);
-                WriteD(item.Count);
+                WriteShort(item.Template.Type1);
+                WriteInt(item.ObjId);
+                WriteInt(item.Template.ItemId);
+                WriteInt(item.Count);
 
-                WriteH(item.Template.Type2);
-                WriteH(item.CustomType1);
+                WriteShort(item.Template.Type2);
+                WriteShort(item.CustomType1);
 
-                WriteD(item.Template.BodyPart);
-                WriteH(item.Enchant);
-                WriteH(item.CustomType2);
+                WriteInt(item.Template.BodyPart);
+                WriteShort(item.Enchant);
+                WriteShort(item.CustomType2);
 
-                WriteH(0x00);
+                WriteShort(0x00);
             }
         }
     }

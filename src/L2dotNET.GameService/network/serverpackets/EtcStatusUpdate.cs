@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class EtcStatusUpdate : GameServerNetworkPacket
+    class EtcStatusUpdate : GameserverPacket
     {
         private readonly int _force;
         private readonly int _weight;
@@ -25,13 +25,13 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xF3);
-            WriteD(_force);
-            WriteD(_weight);
-            WriteD(_whisper);
-            WriteD(_danger); // 1 = danger area
-            WriteD(_grade);
-            WriteD(0); // 1 = charm of courage (no xp loss in siege..)
+            WriteByte(0xF3);
+            WriteInt(_force);
+            WriteInt(_weight);
+            WriteInt(_whisper);
+            WriteInt(_danger); // 1 = danger area
+            WriteInt(_grade);
+            WriteInt(0); // 1 = charm of courage (no xp loss in siege..)
             //writeD(_death);
             //writeD(_souls);
         }

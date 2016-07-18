@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExShowPetitionHtml : GameServerNetworkPacket
+    class ExShowPetitionHtml : GameserverPacket
     {
         private readonly string _content;
 
@@ -11,12 +11,12 @@
 
         protected internal override void Write()
         {
-            WriteC(0xFE);
-            WriteH(0xB1);
+            WriteByte(0xFE);
+            WriteShort(0xB1);
 
-            WriteD(0);
-            WriteC(0);
-            WriteS(_content);
+            WriteInt(0);
+            WriteByte(0);
+            WriteString(_content);
         }
     }
 }

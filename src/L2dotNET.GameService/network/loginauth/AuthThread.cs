@@ -138,7 +138,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
             Initialize();
         }
 
-        public void SendPacket(GameServerNetworkPacket pk)
+        public void SendPacket(GameserverPacket pk)
         {
             pk.Write();
 

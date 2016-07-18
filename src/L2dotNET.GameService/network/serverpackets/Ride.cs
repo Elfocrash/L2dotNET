@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class Ride : GameServerNetworkPacket
+    class Ride : GameserverPacket
     {
         private readonly int _id;
         private readonly int _bRide;
@@ -54,11 +54,11 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x86);
-            WriteD(_id);
-            WriteD(_bRide);
-            WriteD(_rideType);
-            WriteD(_npcId);
+            WriteByte(0x86);
+            WriteInt(_id);
+            WriteInt(_bRide);
+            WriteInt(_rideType);
+            WriteInt(_npcId);
             //writeD(x);
             //writeD(y);
             //writeD(z);

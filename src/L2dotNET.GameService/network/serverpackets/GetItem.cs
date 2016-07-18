@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class GetItem : GameServerNetworkPacket
+    class GetItem : GameserverPacket
     {
         private readonly int _id;
         private readonly int _itemId;
@@ -19,12 +19,12 @@
 
         protected internal override void Write()
         {
-            WriteC(0x0d);
-            WriteD(_id);
-            WriteD(_itemId);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
+            WriteByte(0x0d);
+            WriteInt(_id);
+            WriteInt(_itemId);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
         }
     }
 }

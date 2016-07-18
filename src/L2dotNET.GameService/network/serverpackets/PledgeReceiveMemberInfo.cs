@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class PledgeReceiveMemberInfo : GameServerNetworkPacket
+    class PledgeReceiveMemberInfo : GameserverPacket
     {
         private readonly ClanMember _member;
 
@@ -13,15 +13,15 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0x3e);
+            WriteByte(0xfe);
+            WriteShort(0x3e);
 
-            WriteD(_member.ClanType);
-            WriteS(_member.Name);
-            WriteS(_member.NickName);
-            WriteD(_member.ClanPrivs);
-            WriteS(_member.PledgeTypeName);
-            WriteS(_member.OwnerName); // name of this member's apprentice/sponsor
+            WriteInt(_member.ClanType);
+            WriteString(_member.Name);
+            WriteString(_member.NickName);
+            WriteInt(_member.ClanPrivs);
+            WriteString(_member.PledgeTypeName);
+            WriteString(_member.OwnerName); // name of this member's apprentice/sponsor
         }
     }
 }

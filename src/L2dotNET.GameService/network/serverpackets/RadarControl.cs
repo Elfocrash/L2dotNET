@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class RadarControl : GameServerNetworkPacket
+    class RadarControl : GameserverPacket
     {
         private readonly int _showRadar;
         private readonly int _type;
@@ -19,12 +19,12 @@
 
         protected internal override void Write()
         {
-            WriteC(0xEB);
-            WriteD(_showRadar);
-            WriteD(_type);
-            WriteD(_x);
-            WriteD(_y);
-            WriteD(_z);
+            WriteByte(0xEB);
+            WriteInt(_showRadar);
+            WriteInt(_type);
+            WriteInt(_x);
+            WriteInt(_y);
+            WriteInt(_z);
         }
     }
 }

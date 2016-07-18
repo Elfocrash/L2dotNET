@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class MoveToPawn : GameServerNetworkPacket
+    class MoveToPawn : GameserverPacket
     {
         private readonly int _id;
         private readonly int _target;
@@ -29,18 +29,18 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x60);
+            WriteByte(0x60);
 
-            WriteD(_id);
-            WriteD(_target);
-            WriteD(_dist);
+            WriteInt(_id);
+            WriteInt(_target);
+            WriteInt(_dist);
 
             //writeD(_x);
             //writeD(_y);
             //writeD(_z);
-            WriteD(_tx);
-            WriteD(_ty);
-            WriteD(_tz);
+            WriteInt(_tx);
+            WriteInt(_ty);
+            WriteInt(_tz);
         }
     }
 }

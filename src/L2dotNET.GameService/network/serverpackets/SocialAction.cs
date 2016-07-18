@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class SocialAction : GameServerNetworkPacket
+    class SocialAction : GameserverPacket
     {
         private readonly int _social;
         private readonly int _id;
@@ -13,9 +13,9 @@
 
         protected internal override void Write()
         {
-            WriteC(0x2d);
-            WriteD(_id);
-            WriteD(_social);
+            WriteByte(0x2d);
+            WriteInt(_id);
+            WriteInt(_social);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExSetPartyLooting : GameServerNetworkPacket
+    class ExSetPartyLooting : GameserverPacket
     {
         private readonly int _result;
         private readonly int _mode;
@@ -16,10 +16,10 @@
 
         protected internal override void Write()
         {
-            WriteC(0xFE);
-            WriteH(0xBF);
-            WriteD(_result);
-            WriteD(_mode);
+            WriteByte(0xFE);
+            WriteShort(0xBF);
+            WriteInt(_result);
+            WriteInt(_mode);
         }
     }
 }

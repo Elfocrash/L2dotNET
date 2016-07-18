@@ -4,7 +4,7 @@ using L2dotNET.GameService.Tables;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class RecipeItemMakeInfo : GameServerNetworkPacket
+    class RecipeItemMakeInfo : GameserverPacket
     {
         private readonly int _recipeId;
         private readonly int _type;
@@ -23,12 +23,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xdd);
-            WriteD(_recipeId);
-            WriteD(_type);
-            WriteD(_currentMp);
-            WriteD(_maxMp);
-            WriteD(_makingResult);
+            WriteByte(0xdd);
+            WriteInt(_recipeId);
+            WriteInt(_type);
+            WriteInt(_currentMp);
+            WriteInt(_maxMp);
+            WriteInt(_makingResult);
         }
     }
 }

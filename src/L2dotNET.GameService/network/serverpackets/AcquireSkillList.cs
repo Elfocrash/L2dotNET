@@ -3,7 +3,7 @@ using L2dotNET.GameService.Model.Skills2;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class AcquireSkillList : GameServerNetworkPacket
+    class AcquireSkillList : GameserverPacket
     {
         public enum SkillType
         {
@@ -22,17 +22,17 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x8a);
-            WriteD((int)_skillType);
-            WriteD(_list.Count);
+            WriteByte(0x8a);
+            WriteInt((int)_skillType);
+            WriteInt(_list.Count);
 
             foreach (AcquireSkill sk in _list)
             {
-                WriteD(sk.Id);
-                WriteD(sk.Lv);
-                WriteD(sk.Lv);
-                WriteD(sk.LvUpSp);
-                WriteD(0); //reqs
+                WriteInt(sk.Id);
+                WriteInt(sk.Lv);
+                WriteInt(sk.Lv);
+                WriteInt(sk.LvUpSp);
+                WriteInt(0); //reqs
             }
         }
     }

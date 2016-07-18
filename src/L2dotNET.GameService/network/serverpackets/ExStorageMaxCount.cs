@@ -2,7 +2,7 @@
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class ExStorageMaxCount : GameServerNetworkPacket
+    class ExStorageMaxCount : GameserverPacket
     {
         private readonly int _inventory;
         private readonly int _warehouse;
@@ -29,16 +29,16 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0xfe);
-            WriteH(0x2e);
+            WriteByte(0xfe);
+            WriteShort(0x2e);
 
-            WriteD(_inventory);
-            WriteD(_warehouse);
-            WriteD(_clan);
-            WriteD(_privateSell);
-            WriteD(_privateBuy);
-            WriteD(_receipeD);
-            WriteD(_recipe);
+            WriteInt(_inventory);
+            WriteInt(_warehouse);
+            WriteInt(_clan);
+            WriteInt(_privateSell);
+            WriteInt(_privateBuy);
+            WriteInt(_receipeD);
+            WriteInt(_recipe);
             //writeD(_extra);
             //writeD(_quest);
         }

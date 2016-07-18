@@ -4,7 +4,7 @@ using L2dotNET.GameService.Model.Player;
 
 namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class CharacterSelectionInfo : GameServerNetworkPacket
+    class CharacterSelectionInfo : GameserverPacket
     {
         private readonly List<L2Player> _players;
         public int CharId = -1;
@@ -20,66 +20,66 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         protected internal override void Write()
         {
-            WriteC(0x13);
-            WriteD(_players.Count);
+            WriteByte(0x13);
+            WriteInt(_players.Count);
 
             foreach (L2Player player in _players)
             {
-                WriteS(player.Name);
-                WriteD(player.ObjId);
-                WriteS(_account);
-                WriteD(_sessionId);
-                WriteD(player.ClanId);
-                WriteD(0x00); // ??
+                WriteString(player.Name);
+                WriteInt(player.ObjId);
+                WriteString(_account);
+                WriteInt(_sessionId);
+                WriteInt(player.ClanId);
+                WriteInt(0x00); // ??
 
-                WriteD(player.Sex);
-                WriteD((int)player.BaseClass.ClassId.ClassRace);
+                WriteInt(player.Sex);
+                WriteInt((int)player.BaseClass.ClassId.ClassRace);
 
                 if (player.ActiveClass.ClassId.Id == player.BaseClass.ClassId.Id)
-                    WriteD((int)player.ActiveClass.ClassId.Id);
+                    WriteInt((int)player.ActiveClass.ClassId.Id);
                 else
-                    WriteD((int)player.BaseClass.ClassId.Id);
+                    WriteInt((int)player.BaseClass.ClassId.Id);
 
-                WriteD(0x01); // active ??
+                WriteInt(0x01); // active ??
 
-                WriteD(player.X);
-                WriteD(player.Y);
-                WriteD(player.Z);
+                WriteInt(player.X);
+                WriteInt(player.Y);
+                WriteInt(player.Z);
 
-                WriteF(player.CurHp);
-                WriteF(player.CurMp);
+                WriteDouble(player.CurHp);
+                WriteDouble(player.CurMp);
 
-                WriteD(player.Sp);
-                WriteQ(player.Exp);
+                WriteInt(player.Sp);
+                WriteLong(player.Exp);
 
-                WriteD(player.Level);
-                WriteD(player.Karma);
-                WriteD(player.PkKills);
-                WriteD(player.PvpKills);
+                WriteInt(player.Level);
+                WriteInt(player.Karma);
+                WriteInt(player.PkKills);
+                WriteInt(player.PvpKills);
 
-                WriteD(0);
-                WriteD(0);
-                WriteD(0);
-                WriteD(0);
-                WriteD(0);
-                WriteD(0);
-                WriteD(0);
-
-                for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
-                    WriteD(player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
+                WriteInt(0);
+                WriteInt(0);
+                WriteInt(0);
+                WriteInt(0);
+                WriteInt(0);
+                WriteInt(0);
+                WriteInt(0);
 
                 for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
-                    WriteD(player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
+                    WriteInt(player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
 
-                WriteD(player.HairStyle);
-                WriteD(player.HairColor);
+                for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
+                    WriteInt(player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
 
-                WriteD(player.Face);
-                WriteF(player.CurHp); // hp max TODO
-                WriteF(player.CurMp); // mp max TODO
-                WriteD(0); // days left before TODO
+                WriteInt(player.HairStyle);
+                WriteInt(player.HairColor);
 
-                WriteD((int)player.ActiveClass.ClassId.Id);
+                WriteInt(player.Face);
+                WriteDouble(player.CurHp); // hp max TODO
+                WriteDouble(player.CurMp); // mp max TODO
+                WriteInt(0); // days left before TODO
+
+                WriteInt((int)player.ActiveClass.ClassId.Id);
 
                 int selection = 0;
 
@@ -89,9 +89,9 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 if ((CharId == -1) && (player.LastAccountSelection == 1))
                     selection = 1;
 
-                WriteD(selection); // auto-select char
-                WriteC(player.GetEnchantValue());
-                WriteD(0x00); // augment
+                WriteInt(selection); // auto-select char
+                WriteByte(player.GetEnchantValue());
+                WriteInt(0x00); // augment
             }
         }
     }

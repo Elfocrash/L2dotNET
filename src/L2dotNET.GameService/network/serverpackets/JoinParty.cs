@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class JoinParty : GameServerNetworkPacket
+    class JoinParty : GameserverPacket
     {
         private readonly int _response;
 
@@ -11,8 +11,8 @@
 
         protected internal override void Write()
         {
-            WriteC(0x3a);
-            WriteD(_response);
+            WriteByte(0x3a);
+            WriteInt(_response);
         }
     }
 }

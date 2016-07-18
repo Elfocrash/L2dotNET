@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.GameService.Network.Serverpackets
 {
-    class SetupGauge : GameServerNetworkPacket
+    class SetupGauge : GameserverPacket
     {
         public enum SgColor
         {
@@ -23,11 +23,11 @@
 
         protected internal override void Write()
         {
-            WriteC(0x6d);
+            WriteByte(0x6d);
             //writeD(_id);
-            WriteD((int)_color);
-            WriteD(_time);
-            WriteD(_time); //c2
+            WriteInt((int)_color);
+            WriteInt(_time);
+            WriteInt(_time); //c2
         }
     }
 }
