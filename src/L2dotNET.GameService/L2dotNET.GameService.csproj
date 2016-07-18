@@ -644,6 +644,7 @@
     <None Include="Datapacks\Game\config\loginserver.json" />
     <None Include="Datapacks\Game\config\siege.json" />
     <None Include="Datapacks\Game\config\player.json" />
+    <None Include="Datapacks\Game\html.rar" />
     <None Include="Datapacks\Login\config\server.json" />
     <None Include="Datapacks\Game\config\gameplay.json" />
     <None Include="Datapacks\Game\config\server.json" />
@@ -780,7 +781,6 @@
   <ItemGroup>
     <Folder Include="Datapacks\Game\cmpl\ai\" />
     <Folder Include="Datapacks\Game\cmpl\quests\" />
-    <Folder Include="Datapacks\Game\html\scripts\teleports\RaceTrack\" />
     <Folder Include="Datapacks\Game\log\" />
     <Folder Include="Datapacks\Login\log\" />
     <Folder Include="Datapacks\Login\sq\" />
