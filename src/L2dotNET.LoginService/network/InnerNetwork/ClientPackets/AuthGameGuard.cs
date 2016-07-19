@@ -7,7 +7,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
     {
         private readonly LoginClient _client;
 
-        public AuthGameGuard(LoginClient client)
+        public AuthGameGuard(Packet p, LoginClient client)
         {
             _client = client;
             // do nothing
