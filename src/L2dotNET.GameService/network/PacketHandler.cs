@@ -1,4 +1,6 @@
-﻿using System.Runtime.Remoting.Contexts;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Runtime.Remoting.Contexts;
 using System.Threading;
 using log4net;
 using L2dotNET.GameService.Network.Clientpackets;
@@ -16,337 +18,119 @@ namespace L2dotNET.GameService.Network
     public class PacketHandler
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(PacketHandler));
+        private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
+
+        private static readonly ConcurrentDictionary<short, Type> ClientPacketsD0 =
+            new ConcurrentDictionary<short, Type>();
+
+        static PacketHandler()
+        {
+            ClientPackets.TryAdd(0x00, typeof(ProtocolVersion));
+            ClientPackets.TryAdd(0x08, typeof(AuthLogin));
+            ClientPackets.TryAdd(0x09, typeof(Logout));
+            ClientPackets.TryAdd(0x0b, typeof(CharacterCreate));
+            ClientPackets.TryAdd(0x0d, typeof(CharacterSelected));
+            ClientPackets.TryAdd(0x0e, typeof(NewCharacter));
+            ClientPackets.TryAdd(0x01, typeof(MoveBackwardToLocation));
+            ClientPackets.TryAdd(0x03, typeof(EnterWorld));
+            ClientPackets.TryAdd(0x0f, typeof(RequestItemList));
+            ClientPackets.TryAdd(0x0a, typeof(AttackRequest));
+            ClientPackets.TryAdd(0x11, typeof(RequestUnEquipItem));
+            ClientPackets.TryAdd(0x14, typeof(RequestUseItem));
+            ClientPackets.TryAdd(0x1A, typeof(RequestStartTrade));
+            ClientPackets.TryAdd(0x16, typeof(RequestAddTradeItem));
+            ClientPackets.TryAdd(0x17, typeof(RequestTradeDone));
+            ClientPackets.TryAdd(0x04, typeof(RequestAction));
+            ClientPackets.TryAdd(0x20, typeof(RequestLinkHtml));
+            ClientPackets.TryAdd(0x20, typeof(RequestLinkHtml));
+            ClientPackets.TryAdd(0x21, typeof(RequestBypassToServer));
+            ClientPackets.TryAdd(0x26, typeof(RequestWithdrawalPledge));
+            ClientPackets.TryAdd(0x8c, typeof(RequestGetItemFromPet));
+            ClientPackets.TryAdd(0x1b, typeof(RequestSocialAction));
+            ClientPackets.TryAdd(0x1e, typeof(RequestSellItem));
+            ClientPackets.TryAdd(0x2f, typeof(RequestMagicSkillUse));
+            ClientPackets.TryAdd(0x30, typeof(Appearing));
+            ClientPackets.TryAdd(0x3B, typeof(RequestWarehouseDeposit));
+            ClientPackets.TryAdd(0x32, typeof(RequestWarehouseWithdraw));
+            ClientPackets.TryAdd(0x33, typeof(RequestShortCutReg));
+            ClientPackets.TryAdd(0x35, typeof(RequestShortCutDel));
+            ClientPackets.TryAdd(0x1f, typeof(RequestBuyItem));
+            ClientPackets.TryAdd(0x29, typeof(RequestJoinParty));
+            ClientPackets.TryAdd(0x2a, typeof(RequestAnswerJoinParty));
+            ClientPackets.TryAdd(0x2b, typeof(RequestWithDrawalParty));
+            ClientPackets.TryAdd(0x2c, typeof(RequestOustPartyMember));
+            ClientPackets.TryAdd(0x36, typeof(CannotMoveAnymore));
+            ClientPackets.TryAdd(0x37, typeof(RequestTargetCanceld));
+            ClientPackets.TryAdd(0x38, typeof(Say2));
+            ClientPackets.TryAdd(0x42, typeof(RequestGetOnVehicle));
+            ClientPackets.TryAdd(0x43, typeof(RequestGetOffVehicle));
+            ClientPackets.TryAdd(0x44, typeof(AnswerTradeRequest));
+            ClientPackets.TryAdd(0x45, typeof(RequestActionUse));
+            ClientPackets.TryAdd(0x46, typeof(RequestRestart));
+            ClientPackets.TryAdd(0x48, typeof(ValidatePosition));
+            ClientPackets.TryAdd(0x4a, typeof(StartRotating));
+            ClientPackets.TryAdd(0x4b, typeof(FinishRotating));
+            ClientPackets.TryAdd(0x57, typeof(RequestShowBoard));
+            ClientPackets.TryAdd(0x58, typeof(RequestEnchantItem));
+            ClientPackets.TryAdd(0x59, typeof(RequestDestroyItem));
+            ClientPackets.TryAdd(0x64, typeof(RequestQuestAbort));
+            ClientPackets.TryAdd(0x66, typeof(RequestPledgeInfo));
+            ClientPackets.TryAdd(0xcd, typeof(RequestShowMiniMap));
+            ClientPackets.TryAdd(0x6D, typeof(RequestSendMsnChatLog));
+            ClientPackets.TryAdd(0xcf, typeof(RequestRecordInfo));
+            ClientPackets.TryAdd(0x73, typeof(RequestAcquireSkillInfo));
+            ClientPackets.TryAdd(0x74, typeof(SendBypassBuildCmd));
+            ClientPackets.TryAdd(0x75, typeof(RequestMoveToLocationInVehicle));
+            ClientPackets.TryAdd(0x7C, typeof(RequestAcquireSkill));
+            ClientPackets.TryAdd(0x7D, typeof(RequestRestartPoint));
+            ClientPackets.TryAdd(0x80, typeof(RequestPartyMatchList));
+            ClientPackets.TryAdd(0x85, typeof(RequestTutorialLinkHtml));
+            ClientPackets.TryAdd(0x86, typeof(RequestTutorialPassCmdToServer));
+            //ClientPackets.TryAdd(0x87, typeof(RequestTutorialQuestionMark));
+            ClientPackets.TryAdd(0x93, typeof(RequestChangePetName));
+            ClientPackets.TryAdd(0x94, typeof(RequestPetUseItem));
+            ClientPackets.TryAdd(0x95, typeof(RequestGiveItemToPet));
+            ClientPackets.TryAdd(0xB0, typeof(MultiSellChoose));
+            ClientPackets.TryAdd(0xB1, typeof(NetPingResponse));
+            ClientPackets.TryAdd(0xaa, typeof(BypassUserCmd));
+            ClientPackets.TryAdd(0xB5, typeof(RequestRecipeBookOpen));
+            ClientPackets.TryAdd(0xB6, typeof(RequestRecipeBookDestroy));
+            ClientPackets.TryAdd(0xB7, typeof(RequestRecipeItemMakeInfo));
+            ClientPackets.TryAdd(0xB8, typeof(RequestRecipeItemMakeSelf));
+            ClientPackets.TryAdd(0xC1, typeof(ObserverReturn));
+            ClientPackets.TryAdd(0xC7, typeof(RequestWearItem));
+            ClientPacketsD0.TryAdd(0x08, typeof(RequestManorList));
+            ClientPacketsD0.TryAdd(0x11, typeof(RequestExSetPledgeCrestLarge));
+            ClientPacketsD0.TryAdd(0x05, typeof(RequestAutoSoulShot));
+            ClientPacketsD0.TryAdd(0x1d, typeof(RequestPledgeMemberInfo));
+            ClientPacketsD0.TryAdd(0x22, typeof(RequestCursedWeaponList));
+            ClientPacketsD0.TryAdd(0x23, typeof(RequestCursedWeaponLocation));
+        }
 
         public static void HandlePacket(Packet packet, GameClient client)
         {
             PacketBase packetBase = null;
 
-            switch (packet.FirstOpcode)
+            if (packet.FirstOpcode != 0xD0)
             {
-                case 0x00:
-                    packetBase = new ProtocolVersion(packet, client);
-                    break;
-                case 0x08:
-                    packetBase = new AuthLogin(packet, client);
-                    break;
-                case 0x09:
-                    packetBase = new Logout(packet, client);
-                    break;
-                case 0x0b:
-                    packetBase = new CharacterCreate(packet, client);
-                    break;
-
-                case 0x0d:
-                    packetBase = new CharacterSelected(packet, client);
-                    break;
-                case 0x0e:
-                    packetBase = new NewCharacter(packet, client);
-                    break;
-                case 0x01:
-                    packetBase = new MoveBackwardToLocation(packet, client);
-                    break;
-                case 0x03:
-                    packetBase = new EnterWorld(packet, client);
-                    break;
-                case 0x0f:
-                    packetBase = new RequestItemList(packet, client);
-                    break;
-                case 0x0a:
-                    packetBase = new AttackRequest(packet, client);
-                    break;
-                case 0x11:
-                    packetBase = new RequestUnEquipItem(packet, client);
-                    break;
-                case 0x14:
-                    packetBase = new RequestUseItem(packet, client);
-                    break;
-                case 0x1A:
-                    packetBase = new RequestStartTrade(packet, client);
-                    break;
-                case 0x16:
-                    packetBase = new RequestAddTradeItem(packet, client);
-                    break;
-                case 0x17:
-                    packetBase = new RequestTradeDone(packet, client);
-                    break;
-                case 0x04:
-                    packetBase = new RequestAction(packet, client);
-                    break;
-
-                case 0x20:
-                    packetBase = new RequestLinkHtml(packet, client);
-                    break;
-                case 0x21:
-                    packetBase = new RequestBypassToServer(packet, client);
-                    break;
-                case 0x26:
-                    packetBase = new RequestWithdrawalPledge(packet, client);
-                    break;
-                case 0x8c:
-                    packetBase = new RequestGetItemFromPet(packet, client);
-                    break;
-
-                case 0x1b:
-                    packetBase = new RequestSocialAction(packet, client);
-                    break;
-                case 0x1e:
-                    packetBase = new RequestSellItem(packet, client);
-                    break;
-                case 0x2f:
-                    packetBase = new RequestMagicSkillUse(packet, client);
-                    break;
-                case 0x30:
-                    packetBase = new Appearing(packet, client);
-                    break;
-                case 0x3B:
-                    packetBase = new RequestWarehouseDeposit(packet, client);
-                    break;
-                case 0x32:
-                    packetBase = new RequestWarehouseWithdraw(packet, client);
-                    break;
-                case 0x33:
-                    packetBase = new RequestShortCutReg(packet, client);
-                    break;
-                case 0x35:
-                    packetBase = new RequestShortCutDel(packet, client);
-                    break;
-                case 0x1f:
-                    packetBase = new RequestBuyItem(packet, client);
-                    break;
-                case 0x29:
-                    packetBase = new RequestJoinParty(packet, client);
-                    break;
-                case 0x2a:
-                    packetBase = new RequestAnswerJoinParty(packet, client);
-                    break;
-                case 0x2b:
-                    packetBase = new RequestWithDrawalParty(packet, client);
-                    break;
-                case 0x2c:
-                    packetBase = new RequestOustPartyMember(packet, client);
-                    break;
-                case 0x36:
-                    packetBase = new CannotMoveAnymore(packet, client);
-                    break;
-                case 0x37:
-                    packetBase = new RequestTargetCanceld(packet, client);
-                    break;
-                case 0x38:
-                    packetBase = new Say2(packet, client);
-                    break;
-                case 0x42:
-                    packetBase = new RequestGetOnVehicle(packet, client);
-                    break;
-                case 0x43:
-                    packetBase = new RequestGetOffVehicle(packet, client);
-                    break;
-                case 0x44:
-                    packetBase = new AnswerTradeRequest(packet, client);
-                    break;
-                case 0x45:
-                    packetBase = new RequestActionUse(packet, client);
-                    break;
-                case 0x46:
-                    packetBase = new RequestRestart(packet, client);
-                    break;
-                case 0x48:
-                    packetBase = new ValidatePosition(packet, client);
-                    break;
-
-                case 0x4a:
-                    packetBase = new StartRotating(packet, client);
-                    break;
-                case 0x4b:
-                    packetBase = new FinishRotating(packet, client);
-                    break;
-
-                case 0x57:
-                    packetBase = new RequestShowBoard(packet, client);
-                    break;
-                case 0x58:
-                    packetBase = new RequestEnchantItem(packet, client);
-                    break;
-                case 0x59:
-                    packetBase = new RequestDestroyItem(packet, client);
-                    break;
-                case 0x64:
-                    packetBase = new RequestQuestAbort(packet, client);
-                    break;
-                case 0x66:
-                    packetBase = new RequestPledgeInfo(packet, client);
-                    break;
-                case 0xcd:
-                    packetBase = new RequestShowMiniMap(packet, client);
-                    break;
-                case 0x6D:
-                    packetBase = new RequestSendMsnChatLog(packet, client);
-                    break;
-                case 0xcf:
-                    packetBase = new RequestRecordInfo(packet, client);
-                    break;
-                case 0x73:
-                    packetBase = new RequestAcquireSkillInfo(packet, client);
-                    break;
-                case 0x74:
-                    packetBase = new SendBypassBuildCmd(packet, client);
-                    break;
-                case 0x75:
-                    packetBase = new RequestMoveToLocationInVehicle(packet, client);
-                    break;
-
-                case 0x7C:
-                    packetBase = new RequestAcquireSkill(packet, client);
-                    break;
-                case 0x7D:
-                    packetBase = new RequestRestartPoint(packet, client);
-                    break;
-                case 0x80:
-                    packetBase = new RequestPartyMatchList(packet, client);
-                    break;
-
-                case 0x85:
-                    packetBase = new RequestTutorialLinkHtml(packet, client);
-                    break;
-                case 0x86:
-                    packetBase = new RequestTutorialPassCmdToServer(packet, client);
-                    break;
-                //  case 0x87:
-                //      msg = new RequestTutorialQuestionMark();
-                //     break;
-
-                case 0x93:
-                    packetBase = new RequestChangePetName(packet, client);
-                    break;
-                case 0x94:
-                    packetBase = new RequestPetUseItem(packet, client);
-                    break;
-                case 0x95:
-                    packetBase = new RequestGiveItemToPet(packet, client);
-                    break;
-
-                case 0xB0:
-                    packetBase = new MultiSellChoose(packet, client);
-                    break;
-                case 0xB1:
-                    packetBase = new NetPingResponse(packet, client);
-                    break;
-                case 0xaa:
-                    packetBase = new BypassUserCmd(packet, client);
-                    break;
-                case 0xB5:
-                    packetBase = new RequestRecipeBookOpen(packet, client);
-                    break;
-                case 0xB6:
-                    packetBase = new RequestRecipeBookDestroy(packet, client);
-                    break;
-                case 0xB7:
-                    packetBase = new RequestRecipeItemMakeInfo(packet, client);
-                    break;
-                case 0xB8:
-                    packetBase = new RequestRecipeItemMakeSelf(packet, client);
-                    break;
-                case 0xC1:
-                    packetBase = new ObserverReturn(packet, client);
-                    break;
-                case 0xC7:
-                    packetBase = new RequestWearItem(packet, client);
-                    break;
-                case 0xD0:
-                    switch (packet.SecondOpcode)
-                    {
-                        case 0x08:
-                            packetBase = new RequestManorList(packet, client);
-                            break;
-                        case 0x11:
-                            packetBase = new RequestExSetPledgeCrestLarge(packet, client);
-                            break;
-
-                        case 0x05:
-                            packetBase = new RequestAutoSoulShot(packet, client);
-                            break;
-
-                        case 0x1d:
-                            packetBase = new RequestPledgeMemberInfo(packet, client);
-                            break;
-                        //case 0x24:
-                        //    packetBase = new RequestSaveInventoryOrder(packet, client);
-                        //    break;
-
-                        case 0x22:
-                            packetBase = new RequestCursedWeaponList(packet, client);
-                            break;
-
-                        //case 0x4B:
-                        //    packetBase = new RequestDispel(packet, client);
-                        //    break;
-                        //case 0x4C:
-                        //    packetBase = new RequestExTryToPutEnchantTargetItem(packet, client);
-                        //    break;
-                        //case 0x4D:
-                        //    packetBase = new RequestExTryToPutEnchantSupportItem(packet, client);
-                        //    break;
-                        //case 0x4E:
-                        //    packetBase = new RequestExCancelEnchantItem(packet, client);
-                        //    break;
-                        //case 0x58:
-                        //    packetBase = new RequestDominionInfo(packet, client);
-                        //    break;
-                        //case 0x76:
-                        //    packetBase = new RequestBuySellUiClose(packet, client);
-                        //    break;
-
-                        //case 0x78:
-                        //    packetBase = new RequestPartyLootModification(packet, client);
-                        //    break;
-                        //case 0x79:
-                        //    packetBase = new AnswerPartyLootModification(packet, client);
-                        //    break;
-                    }
-
-                    break;
+                if (ClientPackets.ContainsKey(packet.FirstOpcode))
+                    packetBase =
+                        ((PacketBase) Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client));
             }
-
-            if (packetBase == null)
+            else
             {
-                //Log.Info($"{cninfo}");
-                //log.Info($"{cninfo}, {cnt}");
-                return;
+                if (ClientPacketsD0.ContainsKey((short) packet.SecondOpcode))
+                    packetBase =
+                        ((PacketBase)
+                            Activator.CreateInstance(ClientPacketsD0[(short) packet.SecondOpcode], packet, client));
             }
+            //case 0xD0:
 
             if (client.IsTerminated)
                 return;
 
-            new Thread(packetBase.RunImpl).Start();
-        }
-
-        private static void out_debug(byte level, byte[] buff)
-        {
-            string s = "";
-            byte d = 0;
-
-            if (level > 0)
-                s = "Header: ";
-            for (byte r = 0; r < level; r++)
-                s += buff[r].ToString("x2");
-
-            if (level > 0)
-                s += "\n";
-
-            for (int a = level; a < buff.Length; a++)
-            {
-                byte value = buff[a];
-                string t = value < 10 ? "0" + value : value.ToString("x2");
-                d++;
-                s += t + " ";
-
-                if (d != 4)
-                    continue;
-
-                d = 0;
-                s += "\n";
-            }
-
-            Log.Info(s);
+            if (packetBase != null)
+                new Thread(packetBase.RunImpl).Start();
         }
     }
 }

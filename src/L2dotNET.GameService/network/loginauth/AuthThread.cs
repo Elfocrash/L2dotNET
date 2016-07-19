@@ -59,7 +59,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
                              {
                                  Interval = 2000
                              };
-                    Ltimer.Elapsed += new System.Timers.ElapsedEventHandler(ltimer_Elapsed);
+                    Ltimer.Elapsed += ltimer_Elapsed;
                 }
 
                 if (!Ltimer.Enabled)
@@ -88,7 +88,7 @@ namespace L2dotNET.GameService.Network.LoginAuth
             try
             {
                 _buffer = new byte[2];
-                Nstream.BeginRead(_buffer, 0, 2, new AsyncCallback(OnReceiveCallbackStatic), null);
+                Nstream.BeginRead(_buffer, 0, 2, OnReceiveCallbackStatic, null);
             }
             catch (Exception e)
             {

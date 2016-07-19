@@ -305,6 +305,7 @@
     <Compile Include="Model\Zones\ZoneTemplate.cs" />
     <Compile Include="Model\Zones\L2Zone.cs" />
     <Compile Include="Network\Clientpackets\CharacterDelete.cs" />
+    <Compile Include="Network\Clientpackets\RequestCursedWeaponLocation.cs" />
     <Compile Include="Network\Clientpackets\RequestSocialAction.cs" />
     <Compile Include="Network\Serverpackets\ChangeMoveType.cs" />
     <Compile Include="Network\Serverpackets\CharDeleteFail.cs" />
@@ -312,7 +313,6 @@
     <Compile Include="Network\Serverpackets\ClientSetTime.cs" />
     <Compile Include="Network\Serverpackets\EnchantResultVal.cs" />
     <Compile Include="Network\Serverpackets\ExChangeNicknameNColor.cs" />
-    <Compile Include="Network\LoginAuth\ReceiveAuthPacket.cs" />
     <Compile Include="Network\LoginAuth\Recv\LoginServKickAccount.cs" />
     <Compile Include="Network\LoginAuth\Recv\LoginServAcceptPlayer.cs" />
     <Compile Include="Network\LoginAuth\Recv\LoginServLoginOk.cs" />
