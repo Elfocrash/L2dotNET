@@ -111,6 +111,7 @@
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginOk.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginFail.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginServPing.cs" />
+    <Compile Include="Network\PacketHandler.cs" />
     <Compile Include="PreReqValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Managers\NetworkBlock.cs" />

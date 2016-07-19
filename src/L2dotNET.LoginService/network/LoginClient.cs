@@ -118,40 +118,12 @@ namespace L2dotNET.LoginService.Network
                 Log.Error($"Blowfish failed on {Address}. Please restart auth server.");
             else
             {
-                Handle(new Packet(1, buff));
+                PacketHandler.Handle(new Packet(1, buff), this);
                 new Thread(Read).Start();
             }
         }
 
-        /// <summary>
-        /// Handles incoming packet.
-        /// </summary>
-        /// <param name="packet">Incoming packet.</param>
-        protected void Handle(Packet packet)
-        {
-            switch (packet.FirstOpcode)
-            {
-                case 0x00:
-                    new RequestAuthLogin(packet, this).RunImpl();
-                    break;
-                case 0x02:
-                    new RequestServerLogin(packet, this).RunImpl();
-                    break;
-                case 0x05:
-                    new RequestServerList(packet, this).RunImpl();
-                    break;
-                case 0x07:
-                    new AuthGameGuard(this).RunImpl();
-                    break;
-
-                default:
-                    Log.Warn($"LoginClient: received unk request {packet.FirstOpcode}");
-                    break;
-            }
-
-            //if (msg != null)
-            //    new Thread(new ThreadStart(msg.Run)).Start();
-        }
+       
 
         public int Login1,
                    Login2;
