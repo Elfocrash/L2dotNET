@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Threading;
 using log4net;
 using L2dotNET.LoginService.Network.InnerNetwork.ClientPackets;
 using L2dotNET.Network;
@@ -9,28 +11,21 @@ namespace L2dotNET.LoginService.Network
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(PacketHandler));
 
+        private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
+
+        static PacketHandler()
+        {
+            ClientPackets.TryAdd(0x00, typeof(RequestAuthLogin));
+            ClientPackets.TryAdd(0x02, typeof(RequestServerLogin));
+            ClientPackets.TryAdd(0x05, typeof(RequestServerList));
+            ClientPackets.TryAdd(0x07, typeof(AuthGameGuard));
+        }
+
         public static void Handle(Packet packet, LoginClient client)
         {
             PacketBase incPacket = null;
-            switch (packet.FirstOpcode)
-            {
-                case 0x00:
-                    incPacket = new RequestAuthLogin(packet, client);
-                    break;
-                case 0x02:
-                    incPacket = new RequestServerLogin(packet, client);
-                    break;
-                case 0x05:
-                    incPacket = new RequestServerList(packet, client);
-                    break;
-                case 0x07:
-                    incPacket = new AuthGameGuard(packet, client);
-                    break;
-
-                default:
-                    Log.Warn($"LoginClient: received unk request {packet.FirstOpcode}");
-                    break;
-            }
+            if (ClientPackets.ContainsKey(packet.FirstOpcode))
+                incPacket = ((PacketBase) Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client));
 
             if (incPacket != null)
                 new Thread(incPacket.RunImpl).Start();
