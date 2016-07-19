@@ -4,7 +4,7 @@ using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
-    class RequestLoginServPing
+    class RequestLoginServPing : PacketBase
     {
         private string _message;
         private readonly ServerThread _thread;
@@ -15,7 +15,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _message = p.ReadString();
         }
 
-        public void RunImpl()
+        public override void RunImpl()
         {
             _thread.Send(LoginServPing.ToPacket());
         }

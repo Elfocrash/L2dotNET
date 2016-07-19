@@ -3,7 +3,7 @@ using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
-    class RequestPlayerInGame
+    class RequestPlayerInGame : PacketBase
     {
         private readonly string _account;
         private readonly byte _status;
@@ -16,7 +16,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _status = p.ReadByte();
         }
 
-        public void RunImpl()
+        public override void RunImpl()
         {
             _thread.AccountInGame(_account, _status);
         }

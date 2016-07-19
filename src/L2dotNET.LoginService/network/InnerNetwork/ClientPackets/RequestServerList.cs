@@ -3,7 +3,7 @@ using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
-    class RequestServerList
+    class RequestServerList : PacketBase
     {
         private readonly int _login1;
         private readonly int _login2;
@@ -16,7 +16,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _login2 = p.ReadInt();
         }
 
-        public void RunImpl()
+        public override void RunImpl()
         {
             if ((_client.Login1 != _login1) && (_client.Login2 != _login2))
             {

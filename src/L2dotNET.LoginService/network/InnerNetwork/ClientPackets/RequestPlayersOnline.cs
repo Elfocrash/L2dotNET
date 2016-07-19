@@ -3,7 +3,7 @@ using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
-    class RequestPlayersOnline
+    class RequestPlayersOnline : PacketBase
     {
         private readonly short _cnt;
         private readonly ServerThread _thread;
@@ -14,7 +14,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _cnt = p.ReadShort();
         }
 
-        public void RunImpl()
+        public override void RunImpl()
         {
             _thread.Curp = _cnt;
         }

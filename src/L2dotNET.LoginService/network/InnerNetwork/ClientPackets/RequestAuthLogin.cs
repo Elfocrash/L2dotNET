@@ -12,7 +12,7 @@ using Org.BouncyCastle.Crypto.Engines;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
-    class RequestAuthLogin
+    class RequestAuthLogin : PacketBase
     {
         [Inject]
         public IAccountService AccountService => LoginServer.Kernel.Get<IAccountService>();
@@ -26,7 +26,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             Raw = p.ReadByteArrayAlt(128);
         }
 
-        public void RunImpl()
+        public override void RunImpl()
         {
             CipherParameters key = _client.RsaPair._privateKey;
             RSAEngine rsa = new RSAEngine();

@@ -5,7 +5,7 @@ using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
-    class RequestServerLogin
+    class RequestServerLogin : PacketBase
     {
         private readonly LoginClient _client;
         private readonly int _login1;
@@ -20,7 +20,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _serverId = p.ReadByte();
         }
 
-        public void RunImpl()
+        public override void RunImpl()
         {
             if ((_client.Login1 != _login1) && (_client.Login2 != _login2))
             {

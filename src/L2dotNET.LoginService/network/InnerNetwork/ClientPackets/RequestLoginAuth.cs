@@ -7,7 +7,7 @@ using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
-    class RequestLoginAuth
+    class RequestLoginAuth : PacketBase
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(RequestLoginAuth));
 
@@ -34,7 +34,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _test = p.ReadByte();
         }
 
-        public void RunImpl()
+        public override void RunImpl()
         {
             L2Server server = null;
             foreach (L2Server srv in ServerThreadPool.Instance.Servers.Where(srv => srv.Code == _code))
