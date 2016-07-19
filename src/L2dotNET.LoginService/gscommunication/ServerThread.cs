@@ -75,40 +75,8 @@ namespace L2dotNET.LoginService.GSCommunication
 
             byte[] buff = new byte[_buffer.Length];
             _buffer.CopyTo(buff, 0);
-            Handle(new Packet(1, buff));
+            PacketHandler.Handle(new Packet(1, buff),this);
             new Thread(Read).Start();
-        }
-
-        /// <summary>
-        /// Handles incoming packet.
-        /// </summary>
-        /// <param name="packet">Incoming packet.</param>
-        protected void Handle(Packet packet)
-        {
-            //string str = "header: " + packet.FirstOpcode + "\n";
-
-            _log.Info($"{packet}");
-
-            switch (packet.FirstOpcode)
-            {
-                case 0xA0:
-                    new RequestLoginServPing(packet, this).RunImpl();
-                    break;
-                case 0xA1:
-                    new RequestLoginAuth(packet, this).RunImpl();
-                    break;
-                case 0xA2:
-                    new RequestPlayerInGame(packet, this).RunImpl();
-                    break;
-                case 0xA3:
-                    new RequestPlayersOnline(packet, this).RunImpl();
-                    break;
-            }
-
-            //if (msg == null)
-            //    return;
-
-            //new Thread(new ThreadStart(msg.run)).Start();
         }
 
         private void Termination()

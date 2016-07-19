@@ -113,18 +113,19 @@ namespace L2dotNET.GameService.Network
 
             if (packet.FirstOpcode != 0xD0)
             {
+                Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
                 if (ClientPackets.ContainsKey(packet.FirstOpcode))
                     packetBase =
                         ((PacketBase) Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client));
             }
             else
             {
+                Log.Info($"Received packet with Opcode 0xD0 and seccond Opcode:{packet.SecondOpcode.ToString("X2")}");
                 if (ClientPacketsD0.ContainsKey((short) packet.SecondOpcode))
                     packetBase =
                         ((PacketBase)
                             Activator.CreateInstance(ClientPacketsD0[(short) packet.SecondOpcode], packet, client));
             }
-            //case 0xD0:
 
             if (client.IsTerminated)
                 return;

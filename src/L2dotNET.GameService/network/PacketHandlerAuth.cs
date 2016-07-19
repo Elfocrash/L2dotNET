@@ -15,6 +15,7 @@ namespace L2dotNET.GameService.Network
         private static readonly ILog Log = LogManager.GetLogger(typeof(PacketHandlerAuth));
 
         private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
+        private static readonly ConcurrentDictionary<byte, Type> ClientPacketsSerc = new ConcurrentDictionary<byte, Type>();
 
         static PacketHandlerAuth()
         {
@@ -28,12 +29,13 @@ namespace L2dotNET.GameService.Network
         public static void HandlePacket(Packet packet, AuthThread login)
         {
             PacketBase packetBase = null;
-
+            Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
             if (ClientPackets.ContainsKey(packet.FirstOpcode))
                 packetBase = ((PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, login));
 
             if (packetBase != null)
                 new Thread(packetBase.RunImpl).Start();
         }
+
     }
 }
