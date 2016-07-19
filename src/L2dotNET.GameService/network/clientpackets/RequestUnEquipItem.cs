@@ -6,7 +6,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class RequestUnEquipItem : PacketBase
     {
         private readonly GameClient _client;
-        private int _slotBitType;
+        private readonly int _slotBitType;
 
         public RequestUnEquipItem(Packet packet, GameClient client)
         {

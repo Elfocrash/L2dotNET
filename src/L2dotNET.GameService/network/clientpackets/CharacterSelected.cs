@@ -15,10 +15,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         private readonly GameClient _client;
         private readonly int _charSlot;
-        private int _unk1; // new in C4
-        private int _unk2; // new in C4
-        private int _unk3; // new in C4
-        private int _unk4; // new in C4
+        private readonly int _unk1; // new in C4
+        private readonly int _unk2; // new in C4
+        private readonly int _unk3; // new in C4
+        private readonly int _unk4; // new in C4
 
         public CharacterSelected(Packet packet, GameClient client)
         {

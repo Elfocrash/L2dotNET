@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
         {
             packet.MoveOffset(2);
             _client = client;
-            _answer = (byte)packet.ReadByte();
+            _answer = packet.ReadByte();
         }
 
         public override void RunImpl()

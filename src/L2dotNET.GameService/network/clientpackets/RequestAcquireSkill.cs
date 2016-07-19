@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
         private readonly GameClient _client;
         private readonly int _id;
         private readonly int _level;
-        private int _skillType;
+        private readonly int _skillType;
 
         public RequestAcquireSkill(Packet packet, GameClient client)
         {

@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
     class RequestAnswerJoinParty : PacketBase
     {
         private readonly GameClient _client;
-        private int _response;
+        private readonly int _response;
 
         public RequestAnswerJoinParty(Packet packet, GameClient client)
         {
@@ -28,8 +28,8 @@ namespace L2dotNET.GameService.Network.Clientpackets.PartyAPI
 
             if (player.Requester.IsInOlympiad)
             {
-                _response = 0;
                 player.Requester.SendSystemMessage(SystemMessage.SystemMessageId.UserCurrentlyParticipatingInOlympiadCannotSendPartyAndFriendInvitations);
+                return;
             }
 
             player.Requester.SendPacket(new JoinParty(_response));

@@ -1334,7 +1334,7 @@ namespace L2dotNET.GameService.Model.Player
             //        else
             //            total += it.Template.Weight;
 
-            CurrentWeight = total >= int.MaxValue ? int.MaxValue : (int)total;
+            CurrentWeight = total >= int.MaxValue ? int.MaxValue : total;
 
             if (oldweight == total)
                 return;

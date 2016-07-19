@@ -5,9 +5,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class NetPingResponse : PacketBase
     {
         private readonly GameClient _client;
-        private int _request;
-        private int _msec;
-        private int _unk2;
+        private readonly int _request;
+        private readonly int _msec;
+        private readonly int _unk2;
 
         public NetPingResponse(Packet packet, GameClient client)
         {

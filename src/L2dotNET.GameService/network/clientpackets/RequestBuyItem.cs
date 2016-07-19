@@ -71,12 +71,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             for (int i = 0; i < _count; i++)
             {
-                int itemId = (int)_items[i * 2];
+                int itemId = _items[i * 2];
 
                 bool notfound = true;
                 foreach (NDShopItem item in list.Items.Where(item => item.Item.ItemId == itemId))
                 {
-                    adena += item.Item.ReferencePrice * (int)_items[(i * 2) + 1];
+                    adena += item.Item.ReferencePrice * _items[(i * 2) + 1];
 
                     if (!item.Item.Stackable)
                         slots++;
@@ -86,7 +86,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     //        slots++;
                     //}
 
-                    weight += (int)(item.Item.Weight * _items[(i * 2) + 1]);
+                    weight += item.Item.Weight * _items[(i * 2) + 1];
 
                     notfound = false;
                     break;
@@ -110,8 +110,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             for (int i = 0; i < _count; i++)
             {
-                int itemId = (int)_items[i * 2];
-                int count = (int)_items[(i * 2) + 1];
+                int itemId = _items[i * 2];
+                int count = _items[(i * 2) + 1];
 
                 player.AddItem(itemId, count);
             }

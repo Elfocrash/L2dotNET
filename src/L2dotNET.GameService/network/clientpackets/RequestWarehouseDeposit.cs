@@ -49,7 +49,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             int adenatransfer = 0;
             for (int i = 0; i < _count; i++)
             {
-                int objectId = (int)_items[i * 2];
+                int objectId = _items[i * 2];
                 int count = _items[(i * 2) + 1];
 
                 L2Item item = player.GetItemByObjId(objectId);
@@ -64,7 +64,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 if (item.Template.Stackable)
                     slots += 1;
                 else
-                    slots += (int)count;
+                    slots += count;
 
                 if (item.Template.ItemId == 57)
                     adenatransfer += count;
@@ -96,7 +96,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             List<int[]> transfer = new List<int[]>();
             for (int i = 0; i < _count; i++)
             {
-                int objectId = (int)_items[i * 2];
+                int objectId = _items[i * 2];
                 int count = _items[(i * 2) + 1];
 
                 transfer.Add(new[] { objectId, count });

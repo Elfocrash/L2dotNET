@@ -4,10 +4,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
 {
     class RequestSendMsnChatLog : PacketBase
     {
-        private string _text,
-                       _email;
-        private int _type;
         private readonly GameClient _client;
+        private readonly string _text;
+        private readonly string _email;
+        private readonly int _type;
 
         public RequestSendMsnChatLog(Packet packet, GameClient client)
         {
@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
         public override void RunImpl()
         {
-            //            L2Player player = getClient()._player;
+            //L2Player player = getClient()._player;
 
             //todo log
         }

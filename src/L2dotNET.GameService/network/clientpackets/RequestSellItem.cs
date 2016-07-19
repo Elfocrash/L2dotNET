@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
     class RequestSellItem : PacketBase
     {
         private readonly GameClient _client;
-        private int _listId;
+        private readonly int _listId;
         private readonly int _count;
         private readonly int[] _items;
 
@@ -44,10 +44,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
             int weight = 0;
             for (int i = 0; i < _count; i++)
             {
-                int objectId = (int)_items[(i * 3) + 0];
+                int objectId = _items[(i * 3) + 0];
                 int count = _items[(i * 3) + 2];
 
-                if ((count < 0) || (count > int.MaxValue))
+                //if ((count < 0) || (count > int.MaxValue))
+                if (count < 0)
                 {
                     player.SendSystemMessage(SystemMessage.SystemMessageId.SellAttemptFailed);
                     player.SendActionFailed();
@@ -76,13 +77,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
             if ((currentAdena + totalCost) >= int.MaxValue)
                 added = int.MaxValue - currentAdena;
             else
-                added = (int)totalCost;
+                added = totalCost;
 
             List<int[]> transfer = new List<int[]>();
             //InventoryUpdate iu = new InventoryUpdate();
             for (int i = 0; i < _count; i++)
             {
-                int objectId = (int)_items[(i * 3) + 0];
+                int objectId = _items[(i * 3) + 0];
                 int count = _items[(i * 3) + 2];
 
                 transfer.Add(new[] { objectId, count });
