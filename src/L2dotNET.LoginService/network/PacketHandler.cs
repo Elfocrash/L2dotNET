@@ -24,7 +24,7 @@ namespace L2dotNET.LoginService.Network
                     incPacket = new RequestServerList(packet, client);
                     break;
                 case 0x07:
-                    incPacket = new AuthGameGuard(client);
+                    incPacket = new AuthGameGuard(packet, client);
                     break;
 
                 default:
