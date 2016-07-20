@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using L2dotNET.Network;
@@ -92,6 +93,15 @@ namespace L2dotNET.Utility
         public static bool EndsWithMatchCase(this string str, string stringToCompare)
         {
             return str.EndsWith(stringToCompare, StringComparison.InvariantCulture);
+        }
+
+        public static SortedList<TKey, TValue> ToSortedList<TSource, TKey, TValue>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TValue> valueSelector)
+        {
+            SortedList<TKey, TValue> ret = new SortedList<TKey, TValue>();
+            foreach (TSource item in source)
+                ret.Add(keySelector(item), valueSelector(item));
+
+            return ret;
         }
     }
 }

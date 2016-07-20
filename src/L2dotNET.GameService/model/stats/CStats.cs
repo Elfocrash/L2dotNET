@@ -155,7 +155,6 @@ namespace L2dotNET.GameService.Model.Stats
             }
 
             StatBuff.Add(effect.Type, newvalue);
-
             return new[] { buffvalue, newvalue };
         }
 

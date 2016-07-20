@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Player;
+﻿using System.Linq;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills;
 using L2dotNET.Network;
 
@@ -30,18 +31,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            AbnormalEffect avestop = null;
-            foreach (AbnormalEffect ave in player.Effects)
-            {
-                if ((ave.Id != _skillId) && (ave.Lvl != _skillLv))
-                    continue;
-
-                if ((ave.Skill.Debuff == 1) && (ave.Skill.IsMagic > 1))
-                    break;
-
-                avestop = ave;
-                break;
-            }
+            AbnormalEffect avestop = player.Effects.Where(ave => (ave.Id == _skillId) || (ave.Lvl == _skillLv))
+                                                   .TakeWhile(ave => (ave.Skill.Debuff != 1) || (ave.Skill.IsMagic <= 1))
+                                                   .FirstOrDefault();
 
             if (avestop == null)
             {

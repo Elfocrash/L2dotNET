@@ -24,10 +24,10 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Item item = RqItemManager.GetInstance().GetItem(_objectId);
             if (item == null)
                 player.SendMessage("That item was deleted or modifyed.");
-            else
-            {
-                // player.SendPacket(ExRpItemLink.ToPacket(item));
-            }
+            //else
+            //{
+            //    player.SendPacket(ExRpItemLink.ToPacket(item));
+            //}
         }
     }
 }

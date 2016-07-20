@@ -123,7 +123,7 @@ namespace L2dotNET.LoginService.Network
             }
         }
 
-       
+
 
         public int Login1,
                    Login2;

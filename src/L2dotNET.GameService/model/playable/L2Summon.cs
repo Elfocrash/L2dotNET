@@ -148,6 +148,7 @@ namespace L2dotNET.GameService.Model.Playable
 
         public bool IsTeleporting = false;
         public double ConsumeExp = 30.0;
+
         // 0 - teleport, 1 - default, 2 - summoned
         public byte AppearMethod()
         {

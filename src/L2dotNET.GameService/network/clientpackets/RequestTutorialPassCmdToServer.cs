@@ -40,37 +40,37 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
             else
             {
-                if (_alias.StartsWithIgnoreCase("admin?"))
+                if (!_alias.StartsWithIgnoreCase("admin?"))
+                    return;
+
+                if (player.ViewingAdminPage == 0)
                 {
-                    if (player.ViewingAdminPage == 0)
+                    player.SendActionFailed();
+                    return;
+                }
+
+                if (_alias.Contains("tp"))
+                {
+                    string[] coord = _alias.Split(' ');
+                    int x,
+                        y,
+                        z;
+                    if (!int.TryParse(coord[1], out x) || !int.TryParse(coord[2], out y) || !int.TryParse(coord[3], out z))
                     {
-                        player.SendActionFailed();
+                        player.SendMessage("Only numbers allowed in box.");
                         return;
                     }
 
-                    if (_alias.Contains("tp"))
-                    {
-                        string[] coord = _alias.Split(' ');
-                        int x,
-                            y,
-                            z;
-                        if (!int.TryParse(coord[1], out x) || !int.TryParse(coord[2], out y) || !int.TryParse(coord[3], out z))
-                        {
-                            player.SendMessage("Only numbers allowed in box.");
-                            return;
-                        }
+                    AdminCommandHandler.Instance.ProcessBypassTp(player, x, y, z);
+                }
+                else
+                {
+                    string x1 = _alias.Split('?')[1];
+                    string[] x2 = x1.Split('&');
+                    int ask = int.Parse(x2[0].Substring(4));
+                    int reply = int.Parse(x2[1].Substring(6));
 
-                        AdminCommandHandler.Instance.ProcessBypassTp(player, x, y, z);
-                    }
-                    else
-                    {
-                        string x1 = _alias.Split('?')[1];
-                        string[] x2 = x1.Split('&');
-                        int ask = int.Parse(x2[0].Substring(4));
-                        int reply = int.Parse(x2[1].Substring(6));
-
-                        AdminCommandHandler.Instance.ProcessBypass(player, ask, reply);
-                    }
+                    AdminCommandHandler.Instance.ProcessBypass(player, ask, reply);
                 }
             }
         }

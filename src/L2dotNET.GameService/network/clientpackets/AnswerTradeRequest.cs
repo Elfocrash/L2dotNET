@@ -6,7 +6,7 @@ using L2dotNET.Network;
 namespace L2dotNET.GameService.Network.Clientpackets
 {
     class AnswerTradeRequest : PacketBase
-    {   
+    {
         private readonly GameClient _client;
         private int _response;
 

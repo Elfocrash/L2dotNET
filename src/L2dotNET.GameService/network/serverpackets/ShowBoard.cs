@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.Network;
 using L2dotNET.Utility;
@@ -70,10 +71,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             if (!_id.EqualsIgnoreCase("1002"))
                 st += _htmlCode;
             else
-            {
-                foreach (string s in _arg)
-                    st += s + " \u0008";
-            }
+                st += string.Join(string.Empty, _arg.Select(s => $"{s} \u0008").ToArray());
 
             WriteString(st);
         }

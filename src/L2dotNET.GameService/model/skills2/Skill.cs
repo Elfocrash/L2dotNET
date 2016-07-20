@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Model.Skills2
         public SkillScope AffectScope;
         public SkillTarget TargetType;
 
-        public List<SkillCond> Conditions;
+        public List<SkillCond> Conditions = new List<SkillCond>();
 
         public bool BonusOverhit = false;
         public bool BonusSsBoost = false;
@@ -96,8 +96,6 @@ namespace L2dotNET.GameService.Model.Skills2
             {
                 SkillCondType type = (SkillCondType)Enum.Parse(typeof(SkillCondType), str.Split(' ')[0]);
                 SkillCond cond = EffectRegistrator.GetInstance().BuildCond(type, str);
-                if (Conditions == null)
-                    Conditions = new List<SkillCond>();
 
                 Conditions.Add(cond);
             }
@@ -120,43 +118,38 @@ namespace L2dotNET.GameService.Model.Skills2
             switch (AffectScope)
             {
                 case SkillScope.Single:
-                {
-                    switch (TargetType)
                     {
-                        case SkillTarget.Self:
-                            targets.Add(actor.ObjId, actor);
-                            break;
-
-                        case SkillTarget.Friend:
-                        case SkillTarget.Enemy:
-                        case SkillTarget.Any:
-                        case SkillTarget.Target:
-                            if (actor.CurrentTarget != null)
-                                targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
-                            break;
-                        case SkillTarget.Master:
-                            if (actor is L2Summon)
-                                targets.Add(((L2Summon)actor).Owner.ObjId, ((L2Summon)actor).Owner);
-                            break;
-                        case SkillTarget.Unlockable:
+                        switch (TargetType)
                         {
-                            if (actor.CurrentTarget is L2Door)
-                                targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
+                            case SkillTarget.Self:
+                                targets.Add(actor.ObjId, actor);
+                                break;
+
+                            case SkillTarget.Friend:
+                            case SkillTarget.Enemy:
+                            case SkillTarget.Any:
+                            case SkillTarget.Target:
+                                if (actor.CurrentTarget != null)
+                                    targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
+                                break;
+                            case SkillTarget.Master:
+                                if (actor is L2Summon)
+                                    targets.Add(((L2Summon)actor).Owner.ObjId, ((L2Summon)actor).Owner);
+                                break;
+                            case SkillTarget.Unlockable:
+                                {
+                                    if (actor.CurrentTarget is L2Door)
+                                        targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
+                                }
+                                break;
                         }
-                            break;
                     }
-                }
 
                     break;
                 case SkillScope.Party:
                     L2Character[] members = actor.GetPartyCharacters();
-                    foreach (L2Character member in members)
-                    {
-                        double dis = Calcs.CalculateDistance(actor, member, true);
-                        if (dis < CastRange)
-                            targets.Add(member.ObjId, member);
-                    }
-
+                    targets = members.Where(member => Calcs.CalculateDistance(actor, member, true) < CastRange)
+                                     .ToSortedList(member => member.ObjId, member => (L2Object)member);
                     break;
             }
 
@@ -192,10 +185,10 @@ namespace L2dotNET.GameService.Model.Skills2
                                 target = ((L2Summon)actor).Owner;
                             break;
                         case SkillTarget.Unlockable:
-                        {
-                            if (actor.CurrentTarget is L2Door)
-                                target = actor.CurrentTarget;
-                        }
+                            {
+                                if (actor.CurrentTarget is L2Door)
+                                    target = actor.CurrentTarget;
+                            }
                             break;
                     }
 
@@ -216,7 +209,7 @@ namespace L2dotNET.GameService.Model.Skills2
 
         public bool ConditionOk(L2Player target)
         {
-            if (Conditions == null)
+            if (Conditions.Count == 0)
                 return true;
 
             sbyte retcode = -2;
