@@ -130,8 +130,7 @@ namespace L2dotNET.GameService.Network
             if (client.IsTerminated)
                 return;
 
-            if (packetBase != null)
-                new Thread(packetBase.RunImpl).Start();
+            packetBase?.RunImpl();
         }
     }
 }

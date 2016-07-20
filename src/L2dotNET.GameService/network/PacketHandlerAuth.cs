@@ -33,8 +33,7 @@ namespace L2dotNET.GameService.Network
             if (ClientPackets.ContainsKey(packet.FirstOpcode))
                 packetBase = ((PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, login));
 
-            if (packetBase != null)
-                new Thread(packetBase.RunImpl).Start();
+            packetBase?.RunImpl();
         }
 
     }

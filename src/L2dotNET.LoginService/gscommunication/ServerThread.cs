@@ -76,7 +76,7 @@ namespace L2dotNET.LoginService.GSCommunication
             byte[] buff = new byte[_buffer.Length];
             _buffer.CopyTo(buff, 0);
             PacketHandler.Handle(new Packet(1, buff),this);
-            new Thread(Read).Start();
+            Read();
         }
 
         private void Termination()

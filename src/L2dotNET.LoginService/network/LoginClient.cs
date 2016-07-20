@@ -119,7 +119,7 @@ namespace L2dotNET.LoginService.Network
             else
             {
                 PacketHandler.Handle(new Packet(1, buff), this);
-                new Thread(Read).Start();
+                Read();
             }
         }
 

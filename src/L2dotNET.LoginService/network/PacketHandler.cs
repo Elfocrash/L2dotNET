@@ -35,8 +35,7 @@ namespace L2dotNET.LoginService.Network
             if (ClientPackets.ContainsKey(packet.FirstOpcode))
                 incPacket = ((PacketBase) Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client));
 
-            if (incPacket != null)
-                new Thread(incPacket.RunImpl).Start();
+            incPacket?.RunImpl();
         }
 
         public static void Handle(Packet packet, ServerThread client)
@@ -46,8 +45,7 @@ namespace L2dotNET.LoginService.Network
             if (ClientPacketsServ.ContainsKey(packet.FirstOpcode))
                 incPacket = ((PacketBase)Activator.CreateInstance(ClientPacketsServ[packet.FirstOpcode], packet, client));
 
-            if (incPacket != null)
-                new Thread(incPacket.RunImpl).Start();
+            incPacket?.RunImpl();
         }
     }
 }
