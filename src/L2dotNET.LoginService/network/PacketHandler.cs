@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Threading;
 using log4net;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Network.InnerNetwork.ClientPackets;
@@ -33,7 +32,7 @@ namespace L2dotNET.LoginService.Network
             Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
             PacketBase incPacket = null;
             if (ClientPackets.ContainsKey(packet.FirstOpcode))
-                incPacket = ((PacketBase) Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client));
+                incPacket = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client);
 
             incPacket?.RunImpl();
         }
@@ -43,7 +42,7 @@ namespace L2dotNET.LoginService.Network
             Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
             PacketBase incPacket = null;
             if (ClientPacketsServ.ContainsKey(packet.FirstOpcode))
-                incPacket = ((PacketBase)Activator.CreateInstance(ClientPacketsServ[packet.FirstOpcode], packet, client));
+                incPacket = (PacketBase)Activator.CreateInstance(ClientPacketsServ[packet.FirstOpcode], packet, client);
 
             incPacket?.RunImpl();
         }

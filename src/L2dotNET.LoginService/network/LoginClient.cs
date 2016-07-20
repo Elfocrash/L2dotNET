@@ -7,11 +7,9 @@ using log4net;
 using L2Crypt;
 using L2dotNET.LoginService.Managers;
 using L2dotNET.LoginService.Network.Crypt;
-using L2dotNET.LoginService.Network.InnerNetwork.ClientPackets;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Models;
 using L2dotNET.Network;
-using L2dotNET.Utility;
 
 namespace L2dotNET.LoginService.Network
 {
@@ -122,8 +120,6 @@ namespace L2dotNET.LoginService.Network
                 Read();
             }
         }
-
-
 
         public int Login1,
                    Login2;

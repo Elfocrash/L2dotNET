@@ -4,7 +4,6 @@ using System.Net.Sockets;
 using System.Threading;
 using log4net;
 using L2dotNET.LoginService.Network;
-using L2dotNET.LoginService.Network.InnerNetwork.ClientPackets;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
 
@@ -75,7 +74,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
             byte[] buff = new byte[_buffer.Length];
             _buffer.CopyTo(buff, 0);
-            PacketHandler.Handle(new Packet(1, buff),this);
+            PacketHandler.Handle(new Packet(1, buff), this);
             Read();
         }
 

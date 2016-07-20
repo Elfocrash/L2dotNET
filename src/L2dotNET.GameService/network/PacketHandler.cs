@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Runtime.Remoting.Contexts;
-using System.Threading;
 using log4net;
 using L2dotNET.GameService.Network.Clientpackets;
 using L2dotNET.GameService.Network.Clientpackets.ClanAPI;
@@ -20,8 +19,7 @@ namespace L2dotNET.GameService.Network
         private static readonly ILog Log = LogManager.GetLogger(typeof(PacketHandler));
         private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
 
-        private static readonly ConcurrentDictionary<short, Type> ClientPacketsD0 =
-            new ConcurrentDictionary<short, Type>();
+        private static readonly ConcurrentDictionary<short, Type> ClientPacketsD0 = new ConcurrentDictionary<short, Type>();
 
         static PacketHandler()
         {
@@ -115,16 +113,17 @@ namespace L2dotNET.GameService.Network
             {
                 Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
                 if (ClientPackets.ContainsKey(packet.FirstOpcode))
-                    packetBase =
-                        ((PacketBase) Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client));
+                {
+                    packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client);
+                }
             }
             else
             {
                 Log.Info($"Received packet with Opcode 0xD0 and seccond Opcode:{packet.SecondOpcode.ToString("X2")}");
-                if (ClientPacketsD0.ContainsKey((short) packet.SecondOpcode))
-                    packetBase =
-                        ((PacketBase)
-                            Activator.CreateInstance(ClientPacketsD0[(short) packet.SecondOpcode], packet, client));
+                if (ClientPacketsD0.ContainsKey((short)packet.SecondOpcode))
+                {
+                    packetBase = (PacketBase)Activator.CreateInstance(ClientPacketsD0[(short)packet.SecondOpcode], packet, client);
+                }
             }
 
             if (client.IsTerminated)
