@@ -77,7 +77,7 @@ namespace L2dotNET.GameService.Model.Zones
             //    if (skill != null)
             //        _skills.Add(skill);
             //    else
-            //        CLogger.error("areatable: null skill " + sk + " for zone " + Name);
+            //        CLogger.error($"areatable: null skill {sk} for zone {Name});
             //}
         }
 
@@ -85,7 +85,7 @@ namespace L2dotNET.GameService.Model.Zones
         {
             //_skill = TSkillTable.getInstance().get(p);
             //if (_skill == null)
-            //    CLogger.error("areatable: null skill " + p + " for default swamps");
+            //    CLogger.error($"areatable: null skill {p} for default swamps");
         }
 
         public void SetRange(string val)

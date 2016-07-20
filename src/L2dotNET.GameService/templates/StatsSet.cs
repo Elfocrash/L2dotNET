@@ -241,7 +241,7 @@ namespace L2dotNET.GameService.Templates
                 return ((string)val).Split(';');
 
             return null;
-            //throw new IllegalArgumentException("StatsSet : String array required, but found: " + val + " for key: " + key + ".");
+            //throw new IllegalArgumentException($"StatsSet : String array required, but found: {val} for key: {key}.");
         }
     }
 }

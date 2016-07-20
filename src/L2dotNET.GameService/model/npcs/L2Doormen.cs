@@ -64,7 +64,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public override string AsString()
         {
-            return "L2Doormen:" + Template.NpcId + "; id " + ObjId + "; " + _hideout.ID;
+            return $"L2Doormen:{Template.NpcId}; id {ObjId}; {_hideout.ID}";
         }
     }
 }

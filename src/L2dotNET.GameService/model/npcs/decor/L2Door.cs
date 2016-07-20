@@ -75,7 +75,7 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
 
         public override string AsString()
         {
-            return "L2Door:" + ObjId + " " + StaticId + " " + ClanID;
+            return $"L2Door:{ObjId} {StaticId} {ClanID}";
         }
     }
 }

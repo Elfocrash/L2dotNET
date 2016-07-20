@@ -56,7 +56,7 @@
 
         public override string ToString()
         {
-            return _x + ", " + _y + ", " + _z;
+            return $"{_x}, {_y}, {_z}";
         }
     }
 }

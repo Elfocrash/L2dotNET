@@ -67,14 +67,14 @@ namespace L2dotNET.GameService.Commands.Admin
                 if (skill != null)
                     target.AddSkill(skill, false, false);
                 else
-                    target.SendMessage("no skill #" + sk.Id + "-" + sk.Lv);
+                    target.SendMessage($"no skill #{sk.Id}-{sk.Lv}");
             }
 
             target.ActiveSkillTree = avail;
             target.SendPacket(new AcquireSkillList(AcquireSkillList.SkillType.Usual));
 
             target.UpdateSkillList();
-            target.SendMessage("gor all skills [" + skills.Skills.Count + "][" + avail.Count + "] for lv" + target.Level + ", class @" + target.ActiveClass.ClassId.Id);
+            target.SendMessage($"gor all skills [{skills.Skills.Count}][{avail.Count}] for lvl {target.Level}, class @{target.ActiveClass.ClassId.Id}");
         }
     }
 }

@@ -820,7 +820,7 @@ namespace L2dotNET.GameService.World
 
             if ((reqMp > 0) && (reqMp > CurMp))
             {
-                SendMessage("no mp " + CurMp + " " + reqMp);
+                SendMessage($"no mp {CurMp} {reqMp}");
                 AiCharacter.NotifyMpEnd(target);
                 return;
             }

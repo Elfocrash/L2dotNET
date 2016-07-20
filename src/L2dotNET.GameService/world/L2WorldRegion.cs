@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.World
 
         public string GetName()
         {
-            return "WorldRegion:" + _tileX + "_" + _tileY;
+            return $"WorldRegion:{_tileX}_{_tileY}";
         }
 
         public List<L2Object> GetObjects()

@@ -51,22 +51,22 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                     }
             }
 
-            Log.Info("AdminPlugin(Teleport): loaded " + Groups.Count + " groups.");
+            Log.Info($"AdminPlugin(Teleport): loaded {Groups.Count} groups.");
         }
 
         public void ShowGroup(L2Player player, int groupId)
         {
             if (!Groups.ContainsKey(groupId))
             {
-                player.SendMessage("teleport group #" + groupId + " was not found.");
+                player.SendMessage($"teleport group #{groupId} was not found.");
                 player.SendActionFailed();
                 return;
             }
 
             ABTeleportGroup gr = Groups[groupId];
-            StringBuilder sb = new StringBuilder("<button value=\"Back\" action=\"bypass -h admin?ask=3&reply=0\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><center><font color=\"Blue\">Region : </font><font color=\"LEVEL\">" + gr.Name + "</font><br>");
+            StringBuilder sb = new StringBuilder($"<button value=\"Back\" action=\"bypass -h admin?ask=3&reply=0\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><center><font color=\"Blue\">Region : </font><font color=\"LEVEL\">{gr.Name}</font><br>");
             foreach (ABTeleportEntry e in gr.Teles.Values)
-                sb.Append("<button value=\"" + e.Name + "\" action=\"bypass -h admin?ask=2&reply=" + e.Id + "\" width=150 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><br1>");
+                sb.Append($"<button value=\"{e.Name}\" action=\"bypass -h admin?ask=2&reply={e.Id}\" width=150 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><br1>");
 
             sb.Append("</center>");
 
@@ -87,7 +87,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             foreach (ABTeleportGroup gr in Groups.Values)
             {
                 count++;
-                sb.Append("<td><button value=\"" + gr.Name + "\" action=\"bypass -h admin?ask=1&reply=" + gr.Id + "\" width=135 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>");
+                sb.Append($"<td><button value=\"{gr.Name}\" action=\"bypass -h admin?ask=1&reply={gr.Id}\" width=135 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>");
                 if (count != 2)
                     continue;
 
@@ -109,7 +109,7 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             if ((player.ViewingAdminTeleportGroup != -1) && Groups.ContainsKey(player.ViewingAdminTeleportGroup))
                 return;
 
-            player.SendMessage("teleport group #" + player.ViewingAdminTeleportGroup + " was not found.");
+            player.SendMessage($"teleport group #{player.ViewingAdminTeleportGroup} was not found.");
             player.SendActionFailed();
             //return;
 

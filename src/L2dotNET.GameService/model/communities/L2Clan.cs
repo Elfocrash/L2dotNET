@@ -195,20 +195,20 @@ namespace L2dotNET.GameService.Model.Communities
             if (size == 0)
             {
                 if (CrestId > 0)
-                    File.Delete(@"crests\c" + CrestId + ".bmp");
+                    File.Delete($@"crests\c{CrestId}.bmp");
 
                 CrestId = 0;
             }
             else
             {
                 if (CrestId > 0)
-                    File.Delete(@"crests\c" + CrestId + ".bmp");
+                    File.Delete($@"crests\c{CrestId}.bmp");
 
                 //msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
                 CrestId = IdFactory.Instance.NextId();
                 try
                 {
-                    FileStream fs = new FileStream(@"crests\c" + CrestId + ".bmp", FileMode.Create, FileAccess.ReadWrite);
+                    FileStream fs = new FileStream($@"crests\c{CrestId}.bmp", FileMode.Create, FileAccess.ReadWrite);
                     BinaryWriter bw = new BinaryWriter(fs);
                     bw.Write(picture);
                     bw.Close();
@@ -244,20 +244,20 @@ namespace L2dotNET.GameService.Model.Communities
             if (size == 0)
             {
                 if (LargeCrestId > 0)
-                    File.Delete(@"crests\b" + LargeCrestId + ".bmp");
+                    File.Delete($@"crests\b{LargeCrestId}.bmp");
 
                 LargeCrestId = 0;
             }
             else
             {
                 if (LargeCrestId > 0)
-                    File.Delete(@"crests\b" + LargeCrestId + ".bmp");
+                    File.Delete($@"crests\b{LargeCrestId}.bmp");
 
                 //msg = SystemMessage.SystemMessageId.CLAN_CREST_WAS_SUCCESFULLY_REGISTERED;
                 LargeCrestId = IdFactory.Instance.NextId();
                 try
                 {
-                    FileStream fs = new FileStream(@"crests\b" + LargeCrestId + ".bmp", FileMode.Create, FileAccess.ReadWrite);
+                    FileStream fs = new FileStream($@"crests\b{LargeCrestId}.bmp", FileMode.Create, FileAccess.ReadWrite);
                     BinaryWriter bw = new BinaryWriter(fs);
                     bw.Write(picture);
                     bw.Close();

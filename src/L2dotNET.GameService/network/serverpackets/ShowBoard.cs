@@ -67,7 +67,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteString("bypass _friendlist_0_"); // friends
             WriteString("bypass bbs_add_fav"); // add fav.
 
-            string st = _id + "\u0008";
+            string st = $"{_id}\u0008";
             if (!_id.EqualsIgnoreCase("1002"))
                 st += _htmlCode;
             else

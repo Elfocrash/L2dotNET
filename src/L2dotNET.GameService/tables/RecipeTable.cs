@@ -76,7 +76,7 @@ namespace L2dotNET.GameService.Tables
                     }
             }
 
-            Log.Info("RecipeTable: loaded " + Recipes.Count + " recipes.");
+            Log.Info($"RecipeTable: loaded {Recipes.Count} recipes.");
         }
 
         public readonly SortedList<int, L2Recipe> Recipes = new SortedList<int, L2Recipe>();

@@ -42,7 +42,7 @@ namespace L2dotNET.GameService.Tables.Multisell
         {
             if (!Lists.ContainsKey(listId))
             {
-                player.SendMessage("Multsell list #" + listId + " was not found");
+                player.SendMessage($"Multsell list #{listId} was not found");
                 player.SendActionFailed();
                 return;
             }

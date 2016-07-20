@@ -17,7 +17,7 @@ namespace L2dotNET.GameService.Model.Skills2.SpecEffects
                           SkillId = skillId,
                           SkillLv = lvl
                       };
-            _effect.Build("st +" + value);
+            _effect.Build($"st +{value}");
         }
 
         public override void OnStartNight(L2Player player)

@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             foreach (string str in _names)
             {
                 WriteInt(x); // Territory Id
-                WriteString(str + "_dominion"); // territory name
+                WriteString($"{str}_dominion"); // territory name
                 WriteString("");
                 WriteInt(0); // Emblem Count
                 //  for(int i:t.getOwnedWardIds())

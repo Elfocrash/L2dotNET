@@ -183,7 +183,7 @@ namespace L2dotNET.GameService.Model.Stats
             int rnd = new Random().Next(0, 100);
             bool success = rnd <= skill.ActivateRate;
 
-            caster.SendMessage(skill.SkillId + " success " + rnd + "% (" + skill.ActivateRate + "% base)");
+            caster.SendMessage($"{skill.SkillId} success {rnd}% ({skill.ActivateRate}% base)");
 
             return success;
         }

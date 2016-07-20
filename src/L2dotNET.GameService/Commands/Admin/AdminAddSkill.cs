@@ -19,7 +19,7 @@ namespace L2dotNET.GameService.Commands.Admin
             Skill skill = SkillTable.Instance.Get(id, lvl);
 
             if (skill == null)
-                admin.SendMessage("Skill " + id + "/" + lvl + " is missing.");
+                admin.SendMessage($"Skill {id}/{lvl} is missing.");
             else
             {
                 L2Player target;
@@ -29,7 +29,7 @@ namespace L2dotNET.GameService.Commands.Admin
                     target = admin;
 
                 target.AddSkill(skill, true, true);
-                admin.SendMessage(target.Name + " has received skill " + id + "/" + lvl);
+                admin.SendMessage($"{target.Name} has received skill {id}/{lvl}");
             }
         }
     }

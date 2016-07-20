@@ -26,7 +26,7 @@ namespace L2dotNET.GameService.Model.Npcs
         {
             player.SendMessage(AsString());
             //    TimeSpan ts = dtstart - DateTime.Now;
-            //    player.sendMessage("timems "+(ts.TotalMilliseconds));
+            //    player.sendMessage($"timems {(ts.TotalMilliseconds)}");
             bool newtarget = false;
             if (player.CurrentTarget == null)
             {
@@ -127,14 +127,13 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public override void OnActionShift(L2Player player)
         {
-            string text = "";
-
-            text += "pdef: " + CharacterStat.GetStat(EffectType.PPhysicalDefense) + "<br>";
-            text += "patk: " + CharacterStat.GetStat(EffectType.PPhysicalAttack) + "<br>";
-            text += "curhp: " + CurHp + "<br>";
-            text += "maxhp: " + CharacterStat.GetStat(EffectType.BMaxHp) + "<br>";
-            text += "mdef: " + CharacterStat.GetStat(EffectType.PMagicalAttack) + "<br>";
-            text += "matk: " + CharacterStat.GetStat(EffectType.PMagicalDefense) + "<br>";
+            string text = string.Empty;
+            text += $"pdef: {CharacterStat.GetStat(EffectType.PPhysicalDefense)}<br>";
+            text += $"patk: {CharacterStat.GetStat(EffectType.PPhysicalAttack)}<br>";
+            text += $"curhp: {CurHp}<br>";
+            text += $"maxhp: {CharacterStat.GetStat(EffectType.BMaxHp)}<br>";
+            text += $"mdef: {CharacterStat.GetStat(EffectType.PMagicalAttack)}<br>";
+            text += $"matk: {CharacterStat.GetStat(EffectType.PMagicalDefense)}<br>";
 
             player.ShowHtmPlain(text, null);
             player.SendActionFailed();

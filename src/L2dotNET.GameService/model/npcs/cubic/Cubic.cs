@@ -39,7 +39,7 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
             AiAction.Enabled = true;
             SummonEnd.Enabled = true;
 
-            Owner.SendMessage("Summoned cubic #" + Template.Id + " for " + (Template.Duration / 60) + " min.");
+            Owner.SendMessage($"Summoned cubic #{Template.Id} for {Template.Duration / 60} min.");
         }
 
         public void AiActionTask(object sender, System.Timers.ElapsedEventArgs e)

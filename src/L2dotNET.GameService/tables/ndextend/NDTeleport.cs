@@ -68,7 +68,7 @@ namespace L2dotNET.GameService.Tables.Ndextend
                     }
             }
 
-            Log.Info("NpcData(Teleporter): loaded " + Npcs.Count + " npcs.");
+            Log.Info($"NpcData(Teleporter): loaded {Npcs.Count} npcs.");
         }
     }
 }

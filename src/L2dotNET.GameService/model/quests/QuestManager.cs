@@ -76,7 +76,7 @@ namespace L2dotNET.GameService.Model.Quests
                 if (!qi.Template.CanTalk(player, npc))
                     continue;
 
-                qlist.Add(new object[] { qi.Template, "<a action=\"bypass -h quest_continue?quest_id=" + qi.Id + "\">[" + qi.Template.QuestName + " (In Progress)]</a><br1>", qi.Template.QuestId });
+                qlist.Add(new object[] { qi.Template, $"<a action=\"bypass -h quest_continue?quest_id={qi.Id}\">[{qi.Template.QuestName} (In Progress)]</a><br1>", qi.Template.QuestId });
                 ilist.Add(qi.Id);
             }
 
@@ -84,12 +84,12 @@ namespace L2dotNET.GameService.Model.Quests
             {
                 if (clist.Contains(qo.QuestId))
                 {
-                    qlist.Add(new object[] { null, "[" + qo.QuestName + " (Completed)]<br1>", 0 });
+                    qlist.Add(new object[] { null, $"[{qo.QuestName} (Completed)]<br1>", 0 });
                     nullex = true;
                     continue;
                 }
 
-                qlist.Add(new object[] { qo, "<a action=\"bypass -h quest_tryaccept?quest_id=" + qo.QuestId + "\">[" + qo.QuestName + "]</a><br1>", qo.QuestId });
+                qlist.Add(new object[] { qo, $"<a action=\"bypass -h quest_tryaccept?quest_id={qo.QuestId}\">[{qo.QuestName}]</a><br1>", qo.QuestId });
             }
 
             if (!nullex && (qlist.Count == 1))

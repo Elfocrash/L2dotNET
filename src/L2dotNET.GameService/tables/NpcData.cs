@@ -95,8 +95,8 @@ namespace L2dotNET.GameService.Tables
                     }
             }
 
-            Log.Info("NpcData: loaded " + Shops.Count + " merchants.");
-            //CLogger.info("NpcData: loaded " + _mults.Count + " multisell lists.");
+            Log.Info($"NpcData: loaded {Shops.Count} merchants.");
+            //CLogger.info($"NpcData: loaded {_mults.Count} multisell lists.");
         }
 
         public void Buylist(L2Player player, L2Npc trader, short reply)
@@ -150,9 +150,9 @@ namespace L2dotNET.GameService.Tables
                 string cost = "";
                 int id = itemId != -1 ? itemId : e.ItemId;
                 if (player.Level >= 40)
-                    cost = " - " + e.Cost + " &#" + id + ";";
+                    cost = $" - {e.Cost} &#{id};";
 
-                sb.Append("<a action=\"bypass -h teleport_next?ask=" + groupId + "&reply=" + e.Id + "\" msg=\"811;" + e.Name + "\">" + e.Name + "" + cost + "</a><br1>");
+                sb.Append($"<a action=\"bypass -h teleport_next?ask={groupId}&reply={e.Id}\" msg=\"811;{e.Name}\">{e.Name}{cost}</a><br1>");
             }
 
             player.TeleportPayId = itemId;

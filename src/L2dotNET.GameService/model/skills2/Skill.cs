@@ -82,7 +82,7 @@ namespace L2dotNET.GameService.Model.Skills2
                 Effects.Add(te);
                 order++;
                 // else
-                //     CLogger.error("skill #" + skill_id + " requested unregistered effect " + str);
+                //     CLogger.error($"skill #{skill_id} requested unregistered effect {str}");
                 //  order++;
             }
         }

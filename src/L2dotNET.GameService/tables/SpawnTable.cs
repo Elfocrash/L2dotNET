@@ -36,7 +36,7 @@ namespace L2dotNET.GameService.Tables
             foreach (string path in Directory.EnumerateFiles(@"scripts\spawn\", "*.xml"))
                 Read(path);
 
-            Log.Info("SpawnTable: Created " + Territorries.Count + " territories with " + _npcs + " monsters.");
+            Log.Info($"SpawnTable: Created {Territorries.Count} territories with {_npcs} monsters.");
         }
 
         public readonly SortedList<string, L2Territory> Territorries = new SortedList<string, L2Territory>();
@@ -143,7 +143,7 @@ namespace L2dotNET.GameService.Tables
             foreach (L2Spawn s in Spawns)
                 s.Init();
 
-            Log.Info("NpcServer spawn done, #" + sp + " npcs.");
+            Log.Info($"NpcServer spawn done, #{sp} npcs.");
         }
 
         public void SunRise(bool y)

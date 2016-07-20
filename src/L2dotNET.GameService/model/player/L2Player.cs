@@ -806,7 +806,7 @@ namespace L2dotNET.GameService.Model.Player
 
             //connection.Open();
 
-            //cmd.CommandText = "SELECT * FROM user_skills WHERE ownerId=" + ObjID + " AND iclass=" + ActiveClass.id;
+            //cmd.CommandText = $"SELECT * FROM user_skills WHERE ownerId={ObjID} AND iclass={ActiveClass.id}";
             //cmd.CommandType = CommandType.Text;
 
             //MySqlDataReader reader = cmd.ExecuteReader();
@@ -945,7 +945,7 @@ namespace L2dotNET.GameService.Model.Player
 
             //connection.Open();
 
-            //cmd.CommandText = "SELECT recid FROM user_recipes WHERE ownerId=" + ObjID + " AND iclass=" + ActiveClass.id + " ORDER BY tact ASC";
+            //cmd.CommandText = $"SELECT recid FROM user_recipes WHERE ownerId={ObjID} AND iclass={ActiveClass.id} ORDER BY tact ASC";
             //cmd.CommandType = CommandType.Text;
 
             //MySqlDataReader reader = cmd.ExecuteReader();
@@ -1646,7 +1646,7 @@ namespace L2dotNET.GameService.Model.Player
 
             //connection.Open();
 
-            //cmd.CommandText = "SELECT * FROM user_shortcuts WHERE ownerId=" + ObjID + " and classId=" + ActiveClass.id;
+            //cmd.CommandText = $"SELECT * FROM user_shortcuts WHERE ownerId={ObjID} and classId={ActiveClass.id}";
             //cmd.CommandType = CommandType.Text;
 
             //MySqlDataReader reader = cmd.ExecuteReader();
@@ -2021,7 +2021,7 @@ namespace L2dotNET.GameService.Model.Player
 
             if ((reqMp > 0) && (reqMp > CurMp))
             {
-                SendMessage("no mp " + CurMp + " " + reqMp);
+                SendMessage($"no mp {CurMp} {reqMp}");
                 SendActionFailed();
                 return;
             }
@@ -2308,10 +2308,10 @@ namespace L2dotNET.GameService.Model.Player
 
             double expReward = mob.Template.Exp / 1.0;
             int sp = mob.Template.Sp;
-            SendMessage("debug: expPet " + expPet);
-            SendMessage("debug: mob.Template " + mob.Template.Exp + " @");
-            SendMessage("debug: expReward " + expReward);
-            SendMessage("debug: sp " + sp);
+            SendMessage($"debug: expPet {expPet}");
+            SendMessage($"debug: mob.Template {mob.Template.Exp} @");
+            SendMessage($"debug: expReward {expReward}");
+            SendMessage($"debug: sp {sp}");
 
             byte oldLvl = Level;
             Exp += (long)expReward;

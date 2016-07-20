@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 //foreach (int id in qi._template.actItems)
                 //    player.Inventory.Dest(id, true, false);
 
-                player.SendMessage("Quest " + qi.Template.QuestName + " aborted.");
+                player.SendMessage($"Quest {qi.Template.QuestName} aborted.");
                 player.StopQuest(qi, true);
                 return;
             }

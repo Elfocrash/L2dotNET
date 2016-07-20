@@ -123,7 +123,7 @@ namespace L2dotNET.GameService.Model.Npcs
                                 player.SendPacket(new NpcHtmlMessage(player, _ai.FnFuncDisabled, ObjId));
                             else
                             {
-                                NpcHtmlMessage htm = new NpcHtmlMessage(player, _ai.FnAgitBuff + "_" + level + ".htm", ObjId);
+                                NpcHtmlMessage htm = new NpcHtmlMessage(player, $"{_ai.FnAgitBuff}_{level}.htm", ObjId);
                                 htm.Replace("<?MPLeft?>", (int)CurMp);
                                 player.SendPacket(htm);
                             }
@@ -263,7 +263,7 @@ namespace L2dotNET.GameService.Model.Npcs
                     break;
                 case -270:
                 {
-                    string val = reply + "";
+                    string val = reply.ToString();
                     int lvl;
                     int id;
                     if (val.Length == 5)
@@ -277,7 +277,7 @@ namespace L2dotNET.GameService.Model.Npcs
                         id = int.Parse(val.Remove(1));
                     }
 
-                    NpcHtmlMessage htm = new NpcHtmlMessage(player, "agitdeco__" + id + ".htm", ObjId);
+                    NpcHtmlMessage htm = new NpcHtmlMessage(player, $"agitdeco__{id}.htm", ObjId);
                     htm.Replace("<?AgitDecoCost?>", _hideout.GetDecoCost(id, lvl));
                     htm.Replace("<?AgitDecoEffect?>", _hideout.GetDecoEffect(id, lvl));
                     htm.Replace("<?AgitDecoSubmit?>", reply);
@@ -573,7 +573,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public override string AsString()
         {
-            return "L2HideoutManager:" + Template.NpcId + "; id " + ObjId + "; " + _hideout.ID + " " + _hideout.ownerId;
+            return $"L2HideoutManager:{Template.NpcId}; id {ObjId}; {_hideout.ID} {_hideout.ownerId}";
         }
     }
 }

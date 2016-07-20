@@ -39,7 +39,7 @@ namespace L2dotNET.GameService.Model.Structures
 
         public virtual void Init()
         {
-            Message("Siege registration of " + Name + " has begun!");
+            Message($"Siege registration of {Name} has begun!");
             Message("Now its open for 2 hours!");
 
             _npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, Spawn4[0], Spawn4[1], Spawn4[2], Spawn4[3]);
@@ -55,7 +55,7 @@ namespace L2dotNET.GameService.Model.Structures
         public virtual void Start()
         {
             IsActive = true;
-            Message("Siege of " + Name + " has begun!");
+            Message($"Siege of {Name} has begun!");
             _npc1 = (L2Character)SpawnTable.Instance.SpawnOne(BossId, Spawn1[0], Spawn1[1], Spawn1[2], Spawn1[3]);
             _npc2 = (L2Character)SpawnTable.Instance.SpawnOne(Minion1Id, Spawn2[0], Spawn2[1], Spawn2[2], Spawn2[3]);
             _npc3 = (L2Character)SpawnTable.Instance.SpawnOne(Minion2Id, Spawn3[0], Spawn3[1], Spawn3[2], Spawn3[3]);
@@ -73,7 +73,7 @@ namespace L2dotNET.GameService.Model.Structures
             // 60 минут
             TimeSiege.Elapsed += TimeSiegeEnd;
 
-            Message("Guards " + _mobActive.Count + "! 60 min left");
+            Message($"Guards {_mobActive.Count}! 60 min left");
         }
 
         private void TimeSiegeEnd(object sender, ElapsedEventArgs e)
@@ -85,9 +85,9 @@ namespace L2dotNET.GameService.Model.Structures
         public void SiegeEnd(bool trigger)
         {
             IsActive = false;
-            Message("Siege of " + Name + " is over.");
+            Message($"Siege of {Name} is over.");
             if (trigger)
-                Message("Nobody won! " + Name + " belong to NPC until next siege.");
+                Message($"Nobody won! {Name} belong to NPC until next siege.");
             else
             {
                 double dmg = 0;
@@ -101,7 +101,7 @@ namespace L2dotNET.GameService.Model.Structures
                 if (tmClanId > 0)
                 {
                     L2Clan cl = ClanTable.Instance.GetClan(tmClanId);
-                    Message("Now its belong to: '" + cl.Name + "' until next siege.");
+                    Message($"Now its belong to: '{cl.Name}' until next siege.");
                     bool captured = false; //todo
 
                     if (captured)
@@ -117,7 +117,7 @@ namespace L2dotNET.GameService.Model.Structures
                 }
                 else
                 {
-                    Message("Nobody won! " + Name + " belong to NPC until next siege.");
+                    Message($"Nobody won! {Name} belong to NPC until next siege.");
                     //trigger = true;
                 }
             }

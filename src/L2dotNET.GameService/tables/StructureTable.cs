@@ -144,8 +144,8 @@ namespace L2dotNET.GameService.Tables
                 }
             }
 
-            Log.Info("Structs: loaded " + Structures.Count + " templates.");
-            Log.Info("Hideouts: " + Hideouts.Count + ".");
+            Log.Info($"Structs: loaded {Structures.Count} templates.");
+            Log.Info($"Hideouts: {Hideouts.Count}.");
 
             foreach (HideoutTemplate st in Structures.Values)
                 st.init();

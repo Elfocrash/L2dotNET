@@ -51,7 +51,7 @@ namespace L2dotNET.GameService.Tables
             //reader.Close();
             //connection.Close();
 
-            //CLogger.info("Community: loaded "+_alliances.Count+" alliances.");
+            //CLogger.info($"Community: loaded {_alliances.Count} alliances.");
         }
 
         public SortedList<int, L2Alliance> Alliances = new SortedList<int, L2Alliance>();

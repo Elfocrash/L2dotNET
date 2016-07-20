@@ -276,9 +276,9 @@ namespace L2dotNET.GameService.AI.NpcAI
                             {
                                 if (talker.Clan.HasSubPledge(reply))
                                 {
-                                    NpcHtmlMessage htm = new NpcHtmlMessage(talker, "pl_ch_submaster" + reply + ".htm", Myself.ObjId);
+                                    NpcHtmlMessage htm = new NpcHtmlMessage(talker, $"pl_ch_submaster{reply}.htm", Myself.ObjId);
                                     string mstr = talker.Clan.GetSubpledgeMasterName(reply) ?? FString.GetInstance().Get(1010642);
-                                    htm.Replace("<?" + reply + "submaster?>", mstr);
+                                    htm.Replace($"<?{reply}submaster?>", mstr);
 
                                     talker.SendPacket(htm);
                                 }
@@ -301,9 +301,9 @@ namespace L2dotNET.GameService.AI.NpcAI
                                 {
                                     if (talker.Clan.HasSubPledge(reply))
                                     {
-                                        NpcHtmlMessage htm = new NpcHtmlMessage(talker, "pl_ch_submaster" + reply + ".htm", Myself.ObjId);
+                                        NpcHtmlMessage htm = new NpcHtmlMessage(talker, $"pl_ch_submaster{reply}.htm", Myself.ObjId);
                                         string mstr = talker.Clan.GetSubpledgeMasterName(reply) ?? FString.GetInstance().Get(1010642);
-                                        htm.Replace("<?" + reply + "submaster?>", mstr);
+                                        htm.Replace($"<?{reply}submaster?>", mstr);
 
                                         talker.SendPacket(htm);
                                     }
@@ -337,7 +337,7 @@ namespace L2dotNET.GameService.AI.NpcAI
                             else
                             {
                                 if (talker.Clan.HasSubPledge(reply))
-                                    talker.ShowHtm("pl_ch_rename" + reply + ".htm", Myself);
+                                    talker.ShowHtm($"pl_ch_rename{reply}.htm", Myself);
                                 else
                                     talker.ShowHtm("pl_err_rename_sub.htm", Myself);
                             }
@@ -351,7 +351,7 @@ namespace L2dotNET.GameService.AI.NpcAI
                                 else
                                 {
                                     if (talker.Clan.HasSubPledge(reply))
-                                        talker.ShowHtm("pl_ch_rename" + reply + ".htm", Myself);
+                                        talker.ShowHtm($"pl_ch_rename{reply}.htm", Myself);
                                     else
                                         talker.ShowHtm("pl_err_rename_sub2.htm", Myself);
                                 }

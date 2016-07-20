@@ -113,7 +113,7 @@ namespace L2dotNET.GameService.Model.Items
         public override void OnAction(L2Player player)
         {
             double dis = Calcs.CalculateDistance(this, player, true);
-            player.SendMessage(AsString() + " dis " + (int)dis);
+            player.SendMessage($"{AsString()} dis {(int)dis}");
             if (dis < 80)
             {
                 foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
@@ -233,7 +233,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public override string AsString()
         {
-            return "L2Item:" + Template.ItemId + "; count " + Count + "; enchant " + Enchant + "; id " + ObjId;
+            return $"L2Item:{Template.ItemId}; count {Count}; enchant {Enchant}; id {ObjId}";
         }
 
         public bool NotForTrade()

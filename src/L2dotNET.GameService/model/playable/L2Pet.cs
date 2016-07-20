@@ -82,7 +82,7 @@ namespace L2dotNET.GameService.Model.Playable
 
         public override string AsString()
         {
-            return "L2Pet:" + ObjId + "";
+            return $"L2Pet:{ObjId}";
         }
     }
 }

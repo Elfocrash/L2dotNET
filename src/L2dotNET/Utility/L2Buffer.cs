@@ -259,7 +259,7 @@ namespace L2dotNET.Utility
                 int i;
                 for (i = 0; (i < 16) && ((index + i) < buffer.Length); i++)
                 {
-                    hex += buffer[index + i].ToString("x2") + " ";
+                    hex += $"{buffer[index + i].ToString("x2")} ";
 
                     if ((buffer[i + index] > 31) && (buffer[i + index] < 127))
                         data += (char)buffer[i + index];

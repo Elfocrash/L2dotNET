@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.Commands.Admin
         protected internal override void Use(L2Player admin, string alias)
         {
             //  double dis = Calcs.calculateDistance(admin, admin._currentTarget, true);
-            //  admin.sendMessage("dis "+dis);
+            //  admin.sendMessage($"dis {dis}");
 
             //  foreach (L2SkillCoolTime ct in admin._reuse.Values)
             //  {

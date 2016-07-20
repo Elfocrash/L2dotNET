@@ -240,7 +240,7 @@ namespace L2dotNET.GameService.Model.Playable
 
         public override string AsString()
         {
-            return "L2Summon:" + ObjId + "";
+            return $"L2Summon:{ObjId}";
         }
     }
 }

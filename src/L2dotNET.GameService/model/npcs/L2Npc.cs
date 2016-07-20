@@ -392,7 +392,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public override string AsString()
         {
-            return "L2Npc:" + Template.NpcId + "; id " + ObjId;
+            return $"L2Npc:{Template.NpcId}; id {ObjId}";
         }
 
         public void CreateOnePrivateEx(int npcId, string aiType, int x, int y, int z) { }

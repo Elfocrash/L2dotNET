@@ -51,9 +51,9 @@ namespace L2dotNET.GameService.Tables
             //    {
             //        try
             //        {
-            //            FileStream fs = new FileStream(@"crests\c" + clan.CrestID + ".bmp", FileMode.Open, FileAccess.Read);
+            //            FileStream fs = new FileStream($@"crests\c{clan.CrestID}.bmp", FileMode.Open, FileAccess.Read);
             //            BinaryReader br = new BinaryReader(fs);
-            //            long numBytes = new FileInfo(@"crests\c" + clan.CrestID + ".bmp").Length;
+            //            long numBytes = new FileInfo($@"crests\c{clan.CrestID}.bmp").Length;
             //            clan.CrestPicture = br.ReadBytes((int)numBytes);
             //        }
             //        catch
@@ -66,9 +66,9 @@ namespace L2dotNET.GameService.Tables
             //    {
             //        try
             //        {
-            //            FileStream fs = new FileStream(@"crests\b" + clan.LargeCrestID + ".bmp", FileMode.Open, FileAccess.Read);
+            //            FileStream fs = new FileStream($@"crests\b{clan.LargeCrestID}.bmp", FileMode.Open, FileAccess.Read);
             //            BinaryReader br = new BinaryReader(fs);
-            //            long numBytes = new FileInfo(@"crests\b" + clan.LargeCrestID + ".bmp").Length;
+            //            long numBytes = new FileInfo($@"crests\b{clan.LargeCrestID}.bmp").Length;
             //            clan.CrestLargePicture = br.ReadBytes((int)numBytes);
             //        }
             //        catch
@@ -196,7 +196,7 @@ namespace L2dotNET.GameService.Tables
             //reader.Close();
             //connection.Close();
 
-            //CLogger.info("Community: loaded " + _clans.Count + " clans.");
+            //CLogger.info($"Community: loaded {_clans.Count} clans.");
         }
 
         public SortedList<int, L2Clan> Clans = new SortedList<int, L2Clan>();

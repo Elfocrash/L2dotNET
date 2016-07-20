@@ -28,7 +28,7 @@ namespace L2dotNET.Utility.Geometry
             {
                 // not a polygon, throw exception
                 if (points.Count < 3)
-                    throw new IndexOutOfRangeException("Can not create Polygon (id=" + id + ") from less than 3 coordinates.");
+                    throw new IndexOutOfRangeException($"Can not create Polygon (id={id}) from less than 3 coordinates.");
 
                 // get polygon orientation
                 bool isCw = GetPolygonOrientation(points);
