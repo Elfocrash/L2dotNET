@@ -137,7 +137,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"TryQueryDatabase"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {nameof(TryQueryDatabase)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
             }
 
             return false;

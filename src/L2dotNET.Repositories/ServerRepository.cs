@@ -29,7 +29,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"GetServerList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {nameof(GetServerList)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return new List<ServerModel>();
             }
         }
@@ -42,7 +42,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"GetPlayersObjectIdList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {nameof(GetPlayersObjectIdList)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return new List<int>();
             }
         }
@@ -55,7 +55,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"GetAnnouncementsList"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {nameof(GetAnnouncementsList)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return new List<AnnouncementModel>();
             }
         }
@@ -68,7 +68,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"CheckDatabaseQuery"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {nameof(CheckDatabaseQuery)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
             }
 
             return false;

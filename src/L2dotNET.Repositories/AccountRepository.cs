@@ -33,7 +33,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"GetAccountByLogin"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {nameof(GetAccountByLogin)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return null;
             }
         }
@@ -64,7 +64,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"CreateAccount"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {nameof(CreateAccount)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return null;
             }
         }
@@ -81,7 +81,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"CheckIfAccountIsCorrect"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {nameof(CheckIfAccountIsCorrect)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return false;
             }
         }
@@ -97,7 +97,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {"GetPlayerIdsListByAccountName"}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                Log.Error($"Method: {nameof(GetPlayerIdsListByAccountName)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
                 return new List<int>();
             }
         }
