@@ -27,6 +27,10 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
             p.WriteByte((byte)servers.Count, (byte)client.ActiveAccount.LastServer);
             foreach (L2Server server in servers)
             {
+                int bits = 0x40;
+                if (server.TestMode)
+                    bits |= 0x04;
+
                 p.WriteByte(server.Id);
                 p.WriteBytesArray(server.GetIp(client));
                 p.WriteInt(server.Port);
@@ -34,13 +38,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
                 p.WriteByte(1); // pvp?
                 p.WriteShort(server.CurrentPlayers);
                 p.WriteShort(server.MaxPlayers);
-
                 p.WriteByte(server.Connected); // status
-
-                int bits = 0x40;
-                if (server.TestMode)
-                    bits |= 0x04;
-
                 p.WriteInt(bits);
                 p.WriteByte(0); //brackets
             }

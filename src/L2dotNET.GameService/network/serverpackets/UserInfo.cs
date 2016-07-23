@@ -1,5 +1,4 @@
 ﻿using L2dotNET.GameService.Model.Inventory;
-using L2dotNET.GameService.Model.Npcs.Cubic;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.Network;
@@ -147,8 +146,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteInt(_player.PvpKills);
 
             WriteShort(_player.Cubics.Count);
-            foreach (Cubic cub in _player.Cubics)
-                WriteShort(cub.Template.Id);
+
+            _player.Cubics.ForEach(cub => WriteShort(cub.Template.Id));
 
             WriteByte(0); //1-isInPartyMatchRoom
 

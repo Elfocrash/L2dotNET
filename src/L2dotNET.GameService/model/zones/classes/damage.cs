@@ -28,6 +28,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
                 return;
 
             foreach (L2Object o in ObjectsInside.Values)
+            {
                 if (o is L2Player)
                 {
                     if (Template.Target == ZoneTemplate.ZoneTarget.Npc)
@@ -45,6 +46,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
                     ((L2Warrior)o).ReduceHpArea(Template.DamageOnHp, Template.MessageNo);
                 }
+            }
         }
 
         public override void OnEnter(L2Object obj)

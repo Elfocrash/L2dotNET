@@ -29,6 +29,7 @@ namespace L2dotNET.GameService.Model.Zones
         public void BroadcastPacket(GameserverPacket pk)
         {
             foreach (L2Object obj in ObjectsInside.Values)
+            {
                 if (obj is L2Player)
                     ((L2Player)obj).SendPacket(pk);
                 else
@@ -36,6 +37,7 @@ namespace L2dotNET.GameService.Model.Zones
                     if (obj is L2Summon)
                         ((L2Summon)obj).SendPacket(pk);
                 }
+            }
         }
 
         public virtual void OnExit(L2Object obj, bool cls)

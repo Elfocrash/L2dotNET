@@ -81,17 +81,13 @@ namespace L2dotNET.GameService.Controllers
         private void NotifyStartDay()
         {
             Night = false;
-
-            foreach (L2Player p in L2World.Instance.GetPlayers())
-                p.NotifyDayChange(_dayPk);
+            L2World.Instance.GetPlayers().ForEach(p => p.NotifyDayChange(_dayPk));
         }
 
         private void NotifyStartNight()
         {
             Night = true;
-
-            foreach (L2Player p in L2World.Instance.GetPlayers())
-                p.NotifyDayChange(_nightPk);
+            L2World.Instance.GetPlayers().ForEach(p => p.NotifyDayChange(_nightPk));
         }
 
         public void EnterWorld(L2Player p)

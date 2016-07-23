@@ -55,6 +55,7 @@ namespace L2dotNET.GameService.Tables
             {
                 XElement xml = XElement.Parse(File.ReadAllText(@"scripts\buylists.xml"));
                 foreach (XElement shops in xml.Elements("shops"))
+                {
                     foreach (XElement shopp in shops.Elements("shop"))
                     {
                         NDShop shop = new NDShop();
@@ -93,6 +94,7 @@ namespace L2dotNET.GameService.Tables
 
                         Shops.Add(shop.Id, shop);
                     }
+                }
             }
 
             Log.Info($"NpcData: loaded {Shops.Count} merchants.");

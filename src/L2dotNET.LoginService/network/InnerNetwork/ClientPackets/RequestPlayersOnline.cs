@@ -5,8 +5,8 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestPlayersOnline : PacketBase
     {
-        private readonly short _cnt;
         private readonly ServerThread _thread;
+        private readonly short _cnt;
 
         public RequestPlayersOnline(Packet p, ServerThread server)
         {

@@ -59,8 +59,7 @@ namespace L2dotNET.GameService.Model.Player.Transformation
             if ((Skills == null) || (Skills.Count <= 0))
                 return;
 
-            foreach (int[] s in Skills)
-                player.RemoveSkill(s[0], false, false);
+            Skills.ForEach(s => player.RemoveSkill(s[0], false, false));
 
             player.UpdateSkillList();
         }

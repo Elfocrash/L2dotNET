@@ -95,10 +95,12 @@ namespace L2dotNET.GameService.Model.Quests
             if (!nullex && (qlist.Count == 1))
             {
                 foreach (object[] o in qlist)
+                {
                     if (((string)o[1]).Contains("(In Progress)"))
                         player.quest_Talk(npc, ((QuestOrigin)o[0]).QuestId);
                     else
                         ((QuestOrigin)o[0]).TryAccept(player, npc);
+                }
 
                 return;
             }
@@ -123,11 +125,8 @@ namespace L2dotNET.GameService.Model.Quests
 
         public void OnQuestTalk(L2Player player, L2Npc npc, int ask, int reply)
         {
-            foreach (QuestInfo qo in player.Quests.Where(qo => qo.Id == ask))
-            {
-                qo.Template.OnTalkToNpcQm(player, npc, reply);
-                break;
-            }
+            QuestInfo qo = player.Quests.FirstOrDefault(quest => quest.Id == ask);
+            qo?.Template.OnTalkToNpcQm(player, npc, reply);
         }
 
         public void Quest_continue(L2Player player, L2Npc npc, int qid)

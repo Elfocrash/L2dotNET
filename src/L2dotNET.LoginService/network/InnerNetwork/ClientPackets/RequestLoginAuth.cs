@@ -11,15 +11,15 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(RequestLoginAuth));
 
+        private readonly ServerThread _thread;
         private readonly short _port;
         private readonly string _host;
         private readonly string _info;
         private readonly string _code;
-        private int _curp;
+        private readonly int _curp;
         private readonly short _maxp;
         private readonly byte _gmonly;
         private readonly byte _test;
-        private readonly ServerThread _thread;
 
         public RequestLoginAuth(Packet p, ServerThread server)
         {
@@ -36,13 +36,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public override void RunImpl()
         {
-            L2Server server = null;
-            foreach (L2Server srv in ServerThreadPool.Instance.Servers.Where(srv => srv.Code == _code))
-            {
-                srv.Thread = _thread;
-                server = srv;
-                break;
-            }
+            L2Server server = ServerThreadPool.Instance.Servers.FirstOrDefault(srv => srv.Code == _code);
 
             if (server == null)
             {
@@ -51,6 +45,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
                 return;
             }
 
+            server.Thread = _thread;
             _thread.Id = server.Id;
             _thread.Info = _info;
             _thread.Wan = _host;
@@ -59,8 +54,8 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _thread.GmOnly = _gmonly == 1;
             _thread.TestMode = _test == 1;
             _thread.Connected = true;
-
             _thread.Send(ServerLoginOk.ToPacket());
+
             Log.Info($"AuthThread: Server #{server.Id} connected");
         }
     }

@@ -30,6 +30,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Player player = _client.CurrentPlayer;
 
             foreach (L2Item item in player.Inventory.Items)
+            {
                 for (int i = 0; i < _count; i++)
                 {
                     int objId = _items[i * 2];
@@ -38,6 +39,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     if (item.ObjId == objId)
                         item.SlotLocation = loc;
                 }
+            }
         }
     }
 }

@@ -83,8 +83,7 @@ namespace L2dotNET.GameService.Tables
 
         public void Spawn()
         {
-            foreach (L2Spawn sp in Spawns)
-                sp.Init();
+            Spawns.ForEach(sp => sp.Init());
         }
 
         public int[] GetSpawnLocation()
@@ -104,8 +103,7 @@ namespace L2dotNET.GameService.Tables
 
         public void SunRise(bool y)
         {
-            foreach (L2Spawn sp in Spawns)
-                sp.SunRise(y);
+            Spawns.ForEach(sp => sp.SunRise(y));
         }
     }
 }

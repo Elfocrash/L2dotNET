@@ -122,8 +122,7 @@ namespace L2dotNET.GameService.Model.Structures
                 }
             }
 
-            foreach (L2Character o in _mobActive)
-                o.DeleteByForce();
+            _mobActive.ForEach(o => o.DeleteByForce());
         }
 
         public void AddDamage(int clanId, double dmg)

@@ -212,11 +212,10 @@ namespace L2dotNET.GameService.Model.Skills2
                 return true;
 
             sbyte retcode = -2;
-            foreach (SkillCond cond in Conditions.Where(cond => !cond.CanUse(target, this)))
-            {
+
+            SkillCond cond = Conditions.FirstOrDefault(c => !c.CanUse(target, this));
+            if (cond != null)
                 retcode = cond.Retcode;
-                break;
-            }
 
             if (retcode == -1)
                 target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1CannotBeUsed).AddSkillName(SkillId, Level));

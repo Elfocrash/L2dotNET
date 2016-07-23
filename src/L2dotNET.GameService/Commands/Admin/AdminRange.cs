@@ -26,9 +26,8 @@ namespace L2dotNET.GameService.Commands.Admin
             //  admin.sendMessage($"dis {dis}");
 
             //  foreach (L2SkillCoolTime ct in admin._reuse.Values)
-            //  {
             //      ct.forcedStop();
-            //  }
+
             //  admin._reuse.Clear();
             //  admin.updateReuse();
 

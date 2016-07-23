@@ -64,37 +64,41 @@ namespace L2dotNET.GameService.Model.Items
                 return;
 
             foreach (XElement m in ex.Elements())
-                if (m.Name == "capsule")
+            {
+                if (m.Name != "capsule")
+                    continue;
+
+                CapsuleItem caps = new CapsuleItem
+                                   {
+                                       Id = Convert.ToInt32(m.Attribute("id").Value)
+                                   };
+
+                foreach (XElement stp in m.Elements())
                 {
-                    CapsuleItem caps = new CapsuleItem
-                                       {
-                                           Id = Convert.ToInt32(m.Attribute("id").Value)
-                                       };
-
-                    foreach (XElement stp in m.Elements())
-                        switch (stp.Name.LocalName)
-                        {
-                            case "item":
-                                try
-                                {
-                                    CapsuleItemReward rew = new CapsuleItemReward
-                                                            {
-                                                                Id = int.Parse(stp.Attribute("id").Value),
-                                                                Min = int.Parse(stp.Attribute("min").Value),
-                                                                Max = int.Parse(stp.Attribute("max").Value),
-                                                                Rate = int.Parse(stp.Attribute("rate").Value)
-                                                            };
-                                    caps.Rewards.Add(rew);
-                                }
-                                catch (Exception)
-                                {
-                                    Log.Error($"cant parse capsule {caps.Id}");
-                                }
-                                break;
-                        }
-
-                    Items.Add(caps.Id, caps);
+                    switch (stp.Name.LocalName)
+                    {
+                        case "item":
+                            try
+                            {
+                                CapsuleItemReward rew = new CapsuleItemReward
+                                                        {
+                                                            Id = int.Parse(stp.Attribute("id").Value),
+                                                            Min = int.Parse(stp.Attribute("min").Value),
+                                                            Max = int.Parse(stp.Attribute("max").Value),
+                                                            Rate = int.Parse(stp.Attribute("rate").Value)
+                                                        };
+                                caps.Rewards.Add(rew);
+                            }
+                            catch (Exception)
+                            {
+                                Log.Error($"cant parse capsule {caps.Id}");
+                            }
+                            break;
+                    }
                 }
+
+                Items.Add(caps.Id, caps);
+            }
         }
     }
 }

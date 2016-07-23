@@ -1,5 +1,4 @@
 ﻿using L2dotNET.GameService.Model.Playable.PetAI;
-using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Tools;
 using L2dotNET.GameService.World;
 
@@ -17,26 +16,22 @@ namespace L2dotNET.GameService.Model.Player.AI
 
         public override void NotifyStartMoving()
         {
-            foreach (SpecEffect ef in _player.SpecEffects)
-                ef.OnStartMoving(_player);
+            _player.SpecEffects.ForEach(ef => ef.OnStartMoving(_player));
         }
 
         public override void NotifyStopMoving()
         {
-            foreach (SpecEffect ef in _player.SpecEffects)
-                ef.OnStopMoving(_player);
+            _player.SpecEffects.ForEach(ef => ef.OnStopMoving(_player));
         }
 
         public override void NotifyOnStartDay()
         {
-            foreach (SpecEffect ef in _player.SpecEffects)
-                ef.OnStartDay(_player);
+            _player.SpecEffects.ForEach(ef => ef.OnStartDay(_player));
         }
 
         public override void NotifyOnStartNight()
         {
-            foreach (SpecEffect ef in _player.SpecEffects)
-                ef.OnStartNight(_player);
+            _player.SpecEffects.ForEach(ef => ef.OnStartNight(_player));
         }
 
         public override void StopAutoAttack()

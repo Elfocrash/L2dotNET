@@ -110,17 +110,12 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     player.Party?.BroadcastToMembers(cs);
                     break;
                 case SayIDList.CHAT_MARKET:
-                    foreach (L2Player p in L2World.Instance.GetPlayers())
-                        p.SendPacket(cs);
-
+                    L2World.Instance.GetPlayers().ForEach(p => p.SendPacket(cs));
                     break;
                 case SayIDList.CHAT_HERO:
                 {
                     if (player.Heroic == 1)
-                    {
-                        foreach (L2Player p in L2World.Instance.GetPlayers())
-                            p.SendPacket(cs);
-                    }
+                        L2World.Instance.GetPlayers().ForEach(p => p.SendPacket(cs));
                     else
                         player.SendActionFailed();
                 }

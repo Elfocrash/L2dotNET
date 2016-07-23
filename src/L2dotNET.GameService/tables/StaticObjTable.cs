@@ -96,6 +96,7 @@ namespace L2dotNET.GameService.Tables
                             case "unlock":
                             {
                                 foreach (string str in value.Split(' '))
+                                {
                                     switch (str)
                                     {
                                         case "trigger":
@@ -108,6 +109,7 @@ namespace L2dotNET.GameService.Tables
                                             obj.UnlockNpc = true;
                                             break;
                                     }
+                                }
                             }
 
                                 break;

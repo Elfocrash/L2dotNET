@@ -60,6 +60,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             bool ok = true;
             foreach (MultiSellItem i in entry.Take)
+            {
                 if (i.Id > 0)
                 {
                     if (player.HasItem(i.Id, i.Count))
@@ -68,16 +69,15 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     ok = false;
                     break;
                 }
-                else
+
+                switch (i.Id)
                 {
-                    switch (i.Id)
-                    {
-                        case -100: //pvppoint
-                            if (player.Fame < (i.Count * _amount))
-                                ok = false;
-                            break;
-                    }
+                    case -100: //pvppoint
+                        if (player.Fame < (i.Count * _amount))
+                            ok = false;
+                        break;
                 }
+            }
 
             if (!ok)
             {
@@ -87,6 +87,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             foreach (MultiSellItem i in entry.Take)
+            {
                 if (i.L2Item != null)
                     player.DestroyItem(i.L2Item, 1);
                 else
@@ -102,6 +103,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                         }
                     }
                 }
+            }
 
             player.SendSystemMessage(SystemMessage.SystemMessageId.SuccessfullyTradedWithNpc);
         }
