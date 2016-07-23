@@ -31,6 +31,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
                 return;
 
             foreach (L2Object o in ObjectsInside.Values)
+            {
                 if (o is L2Player)
                 {
                     if (Template.Target == ZoneTemplate.ZoneTarget.Npc)
@@ -48,6 +49,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
                     affect((L2Character)o);
                 }
+            }
         }
 
         private void affect(L2Character target)

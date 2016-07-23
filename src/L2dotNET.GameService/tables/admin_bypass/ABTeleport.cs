@@ -25,30 +25,30 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
             if (ex != null)
             {
                 foreach (XElement m in ex.Elements())
-                    if (m.Name == "group")
-                    {
-                        ABTeleportGroup ab = new ABTeleportGroup
-                                             {
-                                                 Id = int.Parse(m.Attribute("id").Value),
-                                                 Str = m.Attribute("str").Value,
-                                                 Name = m.Attribute("name").Value,
-                                                 Level = int.Parse(m.Attribute("level").Value)
-                                             };
+                {
+                    if (m.Name != "group")
+                        continue;
 
-                        foreach (ABTeleportEntry ae in from e in m.Elements()
-                                                       where e.Name == "entry"
-                                                       select new ABTeleportEntry
-                                                              {
-                                                                  Name = e.Attribute("name").Value,
-                                                                  X = int.Parse(e.Attribute("x").Value),
-                                                                  Y = int.Parse(e.Attribute("y").Value),
-                                                                  Z = int.Parse(e.Attribute("z").Value),
-                                                                  Id = ab.Teles.Count
-                                                              })
-                            ab.Teles.Add(ae.Id, ae);
+                    ABTeleportGroup ab = new ABTeleportGroup
+                                         {
+                                             Id = int.Parse(m.Attribute("id").Value),
+                                             Str = m.Attribute("str").Value,
+                                             Name = m.Attribute("name").Value,
+                                             Level = int.Parse(m.Attribute("level").Value)
+                                         };
 
-                        Groups.Add(ab.Id, ab);
-                    }
+                    foreach (ABTeleportEntry ae in m.Elements().Where(e => e.Name == "entry").Select(e => new ABTeleportEntry
+                                                                                                          {
+                                                                                                              Name = e.Attribute("name").Value,
+                                                                                                              X = int.Parse(e.Attribute("x").Value),
+                                                                                                              Y = int.Parse(e.Attribute("y").Value),
+                                                                                                              Z = int.Parse(e.Attribute("z").Value),
+                                                                                                              Id = ab.Teles.Count
+                                                                                                          }))
+                        ab.Teles.Add(ae.Id, ae);
+
+                    Groups.Add(ab.Id, ab);
+                }
             }
 
             Log.Info($"AdminPlugin(Teleport): loaded {Groups.Count} groups.");

@@ -68,17 +68,12 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteInt(_mSpoil);
             WriteInt(_mNOriginal); //5
             WriteInt(_mNFotress); //3
-
             WriteByte(0);
             //writeC(m_bShow ? 1 : 0);
             WriteInt(MNAgathion); //21
             WriteInt(_items?.Count ?? 0); //22+
 
-            if (_items == null)
-                return;
-
-            foreach (int id in _items)
-                WriteInt(id);
+            _items?.ForEach(id => WriteInt(id));
         }
     }
 }

@@ -66,14 +66,13 @@ namespace L2dotNET.GameService.World
         {
             //if (character.isTeleporting())
             //    return;
-            foreach (L2ZoneType zone in _zones)
-                zone.RevalidateInZone(character);
+
+            _zones.ForEach(zone => zone.RevalidateInZone(character));
         }
 
         public void RemoveFromZones(L2Character character)
         {
-            foreach (L2ZoneType zone in _zones)
-                zone.RemoveCharacter(character);
+            _zones.ForEach(zone => zone.RemoveCharacter(character));
         }
 
         public bool ContainsZone(int zoneId)

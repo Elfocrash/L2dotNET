@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Network
@@ -234,10 +235,7 @@ namespace L2dotNET.Network
         /// <param name="s">Array of <see cref="string"/> values.</param>
         public unsafe void WriteString(params string[] s)
         {
-            string v = string.Empty;
-
-            foreach (string t in s)
-                v += t + '\0';
+            string v = string.Join(string.Empty, s.Select(t => t + '\0').ToArray());
 
             int length = v.Length * sizeof(char);
 

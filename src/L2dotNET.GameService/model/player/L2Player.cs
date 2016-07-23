@@ -636,6 +636,7 @@ namespace L2dotNET.GameService.Model.Player
             lock (Effects)
             {
                 foreach (AbnormalEffect ei in Effects.Where(ei => ei != null))
+                {
                     if (ei.Active == 1)
                     {
                         int time = ei.GetTime();
@@ -645,9 +646,9 @@ namespace L2dotNET.GameService.Model.Player
                     }
                     else
                         nulled.Add(ei);
+                }
 
-                foreach (AbnormalEffect ei in nulled)
-                    Effects.Remove(ei);
+                nulled.ForEach(ei => Effects.Remove(ei));
             }
 
             nulled.Clear();
@@ -1022,9 +1023,10 @@ namespace L2dotNET.GameService.Model.Player
         {
             lock (Shortcuts)
             {
-                foreach (L2Shortcut sc in Shortcuts.Where(sc => (sc.Slot == slot) && (sc.Page == page)))
+                L2Shortcut shortcut = Shortcuts.FirstOrDefault(sc => (sc.Slot == slot) && (sc.Page == page));
+                if (shortcut != null)
                 {
-                    Shortcuts.Remove(sc);
+                    Shortcuts.Remove(shortcut);
 
                     //SQL_Block sqb = new SQL_Block("user_shortcuts");
                     //sqb.where("ownerId", ObjID);
@@ -1032,7 +1034,6 @@ namespace L2dotNET.GameService.Model.Player
                     //sqb.where("slot", _slot);
                     //sqb.where("page", _page);
                     //sqb.sql_delete(false);
-                    break;
                 }
             }
 
@@ -1329,10 +1330,12 @@ namespace L2dotNET.GameService.Model.Player
             int total = 0;
             //if (!_diet)
             //    foreach (L2Item it in Inventory.Items.Values.Where(it => it.Template.Weight != 0))
+            //{
             //        if (it.Template.isStackable())
             //            total += it.Template.Weight * it.Count;
             //        else
             //            total += it.Template.Weight;
+            //}
 
             CurrentWeight = total >= int.MaxValue ? int.MaxValue : total;
 
@@ -2404,9 +2407,7 @@ namespace L2dotNET.GameService.Model.Player
         {
             if (Cubics.Count > 0)
             {
-                foreach (Cubic cub in Cubics)
-                    cub.OnEnd(false);
-
+                Cubics.ForEach(cub => cub.OnEnd(false));
                 Cubics.Clear();
             }
 

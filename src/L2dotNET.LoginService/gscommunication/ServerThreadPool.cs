@@ -5,7 +5,6 @@ using System.Net.Sockets;
 using log4net;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
-using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using Ninject;
 
@@ -42,18 +41,12 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void Initialize()
         {
-            List<ServerModel> serverModels = ServerService.GetServerList();
-
-            foreach (ServerModel curServ in serverModels)
-            {
-                L2Server server = new L2Server
-                                  {
-                                      Id = (byte)curServ.Id,
-                                      Info = curServ.Name,
-                                      Code = curServ.Code
-                                  };
-                Servers.Add(server);
-            }
+            Servers.AddRange(ServerService.GetServerList().Select(curServ => new L2Server
+                                                                             {
+                                                                                 Id = (byte)curServ.Id,
+                                                                                 Info = curServ.Name,
+                                                                                 Code = curServ.Code
+                                                                             }).ToList());
 
             Log.Info($"GameServerThread: loaded {Servers.Count} servers");
         }
@@ -82,14 +75,14 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void Shutdown(byte id)
         {
-            foreach (L2Server s in Servers.Where(s => s.Id == id))
-            {
-                s.Thread?.Stop();
+            L2Server server = Servers.FirstOrDefault(s => s.Id == id);
 
-                s.Thread = null;
-                Log.Warn($"ServerThread: #{id} shutted down");
-                break;
-            }
+            if (server == null)
+                return;
+
+            server.Thread?.Stop();
+            server.Thread = null;
+            Log.Warn($"ServerThread: #{id} shutted down");
         }
 
         public bool LoggedAlready(string account)
@@ -105,11 +98,8 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void SendPlayer(byte serverId, LoginClient client, string time)
         {
-            foreach (L2Server srv in Servers.Where(srv => (srv.Id == serverId) && (srv.Thread != null)))
-            {
-                srv.Thread.SendPlayer(client, time);
-                break;
-            }
+            L2Server server = Servers.FirstOrDefault(srv => (srv.Id == serverId) && (srv.Thread != null));
+            server?.Thread.SendPlayer(client, time);
         }
     }
 }

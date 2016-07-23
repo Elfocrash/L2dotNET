@@ -116,12 +116,12 @@ namespace L2dotNET.GameService.Model.Communities
         {
             player.Clan = this;
 
-            foreach (ClanMember m in Members.Where(m => m.ObjId == player.ObjId))
+            ClanMember member = Members.FirstOrDefault(m => m.ObjId == player.ObjId);
+            if (member != null)
             {
-                m.Online = 1;
-                m.Level = player.Level;
-                m.Target = player;
-                break;
+                member.Online = 1;
+                member.Level = player.Level;
+                member.Target = player;
             }
 
             if (LeaderId == player.ObjId)
@@ -129,11 +129,11 @@ namespace L2dotNET.GameService.Model.Communities
 
             player.SendPacket(new PledgeShowMemberListAll(this, EClanType.ClanMain));
 
-            foreach (EClanSub sub in GetAllSubs())
-            {
-                player.SendPacket(new PledgeReceiveSubPledgeCreated(sub));
-                player.SendPacket(new PledgeShowMemberListAll(this, sub.Type));
-            }
+            GetAllSubs().ForEach(sub =>
+                                 {
+                                     player.SendPacket(new PledgeReceiveSubPledgeCreated(sub));
+                                     player.SendPacket(new PledgeShowMemberListAll(this, sub.Type));
+                                 });
         }
 
         public void BroadcastToMembers(GameserverPacket pk)
@@ -225,13 +225,12 @@ namespace L2dotNET.GameService.Model.Communities
             //sqb.where("id", ClanID);
             //sqb.sql_update(false);
 
-            //foreach (ClanMember cm in members)
-            //    if (cm.online == 1)
-            //    {
-            //        cm.Target.sendSystemMessage(msg);
-            //        cm.Target.sendPacket(new PledgeCrest(CrestID, picture));
-            //        cm.Target.broadcastUserInfo();
-            //    }
+            //foreach (ClanMember cm in members.Where(m => m.online == 1))
+            //{
+            //   cm.Target.sendSystemMessage(msg);
+            //   cm.Target.sendPacket(new PledgeCrest(CrestID, picture));
+            //   cm.Target.broadcastUserInfo();
+            //}
         }
 
         public void UpdateCrestLarge(int size, byte[] picture)
@@ -274,13 +273,12 @@ namespace L2dotNET.GameService.Model.Communities
             //sqb.where("id", ClanID);
             //sqb.sql_update(false);
 
-            //foreach (ClanMember cm in members)
-            //    if (cm.online == 1)
-            //    {
-            //        cm.Target.sendSystemMessage(msg);
-            //        cm.Target.sendPacket(new ExPledgeCrestLarge(LargeCrestID, picture));
-            //        cm.Target.broadcastUserInfo();
-            //    }
+            //foreach (ClanMember cm in members.Where(m => m.online == 1))
+            //{
+            //   cm.Target.sendSystemMessage(msg);
+            //   cm.Target.sendPacket(new ExPledgeCrestLarge(LargeCrestID, picture));
+            //   cm.Target.broadcastUserInfo();
+            //}
         }
 
         public byte MaxMembers(EClanType type)
@@ -348,12 +346,11 @@ namespace L2dotNET.GameService.Model.Communities
             sm.AddPlayerName(player.Name);
             BroadcastToOnline(sm);
 
-            foreach (ClanMember cm in Members.Where(cm => cm.ObjId == player.ObjId))
+            ClanMember cm = Members.FirstOrDefault(member => member.ObjId == player.ObjId);
+            if (cm != null)
             {
                 lock (Members)
                     Members.Remove(cm);
-
-                break;
             }
 
             player.Clan = null;

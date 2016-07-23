@@ -52,6 +52,7 @@ namespace L2dotNET.GameService.Tables
                 return;
 
             foreach (XElement m in ex.Elements())
+            {
                 if (m.Name == "territory")
                 {
                     L2Territory zone = new L2Territory
@@ -62,6 +63,7 @@ namespace L2dotNET.GameService.Tables
                                        };
 
                     foreach (XElement stp in m.Elements())
+                    {
                         switch (stp.Name.LocalName)
                         {
                             case "npc":
@@ -76,6 +78,7 @@ namespace L2dotNET.GameService.Tables
                                 zone.AddPoint(stp.Attribute("loc").Value.Split(' '));
                                 break;
                         }
+                    }
 
                     zone.InitZone(); //создаем зону
                     if (Territorries.ContainsKey(zone.Name))
@@ -89,6 +92,7 @@ namespace L2dotNET.GameService.Tables
                         continue;
 
                     foreach (XElement stp in m.Elements())
+                    {
                         switch (stp.Name.LocalName)
                         {
                             case "npc":
@@ -118,7 +122,9 @@ namespace L2dotNET.GameService.Tables
                                 _npcs++;
                                 break;
                         }
+                    }
                 }
+            }
         }
 
         private const bool Nospawn = true;
@@ -140,8 +146,8 @@ namespace L2dotNET.GameService.Tables
             }
 
             sp += Spawns.Count;
-            foreach (L2Spawn s in Spawns)
-                s.Init();
+
+            Spawns.ForEach(s => s.Init());
 
             Log.Info($"NpcServer spawn done, #{sp} npcs.");
         }
@@ -151,8 +157,7 @@ namespace L2dotNET.GameService.Tables
             foreach (L2Territory t in Territorries.Values)
                 t.SunRise(y);
 
-            foreach (L2Spawn s in Spawns)
-                s.SunRise(y);
+            Spawns.ForEach(s => s.SunRise(y));
         }
 
         public L2Object SpawnOne(int id, int x, int y, int z, int h)

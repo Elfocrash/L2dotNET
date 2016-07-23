@@ -75,8 +75,7 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public void DestroyAllItems(L2Player player)
         {
-            foreach (L2Item item in Items)
-                DestroyItem(item, item.Count, player);
+            Items.ForEach(item => DestroyItem(item, item.Count, player));
         }
 
         public int AdenaCount()

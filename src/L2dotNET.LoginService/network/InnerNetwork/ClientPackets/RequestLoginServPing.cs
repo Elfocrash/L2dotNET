@@ -6,8 +6,8 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestLoginServPing : PacketBase
     {
-        private string _message;
         private readonly ServerThread _thread;
+        private string _message;
 
         public RequestLoginServPing(Packet p, ServerThread server)
         {

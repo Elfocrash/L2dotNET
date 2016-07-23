@@ -98,6 +98,7 @@ namespace L2dotNET.Utility
         public static SortedList<TKey, TValue> ToSortedList<TSource, TKey, TValue>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TValue> valueSelector)
         {
             SortedList<TKey, TValue> ret = new SortedList<TKey, TValue>();
+
             foreach (TSource item in source)
                 ret.Add(keySelector(item), valueSelector(item));
 

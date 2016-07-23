@@ -33,17 +33,14 @@ namespace L2dotNET.GameService.Model.Player.General
 
         public void RemoveAllMarkers()
         {
-            foreach (RadarMarker tempMarker in _markers)
-                _player.SendPacket(new RadarControl(2, 2, tempMarker._x, tempMarker._y, tempMarker._z));
-
+            _markers.ForEach(tempMarker => _player.SendPacket(new RadarControl(2, 2, tempMarker._x, tempMarker._y, tempMarker._z)));
             _markers.Clear();
         }
 
         public void loadMarkers()
         {
             _player.SendPacket(new RadarControl(2, 2, _player.X, _player.Y, _player.Z));
-            foreach (RadarMarker tempMarker in _markers)
-                _player.SendPacket(new RadarControl(0, 1, tempMarker._x, tempMarker._y, tempMarker._z));
+            _markers.ForEach(tempMarker => _player.SendPacket(new RadarControl(0, 1, tempMarker._x, tempMarker._y, tempMarker._z)));
         }
     }
 }

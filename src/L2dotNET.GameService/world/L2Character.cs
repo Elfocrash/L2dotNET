@@ -399,11 +399,11 @@ namespace L2dotNET.GameService.World
 
             lock (Effects)
             {
-                foreach (AbnormalEffect ei in nulled)
-                {
-                    ei.ForcedStop(false, false);
-                    Effects.Remove(ei);
-                }
+                nulled.ForEach(ei =>
+                               {
+                                   ei.ForcedStop(false, false);
+                                   Effects.Remove(ei);
+                               });
             }
 
             nulled.Clear();

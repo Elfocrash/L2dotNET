@@ -230,8 +230,7 @@ namespace L2dotNET.GameService.Model.Playable
                         nulled.Add(ei);
                 }
 
-                foreach (AbnormalEffect ei in nulled)
-                    Effects.Remove(ei);
+                nulled.ForEach(ei => Effects.Remove(ei));
             }
 
             nulled.Clear();

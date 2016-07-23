@@ -87,11 +87,7 @@ namespace L2dotNET.GameService.Model.Stats
                 newvalue = CalcSupMethod(newvalue, cc.SupMethod);
             }
 
-            if (arif != null)
-            {
-                foreach (Effect cc in arif)
-                    newvalue = CalcSupMethod(newvalue, cc.SupMethod);
-            }
+            arif?.ForEach(cc => newvalue = CalcSupMethod(newvalue, cc.SupMethod));
 
             if (StatBuff.ContainsKey(effect.Type))
             {
@@ -142,11 +138,7 @@ namespace L2dotNET.GameService.Model.Stats
                 newvalue = CalcSupMethod(newvalue, cc.SupMethod);
             }
 
-            if (arif != null)
-            {
-                foreach (Effect cc in arif)
-                    newvalue = CalcSupMethod(newvalue, cc.SupMethod);
-            }
+            arif?.ForEach(cc => newvalue = CalcSupMethod(newvalue, cc.SupMethod));
 
             if (StatBuff.ContainsKey(effect.Type))
             {

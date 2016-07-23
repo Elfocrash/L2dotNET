@@ -71,8 +71,7 @@ namespace L2dotNET.GameService.World
             if (!excludeYourself)
                 SendPacket(pk);
 
-            foreach (L2Player o in GetKnownPlayers())
-                o.SendPacket(pk);
+            GetKnownPlayers().ForEach(p => p.SendPacket(pk));
         }
 
         public virtual void BroadcastPacket(GameserverPacket pk)
@@ -118,8 +117,7 @@ namespace L2dotNET.GameService.World
 
             List<L2Player> result = new List<L2Player>();
 
-            foreach (L2WorldRegion reg in region.GetSurroundingRegions())
-                result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this));
+            region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this)));
 
             return result;
         }

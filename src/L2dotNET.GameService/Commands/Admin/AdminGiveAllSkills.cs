@@ -59,6 +59,7 @@ namespace L2dotNET.GameService.Commands.Admin
 
             //foreach (int a in updDel.Keys)
             //    target.removeSkill(a, true, false);
+
             //updDel.Clear();
 
             foreach (AcquireSkill sk in avail.Values)

@@ -99,9 +99,7 @@ namespace L2dotNET.GameService
 
             CurrentPlayer?.Termination();
 
-            foreach (L2Player p in _accountChars)
-                p.Termination();
-
+            _accountChars.ForEach(p => p.Termination());
             _accountChars.Clear();
 
             ClientManager.Instance.Terminate(Address.ToString());

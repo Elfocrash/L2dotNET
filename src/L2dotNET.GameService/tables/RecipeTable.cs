@@ -36,44 +36,48 @@ namespace L2dotNET.GameService.Tables
             if (ex != null)
             {
                 foreach (XElement m in ex.Elements())
-                    if (m.Name == "recipe")
+                {
+                    if (m.Name != "recipe")
+                        continue;
+
+                    L2Recipe rec = new L2Recipe
+                                   {
+                                       RecipeId = int.Parse(m.Attribute("id").Value),
+                                       Mk = m.Attribute("mk").Value,
+                                       Level = int.Parse(m.Attribute("level").Value),
+                                       ItemId = int.Parse(m.Attribute("itemId").Value),
+                                       Iscommonrecipe = int.Parse(m.Attribute("common").Value)
+                                   };
+
+                    foreach (XElement stp in m.Elements())
                     {
-                        L2Recipe rec = new L2Recipe
-                                       {
-                                           RecipeId = int.Parse(m.Attribute("id").Value),
-                                           Mk = m.Attribute("mk").Value,
-                                           Level = int.Parse(m.Attribute("level").Value),
-                                           ItemId = int.Parse(m.Attribute("itemId").Value),
-                                           Iscommonrecipe = int.Parse(m.Attribute("common").Value)
-                                       };
-
-                        foreach (XElement stp in m.Elements())
-                            switch (stp.Name.LocalName)
+                        switch (stp.Name.LocalName)
+                        {
+                            case "material":
                             {
-                                case "material":
-                                {
-                                    rec.MpConsume = int.Parse(stp.Attribute("mp").Value);
-                                    rec.Materials = stp.Elements().Where(items => items.Name == "item").Select(items => new RecipeItemEntry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value))).ToList();
-                                }
-
-                                    break;
-                                case "product":
-                                {
-                                    rec.SuccessRate = int.Parse(stp.Attribute("rate").Value);
-                                    rec.Products = stp.Elements().Where(items => items.Name == "item").Select(items => new RecipeItemEntry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value))).ToList();
-                                }
-
-                                    break;
-                                case "fee":
-                                {
-                                    rec.NpcFee = stp.Elements().Where(items => items.Name == "item").Select(items => new RecipeItemEntry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value))).ToList();
-                                }
-
-                                    break;
+                                rec.MpConsume = int.Parse(stp.Attribute("mp").Value);
+                                rec.Materials = stp.Elements().Where(items => items.Name == "item").Select(items => new RecipeItemEntry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value))).ToList();
                             }
 
-                        Recipes.Add(rec.RecipeId, rec);
+                                break;
+                            case "product":
+                            {
+                                rec.SuccessRate = int.Parse(stp.Attribute("rate").Value);
+                                rec.Products = stp.Elements().Where(items => items.Name == "item").Select(items => new RecipeItemEntry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value))).ToList();
+                            }
+
+                                break;
+                            case "fee":
+                            {
+                                rec.NpcFee = stp.Elements().Where(items => items.Name == "item").Select(items => new RecipeItemEntry(int.Parse(items.Attribute("id").Value), int.Parse(items.Attribute("count").Value))).ToList();
+                            }
+
+                                break;
+                        }
                     }
+
+                    Recipes.Add(rec.RecipeId, rec);
+                }
             }
 
             Log.Info($"RecipeTable: loaded {Recipes.Count} recipes.");
