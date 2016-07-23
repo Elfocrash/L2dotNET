@@ -30,20 +30,22 @@ namespace L2dotNET.LoginService.Network
         public static void Handle(Packet packet, LoginClient client)
         {
             Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
-            PacketBase incPacket = null;
-            if (ClientPackets.ContainsKey(packet.FirstOpcode))
-                incPacket = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client);
 
+            if (!ClientPackets.ContainsKey(packet.FirstOpcode))
+                return;
+
+            PacketBase incPacket = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client);
             incPacket?.RunImpl();
         }
 
         public static void Handle(Packet packet, ServerThread client)
         {
             Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
-            PacketBase incPacket = null;
-            if (ClientPacketsServ.ContainsKey(packet.FirstOpcode))
-                incPacket = (PacketBase)Activator.CreateInstance(ClientPacketsServ[packet.FirstOpcode], packet, client);
 
+            if (!ClientPacketsServ.ContainsKey(packet.FirstOpcode))
+                return;
+
+            PacketBase incPacket = (PacketBase)Activator.CreateInstance(ClientPacketsServ[packet.FirstOpcode], packet, client);
             incPacket?.RunImpl();
         }
     }

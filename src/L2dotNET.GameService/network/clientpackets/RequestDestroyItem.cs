@@ -41,7 +41,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (item == null)
             {
-                player.SendMessage("null item " + _sId);
+                player.SendMessage($"null item {_sId}");
                 player.SendActionFailed();
                 return;
             }

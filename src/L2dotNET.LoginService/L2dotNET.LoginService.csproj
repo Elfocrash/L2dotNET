@@ -170,10 +170,6 @@
     <Folder Include="Network\OuterNetwork\ClientPackets\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\L2dotNET.GameService\L2dotNET.GameService.csproj">
-      <Project>{991E13B3-EB83-46C1-9F63-6ED3E332F88F}</Project>
-      <Name>L2dotNET.GameService</Name>
-    </ProjectReference>
     <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">
       <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
       <Name>L2dotNET.Models</Name>

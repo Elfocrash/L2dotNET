@@ -4,7 +4,7 @@ namespace L2dotNET.GameService.Model.Communities
     {
         public EClanType Type;
         public int LeaderId;
-        public string LeaderName = "";
+        public string LeaderName = string.Empty;
         public bool Enabled;
         public string Name;
 

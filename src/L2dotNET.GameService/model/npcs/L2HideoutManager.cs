@@ -144,17 +144,17 @@ namespace L2dotNET.GameService.Model.Npcs
                             htm.Replace("<?HPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeHpregen));
                             htm.Replace("<?HPCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeHpregen));
                             htm.Replace("<?HPExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.Replace("<?HPReset?>", "");
+                            htm.Replace("<?HPReset?>", string.Empty);
 
                             htm.Replace("<?MPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeMpregen));
                             htm.Replace("<?MPCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeMpregen));
                             htm.Replace("<?MPExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.Replace("<?MPReset?>", "");
+                            htm.Replace("<?MPReset?>", string.Empty);
 
                             htm.Replace("<?XPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeXprestore));
                             htm.Replace("<?XPCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeXprestore));
                             htm.Replace("<?XPExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.Replace("<?XPReset?>", "");
+                            htm.Replace("<?XPReset?>", string.Empty);
                             player.SendPacket(htm);
                         }
                             break;
@@ -164,17 +164,17 @@ namespace L2dotNET.GameService.Model.Npcs
                             htm.Replace("<?TPDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeTeleport));
                             htm.Replace("<?TPCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeTeleport));
                             htm.Replace("<?TPExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.Replace("<?TPReset?>", "");
+                            htm.Replace("<?TPReset?>", string.Empty);
 
                             htm.Replace("<?BFDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeBuff));
                             htm.Replace("<?BFCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeBuff));
                             htm.Replace("<?BFExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.Replace("<?BFReset?>", "");
+                            htm.Replace("<?BFReset?>", string.Empty);
 
                             htm.Replace("<?ICDepth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeItem));
                             htm.Replace("<?ICCost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeItem));
                             htm.Replace("<?ICExpire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.Replace("<?ICReset?>", "");
+                            htm.Replace("<?ICReset?>", string.Empty);
                             player.SendPacket(htm);
                         }
                             break;
@@ -184,12 +184,12 @@ namespace L2dotNET.GameService.Model.Npcs
                             htm.Replace("<?7_Depth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypeCurtain));
                             htm.Replace("<?7_Cost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypeCurtain));
                             htm.Replace("<?7_Expire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.Replace("<?7_Reset?>", "");
+                            htm.Replace("<?7_Reset?>", string.Empty);
 
                             htm.Replace("<?11_Depth?>", _hideout.GetFuncDepth(AgitManagerAi.DecotypePlatform));
                             htm.Replace("<?11_Cost?>", _hideout.GetCurrentDecoCost(AgitManagerAi.DecotypePlatform));
                             htm.Replace("<?11_Expire?>", _hideout.PayTime.ToString("yyyy/MM/dd HH:mm"));
-                            htm.Replace("<?11_Reset?>", "");
+                            htm.Replace("<?11_Reset?>", string.Empty);
                             player.SendPacket(htm);
                         }
                             break;

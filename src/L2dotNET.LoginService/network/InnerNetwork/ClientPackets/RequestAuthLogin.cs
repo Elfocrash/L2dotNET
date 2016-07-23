@@ -41,8 +41,8 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
                 decrypt = temp;
             }
 
-            string username = Encoding.ASCII.GetString(decrypt, 0x5e, 14).Replace("\0", "");
-            string password = Encoding.ASCII.GetString(decrypt, 0x6c, 16).Replace("\0", "");
+            string username = Encoding.ASCII.GetString(decrypt, 0x5e, 14).Replace("\0", string.Empty);
+            string password = Encoding.ASCII.GetString(decrypt, 0x6c, 16).Replace("\0", string.Empty);
 
             AccountModel account = AccountService.GetAccountByLogin(username);
 

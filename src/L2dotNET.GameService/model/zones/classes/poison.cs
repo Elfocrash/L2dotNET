@@ -81,7 +81,7 @@ namespace L2dotNET.GameService.Model.Zones.Classes
 
             int x1 = 0,
                 x2 = 0;
-            int id = int.Parse(Template.Name.Substring(5).Replace("]", ""));
+            int id = int.Parse(Template.Name.Substring(5).Replace("]", string.Empty));
 
             switch (id)
             {

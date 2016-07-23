@@ -100,7 +100,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     //    }
                     //    else
                     //    {
-                    //        player.sendPacket(new CreatureSay(player.ObjID, Type, "->" + target.Name, _text));
+                    //        player.sendPacket(new CreatureSay(player.ObjID, Type, $"->"{target.Name}", _text));
                     //        target.sendPacket(cs);
                     //    }
                     //}

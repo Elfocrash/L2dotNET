@@ -1135,7 +1135,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public override string AsString()
         {
-            return "L2Player:" + Name;
+            return $"L2Player:{Name}";
         }
 
         public override void OnRemObject(L2Object obj)
@@ -2014,7 +2014,7 @@ namespace L2dotNET.GameService.Model.Player
 
             if (!Calcs.CheckIfInRange((int)dist, this, target, true))
             {
-                SendMessage("too far " + dist);
+                SendMessage($"too far {dist}");
                 TryMoveTo(target.X, target.Y, target.Z);
                 return;
             }
@@ -2292,7 +2292,7 @@ namespace L2dotNET.GameService.Model.Player
             }
 
             Ping = ms;
-            SendMessage("Your connection latency is " + ms);
+            SendMessage($"Your connection latency is {ms}");
         }
 
         public void InstantTeleportWithItem(int x, int y, int z, int id, int cnt)
@@ -2353,7 +2353,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public void UpdateAgathionEnergy(int count)
         {
-            SendMessage("@UpdateAgathionEnergy " + count);
+            SendMessage($"@UpdateAgathionEnergy {count}");
         }
 
         public List<Cubic> Cubics = new List<Cubic>();

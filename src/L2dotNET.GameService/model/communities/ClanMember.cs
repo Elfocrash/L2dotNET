@@ -13,7 +13,7 @@ namespace L2dotNET.GameService.Model.Communities
         public string NickName,
                       PledgeTypeName;
         public int ClanPrivs;
-        public string OwnerName = "";
+        public string OwnerName = string.Empty;
         public int Gender;
         public int Race;
         public int Online;

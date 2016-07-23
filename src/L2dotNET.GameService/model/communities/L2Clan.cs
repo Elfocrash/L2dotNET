@@ -78,7 +78,7 @@ namespace L2dotNET.GameService.Model.Communities
 
         public int AllianceCrestId => Alliance?.CrestId ?? 0;
 
-        public string AllianceName => Alliance == null ? "" : Alliance.Name;
+        public string AllianceName => Alliance == null ? string.Empty : Alliance.Name;
 
         public void AddMember(L2Player player, short type)
         {
@@ -361,7 +361,7 @@ namespace L2dotNET.GameService.Model.Communities
             player.ClanPrivs = 0;
             player.ClanType = 0;
 
-            player.Title = "";
+            player.Title = string.Empty;
             player.SendSystemMessage(SystemMessage.SystemMessageId.YouHaveWithdrawnFromClan);
             player.SendPacket(new PledgeShowMemberListDeleteAll());
             player.BroadcastUserInfo();

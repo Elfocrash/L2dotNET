@@ -76,7 +76,7 @@ namespace L2dotNET.GameService.Tables
                             if (itemElement != null)
                             {
                                 string items = itemElement.Value;
-                                items = items.Replace("\n", "").Replace(" ", "");
+                                items = items.Replace("\n", string.Empty).Replace(" ", string.Empty);
 
                                 foreach (string i in items.Split(','))
                                 {
@@ -116,7 +116,7 @@ namespace L2dotNET.GameService.Tables
 
                 if (!shop.Lists.ContainsKey(reply))
                 {
-                    player.SendMessage("your shop id was just wrong " + reply);
+                    player.SendMessage($"your shop id was just wrong {reply}");
                     player.SendActionFailed();
                 }
                 else
@@ -147,7 +147,7 @@ namespace L2dotNET.GameService.Tables
             StringBuilder sb = new StringBuilder("&$556;<br><br>");
             foreach (ABTeleportEntry e in group.Teles.Values)
             {
-                string cost = "";
+                string cost = string.Empty;
                 int id = itemId != -1 ? itemId : e.ItemId;
                 if (player.Level >= 40)
                     cost = $" - {e.Cost} &#{id};";

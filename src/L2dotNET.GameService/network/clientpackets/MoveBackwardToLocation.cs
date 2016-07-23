@@ -58,7 +58,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            // player.sendMessage("can see: " + GeoData.getInstance().canSeeCoord(player, _targetX, _targetY, _targetZ, true));
+            // player.sendMessage($"can see: {GeoData.getInstance().canSeeCoord(player, _targetX, _targetY, _targetZ, true)}");
 
             player.Obsx = -1;
 

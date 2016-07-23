@@ -88,7 +88,7 @@ namespace L2dotNET.GameService.Model.Items
                                 }
                                 catch (Exception)
                                 {
-                                    Log.Error("cant parse capsule " + caps.Id);
+                                    Log.Error($"cant parse capsule {caps.Id}");
                                 }
                                 break;
                         }

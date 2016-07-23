@@ -21,7 +21,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteInt(_pet.X);
             WriteInt(_pet.Y);
             WriteInt(_pet.Z);
-            WriteString("");
+            WriteString(string.Empty);
             WriteInt(_pet.CurrentTime);
             WriteInt(_pet.MaxTime);
             WriteInt(_pet.CurHp);

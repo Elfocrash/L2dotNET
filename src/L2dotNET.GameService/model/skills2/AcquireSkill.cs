@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Model.Skills2
         public int Lv;
         public int SocialClass;
         public bool ResidenceSkill;
-        public string PledgeType = "";
+        public string PledgeType = string.Empty;
         public int IdPrerequisiteSkill;
         public int LvPrerequisiteSkill;
         public int ItemCount;

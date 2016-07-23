@@ -18,10 +18,16 @@ namespace L2dotNET.GameService.Network.Serverpackets
             Text = text;
         }
 
-        public CreatureSay(SayIDList type, string text = "")
+        public CreatureSay(SayIDList type, string text)
         {
             _type = type;
             Text = text;
+        }
+
+        public CreatureSay(SayIDList type)
+        {
+            _type = type;
+            Text = string.Empty;
         }
 
         public override void Write()

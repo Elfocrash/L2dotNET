@@ -9,7 +9,7 @@ namespace L2dotNET.GameService.Network.LoginAuth.Send
             WriteByte(0xA1);
             WriteShort(Config.Config.Instance.ServerConfig.Port);
             WriteString(Config.Config.Instance.ServerConfig.Host);
-            WriteString("");
+            WriteString(string.Empty);
             WriteString(Config.Config.Instance.ServerConfig.AuthCode);
             WriteInt(0);
             WriteShort(Config.Config.Instance.ServerConfig.MaxPlayers);

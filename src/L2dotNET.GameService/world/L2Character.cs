@@ -745,8 +745,8 @@ namespace L2dotNET.GameService.World
             su.Add(StatusUpdate.CurHp, 0);
             BroadcastPacket(su);
 
-            SendMessage("You died from " + killer.Name);
-            killer.SendMessage("You killed " + Name);
+            SendMessage($"You died from {killer.Name}");
+            killer.SendMessage($"You killed {Name}");
             BroadcastPacket(new Die(this));
 
             UpdateMagicEffectIcons();
@@ -1549,7 +1549,7 @@ namespace L2dotNET.GameService.World
 
         public override string AsString()
         {
-            return "L2Character:" + ObjId;
+            return $"L2Character: {ObjId}";
         }
 
         public virtual L2Item GetWeaponItem()

@@ -60,7 +60,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public override void OnAction(L2Player player)
         {
-            player.SendMessage("onAction " + AsString());
+            player.SendMessage($"onAction {AsString()}");
 
             player.ChangeTarget(this);
         }
@@ -402,7 +402,7 @@ namespace L2dotNET.GameService.Model.Npcs
 
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {
-            cha.SendMessage("L2Npc.CastBuffForQuestReward " + skillId);
+            cha.SendMessage($"L2Npc.CastBuffForQuestReward {skillId}");
             //TODO: Fix the unassigned objected created
             new BuffForQuestReward(this, cha, skillId);
         }

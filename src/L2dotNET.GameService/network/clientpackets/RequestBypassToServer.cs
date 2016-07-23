@@ -65,7 +65,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 {
                     npc = GetNpc();
 
-                    _alias = _alias.Replace(" ", "");
+                    _alias = _alias.Replace(" ", string.Empty);
                     string x1 = _alias.Split('?')[1];
                     string[] x2 = x1.Split('&');
                     int ask = int.Parse(x2[0].Substring(4));
@@ -94,7 +94,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                         if (_alias.StartsWithIgnoreCase("quest_accept?"))
                         {
                             npc = GetNpc();
-                            _alias = _alias.Replace(" ", "");
+                            _alias = _alias.Replace(" ", string.Empty);
                             string x1 = _alias.Split('?')[1];
                             int qid = int.Parse(x1.Split('=')[1]);
 
@@ -105,7 +105,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                             if (_alias.StartsWithIgnoreCase("quest_continue?"))
                             {
                                 npc = GetNpc();
-                                _alias = _alias.Replace(" ", "");
+                                _alias = _alias.Replace(" ", string.Empty);
                                 string x1 = _alias.Split('?')[1];
                                 int qid = int.Parse(x1.Split('=')[1]);
 
@@ -116,7 +116,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                                 if (_alias.StartsWithIgnoreCase("quest_tryaccept?"))
                                 {
                                     npc = GetNpc();
-                                    _alias = _alias.Replace(" ", "");
+                                    _alias = _alias.Replace(" ", string.Empty);
                                     string x1 = _alias.Split('?')[1];
                                     int qid = int.Parse(x1.Split('=')[1]);
 

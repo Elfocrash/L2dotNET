@@ -43,8 +43,8 @@ namespace L2dotNET.GameService.Network.Serverpackets
             //writeC(0);
             //writeC(0);
             //writeC(0); // invisible ?? 0=false  1=true   2=summoned (only works if model has a summon animation)
-            //writeS("");//name
-            //writeS("");//title
+            //writeS(string.Empty);//name
+            //writeS(string.Empty);//title
             //writeD(0x00); // Title color 0=client default
             //writeD(0x00); //pvp flag
             //writeD(0x00); // karma
