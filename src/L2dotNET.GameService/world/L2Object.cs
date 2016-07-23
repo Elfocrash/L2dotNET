@@ -335,7 +335,7 @@ namespace L2dotNET.GameService.World
                 return;
 
             if (this is L2Player)
-                ((L2Player)this).SendMessage("entered zone " + z.Name);
+                ((L2Player)this).SendMessage($"entered zone {z.Name}");
 
             ActiveZones.Add(z.ZoneId, z);
             z.OnEnter(this);
@@ -541,7 +541,7 @@ namespace L2dotNET.GameService.World
 
         public virtual string AsString()
         {
-            return "L2Object:" + ObjId;
+            return $"L2Object: {ObjId}";
         }
     }
 }

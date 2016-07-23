@@ -55,7 +55,7 @@ namespace L2dotNET.Tests
                             break;
                     ////PcTemplate pcTempl = new PcTemplate(classId, set);
                     ////templates.Add((int)pcTempl.ClassId, pcTempl);
-                    //System.Diagnostics.Trace.WriteLine("Added template for: " + pcTempl.ClassId);
+                    //System.Diagnostics.Trace.WriteLine($"Added template for: {pcTempl.ClassId}");
                 }
             }
         }

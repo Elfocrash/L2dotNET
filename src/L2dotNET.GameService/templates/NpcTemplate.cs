@@ -56,7 +56,7 @@ namespace L2dotNET.GameService.Templates
             IdTemplate = set.GetInt("idTemplate", NpcId);
             Type = set.GetString("type");
             Name = set.GetString("name");
-            Title = set.GetString("title", "");
+            Title = set.GetString("title", string.Empty);
             CantBeChampionMonster = Title.EqualsIgnoreCase("Quest Monster");
             Level = set.GetByte("level", 1);
             Exp = set.GetInt("exp");

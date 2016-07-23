@@ -31,7 +31,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             {
                 WriteInt(x); // Territory Id
                 WriteString($"{str}_dominion"); // territory name
-                WriteString("");
+                WriteString(string.Empty);
                 WriteInt(0); // Emblem Count
                 //  for(int i:t.getOwnedWardIds())
                 //    writeD(i); // Emblem ID - should be in for loop for emblem count

@@ -68,7 +68,7 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
 
         public void SetTex(string[] d)
         {
-            TownMap = new ShowTownMap("town_map." + d[0], Convert.ToInt32(d[1]), Convert.ToInt32(d[2]));
+            TownMap = new ShowTownMap($"town_map.{d[0]}", Convert.ToInt32(d[1]), Convert.ToInt32(d[2]));
         }
     }
 }

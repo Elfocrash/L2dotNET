@@ -61,7 +61,7 @@ namespace L2dotNET.GameService.Tables
                     int rY = Convert.ToInt32(attrs.GetNamedItem("geoY").Value) - 10;
                     for (int rX = 0; rX < RegionsX; rX++)
                     {
-                        Regions[rX, rY] = Convert.ToInt32(attrs.GetNamedItem("geoX_" + (rX + 16)).Value);
+                        Regions[rX, rY] = Convert.ToInt32(attrs.GetNamedItem($"geoX_{rX + 16}").Value);
                         count++;
                     }
                 }

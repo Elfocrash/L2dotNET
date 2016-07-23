@@ -43,7 +43,7 @@ namespace L2dotNET.GameService.AI.NpcAI
         public int FriendShip = 0;
         public int DungeonType = 0;
         public int DungeonTypeAi = 0;
-        public string DungeonTypePrivate = "";
+        public string DungeonTypePrivate = string.Empty;
         public int ShoutTarget = 0;
         public int AcceptShoutTarget = 0;
         public int SelfExplosion = 0;

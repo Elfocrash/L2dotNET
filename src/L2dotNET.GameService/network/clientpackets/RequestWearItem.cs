@@ -39,7 +39,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             {
                 int itemId = _items[i];
 
-                player.SendMessage("wear item " + itemId);
+                player.SendMessage($"wear item {itemId}");
             }
         }
     }

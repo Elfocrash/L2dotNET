@@ -51,10 +51,10 @@ namespace L2dotNET.GameService.Controllers
             ServerStartUp = DateTime.Now;
             Time = 5800 + 0; // 10800 18:00 вечер
             _timeController = new System.Timers.Timer
-                              {
-                                  Interval = 1000,
-                                  Enabled = true
-                              };
+            {
+                Interval = 1000,
+                Enabled = true
+            };
             _timeController.Elapsed += ActionTime;
 
             Log.Info("GameTime Controller: started 18:00 PM.");
@@ -104,11 +104,8 @@ namespace L2dotNET.GameService.Controllers
             DateTime dt = new DateTime(2000, 1, 1, 0, 0, 0).AddSeconds(Time * 6);
 
             SystemMessage sm = new SystemMessage(Night ? SystemMessage.SystemMessageId.TimeS1S2InTheNight : SystemMessage.SystemMessageId.TimeS1S2InTheDay);
-            sm.AddString(dt.Hour < 10 ? "0" + dt.Hour : "" + dt.Hour);
-            string str = dt.Minute < 10 ? "0" + dt.Minute : "" + dt.Minute;
-            str += ":";
-            str += dt.Second < 10 ? "0" + dt.Second : "" + dt.Second;
-            sm.AddString(str);
+            sm.AddString(dt.ToString("hh"));
+            sm.AddString(dt.ToString("mm:ss"));
             player.SendPacket(sm);
         }
     }

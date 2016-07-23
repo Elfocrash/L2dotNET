@@ -92,7 +92,7 @@ namespace L2dotNET.GameService.Model.Npcs.Ai
         {
             List<int[]> ar = _data.Where(d => d[0] == group).ToList();
 
-            string text = "&$650;<br>" + string.Join(string.Empty, ar.Select(val => $"<a action=\"bypass -h menu_select?ask=-3&reply={val[1]}\">&${val[1]};</a><br1>").ToArray());
+            string text = $"&$650;<br>{string.Join(string.Empty, ar.Select(val => $"<a action=\"bypass -h menu_select?ask=-3&reply={val[1]}\">&${val[1]};</a><br1>").ToArray())}";
 
             player.ShowHtmPlain(text, npc);
         }

@@ -52,7 +52,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                     GameTime.Instance.ShowInfo(player);
                     break;
                 default:
-                    player.SendMessage("cmd alias " + _command);
+                    player.SendMessage($"cmd alias {_command}");
                     break;
             }
         }

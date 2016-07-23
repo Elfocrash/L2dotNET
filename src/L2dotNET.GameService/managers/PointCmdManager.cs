@@ -23,7 +23,7 @@ namespace L2dotNET.GameService.Managers
                     break;
 
                 default:
-                    player.SendMessage("accepted point cmd " + text);
+                    player.SendMessage($"accepted point cmd {text}");
                     break;
             }
 

@@ -104,7 +104,7 @@ namespace L2dotNET.GameService.Tables
             //    MySqlConnection conn2 = sq.conn();
             //    MySqlCommand msc_1 = conn2.CreateCommand();
             //    conn2.Open();
-            //    msc_1.CommandText = "SELECT * FROM characters where clanId=" + clan.ClanID;
+            //    msc_1.CommandText = $"SELECT * FROM characters where clanId={clan.ClanID}";
             //    msc_1.CommandType = CommandType.Text;
 
             //    MySqlDataReader members_r = msc_1.ExecuteReader();
@@ -133,7 +133,7 @@ namespace L2dotNET.GameService.Tables
             //    members_r.Close();
 
             //    MySqlCommand msc_2 = conn2.CreateCommand();
-            //    msc_2.CommandText = "SELECT * FROM clan_sub where id=" + clan.ClanID;
+            //    msc_2.CommandText = $"SELECT * FROM clan_sub where id={clan.ClanID}";
             //    msc_2.CommandType = CommandType.Text;
 
             //    MySqlDataReader subs = msc_2.ExecuteReader();

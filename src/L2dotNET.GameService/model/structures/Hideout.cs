@@ -36,7 +36,7 @@ namespace L2dotNET.GameService.Model.Structures
         {
             ZoneTemplate template = new ZoneTemplate
                                     {
-                                        Name = "hideout #" + ID,
+                                        Name = $"hideout #{ID}",
                                         Type = ZoneTemplate.ZoneType.Hideout
                                     };
             template.SetRange(zoneLoc);
@@ -74,7 +74,7 @@ namespace L2dotNET.GameService.Model.Structures
             Decoration[decoId] = level;
 
             //SQL_Block sqb = new SQL_Block("st_hideouts");
-            //sqb.param("func_" + decoId, level);
+            //sqb.param($"func_{decoId}", level);
             //sqb.where("id", ID);
             //sqb.sql_update(false);
 

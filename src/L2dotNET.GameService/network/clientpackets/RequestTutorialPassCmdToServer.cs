@@ -15,7 +15,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             _client = client;
             _alias = packet.ReadString();
             if (_alias.Contains("\n"))
-                _alias = _alias.Replace("\n", "");
+                _alias = _alias.Replace("\n", string.Empty);
         }
 
         public override void RunImpl()
@@ -30,7 +30,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             if (_alias.StartsWithIgnoreCase("menu_select?"))
             {
-                //_alias = _alias.Replace(" ", "");
+                //_alias = _alias.Replace(" ", string.Empty);
                 //string x1 = _alias.Split('?')[1];
                 //string[] x2 = x1.Split('&');
                 //int ask = int.Parse(x2[0].Substring(4));

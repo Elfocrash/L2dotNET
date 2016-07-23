@@ -67,7 +67,7 @@ namespace L2dotNET.GameService.Model.Zones
             if (Skills == null)
                 Skills = new List<Skill>();
 
-            //string d1 = val.Substring(1).Replace("}", "").Replace("@", "");
+            //string d1 = val.Substring(1).Replace("}", string.Empty).Replace("@", string.Empty);
 
             //foreach (string sk in d1.Split(';'))
             //{
@@ -90,7 +90,7 @@ namespace L2dotNET.GameService.Model.Zones
 
         public void SetRange(string val)
         {
-            string d1 = val.Substring(2).Replace("};{", "\f").Replace("}}", "");
+            string d1 = val.Substring(2).Replace("};{", "\f").Replace("}}", string.Empty);
             int s = d1.Split('\f').Length;
             X = new int[s];
             Y = new int[s];

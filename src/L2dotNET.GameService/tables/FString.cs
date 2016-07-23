@@ -15,10 +15,7 @@ namespace L2dotNET.GameService.Tables
 
         public string Get(int p)
         {
-            if (Strings.ContainsKey(p))
-                return Strings[p];
-
-            return "" + p;
+            return Strings.ContainsKey(p) ? Strings[p] : p.ToString();
         }
     }
 }

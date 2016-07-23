@@ -81,7 +81,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             L2Player player = L2Player.Create();
             player.Name = _name;
             player.AccountName = _client.AccountName;
-            player.Title = "";
+            player.Title = string.Empty;
             player.Sex = _sex;
 
             player.HairStyle = _hairStyle;

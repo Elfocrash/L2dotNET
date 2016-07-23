@@ -12,13 +12,13 @@ namespace L2dotNET.GameService.Model.Skills2.SpecEffects
         public override void OnStartMoving(L2Player player)
         {
             player.CharacterStat.SpecBonusRegHp += Value;
-            player.SendMessage("reg hp inc to " + player.CharacterStat.GetStat(EffectType.BRegHp));
+            player.SendMessage($"reg hp inc to {player.CharacterStat.GetStat(EffectType.BRegHp)}");
         }
 
         public override void OnStopMoving(L2Player player)
         {
             player.CharacterStat.SpecBonusRegHp -= Value;
-            player.SendMessage("reg hp lowered to " + player.CharacterStat.GetStat(EffectType.BRegHp));
+            player.SendMessage($"reg hp lowered to {player.CharacterStat.GetStat(EffectType.BRegHp)}");
         }
     }
 }

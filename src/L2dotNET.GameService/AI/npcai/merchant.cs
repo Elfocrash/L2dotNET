@@ -7,7 +7,7 @@ namespace L2dotNET.GameService.AI.NpcAI
 {
     class Merchant : Citizen
     {
-        public string ShopName = "";
+        public string ShopName = string.Empty;
         public string FnSell = "msell.htm";
         public string FnBuy = "mbye.htm";
         public string FnUnableItemSell = "muib.htm";

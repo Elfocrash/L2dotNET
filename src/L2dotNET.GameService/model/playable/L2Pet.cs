@@ -12,7 +12,7 @@ namespace L2dotNET.GameService.Model.Playable
         {
             ObjectSummonType = 2;
             ObjId = IdFactory.Instance.NextId();
-            Name = "";
+            Name = string.Empty;
             Inventory = new PetInventory(this);
         }
 
