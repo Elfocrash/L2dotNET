@@ -7,7 +7,6 @@ using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Services.Contracts;
 using Ninject;
-using Ninject.Infrastructure.Language;
 
 namespace L2dotNET.LoginService.GSCommunication
 {
@@ -43,11 +42,11 @@ namespace L2dotNET.LoginService.GSCommunication
         public void Initialize()
         {
             Servers.AddRange(ServerService.GetServerList().Select(curServ => new L2Server
-            {
-                Id = (byte)curServ.Id,
-                Info = curServ.Name,
-                Code = curServ.Code
-            }).ToEnumerable());
+                                                                             {
+                                                                                 Id = (byte)curServ.Id,
+                                                                                 Info = curServ.Name,
+                                                                                 Code = curServ.Code
+                                                                             }).ToList());
 
             Log.Info($"GameServerThread: loaded {Servers.Count} servers");
         }
