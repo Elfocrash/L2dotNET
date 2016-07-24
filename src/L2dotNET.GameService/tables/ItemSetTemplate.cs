@@ -106,9 +106,9 @@ namespace L2dotNET.GameService.Tables
         public List<int> GetAllSetIds()
         {
             List<int> list = new List<int>
-                             {
-                                 ArmorId
-                             };
+            {
+                ArmorId
+            };
 
             if (Legs != null)
                 list.AddRange(Legs);

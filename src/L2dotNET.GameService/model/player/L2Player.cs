@@ -1420,173 +1420,173 @@ namespace L2dotNET.GameService.Model.Player
             switch (ClanType)
             {
                 case (short)EClanType.ClanMain:
+                {
+                    switch (Clan.Level)
                     {
-                        switch (Clan.Level)
-                        {
-                            case 0:
-                            case 1:
-                            case 2:
-                            case 3:
-                                rank = EClanRank._1;
-                                break;
-                            case 4:
-                                if (leader)
+                        case 0:
+                        case 1:
+                        case 2:
+                        case 3:
+                            rank = EClanRank._1;
+                            break;
+                        case 4:
+                            if (leader)
+                                rank = EClanRank._3;
+                            break;
+                        case 5:
+                            rank = leader ? EClanRank._4 : EClanRank._3;
+                            break;
+                        case 6:
+                            if (leader)
+                                rank = EClanRank._5;
+                            else
+                            {
+                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                    rank = EClanRank._4;
+                                else
                                     rank = EClanRank._3;
-                                break;
-                            case 5:
-                                rank = leader ? EClanRank._4 : EClanRank._3;
-                                break;
-                            case 6:
-                                if (leader)
-                                    rank = EClanRank._5;
+                            }
+                            break;
+                        case 7:
+                            if (leader)
+                                rank = EClanRank._7;
+                            else
+                            {
+                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                    rank = EClanRank._6;
                                 else
                                 {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
-                                        rank = EClanRank._4;
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                        rank = EClanRank._5;
                                     else
-                                        rank = EClanRank._3;
+                                        rank = EClanRank._4;
                                 }
-                                break;
-                            case 7:
-                                if (leader)
+                            }
+                            break;
+                        case 8:
+                            if (leader)
+                                rank = EClanRank._8;
+                            else
+                            {
+                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
                                     rank = EClanRank._7;
                                 else
                                 {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
                                         rank = EClanRank._6;
                                     else
-                                    {
-                                        if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
-                                            rank = EClanRank._5;
-                                        else
-                                            rank = EClanRank._4;
-                                    }
+                                        rank = EClanRank._5;
                                 }
-                                break;
-                            case 8:
-                                if (leader)
+                            }
+                            break;
+                        case 9:
+                            if (leader)
+                                rank = EClanRank._9;
+                            else
+                            {
+                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
                                     rank = EClanRank._8;
                                 else
                                 {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
                                         rank = EClanRank._7;
                                     else
-                                    {
-                                        if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
-                                            rank = EClanRank._6;
-                                        else
-                                            rank = EClanRank._5;
-                                    }
+                                        rank = EClanRank._6;
                                 }
-                                break;
-                            case 9:
-                                if (leader)
+                            }
+                            break;
+                        case 10:
+                            if (leader)
+                                rank = EClanRank._10;
+                            else
+                            {
+                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
                                     rank = EClanRank._9;
                                 else
                                 {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
                                         rank = EClanRank._8;
                                     else
-                                    {
-                                        if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
-                                            rank = EClanRank._7;
-                                        else
-                                            rank = EClanRank._6;
-                                    }
+                                        rank = EClanRank._7;
                                 }
-                                break;
-                            case 10:
-                                if (leader)
+                            }
+                            break;
+                        case 11:
+                            if (leader)
+                                rank = EClanRank._11;
+                            else
+                            {
+                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
                                     rank = EClanRank._10;
                                 else
                                 {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
                                         rank = EClanRank._9;
                                     else
-                                    {
-                                        if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
-                                            rank = EClanRank._8;
-                                        else
-                                            rank = EClanRank._7;
-                                    }
+                                        rank = EClanRank._8;
                                 }
-                                break;
-                            case 11:
-                                if (leader)
-                                    rank = EClanRank._11;
-                                else
-                                {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
-                                        rank = EClanRank._10;
-                                    else
-                                    {
-                                        if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
-                                            rank = EClanRank._9;
-                                        else
-                                            rank = EClanRank._8;
-                                    }
-                                }
-                                break;
-                        }
+                            }
+                            break;
                     }
+                }
 
                     break;
                 case (short)EClanType.ClanAcademy:
-                    {
-                        rank = EClanRank._1;
-                    }
+                {
+                    rank = EClanRank._1;
+                }
                     break;
                 case (short)EClanType.ClanKnight1:
                 case (short)EClanType.ClanKnight2:
+                {
+                    switch (Clan.Level)
                     {
-                        switch (Clan.Level)
-                        {
-                            case 6:
-                                rank = EClanRank._2;
-                                break;
-                            case 7:
-                                rank = EClanRank._3;
-                                break;
-                            case 8:
-                                rank = EClanRank._4;
-                                break;
-                            case 9:
-                                rank = EClanRank._5;
-                                break;
-                            case 10:
-                                rank = EClanRank._6;
-                                break;
-                            case 11:
-                                rank = EClanRank._7;
-                                break;
-                        }
+                        case 6:
+                            rank = EClanRank._2;
+                            break;
+                        case 7:
+                            rank = EClanRank._3;
+                            break;
+                        case 8:
+                            rank = EClanRank._4;
+                            break;
+                        case 9:
+                            rank = EClanRank._5;
+                            break;
+                        case 10:
+                            rank = EClanRank._6;
+                            break;
+                        case 11:
+                            rank = EClanRank._7;
+                            break;
                     }
+                }
 
                     break;
                 case (short)EClanType.ClanKnight3:
                 case (short)EClanType.ClanKnight4:
                 case (short)EClanType.ClanKnight5:
                 case (short)EClanType.ClanKnight6:
+                {
+                    switch (Clan.Level)
                     {
-                        switch (Clan.Level)
-                        {
-                            case 7:
-                                rank = EClanRank._2;
-                                break;
-                            case 8:
-                                rank = EClanRank._3;
-                                break;
-                            case 9:
-                                rank = EClanRank._4;
-                                break;
-                            case 10:
-                                rank = EClanRank._5;
-                                break;
-                            case 11:
-                                rank = EClanRank._6;
-                                break;
-                        }
+                        case 7:
+                            rank = EClanRank._2;
+                            break;
+                        case 8:
+                            rank = EClanRank._3;
+                            break;
+                        case 9:
+                            rank = EClanRank._4;
+                            break;
+                        case 10:
+                            rank = EClanRank._5;
+                            break;
+                        case 11:
+                            rank = EClanRank._6;
+                            break;
                     }
+                }
 
                     break;
             }
@@ -1851,9 +1851,9 @@ namespace L2dotNET.GameService.Model.Player
         public override L2Character[] GetPartyCharacters()
         {
             List<L2Character> chars = new List<L2Character>
-                                      {
-                                          this
-                                      };
+            {
+                this
+            };
             if (Summon != null)
                 chars.Add(Summon);
 

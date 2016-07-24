@@ -34,9 +34,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.SendPacket(new RestartResponse());
 
             CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId)
-                                         {
-                                             CharId = player.ObjId
-                                         };
+            {
+                CharId = player.ObjId
+            };
             player.SendPacket(csl);
         }
     }

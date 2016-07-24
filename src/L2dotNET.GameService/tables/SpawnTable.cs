@@ -56,11 +56,11 @@ namespace L2dotNET.GameService.Tables
                 if (m.Name == "territory")
                 {
                     L2Territory zone = new L2Territory
-                                       {
-                                           Name = m.Attribute("name").Value,
-                                           Controller = m.Attribute("controller").Value,
-                                           StartActive = bool.Parse(m.Attribute("start_active").Value)
-                                       };
+                    {
+                        Name = m.Attribute("name").Value,
+                        Controller = m.Attribute("controller").Value,
+                        StartActive = bool.Parse(m.Attribute("start_active").Value)
+                    };
 
                     foreach (XElement stp in m.Elements())
                     {
@@ -165,15 +165,15 @@ namespace L2dotNET.GameService.Tables
             //NpcTemplate template = new NpcTemplate(new StatsSet()); //NpcTable.Instance.GetNpcTemplate(id);
 
             L2Warrior o = new L2Warrior
-                          {
-                              X = x,
-                              Y = y,
-                              Z = z,
-                              Heading = h,
-                              SpawnX = x,
-                              SpawnY = y,
-                              SpawnZ = z
-                          };
+            {
+                X = x,
+                Y = y,
+                Z = z,
+                Heading = h,
+                SpawnX = x,
+                SpawnY = y,
+                SpawnZ = z
+            };
             //o.setTemplate(template);
             //switch (template._type)
             //{

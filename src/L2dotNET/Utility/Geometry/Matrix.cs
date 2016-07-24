@@ -1136,13 +1136,13 @@ namespace L2dotNET.Utility.Geometry
             y.Normalize();
 
             result = new Matrix
-                     {
-                         Right = x,
-                         Up = y,
-                         Forward = z,
-                         Translation = position,
-                         M44 = 1f
-                     };
+            {
+                Right = x,
+                Up = y,
+                Forward = z,
+                Translation = position,
+                M44 = 1f
+            };
         }
 
         public double Determinant()

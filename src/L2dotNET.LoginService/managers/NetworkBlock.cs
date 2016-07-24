@@ -49,10 +49,10 @@ namespace L2dotNET.LoginService.Managers
                     if (line.StartsWithIgnoreCase("d"))
                     {
                         NBInterface i = new NBInterface
-                                        {
-                                            DirectIp = line.Split(' ')[1],
-                                            Forever = line.Split(' ')[2].EqualsIgnoreCase("0")
-                                        };
+                        {
+                            DirectIp = line.Split(' ')[1],
+                            Forever = line.Split(' ')[2].EqualsIgnoreCase("0")
+                        };
                         _blocks.Add(i);
                     }
                     else
@@ -61,10 +61,10 @@ namespace L2dotNET.LoginService.Managers
                             continue;
 
                         NBInterface i = new NBInterface
-                                        {
-                                            Mask = line.Split(' ')[1],
-                                            Forever = line.Split(' ')[2].EqualsIgnoreCase("0")
-                                        };
+                        {
+                            Mask = line.Split(' ')[1],
+                            Forever = line.Split(' ')[2].EqualsIgnoreCase("0")
+                        };
                         _blocks.Add(i);
                     }
                 }

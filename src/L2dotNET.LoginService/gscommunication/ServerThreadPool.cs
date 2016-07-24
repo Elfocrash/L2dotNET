@@ -42,11 +42,11 @@ namespace L2dotNET.LoginService.GSCommunication
         public void Initialize()
         {
             Servers.AddRange(ServerService.GetServerList().Select(curServ => new L2Server
-                                                                             {
-                                                                                 Id = (byte)curServ.Id,
-                                                                                 Info = curServ.Name,
-                                                                                 Code = curServ.Code
-                                                                             }).ToList());
+            {
+                Id = (byte)curServ.Id,
+                Info = curServ.Name,
+                Code = curServ.Code
+            }).ToList());
 
             Log.Info($"GameServerThread: loaded {Servers.Count} servers");
         }

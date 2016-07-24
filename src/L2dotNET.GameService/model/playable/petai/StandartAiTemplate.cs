@@ -15,9 +15,9 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
         public void Enable()
         {
             Ai1Sec = new System.Timers.Timer
-                     {
-                         Interval = 1000
-                     };
+            {
+                Interval = 1000
+            };
             Ai1Sec.Elapsed += new System.Timers.ElapsedEventHandler(DoThink);
             Ai1Sec.Enabled = true;
         }
@@ -36,9 +36,9 @@ namespace L2dotNET.GameService.Model.Playable.PetAI
             if (Follow == null)
             {
                 Follow = new System.Timers.Timer
-                         {
-                             Interval = 200
-                         };
+                {
+                    Interval = 200
+                };
                 Follow.Elapsed += new System.Timers.ElapsedEventHandler(DoFollow);
             }
 

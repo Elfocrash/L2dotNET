@@ -113,12 +113,12 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
             if (_cast.ReuseDelay > 0)
             {
                 L2SkillCoolTime reuse = new L2SkillCoolTime
-                                        {
-                                            Id = _cast.SkillId,
-                                            Lvl = _cast.Level,
-                                            Total = (int)_cast.ReuseDelay,
-                                            Owner = _caster
-                                        };
+                {
+                    Id = _cast.SkillId,
+                    Lvl = _cast.Level,
+                    Total = (int)_cast.ReuseDelay,
+                    Owner = _caster
+                };
                 reuse.Delay = reuse.Total;
                 reuse.Timer();
                 _caster.Reuse.Add(reuse.Id, reuse);
