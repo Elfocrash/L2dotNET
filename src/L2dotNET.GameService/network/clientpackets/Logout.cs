@@ -36,7 +36,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            player.Termination();
+            player.DeleteMe();
             player.SendPacket(new LeaveWorld());
         }
     }

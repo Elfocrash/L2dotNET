@@ -27,12 +27,6 @@ namespace L2dotNET.GameService.Model.Items
 
         public short AttrAttackType = -2;
         public short AttrAttackValue = 0;
-        public short AttrDefenseValueFire = 0;
-        public short AttrDefenseValueWater = 0;
-        public short AttrDefenseValueWind = 0;
-        public short AttrDefenseValueEarth = 0;
-        public short AttrDefenseValueHoly = 0;
-        public short AttrDefenseValueUnholy = 0;
 
         public bool Blocked = false;
         public bool TempBlock = false;
@@ -184,53 +178,7 @@ namespace L2dotNET.GameService.Model.Items
             _lifeTimeEndTime = dt;
             //TODO delete me
         }
-
-        public void sql_insert(int id)
-        {
-            //SQL_Block sqb = new SQL_Block("user_items");
-            //sqb.param("ownerId", id);
-            //sqb.param("iobjectId", ObjID);
-            //sqb.param("itemId", Template.ItemID);
-            //sqb.param("icount", Count);
-            //sqb.param("ienchant", Enchant);
-            //sqb.param("iaugment", AugmentationID);
-            //sqb.param("imana", Durability);
-            //sqb.param("lifetime", LimitedHourStr());
-            //sqb.param("iequipped", _isEquipped);
-            //sqb.param("iequip_data", _paperdollSlot);
-            //sqb.param("ilocation", Location.ToString());
-            //sqb.param("iloc_data", 0);
-            ////sqb.param("ict1", CustomType1);
-            ////sqb.param("ict2", CustomType2);
-            //sqb.sql_insert(false);
-        }
-
-        public void sql_delete()
-        {
-            //SQL_Block sqb = new SQL_Block("user_items");
-            //sqb.where("iobjectId", ObjID);
-            //sqb.sql_delete(false);
-        }
-
-        public void sql_update()
-        {
-            //SQL_Block sqb = new SQL_Block("user_items");
-            //sqb.param("itemId", Template.ItemID);
-            //sqb.param("icount", Count);
-            //sqb.param("ienchant", Enchant);
-            //sqb.param("iaugment", AugmentationID);
-            //sqb.param("imana", Durability);
-            //sqb.param("lifetime", LimitedHourStr());
-            //sqb.param("iequipped", _isEquipped);
-            //sqb.param("iequip_data", _paperdollSlot);
-            //sqb.param("ilocation", Location.ToString());
-            //sqb.param("iloc_data", SlotLocation);
-            ////sqb.param("ict1", CustomType1);
-            ////sqb.param("ict2", CustomType2);
-            //sqb.where("iobjectId", ObjID);
-            //sqb.sql_update(false);
-        }
-
+        
         public override string AsString()
         {
             return $"L2Item:{Template.ItemId}; count {Count}; enchant {Enchant}; id {ObjId}";

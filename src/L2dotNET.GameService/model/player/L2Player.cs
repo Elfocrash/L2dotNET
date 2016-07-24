@@ -211,21 +211,6 @@ namespace L2dotNET.GameService.Model.Player
             PlayerService.UpdatePlayer(playerModel);
         }
 
-        public void Termination()
-        {
-            if (!IsRestored)
-                return;
-
-            Party?.Leave(this);
-
-            Summon?.UnSummon();
-
-            UpdatePlayer();
-            //saveInventory();
-
-            L2World.Instance.RemoveObject(this);
-        }
-
         public int Int => ActiveClass.BaseInt;
 
         public int Str => ActiveClass.BaseStr;
@@ -1234,6 +1219,28 @@ namespace L2dotNET.GameService.Model.Player
             Transform = null;
         }
 
+        public override void DeleteMe()
+        {
+            CleanUp();
+            //Store();
+            base.DeleteMe();
+        }
+
+        public void CleanUp()
+        {
+            if (!IsRestored)
+                return;
+
+            Party?.Leave(this);
+
+            Summon?.UnSummon();
+
+            UpdatePlayer();
+            L2World.Instance.RemovePlayer(this);
+            DecayMe();
+           
+        }
+
         public bool HasItem(int itemId, int count)
         {
             return Inventory.Items.Where(item => item.Template.ItemId == itemId).Any(item => item.Count >= count);
@@ -1398,16 +1405,6 @@ namespace L2dotNET.GameService.Model.Player
             return true;
         }
 
-        public void SpawnMe()
-        {
-            //_isVisible = true;
-
-            Region = L2World.Instance.GetRegion(new Location(X, Y, Z));
-
-            L2World.Instance.AddPlayer(this);
-
-            OnSpawn();
-        }
 
         public byte ClanRank()
         {

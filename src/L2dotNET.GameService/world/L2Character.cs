@@ -53,6 +53,8 @@ namespace L2dotNET.GameService.World
         public const int AbnormalMaskEventCrown2 = 0x000040;
         public const int AbnormalMaskEventCrown3 = 0x000080;
 
+        protected byte ZoneValidateCounter = 4;
+
         public virtual void UpdateAbnormalEffect() { }
 
         public virtual void UpdateAbnormalExEffect() { }
@@ -103,6 +105,38 @@ namespace L2dotNET.GameService.World
                 player.SendPacket(new MyTargetSelected(ObjId, 0));
             else
                 player.SendActionFailed();
+        }
+
+        public override void OnSpawn()
+        {
+            base.OnSpawn();
+            RevalidateZone(true);
+        }
+
+        public virtual void DeleteMe()
+        {
+            //foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
+            //    o.SendPacket(new DeleteObject(ObjId));
+
+            StopRegeneration();
+        }
+
+        public void RevalidateZone(bool force)
+        {
+            if (Region == null)
+                return;
+
+            if (force)
+                ZoneValidateCounter = 4;
+            else
+            {
+                ZoneValidateCounter--;
+                if (ZoneValidateCounter < 0)
+                    ZoneValidateCounter = 4;
+                else
+                    return;
+            }
+            Region.RevalidateZones(this);
         }
 
         public override void SetRegion(L2WorldRegion newRegion)

@@ -6,6 +6,7 @@ using L2dotNET.GameService.Model.Skills2;
 using L2dotNET.GameService.Model.Zones;
 using L2dotNET.GameService.Model.Zones.Classes;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.Models;
 using L2dotNET.Network;
 
 namespace L2dotNET.GameService.World
@@ -63,7 +64,6 @@ namespace L2dotNET.GameService.World
 
         public virtual void OnSpawn()
         {
-            BroadcastUserInfo();
         }
 
         public virtual void BroadcastPacket(GameserverPacket pk, bool excludeYourself)
@@ -81,13 +81,10 @@ namespace L2dotNET.GameService.World
 
         public virtual void ReduceHp(L2Character attacker, double damage) { }
 
-        public void DeleteMe()
+        public virtual void DecayMe()
         {
-            foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
-                o.SendPacket(new DeleteObject(ObjId));
-
-            StopRegeneration();
-
+            Region = null;
+            
             L2World.Instance.RemoveObject(this);
         }
 
@@ -455,6 +452,15 @@ namespace L2dotNET.GameService.World
                 if (this is L2Player)
                     ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.LeftCombatZone);
             }
+        }
+        
+        public virtual void SpawnMe()
+        {
+            Region = L2World.Instance.GetRegion(new Location(X, Y, Z));
+
+            L2World.Instance.AddObject(this);
+
+            OnSpawn();
         }
 
         public void ValidateWaterZones()

@@ -33,12 +33,6 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             WriteShort(_item.AttrAttackType);
             WriteShort(_item.AttrAttackValue);
-            WriteShort(_item.AttrDefenseValueFire);
-            WriteShort(_item.AttrDefenseValueWater);
-            WriteShort(_item.AttrDefenseValueWind);
-            WriteShort(_item.AttrDefenseValueEarth);
-            WriteShort(_item.AttrDefenseValueHoly);
-            WriteShort(_item.AttrDefenseValueUnholy);
 
             WriteShort(_item.Enchant1);
             WriteShort(_item.Enchant2);

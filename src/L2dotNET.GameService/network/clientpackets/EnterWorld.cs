@@ -56,7 +56,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
             //player.getKnowns(500, 500, false);
 
             player.SendPacket(new UserInfo(player));
-            player.SendPacket(new UserInfo(player));
 
             //player.sendPacket(new ShortCutInit(player));
             player.StartAi();

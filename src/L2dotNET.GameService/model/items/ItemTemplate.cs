@@ -79,7 +79,10 @@ namespace L2dotNET.GameService.Model.Items
         {
             ItemId = set.GetInt("item_id");
             Name = set.GetString("name");
+            Type1 = set.GetInt("type1");
+            Type2 = set.GetInt("type2");
             Weight = set.GetInt("weight");
+            
             MaterialType = (MaterialType)set.GetInt("material");
             Duration = set.GetInt("duration", -1);
             //_bodyPart = ItemTable.Slots.get(set.GetString("bodypart", "none"));
@@ -87,17 +90,17 @@ namespace L2dotNET.GameService.Model.Items
             CrystalType = CrystalType.Values.FirstOrDefault(x => x.Id == (CrystalTypeId)set.GetInt("crystal_type"));
             _crystalCount = set.GetInt("crystal_count");
 
-            Stackable = set.GetBool("is_stackable");
-            Sellable = set.GetBool("is_sellable", true);
-            Dropable = set.GetBool("is_dropable", true);
-            Destroyable = set.GetBool("is_destroyable", true);
-            Tradable = set.GetBool("is_tradable", true);
-            Depositable = set.GetBool("is_depositable", true);
+            Stackable = set.GetBool("stackable");
+            Sellable = set.GetBool("sellable", true);
+            Dropable = set.GetBool("dropable", true);
+            Destroyable = set.GetBool("destroyable", true);
+            Tradable = set.GetBool("tradeable", true);
+            //Depositable = set.GetBool("is_depositable", true);
 
             HeroItem = ((ItemId >= 6611) && (ItemId <= 6621)) || (ItemId == 6842);
-            IsOlyRestricted = set.GetBool("is_oly_restricted");
+            //IsOlyRestricted = set.GetBool("is_oly_restricted");
 
-            DefaultAction = (ActionType)set.GetInt("default_action");
+            //DefaultAction = (ActionType)set.GetInt("default_action");
         }
 
         public int GetCrystalCount(int enchantLevel)

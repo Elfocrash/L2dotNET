@@ -97,9 +97,9 @@ namespace L2dotNET.GameService
             Stream.Close();
             Client.Close();
 
-            CurrentPlayer?.Termination();
+            CurrentPlayer?.DeleteMe();
 
-            _accountChars.ForEach(p => p.Termination());
+            _accountChars.ForEach(p => p?.DeleteMe());
             _accountChars.Clear();
 
             ClientManager.Instance.Terminate(Address.ToString());

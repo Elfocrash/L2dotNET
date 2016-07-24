@@ -87,7 +87,7 @@ namespace L2dotNET.GameService.Model.Zones
         {
             _selfDestruct.Enabled = false;
 
-            NpcCenter.DeleteMe();
+            NpcCenter.DecayMe();
 
             foreach (L2Object o in ObjectsInside.Values)
                 OnExit(o, false);

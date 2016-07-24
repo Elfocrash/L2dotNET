@@ -17,6 +17,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = _client.CurrentPlayer;
 
+            if (player == null)
+                return;
+
             if (player.PBlockAct == 1)
             {
                 player.SendActionFailed();
@@ -30,7 +33,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            player.Termination();
+            player.DeleteMe();
             player.SendPacket(new RestartResponse());
 
             CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId)

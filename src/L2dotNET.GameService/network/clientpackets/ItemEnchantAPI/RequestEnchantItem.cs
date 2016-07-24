@@ -55,7 +55,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
             if ((rate == 100) || (new Random().Next(100) < rate))
             {
                 player.EnchantItem.Enchant += 1;
-                player.EnchantItem.sql_update();
+                //player.EnchantItem.sql_update();
 
                 iu = new InventoryUpdate();
                 iu.AddModItem(player.EnchantItem);
@@ -78,7 +78,7 @@ namespace L2dotNET.GameService.Network.Clientpackets.ItemEnchantAPI
                 {
                     case EnchantType.Blessed:
                         player.EnchantItem.Enchant = 0;
-                        player.EnchantItem.sql_update();
+                        //player.EnchantItem.sql_update();
 
                         iu = new InventoryUpdate();
                         iu.AddModItem(player.EnchantItem);
