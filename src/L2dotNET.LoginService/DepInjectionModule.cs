@@ -14,11 +14,13 @@ namespace L2dotNET.LoginService
             Bind<IAccountService>().To<AccountService>();
             Bind<IServerService>().To<ServerService>();
             Bind<ICheckService>().To<CheckService>();
+            Bind<IItemService>().To<ItemService>();
 
             Bind<IPlayerRepository>().To<PlayerRepository>();
             Bind<IAccountRepository>().To<AccountRepository>();
             Bind<IServerRepository>().To<ServerRepository>();
             Bind<ICheckRepository>().To<CheckRepository>();
+            Bind<IItemRepository>().To<ItemRepository>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
         }
     }

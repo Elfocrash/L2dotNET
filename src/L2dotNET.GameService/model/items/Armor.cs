@@ -1,16 +1,27 @@
 ﻿using System.Linq;
 using L2dotNET.Enums;
 using L2dotNET.GameService.Templates;
+using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Model.Items
 {
     public class Armor : ItemTemplate
     {
-        private readonly ArmorTypeId _type;
+        public ArmorTypeId Type { get; set; }
+        private int AvoidModifier { get; set; }
+        private int Pdef { get; set; }
+        private int Mdef { get; set; }
+        private int MpBonus { get; set; }
+        private int HpBonus { get; set; }
 
         public Armor(StatsSet set) : base(set)
         {
-            _type = GetEnumFromString(set.GetString("armor_type", "none"), ArmorTypeId.None);
+            Type = Utilz.GetEnumFromString(set.GetString("armor_type", "none"), ArmorTypeId.None);
+            AvoidModifier = set.GetInt("avoid_modify");
+            Pdef = set.GetInt("p_def");
+            Mdef = set.GetInt("m_def");
+            MpBonus = set.GetInt("mp_bonus");
+            HpBonus = set.GetInt("hp_bonus");
 
             int bodyPart = BodyPart;
             if ((bodyPart == SlotNeck) || (bodyPart == SlotFace) || (bodyPart == SlotHair) || (bodyPart == SlotHairall) || ((bodyPart & SlotREar) != 0) || ((bodyPart & SlotLFinger) != 0) || ((bodyPart & SlotBack) != 0))
@@ -20,8 +31,8 @@ namespace L2dotNET.GameService.Model.Items
             }
             else
             {
-                if ((_type == ArmorType.None.Id) && (BodyPart == SlotLHand)) // retail define shield as NONE
-                    _type = ArmorType.Shield.Id;
+                if ((Type == ArmorType.None.Id) && (BodyPart == SlotLHand)) // retail define shield as NONE
+                    Type = ArmorType.Shield.Id;
 
                 Type1 = Type1ShieldArmor;
                 Type2 = Type2ShieldArmor;
@@ -30,7 +41,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public override int GetItemMask()
         {
-            ArmorType firstOrDefault = ArmorType.Values.FirstOrDefault(x => x.Id == _type);
+            ArmorType firstOrDefault = ArmorType.Values.FirstOrDefault(x => x.Id == Type);
             return firstOrDefault != null ? (int)firstOrDefault : 0;
         }
     }

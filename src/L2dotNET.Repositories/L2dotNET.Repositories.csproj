@@ -51,10 +51,12 @@
   <ItemGroup>
     <Compile Include="AccountRepository.cs" />
     <Compile Include="Contracts\IAccountRepository.cs" />
+    <Compile Include="Contracts\IItemRepository.cs" />
     <Compile Include="Contracts\IPlayerRepository.cs" />
     <Compile Include="Contracts\ICheckRepository.cs" />
     <Compile Include="Contracts\IServerRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
+    <Compile Include="ItemRepository.cs" />
     <Compile Include="PlayerRepository.cs" />
     <Compile Include="CheckRepository.cs" />
     <Compile Include="ServerRepository.cs" />

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using L2dotNET.Network;
 
@@ -34,6 +36,21 @@ namespace L2dotNET.Utility
         {
             TimeSpan ts = Year1970 - DateTime.Now;
             return (int)ts.TotalSeconds * -1;
+        }
+
+
+        public static T GetEnumFromString<T>(string value, T defaultValue) where T : struct, IConvertible
+        {
+            if (!typeof(T).IsEnum)
+                throw new ArgumentException("T must be an enumerated type");
+
+            if (string.IsNullOrEmpty(value))
+                return defaultValue;
+
+            foreach (T item in Enum.GetValues(typeof(T)).Cast<T>().Where(item => item.ToString(CultureInfo.InvariantCulture).ToLower().Equals(value.Trim().ToLower())))
+                return item;
+
+            return defaultValue;
         }
 
         private static readonly DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);

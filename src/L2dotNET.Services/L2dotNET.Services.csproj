@@ -38,8 +38,10 @@
     <Compile Include="AccountService.cs" />
     <Compile Include="Contracts\ICheckService.cs" />
     <Compile Include="Contracts\IAccountService.cs" />
+    <Compile Include="Contracts\IItemService.cs" />
     <Compile Include="Contracts\IPlayerService.cs" />
     <Compile Include="Contracts\IServerService.cs" />
+    <Compile Include="ItemService.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerService.cs" />
