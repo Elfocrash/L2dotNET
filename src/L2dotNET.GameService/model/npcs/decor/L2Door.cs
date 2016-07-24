@@ -53,9 +53,9 @@ namespace L2dotNET.GameService.Model.Npcs.Decor
             if (_selfClose == null)
             {
                 _selfClose = new System.Timers.Timer
-                             {
-                                 Interval = 60000
-                             };
+                {
+                    Interval = 60000
+                };
                 _selfClose.Elapsed += new System.Timers.ElapsedEventHandler(SelfClose);
             }
 

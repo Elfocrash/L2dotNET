@@ -30,21 +30,21 @@ namespace L2dotNET.GameService.Tables.Admin_Bypass
                         continue;
 
                     ABTeleportGroup ab = new ABTeleportGroup
-                                         {
-                                             Id = int.Parse(m.Attribute("id").Value),
-                                             Str = m.Attribute("str").Value,
-                                             Name = m.Attribute("name").Value,
-                                             Level = int.Parse(m.Attribute("level").Value)
-                                         };
+                    {
+                        Id = int.Parse(m.Attribute("id").Value),
+                        Str = m.Attribute("str").Value,
+                        Name = m.Attribute("name").Value,
+                        Level = int.Parse(m.Attribute("level").Value)
+                    };
 
                     foreach (ABTeleportEntry ae in m.Elements().Where(e => e.Name == "entry").Select(e => new ABTeleportEntry
-                                                                                                          {
-                                                                                                              Name = e.Attribute("name").Value,
-                                                                                                              X = int.Parse(e.Attribute("x").Value),
-                                                                                                              Y = int.Parse(e.Attribute("y").Value),
-                                                                                                              Z = int.Parse(e.Attribute("z").Value),
-                                                                                                              Id = ab.Teles.Count
-                                                                                                          }))
+                    {
+                        Name = e.Attribute("name").Value,
+                        X = int.Parse(e.Attribute("x").Value),
+                        Y = int.Parse(e.Attribute("y").Value),
+                        Z = int.Parse(e.Attribute("z").Value),
+                        Id = ab.Teles.Count
+                    }))
                         ab.Teles.Add(ae.Id, ae);
 
                     Groups.Add(ab.Id, ab);

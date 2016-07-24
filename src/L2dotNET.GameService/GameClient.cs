@@ -173,8 +173,12 @@ namespace L2dotNET.GameService
         {
             AccountChars = AccountChars.Where(filter => filter.CharSlot != charSlot).OrderBy(orderby => orderby.CharSlot).ToList();
 
-            for (int i = 0; i < AccountChars.Count; i++)
-                AccountChars[i].CharSlot = i;
+            int slot = 0;
+            AccountChars.ForEach(p =>
+            {
+                p.CharSlot = slot;
+                slot++;
+            });
         }
 
         public string AccountName { get; set; }

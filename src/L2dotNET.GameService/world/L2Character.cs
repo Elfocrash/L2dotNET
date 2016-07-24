@@ -238,9 +238,9 @@ namespace L2dotNET.GameService.World
         public void RemoveStat(Effect effect)
         {
             List<Effect> ts = new List<Effect>
-                              {
-                                  effect
-                              };
+            {
+                effect
+            };
             EffectResult result = CharacterStat.Stop(ts, this);
             if (this is L2Player)
             {
@@ -305,9 +305,9 @@ namespace L2dotNET.GameService.World
         public void AddStat(Effect effect)
         {
             List<Effect> ts = new List<Effect>
-                              {
-                                  effect
-                              };
+            {
+                effect
+            };
             EffectResult result = CharacterStat.Apply(ts, this);
             if (this is L2Player)
             {
@@ -446,14 +446,14 @@ namespace L2dotNET.GameService.World
                 return;
 
             AbnormalEffect ic = new AbnormalEffect
-                                {
-                                    Id = skill.SkillId,
-                                    Lvl = skill.Level,
-                                    Time = unlim ? -2 : skill.AbnormalTime,
-                                    Active = 1,
-                                    Owner = this,
-                                    Skill = skill
-                                };
+            {
+                Id = skill.SkillId,
+                Lvl = skill.Level,
+                Time = unlim ? -2 : skill.AbnormalTime,
+                Active = 1,
+                Owner = this,
+                Skill = skill
+            };
             ic.Timer();
 
             if (Effects.Count >= BuffMax)
@@ -522,14 +522,14 @@ namespace L2dotNET.GameService.World
 
             Skill newsk = SkillTable.Instance.Get(skillId, lvlnext);
             AbnormalEffect ic = new AbnormalEffect
-                                {
-                                    Id = newsk.SkillId,
-                                    Lvl = newsk.Level,
-                                    Time = unlim ? -2 : newsk.AbnormalTime,
-                                    Active = 1,
-                                    Owner = this,
-                                    Skill = newsk
-                                };
+            {
+                Id = newsk.SkillId,
+                Lvl = newsk.Level,
+                Time = unlim ? -2 : newsk.AbnormalTime,
+                Active = 1,
+                Owner = this,
+                Skill = newsk
+            };
             ic.Timer();
 
             if (Effects.Count >= BuffMax)
@@ -925,9 +925,9 @@ namespace L2dotNET.GameService.World
         public Hit GenHitSimple(bool dual, bool ss)
         {
             Hit h = new Hit
-                    {
-                        Miss = Formulas.CheckMissed(this, CurrentTarget)
-                    };
+            {
+                Miss = Formulas.CheckMissed(this, CurrentTarget)
+            };
             if (h.Miss)
                 return h;
 
@@ -1308,12 +1308,12 @@ namespace L2dotNET.GameService.World
             if (skill.ReuseDelay > 0)
             {
                 L2SkillCoolTime reuse = new L2SkillCoolTime
-                                        {
-                                            Id = skill.SkillId,
-                                            Lvl = skill.Level,
-                                            Total = (int)skill.ReuseDelay,
-                                            Owner = this
-                                        };
+                {
+                    Id = skill.SkillId,
+                    Lvl = skill.Level,
+                    Total = (int)skill.ReuseDelay,
+                    Owner = this
+                };
                 reuse.Delay = reuse.Total;
                 reuse.Timer();
                 Reuse.Add(reuse.Id, reuse);
@@ -1439,9 +1439,9 @@ namespace L2dotNET.GameService.World
             if (_updatePositionTime == null)
             {
                 _updatePositionTime = new Timer
-                                      {
-                                          Interval = 100
-                                      };
+                {
+                    Interval = 100
+                };
                 _updatePositionTime.Elapsed += UpdatePositionTask;
             }
             else

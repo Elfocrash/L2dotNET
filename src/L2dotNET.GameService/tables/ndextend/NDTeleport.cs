@@ -28,9 +28,9 @@ namespace L2dotNET.GameService.Tables.Ndextend
                         continue;
 
                     ABTeleportNpc npc = new ABTeleportNpc
-                                        {
-                                            Id = int.Parse(m.Attribute("id").Value)
-                                        };
+                    {
+                        Id = int.Parse(m.Attribute("id").Value)
+                    };
 
                     foreach (XElement x in m.Elements())
                     {
@@ -38,9 +38,9 @@ namespace L2dotNET.GameService.Tables.Ndextend
                             continue;
 
                         ABTeleportGroup ab = new ABTeleportGroup
-                                             {
-                                                 Id = int.Parse(x.Attribute("id").Value)
-                                             };
+                        {
+                            Id = int.Parse(x.Attribute("id").Value)
+                        };
 
                         foreach (XElement e in x.Elements())
                         {
@@ -48,13 +48,13 @@ namespace L2dotNET.GameService.Tables.Ndextend
                                 continue;
 
                             ABTeleportEntry ae = new ABTeleportEntry
-                                                 {
-                                                     Name = e.Attribute("name").Value,
-                                                     X = int.Parse(e.Attribute("x").Value),
-                                                     Y = int.Parse(e.Attribute("y").Value),
-                                                     Z = int.Parse(e.Attribute("z").Value),
-                                                     Id = ab.Teles.Count
-                                                 };
+                            {
+                                Name = e.Attribute("name").Value,
+                                X = int.Parse(e.Attribute("x").Value),
+                                Y = int.Parse(e.Attribute("y").Value),
+                                Z = int.Parse(e.Attribute("z").Value),
+                                Id = ab.Teles.Count
+                            };
 
                             if (e.Attribute("cost") != null)
                                 ae.Cost = int.Parse(e.Attribute("cost").Value);

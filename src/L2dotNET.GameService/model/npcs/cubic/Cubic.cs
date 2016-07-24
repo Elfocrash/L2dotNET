@@ -25,15 +25,15 @@ namespace L2dotNET.GameService.Model.Npcs.Cubic
             SummonedTime = DateTime.Now;
             SummonEndTime = DateTime.Now.AddSeconds(Template.Duration);
             AiAction = new System.Timers.Timer
-                       {
-                           Interval = Template.Delay * 1000
-                       };
+            {
+                Interval = Template.Delay * 1000
+            };
             AiAction.Elapsed += new System.Timers.ElapsedEventHandler(AiActionTask);
 
             SummonEnd = new System.Timers.Timer
-                        {
-                            Interval = Template.Duration * 1000
-                        };
+            {
+                Interval = Template.Duration * 1000
+            };
             SummonEnd.Elapsed += new System.Timers.ElapsedEventHandler(SummonEndTask);
 
             AiAction.Enabled = true;

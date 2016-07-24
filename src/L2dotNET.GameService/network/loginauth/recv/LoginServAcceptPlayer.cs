@@ -17,9 +17,9 @@ namespace L2dotNET.GameService.Network.LoginAuth.Recv
         public override void RunImpl()
         {
             AccountModel ta = new AccountModel
-                              {
-                                  Login = _account
-                              };
+            {
+                Login = _account
+            };
 
             AuthThread.Instance.AwaitAccount(ta);
         }

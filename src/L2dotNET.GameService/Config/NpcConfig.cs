@@ -91,10 +91,10 @@ namespace L2dotNET.GameService.Config
         ///<summary>Specified reward item ID and qty.</summary>
         [JsonProperty(PropertyName = "RewardItemID", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public ItemAmount[] RewardItem { get; set; } = /*DefaultValue*/ { new ItemAmount
-                                                                          {
-                                                                              ItemId = 6393,
-                                                                              Amount = 1
-                                                                          } };
+        {
+            ItemId = 6393,
+            Amount = 1
+        } };
     }
 
     ///<summary>Buffer.</summary>
@@ -322,78 +322,78 @@ namespace L2dotNET.GameService.Config
         ///<summary>Ant Queen.</summary>
         [JsonProperty(PropertyName = "AntQueen", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         private GrandBoss AntQueen { get; set; } = /*DefaultValue*/ new GrandBoss
-                                                                    {
-                                                                        SpawnInterval = 36,
-                                                                        RandomSpawn = 17
-                                                                    };
+        {
+            SpawnInterval = 36,
+            RandomSpawn = 17
+        };
 
         ///<summary>Antharas.</summary>
         [JsonProperty(PropertyName = "Antharas", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         private GrandBoss Antharas { get; set; } = /*DefaultValue*/ new GrandBoss
-                                                                    {
-                                                                        SpawnInterval = 264,
-                                                                        RandomSpawn = 72,
-                                                                        WaitTime = 30 * 60000
-                                                                    };
+        {
+            SpawnInterval = 264,
+            RandomSpawn = 72,
+            WaitTime = 30 * 60000
+        };
 
         ///<summary>Baium.</summary>
         [JsonProperty(PropertyName = "Baium", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         private GrandBoss Baium { get; set; } = /*DefaultValue*/ new GrandBoss
-                                                                 {
-                                                                     SpawnInterval = 168,
-                                                                     RandomSpawn = 48
-                                                                 };
+        {
+            SpawnInterval = 168,
+            RandomSpawn = 48
+        };
 
         ///<summary>Core.</summary>
         [JsonProperty(PropertyName = "Core", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         private GrandBoss Core { get; set; } = /*DefaultValue*/ new GrandBoss
-                                                                {
-                                                                    SpawnInterval = 60,
-                                                                    RandomSpawn = 23
-                                                                };
+        {
+            SpawnInterval = 60,
+            RandomSpawn = 23
+        };
 
         ///<summary>Frintezza.</summary>
         [JsonProperty(PropertyName = "Frintezza", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         private GrandBoss Frintezza { get; set; } = /*DefaultValue*/ new GrandBoss
-                                                                     {
-                                                                         SpawnInterval = 48,
-                                                                         RandomSpawn = 8,
-                                                                         WaitTime = 1 * 60000
-                                                                     };
+        {
+            SpawnInterval = 48,
+            RandomSpawn = 8,
+            WaitTime = 1 * 60000
+        };
 
         ///<summary>Orfen.</summary>
         [JsonProperty(PropertyName = "Orfen", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         private GrandBoss Orfen { get; set; } = /*DefaultValue*/ new GrandBoss
-                                                                 {
-                                                                     SpawnInterval = 48,
-                                                                     RandomSpawn = 20
-                                                                 };
+        {
+            SpawnInterval = 48,
+            RandomSpawn = 20
+        };
 
         ///<summary>Sailren.</summary>
         [JsonProperty(PropertyName = "Sailren", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         private GrandBoss Sailren { get; set; } = /*DefaultValue*/ new GrandBoss
-                                                                   {
-                                                                       SpawnInterval = 36,
-                                                                       RandomSpawn = 24,
-                                                                       WaitTime = 5 * 60000
-                                                                   };
+        {
+            SpawnInterval = 36,
+            RandomSpawn = 24,
+            WaitTime = 5 * 60000
+        };
 
         ///<summary>Valakas.</summary>
         [JsonProperty(PropertyName = "Valakas", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         private GrandBoss Valakas { get; set; } = /*DefaultValue*/ new GrandBoss
-                                                                   {
-                                                                       SpawnInterval = 264,
-                                                                       RandomSpawn = 72,
-                                                                       WaitTime = 30 * 60000
-                                                                   };
+        {
+            SpawnInterval = 264,
+            RandomSpawn = 72,
+            WaitTime = 30 * 60000
+        };
 
         ///<summary>Zaken.</summary>
         [JsonProperty(PropertyName = "Zaken", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         private GrandBoss Zaken { get; set; } = /*DefaultValue*/ new GrandBoss
-                                                                 {
-                                                                     SpawnInterval = 60,
-                                                                     RandomSpawn = 20
-                                                                 };
+        {
+            SpawnInterval = 60,
+            RandomSpawn = 20
+        };
     }
 
     ///<summary>IA.</summary>

@@ -51,10 +51,10 @@ namespace L2dotNET.GameService.Controllers
             ServerStartUp = DateTime.Now;
             Time = 5800 + 0; // 10800 18:00 вечер
             _timeController = new System.Timers.Timer
-                              {
-                                  Interval = 1000,
-                                  Enabled = true
-                              };
+            {
+                Interval = 1000,
+                Enabled = true
+            };
             _timeController.Elapsed += ActionTime;
 
             Log.Info("GameTime Controller: started 18:00 PM.");

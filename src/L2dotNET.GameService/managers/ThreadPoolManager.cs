@@ -20,12 +20,12 @@ namespace L2dotNET.GameService.Managers
         public void ExecuteGeneral(Action action, int wait = 0, object id = null)
         {
             RThread thread = new RThread
-                             {
-                                 Type = RThreadType.General,
-                                 Id = id,
-                                 StartWait = wait,
-                                 PerformAction = action
-                             };
+            {
+                Type = RThreadType.General,
+                Id = id,
+                StartWait = wait,
+                PerformAction = action
+            };
 
             if (id != null)
                 Threads.Add(thread.Id, thread);
@@ -38,14 +38,14 @@ namespace L2dotNET.GameService.Managers
         public void ExecuteGeneralTicks(Action action, int ticks, int tickWait = 1000, int wait = 0, object id = null)
         {
             RThread thread = new RThread
-                             {
-                                 Type = RThreadType.GeneralTick,
-                                 Id = id,
-                                 StartWait = wait,
-                                 PerformAction = action,
-                                 Ticks = ticks,
-                                 TickSleep = tickWait
-                             };
+            {
+                Type = RThreadType.GeneralTick,
+                Id = id,
+                StartWait = wait,
+                PerformAction = action,
+                Ticks = ticks,
+                TickSleep = tickWait
+            };
 
             if (id != null)
                 Threads.Add(thread.Id, thread);
@@ -56,14 +56,14 @@ namespace L2dotNET.GameService.Managers
         public void ExecuteActions(Action[] actions, int tickWait = 1000, int wait = 0, object id = null)
         {
             RThread thread = new RThread
-                             {
-                                 Type = RThreadType.Actions,
-                                 Id = id,
-                                 StartWait = wait,
-                                 PerformActions = actions,
-                                 Ticks = actions.Length,
-                                 TickSleep = tickWait
-                             };
+            {
+                Type = RThreadType.Actions,
+                Id = id,
+                StartWait = wait,
+                PerformActions = actions,
+                Ticks = actions.Length,
+                TickSleep = tickWait
+            };
 
             if (id != null)
                 Threads.Add(thread.Id, thread);

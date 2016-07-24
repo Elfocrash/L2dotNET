@@ -56,9 +56,9 @@ namespace L2dotNET.GameService.Network.LoginAuth
                 if (Ltimer == null)
                 {
                     Ltimer = new System.Timers.Timer
-                             {
-                                 Interval = 2000
-                             };
+                    {
+                        Interval = 2000
+                    };
                     Ltimer.Elapsed += ltimer_Elapsed;
                 }
 

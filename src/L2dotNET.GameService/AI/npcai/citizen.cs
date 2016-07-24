@@ -58,9 +58,9 @@ namespace L2dotNET.GameService.AI.NpcAI
             if (SocialMoveTimer == null)
             {
                 SocialMoveTimer = new Timer
-                                  {
-                                      Interval = 10000
-                                  };
+                {
+                    Interval = 10000
+                };
                 SocialMoveTimer.Elapsed += SocialTask;
             }
 
