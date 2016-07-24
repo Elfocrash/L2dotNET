@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using log4net;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.Network;
@@ -11,6 +12,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
     {
         [Inject]
         public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
+
+        private static readonly ILog Log = LogManager.GetLogger(typeof(CharacterDelete));
 
         private readonly GameClient _client;
         private readonly int _charSlot;
@@ -25,14 +28,22 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             //if (!FloodProtectors.performAction(getClient(), Action.CHARACTER_SELECT))
             //{
-            //	getClient().sendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DELETION_FAILED));
+            //  _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
             //	return;
             //}
 
+            ValidateAndDelete();
+
+            _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId));
+        }
+
+        private void ValidateAndDelete()
+        {
             L2Player player = _client.AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
 
             if (player == null)
             {
+                Log.Warn($"{_client.Address} tried to delete Character in slot {_charSlot} but no characters exits at that slot.");
                 _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                 return;
             }
@@ -61,7 +72,8 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
             else
             {
-                if (!PlayerService.MarkToDeleteChar(player.ObjId))
+                player.SetCharDeleteTime();
+                if (!PlayerService.MarkToDeleteChar(player.ObjId, player.DeleteTime))
                 {
                     _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                     return;
@@ -69,7 +81,6 @@ namespace L2dotNET.GameService.Network.Clientpackets
             }
 
             _client.SendPacket(new CharDeleteOk());
-            _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId));
         }
     }
 }

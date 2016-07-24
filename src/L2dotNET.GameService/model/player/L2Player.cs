@@ -103,41 +103,42 @@ namespace L2dotNET.GameService.Model.Player
         {
             PlayerModel playerModel = PlayerService.GetAccountByLogin(id);
             L2Player player = new L2Player
-                              {
-                                  ObjId = id,
-                                  Gameclient = client,
-                                  Name = playerModel.Name,
-                                  Title = playerModel.Title,
-                                  Level = (byte)playerModel.Level,
-                                  CurHp = playerModel.CurHp,
-                                  CurMp = playerModel.CurMp,
-                                  CurCp = playerModel.CurCp,
-                                  Face = playerModel.Face,
-                                  HairStyle = playerModel.HairStyle,
-                                  HairColor = playerModel.HairColor,
-                                  Sex = (byte)playerModel.Sex,
-                                  X = playerModel.X,
-                                  Y = playerModel.Y,
-                                  Z = playerModel.Z,
-                                  Heading = playerModel.Heading,
-                                  Exp = playerModel.Exp,
-                                  ExpOnDeath = playerModel.ExpBeforeDeath,
-                                  Sp = playerModel.Sp,
-                                  Karma = playerModel.Karma,
-                                  PvpKills = playerModel.PvpKills,
-                                  PkKills = playerModel.PkKills,
-                                  BaseClass = CharTemplateTable.Instance.GetTemplate(playerModel.BaseClass),
-                                  ActiveClass = CharTemplateTable.Instance.GetTemplate(playerModel.ClassId),
-                                  RecLeft = playerModel.RecLeft,
-                                  RecHave = playerModel.RecHave,
-                                  CharSlot = playerModel.CharSlot,
-                                  DeathPenaltyLevel = playerModel.DeathPenaltyLevel,
-                                  ClanId = playerModel.ClanId,
-                                  ClanPrivs = playerModel.ClanPrivs,
-                                  PenaltyClanCreate = playerModel.ClanCreateExpiryTime.ToString(),
-                                  PenaltyClanJoin = playerModel.ClanJoinExpiryTime.ToString(),
-                                  Inventory = new PcInventory(this)
-                              };
+            {
+                ObjId = id,
+                Gameclient = client,
+                Name = playerModel.Name,
+                Title = playerModel.Title,
+                Level = (byte)playerModel.Level,
+                CurHp = playerModel.CurHp,
+                CurMp = playerModel.CurMp,
+                CurCp = playerModel.CurCp,
+                Face = playerModel.Face,
+                HairStyle = playerModel.HairStyle,
+                HairColor = playerModel.HairColor,
+                Sex = (byte)playerModel.Sex,
+                X = playerModel.X,
+                Y = playerModel.Y,
+                Z = playerModel.Z,
+                Heading = playerModel.Heading,
+                Exp = playerModel.Exp,
+                ExpOnDeath = playerModel.ExpBeforeDeath,
+                Sp = playerModel.Sp,
+                Karma = playerModel.Karma,
+                PvpKills = playerModel.PvpKills,
+                PkKills = playerModel.PkKills,
+                BaseClass = CharTemplateTable.Instance.GetTemplate(playerModel.BaseClass),
+                ActiveClass = CharTemplateTable.Instance.GetTemplate(playerModel.ClassId),
+                RecLeft = playerModel.RecLeft,
+                RecHave = playerModel.RecHave,
+                CharSlot = playerModel.CharSlot,
+                DeathPenaltyLevel = playerModel.DeathPenaltyLevel,
+                ClanId = playerModel.ClanId,
+                ClanPrivs = playerModel.ClanPrivs,
+                PenaltyClanCreate = playerModel.ClanCreateExpiryTime.ToString(),
+                PenaltyClanJoin = playerModel.ClanJoinExpiryTime.ToString(),
+                Inventory = new PcInventory(this),
+                DeleteTime = playerModel.DeleteTime
+            };
 
             player.CStatsInit();
             SessionData = new PlayerBag();
@@ -148,9 +149,9 @@ namespace L2dotNET.GameService.Model.Player
         public static L2Player Create()
         {
             L2Player player = new L2Player
-                              {
-                                  ObjId = IdFactory.Instance.NextId()
-                              };
+            {
+                ObjId = IdFactory.Instance.NextId()
+            };
 
             //player.Inventory = new InvPC();
             //player.Inventory._owner = player;
@@ -161,52 +162,52 @@ namespace L2dotNET.GameService.Model.Player
         public void UpdatePlayer()
         {
             PlayerModel playerModel = new PlayerModel
-                                      {
-                                          ObjectId = ObjId,
-                                          Level = Level,
-                                          MaxHp = MaxHp,
-                                          CurHp = (int)CurHp,
-                                          MaxCp = MaxCp,
-                                          CurCp = (int)CurCp,
-                                          MaxMp = MaxMp,
-                                          CurMp = (int)CurMp,
-                                          Face = Face,
-                                          HairStyle = HairStyle,
-                                          HairColor = HairColor,
-                                          Sex = Sex,
-                                          Heading = Heading,
-                                          X = X,
-                                          Y = Y,
-                                          Z = Z,
-                                          Exp = Exp,
-                                          ExpBeforeDeath = ExpOnDeath,
-                                          Sp = Sp,
-                                          Karma = Karma,
-                                          PvpKills = PvpKills,
-                                          PkKills = PkKills,
-                                          ClanId = ClanId,
-                                          Race = (int)BaseClass.ClassId.ClassRace,
-                                          ClassId = (int)ActiveClass.ClassId.Id,
-                                          BaseClass = (int)BaseClass.ClassId.Id,
-                                          DeleteTime = DeleteTime,
-                                          CanCraft = CanCraft,
-                                          Title = Title,
-                                          RecHave = RecHave,
-                                          RecLeft = RecLeft,
-                                          AccessLevel = AccessLevel,
-                                          ClanPrivs = ClanPrivs,
-                                          WantsPeace = WantsPeace,
-                                          IsIn7SDungeon = IsIn7SDungeon,
-                                          PunishLevel = PunishLevel,
-                                          PunishTimer = PunishTimer,
-                                          PowerGrade = PowerGrade,
-                                          Nobless = Nobless,
-                                          Sponsor = Sponsor,
-                                          VarkaKetraAlly = VarkaKetraAlly,
-                                          ClanCreateExpiryTime = ClanCreateExpiryTime,
-                                          ClanJoinExpiryTime = ClanJoinExpiryTime,
-                                          DeathPenaltyLevel = DeathPenaltyLevel
-                                      };
+            {
+                ObjectId = ObjId,
+                Level = Level,
+                MaxHp = MaxHp,
+                CurHp = (int)CurHp,
+                MaxCp = MaxCp,
+                CurCp = (int)CurCp,
+                MaxMp = MaxMp,
+                CurMp = (int)CurMp,
+                Face = Face,
+                HairStyle = HairStyle,
+                HairColor = HairColor,
+                Sex = Sex,
+                Heading = Heading,
+                X = X,
+                Y = Y,
+                Z = Z,
+                Exp = Exp,
+                ExpBeforeDeath = ExpOnDeath,
+                Sp = Sp,
+                Karma = Karma,
+                PvpKills = PvpKills,
+                PkKills = PkKills,
+                ClanId = ClanId,
+                Race = (int)BaseClass.ClassId.ClassRace,
+                ClassId = (int)ActiveClass.ClassId.Id,
+                BaseClass = (int)BaseClass.ClassId.Id,
+                DeleteTime = DeleteTime,
+                CanCraft = CanCraft,
+                Title = Title,
+                RecHave = RecHave,
+                RecLeft = RecLeft,
+                AccessLevel = AccessLevel,
+                ClanPrivs = ClanPrivs,
+                WantsPeace = WantsPeace,
+                IsIn7SDungeon = IsIn7SDungeon,
+                PunishLevel = PunishLevel,
+                PunishTimer = PunishTimer,
+                PowerGrade = PowerGrade,
+                Nobless = Nobless,
+                Sponsor = Sponsor,
+                VarkaKetraAlly = VarkaKetraAlly,
+                ClanCreateExpiryTime = ClanCreateExpiryTime,
+                ClanJoinExpiryTime = ClanJoinExpiryTime,
+                DeathPenaltyLevel = DeathPenaltyLevel
+            };
 
             PlayerService.UpdatePlayer(playerModel);
         }
@@ -507,12 +508,12 @@ namespace L2dotNET.GameService.Model.Player
             if (skill.ReuseDelay > 0)
             {
                 L2SkillCoolTime reuse = new L2SkillCoolTime
-                                        {
-                                            Id = skill.SkillId,
-                                            Lvl = skill.Level,
-                                            Total = (int)skill.ReuseDelay,
-                                            Owner = this
-                                        };
+                {
+                    Id = skill.SkillId,
+                    Lvl = skill.Level,
+                    Total = (int)skill.ReuseDelay,
+                    Owner = this
+                };
                 reuse.Delay = reuse.Total;
                 reuse.Timer();
                 Reuse.Add(reuse.Id, reuse);
@@ -1419,173 +1420,173 @@ namespace L2dotNET.GameService.Model.Player
             switch (ClanType)
             {
                 case (short)EClanType.ClanMain:
-                {
-                    switch (Clan.Level)
                     {
-                        case 0:
-                        case 1:
-                        case 2:
-                        case 3:
-                            rank = EClanRank._1;
-                            break;
-                        case 4:
-                            if (leader)
-                                rank = EClanRank._3;
-                            break;
-                        case 5:
-                            rank = leader ? EClanRank._4 : EClanRank._3;
-                            break;
-                        case 6:
-                            if (leader)
-                                rank = EClanRank._5;
-                            else
-                            {
-                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
-                                    rank = EClanRank._4;
-                                else
+                        switch (Clan.Level)
+                        {
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                                rank = EClanRank._1;
+                                break;
+                            case 4:
+                                if (leader)
                                     rank = EClanRank._3;
-                            }
-                            break;
-                        case 7:
-                            if (leader)
-                                rank = EClanRank._7;
-                            else
-                            {
-                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
-                                    rank = EClanRank._6;
+                                break;
+                            case 5:
+                                rank = leader ? EClanRank._4 : EClanRank._3;
+                                break;
+                            case 6:
+                                if (leader)
+                                    rank = EClanRank._5;
                                 else
                                 {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
-                                        rank = EClanRank._5;
-                                    else
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
                                         rank = EClanRank._4;
+                                    else
+                                        rank = EClanRank._3;
                                 }
-                            }
-                            break;
-                        case 8:
-                            if (leader)
-                                rank = EClanRank._8;
-                            else
-                            {
-                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                break;
+                            case 7:
+                                if (leader)
                                     rank = EClanRank._7;
                                 else
                                 {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
                                         rank = EClanRank._6;
                                     else
-                                        rank = EClanRank._5;
+                                    {
+                                        if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                            rank = EClanRank._5;
+                                        else
+                                            rank = EClanRank._4;
+                                    }
                                 }
-                            }
-                            break;
-                        case 9:
-                            if (leader)
-                                rank = EClanRank._9;
-                            else
-                            {
-                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                break;
+                            case 8:
+                                if (leader)
                                     rank = EClanRank._8;
                                 else
                                 {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
                                         rank = EClanRank._7;
                                     else
-                                        rank = EClanRank._6;
+                                    {
+                                        if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                            rank = EClanRank._6;
+                                        else
+                                            rank = EClanRank._5;
+                                    }
                                 }
-                            }
-                            break;
-                        case 10:
-                            if (leader)
-                                rank = EClanRank._10;
-                            else
-                            {
-                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                break;
+                            case 9:
+                                if (leader)
                                     rank = EClanRank._9;
                                 else
                                 {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
                                         rank = EClanRank._8;
                                     else
-                                        rank = EClanRank._7;
+                                    {
+                                        if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                            rank = EClanRank._7;
+                                        else
+                                            rank = EClanRank._6;
+                                    }
                                 }
-                            }
-                            break;
-                        case 11:
-                            if (leader)
-                                rank = EClanRank._11;
-                            else
-                            {
-                                if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                break;
+                            case 10:
+                                if (leader)
                                     rank = EClanRank._10;
                                 else
                                 {
-                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
                                         rank = EClanRank._9;
                                     else
-                                        rank = EClanRank._8;
+                                    {
+                                        if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                            rank = EClanRank._8;
+                                        else
+                                            rank = EClanRank._7;
+                                    }
                                 }
-                            }
-                            break;
+                                break;
+                            case 11:
+                                if (leader)
+                                    rank = EClanRank._11;
+                                else
+                                {
+                                    if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight1, EClanType.ClanKnight2 }) != EClanType.None)
+                                        rank = EClanRank._10;
+                                    else
+                                    {
+                                        if (Clan.IsSubLeader(ObjId, new[] { EClanType.ClanKnight3, EClanType.ClanKnight4, EClanType.ClanKnight5, EClanType.ClanKnight6 }) != EClanType.None)
+                                            rank = EClanRank._9;
+                                        else
+                                            rank = EClanRank._8;
+                                    }
+                                }
+                                break;
+                        }
                     }
-                }
 
                     break;
                 case (short)EClanType.ClanAcademy:
-                {
-                    rank = EClanRank._1;
-                }
+                    {
+                        rank = EClanRank._1;
+                    }
                     break;
                 case (short)EClanType.ClanKnight1:
                 case (short)EClanType.ClanKnight2:
-                {
-                    switch (Clan.Level)
                     {
-                        case 6:
-                            rank = EClanRank._2;
-                            break;
-                        case 7:
-                            rank = EClanRank._3;
-                            break;
-                        case 8:
-                            rank = EClanRank._4;
-                            break;
-                        case 9:
-                            rank = EClanRank._5;
-                            break;
-                        case 10:
-                            rank = EClanRank._6;
-                            break;
-                        case 11:
-                            rank = EClanRank._7;
-                            break;
+                        switch (Clan.Level)
+                        {
+                            case 6:
+                                rank = EClanRank._2;
+                                break;
+                            case 7:
+                                rank = EClanRank._3;
+                                break;
+                            case 8:
+                                rank = EClanRank._4;
+                                break;
+                            case 9:
+                                rank = EClanRank._5;
+                                break;
+                            case 10:
+                                rank = EClanRank._6;
+                                break;
+                            case 11:
+                                rank = EClanRank._7;
+                                break;
+                        }
                     }
-                }
 
                     break;
                 case (short)EClanType.ClanKnight3:
                 case (short)EClanType.ClanKnight4:
                 case (short)EClanType.ClanKnight5:
                 case (short)EClanType.ClanKnight6:
-                {
-                    switch (Clan.Level)
                     {
-                        case 7:
-                            rank = EClanRank._2;
-                            break;
-                        case 8:
-                            rank = EClanRank._3;
-                            break;
-                        case 9:
-                            rank = EClanRank._4;
-                            break;
-                        case 10:
-                            rank = EClanRank._5;
-                            break;
-                        case 11:
-                            rank = EClanRank._6;
-                            break;
+                        switch (Clan.Level)
+                        {
+                            case 7:
+                                rank = EClanRank._2;
+                                break;
+                            case 8:
+                                rank = EClanRank._3;
+                                break;
+                            case 9:
+                                rank = EClanRank._4;
+                                break;
+                            case 10:
+                                rank = EClanRank._5;
+                                break;
+                            case 11:
+                                rank = EClanRank._6;
+                                break;
+                        }
                     }
-                }
 
                     break;
             }
@@ -1784,9 +1785,9 @@ namespace L2dotNET.GameService.Model.Player
                 if (_petSummonTime == null)
                 {
                     _petSummonTime = new Timer
-                                     {
-                                         Interval = 5000
-                                     };
+                    {
+                        Interval = 5000
+                    };
                     _petSummonTime.Elapsed += PetSummonEnd;
                 }
 
@@ -1798,9 +1799,9 @@ namespace L2dotNET.GameService.Model.Player
                 if (_nonpetSummonTime == null)
                 {
                     _nonpetSummonTime = new Timer
-                                        {
-                                            Interval = 5000
-                                        };
+                    {
+                        Interval = 5000
+                    };
                     _nonpetSummonTime.Elapsed += NonpetSummonEnd;
                 }
 
@@ -1906,9 +1907,9 @@ namespace L2dotNET.GameService.Model.Player
             if (_sitTime == null)
             {
                 _sitTime = new Timer
-                           {
-                               Interval = 2500
-                           };
+                {
+                    Interval = 2500
+                };
                 _sitTime.Elapsed += SitEnd;
             }
 
@@ -2413,5 +2414,9 @@ namespace L2dotNET.GameService.Model.Player
 
             base.DoDie(killer, bytrigger);
         }
+
+        public int RemainingDeleteTime() => AccessLevel > -100 ? (DeleteTime > 0 ? (int)((DeleteTime - Utilz.CurrentTimeMillis()) / 1000) : 0) : -1;
+
+        public void SetCharDeleteTime() => DeleteTime = Utilz.CurrentTimeMillis() + (Config.Config.Instance.GameplayConfig.Server.Client.DeleteCharAfterDays * 86400000L);
     }
 }
