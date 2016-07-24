@@ -59,9 +59,9 @@ namespace L2dotNET.GameService.Tables.Multisell
             else
             {
                 MultiSellList newlist = new MultiSellList
-                                        {
-                                            Id = list.Id
-                                        };
+                {
+                    Id = list.Id
+                };
                 L2Item[] pitems = player.GetAllItems().ToArray();
                 foreach (MultiSellEntry entry in list.Container)
                 {

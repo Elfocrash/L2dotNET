@@ -35,19 +35,19 @@ namespace L2dotNET.GameService.Model.Structures
         public void GenZone()
         {
             ZoneTemplate template = new ZoneTemplate
-                                    {
-                                        Name = $"hideout #{ID}",
-                                        Type = ZoneTemplate.ZoneType.Hideout
-                                    };
+            {
+                Name = $"hideout #{ID}",
+                Type = ZoneTemplate.ZoneType.Hideout
+            };
             template.SetRange(zoneLoc);
 
             zone = new hideout_zone
-                   {
-                       hideout = this,
-                       Name = template.Name,
-                       Template = template,
-                       Territory = new ZoneNPoly(template.X, template.Y, template.Z1, template.Z2)
-                   };
+            {
+                hideout = this,
+                Name = template.Name,
+                Template = template,
+                Territory = new ZoneNPoly(template.X, template.Y, template.Z1, template.Z2)
+            };
 
             for (int i = 0; i < template.X.Length; i++)
             {

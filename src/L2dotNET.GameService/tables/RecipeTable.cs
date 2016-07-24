@@ -41,13 +41,13 @@ namespace L2dotNET.GameService.Tables
                         continue;
 
                     L2Recipe rec = new L2Recipe
-                                   {
-                                       RecipeId = int.Parse(m.Attribute("id").Value),
-                                       Mk = m.Attribute("mk").Value,
-                                       Level = int.Parse(m.Attribute("level").Value),
-                                       ItemId = int.Parse(m.Attribute("itemId").Value),
-                                       Iscommonrecipe = int.Parse(m.Attribute("common").Value)
-                                   };
+                    {
+                        RecipeId = int.Parse(m.Attribute("id").Value),
+                        Mk = m.Attribute("mk").Value,
+                        Level = int.Parse(m.Attribute("level").Value),
+                        ItemId = int.Parse(m.Attribute("itemId").Value),
+                        Iscommonrecipe = int.Parse(m.Attribute("common").Value)
+                    };
 
                     foreach (XElement stp in m.Elements())
                     {

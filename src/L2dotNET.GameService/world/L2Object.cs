@@ -501,18 +501,18 @@ namespace L2dotNET.GameService.World
             if (RegenerationMethod_1S == null)
             {
                 RegenerationMethod_1S = new Timer
-                                        {
-                                            Interval = 1000
-                                        };
+                {
+                    Interval = 1000
+                };
                 RegenerationMethod_1S.Elapsed += new ElapsedEventHandler(RegenTaskDone);
             }
 
             if (RegenUpdate == null)
             {
                 RegenUpdate = new Timer
-                              {
-                                  Interval = RegenUpdateInterval
-                              };
+                {
+                    Interval = RegenUpdateInterval
+                };
                 RegenUpdate.Elapsed += new ElapsedEventHandler(RegenUpdateTaskDone);
             }
 

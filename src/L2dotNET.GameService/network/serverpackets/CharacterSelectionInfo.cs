@@ -78,7 +78,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteInt(player.Face);
                 WriteDouble(player.CurHp); // hp max TODO
                 WriteDouble(player.CurMp); // mp max TODO
-                WriteInt(0); // days left before TODO
+                WriteInt(player.RemainingDeleteTime());
 
                 WriteInt((int)player.ActiveClass.ClassId.Id);
 

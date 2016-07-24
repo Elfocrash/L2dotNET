@@ -38,9 +38,14 @@ namespace L2dotNET.Services
             return _unitOfWork.PlayerRepository.GetPlayerModelBySlotId(accountName, slotId);
         }
 
-        public bool MarkToDeleteChar(int objId)
+        public bool MarkToDeleteChar(int objId, long deletetime)
         {
-            return _unitOfWork.PlayerRepository.MarkToDeleteChar(objId);
+            return _unitOfWork.PlayerRepository.MarkToDeleteChar(objId, deletetime);
+        }
+
+        public bool MarkToRestoreChar(int objId)
+        {
+            return _unitOfWork.PlayerRepository.MarkToRestoreChar(objId);
         }
 
         public bool DeleteCharByObjId(int objId)

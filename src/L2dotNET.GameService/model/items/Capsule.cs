@@ -69,9 +69,9 @@ namespace L2dotNET.GameService.Model.Items
                     continue;
 
                 CapsuleItem caps = new CapsuleItem
-                                   {
-                                       Id = Convert.ToInt32(m.Attribute("id").Value)
-                                   };
+                {
+                    Id = Convert.ToInt32(m.Attribute("id").Value)
+                };
 
                 foreach (XElement stp in m.Elements())
                 {
@@ -81,12 +81,12 @@ namespace L2dotNET.GameService.Model.Items
                             try
                             {
                                 CapsuleItemReward rew = new CapsuleItemReward
-                                                        {
-                                                            Id = int.Parse(stp.Attribute("id").Value),
-                                                            Min = int.Parse(stp.Attribute("min").Value),
-                                                            Max = int.Parse(stp.Attribute("max").Value),
-                                                            Rate = int.Parse(stp.Attribute("rate").Value)
-                                                        };
+                                {
+                                    Id = int.Parse(stp.Attribute("id").Value),
+                                    Min = int.Parse(stp.Attribute("min").Value),
+                                    Max = int.Parse(stp.Attribute("max").Value),
+                                    Rate = int.Parse(stp.Attribute("rate").Value)
+                                };
                                 caps.Rewards.Add(rew);
                             }
                             catch (Exception)

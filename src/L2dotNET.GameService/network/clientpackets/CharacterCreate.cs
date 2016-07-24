@@ -142,72 +142,71 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.CharSlot = player.Gameclient.AccountChars.Count;
 
             PlayerModel playerModel = new PlayerModel
-                                      {
-                                          AccountName = player.AccountName,
-                                          ObjectId = player.ObjId,
-                                          Name = player.Name,
-                                          Level = player.Level,
-                                          MaxHp = player.MaxHp,
-                                          CurHp = (int)player.CurHp,
-                                          MaxCp = player.MaxCp,
-                                          CurCp = (int)player.CurCp,
-                                          MaxMp = player.MaxMp,
-                                          CurMp = (int)player.CurMp,
-                                          Face = player.Face,
-                                          HairStyle = player.HairStyle,
-                                          HairColor = player.HairColor,
-                                          Sex = player.Sex,
-                                          Heading = player.Heading,
-                                          X = player.X,
-                                          Y = player.Y,
-                                          Z = player.Z,
-                                          Exp = player.Exp,
-                                          ExpBeforeDeath = player.ExpOnDeath,
-                                          Sp = player.Sp,
-                                          Karma = player.Karma,
-                                          PvpKills = player.PvpKills,
-                                          PkKills = player.PkKills,
-                                          ClanId = player.ClanId,
-                                          Race = (int)player.BaseClass.ClassId.ClassRace,
-                                          ClassId = (int)player.ActiveClass.ClassId.Id,
-                                          BaseClass = (int)player.BaseClass.ClassId.Id,
-                                          DeleteTime = player.DeleteTime,
-                                          CanCraft = player.CanCraft,
-                                          Title = player.Title,
-                                          RecHave = player.RecHave,
-                                          RecLeft = player.RecLeft,
-                                          AccessLevel = player.AccessLevel,
-                                          Online = player.Online,
-                                          OnlineTime = player.OnlineTime,
-                                          CharSlot = player.CharSlot,
-                                          LastAccess = player.LastAccess,
-                                          ClanPrivs = player.ClanPrivs,
-                                          WantsPeace = player.WantsPeace,
-                                          IsIn7SDungeon = player.IsIn7SDungeon,
-                                          PunishLevel = player.PunishLevel,
-                                          PunishTimer = player.PunishTimer,
-                                          PowerGrade = player.PowerGrade,
-                                          Nobless = player.Nobless,
-                                          Hero = player.Hero,
-                                          Subpledge = player.Subpledge,
-                                          LastRecomDate = player.LastRecomDate,
-                                          LevelJoinedAcademy = player.LevelJoinedAcademy,
-                                          Apprentice = player.Apprentice,
-                                          Sponsor = player.Sponsor,
-                                          VarkaKetraAlly = player.VarkaKetraAlly,
-                                          ClanJoinExpiryTime = player.ClanJoinExpiryTime,
-                                          ClanCreateExpiryTime = player.ClanCreateExpiryTime,
-                                          DeathPenaltyLevel = player.DeathPenaltyLevel
-                                      };
+            {
+                AccountName = player.AccountName,
+                ObjectId = player.ObjId,
+                Name = player.Name,
+                Level = player.Level,
+                MaxHp = player.MaxHp,
+                CurHp = (int)player.CurHp,
+                MaxCp = player.MaxCp,
+                CurCp = (int)player.CurCp,
+                MaxMp = player.MaxMp,
+                CurMp = (int)player.CurMp,
+                Face = player.Face,
+                HairStyle = player.HairStyle,
+                HairColor = player.HairColor,
+                Sex = player.Sex,
+                Heading = player.Heading,
+                X = player.X,
+                Y = player.Y,
+                Z = player.Z,
+                Exp = player.Exp,
+                ExpBeforeDeath = player.ExpOnDeath,
+                Sp = player.Sp,
+                Karma = player.Karma,
+                PvpKills = player.PvpKills,
+                PkKills = player.PkKills,
+                ClanId = player.ClanId,
+                Race = (int)player.BaseClass.ClassId.ClassRace,
+                ClassId = (int)player.ActiveClass.ClassId.Id,
+                BaseClass = (int)player.BaseClass.ClassId.Id,
+                DeleteTime = player.DeleteTime,
+                CanCraft = player.CanCraft,
+                Title = player.Title,
+                RecHave = player.RecHave,
+                RecLeft = player.RecLeft,
+                AccessLevel = player.AccessLevel,
+                Online = player.Online,
+                OnlineTime = player.OnlineTime,
+                CharSlot = player.CharSlot,
+                LastAccess = player.LastAccess,
+                ClanPrivs = player.ClanPrivs,
+                WantsPeace = player.WantsPeace,
+                IsIn7SDungeon = player.IsIn7SDungeon,
+                PunishLevel = player.PunishLevel,
+                PunishTimer = player.PunishTimer,
+                PowerGrade = player.PowerGrade,
+                Nobless = player.Nobless,
+                Hero = player.Hero,
+                Subpledge = player.Subpledge,
+                LastRecomDate = player.LastRecomDate,
+                LevelJoinedAcademy = player.LevelJoinedAcademy,
+                Apprentice = player.Apprentice,
+                Sponsor = player.Sponsor,
+                VarkaKetraAlly = player.VarkaKetraAlly,
+                ClanJoinExpiryTime = player.ClanJoinExpiryTime,
+                ClanCreateExpiryTime = player.ClanCreateExpiryTime,
+                DeathPenaltyLevel = player.DeathPenaltyLevel
+            };
             PlayerService.CreatePlayer(playerModel);
             player.Gameclient.AccountChars.Add(player);
             _client.SendPacket(new CharCreateOk());
             L2World.Instance.AddPlayer(player);
-            CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId)
-                                         {
-                                             CharId = player.ObjId
-                                         };
-            _client.SendPacket(csl);
+            _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId)
+            {
+                CharId = player.ObjId
+            });
         }
     }
 }

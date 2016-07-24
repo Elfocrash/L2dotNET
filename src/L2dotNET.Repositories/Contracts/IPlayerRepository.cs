@@ -14,7 +14,9 @@ namespace L2dotNET.Repositories.Contracts
 
         PlayerModel GetPlayerModelBySlotId(string accountName, int slotId);
 
-        bool MarkToDeleteChar(int objId);
+        bool MarkToDeleteChar(int objId, long deletetime);
+
+        bool MarkToRestoreChar(int objId);
 
         bool DeleteCharByObjId(int objId);
     }

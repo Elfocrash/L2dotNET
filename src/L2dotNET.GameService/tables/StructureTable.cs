@@ -51,9 +51,9 @@ namespace L2dotNET.GameService.Tables
 
                     string[] pt = line.Split('\t');
                     StructureSpawn spawn = new StructureSpawn
-                                           {
-                                               NpcId = Convert.ToInt32(pt[0])
-                                           };
+                    {
+                        NpcId = Convert.ToInt32(pt[0])
+                    };
 
                     for (byte ord = 1; ord < pt.Length; ord++)
                     {
