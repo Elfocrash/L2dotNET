@@ -27,7 +27,7 @@ namespace L2dotNET.GameService.Tables
         private static readonly object SyncRoot = new object();
         public Dictionary<string, int> Slots = new Dictionary<string, int>();
         public Dictionary<int, Armor> Armors = new Dictionary<int, Armor>();
-        //public Dictionary<int, Weapon> Weapons = new Dictionary<int, Weapon>();
+        public Dictionary<int, Weapon> Weapons = new Dictionary<int, Weapon>();
         //public Dictionary<int, EtcItem> Armors = new Dictionary<int, Armor>();
 
         public static ItemTable Instance
@@ -74,6 +74,15 @@ namespace L2dotNET.GameService.Tables
             Slots.Add("strider", ItemTemplate.SlotStrider);
             Slots.Add("babypet", ItemTemplate.SlotBabypet);
 
+            LoadArmorModels();
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            Log.Info($"ItemTable: Loaded #{Armors.Count} armors.");
+        }
+
+        private void LoadArmorModels()
+        {
             Dictionary<int, ArmorModel> armorsModels = ItemService.GetAllArmorModelsDict();
             foreach (KeyValuePair<int, ArmorModel> modelPair in armorsModels)
             {
@@ -90,14 +99,10 @@ namespace L2dotNET.GameService.Tables
                     Destroyable = model.Destroyable,
                     Tradable = model.Tradeable,
                     Weight = model.Weight,
-                    Duration = model.Duration                    
+                    Duration = model.Duration
                 };
                 Armors.Add(modelPair.Key, armor);
             }
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            Log.Info($"ItemTable: Loaded #{Armors.Count} armors.");
         }
     }
 }

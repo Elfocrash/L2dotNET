@@ -5,7 +5,8 @@ namespace L2dotNET.Enums
 {
     public class ArmorType : ItemType
     {
-        private readonly int _mask;
+        public ArmorTypeId Id { get; set; }
+        private readonly string _name;
         public static readonly ArmorType None = new ArmorType(ArmorTypeId.None, "NONE");
         public static readonly ArmorType Light = new ArmorType(ArmorTypeId.Light, "LIGHT");
         public static readonly ArmorType Heavy = new ArmorType(ArmorTypeId.Heavy, "HEAVY");
@@ -13,13 +14,10 @@ namespace L2dotNET.Enums
         public static readonly ArmorType Pet = new ArmorType(ArmorTypeId.Pet, "PET");
         public static readonly ArmorType Shield = new ArmorType(ArmorTypeId.Shield, "SHIELD");
 
-        public ArmorTypeId Id { get; set; }
-        public string Name { get; set; }
-
         private ArmorType(ArmorTypeId id, string name)
         {
-            Name = name;
-            _mask = 1 << ((int)id + Enum.GetNames(typeof(WeaponTypeId)).Length);
+            _name = name;
+            Id = id;
         }
 
         public static IEnumerable<ArmorType> Values
@@ -37,12 +35,12 @@ namespace L2dotNET.Enums
 
         public int GetMask()
         {
-            return _mask;
+            return 1 << (int)Id + 16;
         }
 
-        public static explicit operator int(ArmorType v)
+        public override string ToString()
         {
-            throw new NotImplementedException();
+            return _name;
         }
     }
 }

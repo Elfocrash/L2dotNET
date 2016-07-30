@@ -154,6 +154,7 @@
     <Compile Include="Model\Items\ItemEffect.cs" />
     <Compile Include="Model\Items\ItemHandler.cs" />
     <Compile Include="Model\Items\ItemHandlerScript.cs" />
+    <Compile Include="Model\Items\Weapon.cs" />
     <Compile Include="Model\Npcs\Ai\AgitManagerAI.cs" />
     <Compile Include="Model\Npcs\Ai\AIManager.cs" />
     <Compile Include="Model\Npcs\Ai\AITemplate.cs" />

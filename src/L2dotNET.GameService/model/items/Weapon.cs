@@ -5,18 +5,18 @@ using L2dotNET.Utility;
 
 namespace L2dotNET.GameService.Model.Items
 {
-    public class Armor : ItemTemplate
+    public class Weapon : ItemTemplate
     {
-        public ArmorTypeId Type { get; set; }
+        public WeaponTypeId Type { get; set; }
         private int AvoidModifier { get; set; }
         private int Pdef { get; set; }
         private int Mdef { get; set; }
         private int MpBonus { get; set; }
         private int HpBonus { get; set; }
 
-        public Armor(StatsSet set) : base(set)
+        public Weapon(StatsSet set) : base(set)
         {
-            Type = Utilz.GetEnumFromString(set.GetString("armor_type", "none"), ArmorTypeId.None);
+            Type = Utilz.GetEnumFromString(set.GetString("armor_type", "none"), WeaponTypeId.None);
             AvoidModifier = set.GetInt("avoid_modify");
             Pdef = set.GetInt("p_def");
             Mdef = set.GetInt("m_def");
@@ -31,9 +31,6 @@ namespace L2dotNET.GameService.Model.Items
             }
             else
             {
-                if ((Type == ArmorType.None.Id) && (BodyPart == SlotLHand)) // retail define shield as NONE
-                    Type = ArmorType.Shield.Id;
-
                 Type1 = Type1ShieldArmor;
                 Type2 = Type2ShieldArmor;
             }
@@ -41,7 +38,7 @@ namespace L2dotNET.GameService.Model.Items
 
         public override int GetItemMask()
         {
-            var orDefault = ArmorType.Values.FirstOrDefault(x => x.Id == Type);
+            var orDefault = WeaponType.Values.FirstOrDefault(x => x.Id == Type);
             if (orDefault != null)
             {
                 int firstOrDefault = orDefault.GetMask();
@@ -49,5 +46,6 @@ namespace L2dotNET.GameService.Model.Items
             }
             return 0;
         }
+
     }
 }
