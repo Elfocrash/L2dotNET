@@ -794,7 +794,6 @@
     <Folder Include="GeoEngine\" />
     <Folder Include="Mapping\" />
     <Folder Include="Model\Quests\Data\" />
-	<Folder Include="Plugins\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -808,8 +807,10 @@
   <Target Name="AfterBuild">
     <ItemGroup>
       <BinFiles Include="$(SolutionDir)L2dotNET.GameService\Datapacks\Game\**\*.*" />
-	  <BinFiles Include="$(SolutionDir)L2dotNET.GameService\Plugins*\*.*" />
     </ItemGroup>
     <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(TargetDir)\%(RecursiveDir)" />
-  </Target>  
+  </Target>
+  <PropertyGroup>
+    <PreBuildEvent>if not exist "$(TargetDir)Plugins" mkdir "$(TargetDir)Plugins"</PreBuildEvent>
+  </PropertyGroup>
 </Project>
