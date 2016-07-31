@@ -16,12 +16,12 @@ namespace L2dotNET.Enums
         public static readonly WeaponType Pole = new WeaponType(WeaponTypeId.Pole, "Pole");
         public static readonly WeaponType Etc = new WeaponType(WeaponTypeId.Etc, "Etc");
         public static readonly WeaponType Fist = new WeaponType(WeaponTypeId.Fist, "Fist");
-        public static readonly WeaponType Dual = new WeaponType(WeaponTypeId.Dual, "Dual Sword");
-        public static readonly WeaponType DualFist = new WeaponType(WeaponTypeId.Dualfist, "Dual Fist");
-        public static readonly WeaponType BigSword = new WeaponType(WeaponTypeId.Bigsword, "Big Sword");
+        public static readonly WeaponType Dual = new WeaponType(WeaponTypeId.Dual, "DualSword");
+        public static readonly WeaponType DualFist = new WeaponType(WeaponTypeId.Dualfist, "DualFist");
+        public static readonly WeaponType BigSword = new WeaponType(WeaponTypeId.Bigsword, "BigSword");
         public static readonly WeaponType Pet = new WeaponType(WeaponTypeId.Pet, "Pet");
         public static readonly WeaponType Rod = new WeaponType(WeaponTypeId.Fishingrod, "Rod");
-        public static readonly WeaponType BigBlunt = new WeaponType(WeaponTypeId.Bigblunt, "Big Blunt");
+        public static readonly WeaponType BigBlunt = new WeaponType(WeaponTypeId.Bigblunt, "BigBlunt");
 
         private WeaponType(WeaponTypeId id, string name)
         {
