@@ -10,6 +10,7 @@ using L2dotNET.GameService.Model.Npcs.Ai;
 using L2dotNET.GameService.Model.Quests;
 using L2dotNET.GameService.Network;
 using L2dotNET.GameService.Network.LoginAuth;
+using L2dotNET.GameService.Plugins;
 using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Tables.Multisell;
 using L2dotNET.GameService.World;
@@ -18,7 +19,7 @@ using Ninject;
 
 namespace L2dotNET.GameService
 {
-    class GameServer
+    public class GameServer
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(GameServer));
 
@@ -67,12 +68,13 @@ namespace L2dotNET.GameService
             AllianceTable.Instance.Initialize();
             ClanTable.Instance.Initialize();
 
-            Log.Info("NpcServer: ");
             StaticObjTable.Instance.Initialize();
             //SpawnTable.getInstance().Spawn();
             StructureTable.Instance.Initialize();
 
             HtmCache.Instance.Initialize();
+
+            PluginManager.Instance.Initialize(this);
 
             AuthThread.Instance.Initialize();
 

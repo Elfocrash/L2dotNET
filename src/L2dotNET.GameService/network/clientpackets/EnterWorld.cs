@@ -4,6 +4,7 @@ using L2dotNET.GameService.Managers;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
+using L2dotNET.GameService.Plugins;
 using L2dotNET.GameService.Tables;
 using L2dotNET.Network;
 
@@ -57,6 +58,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             player.SendPacket(new UserInfo(player));
 
+            ((Plugin)PluginManager.Instance.Plugins[0]).OnLogin(player);
             //player.sendPacket(new ShortCutInit(player));
             player.StartAi();
         }

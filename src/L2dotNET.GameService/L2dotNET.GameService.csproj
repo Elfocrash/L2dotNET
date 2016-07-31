@@ -562,6 +562,12 @@
     <Compile Include="Network\LoginAuth\Send\LoginServPing.cs" />
     <Compile Include="Network\NetworkBlock.cs" />
     <Compile Include="Network\PacketHandler.cs" />
+    <Compile Include="Plugins\IPlugin.cs" />
+    <Compile Include="Plugins\IStartup.cs" />
+    <Compile Include="Plugins\Plugin.cs" />
+    <Compile Include="Plugins\PluginAttribute.cs" />
+    <Compile Include="Plugins\PluginContext.cs" />
+    <Compile Include="Plugins\PluginManager.cs" />
     <Compile Include="PreReqValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

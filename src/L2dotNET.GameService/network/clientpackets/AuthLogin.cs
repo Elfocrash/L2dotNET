@@ -46,13 +46,13 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 int slot = 0;
                 foreach (L2Player p in players.Select(id => new L2Player().RestorePlayer(id, _client)))
                 {
-                    //TODO: Make delete on startup server or timer listener
-                    // See if the char must be deleted
-                    if (Utilz.CurrentTimeMillis() > p.DeleteTime)
-                    {
-                        PlayerService.DeleteCharByObjId(p.ObjId);
-                        continue;
-                    }
+                    ////TODO: Make delete on startup server or timer listener
+                    //// See if the char must be deleted
+                    //if (Utilz.CurrentTimeMillis() > p.DeleteTime)
+                    //{
+                    //    PlayerService.DeleteCharByObjId(p.ObjId);
+                    //    continue;
+                    //}
 
                     p.CharSlot = slot;
                     slot++;

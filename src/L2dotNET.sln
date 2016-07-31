@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.LoginService", "L2dotNET.LoginService\L2dotNET.LoginService.csproj", "{960CD325-3EEB-4AAA-9C67-727ECDE884BB}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Tests", "L2dotNET.Tests\L2dotNET.Tests.csproj", "{71C1A938-1600-4A42-9A1C-6D1FBB0F7E16}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET", "L2dotNET\L2dotNET.csproj", "{00EE35EE-F920-4A50-B9BD-AAB02DA5C066}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "TestPlugin\TestPlugin.csproj", "{BF27AA81-F01A-45EC-A913-91C406A0620D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,14 @@ Global
 		{00EE35EE-F920-4A50-B9BD-AAB02DA5C066}.Release|Any CPU.Build.0 = Release|Any CPU
 		{00EE35EE-F920-4A50-B9BD-AAB02DA5C066}.Release|x86.ActiveCfg = Release|Any CPU
 		{00EE35EE-F920-4A50-B9BD-AAB02DA5C066}.Release|x86.Build.0 = Release|Any CPU
+		{BF27AA81-F01A-45EC-A913-91C406A0620D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF27AA81-F01A-45EC-A913-91C406A0620D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF27AA81-F01A-45EC-A913-91C406A0620D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BF27AA81-F01A-45EC-A913-91C406A0620D}.Debug|x86.Build.0 = Debug|Any CPU
+		{BF27AA81-F01A-45EC-A913-91C406A0620D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF27AA81-F01A-45EC-A913-91C406A0620D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF27AA81-F01A-45EC-A913-91C406A0620D}.Release|x86.ActiveCfg = Release|Any CPU
+		{BF27AA81-F01A-45EC-A913-91C406A0620D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
