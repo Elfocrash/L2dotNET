@@ -34,41 +34,19 @@ namespace L2dotNET.GameService.Network.Clientpackets
         {
             L2Player player = _client.CurrentPlayer;
 
-            //if (_text.Contains("	Type=1 	ID=") && _text.Contains("	Color=0 	Underline=0 	Title="))
-            //{
-            //    string tx = _text.Replace("	Type=1 	ID=", "\f");
-            //    tx = tx.Split('\f')[1].Split(' ')[0];
-            //    int id = int.Parse(tx);
-            //    L2Item item = player.getItemByObjId(id);
-            //    if (item == null)
-            //    {
-            //        player.sendMessage("You cant publish this item.");
-            //        player.sendActionFailed();
-            //        return;
-            //    }
-            //    else
-            //        RqItemManager.getInstance().postItem(item);
-            //}
-
             CreatureSay cs = new CreatureSay(player.ObjId, _type, player.Name, _text);
 
             switch (_type)
             {
                 case SayIDList.CHAT_NORMAL:
-                {
-                    char[] arr = _text.ToCharArray();
-                    if (arr[0] == '.')
+                    foreach (L2Player target in L2World.Instance.GetPlayers().Where(o => player.IsInsideRadius(o, 1250, true, false)))
                     {
-                        if (PointCmdManager.GetInstance().Pointed(player, _text))
-                            return;
+                        if(player == target)
+                            continue;
+                        
+                        target.SendPacket(cs);
                     }
-
-                    foreach (L2Player o in player.KnownObjects.Values.OfType<L2Player>().Where(o => player.IsInsideRadius(o, 1250, true, false)))
-                        o.SendPacket(cs);
-
                     player.SendPacket(cs);
-                }
-
                     break;
                 case SayIDList.CHAT_SHOUT:
                     //L2World.Instance.BroadcastToRegion(player.X, player.Y, cs);
