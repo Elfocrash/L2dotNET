@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Linq.Expressions;
 using System.Runtime.Remoting.Contexts;
 using log4net;
 using L2dotNET.GameService.Network.LoginAuth;
@@ -31,7 +32,6 @@ namespace L2dotNET.GameService.Network
             Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
             if (ClientPackets.ContainsKey(packet.FirstOpcode))
                 packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, login);
-
             packetBase?.RunImpl();
         }
     }
