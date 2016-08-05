@@ -1235,7 +1235,7 @@ namespace L2dotNET.GameService.Model.Player
             Party?.Leave(this);
 
             Summon?.UnSummon();
-
+            Online = 0;
             UpdatePlayer();
             L2World.Instance.RemovePlayer(this);
             DecayMe();

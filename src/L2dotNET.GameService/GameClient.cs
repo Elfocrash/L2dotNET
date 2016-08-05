@@ -96,11 +96,12 @@ namespace L2dotNET.GameService
             IsTerminated = true;
             Stream.Close();
             Client.Close();
+            
+            if(CurrentPlayer?.Online == 1)
+                CurrentPlayer?.DeleteMe();
 
-            CurrentPlayer?.DeleteMe();
-
-            _accountChars.ForEach(p => p?.DeleteMe());
-            _accountChars.Clear();
+            //_accountChars.ForEach(p => p?.DeleteMe());
+            //_accountChars.Clear();
 
             ClientManager.Instance.Terminate(Address.ToString());
         }

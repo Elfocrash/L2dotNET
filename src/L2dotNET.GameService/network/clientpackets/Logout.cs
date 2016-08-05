@@ -36,7 +36,11 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 return;
             }
 
-            player.DeleteMe();
+            if (player.Online == 1)
+            {
+                player.Online = 0;
+                player.DeleteMe();
+            }
             player.SendPacket(new LeaveWorld());
         }
     }

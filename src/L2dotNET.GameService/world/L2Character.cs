@@ -706,26 +706,26 @@ namespace L2dotNET.GameService.World
 
         public void ReduceHpArea(int damage, int msgId)
         {
-            if (Dead)
-                return;
+            //if (Dead)
+            //    return;
 
-            CurHp -= damage;
+            //CurHp -= damage;
 
-            StatusUpdate su = new StatusUpdate(ObjId);
-            su.Add(StatusUpdate.CurHp, (int)CurHp);
-            su.Add(StatusUpdate.MaxHp, (int)CharacterStat.GetStat(EffectType.BMaxHp));
-            BroadcastPacket(su);
+            //StatusUpdate su = new StatusUpdate(ObjId);
+            //su.Add(StatusUpdate.CurHp, (int)CurHp);
+            //su.Add(StatusUpdate.MaxHp, (int)CharacterStat.GetStat(EffectType.BMaxHp));
+            //BroadcastPacket(su);
 
-            if (CurHp <= 0)
-            {
-                Dead = true;
-                CurHp = 0;
-                DoDie(null, true);
-                return;
-            }
+            //if (CurHp <= 0)
+            //{
+            //    Dead = true;
+            //    CurHp = 0;
+            //    DoDie(null, true);
+            //    return;
+            //}
 
-            if (this is L2Player)
-                SendPacket(new SystemMessage((SystemMessage.SystemMessageId)msgId).AddNumber(damage));
+            //if (this is L2Player)
+            //    SendPacket(new SystemMessage((SystemMessage.SystemMessageId)msgId).AddNumber(damage));
         }
 
         public override void ReduceHp(L2Character attacker, double damage)

@@ -65,7 +65,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.HairColor = playerModel.HairColor;
             player.Sex = (byte)playerModel.Sex;
             player.Heading = playerModel.Heading;
-            player.X = playerModel.Heading;
+            player.X = playerModel.X;
             player.Y = playerModel.Y;
             player.Z = playerModel.Z;
             player.Exp = playerModel.Exp;

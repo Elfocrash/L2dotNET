@@ -105,9 +105,9 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.MaxCp = (int)player.CharacterStat.GetStat(EffectType.BMaxCp);
             player.MaxHp = (int)player.CharacterStat.GetStat(EffectType.BMaxHp);
 
-            player.X = 45901;
-            player.Y = 41329;
-            player.Z = -3508;
+            player.X = template.SpawnX;
+            player.Y = template.SpawnY;
+            player.Z = template.SpawnZ;
 
             if (template.Items != null)
             {
