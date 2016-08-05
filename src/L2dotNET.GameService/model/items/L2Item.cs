@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.GameService.Tables;
+using L2dotNET.GameService.Templates;
 using L2dotNET.GameService.Tools;
 using L2dotNET.GameService.World;
+using L2dotNET.Models;
+using L2dotNET.Services.Contracts;
+using Ninject;
 
 namespace L2dotNET.GameService.Model.Items
 {
     public class L2Item : L2Object
     {
+        [Inject]
+        public IItemService ItemService => GameServer.Kernel.Get<IItemService>();
+
         public ItemTemplate Template;
         public int Count;
         public short IsEquipped;
         public int Enchant;
-        public short Enchant1;
-        public short Enchant2;
-        public short Enchant3;
         public int AugmentationId = 0;
         public int Durability;
         public ItemLocation Location;
@@ -24,6 +29,9 @@ namespace L2dotNET.GameService.Model.Items
         public int PetId = -1;
         public int Dropper;
         public int SlotLocation = 0;
+
+        public bool ExistsInDb { get; set; }
+        public int OwnerId { get; set; }
 
         public short AttrAttackType = -2;
         public short AttrAttackValue = 0;
@@ -42,6 +50,21 @@ namespace L2dotNET.GameService.Model.Items
         public void GenId()
         {
             ObjId = IdFactory.Instance.NextId();
+        }
+
+
+        public void ChangeCount(int count, L2Player creator)
+        {
+            if (count == 0)
+                return;
+
+            if (count > 0 && Count > int.MaxValue - count)
+                Count = int.MaxValue;
+            else
+                Count = Count + count;
+
+            if (Count < 0)
+                Count = 0;
         }
 
         /** Enumeration of locations for item */
@@ -127,6 +150,45 @@ namespace L2dotNET.GameService.Model.Items
         public override void OnForcedAttack(L2Player player)
         {
             player.SendActionFailed();
+        }
+
+        public void UpdateDatabase()
+        {
+            if (ExistsInDb)
+            {
+                //if(OwnerId == 0 || Location == ItemLocation.Void || (Count == 0 && Location != ItemLocation.Lease))
+                //    RemoveFromDb();
+                //else
+                //    UpdateInDb();
+            }
+            else
+            {
+               // if (OwnerId == 0 || Location == ItemLocation.Void || (Count == 0 && Location != ItemLocation.Lease))
+               //     return;
+
+                InsertInDb();
+            }
+        }
+
+        private void InsertInDb()
+        {
+            ItemModel model = new ItemModel
+            {
+                ObjectId = ObjId,
+                ItemId = Template.ItemId,
+                Count = Count,
+                CustomType1 = CustomType1,
+                CustomType2 = CustomType2,
+                Enchant = Enchant,
+                LocationData = SlotLocation,
+                Location = Enum.GetName(typeof(ItemLocation), Location),
+                OwnerId = OwnerId,
+                ManaLeft = 0,
+                Time = 0,
+                TimeOfUse = null
+            };
+
+            ItemService.InsertNewItem(model);
         }
 
         private bool _lifeTimeEndEnabled;

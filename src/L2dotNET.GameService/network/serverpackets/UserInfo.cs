@@ -51,7 +51,7 @@ namespace L2dotNET.GameService.Network.Serverpackets
             WriteInt(_player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand) != null ? 40 : 20); // 20 no weapon, 40 weapon equipped
 
             for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
-                WriteInt(_player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
+                WriteInt(_player.Inventory.Paperdoll[id]?.ObjId ?? 0);
 
             for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
                 WriteInt(_player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);

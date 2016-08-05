@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using log4net;
 using L2dotNET.Enums;
 using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Templates;
+using L2dotNET.GameService.World;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;
@@ -20,6 +22,9 @@ namespace L2dotNET.GameService.Tables
 
         internal ItemTemplate GetItem(int id)
         {
+            if (Armors.ContainsKey(id))
+                return Armors[id];
+
             return null;
         }
 
@@ -79,6 +84,18 @@ namespace L2dotNET.GameService.Tables
             GC.Collect();
             GC.WaitForPendingFinalizers();
             Log.Info($"ItemTable: Loaded #{Armors.Count} armors.");
+        }
+
+        public L2Item CreateItem(int itemId, int count, L2Player actor)
+        {
+            L2Item item = new L2Item(Instance.GetItem(itemId));
+
+            L2World.Instance.AddObject(item);
+
+            if (item.Template.Stackable && count > 1)
+                item.Count = count;
+
+            return item;
         }
 
         private void LoadArmorModels()

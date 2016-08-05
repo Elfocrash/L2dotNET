@@ -1,4 +1,5 @@
-﻿using L2dotNET.GameService.Model.Items;
+﻿using L2dotNET.GameService.Model.Inventory;
+using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Network.Serverpackets;
 using L2dotNET.Network;
@@ -71,6 +72,18 @@ namespace L2dotNET.GameService.Network.Clientpackets
 
             //        break;
             //}
+
+            if (item.IsEquipped == 0)
+            {
+                player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = item;
+                item.Location = L2Item.ItemLocation.Paperdoll;
+                item.SlotLocation = Inventory.PaperdollChest;
+                item.PaperdollSlot = Inventory.PaperdollChest;
+
+                player.BroadcastUserInfo();
+                player.SendPacket(new ItemList(player,false));
+                return;
+            }
 
             if (ItemHandler.Instance.Process(player, item))
                 return;

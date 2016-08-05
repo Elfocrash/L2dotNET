@@ -6,5 +6,7 @@ namespace L2dotNET.Repositories.Contracts
     public interface IItemRepository
     {
         List<ArmorModel> GetAllArmors();
+
+        void InsertNewItem(ItemModel item);
     }
 }

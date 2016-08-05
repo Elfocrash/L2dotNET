@@ -54,9 +54,6 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteShort(item.AttrAttackType);
                 WriteShort(item.AttrAttackValue);
 
-                WriteShort(item.Enchant1);
-                WriteShort(item.Enchant2);
-                WriteShort(item.Enchant3);
             }
         }
     }

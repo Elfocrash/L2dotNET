@@ -46,5 +46,50 @@ namespace L2dotNET.GameService.Model.Inventory
         {
             return Paperdoll.Where(item => item != null).ToList();
         }
+
+
+        public static int GetPaperdollIndex(int slot)
+        {
+            switch (slot)
+            {
+                case 0x0001:
+                    return PaperdollUnder;
+                case 0x0002:
+                    return PaperdollRear;
+                case 0x0004:
+                    return PaperdollLear;
+                case 0x0008:
+                    return PaperdollNeck;
+                case 0x0010:
+                    return PaperdollRfinger;
+                case 0x0020:
+                    return PaperdollLfinger;
+                case 0x0040:
+                    return PaperdollHead;
+                case 0x0080:
+                case 0x4000:
+                    return PaperdollRhand;
+                case 0x0100:
+                    return PaperdollLhand;
+                case 0x0200:
+                    return PaperdollGloves;
+                case 0x0400:
+                case 0x8000:
+                case 0x020000:
+                    return PaperdollChest;
+                case 0x0800:
+                    return PaperdollLegs;
+                case 0x1000:
+                    return PaperdollFeet;
+                case 0x2000:
+                    return PaperdollBack;
+                case 0x010000:
+                case 0x080000:
+                    return PaperdollFace;
+                case 0x040000:
+                    return PaperdollHair;
+            }
+            return -1;
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace L2dotNET.Services.Contracts
     {
         List<ArmorModel> GetAllArmorsList();
         Dictionary<int, ArmorModel> GetAllArmorModelsDict();
+        void InsertNewItem(ItemModel item);
     }
 }

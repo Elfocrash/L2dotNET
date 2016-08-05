@@ -76,7 +76,7 @@ namespace L2dotNET.GameService.Network
             ClientPackets.TryAdd(0x66, typeof(RequestPledgeInfo));
             ClientPackets.TryAdd(0x6D, typeof(RequestSendMsnChatLog));
             ClientPackets.TryAdd(0x73, typeof(RequestAcquireSkillInfo));
-            ClientPackets.TryAdd(0x74, typeof(SendBypassBuildCmd));
+            ClientPackets.TryAdd(0x5b, typeof(SendBypassBuildCmd));
             ClientPackets.TryAdd(0x75, typeof(RequestMoveToLocationInVehicle));
             ClientPackets.TryAdd(0x7C, typeof(RequestAcquireSkill));
             ClientPackets.TryAdd(0x7D, typeof(RequestRestartPoint));

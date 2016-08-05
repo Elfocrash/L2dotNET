@@ -29,5 +29,27 @@ namespace L2dotNET.Repositories
                     item_skill_lvl as ItemSkillLvl FROM armor";
             return Db.Query<ArmorModel>(sql).ToList();
         }
+
+        public void InsertNewItem(ItemModel item)
+        {
+            var sql = @"Insert into items (owner_id,item_id,count,loc,loc_data,enchant_level,object_id,custom_type1,custom_type2,mana_left,time)
+                    Values (@owner_id,@item_id,@count,@loc,@loc_data,@enchant_level,@object_id,@custom_type1,@custom_type2,@mana_left,@time)";
+
+            Db.ExecuteAsync(sql,
+                new
+                {
+                    owner_id = item.OwnerId,
+                    item_id = item.ItemId,
+                    count = item.Count,
+                    loc = item.Location,
+                    loc_data = item.LocationData,
+                    enchant_level = item.Enchant,
+                    object_id = item.ObjectId,
+                    custom_type1 = item.CustomType1,
+                    custom_type2 = item.CustomType2,
+                    mana_left = item.ManaLeft,
+                    time = item.Time
+                });
+        }
     }
 }

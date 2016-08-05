@@ -32,5 +32,10 @@ namespace L2dotNET.Services
 
             return armors;
         }
+
+        public void InsertNewItem(ItemModel item)
+        {
+            _unitOfWork.ItemRepository.InsertNewItem(item);
+        }
     }
 }

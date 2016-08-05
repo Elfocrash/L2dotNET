@@ -10,7 +10,7 @@ namespace L2dotNET.GameService.Commands.Admin
 
         public AdminSpawnItem()
         {
-            Cmd = "summon";
+            Cmd = "createitem";
         }
 
         protected internal override void Use(L2Player admin, string alias)

@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using L2dotNET.Enums;
+using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.Templates;
 
 namespace L2dotNET.GameService.Model.Items
@@ -85,7 +86,7 @@ namespace L2dotNET.GameService.Model.Items
             
             MaterialType = (MaterialType)set.GetInt("material");
             Duration = set.GetInt("duration", -1);
-            //_bodyPart = ItemTable.Slots.get(set.GetString("bodypart", "none"));
+            BodyPart = ItemTable.Instance.Slots[set.GetString("bodypart", "none")];
             ReferencePrice = set.GetInt("price");
             CrystalType = CrystalType.Values.FirstOrDefault(x => x.Id == (CrystalTypeId)set.GetInt("crystal_type"));
             _crystalCount = set.GetInt("crystal_count");

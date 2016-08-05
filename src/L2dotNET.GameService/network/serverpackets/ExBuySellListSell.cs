@@ -45,10 +45,6 @@ namespace L2dotNET.GameService.Network.Serverpackets
                 WriteShort(item.AttrAttackType);
                 WriteShort(item.AttrAttackValue);
 
-                WriteShort(item.Enchant1);
-                WriteShort(item.Enchant2);
-                WriteShort(item.Enchant3);
-
                 WriteLong(item.Template.ReferencePrice / 2);
             }
 
@@ -73,10 +69,6 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
                 WriteShort(item.AttrAttackType);
                 WriteShort(item.AttrAttackValue);
-
-                WriteShort(item.Enchant1);
-                WriteShort(item.Enchant2);
-                WriteShort(item.Enchant3);
 
                 WriteInt(idx++);
                 WriteLong((item.Template.ReferencePrice / 2) * item.Count);

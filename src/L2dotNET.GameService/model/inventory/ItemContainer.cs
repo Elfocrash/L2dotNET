@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
+using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.World;
 
 namespace L2dotNET.GameService.Model.Inventory
@@ -23,7 +24,7 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public int OwnerId => Owner?.ObjId ?? 0;
 
-        public int Count => Items.Count;
+        public int Count =>Items.Count;
 
         public string Name => "ItemContainer";
 
@@ -50,16 +51,35 @@ namespace L2dotNET.GameService.Model.Inventory
         public L2Item AddItem(L2Item item, L2Player player)
         {
             return null;
-            //to be implemented
         }
 
         public L2Item AddItem(int itemId, int count, L2Player player)
         {
-            if (count <= 0)
-                return null;
+            L2Item item = GetItemByItemId(itemId);
+            if (item != null && item.Template.Stackable)
+            {
+                item.ChangeCount(count,player);
+                item.UpdateDatabase();
+            }
+            else
+            {
+                //for (int i = 0; i < Count; i++)
+               // {
+                    ItemTemplate template = ItemTable.Instance.GetItem(itemId);
+                    if (template == null)
+                        return null;
 
-            return null;
+                    item = ItemTable.Instance.CreateItem(itemId, count, player);
+                    item.OwnerId = player.ObjId;
+                    item.SlotLocation = -1;
+                    Items.Add(item);
+
+                    item.UpdateDatabase();
+               // }
+            }
+            return item;
         }
+
 
         public L2Item DestroyItem(L2Item item, int count, L2Player player)
         {

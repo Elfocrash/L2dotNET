@@ -46,31 +46,22 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
             foreach (ItemListItem item in _items)
             {
+                
+
+                WriteShort(item.CType1);
                 WriteInt(item.ObjectId);
                 WriteInt(item.ItemId);
-                WriteInt(item.Slot);
-                WriteLong(item.Count);
+                WriteInt(item.Count);
                 WriteShort(item.Type2);
                 WriteShort(item.CType1);
+                
                 WriteShort(item.Equip);
                 WriteInt(item.Bodypart);
                 WriteShort(item.Enchant);
                 WriteShort(item.CType2);
                 WriteInt(item.Augment);
                 WriteInt(item.Mana);
-                //writeD(item.TimeLeft);
             }
-
-            //writeH(blocked.Count);
-            //if (blocked.Count > 0)
-            //{
-            //    writeC(2);
-            //    foreach (int id in blocked)
-            //        writeD(id);
-            //}
-
-            //items = null;
-            //blocked = null;
         }
     }
 }
