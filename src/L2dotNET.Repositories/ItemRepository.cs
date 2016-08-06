@@ -30,6 +30,17 @@ namespace L2dotNET.Repositories
             return Db.Query<ArmorModel>(sql).ToList();
         }
 
+        public List<WeaponModel> GetAllWeapons()
+        {
+            var sql = @"SELECT item_id as ItemId, Name, BodyPart, Crystallizable, Weight, Soulshots, Spiritshots,
+                    crystal_type as CrystalType, p_dam as Pdam, rnd_dam as RndDam, WeaponType, Critical, hit_modify as HitModify, avoid_modify as AvoidModify,
+                    shield_def as ShieldDef, shield_def_rate as ShieldDefRate, atk_speed as AtkSpeed, mp_consume as MpConsume, m_dam as Mdam, Duration, Price,
+                    crystal_count as CrystalCount, Sellable, Dropable, Destroyable, Tradeable, item_skill_id as ItemSkillId, item_skill_lvl as ItemSkillLvl,
+                    enchant4_skill_id as Enchant4SkillId,enchant4_skill_lvl as Enchant4SkillLvl, onCast_skill_id as OnCastSkillId, onCast_skill_lvl as OnCastSkillLvl,
+                    onCast_skill_chance as OnCastSkillChance, onCrit_skill_id as OnCritSkillId, onCrit_skill_lvl as OnCritSkillLvl, onCrit_skill_chance as OnCritSkillChance FROM weapon";
+            return Db.Query<WeaponModel>(sql).ToList();
+        }
+
         public void InsertNewItem(ItemModel item)
         {
             var sql =

@@ -14,5 +14,9 @@ namespace L2dotNET.Services.Contracts
         void UpdateItem(ItemModel item);
 
         List<ItemModel> RestoreInventory(int objId, string location);
+
+        List<WeaponModel> GetAllWeapons();
+
+        Dictionary<int, WeaponModel> GetAllWeaponModelsDict();
     }
 }

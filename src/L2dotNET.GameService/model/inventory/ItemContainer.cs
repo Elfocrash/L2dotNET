@@ -69,7 +69,15 @@ namespace L2dotNET.GameService.Model.Inventory
 
         public L2Item AddItem(L2Item item, L2Player player)
         {
-            return AddItem(item.Template.ItemId, item.Count, player,item.ExistsInDb);
+            if (item != null)
+            {
+                item.OwnerId = player.ObjId;
+                item.SlotLocation = 0;
+                Items.Add(item);
+
+                item.UpdateDatabase();
+            }
+            return item;
         }
 
         public L2Item AddItem(int itemId, int count, L2Player player,bool ExistsInDb = false)
@@ -92,6 +100,7 @@ namespace L2dotNET.GameService.Model.Inventory
                     item.OwnerId = player.ObjId;
                     item.SlotLocation = 0;
                     item.ExistsInDb = ExistsInDb;
+                    item.Location = L2Item.ItemLocation.Inventory;
                     Items.Add(item);
 
                     item.UpdateDatabase();

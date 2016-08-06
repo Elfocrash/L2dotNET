@@ -1730,7 +1730,7 @@ namespace L2dotNET.GameService.Model.Player
 
         public byte GetEnchantValue()
         {
-            int val = 0; //Inventory.getWeaponEnchanment();
+            int val = Inventory.Paperdoll?[Model.Inventory.Inventory.PaperdollRhand]?.Enchant ?? 0;
 
             if (MountType > 0)
                 return 0;

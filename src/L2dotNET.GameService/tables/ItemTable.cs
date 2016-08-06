@@ -25,6 +25,9 @@ namespace L2dotNET.GameService.Tables
             if (Armors.ContainsKey(id))
                 return Armors[id];
 
+            if (Weapons.ContainsKey(id))
+                return Weapons[id];
+
             return null;
         }
 
@@ -33,7 +36,7 @@ namespace L2dotNET.GameService.Tables
         public Dictionary<string, int> Slots = new Dictionary<string, int>();
         public Dictionary<int, Armor> Armors = new Dictionary<int, Armor>();
         public Dictionary<int, Weapon> Weapons = new Dictionary<int, Weapon>();
-        //public Dictionary<int, EtcItem> Armors = new Dictionary<int, Armor>();
+        
 
         public static ItemTable Instance
         {
@@ -80,10 +83,11 @@ namespace L2dotNET.GameService.Tables
             Slots.Add("babypet", ItemTemplate.SlotBabypet);
 
             LoadArmorModels();
+            LoadWeaponModels();
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            Log.Info($"ItemTable: Loaded #{Armors.Count} armors.");
+            Log.Info($"ItemTable: Loaded #{Armors.Count} armors and #{Weapons.Count} weapons.");
         }
 
         public L2Item CreateItem(int itemId, int count, L2Player actor)
@@ -119,6 +123,43 @@ namespace L2dotNET.GameService.Tables
                     Duration = model.Duration
                 };
                 Armors.Add(modelPair.Key, armor);
+            }
+        }
+
+        private void LoadWeaponModels()
+        {
+            Dictionary<int, WeaponModel> weaponModels = ItemService.GetAllWeaponModelsDict();
+            foreach (KeyValuePair<int, WeaponModel> modelPair in weaponModels)
+            {
+                StatsSet set = new StatsSet();
+                WeaponModel model = modelPair.Value;
+                Weapon weapon = new Weapon(set)
+                {
+                    Type = Utilz.GetEnumFromString(model.WeaponType, WeaponTypeId.None),
+                    ItemId = model.ItemId,
+                    Name = model.Name,
+                    BodyPart = Slots[model.BodyPart],
+                    Sellable = model.Sellable,
+                    Dropable = model.Dropable,
+                    Destroyable = model.Destroyable,
+                    Tradable = model.Tradeable,
+                    Weight = model.Weight,
+                    Duration = model.Duration,
+                    ReferencePrice = model.Price,
+                    SpiritshotCount = model.Spiritshots,
+                    SoulshotCount = model.Soulshots,
+                    PDam = model.Pdam,
+                    RndDam = model.RndDam,
+                    Critical = model.Critical,
+                    HitModifier = model.HitModify,
+                    AvoidModifier = model.AvoidModify,
+                    ShieldDef = model.ShieldDef,
+                    ShieldDefRate = model.ShieldDefRate,
+                    AtkSpeed = model.AtkSpeed,
+                    MpConsume = model.MpConsume,
+                    MDam = model.Mdam
+                };
+                Weapons.Add(modelPair.Key, weapon);
             }
         }
     }

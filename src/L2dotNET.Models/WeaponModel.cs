@@ -12,15 +12,15 @@
 
         public int Weight { get; set; }
 
-        public int Soulshot { get; set; }
+        public int Soulshots { get; set; }
 
-        public int Spiritshot { get; set; }
+        public int Spiritshots { get; set; }
 
         public string CrystalType { get; set; }
 
         public int Pdam { get; set; }
 
-        public int MdDam { get; set; }
+        public int RndDam { get; set; }
 
         public string WeaponType { get; set; }
 
@@ -28,7 +28,7 @@
 
         public int HitModify { get; set; }
 
-        public bool AvoidModify { get; set; }
+        public int AvoidModify { get; set; }
 
         public int ShieldDef { get; set; }
 
