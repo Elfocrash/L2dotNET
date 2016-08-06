@@ -2418,5 +2418,10 @@ namespace L2dotNET.GameService.Model.Player
         public int RemainingDeleteTime() => AccessLevel > -100 ? (DeleteTime > 0 ? (int)((DeleteTime - Utilz.CurrentTimeMillis()) / 1000) : 0) : -1;
 
         public void SetCharDeleteTime() => DeleteTime = Utilz.CurrentTimeMillis() + (Config.Config.Instance.GameplayConfig.Server.Client.DeleteCharAfterDays * 86400000L);
+
+        internal void DropItem(int objectId, int count, int x, int y, int z)
+        {
+            
+        }
     }
 }

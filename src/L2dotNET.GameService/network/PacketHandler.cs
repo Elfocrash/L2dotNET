@@ -36,6 +36,7 @@ namespace L2dotNET.GameService.Network
             ClientPackets.TryAdd(0x0e, typeof(NewCharacter));
             ClientPackets.TryAdd(0x0f, typeof(RequestItemList));
             ClientPackets.TryAdd(0x11, typeof(RequestUnEquipItem));
+            ClientPackets.TryAdd(0x12, typeof(RequestDropItem));
             ClientPackets.TryAdd(0x14, typeof(RequestUseItem));
             ClientPackets.TryAdd(0x16, typeof(RequestAddTradeItem));
             ClientPackets.TryAdd(0x17, typeof(RequestTradeDone));

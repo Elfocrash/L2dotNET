@@ -307,6 +307,7 @@
     <Compile Include="Model\Zones\L2Zone.cs" />
     <Compile Include="Network\Clientpackets\CharacterRestore.cs" />
     <Compile Include="Network\Clientpackets\CharacterDelete.cs" />
+    <Compile Include="Network\Clientpackets\RequestDropItem.cs" />
     <Compile Include="Network\Clientpackets\RequestCursedWeaponLocation.cs" />
     <Compile Include="Network\Clientpackets\RequestSocialAction.cs" />
     <Compile Include="Network\Serverpackets\ChangeMoveType.cs" />
