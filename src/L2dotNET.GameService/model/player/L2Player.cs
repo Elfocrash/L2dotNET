@@ -141,7 +141,8 @@ namespace L2dotNET.GameService.Model.Player
             };
 
             player.CStatsInit();
-            SessionData = new PlayerBag();
+            player.Inventory.Restore(player);
+            player.SessionData = new PlayerBag();
 
             return player;
         }
@@ -153,7 +154,7 @@ namespace L2dotNET.GameService.Model.Player
                 ObjId = IdFactory.Instance.NextId()
             };
 
-            //player.Inventory = new InvPC();
+            player.Inventory = new PcInventory(player);
             //player.Inventory._owner = player;
 
             return player;

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50710
 File Encoding         : 65001
 
-Date: 2016-07-20 23:06:52
+Date: 2016-08-06 11:54:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,6 +31,9 @@ CREATE TABLE `accounts` (
 -- ----------------------------
 -- Records of accounts
 -- ----------------------------
+INSERT INTO `accounts` VALUES ('elfo', 'ZqB5TRUL1CN2Y8asHjA44ruDp38=', '636058543707684124', '0', '1');
+INSERT INTO `accounts` VALUES ('tast', 'NPsSH2pXyEtusqrdyjZfGQJklSE=', '636049603215649400', '0', '1');
+INSERT INTO `accounts` VALUES ('test', 'qUqP5cyxm6YcTAhz05Hph5gvu9M=', '636049604489889700', '0', '1');
 
 -- ----------------------------
 -- Table structure for `announcements`
@@ -1234,6 +1237,15 @@ CREATE TABLE `characters` (
 -- ----------------------------
 -- Records of characters
 -- ----------------------------
+INSERT INTO `characters` VALUES ('test', '268438558', 'fadsfdsfas', '1', '0', '91', '0', '36', '0', '35', '0', '0', '0', '0', '19412', '39310', '38838', '-3603', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '', '0', '0', '0', '0', '0', '0', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `characters` VALUES ('test', '268439333', 'Human', '1', '91', '91', '36', '36', '35', '35', '0', '0', '0', '0', '7098', '-71485', '258227', '-3109', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '', '0', '0', '0', '0', '0', '1', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `characters` VALUES ('test', '268439334', 'HumanMage', '1', '116', '116', '58', '58', '47', '47', '0', '1', '0', '0', '43999', '-90943', '248262', '-3596', '0', '0', '0', '0', '0', '0', '0', '0', '0', '10', '0', '0', '', '0', '0', '0', '0', '0', '2', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `characters` VALUES ('test', '268439335', 'Elf', '1', '101', '101', '40', '40', '35', '35', '0', '0', '0', '0', '14150', '46484', '41306', '-3508', '0', '0', '0', '0', '0', '0', '0', '1', '18', '18', '0', '0', '', '0', '0', '0', '0', '0', '3', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `characters` VALUES ('test', '268439336', 'dElf', '1', '107', '0', '43', '43', '35', '35', '0', '0', '0', '0', '49073', '28109', '10914', '-4233', '0', '0', '0', '0', '0', '0', '0', '2', '31', '31', '0', '0', '', '0', '0', '0', '0', '0', '4', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `characters` VALUES ('test', '268439337', 'Orcey', '1', '92', '92', '46', '46', '35', '35', '0', '0', '0', '0', '17097', '-55792', '-113585', '-672', '0', '0', '0', '0', '0', '0', '0', '3', '44', '44', '0', '0', '', '0', '0', '0', '0', '0', '5', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `characters` VALUES ('test', '268439338', 'Dwarf', '1', '92', '92', '64', '64', '35', '35', '0', '0', '0', '0', '14827', '109312', '-173797', '-559', '0', '0', '0', '0', '0', '0', '0', '4', '53', '53', '0', '0', '', '0', '0', '0', '0', '0', '6', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `characters` VALUES ('elfo', '268440114', 'Elfocrash', '1', '91', '91', '36', '36', '35', '35', '0', '0', '0', '0', '15167', '-71871', '257680', '-3115', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '', '0', '0', '0', '0', '0', '0', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `characters` VALUES ('elfo', '268440890', 'Inventotest', '1', '91', '91', '36', '36', '35', '35', '0', '0', '0', '0', '40514', '-72607', '256924', '-3115', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '', '0', '0', '0', '0', '0', '1', null, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `etcitem`
@@ -8143,6 +8155,47 @@ INSERT INTO `etcitem` VALUES ('9205', 'Alchemist\'s Chest Key  (Event)', 'false'
 INSERT INTO `etcitem` VALUES ('9206', 'Greater Healing Potion (Event)', 'false', 'potion', '5', 'stackable', 'none', '-1', '0', '0', 'true', 'true', 'true', 'true', 'InterludeItem', 'none');
 INSERT INTO `etcitem` VALUES ('9207', 'Quick Healing Potion (Event)', 'false', 'potion', '5', 'stackable', 'none', '-1', '0', '0', 'true', 'true', 'true', 'true', 'InterludeItem', 'none');
 INSERT INTO `etcitem` VALUES ('5072', 'TwinCoda', 'false', 'none', '2', 'stackable', 'none', '-1', '0', '0', 'true', 'true', 'true', 'true', 'C5Item', 'none');
+
+-- ----------------------------
+-- Table structure for `items`
+-- ----------------------------
+DROP TABLE IF EXISTS `items`;
+CREATE TABLE `items` (
+  `owner_id` int(11) DEFAULT NULL,
+  `object_id` int(11) NOT NULL DEFAULT '0',
+  `item_id` int(11) DEFAULT NULL,
+  `count` int(11) DEFAULT NULL,
+  `enchant_level` int(11) DEFAULT NULL,
+  `loc` varchar(10) DEFAULT NULL,
+  `loc_data` int(11) DEFAULT NULL,
+  `time_of_use` int(11) DEFAULT NULL,
+  `custom_type1` int(11) DEFAULT '0',
+  `custom_type2` int(11) DEFAULT '0',
+  `mana_left` decimal(5,0) NOT NULL DEFAULT '-1',
+  `time` decimal(13,0) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`object_id`),
+  KEY `key_owner_id` (`owner_id`),
+  KEY `key_loc` (`loc`),
+  KEY `key_item_id` (`item_id`),
+  KEY `key_time_of_use` (`time_of_use`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of items
+-- ----------------------------
+INSERT INTO `items` VALUES ('268439336', '268440113', '21', '1', '0', 'Void', '-1', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268439336', '268440114', '22', '1', '0', 'Void', '-1', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268439336', '268440115', '1000', '1', '0', 'Void', '-1', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268440114', '268440889', '21', '1', '0', 'Void', '-1', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268440114', '268440890', '6379', '1', '0', 'Void', '-1', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268440114', '268440891', '6380', '1', '0', 'Void', '-1', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268440114', '268440892', '6381', '1', '0', 'Void', '-1', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268440114', '268440893', '6382', '1', '0', 'Void', '-1', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268440890', '268440894', '21', '1', '0', 'Void', '-1', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268440890', '268440895', '6379', '1', '0', 'Inventory', '-1', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268440890', '268441669', '6382', '1', '0', 'Inventory', '0', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268440890', '268441670', '6380', '1', '0', 'Inventory', '0', null, '0', '0', '0', '0');
+INSERT INTO `items` VALUES ('268440890', '268441671', '6381', '1', '0', 'Inventory', '0', null, '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `servers`

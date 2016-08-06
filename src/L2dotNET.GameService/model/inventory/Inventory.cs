@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.GameService.Model.Items;
+using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.World;
+using L2dotNET.Models;
 
 namespace L2dotNET.GameService.Model.Inventory
 {
@@ -13,7 +15,7 @@ namespace L2dotNET.GameService.Model.Inventory
             Paperdoll = new L2Item[PaperdollTotalslots];
         }
 
-        protected override L2Character Owner { get; }
+        protected override L2Character Owner { get; set; }
         protected override L2Item.ItemLocation BaseLocation { get; }
 
         public static readonly int PaperdollUnder = 0;
@@ -47,6 +49,18 @@ namespace L2dotNET.GameService.Model.Inventory
             return Paperdoll.Where(item => item != null).ToList();
         }
 
+        public override void Restore(L2Character owner)
+        {
+            List<ItemModel> models = ItemService.RestoreInventory(owner.ObjId, "Inventory");
+            List<L2Item> items = L2Item.RestoreFromDb(models);
+
+            foreach (var item in items)
+            {
+                L2World.Instance.AddObject(item);
+                Owner = owner;
+                AddItem(item, (L2Player)Owner);
+            }
+        }
 
         public static int GetPaperdollIndex(int slot)
         {

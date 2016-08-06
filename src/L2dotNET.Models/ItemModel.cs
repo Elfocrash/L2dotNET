@@ -25,5 +25,9 @@
         public int ManaLeft { get; set; }
 
         public int Time { get; set; }
+
+        public bool ExistsInDb { get; set; }
+
+        public bool StoredInDb { get; set; }
     }
 }

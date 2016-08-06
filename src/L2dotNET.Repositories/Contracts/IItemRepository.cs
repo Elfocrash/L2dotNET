@@ -8,5 +8,9 @@ namespace L2dotNET.Repositories.Contracts
         List<ArmorModel> GetAllArmors();
 
         void InsertNewItem(ItemModel item);
+
+        void UpdateItem(ItemModel item);
+
+        List<ItemModel> RestoreInventory(int objId, string location);
     }
 }

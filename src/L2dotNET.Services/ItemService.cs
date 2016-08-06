@@ -37,5 +37,15 @@ namespace L2dotNET.Services
         {
             _unitOfWork.ItemRepository.InsertNewItem(item);
         }
+
+        public void UpdateItem(ItemModel item)
+        {
+            _unitOfWork.ItemRepository.UpdateItem(item);
+        }
+
+        public List<ItemModel> RestoreInventory(int objId, string location)
+        {
+            return _unitOfWork.ItemRepository.RestoreInventory(objId, location);
+        }
     }
 }

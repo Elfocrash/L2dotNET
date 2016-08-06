@@ -5,12 +5,18 @@ using L2dotNET.GameService.Model.Items;
 using L2dotNET.GameService.Model.Player;
 using L2dotNET.GameService.Tables;
 using L2dotNET.GameService.World;
+using L2dotNET.Models;
+using L2dotNET.Services.Contracts;
+using Ninject;
 
 namespace L2dotNET.GameService.Model.Inventory
 {
     [Synchronization]
     public abstract class ItemContainer
     {
+        [Inject]
+        public IItemService ItemService => GameServer.Kernel.Get<IItemService>();
+
         public List<L2Item> Items;
 
         protected ItemContainer()
@@ -18,7 +24,7 @@ namespace L2dotNET.GameService.Model.Inventory
             Items = new List<L2Item>();
         }
 
-        protected abstract L2Character Owner { get; }
+        protected abstract L2Character Owner { get; set; }
 
         protected abstract L2Item.ItemLocation BaseLocation { get; }
 
@@ -48,12 +54,25 @@ namespace L2dotNET.GameService.Model.Inventory
             return Items.FirstOrDefault(item => item.ObjId == objectId);
         }
 
-        public L2Item AddItem(L2Item item, L2Player player)
+        public virtual void Restore(L2Character owner)
         {
-            return null;
+            List<ItemModel> models = ItemService.RestoreInventory(owner.ObjId, "Inventory");
+            List<L2Item> items = L2Item.RestoreFromDb(models);
+
+            foreach (var item in items)
+            {
+                L2World.Instance.AddObject(item);
+                Owner = owner;
+                AddItem(item, (L2Player)Owner);
+            }
         }
 
-        public L2Item AddItem(int itemId, int count, L2Player player)
+        public L2Item AddItem(L2Item item, L2Player player)
+        {
+            return AddItem(item.Template.ItemId, item.Count, player,item.ExistsInDb);
+        }
+
+        public L2Item AddItem(int itemId, int count, L2Player player,bool ExistsInDb = false)
         {
             L2Item item = GetItemByItemId(itemId);
             if (item != null && item.Template.Stackable)
@@ -71,7 +90,8 @@ namespace L2dotNET.GameService.Model.Inventory
 
                     item = ItemTable.Instance.CreateItem(itemId, count, player);
                     item.OwnerId = player.ObjId;
-                    item.SlotLocation = -1;
+                    item.SlotLocation = 0;
+                    item.ExistsInDb = ExistsInDb;
                     Items.Add(item);
 
                     item.UpdateDatabase();

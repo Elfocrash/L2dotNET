@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using L2dotNET.GameService.Model.Player;
@@ -162,18 +163,46 @@ namespace L2dotNET.GameService.Model.Items
                 //if(OwnerId == 0 || Location == ItemLocation.Void || (Count == 0 && Location != ItemLocation.Lease))
                 //    RemoveFromDb();
                 //else
-                //    UpdateInDb();
+                UpdateInDb();
             }
             else
             {
-               // if (OwnerId == 0 || Location == ItemLocation.Void || (Count == 0 && Location != ItemLocation.Lease))
-               //     return;
+                if (OwnerId == 0 || Location == ItemLocation.Void || (Count == 0 && Location != ItemLocation.Lease))
+                    return;
 
                 InsertInDb();
+                ExistsInDb = true;
             }
         }
 
+        private void UpdateInDb()
+        {
+            var model = MapItemModel();
+
+            ItemService.UpdateItem(model);
+        }
+
         private void InsertInDb()
+        {
+            Location = ItemLocation.Inventory;
+            var model = MapItemModel();
+            ExistsInDb = model.ExistsInDb = true;
+            
+            ItemService.InsertNewItem(model);
+        }
+
+        public static List<L2Item> RestoreFromDb(List<ItemModel> models)
+        {
+            List<L2Item> itemlist = new List<L2Item>();
+            foreach (var itemModel in models)
+            {
+                L2Item item = MapModelToItem(itemModel);
+                itemlist.Add(item);
+            }
+            return itemlist;
+        }
+
+        private ItemModel MapItemModel()
         {
             ItemModel model = new ItemModel
             {
@@ -190,8 +219,24 @@ namespace L2dotNET.GameService.Model.Items
                 Time = 0,
                 TimeOfUse = null
             };
+            return model;
+        }
 
-            ItemService.InsertNewItem(model);
+        private static L2Item MapModelToItem(ItemModel model)
+        {
+            L2Item item = new L2Item(ItemTable.Instance.GetItem(model.ItemId))
+            {
+                ObjId = model.ObjectId,
+                Count = model.Count,
+                CustomType1 = model.CustomType1,
+                CustomType2 = model.CustomType2,
+                Enchant = model.Enchant,
+                SlotLocation = model.LocationData,
+                OwnerId = model.OwnerId,
+                ExistsInDb = model.ExistsInDb
+            };
+
+            return item;
         }
 
         private bool _lifeTimeEndEnabled;

@@ -11,12 +11,13 @@ namespace L2dotNET.GameService.Model.Inventory
             Owner = owner;
         }
 
-        protected override L2Character Owner { get; }
+        protected override L2Character Owner { get; set; }
         protected override L2Item.ItemLocation BaseLocation { get; }
 
         public bool ReduceAdena(int count, L2Player player)
         {
             return false;
         }
+
     }
 }

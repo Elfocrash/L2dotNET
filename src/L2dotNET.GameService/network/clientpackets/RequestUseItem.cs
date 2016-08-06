@@ -48,7 +48,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 item.Location = L2Item.ItemLocation.Paperdoll;
                 item.SlotLocation = Inventory.GetPaperdollIndex(item.Template.BodyPart);
                 item.PaperdollSlot = Inventory.GetPaperdollIndex(item.Template.BodyPart);
-
+                item.IsEquipped = 1;
                 player.BroadcastUserInfo();
                 player.SendPacket(new ItemList(player,true));
                 return;
