@@ -41,47 +41,16 @@ namespace L2dotNET.GameService.Network.Clientpackets
                 player.SendActionFailed();
                 return;
             }
-
-            //switch (item.Template.T)
-            //{
-            //    case ItemTemplate.L2ItemType.Armor:
-            //    case ItemTemplate.L2ItemType.Weapon:
-            //    case ItemTemplate.L2ItemType.Accessary:
-            //    {
-            //        if (item.IsEquipped == 0)
-            //        {
-            //            if (!item.Template.CanEquipChaotic(player.PkKills))
-            //            {
-            //                player.SendSystemMessage(SystemMessage.SystemMessageId.YouAreUnableToEquipThisItemWhenYourPkCountIsGreaterThanOrEqualToOne);
-            //                player.SendActionFailed();
-            //                return;
-            //            }
-
-            //            if (!item.Template.CanEquipHeroic(player.Heroic) || !item.Template.CanEquipNobless(player.Noblesse) || !item.Template.CanEquipSex(player.Sex))
-            //            {
-            //                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotEquipItemDueToBadCondition);
-            //                player.SendActionFailed();
-            //                return;
-            //            }
-            //        }
-
-            //        //int pdollId = player.Inventory.getPaperdollId(item.Template);
-            //        //player.setPaperdoll(pdollId, item._isEquipped == 1 ? null : item, true);
-            //        player.BroadcastUserInfo();
-            //    }
-
-            //        break;
-            //}
-
-            if (item.IsEquipped == 0)
+            
+            if (!item.Equipped)
             {
                 player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = item;
                 item.Location = L2Item.ItemLocation.Paperdoll;
-                item.SlotLocation = Inventory.PaperdollChest;
-                item.PaperdollSlot = Inventory.PaperdollChest;
+                item.SlotLocation = Inventory.GetPaperdollIndex(item.Template.BodyPart);
+                item.PaperdollSlot = Inventory.GetPaperdollIndex(item.Template.BodyPart);
 
                 player.BroadcastUserInfo();
-                player.SendPacket(new ItemList(player,false));
+                player.SendPacket(new ItemList(player,true));
                 return;
             }
 

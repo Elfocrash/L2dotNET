@@ -134,7 +134,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                Db.Execute(@"UPDATE characters SET level=@level,maxHp=@maxHp,curHp=@curHp,maxCp=@maxCp,curCp=@curCp,maxMp=@maxMp,curMp=@curMp,face=@face,hairStyle=@hairStyle,
+                Db.ExecuteAsync(@"UPDATE characters SET level=@level,maxHp=@maxHp,curHp=@curHp,maxCp=@maxCp,curCp=@curCp,maxMp=@maxMp,curMp=@curMp,face=@face,hairStyle=@hairStyle,
                              hairColor=@hairColor,sex=@sex,heading=@heading
                              ,x=@x,y=@y,z=@z,exp=@exp,expBeforeDeath=@expBeforeDeath,sp=@sp,karma=@karma,pvpkills=@pvpkills,pkkills=@pkkills,rec_have=@rec_have,rec_left=@rec_left,clanid=@clanid,
                              race=@race,classid=@classid,deletetime=@deletetime,title=@title,accesslevel=@accesslevel

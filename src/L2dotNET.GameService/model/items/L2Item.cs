@@ -20,7 +20,10 @@ namespace L2dotNET.GameService.Model.Items
 
         public ItemTemplate Template;
         public int Count;
-        public short IsEquipped;
+        public short IsEquipped { get; set; }
+
+        public bool Equipped => (IsEquipped > 0);
+
         public int Enchant;
         public int AugmentationId = 0;
         public int Durability;
