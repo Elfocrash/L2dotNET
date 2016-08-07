@@ -20,8 +20,8 @@ Current goal is to get all the basic functionality and the packet support fully 
 - [x] Refactor the code for the crappy java-like structure to proper C#
 - [x] Refactor LoginService to use the new Packet structure
 - [x] Creating loading and saving players
-- [ ] Creating loading and saving items
-- [ ] Refactor GameService to use the new Packet structure
+- [x] Creating loading and saving items
+- [x] Refactor GameService to use the new Packet structure
 - [ ] Rework the movement alorithm
 - [ ] Add Geodata support
 
