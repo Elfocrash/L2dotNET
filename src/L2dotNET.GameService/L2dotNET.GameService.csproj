@@ -97,6 +97,7 @@
     <Compile Include="AI\NpcAI\MonsterParameter.cs" />
     <Compile Include="AI\Template\AI.cs" />
     <Compile Include="ClientManager.cs" />
+    <Compile Include="Commands\Admin\AdminAdmin.cs" />
     <Compile Include="Config\ClanConfig.cs" />
     <Compile Include="Config\EventConfig.cs" />
     <Compile Include="Config\GeodataConfig.cs" />

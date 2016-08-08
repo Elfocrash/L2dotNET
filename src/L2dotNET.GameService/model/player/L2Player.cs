@@ -660,13 +660,14 @@ namespace L2dotNET.GameService.Model.Player
                 qi.Template.OnTalkToNpc(this, npc, qi.Stage);
         }
 
-        public void ShowHtm(string file, L2Object o)
+        public void ShowHtm(string file, L2Object o = null)
         {
             if (file.EndsWithIgnoreCase(".htm"))
             {
                 SendPacket(new NpcHtmlMessage(this, file, o.ObjId, 0));
-                if (o is L2Npc)
-                    FolkNpc = (L2Npc)o;
+                var npc = o as L2Npc;
+                if (npc != null)
+                    FolkNpc = npc;
             }
             else
                 ShowHtmPlain(file, o);
