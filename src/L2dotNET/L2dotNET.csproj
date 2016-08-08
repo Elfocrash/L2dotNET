@@ -52,6 +52,7 @@
     <Compile Include="Enums\ClassRace.cs" />
     <Compile Include="Enums\CrystalType.cs" />
     <Compile Include="Enums\CrystalTypeId.cs" />
+    <Compile Include="Enums\EtcItemTypeId.cs" />
     <Compile Include="Enums\ItemType.cs" />
     <Compile Include="Enums\MaterialType.cs" />
     <Compile Include="Enums\ShotType.cs" />

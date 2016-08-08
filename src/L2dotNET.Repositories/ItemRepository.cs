@@ -41,6 +41,15 @@ namespace L2dotNET.Repositories
             return Db.Query<WeaponModel>(sql).ToList();
         }
 
+        public List<EtcItemModel> GetAllEtcItems()
+        {
+            var sql =
+                @"SELECT item_id as ItemId, Name, Crystallizable, item_type as ItemType, Weight, consume_type as ConsumeType, crystal_type as CrystalType, Duration, Price, 
+                crystal_count as CrystalCount, Sellable, Dropable, Destroyable, Tradeable FROM etcitem";
+
+            return Db.Query<EtcItemModel>(sql).ToList();
+        }
+
         public void InsertNewItem(ItemModel item)
         {
             var sql =

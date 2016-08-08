@@ -66,6 +66,7 @@ namespace L2dotNET.GameService.Network.Clientpackets
             player.StartAi();
 
             player.ShowHtm("servnews.htm",player);
+            player.BroadcastUserInfo();
         }
 
         //private int[][] _tracert = new int[5][];

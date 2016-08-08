@@ -28,6 +28,9 @@ namespace L2dotNET.GameService.Tables
             if (Weapons.ContainsKey(id))
                 return Weapons[id];
 
+            if (EtcItems.ContainsKey(id))
+                return EtcItems[id];
+
             return null;
         }
 
@@ -36,8 +39,8 @@ namespace L2dotNET.GameService.Tables
         public Dictionary<string, int> Slots = new Dictionary<string, int>();
         public Dictionary<int, Armor> Armors = new Dictionary<int, Armor>();
         public Dictionary<int, Weapon> Weapons = new Dictionary<int, Weapon>();
+        public Dictionary<int, EtcItem> EtcItems = new Dictionary<int, EtcItem>();
         
-
         public static ItemTable Instance
         {
             get
@@ -84,10 +87,11 @@ namespace L2dotNET.GameService.Tables
 
             LoadArmorModels();
             LoadWeaponModels();
+            LoadEtcItemModels();
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            Log.Info($"ItemTable: Loaded #{Armors.Count} armors and #{Weapons.Count} weapons.");
+            Log.Info($"ItemTable: Loaded #{Armors.Count} armors, #{Weapons.Count} weapons and #{EtcItems.Count} etc items.");
         }
 
         public L2Item CreateItem(int itemId, int count, L2Player actor)
@@ -123,6 +127,29 @@ namespace L2dotNET.GameService.Tables
                     Duration = model.Duration
                 };
                 Armors.Add(modelPair.Key, armor);
+            }
+        }
+
+        private void LoadEtcItemModels()
+        {
+            Dictionary<int, EtcItemModel> etcItemModels = ItemService.GetAllEtcItemModelsDict();
+            foreach (KeyValuePair<int, EtcItemModel> modelPair in etcItemModels)
+            {
+                StatsSet set = new StatsSet();
+                EtcItemModel model = modelPair.Value;
+                EtcItem etcItem = new EtcItem(set)
+                {
+                    Type = Utilz.GetEnumFromString(model.ItemType, EtcItemTypeId.None),
+                    ItemId = model.ItemId,
+                    Name = model.Name,
+                    Sellable = model.Sellable,
+                    Dropable = model.Dropable,
+                    Destroyable = model.Destroyable,
+                    Tradable = model.Tradeable,
+                    Weight = model.Weight,
+                    Duration = model.Duration
+                };
+                EtcItems.Add(modelPair.Key, etcItem);
             }
         }
 

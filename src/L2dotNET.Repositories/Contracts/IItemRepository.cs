@@ -14,5 +14,7 @@ namespace L2dotNET.Repositories.Contracts
         List<ItemModel> RestoreInventory(int objId, string location);
 
         List<WeaponModel> GetAllWeapons();
+
+        List<EtcItemModel> GetAllEtcItems();
     }
 }

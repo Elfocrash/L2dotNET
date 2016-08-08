@@ -46,6 +46,19 @@ namespace L2dotNET.Services
             return weapons;
         }
 
+        public Dictionary<int, EtcItemModel> GetAllEtcItemModelsDict()
+        {
+            Dictionary<int, EtcItemModel> etcItems = new Dictionary<int, EtcItemModel>();
+            List<EtcItemModel> etcItemModels = _unitOfWork.ItemRepository.GetAllEtcItems();
+
+            foreach (EtcItemModel model in etcItemModels)
+            {
+                etcItems.Add(model.ItemId, model);
+            }
+
+            return etcItems;
+        }
+
         public void InsertNewItem(ItemModel item)
         {
             _unitOfWork.ItemRepository.InsertNewItem(item);
@@ -64,6 +77,11 @@ namespace L2dotNET.Services
         public List<WeaponModel> GetAllWeapons()
         {
             return _unitOfWork.ItemRepository.GetAllWeapons();
+        }
+
+        public List<EtcItemModel> GetAllEtcItems()
+        {
+            return _unitOfWork.ItemRepository.GetAllEtcItems();
         }
     }
 }

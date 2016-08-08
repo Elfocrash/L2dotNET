@@ -18,5 +18,9 @@ namespace L2dotNET.Services.Contracts
         List<WeaponModel> GetAllWeapons();
 
         Dictionary<int, WeaponModel> GetAllWeaponModelsDict();
+
+        List<EtcItemModel> GetAllEtcItems();
+
+        Dictionary<int, EtcItemModel> GetAllEtcItemModelsDict();
     }
 }
