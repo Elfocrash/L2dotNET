@@ -11,7 +11,7 @@ namespace L2dotNET.GameService.Commands.Admin
 
         protected internal override void Use(L2Player admin, string alias)
         {
-            admin.ShowHtm("admin/main_menu.htm");
+            admin.ShowHtm("admin/main_menu.htm",admin);
         }
     }
 }

@@ -37,6 +37,7 @@ namespace L2dotNET.GameService.Handlers
         {
             _teleports = new ABTeleport();
 
+            Register(new AdminAdmin());
             Register(new AdminAddSkill());
             Register(new AdminChat());
             Register(new AdminGiveAllSkills());

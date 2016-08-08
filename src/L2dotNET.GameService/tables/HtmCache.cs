@@ -61,6 +61,15 @@ namespace L2dotNET.GameService.Tables
             return html != null ? html.Content : string.Empty;
         }
 
+        public string GetHtmByFilepath(string filename)
+        {
+            if (string.IsNullOrEmpty(filename))
+                return string.Empty;
+
+            L2Html html = _htmCache.FirstOrDefault(x => x.Filepath.EqualsIgnoreCase(filename));
+            return html != null ? html.Content : string.Empty;
+        }
+
         private List<string> DirSearch(string sDir)
         {
             List<string> files = new List<string>();

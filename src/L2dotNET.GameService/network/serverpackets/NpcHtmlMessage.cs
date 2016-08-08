@@ -12,14 +12,14 @@ namespace L2dotNET.GameService.Network.Serverpackets
 
         public NpcHtmlMessage(L2Player player, string file, int objId)
         {
-            Htm = HtmCache.Instance.GetHtmByFilename(file);
+            Htm = HtmCache.Instance.GetHtmByFilepath(file);
             _objId = objId;
             _itemId = 0;
         }
 
         public NpcHtmlMessage(L2Player player, string file, int objId, int itemId)
         {
-            Htm = HtmCache.Instance.GetHtmByFilename(file);
+            Htm = HtmCache.Instance.GetHtmByFilepath(file);
             _objId = objId;
             _itemId = itemId;
         }
