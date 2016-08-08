@@ -39,6 +39,7 @@
     <Compile Include="AnnouncementModel.cs" />
     <Compile Include="ArmorModel.cs" />
     <Compile Include="EtcItemModel.cs" />
+    <Compile Include="GameModels\L2Html.cs" />
     <Compile Include="ItemModel.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="NetworkBlockModel.cs" />

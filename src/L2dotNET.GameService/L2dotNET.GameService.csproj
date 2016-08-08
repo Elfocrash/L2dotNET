@@ -604,7 +604,6 @@
     <Compile Include="Tables\FString.cs" />
     <Compile Include="Tables\ItemSetTemplate.cs" />
     <Compile Include="Tables\ItemTable.cs" />
-    <Compile Include="Tables\L2Html.cs" />
     <Compile Include="Tables\L2Recipe.cs" />
     <Compile Include="Tables\L2Spawn.cs" />
     <Compile Include="Tables\L2Territory.cs" />
