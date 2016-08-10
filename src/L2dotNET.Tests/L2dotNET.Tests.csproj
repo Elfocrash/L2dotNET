@@ -82,6 +82,10 @@
       <Project>{0a70c676-f9bd-4593-9ef4-b22f8e170aed}</Project>
       <Name>L2dotNET.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\L2dotNET\L2dotNET.csproj">
+      <Project>{00ee35ee-f920-4a50-b9bd-aab02da5c066}</Project>
+      <Name>L2dotNET</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

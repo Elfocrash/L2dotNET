@@ -1,0 +1,27 @@
+﻿namespace L2dotNET.Network.serverpackets
+{
+    class StartRotation : GameserverPacket
+    {
+        private readonly int _sId;
+        private readonly int _degree;
+        private readonly int _side;
+        private readonly int _speed;
+
+        public StartRotation(int sId, int degree, int side, int speed)
+        {
+            _sId = sId;
+            _degree = degree;
+            _side = side;
+            _speed = speed;
+        }
+
+        public override void Write()
+        {
+            WriteByte(0x62);
+            WriteInt(_sId);
+            WriteInt(_degree);
+            WriteInt(_side);
+            WriteInt(_speed);
+        }
+    }
+}

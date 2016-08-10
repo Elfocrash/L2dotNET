@@ -1,4 +1,4 @@
-namespace L2dotNET.GameService.Tables
+namespace L2dotNET.Models.GameModels
 {
     public class L2Html
     {

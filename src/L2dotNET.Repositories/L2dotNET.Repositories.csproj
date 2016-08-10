@@ -63,6 +63,7 @@
     <Compile Include="ServerRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="Utils\HostCheck.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,10 +76,6 @@
     <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">
       <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
       <Name>L2dotNET.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\L2dotNET\L2dotNET.csproj">
-      <Project>{00EE35EE-F920-4A50-B9BD-AAB02DA5C066}</Project>
-      <Name>L2dotNET</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

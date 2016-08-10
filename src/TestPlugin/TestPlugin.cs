@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using L2dotNET.GameService.Model.Player;
-using L2dotNET.GameService.Plugins;
+using L2dotNET.model.player;
+using L2dotNET.Plugins;
 
 namespace TestPlugin
 {

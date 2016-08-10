@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\L2dotNET.GameService\L2dotNET.GameService.csproj">
-      <Project>{991e13b3-eb83-46c1-9f63-6ed3e332f88f}</Project>
-      <Name>L2dotNET.GameService</Name>
+    <ProjectReference Include="..\L2dotNET\L2dotNET.csproj">
+      <Project>{00ee35ee-f920-4a50-b9bd-aab02da5c066}</Project>
+      <Name>L2dotNET</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

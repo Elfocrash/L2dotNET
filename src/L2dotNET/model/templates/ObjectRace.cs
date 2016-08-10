@@ -1,0 +1,31 @@
+namespace L2dotNET.model.templates
+{
+    public enum ObjectRace
+    {
+        Undead,
+        Animal,
+        Dragon,
+        Fairy,
+        Etc,
+        Angel,
+        Construct,
+        Elemental,
+        Demonic,
+        SiegeWeapon,
+        Humanoid,
+        Bug,
+        Human,
+        Beast,
+        Plant,
+        Giant,
+        Elf,
+        Orc,
+        Dwarf,
+        Darkelf,
+        CastleGuard,
+        Mercenary,
+        Creature,
+        Divine,
+        Kamael
+    }
+}
