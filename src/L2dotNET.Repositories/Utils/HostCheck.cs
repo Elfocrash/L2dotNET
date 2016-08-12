@@ -5,7 +5,6 @@ using System.Net.NetworkInformation;
 using System.ServiceProcess;
 using System.Threading;
 using log4net;
-using L2dotNET.Models;
 
 namespace L2dotNET.Repositories.Utils
 {

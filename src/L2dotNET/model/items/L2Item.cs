@@ -21,7 +21,7 @@ namespace L2dotNET.model.items
         public int Count;
         public short IsEquipped { get; set; }
 
-        public bool Equipped => (IsEquipped > 0);
+        public bool Equipped => IsEquipped > 0;
 
         public int Enchant;
         public int AugmentationId = 0;
@@ -30,7 +30,7 @@ namespace L2dotNET.model.items
         public int PaperdollSlot = -1;
         public int PetId = -1;
         public int Dropper;
-        public int SlotLocation = 0;
+        public int SlotLocation;
 
         public bool ExistsInDb { get; set; }
         public int OwnerId { get; set; }
@@ -60,7 +60,7 @@ namespace L2dotNET.model.items
             if (count == 0)
                 return;
 
-            if (count > 0 && Count > int.MaxValue - count)
+            if ((count > 0) && (Count > (int.MaxValue - count)))
                 Count = int.MaxValue;
             else
                 Count = Count + count;
@@ -165,7 +165,7 @@ namespace L2dotNET.model.items
             }
             else
             {
-                if (OwnerId == 0 || Location == ItemLocation.Void || (Count == 0 && Location != ItemLocation.Lease))
+                if ((OwnerId == 0) || (Location == ItemLocation.Void) || ((Count == 0) && (Location != ItemLocation.Lease)))
                     return;
 
                 InsertInDb();
@@ -175,7 +175,7 @@ namespace L2dotNET.model.items
 
         private void UpdateInDb()
         {
-            var model = MapItemModel();
+            ItemModel model = MapItemModel();
 
             ItemService.UpdateItem(model);
         }
@@ -183,21 +183,15 @@ namespace L2dotNET.model.items
         private void InsertInDb()
         {
             Location = ItemLocation.Inventory;
-            var model = MapItemModel();
+            ItemModel model = MapItemModel();
             ExistsInDb = model.ExistsInDb = true;
-            
+
             ItemService.InsertNewItem(model);
         }
 
         public static List<L2Item> RestoreFromDb(List<ItemModel> models)
         {
-            List<L2Item> itemlist = new List<L2Item>();
-            foreach (var itemModel in models)
-            {
-                L2Item item = MapModelToItem(itemModel);
-                itemlist.Add(item);
-            }
-            return itemlist;
+            return models.Select(MapModelToItem).ToList();
         }
 
         private ItemModel MapItemModel()
@@ -286,7 +280,7 @@ namespace L2dotNET.model.items
             _lifeTimeEndTime = dt;
             //TODO delete me
         }
-        
+
         public override string AsString()
         {
             return $"L2Item:{Template.ItemId}; count {Count}; enchant {Enchant}; id {ObjId}";

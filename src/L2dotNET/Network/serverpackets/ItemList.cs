@@ -45,7 +45,7 @@ namespace L2dotNET.Network.serverpackets
 
             foreach (ItemListItem item in _items)
             {
-                
+
 
                 WriteShort(item.CType1);
                 WriteInt(item.ObjectId);
@@ -53,7 +53,7 @@ namespace L2dotNET.Network.serverpackets
                 WriteInt(item.Count);
                 WriteShort(item.Type2);
                 WriteShort(item.CType1);
-                
+
                 WriteShort(item.Equip);
                 WriteInt(item.Bodypart);
                 WriteShort(item.Enchant);

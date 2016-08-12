@@ -31,6 +31,7 @@ namespace L2dotNET.Network.clientpackets
                 player.SendActionFailed();
                 return;
             }
+
             player.Online = 0;
             player.DeleteMe();
             player.SendPacket(new RestartResponse());

@@ -58,9 +58,8 @@ namespace L2dotNET.Network.clientpackets
             player.SendPacket(new UserInfo(player));
 
             foreach (Plugin plugin in PluginManager.Instance.Plugins)
-            {
-                plugin.OnLogin(player);   
-            }
+                plugin.OnLogin(player);
+
             //player.sendPacket(new ShortCutInit(player));
             player.StartAi();
 

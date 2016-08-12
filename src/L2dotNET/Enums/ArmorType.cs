@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace L2dotNET.Enums
 {
@@ -35,7 +34,7 @@ namespace L2dotNET.Enums
 
         public int GetMask()
         {
-            return 1 << (int)Id + 16;
+            return 1 << ((int)Id + 16);
         }
 
         public override string ToString()

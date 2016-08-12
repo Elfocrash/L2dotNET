@@ -665,7 +665,7 @@ namespace L2dotNET.model.player
             if (file.EndsWithIgnoreCase(".htm"))
             {
                 SendPacket(new NpcHtmlMessage(this, "./html/"+file, o.ObjId, 0));
-                var npc = o as L2Npc;
+                L2Npc npc = o as L2Npc;
                 if (npc != null)
                     FolkNpc = npc;
             }
@@ -1241,7 +1241,7 @@ namespace L2dotNET.model.player
             UpdatePlayer();
             L2World.Instance.RemovePlayer(this);
             DecayMe();
-           
+
         }
 
         public bool HasItem(int itemId, int count)
@@ -2422,7 +2422,7 @@ namespace L2dotNET.model.player
 
         internal void DropItem(int objectId, int count, int x, int y, int z)
         {
-            
+
         }
     }
 }

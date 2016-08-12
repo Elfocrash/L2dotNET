@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using log4net;
 
@@ -10,11 +11,9 @@ namespace L2dotNET.Plugins
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(GameServer));
 
-        private readonly List<object> _plugins = new List<object>();
+        public List<object> Plugins { get; } = new List<object>();
 
-        public List<object> Plugins => _plugins;
-
-        private string _currentPath = null;
+        private string _currentPath;
 
         private static volatile PluginManager instance;
         private static readonly object syncRoot = new object();
@@ -49,7 +48,7 @@ namespace L2dotNET.Plugins
             string pluginDirectoryPaths = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
             pluginDirectoryPaths = @"./Plugins/";//Config.GetProperty("PluginDirectory", pluginDirectoryPaths);
 
-            foreach (string dirPath in pluginDirectoryPaths.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (string dirPath in pluginDirectoryPaths.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 if (dirPath == null) continue;
 
@@ -75,24 +74,25 @@ namespace L2dotNET.Plugins
                         {
                             // If no PluginAttribute and does not implement IPlugin interface, not a valid plugin
                             if (!type.IsDefined(typeof(PluginAttribute), true) && !typeof(IPlugin).IsAssignableFrom(type)) continue;
+
                             if (type.IsDefined(typeof(PluginAttribute), true))
                             {
                                 PluginAttribute pluginAttribute = Attribute.GetCustomAttribute(type, typeof(PluginAttribute), true) as PluginAttribute;
                                 if (pluginAttribute != null)
                                 {
-                                   // if (!Config.GetProperty(pluginAttribute.PluginName + ".Enabled", true)) continue;
+                                    // if (!Config.GetProperty(pluginAttribute.PluginName + ".Enabled", true)) continue;
                                 }
                             }
-                            var ctor = type.GetConstructor(Type.EmptyTypes);
-                            if (ctor != null)
-                            {
-                                var plugin = ctor.Invoke(null);
-                                _plugins.Add(plugin);
-                            }
+                            ConstructorInfo ctor = type.GetConstructor(Type.EmptyTypes);
+                            if (ctor == null)
+                                continue;
+
+                            object plugin = ctor.Invoke(null);
+                            Plugins.Add(plugin);
                         }
                         catch (Exception ex)
                         {
-                            Log.WarnFormat("Failed loading plugin type {0} as a plugin.", type);
+                            Log.WarnFormat($"Failed loading plugin type {type} as a plugin.");
                             Log.Debug("Plugin loader caught exception, but is moving on.", ex);
                         }
                     }
@@ -127,11 +127,8 @@ namespace L2dotNET.Plugins
 
         internal void ExecuteStartup(GameServer server)
         {
-            foreach (object plugin in _plugins)
+            foreach (IStartup startupClass in Plugins.OfType<IStartup>())
             {
-                IStartup startupClass = plugin as IStartup;
-                if (startupClass == null) continue;
-
                 try
                 {
                     startupClass.Configure(server);
@@ -145,11 +142,8 @@ namespace L2dotNET.Plugins
 
         internal void EnablePlugins(GameServer server)
         {
-            foreach (object plugin in _plugins.ToArray())
+            foreach (IPlugin enablingPlugin in Plugins.ToArray().OfType<IPlugin>())
             {
-                IPlugin enablingPlugin = plugin as IPlugin;
-                if (enablingPlugin == null) continue;
-
                 try
                 {
                     enablingPlugin.OnEnable(new PluginContext(server, this));
@@ -163,11 +157,8 @@ namespace L2dotNET.Plugins
 
         internal void DisablePlugins()
         {
-            foreach (object plugin in _plugins)
+            foreach (IPlugin enablingPlugin in Plugins.OfType<IPlugin>())
             {
-                IPlugin enablingPlugin = plugin as IPlugin;
-                if (enablingPlugin == null) continue;
-
                 try
                 {
                     enablingPlugin.OnDisable();

@@ -54,7 +54,7 @@ namespace L2dotNET.model.inventory
             List<ItemModel> models = ItemService.RestoreInventory(owner.ObjId, "Inventory");
             List<L2Item> items = L2Item.RestoreFromDb(models);
 
-            foreach (var item in items)
+            foreach (L2Item item in items)
             {
                 L2World.Instance.AddObject(item);
                 Owner = owner;
@@ -103,6 +103,7 @@ namespace L2dotNET.model.inventory
                 case 0x040000:
                     return PaperdollHair;
             }
+
             return -1;
         }
     }

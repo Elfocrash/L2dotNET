@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.Models;
-using L2dotNET.Repositories;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
 
@@ -22,41 +22,23 @@ namespace L2dotNET.Services
 
         public Dictionary<int, ArmorModel> GetAllArmorModelsDict()
         {
-            Dictionary<int, ArmorModel> armors = new Dictionary<int, ArmorModel>();
             List<ArmorModel> armorModels = _unitOfWork.ItemRepository.GetAllArmors();
 
-            foreach (ArmorModel model in armorModels)
-            {
-                armors.Add(model.ItemId, model);
-            }
-
-            return armors;
+            return armorModels.ToDictionary(model => model.ItemId);
         }
 
         public Dictionary<int, WeaponModel> GetAllWeaponModelsDict()
         {
-            Dictionary<int, WeaponModel> weapons = new Dictionary<int, WeaponModel>();
             List<WeaponModel> weaponModels = _unitOfWork.ItemRepository.GetAllWeapons();
 
-            foreach (WeaponModel model in weaponModels)
-            {
-                weapons.Add(model.ItemId, model);
-            }
-
-            return weapons;
+            return weaponModels.ToDictionary(model => model.ItemId);
         }
 
         public Dictionary<int, EtcItemModel> GetAllEtcItemModelsDict()
         {
-            Dictionary<int, EtcItemModel> etcItems = new Dictionary<int, EtcItemModel>();
             List<EtcItemModel> etcItemModels = _unitOfWork.ItemRepository.GetAllEtcItems();
 
-            foreach (EtcItemModel model in etcItemModels)
-            {
-                etcItems.Add(model.ItemId, model);
-            }
-
-            return etcItems;
+            return etcItemModels.ToDictionary(model => model.ItemId);
         }
 
         public void InsertNewItem(ItemModel item)

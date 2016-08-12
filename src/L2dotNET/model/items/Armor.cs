@@ -41,13 +41,12 @@ namespace L2dotNET.model.items
 
         public override int GetItemMask()
         {
-            var orDefault = ArmorType.Values.FirstOrDefault(x => x.Id == Type);
-            if (orDefault != null)
-            {
-                int firstOrDefault = orDefault.GetMask();
-                return firstOrDefault;
-            }
-            return 0;
+            ArmorType orDefault = ArmorType.Values.FirstOrDefault(x => x.Id == Type);
+            if (orDefault == null)
+                return 0;
+
+            int firstOrDefault = orDefault.GetMask();
+            return firstOrDefault;
         }
     }
 }

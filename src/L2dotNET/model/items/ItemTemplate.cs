@@ -81,7 +81,7 @@ namespace L2dotNET.model.items
             Type1 = set.GetInt("type1");
             Type2 = set.GetInt("type2");
             Weight = set.GetInt("weight");
-            
+
             MaterialType = (MaterialType)set.GetInt("material");
             Duration = set.GetInt("duration", -1);
             BodyPart = ItemTable.Instance.Slots[set.GetString("bodypart", "none")];

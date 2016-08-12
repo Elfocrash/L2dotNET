@@ -10,7 +10,6 @@ using L2dotNET.model.npcs.ai;
 using L2dotNET.model.quests;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
-using L2dotNET.Plugins;
 using L2dotNET.tables;
 using L2dotNET.tables.multisell;
 using L2dotNET.Utility;

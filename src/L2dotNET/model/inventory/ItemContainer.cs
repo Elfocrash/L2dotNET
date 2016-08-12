@@ -59,7 +59,7 @@ namespace L2dotNET.model.inventory
             List<ItemModel> models = ItemService.RestoreInventory(owner.ObjId, "Inventory");
             List<L2Item> items = L2Item.RestoreFromDb(models);
 
-            foreach (var item in items)
+            foreach (L2Item item in items)
             {
                 L2World.Instance.AddObject(item);
                 Owner = owner;
@@ -83,7 +83,7 @@ namespace L2dotNET.model.inventory
         public L2Item AddItem(int itemId, int count, L2Player player,bool ExistsInDb = false)
         {
             L2Item item = GetItemByItemId(itemId);
-            if (item != null && item.Template.Stackable)
+            if ((item != null) && item.Template.Stackable)
             {
                 item.ChangeCount(count,player);
                 item.UpdateDatabase();
@@ -106,6 +106,7 @@ namespace L2dotNET.model.inventory
                     item.UpdateDatabase();
                // }
             }
+
             return item;
         }
 

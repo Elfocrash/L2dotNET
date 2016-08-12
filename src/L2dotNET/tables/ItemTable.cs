@@ -40,7 +40,7 @@ namespace L2dotNET.tables
         public Dictionary<int, Armor> Armors = new Dictionary<int, Armor>();
         public Dictionary<int, Weapon> Weapons = new Dictionary<int, Weapon>();
         public Dictionary<int, EtcItem> EtcItems = new Dictionary<int, EtcItem>();
-        
+
         public static ItemTable Instance
         {
             get
@@ -100,7 +100,7 @@ namespace L2dotNET.tables
 
             L2World.Instance.AddObject(item);
 
-            if (item.Template.Stackable && count > 1)
+            if (item.Template.Stackable && (count > 1))
                 item.Count = count;
 
             return item;

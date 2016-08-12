@@ -15,7 +15,7 @@ namespace L2dotNET.model.items
 
         public override int GetItemMask()
         {
-            return 1 << (int)Type + 21;
+            return 1 << ((int)Type + 21);
         }
     }
 }

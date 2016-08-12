@@ -95,7 +95,7 @@ namespace L2dotNET
             IsTerminated = true;
             Stream.Close();
             Client.Close();
-            
+
             if(CurrentPlayer?.Online == 1)
                 CurrentPlayer?.DeleteMe();
 

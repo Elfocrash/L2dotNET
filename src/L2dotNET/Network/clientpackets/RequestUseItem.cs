@@ -40,7 +40,7 @@ namespace L2dotNET.Network.clientpackets
                 player.SendActionFailed();
                 return;
             }
-            
+
             if (!item.Equipped)
             {
                 player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = item;

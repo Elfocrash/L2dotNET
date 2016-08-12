@@ -136,6 +136,7 @@ namespace L2dotNET.world
                 else
                     return;
             }
+
             Region.RevalidateZones(this);
         }
 

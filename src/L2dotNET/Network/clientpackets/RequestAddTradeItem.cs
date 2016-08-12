@@ -74,9 +74,7 @@ namespace L2dotNET.Network.clientpackets
             byte action = 2; //mod, 2-del
             if (item.Template.Stackable)
             {
-                action = 3;
-                if (numCurrent < 1)
-                    action = 2;
+                action = (byte)(numCurrent < 1 ? 2 : 3);
             }
 
             player.SendPacket(new TradeUpdate(item, numCurrent, 0));

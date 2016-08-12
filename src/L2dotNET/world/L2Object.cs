@@ -84,7 +84,7 @@ namespace L2dotNET.world
         public virtual void DecayMe()
         {
             Region = null;
-            
+
             L2World.Instance.RemoveObject(this);
         }
 
@@ -453,7 +453,7 @@ namespace L2dotNET.world
                     ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.LeftCombatZone);
             }
         }
-        
+
         public virtual void SpawnMe()
         {
             Region = L2World.Instance.GetRegion(new Location(X, Y, Z));

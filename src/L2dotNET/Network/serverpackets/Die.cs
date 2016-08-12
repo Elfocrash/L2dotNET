@@ -72,7 +72,7 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(MNAgathion); //21
             WriteInt(_items?.Count ?? 0); //22+
 
-            _items?.ForEach(id => WriteInt(id));
+            _items?.ForEach(WriteInt);
         }
     }
 }
