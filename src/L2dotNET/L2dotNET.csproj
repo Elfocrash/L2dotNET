@@ -58,8 +58,6 @@
     <Compile Include="AI\npcai\citizen.cs" />
     <Compile Include="AI\npcai\GuildMaster.cs" />
     <Compile Include="AI\npcai\HennaManager.cs" />
-    <Compile Include="AI\npcai\merchant.cs" />
-    <Compile Include="AI\npcai\MonsterParameter.cs" />
     <Compile Include="AI\template\AI.cs" />
     <Compile Include="ClientManager.cs" />
     <Compile Include="Commands\Admin\AAdminCommand.cs" />
