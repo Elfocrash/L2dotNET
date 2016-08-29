@@ -659,6 +659,7 @@
     <Compile Include="Utility\L2Random.cs" />
     <Compile Include="Utility\L2Security.cs" />
     <Compile Include="Utility\Logger.cs" />
+    <Compile Include="Utility\MultiMediaTimer.cs" />
     <Compile Include="Utility\ServiceTime.cs" />
     <Compile Include="Utility\Source.cs" />
     <Compile Include="Utility\Stopwatch.cs" />
