@@ -59,9 +59,9 @@
     <Compile Include="AI\npcai\GuildMaster.cs" />
     <Compile Include="AI\npcai\HennaManager.cs" />
     <Compile Include="AI\template\AI.cs" />
-    <Compile Include="Attributes\AdminCommandAttribute.cs" />
+    <Compile Include="Attributes\CommandAttribute.cs" />
     <Compile Include="ClientManager.cs" />
-    <Compile Include="Commands\Admin\AAdminCommand.cs" />
+    <Compile Include="Commands\AAdminCommand.cs" />
     <Compile Include="Commands\Admin\AdminAddSkill.cs" />
     <Compile Include="Commands\Admin\AdminAdmin.cs" />
     <Compile Include="Commands\Admin\AdminChat.cs" />

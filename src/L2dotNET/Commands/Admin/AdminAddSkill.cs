@@ -4,7 +4,7 @@ using L2dotNET.model.skills2;
 
 namespace L2dotNET.Commands.Admin
 {
-    [AdminCommand(CommandName = "setskill")]
+    [Command(CommandName = "setskill")]
     class AdminAddSkill : AAdminCommand
     {
         protected internal override void Use(L2Player admin, string alias)

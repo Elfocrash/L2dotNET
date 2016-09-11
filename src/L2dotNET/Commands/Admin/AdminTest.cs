@@ -3,7 +3,7 @@ using L2dotNET.model.player;
 
 namespace L2dotNET.Commands.Admin
 {
-    [AdminCommand(CommandName = "test")]
+    [Command(CommandName = "test")]
     class AdminTest : AAdminCommand
     {
         //private L2Player p = null;

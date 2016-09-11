@@ -5,7 +5,7 @@ using L2dotNET.model.player;
 
 namespace L2dotNET.Commands.Admin
 {
-    [AdminCommand(CommandName = "createitem")]
+    [Command(CommandName = "createitem")]
     class AdminSpawnItem : AAdminCommand
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(AAdminCommand));

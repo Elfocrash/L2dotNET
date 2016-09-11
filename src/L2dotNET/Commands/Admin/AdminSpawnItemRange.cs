@@ -5,7 +5,7 @@ using L2dotNET.tables;
 
 namespace L2dotNET.Commands.Admin
 {
-    [AdminCommand(CommandName = "summon3")]
+    [Command(CommandName = "summon3")]
     class AdminSpawnItemRange : AAdminCommand
     {
         protected internal override void Use(L2Player admin, string alias)

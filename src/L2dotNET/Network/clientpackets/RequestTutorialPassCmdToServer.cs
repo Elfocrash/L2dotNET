@@ -60,7 +60,7 @@ namespace L2dotNET.Network.clientpackets
                         return;
                     }
 
-                    AdminCommandHandler.Instance.ProcessBypassTp(player, x, y, z);
+                   
                 }
                 else
                 {
@@ -68,8 +68,6 @@ namespace L2dotNET.Network.clientpackets
                     string[] x2 = x1.Split('&');
                     int ask = int.Parse(x2[0].Substring(4));
                     int reply = int.Parse(x2[1].Substring(6));
-
-                    AdminCommandHandler.Instance.ProcessBypass(player, ask, reply);
                 }
             }
         }

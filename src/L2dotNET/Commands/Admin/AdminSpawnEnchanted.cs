@@ -3,7 +3,7 @@ using L2dotNET.model.player;
 
 namespace L2dotNET.Commands.Admin
 {
-    [AdminCommand(CommandName = "summon2")]
+    [Command(CommandName = "summon2")]
     class AdminSpawnEnchanted : AAdminCommand
     {
         protected internal override void Use(L2Player admin, string alias)

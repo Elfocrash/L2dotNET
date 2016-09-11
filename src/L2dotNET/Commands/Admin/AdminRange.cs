@@ -10,7 +10,7 @@ using L2dotNET.tables.multisell;
 
 namespace L2dotNET.Commands.Admin
 {
-    [AdminCommand(CommandName = "range")]
+    [Command(CommandName = "range")]
     class AdminRange : AAdminCommand
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(AdminRange));

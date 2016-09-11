@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using log4net;
 using L2dotNET.Attributes;
+using L2dotNET.Commands;
 using L2dotNET.Commands.Admin;
 using L2dotNET.model.player;
 using L2dotNET.tables.admin_bypass;
+using L2dotNET.Utility;
+using static System.String;
 
 namespace L2dotNET.Handlers
 {
@@ -13,7 +17,6 @@ namespace L2dotNET.Handlers
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(AdminCommandHandler));
         private readonly SortedList<string, AAdminCommand> _commands = new SortedList<string, AAdminCommand>();
-        private ABTeleport _teleports;
 
         private static volatile AdminCommandHandler _instance;
         private static readonly object SyncRoot = new object();
@@ -37,22 +40,9 @@ namespace L2dotNET.Handlers
 
         public void Initialize()
         {
-            _teleports = new ABTeleport();
-
-            Register(new AdminAdmin());
-            Register(new AdminAddSkill());
-            Register(new AdminChat());
-            Register(new AdminGiveAllSkills());
-            Register(new AdminHeal());
-            Register(new AdminRange());
-            Register(new AdminSpawnEnchanted());
-            Register(new AdminSpawnItem());
-            Register(new AdminSpawnItemRange());
-            Register(new AdminSpawnNpc());
-            Register(new AdminTeleport());
-            Register(new AdminTest());
-            Register(new AdminTransform());
-            Register(new AdminWhisper());
+            Type[] typelist = Utilz.GetTypesInNamespace(Assembly.GetExecutingAssembly(), "L2dotNET.Commands.Admin");
+            foreach (Type t in typelist)
+                Register(Activator.CreateInstance(t));
 
             Log.Info($"AdminAccess: loaded {_commands.Count} commands.");
         }
@@ -82,29 +72,11 @@ namespace L2dotNET.Handlers
             }
         }
 
-        public void Register(AAdminCommand processor)
+        public void Register(object processor)
         {
-            AdminCommandAttribute attribute =
-                (AdminCommandAttribute) processor.GetType().GetCustomAttribute(typeof(AdminCommandAttribute));
-            _commands.Add(attribute.CommandName, processor);
+            CommandAttribute attribute =
+                (CommandAttribute) processor.GetType().GetCustomAttribute(typeof(CommandAttribute));
+            _commands.Add(attribute.CommandName,(AAdminCommand) processor);
         }
-
-        public void ProcessBypass(L2Player player, int ask, int reply)
-        {
-            switch (ask)
-            {
-                case 1:
-                    _teleports.ShowGroup(player, reply);
-                    break;
-                case 2:
-                    _teleports.Use(player, reply);
-                    break;
-                case 3:
-                    _teleports.ShowGroupList(player);
-                    break;
-            }
-        }
-
-        public void ProcessBypassTp(L2Player player, int x, int y, int z) { }
     }
 }

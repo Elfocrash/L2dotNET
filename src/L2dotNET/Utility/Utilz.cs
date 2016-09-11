@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using L2dotNET.Network;
 
@@ -28,6 +29,11 @@ namespace L2dotNET.Utility
             strBuilder.Append($"Service Uptime: {ProcessUptimeAsString}\r\n");
             strBuilder.Append(Environment.NewLine);
             return strBuilder.ToString();
+        }
+
+        public static Type[] GetTypesInNamespace(Assembly assembly, string nameSpace)
+        {
+            return assembly.GetTypes().Where(t => string.Equals(t.Namespace, nameSpace, StringComparison.Ordinal)).ToArray();
         }
 
         private static readonly DateTime Year1970 = new DateTime(1970, 1, 1);

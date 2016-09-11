@@ -5,7 +5,7 @@ using L2dotNET.Utility;
 
 namespace L2dotNET.Commands.Admin
 {
-    [AdminCommand(CommandName = "transform")]
+    [Command(CommandName = "transform")]
     class AdminTransform : AAdminCommand
     {
         protected internal override void Use(L2Player admin, string alias)

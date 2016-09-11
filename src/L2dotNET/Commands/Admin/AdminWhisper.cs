@@ -4,7 +4,7 @@ using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Commands.Admin
 {
-    [AdminCommand(CommandName = "whisper")]
+    [Command(CommandName = "whisper")]
     class AdminWhisper : AAdminCommand
     {
         protected internal override void Use(L2Player admin, string alias)

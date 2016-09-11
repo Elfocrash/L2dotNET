@@ -1,6 +1,6 @@
 ﻿using L2dotNET.model.player;
 
-namespace L2dotNET.Commands.Admin
+namespace L2dotNET.Commands
 {
     public abstract class AAdminCommand
     {

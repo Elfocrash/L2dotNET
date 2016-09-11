@@ -6,7 +6,7 @@ using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Commands.Admin
 {
-    [AdminCommand(CommandName = "set_skill_all")]
+    [Command(CommandName = "set_skill_all")]
     class AdminGiveAllSkills : AAdminCommand
     {
         protected internal override void Use(L2Player admin, string alias)
