@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Timers;
 using log4net;
+using L2dotNET.Attributes;
 using L2dotNET.model.player;
 using L2dotNET.model.structures.conq;
 using L2dotNET.model.zones.forms;
@@ -9,14 +10,10 @@ using L2dotNET.tables.multisell;
 
 namespace L2dotNET.Commands.Admin
 {
+    [AdminCommand(CommandName = "range")]
     class AdminRange : AAdminCommand
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(AdminRange));
-
-        public AdminRange()
-        {
-            Cmd = "range";
-        }
 
         private ZoneNPoly _np;
 

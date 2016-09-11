@@ -1,16 +1,13 @@
-﻿using L2dotNET.managers;
+﻿using L2dotNET.Attributes;
+using L2dotNET.managers;
 using L2dotNET.model.player;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Commands.Admin
 {
+    [AdminCommand(CommandName = "transform")]
     class AdminTransform : AAdminCommand
     {
-        public AdminTransform()
-        {
-            Cmd = "transform";
-        }
-
         protected internal override void Use(L2Player admin, string alias)
         {
             if (alias.Split(' ')[1].EqualsIgnoreCase("on"))

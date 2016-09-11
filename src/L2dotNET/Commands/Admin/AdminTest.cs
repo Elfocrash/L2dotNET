@@ -1,14 +1,11 @@
-﻿using L2dotNET.model.player;
+﻿using L2dotNET.Attributes;
+using L2dotNET.model.player;
 
 namespace L2dotNET.Commands.Admin
 {
+    [AdminCommand(CommandName = "test")]
     class AdminTest : AAdminCommand
     {
-        public AdminTest()
-        {
-            Cmd = "test";
-        }
-
         //private L2Player p = null;
         //private int spd = 1000;
 

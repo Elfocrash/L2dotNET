@@ -1,16 +1,13 @@
-﻿using L2dotNET.model.player;
+﻿using L2dotNET.Attributes;
+using L2dotNET.model.player;
 using L2dotNET.model.skills2;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Commands.Admin
 {
+    [AdminCommand(CommandName = "heal")]
     class AdminHeal : AAdminCommand
     {
-        public AdminHeal()
-        {
-            Cmd = "heal";
-        }
-
         protected internal override void Use(L2Player admin, string alias)
         {
             //healthy -- восстанавливает выбранному чару хп\мп

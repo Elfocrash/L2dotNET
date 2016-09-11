@@ -1,17 +1,14 @@
 ﻿using System;
 using log4net;
+using L2dotNET.Attributes;
 using L2dotNET.model.player;
 
 namespace L2dotNET.Commands.Admin
 {
+    [AdminCommand(CommandName = "createitem")]
     class AdminSpawnItem : AAdminCommand
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(AAdminCommand));
-
-        public AdminSpawnItem()
-        {
-            Cmd = "createitem";
-        }
 
         protected internal override void Use(L2Player admin, string alias)
         {

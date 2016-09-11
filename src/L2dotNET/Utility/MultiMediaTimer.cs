@@ -363,10 +363,7 @@ namespace L2dotNET.Utility
         {
             EventHandler handler = Disposed;
 
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            handler?.Invoke(this, e);
         }
 
         // Raises the Started event.
@@ -470,7 +467,7 @@ namespace L2dotNET.Utility
                 {
                     throw new ObjectDisposedException("Timer");
                 }
-                else if (value < Capabilities.periodMin || value > Capabilities.periodMax)
+                if (value < Capabilities.periodMin || value > Capabilities.periodMax)
                 {
                     throw new ArgumentOutOfRangeException("Period", value,
                         "Multimedia Timer period out of range.");

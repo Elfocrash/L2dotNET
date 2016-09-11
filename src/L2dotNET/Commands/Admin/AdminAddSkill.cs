@@ -1,15 +1,12 @@
-﻿using L2dotNET.model.player;
+﻿using L2dotNET.Attributes;
+using L2dotNET.model.player;
 using L2dotNET.model.skills2;
 
 namespace L2dotNET.Commands.Admin
 {
+    [AdminCommand(CommandName = "setskill")]
     class AdminAddSkill : AAdminCommand
     {
-        public AdminAddSkill()
-        {
-            Cmd = "setskill";
-        }
-
         protected internal override void Use(L2Player admin, string alias)
         {
             //setskill [skill_id] [skill_lvl] -- дает скилл [skill_id] уровня [skill_lvl] выбранному чару

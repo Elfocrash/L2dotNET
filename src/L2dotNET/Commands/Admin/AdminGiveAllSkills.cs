@@ -1,17 +1,14 @@
 ﻿using System.Collections.Generic;
+using L2dotNET.Attributes;
 using L2dotNET.model.player;
 using L2dotNET.model.skills2;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Commands.Admin
 {
+    [AdminCommand(CommandName = "set_skill_all")]
     class AdminGiveAllSkills : AAdminCommand
     {
-        public AdminGiveAllSkills()
-        {
-            Cmd = "set_skill_all";
-        }
-
         protected internal override void Use(L2Player admin, string alias)
         {
             if (!(admin.CurrentTarget is L2Player))

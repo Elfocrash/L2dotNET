@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using log4net;
+using L2dotNET.Attributes;
 using L2dotNET.Commands.Admin;
 using L2dotNET.model.player;
 using L2dotNET.tables.admin_bypass;
@@ -82,7 +84,9 @@ namespace L2dotNET.Handlers
 
         public void Register(AAdminCommand processor)
         {
-            _commands.Add(processor.Cmd, processor);
+            AdminCommandAttribute attribute =
+                (AdminCommandAttribute) processor.GetType().GetCustomAttribute(typeof(AdminCommandAttribute));
+            _commands.Add(attribute.CommandName, processor);
         }
 
         public void ProcessBypass(L2Player player, int ask, int reply)

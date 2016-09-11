@@ -1,15 +1,12 @@
-﻿using L2dotNET.model.player;
+﻿using L2dotNET.Attributes;
+using L2dotNET.model.player;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Commands.Admin
 {
+    [AdminCommand(CommandName = "whisper")]
     class AdminWhisper : AAdminCommand
     {
-        public AdminWhisper()
-        {
-            Cmd = "whisper";
-        }
-
         protected internal override void Use(L2Player admin, string alias)
         {
             //whisper [on|off] -- so when whisper is off means no one can message you when whispers on they can message you.

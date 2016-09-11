@@ -1,16 +1,13 @@
-﻿using L2dotNET.model.items;
+﻿using L2dotNET.Attributes;
+using L2dotNET.model.items;
 using L2dotNET.model.player;
 using L2dotNET.tables;
 
 namespace L2dotNET.Commands.Admin
 {
+    [AdminCommand(CommandName = "summon3")]
     class AdminSpawnItemRange : AAdminCommand
     {
-        public AdminSpawnItemRange()
-        {
-            Cmd = "summon3";
-        }
-
         protected internal override void Use(L2Player admin, string alias)
         {
             int idmin = int.Parse(alias.Split(' ')[1]);
