@@ -1,4 +1,5 @@
-﻿using L2dotNET.model.player;
+﻿using L2dotNET.model.items;
+using L2dotNET.model.player;
 
 namespace L2dotNET.Plugins
 {
@@ -21,6 +22,10 @@ namespace L2dotNET.Plugins
         }
 
         public virtual void OnLogin(L2Player player)
+        {
+        }
+
+        public void OnItemEquip(L2Player player, L2Item item)
         {
         }
     }

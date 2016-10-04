@@ -2,6 +2,7 @@
 using L2dotNET.model.items;
 using L2dotNET.model.player;
 using L2dotNET.Network.serverpackets;
+using L2dotNET.Plugins;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -43,6 +44,7 @@ namespace L2dotNET.Network.clientpackets
 
             if (!item.Equipped)
             {
+                
                 player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = item;
                 item.Location = L2Item.ItemLocation.Paperdoll;
                 item.SlotLocation = Inventory.GetPaperdollIndex(item.Template.BodyPart);
@@ -50,6 +52,8 @@ namespace L2dotNET.Network.clientpackets
                 item.IsEquipped = 1;
                 player.BroadcastUserInfo();
                 player.SendPacket(new ItemList(player,true));
+                foreach (IPlugin plugin in PluginManager.Instance.Plugins)
+                    plugin.OnItemEquip(player, item);
                 return;
             }
 
