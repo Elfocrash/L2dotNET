@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
-using L2dotNET.AI.template;
 using L2dotNET.model.items;
 using L2dotNET.model.player;
 using L2dotNET.model.skills2;
@@ -18,7 +17,6 @@ namespace L2dotNET.model.npcs
         public NpcTemplate Template;
         public bool Summoned;
         public bool StructureControlled = false;
-        public Ai AiProcessor;
 
         //public virtual void setTemplate(NpcTemplate template)
         //{
@@ -39,9 +37,6 @@ namespace L2dotNET.model.npcs
         public override void NotifyAction(L2Player player)
         {
             double dis = Calcs.CalculateDistance(player, this, true);
-            if (dis < 151)
-                AiProcessor.Talked(player);
-            else
                 TryMoveTo(X, Y, Z);
         }
 
@@ -79,8 +74,6 @@ namespace L2dotNET.model.npcs
         public virtual void OnDialog(L2Player player, int ask, int reply)
         {
             player.FolkNpc = this;
-
-            AiProcessor.TalkedReply(player, ask, reply);
 
             //if (ask > 0 && ask < 1000)
             //{

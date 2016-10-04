@@ -54,11 +54,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AI\npcai\BlackJudgeBasic.cs" />
-    <Compile Include="AI\npcai\citizen.cs" />
-    <Compile Include="AI\npcai\GuildMaster.cs" />
-    <Compile Include="AI\npcai\HennaManager.cs" />
-    <Compile Include="AI\template\AI.cs" />
     <Compile Include="Attributes\CommandAttribute.cs" />
     <Compile Include="ClientManager.cs" />
     <Compile Include="Commands\AAdminCommand.cs" />
@@ -777,6 +772,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AI\" />
     <Folder Include="Datapacks\Game\cmpl\ai\" />
     <Folder Include="Datapacks\Game\cmpl\quests\" />
     <Folder Include="Datapacks\Game\log\" />
