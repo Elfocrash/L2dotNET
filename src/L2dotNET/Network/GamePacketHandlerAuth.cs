@@ -13,7 +13,6 @@ namespace L2dotNET.Network
         private static readonly ILog Log = LogManager.GetLogger(typeof(GamePacketHandlerAuth));
 
         private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
-        private static readonly ConcurrentDictionary<byte, Type> ClientPacketsSerc = new ConcurrentDictionary<byte, Type>();
 
         static GamePacketHandlerAuth()
         {
@@ -30,7 +29,11 @@ namespace L2dotNET.Network
             Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
             if (ClientPackets.ContainsKey(packet.FirstOpcode))
                 packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, login);
-            packetBase?.RunImpl();
+
+            if (packetBase == null)
+                throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode.ToString("X2")} doesn't exist in the dictionary.");
+
+            packetBase.RunImpl();
         }
     }
 }

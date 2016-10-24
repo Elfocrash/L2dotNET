@@ -127,7 +127,10 @@ namespace L2dotNET.Network
             if (client.IsTerminated)
                 return;
 
-            packetBase?.RunImpl();
+            if (packetBase == null)
+                throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode.ToString("X2")} doesn't exist in the dictionary.");
+
+            packetBase.RunImpl();
         }
     }
 }
