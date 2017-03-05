@@ -152,11 +152,12 @@
   <!-- Include Files to Debug -->
   <Target Name="AfterBuild">
     <ItemGroup>
-      <BinFiles Include="$(SolutionDir)L2dotNET.GameService\Datapacks\Game\**\*.*" />
+      <BinFiles Include="$(SolutionDir)L2dotNET\Datapacks\Game\**\*.*" />
     </ItemGroup>
-    <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(TargetDir)\%(RecursiveDir)" />
+    <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(TargetDir)\%(RecursiveDir)" ContinueOnError="true" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>if not exist "$(TargetDir)Plugins" mkdir "$(TargetDir)Plugins"</PreBuildEvent>
+    <PreBuildEvent>if not exist "$(TargetDir)Plugins" mkdir "$(TargetDir)Plugins"
+if not exist "$(TargetDir)html" mkdir "$(TargetDir)html</PreBuildEvent>
   </PropertyGroup>
 </Project>

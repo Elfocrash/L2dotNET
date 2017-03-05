@@ -198,8 +198,10 @@
   <!-- Include Files to Debug -->
   <Target Name="AfterBuild">
     <ItemGroup>
-      <BinFiles Include="$(SolutionDir)L2dotNET.GameService\Datapacks\Login\**\*.*" />
+      <BinFiles Include="$(SolutionDir)L2dotNET\Datapacks\Login\**\*.*" />
     </ItemGroup>
-    <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(TargetDir)\%(RecursiveDir)" />
+    <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(TargetDir)\%(RecursiveDir)" ContinueOnError="true" />        
   </Target>
+  <PropertyGroup>    
+  </PropertyGroup>
 </Project>

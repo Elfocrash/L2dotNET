@@ -49,9 +49,11 @@ namespace L2dotNET.Network.loginauth
                 Lclient = new TcpClient(Config.Config.Instance.ServerConfig.AuthHost, Config.Config.Instance.ServerConfig.AuthPort);
                 Nstream = Lclient.GetStream();
             }
-            catch (SocketException)
+            catch (SocketException ex)
             {
+                Log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
                 Log.Warn("Login server is not responding. Retrying");
+
                 if (Ltimer == null)
                 {
                     Ltimer = new System.Timers.Timer
