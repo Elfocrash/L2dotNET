@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Drawing.Imaging;
 using System.Linq;
-using log4net.Filter;
 using L2dotNET.model.inventory;
 using L2dotNET.model.player;
 

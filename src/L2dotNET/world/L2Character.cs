@@ -63,6 +63,13 @@ namespace L2dotNET.world
 
         public StandartAiTemplate AiCharacter = new StandartAiTemplate();
 
+        private Timer _updatePositionTime = new Timer(100);
+
+        public L2Character()
+        {
+            _updatePositionTime.Elapsed += UpdatePositionTask;
+        }
+
         public override void OnAction(L2Player player)
         {
             bool newtarget = false;
@@ -435,10 +442,10 @@ namespace L2dotNET.world
             lock (Effects)
             {
                 nulled.ForEach(ei =>
-                               {
-                                   ei.ForcedStop(false, false);
-                                   Effects.Remove(ei);
-                               });
+                {
+                    ei.ForcedStop(false, false);
+                    Effects.Remove(ei);
+                });
             }
 
             nulled.Clear();
@@ -1437,19 +1444,8 @@ namespace L2dotNET.world
             if (IsAttacking())
                 AbortAttack();
 
-            if (_updatePositionTime == null)
-            {
-                _updatePositionTime = new Timer
-                {
-                    Interval = 100
-                };
-                _updatePositionTime.Elapsed += UpdatePositionTask;
-            }
-            else
-            {
-                if (_updatePositionTime.Enabled) // новый маршрут, но старый не закончен
-                    NotifyStopMove(false);
-            }
+            if (_updatePositionTime.Enabled) // новый маршрут, но старый не закончен
+                NotifyStopMove(false);
 
             DestX = x;
             DestY = y;
@@ -1458,13 +1454,16 @@ namespace L2dotNET.world
             double dx = x - X,
                    dy = y - Y;
             //dz = (z - Z);
-            double distance = Math.Sqrt((dx * dx) + (dy * dy));
+            double distance = getPlanDistanceSq(x, y);
 
-            double speed = CharacterStat.GetStat(EffectType.PSpeed);
             double spy = dy / distance,
                    spx = dx / distance;
 
-            _ticksToMove = 1 + (int)((10 * distance) / speed);
+            double speed = CharacterStat.GetStat(EffectType.PSpeed);
+            speed = 130; //TODO: Human Figher Speed Based, need get characters run speed
+
+            //TODO: check possible divisions by zero
+            _ticksToMove = (int)Math.Ceiling((10 * distance) / speed); //Client Response time = 1000ms, XYZ server check = 100ms (distance * 10 to get better precision)
             _ticksToMoveCompleted = 0;
             _xSpeedTicks = (DestX - X) / (float)_ticksToMove;
             _ySpeedTicks = (DestY - Y) / (float)_ticksToMove;
@@ -1506,15 +1505,13 @@ namespace L2dotNET.world
         public virtual void NotifyStopMove(bool broadcast, bool update = false)
         {
             if (_updatePositionTime.Enabled)
-            {
                 _updatePositionTime.Enabled = false;
 
-                if (broadcast)
-                    AiCharacter.NotifyStopMoving();
+            if (broadcast)
+                AiCharacter.NotifyStopMoving();
 
-                if (update)
-                    BroadcastPacket(new StopMove(this));
-            }
+            if (update)
+                BroadcastPacket(new StopMove(this));
 
             DestX = 0;
             DestY = 0;
@@ -1522,14 +1519,13 @@ namespace L2dotNET.world
             _xSpeedTicks = 0;
             _ySpeedTicks = 0;
             _ticksToMove = 0;
+            _ticksToMoveCompleted = 0;
         }
 
         public virtual void NotifyArrived()
         {
-            if (_updatePositionTime == null)
-                return;
-
-            _updatePositionTime.Enabled = false;
+            if (_updatePositionTime.Enabled)
+                _updatePositionTime.Enabled = false;
 
             DestX = 0;
             DestY = 0;
@@ -1541,7 +1537,7 @@ namespace L2dotNET.world
             AiCharacter.NotifyStopMoving();
         }
 
-        private Timer _updatePositionTime;
+
         private int _ticksToMove,
                     _ticksToMoveCompleted;
         private float _xSpeedTicks;
@@ -1638,5 +1634,17 @@ namespace L2dotNET.world
         public bool MutedMagically => (_muted1 != null) && (_muted1.Count > 0);
 
         public bool MutedSpecial => (_muted2 != null) && (_muted2.Count > 0);
+
+        /// <summary>
+        /// Return the squared plan distance between the current position of the L2Character and the given x, y, z.
+        /// (check only x and y, not z)
+        /// </summary>
+        /// <param name="x">X position of the target</param>
+        /// <param name="y">Y position of the target</param>
+        /// <returns>return the squared plan distance</returns>
+        public double getPlanDistanceSq(int x, int y)
+        {
+            return Math.Sqrt(Math.Pow(x - X, 2) + Math.Pow(y - Y, 2));
+        }
     }
 }

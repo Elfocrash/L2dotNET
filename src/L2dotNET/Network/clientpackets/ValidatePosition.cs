@@ -32,44 +32,44 @@ namespace L2dotNET.Network.clientpackets
             L2Player player = _client.CurrentPlayer;
             //string prevReg = player.CurrentRegion;
 
-            int realX = player.X;
-            int realY = player.Y;
-            //int realZ = player.Z;
+            //int realX = player.X;
+            //int realY = player.Y;
+            ////int realZ = player.Z;
 
-            int dx = _x - realX;
-            int dy = _y - realY;
-            //int dz = _z - realZ;
-            double diffSq = (dx * dx) + (dy * dy);
+            //int dx = _x - realX;
+            //int dy = _y - realY;
+            ////int dz = _z - realZ;
+            //double diffSq = (dx * dx) + (dy * dy);
 
-            if (diffSq < 360000)
-            {
-                if (!player.IsMoving())
-                {
-                    if (diffSq < 2500)
-                    {
-                        player.X = realX;
-                        player.Y = realY;
-                        player.Z = _z;
-                    }
-                    else
-                    {
-                        player.X = _x;
-                        player.Y = _y;
-                        player.Z = _z;
-                    }
-                }
+            //if (diffSq < 360000)
+            //{
+            //    if (!player.IsMoving())
+            //    {
+            //        if (diffSq < 2500)
+            //        {
+            //            player.X = realX;
+            //            player.Y = realY;
+            //            player.Z = _z;
+            //        }
+            //        else
+            //        {
+            //            player.X = _x;
+            //            player.Y = _y;
+            //            player.Z = _z;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    player.X = _x;
+            //    player.Y = _y;
+            //    player.Z = _z;
+            //    player.Heading = _heading;
+            //}
 
-                Log.Info($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}"); //debug
-                player.BroadcastUserInfo();
-                return;
-            }
-
-            player.X = _x;
-            player.Y = _y;
-            player.Z = _z;
-            player.Heading = _heading;
-            Log.Info($"Current position: X:{player.ClientPosX}, Y:{player.ClientPosY}, Z:{player.ClientPosZ}"); //debug
+            Log.Info($"Current client position: X:{_x}, Y:{_y}, Z:{_z}"); //debug
             player.BroadcastUserInfo();
+
             //player.validateVisibleObjects(_x, _y, true);
         }
     }
