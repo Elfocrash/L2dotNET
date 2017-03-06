@@ -60,7 +60,7 @@ namespace L2dotNET.LoginService.Network
             array.AddRange(BitConverter.GetBytes((short)(data.Length + 2)));
             array.AddRange(data);
             NetStream.Write(array.ToArray(), 0, array.Count);
-            //Console.WriteLine($"Recieve :\r\n{L2Buffer.ToString(array.ToArray())}");
+            //Log.Info($"Receive :\r\n{L2Buffer.ToString(array.ToArray())}");
             NetStream.Flush();
         }
 

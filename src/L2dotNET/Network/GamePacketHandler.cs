@@ -22,6 +22,7 @@ namespace L2dotNET.Network
 
         static GamePacketHandler()
         {
+            //TODO: Review class packets, looks like some is missing and with wrong KeyValue
             ClientPackets.TryAdd(0x00, typeof(ProtocolVersion));
             ClientPackets.TryAdd(0x01, typeof(MoveBackwardToLocation));
             ClientPackets.TryAdd(0x03, typeof(EnterWorld));
@@ -83,11 +84,11 @@ namespace L2dotNET.Network
             ClientPackets.TryAdd(0x80, typeof(RequestPartyMatchList));
             ClientPackets.TryAdd(0x85, typeof(RequestTutorialLinkHtml));
             ClientPackets.TryAdd(0x86, typeof(RequestTutorialPassCmdToServer));
-            //ClientPackets.TryAdd(0x87, typeof(RequestTutorialQuestionMark));
             ClientPackets.TryAdd(0x8c, typeof(RequestGetItemFromPet));
             ClientPackets.TryAdd(0x93, typeof(RequestChangePetName));
             ClientPackets.TryAdd(0x94, typeof(RequestPetUseItem));
             ClientPackets.TryAdd(0x95, typeof(RequestGiveItemToPet));
+            ClientPackets.TryAdd(0x9d, typeof(RequestSkillCoolTime));
             ClientPackets.TryAdd(0xaa, typeof(BypassUserCmd));
             ClientPackets.TryAdd(0xB0, typeof(MultiSellChoose));
             ClientPackets.TryAdd(0xB1, typeof(NetPingResponse));

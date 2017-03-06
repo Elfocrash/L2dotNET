@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
+using log4net;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Network
@@ -15,6 +16,8 @@ namespace L2dotNET.Network
     /// </summary>
     public class InnerNetworkClient : NetworkClient
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(InnerNetworkClient));
+
         /// <summary>
         /// Remote service settings.
         /// </summary>
@@ -64,7 +67,7 @@ namespace L2dotNET.Network
         protected override void Handle(Packet packet)
         {
             if (HandleDelegate == null)
-                Console.WriteLine("Skipping handling");
+                Log.Info("Skipping handling");
             else
                 HandleDelegate(packet);
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
+using log4net;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Network
@@ -21,6 +22,8 @@ namespace L2dotNET.Network
     /// </summary>
     public abstract class NetworkClient
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(NetworkClient));
+
         /// <summary>
         /// Client <see cref="Socket"/>.
         /// </summary>
@@ -182,7 +185,7 @@ namespace L2dotNET.Network
         public virtual void SendData(byte[] buffer)
         {
             //#if DEBUG_NET_CLIENT
-            Console.WriteLine($"Sending:\r\n{L2Buffer.ToString(buffer)}");
+            Log.Info($"Sending:\r\n{L2Buffer.ToString(buffer)}");
             //#endif
             if ((MSocket == null) || !MSocket.Connected)
                 return;
@@ -208,7 +211,7 @@ namespace L2dotNET.Network
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Info(e);
             }
 
             MSocket = null;

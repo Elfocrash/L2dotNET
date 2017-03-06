@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.Linq;
+using log4net.Filter;
 using L2dotNET.model.inventory;
 using L2dotNET.model.player;
 
@@ -22,6 +25,17 @@ namespace L2dotNET.Network.serverpackets
         {
             WriteByte(0x13);
             WriteInt(_players.Count);
+
+            //TODO: Make config for that and check valid filters (like char banned, etc) + better checks
+            int lastSelectedObjId = 0;
+
+            if (_players.Count > 0)
+            {
+                if (_players.Count(filter => filter.DeleteTime == 0) == 1)
+                    lastSelectedObjId = _players.FirstOrDefault().ObjId;
+                else
+                    lastSelectedObjId = _players.OrderByDescending(sort => sort.LastAccess).FirstOrDefault(filter => filter.DeleteTime == 0 && filter.LastAccess != null).ObjId;
+            }
 
             foreach (L2Player player in _players)
             {
@@ -86,7 +100,7 @@ namespace L2dotNET.Network.serverpackets
                 if (CharId != -1)
                     selection = CharId == player.ObjId ? 1 : 0;
 
-                if ((CharId == -1) && (player.LastAccountSelection == 1))
+                if ((lastSelectedObjId > 0) && (lastSelectedObjId == player.ObjId))
                     selection = 1;
 
                 WriteInt(selection); // auto-select char

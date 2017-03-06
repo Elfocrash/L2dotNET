@@ -1,10 +1,13 @@
 ﻿using System;
+using log4net;
 using L2dotNET.model.player;
 
 namespace L2dotNET.Network.clientpackets
 {
     class ValidatePosition : PacketBase
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ValidatePosition));
+
         private const int Synctype = 1;
 
         private readonly GameClient _client;
@@ -55,7 +58,8 @@ namespace L2dotNET.Network.clientpackets
                         player.Z = _z;
                     }
                 }
-                Console.WriteLine($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}"); //debug
+
+                Log.Info($"Current position: X:{player.X}, Y:{player.Y}, Z:{player.Z}"); //debug
                 player.BroadcastUserInfo();
                 return;
             }
@@ -64,7 +68,7 @@ namespace L2dotNET.Network.clientpackets
             player.Y = _y;
             player.Z = _z;
             player.Heading = _heading;
-            Console.WriteLine($"Current position: X:{player.ClientPosX}, Y:{player.ClientPosY}, Z:{player.ClientPosZ}"); //debug
+            Log.Info($"Current position: X:{player.ClientPosX}, Y:{player.ClientPosY}, Z:{player.ClientPosZ}"); //debug
             player.BroadcastUserInfo();
             //player.validateVisibleObjects(_x, _y, true);
         }

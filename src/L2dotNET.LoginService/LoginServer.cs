@@ -42,16 +42,35 @@ namespace L2dotNET.LoginService
             Log.Info($"Auth server listening clients at {Config.Config.Instance.ServerConfig.Host}:{Config.Config.Instance.ServerConfig.LoginPort}");
             new Thread(ServerThreadPool.Instance.Start).Start();
 
-            while (true)
-            {
-                TcpClient clientSocket = _loginServerListener.AcceptTcpClient();
-                AcceptClient(clientSocket);
-            }
+            //while (true)
+            //{
+            //    TcpClient clientSocket = _loginServerListener.AcceptTcpClient();
+            //    AcceptClient(clientSocket);
+            //}
+
+            WaitForClients();
         }
 
-        private void AcceptClient(TcpClient client)
+        private void WaitForClients()
         {
-            ClientManager.Instance.AddClient(client);
+            _loginServerListener.BeginAcceptTcpClient(OnClientConnected, null);
+        }
+
+        private void OnClientConnected(IAsyncResult asyncResult)
+        {
+            TcpClient clientSocket = _loginServerListener.EndAcceptTcpClient(asyncResult);
+
+            Log.Info($"Received connection request from: {clientSocket.Client.RemoteEndPoint}");
+
+            AcceptClient(clientSocket);
+
+            WaitForClients();
+        }
+
+        /// <summary>Handle Client Request</summary>
+        private void AcceptClient(TcpClient clientSocket)
+        {
+            ClientManager.Instance.AddClient(clientSocket);
         }
     }
 }

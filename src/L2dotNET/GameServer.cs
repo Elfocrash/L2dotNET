@@ -22,7 +22,7 @@ namespace L2dotNET
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(GameServer));
 
-        protected TcpListener GameServerListener;
+        private TcpListener _gameServerListener;
 
         public static IKernel Kernel { get; set; }
 
@@ -73,15 +73,15 @@ namespace L2dotNET
 
             HtmCache.Instance.Initialize();
 
-           // PluginManager.Instance.Initialize(this);
+            // PluginManager.Instance.Initialize(this);
 
             AuthThread.Instance.Initialize();
 
-            GameServerListener = new TcpListener(IPAddress.Any, Config.Config.Instance.ServerConfig.Port);
+            _gameServerListener = new TcpListener(IPAddress.Any, Config.Config.Instance.ServerConfig.Port);
 
             try
             {
-                GameServerListener.Start();
+                _gameServerListener.Start();
             }
             catch (SocketException ex)
             {
@@ -93,14 +93,33 @@ namespace L2dotNET
 
             Log.Info($"Listening Gameservers on port {Config.Config.Instance.ServerConfig.Port}");
 
-            while (true)
-            {
-                TcpClient clientSocket = GameServerListener.AcceptTcpClient();
-                Accept(clientSocket);
-            }
+            //while (true)
+            //{
+            //    TcpClient clientSocket = _gameServerListener.AcceptTcpClient();
+            //    AcceptClient(clientSocket);
+            //}
+
+            WaitForClients();
         }
 
-        private void Accept(TcpClient clientSocket)
+        private void WaitForClients()
+        {
+            _gameServerListener.BeginAcceptTcpClient(OnClientConnected, null);
+        }
+
+        private void OnClientConnected(IAsyncResult asyncResult)
+        {
+            TcpClient clientSocket = _gameServerListener.EndAcceptTcpClient(asyncResult);
+
+            Log.Info($"Received connection request from: {clientSocket.Client.RemoteEndPoint}");
+
+            AcceptClient(clientSocket);
+
+            WaitForClients();
+        }
+
+        /// <summary>Handle Client Request</summary>
+        private void AcceptClient(TcpClient clientSocket)
         {
             ClientManager.Instance.AddClient(clientSocket);
         }

@@ -1526,6 +1526,9 @@ namespace L2dotNET.world
 
         public virtual void NotifyArrived()
         {
+            if (_updatePositionTime == null)
+                return;
+
             _updatePositionTime.Enabled = false;
 
             DestX = 0;

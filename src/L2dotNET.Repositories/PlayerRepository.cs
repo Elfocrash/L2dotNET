@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -29,7 +30,7 @@ namespace L2dotNET.Repositories
                 rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,IsIn7sDungeon,punish_level as PunishLevel,punish_timer as PunishTimer,
                 power_grade as PowerGrade,Nobless,Hero,Subpledge,last_recom_date as LastRecomDate,char_slot as CharSlot,lvl_joined_academy as LevelJoinedAcademy, Apprentice, Sponsor,
                 varka_ketra_ally as VarkaKetraAlly,clan_join_expiry_time as ClanJoinExpiryTime,clan_create_expiry_time as ClanCreateExpiryTime, death_penalty_level as
-                DeathPenaltyLevel from characters where obj_Id=@id", new
+                DeathPenaltyLevel, lastAccess from characters where obj_Id=@id", new
                 {
                     id = objId
                 }).FirstOrDefault();
@@ -142,7 +143,7 @@ namespace L2dotNET.Repositories
                              punish_timer=@punish_timer,nobless=@nobless,power_grade=@power_grade,subpledge=@subpledge,
                              last_recom_date=@last_recom_date,lvl_joined_academy=@lvl_joined_academy,apprentice=@apprentice,sponsor=@sponsor,varka_ketra_ally=@varka_ketra_ally,
                              clan_join_expiry_time=@clan_join_expiry_time,clan_create_expiry_time=@clan_create_expiry_time,
-                             death_penalty_level=@death_penalty_level WHERE obj_id=@obj_id", new
+                             death_penalty_level=@death_penalty_level, lastAccess=@lastAccess WHERE obj_id=@obj_id", new
                 {
                     level = player.Level,
                     maxHp = player.MaxHp,
@@ -193,6 +194,7 @@ namespace L2dotNET.Repositories
                     clan_join_expiry_time = player.ClanJoinExpiryTime,
                     clan_create_expiry_time = player.ClanCreateExpiryTime,
                     death_penalty_level = player.DeathPenaltyLevel,
+                    lastAccess = player.LastAccess,
                     obj_Id = player.ObjectId
                 });
             }
@@ -211,7 +213,7 @@ namespace L2dotNET.Repositories
                                                rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,IsIn7sDungeon,punish_level as PunishLevel,punish_timer as PunishTimer,
                                                power_grade as PowerGrade,Nobless,Hero,Subpledge,last_recom_date as LastRecomDate,lvl_joined_academy as LevelJoinedAcademy, Apprentice, Sponsor,
                                                varka_ketra_ally as VarkaKetraAlly,clan_join_expiry_time as ClanJoinExpiryTime,clan_create_expiry_time as ClanCreateExpiryTime, death_penalty_level as
-                                               DeathPenaltyLevel from characters where account_name=@account_name AND char_slot=@char_slot", new
+                                               DeathPenaltyLevel, lastAccess from characters where account_name=@account_name AND char_slot=@char_slot", new
                 {
                     account_name = accountName,
                     char_slot = slotId

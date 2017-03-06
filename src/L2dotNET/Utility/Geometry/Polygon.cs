@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using log4net;
 using L2dotNET.Models;
 
 namespace L2dotNET.Utility.Geometry
 {
     public class Polygon : AShape
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(Polygon));
+
         private const int TriangulationMaxLoops = 100;
 
         protected List<AShape> Shapes;
@@ -44,7 +47,7 @@ namespace L2dotNET.Utility.Geometry
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.StackTrace);
+                Log.Info(e.StackTrace);
                 triangles = new List<Triangle>();
             }
 

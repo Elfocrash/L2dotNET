@@ -22,6 +22,9 @@ namespace L2dotNET.Network.clientpackets
         {
             L2Player player = _client.CurrentPlayer;
 
+            player.SetCharLastAccess();
+            player.UpdatePlayer(); //Update Char LastAccess
+
             player.TotalRestore();
 
             player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.WelcomeToLineage));
