@@ -62,9 +62,9 @@ namespace L2dotNET.model.npcs
 
         private readonly Random _rnd = new Random();
 
-        public override void OnSpawn()
+        public override void OnSpawn(bool notifyOthers = true)
         {
-            base.OnSpawn();
+            base.OnSpawn(notifyOthers);
             if (Template.AggroRange > 0)
                 AiCharacter.Enable();
 

@@ -19,10 +19,10 @@ namespace L2dotNET.model.npcs.decor
             Level = 1;
         }
 
-        public override void OnSpawn()
+        public override void OnSpawn(bool notifyOthers = true)
         {
             CurHp = MaxHp;
-            base.OnSpawn();
+            base.OnSpawn(notifyOthers);
         }
 
         public override void NotifyAction(L2Player player)

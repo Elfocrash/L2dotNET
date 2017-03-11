@@ -275,7 +275,7 @@ namespace L2dotNET.model.npcs
 
         public override void BroadcastUserInfo()
         {
-            foreach (var character in L2World.Instance.GetObjects())
+            foreach (var character in L2World.Instance.GetObjects().Where(x=>x.GetType() == typeof(L2Character)))
                 character.SendPacket(new NpcInfo(this));
         }
 
@@ -284,9 +284,10 @@ namespace L2dotNET.model.npcs
             l2Object.SendPacket(new NpcInfo(this));
         }
 
-        public override void OnSpawn()
+        public override void OnSpawn(bool notifyOthers = true)
         {
-            BroadcastUserInfo();
+            if(notifyOthers)
+                BroadcastUserInfo();
             StartAi();
         }
 

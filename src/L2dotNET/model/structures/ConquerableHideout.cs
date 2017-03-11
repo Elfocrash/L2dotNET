@@ -42,7 +42,7 @@ namespace L2dotNET.model.structures
             Message($"Siege registration of {Name} has begun!");
             Message("Now its open for 2 hours!");
 
-            _npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, Spawn4[0], Spawn4[1], Spawn4[2], Spawn4[3]);
+            //_npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, Spawn4[0], Spawn4[1], Spawn4[2], Spawn4[3]);
         }
 
         public void Message(string text)
@@ -56,15 +56,15 @@ namespace L2dotNET.model.structures
         {
             IsActive = true;
             Message($"Siege of {Name} has begun!");
-            _npc1 = (L2Character)SpawnTable.Instance.SpawnOne(BossId, Spawn1[0], Spawn1[1], Spawn1[2], Spawn1[3]);
-            _npc2 = (L2Character)SpawnTable.Instance.SpawnOne(Minion1Id, Spawn2[0], Spawn2[1], Spawn2[2], Spawn2[3]);
-            _npc3 = (L2Character)SpawnTable.Instance.SpawnOne(Minion2Id, Spawn3[0], Spawn3[1], Spawn3[2], Spawn3[3]);
-            _npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, Spawn4[0], Spawn4[1], Spawn4[2], Spawn4[3]);
+            //_npc1 = (L2Character)SpawnTable.Instance.SpawnOne(BossId, Spawn1[0], Spawn1[1], Spawn1[2], Spawn1[3]);
+            //_npc2 = (L2Character)SpawnTable.Instance.SpawnOne(Minion1Id, Spawn2[0], Spawn2[1], Spawn2[2], Spawn2[3]);
+            //_npc3 = (L2Character)SpawnTable.Instance.SpawnOne(Minion2Id, Spawn3[0], Spawn3[1], Spawn3[2], Spawn3[3]);
+            //_npc4 = (L2Character)SpawnTable.Instance.SpawnOne(MessengerId, Spawn4[0], Spawn4[1], Spawn4[2], Spawn4[3]);
             ClanDamage = new SortedList<int, double>();
             _mobActive = new List<L2Character>();
 
-            foreach (L2Character o in MobSpawns.Select(sp => (L2Character)SpawnTable.Instance.SpawnOne(sp[0], sp[1], sp[2], sp[3], sp[4])))
-                _mobActive.Add(o);
+            //foreach (L2Character o in MobSpawns.Select(sp => (L2Character)SpawnTable.Instance.SpawnOne(sp[0], sp[1], sp[2], sp[3], sp[4])))
+            //    _mobActive.Add(o);
 
             TimeSiege = new Timer
             {

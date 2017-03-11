@@ -11,6 +11,8 @@ namespace L2dotNET.Services.Contracts
 
         List<AnnouncementModel> GetAnnouncementsList();
 
+        List<SpawnlistModel> GetAllSpawns();
+
         bool CheckDatabaseQuery();
     }
 }

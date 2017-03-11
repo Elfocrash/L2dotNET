@@ -27,15 +27,14 @@ namespace L2dotNET.tables
             return Template.NpcId;
         }
 
-        public L2Npc Spawn()
+        public L2Npc Spawn(bool notifyOthers = true)
         {
             L2Npc npc = new L2Npc(IdFactory.Instance.NextId(), Template);
             npc.X = Location.X;
             npc.Y = Location.Y;
             npc.Z = Location.Z;
             npc.Heading = Location.Heading;
-            npc.SpawnMe();
-            npc.OnSpawn();
+            npc.SpawnMe(notifyOthers);
             return npc;
         }
     }

@@ -67,7 +67,7 @@ namespace L2dotNET.world
             ObjId = objectId;
         }
 
-        public virtual void OnSpawn()
+        public virtual void OnSpawn(bool notifyOthers = true)
         {
         }
 
@@ -459,13 +459,13 @@ namespace L2dotNET.world
             }
         }
 
-        public virtual void SpawnMe()
+        public virtual void SpawnMe(bool notifyOthers = true)
         {
             Region = L2World.Instance.GetRegion(new Location(X, Y, Z));
 
             L2World.Instance.AddObject(this);
 
-            OnSpawn();
+            OnSpawn(notifyOthers);
         }
 
         public void ValidateWaterZones()

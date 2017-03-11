@@ -116,9 +116,9 @@ namespace L2dotNET.world
                 player.SendActionFailed();
         }
 
-        public override void OnSpawn()
+        public override void OnSpawn(bool notifyOthers = true)
         {
-            base.OnSpawn();
+            base.OnSpawn(notifyOthers);
             RevalidateZone(true);
         }
 

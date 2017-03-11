@@ -69,7 +69,7 @@ namespace L2dotNET
             ClanTable.Instance.Initialize();
 
             StaticObjTable.Instance.Initialize();
-            //SpawnTable.getInstance().Spawn();
+            SpawnTable.Instance.Initialize();
             StructureTable.Instance.Initialize();
 
             HtmCache.Instance.Initialize();

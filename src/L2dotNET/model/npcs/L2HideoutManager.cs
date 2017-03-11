@@ -49,9 +49,9 @@ namespace L2dotNET.model.npcs
                 CurMp = _ai.RegenMax[lvl];
         }
 
-        public override void OnSpawn()
+        public override void OnSpawn(bool notifyOthers = true)
         {
-            base.OnSpawn();
+            base.OnSpawn(notifyOthers);
             StartRegenTime();
         }
 

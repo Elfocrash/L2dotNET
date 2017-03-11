@@ -33,5 +33,10 @@ namespace L2dotNET.Services
         {
             return _unitOfWork.ServerRepository.CheckDatabaseQuery();
         }
+
+        public List<SpawnlistModel> GetAllSpawns()
+        {
+            return _unitOfWork.ServerRepository.GetAllSpawns();
+        }
     }
 }

@@ -2428,7 +2428,7 @@ namespace L2dotNET.model.player
 
         public void SetupKnows()
         {
-            foreach (var obj in L2World.Instance.GetObjects())
+            foreach (var obj in L2World.Instance.GetObjects().Where(x=>x.Region == Region))
             {
                 obj.BroadcastUserInfoToObject(this);
             }
