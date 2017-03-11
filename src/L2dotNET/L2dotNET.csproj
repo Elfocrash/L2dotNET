@@ -384,6 +384,7 @@
     <Compile Include="Network\clientpackets\RequestShortCutReg.cs" />
     <Compile Include="Network\clientpackets\RequestShowBoard.cs" />
     <Compile Include="Network\clientpackets\RequestShowMiniMap.cs" />
+    <Compile Include="Network\clientpackets\RequestSkillList.cs" />
     <Compile Include="Network\clientpackets\RequestSocialAction.cs" />
     <Compile Include="Network\clientpackets\RequestStartTrade.cs" />
     <Compile Include="Network\clientpackets\RequestTargetCanceld.cs" />
@@ -660,6 +661,7 @@
     <Compile Include="Utility\ServiceTime.cs" />
     <Compile Include="Utility\Source.cs" />
     <Compile Include="Utility\Stopwatch.cs" />
+    <Compile Include="Utility\StringHelper.cs" />
     <Compile Include="Utility\Utilz.cs" />
     <Compile Include="world\L2Character.cs" />
     <Compile Include="world\L2Object.cs" />

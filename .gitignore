@@ -210,3 +210,5 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/src/L2dotNET.GameService/app.config
+/src/L2dotNet/Datapacks/Game/html/

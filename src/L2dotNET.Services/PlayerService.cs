@@ -1,6 +1,7 @@
 ﻿using L2dotNET.Models;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
+using System.Collections.Generic;
 
 namespace L2dotNET.Services
 {
@@ -51,6 +52,10 @@ namespace L2dotNET.Services
         public bool DeleteCharByObjId(int objId)
         {
             return _unitOfWork.PlayerRepository.DeleteCharByObjId(objId);
+        }
+        public List<SkillResponseModel> GetPlayerSkills(int objId)
+        {
+            return _unitOfWork.SkillRepository.GetPlayerSkills(objId);
         }
     }
 }

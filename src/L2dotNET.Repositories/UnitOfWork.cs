@@ -6,13 +6,14 @@ namespace L2dotNET.Repositories
     {
         public UnitOfWork() { }
 
-        public UnitOfWork(IPlayerRepository playerRepository, IAccountRepository accountRepository, IServerRepository serverRepository, ICheckRepository checkRepository, IItemRepository itemRepository)
+        public UnitOfWork(IPlayerRepository playerRepository, IAccountRepository accountRepository, IServerRepository serverRepository, ICheckRepository checkRepository, IItemRepository itemRepository, ISkillRepository skillRepository)
         {
             _playerRepository = playerRepository;
             _accountRepository = accountRepository;
             _serverRepository = serverRepository;
             _checkRepository = checkRepository;
             _itemRepository = itemRepository;
+            _skillRepository = SkillRepository;
         }
 
         public void Commit() { }
@@ -40,6 +41,10 @@ namespace L2dotNET.Repositories
         private IItemRepository _itemRepository;
 
         public IItemRepository ItemRepository => _itemRepository ?? (_itemRepository = new ItemRepository());
+
+        private ISkillRepository _skillRepository;
+
+        public ISkillRepository SkillRepository => _skillRepository ?? (_skillRepository = new SkillRepository());
 
         #endregion
     }
