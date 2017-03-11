@@ -192,6 +192,7 @@ namespace L2dotNET.model.skills2
                                     {
                                         skill.TargetType = SkillTarget.Target;
                                         Log.Error($"skill # {skill.SkillId} invalid target {value}");
+                                        Log.Error($"Exception {ex.Message}");
                                     }
                                     break;
                                 case 40: //affect_scope
@@ -468,10 +469,9 @@ namespace L2dotNET.model.skills2
 
                     list.Skills.Add(skill);
                 }
-                if (list.Type != "")
+                if (!String.IsNullOrEmpty(list.Type))
                 {
                     AcquireSkills.Add(list.Type, list);
-
                 }
 
             }
