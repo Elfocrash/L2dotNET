@@ -190,9 +190,9 @@ namespace L2dotNET.model.skills2
                                     }
                                     catch (Exception ex)
                                     {
+                                        Log.Error($"Exception {ex.Message}");
                                         skill.TargetType = SkillTarget.Target;
                                         Log.Error($"skill # {skill.SkillId} invalid target {value}");
-                                        Log.Error($"Exception {ex.Message}");
                                     }
                                     break;
                                 case 40: //affect_scope
