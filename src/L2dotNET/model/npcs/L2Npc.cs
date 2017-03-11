@@ -279,6 +279,11 @@ namespace L2dotNET.model.npcs
                 character.SendPacket(new NpcInfo(this));
         }
 
+        public override void BroadcastUserInfoToObject(L2Object l2Object)
+        {
+            l2Object.SendPacket(new NpcInfo(this));
+        }
+
         public override void OnSpawn()
         {
             BroadcastUserInfo();

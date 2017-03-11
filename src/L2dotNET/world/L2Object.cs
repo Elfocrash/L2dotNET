@@ -552,5 +552,9 @@ namespace L2dotNET.world
         {
             return $"L2Object: {ObjId}";
         }
+
+        public virtual void BroadcastUserInfoToObject(L2Object l2Object)
+        {
+        }
     }
 }

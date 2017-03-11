@@ -58,6 +58,8 @@ namespace L2dotNET.Network.clientpackets
             //player.SetRegion(worldRegion);
             //player.getKnowns(500, 500, false);
 
+
+            player.SetupKnows();
             player.SendPacket(new UserInfo(player));
 
             foreach (Plugin plugin in PluginManager.Instance.Plugins)

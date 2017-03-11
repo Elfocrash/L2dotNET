@@ -2425,5 +2425,13 @@ namespace L2dotNET.model.player
         {
             return $"{Name} - {base.ToString()}";
         }
+
+        public void SetupKnows()
+        {
+            foreach (var obj in L2World.Instance.GetObjects())
+            {
+                obj.BroadcastUserInfoToObject(this);
+            }
+        }
     }
 }
