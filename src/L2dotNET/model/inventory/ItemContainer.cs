@@ -72,7 +72,7 @@ namespace L2dotNET.model.inventory
             if (item != null)
             {
                 item.OwnerId = player.ObjId;
-                item.SlotLocation = 0;
+                //item.SlotLocation = 0;
                 Items.Add(item);
 
                 item.UpdateDatabase();

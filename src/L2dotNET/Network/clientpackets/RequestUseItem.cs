@@ -42,39 +42,35 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            if (!item.Equipped)
+            if (item.IsEquipable())
             {
-                
-                player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = item;
-                item.Location = L2Item.ItemLocation.Paperdoll;
-                item.SlotLocation = Inventory.GetPaperdollIndex(item.Template.BodyPart);
-                item.PaperdollSlot = Inventory.GetPaperdollIndex(item.Template.BodyPart);
-                item.IsEquipped = 1;
-                player.BroadcastUserInfo();
-                player.SendPacket(new ItemList(player,true));
-                foreach (IPlugin plugin in PluginManager.Instance.Plugins)
-                    plugin.OnItemEquip(player, item);
-                return;
+                if (!item.Equipped)
+                {
+                    if (player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] != null)
+                    {
+                        var equipped = player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)];
+                        equipped.Unequip(player);
+                    }
+                    player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = item;
+                    item.Equip(player);
+                    player.BroadcastUserInfo();
+                    player.SendPacket(new ItemList(player, true));
+                    foreach (IPlugin plugin in PluginManager.Instance.Plugins)
+                        plugin.OnItemEquip(player, item);
+                }
+                else
+                {
+                    player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = null;
+                    item.Unequip(player);
+                    player.BroadcastUserInfo();
+                    player.SendPacket(new ItemList(player, true));
+                }
             }
-
-            if (ItemHandler.Instance.Process(player, item))
-                return;
-
-            //switch (item.Template.DefaultAction)
-            //{
-            //    case "action_capsule":
-            //        Capsule.Instance.Process(player, item);
-            //        break;
-            //    case "action_call_skill":
-            //    {
-            //        Skill skill = item.Template.ItemSkill;
-            //        if (skill != null)
-            //            player.AddEffect(player, skill, true, false);
-            //        else
-            //            player.SendMessage("skill onCall was not found.");
-            //    }
-            //        break;
-            //}
+            else
+            {
+                ItemHandler.Instance.Process(player, item);
+            }
         }
+
     }
 }

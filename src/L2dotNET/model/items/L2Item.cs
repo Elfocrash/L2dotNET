@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using L2dotNET.model.inventory;
 using L2dotNET.model.player;
 using L2dotNET.Models;
 using L2dotNET.Network.serverpackets;
@@ -86,18 +87,20 @@ namespace L2dotNET.model.items
 
         public void Unequip(L2Player owner)
         {
-            IsEquipped = 0;
             PaperdollSlot = -1;
-
+            Location = ItemLocation.Inventory;
+            SlotLocation = -1;
+            PaperdollSlot = -1;
+            IsEquipped = 0;
             owner.RemoveStats(this);
         }
 
         public void Equip(L2Player owner)
         {
-            IsEquipped = 1;
-
             Location = ItemLocation.Paperdoll;
-
+            SlotLocation = Inventory.GetPaperdollIndex(Template.BodyPart);
+            PaperdollSlot = Inventory.GetPaperdollIndex(Template.BodyPart);
+            IsEquipped = 1;
             owner.AddStats(this);
         }
 
@@ -279,6 +282,11 @@ namespace L2dotNET.model.items
             _lifeTimeEndEnabled = true;
             _lifeTimeEndTime = dt;
             //TODO delete me
+        }
+
+        public bool IsEquipable()
+        {
+            return !(Template.BodyPart == 0);
         }
 
         public override string AsString()
