@@ -61,6 +61,7 @@ namespace L2dotNET.Network
             ClientPackets.TryAdd(0x37, typeof(RequestTargetCanceld));
             ClientPackets.TryAdd(0x38, typeof(Say2));
             ClientPackets.TryAdd(0x3B, typeof(RequestWarehouseDeposit));
+            ClientPackets.TryAdd(0x3F, typeof(RequestSkillList));
             ClientPackets.TryAdd(0x42, typeof(RequestGetOnVehicle));
             ClientPackets.TryAdd(0x43, typeof(RequestGetOffVehicle));
             ClientPackets.TryAdd(0x44, typeof(AnswerTradeRequest));
@@ -129,9 +130,10 @@ namespace L2dotNET.Network
                 return;
 
             if (packetBase == null)
-                throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode.ToString("X2")} doesn't exist in the dictionary.");
+                Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")} that doesn't exist in the dictionary");
+            //throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode.ToString("X2")} doesn't exist in the dictionary.");
 
-            packetBase.RunImpl();
+            packetBase?.RunImpl();
         }
     }
 }

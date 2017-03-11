@@ -1,4 +1,5 @@
 ﻿using L2dotNET.Models;
+using System.Collections.Generic;
 
 namespace L2dotNET.Services.Contracts
 {
@@ -19,5 +20,7 @@ namespace L2dotNET.Services.Contracts
         bool MarkToRestoreChar(int objId);
 
         bool DeleteCharByObjId(int objId);
+
+        List<SkillResponseModel> GetPlayerSkills(int objId);
     }
 }

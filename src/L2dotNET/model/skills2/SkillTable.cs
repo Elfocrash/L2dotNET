@@ -6,6 +6,7 @@ using System.Text;
 using log4net;
 using L2dotNET.Compression;
 using L2dotNET.Enums;
+using L2dotNET.Utility;
 
 namespace L2dotNET.model.skills2
 {
@@ -35,7 +36,7 @@ namespace L2dotNET.model.skills2
         public void Initialize()
         {
             Read();
-            LoadDlc();
+            //LoadDlc(); TODO: Fix skilltree.dlc parsing errors
         }
 
         public Skill Get(int id, int lvl)
@@ -184,9 +185,10 @@ namespace L2dotNET.model.skills2
                                     value = dlc.ReadS(lenx);
                                     try
                                     {
-                                        skill.TargetType = (SkillTarget)Enum.Parse(typeof(SkillTarget), value);
+                                        var newValue = StringHelper.ToTitleCase(value, '_');
+                                        skill.TargetType = (SkillTarget)Enum.Parse(typeof(SkillTarget), newValue);
                                     }
-                                    catch (Exception)
+                                    catch (Exception ex)
                                     {
                                         skill.TargetType = SkillTarget.Target;
                                         Log.Error($"skill # {skill.SkillId} invalid target {value}");
@@ -197,7 +199,8 @@ namespace L2dotNET.model.skills2
                                     value = dlc.ReadS(lenx);
                                     try
                                     {
-                                        skill.AffectScope = (SkillScope)Enum.Parse(typeof(SkillScope), value);
+                                        var newValue = StringHelper.ToTitleCase(value, '_');
+                                        skill.AffectScope = (SkillScope)Enum.Parse(typeof(SkillScope), newValue);
                                     }
                                     catch
                                     {
@@ -412,6 +415,7 @@ namespace L2dotNET.model.skills2
             DlcStream dlc = new DlcStream(fstream, CompressionMode.Decompress);
             int cnt = dlc.ReadD(),
                 cntTotal = 0;
+
             for (int a = 0; a < cnt; a++)
             {
                 AcquireSkillsEntry list = new AcquireSkillsEntry();
@@ -426,7 +430,6 @@ namespace L2dotNET.model.skills2
                     cntTotal += s.Count;
                     list.Skills.AddRange(s);
                 }
-
                 int skLen = dlc.ReadD();
                 cntTotal += skLen;
                 for (int s = 0; s < skLen; s++)
@@ -465,8 +468,12 @@ namespace L2dotNET.model.skills2
 
                     list.Skills.Add(skill);
                 }
+                if (list.Type != "")
+                {
+                    AcquireSkills.Add(list.Type, list);
 
-                AcquireSkills.Add(list.Type, list);
+                }
+
             }
 
             dlc.Close();

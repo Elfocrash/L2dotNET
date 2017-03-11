@@ -789,32 +789,22 @@ namespace L2dotNET.model.player
             SendQuestList();
         }
 
-        public void db_restoreSkills()
+        public void RestoreSkills()
         {
-            //MySqlConnection connection = SQLjec.getInstance().conn();
-            //MySqlCommand cmd = connection.CreateCommand();
-
-            //connection.Open();
-
-            //cmd.CommandText = $"SELECT * FROM user_skills WHERE ownerId={ObjID} AND iclass={ActiveClass.id}";
-            //cmd.CommandType = CommandType.Text;
-
-            //MySqlDataReader reader = cmd.ExecuteReader();
-
-            //TSkillTable st = TSkillTable.getInstance();
-            //while (reader.Read())
-            //{
-            //    int id = reader.GetInt32("id");
-            //    int lvl = reader.GetInt32("lvl");
-            //    TSkill skill = st.get(id, lvl);
-            //    if (skill != null)
-            //    {
-            //        addSkill(skill, false, false);
-            //    }
-            //}
-
-            //reader.Close();
-            //connection.Close();
+            var dbSkills = PlayerService.GetPlayerSkills(this.ObjId);
+            foreach(SkillResponseModel skill in dbSkills)
+            {
+                var skillModel = SkillTable.Instance.Get(skill.SkillId, skill.SkillLvl);
+                if (skillModel != null)
+                {
+                    this.Skills.Add(skill.SkillId, skillModel);
+                }
+                else
+                {
+                    Log.Warn($"Unknown skill {skill.SkillId} - {skill.SkillLvl} - {skill.ClassId}");
+                }
+                    
+            }                   
         }
 
         public override void AddSkill(Skill newsk, bool updDb, bool update)
@@ -1635,7 +1625,7 @@ namespace L2dotNET.model.player
                 return;
 
             OnGameInit();
-            db_restoreSkills();
+            RestoreSkills();
             //db_restoreQuests();
             db_restoreRecipes();
             // db_restoreShortcuts(); elfo to be added
