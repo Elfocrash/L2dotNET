@@ -61,6 +61,7 @@ namespace L2dotNET.Network
             ClientPackets.TryAdd(0x37, typeof(RequestTargetCanceld));
             ClientPackets.TryAdd(0x38, typeof(Say2));
             ClientPackets.TryAdd(0x3B, typeof(RequestWarehouseDeposit));
+            ClientPackets.TryAdd(0x3F, typeof(RequestSkillList));
             ClientPackets.TryAdd(0x42, typeof(RequestGetOnVehicle));
             ClientPackets.TryAdd(0x43, typeof(RequestGetOffVehicle));
             ClientPackets.TryAdd(0x44, typeof(AnswerTradeRequest));

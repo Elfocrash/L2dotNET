@@ -46,6 +46,7 @@
     <Compile Include="PlayerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerModel.cs" />
+    <Compile Include="SkillResponseModel.cs" />
     <Compile Include="WeaponModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

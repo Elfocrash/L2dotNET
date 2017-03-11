@@ -69,7 +69,9 @@ namespace L2dotNET.model.skills2
             byte order = 0;
             foreach (string str in value.Split(';'))
             {
-                EffectType type = (EffectType)Enum.Parse(typeof(EffectType), str.Split(' ')[0]);
+                var tempValue = str.Split(' ')[0];
+                var testNewVal = StringHelper.ToTitleCase(tempValue, '_');
+                EffectType type = (EffectType)Enum.Parse(typeof(EffectType), testNewVal);
                 Effect te = EffectRegistrator.GetInstance().BuildProc(type, str);
                 if (te == null)
                     continue;
@@ -94,7 +96,9 @@ namespace L2dotNET.model.skills2
 
             foreach (string str in value.Split(';'))
             {
-                SkillCondType type = (SkillCondType)Enum.Parse(typeof(SkillCondType), str.Split(' ')[0]);
+                var tempValue = str.Split(' ')[0];
+                var newTempValue = StringHelper.ToTitleCase(tempValue, '_');
+                SkillCondType type = (SkillCondType)Enum.Parse(typeof(SkillCondType), newTempValue);
                 SkillCond cond = EffectRegistrator.GetInstance().BuildCond(type, str);
 
                 Conditions.Add(cond);
