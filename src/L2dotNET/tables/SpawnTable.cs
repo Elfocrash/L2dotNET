@@ -117,7 +117,7 @@ namespace L2dotNET.tables
                                     }
                                 }
 
-                                Spawns.Add(new L2Spawn(Convert.ToInt32(stp.Attribute("id").Value), value, stp.Attribute("pos").Value.Split(' ')));
+                                //Spawns.Add(new L2Spawn(Convert.ToInt32(stp.Attribute("id").Value), value, stp.Attribute("pos").Value.Split(' ')));
                             }
                                 _npcs++;
                                 break;
@@ -147,7 +147,7 @@ namespace L2dotNET.tables
 
             sp += Spawns.Count;
 
-            Spawns.ForEach(s => s.Init());
+            //Spawns.ForEach(s => s.Init());
 
             Log.Info($"NpcServer spawn done, #{sp} npcs.");
         }
@@ -157,23 +157,23 @@ namespace L2dotNET.tables
             foreach (L2Territory t in Territorries.Values)
                 t.SunRise(y);
 
-            Spawns.ForEach(s => s.SunRise(y));
+            //Spawns.ForEach(s => s.SunRise(y));
         }
 
         public L2Object SpawnOne(int id, int x, int y, int z, int h)
         {
             //NpcTemplate template = new NpcTemplate(new StatsSet()); //NpcTable.Instance.GetNpcTemplate(id);
 
-            L2Warrior o = new L2Warrior
-            {
-                X = x,
-                Y = y,
-                Z = z,
-                Heading = h,
-                SpawnX = x,
-                SpawnY = y,
-                SpawnZ = z
-            };
+            //L2Warrior o = new L2Warrior
+            //{
+            //    X = x,
+            //    Y = y,
+            //    Z = z,
+            //    Heading = h,
+            //    SpawnX = x,
+            //    SpawnY = y,
+            //    SpawnZ = z
+            //};
             //o.setTemplate(template);
             //switch (template._type)
             //{
@@ -191,10 +191,11 @@ namespace L2dotNET.tables
             //        break;
             //}
 
-            L2World.Instance.AddObject(o);
-            o.OnSpawn();
+            //L2World.Instance.AddObject(o);
+            //o.OnSpawn();
 
-            return o;
+            //return o;
+            return null;
         }
     }
 }

@@ -2,6 +2,7 @@
 using L2dotNET.model.player;
 using L2dotNET.model.structures;
 using L2dotNET.tables;
+using L2dotNET.templates;
 
 namespace L2dotNET.model.npcs.decor
 {
@@ -9,9 +10,9 @@ namespace L2dotNET.model.npcs.decor
     {
         public HideoutTemplate Structure;
 
-        public L2Door()
+
+        public L2Door(int objectId, CharTemplate template) : base(objectId, template)
         {
-            ObjId = IdFactory.Instance.NextId();
             Type = 1;
             Closed = 1;
             MeshId = 1;

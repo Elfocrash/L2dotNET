@@ -1,18 +1,18 @@
 ﻿using L2dotNET.tables;
+using L2dotNET.templates;
 
 namespace L2dotNET.model.npcs.decor
 {
     public sealed class L2Chair : L2StaticObject
     {
-        public L2Chair()
+        public bool IsUsedAlready = false;
+
+        public L2Chair(int objectId, CharTemplate template) : base(objectId, template)
         {
-            ObjId = IdFactory.Instance.NextId();
             Closed = 0;
             MaxHp = 0;
             CurHp = 0;
         }
-
-        public bool IsUsedAlready = false;
 
         public override string AsString()
         {

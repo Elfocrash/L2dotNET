@@ -26,10 +26,10 @@ namespace L2dotNET.model.structures
             switch (t.NpcId)
             {
                 case 35461:
-                    npc = new L2HideoutManager(this);
+                    //npc = new L2HideoutManager(this);
                     break;
                 case 35462:
-                    npc = new L2Doormen(this);
+                    //npc = new L2Doormen(this);
                     break;
             }
 

@@ -9,6 +9,10 @@ namespace L2dotNET.model.vehicles
     {
         public bool OnRoute = false;
 
+        public L2Boat(int objectId) : base(objectId)
+        {
+        }
+
         public override void BroadcastUserInfo()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())

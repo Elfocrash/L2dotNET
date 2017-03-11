@@ -39,8 +39,13 @@ namespace L2dotNET.model.player
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(L2Player));
 
+        public L2Player(int objectId, PcTemplate template) : base(objectId, template)
+        {
+            Template = template;
+        }
+
         [Inject]
-        public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
+        public static IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
 
         public string AccountName { get; set; }
         public ClassId ClassId { get; set; }
@@ -97,11 +102,12 @@ namespace L2dotNET.model.player
         public int ClanCreateExpiryTime { get; set; }
         public PcInventory Inventory { get; set; }
         public dynamic SessionData { get; set; }
+        public new PcTemplate Template { get; set; }
 
-        public L2Player RestorePlayer(int id, GameClient client)
+        public static L2Player RestorePlayer(int id, GameClient client)
         {
             PlayerModel playerModel = PlayerService.GetAccountByLogin(id);
-            L2Player player = new L2Player
+            L2Player player = new L2Player(id, CharTemplateTable.Instance.GetTemplate(playerModel.BaseClass))
             {
                 ObjId = id,
                 Gameclient = client,
@@ -135,7 +141,7 @@ namespace L2dotNET.model.player
                 ClanPrivs = playerModel.ClanPrivs,
                 PenaltyClanCreate = playerModel.ClanCreateExpiryTime.ToString(),
                 PenaltyClanJoin = playerModel.ClanJoinExpiryTime.ToString(),
-                Inventory = new PcInventory(this),
+                Inventory = new PcInventory(null),
                 DeleteTime = playerModel.DeleteTime,
                 LastAccess = playerModel.LastAccess
             };
@@ -149,10 +155,7 @@ namespace L2dotNET.model.player
 
         public static L2Player Create()
         {
-            L2Player player = new L2Player
-            {
-                ObjId = IdFactory.Instance.NextId()
-            };
+            L2Player player = new L2Player(IdFactory.Instance.NextId(), null);
 
             player.Inventory = new PcInventory(player);
             //player.Inventory._owner = player;
@@ -1807,25 +1810,25 @@ namespace L2dotNET.model.player
 
         private void PetSummonEnd(object sender, ElapsedEventArgs e)
         {
-            L2Pet pet = new L2Pet();
-            //pet.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
-            pet.SetOwner(this);
-            pet.ControlItem = _petControlItem;
-            // pet.sql_restore();
-            pet.SpawmMe();
+            //L2Pet pet = new L2Pet();
+            ////pet.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
+            //pet.SetOwner(this);
+            //pet.ControlItem = _petControlItem;
+            //// pet.sql_restore();
+            //pet.SpawmMe();
 
-            _petSummonTime.Enabled = false;
+            //_petSummonTime.Enabled = false;
         }
 
         private void NonpetSummonEnd(object sender, ElapsedEventArgs e)
         {
-            L2Summon summon = new L2Summon();
-            //summon.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
-            summon.SetOwner(this);
-            summon.ControlItem = _petControlItem;
-            summon.SpawmMe();
+            //L2Summon summon = new L2Summon();
+            ////summon.setTemplate(NpcTable.Instance.GetNpcTemplate(PetID));
+            //summon.SetOwner(this);
+            //summon.ControlItem = _petControlItem;
+            //summon.SpawmMe();
 
-            _nonpetSummonTime.Enabled = false;
+            //_nonpetSummonTime.Enabled = false;
         }
 
         public override bool CantMove()

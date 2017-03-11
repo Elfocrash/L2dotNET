@@ -6,6 +6,7 @@ using L2dotNET.model.player;
 using L2dotNET.model.skills2;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.tables;
+using L2dotNET.templates;
 using L2dotNET.world;
 
 namespace L2dotNET.model.npcs
@@ -16,6 +17,10 @@ namespace L2dotNET.model.npcs
         public DateTime Dtstart;
         public L2Spawn TerritorySpawn;
         public System.Timers.Timer socialTask;
+
+        public L2Warrior(int objectId, NpcTemplate template) : base(objectId, template)
+        {
+        }
 
         public override string AsString()
         {
@@ -119,8 +124,8 @@ namespace L2dotNET.model.npcs
 
             //Template.roll_drops(this, killer);
 
-            if (TerritorySpawn != null)
-                TerritorySpawn.OnDie(this, killer);
+            //if (TerritorySpawn != null)
+             //   TerritorySpawn.OnDie(this, killer);
 
             //socialTask.Enabled = false;
         }

@@ -42,9 +42,9 @@ namespace L2dotNET.model.items
         public bool Blocked = false;
         public bool TempBlock = false;
 
-        public L2Item(ItemTemplate template)
+        public L2Item(ItemTemplate template , int objectId) : base(objectId)
         {
-            ObjId = IdFactory.Instance.NextId();
+            ObjId = objectId != 0 ? objectId : IdFactory.Instance.NextId();
             Template = template;
             Count = 1;
             Location = ItemLocation.Void;
@@ -219,7 +219,7 @@ namespace L2dotNET.model.items
 
         private static L2Item MapModelToItem(ItemModel model)
         {
-            L2Item item = new L2Item(ItemTable.Instance.GetItem(model.ItemId))
+            L2Item item = new L2Item(ItemTable.Instance.GetItem(model.ItemId), IdFactory.Instance.NextId())
             {
                 ObjId = model.ObjectId,
                 Count = model.Count,

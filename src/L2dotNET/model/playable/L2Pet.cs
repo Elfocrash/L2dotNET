@@ -1,6 +1,7 @@
 ﻿using L2dotNET.model.inventory;
 using L2dotNET.model.player;
 using L2dotNET.tables;
+using L2dotNET.templates;
 
 namespace L2dotNET.model.playable
 {
@@ -8,10 +9,9 @@ namespace L2dotNET.model.playable
     {
         public PetInventory Inventory;
 
-        public L2Pet()
+        public L2Pet(int objectId, NpcTemplate template) : base(objectId, template)
         {
             ObjectSummonType = 2;
-            ObjId = IdFactory.Instance.NextId();
             Name = string.Empty;
             Inventory = new PetInventory(this);
         }

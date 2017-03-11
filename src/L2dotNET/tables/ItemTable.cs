@@ -96,7 +96,7 @@ namespace L2dotNET.tables
 
         public L2Item CreateItem(int itemId, int count, L2Player actor)
         {
-            L2Item item = new L2Item(Instance.GetItem(itemId));
+            L2Item item = new L2Item(Instance.GetItem(itemId), IdFactory.Instance.NextId());
 
             L2World.Instance.AddObject(item);
 

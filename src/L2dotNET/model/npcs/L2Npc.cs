@@ -14,9 +14,22 @@ namespace L2dotNET.model.npcs
 {
     public class L2Npc : L2Character
     {
-        public NpcTemplate Template;
+        public new NpcTemplate Template;
         public bool Summoned;
         public bool StructureControlled = false;
+
+        public L2Npc(int objectId, NpcTemplate template) : base(objectId, template)
+        {
+            Template = template;
+            Name = template.Name;
+            CStatsInit();
+            CurHp = 100;
+            CurCp = 100;
+            CurMp = 100;
+            MaxCp = 100;
+            MaxHp = 100;
+            MaxMp = 100;
+        }
 
         //public virtual void setTemplate(NpcTemplate template)
         //{
@@ -255,15 +268,15 @@ namespace L2dotNET.model.npcs
             }
         }
 
-        public virtual void ShowSkillLearn(L2Player player, bool backward)
+        public void ShowSkillLearn(L2Player player, bool backward)
         {
             player.SendMessage("I cannot teach you anything.");
         }
 
         public override void BroadcastUserInfo()
         {
-            foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
-                obj.SendPacket(new NpcInfo(this));
+            foreach (var character in L2World.Instance.GetObjects())
+                character.SendPacket(new NpcInfo(this));
         }
 
         public override void OnSpawn()
@@ -390,9 +403,6 @@ namespace L2dotNET.model.npcs
         }
 
         public void CreateOnePrivateEx(int npcId, string aiType, int x, int y, int z) { }
-
-        //TODO: Check variable, master class uses as "int"
-        public override int MaxHp => (int)CharacterStat.GetStat(EffectType.BMaxHp);
 
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {

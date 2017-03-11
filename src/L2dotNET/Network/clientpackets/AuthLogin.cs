@@ -42,7 +42,7 @@ namespace L2dotNET.Network.clientpackets
                 List<int> players = AccountService.GetPlayerIdsListByAccountName(_loginName);
 
                 int slot = 0;
-                foreach (L2Player p in players.Select(id => new L2Player().RestorePlayer(id, _client)))
+                foreach (L2Player p in players.Select(id => L2Player.RestorePlayer(id, _client)))
                 {
                     //TODO: Make delete on startup server or timer listener
                     // See if the char must be deleted

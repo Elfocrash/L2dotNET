@@ -3,14 +3,15 @@ using L2dotNET.model.npcs.decor;
 using L2dotNET.model.player;
 using L2dotNET.model.structures;
 using L2dotNET.Network.serverpackets;
+using L2dotNET.templates;
 
 namespace L2dotNET.model.npcs
 {
-    class L2Doormen : L2Npc
+    public class L2Doormen : L2Npc
     {
         private readonly Hideout _hideout;
 
-        public L2Doormen(HideoutTemplate hideout)
+        public L2Doormen(int objectId, NpcTemplate template, HideoutTemplate hideout) : base(objectId,template)
         {
             _hideout = (Hideout)hideout;
             StructureControlled = true;

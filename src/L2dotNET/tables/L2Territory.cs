@@ -38,8 +38,8 @@ namespace L2dotNET.tables
                 }
             }
 
-            for (int a = 0; a < count; a++)
-                Spawns.Add(new L2Spawn(id, value, this, pos));
+          //  for (int a = 0; a < count; a++)
+           //     Spawns.Add(new L2Spawn(id, value, this, pos));
         }
 
         public void AddPoint(string[] loc)
@@ -83,7 +83,7 @@ namespace L2dotNET.tables
 
         public void Spawn()
         {
-            Spawns.ForEach(sp => sp.Init());
+            //Spawns.ForEach(sp => sp.Init());
         }
 
         public int[] GetSpawnLocation()
@@ -103,7 +103,7 @@ namespace L2dotNET.tables
 
         public void SunRise(bool y)
         {
-            Spawns.ForEach(sp => sp.SunRise(y));
+           // Spawns.ForEach(sp => sp.SunRise(y));
         }
     }
 }

@@ -14,18 +14,18 @@ namespace L2dotNET.Network.serverpackets
 
         public override void Write()
         {
-            WriteByte(0x0c);
+            WriteByte(0x16);
             WriteInt(_npc.ObjId);
             WriteInt(_npc.NpcHashId);
-            WriteInt(_npc.Attackable);
+            WriteInt(1/*_npc.Attackable*/);
             WriteInt(_npc.X);
             WriteInt(_npc.Y);
             WriteInt(_npc.Z);
             WriteInt(_npc.Heading);
             WriteInt(0x00);
 
-            double spd = _npc.CharacterStat.GetStat(EffectType.PSpeed);
-            double atkspd = _npc.CharacterStat.GetStat(EffectType.BAttackSpd);
+            double spd = 150;//_npc.CharacterStat.GetStat(EffectType.PSpeed);
+            double atkspd = 1200;//_npc.CharacterStat.GetStat(EffectType.BAttackSpd);
             double cast = _npc.CharacterStat.GetStat(EffectType.BCastingSpd);
             double anim = (spd * 1f) / 120;
             double anim2 = (1.1 * atkspd) / 277;
@@ -67,16 +67,10 @@ namespace L2dotNET.Network.serverpackets
             WriteByte(_npc.IsFlying() ? 2 : 0); // C2
 
             WriteByte(_npc.TeamId);
-            WriteDouble(_npc.Template.CollisionRadius);
-            WriteDouble(_npc.Template.CollisionHeight);
+            WriteDouble(_npc.Template.CollisionRadius == 0 ? 10: _npc.Template.CollisionRadius);
+            WriteDouble(_npc.Template.CollisionHeight == 0? 50: _npc.Template.CollisionHeight);
             WriteInt(0); // enchant
             WriteInt(_npc.IsFlying() ? 1 : 0); // C6
-            WriteInt(0x00);
-            WriteInt(0x00); //red?
-            WriteByte(0x01);
-            WriteByte(0x01);
-            WriteInt(_npc.AbnormalBitMaskEx);
-            WriteInt(0x00); //freya
         }
     }
 }

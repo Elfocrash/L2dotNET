@@ -16,10 +16,10 @@ namespace L2dotNET.model.skills2.effects
 
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
-            L2Summon summon = new L2Summon();
-            //summon.setTemplate(NpcTable.Instance.GetNpcTemplate(npcId));
-            summon.SetOwner((L2Player)caster);
-            summon.SpawmMe();
+            //L2Summon summon = new L2Summon();
+            ////summon.setTemplate(NpcTable.Instance.GetNpcTemplate(npcId));
+            //summon.SetOwner((L2Player)caster);
+            //summon.SpawmMe();
 
             return Nothing;
         }

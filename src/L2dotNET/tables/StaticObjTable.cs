@@ -51,16 +51,16 @@ namespace L2dotNET.tables
                     switch (pt[1])
                     {
                         case "map":
-                            obj = new L2TownMap();
+                            obj = new L2TownMap(IdFactory.Instance.NextId(),null);
                             break;
                         case "chair":
-                            obj = new L2Chair();
+                            obj = new L2Chair(IdFactory.Instance.NextId(), null);
                             break;
                         case "pvp":
-                            obj = new L2PvPSign();
+                            obj = new L2PvPSign(IdFactory.Instance.NextId(), null);
                             break;
                         case "door":
-                            obj = new L2Door();
+                            obj = new L2Door(IdFactory.Instance.NextId(), null);
                             break;
                     }
 

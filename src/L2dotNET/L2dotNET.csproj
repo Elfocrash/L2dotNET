@@ -186,6 +186,7 @@
     <Compile Include="model\npcs\L2HideoutManager.cs" />
     <Compile Include="model\npcs\L2Npc.cs" />
     <Compile Include="model\npcs\L2Warrior.cs" />
+    <Compile Include="model\npcs\SpawnLocation.cs" />
     <Compile Include="model\playable\L2Pet.cs" />
     <Compile Include="model\playable\L2Summon.cs" />
     <Compile Include="model\playable\petai\PaStandart.cs" />

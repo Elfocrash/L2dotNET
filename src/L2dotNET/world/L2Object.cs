@@ -62,6 +62,11 @@ namespace L2dotNET.world
 
         public virtual void SendInfo(L2Player player) { }
 
+        protected L2Object(int objectId)
+        {
+            ObjId = objectId;
+        }
+
         public virtual void OnSpawn()
         {
         }

@@ -7,6 +7,7 @@ using L2dotNET.model.skills2;
 using L2dotNET.model.structures;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.tables;
+using L2dotNET.templates;
 
 namespace L2dotNET.model.npcs
 {
@@ -16,7 +17,7 @@ namespace L2dotNET.model.npcs
         private readonly Hideout _hideout;
         private readonly AgitManagerAi _ai;
 
-        public L2HideoutManager(HideoutTemplate hideout)
+        public L2HideoutManager(int objectId, NpcTemplate template, HideoutTemplate hideout):base(objectId,template)
         {
             _hideout = (Hideout)hideout;
             StructureControlled = true;

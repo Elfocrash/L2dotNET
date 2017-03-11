@@ -11,6 +11,7 @@ using L2dotNET.model.skills;
 using L2dotNET.model.skills2;
 using L2dotNET.model.stats;
 using L2dotNET.Network.serverpackets;
+using L2dotNET.templates;
 using L2dotNET.tools;
 
 namespace L2dotNET.world
@@ -18,7 +19,7 @@ namespace L2dotNET.world
     public class L2Character : L2Object
     {
         public SortedList<int, Skill> Skills = new SortedList<int, Skill>();
-
+        public virtual CharTemplate Template { get; set; }
         public virtual string Name { get; set; }
         public virtual string Title { get; set; }
         public int SpawnX { get; set; }
@@ -65,8 +66,9 @@ namespace L2dotNET.world
 
         private Timer _updatePositionTime = new Timer(100);
 
-        public L2Character()
+        public L2Character(int objectId, CharTemplate template) : base(objectId)
         {
+            Template = template;
             _updatePositionTime.Elapsed += UpdatePositionTask;
         }
 

@@ -12,7 +12,6 @@ namespace L2dotNET.Commands.Admin
 
         protected internal override void Use(L2Player admin, string alias)
         {
-            //summon [id | name] [количество] -- призывает предмет\нпц [id] . Если количество не задано , призывает 1
 
             int id = int.Parse(alias.Split(' ')[1]);
             int count = 1;

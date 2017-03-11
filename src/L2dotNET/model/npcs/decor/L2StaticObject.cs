@@ -2,6 +2,7 @@
 using System.Linq;
 using L2dotNET.model.player;
 using L2dotNET.Network.serverpackets;
+using L2dotNET.templates;
 using L2dotNET.world;
 
 namespace L2dotNET.model.npcs.decor
@@ -24,6 +25,10 @@ namespace L2dotNET.model.npcs.decor
         public bool UnlockTrigger = false;
         public bool UnlockSkill = false;
         public bool UnlockNpc = false;
+
+        public L2StaticObject(int objectId, CharTemplate template) : base(objectId, template)
+        {
+        }
 
         public override void BroadcastUserInfo()
         {

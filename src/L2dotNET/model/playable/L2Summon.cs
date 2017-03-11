@@ -23,10 +23,9 @@ namespace L2dotNET.model.playable
         public long StatusExp;
         public L2Item ControlItem;
 
-        public L2Summon()
+        public L2Summon(int objectId, NpcTemplate template) : base(objectId,template)
         {
             ObjectSummonType = 1;
-            ObjId = IdFactory.Instance.NextId();
         }
 
         public override void OnAction(L2Player player)
