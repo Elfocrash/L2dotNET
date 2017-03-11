@@ -130,10 +130,9 @@ namespace L2dotNET.Network
                 return;
 
             if (packetBase == null)
-                Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")} that doesn't exist in the dictionary");
-            //throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode.ToString("X2")} doesn't exist in the dictionary.");
+                throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode.ToString("X2")} doesn't exist in the dictionary.");
 
-            packetBase?.RunImpl();
+            packetBase.RunImpl();
         }
     }
 }
