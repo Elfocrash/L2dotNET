@@ -22,7 +22,7 @@ Current goal is to get all the basic functionality and the packet support fully 
 - [x] Creating loading and saving players
 - [x] Creating loading and saving items
 - [x] Refactor GameService to use the new Packet structure
-- [ ] Rework the movement alorithm
+- [x] Rework the movement alorithm
 - [ ] Add Geodata support
 
 ## Can i contribute?
