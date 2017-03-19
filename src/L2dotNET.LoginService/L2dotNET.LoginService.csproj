@@ -70,8 +70,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\L2Crypt.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -132,6 +132,9 @@
     <Compile Include="Network\OuterNetwork\ServerPackets\Init.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="connectionStrings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Lib\L2Crypt.dll" />
     <Content Include="Lib\Org.BouncyCastle.dll" />
   </ItemGroup>
@@ -160,6 +163,9 @@
   <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -200,8 +206,8 @@
     <ItemGroup>
       <BinFiles Include="$(SolutionDir)L2dotNET\Datapacks\Login\**\*.*" />
     </ItemGroup>
-    <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(TargetDir)\%(RecursiveDir)" ContinueOnError="true" />        
+    <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(TargetDir)\%(RecursiveDir)" ContinueOnError="true" />
   </Target>
-  <PropertyGroup>    
+  <PropertyGroup>
   </PropertyGroup>
 </Project>

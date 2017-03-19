@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
+using System.Threading;
+using log4net;
 using Ninject;
 
 namespace L2dotNET.GameService
 {
     class Program
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(Program));
+
         private static void Main()
         {
             SetConsoleConfigurations();
@@ -24,9 +29,9 @@ namespace L2dotNET.GameService
         //TODO: Temporary fix. Need a better workaround to fix the Culture conversion issues. (Note: parsing error when reading "." in Latin cultures from XML files)
         private static void SetNumberDecimalSeparator()
         {
-            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            CultureInfo customCulture = (CultureInfo)Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
-            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+            Thread.CurrentThread.CurrentCulture = customCulture;
         }
     }
 }

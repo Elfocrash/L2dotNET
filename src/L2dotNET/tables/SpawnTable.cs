@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Xml.Linq;
+﻿using System.Collections.Generic;
 using log4net;
 using L2dotNET.model.npcs;
+using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
-using L2dotNET.templates;
-using L2dotNET.world;
 using Ninject;
 
 namespace L2dotNET.tables
@@ -39,16 +35,15 @@ namespace L2dotNET.tables
 
         public void Initialize()
         {
-            var spawnsList = ServerService.GetAllSpawns();
+            List<SpawnlistModel> spawnsList = ServerService.GetAllSpawns();
 
-            foreach (var spawn in spawnsList)
-            {
-                L2Spawn l2Spawn = new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId));
-                l2Spawn.Location = new SpawnLocation(spawn.LocX, spawn.LocY, spawn.LocZ, spawn.Heading);
-                l2Spawn.Spawn(false);
-            }
+            spawnsList.ForEach(spawn => new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId))
+                                   {
+                                       Location = new SpawnLocation(spawn.LocX, spawn.LocY, spawn.LocZ, spawn.Heading)
+                                   }
+                                   .Spawn(false));
 
-            Log.Info($"SpawnTable: Spawned: {spawnsList} npcs.");
+            Log.Info($"SpawnTable: Spawned: {spawnsList.Count} npcs.");
         }
 
         public readonly List<L2Spawn> Spawns = new List<L2Spawn>();
