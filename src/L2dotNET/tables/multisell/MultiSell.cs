@@ -97,7 +97,7 @@ namespace L2dotNET.tables.multisell
 
         public void LoadXml()
         {
-            Log.Info($"MultiSell: {Lists.Count} lists");
+            Log.Info($"MultiSell: {Lists.Count} lists.");
         }
 
         public MultiSellList GetList(int listId)

@@ -13,6 +13,7 @@ namespace L2dotNET.GameService
 
         private static void Main()
         {
+            Log.Info("Starting GameService...");
             SetConsoleConfigurations();
             SetNumberDecimalSeparator();
             GameServer.Kernel = new StandardKernel(new DepInjectionModule());

@@ -47,7 +47,7 @@ namespace L2dotNET.tables
         {
             _currentId = ServerService.GetPlayersObjectIdList().DefaultIfEmpty(IdMin).Max();
 
-            Log.Info($"idfactory: used ids {_currentId}");
+            Log.Info($"idfactory: used ids {_currentId}.");
         }
     }
 }

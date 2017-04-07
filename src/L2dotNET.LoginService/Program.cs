@@ -13,6 +13,7 @@ namespace L2dotNET.LoginService
 
         private static void Main()
         {
+            Log.Info("Starting LoginService...");
             SetConsoleConfigurations();
             SetNumberDecimalSeparator();
             LoginServer.Kernel = new StandardKernel(new DepInjectionModule());

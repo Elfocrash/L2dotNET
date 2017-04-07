@@ -3301,6 +3301,11 @@
             The default value is <c>true</c>.</para>
             </remarks>
         </member>
+        <member name="F:log4net.Appender.DebugAppender.m_category">
+            <summary>
+            Defaults to a <see cref="T:log4net.Layout.PatternLayout"/> with %logger as the pattern.
+            </summary>
+        </member>
         <member name="P:log4net.Appender.DebugAppender.ImmediateFlush">
             <summary>
             Gets or sets a value that indicates whether the appender will 
@@ -3319,6 +3324,19 @@
             be recorded on disk when the application exits. This is a high
             price to pay even for a 20% performance gain.
             </para>
+            </remarks>
+        </member>
+        <member name="P:log4net.Appender.DebugAppender.Category">
+            <summary>
+            Formats the category parameter sent to the Debug method.
+            </summary>
+            <remarks>
+            <para>
+            Defaults to a <see cref="T:log4net.Layout.PatternLayout"/> with %logger as the pattern which will use the logger name of the current 
+            <see cref="T:log4net.Core.LoggingEvent"/> as the category parameter.
+            </para>
+            <para>
+            </para> 
             </remarks>
         </member>
         <member name="P:log4net.Appender.DebugAppender.RequiresLayout">
@@ -27277,6 +27295,10 @@
             <c>log4net.Util.LogicalThreadContextProperties</c>.
             </para>
             <para>
+            For .NET Standard 1.3 this class uses
+            System.Threading.AsyncLocal rather than <see cref="T:System.Runtime.Remoting.Messaging.CallContext"/>.
+            </para>
+            <para>
             The <see cref="T:System.Runtime.Remoting.Messaging.CallContext"/> requires a link time 
             <see cref="T:System.Security.Permissions.SecurityPermission"/> for the
             <see cref="F:System.Security.Permissions.SecurityPermissionFlag.Infrastructure"/>.
@@ -27336,7 +27358,7 @@
             </para>
             </remarks>
         </member>
-        <member name="M:log4net.Util.LogicalThreadContextProperties.GetCallContextData">
+        <member name="M:log4net.Util.LogicalThreadContextProperties.GetLogicalProperties">
             <summary>
             Gets the call context get data.
             </summary>
@@ -27347,7 +27369,7 @@
             that we can wrap in an exception handler.
             </remarks>
         </member>
-        <member name="M:log4net.Util.LogicalThreadContextProperties.SetCallContextData(log4net.Util.PropertiesDictionary)">
+        <member name="M:log4net.Util.LogicalThreadContextProperties.SetLogicalProperties(log4net.Util.PropertiesDictionary)">
             <summary>
             Sets the call context data.
             </summary>
@@ -31263,6 +31285,10 @@
             information to be stored.
             The <c>LogicalThreadContext</c> properties override any <see cref="T:log4net.ThreadContext"/> or <see cref="T:log4net.GlobalContext"/>
             properties with the same name.
+            </para>
+            <para>
+            For .NET Standard 1.3 this class uses
+            System.Threading.AsyncLocal rather than <see cref="T:System.Runtime.Remoting.Messaging.CallContext"/>.
             </para>
             <para>
             The Logical Thread Context has a properties map and a stack.
