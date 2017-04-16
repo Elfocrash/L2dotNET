@@ -18,7 +18,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public override void RunImpl()
         {
-            if (_client.State != LoginClient.LoginClientState.AuthedLogin)
+            if (_client.State != LoginClientState.AuthedLogin)
             {
                 _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
                 _client.Close();

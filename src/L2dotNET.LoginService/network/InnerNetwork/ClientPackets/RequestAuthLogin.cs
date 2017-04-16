@@ -28,7 +28,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public override void RunImpl()
         {
-            if (_client.State != LoginClient.LoginClientState.AuthedGG)
+            if (_client.State != LoginClientState.AuthedGG)
             {
                 _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
                 _client.Close();
@@ -83,7 +83,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
             _client.ActiveAccount = account;
 
-            _client.State = LoginClient.LoginClientState.AuthedLogin;
+            _client.State = LoginClientState.AuthedLogin;
             _client.Send(LoginOk.ToPacket(_client));
         }
     }

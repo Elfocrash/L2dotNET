@@ -18,13 +18,6 @@ namespace L2dotNET.LoginService.Network
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(LoginClient));
 
-        public enum LoginClientState
-        {
-            Connected,
-            AuthedGG,
-            AuthedLogin
-        }
-
         public EndPoint Address { get; set; }
         public TcpClient Client { get; set; }
         public NetworkStream NetStream { get; set; }

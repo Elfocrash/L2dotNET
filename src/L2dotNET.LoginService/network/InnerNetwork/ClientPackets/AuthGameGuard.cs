@@ -16,7 +16,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public override void RunImpl()
         {
-            if (_client.State != LoginClient.LoginClientState.Connected)
+            if (_client.State != LoginClientState.Connected)
             {
                 _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
                 _client.Close();
@@ -25,7 +25,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
             if (_sessionId == _client.Key.SessionId)
             {
-                _client.State = LoginClient.LoginClientState.AuthedGG;
+                _client.State = LoginClientState.AuthedGG;
                 _client.Send(GGAuth.ToPacket(_client));
             }
             else
