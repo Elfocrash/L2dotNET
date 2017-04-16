@@ -10,6 +10,7 @@ using L2dotNET.LoginService.Network.Crypt;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Models;
 using L2dotNET.Network;
+using L2dotNET.Utility;
 
 namespace L2dotNET.LoginService.Network
 {
@@ -17,21 +18,39 @@ namespace L2dotNET.LoginService.Network
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(LoginClient));
 
-        public int SessionId;
+        public enum LoginClientState
+        {
+            Connected,
+            AuthedGG,
+            AuthedLogin
+        }
+
         public EndPoint Address { get; set; }
         public TcpClient Client { get; set; }
         public NetworkStream NetStream { get; set; }
         private byte[] _buffer;
+
+        public LoginClientState State;
+        private DateTime ConnectionStartTime;
+        private bool UsesInternalIP;
+
+        public readonly SessionKey Key;
+
+        // Crypt
         private LoginCrypt _loginCrypt;
-        public byte[] BlowfishKey;
         public ScrambledKeyPair RsaPair;
+        public byte[] BlowfishKey;
 
         public LoginClient(TcpClient tcpClient)
         {
             Client = tcpClient;
             NetStream = tcpClient.GetStream();
             Address = tcpClient.Client.RemoteEndPoint;
-            SessionId = new Random().Next(int.MaxValue);
+
+            Key = new SessionKey();
+            State = LoginClientState.Connected;
+            ConnectionStartTime = DateTime.Now;
+            UsesInternalIP = Address.IsLocalIpAddress();
 
             InitializeNetwork();
         }
@@ -119,24 +138,6 @@ namespace L2dotNET.LoginService.Network
                 PacketHandler.Handle(new Packet(1, buff), this);
                 Read();
             }
-        }
-
-        public int Login1,
-                   Login2;
-
-        public void SetLoginPair(int key1, int key2)
-        {
-            Login1 = key1;
-            Login2 = key2;
-        }
-
-        public int Play1,
-                   Play2;
-
-        public void SetPlayPair(int key1, int key2)
-        {
-            Play1 = key1;
-            Play2 = key2;
         }
 
         public AccountModel ActiveAccount { get; set; }

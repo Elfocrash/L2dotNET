@@ -6,16 +6,33 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
     class AuthGameGuard : PacketBase
     {
         private readonly LoginClient _client;
+        private readonly int _sessionId;
 
         public AuthGameGuard(Packet p, LoginClient client)
         {
             _client = client;
-            // do nothing
+            _sessionId = p.ReadInt();
         }
 
         public override void RunImpl()
         {
-            _client.Send(GGAuth.ToPacket(_client));
+            if (_client.State != LoginClient.LoginClientState.Connected)
+            {
+                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+                return;
+            }
+
+            if (_sessionId == _client.Key.SessionId)
+            {
+                _client.State = LoginClient.LoginClientState.AuthedGG;
+                _client.Send(GGAuth.ToPacket(_client));
+            }
+            else
+            {
+                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+            }
         }
     }
 }

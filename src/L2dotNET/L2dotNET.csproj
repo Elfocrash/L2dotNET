@@ -749,6 +749,8 @@
     <Content Include="Datapacks\Game\sq\blocks.txt" />
     <Content Include="Datapacks\Game\sq\server_redirect.txt" />
     <Content Include="Datapacks\sqlscripts\l2dotnet.sql" />
+    <Content Include="Images\L2dotNET.ico" />
+    <Content Include="Images\L2dotNET_Logo.png" />
     <Content Include="Lib\Org.BouncyCastle.dll" />
   </ItemGroup>
   <ItemGroup>

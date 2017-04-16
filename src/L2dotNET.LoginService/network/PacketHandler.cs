@@ -29,7 +29,7 @@ namespace L2dotNET.LoginService.Network
 
         public static void Handle(Packet packet, LoginClient client)
         {
-            Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
+            Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")} for State:{client.State}");
 
             if (!ClientPackets.ContainsKey(packet.FirstOpcode))
                 return;

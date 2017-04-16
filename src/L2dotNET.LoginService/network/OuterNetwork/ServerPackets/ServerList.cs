@@ -32,7 +32,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
                     bits |= 0x04;
 
                 p.WriteByte(server.Id);
-                p.WriteBytesArray(server.GetIp(client));
+                p.WriteByteArray(server.GetIp(client));
                 p.WriteInt(server.Port);
                 p.WriteByte(0);
                 p.WriteByte(1); // pvp?

@@ -40,7 +40,7 @@ namespace L2dotNET.Handlers
 
         public void Initialize()
         {
-            Type[] typelist = Utilz.GetTypesInNamespace(Assembly.GetExecutingAssembly(), "L2dotNET.Commands.Admin");
+            IEnumerable<Type> typelist = Utilz.GetTypesInNamespace(Assembly.GetExecutingAssembly(), "L2dotNET.Commands.Admin");
             foreach (Type t in typelist)
                 Register(Activator.CreateInstance(t));
 

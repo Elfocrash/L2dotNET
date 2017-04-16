@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using log4net;
@@ -29,6 +31,8 @@ namespace L2dotNET
 
         public void Start()
         {
+            CheckRunningProcesses();
+
             Config.Config.Instance.Initialize();
 
             PreReqValidation.Instance.Initialize();
@@ -94,12 +98,6 @@ namespace L2dotNET
 
             Log.Info($"Listening Gameservers on port {Config.Config.Instance.ServerConfig.Port}");
 
-            //while (true)
-            //{
-            //    TcpClient clientSocket = _gameServerListener.AcceptTcpClient();
-            //    AcceptClient(clientSocket);
-            //}
-
             WaitForClients();
         }
 
@@ -123,6 +121,17 @@ namespace L2dotNET
         private void AcceptClient(TcpClient clientSocket)
         {
             ClientManager.Instance.AddClient(clientSocket);
+        }
+
+        private void CheckRunningProcesses()
+        {
+            if (!Process.GetProcessesByName("L2dotNET.GameService").Any())
+                return;
+
+            Log.Fatal("A L2dotNET.GameService process is already running!");
+            Log.Info("Press ENTER to exit...");
+            Console.Read();
+            Environment.Exit(0);
         }
     }
 }

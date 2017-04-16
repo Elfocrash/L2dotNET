@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
+using log4net;
 using L2dotNET.Network;
 
 namespace L2dotNET.Utility
 {
     public static class Utilz
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(Utilz));
+
         public static string CurrentTime => DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
 
-        public static TimeSpan ProcessUptime => DateTime.Now - Process.GetCurrentProcess().StartTime;
-
-        public static string ProcessUptimeAsString => DateTime.Now.Subtract(Process.GetCurrentProcess().StartTime).ToString();
+        public static TimeSpan ProcessUptime => DateTime.Now.Subtract(Process.GetCurrentProcess().StartTime);
 
         public static string SystemSummary()
         {
@@ -26,12 +28,12 @@ namespace L2dotNET.Utility
             strBuilder.Append($"Processors count: {Environment.ProcessorCount}\r\n");
             strBuilder.Append($"Working set: {Environment.WorkingSet} bytes\r\n");
             strBuilder.Append($"Domain name: {AppDomain.CurrentDomain.FriendlyName}\r\n");
-            strBuilder.Append($"Service Uptime: {ProcessUptimeAsString}\r\n");
+            strBuilder.Append($"Service Uptime: {ProcessUptime}\r\n");
             strBuilder.Append(Environment.NewLine);
             return strBuilder.ToString();
         }
 
-        public static Type[] GetTypesInNamespace(Assembly assembly, string nameSpace)
+        public static IEnumerable<Type> GetTypesInNamespace(Assembly assembly, string nameSpace)
         {
             return assembly.GetTypes().Where(t => string.Equals(t.Namespace, nameSpace, StringComparison.Ordinal)).ToArray();
         }
@@ -133,6 +135,40 @@ namespace L2dotNET.Utility
                 ret.Add(keySelector(item), valueSelector(item));
 
             return ret;
+        }
+
+        public static bool IsLocalIpAddress(string host)
+        {
+            try
+            {
+                // get host IP addresses
+                IPAddress[] hostIPs = Dns.GetHostAddresses(host);
+                // get local IP addresses
+                IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
+
+                // test if any host IP equals to any local IP or to localhost
+                foreach (IPAddress hostIp in hostIPs)
+                {
+                    // is localhost
+                    if (IPAddress.IsLoopback(hostIp))
+                        return true;
+
+                    // is local address
+                    if (localIPs.Contains(hostIp))
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+            }
+
+            return false;
+        }
+
+        public static bool IsLocalIpAddress(this EndPoint host)
+        {
+            return IsLocalIpAddress( ((IPEndPoint)host).Address.ToString());
         }
     }
 }

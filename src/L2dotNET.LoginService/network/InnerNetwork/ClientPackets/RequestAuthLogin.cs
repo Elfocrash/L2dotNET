@@ -28,6 +28,13 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public override void RunImpl()
         {
+            if (_client.State != LoginClient.LoginClientState.AuthedGG)
+            {
+                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+                return;
+            }
+
             CipherParameters key = _client.RsaPair._privateKey;
             RSAEngine rsa = new RSAEngine();
             rsa.init(false, key);
@@ -74,12 +81,9 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
                 }
             }
 
-            Random rnd = new Random();
-
             _client.ActiveAccount = account;
-            _client.SetLoginPair(rnd.Next(), rnd.Next());
-            _client.SetPlayPair(rnd.Next(), rnd.Next());
 
+            _client.State = LoginClient.LoginClientState.AuthedLogin;
             _client.Send(LoginOk.ToPacket(_client));
         }
     }

@@ -65,6 +65,12 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>L2dotNET.LoginService.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\L2dotNET.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="L2Crypt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -88,6 +94,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\Config.cs" />
@@ -112,6 +119,7 @@
     <Compile Include="Network\OuterNetwork\ServerPackets\ServerLoginFail.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginServPing.cs" />
     <Compile Include="Network\PacketHandler.cs" />
+    <Compile Include="Network\SessionKey.cs" />
     <Compile Include="PreReqValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Managers\NetworkBlock.cs" />
@@ -130,8 +138,14 @@
     <Compile Include="Network\OuterNetwork\ServerPackets\LoginOk.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\GGAuth.cs" />
     <Compile Include="Network\OuterNetwork\ServerPackets\Init.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\L2dotNET.ico" />
     <None Include="connectionStrings.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -195,6 +209,12 @@
       <Project>{00ee35ee-f920-4a50-b9bd-aab02da5c066}</Project>
       <Name>L2dotNET</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

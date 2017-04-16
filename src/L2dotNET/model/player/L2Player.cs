@@ -2274,7 +2274,7 @@ namespace L2dotNET.model.player
 
         public void RequestPing()
         {
-            _lastPingId = new Random().Next(int.MaxValue);
+            _lastPingId = new Random().Next();
             NetPing ping = new NetPing(_lastPingId);
             _pingTimeout = DateTime.Now;
             SendPacket(ping);

@@ -70,14 +70,14 @@ namespace L2dotNET.Network
         /// <param name="v">Array of <see cref="byte"/> values.</param>
         public void WriteByte(params byte[] v)
         {
-            WriteBytesArray(v);
+            WriteByteArray(v);
         }
 
         /// <summary>
         /// Writes array of <see cref="byte"/> into packet buffer.
         /// </summary>
         /// <param name="v">Array of <see cref="byte"/> values.</param>
-        public void WriteBytesArray(byte[] v)
+        public void WriteByteArray(byte[] v)
         {
             int length = v.Length;
 
@@ -137,6 +137,23 @@ namespace L2dotNET.Network
         /// </summary>
         /// <param name="v">Array of <see cref="int"/> values.</param>
         public unsafe void WriteInt(params int[] v)
+        {
+            int length = v.Length * sizeof(int);
+
+            ValidateBufferSize(Length);
+
+            fixed (byte* buf = _mBuffer)
+            {
+                fixed (int* w = v)
+                    L2Buffer.UnsafeCopy(w, length, buf, ref _mOffset);
+            }
+        }
+
+        /// <summary>
+        /// Writes array of <see cref="int"/> values into packet buffer.
+        /// </summary>
+        /// <param name="v">Array of <see cref="int"/> values.</param>
+        public unsafe void WriteIntArray(int[] v)
         {
             int length = v.Length * sizeof(int);
 

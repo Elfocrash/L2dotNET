@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -19,6 +21,8 @@ namespace L2dotNET.LoginService
 
         public void Start()
         {
+            CheckRunningProcesses();
+
             Config.Config.Instance.Initialize();
             PreReqValidation.Instance.Initialize();
             ClientManager.Instance.Initialize();
@@ -41,12 +45,6 @@ namespace L2dotNET.LoginService
 
             Log.Info($"Auth server listening clients at {Config.Config.Instance.ServerConfig.Host}:{Config.Config.Instance.ServerConfig.LoginPort}");
             new Thread(ServerThreadPool.Instance.Start).Start();
-
-            //while (true)
-            //{
-            //    TcpClient clientSocket = _loginServerListener.AcceptTcpClient();
-            //    AcceptClient(clientSocket);
-            //}
 
             WaitForClients();
         }
@@ -71,6 +69,17 @@ namespace L2dotNET.LoginService
         private void AcceptClient(TcpClient clientSocket)
         {
             ClientManager.Instance.AddClient(clientSocket);
+        }
+
+        private void CheckRunningProcesses()
+        {
+            if (!Process.GetProcessesByName("L2dotNET.LoginService").Any())
+                return;
+
+            Log.Fatal("A L2dotNET.LoginService process is already running!");
+            Log.Info("Press ENTER to exit...");
+            Console.Read();
+            Environment.Exit(0);
         }
     }
 }

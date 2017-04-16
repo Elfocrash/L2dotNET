@@ -8,23 +8,31 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
     class RequestServerLogin : PacketBase
     {
         private readonly LoginClient _client;
-        private readonly int _login1;
-        private readonly int _login2;
+        private readonly int _loginOkID1;
+        private readonly int _loginOkID2;
         private readonly byte _serverId;
 
         public RequestServerLogin(Packet p, LoginClient client)
         {
             _client = client;
-            _login1 = p.ReadInt();
-            _login2 = p.ReadInt();
+            _loginOkID1 = p.ReadInt();
+            _loginOkID2 = p.ReadInt();
             _serverId = p.ReadByte();
         }
 
         public override void RunImpl()
         {
-            if ((_client.Login1 != _login1) && (_client.Login2 != _login2))
+            if (_client.State != LoginClient.LoginClientState.AuthedLogin)
             {
                 _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+                return;
+            }
+
+            if (!_client.Key.CheckLoginOKIdPair(_loginOkID1, _loginOkID2))
+            {
+                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
                 return;
             }
 
@@ -32,13 +40,18 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             if (server == null)
             {
                 _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
                 return;
             }
 
             if (server.Connected == 0)
+            {
                 _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonServerMaintenance));
-            else
-                _client.Send(PlayOk.ToPacket(_client));
+                _client.Close();
+                return;
+            }
+
+            _client.Send(PlayOk.ToPacket(_client));
         }
     }
 }

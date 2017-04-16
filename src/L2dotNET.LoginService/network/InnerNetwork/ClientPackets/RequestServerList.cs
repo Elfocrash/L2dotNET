@@ -5,22 +5,30 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestServerList : PacketBase
     {
-        private readonly int _login1;
-        private readonly int _login2;
         private readonly LoginClient _client;
+        private readonly int _loginOkID1;
+        private readonly int _loginOkID2;
 
         public RequestServerList(Packet p, LoginClient client)
         {
             _client = client;
-            _login1 = p.ReadInt();
-            _login2 = p.ReadInt();
+            _loginOkID1 = p.ReadInt();
+            _loginOkID2 = p.ReadInt();
         }
 
         public override void RunImpl()
         {
-            if ((_client.Login1 != _login1) && (_client.Login2 != _login2))
+            if (_client.State != LoginClient.LoginClientState.AuthedLogin)
             {
                 _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+                return;
+            }
+
+            if (!_client.Key.CheckLoginOKIdPair(_loginOkID1, _loginOkID2))
+            {
+                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
                 return;
             }
 
