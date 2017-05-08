@@ -6,7 +6,6 @@ using L2dotNET.model.player;
 using L2dotNET.model.skills;
 using L2dotNET.model.skills2;
 using L2dotNET.Network.serverpackets;
-using L2dotNET.tables;
 using L2dotNET.templates;
 using L2dotNET.tools;
 using L2dotNET.world;

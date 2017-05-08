@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace L2dotNET.Utility
 {
@@ -9,7 +8,8 @@ namespace L2dotNET.Utility
         public static string ToTitleCase (this string str, char delimeter)
         {
             if (str == null) return null;
-            return String.Join(String.Empty, str.Split(delimeter).Select(item => item.First().ToString().ToUpper() + item.Substring(1)).ToArray());
+
+            return string.Join(string.Empty, str.Split(delimeter).Select(item => item.First().ToString().ToUpper() + item.Substring(1)).ToArray());
         }
     }
 }

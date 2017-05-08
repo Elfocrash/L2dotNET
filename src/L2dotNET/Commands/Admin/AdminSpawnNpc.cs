@@ -23,7 +23,7 @@ namespace L2dotNET.Commands.Admin
             else
             {
                 npcTemp = NpcTable.Instance.GetTemplateByName(processedVar);
-                
+
             }
             if (npcTemp == null)
             {

@@ -15,7 +15,7 @@ namespace L2dotNET.LoginService
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(LoginServer));
 
-        private TcpListener _loginServerListener;
+        private TcpListener _listener;
 
         public static IKernel Kernel { get; set; }
 
@@ -29,11 +29,11 @@ namespace L2dotNET.LoginService
             ServerThreadPool.Instance.Initialize();
             NetworkRedirect.Instance.Initialize();
 
-            _loginServerListener = new TcpListener(IPAddress.Parse(Config.Config.Instance.ServerConfig.Host), Config.Config.Instance.ServerConfig.LoginPort);
+            _listener = new TcpListener(IPAddress.Parse(Config.Config.Instance.ServerConfig.Host), Config.Config.Instance.ServerConfig.LoginPort);
 
             try
             {
-                _loginServerListener.Start();
+                _listener.Start();
             }
             catch (SocketException ex)
             {
@@ -51,12 +51,12 @@ namespace L2dotNET.LoginService
 
         private void WaitForClients()
         {
-            _loginServerListener.BeginAcceptTcpClient(OnClientConnected, null);
+            _listener.BeginAcceptTcpClient(OnClientConnected, null);
         }
 
         private void OnClientConnected(IAsyncResult asyncResult)
         {
-            TcpClient clientSocket = _loginServerListener.EndAcceptTcpClient(asyncResult);
+            TcpClient clientSocket = _listener.EndAcceptTcpClient(asyncResult);
 
             Log.Info($"Received connection request from: {clientSocket.Client.RemoteEndPoint}");
 

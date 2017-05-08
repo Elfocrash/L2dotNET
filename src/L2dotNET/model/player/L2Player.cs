@@ -806,8 +806,8 @@ namespace L2dotNET.model.player
                 {
                     Log.Warn($"Unknown skill {skill.SkillId} - {skill.SkillLvl} - {skill.ClassId}");
                 }
-                    
-            }                   
+
+            }
         }
 
         public override void AddSkill(Skill newsk, bool updDb, bool update)

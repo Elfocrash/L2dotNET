@@ -74,7 +74,7 @@ namespace L2dotNET
             {
                 // byte[] st = ToByteArray();
                 //foreach (byte s in data)
-                //    log.Info($"{ s.ToString("x2") } ");
+                //    log.Info($"{ s:X2 } ");
             }
 
             try

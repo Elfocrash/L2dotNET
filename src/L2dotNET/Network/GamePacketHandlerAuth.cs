@@ -26,12 +26,12 @@ namespace L2dotNET.Network
         public static void HandlePacket(Packet packet, AuthThread login)
         {
             PacketBase packetBase = null;
-            Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
+            Log.Info($"Received packet with Opcode:{packet.FirstOpcode:X2}");
             if (ClientPackets.ContainsKey(packet.FirstOpcode))
                 packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, login);
 
             if (packetBase == null)
-                throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode.ToString("X2")} doesn't exist in the dictionary.");
+                throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode:X2} doesn't exist in the dictionary.");
 
             packetBase.RunImpl();
         }

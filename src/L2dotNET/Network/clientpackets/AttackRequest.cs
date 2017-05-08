@@ -1,4 +1,5 @@
-﻿using L2dotNET.model.player;
+﻿using System.Linq;
+using L2dotNET.model.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.world;
 
@@ -39,6 +40,9 @@ namespace L2dotNET.Network.clientpackets
                 player.SendActionFailed();
                 return;
             }
+
+            if (!player.KnownObjects.Any(filter => filter.Key == _objectId))
+                return;
 
             L2Object obj = player.KnownObjects[_objectId];
 

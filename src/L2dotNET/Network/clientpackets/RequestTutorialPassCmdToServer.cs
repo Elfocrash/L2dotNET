@@ -1,5 +1,4 @@
-﻿using L2dotNET.Handlers;
-using L2dotNET.model.player;
+﻿using L2dotNET.model.player;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Network.clientpackets
@@ -60,7 +59,7 @@ namespace L2dotNET.Network.clientpackets
                         return;
                     }
 
-                   
+
                 }
                 else
                 {

@@ -25,7 +25,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                var sql = @"select ownerId as CharObjId, id as skillId, lvl as SkillLvl, iclass as ClassId from user_skills where ownerId = @char_obj_id";
+                const string sql = @"select ownerId as CharObjId, id as skillId, lvl as SkillLvl, iclass as ClassId from user_skills where ownerId = @char_obj_id";
                 return Db.Query<SkillResponseModel>(sql, new { char_obj_id = charID }).ToList();
             }
             catch (MySqlException ex)

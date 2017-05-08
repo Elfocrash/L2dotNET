@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using log4net;
 using L2dotNET.Attributes;
 using L2dotNET.Commands;
-using L2dotNET.Commands.Admin;
 using L2dotNET.model.player;
-using L2dotNET.tables.admin_bypass;
 using L2dotNET.Utility;
-using static System.String;
 
 namespace L2dotNET.Handlers
 {

@@ -1,5 +1,4 @@
-﻿using L2dotNET.model.playable;
-using L2dotNET.model.player;
+﻿using L2dotNET.model.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.world;
 

@@ -82,28 +82,22 @@ namespace L2dotNET.Network.clientpackets
             player.AccountName = _client.AccountName;
             player.Title = string.Empty;
             player.Sex = _sex;
-
             player.HairStyle = _hairStyle;
             player.HairColor = _hairColor;
             player.Face = _face;
             player.Level = 1;
             player.Gameclient = _client;
-
             player.Exp = 0;
-
             player.CStatsInit();
             player.CharacterStat.SetTemplate(template);
-
             player.BaseClass = template;
             player.ActiveClass = template;
-
             player.CurHp = template.HpTable[player.Level];
             player.CurMp = template.MpTable[player.Level];
             player.CurCp = template.CpTable[player.Level];
             player.MaxMp = (int)player.CharacterStat.GetStat(EffectType.BMaxMp);
             player.MaxCp = (int)player.CharacterStat.GetStat(EffectType.BMaxCp);
             player.MaxHp = (int)player.CharacterStat.GetStat(EffectType.BMaxHp);
-
             player.X = template.SpawnX;
             player.Y = template.SpawnY;
             player.Z = template.SpawnZ;

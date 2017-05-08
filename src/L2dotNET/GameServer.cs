@@ -25,7 +25,7 @@ namespace L2dotNET
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(GameServer));
 
-        private TcpListener _gameServerListener;
+        private TcpListener _listener;
 
         public static IKernel Kernel { get; set; }
 
@@ -82,11 +82,11 @@ namespace L2dotNET
 
             AuthThread.Instance.Initialize();
 
-            _gameServerListener = new TcpListener(IPAddress.Any, Config.Config.Instance.ServerConfig.Port);
+            _listener = new TcpListener(IPAddress.Any, Config.Config.Instance.ServerConfig.Port);
 
             try
             {
-                _gameServerListener.Start();
+                _listener.Start();
             }
             catch (SocketException ex)
             {
@@ -103,12 +103,12 @@ namespace L2dotNET
 
         private void WaitForClients()
         {
-            _gameServerListener.BeginAcceptTcpClient(OnClientConnected, null);
+            _listener.BeginAcceptTcpClient(OnClientConnected, null);
         }
 
         private void OnClientConnected(IAsyncResult asyncResult)
         {
-            TcpClient clientSocket = _gameServerListener.EndAcceptTcpClient(asyncResult);
+            TcpClient clientSocket = _listener.EndAcceptTcpClient(asyncResult);
 
             Log.Info($"Received connection request from: {clientSocket.Client.RemoteEndPoint}");
 

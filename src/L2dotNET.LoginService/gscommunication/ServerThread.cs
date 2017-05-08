@@ -19,7 +19,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public string Wan { get; set; }
         public short Port { get; set; }
-        public short Curp { get; set; } = 0;
+        public short Curp { get; set; }
         public short Maxp { get; set; } = 1000;
         public string Info { get; set; }
         public bool Connected { get; set; }
@@ -40,7 +40,7 @@ namespace L2dotNET.LoginService.GSCommunication
             try
             {
                 _buffer = new byte[2];
-                _nstream.BeginRead(_buffer, 0, 2, new AsyncCallback(OnReceiveCallbackStatic), null);
+                _nstream.BeginRead(_buffer, 0, 2, OnReceiveCallbackStatic, null);
             }
             catch (Exception e)
             {
@@ -59,7 +59,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
                 short length = BitConverter.ToInt16(_buffer, 0);
                 _buffer = new byte[length];
-                _nstream.BeginRead(_buffer, 0, length, new AsyncCallback(OnReceiveCallback), result.AsyncState);
+                _nstream.BeginRead(_buffer, 0, length, OnReceiveCallback, result.AsyncState);
             }
             catch (Exception e)
             {

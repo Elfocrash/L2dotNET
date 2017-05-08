@@ -1,6 +1,5 @@
 ﻿using L2dotNET.model.inventory;
 using L2dotNET.model.player;
-using L2dotNET.tables;
 using L2dotNET.templates;
 
 namespace L2dotNET.model.playable

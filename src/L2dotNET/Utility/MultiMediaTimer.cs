@@ -132,16 +132,16 @@ namespace L2dotNET.Utility
         private EventRaiser _tickRaiser;
 
         // Indicates whether or not the timer is running.
-        private bool _running = false;
+        private bool _running;
 
         // Indicates whether or not the timer has been disposed.
-        private volatile bool _disposed = false;
+        private volatile bool _disposed;
 
         // The ISynchronizeInvoke object to use for marshaling events.
-        private ISynchronizeInvoke _synchronizingObject = null;
+        private ISynchronizeInvoke _synchronizingObject;
 
         // For implementing IComponent.
-        private ISite _site = null;
+        private ISite _site;
 
         // Multimedia timer capabilities.
         private static TimerCaps _caps;
@@ -443,7 +443,7 @@ namespace L2dotNET.Utility
         /// </summary>
         /// <exception cref="ObjectDisposedException">
         /// If the timer has already been disposed.
-        /// </exception>   
+        /// </exception>
         public int Period
         {
             get
@@ -490,12 +490,12 @@ namespace L2dotNET.Utility
         /// </summary>
         /// <exception cref="ObjectDisposedException">
         /// If the timer has already been disposed.
-        /// </exception>        
+        /// </exception>
         /// <remarks>
-        /// The resolution is in milliseconds. The resolution increases 
-        /// with smaller values; a resolution of 0 indicates periodic events 
-        /// should occur with the greatest possible accuracy. To reduce system 
-        /// overhead, however, you should use the maximum value appropriate 
+        /// The resolution is in milliseconds. The resolution increases
+        /// with smaller values; a resolution of 0 indicates periodic events
+        /// should occur with the greatest possible accuracy. To reduce system
+        /// overhead, however, you should use the maximum value appropriate
         /// for your application.
         /// </remarks>
         public int Resolution
@@ -651,7 +651,7 @@ namespace L2dotNET.Utility
         /// Initializes a new instance of the TimerStartException class.
         /// </summary>
         /// <param name="message">
-        /// The error message that explains the reason for the exception. 
+        /// The error message that explains the reason for the exception.
         /// </param>
         public TimerStartException(string message) : base(message)
         {

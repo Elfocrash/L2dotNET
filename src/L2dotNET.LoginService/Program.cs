@@ -24,7 +24,7 @@ namespace L2dotNET.LoginService
 
         private static void SetConsoleConfigurations()
         {
-            Console.Title = "L2dotNET LoginServer";
+            Console.Title = @"L2dotNET LoginServer";
         }
 
         //TODO: Temporary fix. Need a better workaround to fix the Culture conversion issues. (Note: parsing error when reading "." in Latin cultures from XML files)

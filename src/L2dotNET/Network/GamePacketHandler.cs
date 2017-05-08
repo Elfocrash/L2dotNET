@@ -115,13 +115,13 @@ namespace L2dotNET.Network
 
             if (packet.FirstOpcode != 0xD0)
             {
-                Log.Info($"Received packet with Opcode:{packet.FirstOpcode.ToString("X2")}");
+                Log.Info($"Received packet with Opcode:{packet.FirstOpcode:X2}");
                 if (ClientPackets.ContainsKey(packet.FirstOpcode))
                     packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client);
             }
             else
             {
-                Log.Info($"Received packet with Opcode 0xD0 and seccond Opcode:{packet.SecondOpcode.ToString("X2")}");
+                Log.Info($"Received packet with Opcode 0xD0 and seccond Opcode:{packet.SecondOpcode:X2}");
                 if (ClientPacketsD0.ContainsKey((short)packet.SecondOpcode))
                     packetBase = (PacketBase)Activator.CreateInstance(ClientPacketsD0[(short)packet.SecondOpcode], packet, client);
             }
@@ -130,7 +130,7 @@ namespace L2dotNET.Network
                 return;
 
             if (packetBase == null)
-                throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode.ToString("X2")} doesn't exist in the dictionary.");
+                throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode:X2} doesn't exist in the dictionary.");
 
             packetBase.RunImpl();
         }

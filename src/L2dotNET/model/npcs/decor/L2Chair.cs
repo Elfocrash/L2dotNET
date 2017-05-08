@@ -1,5 +1,4 @@
-﻿using L2dotNET.tables;
-using L2dotNET.templates;
+﻿using L2dotNET.templates;
 
 namespace L2dotNET.model.npcs.decor
 {

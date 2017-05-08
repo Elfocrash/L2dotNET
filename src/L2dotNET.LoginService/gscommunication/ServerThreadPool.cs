@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -19,6 +20,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
         private static volatile ServerThreadPool _instance;
         private static readonly object SyncRoot = new object();
+        private TcpListener _listener;
 
         public List<L2Server> Servers = new List<L2Server>();
 
@@ -60,17 +62,50 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void Start()
         {
-            Listener = new TcpListener(IPAddress.Parse(Config.Config.Instance.ServerConfig.Host), Config.Config.Instance.ServerConfig.GsPort);
-            Listener.Start();
-            Log.Info($"Auth server listening gameservers at {Config.Config.Instance.ServerConfig.Host}:{Config.Config.Instance.ServerConfig.GsPort}");
-            while (true)
-                VerifyClient(Listener.AcceptTcpClient());
+            //Listener = new TcpListener(IPAddress.Parse(Config.Config.Instance.ServerConfig.Host), Config.Config.Instance.ServerConfig.GsPort);
+            //Listener.Start();
+            //Log.Info($"Auth server listening gameservers at {Config.Config.Instance.ServerConfig.Host}:{Config.Config.Instance.ServerConfig.GsPort}");
+            //while (true)
+            //    VerifyClient(Listener.AcceptTcpClient());
+
+            _listener = new TcpListener(IPAddress.Parse(Config.Config.Instance.ServerConfig.Host), Config.Config.Instance.ServerConfig.GsPort);
+
+            try
+            {
+                _listener.Start();
+                Log.Info($"Auth server listening gameservers at { Config.Config.Instance.ServerConfig.Host}:{Config.Config.Instance.ServerConfig.GsPort}");
+            }
+            catch (SocketException ex)
+            {
+                Log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
+                Log.Info("Press ENTER to exit...");
+                Console.Read();
+                Environment.Exit(0);
+            }
+
+            WaitForClients();
         }
 
-        private void VerifyClient(TcpClient client)
+        private void WaitForClients()
+        {
+            _listener.BeginAcceptTcpClient(OnClientConnected, null);
+        }
+
+        private void OnClientConnected(IAsyncResult asyncResult)
+        {
+            TcpClient clientSocket = _listener.EndAcceptTcpClient(asyncResult);
+
+            Log.Info($"Received connection request from: {clientSocket.Client.RemoteEndPoint}");
+
+            VerifyClient(clientSocket);
+
+            WaitForClients();
+        }
+
+        private void VerifyClient(TcpClient clientSocket)
         {
             ServerThread st = new ServerThread();
-            st.ReadData(client, this);
+            st.ReadData(clientSocket, this);
         }
 
         public void Shutdown(byte id)

@@ -469,7 +469,8 @@ namespace L2dotNET.model.skills2
 
                     list.Skills.Add(skill);
                 }
-                if (!String.IsNullOrEmpty(list.Type))
+
+                if (!string.IsNullOrEmpty(list.Type))
                 {
                     AcquireSkills.Add(list.Type, list);
                 }

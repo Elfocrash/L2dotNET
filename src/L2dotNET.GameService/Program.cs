@@ -24,7 +24,7 @@ namespace L2dotNET.GameService
 
         private static void SetConsoleConfigurations()
         {
-            Console.Title = "L2dotNET GameServer";
+            Console.Title = @"L2dotNET GameServer";
         }
 
         //TODO: Temporary fix. Need a better workaround to fix the Culture conversion issues. (Note: parsing error when reading "." in Latin cultures from XML files)
