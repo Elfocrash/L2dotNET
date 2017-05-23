@@ -11,7 +11,7 @@ Join the chat: [![Join the chat at https://gitter.im/Elfocrash/L2dotNET](https:/
 
 
 ## What is this?
-L2dotNET is a server emulator for L2.
+L2dotNET is a server emulator for L2. The files are based on some Java-like Russian files from 2008 due to the networking and encryption code included. However i ended up rewritting them anyway.
 Current goal is to get all the basic functionality and the packet support fully working in order to move on to accurate game features implementation. 
 
 ##Progress
