@@ -11,13 +11,13 @@ namespace L2dotNET.Commands.Admin
     {
         protected internal override void Use(L2Player admin, string alias)
         {
-            if (!(admin.CurrentTarget is L2Player))
+            if (!(admin.Target is L2Player))
             {
                 admin.SendMessage("target is not a player.");
                 return;
             }
 
-            L2Player target = (L2Player)admin.CurrentTarget;
+            L2Player target = (L2Player)admin.Target;
             AcquireSkillsEntry skills = SkillTable.Instance.GetAllRegularSkills(target.ActiveClass.ClassId.Id);
 
             SortedList<int, AcquireSkill> avail = new SortedList<int, AcquireSkill>();

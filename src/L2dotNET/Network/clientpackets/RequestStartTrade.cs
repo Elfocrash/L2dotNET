@@ -39,14 +39,14 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            if (!(player.CurrentTarget is L2Player))
+            if (!(player.Target is L2Player))
             {
                 player.SendSystemMessage(SystemMessage.SystemMessageId.TargetIsIncorrect);
                 player.SendActionFailed();
                 return;
             }
 
-            L2Player target = (L2Player)player.CurrentTarget;
+            L2Player target = (L2Player)player.Target;
             if (target.TradeState != 0)
             {
                 player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1AlreadyTrading).AddPlayerName(target.Name));

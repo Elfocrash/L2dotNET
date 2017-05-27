@@ -87,8 +87,8 @@ namespace L2dotNET.Network.serverpackets
                 WriteInt(player.HairColor);
 
                 WriteInt(player.Face);
-                WriteDouble(player.CurHp); // hp max TODO
-                WriteDouble(player.CurMp); // mp max TODO
+                WriteDouble(player.MaxHp);
+                WriteDouble(player.MaxMp);
                 WriteInt(player.RemainingDeleteTime());
 
                 WriteInt((int)player.ActiveClass.ClassId.Id);

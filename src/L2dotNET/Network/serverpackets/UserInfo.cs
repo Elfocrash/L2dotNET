@@ -39,9 +39,9 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.Wit);
             WriteInt(_player.Men);
 
-            WriteInt(_player.CurHp); //max hp
+            WriteInt(_player.MaxHp); //max hp
             WriteInt(_player.CurHp);
-            WriteInt(_player.CurMp); //max mp
+            WriteInt(_player.MaxMp); //max mp
             WriteInt(_player.CurMp);
             WriteInt(_player.Sp);
             WriteInt(_player.CurrentWeight);

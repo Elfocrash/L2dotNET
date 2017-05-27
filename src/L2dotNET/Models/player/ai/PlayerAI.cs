@@ -67,16 +67,16 @@ namespace L2dotNET.model.player.ai
             if (_player.IsAttacking())
                 return;
 
-            if (_player.CurrentTarget == null)
+            if (_player.Target == null)
             {
                 AttackMove.Enabled = false;
                 return;
             }
 
-            double dis = Calcs.CalculateDistance(_player, Character.CurrentTarget, true);
+            double dis = Calcs.CalculateDistance(_player, Character.Target, true);
             if (dis < 80)
             {
-                L2Character target = _player.CurrentTarget;
+                L2Character target = _player.Target;
                 if (!target.Dead)
                     _player.DoAttack(target);
             }
@@ -85,17 +85,17 @@ namespace L2dotNET.model.player.ai
                 if (_player.CantMove())
                     return;
 
-                if ((_lastx != _player.CurrentTarget.X) || (_lasty != _player.CurrentTarget.Y) || (_lastz != _player.CurrentTarget.Z))
+                if ((_lastx != _player.Target.X) || (_lasty != _player.Target.Y) || (_lastz != _player.Target.Z))
                     _moveTarget = 0;
 
                 if (_moveTarget != 0)
                     return;
 
-                _player.MoveTo(_player.CurrentTarget.X, _player.CurrentTarget.Y, _player.CurrentTarget.Z);
+                _player.MoveTo(_player.Target.X, _player.Target.Y, _player.Target.Z);
                 _moveTarget = 1;
-                _lastx = Character.CurrentTarget.X;
-                _lasty = Character.CurrentTarget.Y;
-                _lastz = Character.CurrentTarget.Z;
+                _lastx = Character.Target.X;
+                _lasty = Character.Target.Y;
+                _lastz = Character.Target.Z;
             }
         }
     }

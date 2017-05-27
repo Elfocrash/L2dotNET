@@ -37,12 +37,12 @@ namespace L2dotNET.Network.serverpackets
         public static int CurCp = 0x21;
         public static int MaxCp = 0x22;
 
-        public List<object[]> Attrs = new List<object[]>();
+        public List<KeyValuePair<int,int>> Attrs = new List<KeyValuePair<int, int>>();
         private readonly int _id;
 
-        public void Add(int type, object val)
+        public void Add(int type, int val)
         {
-            Attrs.Add(new[] { type, val });
+            Attrs.Add(new KeyValuePair<int, int>(type,val));
         }
 
         public StatusUpdate(int id)
@@ -56,14 +56,10 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_id);
             WriteInt(Attrs.Count);
 
-            foreach (object[] d in Attrs)
+            foreach (var pair in Attrs)
             {
-                int type = (int)d[0];
-                WriteInt(type);
-                //if(type == EXP)
-                //    writeQ((long)d[1]);
-                //else
-                WriteInt((int)d[1]);
+                WriteInt(pair.Key);
+                WriteInt(pair.Value);
             }
         }
     }

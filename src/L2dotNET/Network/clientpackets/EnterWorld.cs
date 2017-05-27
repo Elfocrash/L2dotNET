@@ -34,7 +34,7 @@ namespace L2dotNET.Network.clientpackets
             foreach (L2Item item in player.Inventory.Items.Where(item => item.IsEquipped != 0))
                 item.NotifyStats(player);
 
-            player.StartRegeneration();
+            
             // player.sendItemList(false);
             player.SendPacket(new FriendList());
             player.SendQuestList();
@@ -67,7 +67,7 @@ namespace L2dotNET.Network.clientpackets
 
             //player.sendPacket(new ShortCutInit(player));
             player.StartAi();
-
+            player.CharStatus.StartHpMpRegeneration();
             player.ShowHtm("servnews.htm",player);
             player.BroadcastUserInfo();
         }

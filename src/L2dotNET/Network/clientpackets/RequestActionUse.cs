@@ -177,9 +177,9 @@ namespace L2dotNET.Network.clientpackets
             }
 
             int staticId = 0;
-            if (player.CurrentTarget is L2Chair)
+            if (player.Target is L2Chair)
             {
-                L2Chair chair = (L2Chair)player.CurrentTarget;
+                L2Chair chair = (L2Chair)player.Target;
                 if (!chair.IsUsedAlready && (chair.ClanID != -1) && (player.ClanId == chair.ClanID))
                 {
                     double dis = Calcs.CalculateDistance(player, chair, true);
@@ -219,7 +219,7 @@ namespace L2dotNET.Network.clientpackets
 
             if (skill != null)
             {
-                player.Summon.ChangeTarget(player.CurrentTarget);
+                player.Summon.ChangeTarget(player.Target);
                 int result = player.Summon.CastSkill(skill);
                 Log.Info($"pet cast result {result}");
             }

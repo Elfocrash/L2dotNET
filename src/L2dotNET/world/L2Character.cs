@@ -10,6 +10,7 @@ using L2dotNET.model.player;
 using L2dotNET.model.skills;
 using L2dotNET.model.skills2;
 using L2dotNET.model.stats;
+using L2dotNET.Models.Status;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.templates;
 using L2dotNET.tools;
@@ -56,6 +57,8 @@ namespace L2dotNET.world
 
         protected byte ZoneValidateCounter = 4;
 
+        public CharStatus CharStatus { get; set; }
+
         public virtual void UpdateAbnormalEffect() { }
 
         public virtual void UpdateAbnormalExEffect() { }
@@ -70,42 +73,30 @@ namespace L2dotNET.world
         {
             Template = template;
             _updatePositionTime.Elapsed += UpdatePositionTask;
+            CharStatus = new CharStatus(this);
         }
 
-        public override void OnAction(L2Player player)
+        public virtual void SetTarget(L2Character obj)
         {
-            bool newtarget = false;
-            if (player.CurrentTarget == null)
-            {
-                player.CurrentTarget = this;
-                newtarget = true;
-            }
-            else
-            {
-                if (player.CurrentTarget.ObjId != ObjId)
-                {
-                    player.CurrentTarget = this;
-                    newtarget = true;
-                }
-            }
+            if (obj != null && !obj.Visible)
+                obj = null;
 
-            if (newtarget)
-                player.SendPacket(new MyTargetSelected(ObjId, 0));
+            Target = obj;
         }
 
         public override void OnForcedAttack(L2Player player)
         {
             bool newtarget = false;
-            if (player.CurrentTarget == null)
+            if (player.Target == null)
             {
-                player.CurrentTarget = this;
+                player.Target = this;
                 newtarget = true;
             }
             else
             {
-                if (player.CurrentTarget.ObjId != ObjId)
+                if (player.Target.ObjId != ObjId)
                 {
-                    player.CurrentTarget = this;
+                    player.Target = this;
                     newtarget = true;
                 }
             }
@@ -127,7 +118,6 @@ namespace L2dotNET.world
             //foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
             //    o.SendPacket(new DeleteObject(ObjId));
 
-            StopRegeneration();
         }
 
         public void RevalidateZone(bool force)
@@ -767,30 +757,29 @@ namespace L2dotNET.world
             if (CurHp <= 0)
             {
                 CurHp = 0;
-                DoDie(attacker, false);
+                DoDie(attacker);
                 return;
             }
 
             AiCharacter.NotifyOnHit(attacker, damage);
         }
 
-        public virtual void DoDie(L2Character killer, bool bytrigger)
+        public virtual void DoDie(L2Character killer)
         {
             Dead = true;
-            StopRegeneration();
             if (IsAttacking())
                 AbortAttack();
 
             if (IsCastingNow())
                 AbortCast();
 
+            CharStatus.StopHpMpRegeneration();
+
             CurHp = 0;
             StatusUpdate su = new StatusUpdate(ObjId);
             su.Add(StatusUpdate.CurHp, 0);
             BroadcastPacket(su);
 
-            SendMessage($"You died from {killer.Name}");
-            killer.SendMessage($"You killed {Name}");
             BroadcastPacket(new Die(this));
 
             UpdateMagicEffectIcons();
@@ -804,9 +793,7 @@ namespace L2dotNET.world
         public virtual void DeleteByForce()
         {
             AiCharacter?.Disable();
-
-            StopRegeneration();
-
+            
             foreach (AbnormalEffect a in Effects)
                 a.MTimer.Enabled = false;
 
@@ -822,7 +809,7 @@ namespace L2dotNET.world
 
         public virtual L2Item ActiveArmor => null;
 
-        public L2Character CurrentTarget;
+        public L2Character Target { get; set; }
 
         public virtual void DoAttack(L2Character target)
         {
@@ -885,7 +872,7 @@ namespace L2dotNET.world
                 atk.AddHit(target.ObjId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
             }
 
-            CurrentTarget = target;
+            Target = target;
 
             if (AttackToHit == null)
             {
@@ -936,14 +923,14 @@ namespace L2dotNET.world
         {
             Hit h = new Hit
             {
-                Miss = Formulas.CheckMissed(this, CurrentTarget)
+                Miss = Formulas.CheckMissed(this, Target)
             };
             if (h.Miss)
                 return h;
 
-            h.ShieldDef = Formulas.CheckShieldDef(this, CurrentTarget);
-            h.Crit = Formulas.CheckCrit(this, CurrentTarget);
-            h.Damage = Formulas.GetPhysHitDamage(this, CurrentTarget, 0);
+            h.ShieldDef = Formulas.CheckShieldDef(this, Target);
+            h.Crit = Formulas.CheckCrit(this, Target);
+            h.Damage = Formulas.GetPhysHitDamage(this, Target, 0);
             if (dual)
                 h.Damage *= .5;
             if (ss)
@@ -956,21 +943,21 @@ namespace L2dotNET.world
 
         public virtual void AttackDoHit(object sender, ElapsedEventArgs e)
         {
-            if (CurrentTarget != null)
+            if (Target != null)
             {
                 if (!Hit1.Miss)
                 {
-                    CurrentTarget.ReduceHp(this, Hit1.Damage);
+                    Target.ReduceHp(this, Hit1.Damage);
 
-                    if (CurrentTarget is L2Player)
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(CurrentTarget).AddName(this).AddNumber(Hit1.Damage));
+                    if (Target is L2Player)
+                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
                 }
                 else
                 {
-                    if (CurrentTarget is L2Player)
+                    if (Target is L2Player)
                     {
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(CurrentTarget).AddName(this));
-                        ((L2Player)CurrentTarget).AiCharacter.NotifyEvaded(this);
+                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
+                        ((L2Player)Target).AiCharacter.NotifyEvaded(this);
                     }
                 }
             }
@@ -980,20 +967,20 @@ namespace L2dotNET.world
 
         public virtual void AttackDoHit2Nd(object sender, ElapsedEventArgs e)
         {
-            if (CurrentTarget != null)
+            if (Target != null)
             {
                 if (!Hit2.Miss)
                 {
-                    CurrentTarget.ReduceHp(this, Hit2.Damage);
-                    if (CurrentTarget is L2Player)
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(CurrentTarget).AddName(this).AddNumber(Hit2.Damage));
+                    Target.ReduceHp(this, Hit2.Damage);
+                    if (Target is L2Player)
+                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
                 }
                 else
                 {
-                    if (CurrentTarget is L2Player)
+                    if (Target is L2Player)
                     {
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(CurrentTarget).AddName(this));
-                        ((L2Player)CurrentTarget).AiCharacter.NotifyEvaded(this);
+                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
+                        ((L2Player)Target).AiCharacter.NotifyEvaded(this);
                     }
                 }
             }
@@ -1035,8 +1022,8 @@ namespace L2dotNET.world
             //        }
             //}
 
-            // if (CurrentTarget != null)
-            //    doAttack((L2Character)CurrentTarget);
+            // if (Target != null)
+            //    doAttack((L2Character)Target);
         }
 
         public void BroadcastSoulshotUse(int itemId)
@@ -1163,13 +1150,13 @@ namespace L2dotNET.world
             if (target == null)
             {
                 BroadcastPacket(new TargetUnselected(this));
-                CurrentTarget = null;
+                Target = null;
             }
             else
             {
-                if (CurrentTarget != null)
+                if (Target != null)
                 {
-                    if (CurrentTarget.ObjId != target.ObjId)
+                    if (Target.ObjId != target.ObjId)
                         BroadcastPacket(new TargetUnselected(this));
                     else
                     {
@@ -1178,7 +1165,7 @@ namespace L2dotNET.world
                     }
                 }
 
-                CurrentTarget = target;
+                Target = target;
 
                 BroadcastPacket(new TargetSelected(ObjId, target));
                 OnNewTargetSelection(target);
@@ -1378,6 +1365,23 @@ namespace L2dotNET.world
             return -1;
         }
 
+        public virtual void BroadcastStatusUpdate()
+        {
+            if (!CharStatus.StatusListener.Any())
+                return;
+
+            //will look into this later
+            //if (!needHpUpdate(352))
+            //    return;
+
+            StatusUpdate su = new StatusUpdate(ObjId);
+            su.Add(StatusUpdate.CurHp, (int)CurHp);
+
+            foreach (var temp in CharStatus.StatusListener)
+                temp?.SendPacket(su);
+
+        }
+
         private void CastEnd(object sender = null, ElapsedEventArgs e = null)
         {
             if (CurrentCast.MpConsume2 > 0)
@@ -1399,9 +1403,9 @@ namespace L2dotNET.world
             if (CurrentCast.CastRange != -1)
             {
                 bool block = false;
-                if (CurrentTarget != null)
+                if (Target != null)
                 {
-                    double dis = Calcs.CalculateDistance(this, CurrentTarget, true);
+                    double dis = Calcs.CalculateDistance(this, Target, true);
                     if (dis > CurrentCast.EffectiveRange)
                         block = true;
                 }

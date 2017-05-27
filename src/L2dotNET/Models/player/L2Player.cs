@@ -21,6 +21,7 @@ using L2dotNET.model.skills2;
 using L2dotNET.model.skills2.effects;
 using L2dotNET.model.vehicles;
 using L2dotNET.Models;
+using L2dotNET.Models.Status;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
@@ -42,6 +43,7 @@ namespace L2dotNET.model.player
         public L2Player(int objectId, PcTemplate template) : base(objectId, template)
         {
             Template = template;
+            CharStatus = new CharStatus(this);
         }
 
         [Inject]
@@ -114,9 +116,12 @@ namespace L2dotNET.model.player
                 Name = playerModel.Name,
                 Title = playerModel.Title,
                 Level = (byte)playerModel.Level,
+                MaxHp = playerModel.MaxHp,
                 CurHp = playerModel.CurHp,
-                CurMp = playerModel.CurMp,
+                MaxCp = playerModel.MaxCp,
                 CurCp = playerModel.CurCp,
+                MaxMp = playerModel.MaxMp,
+                CurMp = playerModel.CurMp,
                 Face = playerModel.Face,
                 HairStyle = playerModel.HairStyle,
                 HairColor = playerModel.HairColor,
@@ -143,7 +148,26 @@ namespace L2dotNET.model.player
                 PenaltyClanJoin = playerModel.ClanJoinExpiryTime.ToString(),
                 Inventory = new PcInventory(null),
                 DeleteTime = playerModel.DeleteTime,
-                LastAccess = playerModel.LastAccess
+                LastAccess = playerModel.LastAccess,
+                CanCraft = playerModel.CanCraft,
+                AccessLevel = playerModel.AccessLevel,
+                Online = playerModel.Online,
+                OnlineTime = playerModel.OnlineTime,
+                WantsPeace = playerModel.WantsPeace,
+                IsIn7SDungeon = playerModel.IsIn7SDungeon,
+                PunishLevel = playerModel.PunishLevel,
+                PunishTimer = playerModel.PunishTimer,
+                PowerGrade = playerModel.PowerGrade,
+                Nobless = playerModel.Nobless,
+                Hero = playerModel.Hero,
+                Subpledge = playerModel.Subpledge,
+                LastRecomDate = playerModel.LastRecomDate,
+                LevelJoinedAcademy = playerModel.LevelJoinedAcademy,
+                Apprentice = playerModel.Apprentice,
+                Sponsor = playerModel.Sponsor,
+                VarkaKetraAlly = playerModel.VarkaKetraAlly,
+                ClanJoinExpiryTime = playerModel.ClanJoinExpiryTime,
+                ClanCreateExpiryTime = playerModel.ClanCreateExpiryTime
             };
 
             player.CStatsInit();
@@ -304,29 +328,6 @@ namespace L2dotNET.model.player
 
         public int PenaltyWeight;
         public int PenaltyGrade = 0;
-
-        public override void OnAction(L2Player player)
-        {
-            bool newtarget = false;
-            if (player.CurrentTarget == null)
-            {
-                player.CurrentTarget = this;
-                newtarget = true;
-            }
-            else
-            {
-                if (player.CurrentTarget.ObjId != ObjId)
-                {
-                    player.CurrentTarget = this;
-                    newtarget = true;
-                }
-            }
-
-            if (newtarget)
-                player.SendPacket(new MyTargetSelected(ObjId, 0));
-            else
-                player.SendActionFailed();
-        }
 
         public override void SendMessage(string p)
         {
@@ -581,9 +582,9 @@ namespace L2dotNET.model.player
             if (CurrentCast.CastRange != -1)
             {
                 bool block = false;
-                if (CurrentTarget != null)
+                if (Target != null)
                 {
-                    double dis = Calcs.CalculateDistance(this, CurrentTarget, true);
+                    double dis = Calcs.CalculateDistance(this, Target, true);
                     if (dis > CurrentCast.EffectiveRange)
                         block = true;
                 }
@@ -1167,6 +1168,16 @@ namespace L2dotNET.model.player
             }
         }
 
+        public override void BroadcastStatusUpdate()
+        {
+            StatusUpdate su = new StatusUpdate(this.ObjId);
+            su.Add(StatusUpdate.CurHp, (int)CurHp);
+            su.Add(StatusUpdate.CurMp, (int)CurMp);
+            su.Add(StatusUpdate.CurCp, (int)CurCp);
+            su.Add(StatusUpdate.MaxCp, MaxCp);
+            SendPacket(su);
+        }
+
         public void BroadcastCharInfo()
         {
             foreach (L2Player player in L2World.Instance.GetPlayers().Where(player => player != this))
@@ -1301,6 +1312,70 @@ namespace L2dotNET.model.player
             Transform = tr;
             Transform.Owner = this;
             Transform.Template.OnTransformStart(this);
+        }
+
+        public override void SetTarget(L2Character newTarget)
+        {
+            if (newTarget != null)
+            {
+                if (!newTarget.Visible)
+                    newTarget = null;
+            }
+
+            L2Character oldTarget = Target;
+
+            if (oldTarget != null)
+            {
+                if (oldTarget.Equals(newTarget))
+                    return;
+
+                oldTarget?.CharStatus.RemoveStatusListener(this);
+            }
+
+            if (newTarget is L2StaticObject)
+            {
+                SendPacket(new MyTargetSelected(newTarget.ObjId, 0));
+                SendPacket(new StaticObject((L2StaticObject) newTarget));
+            }
+            else
+            {
+                if (newTarget != null)
+                {
+                    if (newTarget.ObjId != ObjId)
+                        SendPacket(new ValidateLocation(newTarget));
+
+                    SendPacket(new MyTargetSelected(newTarget.ObjId, 0));
+
+                    newTarget.CharStatus.AddStatusListener(this);
+
+                    StatusUpdate su = new StatusUpdate(newTarget.ObjId);
+                    su.Add(StatusUpdate.MaxHp, newTarget.MaxHp);
+                    su.Add(StatusUpdate.CurHp, (int)newTarget.CurHp);
+                    SendPacket(su);
+
+                    BroadcastPacket(su, false);
+                }
+                
+            }
+
+            if (newTarget == null && Target != null)
+            {
+                BroadcastPacket(new TargetUnselected(this));
+            }
+
+
+            base.SetTarget(newTarget);
+        }
+
+        public override void OnAction(L2Player player)
+        {
+            if (player.Target != this)
+                player.SetTarget(this);
+            else
+            {
+                player.SendActionFailed();
+                //follow
+            }
         }
 
         public int ViewingAdminPage;
@@ -2045,7 +2120,7 @@ namespace L2dotNET.model.player
                 atk.AddHit(target.ObjId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
             }
 
-            CurrentTarget = target;
+            Target = target;
 
             if (AttackToHit == null)
             {
@@ -2083,27 +2158,27 @@ namespace L2dotNET.model.player
 
         public override void AttackDoHit(object sender, ElapsedEventArgs e)
         {
-            if ((CurrentTarget != null) && !CurrentTarget.Dead)
+            if ((Target != null) && !Target.Dead)
             {
                 if (!Hit1.Miss)
                 {
                     if (Hit1.Crit)
                         SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1LandedACriticalHit).AddPlayerName(Name));
 
-                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddPlayerName(Name).AddName(CurrentTarget).AddNumber(Hit1.Damage));
-                    CurrentTarget.ReduceHp(this, Hit1.Damage);
+                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddPlayerName(Name).AddName(Target).AddNumber(Hit1.Damage));
+                    Target.ReduceHp(this, Hit1.Damage);
 
-                    if (CurrentTarget is L2Player)
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(CurrentTarget).AddName(this).AddNumber(Hit1.Damage));
+                    if (Target is L2Player)
+                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
                 }
                 else
                 {
                     SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1AttackWentAstray).AddPlayerName(Name));
 
-                    if (CurrentTarget is L2Player)
+                    if (Target is L2Player)
                     {
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(CurrentTarget).AddName(this));
-                        ((L2Player)CurrentTarget).AiCharacter.NotifyEvaded(this);
+                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
+                        ((L2Player)Target).AiCharacter.NotifyEvaded(this);
                     }
                 }
             }
@@ -2113,27 +2188,27 @@ namespace L2dotNET.model.player
 
         public override void AttackDoHit2Nd(object sender, ElapsedEventArgs e)
         {
-            if ((CurrentTarget != null) && !CurrentTarget.Dead)
+            if ((Target != null) && !Target.Dead)
             {
                 if (!Hit2.Miss)
                 {
                     if (Hit2.Crit)
                         SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1LandedACriticalHit).AddName(this));
 
-                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddName(this).AddName(CurrentTarget).AddNumber(Hit2.Damage));
-                    CurrentTarget.ReduceHp(this, Hit2.Damage);
+                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddName(this).AddName(Target).AddNumber(Hit2.Damage));
+                    Target.ReduceHp(this, Hit2.Damage);
 
-                    if (CurrentTarget is L2Player)
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(CurrentTarget).AddName(this).AddNumber(Hit2.Damage));
+                    if (Target is L2Player)
+                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
                 }
                 else
                 {
                     SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1AttackWentAstray).AddPlayerName(Name));
 
-                    if (CurrentTarget is L2Player)
+                    if (Target is L2Player)
                     {
-                        CurrentTarget.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(CurrentTarget).AddName(this));
-                        ((L2Player)CurrentTarget).AiCharacter.NotifyEvaded(this);
+                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
+                        ((L2Player)Target).AiCharacter.NotifyEvaded(this);
                     }
                 }
             }
@@ -2261,7 +2336,7 @@ namespace L2dotNET.model.player
         {
             BroadcastPacket(new Revive(ObjId));
             Dead = false;
-            StartRegeneration();
+            CharStatus.StartHpMpRegeneration();
         }
 
         private DateTime _pingTimeout;
@@ -2397,7 +2472,7 @@ namespace L2dotNET.model.player
                 BroadcastUserInfo();
         }
 
-        public override void DoDie(L2Character killer, bool bytrigger)
+        public override void DoDie(L2Character killer)
         {
             if (Cubics.Count > 0)
             {
@@ -2405,7 +2480,7 @@ namespace L2dotNET.model.player
                 Cubics.Clear();
             }
 
-            base.DoDie(killer, bytrigger);
+            base.DoDie(killer);
         }
 
         public bool CharDeleteTimeExpired() => (DeleteTime > 0) && (DeleteTime <= Utilz.CurrentTimeMillis());

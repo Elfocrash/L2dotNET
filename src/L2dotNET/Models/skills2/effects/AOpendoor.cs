@@ -39,7 +39,7 @@ namespace L2dotNET.model.skills2.effects
 
         public override bool CanUse(L2Character caster)
         {
-            L2Object target = caster.CurrentTarget;
+            L2Object target = caster.Target;
             if (target is L2Door)
             {
                 L2Door door = (L2Door)target;

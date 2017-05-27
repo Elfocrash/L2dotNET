@@ -47,11 +47,11 @@ namespace L2dotNET.model.npcs.ai
             if (Character.IsAttacking())
                 return;
 
-            double dis = Calcs.CalculateDistance(Character, Character.CurrentTarget, true);
+            double dis = Calcs.CalculateDistance(Character, Character.Target, true);
             if (dis < 80)
             {
                 _moveTarget = 0;
-                L2Character target = Character.CurrentTarget;
+                L2Character target = Character.Target;
                 Character.DoAttack(target);
             }
             else
@@ -59,17 +59,17 @@ namespace L2dotNET.model.npcs.ai
                 if (Character.CantMove())
                     return;
 
-                if ((Lastx != Character.CurrentTarget.X) || (Lasty != Character.CurrentTarget.Y) || (Lastz != Character.CurrentTarget.Z))
+                if ((Lastx != Character.Target.X) || (Lasty != Character.Target.Y) || (Lastz != Character.Target.Z))
                     _moveTarget = 0;
 
                 if (_moveTarget != 0)
                     return;
 
                 _moveTarget = 1;
-                Character.MoveTo(Character.CurrentTarget.X, Character.CurrentTarget.Y, Character.CurrentTarget.Z);
-                Lastx = Character.CurrentTarget.X;
-                Lasty = Character.CurrentTarget.Y;
-                Lastz = Character.CurrentTarget.Z;
+                Character.MoveTo(Character.Target.X, Character.Target.Y, Character.Target.Z);
+                Lastx = Character.Target.X;
+                Lasty = Character.Target.Y;
+                Lastz = Character.Target.Z;
             }
         }
 

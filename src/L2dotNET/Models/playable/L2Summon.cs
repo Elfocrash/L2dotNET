@@ -116,7 +116,7 @@ namespace L2dotNET.model.playable
             _isSpawned = true;
             OnSpawn();
 
-            StartRegeneration();
+            //StartRegeneration();
 
             AiCharacter = new SaStandart(this);
             AiCharacter.Enable();
@@ -173,16 +173,16 @@ namespace L2dotNET.model.playable
 
         public virtual void Move()
         {
-            if (Owner.CurrentTarget == null)
+            if (Owner.Target == null)
                 return;
 
-            double dis = Calcs.CalculateDistance(this, Owner.CurrentTarget, true);
+            double dis = Calcs.CalculateDistance(this, Owner.Target, true);
 
             if (!(dis > 40) || !(dis < 2300))
                 return;
 
             if (!CantMove())
-                MoveTo(Owner.CurrentTarget.X, Owner.CurrentTarget.Y, Owner.CurrentTarget.Z);
+                MoveTo(Owner.Target.X, Owner.Target.Y, Owner.Target.Z);
         }
 
         public override L2Character[] GetPartyCharacters()

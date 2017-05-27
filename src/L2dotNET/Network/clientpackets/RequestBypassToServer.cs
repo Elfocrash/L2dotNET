@@ -24,7 +24,7 @@ namespace L2dotNET.Network.clientpackets
         private L2Npc GetNpc()
         {
             Log.Info($"bypass '{_alias}'");
-            L2Npc npc = (L2Npc)_client.CurrentPlayer.CurrentTarget;
+            L2Npc npc = (L2Npc)_client.CurrentPlayer.Target;
 
             if (npc != null)
                 return npc;

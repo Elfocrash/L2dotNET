@@ -33,16 +33,16 @@ namespace L2dotNET.model.npcs
             //    TimeSpan ts = dtstart - DateTime.Now;
             //    player.sendMessage($"timems {(ts.TotalMilliseconds)}");
             bool newtarget = false;
-            if (player.CurrentTarget == null)
+            if (player.Target == null)
             {
-                player.CurrentTarget = this;
+                player.Target = this;
                 newtarget = true;
             }
             else
             {
-                if (player.CurrentTarget.ObjId != ObjId)
+                if (player.Target.ObjId != ObjId)
                 {
-                    player.CurrentTarget = this;
+                    player.Target = this;
                     newtarget = true;
                 }
             }
@@ -105,9 +105,9 @@ namespace L2dotNET.model.npcs
                 obj.SendPacket(new NpcInfo(this));
         }
 
-        public override void DoDie(L2Character killer, bool bytrigger)
+        public override void DoDie(L2Character killer)
         {
-            base.DoDie(killer, bytrigger);
+            base.DoDie(killer);
 
             if (killer is L2Player)
                 ((L2Player)killer).RedistExp(this);

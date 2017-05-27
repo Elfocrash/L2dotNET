@@ -23,7 +23,7 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            if (player.CurrentTarget != null)
+            if (player.Target != null)
                 player.ChangeTarget();
         }
     }

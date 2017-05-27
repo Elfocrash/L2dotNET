@@ -133,8 +133,8 @@ namespace L2dotNET.model.skills2
                         case SkillTarget.Enemy:
                         case SkillTarget.Any:
                         case SkillTarget.Target:
-                            if (actor.CurrentTarget != null)
-                                targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
+                            if (actor.Target != null)
+                                targets.Add(actor.Target.ObjId, actor.Target);
                             break;
                         case SkillTarget.Master:
                             if (actor is L2Summon)
@@ -142,8 +142,8 @@ namespace L2dotNET.model.skills2
                             break;
                         case SkillTarget.Unlockable:
                         {
-                            if (actor.CurrentTarget is L2Door)
-                                targets.Add(actor.CurrentTarget.ObjId, actor.CurrentTarget);
+                            if (actor.Target is L2Door)
+                                targets.Add(actor.Target.ObjId, actor.Target);
                         }
                             break;
                     }
@@ -172,16 +172,16 @@ namespace L2dotNET.model.skills2
                             break;
                         case SkillTarget.Any:
                         case SkillTarget.Target:
-                            if (actor.CurrentTarget != null)
-                                target = actor.CurrentTarget;
+                            if (actor.Target != null)
+                                target = actor.Target;
                             break;
                         case SkillTarget.Friend:
-                            if (actor.CurrentTarget != null)
-                                target = actor.CurrentTarget;
+                            if (actor.Target != null)
+                                target = actor.Target;
                             break;
                         case SkillTarget.Enemy:
-                            if (actor.CurrentTarget != null)
-                                target = actor.CurrentTarget;
+                            if (actor.Target != null)
+                                target = actor.Target;
                             break;
                         case SkillTarget.Master:
                             if (actor is L2Summon)
@@ -189,8 +189,8 @@ namespace L2dotNET.model.skills2
                             break;
                         case SkillTarget.Unlockable:
                         {
-                            if (actor.CurrentTarget is L2Door)
-                                target = actor.CurrentTarget;
+                            if (actor.Target is L2Door)
+                                target = actor.Target;
                         }
                             break;
                     }

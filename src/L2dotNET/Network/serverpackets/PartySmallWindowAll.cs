@@ -25,11 +25,11 @@ namespace L2dotNET.Network.serverpackets
                 WriteString(member.Name);
 
                 WriteInt(member.CurCp);
-                WriteInt(member.CharacterStat.GetStat(EffectType.BMaxCp));
+                WriteInt(member.MaxCp);
                 WriteInt(member.CurHp);
-                WriteInt(member.CharacterStat.GetStat(EffectType.BMaxHp));
+                WriteInt(member.MaxHp);
                 WriteInt(member.CurMp);
-                WriteInt(member.CharacterStat.GetStat(EffectType.BMaxMp));
+                WriteInt(member.MaxMp);
                 WriteInt(member.Level);
 
                 WriteInt((int)member.ActiveClass.ClassId.Id);

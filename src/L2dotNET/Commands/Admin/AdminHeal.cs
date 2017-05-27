@@ -13,8 +13,8 @@ namespace L2dotNET.Commands.Admin
             //healthy -- восстанавливает выбранному чару хп\мп
 
             L2Player target;
-            if (admin.CurrentTarget is L2Player)
-                target = (L2Player)admin.CurrentTarget;
+            if (admin.Target is L2Player)
+                target = (L2Player)admin.Target;
             else
                 target = admin;
 

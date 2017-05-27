@@ -35,10 +35,10 @@ namespace L2dotNET.model.npcs.cubic.data
         private int Action1(L2Player owner)
         {
             //todo target was attacked some time ago with myself
-            if (owner.CurrentTarget?.Dead ?? true)
+            if (owner.Target?.Dead ?? true)
                 return 0;
 
-            CallSkill(owner, Skill1, owner.CurrentTarget);
+            CallSkill(owner, Skill1, owner.Target);
             return 1;
         }
 
@@ -57,10 +57,10 @@ namespace L2dotNET.model.npcs.cubic.data
                 return 1;
             }
 
-            if (owner.CurrentTarget?.Dead ?? true)
+            if (owner.Target?.Dead ?? true)
                 return 0;
 
-            CallSkill(owner, Skill2, owner.CurrentTarget);
+            CallSkill(owner, Skill2, owner.Target);
             return 1;
         }
 

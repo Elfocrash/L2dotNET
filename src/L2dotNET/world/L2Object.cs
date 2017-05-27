@@ -33,7 +33,10 @@ namespace L2dotNET.world
         public byte ObjectSummonType = 0;
         public virtual L2WorldRegion Region { get; set; }
 
-        public virtual void OnAction(L2Player player) { }
+        public virtual void OnAction(L2Player player)
+        {
+            
+        }
 
         public virtual void OnActionShift(L2Player player)
         {

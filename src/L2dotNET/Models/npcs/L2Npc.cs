@@ -179,16 +179,16 @@ namespace L2dotNET.model.npcs
         public override void OnForcedAttack(L2Player player)
         {
             bool newtarget = false;
-            if (player.CurrentTarget == null)
+            if (player.Target == null)
             {
-                player.CurrentTarget = this;
+                player.Target = this;
                 newtarget = true;
             }
             else
             {
-                if (player.CurrentTarget.ObjId != ObjId)
+                if (player.Target.ObjId != ObjId)
                 {
-                    player.CurrentTarget = this;
+                    player.Target = this;
                     newtarget = true;
                 }
             }
@@ -351,9 +351,9 @@ namespace L2dotNET.model.npcs
         private Timer _corpseTimer;
         public int ResidenceId;
 
-        public override void DoDie(L2Character killer, bool bytrigger)
+        public override void DoDie(L2Character killer)
         {
-            base.DoDie(killer, bytrigger);
+            base.DoDie(killer);
 
             if (Template.CorpseTime <= 0)
                 return;
