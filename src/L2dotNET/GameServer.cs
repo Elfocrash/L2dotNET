@@ -125,7 +125,7 @@ namespace L2dotNET
 
         private void CheckRunningProcesses()
         {
-            if (!Process.GetProcessesByName("L2dotNET.GameService").Any())
+            if (Process.GetProcessesByName("L2dotNET.GameService").Length == 1)
                 return;
 
             Log.Fatal("A L2dotNET.GameService process is already running!");

@@ -73,7 +73,7 @@ namespace L2dotNET.LoginService
 
         private void CheckRunningProcesses()
         {
-            if (!Process.GetProcessesByName("L2dotNET.LoginService").Any())
+            if (Process.GetProcessesByName("L2dotNET.LoginService").Length == 1)
                 return;
 
             Log.Fatal("A L2dotNET.LoginService process is already running!");
