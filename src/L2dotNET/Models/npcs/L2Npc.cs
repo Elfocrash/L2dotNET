@@ -73,6 +73,7 @@ namespace L2dotNET.model.npcs
                 player.SetTarget(this);
             else
             {
+                player.MoveTo(X, Y, Z);
                 player.SendPacket(new MoveToPawn(player, this,150));
                 player.SendActionFailed();
             }
