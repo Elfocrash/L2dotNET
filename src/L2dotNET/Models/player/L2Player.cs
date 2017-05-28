@@ -270,8 +270,8 @@ namespace L2dotNET.model.player
 
         public override int ClanId
         {
-            get => Clan?.ClanId ?? 0;
-            set => Clan = ClanTable.Instance.GetClan(value);
+            get { return Clan?.ClanId ?? 0; }
+            set { Clan = ClanTable.Instance.GetClan(value); }
         }
 
         public override int ClanCrestId => Clan?.CrestId ?? 0;
