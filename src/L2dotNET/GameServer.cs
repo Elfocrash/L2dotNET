@@ -31,8 +31,6 @@ namespace L2dotNET
 
         public void Start()
         {
-            CheckRunningProcesses();
-
             Config.Config.Instance.Initialize();
 
             PreReqValidation.Instance.Initialize();
@@ -121,17 +119,6 @@ namespace L2dotNET
         private void AcceptClient(TcpClient clientSocket)
         {
             ClientManager.Instance.AddClient(clientSocket);
-        }
-
-        private void CheckRunningProcesses()
-        {
-            if (Process.GetProcessesByName("L2dotNET.GameService").Length == 1)
-                return;
-
-            Log.Fatal("A L2dotNET.GameService process is already running!");
-            Log.Info("Press ENTER to exit...");
-            Console.Read();
-            Environment.Exit(0);
         }
     }
 }
