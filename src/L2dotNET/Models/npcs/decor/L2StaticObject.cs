@@ -40,7 +40,7 @@ namespace L2dotNET.model.npcs.decor
         {
             player.SendMessage(AsString());
 
-            player.ChangeTarget(this);
+            player.SetTarget(this);
         }
 
         public byte CanBeSelected()

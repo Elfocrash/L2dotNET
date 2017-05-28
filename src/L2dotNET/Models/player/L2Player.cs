@@ -69,7 +69,7 @@ namespace L2dotNET.model.player
         public override double CurCp { get; set; }
         public override int MaxMp { get; set; }
         public override double CurMp { get; set; }
-        public int Karma;
+        public int Karma { get; set; }
         public int PvpKills { get; set; }
         public long DeleteTime { get; set; }
         public int CanCraft { get; set; }
@@ -270,8 +270,8 @@ namespace L2dotNET.model.player
 
         public override int ClanId
         {
-            get { return Clan?.ClanId ?? 0; }
-            set { Clan = ClanTable.Instance.GetClan(value); }
+            get => Clan?.ClanId ?? 0;
+            set => Clan = ClanTable.Instance.GetClan(value);
         }
 
         public override int ClanCrestId => Clan?.CrestId ?? 0;

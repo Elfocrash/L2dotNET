@@ -31,7 +31,7 @@ namespace L2dotNET.model.playable
         {
             player.SendMessage(AsString());
 
-            player.ChangeTarget(this);
+            player.SetTarget(this);
         }
 
         public override void NotifyAction(L2Player player)

@@ -559,7 +559,7 @@ namespace L2dotNET.model.npcs
                 return 1;
             }
 
-            ChangeTarget(player);
+            SetTarget(player);
             return (short)CastSkill(skill);
 
             //  CurMP -= (skill.MpConsume1 + skill.MpConsume2);

@@ -219,7 +219,7 @@ namespace L2dotNET.Network.clientpackets
 
             if (skill != null)
             {
-                player.Summon.ChangeTarget(player.Target);
+                player.Summon.SetTarget(player.Target);
                 int result = player.Summon.CastSkill(skill);
                 Log.Info($"pet cast result {result}");
             }

@@ -24,7 +24,7 @@ namespace L2dotNET.Network.clientpackets
             }
 
             if (player.Target != null)
-                player.ChangeTarget();
+                player.SetTarget(null);
         }
     }
 }

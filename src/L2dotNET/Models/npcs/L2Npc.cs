@@ -69,9 +69,13 @@ namespace L2dotNET.model.npcs
 
         public override void OnAction(L2Player player)
         {
-            player.SendMessage($"onAction {AsString()}");
-
-            player.ChangeTarget(this);
+            if (player.Target != this)
+                player.SetTarget(this);
+            else
+            {
+                player.SendPacket(new MoveToPawn(player, this,150));
+                player.SendActionFailed();
+            }
         }
 
         public virtual void OnTeleportRequest(L2Player player)

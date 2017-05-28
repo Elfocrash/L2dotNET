@@ -21,7 +21,7 @@ namespace L2dotNET.model.skills2.effects
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
             if (new Random().Next(100) < _rate)
-                target.ChangeTarget();
+                target.SetTarget(null);
 
             return Nothing;
         }

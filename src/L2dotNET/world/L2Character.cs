@@ -588,7 +588,7 @@ namespace L2dotNET.world
 
         public virtual void Teleport(int x, int y, int z)
         {
-            ChangeTarget();
+            SetTarget(null);
             //clearKnowns(true);
             X = x;
             Y = y;
@@ -1143,33 +1143,6 @@ namespace L2dotNET.world
         {
             if (CharacterStat == null)
                 CharacterStat = new CStats(this);
-        }
-
-        public void ChangeTarget(L2Character target = null)
-        {
-            if (target == null)
-            {
-                BroadcastPacket(new TargetUnselected(this));
-                Target = null;
-            }
-            else
-            {
-                if (Target != null)
-                {
-                    if (Target.ObjId != target.ObjId)
-                        BroadcastPacket(new TargetUnselected(this));
-                    else
-                    {
-                        OnOldTargetSelection(target);
-                        return;
-                    }
-                }
-
-                Target = target;
-
-                BroadcastPacket(new TargetSelected(ObjId, target));
-                OnNewTargetSelection(target);
-            }
         }
 
         public virtual void OnOldTargetSelection(L2Object target) { }

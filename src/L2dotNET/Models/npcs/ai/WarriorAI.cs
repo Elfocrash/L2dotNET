@@ -20,7 +20,7 @@ namespace L2dotNET.model.npcs.ai
             if (Character.IsMoving())
                 Character.NotifyStopMove(true, true);
 
-            Character.ChangeTarget(attacker);
+            Character.SetTarget(attacker);
             attack(attacker);
         }
 
@@ -93,7 +93,7 @@ namespace L2dotNET.model.npcs.ai
 
         public override void NotifyTargetNull()
         {
-            Character.ChangeTarget();
+            Character.SetTarget(null);
             _moveHome = 1;
             base.NotifyTargetNull();
         }
