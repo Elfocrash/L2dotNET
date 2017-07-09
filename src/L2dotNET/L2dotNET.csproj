@@ -86,10 +86,10 @@
     <Compile Include="Config\SiegeConfig.cs" />
     <Compile Include="controllers\GameTime.cs" />
     <Compile Include="DepInjectionModule.cs" />
-    <Compile Include="Datapacks\Encryption\BlowfishCipher.cs" />
-    <Compile Include="Datapacks\Encryption\BlowfishKeygen.cs" />
-    <Compile Include="Datapacks\Encryption\GameCrypt.cs" />
-    <Compile Include="Datapacks\Encryption\ScrambledKeyPair.cs" />
+    <Compile Include="Encryption\BlowfishCipher.cs" />
+    <Compile Include="Encryption\BlowfishKeygen.cs" />
+    <Compile Include="Encryption\GameCrypt.cs" />
+    <Compile Include="Encryption\ScrambledKeyPair.cs" />
     <Compile Include="Enums\ActionType.cs" />
     <Compile Include="Enums\ArmorType.cs" />
     <Compile Include="Enums\ArmorTypeId.cs" />
