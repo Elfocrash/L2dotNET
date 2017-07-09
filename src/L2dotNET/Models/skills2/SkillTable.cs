@@ -481,14 +481,14 @@ namespace L2dotNET.model.skills2
             Log.Info($"SkillTable: learnable {AcquireSkills.Count} groups, #{cntTotal} skills.");
         }
 
-        public AcquireSkillsEntry GetAllRegularSkills(ClassIds id)
+        public AcquireSkillsEntry GetAllRegularSkills(ClassIds ids)
         {
-            return AcquireSkills[id.ToString()];
+            return AcquireSkills[ids.ToString()];
         }
 
-        public AcquireSkillsEntry GetSharingSkills(ClassIds id)
+        public AcquireSkillsEntry GetSharingSkills(ClassIds ids)
         {
-            switch (id)
+            switch (ids)
             {
                 case ClassIds.ShillienElder:
                     return AcquireSkills["silen_elder_sharing"];

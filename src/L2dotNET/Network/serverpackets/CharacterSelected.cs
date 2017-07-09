@@ -24,7 +24,7 @@ namespace L2dotNET.Network.serverpackets
 
             WriteInt(_player.ClanId);
             WriteInt(0x00); //??
-            WriteInt(_player.Sex);
+            WriteInt((int)_player.Sex);
             WriteInt((int)_player.BaseClass.ClassId.ClassRace);
 
             WriteInt((int)_player.ActiveClass.ClassId.Id);

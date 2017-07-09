@@ -27,5 +27,8 @@ namespace L2dotNET.Config
 
         [JsonProperty(PropertyName = "Geodata")]
         public GeodataConfig GeodataConfig { get; set; }
+
+        [JsonProperty(PropertyName = "OtherConfig")]
+        public OtherConfig OtherConfig { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace L2dotNET.Network.serverpackets
             WriteString(_player.Name);
 
             WriteInt((int)_player.BaseClass.ClassId.ClassRace);
-            WriteInt(_player.Sex);
+            WriteInt((int)_player.Sex);
             WriteInt((int)_player.BaseClass.ClassId.Id);
             WriteInt(_player.Level);
             WriteLong(_player.Exp);
@@ -125,9 +125,9 @@ namespace L2dotNET.Network.serverpackets
             WriteDouble(_player.Radius);
             WriteDouble(_player.Height);
 
-            WriteInt(_player.HairStyle);
-            WriteInt(_player.HairColor);
-            WriteInt(_player.Face);
+            WriteInt((int)_player.HairStyleId);
+            WriteInt((int)_player.HairColor);
+            WriteInt((int)_player.Face);
             WriteInt(_player.Builder);
 
             WriteString(_player.Title);

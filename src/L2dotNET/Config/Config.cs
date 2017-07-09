@@ -40,7 +40,8 @@ namespace L2dotNET.Config
                 NpcConfig = JsonConvert.DeserializeObject<NpcConfig>(File.ReadAllText(@"config\npcs.json")),
                 PlayerConfig = JsonConvert.DeserializeObject<PlayerConfig>(File.ReadAllText(@"config\player.json")),
                 Server = JsonConvert.DeserializeObject<ServerConfig2>(File.ReadAllText(@"config\gameplay.json")),
-                SiegeConfig = JsonConvert.DeserializeObject<SiegeConfig>(File.ReadAllText(@"config\siege.json"))
+                SiegeConfig = JsonConvert.DeserializeObject<SiegeConfig>(File.ReadAllText(@"config\siege.json")),
+                OtherConfig = JsonConvert.DeserializeObject<OtherConfig>(File.ReadAllText(@"config\other.json"))
             };
         }
     }

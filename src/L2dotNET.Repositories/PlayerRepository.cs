@@ -45,7 +45,7 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                return Db.Query("select distinct 1 from characters where char_name=@name", new
+                return Db.Query("select 1 from characters where char_name=@name limit 1", new
                 {
                     name = name
                 }).Any();

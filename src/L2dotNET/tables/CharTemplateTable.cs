@@ -80,9 +80,9 @@ namespace L2dotNET.tables
             Log.Info($"Loaded {Templates.Count} character templates.");
         }
 
-        public PcTemplate GetTemplate(ClassIds classId)
+        public PcTemplate GetTemplate(ClassIds classIds)
         {
-            return Templates[(int)classId];
+            return Templates[(int)classIds];
         }
 
         public PcTemplate GetTemplate(int classId)

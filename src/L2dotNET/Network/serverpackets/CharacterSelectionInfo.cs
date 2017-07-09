@@ -32,7 +32,7 @@ namespace L2dotNET.Network.serverpackets
                 if (_players.Count(filter => filter.DeleteTime == 0) == 1)
                     lastSelectedObjId = _players.FirstOrDefault().ObjId;
                 else
-                    lastSelectedObjId = _players.OrderByDescending(sort => sort.LastAccess).FirstOrDefault(filter => filter.DeleteTime == 0 && filter.LastAccess != null).ObjId;
+                    lastSelectedObjId = _players.OrderByDescending(sort => sort.LastAccess).FirstOrDefault(filter => filter.DeleteTime == 0).ObjId;
             }
 
             foreach (L2Player player in _players)
@@ -44,7 +44,7 @@ namespace L2dotNET.Network.serverpackets
                 WriteInt(player.ClanId);
                 WriteInt(0x00); // ??
 
-                WriteInt(player.Sex);
+                WriteInt((int)player.Sex);
                 WriteInt((int)player.BaseClass.ClassId.ClassRace);
 
                 if (player.ActiveClass.ClassId.Id == player.BaseClass.ClassId.Id)
@@ -83,10 +83,10 @@ namespace L2dotNET.Network.serverpackets
                 for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
                     WriteInt(player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
 
-                WriteInt(player.HairStyle);
-                WriteInt(player.HairColor);
+                WriteInt((int)player.HairStyleId);
+                WriteInt((int)player.HairColor);
 
-                WriteInt(player.Face);
+                WriteInt((int)player.Face);
                 WriteDouble(player.MaxHp);
                 WriteDouble(player.MaxMp);
                 WriteInt(player.RemainingDeleteTime());

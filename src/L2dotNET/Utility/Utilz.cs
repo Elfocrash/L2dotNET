@@ -1,13 +1,14 @@
-﻿using System;
+﻿using L2dotNET.Network;
+using log4net;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using log4net;
-using L2dotNET.Network;
 
 namespace L2dotNET.Utility
 {
@@ -168,7 +169,14 @@ namespace L2dotNET.Utility
 
         public static bool IsLocalIpAddress(this EndPoint host)
         {
-            return IsLocalIpAddress( ((IPEndPoint)host).Address.ToString());
+            return IsLocalIpAddress(((IPEndPoint)host).Address.ToString());
+        }
+
+        public static string GetDescription(this Enum value)
+        {
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+            DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return attributes.Length > 0 ? attributes[0].Description : value.ToString();
         }
     }
 }

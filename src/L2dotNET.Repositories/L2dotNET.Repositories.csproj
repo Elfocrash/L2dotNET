@@ -56,7 +56,7 @@
     <Compile Include="Contracts\IPlayerRepository.cs" />
     <Compile Include="Contracts\ICheckRepository.cs" />
     <Compile Include="Contracts\IServerRepository.cs" />
-    <Compile Include="Contracts\ISkillRepositry.cs" />
+    <Compile Include="Contracts\ISkillRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="ItemRepository.cs" />
     <Compile Include="PlayerRepository.cs" />

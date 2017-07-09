@@ -51,9 +51,12 @@ namespace L2dotNET.Network.clientpackets
 
                 L2Item item = null; //player._warehouse.Items[objectId];
 
-                Log.Info($"cant find item {objectId} in warehouse {player.Name}");
-                player.SendActionFailed();
-                return;
+                if (item == null)
+                {
+                    Log.Info($"cant find item {objectId} in warehouse {player.Name}");
+                    player.SendActionFailed();
+                    return;
+                }
 
                 if (item.Template.Stackable)
                     slots += 1;

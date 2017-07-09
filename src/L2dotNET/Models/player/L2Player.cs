@@ -53,11 +53,11 @@ namespace L2dotNET.model.player
         public ClassId ClassId { get; set; }
         public L2PartyRoom PartyRoom { get; set; }
         public L2Party Party { get; set; }
-        public byte Sex { get; set; }
-        public int HairStyle { get; set; }
-        public int HairColor { get; set; }
-        public int Face { get; set; }
-        public bool WhisperBlock { get; set; } = false;
+        public Gender Sex { get; set; }
+        public HairStyleId HairStyleId { get; set; }
+        public HairColor HairColor { get; set; }
+        public Face Face { get; set; }
+        public bool WhisperBlock { get; set; }
         public GameClient Gameclient { get; set; }
         public long Exp { get; set; }
         public long ExpOnDeath { get; set; }
@@ -122,10 +122,10 @@ namespace L2dotNET.model.player
                 CurCp = playerModel.CurCp,
                 MaxMp = playerModel.MaxMp,
                 CurMp = playerModel.CurMp,
-                Face = playerModel.Face,
-                HairStyle = playerModel.HairStyle,
-                HairColor = playerModel.HairColor,
-                Sex = (byte)playerModel.Sex,
+                Face = (Face)playerModel.Face,
+                HairStyleId = (HairStyleId)playerModel.HairStyle,
+                HairColor = (HairColor)playerModel.HairColor,
+                Sex = (Gender)playerModel.Sex,
                 X = playerModel.X,
                 Y = playerModel.Y,
                 Z = playerModel.Z,
@@ -199,10 +199,10 @@ namespace L2dotNET.model.player
                 CurCp = (int)CurCp,
                 MaxMp = MaxMp,
                 CurMp = (int)CurMp,
-                Face = Face,
-                HairStyle = HairStyle,
-                HairColor = HairColor,
-                Sex = Sex,
+                Face = (int)Face,
+                HairStyle = (int)HairStyleId,
+                HairColor = (int)HairColor,
+                Sex = (int)Sex,
                 Heading = Heading,
                 X = X,
                 Y = Y,
@@ -2266,7 +2266,7 @@ namespace L2dotNET.model.player
             get
             {
                 if (TransformId > 0)
-                    return Transform.Template.GetHeight(Sex);
+                    return Transform.Template.GetHeight((byte)Sex);
 
                 if (MountType > 0)
                     return MountedTemplate.CollisionHeight;

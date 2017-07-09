@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using log4net;
 using L2dotNET.controllers;
+using L2dotNET.Enums;
 using L2dotNET.Handlers;
 using L2dotNET.managers;
 using L2dotNET.model.items;

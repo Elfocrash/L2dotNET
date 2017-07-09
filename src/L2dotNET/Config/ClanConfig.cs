@@ -7,12 +7,12 @@ namespace L2dotNET.Config
     ///TODO: Create mapping for cost/level/regeneration
     public class ClanConfig
     {
-        ///<summary>Number of days you have to wait before joining another clan.</summary>
+        ///<summary>Number of days to wait before joining another clan.</summary>
         [DefaultValue(5)]
         [JsonProperty(PropertyName = "DaysBeforeJoinAClan", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int DaysBeforeJoinAClan { get; set; }
 
-        ///<summary>Number of days you have to wait before creating a new clan.</summary>
+        ///<summary>Number of days to wait before creating a new clan.</summary>
         [DefaultValue(10)]
         [JsonProperty(PropertyName = "DaysBeforeCreateAClan", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int DaysBeforeCreateAClan { get; set; }

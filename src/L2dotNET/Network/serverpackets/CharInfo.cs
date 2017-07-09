@@ -26,7 +26,7 @@ namespace L2dotNET.Network.serverpackets
             WriteString(_player.Name);
 
             WriteInt((int)_player.BaseClass.ClassId.ClassRace);
-            WriteInt(_player.Sex);
+            WriteInt((int)_player.Sex);
             WriteInt((int)_player.ActiveClass.ClassId.Id);
 
             WriteInt(_player.Inventory.Paperdoll[Inventory.PaperdollHair]?.Template.ItemId ?? 0);
@@ -94,9 +94,9 @@ namespace L2dotNET.Network.serverpackets
             WriteDouble(_player.Radius);
             WriteDouble(_player.Height);
 
-            WriteInt(_player.HairStyle);
-            WriteInt(_player.HairColor);
-            WriteInt(_player.Face);
+            WriteInt((int)_player.HairStyleId);
+            WriteInt((int)_player.HairColor);
+            WriteInt((int)_player.Face);
 
             WriteString(_player.Title);
 

@@ -46,7 +46,6 @@ namespace L2dotNET.Network.clientpackets
             _client.SendPacket(new serverpackets.CharacterSelected(player, _client.SessionId));
         }
 
-        //TODO: Simplify method body
         private static void PlayerModelMapping(PlayerModel playerModel, L2Player player)
         {
             //AccountName = player.AccountName,
@@ -59,10 +58,10 @@ namespace L2dotNET.Network.clientpackets
             player.CurCp = playerModel.CurCp;
             player.MaxMp = playerModel.MaxMp;
             player.CurMp = playerModel.CurMp;
-            player.Face = playerModel.Face;
-            player.HairStyle = playerModel.HairStyle;
-            player.HairColor = playerModel.HairColor;
-            player.Sex = (byte)playerModel.Sex;
+            player.Face = (Face)playerModel.Face;
+            player.HairStyleId = (HairStyleId)playerModel.HairStyle;
+            player.HairColor = (HairColor)playerModel.HairColor;
+            player.Sex = (Gender)playerModel.Sex;
             player.Heading = playerModel.Heading;
             player.X = playerModel.X;
             player.Y = playerModel.Y;

@@ -1,5 +1,4 @@
-﻿using System;
-using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
+﻿using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets

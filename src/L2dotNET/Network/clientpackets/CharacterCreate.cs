@@ -1,4 +1,7 @@
-﻿using L2dotNET.model.inventory;
+﻿using System;
+using System.Linq;
+using L2dotNET.Enums;
+using L2dotNET.model.inventory;
 using L2dotNET.model.player;
 using L2dotNET.model.skills2;
 using L2dotNET.Models;
@@ -6,6 +9,7 @@ using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.tables;
 using L2dotNET.templates;
+using L2dotNET.Utility;
 using L2dotNET.world;
 using Ninject;
 
@@ -19,75 +23,49 @@ namespace L2dotNET.Network.clientpackets
         private readonly GameClient _client;
         private readonly string _name;
         private readonly int _race;
-        private readonly byte _sex;
+        private readonly int _sex;
         private readonly int _classId;
-        private readonly int _int;
-        private readonly int _str;
-        private readonly int _con;
-        private readonly int _men;
-        private readonly int _dex;
-        private readonly int _wit;
-        private readonly byte _hairStyle;
-        private readonly byte _hairColor;
-        private readonly byte _face;
+        private readonly int _hairStyle;
+        private readonly int _hairColor;
+        private readonly int _face;
 
         public CharacterCreate(Packet packet, GameClient client)
         {
             _client = client;
             _name = packet.ReadString();
             _race = packet.ReadInt();
-            _sex = (byte)packet.ReadInt();
+            _sex = packet.ReadInt();
             _classId = packet.ReadInt();
-            _int = packet.ReadInt();
-            _str = packet.ReadInt();
-            _con = packet.ReadInt();
-            _men = packet.ReadInt();
-            _dex = packet.ReadInt();
-            _wit = packet.ReadInt();
-            _hairStyle = (byte)packet.ReadInt();
-            _hairColor = (byte)packet.ReadInt();
+            packet.ReadInt(); //INT
+            packet.ReadInt(); //STR
+            packet.ReadInt(); //CON
+            packet.ReadInt(); //MEN
+            packet.ReadInt(); //DEX
+            packet.ReadInt(); //WIT
+            _hairStyle = packet.ReadInt();
+            _hairColor = packet.ReadInt();
             _face = (byte)packet.ReadInt();
         }
 
         //TODO: Simplify method body
         public override void RunImpl()
         {
-            if (_name.Length > 16)
-            {
-                _client.SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TooLong16Chars));
+            if (!IsValidChar())
                 return;
-            }
 
-            if (_client.AccountChars.Count > 7)
-            {
-                _client.SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.TooManyCharsOnAccount));
-                return;
-            }
-
-            if (PlayerService.CheckIfPlayerNameExists(_name))
-            {
-                _client.SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.NameExists));
-                return;
-            }
-
-            PcTemplate template = CharTemplateTable.Instance.GetTemplate((byte)_classId);
-            if (template == null)
-            {
-                _client.SendPacket(new CharCreateFail(CharCreateFail.CharCreateFailReason.CreationRestriction));
-                return;
-            }
+            PcTemplate template = CharTemplateTable.Instance.GetTemplate(_classId);
 
             L2Player player = L2Player.Create();
             player.Name = _name;
             player.AccountName = _client.AccountName;
             player.Title = string.Empty;
-            player.Sex = _sex;
-            player.HairStyle = _hairStyle;
-            player.HairColor = _hairColor;
-            player.Face = _face;
+            player.Sex = (Gender)_sex;
+            player.HairStyleId = (HairStyleId)_hairStyle;
+            player.HairColor = (HairColor)_hairColor;
+            player.Face = (Face)_face;
+            player.Exp = 0;
             player.Level = 1;
             player.Gameclient = _client;
-            player.Exp = 0;
             player.CStatsInit();
             player.CharacterStat.SetTemplate(template);
             player.BaseClass = template;
@@ -101,6 +79,7 @@ namespace L2dotNET.Network.clientpackets
             player.X = template.SpawnX;
             player.Y = template.SpawnY;
             player.Z = template.SpawnZ;
+            player.CharSlot = player.Gameclient.AccountChars.Count;
 
             if (template.Items != null)
             {
@@ -132,8 +111,6 @@ namespace L2dotNET.Network.clientpackets
                 //}
             }
 
-            player.CharSlot = player.Gameclient.AccountChars.Count;
-
             PlayerModel playerModel = new PlayerModel
             {
                 AccountName = player.AccountName,
@@ -146,10 +123,10 @@ namespace L2dotNET.Network.clientpackets
                 CurCp = (int)player.CurCp,
                 MaxMp = player.MaxMp,
                 CurMp = (int)player.CurMp,
-                Face = player.Face,
-                HairStyle = player.HairStyle,
-                HairColor = player.HairColor,
-                Sex = player.Sex,
+                Face = (int)player.Face,
+                HairStyle = (int)player.HairStyleId,
+                HairColor = (int)player.HairColor,
+                Sex = (int)player.Sex,
                 Heading = player.Heading,
                 X = player.X,
                 Y = player.Y,
@@ -200,6 +177,65 @@ namespace L2dotNET.Network.clientpackets
             {
                 CharId = player.ObjId
             });
+        }
+
+        private bool IsValidChar()
+        {
+            if (Config.Config.Instance.GameplayConfig.OtherConfig.CharCreationBlocked)
+            {
+                _client.SendPacket(new CharCreateFail(CharCreateFailReason.CharCreationBlocked));
+                return false;
+            }
+
+            if (_client.AccountChars.Count >= Config.Config.Instance.GameplayConfig.OtherConfig.MaxCharactersByAccount)
+            {
+                _client.SendPacket(new CharCreateFail(CharCreateFailReason.TooManyCharsOnAccount));
+                return false;
+            }
+
+            if (Config.Config.Instance.GameplayConfig.OtherConfig.ForbiddenCharNames.Contains(_name))
+            {
+                _client.SendPacket(new CharCreateFail(CharCreateFailReason.IncorrectName));
+                return false;
+            }
+
+            if (!StringHelper.IsValidPlayerName(_name))
+            {
+                _client.SendPacket(new CharCreateFail(CharCreateFailReason.InvalidNamePattern));
+                return false;
+            }
+
+            if (PlayerService.CheckIfPlayerNameExists(_name))
+            {
+                _client.SendPacket(new CharCreateFail(CharCreateFailReason.NameAlreadyExists));
+                return false;
+            }
+
+            if (!Enum.IsDefined(typeof(ClassRace), _race) ||
+                !Enum.IsDefined(typeof(HairStyleId), _hairStyle) ||
+                !Enum.IsDefined(typeof(HairColor), _hairColor) ||
+                !Enum.IsDefined(typeof(Face), _face))
+            {
+                _client.SendPacket(new CharCreateFail(CharCreateFailReason.CreationFailed));
+                return false;
+            }
+
+            if (!HairStyle.Values.Any(filter => (filter.Id == (HairStyleId)_hairStyle) &&
+                                                filter.Sex.Contains((Gender)_sex)))
+            {
+                _client.SendPacket(new CharCreateFail(CharCreateFailReason.CreationFailed));
+                return false;
+            }
+
+            if (!ClassId.Values.Any(filter => (filter.Level() == 0) &&
+                                            (filter.ClassRace == (ClassRace)_race) &&
+                                            (filter.Id == (ClassIds)_classId)))
+            {
+                _client.SendPacket(new CharCreateFail(CharCreateFailReason.CreationFailed));
+                return false;
+            }
+
+            return true;
         }
     }
 }

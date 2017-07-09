@@ -7,31 +7,31 @@ namespace L2dotNET.Config
     public class NpcConfig
     {
         ///<summary>Champion mobs.</summary>
-        [JsonProperty(PropertyName = "ChampionMobs", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [JsonProperty(PropertyName = "ChampionMobs")]
         public ChampionMobs ChampionMobs { get; set; }
 
         ///<summary>Buffer.</summary>
-        [JsonProperty(PropertyName = "Buffer", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [JsonProperty(PropertyName = "Buffer")]
         public Buffer Buffer { get; set; }
 
         ///<summary>Misc.</summary>
-        [JsonProperty(PropertyName = "Misc", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [JsonProperty(PropertyName = "Misc")]
         public Misc Misc { get; set; }
 
         ///<summary>WyvernManager.</summary>
-        [JsonProperty(PropertyName = "WyvernManager", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [JsonProperty(PropertyName = "WyvernManager")]
         public WyvernManager WyvernManager { get; set; }
 
         ///<summary>RaidBoss.</summary>
-        [JsonProperty(PropertyName = "RaidBoss", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [JsonProperty(PropertyName = "RaidBoss")]
         public RaidBoss RaidBoss { get; set; }
 
         ///<summary>GrandBosses.</summary>
-        [JsonProperty(PropertyName = "GrandBosses", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [JsonProperty(PropertyName = "GrandBosses")]
         public GrandBosses GrandBosses { get; set; }
 
         ///<summary>IA.</summary>
-        [JsonProperty(PropertyName = "IA", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [JsonProperty(PropertyName = "IA")]
         public Ia Ia { get; set; }
     }
 

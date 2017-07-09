@@ -325,7 +325,7 @@ namespace L2dotNET.Network.serverpackets
             ///<summary>You are unable to connect to the server.</summary>
             UnableToConnect = 90,
             ///<summary>Please select your hairstyle.</summary>
-            PleaseSelectHairstyle = 91,
+            PleaseSelectHairStyle = 91,
             ///<summary>$s1 has worn off.</summary>
             S1HasWornOff = 92,
             ///<summary>You do not have enough SP for this.</summary>
@@ -2187,13 +2187,13 @@ namespace L2dotNET.Network.serverpackets
             ///<summary>Being permanent, are you sure you wish to use the hair dye potion - Type A?.</summary>
             HairdyePotionTypeA = 1081,
             ///<summary>Do you wish to use the hair style change potion - Type A? It is permanent.</summary>
-            HairstylePotionTypeA = 1082,
+            HairStylePotionTypeA = 1082,
             ///<summary>Facelift potion - Type A is being applied.</summary>
             FaceliftPotionTypeAApplied = 1083,
             ///<summary>Hair dye potion - Type A is being applied.</summary>
             HairdyePotionTypeAApplied = 1084,
             ///<summary>The hair style chance potion - Type A is being used.</summary>
-            HairstylePotionTypeAUsed = 1085,
+            HairStylePotionTypeAUsed = 1085,
             ///<summary>Your facial appearance has been changed.</summary>
             FaceAppearanceChanged = 1086,
             ///<summary>Your hair color has changed.</summary>
@@ -2213,17 +2213,17 @@ namespace L2dotNET.Network.serverpackets
             ///<summary>Being permanent, are you sure you wish to use the hair dye potion - Type D?.</summary>
             HairdyePotionTypeD = 1094,
             ///<summary>Do you wish to use the hair style change potion - Type B? It is permanent.</summary>
-            HairstylePotionTypeB = 1095,
+            HairStylePotionTypeB = 1095,
             ///<summary>Do you wish to use the hair style change potion - Type C? It is permanent.</summary>
-            HairstylePotionTypeC = 1096,
+            HairStylePotionTypeC = 1096,
             ///<summary>Do you wish to use the hair style change potion - Type D? It is permanent.</summary>
-            HairstylePotionTypeD = 1097,
+            HairStylePotionTypeD = 1097,
             ///<summary>Do you wish to use the hair style change potion - Type E? It is permanent.</summary>
-            HairstylePotionTypeE = 1098,
+            HairStylePotionTypeE = 1098,
             ///<summary>Do you wish to use the hair style change potion - Type F? It is permanent.</summary>
-            HairstylePotionTypeF = 1099,
+            HairStylePotionTypeF = 1099,
             ///<summary>Do you wish to use the hair style change potion - Type G? It is permanent.</summary>
-            HairstylePotionTypeG = 1100,
+            HairStylePotionTypeG = 1100,
             ///<summary>Facelift potion - Type B is being applied.</summary>
             FaceliftPotionTypeBApplied = 1101,
             ///<summary>Facelift potion - Type C is being applied.</summary>
@@ -2235,17 +2235,17 @@ namespace L2dotNET.Network.serverpackets
             ///<summary>Hair dye potion - Type D is being applied.</summary>
             HairdyePotionTypeDApplied = 1105,
             ///<summary>The hair style chance potion - Type B is being used.</summary>
-            HairstylePotionTypeBUsed = 1106,
+            HairStylePotionTypeBUsed = 1106,
             ///<summary>The hair style chance potion - Type C is being used.</summary>
-            HairstylePotionTypeCUsed = 1107,
+            HairStylePotionTypeCUsed = 1107,
             ///<summary>The hair style chance potion - Type D is being used.</summary>
-            HairstylePotionTypeDUsed = 1108,
+            HairStylePotionTypeDUsed = 1108,
             ///<summary>The hair style chance potion - Type E is being used.</summary>
-            HairstylePotionTypeEUsed = 1109,
+            HairStylePotionTypeEUsed = 1109,
             ///<summary>The hair style chance potion - Type F is being used.</summary>
-            HairstylePotionTypeFUsed = 1110,
+            HairStylePotionTypeFUsed = 1110,
             ///<summary>The hair style chance potion - Type G is being used.</summary>
-            HairstylePotionTypeGUsed = 1111,
+            HairStylePotionTypeGUsed = 1111,
             ///<summary>The prize amount for the winner of Lottery #$s1 is $s2 adena. We have $s3 first prize winners.</summary>
             AmountForWinnerS1IsS2AdenaWeHaveS3PrizeWinner = 1112,
             ///<summary>The prize amount for Lucky Lottery #$s1 is $s2 adena. There was no first prize winner in this drawing, therefore the jackpot will be added to the next drawing.</summary>

@@ -1,7 +1,30 @@
-﻿namespace L2dotNET.Config
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
+
+namespace L2dotNET.Config
 {
+    ///<summary>Other Config.</summary>
     public class OtherConfig
     {
+        ///<summary>Maximum amount of characters that can be created for an account.</summary>
+        [DefaultValue(8)]
+        [JsonProperty(PropertyName = "MaxCharactersByAccount", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public int MaxCharactersByAccount { get; set; }
+
+        ///<summary>Regular expression for name validation.</summary>
+        [DefaultValue("^[A-Za-z0-9]{1,16}$")]
+        [JsonProperty(PropertyName = "RegexNamePattern", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public string RegexNamePattern { get; set; }
+
+        ///<summary>Check if the character creation is blocked.</summary>
+        [DefaultValue(false)]
+        [JsonProperty(PropertyName = "CharCreationBlocked", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public bool CharCreationBlocked { get; set; }
+
+        [DefaultValue(new string[] { })]
+        [JsonProperty(PropertyName = "ForbiddenCharNames", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public string[] ForbiddenCharNames { get; set; }
+
         // --------------------------------------------------
         // Those "hidden" settings haven't configs to avoid admins to fuck their server
         // You still can experiment changing values here. But don't say I didn't warn you.
