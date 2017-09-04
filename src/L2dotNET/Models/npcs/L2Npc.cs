@@ -75,6 +75,10 @@ namespace L2dotNET.model.npcs
             {
                 player.MoveTo(X, Y, Z);
                 player.SendPacket(new MoveToPawn(player, this,150));
+                if(Template.Type == "L2Monster")
+                {
+                    player.DoAttack(this);
+                }
                 player.SendActionFailed();
             }
         }

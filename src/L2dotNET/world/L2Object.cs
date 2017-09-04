@@ -8,11 +8,13 @@ using L2dotNET.model.zones.classes;
 using L2dotNET.Models;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
+using log4net;
 
 namespace L2dotNET.world
 {
     public abstract class L2Object
     {
+        private readonly ILog _log = LogManager.GetLogger(typeof(L2Object));
         public int ObjId;
         public SortedList<int, L2Object> KnownObjects = new SortedList<int, L2Object>();
         public virtual byte Level { get; set; } = 1;
@@ -35,6 +37,8 @@ namespace L2dotNET.world
 
         public virtual void OnAction(L2Player player)
         {
+            _log.Debug("Doing Attack with player " + player.Name);
+            player.DoAttack((L2Character)this);
             
         }
 

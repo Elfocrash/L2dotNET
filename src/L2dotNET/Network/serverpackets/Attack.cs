@@ -49,7 +49,6 @@ namespace L2dotNET.Network.serverpackets
         public override void Write()
         {
             WriteByte(0x05);
-
             WriteInt(AttackerObjId);
             WriteInt(_hits[0].TargetId);
             WriteInt(_hits[0].Damage);

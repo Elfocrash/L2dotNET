@@ -39,7 +39,7 @@ namespace L2dotNET.tables
         {
             _htmCache = new List<L2Html>();
             _htmFiles = DirSearch("./html/");
-            BuildHtmCache();
+            //BuildHtmCache();
             Log.Info($"HtmCache: Cache Built. Loaded {_htmCache.Count} files.");
         }
 

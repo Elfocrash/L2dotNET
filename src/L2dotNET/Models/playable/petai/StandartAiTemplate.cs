@@ -92,7 +92,10 @@ namespace L2dotNET.model.playable.petai
             Log.Info("NotifyEvaded");
         }
 
-        public virtual void Attack(L2Character target) { }
+        public virtual void Attack(L2Character target)
+        {
+            Log.Debug("AI Attack from Warrior");
+        }
 
         public virtual void StopAutoAttack() { }
     }
