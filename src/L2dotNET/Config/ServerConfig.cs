@@ -28,5 +28,8 @@ namespace L2dotNET.Config
 
         [JsonProperty(PropertyName = "max_players")]
         public int MaxPlayers { get; set; }
+
+        [JsonProperty(PropertyName = "lazy_html_cache")]
+        public bool LazyHtmlCache { get; set; }
     }
 }

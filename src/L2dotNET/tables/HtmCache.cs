@@ -39,17 +39,22 @@ namespace L2dotNET.tables
         {
             _htmCache = new List<L2Html>();
             _htmFiles = DirSearch("./html/");
-            //BuildHtmCache();
-            Log.Info($"HtmCache: Cache Built. Loaded {_htmCache.Count} files.");
+            if (!Config.Config.Instance.ServerConfig.LazyHtmlCache)
+            {
+                BuildHtmCache();
+                Log.Info($"HtmCache: Cache Built. Loaded {_htmCache.Count} files.");
+            }
+            else
+            {
+                Log.Info($"HtmCache : Lazy Cached {_htmFiles.Count} files.");
+            }
         }
 
         public void BuildHtmCache()
         {
             foreach (string file in _htmFiles)
             {
-                string content = File.ReadAllText(file, Encoding.UTF8);
-                content = content.Replace("\r\n", "\n");
-                _htmCache.Add(new L2Html(Path.GetFileNameWithoutExtension(file), content, file));
+                CacheFile(file);
             }
         }
 
@@ -59,7 +64,25 @@ namespace L2dotNET.tables
                 return string.Empty;
 
             L2Html html = _htmCache.FirstOrDefault(x => x.Filename.EqualsIgnoreCase(filename));
+            if (Config.Config.Instance.ServerConfig.LazyHtmlCache && html == null)
+            {
+                //Fallback for non loaded files
+                string predictedFile = _htmFiles.FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == filename);
+                if (predictedFile != null)
+                {
+                    CacheFile(predictedFile);
+                    html = _htmCache.FirstOrDefault(x => x.Filename.EqualsIgnoreCase(filename));
+                }
+            }
+
             return html != null ? html.Content : string.Empty;
+        }
+
+        public void CacheFile(string filepath)
+        {
+            string content = File.ReadAllText(filepath, Encoding.UTF8);
+            content = content.Replace("\r\n", "\n");
+            _htmCache.Add(new L2Html(Path.GetFileNameWithoutExtension(filepath), content, filepath));
         }
 
         public string GetHtmByFilepath(string filename)
@@ -68,6 +91,17 @@ namespace L2dotNET.tables
                 return string.Empty;
 
             L2Html html = _htmCache.FirstOrDefault(x => x.Filepath.EqualsIgnoreCase(filename));
+            if (Config.Config.Instance.ServerConfig.LazyHtmlCache && html == null)
+            {
+                //Fallback for non loaded files
+                string predictedFile = _htmFiles.FirstOrDefault(f => f == filename);
+                if (predictedFile != null)
+                {
+                    CacheFile(predictedFile);
+                    //Try Again
+                    html = _htmCache.FirstOrDefault(x => x.Filename.EqualsIgnoreCase(filename));
+                }
+            }
             return html != null ? html.Content : string.Empty;
         }
 

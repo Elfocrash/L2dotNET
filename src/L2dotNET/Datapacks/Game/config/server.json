@@ -6,5 +6,6 @@
   "auth_code": "elfo",
   "isgmonly": "false",
   "istestserver": "false",
-  "max_players": "100"
+  "max_players": "100",
+  "lazy_html_cache" : "true"
 }
