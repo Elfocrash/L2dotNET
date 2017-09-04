@@ -33,7 +33,7 @@
     "DefaultPunishParam": 0
   },
   "Automatic": {
-    "AutoLoot": false,
+    "AutoLoot": true,
     "AutoLootRaid": false,
     "AutoLootHerbs": false
   },

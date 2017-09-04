@@ -2219,6 +2219,7 @@ namespace L2dotNET.model.player
         public override void AttackDoEnd(object sender, ElapsedEventArgs e)
         {
             AttackToEnd.Enabled = false;
+            AttackToEnd.Stop();
             if(this.Target.Dead)
             {
                 SendMessage("Target Killed");

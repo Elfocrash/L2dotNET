@@ -13,6 +13,7 @@ namespace L2dotNET.GameService
 
         private static void Main()
         {
+            try { 
             Log.Info("Starting GameService...");
             SetConsoleConfigurations();
             SetNumberDecimalSeparator();
@@ -20,6 +21,11 @@ namespace L2dotNET.GameService
             GameServer server = GameServer.Kernel.Get<GameServer>();
             server.Start();
             Process.GetCurrentProcess().WaitForExit();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("EXCEPTION : " + ex.Message);
+            }
         }
 
         private static void SetConsoleConfigurations()

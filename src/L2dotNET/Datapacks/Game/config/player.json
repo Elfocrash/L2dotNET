@@ -1,5 +1,5 @@
 {
-  "StartingAdena": 100,
+  "StartingAdena": 1000000000,
   "CancelLesserEffect": true,
   "HpRegenMultiplier": 1.0,
   "MpRegenMultiplier": 1.0,
