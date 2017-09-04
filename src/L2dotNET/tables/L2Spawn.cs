@@ -29,13 +29,27 @@ namespace L2dotNET.tables
 
         public L2Npc Spawn(bool notifyOthers = true)
         {
-            L2Npc npc = new L2Npc(IdFactory.Instance.NextId(), Template)
+            L2Npc npc;
+            if (Type.GetType("L2dotNET.Models.npcs."+Template.Type) != null)
             {
-                X = Location.X,
-                Y = Location.Y,
-                Z = Location.Z,
-                Heading = Location.Heading
-            };
+                npc = (L2Npc)Activator.CreateInstance( Type.GetType("L2dotNET.Models.npcs." + Template.Type), IdFactory.Instance.NextId(), Template);
+                npc.X = Location.X;
+                npc.Y = Location.Y;
+                npc.Z = Location.Z;
+                npc.Heading = Location.Heading;
+
+            }
+            else
+            {
+                npc = new L2Npc(IdFactory.Instance.NextId(), Template)
+                {
+                    X = Location.X,
+                    Y = Location.Y,
+                    Z = Location.Z,
+                    Heading = Location.Heading
+                };
+            }
+            
             npc.SpawnMe(notifyOthers);
             return npc;
         }

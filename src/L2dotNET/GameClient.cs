@@ -80,7 +80,7 @@ namespace L2dotNET
             try
             {
                 Stream.Write(bytes.ToArray(), 0, bytes.Count);
-                //  _stream.Flush();
+                //_stream.Flush();
             }
             catch
             {

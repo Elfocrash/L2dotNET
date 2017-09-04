@@ -19,6 +19,7 @@ namespace L2dotNET.model.npcs
         public bool Summoned;
         public bool StructureControlled = false;
 
+
         private readonly ILog Log = LogManager.GetLogger(typeof(L2Npc)) ;
 
         public L2Npc(int objectId, NpcTemplate template) : base(objectId, template)
@@ -382,6 +383,7 @@ namespace L2dotNET.model.npcs
         private void RemoveCorpse(object sender, ElapsedEventArgs e)
         {
             _corpseTimer.Enabled = false;
+            _corpseTimer.Stop();
             BroadcastPacket(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }

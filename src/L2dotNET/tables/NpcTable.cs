@@ -88,14 +88,7 @@ namespace L2dotNET.tables
                                 if(innerData.Attributes["name"] != null && innerData.Attributes["val"] != null)
                                 {
                                     string DataValue = innerData.Attributes["val"].Value;
-                                    //TODO: Add Extra Sets
-                                    switch (innerData.Attributes["name"].Value)
-                                    {
-                                        case "type":
-                                            set.Set("type", DataValue);
-                                            break;
-                                        default: break;
-                                    }
+                                    set.Set(innerData.Attributes["name"].Value, DataValue);
                                 }
                             }
 

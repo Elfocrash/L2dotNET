@@ -189,8 +189,10 @@
     <Compile Include="Models\npcs\decor\L2TownMap.cs" />
     <Compile Include="Models\npcs\L2Doormen.cs" />
     <Compile Include="Models\npcs\L2HideoutManager.cs" />
+    <Compile Include="Models\npcs\L2Monster.cs" />
     <Compile Include="Models\npcs\L2Npc.cs" />
     <Compile Include="Models\npcs\L2Warrior.cs" />
+    <Compile Include="Models\npcs\NpcTypes.cs" />
     <Compile Include="Models\npcs\SpawnLocation.cs" />
     <Compile Include="Models\playable\L2Pet.cs" />
     <Compile Include="Models\playable\L2Summon.cs" />
