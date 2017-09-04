@@ -9,6 +9,7 @@ using L2dotNET.tables;
 using L2dotNET.templates;
 using L2dotNET.tools;
 using L2dotNET.world;
+using log4net;
 
 namespace L2dotNET.model.npcs
 {
@@ -17,6 +18,8 @@ namespace L2dotNET.model.npcs
         public new NpcTemplate Template;
         public bool Summoned;
         public bool StructureControlled = false;
+
+        private readonly ILog Log = LogManager.GetLogger(typeof(L2Npc)) ;
 
         public L2Npc(int objectId, NpcTemplate template) : base(objectId, template)
         {
@@ -77,6 +80,7 @@ namespace L2dotNET.model.npcs
                 player.SendPacket(new MoveToPawn(player, this,150));
                 if(Template.Type == "L2Monster")
                 {
+                    Log.Debug("Attack Monester By L2NPC");
                     player.DoAttack(this);
                 }
                 player.SendActionFailed();
@@ -365,7 +369,10 @@ namespace L2dotNET.model.npcs
             base.DoDie(killer);
 
             if (Template.CorpseTime <= 0)
+            {
                 return;
+            }
+                
 
             _corpseTimer = new Timer(Template.CorpseTime * 1000);
             _corpseTimer.Elapsed += new ElapsedEventHandler(RemoveCorpse);
@@ -374,6 +381,7 @@ namespace L2dotNET.model.npcs
 
         private void RemoveCorpse(object sender, ElapsedEventArgs e)
         {
+            _corpseTimer.Enabled = false;
             BroadcastPacket(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }

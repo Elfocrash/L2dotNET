@@ -82,7 +82,7 @@ namespace L2dotNET.world
         {
             if (!excludeYourself)
                 SendPacket(pk);
-
+            _log.Debug("Sending " + pk.GetType().ToString() + "To Known of " + GetKnownPlayers(false).Count);
             GetKnownPlayers().ForEach(p => p.SendPacket(pk));
         }
 
@@ -118,18 +118,25 @@ namespace L2dotNET.world
             L2World.Instance.GetObjects(); // GetKnowns(this, range, height, zones);
         }
 
-        public virtual List<L2Player> GetKnownPlayers()
+        public virtual List<L2Player> GetKnownPlayers(bool excludeSelf = true)
         {
             L2WorldRegion region = Region;
             if (region == null)
                 return new List<L2Player>();
 
             List<L2Player> result = new List<L2Player>();
-
-            region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this)));
-
+            if(excludeSelf)
+            { 
+                region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this)));
+            }
+            else
+            {
+                region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.Instance.GetPlayers()));
+            }
             return result;
         }
+
+
 
         public virtual void SetRegion(L2WorldRegion newRegion)
         {
