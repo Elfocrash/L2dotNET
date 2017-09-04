@@ -2219,6 +2219,23 @@ namespace L2dotNET.model.player
         public override void AttackDoEnd(object sender, ElapsedEventArgs e)
         {
             AttackToEnd.Enabled = false;
+            if(this.Target.Dead)
+            {
+                SendMessage("Target Killed");
+                if(this.Target is L2Npc)
+                {
+                    try
+                    {
+                        L2Npc target = (L2Npc)this.Target;
+                        target.DoDie(this);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Debug(ex.Message);
+                    }
+                }
+                
+            }
 
             //L2Item weapon = Inventory.getWeapon();
             //if (weapon != null)

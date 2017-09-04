@@ -1,5 +1,6 @@
 ﻿using L2dotNET.model.player;
 using L2dotNET.world;
+using log4net;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -11,6 +12,8 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _y;
         private readonly int _z;
         private readonly int _actionId;
+
+        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestAction));
 
         public RequestAction(Packet packet, GameClient client)
         {
@@ -24,6 +27,7 @@ namespace L2dotNET.Network.clientpackets
 
         public override void RunImpl()
         {
+            
             L2Player player = _client.CurrentPlayer;
 
             L2Object obj = null;
@@ -35,9 +39,10 @@ namespace L2dotNET.Network.clientpackets
                 if (L2World.Instance.GetObject(_objectId) != null)
                     obj = L2World.Instance.GetObject(_objectId);
             }
-
+            Log.Debug("Action Requested with " + obj.GetType().ToString() + " of ID : " + _objectId.ToString());
             if (obj == null)
             {
+                Log.Debug("Action Requested Failed");
                 player.SendActionFailed();
                 return;
             }

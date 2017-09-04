@@ -8,11 +8,13 @@ using L2dotNET.model.zones.classes;
 using L2dotNET.Models;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
+using log4net;
 
 namespace L2dotNET.world
 {
     public abstract class L2Object
     {
+        private readonly ILog _log = LogManager.GetLogger(typeof(L2Object));
         public int ObjId;
         public SortedList<int, L2Object> KnownObjects = new SortedList<int, L2Object>();
         public virtual byte Level { get; set; } = 1;
@@ -35,6 +37,8 @@ namespace L2dotNET.world
 
         public virtual void OnAction(L2Player player)
         {
+            _log.Debug("Doing Attack with player " + player.Name);
+            player.DoAttack((L2Character)this);
             
         }
 
@@ -78,7 +82,7 @@ namespace L2dotNET.world
         {
             if (!excludeYourself)
                 SendPacket(pk);
-
+            _log.Debug("Sending " + pk.GetType().ToString() + "To Known of " + GetKnownPlayers(false).Count);
             GetKnownPlayers().ForEach(p => p.SendPacket(pk));
         }
 
@@ -114,18 +118,25 @@ namespace L2dotNET.world
             L2World.Instance.GetObjects(); // GetKnowns(this, range, height, zones);
         }
 
-        public virtual List<L2Player> GetKnownPlayers()
+        public virtual List<L2Player> GetKnownPlayers(bool excludeSelf = true)
         {
             L2WorldRegion region = Region;
             if (region == null)
                 return new List<L2Player>();
 
             List<L2Player> result = new List<L2Player>();
-
-            region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this)));
-
+            if(excludeSelf)
+            { 
+                region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this)));
+            }
+            else
+            {
+                region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.Instance.GetPlayers()));
+            }
             return result;
         }
+
+
 
         public virtual void SetRegion(L2WorldRegion newRegion)
         {

@@ -73,7 +73,7 @@ namespace L2dotNET.tables
                         if ((ownerElement != null) && (node.Attributes != null) && "npc".Equals(ownerElement.Name))
                         {
                             XmlNamedNodeMap attrs = node.Attributes;
-
+                            
                             int npcId = int.Parse(attrs.GetNamedItem("id").Value);
                             int templateId = attrs.GetNamedItem("idTemplate") == null ? npcId : int.Parse(attrs.GetNamedItem("idTemplate").Value);
 
@@ -81,6 +81,23 @@ namespace L2dotNET.tables
                             set.Set("idTemplate", templateId);
                             set.Set("name", attrs.GetNamedItem("name").Value);
                             set.Set("title", attrs.GetNamedItem("title").Value);
+
+                            //Set Extra Info
+                            foreach(XmlNode innerData in node.ChildNodes)
+                            {
+                                if(innerData.Attributes["name"] != null && innerData.Attributes["val"] != null)
+                                {
+                                    string DataValue = innerData.Attributes["val"].Value;
+                                    //TODO: Add Extra Sets
+                                    switch (innerData.Attributes["name"].Value)
+                                    {
+                                        case "type":
+                                            set.Set("type", DataValue);
+                                            break;
+                                        default: break;
+                                    }
+                                }
+                            }
 
                             _npcs.Add(npcId, new NpcTemplate(set));
                         }
