@@ -757,10 +757,18 @@ namespace L2dotNET.model.player
 
             Exp += exp;
             Sp += sp;
+            //Need to Level up ?
+            if(Level != Experience.GetLevel(Exp))
+            {
+                Level = Experience.GetLevel(Exp);
+                this.BroadcastPacket(new SocialAction(ObjId, 15));
+                this.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.YouIncreasedYourLevel));
+            }
 
             StatusUpdate su = new StatusUpdate(ObjId);
             su.Add(StatusUpdate.Exp, (int)Exp);
             su.Add(StatusUpdate.Sp, Sp);
+            su.Add(StatusUpdate.Level, Level);
             SendPacket(su);
         }
 
