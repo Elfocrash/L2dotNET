@@ -7,7 +7,7 @@ Join the chat: [![Join the chat at https://gitter.im/Elfocrash/L2dotNET](https:/
 
 | Branch        | CI status        |
 | ------------- |:-------------:|
-| master      | [![Build status](https://ci.appveyor.com/api/projects/status/wfiyl4ve9uj0rhtx/branch/master?svg=true)](https://ci.appveyor.com/project/SamerMoustafa/l2dotnet/branch/master) |
+| master      | [![Build status](https://ci.appveyor.com/api/projects/status/wfiyl4ve9uj0rhtx/branch/master?svg=true)](https://ci.appveyor.com/project/Elfocrash/l2dotnet/branch/master) |
 
 
 ## What is this?
