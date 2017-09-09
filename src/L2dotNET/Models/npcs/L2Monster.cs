@@ -53,7 +53,6 @@ namespace L2dotNET.Models.npcs
             if(killer is L2Player)
             {
                 ((L2Player)killer).AddExpSp(this.Template.Exp, this.Template.Sp, true);
-                ((L2Player)killer).BroadcastCharInfo();
             }
             if (Template.CorpseTime <= 0)
             { return; }
