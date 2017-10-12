@@ -160,7 +160,13 @@ namespace L2dotNET.model.stats
             double atk = attacker.CharacterStat.GetStat(EffectType.PPhysicalAttack);
             double def = target.CharacterStat.GetStat(EffectType.PPhysicalDefense);
 
-            double basedamage = (70 * atk) / def;
+            double basedamage;
+
+            //cannot divide by zero
+            if (def!=0)
+                basedamage = (70 * atk) / def;
+            else
+                basedamage = (70 * atk);
 
             basedamage -= sdef;
             if (basedamage < 0)
