@@ -34,6 +34,7 @@ namespace L2dotNET.Utility
             return strBuilder.ToString();
         }
 
+        
         public static IEnumerable<Type> GetTypesInNamespace(Assembly assembly, string nameSpace)
         {
             return assembly.GetTypes().Where(t => string.Equals(t.Namespace, nameSpace, StringComparison.Ordinal)).ToArray();
@@ -136,6 +137,16 @@ namespace L2dotNET.Utility
                 ret.Add(keySelector(item), valueSelector(item));
 
             return ret;
+        }
+
+        public static string GetTypeLower<T>(T obj)
+        {
+            Type t;
+            if (obj == null)
+                t = typeof(T);
+            else
+                t = obj.GetType();
+            return t.Name.ToLower();
         }
 
         public static bool IsLocalIpAddress(string host)
