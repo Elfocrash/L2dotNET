@@ -43,7 +43,7 @@ namespace L2dotNET.Network.clientpackets
                     obj = L2World.Instance.GetObject(_objectId);
             }
             //fixed nullreference exception when obj is null
-            Log.Debug("Action Requested with " + Utilz.GetTypeLower(obj).ToString() + " of ID : " + _objectId.ToString());
+            Log.Debug($"Action Requested with { Utilz.GetTypeLower(obj).ToString() }  of ID : { _objectId.ToString()}");
 
             if(obj==null)
             {
