@@ -1,6 +1,7 @@
 ﻿using L2dotNET.model.player;
 using L2dotNET.world;
 using log4net;
+using L2dotNET.Utility;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -25,6 +26,8 @@ namespace L2dotNET.Network.clientpackets
             _actionId = packet.ReadByte(); // Action identifier : 0-Simple click, 1-Shift click
         }
 
+       
+
         public override void RunImpl()
         {
             
@@ -39,8 +42,10 @@ namespace L2dotNET.Network.clientpackets
                 if (L2World.Instance.GetObject(_objectId) != null)
                     obj = L2World.Instance.GetObject(_objectId);
             }
-            Log.Debug("Action Requested with " + obj.GetType().ToString() + " of ID : " + _objectId.ToString());
-            if (obj == null)
+            //fixed nullreference exception when obj is null
+            Log.Debug($"Action Requested with { Utilz.GetTypeLower(obj).ToString() }  of ID : { _objectId.ToString()}");
+
+            if(obj==null)
             {
                 Log.Debug("Action Requested Failed");
                 player.SendActionFailed();
