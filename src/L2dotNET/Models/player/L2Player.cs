@@ -2095,7 +2095,7 @@ namespace L2dotNET.model.player
             if (!Calcs.CheckIfInRange((int)dist, this, target, true))
             {
                 SendMessage($"too far {dist}");
-                TryMoveTo(target.X, target.Y, target.Z);
+                TryMoveToAndHit(target.X, target.Y, target.Z,target);
                 return;
             }
 
