@@ -67,7 +67,7 @@ namespace L2dotNET.world
 
         public StandartAiTemplate AiCharacter = new StandartAiTemplate();
 
-        private Timer _updatePositionTime = new Timer(100);
+        private Timer _updatePositionTime = new Timer(90);
 
         public L2Character(int objectId, CharTemplate template) : base(objectId)
         {
