@@ -92,7 +92,10 @@ namespace L2dotNET.world
 
         public L2Object GetObject(int objectId)
         {
-            return _objects[objectId];
+            if (_objects.ContainsKey(objectId))
+                return _objects[objectId];
+            else
+                return null;
         }
 
         public void AddPlayer(L2Player cha)

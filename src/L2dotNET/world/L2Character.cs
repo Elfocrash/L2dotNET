@@ -67,12 +67,12 @@ namespace L2dotNET.world
 
         public StandartAiTemplate AiCharacter = new StandartAiTemplate();
 
-        private Timer _updatePositionTime = new Timer(100);
+        private Timer _updatePositionTime = new Timer(90);
 
         public L2Character(int objectId, CharTemplate template) : base(objectId)
         {
             Template = template;
-            _updatePositionTime.Elapsed += UpdatePositionTask;
+            _updatePositionTime.Elapsed += UpdatePositionTask;      
             CharStatus = new CharStatus(this);
         }
 
@@ -809,6 +809,8 @@ namespace L2dotNET.world
 
         public virtual L2Item ActiveArmor => null;
 
+        public L2Character TargetToHit { get; set; }
+
         public L2Character Target { get; set; }
 
         public virtual void DoAttack(L2Character target)
@@ -1113,6 +1115,7 @@ namespace L2dotNET.world
 
         public void TryMoveTo(int x, int y, int z)
         {
+            TargetToHit = null;
             if (CantMove())
             {
                 SendActionFailed();
@@ -1124,6 +1127,22 @@ namespace L2dotNET.world
             DestZ = z;
 
             MoveTo(x, y, z);
+        }
+
+        public void TryMoveToAndHit(int x, int y, int z,L2Character target)
+        {
+            TargetToHit = target;
+            if (CantMove())
+            {
+                SendActionFailed();
+                return;
+            }
+
+            DestX = x;
+            DestY = y;
+            DestZ = z;
+
+            MoveToAndHit(x, y, z);
         }
 
         public void Status_FreezeMe(bool status, bool update)
@@ -1420,11 +1439,14 @@ namespace L2dotNET.world
 
         public void MoveTo(int x, int y, int z)
         {
+            TargetToHit = null;
+
             if (IsAttacking())
                 AbortAttack();
 
             if (_updatePositionTime.Enabled) // новый маршрут, но старый не закончен
                 NotifyStopMove(false);
+
 
             DestX = x;
             DestY = y;
@@ -1455,6 +1477,46 @@ namespace L2dotNET.world
 
             AiCharacter.NotifyStartMoving();
         }
+
+
+        public void MoveToAndHit(int x, int y, int z)
+        {
+            if (IsAttacking())
+                AbortAttack();
+
+            if (_updatePositionTime.Enabled) // новый маршрут, но старый не закончен
+                NotifyStopMove(false);            
+
+            DestX = x;
+            DestY = y;
+            DestZ = z;
+
+            double dx = x - X,
+                   dy = y - Y;
+            //dz = (z - Z);
+            double distance = getPlanDistanceSq(x, y);
+
+            double spy = dy / distance,
+                   spx = dx / distance;
+
+            double speed = CharacterStat.GetStat(EffectType.PSpeed);
+            speed = 130; //TODO: Human Figher Speed Based, need get characters run speed
+
+            //TODO: check possible divisions by zero
+            _ticksToMove = (int)Math.Ceiling((10 * distance) / speed); //Client Response time = 1000ms, XYZ server check = 100ms (distance * 10 to get better precision)
+            _ticksToMoveCompleted = 0;
+            _xSpeedTicks = (DestX - X) / (float)_ticksToMove;
+            _ySpeedTicks = (DestY - Y) / (float)_ticksToMove;
+
+            Heading = (int)((Math.Atan2(-spx, -spy) * 10430.378) + short.MaxValue);
+
+            BroadcastPacket(new CharMoveToLocation(this));
+
+            _updatePositionTime.Enabled = true;
+
+            AiCharacter.NotifyStartMoving();
+        }
+
 
         private void UpdatePositionTask(object sender, ElapsedEventArgs e)
         {
@@ -1503,6 +1565,9 @@ namespace L2dotNET.world
 
         public virtual void NotifyArrived()
         {
+            if (TargetToHit != null)
+                this.DoAttack(TargetToHit);
+
             if (_updatePositionTime.Enabled)
                 _updatePositionTime.Enabled = false;
 
@@ -1512,8 +1577,8 @@ namespace L2dotNET.world
             _xSpeedTicks = 0;
             _ySpeedTicks = 0;
             _ticksToMove = 0;
-
-            AiCharacter.NotifyStopMoving();
+            
+            AiCharacter.NotifyStopMoving();       
         }
 
 
