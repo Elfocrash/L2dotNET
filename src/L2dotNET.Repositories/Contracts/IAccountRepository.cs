@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Models;
+using L2dotNET.DataContracts;
 
 namespace L2dotNET.Repositories.Contracts
 {
     public interface IAccountRepository
     {
-        AccountModel GetAccountByLogin(string login);
+        AccountContract GetAccountByLogin(string login);
 
-        AccountModel CreateAccount(string login, string password);
+        AccountContract CreateAccount(string login, string password);
 
         bool CheckIfAccountIsCorrect(string login, string password);
 

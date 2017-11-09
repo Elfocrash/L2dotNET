@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using L2dotNET.DataContracts;
 using L2dotNET.Enums;
 using L2dotNET.model.inventory;
 using L2dotNET.model.player;
@@ -55,7 +56,8 @@ namespace L2dotNET.Network.clientpackets
 
             PcTemplate template = CharTemplateTable.Instance.GetTemplate(_classId);
 
-            L2Player player = L2Player.Create();
+            L2Player player = new L2Player(IdFactory.Instance.NextId(), null);
+            player.Inventory = new PcInventory(player);
             player.Name = _name;
             player.AccountName = _client.AccountName;
             player.Title = string.Empty;
@@ -111,63 +113,7 @@ namespace L2dotNET.Network.clientpackets
                 //}
             }
 
-            PlayerModel playerModel = new PlayerModel
-            {
-                AccountName = player.AccountName,
-                ObjectId = player.ObjId,
-                Name = player.Name,
-                Level = player.Level,
-                MaxHp = player.MaxHp,
-                CurHp = (int)player.CurHp,
-                MaxCp = player.MaxCp,
-                CurCp = (int)player.CurCp,
-                MaxMp = player.MaxMp,
-                CurMp = (int)player.CurMp,
-                Face = (int)player.Face,
-                HairStyle = (int)player.HairStyleId,
-                HairColor = (int)player.HairColor,
-                Sex = (int)player.Sex,
-                Heading = player.Heading,
-                X = player.X,
-                Y = player.Y,
-                Z = player.Z,
-                Exp = player.Exp,
-                ExpBeforeDeath = player.ExpOnDeath,
-                Sp = player.Sp,
-                Karma = player.Karma,
-                PvpKills = player.PvpKills,
-                PkKills = player.PkKills,
-                Race = (int)player.BaseClass.ClassId.ClassRace,
-                ClassId = (int)player.ActiveClass.ClassId.Id,
-                BaseClass = (int)player.BaseClass.ClassId.Id,
-                DeleteTime = player.DeleteTime,
-                CanCraft = player.CanCraft,
-                Title = player.Title,
-                RecHave = player.RecHave,
-                RecLeft = player.RecLeft,
-                AccessLevel = player.AccessLevel,
-                Online = player.Online,
-                OnlineTime = player.OnlineTime,
-                CharSlot = player.CharSlot,
-                LastAccess = player.LastAccess,
-                ClanPrivs = player.ClanPrivs,
-                WantsPeace = player.WantsPeace,
-                PunishLevel = player.PunishLevel,
-                PunishTimer = player.PunishTimer,
-                PowerGrade = player.PowerGrade,
-                Nobless = player.Nobless,
-                Hero = player.Hero,
-                Subpledge = player.Subpledge,
-                LastRecomDate = player.LastRecomDate,
-                LevelJoinedAcademy = player.LevelJoinedAcademy,
-                Apprentice = player.Apprentice,
-                Sponsor = player.Sponsor,
-                VarkaKetraAlly = player.VarkaKetraAlly,
-                ClanJoinExpiryTime = player.ClanJoinExpiryTime,
-                ClanCreateExpiryTime = player.ClanCreateExpiryTime,
-                DeathPenaltyLevel = player.DeathPenaltyLevel
-            };
-            PlayerService.CreatePlayer(playerModel);
+            PlayerService.CreatePlayer(player);
             player.Gameclient.AccountChars.Add(player);
             _client.SendPacket(new CharCreateOk());
             L2World.Instance.AddPlayer(player);

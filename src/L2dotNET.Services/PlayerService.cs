@@ -1,7 +1,7 @@
-﻿using L2dotNET.Models;
-using L2dotNET.Repositories.Contracts;
+﻿using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
 using System.Collections.Generic;
+using L2dotNET.DataContracts;
 
 namespace L2dotNET.Services
 {
@@ -14,7 +14,7 @@ namespace L2dotNET.Services
             _unitOfWork = unitOfWork;
         }
 
-        public PlayerModel GetAccountByLogin(int objId)
+        public PlayerContract GetAccountByLogin(int objId)
         {
             return _unitOfWork.PlayerRepository.GetAccountByLogin(objId);
         }
@@ -24,17 +24,17 @@ namespace L2dotNET.Services
             return _unitOfWork.PlayerRepository.CheckIfPlayerNameExists(name);
         }
 
-        public void CreatePlayer(PlayerModel player)
+        public void CreatePlayer(PlayerContract player)
         {
             _unitOfWork.PlayerRepository.CreatePlayer(player);
         }
 
-        public void UpdatePlayer(PlayerModel player)
+        public void UpdatePlayer(PlayerContract player)
         {
             _unitOfWork.PlayerRepository.UpdatePlayer(player);
         }
 
-        public PlayerModel GetPlayerModelBySlotId(string accountName, int slotId)
+        public PlayerContract GetPlayerModelBySlotId(string accountName, int slotId)
         {
             return _unitOfWork.PlayerRepository.GetPlayerModelBySlotId(accountName, slotId);
         }
@@ -53,7 +53,7 @@ namespace L2dotNET.Services
         {
             return _unitOfWork.PlayerRepository.DeleteCharByObjId(objId);
         }
-        public List<SkillResponseModel> GetPlayerSkills(int objId)
+        public List<SkillResponseContract> GetPlayerSkills(int objId)
         {
             return _unitOfWork.SkillRepository.GetPlayerSkills(objId);
         }

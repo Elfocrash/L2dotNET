@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using Dapper;
 using log4net;
-using L2dotNET.Models;
+using L2dotNET.DataContracts;
 using L2dotNET.Repositories.Contracts;
 using MySql.Data.MySqlClient;
 
@@ -21,16 +21,16 @@ namespace L2dotNET.Repositories
             Db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
         }
 
-        public List<ServerModel> GetServerList()
+        public List<ServerContract> GetServerList()
         {
             try
             {
-                return Db.Query<ServerModel>("select * from servers").ToList();
+                return Db.Query<ServerContract>("select * from servers").ToList();
             }
             catch (MySqlException ex)
             {
                 Log.Error($"Method: {nameof(GetServerList)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
-                return new List<ServerModel>();
+                return new List<ServerContract>();
             }
         }
 
@@ -47,29 +47,29 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public List<AnnouncementModel> GetAnnouncementsList()
+        public List<AnnouncementContract> GetAnnouncementsList()
         {
             try
             {
-                return Db.Query<AnnouncementModel>("select * from announcements").ToList();
+                return Db.Query<AnnouncementContract>("select * from announcements").ToList();
             }
             catch (MySqlException ex)
             {
                 Log.Error($"Method: {nameof(GetAnnouncementsList)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
-                return new List<AnnouncementModel>();
+                return new List<AnnouncementContract>();
             }
         }
 
-        public List<SpawnlistModel> GetAllSpawns()
+        public List<SpawnlistContract> GetAllSpawns()
         {
             try
             {
-                return Db.Query<SpawnlistModel>("select npc_templateid as TemplateId, LocX, LocY, LocZ, Heading, respawn_delay as RespawnDelay, respawn_rand as RespawnRand, PeriodOfDay from spawnlist").ToList();
+                return Db.Query<SpawnlistContract>("select npc_templateid as TemplateId, LocX, LocY, LocZ, Heading, respawn_delay as RespawnDelay, respawn_rand as RespawnRand, PeriodOfDay from spawnlist").ToList();
             }
             catch (MySqlException ex)
             {
                 Log.Error($"Method: {nameof(GetAllSpawns)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
-                return new List<SpawnlistModel>();
+                return new List<SpawnlistContract>();
             }
         }
 

@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Models;
+using L2dotNET.DataContracts;
 
 namespace L2dotNET.Repositories.Contracts
 {
     public interface IServerRepository
     {
-        List<ServerModel> GetServerList();
+        List<ServerContract> GetServerList();
 
         List<int> GetPlayersObjectIdList();
 
-        List<AnnouncementModel> GetAnnouncementsList();
+        List<AnnouncementContract> GetAnnouncementsList();
 
-        List<SpawnlistModel> GetAllSpawns();
+        List<SpawnlistContract> GetAllSpawns();
 
         bool CheckDatabaseQuery();
     }

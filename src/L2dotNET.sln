@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.LoginService", "L2dotNET.LoginService\L2dotNET.LoginService.csproj", "{960CD325-3EEB-4AAA-9C67-727ECDE884BB}"
 EndProject
@@ -9,9 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.GameService", "L2d
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Repositories", "L2dotNET.Repositories\L2dotNET.Repositories.csproj", "{34030AFB-511D-4A7A-8711-71E0364E2F64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Services", "L2dotNET.Services\L2dotNET.Services.csproj", "{0A70C676-F9BD-4593-9EF4-B22F8E170AED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Models", "L2dotNET.Models\L2dotNET.Models.csproj", "{89E4EEF5-7121-435C-817F-1CD8D595F72A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.DataContracts", "L2dotNET.Models\L2dotNET.DataContracts.csproj", "{89E4EEF5-7121-435C-817F-1CD8D595F72A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET", "L2dotNET\L2dotNET.csproj", "{00EE35EE-F920-4A50-B9BD-AAB02DA5C066}"
 EndProject
@@ -49,14 +47,6 @@ Global
 		{34030AFB-511D-4A7A-8711-71E0364E2F64}.Release|Any CPU.Build.0 = Release|Any CPU
 		{34030AFB-511D-4A7A-8711-71E0364E2F64}.Release|x86.ActiveCfg = Release|Any CPU
 		{34030AFB-511D-4A7A-8711-71E0364E2F64}.Release|x86.Build.0 = Release|Any CPU
-		{0A70C676-F9BD-4593-9EF4-B22F8E170AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A70C676-F9BD-4593-9EF4-B22F8E170AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A70C676-F9BD-4593-9EF4-B22F8E170AED}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0A70C676-F9BD-4593-9EF4-B22F8E170AED}.Debug|x86.Build.0 = Debug|Any CPU
-		{0A70C676-F9BD-4593-9EF4-B22F8E170AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A70C676-F9BD-4593-9EF4-B22F8E170AED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A70C676-F9BD-4593-9EF4-B22F8E170AED}.Release|x86.ActiveCfg = Release|Any CPU
-		{0A70C676-F9BD-4593-9EF4-B22F8E170AED}.Release|x86.Build.0 = Release|Any CPU
 		{89E4EEF5-7121-435C-817F-1CD8D595F72A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89E4EEF5-7121-435C-817F-1CD8D595F72A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89E4EEF5-7121-435C-817F-1CD8D595F72A}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -84,5 +74,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA932074-375F-4F64-83CF-55C4E4E205FD}
 	EndGlobalSection
 EndGlobal

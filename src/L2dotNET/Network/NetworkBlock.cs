@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using log4net;
+using L2dotNET.DataContracts;
 using L2dotNET.Models;
 using L2dotNET.Utility;
 

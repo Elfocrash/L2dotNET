@@ -298,6 +298,7 @@
     <Compile Include="Models\zones\L2SpawnZone.cs" />
     <Compile Include="Models\zones\L2Zone.cs" />
     <Compile Include="Models\zones\L2ZoneType.cs" />
+    <Compile Include="Models\zones\Location.cs" />
     <Compile Include="Models\zones\Type\L2TownZone.cs" />
     <Compile Include="Models\zones\ZoneTemplate.cs" />
     <Compile Include="Network\clientpackets\AnswerTradeRequest.cs" />
@@ -410,6 +411,7 @@
     <Compile Include="Network\loginauth\send\PremiumStatusUpdate.cs" />
     <Compile Include="Network\LoginServiceSettings.cs" />
     <Compile Include="Network\NetworkBlock.cs" />
+    <Compile Include="Network\NetworkBlockModel.cs" />
     <Compile Include="Network\NetworkClient.cs" />
     <Compile Include="Network\Packet.cs" />
     <Compile Include="Network\PacketBase.cs" />
@@ -581,6 +583,16 @@
     <Compile Include="PrereqValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scripting\ScriptCompiler.cs" />
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\CheckService.cs" />
+    <Compile Include="Services\Contracts\IAccountService.cs" />
+    <Compile Include="Services\Contracts\ICheckService.cs" />
+    <Compile Include="Services\Contracts\IItemService.cs" />
+    <Compile Include="Services\Contracts\IPlayerService.cs" />
+    <Compile Include="Services\Contracts\IServerService.cs" />
+    <Compile Include="Services\ItemService.cs" />
+    <Compile Include="Services\PlayerService.cs" />
+    <Compile Include="Services\ServerService.cs" />
     <Compile Include="tables\admin_bypass\ABTeleport.cs" />
     <Compile Include="tables\admin_bypass\ABTeleportEntry.cs" />
     <Compile Include="tables\admin_bypass\ABTeleportGroup.cs" />
@@ -657,17 +669,13 @@
     <Compile Include="world\L2WorldRegion.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\L2dotNET.Models\L2dotNET.Models.csproj">
+    <ProjectReference Include="..\L2dotNET.Models\L2dotNET.DataContracts.csproj">
       <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
-      <Name>L2dotNET.Models</Name>
+      <Name>L2dotNET.DataContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\L2dotNET.Repositories\L2dotNET.Repositories.csproj">
       <Project>{34030AFB-511D-4A7A-8711-71E0364E2F64}</Project>
       <Name>L2dotNET.Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\L2dotNET.Services\L2dotNET.Services.csproj">
-      <Project>{0a70c676-f9bd-4593-9ef4-b22f8e170aed}</Project>
-      <Name>L2dotNET.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

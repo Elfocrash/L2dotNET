@@ -1,6 +1,6 @@
-﻿namespace L2dotNET.Models
+﻿namespace L2dotNET.DataContracts
 {
-    public class PlayerModel
+    public class PlayerContract
     {
         public string AccountName { get; set; }
 

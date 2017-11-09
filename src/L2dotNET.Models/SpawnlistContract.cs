@@ -1,6 +1,6 @@
-﻿namespace L2dotNET.Models
+﻿namespace L2dotNET.DataContracts
 {
-    public class SpawnlistModel
+    public class SpawnlistContract
     {
         public int TemplateId { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using log4net;
+using L2dotNET.DataContracts;
 using L2dotNET.Enums;
 using L2dotNET.model.items;
 using L2dotNET.model.player;
@@ -108,23 +109,23 @@ namespace L2dotNET.tables
 
         private void LoadArmorModels()
         {
-            Dictionary<int, ArmorModel> armorsModels = ItemService.GetAllArmorModelsDict();
-            foreach (KeyValuePair<int, ArmorModel> modelPair in armorsModels)
+            Dictionary<int, ArmorContract> armorsModels = ItemService.GetAllArmorModelsDict();
+            foreach (KeyValuePair<int, ArmorContract> modelPair in armorsModels)
             {
                 StatsSet set = new StatsSet();
-                ArmorModel model = modelPair.Value;
+                ArmorContract contract = modelPair.Value;
                 Armor armor = new Armor(set)
                 {
-                    Type = Utilz.GetEnumFromString(model.ArmorType, ArmorTypeId.None),
-                    ItemId = model.ItemId,
-                    Name = model.Name,
-                    BodyPart = Slots[model.BodyPart],
-                    Sellable = model.Sellable,
-                    Dropable = model.Dropable,
-                    Destroyable = model.Destroyable,
-                    Tradable = model.Tradeable,
-                    Weight = model.Weight,
-                    Duration = model.Duration
+                    Type = Utilz.GetEnumFromString(contract.ArmorType, ArmorTypeId.None),
+                    ItemId = contract.ItemId,
+                    Name = contract.Name,
+                    BodyPart = Slots[contract.BodyPart],
+                    Sellable = contract.Sellable,
+                    Dropable = contract.Dropable,
+                    Destroyable = contract.Destroyable,
+                    Tradable = contract.Tradeable,
+                    Weight = contract.Weight,
+                    Duration = contract.Duration
                 };
                 Armors.Add(modelPair.Key, armor);
             }
@@ -132,22 +133,22 @@ namespace L2dotNET.tables
 
         private void LoadEtcItemModels()
         {
-            Dictionary<int, EtcItemModel> etcItemModels = ItemService.GetAllEtcItemModelsDict();
-            foreach (KeyValuePair<int, EtcItemModel> modelPair in etcItemModels)
+            Dictionary<int, EtcItemContract> etcItemModels = ItemService.GetAllEtcItemModelsDict();
+            foreach (KeyValuePair<int, EtcItemContract> modelPair in etcItemModels)
             {
                 StatsSet set = new StatsSet();
-                EtcItemModel model = modelPair.Value;
+                EtcItemContract contract = modelPair.Value;
                 EtcItem etcItem = new EtcItem(set)
                 {
-                    Type = Utilz.GetEnumFromString(model.ItemType, EtcItemTypeId.None),
-                    ItemId = model.ItemId,
-                    Name = model.Name,
-                    Sellable = model.Sellable,
-                    Dropable = model.Dropable,
-                    Destroyable = model.Destroyable,
-                    Tradable = model.Tradeable,
-                    Weight = model.Weight,
-                    Duration = model.Duration
+                    Type = Utilz.GetEnumFromString(contract.ItemType, EtcItemTypeId.None),
+                    ItemId = contract.ItemId,
+                    Name = contract.Name,
+                    Sellable = contract.Sellable,
+                    Dropable = contract.Dropable,
+                    Destroyable = contract.Destroyable,
+                    Tradable = contract.Tradeable,
+                    Weight = contract.Weight,
+                    Duration = contract.Duration
                 };
                 EtcItems.Add(modelPair.Key, etcItem);
             }
@@ -155,36 +156,36 @@ namespace L2dotNET.tables
 
         private void LoadWeaponModels()
         {
-            Dictionary<int, WeaponModel> weaponModels = ItemService.GetAllWeaponModelsDict();
-            foreach (KeyValuePair<int, WeaponModel> modelPair in weaponModels)
+            Dictionary<int, WeaponContract> weaponModels = ItemService.GetAllWeaponModelsDict();
+            foreach (KeyValuePair<int, WeaponContract> modelPair in weaponModels)
             {
                 StatsSet set = new StatsSet();
-                WeaponModel model = modelPair.Value;
+                WeaponContract contract = modelPair.Value;
                 Weapon weapon = new Weapon(set)
                 {
-                    Type = Utilz.GetEnumFromString(model.WeaponType, WeaponTypeId.None),
-                    ItemId = model.ItemId,
-                    Name = model.Name,
-                    BodyPart = Slots[model.BodyPart],
-                    Sellable = model.Sellable,
-                    Dropable = model.Dropable,
-                    Destroyable = model.Destroyable,
-                    Tradable = model.Tradeable,
-                    Weight = model.Weight,
-                    Duration = model.Duration,
-                    ReferencePrice = model.Price,
-                    SpiritshotCount = model.Spiritshots,
-                    SoulshotCount = model.Soulshots,
-                    PDam = model.Pdam,
-                    RndDam = model.RndDam,
-                    Critical = model.Critical,
-                    HitModifier = model.HitModify,
-                    AvoidModifier = model.AvoidModify,
-                    ShieldDef = model.ShieldDef,
-                    ShieldDefRate = model.ShieldDefRate,
-                    AtkSpeed = model.AtkSpeed,
-                    MpConsume = model.MpConsume,
-                    MDam = model.Mdam
+                    Type = Utilz.GetEnumFromString(contract.WeaponType, WeaponTypeId.None),
+                    ItemId = contract.ItemId,
+                    Name = contract.Name,
+                    BodyPart = Slots[contract.BodyPart],
+                    Sellable = contract.Sellable,
+                    Dropable = contract.Dropable,
+                    Destroyable = contract.Destroyable,
+                    Tradable = contract.Tradeable,
+                    Weight = contract.Weight,
+                    Duration = contract.Duration,
+                    ReferencePrice = contract.Price,
+                    SpiritshotCount = contract.Spiritshots,
+                    SoulshotCount = contract.Soulshots,
+                    PDam = contract.Pdam,
+                    RndDam = contract.RndDam,
+                    Critical = contract.Critical,
+                    HitModifier = contract.HitModify,
+                    AvoidModifier = contract.AvoidModify,
+                    ShieldDef = contract.ShieldDef,
+                    ShieldDefRate = contract.ShieldDefRate,
+                    AtkSpeed = contract.AtkSpeed,
+                    MpConsume = contract.MpConsume,
+                    MDam = contract.Mdam
                 };
                 Weapons.Add(modelPair.Key, weapon);
             }

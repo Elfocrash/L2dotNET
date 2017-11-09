@@ -36,7 +36,7 @@ namespace L2dotNET.Network.clientpackets
         private void ValidateAndRestore()
         {
             L2Player player = _client.AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
-
+            
             if (player == null)
             {
                 Log.Warn($"{_client.Address} tried to restore Character in slot {_charSlot} but no characters exits at that slot.");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using L2dotNET.DataContracts;
 using L2dotNET.model.inventory;
 using L2dotNET.model.player;
 using L2dotNET.Models;
@@ -178,28 +179,28 @@ namespace L2dotNET.model.items
 
         private void UpdateInDb()
         {
-            ItemModel model = MapItemModel();
+            ItemContract contract = MapItemModel();
 
-            ItemService.UpdateItem(model);
+            ItemService.UpdateItem(contract);
         }
 
         private void InsertInDb()
         {
             Location = ItemLocation.Inventory;
-            ItemModel model = MapItemModel();
-            ExistsInDb = model.ExistsInDb = true;
+            ItemContract contract = MapItemModel();
+            ExistsInDb = contract.ExistsInDb = true;
 
-            ItemService.InsertNewItem(model);
+            ItemService.InsertNewItem(contract);
         }
 
-        public static List<L2Item> RestoreFromDb(List<ItemModel> models)
+        public static List<L2Item> RestoreFromDb(List<ItemContract> models)
         {
             return models.Select(MapModelToItem).ToList();
         }
 
-        private ItemModel MapItemModel()
+        private ItemContract MapItemModel()
         {
-            ItemModel model = new ItemModel
+            ItemContract contract = new ItemContract
             {
                 ObjectId = ObjId,
                 ItemId = Template.ItemId,
@@ -214,21 +215,21 @@ namespace L2dotNET.model.items
                 Time = 0,
                 TimeOfUse = null
             };
-            return model;
+            return contract;
         }
 
-        private static L2Item MapModelToItem(ItemModel model)
+        private static L2Item MapModelToItem(ItemContract contract)
         {
-            L2Item item = new L2Item(ItemTable.Instance.GetItem(model.ItemId), IdFactory.Instance.NextId())
+            L2Item item = new L2Item(ItemTable.Instance.GetItem(contract.ItemId), IdFactory.Instance.NextId())
             {
-                ObjId = model.ObjectId,
-                Count = model.Count,
-                CustomType1 = model.CustomType1,
-                CustomType2 = model.CustomType2,
-                Enchant = model.Enchant,
-                SlotLocation = model.LocationData,
-                OwnerId = model.OwnerId,
-                ExistsInDb = model.ExistsInDb
+                ObjId = contract.ObjectId,
+                Count = contract.Count,
+                CustomType1 = contract.CustomType1,
+                CustomType2 = contract.CustomType2,
+                Enchant = contract.Enchant,
+                SlotLocation = contract.LocationData,
+                OwnerId = contract.OwnerId,
+                ExistsInDb = contract.ExistsInDb
             };
 
             return item;

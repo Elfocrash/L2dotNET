@@ -1,6 +1,6 @@
-﻿namespace L2dotNET.Models
+﻿namespace L2dotNET.DataContracts
 {
-    public class SkillResponseModel
+    public class SkillResponseContract
     {
         public int CharObjId { get; set; }
         public int SkillLvl { get; set; }

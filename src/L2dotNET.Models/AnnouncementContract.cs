@@ -1,6 +1,6 @@
-﻿namespace L2dotNET.Models
+﻿namespace L2dotNET.DataContracts
 {
-    public class AnnouncementModel
+    public class AnnouncementContract
     {
         public int Id { get; set; }
 

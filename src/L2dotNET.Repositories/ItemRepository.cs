@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using Dapper;
 using log4net;
-using L2dotNET.Models;
+using L2dotNET.DataContracts;
 using L2dotNET.Repositories.Contracts;
 using MySql.Data.MySqlClient;
 
@@ -21,16 +21,16 @@ namespace L2dotNET.Repositories
             Db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
         }
 
-        public List<ArmorModel> GetAllArmors()
+        public List<ArmorContract> GetAllArmors()
         {
             const string sql = @"SELECT item_id as ItemId, Name, BodyPart, Crystallizable, armor_type as ArmorType, Weight,
                     crystal_type as CrystalType, avoid_modify as AvoidModify, Duration, p_def as Pdef, m_def as Mdef, mp_bonus as MpBonus, Price, 
                     crystal_count as CrystalCount, Sellable, Dropable, Destroyable, Tradeable, item_skill_id as ItemSkillId, 
                     item_skill_lvl as ItemSkillLvl FROM armor";
-            return Db.Query<ArmorModel>(sql).ToList();
+            return Db.Query<ArmorContract>(sql).ToList();
         }
 
-        public List<WeaponModel> GetAllWeapons()
+        public List<WeaponContract> GetAllWeapons()
         {
             const string sql = @"SELECT item_id as ItemId, Name, BodyPart, Crystallizable, Weight, Soulshots, Spiritshots,
                     crystal_type as CrystalType, p_dam as Pdam, rnd_dam as RndDam, WeaponType, Critical, hit_modify as HitModify, avoid_modify as AvoidModify,
@@ -38,19 +38,19 @@ namespace L2dotNET.Repositories
                     crystal_count as CrystalCount, Sellable, Dropable, Destroyable, Tradeable, item_skill_id as ItemSkillId, item_skill_lvl as ItemSkillLvl,
                     enchant4_skill_id as Enchant4SkillId,enchant4_skill_lvl as Enchant4SkillLvl, onCast_skill_id as OnCastSkillId, onCast_skill_lvl as OnCastSkillLvl,
                     onCast_skill_chance as OnCastSkillChance, onCrit_skill_id as OnCritSkillId, onCrit_skill_lvl as OnCritSkillLvl, onCrit_skill_chance as OnCritSkillChance FROM weapon";
-            return Db.Query<WeaponModel>(sql).ToList();
+            return Db.Query<WeaponContract>(sql).ToList();
         }
 
-        public List<EtcItemModel> GetAllEtcItems()
+        public List<EtcItemContract> GetAllEtcItems()
         {
             const string sql =
                 @"SELECT item_id as ItemId, Name, Crystallizable, item_type as ItemType, Weight, consume_type as ConsumeType, crystal_type as CrystalType, Duration, Price, 
                 crystal_count as CrystalCount, Sellable, Dropable, Destroyable, Tradeable FROM etcitem";
 
-            return Db.Query<EtcItemModel>(sql).ToList();
+            return Db.Query<EtcItemContract>(sql).ToList();
         }
 
-        public void InsertNewItem(ItemModel item)
+        public void InsertNewItem(ItemContract item)
         {
             const string sql =
                 @"Insert into items (owner_id,item_id,count,loc,loc_data,enchant_level,object_id,custom_type1,custom_type2,mana_left,time)
@@ -73,7 +73,7 @@ namespace L2dotNET.Repositories
                 });
         }
 
-        public void UpdateItem(ItemModel item)
+        public void UpdateItem(ItemContract item)
         {
             if (!item.ExistsInDb)
                 return;
@@ -96,12 +96,12 @@ namespace L2dotNET.Repositories
             });
         }
 
-        public List<ItemModel> RestoreInventory(int objId, string location)
+        public List<ItemContract> RestoreInventory(int objId, string location)
         {
             const string sql = @"SELECT object_id as ObjectId, item_id as ItemId, Count, enchant_level as Enchant, loc as Location, loc_data as LocationData,
                     custom_type1 as CustomType1, custom_type2 as CustomType2, mana_left as ManaLeft, Time, 1 as ExistsInDb FROM items WHERE owner_id=@owner_id AND (loc=@loc)";
 
-            return Db.Query<ItemModel>(sql, new { owner_id = objId, loc = location }).ToList();
+            return Db.Query<ItemContract>(sql, new { owner_id = objId, loc = location }).ToList();
         }
     }
 }

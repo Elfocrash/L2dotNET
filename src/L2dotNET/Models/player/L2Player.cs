@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Timers;
 using log4net;
+using L2dotNET.DataContracts;
 using L2dotNET.Enums;
 using L2dotNET.model.inventory;
 using L2dotNET.model.items;
@@ -45,8 +46,12 @@ namespace L2dotNET.model.player
             CharStatus = new CharStatus(this);
         }
 
+        public L2Player() :base(0, null)
+        {
+        }
+
         [Inject]
-        public static IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
+        public IPlayerService PlayerService { get; set; } = GameServer.Kernel.Get<IPlayerService>();
 
         public string AccountName { get; set; }
         public ClassId ClassId { get; set; }
@@ -104,137 +109,6 @@ namespace L2dotNET.model.player
         public PcInventory Inventory { get; set; }
         public dynamic SessionData { get; set; }
         public new PcTemplate Template { get; set; }
-
-        public static L2Player RestorePlayer(int id, GameClient client)
-        {
-            PlayerModel playerModel = PlayerService.GetAccountByLogin(id);
-            L2Player player = new L2Player(id, CharTemplateTable.Instance.GetTemplate(playerModel.BaseClass))
-            {
-                ObjId = id,
-                Gameclient = client,
-                Name = playerModel.Name,
-                Title = playerModel.Title,
-                Level = (byte)playerModel.Level,
-                MaxHp = playerModel.MaxHp,
-                CurHp = playerModel.CurHp,
-                MaxCp = playerModel.MaxCp,
-                CurCp = playerModel.CurCp,
-                MaxMp = playerModel.MaxMp,
-                CurMp = playerModel.CurMp,
-                Face = (Face)playerModel.Face,
-                HairStyleId = (HairStyleId)playerModel.HairStyle,
-                HairColor = (HairColor)playerModel.HairColor,
-                Sex = (Gender)playerModel.Sex,
-                X = playerModel.X,
-                Y = playerModel.Y,
-                Z = playerModel.Z,
-                Heading = playerModel.Heading,
-                Exp = playerModel.Exp,
-                ExpOnDeath = playerModel.ExpBeforeDeath,
-                Sp = playerModel.Sp,
-                Karma = playerModel.Karma,
-                PvpKills = playerModel.PvpKills,
-                PkKills = playerModel.PkKills,
-                BaseClass = CharTemplateTable.Instance.GetTemplate(playerModel.BaseClass),
-                ActiveClass = CharTemplateTable.Instance.GetTemplate(playerModel.ClassId),
-                RecLeft = playerModel.RecLeft,
-                RecHave = playerModel.RecHave,
-                CharSlot = playerModel.CharSlot,
-                DeathPenaltyLevel = playerModel.DeathPenaltyLevel,
-                ClanPrivs = playerModel.ClanPrivs,
-                PenaltyClanCreate = playerModel.ClanCreateExpiryTime.ToString(),
-                PenaltyClanJoin = playerModel.ClanJoinExpiryTime.ToString(),
-                Inventory = new PcInventory(null),
-                DeleteTime = playerModel.DeleteTime,
-                LastAccess = playerModel.LastAccess,
-                CanCraft = playerModel.CanCraft,
-                AccessLevel = playerModel.AccessLevel,
-                Online = playerModel.Online,
-                OnlineTime = playerModel.OnlineTime,
-                WantsPeace = playerModel.WantsPeace,
-                PunishLevel = playerModel.PunishLevel,
-                PunishTimer = playerModel.PunishTimer,
-                PowerGrade = playerModel.PowerGrade,
-                Nobless = playerModel.Nobless,
-                Hero = playerModel.Hero,
-                Subpledge = playerModel.Subpledge,
-                LastRecomDate = playerModel.LastRecomDate,
-                LevelJoinedAcademy = playerModel.LevelJoinedAcademy,
-                Apprentice = playerModel.Apprentice,
-                Sponsor = playerModel.Sponsor,
-                VarkaKetraAlly = playerModel.VarkaKetraAlly,
-                ClanJoinExpiryTime = playerModel.ClanJoinExpiryTime,
-                ClanCreateExpiryTime = playerModel.ClanCreateExpiryTime
-            };
-
-            player.CStatsInit();
-            player.Inventory.Restore(player);
-            player.SessionData = new PlayerBag();
-
-            return player;
-        }
-
-        public static L2Player Create()
-        {
-            L2Player player = new L2Player(IdFactory.Instance.NextId(), null);
-
-            player.Inventory = new PcInventory(player);
-            //player.Inventory._owner = player;
-
-            return player;
-        }
-
-        public void UpdatePlayer()
-        {
-            PlayerModel playerModel = new PlayerModel
-            {
-                ObjectId = ObjId,
-                Level = Level,
-                MaxHp = MaxHp,
-                CurHp = (int)CurHp,
-                MaxCp = MaxCp,
-                CurCp = (int)CurCp,
-                MaxMp = MaxMp,
-                CurMp = (int)CurMp,
-                Face = (int)Face,
-                HairStyle = (int)HairStyleId,
-                HairColor = (int)HairColor,
-                Sex = (int)Sex,
-                Heading = Heading,
-                X = X,
-                Y = Y,
-                Z = Z,
-                Exp = Exp,
-                ExpBeforeDeath = ExpOnDeath,
-                Sp = Sp,
-                Karma = Karma,
-                PvpKills = PvpKills,
-                PkKills = PkKills,
-                Race = (int)BaseClass.ClassId.ClassRace,
-                ClassId = (int)ActiveClass.ClassId.Id,
-                BaseClass = (int)BaseClass.ClassId.Id,
-                DeleteTime = DeleteTime,
-                CanCraft = CanCraft,
-                Title = Title,
-                RecHave = RecHave,
-                RecLeft = RecLeft,
-                AccessLevel = AccessLevel,
-                ClanPrivs = ClanPrivs,
-                WantsPeace = WantsPeace,
-                PunishLevel = PunishLevel,
-                PunishTimer = PunishTimer,
-                PowerGrade = PowerGrade,
-                Nobless = Nobless,
-                Sponsor = Sponsor,
-                VarkaKetraAlly = VarkaKetraAlly,
-                ClanCreateExpiryTime = ClanCreateExpiryTime,
-                ClanJoinExpiryTime = ClanJoinExpiryTime,
-                DeathPenaltyLevel = DeathPenaltyLevel,
-                LastAccess = LastAccess
-            };
-
-            PlayerService.UpdatePlayer(playerModel);
-        }
 
         public int Int => ActiveClass.BaseInt;
 
@@ -787,7 +661,7 @@ namespace L2dotNET.model.player
         public void RestoreSkills()
         {
             var dbSkills = PlayerService.GetPlayerSkills(this.ObjId);
-            foreach(SkillResponseModel skill in dbSkills)
+            foreach(SkillResponseContract skill in dbSkills)
             {
                 var skillModel = SkillTable.Instance.Get(skill.SkillId, skill.SkillLvl);
                 if (skillModel != null)
@@ -1227,7 +1101,7 @@ namespace L2dotNET.model.player
 
             Summon?.UnSummon();
             Online = 0;
-            UpdatePlayer();
+            PlayerService.UpdatePlayer(this);
             L2World.Instance.RemovePlayer(this);
             DecayMe();
 

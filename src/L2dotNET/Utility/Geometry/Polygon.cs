@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using log4net;
+using L2dotNET.DataContracts;
 using L2dotNET.Models;
+using L2dotNET.Models.zones;
 
 namespace L2dotNET.Utility.Geometry
 {

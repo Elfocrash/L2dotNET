@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using log4net;
-using L2dotNET.Models.GameModels;
+using L2dotNET.DataContracts.GameModels;
 using L2dotNET.Utility;
 
 namespace L2dotNET.tables

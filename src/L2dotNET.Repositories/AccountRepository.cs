@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using Dapper;
 using log4net;
-using L2dotNET.Models;
+using L2dotNET.DataContracts;
 using L2dotNET.Repositories.Contracts;
 using MySql.Data.MySqlClient;
 
@@ -22,11 +22,11 @@ namespace L2dotNET.Repositories
             Db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
         }
 
-        public AccountModel GetAccountByLogin(string login)
+        public AccountContract GetAccountByLogin(string login)
         {
             try
             {
-                return Db.Query<AccountModel>("select Login,Password,LastActive,access_level as AccessLevel,LastServer from accounts where login=@login", new
+                return Db.Query<AccountContract>("select Login,Password,LastActive,access_level as AccessLevel,LastServer from accounts where login=@login", new
                 {
                     login = login
                 }).FirstOrDefault();
@@ -38,7 +38,7 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public AccountModel CreateAccount(string login, string password)
+        public AccountContract CreateAccount(string login, string password)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace L2dotNET.Repositories
                     lastServer = 1
                 }); //to be edited
 
-                AccountModel accModel = new AccountModel
+                AccountContract accContract = new AccountContract
                 {
                     Login = login,
                     Password = password,
@@ -60,7 +60,7 @@ namespace L2dotNET.Repositories
                     LastServer = 1
                 };
 
-                return accModel;
+                return accContract;
             }
             catch (MySqlException ex)
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using L2dotNET.DataContracts;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Models;
@@ -51,7 +52,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             string username = Encoding.ASCII.GetString(decrypt, 0x5e, 14).Replace("\0", string.Empty);
             string password = Encoding.ASCII.GetString(decrypt, 0x6c, 16).Replace("\0", string.Empty);
 
-            AccountModel account = AccountService.GetAccountByLogin(username);
+            AccountContract account = AccountService.GetAccountByLogin(username);
 
             if (account == null)
             {

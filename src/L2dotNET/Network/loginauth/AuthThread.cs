@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using log4net;
+using L2dotNET.DataContracts;
 using L2dotNET.Models;
 using L2dotNET.Network.loginauth.send;
 using L2dotNET.Utility;
@@ -187,9 +188,9 @@ namespace L2dotNET.Network.loginauth
             SendPacket(new PlayerCount(cnt));
         }
 
-        private readonly SortedList<string, AccountModel> _awaitingAccounts = new SortedList<string, AccountModel>();
+        private readonly SortedList<string, AccountContract> _awaitingAccounts = new SortedList<string, AccountContract>();
 
-        public void AwaitAccount(AccountModel ta)
+        public void AwaitAccount(AccountContract ta)
         {
             if (_awaitingAccounts.ContainsKey(ta.Login))
                 _awaitingAccounts.Remove(ta.Login);
@@ -197,12 +198,12 @@ namespace L2dotNET.Network.loginauth
             _awaitingAccounts.Add(ta.Login, ta);
         }
 
-        public AccountModel GetTa(string p)
+        public AccountContract GetTa(string p)
         {
             if (!_awaitingAccounts.ContainsKey(p))
                 return null;
 
-            AccountModel ta = _awaitingAccounts[p];
+            AccountContract ta = _awaitingAccounts[p];
             _awaitingAccounts.Remove(p);
             return ta;
         }

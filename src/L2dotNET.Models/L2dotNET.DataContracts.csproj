@@ -7,8 +7,8 @@
     <ProjectGuid>{89E4EEF5-7121-435C-817F-1CD8D595F72A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>L2dotNET.Models</RootNamespace>
-    <AssemblyName>L2dotNET.Models</AssemblyName>
+    <RootNamespace>L2dotNET.DataContracts</RootNamespace>
+    <AssemblyName>L2dotNET.DataContracts</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -35,20 +35,18 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountModel.cs" />
-    <Compile Include="AnnouncementModel.cs" />
-    <Compile Include="ArmorModel.cs" />
-    <Compile Include="EtcItemModel.cs" />
+    <Compile Include="AccountContract.cs" />
+    <Compile Include="AnnouncementContract.cs" />
+    <Compile Include="ArmorContract.cs" />
+    <Compile Include="EtcItemContract.cs" />
     <Compile Include="GameModels\L2Html.cs" />
-    <Compile Include="ItemModel.cs" />
-    <Compile Include="Location.cs" />
-    <Compile Include="NetworkBlockModel.cs" />
-    <Compile Include="PlayerModel.cs" />
+    <Compile Include="ItemContract.cs" />
+    <Compile Include="PlayerContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServerModel.cs" />
-    <Compile Include="SkillResponseModel.cs" />
-    <Compile Include="SpawnlistModel.cs" />
-    <Compile Include="WeaponModel.cs" />
+    <Compile Include="ServerContract.cs" />
+    <Compile Include="SkillResponseContract.cs" />
+    <Compile Include="SpawnlistContract.cs" />
+    <Compile Include="WeaponContract.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

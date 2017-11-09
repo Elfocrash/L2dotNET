@@ -1,18 +1,18 @@
-﻿using L2dotNET.Models;
+﻿using L2dotNET.DataContracts;
 
 namespace L2dotNET.Repositories.Contracts
 {
     public interface IPlayerRepository
     {
-        PlayerModel GetAccountByLogin(int objId);
+        PlayerContract GetPlayerByLogin(int objId);
 
         bool CheckIfPlayerNameExists(string name);
 
-        void CreatePlayer(PlayerModel player);
+        void CreatePlayer(PlayerContract player);
 
-        void UpdatePlayer(PlayerModel player);
+        void UpdatePlayer(PlayerContract player);
 
-        PlayerModel GetPlayerModelBySlotId(string accountName, int slotId);
+        PlayerContract GetPlayerModelBySlotId(string accountName, int slotId);
 
         bool MarkToDeleteChar(int objId, long deletetime);
 

@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models;
+﻿using L2dotNET.DataContracts;
+using L2dotNET.Models;
 using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
@@ -10,7 +11,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
         /// </summary>
         private const byte Opcode = 0xA7;
 
-        internal static Packet ToPacket(AccountModel account, string time)
+        internal static Packet ToPacket(AccountContract account, string time)
         {
             Packet p = new Packet(Opcode);
             //writeC(0xA7);

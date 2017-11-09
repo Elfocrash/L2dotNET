@@ -5,13 +5,18 @@ using L2dotNET.model.items;
 using L2dotNET.model.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Plugins;
+using L2dotNET.Services.Contracts;
 using L2dotNET.tables;
+using Ninject;
 
 namespace L2dotNET.Network.clientpackets
 {
     class EnterWorld : PacketBase
     {
         private readonly GameClient _client;
+
+        [Inject]
+        public IPlayerService PlayerService { get; set; } = GameServer.Kernel.Get<IPlayerService>();
 
         public EnterWorld(Packet packet, GameClient client)
         {
@@ -23,7 +28,7 @@ namespace L2dotNET.Network.clientpackets
             L2Player player = _client.CurrentPlayer;
 
             player.SetCharLastAccess();
-            player.UpdatePlayer(); //Update Char LastAccess
+            PlayerService.UpdatePlayer(player);
 
             player.TotalRestore();
 
@@ -33,7 +38,6 @@ namespace L2dotNET.Network.clientpackets
 
             foreach (L2Item item in player.Inventory.Items.Where(item => item.IsEquipped != 0))
                 item.NotifyStats(player);
-
             
             // player.sendItemList(false);
             player.SendPacket(new FriendList());

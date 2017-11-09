@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models;
+﻿using L2dotNET.DataContracts;
+using L2dotNET.Models;
 
 namespace L2dotNET.Network.loginauth.recv
 {
@@ -15,7 +16,7 @@ namespace L2dotNET.Network.loginauth.recv
 
         public override void RunImpl()
         {
-            AccountModel ta = new AccountModel
+            AccountContract ta = new AccountContract
             {
                 Login = _account
             };

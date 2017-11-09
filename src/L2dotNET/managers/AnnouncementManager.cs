@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using log4net;
+using L2dotNET.DataContracts;
 using L2dotNET.model.player;
 using L2dotNET.model.player.basic;
 using L2dotNET.Models;
@@ -21,7 +22,7 @@ namespace L2dotNET.managers
         private static volatile AnnouncementManager _instance;
         private static readonly object SyncRoot = new object();
 
-        public List<AnnouncementModel> Announcements { get; set; }
+        public List<AnnouncementContract> Announcements { get; set; }
 
         public static AnnouncementManager Instance
         {
@@ -71,7 +72,7 @@ namespace L2dotNET.managers
 
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_ANNOUNCE);
 
-            foreach (AnnouncementModel announcement in Announcements.Where(announcement => announcement.Type == 0))
+            foreach (AnnouncementContract announcement in Announcements.Where(announcement => announcement.Type == 0))
             {
                 cs.Text = announcement.Text;
                 player.SendPacket(cs);

@@ -1,6 +1,6 @@
-﻿namespace L2dotNET.Models
+﻿namespace L2dotNET.DataContracts
 {
-    public class AccountModel
+    public class AccountContract
     {
         public string Login { get; set; }
 
@@ -12,7 +12,7 @@
 
         public int LastServer { get; set; }
 
-        public AccountModel()
+        public AccountContract()
         {
             Login = string.Empty;
             Password = string.Empty;

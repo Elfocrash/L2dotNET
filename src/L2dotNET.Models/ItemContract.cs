@@ -1,6 +1,6 @@
-﻿namespace L2dotNET.Models
+﻿namespace L2dotNET.DataContracts
 {
-    public class ItemModel
+    public class ItemContract
     {
         public int OwnerId { get; set; }
 

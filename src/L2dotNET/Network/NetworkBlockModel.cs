@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L2dotNET.Models
+namespace L2dotNET.Network
 {
     public class NetworkBlockModel
     {

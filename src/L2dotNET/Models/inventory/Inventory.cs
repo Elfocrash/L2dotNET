@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using L2dotNET.DataContracts;
 using L2dotNET.model.items;
 using L2dotNET.model.player;
 using L2dotNET.Models;
@@ -51,7 +52,7 @@ namespace L2dotNET.model.inventory
 
         public override void Restore(L2Character owner)
         {
-            List<ItemModel> models = ItemService.RestoreInventory(owner.ObjId, "Inventory");
+            List<ItemContract> models = ItemService.RestoreInventory(owner.ObjId, "Inventory");
             List<L2Item> items = L2Item.RestoreFromDb(models);
 
             foreach (L2Item item in items)

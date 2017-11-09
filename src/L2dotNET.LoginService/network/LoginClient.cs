@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Threading;
 using log4net;
 using L2Crypt;
+using L2dotNET.DataContracts;
 using L2dotNET.LoginService.Managers;
 using L2dotNET.LoginService.Network.Crypt;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
@@ -133,6 +134,6 @@ namespace L2dotNET.LoginService.Network
             }
         }
 
-        public AccountModel ActiveAccount { get; set; }
+        public AccountContract ActiveAccount { get; set; }
     }
 }

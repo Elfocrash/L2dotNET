@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using Dapper;
 using log4net;
-using L2dotNET.Models;
+using L2dotNET.DataContracts;
 using L2dotNET.Repositories.Contracts;
 using MySql.Data.MySqlClient;
 
@@ -20,11 +20,11 @@ namespace L2dotNET.Repositories
             Db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
         }
 
-        public PlayerModel GetAccountByLogin(int objId)
+        public PlayerContract GetPlayerByLogin(int objId)
         {
             try
             {
-                return Db.Query<PlayerModel>(@"select account_name as AccountName, obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
+                return Db.Query<PlayerContract>(@"select account_name as AccountName, obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
                 Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,base_class as BaseClass, DeleteTime,CanCraft,Title,
                 rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,punish_level as PunishLevel,punish_timer as PunishTimer,
                 power_grade as PowerGrade,Nobless,Hero,Subpledge,last_recom_date as LastRecomDate,char_slot as CharSlot,lvl_joined_academy as LevelJoinedAcademy, Apprentice, Sponsor,
@@ -36,7 +36,7 @@ namespace L2dotNET.Repositories
             }
             catch (MySqlException ex)
             {
-                Log.Error($"Method: {nameof(GetAccountByLogin)}. Message: \'{ex.Message}\' (Error Number: \'{ex.Number}\')");
+                Log.Error($"Method: {nameof(GetPlayerByLogin)}. Message: \'{ex.Message}\' (Error Number: \'{ex.Number}\')");
                 return null;
             }
         }
@@ -57,7 +57,7 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public void CreatePlayer(PlayerModel player)
+        public void CreatePlayer(PlayerContract player)
         {
             try
             {
@@ -128,7 +128,7 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public void UpdatePlayer(PlayerModel player)
+        public void UpdatePlayer(PlayerContract player)
         {
             try
             {
@@ -199,11 +199,11 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public PlayerModel GetPlayerModelBySlotId(string accountName, int slotId)
+        public PlayerContract GetPlayerModelBySlotId(string accountName, int slotId)
         {
             try
             {
-                return Db.Query<PlayerModel>(@"select obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
+                return Db.Query<PlayerContract>(@"select obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
                                                Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,base_class as BaseClass,classid as ClassId, DeleteTime,CanCraft,Title,
                                                rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,punish_level as PunishLevel,punish_timer as PunishTimer,
                                                power_grade as PowerGrade,Nobless,Hero,Subpledge,last_recom_date as LastRecomDate,lvl_joined_academy as LevelJoinedAcademy, Apprentice, Sponsor,

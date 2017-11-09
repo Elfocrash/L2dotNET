@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using log4net;
+using L2dotNET.DataContracts;
 using L2dotNET.Encryption;
 using L2dotNET.model.player;
 using L2dotNET.Models;
@@ -121,16 +122,16 @@ namespace L2dotNET
             }
         }
 
-        public PlayerModel LoadPlayerInSlot(string accName, int charSlot)
+        public L2Player LoadPlayerInSlot(string accName, int charSlot)
         {
-            PlayerModel player = PlayerService.GetPlayerModelBySlotId(accName, charSlot);
+            L2Player player = PlayerService.GetPlayerBySlotId(accName, charSlot);
             return player;
         }
 
         public L2Player GetPlayer(string accName, int charSlot)
         {
-            PlayerModel playerModel = LoadPlayerInSlot(accName, charSlot);
-            L2Player player = L2World.Instance.GetPlayer(playerModel.ObjectId);
+            L2Player playerContract = LoadPlayerInSlot(accName, charSlot);
+            L2Player player = L2World.Instance.GetPlayer(playerContract.ObjId);
             return player;
         }
 

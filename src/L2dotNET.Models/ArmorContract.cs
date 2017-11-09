@@ -1,6 +1,6 @@
-﻿namespace L2dotNET.Models
+﻿namespace L2dotNET.DataContracts
 {
-    public class ArmorModel
+    public class ArmorContract
     {
         public int ItemId { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using log4net;
+using L2dotNET.DataContracts;
 using L2dotNET.model.npcs;
 using L2dotNET.Models;
 using L2dotNET.Services.Contracts;
@@ -35,7 +36,7 @@ namespace L2dotNET.tables
 
         public void Initialize()
         {
-            List<SpawnlistModel> spawnsList = ServerService.GetAllSpawns();
+            List<SpawnlistContract> spawnsList = ServerService.GetAllSpawns();
 
             spawnsList.ForEach(spawn => new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId))
                                    {
