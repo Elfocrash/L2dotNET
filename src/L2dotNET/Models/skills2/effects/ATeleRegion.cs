@@ -17,12 +17,6 @@ namespace L2dotNET.model.skills2.effects
         public override EffectResult OnStart(L2Character caster, L2Character target)
         {
             int[] loc = null; //для городов не буду писать, пусть тащит как нуль
-            if (_region.EqualsIgnoreCase("hideout"))
-            {
-                L2Player player = (L2Player)target;
-                if ((player.ClanId > 0) && (player.Clan.HideoutId > 0))
-                    loc = player.Clan.Hideout.ownerLoc;
-            }
 
             //if (loc == null) //ELFOC
             //    loc = MapRegionTable.getInstance().getRespawn(target.X, target.Y, ((L2Player)target).Karma);

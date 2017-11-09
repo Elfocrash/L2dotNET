@@ -46,12 +46,12 @@ namespace L2dotNET.Network.serverpackets
             _mNVillage = 1;
             _mNOriginal = player.Builder;
 
-            if (player.ClanId > 0)
-            {
-                _mNAgit = player.Clan.HideoutId > 0 ? 1 : 0;
-                _mNCastle = player.Clan.CastleId > 0 ? 1 : 0;
-                _mNFotress = player.Clan.FortressId > 0 ? 1 : 0;
-            }
+            //if (player.ClanId > 0)
+            //{
+            //    _mNAgit = player.Clan.HideoutId > 0 ? 1 : 0;
+            //    _mNCastle = player.Clan.CastleId > 0 ? 1 : 0;
+            //    _mNFotress = player.Clan.FortressId > 0 ? 1 : 0;
+            //}
 
             AddItem(57);
         }

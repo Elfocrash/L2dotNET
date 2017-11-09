@@ -6,7 +6,7 @@ using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.world;
 
-namespace L2dotNET.controllers
+namespace L2dotNET.Controllers
 {
     [Synchronization]
     public class GameTime

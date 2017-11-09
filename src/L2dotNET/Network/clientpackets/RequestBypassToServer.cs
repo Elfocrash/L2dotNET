@@ -166,7 +166,7 @@ namespace L2dotNET.Network.clientpackets
                                                             string name = x1.Split('=')[1];
                                                             name = name.Substring(1);
 
-                                                            GrandmasterTotal.CreateClan(player, name, npc);
+                                                           // GrandmasterTotal.CreateClan(player, name, npc);
                                                         }
                                                         else
                                                         {

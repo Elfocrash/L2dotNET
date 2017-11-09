@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using L2dotNET.model.communities;
 using L2dotNET.model.player;
 using L2dotNET.Network.serverpackets;
 
@@ -21,25 +20,25 @@ namespace L2dotNET.Network.clientpackets.ClanAPI
 
         public override void RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
+            //L2Player player = _client.CurrentPlayer;
 
-            if (player.Clan == null)
-            {
-                player.SendActionFailed();
-                return;
-            }
+            //if (player.Clan == null)
+            //{
+            //    player.SendActionFailed();
+            //    return;
+            //}
 
-            L2Clan clan = player.Clan;
+            //L2Clan clan = player.Clan;
 
-            ClanMember m = clan.GetClanMembers().FirstOrDefault(cm => cm.Name.Equals(_player));
+            //ClanMember m = clan.GetClanMembers().FirstOrDefault(cm => cm.Name.Equals(_player));
 
-            if (m == null)
-            {
-                player.SendActionFailed();
-                return;
-            }
+            //if (m == null)
+            //{
+            //    player.SendActionFailed();
+            //    return;
+            //}
 
-            player.SendPacket(new PledgeReceiveMemberInfo(m));
+            //player.SendPacket(new PledgeReceiveMemberInfo(m));
         }
     }
 }

@@ -140,11 +140,11 @@ namespace L2dotNET.model.skills2
                             if (actor is L2Summon)
                                 targets.Add(((L2Summon)actor).Owner.ObjId, ((L2Summon)actor).Owner);
                             break;
-                        case SkillTarget.Unlockable:
-                        {
-                            if (actor.Target is L2Door)
-                                targets.Add(actor.Target.ObjId, actor.Target);
-                        }
+                        //case SkillTarget.Unlockable:
+                        //{
+                        //    if (actor.Target is L2Door)
+                        //        targets.Add(actor.Target.ObjId, actor.Target);
+                        //}
                             break;
                     }
                 }
@@ -187,11 +187,11 @@ namespace L2dotNET.model.skills2
                             if (actor is L2Summon)
                                 target = ((L2Summon)actor).Owner;
                             break;
-                        case SkillTarget.Unlockable:
-                        {
-                            if (actor.Target is L2Door)
-                                target = actor.Target;
-                        }
+                        //case SkillTarget.Unlockable:
+                        //{
+                        //    if (actor.Target is L2Door)
+                        //        target = actor.Target;
+                        //}
                             break;
                     }
 

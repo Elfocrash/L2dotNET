@@ -60,7 +60,7 @@ namespace L2dotNET.tables
                             obj = new L2PvPSign(IdFactory.Instance.NextId(), null);
                             break;
                         case "door":
-                            obj = new L2Door(IdFactory.Instance.NextId(), null);
+                            //obj = new L2Door(IdFactory.Instance.NextId(), null);
                             break;
                     }
 
@@ -127,14 +127,6 @@ namespace L2dotNET.tables
             }
 
             Log.Info($"StaticObjTable: Spanwed {Objects.Count} objects.");
-        }
-
-        public L2Door GetDoor(int id)
-        {
-            if (Objects.ContainsKey(id))
-                return (L2Door)Objects[id];
-
-            return null;
         }
     }
 }

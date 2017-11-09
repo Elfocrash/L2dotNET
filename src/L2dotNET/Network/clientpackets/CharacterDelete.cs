@@ -47,17 +47,17 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            if ((player.ClanId != 0) && (player.Clan != null))
-            {
-                if (player.Clan.LeaderId == player.ObjId)
-                {
-                    _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.ClanLeadersMayNotBeDeleted));
-                    return;
-                }
+            //if ((player.ClanId != 0) && (player.Clan != null))
+            //{
+            //    if (player.Clan.LeaderId == player.ObjId)
+            //    {
+            //        _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.ClanLeadersMayNotBeDeleted));
+            //        return;
+            //    }
 
-                _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.YouMayNotDeleteClanMember));
-                return;
-            }
+            //    _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.YouMayNotDeleteClanMember));
+            //    return;
+            //}
 
             if (Config.Config.Instance.GameplayConfig.Server.Client.DeleteCharAfterDays == 0)
             {

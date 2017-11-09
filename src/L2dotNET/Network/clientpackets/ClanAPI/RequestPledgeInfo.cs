@@ -1,5 +1,4 @@
-﻿using L2dotNET.model.communities;
-using L2dotNET.model.player;
+﻿using L2dotNET.model.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.tables;
 
@@ -18,11 +17,11 @@ namespace L2dotNET.Network.clientpackets.ClanAPI
 
         public override void RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
+            //L2Player player = _client.CurrentPlayer;
 
-            L2Clan clan = ClanTable.Instance.GetClan(_clanId);
-            if (clan != null)
-                player.SendPacket(new PledgeInfo(clan.ClanId, clan.Name, clan.AllianceName));
+            //L2Clan clan = ClanTable.Instance.GetClan(_clanId);
+            //if (clan != null)
+            //    player.SendPacket(new PledgeInfo(clan.ClanId, clan.Name, clan.AllianceName));
         }
     }
 }

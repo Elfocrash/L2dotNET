@@ -14,11 +14,6 @@ namespace L2dotNET.Network.clientpackets.ClanAPI
         public override void RunImpl()
         {
             L2Player player = _client.CurrentPlayer;
-
-            if (player.Clan != null)
-                player.Clan.Leave(player);
-            else
-                player.SendActionFailed();
         }
     }
 }

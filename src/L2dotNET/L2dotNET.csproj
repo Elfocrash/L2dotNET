@@ -84,7 +84,7 @@
     <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="Config\ServerConfig2.cs" />
     <Compile Include="Config\SiegeConfig.cs" />
-    <Compile Include="controllers\GameTime.cs" />
+    <Compile Include="Controllers\GameTime.cs" />
     <Compile Include="DepInjectionModule.cs" />
     <Compile Include="Encryption\BlowfishCipher.cs" />
     <Compile Include="Encryption\BlowfishKeygen.cs" />
@@ -127,7 +127,6 @@
     <Compile Include="Handlers\IChatHandler.cs" />
     <Compile Include="managers\AnnouncementManager.cs" />
     <Compile Include="managers\bbs\BBSManager.cs" />
-    <Compile Include="managers\CastleManager.cs" />
     <Compile Include="managers\EnchantScroll.cs" />
     <Compile Include="managers\EnchantTarget.cs" />
     <Compile Include="managers\EnchantType.cs" />
@@ -142,12 +141,6 @@
     <Compile Include="managers\TradeManager.cs" />
     <Compile Include="managers\TransformManager.cs" />
     <Compile Include="managers\ZoneManager.cs" />
-    <Compile Include="Models\communities\ClanMember.cs" />
-    <Compile Include="Models\communities\EClanRank.cs" />
-    <Compile Include="Models\communities\EClanSub.cs" />
-    <Compile Include="Models\communities\EClanType.cs" />
-    <Compile Include="Models\communities\L2Alliance.cs" />
-    <Compile Include="Models\communities\L2Clan.cs" />
     <Compile Include="Models\inventory\Inventory.cs" />
     <Compile Include="Models\inventory\ItemContainer.cs" />
     <Compile Include="Models\inventory\PcInventory.cs" />
@@ -174,7 +167,6 @@
     <Compile Include="Models\npcs\ai\BroadcastingTower.cs" />
     <Compile Include="Models\npcs\ai\ex\AiLooserOfGracia.cs" />
     <Compile Include="Models\npcs\ai\ex\Nightshade01.cs" />
-    <Compile Include="Models\npcs\ai\GrandmasterTotal.cs" />
     <Compile Include="Models\npcs\ai\WarriorAI.cs" />
     <Compile Include="Models\npcs\BuffForQuestReward.cs" />
     <Compile Include="Models\npcs\cubic\Cubic.cs" />
@@ -183,12 +175,9 @@
     <Compile Include="Models\npcs\cubic\data\HealCubic.cs" />
     <Compile Include="Models\npcs\cubic\data\SmartCubic.cs" />
     <Compile Include="Models\npcs\decor\L2Chair.cs" />
-    <Compile Include="Models\npcs\decor\L2Door.cs" />
     <Compile Include="Models\npcs\decor\L2PvPSign.cs" />
     <Compile Include="Models\npcs\decor\L2StaticObject.cs" />
     <Compile Include="Models\npcs\decor\L2TownMap.cs" />
-    <Compile Include="Models\npcs\L2Doormen.cs" />
-    <Compile Include="Models\npcs\L2HideoutManager.cs" />
     <Compile Include="Models\npcs\L2Monster.cs" />
     <Compile Include="Models\npcs\L2Npc.cs" />
     <Compile Include="Models\npcs\L2Warrior.cs" />
@@ -227,7 +216,6 @@
     <Compile Include="Models\skills2\EffectResult.cs" />
     <Compile Include="Models\skills2\effects\AConvertItem.cs" />
     <Compile Include="Models\skills2\effects\AgathionEnergy.cs" />
-    <Compile Include="Models\skills2\effects\AOpendoor.cs" />
     <Compile Include="Models\skills2\effects\ASummon.cs" />
     <Compile Include="Models\skills2\effects\ATeleRegion.cs" />
     <Compile Include="Models\skills2\effects\ATransform.cs" />
@@ -285,11 +273,6 @@
     <Compile Include="Models\stats\CStats.cs" />
     <Compile Include="Models\stats\Formulas.cs" />
     <Compile Include="Models\Status\CharStatus.cs" />
-    <Compile Include="Models\structures\Castle.cs" />
-    <Compile Include="Models\structures\ConquerableHideout.cs" />
-    <Compile Include="Models\structures\conq\FortressOfTheDead.cs" />
-    <Compile Include="Models\structures\Hideout.cs" />
-    <Compile Include="Models\structures\HideoutTemplate.cs" />
     <Compile Include="Models\templates\Object.cs" />
     <Compile Include="Models\templates\ObjectBaseAttackType.cs" />
     <Compile Include="Models\templates\ObjectCategory.cs" />
@@ -298,7 +281,6 @@
     <Compile Include="Models\vehicles\L2Boat.cs" />
     <Compile Include="Models\zones\classes\battle_zone.cs" />
     <Compile Include="Models\zones\classes\damage.cs" />
-    <Compile Include="Models\zones\classes\hideout_zone.cs" />
     <Compile Include="Models\zones\classes\instant_buff.cs" />
     <Compile Include="Models\zones\classes\instant_skill.cs" />
     <Compile Include="Models\zones\classes\monster_race.cs" />
@@ -602,9 +584,7 @@
     <Compile Include="tables\admin_bypass\ABTeleport.cs" />
     <Compile Include="tables\admin_bypass\ABTeleportEntry.cs" />
     <Compile Include="tables\admin_bypass\ABTeleportGroup.cs" />
-    <Compile Include="tables\AllianceTable.cs" />
     <Compile Include="tables\CharTemplateTable.cs" />
-    <Compile Include="tables\ClanTable.cs" />
     <Compile Include="tables\FString.cs" />
     <Compile Include="tables\HtmCache.cs" />
     <Compile Include="tables\IdFactory.cs" />
@@ -632,7 +612,6 @@
     <Compile Include="tables\SpawnTable.cs" />
     <Compile Include="tables\StaticObjTable.cs" />
     <Compile Include="tables\StructureSpawn.cs" />
-    <Compile Include="tables\StructureTable.cs" />
     <Compile Include="tables\TeleportWhereType.cs" />
     <Compile Include="tables\ZoneTable.cs" />
     <Compile Include="templates\AIType.cs" />

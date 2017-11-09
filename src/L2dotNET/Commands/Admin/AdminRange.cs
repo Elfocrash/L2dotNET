@@ -4,7 +4,6 @@ using System.Timers;
 using log4net;
 using L2dotNET.Attributes;
 using L2dotNET.model.player;
-using L2dotNET.model.structures.conq;
 using L2dotNET.model.zones.forms;
 using L2dotNET.tables.multisell;
 
@@ -39,10 +38,6 @@ namespace L2dotNET.Commands.Admin
                 case "2":
                     int listid = int.Parse(alias.Split(' ')[2]);
                     MultiSell.Instance.ShowList(admin, null, listid);
-                    break;
-                case "4":
-                    FortressOfTheDead d = new FortressOfTheDead();
-                    d.Start();
                     break;
                 case "5":
                     if (_np == null)

@@ -1,4 +1,4 @@
-﻿using L2dotNET.controllers;
+﻿using L2dotNET.Controllers;
 
 namespace L2dotNET.Network.serverpackets
 {

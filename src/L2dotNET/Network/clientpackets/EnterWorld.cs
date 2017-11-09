@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using L2dotNET.controllers;
+using L2dotNET.Controllers;
 using L2dotNET.managers;
 using L2dotNET.model.items;
 using L2dotNET.model.player;
@@ -40,9 +40,6 @@ namespace L2dotNET.Network.clientpackets
             player.SendQuestList();
             player.UpdateSkillList();
             player.UpdateReuse();
-
-            if (player.ClanId > 0)
-                ClanTable.Instance.Apply(player);
 
             player.SendPacket(new ExStorageMaxCount(player));
             // player.sendPacket(new ExBasicActionList());

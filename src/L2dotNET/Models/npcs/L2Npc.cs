@@ -223,19 +223,19 @@ namespace L2dotNET.model.npcs
 
         public void ShowClanWarehouse(L2Player player)
         {
-            if (player.Clan == null)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.YouDoNotHaveTheRightToUseClanWarehouse);
-                player.SendActionFailed();
-                return;
-            }
+            //if (player.Clan == null)
+            //{
+            //    player.SendSystemMessage(SystemMessage.SystemMessageId.YouDoNotHaveTheRightToUseClanWarehouse);
+            //    player.SendActionFailed();
+            //    return;
+            //}
 
-            if (player.Clan.Level == 0)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
-                player.SendActionFailed();
-                return;
-            }
+            //if (player.Clan.Level == 0)
+            //{
+            //    player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
+            //    player.SendActionFailed();
+            //    return;
+            //}
 
             List<L2Item> items = player.GetAllItems().Where(item => item.IsEquipped != 1).ToList();
 
@@ -267,19 +267,19 @@ namespace L2dotNET.model.npcs
 
         public void ShowClanWarehouseBack(L2Player player)
         {
-            if (player.Clan == null)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.YouDoNotHaveTheRightToUseClanWarehouse);
-                player.SendActionFailed();
-            }
-            else
-            {
-                if (player.Clan.Level != 0)
-                    return;
+            //if (player.Clan == null)
+            //{
+            //    player.SendSystemMessage(SystemMessage.SystemMessageId.YouDoNotHaveTheRightToUseClanWarehouse);
+            //    player.SendActionFailed();
+            //}
+            //else
+            //{
+            //    if (player.Clan.Level != 0)
+            //        return;
 
-                player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
-                player.SendActionFailed();
-            }
+            //    player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
+            //    player.SendActionFailed();
+            //}
         }
 
         public void ShowSkillLearn(L2Player player, bool backward)

@@ -172,7 +172,7 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.CurCp);
             WriteByte(_player.GetEnchantValue());
             WriteByte(_player.TeamId);
-            WriteInt(_player.GetClanCrestLargeId());
+            WriteInt(0);//_player.GetClanCrestLargeId()
             WriteByte(_player.Noblesse);
 
             byte hero = _player.Heroic;
@@ -186,7 +186,7 @@ namespace L2dotNET.Network.serverpackets
 
             WriteByte(_player.IsRunning);
 
-            WriteInt(_player.ClanRank());
+            WriteInt(0);//_player.ClanRank()
             WriteInt(_player.ClanType);
 
             WriteInt(_player.GetTitleColor());

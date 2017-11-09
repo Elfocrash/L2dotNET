@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using log4net;
-using L2dotNET.controllers;
+using L2dotNET.Controllers;
 using L2dotNET.Enums;
 using L2dotNET.Handlers;
 using L2dotNET.managers;
@@ -66,12 +66,8 @@ namespace L2dotNET
 
             AnnouncementManager.Instance.Initialize();
 
-            AllianceTable.Instance.Initialize();
-            ClanTable.Instance.Initialize();
-
             StaticObjTable.Instance.Initialize();
             SpawnTable.Instance.Initialize();
-            StructureTable.Instance.Initialize();
 
             HtmCache.Instance.Initialize();
 
