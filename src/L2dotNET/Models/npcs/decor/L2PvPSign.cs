@@ -17,7 +17,7 @@ namespace L2dotNET.model.npcs.decor
 
         public override string AsString()
         {
-            return $"L2PvP Sign:{ObjId} {StaticId} {ClanID}";
+            return $"L2PvP Sign:{ObjId} {StaticId}";
         }
     }
 }

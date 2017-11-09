@@ -1607,14 +1607,6 @@ namespace L2dotNET.world
             return (AttackToEnd != null) && AttackToEnd.Enabled;
         }
 
-        public virtual int ClanId { get; set; } = 0;
-
-        public virtual int ClanCrestId { get; set; } = 0;
-
-        public virtual int AllianceId { get; set; } = 0;
-
-        public virtual int AllianceCrestId { get; set; } = 0;
-
         public virtual int MaxHp { get; set; }
         public virtual int MaxCp { get; set; }
         public virtual int MaxMp { get; set; }

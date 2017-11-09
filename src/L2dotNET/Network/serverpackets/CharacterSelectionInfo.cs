@@ -41,7 +41,7 @@ namespace L2dotNET.Network.serverpackets
                 WriteInt(player.ObjId);
                 WriteString(_account);
                 WriteInt(_sessionId);
-                WriteInt(player.ClanId);
+                WriteInt(0);//player.ClanId
                 WriteInt(0x00); // ??
 
                 WriteInt((int)player.Sex);

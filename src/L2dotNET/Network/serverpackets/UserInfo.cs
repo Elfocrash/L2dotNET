@@ -132,10 +132,10 @@ namespace L2dotNET.Network.serverpackets
 
             WriteString(_player.Title);
 
-            WriteInt(_player.ClanId);
-            WriteInt(_player.ClanCrestId);
-            WriteInt(_player.AllianceId);
-            WriteInt(_player.AllianceCrestId);
+            WriteInt(0);//_player.ClanId
+            WriteInt(0);//_player.ClanCrestId
+            WriteInt(0);//_player.AllianceId
+            WriteInt(0);//_player.AllianceCrestId
 
             WriteInt(_player.Sstt); //_relation
             WriteByte(_player.MountType);

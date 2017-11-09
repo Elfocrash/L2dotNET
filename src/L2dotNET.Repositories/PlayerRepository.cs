@@ -25,8 +25,8 @@ namespace L2dotNET.Repositories
             try
             {
                 return Db.Query<PlayerModel>(@"select account_name as AccountName, obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
-                Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,ClanId,base_class as BaseClass, DeleteTime,CanCraft,Title,
-                rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,IsIn7sDungeon,punish_level as PunishLevel,punish_timer as PunishTimer,
+                Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,base_class as BaseClass, DeleteTime,CanCraft,Title,
+                rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,punish_level as PunishLevel,punish_timer as PunishTimer,
                 power_grade as PowerGrade,Nobless,Hero,Subpledge,last_recom_date as LastRecomDate,char_slot as CharSlot,lvl_joined_academy as LevelJoinedAcademy, Apprentice, Sponsor,
                 varka_ketra_ally as VarkaKetraAlly,clan_join_expiry_time as ClanJoinExpiryTime,clan_create_expiry_time as ClanCreateExpiryTime, death_penalty_level as
                 DeathPenaltyLevel, lastAccess from characters where obj_Id=@id", new
@@ -62,12 +62,12 @@ namespace L2dotNET.Repositories
             try
             {
                 Db.Execute(@"insert into characters (account_name, obj_Id, char_name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
-                             Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,ClanId,Race,classid,base_class, DeleteTime,CanCraft,Title,
-                             rec_have,rec_left,AccessLevel,char_slot,clan_privs, WantsPeace,IsIn7sDungeon,punish_level,punish_timer, power_grade,Nobless,Hero,Subpledge,
+                             Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,Race,classid,base_class, DeleteTime,CanCraft,Title,
+                             rec_have,rec_left,AccessLevel,char_slot,clan_privs, WantsPeace,punish_level,punish_timer, power_grade,Nobless,Hero,Subpledge,
                              last_recom_date,lvl_joined_academy, Apprentice, Sponsor,varka_ketra_ally,clan_join_expiry_time,clan_create_expiry_time, death_penalty_level) 
                              Values (@account_name, @obj_Id, @char_name, @Level, @MaxHp, @CurHp, @MaxCp, @CurCp,@MaxMp,@CurMp,
-                             @Face,@HairStyle,@HairColor,@Sex,@Heading,@X,@Y,@Z,@Exp,@ExpBeforeDeath,@Sp,@Karma,@PvpKills,@PkKills,@ClanId,@Race,@classid,@base_class, @DeleteTime,@CanCraft,@Title,
-                             @rec_have,@rec_left,@AccessLevel,@char_slot,@clan_privs, @WantsPeace,@IsIn7sDungeon,@punish_level,@punish_timer, @power_grade,@Nobless,@Hero,@Subpledge,
+                             @Face,@HairStyle,@HairColor,@Sex,@Heading,@X,@Y,@Z,@Exp,@ExpBeforeDeath,@Sp,@Karma,@PvpKills,@PkKills,@Race,@classid,@base_class, @DeleteTime,@CanCraft,@Title,
+                             @rec_have,@rec_left,@AccessLevel,@char_slot,@clan_privs, @WantsPeace,@punish_level,@punish_timer, @power_grade,@Nobless,@Hero,@Subpledge,
                              @last_recom_date,@lvl_joined_academy, @Apprentice, @Sponsor,@varka_ketra_ally,@clan_join_expiry_time,@clan_create_expiry_time, @death_penalty_level)", new
                 {
                     account_name = player.AccountName,
@@ -94,7 +94,6 @@ namespace L2dotNET.Repositories
                     Karma = player.Karma,
                     PvpKills = player.PvpKills,
                     PkKills = player.PkKills,
-                    ClanId = player.ClanId,
                     Race = player.Race,
                     classid = player.ClassId,
                     base_class = player.BaseClass,
@@ -107,7 +106,6 @@ namespace L2dotNET.Repositories
                     char_slot = player.CharSlot,
                     clan_privs = player.ClanPrivs,
                     WantsPeace = player.WantsPeace,
-                    IsIn7sDungeon = player.IsIn7SDungeon,
                     punish_level = player.PunishLevel,
                     punish_timer = player.PunishTimer,
                     power_grade = player.PowerGrade,
@@ -136,9 +134,9 @@ namespace L2dotNET.Repositories
             {
                 Db.ExecuteAsync(@"UPDATE characters SET level=@level,maxHp=@maxHp,curHp=@curHp,maxCp=@maxCp,curCp=@curCp,maxMp=@maxMp,curMp=@curMp,face=@face,hairStyle=@hairStyle,
                              hairColor=@hairColor,sex=@sex,heading=@heading
-                             ,x=@x,y=@y,z=@z,exp=@exp,expBeforeDeath=@expBeforeDeath,sp=@sp,karma=@karma,pvpkills=@pvpkills,pkkills=@pkkills,rec_have=@rec_have,rec_left=@rec_left,clanid=@clanid,
+                             ,x=@x,y=@y,z=@z,exp=@exp,expBeforeDeath=@expBeforeDeath,sp=@sp,karma=@karma,pvpkills=@pvpkills,pkkills=@pkkills,rec_have=@rec_have,rec_left=@rec_left,
                              race=@race,classid=@classid,deletetime=@deletetime,title=@title,accesslevel=@accesslevel
-                             ,online=@online,isin7sdungeon=@isin7sdungeon,clan_privs=@clan_privs,wantspeace=@wantspeace,base_class=@base_class,onlinetime=@onlinetime,punish_level=@punish_level,
+                             ,online=@online,clan_privs=@clan_privs,wantspeace=@wantspeace,base_class=@base_class,onlinetime=@onlinetime,punish_level=@punish_level,
                              punish_timer=@punish_timer,nobless=@nobless,power_grade=@power_grade,subpledge=@subpledge,
                              last_recom_date=@last_recom_date,lvl_joined_academy=@lvl_joined_academy,apprentice=@apprentice,sponsor=@sponsor,varka_ketra_ally=@varka_ketra_ally,
                              clan_join_expiry_time=@clan_join_expiry_time,clan_create_expiry_time=@clan_create_expiry_time,
@@ -165,7 +163,6 @@ namespace L2dotNET.Repositories
                     karma = player.Karma,
                     pvpkills = player.PvpKills,
                     pkkills = player.PkKills,
-                    clanid = player.ClanId,
                     online = player.Online,
                     onlinetime = player.OnlineTime,
                     race = player.Race,
@@ -179,7 +176,6 @@ namespace L2dotNET.Repositories
                     accesslevel = player.AccessLevel,
                     clan_privs = player.ClanPrivs,
                     wantspeace = player.WantsPeace,
-                    isin7sdungeon = player.IsIn7SDungeon,
                     punish_level = player.PunishLevel,
                     punish_timer = player.PunishTimer,
                     power_grade = player.PowerGrade,
@@ -208,8 +204,8 @@ namespace L2dotNET.Repositories
             try
             {
                 return Db.Query<PlayerModel>(@"select obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
-                                               Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,ClanId,base_class as BaseClass,classid as ClassId, DeleteTime,CanCraft,Title,
-                                               rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,IsIn7sDungeon,punish_level as PunishLevel,punish_timer as PunishTimer,
+                                               Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,base_class as BaseClass,classid as ClassId, DeleteTime,CanCraft,Title,
+                                               rec_have as RecHave,rec_left as RecLeft,AccessLevel,clan_privs as ClanPrivs, WantsPeace,punish_level as PunishLevel,punish_timer as PunishTimer,
                                                power_grade as PowerGrade,Nobless,Hero,Subpledge,last_recom_date as LastRecomDate,lvl_joined_academy as LevelJoinedAcademy, Apprentice, Sponsor,
                                                varka_ketra_ally as VarkaKetraAlly,clan_join_expiry_time as ClanJoinExpiryTime,clan_create_expiry_time as ClanCreateExpiryTime, death_penalty_level as
                                                DeathPenaltyLevel, lastAccess from characters where account_name=@account_name AND char_slot=@char_slot", new

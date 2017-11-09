@@ -13,7 +13,6 @@ namespace L2dotNET.model.npcs.decor
         /// EL2_DOOR (1), EL2_AIRSHIPKEY (3)
         /// </summary>
         public int StaticId;
-        public int ClanID = -1;
         public int MeshId = 0;
         public int StructureId = 0;
         public int Type = 0;

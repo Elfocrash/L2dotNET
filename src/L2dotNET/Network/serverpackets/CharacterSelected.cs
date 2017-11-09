@@ -22,7 +22,7 @@ namespace L2dotNET.Network.serverpackets
             WriteString(_player.Title);
             WriteInt(_session);
 
-            WriteInt(_player.ClanId);
+            WriteInt(0);//_player.ClanId
             WriteInt(0x00); //??
             WriteInt((int)_player.Sex);
             WriteInt((int)_player.BaseClass.ClassId.ClassRace);

@@ -180,7 +180,7 @@ namespace L2dotNET.Network.clientpackets
             if (player.Target is L2Chair)
             {
                 L2Chair chair = (L2Chair)player.Target;
-                if (!chair.IsUsedAlready && (chair.ClanID != -1) && (player.ClanId == chair.ClanID))
+                if (!chair.IsUsedAlready)
                 {
                     double dis = Calcs.CalculateDistance(player, chair, true);
                     if (dis < 150)

@@ -60,10 +60,10 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(0x00); // karma
 
             WriteInt(_npc.AbnormalBitMask);
-            WriteInt(_npc.ClanId);
-            WriteInt(_npc.ClanCrestId);
-            WriteInt(_npc.AllianceId);
-            WriteInt(_npc.AllianceCrestId);
+            WriteInt(0);//_npc.ClanId
+            WriteInt(0);//_npc.ClanCrestId
+            WriteInt(0);//_npc.AllianceId
+            WriteInt(0);//_npc.AllianceCrestId
             WriteByte(_npc.IsFlying() ? 2 : 0); // C2
 
             WriteByte(_npc.TeamId);

@@ -15,7 +15,7 @@ namespace L2dotNET.model.npcs.decor
 
         public override string AsString()
         {
-            return $"L2Chair:{ObjId} {StaticId} {ClanID}";
+            return $"L2Chair:{ObjId} {StaticId}";
         }
     }
 }

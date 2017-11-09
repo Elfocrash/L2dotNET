@@ -50,8 +50,6 @@
 
         public int PkKills { get; set; }
 
-        public int ClanId { get; set; }
-
         public int Race { get; set; }
 
         public int ClassId { get; set; }
@@ -81,8 +79,6 @@
         public int ClanPrivs { get; set; }
 
         public int WantsPeace { get; set; }
-
-        public int IsIn7SDungeon { get; set; }
 
         public int PunishLevel { get; set; }
 

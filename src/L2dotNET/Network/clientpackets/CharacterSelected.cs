@@ -72,7 +72,6 @@ namespace L2dotNET.Network.clientpackets
             player.Karma = playerModel.Karma;
             player.PvpKills = playerModel.PvpKills;
             player.PkKills = playerModel.PkKills;
-            player.ClanId = playerModel.ClanId;
             player.ActiveClass.ClassId.Id = (ClassIds)playerModel.ClassId;
             player.BaseClass.ClassId.Id = (ClassIds)playerModel.BaseClass;
             player.DeleteTime = playerModel.DeleteTime;
@@ -86,7 +85,6 @@ namespace L2dotNET.Network.clientpackets
             player.LastAccess = playerModel.LastAccess;
             player.ClanPrivs = playerModel.ClanPrivs;
             player.WantsPeace = playerModel.WantsPeace;
-            player.IsIn7SDungeon = playerModel.IsIn7SDungeon;
             player.PunishLevel = playerModel.PunishLevel;
             player.PunishTimer = playerModel.PunishLevel;
             player.PowerGrade = playerModel.PowerGrade;
