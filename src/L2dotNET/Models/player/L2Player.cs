@@ -84,28 +84,18 @@ namespace L2dotNET.model.player
         public int Online { get; set; }
         public int OnlineTime { get; set; }
         public int CharSlot { get; set; }
-        public int DeathPenaltyLevel { get; set; }
         public int CurrentWeight { get; set; }
         public double CollRadius { get; set; }
         public double CollHeight { get; set; }
         public int CursedWeaponLevel { get; set; }
         public long LastAccess { get; set; }
-        public int ClanPrivs { get; set; }
-        public int WantsPeace { get; set; }
         public int IsIn7SDungeon { get; set; }
         public int PunishLevel { get; set; }
         public int PunishTimer { get; set; }
         public int PowerGrade { get; set; }
         public int Nobless { get; set; }
         public int Hero { get; set; }
-        public int Subpledge { get; set; }
         public long LastRecomDate { get; set; }
-        public int LevelJoinedAcademy { get; set; }
-        public int Apprentice { get; set; }
-        public int Sponsor { get; set; }
-        public int VarkaKetraAlly { get; set; }
-        public long ClanJoinExpiryTime { get; set; }
-        public int ClanCreateExpiryTime { get; set; }
         public PcInventory Inventory { get; set; }
         public dynamic SessionData { get; set; }
         public new PcTemplate Template { get; set; }

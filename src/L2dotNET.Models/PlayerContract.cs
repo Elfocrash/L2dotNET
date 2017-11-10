@@ -76,10 +76,6 @@
 
         public long LastAccess { get; set; }
 
-        public int ClanPrivs { get; set; }
-
-        public int WantsPeace { get; set; }
-
         public int PunishLevel { get; set; }
 
         public int PunishTimer { get; set; }
@@ -90,22 +86,6 @@
 
         public int Hero { get; set; }
 
-        public int Subpledge { get; set; }
-
         public long LastRecomDate { get; set; }
-
-        public int LevelJoinedAcademy { get; set; }
-
-        public int Apprentice { get; set; }
-
-        public int Sponsor { get; set; }
-
-        public int VarkaKetraAlly { get; set; }
-
-        public long ClanJoinExpiryTime { get; set; }
-
-        public int ClanCreateExpiryTime { get; set; }
-
-        public int DeathPenaltyLevel { get; set; }
     }
 }

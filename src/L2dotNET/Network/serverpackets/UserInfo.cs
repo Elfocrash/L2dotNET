@@ -159,7 +159,7 @@ namespace L2dotNET.Network.serverpackets
 
             WriteByte(0x00);
 
-            WriteInt(_player.ClanPrivs);
+            WriteInt(0);//_player.ClanPrivs
 
             WriteShort(_player.RecHave); //c2  recommendations remaining
             WriteShort(_player.RecLeft); //c2  recommendations received

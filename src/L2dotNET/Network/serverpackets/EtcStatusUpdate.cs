@@ -9,7 +9,7 @@ namespace L2dotNET.Network.serverpackets
         private readonly int _whisper;
         private readonly int _danger;
         private readonly int _grade;
-        private int _death;
+        private int _death = 0;
         private int _souls;
 
         public EtcStatusUpdate(L2Player player)
@@ -19,7 +19,7 @@ namespace L2dotNET.Network.serverpackets
             _whisper = player.WhisperBlock ? 1 : 0;
             _danger = player.IsInDanger ? 1 : 0;
             _grade = player.PenaltyGrade;
-            _death = player.DeathPenaltyLevel;
+            //_death = player.DeathPenaltyLevel;
             _souls = player.Souls;
         }
 

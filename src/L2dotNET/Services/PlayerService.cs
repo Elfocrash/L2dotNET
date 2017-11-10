@@ -56,10 +56,6 @@ namespace L2dotNET.Services
                 RecLeft = playerContract.RecLeft,
                 RecHave = playerContract.RecHave,
                 CharSlot = playerContract.CharSlot,
-                DeathPenaltyLevel = playerContract.DeathPenaltyLevel,
-                ClanPrivs = playerContract.ClanPrivs,
-                PenaltyClanCreate = playerContract.ClanCreateExpiryTime.ToString(),
-                PenaltyClanJoin = playerContract.ClanJoinExpiryTime.ToString(),
                 Inventory = new PcInventory(null),
                 DeleteTime = playerContract.DeleteTime,
                 LastAccess = playerContract.LastAccess,
@@ -67,20 +63,12 @@ namespace L2dotNET.Services
                 AccessLevel = playerContract.AccessLevel,
                 Online = playerContract.Online,
                 OnlineTime = playerContract.OnlineTime,
-                WantsPeace = playerContract.WantsPeace,
                 PunishLevel = playerContract.PunishLevel,
                 PunishTimer = playerContract.PunishTimer,
                 PowerGrade = playerContract.PowerGrade,
                 Nobless = playerContract.Nobless,
                 Hero = playerContract.Hero,
-                Subpledge = playerContract.Subpledge,
-                LastRecomDate = playerContract.LastRecomDate,
-                LevelJoinedAcademy = playerContract.LevelJoinedAcademy,
-                Apprentice = playerContract.Apprentice,
-                Sponsor = playerContract.Sponsor,
-                VarkaKetraAlly = playerContract.VarkaKetraAlly,
-                ClanJoinExpiryTime = playerContract.ClanJoinExpiryTime,
-                ClanCreateExpiryTime = playerContract.ClanCreateExpiryTime
+                LastRecomDate = playerContract.LastRecomDate
             };
             return player;
         }
@@ -132,22 +120,12 @@ namespace L2dotNET.Services
                 OnlineTime = player.OnlineTime,
                 CharSlot = player.CharSlot,
                 LastAccess = player.LastAccess,
-                ClanPrivs = player.ClanPrivs,
-                WantsPeace = player.WantsPeace,
                 PunishLevel = player.PunishLevel,
                 PunishTimer = player.PunishTimer,
                 PowerGrade = player.PowerGrade,
                 Nobless = player.Nobless,
                 Hero = player.Hero,
-                Subpledge = player.Subpledge,
-                LastRecomDate = player.LastRecomDate,
-                LevelJoinedAcademy = player.LevelJoinedAcademy,
-                Apprentice = player.Apprentice,
-                Sponsor = player.Sponsor,
-                VarkaKetraAlly = player.VarkaKetraAlly,
-                ClanJoinExpiryTime = player.ClanJoinExpiryTime,
-                ClanCreateExpiryTime = player.ClanCreateExpiryTime,
-                DeathPenaltyLevel = player.DeathPenaltyLevel
+                LastRecomDate = player.LastRecomDate
             };
             _unitOfWork.PlayerRepository.CreatePlayer(playerContract);
         }
@@ -188,17 +166,10 @@ namespace L2dotNET.Services
                 RecHave = player.RecHave,
                 RecLeft = player.RecLeft,
                 AccessLevel = player.AccessLevel,
-                ClanPrivs = player.ClanPrivs,
-                WantsPeace = player.WantsPeace,
                 PunishLevel = player.PunishLevel,
                 PunishTimer = player.PunishTimer,
                 PowerGrade = player.PowerGrade,
                 Nobless = player.Nobless,
-                Sponsor = player.Sponsor,
-                VarkaKetraAlly = player.VarkaKetraAlly,
-                ClanCreateExpiryTime = player.ClanCreateExpiryTime,
-                ClanJoinExpiryTime = player.ClanJoinExpiryTime,
-                DeathPenaltyLevel = player.DeathPenaltyLevel,
                 LastAccess = player.LastAccess
             };
             _unitOfWork.PlayerRepository.UpdatePlayer(playerContract);
