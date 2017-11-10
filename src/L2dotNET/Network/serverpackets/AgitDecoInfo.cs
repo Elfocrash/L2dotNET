@@ -1,5 +1,4 @@
-﻿using L2dotNET.model.npcs.ai;
-namespace L2dotNET.Network.serverpackets
+﻿namespace L2dotNET.Network.serverpackets
 {
     class AgitDecoInfo : GameserverPacket
     {

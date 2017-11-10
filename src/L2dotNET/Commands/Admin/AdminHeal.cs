@@ -1,6 +1,5 @@
 ﻿using L2dotNET.Attributes;
 using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Commands.Admin
@@ -18,10 +17,10 @@ namespace L2dotNET.Commands.Admin
             else
                 target = admin;
 
-            double hpval = target.CharacterStat.GetStat(EffectType.BMaxHp) - target.CurHp;
-            double mpval = target.CharacterStat.GetStat(EffectType.BMaxMp) - target.CurMp;
-            target.CurHp += hpval;
-            target.CurMp += mpval;
+            double hpval = target.MaxHp;
+            double mpval = target.MaxMp;
+            target.CurHp = target.MaxHp;
+            target.CurMp = target.MaxMp;
 
             StatusUpdate su = new StatusUpdate(target.ObjId);
             su.Add(StatusUpdate.CurHp, (int)target.CurHp);

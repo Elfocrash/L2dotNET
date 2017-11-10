@@ -1,6 +1,5 @@
 ﻿using L2dotNET.model.inventory;
 using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 
 namespace L2dotNET.Network.serverpackets
 {
@@ -45,7 +44,7 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.CurMp);
             WriteInt(_player.Sp);
             WriteInt(_player.CurrentWeight);
-            WriteInt(_player.CharacterStat.GetStat(EffectType.BMaxWeight));
+            WriteInt(100);
 
             WriteInt(_player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand) != null ? 40 : 20); // 20 no weapon, 40 weapon equipped
 
@@ -89,22 +88,22 @@ namespace L2dotNET.Network.serverpackets
             WriteShort(0x00);
             WriteShort(0x00);
 
-            double atkspd = _player.CharacterStat.GetStat(EffectType.BAttackSpd);
-            WriteInt(_player.CharacterStat.GetStat(EffectType.PPhysicalAttack));
+            double atkspd = 1000;//_player.CharacterStat.GetStat(EffectType.BAttackSpd)
+            WriteInt(100);//_player.CharacterStat.GetStat(EffectType.PPhysicalAttack)
             WriteInt(atkspd);
-            WriteInt(_player.CharacterStat.GetStat(EffectType.PPhysicalDefense));
-            WriteInt(_player.CharacterStat.GetStat(EffectType.BEvasion));
-            WriteInt(_player.CharacterStat.GetStat(EffectType.BAccuracy));
-            WriteInt(_player.CharacterStat.GetStat(EffectType.BCriticalRate));
-            WriteInt(_player.CharacterStat.GetStat(EffectType.PMagicalAttack));
-            WriteInt(_player.CharacterStat.GetStat(EffectType.BCastingSpd));
+            WriteInt(100);//_player.CharacterStat.GetStat(EffectType.PPhysicalDefense)
+            WriteInt(0);//_player.CharacterStat.GetStat(EffectType.BEvasion)
+            WriteInt(100);//_player.CharacterStat.GetStat(EffectType.BAccuracy)
+            WriteInt(100);//_player.CharacterStat.GetStat(EffectType.BCriticalRate)
+            WriteInt(1000);//_player.CharacterStat.GetStat(EffectType.PMagicalAttack)
+            WriteInt(1000);//_player.CharacterStat.GetStat(EffectType.BCastingSpd)
             WriteInt(atkspd); //? еще раз?
-            WriteInt(_player.CharacterStat.GetStat(EffectType.PMagicalDefense));
+            WriteInt(0);//_player.CharacterStat.GetStat(EffectType.PMagicalDefense)
 
             WriteInt(_player.PvPStatus);
             WriteInt(_player.Karma);
 
-            double spd = _player.CharacterStat.GetStat(EffectType.PSpeed);
+            double spd = 100;// _player.CharacterStat.GetStat(EffectType.PSpeed);
 
             double anim = (spd * 1f) / 130;
             //double anim2 = (1.1) * atkspd / 300;
@@ -144,9 +143,9 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.PkKills);
             WriteInt(_player.PvpKills);
 
-            WriteShort(_player.Cubics.Count);
+            WriteShort(0);//_player.Cubics.Count
 
-            _player.Cubics.ForEach(cub => WriteShort(cub.Template.Id));
+            //_player.Cubics.ForEach(cub => WriteShort(cub.Template.Id));
 
             WriteByte(0); //1-isInPartyMatchRoom
 

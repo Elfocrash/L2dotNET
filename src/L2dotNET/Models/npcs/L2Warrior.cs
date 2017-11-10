@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Linq;
-using L2dotNET.model.npcs.ai;
-using L2dotNET.model.playable;
 using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.tables;
 using L2dotNET.templates;
@@ -53,11 +50,10 @@ namespace L2dotNET.model.npcs
 
                 StatusUpdate su = new StatusUpdate(ObjId);
                 su.Add(StatusUpdate.CurHp, (int)CurHp);
-                su.Add(StatusUpdate.MaxHp, (int)CharacterStat.GetStat(EffectType.BMaxHp));
+                su.Add(StatusUpdate.MaxHp, (int)MaxHp);
                 player.SendPacket(su);
             }
-            else
-                player.AiCharacter.Attack(this);
+            
         }
 
         private readonly Random _rnd = new Random();
@@ -65,8 +61,6 @@ namespace L2dotNET.model.npcs
         public override void OnSpawn(bool notifyOthers = true)
         {
             base.OnSpawn(notifyOthers);
-            if (Template.AggroRange > 0)
-                AiCharacter.Enable();
 
             SpawnX = X;
             SpawnY = Y;
@@ -90,13 +84,11 @@ namespace L2dotNET.model.npcs
 
         public override void StartAi()
         {
-            AiCharacter = new WarriorAi(this);
         }
 
         public override void OnForcedAttack(L2Player player)
         {
             player.AttackingId = ObjId;
-            player.AiCharacter.Attack(this);
         }
 
         public override void BroadcastUserInfo()
@@ -113,13 +105,7 @@ namespace L2dotNET.model.npcs
                 ((L2Player)killer).RedistExp(this);
             else
             {
-                if (killer is L2Pet)
-                    ((L2Pet)killer).Owner.RedistExp(this);
-                else
-                {
-                    if (killer is L2Summon)
-                        ((L2Summon)killer).Owner.RedistExp(this);
-                }
+
             }
 
             //Template.roll_drops(this, killer);
@@ -133,12 +119,12 @@ namespace L2dotNET.model.npcs
         public override void OnActionShift(L2Player player)
         {
             string text = string.Empty;
-            text += $"pdef: {CharacterStat.GetStat(EffectType.PPhysicalDefense)}<br>";
-            text += $"patk: {CharacterStat.GetStat(EffectType.PPhysicalAttack)}<br>";
-            text += $"curhp: {CurHp}<br>";
-            text += $"maxhp: {CharacterStat.GetStat(EffectType.BMaxHp)}<br>";
-            text += $"mdef: {CharacterStat.GetStat(EffectType.PMagicalAttack)}<br>";
-            text += $"matk: {CharacterStat.GetStat(EffectType.PMagicalDefense)}<br>";
+            //text += $"pdef: {CharacterStat.GetStat(EffectType.PPhysicalDefense)}<br>";
+            //text += $"patk: {CharacterStat.GetStat(EffectType.PPhysicalAttack)}<br>";
+            //text += $"curhp: {CurHp}<br>";
+            //text += $"maxhp: {CharacterStat.GetStat(EffectType.BMaxHp)}<br>";
+            //text += $"mdef: {CharacterStat.GetStat(EffectType.PMagicalAttack)}<br>";
+            //text += $"matk: {CharacterStat.GetStat(EffectType.PMagicalDefense)}<br>";
 
             player.ShowHtmPlain(text, null);
             player.SendActionFailed();

@@ -28,12 +28,7 @@ namespace L2dotNET.Network.clientpackets
             player.SendPacket(new UserInfo(player));
             player.ValidateVisibleObjects(x, y, false);
             player.UpdateVisibleStatus();
-
-            if (player.Summon != null)
-            {
-                player.Summon.ValidateVisibleObjects(x, y, false);
-                player.Summon.IsTeleporting = false;
-            }
+            
 
             player.SendActionFailed();
         }

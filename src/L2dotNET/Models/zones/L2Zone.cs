@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Timers;
-using L2dotNET.model.playable;
 using L2dotNET.model.player;
 using L2dotNET.model.zones.forms;
 using L2dotNET.Network;
@@ -34,8 +33,7 @@ namespace L2dotNET.model.zones
                     ((L2Player)obj).SendPacket(pk);
                 else
                 {
-                    if (obj is L2Summon)
-                        ((L2Summon)obj).SendPacket(pk);
+                   
                 }
             }
         }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.model.items;
 using L2dotNET.model.npcs;
-using L2dotNET.model.playable;
 using L2dotNET.model.player;
 using L2dotNET.world;
 
@@ -90,8 +89,6 @@ namespace L2dotNET.Network.serverpackets
                 return AddPlayerName(((L2Player)obj).Name);
             if (obj is L2Npc)
                 return AddNpcName(((L2Npc)obj).NpcId);
-            if (obj is L2Summon)
-                return AddNpcName(((L2Summon)obj).NpcId);
             if (obj is L2Item)
                 return AddItemName(((L2Item)obj).Template.ItemId);
 

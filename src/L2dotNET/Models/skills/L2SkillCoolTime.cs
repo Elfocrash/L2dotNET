@@ -40,8 +40,7 @@ namespace L2dotNET.model.skills
         private void ActionTime(object sender, ElapsedEventArgs e)
         {
             _timer.Enabled = false;
-            lock (Owner.Reuse)
-                Owner.Reuse.Remove(Id);
+            
         }
     }
 }

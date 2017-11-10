@@ -30,14 +30,7 @@ namespace L2dotNET.Network.clientpackets.VehicleAPI
                 player.SendActionFailed();
                 return;
             }
-
-            if (player.Summon != null)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.ReleasePetOnBoat);
-                player.SendActionFailed();
-                return;
-            }
-
+            
             player.BoatX = _x;
             player.BoatY = _y;
             player.BoatZ = _z;

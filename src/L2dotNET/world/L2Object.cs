@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Timers;
 using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 using L2dotNET.model.zones;
 using L2dotNET.model.zones.classes;
 using L2dotNET.Models;
@@ -52,8 +51,6 @@ namespace L2dotNET.world
         public virtual void OnForcedAttack(L2Player player) { }
 
         public virtual void SendPacket(GameserverPacket pk) { }
-
-        public virtual void AddAbnormal(Skill skill, L2Character caster, bool permanent, bool unlim) { }
 
         public virtual void OnRemObject(L2Object obj) { }
 

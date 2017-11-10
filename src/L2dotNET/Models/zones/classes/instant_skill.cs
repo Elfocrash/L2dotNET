@@ -3,7 +3,6 @@ using System.Linq;
 using System.Timers;
 using L2dotNET.model.npcs;
 using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 using L2dotNET.tables;
 using L2dotNET.world;
 
@@ -36,7 +35,7 @@ namespace L2dotNET.model.zones.classes
                     if (Template.Target == ZoneTemplate.ZoneTarget.Npc)
                         continue;
 
-                    affect((L2Character)o);
+                   // affect((L2Character)o);
                 }
                 else
                 {
@@ -46,29 +45,11 @@ namespace L2dotNET.model.zones.classes
                     if ((Template.Target == ZoneTemplate.ZoneTarget.Pc) || (Template.Target == ZoneTemplate.ZoneTarget.OnlyPc))
                         continue;
 
-                    affect((L2Character)o);
+                   // affect((L2Character)o);
                 }
             }
         }
-
-        private void affect(L2Character target)
-        {
-            Random rn = new Random();
-            if (Template.Skills != null)
-            {
-                foreach (Skill sk in Template.Skills.Where(sk => rn.Next(0, 100) <= Template.SkillProb))
-                    target.AddAbnormal(sk, null, true, false);
-            }
-
-            if (Template.Skill == null)
-                return;
-
-            if (rn.Next(0, 100) > Template.SkillProb)
-                return;
-
-            target.AddAbnormal(Template.Skill, null, true, false);
-        }
-
+        
         public override void OnEnter(L2Object obj)
         {
             if (!Enabled)

@@ -188,8 +188,7 @@ namespace L2dotNET.model.player
                 BroadcastToMembers(sm);
                 BroadcastToMembers(new PartySmallWindowDelete(playerMember.ObjId, playerMember.Name));
 
-                if (playerMember.Summon != null)
-                    BroadcastToMembers(new ExPartyPetWindowDelete(playerMember.Summon.ObjId, playerMember.ObjId, playerMember.Summon.Name));
+                
             }
             else
             {

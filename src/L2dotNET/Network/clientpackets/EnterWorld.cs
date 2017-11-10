@@ -42,7 +42,6 @@ namespace L2dotNET.Network.clientpackets
             // player.sendItemList(false);
             player.SendPacket(new FriendList());
             player.SendQuestList();
-            player.UpdateSkillList();
             player.UpdateReuse();
 
             player.SendPacket(new ExStorageMaxCount(player));

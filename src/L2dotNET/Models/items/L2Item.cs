@@ -93,7 +93,6 @@ namespace L2dotNET.model.items
             SlotLocation = -1;
             PaperdollSlot = -1;
             IsEquipped = 0;
-            owner.RemoveStats(this);
         }
 
         public void Equip(L2Player owner)
@@ -102,12 +101,10 @@ namespace L2dotNET.model.items
             SlotLocation = Inventory.GetPaperdollIndex(Template.BodyPart);
             PaperdollSlot = Inventory.GetPaperdollIndex(Template.BodyPart);
             IsEquipped = 1;
-            owner.AddStats(this);
         }
 
         public void NotifyStats(L2Player owner)
         {
-            owner.AddStats(this);
         }
 
         private void TryEquipSecondary(L2Player owner) { }

@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using log4net;
-using L2dotNET.model.playable;
 using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.world;
 
@@ -52,9 +50,6 @@ namespace L2dotNET.model.items
             if (Destroy)
                 player.DestroyItem(item, 1);
 
-            CalcSkill(player);
-            CalcEffect(player);
-
             if (_exchangeItems != null)
             {
                 foreach (int val in _exchangeItems.Keys)
@@ -72,58 +67,6 @@ namespace L2dotNET.model.items
                 //NpcTable.Instance.SpawnNpc(SummonStaticID, player.X, player.Y, player.Z, player.Heading);
             }
         }
-
-        public override void UsePet(L2Pet pet, L2Item item)
-        {
-            if (!Pet)
-            {
-                base.UsePet(pet, item);
-                return;
-            }
-
-            CalcSkill(pet);
-            CalcEffect(pet);
-
-            if (SummonStaticId != -1)
-            {
-                //NpcTable.Instance.SpawnNpc(SummonStaticID, pet.X, pet.Y, pet.Z, pet.Heading);
-            }
-        }
-
-        private void CalcEffect(L2Character character)
-        {
-            if (EffectId == -1)
-                return;
-
-            Skill skill = SkillTable.Instance.Get(EffectId, EffectLv);
-
-            if (skill == null)
-            {
-                Log.Error($"ItemHandler: item {_id} with null effect {EffectId}/{EffectLv}");
-                return;
-            }
-
-            character.AddAbnormal(skill, character, true, false);
-            character.BroadcastPacket(new MagicSkillUse(character, character, skill, 100));
-        }
-
-        private void CalcSkill(L2Character character)
-        {
-            if (SkillId == -1)
-                return;
-
-            Skill skill = SkillTable.Instance.Get(SkillId, SkillLv);
-
-            if (skill == null)
-            {
-                Log.Error($"ItemHandler: item {_id} with null skill {SkillId}/{SkillLv}");
-                return;
-            }
-
-            if (character is L2Player)
-                ((L2Player)character).CastSkill(skill, false, false);
-            else
-                character.CastSkill(skill);
-        }
+        
     }
 }

@@ -35,14 +35,7 @@ namespace L2dotNET.Network.clientpackets.VehicleAPI
             L2Player player = _client.CurrentPlayer;
 
             //You do not possess the correct ticket to board the boat.
-
-            if (player.Summon != null)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.ReleasePetOnBoat);
-                player.SendActionFailed();
-                return;
-            }
-
+            
             L2Boat boat = null;
             if (player.Boat != null)
             {

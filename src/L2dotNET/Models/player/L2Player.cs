@@ -9,14 +9,8 @@ using L2dotNET.Enums;
 using L2dotNET.model.inventory;
 using L2dotNET.model.items;
 using L2dotNET.model.npcs;
-using L2dotNET.model.npcs.cubic;
 using L2dotNET.model.npcs.decor;
-using L2dotNET.model.playable;
-using L2dotNET.model.player.ai;
 using L2dotNET.model.player.General;
-using L2dotNET.model.skills;
-using L2dotNET.model.skills2;
-using L2dotNET.model.skills2.effects;
 using L2dotNET.model.vehicles;
 using L2dotNET.Models;
 using L2dotNET.Models.Status;
@@ -186,319 +180,17 @@ namespace L2dotNET.model.player
             return CurrentFocusEnergy;
         }
 
-        public Skill GetSkill(int magicId)
-        {
-            return Skills.ContainsKey(magicId) ? Skills[magicId] : null;
-        }
-
-        public override bool IsCastingNow()
-        {
-            if (_petSummonTime != null)
-                return _petSummonTime.Enabled;
-
-            if (_nonpetSummonTime != null)
-                return _nonpetSummonTime.Enabled;
-
-            return base.IsCastingNow();
-        }
-
         public void UpdateReuse()
         {
             SendPacket(new SkillCoolTime(this));
         }
-
-        public void CastSkill(Skill skill, bool ctrlPressed, bool shiftPressed)
-        {
-            if (IsCastingNow())
-            {
-                SendActionFailed();
-                return;
-            }
-
-            if (IsSittingInProgress() || IsSitting())
-            {
-                SendActionFailed();
-                return;
-            }
-
-            if (!skill.ConditionOk(this))
-            {
-                SendActionFailed();
-                return;
-            }
-
-            L2Character target = skill.GetTargetCastId(this);
-
-            if (target == null)
-            {
-                SendSystemMessage(SystemMessage.SystemMessageId.TargetCantFound);
-                SendActionFailed();
-                return;
-            }
-
-            if (skill.CastRange != -1)
-            {
-                double dis = Calcs.CalculateDistance(this, target, true);
-                if (dis > skill.CastRange)
-                {
-                    TryMoveTo(target.X, target.Y, target.Z);
-                    SendActionFailed();
-                    return;
-                }
-            }
-
-            if (skill.ReuseDelay > 0)
-            {
-                if (Reuse.ContainsKey(skill.SkillId))
-                {
-                    TimeSpan ts = Reuse[skill.SkillId].StopTime - DateTime.Now;
-
-                    if (ts.TotalMilliseconds > 0)
-                    {
-                        if (ts.TotalHours > 0)
-                        {
-                            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2HoursS3MinutesS4SecondsRemainingInS1ReuseTime);
-                            sm.AddSkillName(skill.SkillId, skill.Level);
-                            sm.AddNumber(ts.Hours);
-                            sm.AddNumber(ts.Minutes);
-                            sm.AddNumber(ts.Seconds);
-                            SendPacket(sm);
-                        }
-                        else
-                        {
-                            if (ts.TotalMinutes > 0)
-                            {
-                                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2MinutesS3SecondsRemainingInS1ReuseTime);
-                                sm.AddSkillName(skill.SkillId, skill.Level);
-                                sm.AddNumber(ts.Minutes);
-                                sm.AddNumber(ts.Seconds);
-                                SendPacket(sm);
-                            }
-                            else
-                            {
-                                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2SecondsRemainingInS1ReuseTime);
-                                sm.AddSkillName(skill.SkillId, skill.Level);
-                                sm.AddNumber(ts.Seconds);
-                                SendPacket(sm);
-                            }
-                        }
-
-                        SendActionFailed();
-                        return;
-                    }
-                }
-            }
-
-            if ((skill.MpConsume1 > 0) || (skill.MpConsume2 > 0))
-            {
-                if (CurMp < (skill.MpConsume1 + skill.MpConsume2))
-                {
-                    SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughMp);
-                    SendActionFailed();
-                    return;
-                }
-            }
-
-            if (skill.HpConsume > 0)
-            {
-                if (CurHp < skill.HpConsume)
-                {
-                    SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughHp);
-                    SendActionFailed();
-                    return;
-                }
-            }
-
-            //if (skill.ConsumeItemId != 0)
-            //{
-            //    int count = Inventory.getItemCount(skill.ConsumeItemId);
-            //    if (count < skill.ConsumeItemCount)
-            //    {
-            //        sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_CANNOT_BE_USED).AddSkillName(skill.skill_id, skill.level));
-            //        sendActionFailed();
-            //        return;
-            //    }
-            //}
-
-            byte blowOk = 0;
-            if (skill.Effects.Count > 0)
-            {
-                bool fail = false;
-                foreach (Effect ef in skill.Effects)
-                {
-                    if (!ef.CanUse(this))
-                    {
-                        SendActionFailed();
-                        fail = true;
-                        break;
-                    }
-
-                    if (ef is FatalBlow && (blowOk == 0))
-                        blowOk = ((FatalBlow)ef).Success(target);
-                }
-
-                if (fail)
-                    return;
-            }
-
-            if (skill.ReuseDelay > 0)
-            {
-                L2SkillCoolTime reuse = new L2SkillCoolTime
-                {
-                    Id = skill.SkillId,
-                    Lvl = skill.Level,
-                    Total = (int)skill.ReuseDelay,
-                    Owner = this
-                };
-                reuse.Delay = reuse.Total;
-                reuse.Timer();
-                Reuse.Add(reuse.Id, reuse);
-                UpdateReuse();
-            }
-
-            //SendPacket(new SystemMessage(SystemMessage.SystemMessageId.UseS1).AddSkillName(skill.skill_id, skill.level));
-
-            if (skill.HpConsume > 0)
-            {
-                CurHp -= skill.HpConsume;
-
-                StatusUpdate su = new StatusUpdate(ObjId);
-                su.Add(StatusUpdate.CurHp, (int)CurHp);
-                BroadcastPacket(su);
-            }
-
-            if (skill.MpConsume1 > 0)
-            {
-                CurMp -= skill.MpConsume1;
-
-                StatusUpdate su = new StatusUpdate(ObjId);
-                su.Add(StatusUpdate.CurMp, (int)CurMp);
-                BroadcastPacket(su);
-            }
-
-            //if (skill.ConsumeItemId != 0)
-            //   Inventory.destroyItem(skill.ConsumeItemId, skill.ConsumeItemCount, true, true);
-
-            int hitTime = skill.SkillHitTime;
-
-            int hitT = hitTime > 0 ? (int)(hitTime * 0.95) : 0;
-            CurrentCast = skill;
-
-            if (hitTime > 0)
-                SendPacket(new SetupGauge(ObjId, SetupGauge.SgColor.Blue, hitTime - 20));
-
-            BroadcastPacket(new MagicSkillUse(this, target, skill, hitTime == 0 ? 20 : hitTime, blowOk));
-            if (hitTime > 50)
-            {
-                if (CastTime == null)
-                {
-                    CastTime = new Timer();
-                    CastTime.Elapsed += castEnd;
-                }
-
-                CastTime.Interval = hitT;
-                CastTime.Enabled = true;
-            }
-            else
-                castEnd();
-        }
-
-        private void castEnd(object sender = null, ElapsedEventArgs e = null)
-        {
-            if (CurrentCast.MpConsume2 > 0)
-            {
-                if (CurMp < CurrentCast.MpConsume2)
-                {
-                    SendSystemMessage(SystemMessage.SystemMessageId.NotEnoughMp);
-                    SendActionFailed();
-
-                    CurrentCast = null;
-                    CastTime.Enabled = false;
-                    return;
-                }
-
-                CurMp -= CurrentCast.MpConsume2;
-
-                StatusUpdate su = new StatusUpdate(ObjId);
-                su.Add(StatusUpdate.CurMp, (int)CurMp);
-                BroadcastPacket(su);
-            }
-
-            if (CurrentCast.CastRange != -1)
-            {
-                bool block = false;
-                if (Target != null)
-                {
-                    double dis = Calcs.CalculateDistance(this, Target, true);
-                    if (dis > CurrentCast.EffectiveRange)
-                        block = true;
-                }
-                else
-                    block = true;
-
-                if (block)
-                {
-                    SendSystemMessage(SystemMessage.SystemMessageId.DistTooFarCastingStopped);
-                    SendActionFailed();
-
-                    CurrentCast = null;
-                    CastTime.Enabled = false;
-                    return;
-                }
-            }
-
-            SortedList<int, L2Object> arr = CurrentCast.GetAffectedTargets(this);
-            List<int> broadcast = new List<int>();
-            broadcast.AddRange(arr.Keys);
-
-            BroadcastPacket(new MagicSkillLaunched(this, broadcast, CurrentCast.SkillId, CurrentCast.Level));
-
-            AddEffects(this, CurrentCast, arr);
-            CurrentCast = null;
-            if (CastTime != null)
-                CastTime.Enabled = false;
-        }
-
+        
         public bool Diet = false;
-
-        public override void UpdateMagicEffectIcons()
-        {
-            MagicEffectIcons m = new MagicEffectIcons();
-            PartySpelled p = null;
-
-            if (Party != null)
-                p = new PartySpelled(this);
-
-            List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            lock (Effects)
-            {
-                foreach (AbnormalEffect ei in Effects.Where(ei => ei != null))
-                {
-                    if (ei.Active == 1)
-                    {
-                        int time = ei.GetTime();
-                        m.AddIcon(ei.Id, ei.Lvl, time);
-
-                        p?.AddIcon(ei.Id, ei.Lvl, time);
-                    }
-                    else
-                        nulled.Add(ei);
-                }
-
-                nulled.ForEach(ei => Effects.Remove(ei));
-            }
-
-            nulled.Clear();
-            SendPacket(m);
-
-            if (p != null)
-                Party?.BroadcastToMembers(p);
-        }
-
+        
         public void OnGameInit()
         {
-            CStatsInit();
-            CharacterStat.SetTemplate(ActiveClass);
+            //CStatsInit();
+            //CharacterStat.SetTemplate(ActiveClass);
             ExpAfterLogin = 0;
         }
 
@@ -563,60 +255,7 @@ namespace L2dotNET.model.player
             su.Add(StatusUpdate.Level, Level);
             SendPacket(su);
         }
-
-        public void RestoreSkills()
-        {
-            var dbSkills = PlayerService.GetPlayerSkills(this.ObjId);
-            foreach(SkillResponseContract skill in dbSkills)
-            {
-                var skillModel = SkillTable.Instance.Get(skill.SkillId, skill.SkillLvl);
-                if (skillModel != null)
-                {
-                    this.Skills.Add(skill.SkillId, skillModel);
-                }
-                else
-                {
-                    Log.Warn($"Unknown skill {skill.SkillId} - {skill.SkillLvl} - {skill.ClassId}");
-                }
-
-            }
-        }
-
-        public override void AddSkill(Skill newsk, bool updDb, bool update)
-        {
-            base.AddSkill(newsk, updDb, update);
-
-            if (update)
-                UpdateSkillList();
-
-            if (updDb)
-            {
-                //SQL_Block sqb = new SQL_Block("user_skills");
-                //sqb.param("ownerId", ObjID);
-                //sqb.param("id", newsk.skill_id);
-                //sqb.param("lvl", newsk.level);
-                //sqb.param("iclass", ActiveClass.id);
-                //sqb.sql_insert(false);
-            }
-        }
-
-        public override void RemoveSkill(int id, bool updDb, bool update)
-        {
-            base.RemoveSkill(id, updDb, update);
-
-            if (update)
-                UpdateSkillList();
-
-            if (updDb)
-            {
-                //SQL_Block sqb = new SQL_Block("user_skills");
-                //sqb.where("ownerId", ObjID);
-                //sqb.where("id", id);
-                //sqb.where("iclass", ActiveClass.id);
-                //sqb.sql_delete(false);
-            }
-        }
-
+        
         public int ItemLimitInventory = 80,
                    ItemLimitSelling = 5,
                    ItemLimitBuying = 5,
@@ -630,11 +269,6 @@ namespace L2dotNET.model.player
         public L2Npc FolkNpc;
         public int LastX1 = -4;
         public int LastY1;
-
-        public override void UpdateSkillList()
-        {
-            SendPacket(new SkillList(this, PBlockAct, PBlockSpell, PBlockSkill));
-        }
 
         private Timer _timerTooFar;
         public string Locale = "en";
@@ -880,9 +514,7 @@ namespace L2dotNET.model.player
                         SendPacket(pk ?? new SpawnItem((L2Item)obj));
                     else
                     {
-                        if (obj is L2Summon)
-                            SendPacket(pk ?? new PetInfo((L2Summon)obj));
-                        else
+                       
                         {
                             if (obj is L2Chair)
                                 SendPacket(new StaticObject((L2Chair)obj));
@@ -966,7 +598,6 @@ namespace L2dotNET.model.player
 
             Party?.Leave(this);
 
-            Summon?.UnSummon();
             Online = 0;
             PlayerService.UpdatePlayer(this);
             L2World.Instance.RemovePlayer(this);
@@ -1143,7 +774,7 @@ namespace L2dotNET.model.player
             su.Add(StatusUpdate.CurLoad, CurrentWeight);
             SendPacket(su);
 
-            int weightproc = (total * 1000) / (int)CharacterStat.GetStat(EffectType.BMaxWeight);
+            int weightproc = (total * 1000) / 100; //max weight
 
             int newWeightPenalty;
             if (weightproc < 500)
@@ -1169,10 +800,10 @@ namespace L2dotNET.model.player
             if (PenaltyWeight == newWeightPenalty)
                 return;
 
-            if (newWeightPenalty > 0)
-                AddSkill(4270, newWeightPenalty, false, true);
-            else
-                RemoveSkill(4270, false, true);
+            //if (newWeightPenalty > 0)
+            //    AddSkill(4270, newWeightPenalty, false, true);
+            //else
+            //    RemoveSkill(4270, false, true);
 
             PenaltyWeight = newWeightPenalty;
 
@@ -1181,16 +812,16 @@ namespace L2dotNET.model.player
 
         public bool CheckFreeWeight(int weight)
         {
-            if ((CurrentWeight + weight) >= CharacterStat.GetStat(EffectType.BMaxWeight))
-                return false;
+           // if ((CurrentWeight + weight) >= CharacterStat.GetStat(EffectType.BMaxWeight))
+            //    return false;
 
             return true;
         }
 
         public bool CheckFreeWeight80(int weight)
         {
-            if ((CurrentWeight + weight) >= (CharacterStat.GetStat(EffectType.BMaxWeight) * .8))
-                return false;
+            //if ((CurrentWeight + weight) >= (CharacterStat.GetStat(EffectType.BMaxWeight) * .8))
+            //    return false;
 
             return true;
         }
@@ -1230,7 +861,7 @@ namespace L2dotNET.model.player
                 return;
 
             OnGameInit();
-            RestoreSkills();
+            //RestoreSkills();
             //db_restoreQuests();
             db_restoreRecipes();
             // db_restoreShortcuts(); elfo to be added
@@ -1287,7 +918,6 @@ namespace L2dotNET.model.player
             Requester = null;
         }
 
-        public L2Summon Summon;
         public bool IsInOlympiad = false;
         public L2Item EnchantScroll,
                       EnchantItem,
@@ -1314,12 +944,6 @@ namespace L2dotNET.model.player
         {
             int color = 0;
 
-            if (target is L2Summon)
-            {
-                if (!((((L2Summon)target).Owner != null) && (((L2Summon)target).Owner.ObjId == ObjId)))
-                    color = ((L2Summon)target).Level - Level;
-            }
-
             SendPacket(new MyTargetSelected(target.ObjId, color));
         }
 
@@ -1341,12 +965,7 @@ namespace L2dotNET.model.player
 
         public void PetSummon(L2Item item, int npcId, bool isPet = true)
         {
-            if (Summon != null)
-            {
-                SendSystemMessage(SystemMessage.SystemMessageId.YouAlreadyHaveAPet);
-                return;
-            }
-
+            
             if (isPet)
             {
                 if (_petSummonTime == null)
@@ -1421,8 +1040,6 @@ namespace L2dotNET.model.player
             {
                 this
             };
-            if (Summon != null)
-                chars.Add(Summon);
 
             if (Party == null)
                 return chars.ToArray();
@@ -1430,31 +1047,10 @@ namespace L2dotNET.model.player
             foreach (L2Player pl in Party.Members.Where(pl => pl.ObjId != ObjId))
             {
                 chars.Add(pl);
-
-                if (pl.Summon != null)
-                    chars.Add(pl.Summon);
             }
 
             return chars.ToArray();
         }
-
-        public override void AbortCast()
-        {
-            if ((_petSummonTime != null) && _petSummonTime.Enabled)
-                _petSummonTime.Enabled = false;
-
-            if ((_nonpetSummonTime != null) && _nonpetSummonTime.Enabled)
-                _nonpetSummonTime.Enabled = false;
-
-            base.AbortCast();
-        }
-
-        public override void StartAi()
-        {
-            AiCharacter = new PlayerAi(this);
-        }
-
-        public List<SpecEffect> SpecEffects = new List<SpecEffect>();
 
         public bool IsSittingInProgress()
         {
@@ -1534,7 +1130,6 @@ namespace L2dotNET.model.player
         public override void AbortAttack()
         {
             base.AbortAttack();
-            AiCharacter.StopAutoAttack();
         }
 
         public override void DoAttack(L2Character target)
@@ -1542,7 +1137,6 @@ namespace L2dotNET.model.player
             if (target == null)
             {
                 SendMessage("null");
-                AiCharacter.StopAutoAttack();
                 SendActionFailed();
                 return;
             }
@@ -1550,7 +1144,6 @@ namespace L2dotNET.model.player
             if (target.Dead)
             {
                 SendMessage("dead");
-                AiCharacter.StopAutoAttack();
                 SendActionFailed();
                 return;
             }
@@ -1571,7 +1164,7 @@ namespace L2dotNET.model.player
                    reqMp = 0;
 
             L2Item weapon = ActiveWeapon;
-            double timeAtk = CharacterStat.GetStat(EffectType.BAttackSpd);
+            double timeAtk = 100;//attackspeed
             bool dual = false,
                  ranged = false,
                  ss = false;
@@ -1677,7 +1270,6 @@ namespace L2dotNET.model.player
                     if (Target is L2Player)
                     {
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
-                        ((L2Player)Target).AiCharacter.NotifyEvaded(this);
                     }
                 }
             }
@@ -1707,7 +1299,6 @@ namespace L2dotNET.model.player
                     if (Target is L2Player)
                     {
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
-                        ((L2Player)Target).AiCharacter.NotifyEvaded(this);
                     }
                 }
             }
@@ -1806,8 +1397,7 @@ namespace L2dotNET.model.player
 
         public void MountPet()
         {
-            if (Summon != null)
-                Mount(Summon.Template);
+            
         }
 
         public void UnMount()
@@ -1838,10 +1428,10 @@ namespace L2dotNET.model.player
         public void NotifyDayChange(GameserverPacket pk)
         {
             SendPacket(pk);
-            if (pk is SunSet) //включаем ночные скилы
-                AiCharacter.NotifyOnStartNight();
-            else
-                AiCharacter.NotifyOnStartDay();
+            //if (pk is SunSet) //включаем ночные скилы
+            //    AiCharacter.NotifyOnStartNight();
+            //else
+            //    AiCharacter.NotifyOnStartDay();
         }
 
         public int VehicleId => Boat?.ObjId ?? 0;
@@ -1859,7 +1449,6 @@ namespace L2dotNET.model.player
         public MultiSellList CustomMultiSellList;
         public int LastRequestedMultiSellId = -1;
         public int AttackingId;
-        public SortedList<int, AcquireSkill> ActiveSkillTree;
 
         public void RequestPing()
         {
@@ -1889,9 +1478,6 @@ namespace L2dotNET.model.player
         public void RedistExp(L2Warrior mob)
         {
             double expPet = 0.0;
-            if ((Summon != null) && (Summon.ConsumeExp > 0))
-                expPet = (Summon.ConsumeExp / 100.0) + 1;
-
             double expReward = mob.Template.Exp / 1.0;
             int sp = mob.Template.Sp;
             SendMessage($"debug: expPet {expPet}");
@@ -1919,8 +1505,8 @@ namespace L2dotNET.model.player
 
         public void BroadcastSkillUse(int skillId)
         {
-            Skill skill = SkillTable.Instance.Get(skillId);
-            BroadcastPacket(new MagicSkillUse(this, this, skill.SkillId, skill.Level, skill.SkillHitTime));
+            //Skill skill = SkillTable.Instance.Get(skillId);
+            //BroadcastPacket(new MagicSkillUse(this, this, skill.SkillId, skill.Level, skill.SkillHitTime));
         }
 
         public override L2Item GetWeaponItem()
@@ -1933,58 +1519,9 @@ namespace L2dotNET.model.player
             SendMessage($"@UpdateAgathionEnergy {count}");
         }
 
-        public List<Cubic> Cubics = new List<Cubic>();
-
-        public void StopCubic(Cubic cubic)
-        {
-            foreach (Cubic cub in Cubics.Where(cub => cub.Template.Id == cubic.Template.Id))
-            {
-                lock (Cubics)
-                    Cubics.Remove(cub);
-
-                BroadcastUserInfo();
-                break;
-            }
-        }
-
-        public void AddCubic(Cubic cubic, bool update)
-        {
-            int max = (int)CharacterStat.GetStat(EffectType.PCubicMastery);
-            if (max == 0)
-                max = 1;
-
-            if (Cubics.Count == max)
-            {
-                Cubic cub = Cubics[0];
-                cub.OnEnd(false);
-                lock (Cubics)
-                    Cubics.RemoveAt(0);
-            }
-
-            foreach (Cubic cub in Cubics.Where(cub => cub.Template.Id == cubic.Template.Id))
-            {
-                lock (Cubics)
-                {
-                    cub.OnEnd(false);
-                    Cubics.Remove(cub);
-                }
-                break;
-            }
-
-            cubic.OnSummon();
-            Cubics.Add(cubic);
-            if (update)
-                BroadcastUserInfo();
-        }
-
+        
         public override void DoDie(L2Character killer)
         {
-            if (Cubics.Count > 0)
-            {
-                Cubics.ForEach(cub => cub.OnEnd(false));
-                Cubics.Clear();
-            }
-
             base.DoDie(killer);
         }
 

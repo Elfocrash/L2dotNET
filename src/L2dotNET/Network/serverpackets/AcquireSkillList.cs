@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.model.skills2;
 
 namespace L2dotNET.Network.serverpackets
 {
@@ -12,7 +11,6 @@ namespace L2dotNET.Network.serverpackets
             Clan = 2
         }
 
-        private List<AcquireSkill> _list;
         private readonly SkillType _skillType;
 
         public AcquireSkillList(SkillType type)
@@ -23,17 +21,17 @@ namespace L2dotNET.Network.serverpackets
         public override void Write()
         {
             WriteByte(0x8a);
-            WriteInt((int)_skillType);
-            WriteInt(_list.Count);
+            //WriteInt((int)_skillType);
+            //WriteInt(_list.Count);
 
-            foreach (AcquireSkill sk in _list)
-            {
-                WriteInt(sk.Id);
-                WriteInt(sk.Lv);
-                WriteInt(sk.Lv);
-                WriteInt(sk.LvUpSp);
-                WriteInt(0); //reqs
-            }
+            //foreach (AcquireSkill sk in _list)
+            //{
+            //    WriteInt(sk.Id);
+            //    WriteInt(sk.Lv);
+            //    WriteInt(sk.Lv);
+            //    WriteInt(sk.LvUpSp);
+            //    WriteInt(0); //reqs
+            //}
         }
     }
 }

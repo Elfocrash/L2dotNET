@@ -70,7 +70,7 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            player.AiCharacter.StopAutoAttack();
+            //player.AiCharacter.StopAutoAttack();
             player.MoveTo(_targetX, _targetY, _targetZ);
         }
     }

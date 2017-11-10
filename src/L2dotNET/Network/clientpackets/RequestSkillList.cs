@@ -14,7 +14,6 @@ namespace L2dotNET.Network.clientpackets
         public override void RunImpl()
         {
             L2Player player = _client.CurrentPlayer;
-            player.UpdateSkillList();
         }
     }
 }

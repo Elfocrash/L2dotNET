@@ -1,5 +1,4 @@
-﻿using L2dotNET.model.skills2;
-using L2dotNET.world;
+﻿using L2dotNET.world;
 
 namespace L2dotNET.Network.serverpackets
 {
@@ -18,7 +17,7 @@ namespace L2dotNET.Network.serverpackets
         private readonly int _tz;
         private readonly int _damageSuccess;
 
-        public MagicSkillUse(L2Character caster, L2Object target, Skill skill, int hitTime, int flag = 0)
+        public MagicSkillUse(L2Character caster, L2Object target, dynamic skill, int hitTime, int flag = 0)
         {
             _id = skill.SkillId;
             _level = skill.Level;

@@ -1,5 +1,4 @@
 ﻿using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 
 namespace L2dotNET.Network.serverpackets
 {

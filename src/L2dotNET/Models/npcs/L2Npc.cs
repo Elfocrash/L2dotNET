@@ -3,7 +3,6 @@ using System.Linq;
 using System.Timers;
 using L2dotNET.model.items;
 using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.tables;
 using L2dotNET.templates;
@@ -26,7 +25,7 @@ namespace L2dotNET.model.npcs
         {
             Template = template;
             Name = template.Name;
-            CStatsInit();
+            //CStatsInit();
             CurHp = 100;
             CurCp = 100;
             CurMp = 100;
@@ -304,64 +303,7 @@ namespace L2dotNET.model.npcs
                 BroadcastUserInfo();
             StartAi();
         }
-
-        public void ShowAvailRegularSkills(L2Player player, bool backward)
-        {
-            SortedList<int, AcquireSkill> list = player.ActiveSkillTree ?? new SortedList<int, AcquireSkill>();
-
-            int nextLvl = 800;
-            foreach (AcquireSkill e in SkillTable.Instance.GetAllRegularSkills(player.ActiveClass.ClassId.Id).Skills)
-            {
-                if (e.GetLv > player.Level)
-                {
-                    if (nextLvl > e.GetLv)
-                        nextLvl = e.GetLv;
-                    continue;
-                }
-
-                if (list.ContainsKey(e.Id))
-                    continue;
-
-                if (player.Skills.ContainsKey(e.Id))
-                {
-                    Skill skill = player.Skills[e.Id];
-
-                    if (skill.Level >= e.Lv)
-                        continue;
-
-                    if (list.ContainsKey(e.Id))
-                        continue;
-
-                    list.Add(e.Id, e);
-                    break;
-                }
-
-                list.Add(e.Id, e);
-            }
-
-            if (list.Count == 0)
-            {
-                if (backward)
-                {
-                    list.Clear();
-                    player.ActiveSkillTree = list;
-                    player.SendPacket(new AcquireSkillList(AcquireSkillList.SkillType.Usual));
-                }
-
-                if (nextLvl != 800)
-                    player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.DoNotHaveFurtherSkillsToLearnS1).AddNumber(nextLvl));
-                else
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.NoMoreSkillsToLearn);
-
-                player.SendActionFailed();
-                return;
-            }
-
-            player.ActiveSkillTree = list;
-            player.SendPacket(new AcquireSkillList(AcquireSkillList.SkillType.Usual));
-            player.FolkNpc = this;
-        }
-
+        
         private Timer _corpseTimer;
         public int ResidenceId;
 
@@ -432,8 +374,6 @@ namespace L2dotNET.model.npcs
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {
             cha.SendMessage($"L2Npc.CastBuffForQuestReward {skillId}");
-            //TODO: Fix the unassigned objected created
-            new BuffForQuestReward(this, cha, skillId);
         }
     }
 }

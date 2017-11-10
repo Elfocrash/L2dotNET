@@ -16,13 +16,7 @@ namespace L2dotNET.Network.clientpackets
         public override void RunImpl()
         {
             L2Player player = _client.CurrentPlayer;
-
-            if ((_unselect == 0) && player.IsCastingNow())
-            {
-                player.AbortCast();
-                return;
-            }
-
+            
             if (player.Target != null)
                 player.SetTarget(null);
         }

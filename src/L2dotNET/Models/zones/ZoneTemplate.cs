@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.model.skills2;
 using L2dotNET.model.zones.forms;
 
 namespace L2dotNET.model.zones
@@ -24,8 +23,6 @@ namespace L2dotNET.model.zones
         public int SkillProb;
         public int UnitTick = 9;
         public int InitialDelay = 1;
-        public List<Skill> Skills;
-        public Skill Skill;
         public string Name;
         public int HpRegenBonus;
         public int MpRegenBonus;
@@ -61,33 +58,7 @@ namespace L2dotNET.model.zones
             Hideout,
             MonsterRace
         }
-
-        public void SetSkillList(string val)
-        {
-            if (Skills == null)
-                Skills = new List<Skill>();
-
-            //string d1 = val.Substring(1).Replace("}", string.Empty).Replace("@", string.Empty);
-
-            //foreach (string sk in d1.Split(';'))
-            //{
-            //    int id = int.Parse(sk);
-
-            //    TSkill skill = TSkillTable.getInstance().get(sk);
-            //    if (skill != null)
-            //        _skills.Add(skill);
-            //    else
-            //        CLogger.error($"areatable: null skill {sk} for zone {Name});
-            //}
-        }
-
-        public void SetSkill(string p)
-        {
-            //_skill = TSkillTable.getInstance().get(p);
-            //if (_skill == null)
-            //    CLogger.error($"areatable: null skill {p} for default swamps");
-        }
-
+        
         public void SetRange(string val)
         {
             string d1 = val.Substring(2).Replace("};{", "\f").Replace("}}", string.Empty);

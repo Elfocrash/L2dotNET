@@ -29,20 +29,7 @@ namespace L2dotNET.Network.clientpackets
                 player.SendActionFailed();
                 return;
             }
-
-            AbnormalEffect avestop = player.Effects.Where(ave => (ave.Id == _skillId) || (ave.Lvl == _skillLv)).TakeWhile(ave => (ave.Skill.Debuff != 1) || (ave.Skill.IsMagic <= 1)).FirstOrDefault();
-
-            if (avestop == null)
-            {
-                player.SendActionFailed();
-                return;
-            }
-
-            lock (player.Effects)
-            {
-                avestop.ForcedStop(true, true);
-                player.Effects.Remove(avestop);
-            }
+            
         }
     }
 }

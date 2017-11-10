@@ -49,7 +49,7 @@ namespace L2dotNET.Models.Status
             if (Character.CurHp < 0.5)
             {
                 Character.AbortAttack();
-                Character.AbortCast();
+                //Character.AbortCast();
                 Character.DoDie(attacker);
             }
         }

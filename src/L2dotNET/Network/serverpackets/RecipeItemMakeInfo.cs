@@ -1,5 +1,4 @@
 ﻿using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 using L2dotNET.tables;
 
 namespace L2dotNET.Network.serverpackets
@@ -17,7 +16,7 @@ namespace L2dotNET.Network.serverpackets
             _recipeId = rec.RecipeId;
             _type = rec.Iscommonrecipe;
             _currentMp = (int)player.CurMp;
-            _maxMp = (int)player.CharacterStat.GetStat(EffectType.BMaxMp);
+            _maxMp = 100;// (int)player.CharacterStat.GetStat(EffectType.BMaxMp);
             _makingResult = result;
         }
 

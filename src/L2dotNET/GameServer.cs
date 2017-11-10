@@ -7,8 +7,6 @@ using L2dotNET.Enums;
 using L2dotNET.Handlers;
 using L2dotNET.managers;
 using L2dotNET.model.items;
-using L2dotNET.model.npcs.ai;
-using L2dotNET.model.skills2;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
 using L2dotNET.tables;
@@ -49,13 +47,10 @@ namespace L2dotNET
             ItemHandler.Instance.Initialize();
 
             NpcTable.Instance.Initialize();
-            SkillTable.Instance.Initialize();
             MultiSell.Instance.Initialize();
             Capsule.Instance.Initialize();
             RecipeTable.Instance.Initialize();
-
-            AiManager.Instance.Initialize();
-
+            
             BlowFishKeygen.GenerateKeys();
 
             AdminCommandHandler.Instance.Initialize();

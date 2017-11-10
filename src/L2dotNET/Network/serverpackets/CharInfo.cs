@@ -1,6 +1,5 @@
 ﻿using L2dotNET.model.inventory;
 using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 
 namespace L2dotNET.Network.serverpackets
 {
@@ -68,15 +67,15 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.PvPStatus);
             WriteInt(_player.Karma);
 
-            WriteInt(_player.CharacterStat.GetStat(EffectType.BAttackSpd)); //matkspeed
-            WriteInt(_player.CharacterStat.GetStat(EffectType.BCastingSpd));
+            WriteInt(1000); //atckspeed
+            WriteInt(1000); //mattackspeed
 
             WriteInt(_player.PvPStatus);
             WriteInt(_player.Karma);
 
-            double spd = _player.CharacterStat.GetStat(EffectType.PSpeed);
+            double spd = 100;//_player.CharacterStat.GetStat(EffectType.PSpeed);
             double anim = (spd * 1f) / 130;
-            double anim2 = (1.1 * _player.CharacterStat.GetStat(EffectType.BAttackSpd)) / 300;
+            double anim2 = (1.1 * 1000) / 300; // 1000 is _player.CharacterStat.GetStat(EffectType.BAttackSpd)
             double runSpd = spd / anim;
             double walkSpd = (spd * .8) / anim;
 
@@ -116,9 +115,9 @@ namespace L2dotNET.Network.serverpackets
             WriteByte(_player.MountType);
             WriteByte(_player.GetPrivateStoreType());
 
-            WriteShort(_player.Cubics.Count);
+            WriteShort(0);//_player.Cubics.Count
 
-            _player.Cubics.ForEach(cub => WriteShort(cub.Template.Id));
+            //_player.Cubics.ForEach(cub => WriteShort(cub.Template.Id));
 
             WriteByte(0x00); //1-_activeChar.isInPartyMatchRoom()
 

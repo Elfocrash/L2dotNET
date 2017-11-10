@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.model.player;
-using L2dotNET.model.skills2;
 using L2dotNET.tables;
 
 namespace L2dotNET.Network.serverpackets
@@ -15,7 +14,7 @@ namespace L2dotNET.Network.serverpackets
         public RecipeBookItemList(L2Player player, int type)
         {
             _type = type;
-            _mp = (int)player.CharacterStat.GetStat(EffectType.BMaxMp);
+            _mp = 100;// (int)player.CharacterStat.GetStat(EffectType.BMaxMp);
             _book = new List<L2Recipe>();
 
             if (player.RecipeBook == null)

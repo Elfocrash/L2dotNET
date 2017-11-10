@@ -4,12 +4,8 @@ using System.Linq;
 using System.Timers;
 using L2dotNET.Enums;
 using L2dotNET.model.items;
-using L2dotNET.model.playable;
-using L2dotNET.model.playable.petai;
 using L2dotNET.model.player;
 using L2dotNET.model.skills;
-using L2dotNET.model.skills2;
-using L2dotNET.model.stats;
 using L2dotNET.Models.Status;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.templates;
@@ -19,7 +15,6 @@ namespace L2dotNET.world
 {
     public class L2Character : L2Object
     {
-        public SortedList<int, Skill> Skills = new SortedList<int, Skill>();
         public virtual CharTemplate Template { get; set; }
         public virtual string Name { get; set; }
         public virtual string Title { get; set; }
@@ -64,8 +59,6 @@ namespace L2dotNET.world
         public virtual void UpdateAbnormalExEffect() { }
 
         public virtual void UpdateAbnormalEventEffect() { }
-
-        public StandartAiTemplate AiCharacter = new StandartAiTemplate();
 
         private Timer _updatePositionTime = new Timer(90);
 
@@ -153,32 +146,6 @@ namespace L2dotNET.world
             base.SetRegion(newRegion);
         }
 
-        public void AddSkill(int id, int lvl, bool updDb, bool update)
-        {
-            Skill skill = SkillTable.Instance.Get(id, lvl);
-            if (skill != null)
-                AddSkill(skill, updDb, update);
-        }
-
-        public virtual void AddSkill(Skill newsk, bool updDb, bool update)
-        {
-            lock (Skills)
-            {
-                if (Skills.ContainsKey(newsk.SkillId))
-                {
-                    if (newsk.OpType == SkillOperational.P)
-                        RemoveStats(Skills[newsk.SkillId], this);
-
-                    Skills.Remove(newsk.SkillId);
-                }
-
-                Skills.Add(newsk.SkillId, newsk);
-            }
-
-            if (newsk.OpType == SkillOperational.P)
-                AddStats(newsk, this);
-        }
-
         public void SetInsisdeZone(ZoneId zone, bool state)
         {
             if (state)
@@ -186,192 +153,6 @@ namespace L2dotNET.world
             else
                 _zones[(int)zone.Id]--;
         }
-
-        public virtual void RemoveSkill(int id, bool updDb, bool update)
-        {
-            lock (Skills)
-            {
-                if (!Skills.ContainsKey(id))
-                    return;
-
-                if (Skills[id].OpType == SkillOperational.P)
-                    RemoveStats(Skills[id], this);
-
-                Skills.Remove(id);
-            }
-        }
-
-        private void RemoveStats(Skill skill, L2Character caster)
-        {
-            if (skill.Effects.Count <= 0)
-                return;
-
-            EffectResult result = CharacterStat.Stop(skill.Effects, caster);
-            if (this is L2Player)
-            {
-                if (result.TotalUi == 1)
-                    BroadcastUserInfo();
-                else
-                {
-                    if (result.Sus == null)
-                        return;
-
-                    StatusUpdate su = new StatusUpdate(ObjId);
-                    foreach (int stat in result.Sus.Keys)
-                        su.Add(stat, (int)result.Sus[stat]);
-
-                    BroadcastPacket(su, false);
-
-                    if (this is L2Player && (result.HpMpCp == 1))
-                        ((L2Player)this).Party?.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                }
-            }
-            else
-            {
-                if (result.TotalUi == 1)
-                    BroadcastUserInfo();
-            }
-        }
-
-        public void RemoveStats(L2Item item) { }
-
-        public void RemoveStat(Effect effect)
-        {
-            List<Effect> ts = new List<Effect>
-            {
-                effect
-            };
-            EffectResult result = CharacterStat.Stop(ts, this);
-            if (this is L2Player)
-            {
-                if (result.TotalUi == 1)
-                    BroadcastUserInfo();
-                else
-                {
-                    if (result.Sus == null)
-                        return;
-
-                    StatusUpdate su = new StatusUpdate(ObjId);
-                    foreach (int stat in result.Sus.Keys)
-                        su.Add(stat, (int)result.Sus[stat]);
-
-                    BroadcastPacket(su, false);
-
-                    if (this is L2Player && (result.HpMpCp == 1))
-                        ((L2Player)this).Party?.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                }
-            }
-            else
-            {
-                if (result.TotalUi == 1)
-                    BroadcastUserInfo();
-            }
-        }
-
-        private void AddStats(Skill skill, L2Character caster)
-        {
-            if (!(skill.Effects?.Count > 0))
-                return;
-
-            EffectResult result = CharacterStat.Apply(skill.Effects, caster);
-            if (this is L2Player)
-            {
-                if (result.TotalUi == 1)
-                    BroadcastUserInfo();
-                else
-                {
-                    if (result.Sus == null)
-                        return;
-
-                    StatusUpdate su = new StatusUpdate(ObjId);
-                    foreach (int stat in result.Sus.Keys)
-                        su.Add(stat, (int)result.Sus[stat]);
-
-                    BroadcastPacket(su, false);
-
-                    if (this is L2Player && (result.HpMpCp == 1))
-                        ((L2Player)this).Party?.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                }
-            }
-            else
-            {
-                if (result.TotalUi == 1)
-                    BroadcastUserInfo();
-            }
-        }
-
-        public void AddStats(L2Item item) { }
-
-        public void AddStat(Effect effect)
-        {
-            List<Effect> ts = new List<Effect>
-            {
-                effect
-            };
-            EffectResult result = CharacterStat.Apply(ts, this);
-            if (this is L2Player)
-            {
-                if (result.TotalUi == 1)
-                    BroadcastUserInfo();
-                else
-                {
-                    if (result.Sus == null)
-                        return;
-
-                    StatusUpdate su = new StatusUpdate(ObjId);
-                    foreach (int stat in result.Sus.Keys)
-                        su.Add(stat, (int)result.Sus[stat]);
-
-                    BroadcastPacket(su, false);
-
-                    if (this is L2Player && (result.HpMpCp == 1))
-                        ((L2Player)this).Party?.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-                }
-            }
-            else
-            {
-                if (result.TotalUi == 1)
-                    BroadcastUserInfo();
-            }
-        }
-
-        public void StopEffect(Skill skill, L2Character caster)
-        {
-            AbnormalEffect ex = Effects.FirstOrDefault(e => e.Id == skill.SkillId);
-
-            if (ex == null)
-                return;
-
-            lock (Effects)
-            {
-                ex.ForcedStop(true, true);
-                Effects.Remove(ex);
-            }
-        }
-
-        public void OnAveEnd(AbnormalEffect ave, bool msg, bool icon, L2Character caster)
-        {
-            int olda = AbnormalBitMask;
-            if (ave.Skill.AbnormalVisualEffect != -1)
-                AbnormalBitMask &= ~ave.Skill.AbnormalVisualEffect;
-
-            bool uis = AbnormalBitMask != olda;
-
-            RemoveStats(ave.Skill, caster);
-
-            if (msg)
-                SendPacket(new SystemMessage(SystemMessage.SystemMessageId.EffectS1Disappeared).AddSkillName(ave.Id, ave.Lvl));
-
-            if (uis)
-                BroadcastUserInfo();
-
-            if (icon)
-                UpdateMagicEffectIcons();
-        }
-
-        public virtual void UpdateMagicEffectIcons() { }
-
-        public virtual void UpdateSkillList() { }
 
         public virtual void SendMessage(string p) { }
 
@@ -382,205 +163,7 @@ namespace L2dotNET.world
         public virtual void OnPickUp(L2Item item) { }
 
         public int BuffMax = Config.Config.Instance.GameplayConfig.PlayerConfig.Buff.MaxBuffsAmount;
-        public LinkedList<AbnormalEffect> Effects = new LinkedList<AbnormalEffect>();
-
-        public override void AddAbnormal(Skill skill, L2Character caster, bool permanent, bool unlim)
-        {
-            if (!permanent)
-            {
-                if (skill.Debuff == 1)
-                {
-                    //const bool success = true; // TODO _stats.calcDebuffSuccess(skill, caster);
-
-                    //if (!success)
-                    //{
-                    //    caster.sendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1_RESISTED_YOUR_S2).AddString(Name).AddSkillName(skill.skill_id, skill.level));
-
-                    //    sendPacket(new SystemMessage(SystemMessage.SystemMessageId.RESISTED_S1_MAGIC).AddString(caster.Name));
-                    //    return;
-                    //}
-                }
-            }
-
-            if (skill.AbnormalTime == 0)
-            {
-                OnAveStart(skill, caster);
-                return;
-            }
-
-            bool cnew = true;
-
-            List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ave in Effects.Where(ave => ave.Active != 0))
-            {
-                if ((ave.Skill.SkillId == skill.SkillId) && (ave.Skill.Level >= skill.Level))
-                {
-                    cnew = false;
-                    break;
-                }
-
-                if ((ave.Skill.AbnormalType == null) || (skill.AbnormalType == null) || !ave.Skill.AbnormalType.Equals(skill.AbnormalType))
-                    continue;
-
-                if (ave.Skill.EffectPoint > skill.EffectPoint)
-                {
-                    cnew = false;
-                    break;
-                }
-
-                nulled.Add(ave);
-            }
-
-            lock (Effects)
-            {
-                nulled.ForEach(ei =>
-                {
-                    ei.ForcedStop(false, false);
-                    Effects.Remove(ei);
-                });
-            }
-
-            nulled.Clear();
-
-            if (!cnew)
-                return;
-
-            AbnormalEffect ic = new AbnormalEffect
-            {
-                Id = skill.SkillId,
-                Lvl = skill.Level,
-                Time = unlim ? -2 : skill.AbnormalTime,
-                Active = 1,
-                Owner = this,
-                Skill = skill
-            };
-            ic.Timer();
-
-            if (Effects.Count >= BuffMax)
-            {
-                int id = 1;
-                foreach (AbnormalEffect ave in Effects)
-                {
-                    if (id == 1)
-                    {
-                        ave.ForcedStop(false, false);
-                        break;
-                    }
-
-                    id++;
-                }
-
-                lock (Effects)
-                    Effects.RemoveFirst();
-            }
-
-            Effects.AddLast(ic);
-            OnAveStart(skill, caster);
-
-            {
-                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YouFeelS1Effect);
-                sm.AddSkillName(ic.Id, ic.Lvl);
-                SendPacket(sm);
-            }
-
-            UpdateMagicEffectIcons();
-        }
-
-        public void AddAbnormalSpa(int skillId, bool unlim)
-        {
-            bool addNew = true;
-            int lvlnext = 1;
-            List<AbnormalEffect> nulled = new List<AbnormalEffect>();
-            foreach (AbnormalEffect ave in Effects.Where(ave => (ave.Active != 0) && (ave.Skill.SkillId == skillId)))
-            {
-                addNew = false;
-                if (ave.Skill.Level > 10)
-                    continue;
-
-                addNew = true;
-                lvlnext = ave.Skill.Level + 1;
-                nulled.Add(ave);
-                break;
-            }
-
-            if (nulled.Count > 0)
-            {
-                lock (Effects)
-                {
-                    foreach (AbnormalEffect ei in nulled)
-                    {
-                        ei.ForcedStop(false, false);
-                        Effects.Remove(ei);
-                    }
-                }
-
-                nulled.Clear();
-            }
-
-            if (!addNew)
-                return;
-
-            Skill newsk = SkillTable.Instance.Get(skillId, lvlnext);
-            AbnormalEffect ic = new AbnormalEffect
-            {
-                Id = newsk.SkillId,
-                Lvl = newsk.Level,
-                Time = unlim ? -2 : newsk.AbnormalTime,
-                Active = 1,
-                Owner = this,
-                Skill = newsk
-            };
-            ic.Timer();
-
-            if (Effects.Count >= BuffMax)
-            {
-                int id = 1;
-                foreach (AbnormalEffect ave in Effects)
-                {
-                    if (id == 1)
-                    {
-                        ave.ForcedStop(false, false);
-                        break;
-                    }
-
-                    id++;
-                }
-
-                lock (Effects)
-                    Effects.RemoveFirst();
-            }
-
-            Effects.AddLast(ic);
-            OnAveStart(newsk, null);
-
-            UpdateMagicEffectIcons();
-        }
-
-        public void OnAveStart(Skill skill, L2Character caster)
-        {
-            int olda = AbnormalBitMask;
-            if (skill.AbnormalVisualEffect != -1)
-                AbnormalBitMask |= skill.AbnormalVisualEffect;
-
-            bool uis = AbnormalBitMask != olda;
-
-            AddStats(skill, caster);
-
-            if (uis)
-                BroadcastUserInfo();
-        }
-
-        public virtual void AddEffects(L2Character caster, Skill skill, SortedList<int, L2Object> objects)
-        {
-            foreach (L2Object target in objects.Values)
-                target.AddAbnormal(skill, caster, false, false);
-        }
-
-        public virtual void AddEffect(L2Character caster, Skill skill, bool permanent, bool unlim)
-        {
-            AddAbnormal(skill, caster, permanent, unlim);
-        }
-
+        
         public int ClientPosX,
                    ClientPosY,
                    ClientPosZ,
@@ -597,33 +180,11 @@ namespace L2dotNET.world
             if (!(this is L2Player))
                 return;
 
-            if (((L2Player)this).Summon != null)
-            {
-                L2Player pl = (L2Player)this;
-                pl.Summon.Teleport(x, y, z);
-                pl.Summon.IsTeleporting = true;
-            }
-
             BroadcastPacket(new TeleportToLocation(ObjId, x, y, z, Heading));
-        }
-
-        public int GetSkillLevel(int id)
-        {
-            if (Skills == null)
-                return -1;
-
-            lock (Skills)
-            {
-                if (Skills.ContainsKey(id))
-                    return Skills[id].Level;
-            }
-
-            return -1;
         }
 
         private Timer _waterTimer;
         private DateTime _waterTimeDamage;
-        //private bool lastInsideWater = false;
 
         public void WaterTimer()
         {
@@ -641,7 +202,7 @@ namespace L2dotNET.world
                 if (!next)
                     return;
 
-                int breath = (int)CharacterStat.GetStat(EffectType.BBreath);
+                int breath = 100;
                 _waterTimeDamage = DateTime.Now.AddSeconds(breath);
                 _waterTimer.Enabled = true;
 
@@ -733,7 +294,7 @@ namespace L2dotNET.world
             if (Dead)
                 return;
 
-            if ((this is L2Player && attacker is L2Player) || attacker is L2Summon)
+            if ((this is L2Player && attacker is L2Player))
             {
                 if (CurCp > 0)
                 {
@@ -760,8 +321,6 @@ namespace L2dotNET.world
                 DoDie(attacker);
                 return;
             }
-
-            AiCharacter.NotifyOnHit(attacker, damage);
         }
 
         public virtual void DoDie(L2Character killer)
@@ -769,9 +328,6 @@ namespace L2dotNET.world
             Dead = true;
             if (IsAttacking())
                 AbortAttack();
-
-            if (IsCastingNow())
-                AbortCast();
 
             CharStatus.StopHpMpRegeneration();
 
@@ -781,24 +337,10 @@ namespace L2dotNET.world
             BroadcastPacket(su);
 
             BroadcastPacket(new Die(this));
-
-            UpdateMagicEffectIcons();
-
-            killer.AiCharacter.NotifyOnKill(this);
-            AiCharacter.NotifyOnDie(killer);
-
-            AiCharacter.Disable();
         }
 
         public virtual void DeleteByForce()
         {
-            AiCharacter?.Disable();
-            
-            foreach (AbnormalEffect a in Effects)
-                a.MTimer.Enabled = false;
-
-            Effects.Clear();
-
             BroadcastPacket(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }
@@ -817,13 +359,11 @@ namespace L2dotNET.world
         {
             if (target == null)
             {
-                AiCharacter.NotifyTargetNull();
                 return;
             }
 
             if (target.Dead)
             {
-                AiCharacter.NotifyTargetDead();
                 return;
             }
 
@@ -837,7 +377,7 @@ namespace L2dotNET.world
                    reqMp = 0;
 
             L2Item weapon = ActiveWeapon;
-            double timeAtk = CharacterStat.GetStat(EffectType.BAttackSpd);
+            double timeAtk = 100;//attackspeed
             bool dual = false,
                  ranged = false,
                  ss = false;
@@ -854,7 +394,6 @@ namespace L2dotNET.world
             if ((reqMp > 0) && (reqMp > CurMp))
             {
                 SendMessage($"no mp {CurMp} {reqMp}");
-                AiCharacter.NotifyMpEnd(target);
                 return;
             }
 
@@ -925,14 +464,14 @@ namespace L2dotNET.world
         {
             Hit h = new Hit
             {
-                Miss = Formulas.CheckMissed(this, Target)
+                Miss = false
             };
             if (h.Miss)
                 return h;
 
-            h.ShieldDef = Formulas.CheckShieldDef(this, Target);
-            h.Crit = Formulas.CheckCrit(this, Target);
-            h.Damage = Formulas.GetPhysHitDamage(this, Target, 0);
+            h.ShieldDef = 0;
+            h.Crit = false;
+            h.Damage = 100;
             if (dual)
                 h.Damage *= .5;
             if (ss)
@@ -959,7 +498,6 @@ namespace L2dotNET.world
                     if (Target is L2Player)
                     {
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
-                        ((L2Player)Target).AiCharacter.NotifyEvaded(this);
                     }
                 }
             }
@@ -982,7 +520,6 @@ namespace L2dotNET.world
                     if (Target is L2Player)
                     {
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
-                        ((L2Player)Target).AiCharacter.NotifyEvaded(this);
                     }
                 }
             }
@@ -1107,9 +644,6 @@ namespace L2dotNET.world
             if ((AbnormalBitMaskEx & AbnormalMaskExFreezing) == AbnormalMaskExFreezing)
                 return true;
 
-            if (IsCastingNow())
-                return true;
-
             return false;
         }
 
@@ -1156,207 +690,10 @@ namespace L2dotNET.world
                 UpdateAbnormalExEffect();
         }
 
-        public CStats CharacterStat;
-
-        public void CStatsInit()
-        {
-            if (CharacterStat == null)
-                CharacterStat = new CStats(this);
-        }
-
         public virtual void OnOldTargetSelection(L2Object target) { }
 
         public virtual void OnNewTargetSelection(L2Object target) { }
-
-        public override void RegenUpdateTaskDone(object sender, ElapsedEventArgs e)
-        {
-            bool hp = CurHp < CharacterStat.GetStat(EffectType.BMaxHp),
-                 mp = CurMp < CharacterStat.GetStat(EffectType.BMaxMp),
-                 cp = false;
-
-            if (this is L2Player)
-                cp = CurCp < CharacterStat.GetStat(EffectType.BMaxCp);
-
-            if (!hp && !mp && !cp)
-                return;
-
-            StatusUpdate su = new StatusUpdate(ObjId);
-            if (hp)
-                su.Add(StatusUpdate.CurHp, (int)CurHp);
-            if (mp)
-                su.Add(StatusUpdate.CurMp, (int)CurMp);
-            if (cp)
-                su.Add(StatusUpdate.CurCp, (int)CurCp);
-
-            BroadcastPacket(su);
-
-            if (this is L2Summon)
-                ((L2Summon)this).Owner?.SendPacket(new PetStatusUpdate((L2Summon)this));
-
-            if (this is L2Player)
-                ((L2Player)this).Party?.BroadcastToMembers(new PartySmallWindowUpdate((L2Player)this));
-        }
-
-        public override void RegenTaskDone(object sender, ElapsedEventArgs e)
-        {
-            double maxhp = CharacterStat.GetStat(EffectType.BMaxHp);
-            if (CurHp < maxhp)
-            {
-                CurHp += CharacterStat.GetStat(EffectType.BRegHp);
-                if (CurHp > maxhp)
-                    CurHp = maxhp;
-            }
-
-            double maxmp = CharacterStat.GetStat(EffectType.BMaxMp);
-            if (CurMp < maxmp)
-            {
-                CurMp += CharacterStat.GetStat(EffectType.BRegMp);
-                if (CurMp > maxmp)
-                    CurMp = maxmp;
-            }
-
-            if (!(this is L2Player))
-                return;
-
-            double maxcp = CharacterStat.GetStat(EffectType.BMaxCp);
-            if (!(CurCp < maxcp))
-                return;
-
-            CurCp += CharacterStat.GetStat(EffectType.BRegCp);
-            if (CurCp > maxcp)
-                CurCp = maxcp;
-        }
-
-        public virtual bool IsCastingNow()
-        {
-            return (CastTime != null) && CastTime.Enabled;
-        }
-
-        public virtual void AbortCast()
-        {
-            if (CastTime != null)
-                CastTime.Enabled = false;
-
-            BroadcastPacket(new MagicSkillCanceld(ObjId));
-            CurrentCast = null;
-        }
-
-        public Skill CurrentCast;
-        public Timer CastTime;
-
-        public SortedList<int, L2SkillCoolTime> Reuse = new SortedList<int, L2SkillCoolTime>();
-
-        public int CastSkill(Skill skill)
-        {
-            if (IsCastingNow())
-                return 1;
-
-            L2Object target = skill.GetTargetCastId(this);
-
-            if (target == null)
-                return 2;
-
-            if (skill.CastRange != -1)
-            {
-                double dis = Calcs.CalculateDistance(this, target, true);
-                if (dis > skill.CastRange)
-                    return 3;
-            }
-
-            if (skill.ReuseDelay > 0)
-            {
-                if (Reuse.ContainsKey(skill.SkillId))
-                {
-                    TimeSpan ts = Reuse[skill.SkillId].StopTime - DateTime.Now;
-
-                    if (ts.TotalMilliseconds > 0)
-                        return 4;
-                }
-            }
-
-            if ((skill.MpConsume1 > 0) || (skill.MpConsume2 > 0))
-            {
-                if (CurMp < (skill.MpConsume1 + skill.MpConsume2))
-                    return 5;
-            }
-
-            if (skill.HpConsume > 0)
-            {
-                if (CurHp < skill.HpConsume)
-                    return 6;
-            }
-
-            if (skill.Effects.Count > 0)
-            {
-                bool fail = skill.Effects.Any(ef => !ef.CanUse(this));
-
-                if (fail)
-                    return 7;
-            }
-
-            if (skill.ReuseDelay > 0)
-            {
-                L2SkillCoolTime reuse = new L2SkillCoolTime
-                {
-                    Id = skill.SkillId,
-                    Lvl = skill.Level,
-                    Total = (int)skill.ReuseDelay,
-                    Owner = this
-                };
-                reuse.Delay = reuse.Total;
-                reuse.Timer();
-                Reuse.Add(reuse.Id, reuse);
-            }
-
-            {
-                //SystemMessage sm = new SystemMessage(46); //You use $s1.
-                //sm.addSkillName(skill.ClientID, skill.Level);
-                //sendPacket(sm);
-                //TODO nearby objects notify
-            }
-
-            if (skill.HpConsume > 0)
-            {
-                CurHp -= skill.HpConsume;
-
-                StatusUpdate su = new StatusUpdate(ObjId);
-                su.Add(StatusUpdate.CurHp, (int)CurHp);
-                BroadcastPacket(su);
-            }
-
-            if (skill.MpConsume1 > 0)
-            {
-                CurMp -= skill.MpConsume1;
-
-                StatusUpdate su = new StatusUpdate(ObjId);
-                su.Add(StatusUpdate.CurMp, (int)CurMp);
-                BroadcastPacket(su);
-            }
-
-            int hitTime = skill.SkillHitTime;
-
-            int hitT = hitTime > 0 ? (int)(hitTime * 0.95) : 0;
-            CurrentCast = skill;
-
-            BroadcastPacket(new MagicSkillUse(this, target, skill, hitTime == 0 ? 20 : hitTime));
-
-            if (hitTime > 50)
-            {
-                if (CastTime == null)
-                {
-                    CastTime = new Timer();
-                    CastTime.Elapsed += CastEnd;
-                }
-
-                CastTime.Interval = hitT;
-                CastTime.Enabled = true;
-            }
-            else
-                CastEnd();
-
-            return -1;
-        }
-
+        
         public virtual void BroadcastStatusUpdate()
         {
             if (!CharStatus.StatusListener.Any())
@@ -1373,60 +710,7 @@ namespace L2dotNET.world
                 temp?.SendPacket(su);
 
         }
-
-        private void CastEnd(object sender = null, ElapsedEventArgs e = null)
-        {
-            if (CurrentCast.MpConsume2 > 0)
-            {
-                if (CurMp < CurrentCast.MpConsume2)
-                {
-                    CurrentCast = null;
-                    CastTime.Enabled = false;
-                    return;
-                }
-
-                CurMp -= CurrentCast.MpConsume2;
-
-                StatusUpdate su = new StatusUpdate(ObjId);
-                su.Add(StatusUpdate.CurMp, (int)CurMp);
-                BroadcastPacket(su);
-            }
-
-            if (CurrentCast.CastRange != -1)
-            {
-                bool block = false;
-                if (Target != null)
-                {
-                    double dis = Calcs.CalculateDistance(this, Target, true);
-                    if (dis > CurrentCast.EffectiveRange)
-                        block = true;
-                }
-                else
-                    block = true;
-
-                if (block)
-                {
-                    CurrentCast = null;
-                    CastTime.Enabled = false;
-                    return;
-                }
-            }
-
-            SortedList<int, L2Object> arr = CurrentCast.GetAffectedTargets(this);
-            List<int> broadcast = new List<int>();
-            broadcast.AddRange(arr.Keys);
-
-            BroadcastPacket(new MagicSkillLaunched(this, broadcast, CurrentCast.SkillId, CurrentCast.Level));
-
-            AddEffects(this, CurrentCast, arr);
-            CurrentCast = null;
-            if (CastTime == null)
-                return;
-
-            lock (CastTime)
-                CastTime.Enabled = false;
-        }
-
+        
         public virtual L2Character[] GetPartyCharacters()
         {
             return new[] { this };
@@ -1460,8 +744,7 @@ namespace L2dotNET.world
             double spy = dy / distance,
                    spx = dx / distance;
 
-            double speed = CharacterStat.GetStat(EffectType.PSpeed);
-            speed = 130; //TODO: Human Figher Speed Based, need get characters run speed
+            double speed = 130; //TODO: Human Figher Speed Based, need get characters run speed
 
             //TODO: check possible divisions by zero
             _ticksToMove = (int)Math.Ceiling((10 * distance) / speed); //Client Response time = 1000ms, XYZ server check = 100ms (distance * 10 to get better precision)
@@ -1474,8 +757,6 @@ namespace L2dotNET.world
             BroadcastPacket(new CharMoveToLocation(this));
 
             _updatePositionTime.Enabled = true;
-
-            AiCharacter.NotifyStartMoving();
         }
 
 
@@ -1499,8 +780,7 @@ namespace L2dotNET.world
             double spy = dy / distance,
                    spx = dx / distance;
 
-            double speed = CharacterStat.GetStat(EffectType.PSpeed);
-            speed = 130; //TODO: Human Figher Speed Based, need get characters run speed
+            double speed = 130; //TODO: Human Figher Speed Based, need get characters run speed
 
             //TODO: check possible divisions by zero
             _ticksToMove = (int)Math.Ceiling((10 * distance) / speed); //Client Response time = 1000ms, XYZ server check = 100ms (distance * 10 to get better precision)
@@ -1513,8 +793,6 @@ namespace L2dotNET.world
             BroadcastPacket(new CharMoveToLocation(this));
 
             _updatePositionTime.Enabled = true;
-
-            AiCharacter.NotifyStartMoving();
         }
 
 
@@ -1548,9 +826,6 @@ namespace L2dotNET.world
             if (_updatePositionTime.Enabled)
                 _updatePositionTime.Enabled = false;
 
-            if (broadcast)
-                AiCharacter.NotifyStopMoving();
-
             if (update)
                 BroadcastPacket(new StopMove(this));
 
@@ -1576,9 +851,7 @@ namespace L2dotNET.world
             DestZ = 0;
             _xSpeedTicks = 0;
             _ySpeedTicks = 0;
-            _ticksToMove = 0;
-            
-            AiCharacter.NotifyStopMoving();       
+            _ticksToMove = 0;      
         }
 
 

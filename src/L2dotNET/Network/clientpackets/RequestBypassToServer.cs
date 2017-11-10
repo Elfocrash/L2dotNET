@@ -1,7 +1,6 @@
 ﻿using log4net;
 using L2dotNET.managers;
 using L2dotNET.model.npcs;
-using L2dotNET.model.npcs.ai;
 using L2dotNET.model.player;
 using L2dotNET.Utility;
 

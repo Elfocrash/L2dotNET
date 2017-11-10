@@ -25,7 +25,7 @@ namespace L2dotNET.Models.npcs
         {
             Template = template;
             Name = template.Name;
-            CStatsInit();
+            //CStatsInit();
             CurHp = Template.BaseHpMax;
             CurCp = 100;
             CurMp = Template.BaseMpMax;

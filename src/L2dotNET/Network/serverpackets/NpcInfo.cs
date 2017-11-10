@@ -1,5 +1,4 @@
 ﻿using L2dotNET.model.npcs;
-using L2dotNET.model.skills2;
 
 namespace L2dotNET.Network.serverpackets
 {
@@ -26,7 +25,7 @@ namespace L2dotNET.Network.serverpackets
 
             double spd = 150;//_npc.CharacterStat.GetStat(EffectType.PSpeed);
             double atkspd = 1200;//_npc.CharacterStat.GetStat(EffectType.BAttackSpd);
-            double cast = _npc.CharacterStat.GetStat(EffectType.BCastingSpd);
+            double cast = 1200;//_npc.CharacterStat.GetStat(EffectType.BCastingSpd);
             double anim = (spd * 1f) / 120;
             double anim2 = (1.1 * atkspd) / 277;
 

@@ -207,7 +207,7 @@ namespace L2dotNET.Services
             var player = GetPlayerByLogin(id);
 
             player.Gameclient = client;
-            player.CStatsInit();
+            //player.CStatsInit();
             player.Inventory.Restore(player);
             player.SessionData = new PlayerBag();
 
