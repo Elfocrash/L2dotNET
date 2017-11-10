@@ -20,9 +20,9 @@ namespace L2dotNET.Network.clientpackets
         {
             L2Player player = _client.CurrentPlayer;
 
-            L2Item item = RqItemManager.GetInstance().GetItem(_objectId);
-            if (item == null)
-                player.SendMessage("That item was deleted or modifyed.");
+            //L2Item item = RqItemManager.GetInstance().GetItem(_objectId);
+            //if (item == null)
+            //    player.SendMessage("That item was deleted or modifyed.");
             //else
             //{
             //    player.SendPacket(ExRpItemLink.ToPacket(item));

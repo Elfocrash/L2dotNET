@@ -90,12 +90,12 @@ namespace L2dotNET.model.npcs
 
         public virtual void OnTeleportRequest(L2Player player)
         {
-            NpcData.Instance.RequestTeleportList(this, player, 1);
+            
         }
 
         public void UseTeleporter(L2Player player, int type, int entryId)
         {
-            NpcData.Instance.RequestTeleport(this, player, type, entryId);
+
         }
 
         public virtual void OnDialog(L2Player player, int ask, int reply)

@@ -69,7 +69,6 @@
     <Compile Include="Commands\Admin\AdminSpawnNpc.cs" />
     <Compile Include="Commands\Admin\AdminTeleport.cs" />
     <Compile Include="Commands\Admin\AdminTest.cs" />
-    <Compile Include="Commands\Admin\AdminTransform.cs" />
     <Compile Include="Commands\Admin\AdminWhisper.cs" />
     <Compile Include="Compression\DlcStream.cs" />
     <Compile Include="Config\ClanConfig.cs" />
@@ -134,12 +133,10 @@
     <Compile Include="managers\PartyRoomManager.cs" />
     <Compile Include="managers\PetitionManager.cs" />
     <Compile Include="managers\PointCmdManager.cs" />
-    <Compile Include="managers\RqItemManager.cs" />
     <Compile Include="managers\RThread.cs" />
     <Compile Include="managers\RThreadType.cs" />
     <Compile Include="managers\ThreadPoolManager.cs" />
     <Compile Include="managers\TradeManager.cs" />
-    <Compile Include="managers\TransformManager.cs" />
     <Compile Include="managers\ZoneManager.cs" />
     <Compile Include="Models\inventory\Inventory.cs" />
     <Compile Include="Models\inventory\ItemContainer.cs" />
@@ -201,12 +198,6 @@
     <Compile Include="Models\player\L2Party.cs" />
     <Compile Include="Models\player\L2PartyRoom.cs" />
     <Compile Include="Models\player\L2Player.cs" />
-    <Compile Include="Models\player\transformation\data\_00001_1.cs" />
-    <Compile Include="Models\player\transformation\L2Transform.cs" />
-    <Compile Include="Models\player\transformation\TransformTemplate.cs" />
-    <Compile Include="Models\quests\QuestInfo.cs" />
-    <Compile Include="Models\quests\QuestManager.cs" />
-    <Compile Include="Models\quests\QuestOrigin.cs" />
     <Compile Include="Models\skills2\AcquireSkill.cs" />
     <Compile Include="Models\skills2\AcquireSkillsEntry.cs" />
     <Compile Include="Models\skills2\conds\CanSummonCubic.cs" />
@@ -218,7 +209,6 @@
     <Compile Include="Models\skills2\effects\AgathionEnergy.cs" />
     <Compile Include="Models\skills2\effects\ASummon.cs" />
     <Compile Include="Models\skills2\effects\ATeleRegion.cs" />
-    <Compile Include="Models\skills2\effects\ATransform.cs" />
     <Compile Include="Models\skills2\effects\BAccuracy.cs" />
     <Compile Include="Models\skills2\effects\BAccuracyNight.cs" />
     <Compile Include="Models\skills2\effects\BAttackSpd.cs" />
@@ -245,7 +235,6 @@
     <Compile Include="Models\skills2\effects\PPhysicalDefence.cs" />
     <Compile Include="Models\skills2\effects\PPhysicalShieldDefence.cs" />
     <Compile Include="Models\skills2\effects\PSpeed.cs" />
-    <Compile Include="Models\skills2\effects\RemoveSoul.cs" />
     <Compile Include="Models\skills2\effects\Restoration.cs" />
     <Compile Include="Models\skills2\effects\SummonCubic.cs" />
     <Compile Include="Models\skills2\effects\TargetCancel.cs" />
@@ -593,9 +582,6 @@
     <Compile Include="Services\ItemService.cs" />
     <Compile Include="Services\PlayerService.cs" />
     <Compile Include="Services\ServerService.cs" />
-    <Compile Include="tables\admin_bypass\ABTeleport.cs" />
-    <Compile Include="tables\admin_bypass\ABTeleportEntry.cs" />
-    <Compile Include="tables\admin_bypass\ABTeleportGroup.cs" />
     <Compile Include="tables\CharTemplateTable.cs" />
     <Compile Include="tables\FString.cs" />
     <Compile Include="tables\HtmCache.cs" />
@@ -610,12 +596,6 @@
     <Compile Include="tables\multisell\MultiSellEntry.cs" />
     <Compile Include="tables\multisell\MultiSellItem.cs" />
     <Compile Include="tables\multisell\MultiSellList.cs" />
-    <Compile Include="tables\ndextend\ABTeleportNpc.cs" />
-    <Compile Include="tables\ndextend\NDTeleport.cs" />
-    <Compile Include="tables\NDShop.cs" />
-    <Compile Include="tables\NDShopItem.cs" />
-    <Compile Include="tables\NDShopList.cs" />
-    <Compile Include="tables\NpcData.cs" />
     <Compile Include="tables\NpcSpawn.cs" />
     <Compile Include="tables\NpcTable.cs" />
     <Compile Include="tables\RecipeItemEntry.cs" />
@@ -774,14 +754,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AI\" />
     <Folder Include="Datapacks\Game\cmpl\ai\" />
     <Folder Include="Datapacks\Game\cmpl\quests\" />
     <Folder Include="Datapacks\Game\log\" />
     <Folder Include="Datapacks\Login\log\" />
     <Folder Include="Datapacks\Login\sq\" />
     <Folder Include="Mapping\" />
-    <Folder Include="Models\quests\Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

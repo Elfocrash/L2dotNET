@@ -8,7 +8,6 @@ using L2dotNET.Handlers;
 using L2dotNET.managers;
 using L2dotNET.model.items;
 using L2dotNET.model.npcs.ai;
-using L2dotNET.model.quests;
 using L2dotNET.model.skills2;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
@@ -50,7 +49,6 @@ namespace L2dotNET
             ItemHandler.Instance.Initialize();
 
             NpcTable.Instance.Initialize();
-            NpcData.Instance.Initialize();
             SkillTable.Instance.Initialize();
             MultiSell.Instance.Initialize();
             Capsule.Instance.Initialize();
@@ -61,8 +59,6 @@ namespace L2dotNET
             BlowFishKeygen.GenerateKeys();
 
             AdminCommandHandler.Instance.Initialize();
-
-            QuestManager.Instance.Initialize();
 
             AnnouncementManager.Instance.Initialize();
 

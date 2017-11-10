@@ -50,9 +50,6 @@ namespace L2dotNET.model.skills2
                 case EffectType.IPAttack:
                     effect = new IpAttack();
                     break;
-                case EffectType.IRemoveSoul:
-                    effect = new RemoveSoul();
-                    break;
                 case EffectType.IAgathionEnergy:
                     effect = new AgathionEnergy();
                     break;

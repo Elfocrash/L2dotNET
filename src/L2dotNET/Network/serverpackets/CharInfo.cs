@@ -136,8 +136,6 @@ namespace L2dotNET.Network.serverpackets
             WriteByte(_player.Noblesse);
 
             byte hero = _player.Heroic;
-            if (_player.TransformId != 0)
-                hero = 0;
 
             WriteByte(hero);
 

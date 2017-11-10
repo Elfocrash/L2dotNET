@@ -20,7 +20,6 @@ namespace L2dotNET.Network.serverpackets
             _danger = player.IsInDanger ? 1 : 0;
             _grade = player.PenaltyGrade;
             //_death = player.DeathPenaltyLevel;
-            _souls = player.Souls;
         }
 
         public override void Write()

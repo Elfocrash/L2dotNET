@@ -3,7 +3,6 @@ using L2dotNET.managers;
 using L2dotNET.model.npcs;
 using L2dotNET.model.npcs.ai;
 using L2dotNET.model.player;
-using L2dotNET.model.quests;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Network.clientpackets
@@ -86,7 +85,7 @@ namespace L2dotNET.Network.clientpackets
                     if (_alias.EqualsIgnoreCase("talk_select"))
                     {
                         npc = GetNpc();
-                        QuestManager.Instance.TalkSelection(player, npc);
+                        //QuestManager.Instance.TalkSelection(player, npc);
                     }
                     else
                     {
@@ -97,7 +96,7 @@ namespace L2dotNET.Network.clientpackets
                             string x1 = _alias.Split('?')[1];
                             int qid = int.Parse(x1.Split('=')[1]);
 
-                            QuestManager.Instance.QuestAccept(player, npc, qid);
+                            //QuestManager.Instance.QuestAccept(player, npc, qid);
                         }
                         else
                         {
@@ -108,7 +107,7 @@ namespace L2dotNET.Network.clientpackets
                                 string x1 = _alias.Split('?')[1];
                                 int qid = int.Parse(x1.Split('=')[1]);
 
-                                QuestManager.Instance.Quest_continue(player, npc, qid);
+                                //QuestManager.Instance.Quest_continue(player, npc, qid);
                             }
                             else
                             {
@@ -119,7 +118,7 @@ namespace L2dotNET.Network.clientpackets
                                     string x1 = _alias.Split('?')[1];
                                     int qid = int.Parse(x1.Split('=')[1]);
 
-                                    QuestManager.Instance.Quest_tryaccept(player, npc, qid);
+                                   // QuestManager.Instance.Quest_tryaccept(player, npc, qid);
                                 }
                                 else
                                 {

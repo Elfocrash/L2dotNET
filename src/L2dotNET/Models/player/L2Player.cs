@@ -14,8 +14,6 @@ using L2dotNET.model.npcs.decor;
 using L2dotNET.model.playable;
 using L2dotNET.model.player.ai;
 using L2dotNET.model.player.General;
-using L2dotNET.model.player.transformation;
-using L2dotNET.model.quests;
 using L2dotNET.model.skills;
 using L2dotNET.model.skills2;
 using L2dotNET.model.skills2.effects;
@@ -504,14 +502,6 @@ namespace L2dotNET.model.player
             ExpAfterLogin = 0;
         }
 
-        public List<QuestInfo> Quests = new List<QuestInfo>();
-
-        public void quest_Talk(L2Npc npc, int questId)
-        {
-            foreach (QuestInfo qi in Quests.Where(qi => !qi.Completed))
-                qi.Template.OnTalkToNpc(this, npc, qi.Stage);
-        }
-
         public void ShowHtm(string file, L2Object o)
         {
             if (file.EndsWithIgnoreCase(".htm"))
@@ -538,56 +528,11 @@ namespace L2dotNET.model.player
                 ShowHtmPlain(file, npc);
         }
 
-        public bool QuestComplete(int questId)
-        {
-            return Quests.Where(qi => qi.Id == questId).Select(qi => qi.Completed).FirstOrDefault();
-        }
-
-        public bool QuestInProgress(int questId)
-        {
-            return Quests.Any(qi => (qi.Id == questId) && !qi.Completed);
-        }
-
-        public void QuestAccept(QuestInfo qi)
-        {
-            Quests.Add(qi);
-            SendPacket(new PlaySound("ItemSound.quest_accept"));
-            SendQuestList();
-
-            //SQL_Block sqb = new SQL_Block("user_quests");
-            //sqb.param("ownerId", ObjID);
-            //sqb.param("qid", qi.id);
-            //sqb.sql_insert(false);
-        }
-
         public void ShowHtmPlain(string plain, L2Object o)
         {
             SendPacket(new NpcHtmlMessage(this, plain, o?.ObjId ?? -1, true));
             if (o is L2Npc)
                 FolkNpc = (L2Npc)o;
-        }
-
-        public void ChangeQuestStage(int questId, int stage)
-        {
-            foreach (QuestInfo qi in Quests.Where(qi => qi.Id == questId))
-            {
-                qi.Stage = stage;
-                SendPacket(new PlaySound("ItemSound.quest_middle"));
-
-                //SQL_Block sqb = new SQL_Block("user_quests");
-                //sqb.param("qstage", stage);
-                //sqb.where("ownerId", ObjID);
-                //sqb.where("qid", qi.id);
-                //sqb.sql_update(false);
-                break;
-            }
-
-            SendQuestList();
-        }
-
-        public List<QuestInfo> GetAllActiveQuests()
-        {
-            return Quests.Where(qi => !qi.Completed).ToList();
         }
 
         public void SendQuestList()
@@ -617,35 +562,6 @@ namespace L2dotNET.model.player
             su.Add(StatusUpdate.Sp, Sp);
             su.Add(StatusUpdate.Level, Level);
             SendPacket(su);
-        }
-
-        public void FinishQuest(int questId)
-        {
-            foreach (QuestInfo qi in Quests.Where(qi => qi.Id == questId))
-            {
-                if (!qi.Template.Repeatable)
-                {
-                    qi.Completed = true;
-                    qi.Template = null;
-
-                    //SQL_Block sqb = new SQL_Block("user_quests");
-                    //sqb.param("qfin", 1);
-                    //sqb.where("ownerId", ObjID);
-                    //sqb.where("iclass", ActiveClass.id);
-                    //sqb.where("qid", qi.id);
-                    //sqb.sql_update(false);
-                }
-                else
-                {
-                    lock (Quests)
-                        Quests.Remove(qi);
-                }
-
-                SendPacket(new PlaySound("ItemSound.quest_finish"));
-                break;
-            }
-
-            SendQuestList();
         }
 
         public void RestoreSkills()
@@ -699,21 +615,6 @@ namespace L2dotNET.model.player
                 //sqb.where("iclass", ActiveClass.id);
                 //sqb.sql_delete(false);
             }
-        }
-
-        public void StopQuest(QuestInfo qi, bool updDb)
-        {
-            if (updDb)
-            {
-                //SQL_Block sqb = new SQL_Block("user_quests");
-                //sqb.where("ownerId", ObjID);
-                //sqb.where("qid", qi.id);
-                //sqb.where("iclass", ActiveClass.id);
-                //sqb.sql_delete(false);
-            }
-
-            Quests.Remove(qi);
-            SendPacket(new PlaySound("ItemSound.quest_giveup"));
         }
 
         public int ItemLimitInventory = 80,
@@ -888,27 +789,12 @@ namespace L2dotNET.model.player
             }
         }
 
-        public int Souls;
-        public int TransformId = 0;
-        public L2Transform Transform;
-        public int AgationId;
-
         public PcTemplate BaseClass;
         public PcTemplate ActiveClass;
 
         public bool SubActive()
         {
             return ActiveClass != BaseClass;
-        }
-
-        public bool IsQuestCompleted(int p)
-        {
-            return Quests.Where(qi => qi.Id == p).Select(qi => qi.Completed).FirstOrDefault();
-        }
-
-        public int GetQuestCond(int questId)
-        {
-            return Quests.Where(qi => qi.Id == questId).Select(qi => qi.Stage).FirstOrDefault();
         }
 
         public override void OnPickUp(L2Item item)
@@ -1066,15 +952,6 @@ namespace L2dotNET.model.player
             //     }
         }
 
-        public void Untransform()
-        {
-            if (Transform == null)
-                return;
-
-            Transform.Template.OnTransformEnd(this);
-            Transform = null;
-        }
-
         public override void DeleteMe()
         {
             CleanUp();
@@ -1153,13 +1030,6 @@ namespace L2dotNET.model.player
             //        activeChar.sendPacket(new RecipeShopMsg(this));
             //        break;
             //}
-        }
-
-        public void SetTransform(L2Transform tr)
-        {
-            Transform = tr;
-            Transform.Owner = this;
-            Transform.Template.OnTransformStart(this);
         }
 
         public override void SetTarget(L2Character newTarget)
@@ -1396,35 +1266,7 @@ namespace L2dotNET.model.player
             //reader.Close();
             //connection.Close();
         }
-
-        public void ReduceSouls(byte count)
-        {
-            Souls -= count;
-            SendPacket(new EtcStatusUpdate(this));
-        }
-
-        public void AddSouls(byte count)
-        {
-            Souls += count;
-            SendPacket(new EtcStatusUpdate(this));
-
-            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YourSoulCountHasIncreasedByS1NowAtS2);
-            sm.AddNumber(count);
-            sm.AddNumber(Souls);
-            SendPacket(sm);
-        }
-
-        public void IncreaseSouls()
-        {
-            if (((Souls + 1) > 45) || (Souls == 45))
-            {
-                SendSystemMessage(SystemMessage.SystemMessageId.SoulCannotBeIncreasedAnymore);
-                return;
-            }
-
-            AddSouls(1);
-        }
-
+        
         public bool IsCursed = false;
 
         public byte PartyState;
@@ -1940,9 +1782,6 @@ namespace L2dotNET.model.player
         {
             get
             {
-                if (TransformId > 0)
-                    return Transform.Template.GetHeight((byte)Sex);
-
                 if (MountType > 0)
                     return MountedTemplate.CollisionHeight;
 
