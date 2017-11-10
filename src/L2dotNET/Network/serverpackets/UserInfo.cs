@@ -88,36 +88,28 @@ namespace L2dotNET.Network.serverpackets
             WriteShort(0x00);
             WriteShort(0x00);
 
-            double atkspd = 1000;//_player.CharacterStat.GetStat(EffectType.BAttackSpd)
-            WriteInt(100);//_player.CharacterStat.GetStat(EffectType.PPhysicalAttack)
-            WriteInt(atkspd);
-            WriteInt(100);//_player.CharacterStat.GetStat(EffectType.PPhysicalDefense)
-            WriteInt(0);//_player.CharacterStat.GetStat(EffectType.BEvasion)
-            WriteInt(100);//_player.CharacterStat.GetStat(EffectType.BAccuracy)
-            WriteInt(100);//_player.CharacterStat.GetStat(EffectType.BCriticalRate)
-            WriteInt(1000);//_player.CharacterStat.GetStat(EffectType.PMagicalAttack)
-            WriteInt(1000);//_player.CharacterStat.GetStat(EffectType.BCastingSpd)
-            WriteInt(atkspd); //? еще раз?
-            WriteInt(0);//_player.CharacterStat.GetStat(EffectType.PMagicalDefense)
+            WriteInt(_player.Stats.PAttack(null));
+            WriteInt(_player.Stats.PAttackSpeed);
+            WriteInt(_player.Stats.PDefence(null));
+            WriteInt(_player.Stats.EvasionRate(null));
+            WriteInt(_player.Stats.Accuracy);
+            WriteInt(_player.Stats.CriticalHit(null));
+            WriteInt(_player.Stats.MAttack(null));
+            WriteInt(_player.Stats.MAttackSpeed);
+            WriteInt(_player.Stats.PAttackSpeed); //? еще раз?
+            WriteInt(_player.Stats.MDefence(null));
 
             WriteInt(_player.PvPStatus);
             WriteInt(_player.Karma);
 
-            double spd = 100;// _player.CharacterStat.GetStat(EffectType.PSpeed);
-
-            double anim = (spd * 1f) / 130;
-            //double anim2 = (1.1) * atkspd / 300;
-            double runSpd = spd / anim;
-            double walkSpd = (spd * .8) / anim;
-
-            WriteInt(runSpd);
-            WriteInt(walkSpd);
+            WriteInt(_player.Stats.BaseRunSpeed);
+            WriteInt(_player.Stats.BaseWalkSpeed);
             WriteInt(50); // swimspeed
             WriteInt(50); // swimspeed
             WriteInt(0); //?
             WriteInt(0); //?
-            WriteInt(runSpd); //fly run
-            WriteInt(walkSpd); //fly walk ?
+            WriteInt(_player.Stats.BaseRunSpeed);
+            WriteInt(_player.Stats.BaseWalkSpeed);
             WriteDouble(1); //run speed multiplier
             WriteDouble(1); //atk speed multiplier
 

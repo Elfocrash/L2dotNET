@@ -6,10 +6,12 @@ using L2dotNET.Enums;
 using L2dotNET.model.items;
 using L2dotNET.model.player;
 using L2dotNET.model.skills;
+using L2dotNET.Models.Stats;
 using L2dotNET.Models.Status;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.templates;
 using L2dotNET.tools;
+using Calculator = L2dotNET.Models.Stats.Calculator;
 
 namespace L2dotNET.world
 {
@@ -62,11 +64,18 @@ namespace L2dotNET.world
 
         private Timer _updatePositionTime = new Timer(90);
 
+        public Calculator[] Calculators { get; set; }
+
+        public CharacterStat Stats { get; set; }
+
         public L2Character(int objectId, CharTemplate template) : base(objectId)
         {
             Template = template;
-            _updatePositionTime.Elapsed += UpdatePositionTask;      
+            Stats = new CharacterStat(this);
             CharStatus = new CharStatus(this);
+            Calculators = new Calculator[Models.Stats.Stats.Values.Count()];
+
+            _updatePositionTime.Elapsed += UpdatePositionTask;
         }
 
         public virtual void SetTarget(L2Character obj)

@@ -26,12 +26,10 @@ namespace L2dotNET.Models.npcs
             Template = template;
             Name = template.Name;
             //CStatsInit();
-            CurHp = Template.BaseHpMax;
-            CurCp = 100;
-            CurMp = Template.BaseMpMax;
-            MaxCp = 100;
-            MaxHp = (int)Template.BaseHpMax;
-            MaxMp = (int)Template.BaseMpMax;
+            CurHp = Template.BaseHpMax(0);
+            CurMp = Template.BaseMpMax(0);
+            MaxHp = (int)Template.BaseHpMax(0);
+            MaxMp = (int)Template.BaseMpMax(0);
         }
 
         public override void OnAction(L2Player player)

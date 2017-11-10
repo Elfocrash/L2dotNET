@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.Network.serverpackets
 {
-    class Calculator : GameserverPacket
+    public class Calculator : GameserverPacket
     {
         public override void Write()
         {

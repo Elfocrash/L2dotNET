@@ -5,6 +5,7 @@ using L2dotNET.Enums;
 using L2dotNET.model.inventory;
 using L2dotNET.model.player;
 using L2dotNET.Models;
+using L2dotNET.Models.Stats;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.tables;
@@ -55,7 +56,7 @@ namespace L2dotNET.Network.clientpackets
 
             PcTemplate template = CharTemplateTable.Instance.GetTemplate(_classId);
 
-            L2Player player = new L2Player(IdFactory.Instance.NextId(), null);
+            L2Player player = new L2Player(IdFactory.Instance.NextId(), template);
             player.Inventory = new PcInventory(player);
             player.Name = _name;
             player.AccountName = _client.AccountName;
@@ -67,7 +68,7 @@ namespace L2dotNET.Network.clientpackets
             player.Exp = 0;
             player.Level = 1;
             player.Gameclient = _client;
-            //player.CStatsInit();
+            player.Stats = new CharacterStat(player);
             //player.CharacterStat.SetTemplate(template);
             player.BaseClass = template;
             player.ActiveClass = template;

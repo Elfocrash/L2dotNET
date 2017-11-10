@@ -180,6 +180,11 @@
     <Compile Include="Models\player\L2PartyRoom.cs" />
     <Compile Include="Models\player\L2Player.cs" />
     <Compile Include="Models\skills\L2SkillCoolTime.cs" />
+    <Compile Include="Models\Stats\Calculator.cs" />
+    <Compile Include="Models\Stats\CharacterStat.cs" />
+    <Compile Include="Models\Stats\Env.cs" />
+    <Compile Include="Models\Stats\Func.cs" />
+    <Compile Include="Models\Stats\Stat.cs" />
     <Compile Include="Models\Status\CharStatus.cs" />
     <Compile Include="Models\templates\Object.cs" />
     <Compile Include="Models\templates\ObjectBaseAttackType.cs" />
@@ -562,8 +567,8 @@
     <Compile Include="Utility\Stopwatch.cs" />
     <Compile Include="Utility\StringHelper.cs" />
     <Compile Include="Utility\Utilz.cs" />
-    <Compile Include="world\L2Character.cs" />
-    <Compile Include="world\L2Object.cs" />
+    <Compile Include="Models\L2Character.cs" />
+    <Compile Include="Models\L2Object.cs" />
     <Compile Include="world\L2World.cs" />
     <Compile Include="world\L2WorldRegion.cs" />
   </ItemGroup>
@@ -679,6 +684,7 @@
     <Folder Include="Datapacks\Login\log\" />
     <Folder Include="Datapacks\Login\sq\" />
     <Folder Include="Mapping\" />
+    <Folder Include="Models\Stats\Func\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -67,26 +67,20 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.PvPStatus);
             WriteInt(_player.Karma);
 
-            WriteInt(1000); //atckspeed
-            WriteInt(1000); //mattackspeed
+            WriteInt(_player.Stats.PAttackSpeed); //atckspeed
+            WriteInt(_player.Stats.MAttackSpeed); //mattackspeed
 
             WriteInt(_player.PvPStatus);
             WriteInt(_player.Karma);
 
-            double spd = 100;//_player.CharacterStat.GetStat(EffectType.PSpeed);
-            double anim = (spd * 1f) / 130;
-            double anim2 = (1.1 * 1000) / 300; // 1000 is _player.CharacterStat.GetStat(EffectType.BAttackSpd)
-            double runSpd = spd / anim;
-            double walkSpd = (spd * .8) / anim;
-
-            WriteInt(runSpd);
-            WriteInt(walkSpd);
+            WriteInt(_player.Stats.BaseRunSpeed);
+            WriteInt(_player.Stats.BaseWalkSpeed);
             WriteInt(50); // swimspeed
             WriteInt(50); // swimspeed
-            WriteInt(runSpd);
-            WriteInt(walkSpd);
-            WriteInt(runSpd);
-            WriteInt(walkSpd);
+            WriteInt(_player.Stats.BaseRunSpeed);
+            WriteInt(_player.Stats.BaseWalkSpeed);
+            WriteInt(_player.Stats.BaseRunSpeed);
+            WriteInt(_player.Stats.BaseWalkSpeed);
             WriteDouble(1);
             WriteDouble(1);
 

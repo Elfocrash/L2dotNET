@@ -66,7 +66,7 @@ namespace L2dotNET.Repositories
                              last_recom_date) 
                              Values (@account_name, @obj_Id, @char_name, @Level, @MaxHp, @CurHp, @MaxCp, @CurCp,@MaxMp,@CurMp,
                              @Face,@HairStyle,@HairColor,@Sex,@Heading,@X,@Y,@Z,@Exp,@ExpBeforeDeath,@Sp,@Karma,@PvpKills,@PkKills,@Race,@classid,@base_class, @DeleteTime,@CanCraft,@Title,
-                             @rec_have,@rec_left,@AccessLevel,@char_slot,,@punish_level,@punish_timer, @power_grade,@Nobless,@Hero,
+                             @rec_have,@rec_left,@AccessLevel,@char_slot,@punish_level,@punish_timer, @power_grade,@Nobless,@Hero,
                              @last_recom_date)", new
                 {
                     account_name = player.AccountName,

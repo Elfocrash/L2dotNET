@@ -9,8 +9,11 @@
         public int BaseWit { get; }
         public int BaseMen { get; }
 
-        public double BaseHpMax { get; }
-        public double BaseMpMax { get; }
+        private readonly double _baseHpMax;
+        private readonly double _baseMpMax;
+
+        public double BaseHpMax(int level) => _baseHpMax;
+        public double BaseMpMax(int level) => _baseMpMax;
 
         public double BaseHpReg { get; }
         public double BaseMpReg { get; }
@@ -39,8 +42,8 @@
             BaseWit = set.GetInt("wit", 43);
             BaseMen = set.GetInt("men", 20);
 
-            BaseHpMax = set.GetDouble("hp");
-            BaseMpMax = set.GetDouble("mp");
+            _baseHpMax = set.GetDouble("hp");
+            _baseMpMax = set.GetDouble("mp");
 
             BaseHpReg = set.GetDouble("hpRegen", 1.5d);
             BaseMpReg = set.GetDouble("mpRegen", 0.9d);
