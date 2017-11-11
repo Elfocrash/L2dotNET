@@ -22,7 +22,7 @@ namespace L2dotNET.Commands.Admin
             target.CurHp = target.MaxHp;
             target.CurMp = target.MaxMp;
 
-            StatusUpdate su = new StatusUpdate(target.ObjId);
+            StatusUpdate su = new StatusUpdate(target);
             su.Add(StatusUpdate.CurHp, (int)target.CurHp);
             su.Add(StatusUpdate.CurMp, (int)target.CurMp);
             target.SendPacket(su);

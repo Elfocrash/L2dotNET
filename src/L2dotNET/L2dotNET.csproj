@@ -184,6 +184,20 @@
     <Compile Include="Models\Stats\CharacterStat.cs" />
     <Compile Include="Models\Stats\Env.cs" />
     <Compile Include="Models\Stats\Func.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncAtkAccuracy.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncAtkCritical.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncAtkEvasion.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncMAtkCritical.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncMAtkMod.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncMAtkSpeed.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncMaxCpMul.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncMaxHpMul.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncMaxMpMul.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncMDefMod.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncMoveSpeed.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncPAtkMod.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncPAtkSpeed.cs" />
+    <Compile Include="Models\Stats\Funcs\FuncPDefMod.cs" />
     <Compile Include="Models\Stats\Stat.cs" />
     <Compile Include="Models\Status\CharStatus.cs" />
     <Compile Include="Models\templates\Object.cs" />
@@ -684,7 +698,6 @@
     <Folder Include="Datapacks\Login\log\" />
     <Folder Include="Datapacks\Login\sq\" />
     <Folder Include="Mapping\" />
-    <Folder Include="Models\Stats\Func\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

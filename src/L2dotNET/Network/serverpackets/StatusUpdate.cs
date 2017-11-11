@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using L2dotNET.world;
 
 namespace L2dotNET.Network.serverpackets
 {
@@ -38,22 +39,22 @@ namespace L2dotNET.Network.serverpackets
         public static int MaxCp = 0x22;
 
         public List<KeyValuePair<int,int>> Attrs = new List<KeyValuePair<int, int>>();
-        private readonly int _id;
+        private readonly int _objectId;
 
         public void Add(int type, int val)
         {
             Attrs.Add(new KeyValuePair<int, int>(type,val));
         }
 
-        public StatusUpdate(int id)
+        public StatusUpdate(L2Object obj)
         {
-            _id = id;
+            _objectId = obj.ObjId;
         }
 
         public override void Write()
         {
             WriteByte(0x0e);
-            WriteInt(_id);
+            WriteInt(_objectId);
             WriteInt(Attrs.Count);
 
             foreach (var pair in Attrs)

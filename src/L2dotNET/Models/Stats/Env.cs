@@ -11,7 +11,7 @@ namespace L2dotNET.Models.Stats
         public L2Item Item { get; set; }
 
         public double Value { get; set; }
-        public double BaseValye { get; set; }
+        public double BaseValue { get; set; }
 
         public bool SkillMastery { get; set; } = false;
         public byte Shield { get; set; }

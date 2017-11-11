@@ -13,6 +13,8 @@ using L2dotNET.model.npcs.decor;
 using L2dotNET.model.player.General;
 using L2dotNET.model.vehicles;
 using L2dotNET.Models;
+using L2dotNET.Models.Stats;
+using L2dotNET.Models.Stats.Funcs;
 using L2dotNET.Models.Status;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
@@ -36,6 +38,7 @@ namespace L2dotNET.model.player
         {
             Template = template;
             CharStatus = new CharStatus(this);
+            Stats = new CharacterStat(this);
         }
 
         public L2Player() :base(0, null)
@@ -91,18 +94,6 @@ namespace L2dotNET.model.player
         public PcInventory Inventory { get; set; }
         public dynamic SessionData { get; set; }
         public new PcTemplate Template { get; set; }
-
-        public int Int => ActiveClass.BaseInt;
-
-        public int Str => ActiveClass.BaseStr;
-
-        public int Con => ActiveClass.BaseCon;
-
-        public int Men => ActiveClass.BaseMen;
-
-        public int Dex => ActiveClass.BaseDex;
-
-        public int Wit => ActiveClass.BaseWit;
 
         public byte Builder = 1;
         public byte Noblesse = 0;
@@ -184,7 +175,16 @@ namespace L2dotNET.model.player
         {
             SendPacket(new SkillCoolTime(this));
         }
-        
+
+        public override void AddFuncsToNewCharacter()
+        {
+            base.AddFuncsToNewCharacter();
+
+            AddStatFunc(new FuncMaxCpMul());
+
+            //Henna stuff go here
+        }
+
         public bool Diet = false;
         
         public void OnGameInit()
@@ -219,6 +219,16 @@ namespace L2dotNET.model.player
             else
                 ShowHtmPlain(file, npc);
         }
+        
+        public void UpdateAndBroadcastStatus(int broadcastType)
+        {
+            if (broadcastType == 1)
+                SendPacket(new UserInfo(this));
+            else if (broadcastType == 2)
+            {
+                BroadcastUserInfo();
+            }
+        }
 
         public void ShowHtmPlain(string plain, L2Object o)
         {
@@ -249,7 +259,7 @@ namespace L2dotNET.model.player
                 this.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.YouIncreasedYourLevel));
             }
 
-            StatusUpdate su = new StatusUpdate(ObjId);
+            StatusUpdate su = new StatusUpdate(this);
             su.Add(StatusUpdate.Exp, (int)Exp);
             su.Add(StatusUpdate.Sp, Sp);
             su.Add(StatusUpdate.Level, Level);
@@ -536,7 +546,7 @@ namespace L2dotNET.model.player
 
         public override void BroadcastStatusUpdate()
         {
-            StatusUpdate su = new StatusUpdate(this.ObjId);
+            StatusUpdate su = new StatusUpdate(this);
             su.Add(StatusUpdate.CurHp, (int)CurHp);
             su.Add(StatusUpdate.CurMp, (int)CurMp);
             su.Add(StatusUpdate.CurCp, (int)CurCp);
@@ -697,7 +707,7 @@ namespace L2dotNET.model.player
 
                     newTarget.CharStatus.AddStatusListener(this);
 
-                    StatusUpdate su = new StatusUpdate(newTarget.ObjId);
+                    StatusUpdate su = new StatusUpdate(newTarget);
                     su.Add(StatusUpdate.MaxHp, newTarget.MaxHp);
                     su.Add(StatusUpdate.CurHp, (int)newTarget.CurHp);
                     SendPacket(su);
@@ -770,7 +780,7 @@ namespace L2dotNET.model.player
             if (oldweight == total)
                 return;
 
-            StatusUpdate su = new StatusUpdate(ObjId);
+            StatusUpdate su = new StatusUpdate(this);
             su.Add(StatusUpdate.CurLoad, CurrentWeight);
             SendPacket(su);
 
@@ -863,7 +873,7 @@ namespace L2dotNET.model.player
             OnGameInit();
             //RestoreSkills();
             //db_restoreQuests();
-            db_restoreRecipes();
+            //db_restoreRecipes();
             // db_restoreShortcuts(); elfo to be added
 
             IsRestored = true;

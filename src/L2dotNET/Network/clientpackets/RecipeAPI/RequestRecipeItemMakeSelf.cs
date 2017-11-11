@@ -59,7 +59,7 @@ namespace L2dotNET.Network.clientpackets.RecipeAPI
             }
 
             player.CurMp -= rec.MpConsume;
-            StatusUpdate su = new StatusUpdate(player.ObjId);
+            StatusUpdate su = new StatusUpdate(player);
             su.Add(StatusUpdate.CurMp, (int)player.CurMp);
             player.SendPacket(su);
 

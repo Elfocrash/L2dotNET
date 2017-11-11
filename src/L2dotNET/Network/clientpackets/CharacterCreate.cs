@@ -57,6 +57,7 @@ namespace L2dotNET.Network.clientpackets
             PcTemplate template = CharTemplateTable.Instance.GetTemplate(_classId);
 
             L2Player player = new L2Player(IdFactory.Instance.NextId(), template);
+
             player.Inventory = new PcInventory(player);
             player.Name = _name;
             player.AccountName = _client.AccountName;
@@ -69,15 +70,14 @@ namespace L2dotNET.Network.clientpackets
             player.Level = 1;
             player.Gameclient = _client;
             player.Stats = new CharacterStat(player);
-            //player.CharacterStat.SetTemplate(template);
             player.BaseClass = template;
             player.ActiveClass = template;
             player.CurHp = template.HpTable[player.Level];
             player.CurMp = template.MpTable[player.Level];
             player.CurCp = template.CpTable[player.Level];
-            player.MaxMp = (int)template.MpTable[player.Level];//;(int)player.CharacterStat.GetStat(EffectType.BMaxMp);
-            player.MaxCp = (int)template.CpTable[player.Level];
-            player.MaxHp = (int)template.HpTable[player.Level];
+            player.MaxMp = player.Stats.MaxMp;//;(int)player.CharacterStat.GetStat(EffectType.BMaxMp);
+            player.MaxCp = player.Stats.MaxCp;
+            player.MaxHp = player.Stats.MaxHp;
             player.X = template.SpawnX;
             player.Y = template.SpawnY;
             player.Z = template.SpawnZ;
@@ -114,6 +114,7 @@ namespace L2dotNET.Network.clientpackets
             }
 
             PlayerService.CreatePlayer(player);
+            //player = PlayerService.RestorePlayer(player.ObjId, _client);
             player.Gameclient.AccountChars.Add(player);
             _client.SendPacket(new CharCreateOk());
             L2World.Instance.AddPlayer(player);

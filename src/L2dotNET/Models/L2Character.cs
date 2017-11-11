@@ -7,6 +7,7 @@ using L2dotNET.model.items;
 using L2dotNET.model.player;
 using L2dotNET.model.skills;
 using L2dotNET.Models.Stats;
+using L2dotNET.Models.Stats.Funcs;
 using L2dotNET.Models.Status;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.templates;
@@ -51,6 +52,18 @@ namespace L2dotNET.world
         public const int AbnormalMaskEventCrown1 = 0x000020;
         public const int AbnormalMaskEventCrown2 = 0x000040;
         public const int AbnormalMaskEventCrown3 = 0x000080;
+        
+        public int Int => Stats.Int;
+
+        public int Str => Stats.Str;
+
+        public int Con => Stats.Con;
+
+        public int Men => Stats.Men;
+
+        public int Dex => Stats.Dex;
+
+        public int Wit => Stats.Wit;
 
         protected byte ZoneValidateCounter = 4;
 
@@ -74,7 +87,7 @@ namespace L2dotNET.world
             Stats = new CharacterStat(this);
             CharStatus = new CharStatus(this);
             Calculators = new Calculator[Models.Stats.Stats.Values.Count()];
-
+            AddFuncsToNewCharacter();
             _updatePositionTime.Elapsed += UpdatePositionTask;
         }
 
@@ -84,6 +97,114 @@ namespace L2dotNET.world
                 obj = null;
 
             Target = obj;
+        }
+
+        public void AddStatFunc(Func func)
+        {
+            if (func == null)
+                return;
+
+            var statId = Array.IndexOf(Models.Stats.Stats.Values.ToArray(), func.Stat);
+
+            lock (Calculators)
+            {
+                if (Calculators[statId] == null)
+                    Calculators[statId] = new Calculator();
+
+                Calculators[statId].AddFunc(func);
+            }
+        }
+
+        public void AddStatFuncs(IEnumerable<Func> funcs)
+        {
+            List<Stat> modifiedStats = new List<Stat>();
+            foreach (var func in funcs)
+            {
+                modifiedStats.Add(func.Stat);
+                AddStatFunc(func);
+            }
+            BroadcastModifiedStats(modifiedStats);
+        }
+
+        public void RemoveStatsByOwner(object owner)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void AddFuncsToNewCharacter()
+        {
+            AddStatFunc(new FuncPAtkMod());
+            AddStatFunc(new FuncMAtkMod());
+            AddStatFunc(new FuncPDefMod());
+            AddStatFunc(new FuncMDefMod());
+
+            AddStatFunc(new FuncMaxHpMul());
+            AddStatFunc(new FuncMaxMpMul());
+
+            AddStatFunc(new FuncAtkAccuracy());
+            AddStatFunc(new FuncAtkEvasion());
+
+            AddStatFunc(new FuncPAtkSpeed());
+            AddStatFunc(new FuncMAtkSpeed());
+
+            AddStatFunc(new FuncMoveSpeed());
+
+            AddStatFunc(new FuncAtkCritical());
+            AddStatFunc(new FuncMAtkCritical());
+        }
+
+        public double GetLevelMod()
+        {
+            return (100.0 - 11 + Level) / 100.0;
+        }
+
+        public void BroadcastModifiedStats(List<Stat> stats)
+        {
+            if (stats == null || !stats.Any())
+                return;
+
+            bool broadcastFull = false;
+            StatusUpdate statusUpdate = null;
+
+            foreach (var stat in stats)
+            {
+                if (stat == Models.Stats.Stats.PowerAttackSpeed)
+                {
+                    if(statusUpdate == null)
+                        statusUpdate = new StatusUpdate(this);
+
+                    statusUpdate.Add(StatusUpdate.AtkSpd, Stats.PAttackSpeed);
+                }
+                else if (stat == Models.Stats.Stats.MagicAttackSpeed)
+                {
+                    if (statusUpdate == null)
+                        statusUpdate = new StatusUpdate(this);
+
+                    statusUpdate.Add(StatusUpdate.CastSpd, Stats.MAttackSpeed);
+                }
+                else if (stat == Models.Stats.Stats.MaxHp)
+                {
+                    if (statusUpdate == null)
+                        statusUpdate = new StatusUpdate(this);
+
+                    statusUpdate.Add(StatusUpdate.MaxHp, Stats.MaxHp);
+                }else if (stat == Models.Stats.Stats.RunSpeed)
+                    broadcastFull = true;
+            }
+
+            if (this is L2Player player)
+            {
+                if (broadcastFull)
+                    player.UpdateAndBroadcastStatus(2);
+                else
+                {
+                    player.UpdateAndBroadcastStatus(1);
+                    if(statusUpdate != null)
+                        BroadcastPacket(statusUpdate);
+                }
+            }
+            else if(statusUpdate != null)
+                BroadcastPacket(statusUpdate);
         }
 
         public override void OnForcedAttack(L2Player player)
@@ -319,7 +440,7 @@ namespace L2dotNET.world
 
             CurHp -= damage;
 
-            StatusUpdate su = new StatusUpdate(ObjId);
+            StatusUpdate su = new StatusUpdate(this);
             su.Add(StatusUpdate.CurHp, (int)CurHp);
             su.Add(StatusUpdate.CurCp, (int)CurCp);
             BroadcastPacket(su);
@@ -341,7 +462,7 @@ namespace L2dotNET.world
             CharStatus.StopHpMpRegeneration();
 
             CurHp = 0;
-            StatusUpdate su = new StatusUpdate(ObjId);
+            StatusUpdate su = new StatusUpdate(this);
             su.Add(StatusUpdate.CurHp, 0);
             BroadcastPacket(su);
 
@@ -712,7 +833,7 @@ namespace L2dotNET.world
             //if (!needHpUpdate(352))
             //    return;
 
-            StatusUpdate su = new StatusUpdate(ObjId);
+            StatusUpdate su = new StatusUpdate(this);
             su.Add(StatusUpdate.CurHp, (int)CurHp);
 
             foreach (var temp in CharStatus.StatusListener)
