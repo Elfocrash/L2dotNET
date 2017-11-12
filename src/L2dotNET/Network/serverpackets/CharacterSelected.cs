@@ -1,4 +1,5 @@
-﻿using L2dotNET.model.player;
+﻿using L2dotNET.Controllers;
+using L2dotNET.model.player;
 
 namespace L2dotNET.Network.serverpackets
 {
@@ -39,7 +40,7 @@ namespace L2dotNET.Network.serverpackets
 
             WriteLong(_player.Exp);
             WriteInt(_player.Level);
-            WriteInt(_player.Karma); // thx evill33t
+            WriteInt(_player.Karma);
             WriteInt(0); //?
 
             WriteInt(_player.Int);
@@ -55,7 +56,7 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(0x00); // c3 work
             WriteInt(0x00); // c3 work
 
-            WriteInt(0x00);
+            WriteInt(GameTime.Instance.Time);
 
             WriteInt(0x00); // c3
 

@@ -23,7 +23,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
                 return;
             }
 
-            if (_sessionId == _client.Key.SessionId)
+            if (_sessionId == _client.SessionId)
             {
                 _client.State = LoginClientState.AuthedGG;
                 _client.Send(GGAuth.ToPacket(_client));

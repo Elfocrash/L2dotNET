@@ -12,6 +12,7 @@ using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Models;
 using L2dotNET.Network;
 using L2dotNET.Utility;
+using L2dotNET.Utility.Geometry;
 
 namespace L2dotNET.LoginService.Network
 {
@@ -29,6 +30,7 @@ namespace L2dotNET.LoginService.Network
         private bool UsesInternalIP;
 
         public readonly SessionKey Key;
+        public readonly int SessionId;
 
         // Crypt
         private LoginCrypt _loginCrypt;
@@ -40,8 +42,9 @@ namespace L2dotNET.LoginService.Network
             Client = tcpClient;
             NetStream = tcpClient.GetStream();
             Address = tcpClient.Client.RemoteEndPoint;
-
-            Key = new SessionKey();
+            Random rnd = new Random();
+            SessionId = rnd.Next();
+            Key = new SessionKey(rnd.Next(), rnd.Next(), rnd.Next(), rnd.Next());
             State = LoginClientState.Connected;
             ConnectionStartTime = DateTime.Now;
             UsesInternalIP = Address.IsLocalIpAddress();

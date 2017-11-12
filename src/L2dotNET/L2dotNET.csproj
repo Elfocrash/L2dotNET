@@ -501,6 +501,7 @@
     <Compile Include="Network\ServiceShutdownEventArgs.cs" />
     <Compile Include="Network\ServiceShutdownType.cs" />
     <Compile Include="Network\ServiceType.cs" />
+    <Compile Include="Network\SessionKey.cs" />
     <Compile Include="Plugins\IPlugin.cs" />
     <Compile Include="Plugins\IStartup.cs" />
     <Compile Include="Plugins\Plugin.cs" />

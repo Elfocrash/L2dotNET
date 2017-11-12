@@ -36,7 +36,7 @@ namespace L2dotNET.Network.clientpackets
             player.DeleteMe();
             player.SendPacket(new RestartResponse());
 
-            CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId)
+            CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1)
             {
                 CharId = player.ObjId
             };

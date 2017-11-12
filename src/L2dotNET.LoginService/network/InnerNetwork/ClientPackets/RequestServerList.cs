@@ -25,7 +25,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
                 return;
             }
 
-            if (!_client.Key.CheckLoginOKIdPair(_loginOkID1, _loginOkID2))
+            if (_client.Key.LoginOkId1 != _loginOkID1 && _client.Key.LoginOkId2 != _loginOkID2)
             {
                 _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
                 _client.Close();

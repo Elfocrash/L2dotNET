@@ -183,7 +183,7 @@ namespace L2dotNET
         }
 
         public string AccountName { get; set; }
-        public int SessionId { get; set; }
+        public SessionKey SessionKey { get; set; }
         public string AccountType { get; set; }
         public string AccountTimeEnd { get; set; }
         public DateTime AccountTimeLogIn { get; set; }

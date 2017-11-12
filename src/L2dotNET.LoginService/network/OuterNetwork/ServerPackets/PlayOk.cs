@@ -20,7 +20,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
         internal static Packet ToPacket(LoginClient client)
         {
             Packet p = new Packet(Opcode);
-            p.WriteInt(client.Key.PlayOkID1, client.Key.PlayOkID2);
+            p.WriteInt(client.Key.PlayOkId1, client.Key.PlayOkId2);
             return p;
         }
     }

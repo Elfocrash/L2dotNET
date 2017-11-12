@@ -33,7 +33,7 @@ namespace L2dotNET.Network.clientpackets
 
             ValidateAndDelete();
 
-            _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId));
+            _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
         }
 
         private void ValidateAndDelete()

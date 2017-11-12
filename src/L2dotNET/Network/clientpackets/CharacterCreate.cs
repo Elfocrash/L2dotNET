@@ -118,7 +118,7 @@ namespace L2dotNET.Network.clientpackets
             player.Gameclient.AccountChars.Add(player);
             _client.SendPacket(new CharCreateOk());
             L2World.Instance.AddPlayer(player);
-            _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId)
+            _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1)
             {
                 CharId = player.ObjId
             });

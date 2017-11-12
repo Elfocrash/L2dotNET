@@ -37,6 +37,8 @@ namespace L2dotNET.Network.clientpackets
         {
             if (_client.AccountName == null)
             {
+                _client.SessionKey = new SessionKey(_loginKey1,_loginKey2, _playKey1, _playKey2);
+
                 _client.AccountName = _loginName;
 
                 List<int> players = AccountService.GetPlayerIdsListByAccountName(_loginName);
@@ -57,7 +59,7 @@ namespace L2dotNET.Network.clientpackets
                     _client.AccountChars.Add(p);
                 }
 
-                _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionId));
+                _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
                 AuthThread.Instance.SetInGameAccount(_client.AccountName, true);
             }
             else

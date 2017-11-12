@@ -32,16 +32,19 @@ namespace L2dotNET.Network.clientpackets
 
         public override void RunImpl()
         {
-            L2Player player = PlayerService.GetPlayerBySlotId(_client.AccountName, _charSlot);
+            if (_client.CurrentPlayer == null)
+            {
+                L2Player player = PlayerService.GetPlayerBySlotId(_client.AccountName, _charSlot);
 
-            if (player == null)
-                return;
+                if (player == null)
+                    return;
 
-            player.Online = 1;
-            player.Gameclient = _client;
-            _client.CurrentPlayer = player;
+                player.Online = 1;
+                player.Gameclient = _client;
+                _client.CurrentPlayer = player;
 
-            _client.SendPacket(new serverpackets.CharacterSelected(player, _client.SessionId));
+                _client.SendPacket(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
+            }
         }
 
     }

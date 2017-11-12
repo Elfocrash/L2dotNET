@@ -12,7 +12,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
         internal static Packet ToPacket(LoginClient client)
         {
             Packet p = new Packet(Opcode);
-            p.WriteInt(client.Key.SessionId);
+            p.WriteInt(client.SessionId);
             p.WriteByteArray(new byte[4]);
             return p;
         }
