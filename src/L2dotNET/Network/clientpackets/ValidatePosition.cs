@@ -67,7 +67,7 @@ namespace L2dotNET.Network.clientpackets
             //}
 
             //Log.Info($"Current client position: X:{_x}, Y:{_y}, Z:{_z}"); //debug
-            player.BroadcastUserInfo();
+            //player.BroadcastUserInfo();
 
             //player.validateVisibleObjects(_x, _y, true);
         }

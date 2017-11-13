@@ -168,7 +168,8 @@ namespace L2dotNET.Models.Stats
             if (Character == null || stat == null)
                 return initial;
 
-            var statId = Array.IndexOf(Stats.Values.ToArray(), stat);
+            var statsArray = Stats.Values.Select(x => x.StatName).ToArray();
+            var statId = Array.FindIndex(statsArray, x =>x.Equals(stat.StatName));
 
             var calculator = Character.Calculators[statId];
             if (calculator == null || calculator.Size == 0)

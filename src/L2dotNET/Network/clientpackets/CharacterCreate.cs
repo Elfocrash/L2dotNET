@@ -70,6 +70,7 @@ namespace L2dotNET.Network.clientpackets
             player.Level = 1;
             player.Gameclient = _client;
             //player.Stats = new CharacterStat(player);
+            player.ClassId = template.ClassId;
             player.BaseClass = template;
             player.ActiveClass = template;
             player.Status.CurrentCp = player.MaxCp;

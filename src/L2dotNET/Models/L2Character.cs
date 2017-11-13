@@ -856,7 +856,11 @@ namespace L2dotNET.world
             su.Add(StatusUpdate.CurHp, (int)CurHp);
 
             foreach (var temp in Status.StatusListener)
-                temp?.SendPacket(su);
+            {
+                if(temp.ObjId != ObjId)
+                    temp?.SendPacket(su);
+            }
+                
 
         }
         

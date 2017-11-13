@@ -25,7 +25,7 @@ namespace L2dotNET.Services
         {
             var playerContract = _unitOfWork.PlayerRepository.GetPlayerByLogin(objId);
             //TODO Use automapper to map this
-            var player = new L2Player(objId, CharTemplateTable.Instance.GetTemplate(playerContract.BaseClass))
+            var player = new L2Player(objId, CharTemplateTable.Instance.GetTemplate(playerContract.ClassId))
             {
                 ObjId = objId,
                 Name = playerContract.Name,
@@ -50,6 +50,7 @@ namespace L2dotNET.Services
                 PkKills = playerContract.PkKills,
                 BaseClass = CharTemplateTable.Instance.GetTemplate(playerContract.BaseClass),
                 ActiveClass = CharTemplateTable.Instance.GetTemplate(playerContract.ClassId),
+                //ClassId = playerContract.ClassId,
                 RecLeft = playerContract.RecLeft,
                 RecHave = playerContract.RecHave,
                 CharSlot = playerContract.CharSlot,

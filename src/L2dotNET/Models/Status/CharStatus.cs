@@ -158,7 +158,7 @@ namespace L2dotNET.Models.Status
             if (Character.CurMp < Character.MaxMp)
                 SetCurrentMp(Character.CurMp + (Character.MaxMp * 1.0 / 100), false); // we will calculate the actual modified when we do formulas
 
-            Character.BroadcastStatusUpdate();
+            //Character.BroadcastStatusUpdate();
         }
     }
 }

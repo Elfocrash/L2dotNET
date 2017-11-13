@@ -25,7 +25,7 @@ namespace L2dotNET.Repositories
             try
             {
                 return Db.Query<PlayerContract>(@"select account_name as AccountName, obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
-                Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,base_class as BaseClass, DeleteTime,CanCraft,Title,
+                Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,base_class as BaseClass,classid as ClassId, DeleteTime,CanCraft,Title,
                 rec_have as RecHave,rec_left as RecLeft,AccessLevel,punish_level as PunishLevel,punish_timer as PunishTimer,
                 power_grade as PowerGrade,Nobless,Hero,last_recom_date as LastRecomDate,char_slot as CharSlot
                 , lastAccess from characters where obj_Id=@id", new

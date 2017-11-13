@@ -159,7 +159,7 @@ namespace L2dotNET.Network.serverpackets
 
             WriteInt((int)_player.ActiveClass.ClassId.Id);
             WriteInt(0); // special effects? circles around player...
-            WriteInt(_player.CurCp); //max cp
+            WriteInt(_player.MaxCp); //max cp
             WriteInt(_player.CurCp);
             WriteByte(_player.GetEnchantValue());
             WriteByte(_player.TeamId);
