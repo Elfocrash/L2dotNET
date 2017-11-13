@@ -465,16 +465,25 @@ namespace L2dotNET.world
 
         public virtual void DoDie(L2Character killer)
         {
-            Dead = true;
+            lock (this)
+            {
+                if (Dead)
+                    return;
+
+                CurHp = 0;
+
+                Dead = true;
+            }
+
+            Target = null;
+            NotifyStopMove(true,true);
+
             if (IsAttacking())
                 AbortAttack();
 
             Status.StopHpMpRegeneration();
-
-            CurHp = 0;
-            StatusUpdate su = new StatusUpdate(this);
-            su.Add(StatusUpdate.CurHp, 0);
-            BroadcastPacket(su);
+            
+            BroadcastStatusUpdate();
 
             BroadcastPacket(new Die(this));
         }
@@ -1023,10 +1032,16 @@ namespace L2dotNET.world
         public virtual int MaxHp => Stats.MaxHp;
         public virtual int MaxMp => Stats.MaxMp;
 
-        public override double CurHp => Status.CurrentHp;
+        public virtual double CurHp {
+            get => Status.CurrentHp;
+            set => Status.SetCurrentHp(value);
+        } 
 
-        public override double CurMp => Status.CurrentMp;
-
+        public virtual double CurMp
+        {
+            get => Status.CurrentMp;
+            set => Status.SetCurrentMp(value);
+        }
         public override string AsString()
         {
             return $"L2Character: {ObjId}";

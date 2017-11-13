@@ -201,11 +201,6 @@
     <Compile Include="Models\Stats\Stat.cs" />
     <Compile Include="Models\Status\CharStatus.cs" />
     <Compile Include="Models\Status\PlayerStatus.cs" />
-    <Compile Include="Models\templates\Object.cs" />
-    <Compile Include="Models\templates\ObjectBaseAttackType.cs" />
-    <Compile Include="Models\templates\ObjectCategory.cs" />
-    <Compile Include="Models\templates\ObjectRace.cs" />
-    <Compile Include="Models\templates\ObjectSex.cs" />
     <Compile Include="Models\vehicles\L2Boat.cs" />
     <Compile Include="Models\zones\classes\battle_zone.cs" />
     <Compile Include="Models\zones\classes\damage.cs" />

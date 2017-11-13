@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Timers;
+using L2dotNET.model.player;
 using L2dotNET.world;
 
 namespace L2dotNET.Models.Status
@@ -45,13 +46,12 @@ namespace L2dotNET.Models.Status
             if (Character.Dead)
                 return;
 
-            if (value > 0)
-                Character.CurHp = Math.Max(Character.CurHp - value, 0);
+            if(value > 0)
+                SetCurrentHp(Math.Max(CurrentHp - value, 0));
 
-            if (Character.CurHp < 0.5)
+            if(Character.CurHp < 0.5)
             {
                 Character.AbortAttack();
-                //Character.AbortCast();
                 Character.DoDie(attacker);
             }
         }
@@ -92,6 +92,11 @@ namespace L2dotNET.Models.Status
 
             if(broadcastUpdate)
                 Character.BroadcastStatusUpdate();
+        }
+
+        public void SetCurrentHp(double newHp)
+        {
+            SetCurrentHp(newHp, true);
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]

@@ -67,11 +67,13 @@ namespace L2dotNET.model.player
         public long ExpAfterLogin { get; set; }
         public int Sp { get; set; }
         public override int MaxHp => Stats.MaxHp;
-        public override double CurHp => Status.CurrentHp;
         public int MaxCp => Stats.MaxCp;
-        public double CurCp => Status.CurrentCp;
+        public double CurCp
+        {
+            get => Status.CurrentCp;
+            set => Status.SetCurrentCp(value);
+        }
         public override int MaxMp => Stats.MaxMp;
-        public override double CurMp => Status.CurrentMp;
         public int Karma { get; set; }
         public int PvpKills { get; set; }
         public long DeleteTime { get; set; }
