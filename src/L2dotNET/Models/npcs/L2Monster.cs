@@ -11,6 +11,7 @@ using log4net.Core;
 using log4net;
 using L2dotNET.world;
 using System.Timers;
+using L2dotNET.Models.Stats;
 
 namespace L2dotNET.Models.npcs
 {
@@ -25,11 +26,11 @@ namespace L2dotNET.Models.npcs
         {
             Template = template;
             Name = template.Name;
-            //CStatsInit();
-            CurHp = Template.BaseHpMax(0);
-            CurMp = Template.BaseMpMax(0);
-            MaxHp = (int)Template.BaseHpMax(0);
-            MaxMp = (int)Template.BaseMpMax(0);
+            InitializeCharacterStatus();
+
+            Status.CurrentHp = Template.BaseHpMax(0);
+            Status.CurrentMp = Template.BaseMpMax(0);
+            //Stats = new CharacterStat(this);
         }
 
         public override void OnAction(L2Player player)

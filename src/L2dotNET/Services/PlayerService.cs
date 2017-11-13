@@ -31,12 +31,9 @@ namespace L2dotNET.Services
                 Name = playerContract.Name,
                 Title = playerContract.Title,
                 Level = (byte)playerContract.Level,
-                MaxHp = playerContract.MaxHp,
-                CurHp = playerContract.CurHp,
-                MaxCp = playerContract.MaxCp,
-                CurCp = playerContract.CurCp,
-                MaxMp = playerContract.MaxMp,
-                CurMp = playerContract.CurMp,
+                //MaxHp = playerContract.MaxHp,
+                //MaxCp = playerContract.MaxCp,
+                //MaxMp = playerContract.MaxMp,
                 Face = (Face)playerContract.Face,
                 HairStyleId = (HairStyleId)playerContract.HairStyle,
                 HairColor = (HairColor)playerContract.HairColor,
@@ -70,6 +67,10 @@ namespace L2dotNET.Services
                 Hero = playerContract.Hero,
                 LastRecomDate = playerContract.LastRecomDate
             };
+            player.Status.CurrentCp = playerContract.CurCp;
+            player.Status.CurrentHp = playerContract.CurHp;
+            player.Status.CurrentMp = playerContract.CurMp;
+
             return player;
         }
 

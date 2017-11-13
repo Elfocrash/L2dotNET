@@ -67,7 +67,7 @@ namespace L2dotNET.world
 
         protected byte ZoneValidateCounter = 4;
 
-        public CharStatus CharStatus { get; set; }
+        public CharStatus Status { get; set; }
 
         public virtual void UpdateAbnormalEffect() { }
 
@@ -85,10 +85,20 @@ namespace L2dotNET.world
         {
             Template = template;
             Stats = new CharacterStat(this);
-            CharStatus = new CharStatus(this);
+            InitializeCharacterStatus();
             Calculators = new Calculator[Models.Stats.Stats.Values.Count()];
             AddFuncsToNewCharacter();
             _updatePositionTime.Elapsed += UpdatePositionTask;
+        }
+
+        public virtual CharStatus GetStatus()
+        {
+            return Status;
+        }
+
+        public virtual void InitializeCharacterStatus()
+        {
+            Status = new CharStatus(this);
         }
 
         public virtual void SetTarget(L2Character obj)
@@ -424,25 +434,25 @@ namespace L2dotNET.world
             if (Dead)
                 return;
 
-            if ((this is L2Player && attacker is L2Player))
-            {
-                if (CurCp > 0)
-                {
-                    CurCp -= damage;
+            //if ((this is L2Player && attacker is L2Player))
+            //{
+            //    if (CurCp > 0)
+            //    {
+            //        CurCp -= damage;
 
-                    if (CurCp < 0)
-                    {
-                        damage = CurCp * -1;
-                        CurCp = 0;
-                    }
-                }
-            }
+            //        if (CurCp < 0)
+            //        {
+            //            damage = CurCp * -1;
+            //            CurCp = 0;
+            //        }
+            //    }
+            //}
 
             CurHp -= damage;
 
             StatusUpdate su = new StatusUpdate(this);
             su.Add(StatusUpdate.CurHp, (int)CurHp);
-            su.Add(StatusUpdate.CurCp, (int)CurCp);
+           // su.Add(StatusUpdate.CurCp, (int)CurCp);
             BroadcastPacket(su);
 
             if (CurHp <= 0)
@@ -459,7 +469,7 @@ namespace L2dotNET.world
             if (IsAttacking())
                 AbortAttack();
 
-            CharStatus.StopHpMpRegeneration();
+            Status.StopHpMpRegeneration();
 
             CurHp = 0;
             StatusUpdate su = new StatusUpdate(this);
@@ -826,7 +836,7 @@ namespace L2dotNET.world
         
         public virtual void BroadcastStatusUpdate()
         {
-            if (!CharStatus.StatusListener.Any())
+            if (!Status.StatusListener.Any())
                 return;
 
             //will look into this later
@@ -836,7 +846,7 @@ namespace L2dotNET.world
             StatusUpdate su = new StatusUpdate(this);
             su.Add(StatusUpdate.CurHp, (int)CurHp);
 
-            foreach (var temp in CharStatus.StatusListener)
+            foreach (var temp in Status.StatusListener)
                 temp?.SendPacket(su);
 
         }
@@ -1010,15 +1020,12 @@ namespace L2dotNET.world
             return (AttackToEnd != null) && AttackToEnd.Enabled;
         }
 
-        public virtual int MaxHp { get; set; }
-        public virtual int MaxCp { get; set; }
-        public virtual int MaxMp { get; set; }
+        public virtual int MaxHp => Stats.MaxHp;
+        public virtual int MaxMp => Stats.MaxMp;
 
-        public override double CurHp { get; set; }
+        public override double CurHp => Status.CurrentHp;
 
-        public override double CurMp { get; set; }
-
-        public override double CurCp { get; set; }
+        public override double CurMp => Status.CurrentMp;
 
         public override string AsString()
         {

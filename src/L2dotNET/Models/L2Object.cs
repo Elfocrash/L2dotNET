@@ -21,7 +21,6 @@ namespace L2dotNET.world
         public virtual byte Level { get; set; } = 1;
         public virtual double CurHp { get; set; }
         public virtual double CurMp { get; set; }
-        public virtual double CurCp { get; set; }
         public virtual bool Dead { get; set; } = false;
         public virtual int X { get; set; }
         public virtual int Y { get; set; }

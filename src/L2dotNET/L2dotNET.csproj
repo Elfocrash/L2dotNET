@@ -200,6 +200,7 @@
     <Compile Include="Models\Stats\Funcs\FuncPDefMod.cs" />
     <Compile Include="Models\Stats\Stat.cs" />
     <Compile Include="Models\Status\CharStatus.cs" />
+    <Compile Include="Models\Status\PlayerStatus.cs" />
     <Compile Include="Models\templates\Object.cs" />
     <Compile Include="Models\templates\ObjectBaseAttackType.cs" />
     <Compile Include="Models\templates\ObjectCategory.cs" />

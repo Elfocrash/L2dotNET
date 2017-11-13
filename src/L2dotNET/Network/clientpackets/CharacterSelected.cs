@@ -32,7 +32,7 @@ namespace L2dotNET.Network.clientpackets
 
         public override void RunImpl()
         {
-            if (_client.CurrentPlayer == null)
+            //if (_client.CurrentPlayer == null)
             {
                 L2Player player = PlayerService.GetPlayerBySlotId(_client.AccountName, _charSlot);
 

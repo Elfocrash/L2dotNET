@@ -27,6 +27,21 @@ namespace L2dotNET.templates
 
         public List<L2Item> Items { get; } = new List<L2Item>();
 
+        public override double BaseHpMax(int level)
+        {
+            return HpTable[level - 1];
+        }
+
+        public override double BaseMpMax(int level)
+        {
+            return MpTable[level - 1];
+        }
+
+        public double BaseCpMax(int level)
+        {
+            return CpTable[level - 1];
+        }
+
         public PcTemplate(ClassId classId, StatsSet set) : base(set)
         {
             ClassId = classId;

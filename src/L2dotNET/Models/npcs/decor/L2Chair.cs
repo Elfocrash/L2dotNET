@@ -9,7 +9,7 @@ namespace L2dotNET.model.npcs.decor
         public L2Chair(int objectId, CharTemplate template) : base(objectId, template)
         {
             Closed = 0;
-            MaxHp = 0;
+            //MaxHp = 0;
             CurHp = 0;
         }
 

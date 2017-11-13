@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using L2dotNET.model.player;
 using L2dotNET.Network.clientpackets;
 using L2dotNET.world;
 
@@ -28,7 +29,9 @@ namespace L2dotNET.Models.Stats
         public int Accuracy => (int)CalculateStat(Stats.AccuracyCombat, 0, null);
         public int MaxHp => (int)CalculateStat(Stats.MaxHp, Character.Template.BaseHpMax(Character.Level), null);
         public int MaxMp => (int)CalculateStat(Stats.MaxMp, Character.Template.BaseMpMax(Character.Level), null);
-        public int MaxCp => 0;
+
+        //I will create a new PlayerStat later. I know this is shit sorry
+        public int MaxCp => Character is L2Player player ? (int)CalculateStat(Stats.MaxCp, player.Template.BaseCpMax(player.Level), null) : 0;
 
         public int CriticalHit(L2Character target, object skill = null) =>
             Math.Min((int) CalculateStat(Stats.CriticalRate, Character.Template.BaseCritRate, target), 500);

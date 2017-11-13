@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using log4net;
 using L2dotNET.model.npcs.decor;
+using L2dotNET.Models.Stats;
 using L2dotNET.Utility;
 using L2dotNET.world;
 
@@ -87,7 +88,7 @@ namespace L2dotNET.tables
                                 obj.Htm = value;
                                 break;
                             case "hp":
-                                obj.MaxHp = Convert.ToInt32(value);
+                                obj.Stats = new CharacterStat(obj);
                                 break;
                             case "defence":
                                 obj.Pdef = Convert.ToInt32(value.Split(' ')[0]);

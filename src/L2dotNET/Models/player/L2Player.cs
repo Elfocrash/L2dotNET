@@ -37,8 +37,10 @@ namespace L2dotNET.model.player
         public L2Player(int objectId, PcTemplate template) : base(objectId, template)
         {
             Template = template;
-            CharStatus = new CharStatus(this);
             Stats = new CharacterStat(this);
+            InitializeCharacterStatus();
+            Calculators = new Models.Stats.Calculator[Models.Stats.Stats.Values.Count()];
+            AddFuncsToNewCharacter();
         }
 
         public L2Player() :base(0, null)
@@ -47,6 +49,8 @@ namespace L2dotNET.model.player
 
         [Inject]
         public IPlayerService PlayerService { get; set; } = GameServer.Kernel.Get<IPlayerService>();
+
+        public new PlayerStatus Status => (PlayerStatus)base.Status;
 
         public string AccountName { get; set; }
         public ClassId ClassId { get; set; }
@@ -62,12 +66,12 @@ namespace L2dotNET.model.player
         public long ExpOnDeath { get; set; }
         public long ExpAfterLogin { get; set; }
         public int Sp { get; set; }
-        public override int MaxHp { get; set; }
-        public override double CurHp { get; set; }
-        public override int MaxCp { get; set; }
-        public override double CurCp { get; set; }
-        public override int MaxMp { get; set; }
-        public override double CurMp { get; set; }
+        public override int MaxHp => Stats.MaxHp;
+        public override double CurHp => Status.CurrentHp;
+        public int MaxCp => Stats.MaxCp;
+        public double CurCp => Status.CurrentCp;
+        public override int MaxMp => Stats.MaxMp;
+        public override double CurMp => Status.CurrentMp;
         public int Karma { get; set; }
         public int PvpKills { get; set; }
         public long DeleteTime { get; set; }
@@ -98,6 +102,11 @@ namespace L2dotNET.model.player
         public byte Builder = 1;
         public byte Noblesse = 0;
         public byte Heroic = 0;
+
+        public override void InitializeCharacterStatus()
+        {
+            base.Status = new PlayerStatus(this);
+        }
 
         public byte PrivateStoreType = 0;
 
@@ -688,7 +697,7 @@ namespace L2dotNET.model.player
                 if (oldTarget.Equals(newTarget))
                     return;
 
-                oldTarget?.CharStatus.RemoveStatusListener(this);
+                oldTarget?.Status.RemoveStatusListener(this);
             }
 
             if (newTarget is L2StaticObject)
@@ -705,7 +714,7 @@ namespace L2dotNET.model.player
 
                     SendPacket(new MyTargetSelected(newTarget.ObjId, 0));
 
-                    newTarget.CharStatus.AddStatusListener(this);
+                    newTarget.Status.AddStatusListener(this);
 
                     StatusUpdate su = new StatusUpdate(newTarget);
                     su.Add(StatusUpdate.MaxHp, newTarget.MaxHp);
@@ -1450,7 +1459,7 @@ namespace L2dotNET.model.player
         {
             BroadcastPacket(new Revive(ObjId));
             Dead = false;
-            CharStatus.StartHpMpRegeneration();
+            Status.StartHpMpRegeneration();
         }
 
         private DateTime _pingTimeout;

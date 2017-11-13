@@ -24,14 +24,16 @@ namespace L2dotNET.model.npcs
         public L2Npc(int objectId, NpcTemplate template) : base(objectId, template)
         {
             Template = template;
+            Template = template;
             Name = template.Name;
+            InitializeCharacterStatus();
             //CStatsInit();
-            CurHp = 100;
-            CurCp = 100;
-            CurMp = 100;
-            MaxCp = 100;
-            MaxHp = 100;
-            MaxMp = 100;
+            //CurHp = 100;
+            //CurCp = 100;
+            //CurMp = 100;
+            //MaxCp = 100;
+            //MaxHp = 100;
+            //MaxMp = 100;
         }
 
         //public virtual void setTemplate(NpcTemplate template)

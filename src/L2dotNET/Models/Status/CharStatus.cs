@@ -16,6 +16,8 @@ namespace L2dotNET.Models.Status
         protected static readonly byte RegenFlagCp = 4;
         private static readonly byte RegenFlagHp = 1;
         private static readonly byte RegenFlagMp = 2;
+        public double CurrentHp { get; set; } = 0;
+        public double CurrentMp { get; set; } = 0;
 
         private Timer _regTask;
         protected byte _flagsRegenActive = 0;
