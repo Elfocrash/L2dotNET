@@ -31,3 +31,5 @@ If you really want to profit by using the project one day, please fork it and do
 as possible. As long as you use the coding style i am coding on, i will approve your pulls.
 There is plenty of things to do for any level of developer.
 
+Special thanks to [JetBrains](https://www.jetbrains.com/) for providing the .NET Rider and Resharper licenses
+
