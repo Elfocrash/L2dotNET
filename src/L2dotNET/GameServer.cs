@@ -3,14 +3,12 @@ using System.Net;
 using System.Net.Sockets;
 using log4net;
 using L2dotNET.Controllers;
-using L2dotNET.Enums;
 using L2dotNET.Handlers;
 using L2dotNET.managers;
 using L2dotNET.model.items;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
 using L2dotNET.tables;
-using L2dotNET.tables.multisell;
 using L2dotNET.Utility;
 using L2dotNET.world;
 using Ninject;
@@ -47,7 +45,6 @@ namespace L2dotNET
             ItemHandler.Instance.Initialize();
 
             NpcTable.Instance.Initialize();
-            MultiSell.Instance.Initialize();
             Capsule.Instance.Initialize();
             RecipeTable.Instance.Initialize();
             

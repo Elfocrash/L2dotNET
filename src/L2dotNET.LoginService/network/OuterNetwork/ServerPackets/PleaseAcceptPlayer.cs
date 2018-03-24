@@ -1,5 +1,4 @@
 ﻿using L2dotNET.DataContracts;
-using L2dotNET.Models;
 using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Timers;
 using log4net;
-using L2dotNET.DataContracts;
 using L2dotNET.Enums;
 using L2dotNET.model.inventory;
 using L2dotNET.model.items;
@@ -12,7 +11,6 @@ using L2dotNET.model.npcs;
 using L2dotNET.model.npcs.decor;
 using L2dotNET.model.player.General;
 using L2dotNET.model.vehicles;
-using L2dotNET.Models;
 using L2dotNET.Models.Stats;
 using L2dotNET.Models.Stats.Funcs;
 using L2dotNET.Models.Status;
@@ -20,7 +18,6 @@ using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.tables;
-using L2dotNET.tables.multisell;
 using L2dotNET.templates;
 using L2dotNET.tools;
 using L2dotNET.Utility;
@@ -1467,8 +1464,6 @@ namespace L2dotNET.model.player
         private DateTime _pingTimeout;
         private int _lastPingId;
         public int Ping = -1;
-        public MultiSellList CustomMultiSellList;
-        public int LastRequestedMultiSellId = -1;
         public int AttackingId;
 
         public void RequestPing()

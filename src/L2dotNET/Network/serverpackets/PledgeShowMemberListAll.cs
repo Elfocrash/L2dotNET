@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace L2dotNET.Network.serverpackets
+﻿namespace L2dotNET.Network.serverpackets
 {
     class PledgeShowMemberListAll : GameserverPacket
     {

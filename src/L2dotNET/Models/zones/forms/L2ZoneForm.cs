@@ -1,6 +1,4 @@
-﻿using L2dotNET.Utility.Geometry;
-
-namespace L2dotNET.model.zones.forms
+﻿namespace L2dotNET.model.zones.forms
 {
     public abstract class L2ZoneForm
     {

@@ -9,10 +9,8 @@ using L2dotNET.DataContracts;
 using L2dotNET.LoginService.Managers;
 using L2dotNET.LoginService.Network.Crypt;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
-using L2dotNET.Models;
 using L2dotNET.Network;
 using L2dotNET.Utility;
-using L2dotNET.Utility.Geometry;
 
 namespace L2dotNET.LoginService.Network
 {

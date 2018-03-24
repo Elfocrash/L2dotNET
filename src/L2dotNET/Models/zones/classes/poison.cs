@@ -1,10 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Timers;
+﻿using System.Timers;
 using L2dotNET.model.npcs;
 using L2dotNET.model.player;
 using L2dotNET.tables;
-using L2dotNET.Utility;
 using L2dotNET.world;
 
 namespace L2dotNET.model.zones.classes

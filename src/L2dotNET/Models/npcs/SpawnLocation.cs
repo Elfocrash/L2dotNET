@@ -1,6 +1,4 @@
-﻿using L2dotNET.DataContracts;
-using L2dotNET.Models;
-using L2dotNET.Models.zones;
+﻿using L2dotNET.Models.zones;
 
 namespace L2dotNET.model.npcs
 {

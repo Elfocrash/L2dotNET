@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using L2dotNET.model.npcs;
-using L2dotNET.model.player;
-using L2dotNET.Network.serverpackets;
-using L2dotNET.tables;
+﻿using L2dotNET.model.player;
 
 namespace L2dotNET.Network.clientpackets
 {

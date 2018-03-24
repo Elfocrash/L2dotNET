@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Linq;
-using L2dotNET.DataContracts;
 using L2dotNET.Enums;
 using L2dotNET.model.inventory;
 using L2dotNET.model.player;
-using L2dotNET.Models;
-using L2dotNET.Models.Stats;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.tables;

@@ -1,5 +1,4 @@
-﻿using System.Reflection.Emit;
-using L2dotNET.model.inventory;
+﻿using L2dotNET.model.inventory;
 using L2dotNET.model.player;
 
 namespace L2dotNET.Models.Stats.Funcs

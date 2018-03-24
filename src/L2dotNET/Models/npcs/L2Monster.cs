@@ -1,17 +1,10 @@
 ﻿using L2dotNET.model.npcs;
 using L2dotNET.templates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using L2dotNET.model.player;
 using L2dotNET.Network.serverpackets;
-using log4net.Core;
 using log4net;
 using L2dotNET.world;
 using System.Timers;
-using L2dotNET.Models.Stats;
 
 namespace L2dotNET.Models.npcs
 {

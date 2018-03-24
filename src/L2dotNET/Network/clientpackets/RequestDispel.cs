@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using L2dotNET.model.player;
-using L2dotNET.model.skills;
+﻿using L2dotNET.model.player;
 
 namespace L2dotNET.Network.clientpackets
 {

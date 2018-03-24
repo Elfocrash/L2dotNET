@@ -62,7 +62,6 @@
     <Compile Include="Commands\Admin\AdminChat.cs" />
     <Compile Include="Commands\Admin\AdminGiveAllSkills.cs" />
     <Compile Include="Commands\Admin\AdminHeal.cs" />
-    <Compile Include="Commands\Admin\AdminRange.cs" />
     <Compile Include="Commands\Admin\AdminSpawnEnchanted.cs" />
     <Compile Include="Commands\Admin\AdminSpawnItem.cs" />
     <Compile Include="Commands\Admin\AdminSpawnItemRange.cs" />
@@ -527,10 +526,6 @@
     <Compile Include="tables\L2Spawn.cs" />
     <Compile Include="tables\L2Territory.cs" />
     <Compile Include="tables\MapRegionTable.cs" />
-    <Compile Include="tables\multisell\MultiSell.cs" />
-    <Compile Include="tables\multisell\MultiSellEntry.cs" />
-    <Compile Include="tables\multisell\MultiSellItem.cs" />
-    <Compile Include="tables\multisell\MultiSellList.cs" />
     <Compile Include="tables\NpcSpawn.cs" />
     <Compile Include="tables\NpcTable.cs" />
     <Compile Include="tables\RecipeItemEntry.cs" />

@@ -1,8 +1,4 @@
-﻿using L2dotNET.model.player;
-using L2dotNET.Network.serverpackets;
-using L2dotNET.tables;
-
-namespace L2dotNET.Network.clientpackets.ClanAPI
+﻿namespace L2dotNET.Network.clientpackets.ClanAPI
 {
     class RequestPledgeInfo : PacketBase
     {

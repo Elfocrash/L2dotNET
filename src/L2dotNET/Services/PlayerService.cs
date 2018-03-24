@@ -1,14 +1,12 @@
 ﻿using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
 using System.Collections.Generic;
-using System.Linq;
 using L2dotNET.DataContracts;
 using L2dotNET.Enums;
 using L2dotNET.model.inventory;
 using L2dotNET.model.player;
 using L2dotNET.model.player.General;
 using L2dotNET.tables;
-using L2dotNET.templates;
 
 namespace L2dotNET.Services
 {

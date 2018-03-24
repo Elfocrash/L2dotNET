@@ -1,5 +1,4 @@
 ﻿using L2dotNET.model.items;
-using L2dotNET.model.player;
 using L2dotNET.world;
 
 namespace L2dotNET.Models.Stats

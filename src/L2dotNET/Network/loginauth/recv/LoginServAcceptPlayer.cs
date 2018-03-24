@@ -1,5 +1,4 @@
 ﻿using L2dotNET.DataContracts;
-using L2dotNET.Models;
 
 namespace L2dotNET.Network.loginauth.recv
 {

@@ -5,7 +5,6 @@ using System.Timers;
 using L2dotNET.Enums;
 using L2dotNET.model.items;
 using L2dotNET.model.player;
-using L2dotNET.model.skills;
 using L2dotNET.Models.Stats;
 using L2dotNET.Models.Stats.Funcs;
 using L2dotNET.Models.Status;

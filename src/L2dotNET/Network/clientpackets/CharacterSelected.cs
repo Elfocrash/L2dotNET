@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using L2dotNET.DataContracts;
-using L2dotNET.Enums;
-using L2dotNET.model.player;
-using L2dotNET.Models;
+﻿using L2dotNET.model.player;
 using L2dotNET.Services.Contracts;
 using Ninject;
 

@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using L2dotNET.model.player;
-using L2dotNET.Network.serverpackets;
-
-namespace L2dotNET.Network.clientpackets.ClanAPI
+﻿namespace L2dotNET.Network.clientpackets.ClanAPI
 {
     class RequestPledgeMemberInfo : PacketBase
     {

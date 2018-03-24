@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using L2dotNET.Attributes;
+﻿using L2dotNET.Attributes;
 using L2dotNET.model.player;
-using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Commands.Admin
 {

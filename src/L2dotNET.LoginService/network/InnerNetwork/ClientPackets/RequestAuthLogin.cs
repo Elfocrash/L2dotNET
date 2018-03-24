@@ -3,7 +3,6 @@ using System.Text;
 using L2dotNET.DataContracts;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
-using L2dotNET.Models;
 using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;

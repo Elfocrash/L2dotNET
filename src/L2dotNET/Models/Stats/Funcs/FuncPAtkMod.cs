@@ -1,5 +1,4 @@
-﻿using L2dotNET.model.player.basic;
-using L2dotNET.Models.player.basic;
+﻿using L2dotNET.Models.player.basic;
 
 namespace L2dotNET.Models.Stats.Funcs
 {
