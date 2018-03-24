@@ -168,17 +168,19 @@ namespace L2dotNET.Models.Stats
             if (Character == null || stat == null)
                 return initial;
 
-            var statsArray = Stats.Values.Select(x => x.StatName).ToArray();
+            var statsArray = Stats.Values.ToList().Select(x => x.StatName).ToArray();
             var statId = Array.FindIndex(statsArray, x =>x.Equals(stat.StatName));
 
             var calculator = Character.Calculators[statId];
             if (calculator == null || calculator.Size == 0)
                 return initial;
 
-            var env = new Env();
-            env.Character = Character;
-            env.Target = target;
-            env.Value = initial;
+            var env = new Env
+            {
+                Character = Character,
+                Target = target,
+                Value = initial
+            };
 
             calculator.Calculate(env);
 

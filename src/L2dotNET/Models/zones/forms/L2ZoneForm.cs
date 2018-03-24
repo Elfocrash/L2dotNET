@@ -18,7 +18,7 @@ namespace L2dotNET.model.zones.forms
 
         protected bool LineSegmentsIntersect(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2)
         {
-            return MathHelper.LineIntersect(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2);
+            return false;//MathHelper.LineIntersect(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2);
         }
 
         public abstract void VisualizeZone(int z);
