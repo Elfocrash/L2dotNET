@@ -2,7 +2,7 @@
 using L2dotNET.templates;
 using L2dotNET.Utility;
 
-namespace L2dotNET.model.items
+namespace L2dotNET.Models.items
 {
     public class EtcItem : ItemTemplate
     {

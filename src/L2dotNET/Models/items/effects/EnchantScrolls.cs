@@ -1,8 +1,8 @@
 ﻿using L2dotNET.managers;
-using L2dotNET.model.player;
+using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
 
-namespace L2dotNET.model.items.effects
+namespace L2dotNET.Models.items.effects
 {
     class EnchantScrolls : ItemEffect
     {

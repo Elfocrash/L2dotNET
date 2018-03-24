@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.Enums;
-using L2dotNET.model.items;
+using L2dotNET.Models.items;
 
 namespace L2dotNET.templates
 {

@@ -1,6 +1,6 @@
 ﻿using L2dotNET.Models.zones;
 
-namespace L2dotNET.model.npcs
+namespace L2dotNET.Models.npcs
 {
     public class SpawnLocation : Location
     {

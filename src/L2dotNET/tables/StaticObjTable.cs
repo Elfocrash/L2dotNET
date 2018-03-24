@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using log4net;
-using L2dotNET.model.npcs.decor;
+using L2dotNET.Models.npcs.decor;
 using L2dotNET.Models.Stats;
 using L2dotNET.Utility;
 using L2dotNET.world;

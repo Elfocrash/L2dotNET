@@ -1,8 +1,7 @@
 ﻿using log4net;
-using L2dotNET.model.player;
-using L2dotNET.world;
+using L2dotNET.Models.player;
 
-namespace L2dotNET.model.items
+namespace L2dotNET.Models.items
 {
     public class ItemEffect
     {

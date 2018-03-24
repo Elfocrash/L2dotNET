@@ -1,5 +1,4 @@
-﻿using L2dotNET.model.player;
-using L2dotNET.Network.serverpackets;
+﻿using L2dotNET.Models.player;
 
 namespace L2dotNET.Network.clientpackets.RecipeAPI
 {
@@ -17,8 +16,6 @@ namespace L2dotNET.Network.clientpackets.RecipeAPI
         public override void RunImpl()
         {
             L2Player player = _client.CurrentPlayer;
-
-            player.SendPacket(new RecipeBookItemList(player, _type));
         }
     }
 }

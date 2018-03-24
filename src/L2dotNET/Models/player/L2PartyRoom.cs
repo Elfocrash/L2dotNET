@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace L2dotNET.model.player
+namespace L2dotNET.Models.player
 {
     public class L2PartyRoom
     {

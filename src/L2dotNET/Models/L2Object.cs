@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
-using L2dotNET.model.player;
-using L2dotNET.model.zones;
-using L2dotNET.model.zones.classes;
+using log4net;
+using L2dotNET.Models.player;
+using L2dotNET.Models.zones;
+using L2dotNET.Models.zones.classes;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
-using log4net;
-using L2dotNET.Models.zones;
+using L2dotNET.world;
 
-namespace L2dotNET.world
+namespace L2dotNET.Models
 {
     public abstract class L2Object
     {

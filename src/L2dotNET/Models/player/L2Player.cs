@@ -5,26 +5,25 @@ using System.Runtime.Remoting.Contexts;
 using System.Timers;
 using log4net;
 using L2dotNET.Enums;
-using L2dotNET.model.inventory;
-using L2dotNET.model.items;
-using L2dotNET.model.npcs;
-using L2dotNET.model.npcs.decor;
-using L2dotNET.model.player.General;
-using L2dotNET.model.vehicles;
+using L2dotNET.Models.inventory;
+using L2dotNET.Models.items;
+using L2dotNET.Models.npcs;
+using L2dotNET.Models.npcs.decor;
+using L2dotNET.Models.player.General;
 using L2dotNET.Models.Stats;
 using L2dotNET.Models.Stats.Funcs;
 using L2dotNET.Models.Status;
+using L2dotNET.Models.vehicles;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
-using L2dotNET.tables;
 using L2dotNET.templates;
 using L2dotNET.tools;
 using L2dotNET.Utility;
 using L2dotNET.world;
 using Ninject;
 
-namespace L2dotNET.model.player
+namespace L2dotNET.Models.player
 {
     [Synchronization]
     public class L2Player : L2Character
@@ -306,92 +305,7 @@ namespace L2dotNET.model.player
 
         public int PCreateCommonItem = 0;
         public int PCreateItem = 0;
-        public List<L2Recipe> RecipeBook = new List<L2Recipe>();
-
-        public void RegisterRecipe(L2Recipe newr, bool updDb, bool cleanup)
-        {
-            lock (RecipeBook)
-            {
-                if (cleanup)
-                    RecipeBook.Clear();
-
-                RecipeBook.Add(newr);
-
-                if (updDb)
-                {
-                    //SQL_Block sqb = new SQL_Block("user_recipes");
-                    //sqb.param("ownerId", ObjID);
-                    //sqb.param("recid", newr.RecipeID);
-                    //sqb.param("iclass", ActiveClass.id);
-                    //sqb.sql_insert(false);
-                }
-            }
-        }
-
-        public void db_restoreRecipes()
-        {
-            //MySqlConnection connection = SQLjec.getInstance().conn();
-            //MySqlCommand cmd = connection.CreateCommand();
-
-            //connection.Open();
-
-            //cmd.CommandText = $"SELECT recid FROM user_recipes WHERE ownerId={ObjID} AND iclass={ActiveClass.id} ORDER BY tact ASC";
-            //cmd.CommandType = CommandType.Text;
-
-            //MySqlDataReader reader = cmd.ExecuteReader();
-
-            //while (reader.Read())
-            //{
-            //    int recid = reader.GetInt32("recid");
-
-            //    L2Recipe rec = RecipeTable.getInstance().getById(recid);
-            //    if (rec != null)
-            //    {
-            //        if (_recipeBook == null)
-            //            _recipeBook = new List<L2Recipe>();
-
-            //        _recipeBook.Add(rec);
-            //    }
-            //}
-
-            //reader.Close();
-            //connection.Close();
-        }
-
-        public void UnregisterRecipe(L2Recipe rec, bool updDb)
-        {
-            lock (RecipeBook)
-            {
-                foreach (L2Recipe r in RecipeBook.Where(r => r.RecipeId == rec.RecipeId))
-                {
-                    if (updDb)
-                    {
-                        //MySqlConnection connection = SQLjec.getInstance().conn();
-                        //MySqlCommand cmd = connection.CreateCommand();
-
-                        //connection.Open();
-
-                        //string query = string.Format(
-                        //    "DELETE FROM user_recipes WHERE ownerId='{0}' AND recid='{1}' AND iclass='{2}'",
-                        //    ObjID,
-                        //    r.RecipeID,
-                        //    ActiveClass.id);
-
-                        //cmd.CommandText = query;
-                        //cmd.CommandType = CommandType.Text;
-                        //cmd.ExecuteNonQuery();
-
-                        //connection.Close();
-                    }
-
-                    RecipeBook.Remove(r);
-
-                    SendPacket(new RecipeBookItemList(this, rec.Iscommonrecipe));
-                    break;
-                }
-            }
-        }
-
+        
         public bool IsAlikeDead()
         {
             return false;

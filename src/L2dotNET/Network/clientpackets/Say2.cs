@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using L2dotNET.model.player;
-using L2dotNET.model.player.basic;
+using L2dotNET.Models.player;
+using L2dotNET.Models.player.basic;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.world;
 

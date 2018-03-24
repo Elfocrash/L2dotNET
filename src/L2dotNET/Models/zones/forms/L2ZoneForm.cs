@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.model.zones.forms
+﻿namespace L2dotNET.Models.zones.forms
 {
     public abstract class L2ZoneForm
     {

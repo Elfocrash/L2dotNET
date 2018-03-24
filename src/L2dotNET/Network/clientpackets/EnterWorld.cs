@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using L2dotNET.Controllers;
 using L2dotNET.managers;
-using L2dotNET.model.items;
-using L2dotNET.model.player;
+using L2dotNET.Models.items;
+using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Plugins;
 using L2dotNET.Services.Contracts;

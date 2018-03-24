@@ -1,6 +1,7 @@
-﻿using L2dotNET.model.player;
-using L2dotNET.world;
+﻿using L2dotNET.world;
 using log4net;
+using L2dotNET.Models;
+using L2dotNET.Models.player;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Network.clientpackets

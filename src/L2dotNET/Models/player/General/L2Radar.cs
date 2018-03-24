@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.Network.serverpackets;
 
-namespace L2dotNET.model.player.General
+namespace L2dotNET.Models.player.General
 {
     public class L2Radar
     {

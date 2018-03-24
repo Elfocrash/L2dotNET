@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Timers;
-using L2dotNET.world;
 
-namespace L2dotNET.model.skills
+namespace L2dotNET.Models.skills
 {
     public class L2SkillCoolTime
     {

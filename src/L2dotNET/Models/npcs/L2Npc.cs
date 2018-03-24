@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
-using L2dotNET.model.items;
-using L2dotNET.model.player;
+using log4net;
+using L2dotNET.Models.items;
+using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.templates;
 using L2dotNET.tools;
 using L2dotNET.world;
-using log4net;
 
-namespace L2dotNET.model.npcs
+namespace L2dotNET.Models.npcs
 {
     public class L2Npc : L2Character
     {

@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.model.player;
-using L2dotNET.model.zones.forms;
+using L2dotNET.Models.player;
+using L2dotNET.Models.zones.forms;
 using L2dotNET.Network;
-using L2dotNET.world;
 
-namespace L2dotNET.model.zones
+namespace L2dotNET.Models.zones
 {
     public abstract class L2ZoneType
     {

@@ -1,6 +1,6 @@
 ﻿using L2dotNET.templates;
 
-namespace L2dotNET.model.npcs.decor
+namespace L2dotNET.Models.npcs.decor
 {
     public sealed class L2Chair : L2StaticObject
     {

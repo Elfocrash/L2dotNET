@@ -2,9 +2,10 @@
 using System.Xml;
 using log4net;
 using L2dotNET.Enums;
-using L2dotNET.model.player;
-using L2dotNET.model.zones.Type;
+using L2dotNET.Models;
+using L2dotNET.Models.player;
 using L2dotNET.Models.zones;
+using L2dotNET.Models.zones.Type;
 using L2dotNET.Utility;
 using L2dotNET.world;
 

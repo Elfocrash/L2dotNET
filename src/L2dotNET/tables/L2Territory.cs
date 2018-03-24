@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using log4net;
-using L2dotNET.model.zones.forms;
+using L2dotNET.Models.zones.forms;
 
 namespace L2dotNET.tables
 {

@@ -1,10 +1,9 @@
 ﻿using System.Timers;
-using L2dotNET.model.npcs;
-using L2dotNET.model.player;
+using L2dotNET.Models.npcs;
+using L2dotNET.Models.player;
 using L2dotNET.tables;
-using L2dotNET.world;
 
-namespace L2dotNET.model.zones.classes
+namespace L2dotNET.Models.zones.classes
 {
     class poison : L2Zone
     {

@@ -1,7 +1,6 @@
-﻿using L2dotNET.model.items;
-using L2dotNET.world;
+﻿using L2dotNET.Models.items;
 
-namespace L2dotNET.model.inventory
+namespace L2dotNET.Models.inventory
 {
     public class PetInventory : Inventory
     {

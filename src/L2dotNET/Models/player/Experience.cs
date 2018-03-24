@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.model.player
+﻿namespace L2dotNET.Models.player
 {
     public class Experience
     {

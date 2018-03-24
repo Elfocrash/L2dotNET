@@ -1,8 +1,7 @@
-﻿using L2dotNET.model.items;
-using L2dotNET.model.player;
-using L2dotNET.world;
+﻿using L2dotNET.Models.items;
+using L2dotNET.Models.player;
 
-namespace L2dotNET.model.inventory
+namespace L2dotNET.Models.inventory
 {
     public class PcInventory : Inventory
     {

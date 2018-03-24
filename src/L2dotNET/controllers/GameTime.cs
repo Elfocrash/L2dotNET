@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Remoting.Contexts;
 using log4net;
-using L2dotNET.model.player;
+using L2dotNET.Models.player;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.world;

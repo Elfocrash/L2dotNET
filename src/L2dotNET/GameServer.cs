@@ -5,7 +5,7 @@ using log4net;
 using L2dotNET.Controllers;
 using L2dotNET.Handlers;
 using L2dotNET.managers;
-using L2dotNET.model.items;
+using L2dotNET.Models.items;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
 using L2dotNET.tables;
@@ -46,7 +46,6 @@ namespace L2dotNET
 
             NpcTable.Instance.Initialize();
             Capsule.Instance.Initialize();
-            RecipeTable.Instance.Initialize();
             
             BlowFishKeygen.GenerateKeys();
 

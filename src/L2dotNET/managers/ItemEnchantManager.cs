@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.Enums;
-using L2dotNET.model.items;
-using L2dotNET.model.player;
+using L2dotNET.Models.items;
+using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.managers

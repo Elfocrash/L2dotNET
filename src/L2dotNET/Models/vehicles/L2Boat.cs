@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using L2dotNET.model.player;
+using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
-using L2dotNET.world;
 
-namespace L2dotNET.model.vehicles
+namespace L2dotNET.Models.vehicles
 {
     public class L2Boat : L2Object
     {

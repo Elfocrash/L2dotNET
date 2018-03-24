@@ -1,4 +1,4 @@
-namespace L2dotNET.model.player.basic
+namespace L2dotNET.Models.player.basic
 {
     public enum SayIDList
     {

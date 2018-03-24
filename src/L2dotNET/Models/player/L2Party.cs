@@ -5,7 +5,7 @@ using System.Timers;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 
-namespace L2dotNET.model.player
+namespace L2dotNET.Models.player
 {
     [Synchronization]
     public class L2Party

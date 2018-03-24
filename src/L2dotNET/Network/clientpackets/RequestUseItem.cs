@@ -1,6 +1,6 @@
-﻿using L2dotNET.model.inventory;
-using L2dotNET.model.items;
-using L2dotNET.model.player;
+﻿using L2dotNET.Models.inventory;
+using L2dotNET.Models.items;
+using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Plugins;
 

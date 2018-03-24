@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using log4net;
 using L2dotNET.DataContracts;
-using L2dotNET.model.npcs;
+using L2dotNET.Models.npcs;
 using L2dotNET.Services.Contracts;
 using Ninject;
 

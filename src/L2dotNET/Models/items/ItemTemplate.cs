@@ -3,7 +3,7 @@ using L2dotNET.Enums;
 using L2dotNET.tables;
 using L2dotNET.templates;
 
-namespace L2dotNET.model.items
+namespace L2dotNET.Models.items
 {
     public abstract class ItemTemplate
     {

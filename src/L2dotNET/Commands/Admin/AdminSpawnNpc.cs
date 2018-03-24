@@ -1,7 +1,7 @@
 ﻿using System;
 using L2dotNET.Attributes;
-using L2dotNET.model.npcs;
-using L2dotNET.model.player;
+using L2dotNET.Models.npcs;
+using L2dotNET.Models.player;
 using L2dotNET.tables;
 using L2dotNET.templates;
 

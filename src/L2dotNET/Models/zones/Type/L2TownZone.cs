@@ -1,9 +1,8 @@
 ﻿using System;
 using L2dotNET.Enums;
 using L2dotNET.Utility;
-using L2dotNET.world;
 
-namespace L2dotNET.model.zones.Type
+namespace L2dotNET.Models.zones.Type
 {
     public class L2TownZone : L2SpawnZone
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.model.items;
-using L2dotNET.model.player;
+using L2dotNET.Models.items;
+using L2dotNET.Models.player;
 
 namespace L2dotNET.Network.serverpackets
 {

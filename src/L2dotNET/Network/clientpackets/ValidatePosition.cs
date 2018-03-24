@@ -1,5 +1,5 @@
 ﻿using log4net;
-using L2dotNET.model.player;
+using L2dotNET.Models.player;
 
 namespace L2dotNET.Network.clientpackets
 {

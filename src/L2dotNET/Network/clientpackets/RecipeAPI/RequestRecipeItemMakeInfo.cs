@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using L2dotNET.model.player;
+using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.tables;
 
@@ -19,24 +19,6 @@ namespace L2dotNET.Network.clientpackets.RecipeAPI
         public override void RunImpl()
         {
             L2Player player = _client.CurrentPlayer;
-
-            if (player.RecipeBook == null)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.RecipeIncorrect);
-                player.SendActionFailed();
-                return;
-            }
-
-            L2Recipe rec = player.RecipeBook.FirstOrDefault(r => r.RecipeId == _id);
-
-            if (rec == null)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.RecipeIncorrect);
-                player.SendActionFailed();
-                return;
-            }
-
-            player.SendPacket(new RecipeItemMakeInfo(player, rec, 2));
         }
     }
 }

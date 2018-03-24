@@ -1,9 +1,8 @@
-﻿using L2dotNET.model.player;
+﻿using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.tables;
-using L2dotNET.world;
 
-namespace L2dotNET.model.zones.classes
+namespace L2dotNET.Models.zones.classes
 {
     class swamp : L2Zone
     {

@@ -1,4 +1,4 @@
-﻿using L2dotNET.model.items;
+﻿using L2dotNET.Models.items;
 
 namespace L2dotNET.Network.serverpackets
 {

@@ -1,10 +1,9 @@
-﻿using L2dotNET.model.npcs;
-using L2dotNET.templates;
-using L2dotNET.model.player;
+﻿using L2dotNET.templates;
 using L2dotNET.Network.serverpackets;
 using log4net;
 using L2dotNET.world;
 using System.Timers;
+using L2dotNET.Models.player;
 
 namespace L2dotNET.Models.npcs
 {

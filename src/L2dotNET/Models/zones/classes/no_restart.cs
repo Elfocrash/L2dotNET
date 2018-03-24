@@ -1,7 +1,6 @@
 ﻿using L2dotNET.tables;
-using L2dotNET.world;
 
-namespace L2dotNET.model.zones.classes
+namespace L2dotNET.Models.zones.classes
 {
     class no_restart : L2Zone
     {

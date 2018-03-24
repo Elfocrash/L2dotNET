@@ -1,6 +1,6 @@
 using System;
 using log4net;
-using L2dotNET.model.npcs;
+using L2dotNET.Models.npcs;
 using L2dotNET.templates;
 
 namespace L2dotNET.tables

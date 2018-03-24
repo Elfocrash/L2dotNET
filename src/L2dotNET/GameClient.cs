@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using log4net;
 using L2dotNET.Encryption;
-using L2dotNET.model.player;
+using L2dotNET.Models.player;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;

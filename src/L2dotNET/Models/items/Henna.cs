@@ -1,6 +1,6 @@
 ﻿using L2dotNET.templates;
 
-namespace L2dotNET.model.items
+namespace L2dotNET.Models.items
 {
     public sealed class Henna
     {

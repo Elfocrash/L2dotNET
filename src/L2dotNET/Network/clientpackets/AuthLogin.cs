@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.model.player;
+using L2dotNET.Models.player;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;

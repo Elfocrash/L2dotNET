@@ -1,6 +1,6 @@
 ﻿using L2dotNET.Attributes;
-using L2dotNET.model.items;
-using L2dotNET.model.player;
+using L2dotNET.Models.items;
+using L2dotNET.Models.player;
 using L2dotNET.tables;
 
 namespace L2dotNET.Commands.Admin

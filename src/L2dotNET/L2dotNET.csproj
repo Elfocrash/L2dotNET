@@ -522,14 +522,12 @@
     <Compile Include="tables\IdFactory.cs" />
     <Compile Include="tables\ItemSetTemplate.cs" />
     <Compile Include="tables\ItemTable.cs" />
-    <Compile Include="tables\L2Recipe.cs" />
     <Compile Include="tables\L2Spawn.cs" />
     <Compile Include="tables\L2Territory.cs" />
     <Compile Include="tables\MapRegionTable.cs" />
     <Compile Include="tables\NpcSpawn.cs" />
     <Compile Include="tables\NpcTable.cs" />
     <Compile Include="tables\RecipeItemEntry.cs" />
-    <Compile Include="tables\RecipeTable.cs" />
     <Compile Include="tables\RegionID.cs" />
     <Compile Include="tables\SpawnTable.cs" />
     <Compile Include="tables\StaticObjTable.cs" />
@@ -620,7 +618,6 @@
     <Content Include="Datapacks\Game\scripts\npcdata.txt" />
     <Content Include="Datapacks\Game\scripts\npc_vid.txt" />
     <Content Include="Datapacks\Game\scripts\pc_parameter.txt" />
-    <Content Include="Datapacks\Game\scripts\recipes.xml" />
     <Content Include="Datapacks\Game\scripts\spawn\aden.xml" />
     <Content Include="Datapacks\Game\scripts\spawn\dion.xml" />
     <Content Include="Datapacks\Game\scripts\spawn\gludio.xml" />
@@ -668,8 +665,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Datapacks\Game\cmpl\ai\" />
-    <Folder Include="Datapacks\Game\cmpl\quests\" />
     <Folder Include="Datapacks\Game\log\" />
     <Folder Include="Datapacks\Login\log\" />
     <Folder Include="Datapacks\Login\sq\" />

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using log4net;
-using L2dotNET.model.player;
+using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using Ninject;

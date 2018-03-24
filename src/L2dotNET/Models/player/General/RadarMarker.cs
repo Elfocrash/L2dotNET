@@ -1,4 +1,4 @@
-namespace L2dotNET.model.player.General
+namespace L2dotNET.Models.player.General
 {
     public class RadarMarker
     {

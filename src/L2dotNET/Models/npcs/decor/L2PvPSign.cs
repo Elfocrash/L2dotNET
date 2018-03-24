@@ -1,8 +1,8 @@
-﻿using L2dotNET.model.player;
+﻿using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.templates;
 
-namespace L2dotNET.model.npcs.decor
+namespace L2dotNET.Models.npcs.decor
 {
     public class L2PvPSign : L2StaticObject
     {
