@@ -10,7 +10,7 @@ namespace L2dotNET.Models.Stats.Funcs
 
         public override void Calculate(Env env)
         {
-            env.MulValue(Formulas.StrBonus[env.Character.Stats.Str] * env.Character.GetLevelMod());
+            env.MulValue(Formulas.StrBonus[env.Character.CharacterStat.Str] * env.Character.GetLevelMod());
         }
     }
 }

@@ -88,7 +88,7 @@ namespace L2dotNET.tables
                                 obj.Htm = value;
                                 break;
                             case "hp":
-                                obj.Stats = new CharacterStat(obj);
+                                obj.CharacterStat = new CharacterStat(obj);
                                 break;
                             case "defence":
                                 obj.Pdef = Convert.ToInt32(value.Split(' ')[0]);

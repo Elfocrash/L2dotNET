@@ -19,12 +19,12 @@ namespace L2dotNET.Commands.Admin
 
             double hpval = target.MaxHp;
             double mpval = target.MaxMp;
-            target.CurHp = target.MaxHp;
-            target.CurMp = target.MaxMp;
+            target.CharStatus.CurrentHp = target.MaxHp;
+            target.CharStatus.CurrentMp = target.MaxMp;
 
             StatusUpdate su = new StatusUpdate(target);
-            su.Add(StatusUpdate.CurHp, (int)target.CurHp);
-            su.Add(StatusUpdate.CurMp, (int)target.CurMp);
+            su.Add(StatusUpdate.CurHp, (int)target.CharStatus.CurrentHp);
+            su.Add(StatusUpdate.CurMp, (int)target.CharStatus.CurrentMp);
             target.SendPacket(su);
 
             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2HpRestoredByS1);

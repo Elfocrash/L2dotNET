@@ -20,8 +20,8 @@ namespace L2dotNET.Models.npcs
             Name = template.Name;
             InitializeCharacterStatus();
 
-            Status.CurrentHp = Template.BaseHpMax(0);
-            Status.CurrentMp = Template.BaseMpMax(0);
+            CharStatus.CurrentHp = Template.BaseHpMax(0);
+            CharStatus.CurrentMp = Template.BaseMpMax(0);
             //Stats = new CharacterStat(this);
         }
 

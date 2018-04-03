@@ -14,10 +14,10 @@ namespace L2dotNET.Models.Stats.Funcs
             if (env.Character is L2Player player)
             {
                 if(player.ActiveWeapon != null)
-                    env.MulValue(Formulas.WitBonus[player.Stats.Wit]);
+                    env.MulValue(Formulas.WitBonus[player.CharacterStat.Wit]);
             }
             else
-                env.MulValue(Formulas.WitBonus[env.Character.Stats.Wit]);
+                env.MulValue(Formulas.WitBonus[env.Character.CharacterStat.Wit]);
         }
     }
 }

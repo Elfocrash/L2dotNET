@@ -66,9 +66,9 @@ namespace L2dotNET.Services
                 Hero = playerContract.Hero,
                 LastRecomDate = playerContract.LastRecomDate
             };
-            player.Status.CurrentCp = playerContract.CurCp;
-            player.Status.CurrentHp = playerContract.CurHp;
-            player.Status.CurrentMp = playerContract.CurMp;
+            player.CharStatus.SetCurrentCp(playerContract.CurCp,false); //player.CharStatus.CurrentCp = playerContract.CurCp; //???after repairing the broadcast, return it back???
+            player.CharStatus.SetCurrentHp(playerContract.CurHp, false); //player.CharStatus.CurrentHp = playerContract.CurHp;
+            player.CharStatus.SetCurrentMp(playerContract.CurMp, false); //player.CharStatus.CurrentMp = playerContract.CurMp;
 
             return player;
         }
@@ -88,11 +88,11 @@ namespace L2dotNET.Services
                 Name = player.Name,
                 Level = player.Level,
                 MaxHp = player.MaxHp,
-                CurHp = (int)player.CurHp,
+                CurHp = (int)player.CharStatus.CurrentHp,
                 MaxCp = player.MaxCp,
                 CurCp = (int)player.CurCp,
                 MaxMp = player.MaxMp,
-                CurMp = (int)player.CurMp,
+                CurMp = (int)player.CharStatus.CurrentMp,
                 Face = (int)player.Face,
                 HairStyle = (int)player.HairStyleId,
                 HairColor = (int)player.HairColor,
@@ -138,11 +138,11 @@ namespace L2dotNET.Services
                 ObjectId = player.ObjId,
                 Level = player.Level,
                 MaxHp = player.MaxHp,
-                CurHp = (int)player.CurHp,
+                CurHp = (int)player.CharStatus.CurrentHp,
                 MaxCp = player.MaxCp,
                 CurCp = (int)player.CurCp,
                 MaxMp = player.MaxMp,
-                CurMp = (int)player.CurMp,
+                CurMp = (int)player.CharStatus.CurrentMp,
                 Face = (int)player.Face,
                 HairStyle = (int)player.HairStyleId,
                 HairColor = (int)player.HairColor,

@@ -15,11 +15,12 @@ namespace L2dotNET.Models.Status
         protected static readonly byte RegenFlagCp = 4;
         private static readonly byte RegenFlagHp = 1;
         private static readonly byte RegenFlagMp = 2;
-        public double CurrentHp { get; set; } = 0;
-        public double CurrentMp { get; set; } = 0;
-
+        public double CurrentHp { get => _currentHp; set => SetCurrentHp(value); }
+        public double CurrentMp { get => _currentMp; set => SetCurrentMp(value); }
         private Timer _regTask;
         protected byte _flagsRegenActive = 0;
+        private double _currentHp = 0;
+        private double _currentMp = 0;
 
         public CharStatus(L2Character character)
         {
@@ -44,10 +45,10 @@ namespace L2dotNET.Models.Status
             if (Character.Dead)
                 return;
 
-            if(value > 0)
+            if (value > 0)
                 SetCurrentHp(Math.Max(CurrentHp - value, 0));
 
-            if(Character.CurHp < 0.5)
+            if (CurrentHp < 0.5)
             {
                 Character.AbortAttack();
                 Character.DoDie(attacker);
@@ -56,7 +57,7 @@ namespace L2dotNET.Models.Status
 
         public void ReduceMp(double value)
         {
-            Character.CurMp = Math.Max(Character.CurMp - value, 0);
+            CurrentMp = Math.Max(CurrentMp - value, 0);
         }
 
         public void SetCurrentMp(double newMp)
@@ -74,7 +75,7 @@ namespace L2dotNET.Models.Status
 
             if (newMp >= maxMp)
             {
-                Character.CurMp = maxMp;
+                _currentMp = maxMp;
                 _flagsRegenActive &= RegenFlagMp;
 
                 if (_flagsRegenActive == 0)
@@ -82,13 +83,13 @@ namespace L2dotNET.Models.Status
             }
             else
             {
-                Character.CurMp = newMp;
+                _currentMp = newMp;
                 _flagsRegenActive |= RegenFlagMp;
 
                 StartHpMpRegeneration();
             }
 
-            if(broadcastUpdate)
+            if (broadcastUpdate)
                 Character.BroadcastStatusUpdate();
         }
 
@@ -107,7 +108,7 @@ namespace L2dotNET.Models.Status
 
             if (newHp >= maxHp)
             {
-                Character.CurHp = maxHp;
+                _currentHp = maxHp;
                 _flagsRegenActive &= RegenFlagHp;
 
                 if (_flagsRegenActive == 0)
@@ -115,13 +116,13 @@ namespace L2dotNET.Models.Status
             }
             else
             {
-                Character.CurHp = newHp;
+                _currentHp = newHp;
                 _flagsRegenActive |= RegenFlagHp;
 
                 StartHpMpRegeneration();
             }
 
-            if(broadcastUpdate)
+            if (broadcastUpdate)
                 Character.BroadcastStatusUpdate();
         }
 
@@ -137,7 +138,7 @@ namespace L2dotNET.Models.Status
                 _regTask.Enabled = true;
             }
         }
-        
+
         [MethodImpl(MethodImplOptions.Synchronized)]
         public void StopHpMpRegeneration()
         {
@@ -150,11 +151,11 @@ namespace L2dotNET.Models.Status
 
         private void RegenTask(object sender, ElapsedEventArgs e)
         {
-            if (Character.CurHp < Character.MaxHp)
-                SetCurrentHp(Character.CurHp + (Character.MaxHp * 1.0 / 100), false); // we will calculate the actual modified when we do formulas
+            if (CurrentHp < Character.MaxHp)
+                SetCurrentHp(CurrentHp + (Character.MaxHp * 1.0 / 100), false); // we will calculate the actual modified when we do formulas
 
-            if (Character.CurMp < Character.MaxMp)
-                SetCurrentMp(Character.CurMp + (Character.MaxMp * 1.0 / 100), false); // we will calculate the actual modified when we do formulas
+            if (CurrentMp < Character.MaxMp)
+                SetCurrentMp(CurrentMp + (Character.MaxMp * 1.0 / 100), false); // we will calculate the actual modified when we do formulas
 
             //Character.BroadcastStatusUpdate();
         }

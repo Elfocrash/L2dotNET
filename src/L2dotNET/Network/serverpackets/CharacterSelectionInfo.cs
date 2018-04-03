@@ -58,8 +58,8 @@ namespace L2dotNET.Network.serverpackets
                 WriteInt(player.Y);
                 WriteInt(player.Z);
 
-                WriteDouble(player.CurHp);
-                WriteDouble(player.CurMp);
+                WriteDouble(player.CharStatus.CurrentHp);
+                WriteDouble(player.CharStatus.CurrentMp);
 
                 WriteInt(player.Sp);
                 WriteLong(player.Exp);

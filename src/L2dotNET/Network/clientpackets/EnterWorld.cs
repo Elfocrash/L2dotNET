@@ -66,7 +66,7 @@ namespace L2dotNET.Network.clientpackets
 
             //player.sendPacket(new ShortCutInit(player));
             player.StartAi();
-            player.Status.StartHpMpRegeneration();
+            player.CharStatus.StartHpMpRegeneration();
             player.ShowHtm("servnews.htm",player);
             player.BroadcastUserInfo();
         }
