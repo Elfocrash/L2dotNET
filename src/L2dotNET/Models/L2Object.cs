@@ -472,7 +472,6 @@ namespace L2dotNET.Models
             Region = L2World.Instance.GetRegion(new Location(X, Y, Z));
 
             L2World.Instance.AddObject(this);
-
             OnSpawn(notifyOthers);
         }
 

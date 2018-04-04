@@ -45,6 +45,8 @@ namespace L2dotNET.Models.Status
             if (Character.Dead)
                 return;
 
+            StatusListener.Add(attacker);
+            Console.WriteLine(attacker.ObjId);
             if (value > 0)
             {
                 SetCurrentHp(Math.Max(_currentHp - value, 0), true);

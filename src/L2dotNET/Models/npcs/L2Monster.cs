@@ -4,6 +4,7 @@ using log4net;
 using L2dotNET.world;
 using System.Timers;
 using L2dotNET.Models.player;
+using L2dotNET.Network;
 
 namespace L2dotNET.Models.npcs
 {
@@ -22,6 +23,15 @@ namespace L2dotNET.Models.npcs
             CharStatus.SetCurrentHp(Template.BaseHpMax(0));
             CharStatus.SetCurrentMp(Template.BaseMpMax(0));
             //Stats = new CharacterStat(this);
+        }
+
+        public override void SendPacket(GameserverPacket pk)
+        {
+            foreach (L2Player pl in L2World.Instance.GetPlayers())
+            {
+                // TODO: Sends to all players on the server. It is not right
+                pl.Gameclient.SendPacket(pk);
+            }      
         }
 
         public override void OnAction(L2Player player)
@@ -63,7 +73,7 @@ namespace L2dotNET.Models.npcs
 
             CharStatus.StopHpMpRegeneration();
 
-            //BroadcastPacket(new Die(this));
+            BroadcastPacket(new Die(this));
             if (Template.CorpseTime <= 0)
             {
                 return;
