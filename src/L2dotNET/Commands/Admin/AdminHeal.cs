@@ -19,8 +19,8 @@ namespace L2dotNET.Commands.Admin
 
             double hpval = target.MaxHp;
             double mpval = target.MaxMp;
-            target.CharStatus.CurrentHp = target.MaxHp;
-            target.CharStatus.CurrentMp = target.MaxMp;
+            target.CharStatus.SetCurrentHp(target.MaxHp);
+            target.CharStatus.SetCurrentMp(target.MaxMp);
 
             StatusUpdate su = new StatusUpdate(target);
             su.Add(StatusUpdate.CurHp, (int)target.CharStatus.CurrentHp);

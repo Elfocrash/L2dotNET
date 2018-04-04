@@ -28,31 +28,33 @@ namespace L2dotNET.Models
 
         public byte IsRunning { get; set; } = 1;
 
-        public int AbnormalBitMask;
-        public int AbnormalBitMaskEx;
-        public int AbnormalBitMaskEvent;
+        #region AbhornalMask
+            public int AbnormalBitMask;
+            public int AbnormalBitMaskEx;
+            public int AbnormalBitMaskEvent;
 
-        public const int AbnormalMaskBleed = 0x000001;
+            public const int AbnormalMaskBleed = 0x000001;
 
-        public const int AbnormalMaskExInvincible = 0x000001;
-        public const int AbnormalMaskExAirStun = 0x000002;
-        public const int AbnormalMaskExAirRoot = 0x000004;
-        public const int AbnormalMaskExBagSword = 0x000008;
-        public const int AbnormalMaskExAfroYellow = 0x000010;
-        public const int AbnormalMaskExAfroPink = 0x000020;
-        public const int AbnormalMaskExAfroBlack = 0x000040;
-        //unk x80
-        public const int AbnormalMaskExStigmaShillien = 0x000100;
-        public const int AbnormalMaskExStakatoRoot = 0x000200;
-        public const int AbnormalMaskExFreezing = 0x000400;
-        public const int AbnormalMaskExVesper = 0x000800;
+            public const int AbnormalMaskExInvincible = 0x000001;
+            public const int AbnormalMaskExAirStun = 0x000002;
+            public const int AbnormalMaskExAirRoot = 0x000004;
+            public const int AbnormalMaskExBagSword = 0x000008;
+            public const int AbnormalMaskExAfroYellow = 0x000010;
+            public const int AbnormalMaskExAfroPink = 0x000020;
+            public const int AbnormalMaskExAfroBlack = 0x000040;
+            //unk x80
+            public const int AbnormalMaskExStigmaShillien = 0x000100;
+            public const int AbnormalMaskExStakatoRoot = 0x000200;
+            public const int AbnormalMaskExFreezing = 0x000400;
+            public const int AbnormalMaskExVesper = 0x000800;
 
-        public const int AbnormalMaskEventIceHand = 0x000008;
-        public const int AbnormalMaskEventHeadphone = 0x000010;
-        public const int AbnormalMaskEventCrown1 = 0x000020;
-        public const int AbnormalMaskEventCrown2 = 0x000040;
-        public const int AbnormalMaskEventCrown3 = 0x000080;
-        
+            public const int AbnormalMaskEventIceHand = 0x000008;
+            public const int AbnormalMaskEventHeadphone = 0x000010;
+            public const int AbnormalMaskEventCrown1 = 0x000020;
+            public const int AbnormalMaskEventCrown2 = 0x000040;
+            public const int AbnormalMaskEventCrown3 = 0x000080;
+        #endregion
+
         public int Int => CharacterStat.Int;
 
         public int Str => CharacterStat.Str;
@@ -429,39 +431,38 @@ namespace L2dotNET.Models
             //    SendPacket(new SystemMessage((SystemMessage.SystemMessageId)msgId).AddNumber(damage));
         }
 
-        public override void ReduceHp(L2Character attacker, double damage)
-        {
-            if (Dead)
-                return;
+        //public override void ReduceHp(L2Character attacker, double damage)
+        //{
+        //    if (Dead)
+        //        return;
 
-            //if ((this is L2Player && attacker is L2Player))
-            //{
-            //    if (CurCp > 0)
-            //    {
-            //        CurCp -= damage;
+        //    //if ((this is L2Player && attacker is L2Player))
+        //    //{
+        //    //    if (CurCp > 0)
+        //    //    {
+        //    //        CurCp -= damage;
 
-            //        if (CurCp < 0)
-            //        {
-            //            damage = CurCp * -1;
-            //            CurCp = 0;
-            //        }
-            //    }
-            //}
+        //    //        if (CurCp < 0)
+        //    //        {
+        //    //            damage = CurCp * -1;
+        //    //            CurCp = 0;
+        //    //        }
+        //    //    }
+        //    //}
 
-            CharStatus.CurrentHp -= damage;
+        //    CharStatus.ReduceHp(damage,attacker);
 
-            StatusUpdate statusUpdate = new StatusUpdate(this);
-            statusUpdate.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
-            // statusUpdate.Add(StatusUpdate.CurCp, (int)CurCp);
-            BroadcastPacket(statusUpdate);
+        //    StatusUpdate statusUpdate = new StatusUpdate(this);
+        //    statusUpdate.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
+        //    // statusUpdate.Add(StatusUpdate.CurCp, (int)CurCp);
+        //    BroadcastPacket(statusUpdate);
 
-            if (CharStatus.CurrentHp <= 0)
-            {
-                CharStatus.CurrentHp = 0;
-                DoDie(attacker);
-                return;
-            }
-        }
+        //    if (CharStatus.CurrentHp <= 0)
+        //    {
+        //        DoDie(attacker);
+        //        return;
+        //    }
+        //}
 
         public virtual void DoDie(L2Character killer)
         {
@@ -470,7 +471,7 @@ namespace L2dotNET.Models
                 if (Dead)
                     return;
 
-                CharStatus.CurrentHp = 0;
+                CharStatus.SetCurrentHp(0);
 
                 Dead = true;
             }
@@ -637,7 +638,7 @@ namespace L2dotNET.Models
             {
                 if (!Hit1.Miss)
                 {
-                    Target.ReduceHp(this, Hit1.Damage);
+                    Target.CharStatus.ReduceHp(Hit1.Damage, this);
 
                     if (Target is L2Player)
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
@@ -660,7 +661,7 @@ namespace L2dotNET.Models
             {
                 if (!Hit2.Miss)
                 {
-                    Target.ReduceHp(this, Hit2.Damage);
+                    Target.CharStatus.ReduceHp(Hit2.Damage, this);
                     if (Target is L2Player)
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
                 }

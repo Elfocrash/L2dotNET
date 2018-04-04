@@ -12,9 +12,9 @@ namespace L2dotNET.Models.Status
             Character = player;
         }
 
-        public void SetCurrentCp(double newHp)
+        public void SetCurrentCp(double newCp)
         {
-            SetCurrentHp(newHp, true);
+            //SetCurrentHp(newCp, true);
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]

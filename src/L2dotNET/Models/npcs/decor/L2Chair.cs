@@ -10,7 +10,7 @@ namespace L2dotNET.Models.npcs.decor
         {
             Closed = 0;
             //MaxHp = 0;
-            CharStatus.CurrentHp = 0;
+            CharStatus.SetCurrentHp(0);
         }
 
         public override string AsString()

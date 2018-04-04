@@ -15,8 +15,8 @@ namespace L2dotNET.Models.Status
         protected static readonly byte RegenFlagCp = 4;
         private static readonly byte RegenFlagHp = 1;
         private static readonly byte RegenFlagMp = 2;
-        public double CurrentHp { get => _currentHp; set => SetCurrentHp(value); }
-        public double CurrentMp { get => _currentMp; set => SetCurrentMp(value); }
+        public double CurrentHp { get => _currentHp; }
+        public double CurrentMp { get => _currentMp; }
         private Timer _regTask;
         protected byte _flagsRegenActive = 0;
         private double _currentHp = 0;
@@ -46,9 +46,11 @@ namespace L2dotNET.Models.Status
                 return;
 
             if (value > 0)
-                SetCurrentHp(Math.Max(CurrentHp - value, 0));
+            {
+                SetCurrentHp(Math.Max(_currentHp - value, 0), true);
+            }
 
-            if (CurrentHp < 0.5)
+            if (_currentHp < 0.5)
             {
                 Character.AbortAttack();
                 Character.DoDie(attacker);
@@ -57,7 +59,7 @@ namespace L2dotNET.Models.Status
 
         public void ReduceMp(double value)
         {
-            CurrentMp = Math.Max(CurrentMp - value, 0);
+            _currentMp = Math.Max(_currentMp - value, 0);
         }
 
         public void SetCurrentMp(double newMp)
@@ -151,13 +153,13 @@ namespace L2dotNET.Models.Status
 
         private void RegenTask(object sender, ElapsedEventArgs e)
         {
-            if (CurrentHp < Character.MaxHp)
-                SetCurrentHp(CurrentHp + (Character.MaxHp * 1.0 / 100), false); // we will calculate the actual modified when we do formulas
+            if (_currentHp < Character.MaxHp)
+                SetCurrentHp(_currentHp + (Character.MaxHp * 1.0 / 100), false); // we will calculate the actual modified when we do formulas
 
-            if (CurrentMp < Character.MaxMp)
-                SetCurrentMp(CurrentMp + (Character.MaxMp * 1.0 / 100), false); // we will calculate the actual modified when we do formulas
+            if (_currentMp < Character.MaxMp)
+                SetCurrentMp(_currentMp + (Character.MaxMp * 1.0 / 100), false); // we will calculate the actual modified when we do formulas
 
-            //Character.BroadcastStatusUpdate();
+            Character.BroadcastStatusUpdate();
         }
     }
 }

@@ -85,7 +85,7 @@ namespace L2dotNET.Models
             BroadcastPacket(pk, false);
         }
 
-        public virtual void ReduceHp(L2Character attacker, double damage) { }
+        //public virtual void ReduceHp(L2Character attacker, double damage) { }
 
         public virtual void DecayMe()
         {

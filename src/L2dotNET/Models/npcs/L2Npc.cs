@@ -13,12 +13,11 @@ namespace L2dotNET.Models.npcs
 {
     public class L2Npc : L2Character
     {
+        private readonly ILog Log = LogManager.GetLogger(typeof(L2Npc));
+
         public new NpcTemplate Template;
         public bool Summoned;
         public bool StructureControlled = false;
-
-
-        private readonly ILog Log = LogManager.GetLogger(typeof(L2Npc)) ;
 
         public L2Npc(int objectId, NpcTemplate template) : base(objectId, template)
         {
@@ -54,7 +53,7 @@ namespace L2dotNET.Models.npcs
         public override void NotifyAction(L2Player player)
         {
             double dis = Calcs.CalculateDistance(player, this, true);
-                TryMoveTo(X, Y, Z);
+            TryMoveTo(X, Y, Z);
         }
 
         public int NpcId => Template.NpcId;
@@ -78,8 +77,8 @@ namespace L2dotNET.Models.npcs
             else
             {
                 player.MoveTo(X, Y, Z);
-                player.SendPacket(new MoveToPawn(player, this,150));
-                if(Template.Type == "L2Monster")
+                player.SendPacket(new MoveToPawn(player, this, 150));
+                if (Template.Type == "L2Monster")
                 {
                     Log.Debug("Attack Monester By L2NPC");
                     player.DoAttack(this);
@@ -90,7 +89,7 @@ namespace L2dotNET.Models.npcs
 
         public virtual void OnTeleportRequest(L2Player player)
         {
-            
+
         }
 
         public void UseTeleporter(L2Player player, int type, int entryId)
@@ -289,7 +288,7 @@ namespace L2dotNET.Models.npcs
 
         public override void BroadcastUserInfo()
         {
-            foreach (var character in L2World.Instance.GetObjects().Where(x=>x.GetType() == typeof(L2Character)))
+            foreach (var character in L2World.Instance.GetObjects().Where(x => x.GetType() == typeof(L2Character)))
                 character.SendPacket(new NpcInfo(this));
         }
 
@@ -300,11 +299,11 @@ namespace L2dotNET.Models.npcs
 
         public override void OnSpawn(bool notifyOthers = true)
         {
-            if(notifyOthers)
+            if (notifyOthers)
                 BroadcastUserInfo();
             StartAi();
         }
-        
+
         private Timer _corpseTimer;
         public int ResidenceId;
 
@@ -316,8 +315,6 @@ namespace L2dotNET.Models.npcs
             {
                 return;
             }
-                
-
             _corpseTimer = new Timer(Template.CorpseTime * 1000);
             _corpseTimer.Elapsed += new ElapsedEventHandler(RemoveCorpse);
             _corpseTimer.Enabled = true;

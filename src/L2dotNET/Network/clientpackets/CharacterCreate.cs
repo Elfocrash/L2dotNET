@@ -71,8 +71,8 @@ namespace L2dotNET.Network.clientpackets
             player.BaseClass = template;
             player.ActiveClass = template;
             player.CharStatus.CurrentCp = player.MaxCp;
-            player.CharStatus.CurrentHp = player.MaxHp;
-            player.CharStatus.CurrentMp = player.MaxMp;
+            player.CharStatus.SetCurrentHp(player.MaxHp);
+            player.CharStatus.SetCurrentHp(player.MaxMp);
             //player.MaxMp = player.Stats.MaxMp;//;(int)player.CharacterStat.GetStat(EffectType.BMaxMp);
             //player.MaxCp = player.Stats.MaxCp;
             //player.MaxHp = player.Stats.MaxHp;

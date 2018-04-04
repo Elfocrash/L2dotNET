@@ -1066,7 +1066,6 @@ namespace L2dotNET.Models.player
 
         public override void DoAttack(L2Character target)
         {
-            Console.WriteLine("Attaka bliat");
             if (target == null)
             {
                 SendMessage("null");
@@ -1191,7 +1190,7 @@ namespace L2dotNET.Models.player
                         SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1LandedACriticalHit).AddPlayerName(Name));
 
                     SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddPlayerName(Name).AddName(Target).AddNumber(Hit1.Damage));
-                    Target.ReduceHp(this, Hit1.Damage);
+                    Target.CharStatus.ReduceHp(Hit1.Damage, this);
 
                     if (Target is L2Player)
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
@@ -1220,7 +1219,7 @@ namespace L2dotNET.Models.player
                         SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1LandedACriticalHit).AddName(this));
 
                     SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddName(this).AddName(Target).AddNumber(Hit2.Damage));
-                    Target.ReduceHp(this, Hit2.Damage);
+                    Target.CharStatus.ReduceHp(Hit2.Damage, this);
 
                     if (Target is L2Player)
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
