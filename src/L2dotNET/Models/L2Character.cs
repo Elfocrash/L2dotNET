@@ -28,46 +28,48 @@ namespace L2dotNET.Models
 
         public byte IsRunning { get; set; } = 1;
 
-        public int AbnormalBitMask;
-        public int AbnormalBitMaskEx;
-        public int AbnormalBitMaskEvent;
+        #region AbhornalMask
+            public int AbnormalBitMask;
+            public int AbnormalBitMaskEx;
+            public int AbnormalBitMaskEvent;
 
-        public const int AbnormalMaskBleed = 0x000001;
+            public const int AbnormalMaskBleed = 0x000001;
 
-        public const int AbnormalMaskExInvincible = 0x000001;
-        public const int AbnormalMaskExAirStun = 0x000002;
-        public const int AbnormalMaskExAirRoot = 0x000004;
-        public const int AbnormalMaskExBagSword = 0x000008;
-        public const int AbnormalMaskExAfroYellow = 0x000010;
-        public const int AbnormalMaskExAfroPink = 0x000020;
-        public const int AbnormalMaskExAfroBlack = 0x000040;
-        //unk x80
-        public const int AbnormalMaskExStigmaShillien = 0x000100;
-        public const int AbnormalMaskExStakatoRoot = 0x000200;
-        public const int AbnormalMaskExFreezing = 0x000400;
-        public const int AbnormalMaskExVesper = 0x000800;
+            public const int AbnormalMaskExInvincible = 0x000001;
+            public const int AbnormalMaskExAirStun = 0x000002;
+            public const int AbnormalMaskExAirRoot = 0x000004;
+            public const int AbnormalMaskExBagSword = 0x000008;
+            public const int AbnormalMaskExAfroYellow = 0x000010;
+            public const int AbnormalMaskExAfroPink = 0x000020;
+            public const int AbnormalMaskExAfroBlack = 0x000040;
+            //unk x80
+            public const int AbnormalMaskExStigmaShillien = 0x000100;
+            public const int AbnormalMaskExStakatoRoot = 0x000200;
+            public const int AbnormalMaskExFreezing = 0x000400;
+            public const int AbnormalMaskExVesper = 0x000800;
 
-        public const int AbnormalMaskEventIceHand = 0x000008;
-        public const int AbnormalMaskEventHeadphone = 0x000010;
-        public const int AbnormalMaskEventCrown1 = 0x000020;
-        public const int AbnormalMaskEventCrown2 = 0x000040;
-        public const int AbnormalMaskEventCrown3 = 0x000080;
-        
-        public int Int => Stats.Int;
+            public const int AbnormalMaskEventIceHand = 0x000008;
+            public const int AbnormalMaskEventHeadphone = 0x000010;
+            public const int AbnormalMaskEventCrown1 = 0x000020;
+            public const int AbnormalMaskEventCrown2 = 0x000040;
+            public const int AbnormalMaskEventCrown3 = 0x000080;
+        #endregion
 
-        public int Str => Stats.Str;
+        public int Int => CharacterStat.Int;
 
-        public int Con => Stats.Con;
+        public int Str => CharacterStat.Str;
 
-        public int Men => Stats.Men;
+        public int Con => CharacterStat.Con;
 
-        public int Dex => Stats.Dex;
+        public int Men => CharacterStat.Men;
 
-        public int Wit => Stats.Wit;
+        public int Dex => CharacterStat.Dex;
 
-        protected byte ZoneValidateCounter = 4;
+        public int Wit => CharacterStat.Wit;
 
-        public CharStatus Status { get; set; }
+        protected byte zoneValidateCounter = 4;
+
+        public CharStatus CharStatus { get; set; }
 
         public virtual void UpdateAbnormalEffect() { }
 
@@ -79,12 +81,12 @@ namespace L2dotNET.Models
 
         public Calculator[] Calculators { get; set; }
 
-        public CharacterStat Stats { get; set; }
+        public CharacterStat CharacterStat { get; set; }
 
         public L2Character(int objectId, CharTemplate template) : base(objectId)
         {
             Template = template;
-            Stats = new CharacterStat(this);
+            CharacterStat = new CharacterStat(this);
             InitializeCharacterStatus();
             Calculators = new Calculator[Models.Stats.Stats.Values.Count()];
             AddFuncsToNewCharacter();
@@ -93,12 +95,12 @@ namespace L2dotNET.Models
 
         public virtual CharStatus GetStatus()
         {
-            return Status;
+            return CharStatus;
         }
 
         public virtual void InitializeCharacterStatus()
         {
-            Status = new CharStatus(this);
+            CharStatus = new CharStatus(this);
         }
 
         public virtual void SetTarget(L2Character obj)
@@ -183,21 +185,21 @@ namespace L2dotNET.Models
                     if(statusUpdate == null)
                         statusUpdate = new StatusUpdate(this);
 
-                    statusUpdate.Add(StatusUpdate.AtkSpd, Stats.PAttackSpeed);
+                    statusUpdate.Add(StatusUpdate.AtkSpd, CharacterStat.PAttackSpeed);
                 }
                 else if (stat == Models.Stats.Stats.MagicAttackSpeed)
                 {
                     if (statusUpdate == null)
                         statusUpdate = new StatusUpdate(this);
 
-                    statusUpdate.Add(StatusUpdate.CastSpd, Stats.MAttackSpeed);
+                    statusUpdate.Add(StatusUpdate.CastSpd, CharacterStat.MAttackSpeed);
                 }
                 else if (stat == Models.Stats.Stats.MaxHp)
                 {
                     if (statusUpdate == null)
                         statusUpdate = new StatusUpdate(this);
 
-                    statusUpdate.Add(StatusUpdate.MaxHp, Stats.MaxHp);
+                    statusUpdate.Add(StatusUpdate.MaxHp, CharacterStat.MaxHp);
                 }else if (stat == Models.Stats.Stats.RunSpeed)
                     broadcastFull = true;
             }
@@ -259,12 +261,12 @@ namespace L2dotNET.Models
                 return;
 
             if (force)
-                ZoneValidateCounter = 4;
+                zoneValidateCounter = 4;
             else
             {
-                ZoneValidateCounter--;
-                if (ZoneValidateCounter < 0)
-                    ZoneValidateCounter = 4;
+                zoneValidateCounter--;
+                if (zoneValidateCounter < 0)
+                    zoneValidateCounter = 4;
                 else
                     return;
             }
@@ -429,39 +431,38 @@ namespace L2dotNET.Models
             //    SendPacket(new SystemMessage((SystemMessage.SystemMessageId)msgId).AddNumber(damage));
         }
 
-        public override void ReduceHp(L2Character attacker, double damage)
-        {
-            if (Dead)
-                return;
+        //public override void ReduceHp(L2Character attacker, double damage)
+        //{
+        //    if (Dead)
+        //        return;
 
-            //if ((this is L2Player && attacker is L2Player))
-            //{
-            //    if (CurCp > 0)
-            //    {
-            //        CurCp -= damage;
+        //    //if ((this is L2Player && attacker is L2Player))
+        //    //{
+        //    //    if (CurCp > 0)
+        //    //    {
+        //    //        CurCp -= damage;
 
-            //        if (CurCp < 0)
-            //        {
-            //            damage = CurCp * -1;
-            //            CurCp = 0;
-            //        }
-            //    }
-            //}
+        //    //        if (CurCp < 0)
+        //    //        {
+        //    //            damage = CurCp * -1;
+        //    //            CurCp = 0;
+        //    //        }
+        //    //    }
+        //    //}
 
-            CurHp -= damage;
+        //    CharStatus.ReduceHp(damage,attacker);
 
-            StatusUpdate su = new StatusUpdate(this);
-            su.Add(StatusUpdate.CurHp, (int)CurHp);
-           // su.Add(StatusUpdate.CurCp, (int)CurCp);
-            BroadcastPacket(su);
+        //    StatusUpdate statusUpdate = new StatusUpdate(this);
+        //    statusUpdate.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
+        //    // statusUpdate.Add(StatusUpdate.CurCp, (int)CurCp);
+        //    BroadcastPacket(statusUpdate);
 
-            if (CurHp <= 0)
-            {
-                CurHp = 0;
-                DoDie(attacker);
-                return;
-            }
-        }
+        //    if (CharStatus.CurrentHp <= 0)
+        //    {
+        //        DoDie(attacker);
+        //        return;
+        //    }
+        //}
 
         public virtual void DoDie(L2Character killer)
         {
@@ -470,7 +471,7 @@ namespace L2dotNET.Models
                 if (Dead)
                     return;
 
-                CurHp = 0;
+                CharStatus.SetCurrentHp(0);
 
                 Dead = true;
             }
@@ -481,7 +482,7 @@ namespace L2dotNET.Models
             if (IsAttacking())
                 AbortAttack();
 
-            Status.StopHpMpRegeneration();
+            CharStatus.StopHpMpRegeneration();
             
             BroadcastStatusUpdate();
 
@@ -540,9 +541,9 @@ namespace L2dotNET.Models
                 return;
             }
 
-            if ((reqMp > 0) && (reqMp > CurMp))
+            if ((reqMp > 0) && (reqMp > CharStatus.CurrentMp))
             {
-                SendMessage($"no mp {CurMp} {reqMp}");
+                SendMessage($"no mp {CharStatus.CurrentMp} {reqMp}");
                 return;
             }
 
@@ -637,7 +638,7 @@ namespace L2dotNET.Models
             {
                 if (!Hit1.Miss)
                 {
-                    Target.ReduceHp(this, Hit1.Damage);
+                    Target.CharStatus.ReduceHp(Hit1.Damage, this);
 
                     if (Target is L2Player)
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
@@ -660,7 +661,7 @@ namespace L2dotNET.Models
             {
                 if (!Hit2.Miss)
                 {
-                    Target.ReduceHp(this, Hit2.Damage);
+                    Target.CharStatus.ReduceHp(Hit2.Damage, this);
                     if (Target is L2Player)
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
                 }
@@ -845,7 +846,7 @@ namespace L2dotNET.Models
         
         public virtual void BroadcastStatusUpdate()
         {
-            if (!Status.StatusListener.Any())
+            if (!CharStatus.StatusListener.Any())
                 return;
 
             //will look into this later
@@ -853,9 +854,9 @@ namespace L2dotNET.Models
             //    return;
 
             StatusUpdate su = new StatusUpdate(this);
-            su.Add(StatusUpdate.CurHp, (int)CurHp);
+            su.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
 
-            foreach (var temp in Status.StatusListener)
+            foreach (var temp in CharStatus.StatusListener)
             {
                 if(temp.ObjId != ObjId)
                     temp?.SendPacket(su);
@@ -1033,19 +1034,9 @@ namespace L2dotNET.Models
             return (AttackToEnd != null) && AttackToEnd.Enabled;
         }
 
-        public virtual int MaxHp => Stats.MaxHp;
-        public virtual int MaxMp => Stats.MaxMp;
+        public virtual int MaxHp => CharacterStat.MaxHp;
+        public virtual int MaxMp => CharacterStat.MaxMp;
 
-        public virtual double CurHp {
-            get => Status.CurrentHp;
-            set => Status.SetCurrentHp(value);
-        } 
-
-        public virtual double CurMp
-        {
-            get => Status.CurrentMp;
-            set => Status.SetCurrentMp(value);
-        }
         public override string AsString()
         {
             return $"L2Character: {ObjId}";

@@ -39,9 +39,9 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.Men);
 
             WriteInt(_player.MaxHp); //max hp
-            WriteInt(_player.CurHp);
+            WriteInt(_player.CharStatus.CurrentHp);
             WriteInt(_player.MaxMp); //max mp
-            WriteInt(_player.CurMp);
+            WriteInt(_player.CharStatus.CurrentMp);
             WriteInt(_player.Sp);
             WriteInt(_player.CurrentWeight);
             WriteInt(100);
@@ -88,28 +88,28 @@ namespace L2dotNET.Network.serverpackets
             WriteShort(0x00);
             WriteShort(0x00);
 
-            WriteInt(_player.Stats.PAttack(null));
-            WriteInt(_player.Stats.PAttackSpeed);
-            WriteInt(_player.Stats.PDefence(null));
-            WriteInt(_player.Stats.EvasionRate(null));
-            WriteInt(_player.Stats.Accuracy);
-            WriteInt(_player.Stats.CriticalHit(null));
-            WriteInt(_player.Stats.MAttack(null));
-            WriteInt(_player.Stats.MAttackSpeed);
-            WriteInt(_player.Stats.PAttackSpeed); //? еще раз?
-            WriteInt(_player.Stats.MDefence(null));
+            WriteInt(_player.CharacterStat.PAttack(null));
+            WriteInt(_player.CharacterStat.PAttackSpeed);
+            WriteInt(_player.CharacterStat.PDefence(null));
+            WriteInt(_player.CharacterStat.EvasionRate(null));
+            WriteInt(_player.CharacterStat.Accuracy);
+            WriteInt(_player.CharacterStat.CriticalHit(null));
+            WriteInt(_player.CharacterStat.MAttack(null));
+            WriteInt(_player.CharacterStat.MAttackSpeed);
+            WriteInt(_player.CharacterStat.PAttackSpeed); //? еще раз?
+            WriteInt(_player.CharacterStat.MDefence(null));
 
             WriteInt(_player.PvPStatus);
             WriteInt(_player.Karma);
 
-            WriteInt(_player.Stats.BaseRunSpeed);
-            WriteInt(_player.Stats.BaseWalkSpeed);
+            WriteInt(_player.CharacterStat.BaseRunSpeed);
+            WriteInt(_player.CharacterStat.BaseWalkSpeed);
             WriteInt(50); // swimspeed
             WriteInt(50); // swimspeed
             WriteInt(0); //?
             WriteInt(0); //?
-            WriteInt(_player.Stats.BaseRunSpeed);
-            WriteInt(_player.Stats.BaseWalkSpeed);
+            WriteInt(_player.CharacterStat.BaseRunSpeed);
+            WriteInt(_player.CharacterStat.BaseWalkSpeed);
             WriteDouble(1); //run speed multiplier
             WriteDouble(1); //atk speed multiplier
 

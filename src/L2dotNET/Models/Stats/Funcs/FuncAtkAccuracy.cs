@@ -10,7 +10,7 @@ namespace L2dotNET.Models.Stats.Funcs
 
         public override void Calculate(Env env)
         {
-            env.AddValue(Formulas.BaseEvasionAccuracy[env.Character.Stats.Dex] + env.Character.Level);
+            env.AddValue(Formulas.BaseEvasionAccuracy[env.Character.CharacterStat.Dex] + env.Character.Level);
         }
     }
 }

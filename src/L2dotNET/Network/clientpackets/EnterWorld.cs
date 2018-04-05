@@ -6,6 +6,7 @@ using L2dotNET.Models.player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Plugins;
 using L2dotNET.Services.Contracts;
+using L2dotNET.world;
 using Ninject;
 
 namespace L2dotNET.Network.clientpackets
@@ -66,9 +67,10 @@ namespace L2dotNET.Network.clientpackets
 
             //player.sendPacket(new ShortCutInit(player));
             player.StartAi();
-            player.Status.StartHpMpRegeneration();
+            player.CharStatus.StartHpMpRegeneration();
             player.ShowHtm("servnews.htm",player);
             player.BroadcastUserInfo();
+            L2World.Instance.AddPlayer(player);
         }
 
         //private int[][] _tracert = new int[5][];

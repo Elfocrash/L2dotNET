@@ -101,12 +101,14 @@ namespace L2dotNET.world
 
         public void AddPlayer(L2Player cha)
         {
+            Console.WriteLine("??????? Add Player");
             if (!_players.ContainsKey(cha.ObjId))
                 _players.Add(cha.ObjId, cha);
         }
 
         public void RemovePlayer(L2Player cha)
         {
+            Console.WriteLine("??????? RemovePlayer");
             _players.Remove(cha.ObjId);
         }
 

@@ -27,7 +27,7 @@ namespace L2dotNET.Models.Stats.Funcs
                     env.SubValue(13);
             }
 
-            env.MulValue(Formulas.MenBonus[env.Character.Stats.Men] * env.Character.GetLevelMod());
+            env.MulValue(Formulas.MenBonus[env.Character.CharacterStat.Men] * env.Character.GetLevelMod());
         }
     }
 }

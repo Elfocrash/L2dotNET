@@ -85,7 +85,7 @@ namespace L2dotNET.Models
             BroadcastPacket(pk, false);
         }
 
-        public virtual void ReduceHp(L2Character attacker, double damage) { }
+        //public virtual void ReduceHp(L2Character attacker, double damage) { }
 
         public virtual void DecayMe()
         {
@@ -472,7 +472,6 @@ namespace L2dotNET.Models
             Region = L2World.Instance.GetRegion(new Location(X, Y, Z));
 
             L2World.Instance.AddObject(this);
-
             OnSpawn(notifyOthers);
         }
 

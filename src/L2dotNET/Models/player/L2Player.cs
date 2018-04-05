@@ -33,7 +33,7 @@ namespace L2dotNET.Models.player
         public L2Player(int objectId, PcTemplate template) : base(objectId, template)
         {
             Template = template;
-            Stats = new CharacterStat(this);
+            CharacterStat = new CharacterStat(this);
             InitializeCharacterStatus();
             Calculators = new Models.Stats.Calculator[Models.Stats.Stats.Values.Count()];
             AddFuncsToNewCharacter();
@@ -46,7 +46,7 @@ namespace L2dotNET.Models.player
         [Inject]
         public IPlayerService PlayerService { get; set; } = GameServer.Kernel.Get<IPlayerService>();
 
-        public new PlayerStatus Status => (PlayerStatus)base.Status;
+        public new PlayerStatus CharStatus => (PlayerStatus)base.CharStatus;
 
         public string AccountName { get; set; }
         public ClassId ClassId { get; set; }
@@ -62,14 +62,14 @@ namespace L2dotNET.Models.player
         public long ExpOnDeath { get; set; }
         public long ExpAfterLogin { get; set; }
         public int Sp { get; set; }
-        public override int MaxHp => Stats.MaxHp;
-        public int MaxCp => Stats.MaxCp;
+        public override int MaxHp => CharacterStat.MaxHp;
+        public int MaxCp => CharacterStat.MaxCp;
         public double CurCp
         {
-            get => Status.CurrentCp;
-            set => Status.SetCurrentCp(value);
+            get => CharStatus.CurrentCp;
+            set => CharStatus.SetCurrentCp(value);
         }
-        public override int MaxMp => Stats.MaxMp;
+        public override int MaxMp => CharacterStat.MaxMp;
         public int Karma { get; set; }
         public int PvpKills { get; set; }
         public long DeleteTime { get; set; }
@@ -103,7 +103,7 @@ namespace L2dotNET.Models.player
 
         public override void InitializeCharacterStatus()
         {
-            base.Status = new PlayerStatus(this);
+            base.CharStatus = new PlayerStatus(this);
         }
 
         public byte PrivateStoreType = 0;
@@ -143,9 +143,9 @@ namespace L2dotNET.Models.player
             return false;
         }
 
-        public override void SendPacket(GameserverPacket pk)
+        public override void SendPacket(GameserverPacket gameserverPacket)
         {
-            Gameclient.SendPacket(pk);
+            Gameclient.SendPacket(gameserverPacket);
         }
 
         private ActionFailed _af;
@@ -468,12 +468,12 @@ namespace L2dotNET.Models.player
 
         public override void BroadcastStatusUpdate()
         {
-            StatusUpdate su = new StatusUpdate(this);
-            su.Add(StatusUpdate.CurHp, (int)CurHp);
-            su.Add(StatusUpdate.CurMp, (int)CurMp);
-            su.Add(StatusUpdate.CurCp, (int)CurCp);
-            su.Add(StatusUpdate.MaxCp, MaxCp);
-            SendPacket(su);
+            StatusUpdate statusUpdate = new StatusUpdate(this);
+            statusUpdate.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
+            statusUpdate.Add(StatusUpdate.CurMp, (int)CharStatus.CurrentMp);
+            statusUpdate.Add(StatusUpdate.CurCp, (int)CurCp);
+            statusUpdate.Add(StatusUpdate.MaxCp, MaxCp);
+            SendPacket(statusUpdate);
         }
 
         public void BroadcastCharInfo()
@@ -610,7 +610,7 @@ namespace L2dotNET.Models.player
                 if (oldTarget.Equals(newTarget))
                     return;
 
-                oldTarget?.Status.RemoveStatusListener(this);
+                oldTarget?.CharStatus.RemoveStatusListener(this);
             }
 
             if (newTarget is L2StaticObject)
@@ -627,11 +627,11 @@ namespace L2dotNET.Models.player
 
                     SendPacket(new MyTargetSelected(newTarget.ObjId, 0));
 
-                    newTarget.Status.AddStatusListener(this);
+                    newTarget.CharStatus.AddStatusListener(this);
 
                     StatusUpdate su = new StatusUpdate(newTarget);
                     su.Add(StatusUpdate.MaxHp, newTarget.MaxHp);
-                    su.Add(StatusUpdate.CurHp, (int)newTarget.CurHp);
+                    su.Add(StatusUpdate.CurHp, (int)newTarget.CharStatus.CurrentHp);
                     SendPacket(su);
 
                     BroadcastPacket(su, false);
@@ -1115,9 +1115,9 @@ namespace L2dotNET.Models.player
                 return;
             }
 
-            if ((reqMp > 0) && (reqMp > CurMp))
+            if ((reqMp > 0) && (reqMp > CharStatus.CurrentMp))
             {
-                SendMessage($"no mp {CurMp} {reqMp}");
+                SendMessage($"no mp {CharStatus.CurrentMp} {reqMp}");
                 SendActionFailed();
                 return;
             }
@@ -1190,7 +1190,7 @@ namespace L2dotNET.Models.player
                         SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1LandedACriticalHit).AddPlayerName(Name));
 
                     SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddPlayerName(Name).AddName(Target).AddNumber(Hit1.Damage));
-                    Target.ReduceHp(this, Hit1.Damage);
+                    Target.CharStatus.ReduceHp(Hit1.Damage, this);
 
                     if (Target is L2Player)
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
@@ -1219,7 +1219,7 @@ namespace L2dotNET.Models.player
                         SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1LandedACriticalHit).AddName(this));
 
                     SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddName(this).AddName(Target).AddNumber(Hit2.Damage));
-                    Target.ReduceHp(this, Hit2.Damage);
+                    Target.CharStatus.ReduceHp(Hit2.Damage, this);
 
                     if (Target is L2Player)
                         Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
@@ -1372,7 +1372,7 @@ namespace L2dotNET.Models.player
         {
             BroadcastPacket(new Revive(ObjId));
             Dead = false;
-            Status.StartHpMpRegeneration();
+            CharStatus.StartHpMpRegeneration();
         }
 
         private DateTime _pingTimeout;

@@ -18,9 +18,9 @@ namespace L2dotNET.Network.serverpackets
             WriteString(_member.Name);
             WriteInt(_member.CurCp);
             WriteInt(_member.MaxCp);
-            WriteInt(_member.CurHp);
+            WriteInt(_member.CharStatus.CurrentHp);
             WriteInt(_member.MaxHp);
-            WriteInt(_member.CurMp);
+            WriteInt(_member.CharStatus.CurrentMp);
             WriteInt(_member.MaxMp);
             WriteInt(_member.Level);
             WriteInt((int)_member.ActiveClass.ClassId.Id);

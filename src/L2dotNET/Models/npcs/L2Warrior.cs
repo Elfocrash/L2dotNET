@@ -48,7 +48,7 @@ namespace L2dotNET.Models.npcs
                 player.SendPacket(new MyTargetSelected(ObjId, player.Level - Template.Level));
 
                 StatusUpdate su = new StatusUpdate(this);
-                su.Add(StatusUpdate.CurHp, (int)CurHp);
+                su.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
                 su.Add(StatusUpdate.MaxHp, (int)MaxHp);
                 player.SendPacket(su);
             }

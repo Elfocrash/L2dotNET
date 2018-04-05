@@ -70,9 +70,9 @@ namespace L2dotNET.Network.clientpackets
             player.ClassId = template.ClassId;
             player.BaseClass = template;
             player.ActiveClass = template;
-            player.Status.CurrentCp = player.MaxCp;
-            player.Status.CurrentHp = player.MaxHp;
-            player.Status.CurrentMp = player.MaxMp;
+            player.CharStatus.CurrentCp = player.MaxCp;
+            player.CharStatus.SetCurrentHp(player.MaxHp);
+            player.CharStatus.SetCurrentHp(player.MaxMp);
             //player.MaxMp = player.Stats.MaxMp;//;(int)player.CharacterStat.GetStat(EffectType.BMaxMp);
             //player.MaxCp = player.Stats.MaxCp;
             //player.MaxHp = player.Stats.MaxHp;
