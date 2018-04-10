@@ -2,11 +2,11 @@
 
 namespace L2dotNET.Network.clientpackets.PartyAPI
 {
-    class RequestWithDrawalParty : PacketBase
+    class RequestWithdrawalParty : PacketBase
     {
         private readonly GameClient _client;
 
-        public RequestWithDrawalParty(Packet packet, GameClient client)
+        public RequestWithdrawalParty(Packet packet, GameClient client)
         {
             _client = client;
         }

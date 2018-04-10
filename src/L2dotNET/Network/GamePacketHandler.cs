@@ -38,29 +38,37 @@ namespace L2dotNET.Network
             ClientPackets.TryAdd(0x11, typeof(RequestUnEquipItem));
             ClientPackets.TryAdd(0x12, typeof(RequestDropItem));
             ClientPackets.TryAdd(0x14, typeof(RequestUseItem));
+            ClientPackets.TryAdd(0x15, typeof(RequestStartTrade));
             ClientPackets.TryAdd(0x16, typeof(RequestAddTradeItem));
             ClientPackets.TryAdd(0x17, typeof(RequestTradeDone));
-            ClientPackets.TryAdd(0x1A, typeof(RequestStartTrade));
+            //ClientPackets.TryAdd(0x1A, typeof(RequestStartTrade)); -Unused? 
             ClientPackets.TryAdd(0x1b, typeof(RequestSocialAction));
+            //ClientPackets.TryAdd(0x1c, typeof(ChangeMoveType)); -Set walk/run
+            //ClientPackets.TryAdd(0x1d, typeof(ChangeWaitType)); -Set sit/stand
             ClientPackets.TryAdd(0x1e, typeof(RequestSellItem));
             ClientPackets.TryAdd(0x1f, typeof(RequestBuyItem));
             ClientPackets.TryAdd(0x20, typeof(RequestLinkHtml));
-            ClientPackets.TryAdd(0x20, typeof(RequestLinkHtml));
             ClientPackets.TryAdd(0x21, typeof(RequestBypassToServer));
+            //ClientPackets.TryAdd(0x22, typeof(RequestBBSWrite)); 
+            //ClientPackets.TryAdd(0x23, typeof(RequestCreatePledge)); 
+            //ClientPackets.TryAdd(0x24, typeof(RequestJoinPledge)); 
+            //ClientPakcets.TryAdd(0x25, typeof(RequestAnswerJoinPledge)); 
             ClientPackets.TryAdd(0x26, typeof(RequestWithdrawalPledge));
+            //ClientPackets.TryAdd(0x27, typeof(RequestOustPledgeMember)); 
             ClientPackets.TryAdd(0x29, typeof(RequestJoinParty));
             ClientPackets.TryAdd(0x2a, typeof(RequestAnswerJoinParty));
-            ClientPackets.TryAdd(0x2b, typeof(RequestWithDrawalParty));
+            ClientPackets.TryAdd(0x2b, typeof(RequestWithdrawalParty));
             ClientPackets.TryAdd(0x2c, typeof(RequestOustPartyMember));
             ClientPackets.TryAdd(0x2f, typeof(RequestMagicSkillUse));
             ClientPackets.TryAdd(0x30, typeof(Appearing));
+            ClientPackets.TryAdd(0x31, typeof(RequestWarehouseDeposit));
             ClientPackets.TryAdd(0x32, typeof(RequestWarehouseWithdraw));
             ClientPackets.TryAdd(0x33, typeof(RequestShortCutReg));
             ClientPackets.TryAdd(0x35, typeof(RequestShortCutDel));
             ClientPackets.TryAdd(0x36, typeof(CannotMoveAnymore));
             ClientPackets.TryAdd(0x37, typeof(RequestTargetCanceld));
             ClientPackets.TryAdd(0x38, typeof(Say2));
-            ClientPackets.TryAdd(0x3B, typeof(RequestWarehouseDeposit));
+            //ClientPackets.TryAdd(0x3B, typeof(RequestWarehouseDeposit)); -This is only 3B in non interlude should be 31
             ClientPackets.TryAdd(0x3F, typeof(RequestSkillList));
             ClientPackets.TryAdd(0x42, typeof(RequestGetOnVehicle));
             ClientPackets.TryAdd(0x43, typeof(RequestGetOffVehicle));
@@ -70,13 +78,33 @@ namespace L2dotNET.Network
             ClientPackets.TryAdd(0x48, typeof(ValidatePosition));
             ClientPackets.TryAdd(0x4a, typeof(StartRotating));
             ClientPackets.TryAdd(0x4b, typeof(FinishRotating));
+            //ClientPackets.TryAdd(0x4d, typeof(RequestStartPledgeWar));
+            //ClientPackets.TryAdd(0x4e, typeof(RequestReplyStartPledgeWar));
+            //ClientPackets.TryAdd(0x4f, typeof(RequestStopPledgeWar));
+            //ClientPackets.TryAdd(0x50, typeof(RequestReplyStopPledgeWar));
+            //ClientPackets.TryAdd(0x51, typeof(RequestSurrenderPledgeWar));
+            //ClientPackets.TryAdd(0x52, typeof(RequestReplySurrenderPledgeWar));
+            ClientPackets.TryAdd(0x53, typeof(RequestSetPledgeCrest));
+            //ClientPackets.TryAdd(0x55, typeof(RequestGiveNickName)); -Title
             ClientPackets.TryAdd(0x57, typeof(RequestShowBoard));
             ClientPackets.TryAdd(0x58, typeof(RequestEnchantItem));
             ClientPackets.TryAdd(0x59, typeof(RequestDestroyItem));
+            //ClientPackets.TryAdd(0x5b, typeof(SendBypassBuildCmd));
+            //ClientPackets.TryAdd(0x5c, typeof(MoveToLocationInVehicle));
+            //ClientPackets.TryAdd(0x5d, typeof(CanNotMoveAnymoreVehicle));
+            //ClientPackets.TryAdd(0x5e, typeof(RequestFriendInvite));
+            //ClientPackets.TryAdd(0x5f, typeof(RequestFriendAddReply));
+            //ClientPackets.TryAdd(0x60, typeof(RequestFriendInfoList));
+            //ClientPackets.TryAdd(0x61, typeof(RequestFriendDel));
             ClientPackets.TryAdd(0x62, typeof(CharacterRestore));
+            //ClientPackets.TryAdd(0x63, typeof(RequestQuestList));
             ClientPackets.TryAdd(0x64, typeof(RequestQuestAbort));
             ClientPackets.TryAdd(0x66, typeof(RequestPledgeInfo));
-            ClientPackets.TryAdd(0x6D, typeof(RequestSendMsnChatLog));
+            //ClientPackets.TryAdd(0x68, typeof(RequestPledgeCrest));
+            //ClientPackets.TryAdd(0x69, typeof(RequestSurrenderPersonally));
+            ClientPackets.TryAdd(0x6b, typeof(RequestAcquireSkillInfo));
+            ClientPackets.TryAdd(0x6c, typeof(RequestAcquireSkill));
+            ClientPackets.TryAdd(0x6d, typeof(RequestRestartPoint));
             ClientPackets.TryAdd(0x73, typeof(RequestAcquireSkillInfo));
             ClientPackets.TryAdd(0x5b, typeof(SendBypassBuildCmd));
             ClientPackets.TryAdd(0x75, typeof(RequestMoveToLocationInVehicle));
