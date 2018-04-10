@@ -44,7 +44,7 @@ namespace L2dotNET.tables
                 L2Spawn l2Spawn =
                 new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId))
                 {
-                    Location = new SpawnLocation(spawn.LocX, spawn.LocY, spawn.LocZ, spawn.Heading)
+                    Location = new SpawnLocation(spawn.LocX, spawn.LocY, spawn.LocZ, spawn.Heading, spawn.RespawnDelay)
                 };
                 l2Spawn.Spawn(false);
                 Spawns.Add(l2Spawn);

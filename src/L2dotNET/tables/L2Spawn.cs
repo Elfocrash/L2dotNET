@@ -55,9 +55,9 @@ namespace L2dotNET.tables
             return npc;
         }
 
-        public void SpawnWithTimer(int time)
+        public void AddRespawn()
         {
-            Timer CorpseTimer = new Timer(time);
+            Timer CorpseTimer = new Timer(Location.RespawnDelay);
             CorpseTimer.Elapsed += new ElapsedEventHandler(OnSpawnWithTimer);
             CorpseTimer.Start();
         }
