@@ -260,7 +260,7 @@
     <Compile Include="Network\clientpackets\PartyAPI\RequestOustPartyMember.cs" />
     <Compile Include="Network\clientpackets\PartyAPI\RequestPartyLootModification.cs" />
     <Compile Include="Network\clientpackets\PartyAPI\RequestPartyMatchList.cs" />
-    <Compile Include="Network\clientpackets\PartyAPI\RequestWithDrawalParty.cs" />
+    <Compile Include="Network\clientpackets\PartyAPI\RequestWithdrawalParty.cs" />
     <Compile Include="Network\clientpackets\PetAPI\RequestChangePetName.cs" />
     <Compile Include="Network\clientpackets\PetAPI\RequestGetItemFromPet.cs" />
     <Compile Include="Network\clientpackets\PetAPI\RequestGiveItemToPet.cs" />
