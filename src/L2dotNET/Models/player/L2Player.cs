@@ -205,7 +205,7 @@ namespace L2dotNET.Models.player
         {
             if (file.EndsWithIgnoreCase(".htm"))
             {
-                SendPacket(new NpcHtmlMessage(this, $"./html/ {file}", o.ObjId, 0));
+                SendPacket(new NpcHtmlMessage(this, $"./html/{file}", o.ObjId, 0));
                 L2Npc npc = o as L2Npc;
                 if (npc != null)
                     FolkNpc = npc;
