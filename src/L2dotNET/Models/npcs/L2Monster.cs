@@ -5,6 +5,7 @@ using L2dotNET.world;
 using System.Timers;
 using L2dotNET.Models.player;
 using L2dotNET.Network;
+using L2dotNET.tables;
 
 namespace L2dotNET.Models.npcs
 {
@@ -14,7 +15,7 @@ namespace L2dotNET.Models.npcs
 
         private Timer CorpseTimer;
 
-        public L2Monster(int objectId, NpcTemplate template) : base(objectId, template)
+        public L2Monster(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
         {
             Template = template;
             Name = template.Name;
@@ -74,6 +75,7 @@ namespace L2dotNET.Models.npcs
             CharStatus.StopHpMpRegeneration();
 
             BroadcastPacket(new Die(this));
+            spawn.AddRespawn();
             if (Template.CorpseTime <= 0)
             {
                 return;

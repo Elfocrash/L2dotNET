@@ -2,6 +2,7 @@ using System;
 using log4net;
 using L2dotNET.Models.npcs;
 using L2dotNET.templates;
+using System.Timers;
 
 namespace L2dotNET.tables
 {
@@ -32,7 +33,7 @@ namespace L2dotNET.tables
             L2Npc npc;
             if (Type.GetType("L2dotNET.Models.npcs."+Template.Type) != null)
             {
-                npc = (L2Npc)Activator.CreateInstance( Type.GetType("L2dotNET.Models.npcs." + Template.Type), IdFactory.Instance.NextId(), Template);
+                npc = (L2Npc)Activator.CreateInstance( Type.GetType("L2dotNET.Models.npcs." + Template.Type), IdFactory.Instance.NextId(), Template, this);
                 npc.X = Location.X;
                 npc.Y = Location.Y;
                 npc.Z = Location.Z;
@@ -41,7 +42,7 @@ namespace L2dotNET.tables
             }
             else
             {
-                npc = new L2Npc(IdFactory.Instance.NextId(), Template)
+                npc = new L2Npc(IdFactory.Instance.NextId(), Template, this)
                 {
                     X = Location.X,
                     Y = Location.Y,
@@ -52,6 +53,18 @@ namespace L2dotNET.tables
             
             npc.SpawnMe(notifyOthers);
             return npc;
+        }
+
+        public void AddRespawn()
+        {
+            Timer CorpseTimer = new Timer(Location.RespawnDelay);
+            CorpseTimer.Elapsed += new ElapsedEventHandler(OnSpawnWithTimer);
+            CorpseTimer.Start();
+        }
+
+        void OnSpawnWithTimer(object sender, ElapsedEventArgs e)
+        {
+            Spawn(true);
         }
     }
 }
