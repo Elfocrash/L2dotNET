@@ -4,6 +4,7 @@ using L2dotNET.DataContracts;
 using L2dotNET.Models.npcs;
 using L2dotNET.Services.Contracts;
 using Ninject;
+using System.Linq;
 
 namespace L2dotNET.tables
 {
@@ -15,6 +16,7 @@ namespace L2dotNET.tables
         private static readonly ILog Log = LogManager.GetLogger(typeof(SpawnTable));
         private static volatile SpawnTable _instance;
         private static readonly object SyncRoot = new object();
+        
 
         public static SpawnTable Instance
         {
@@ -37,16 +39,22 @@ namespace L2dotNET.tables
         {
             List<SpawnlistContract> spawnsList = ServerService.GetAllSpawns();
 
-            spawnsList.ForEach(spawn => new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId))
-                                   {
-                                       Location = new SpawnLocation(spawn.LocX, spawn.LocY, spawn.LocZ, spawn.Heading)
-                                   }
-                                   .Spawn(false));
-
+            spawnsList.ForEach((spawn) =>
+            {
+                L2Spawn l2Spawn =
+                new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId))
+                {
+                    Location = new SpawnLocation(spawn.LocX, spawn.LocY, spawn.LocZ, spawn.Heading, spawn.RespawnDelay)
+                };
+                l2Spawn.Spawn(false);
+                Spawns.Add(l2Spawn);
+            });
+            
             Log.Info($"SpawnTable: Spawned: {spawnsList.Count} npcs.");
+           
         }
 
-        public readonly List<L2Spawn> Spawns = new List<L2Spawn>();
+        public readonly List<L2Spawn> Spawns = new List<L2Spawn>(50000);
 
     }
 }
