@@ -1,5 +1,4 @@
 ﻿using L2dotNET.Models.player;
-using log4net;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -19,22 +18,36 @@ namespace L2dotNET.Network.clientpackets
             L2Player player = _client.CurrentPlayer;
 
             //TODO: Chair/Mount Logic
-            switch (_standType)
+
+            if (player.PBlockAct == 1)
             {
-                case 0:
-                    if (!player.IsSitting())
-                    player.Sit();
-                    break;
-                case 1:
-                    if (player.IsSitting())
-                        player.Stand();
-                    break;
-                case 2:
-                    //Fake Death
-                    break;
-                case 3:
-                    //Stop Fake Death
-                    break;
+                player.SendActionFailed();
+                return;
+            }
+
+            //Do nothing if already attempting to sit or moving
+            if (!player.IsSittingInProgress() || !player.IsMoving())
+            {
+                switch (_standType)
+                {
+                    case 0:
+                        if (!player.IsSitting())
+                            player.Sit();
+                        break;
+                    case 1:
+                        if (player.IsSitting())
+                            player.Stand();
+                        break;
+                    case 2:
+                        //TODO: Fake Death
+                        break;
+                    case 3:
+                        //TODO: Stop Fake Death
+                        break;
+                    default:
+                        //Invalid wait type should log?
+                        return;
+                }
             }
             
         }
