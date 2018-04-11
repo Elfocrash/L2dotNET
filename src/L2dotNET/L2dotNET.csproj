@@ -233,6 +233,7 @@
     <Compile Include="Network\clientpackets\AuthLogin.cs" />
     <Compile Include="Network\clientpackets\BypassUserCmd.cs" />
     <Compile Include="Network\clientpackets\CannotMoveAnymore.cs" />
+    <Compile Include="Network\clientpackets\ChangeWaitType.cs" />
     <Compile Include="Network\clientpackets\CharacterCreate.cs" />
     <Compile Include="Network\clientpackets\CharacterDelete.cs" />
     <Compile Include="Network\clientpackets\CharacterRestore.cs" />
