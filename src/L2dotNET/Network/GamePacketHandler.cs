@@ -44,7 +44,7 @@ namespace L2dotNET.Network
             //ClientPackets.TryAdd(0x1A, typeof(RequestStartTrade)); -RequestStartTrade @ 0x15
             ClientPackets.TryAdd(0x1b, typeof(RequestSocialAction));
             //ClientPackets.TryAdd(0x1c, typeof(ChangeMoveType)); -Set walk/run
-            //ClientPackets.TryAdd(0x1d, typeof(ChangeWaitType)); -Set sit/stand
+            ClientPackets.TryAdd(0x1d, typeof(ChangeWaitType));
             ClientPackets.TryAdd(0x1e, typeof(RequestSellItem));
             ClientPackets.TryAdd(0x1f, typeof(RequestBuyItem));
             ClientPackets.TryAdd(0x20, typeof(RequestLinkHtml));
