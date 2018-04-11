@@ -22,10 +22,12 @@ namespace L2dotNET.Network.clientpackets
             switch (_standType)
             {
                 case 0:
+                    if (!player.IsSitting())
                     player.Sit();
                     break;
                 case 1:
-                    player.Stand();
+                    if (player.IsSitting())
+                        player.Stand();
                     break;
                 case 2:
                     //Fake Death
