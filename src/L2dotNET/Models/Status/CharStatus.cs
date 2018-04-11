@@ -45,7 +45,6 @@ namespace L2dotNET.Models.Status
             if (Character.Dead)
                 return;
 
-            StatusListener.Add(attacker);
             Console.WriteLine(attacker.ObjId);
             if (value > 0)
             {

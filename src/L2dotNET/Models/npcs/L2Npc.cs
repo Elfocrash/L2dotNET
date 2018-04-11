@@ -8,6 +8,7 @@ using L2dotNET.Network.serverpackets;
 using L2dotNET.templates;
 using L2dotNET.tools;
 using L2dotNET.world;
+using L2dotNET.tables;
 
 namespace L2dotNET.Models.npcs
 {
@@ -19,12 +20,13 @@ namespace L2dotNET.Models.npcs
         public bool Summoned;
         public bool StructureControlled = false;
 
-        public L2Npc(int objectId, NpcTemplate template) : base(objectId, template)
+        public L2Npc(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template)
         {
             Template = template;
             Template = template;
             Name = template.Name;
             InitializeCharacterStatus();
+            this.spawn = spawn;
             //CStatsInit();
             //CurHp = 100;
             //CurCp = 100;
@@ -33,6 +35,8 @@ namespace L2dotNET.Models.npcs
             //MaxHp = 100;
             //MaxMp = 100;
         }
+
+        protected L2Spawn spawn;
 
         //public virtual void setTemplate(NpcTemplate template)
         //{
@@ -288,8 +292,11 @@ namespace L2dotNET.Models.npcs
 
         public override void BroadcastUserInfo()
         {
-            foreach (var character in L2World.Instance.GetObjects().Where(x => x.GetType() == typeof(L2Character)))
-                character.SendPacket(new NpcInfo(this));
+            // TODO: Sends to all players on the server. It is not right
+            foreach (L2Player pl in L2World.Instance.GetPlayers())
+            {
+                pl.SendPacket(new NpcInfo(this));
+            }
         }
 
         public override void BroadcastUserInfoToObject(L2Object l2Object)
