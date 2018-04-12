@@ -856,16 +856,10 @@ namespace L2dotNET.Models
             StatusUpdate su = new StatusUpdate(this);
             su.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
 
-            //foreach (var temp in CharStatus.StatusListener)
-            //{
-            //    if(temp.ObjId != ObjId)
-            //        temp?.SendPacket(su);
-            //}
-
-            foreach (L2Player pl in L2World.Instance.GetPlayers())
+            foreach (var temp in CharStatus.StatusListener)
             {
-                // TODO: Sends to all players on the server. It is not right
-                pl.Gameclient.SendPacket(su);
+                if (temp.ObjId != ObjId)
+                    temp?.SendPacket(su);
             }
         }
         
