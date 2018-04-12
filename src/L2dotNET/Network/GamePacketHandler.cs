@@ -54,11 +54,13 @@ namespace L2dotNET.Network
             //ClientPackets.TryAdd(0x24, typeof(RequestJoinPledge)); 
             //ClientPakcets.TryAdd(0x25, typeof(RequestAnswerJoinPledge)); 
             ClientPackets.TryAdd(0x26, typeof(RequestWithdrawalPledge));
-            //ClientPackets.TryAdd(0x27, typeof(RequestOustPledgeMember)); 
+            //ClientPackets.TryAdd(0x27, typeof(RequestOustPledgeMember));
+            //ClientPackets.TryAdd(0x28, typeof(RequestDismissPledge));
             ClientPackets.TryAdd(0x29, typeof(RequestJoinParty));
             ClientPackets.TryAdd(0x2a, typeof(RequestAnswerJoinParty));
             ClientPackets.TryAdd(0x2b, typeof(RequestWithdrawalParty));
             ClientPackets.TryAdd(0x2c, typeof(RequestOustPartyMember));
+            //ClientPackets.TryAdd(0x2d, typeof(RequestDismissParty));
             ClientPackets.TryAdd(0x2f, typeof(RequestMagicSkillUse));
             ClientPackets.TryAdd(0x30, typeof(Appearing));
             ClientPackets.TryAdd(0x31, typeof(RequestWarehouseDeposit));
@@ -68,14 +70,18 @@ namespace L2dotNET.Network
             ClientPackets.TryAdd(0x36, typeof(CannotMoveAnymore));
             ClientPackets.TryAdd(0x37, typeof(RequestTargetCanceld));
             ClientPackets.TryAdd(0x38, typeof(Say2));
-            //ClientPackets.TryAdd(0x3B, typeof(RequestWarehouseDeposit)); -This is only 3B in non interlude should be 31
-            ClientPackets.TryAdd(0x3F, typeof(RequestSkillList));
+            //ClientPackets.TryAdd(0x3c, typeof(RequestPledgeMemberList));
+            //ClientPackets.TryAdd(0x3e, typeof(RequestMagicList)); -Possibly unused
+            ClientPackets.TryAdd(0x3f, typeof(RequestSkillList));
+            //ClientPackets.TryAdd(0x41, typeof(MoveWithDelta)); -Possibly unused
             ClientPackets.TryAdd(0x42, typeof(RequestGetOnVehicle));
             ClientPackets.TryAdd(0x43, typeof(RequestGetOffVehicle));
             ClientPackets.TryAdd(0x44, typeof(AnswerTradeRequest));
             ClientPackets.TryAdd(0x45, typeof(RequestActionUse));
             ClientPackets.TryAdd(0x46, typeof(RequestRestart));
+            //ClientPackets.TryAdd(0x47, typeof(RequestSiegeInfo));
             ClientPackets.TryAdd(0x48, typeof(ValidatePosition));
+            //ClientPackets.TryAdd(0x49, typeof(RequestSEKCustom));
             ClientPackets.TryAdd(0x4a, typeof(StartRotating));
             ClientPackets.TryAdd(0x4b, typeof(FinishRotating));
             //ClientPackets.TryAdd(0x4d, typeof(RequestStartPledgeWar));
@@ -100,8 +106,10 @@ namespace L2dotNET.Network
             //ClientPackets.TryAdd(0x63, typeof(RequestQuestList));
             ClientPackets.TryAdd(0x64, typeof(RequestQuestAbort));
             ClientPackets.TryAdd(0x66, typeof(RequestPledgeInfo));
+            //ClientPackets.TryAdd(0x67, typeof(RequestPledgeExtendedInfo));
             //ClientPackets.TryAdd(0x68, typeof(RequestPledgeCrest));
             //ClientPackets.TryAdd(0x69, typeof(RequestSurrenderPersonally));
+            //ClientPackets.TryAdd(0x6a, typeof(RequestRide));
             ClientPackets.TryAdd(0x6b, typeof(RequestAcquireSkillInfo));
             ClientPackets.TryAdd(0x6c, typeof(RequestAcquireSkill));
             ClientPackets.TryAdd(0x6d, typeof(RequestRestartPoint));
@@ -111,7 +119,7 @@ namespace L2dotNET.Network
             //ClientPackets.TryAdd(0x71, typeof(RequestJoinPartyRoom));
             //ClientPackets.TryAdd(0x72, typeof(RequestCrystallizeItem));
             //ClientPackets.TryAdd(0x73, typeof(RequestPrivateStoreSellManageList));
-            //ClientPackets.TryAdd(0x73, typeof(SetPrivateStoreSellList));
+            //ClientPackets.TryAdd(0x74, typeof(SetPrivateStoreSellList));
             //ClientPackets.TryAdd(0x75, typeof(RequestPrivateStoreSellManageCancel));
             //ClientPackets.TryAdd(0x76, typeof(RequestPrivateStoreSellQuit));
             //ClientPackets.TryAdd(0x77, typeof(SetPrivateStoreSellMsg));
@@ -129,6 +137,9 @@ namespace L2dotNET.Network
             //ClientPackets.TryAdd(0x84, typeof(RequestWithdrawAlly));
             //ClientPackets.TryAdd(0x85, typeof(RequestOustAlly));
             //ClientPackets.TryAdd(0x86, typeof(RequestDismissAlly));
+            //ClientPackets.TryAdd(0x87, typeof(RequestSetAllyCrest));
+            //ClientPackets.TryAdd(0x88, typeof(RequestAllyCrest));
+            ClientPackets.TryAdd(0x89, typeof(RequestChangePetName));
             ClientPackets.TryAdd(0x8a, typeof(RequestPetUseItem));
             ClientPackets.TryAdd(0x8b, typeof(RequestGiveItemToPet));
             ClientPackets.TryAdd(0x8c, typeof(RequestGetItemFromPet));
@@ -139,6 +150,12 @@ namespace L2dotNET.Network
             //ClientPackets.TryAdd(0x93, typeof(RequestPrivateStoreBuyManageQuit));
             //ClientPackets.TryAdd(0x94, typeof(SetPrivateStoreBuyMsg));
             //ClientPackets.TryAdd(0x96, typeof(RequestPrivateStoreSellList));
+            //ClientPackets.TryAdd(0x97, typeof(SendTimeCheck));
+            //ClientPackets.TryAdd(0x98, typeof(RequestStartAllianceWar));
+            //ClientPackets.TryAdd(0x99, typeof(ReplyStartAllianceWar));
+            //ClientPackets.TryAdd(0x9a, typeof(RequestStopAllianceWar));
+            //ClientPackets.TryAdd(0x9b, typeof(ReplyStopAllianceWar));
+            //ClientPackets.TryAdd(0x9c, typeof(RequestSurrenderAllianceWar));
             ClientPackets.TryAdd(0x9d, typeof(RequestSkillCoolTime));
             //ClientPackets.TryAdd(0x9e, typeof(RequestPackageSenadbleItemList));
             //ClientPackets.TryAdd(0x9f, typeof(RequestPackageSend));
@@ -188,13 +205,53 @@ namespace L2dotNET.Network
             ClientPackets.TryAdd(0xcd, typeof(RequestShowMiniMap));
             ClientPackets.TryAdd(0xce, typeof(RequestSendMsnChatLog));
             ClientPackets.TryAdd(0xcf, typeof(RequestRecordInfo));
-            //More D0 to add
+            //ClientPacketsD0.TryAdd(0x01, typeof(RequestOustFromPartyRoom));
+            //ClientPacketsD0.TryAdd(0x02, typeof(RequestDismissPartyRoom));
+            //ClientPacketsD0.TryAdd(0x03, typeof(RequestWithrawPartyRoom));
+            //ClientPacketsD0.TryAdd(0x04, typeof(RequestChangePartyLeader));
             ClientPacketsD0.TryAdd(0x05, typeof(RequestAutoSoulShot));
+            //ClientPacketsD0.TryAdd(0x06, typeof(RequestExEnchantSkillInfo));
+            //ClientPacketsD0.TryAdd(0x07, typeof(RequestExEnchantSkill));
             ClientPacketsD0.TryAdd(0x08, typeof(RequestManorList));
+            //ClientPacketsD0.TryAdd(0x09, typeof(RequestProcureCropList));
+            //ClientPacketsD0.TryAdd(0x0a, typeof(RequestSetSeed));
+            //ClientPacketsD0.TryAdd(0x0b, typeof(RequestSetCrop));
+            //ClientPacketsD0.TryAdd(0x0c, typeof(RequestWriteHeroWords));
+            //ClientPacketsD0.TryAdd(0x0d, typeof(RequestExAskJoinMPCC));
+            //ClientPacketsD0.TryAdd(0x0e, typeof(RequestExAcceptJoinMPCC));
+            //ClientPacketsD0.TryAdd(0x0f, typeof(RequestExOustFromMPCC));
+            //ClientPacketsD0.TryAdd(0x10, typeof(RequestExPledgeCrestLarge));
             ClientPacketsD0.TryAdd(0x11, typeof(RequestExSetPledgeCrestLarge));
+            //ClientPacketsD0.TryAdd(0x12, typeof(RequestOlypmiadObserverEnd));
+            //ClientPacketsD0.TryAdd(0x13, typeof(RequestOlympiadMatchList));
+            //ClientPacketsD0.TryAdd(0x14, typeof(RequestAskJoinPartyRoom));
+            //ClientPacketsD0.TryAdd(0x15, typeof(AnswerJoinPartyRoom));
+            //ClientPacketsD0.TryAdd(0x16, typeof(RequestListPartyMatchingWaitingRoom));
+            //ClientPacketsD0.TryAdd(0x17, typeof(RequestExitPartyMatchingWaitingRoom));
+            //ClientPacketsD0.TryAdd(0x18, typeof(RequestGetBossRecord));
+            //ClientPacketsD0.TryAdd(0x19, typeof(RequestPledgeSetAcademyMaster));
+            //ClientPacketsD0.TryAdd(0x1a, typeof(RequestPledgePowerGradeList));
+            //ClientPacketsD0.TryAdd(0x1b, typeof(RequestPledgeMemberPowerInfo));
+            //ClientPacketsD0.TryAdd(0x1c, typeof(RequestPledgeSetMemberPowerGrade));
             ClientPacketsD0.TryAdd(0x1d, typeof(RequestPledgeMemberInfo));
+            //ClientPacketsD0.TryAdd(0x1e, typeof(RequestPledgeWarList));
+            //ClientPacketsD0.TryAdd(0x1f, typeof(RequestExFishRanking));
+            //ClientPacketsD0.TryAdd(0x20, typeof(RequestPCCafeCouponUse));
             ClientPacketsD0.TryAdd(0x22, typeof(RequestCursedWeaponList));
             ClientPacketsD0.TryAdd(0x23, typeof(RequestCursedWeaponLocation));
+            //ClientPacketsD0.TryAdd(0x24, typeof(RequestPledgeReorganizeMember));
+            //ClientPacketsD0.TryAdd(0x26, typeof(RequestExMPCCShowPartyMembersInfo));
+            //ClientPacketsD0.TryAdd(0x27, typeof(RequestDuelStart));
+            //ClientPacketsD0.TryAdd(0x28, typeof(RequestDuelAnswerStart));
+            //ClientPacketsD0.TryAdd(0x29, typeof(RequestConfirmTargetItem));
+            //ClientPacketsD0.TryAdd(0x2a, typeof(RequestConfirmRefinerItem));
+            //ClientPacketsD0.TryAdd(0x2b, typeof(RequestConfirmGemStone));
+            //ClientPacketsD0.TryAdd(0x2c, typeof(RequestRefine));
+            //ClientPacketsD0.TryAdd(0x2d, typeof(RequestConfirmCancelItem));
+            //ClientPacketsD0.TryAdd(0x2e, typeof(RequestRefineCancel));
+            //ClientPacketsD0.TryAdd(0x2f, typeof(RequestExMagicSkillUseGround));
+            //ClientPacketsD0.TryAdd(0x30, typeof(RequestDuelSurrender));
+            //ClientPacketsD0.TryAdd(0x31, typeof(RequestExChangeName));
         }
 
         public static void HandlePacket(Packet packet, GameClient client)
