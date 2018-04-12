@@ -49,7 +49,7 @@ namespace L2dotNET.Models
 
         public virtual void OnRemObject(L2Object obj) { }
 
-        public virtual void OnAddObject(L2Object obj, GameserverPacket pk, string msg = null) { }
+        public virtual void OnAddKnownObject(L2Object obj, GameserverPacket pk, string msg = null) { }
 
         public virtual void BroadcastUserInfo() { }
 
@@ -212,13 +212,13 @@ namespace L2dotNET.Models
                 return;
 
             if (pkuse)
-                OnAddObject(obj, pk);
+                OnAddKnownObject(obj, pk);
         }
 
         public void UpdateVisibleStatus()
         {
             foreach (L2Object o in KnownObjects.Values.Where(o => o.Visible))
-                OnAddObject(o, null);
+                OnAddKnownObject(o, null);
         }
 
         public void RemoveKnownObject(L2Object obj, bool update)
@@ -240,7 +240,7 @@ namespace L2dotNET.Models
             KnownObjects.Add(obj.ObjId, obj);
 
             if (obj.Visible)
-                OnAddObject(obj, null);
+                OnAddKnownObject(obj, null);
         }
 
         public bool IsInsideRadius(L2Object o, int radius, bool checkZ, bool strictCheck)

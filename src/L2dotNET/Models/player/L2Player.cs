@@ -427,7 +427,7 @@ namespace L2dotNET.Models.player
             SendPacket(new DeleteObject(obj.ObjId));
         }
 
-        public override void OnAddObject(L2Object obj, GameserverPacket pk, string msg = null)
+        public override void OnAddKnownObject(L2Object obj, GameserverPacket pk, string msg = null)
         {
             if (obj is L2Npc)
                 SendPacket(new NpcInfo((L2Npc)obj));

@@ -22,7 +22,7 @@ namespace L2dotNET.Network.clientpackets
             player.SendPacket(new ExBrExtraUserInfo(player.ObjId, player.AbnormalBitMaskEvent));
 
             foreach (L2Object obj in player.KnownObjects.Values)
-                player.OnAddObject(obj, null, $"Player {player.Name} recording replay with your character.");
+                player.OnAddKnownObject(obj, null, $"Player {player.Name} recording replay with your character.");
         }
     }
 }
