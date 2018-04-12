@@ -56,19 +56,5 @@ namespace L2dotNET.tables
             npc.SpawnMe(notifyOthers);
             return npc;
         }
-
-        public void AddRespawn()
-        {
-            SpawnTimer = new Timer(Location.RespawnDelay);
-            SpawnTimer.Elapsed += new ElapsedEventHandler(OnSpawnWithTimer);
-            SpawnTimer.Start();
-        }
-
-        void OnSpawnWithTimer(object sender, ElapsedEventArgs e)
-        {
-            Spawn(true);
-            SpawnTimer.Stop();
-            SpawnTimer.Enabled = false;
-        }
     }
 }

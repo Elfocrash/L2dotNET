@@ -75,7 +75,7 @@ namespace L2dotNET.Models.npcs
             CharStatus.StopHpMpRegeneration();
 
             BroadcastPacket(new Die(this));
-            spawn.AddRespawn();
+            SpawnTable.Instance.RegisterRespawn(spawn);
             if (Template.CorpseTime <= 0)
             {
                 return;
