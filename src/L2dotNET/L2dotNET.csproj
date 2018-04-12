@@ -83,6 +83,8 @@
     <Compile Include="Config\ServerConfig2.cs" />
     <Compile Include="Config\SiegeConfig.cs" />
     <Compile Include="ConsoleCommand\Command.cs" />
+    <Compile Include="ConsoleCommand\Commands\Damage.cs" />
+    <Compile Include="ConsoleCommand\Commands\KnownObj.cs" />
     <Compile Include="ConsoleCommand\Commands\ObjectsCount.cs" />
     <Compile Include="ConsoleCommand\Commands\PlayersCount.cs" />
     <Compile Include="ConsoleCommand\ConsoleCommand.cs" />
