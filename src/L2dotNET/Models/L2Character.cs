@@ -596,6 +596,7 @@ namespace L2dotNET.Models
             AttackToEnd.Interval = timeAtk;
             AttackToEnd.Enabled = true;
 
+
             BroadcastPacket(atk);
         }
 
@@ -852,17 +853,20 @@ namespace L2dotNET.Models
             //will look into this later
             //if (!needHpUpdate(352))
             //    return;
-
             StatusUpdate su = new StatusUpdate(this);
             su.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
 
-            foreach (var temp in CharStatus.StatusListener)
-            {
-                if(temp.ObjId != ObjId)
-                    temp?.SendPacket(su);
-            }
-                
+            //foreach (var temp in CharStatus.StatusListener)
+            //{
+            //    if(temp.ObjId != ObjId)
+            //        temp?.SendPacket(su);
+            //}
 
+            foreach (L2Player pl in L2World.Instance.GetPlayers())
+            {
+                // TODO: Sends to all players on the server. It is not right
+                pl.Gameclient.SendPacket(su);
+            }
         }
         
         public virtual L2Character[] GetPartyCharacters()

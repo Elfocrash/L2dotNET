@@ -1096,7 +1096,7 @@ namespace L2dotNET.Models.player
                    reqMp = 0;
 
             L2Item weapon = ActiveWeapon;
-            double timeAtk = 100;//attackspeed
+            double timeAtk = CharacterStat.PAttackSpeed;//attackspeed
             bool dual = false,
                  ranged = false,
                  ss = false;
