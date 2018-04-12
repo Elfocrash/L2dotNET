@@ -8,7 +8,7 @@ namespace L2dotNET.ConsoleCommand.Commands
 {
     class PlayersCount : Command
     {
-        public override void Execute(string param)
+        public override void Execute(string[] param)
         {
             Console.WriteLine("Count - " + world.L2World.Instance.GetPlayers().Count);
         }

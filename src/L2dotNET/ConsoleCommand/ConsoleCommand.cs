@@ -24,18 +24,22 @@ namespace L2dotNET.ConsoleCommand
         {
             while (isWorkConsoleEnter)
             {
-                string key = Console.ReadLine();
+                string command = Console.ReadLine();
+                string[] words =  command.Split(' ');
+                string key = words[0];
                 if (commands.ContainsKey(key))
                 {
-                    commands[key].Execute();
+                    commands[key].Execute(words);
                 }
             }
         }
 
         public ConsoleCommandController()
         {
-            commands.Add("ObjectsCount", new ObjectsCount());
-            commands.Add("PlayersCount", new PlayersCount());
+            commands.Add("objectsCount", new ObjectsCount());
+            commands.Add("playersCount", new PlayersCount());
+            commands.Add("known", new KnownObj());
+            commands.Add("damage", new Damage());
         }
     }
 }
