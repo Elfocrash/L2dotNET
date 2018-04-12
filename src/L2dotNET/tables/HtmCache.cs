@@ -85,7 +85,6 @@ namespace L2dotNET.tables
             _htmCache.Add(new L2Html(Path.GetFileNameWithoutExtension(filepath), content, filepath));
         }
 
-        /// <summary>Get HTML File by Filepath based on html directory e.g. ./html/npcdefault.htm</summary>
         public string GetHtmByFilepath(string filename)
         {
             if (string.IsNullOrEmpty(filename))
