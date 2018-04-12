@@ -668,7 +668,7 @@ namespace L2dotNET.Models.player
 
         public void ShowHtmAdmin(string val, bool plain)
         {
-            SendPacket(new TutorialShowHtml(this, val, true));
+            SendPacket(new NpcHtmlMessage(this, val, this.ObjId));
 
             ViewingAdminPage = 1;
         }
