@@ -99,7 +99,7 @@ namespace L2dotNET.tables
                 {
                     CacheFile(predictedFile);
                     //Try Again
-                    html = _htmCache.FirstOrDefault(x => x.Filename.EqualsIgnoreCase(filename));
+                    html = _htmCache.FirstOrDefault(x => x.Filename.EqualsIgnoreCase(Path.GetFileNameWithoutExtension(predictedFile)));
                 }
             }
             return html != null ? html.Content : string.Empty;
