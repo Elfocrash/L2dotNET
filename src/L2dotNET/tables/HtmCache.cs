@@ -38,7 +38,7 @@ namespace L2dotNET.tables
         public void Initialize()
         {
             _htmCache = new List<L2Html>();
-            _htmFiles = DirSearch("./html/");
+            _htmFiles = DirSearch("./html");
             if (!Config.Config.Instance.ServerConfig.LazyHtmlCache)
             {
                 BuildHtmCache();
@@ -108,6 +108,8 @@ namespace L2dotNET.tables
         private List<string> DirSearch(string sDir)
         {
             List<string> files = new List<string>();
+            sDir += Path.AltDirectorySeparatorChar;
+
             try
             {
                 files.AddRange(Directory.GetFiles(sDir));
