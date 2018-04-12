@@ -15,6 +15,8 @@ namespace L2dotNET.tables
 
         public L2Npc Npc { get; set; }
 
+        private Timer SpawnTimer;
+
         public L2Spawn(NpcTemplate template)
         {
             if (template == null)
@@ -57,14 +59,16 @@ namespace L2dotNET.tables
 
         public void AddRespawn()
         {
-            Timer CorpseTimer = new Timer(Location.RespawnDelay);
-            CorpseTimer.Elapsed += new ElapsedEventHandler(OnSpawnWithTimer);
-            CorpseTimer.Start();
+            SpawnTimer = new Timer(Location.RespawnDelay);
+            SpawnTimer.Elapsed += new ElapsedEventHandler(OnSpawnWithTimer);
+            SpawnTimer.Start();
         }
 
         void OnSpawnWithTimer(object sender, ElapsedEventArgs e)
         {
             Spawn(true);
+            SpawnTimer.Stop();
+            SpawnTimer.Enabled = false;
         }
     }
 }
