@@ -46,7 +46,7 @@ namespace L2dotNET.tables
             }
             else
             {
-                Log.Info($"HtmCache : Lazy Cached {_htmFiles.Count} files.");
+                Log.Info($"HtmCache: Lazy Cached {_htmFiles.Count} files.");
             }
         }
 

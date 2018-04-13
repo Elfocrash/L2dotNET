@@ -98,7 +98,7 @@ namespace L2dotNET.tables
                     }
                 }
 
-                Log.Info($"Loaded {_npcs.Count} npcs.");
+                Log.Info($"NpcTable: Loaded {_npcs.Count} npcs.");
             }
             catch (Exception e)
             {

@@ -33,6 +33,7 @@ namespace L2dotNET.Config
         ///<summary>IA.</summary>
         [JsonProperty(PropertyName = "IA")]
         public Ia Ia { get; set; }
+
     }
 
     ///<summary>Champion mobs.</summary>
@@ -197,6 +198,11 @@ namespace L2dotNET.Config
         [DefaultValue(false)]
         [JsonProperty(PropertyName = "ShowSummonCrest", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public bool ShowSummonCrest { get; set; }
+
+        ///<summary>Set automatic mob respawn based on respawnDelay, default: True.</summary>
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "AutoMobRespawn", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public bool AutoMobRespawn { get; set; }
     }
 
     //TODO: Implement get;set; for chance?
