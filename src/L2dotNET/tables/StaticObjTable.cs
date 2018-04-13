@@ -127,7 +127,7 @@ namespace L2dotNET.tables
                 o.OnSpawn();
             }
 
-            Log.Info($"StaticObjTable: Spanwed {Objects.Count} objects.");
+            Log.Info($"StaticObjTable: Spawned {Objects.Count} objects.");
         }
     }
 }

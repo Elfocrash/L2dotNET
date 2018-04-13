@@ -52,12 +52,17 @@ namespace L2dotNET.tables
                 Spawns.Add(l2Spawn);
             });
 
-            Log.Info($"SpawnTable: Spawned: {spawnsList.Count} npcs.");
+            Log.Info($"SpawnTable: Spawned {spawnsList.Count} npcs.");
 
-            RespawnTimerTask = new Timer();
-            RespawnTimerTask.Elapsed += new ElapsedEventHandler(RespawnTimerTick);
-            RespawnTimerTask.Interval = 2000;
-            RespawnTimerTask.Start();
+            if (Config.Config.Instance.GameplayConfig.NpcConfig.Misc.AutoMobRespawn)
+            {
+                RespawnTimerTask = new Timer();
+                RespawnTimerTask.Elapsed += new ElapsedEventHandler(RespawnTimerTick);
+                RespawnTimerTask.Interval = 2000;
+                RespawnTimerTask.Start();
+
+                Log.Info($"SpawnTable: Started RespawnTimerTask.");
+            }
         }
 
         private void RespawnTimerTick(object sender, ElapsedEventArgs e)
@@ -71,7 +76,6 @@ namespace L2dotNET.tables
                     kvp.Key.Spawn(true);
                     DeRegisterRespawn(kvp.Key);
                 }
-
             }
         }
 

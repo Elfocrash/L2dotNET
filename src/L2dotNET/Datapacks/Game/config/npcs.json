@@ -496,7 +496,8 @@
     "MobAgroInPeaceZone": true,
     "ShowNpcLevel": false,
     "ShowNpcCrest": false,
-    "ShowSummonCrest": false
+    "ShowSummonCrest": false,
+	"AutoMobRespawn": true
   },
   "WyvernManager": {
     "AllowWyvernUpgrader": true,

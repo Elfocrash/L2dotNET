@@ -40,7 +40,7 @@ namespace L2dotNET.Handlers
             foreach (Type t in typelist)
                 Register(Activator.CreateInstance(t));
 
-            Log.Info($"AdminAccess: loaded {_commands.Count} commands.");
+            Log.Info($"AdminAccess: Loaded {_commands.Count} commands.");
         }
 
         public void Request(L2Player admin, string alias)
