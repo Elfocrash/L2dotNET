@@ -1,4 +1,4 @@
-﻿using L2dotNET.managers.bbs;
+﻿using L2dotNET.Managers.bbs;
 
 namespace L2dotNET.Network.clientpackets
 {

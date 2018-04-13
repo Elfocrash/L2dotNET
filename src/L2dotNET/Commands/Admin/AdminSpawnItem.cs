@@ -1,7 +1,7 @@
 ﻿using System;
 using log4net;
 using L2dotNET.Attributes;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Commands.Admin
 {

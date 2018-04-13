@@ -1,4 +1,4 @@
-﻿using L2dotNET.Models.vehicles;
+﻿using L2dotNET.Models.Vehicles;
 
 namespace L2dotNET.Network.serverpackets
 {

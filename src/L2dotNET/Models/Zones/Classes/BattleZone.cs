@@ -1,10 +1,10 @@
-﻿using L2dotNET.tables;
+﻿using L2dotNET.Tables;
 
-namespace L2dotNET.Models.zones.classes
+namespace L2dotNET.Models.Zones.Classes
 {
-    class no_restart : L2Zone
+    class BattleZone : L2Zone
     {
-        public no_restart()
+        public BattleZone()
         {
             ZoneId = IdFactory.Instance.NextId();
             Enabled = true;

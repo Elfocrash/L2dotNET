@@ -1,5 +1,5 @@
 ﻿using L2dotNET.Controllers;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.serverpackets
 {

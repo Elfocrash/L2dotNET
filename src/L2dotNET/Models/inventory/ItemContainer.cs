@@ -2,14 +2,14 @@
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using L2dotNET.DataContracts;
-using L2dotNET.Models.items;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Items;
+using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
-using L2dotNET.tables;
-using L2dotNET.world;
+using L2dotNET.Tables;
+using L2dotNET.World;
 using Ninject;
 
-namespace L2dotNET.Models.inventory
+namespace L2dotNET.Models.Inventory
 {
     [Synchronization]
     public abstract class ItemContainer

@@ -1,8 +1,8 @@
 ﻿using L2dotNET.Enums;
-using L2dotNET.templates;
+using L2dotNET.Templates;
 using L2dotNET.Utility;
 
-namespace L2dotNET.Models.items
+namespace L2dotNET.Models.Items
 {
     public class EtcItem : ItemTemplate
     {

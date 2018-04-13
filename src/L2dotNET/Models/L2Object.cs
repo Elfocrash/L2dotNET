@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Timers;
 using log4net;
-using L2dotNET.Models.player;
-using L2dotNET.Models.zones;
-using L2dotNET.Models.zones.classes;
+using L2dotNET.Models.Player;
+using L2dotNET.Models.Zones;
+using L2dotNET.Models.Zones.Classes;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
-using L2dotNET.world;
+using L2dotNET.World;
 
 namespace L2dotNET.Models
 {
@@ -368,15 +368,15 @@ namespace L2dotNET.Models
 
         private void RevalidateZone(L2Zone z)
         {
-            if (z is peace_zone)
+            if (z is PeaceZoneBuff)
                 ValidatePeaceZones();
             else
             {
-                if (z is battle_zone)
+                if (z is BattleZone)
                     ValidateBattleZones();
                 else
                 {
-                    if (z is water)
+                    if (z is WaterZone)
                         ValidateWaterZones();
                 }
             }
@@ -406,7 +406,7 @@ namespace L2dotNET.Models
         {
             bool found = false,
                  old = _isInsidePeaceZone;
-            if (ActiveZones.Values.OfType<peace_zone>().Any())
+            if (ActiveZones.Values.OfType<PeaceZoneBuff>().Any())
             {
                 _isInsidePeaceZone = true;
                 found = true;
@@ -436,7 +436,7 @@ namespace L2dotNET.Models
                  old = _isInsidePvpZone;
             if (!_forceSetPvp)
             {
-                if (ActiveZones.Values.OfType<battle_zone>().Any())
+                if (ActiveZones.Values.OfType<BattleZone>().Any())
                 {
                     _isInsidePvpZone = true;
                     found = true;

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.Models.items.effects;
+using L2dotNET.Models.Items.Effects;
 
-namespace L2dotNET.Models.items
+namespace L2dotNET.Models.Items
 {
     public class ItemHandler
     {

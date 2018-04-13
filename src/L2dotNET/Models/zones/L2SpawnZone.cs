@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.Utility.Geometry;
 
-namespace L2dotNET.Models.zones
+namespace L2dotNET.Models.Zones
 {
     public class L2SpawnZone : L2ZoneType
     {

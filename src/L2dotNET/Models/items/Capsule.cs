@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using log4net;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 
-namespace L2dotNET.Models.items
+namespace L2dotNET.Models.Items
 {
     public class Capsule
     {

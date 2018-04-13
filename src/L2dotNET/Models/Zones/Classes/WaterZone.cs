@@ -1,10 +1,10 @@
-﻿using L2dotNET.tables;
+﻿using L2dotNET.Tables;
 
-namespace L2dotNET.Models.zones.classes
+namespace L2dotNET.Models.Zones.Classes
 {
-    class battle_zone : L2Zone
+    class WaterZone : L2Zone
     {
-        public battle_zone()
+        public WaterZone()
         {
             ZoneId = IdFactory.Instance.NextId();
             Enabled = true;

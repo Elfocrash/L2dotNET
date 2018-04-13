@@ -5,25 +5,25 @@ using System.Runtime.Remoting.Contexts;
 using System.Timers;
 using log4net;
 using L2dotNET.Enums;
-using L2dotNET.Models.inventory;
-using L2dotNET.Models.items;
-using L2dotNET.Models.npcs;
-using L2dotNET.Models.npcs.decor;
-using L2dotNET.Models.player.General;
+using L2dotNET.Models.Inventory;
+using L2dotNET.Models.Items;
+using L2dotNET.Models.Npcs;
+using L2dotNET.Models.Npcs.Decor;
+using L2dotNET.Models.Player.General;
 using L2dotNET.Models.Stats;
 using L2dotNET.Models.Stats.Funcs;
 using L2dotNET.Models.Status;
-using L2dotNET.Models.vehicles;
+using L2dotNET.Models.Vehicles;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
-using L2dotNET.templates;
-using L2dotNET.tools;
+using L2dotNET.Templates;
+using L2dotNET.Tools;
 using L2dotNET.Utility;
-using L2dotNET.world;
+using L2dotNET.World;
 using Ninject;
 
-namespace L2dotNET.Models.player
+namespace L2dotNET.Models.Player
 {
     [Synchronization]
     public class L2Player : L2Character
@@ -861,7 +861,7 @@ namespace L2dotNET.Models.player
 
         public byte GetEnchantValue()
         {
-            int val = Inventory.Paperdoll?[inventory.Inventory.PaperdollRhand]?.Enchant ?? 0;
+            int val = Inventory.Paperdoll?[Models.Inventory.Inventory.PaperdollRhand]?.Enchant ?? 0;
 
             if (MountType > 0)
                 return 0;

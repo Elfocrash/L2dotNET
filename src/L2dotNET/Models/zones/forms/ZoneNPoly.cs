@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L2dotNET.Models.zones.forms
+namespace L2dotNET.Models.Zones.forms
 {
     public class ZoneNPoly : ZoneForm
     {
@@ -40,7 +40,7 @@ namespace L2dotNET.Models.zones.forms
             }
         }
 
-        public override bool isInsideZone(int x, int y, int z)
+        public override bool IsInsideZone(int x, int y, int z)
         {
             if ((z < _z1) || (z > _z2))
                 return false;

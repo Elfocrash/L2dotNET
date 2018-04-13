@@ -1,20 +1,15 @@
-﻿using L2dotNET.Models.player;
+﻿using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
-using L2dotNET.tables;
+using L2dotNET.Tables;
 
-namespace L2dotNET.Models.zones.classes
+namespace L2dotNET.Models.Zones.Classes
 {
-    class swamp : L2Zone
+    class SsqZone : L2Zone
     {
-        public swamp()
+        public SsqZone()
         {
             ZoneId = IdFactory.Instance.NextId();
-        }
-
-        public override void OnInit()
-        {
-            base.OnInit();
-            Enabled = Template.DefaultStatus;
+            Enabled = true;
         }
 
         public override void OnEnter(L2Object obj)
@@ -30,10 +25,7 @@ namespace L2dotNET.Models.zones.classes
                 return;
 
             L2Player p = (L2Player)obj;
-            p.IsInDanger = true;
-            p.SendPacket(new EtcStatusUpdate(p));
-            //  p._stats.base_p_speed += Template._move_bonus;
-            p.BroadcastUserInfo();
+            p.SendSystemMessage((SystemMessage.SystemMessageId)Template.EnteringMessageNo);
         }
 
         public override void OnExit(L2Object obj, bool cls)
@@ -49,10 +41,7 @@ namespace L2dotNET.Models.zones.classes
                 return;
 
             L2Player p = (L2Player)obj;
-            p.IsInDanger = false;
-            p.SendPacket(new EtcStatusUpdate(p));
-            //  p._stats.base_p_speed -= Template._move_bonus;
-            p.BroadcastUserInfo();
+            p.SendSystemMessage((SystemMessage.SystemMessageId)Template.LeavingMessageNo);
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Timers;
-using L2dotNET.Models.player;
-using L2dotNET.Models.zones.forms;
+using L2dotNET.Models.Player;
+using L2dotNET.Models.Zones.forms;
 using L2dotNET.Network;
-using L2dotNET.world;
+using L2dotNET.World;
 
-namespace L2dotNET.Models.zones
+namespace L2dotNET.Models.Zones
 {
     public class L2Zone
     {

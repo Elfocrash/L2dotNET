@@ -7,7 +7,7 @@ using log4net;
 using L2dotNET.DataContracts.GameModels;
 using L2dotNET.Utility;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     public class HtmCache
     {

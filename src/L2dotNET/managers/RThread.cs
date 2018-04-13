@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using log4net;
 
-namespace L2dotNET.managers
+namespace L2dotNET.Managers
 {
     public class RThread
     {

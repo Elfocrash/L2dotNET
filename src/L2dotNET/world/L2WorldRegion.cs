@@ -2,10 +2,10 @@
 using System.Linq;
 using log4net;
 using L2dotNET.Models;
-using L2dotNET.Models.player;
-using L2dotNET.Models.zones;
+using L2dotNET.Models.Player;
+using L2dotNET.Models.Zones;
 
-namespace L2dotNET.world
+namespace L2dotNET.World
 {
     public class L2WorldRegion
     {

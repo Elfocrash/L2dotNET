@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
 using L2dotNET.Enums;
-using L2dotNET.Models.items;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Items;
+using L2dotNET.Models.Player;
 using L2dotNET.Models.Stats;
 using L2dotNET.Models.Stats.Funcs;
 using L2dotNET.Models.Status;
 using L2dotNET.Network.serverpackets;
-using L2dotNET.templates;
-using L2dotNET.tools;
-using L2dotNET.world;
+using L2dotNET.Templates;
+using L2dotNET.Tools;
+using L2dotNET.World;
 using Calculator = L2dotNET.Models.Stats.Calculator;
 
 namespace L2dotNET.Models

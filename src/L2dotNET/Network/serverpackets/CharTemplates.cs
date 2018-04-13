@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.templates;
+using L2dotNET.Templates;
 
 namespace L2dotNET.Network.serverpackets
 {

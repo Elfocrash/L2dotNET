@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L2dotNET.Models.zones.forms
+namespace L2dotNET.Models.Zones.forms
 {
     public class ZoneCylinder : ZoneForm
     {
@@ -21,9 +21,9 @@ namespace L2dotNET.Models.zones.forms
             _radS = rad * rad;
         }
 
-        public override bool isInsideZone(int x, int y, int z) => !((Math.Pow(_x - x, 2) + Math.Pow(_y - y, 2)) > _radS) && (z >= _z1) && (z <= _z2);
+        public override bool IsInsideZone(int x, int y, int z) => !((Math.Pow(_x - x, 2) + Math.Pow(_y - y, 2)) > _radS) && (z >= _z1) && (z <= _z2);
 
-        public bool isInsideZone(int x, int y) => !((Math.Pow(_x - x, 2) + Math.Pow(_y - y, 2)) > _radS);
+        public bool IsInsideZone(int x, int y) => !((Math.Pow(_x - x, 2) + Math.Pow(_y - y, 2)) > _radS);
 
         public override bool intersectsRectangle(int ax1, int ax2, int ay1, int ay2)
         {

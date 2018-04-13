@@ -2,14 +2,14 @@
 using System.Linq;
 using log4net;
 using L2dotNET.DataContracts;
-using L2dotNET.Models.player;
-using L2dotNET.Models.player.basic;
+using L2dotNET.Models.Player;
+using L2dotNET.Models.Player.Basic;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
-using L2dotNET.world;
+using L2dotNET.World;
 using Ninject;
 
-namespace L2dotNET.managers
+namespace L2dotNET.Managers
 {
     class AnnouncementManager
     {

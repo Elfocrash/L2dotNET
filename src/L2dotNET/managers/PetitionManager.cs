@@ -1,7 +1,7 @@
 ﻿using System;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 
-namespace L2dotNET.managers
+namespace L2dotNET.Managers
 {
     class PetitionManager
     {

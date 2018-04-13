@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.DataContracts;
-using L2dotNET.Models.items;
-using L2dotNET.Models.player;
-using L2dotNET.world;
+using L2dotNET.Models.Items;
+using L2dotNET.Models.Player;
+using L2dotNET.World;
 
-namespace L2dotNET.Models.inventory
+namespace L2dotNET.Models.Inventory
 {
     public class Inventory : ItemContainer
     {

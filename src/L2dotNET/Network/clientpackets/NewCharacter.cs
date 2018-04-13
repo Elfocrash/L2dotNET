@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.Network.serverpackets;
-using L2dotNET.tables;
-using L2dotNET.templates;
+using L2dotNET.Tables;
+using L2dotNET.Templates;
 
 namespace L2dotNET.Network.clientpackets
 {

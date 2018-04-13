@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
-using L2dotNET.tables;
-using L2dotNET.templates;
+using L2dotNET.Tables;
+using L2dotNET.Templates;
 
-namespace L2dotNET.Models.npcs
+namespace L2dotNET.Models.Npcs
 {
     public class L2Warrior : L2Npc
     {

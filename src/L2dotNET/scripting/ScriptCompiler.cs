@@ -4,7 +4,7 @@ using System.IO;
 using log4net;
 using Microsoft.CSharp;
 
-namespace L2dotNET.scripting
+namespace L2dotNET.Scripting
 {
     /// <summary>
     /// Idea L2cemu

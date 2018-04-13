@@ -1,6 +1,6 @@
 using L2dotNET.Enums;
 
-namespace L2dotNET.managers
+namespace L2dotNET.Managers
 {
     public class EnchantScroll
     {

@@ -3,7 +3,7 @@ using log4net;
 using L2dotNET.Services.Contracts;
 using Ninject;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     sealed class IdFactory
     {

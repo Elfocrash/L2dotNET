@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using log4net;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 
-namespace L2dotNET.Models.items
+namespace L2dotNET.Models.Items
 {
     class ItemHandlerScript : ItemEffect
     {

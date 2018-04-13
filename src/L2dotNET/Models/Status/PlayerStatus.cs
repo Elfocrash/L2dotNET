@@ -1,5 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Models.Status
 {

@@ -1,6 +1,6 @@
-﻿using L2dotNET.Models.inventory;
-using L2dotNET.Models.player;
-using L2dotNET.Models.player.basic;
+﻿using L2dotNET.Models.Inventory;
+using L2dotNET.Models.Player;
+using L2dotNET.Models.Player.Basic;
 
 namespace L2dotNET.Models.Stats.Funcs
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.Controllers;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
-using L2dotNET.world;
+using L2dotNET.World;
 
 namespace L2dotNET.Network.clientpackets
 {

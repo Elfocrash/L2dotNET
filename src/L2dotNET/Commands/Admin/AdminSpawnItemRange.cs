@@ -1,7 +1,7 @@
 ﻿using L2dotNET.Attributes;
-using L2dotNET.Models.items;
-using L2dotNET.Models.player;
-using L2dotNET.tables;
+using L2dotNET.Models.Items;
+using L2dotNET.Models.Player;
+using L2dotNET.Tables;
 
 namespace L2dotNET.Commands.Admin
 {

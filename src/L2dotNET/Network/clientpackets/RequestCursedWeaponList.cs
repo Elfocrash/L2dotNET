@@ -1,4 +1,4 @@
-﻿using L2dotNET.Models.items.cursed;
+﻿using L2dotNET.Models.Items.cursed;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets

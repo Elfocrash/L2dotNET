@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using L2dotNET.Models.items;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Items;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.serverpackets
 {

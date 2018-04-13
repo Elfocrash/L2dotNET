@@ -3,10 +3,10 @@ using L2dotNET.Services.Contracts;
 using System.Collections.Generic;
 using L2dotNET.DataContracts;
 using L2dotNET.Enums;
-using L2dotNET.Models.inventory;
-using L2dotNET.Models.player;
-using L2dotNET.Models.player.General;
-using L2dotNET.tables;
+using L2dotNET.Models.Inventory;
+using L2dotNET.Models.Player;
+using L2dotNET.Models.Player.General;
+using L2dotNET.Tables;
 
 namespace L2dotNET.Services
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using log4net;
 
-namespace L2dotNET.managers
+namespace L2dotNET.Managers
 {
     public class ThreadPoolManager
     {
