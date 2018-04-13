@@ -2,7 +2,6 @@ using System;
 using log4net;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Templates;
-using System.Timers;
 
 namespace L2dotNET.Tables
 {
@@ -15,14 +14,9 @@ namespace L2dotNET.Tables
 
         public L2Npc Npc { get; set; }
 
-        private Timer SpawnTimer;
-
         public L2Spawn(NpcTemplate template)
         {
-            if (template == null)
-                throw new ArgumentNullException(nameof(template));
-
-            Template = template;
+            Template = template ?? throw new ArgumentNullException(nameof(template));
         }
 
         public int GetNpcId()
@@ -33,14 +27,13 @@ namespace L2dotNET.Tables
         public L2Npc Spawn(bool notifyOthers = true)
         {
             L2Npc npc;
-            if (Type.GetType("L2dotNET.Models.npcs."+Template.Type) != null)
+            if (Type.GetType("L2dotNET.Models.Npcs." + Template.Type) != null)
             {
-                npc = (L2Npc)Activator.CreateInstance( Type.GetType("L2dotNET.Models.npcs." + Template.Type), IdFactory.Instance.NextId(), Template, this);
+                npc = (L2Npc)Activator.CreateInstance( Type.GetType("L2dotNET.Models.Npcs." + Template.Type), IdFactory.Instance.NextId(), Template, this);
                 npc.X = Location.X;
                 npc.Y = Location.Y;
                 npc.Z = Location.Z;
                 npc.Heading = Location.Heading;
-
             }
             else
             {
