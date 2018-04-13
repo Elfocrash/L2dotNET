@@ -19,6 +19,8 @@ namespace L2dotNET.Templates
         public int LHand { get; set; }
         public int EnchantEffect { get; set; }
         public int CorpseTime { get; set; }
+        public double Hp { get; set; }
+        public double Mp { get; set; }
 
         public int DropHerbGroup { get; set; }
         public Race race = Race.Unknown;
@@ -65,6 +67,8 @@ namespace L2dotNET.Templates
             LHand = set.GetInt("lHand");
             EnchantEffect = set.GetInt("enchant");
             CorpseTime = set.GetInt("corpseTime", 7);
+            Hp = set.GetDouble("hp");
+            Mp = set.GetDouble("mp");
 
             DropHerbGroup = set.GetInt("dropHerbGroup");
             //if (_dropHerbGroup > 0 && HerbDropTable.getInstance().getHerbDroplist(_dropHerbGroup) == null)
