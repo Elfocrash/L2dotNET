@@ -14,15 +14,16 @@ namespace L2dotNET.Models.Npcs
         private readonly ILog Log = LogManager.GetLogger(typeof(L2Monster));
 
         private Timer CorpseTimer;
+        public override int MaxHp => (int)Template.Hp;
+        public override int MaxMp => (int)Template.Mp;
 
         public L2Monster(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
         {
             Template = template;
             Name = template.Name;
             InitializeCharacterStatus();
-
-            CharStatus.SetCurrentHp(Template.BaseHpMax(0));
-            CharStatus.SetCurrentMp(Template.BaseMpMax(0));
+            CharStatus.SetCurrentHp(MaxHp);
+            CharStatus.SetCurrentMp(MaxMp);
             //Stats = new CharacterStat(this);
         }
 
