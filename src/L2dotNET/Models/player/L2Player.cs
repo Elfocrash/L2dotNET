@@ -1187,9 +1187,12 @@ namespace L2dotNET.Models.Player
                 if (!Hit1.Miss)
                 {
                     if (Hit1.Crit)
-                        SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1LandedACriticalHit).AddPlayerName(Name));
+                    {
+                        SendPacket(new SystemMessage(SystemMessage.SystemMessageId.YouDidS1Dmg).AddNumber(Hit1.Damage));
+                        SendPacket(new SystemMessage(SystemMessage.SystemMessageId.CriticalHit));
+                    }
 
-                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddPlayerName(Name).AddName(Target).AddNumber(Hit1.Damage));
+                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.YouDidS1Dmg).AddNumber(Hit1.Damage));
                     Target.CharStatus.ReduceHp(Hit1.Damage, this);
 
                     if (Target is L2Player)
@@ -1197,7 +1200,7 @@ namespace L2dotNET.Models.Player
                 }
                 else
                 {
-                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1AttackWentAstray).AddPlayerName(Name));
+                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.MissedTarget));
 
                     if (Target is L2Player)
                     {
@@ -1216,9 +1219,12 @@ namespace L2dotNET.Models.Player
                 if (!Hit2.Miss)
                 {
                     if (Hit2.Crit)
-                        SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1LandedACriticalHit).AddName(this));
+                    {
+                        SendPacket(new SystemMessage(SystemMessage.SystemMessageId.YouDidS1Dmg).AddNumber(Hit2.Damage));
+                        SendPacket(new SystemMessage(SystemMessage.SystemMessageId.CriticalHit));
+                    }
 
-                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasGivenC2DamageOfS3).AddName(this).AddName(Target).AddNumber(Hit2.Damage));
+                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.YouDidS1Dmg).AddNumber(Hit2.Damage));
                     Target.CharStatus.ReduceHp(Hit2.Damage, this);
 
                     if (Target is L2Player)
@@ -1226,7 +1232,7 @@ namespace L2dotNET.Models.Player
                 }
                 else
                 {
-                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1AttackWentAstray).AddPlayerName(Name));
+                    SendPacket(new SystemMessage(SystemMessage.SystemMessageId.MissedTarget));
 
                     if (Target is L2Player)
                     {

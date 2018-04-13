@@ -15,13 +15,16 @@ namespace L2dotNET
             Bind<IServerService>().To<ServerService>();
             Bind<ICheckService>().To<CheckService>();
             Bind<IItemService>().To<ItemService>();
-
+            Bind<ISkillService>().To<SkillService>();
+            
             Bind<IPlayerRepository>().To<PlayerRepository>();
             Bind<IAccountRepository>().To<AccountRepository>();
             Bind<IServerRepository>().To<ServerRepository>();
             Bind<ICheckRepository>().To<CheckRepository>();
             Bind<IItemRepository>().To<ItemRepository>();
+            Bind<ISkillRepository>().To<SkillRepository>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
+
         }
     }
 }

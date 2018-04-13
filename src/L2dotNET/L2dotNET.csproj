@@ -165,6 +165,7 @@
     <Compile Include="Models\Npcs\Decor\L2TownMap.cs" />
     <Compile Include="Models\Npcs\L2Monster.cs" />
     <Compile Include="Models\Npcs\L2Npc.cs" />
+    <Compile Include="Models\Npcs\L2Trainer.cs" />
     <Compile Include="Models\Npcs\L2Warrior.cs" />
     <Compile Include="Models\Npcs\SpawnLocation.cs" />
     <Compile Include="Models\Player\Basic\Formulas.cs" />
@@ -516,9 +517,11 @@
     <Compile Include="Services\Contracts\IItemService.cs" />
     <Compile Include="Services\Contracts\IPlayerService.cs" />
     <Compile Include="Services\Contracts\IServerService.cs" />
+    <Compile Include="Services\Contracts\ISkillService.cs" />
     <Compile Include="Services\ItemService.cs" />
     <Compile Include="Services\PlayerService.cs" />
     <Compile Include="Services\ServerService.cs" />
+    <Compile Include="Services\SkillService.cs" />
     <Compile Include="Tables\CharTemplateTable.cs" />
     <Compile Include="Tables\FString.cs" />
     <Compile Include="Tables\HtmCache.cs" />

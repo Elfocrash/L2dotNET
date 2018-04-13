@@ -16,7 +16,7 @@ namespace L2dotNET.Network.serverpackets
             WriteByte(0x16);
             WriteInt(_npc.ObjId);
             WriteInt(_npc.NpcHashId);
-            WriteInt(1/*_npc.Attackable*/);
+            WriteInt(_npc.Attackable);
             WriteInt(_npc.X);
             WriteInt(_npc.Y);
             WriteInt(_npc.Z);

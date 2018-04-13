@@ -16,6 +16,7 @@ namespace L2dotNET.Models.Npcs
         private Timer CorpseTimer;
         public override int MaxHp => (int)Template.Hp;
         public override int MaxMp => (int)Template.Mp;
+        public override int Attackable => 1;
 
         public L2Monster(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
         {
