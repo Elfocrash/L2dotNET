@@ -5,6 +5,8 @@ using L2dotNET.Models.npcs;
 using L2dotNET.Services.Contracts;
 using Ninject;
 using System.Linq;
+using System.Timers;
+using System;
 
 namespace L2dotNET.tables
 {
@@ -16,7 +18,7 @@ namespace L2dotNET.tables
         private static readonly ILog Log = LogManager.GetLogger(typeof(SpawnTable));
         private static volatile SpawnTable _instance;
         private static readonly object SyncRoot = new object();
-        
+        private Timer RespawnTimerTask;
 
         public static SpawnTable Instance
         {
@@ -49,12 +51,41 @@ namespace L2dotNET.tables
                 l2Spawn.Spawn(false);
                 Spawns.Add(l2Spawn);
             });
-            
+
             Log.Info($"SpawnTable: Spawned: {spawnsList.Count} npcs.");
-           
+
+            RespawnTimerTask = new Timer();
+            RespawnTimerTask.Elapsed += new ElapsedEventHandler(RespawnTimerTick);
+            RespawnTimerTask.Interval = 2000;
+            RespawnTimerTask.Start();
+        }
+
+        private void RespawnTimerTick(object sender, ElapsedEventArgs e)
+        {
+            foreach (var kvp in RespawnDict.ToArray())
+            {
+                long elapsedTicks = DateTime.Now.Ticks - kvp.Value.Ticks;
+                TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
+                if (elapsedSpan.TotalMilliseconds >= kvp.Key.Location.RespawnDelay)
+                {
+                    kvp.Key.Spawn(true);
+                    DeRegisterRespawn(kvp.Key);
+                }
+
+            }
+        }
+
+        public void RegisterRespawn(L2Spawn spawn)
+        {
+            RespawnDict.Add(spawn,DateTime.Now);
+        }
+
+        private void DeRegisterRespawn(L2Spawn spawn)
+        {
+            RespawnDict.Remove(spawn);
         }
 
         public readonly List<L2Spawn> Spawns = new List<L2Spawn>(50000);
-
+        private readonly Dictionary<L2Spawn,DateTime> RespawnDict = new Dictionary<L2Spawn, DateTime>();
     }
 }
