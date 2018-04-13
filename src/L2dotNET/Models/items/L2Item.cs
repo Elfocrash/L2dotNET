@@ -10,6 +10,7 @@ using L2dotNET.Tables;
 using L2dotNET.Tools;
 using L2dotNET.World;
 using Ninject;
+using static L2dotNET.Models.Inventory.Inventory;
 
 namespace L2dotNET.Models.Items
 {
@@ -97,8 +98,8 @@ namespace L2dotNET.Models.Items
         public void Equip(L2Player owner)
         {
             Location = ItemLocation.Paperdoll;
-            SlotLocation = Inventory.GetPaperdollIndex(Template.BodyPart);
-            PaperdollSlot = Inventory.GetPaperdollIndex(Template.BodyPart);
+            SlotLocation = GetPaperdollIndex(Template.BodyPart);
+            PaperdollSlot = GetPaperdollIndex(Template.BodyPart);
             IsEquipped = 1;
         }
 
