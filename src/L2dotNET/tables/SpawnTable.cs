@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using log4net;
 using L2dotNET.DataContracts;
-using L2dotNET.Models.npcs;
+using L2dotNET.Models.Npcs;
 using L2dotNET.Services.Contracts;
 using Ninject;
 using System.Linq;
 using System.Timers;
 using System;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     public class SpawnTable
     {

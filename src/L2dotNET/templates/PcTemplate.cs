@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using L2dotNET.Enums;
-using L2dotNET.Models.items;
+using L2dotNET.Models.Items;
 
-namespace L2dotNET.templates
+namespace L2dotNET.Templates
 {
     public class PcTemplate : CharTemplate
     {

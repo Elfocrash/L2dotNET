@@ -1,11 +1,11 @@
-﻿using L2dotNET.Models.player;
-using L2dotNET.tables;
+﻿using L2dotNET.Models.Player;
+using L2dotNET.Tables;
 
-namespace L2dotNET.Models.zones.classes
+namespace L2dotNET.Models.Zones.Classes
 {
-    public class monster_race : L2Zone
+    public class MonsterRaceZone : L2Zone
     {
-        public monster_race()
+        public MonsterRaceZone()
         {
             ZoneId = IdFactory.Instance.NextId();
             Enabled = true;

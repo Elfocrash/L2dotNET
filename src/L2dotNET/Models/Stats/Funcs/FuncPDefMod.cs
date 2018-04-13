@@ -1,5 +1,6 @@
-﻿using L2dotNET.Models.inventory;
-using L2dotNET.Models.player;
+﻿using L2dotNET.Models.Inventory;
+using L2dotNET.Models.Player;
+using static L2dotNET.Models.Inventory.Inventory;
 
 namespace L2dotNET.Models.Stats.Funcs
 {
@@ -13,15 +14,15 @@ namespace L2dotNET.Models.Stats.Funcs
         {
             if (env.Character is L2Player player)
             {
-                if(player.Inventory.GetPaperdollItem(Inventory.PaperdollHead) != null)
+                if(player.Inventory.GetPaperdollItem(PaperdollHead) != null)
                     env.SubValue(12);
-                if (player.Inventory.GetPaperdollItem(Inventory.PaperdollChest) != null)
+                if (player.Inventory.GetPaperdollItem(PaperdollChest) != null)
                     env.SubValue(31);
-                if (player.Inventory.GetPaperdollItem(Inventory.PaperdollLegs) != null)
+                if (player.Inventory.GetPaperdollItem(PaperdollLegs) != null)
                     env.SubValue(18);
-                if (player.Inventory.GetPaperdollItem(Inventory.PaperdollGloves) != null)
+                if (player.Inventory.GetPaperdollItem(PaperdollGloves) != null)
                     env.SubValue(8);
-                if (player.Inventory.GetPaperdollItem(Inventory.PaperdollFeet) != null)
+                if (player.Inventory.GetPaperdollItem(PaperdollFeet) != null)
                     env.SubValue(7);
             }
 

@@ -1,10 +1,10 @@
-﻿using L2dotNET.tables;
+﻿using L2dotNET.Tables;
 
-namespace L2dotNET.Models.zones.classes
+namespace L2dotNET.Models.Zones.Classes
 {
-    class peace_zone : L2Zone
+    class PeaceZoneBuff : L2Zone
     {
-        public peace_zone()
+        public PeaceZoneBuff()
         {
             ZoneId = IdFactory.Instance.NextId();
             Enabled = true;

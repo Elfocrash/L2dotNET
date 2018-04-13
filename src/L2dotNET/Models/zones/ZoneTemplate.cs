@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.Models.zones.forms;
+using L2dotNET.Models.Zones.forms;
 
-namespace L2dotNET.Models.zones
+namespace L2dotNET.Models.Zones
 {
     public class ZoneTemplate
     {

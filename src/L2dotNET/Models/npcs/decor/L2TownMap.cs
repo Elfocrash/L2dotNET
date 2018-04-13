@@ -1,7 +1,7 @@
-﻿using L2dotNET.Models.player;
-using L2dotNET.templates;
+﻿using L2dotNET.Models.Player;
+using L2dotNET.Templates;
 
-namespace L2dotNET.Models.npcs.decor
+namespace L2dotNET.Models.Npcs.Decor
 {
     public class L2TownMap : L2StaticObject
     {

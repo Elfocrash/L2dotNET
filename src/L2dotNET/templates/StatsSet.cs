@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using log4net;
 
-namespace L2dotNET.templates
+namespace L2dotNET.Templates
 {
     public class StatsSet : Dictionary<string, object>
     {

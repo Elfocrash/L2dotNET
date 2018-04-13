@@ -1,4 +1,4 @@
-﻿using L2dotNET.Models.player.basic;
+﻿using L2dotNET.Models.Player.Basic;
 
 namespace L2dotNET.Network.serverpackets
 {

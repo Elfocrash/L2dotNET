@@ -1,5 +1,5 @@
-﻿using L2dotNET.Models.player;
-using L2dotNET.Models.vehicles;
+﻿using L2dotNET.Models.Player;
+using L2dotNET.Models.Vehicles;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets.VehicleAPI

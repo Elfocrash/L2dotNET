@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.tables
+﻿namespace L2dotNET.Tables
 {
     class NpcSpawn
     {

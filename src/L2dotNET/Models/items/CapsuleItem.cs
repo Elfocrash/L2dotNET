@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace L2dotNET.Models.items
+namespace L2dotNET.Models.Items
 {
     public class CapsuleItem
     {

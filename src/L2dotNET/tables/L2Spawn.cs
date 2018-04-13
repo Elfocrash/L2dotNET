@@ -1,10 +1,10 @@
 using System;
 using log4net;
-using L2dotNET.Models.npcs;
-using L2dotNET.templates;
+using L2dotNET.Models.Npcs;
+using L2dotNET.Templates;
 using System.Timers;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     public class L2Spawn
     {

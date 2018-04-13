@@ -1,8 +1,8 @@
-﻿namespace L2dotNET.Models.zones.forms
+﻿namespace L2dotNET.Models.Zones.forms
 {
     public class ZoneForm
     {
-        public virtual bool isInsideZone(int x, int y, int z)
+        public virtual bool IsInsideZone(int x, int y, int z)
         {
             return false;
         }

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using log4net;
 using L2dotNET.DataContracts;
 using L2dotNET.Enums;
-using L2dotNET.Models.items;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Items;
+using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
-using L2dotNET.templates;
+using L2dotNET.Templates;
 using L2dotNET.Utility;
-using L2dotNET.world;
+using L2dotNET.World;
 using Ninject;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     public class ItemTable
     {

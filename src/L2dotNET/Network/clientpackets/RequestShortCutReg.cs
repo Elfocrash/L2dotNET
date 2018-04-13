@@ -1,5 +1,5 @@
-﻿using L2dotNET.Models.player;
-using L2dotNET.Models.player.General;
+﻿using L2dotNET.Models.Player;
+using L2dotNET.Models.Player.General;
 
 namespace L2dotNET.Network.clientpackets
 {

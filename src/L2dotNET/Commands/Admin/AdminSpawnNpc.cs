@@ -1,9 +1,9 @@
 ﻿using System;
 using L2dotNET.Attributes;
-using L2dotNET.Models.npcs;
-using L2dotNET.Models.player;
-using L2dotNET.tables;
-using L2dotNET.templates;
+using L2dotNET.Models.Npcs;
+using L2dotNET.Models.Player;
+using L2dotNET.Tables;
+using L2dotNET.Templates;
 
 namespace L2dotNET.Commands.Admin
 {

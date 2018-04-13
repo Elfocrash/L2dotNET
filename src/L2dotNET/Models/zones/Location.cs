@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.Models.zones
+﻿namespace L2dotNET.Models.Zones
 {
     public class Location
     {

@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using L2dotNET.Enums;
-using L2dotNET.tables;
-using L2dotNET.templates;
+using L2dotNET.Tables;
+using L2dotNET.Templates;
 
-namespace L2dotNET.Models.items
+namespace L2dotNET.Models.Items
 {
     public abstract class ItemTemplate
     {

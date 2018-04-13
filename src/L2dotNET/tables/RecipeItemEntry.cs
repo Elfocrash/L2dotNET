@@ -1,6 +1,6 @@
-using L2dotNET.Models.items;
+using L2dotNET.Models.Items;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     public class RecipeItemEntry
     {

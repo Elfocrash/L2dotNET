@@ -5,7 +5,7 @@ using log4net;
 using L2dotNET.DataContracts;
 using L2dotNET.Network.loginauth.send;
 using L2dotNET.Utility;
-using L2dotNET.world;
+using L2dotNET.World;
 
 namespace L2dotNET.Network.loginauth
 {

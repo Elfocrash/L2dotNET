@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using log4net;
-using L2dotNET.templates;
+using L2dotNET.Templates;
 using L2dotNET.Utility;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     class NpcTable
     {

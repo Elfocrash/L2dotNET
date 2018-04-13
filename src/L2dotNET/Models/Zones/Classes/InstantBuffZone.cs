@@ -1,10 +1,10 @@
-﻿using L2dotNET.tables;
+﻿using L2dotNET.Tables;
 
-namespace L2dotNET.Models.zones.classes
+namespace L2dotNET.Models.Zones.Classes
 {
-    class instant_buff : L2Zone
+    class InstantBuffZone : L2Zone
     {
-        public instant_buff()
+        public InstantBuffZone()
         {
             ZoneId = IdFactory.Instance.NextId();
         }

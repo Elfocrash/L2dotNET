@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using log4net;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     public class ItemSetTemplate
     {

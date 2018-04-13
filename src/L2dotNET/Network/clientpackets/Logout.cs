@@ -1,4 +1,4 @@
-﻿using L2dotNET.Models.player;
+﻿using L2dotNET.Models.Player;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Network.serverpackets;
 

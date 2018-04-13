@@ -10,7 +10,7 @@ namespace L2dotNET.ConsoleCommand.Commands
     {
         public override void Execute(string param)
         {
-            Console.WriteLine("Count - " + world.L2World.Instance.GetObjects().Count);
+            Console.WriteLine("Count - " + World.L2World.Instance.GetObjects().Count);
         }
     }
 }

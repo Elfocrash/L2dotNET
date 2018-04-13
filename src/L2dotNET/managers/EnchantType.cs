@@ -1,4 +1,4 @@
-namespace L2dotNET.managers
+namespace L2dotNET.Managers
 {
     public enum EnchantType
     {

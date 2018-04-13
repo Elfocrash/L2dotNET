@@ -5,12 +5,12 @@ using System.Net;
 using System.Net.Sockets;
 using log4net;
 using L2dotNET.Encryption;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;
-using L2dotNET.world;
+using L2dotNET.World;
 using Ninject;
 
 namespace L2dotNET

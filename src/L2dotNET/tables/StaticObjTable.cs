@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using log4net;
-using L2dotNET.Models.npcs.decor;
+using L2dotNET.Models.Npcs.Decor;
 using L2dotNET.Models.Stats;
 using L2dotNET.Utility;
-using L2dotNET.world;
+using L2dotNET.World;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     class StaticObjTable
     {

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
 using L2dotNET.Enums;
-using L2dotNET.Models.inventory;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Inventory;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
-using L2dotNET.tables;
-using L2dotNET.templates;
+using L2dotNET.Tables;
+using L2dotNET.Templates;
 using L2dotNET.Utility;
-using L2dotNET.world;
+using L2dotNET.World;
 using Ninject;
 
 namespace L2dotNET.Network.clientpackets

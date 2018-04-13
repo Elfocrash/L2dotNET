@@ -1,6 +1,6 @@
 ﻿using log4net;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     class ZoneTable
     {

@@ -2,7 +2,7 @@
 using L2dotNET.Enums;
 using L2dotNET.Utility;
 
-namespace L2dotNET.templates
+namespace L2dotNET.Templates
 {
     public class NpcTemplate : CharTemplate
     {

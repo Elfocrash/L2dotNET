@@ -1,10 +1,10 @@
-﻿using L2dotNET.tables;
+﻿using L2dotNET.Tables;
 
-namespace L2dotNET.Models.zones.classes
+namespace L2dotNET.Models.Zones.Classes
 {
-    class water : L2Zone
+    class NoRestartZone : L2Zone
     {
-        public water()
+        public NoRestartZone()
         {
             ZoneId = IdFactory.Instance.NextId();
             Enabled = true;

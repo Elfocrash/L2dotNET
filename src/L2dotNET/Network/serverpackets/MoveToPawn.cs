@@ -1,5 +1,5 @@
 ﻿using L2dotNET.Models;
-using L2dotNET.world;
+using L2dotNET.World;
 
 namespace L2dotNET.Network.serverpackets
 {

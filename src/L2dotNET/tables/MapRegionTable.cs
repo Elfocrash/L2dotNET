@@ -3,13 +3,13 @@ using System.Xml;
 using log4net;
 using L2dotNET.Enums;
 using L2dotNET.Models;
-using L2dotNET.Models.player;
-using L2dotNET.Models.zones;
-using L2dotNET.Models.zones.Type;
+using L2dotNET.Models.Player;
+using L2dotNET.Models.Zones;
+using L2dotNET.Models.Zones.Type;
 using L2dotNET.Utility;
-using L2dotNET.world;
+using L2dotNET.World;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     class MapRegionTable
     {

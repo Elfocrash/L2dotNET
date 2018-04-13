@@ -1,5 +1,4 @@
-﻿using L2dotNET.Models.items.cursed;
-using L2dotNET.Network.serverpackets;
+﻿using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -15,9 +14,9 @@ namespace L2dotNET.Network.clientpackets
 
         public override void RunImpl()
         {
-            int[] ids = CursedWeapons.GetInstance().GetWeaponIds();
+            //int[] ids = CursedWeapons.GetInstance().GetWeaponIds();
 
-            _client.SendPacket(new ExCursedWeaponList(ids));
+            //_client.SendPacket(new ExCursedWeaponList(ids));
         }
     }
 }

@@ -4,13 +4,13 @@ using System.Net.Sockets;
 using log4net;
 using L2dotNET.Controllers;
 using L2dotNET.Handlers;
-using L2dotNET.managers;
-using L2dotNET.Models.items;
+using L2dotNET.Managers;
+using L2dotNET.Models.Items;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
-using L2dotNET.tables;
+using L2dotNET.Tables;
 using L2dotNET.Utility;
-using L2dotNET.world;
+using L2dotNET.World;
 using Ninject;
 
 namespace L2dotNET

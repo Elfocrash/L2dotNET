@@ -1,7 +1,7 @@
 ﻿using log4net;
-using L2dotNET.managers;
-using L2dotNET.Models.npcs;
-using L2dotNET.Models.player;
+using L2dotNET.Managers;
+using L2dotNET.Models.Npcs;
+using L2dotNET.Models.Player;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Network.clientpackets

@@ -1,4 +1,4 @@
-namespace L2dotNET.templates
+namespace L2dotNET.Templates
 {
     public enum Race
     {

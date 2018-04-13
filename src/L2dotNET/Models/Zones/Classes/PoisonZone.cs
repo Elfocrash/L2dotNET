@@ -1,13 +1,13 @@
 ﻿using System.Timers;
-using L2dotNET.Models.npcs;
-using L2dotNET.Models.player;
-using L2dotNET.tables;
+using L2dotNET.Models.Npcs;
+using L2dotNET.Models.Player;
+using L2dotNET.Tables;
 
-namespace L2dotNET.Models.zones.classes
+namespace L2dotNET.Models.Zones.Classes
 {
-    class instant_skill : L2Zone
+    class PoisonZone : L2Zone
     {
-        public instant_skill()
+        public PoisonZone()
         {
             ZoneId = IdFactory.Instance.NextId();
         }
@@ -32,7 +32,7 @@ namespace L2dotNET.Models.zones.classes
                     if (Template.Target == ZoneTemplate.ZoneTarget.Npc)
                         continue;
 
-                   // affect((L2Character)o);
+                    //affect((L2Character)o);
                 }
                 else
                 {
@@ -42,7 +42,7 @@ namespace L2dotNET.Models.zones.classes
                     if ((Template.Target == ZoneTemplate.ZoneTarget.Pc) || (Template.Target == ZoneTemplate.ZoneTarget.OnlyPc))
                         continue;
 
-                   // affect((L2Character)o);
+                  //  affect((L2Character)o);
                 }
             }
         }

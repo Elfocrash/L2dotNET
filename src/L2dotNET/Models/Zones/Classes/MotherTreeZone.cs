@@ -1,14 +1,14 @@
 ﻿using L2dotNET.Enums;
-using L2dotNET.Models.player;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
-using L2dotNET.tables;
+using L2dotNET.Tables;
 using L2dotNET.Utility;
 
-namespace L2dotNET.Models.zones.classes
+namespace L2dotNET.Models.Zones.Classes
 {
-    class mother_tree : L2Zone
+    class MotherTreeZone : L2Zone
     {
-        public mother_tree()
+        public MotherTreeZone()
         {
             ZoneId = IdFactory.Instance.NextId();
             Enabled = true;

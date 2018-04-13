@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using log4net;
-using L2dotNET.Models.zones.forms;
+using L2dotNET.Models.Zones.forms;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     public class L2Territory
     {

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Xml;
 using log4net;
 using L2dotNET.Enums;
-using L2dotNET.templates;
+using L2dotNET.Templates;
 
-namespace L2dotNET.tables
+namespace L2dotNET.Tables
 {
     sealed class CharTemplateTable
     {

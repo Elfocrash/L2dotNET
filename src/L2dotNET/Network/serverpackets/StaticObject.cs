@@ -1,4 +1,4 @@
-﻿using L2dotNET.Models.npcs.decor;
+﻿using L2dotNET.Models.Npcs.Decor;
 
 namespace L2dotNET.Network.serverpackets
 {

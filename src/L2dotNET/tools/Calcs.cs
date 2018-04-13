@@ -1,8 +1,7 @@
 ﻿using System;
 using L2dotNET.Models;
-using L2dotNET.world;
 
-namespace L2dotNET.tools
+namespace L2dotNET.Tools
 {
     class Calcs
     {

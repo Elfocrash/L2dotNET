@@ -1,8 +1,8 @@
 ﻿using System;
 using log4net;
-using L2dotNET.world;
+using L2dotNET.World;
 
-namespace L2dotNET.managers
+namespace L2dotNET.Managers
 {
     public class ZoneManager
     {
