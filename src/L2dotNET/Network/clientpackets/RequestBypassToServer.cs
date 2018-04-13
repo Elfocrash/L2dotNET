@@ -180,10 +180,17 @@ namespace L2dotNET.Network.clientpackets
                                                             }
                                                             else
                                                             {
-                                                                if (_alias.StartsWithIgnoreCase("petitionlink?"))
-                                                                    PetitionManager.GetInstance().Petitionlink(player, _alias.Split('?')[1]);
-                                                                else
-                                                                    Log.Warn($"Unknown bypass '{_alias}'");
+                                                                if (_alias.StartsWithIgnoreCase("npc"))
+                                                                {
+                                                                    npc = GetNpc();
+                                                                    Log.Warn($"Bypass Accepted '{_alias}'");
+                                                                }
+                                                                else {
+                                                                    if (_alias.StartsWithIgnoreCase("petitionlink?"))
+                                                                        PetitionManager.GetInstance().Petitionlink(player, _alias.Split('?')[1]);
+                                                                    else
+                                                                        Log.Warn($"Unknown bypass '{_alias}'");
+                                                                }
                                                             }
                                                         }
                                                     }

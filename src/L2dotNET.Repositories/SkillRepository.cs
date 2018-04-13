@@ -12,7 +12,7 @@ namespace L2dotNET.Repositories
 {
     public class SkillRepository : ISkillRepository
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ServerRepository));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(SkillRepository));
 
         internal IDbConnection Db;
 
@@ -25,8 +25,9 @@ namespace L2dotNET.Repositories
         {
             try
             {
-                const string sql = @"select ownerId as CharObjId, id as skillId, lvl as SkillLvl, iclass as ClassId from user_skills where ownerId = @char_obj_id";
+                const string sql = @"select ownerId as CharObjId, id as skillId, lvl as SkillLvl, iclass as ClassId from character_skills where ownerId = @char_obj_id";
                 return Db.Query<SkillResponseContract>(sql, new { char_obj_id = charID }).ToList();
+                
             }
             catch (MySqlException ex)
             {
