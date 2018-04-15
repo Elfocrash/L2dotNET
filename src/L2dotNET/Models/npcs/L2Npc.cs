@@ -90,6 +90,19 @@ namespace L2dotNET.Models.Npcs
                 player.SendActionFailed();
             }
         }
+        public override void OnActionShift(L2Player player)
+        {
+            if (player.Target != this)
+            {
+                player.SetTarget(this);
+                player.SendPacket(new MyTargetSelected(ObjId, 0));
+                return;
+            }
+            player.MoveTo(X, Y, Z);
+            player.SendPacket(new MoveToPawn(player, this, 150));
+
+            ShowNPCInfo(player);
+        }
 
         public virtual void OnTeleportRequest(L2Player player)
         {
@@ -363,6 +376,88 @@ namespace L2dotNET.Models.Npcs
             return false;
         }
 
+        public void ShowNPCInfo(L2Player player)
+        {
+            NpcHtmlMessage html = new NpcHtmlMessage(player, "./html/admin/npcinfo.htm", ObjId);
+
+            html.Replace("%objid%", ObjId);
+            html.Replace("%class%", "null");
+            html.Replace("%id%", NpcId);
+            html.Replace("%lvl%", Level);
+            html.Replace("%name%", Name);
+            html.Replace("%tmplid%", Template.IdTemplate);
+            html.Replace("%aggro%", Attackable > 0 ? Template.AggroRange : 0);
+            html.Replace("%corpse%", Template.CorpseTime);
+            //html.replace("%enchant%", String.valueOf(getTemplate().getEnchantEffect()));
+            html.Replace("%hp%", CharStatus.CurrentHp);
+            html.Replace("%hpmax%", MaxHp);
+            html.Replace("%mp%", CharStatus.CurrentMp);
+            html.Replace("%mpmax%", MaxMp);
+            html.Replace("%patk%", Template.BasePAtk);
+            html.Replace("%matk%", Template.BaseMAtk);
+            html.Replace("%mdef%", Template.BaseMDef);
+            html.Replace("%pdef%", Template.BasePDef);
+            html.Replace("%accu%", "Not Defined");
+            html.Replace("%evas%", "Not Defined");
+            html.Replace("%crit%", Template.BaseCritRate);
+            html.Replace("%aspd%", Template.BasePAtkSpd);
+            html.Replace("%cspd%", "Not Defined");
+            html.Replace("%str%", Str);
+            html.Replace("%con%", Con);
+            html.Replace("%int%", Int);
+            html.Replace("%wit%", Wit);
+            html.Replace("%men%", Men);
+            html.Replace("%loc%", $"{X} {Y} {Z}");
+            //         html.replace("%dist%", String.valueOf((int)Math.sqrt(player.getDistanceSq(this))));
+
+            //         // byte attackAttribute = ((L2Character)this).getAttackElement();
+            //         html.replace("%ele_atk_value%", "%todo%" /* String.valueOf(((L2Character)this).getAttackElementValue(attackAttribute)) */);
+            //         html.replace("%ele_dfire%", String.valueOf(((L2Character)this).getDefenseElementValue((byte)2)));
+            //         html.replace("%ele_dwater%", String.valueOf(((L2Character)this).getDefenseElementValue((byte)3)));
+            //         html.replace("%ele_dwind%", String.valueOf(((L2Character)this).getDefenseElementValue((byte)1)));
+            //         html.replace("%ele_dearth%", String.valueOf(((L2Character)this).getDefenseElementValue((byte)4)));
+            //         html.replace("%ele_dholy%", String.valueOf(((L2Character)this).getDefenseElementValue((byte)5)));
+            //         html.replace("%ele_ddark%", String.valueOf(((L2Character)this).getDefenseElementValue((byte)6)));
+
+            //         if (getSpawn() != null)
+            //         {
+            //             html.replace("%spawn%", getSpawn().getLocx() + " " + getSpawn().getLocy() + " " + getSpawn().getLocz());
+            //             html.replace("%loc2d%", String.valueOf((int)Math.sqrt(((L2Character)this).getPlanDistanceSq(getSpawn().getLocx(), getSpawn().getLocy()))));
+            //             html.replace("%loc3d%", String.valueOf((int)Math.sqrt(((L2Character)this).getDistanceSq(getSpawn().getLocx(), getSpawn().getLocy(), getSpawn().getLocz()))));
+            //             html.replace("%resp%", String.valueOf(getSpawn().getRespawnDelay() / 1000));
+            //         }
+            //         else
+            //         {
+            //             html.replace("%spawn%", "<font color=FF0000>null</font>");
+            //             html.replace("%loc2d%", "<font color=FF0000>--</font>");
+            //             html.replace("%loc3d%", "<font color=FF0000>--</font>");
+            //             html.replace("%resp%", "<font color=FF0000>--</font>");
+            //         }
+
+            //         if (hasAI())
+            //         {
+            //             html.replace("%ai_intention%", "<tr><td><table width=270 border=0><tr><td width=100><font color=FFAA00>Intention:</font></td><td align=right width=170>" + String.valueOf(getAI().getIntention().name()) + "</td></tr></table></td></tr>");
+            //             html.replace("%ai%", "<tr><td><table width=270 border=0><tr><td width=100><font color=FFAA00>AI</font></td><td align=right width=170>" + getAI().getClass().getSimpleName() + "</td></tr></table></td></tr>");
+            //             html.replace("%ai_type%", "<tr><td><table width=270 border=0><tr><td width=100><font color=FFAA00>AIType</font></td><td align=right width=170>" + String.valueOf(getAiType()) + "</td></tr></table></td></tr>");
+            //             html.replace("%ai_clan%", "<tr><td><table width=270 border=0><tr><td width=100><font color=FFAA00>Clan & Range:</font></td><td align=right width=170>" + String.valueOf(getClan()) + " " + String.valueOf(getClanRange()) + "</td></tr></table></td></tr>");
+            //             html.replace("%ai_enemy_clan%", "<tr><td><table width=270 border=0><tr><td width=100><font color=FFAA00>Enemy & Range:</font></td><td align=right width=170>" + String.valueOf(getEnemyClan()) + " " + String.valueOf(getEnemyRange()) + "</td></tr></table></td></tr>");
+            //         }
+            //         else
+            //         {
+            //             html.replace("%ai_intention%", "");
+            //             html.replace("%ai%", "");
+            //             html.replace("%ai_type%", "");
+            //             html.replace("%ai_clan%", "");
+            //             html.replace("%ai_enemy_clan%", "");
+            //         }
+
+            //         if (this instanceof L2MerchantInstance)
+            //	html.replace("%butt%", "<button value=\"Shop\" action=\"bypass -h admin_showShop " + String.valueOf(getTemplate().getNpcId()) + "\" width=65 height=19 back=\"L2UI_ch3.smallbutton2_over\" fore=\"L2UI_ch3.smallbutton2\">");
+            //else
+            //	html.replace("%butt%", "");
+
+            player.SendPacket(html);
+        }
         public virtual int Attackable => 0;
 
         public override double Radius => Template.CollisionRadius == 0 ? 12 : Template.CollisionRadius;
