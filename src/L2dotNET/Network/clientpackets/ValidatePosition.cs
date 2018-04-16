@@ -1,5 +1,7 @@
 ﻿using log4net;
 using L2dotNET.Models.Player;
+using L2dotNET.Models.Zones;
+using L2dotNET.World;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -29,47 +31,57 @@ namespace L2dotNET.Network.clientpackets
         public override void RunImpl()
         {
             L2Player player = _client.CurrentPlayer;
-            //string prevReg = player.CurrentRegion;
+            L2WorldRegion prevReg = player.Region;
 
-            //int realX = player.X;
-            //int realY = player.Y;
-            ////int realZ = player.Z;
+            int realX = player.X;
+            int realY = player.Y;
+            int realZ = player.Z;
 
-            //int dx = _x - realX;
-            //int dy = _y - realY;
-            ////int dz = _z - realZ;
-            //double diffSq = (dx * dx) + (dy * dy);
+            int dx = _x - realX;
+            int dy = _y - realY;
+            int dz = _z - realZ;
+            double diffSq = (dx * dx) + (dy * dy);
 
-            //if (diffSq < 360000)
-            //{
-            //    if (!player.IsMoving())
-            //    {
-            //        if (diffSq < 2500)
-            //        {
-            //            player.X = realX;
-            //            player.Y = realY;
-            //            player.Z = _z;
-            //        }
-            //        else
-            //        {
-            //            player.X = _x;
-            //            player.Y = _y;
-            //            player.Z = _z;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    player.X = _x;
-            //    player.Y = _y;
-            //    player.Z = _z;
-            //    player.Heading = _heading;
-            //}
+            if (diffSq < 360000)
+            {
+                if (!player.IsMoving())
+                {
+                    if (diffSq < 2500)
+                    {
+                        player.X = realX;
+                        player.Y = realY;
+                        player.Z = _z;
+                    }
+                    else
+                    {
+                        player.X = _x;
+                        player.Y = _y;
+                        player.Z = _z;
+                    }
+                }
+            }
+            else
+            {
+                player.X = realX;
+                player.Y = realY;
+                player.Z = _z;
+                player.Heading = _heading;
+            }
+            L2WorldRegion NewRegion = L2World.Instance.GetRegion(new Location(player.X, player.Y, player.Z));
+            if (prevReg != NewRegion)
+            {
+                player.SetRegion(NewRegion);
+                player.SetupKnows();
 
+                //Add objects from surrounding regions into knows, this is a hack to prevent 
+                //objects from popping into view as soon as you enter a new region
+                //TODO: Proper region transition
+                player.SetupKnows(NewRegion);
+                
+            }
             //Log.Info($"Current client position: X:{_x}, Y:{_y}, Z:{_z}"); //debug
-            //player.BroadcastUserInfo();
-
-            //player.validateVisibleObjects(_x, _y, true);
+            player.BroadcastUserInfo();
+            player.ValidateVisibleObjects(_x, _y, true);
         }
     }
 }
