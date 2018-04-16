@@ -1482,5 +1482,16 @@ namespace L2dotNET.Models.Player
                 obj.BroadcastUserInfoToObject(this);
             }
         }
+        public void SetupKnows(L2WorldRegion region)
+        {
+            var regions = region.GetSurroundingRegions();
+            foreach (var reg in regions)
+            {
+                foreach (var obj in L2World.Instance.GetObjects().Where(x => x.Region == reg))
+                {
+                    obj.BroadcastUserInfoToObject(this);
+                }
+            }
+        }
     }
 }
