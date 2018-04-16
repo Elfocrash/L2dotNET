@@ -880,7 +880,7 @@ namespace L2dotNET.Models
             double dx = x - X,
                    dy = y - Y;
             //dz = (z - Z);
-            double distance = getPlanDistanceSq(x, y);
+            double distance = GetPlanDistanceSq(x, y);
 
             double spy = dy / distance,
                    spx = dx / distance;
@@ -916,7 +916,7 @@ namespace L2dotNET.Models
             double dx = x - X,
                    dy = y - Y;
             //dz = (z - Z);
-            double distance = getPlanDistanceSq(x, y);
+            double distance = GetPlanDistanceSq(x, y);
 
             double spy = dy / distance,
                    spx = dx / distance;
@@ -1082,7 +1082,7 @@ namespace L2dotNET.Models
         /// <param name="x">X position of the target</param>
         /// <param name="y">Y position of the target</param>
         /// <returns>return the squared plan distance</returns>
-        public double getPlanDistanceSq(int x, int y)
+        public double GetPlanDistanceSq(int x, int y)
         {
             return Math.Sqrt(Math.Pow(x - X, 2) + Math.Pow(y - Y, 2));
         }

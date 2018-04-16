@@ -203,8 +203,7 @@ namespace L2dotNET.Models.Player
             if (file.EndsWithIgnoreCase(".htm"))
             {
                 SendPacket(new NpcHtmlMessage(this, $"./html/{file}", o.ObjId, 0));
-                L2Npc npc = o as L2Npc;
-                if (npc != null)
+                if (o is L2Npc npc)
                     FolkNpc = npc;
             }
             else
@@ -768,14 +767,14 @@ namespace L2dotNET.Models.Player
         public string PenaltyClanCreate = "0";
         public string PenaltyClanJoin = "0";
 
-        public void setPenalty_ClanCreate(DateTime time, bool sql)
+        public void SetPenalty_ClanCreate(DateTime time, bool sql)
         {
             PenaltyClanCreate = DateTime.Now < time ? time.ToString("yyyy-MM-dd HH-mm-ss") : "0";
 
             if (sql) { }
         }
 
-        public void setPenalty_ClanJoin(DateTime time, bool sql)
+        public void SetPenalty_ClanJoin(DateTime time, bool sql)
         {
             PenaltyClanJoin = DateTime.Now < time ? time.ToString("yyyy-MM-dd HH-mm-ss") : "0";
 
@@ -798,7 +797,7 @@ namespace L2dotNET.Models.Player
             IsRestored = true;
         }
 
-        public void db_restoreShortcuts()
+        public void DB_RestoreShortcuts()
         {
             //MySqlConnection connection = SQLjec.getInstance().conn();
             //MySqlCommand cmd = connection.CreateCommand();
