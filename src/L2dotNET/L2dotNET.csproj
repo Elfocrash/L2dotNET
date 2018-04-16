@@ -163,9 +163,11 @@
     <Compile Include="Models\Npcs\Decor\L2PvPSign.cs" />
     <Compile Include="Models\Npcs\Decor\L2StaticObject.cs" />
     <Compile Include="Models\Npcs\Decor\L2TownMap.cs" />
+    <Compile Include="Models\Npcs\L2Merchant.cs" />
     <Compile Include="Models\Npcs\L2Monster.cs" />
     <Compile Include="Models\Npcs\L2Npc.cs" />
     <Compile Include="Models\Npcs\L2Trainer.cs" />
+    <Compile Include="Models\Npcs\L2Warehouse.cs" />
     <Compile Include="Models\Npcs\L2Warrior.cs" />
     <Compile Include="Models\Npcs\SpawnLocation.cs" />
     <Compile Include="Models\Player\Basic\Formulas.cs" />

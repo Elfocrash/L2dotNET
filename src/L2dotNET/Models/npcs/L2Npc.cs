@@ -23,17 +23,12 @@ namespace L2dotNET.Models.Npcs
         public L2Npc(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template)
         {
             Template = template;
-            Template = template;
-            Name = template.Name;
+            Name = Template.Name;
             InitializeCharacterStatus();
+            CharStatus.SetCurrentHp(MaxHp);
+            CharStatus.SetCurrentMp(MaxMp);
             this.spawn = spawn;
             //CStatsInit();
-            //CurHp = 100;
-            //CurCp = 100;
-            //CurMp = 100;
-            //MaxCp = 100;
-            //MaxHp = 100;
-            //MaxMp = 100;
         }
 
         protected L2Spawn spawn;
@@ -64,7 +59,7 @@ namespace L2dotNET.Models.Npcs
 
         public int NpcHashId => Template.NpcId + 1000000;
 
-        public byte isRunning()
+        public byte IsRunning()
         {
             return 1;
         }
@@ -90,6 +85,7 @@ namespace L2dotNET.Models.Npcs
                 player.SendActionFailed();
             }
         }
+
         public override void OnActionShift(L2Player player)
         {
             if (player.Target != this)
@@ -103,6 +99,7 @@ namespace L2dotNET.Models.Npcs
 
             ShowNPCInfo(player);
         }
+
 
         public virtual void OnTeleportRequest(L2Player player)
         {
@@ -208,94 +205,17 @@ namespace L2dotNET.Models.Npcs
 
         public override void OnForcedAttack(L2Player player)
         {
-            bool newtarget = false;
-            if (player.Target == null)
+            
+            if (player.Target != this)
             {
-                player.Target = this;
-                newtarget = true;
-            }
-            else
-            {
-                if (player.Target.ObjId != ObjId)
-                {
-                    player.Target = this;
-                    newtarget = true;
-                }
-            }
-
-            if (newtarget)
+                player.SetTarget(this);
                 player.SendPacket(new MyTargetSelected(ObjId, 0));
-            else
-                player.SendActionFailed();
-        }
+                return;
+            }
 
-        public void ShowPrivateWarehouse(L2Player player)
-        {
-            List<L2Item> items = player.GetAllItems().Where(item => item.IsEquipped != 1).ToList();
+            player.MoveTo(X, Y, Z);
+            player.SendPacket(new MoveToPawn(player, this, 150));
 
-            player.SendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WhPrivate));
-            player.FolkNpc = this;
-        }
-
-        public void ShowClanWarehouse(L2Player player)
-        {
-            //if (player.Clan == null)
-            //{
-            //    player.SendSystemMessage(SystemMessage.SystemMessageId.YouDoNotHaveTheRightToUseClanWarehouse);
-            //    player.SendActionFailed();
-            //    return;
-            //}
-
-            //if (player.Clan.Level == 0)
-            //{
-            //    player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
-            //    player.SendActionFailed();
-            //    return;
-            //}
-
-            List<L2Item> items = player.GetAllItems().Where(item => item.IsEquipped != 1).ToList();
-
-            player.SendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WhClan));
-            player.FolkNpc = this;
-        }
-
-        public void ShowPrivateWarehouseBack(L2Player player)
-        {
-            //if (player._warehouse == null)
-            //{
-            //    player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
-            //    player.sendActionFailed();
-            //    return;
-            //}
-
-            //List<L2Item> items = player.getAllWarehouseItems().Cast<L2Item>().ToList();
-
-            //if (items.Count == 0) // на случай если вх был создан и убраны вещи до времени выхода с сервера
-            //{
-            //    player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
-            //    player.sendActionFailed();
-            //    return;
-            //}
-
-            //player.sendPacket(new WareHouseWithdrawalList(player, items, WareHouseWithdrawalList.WH_PRIVATE));
-            //player.FolkNpc = this;
-        }
-
-        public void ShowClanWarehouseBack(L2Player player)
-        {
-            //if (player.Clan == null)
-            //{
-            //    player.SendSystemMessage(SystemMessage.SystemMessageId.YouDoNotHaveTheRightToUseClanWarehouse);
-            //    player.SendActionFailed();
-            //}
-            //else
-            //{
-            //    if (player.Clan.Level != 0)
-            //        return;
-
-            //    player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
-            //    player.SendActionFailed();
-            //}
         }
 
         public void ShowSkillLearn(L2Player player, bool backward)
@@ -388,7 +308,7 @@ namespace L2dotNET.Models.Npcs
             html.Replace("%tmplid%", Template.IdTemplate);
             html.Replace("%aggro%", Attackable > 0 ? Template.AggroRange : 0);
             html.Replace("%corpse%", Template.CorpseTime);
-            //html.replace("%enchant%", String.valueOf(getTemplate().getEnchantEffect()));
+            html.Replace("%enchant%", Template.EnchantEffect);
             html.Replace("%hp%", CharStatus.CurrentHp);
             html.Replace("%hpmax%", MaxHp);
             html.Replace("%mp%", CharStatus.CurrentMp);
@@ -397,19 +317,20 @@ namespace L2dotNET.Models.Npcs
             html.Replace("%matk%", Template.BaseMAtk);
             html.Replace("%mdef%", Template.BaseMDef);
             html.Replace("%pdef%", Template.BasePDef);
-            html.Replace("%accu%", "Not Defined");
-            html.Replace("%evas%", "Not Defined");
+            html.Replace("%accu%", CharacterStat.Accuracy);
+            html.Replace("%evas%", CharacterStat.EvasionRate(this));
             html.Replace("%crit%", Template.BaseCritRate);
             html.Replace("%aspd%", Template.BasePAtkSpd);
-            html.Replace("%cspd%", "Not Defined");
+            html.Replace("%cspd%", CharacterStat.MAttackSpeed);
+            html.Replace("%rspd%", Template.BaseRunSpd);
             html.Replace("%str%", Str);
             html.Replace("%con%", Con);
+            html.Replace("%dex%", Dex);
             html.Replace("%int%", Int);
             html.Replace("%wit%", Wit);
             html.Replace("%men%", Men);
             html.Replace("%loc%", $"{X} {Y} {Z}");
-            //         html.replace("%dist%", String.valueOf((int)Math.sqrt(player.getDistanceSq(this))));
-
+            html.Replace("%dist%", player.GetPlanDistanceSq(X,Y));
             //         // byte attackAttribute = ((L2Character)this).getAttackElement();
             //         html.replace("%ele_atk_value%", "%todo%" /* String.valueOf(((L2Character)this).getAttackElementValue(attackAttribute)) */);
             //         html.replace("%ele_dfire%", String.valueOf(((L2Character)this).getDefenseElementValue((byte)2)));
@@ -419,20 +340,21 @@ namespace L2dotNET.Models.Npcs
             //         html.replace("%ele_dholy%", String.valueOf(((L2Character)this).getDefenseElementValue((byte)5)));
             //         html.replace("%ele_ddark%", String.valueOf(((L2Character)this).getDefenseElementValue((byte)6)));
 
-            //         if (getSpawn() != null)
-            //         {
-            //             html.replace("%spawn%", getSpawn().getLocx() + " " + getSpawn().getLocy() + " " + getSpawn().getLocz());
-            //             html.replace("%loc2d%", String.valueOf((int)Math.sqrt(((L2Character)this).getPlanDistanceSq(getSpawn().getLocx(), getSpawn().getLocy()))));
-            //             html.replace("%loc3d%", String.valueOf((int)Math.sqrt(((L2Character)this).getDistanceSq(getSpawn().getLocx(), getSpawn().getLocy(), getSpawn().getLocz()))));
-            //             html.replace("%resp%", String.valueOf(getSpawn().getRespawnDelay() / 1000));
-            //         }
-            //         else
-            //         {
-            //             html.replace("%spawn%", "<font color=FF0000>null</font>");
-            //             html.replace("%loc2d%", "<font color=FF0000>--</font>");
-            //             html.replace("%loc3d%", "<font color=FF0000>--</font>");
-            //             html.replace("%resp%", "<font color=FF0000>--</font>");
-            //         }
+            if (spawn != null)
+            {
+                html.Replace("%spawn%", $"{spawn.Location.X} {spawn.Location.Y} {spawn.Location.Z}");
+                html.Replace("%loc2d%", player.GetPlanDistanceSq(spawn.Location.Y,spawn.Location.X));
+                html.Replace("%loc3d%", "<font color=FF0000>--</font>");
+                //html.Replace("%loc3d%", player.getDistanceSq(spawn.Location.X,spawn.Location.Y,spawn.Location.Z); -Not implemented
+                html.Replace("%resp%", spawn.Location.RespawnDelay / 1000);
+            }
+            else
+            {
+                html.Replace("%spawn%", "<font color=FF0000>null</font>");
+                html.Replace("%loc2d%", "<font color=FF0000>--</font>");
+                html.Replace("%loc3d%", "<font color=FF0000>--</font>");
+                html.Replace("%resp%", "<font color=FF0000>--</font>");
+            }
 
             //         if (hasAI())
             //         {
@@ -451,10 +373,10 @@ namespace L2dotNET.Models.Npcs
             //             html.replace("%ai_enemy_clan%", "");
             //         }
 
-            //         if (this instanceof L2MerchantInstance)
-            //	html.replace("%butt%", "<button value=\"Shop\" action=\"bypass -h admin_showShop " + String.valueOf(getTemplate().getNpcId()) + "\" width=65 height=19 back=\"L2UI_ch3.smallbutton2_over\" fore=\"L2UI_ch3.smallbutton2\">");
-            //else
-            //	html.replace("%butt%", "");
+            if (Template.GetType().ToString() == "L2dotNET.Models.Npcs.L2Merchant")
+                html.Replace("%butt%", "<button value=\"Shop\" action=\"bypass -h admin_showShop " + NpcId + "\" width=65 height=19 back=\"L2UI_ch3.smallbutton2_over\" fore=\"L2UI_ch3.smallbutton2\">");
+            else
+            html.Replace("%butt%", "");
 
             player.SendPacket(html);
         }

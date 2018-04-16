@@ -32,6 +32,19 @@ namespace L2dotNET.Network.clientpackets
             return null;
         }
 
+        private L2Warehouse GetWarehouseNPC()
+        {
+            Log.Info($"bypass '{_alias}'");
+            L2Warehouse npc = (L2Warehouse)_client.CurrentPlayer.Target;
+
+            if (npc != null)
+                return npc;
+
+            _client.CurrentPlayer.SendMessage("no npc found");
+            _client.CurrentPlayer.SendActionFailed();
+            return null;
+        }
+
         public override void RunImpl()
         {
             L2Player player = _client.CurrentPlayer;
@@ -43,6 +56,7 @@ namespace L2dotNET.Network.clientpackets
             }
 
             L2Npc npc;
+            L2Warehouse warehouseNPC;
 
             if (_alias.EqualsIgnoreCase("teleport_request"))
             {
@@ -121,31 +135,35 @@ namespace L2dotNET.Network.clientpackets
                                 }
                                 else
                                 {
-                                    if (_alias.EqualsIgnoreCase("deposit"))
+                                    if (_alias.Contains("DepositP"))
                                     {
-                                        npc = GetNpc();
-                                        npc.ShowPrivateWarehouse(player);
+                                        warehouseNPC = GetWarehouseNPC();
+                                        warehouseNPC.ShowPrivateWarehouse(player);
+                                        return;
                                     }
                                     else
                                     {
-                                        if (_alias.EqualsIgnoreCase("withdraw"))
+                                        if (_alias.Contains("WithdrawP"))
                                         {
-                                            npc = GetNpc();
-                                            npc.ShowPrivateWarehouseBack(player);
+                                            warehouseNPC = GetWarehouseNPC();
+                                            warehouseNPC.ShowPrivateWarehouseBack(player);
+                                            return;
                                         }
                                         else
                                         {
-                                            if (_alias.EqualsIgnoreCase("deposit_pledge"))
+                                            if (_alias.Contains("DepositC"))
                                             {
-                                                npc = GetNpc();
-                                                npc.ShowClanWarehouse(player);
+                                                warehouseNPC = GetWarehouseNPC();
+                                                warehouseNPC.ShowClanWarehouse(player);
+                                                return;
                                             }
                                             else
                                             {
-                                                if (_alias.EqualsIgnoreCase("withdraw_pledge"))
+                                                if (_alias.Contains("WithdrawC"))
                                                 {
-                                                    npc = GetNpc();
-                                                    npc.ShowClanWarehouseBack(player);
+                                                    warehouseNPC = GetWarehouseNPC();
+                                                    warehouseNPC.ShowClanWarehouseBack(player);
+                                                    return;
                                                 }
                                                 else
                                                 {

@@ -12,9 +12,6 @@ namespace L2dotNET.Models.Npcs
     {
         private readonly ILog Log = LogManager.GetLogger(typeof(L2Monster));
 
-        public override int MaxHp => (int)Template.Hp;
-        public override int MaxMp => (int)Template.Mp;
-
         public L2Trainer(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
         {
             Template = template;

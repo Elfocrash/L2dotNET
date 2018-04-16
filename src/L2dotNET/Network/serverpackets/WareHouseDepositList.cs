@@ -42,9 +42,9 @@ namespace L2dotNET.Network.serverpackets
                 WriteShort(0);
                 //writeD(item.AugmentationID);
                 WriteInt(item.ObjId);
-                WriteLong(0x00);
-                _items.Clear();
+                WriteLong(0x00);                
             }
+            _items.Clear();
         }
     }
 }

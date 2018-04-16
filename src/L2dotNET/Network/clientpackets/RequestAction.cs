@@ -27,13 +27,9 @@ namespace L2dotNET.Network.clientpackets
             _actionId = packet.ReadByte(); // Action identifier : 0-Simple click, 1-Shift click
         }
 
-       
-
         public override void RunImpl()
         {
-            
             L2Player player = _client.CurrentPlayer;
-
             L2Object obj = null;
 
             if (_objectId == player.ObjId)
@@ -60,6 +56,9 @@ namespace L2dotNET.Network.clientpackets
                     break;
                 case 1:
                     obj.OnActionShift(player);
+                    break;
+                default:
+                    player.SendActionFailed();
                     break;
             }
         }

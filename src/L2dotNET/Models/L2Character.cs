@@ -67,6 +67,12 @@ namespace L2dotNET.Models
 
         public int Wit => CharacterStat.Wit;
 
+        public int MaxHp => CharacterStat.MaxHp;
+
+        public int MaxMp => CharacterStat.MaxMp;
+
+        public int MaxCp => CharacterStat.MaxCp;
+
         protected byte zoneValidateCounter = 4;
 
         public CharStatus CharStatus { get; set; }
@@ -221,25 +227,7 @@ namespace L2dotNET.Models
 
         public override void OnForcedAttack(L2Player player)
         {
-            bool newtarget = false;
-            if (player.Target == null)
-            {
-                player.Target = this;
-                newtarget = true;
-            }
-            else
-            {
-                if (player.Target.ObjId != ObjId)
-                {
-                    player.Target = this;
-                    newtarget = true;
-                }
-            }
-
-            if (newtarget)
-                player.SendPacket(new MyTargetSelected(ObjId, 0));
-            else
-                player.SendActionFailed();
+            player.SendActionFailed();
         }
 
         public override void OnSpawn(bool notifyOthers = true)
@@ -252,7 +240,6 @@ namespace L2dotNET.Models
         {
             //foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
             //    o.SendPacket(new DeleteObject(ObjId));
-
         }
 
         public void RevalidateZone(bool force)
@@ -893,7 +880,7 @@ namespace L2dotNET.Models
             double dx = x - X,
                    dy = y - Y;
             //dz = (z - Z);
-            double distance = getPlanDistanceSq(x, y);
+            double distance = GetPlanDistanceSq(x, y);
 
             double spy = dy / distance,
                    spx = dx / distance;
@@ -929,7 +916,7 @@ namespace L2dotNET.Models
             double dx = x - X,
                    dy = y - Y;
             //dz = (z - Z);
-            double distance = getPlanDistanceSq(x, y);
+            double distance = GetPlanDistanceSq(x, y);
 
             double spy = dy / distance,
                    spx = dx / distance;
@@ -1034,9 +1021,6 @@ namespace L2dotNET.Models
             return (AttackToEnd != null) && AttackToEnd.Enabled;
         }
 
-        public virtual int MaxHp => CharacterStat.MaxHp;
-        public virtual int MaxMp => CharacterStat.MaxMp;
-
         public override string AsString()
         {
             return $"L2Character: {ObjId}";
@@ -1098,7 +1082,7 @@ namespace L2dotNET.Models
         /// <param name="x">X position of the target</param>
         /// <param name="y">Y position of the target</param>
         /// <returns>return the squared plan distance</returns>
-        public double getPlanDistanceSq(int x, int y)
+        public double GetPlanDistanceSq(int x, int y)
         {
             return Math.Sqrt(Math.Pow(x - X, 2) + Math.Pow(y - Y, 2));
         }
