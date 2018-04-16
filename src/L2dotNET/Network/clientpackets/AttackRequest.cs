@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
-using L2dotNET.Network.serverpackets;
 using L2dotNET.World;
+using log4net;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -14,6 +14,8 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _originY;
         private readonly int _originZ;
         private readonly int _attackId;
+
+        private static readonly ILog Log = LogManager.GetLogger(typeof(AttackRequest));
 
         public AttackRequest(Packet packet, GameClient client)
         {
@@ -28,6 +30,7 @@ namespace L2dotNET.Network.clientpackets
         public override void RunImpl()
         {
             L2Player player = _client.CurrentPlayer;
+            L2Object obj = null;
 
             if (player.PBlockAct == 1)
             {
@@ -36,16 +39,12 @@ namespace L2dotNET.Network.clientpackets
             }
 
             if (_objectId == player.ObjId)
+                obj = player;
+            else
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotUseOnYourself);
-                player.SendActionFailed();
-                return;
+                if (L2World.Instance.GetObject(_objectId) != null)
+                    obj = L2World.Instance.GetObject(_objectId);
             }
-
-            if (!player.KnownObjects.Any(filter => filter.Key == _objectId))
-                return;
-
-            L2Object obj = player.KnownObjects[_objectId];
 
             if (obj == null)
             {
@@ -63,7 +62,7 @@ namespace L2dotNET.Network.clientpackets
             //    }
             //}
 
-            obj.OnForcedAttack(player);
+            obj.OnForcedAttack(player); 
         }
     }
 }

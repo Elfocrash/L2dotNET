@@ -9,15 +9,13 @@ using L2dotNET.Tables;
 
 namespace L2dotNET.Models.Npcs
 {
-    class L2Monster : L2Npc
+    class L2Merchant : L2Npc
     {
-        private readonly ILog Log = LogManager.GetLogger(typeof(L2Monster));
+        private readonly ILog Log = LogManager.GetLogger(typeof(L2Merchant));
 
         private Timer CorpseTimer;
 
-        public override int Attackable => 1;
-
-        public L2Monster(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
+        public L2Merchant(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
         {
             Template = template;
             Name = template.Name;
@@ -33,7 +31,7 @@ namespace L2dotNET.Models.Npcs
             {
                 // TODO: Sends to all players on the server. It is not right
                 pl.Gameclient.SendPacket(pk);
-            }      
+            }
         }
 
         public override void OnAction(L2Player player)
@@ -47,25 +45,10 @@ namespace L2dotNET.Models.Npcs
             player.MoveTo(X, Y, Z);
             player.SendPacket(new MoveToPawn(player, this, 150));
 
-            player.DoAttack(this);
-        }
-
-        public override void OnForcedAttack(L2Player player)
-        {
-            if (player.Target != this)
-            {
-                player.SetTarget(this);
-                player.SendPacket(new MyTargetSelected(ObjId, 0));
-                return;
-            }
-            player.MoveTo(X, Y, Z);
-            player.SendPacket(new MoveToPawn(player, this, 150));
-
-            player.DoAttack(this);
         }
 
         public override void DoDie(L2Character killer)
-        {         
+        {
             lock (this)
             {
                 if (Dead)
@@ -74,11 +57,6 @@ namespace L2dotNET.Models.Npcs
                 CharStatus.SetCurrentHp(0);
 
                 Dead = true;
-            }
-            //Check For Exp
-            if (killer is L2Player)
-            {
-                ((L2Player)killer).AddExpSp(this.Template.Exp, this.Template.Sp, true);
             }
 
             Target = null;
@@ -90,11 +68,14 @@ namespace L2dotNET.Models.Npcs
             CharStatus.StopHpMpRegeneration();
 
             BroadcastPacket(new Die(this));
+
             SpawnTable.Instance.RegisterRespawn(spawn);
+
             if (Template.CorpseTime <= 0)
             {
                 return;
             }
+
             CorpseTimer = new Timer(Template.CorpseTime * 1000);
             CorpseTimer.Elapsed += new ElapsedEventHandler(RemoveCorpse);
             CorpseTimer.Start();

@@ -67,6 +67,12 @@ namespace L2dotNET.Models
 
         public int Wit => CharacterStat.Wit;
 
+        public int MaxHp => CharacterStat.MaxHp;
+
+        public int MaxMp => CharacterStat.MaxMp;
+
+        public int MaxCp => CharacterStat.MaxCp;
+
         protected byte zoneValidateCounter = 4;
 
         public CharStatus CharStatus { get; set; }
@@ -221,25 +227,7 @@ namespace L2dotNET.Models
 
         public override void OnForcedAttack(L2Player player)
         {
-            bool newtarget = false;
-            if (player.Target == null)
-            {
-                player.Target = this;
-                newtarget = true;
-            }
-            else
-            {
-                if (player.Target.ObjId != ObjId)
-                {
-                    player.Target = this;
-                    newtarget = true;
-                }
-            }
-
-            if (newtarget)
-                player.SendPacket(new MyTargetSelected(ObjId, 0));
-            else
-                player.SendActionFailed();
+            player.SendActionFailed();
         }
 
         public override void OnSpawn(bool notifyOthers = true)
@@ -252,7 +240,6 @@ namespace L2dotNET.Models
         {
             //foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
             //    o.SendPacket(new DeleteObject(ObjId));
-
         }
 
         public void RevalidateZone(bool force)
@@ -1033,9 +1020,6 @@ namespace L2dotNET.Models
         {
             return (AttackToEnd != null) && AttackToEnd.Enabled;
         }
-
-        public virtual int MaxHp => CharacterStat.MaxHp;
-        public virtual int MaxMp => CharacterStat.MaxMp;
 
         public override string AsString()
         {

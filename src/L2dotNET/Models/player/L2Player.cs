@@ -62,14 +62,11 @@ namespace L2dotNET.Models.Player
         public long ExpOnDeath { get; set; }
         public long ExpAfterLogin { get; set; }
         public int Sp { get; set; }
-        public override int MaxHp => CharacterStat.MaxHp;
-        public int MaxCp => CharacterStat.MaxCp;
         public double CurCp
         {
             get => CharStatus.CurrentCp;
             set => CharStatus.SetCurrentCp(value);
         }
-        public override int MaxMp => CharacterStat.MaxMp;
         public int Karma { get; set; }
         public int PvpKills { get; set; }
         public long DeleteTime { get; set; }
