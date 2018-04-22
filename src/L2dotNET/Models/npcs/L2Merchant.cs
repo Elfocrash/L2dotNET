@@ -39,7 +39,6 @@ namespace L2dotNET.Models.Npcs
             if (player.Target != this)
             {
                 player.SetTarget(this);
-                player.SendPacket(new MyTargetSelected(ObjId, 0));
                 return;
             }
             player.MoveTo(X, Y, Z);
