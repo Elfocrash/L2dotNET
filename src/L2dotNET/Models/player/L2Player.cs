@@ -620,7 +620,7 @@ namespace L2dotNET.Models.Player
                     if (newTarget.ObjId != ObjId)
                         SendPacket(new ValidateLocation(newTarget));
 
-                    SendPacket(new MyTargetSelected(newTarget.ObjId, 0));
+                    SendPacket(new MyTargetSelected(newTarget.ObjId, Level - newTarget.Level));
 
                     newTarget.CharStatus.AddStatusListener(this);
 
