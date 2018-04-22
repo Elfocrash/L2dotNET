@@ -41,7 +41,7 @@ namespace L2dotNET
 
         public GameClient(TcpClient tcpClient)
         {
-            Log.Info($"connection from {tcpClient.Client.RemoteEndPoint}");
+            Log.Info($"Connection from {tcpClient.Client.RemoteEndPoint}");
             Client = tcpClient;
             Stream = tcpClient.GetStream();
             Address = tcpClient.Client.RemoteEndPoint;
@@ -83,7 +83,7 @@ namespace L2dotNET
             }
             catch
             {
-                Log.Info($"client {AccountName} terminated.");
+                Log.Info($"Client {AccountName} terminated.");
                 Termination();
             }
         }

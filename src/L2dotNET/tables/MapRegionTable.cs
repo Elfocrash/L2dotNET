@@ -68,7 +68,7 @@ namespace L2dotNET.Tables
                 }
             }
 
-            Log.Info($"MapRegionTable: Loaded {count} regions.");
+            Log.Info($"Loaded {count} regions.");
         }
 
         public static int GetMapRegion(int posX, int posY)

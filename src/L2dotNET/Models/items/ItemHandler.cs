@@ -36,7 +36,7 @@ namespace L2dotNET.Models.Items
             Register(new Calculator());
 
             LoadXml();
-            Log.Info($"ItemHandler: Loaded {_effects} effects with {Items.Count} items.");
+            Log.Info($"Loaded {_effects} effects with {Items.Count} items.");
         }
 
         public SortedList<int, ItemEffect> Items = new SortedList<int, ItemEffect>();

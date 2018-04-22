@@ -70,7 +70,7 @@ namespace L2dotNET.LoginService.Managers
                 }
             }
 
-            Log.Info($"NetworkBlock: {_blocks.Count} blocks.");
+            Log.Info($"{_blocks.Count} network blocks.");
         }
 
         public bool Allowed(string ip)

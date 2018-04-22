@@ -43,7 +43,7 @@ namespace L2dotNET.Managers
         public void Initialize()
         {
             Announcements = ServerService.GetAnnouncementsList();
-            Log.Info($"Announcement manager: Loaded {Announcements.Count} annoucements.");
+            Log.Info($"Loaded {Announcements.Count} annoucements.");
         }
 
         public void Announce(string text)

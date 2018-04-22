@@ -52,7 +52,7 @@ namespace L2dotNET.Tables
                 Spawns.Add(l2Spawn);
             });
 
-            Log.Info($"SpawnTable: Spawned {spawnsList.Count} npcs.");
+            Log.Info($"Spawned {spawnsList.Count} npcs.");
 
             if (Config.Config.Instance.GameplayConfig.NpcConfig.Misc.AutoMobRespawn)
             {
@@ -61,7 +61,7 @@ namespace L2dotNET.Tables
                 RespawnTimerTask.Interval = 2000;
                 RespawnTimerTask.Start();
 
-                Log.Info($"SpawnTable: Started RespawnTimerTask.");
+                Log.Info($"Started RespawnTimerTask.");
             }
         }
 

@@ -63,7 +63,7 @@ namespace L2dotNET
             if (!Banned.Allowed(ip))
             {
                 client.Close();
-                log.Error($"NetworkBlock: connection attemp failed. {ip} banned.");
+                log.Error($"Connection attempt failed. {ip} banned.");
                 return;
             }
 
@@ -71,7 +71,7 @@ namespace L2dotNET
 
             lock (Clients)
                 Clients.Add(gc.Address.ToString(), gc);
-            log.Info($"NetController: {Clients.Count} active connections");
+            log.Info($"{Clients.Count} active connections");
         }
 
         public void Terminate(string sock)
@@ -79,7 +79,7 @@ namespace L2dotNET
             lock (Clients)
                 Clients.Remove(sock);
 
-            log.Info($"NetController: {Clients.Count} active connections");
+            log.Info($"{Clients.Count} active connections");
         }
     }
 }

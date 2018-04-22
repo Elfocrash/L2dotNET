@@ -91,7 +91,7 @@ namespace L2dotNET.Tables
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            Log.Info($"ItemTable: Loaded #{Armors.Count} armors, #{Weapons.Count} weapons and #{EtcItems.Count} etc items.");
+            Log.Info($"Loaded #{Armors.Count} armors, #{Weapons.Count} weapons and #{EtcItems.Count} etc items.");
         }
 
         public L2Item CreateItem(int itemId, int count, L2Player actor)

@@ -56,7 +56,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _thread.Connected = true;
             _thread.Send(ServerLoginOk.ToPacket());
 
-            Log.Info($"AuthThread: Server #{server.Id} connected");
+            Log.Info($"Server #{server.Id} connected");
         }
     }
 }

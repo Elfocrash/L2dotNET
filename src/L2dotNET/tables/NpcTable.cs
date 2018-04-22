@@ -98,11 +98,11 @@ namespace L2dotNET.Tables
                     }
                 }
 
-                Log.Info($"NpcTable: Loaded {_npcs.Count} npcs.");
+                Log.Info($"Loaded {_npcs.Count} npcs.");
             }
             catch (Exception e)
             {
-                Log.Error("NpcTable: Error parsing NPC templates : ", e);
+                Log.Error("Error parsing NPC templates: ", e);
             }
         }
     }

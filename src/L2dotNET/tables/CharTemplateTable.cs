@@ -77,7 +77,7 @@ namespace L2dotNET.Tables
                 }
             }
 
-            Log.Info($"CharTemplateTable: Loaded {Templates.Count} character templates.");
+            Log.Info($"Loaded {Templates.Count} character templates.");
         }
 
         public PcTemplate GetTemplate(ClassIds classId)

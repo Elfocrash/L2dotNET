@@ -72,7 +72,7 @@ namespace L2dotNET.World
                             if (ValidRegion(x + a, y + b))
                                 _worldRegions[x + a, y + b].AddSurroundingRegion(_worldRegions[x, y]);
 
-            Log.Info($"L2World: WorldRegion grid ({RegionsX} by {RegionsY}) is now setted up.");
+            Log.Info($"WorldRegion grid ({RegionsX} by {RegionsY}) is now setted up.");
         }
 
         public void AddObject(L2Object obj)

@@ -55,7 +55,7 @@ namespace L2dotNET.Controllers
             };
             _timeController.Elapsed += ActionTime;
 
-            Log.Info("GameTime Controller: started 18:00 PM.");
+            Log.Info("Started 18:00 PM.");
         }
 
         private void ActionTime(object sender, System.Timers.ElapsedEventArgs e)

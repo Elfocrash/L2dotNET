@@ -56,7 +56,7 @@ namespace L2dotNET.LoginService.Managers
                 }
             }
 
-            Log.Info($"NetworkRedirect: {Redirects.Count} redirects. Global is {(GlobalRedirection == null ? "disabled" : "enabled")}");
+            Log.Info($"{Redirects.Count} redirects. Global is {(GlobalRedirection == null ? "disabled" : "enabled")}");
         }
 
         public byte[] GetRedirect(LoginClient client, short serverId)

@@ -34,7 +34,7 @@ namespace L2dotNET.Models.Items
         public void Initialize()
         {
             LoadXml();
-            Log.Info($"Capsule: Loaded {Items.Count} items.");
+            Log.Info($"Loaded {Items.Count} items.");
         }
 
         public SortedList<int, CapsuleItem> Items = new SortedList<int, CapsuleItem>();

@@ -42,11 +42,11 @@ namespace L2dotNET.Tables
             if (!Config.Config.Instance.ServerConfig.LazyHtmlCache)
             {
                 BuildHtmCache();
-                Log.Info($"HtmCache: Cache Built. Loaded {_htmCache.Count} files.");
+                Log.Info($"Cache Built. Loaded {_htmCache.Count} files.");
             }
             else
             {
-                Log.Info($"HtmCache: Lazy Cached {_htmFiles.Count} files.");
+                Log.Info($"Lazy Cached {_htmFiles.Count} files.");
             }
         }
 

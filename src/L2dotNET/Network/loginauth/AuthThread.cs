@@ -93,7 +93,7 @@ namespace L2dotNET.Network.loginauth
             }
             catch (Exception e)
             {
-                Log.Error($"AuthThread: {e.Message}");
+                Log.Error($"{e.Message}");
                 Termination();
             }
         }
@@ -112,7 +112,7 @@ namespace L2dotNET.Network.loginauth
             }
             catch (Exception e)
             {
-                Log.Error($"AuthThread: {e.Message}");
+                Log.Error($"{e.Message}");
                 Termination();
             }
         }
@@ -135,7 +135,7 @@ namespace L2dotNET.Network.loginauth
             if (_paused)
                 return;
 
-            Log.Error("AuthThread: reconnecting...");
+            Log.Error("Reconnecting...");
             Initialize();
         }
 
@@ -159,7 +159,7 @@ namespace L2dotNET.Network.loginauth
         public void LoginFail(string code)
         {
             _paused = true;
-            Log.Error($"AuthThread: {code}. Please check configuration, server paused.");
+            Log.Error($"{code}. Please check configuration, server paused.");
             try
             {
                 Nstream.Close();
@@ -167,13 +167,13 @@ namespace L2dotNET.Network.loginauth
             }
             catch (Exception e)
             {
-                Log.Error($"AuthThread: {e.Message}");
+                Log.Error($"{e.Message}");
             }
         }
 
         public void LoginOk(string code)
         {
-            Log.Info($"AuthThread: {code}");
+            Log.Info($"{code}");
         }
 
         public void SetInGameAccount(string account, bool status = false)

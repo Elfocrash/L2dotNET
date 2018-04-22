@@ -59,7 +59,7 @@ namespace L2dotNET.Scripting
                     objectList.Add(result.CompiledAssembly.CreateInstance(Path.GetFileNameWithoutExtension(info.Name)));
             }
 
-            Log.Info($"Script Compiler: Compiled {objectList.Count} scripted quests.");
+            Log.Info($"Compiled {objectList.Count} scripted quests.");
 
             return objectList.ToArray();
         }
