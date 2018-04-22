@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Remoting.Contexts;
 using log4net;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
@@ -8,7 +7,6 @@ using L2dotNET.World;
 
 namespace L2dotNET.Controllers
 {
-    [Synchronization]
     public class GameTime
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(GameTime));

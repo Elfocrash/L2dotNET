@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Timers;
 using log4net;
 using L2dotNET.Enums;
@@ -25,7 +24,7 @@ using Ninject;
 
 namespace L2dotNET.Models.Player
 {
-    [Synchronization]
+    
     public class L2Player : L2Character
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(L2Player));

@@ -57,7 +57,7 @@ namespace L2dotNET.GameService
             }
             catch(Exception ex)
             {
-                Console.WriteLine("EXCEPTION : " + ex.Message);
+                Console.WriteLine("EXCEPTION : " + ex.Message + " " + ex.Data + " " + ex.Source + ex.StackTrace);
             }
         }
 

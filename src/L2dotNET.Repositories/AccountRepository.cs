@@ -19,7 +19,7 @@ namespace L2dotNET.Repositories
 
         public AccountRepository()
         {
-            Db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
+            Db = new MySqlConnection("Server = localhost; Database = l2dotnet; Uid = root; Pwd = root; SslMode=none;");
         }
 
         public AccountContract GetAccountByLogin(string login)

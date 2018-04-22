@@ -20,7 +20,7 @@ namespace L2dotNET.LoginService
 
         public void Start()
         {
-            CheckRunningProcesses();
+           // CheckRunningProcesses();
 
             Config.Config.Instance.Initialize();
             PreReqValidation.Instance.Initialize();

@@ -12,6 +12,9 @@ using L2dotNET.Tables;
 using L2dotNET.Utility;
 using L2dotNET.World;
 using Ninject;
+using log4net.Config;
+using System.IO;
+using System.Reflection;
 
 namespace L2dotNET
 {
@@ -25,6 +28,9 @@ namespace L2dotNET
 
         public void Start()
         {
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository,new FileInfo("log4net.config"));
+
             Config.Config.Instance.Initialize();
 
             PreReqValidation.Instance.Initialize();

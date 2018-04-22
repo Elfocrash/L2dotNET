@@ -1,68 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0A70C676-F9BD-4593-9EF4-B22F8E170AED}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>L2dotNET.Services</RootNamespace>
-    <AssemblyName>L2dotNET.Services</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <PackageReference Include="Dapper" Version="1.50.4" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Ninject" Version="3.3.4" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="CheckService.cs" />
-    <Compile Include="AccountService.cs" />
-    <Compile Include="Contracts\ICheckService.cs" />
-    <Compile Include="Contracts\IAccountService.cs" />
-    <Compile Include="Contracts\IItemService.cs" />
-    <Compile Include="Contracts\IPlayerService.cs" />
-    <Compile Include="Contracts\IServerService.cs" />
-    <Compile Include="ItemService.cs" />
-    <Compile Include="PlayerService.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServerService.cs" />
+    <ProjectReference Include="..\L2dotNET.Models\L2dotNET.DataContracts.csproj" />
+    <ProjectReference Include="..\L2dotNET.Repositories\L2dotNET.Repositories.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\L2dotNET.Models\L2dotNET.DataContracts.csproj">
-      <Project>{89e4eef5-7121-435c-817f-1cd8d595f72a}</Project>
-      <Name>L2dotNET.DataContracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\L2dotNET.Repositories\L2dotNET.Repositories.csproj">
-      <Project>{34030afb-511d-4a7a-8711-71e0364e2f64}</Project>
-      <Name>L2dotNET.Repositories</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

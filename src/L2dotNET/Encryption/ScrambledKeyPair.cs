@@ -21,6 +21,7 @@ namespace L2dotNET.Encryption
             if (rsaKeyParameters != null)
                 ScrambledModulus = ScrambleModulus(rsaKeyParameters.getModulus());
             PrivateKey = pPair.getPrivate();
+            
         }
 
         public static AsymmetricCipherKeyPair GenKeyPair()
