@@ -45,8 +45,8 @@ namespace L2dotNET.Tables
 
         public void Initialize()
         {
-            _currentId = ServerService.GetPlayersObjectIdList().DefaultIfEmpty(IdMin).Max();
-
+            
+            _currentId = ServerService.GetPlayersItemsObjectIdList().DefaultIfEmpty(IdMin).Max();
             Log.Info($"Used IDs {_currentId}.");
         }
     }

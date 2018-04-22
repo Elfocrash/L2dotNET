@@ -47,6 +47,19 @@ namespace L2dotNET.Repositories
             }
         }
 
+        public List<int> GetPlayersItemsObjectIdList()
+        {
+            try
+            {
+                return Db.Query<int>("select object_id from items").ToList();
+            }
+            catch (MySqlException ex)
+            {
+                Log.Error($"Method: {nameof(GetPlayersItemsObjectIdList)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
+                return new List<int>();
+            }
+        }
+
         public List<AnnouncementContract> GetAnnouncementsList()
         {
             try

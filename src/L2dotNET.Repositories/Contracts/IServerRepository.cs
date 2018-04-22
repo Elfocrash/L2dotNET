@@ -9,6 +9,8 @@ namespace L2dotNET.Repositories.Contracts
 
         List<int> GetPlayersObjectIdList();
 
+        List<int> GetPlayersItemsObjectIdList();
+
         List<AnnouncementContract> GetAnnouncementsList();
 
         List<SpawnlistContract> GetAllSpawns();

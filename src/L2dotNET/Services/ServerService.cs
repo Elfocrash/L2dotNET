@@ -24,6 +24,11 @@ namespace L2dotNET.Services
             return _unitOfWork.ServerRepository.GetPlayersObjectIdList();
         }
 
+        public List<int> GetPlayersItemsObjectIdList()
+        {
+            return _unitOfWork.ServerRepository.GetPlayersItemsObjectIdList();
+        }
+
         public List<AnnouncementContract> GetAnnouncementsList()
         {
             return _unitOfWork.ServerRepository.GetAnnouncementsList();
