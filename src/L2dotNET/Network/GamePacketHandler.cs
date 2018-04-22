@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Runtime.Remoting.Contexts;
 using log4net;
 using L2dotNET.Network.clientpackets;
 using L2dotNET.Network.clientpackets.ClanAPI;
@@ -12,7 +11,6 @@ using L2dotNET.Network.clientpackets.VehicleAPI;
 
 namespace L2dotNET.Network
 {
-    [Synchronization]
     public class GamePacketHandler
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(GamePacketHandler));

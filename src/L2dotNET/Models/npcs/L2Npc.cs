@@ -59,7 +59,7 @@ namespace L2dotNET.Models.Npcs
 
         public int NpcHashId => Template.NpcId + 1000000;
 
-        public byte IsRunning()
+        public new byte IsRunning()
         {
             return 1;
         }

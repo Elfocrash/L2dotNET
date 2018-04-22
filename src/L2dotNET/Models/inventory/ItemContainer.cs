@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using L2dotNET.DataContracts;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
@@ -11,7 +10,6 @@ using Ninject;
 
 namespace L2dotNET.Models.Inventory
 {
-    [Synchronization]
     public abstract class ItemContainer
     {
         [Inject]

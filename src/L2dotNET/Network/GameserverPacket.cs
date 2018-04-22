@@ -1,10 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Remoting.Contexts;
 
 namespace L2dotNET.Network
 {
-    [Synchronization]
     public abstract class GameserverPacket
     {
         private readonly MemoryStream _stream = new MemoryStream();

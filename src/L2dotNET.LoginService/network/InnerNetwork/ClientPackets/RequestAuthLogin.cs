@@ -7,7 +7,6 @@ using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;
 using Ninject;
-using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Engines;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
@@ -34,8 +33,8 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
                 _client.Close();
                 return;
             }
-
-            CipherParameters key = _client.RsaPair._privateKey;
+            
+            var key = _client.RsaPair._privateKey;
             RSAEngine rsa = new RSAEngine();
             rsa.init(false, key);
 

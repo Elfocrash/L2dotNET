@@ -4,6 +4,8 @@ using System.Globalization;
 using System.Threading;
 using log4net;
 using Ninject;
+using System.Reflection;
+using log4net.Config;
 
 namespace L2dotNET.LoginService
 {

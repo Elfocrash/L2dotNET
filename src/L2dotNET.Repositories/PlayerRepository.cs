@@ -17,7 +17,7 @@ namespace L2dotNET.Repositories
 
         public PlayerRepository()
         {
-            Db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
+            Db = new MySqlConnection("Server = localhost; Database = l2dotnet; Uid = root; Pwd = root; SslMode=none;");
         }
 
         public PlayerContract GetPlayerByLogin(int objId)

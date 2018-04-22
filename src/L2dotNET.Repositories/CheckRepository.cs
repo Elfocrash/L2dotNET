@@ -26,7 +26,7 @@ namespace L2dotNET.Repositories
 
         public CheckRepository()
         {
-            Db = new MySqlConnection(ConfigurationManager.ConnectionStrings["PrimaryConnection"].ToString());
+            Db = new MySqlConnection("Server = localhost; Database = l2dotnet; Uid = root; Pwd = root; sslmode = none;");
 
             MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(Db.ConnectionString);
             _host = connStrBuilder.Server;

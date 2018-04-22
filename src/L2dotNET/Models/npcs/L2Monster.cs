@@ -6,6 +6,7 @@ using System.Timers;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
 using L2dotNET.Tables;
+using System.Linq;
 
 namespace L2dotNET.Models.Npcs
 {
@@ -27,15 +28,6 @@ namespace L2dotNET.Models.Npcs
             //Stats = new CharacterStat(this);
         }
 
-        public override void SendPacket(GameserverPacket pk)
-        {
-            foreach (L2Player pl in L2World.Instance.GetPlayers())
-            {
-                // TODO: Sends to all players on the server. It is not right
-                pl.Gameclient.SendPacket(pk);
-            }      
-        }
-
         public override void OnAction(L2Player player)
         {
             if (player.Target != this)
@@ -44,7 +36,8 @@ namespace L2dotNET.Models.Npcs
                 player.SendPacket(new MyTargetSelected(ObjId, 0));
                 return;
             }
-            player.MoveTo(X, Y, Z);
+
+            player.TryMoveTo(X, Y, Z);
             player.SendPacket(new MoveToPawn(player, this, 150));
 
             player.DoAttack(this);
@@ -58,8 +51,10 @@ namespace L2dotNET.Models.Npcs
                 player.SendPacket(new MyTargetSelected(ObjId, 0));
                 return;
             }
-            player.MoveTo(X, Y, Z);
-            player.SendPacket(new MoveToPawn(player, this, 150));
+
+            player.TryMoveTo(X, Y, Z);
+            
+            player.SendPacket(new MoveToPawn(player, this, (int)player.GetPlanDistanceSq(X,Y)));
 
             player.DoAttack(this);
         }

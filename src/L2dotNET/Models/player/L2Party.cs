@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Timers;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Models.Player
 {
-    [Synchronization]
+
     public class L2Party
     {
         public LinkedList<L2Player> Members;

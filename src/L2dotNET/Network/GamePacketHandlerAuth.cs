@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Runtime.Remoting.Contexts;
 using log4net;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Network.loginauth.recv;
 
 namespace L2dotNET.Network
 {
-    [Synchronization]
     public class GamePacketHandlerAuth
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(GamePacketHandlerAuth));
