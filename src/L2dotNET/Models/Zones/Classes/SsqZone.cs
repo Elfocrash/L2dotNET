@@ -6,9 +6,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     class SsqZone : L2Zone
     {
-        public SsqZone()
+        public SsqZone(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
             Enabled = true;
         }
 

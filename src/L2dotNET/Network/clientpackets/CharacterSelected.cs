@@ -1,13 +1,13 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
-using Ninject;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Network.clientpackets
 {
     class CharacterSelected : PacketBase
     {
-        [Inject]
-        public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
+        private readonly IPlayerService _playerService;
 
         private readonly GameClient _client;
         private readonly int _charSlot;
@@ -16,9 +16,10 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _unk3; // new in C4
         private readonly int _unk4; // new in C4
 
-        public CharacterSelected(Packet packet, GameClient client)
+        public CharacterSelected(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
+            _playerService = serviceProvider.GetService<IPlayerService>();
             _charSlot = packet.ReadInt();
             _unk1 = packet.ReadShort();
             _unk2 = packet.ReadInt();
@@ -30,7 +31,7 @@ namespace L2dotNET.Network.clientpackets
         {
             //if (_client.CurrentPlayer == null)
             {
-                L2Player player = PlayerService.GetPlayerBySlotId(_client.AccountName, _charSlot);
+                L2Player player = _playerService.GetPlayerBySlotId(_client.AccountName, _charSlot);
 
                 if (player == null)
                     return;

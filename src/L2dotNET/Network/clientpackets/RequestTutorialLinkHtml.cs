@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Utility;
 
@@ -9,7 +10,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly GameClient _client;
         private readonly string _link;
 
-        public RequestTutorialLinkHtml(Packet packet, GameClient client)
+        public RequestTutorialLinkHtml(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _link = packet.ReadString();

@@ -7,7 +7,6 @@ using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
 using L2dotNET.Models.Zones.Type;
 using L2dotNET.Utility;
-using L2dotNET.World;
 
 namespace L2dotNET.Tables
 {

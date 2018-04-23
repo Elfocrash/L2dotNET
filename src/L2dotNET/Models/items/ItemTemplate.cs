@@ -84,7 +84,7 @@ namespace L2dotNET.Models.Items
 
             MaterialType = (MaterialType)set.GetInt("material");
             Duration = set.GetInt("duration", -1);
-            BodyPart = ItemTable.Instance.Slots[set.GetString("bodypart", "none")];
+            BodyPart = ItemSlots.ToDictionary()[set.GetString("bodypart", "none")];
             ReferencePrice = set.GetInt("price");
             CrystalType = CrystalType.Values.FirstOrDefault(x => x.Id == (CrystalTypeId)set.GetInt("crystal_type"));
             _crystalCount = set.GetInt("crystal_count");

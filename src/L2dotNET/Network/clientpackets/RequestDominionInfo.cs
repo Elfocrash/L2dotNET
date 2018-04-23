@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -6,7 +7,7 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly GameClient _client;
 
-        public RequestDominionInfo(Packet packet, GameClient client)
+        public RequestDominionInfo(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             packet.MoveOffset(2);
             _client = client;

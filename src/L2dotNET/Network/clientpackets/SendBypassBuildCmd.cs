@@ -1,5 +1,7 @@
-﻿using L2dotNET.Handlers;
+﻿using System;
+using L2dotNET.Handlers;
 using L2dotNET.Models.Player;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -7,10 +9,12 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly GameClient _client;
         private readonly string _alias;
+        private readonly IAdminCommandHandler _adminCommandHandler;
 
-        public SendBypassBuildCmd(Packet packet, GameClient client)
+        public SendBypassBuildCmd(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
+            _adminCommandHandler = serviceProvider.GetService<IAdminCommandHandler>();
             _alias = packet.ReadString().Trim();
         }
 
@@ -18,7 +22,7 @@ namespace L2dotNET.Network.clientpackets
         {
             L2Player player = _client.CurrentPlayer;
 
-            AdminCommandHandler.Instance.Request(player, _alias);
+            _adminCommandHandler.Request(player, _alias);
         }
     }
 }

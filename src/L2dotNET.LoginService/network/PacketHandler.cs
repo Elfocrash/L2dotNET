@@ -13,9 +13,11 @@ namespace L2dotNET.LoginService.Network
 
         private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
         private static readonly ConcurrentDictionary<byte, Type> ClientPacketsServ = new ConcurrentDictionary<byte, Type>();
+        private readonly IServiceProvider _serviceProvider;
 
-        static PacketHandler()
+        public PacketHandler(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
             ClientPackets.TryAdd(0x00, typeof(RequestAuthLogin));
             ClientPackets.TryAdd(0x02, typeof(RequestServerLogin));
             ClientPackets.TryAdd(0x05, typeof(RequestServerList));
@@ -27,25 +29,25 @@ namespace L2dotNET.LoginService.Network
             ClientPacketsServ.TryAdd(0xA3, typeof(RequestPlayersOnline));
         }
 
-        public static void Handle(Packet packet, LoginClient client)
+        public void Handle(Packet packet, LoginClient client)
         {
             Log.Info($"Received packet with Opcode:{packet.FirstOpcode:X2} for State:{client.State}");
 
             if (!ClientPackets.ContainsKey(packet.FirstOpcode))
                 return;
 
-            PacketBase incPacket = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client);
+            PacketBase incPacket = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], _serviceProvider, packet, client);
             incPacket?.RunImpl();
         }
 
-        public static void Handle(Packet packet, ServerThread client)
+        public void Handle(Packet packet, ServerThread client)
         {
             Log.Info($"Received packet with Opcode:{packet.FirstOpcode:X2}");
 
             if (!ClientPacketsServ.ContainsKey(packet.FirstOpcode))
                 return;
 
-            PacketBase incPacket = (PacketBase)Activator.CreateInstance(ClientPacketsServ[packet.FirstOpcode], packet, client);
+            PacketBase incPacket = (PacketBase)Activator.CreateInstance(ClientPacketsServ[packet.FirstOpcode], _serviceProvider, packet, client);
             incPacket?.RunImpl();
         }
     }

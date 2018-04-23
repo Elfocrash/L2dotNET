@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Timers;
 using log4net;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Templates;
 using L2dotNET.Tools;
-using L2dotNET.World;
 using L2dotNET.Tables;
 
 namespace L2dotNET.Models.Npcs
@@ -18,7 +16,7 @@ namespace L2dotNET.Models.Npcs
 
         public new NpcTemplate Template;
 
-        public L2Warehouse(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
+        public L2Warehouse(SpawnTable spawnTable, int objectId, NpcTemplate template, L2Spawn spawn) : base(spawnTable, objectId, template, spawn)
         {
             Template = template;
             Name = template.Name;

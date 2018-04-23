@@ -3,6 +3,7 @@ using System.Timers;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones.forms;
 using L2dotNET.Network;
+using L2dotNET.Tables;
 using L2dotNET.World;
 
 namespace L2dotNET.Models.Zones
@@ -16,6 +17,8 @@ namespace L2dotNET.Models.Zones
         public ZoneTemplate Template;
         public int InstanceId = -1;
         public L2Object NpcCenter;
+
+        protected readonly IdFactory _idFactory;
 
         public SortedList<int, L2Object> ObjectsInside = new SortedList<int, L2Object>();
 
@@ -73,6 +76,11 @@ namespace L2dotNET.Models.Zones
         private Timer _selfDestruct;
         public int[] CylinderCenter;
         public string Name;
+
+        protected L2Zone(IdFactory idFactory)
+        {
+            _idFactory = idFactory;
+        }
 
         public void SelfDestruct(int sec)
         {

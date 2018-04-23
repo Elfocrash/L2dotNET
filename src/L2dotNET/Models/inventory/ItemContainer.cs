@@ -6,19 +6,22 @@ using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Tables;
 using L2dotNET.World;
-using Ninject;
 
 namespace L2dotNET.Models.Inventory
 {
     public abstract class ItemContainer
     {
-        [Inject]
-        public IItemService ItemService => GameServer.Kernel.Get<IItemService>();
+        protected readonly IItemService ItemService;
+        private readonly IdFactory _idFactory;
+        private readonly ItemTable _itemTable;
 
         public List<L2Item> Items;
 
-        protected ItemContainer()
+        protected ItemContainer(IItemService itemService, IdFactory idFactory, ItemTable itemTable)
         {
+            ItemService = itemService;
+            _idFactory = idFactory;
+            _itemTable = itemTable;
             Items = new List<L2Item>();
         }
 
@@ -55,7 +58,7 @@ namespace L2dotNET.Models.Inventory
         public virtual void Restore(L2Character owner)
         {
             List<ItemContract> models = ItemService.RestoreInventory(owner.ObjId, "Inventory");
-            List<L2Item> items = L2Item.RestoreFromDb(models);
+            List<L2Item> items = RestoreFromDb(models);
 
             foreach (L2Item item in items)
             {
@@ -63,6 +66,27 @@ namespace L2dotNET.Models.Inventory
                 Owner = owner;
                 AddItem(item, (L2Player)Owner);
             }
+        }
+        public List<L2Item> RestoreFromDb(List<ItemContract> models)
+        {
+            return models.Select(MapModelToItem).ToList();
+        }
+
+        private L2Item MapModelToItem(ItemContract contract)
+        {
+            L2Item item = new L2Item(ItemService, _idFactory, _itemTable.GetItem(contract.ItemId), _idFactory.NextId())
+            {
+                ObjId = contract.ObjectId,
+                Count = contract.Count,
+                CustomType1 = contract.CustomType1,
+                CustomType2 = contract.CustomType2,
+                Enchant = contract.Enchant,
+                SlotLocation = contract.LocationData,
+                OwnerId = contract.OwnerId,
+                ExistsInDb = contract.ExistsInDb
+            };
+
+            return item;
         }
 
         public L2Item AddItem(L2Item item, L2Player player)
@@ -90,11 +114,11 @@ namespace L2dotNET.Models.Inventory
             {
                 //for (int i = 0; i < Count; i++)
                // {
-                    ItemTemplate template = ItemTable.Instance.GetItem(itemId);
+                    ItemTemplate template = _itemTable.GetItem(itemId);
                     if (template == null)
                         return null;
 
-                    item = ItemTable.Instance.CreateItem(itemId, count, player);
+                    item = _itemTable.CreateItem(itemId, count, player);
                     item.OwnerId = player.ObjId;
                     item.SlotLocation = 0;
                     item.ExistsInDb = ExistsInDb;

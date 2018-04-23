@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.General;
 using L2dotNET.Network.serverpackets;
@@ -11,7 +12,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _slot;
         private readonly int _page;
 
-        public RequestShortCutDel(Packet packet, GameClient client)
+        public RequestShortCutDel(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             int id = packet.ReadInt();

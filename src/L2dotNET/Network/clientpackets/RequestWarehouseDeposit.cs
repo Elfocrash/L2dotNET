@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using log4net;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Npcs;
@@ -15,7 +16,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _count;
         private readonly int[] _items;
 
-        public RequestWarehouseDeposit(Packet packet, GameClient client)
+        public RequestWarehouseDeposit(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _count = packet.ReadInt();

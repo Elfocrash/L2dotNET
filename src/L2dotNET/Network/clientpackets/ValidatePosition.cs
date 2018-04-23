@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
 using L2dotNET.World;
@@ -18,7 +19,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _heading;
         private readonly int _data;
 
-        public ValidatePosition(Packet packet, GameClient client)
+        public ValidatePosition(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _x = packet.ReadInt();

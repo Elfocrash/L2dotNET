@@ -12,25 +12,8 @@ namespace L2dotNET.Network.loginauth
     public class AuthThread
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(AuthThread));
-        private static volatile AuthThread _instance;
-        private static readonly object SyncRoot = new object();
+        private readonly GamePacketHandlerAuth _gamePacketHandlerAuth;
 
-        public static AuthThread Instance
-        {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new AuthThread();
-                }
-
-                return _instance;
-            }
-        }
 
         protected TcpClient Lclient;
         protected NetworkStream Nstream;
@@ -125,7 +108,7 @@ namespace L2dotNET.Network.loginauth
             _buffer.CopyTo(buff, 0);
             Packet packet = buff.ToPacket();
 
-            GamePacketHandlerAuth.HandlePacket(packet, this);
+            _gamePacketHandlerAuth.HandlePacket(packet, this);
 
             new System.Threading.Thread(Read).Start();
         }
@@ -188,6 +171,11 @@ namespace L2dotNET.Network.loginauth
         }
 
         private readonly SortedList<string, AccountContract> _awaitingAccounts = new SortedList<string, AccountContract>();
+
+        public AuthThread(GamePacketHandlerAuth gamePacketHandlerAuth)
+        {
+            _gamePacketHandlerAuth = gamePacketHandlerAuth;
+        }
 
         public void AwaitAccount(AccountContract ta)
         {

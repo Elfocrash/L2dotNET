@@ -4,9 +4,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     class BattleZone : L2Zone
     {
-        public BattleZone()
+        public BattleZone(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
             Enabled = true;
         }
 

@@ -5,9 +5,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     public class MonsterRaceZone : L2Zone
     {
-        public MonsterRaceZone()
+        public MonsterRaceZone(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
             Enabled = true;
         }
 

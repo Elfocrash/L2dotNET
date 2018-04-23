@@ -1,7 +1,7 @@
-﻿using L2dotNET.Models;
+﻿using System;
+using L2dotNET.Models;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
-using L2dotNET.World;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -9,7 +9,7 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly GameClient _client;
 
-        public RequestRecordInfo(Packet packet, GameClient client)
+        public RequestRecordInfo(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
         }

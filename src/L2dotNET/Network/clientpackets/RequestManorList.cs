@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets
@@ -7,7 +8,7 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly GameClient _client;
 
-        public RequestManorList(Packet packet, GameClient client)
+        public RequestManorList(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             packet.MoveOffset(2);
             _client = client;

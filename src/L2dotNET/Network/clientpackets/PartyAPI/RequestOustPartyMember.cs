@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets.PartyAPI
@@ -8,7 +9,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
         private readonly GameClient _client;
         private readonly string _name;
 
-        public RequestOustPartyMember(Packet packet, GameClient client)
+        public RequestOustPartyMember(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _name = packet.ReadString();

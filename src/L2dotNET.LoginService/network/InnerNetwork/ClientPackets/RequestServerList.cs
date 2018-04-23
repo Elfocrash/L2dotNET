@@ -1,4 +1,5 @@
-﻿using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
+﻿using System;
+using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
@@ -9,7 +10,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
         private readonly int _loginOkID1;
         private readonly int _loginOkID2;
 
-        public RequestServerList(Packet p, LoginClient client)
+        public RequestServerList(IServiceProvider serviceProvider, Packet p, LoginClient client) : base(serviceProvider)
         {
             _client = client;
             _loginOkID1 = p.ReadInt();

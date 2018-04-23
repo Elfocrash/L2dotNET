@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.Basic;
 using L2dotNET.Network.serverpackets;
@@ -13,7 +14,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly SayIDList _type;
         private readonly string _target;
 
-        public Say2(Packet packet, GameClient client)
+        public Say2(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _text = packet.ReadString();

@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -9,7 +10,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _level;
         private readonly int _skillType;
 
-        public RequestAcquireSkill(Packet packet, GameClient client)
+        public RequestAcquireSkill(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _id = packet.ReadInt();

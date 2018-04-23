@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Tables;
@@ -10,7 +11,7 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly GameClient _client;
 
-        public NewCharacter(Packet packet, GameClient client)
+        public NewCharacter(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
         }

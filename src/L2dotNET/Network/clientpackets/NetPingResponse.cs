@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.Network.clientpackets
+﻿using System;
+
+namespace L2dotNET.Network.clientpackets
 {
     class NetPingResponse : PacketBase
     {
@@ -7,7 +9,7 @@
         private readonly int _msec;
         private readonly int _unk2;
 
-        public NetPingResponse(Packet packet, GameClient client)
+        public NetPingResponse(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _request = packet.ReadInt();

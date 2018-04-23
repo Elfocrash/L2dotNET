@@ -11,10 +11,10 @@ using L2dotNET.Network.loginauth;
 using L2dotNET.Tables;
 using L2dotNET.Utility;
 using L2dotNET.World;
-using Ninject;
 using log4net.Config;
 using System.IO;
 using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET
 {
@@ -24,7 +24,12 @@ namespace L2dotNET
 
         private TcpListener _listener;
 
-        public static IKernel Kernel { get; set; }
+        private readonly IServiceProvider _serviceProvider;
+
+        public GameServer(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
 
         public void Start()
         {
@@ -33,21 +38,21 @@ namespace L2dotNET
 
             Config.Config.Instance.Initialize();
 
-            PreReqValidation.Instance.Initialize();
+            _serviceProvider.GetService<PreReqValidation>().Initialize();
 
             CharTemplateTable.Instance.Initialize();
 
             NetworkBlock.Instance.Initialize();
             GameTime.Instance.Initialize();
 
-            IdFactory.Instance.Initialize();
+            _serviceProvider.GetService<IdFactory>().Initialize();
 
             L2World.Instance.Initialize();
 
             MapRegionTable.Instance.Initialize();
             ZoneTable.Instance.Initialize();
 
-            ItemTable.Instance.Initialize();
+            _serviceProvider.GetService<ItemTable>().Initialize();
             ItemHandler.Instance.Initialize();
 
             NpcTable.Instance.Initialize();
@@ -55,18 +60,18 @@ namespace L2dotNET
             
             BlowFishKeygen.GenerateKeys();
 
-            AdminCommandHandler.Instance.Initialize();
+            _serviceProvider.GetService<IAdminCommandHandler>().Initialize();
 
-            AnnouncementManager.Instance.Initialize();
+            _serviceProvider.GetService<AnnouncementManager>().Initialize();
 
             StaticObjTable.Instance.Initialize();
-            SpawnTable.Instance.Initialize();
+            _serviceProvider.GetService<SpawnTable>().Initialize();
 
             HtmCache.Instance.Initialize();
 
             // PluginManager.Instance.Initialize(this);
 
-            AuthThread.Instance.Initialize();
+            _serviceProvider.GetService<AuthThread>().Initialize();
 
             _listener = new TcpListener(IPAddress.Any, Config.Config.Instance.ServerConfig.Port);
 
@@ -106,7 +111,7 @@ namespace L2dotNET
         /// <summary>Handle Client Request</summary>
         private void AcceptClient(TcpClient clientSocket)
         {
-            ClientManager.Instance.AddClient(clientSocket);
+            _serviceProvider.GetService<ClientManager>().AddClient(clientSocket);
         }
     }
 }

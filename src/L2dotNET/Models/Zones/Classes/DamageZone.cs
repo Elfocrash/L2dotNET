@@ -8,9 +8,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     class DamageZone : L2Zone
     {
-        public DamageZone()
+        public DamageZone(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
         }
 
         public override void OnInit()

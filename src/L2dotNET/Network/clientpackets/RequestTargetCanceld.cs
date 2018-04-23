@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -7,7 +8,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly GameClient _client;
         private readonly short _unselect;
 
-        public RequestTargetCanceld(Packet packet, GameClient client)
+        public RequestTargetCanceld(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _unselect = packet.ReadShort(); //0 esc key, 1 - mouse

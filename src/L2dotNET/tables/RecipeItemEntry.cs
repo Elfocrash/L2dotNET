@@ -8,10 +8,18 @@ namespace L2dotNET.Tables
         public int Count;
         public double Rate;
 
-        public RecipeItemEntry(int id, int count)
+        private readonly ItemTable _itemTable;
+
+        public RecipeItemEntry(ItemTable itemTable)
         {
-            Item = ItemTable.Instance.GetItem(id);
+            _itemTable = itemTable;
+        }
+
+        public RecipeItemEntry(int id, int count, ItemTable itemTable)
+        {
+            Item = _itemTable.GetItem(id);
             Count = count;
+            _itemTable = itemTable;
         }
     }
 }

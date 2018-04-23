@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets.ClanAPI
 {
@@ -6,7 +7,7 @@ namespace L2dotNET.Network.clientpackets.ClanAPI
     {
         private readonly GameClient _client;
 
-        public RequestWithdrawalPledge(Packet packet, GameClient client)
+        public RequestWithdrawalPledge(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
         }

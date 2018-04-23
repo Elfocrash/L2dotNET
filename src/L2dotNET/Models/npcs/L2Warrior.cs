@@ -14,7 +14,7 @@ namespace L2dotNET.Models.Npcs
         public L2Spawn TerritorySpawn;
         public System.Timers.Timer socialTask;
 
-        public L2Warrior(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
+        public L2Warrior(SpawnTable spawnTable, int objectId, NpcTemplate template, L2Spawn spawn) : base(spawnTable, objectId, template, spawn)
         {
 
         }

@@ -3,13 +3,15 @@ using System.Linq;
 using L2dotNET.DataContracts;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
+using L2dotNET.Services.Contracts;
+using L2dotNET.Tables;
 using L2dotNET.World;
 
 namespace L2dotNET.Models.Inventory
 {
     public class Inventory : ItemContainer
     {
-        public Inventory(L2Character owner)
+        public Inventory(IItemService itemService, IdFactory idFactory, ItemTable itemTable, L2Character owner) : base(itemService, idFactory, itemTable)
         {
             Owner = owner;
             Paperdoll = new L2Item[PaperdollTotalslots];
@@ -52,7 +54,7 @@ namespace L2dotNET.Models.Inventory
         public override void Restore(L2Character owner)
         {
             List<ItemContract> models = ItemService.RestoreInventory(owner.ObjId, "Inventory");
-            List<L2Item> items = L2Item.RestoreFromDb(models);
+            List<L2Item> items = RestoreFromDb(models);
 
             foreach (L2Item item in items)
             {

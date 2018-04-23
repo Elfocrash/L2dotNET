@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -7,7 +8,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly GameClient _client;
         private readonly int _standType;
 
-        public ChangeWaitType(Packet packet, GameClient client)
+        public ChangeWaitType(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _standType = packet.ReadInt();

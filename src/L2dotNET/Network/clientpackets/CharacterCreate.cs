@@ -9,14 +9,16 @@ using L2dotNET.Tables;
 using L2dotNET.Templates;
 using L2dotNET.Utility;
 using L2dotNET.World;
-using Ninject;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Network.clientpackets
 {
     class CharacterCreate : PacketBase
     {
-        [Inject]
-        public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
+        public readonly IPlayerService _playerService;
+        private readonly IItemService _itemService;
+        private readonly IdFactory _idFactory;
+        private readonly ItemTable _itemTable;
 
         private readonly GameClient _client;
         private readonly string _name;
@@ -27,9 +29,13 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _hairColor;
         private readonly int _face;
 
-        public CharacterCreate(Packet packet, GameClient client)
+        public CharacterCreate(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
+            _itemService = serviceProvider.GetService<IItemService>();
+            _itemTable = serviceProvider.GetService<ItemTable>();
+            _idFactory = serviceProvider.GetService<IdFactory>();
+            _playerService = serviceProvider.GetService<IPlayerService>();
             _name = packet.ReadString();
             _race = packet.ReadInt();
             _sex = packet.ReadInt();
@@ -53,9 +59,9 @@ namespace L2dotNET.Network.clientpackets
 
             PcTemplate template = CharTemplateTable.Instance.GetTemplate(_classId);
 
-            L2Player player = new L2Player(IdFactory.Instance.NextId(), template);
+            L2Player player = new L2Player(_playerService, _idFactory.NextId(), template);
 
-            player.Inventory = new PcInventory(player);
+            player.Inventory = new PcInventory(_itemService, _idFactory, _itemTable, player);
             player.Name = _name;
             player.AccountName = _client.AccountName;
             player.Title = string.Empty;
@@ -83,7 +89,7 @@ namespace L2dotNET.Network.clientpackets
 
             if (template.Items != null)
             {
-                player.Inventory = new PcInventory(player);
+                player.Inventory = new PcInventory(_itemService, _idFactory, _itemTable, player);
 
                 //foreach (PC_item i in template._items)
                 //{
@@ -111,7 +117,7 @@ namespace L2dotNET.Network.clientpackets
                 //}
             }
 
-            PlayerService.CreatePlayer(player);
+            _playerService.CreatePlayer(player);
             //player = PlayerService.RestorePlayer(player.ObjId, _client);
             player.Gameclient.AccountChars.Add(player);
             _client.SendPacket(new CharCreateOk());
@@ -148,7 +154,7 @@ namespace L2dotNET.Network.clientpackets
                 return false;
             }
 
-            if (PlayerService.CheckIfPlayerNameExists(_name))
+            if (_playerService.CheckIfPlayerNameExists(_name))
             {
                 _client.SendPacket(new CharCreateFail(CharCreateFailReason.NameAlreadyExists));
                 return false;

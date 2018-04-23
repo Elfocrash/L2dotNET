@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 using L2dotNET.Managers;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Models.Player;
@@ -13,7 +14,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly GameClient _client;
         private string _alias;
 
-        public RequestBypassToServer(Packet packet, GameClient client)
+        public RequestBypassToServer(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _alias = packet.ReadString();

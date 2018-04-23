@@ -1,7 +1,5 @@
-﻿using System.Linq;
+﻿using System;
 using L2dotNET.Models.Player;
-using L2dotNET.Network.serverpackets;
-using L2dotNET.Tables;
 
 namespace L2dotNET.Network.clientpackets.RecipeAPI
 {
@@ -10,7 +8,7 @@ namespace L2dotNET.Network.clientpackets.RecipeAPI
         private readonly GameClient _client;
         private readonly int _id;
 
-        public RequestRecipeBookDestroy(Packet packet, GameClient client)
+        public RequestRecipeBookDestroy(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _id = packet.ReadInt();

@@ -1,5 +1,4 @@
 ﻿using L2dotNET.Models.Items;
-using L2dotNET.World;
 
 namespace L2dotNET.Models.Stats
 {

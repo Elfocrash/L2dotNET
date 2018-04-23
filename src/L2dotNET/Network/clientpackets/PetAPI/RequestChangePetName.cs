@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets.PetAPI
 {
@@ -7,7 +8,7 @@ namespace L2dotNET.Network.clientpackets.PetAPI
         private readonly GameClient _client;
         private readonly string _name;
 
-        public RequestChangePetName(Packet packet, GameClient client)
+        public RequestChangePetName(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _name = packet.ReadString();

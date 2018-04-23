@@ -1,25 +1,26 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using log4net;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
-using Ninject;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Network.clientpackets
 {
     class CharacterRestore : PacketBase
     {
-        [Inject]
-        public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
+        public readonly IPlayerService _playerService;
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(CharacterDelete));
 
         private readonly GameClient _client;
         private readonly int _charSlot;
 
-        public CharacterRestore(Packet packet, GameClient client)
+        public CharacterRestore(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
+            _playerService = serviceProvider.GetService<IPlayerService>();
             _charSlot = packet.ReadInt();
         }
 
@@ -43,7 +44,7 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            PlayerService.MarkToRestoreChar(player.ObjId);
+            _playerService.MarkToRestoreChar(player.ObjId);
             player.DeleteTime = 0;
         }
     }

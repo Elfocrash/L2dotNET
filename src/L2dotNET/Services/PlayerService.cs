@@ -13,17 +13,23 @@ namespace L2dotNET.Services
     public class PlayerService : IPlayerService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IItemService _itemService;
+        private readonly IdFactory _idFactory;
+        private readonly ItemTable _itemTable;
 
-        public PlayerService(IUnitOfWork unitOfWork)
+        public PlayerService(IUnitOfWork unitOfWork, IItemService itemService, IdFactory idFactory, ItemTable itemTable)
         {
             _unitOfWork = unitOfWork;
+            _itemService = itemService;
+            _idFactory = idFactory;
+            _itemTable = itemTable;
         }
 
         public L2Player GetPlayerByLogin(int objId)
         {
             var playerContract = _unitOfWork.PlayerRepository.GetPlayerByLogin(objId);
             //TODO Use automapper to map this
-            var player = new L2Player(objId, CharTemplateTable.Instance.GetTemplate(playerContract.ClassId))
+            var player = new L2Player(this, objId, CharTemplateTable.Instance.GetTemplate(playerContract.ClassId))
             {
                 ObjId = objId,
                 Name = playerContract.Name,
@@ -52,7 +58,7 @@ namespace L2dotNET.Services
                 RecLeft = playerContract.RecLeft,
                 RecHave = playerContract.RecHave,
                 CharSlot = playerContract.CharSlot,
-                Inventory = new PcInventory(null),
+                Inventory = new PcInventory(_itemService,_idFactory, _itemTable, null),
                 DeleteTime = playerContract.DeleteTime,
                 LastAccess = playerContract.LastAccess,
                 CanCraft = playerContract.CanCraft,

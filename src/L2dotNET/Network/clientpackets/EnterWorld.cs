@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using L2dotNET.Controllers;
 using L2dotNET.Managers;
 using L2dotNET.Models.Items;
@@ -7,7 +8,7 @@ using L2dotNET.Network.serverpackets;
 using L2dotNET.Plugins;
 using L2dotNET.Services.Contracts;
 using L2dotNET.World;
-using Ninject;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -15,12 +16,14 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly GameClient _client;
 
-        [Inject]
-        public IPlayerService PlayerService { get; set; } = GameServer.Kernel.Get<IPlayerService>();
+        private readonly IPlayerService _playerService;
+        private readonly AnnouncementManager _announcementManager;
 
-        public EnterWorld(Packet packet, GameClient client)
+        public EnterWorld(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
+            _announcementManager = serviceProvider.GetService<AnnouncementManager>();
+            _playerService = serviceProvider.GetService<IPlayerService>();
         }
 
         public override void RunImpl()
@@ -28,13 +31,13 @@ namespace L2dotNET.Network.clientpackets
             L2Player player = _client.CurrentPlayer;
 
             player.SetCharLastAccess();
-            PlayerService.UpdatePlayer(player);
+            _playerService.UpdatePlayer(player);
 
             player.TotalRestore();
 
             player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.WelcomeToLineage));
 
-            AnnouncementManager.Instance.OnEnter(player);
+            _announcementManager.OnEnter(player);
 
             foreach (L2Item item in player.Inventory.Items.Where(item => item.IsEquipped != 0))
                 item.NotifyStats(player);

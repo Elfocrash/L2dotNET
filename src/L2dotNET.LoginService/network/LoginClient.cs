@@ -22,6 +22,7 @@ namespace L2dotNET.LoginService.Network
         public TcpClient Client { get; set; }
         public NetworkStream NetStream { get; set; }
         private byte[] _buffer;
+        private readonly Managers.ClientManager _clientManager;
 
         public LoginClientState State;
         private DateTime ConnectionStartTime;
@@ -34,10 +35,13 @@ namespace L2dotNET.LoginService.Network
         private LoginCrypt _loginCrypt;
         public ScrambledKeyPair RsaPair;
         public byte[] BlowfishKey;
+        private readonly PacketHandler _packetHandler;
 
-        public LoginClient(TcpClient tcpClient)
+        public LoginClient(TcpClient tcpClient, Managers.ClientManager clientManager, PacketHandler packetHandler)
         {
             Client = tcpClient;
+            _clientManager = clientManager;
+            _packetHandler = packetHandler;
             NetStream = tcpClient.GetStream();
             Address = tcpClient.Client.RemoteEndPoint;
             Random rnd = new Random();
@@ -52,8 +56,8 @@ namespace L2dotNET.LoginService.Network
 
         public void InitializeNetwork()
         {
-            RsaPair = ClientManager.Instance.GetScrambledKeyPair();
-            BlowfishKey = ClientManager.Instance.GetBlowfishKey();
+            RsaPair = _clientManager.GetScrambledKeyPair();
+            BlowfishKey = _clientManager.GetBlowfishKey();
             _loginCrypt = new LoginCrypt();
             _loginCrypt.UpdateKey(BlowfishKey);
 
@@ -115,7 +119,7 @@ namespace L2dotNET.LoginService.Network
 
         public void Close()
         {
-            ClientManager.Instance.RemoveClient(this);
+            _clientManager.RemoveClient(this);
         }
 
         private void OnReceiveCallback(IAsyncResult result)
@@ -130,7 +134,7 @@ namespace L2dotNET.LoginService.Network
                 Log.Error($"Blowfish failed on {Address}. Please restart auth server.");
             else
             {
-                PacketHandler.Handle(new Packet(1, buff), this);
+                _packetHandler.Handle(new Packet(1, buff), this);
                 Read();
             }
         }

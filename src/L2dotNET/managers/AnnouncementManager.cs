@@ -7,42 +7,25 @@ using L2dotNET.Models.Player.Basic;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.World;
-using Ninject;
 
 namespace L2dotNET.Managers
 {
-    class AnnouncementManager
+    public class AnnouncementManager
     {
-        [Inject]
-        public IServerService ServerService => GameServer.Kernel.Get<IServerService>();
+        private readonly IServerService _serverService;
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(AnnouncementManager));
 
-        private static volatile AnnouncementManager _instance;
-        private static readonly object SyncRoot = new object();
-
         public List<AnnouncementContract> Announcements { get; set; }
 
-        public static AnnouncementManager Instance
+        public AnnouncementManager(IServerService serverService)
         {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new AnnouncementManager();
-                }
-
-                return _instance;
-            }
+            _serverService = serverService;
         }
 
         public void Initialize()
         {
-            Announcements = ServerService.GetAnnouncementsList();
+            Announcements = _serverService.GetAnnouncementsList();
             Log.Info($"Loaded {Announcements.Count} annoucements.");
         }
 

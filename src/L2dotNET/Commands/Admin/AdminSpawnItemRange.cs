@@ -1,13 +1,22 @@
-﻿using L2dotNET.Attributes;
+﻿using System;
+using L2dotNET.Attributes;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Tables;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Commands.Admin
 {
     [Command(CommandName = "summon3")]
     class AdminSpawnItemRange : AAdminCommand
     {
+        private readonly ItemTable _itemTable;
+
+        public AdminSpawnItemRange(IServiceProvider serviceProvider) : base(serviceProvider)
+        {
+            _itemTable = serviceProvider.GetService<ItemTable>();
+        }
+
         protected internal override void Use(L2Player admin, string alias)
         {
             int idmin = int.Parse(alias.Split(' ')[1]);
@@ -22,7 +31,7 @@ namespace L2dotNET.Commands.Admin
             bool x = false;
             for (int i = idmin; i <= idmax; i++)
             {
-                ItemTemplate item = ItemTable.Instance.GetItem(i);
+                ItemTemplate item = _itemTable.GetItem(i);
 
                 if (item == null)
                     admin.SendMessage($"Item with id {i} not exists.");

@@ -7,36 +7,17 @@ using L2dotNET.LoginService.Network;
 
 namespace L2dotNET.LoginService.Managers
 {
-    sealed class ClientManager
+    public sealed class ClientManager
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(ClientManager));
 
-        private static volatile ClientManager _instance;
-        private static readonly object SyncRoot = new object();
         private const int ScrambleCount = 1;
         private ScrambledKeyPair[] _scrambledPairs;
         private const int BlowfishCount = 20;
         private byte[][] _blowfishKeys;
-
+        private readonly PacketHandler _packetHandler;
         private readonly List<LoginClient> _loggedClients = new List<LoginClient>();
         private SortedList<string, LoginClient> _waitingAcc = new SortedList<string, LoginClient>();
-
-        public static ClientManager Instance
-        {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new ClientManager();
-                }
-
-                return _instance;
-            }
-        }
 
         public void Initialize()
         {
@@ -65,6 +46,11 @@ namespace L2dotNET.LoginService.Managers
 
         private NetworkBlock _banned;
         private readonly SortedList<string, DateTime> _flood = new SortedList<string, DateTime>();
+
+        public ClientManager(PacketHandler packetHandler)
+        {
+            _packetHandler = packetHandler;
+        }
 
         public void AddClient(TcpClient client)
         {
@@ -98,7 +84,7 @@ namespace L2dotNET.LoginService.Managers
                 return;
             }
 
-            LoginClient lc = new LoginClient(client);
+            LoginClient lc = new LoginClient(client, this, _packetHandler);
             if (_loggedClients.Contains(lc))
                 return;
 

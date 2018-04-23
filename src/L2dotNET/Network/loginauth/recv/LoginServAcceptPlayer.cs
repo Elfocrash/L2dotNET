@@ -1,4 +1,5 @@
-﻿using L2dotNET.DataContracts;
+﻿using System;
+using L2dotNET.DataContracts;
 
 namespace L2dotNET.Network.loginauth.recv
 {
@@ -7,7 +8,7 @@ namespace L2dotNET.Network.loginauth.recv
         private readonly AuthThread _login;
         private readonly string _account;
 
-        public LoginServAcceptPlayer(Packet p, AuthThread login)
+        public LoginServAcceptPlayer(IServiceProvider serviceProvider, Packet p, AuthThread login) : base(serviceProvider)
         {
             _login = login;
             _account = p.ReadString();
@@ -20,7 +21,7 @@ namespace L2dotNET.Network.loginauth.recv
                 Login = _account
             };
 
-            AuthThread.Instance.AwaitAccount(ta);
+            _login.AwaitAccount(ta);
         }
     }
 }

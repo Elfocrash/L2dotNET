@@ -1,4 +1,4 @@
-﻿using L2dotNET.Network.serverpackets;
+﻿using System;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -6,7 +6,7 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly GameClient _client;
 
-        public RequestCursedWeaponList(Packet packet, GameClient client)
+        public RequestCursedWeaponList(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             packet.MoveOffset(2);
             _client = client;

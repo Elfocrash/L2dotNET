@@ -1,4 +1,5 @@
-﻿using L2dotNET.Managers;
+﻿using System;
+using L2dotNET.Managers;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -9,7 +10,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly GameClient _client;
         private readonly bool _bDone;
 
-        public RequestTradeDone(Packet packet, GameClient client)
+        public RequestTradeDone(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _bDone = packet.ReadInt() == 1;

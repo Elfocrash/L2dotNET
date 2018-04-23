@@ -7,5 +7,7 @@ namespace L2dotNET.Handlers
         void Request(L2Player admin, string alias);
 
         void Register(object processor);
+
+        void Initialize();
     }
 }

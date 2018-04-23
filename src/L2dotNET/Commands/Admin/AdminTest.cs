@@ -1,4 +1,5 @@
-﻿using L2dotNET.Attributes;
+﻿using System;
+using L2dotNET.Attributes;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Commands.Admin
@@ -25,5 +26,9 @@ namespace L2dotNET.Commands.Admin
         //private bool lp = false;
 
         private void Loopme() { }
+
+        public AdminTest(IServiceProvider serviceProvider) : base(serviceProvider)
+        {
+        }
     }
 }

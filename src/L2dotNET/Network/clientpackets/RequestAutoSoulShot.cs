@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Items;
+﻿using System;
+using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
@@ -9,7 +10,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _itemId;
         private readonly int _type;
 
-        public RequestAutoSoulShot(Packet packet, GameClient client)
+        public RequestAutoSoulShot(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             packet.MoveOffset(2);
             _client = client;

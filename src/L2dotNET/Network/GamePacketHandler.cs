@@ -17,9 +17,11 @@ namespace L2dotNET.Network
         private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
 
         private static readonly ConcurrentDictionary<short, Type> ClientPacketsD0 = new ConcurrentDictionary<short, Type>();
+        private readonly IServiceProvider _serviceProvider;
 
-        static GamePacketHandler()
+        public GamePacketHandler(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
             //TODO: Review class packets, looks like some is missing and with wrong KeyValue
             ClientPackets.TryAdd(0x00, typeof(ProtocolVersion));
             ClientPackets.TryAdd(0x01, typeof(MoveBackwardToLocation));
@@ -252,7 +254,7 @@ namespace L2dotNET.Network
             //ClientPacketsD0.TryAdd(0x31, typeof(RequestExChangeName));
         }
 
-        public static void HandlePacket(Packet packet, GameClient client)
+        public void HandlePacket(Packet packet, GameClient client)
         {
             PacketBase packetBase = null;
 
@@ -260,13 +262,13 @@ namespace L2dotNET.Network
             {
                 Log.Info($"Received packet with Opcode:{packet.FirstOpcode:X2}");
                 if (ClientPackets.ContainsKey(packet.FirstOpcode))
-                    packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, client);
+                    packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], _serviceProvider, packet, client);
             }
             else
             {
                 Log.Info($"Received packet with Opcode 0xD0 and seccond Opcode:{packet.SecondOpcode:X2}");
                 if (ClientPacketsD0.ContainsKey((short)packet.SecondOpcode))
-                    packetBase = (PacketBase)Activator.CreateInstance(ClientPacketsD0[(short)packet.SecondOpcode], packet, client);
+                    packetBase = (PacketBase)Activator.CreateInstance(ClientPacketsD0[(short)packet.SecondOpcode], _serviceProvider, packet, client);
             }
 
             if (client.IsTerminated)

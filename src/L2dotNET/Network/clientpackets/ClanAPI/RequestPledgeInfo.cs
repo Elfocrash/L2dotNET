@@ -1,11 +1,13 @@
-﻿namespace L2dotNET.Network.clientpackets.ClanAPI
+﻿using System;
+
+namespace L2dotNET.Network.clientpackets.ClanAPI
 {
     class RequestPledgeInfo : PacketBase
     {
         private readonly GameClient _client;
         private readonly int _clanId;
 
-        public RequestPledgeInfo(Packet packet, GameClient client)
+        public RequestPledgeInfo(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _clanId = packet.ReadInt();

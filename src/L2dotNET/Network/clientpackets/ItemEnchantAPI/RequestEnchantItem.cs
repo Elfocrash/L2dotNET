@@ -11,7 +11,7 @@ namespace L2dotNET.Network.clientpackets.ItemEnchantAPI
         private readonly int _aSTargetId;
         private readonly int _aSSupportId;
 
-        public RequestEnchantItem(Packet packet, GameClient client)
+        public RequestEnchantItem(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _aSTargetId = packet.ReadInt();
