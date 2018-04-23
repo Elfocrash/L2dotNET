@@ -7,7 +7,6 @@ using log4net;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Services.Contracts;
-using Ninject;
 
 namespace L2dotNET.LoginService.GSCommunication
 {
@@ -15,35 +14,24 @@ namespace L2dotNET.LoginService.GSCommunication
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(ServerThreadPool));
 
-        [Inject]
-        public IServerService ServerService => LoginServer.Kernel.Get<IServerService>();
+        private readonly IServerService _serverService;
+        private readonly Config.Config _config;
+        private readonly PacketHandler _packetHandler;
 
-        private static volatile ServerThreadPool _instance;
-        private static readonly object SyncRoot = new object();
+        public ServerThreadPool(IServerService serverService, Config.Config config, PacketHandler packetHandler)
+        {
+            _serverService = serverService;
+            _config = config;
+            _packetHandler = packetHandler;
+        }
+
         private TcpListener _listener;
 
         public List<L2Server> Servers = new List<L2Server>();
-
-        public static ServerThreadPool Instance
-        {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new ServerThreadPool();
-                }
-
-                return _instance;
-            }
-        }
-
+        
         public void Initialize()
         {
-            Servers.AddRange(ServerService.GetServerList().Select(curServ => new L2Server
+            Servers.AddRange(_serverService.GetServerList().Select(curServ => new L2Server
             {
                 Id = (byte)curServ.Id,
                 Info = curServ.Name,
@@ -68,12 +56,12 @@ namespace L2dotNET.LoginService.GSCommunication
             //while (true)
             //    VerifyClient(Listener.AcceptTcpClient());
 
-            _listener = new TcpListener(IPAddress.Parse(Config.Config.Instance.ServerConfig.Host), Config.Config.Instance.ServerConfig.GsPort);
+            _listener = new TcpListener(IPAddress.Parse(_config.ServerConfig.Host), _config.ServerConfig.GsPort);
 
             try
             {
                 _listener.Start();
-                Log.Info($"Auth server listening gameservers at { Config.Config.Instance.ServerConfig.Host}:{Config.Config.Instance.ServerConfig.GsPort}");
+                Log.Info($"Auth server listening gameservers at {_config.ServerConfig.Host}:{_config.ServerConfig.GsPort}");
             }
             catch (SocketException ex)
             {
@@ -104,7 +92,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
         private void VerifyClient(TcpClient clientSocket)
         {
-            ServerThread st = new ServerThread();
+            ServerThread st = new ServerThread(_packetHandler);
             st.ReadData(clientSocket, this);
         }
 

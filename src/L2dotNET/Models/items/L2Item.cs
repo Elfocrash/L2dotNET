@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.DataContracts;
-using L2dotNET.Models.Inventory;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Tables;
 using L2dotNET.Tools;
 using L2dotNET.World;
-using Ninject;
 using static L2dotNET.Models.Inventory.Inventory;
 
 namespace L2dotNET.Models.Items
 {
     public class L2Item : L2Object
     {
-        [Inject]
-        public IItemService ItemService => GameServer.Kernel.Get<IItemService>();
+        public IItemService _itemService;
 
         public ItemTemplate Template;
         public int Count;
@@ -42,10 +39,12 @@ namespace L2dotNET.Models.Items
 
         public bool Blocked = false;
         public bool TempBlock = false;
-
-        public L2Item(ItemTemplate template , int objectId) : base(objectId)
+        private readonly IdFactory _idFactory;
+        public L2Item(IItemService itemService, IdFactory idFactory, ItemTemplate template , int objectId) : base(objectId)
         {
-            ObjId = objectId != 0 ? objectId : IdFactory.Instance.NextId();
+            _itemService = itemService;
+            _idFactory = idFactory;
+            ObjId = objectId != 0 ? objectId : _idFactory.NextId();
             Template = template;
             Count = 1;
             Location = ItemLocation.Void;
@@ -53,9 +52,8 @@ namespace L2dotNET.Models.Items
 
         public void GenId()
         {
-            ObjId = IdFactory.Instance.NextId();
+            ObjId = _idFactory.NextId();
         }
-
 
         public void ChangeCount(int count, L2Player creator)
         {
@@ -178,7 +176,7 @@ namespace L2dotNET.Models.Items
         {
             ItemContract contract = MapItemModel();
 
-            ItemService.UpdateItem(contract);
+            _itemService.UpdateItem(contract);
         }
 
         private void InsertInDb()
@@ -187,12 +185,7 @@ namespace L2dotNET.Models.Items
             ItemContract contract = MapItemModel();
             ExistsInDb = contract.ExistsInDb = true;
 
-            ItemService.InsertNewItem(contract);
-        }
-
-        public static List<L2Item> RestoreFromDb(List<ItemContract> models)
-        {
-            return models.Select(MapModelToItem).ToList();
+            _itemService.InsertNewItem(contract);
         }
 
         private ItemContract MapItemModel()
@@ -214,24 +207,7 @@ namespace L2dotNET.Models.Items
             };
             return contract;
         }
-
-        private static L2Item MapModelToItem(ItemContract contract)
-        {
-            L2Item item = new L2Item(ItemTable.Instance.GetItem(contract.ItemId), IdFactory.Instance.NextId())
-            {
-                ObjId = contract.ObjectId,
-                Count = contract.Count,
-                CustomType1 = contract.CustomType1,
-                CustomType2 = contract.CustomType2,
-                Enchant = contract.Enchant,
-                SlotLocation = contract.LocationData,
-                OwnerId = contract.OwnerId,
-                ExistsInDb = contract.ExistsInDb
-            };
-
-            return item;
-        }
-
+        
         private bool _lifeTimeEndEnabled;
         private DateTime _lifeTimeEndTime;
         public int CustomType1;

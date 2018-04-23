@@ -14,31 +14,18 @@ namespace L2dotNET.Handlers
         private static readonly ILog Log = LogManager.GetLogger(typeof(AdminCommandHandler));
         private readonly SortedList<string, AAdminCommand> _commands = new SortedList<string, AAdminCommand>();
 
-        private static volatile AdminCommandHandler _instance;
-        private static readonly object SyncRoot = new object();
+        private readonly IServiceProvider _serviceProvider;
 
-        public static AdminCommandHandler Instance
+        public AdminCommandHandler(IServiceProvider serviceProvider)
         {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new AdminCommandHandler();
-                }
-
-                return _instance;
-            }
+            _serviceProvider = serviceProvider;
         }
 
         public void Initialize()
         {
             IEnumerable<Type> typelist = Utilz.GetTypesInNamespace(Assembly.GetExecutingAssembly(), "L2dotNET.Commands.Admin");
             foreach (Type t in typelist)
-                Register(Activator.CreateInstance(t));
+                Register(Activator.CreateInstance(t, _serviceProvider));
 
             Log.Info($"Loaded {_commands.Count} commands.");
         }

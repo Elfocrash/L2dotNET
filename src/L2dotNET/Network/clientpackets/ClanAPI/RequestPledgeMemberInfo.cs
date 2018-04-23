@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.Network.clientpackets.ClanAPI
+﻿using System;
+
+namespace L2dotNET.Network.clientpackets.ClanAPI
 {
     class RequestPledgeMemberInfo : PacketBase
     {
@@ -6,7 +8,7 @@
         private readonly int _unk1;
         private readonly string _player;
 
-        public RequestPledgeMemberInfo(Packet packet, GameClient client)
+        public RequestPledgeMemberInfo(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             packet.MoveOffset(2);
             _client = client;

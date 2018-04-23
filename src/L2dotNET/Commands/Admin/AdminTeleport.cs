@@ -1,4 +1,5 @@
-﻿using L2dotNET.Attributes;
+﻿using System;
+using L2dotNET.Attributes;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Commands.Admin
@@ -11,6 +12,10 @@ namespace L2dotNET.Commands.Admin
             //int x = int.Parse(alias.Split(' ')[1]);
             //int y = int.Parse(alias.Split(' ')[2]);
             //int z = int.Parse(alias.Split(' ')[3]);
+        }
+
+        public AdminTeleport(IServiceProvider serviceProvider) : base(serviceProvider)
+        {
         }
     }
 }

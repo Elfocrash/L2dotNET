@@ -20,7 +20,6 @@ using L2dotNET.Templates;
 using L2dotNET.Tools;
 using L2dotNET.Utility;
 using L2dotNET.World;
-using Ninject;
 
 namespace L2dotNET.Models.Player
 {
@@ -29,21 +28,22 @@ namespace L2dotNET.Models.Player
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(L2Player));
 
-        public L2Player(int objectId, PcTemplate template) : base(objectId, template)
+        public L2Player(IPlayerService playerService, int objectId, PcTemplate template) : base(objectId, template)
         {
             Template = template;
+            _playerService = playerService;
             CharacterStat = new CharacterStat(this);
             InitializeCharacterStatus();
             Calculators = new Models.Stats.Calculator[Models.Stats.Stats.Values.Count()];
             AddFuncsToNewCharacter();
         }
 
-        public L2Player() :base(0, null)
+        public L2Player(IPlayerService playerService) :base(0, null)
         {
+            _playerService = playerService;
         }
 
-        [Inject]
-        public IPlayerService PlayerService { get; set; } = GameServer.Kernel.Get<IPlayerService>();
+        public readonly IPlayerService _playerService;
 
         public new PlayerStatus CharStatus => (PlayerStatus)base.CharStatus;
 
@@ -526,7 +526,7 @@ namespace L2dotNET.Models.Player
             Party?.Leave(this);
 
             Online = 0;
-            PlayerService.UpdatePlayer(this);
+            _playerService.UpdatePlayer(this);
             L2World.Instance.RemovePlayer(this);
             DecayMe();
 

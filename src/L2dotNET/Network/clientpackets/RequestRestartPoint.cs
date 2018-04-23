@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -8,7 +9,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _type;
         private readonly int _keyItem = -1;
 
-        public RequestRestartPoint(Packet packet, GameClient client)
+        public RequestRestartPoint(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _type = packet.ReadInt();

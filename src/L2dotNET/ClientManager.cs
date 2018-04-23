@@ -3,37 +3,27 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using log4net;
 using L2dotNET.Network;
+using L2dotNET.Services.Contracts;
 
 namespace L2dotNET
 {
-    class ClientManager
+    public class ClientManager
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ClientManager));
 
-        private static volatile ClientManager instance;
-        private static readonly object syncRoot = new object();
-
-        public static ClientManager Instance
-        {
-            get
-            {
-                if (instance != null)
-                    return instance;
-
-                lock (syncRoot)
-                {
-                    if (instance == null)
-                        instance = new ClientManager();
-                }
-
-                return instance;
-            }
-        }
-
+        private readonly IPlayerService _playerService;
+       
         protected SortedList<string, DateTime> Flood = new SortedList<string, DateTime>();
         protected NetworkBlock Banned;
 
         public SortedList<string, GameClient> Clients = new SortedList<string, GameClient>();
+        private readonly GamePacketHandler _gamePacketHandler;
+
+        public ClientManager(IPlayerService playerService, GamePacketHandler gamePacketHandler)
+        {
+            _playerService = playerService;
+            _gamePacketHandler = gamePacketHandler;
+        }
 
         public void AddClient(TcpClient client)
         {
@@ -67,7 +57,7 @@ namespace L2dotNET
                 return;
             }
 
-            GameClient gc = new GameClient(client);
+            GameClient gc = new GameClient(_playerService, this, client, _gamePacketHandler);
 
             lock (Clients)
                 Clients.Add(gc.Address.ToString(), gc);

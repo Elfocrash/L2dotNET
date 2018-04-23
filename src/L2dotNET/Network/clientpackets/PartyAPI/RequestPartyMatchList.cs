@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 
 namespace L2dotNET.Network.clientpackets.PartyAPI
 {
@@ -9,7 +10,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
         private readonly GameClient _client;
         private readonly int _status;
 
-        public RequestPartyMatchList(Packet packet, GameClient client)
+        public RequestPartyMatchList(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _status = packet.ReadInt();

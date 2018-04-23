@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Items;
+﻿using System;
+using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -11,7 +12,7 @@ namespace L2dotNET.Network.clientpackets
         private int _num;
         private readonly int _unk1;
 
-        public RequestAddTradeItem(Packet packet, GameClient client)
+        public RequestAddTradeItem(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _unk1 = packet.ReadInt(); // постоянно 1. в клиенте нет инфы что это

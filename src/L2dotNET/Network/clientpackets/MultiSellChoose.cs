@@ -1,5 +1,5 @@
-﻿using L2dotNET.Models.Player;
-using L2dotNET.Network.serverpackets;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -13,7 +13,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _unk2;
         private readonly int _unk3;
 
-        public MultiSellChoose(Packet packet, GameClient client)
+        public MultiSellChoose(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _listId = packet.ReadInt();

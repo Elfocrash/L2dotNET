@@ -12,7 +12,7 @@ namespace L2dotNET.Models.Npcs
     {
         private readonly ILog Log = LogManager.GetLogger(typeof(L2Monster));
 
-        public L2Trainer(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
+        public L2Trainer(SpawnTable spawnTable, int objectId, NpcTemplate template, L2Spawn spawn) : base(spawnTable, objectId, template, spawn)
         {
             Template = template;
             Name = template.Name;

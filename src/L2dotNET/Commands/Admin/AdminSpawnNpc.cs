@@ -4,12 +4,22 @@ using L2dotNET.Models.Npcs;
 using L2dotNET.Models.Player;
 using L2dotNET.Tables;
 using L2dotNET.Templates;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Commands.Admin
 {
     [Command(CommandName = "spawn")]
     class AdminSpawnNpc : AAdminCommand
     {
+        private readonly IdFactory _idFactory;
+        private readonly SpawnTable _spawnTable;
+        public AdminSpawnNpc(IServiceProvider serviceProvider) : base(serviceProvider)
+        {
+            _idFactory = serviceProvider.GetService<IdFactory>();
+            _spawnTable = serviceProvider.GetService<SpawnTable>();
+        }
+
+
         protected internal override void Use(L2Player admin, string alias)
         {
             var processedVar = alias.Replace("spawn",string.Empty).Trim();
@@ -30,7 +40,7 @@ namespace L2dotNET.Commands.Admin
                 throw new NullReferenceException($"npcTemp is null for {processedVar}");
             }
 
-            L2Spawn spawn = new L2Spawn(npcTemp);
+            L2Spawn spawn = new L2Spawn(npcTemp, _idFactory, _spawnTable);
             spawn.Location = new SpawnLocation(admin.X,admin.Y,admin.Z,admin.Heading, 0);
             spawn.Spawn();
             //L2Spawn spawn = new L2Spawn(18342, 50000, new []{"","",""});

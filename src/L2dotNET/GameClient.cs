@@ -11,15 +11,14 @@ using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;
 using L2dotNET.World;
-using Ninject;
 
 namespace L2dotNET
 {
     public class GameClient
     {
-        [Inject]
-        public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
-
+        private readonly IPlayerService _playerService;
+        private readonly ClientManager _clientManager;
+        private readonly GamePacketHandler _gamePacketHandler;
         private static readonly ILog Log = LogManager.GetLogger(typeof(GameClient));
 
         public EndPoint Address;
@@ -39,10 +38,13 @@ namespace L2dotNET
         public long TrafficUp,
                     TrafficDown;
 
-        public GameClient(TcpClient tcpClient)
+        public GameClient(IPlayerService playerService, ClientManager clientManager, TcpClient tcpClient, GamePacketHandler gamePacketHandler)
         {
+            _playerService = playerService;
             Log.Info($"Connection from {tcpClient.Client.RemoteEndPoint}");
             Client = tcpClient;
+            _gamePacketHandler = gamePacketHandler;
+            _clientManager = clientManager;
             Stream = tcpClient.GetStream();
             Address = tcpClient.Client.RemoteEndPoint;
             _crypt = new GameCrypt();
@@ -101,7 +103,7 @@ namespace L2dotNET
             //_accountChars.ForEach(p => p?.DeleteMe());
             //_accountChars.Clear();
 
-            ClientManager.Instance.Terminate(Address.ToString());
+            _clientManager.Terminate(Address.ToString());
         }
 
         public void Read()
@@ -122,7 +124,7 @@ namespace L2dotNET
 
         public L2Player LoadPlayerInSlot(string accName, int charSlot)
         {
-            L2Player player = PlayerService.GetPlayerBySlotId(accName, charSlot);
+            L2Player player = _playerService.GetPlayerBySlotId(accName, charSlot);
             return player;
         }
 
@@ -163,7 +165,7 @@ namespace L2dotNET
             _crypt.Decrypt(buff);
             TrafficUp += _buffer.Length;
 
-            GamePacketHandler.HandlePacket(new Packet(1, buff), this);
+            _gamePacketHandler.HandlePacket(new Packet(1, buff), this);
 
             new System.Threading.Thread(Read).Start();
         }

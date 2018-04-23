@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.General;
 
 namespace L2dotNET.Network.clientpackets
@@ -13,7 +14,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _lvl;
         private readonly int _characterType; // 1 - player, 2 - pet
 
-        public RequestShortCutReg(Packet packet, GameClient client)
+        public RequestShortCutReg(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _type = packet.ReadInt();

@@ -27,5 +27,9 @@ namespace L2dotNET.Commands.Admin
 
             admin.AddItem(id, count);
         }
+
+        public AdminSpawnItem(IServiceProvider serviceProvider) : base(serviceProvider)
+        {
+        }
     }
 }

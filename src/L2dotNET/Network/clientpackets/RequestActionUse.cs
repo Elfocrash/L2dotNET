@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 using L2dotNET.Models.Npcs.Decor;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -15,7 +16,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly bool _ctrlPressed;
         private readonly bool _shiftPressed;
 
-        public RequestActionUse(Packet packet, GameClient client)
+        public RequestActionUse(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _actionId = packet.ReadInt();

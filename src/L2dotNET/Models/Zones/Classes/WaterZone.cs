@@ -4,9 +4,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     class WaterZone : L2Zone
     {
-        public WaterZone()
+        public WaterZone(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
             Enabled = true;
         }
 

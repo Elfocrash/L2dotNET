@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -10,7 +11,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
         private readonly string _name;
         private readonly int _itemDistribution;
 
-        public RequestJoinParty(Packet packet, GameClient client)
+        public RequestJoinParty(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _name = packet.ReadString();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Models.Player;
@@ -13,7 +14,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _count;
         private readonly int[] _items;
 
-        public RequestSellItem(Packet packet, GameClient client)
+        public RequestSellItem(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _listId = packet.ReadInt();

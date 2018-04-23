@@ -7,9 +7,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     class InstantSkillZone : L2Zone
     {
-        public InstantSkillZone()
+        public InstantSkillZone(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
         }
 
         public override void OnInit()

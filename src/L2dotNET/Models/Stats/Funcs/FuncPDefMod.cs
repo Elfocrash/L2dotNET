@@ -1,5 +1,4 @@
-﻿using L2dotNET.Models.Inventory;
-using L2dotNET.Models.Player;
+﻿using L2dotNET.Models.Player;
 using static L2dotNET.Models.Inventory.Inventory;
 
 namespace L2dotNET.Models.Stats.Funcs

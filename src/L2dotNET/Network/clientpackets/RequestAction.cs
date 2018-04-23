@@ -1,4 +1,5 @@
-﻿using L2dotNET.World;
+﻿using System;
+using L2dotNET.World;
 using log4net;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
@@ -17,7 +18,7 @@ namespace L2dotNET.Network.clientpackets
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(RequestAction));
 
-        public RequestAction(Packet packet, GameClient client)
+        public RequestAction(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _objectId = packet.ReadInt();

@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets.PartyAPI
 {
@@ -7,7 +8,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
         private readonly GameClient _client;
         private readonly byte _answer;
 
-        public AnswerPartyLootModification(Packet packet, GameClient client)
+        public AnswerPartyLootModification(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             packet.MoveOffset(2);
             _client = client;

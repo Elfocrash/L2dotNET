@@ -11,9 +11,11 @@ namespace L2dotNET.Network
         private static readonly ILog Log = LogManager.GetLogger(typeof(GamePacketHandlerAuth));
 
         private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
+        private readonly IServiceProvider _serviceProvider;
 
-        static GamePacketHandlerAuth()
+        public GamePacketHandlerAuth(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
             ClientPackets.TryAdd(0xA1, typeof(LoginServPingResponse));
             ClientPackets.TryAdd(0xA5, typeof(LoginServLoginFail));
             ClientPackets.TryAdd(0xA6, typeof(LoginServLoginOk));
@@ -21,12 +23,12 @@ namespace L2dotNET.Network
             ClientPackets.TryAdd(0xA8, typeof(LoginServKickAccount));
         }
 
-        public static void HandlePacket(Packet packet, AuthThread login)
+        public void HandlePacket(Packet packet, AuthThread login)
         {
             PacketBase packetBase = null;
             Log.Info($"Received packet with Opcode:{packet.FirstOpcode:X2}");
             if (ClientPackets.ContainsKey(packet.FirstOpcode))
-                packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], packet, login);
+                packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], _serviceProvider, packet, login);
 
             if (packetBase == null)
                 throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode:X2} doesn't exist in the dictionary.");

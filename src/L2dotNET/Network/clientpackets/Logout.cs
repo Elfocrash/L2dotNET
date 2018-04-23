@@ -1,21 +1,24 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Network.serverpackets;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Network.clientpackets
 {
     class Logout : PacketBase
     {
         private readonly GameClient _client;
-
-        public Logout(Packet packet, GameClient client)
+        private readonly AuthThread _authThread;
+        public Logout(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
+            _authThread = serviceProvider.GetService<AuthThread>();
             _client = client;
         }
 
         public override void RunImpl()
         {
-            AuthThread.Instance.SetInGameAccount(_client.AccountName);
+            _authThread.SetInGameAccount(_client.AccountName);
 
             L2Player player = _client.CurrentPlayer;
 

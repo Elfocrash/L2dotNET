@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets.PartyAPI
 {
@@ -6,7 +7,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
     {
         private readonly GameClient _client;
 
-        public RequestWithdrawalParty(Packet packet, GameClient client)
+        public RequestWithdrawalParty(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
         }

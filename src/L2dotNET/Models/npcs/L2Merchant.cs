@@ -14,9 +14,11 @@ namespace L2dotNET.Models.Npcs
         private readonly ILog Log = LogManager.GetLogger(typeof(L2Merchant));
 
         private Timer CorpseTimer;
+        private readonly SpawnTable _spawnTable;
 
-        public L2Merchant(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
+        public L2Merchant(SpawnTable spawnTable, int objectId, NpcTemplate template, L2Spawn spawn) : base(spawnTable, objectId, template, spawn)
         {
+            _spawnTable = spawnTable;
             Template = template;
             Name = template.Name;
             InitializeCharacterStatus();
@@ -68,7 +70,7 @@ namespace L2dotNET.Models.Npcs
 
             BroadcastPacket(new Die(this));
 
-            SpawnTable.Instance.RegisterRespawn(spawn);
+            _spawnTable.RegisterRespawn(spawn);
 
             if (Template.CorpseTime <= 0)
             {

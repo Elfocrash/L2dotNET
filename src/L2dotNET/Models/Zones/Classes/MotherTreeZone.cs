@@ -8,9 +8,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     class MotherTreeZone : L2Zone
     {
-        public MotherTreeZone()
+        public MotherTreeZone(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
             Enabled = true;
         }
 

@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets.VehicleAPI
@@ -11,7 +12,7 @@ namespace L2dotNET.Network.clientpackets.VehicleAPI
         private readonly int _y;
         private readonly int _z;
 
-        public RequestGetOffVehicle(Packet packet, GameClient client)
+        public RequestGetOffVehicle(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _boatId = packet.ReadInt();

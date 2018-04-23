@@ -4,9 +4,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     class PeaceZoneBuff : L2Zone
     {
-        public PeaceZoneBuff()
+        public PeaceZoneBuff(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
             Enabled = true;
         }
 

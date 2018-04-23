@@ -1,7 +1,6 @@
 ﻿using System;
 using log4net;
 using L2dotNET.Services.Contracts;
-using Ninject;
 
 namespace L2dotNET.LoginService
 {
@@ -9,32 +8,16 @@ namespace L2dotNET.LoginService
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(PreReqValidation));
 
-        [Inject]
-        public ICheckService CheckService => LoginServer.Kernel.Get<ICheckService>();
+        private readonly ICheckService _checkService;
 
-        private static volatile PreReqValidation _instance;
-        private static readonly object SyncRoot = new object();
-
-        public static PreReqValidation Instance
+        public PreReqValidation(ICheckService checkService)
         {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new PreReqValidation();
-                }
-
-                return _instance;
-            }
+            _checkService = checkService;
         }
 
         public void Initialize()
         {
-            if (CheckService.PreCheckRepository())
+            if (_checkService.PreCheckRepository())
                 return;
 
             Log.Warn("Some checks have failed. Please correct the errors and try again.");

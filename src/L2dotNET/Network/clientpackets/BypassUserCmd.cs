@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using L2dotNET.Controllers;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -11,7 +12,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly GameClient _client;
         private readonly int _command;
 
-        public BypassUserCmd(Packet packet, GameClient client)
+        public BypassUserCmd(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _command = packet.ReadInt();

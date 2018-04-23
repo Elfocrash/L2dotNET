@@ -6,29 +6,34 @@ using System.Threading;
 using log4net;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Managers;
-using Ninject;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.LoginService
 {
     class LoginServer
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(LoginServer));
-
+        public static IServiceProvider ServiceProvider;
         private TcpListener _listener;
 
-        public static IKernel Kernel { get; set; }
+        public LoginServer(IServiceProvider serviceProvider)
+        {
+            ServiceProvider = serviceProvider;
+        }
 
         public void Start()
         {
-           // CheckRunningProcesses();
+            // CheckRunningProcesses();
+            var config = ServiceProvider.GetService<Config.Config>();
+            var serverThreadPool = ServiceProvider.GetService<ServerThreadPool>();
 
-            Config.Config.Instance.Initialize();
-            PreReqValidation.Instance.Initialize();
-            ClientManager.Instance.Initialize();
-            ServerThreadPool.Instance.Initialize();
+            config.Initialize();
+            ServiceProvider.GetService<PreReqValidation>().Initialize();
+            ServiceProvider.GetService<Managers.ClientManager>().Initialize();
+            serverThreadPool.Initialize();
             NetworkRedirect.Instance.Initialize();
 
-            _listener = new TcpListener(IPAddress.Parse(Config.Config.Instance.ServerConfig.Host), Config.Config.Instance.ServerConfig.LoginPort);
+            _listener = new TcpListener(IPAddress.Parse(config.ServerConfig.Host), config.ServerConfig.LoginPort);
 
             try
             {
@@ -42,8 +47,8 @@ namespace L2dotNET.LoginService
                 Environment.Exit(0);
             }
 
-            Log.Info($"Auth server listening clients at {Config.Config.Instance.ServerConfig.Host}:{Config.Config.Instance.ServerConfig.LoginPort}");
-            new Thread(ServerThreadPool.Instance.Start).Start();
+            Log.Info($"Auth server listening clients at {config.ServerConfig.Host}:{config.ServerConfig.LoginPort}");
+            new Thread(serverThreadPool.Start).Start();
 
             WaitForClients();
         }
@@ -67,7 +72,7 @@ namespace L2dotNET.LoginService
         /// <summary>Handle Client Request</summary>
         private void AcceptClient(TcpClient clientSocket)
         {
-            ClientManager.Instance.AddClient(clientSocket);
+            ServiceProvider.GetService<Managers.ClientManager>().AddClient(clientSocket);
         }
 
         private void CheckRunningProcesses()

@@ -1,14 +1,12 @@
 using System.Linq;
 using log4net;
 using L2dotNET.Services.Contracts;
-using Ninject;
 
 namespace L2dotNET.Tables
 {
-    sealed class IdFactory
+    public sealed class IdFactory
     {
-        [Inject]
-        public IServerService ServerService => GameServer.Kernel.Get<IServerService>();
+        private readonly IServerService _serverService;
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(IdFactory));
 
@@ -20,22 +18,11 @@ namespace L2dotNET.Tables
 
         private int _currentId = 1;
 
-        public static IdFactory Instance
+        public IdFactory(IServerService serverService)
         {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new IdFactory();
-                }
-
-                return _instance;
-            }
+            _serverService = serverService;
         }
+
 
         public int NextId()
         {
@@ -46,7 +33,7 @@ namespace L2dotNET.Tables
         public void Initialize()
         {
             
-            _currentId = ServerService.GetPlayersItemsObjectIdList().DefaultIfEmpty(IdMin).Max();
+            _currentId = _serverService.GetPlayersItemsObjectIdList().DefaultIfEmpty(IdMin).Max();
             Log.Info($"Used IDs {_currentId}.");
         }
     }

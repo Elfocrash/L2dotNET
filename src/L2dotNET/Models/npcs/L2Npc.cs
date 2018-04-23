@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Timers;
+﻿using System.Timers;
 using log4net;
-using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Templates;
@@ -20,7 +17,7 @@ namespace L2dotNET.Models.Npcs
         public bool Summoned;
         public bool StructureControlled = false;
 
-        public L2Npc(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template)
+        public L2Npc(SpawnTable spawnTable, int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template)
         {
             Template = template;
             Name = Template.Name;

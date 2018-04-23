@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Timers;
-using L2dotNET.World;
 
 namespace L2dotNET.Models.Status
 {

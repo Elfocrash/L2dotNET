@@ -4,8 +4,18 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
 using log4net;
-using Ninject;
+using L2dotNET.Config;
 using L2dotNET.ConsoleCommand;
+using L2dotNET.Handlers;
+using L2dotNET.Managers;
+using L2dotNET.Network;
+using L2dotNET.Network.loginauth;
+using L2dotNET.Repositories;
+using L2dotNET.Repositories.Contracts;
+using L2dotNET.Services;
+using L2dotNET.Services.Contracts;
+using L2dotNET.Tables;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.GameService
 {
@@ -50,9 +60,10 @@ namespace L2dotNET.GameService
             Log.Info("Starting GameService...");
             SetConsoleConfigurations();
             SetNumberDecimalSeparator();
-            GameServer.Kernel = new StandardKernel(new DepInjectionModule());
-            GameServer server = GameServer.Kernel.Get<GameServer>();
-            server.Start();
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            serviceProvider.GetService<GameServer>().Start();
             Process.GetCurrentProcess().WaitForExit();
             }
             catch(Exception ex)
@@ -61,7 +72,36 @@ namespace L2dotNET.GameService
             }
         }
 
-       
+        private static void ConfigureServices(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddSingleton<IPlayerService, PlayerService>();
+            serviceCollection.AddSingleton<IAccountService, AccountService>();
+            serviceCollection.AddSingleton<IServerService, ServerService>();
+            serviceCollection.AddSingleton<ICheckService, CheckService>();
+            serviceCollection.AddSingleton<IItemService, ItemService>();
+            serviceCollection.AddSingleton<ISkillService, SkillService>();
+
+            serviceCollection.AddSingleton<IPlayerRepository, PlayerRepository>();
+            serviceCollection.AddSingleton<IAccountRepository, AccountRepository>();
+            serviceCollection.AddSingleton<IServerRepository, ServerRepository>();
+            serviceCollection.AddSingleton<ICheckRepository, CheckRepository>();
+            serviceCollection.AddSingleton<IItemRepository, ItemRepository>();
+            serviceCollection.AddSingleton<ISkillRepository, SkillRepository>();
+            serviceCollection.AddSingleton<IUnitOfWork, UnitOfWork>();
+            serviceCollection.AddSingleton<GamePacketHandlerAuth>();
+            serviceCollection.AddSingleton<AuthThread>();
+            serviceCollection.AddSingleton<GamePacketHandler>();
+            serviceCollection.AddSingleton<ClientManager>();
+            serviceCollection.AddSingleton<PreReqValidation>();
+            serviceCollection.AddSingleton<AnnouncementManager>();
+            serviceCollection.AddSingleton<SpawnTable>();
+            serviceCollection.AddSingleton<IdFactory>();
+            serviceCollection.AddSingleton<ItemTable>();
+            serviceCollection.AddSingleton<IAdminCommandHandler, AdminCommandHandler>();
+            
+
+            serviceCollection.AddSingleton<GameServer>();
+        }
 
         private static void SetConsoleConfigurations()
         {

@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets.PartyAPI
@@ -8,7 +9,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
         private readonly GameClient _client;
         private readonly int _response;
 
-        public RequestAnswerJoinParty(Packet packet, GameClient client)
+        public RequestAnswerJoinParty(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _response = packet.ReadInt();

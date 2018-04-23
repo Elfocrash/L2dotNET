@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets
@@ -14,7 +15,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _originZ;
         private readonly int _moveMovement;
 
-        public MoveBackwardToLocation(Packet packet, GameClient client)
+        public MoveBackwardToLocation(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _targetX = packet.ReadInt();

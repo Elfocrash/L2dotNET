@@ -14,9 +14,14 @@ namespace L2dotNET.Tables
 
         public L2Npc Npc { get; set; }
 
-        public L2Spawn(NpcTemplate template)
+        private readonly IdFactory _idFactory;
+        private readonly SpawnTable _spawnTable;
+
+        public L2Spawn(NpcTemplate template, IdFactory idFactory, SpawnTable spawnTable)
         {
             Template = template ?? throw new ArgumentNullException(nameof(template));
+            _idFactory = idFactory;
+            _spawnTable = spawnTable;
         }
 
         public int GetNpcId()
@@ -29,7 +34,9 @@ namespace L2dotNET.Tables
             L2Npc npc;
             if (Type.GetType("L2dotNET.Models.Npcs." + Template.Type) != null)
             {
-                npc = (L2Npc)Activator.CreateInstance( Type.GetType("L2dotNET.Models.Npcs." + Template.Type), IdFactory.Instance.NextId(), Template, this);
+                //TODO this is shit. Change it
+                npc = (L2Npc) Activator.CreateInstance(Type.GetType("L2dotNET.Models.Npcs." + Template.Type),
+                        _spawnTable, _idFactory.NextId(), Template, this);
                 npc.X = Location.X;
                 npc.Y = Location.Y;
                 npc.Z = Location.Z;
@@ -37,7 +44,7 @@ namespace L2dotNET.Tables
             }
             else
             {
-                npc = new L2Npc(IdFactory.Instance.NextId(), Template, this)
+                npc = new L2Npc(_spawnTable, _idFactory.NextId(), Template, this)
                 {
                     X = Location.X,
                     Y = Location.Y,

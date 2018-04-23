@@ -2,13 +2,14 @@
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Model;
 using L2dotNET.Network;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
 {
     /// <summary>
     /// Play accepted packet.
     /// </summary>
-    static class ServerList
+    public static class ServerList
     {
         /// <summary>
         /// Packet opcode.
@@ -22,7 +23,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
         /// <returns>Play accepted <see cref="Packet"/>.</returns>
         internal static Packet ToPacket(LoginClient client)
         {
-            List<L2Server> servers = ServerThreadPool.Instance.Servers;
+            List<L2Server> servers = LoginServer.ServiceProvider.GetService<ServerThreadPool>().Servers;
             Packet p = new Packet(Opcode);
             p.WriteByte((byte)servers.Count, (byte)client.ActiveAccount.LastServer);
             foreach (L2Server server in servers)

@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets
@@ -10,7 +11,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly GameClient _client;
         private readonly int _protocol;
 
-        public ProtocolVersion(Packet packet, GameClient client)
+        public ProtocolVersion(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _protocol = packet.ReadInt();

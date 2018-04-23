@@ -1,4 +1,5 @@
-﻿using L2dotNET.Attributes;
+﻿using System;
+using L2dotNET.Attributes;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -36,6 +37,10 @@ namespace L2dotNET.Commands.Admin
             sm.AddPlayerName(admin.Name);
             sm.AddNumber((int)mpval);
             target.SendPacket(sm);
+        }
+
+        public AdminHeal(IServiceProvider serviceProvider) : base(serviceProvider)
+        {
         }
     }
 }

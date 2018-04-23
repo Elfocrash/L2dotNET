@@ -1,5 +1,4 @@
-﻿using L2dotNET.Models.Inventory;
-using L2dotNET.Models.Player;
+﻿using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.Basic;
 using static L2dotNET.Models.Inventory.Inventory;
 

@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.Network.clientpackets.ClanAPI
+﻿using System;
+
+namespace L2dotNET.Network.clientpackets.ClanAPI
 {
     class RequestExSetPledgeCrestLarge : PacketBase
     {
@@ -6,7 +8,7 @@
         private readonly int _size;
         private readonly byte[] _picture;
 
-        public RequestExSetPledgeCrestLarge(Packet packet, GameClient client)
+        public RequestExSetPledgeCrestLarge(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             packet.MoveOffset(2);
             _client = client;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using L2dotNET.Models.Player;
-using L2dotNET.World;
 
 namespace L2dotNET.Models.Stats
 {

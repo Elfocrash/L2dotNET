@@ -3,7 +3,6 @@ using L2dotNET.Models;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Models.Player;
-using L2dotNET.World;
 
 namespace L2dotNET.Network.serverpackets
 {

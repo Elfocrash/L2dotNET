@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -9,7 +10,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly bool _ctrlPressed;
         private readonly bool _shiftPressed;
 
-        public RequestMagicSkillUse(Packet packet, GameClient client)
+        public RequestMagicSkillUse(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _magicId = packet.ReadInt(); // Identifier of the used skill

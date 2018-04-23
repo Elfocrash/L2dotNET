@@ -3,7 +3,6 @@ using log4net;
 using L2dotNET.DataContracts;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Services.Contracts;
-using Ninject;
 using System.Linq;
 using System.Timers;
 using System;
@@ -12,39 +11,26 @@ namespace L2dotNET.Tables
 {
     public class SpawnTable
     {
-        [Inject]
-        public IServerService ServerService => GameServer.Kernel.Get<IServerService>();
+        private readonly IServerService _serverService;
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(SpawnTable));
-        private static volatile SpawnTable _instance;
-        private static readonly object SyncRoot = new object();
         private Timer RespawnTimerTask;
-
-        public static SpawnTable Instance
+        private readonly IdFactory _idFactory;
+        private readonly SpawnTable _spawnTable;
+        public SpawnTable(IServerService serverService, IdFactory idFactory)
         {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new SpawnTable();
-                }
-
-                return _instance;
-            }
+            _serverService = serverService;
+            _idFactory = idFactory;
         }
 
         public void Initialize()
         {
-            List<SpawnlistContract> spawnsList = ServerService.GetAllSpawns();
+            List<SpawnlistContract> spawnsList = _serverService.GetAllSpawns();
 
             spawnsList.ForEach((spawn) =>
             {
                 L2Spawn l2Spawn =
-                new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId))
+                new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId), _idFactory, _spawnTable)
                 {
                     Location = new SpawnLocation(spawn.LocX, spawn.LocY, spawn.LocZ, spawn.Heading, spawn.RespawnDelay)
                 };

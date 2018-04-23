@@ -7,7 +7,7 @@ using L2dotNET.Utility;
 
 namespace L2dotNET.Network
 {
-    class NetworkBlock
+    public class NetworkBlock
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(NetworkBlock));
         private static volatile NetworkBlock _instance;

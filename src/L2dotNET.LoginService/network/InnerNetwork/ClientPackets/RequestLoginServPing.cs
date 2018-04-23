@@ -1,4 +1,5 @@
-﻿using L2dotNET.LoginService.GSCommunication;
+﻿using System;
+using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
 
@@ -9,7 +10,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
         private readonly ServerThread _thread;
         private string _message;
 
-        public RequestLoginServPing(Packet p, ServerThread server)
+        public RequestLoginServPing(IServiceProvider serviceProvider, Packet p, ServerThread server) : base(serviceProvider)
         {
             _thread = server;
             _message = p.ReadString();

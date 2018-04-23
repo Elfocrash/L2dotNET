@@ -1,7 +1,9 @@
-﻿using L2dotNET.LoginService.GSCommunication;
+﻿using System;
+using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
@@ -12,7 +14,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
         private readonly int _loginOkID2;
         private readonly byte _serverId;
 
-        public RequestServerLogin(Packet p, LoginClient client)
+        public RequestServerLogin(IServiceProvider serviceProvider, Packet p, LoginClient client) : base(serviceProvider)
         {
             _client = client;
             _loginOkID1 = p.ReadInt();
@@ -36,7 +38,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
                 return;
             }
 
-            L2Server server = ServerThreadPool.Instance.Get(_serverId);
+            L2Server server = LoginServer.ServiceProvider.GetService<ServerThreadPool>().Get(_serverId);
             if (server == null)
             {
                 _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));

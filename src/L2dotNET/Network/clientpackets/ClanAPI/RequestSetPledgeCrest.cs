@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.Network.clientpackets.ClanAPI
+﻿using System;
+
+namespace L2dotNET.Network.clientpackets.ClanAPI
 {
     class RequestSetPledgeCrest : PacketBase
     {
@@ -6,7 +8,7 @@
         private readonly int _size;
         private readonly byte[] _picture;
 
-        public RequestSetPledgeCrest(Packet packet, GameClient client)
+        public RequestSetPledgeCrest(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _size = packet.ReadInt();

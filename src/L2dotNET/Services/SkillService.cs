@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using L2dotNET.DataContracts;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;

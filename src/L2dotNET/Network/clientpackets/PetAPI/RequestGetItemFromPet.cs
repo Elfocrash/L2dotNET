@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets.PetAPI
 {
@@ -9,7 +10,7 @@ namespace L2dotNET.Network.clientpackets.PetAPI
         private int _count;
         private readonly int _equipped;
 
-        public RequestGetItemFromPet(Packet packet, GameClient client)
+        public RequestGetItemFromPet(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _objectId = packet.ReadInt();

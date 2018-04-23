@@ -7,9 +7,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     class PoisonZone : L2Zone
     {
-        public PoisonZone()
+        public PoisonZone(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
         }
 
         public override void OnInit()

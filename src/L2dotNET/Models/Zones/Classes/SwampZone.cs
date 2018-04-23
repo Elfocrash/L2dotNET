@@ -6,9 +6,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     class SwampZone : L2Zone
     {
-        public SwampZone()
+        public SwampZone(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
         }
 
         public override void OnInit()

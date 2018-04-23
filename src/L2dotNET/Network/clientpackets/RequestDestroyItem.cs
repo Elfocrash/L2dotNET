@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Items;
+﻿using System;
+using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -10,7 +11,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _sId;
         private readonly int _num;
 
-        public RequestDestroyItem(Packet packet, GameClient client)
+        public RequestDestroyItem(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _sId = packet.ReadInt();

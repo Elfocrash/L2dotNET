@@ -1,9 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using log4net;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
@@ -21,7 +23,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
         private readonly byte _gmonly;
         private readonly byte _test;
 
-        public RequestLoginAuth(Packet p, ServerThread server)
+        public RequestLoginAuth(IServiceProvider serviceProvider, Packet p, ServerThread server) : base(serviceProvider)
         {
             _thread = server;
             _port = p.ReadShort();
@@ -36,7 +38,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public override void RunImpl()
         {
-            L2Server server = ServerThreadPool.Instance.Servers.FirstOrDefault(srv => srv.Code == _code);
+            L2Server server = LoginServer.ServiceProvider.GetService<ServerThreadPool>().Servers.FirstOrDefault(srv => srv.Code == _code);
 
             if (server == null)
             {

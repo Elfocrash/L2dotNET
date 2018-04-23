@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Vehicles;
 using L2dotNET.Network.serverpackets;
@@ -18,7 +19,7 @@ namespace L2dotNET.Network.clientpackets.VehicleAPI
         private readonly int _y;
         private readonly int _z;
 
-        public RequestMoveToLocationInVehicle(Packet packet, GameClient client)
+        public RequestMoveToLocationInVehicle(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _boatId = packet.ReadInt(); //objectId of boat

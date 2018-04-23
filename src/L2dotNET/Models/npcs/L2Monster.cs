@@ -4,9 +4,7 @@ using log4net;
 using L2dotNET.World;
 using System.Timers;
 using L2dotNET.Models.Player;
-using L2dotNET.Network;
 using L2dotNET.Tables;
-using System.Linq;
 
 namespace L2dotNET.Models.Npcs
 {
@@ -15,11 +13,12 @@ namespace L2dotNET.Models.Npcs
         private readonly ILog Log = LogManager.GetLogger(typeof(L2Monster));
 
         private Timer CorpseTimer;
-
+        private SpawnTable _spawnTable;
         public override int Attackable => 1;
 
-        public L2Monster(int objectId, NpcTemplate template, L2Spawn spawn) : base(objectId, template, spawn)
+        public L2Monster(SpawnTable spawnTable, int objectId, NpcTemplate template, L2Spawn spawn) : base(spawnTable, objectId, template, spawn)
         {
+            _spawnTable = spawnTable;
             Template = template;
             Name = template.Name;
             InitializeCharacterStatus();
@@ -83,7 +82,7 @@ namespace L2dotNET.Models.Npcs
             CharStatus.StopHpMpRegeneration();
 
             BroadcastPacket(new Die(this));
-            SpawnTable.Instance.RegisterRespawn(spawn);
+            _spawnTable.RegisterRespawn(spawn);
             if (Template.CorpseTime <= 0)
             {
                 return;

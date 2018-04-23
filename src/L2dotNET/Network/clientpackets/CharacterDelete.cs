@@ -1,25 +1,26 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using log4net;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
-using Ninject;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Network.clientpackets
 {
     class CharacterDelete : PacketBase
     {
-        [Inject]
-        public IPlayerService PlayerService => GameServer.Kernel.Get<IPlayerService>();
+        private readonly IPlayerService _playerService;
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(CharacterDelete));
 
         private readonly GameClient _client;
         private readonly int _charSlot;
 
-        public CharacterDelete(Packet packet, GameClient client)
+        public CharacterDelete(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
+            _playerService = serviceProvider.GetService<IPlayerService>();
             _charSlot = packet.ReadInt();
         }
 
@@ -61,7 +62,7 @@ namespace L2dotNET.Network.clientpackets
 
             if (Config.Config.Instance.GameplayConfig.Server.Client.DeleteCharAfterDays == 0)
             {
-                if (!PlayerService.DeleteCharByObjId(player.ObjId))
+                if (!_playerService.DeleteCharByObjId(player.ObjId))
                 {
                     _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                     return;
@@ -72,7 +73,7 @@ namespace L2dotNET.Network.clientpackets
             else
             {
                 player.SetCharDeleteTime();
-                if (!PlayerService.MarkToDeleteChar(player.ObjId, player.DeleteTime))
+                if (!_playerService.MarkToDeleteChar(player.ObjId, player.DeleteTime))
                 {
                     _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                     return;

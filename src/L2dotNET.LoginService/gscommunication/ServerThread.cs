@@ -6,6 +6,7 @@ using log4net;
 using L2dotNET.LoginService.Network;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.LoginService.GSCommunication
 {
@@ -16,7 +17,7 @@ namespace L2dotNET.LoginService.GSCommunication
         private NetworkStream _nstream;
         private TcpClient _client;
         private byte[] _buffer;
-
+        private readonly PacketHandler _packetHandler;
         public string Wan { get; set; }
         public short Port { get; set; }
         public short Curp { get; set; }
@@ -74,13 +75,13 @@ namespace L2dotNET.LoginService.GSCommunication
 
             byte[] buff = new byte[_buffer.Length];
             _buffer.CopyTo(buff, 0);
-            PacketHandler.Handle(new Packet(1, buff), this);
+            _packetHandler.Handle(new Packet(1, buff), this);
             Read();
         }
 
         private void Termination()
         {
-            ServerThreadPool.Instance.Shutdown(Id);
+            LoginServer.ServiceProvider.GetService<ServerThreadPool>().Shutdown(Id);
         }
 
         public void Send(Packet pk)
@@ -97,7 +98,7 @@ namespace L2dotNET.LoginService.GSCommunication
         public void Close(Packet pk)
         {
             Send(pk);
-            ServerThreadPool.Instance.Shutdown(Id);
+            LoginServer.ServiceProvider.GetService<ServerThreadPool>().Shutdown(Id);
         }
 
         public void Stop()
@@ -116,6 +117,11 @@ namespace L2dotNET.LoginService.GSCommunication
         }
 
         private readonly List<string> _activeInGame = new List<string>();
+
+        public ServerThread(PacketHandler packetHandler)
+        {
+            _packetHandler = packetHandler;
+        }
 
         public void AccountInGame(string account, byte status)
         {

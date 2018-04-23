@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -7,7 +8,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly GameClient _client;
         private readonly int _objectId;
 
-        public RequestExRqItemLink(Packet packet, GameClient client)
+        public RequestExRqItemLink(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             packet.MoveOffset(2);
             _client = client;

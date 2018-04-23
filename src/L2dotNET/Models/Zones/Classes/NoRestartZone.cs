@@ -4,9 +4,9 @@ namespace L2dotNET.Models.Zones.Classes
 {
     class NoRestartZone : L2Zone
     {
-        public NoRestartZone()
+        public NoRestartZone(IdFactory idFactory) : base(idFactory)
         {
-            ZoneId = IdFactory.Instance.NextId();
+            ZoneId = idFactory.NextId();
             Enabled = true;
         }
 

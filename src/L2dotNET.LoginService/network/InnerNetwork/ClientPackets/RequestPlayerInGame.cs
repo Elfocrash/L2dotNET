@@ -1,4 +1,5 @@
-﻿using L2dotNET.LoginService.GSCommunication;
+﻿using System;
+using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.Network;
 
 namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
@@ -9,7 +10,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
         private readonly string _account;
         private readonly byte _status;
 
-        public RequestPlayerInGame(Packet p, ServerThread server)
+        public RequestPlayerInGame(IServiceProvider serviceProvider, Packet p, ServerThread server) : base(serviceProvider)
         {
             _thread = server;
             _account = p.ReadString();
