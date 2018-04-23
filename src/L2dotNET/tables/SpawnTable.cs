@@ -16,7 +16,7 @@ namespace L2dotNET.Tables
         private static readonly ILog Log = LogManager.GetLogger(typeof(SpawnTable));
         private Timer RespawnTimerTask;
         private readonly IdFactory _idFactory;
-        private readonly SpawnTable _spawnTable;
+
         public SpawnTable(IServerService serverService, IdFactory idFactory)
         {
             _serverService = serverService;
@@ -30,7 +30,7 @@ namespace L2dotNET.Tables
             spawnsList.ForEach((spawn) =>
             {
                 L2Spawn l2Spawn =
-                new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId), _idFactory, _spawnTable)
+                new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId), _idFactory, this)
                 {
                     Location = new SpawnLocation(spawn.LocX, spawn.LocY, spawn.LocZ, spawn.Heading, spawn.RespawnDelay)
                 };
