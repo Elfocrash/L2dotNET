@@ -24,11 +24,11 @@ namespace L2dotNET
 
         private TcpListener _listener;
 
-        private readonly IServiceProvider _serviceProvider;
+        public static IServiceProvider ServiceProvider { get; private set; }
 
         public GameServer(IServiceProvider serviceProvider)
         {
-            _serviceProvider = serviceProvider;
+            ServiceProvider = serviceProvider;
         }
 
         public void Start()
@@ -36,24 +36,24 @@ namespace L2dotNET
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository,new FileInfo("log4net.config"));
 
-            var config = _serviceProvider.GetService<Config.Config>();
+            var config = ServiceProvider.GetService<Config.Config>();
             config.Initialise();
 
-            _serviceProvider.GetService<PreReqValidation>().Initialise();
+            ServiceProvider.GetService<PreReqValidation>().Initialise();
 
             CharTemplateTable.Instance.Initialize();
 
             NetworkBlock.Instance.Initialize();
             GameTime.Instance.Initialize();
 
-            _serviceProvider.GetService<IdFactory>().Initialise();
+            ServiceProvider.GetService<IdFactory>().Initialise();
 
             L2World.Instance.Initialize();
 
             MapRegionTable.Instance.Initialize();
             ZoneTable.Instance.Initialize();
 
-            _serviceProvider.GetService<ItemTable>().Initialise();
+            ServiceProvider.GetService<ItemTable>().Initialise();
             ItemHandler.Instance.Initialize();
 
             NpcTable.Instance.Initialize();
@@ -61,18 +61,18 @@ namespace L2dotNET
             
             BlowFishKeygen.GenerateKeys();
 
-            _serviceProvider.GetService<IAdminCommandHandler>().Initialise();
+            ServiceProvider.GetService<IAdminCommandHandler>().Initialise();
 
-            _serviceProvider.GetService<AnnouncementManager>().Initialise();
+            ServiceProvider.GetService<AnnouncementManager>().Initialise();
 
             StaticObjTable.Instance.Initialize();
-            _serviceProvider.GetService<SpawnTable>().Initialise();
+            ServiceProvider.GetService<SpawnTable>().Initialise();
 
-            HtmCache.Instance.Initialize();
+            ServiceProvider.GetService<HtmCache>().Initialise();
 
             // PluginManager.Instance.Initialize(this);
 
-            _serviceProvider.GetService<AuthThread>().Initialise();
+            ServiceProvider.GetService<AuthThread>().Initialise();
 
             _listener = new TcpListener(IPAddress.Any, config.ServerConfig.Port);
 
@@ -112,7 +112,7 @@ namespace L2dotNET
         /// <summary>Handle Client Request</summary>
         private void AcceptClient(TcpClient clientSocket)
         {
-            _serviceProvider.GetService<ClientManager>().AddClient(clientSocket);
+            ServiceProvider.GetService<ClientManager>().AddClient(clientSocket);
         }
     }
 }

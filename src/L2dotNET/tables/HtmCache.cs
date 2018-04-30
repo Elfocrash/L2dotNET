@@ -9,37 +9,28 @@ using L2dotNET.Utility;
 
 namespace L2dotNET.Tables
 {
-    public class HtmCache
+    public class HtmCache : IInitialisable
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(HtmCache));
-        private static volatile HtmCache _instance;
-        private static readonly object SyncRoot = new object();
 
         private List<L2Html> _htmCache;
         private List<string> _htmFiles;
+        public bool Initialised { get; private set; }
 
-        public static HtmCache Instance
+        private readonly Config.Config _config;
+        public HtmCache(Config.Config config)
         {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new HtmCache();
-                }
-
-                return _instance;
-            }
+            _config = config;
         }
 
-        public void Initialize()
+        public void Initialise()
         {
+            if (Initialised)
+                return;
+
             _htmCache = new List<L2Html>();
             _htmFiles = DirSearch("./html");
-            if (!Config.Config.Instance.ServerConfig.LazyHtmlCache)
+            if (!_config.ServerConfig.LazyHtmlCache)
             {
                 BuildHtmCache();
                 Log.Info($"Cache Built. Loaded {_htmCache.Count} files.");
@@ -48,6 +39,8 @@ namespace L2dotNET.Tables
             {
                 Log.Info($"Lazy Cached {_htmFiles.Count} files.");
             }
+
+            Initialised = true;
         }
 
         public void BuildHtmCache()
@@ -64,7 +57,7 @@ namespace L2dotNET.Tables
                 return string.Empty;
 
             L2Html html = _htmCache.FirstOrDefault(x => x.Filename.EqualsIgnoreCase(filename));
-            if (Config.Config.Instance.ServerConfig.LazyHtmlCache && html == null)
+            if (_config.ServerConfig.LazyHtmlCache && html == null)
             {
                 //Fallback for non loaded files
                 string predictedFile = _htmFiles.FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == filename);
@@ -91,7 +84,7 @@ namespace L2dotNET.Tables
                 return string.Empty;
 
             L2Html html = _htmCache.FirstOrDefault(x => x.Filepath.EqualsIgnoreCase(filename));
-            if (Config.Config.Instance.ServerConfig.LazyHtmlCache && html == null)
+            if (_config.ServerConfig.LazyHtmlCache && html == null)
             {
                 //Fallback for non loaded files
                 string predictedFile = _htmFiles.FirstOrDefault(f => f == filename);

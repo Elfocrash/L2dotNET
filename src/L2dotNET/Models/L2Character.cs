@@ -290,8 +290,6 @@ namespace L2dotNET.Models
         public virtual void SendSystemMessage(SystemMessage.SystemMessageId msgId) { }
 
         public virtual void OnPickUp(L2Item item) { }
-
-        public int BuffMax = Config.Config.Instance.GameplayConfig.PlayerConfig.Buff.MaxBuffsAmount;
         
         public int ClientPosX,
                    ClientPosY,

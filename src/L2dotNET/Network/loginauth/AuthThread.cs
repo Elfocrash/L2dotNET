@@ -62,7 +62,7 @@ namespace L2dotNET.Network.loginauth
 
             IsConnected = true;
 
-            SendPacket(new LoginAuth());
+            SendPacket(new LoginAuth(_config));
             SendPacket(new LoginServPing(this));
             Read();
         }

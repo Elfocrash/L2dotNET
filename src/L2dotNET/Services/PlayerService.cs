@@ -14,15 +14,17 @@ namespace L2dotNET.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IItemService _itemService;
+        private readonly Config.Config _config;
         private readonly IdFactory _idFactory;
         private readonly ItemTable _itemTable;
 
-        public PlayerService(IUnitOfWork unitOfWork, IItemService itemService, IdFactory idFactory, ItemTable itemTable)
+        public PlayerService(IUnitOfWork unitOfWork, IItemService itemService, IdFactory idFactory, ItemTable itemTable, Config.Config config)
         {
             _unitOfWork = unitOfWork;
             _itemService = itemService;
             _idFactory = idFactory;
             _itemTable = itemTable;
+            _config = config;
         }
 
         public L2Player GetPlayerByLogin(int objId)
@@ -218,6 +220,11 @@ namespace L2dotNET.Services
             player.SessionData = new PlayerBag();
 
             return player;
+        }
+
+        public int GetDaysRequiredToDeletePlayer()
+        {
+            return _config.GameplayConfig.Server.Client.DeleteCharAfterDays;
         }
     }
 }

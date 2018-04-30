@@ -60,7 +60,7 @@ namespace L2dotNET.Network.clientpackets
             //    return;
             //}
 
-            if (Config.Config.Instance.GameplayConfig.Server.Client.DeleteCharAfterDays == 0)
+            if (_playerService.GetDaysRequiredToDeletePlayer() == 0)
             {
                 if (!_playerService.DeleteCharByObjId(player.ObjId))
                 {

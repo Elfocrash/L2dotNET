@@ -11,11 +11,6 @@ namespace L2dotNET.Config
         [JsonProperty(PropertyName = "MaxCharactersByAccount", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int MaxCharactersByAccount { get; set; }
 
-        ///<summary>Regular expression for name validation.</summary>
-        [DefaultValue("^[A-Za-z0-9]{1,16}$")]
-        [JsonProperty(PropertyName = "RegexNamePattern", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public string RegexNamePattern { get; set; }
-
         ///<summary>Check if the character creation is blocked.</summary>
         [DefaultValue(false)]
         [JsonProperty(PropertyName = "CharCreationBlocked", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]

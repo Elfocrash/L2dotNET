@@ -15,8 +15,10 @@ namespace L2dotNET.Network.clientpackets
 {
     class CharacterCreate : PacketBase
     {
-        public readonly IPlayerService _playerService;
+        private readonly IPlayerService _playerService;
         private readonly IItemService _itemService;
+        private readonly Config.Config _config;
+
         private readonly IdFactory _idFactory;
         private readonly ItemTable _itemTable;
 
@@ -32,6 +34,7 @@ namespace L2dotNET.Network.clientpackets
         public CharacterCreate(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
+            _config = serviceProvider.GetService<Config.Config>();
             _itemService = serviceProvider.GetService<IItemService>();
             _itemTable = serviceProvider.GetService<ItemTable>();
             _idFactory = serviceProvider.GetService<IdFactory>();
@@ -130,19 +133,19 @@ namespace L2dotNET.Network.clientpackets
 
         private bool IsValidChar()
         {
-            if (Config.Config.Instance.GameplayConfig.OtherConfig.CharCreationBlocked)
+            if (_config.GameplayConfig.OtherConfig.CharCreationBlocked)
             {
                 _client.SendPacket(new CharCreateFail(CharCreateFailReason.CharCreationBlocked));
                 return false;
             }
 
-            if (_client.AccountChars.Count >= Config.Config.Instance.GameplayConfig.OtherConfig.MaxCharactersByAccount)
+            if (_client.AccountChars.Count >= _config.GameplayConfig.OtherConfig.MaxCharactersByAccount)
             {
                 _client.SendPacket(new CharCreateFail(CharCreateFailReason.TooManyCharsOnAccount));
                 return false;
             }
 
-            if (Config.Config.Instance.GameplayConfig.OtherConfig.ForbiddenCharNames.Contains(_name))
+            if (_config.GameplayConfig.OtherConfig.ForbiddenCharNames.Contains(_name))
             {
                 _client.SendPacket(new CharCreateFail(CharCreateFailReason.IncorrectName));
                 return false;

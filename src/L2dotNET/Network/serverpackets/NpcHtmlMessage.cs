@@ -1,5 +1,6 @@
 ﻿using L2dotNET.Models.Player;
 using L2dotNET.Tables;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Network.serverpackets
 {
@@ -8,17 +9,17 @@ namespace L2dotNET.Network.serverpackets
         public string Htm;
         private readonly int _objId;
         private readonly int _itemId;
-
+        
         public NpcHtmlMessage(L2Player player, string file, int objId)
         {
-            Htm = HtmCache.Instance.GetHtmByFilepath(file);
+            Htm = GameServer.ServiceProvider.GetService<HtmCache>().GetHtmByFilepath(file);
             _objId = objId;
             _itemId = 0;
         }
 
         public NpcHtmlMessage(L2Player player, string file, int objId, int itemId)
         {
-            Htm = HtmCache.Instance.GetHtmByFilepath(file);
+            Htm = GameServer.ServiceProvider.GetService<HtmCache>().GetHtmByFilepath(file);
             _objId = objId;
             _itemId = itemId;
         }

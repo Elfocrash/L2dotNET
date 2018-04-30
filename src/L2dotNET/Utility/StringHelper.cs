@@ -40,7 +40,7 @@ namespace L2dotNET.Utility
         /// <returns>true if the regular expression finds a match; otherwise, false.</returns>
         public static bool IsValidPlayerName(string name)
         {
-            return IsValidName(name, Config.Config.Instance.GameplayConfig.OtherConfig.RegexNamePattern);
+            return IsValidName(name, "^[A-Za-z0-9]{1,16}$");
         }
     }
 }

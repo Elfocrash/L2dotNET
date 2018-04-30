@@ -1460,7 +1460,7 @@ namespace L2dotNET.Models.Player
 
         public int RemainingDeleteTime() => AccessLevel > -100 ? (DeleteTime > 0 ? (int)((DeleteTime - Utilz.CurrentTimeMillis()) / 1000) : 0) : -1;
 
-        public void SetCharDeleteTime() => DeleteTime = Utilz.CurrentTimeMillis() + (Config.Config.Instance.GameplayConfig.Server.Client.DeleteCharAfterDays * 86400000L);
+        public void SetCharDeleteTime() => DeleteTime = Utilz.CurrentTimeMillis() + (_playerService.GetDaysRequiredToDeletePlayer() * 86400000L);
 
         public void SetCharLastAccess() => LastAccess = Utilz.CurrentTimeMillis();
 
