@@ -74,6 +74,7 @@ namespace L2dotNET.GameService
 
         private static void ConfigureServices(IServiceCollection serviceCollection)
         {
+            serviceCollection.AddSingleton<Config.Config>();
             serviceCollection.AddSingleton<IPlayerService, PlayerService>();
             serviceCollection.AddSingleton<IAccountService, AccountService>();
             serviceCollection.AddSingleton<IServerService, ServerService>();
@@ -98,8 +99,6 @@ namespace L2dotNET.GameService
             serviceCollection.AddSingleton<IdFactory>();
             serviceCollection.AddSingleton<ItemTable>();
             serviceCollection.AddSingleton<IAdminCommandHandler, AdminCommandHandler>();
-            
-
             serviceCollection.AddSingleton<GameServer>();
         }
 

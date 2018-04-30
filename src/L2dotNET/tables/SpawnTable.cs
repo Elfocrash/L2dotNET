@@ -9,22 +9,27 @@ using System;
 
 namespace L2dotNET.Tables
 {
-    public class SpawnTable
+    public class SpawnTable : IInitialisable
     {
         private readonly IServerService _serverService;
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(SpawnTable));
         private Timer RespawnTimerTask;
         private readonly IdFactory _idFactory;
+        private readonly Config.Config _config;
+        public bool Initialised { get; private set; }
 
-        public SpawnTable(IServerService serverService, IdFactory idFactory)
+        public SpawnTable(IServerService serverService, IdFactory idFactory, Config.Config config)
         {
+            _config = config;
             _serverService = serverService;
             _idFactory = idFactory;
         }
 
-        public void Initialize()
+        public void Initialise()
         {
+            if(Initialised) return;
+            
             List<SpawnlistContract> spawnsList = _serverService.GetAllSpawns();
 
             spawnsList.ForEach((spawn) =>
@@ -40,7 +45,7 @@ namespace L2dotNET.Tables
 
             Log.Info($"Spawned {spawnsList.Count} npcs.");
 
-            if (Config.Config.Instance.GameplayConfig.NpcConfig.Misc.AutoMobRespawn)
+            if (_config.GameplayConfig.NpcConfig.Misc.AutoMobRespawn)
             {
                 RespawnTimerTask = new Timer();
                 RespawnTimerTask.Elapsed += new ElapsedEventHandler(RespawnTimerTick);
@@ -49,6 +54,8 @@ namespace L2dotNET.Tables
 
                 Log.Info($"Started RespawnTimerTask.");
             }
+
+            Initialised = true;
         }
 
         private void RespawnTimerTick(object sender, ElapsedEventArgs e)

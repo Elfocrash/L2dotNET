@@ -32,4 +32,14 @@
 	<None Include="$(SolutionDir)L2dotNET\Datapacks\Game\sq\**" CopyToOutputDirectory="PreserveNewest" LinkBase="sq\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Game\config\**" />
+    <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Game\crests\**" />
+    <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Game\data\**" />
+    <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Game\dlc\**" />
+    <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Game\geo\**" />
+    <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Game\scripts\**" />
+    <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Game\sq\**" />
+  </ItemGroup>
+
 </Project>

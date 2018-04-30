@@ -4,21 +4,28 @@ using L2dotNET.Services.Contracts;
 
 namespace L2dotNET.LoginService
 {
-    public class PreReqValidation
+    public class PreReqValidation : IInitialisable
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(PreReqValidation));
 
         private readonly ICheckService _checkService;
+        public bool Initialised { get; private set; }
 
         public PreReqValidation(ICheckService checkService)
         {
             _checkService = checkService;
         }
 
-        public void Initialize()
+        public void Initialise()
         {
-            if (_checkService.PreCheckRepository())
+            if (Initialised)
                 return;
+
+            if (_checkService.PreCheckRepository())
+            {
+                Initialised = true;
+                return;
+            }
 
             Log.Warn("Some checks have failed. Please correct the errors and try again.");
             Log.Info("Press ENTER to exit...");

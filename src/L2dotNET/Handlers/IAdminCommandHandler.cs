@@ -2,12 +2,10 @@
 
 namespace L2dotNET.Handlers
 {
-    public interface IAdminCommandHandler
+    public interface IAdminCommandHandler : IInitialisable
     {
         void Request(L2Player admin, string alias);
 
         void Register(object processor);
-
-        void Initialize();
     }
 }

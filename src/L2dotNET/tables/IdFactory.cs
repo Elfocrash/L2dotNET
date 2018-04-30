@@ -4,14 +4,12 @@ using L2dotNET.Services.Contracts;
 
 namespace L2dotNET.Tables
 {
-    public sealed class IdFactory
+    public sealed class IdFactory : IInitialisable
     {
         private readonly IServerService _serverService;
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(IdFactory));
-
-        private static volatile IdFactory _instance;
-        private static readonly object SyncRoot = new object();
+        public bool Initialised { get; private set; }
 
         public const int IdMin = 0x10000000,
                          IdMax = 0x7FFFFFFF;
@@ -23,18 +21,20 @@ namespace L2dotNET.Tables
             _serverService = serverService;
         }
 
-
         public int NextId()
         {
             _currentId++;
             return _currentId;
         }
 
-        public void Initialize()
+        public void Initialise()
         {
-            
+            if (Initialised)
+                return;
+
             _currentId = _serverService.GetPlayersItemsObjectIdList().DefaultIfEmpty(IdMin).Max();
             Log.Info($"Used IDs {_currentId}.");
+            Initialised = true;
         }
     }
 }

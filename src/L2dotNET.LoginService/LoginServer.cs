@@ -27,9 +27,9 @@ namespace L2dotNET.LoginService
             var config = ServiceProvider.GetService<Config.Config>();
             var serverThreadPool = ServiceProvider.GetService<ServerThreadPool>();
 
-            config.Initialize();
-            ServiceProvider.GetService<PreReqValidation>().Initialize();
-            ServiceProvider.GetService<Managers.ClientManager>().Initialize();
+            config.Initialise();
+            ServiceProvider.GetService<PreReqValidation>().Initialise();
+            ServiceProvider.GetService<Managers.ClientManager>().Initialise();
             serverThreadPool.Initialize();
             NetworkRedirect.Instance.Initialize();
 

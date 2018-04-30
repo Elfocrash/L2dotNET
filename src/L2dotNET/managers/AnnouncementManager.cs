@@ -10,11 +10,12 @@ using L2dotNET.World;
 
 namespace L2dotNET.Managers
 {
-    public class AnnouncementManager
+    public class AnnouncementManager : IInitialisable
     {
         private readonly IServerService _serverService;
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(AnnouncementManager));
+        public bool Initialised { get; private set; }
 
         public List<AnnouncementContract> Announcements { get; set; }
 
@@ -23,10 +24,15 @@ namespace L2dotNET.Managers
             _serverService = serverService;
         }
 
-        public void Initialize()
+        public void Initialise()
         {
+            if (Initialised)
+                return;
+
             Announcements = _serverService.GetAnnouncementsList();
             Log.Info($"Loaded {Announcements.Count} annoucements.");
+
+            Initialised = true;
         }
 
         public void Announce(string text)

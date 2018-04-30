@@ -13,7 +13,7 @@ namespace L2dotNET.Handlers
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(AdminCommandHandler));
         private readonly SortedList<string, AAdminCommand> _commands = new SortedList<string, AAdminCommand>();
-
+        public bool Initialised { get; private set; }
         private readonly IServiceProvider _serviceProvider;
 
         public AdminCommandHandler(IServiceProvider serviceProvider)
@@ -21,13 +21,17 @@ namespace L2dotNET.Handlers
             _serviceProvider = serviceProvider;
         }
 
-        public void Initialize()
+        public void Initialise()
         {
+            if (Initialised)
+                return;
+
             IEnumerable<Type> typelist = Utilz.GetTypesInNamespace(Assembly.GetExecutingAssembly(), "L2dotNET.Commands.Admin");
             foreach (Type t in typelist)
                 Register(Activator.CreateInstance(t, _serviceProvider));
 
             Log.Info($"Loaded {_commands.Count} commands.");
+            Initialised = true;
         }
 
         public void Request(L2Player admin, string alias)

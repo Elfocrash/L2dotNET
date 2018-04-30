@@ -7,7 +7,7 @@ using L2dotNET.LoginService.Network;
 
 namespace L2dotNET.LoginService.Managers
 {
-    public sealed class ClientManager
+    public sealed class ClientManager : IInitialisable
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(ClientManager));
 
@@ -18,9 +18,13 @@ namespace L2dotNET.LoginService.Managers
         private readonly PacketHandler _packetHandler;
         private readonly List<LoginClient> _loggedClients = new List<LoginClient>();
         private SortedList<string, LoginClient> _waitingAcc = new SortedList<string, LoginClient>();
+        public bool Initialised { get; private set; }
 
-        public void Initialize()
+        public void Initialise()
         {
+            if (Initialised)
+                return;
+
             Log.Info("Loading client manager.");
 
             Log.Info("Scrambling keypairs.");
@@ -42,6 +46,7 @@ namespace L2dotNET.LoginService.Managers
             }
 
             Log.Info($"Randomized {_blowfishKeys.Length} blowfish keys.");
+            Initialised = true;
         }
 
         private NetworkBlock _banned;

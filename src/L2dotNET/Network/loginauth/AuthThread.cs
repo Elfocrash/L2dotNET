@@ -14,7 +14,6 @@ namespace L2dotNET.Network.loginauth
         private static readonly ILog Log = LogManager.GetLogger(typeof(AuthThread));
         private readonly GamePacketHandlerAuth _gamePacketHandlerAuth;
 
-
         protected TcpClient Lclient;
         protected NetworkStream Nstream;
         protected System.Timers.Timer Ltimer;
@@ -23,13 +22,19 @@ namespace L2dotNET.Network.loginauth
 
         public string Version = "rcs #216";
         public int Build = 0;
+        private readonly Config.Config _config;
 
-        public void Initialize()
+        public AuthThread(Config.Config config)
+        {
+            _config = config;
+        }
+
+        public void Initialise()
         {
             IsConnected = false;
             try
             {
-                Lclient = new TcpClient(Config.Config.Instance.ServerConfig.AuthHost, Config.Config.Instance.ServerConfig.AuthPort);
+                Lclient = new TcpClient(_config.ServerConfig.AuthHost, _config.ServerConfig.AuthPort);
                 Nstream = Lclient.GetStream();
             }
             catch (SocketException ex)
@@ -59,12 +64,12 @@ namespace L2dotNET.Network.loginauth
 
             SendPacket(new LoginAuth());
             SendPacket(new LoginServPing(this));
-            new System.Threading.Thread(Read).Start();
+            Read();
         }
 
         private void ltimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            Initialize();
+            Initialise();
         }
 
         public void Read()
@@ -119,7 +124,7 @@ namespace L2dotNET.Network.loginauth
                 return;
 
             Log.Error("Reconnecting...");
-            Initialize();
+            Initialise();
         }
 
         public void SendPacket(GameserverPacket pk)
@@ -172,9 +177,10 @@ namespace L2dotNET.Network.loginauth
 
         private readonly SortedList<string, AccountContract> _awaitingAccounts = new SortedList<string, AccountContract>();
 
-        public AuthThread(GamePacketHandlerAuth gamePacketHandlerAuth)
+        public AuthThread(GamePacketHandlerAuth gamePacketHandlerAuth, Config.Config config)
         {
             _gamePacketHandlerAuth = gamePacketHandlerAuth;
+            _config = config;
         }
 
         public void AwaitAccount(AccountContract ta)

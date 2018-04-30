@@ -12,12 +12,13 @@ using L2dotNET.World;
 
 namespace L2dotNET.Tables
 {
-    public class ItemTable
+    public class ItemTable : IInitialisable
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(ItemTable));
 
         private readonly IItemService _itemService;
         private readonly IdFactory _idFactory;
+        public bool Initialised { get; private set; }
 
         public ItemTable(IItemService itemService, IdFactory idFactory)
         {
@@ -44,10 +45,12 @@ namespace L2dotNET.Tables
         public Dictionary<int, Weapon> Weapons = new Dictionary<int, Weapon>();
         public Dictionary<int, EtcItem> EtcItems = new Dictionary<int, EtcItem>();
 
-        public void Initialize()
+        public void Initialise()
         {
-            Slots = ItemSlots.ToDictionary();
+            if (Initialised)
+                return;
 
+            Slots = ItemSlots.ToDictionary();
             LoadArmorModels();
             LoadWeaponModels();
             LoadEtcItemModels();
@@ -55,6 +58,7 @@ namespace L2dotNET.Tables
             GC.Collect();
             GC.WaitForPendingFinalizers();
             Log.Info($"Loaded #{Armors.Count} armors, #{Weapons.Count} weapons and #{EtcItems.Count} etc items.");
+            Initialised = true;
         }
 
         public L2Item CreateItem(int itemId, int count, L2Player actor)

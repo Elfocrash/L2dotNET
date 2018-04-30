@@ -3,33 +3,18 @@ using Newtonsoft.Json;
 
 namespace L2dotNET.Config
 {
-    public sealed class Config
+    public sealed class Config : IInitialisable
     {
-        private static volatile Config _instance;
-        private static readonly object SyncRoot = new object();
-
-        public static Config Instance
-        {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new Config();
-                }
-
-                return _instance;
-            }
-        }
+        public bool Initialised { get; private set; }
 
         public ServerConfig ServerConfig;
         public GameplayConfig GameplayConfig;
 
-        public void Initialize()
+        public void Initialise()
         {
+            if (Initialised)
+                return;
+
             ServerConfig = JsonConvert.DeserializeObject<ServerConfig>(File.ReadAllText(@"config\server.json"));
             GameplayConfig = new GameplayConfig
             {
@@ -43,6 +28,8 @@ namespace L2dotNET.Config
                 SiegeConfig = JsonConvert.DeserializeObject<SiegeConfig>(File.ReadAllText(@"config\siege.json")),
                 OtherConfig = JsonConvert.DeserializeObject<OtherConfig>(File.ReadAllText(@"config\other.json"))
             };
+
+            Initialised = true;
         }
     }
 }

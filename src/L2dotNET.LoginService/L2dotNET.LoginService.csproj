@@ -33,4 +33,12 @@
 	<None Include="$(SolutionDir)L2dotNET\Datapacks\Login\sq\**" CopyToOutputDirectory="PreserveNewest" LinkBase="sq\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Login\sq\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Login\config\server.json" />
+  </ItemGroup>
+
 </Project>

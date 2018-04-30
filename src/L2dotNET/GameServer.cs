@@ -36,23 +36,24 @@ namespace L2dotNET
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository,new FileInfo("log4net.config"));
 
-            Config.Config.Instance.Initialize();
+            var config = _serviceProvider.GetService<Config.Config>();
+            config.Initialise();
 
-            _serviceProvider.GetService<PreReqValidation>().Initialize();
+            _serviceProvider.GetService<PreReqValidation>().Initialise();
 
             CharTemplateTable.Instance.Initialize();
 
             NetworkBlock.Instance.Initialize();
             GameTime.Instance.Initialize();
 
-            _serviceProvider.GetService<IdFactory>().Initialize();
+            _serviceProvider.GetService<IdFactory>().Initialise();
 
             L2World.Instance.Initialize();
 
             MapRegionTable.Instance.Initialize();
             ZoneTable.Instance.Initialize();
 
-            _serviceProvider.GetService<ItemTable>().Initialize();
+            _serviceProvider.GetService<ItemTable>().Initialise();
             ItemHandler.Instance.Initialize();
 
             NpcTable.Instance.Initialize();
@@ -60,20 +61,20 @@ namespace L2dotNET
             
             BlowFishKeygen.GenerateKeys();
 
-            _serviceProvider.GetService<IAdminCommandHandler>().Initialize();
+            _serviceProvider.GetService<IAdminCommandHandler>().Initialise();
 
-            _serviceProvider.GetService<AnnouncementManager>().Initialize();
+            _serviceProvider.GetService<AnnouncementManager>().Initialise();
 
             StaticObjTable.Instance.Initialize();
-            _serviceProvider.GetService<SpawnTable>().Initialize();
+            _serviceProvider.GetService<SpawnTable>().Initialise();
 
             HtmCache.Instance.Initialize();
 
             // PluginManager.Instance.Initialize(this);
 
-            _serviceProvider.GetService<AuthThread>().Initialize();
+            _serviceProvider.GetService<AuthThread>().Initialise();
 
-            _listener = new TcpListener(IPAddress.Any, Config.Config.Instance.ServerConfig.Port);
+            _listener = new TcpListener(IPAddress.Any, config.ServerConfig.Port);
 
             try
             {
@@ -87,7 +88,7 @@ namespace L2dotNET
                 Environment.Exit(0);
             }
 
-            Log.Info($"Listening Gameservers on port {Config.Config.Instance.ServerConfig.Port}");
+            Log.Info($"Listening Gameservers on port {config.ServerConfig.Port}");
 
             WaitForClients();
         }
