@@ -8,6 +8,7 @@ using L2dotNET.Config;
 using L2dotNET.ConsoleCommand;
 using L2dotNET.Handlers;
 using L2dotNET.Managers;
+using L2dotNET.Managers.bbs;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Repositories;
@@ -98,6 +99,8 @@ namespace L2dotNET.GameService
             serviceCollection.AddSingleton<SpawnTable>();
             serviceCollection.AddSingleton<IdFactory>();
             serviceCollection.AddSingleton<ItemTable>();
+            serviceCollection.AddSingleton<HtmCache>();
+            serviceCollection.AddSingleton<BbsManager>();
             serviceCollection.AddSingleton<IAdminCommandHandler, AdminCommandHandler>();
             serviceCollection.AddSingleton<GameServer>();
         }
