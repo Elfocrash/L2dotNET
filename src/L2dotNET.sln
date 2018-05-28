@@ -25,7 +25,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L2dotNET.Repositories", "L2
 		{72666F93-681B-4C85-9B7F-D9124579B1A2} = {72666F93-681B-4C85-9B7F-D9124579B1A2}
 	EndProjectSection
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "L2dotNET.Shared", "L2dotNET.Shared\L2dotNET.Shared.shproj", "{BEECAD83-2844-4636-AECD-761BC5EE7F9A}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		L2dotNET.Shared\L2dotNET.Shared.projitems*{beecad83-2844-4636-aecd-761bc5ee7f9a}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

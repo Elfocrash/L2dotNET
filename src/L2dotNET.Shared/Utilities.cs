@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace L2dotNET.Repositories
+namespace L2dotNET.Shared
 {
     public static class Utilities
     {

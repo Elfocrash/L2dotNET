@@ -20,4 +20,6 @@
     <ProjectReference Include="..\L2dotNET.Models\L2dotNET.DataContracts.csproj" />
   </ItemGroup>
 
+  <Import Project="..\L2dotNET.Shared\L2dotNET.Shared.projitems" Label="Shared" />
+
 </Project>
