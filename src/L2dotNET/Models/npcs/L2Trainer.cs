@@ -1,6 +1,7 @@
-﻿using L2dotNET.Templates;
+﻿using L2dotNET.Logging.Abstraction;
+using L2dotNET.Templates;
 using L2dotNET.Network.serverpackets;
-using log4net;
+
 using L2dotNET.World;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
@@ -10,7 +11,7 @@ namespace L2dotNET.Models.Npcs
 {
     class L2Trainer : L2Npc
     {
-        private readonly ILog Log = LogManager.GetLogger(typeof(L2Monster));
+        private readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public L2Trainer(SpawnTable spawnTable, int objectId, NpcTemplate template, L2Spawn spawn) : base(spawnTable, objectId, template, spawn)
         {

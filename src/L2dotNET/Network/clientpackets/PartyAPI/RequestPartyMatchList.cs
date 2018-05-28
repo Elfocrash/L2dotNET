@@ -1,11 +1,12 @@
 ﻿using System;
-using log4net;
+using L2dotNET.Logging.Abstraction;
+
 
 namespace L2dotNET.Network.clientpackets.PartyAPI
 {
     class RequestPartyMatchList : PacketBase
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestPartyMatchList));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private readonly int _status;

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Items.Effects;
 
 namespace L2dotNET.Models.Items
 {
     public class ItemHandler
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ItemHandler));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private static volatile ItemHandler _instance;
         private static readonly object SyncRoot = new object();
 

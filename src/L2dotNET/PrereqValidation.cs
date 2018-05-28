@@ -1,12 +1,12 @@
 ﻿using System;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Services.Contracts;
 
 namespace L2dotNET
 {
     public class PreReqValidation : IInitialisable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(PreReqValidation));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly ICheckService _checkService;
         public bool Initialised { get; private set; }

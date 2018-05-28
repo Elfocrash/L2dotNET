@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml;
-using log4net;
 using L2dotNET.Enums;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
@@ -12,7 +12,7 @@ namespace L2dotNET.Tables
 {
     class MapRegionTable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(MapRegionTable));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private static volatile MapRegionTable _instance;
         private static readonly object SyncRoot = new object();
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
@@ -11,7 +11,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 {
     class RequestLoginAuth : PacketBase
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestLoginAuth));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly ServerThread _thread;
         private readonly short _port;

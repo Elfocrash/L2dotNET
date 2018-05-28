@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Services.Contracts;
@@ -12,7 +12,7 @@ namespace L2dotNET.LoginService.GSCommunication
 {
     public class ServerThreadPool
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ServerThreadPool));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly IServerService _serverService;
         private readonly Config.Config _config;

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using log4net;
+
 using L2Crypt;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Network;
 
 namespace L2dotNET.LoginService.Managers
 {
     public sealed class ClientManager : IInitialisable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ClientManager));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private const int ScrambleCount = 1;
         private ScrambledKeyPair[] _scrambledPairs;

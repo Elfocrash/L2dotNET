@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
-using log4net;
+
 using L2dotNET.Controllers;
 using L2dotNET.Handlers;
 using L2dotNET.Managers;
@@ -11,16 +11,16 @@ using L2dotNET.Network.loginauth;
 using L2dotNET.Tables;
 using L2dotNET.Utility;
 using L2dotNET.World;
-using log4net.Config;
 using System.IO;
 using System.Reflection;
+using L2dotNET.Logging.Abstraction;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET
 {
     public class GameServer
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(GameServer));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private TcpListener _listener;
 
@@ -33,9 +33,6 @@ namespace L2dotNET
 
         public void Start()
         {
-            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository,new FileInfo("log4net.config"));
-
             var config = ServiceProvider.GetService<Config.Config>();
             config.Initialise();
 

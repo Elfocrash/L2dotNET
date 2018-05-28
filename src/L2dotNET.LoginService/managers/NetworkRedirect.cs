@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Utility;
 
@@ -9,7 +9,7 @@ namespace L2dotNET.LoginService.Managers
 {
     class NetworkRedirect
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(NetworkRedirect));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private static volatile NetworkRedirect _instance;
         private static readonly object SyncRoot = new object();
 

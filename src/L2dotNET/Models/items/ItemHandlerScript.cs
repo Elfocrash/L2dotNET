@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Models.Items
 {
     class ItemHandlerScript : ItemEffect
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ItemHandlerScript));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private readonly int _id;
 
         public int EffectId = -1;

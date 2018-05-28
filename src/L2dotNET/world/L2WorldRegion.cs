@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
@@ -9,7 +9,7 @@ namespace L2dotNET.World
 {
     public class L2WorldRegion
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(L2WorldRegion));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly Dictionary<int, L2Object> _objects = new Dictionary<int, L2Object>();
 

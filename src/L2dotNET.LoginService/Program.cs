@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.Threading;
-using log4net;
+using System.IO;
 using System.Reflection;
-using log4net.Config;
+using System.Threading;
+using L2dotNET.Logging.Abstraction;
+using L2dotNET.Logging.Provider;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Network;
@@ -19,10 +20,11 @@ namespace L2dotNET.LoginService
 {
     class Program
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Program));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private static void Main()
         {
+            ClassLoggerConfigurator.ConfigureClassLogger($"{Assembly.GetExecutingAssembly().Location}.log");
             Log.Info("Starting LoginService...");
             SetConsoleConfigurations();
             SetNumberDecimalSeparator();

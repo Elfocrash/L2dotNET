@@ -1,5 +1,4 @@
 ﻿using L2dotNET.Network;
-using log4net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,12 +8,13 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using L2dotNET.Logging.Abstraction;
 
 namespace L2dotNET.Utility
 {
     public static class Utilz
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Utilz));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public static string CurrentTime => DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
 

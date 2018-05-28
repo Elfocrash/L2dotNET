@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Managers;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +12,7 @@ namespace L2dotNET.LoginService
 {
     class LoginServer
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(LoginServer));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         public static IServiceProvider ServiceProvider;
         private TcpListener _listener;
 

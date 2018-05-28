@@ -1,5 +1,5 @@
 using System;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Templates;
 
@@ -7,7 +7,7 @@ namespace L2dotNET.Tables
 {
     public class L2Spawn
     {
-        private readonly ILog _log = LogManager.GetLogger(typeof(L2Spawn));
+        private readonly ILog _log = LogProvider.GetCurrentClassLogger();
 
         public NpcTemplate Template { get; set; }
         public SpawnLocation Location { get; set; }

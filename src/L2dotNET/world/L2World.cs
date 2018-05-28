@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
@@ -10,7 +10,7 @@ namespace L2dotNET.World
 {
     public class L2World
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(L2World));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private static volatile L2World _instance;
         private static readonly object SyncRoot = new object();

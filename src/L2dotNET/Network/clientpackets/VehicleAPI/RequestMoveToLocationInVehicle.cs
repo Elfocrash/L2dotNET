@@ -1,5 +1,5 @@
 ﻿using System;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Vehicles;
 using L2dotNET.Network.serverpackets;
@@ -8,7 +8,7 @@ namespace L2dotNET.Network.clientpackets.VehicleAPI
 {
     class RequestMoveToLocationInVehicle : PacketBase
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestMoveToLocationInVehicle));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private readonly int _boatId;

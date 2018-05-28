@@ -3,8 +3,8 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using Dapper;
-using log4net;
 using L2dotNET.DataContracts;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Repositories.Contracts;
 using MySql.Data.MySqlClient;
 
@@ -12,13 +12,13 @@ namespace L2dotNET.Repositories
 {
     public class SkillRepository : ISkillRepository
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(SkillRepository));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         internal IDbConnection Db;
 
         public SkillRepository()
         {
-            Db = new MySqlConnection("Server = localhost; Database = l2dotnet; Uid = root; Pwd = root; SslMode=none;");
+            Db = new MySqlConnection("Server=127.0.0.1;Database=l2dotnet;Uid=l2dotnet;Pwd=l2dotnet;SslMode=none;");
         }
 
         public List<SkillResponseContract> GetPlayerSkills(int charID)
