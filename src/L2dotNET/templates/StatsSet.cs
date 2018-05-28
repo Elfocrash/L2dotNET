@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 
 namespace L2dotNET.Templates
 {
     public class StatsSet : Dictionary<string, object>
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(StatsSet));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public StatsSet() { }
 

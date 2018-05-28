@@ -4,6 +4,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RuntimeIdentifiers>win-x86;linux-x64;osx-x64</RuntimeIdentifiers>
+    <AssemblyName>L2dotNET.GameService</AssemblyName>
+    <RootNamespace>L2dotNET.GameService</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,12 +18,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\L2dotNet.Logging.Abstraction\L2dotNET.Logging.Abstraction.csproj" />
+    <ProjectReference Include="..\L2dotNET.Logging.Provider\L2dotNET.Logging.Provider.csproj" />
     <ProjectReference Include="..\L2dotNET\L2dotNET.csproj" />
   </ItemGroup>
 
@@ -44,6 +48,10 @@
     <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Game\geo\**" />
     <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Game\scripts\**" />
     <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Game\sq\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\voiti\Documents\Visual Studio 2017\Projects\L2dotNET\src\L2dotNET\Datapacks\Login\log\log4net.config" />
   </ItemGroup>
 
 </Project>

@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
-using log4net;
+
 using L2dotNET.Config;
 using L2dotNET.ConsoleCommand;
 using L2dotNET.Handlers;
+using L2dotNET.Logging.Abstraction;
+using L2dotNET.Logging.Provider;
 using L2dotNET.Managers;
 using L2dotNET.Managers.bbs;
 using L2dotNET.Network;
@@ -50,22 +54,22 @@ namespace L2dotNET.GameService
             return true;
         }
 
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Program));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private static void Main()
         {
-
+            ClassLoggerConfigurator.ConfigureClassLogger($"{Assembly.GetExecutingAssembly().Location}.log");
             consoleCommandController = new ConsoleCommandController();
             consoleCommandController.Launch();
             try { 
-            Log.Info("Starting GameService...");
-            SetConsoleConfigurations();
-            SetNumberDecimalSeparator();
-            var serviceCollection = new ServiceCollection();
-            ConfigureServices(serviceCollection);
-            var serviceProvider = serviceCollection.BuildServiceProvider();
-            serviceProvider.GetService<GameServer>().Start();
-            Process.GetCurrentProcess().WaitForExit();
+                Log.Info("Starting GameService...");
+                SetConsoleConfigurations();
+                SetNumberDecimalSeparator();
+                var serviceCollection = new ServiceCollection();
+                ConfigureServices(serviceCollection);
+                var serviceProvider = serviceCollection.BuildServiceProvider();
+                serviceProvider.GetService<GameServer>().Start();
+                Process.GetCurrentProcess().WaitForExit();
             }
             catch(Exception ex)
             {

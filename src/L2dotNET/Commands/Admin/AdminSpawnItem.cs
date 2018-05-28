@@ -1,6 +1,6 @@
 ﻿using System;
-using log4net;
 using L2dotNET.Attributes;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Commands.Admin
@@ -8,7 +8,7 @@ namespace L2dotNET.Commands.Admin
     [Command(CommandName = "createitem")]
     class AdminSpawnItem : AAdminCommand
     {
-        private readonly ILog _log = LogManager.GetLogger(typeof(AAdminCommand));
+        private readonly ILog _log = LogProvider.GetCurrentClassLogger();
 
         protected internal override void Use(L2Player admin, string alias)
         {

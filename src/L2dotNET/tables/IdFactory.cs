@@ -1,5 +1,5 @@
 using System.Linq;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Services.Contracts;
 
 namespace L2dotNET.Tables
@@ -8,7 +8,7 @@ namespace L2dotNET.Tables
     {
         private readonly IServerService _serverService;
 
-        private static readonly ILog Log = LogManager.GetLogger(typeof(IdFactory));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         public bool Initialised { get; private set; }
 
         public const int IdMin = 0x10000000,

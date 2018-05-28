@@ -1,5 +1,5 @@
 ﻿using System;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Managers;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Models.Player;
@@ -9,7 +9,7 @@ namespace L2dotNET.Network.clientpackets
 {
     class RequestBypassToServer : PacketBase
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestBypassToServer));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private string _alias;

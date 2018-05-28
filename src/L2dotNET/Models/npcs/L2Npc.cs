@@ -1,5 +1,5 @@
 ﻿using System.Timers;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Templates;
@@ -11,7 +11,7 @@ namespace L2dotNET.Models.Npcs
 {
     public class L2Npc : L2Character
     {
-        private readonly ILog Log = LogManager.GetLogger(typeof(L2Npc));
+        private readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public new NpcTemplate Template;
         public bool Summoned;

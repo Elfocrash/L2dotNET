@@ -1,12 +1,13 @@
 using System;
 using System.Threading;
-using log4net;
+using L2dotNET.Logging.Abstraction;
+
 
 namespace L2dotNET.Managers
 {
     public class RThread
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(RThread));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public Action PerformAction;
         public Action[] PerformActions;

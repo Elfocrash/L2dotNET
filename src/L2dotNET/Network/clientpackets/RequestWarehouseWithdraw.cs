@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Models.Player;
@@ -10,7 +10,7 @@ namespace L2dotNET.Network.clientpackets
 {
     class RequestWarehouseWithdraw : PacketBase
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestBypassToServer));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly int _count;
         private readonly int[] _items;

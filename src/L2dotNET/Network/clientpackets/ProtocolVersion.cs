@@ -1,12 +1,12 @@
 ﻿using System;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets
 {
     class ProtocolVersion : PacketBase
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ProtocolVersion));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private readonly int _protocol;

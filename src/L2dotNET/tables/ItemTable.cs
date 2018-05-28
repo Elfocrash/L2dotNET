@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using log4net;
 using L2dotNET.DataContracts;
 using L2dotNET.Enums;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
@@ -14,7 +14,7 @@ namespace L2dotNET.Tables
 {
     public class ItemTable : IInitialisable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ItemTable));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly IItemService _itemService;
         private readonly IdFactory _idFactory;
