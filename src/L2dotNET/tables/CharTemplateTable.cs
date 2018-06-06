@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
-using log4net;
 using L2dotNET.Enums;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Templates;
 
 namespace L2dotNET.Tables
 {
     sealed class CharTemplateTable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(CharTemplateTable));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private static volatile CharTemplateTable _instance;
         private static readonly object SyncRoot = new object();

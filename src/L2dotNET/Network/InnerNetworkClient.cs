@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
-using log4net;
+using L2dotNet.Logging.Abstraction;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Network
@@ -16,7 +17,7 @@ namespace L2dotNET.Network
     /// </summary>
     public class InnerNetworkClient : NetworkClient
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(InnerNetworkClient));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         /// <summary>
         /// Remote service settings.
@@ -120,7 +121,7 @@ namespace L2dotNET.Network
             }
             catch (SocketException se)
             {
-                Logger.WriteLine(Source.InnerNetwork, "{0} \r\nError code: {1}", se.ToString(), se.ErrorCode);
+                Log.InfoFormat("{0} \r\nError code: {1}", se.ToString(), se.ErrorCode);
 
                 CloseConnection();
 
@@ -128,7 +129,7 @@ namespace L2dotNET.Network
             }
             catch (Exception e)
             {
-                Logger.Exception(e);
+                Log.Exception(e);
 
                 CloseConnection();
 

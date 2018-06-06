@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Network.clientpackets;
 using L2dotNET.Network.clientpackets.ClanAPI;
 using L2dotNET.Network.clientpackets.ItemEnchantAPI;
@@ -13,7 +13,7 @@ namespace L2dotNET.Network
 {
     public class GamePacketHandler
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(GamePacketHandler));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
 
         private static readonly ConcurrentDictionary<short, Type> ClientPacketsD0 = new ConcurrentDictionary<short, Type>();
@@ -256,6 +256,7 @@ namespace L2dotNET.Network
 
         public void HandlePacket(Packet packet, GameClient client)
         {
+            Log.Info($"Received packet: {packet.FirstOpcode:X2}:{packet.SecondOpcode:X2}");
             PacketBase packetBase = null;
 
             if (packet.FirstOpcode != 0xD0)

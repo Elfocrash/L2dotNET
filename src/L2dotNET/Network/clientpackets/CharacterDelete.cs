@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
@@ -12,7 +12,7 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly IPlayerService _playerService;
 
-        private static readonly ILog Log = LogManager.GetLogger(typeof(CharacterDelete));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private readonly int _charSlot;

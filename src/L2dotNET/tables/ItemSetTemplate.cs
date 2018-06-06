@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Tables
 {
     public class ItemSetTemplate
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ItemSetTemplate));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public int ArmorId;
 

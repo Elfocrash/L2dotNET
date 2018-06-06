@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
 using L2dotNET.Models.Zones.Classes;
@@ -13,7 +13,7 @@ namespace L2dotNET.Models
 {
     public abstract class L2Object
     {
-        private readonly ILog _log = LogManager.GetLogger(typeof(L2Object));
+        private readonly ILog _log = LogProvider.GetCurrentClassLogger();
         public int ObjId;
         public SortedList<int, L2Object> KnownObjects = new SortedList<int, L2Object>();
         public virtual byte Level { get; set; } = 1;

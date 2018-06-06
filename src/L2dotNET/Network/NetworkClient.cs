@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Utility;
+
+using static L2dotNet.Logging.Abstraction.LoggingExtensions;
 
 namespace L2dotNET.Network
 {
@@ -22,7 +24,7 @@ namespace L2dotNET.Network
     /// </summary>
     public abstract class NetworkClient
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(NetworkClient));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         /// <summary>
         /// Client <see cref="Socket"/>.
@@ -111,14 +113,15 @@ namespace L2dotNET.Network
         /// <param name="socket">Client <see cref="Socket"/> object.</param>
         protected NetworkClient(Socket socket) : this()
         {
-            Logger.WriteLine(Source.Debug, "Try set m_Socket");
+            Log.Debug("Try set m_Socket");
+
             try
             {
                 MSocket = socket;
             }
             catch (Exception ex)
             {
-                Logger.Exception(ex, "Try set m_Socket");
+                Log.ErrorException("Try set m_Socket", ex);
             }
         }
 
@@ -133,7 +136,7 @@ namespace L2dotNET.Network
         /// <param name="packet">Received <see cref="Packet"/>.</param>
         protected virtual void Handle(Packet packet)
         {
-            Logger.WriteLine("Received (NC) :\r\n{0}", packet.ToString());
+            Log.InfoFormat("Received (NC) :\r\n{0}", packet.ToString());
         }
 
         /// <summary>
@@ -163,7 +166,8 @@ namespace L2dotNET.Network
             }
             catch (Exception e)
             {
-                Logger.Exception(e);
+                
+                Log.Exception(e);
 
                 CloseConnection();
 
@@ -211,7 +215,7 @@ namespace L2dotNET.Network
             }
             catch (Exception e)
             {
-                Log.Info(e);
+                Log.InfoException("", e);
             }
 
             MSocket = null;

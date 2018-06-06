@@ -1,8 +1,8 @@
 ﻿using System;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
 using L2dotNET.World;
-using log4net;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -15,7 +15,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _originZ;
         private readonly int _attackId;
 
-        private static readonly ILog Log = LogManager.GetLogger(typeof(AttackRequest));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public AttackRequest(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {

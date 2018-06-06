@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Network
 {
     public class NetworkBlock
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(NetworkBlock));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private static volatile NetworkBlock _instance;
         private static readonly object SyncRoot = new object();
 

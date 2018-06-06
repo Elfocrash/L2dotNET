@@ -1,5 +1,5 @@
 ﻿using System;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
@@ -9,7 +9,7 @@ namespace L2dotNET.Controllers
 {
     public class GameTime
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(GameTime));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private static volatile GameTime _instance;
         private static readonly object SyncRoot = new object();

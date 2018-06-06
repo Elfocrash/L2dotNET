@@ -1,5 +1,5 @@
 ﻿using System;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Npcs.Decor;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -9,7 +9,7 @@ namespace L2dotNET.Network.clientpackets
 {
     class RequestActionUse : PacketBase
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(RequestActionUse));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private readonly int _actionId;

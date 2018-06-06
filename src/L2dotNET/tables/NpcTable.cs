@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Templates;
 using L2dotNET.Utility;
 
@@ -11,7 +11,7 @@ namespace L2dotNET.Tables
 {
     class NpcTable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(NpcTable));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private static volatile NpcTable _instance;
         private static readonly object SyncRoot = new object();
 
@@ -102,7 +102,7 @@ namespace L2dotNET.Tables
             }
             catch (Exception e)
             {
-                Log.Error("Error parsing NPC templates: ", e);
+                Log.ErrorException("Error parsing NPC templates: ", e);
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Network.InnerNetwork.ClientPackets;
 using L2dotNET.Network;
@@ -9,7 +9,7 @@ namespace L2dotNET.LoginService.Network
 {
     public class PacketHandler
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(PacketHandler));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
         private static readonly ConcurrentDictionary<byte, Type> ClientPacketsServ = new ConcurrentDictionary<byte, Type>();

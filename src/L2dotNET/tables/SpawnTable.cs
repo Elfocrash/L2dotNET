@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using log4net;
 using L2dotNET.DataContracts;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Services.Contracts;
 using System.Linq;
 using System.Timers;
 using System;
+using L2dotNET.Logging.Abstraction;
 
 namespace L2dotNET.Tables
 {
@@ -13,7 +13,7 @@ namespace L2dotNET.Tables
     {
         private readonly IServerService _serverService;
 
-        private static readonly ILog Log = LogManager.GetLogger(typeof(SpawnTable));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private Timer RespawnTimerTask;
         private readonly IdFactory _idFactory;
         private readonly Config.Config _config;

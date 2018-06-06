@@ -1,5 +1,5 @@
 ﻿using System;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
 using L2dotNET.World;
@@ -8,7 +8,7 @@ namespace L2dotNET.Network.clientpackets
 {
     class ValidatePosition : PacketBase
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ValidatePosition));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private const int Synctype = 1;
 

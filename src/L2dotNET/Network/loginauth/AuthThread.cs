@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using log4net;
 using L2dotNET.DataContracts;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Network.loginauth.send;
 using L2dotNET.Utility;
 using L2dotNET.World;
@@ -11,7 +11,7 @@ namespace L2dotNET.Network.loginauth
 {
     public class AuthThread
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(AuthThread));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private readonly GamePacketHandlerAuth _gamePacketHandlerAuth;
 
         protected TcpClient Lclient;

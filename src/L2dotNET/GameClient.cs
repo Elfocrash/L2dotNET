@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using log4net;
 using L2dotNET.Encryption;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
@@ -19,7 +19,7 @@ namespace L2dotNET
         private readonly IPlayerService _playerService;
         private readonly ClientManager _clientManager;
         private readonly GamePacketHandler _gamePacketHandler;
-        private static readonly ILog Log = LogManager.GetLogger(typeof(GameClient));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public EndPoint Address;
         public TcpClient Client;

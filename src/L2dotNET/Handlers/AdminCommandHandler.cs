@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using log4net;
+using L2dotNet.Logging.Abstraction;
 using L2dotNET.Attributes;
 using L2dotNET.Commands;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Utility;
 
@@ -11,7 +12,7 @@ namespace L2dotNET.Handlers
 {
     public class AdminCommandHandler : IAdminCommandHandler
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(AdminCommandHandler));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private readonly SortedList<string, AAdminCommand> _commands = new SortedList<string, AAdminCommand>();
         public bool Initialised { get; private set; }
         private readonly IServiceProvider _serviceProvider;
@@ -55,7 +56,7 @@ namespace L2dotNET.Handlers
             catch (Exception sss)
             {
                 admin.SendMessage("Probably syntax eror.");
-                Log.Error(sss);
+                Log.Exception(sss);
             }
         }
 

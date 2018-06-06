@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using log4net;
 using L2dotNET.DataContracts.GameModels;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Utility;
 
 namespace L2dotNET.Tables
 {
     public class HtmCache : IInitialisable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HtmCache));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private List<L2Html> _htmCache;
         private List<string> _htmFiles;

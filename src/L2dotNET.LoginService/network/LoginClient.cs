@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using log4net;
+
 using L2Crypt;
 using L2dotNET.DataContracts;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Managers;
 using L2dotNET.LoginService.Network.Crypt;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
@@ -16,7 +17,7 @@ namespace L2dotNET.LoginService.Network
 {
     public class LoginClient
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(LoginClient));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public EndPoint Address { get; set; }
         public TcpClient Client { get; set; }

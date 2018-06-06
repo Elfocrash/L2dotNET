@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
 
@@ -9,7 +9,7 @@ namespace L2dotNET
 {
     public class ClientManager
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(ClientManager));
+        private static readonly ILog log = LogProvider.GetCurrentClassLogger();
 
         private readonly IPlayerService _playerService;
        

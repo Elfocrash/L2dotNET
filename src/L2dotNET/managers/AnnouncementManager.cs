@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using log4net;
+
 using L2dotNET.DataContracts;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.Basic;
 using L2dotNET.Network.serverpackets;
@@ -14,7 +15,7 @@ namespace L2dotNET.Managers
     {
         private readonly IServerService _serverService;
 
-        private static readonly ILog Log = LogManager.GetLogger(typeof(AnnouncementManager));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         public bool Initialised { get; private set; }
 
         public List<AnnouncementContract> Announcements { get; set; }

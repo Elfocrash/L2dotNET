@@ -4,13 +4,14 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.ServiceProcess;
 using System.Threading;
-using log4net;
+using L2dotNET.Logging.Abstraction;
+using L2dotNET.Shared;
 
 namespace L2dotNET.Repositories.Utils
 {
     public static class HostCheck
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HostCheck));
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public static bool IsPingSuccessful(string host, int timeoutMs)
         {

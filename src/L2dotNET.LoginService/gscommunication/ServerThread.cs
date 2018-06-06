@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading;
-using log4net;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Network;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
@@ -12,7 +12,7 @@ namespace L2dotNET.LoginService.GSCommunication
 {
     public class ServerThread
     {
-        private readonly ILog _log = LogManager.GetLogger(typeof(ServerThread));
+        private readonly ILog _log = LogProvider.GetCurrentClassLogger();
 
         private NetworkStream _nstream;
         private TcpClient _client;
