@@ -7,14 +7,8 @@ namespace L2dotNET.Models.Npcs
         int _respawnDelay;
         public int Heading { get; set; }
         public int RespawnDelay {
-            get
-            {
-                return _respawnDelay;
-            }
-            set
-            {
-                _respawnDelay = value * 1000;
-            }
+            get => _respawnDelay;
+            set => _respawnDelay = value * 1000;
         }
 
         public SpawnLocation(int x, int y, int z,int heading, int respawnDelay) : base(x, y, z)

@@ -29,26 +29,26 @@ namespace L2dotNET.Network.serverpackets
         {
             if (html.Length < BbsMax)
             {
-                player.SendPacket(new ShowBoard(html, "101"));
-                player.SendPacket(new ShowBoard(null, "102"));
-                player.SendPacket(new ShowBoard(null, "103"));
+                player.SendPacketAsync(new ShowBoard(html, "101"));
+                player.SendPacketAsync(new ShowBoard(null, "102"));
+                player.SendPacketAsync(new ShowBoard(null, "103"));
             }
             else
             {
                 if (html.Length < (BbsMax * 2))
                 {
-                    player.SendPacket(new ShowBoard(html.Remove(BbsMax), "101"));
-                    player.SendPacket(new ShowBoard(html.Substring(BbsMax), "102"));
-                    player.SendPacket(new ShowBoard(null, "103"));
+                    player.SendPacketAsync(new ShowBoard(html.Remove(BbsMax), "101"));
+                    player.SendPacketAsync(new ShowBoard(html.Substring(BbsMax), "102"));
+                    player.SendPacketAsync(new ShowBoard(null, "103"));
                 }
                 else
                 {
                     if (html.Length >= (BbsMax * 3))
                         return;
 
-                    player.SendPacket(new ShowBoard(html.Remove(BbsMax), "101"));
-                    player.SendPacket(new ShowBoard(html.Substring(BbsMax).Remove(BbsMax), "102"));
-                    player.SendPacket(new ShowBoard(html.Substring(BbsMax * 2), "103"));
+                    player.SendPacketAsync(new ShowBoard(html.Remove(BbsMax), "101"));
+                    player.SendPacketAsync(new ShowBoard(html.Substring(BbsMax).Remove(BbsMax), "102"));
+                    player.SendPacketAsync(new ShowBoard(html.Substring(BbsMax * 2), "103"));
                 }
             }
         }

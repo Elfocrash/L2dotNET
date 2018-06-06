@@ -39,7 +39,7 @@ namespace L2dotNET.Models.Player
             Members.AddLast(playerMember);
 
             if (!onCreate)
-                playerMember.SendPacket(new PartySmallWindowAll(this));
+                playerMember.SendPacketAsync(new PartySmallWindowAll(this));
             else
                 BroadcastToMembers(new PartySmallWindowAll(this));
 
@@ -47,7 +47,7 @@ namespace L2dotNET.Models.Player
 
             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YouJoinedS1Party);
             sm.AddPlayerName(Leader.Name);
-            playerMember.SendPacket(sm);
+            playerMember.SendPacketAsync(sm);
 
             sm = new SystemMessage(SystemMessage.SystemMessageId.S1JoinedParty);
             sm.AddPlayerName(Leader.Name);
@@ -57,13 +57,13 @@ namespace L2dotNET.Models.Player
         public void BroadcastToMembers(GameserverPacket pk)
         {
             foreach (L2Player pl in Members)
-                pl.SendPacket(pk);
+                pl.SendPacketAsync(pk);
         }
 
         public void BroadcastToMembers(GameserverPacket pk, int except)
         {
             foreach (L2Player pl in Members.Where(pl => pl.ObjId != except))
-                pl.SendPacket(pk);
+                pl.SendPacketAsync(pk);
         }
 
         private byte _votesOnStart,
@@ -77,7 +77,7 @@ namespace L2dotNET.Models.Player
             BroadcastToMembers(new ExAskModifyPartyLooting(Leader.Name, mode));
             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.RequestingApprovalForChangingPartyLootToS1);
             sm.AddSysStr(LootSysstrings[mode]);
-            Leader.SendPacket(sm);
+            Leader.SendPacketAsync(sm);
 
             _votesOnStart = (byte)Members.Count;
 
@@ -153,7 +153,7 @@ namespace L2dotNET.Models.Player
                     foreach (L2Player pl in Members)
                     {
                         pl.SendSystemMessage(SystemMessage.SystemMessageId.PartyDispersed);
-                        pl.SendPacket(new PartySmallWindowDeleteAll());
+                        pl.SendPacketAsync(new PartySmallWindowDeleteAll());
                         pl.Party = null;
                     }
 
@@ -179,7 +179,7 @@ namespace L2dotNET.Models.Player
             if (Members.Count > 2)
             {
                 playerMember.SendSystemMessage(SystemMessage.SystemMessageId.YouLeftParty);
-                playerMember.SendPacket(new PartySmallWindowDeleteAll());
+                playerMember.SendPacketAsync(new PartySmallWindowDeleteAll());
                 playerMember.Party = null;
 
                 SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1LeftParty);
@@ -194,7 +194,7 @@ namespace L2dotNET.Models.Player
                 foreach (L2Player pl in Members)
                 {
                     pl.SendSystemMessage(SystemMessage.SystemMessageId.PartyDispersed);
-                    pl.SendPacket(new PartySmallWindowDeleteAll());
+                    pl.SendPacketAsync(new PartySmallWindowDeleteAll());
                     pl.Party = null;
                 }
 
@@ -209,7 +209,7 @@ namespace L2dotNET.Models.Player
             if (playerToExpel == null)
             {
                 _player.SendSystemMessage(SystemMessage.SystemMessageId.FailedToExpelThePartyMember);
-                _player.SendActionFailed();
+                _player.SendActionFailedAsync();
                 return;
             }
 

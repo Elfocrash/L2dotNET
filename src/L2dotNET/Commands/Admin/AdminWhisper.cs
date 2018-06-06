@@ -17,22 +17,22 @@ namespace L2dotNET.Commands.Admin
                 case "on":
                     changed = admin.WhisperBlock = false;
                     admin.WhisperBlock = true;
-                    admin.SendMessage("Whisper blocking enabled.");
+                    admin.SendMessageAsync("Whisper blocking enabled.");
                     break;
                 case "off":
                     changed = admin.WhisperBlock = true;
                     admin.WhisperBlock = false;
-                    admin.SendMessage("Whisper blocking disabled.");
+                    admin.SendMessageAsync("Whisper blocking disabled.");
                     break;
                 default:
                     changed = admin.WhisperBlock = true;
                     admin.WhisperBlock = false;
-                    admin.SendMessage("Whisper blocking disabled.");
+                    admin.SendMessageAsync("Whisper blocking disabled.");
                     break;
             }
 
             if (changed)
-                admin.SendPacket(new EtcStatusUpdate(admin));
+                admin.SendPacketAsync(new EtcStatusUpdate(admin));
         }
 
         public AdminWhisper(IServiceProvider serviceProvider) : base(serviceProvider)

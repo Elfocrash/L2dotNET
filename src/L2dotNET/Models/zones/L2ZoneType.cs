@@ -108,7 +108,7 @@ namespace L2dotNET.Models.Zones
                 return;
 
             foreach (L2Player character in CharacterList.OfType<L2Player>())
-                character.SendPacket(packet);
+                character.SendPacketAsync(packet);
         }
     }
 }

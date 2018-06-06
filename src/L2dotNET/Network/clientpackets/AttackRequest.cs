@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
@@ -27,42 +28,45 @@ namespace L2dotNET.Network.clientpackets
             _attackId = packet.ReadByte(); // 0 for simple click   1 for shift-click
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-            L2Object obj = null;
-
-            if (player.PBlockAct == 1)
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
+                L2Object obj = null;
 
-            if (_objectId == player.ObjId)
-                obj = player;
-            else
-            {
-                if (L2World.Instance.GetObject(_objectId) != null)
-                    obj = L2World.Instance.GetObject(_objectId);
-            }
+                if (player.PBlockAct == 1)
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if (obj == null)
-            {
-                player.SendActionFailed();
-                return;
-            }
+                if (_objectId == player.ObjId)
+                    obj = player;
+                else
+                {
+                    if (L2World.Instance.GetObject(_objectId) != null)
+                        obj = L2World.Instance.GetObject(_objectId);
+                }
 
-            //if (obj is L2Npc)
-            //{
-            //    if (((L2Npc)obj).Template._can_be_attacked == 0)
-            //    {
-            //        player.sendSystemMessage(144);//That is the incorrect target.
-            //        player.sendActionFailed();
-            //        return;
-            //    }
-            //}
+                if (obj == null)
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            obj.OnForcedAttack(player); 
+                //if (obj is L2Npc)
+                //{
+                //    if (((L2Npc)obj).Template._can_be_attacked == 0)
+                //    {
+                //        player.sendSystemMessage(144);//That is the incorrect target.
+                //        player.sendActionFailed();
+                //        return;
+                //    }
+                //}
+
+                obj.OnForcedAttackAsync(player);
+            });
         }
     }
 }

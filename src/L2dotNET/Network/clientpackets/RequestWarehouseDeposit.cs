@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Npcs;
@@ -32,84 +33,87 @@ namespace L2dotNET.Network.clientpackets
             }
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            L2Npc npc = player.FolkNpc;
-
-            if (npc == null)
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            int fee = _count * 30;
-            int slots = 0;
-            int adenatransfer = 0;
-            for (int i = 0; i < _count; i++)
-            {
-                int objectId = _items[i * 2];
-                int count = _items[(i * 2) + 1];
+                L2Npc npc = player.FolkNpc;
 
-                L2Item item = player.GetItemByObjId(objectId);
-
-                if (item == null)
+                if (npc == null)
                 {
-                    Log.Info($"cant find item {objectId} in inventory {player.Name}");
-                    player.SendActionFailed();
+                    player.SendActionFailedAsync();
                     return;
                 }
 
-                if (item.Template.Stackable)
-                    slots += 1;
-                else
-                    slots += count;
+                int fee = _count * 30;
+                int slots = 0;
+                int adenatransfer = 0;
+                for (int i = 0; i < _count; i++)
+                {
+                    int objectId = _items[i * 2];
+                    int count = _items[(i * 2) + 1];
 
-                if (item.Template.ItemId == 57)
-                    adenatransfer += count;
-            }
+                    L2Item item = player.GetItemByObjId(objectId);
 
-            if ((player.GetAdena() - adenatransfer) < fee)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.YouNotEnoughAdenaPayFee);
-                player.SendActionFailed();
-                return;
-            }
+                    if (item == null)
+                    {
+                        Log.Info($"cant find item {objectId} in inventory {player.Name}");
+                        player.SendActionFailedAsync();
+                        return;
+                    }
 
-            //InvPrivateWarehouse pw = player._warehouse;
-            //int itsize = 0;
-            //if (pw == null)
-            //    pw = new InvPrivateWarehouse(player);
-            //else
-            //    itsize = pw.Items.Count;
+                    if (item.Template.Stackable)
+                        slots += 1;
+                    else
+                        slots += count;
 
-            //if (player.ItemLimit_Warehouse < (itsize + slots))
-            //{
-            //    player.sendSystemMessage(SystemMessage.SystemMessageId.WAREHOUSE_FULL);
-            //    player.sendActionFailed();
-            //    return;
-            //}
+                    if (item.Template.ItemId == 57)
+                        adenatransfer += count;
+                }
 
-            player.ReduceAdena(fee);
+                if ((player.GetAdena() - adenatransfer) < fee)
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.YouNotEnoughAdenaPayFee);
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            List<int[]> transfer = new List<int[]>();
-            for (int i = 0; i < _count; i++)
-            {
-                int objectId = _items[i * 2];
-                int count = _items[(i * 2) + 1];
+                //InvPrivateWarehouse pw = player._warehouse;
+                //int itsize = 0;
+                //if (pw == null)
+                //    pw = new InvPrivateWarehouse(player);
+                //else
+                //    itsize = pw.Items.Count;
 
-                transfer.Add(new[] { objectId, count });
-            }
+                //if (player.ItemLimit_Warehouse < (itsize + slots))
+                //{
+                //    player.sendSystemMessage(SystemMessage.SystemMessageId.WAREHOUSE_FULL);
+                //    player.sendActionFailed();
+                //    return;
+                //}
 
-            // pw.transferHere(player, transfer, false);
+                player.ReduceAdena(fee);
 
-            //if(npc.Template.fnBye != null)
-            //{
-            //    player.sendPacket(new NpcHtmlMessage(player, npc.Template.fnBye, npc.ObjID, 0));
-            //}
+                List<int[]> transfer = new List<int[]>();
+                for (int i = 0; i < _count; i++)
+                {
+                    int objectId = _items[i * 2];
+                    int count = _items[(i * 2) + 1];
 
-            player.SendItemList(true);
+                    transfer.Add(new[] { objectId, count });
+                }
+
+                // pw.transferHere(player, transfer, false);
+
+                //if(npc.Template.fnBye != null)
+                //{
+                //    player.sendPacket(new NpcHtmlMessage(player, npc.Template.fnBye, npc.ObjID, 0));
+                //}
+
+                player.SendItemList(true);
+            });
         }
     }
 }

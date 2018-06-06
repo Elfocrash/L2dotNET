@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 
@@ -25,21 +26,24 @@ namespace L2dotNET.Network.clientpackets
             }
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            foreach (L2Item item in player.Inventory.Items)
+            await Task.Run(() =>
             {
-                for (int i = 0; i < _count; i++)
-                {
-                    int objId = _items[i * 2];
-                    int loc = _items[(i * 2) + 1];
+                L2Player player = _client.CurrentPlayer;
 
-                    if (item.ObjId == objId)
-                        item.SlotLocation = loc;
+                foreach (L2Item item in player.Inventory.Items)
+                {
+                    for (int i = 0; i < _count; i++)
+                    {
+                        int objId = _items[i * 2];
+                        int loc = _items[(i * 2) + 1];
+
+                        if (item.ObjId == objId)
+                            item.SlotLocation = loc;
+                    }
                 }
-            }
+            });
         }
     }
 }

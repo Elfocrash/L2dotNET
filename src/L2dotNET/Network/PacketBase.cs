@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace L2dotNET.Network
 {
@@ -11,6 +12,6 @@ namespace L2dotNET.Network
             ServiceProvider = serviceProvider;
         }
 
-        public abstract void RunImpl();
+        public abstract Task RunImpl();
     }
 }

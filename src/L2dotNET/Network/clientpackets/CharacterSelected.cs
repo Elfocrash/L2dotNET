@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,21 +28,24 @@ namespace L2dotNET.Network.clientpackets
             _unk4 = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            //if (_client.CurrentPlayer == null)
+            await Task.Run(() =>
             {
-                L2Player player = _playerService.GetPlayerBySlotId(_client.AccountName, _charSlot);
+                //if (_client.CurrentPlayer == null)
+                {
+                    L2Player player = _playerService.GetPlayerBySlotId(_client.AccountName, _charSlot);
 
-                if (player == null)
-                    return;
+                    if (player == null)
+                        return;
 
-                player.Online = 1;
-                player.Gameclient = _client;
-                _client.CurrentPlayer = player;
+                    player.Online = 1;
+                    player.Gameclient = _client;
+                    _client.CurrentPlayer = player;
 
-                _client.SendPacket(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
-            }
+                    _client.SendPacketAsync(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
+                }
+            });
         }
 
     }

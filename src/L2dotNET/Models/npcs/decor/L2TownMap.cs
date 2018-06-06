@@ -11,7 +11,7 @@ namespace L2dotNET.Models.Npcs.Decor
 
         public override void NotifyAction(L2Player player)
         {
-            player.SendPacket(TownMap);
+            player.SendPacketAsync(TownMap);
         }
 
         public override string AsString()

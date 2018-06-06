@@ -1,4 +1,5 @@
-﻿using System.Timers;
+﻿using System.Threading.Tasks;
+using System.Timers;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -49,7 +50,7 @@ namespace L2dotNET.Models.Npcs
         public override void NotifyAction(L2Player player)
         {
             double dis = Calcs.CalculateDistance(player, this, true);
-            TryMoveTo(X, Y, Z);
+            TryMoveToAsync(X, Y, Z);
         }
 
         public int NpcId => Template.NpcId;
@@ -66,24 +67,24 @@ namespace L2dotNET.Models.Npcs
             return 0;
         }
 
-        public override void OnAction(L2Player player)
+        public override async Task OnActionAsync(L2Player player)
         {
             if (player.Target != this)
                 player.SetTarget(this);
             else
             {
                 player.MoveTo(X, Y, Z);
-                player.SendPacket(new MoveToPawn(player, this, 150));
+                await player.SendPacketAsync(new MoveToPawn(player, this, 150));
                 if (Template.Type == "L2Monster")
                 {
                     Log.Debug("Attack Monester By L2NPC");
-                    player.DoAttack(this);
+                    player.DoAttackAsync(this);
                 }
-                player.SendActionFailed();
+                await player.SendActionFailedAsync();
             }
         }
 
-        public override void OnActionShift(L2Player player)
+        public override async Task OnActionShiftAsync(L2Player player)
         {
             if (player.Target != this)
             {
@@ -91,7 +92,7 @@ namespace L2dotNET.Models.Npcs
                 return;
             }
             player.MoveTo(X, Y, Z);
-            player.SendPacket(new MoveToPawn(player, this, 150));
+            await player.SendPacketAsync(new MoveToPawn(player, this, 150));
 
             ShowNPCInfo(player);
         }
@@ -199,7 +200,7 @@ namespace L2dotNET.Models.Npcs
             //}
         }
 
-        public override void OnForcedAttack(L2Player player)
+        public override async Task OnForcedAttackAsync(L2Player player)
         {
             
             if (player.Target != this)
@@ -209,13 +210,12 @@ namespace L2dotNET.Models.Npcs
             }
 
             player.MoveTo(X, Y, Z);
-            player.SendPacket(new MoveToPawn(player, this, 150));
-
+            await player.SendPacketAsync(new MoveToPawn(player, this, 150));
         }
 
-        public void ShowSkillLearn(L2Player player, bool backward)
+        public async Task ShowSkillLearnAsync(L2Player player, bool backward)
         {
-            player.SendMessage("I cannot teach you anything.");
+            await player.SendMessageAsync("I cannot teach you anything.");
         }
 
         public override void BroadcastUserInfo()
@@ -223,13 +223,13 @@ namespace L2dotNET.Models.Npcs
             // TODO: Sends to all players on the server. It is not right
             foreach (L2Player pl in L2World.Instance.GetPlayers())
             {
-                pl.SendPacket(new NpcInfo(this));
+                pl.SendPacketAsync(new NpcInfo(this));
             }
         }
 
         public override void BroadcastUserInfoToObject(L2Object l2Object)
         {
-            l2Object.SendPacket(new NpcInfo(this));
+            l2Object.SendPacketAsync(new NpcInfo(this));
         }
 
         public override void OnSpawn(bool notifyOthers = true)
@@ -259,7 +259,7 @@ namespace L2dotNET.Models.Npcs
         {
             _corpseTimer.Enabled = false;
             _corpseTimer.Stop();
-            BroadcastPacket(new DeleteObject(ObjId));
+            BroadcastPacketAsync(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }
 
@@ -373,7 +373,7 @@ namespace L2dotNET.Models.Npcs
             else
             html.Replace("%butt%", "");
 
-            player.SendPacket(html);
+            player.SendPacketAsync(html);
         }
         public virtual int Attackable => 0;
 
@@ -390,7 +390,7 @@ namespace L2dotNET.Models.Npcs
 
         public void CastBuffForQuestReward(L2Character cha, int skillId)
         {
-            cha.SendMessage($"L2Npc.CastBuffForQuestReward {skillId}");
+            cha.SendMessageAsync($"L2Npc.CastBuffForQuestReward {skillId}");
         }
     }
 }

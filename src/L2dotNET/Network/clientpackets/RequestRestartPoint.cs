@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
@@ -18,33 +19,36 @@ namespace L2dotNET.Network.clientpackets
                 _keyItem = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            switch (_type)
+            await Task.Run(() =>
             {
-                case 0: //village
-                    break;
-                case 1: //ch
-                    break;
-                case 2: //castle
-                    break;
-                case 3: //fortress
-                    break;
-                case 4: //outpost
-                    break;
-                case 5: //feather
-                    break;
+                L2Player player = _client.CurrentPlayer;
 
-                //20 RPT_BRANCH_START
-                case 21: //agathion
-                    break;
-                case 22: //item resurrection, RPT_NPC?
-                    break;
-            }
+                switch (_type)
+                {
+                    case 0: //village
+                        break;
+                    case 1: //ch
+                        break;
+                    case 2: //castle
+                        break;
+                    case 3: //fortress
+                        break;
+                    case 4: //outpost
+                        break;
+                    case 5: //feather
+                        break;
 
-            player.Revive(100);
+                    //20 RPT_BRANCH_START
+                    case 21: //agathion
+                        break;
+                    case 22: //item resurrection, RPT_NPC?
+                        break;
+                }
+
+                player.Revive(100);
+            });
         }
     }
 }

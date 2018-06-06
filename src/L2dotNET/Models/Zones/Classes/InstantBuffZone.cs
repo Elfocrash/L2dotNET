@@ -16,7 +16,7 @@ namespace L2dotNET.Models.Zones.Classes
 
         private void affect(L2Character target)
         {
-            target.SendMessage("u can feel defence.");
+            target.SendMessageAsync("u can feel defence.");
             //Random rn = new Random();
             //if (Zone._skills != null)
             //{
@@ -48,7 +48,7 @@ namespace L2dotNET.Models.Zones.Classes
             obj.OnEnterZone(this);
 
             if (obj is L2Character)
-                ((L2Character)obj).SendMessage("u can feel defence.");
+                ((L2Character)obj).SendMessageAsync("u can feel defence.");
         }
 
         public override void OnExit(L2Object obj, bool cls)
@@ -61,7 +61,7 @@ namespace L2dotNET.Models.Zones.Classes
             obj.OnExitZone(this, cls);
 
             if (obj is L2Character)
-                ((L2Character)obj).SendMessage("u lost effect defence.");
+                ((L2Character)obj).SendMessageAsync("u lost effect defence.");
         }
     }
 }

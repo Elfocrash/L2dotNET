@@ -31,12 +31,12 @@ namespace L2dotNET.Models.Npcs.Decor
         public override void BroadcastUserInfo()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
-                obj.SendPacket(new StaticObject(this));
+                obj.SendPacketAsync(new StaticObject(this));
         }
 
-        public override void OnAction(L2Player player)
+        public override void OnActionAsync(L2Player player)
         {
-            player.SendMessage(AsString());
+            player.SendMessageAsync(AsString());
 
             player.SetTarget(this);
         }

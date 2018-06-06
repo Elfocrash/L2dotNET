@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Model;
@@ -36,29 +37,32 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _test = p.ReadByte();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Server server = LoginServer.ServiceProvider.GetService<ServerThreadPool>().Servers.FirstOrDefault(srv => srv.Code == _code);
-
-            if (server == null)
+            await Task.Run(() =>
             {
-                Log.Error($"Code '{_code}' for server was not found. Closing");
-                _thread.Close(ServerLoginFail.ToPacket("Code Error"));
-                return;
-            }
+                L2Server server = LoginServer.ServiceProvider.GetService<ServerThreadPool>().Servers.FirstOrDefault(srv => srv.Code == _code);
 
-            server.Thread = _thread;
-            _thread.Id = server.Id;
-            _thread.Info = _info;
-            _thread.Wan = _host;
-            _thread.Port = _port;
-            _thread.Maxp = _maxp;
-            _thread.GmOnly = _gmonly == 1;
-            _thread.TestMode = _test == 1;
-            _thread.Connected = true;
-            _thread.Send(ServerLoginOk.ToPacket());
+                if (server == null)
+                {
+                    Log.Error($"Code '{_code}' for server was not found. Closing");
+                    _thread.Close(ServerLoginFail.ToPacket("Code Error"));
+                    return;
+                }
 
-            Log.Info($"Server #{server.Id} connected");
+                server.Thread = _thread;
+                _thread.Id = server.Id;
+                _thread.Info = _info;
+                _thread.Wan = _host;
+                _thread.Port = _port;
+                _thread.Maxp = _maxp;
+                _thread.GmOnly = _gmonly == 1;
+                _thread.TestMode = _test == 1;
+                _thread.Connected = true;
+                _thread.Send(ServerLoginOk.ToPacket());
+
+                Log.Info($"Server #{server.Id} connected");
+            });
         }
     }
 }

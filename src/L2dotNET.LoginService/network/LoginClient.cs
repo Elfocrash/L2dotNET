@@ -1,42 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
-
+using System.Threading.Tasks;
 using L2Crypt;
 using L2dotNET.DataContracts;
 using L2dotNET.Logging.Abstraction;
-using L2dotNET.LoginService.Managers;
 using L2dotNET.LoginService.Network.Crypt;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
-using L2dotNET.Utility;
 
 namespace L2dotNET.LoginService.Network
 {
     public class LoginClient
     {
         private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
-
+        public LoginClientState State { get; set; }
         public EndPoint Address { get; set; }
         public TcpClient Client { get; set; }
         public NetworkStream NetStream { get; set; }
-        private byte[] _buffer;
-        private readonly Managers.ClientManager _clientManager;
-
-        public LoginClientState State;
-        private DateTime ConnectionStartTime;
-        private bool UsesInternalIP;
-
-        public readonly SessionKey Key;
-        public readonly int SessionId;
+        public SessionKey Key { get; }
+        public int SessionId { get; }
+        public AccountContract ActiveAccount { get; set; }
 
         // Crypt
         private LoginCrypt _loginCrypt;
         public ScrambledKeyPair RsaPair;
         public byte[] BlowfishKey;
         private readonly PacketHandler _packetHandler;
+        private readonly Managers.ClientManager _clientManager;
 
         public LoginClient(TcpClient tcpClient, Managers.ClientManager clientManager, PacketHandler packetHandler)
         {
@@ -49,9 +40,6 @@ namespace L2dotNET.LoginService.Network
             SessionId = rnd.Next();
             Key = new SessionKey(rnd.Next(), rnd.Next(), rnd.Next(), rnd.Next());
             State = LoginClientState.Connected;
-            ConnectionStartTime = DateTime.Now;
-            UsesInternalIP = Address.IsLocalIpAddress();
-
             InitializeNetwork();
         }
 
@@ -59,61 +47,71 @@ namespace L2dotNET.LoginService.Network
         {
             RsaPair = _clientManager.GetScrambledKeyPair();
             BlowfishKey = _clientManager.GetBlowfishKey();
+
             _loginCrypt = new LoginCrypt();
             _loginCrypt.UpdateKey(BlowfishKey);
 
-            new Thread(Read).Start();
-            new Thread(SendInit).Start();
+            Task.Factory.StartNew(ReadAsync);
+            Task.Factory.StartNew(SendInit);
         }
 
-        public void SendInit()
+        public async Task SendInit()
         {
-            Send(Init.ToPacket(this));
+            await SendAsync(Init.ToPacket(this));
         }
 
-        public void Send(Packet p)
+        public async Task SendAsync(Packet p)
         {
             byte[] data = p.GetBuffer();
             data = _loginCrypt.Encrypt(data, 0, data.Length);
-            List<byte> array = new List<byte>();
-            array.AddRange(BitConverter.GetBytes((short)(data.Length + 2)));
-            array.AddRange(data);
-            NetStream.Write(array.ToArray(), 0, array.Count);
-            //Log.Info($"Receive :\r\n{L2Buffer.ToString(array.ToArray())}");
-            NetStream.Flush();
+
+            byte[] lengthBytes = BitConverter.GetBytes((short)(data.Length + 2));
+            byte[] message = new byte[data.Length + 2];
+
+            lengthBytes.CopyTo(message, 0);
+            data.CopyTo(message, 2);
+
+            await NetStream.WriteAsync(message, 0, message.Length);
+            await NetStream.FlushAsync();
         }
 
-        public void Read()
+        public async Task ReadAsync()
         {
             try
             {
-                _buffer = new byte[2];
-                NetStream.BeginRead(_buffer, 0, 2, OnReceiveCallbackStatic, null);
+                while (true)
+                {
+                    byte[] buffer = new byte[2];
+                    int bytesRead = await NetStream.ReadAsync(buffer, 0, 2);
+
+                    if (bytesRead != 2)
+                    {
+                        throw new Exception("Wrong package structure");
+                    }
+
+                    short length = BitConverter.ToInt16(buffer, 0);
+
+                    buffer = new byte[length - 2];
+                    bytesRead = await NetStream.ReadAsync(buffer, 0, length - 2);
+
+                    if (bytesRead != length - 2)
+                    {
+                        throw new Exception("Wrong package structure");
+                    }
+
+                    if (!_loginCrypt.Decrypt(ref buffer, 0, buffer.Length))
+                    {
+                        throw new Exception($"Blowfish failed on {Address}. Please restart auth server.");
+                    }
+
+#pragma warning disable 4014
+                    Task.Factory.StartNew(() => _packetHandler.Handle(new Packet(1, buffer), this));
+#pragma warning restore 4014
+                }
             }
             catch (Exception ex)
             {
                 Log.Error($"Error: {ex.Message}");
-                Close();
-                throw;
-            }
-        }
-
-        private void OnReceiveCallbackStatic(IAsyncResult result)
-        {
-            try
-            {
-                int rs = NetStream.EndRead(result);
-
-                if (rs <= 0)
-                    return;
-
-                short length = BitConverter.ToInt16(_buffer, 0);
-                _buffer = new byte[length - 2];
-                NetStream.BeginRead(_buffer, 0, length - 2, OnReceiveCallback, result.AsyncState);
-            }
-            catch (Exception s)
-            {
-                Log.Warn(Address + $" was closed by force. {s}");
                 Close();
             }
         }
@@ -122,24 +120,5 @@ namespace L2dotNET.LoginService.Network
         {
             _clientManager.RemoveClient(this);
         }
-
-        private void OnReceiveCallback(IAsyncResult result)
-
-        {
-            NetStream.EndRead(result);
-
-            byte[] buff = new byte[_buffer.Length];
-            _buffer.CopyTo(buff, 0);
-
-            if (!_loginCrypt.Decrypt(ref buff, 0, buff.Length))
-                Log.Error($"Blowfish failed on {Address}. Please restart auth server.");
-            else
-            {
-                _packetHandler.Handle(new Packet(1, buff), this);
-                Read();
-            }
-        }
-
-        public AccountContract ActiveAccount { get; set; }
     }
 }

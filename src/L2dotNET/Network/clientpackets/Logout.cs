@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Network.serverpackets;
@@ -16,34 +17,37 @@ namespace L2dotNET.Network.clientpackets
             _client = client;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            _authThread.SetInGameAccount(_client.AccountName);
-
-            L2Player player = _client.CurrentPlayer;
-
-            if (player == null)
-                return;
-
-            if (player.PBlockAct == 1)
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                _authThread.SetInGameAccount(_client.AccountName);
 
-            if (player.isInCombat())
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CantLogoutWhileFighting);
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            if (player.Online == 1)
-            {
-                player.Online = 0;
-                player.DeleteMe();
-            }
-            player.SendPacket(new LeaveWorld());
+                if (player == null)
+                    return;
+
+                if (player.PBlockAct == 1)
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                if (player.isInCombat())
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.CantLogoutWhileFighting);
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                if (player.Online == 1)
+                {
+                    player.Online = 0;
+                    player.DeleteMe();
+                }
+                player.SendPacketAsync(new LeaveWorld());
+            });
         }
     }
 }

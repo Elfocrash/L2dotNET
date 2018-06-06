@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Vehicles;
@@ -31,43 +32,46 @@ namespace L2dotNET.Network.clientpackets.VehicleAPI
             _z = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            //You do not possess the correct ticket to board the boat.
-            
-            L2Boat boat = null;
-            if (player.Boat != null)
+            await Task.Run(() =>
             {
-                if (player.Boat.ObjId == _boatId)
-                    boat = player.Boat;
+                L2Player player = _client.CurrentPlayer;
+
+                //You do not possess the correct ticket to board the boat.
+            
+                L2Boat boat = null;
+                if (player.Boat != null)
+                {
+                    if (player.Boat.ObjId == _boatId)
+                        boat = player.Boat;
+                    else
+                    {
+                        player.SendActionFailedAsync();
+                        return;
+                    }
+                }
                 else
                 {
-                    player.SendActionFailed();
+                    if (player.KnownObjects.ContainsKey(_boatId))
+                        boat = (L2Boat)player.KnownObjects[_boatId];
+                }
+
+                if (boat == null)
+                {
+                    Log.Error($"User requested null boat {_boatId}");
+                    player.SendActionFailedAsync();
                     return;
                 }
-            }
-            else
-            {
-                if (player.KnownObjects.ContainsKey(_boatId))
-                    boat = (L2Boat)player.KnownObjects[_boatId];
-            }
 
-            if (boat == null)
-            {
-                Log.Error($"User requested null boat {_boatId}");
-                player.SendActionFailed();
-                return;
-            }
+                if (player.Boat == null)
+                    player.Boat = boat;
 
-            if (player.Boat == null)
-                player.Boat = boat;
-
-            player.BoatX = _dx;
-            player.BoatY = _dy;
-            player.BoatZ = _dz;
-            player.BroadcastPacket(new MoveToLocationInVehicle(player, _x, _y, _z));
+                player.BoatX = _dx;
+                player.BoatY = _dy;
+                player.BoatZ = _dz;
+                player.BroadcastPacketAsync(new MoveToLocationInVehicle(player, _x, _y, _z));
+            });
         }
     }
 }

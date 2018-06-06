@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 
 namespace L2dotNET.Services.Contracts
 {
     public interface IAccountService
     {
-        AccountContract GetAccountByLogin(string login);
+        Task<AccountContract> GetAccountByLogin(string login);
 
-        AccountContract CreateAccount(string login, string password);
+        Task<AccountContract> CreateAccount(string login, string password);
 
-        bool CheckIfAccountIsCorrect(string login, string password);
+        Task<bool> CheckIfAccountIsCorrect(string login, string password);
 
-        List<int> GetPlayerIdsListByAccountName(string login);
+        Task<List<int>> GetPlayerIdsListByAccountName(string login);
     }
 }

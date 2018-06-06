@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace L2dotNET.Network.loginauth.recv
 {
@@ -13,9 +14,12 @@ namespace L2dotNET.Network.loginauth.recv
             _code = p.ReadString();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            _login.LoginOk(_code);
+            await Task.Run(() =>
+            {
+                _login.LoginOk(_code);
+            });
         }
     }
 }

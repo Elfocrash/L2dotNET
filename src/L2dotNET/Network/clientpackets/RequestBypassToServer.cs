@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Managers;
 using L2dotNET.Models.Npcs;
@@ -28,8 +29,8 @@ namespace L2dotNET.Network.clientpackets
             if (npc != null)
                 return npc;
 
-            _client.CurrentPlayer.SendMessage("no npc found");
-            _client.CurrentPlayer.SendActionFailed();
+            _client.CurrentPlayer.SendMessageAsync("no npc found");
+            _client.CurrentPlayer.SendActionFailedAsync();
             return null;
         }
 
@@ -41,174 +42,177 @@ namespace L2dotNET.Network.clientpackets
             if (npc != null)
                 return npc;
 
-            _client.CurrentPlayer.SendMessage("no npc found");
-            _client.CurrentPlayer.SendActionFailed();
+            _client.CurrentPlayer.SendMessageAsync("no npc found");
+            _client.CurrentPlayer.SendActionFailedAsync();
             return null;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if (player.PBlockAct == 1)
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            L2Npc npc;
-            L2Warehouse warehouseNPC;
-
-            if (_alias.EqualsIgnoreCase("teleport_request"))
-            {
-                npc = GetNpc();
-
-                if (npc == null)
+                if (player.PBlockAct == 1)
                 {
-                    player.SendActionFailed();
+                    player.SendActionFailedAsync();
                     return;
                 }
 
-                npc.OnTeleportRequest(player);
-            }
-            else
-            {
-                if (_alias.StartsWithIgnoreCase("menu_select?"))
+                L2Npc npc;
+                L2Warehouse warehouseNPC;
+
+                if (_alias.EqualsIgnoreCase("teleport_request"))
                 {
                     npc = GetNpc();
 
-                    _alias = _alias.Replace(" ", string.Empty);
-                    string x1 = _alias.Split('?')[1];
-                    string[] x2 = x1.Split('&');
-                    int ask = int.Parse(x2[0].Substring(4));
-                    int reply;
-
-                    try
+                    if (npc == null)
                     {
-                        reply = int.Parse(x2[1].Substring(6));
-                    }
-                    catch
-                    {
-                        reply = 0;
+                        player.SendActionFailedAsync();
+                        return;
                     }
 
-                    npc.OnDialog(player, ask, reply);
+                    npc.OnTeleportRequest(player);
                 }
                 else
                 {
-                    if (_alias.EqualsIgnoreCase("talk_select"))
+                    if (_alias.StartsWithIgnoreCase("menu_select?"))
                     {
                         npc = GetNpc();
-                        //QuestManager.Instance.TalkSelection(player, npc);
+
+                        _alias = _alias.Replace(" ", string.Empty);
+                        string x1 = _alias.Split('?')[1];
+                        string[] x2 = x1.Split('&');
+                        int ask = int.Parse(x2[0].Substring(4));
+                        int reply;
+
+                        try
+                        {
+                            reply = int.Parse(x2[1].Substring(6));
+                        }
+                        catch
+                        {
+                            reply = 0;
+                        }
+
+                        npc.OnDialog(player, ask, reply);
                     }
                     else
                     {
-                        if (_alias.StartsWithIgnoreCase("quest_accept?"))
+                        if (_alias.EqualsIgnoreCase("talk_select"))
                         {
                             npc = GetNpc();
-                            _alias = _alias.Replace(" ", string.Empty);
-                            string x1 = _alias.Split('?')[1];
-                            int qid = int.Parse(x1.Split('=')[1]);
-
-                            //QuestManager.Instance.QuestAccept(player, npc, qid);
+                            //QuestManager.Instance.TalkSelection(player, npc);
                         }
                         else
                         {
-                            if (_alias.StartsWithIgnoreCase("quest_continue?"))
+                            if (_alias.StartsWithIgnoreCase("quest_accept?"))
                             {
                                 npc = GetNpc();
                                 _alias = _alias.Replace(" ", string.Empty);
                                 string x1 = _alias.Split('?')[1];
                                 int qid = int.Parse(x1.Split('=')[1]);
 
-                                //QuestManager.Instance.Quest_continue(player, npc, qid);
+                                //QuestManager.Instance.QuestAccept(player, npc, qid);
                             }
                             else
                             {
-                                if (_alias.StartsWithIgnoreCase("quest_tryaccept?"))
+                                if (_alias.StartsWithIgnoreCase("quest_continue?"))
                                 {
                                     npc = GetNpc();
                                     _alias = _alias.Replace(" ", string.Empty);
                                     string x1 = _alias.Split('?')[1];
                                     int qid = int.Parse(x1.Split('=')[1]);
 
-                                   // QuestManager.Instance.Quest_tryaccept(player, npc, qid);
+                                    //QuestManager.Instance.Quest_continue(player, npc, qid);
                                 }
                                 else
                                 {
-                                    if (_alias.Contains("DepositP"))
+                                    if (_alias.StartsWithIgnoreCase("quest_tryaccept?"))
                                     {
-                                        warehouseNPC = GetWarehouseNPC();
-                                        warehouseNPC.ShowPrivateWarehouse(player);
-                                        return;
+                                        npc = GetNpc();
+                                        _alias = _alias.Replace(" ", string.Empty);
+                                        string x1 = _alias.Split('?')[1];
+                                        int qid = int.Parse(x1.Split('=')[1]);
+
+                                        // QuestManager.Instance.Quest_tryaccept(player, npc, qid);
                                     }
                                     else
                                     {
-                                        if (_alias.Contains("WithdrawP"))
+                                        if (_alias.Contains("DepositP"))
                                         {
                                             warehouseNPC = GetWarehouseNPC();
-                                            warehouseNPC.ShowPrivateWarehouseBack(player);
+                                            warehouseNPC.ShowPrivateWarehouse(player);
                                             return;
                                         }
                                         else
                                         {
-                                            if (_alias.Contains("DepositC"))
+                                            if (_alias.Contains("WithdrawP"))
                                             {
                                                 warehouseNPC = GetWarehouseNPC();
-                                                warehouseNPC.ShowClanWarehouse(player);
+                                                warehouseNPC.ShowPrivateWarehouseBack(player);
                                                 return;
                                             }
                                             else
                                             {
-                                                if (_alias.Contains("WithdrawC"))
+                                                if (_alias.Contains("DepositC"))
                                                 {
                                                     warehouseNPC = GetWarehouseNPC();
-                                                    warehouseNPC.ShowClanWarehouseBack(player);
+                                                    warehouseNPC.ShowClanWarehouse(player);
                                                     return;
                                                 }
                                                 else
                                                 {
-                                                    if (_alias.EqualsIgnoreCase("learn_skill"))
+                                                    if (_alias.Contains("WithdrawC"))
                                                     {
-                                                        npc = GetNpc();
-                                                        npc.ShowSkillLearn(player, false);
+                                                        warehouseNPC = GetWarehouseNPC();
+                                                        warehouseNPC.ShowClanWarehouseBack(player);
+                                                        return;
                                                     }
                                                     else
                                                     {
-                                                        if (_alias.StartsWithIgnoreCase("create_pledge?"))
+                                                        if (_alias.EqualsIgnoreCase("learn_skill"))
                                                         {
                                                             npc = GetNpc();
-                                                            //bypass -h create_pledge?pledge_name= $pledge_name
-                                                            string x1 = _alias.Split('?')[1];
-                                                            string name = x1.Split('=')[1];
-                                                            name = name.Substring(1);
-
-                                                           // GrandmasterTotal.CreateClan(player, name, npc);
+                                                            npc.ShowSkillLearnAsync(player, false);
                                                         }
                                                         else
                                                         {
-                                                            if (_alias.StartsWithIgnoreCase("teleport_next?"))
+                                                            if (_alias.StartsWithIgnoreCase("create_pledge?"))
                                                             {
                                                                 npc = GetNpc();
+                                                                //bypass -h create_pledge?pledge_name= $pledge_name
                                                                 string x1 = _alias.Split('?')[1];
-                                                                string[] x2 = x1.Split('&');
-                                                                int ask = int.Parse(x2[0].Substring(4));
-                                                                int reply = int.Parse(x2[1].Substring(6));
+                                                                string name = x1.Split('=')[1];
+                                                                name = name.Substring(1);
 
-                                                                npc.UseTeleporter(player, ask, reply);
+                                                                // GrandmasterTotal.CreateClan(player, name, npc);
                                                             }
                                                             else
                                                             {
-                                                                if (_alias.StartsWithIgnoreCase("npc"))
+                                                                if (_alias.StartsWithIgnoreCase("teleport_next?"))
                                                                 {
                                                                     npc = GetNpc();
-                                                                    Log.Warn($"Bypass Accepted '{_alias}'");
+                                                                    string x1 = _alias.Split('?')[1];
+                                                                    string[] x2 = x1.Split('&');
+                                                                    int ask = int.Parse(x2[0].Substring(4));
+                                                                    int reply = int.Parse(x2[1].Substring(6));
+
+                                                                    npc.UseTeleporter(player, ask, reply);
                                                                 }
-                                                                else {
-                                                                    if (_alias.StartsWithIgnoreCase("petitionlink?"))
-                                                                        PetitionManager.GetInstance().Petitionlink(player, _alias.Split('?')[1]);
-                                                                    else
-                                                                        Log.Warn($"Unknown bypass '{_alias}'");
+                                                                else
+                                                                {
+                                                                    if (_alias.StartsWithIgnoreCase("npc"))
+                                                                    {
+                                                                        npc = GetNpc();
+                                                                        Log.Warn($"Bypass Accepted '{_alias}'");
+                                                                    }
+                                                                    else {
+                                                                        if (_alias.StartsWithIgnoreCase("petitionlink?"))
+                                                                            PetitionManager.GetInstance().Petitionlink(player, _alias.Split('?')[1]);
+                                                                        else
+                                                                            Log.Warn($"Unknown bypass '{_alias}'");
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -222,7 +226,7 @@ namespace L2dotNET.Network.clientpackets
                         }
                     }
                 }
-            }
+            });
         }
     }
 }

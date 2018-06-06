@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using L2dotNET.Encryption;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
@@ -58,7 +59,7 @@ namespace L2dotNET
             return key;
         }
 
-        public void SendPacket(GameserverPacket sbp)
+        public async Task SendPacketAsync(GameserverPacket sbp)
         {
             if (IsTerminated)
                 return;
@@ -80,8 +81,8 @@ namespace L2dotNET
 
             try
             {
-                Stream.Write(bytes.ToArray(), 0, bytes.Count);
-                Stream.Flush();
+                await Stream.WriteAsync(bytes.ToArray(), 0, bytes.Count);
+                await Stream.FlushAsync();
             }
             catch
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Inventory;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
@@ -18,60 +19,62 @@ namespace L2dotNET.Network.clientpackets
             _sId = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if (player.PBlockAct == 1)
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            L2Item item = player.GetItemByObjId(_sId);
-
-            if (item == null)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.IncorrectItem);
-                return;
-            }
-
-            if (player.TradeState != 0)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotPickupOrUseItemWhileTrading);
-                player.SendActionFailed();
-                return;
-            }
-
-            if (item.IsEquipable())
-            {
-                if (!item.Equipped)
+                if (player.PBlockAct == 1)
                 {
-                    if (player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] != null)
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                L2Item item = player.GetItemByObjId(_sId);
+
+                if (item == null)
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.IncorrectItem);
+                    return;
+                }
+
+                if (player.TradeState != 0)
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.CannotPickupOrUseItemWhileTrading);
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                if (item.IsEquipable())
+                {
+                    if (!item.Equipped)
                     {
-                        var equipped = player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)];
-                        equipped.Unequip(player);
+                        if (player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] != null)
+                        {
+                            var equipped = player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)];
+                            equipped.Unequip(player);
+                        }
+                        player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = item;
+                        item.Equip(player);
+                        player.BroadcastUserInfo();
+                        player.SendPacketAsync(new ItemList(player, true));
+                        foreach (IPlugin plugin in PluginManager.Instance.Plugins)
+                            plugin.OnItemEquip(player, item);
                     }
-                    player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = item;
-                    item.Equip(player);
-                    player.BroadcastUserInfo();
-                    player.SendPacket(new ItemList(player, true));
-                    foreach (IPlugin plugin in PluginManager.Instance.Plugins)
-                        plugin.OnItemEquip(player, item);
+                    else
+                    {
+                        player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = null;
+                        item.Unequip(player);
+                        player.BroadcastUserInfo();
+                        player.SendPacketAsync(new ItemList(player, true));
+                    }
                 }
                 else
                 {
-                    player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = null;
-                    item.Unequip(player);
-                    player.BroadcastUserInfo();
-                    player.SendPacket(new ItemList(player, true));
+                    ItemHandler.Instance.Process(player, item);
                 }
-            }
-            else
-            {
-                ItemHandler.Instance.Process(player, item);
-            }
+            });
         }
-
     }
 }

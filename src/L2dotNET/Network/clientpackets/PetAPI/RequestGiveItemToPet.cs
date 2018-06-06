@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets.PetAPI
@@ -18,9 +19,12 @@ namespace L2dotNET.Network.clientpackets.PetAPI
                 _num = 1;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
+            await Task.Run(() =>
+            {
+                L2Player player = _client.CurrentPlayer;
+            });
         }
     }
 }

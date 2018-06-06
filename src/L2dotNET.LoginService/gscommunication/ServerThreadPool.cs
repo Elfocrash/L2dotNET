@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
@@ -28,7 +29,7 @@ namespace L2dotNET.LoginService.GSCommunication
         private TcpListener _listener;
 
         public List<L2Server> Servers = new List<L2Server>();
-        
+
         public void Initialize()
         {
             Servers.AddRange(_serverService.GetServerList().Select(curServ => new L2Server
@@ -50,12 +51,6 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void Start()
         {
-            //Listener = new TcpListener(IPAddress.Parse(Config.Config.Instance.ServerConfig.Host), Config.Config.Instance.ServerConfig.GsPort);
-            //Listener.Start();
-            //Log.Info($"Auth server listening gameservers at {Config.Config.Instance.ServerConfig.Host}:{Config.Config.Instance.ServerConfig.GsPort}");
-            //while (true)
-            //    VerifyClient(Listener.AcceptTcpClient());
-
             _listener = new TcpListener(IPAddress.Parse(_config.ServerConfig.Host), _config.ServerConfig.GsPort);
 
             try
@@ -71,29 +66,20 @@ namespace L2dotNET.LoginService.GSCommunication
                 Environment.Exit(0);
             }
 
-            WaitForClients();
+            Task.Factory.StartNew(WaitForClients);
         }
 
-        private void WaitForClients()
+        private async void WaitForClients()
         {
-            _listener.BeginAcceptTcpClient(OnClientConnected, null);
-        }
+            while (true)
+            {
+                TcpClient client = await _listener.AcceptTcpClientAsync();
+                Log.Info($"Received connection request from: {client.Client.RemoteEndPoint}");
 
-        private void OnClientConnected(IAsyncResult asyncResult)
-        {
-            TcpClient clientSocket = _listener.EndAcceptTcpClient(asyncResult);
+                ServerThread st = new ServerThread(_packetHandler);
+                st.ReadData(client, this);
 
-            Log.Info($"Received connection request from: {clientSocket.Client.RemoteEndPoint}");
-
-            VerifyClient(clientSocket);
-
-            WaitForClients();
-        }
-
-        private void VerifyClient(TcpClient clientSocket)
-        {
-            ServerThread st = new ServerThread(_packetHandler);
-            st.ReadData(clientSocket, this);
+            }
         }
 
         public void Shutdown(byte id)
@@ -101,7 +87,9 @@ namespace L2dotNET.LoginService.GSCommunication
             L2Server server = Servers.FirstOrDefault(s => s.Id == id);
 
             if (server == null)
+            {
                 return;
+            }
 
             server.Thread?.Stop();
             server.Thread = null;

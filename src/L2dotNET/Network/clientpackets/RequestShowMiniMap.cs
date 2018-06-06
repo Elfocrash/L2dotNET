@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets
@@ -12,9 +13,12 @@ namespace L2dotNET.Network.clientpackets
             _client = client;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            _client.SendPacket(new ShowMiniMap());
+            await Task.Run(() =>
+            {
+                _client.SendPacketAsync(new ShowMiniMap());
+            });
         }
     }
 }

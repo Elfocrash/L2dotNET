@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 
 
@@ -17,9 +18,12 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
             _status = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            Log.Info($"party {_status}");
+            await Task.Run(() =>
+            {
+                Log.Info($"party {_status}");
+            });
         }
     }
 }

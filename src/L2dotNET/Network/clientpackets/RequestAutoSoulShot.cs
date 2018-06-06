@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 
@@ -18,11 +19,14 @@ namespace L2dotNET.Network.clientpackets
             _type = packet.ReadInt(); //1 - enable
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
+            await Task.Run(() =>
+            {
+                L2Player player = _client.CurrentPlayer;
 
-            L2Item item = player.Inventory.GetItemByItemId(_itemId);
+                L2Item item = player.Inventory.GetItemByItemId(_itemId);
+            });
         }
     }
 }

@@ -39,19 +39,19 @@ namespace L2dotNET.Managers
         public void Announce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_ANNOUNCE, text);
-            L2World.Instance.GetPlayers().ForEach(p => p.SendPacket(cs));
+            L2World.Instance.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
         }
 
         public void CriticalAnnounce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_CRITICAL_ANNOUNCE, text);
-            L2World.Instance.GetPlayers().ForEach(p => p.SendPacket(cs));
+            L2World.Instance.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
         }
 
         public void ScreenAnnounce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_SCREEN_ANNOUNCE, text);
-            L2World.Instance.GetPlayers().ForEach(p => p.SendPacket(cs));
+            L2World.Instance.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
         }
 
         public void OnEnter(L2Player player)
@@ -64,7 +64,7 @@ namespace L2dotNET.Managers
             foreach (AnnouncementContract announcement in Announcements.Where(announcement => announcement.Type == 0))
             {
                 cs.Text = announcement.Text;
-                player.SendPacket(cs);
+                player.SendPacketAsync(cs);
             }
         }
     }

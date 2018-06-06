@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Enums;
 using L2dotNET.Models.Inventory;
 using L2dotNET.Models.Player;
@@ -55,79 +56,82 @@ namespace L2dotNET.Network.clientpackets
         }
 
         //TODO: Simplify method body
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            if (!IsValidChar())
-                return;
-
-            PcTemplate template = CharTemplateTable.Instance.GetTemplate(_classId);
-
-            L2Player player = new L2Player(_playerService, _idFactory.NextId(), template);
-
-            player.Inventory = new PcInventory(_itemService, _idFactory, _itemTable, player);
-            player.Name = _name;
-            player.AccountName = _client.AccountName;
-            player.Title = string.Empty;
-            player.Sex = (Gender)_sex;
-            player.HairStyleId = (HairStyleId)_hairStyle;
-            player.HairColor = (HairColor)_hairColor;
-            player.Face = (Face)_face;
-            player.Exp = 0;
-            player.Level = 1;
-            player.Gameclient = _client;
-            //player.Stats = new CharacterStat(player);
-            player.ClassId = template.ClassId;
-            player.BaseClass = template;
-            player.ActiveClass = template;
-            player.CharStatus.CurrentCp = player.MaxCp;
-            player.CharStatus.SetCurrentHp(player.MaxHp);
-            player.CharStatus.SetCurrentHp(player.MaxMp);
-            //player.MaxMp = player.Stats.MaxMp;//;(int)player.CharacterStat.GetStat(EffectType.BMaxMp);
-            //player.MaxCp = player.Stats.MaxCp;
-            //player.MaxHp = player.Stats.MaxHp;
-            player.X = template.SpawnX;
-            player.Y = template.SpawnY;
-            player.Z = template.SpawnZ;
-            player.CharSlot = player.Gameclient.AccountChars.Count;
-
-            if (template.Items != null)
+            await Task.Run(() =>
             {
+                if (!IsValidChar())
+                    return;
+
+                PcTemplate template = CharTemplateTable.Instance.GetTemplate(_classId);
+
+                L2Player player = new L2Player(_playerService, _idFactory.NextId(), template);
+
                 player.Inventory = new PcInventory(_itemService, _idFactory, _itemTable, player);
+                player.Name = _name;
+                player.AccountName = _client.AccountName;
+                player.Title = string.Empty;
+                player.Sex = (Gender)_sex;
+                player.HairStyleId = (HairStyleId)_hairStyle;
+                player.HairColor = (HairColor)_hairColor;
+                player.Face = (Face)_face;
+                player.Exp = 0;
+                player.Level = 1;
+                player.Gameclient = _client;
+                //player.Stats = new CharacterStat(player);
+                player.ClassId = template.ClassId;
+                player.BaseClass = template;
+                player.ActiveClass = template;
+                player.CharStatus.CurrentCp = player.MaxCp;
+                player.CharStatus.SetCurrentHp(player.MaxHp);
+                player.CharStatus.SetCurrentHp(player.MaxMp);
+                //player.MaxMp = player.Stats.MaxMp;//;(int)player.CharacterStat.GetStat(EffectType.BMaxMp);
+                //player.MaxCp = player.Stats.MaxCp;
+                //player.MaxHp = player.Stats.MaxHp;
+                player.X = template.SpawnX;
+                player.Y = template.SpawnY;
+                player.Z = template.SpawnZ;
+                player.CharSlot = player.Gameclient.AccountChars.Count;
 
-                //foreach (PC_item i in template._items)
-                //{
-                //    if (!i.item.isStackable())
-                //    {
-                //        for (long s = 0; s < i.count; s++)
-                //        {
-                //            L2Item item = new L2Item(i.item);
-                //            item.Enchant = i.enchant;
-                //            if (i.lifetime != -1)
-                //                item.AddLimitedHour(i.lifetime);
+                if (template.Items != null)
+                {
+                    player.Inventory = new PcInventory(_itemService, _idFactory, _itemTable, player);
 
-                //            item.Location = L2Item.L2ItemLocation.inventory;
-                //            player.Inventory.addItem(item, false, false);
+                    //foreach (PC_item i in template._items)
+                    //{
+                    //    if (!i.item.isStackable())
+                    //    {
+                    //        for (long s = 0; s < i.count; s++)
+                    //        {
+                    //            L2Item item = new L2Item(i.item);
+                    //            item.Enchant = i.enchant;
+                    //            if (i.lifetime != -1)
+                    //                item.AddLimitedHour(i.lifetime);
 
-                //            if (i.equip)
-                //            {
-                //                int pdollId = player.Inventory.getPaperdollId(item.Template);
-                //                player.setPaperdoll(pdollId, item, false);
-                //            }
-                //        }
-                //    }
-                //    else
-                //        player.addItem(i.item.ItemID, i.count);
-                //}
-            }
+                    //            item.Location = L2Item.L2ItemLocation.inventory;
+                    //            player.Inventory.addItem(item, false, false);
 
-            _playerService.CreatePlayer(player);
-            //player = PlayerService.RestorePlayer(player.ObjId, _client);
-            player.Gameclient.AccountChars.Add(player);
-            _client.SendPacket(new CharCreateOk());
-            L2World.Instance.AddPlayer(player);
-            _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1)
-            {
-                CharId = player.ObjId
+                    //            if (i.equip)
+                    //            {
+                    //                int pdollId = player.Inventory.getPaperdollId(item.Template);
+                    //                player.setPaperdoll(pdollId, item, false);
+                    //            }
+                    //        }
+                    //    }
+                    //    else
+                    //        player.addItem(i.item.ItemID, i.count);
+                    //}
+                }
+
+                _playerService.CreatePlayer(player);
+                //player = PlayerService.RestorePlayer(player.ObjId, _client);
+                player.Gameclient.AccountChars.Add(player);
+                _client.SendPacketAsync(new CharCreateOk());
+                L2World.Instance.AddPlayer(player);
+                _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1)
+                {
+                    CharId = player.ObjId
+                });
             });
         }
 
@@ -135,31 +139,31 @@ namespace L2dotNET.Network.clientpackets
         {
             if (_config.GameplayConfig.OtherConfig.CharCreationBlocked)
             {
-                _client.SendPacket(new CharCreateFail(CharCreateFailReason.CharCreationBlocked));
+                _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.CharCreationBlocked));
                 return false;
             }
 
             if (_client.AccountChars.Count >= _config.GameplayConfig.OtherConfig.MaxCharactersByAccount)
             {
-                _client.SendPacket(new CharCreateFail(CharCreateFailReason.TooManyCharsOnAccount));
+                _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.TooManyCharsOnAccount));
                 return false;
             }
 
             if (_config.GameplayConfig.OtherConfig.ForbiddenCharNames.Contains(_name))
             {
-                _client.SendPacket(new CharCreateFail(CharCreateFailReason.IncorrectName));
+                _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.IncorrectName));
                 return false;
             }
 
             if (!StringHelper.IsValidPlayerName(_name))
             {
-                _client.SendPacket(new CharCreateFail(CharCreateFailReason.InvalidNamePattern));
+                _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.InvalidNamePattern));
                 return false;
             }
 
             if (_playerService.CheckIfPlayerNameExists(_name))
             {
-                _client.SendPacket(new CharCreateFail(CharCreateFailReason.NameAlreadyExists));
+                _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.NameAlreadyExists));
                 return false;
             }
 
@@ -168,14 +172,14 @@ namespace L2dotNET.Network.clientpackets
                 !Enum.IsDefined(typeof(HairColor), _hairColor) ||
                 !Enum.IsDefined(typeof(Face), _face))
             {
-                _client.SendPacket(new CharCreateFail(CharCreateFailReason.CreationFailed));
+                _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.CreationFailed));
                 return false;
             }
 
             if (!HairStyle.Values.Any(filter => (filter.Id == (HairStyleId)_hairStyle) &&
                                                 filter.Sex.Contains((Gender)_sex)))
             {
-                _client.SendPacket(new CharCreateFail(CharCreateFailReason.CreationFailed));
+                _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.CreationFailed));
                 return false;
             }
 
@@ -183,7 +187,7 @@ namespace L2dotNET.Network.clientpackets
                                             (filter.ClassRace == (ClassRace)_race) &&
                                             (filter.Id == (ClassIds)_classId)))
             {
-                _client.SendPacket(new CharCreateFail(CharCreateFailReason.CreationFailed));
+                _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.CreationFailed));
                 return false;
             }
 

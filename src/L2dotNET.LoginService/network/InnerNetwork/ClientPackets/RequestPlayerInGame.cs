@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.Network;
 
@@ -17,9 +18,12 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _status = p.ReadByte();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            _thread.AccountInGame(_account, _status);
+            await Task.Run(() =>
+            {
+                _thread.AccountInGame(_account, _status);
+            });
         }
     }
 }

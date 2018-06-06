@@ -33,7 +33,7 @@ namespace L2dotNET.Models.Zones
             foreach (L2Object obj in ObjectsInside.Values)
             {
                 if (obj is L2Player)
-                    ((L2Player)obj).SendPacket(pk);
+                    ((L2Player)obj).SendPacketAsync(pk);
                 else
                 {
                    

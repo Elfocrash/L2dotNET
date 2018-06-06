@@ -100,7 +100,7 @@ namespace L2dotNET.Controllers
             SystemMessage sm = new SystemMessage(Night ? SystemMessage.SystemMessageId.TimeS1S2InTheNight : SystemMessage.SystemMessageId.TimeS1S2InTheDay);
             sm.AddString(dt.ToString("hh"));
             sm.AddString(dt.ToString("mm:ss"));
-            player.SendPacket(sm);
+            player.SendPacketAsync(sm);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace L2dotNET.Models.Items.Effects
 
         public override void UsePlayer(L2Player player, L2Item item)
         {
-            player.SendPacket(new Network.serverpackets.Calculator());
+            player.SendPacketAsync(new Network.serverpackets.Calculator());
         }
     }
 }

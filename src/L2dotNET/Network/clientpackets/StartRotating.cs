@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -17,11 +18,14 @@ namespace L2dotNET.Network.clientpackets
             _side = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
+            await Task.Run(() =>
+            {
+                L2Player player = _client.CurrentPlayer;
 
-            player.BroadcastPacket(new StartRotation(player.ObjId, _degree, _side, 0));
+                player.BroadcastPacketAsync(new StartRotation(player.ObjId, _degree, _side, 0));
+            });
         }
     }
 }

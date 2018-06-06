@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Controllers;
 using L2dotNET.Managers;
 using L2dotNET.Models.Items;
@@ -26,54 +27,57 @@ namespace L2dotNET.Network.clientpackets
             _playerService = serviceProvider.GetService<IPlayerService>();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
+            await Task.Run(() =>
+            {
+                L2Player player = _client.CurrentPlayer;
 
-            player.SetCharLastAccess();
-            _playerService.UpdatePlayer(player);
+                player.SetCharLastAccess();
+                _playerService.UpdatePlayer(player);
 
-            player.TotalRestore();
+                player.TotalRestore();
 
-            player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.WelcomeToLineage));
+                player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.WelcomeToLineage));
 
-            _announcementManager.OnEnter(player);
+                _announcementManager.OnEnter(player);
 
-            foreach (L2Item item in player.Inventory.Items.Where(item => item.IsEquipped != 0))
-                item.NotifyStats(player);
+                foreach (L2Item item in player.Inventory.Items.Where(item => item.IsEquipped != 0))
+                    item.NotifyStats(player);
             
-            // player.sendItemList(false);
-            player.SendPacket(new FriendList());
-            player.SendQuestList();
-            player.UpdateReuse();
+                // player.sendItemList(false);
+                player.SendPacketAsync(new FriendList());
+                player.SendQuestList();
+                player.UpdateReuse();
 
-            player.SendPacket(new ExStorageMaxCount(player));
-            // player.sendPacket(new ExBasicActionList());
-            //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
-            player.SendActionFailed();
+                player.SendPacketAsync(new ExStorageMaxCount(player));
+                // player.sendPacket(new ExBasicActionList());
+                //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
+                player.SendActionFailedAsync();
 
-            GameTime.Instance.EnterWorld(player);
+                GameTime.Instance.EnterWorld(player);
 
-            player.Timer();
+                player.Timer();
 
-            player.SpawnMe();
-            //L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
-            //player.SetRegion(worldRegion);
-            //player.getKnowns(500, 500, false);
+                player.SpawnMe();
+                //L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
+                //player.SetRegion(worldRegion);
+                //player.getKnowns(500, 500, false);
 
 
-            player.SetupKnows();
-            player.SendPacket(new UserInfo(player));
+                player.SetupKnows();
+                player.SendPacketAsync(new UserInfo(player));
 
-            foreach (Plugin plugin in PluginManager.Instance.Plugins)
-                plugin.OnLogin(player);
+                foreach (Plugin plugin in PluginManager.Instance.Plugins)
+                    plugin.OnLogin(player);
 
-            //player.sendPacket(new ShortCutInit(player));
-            player.StartAi();
-            player.CharStatus.StartHpMpRegeneration();
-            player.ShowHtm("servnews.htm",player);
-            player.BroadcastUserInfo();
-            L2World.Instance.AddPlayer(player);
+                //player.sendPacket(new ShortCutInit(player));
+                player.StartAi();
+                player.CharStatus.StartHpMpRegeneration();
+                player.ShowHtm("servnews.htm",player);
+                player.BroadcastUserInfo();
+                L2World.Instance.AddPlayer(player);
+            });
         }
 
         //private int[][] _tracert = new int[5][];

@@ -28,7 +28,7 @@ namespace L2dotNET.Models.Npcs
             //Stats = new CharacterStat(this);
         }
 
-        public override void OnAction(L2Player player)
+        public override void OnActionAsync(L2Player player)
         {
             if (player.Target != this)
             {
@@ -36,10 +36,10 @@ namespace L2dotNET.Models.Npcs
                 return;
             }
 
-            player.TryMoveTo(X, Y, Z);
-            player.SendPacket(new MoveToPawn(player, this, 150));
+            player.TryMoveToAsync(X, Y, Z);
+            player.SendPacketAsync(new MoveToPawn(player, this, 150));
 
-            player.DoAttack(this);
+            player.DoAttackAsync(this);
         }
 
         public override void OnForcedAttack(L2Player player)
@@ -50,11 +50,11 @@ namespace L2dotNET.Models.Npcs
                 return;
             }
 
-            player.TryMoveTo(X, Y, Z);
+            player.TryMoveToAsync(X, Y, Z);
             
-            player.SendPacket(new MoveToPawn(player, this, (int)player.GetPlanDistanceSq(X,Y)));
+            player.SendPacketAsync(new MoveToPawn(player, this, (int)player.GetPlanDistanceSq(X,Y)));
 
-            player.DoAttack(this);
+            player.DoAttackAsync(this);
         }
 
         public override void DoDie(L2Character killer)
@@ -82,7 +82,7 @@ namespace L2dotNET.Models.Npcs
 
             CharStatus.StopHpMpRegeneration();
 
-            BroadcastPacket(new Die(this));
+            BroadcastPacketAsync(new Die(this));
             _spawnTable.RegisterRespawn(spawn);
             if (Template.CorpseTime <= 0)
             {
@@ -97,7 +97,7 @@ namespace L2dotNET.Models.Npcs
         {
             CorpseTimer.Stop();
             CorpseTimer.Enabled = false;
-            BroadcastPacket(new DeleteObject(ObjId));
+            BroadcastPacketAsync(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }
     }

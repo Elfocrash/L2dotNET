@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Handlers;
 using L2dotNET.Models.Player;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,11 +19,13 @@ namespace L2dotNET.Network.clientpackets
             _alias = packet.ReadString().Trim();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            _adminCommandHandler.Request(player, _alias);
+            await Task.Run(() =>
+            {
+                var player = _client.CurrentPlayer;
+                _adminCommandHandler.Request(player, _alias);
+            });
         }
     }
 }

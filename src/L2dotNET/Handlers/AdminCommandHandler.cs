@@ -43,8 +43,8 @@ namespace L2dotNET.Handlers
 
             if (!_commands.ContainsKey(cmd))
             {
-                admin.SendMessage($"Command {cmd} not exists.");
-                admin.SendActionFailed();
+                admin.SendMessageAsync($"Command {cmd} not exists.");
+                admin.SendActionFailedAsync();
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace L2dotNET.Handlers
             }
             catch (Exception sss)
             {
-                admin.SendMessage("Probably syntax eror.");
+                admin.SendMessageAsync("Probably syntax eror.");
                 Log.Exception(sss);
             }
         }

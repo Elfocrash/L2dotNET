@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -22,63 +23,66 @@ namespace L2dotNET.Network.clientpackets
                 _num = 1;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if (player.TradeState < 3) // умник
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            if (player.EnchantState != 0)
-            {
-                player.SendActionFailed();
-                return;
-            }
+                if (player.TradeState < 3) // умник
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if (player.Requester == null)
-            {
-                player.SendMessage("Your trade requestor has logged off.");
-                player.SendActionFailed();
-                player.TradeState = 0;
-                return;
-            }
+                if (player.EnchantState != 0)
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if ((player.TradeState == 4) || (player.Requester.TradeState == 4)) // подтвердил уже
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotAdjustItemsAfterTradeConfirmed);
-                player.SendActionFailed();
-                return;
-            }
+                if (player.Requester == null)
+                {
+                    player.SendMessageAsync("Your trade requestor has logged off.");
+                    player.SendActionFailedAsync();
+                    player.TradeState = 0;
+                    return;
+                }
 
-            L2Item item = player.Inventory.GetItemByObjectId(_sId);
+                if ((player.TradeState == 4) || (player.Requester.TradeState == 4)) // подтвердил уже
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.CannotAdjustItemsAfterTradeConfirmed);
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if (item == null)
-            {
-                player.SendActionFailed();
-                return;
-            }
+                L2Item item = player.Inventory.GetItemByObjectId(_sId);
 
-            if (_num > item.Count)
-                _num = item.Count;
+                if (item == null)
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if (!item.Template.Stackable && (_num > 1))
-                _num = 1;
+                if (_num > item.Count)
+                    _num = item.Count;
 
-            int numInList = player.AddItemToTrade(item.ObjId, _num);
-            int numCurrent = item.Count - numInList;
-            player.SendPacket(new TradeOwnAdd(item, numInList));
-            player.Requester.SendPacket(new TradeOtherAdd(item, numInList));
+                if (!item.Template.Stackable && (_num > 1))
+                    _num = 1;
 
-            byte action = 2; //mod, 2-del
-            if (item.Template.Stackable)
-            {
-                action = (byte)(numCurrent < 1 ? 2 : 3);
-            }
+                int numInList = player.AddItemToTrade(item.ObjId, _num);
+                int numCurrent = item.Count - numInList;
+                player.SendPacketAsync(new TradeOwnAdd(item, numInList));
+                player.Requester.SendPacketAsync(new TradeOtherAdd(item, numInList));
 
-            player.SendPacket(new TradeUpdate(item, numCurrent, 0));
+                byte action = 2; //mod, 2-del
+                if (item.Template.Stackable)
+                {
+                    action = (byte)(numCurrent < 1 ? 2 : 3);
+                }
+
+                player.SendPacketAsync(new TradeUpdate(item, numCurrent, 0));
+            });
         }
     }
 }

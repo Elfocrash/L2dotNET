@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace L2dotNET.Network.clientpackets.ClanAPI
 {
@@ -17,8 +18,9 @@ namespace L2dotNET.Network.clientpackets.ClanAPI
                 _picture = packet.ReadByteArrayAlt(_size);
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
+            await Task.FromResult(1);
             //L2Player player = _client.CurrentPlayer;
 
             //if (player.ClanId == 0)

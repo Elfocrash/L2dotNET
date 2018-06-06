@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Network.serverpackets;
@@ -35,7 +36,7 @@ namespace L2dotNET.Network.clientpackets
             _loginKey2 = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
             if (_client.AccountName == null)
             {
@@ -43,10 +44,10 @@ namespace L2dotNET.Network.clientpackets
 
                 _client.AccountName = _loginName;
 
-                List<int> players = _accountService.GetPlayerIdsListByAccountName(_loginName);
+                var players = await _accountService.GetPlayerIdsListByAccountName(_loginName);
 
                 int slot = 0;
-                foreach (L2Player p in players.Select(id => _playerService.RestorePlayer(id, _client)))
+                foreach (var p in players.Select(id => _playerService.RestorePlayer(id, _client)))
                 {
                     //TODO: Make delete on startup server or timer listener
                     // See if the char must be deleted
@@ -61,7 +62,7 @@ namespace L2dotNET.Network.clientpackets
                     _client.AccountChars.Add(p);
                 }
 
-                _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
+                _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
                 _authThread.SetInGameAccount(_client.AccountName, true);
             }
             else

@@ -6,13 +6,12 @@ namespace L2dotNET.Utility
 {
     public class L2Security
     {
-        public static string HashPassword(string pass)
+        public static string HashPassword(string password)
         {
-            SHA1 sha1 = SHA1.Create();
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            byte[] combined = encoding.GetBytes(pass);
-            sha1.ComputeHash(combined);
-            return Convert.ToBase64String(sha1.Hash);
+            using (var crypt = new SHA256Managed())
+            {
+                return Convert.ToBase64String(crypt.ComputeHash(Encoding.UTF8.GetBytes(password)));
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Network.serverpackets;
 
@@ -17,12 +18,12 @@ namespace L2dotNET.Network.clientpackets
             _protocol = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
             if ((_protocol != 746) && (_protocol != 251))
             {
                 Log.Error($"Protocol fail {_protocol}");
-                _client.SendPacket(new KeyPacket(_client, 0));
+                await _client.SendPacketAsync(new KeyPacket(_client, 0));
                 _client.Termination();
                 return;
             }
@@ -30,14 +31,14 @@ namespace L2dotNET.Network.clientpackets
             if (_protocol == -1)
             {
                 Log.Info($"Ping received {_protocol}");
-                _client.SendPacket(new KeyPacket(_client, 0));
+                await _client.SendPacketAsync(new KeyPacket(_client, 0));
                 _client.Termination();
                 return;
             }
 
             Log.Info($"Accepted {_protocol} client");
 
-            _client.SendPacket(new KeyPacket(_client, 1));
+            await _client.SendPacketAsync(new KeyPacket(_client, 1));
             _client.Protocol = _protocol;
         }
     }

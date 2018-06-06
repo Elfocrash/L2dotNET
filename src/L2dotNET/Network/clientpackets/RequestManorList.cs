@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets
@@ -14,21 +15,24 @@ namespace L2dotNET.Network.clientpackets
             _client = client;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            List<string> manorsName = new List<string>
+            await Task.Run(() =>
             {
-                "gludio",
-                "dion",
-                "giran",
-                "oren",
-                "aden",
-                "innadril",
-                "goddard",
-                "rune",
-                "schuttgart"
-            };
-            _client.SendPacket(new ExSendManorList(manorsName));
+                List<string> manorsName = new List<string>
+                {
+                    "gludio",
+                    "dion",
+                    "giran",
+                    "oren",
+                    "aden",
+                    "innadril",
+                    "goddard",
+                    "rune",
+                    "schuttgart"
+                };
+                _client.SendPacketAsync(new ExSendManorList(manorsName));
+            });
         }
     }
 }

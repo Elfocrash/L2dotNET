@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Timers;
 using L2dotNET.Enums;
 using L2dotNET.Models.Items;
@@ -218,16 +219,16 @@ namespace L2dotNET.Models
                 {
                     player.UpdateAndBroadcastStatus(1);
                     if(statusUpdate != null)
-                        BroadcastPacket(statusUpdate);
+                        BroadcastPacketAsync(statusUpdate);
                 }
             }
             else if(statusUpdate != null)
-                BroadcastPacket(statusUpdate);
+                BroadcastPacketAsync(statusUpdate);
         }
 
-        public override void OnForcedAttack(L2Player player)
+        public override async Task OnForcedAttackAsync(L2Player player)
         {
-            player.SendActionFailed();
+            await player.SendActionFailedAsync();
         }
 
         public override void OnSpawn(bool notifyOthers = true)
@@ -283,11 +284,14 @@ namespace L2dotNET.Models
                 _zones[(int)zone.Id]--;
         }
 
-        public virtual void SendMessage(string p) { }
+        public virtual async Task SendMessageAsync(string p) { await Task.FromResult(1); }
 
-        public virtual void SendActionFailed() { }
+        public virtual async Task SendActionFailedAsync()
+        {
+            await Task.FromResult(1);
+        }
 
-        public virtual void SendSystemMessage(SystemMessage.SystemMessageId msgId) { }
+        public virtual async Task SendSystemMessage(SystemMessage.SystemMessageId msgId) { await Task.FromResult(1); }
 
         public virtual void OnPickUp(L2Item item) { }
         
@@ -307,13 +311,13 @@ namespace L2dotNET.Models
             if (!(this is L2Player))
                 return;
 
-            BroadcastPacket(new TeleportToLocation(ObjId, x, y, z, Heading));
+            BroadcastPacketAsync(new TeleportToLocation(ObjId, x, y, z, Heading));
         }
 
         private Timer _waterTimer;
         private DateTime _waterTimeDamage;
 
-        public void WaterTimer()
+        public async Task WaterTimer()
         {
             if (IsInWater())
             {
@@ -334,7 +338,7 @@ namespace L2dotNET.Models
                 _waterTimer.Enabled = true;
 
                 if (this is L2Player)
-                    SendPacket(new SetupGauge(ObjId, SetupGauge.SgColor.Cyan, breath * 1000));
+                    await SendPacketAsync(new SetupGauge(ObjId, SetupGauge.SgColor.Cyan, breath * 1000));
             }
             else
             {
@@ -344,7 +348,7 @@ namespace L2dotNET.Models
                 _waterTimer.Enabled = false;
 
                 if (this is L2Player)
-                    SendPacket(new SetupGauge(ObjId, SetupGauge.SgColor.Cyan, 1));
+                    await SendPacketAsync(new SetupGauge(ObjId, SetupGauge.SgColor.Cyan, 1));
             }
 
             //if (!isInWater())
@@ -471,12 +475,12 @@ namespace L2dotNET.Models
             
             BroadcastStatusUpdate();
 
-            BroadcastPacket(new Die(this));
+            BroadcastPacketAsync(new Die(this));
         }
 
         public virtual void DeleteByForce()
         {
-            BroadcastPacket(new DeleteObject(ObjId));
+            BroadcastPacketAsync(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }
 
@@ -490,7 +494,7 @@ namespace L2dotNET.Models
 
         public L2Character Target { get; set; }
 
-        public virtual void DoAttack(L2Character target)
+        public virtual async Task DoAttackAsync(L2Character target)
         {
             if (target == null)
             {
@@ -522,13 +526,13 @@ namespace L2dotNET.Models
 
             if (!Calcs.CheckIfInRange((int)dist, this, target, true))
             {
-                TryMoveTo(target.X, target.Y, target.Z);
+                TryMoveToAsync(target.X, target.Y, target.Z);
                 return;
             }
 
             if ((reqMp > 0) && (reqMp > CharStatus.CurrentMp))
             {
-                SendMessage($"no mp {CharStatus.CurrentMp} {reqMp}");
+                await SendMessageAsync($"no mp {CharStatus.CurrentMp} {reqMp}");
                 return;
             }
 
@@ -553,7 +557,7 @@ namespace L2dotNET.Models
             if (AttackToHit == null)
             {
                 AttackToHit = new Timer();
-                AttackToHit.Elapsed += AttackDoHit;
+                AttackToHit.Elapsed += AttackDoHitAsync;
             }
 
             double timeToHit = ranged ? timeAtk * 0.5 : timeAtk * 0.6;
@@ -581,7 +585,7 @@ namespace L2dotNET.Models
             AttackToEnd.Interval = timeAtk;
             AttackToEnd.Enabled = true;
 
-            BroadcastPacket(atk);
+            BroadcastPacketAsync(atk);
         }
 
         public class Hit
@@ -617,7 +621,7 @@ namespace L2dotNET.Models
             return h;
         }
 
-        public virtual void AttackDoHit(object sender, ElapsedEventArgs e)
+        public virtual async void AttackDoHitAsync(object sender, ElapsedEventArgs e)
         {
             if (Target != null)
             {
@@ -626,13 +630,13 @@ namespace L2dotNET.Models
                     Target.CharStatus.ReduceHp(Hit1.Damage, this);
 
                     if (Target is L2Player)
-                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
+                        await Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
                 }
                 else
                 {
                     if (Target is L2Player)
                     {
-                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
+                        await Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
                     }
                 }
             }
@@ -640,7 +644,7 @@ namespace L2dotNET.Models
             AttackToHit.Enabled = false;
         }
 
-        public virtual void AttackDoHit2Nd(object sender, ElapsedEventArgs e)
+        public virtual async void AttackDoHit2Nd(object sender, ElapsedEventArgs e)
         {
             if (Target != null)
             {
@@ -648,13 +652,13 @@ namespace L2dotNET.Models
                 {
                     Target.CharStatus.ReduceHp(Hit2.Damage, this);
                     if (Target is L2Player)
-                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
+                        await Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
                 }
                 else
                 {
                     if (Target is L2Player)
                     {
-                        Target.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
+                        await Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
                     }
                 }
             }
@@ -700,7 +704,7 @@ namespace L2dotNET.Models
             //    doAttack((L2Character)Target);
         }
 
-        public void BroadcastSoulshotUse(int itemId)
+        public async Task BroadcastSoulshotUseAsync(int itemId)
         {
             int skillId = 0;
             switch (itemId)
@@ -744,8 +748,8 @@ namespace L2dotNET.Models
             if (skillId <= 0)
                 return;
 
-            BroadcastPacket(new MagicSkillUse(this, this, skillId, 1, 0));
-            SendSystemMessage(SystemMessage.SystemMessageId.EnabledSoulshot);
+            BroadcastPacketAsync(new MagicSkillUse(this, this, skillId, 1, 0));
+            await SendSystemMessage(SystemMessage.SystemMessageId.EnabledSoulshot);
         }
 
         public virtual void AbortAttack()
@@ -782,12 +786,12 @@ namespace L2dotNET.Models
             return false;
         }
 
-        public void TryMoveTo(int x, int y, int z)
+        public async Task TryMoveToAsync(int x, int y, int z)
         {
             TargetToHit = null;
             if (CantMove())
             {
-                SendActionFailed();
+                await SendActionFailedAsync();
                 return;
             }
 
@@ -803,7 +807,7 @@ namespace L2dotNET.Models
             TargetToHit = target;
             if (CantMove())
             {
-                SendActionFailed();
+                SendActionFailedAsync();
                 return;
             }
 
@@ -844,7 +848,7 @@ namespace L2dotNET.Models
             foreach (var temp in CharStatus.StatusListener)
             {
                 if(temp.ObjId != ObjId)
-                    temp?.SendPacket(su);
+                    temp?.SendPacketAsync(su);
             }
                 
 
@@ -893,7 +897,7 @@ namespace L2dotNET.Models
 
             Heading = (int)((Math.Atan2(-spx, -spy) * 10430.378) + short.MaxValue);
 
-            BroadcastPacket(new CharMoveToLocation(this));
+            BroadcastPacketAsync(new CharMoveToLocation(this));
 
             _updatePositionTime.Enabled = true;
         }
@@ -929,15 +933,15 @@ namespace L2dotNET.Models
 
             Heading = (int)((Math.Atan2(-spx, -spy) * 10430.378) + short.MaxValue);
 
-            BroadcastPacket(new CharMoveToLocation(this));
+            BroadcastPacketAsync(new CharMoveToLocation(this));
 
             _updatePositionTime.Enabled = true;
         }
 
 
-        private void UpdatePositionTask(object sender, ElapsedEventArgs e)
+        private async void UpdatePositionTask(object sender, ElapsedEventArgs e)
         {
-            ValidateWaterZones();
+            await ValidateWaterZones();
 
             if ((DestX == X) && (DestY == Y) && (DestZ == Z))
             {
@@ -966,7 +970,7 @@ namespace L2dotNET.Models
                 _updatePositionTime.Enabled = false;
 
             if (update)
-                BroadcastPacket(new StopMove(this));
+                BroadcastPacketAsync(new StopMove(this));
 
             DestX = 0;
             DestY = 0;
@@ -980,7 +984,7 @@ namespace L2dotNET.Models
         public virtual void NotifyArrived()
         {
             if (TargetToHit != null)
-                this.DoAttack(TargetToHit);
+                this.DoAttackAsync(TargetToHit);
 
             if (_updatePositionTime.Enabled)
                 _updatePositionTime.Enabled = false;

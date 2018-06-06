@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -13,35 +14,38 @@ namespace L2dotNET.Network.clientpackets
             _client = client;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if (player == null)
-                return;
-
-            if (player.PBlockAct == 1)
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            if (player.isInCombat())
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CantRestartWhileFighting);
-                player.SendActionFailed();
-                return;
-            }
+                if (player == null)
+                    return;
 
-            player.Online = 0;
-            player.DeleteMe();
-            player.SendPacket(new RestartResponse());
+                if (player.PBlockAct == 1)
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1)
-            {
-                CharId = player.ObjId
-            };
-            player.SendPacket(csl);
+                if (player.isInCombat())
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.CantRestartWhileFighting);
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                player.Online = 0;
+                player.DeleteMe();
+                player.SendPacketAsync(new RestartResponse());
+
+                CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1)
+                {
+                    CharId = player.ObjId
+                };
+                player.SendPacketAsync(csl);
+            });
         }
     }
 }

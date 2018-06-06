@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Managers.bbs;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,9 +18,12 @@ namespace L2dotNET.Network.clientpackets
             _bbsManager = serviceProvider.GetService<BbsManager>();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            _bbsManager.RequestShow(_client.CurrentPlayer, _type);
+            await Task.Run(() =>
+            {
+                _bbsManager.RequestShow(_client.CurrentPlayer, _type);
+            });
         }
     }
 }

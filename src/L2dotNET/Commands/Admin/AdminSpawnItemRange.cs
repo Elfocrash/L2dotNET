@@ -24,7 +24,7 @@ namespace L2dotNET.Commands.Admin
 
             if ((idmax - idmin) > 200)
             {
-                admin.SendMessage("Too big id range.");
+                admin.SendMessageAsync("Too big id range.");
                 return;
             }
 
@@ -34,7 +34,7 @@ namespace L2dotNET.Commands.Admin
                 ItemTemplate item = _itemTable.GetItem(i);
 
                 if (item == null)
-                    admin.SendMessage($"Item with id {i} not exists.");
+                    admin.SendMessageAsync($"Item with id {i} not exists.");
                 else
                 {
                     admin.AddItem(i, 1);

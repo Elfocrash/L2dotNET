@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
@@ -19,16 +20,18 @@ namespace L2dotNET.Network.clientpackets
             _skillLv = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if (_ownerId != player.ObjId)
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
-            
+                L2Player player = _client.CurrentPlayer;
+
+                if (_ownerId != player.ObjId)
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
+            });
         }
     }
 }

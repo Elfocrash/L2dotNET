@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -21,25 +22,28 @@ namespace L2dotNET.Network.clientpackets.VehicleAPI
             _z = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if ((player.Boat == null) || (player.Boat.ObjId != _boatId))
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            if (player.Boat.OnRoute)
-            {
-                player.SendActionFailed();
-                return;
-            }
+                if ((player.Boat == null) || (player.Boat.ObjId != _boatId))
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            player.BroadcastPacket(new StopMoveInVehicle(player, _x, _y, _z));
-            player.BroadcastPacket(new GetOffVehicle(player, _x, _y, _z));
-            player.Boat = null;
+                if (player.Boat.OnRoute)
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                player.BroadcastPacketAsync(new StopMoveInVehicle(player, _x, _y, _z));
+                player.BroadcastPacketAsync(new GetOffVehicle(player, _x, _y, _z));
+                player.Boat = null;
+            });
         }
     }
 }

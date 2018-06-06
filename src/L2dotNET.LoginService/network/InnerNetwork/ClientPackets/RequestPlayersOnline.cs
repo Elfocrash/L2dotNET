@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.Network;
 
@@ -15,9 +16,12 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _cnt = p.ReadShort();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            _thread.Curp = _cnt;
+            await Task.Run(() =>
+            {
+                _thread.Curp = _cnt;
+            });
         }
     }
 }

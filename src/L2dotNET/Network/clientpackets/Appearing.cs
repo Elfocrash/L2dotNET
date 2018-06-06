@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -13,25 +14,28 @@ namespace L2dotNET.Network.clientpackets
             _client = client;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            int x = player.X;
-            int y = player.Y;
-
-            if (player.Obsx != -1)
+            await Task.Run(() =>
             {
-                x = player.Obsx;
-                y = player.Obsy;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            player.SendPacket(new UserInfo(player));
-            player.ValidateVisibleObjects(x, y, false);
-            player.UpdateVisibleStatus();
+                int x = player.X;
+                int y = player.Y;
+
+                if (player.Obsx != -1)
+                {
+                    x = player.Obsx;
+                    y = player.Obsy;
+                }
+
+                player.SendPacketAsync(new UserInfo(player));
+                player.ValidateVisibleObjects(x, y, false);
+                player.UpdateVisibleStatus();
             
 
-            player.SendActionFailed();
+                player.SendActionFailedAsync();
+            });
         }
     }
 }

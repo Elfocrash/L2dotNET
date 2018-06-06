@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Managers;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
@@ -18,27 +19,30 @@ namespace L2dotNET.Network.clientpackets.ItemEnchantAPI
             _aSTargetId = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if (player.EnchantState != ItemEnchantManager.StatePutItem)
+            await Task.Run(() =>
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            L2Item item = player.GetItemByObjId(_aSTargetId);
+                if (player.EnchantState != ItemEnchantManager.StatePutItem)
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if (item == null)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
-                player.SendActionFailed();
-                return;
-            }
+                L2Item item = player.GetItemByObjId(_aSTargetId);
 
-            ItemEnchantManager.GetInstance().TryPutItem(player, item);
+                if (item == null)
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                ItemEnchantManager.GetInstance().TryPutItem(player, item);
+            });
         }
     }
 }

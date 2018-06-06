@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using Dapper;
 using L2dotNET.DataContracts;
 using L2dotNET.Logging.Abstraction;
@@ -21,14 +22,14 @@ namespace L2dotNET.Repositories
             Db = new MySqlConnection("Server=127.0.0.1;Database=l2dotnet;Uid=l2dotnet;Pwd=l2dotnet;SslMode=none;");
         }
 
-        public AccountContract GetAccountByLogin(string login)
+        public async Task<AccountContract> GetAccountByLogin(string login)
         {
             try
             {
-                return Db.Query<AccountContract>("select Login,Password,LastActive,access_level as AccessLevel,LastServer from accounts where login=@login", new
+                return (await Db.QueryAsync<AccountContract>("select Login,Password,LastActive,access_level as AccessLevel,LastServer from accounts where login=@login", new
                 {
                     login = login
-                }).FirstOrDefault();
+                })).FirstOrDefault();
             }
             catch (MySqlException ex)
             {
@@ -37,11 +38,11 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public AccountContract CreateAccount(string login, string password)
+        public async Task<AccountContract> CreateAccount(string login, string password)
         {
             try
             {
-                Db.Execute("insert into accounts (Login,Password,LastActive,access_level,LastServer) Values (@login,@pass,@lastactive,@access,@lastServer)", new
+                await Db.ExecuteAsync("insert into accounts (Login,Password,LastActive,access_level,LastServer) Values (@login,@pass,@lastactive,@access,@lastServer)", new
                 {
                     login = login,
                     pass = password,
@@ -50,7 +51,7 @@ namespace L2dotNET.Repositories
                     lastServer = 1
                 }); //to be edited
 
-                AccountContract accContract = new AccountContract
+                var accContract = new AccountContract
                 {
                     Login = login,
                     Password = password,
@@ -68,15 +69,15 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public bool CheckIfAccountIsCorrect(string login, string password)
+        public async Task<bool> CheckIfAccountIsCorrect(string login, string password)
         {
             try
             {
-                return Db.Query("select distinct 1 from accounts where login=@login AND password=@pass", new
+                return (await Db.QueryAsync("select distinct 1 from accounts where login=@login AND password=@pass", new
                 {
                     login = login,
                     pass = password
-                }).Any();
+                })).Any();
             }
             catch (MySqlException ex)
             {
@@ -85,14 +86,14 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public List<int> GetPlayerIdsListByAccountName(string login)
+        public async Task<List<int>> GetPlayerIdsListByAccountName(string login)
         {
             try
             {
-                return Db.Query<int>("select obj_Id from characters where account_name=@acc", new
+                return (await Db.QueryAsync<int>("select obj_Id from characters where account_name=@acc", new
                 {
                     acc = login
-                }).ToList();
+                })).ToList();
             }
             catch (MySqlException ex)
             {

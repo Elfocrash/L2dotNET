@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -13,11 +14,14 @@ namespace L2dotNET.Network.clientpackets
             _client = client;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
+            await Task.Run(() =>
+            {
+                L2Player player = _client.CurrentPlayer;
 
-            player.SendPacket(new ObservationReturn(player.Obsx, player.Obsy, player.Obsz));
+                player.SendPacketAsync(new ObservationReturn(player.Obsx, player.Obsy, player.Obsz));
+            });
         }
     }
 }

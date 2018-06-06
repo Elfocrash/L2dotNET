@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
@@ -14,43 +15,45 @@ namespace L2dotNET.Network.clientpackets
             _standType = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            //TODO: Chair/Mount Logic
-
-            if (player.PBlockAct == 1)
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            //Do nothing if already attempting to sit or moving
-            if (!player.IsSittingInProgress() || !player.IsMoving())
-            {
-                switch (_standType)
+                //TODO: Chair/Mount Logic
+
+                if (player.PBlockAct == 1)
                 {
-                    case 0:
-                        if (!player.IsSitting())
-                            player.Sit();
-                        break;
-                    case 1:
-                        if (player.IsSitting())
-                            player.Stand();
-                        break;
-                    case 2:
-                        //TODO: Fake Death
-                        break;
-                    case 3:
-                        //TODO: Stop Fake Death
-                        break;
-                    default:
-                        //Invalid wait type should log?
-                        return;
+                    player.SendActionFailedAsync();
+                    return;
                 }
-            }
-            
+
+                //Do nothing if already attempting to sit or moving
+                if (!player.IsSittingInProgress() || !player.IsMoving())
+                {
+                    switch (_standType)
+                    {
+                        case 0:
+                            if (!player.IsSitting())
+                                player.Sit();
+                            break;
+                        case 1:
+                            if (player.IsSitting())
+                                player.Stand();
+                            break;
+                        case 2:
+                            //TODO: Fake Death
+                            break;
+                        case 3:
+                            //TODO: Stop Fake Death
+                            break;
+                        default:
+                            //Invalid wait type should log?
+                            return;
+                    }
+                }
+            });
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -24,7 +25,7 @@ namespace L2dotNET.Network.clientpackets
             _charSlot = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
             //if (!FloodProtectors.performAction(getClient(), Action.CHARACTER_SELECT))
             //{
@@ -32,9 +33,12 @@ namespace L2dotNET.Network.clientpackets
             //	return;
             //}
 
-            ValidateAndDelete();
+            await Task.Run(() =>
+            {
+                ValidateAndDelete();
 
-            _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
+                _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
+            });
         }
 
         private void ValidateAndDelete()
@@ -44,7 +48,7 @@ namespace L2dotNET.Network.clientpackets
             if (player == null)
             {
                 Log.Warn($"{_client.Address} tried to delete Character in slot {_charSlot} but no characters exits at that slot.");
-                _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
+                _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                 return;
             }
 
@@ -64,7 +68,7 @@ namespace L2dotNET.Network.clientpackets
             {
                 if (!_playerService.DeleteCharByObjId(player.ObjId))
                 {
-                    _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
+                    _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                     return;
                 }
 
@@ -75,12 +79,12 @@ namespace L2dotNET.Network.clientpackets
                 player.SetCharDeleteTime();
                 if (!_playerService.MarkToDeleteChar(player.ObjId, player.DeleteTime))
                 {
-                    _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
+                    _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                     return;
                 }
             }
 
-            _client.SendPacket(new CharDeleteOk());
+            _client.SendPacketAsync(new CharDeleteOk());
         }
     }
 }

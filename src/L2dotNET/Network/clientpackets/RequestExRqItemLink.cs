@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
@@ -15,9 +16,12 @@ namespace L2dotNET.Network.clientpackets
             _objectId = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
+            await Task.Run(() =>
+            {
+                L2Player player = _client.CurrentPlayer;
+            });
 
             //L2Item item = RqItemManager.GetInstance().GetItem(_objectId);
             //if (item == null)

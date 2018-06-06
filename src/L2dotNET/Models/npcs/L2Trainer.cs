@@ -1,4 +1,5 @@
-﻿using L2dotNET.Logging.Abstraction;
+﻿using System.Threading.Tasks;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Templates;
 using L2dotNET.Network.serverpackets;
 
@@ -23,16 +24,16 @@ namespace L2dotNET.Models.Npcs
             //Stats = new CharacterStat(this);
         }
 
-        public override void SendPacket(GameserverPacket pk)
+        public override async Task SendPacketAsync(GameserverPacket pk)
         {
             foreach (L2Player pl in L2World.Instance.GetPlayers())
             {
                 // TODO: Sends to all players on the server. It is not right
-                pl.Gameclient.SendPacket(pk);
+                await pl.Gameclient.SendPacketAsync(pk);
             }
         }
 
-        public override void OnAction(L2Player player)
+        public override async Task OnActionAsync(L2Player player)
         {
             if (player.Target != this)
             {
@@ -40,7 +41,7 @@ namespace L2dotNET.Models.Npcs
                 return;
             }
             player.MoveTo(X, Y, Z);
-            player.SendPacket(new MoveToPawn(player, this, 150));
+            await player.SendPacketAsync(new MoveToPawn(player, this, 150));
 
             player.ShowHtm($"trainer/{NpcId}.htm",this);
         }

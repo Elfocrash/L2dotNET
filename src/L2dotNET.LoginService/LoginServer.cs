@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Managers;
@@ -48,14 +49,19 @@ namespace L2dotNET.LoginService
             }
 
             Log.Info($"Auth server listening clients at {config.ServerConfig.Host}:{config.ServerConfig.LoginPort}");
-            new Thread(serverThreadPool.Start).Start();
-
+            Task.Factory.StartNew(serverThreadPool.Start);
             WaitForClients();
         }
 
-        private void WaitForClients()
+        private async void WaitForClients()
         {
-            _listener.BeginAcceptTcpClient(OnClientConnected, null);
+            while (true)
+            {
+                TcpClient client = await _listener.AcceptTcpClientAsync();
+#pragma warning disable 4014
+                Task.Factory.StartNew(() => AcceptClient(client));
+#pragma warning restore 4014
+            }
         }
 
         private void OnClientConnected(IAsyncResult asyncResult)
@@ -69,10 +75,11 @@ namespace L2dotNET.LoginService
             WaitForClients();
         }
 
-        /// <summary>Handle Client Request</summary>
-        private void AcceptClient(TcpClient clientSocket)
+        private void AcceptClient(TcpClient client)
         {
-            ServiceProvider.GetService<Managers.ClientManager>().AddClient(clientSocket);
+            Log.Info($"Received connection request from: {client.Client.RemoteEndPoint}");
+
+            ServiceProvider.GetService<Managers.ClientManager>().AddClient(client);
         }
 
         private void CheckRunningProcesses()

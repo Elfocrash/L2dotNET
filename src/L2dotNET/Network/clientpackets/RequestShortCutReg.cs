@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.General;
 
@@ -27,26 +28,29 @@ namespace L2dotNET.Network.clientpackets
             _page = slot / 12;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if ((_page > 10) || (_page < 0))
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            switch (_type)
-            {
-                case L2Shortcut.TypeItem:
-                case L2Shortcut.TypeSkill:
-                case L2Shortcut.TypeAction:
-                case L2Shortcut.TypeMacro:
-                case L2Shortcut.TypeRecipe:
-                    player.RegisterShortcut(_slot, _page, _type, _id, _lvl, _characterType);
-                    break;
-            }
+                if ((_page > 10) || (_page < 0))
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                switch (_type)
+                {
+                    case L2Shortcut.TypeItem:
+                    case L2Shortcut.TypeSkill:
+                    case L2Shortcut.TypeAction:
+                    case L2Shortcut.TypeMacro:
+                    case L2Shortcut.TypeRecipe:
+                        player.RegisterShortcut(_slot, _page, _type, _id, _lvl, _characterType);
+                        break;
+                }
+            });
         }
     }
 }

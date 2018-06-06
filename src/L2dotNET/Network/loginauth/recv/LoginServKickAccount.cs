@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace L2dotNET.Network.loginauth.recv
 {
@@ -13,8 +14,9 @@ namespace L2dotNET.Network.loginauth.recv
             _account = p.ReadString();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
+            await Task.FromResult(1);
             //L2World.Instance.KickAccount(account);
         }
     }

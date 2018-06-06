@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -17,6 +18,9 @@ namespace L2dotNET.Network.clientpackets
             _unk2 = packet.ReadInt();
         }
 
-        public override void RunImpl() { }
+        public override async Task RunImpl()
+        {
+            await Task.FromResult(1);
+        }
     }
 }

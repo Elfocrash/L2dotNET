@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Network;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
@@ -12,11 +13,10 @@ namespace L2dotNET.LoginService.GSCommunication
 {
     public class ServerThread
     {
-        private readonly ILog _log = LogProvider.GetCurrentClassLogger();
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private NetworkStream _nstream;
         private TcpClient _client;
-        private byte[] _buffer;
         private readonly PacketHandler _packetHandler;
         public string Wan { get; set; }
         public short Port { get; set; }
@@ -33,50 +33,41 @@ namespace L2dotNET.LoginService.GSCommunication
             _nstream = tcpClient.GetStream();
             _client = tcpClient;
 
-            new Thread(Read).Start();
+            Task.Factory.StartNew(Read);
         }
 
-        public void Read()
+        public async void Read()
         {
             try
             {
-                _buffer = new byte[2];
-                _nstream.BeginRead(_buffer, 0, 2, OnReceiveCallbackStatic, null);
+                while (true)
+                {
+                    var buffer = new byte[2];
+                    var bytesRead = await _nstream.ReadAsync(buffer, 0, 2);
+
+                    if (bytesRead != 2)
+                    {
+                        throw new Exception("Wrong packet");
+                    }
+
+                    var length = BitConverter.ToInt16(buffer, 0);
+
+                    buffer = new byte[length];
+                    bytesRead = await _nstream.ReadAsync(buffer, 0, length);
+
+                    if (bytesRead != length)
+                    {
+                        throw new Exception("Wrong packet");
+                    }
+
+                    _packetHandler.Handle(new Packet(1, buffer), this);
+                }
             }
             catch (Exception e)
             {
-                _log.Error($"ServerThread: {e.Message}");
+                Log.Error($"ServerThread: {e.Message}");
                 Termination();
             }
-        }
-
-        private void OnReceiveCallbackStatic(IAsyncResult result)
-        {
-            try
-            {
-                int rs = _nstream.EndRead(result);
-                if (rs <= 0)
-                    return;
-
-                short length = BitConverter.ToInt16(_buffer, 0);
-                _buffer = new byte[length];
-                _nstream.BeginRead(_buffer, 0, length, OnReceiveCallback, result.AsyncState);
-            }
-            catch (Exception e)
-            {
-                _log.Error($"ServerThread: {e.Message}");
-                Termination();
-            }
-        }
-
-        private void OnReceiveCallback(IAsyncResult result)
-        {
-            _nstream.EndRead(result);
-
-            byte[] buff = new byte[_buffer.Length];
-            _buffer.CopyTo(buff, 0);
-            _packetHandler.Handle(new Packet(1, buff), this);
-            Read();
         }
 
         private void Termination()
@@ -84,15 +75,19 @@ namespace L2dotNET.LoginService.GSCommunication
             LoginServer.ServiceProvider.GetService<ServerThreadPool>().Shutdown(Id);
         }
 
-        public void Send(Packet pk)
+        public async void Send(Packet pk)
         {
-            List<byte> blist = new List<byte>();
-            byte[] db = pk.GetBuffer();
-            short len = (short)db.Length;
-            blist.AddRange(BitConverter.GetBytes(len));
-            blist.AddRange(db);
-            _nstream.Write(blist.ToArray(), 0, blist.Count);
-            _nstream.Flush();
+            var buffer = pk.GetBuffer();
+
+            var lengthInBytes = BitConverter.GetBytes((short)buffer.Length);
+
+            var message = new byte[buffer.Length + 2];
+
+            lengthInBytes.CopyTo(message, 0);
+            buffer.CopyTo(message, 2);
+
+            await _nstream.WriteAsync(message, 0, message.Length);
+            await _nstream.FlushAsync();
         }
 
         public void Close(Packet pk)
@@ -110,7 +105,7 @@ namespace L2dotNET.LoginService.GSCommunication
             }
             catch (Exception e)
             {
-                _log.Error($"ServerThread: {e.Message}");
+                Log.Error($"ServerThread: {e.Message}");
             }
 
             _activeInGame.Clear();

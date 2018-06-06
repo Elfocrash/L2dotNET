@@ -16,11 +16,11 @@ namespace L2dotNET.Models.Items.Effects
             if (player.EnchantState != 0)
             {
                 player.SendSystemMessage(SystemMessage.SystemMessageId.AnotherEnchantmentIsInProgress);
-                player.SendActionFailed();
+                player.SendActionFailedAsync();
                 return;
             }
 
-            player.SendPacket(new ChooseInventoryItem(item.Template.ItemId));
+            player.SendPacketAsync(new ChooseInventoryItem(item.Template.ItemId));
             player.EnchantScroll = item;
             player.EnchantState = ItemEnchantManager.StatePutItem;
             player.SendSystemMessage(SystemMessage.SystemMessageId.SelectItemToEnchant);

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
@@ -14,24 +15,24 @@ namespace L2dotNET.Services
             _accountRepository = accountRepository;
         }
 
-        public AccountContract GetAccountByLogin(string login)
+        public async Task<AccountContract> GetAccountByLogin(string login)
         {
-            return _accountRepository.GetAccountByLogin(login);
+            return await _accountRepository.GetAccountByLogin(login);
         }
 
-        public AccountContract CreateAccount(string login, string password)
+        public async Task<AccountContract> CreateAccount(string login, string password)
         {
-            return _accountRepository.CreateAccount(login, password);
+            return await _accountRepository.CreateAccount(login, password);
         }
 
-        public bool CheckIfAccountIsCorrect(string login, string password)
+        public async Task<bool> CheckIfAccountIsCorrect(string login, string password)
         {
-            return _accountRepository.CheckIfAccountIsCorrect(login, password);
+            return await _accountRepository.CheckIfAccountIsCorrect(login, password);
         }
 
-        public List<int> GetPlayerIdsListByAccountName(string login)
+        public async Task<List<int>> GetPlayerIdsListByAccountName(string login)
         {
-            return _accountRepository.GetPlayerIdsListByAccountName(login);
+            return await _accountRepository.GetPlayerIdsListByAccountName(login);
         }
     }
 }

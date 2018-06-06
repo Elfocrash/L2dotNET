@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -18,87 +19,90 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
             _itemDistribution = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-            L2Player target = player.KnownObjects.Values.OfType<L2Player>().FirstOrDefault(obj => obj.Name.Equals(_name));
-
-            //if (name.Equals(player.Name))
-            //{
-            //    player.sendActionFailed();
-            //    return;
-            //}
-
-            //if (target == null)
-            //    target = L2World.Instance.GetPlayer(name);
-
-            if (target == null)
+            await Task.Run(() =>
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.FirstSelectUserToInviteToParty);
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
+                L2Player target = player.KnownObjects.Values.OfType<L2Player>().FirstOrDefault(obj => obj.Name.Equals(_name));
 
-            if (!target.Visible)
-            {
-                player.SendMessage("That player is invisible and cannot be invited.");
-                player.SendActionFailed();
-                return;
-            }
+                //if (name.Equals(player.Name))
+                //{
+                //    player.sendActionFailed();
+                //    return;
+                //}
 
-            if (target.Party != null)
-            {
-                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1IsAlreadyInParty);
-                sm.AddPlayerName(target.Name);
-                player.SendPacket(sm);
-                player.SendActionFailed();
-                return;
-            }
+                //if (target == null)
+                //    target = L2World.Instance.GetPlayer(name);
 
-            if (player.IsCursed || target.IsCursed)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.YouHaveInvitedTheWrongTarget);
-                player.SendActionFailed();
-                return;
-            }
+                if (target == null)
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.FirstSelectUserToInviteToParty);
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if (target.PartyState == 1)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.WaitingForAnotherReply);
-                player.SendActionFailed();
-                return;
-            }
+                if (!target.Visible)
+                {
+                    player.SendMessageAsync("That player is invisible and cannot be invited.");
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if ((target.TradeState == 1) || (target.TradeState == 2))
-            {
-                player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.S1IsBusyTryLater).AddPlayerName(target.Name));
-                player.SendActionFailed();
-                return;
-            }
+                if (target.Party != null)
+                {
+                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1IsAlreadyInParty);
+                    sm.AddPlayerName(target.Name);
+                    player.SendPacketAsync(sm);
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if ((player.Party != null) && (player.Party.Leader.ObjId != player.ObjId))
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLeaderCanInvite);
-                player.SendActionFailed();
-                return;
-            }
+                if (player.IsCursed || target.IsCursed)
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.YouHaveInvitedTheWrongTarget);
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if (player.IsInOlympiad)
-            {
-                player.Requester.SendSystemMessage(SystemMessage.SystemMessageId.UserCurrentlyParticipatingInOlympiadCannotSendPartyAndFriendInvitations);
-                player.SendActionFailed();
-                return;
-            }
+                if (target.PartyState == 1)
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.WaitingForAnotherReply);
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if ((player.Party != null) && (player.Party.Members.Count == 9))
-            {
-                player.Requester.SendSystemMessage(SystemMessage.SystemMessageId.PartyFull);
-                player.SendActionFailed();
-                return;
-            }
+                if ((target.TradeState == 1) || (target.TradeState == 2))
+                {
+                    player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.S1IsBusyTryLater).AddPlayerName(target.Name));
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            player.SendPacket(new SystemMessage(SystemMessage.SystemMessageId.YouInvitedS1ToParty).AddPlayerName(target.Name));
-            target.PendToJoinParty(player, _itemDistribution);
+                if ((player.Party != null) && (player.Party.Leader.ObjId != player.ObjId))
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLeaderCanInvite);
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                if (player.IsInOlympiad)
+                {
+                    player.Requester.SendSystemMessage(SystemMessage.SystemMessageId.UserCurrentlyParticipatingInOlympiadCannotSendPartyAndFriendInvitations);
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                if ((player.Party != null) && (player.Party.Members.Count == 9))
+                {
+                    player.Requester.SendSystemMessage(SystemMessage.SystemMessageId.PartyFull);
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.YouInvitedS1ToParty).AddPlayerName(target.Name));
+                target.PendToJoinParty(player, _itemDistribution);
+            });
         }
     }
 }

@@ -26,17 +26,17 @@ namespace L2dotNET.Commands.Admin
             StatusUpdate su = new StatusUpdate(target);
             su.Add(StatusUpdate.CurHp, (int)target.CharStatus.CurrentHp);
             su.Add(StatusUpdate.CurMp, (int)target.CharStatus.CurrentMp);
-            target.SendPacket(su);
+            target.SendPacketAsync(su);
 
             SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2HpRestoredByS1);
             sm.AddPlayerName(admin.Name);
             sm.AddNumber((int)hpval);
-            target.SendPacket(sm);
+            target.SendPacketAsync(sm);
 
             sm = new SystemMessage(SystemMessage.SystemMessageId.S2MpRestoredByS1);
             sm.AddPlayerName(admin.Name);
             sm.AddNumber((int)mpval);
-            target.SendPacket(sm);
+            target.SendPacketAsync(sm);
         }
 
         public AdminHeal(IServiceProvider serviceProvider) : base(serviceProvider)

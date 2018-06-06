@@ -27,17 +27,17 @@ namespace L2dotNET.Models.Npcs
         public override void NotifyAction(L2Player player)
         {
             double dis = Calcs.CalculateDistance(player, this, true);
-            TryMoveTo(X, Y, Z);
+            TryMoveToAsync(X, Y, Z);
         }
 
-        public override void OnAction(L2Player player)
+        public override void OnActionAsync(L2Player player)
         {
             if (player.Target != this)
                 player.SetTarget(this);
             else
             {
                 player.MoveTo(X, Y, Z);
-                player.SendPacket(new MoveToPawn(player, this, 150));
+                player.SendPacketAsync(new MoveToPawn(player, this, 150));
 
                 player.ShowHtm($"warehouse/{NpcId}.htm", this);
             }
@@ -153,16 +153,16 @@ namespace L2dotNET.Models.Npcs
             }
 
             if (newtarget)
-                player.SendPacket(new MyTargetSelected(ObjId, 0));
+                player.SendPacketAsync(new MyTargetSelected(ObjId, 0));
             else
-                player.SendActionFailed();
+                player.SendActionFailedAsync();
         }
 
         public void ShowPrivateWarehouse(L2Player player)
         {
             List<L2Item> items = player.GetAllItems().Where(item => item.IsEquipped != 1).ToList();
 
-            player.SendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WhPrivate));
+            player.SendPacketAsync(new WareHouseDepositList(player, items, WareHouseDepositList.WhPrivate));
             player.FolkNpc = this;
         }
 
@@ -184,7 +184,7 @@ namespace L2dotNET.Models.Npcs
 
             List<L2Item> items = player.GetAllItems().Where(item => item.IsEquipped != 1).ToList();
 
-            player.SendPacket(new WareHouseDepositList(player, items, WareHouseDepositList.WhClan));
+            player.SendPacketAsync(new WareHouseDepositList(player, items, WareHouseDepositList.WhClan));
             player.FolkNpc = this;
         }
 

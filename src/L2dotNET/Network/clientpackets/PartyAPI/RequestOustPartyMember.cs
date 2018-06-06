@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -15,24 +16,27 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
             _name = packet.ReadString();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if (player.Party == null)
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            if (player.Party.Leader.ObjId != player.ObjId)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.FailedToExpelThePartyMember);
-                player.SendActionFailed();
-                return;
-            }
+                if (player.Party == null)
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            player.Party.Expel(_name);
+                if (player.Party.Leader.ObjId != player.ObjId)
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.FailedToExpelThePartyMember);
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                player.Party.Expel(_name);
+            });
         }
     }
 }

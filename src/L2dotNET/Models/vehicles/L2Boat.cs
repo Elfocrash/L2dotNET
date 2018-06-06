@@ -15,7 +15,7 @@ namespace L2dotNET.Models.Vehicles
         public override void BroadcastUserInfo()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
-                obj.SendPacket(new VehicleInfo(this));
+                obj.SendPacketAsync(new VehicleInfo(this));
         }
     }
 }

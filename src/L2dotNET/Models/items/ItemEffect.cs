@@ -22,7 +22,7 @@ namespace L2dotNET.Models.Items
 
         public virtual void UsePlayer(L2Player player, L2Item item)
         {
-            player.SendMessage("You cannot use this item.");
+            player.SendMessageAsync("You cannot use this item.");
         }
         
     }

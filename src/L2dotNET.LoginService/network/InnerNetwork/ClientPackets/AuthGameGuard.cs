@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
 
@@ -15,25 +16,28 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             _sessionId = p.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            if (_client.State != LoginClientState.Connected)
+            await Task.Run(() =>
             {
-                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
-                _client.Close();
-                return;
-            }
+                if (_client.State != LoginClientState.Connected)
+                {
+                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                    _client.Close();
+                    return;
+                }
 
-            if (_sessionId == _client.SessionId)
-            {
-                _client.State = LoginClientState.AuthedGG;
-                _client.Send(GGAuth.ToPacket(_client));
-            }
-            else
-            {
-                _client.Send(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
-                _client.Close();
-            }
+                if (_sessionId == _client.SessionId)
+                {
+                    _client.State = LoginClientState.AuthedGG;
+                    _client.SendAsync(GGAuth.ToPacket(_client));
+                }
+                else
+                {
+                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                    _client.Close();
+                }
+            });
         }
     }
 }

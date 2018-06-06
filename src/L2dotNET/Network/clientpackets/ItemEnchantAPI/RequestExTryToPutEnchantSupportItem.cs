@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Managers;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
@@ -20,27 +21,31 @@ namespace L2dotNET.Network.clientpackets.ItemEnchantAPI
             _aSTargetId = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if ((player.EnchantState != ItemEnchantManager.StateEnchantStart) || (player.EnchantItem.ObjId != _aSTargetId))
+            await Task.Run(() =>
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.RegistrationOfEnhancementSpellbookHasFailed);
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            L2Item stone = player.GetItemByObjId(_aSSupportId);
+                if ((player.EnchantState != ItemEnchantManager.StateEnchantStart) ||
+                    (player.EnchantItem.ObjId != _aSTargetId))
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.RegistrationOfEnhancementSpellbookHasFailed);
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if (stone == null)
-            {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.RegistrationOfEnhancementSpellbookHasFailed);
-                player.SendActionFailed();
-                return;
-            }
+                L2Item stone = player.GetItemByObjId(_aSSupportId);
 
-            ItemEnchantManager.GetInstance().TryPutStone(player, stone);
+                if (stone == null)
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.RegistrationOfEnhancementSpellbookHasFailed);
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                ItemEnchantManager.GetInstance().TryPutStone(player, stone);
+            });
         }
     }
 }

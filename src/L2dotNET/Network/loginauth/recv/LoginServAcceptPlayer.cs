@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 
 namespace L2dotNET.Network.loginauth.recv
@@ -14,14 +15,17 @@ namespace L2dotNET.Network.loginauth.recv
             _account = p.ReadString();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            AccountContract ta = new AccountContract
+            await Task.Run(() =>
             {
-                Login = _account
-            };
+                AccountContract ta = new AccountContract
+                {
+                    Login = _account
+                };
 
-            _login.AwaitAccount(ta);
+                _login.AwaitAccount(ta);
+            });
         }
     }
 }

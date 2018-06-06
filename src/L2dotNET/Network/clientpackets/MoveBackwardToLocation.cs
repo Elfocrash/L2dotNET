@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -34,45 +35,48 @@ namespace L2dotNET.Network.clientpackets
             }
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            if (player.IsSittingInProgress() || player.IsSitting())
+            await Task.Run(() =>
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CantMoveSitting);
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            if (player.Boat != null)
-            {
-                player.SendMessage("cant leave boat.");
-                player.SendActionFailed();
-                return;
-            }
+                if (player.IsSittingInProgress() || player.IsSitting())
+                {
+                    player.SendSystemMessage(SystemMessage.SystemMessageId.CantMoveSitting);
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            if (player.CantMove())
-            {
-                player.SendActionFailed();
-                return;
-            }
+                if (player.Boat != null)
+                {
+                    player.SendMessageAsync("cant leave boat.");
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            // player.sendMessage($"can see: {GeoData.getInstance().canSeeCoord(player, _targetX, _targetY, _targetZ, true)}");
+                if (player.CantMove())
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
 
-            player.Obsx = -1;
+                // player.sendMessage($"can see: {GeoData.getInstance().canSeeCoord(player, _targetX, _targetY, _targetZ, true)}");
 
-            double dx = _targetX - _originX;
-            double dy = _targetY - _originY;
+                player.Obsx = -1;
 
-            if (((dx * dx) + (dy * dy)) > 98010000) // 9900*9900
-            {
-                player.SendActionFailed();
-                return;
-            }
+                double dx = _targetX - _originX;
+                double dy = _targetY - _originY;
 
-            //player.AiCharacter.StopAutoAttack();
-            player.MoveTo(_targetX, _targetY, _targetZ);
+                if (((dx * dx) + (dy * dy)) > 98010000) // 9900*9900
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                //player.AiCharacter.StopAutoAttack();
+                player.MoveTo(_targetX, _targetY, _targetZ);
+            });
         }
     }
 }

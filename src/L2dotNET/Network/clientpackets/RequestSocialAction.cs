@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -15,16 +16,19 @@ namespace L2dotNET.Network.clientpackets
             _actionId = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-            if (player == null)
-                return;
+            await Task.Run(() =>
+            {
+                L2Player player = _client.CurrentPlayer;
+                if (player == null)
+                    return;
 
-            if ((_actionId < 2) || (_actionId > 13))
-                return;
+                if ((_actionId < 2) || (_actionId > 13))
+                    return;
 
-            player.BroadcastPacket(new SocialAction(player.ObjId, _actionId));
+                player.BroadcastPacketAsync(new SocialAction(player.ObjId, _actionId));
+            });
         }
     }
 }

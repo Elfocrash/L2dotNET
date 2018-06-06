@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets
@@ -31,16 +32,19 @@ namespace L2dotNET.Network.clientpackets
                 _items[i] = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            for (int i = 0; i < _count; i++)
+            await Task.Run(() =>
             {
-                int itemId = _items[i];
+                L2Player player = _client.CurrentPlayer;
 
-                player.SendMessage($"wear item {itemId}");
-            }
+                for (int i = 0; i < _count; i++)
+                {
+                    int itemId = _items[i];
+
+                    player.SendMessageAsync($"wear item {itemId}");
+                }
+            });
         }
     }
 }

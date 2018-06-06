@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -24,14 +25,17 @@ namespace L2dotNET.Network.clientpackets
             _charSlot = packet.ReadInt();
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
             //if (!FloodProtectors.performAction(getClient(), Action.CHARACTER_SELECT))
             //    return;
 
-            ValidateAndRestore();
+            await Task.Run(() =>
+            {
+                ValidateAndRestore();
 
-            _client.SendPacket(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
+                _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
+            });
         }
 
         private void ValidateAndRestore()

@@ -12,7 +12,7 @@ namespace L2dotNET.Models.Npcs.Decor
 
         public override void NotifyAction(L2Player player)
         {
-            player.SendPacket(new NpcHtmlMessage(player, Htm, ObjId, 0));
+            player.SendPacketAsync(new NpcHtmlMessage(player, Htm, ObjId, 0));
         }
 
         public override string AsString()

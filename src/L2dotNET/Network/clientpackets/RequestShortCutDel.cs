@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.General;
 using L2dotNET.Network.serverpackets;
@@ -20,22 +21,25 @@ namespace L2dotNET.Network.clientpackets
             _page = id / 12;
         }
 
-        public override void RunImpl()
+        public override async Task RunImpl()
         {
-            L2Player player = _client.CurrentPlayer;
-
-            L2Shortcut scx = player.Shortcuts.FirstOrDefault(sc => (sc.Slot == _slot) && (sc.Page == _page));
-
-            if (scx == null)
+            await Task.Run(() =>
             {
-                player.SendActionFailed();
-                return;
-            }
+                L2Player player = _client.CurrentPlayer;
 
-            lock (player.Shortcuts)
-                player.Shortcuts.Remove(scx);
+                L2Shortcut scx = player.Shortcuts.FirstOrDefault(sc => (sc.Slot == _slot) && (sc.Page == _page));
 
-            player.SendPacket(new ShortCutInit(player));
+                if (scx == null)
+                {
+                    player.SendActionFailedAsync();
+                    return;
+                }
+
+                lock (player.Shortcuts)
+                    player.Shortcuts.Remove(scx);
+
+                player.SendPacketAsync(new ShortCutInit(player));
+            });
         }
     }
 }

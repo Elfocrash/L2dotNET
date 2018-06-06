@@ -128,16 +128,16 @@ namespace L2dotNET.Models.Items
             DropMe(x, y, z, null, null, 0);
         }
 
-        public override void OnAction(L2Player player)
+        public override void OnActionAsync(L2Player player)
         {
             double dis = Calcs.CalculateDistance(this, player, true);
-            player.SendMessage($"{AsString()} dis {(int)dis}");
+            player.SendMessageAsync($"{AsString()} dis {(int)dis}");
             if (dis < 80)
             {
                 foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
                 {
-                    o.SendPacket(new GetItem(player.ObjId, ObjId, X, Y, Z));
-                    o.SendPacket(new DeleteObject(ObjId));
+                    o.SendPacketAsync(new GetItem(player.ObjId, ObjId, X, Y, Z));
+                    o.SendPacketAsync(new DeleteObject(ObjId));
                 }
 
                 player.OnPickUp(this);
@@ -145,12 +145,12 @@ namespace L2dotNET.Models.Items
                 L2World.Instance.RemoveObject(this);
             }
             else
-                player.TryMoveTo(X, Y, Z);
+                player.TryMoveToAsync(X, Y, Z);
         }
 
         public override void OnForcedAttack(L2Player player)
         {
-            player.SendActionFailed();
+            player.SendActionFailedAsync();
         }
 
         public void UpdateDatabase()

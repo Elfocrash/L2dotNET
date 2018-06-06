@@ -24,9 +24,9 @@ namespace L2dotNET.Models.Npcs
             return base.AsString().Replace("L2Npc", "L2Warrior");
         }
 
-        public override void OnAction(L2Player player)
+        public override void OnActionAsync(L2Player player)
         {
-            player.SendMessage(AsString());
+            player.SendMessageAsync(AsString());
             //    TimeSpan ts = dtstart - DateTime.Now;
             //    player.sendMessage($"timems {(ts.TotalMilliseconds)}");
             bool newtarget = false;
@@ -46,12 +46,12 @@ namespace L2dotNET.Models.Npcs
 
             if (newtarget)
             {
-                player.SendPacket(new MyTargetSelected(ObjId, player.Level - Template.Level));
+                player.SendPacketAsync(new MyTargetSelected(ObjId, player.Level - Template.Level));
 
                 StatusUpdate su = new StatusUpdate(this);
                 su.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
                 su.Add(StatusUpdate.MaxHp, (int)MaxHp);
-                player.SendPacket(su);
+                player.SendPacketAsync(su);
             }
             
         }
@@ -94,7 +94,7 @@ namespace L2dotNET.Models.Npcs
         public override void BroadcastUserInfo()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
-                obj.SendPacket(new NpcInfo(this));
+                obj.SendPacketAsync(new NpcInfo(this));
         }
 
         public override void DoDie(L2Character killer)
@@ -127,7 +127,7 @@ namespace L2dotNET.Models.Npcs
             //text += $"matk: {CharacterStat.GetStat(EffectType.PMagicalDefense)}<br>";
 
             player.ShowHtmPlain(text, null);
-            player.SendActionFailed();
+            player.SendActionFailedAsync();
         }
 
         public override int Attackable => 1;
