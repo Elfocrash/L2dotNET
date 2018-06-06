@@ -7,41 +7,41 @@ namespace L2dotNET.Services
 {
     public class ServerService : IServerService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IServerRepository _serverRepository;
 
-        public ServerService(IUnitOfWork unitOfWork)
+        public ServerService(IServerRepository serverRepository)
         {
-            _unitOfWork = unitOfWork;
+            _serverRepository = serverRepository;
         }
 
         public List<ServerContract> GetServerList()
         {
-            return _unitOfWork.ServerRepository.GetServerList();
+            return _serverRepository.GetServerList();
         }
 
         public List<int> GetPlayersObjectIdList()
         {
-            return _unitOfWork.ServerRepository.GetPlayersObjectIdList();
+            return _serverRepository.GetPlayersObjectIdList();
         }
 
         public List<int> GetPlayersItemsObjectIdList()
         {
-            return _unitOfWork.ServerRepository.GetPlayersItemsObjectIdList();
+            return _serverRepository.GetPlayersItemsObjectIdList();
         }
 
         public List<AnnouncementContract> GetAnnouncementsList()
         {
-            return _unitOfWork.ServerRepository.GetAnnouncementsList();
+            return _serverRepository.GetAnnouncementsList();
         }
 
         public bool CheckDatabaseQuery()
         {
-            return _unitOfWork.ServerRepository.CheckDatabaseQuery();
+            return _serverRepository.CheckDatabaseQuery();
         }
 
         public List<SpawnlistContract> GetAllSpawns()
         {
-            return _unitOfWork.ServerRepository.GetAllSpawns();
+            return _serverRepository.GetAllSpawns();
         }
     }
 }

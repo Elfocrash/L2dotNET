@@ -8,62 +8,62 @@ namespace L2dotNET.Services
 {
     public class ItemService : IItemService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IItemRepository _itemRepository;
 
-        public ItemService(IUnitOfWork unitOfWork)
+        public ItemService(IItemRepository itemRepository)
         {
-            _unitOfWork = unitOfWork;
+            _itemRepository = itemRepository;
         }
 
         public List<ArmorContract> GetAllArmorsList()
         {
-            return _unitOfWork.ItemRepository.GetAllArmors();
+            return _itemRepository.GetAllArmors();
         }
 
         public Dictionary<int, ArmorContract> GetAllArmorModelsDict()
         {
-            List<ArmorContract> armorModels = _unitOfWork.ItemRepository.GetAllArmors();
+            List<ArmorContract> armorModels = _itemRepository.GetAllArmors();
 
             return armorModels.ToDictionary(model => model.ItemId);
         }
 
         public Dictionary<int, WeaponContract> GetAllWeaponModelsDict()
         {
-            List<WeaponContract> weaponModels = _unitOfWork.ItemRepository.GetAllWeapons();
+            List<WeaponContract> weaponModels = _itemRepository.GetAllWeapons();
 
             return weaponModels.ToDictionary(model => model.ItemId);
         }
 
         public Dictionary<int, EtcItemContract> GetAllEtcItemModelsDict()
         {
-            List<EtcItemContract> etcItemModels = _unitOfWork.ItemRepository.GetAllEtcItems();
+            List<EtcItemContract> etcItemModels = _itemRepository.GetAllEtcItems();
 
             return etcItemModels.ToDictionary(model => model.ItemId);
         }
 
         public void InsertNewItem(ItemContract item)
         {
-            _unitOfWork.ItemRepository.InsertNewItem(item);
+            _itemRepository.InsertNewItem(item);
         }
 
         public void UpdateItem(ItemContract item)
         {
-            _unitOfWork.ItemRepository.UpdateItem(item);
+            _itemRepository.UpdateItem(item);
         }
 
         public List<ItemContract> RestoreInventory(int objId, string location)
         {
-            return _unitOfWork.ItemRepository.RestoreInventory(objId, location);
+            return _itemRepository.RestoreInventory(objId, location);
         }
 
         public List<WeaponContract> GetAllWeapons()
         {
-            return _unitOfWork.ItemRepository.GetAllWeapons();
+            return _itemRepository.GetAllWeapons();
         }
 
         public List<EtcItemContract> GetAllEtcItems()
         {
-            return _unitOfWork.ItemRepository.GetAllEtcItems();
+            return _itemRepository.GetAllEtcItems();
         }
     }
 }

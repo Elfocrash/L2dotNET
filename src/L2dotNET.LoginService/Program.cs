@@ -48,7 +48,6 @@ namespace L2dotNET.LoginService
             serviceCollection.AddSingleton<ICheckRepository, CheckRepository>();
             serviceCollection.AddSingleton<IItemRepository, ItemRepository>();
             serviceCollection.AddSingleton<ISkillRepository, SkillRepository>();
-            serviceCollection.AddSingleton<IUnitOfWork, UnitOfWork>();
 
             serviceCollection.AddSingleton<GamePacketHandlerAuth>();
             serviceCollection.AddSingleton<AuthThread>();

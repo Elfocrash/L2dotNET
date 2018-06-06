@@ -7,31 +7,31 @@ namespace L2dotNET.Services
 {
     public class AccountService : IAccountService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IAccountRepository _accountRepository;
 
-        public AccountService(IUnitOfWork unitOfWork)
+        public AccountService(IAccountRepository accountRepository)
         {
-            _unitOfWork = unitOfWork;
+            _accountRepository = accountRepository;
         }
 
         public AccountContract GetAccountByLogin(string login)
         {
-            return _unitOfWork.AccountRepository.GetAccountByLogin(login);
+            return _accountRepository.GetAccountByLogin(login);
         }
 
         public AccountContract CreateAccount(string login, string password)
         {
-            return _unitOfWork.AccountRepository.CreateAccount(login, password);
+            return _accountRepository.CreateAccount(login, password);
         }
 
         public bool CheckIfAccountIsCorrect(string login, string password)
         {
-            return _unitOfWork.AccountRepository.CheckIfAccountIsCorrect(login, password);
+            return _accountRepository.CheckIfAccountIsCorrect(login, password);
         }
 
         public List<int> GetPlayerIdsListByAccountName(string login)
         {
-            return _unitOfWork.AccountRepository.GetPlayerIdsListByAccountName(login);
+            return _accountRepository.GetPlayerIdsListByAccountName(login);
         }
     }
 }

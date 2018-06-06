@@ -7,16 +7,16 @@ namespace L2dotNET.Services
 {
     public class SkillService : ISkillService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ISkillRepository _skillRepository;
 
-        public SkillService(IUnitOfWork unitOfWork)
+        public SkillService(ISkillRepository skillRepository)
         {
-            _unitOfWork = unitOfWork;
+            _skillRepository = skillRepository;
         }
 
-        public List<SkillResponseContract> GetPlayerSkills(int charID)
+        public List<SkillResponseContract> GetPlayerSkills(int charId)
         {
-            return _unitOfWork.SkillRepository.GetPlayerSkills(charID);
+            return _skillRepository.GetPlayerSkills(charId);
         }
     }
 }

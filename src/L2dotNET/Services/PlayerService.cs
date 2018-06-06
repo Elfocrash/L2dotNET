@@ -12,24 +12,26 @@ namespace L2dotNET.Services
 {
     public class PlayerService : IPlayerService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IPlayerRepository _playerRepository;
+        private readonly ISkillRepository _skillRepository;
         private readonly IItemService _itemService;
         private readonly Config.Config _config;
         private readonly IdFactory _idFactory;
         private readonly ItemTable _itemTable;
 
-        public PlayerService(IUnitOfWork unitOfWork, IItemService itemService, IdFactory idFactory, ItemTable itemTable, Config.Config config)
+        public PlayerService(IPlayerRepository playerRepository, IItemService itemService, ISkillRepository skillRepository, IdFactory idFactory, ItemTable itemTable, Config.Config config)
         {
-            _unitOfWork = unitOfWork;
             _itemService = itemService;
             _idFactory = idFactory;
             _itemTable = itemTable;
             _config = config;
+            _skillRepository = skillRepository;
+            _playerRepository = playerRepository;
         }
 
         public L2Player GetPlayerByLogin(int objId)
         {
-            var playerContract = _unitOfWork.PlayerRepository.GetPlayerByLogin(objId);
+            var playerContract = _playerRepository.GetPlayerByLogin(objId);
             //TODO Use automapper to map this
             var player = new L2Player(this, objId, CharTemplateTable.Instance.GetTemplate(playerContract.ClassId))
             {
@@ -83,7 +85,7 @@ namespace L2dotNET.Services
 
         public bool CheckIfPlayerNameExists(string name)
         {
-            return _unitOfWork.PlayerRepository.CheckIfPlayerNameExists(name);
+            return _playerRepository.CheckIfPlayerNameExists(name);
         }
 
         public void CreatePlayer(L2Player player)
@@ -135,7 +137,7 @@ namespace L2dotNET.Services
                 Hero = player.Hero,
                 LastRecomDate = player.LastRecomDate
             };
-            _unitOfWork.PlayerRepository.CreatePlayer(playerContract);
+            _playerRepository.CreatePlayer(playerContract);
         }
 
         public void UpdatePlayer(L2Player player)
@@ -180,34 +182,34 @@ namespace L2dotNET.Services
                 Nobless = player.Nobless,
                 LastAccess = player.LastAccess
             };
-            _unitOfWork.PlayerRepository.UpdatePlayer(playerContract);
+            _playerRepository.UpdatePlayer(playerContract);
         }
 
         public L2Player GetPlayerBySlotId(string accountName, int slotId)
         {
-            var playerContract = _unitOfWork.PlayerRepository.GetPlayerModelBySlotId(accountName, slotId);
+            var playerContract = _playerRepository.GetPlayerModelBySlotId(accountName, slotId);
             var player = RestorePlayer(playerContract.ObjectId, null);
             return player;
         }
 
         public bool MarkToDeleteChar(int objId, long deletetime)
         {
-            return _unitOfWork.PlayerRepository.MarkToDeleteChar(objId, deletetime);
+            return _playerRepository.MarkToDeleteChar(objId, deletetime);
         }
 
         public bool MarkToRestoreChar(int objId)
         {
-            return _unitOfWork.PlayerRepository.MarkToRestoreChar(objId);
+            return _playerRepository.MarkToRestoreChar(objId);
         }
 
         public bool DeleteCharByObjId(int objId)
         {
-            return _unitOfWork.PlayerRepository.DeleteCharByObjId(objId);
+            return _playerRepository.DeleteCharByObjId(objId);
         }
 
         public List<SkillResponseContract> GetPlayerSkills(int objId)
         {
-            return _unitOfWork.SkillRepository.GetPlayerSkills(objId);
+            return _skillRepository.GetPlayerSkills(objId);
         }
 
         public L2Player RestorePlayer(int id, GameClient client)
