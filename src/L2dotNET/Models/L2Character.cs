@@ -110,12 +110,15 @@ namespace L2dotNET.Models
             CharStatus = new CharStatus(this);
         }
 
-        public virtual void SetTarget(L2Character obj)
+        public virtual async Task SetTargetAsync(L2Character obj)
         {
-            if (obj != null && !obj.Visible)
-                obj = null;
+            await Task.Run(() =>
+            {
+                if (obj != null && !obj.Visible)
+                    obj = null;
 
-            Target = obj;
+                Target = obj;
+            });
         }
 
         public void AddStatFunc(Func func)
@@ -134,7 +137,7 @@ namespace L2dotNET.Models
             }
         }
 
-        public void AddStatFuncs(IEnumerable<Func> funcs)
+        public async Task AddStatFuncsAsync(IEnumerable<Func> funcs)
         {
             List<Stat> modifiedStats = new List<Stat>();
             foreach (var func in funcs)
@@ -142,7 +145,7 @@ namespace L2dotNET.Models
                 modifiedStats.Add(func.Stat);
                 AddStatFunc(func);
             }
-            BroadcastModifiedStats(modifiedStats);
+            await BroadcastModifiedStatsAsync(modifiedStats);
         }
 
         public void RemoveStatsByOwner(object owner)
@@ -177,7 +180,7 @@ namespace L2dotNET.Models
             return (100.0 - 11 + Level) / 100.0;
         }
 
-        public void BroadcastModifiedStats(List<Stat> stats)
+        public async Task BroadcastModifiedStatsAsync(List<Stat> stats)
         {
             if (stats == null || !stats.Any())
                 return;
@@ -219,11 +222,11 @@ namespace L2dotNET.Models
                 {
                     player.UpdateAndBroadcastStatus(1);
                     if(statusUpdate != null)
-                        BroadcastPacketAsync(statusUpdate);
+                        await BroadcastPacketAsync(statusUpdate);
                 }
             }
             else if(statusUpdate != null)
-                BroadcastPacketAsync(statusUpdate);
+                await BroadcastPacketAsync(statusUpdate);
         }
 
         public override async Task OnForcedAttackAsync(L2Player player)
@@ -231,9 +234,9 @@ namespace L2dotNET.Models
             await player.SendActionFailedAsync();
         }
 
-        public override void OnSpawn(bool notifyOthers = true)
+        public override async Task OnSpawnAsync(bool notifyOthers = true)
         {
-            base.OnSpawn(notifyOthers);
+            await base.OnSpawnAsync(notifyOthers);
             RevalidateZone(true);
         }
 
@@ -300,9 +303,9 @@ namespace L2dotNET.Models
                    ClientPosZ,
                    ClientHeading;
 
-        public virtual void Teleport(int x, int y, int z)
+        public virtual async Task TeleportAsync(int x, int y, int z)
         {
-            SetTarget(null);
+            SetTargetAsync(null);
             //clearKnowns(true);
             X = x;
             Y = y;
@@ -311,7 +314,7 @@ namespace L2dotNET.Models
             if (!(this is L2Player))
                 return;
 
-            BroadcastPacketAsync(new TeleportToLocation(ObjId, x, y, z, Heading));
+            await BroadcastPacketAsync(new TeleportToLocation(ObjId, x, y, z, Heading));
         }
 
         private Timer _waterTimer;
@@ -412,7 +415,7 @@ namespace L2dotNET.Models
             //{
             //    Dead = true;
             //    CurHp = 0;
-            //    DoDie(null, true);
+            //    DoDieAsync(null, true);
             //    return;
             //}
 
@@ -448,12 +451,12 @@ namespace L2dotNET.Models
 
         //    if (CharStatus.CurrentHp <= 0)
         //    {
-        //        DoDie(attacker);
+        //        DoDieAsync(attacker);
         //        return;
         //    }
         //}
 
-        public virtual void DoDie(L2Character killer)
+        public virtual async Task DoDieAsync(L2Character killer)
         {
             lock (this)
             {
@@ -466,21 +469,21 @@ namespace L2dotNET.Models
             }
 
             Target = null;
-            NotifyStopMove(true,true);
+            await NotifyStopMoveAsync(true,true);
 
             if (IsAttacking())
                 AbortAttack();
 
             CharStatus.StopHpMpRegeneration();
-            
-            BroadcastStatusUpdate();
 
-            BroadcastPacketAsync(new Die(this));
+            await BroadcastStatusUpdateAsync();
+
+            await BroadcastPacketAsync(new Die(this));
         }
 
-        public virtual void DeleteByForce()
+        public virtual async Task DeleteByForceAsync()
         {
-            BroadcastPacketAsync(new DeleteObject(ObjId));
+            await BroadcastPacketAsync(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }
 
@@ -526,7 +529,7 @@ namespace L2dotNET.Models
 
             if (!Calcs.CheckIfInRange((int)dist, this, target, true))
             {
-                TryMoveToAsync(target.X, target.Y, target.Z);
+                await TryMoveToAsync(target.X, target.Y, target.Z);
                 return;
             }
 
@@ -585,7 +588,7 @@ namespace L2dotNET.Models
             AttackToEnd.Interval = timeAtk;
             AttackToEnd.Enabled = true;
 
-            BroadcastPacketAsync(atk);
+            await BroadcastPacketAsync(atk);
         }
 
         public class Hit
@@ -748,7 +751,7 @@ namespace L2dotNET.Models
             if (skillId <= 0)
                 return;
 
-            BroadcastPacketAsync(new MagicSkillUse(this, this, skillId, 1, 0));
+            await BroadcastPacketAsync(new MagicSkillUse(this, this, skillId, 1, 0));
             await SendSystemMessage(SystemMessage.SystemMessageId.EnabledSoulshot);
         }
 
@@ -799,15 +802,15 @@ namespace L2dotNET.Models
             DestY = y;
             DestZ = z;
 
-            MoveTo(x, y, z);
+            await MoveToAsync(x, y, z);
         }
 
-        public void TryMoveToAndHit(int x, int y, int z,L2Character target)
+        public async Task TryMoveToAndHitAsync(int x, int y, int z,L2Character target)
         {
             TargetToHit = target;
             if (CantMove())
             {
-                SendActionFailedAsync();
+                await SendActionFailedAsync();
                 return;
             }
 
@@ -815,7 +818,7 @@ namespace L2dotNET.Models
             DestY = y;
             DestZ = z;
 
-            MoveToAndHit(x, y, z);
+            await MoveToAndHitAsync(x, y, z);
         }
 
         public void Status_FreezeMe(bool status, bool update)
@@ -833,7 +836,7 @@ namespace L2dotNET.Models
 
         public virtual void OnNewTargetSelection(L2Object target) { }
         
-        public virtual void BroadcastStatusUpdate()
+        public virtual async Task BroadcastStatusUpdateAsync()
         {
             if (!CharStatus.StatusListener.Any())
                 return;
@@ -848,10 +851,8 @@ namespace L2dotNET.Models
             foreach (var temp in CharStatus.StatusListener)
             {
                 if(temp.ObjId != ObjId)
-                    temp?.SendPacketAsync(su);
+                    await temp.SendPacketAsync(su);
             }
-                
-
         }
         
         public virtual L2Character[] GetPartyCharacters()
@@ -864,7 +865,7 @@ namespace L2dotNET.Models
             return (_updatePositionTime != null) && _updatePositionTime.Enabled;
         }
 
-        public void MoveTo(int x, int y, int z)
+        public async Task MoveToAsync(int x, int y, int z)
         {
             TargetToHit = null;
 
@@ -872,7 +873,7 @@ namespace L2dotNET.Models
                 AbortAttack();
 
             if (_updatePositionTime.Enabled) // новый маршрут, но старый не закончен
-                NotifyStopMove(false);
+                await NotifyStopMoveAsync(false);
 
 
             DestX = x;
@@ -897,19 +898,19 @@ namespace L2dotNET.Models
 
             Heading = (int)((Math.Atan2(-spx, -spy) * 10430.378) + short.MaxValue);
 
-            BroadcastPacketAsync(new CharMoveToLocation(this));
+            await BroadcastPacketAsync(new CharMoveToLocation(this));
 
             _updatePositionTime.Enabled = true;
         }
 
 
-        public void MoveToAndHit(int x, int y, int z)
+        public async Task MoveToAndHitAsync(int x, int y, int z)
         {
             if (IsAttacking())
                 AbortAttack();
 
             if (_updatePositionTime.Enabled) // новый маршрут, но старый не закончен
-                NotifyStopMove(false);            
+                await NotifyStopMoveAsync(false);            
 
             DestX = x;
             DestY = y;
@@ -933,7 +934,7 @@ namespace L2dotNET.Models
 
             Heading = (int)((Math.Atan2(-spx, -spy) * 10430.378) + short.MaxValue);
 
-            BroadcastPacketAsync(new CharMoveToLocation(this));
+            await BroadcastPacketAsync(new CharMoveToLocation(this));
 
             _updatePositionTime.Enabled = true;
         }
@@ -945,7 +946,7 @@ namespace L2dotNET.Models
 
             if ((DestX == X) && (DestY == Y) && (DestZ == Z))
             {
-                NotifyArrived();
+                await NotifyArrivedAsync();
                 return;
             }
 
@@ -960,17 +961,17 @@ namespace L2dotNET.Models
                 X = DestX;
                 Y = DestY;
                 Z = DestZ;
-                NotifyArrived();
+                await NotifyArrivedAsync();
             }
         }
 
-        public virtual void NotifyStopMove(bool broadcast, bool update = false)
+        public virtual async Task NotifyStopMoveAsync(bool broadcast, bool update = false)
         {
             if (_updatePositionTime.Enabled)
                 _updatePositionTime.Enabled = false;
 
             if (update)
-                BroadcastPacketAsync(new StopMove(this));
+                await BroadcastPacketAsync(new StopMove(this));
 
             DestX = 0;
             DestY = 0;
@@ -981,10 +982,10 @@ namespace L2dotNET.Models
             _ticksToMoveCompleted = 0;
         }
 
-        public virtual void NotifyArrived()
+        public virtual async Task NotifyArrivedAsync()
         {
             if (TargetToHit != null)
-                this.DoAttackAsync(TargetToHit);
+                await DoAttackAsync(TargetToHit);
 
             if (_updatePositionTime.Enabled)
                 _updatePositionTime.Enabled = false;

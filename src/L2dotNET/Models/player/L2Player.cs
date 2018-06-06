@@ -230,7 +230,7 @@ namespace L2dotNET.Models.Player
                 SendPacketAsync(new UserInfo(this));
             else if (broadcastType == 2)
             {
-                BroadcastUserInfo();
+                BroadcastUserInfoAsync();
             }
         }
 
@@ -463,30 +463,30 @@ namespace L2dotNET.Models.Player
             }
         }
 
-        public override void BroadcastStatusUpdate()
+        public override async Task BroadcastStatusUpdateAsync()
         {
             StatusUpdate statusUpdate = new StatusUpdate(this);
             statusUpdate.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
             statusUpdate.Add(StatusUpdate.CurMp, (int)CharStatus.CurrentMp);
             statusUpdate.Add(StatusUpdate.CurCp, (int)CurCp);
             statusUpdate.Add(StatusUpdate.MaxCp, MaxCp);
-            SendPacketAsync(statusUpdate);
+            await SendPacketAsync(statusUpdate);
         }
 
-        public void BroadcastCharInfo()
+        public async Task BroadcastCharInfoAsync()
         {
             foreach (L2Player player in L2World.Instance.GetPlayers().Where(player => player != this))
-                player.SendPacketAsync(new CharInfo(this));
+                await player.SendPacketAsync(new CharInfo(this));
         }
 
-        public override void BroadcastUserInfo()
+        public override async Task BroadcastUserInfoAsync()
         {
-            SendPacketAsync(new UserInfo(this));
+            await SendPacketAsync(new UserInfo(this));
 
             //if (getPolyType() == PolyType.NPC)
             //    Broadcast.toKnownPlayers(this, new AbstractNpcInfo.PcMorphInfo(this, getPolyTemplate()));
             //else
-            BroadcastCharInfo();
+            await BroadcastCharInfoAsync();
         }
 
         public override void AddKnownObject(L2Object obj)
@@ -501,7 +501,7 @@ namespace L2dotNET.Models.Player
             //else
             //{
             // send object info to player
-            obj.SendInfo(this);
+            obj.SendInfoAsync(this);
 
             //         if (obj is L2Character)
             //{
@@ -539,7 +539,7 @@ namespace L2dotNET.Models.Player
             return Inventory.Items.Where(item => item.Template.ItemId == itemId).Any(item => item.Count >= count);
         }
 
-        public override void SendInfo(L2Player player)
+        public override async Task SendInfoAsync(L2Player player)
         {
             //if (this.Boa isInBoat())
             //    getPosition().set(getBoat().getPosition());
@@ -548,7 +548,7 @@ namespace L2dotNET.Models.Player
             //    activeChar.sendPacket(new AbstractNpcInfo.PcMorphInfo(this, getPolyTemplate()));
             //else
             //{
-            player.SendPacketAsync(new CharInfo(this));
+            await player.SendPacketAsync(new CharInfo(this));
 
             if (_isSitting)
             {
@@ -592,7 +592,7 @@ namespace L2dotNET.Models.Player
             //}
         }
 
-        public override void SetTarget(L2Character newTarget)
+        public override async Task SetTargetAsync(L2Character newTarget)
         {
             if (newTarget != null)
             {
@@ -612,43 +612,43 @@ namespace L2dotNET.Models.Player
 
             if (newTarget is L2StaticObject)
             {
-                SendPacketAsync(new MyTargetSelected(newTarget.ObjId, 0));
-                SendPacketAsync(new StaticObject((L2StaticObject) newTarget));
+                await SendPacketAsync(new MyTargetSelected(newTarget.ObjId, 0));
+                await SendPacketAsync(new StaticObject((L2StaticObject) newTarget));
             }
             else
             {
                 if (newTarget != null)
                 {
                     if (newTarget.ObjId != ObjId)
-                        SendPacketAsync(new ValidateLocation(newTarget));
+                        await SendPacketAsync(new ValidateLocation(newTarget));
 
-                    SendPacketAsync(new MyTargetSelected(newTarget.ObjId, Level - newTarget.Level));
+                    await SendPacketAsync(new MyTargetSelected(newTarget.ObjId, Level - newTarget.Level));
 
                     newTarget.CharStatus.AddStatusListener(this);
 
                     StatusUpdate su = new StatusUpdate(newTarget);
                     su.Add(StatusUpdate.MaxHp, newTarget.MaxHp);
                     su.Add(StatusUpdate.CurHp, (int)newTarget.CharStatus.CurrentHp);
-                    SendPacketAsync(su);
+                    await SendPacketAsync(su);
 
-                    BroadcastPacketAsync(su, false);
+                    await BroadcastPacketAsync(su, false);
                 }
                 
             }
 
             if (newTarget == null && Target != null)
             {
-                BroadcastPacketAsync(new TargetUnselected(this));
+                await BroadcastPacketAsync(new TargetUnselected(this));
             }
 
 
-            base.SetTarget(newTarget);
+            base.SetTargetAsync(newTarget);
         }
 
         public override async Task OnActionAsync(L2Player player)
         {
             if (player.Target != this)
-                player.SetTarget(this);
+                await player.SetTargetAsync(this);
             else
             {
                 await player.SendActionFailedAsync();
@@ -663,16 +663,16 @@ namespace L2dotNET.Models.Player
         public short ClanType;
         public int Fame;
 
-        public void ShowHtmAdmin(string val, bool plain)
+        public async Task ShowHtmAdminAsync(string val, bool plain)
         {
-            SendPacketAsync(new NpcHtmlMessage(this, val, this.ObjId));
+            await SendPacketAsync(new NpcHtmlMessage(this, val, this.ObjId));
 
             ViewingAdminPage = 1;
         }
 
         public void ShowHtmBbs(string val)
         {
-            ShowBoard.SeparateAndSend(val, this);
+            ShowBoard.SeparateAndSendAsync(val, this);
         }
 
         public void SendItemList(bool open = false)
@@ -762,7 +762,7 @@ namespace L2dotNET.Models.Player
 
         public override void UpdateAbnormalExEffect()
         {
-            BroadcastUserInfo();
+            BroadcastUserInfoAsync();
         }
 
         public string PenaltyClanCreate = "0";
@@ -880,7 +880,7 @@ namespace L2dotNET.Models.Player
         {
             double dis = Calcs.CalculateDistance(this, target, true);
             if (dis < 151)
-                target.NotifyAction(this);
+                target.NotifyActionAsync(this);
             else
                 TryMoveToAsync(target.X, target.Y, target.Z);
 
@@ -994,7 +994,7 @@ namespace L2dotNET.Models.Player
         private Timer _sitTime;
         private bool _isSitting;
 
-        public void Sit()
+        public async Task SitAsync()
         {
             if (_sitTime == null)
             {
@@ -1006,13 +1006,13 @@ namespace L2dotNET.Models.Player
             }
 
             _sitTime.Enabled = true;
-            BroadcastPacketAsync(new ChangeWaitType(this, ChangeWaitType.Sit));
+            await BroadcastPacketAsync(new ChangeWaitType(this, ChangeWaitType.Sit));
         }
 
-        public void Stand()
+        public async Task StandAsync()
         {
             _sitTime.Enabled = true;
-            BroadcastPacketAsync(new ChangeWaitType(this, ChangeWaitType.Stand));
+            await BroadcastPacketAsync(new ChangeWaitType(this, ChangeWaitType.Stand));
             //TODO stop relax effect
         }
 
@@ -1108,7 +1108,7 @@ namespace L2dotNET.Models.Player
             if (!Calcs.CheckIfInRange((int)dist, this, target, true))
             {
                 await SendMessageAsync($"too far {dist}");
-                TryMoveToAndHit(target.X, target.Y, target.Z,target);
+                TryMoveToAndHitAsync(target.X, target.Y, target.Z,target);
                 return;
             }
 
@@ -1253,7 +1253,7 @@ namespace L2dotNET.Models.Player
             //        try
             //        {
             //            L2Npc target = (L2Npc)this.Target;
-            //            target.DoDie(this);
+            //            target.DoDieAsync(this);
             //        }
             //        catch (Exception ex)
             //        {
@@ -1327,7 +1327,7 @@ namespace L2dotNET.Models.Player
         {
             BroadcastPacketAsync(new Ride(this, true, npc.NpcId));
             MountedTemplate = npc;
-            BroadcastUserInfo();
+            BroadcastUserInfoAsync();
         }
 
         public void MountPet()
@@ -1339,7 +1339,7 @@ namespace L2dotNET.Models.Player
         {
             BroadcastPacketAsync(new Ride(this, false));
             MountedTemplate = null;
-            BroadcastUserInfo();
+            BroadcastUserInfoAsync();
         }
 
         public SortedList<int, int> CurrentTrade;
@@ -1433,7 +1433,7 @@ namespace L2dotNET.Models.Player
             if (!lvlChanged)
                 SendPacketAsync(new UserInfo(this));
             else
-                BroadcastUserInfo();
+                BroadcastUserInfoAsync();
         }
 
         public void BroadcastSkillUse(int skillId)
@@ -1446,16 +1446,10 @@ namespace L2dotNET.Models.Player
         {
             return null;
         }
-
-        public void UpdateAgathionEnergy(int count)
-        {
-            SendMessageAsync($"@UpdateAgathionEnergy {count}");
-        }
-
         
-        public override void DoDie(L2Character killer)
+        public override async Task DoDieAsync(L2Character killer)
         {
-            base.DoDie(killer);
+            await base.DoDieAsync(killer);
         }
 
         public bool CharDeleteTimeExpired() => (DeleteTime > 0) && (DeleteTime <= Utilz.CurrentTimeMillis());
@@ -1476,21 +1470,21 @@ namespace L2dotNET.Models.Player
             return $"{Name} - {base.ToString()}";
         }
 
-        public void SetupKnows()
+        public async Task SetupKnowsAsync()
         {
             foreach (var obj in L2World.Instance.GetObjects().Where(x=>x.Region == Region))
             {
-                obj.BroadcastUserInfoToObject(this);
+                await obj.BroadcastUserInfoToObjectAsync(this);
             }
         }
-        public void SetupKnows(L2WorldRegion region)
+        public async Task SetupKnowsAsync(L2WorldRegion region)
         {
             var regions = region.GetSurroundingRegions();
             foreach (var reg in regions)
             {
                 foreach (var obj in L2World.Instance.GetObjects().Where(x => x.Region == reg))
                 {
-                    obj.BroadcastUserInfoToObject(this);
+                    await obj.BroadcastUserInfoToObjectAsync(this);
                 }
             }
         }

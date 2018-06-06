@@ -37,10 +37,10 @@ namespace L2dotNET.Models.Npcs
         {
             if (player.Target != this)
             {
-                player.SetTarget(this);
+                player.SetTargetAsync(this);
                 return;
             }
-            player.MoveTo(X, Y, Z);
+            player.MoveToAsync(X, Y, Z);
             await player.SendPacketAsync(new MoveToPawn(player, this, 150));
 
             player.ShowHtm($"trainer/{NpcId}.htm",this);

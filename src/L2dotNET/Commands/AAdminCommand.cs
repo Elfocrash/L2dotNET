@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Commands
@@ -12,6 +13,6 @@ namespace L2dotNET.Commands
             ServiceProvider = serviceProvider;
         }
 
-        protected internal abstract void Use(L2Player admin, string command);
+        protected internal abstract Task UseAsync(L2Player admin, string command);
     }
 }

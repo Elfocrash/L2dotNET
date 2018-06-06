@@ -45,7 +45,7 @@ namespace L2dotNET.Models.Zones.Classes
 
             base.OnEnter(obj);
 
-            obj.OnEnterZone(this);
+            obj.OnEnterZoneAsync(this);
 
             if (obj is L2Character)
                 ((L2Character)obj).SendMessageAsync("u can feel defence.");
@@ -58,7 +58,7 @@ namespace L2dotNET.Models.Zones.Classes
 
             base.OnExit(obj, cls);
 
-            obj.OnExitZone(this, cls);
+            obj.OnExitZoneAsync(this, cls);
 
             if (obj is L2Character)
                 ((L2Character)obj).SendMessageAsync("u lost effect defence.");

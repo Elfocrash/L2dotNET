@@ -124,7 +124,7 @@ namespace L2dotNET.Tables
             foreach (L2StaticObject o in Objects.Values)
             {
                 L2World.Instance.AddObject(o);
-                o.OnSpawn();
+                o.OnSpawnAsync();
             }
 
             Log.Info($"Spawned {Objects.Count} objects.");

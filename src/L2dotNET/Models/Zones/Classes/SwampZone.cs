@@ -24,7 +24,7 @@ namespace L2dotNET.Models.Zones.Classes
 
             base.OnEnter(obj);
 
-            obj.OnEnterZone(this);
+            obj.OnEnterZoneAsync(this);
 
             if (!(obj is L2Player))
                 return;
@@ -33,7 +33,7 @@ namespace L2dotNET.Models.Zones.Classes
             p.IsInDanger = true;
             p.SendPacketAsync(new EtcStatusUpdate(p));
             //  p._stats.base_p_speed += Template._move_bonus;
-            p.BroadcastUserInfo();
+            p.BroadcastUserInfoAsync();
         }
 
         public override void OnExit(L2Object obj, bool cls)
@@ -43,7 +43,7 @@ namespace L2dotNET.Models.Zones.Classes
 
             base.OnExit(obj, cls);
 
-            obj.OnExitZone(this, cls);
+            obj.OnExitZoneAsync(this, cls);
 
             if (!(obj is L2Player))
                 return;
@@ -52,7 +52,7 @@ namespace L2dotNET.Models.Zones.Classes
             p.IsInDanger = false;
             p.SendPacketAsync(new EtcStatusUpdate(p));
             //  p._stats.base_p_speed -= Template._move_bonus;
-            p.BroadcastUserInfo();
+            p.BroadcastUserInfoAsync();
         }
     }
 }

@@ -36,11 +36,11 @@ namespace L2dotNET.Network.clientpackets
                     {
                         case 0:
                             if (!player.IsSitting())
-                                player.Sit();
+                                player.SitAsync();
                             break;
                         case 1:
                             if (player.IsSitting())
-                                player.Stand();
+                                player.StandAsync();
                             break;
                         case 2:
                             //TODO: Fake Death

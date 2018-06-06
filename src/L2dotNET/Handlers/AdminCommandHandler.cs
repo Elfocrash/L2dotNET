@@ -51,7 +51,7 @@ namespace L2dotNET.Handlers
             AAdminCommand processor = _commands[cmd];
             try
             {
-                processor.Use(admin, alias);
+                processor.UseAsync(admin, alias);
             }
             catch (Exception sss)
             {

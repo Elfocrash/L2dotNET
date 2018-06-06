@@ -37,14 +37,14 @@ namespace L2dotNET.Network.clientpackets
                         int x = (player.X >> 15) + 9 + 8;
                         int y = (player.Y >> 15) + 10 + 11;
                         player.SendMessageAsync($"Current loc is X:{player.X} Y:{player.Y} Z:{player.Z}");
-                        player.BroadcastUserInfo(); //for debug reasons
+                        player.BroadcastUserInfoAsync(); //for debug reasons
                         break;
                     case 52: // /unstuck
 
                         L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
                         player.SetRegion(worldRegion);
                         List<L2Player> knowns = player.GetKnownPlayers();
-                        //player.SpawnMe();
+                        //player.SpawnMeAsync();
                         player.SendMessageAsync("Unstuck not implemented yet.");
                         //player.knownObjects;
                         break;
@@ -52,7 +52,7 @@ namespace L2dotNET.Network.clientpackets
                         player.SendMessageAsync("Dismount not implemented yet.");
                         break;
                     case 77: // [time]
-                        GameTime.Instance.ShowInfo(player);
+                        GameTime.Instance.ShowInfoAsync(player);
                         break;
                     default:
                         player.SendMessageAsync($"cmd alias {_command}");

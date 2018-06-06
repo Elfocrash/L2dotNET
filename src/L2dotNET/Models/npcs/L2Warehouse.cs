@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
@@ -24,20 +25,20 @@ namespace L2dotNET.Models.Npcs
             this.spawn = spawn;
         }
 
-        public override void NotifyAction(L2Player player)
+        public override async Task NotifyActionAsync(L2Player player)
         {
             double dis = Calcs.CalculateDistance(player, this, true);
-            TryMoveToAsync(X, Y, Z);
+            await TryMoveToAsync(X, Y, Z);
         }
 
-        public override void OnActionAsync(L2Player player)
+        public override async Task OnActionAsync(L2Player player)
         {
             if (player.Target != this)
-                player.SetTarget(this);
+                player.SetTargetAsync(this);
             else
             {
-                player.MoveTo(X, Y, Z);
-                player.SendPacketAsync(new MoveToPawn(player, this, 150));
+                player.MoveToAsync(X, Y, Z);
+                await player.SendPacketAsync(new MoveToPawn(player, this, 150));
 
                 player.ShowHtm($"warehouse/{NpcId}.htm", this);
             }
@@ -135,7 +136,7 @@ namespace L2dotNET.Models.Npcs
             //}
         }
 
-        public override void OnForcedAttack(L2Player player)
+        public override async Task OnForcedAttackAsync(L2Player player)
         {
             bool newtarget = false;
             if (player.Target == null)
@@ -153,16 +154,16 @@ namespace L2dotNET.Models.Npcs
             }
 
             if (newtarget)
-                player.SendPacketAsync(new MyTargetSelected(ObjId, 0));
+                await player.SendPacketAsync(new MyTargetSelected(ObjId, 0));
             else
-                player.SendActionFailedAsync();
+                await player.SendActionFailedAsync();
         }
 
-        public void ShowPrivateWarehouse(L2Player player)
+        public async Task ShowPrivateWarehouse(L2Player player)
         {
             List<L2Item> items = player.GetAllItems().Where(item => item.IsEquipped != 1).ToList();
 
-            player.SendPacketAsync(new WareHouseDepositList(player, items, WareHouseDepositList.WhPrivate));
+            await player.SendPacketAsync(new WareHouseDepositList(player, items, WareHouseDepositList.WhPrivate));
             player.FolkNpc = this;
         }
 

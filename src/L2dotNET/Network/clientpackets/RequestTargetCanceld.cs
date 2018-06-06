@@ -22,7 +22,7 @@ namespace L2dotNET.Network.clientpackets
                 L2Player player = _client.CurrentPlayer;
             
                 if (player.Target != null)
-                    player.SetTarget(null);
+                    player.SetTargetAsync(null);
             });
         }
     }

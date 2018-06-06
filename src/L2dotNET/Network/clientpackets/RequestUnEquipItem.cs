@@ -30,7 +30,7 @@ namespace L2dotNET.Network.clientpackets
                 //int dollId = player.Inventory.getPaperdollIdByMask(slotBitType);
 
                 //player.setPaperdoll(dollId, null, true);
-                player.BroadcastUserInfo();
+                player.BroadcastUserInfoAsync();
             });
         }
     }

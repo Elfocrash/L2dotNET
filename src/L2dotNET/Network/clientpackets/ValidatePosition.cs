@@ -75,16 +75,16 @@ namespace L2dotNET.Network.clientpackets
                 if (prevReg != NewRegion)
                 {
                     player.SetRegion(NewRegion);
-                    player.SetupKnows();
+                    player.SetupKnowsAsync();
 
                     //Add objects from surrounding regions into knows, this is a hack to prevent 
                     //objects from popping into view as soon as you enter a new region
                     //TODO: Proper region transition
-                    player.SetupKnows(NewRegion);
+                    player.SetupKnowsAsync(NewRegion);
 
                 }
                 //Log.Info($"Current client position: X:{_x}, Y:{_y}, Z:{_z}"); //debug
-                player.BroadcastUserInfo();
+                player.BroadcastUserInfoAsync();
                 player.ValidateVisibleObjects(_x, _y, true);
             });
         }

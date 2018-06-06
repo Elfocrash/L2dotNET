@@ -46,7 +46,7 @@ namespace L2dotNET.Network.clientpackets
                     case 1:
                         player.IsRunning = (byte)(player.IsRunning == 1 ? 0 : 1);
 
-                        player.BroadcastUserInfo();
+                        player.BroadcastUserInfoAsync();
                         break;
 
                     case 12: // Greeting
@@ -175,7 +175,7 @@ namespace L2dotNET.Network.clientpackets
 
             if (player.IsSitting())
             {
-                player.Stand();
+                player.StandAsync();
                 return;
             }
 
@@ -201,7 +201,7 @@ namespace L2dotNET.Network.clientpackets
                     player.SetChair(chair);
             }
 
-            player.Sit();
+            player.SitAsync();
         }
     }
 }

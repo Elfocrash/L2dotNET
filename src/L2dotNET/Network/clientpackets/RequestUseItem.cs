@@ -57,7 +57,7 @@ namespace L2dotNET.Network.clientpackets
                         }
                         player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = item;
                         item.Equip(player);
-                        player.BroadcastUserInfo();
+                        player.BroadcastUserInfoAsync();
                         player.SendPacketAsync(new ItemList(player, true));
                         foreach (IPlugin plugin in PluginManager.Instance.Plugins)
                             plugin.OnItemEquip(player, item);
@@ -66,7 +66,7 @@ namespace L2dotNET.Network.clientpackets
                     {
                         player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = null;
                         item.Unequip(player);
-                        player.BroadcastUserInfo();
+                        player.BroadcastUserInfoAsync();
                         player.SendPacketAsync(new ItemList(player, true));
                     }
                 }

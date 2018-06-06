@@ -126,7 +126,7 @@ namespace L2dotNET.Network.clientpackets.ItemEnchantAPI
                 player.EnchantState = 0;
 
                 if (equip)
-                    player.BroadcastUserInfo();
+                    player.BroadcastUserInfoAsync();
             });
         }
     }

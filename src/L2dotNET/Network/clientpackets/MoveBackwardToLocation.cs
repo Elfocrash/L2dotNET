@@ -75,7 +75,7 @@ namespace L2dotNET.Network.clientpackets
                 }
 
                 //player.AiCharacter.StopAutoAttack();
-                player.MoveTo(_targetX, _targetY, _targetZ);
+                player.MoveToAsync(_targetX, _targetY, _targetZ);
             });
         }
     }

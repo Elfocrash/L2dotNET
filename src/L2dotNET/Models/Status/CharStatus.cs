@@ -53,7 +53,7 @@ namespace L2dotNET.Models.Status
             if (_currentHp < 0.5)
             {
                 Character.AbortAttack();
-                Character.DoDie(attacker);
+                Character.DoDieAsync(attacker);
             }
         }
 
@@ -92,7 +92,7 @@ namespace L2dotNET.Models.Status
             }
 
             if (broadcastUpdate)
-                Character.BroadcastStatusUpdate();
+                Character.BroadcastStatusUpdateAsync();
         }
 
         public void SetCurrentHp(double newHp)
@@ -125,7 +125,7 @@ namespace L2dotNET.Models.Status
             }
 
             if (broadcastUpdate)
-                Character.BroadcastStatusUpdate();
+                Character.BroadcastStatusUpdateAsync();
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
@@ -159,7 +159,7 @@ namespace L2dotNET.Models.Status
             if (_currentMp < Character.MaxMp)
                 SetCurrentMp(_currentMp + (Character.MaxMp * 1.0 / 100), false); // we will calculate the actual modified when we do formulas
 
-            Character.BroadcastStatusUpdate();
+            Character.BroadcastStatusUpdateAsync();
         }
     }
 }

@@ -25,39 +25,36 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
+            if (_client.State != LoginClientState.AuthedLogin)
             {
-                if (_client.State != LoginClientState.AuthedLogin)
-                {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
-                    _client.Close();
-                    return;
-                }
+                await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+                return;
+            }
 
-                if (_client.Key.LoginOkId1 != _loginOkID1 || _client.Key.LoginOkId2 != _loginOkID2)
-                {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
-                    _client.Close();
-                    return;
-                }
+            if (_client.Key.LoginOkId1 != _loginOkID1 || _client.Key.LoginOkId2 != _loginOkID2)
+            {
+                await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+                return;
+            }
 
-                L2Server server = LoginServer.ServiceProvider.GetService<ServerThreadPool>().Get(_serverId);
-                if (server == null)
-                {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
-                    _client.Close();
-                    return;
-                }
+            L2Server server = LoginServer.ServiceProvider.GetService<ServerThreadPool>().Get(_serverId);
+            if (server == null)
+            {
+                await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+                return;
+            }
 
-                if (server.Connected == 0)
-                {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonServerMaintenance));
-                    _client.Close();
-                    return;
-                }
+            if (server.Connected == 0)
+            {
+                await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonServerMaintenance));
+                _client.Close();
+                return;
+            }
 
-                _client.SendAsync(PlayOk.ToPacket(_client));
-            });
+            await _client.SendAsync(PlayOk.ToPacket(_client));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System.Threading.Tasks;
+using L2dotNET.Models.Player;
 using L2dotNET.Templates;
 
 namespace L2dotNET.Models.Npcs.Decor
@@ -9,9 +10,9 @@ namespace L2dotNET.Models.Npcs.Decor
         {
         }
 
-        public override void NotifyAction(L2Player player)
+        public override async Task NotifyActionAsync(L2Player player)
         {
-            player.SendPacketAsync(TownMap);
+            await player.SendPacketAsync(TownMap);
         }
 
         public override string AsString()

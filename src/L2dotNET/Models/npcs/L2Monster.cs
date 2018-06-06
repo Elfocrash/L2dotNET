@@ -1,4 +1,5 @@
-﻿using L2dotNET.Templates;
+﻿using System.Threading.Tasks;
+using L2dotNET.Templates;
 using L2dotNET.Network.serverpackets;
 
 using L2dotNET.World;
@@ -28,36 +29,36 @@ namespace L2dotNET.Models.Npcs
             //Stats = new CharacterStat(this);
         }
 
-        public override void OnActionAsync(L2Player player)
+        public override async Task OnActionAsync(L2Player player)
         {
             if (player.Target != this)
             {
-                player.SetTarget(this);
+                player.SetTargetAsync(this);
                 return;
             }
 
-            player.TryMoveToAsync(X, Y, Z);
-            player.SendPacketAsync(new MoveToPawn(player, this, 150));
+            await player.TryMoveToAsync(X, Y, Z);
+            await player.SendPacketAsync(new MoveToPawn(player, this, 150));
 
-            player.DoAttackAsync(this);
+            await player.DoAttackAsync(this);
         }
 
-        public override void OnForcedAttack(L2Player player)
+        public override async Task OnForcedAttackAsync(L2Player player)
         {
             if (player.Target != this)
             {
-                player.SetTarget(this);
+                player.SetTargetAsync(this);
                 return;
             }
 
-            player.TryMoveToAsync(X, Y, Z);
+            await player.TryMoveToAsync(X, Y, Z);
             
-            player.SendPacketAsync(new MoveToPawn(player, this, (int)player.GetPlanDistanceSq(X,Y)));
+            await player.SendPacketAsync(new MoveToPawn(player, this, (int)player.GetPlanDistanceSq(X,Y)));
 
-            player.DoAttackAsync(this);
+            await player.DoAttackAsync(this);
         }
 
-        public override void DoDie(L2Character killer)
+        public override async Task DoDieAsync(L2Character killer)
         {         
             lock (this)
             {
@@ -75,14 +76,14 @@ namespace L2dotNET.Models.Npcs
             }
 
             Target = null;
-            NotifyStopMove(true, true);
+            await NotifyStopMoveAsync(true, true);
 
             if (IsAttacking())
                 AbortAttack();
 
             CharStatus.StopHpMpRegeneration();
 
-            BroadcastPacketAsync(new Die(this));
+            await BroadcastPacketAsync(new Die(this));
             _spawnTable.RegisterRespawn(spawn);
             if (Template.CorpseTime <= 0)
             {
@@ -93,11 +94,11 @@ namespace L2dotNET.Models.Npcs
             CorpseTimer.Start();
         }
 
-        private void RemoveCorpse(object sender, ElapsedEventArgs e)
+        private async void RemoveCorpse(object sender, ElapsedEventArgs e)
         {
             CorpseTimer.Stop();
             CorpseTimer.Enabled = false;
-            BroadcastPacketAsync(new DeleteObject(ObjId));
+            await BroadcastPacketAsync(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }
     }

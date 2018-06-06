@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Templates;
@@ -28,17 +29,17 @@ namespace L2dotNET.Models.Npcs.Decor
         {
         }
 
-        public override void BroadcastUserInfo()
+        public override async Task BroadcastUserInfoAsync()
         {
             foreach (L2Player obj in KnownObjects.Values.OfType<L2Player>())
-                obj.SendPacketAsync(new StaticObject(this));
+                await obj.SendPacketAsync(new StaticObject(this));
         }
 
-        public override void OnActionAsync(L2Player player)
+        public override async Task OnActionAsync(L2Player player)
         {
-            player.SendMessageAsync(AsString());
+            await player.SendMessageAsync(AsString());
 
-            player.SetTarget(this);
+            player.SetTargetAsync(this);
         }
 
         public byte CanBeSelected()

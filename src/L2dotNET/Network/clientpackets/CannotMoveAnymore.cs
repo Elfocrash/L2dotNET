@@ -27,7 +27,7 @@ namespace L2dotNET.Network.clientpackets
             {
                 L2Player player = _client.CurrentPlayer;
 
-                player.NotifyStopMove(true, true);
+                player.NotifyStopMoveAsync(true, true);
             });
         }
     }

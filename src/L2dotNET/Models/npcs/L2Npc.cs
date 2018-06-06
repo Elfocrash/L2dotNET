@@ -47,10 +47,10 @@ namespace L2dotNET.Models.Npcs
         //    AIProcessor.myself = this;
         //}
 
-        public override void NotifyAction(L2Player player)
+        public override async Task NotifyActionAsync(L2Player player)
         {
             double dis = Calcs.CalculateDistance(player, this, true);
-            TryMoveToAsync(X, Y, Z);
+            await TryMoveToAsync(X, Y, Z);
         }
 
         public int NpcId => Template.NpcId;
@@ -70,15 +70,15 @@ namespace L2dotNET.Models.Npcs
         public override async Task OnActionAsync(L2Player player)
         {
             if (player.Target != this)
-                player.SetTarget(this);
+                player.SetTargetAsync(this);
             else
             {
-                player.MoveTo(X, Y, Z);
+                await player.MoveToAsync(X, Y, Z);
                 await player.SendPacketAsync(new MoveToPawn(player, this, 150));
                 if (Template.Type == "L2Monster")
                 {
                     Log.Debug("Attack Monester By L2NPC");
-                    player.DoAttackAsync(this);
+                    await player.DoAttackAsync(this);
                 }
                 await player.SendActionFailedAsync();
             }
@@ -88,13 +88,13 @@ namespace L2dotNET.Models.Npcs
         {
             if (player.Target != this)
             {
-                player.SetTarget(this);
+                player.SetTargetAsync(this);
                 return;
             }
-            player.MoveTo(X, Y, Z);
+            await player.MoveToAsync(X, Y, Z);
             await player.SendPacketAsync(new MoveToPawn(player, this, 150));
 
-            ShowNPCInfo(player);
+            await ShowNPCInfoAsync(player);
         }
 
 
@@ -205,11 +205,11 @@ namespace L2dotNET.Models.Npcs
             
             if (player.Target != this)
             {
-                player.SetTarget(this);
+                player.SetTargetAsync(this);
                 return;
             }
 
-            player.MoveTo(X, Y, Z);
+            await player.MoveToAsync(X, Y, Z);
             await player.SendPacketAsync(new MoveToPawn(player, this, 150));
         }
 
@@ -218,57 +218,57 @@ namespace L2dotNET.Models.Npcs
             await player.SendMessageAsync("I cannot teach you anything.");
         }
 
-        public override void BroadcastUserInfo()
+        public override async Task BroadcastUserInfoAsync()
         {
             // TODO: Sends to all players on the server. It is not right
             foreach (L2Player pl in L2World.Instance.GetPlayers())
             {
-                pl.SendPacketAsync(new NpcInfo(this));
+                await pl.SendPacketAsync(new NpcInfo(this));
             }
         }
 
-        public override void BroadcastUserInfoToObject(L2Object l2Object)
+        public override async Task BroadcastUserInfoToObjectAsync(L2Object l2Object)
         {
-            l2Object.SendPacketAsync(new NpcInfo(this));
+            await l2Object.SendPacketAsync(new NpcInfo(this));
         }
 
-        public override void OnSpawn(bool notifyOthers = true)
+        public override async Task OnSpawnAsync(bool notifyOthers = true)
         {
             if (notifyOthers)
-                BroadcastUserInfo();
+                await BroadcastUserInfoAsync();
             StartAi();
         }
 
         private Timer _corpseTimer;
         public int ResidenceId;
 
-        public override void DoDie(L2Character killer)
+        public override async Task DoDieAsync(L2Character killer)
         {
-            base.DoDie(killer);
+            await base.DoDieAsync(killer);
 
             if (Template.CorpseTime <= 0)
             {
                 return;
             }
             _corpseTimer = new Timer(Template.CorpseTime * 1000);
-            _corpseTimer.Elapsed += new ElapsedEventHandler(RemoveCorpse);
+            _corpseTimer.Elapsed += RemoveCorpse;
             _corpseTimer.Enabled = true;
         }
 
-        private void RemoveCorpse(object sender, ElapsedEventArgs e)
+        private async void RemoveCorpse(object sender, ElapsedEventArgs e)
         {
             _corpseTimer.Enabled = false;
             _corpseTimer.Stop();
-            BroadcastPacketAsync(new DeleteObject(ObjId));
+            await BroadcastPacketAsync(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }
 
-        public override void DeleteByForce()
+        public override async Task DeleteByForceAsync()
         {
             if ((_corpseTimer != null) && _corpseTimer.Enabled)
                 _corpseTimer.Enabled = false;
 
-            base.DeleteByForce();
+            await base.DeleteByForceAsync();
         }
 
         public bool IsBoss()
@@ -291,7 +291,7 @@ namespace L2dotNET.Models.Npcs
             return false;
         }
 
-        public void ShowNPCInfo(L2Player player)
+        public async Task ShowNPCInfoAsync(L2Player player)
         {
             NpcHtmlMessage html = new NpcHtmlMessage(player, "./html/admin/npcinfo.htm", ObjId);
 
@@ -373,7 +373,7 @@ namespace L2dotNET.Models.Npcs
             else
             html.Replace("%butt%", "");
 
-            player.SendPacketAsync(html);
+            await player.SendPacketAsync(html);
         }
         public virtual int Attackable => 0;
 
@@ -388,9 +388,9 @@ namespace L2dotNET.Models.Npcs
 
         public void CreateOnePrivateEx(int npcId, string aiType, int x, int y, int z) { }
 
-        public void CastBuffForQuestReward(L2Character cha, int skillId)
+        public async Task CastBuffForQuestRewardAsync(L2Character cha, int skillId)
         {
-            cha.SendMessageAsync($"L2Npc.CastBuffForQuestReward {skillId}");
+            await cha.SendMessageAsync($"L2Npc.CastBuffForQuestReward {skillId}");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -128,16 +129,16 @@ namespace L2dotNET.Models.Items
             DropMe(x, y, z, null, null, 0);
         }
 
-        public override void OnActionAsync(L2Player player)
+        public override async Task OnActionAsync(L2Player player)
         {
             double dis = Calcs.CalculateDistance(this, player, true);
-            player.SendMessageAsync($"{AsString()} dis {(int)dis}");
+            await player.SendMessageAsync($"{AsString()} dis {(int)dis}");
             if (dis < 80)
             {
                 foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
                 {
-                    o.SendPacketAsync(new GetItem(player.ObjId, ObjId, X, Y, Z));
-                    o.SendPacketAsync(new DeleteObject(ObjId));
+                    await o.SendPacketAsync(new GetItem(player.ObjId, ObjId, X, Y, Z));
+                    await o.SendPacketAsync(new DeleteObject(ObjId));
                 }
 
                 player.OnPickUp(this);
@@ -145,12 +146,12 @@ namespace L2dotNET.Models.Items
                 L2World.Instance.RemoveObject(this);
             }
             else
-                player.TryMoveToAsync(X, Y, Z);
+                await player.TryMoveToAsync(X, Y, Z);
         }
 
-        public override void OnForcedAttack(L2Player player)
+        public override async Task OnForcedAttackAsync(L2Player player)
         {
-            player.SendActionFailedAsync();
+            await player.SendActionFailedAsync();
         }
 
         public void UpdateDatabase()

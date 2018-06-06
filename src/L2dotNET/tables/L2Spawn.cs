@@ -53,7 +53,7 @@ namespace L2dotNET.Tables
                 };
             }
             
-            npc.SpawnMe(notifyOthers);
+            npc.SpawnMeAsync(notifyOthers);
             return npc;
         }
     }

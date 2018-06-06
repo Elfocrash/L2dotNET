@@ -59,13 +59,13 @@ namespace L2dotNET.Network.clientpackets
 
                 player.Timer();
 
-                player.SpawnMe();
+                player.SpawnMeAsync();
                 //L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
                 //player.SetRegion(worldRegion);
                 //player.getKnowns(500, 500, false);
 
 
-                player.SetupKnows();
+                player.SetupKnowsAsync();
                 player.SendPacketAsync(new UserInfo(player));
 
                 foreach (Plugin plugin in PluginManager.Instance.Plugins)
@@ -75,7 +75,7 @@ namespace L2dotNET.Network.clientpackets
                 player.StartAi();
                 player.CharStatus.StartHpMpRegeneration();
                 player.ShowHtm("servnews.htm",player);
-                player.BroadcastUserInfo();
+                player.BroadcastUserInfoAsync();
                 L2World.Instance.AddPlayer(player);
             });
         }

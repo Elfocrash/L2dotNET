@@ -54,7 +54,7 @@ namespace L2dotNET.Models.Zones.Classes
 
             base.OnEnter(obj);
 
-            obj.OnEnterZone(this);
+            obj.OnEnterZoneAsync(this);
         }
 
         public override void OnExit(L2Object obj, bool cls)
@@ -64,7 +64,7 @@ namespace L2dotNET.Models.Zones.Classes
 
             base.OnExit(obj, cls);
 
-            obj.OnExitZone(this, cls);
+            obj.OnExitZoneAsync(this, cls);
         }
     }
 }

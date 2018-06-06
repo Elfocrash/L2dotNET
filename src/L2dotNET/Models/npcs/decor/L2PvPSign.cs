@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using System.Threading.Tasks;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Templates;
 
@@ -10,9 +11,9 @@ namespace L2dotNET.Models.Npcs.Decor
         {
         }
 
-        public override void NotifyAction(L2Player player)
+        public override async Task NotifyActionAsync(L2Player player)
         {
-            player.SendPacketAsync(new NpcHtmlMessage(player, Htm, ObjId, 0));
+            await player.SendPacketAsync(new NpcHtmlMessage(player, Htm, ObjId, 0));
         }
 
         public override string AsString()

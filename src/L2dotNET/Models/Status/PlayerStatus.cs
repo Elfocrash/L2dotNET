@@ -39,7 +39,7 @@ namespace L2dotNET.Models.Status
             }
             
             if (broadcastUpdate)
-                Character.BroadcastStatusUpdate();
+                Character.BroadcastStatusUpdateAsync();
         }
 
         public void ReduceCp(int value)

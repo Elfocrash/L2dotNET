@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
@@ -93,14 +94,14 @@ namespace L2dotNET.Controllers
             p.NotifyDayChange(Night ? _nightPk : _dayPk);
         }
 
-        public void ShowInfo(L2Player player)
+        public async Task ShowInfoAsync(L2Player player)
         {
             DateTime dt = new DateTime(2000, 1, 1, 0, 0, 0).AddSeconds(Time * 6);
 
             SystemMessage sm = new SystemMessage(Night ? SystemMessage.SystemMessageId.TimeS1S2InTheNight : SystemMessage.SystemMessageId.TimeS1S2InTheDay);
             sm.AddString(dt.ToString("hh"));
             sm.AddString(dt.ToString("mm:ss"));
-            player.SendPacketAsync(sm);
+            await player.SendPacketAsync(sm);
         }
     }
 }

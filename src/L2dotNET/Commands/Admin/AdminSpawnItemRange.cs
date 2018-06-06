@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Attributes;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
@@ -17,14 +18,14 @@ namespace L2dotNET.Commands.Admin
             _itemTable = serviceProvider.GetService<ItemTable>();
         }
 
-        protected internal override void Use(L2Player admin, string alias)
+        protected internal override async Task UseAsync(L2Player admin, string alias)
         {
             int idmin = int.Parse(alias.Split(' ')[1]);
             int idmax = int.Parse(alias.Split(' ')[2]);
 
             if ((idmax - idmin) > 200)
             {
-                admin.SendMessageAsync("Too big id range.");
+                await admin.SendMessageAsync("Too big id range.");
                 return;
             }
 
@@ -34,7 +35,7 @@ namespace L2dotNET.Commands.Admin
                 ItemTemplate item = _itemTable.GetItem(i);
 
                 if (item == null)
-                    admin.SendMessageAsync($"Item with id {i} not exists.");
+                    await admin.SendMessageAsync($"Item with id {i} not exists.");
                 else
                 {
                     admin.AddItem(i, 1);

@@ -42,14 +42,14 @@ namespace L2dotNET.Models.Npcs
         {
             if (player.Target != this)
             {
-                player.SetTarget(this);
+                player.SetTargetAsync(this);
                 return;
             }
-            player.MoveTo(X, Y, Z);
+            await player.MoveToAsync(X, Y, Z);
             await player.SendPacketAsync(new MoveToPawn(player, this, 150));
         }
 
-        public override void DoDie(L2Character killer)
+        public override async Task DoDieAsync(L2Character killer)
         {
             lock (this)
             {
@@ -62,14 +62,14 @@ namespace L2dotNET.Models.Npcs
             }
 
             Target = null;
-            NotifyStopMove(true, true);
+            await NotifyStopMoveAsync(true, true);
 
             if (IsAttacking())
                 AbortAttack();
 
             CharStatus.StopHpMpRegeneration();
 
-            BroadcastPacketAsync(new Die(this));
+            await BroadcastPacketAsync(new Die(this));
 
             _spawnTable.RegisterRespawn(spawn);
 
@@ -79,15 +79,15 @@ namespace L2dotNET.Models.Npcs
             }
 
             CorpseTimer = new Timer(Template.CorpseTime * 1000);
-            CorpseTimer.Elapsed += new ElapsedEventHandler(RemoveCorpse);
+            CorpseTimer.Elapsed += RemoveCorpse;
             CorpseTimer.Start();
         }
 
-        private void RemoveCorpse(object sender, ElapsedEventArgs e)
+        private async void RemoveCorpse(object sender, ElapsedEventArgs e)
         {
             CorpseTimer.Stop();
             CorpseTimer.Enabled = false;
-            BroadcastPacketAsync(new DeleteObject(ObjId));
+            await BroadcastPacketAsync(new DeleteObject(ObjId));
             L2World.Instance.RemoveObject(this);
         }
     }

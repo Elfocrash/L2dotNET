@@ -18,7 +18,7 @@ namespace L2dotNET.Models.Zones.Classes
 
             base.OnEnter(obj);
 
-            obj.OnEnterZone(this);
+            obj.OnEnterZoneAsync(this);
 
             if (obj is L2Player)
             {
@@ -33,7 +33,7 @@ namespace L2dotNET.Models.Zones.Classes
 
             base.OnExit(obj, cls);
 
-            obj.OnExitZone(this, cls);
+            obj.OnExitZoneAsync(this, cls);
 
             if (obj is L2Player)
             {

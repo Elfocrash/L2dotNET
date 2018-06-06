@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Attributes;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
@@ -10,22 +11,24 @@ namespace L2dotNET.Commands.Admin
     {
         private readonly ILog _log = LogProvider.GetCurrentClassLogger();
 
-        protected internal override void Use(L2Player admin, string alias)
+        protected internal override async Task UseAsync(L2Player admin, string alias)
         {
-
-            int id = int.Parse(alias.Split(' ')[1]);
-            int count = 1;
-
-            try
+            await Task.Run(() =>
             {
-                count = int.Parse(alias.Split(' ')[2]);
-            }
-            catch (Exception e)
-            {
-                _log.Error($"AdminSpawnItem: {e.Message}");
-            }
+                int id = int.Parse(alias.Split(' ')[1]);
+                int count = 1;
 
-            admin.AddItem(id, count);
+                try
+                {
+                    count = int.Parse(alias.Split(' ')[2]);
+                }
+                catch (Exception e)
+                {
+                    _log.Error($"AdminSpawnItem: {e.Message}");
+                }
+
+                admin.AddItem(id, count);
+            });
         }
 
         public AdminSpawnItem(IServiceProvider serviceProvider) : base(serviceProvider)
