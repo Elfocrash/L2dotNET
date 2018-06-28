@@ -31,7 +31,7 @@ namespace L2dotNET.Services
         {
             List<WeaponContract> weaponModels = _itemRepository.GetAllWeapons();
 
-            return weaponModels.ToDictionary(model => model.ItemId);
+            return weaponModels.ToDictionary(model => model.WeaponId);
         }
 
         public Dictionary<int, EtcItemContract> GetAllEtcItemModelsDict()

@@ -130,8 +130,8 @@ namespace L2dotNET.Tables
                 WeaponContract contract = modelPair.Value;
                 Weapon weapon = new Weapon(set)
                 {
-                    Type = Utilz.GetEnumFromString(contract.WeaponType, WeaponTypeId.None),
-                    ItemId = contract.ItemId,
+                    Type = contract.WeaponType,
+                    ItemId = contract.WeaponId,
                     Name = contract.Name,
                     BodyPart = contract.BodyPart,
                     Sellable = contract.Sellable,

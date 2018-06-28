@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Weapon]
+﻿CREATE TABLE [dbo].[Weapons]
 (
 	[WeaponId] INT NOT NULL PRIMARY KEY, 
     [Name] VARCHAR(70) NOT NULL, 
@@ -10,7 +10,7 @@
     [CrystalType] TINYINT NOT NULL, 
     [Pdam] INT NOT NULL, 
     [RndDam] INT NOT NULL, 
-    [WeaponType] TINYINT NOT NULL, 
+    [WeaponType] INT NOT NULL, 
     [Critical] INT NOT NULL, 
     [HitModify] INT NOT NULL, 
     [AvoidModify] INT NOT NULL, 
