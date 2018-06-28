@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 
 namespace L2dotNET.Services.Contracts
@@ -11,7 +12,7 @@ namespace L2dotNET.Services.Contracts
 
         List<int> GetPlayersItemsObjectIdList();
 
-        List<AnnouncementContract> GetAnnouncementsList();
+        Task<IEnumerable<AnnouncementContract>> GetAnnouncementsList();
 
         List<SpawnlistContract> GetAllSpawns();
 

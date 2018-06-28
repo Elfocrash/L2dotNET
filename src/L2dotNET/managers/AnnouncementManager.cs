@@ -18,20 +18,20 @@ namespace L2dotNET.Managers
         private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         public bool Initialised { get; private set; }
 
-        public List<AnnouncementContract> Announcements { get; set; }
+        public IEnumerable<AnnouncementContract> Announcements { get; set; }
 
         public AnnouncementManager(IServerService serverService)
         {
             _serverService = serverService;
         }
 
-        public void Initialise()
+        public async void Initialise()
         {
             if (Initialised)
                 return;
 
-            Announcements = _serverService.GetAnnouncementsList();
-            Log.Info($"Loaded {Announcements.Count} annoucements.");
+            Announcements = await _serverService.GetAnnouncementsList();
+            Log.Info($"Loaded {Announcements.Count()} annoucements.");
 
             Initialised = true;
         }
@@ -56,8 +56,10 @@ namespace L2dotNET.Managers
 
         public void OnEnter(L2Player player)
         {
-            if ((Announcements == null) || (Announcements.Count == 0))
+            if (Announcements == null || !Announcements.Any())
+            {
                 return;
+            }
 
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_ANNOUNCE);
 

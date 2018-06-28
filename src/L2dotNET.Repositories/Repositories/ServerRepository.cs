@@ -60,19 +60,6 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public List<AnnouncementContract> GetAnnouncementsList()
-        {
-            try
-            {
-                return Db.Query<AnnouncementContract>("select * from announcements").ToList();
-            }
-            catch (MySqlException ex)
-            {
-                Log.Error($"Method: {nameof(GetAnnouncementsList)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
-                return new List<AnnouncementContract>();
-            }
-        }
-
         public List<SpawnlistContract> GetAllSpawns()
         {
             try

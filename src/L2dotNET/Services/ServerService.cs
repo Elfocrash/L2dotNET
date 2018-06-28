@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
+using L2dotNET.Repositories.Abstract;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
 
@@ -8,10 +10,12 @@ namespace L2dotNET.Services
     public class ServerService : IServerService
     {
         private readonly IServerRepository _serverRepository;
+        private readonly ICrudRepository<AnnouncementContract> _announcementCrudRepository;
 
-        public ServerService(IServerRepository serverRepository)
+        public ServerService(IServerRepository serverRepository, ICrudRepository<AnnouncementContract> announcementCrudRepository)
         {
             _serverRepository = serverRepository;
+            _announcementCrudRepository = announcementCrudRepository;
         }
 
         public List<ServerContract> GetServerList()
@@ -29,9 +33,9 @@ namespace L2dotNET.Services
             return _serverRepository.GetPlayersItemsObjectIdList();
         }
 
-        public List<AnnouncementContract> GetAnnouncementsList()
+        public async Task<IEnumerable<AnnouncementContract>> GetAnnouncementsList()
         {
-            return _serverRepository.GetAnnouncementsList();
+            return await _announcementCrudRepository.GetAll();
         }
 
         public bool CheckDatabaseQuery()
