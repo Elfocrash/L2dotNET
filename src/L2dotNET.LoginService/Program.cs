@@ -42,7 +42,6 @@ namespace L2dotNET.LoginService
             serviceCollection.AddSingleton<IServerService, ServerService>();
             serviceCollection.AddSingleton<ICheckService, CheckService>();
             serviceCollection.AddSingleton<IItemService, ItemService>();
-            serviceCollection.AddSingleton<ISkillService, SkillService>();
 
             RepositoriesDependencyBinder.Bind(serviceCollection);
 

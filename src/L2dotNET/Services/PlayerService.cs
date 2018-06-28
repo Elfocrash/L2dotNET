@@ -13,19 +13,17 @@ namespace L2dotNET.Services
     public class PlayerService : IPlayerService
     {
         private readonly IPlayerRepository _playerRepository;
-        private readonly ISkillRepository _skillRepository;
         private readonly IItemService _itemService;
         private readonly Config.Config _config;
         private readonly IdFactory _idFactory;
         private readonly ItemTable _itemTable;
 
-        public PlayerService(IPlayerRepository playerRepository, IItemService itemService, ISkillRepository skillRepository, IdFactory idFactory, ItemTable itemTable, Config.Config config)
+        public PlayerService(IPlayerRepository playerRepository, IItemService itemService, IdFactory idFactory, ItemTable itemTable, Config.Config config)
         {
             _itemService = itemService;
             _idFactory = idFactory;
             _itemTable = itemTable;
             _config = config;
-            _skillRepository = skillRepository;
             _playerRepository = playerRepository;
         }
 
@@ -205,11 +203,6 @@ namespace L2dotNET.Services
         public bool DeleteCharByObjId(int objId)
         {
             return _playerRepository.DeleteCharByObjId(objId);
-        }
-
-        public List<SkillResponseContract> GetPlayerSkills(int objId)
-        {
-            return _skillRepository.GetPlayerSkills(objId);
         }
 
         public L2Player RestorePlayer(int id, GameClient client)
