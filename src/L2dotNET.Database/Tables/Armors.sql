@@ -2,7 +2,7 @@
 (
     [ArmorId] INT NOT NULL PRIMARY KEY, 
     [Name] VARCHAR(70) NOT NULL, 
-    [BodyPart] TINYINT NOT NULL, 
+    [BodyPart] INT NOT NULL, 
     [Crystallizable] BIT NOT NULL, 
     [ArmorType] TINYINT NOT NULL, 
     [Weight] INT NOT NULL, 
