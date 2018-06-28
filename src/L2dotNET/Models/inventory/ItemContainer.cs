@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.DataContracts;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
@@ -27,7 +28,7 @@ namespace L2dotNET.Models.Inventory
 
         protected abstract L2Character Owner { get; set; }
 
-        protected abstract L2Item.ItemLocation BaseLocation { get; }
+        protected abstract ItemLocation BaseLocation { get; }
 
         public int OwnerId => Owner?.ObjId ?? 0;
 
@@ -82,8 +83,7 @@ namespace L2dotNET.Models.Inventory
                 CustomType2 = contract.CustomType2,
                 Enchant = contract.Enchant,
                 SlotLocation = contract.LocationData,
-                OwnerId = contract.OwnerId,
-                ExistsInDb = contract.ExistsInDb
+                OwnerId = contract.CharacterId,
             };
 
             return item;
@@ -122,7 +122,7 @@ namespace L2dotNET.Models.Inventory
                     item.OwnerId = player.ObjId;
                     item.SlotLocation = 0;
                     item.ExistsInDb = ExistsInDb;
-                    item.Location = L2Item.ItemLocation.Inventory;
+                    item.Location = ItemLocation.Inventory;
                     Items.Add(item);
 
                     item.UpdateDatabase();

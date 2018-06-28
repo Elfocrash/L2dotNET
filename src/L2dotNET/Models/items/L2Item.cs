@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
@@ -67,21 +68,6 @@ namespace L2dotNET.Models.Items
 
             if (Count < 0)
                 Count = 0;
-        }
-
-        /** Enumeration of locations for item */
-
-        public enum ItemLocation
-        {
-            Void,
-            Inventory,
-            Paperdoll,
-            Warehouse,
-            Clanwh,
-            Pet,
-            PetEquip,
-            Lease,
-            Freight
         }
 
         public void Unequip(L2Player owner)
@@ -183,7 +169,6 @@ namespace L2dotNET.Models.Items
         {
             Location = ItemLocation.Inventory;
             ItemContract contract = MapItemModel();
-            ExistsInDb = contract.ExistsInDb = true;
 
             _itemService.InsertNewItem(contract);
         }
@@ -199,8 +184,8 @@ namespace L2dotNET.Models.Items
                 CustomType2 = CustomType2,
                 Enchant = Enchant,
                 LocationData = SlotLocation,
-                Location = Enum.GetName(typeof(ItemLocation), Location),
-                OwnerId = OwnerId,
+                Location = Location,
+                CharacterId = OwnerId,
                 ManaLeft = 0,
                 Time = 0,
                 TimeOfUse = null
