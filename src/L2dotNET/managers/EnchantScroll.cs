@@ -1,4 +1,4 @@
-using L2dotNET.Enums;
+using L2dotNET.DataContracts.Shared.Enums;
 
 namespace L2dotNET.Managers
 {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using L2dotNET.Handlers;
-using L2dotNET.Models.Player;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Network.clientpackets

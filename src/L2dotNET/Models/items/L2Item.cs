@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
@@ -97,8 +96,8 @@ namespace L2dotNET.Models.Items
         public void Equip(L2Player owner)
         {
             Location = ItemLocation.Paperdoll;
-            SlotLocation = GetPaperdollIndex(Template.BodyPart);
-            PaperdollSlot = GetPaperdollIndex(Template.BodyPart);
+            SlotLocation = GetPaperdollIndex((int) Template.BodyPart);
+            PaperdollSlot = GetPaperdollIndex((int) Template.BodyPart);
             IsEquipped = 1;
         }
 

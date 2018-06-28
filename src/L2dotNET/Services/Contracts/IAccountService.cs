@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 
 namespace L2dotNET.Services.Contracts

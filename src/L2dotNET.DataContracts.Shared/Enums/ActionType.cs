@@ -1,4 +1,4 @@
-﻿namespace L2dotNET.Enums
+﻿namespace L2dotNET.DataContracts.Shared.Enums
 {
     public enum ActionType
     {

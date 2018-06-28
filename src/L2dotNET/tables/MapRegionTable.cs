@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Xml;
-using L2dotNET.Enums;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;

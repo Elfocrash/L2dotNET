@@ -11,8 +11,6 @@ using L2dotNET.Network.loginauth;
 using L2dotNET.Tables;
 using L2dotNET.Utility;
 using L2dotNET.World;
-using System.IO;
-using System.Reflection;
 using L2dotNET.Logging.Abstraction;
 using Microsoft.Extensions.DependencyInjection;
 

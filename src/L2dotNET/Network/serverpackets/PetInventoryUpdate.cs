@@ -42,7 +42,7 @@ namespace L2dotNET.Network.serverpackets
                 WriteShort(0);
                 WriteShort(item.IsEquipped);
 
-                WriteInt(item.Template.BodyPart);
+                WriteInt((int) item.Template.BodyPart);
                 WriteShort(item.Enchant);
                 WriteShort(0);
 

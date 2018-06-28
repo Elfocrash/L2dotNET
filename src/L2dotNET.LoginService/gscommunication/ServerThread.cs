@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using System.Threading;
 using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Network;

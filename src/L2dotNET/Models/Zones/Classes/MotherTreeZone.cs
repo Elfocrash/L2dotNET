@@ -1,4 +1,4 @@
-﻿using L2dotNET.Enums;
+﻿using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Tables;

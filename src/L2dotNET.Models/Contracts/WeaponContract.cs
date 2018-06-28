@@ -1,4 +1,6 @@
-﻿namespace L2dotNET.DataContracts
+﻿using L2dotNET.DataContracts.Shared.Enums;
+
+namespace L2dotNET.DataContracts
 {
     public class WeaponContract
     {
@@ -6,7 +8,7 @@
 
         public string Name { get; set; }
 
-        public string BodyPart { get; set; }
+        public BodyPartType BodyPart { get; set; }
 
         public bool Crystallizable { get; set; }
 

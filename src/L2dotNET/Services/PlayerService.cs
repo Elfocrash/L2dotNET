@@ -1,8 +1,7 @@
 ﻿using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
-using System.Collections.Generic;
 using L2dotNET.DataContracts;
-using L2dotNET.Enums;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Inventory;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.General;

@@ -1,20 +1,27 @@
-﻿namespace L2dotNET.DataContracts
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using L2dotNET.DataContracts.Shared.Enums;
+
+namespace L2dotNET.DataContracts
 {
+    [Table("Armor")]
     public class ArmorContract
     {
-        public int ItemId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ArmorId { get; set; }
 
         public string Name { get; set; }
 
-        public string BodyPart { get; set; }
+        public BodyPartType BodyPart { get; set; }
 
         public bool Crystallizable { get; set; }
 
-        public string ArmorType { get; set; }
+        public ArmorTypeId ArmorType { get; set; }
 
         public int Weight { get; set; }
 
-        public int AvoidModify { get; set; }
+        public bool AvoidModify { get; set; }
 
         public int Duration { get; set; }
 
@@ -38,6 +45,6 @@
 
         public int ItemSkillId { get; set; }
 
-        public int ItemSkillLvl { get; set; }
+        public byte ItemSkillLvl { get; set; }
     }
 }

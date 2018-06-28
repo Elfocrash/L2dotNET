@@ -1,14 +1,16 @@
 ﻿using System.ComponentModel;
 
-namespace L2dotNET.Enums
+namespace L2dotNET.DataContracts.Shared.Enums
 {
-    public enum Face
+    public enum HairColor
     {
         [Description("Type A")]
         TypeA,
         [Description("Type B")]
         TypeB,
         [Description("Type C")]
-        TypeC
+        TypeC,
+        [Description("Type D")]
+        TypeD
     }
 }

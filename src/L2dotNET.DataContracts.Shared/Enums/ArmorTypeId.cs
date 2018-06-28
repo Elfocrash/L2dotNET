@@ -1,6 +1,6 @@
-namespace L2dotNET.Enums
+namespace L2dotNET.DataContracts.Shared.Enums
 {
-    public enum ArmorTypeId
+    public enum ArmorTypeId : byte
     {
         None,
         Light,
