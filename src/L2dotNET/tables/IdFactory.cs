@@ -35,7 +35,8 @@ namespace L2dotNET.Tables
                 return;
             }
 
-            _currentId = _serverService.GetPlayersItemsObjectIdList().DefaultIfEmpty(IdMin).Max();
+            // TODO: Fix that after itemService would be reviewed
+            //_currentId = _serverService.GetPlayersItemsObjectIdList().DefaultIfEmpty(IdMin).Max(); -- this is so fckng stupid
             Log.Info($"Used IDs {_currentId}.");
             Initialised = true;
         }
