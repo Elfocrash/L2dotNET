@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Services.Contracts;
 
@@ -27,10 +28,12 @@ namespace L2dotNET.Tables
             return _currentId;
         }
 
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
             _currentId = _serverService.GetPlayersItemsObjectIdList().DefaultIfEmpty(IdMin).Max();
             Log.Info($"Used IDs {_currentId}.");

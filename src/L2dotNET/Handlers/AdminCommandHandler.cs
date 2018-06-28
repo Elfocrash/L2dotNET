@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Threading.Tasks;
 using L2dotNet.Logging.Abstraction;
 using L2dotNET.Attributes;
 using L2dotNET.Commands;
@@ -22,10 +23,12 @@ namespace L2dotNET.Handlers
             _serviceProvider = serviceProvider;
         }
 
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
             IEnumerable<Type> typelist = Utilz.GetTypesInNamespace(Assembly.GetExecutingAssembly(), "L2dotNET.Commands.Admin");
             foreach (Type t in typelist)

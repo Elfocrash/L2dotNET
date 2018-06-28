@@ -9,8 +9,6 @@ namespace L2dotNET.Repositories.Contracts
 
         List<int> GetPlayersItemsObjectIdList();
 
-        List<SpawnlistContract> GetAllSpawns();
-
         bool CheckDatabaseQuery();
     }
 }

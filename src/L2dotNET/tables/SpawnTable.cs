@@ -5,6 +5,7 @@ using L2dotNET.Services.Contracts;
 using System.Linq;
 using System.Timers;
 using System;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 
 namespace L2dotNET.Tables
@@ -26,11 +27,14 @@ namespace L2dotNET.Tables
             _idFactory = idFactory;
         }
 
-        public void Initialise()
+        public async Task Initialise()
         {
-            if(Initialised) return;
+            if (Initialised)
+            {
+                return;
+            }
             
-            List<SpawnlistContract> spawnsList = _serverService.GetAllSpawns();
+            List<SpawnlistContract> spawnsList = (await _serverService.GetAllSpawns()).ToList();
 
             spawnsList.ForEach((spawn) =>
             {

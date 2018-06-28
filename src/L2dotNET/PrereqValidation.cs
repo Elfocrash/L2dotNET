@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Services.Contracts;
 
@@ -16,10 +17,12 @@ namespace L2dotNET
             _checkService = checkService;
         }
 
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
             if (_checkService.PreCheckRepository())
             {

@@ -22,16 +22,16 @@ namespace L2dotNET.LoginService
             ServiceProvider = serviceProvider;
         }
 
-        public void Start()
+        public async void Start()
         {
             // CheckRunningProcesses();
             var config = ServiceProvider.GetService<Config.Config>();
             var serverThreadPool = ServiceProvider.GetService<ServerThreadPool>();
 
-            config.Initialise();
-            ServiceProvider.GetService<PreReqValidation>().Initialise();
-            ServiceProvider.GetService<Managers.ClientManager>().Initialise();
-            serverThreadPool.Initialize();
+            await config.Initialise();
+            await ServiceProvider.GetService<PreReqValidation>().Initialise();
+            await ServiceProvider.GetService<Managers.ClientManager>().Initialise();
+            await serverThreadPool.Initialize();
             NetworkRedirect.Instance.Initialize();
 
             _listener = new TcpListener(IPAddress.Parse(config.ServerConfig.Host), config.ServerConfig.LoginPort);

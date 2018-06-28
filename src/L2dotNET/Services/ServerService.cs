@@ -12,14 +12,17 @@ namespace L2dotNET.Services
         private readonly IServerRepository _serverRepository;
         private readonly ICrudRepository<AnnouncementContract> _announcementCrudRepository;
         private readonly ICrudRepository<ServerContract> _serverCrudRepository;
+        private readonly ICrudRepository<SpawnlistContract> _spawnlistCrudRepository;
 
         public ServerService(IServerRepository serverRepository,
             ICrudRepository<AnnouncementContract> announcementCrudRepository,
-            ICrudRepository<ServerContract> serverCrudRepository)
+            ICrudRepository<ServerContract> serverCrudRepository,
+            ICrudRepository<SpawnlistContract> spawnlistCrudRepository)
         {
             _serverRepository = serverRepository;
             _announcementCrudRepository = announcementCrudRepository;
             _serverCrudRepository = serverCrudRepository;
+            _spawnlistCrudRepository = spawnlistCrudRepository;
         }
 
         public async Task<IEnumerable<ServerContract>> GetServerList()
@@ -47,9 +50,9 @@ namespace L2dotNET.Services
             return _serverRepository.CheckDatabaseQuery();
         }
 
-        public List<SpawnlistContract> GetAllSpawns()
+        public async Task<IEnumerable<SpawnlistContract>> GetAllSpawns()
         {
-            return _serverRepository.GetAllSpawns();
+            return await _spawnlistCrudRepository.GetAll();
         }
     }
 }
