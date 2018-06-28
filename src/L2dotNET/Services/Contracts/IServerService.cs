@@ -8,14 +8,8 @@ namespace L2dotNET.Services.Contracts
     {
         Task<IEnumerable<ServerContract>> GetServerList();
 
-        List<int> GetPlayersObjectIdList();
-
-        List<int> GetPlayersItemsObjectIdList();
-
         Task<IEnumerable<AnnouncementContract>> GetAnnouncementsList();
 
         Task<IEnumerable<SpawnlistContract>> GetAllSpawns();
-
-        bool CheckDatabaseQuery();
     }
 }
