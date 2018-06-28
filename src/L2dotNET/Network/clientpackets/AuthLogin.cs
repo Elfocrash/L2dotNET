@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using L2dotNET.Models.Player;
 using L2dotNET.Network.loginauth;
-using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using L2dotNET.Repositories.Abstract;
+﻿using L2dotNET.Repositories.Abstract;
 using L2dotNET.Repositories.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 

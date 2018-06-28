@@ -24,7 +24,7 @@ namespace L2dotNET.Services
         {
             List<ArmorContract> armorModels = _itemRepository.GetAllArmors();
 
-            return armorModels.ToDictionary(model => model.ItemId);
+            return armorModels.ToDictionary(model => model.ArmorId);
         }
 
         public Dictionary<int, WeaponContract> GetAllWeaponModelsDict()

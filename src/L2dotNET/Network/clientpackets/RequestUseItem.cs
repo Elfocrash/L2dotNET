@@ -50,12 +50,12 @@ namespace L2dotNET.Network.clientpackets
                 {
                     if (!item.Equipped)
                     {
-                        if (player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] != null)
+                        if (player.Inventory.Paperdoll[Inventory.GetPaperdollIndex((int) item.Template.BodyPart)] != null)
                         {
-                            var equipped = player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)];
+                            var equipped = player.Inventory.Paperdoll[Inventory.GetPaperdollIndex((int) item.Template.BodyPart)];
                             equipped.Unequip(player);
                         }
-                        player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = item;
+                        player.Inventory.Paperdoll[Inventory.GetPaperdollIndex((int) item.Template.BodyPart)] = item;
                         item.Equip(player);
                         player.BroadcastUserInfoAsync();
                         player.SendPacketAsync(new ItemList(player, true));
@@ -64,7 +64,7 @@ namespace L2dotNET.Network.clientpackets
                     }
                     else
                     {
-                        player.Inventory.Paperdoll[Inventory.GetPaperdollIndex(item.Template.BodyPart)] = null;
+                        player.Inventory.Paperdoll[Inventory.GetPaperdollIndex((int) item.Template.BodyPart)] = null;
                         item.Unequip(player);
                         player.BroadcastUserInfoAsync();
                         player.SendPacketAsync(new ItemList(player, true));

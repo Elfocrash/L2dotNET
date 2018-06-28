@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Reflection;
 using System.Threading;
 using L2dotNET.Logging.Abstraction;
@@ -11,7 +10,6 @@ using L2dotNET.LoginService.Network;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Repositories;
-using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services;
 using L2dotNET.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;

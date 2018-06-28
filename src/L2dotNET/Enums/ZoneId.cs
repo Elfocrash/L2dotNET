@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using L2dotNET.DataContracts.Shared.Enums;
 
 namespace L2dotNET.Enums
 {

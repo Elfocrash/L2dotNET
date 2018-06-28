@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Enums;
 using L2dotNET.Models.Inventory;
 using L2dotNET.Models.Player;

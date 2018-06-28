@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Services.Contracts;

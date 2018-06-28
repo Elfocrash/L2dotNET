@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.Repositories.Abstract;
-using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
 
 namespace L2dotNET.Services

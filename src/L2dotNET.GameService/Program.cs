@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
-
-using L2dotNET.Config;
 using L2dotNET.ConsoleCommand;
 using L2dotNET.Handlers;
 using L2dotNET.Logging.Abstraction;
@@ -16,7 +13,6 @@ using L2dotNET.Managers.bbs;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Repositories;
-using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Tables;
@@ -85,7 +81,6 @@ namespace L2dotNET.GameService
             serviceCollection.AddSingleton<IServerService, ServerService>();
             serviceCollection.AddSingleton<ICheckService, CheckService>();
             serviceCollection.AddSingleton<IItemService, ItemService>();
-            serviceCollection.AddSingleton<ISkillService, SkillService>();
 
             RepositoriesDependencyBinder.Bind(serviceCollection);
 

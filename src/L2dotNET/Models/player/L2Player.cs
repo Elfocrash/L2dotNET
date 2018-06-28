@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Enums;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Inventory;

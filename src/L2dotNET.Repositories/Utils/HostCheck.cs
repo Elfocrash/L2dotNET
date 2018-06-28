@@ -61,7 +61,7 @@ namespace L2dotNET.Repositories.Utils
         {
             try
             {
-                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWithIgnoreCase(serviceName));
+              //  return ServiceController.GetServices().Any(service => service.ServiceName.StartsWithIgnoreCase(serviceName));
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace L2dotNET.Repositories.Utils
         {
             try
             {
-                return ServiceController.GetServices().Any(service => service.ServiceName.StartsWithIgnoreCase(serviceName) && (service.Status == ServiceControllerStatus.Running));
+             //   return ServiceController.GetServices().Any(service => service.ServiceName.StartsWithIgnoreCase(serviceName) && (service.Status == ServiceControllerStatus.Running));
             }
             catch (Exception ex)
             {
@@ -87,7 +87,7 @@ namespace L2dotNET.Repositories.Utils
 
         public static void StartService(string serviceName, int timeoutMs)
         {
-            ServiceController service = ServiceController.GetServices().FirstOrDefault(filter => filter.ServiceName.StartsWithIgnoreCase(serviceName));
+            /*ServiceController service = ServiceController.GetServices().FirstOrDefault(filter => filter.ServiceName.StartsWithIgnoreCase(serviceName));
 
             if (service == null)
                 return;
@@ -111,7 +111,7 @@ namespace L2dotNET.Repositories.Utils
                 default:
                     Thread.Sleep(timeoutMs);
                     break;
-            }
+            }*/
         }
     }
 }

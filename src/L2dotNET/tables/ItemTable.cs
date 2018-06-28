@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
-using L2dotNET.Enums;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
@@ -41,7 +41,6 @@ namespace L2dotNET.Tables
             return null;
         }
 
-        public Dictionary<string, int> Slots = new Dictionary<string, int>();
         public Dictionary<int, Armor> Armors = new Dictionary<int, Armor>();
         public Dictionary<int, Weapon> Weapons = new Dictionary<int, Weapon>();
         public Dictionary<int, EtcItem> EtcItems = new Dictionary<int, EtcItem>();
@@ -53,7 +52,6 @@ namespace L2dotNET.Tables
                 return;
             }
 
-            Slots = ItemSlots.ToDictionary();
             LoadArmorModels();
             LoadWeaponModels();
             LoadEtcItemModels();
@@ -85,10 +83,10 @@ namespace L2dotNET.Tables
                 ArmorContract contract = modelPair.Value;
                 Armor armor = new Armor(set)
                 {
-                    Type = Utilz.GetEnumFromString(contract.ArmorType, ArmorTypeId.None),
-                    ItemId = contract.ItemId,
+                    Type = contract.ArmorType,
+                    ItemId = contract.ArmorId,
                     Name = contract.Name,
-                    BodyPart = Slots[contract.BodyPart],
+                    BodyPart = contract.BodyPart,
                     Sellable = contract.Sellable,
                     Dropable = contract.Dropable,
                     Destroyable = contract.Destroyable,
@@ -135,7 +133,7 @@ namespace L2dotNET.Tables
                     Type = Utilz.GetEnumFromString(contract.WeaponType, WeaponTypeId.None),
                     ItemId = contract.ItemId,
                     Name = contract.Name,
-                    BodyPart = Slots[contract.BodyPart],
+                    BodyPart = contract.BodyPart,
                     Sellable = contract.Sellable,
                     Dropable = contract.Dropable,
                     Destroyable = contract.Destroyable,

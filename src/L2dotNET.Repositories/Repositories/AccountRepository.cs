@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.Logging.Abstraction;

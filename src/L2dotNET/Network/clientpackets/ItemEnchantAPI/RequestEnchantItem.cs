@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using L2dotNET.Managers;
-using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
 namespace L2dotNET.Network.clientpackets.ItemEnchantAPI
