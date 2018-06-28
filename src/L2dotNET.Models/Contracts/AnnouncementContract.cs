@@ -1,8 +1,13 @@
-﻿namespace L2dotNET.DataContracts
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace L2dotNET.DataContracts
 {
+    [Table("Announcement")]
     public class AnnouncementContract
     {
-        public int Id { get; set; }
+        [Key]
+        public int AnnouncementId { get; set; }
 
         public string Text { get; set; }
 
