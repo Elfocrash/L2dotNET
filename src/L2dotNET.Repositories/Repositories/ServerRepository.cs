@@ -47,19 +47,6 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public List<SpawnlistContract> GetAllSpawns()
-        {
-            try
-            {
-                return Db.Query<SpawnlistContract>("select npc_templateid as TemplateId, LocX, LocY, LocZ, Heading, respawn_delay as RespawnDelay, respawn_rand as RespawnRand, PeriodOfDay from spawnlist").ToList();
-            }
-            catch (MySqlException ex)
-            {
-                Log.Error($"Method: {nameof(GetAllSpawns)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
-                return new List<SpawnlistContract>();
-            }
-        }
-
         public bool CheckDatabaseQuery()
         {
             try

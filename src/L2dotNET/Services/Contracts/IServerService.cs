@@ -14,7 +14,7 @@ namespace L2dotNET.Services.Contracts
 
         Task<IEnumerable<AnnouncementContract>> GetAnnouncementsList();
 
-        List<SpawnlistContract> GetAllSpawns();
+        Task<IEnumerable<SpawnlistContract>> GetAllSpawns();
 
         bool CheckDatabaseQuery();
     }

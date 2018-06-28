@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
@@ -25,10 +25,12 @@ namespace L2dotNET.Managers
             _serverService = serverService;
         }
 
-        public async void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
             Announcements = await _serverService.GetAnnouncementsList();
             Log.Info($"Loaded {Announcements.Count()} annoucements.");

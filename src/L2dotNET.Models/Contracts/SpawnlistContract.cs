@@ -1,7 +1,14 @@
-﻿namespace L2dotNET.DataContracts
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace L2dotNET.DataContracts
 {
+    [Table("Spawnlist")]
     public class SpawnlistContract
     {
+        [Key]
+        public int SpawnId { get; set; }
+
         public int TemplateId { get; set; }
 
         public int LocX { get; set; }
@@ -16,6 +23,6 @@
 
         public int RespawnRand { get; set; }
 
-        public int PerdiodOfDay { get; set; }
+        public int PeriodOfDay { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.Enums;
 using L2dotNET.Logging.Abstraction;
@@ -45,10 +46,12 @@ namespace L2dotNET.Tables
         public Dictionary<int, Weapon> Weapons = new Dictionary<int, Weapon>();
         public Dictionary<int, EtcItem> EtcItems = new Dictionary<int, EtcItem>();
 
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
             Slots = ItemSlots.ToDictionary();
             LoadArmorModels();

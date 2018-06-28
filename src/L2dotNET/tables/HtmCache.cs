@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts.GameModels;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Utility;
@@ -23,10 +24,12 @@ namespace L2dotNET.Tables
             _config = config;
         }
 
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
             _htmCache = new List<L2Html>();
             _htmFiles = DirSearch("./html");

@@ -31,7 +31,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public List<L2Server> Servers = new List<L2Server>();
 
-        public async void Initialize()
+        public async Task Initialize()
         {
             IEnumerable<ServerContract> servers = await _serverService.GetServerList();
 
