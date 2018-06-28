@@ -1,14 +1,21 @@
-﻿namespace L2dotNET.DataContracts
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using L2dotNET.DataContracts.Shared.Enums;
+
+namespace L2dotNET.DataContracts
 {
+    [Table("EtcItems")]
     public class EtcItemContract
     {
-        public int ItemId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int EtcItemId { get; set; }
 
         public string Name { get; set; }
 
         public bool Crystallizable { get; set; }
 
-        public string ItemType { get; set; }
+        public EtcItemTypeId ItemType { get; set; }
 
         public int Weight { get; set; }
 

@@ -38,7 +38,7 @@ namespace L2dotNET.Services
         {
             List<EtcItemContract> etcItemModels = _itemRepository.GetAllEtcItems();
 
-            return etcItemModels.ToDictionary(model => model.ItemId);
+            return etcItemModels.ToDictionary(model => model.EtcItemId);
         }
 
         public void InsertNewItem(ItemContract item)
