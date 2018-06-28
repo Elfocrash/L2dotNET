@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.DataContracts;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
@@ -18,7 +19,7 @@ namespace L2dotNET.Models.Inventory
         }
 
         protected override L2Character Owner { get; set; }
-        protected override L2Item.ItemLocation BaseLocation { get; }
+        protected override ItemLocation BaseLocation { get; }
 
         public static readonly int PaperdollUnder = 0;
         public static readonly int PaperdollLear = 1;

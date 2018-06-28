@@ -54,7 +54,7 @@ namespace L2dotNET.Repositories
             const string sql =
                 @"Insert into items (owner_id,item_id,count,loc,loc_data,enchant_level,object_id,custom_type1,custom_type2,mana_left,time)
                     Values (@owner_id,@item_id,@count,@loc,@loc_data,@enchant_level,@object_id,@custom_type1,@custom_type2,@mana_left,@time)";
-
+/*
             Db.ExecuteAsync(sql,
                 new
                 {
@@ -69,20 +69,20 @@ namespace L2dotNET.Repositories
                     custom_type2 = item.CustomType2,
                     mana_left = item.ManaLeft,
                     time = item.Time
-                });
+                });*/
         }
 
         public void UpdateItem(ItemContract item)
         {
-            if (!item.ExistsInDb)
-                return;
+         //   if (!item.ExistsInDb)
+          //      return;
 
             const string sql = @"UPDATE items SET owner_id=@owner_id,count=@count,loc=@loc,loc_data=@loc_data,enchant_level=@enchant_level,custom_type1=@custom_type1,
                     custom_type2=@custom_type2,mana_left=@mana_left,time=@time WHERE object_id = @object_id";
 
             Db.ExecuteAsync(sql, new
             {
-                owner_id = item.OwnerId,
+          //      owner_id = item.OwnerId,
                 count = item.Count,
                 loc = item.Location,
                 loc_data = item.LocationData,
