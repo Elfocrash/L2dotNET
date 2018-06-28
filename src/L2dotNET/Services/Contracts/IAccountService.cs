@@ -12,6 +12,8 @@ namespace L2dotNET.Services.Contracts
 
         Task<bool> CheckIfAccountIsCorrect(string login, string password);
 
-        Task<List<int>> GetPlayerIdsListByAccountName(string login);
+        void UpdateAccount(AccountContract account);
+
+        void DeleteAccount(AccountContract account);
     }
 }

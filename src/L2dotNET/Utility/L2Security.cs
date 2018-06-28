@@ -1,16 +1,15 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace L2dotNET.Utility
 {
     public class L2Security
     {
-        public static string HashPassword(string password)
+        public static byte[] HashPassword(string password)
         {
-            using (var crypt = new SHA256Managed())
+            using (SHA256Managed crypt = new SHA256Managed())
             {
-                return Convert.ToBase64String(crypt.ComputeHash(Encoding.UTF8.GetBytes(password)));
+                return crypt.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
     }

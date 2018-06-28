@@ -40,10 +40,13 @@ namespace L2dotNET.Network.clientpackets
         {
             if (_client.AccountName == null)
             {
-                _client.SessionKey = new SessionKey(_loginKey1,_loginKey2, _playKey1, _playKey2);
+                _client.SessionKey = new SessionKey(_loginKey1, _loginKey2, _playKey1, _playKey2);
 
                 _client.AccountName = _loginName;
 
+                // TODO: Update code below when playerService would be done
+                throw new NotImplementedException();
+                /*
                 var players = await _accountService.GetPlayerIdsListByAccountName(_loginName);
 
                 int slot = 0;
@@ -63,10 +66,12 @@ namespace L2dotNET.Network.clientpackets
                 }
 
                 _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
-                _authThread.SetInGameAccount(_client.AccountName, true);
+                _authThread.SetInGameAccount(_client.AccountName, true);*/
             }
             else
+            {
                 _client.Termination();
+            }
         }
     }
 }
