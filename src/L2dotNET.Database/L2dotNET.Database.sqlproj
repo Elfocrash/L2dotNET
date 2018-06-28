@@ -65,7 +65,7 @@
     <Build Include="Tables\Armors.sql" />
     <Build Include="Tables\EtcItems.sql" />
     <Build Include="Tables\Items.sql" />
-    <Build Include="Tables\Weapon.sql" />
+    <Build Include="Tables\Weapons.sql" />
     <Build Include="Tables\Spawnlist.sql" />
     <Build Include="Tables\Characters.sql" />
     <Build Include="Tables\Servers.sql" />

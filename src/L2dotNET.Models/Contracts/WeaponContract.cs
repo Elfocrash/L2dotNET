@@ -1,10 +1,15 @@
-﻿using L2dotNET.DataContracts.Shared.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using L2dotNET.DataContracts.Shared.Enums;
 
 namespace L2dotNET.DataContracts
 {
+    [Table("Weapons")]
     public class WeaponContract
     {
-        public int ItemId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int WeaponId { get; set; }
 
         public string Name { get; set; }
 
@@ -18,13 +23,13 @@ namespace L2dotNET.DataContracts
 
         public int Spiritshots { get; set; }
 
-        public string CrystalType { get; set; }
+        public byte CrystalType { get; set; }
 
         public int Pdam { get; set; }
 
         public int RndDam { get; set; }
 
-        public string WeaponType { get; set; }
+        public WeaponTypeId WeaponType { get; set; }
 
         public int Critical { get; set; }
 
