@@ -21,19 +21,6 @@ namespace L2dotNET.Repositories
             Db = new MySqlConnection("Server=127.0.0.1;Database=l2dotnet;Uid=l2dotnet;Pwd=l2dotnet;SslMode=none;");
         }
 
-        public List<ServerContract> GetServerList()
-        {
-            try
-            {
-                return Db.Query<ServerContract>("select * from servers").ToList();
-            }
-            catch (MySqlException ex)
-            {
-                Log.Error($"Method: {nameof(GetServerList)}. Message: '{ex.Message}' (Error Number: '{ex.Number}')");
-                return new List<ServerContract>();
-            }
-        }
-
         public List<int> GetPlayersObjectIdList()
         {
             try
