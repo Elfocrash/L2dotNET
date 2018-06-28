@@ -11,16 +11,20 @@ namespace L2dotNET.Services
     {
         private readonly IServerRepository _serverRepository;
         private readonly ICrudRepository<AnnouncementContract> _announcementCrudRepository;
+        private readonly ICrudRepository<ServerContract> _serverCrudRepository;
 
-        public ServerService(IServerRepository serverRepository, ICrudRepository<AnnouncementContract> announcementCrudRepository)
+        public ServerService(IServerRepository serverRepository,
+            ICrudRepository<AnnouncementContract> announcementCrudRepository,
+            ICrudRepository<ServerContract> serverCrudRepository)
         {
             _serverRepository = serverRepository;
             _announcementCrudRepository = announcementCrudRepository;
+            _serverCrudRepository = serverCrudRepository;
         }
 
-        public List<ServerContract> GetServerList()
+        public async Task<IEnumerable<ServerContract>> GetServerList()
         {
-            return _serverRepository.GetServerList();
+            return await _serverCrudRepository.GetAll();
         }
 
         public List<int> GetPlayersObjectIdList()

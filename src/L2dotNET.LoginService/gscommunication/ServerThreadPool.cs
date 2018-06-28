@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
@@ -30,14 +31,16 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public List<L2Server> Servers = new List<L2Server>();
 
-        public void Initialize()
+        public async void Initialize()
         {
-            Servers.AddRange(_serverService.GetServerList().Select(curServ => new L2Server
-            {
-                Id = (byte)curServ.Id,
-                Info = curServ.Name,
-                Code = curServ.Code
-            }).ToList());
+            IEnumerable<ServerContract> servers = await _serverService.GetServerList();
+
+            Servers.AddRange(servers.Select(curServ => new L2Server
+                {
+                    Id = (byte) curServ.ServerId,
+                    Info = curServ.Name,
+                    Code = curServ.Code
+                }));
 
             Log.Info($"GameServerThread: loaded {Servers.Count} servers");
         }

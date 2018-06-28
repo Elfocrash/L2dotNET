@@ -6,7 +6,7 @@ namespace L2dotNET.Services.Contracts
 {
     public interface IServerService
     {
-        List<ServerContract> GetServerList();
+        Task<IEnumerable<ServerContract>> GetServerList();
 
         List<int> GetPlayersObjectIdList();
 

@@ -5,8 +5,6 @@ namespace L2dotNET.Repositories.Contracts
 {
     public interface IServerRepository
     {
-        List<ServerContract> GetServerList();
-
         List<int> GetPlayersObjectIdList();
 
         List<int> GetPlayersItemsObjectIdList();
