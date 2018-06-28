@@ -18,7 +18,6 @@ namespace L2dotNET.Repositories
             provider.AddSingleton<IPlayerRepository, PlayerRepository>();
             provider.AddSingleton<ICheckRepository, CheckRepository>();
             provider.AddSingleton<IItemRepository, ItemRepository>();
-            provider.AddSingleton<ISkillRepository, SkillRepository>();
         }
     }
 }

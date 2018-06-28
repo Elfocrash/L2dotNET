@@ -22,8 +22,6 @@ namespace L2dotNET.Services.Contracts
 
         bool DeleteCharByObjId(int objId);
 
-        List<SkillResponseContract> GetPlayerSkills(int objId);
-
         L2Player RestorePlayer(int id, GameClient client);
 
         int GetDaysRequiredToDeletePlayer();
