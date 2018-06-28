@@ -107,8 +107,8 @@ namespace L2dotNET.Tables
                 EtcItemContract contract = modelPair.Value;
                 EtcItem etcItem = new EtcItem(set)
                 {
-                    Type = Utilz.GetEnumFromString(contract.ItemType, EtcItemTypeId.None),
-                    ItemId = contract.ItemId,
+                    Type = contract.ItemType,
+                    ItemId = contract.EtcItemId,
                     Name = contract.Name,
                     Sellable = contract.Sellable,
                     Dropable = contract.Dropable,
