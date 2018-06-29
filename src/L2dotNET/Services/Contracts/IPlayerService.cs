@@ -1,26 +1,23 @@
-﻿using L2dotNET.Models.Player;
+﻿using System.Threading.Tasks;
+using L2dotNET.Models.Player;
 
 namespace L2dotNET.Services.Contracts
 {
     public interface IPlayerService
     {
-        L2Player GetPlayerByLogin(int objId);
+        Task<L2Player> GetPlayerByLogin(int characterId);
 
-        bool CheckIfPlayerNameExists(string name);
+        Task<bool> CheckIfPlayerNameExists(string name);
 
         void CreatePlayer(L2Player player);
 
         void UpdatePlayer(L2Player player);
 
-        L2Player GetPlayerBySlotId(string accountName, int slotId);
+        Task<L2Player> GetPlayerBySlotId(string accountName, int slotId);
 
-        bool MarkToDeleteChar(int objId, long deletetime);
+        bool DeleteCharByObjId(int characterId);
 
-        bool MarkToRestoreChar(int objId);
-
-        bool DeleteCharByObjId(int objId);
-
-        L2Player RestorePlayer(int id, GameClient client);
+        Task<L2Player> RestorePlayer(int id, GameClient client);
 
         int GetDaysRequiredToDeletePlayer();
     }

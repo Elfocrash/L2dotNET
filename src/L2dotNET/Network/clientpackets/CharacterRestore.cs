@@ -48,7 +48,7 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            _playerService.MarkToRestoreChar(player.ObjId);
+            //_playerService.MarkToRestoreChar(player.ObjId);
             player.DeleteTime = null;
         }
     }

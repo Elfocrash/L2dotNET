@@ -123,15 +123,15 @@ namespace L2dotNET
             }
         }
 
-        public L2Player LoadPlayerInSlot(string accName, int charSlot)
+        public async Task<L2Player> LoadPlayerInSlot(string accName, int charSlot)
         {
-            L2Player player = _playerService.GetPlayerBySlotId(accName, charSlot);
+            L2Player player = await _playerService.GetPlayerBySlotId(accName, charSlot);
             return player;
         }
 
-        public L2Player GetPlayer(string accName, int charSlot)
+        public async Task<L2Player> GetPlayer(string accName, int charSlot)
         {
-            L2Player playerContract = LoadPlayerInSlot(accName, charSlot);
+            L2Player playerContract = await LoadPlayerInSlot(accName, charSlot);
             L2Player player = L2World.Instance.GetPlayer(playerContract.ObjId);
             return player;
         }
