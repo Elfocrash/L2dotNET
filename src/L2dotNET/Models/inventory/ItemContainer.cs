@@ -12,14 +12,16 @@ namespace L2dotNET.Models.Inventory
 {
     public abstract class ItemContainer
     {
+        private readonly ICrudService<ItemContract> _itemCrudService;
         protected readonly IItemService ItemService;
         private readonly IdFactory _idFactory;
         private readonly ItemTable _itemTable;
 
         public List<L2Item> Items;
 
-        protected ItemContainer(IItemService itemService, IdFactory idFactory, ItemTable itemTable)
+        protected ItemContainer(ICrudService<ItemContract> itemCrudService, IItemService itemService, IdFactory idFactory, ItemTable itemTable)
         {
+            _itemCrudService = itemCrudService;
             ItemService = itemService;
             _idFactory = idFactory;
             _itemTable = itemTable;
@@ -75,7 +77,7 @@ namespace L2dotNET.Models.Inventory
 
         private L2Item MapModelToItem(ItemContract contract)
         {
-            L2Item item = new L2Item(ItemService, _idFactory, _itemTable.GetItem(contract.ItemId), _idFactory.NextId())
+            L2Item item = new L2Item(_itemCrudService, _idFactory, _itemTable.GetItem(contract.ItemId), _idFactory.NextId())
             {
                 ObjId = contract.ObjectId,
                 Count = contract.Count,

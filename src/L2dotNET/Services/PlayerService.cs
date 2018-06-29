@@ -12,13 +12,15 @@ namespace L2dotNET.Services
     public class PlayerService : IPlayerService
     {
         private readonly IPlayerRepository _playerRepository;
+        private readonly ICrudService<ItemContract> _itemCrudService;
         private readonly IItemService _itemService;
         private readonly Config.Config _config;
         private readonly IdFactory _idFactory;
         private readonly ItemTable _itemTable;
 
-        public PlayerService(IPlayerRepository playerRepository, IItemService itemService, IdFactory idFactory, ItemTable itemTable, Config.Config config)
+        public PlayerService(ICrudService<ItemContract> itemCrudService, IPlayerRepository playerRepository, IItemService itemService, IdFactory idFactory, ItemTable itemTable, Config.Config config)
         {
+            _itemCrudService = itemCrudService;
             _itemService = itemService;
             _idFactory = idFactory;
             _itemTable = itemTable;
@@ -59,7 +61,7 @@ namespace L2dotNET.Services
                 RecLeft = playerContract.RecLeft,
                 RecHave = playerContract.RecHave,
                 CharSlot = playerContract.CharSlot,
-                Inventory = new PcInventory(_itemService,_idFactory, _itemTable, null),
+                Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, null),
                 DeleteTime = playerContract.DeleteTime,
                 LastAccess = playerContract.LastAccess,
                 CanCraft = playerContract.CanCraft,

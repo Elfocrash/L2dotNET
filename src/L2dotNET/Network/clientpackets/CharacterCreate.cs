@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts;
 using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Enums;
 using L2dotNET.Models.Inventory;
@@ -23,7 +24,7 @@ namespace L2dotNET.Network.clientpackets
 
         private readonly IdFactory _idFactory;
         private readonly ItemTable _itemTable;
-
+        private readonly ICrudService<ItemContract> _itemCrudService;
         private readonly GameClient _client;
         private readonly string _name;
         private readonly int _race;
@@ -41,6 +42,7 @@ namespace L2dotNET.Network.clientpackets
             _itemTable = serviceProvider.GetService<ItemTable>();
             _idFactory = serviceProvider.GetService<IdFactory>();
             _playerService = serviceProvider.GetService<IPlayerService>();
+            _itemCrudService = serviceProvider.GetService<ICrudService<ItemContract>>();
             _name = packet.ReadString();
             _race = packet.ReadInt();
             _sex = packet.ReadInt();
@@ -68,7 +70,7 @@ namespace L2dotNET.Network.clientpackets
 
                 L2Player player = new L2Player(_playerService, _idFactory.NextId(), template);
 
-                player.Inventory = new PcInventory(_itemService, _idFactory, _itemTable, player);
+                player.Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, player);
                 player.Name = _name;
                 player.AccountName = _client.AccountName;
                 player.Title = string.Empty;
@@ -96,7 +98,7 @@ namespace L2dotNET.Network.clientpackets
 
                 if (template.Items != null)
                 {
-                    player.Inventory = new PcInventory(_itemService, _idFactory, _itemTable, player);
+                    player.Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, player);
 
                     //foreach (PC_item i in template._items)
                     //{
