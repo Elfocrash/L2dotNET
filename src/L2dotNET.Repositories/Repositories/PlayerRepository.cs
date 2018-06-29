@@ -19,11 +19,11 @@ namespace L2dotNET.Repositories
             Db = new MySqlConnection("Server=127.0.0.1;Database=l2dotnet;Uid=l2dotnet;Pwd=l2dotnet;SslMode=none;");
         }
 
-        public PlayerContract GetPlayerByLogin(int objId)
+        public CharacterContract GetPlayerByLogin(int objId)
         {
             try
             {
-                return Db.Query<PlayerContract>(@"select account_name as AccountName, obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
+                return Db.Query<CharacterContract>(@"select account_name as AccountName, obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
                 Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,base_class as BaseClass,classid as ClassId, DeleteTime,CanCraft,Title,
                 rec_have as RecHave,rec_left as RecLeft,AccessLevel,punish_level as PunishLevel,punish_timer as PunishTimer,
                 power_grade as PowerGrade,Nobless,Hero,last_recom_date as LastRecomDate,char_slot as CharSlot
@@ -55,7 +55,7 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public void CreatePlayer(PlayerContract player)
+        public void CreatePlayer(CharacterContract character)
         {
             try
             {
@@ -68,46 +68,46 @@ namespace L2dotNET.Repositories
                              @rec_have,@rec_left,@AccessLevel,@char_slot,@punish_level,@punish_timer, @power_grade,@Nobless,@Hero,
                              @last_recom_date)", new
                 {
-                    account_name = player.AccountName,
-                    obj_Id = player.ObjectId,
-                    char_name = player.Name,
-                    Level = player.Level,
-                    MaxHp = player.MaxHp,
-                    CurHp = player.CurHp,
-                    MaxCp = player.MaxCp,
-                    CurCp = player.CurCp,
-                    MaxMp = player.MaxMp,
-                    CurMp = player.CurMp,
-                    Face = player.Face,
-                    HairStyle = player.HairStyle,
-                    HairColor = player.HairColor,
-                    Sex = player.Sex,
-                    Heading = player.Heading,
-                    X = player.X,
-                    Y = player.Y,
-                    Z = player.Z,
-                    Exp = player.Exp,
-                    ExpBeforeDeath = player.ExpBeforeDeath,
-                    Sp = player.Sp,
-                    Karma = player.Karma,
-                    PvpKills = player.PvpKills,
-                    PkKills = player.PkKills,
-                    Race = player.Race,
-                    classid = player.ClassId,
-                    base_class = player.BaseClass,
-                    DeleteTime = player.DeleteTime,
-                    CanCraft = player.CanCraft,
-                    Title = player.Title,
-                    rec_have = player.RecHave,
-                    rec_left = player.RecLeft,
-                    AccessLevel = player.AccessLevel,
-                    char_slot = player.CharSlot,
-                    punish_level = player.PunishLevel,
-                    punish_timer = player.PunishTimer,
-                    power_grade = player.PowerGrade,
-                    Nobless = player.Nobless,
-                    Hero = player.Hero,
-                    last_recom_date = player.LastRecomDate
+                    account_name = character.AccountName,
+                    obj_Id = character.ObjectId,
+                    char_name = character.Name,
+                    Level = character.Level,
+                    MaxHp = character.MaxHp,
+                    CurHp = character.CurHp,
+                    MaxCp = character.MaxCp,
+                    CurCp = character.CurCp,
+                    MaxMp = character.MaxMp,
+                    CurMp = character.CurMp,
+                    Face = character.Face,
+                    HairStyle = character.HairStyle,
+                    HairColor = character.HairColor,
+                    Sex = character.Sex,
+                    Heading = character.Heading,
+                    X = character.X,
+                    Y = character.Y,
+                    Z = character.Z,
+                    Exp = character.Exp,
+                    ExpBeforeDeath = character.ExpBeforeDeath,
+                    Sp = character.Sp,
+                    Karma = character.Karma,
+                    PvpKills = character.PvpKills,
+                    PkKills = character.PkKills,
+                    Race = character.Race,
+                    classid = character.ClassId,
+                    base_class = character.BaseClass,
+                    DeleteTime = character.DeleteTime,
+                    CanCraft = character.CanCraft,
+                    Title = character.Title,
+                    rec_have = character.RecHave,
+                    rec_left = character.RecLeft,
+                    AccessLevel = character.AccessLevel,
+                    char_slot = character.CharSlot,
+                    punish_level = character.PunishLevel,
+                    punish_timer = character.PunishTimer,
+                    power_grade = character.PowerGrade,
+                    Nobless = character.Nobless,
+                    Hero = character.Hero,
+                    last_recom_date = character.LastRecomDate
                 });
             }
             catch (MySqlException ex)
@@ -116,7 +116,7 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public void UpdatePlayer(PlayerContract player)
+        public void UpdatePlayer(CharacterContract character)
         {
             try
             {
@@ -128,45 +128,45 @@ namespace L2dotNET.Repositories
                              punish_timer=@punish_timer,nobless=@nobless,power_grade=@power_grade,
                              last_recom_date=@last_recom_date, lastAccess=@lastAccess WHERE obj_id=@obj_id", new
                 {
-                    level = player.Level,
-                    maxHp = player.MaxHp,
-                    curHp = player.CurHp,
-                    maxCp = player.MaxCp,
-                    curCp = player.CurCp,
-                    maxMp = player.MaxMp,
-                    curMp = player.CurMp,
-                    face = player.Face,
-                    hairStyle = player.HairStyle,
-                    hairColor = player.HairColor,
-                    sex = player.Sex,
-                    heading = player.Heading,
-                    x = player.X,
-                    y = player.Y,
-                    z = player.Z,
-                    exp = player.Exp,
-                    expBeforeDeath = player.ExpBeforeDeath,
-                    sp = player.Sp,
-                    karma = player.Karma,
-                    pvpkills = player.PvpKills,
-                    pkkills = player.PkKills,
-                    online = player.Online,
-                    onlinetime = player.OnlineTime,
-                    race = player.Race,
-                    classid = player.ClassId,
-                    base_class = player.BaseClass,
-                    deletetime = player.DeleteTime,
-                    canCraft = player.CanCraft,
-                    title = player.Title,
-                    rec_have = player.RecHave,
-                    rec_left = player.RecLeft,
-                    accesslevel = player.AccessLevel,
-                    punish_level = player.PunishLevel,
-                    punish_timer = player.PunishTimer,
-                    power_grade = player.PowerGrade,
-                    nobless = player.Nobless,
-                    last_recom_date = player.LastRecomDate,
-                    lastAccess = player.LastAccess,
-                    obj_Id = player.ObjectId
+                    level = character.Level,
+                    maxHp = character.MaxHp,
+                    curHp = character.CurHp,
+                    maxCp = character.MaxCp,
+                    curCp = character.CurCp,
+                    maxMp = character.MaxMp,
+                    curMp = character.CurMp,
+                    face = character.Face,
+                    hairStyle = character.HairStyle,
+                    hairColor = character.HairColor,
+                    sex = character.Sex,
+                    heading = character.Heading,
+                    x = character.X,
+                    y = character.Y,
+                    z = character.Z,
+                    exp = character.Exp,
+                    expBeforeDeath = character.ExpBeforeDeath,
+                    sp = character.Sp,
+                    karma = character.Karma,
+                    pvpkills = character.PvpKills,
+                    pkkills = character.PkKills,
+                    online = character.Online,
+                    onlinetime = character.OnlineTime,
+                    race = character.Race,
+                    classid = character.ClassId,
+                    base_class = character.BaseClass,
+                    deletetime = character.DeleteTime,
+                    canCraft = character.CanCraft,
+                    title = character.Title,
+                    rec_have = character.RecHave,
+                    rec_left = character.RecLeft,
+                    accesslevel = character.AccessLevel,
+                    punish_level = character.PunishLevel,
+                    punish_timer = character.PunishTimer,
+                    power_grade = character.PowerGrade,
+                    nobless = character.Nobless,
+                    last_recom_date = character.LastRecomDate,
+                    lastAccess = character.LastAccess,
+                    obj_Id = character.ObjectId
                 });
             }
             catch (MySqlException ex)
@@ -175,11 +175,11 @@ namespace L2dotNET.Repositories
             }
         }
 
-        public PlayerContract GetPlayerModelBySlotId(string accountName, int slotId)
+        public CharacterContract GetPlayerModelBySlotId(string accountName, int slotId)
         {
             try
             {
-                return Db.Query<PlayerContract>(@"select obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
+                return Db.Query<CharacterContract>(@"select obj_Id as ObjectId, char_name as Name, Level, MaxHp, CurHp, MaxCp, CurCp,MaxMp,CurMp,
                                                Face,HairStyle,HairColor,Sex,Heading,X,Y,Z,Exp,ExpBeforeDeath,Sp,Karma,PvpKills,PkKills,base_class as BaseClass,classid as ClassId, DeleteTime,CanCraft,Title,
                                                rec_have as RecHave,rec_left as RecLeft,AccessLevel,punish_level as PunishLevel,punish_timer as PunishTimer,
                                                power_grade as PowerGrade,Nobless,Hero,last_recom_date as LastRecomDate

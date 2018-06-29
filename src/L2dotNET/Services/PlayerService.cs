@@ -90,7 +90,7 @@ namespace L2dotNET.Services
         public void CreatePlayer(L2Player player)
         {
             // TODO Use automapper to map this
-            var playerContract = new PlayerContract
+            var playerContract = new CharacterContract
             {
                 AccountName = player.AccountName,
                 ObjectId = player.ObjId,
@@ -142,7 +142,7 @@ namespace L2dotNET.Services
         public void UpdatePlayer(L2Player player)
         {
             //TODO Use automapper to map this
-            PlayerContract playerContract = new PlayerContract
+            CharacterContract characterContract = new CharacterContract
             {
                 ObjectId = player.ObjId,
                 Level = player.Level,
@@ -181,7 +181,7 @@ namespace L2dotNET.Services
                 Nobless = player.Nobless,
                 LastAccess = player.LastAccess
             };
-            _playerRepository.UpdatePlayer(playerContract);
+            _playerRepository.UpdatePlayer(characterContract);
         }
 
         public L2Player GetPlayerBySlotId(string accountName, int slotId)

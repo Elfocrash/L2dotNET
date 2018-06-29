@@ -4,15 +4,15 @@ namespace L2dotNET.Repositories.Contracts
 {
     public interface IPlayerRepository
     {
-        PlayerContract GetPlayerByLogin(int objId);
+        CharacterContract GetPlayerByLogin(int objId);
 
         bool CheckIfPlayerNameExists(string name);
 
-        void CreatePlayer(PlayerContract player);
+        void CreatePlayer(CharacterContract character);
 
-        void UpdatePlayer(PlayerContract player);
+        void UpdatePlayer(CharacterContract character);
 
-        PlayerContract GetPlayerModelBySlotId(string accountName, int slotId);
+        CharacterContract GetPlayerModelBySlotId(string accountName, int slotId);
 
         bool MarkToDeleteChar(int objId, long deletetime);
 

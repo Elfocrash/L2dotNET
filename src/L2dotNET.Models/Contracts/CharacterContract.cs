@@ -1,6 +1,6 @@
 ﻿namespace L2dotNET.DataContracts
 {
-    public class PlayerContract
+    public class CharacterContract
     {
         public string AccountName { get; set; }
 
