@@ -12,7 +12,6 @@ namespace L2dotNET.Services
             provider.AddSingleton<ICharacterService, CharacterService>();
             provider.AddSingleton<IAccountService, AccountService>();
             provider.AddSingleton<IServerService, ServerService>();
-            provider.AddSingleton<ICheckService, CheckService>();
             provider.AddSingleton<IItemService, ItemService>();
         }
     }

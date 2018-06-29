@@ -9,12 +9,10 @@ namespace L2dotNET
     {
         private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
-        private readonly ICheckService _checkService;
         public bool Initialised { get; private set; }
 
-        public PreReqValidation(ICheckService checkService)
+        public PreReqValidation()
         {
-            _checkService = checkService;
         }
 
         public async Task Initialise()
@@ -24,7 +22,8 @@ namespace L2dotNET
                 return;
             }
 
-            if (_checkService.PreCheckRepository())
+            //TODO: Add Check service
+            if (true)
             {
                 Initialised = true;
                 return;
