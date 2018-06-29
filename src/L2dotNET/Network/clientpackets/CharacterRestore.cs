@@ -11,7 +11,7 @@ namespace L2dotNET.Network.clientpackets
 {
     class CharacterRestore : PacketBase
     {
-        public readonly IPlayerService _playerService;
+        public readonly ICharacterService CharacterService;
 
         private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
@@ -21,7 +21,7 @@ namespace L2dotNET.Network.clientpackets
         public CharacterRestore(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
-            _playerService = serviceProvider.GetService<IPlayerService>();
+            CharacterService = serviceProvider.GetService<ICharacterService>();
             _charSlot = packet.ReadInt();
         }
 

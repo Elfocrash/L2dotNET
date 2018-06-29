@@ -30,22 +30,22 @@ namespace L2dotNET.Models.Player
     {
         private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
-        public L2Player(IPlayerService playerService, int objectId, PcTemplate template) : base(objectId, template)
+        public L2Player(ICharacterService characterService, int objectId, PcTemplate template) : base(objectId, template)
         {
             Template = template;
-            _playerService = playerService;
+            CharacterService = characterService;
             CharacterStat = new CharacterStat(this);
             InitializeCharacterStatus();
             Calculators = new Models.Stats.Calculator[Models.Stats.Stats.Values.Count()];
             AddFuncsToNewCharacter();
         }
 
-        public L2Player(IPlayerService playerService) :base(0, null)
+        public L2Player(ICharacterService characterService) :base(0, null)
         {
-            _playerService = playerService;
+            CharacterService = characterService;
         }
 
-        public readonly IPlayerService _playerService;
+        public readonly ICharacterService CharacterService;
 
         public new PlayerStatus CharStatus => (PlayerStatus)base.CharStatus;
 
@@ -528,7 +528,7 @@ namespace L2dotNET.Models.Player
             Party?.Leave(this);
 
             Online = 0;
-            _playerService.UpdatePlayer(this);
+            CharacterService.UpdatePlayer(this);
             L2World.Instance.RemovePlayer(this);
             DecayMe();
 
@@ -1456,7 +1456,7 @@ namespace L2dotNET.Models.Player
 
         public int RemainingDeleteTime() => AccessLevel > -100 ? (DeleteTime.HasValue ? (int)(DeleteTime.Value - DateTime.UtcNow).TotalSeconds : 0) : -1;
 
-        public void SetCharDeleteTime() => DeleteTime = DateTime.UtcNow.AddDays(_playerService.GetDaysRequiredToDeletePlayer());
+        public void SetCharDeleteTime() => DeleteTime = DateTime.UtcNow.AddDays(CharacterService.GetDaysRequiredToDeletePlayer());
 
         public void SetCharLastAccess() => LastAccess = DateTime.UtcNow;
 

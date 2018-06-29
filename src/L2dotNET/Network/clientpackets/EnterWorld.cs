@@ -17,14 +17,14 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly GameClient _client;
 
-        private readonly IPlayerService _playerService;
+        private readonly ICharacterService CharacterService;
         private readonly AnnouncementManager _announcementManager;
 
         public EnterWorld(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
             _announcementManager = serviceProvider.GetService<AnnouncementManager>();
-            _playerService = serviceProvider.GetService<IPlayerService>();
+            CharacterService = serviceProvider.GetService<ICharacterService>();
         }
 
         public override async Task RunImpl()
@@ -34,7 +34,7 @@ namespace L2dotNET.Network.clientpackets
                 L2Player player = _client.CurrentPlayer;
 
                 player.SetCharLastAccess();
-                _playerService.UpdatePlayer(player);
+                CharacterService.UpdatePlayer(player);
 
                 player.TotalRestore();
 

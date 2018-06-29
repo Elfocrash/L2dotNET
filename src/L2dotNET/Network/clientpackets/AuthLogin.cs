@@ -10,7 +10,7 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly IAccountService _accountService;
         private readonly AuthThread _authThread;
-        private readonly IPlayerService _playerService;
+        private readonly ICharacterService CharacterService;
 
         private readonly GameClient _client;
         private readonly string _loginName;
@@ -24,7 +24,7 @@ namespace L2dotNET.Network.clientpackets
             _client = client;
             _authThread = serviceProvider.GetService<AuthThread>();
             _accountService = serviceProvider.GetService<IAccountService>();
-            _playerService = serviceProvider.GetService<IPlayerService>();
+            CharacterService = serviceProvider.GetService<ICharacterService>();
             _loginName = packet.ReadString();
             _playKey2 = packet.ReadInt();
             _playKey1 = packet.ReadInt();

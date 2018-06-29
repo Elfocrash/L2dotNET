@@ -3,7 +3,7 @@ using L2dotNET.DataContracts;
 
 namespace L2dotNET.Repositories.Contracts
 {
-    public interface IPlayerRepository
+    public interface ICharacterRepository
     {
         Task<bool> CheckIfPlayerNameExists(string name);
 

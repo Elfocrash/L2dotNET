@@ -17,7 +17,7 @@ namespace L2dotNET
 {
     public class GameClient
     {
-        private readonly IPlayerService _playerService;
+        private readonly ICharacterService CharacterService;
         private readonly ClientManager _clientManager;
         private readonly GamePacketHandler _gamePacketHandler;
         private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
@@ -39,9 +39,9 @@ namespace L2dotNET
         public long TrafficUp,
                     TrafficDown;
 
-        public GameClient(IPlayerService playerService, ClientManager clientManager, TcpClient tcpClient, GamePacketHandler gamePacketHandler)
+        public GameClient(ICharacterService characterService, ClientManager clientManager, TcpClient tcpClient, GamePacketHandler gamePacketHandler)
         {
-            _playerService = playerService;
+            CharacterService = characterService;
             Log.Info($"Connection from {tcpClient.Client.RemoteEndPoint}");
             Client = tcpClient;
             _gamePacketHandler = gamePacketHandler;
@@ -125,7 +125,7 @@ namespace L2dotNET
 
         public async Task<L2Player> LoadPlayerInSlot(string accName, int charSlot)
         {
-            L2Player player = await _playerService.GetPlayerBySlotId(accName, charSlot);
+            L2Player player = await CharacterService.GetPlayerBySlotId(accName, charSlot);
             return player;
         }
 
