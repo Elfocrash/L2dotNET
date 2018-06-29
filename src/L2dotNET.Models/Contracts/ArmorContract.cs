@@ -4,7 +4,7 @@ using L2dotNET.DataContracts.Shared.Enums;
 
 namespace L2dotNET.DataContracts
 {
-    [Table("Armor")]
+    [Table("Armors")]
     public class ArmorContract
     {
         [Key]
