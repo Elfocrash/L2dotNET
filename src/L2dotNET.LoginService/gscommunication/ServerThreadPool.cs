@@ -38,8 +38,7 @@ namespace L2dotNET.LoginService.GSCommunication
             Servers.AddRange(servers.Select(curServ => new L2Server
                 {
                     Id = (byte) curServ.ServerId,
-                    Info = curServ.Name,
-                    Code = curServ.Code
+                    Info = curServ.Name
                 }));
 
             Log.Info($"GameServerThread: loaded {Servers.Count} servers");
