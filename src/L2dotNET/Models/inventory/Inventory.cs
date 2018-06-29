@@ -53,10 +53,10 @@ namespace L2dotNET.Models.Inventory
             return Paperdoll.Where(item => item != null).ToList();
         }
 
-        public override void Restore(L2Character owner)
+        public override async void Restore(L2Character owner)
         {
-            List<ItemContract> models = ItemService.RestoreInventory(owner.ObjId, "Inventory");
-            List<L2Item> items = RestoreFromDb(models);
+            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.ObjId);
+            List<L2Item> items = RestoreFromDb(models.ToList());
 
             foreach (L2Item item in items)
             {

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 
 namespace L2dotNET.Services.Contracts
 {
     public interface IItemService
     {
-        List<ItemContract> RestoreInventory(int objId, string location);
+        Task<IEnumerable<ItemContract>> RestoreInventory(int characterId);
     }
 }

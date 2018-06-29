@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
@@ -16,9 +17,9 @@ namespace L2dotNET.Services
             _itemRepository = itemRepository;
         }
 
-        public List<ItemContract> RestoreInventory(int objId, string location)
+        public async Task<IEnumerable<ItemContract>> RestoreInventory(int characterId)
         {
-            return _itemRepository.RestoreInventory(objId, location);
+            return await _itemRepository.RestoreInventory(characterId);
         }
     }
 }
