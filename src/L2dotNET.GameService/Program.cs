@@ -76,12 +76,8 @@ namespace L2dotNET.GameService
         private static void ConfigureServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<Config.Config>();
-            serviceCollection.AddSingleton<IPlayerService, PlayerService>();
-            serviceCollection.AddSingleton<IAccountService, AccountService>();
-            serviceCollection.AddSingleton<IServerService, ServerService>();
-            serviceCollection.AddSingleton<ICheckService, CheckService>();
-            serviceCollection.AddSingleton<IItemService, ItemService>();
 
+            ServicesDependencyBinder.Bind(serviceCollection);
             RepositoriesDependencyBinder.Bind(serviceCollection);
 
             serviceCollection.AddSingleton<GamePacketHandlerAuth>();

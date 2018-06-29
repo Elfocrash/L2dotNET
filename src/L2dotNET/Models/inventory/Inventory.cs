@@ -12,7 +12,8 @@ namespace L2dotNET.Models.Inventory
 {
     public class Inventory : ItemContainer
     {
-        public Inventory(IItemService itemService, IdFactory idFactory, ItemTable itemTable, L2Character owner) : base(itemService, idFactory, itemTable)
+        public Inventory(ICrudService<ItemContract> itemCrudService, IItemService itemService, IdFactory idFactory, ItemTable itemTable, L2Character owner) 
+            : base(itemCrudService, itemService, idFactory, itemTable)
         {
             Owner = owner;
             Paperdoll = new L2Item[PaperdollTotalslots];

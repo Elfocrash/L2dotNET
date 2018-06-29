@@ -15,8 +15,6 @@ namespace L2dotNET.Models.Items
 {
     public class L2Item : L2Object
     {
-        public IItemService _itemService;
-
         public ItemTemplate Template;
         public int Count;
         public short IsEquipped { get; set; }
@@ -40,10 +38,11 @@ namespace L2dotNET.Models.Items
 
         public bool Blocked = false;
         public bool TempBlock = false;
+        private readonly ICrudService<ItemContract> _itemCrudService;
         private readonly IdFactory _idFactory;
-        public L2Item(IItemService itemService, IdFactory idFactory, ItemTemplate template , int objectId) : base(objectId)
+        public L2Item(ICrudService<ItemContract> itemCrudService, IdFactory idFactory, ItemTemplate template , int objectId) : base(objectId)
         {
-            _itemService = itemService;
+            _itemCrudService = itemCrudService;
             _idFactory = idFactory;
             ObjId = objectId != 0 ? objectId : _idFactory.NextId();
             Template = template;
@@ -162,7 +161,7 @@ namespace L2dotNET.Models.Items
         {
             ItemContract contract = MapItemModel();
 
-            _itemService.UpdateItem(contract);
+            _itemCrudService.Update(contract);
         }
 
         private void InsertInDb()
@@ -170,7 +169,7 @@ namespace L2dotNET.Models.Items
             Location = ItemLocation.Inventory;
             ItemContract contract = MapItemModel();
 
-            _itemService.InsertNewItem(contract);
+            _itemCrudService.Add(contract);
         }
 
         private ItemContract MapItemModel()

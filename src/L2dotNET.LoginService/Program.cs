@@ -35,12 +35,7 @@ namespace L2dotNET.LoginService
 
         private static void ConfigureServices(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddSingleton<IPlayerService, PlayerService>();
-            serviceCollection.AddSingleton<IAccountService, AccountService>();
-            serviceCollection.AddSingleton<IServerService, ServerService>();
-            serviceCollection.AddSingleton<ICheckService, CheckService>();
-            serviceCollection.AddSingleton<IItemService, ItemService>();
-
+            ServicesDependencyBinder.Bind(serviceCollection);
             RepositoriesDependencyBinder.Bind(serviceCollection);
 
             serviceCollection.AddSingleton<GamePacketHandlerAuth>();

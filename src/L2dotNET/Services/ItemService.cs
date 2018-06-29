@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.DataContracts;
 using L2dotNET.Repositories.Contracts;
@@ -15,55 +16,9 @@ namespace L2dotNET.Services
             _itemRepository = itemRepository;
         }
 
-        public List<ArmorContract> GetAllArmorsList()
-        {
-            return _itemRepository.GetAllArmors();
-        }
-
-        public Dictionary<int, ArmorContract> GetAllArmorModelsDict()
-        {
-            List<ArmorContract> armorModels = _itemRepository.GetAllArmors();
-
-            return armorModels.ToDictionary(model => model.ArmorId);
-        }
-
-        public Dictionary<int, WeaponContract> GetAllWeaponModelsDict()
-        {
-            List<WeaponContract> weaponModels = _itemRepository.GetAllWeapons();
-
-            return weaponModels.ToDictionary(model => model.WeaponId);
-        }
-
-        public Dictionary<int, EtcItemContract> GetAllEtcItemModelsDict()
-        {
-            List<EtcItemContract> etcItemModels = _itemRepository.GetAllEtcItems();
-
-            return etcItemModels.ToDictionary(model => model.EtcItemId);
-        }
-
-        public void InsertNewItem(ItemContract item)
-        {
-            _itemRepository.InsertNewItem(item);
-        }
-
-        public void UpdateItem(ItemContract item)
-        {
-            _itemRepository.UpdateItem(item);
-        }
-
         public List<ItemContract> RestoreInventory(int objId, string location)
         {
             return _itemRepository.RestoreInventory(objId, location);
-        }
-
-        public List<WeaponContract> GetAllWeapons()
-        {
-            return _itemRepository.GetAllWeapons();
-        }
-
-        public List<EtcItemContract> GetAllEtcItems()
-        {
-            return _itemRepository.GetAllEtcItems();
         }
     }
 }
