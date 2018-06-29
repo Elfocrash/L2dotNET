@@ -58,10 +58,10 @@ namespace L2dotNET.Models.Inventory
             return Items.FirstOrDefault(item => item.ObjId == objectId);
         }
 
-        public virtual void Restore(L2Character owner)
+        public virtual async void Restore(L2Character owner)
         {
-            List<ItemContract> models = ItemService.RestoreInventory(owner.ObjId, "Inventory");
-            List<L2Item> items = RestoreFromDb(models);
+            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.ObjId);
+            List<L2Item> items = RestoreFromDb(models.ToList());
 
             foreach (L2Item item in items)
             {
