@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace L2dotNET.DataContracts
 {
-    [Table("Player")]
+    [Table("Characters")]
     public class CharacterContract
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CharacterId { get; set; }
 
         public string AccountName { get; set; }

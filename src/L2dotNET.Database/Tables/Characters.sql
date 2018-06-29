@@ -41,7 +41,8 @@
     [Nobless] BIT NOT NULL, 
     [Hero] BIT NOT NULL, 
     [LastRecomDate] DATETIME2 NULL, 
-    CONSTRAINT [FK_Characters_Accounts] FOREIGN KEY ([AccountId]) REFERENCES [Accounts]([AccountId])
+    CONSTRAINT [FK_Characters_Accounts] FOREIGN KEY ([AccountId]) REFERENCES [Accounts]([AccountId]), 
+    CONSTRAINT [AK_Characters_Name] UNIQUE ([Name])
 )
 
 GO

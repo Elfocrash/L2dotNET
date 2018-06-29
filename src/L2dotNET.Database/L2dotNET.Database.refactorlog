@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="9d057d38-e981-433b-9e6b-9fb621983787" ChangeDateTime="06/29/2018 20:08:05">
+    <Property Name="ElementName" Value="[dbo].[AK_Characters_Column]" />
+    <Property Name="ElementType" Value="SqlUniqueConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[AK_Characters_Name]" />
+  </Operation>
+</Operations>

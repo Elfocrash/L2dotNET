@@ -30,23 +30,19 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
+            //if (_client.CurrentPlayer == null)
             {
-                //if (_client.CurrentPlayer == null)
-                {
-                    L2Player player = _playerService.GetPlayerBySlotId(_client.AccountName, _charSlot);
+                L2Player player = await _playerService.GetPlayerBySlotId(_client.AccountName, _charSlot);
 
-                    if (player == null)
-                        return;
+                if (player == null)
+                    return;
 
-                    player.Online = 1;
-                    player.Gameclient = _client;
-                    _client.CurrentPlayer = player;
+                player.Online = 1;
+                player.Gameclient = _client;
+                _client.CurrentPlayer = player;
 
-                    _client.SendPacketAsync(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
-                }
-            });
+                _client.SendPacketAsync(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
+            }
         }
-
     }
 }

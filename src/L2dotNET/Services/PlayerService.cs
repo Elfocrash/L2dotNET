@@ -1,4 +1,5 @@
-﻿using L2dotNET.Repositories.Contracts;
+﻿using System.Threading.Tasks;
+using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
 using L2dotNET.DataContracts;
 using L2dotNET.DataContracts.Shared.Enums;
@@ -11,6 +12,7 @@ namespace L2dotNET.Services
 {
     public class PlayerService : IPlayerService
     {
+        private readonly ICrudService<CharacterContract> _characterCrudService;
         private readonly IPlayerRepository _playerRepository;
         private readonly ICrudService<ItemContract> _itemCrudService;
         private readonly IItemService _itemService;
@@ -18,23 +20,30 @@ namespace L2dotNET.Services
         private readonly IdFactory _idFactory;
         private readonly ItemTable _itemTable;
 
-        public PlayerService(ICrudService<ItemContract> itemCrudService, IPlayerRepository playerRepository, IItemService itemService, IdFactory idFactory, ItemTable itemTable, Config.Config config)
+        public PlayerService(ICrudService<ItemContract> itemCrudService,
+            ICrudService<CharacterContract> characterCrudService,
+            IPlayerRepository playerRepository,
+            IItemService itemService,
+            IdFactory idFactory,
+            ItemTable itemTable,
+            Config.Config config)
         {
             _itemCrudService = itemCrudService;
             _itemService = itemService;
             _idFactory = idFactory;
             _itemTable = itemTable;
             _config = config;
+            _characterCrudService = characterCrudService;
             _playerRepository = playerRepository;
         }
 
-        public L2Player GetPlayerByLogin(int objId)
+        public async Task<L2Player> GetPlayerByLogin(int characterId)
         {
-            var playerContract = _playerRepository.GetPlayerByLogin(objId);
+            var playerContract = await _characterCrudService.GetById(characterId);
             //TODO Use automapper to map this
-            var player = new L2Player(this, objId, CharTemplateTable.Instance.GetTemplate(playerContract.ClassId))
+            var player = new L2Player(this, characterId, CharTemplateTable.Instance.GetTemplate(playerContract.ClassId))
             {
-                ObjId = objId,
+                ObjId = characterId,
                 Name = playerContract.Name,
                 Title = playerContract.Title,
                 Level = (byte)playerContract.Level,
@@ -82,9 +91,9 @@ namespace L2dotNET.Services
             return player;
         }
 
-        public bool CheckIfPlayerNameExists(string name)
+        public async Task<bool> CheckIfPlayerNameExists(string name)
         {
-            return _playerRepository.CheckIfPlayerNameExists(name);
+            return await _playerRepository.CheckIfPlayerNameExists(name);
         }
 
         public void CreatePlayer(L2Player player)
@@ -136,7 +145,7 @@ namespace L2dotNET.Services
                 Hero = player.Hero,
                 LastRecomDate = player.LastRecomDate
             };
-            _playerRepository.CreatePlayer(playerContract);
+            _characterCrudService.Add(playerContract);
         }
 
         public void UpdatePlayer(L2Player player)
@@ -181,34 +190,29 @@ namespace L2dotNET.Services
                 Nobless = player.Nobless,
                 LastAccess = player.LastAccess
             };
-            _playerRepository.UpdatePlayer(characterContract);
+            _characterCrudService.Update(characterContract);
         }
 
-        public L2Player GetPlayerBySlotId(string accountName, int slotId)
+        public async Task<L2Player> GetPlayerBySlotId(string accountName, int slotId)
         {
-            var playerContract = _playerRepository.GetPlayerModelBySlotId(accountName, slotId);
-            var player = RestorePlayer(playerContract.CharacterId, null);
+            var playerContract = await _playerRepository.GetPlayerModelBySlotId(accountName, slotId);
+            var player = await RestorePlayer(playerContract.CharacterId, null);
             return player;
         }
 
-        public bool MarkToDeleteChar(int objId, long deletetime)
+        public bool DeleteCharByObjId(int characterId)
         {
-            return _playerRepository.MarkToDeleteChar(objId, deletetime);
+            _characterCrudService.Delete(new CharacterContract
+                {
+                    CharacterId = characterId
+                });
+
+            return true;
         }
 
-        public bool MarkToRestoreChar(int objId)
+        public async Task<L2Player> RestorePlayer(int id, GameClient client)
         {
-            return _playerRepository.MarkToRestoreChar(objId);
-        }
-
-        public bool DeleteCharByObjId(int objId)
-        {
-            return _playerRepository.DeleteCharByObjId(objId);
-        }
-
-        public L2Player RestorePlayer(int id, GameClient client)
-        {
-            var player = GetPlayerByLogin(id);
+            var player = await GetPlayerByLogin(id);
 
             player.Gameclient = client;
             //player.CStatsInit();
