@@ -41,7 +41,8 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
         {
             await Task.Run(() =>
             {
-                L2Server server = LoginServer.ServiceProvider.GetService<ServerThreadPool>().Servers.FirstOrDefault(srv => srv.Code == _code);
+                // TODO: Fix _code
+                L2Server server = LoginServer.ServiceProvider.GetService<ServerThreadPool>().Servers.FirstOrDefault();
 
                 if (server == null)
                 {

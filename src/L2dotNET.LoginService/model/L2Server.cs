@@ -6,7 +6,6 @@ namespace L2dotNET.LoginService.Model
 {
     public class L2Server
     {
-        public string Code { get; set; }
         public byte[] DefaultAddress { get; set; }
         public ServerThread Thread { get; set; }
         public string Info { get; set; }
