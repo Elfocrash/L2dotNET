@@ -93,7 +93,7 @@ namespace L2dotNET.Services
             var playerContract = new CharacterContract
             {
                 AccountName = player.AccountName,
-                ObjectId = player.ObjId,
+                CharacterId = player.ObjId,
                 Name = player.Name,
                 Level = player.Level,
                 MaxHp = player.MaxHp,
@@ -102,10 +102,10 @@ namespace L2dotNET.Services
                 CurCp = (int)player.CurCp,
                 MaxMp = player.MaxMp,
                 CurMp = (int)player.CharStatus.CurrentMp,
-                Face = (int)player.Face,
-                HairStyle = (int)player.HairStyleId,
-                HairColor = (int)player.HairColor,
-                Sex = (int)player.Sex,
+                Face = (byte)player.Face,
+                HairStyle = (byte)player.HairStyleId,
+                HairColor = (byte)player.HairColor,
+                Sex = (byte)player.Sex,
                 Heading = player.Heading,
                 X = player.X,
                 Y = player.Y,
@@ -144,7 +144,7 @@ namespace L2dotNET.Services
             //TODO Use automapper to map this
             CharacterContract characterContract = new CharacterContract
             {
-                ObjectId = player.ObjId,
+                CharacterId = player.ObjId,
                 Level = player.Level,
                 MaxHp = player.MaxHp,
                 CurHp = (int)player.CharStatus.CurrentHp,
@@ -152,10 +152,10 @@ namespace L2dotNET.Services
                 CurCp = (int)player.CurCp,
                 MaxMp = player.MaxMp,
                 CurMp = (int)player.CharStatus.CurrentMp,
-                Face = (int)player.Face,
-                HairStyle = (int)player.HairStyleId,
-                HairColor = (int)player.HairColor,
-                Sex = (int)player.Sex,
+                Face = (byte)player.Face,
+                HairStyle = (byte)player.HairStyleId,
+                HairColor = (byte)player.HairColor,
+                Sex = (byte)player.Sex,
                 Heading = player.Heading,
                 X = player.X,
                 Y = player.Y,
@@ -187,7 +187,7 @@ namespace L2dotNET.Services
         public L2Player GetPlayerBySlotId(string accountName, int slotId)
         {
             var playerContract = _playerRepository.GetPlayerModelBySlotId(accountName, slotId);
-            var player = RestorePlayer(playerContract.ObjectId, null);
+            var player = RestorePlayer(playerContract.CharacterId, null);
             return player;
         }
 

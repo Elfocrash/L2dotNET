@@ -69,7 +69,7 @@ namespace L2dotNET.Repositories
                              @last_recom_date)", new
                 {
                     account_name = character.AccountName,
-                    obj_Id = character.ObjectId,
+                    obj_Id = character.CharacterId,
                     char_name = character.Name,
                     Level = character.Level,
                     MaxHp = character.MaxHp,
@@ -166,7 +166,7 @@ namespace L2dotNET.Repositories
                     nobless = character.Nobless,
                     last_recom_date = character.LastRecomDate,
                     lastAccess = character.LastAccess,
-                    obj_Id = character.ObjectId
+                    obj_Id = character.CharacterId
                 });
             }
             catch (MySqlException ex)

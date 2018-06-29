@@ -1,10 +1,16 @@
-﻿namespace L2dotNET.DataContracts
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace L2dotNET.DataContracts
 {
+    [Table("Player")]
     public class CharacterContract
     {
-        public string AccountName { get; set; }
+        [Key]
+        public int CharacterId { get; set; }
 
-        public int ObjectId { get; set; }
+        public string AccountName { get; set; }
 
         public string Name { get; set; }
 
@@ -22,13 +28,13 @@
 
         public int CurMp { get; set; }
 
-        public int Face { get; set; }
+        public byte Face { get; set; }
 
-        public int HairStyle { get; set; }
+        public byte HairStyle { get; set; }
 
-        public int HairColor { get; set; }
+        public byte HairColor { get; set; }
 
-        public int Sex { get; set; }
+        public byte Sex { get; set; }
 
         public int Heading { get; set; }
 
@@ -56,7 +62,7 @@
 
         public int BaseClass { get; set; }
 
-        public long DeleteTime { get; set; }
+        public DateTime? DeleteTime { get; set; }
 
         public int CanCraft { get; set; }
 
@@ -74,7 +80,7 @@
 
         public int CharSlot { get; set; }
 
-        public long LastAccess { get; set; }
+        public DateTime? LastAccess { get; set; }
 
         public int PunishLevel { get; set; }
 
@@ -82,10 +88,10 @@
 
         public int PowerGrade { get; set; }
 
-        public int Nobless { get; set; }
+        public bool Nobless { get; set; }
 
-        public int Hero { get; set; }
+        public bool Hero { get; set; }
 
-        public long LastRecomDate { get; set; }
+        public DateTime? LastRecomDate { get; set; }
     }
 }

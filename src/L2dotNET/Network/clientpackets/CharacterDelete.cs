@@ -77,11 +77,12 @@ namespace L2dotNET.Network.clientpackets
             else
             {
                 player.SetCharDeleteTime();
-                if (!_playerService.MarkToDeleteChar(player.ObjId, player.DeleteTime))
-                {
-                    _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
-                    return;
-                }
+                // TODO: Fix that
+                //if (!_playerService.MarkToDeleteChar(player.ObjId, player.DeleteTime))
+                //{
+                //    _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
+              //      return;
+            //    }
             }
 
             _client.SendPacketAsync(new CharDeleteOk());

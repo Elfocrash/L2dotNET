@@ -49,7 +49,7 @@ namespace L2dotNET.Network.clientpackets
             }
 
             _playerService.MarkToRestoreChar(player.ObjId);
-            player.DeleteTime = 0;
+            player.DeleteTime = null;
         }
     }
 }
