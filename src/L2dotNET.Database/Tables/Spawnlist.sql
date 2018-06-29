@@ -6,7 +6,7 @@
     [LocY] INT NOT NULL, 
     [LocZ] INT NOT NULL, 
     [Heading] INT NOT NULL, 
-    [RespownDelay] INT NOT NULL, 
+    [RespawnDelay] INT NOT NULL, 
     [RespawnRand] INT NOT NULL, 
     [PeriodOfDay] INT NOT NULL
 )

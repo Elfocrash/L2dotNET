@@ -7,4 +7,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[AK_Characters_Name]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="d6511f05-38c7-47de-98a7-d5a457c3c5c3" ChangeDateTime="06/29/2018 23:16:20">
+    <Property Name="ElementName" Value="[dbo].[Spawnlist].[RespownDelay]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Spawnlist]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RespawnDelay" />
+  </Operation>
 </Operations>

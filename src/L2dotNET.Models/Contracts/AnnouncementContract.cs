@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace L2dotNET.DataContracts
 {
-    [Table("Announcement")]
+    [Table("Announcements")]
     public class AnnouncementContract
     {
         [Key]
