@@ -10,19 +10,19 @@ using L2dotNET.Tables;
 
 namespace L2dotNET.Services
 {
-    public class PlayerService : IPlayerService
+    public class CharacterService : ICharacterService
     {
         private readonly ICrudService<CharacterContract> _characterCrudService;
-        private readonly IPlayerRepository _playerRepository;
+        private readonly ICharacterRepository _characterRepository;
         private readonly ICrudService<ItemContract> _itemCrudService;
         private readonly IItemService _itemService;
         private readonly Config.Config _config;
         private readonly IdFactory _idFactory;
         private readonly ItemTable _itemTable;
 
-        public PlayerService(ICrudService<ItemContract> itemCrudService,
+        public CharacterService(ICrudService<ItemContract> itemCrudService,
             ICrudService<CharacterContract> characterCrudService,
-            IPlayerRepository playerRepository,
+            ICharacterRepository characterRepository,
             IItemService itemService,
             IdFactory idFactory,
             ItemTable itemTable,
@@ -34,7 +34,7 @@ namespace L2dotNET.Services
             _itemTable = itemTable;
             _config = config;
             _characterCrudService = characterCrudService;
-            _playerRepository = playerRepository;
+            _characterRepository = characterRepository;
         }
 
         public async Task<L2Player> GetPlayerByLogin(int characterId)
@@ -93,7 +93,7 @@ namespace L2dotNET.Services
 
         public async Task<bool> CheckIfPlayerNameExists(string name)
         {
-            return await _playerRepository.CheckIfPlayerNameExists(name);
+            return await _characterRepository.CheckIfPlayerNameExists(name);
         }
 
         public void CreatePlayer(L2Player player)
@@ -195,7 +195,7 @@ namespace L2dotNET.Services
 
         public async Task<L2Player> GetPlayerBySlotId(string accountName, int slotId)
         {
-            var playerContract = await _playerRepository.GetPlayerModelBySlotId(accountName, slotId);
+            var playerContract = await _characterRepository.GetPlayerModelBySlotId(accountName, slotId);
             var player = await RestorePlayer(playerContract.CharacterId, null);
             return player;
         }

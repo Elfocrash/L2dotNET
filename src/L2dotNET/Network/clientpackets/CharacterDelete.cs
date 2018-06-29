@@ -11,7 +11,7 @@ namespace L2dotNET.Network.clientpackets
 {
     class CharacterDelete : PacketBase
     {
-        private readonly IPlayerService _playerService;
+        private readonly ICharacterService CharacterService;
 
         private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
@@ -21,7 +21,7 @@ namespace L2dotNET.Network.clientpackets
         public CharacterDelete(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
-            _playerService = serviceProvider.GetService<IPlayerService>();
+            CharacterService = serviceProvider.GetService<ICharacterService>();
             _charSlot = packet.ReadInt();
         }
 
@@ -64,9 +64,9 @@ namespace L2dotNET.Network.clientpackets
             //    return;
             //}
 
-            if (_playerService.GetDaysRequiredToDeletePlayer() == 0)
+            if (CharacterService.GetDaysRequiredToDeletePlayer() == 0)
             {
-                if (!_playerService.DeleteCharByObjId(player.ObjId))
+                if (!CharacterService.DeleteCharByObjId(player.ObjId))
                 {
                     _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                     return;

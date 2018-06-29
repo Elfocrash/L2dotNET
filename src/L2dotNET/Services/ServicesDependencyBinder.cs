@@ -9,7 +9,7 @@ namespace L2dotNET.Services
         {
             provider.AddSingleton(typeof(ICrudService<>), typeof(CrudServiceBase<>));
 
-            provider.AddSingleton<IPlayerService, PlayerService>();
+            provider.AddSingleton<ICharacterService, CharacterService>();
             provider.AddSingleton<IAccountService, AccountService>();
             provider.AddSingleton<IServerService, ServerService>();
             provider.AddSingleton<ICheckService, CheckService>();

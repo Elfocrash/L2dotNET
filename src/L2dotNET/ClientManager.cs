@@ -11,7 +11,7 @@ namespace L2dotNET
     {
         private static readonly ILog log = LogProvider.GetCurrentClassLogger();
 
-        private readonly IPlayerService _playerService;
+        private readonly ICharacterService CharacterService;
        
         protected SortedList<string, DateTime> Flood = new SortedList<string, DateTime>();
         protected NetworkBlock Banned;
@@ -19,9 +19,9 @@ namespace L2dotNET
         public SortedList<string, GameClient> Clients = new SortedList<string, GameClient>();
         private readonly GamePacketHandler _gamePacketHandler;
 
-        public ClientManager(IPlayerService playerService, GamePacketHandler gamePacketHandler)
+        public ClientManager(ICharacterService characterService, GamePacketHandler gamePacketHandler)
         {
-            _playerService = playerService;
+            CharacterService = characterService;
             _gamePacketHandler = gamePacketHandler;
         }
 
@@ -57,7 +57,7 @@ namespace L2dotNET
                 return;
             }
 
-            GameClient gc = new GameClient(_playerService, this, client, _gamePacketHandler);
+            GameClient gc = new GameClient(CharacterService, this, client, _gamePacketHandler);
 
             lock (Clients)
                 Clients.Add(gc.Address.ToString(), gc);

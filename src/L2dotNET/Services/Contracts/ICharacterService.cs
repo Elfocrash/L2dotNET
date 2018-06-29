@@ -3,7 +3,7 @@ using L2dotNET.Models.Player;
 
 namespace L2dotNET.Services.Contracts
 {
-    public interface IPlayerService
+    public interface ICharacterService
     {
         Task<L2Player> GetPlayerByLogin(int characterId);
 

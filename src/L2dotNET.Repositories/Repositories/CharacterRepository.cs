@@ -12,7 +12,7 @@ using PeregrineDb;
 
 namespace L2dotNET.Repositories
 {
-    public class PlayerRepository : IPlayerRepository
+    public class CharacterRepository : ICharacterRepository
     {
         private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
