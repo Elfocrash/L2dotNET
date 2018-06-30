@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts.GameModels;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Utility;
+using NLog;
 
 namespace L2dotNET.Tables
 {
     public class HtmCache : IInitialisable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private List<L2Html> _htmCache;
         private List<string> _htmFiles;

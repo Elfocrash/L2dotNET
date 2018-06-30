@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
-using L2dotNET.Services.Contracts;
+using NLog;
 
 namespace L2dotNET
 {
     public class PreReqValidation : IInitialisable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public bool Initialised { get; private set; }
 

@@ -4,16 +4,16 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using L2Crypt;
 using L2dotNET.DataContracts;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Network.Crypt;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
+using NLog;
 
 namespace L2dotNET.LoginService.Network
 {
     public class LoginClient
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public LoginClientState State { get; set; }
         public EndPoint Address { get; set; }
         public TcpClient Client { get; set; }

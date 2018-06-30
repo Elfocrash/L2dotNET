@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
-using Dapper;
 using L2dotNET.DataContracts;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Repositories.Utils;
-using MySql.Data.MySqlClient;
+using NLog;
 using PeregrineDb;
 
 namespace L2dotNET.Repositories
 {
     public class CharacterRepository : ICharacterRepository
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public async Task<bool> CheckIfPlayerNameExists(string name)
         {

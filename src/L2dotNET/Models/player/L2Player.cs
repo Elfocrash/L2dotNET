@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Enums;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Inventory;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Npcs;
@@ -22,13 +21,14 @@ using L2dotNET.Templates;
 using L2dotNET.Tools;
 using L2dotNET.Utility;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET.Models.Player
 {
     
     public class L2Player : L2Character
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public L2Player(ICharacterService characterService, int objectId, PcTemplate template) : base(objectId, template)
         {

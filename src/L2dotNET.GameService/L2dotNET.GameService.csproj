@@ -23,8 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\L2dotNet.Logging.Abstraction\L2dotNET.Logging.Abstraction.csproj" />
-    <ProjectReference Include="..\L2dotNET.Logging.Provider\L2dotNET.Logging.Provider.csproj" />
+    <ProjectReference Include="..\L2dotNet.Logging.Abstraction\L2dotNET.Logging.csproj" />
     <ProjectReference Include="..\L2dotNET\L2dotNET.csproj" />
   </ItemGroup>
 

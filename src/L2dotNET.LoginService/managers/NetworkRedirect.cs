@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Utility;
+using NLog;
 
 namespace L2dotNET.LoginService.Managers
 {
     class NetworkRedirect
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         private static volatile NetworkRedirect _instance;
         private static readonly object SyncRoot = new object();
 

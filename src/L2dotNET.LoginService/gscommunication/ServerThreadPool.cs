@@ -5,16 +5,16 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Services.Contracts;
+using NLog;
 
 namespace L2dotNET.LoginService.GSCommunication
 {
     public class ServerThreadPool
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private readonly IServerService _serverService;
         private readonly Config.Config _config;

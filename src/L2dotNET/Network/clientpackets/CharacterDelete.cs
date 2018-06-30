@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -13,7 +13,7 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly ICharacterService CharacterService;
 
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private readonly int _charSlot;

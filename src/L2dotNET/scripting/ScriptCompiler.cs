@@ -1,8 +1,8 @@
 ﻿using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Logging.Abstraction;
 using Microsoft.CSharp;
+using NLog;
 
 namespace L2dotNET.Scripting
 {
@@ -11,7 +11,7 @@ namespace L2dotNET.Scripting
     /// </summary>
     public class ScriptCompiler
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private readonly CSharpCodeProvider _provider;
 

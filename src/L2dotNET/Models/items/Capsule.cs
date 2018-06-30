@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
+using NLog;
 
 namespace L2dotNET.Models.Items
 {
     public class Capsule
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         private static volatile Capsule _instance;
         private static readonly object SyncRoot = new object();
 

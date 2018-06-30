@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
+using NLog;
 
 namespace L2dotNET
 {
     public class ClientManager
     {
-        private static readonly ILog log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private readonly ICharacterService CharacterService;
        
@@ -38,7 +38,7 @@ namespace L2dotNET
                 {
                     if (Flood[ip].CompareTo(DateTime.Now) == 1)
                     {
-                        log.Warn($"Active flooder: {ip}");
+                        Log.Warn($"Active flooder: {ip}");
                         client.Close();
                         return;
                     }
@@ -53,7 +53,7 @@ namespace L2dotNET
             if (!Banned.Allowed(ip))
             {
                 client.Close();
-                log.Error($"Connection attempt failed. {ip} banned.");
+                Log.Error($"Connection attempt failed. {ip} banned.");
                 return;
             }
 
@@ -61,7 +61,7 @@ namespace L2dotNET
 
             lock (Clients)
                 Clients.Add(gc.Address.ToString(), gc);
-            log.Info($"{Clients.Count} active connections");
+            Log.Info($"{Clients.Count} active connections");
         }
 
         public void Terminate(string sock)
@@ -69,7 +69,7 @@ namespace L2dotNET
             lock (Clients)
                 Clients.Remove(sock);
 
-            log.Info($"{Clients.Count} active connections");
+            Log.Info($"{Clients.Count} active connections");
         }
     }
 }
