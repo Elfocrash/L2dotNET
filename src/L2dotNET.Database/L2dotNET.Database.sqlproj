@@ -58,6 +58,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="Data" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Accounts.sql" />
@@ -70,6 +71,7 @@
     <Build Include="Tables\Characters.sql" />
     <Build Include="Tables\Servers.sql" />
     <Build Include="Tables\CharacterSkills.sql" />
+    <PostDeploy Include="Data\spawnlist.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="L2dotNET.Database.refactorlog" />
