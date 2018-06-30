@@ -37,7 +37,7 @@ namespace L2dotNET.Utility
         
         public static IEnumerable<Type> GetTypesInNamespace(Assembly assembly, string nameSpace)
         {
-            return assembly.GetTypes().Where(t => string.Equals(t.Namespace, nameSpace, StringComparison.Ordinal)).ToArray();
+            return assembly.GetTypes().Where(t => string.Equals(t.Namespace, nameSpace, StringComparison.Ordinal) && t.BaseType != typeof(object)).ToArray();
         }
 
         private static readonly DateTime Year1970 = new DateTime(1970, 1, 1);
