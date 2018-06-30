@@ -8,5 +8,5 @@
     [Heading] INT NOT NULL, 
     [RespawnDelay] INT NOT NULL, 
     [RespawnRand] INT NOT NULL, 
-    [PeriodOfDay] INT NOT NULL
+    [PeriodOfDay] TINYINT NOT NULL
 )
