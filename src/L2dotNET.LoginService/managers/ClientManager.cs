@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using L2Crypt;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Network;
+using NLog;
 
 namespace L2dotNET.LoginService.Managers
 {
     public sealed class ClientManager : IInitialisable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private const int ScrambleCount = 1;
         private ScrambledKeyPair[] _scrambledPairs;

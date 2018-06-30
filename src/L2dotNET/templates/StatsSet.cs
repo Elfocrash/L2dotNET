@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using L2dotNET.Logging.Abstraction;
+using NLog;
 
 namespace L2dotNET.Templates
 {
     public class StatsSet : Dictionary<string, object>
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public StatsSet() { }
 
@@ -76,8 +76,8 @@ namespace L2dotNET.Templates
             bool toReturn;
             return bool.TryParse(value, out toReturn) ? toReturn : defaultValue;
             // else
-            // log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(bool).FullName }'! The function will return the 'defaultValue' parameter.");
-            // log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+            // Log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(bool).FullName }'! The function will return the 'defaultValue' parameter.");
+            // Log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
             //if key doesn't exists,
             //returns the defaultValue var
         }
@@ -92,8 +92,8 @@ namespace L2dotNET.Templates
             byte toReturn;
             return byte.TryParse(value, out toReturn) ? toReturn : defaultValue;
             //else
-            //     log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(byte).FullName }'! The function will return the 'defaultValue' parameter.");
-            //log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+            //     Log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(byte).FullName }'! The function will return the 'defaultValue' parameter.");
+            //Log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
             //if key doesn't exists,
             //returns the defaultValue var
         }
@@ -131,8 +131,8 @@ namespace L2dotNET.Templates
             int toReturn;
             return int.TryParse(value, out toReturn) ? toReturn : defaultValue;
             //else
-            // log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(int).FullName }'! The function return the 'defaultValue' parameter.");
-            //log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+            // Log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(int).FullName }'! The function return the 'defaultValue' parameter.");
+            //Log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
             //if key doesn't exists,
             //returns the defaultValue var
         }
@@ -147,8 +147,8 @@ namespace L2dotNET.Templates
             float toReturn;
             return float.TryParse(value, out toReturn) ? toReturn : defaultValue;
             // else
-            //   log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(float).FullName }'! The function return the 'defaultValue' parameter.");
-            // log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+            //   Log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(float).FullName }'! The function return the 'defaultValue' parameter.");
+            // Log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
             //if key doesn't exists,
             //returns the defaultValue var
         }
@@ -163,8 +163,8 @@ namespace L2dotNET.Templates
             double toReturn;
             return double.TryParse(value, out toReturn) ? toReturn : defaultValue;
             //else
-            //    log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(double).FullName }'! The function will return the 'defaultValue' parameter.");
-            //log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+            //    Log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(double).FullName }'! The function will return the 'defaultValue' parameter.");
+            //Log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
             //if key doesn't exists,
             //returns the defaultValue var
         }
@@ -177,7 +177,7 @@ namespace L2dotNET.Templates
 
             string value = base[key].ToString();
             return value;
-            //log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+            //Log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
             //if key doesn't exists,
             //returns the defaultValue var
         }
@@ -204,7 +204,7 @@ namespace L2dotNET.Templates
 
                 if (Enum.TryParse(value, out result))
                     return Enum.IsDefined(typeof(T), result) ? result : Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault();
-                //  log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the first enum element.");
+                //  Log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the first enum element.");
                 return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault(); //if it returned false, returns the first element from enum. Default value is always 0, but not every enum has it.
             }
             //find the TryParse method.
@@ -223,12 +223,12 @@ namespace L2dotNET.Templates
             //and then call the function.
             if ((bool)parseMethod.Invoke(null, args))
                 return (T)args[1]; //if it returned true, returns converted value
-            // log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the 'defaultValue' parameter.");
+            // Log.Error($"Conversion of key '{ key }' failed! Cannot convert value '{ value }' to '{ typeof(T).FullName }'! The function will return the 'defaultValue' parameter.");
             return defaultValue; //if it returned false, returns defaultValue' parameter."
             //if key doesn't exists,
             //returns the defaultValue var,
             //when not specified returns the default value of 'T'
-            // log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
+            // Log.Warn($"Key '{ key }' was not found in the dictionary! The function will return the 'defaultValue' parameter.");
         }
 
         public string[] GetStringArray(string key)

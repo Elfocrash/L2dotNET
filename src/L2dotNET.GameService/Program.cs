@@ -7,16 +7,15 @@ using System.Threading;
 using L2dotNET.ConsoleCommand;
 using L2dotNET.Handlers;
 using L2dotNET.Logging.Abstraction;
-using L2dotNET.Logging.Provider;
 using L2dotNET.Managers;
 using L2dotNET.Managers.bbs;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Repositories;
 using L2dotNET.Services;
-using L2dotNET.Services.Contracts;
 using L2dotNET.Tables;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
 namespace L2dotNET.GameService
 {
@@ -50,7 +49,7 @@ namespace L2dotNET.GameService
             return true;
         }
 
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static void Main()
         {

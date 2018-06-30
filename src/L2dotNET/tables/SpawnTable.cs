@@ -6,7 +6,7 @@ using System.Linq;
 using System.Timers;
 using System;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
+using NLog;
 
 namespace L2dotNET.Tables
 {
@@ -14,7 +14,7 @@ namespace L2dotNET.Tables
     {
         private readonly IServerService _serverService;
 
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         private Timer RespawnTimerTask;
         private readonly IdFactory _idFactory;
         private readonly Config.Config _config;

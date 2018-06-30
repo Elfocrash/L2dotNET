@@ -8,13 +8,13 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using L2dotNET.Logging.Abstraction;
+using NLog;
 
 namespace L2dotNET.Utility
 {
     public static class Utilz
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public static string CurrentTime => DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
 

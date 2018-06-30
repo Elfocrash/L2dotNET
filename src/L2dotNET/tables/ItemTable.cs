@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Templates;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET.Tables
 {
     public class ItemTable : IInitialisable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private readonly ICrudService<ItemContract> _itemCrudService;
         private readonly ICrudService<ArmorContract> _armorCrudService;

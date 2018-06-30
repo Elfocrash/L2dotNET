@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
+using NLog;
 
 
 namespace L2dotNET.Network.clientpackets.PartyAPI
 {
     class RequestPartyMatchList : PacketBase
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private readonly int _status;

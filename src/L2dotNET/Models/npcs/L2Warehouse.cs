@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Templates;
 using L2dotNET.Tools;
 using L2dotNET.Tables;
+using NLog;
 
 namespace L2dotNET.Models.Npcs
 {
     public class L2Warehouse : L2Npc
     {
-        private readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public new NpcTemplate Template;
 

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Repositories.Utils;
+using NLog;
 using PeregrineDb;
 
 namespace L2dotNET.Repositories.Abstract
 {
     public class CrudRepositoryBase<T> : ICrudRepository<T> where T: class
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public async Task<IEnumerable<T>> GetAll()
         {

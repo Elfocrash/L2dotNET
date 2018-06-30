@@ -11,14 +11,14 @@ using L2dotNET.Network.loginauth;
 using L2dotNET.Tables;
 using L2dotNET.Utility;
 using L2dotNET.World;
-using L2dotNET.Logging.Abstraction;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
 namespace L2dotNET
 {
     public class GameServer
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private TcpListener _listener;
 

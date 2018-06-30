@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.Logging.Abstraction;
+using NLog;
 
 
 namespace L2dotNET.Managers
 {
     public class ThreadPoolManager
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static readonly ThreadPoolManager Instance = new ThreadPoolManager();
 

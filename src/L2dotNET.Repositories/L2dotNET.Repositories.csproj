@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\L2dotNet.Logging.Abstraction\L2dotNET.Logging.Abstraction.csproj" />
+    <ProjectReference Include="..\L2dotNet.Logging.Abstraction\L2dotNET.Logging.csproj" />
     <ProjectReference Include="..\L2dotNET.Models\L2dotNET.DataContracts.csproj" />
   </ItemGroup>
 

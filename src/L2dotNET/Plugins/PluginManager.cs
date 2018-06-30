@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using L2dotNET.Logging.Abstraction;
+using NLog;
 
 namespace L2dotNET.Plugins
 {
     public class PluginManager
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public List<object> Plugins { get; } = new List<object>();
 
@@ -92,8 +92,8 @@ namespace L2dotNET.Plugins
                         }
                         catch (Exception ex)
                         {
-                            Log.WarnFormat($"Failed loading plugin type {type} as a plugin.");
-                            Log.DebugException("Plugin loader caught exception, but is moving on.", ex);
+                            Log.Warn($"Failed loading plugin type {type} as a plugin.");
+                            Log.Error("Plugin loader caught exception, but is moving on.", ex);
                         }
                     }
                 }
@@ -135,7 +135,7 @@ namespace L2dotNET.Plugins
                 }
                 catch (Exception ex)
                 {
-                    Log.WarnException("Execute Startup class failed", ex);
+                    Log.Error("Execute Startup class failed", ex);
                 }
             }
         }
@@ -150,7 +150,7 @@ namespace L2dotNET.Plugins
                 }
                 catch (Exception ex)
                 {
-                    Log.WarnException("On enable plugin", ex);
+                    Log.Error("On enable plugin", ex);
                 }
             }
         }
@@ -165,7 +165,7 @@ namespace L2dotNET.Plugins
                 }
                 catch (Exception ex)
                 {
-                    Log.WarnException("On disable plugin", ex);
+                    Log.Error("On disable plugin", ex);
                 }
             }
         }

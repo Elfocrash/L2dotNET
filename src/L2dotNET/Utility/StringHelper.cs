@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using L2dotNET.Logging.Abstraction;
+using NLog;
 
 namespace L2dotNET.Utility
 {
     public static class StringHelper
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         // used to convert string to C# enum naming (i_p_attack -> IPAttack, can_summon_cubic -> CanSummonCubic and etc)
         public static string ToTitleCase(this string str, char delimeter)

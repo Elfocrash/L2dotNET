@@ -4,21 +4,20 @@ using System.Globalization;
 using System.Reflection;
 using System.Threading;
 using L2dotNET.Logging.Abstraction;
-using L2dotNET.Logging.Provider;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Repositories;
 using L2dotNET.Services;
-using L2dotNET.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
 namespace L2dotNET.LoginService
 {
     class Program
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static void Main()
         {

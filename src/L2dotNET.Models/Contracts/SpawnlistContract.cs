@@ -23,6 +23,6 @@ namespace L2dotNET.DataContracts
 
         public int RespawnRand { get; set; }
 
-        public int PeriodOfDay { get; set; }
+        public byte PeriodOfDay { get; set; }
     }
 }

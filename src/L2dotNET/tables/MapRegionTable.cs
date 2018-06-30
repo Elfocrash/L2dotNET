@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Xml;
 using L2dotNET.DataContracts.Shared.Enums;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
 using L2dotNET.Models.Zones.Type;
 using L2dotNET.Utility;
+using NLog;
 
 namespace L2dotNET.Tables
 {
     class MapRegionTable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         private static volatile MapRegionTable _instance;
         private static readonly object SyncRoot = new object();
 

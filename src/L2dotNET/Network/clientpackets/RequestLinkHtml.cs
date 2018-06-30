@@ -22,7 +22,7 @@ namespace L2dotNET.Network.clientpackets
             {
                 L2Player player = _client.CurrentPlayer;
 
-                // log.Info($"link to '{ _link }'");
+                // Log.Info($"link to '{ _link }'");
 
                 string file;
                 int id = 0;

@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.Basic;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET.Managers
 {
@@ -15,7 +15,7 @@ namespace L2dotNET.Managers
     {
         private readonly IServerService _serverService;
 
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public bool Initialised { get; private set; }
 
         public IEnumerable<AnnouncementContract> Announcements { get; set; }

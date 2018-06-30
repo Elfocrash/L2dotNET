@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
+using NLog;
 
 namespace L2dotNET.World
 {
     public class L2World
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static volatile L2World _instance;
         private static readonly object SyncRoot = new object();
@@ -159,7 +159,7 @@ namespace L2dotNET.World
 
         public void DeleteVisibleNpcSpawns()
         {
-            //_log.info("Deleting all visible NPCs.");
+            //Log.info("Deleting all visible NPCs.");
             //       for (int i = 0; i <= REGIONS_X; i++)
             //       {
             //           for (int j = 0; j <= REGIONS_Y; j++)
@@ -180,7 +180,7 @@ namespace L2dotNET.World
             //           }
             //       }
             //   }
-            //   _log.info("All visibles NPCs are now deleted.");
+            //   Log.info("All visibles NPCs are now deleted.");
         }
     }
 }

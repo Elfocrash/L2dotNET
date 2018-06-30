@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Managers;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Models.Player;
 using L2dotNET.Utility;
+using NLog;
 
 namespace L2dotNET.Network.clientpackets
 {
     class RequestBypassToServer : PacketBase
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private string _alias;

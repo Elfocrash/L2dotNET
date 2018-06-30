@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Npcs.Decor;
 using L2dotNET.Models.Stats;
 using L2dotNET.Utility;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET.Tables
 {
     class StaticObjTable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         private static volatile StaticObjTable _instance;
         private static readonly object SyncRoot = new object();
 

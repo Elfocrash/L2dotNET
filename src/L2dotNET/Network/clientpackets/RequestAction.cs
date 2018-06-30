@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.World;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
 using L2dotNET.Utility;
+using NLog;
 
 namespace L2dotNET.Network.clientpackets
 {
@@ -17,7 +17,7 @@ namespace L2dotNET.Network.clientpackets
         private readonly int _z;
         private readonly int _actionId;
 
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public RequestAction(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {

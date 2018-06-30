@@ -5,13 +5,13 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using L2dotNET.Encryption;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET
 {
@@ -20,7 +20,7 @@ namespace L2dotNET
         private readonly ICharacterService CharacterService;
         private readonly ClientManager _clientManager;
         private readonly GamePacketHandler _gamePacketHandler;
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public EndPoint Address;
         public TcpClient Client;
@@ -76,7 +76,7 @@ namespace L2dotNET
             {
                 // byte[] st = ToByteArray();
                 //foreach (byte s in data)
-                //    log.Info($"{ s:X2 } ");
+                //    Log.Info($"{ s:X2 } ");
             }
 
             try
