@@ -2,3 +2,4 @@
 :r .\Data\armor.sql
 :r .\Data\weapon.sql
 :r .\Data\etcitem.sql
+:r .\Data\armorset.sql
