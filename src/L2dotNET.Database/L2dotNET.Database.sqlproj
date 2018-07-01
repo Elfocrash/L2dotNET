@@ -78,6 +78,7 @@
       <CopyToOutputDirectory>DoNotCopy</CopyToOutputDirectory>
     </None>
     <None Include="Data\weapon.sql" />
+    <None Include="Data\etcitem.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="L2dotNET.Database.refactorlog" />

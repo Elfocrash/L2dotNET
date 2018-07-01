@@ -2,6 +2,7 @@
 {
     public enum EtcItemTypeId
     {
+        None,
         Arrow,
         Material,
         PetCollar,
@@ -10,10 +11,15 @@
         Scroll,
         Quest,
         Money,
-        None,
         Spellbook,
         Seed,
         Shot,
-        Herb
+        Herb,
+        Lotto,
+        Lure,
+        Dye,
+        Harvest,
+        CastleGuard,
+        RaceTicket
     }
 }

@@ -13,13 +13,9 @@ namespace L2dotNET.DataContracts
 
         public string Name { get; set; }
 
-        public bool Crystallizable { get; set; }
-
         public EtcItemTypeId ItemType { get; set; }
 
         public int Weight { get; set; }
-
-        public string ConsumeType { get; set; }
 
         public CrystalTypeId CrystalType { get; set; }
 
@@ -29,6 +25,8 @@ namespace L2dotNET.DataContracts
 
         public int CrystalCount { get; set; }
 
+        public bool Crystallizable { get; set; }
+
         public bool Sellable { get; set; }
 
         public bool Dropable { get; set; }
@@ -37,8 +35,6 @@ namespace L2dotNET.DataContracts
 
         public bool Tradeable { get; set; }
 
-        public string OldName { get; set; }
-
-        public string OldType { get; set; }
+        public bool Stackable { get; set; }
     }
 }
