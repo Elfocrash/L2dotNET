@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using L2dotNET.LoginService.Network;
-using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
+using L2dotNET.LoginService.Network.InnerNetwork.ResponsePackets;
 using L2dotNET.Network;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
@@ -17,39 +17,42 @@ namespace L2dotNET.LoginService.GSCommunication
         private NetworkStream _nstream;
         private TcpClient _client;
         private readonly PacketHandler _packetHandler;
+        private readonly List<string> _activeInGame = new List<string>();
+
+
         public string Wan { get; set; }
         public short Port { get; set; }
-        public short Curp { get; set; }
-        public short Maxp { get; set; } = 1000;
+        public short CurrentPlayers { get; set; }
+        public short MaxPlayers { get; set; } = 1000;
         public string Info { get; set; }
         public bool Connected { get; set; }
         public bool TestMode { get; set; }
         public bool GmOnly { get; set; }
         public byte Id { get; set; }
 
-        public void ReadData(TcpClient tcpClient, ServerThreadPool cn)
+        public ServerThread(PacketHandler packetHandler)
+        {
+            _packetHandler = packetHandler;
+        }
+
+        public async void ReadData(TcpClient tcpClient, ServerThreadPool cn)
         {
             _nstream = tcpClient.GetStream();
             _client = tcpClient;
 
-            Task.Factory.StartNew(Read);
-        }
-
-        public async void Read()
-        {
             try
             {
                 while (true)
                 {
-                    var buffer = new byte[2];
-                    var bytesRead = await _nstream.ReadAsync(buffer, 0, 2);
+                    byte[] buffer = new byte[2];
+                    int bytesRead = await _nstream.ReadAsync(buffer, 0, 2);
 
                     if (bytesRead != 2)
                     {
                         throw new Exception("Wrong packet");
                     }
 
-                    var length = BitConverter.ToInt16(buffer, 0);
+                    short length = BitConverter.ToInt16(buffer, 0);
 
                     buffer = new byte[length];
                     bytesRead = await _nstream.ReadAsync(buffer, 0, length);
@@ -59,7 +62,7 @@ namespace L2dotNET.LoginService.GSCommunication
                         throw new Exception("Wrong packet");
                     }
 
-                    _packetHandler.Handle(new Packet(1, buffer), this);
+                    Task.Factory.StartNew(() => _packetHandler.Handle(new Packet(1, buffer), this));
                 }
             }
             catch (Exception e)
@@ -76,11 +79,11 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public async void Send(Packet pk)
         {
-            var buffer = pk.GetBuffer();
+            byte[] buffer = pk.GetBuffer();
 
-            var lengthInBytes = BitConverter.GetBytes((short)buffer.Length);
+            byte[] lengthInBytes = BitConverter.GetBytes((short)buffer.Length);
 
-            var message = new byte[buffer.Length + 2];
+            byte[] message = new byte[buffer.Length + 2];
 
             lengthInBytes.CopyTo(message, 0);
             buffer.CopyTo(message, 2);
@@ -89,9 +92,9 @@ namespace L2dotNET.LoginService.GSCommunication
             await _nstream.FlushAsync();
         }
 
-        public void Close(Packet pk)
+        public void Close(Packet packet)
         {
-            Send(pk);
+            Send(packet);
             LoginServer.ServiceProvider.GetService<ServerThreadPool>().Shutdown(Id);
         }
 
@@ -108,13 +111,6 @@ namespace L2dotNET.LoginService.GSCommunication
             }
 
             _activeInGame.Clear();
-        }
-
-        private readonly List<string> _activeInGame = new List<string>();
-
-        public ServerThread(PacketHandler packetHandler)
-        {
-            _packetHandler = packetHandler;
         }
 
         public void AccountInGame(string account, byte status)

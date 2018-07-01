@@ -11,6 +11,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\bin\Debug\netcoreapp2.0\LoginService</OutputPath>
+    <NoWarn>1701;1702;1705</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -51,6 +52,7 @@
   <ItemGroup>
     <None Remove="C:\Source\Repos\L2dotNET\src\L2dotNET\Datapacks\Login\config\server.json" />
     <None Remove="C:\Users\voiti\Documents\Visual Studio 2017\Projects\L2dotNET\src\L2dotNET\Datapacks\Login\log\log4net.config" />
+    <None Remove="Z:\L2dotNET\src\L2dotNET\Datapacks\Login\log\log4net.config" />
   </ItemGroup>
 
 </Project>

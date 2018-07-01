@@ -22,13 +22,19 @@ namespace L2dotNET.LoginService
         private static void Main()
         {
             ClassLoggerConfigurator.ConfigureClassLogger($"{Assembly.GetExecutingAssembly().Location}.log");
+
             Log.Info("Starting LoginService...");
-            SetConsoleConfigurations();
+
+            SetConsoleConfiguration();
             SetNumberDecimalSeparator();
-            var serviceCollection = new ServiceCollection();
+
+            ServiceCollection serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
-            var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
+
             serviceProvider.GetService<LoginServer>().Start();
+
             Process.GetCurrentProcess().WaitForExit();
         }
 
@@ -53,7 +59,7 @@ namespace L2dotNET.LoginService
 
         }
 
-        private static void SetConsoleConfigurations()
+        private static void SetConsoleConfiguration()
         {
             Console.Title = @"L2dotNET LoginServer";
         }

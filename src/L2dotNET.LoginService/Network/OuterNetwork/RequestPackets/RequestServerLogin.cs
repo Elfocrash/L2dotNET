@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Model;
-using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
+using L2dotNET.LoginService.Network.Enums;
+using L2dotNET.LoginService.Network.OuterNetwork.ResponsePackets;
 using L2dotNET.Network;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
+namespace L2dotNET.LoginService.Network.OuterNetwork.RequestPackets
 {
     class RequestServerLogin : PacketBase
     {
@@ -47,7 +48,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
                 return;
             }
 
-            if (server.Connected == 0)
+            if (!server.Connected)
             {
                 await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonServerMaintenance));
                 _client.Close();

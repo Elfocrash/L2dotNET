@@ -6,18 +6,29 @@ namespace L2dotNET.LoginService.Model
 {
     public class L2Server
     {
-        public byte[] DefaultAddress { get; set; }
+        public byte ServerId { get; set; }
+        public string Name { get; set; }
         public ServerThread Thread { get; set; }
-        public string Info { get; set; }
-        public byte Id { get; set; }
+
+        public bool Connected => Thread?.Connected ?? false;
+
+        public short CurrentPlayers => Thread?.CurrentPlayers ?? 0;
+
+        public short MaxPlayers => Thread?.MaxPlayers ?? 0;
+
+        public int Port => Thread?.Port ?? 0;
+
+        public bool TestMode => Thread?.TestMode ?? false;
+
+        public bool GmOnly => Thread?.GmOnly ?? false;
+
+        private byte[] DefaultAddress { get; set; }
 
         public byte[] GetIp(LoginClient client)
         {
             if (DefaultAddress == null)
             {
-                string ip = "0.0.0.0";
-                if (Thread != null)
-                    ip = Thread.Wan;
+                string ip = Thread?.Wan ?? "0.0.0.0";
 
                 DefaultAddress = new byte[4];
                 string[] w = ip.Split('.');
@@ -30,20 +41,8 @@ namespace L2dotNET.LoginService.Model
             if (Thread == null)
                 return DefaultAddress;
 
-            byte[] redirect = NetworkRedirect.Instance.GetRedirect(client, Id);
+            byte[] redirect = NetworkRedirect.Instance.GetRedirect(client, ServerId);
             return redirect ?? DefaultAddress;
         }
-
-        public byte Connected => Thread != null ? (Thread.Connected ? (byte)1 : (byte)0) : (byte)0;
-
-        public short CurrentPlayers => Thread?.Curp ?? (short)0;
-
-        public short MaxPlayers => Thread?.Maxp ?? (short)0;
-
-        public int Port => Thread?.Port ?? 0;
-
-        public bool TestMode => (Thread != null) && Thread.TestMode;
-
-        public bool GmOnly => (Thread != null) && Thread.GmOnly;
     }
 }

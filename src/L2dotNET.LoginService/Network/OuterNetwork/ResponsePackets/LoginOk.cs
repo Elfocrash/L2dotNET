@@ -1,6 +1,6 @@
 ﻿using L2dotNET.Network;
 
-namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
+namespace L2dotNET.LoginService.Network.OuterNetwork.ResponsePackets
 {
     static class LoginOk
     {

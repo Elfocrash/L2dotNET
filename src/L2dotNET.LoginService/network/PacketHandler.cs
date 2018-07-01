@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using L2dotNET.LoginService.GSCommunication;
-using L2dotNET.LoginService.Network.InnerNetwork.ClientPackets;
+using L2dotNET.LoginService.Network.InnerNetwork.RequestPackets;
+using L2dotNET.LoginService.Network.OuterNetwork.RequestPackets;
 using L2dotNET.Network;
 using NLog;
 
@@ -31,7 +32,7 @@ namespace L2dotNET.LoginService.Network
 
         public void Handle(Packet packet, LoginClient client)
         {
-            Log.Info($"Received packet with Opcode:{packet.FirstOpcode:X2} for State:{client.State}");
+            Log.Debug($"Received packet with Opcode:{packet.FirstOpcode:X2} for State:{client.State}");
 
             if (!ClientPackets.ContainsKey(packet.FirstOpcode))
                 return;
@@ -42,7 +43,7 @@ namespace L2dotNET.LoginService.Network
 
         public void Handle(Packet packet, ServerThread client)
         {
-            Log.Info($"Received packet with Opcode:{packet.FirstOpcode:X2}");
+            Log.Debug($"Received packet with Opcode:{packet.FirstOpcode:X2}");
 
             if (!ClientPacketsServ.ContainsKey(packet.FirstOpcode))
                 return;
