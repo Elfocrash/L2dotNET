@@ -2,7 +2,7 @@
 (
 	[WeaponId] INT NOT NULL PRIMARY KEY, 
     [Name] VARCHAR(70) NOT NULL, 
-    [BodyPart] TINYINT NOT NULL, 
+    [BodyPart] INT NOT NULL, 
     [Crystallizable] BIT NOT NULL, 
     [Weight] INT NOT NULL, 
     [Soulshots] INT NOT NULL, 
@@ -10,7 +10,7 @@
     [CrystalType] TINYINT NOT NULL, 
     [Pdam] INT NOT NULL, 
     [RndDam] INT NOT NULL, 
-    [WeaponType] INT NOT NULL, 
+    [WeaponType] TINYINT NOT NULL, 
     [Critical] INT NOT NULL, 
     [HitModify] INT NOT NULL, 
     [AvoidModify] INT NOT NULL, 
