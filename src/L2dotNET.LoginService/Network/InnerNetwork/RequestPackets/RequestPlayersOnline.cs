@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.Network;
 
-namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
+namespace L2dotNET.LoginService.Network.InnerNetwork.RequestPackets
 {
     class RequestPlayersOnline : PacketBase
     {
@@ -20,7 +20,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
         {
             await Task.Run(() =>
             {
-                _thread.Curp = _cnt;
+                _thread.CurrentPlayers = _cnt;
             });
         }
     }

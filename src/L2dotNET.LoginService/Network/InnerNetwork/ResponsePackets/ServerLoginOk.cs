@@ -1,18 +1,18 @@
 ﻿using L2dotNET.Network;
 
-namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
+namespace L2dotNET.LoginService.Network.InnerNetwork.ResponsePackets
 {
-    static class LoginServPing
+    static class ServerLoginOk
     {
         /// <summary>
         /// Packet opcode.
         /// </summary>
-        private const byte Opcode = 0xA1;
+        private const byte Opcode = 0xA6;
 
         internal static Packet ToPacket()
         {
             Packet p = new Packet(Opcode);
-            p.WriteString("LoginServPing: PING!");
+            p.WriteString("Gameserver Authenticated");
             return p;
         }
     }

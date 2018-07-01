@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using L2Crypt;
 using L2dotNET.DataContracts;
 using L2dotNET.LoginService.Network.Crypt;
-using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
+using L2dotNET.LoginService.Network.OuterNetwork.ResponsePackets;
 using L2dotNET.Network;
 using NLog;
 
@@ -15,9 +15,9 @@ namespace L2dotNET.LoginService.Network
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public LoginClientState State { get; set; }
-        public EndPoint Address { get; set; }
-        public TcpClient Client { get; set; }
-        public NetworkStream NetStream { get; set; }
+        public EndPoint Address { get; }
+        public TcpClient Client { get; }
+        public NetworkStream NetStream { get; }
         public SessionKey Key { get; }
         public int SessionId { get; }
         public AccountContract ActiveAccount { get; set; }

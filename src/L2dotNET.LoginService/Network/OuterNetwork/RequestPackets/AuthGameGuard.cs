@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
+using L2dotNET.LoginService.Network.Enums;
+using L2dotNET.LoginService.Network.OuterNetwork.ResponsePackets;
 using L2dotNET.Network;
 
-namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
+namespace L2dotNET.LoginService.Network.OuterNetwork.RequestPackets
 {
     class AuthGameGuard : PacketBase
     {

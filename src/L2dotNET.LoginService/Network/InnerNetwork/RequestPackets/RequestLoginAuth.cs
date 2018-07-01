@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Model;
-using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
+using L2dotNET.LoginService.Network.InnerNetwork.ResponsePackets;
 using L2dotNET.Network;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 
-namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
+namespace L2dotNET.LoginService.Network.InnerNetwork.RequestPackets
 {
     class RequestLoginAuth : PacketBase
     {
@@ -52,17 +52,17 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
                 }
 
                 server.Thread = _thread;
-                _thread.Id = server.Id;
+                _thread.Id = server.ServerId;
                 _thread.Info = _info;
                 _thread.Wan = _host;
                 _thread.Port = _port;
-                _thread.Maxp = _maxp;
+                _thread.MaxPlayers = _maxp;
                 _thread.GmOnly = _gmonly == 1;
                 _thread.TestMode = _test == 1;
                 _thread.Connected = true;
                 _thread.Send(ServerLoginOk.ToPacket());
 
-                Log.Info($"Server #{server.Id} connected");
+                Log.Info($"Server #{server.ServerId} connected");
             });
         }
     }

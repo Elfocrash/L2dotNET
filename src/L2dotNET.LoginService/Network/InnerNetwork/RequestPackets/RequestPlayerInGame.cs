@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.Network;
 
-namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
+namespace L2dotNET.LoginService.Network.InnerNetwork.RequestPackets
 {
     class RequestPlayerInGame : PacketBase
     {
