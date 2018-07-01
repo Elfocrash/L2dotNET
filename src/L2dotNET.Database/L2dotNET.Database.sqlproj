@@ -71,9 +71,20 @@
     <Build Include="Tables\Characters.sql" />
     <Build Include="Tables\Servers.sql" />
     <Build Include="Tables\CharacterSkills.sql" />
-    <PostDeploy Include="Data\spawnlist.sql" />
+    <None Include="Data\spawnlist.sql">
+      <CopyToOutputDirectory>DoNotCopy</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\armor.sql">
+      <CopyToOutputDirectory>DoNotCopy</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="L2dotNET.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="InsertData.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="L2dotNET.Database.publish.xml" />
   </ItemGroup>
 </Project>

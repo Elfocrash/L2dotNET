@@ -21,7 +21,7 @@ namespace L2dotNET.DataContracts
 
         public string ConsumeType { get; set; }
 
-        public string CrystalType { get; set; }
+        public CrystalTypeId CrystalType { get; set; }
 
         public int Duration { get; set; }
 

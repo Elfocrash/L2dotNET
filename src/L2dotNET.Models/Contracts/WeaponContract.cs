@@ -23,8 +23,6 @@ namespace L2dotNET.DataContracts
 
         public int Spiritshots { get; set; }
 
-        public byte CrystalType { get; set; }
-
         public int Pdam { get; set; }
 
         public int RndDam { get; set; }
@@ -50,6 +48,8 @@ namespace L2dotNET.DataContracts
         public int Duration { get; set; }
 
         public int Price { get; set; }
+
+        public CrystalTypeId CrystalType { get; set; }
 
         public int CrystalCount { get; set; }
 

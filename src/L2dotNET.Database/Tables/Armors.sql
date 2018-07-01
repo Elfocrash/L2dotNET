@@ -12,6 +12,7 @@
     [Mdef] INT NOT NULL, 
     [MpBonus] INT NOT NULL, 
     [Price] INT NOT NULL, 
+	[CrystalType] TINYINT NOT NULL,
     [CrystalCount] INT NOT NULL, 
     [Sellable] BIT NOT NULL, 
     [Dropable] BIT NOT NULL, 

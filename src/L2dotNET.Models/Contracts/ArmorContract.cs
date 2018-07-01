@@ -33,6 +33,8 @@ namespace L2dotNET.DataContracts
 
         public int Price { get; set; }
 
+        public CrystalTypeId CrystalType { get; set; }
+
         public int CrystalCount { get; set; }
 
         public bool Sellable { get; set; }
