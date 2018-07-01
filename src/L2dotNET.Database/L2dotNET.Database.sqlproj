@@ -77,6 +77,7 @@
     <None Include="Data\armor.sql">
       <CopyToOutputDirectory>DoNotCopy</CopyToOutputDirectory>
     </None>
+    <None Include="Data\weapon.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="L2dotNET.Database.refactorlog" />
