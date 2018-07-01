@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="9d057d38-e981-433b-9e6b-9fb621983787" ChangeDateTime="06/29/2018 20:08:05">
+    <Property Name="ElementName" Value="[dbo].[AK_Characters_Column]" />
+    <Property Name="ElementType" Value="SqlUniqueConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[AK_Characters_Name]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d6511f05-38c7-47de-98a7-d5a457c3c5c3" ChangeDateTime="06/29/2018 23:16:20">
+    <Property Name="ElementName" Value="[dbo].[Spawnlist].[RespownDelay]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Spawnlist]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RespawnDelay" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f889562d-cab7-4414-bbde-b987b96f0f7d" ChangeDateTime="07/01/2018 14:27:28">
+    <Property Name="ElementName" Value="[dbo].[ArmorSets].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ArmorSets]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ArmorSetId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="641b318a-a0f5-4dad-b192-ee7c12c67953" ChangeDateTime="07/01/2018 14:28:53">
+    <Property Name="ElementName" Value="[dbo].[ArmorSets].[SkillId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ArmorSets]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ShieldId" />
+  </Operation>
+</Operations>

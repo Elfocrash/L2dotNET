@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace L2dotNET.LoginService.Config
@@ -9,10 +10,12 @@ namespace L2dotNET.LoginService.Config
         public bool Initialised { get; private set; }
 
         //TODO: Rename server.json to prevent name mismatch from GameServer/server.json
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
             ServerConfig = JsonConvert.DeserializeObject<ServerConfig>(File.ReadAllText(@"config\server.json"));
             Initialised = true;

@@ -1,0 +1,29 @@
+﻿namespace L2dotNET.DataContracts.Shared.Enums
+{
+    public enum MaterialType
+    {
+        Steel,
+        FineSteel,
+        Cotton,
+        BloodSteel,
+        Bronze,
+        Silver,
+        Gold,
+        Mithril,
+        Oriharukon,
+        Paper,
+        Wood,
+        Cloth,
+        Leather,
+        Bone,
+        Horn,
+        Damascus,
+        Adamantaite,
+        Chrysolite,
+        Crystal,
+        Liquid,
+        ScaleOfDragon,
+        Dyestuff,
+        Cobweb
+    }
+}

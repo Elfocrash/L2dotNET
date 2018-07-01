@@ -1,10 +1,10 @@
-﻿using L2dotNET.Logging.Abstraction;
+﻿using NLog;
 
 namespace L2dotNET.Tables
 {
     class ZoneTable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         private static volatile ZoneTable _instance;
         private static readonly object SyncRoot = new object();
 

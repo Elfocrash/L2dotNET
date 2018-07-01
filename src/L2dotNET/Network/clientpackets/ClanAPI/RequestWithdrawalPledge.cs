@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.clientpackets.ClanAPI
 {

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET.Controllers
 {
     public class GameTime
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static volatile GameTime _instance;
         private static readonly object SyncRoot = new object();

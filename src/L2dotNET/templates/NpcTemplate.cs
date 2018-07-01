@@ -73,7 +73,7 @@ namespace L2dotNET.Templates
             DropHerbGroup = set.GetInt("dropHerbGroup");
             //if (_dropHerbGroup > 0 && HerbDropTable.getInstance().getHerbDroplist(_dropHerbGroup) == null)
             //{
-            //    _log.warning($"Missing dropHerbGroup information for npcId: {_npcId}, dropHerbGroup: {_dropHerbGroup});
+            //    Log.warning($"Missing dropHerbGroup information for npcId: {_npcId}, dropHerbGroup: {_dropHerbGroup});
             //    _dropHerbGroup = 0;
             //}
 

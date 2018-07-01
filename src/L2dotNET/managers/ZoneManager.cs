@@ -1,12 +1,12 @@
 ﻿using System;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET.Managers
 {
     public class ZoneManager
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static volatile ZoneManager _instance;
         private static readonly object SyncRoot = new object();

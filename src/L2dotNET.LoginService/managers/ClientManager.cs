@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-
+using System.Threading.Tasks;
 using L2Crypt;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Network;
+using NLog;
 
 namespace L2dotNET.LoginService.Managers
 {
     public sealed class ClientManager : IInitialisable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private const int ScrambleCount = 1;
         private ScrambledKeyPair[] _scrambledPairs;
@@ -21,10 +21,12 @@ namespace L2dotNET.LoginService.Managers
         private SortedList<string, LoginClient> _waitingAcc = new SortedList<string, LoginClient>();
         public bool Initialised { get; private set; }
 
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
             Log.Info("Loading client manager.");
 
@@ -33,7 +35,9 @@ namespace L2dotNET.LoginService.Managers
             _scrambledPairs = new ScrambledKeyPair[ScrambleCount];
 
             for (int i = 0; i < ScrambleCount; i++)
+            {
                 _scrambledPairs[i] = new ScrambledKeyPair(ScrambledKeyPair.genKeyPair());
+            }
 
             Log.Info($"Scrambled {_scrambledPairs.Length} keypairs.");
             Log.Info("Randomize blowfish keys.");

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace L2dotNET.Config
@@ -10,10 +11,12 @@ namespace L2dotNET.Config
         public ServerConfig ServerConfig;
         public GameplayConfig GameplayConfig;
 
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
             ServerConfig = JsonConvert.DeserializeObject<ServerConfig>(File.ReadAllText(@"config\server.json"));
             GameplayConfig = new GameplayConfig

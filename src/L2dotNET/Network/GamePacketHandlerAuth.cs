@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Network.loginauth.recv;
+using NLog;
 
 namespace L2dotNET.Network
 {
     public class GamePacketHandlerAuth
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
         private readonly IServiceProvider _serviceProvider;

@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using System.Threading;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Network;
 using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
 using L2dotNET.Network;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
 namespace L2dotNET.LoginService.GSCommunication
 {
     public class ServerThread
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
-
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        
         private NetworkStream _nstream;
         private TcpClient _client;
         private readonly PacketHandler _packetHandler;

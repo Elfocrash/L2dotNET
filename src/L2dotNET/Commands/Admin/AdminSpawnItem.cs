@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Threading.Tasks;
 using L2dotNET.Attributes;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
+using NLog;
 
 namespace L2dotNET.Commands.Admin
 {
     [Command(CommandName = "createitem")]
     class AdminSpawnItem : AAdminCommand
     {
-        private readonly ILog _log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         protected internal override async Task UseAsync(L2Player admin, string alias)
         {
@@ -24,7 +24,7 @@ namespace L2dotNET.Commands.Admin
                 }
                 catch (Exception e)
                 {
-                    _log.Error($"AdminSpawnItem: {e.Message}");
+                    Log.Error($"AdminSpawnItem: {e.Message}");
                 }
 
                 admin.AddItem(id, count);

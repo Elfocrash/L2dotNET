@@ -1,59 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
-using L2dotNET.Enums;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Templates;
-using L2dotNET.Utility;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET.Tables
 {
     public class ItemTable : IInitialisable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private readonly IItemService _itemService;
+        private readonly ICrudService<ItemContract> _itemCrudService;
+        private readonly ICrudService<ArmorContract> _armorCrudService;
+        private readonly ICrudService<WeaponContract> _weaponCrudService;
+        private readonly ICrudService<EtcItemContract> _etcItemCrudService;
         private readonly IdFactory _idFactory;
+
+        private Dictionary<int, Armor> Armors { get; set; }
+        private Dictionary<int, Weapon> Weapons { get; set; }
+        private Dictionary<int, EtcItem> EtcItems { get; set; }
+
         public bool Initialised { get; private set; }
 
-        public ItemTable(IItemService itemService, IdFactory idFactory)
+        public ItemTable(ICrudService<ItemContract> itemCrudService,
+            ICrudService<ArmorContract> armorCrudService,
+            ICrudService<WeaponContract> weaponCrudService,
+            ICrudService<EtcItemContract> etcItemCrudService, 
+            IdFactory idFactory)
         {
-            _itemService = itemService;
+            _itemCrudService = itemCrudService;
+            _armorCrudService = armorCrudService;
+            _weaponCrudService = weaponCrudService;
+            _etcItemCrudService = etcItemCrudService;
             _idFactory = idFactory;
         }
 
         internal ItemTemplate GetItem(int id)
         {
             if (Armors.ContainsKey(id))
+            {
                 return Armors[id];
+            }
 
             if (Weapons.ContainsKey(id))
+            {
                 return Weapons[id];
+            }
 
             if (EtcItems.ContainsKey(id))
+            {
                 return EtcItems[id];
+            }
 
             return null;
         }
 
-        public Dictionary<string, int> Slots = new Dictionary<string, int>();
-        public Dictionary<int, Armor> Armors = new Dictionary<int, Armor>();
-        public Dictionary<int, Weapon> Weapons = new Dictionary<int, Weapon>();
-        public Dictionary<int, EtcItem> EtcItems = new Dictionary<int, EtcItem>();
-
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
-            Slots = ItemSlots.ToDictionary();
-            LoadArmorModels();
-            LoadWeaponModels();
-            LoadEtcItemModels();
+            await LoadArmorModels();
+            await LoadWeaponModels();
+            await LoadEtcItemModels();
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -63,98 +80,88 @@ namespace L2dotNET.Tables
 
         public L2Item CreateItem(int itemId, int count, L2Player actor)
         {
-            L2Item item = new L2Item(_itemService, _idFactory, GetItem(itemId), _idFactory.NextId());
+            L2Item item = new L2Item(_itemCrudService, _idFactory, GetItem(itemId), _idFactory.NextId());
 
             L2World.Instance.AddObject(item);
 
             if (item.Template.Stackable && (count > 1))
+            {
                 item.Count = count;
+            }
 
             return item;
         }
 
-        private void LoadArmorModels()
+        private async Task LoadArmorModels()
         {
-            Dictionary<int, ArmorContract> armorsModels = _itemService.GetAllArmorModelsDict();
-            foreach (KeyValuePair<int, ArmorContract> modelPair in armorsModels)
-            {
-                StatsSet set = new StatsSet();
-                ArmorContract contract = modelPair.Value;
-                Armor armor = new Armor(set)
-                {
-                    Type = Utilz.GetEnumFromString(contract.ArmorType, ArmorTypeId.None),
-                    ItemId = contract.ItemId,
-                    Name = contract.Name,
-                    BodyPart = Slots[contract.BodyPart],
-                    Sellable = contract.Sellable,
-                    Dropable = contract.Dropable,
-                    Destroyable = contract.Destroyable,
-                    Tradable = contract.Tradeable,
-                    Weight = contract.Weight,
-                    Duration = contract.Duration
-                };
-                Armors.Add(modelPair.Key, armor);
-            }
+            IEnumerable<ArmorContract> armorContracts = await _armorCrudService.GetAll();
+
+            Armors = armorContracts.Select(x => new Armor(new StatsSet())
+                    {
+                        Type = x.ArmorType,
+                        ItemId = x.ArmorId,
+                        Name = x.Name,
+                        BodyPart = x.BodyPart,
+                        Sellable = x.Sellable,
+                        Dropable = x.Dropable,
+                        Destroyable = x.Destroyable,
+                        Tradable = x.Tradeable,
+                        Weight = x.Weight,
+                        Duration = x.Duration
+                    })
+                .ToDictionary(x => x.ItemId);
         }
 
-        private void LoadEtcItemModels()
+        private async Task LoadEtcItemModels()
         {
-            Dictionary<int, EtcItemContract> etcItemModels = _itemService.GetAllEtcItemModelsDict();
-            foreach (KeyValuePair<int, EtcItemContract> modelPair in etcItemModels)
-            {
-                StatsSet set = new StatsSet();
-                EtcItemContract contract = modelPair.Value;
-                EtcItem etcItem = new EtcItem(set)
-                {
-                    Type = Utilz.GetEnumFromString(contract.ItemType, EtcItemTypeId.None),
-                    ItemId = contract.ItemId,
-                    Name = contract.Name,
-                    Sellable = contract.Sellable,
-                    Dropable = contract.Dropable,
-                    Destroyable = contract.Destroyable,
-                    Tradable = contract.Tradeable,
-                    Weight = contract.Weight,
-                    Duration = contract.Duration
-                };
-                EtcItems.Add(modelPair.Key, etcItem);
-            }
+            IEnumerable<EtcItemContract> etcItemContracts = await _etcItemCrudService.GetAll();
+
+            EtcItems = etcItemContracts.Select(x => new EtcItem(new StatsSet())
+                    {
+                        Type = x.ItemType,
+                        ItemId = x.EtcItemId,
+                        Name = x.Name,
+                        Sellable = x.Sellable,
+                        Dropable = x.Dropable,
+                        Destroyable = x.Destroyable,
+                        Tradable = x.Tradeable,
+                        Weight = x.Weight,
+                        Duration = x.Duration
+                    })
+                .ToDictionary(x => x.ItemId);
         }
 
-        private void LoadWeaponModels()
+        private async Task LoadWeaponModels()
         {
-            Dictionary<int, WeaponContract> weaponModels = _itemService.GetAllWeaponModelsDict();
-            foreach (KeyValuePair<int, WeaponContract> modelPair in weaponModels)
-            {
-                StatsSet set = new StatsSet();
-                WeaponContract contract = modelPair.Value;
-                Weapon weapon = new Weapon(set)
-                {
-                    Type = Utilz.GetEnumFromString(contract.WeaponType, WeaponTypeId.None),
-                    ItemId = contract.ItemId,
-                    Name = contract.Name,
-                    BodyPart = Slots[contract.BodyPart],
-                    Sellable = contract.Sellable,
-                    Dropable = contract.Dropable,
-                    Destroyable = contract.Destroyable,
-                    Tradable = contract.Tradeable,
-                    Weight = contract.Weight,
-                    Duration = contract.Duration,
-                    ReferencePrice = contract.Price,
-                    SpiritshotCount = contract.Spiritshots,
-                    SoulshotCount = contract.Soulshots,
-                    PDam = contract.Pdam,
-                    RndDam = contract.RndDam,
-                    Critical = contract.Critical,
-                    HitModifier = contract.HitModify,
-                    AvoidModifier = contract.AvoidModify,
-                    ShieldDef = contract.ShieldDef,
-                    ShieldDefRate = contract.ShieldDefRate,
-                    AtkSpeed = contract.AtkSpeed,
-                    MpConsume = contract.MpConsume,
-                    MDam = contract.Mdam
-                };
-                Weapons.Add(modelPair.Key, weapon);
-            }
+            IEnumerable<WeaponContract> weaponContracts = await _weaponCrudService.GetAll();
+
+            Weapons = weaponContracts.Select(x => new Weapon(new StatsSet())
+                    {
+                        Type = x.WeaponType,
+                        ItemId = x.WeaponId,
+                        Name = x.Name,
+                        BodyPart = x.BodyPart,
+                        Sellable = x.Sellable,
+                        Dropable = x.Dropable,
+                        Destroyable = x.Destroyable,
+                        Tradable = x.Tradeable,
+                        Weight = x.Weight,
+                        Duration = x.Duration,
+                        ReferencePrice = x.Price,
+                        SpiritshotCount = x.Spiritshots,
+                        SoulshotCount = x.Soulshots,
+                        PDam = x.Pdam,
+                        RndDam = x.RndDam,
+                        Critical = x.Critical,
+                        HitModifier = x.HitModify,
+                        AvoidModifier = x.AvoidModify,
+                        ShieldDef = x.ShieldDef,
+                        ShieldDefRate = x.ShieldDefRate,
+                        AtkSpeed = x.AtkSpeed,
+                        MpConsume = x.MpConsume,
+                        MDam = x.Mdam
+                    })
+                .ToDictionary(x => x.ItemId);
         }
     }
 }

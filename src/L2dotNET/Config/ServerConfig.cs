@@ -11,13 +11,13 @@ namespace L2dotNET.Config
         [JsonProperty(PropertyName = "port")]
         public int Port { get; set; }
 
-        [JsonProperty(PropertyName = "auth_host")]
+        [JsonProperty(PropertyName = "authHost")]
         public string AuthHost { get; set; }
 
-        [JsonProperty(PropertyName = "auth_port")]
+        [JsonProperty(PropertyName = "authPort")]
         public int AuthPort { get; set; }
 
-        [JsonProperty(PropertyName = "auth_code")]
+        [JsonProperty(PropertyName = "authCode")]
         public string AuthCode { get; set; }
 
         [JsonProperty(PropertyName = "isgmonly")]
@@ -26,10 +26,10 @@ namespace L2dotNET.Config
         [JsonProperty(PropertyName = "istestserver")]
         public bool IsTestServer { get; set; }
 
-        [JsonProperty(PropertyName = "max_players")]
+        [JsonProperty(PropertyName = "maxPlayers")]
         public int MaxPlayers { get; set; }
 
-        [JsonProperty(PropertyName = "lazy_html_cache")]
+        [JsonProperty(PropertyName = "lazyHtmlCache")]
         public bool LazyHtmlCache { get; set; }
     }
 }

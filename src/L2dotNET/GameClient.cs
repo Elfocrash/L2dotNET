@@ -5,22 +5,22 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using L2dotNET.Encryption;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET
 {
     public class GameClient
     {
-        private readonly IPlayerService _playerService;
+        private readonly ICharacterService CharacterService;
         private readonly ClientManager _clientManager;
         private readonly GamePacketHandler _gamePacketHandler;
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public EndPoint Address;
         public TcpClient Client;
@@ -39,9 +39,9 @@ namespace L2dotNET
         public long TrafficUp,
                     TrafficDown;
 
-        public GameClient(IPlayerService playerService, ClientManager clientManager, TcpClient tcpClient, GamePacketHandler gamePacketHandler)
+        public GameClient(ICharacterService characterService, ClientManager clientManager, TcpClient tcpClient, GamePacketHandler gamePacketHandler)
         {
-            _playerService = playerService;
+            CharacterService = characterService;
             Log.Info($"Connection from {tcpClient.Client.RemoteEndPoint}");
             Client = tcpClient;
             _gamePacketHandler = gamePacketHandler;
@@ -76,7 +76,7 @@ namespace L2dotNET
             {
                 // byte[] st = ToByteArray();
                 //foreach (byte s in data)
-                //    log.Info($"{ s:X2 } ");
+                //    Log.Info($"{ s:X2 } ");
             }
 
             try
@@ -123,15 +123,15 @@ namespace L2dotNET
             }
         }
 
-        public L2Player LoadPlayerInSlot(string accName, int charSlot)
+        public async Task<L2Player> LoadPlayerInSlot(string accName, int charSlot)
         {
-            L2Player player = _playerService.GetPlayerBySlotId(accName, charSlot);
+            L2Player player = await CharacterService.GetPlayerBySlotId(accName, charSlot);
             return player;
         }
 
-        public L2Player GetPlayer(string accName, int charSlot)
+        public async Task<L2Player> GetPlayer(string accName, int charSlot)
         {
-            L2Player playerContract = LoadPlayerInSlot(accName, charSlot);
+            L2Player playerContract = await LoadPlayerInSlot(accName, charSlot);
             L2Player player = L2World.Instance.GetPlayer(playerContract.ObjId);
             return player;
         }

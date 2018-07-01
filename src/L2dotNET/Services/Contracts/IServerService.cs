@@ -1,20 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 
 namespace L2dotNET.Services.Contracts
 {
     public interface IServerService
     {
-        List<ServerContract> GetServerList();
+        Task<IEnumerable<ServerContract>> GetServerList();
 
-        List<int> GetPlayersObjectIdList();
+        Task<IEnumerable<AnnouncementContract>> GetAnnouncementsList();
 
-        List<int> GetPlayersItemsObjectIdList();
-
-        List<AnnouncementContract> GetAnnouncementsList();
-
-        List<SpawnlistContract> GetAllSpawns();
-
-        bool CheckDatabaseQuery();
+        Task<IEnumerable<SpawnlistContract>> GetAllSpawns();
     }
 }

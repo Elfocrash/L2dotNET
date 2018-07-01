@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
@@ -15,8 +15,6 @@ namespace L2dotNET.Models.Items
 {
     public class L2Item : L2Object
     {
-        public IItemService _itemService;
-
         public ItemTemplate Template;
         public int Count;
         public short IsEquipped { get; set; }
@@ -40,10 +38,11 @@ namespace L2dotNET.Models.Items
 
         public bool Blocked = false;
         public bool TempBlock = false;
+        private readonly ICrudService<ItemContract> _itemCrudService;
         private readonly IdFactory _idFactory;
-        public L2Item(IItemService itemService, IdFactory idFactory, ItemTemplate template , int objectId) : base(objectId)
+        public L2Item(ICrudService<ItemContract> itemCrudService, IdFactory idFactory, ItemTemplate template , int objectId) : base(objectId)
         {
-            _itemService = itemService;
+            _itemCrudService = itemCrudService;
             _idFactory = idFactory;
             ObjId = objectId != 0 ? objectId : _idFactory.NextId();
             Template = template;
@@ -70,21 +69,6 @@ namespace L2dotNET.Models.Items
                 Count = 0;
         }
 
-        /** Enumeration of locations for item */
-
-        public enum ItemLocation
-        {
-            Void,
-            Inventory,
-            Paperdoll,
-            Warehouse,
-            Clanwh,
-            Pet,
-            PetEquip,
-            Lease,
-            Freight
-        }
-
         public void Unequip(L2Player owner)
         {
             PaperdollSlot = -1;
@@ -97,8 +81,8 @@ namespace L2dotNET.Models.Items
         public void Equip(L2Player owner)
         {
             Location = ItemLocation.Paperdoll;
-            SlotLocation = GetPaperdollIndex(Template.BodyPart);
-            PaperdollSlot = GetPaperdollIndex(Template.BodyPart);
+            SlotLocation = GetPaperdollIndex((int) Template.BodyPart);
+            PaperdollSlot = GetPaperdollIndex((int) Template.BodyPart);
             IsEquipped = 1;
         }
 
@@ -177,16 +161,15 @@ namespace L2dotNET.Models.Items
         {
             ItemContract contract = MapItemModel();
 
-            _itemService.UpdateItem(contract);
+            _itemCrudService.Update(contract);
         }
 
         private void InsertInDb()
         {
             Location = ItemLocation.Inventory;
             ItemContract contract = MapItemModel();
-            ExistsInDb = contract.ExistsInDb = true;
 
-            _itemService.InsertNewItem(contract);
+            _itemCrudService.Add(contract);
         }
 
         private ItemContract MapItemModel()
@@ -200,8 +183,8 @@ namespace L2dotNET.Models.Items
                 CustomType2 = CustomType2,
                 Enchant = Enchant,
                 LocationData = SlotLocation,
-                Location = Enum.GetName(typeof(ItemLocation), Location),
-                OwnerId = OwnerId,
+                Location = Location,
+                CharacterId = OwnerId,
                 ManaLeft = 0,
                 Time = 0,
                 TimeOfUse = null

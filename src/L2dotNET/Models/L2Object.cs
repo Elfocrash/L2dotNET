@@ -2,19 +2,19 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
 using L2dotNET.Models.Zones.Classes;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET.Models
 {
     public abstract class L2Object
     {
-        private readonly ILog _log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public int ObjId;
         public SortedList<int, L2Object> KnownObjects = new SortedList<int, L2Object>();
         public virtual byte Level { get; set; } = 1;
@@ -34,7 +34,7 @@ namespace L2dotNET.Models
 
         public virtual async Task OnActionAsync(L2Player player)
         {
-            _log.Debug("Doing Attack with player " + player.Name);
+            Log.Debug("Doing Attack with player " + player.Name);
             await player.DoAttackAsync((L2Character)this);
         }
 
@@ -84,7 +84,7 @@ namespace L2dotNET.Models
         {
             if (!excludeYourself)
                 await SendPacketAsync(pk);
-            _log.Debug("Sending " + pk.GetType() + "To Known of " + GetKnownPlayers(false).Count);
+            Log.Debug("Sending " + pk.GetType() + "To Known of " + GetKnownPlayers(false).Count);
             GetKnownPlayers().ForEach(async p => await p.SendPacketAsync(pk));
         }
 

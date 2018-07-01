@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
+using NLog;
 
 namespace L2dotNET.World
 {
     public class L2WorldRegion
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private readonly Dictionary<int, L2Object> _objects = new Dictionary<int, L2Object>();
 

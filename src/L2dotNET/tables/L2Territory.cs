@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Zones.forms;
+using NLog;
 
 namespace L2dotNET.Tables
 {
     public class L2Territory
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public string Name;
         public string Controller;
         public bool StartActive;

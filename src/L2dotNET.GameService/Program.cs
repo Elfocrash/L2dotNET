@@ -1,26 +1,21 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
-
-using L2dotNET.Config;
 using L2dotNET.ConsoleCommand;
 using L2dotNET.Handlers;
 using L2dotNET.Logging.Abstraction;
-using L2dotNET.Logging.Provider;
 using L2dotNET.Managers;
 using L2dotNET.Managers.bbs;
 using L2dotNET.Network;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Repositories;
-using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services;
-using L2dotNET.Services.Contracts;
 using L2dotNET.Tables;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
 namespace L2dotNET.GameService
 {
@@ -54,7 +49,7 @@ namespace L2dotNET.GameService
             return true;
         }
 
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static void Main()
         {
@@ -80,19 +75,10 @@ namespace L2dotNET.GameService
         private static void ConfigureServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<Config.Config>();
-            serviceCollection.AddSingleton<IPlayerService, PlayerService>();
-            serviceCollection.AddSingleton<IAccountService, AccountService>();
-            serviceCollection.AddSingleton<IServerService, ServerService>();
-            serviceCollection.AddSingleton<ICheckService, CheckService>();
-            serviceCollection.AddSingleton<IItemService, ItemService>();
-            serviceCollection.AddSingleton<ISkillService, SkillService>();
 
-            serviceCollection.AddSingleton<IPlayerRepository, PlayerRepository>();
-            serviceCollection.AddSingleton<IAccountRepository, AccountRepository>();
-            serviceCollection.AddSingleton<IServerRepository, ServerRepository>();
-            serviceCollection.AddSingleton<ICheckRepository, CheckRepository>();
-            serviceCollection.AddSingleton<IItemRepository, ItemRepository>();
-            serviceCollection.AddSingleton<ISkillRepository, SkillRepository>();
+            ServicesDependencyBinder.Bind(serviceCollection);
+            RepositoriesDependencyBinder.Bind(serviceCollection);
+
             serviceCollection.AddSingleton<GamePacketHandlerAuth>();
             serviceCollection.AddSingleton<AuthThread>();
             serviceCollection.AddSingleton<GamePacketHandler>();

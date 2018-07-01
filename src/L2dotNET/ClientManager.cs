@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
+using NLog;
 
 namespace L2dotNET
 {
     public class ClientManager
     {
-        private static readonly ILog log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private readonly IPlayerService _playerService;
+        private readonly ICharacterService CharacterService;
        
         protected SortedList<string, DateTime> Flood = new SortedList<string, DateTime>();
         protected NetworkBlock Banned;
@@ -19,9 +19,9 @@ namespace L2dotNET
         public SortedList<string, GameClient> Clients = new SortedList<string, GameClient>();
         private readonly GamePacketHandler _gamePacketHandler;
 
-        public ClientManager(IPlayerService playerService, GamePacketHandler gamePacketHandler)
+        public ClientManager(ICharacterService characterService, GamePacketHandler gamePacketHandler)
         {
-            _playerService = playerService;
+            CharacterService = characterService;
             _gamePacketHandler = gamePacketHandler;
         }
 
@@ -38,7 +38,7 @@ namespace L2dotNET
                 {
                     if (Flood[ip].CompareTo(DateTime.Now) == 1)
                     {
-                        log.Warn($"Active flooder: {ip}");
+                        Log.Warn($"Active flooder: {ip}");
                         client.Close();
                         return;
                     }
@@ -53,15 +53,15 @@ namespace L2dotNET
             if (!Banned.Allowed(ip))
             {
                 client.Close();
-                log.Error($"Connection attempt failed. {ip} banned.");
+                Log.Error($"Connection attempt failed. {ip} banned.");
                 return;
             }
 
-            GameClient gc = new GameClient(_playerService, this, client, _gamePacketHandler);
+            GameClient gc = new GameClient(CharacterService, this, client, _gamePacketHandler);
 
             lock (Clients)
                 Clients.Add(gc.Address.ToString(), gc);
-            log.Info($"{Clients.Count} active connections");
+            Log.Info($"{Clients.Count} active connections");
         }
 
         public void Terminate(string sock)
@@ -69,7 +69,7 @@ namespace L2dotNET
             lock (Clients)
                 Clients.Remove(sock);
 
-            log.Info($"{Clients.Count} active connections");
+            Log.Info($"{Clients.Count} active connections");
         }
     }
 }

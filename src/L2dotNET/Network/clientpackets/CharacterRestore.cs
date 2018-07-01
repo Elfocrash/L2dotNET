@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
 namespace L2dotNET.Network.clientpackets
 {
     class CharacterRestore : PacketBase
     {
-        public readonly IPlayerService _playerService;
+        public readonly ICharacterService CharacterService;
 
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private readonly int _charSlot;
@@ -21,7 +21,7 @@ namespace L2dotNET.Network.clientpackets
         public CharacterRestore(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
-            _playerService = serviceProvider.GetService<IPlayerService>();
+            CharacterService = serviceProvider.GetService<ICharacterService>();
             _charSlot = packet.ReadInt();
         }
 
@@ -48,8 +48,8 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            _playerService.MarkToRestoreChar(player.ObjId);
-            player.DeleteTime = 0;
+            //_playerService.MarkToRestoreChar(player.ObjId);
+            player.DeleteTime = null;
         }
     }
 }

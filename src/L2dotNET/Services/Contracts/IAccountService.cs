@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 
 namespace L2dotNET.Services.Contracts
@@ -12,6 +11,8 @@ namespace L2dotNET.Services.Contracts
 
         Task<bool> CheckIfAccountIsCorrect(string login, string password);
 
-        Task<List<int>> GetPlayerIdsListByAccountName(string login);
+        void UpdateAccount(AccountContract account);
+
+        void DeleteAccount(AccountContract account);
     }
 }

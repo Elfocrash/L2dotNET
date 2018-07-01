@@ -17,15 +17,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="1.50.4" />
+    <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
     <PackageReference Include="MySql.Data" Version="8.0.11" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="PeregrineDb" Version="1.0.12" />
     <PackageReference Include="System.ServiceProcess.ServiceController" Version="4.4.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\L2dotNet.Logging.Abstraction\L2dotNET.Logging.Abstraction.csproj" />
+    <ProjectReference Include="..\L2dotNet.Logging.Abstraction\L2dotNET.Logging.csproj" />
     <ProjectReference Include="..\L2dotNET.Models\L2dotNET.DataContracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection.abstractions\2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <Import Project="..\L2dotNET.Shared\L2dotNET.Shared.projitems" Label="Shared" />

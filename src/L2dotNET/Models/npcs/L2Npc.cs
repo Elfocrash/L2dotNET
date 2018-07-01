@@ -1,18 +1,18 @@
 ﻿using System.Threading.Tasks;
 using System.Timers;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Templates;
 using L2dotNET.Tools;
 using L2dotNET.World;
 using L2dotNET.Tables;
+using NLog;
 
 namespace L2dotNET.Models.Npcs
 {
     public class L2Npc : L2Character
     {
-        private readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public new NpcTemplate Template;
         public bool Summoned;
@@ -41,9 +41,9 @@ namespace L2dotNET.Models.Npcs
         //    Name = template.Name;
         //    AIProcessor = new citizen();
         //    AIProcessor.dialog = new Dictionary<string, string>();
-        //    AIProcessor.dialog.Add("fnHi", "lector001.htm");
-        //    AIProcessor.dialog.Add("fnFeudInfo", "gludio_feud_manager001.htm");
-        //    AIProcessor.dialog.Add("fnNoFeudInfo", "farm_messenger002.htm");
+        //    AIProcessor.diaLog.Add("fnHi", "lector001.htm");
+        //    AIProcessor.diaLog.Add("fnFeudInfo", "gludio_feud_manager001.htm");
+        //    AIProcessor.diaLog.Add("fnNoFeudInfo", "farm_messenger002.htm");
         //    AIProcessor.myself = this;
         //}
 

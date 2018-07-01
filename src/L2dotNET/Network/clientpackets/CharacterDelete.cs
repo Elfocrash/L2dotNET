@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
 namespace L2dotNET.Network.clientpackets
 {
     class CharacterDelete : PacketBase
     {
-        private readonly IPlayerService _playerService;
+        private readonly ICharacterService CharacterService;
 
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private readonly GameClient _client;
         private readonly int _charSlot;
@@ -21,7 +21,7 @@ namespace L2dotNET.Network.clientpackets
         public CharacterDelete(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
-            _playerService = serviceProvider.GetService<IPlayerService>();
+            CharacterService = serviceProvider.GetService<ICharacterService>();
             _charSlot = packet.ReadInt();
         }
 
@@ -64,9 +64,9 @@ namespace L2dotNET.Network.clientpackets
             //    return;
             //}
 
-            if (_playerService.GetDaysRequiredToDeletePlayer() == 0)
+            if (CharacterService.GetDaysRequiredToDeletePlayer() == 0)
             {
-                if (!_playerService.DeleteCharByObjId(player.ObjId))
+                if (!CharacterService.DeleteCharByObjId(player.ObjId))
                 {
                     _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                     return;
@@ -77,11 +77,12 @@ namespace L2dotNET.Network.clientpackets
             else
             {
                 player.SetCharDeleteTime();
-                if (!_playerService.MarkToDeleteChar(player.ObjId, player.DeleteTime))
-                {
-                    _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
-                    return;
-                }
+                // TODO: Fix that
+                //if (!_playerService.MarkToDeleteChar(player.ObjId, player.DeleteTime))
+                //{
+                //    _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
+              //      return;
+            //    }
             }
 
             _client.SendPacketAsync(new CharDeleteOk());

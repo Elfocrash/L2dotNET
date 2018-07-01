@@ -1,27 +1,28 @@
 ﻿using System;
-using L2dotNET.Logging.Abstraction;
-using L2dotNET.Services.Contracts;
+using System.Threading.Tasks;
+using NLog;
 
 namespace L2dotNET
 {
     public class PreReqValidation : IInitialisable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private readonly ICheckService _checkService;
         public bool Initialised { get; private set; }
 
-        public PreReqValidation(ICheckService checkService)
+        public PreReqValidation()
         {
-            _checkService = checkService;
         }
 
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
-            if (_checkService.PreCheckRepository())
+            //TODO: Add Check service
+            if (true)
             {
                 Initialised = true;
                 return;

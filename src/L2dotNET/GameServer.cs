@@ -11,16 +11,14 @@ using L2dotNET.Network.loginauth;
 using L2dotNET.Tables;
 using L2dotNET.Utility;
 using L2dotNET.World;
-using System.IO;
-using System.Reflection;
-using L2dotNET.Logging.Abstraction;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
 namespace L2dotNET
 {
     public class GameServer
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private TcpListener _listener;
 
@@ -31,26 +29,26 @@ namespace L2dotNET
             ServiceProvider = serviceProvider;
         }
 
-        public void Start()
+        public async void Start()
         {
             var config = ServiceProvider.GetService<Config.Config>();
-            config.Initialise();
+            await config.Initialise();
 
-            ServiceProvider.GetService<PreReqValidation>().Initialise();
+            await ServiceProvider.GetService<PreReqValidation>().Initialise();
 
             CharTemplateTable.Instance.Initialize();
 
             NetworkBlock.Instance.Initialize();
             GameTime.Instance.Initialize();
 
-            ServiceProvider.GetService<IdFactory>().Initialise();
+            await ServiceProvider.GetService<IdFactory>().Initialise();
 
             L2World.Instance.Initialize();
 
             MapRegionTable.Instance.Initialize();
             ZoneTable.Instance.Initialize();
 
-            ServiceProvider.GetService<ItemTable>().Initialise();
+            await ServiceProvider.GetService<ItemTable>().Initialise();
             ItemHandler.Instance.Initialize();
 
             NpcTable.Instance.Initialize();
@@ -58,14 +56,14 @@ namespace L2dotNET
             
             BlowFishKeygen.GenerateKeys();
 
-            ServiceProvider.GetService<IAdminCommandHandler>().Initialise();
+            await ServiceProvider.GetService<IAdminCommandHandler>().Initialise();
 
-            ServiceProvider.GetService<AnnouncementManager>().Initialise();
+            await ServiceProvider.GetService<AnnouncementManager>().Initialise();
 
             StaticObjTable.Instance.Initialize();
-            ServiceProvider.GetService<SpawnTable>().Initialise();
+            await ServiceProvider.GetService<SpawnTable>().Initialise();
 
-            ServiceProvider.GetService<HtmCache>().Initialise();
+            await ServiceProvider.GetService<HtmCache>().Initialise();
 
             // PluginManager.Instance.Initialize(this);
 

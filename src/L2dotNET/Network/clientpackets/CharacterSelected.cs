@@ -8,7 +8,7 @@ namespace L2dotNET.Network.clientpackets
 {
     class CharacterSelected : PacketBase
     {
-        private readonly IPlayerService _playerService;
+        private readonly ICharacterService CharacterService;
 
         private readonly GameClient _client;
         private readonly int _charSlot;
@@ -20,7 +20,7 @@ namespace L2dotNET.Network.clientpackets
         public CharacterSelected(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
-            _playerService = serviceProvider.GetService<IPlayerService>();
+            CharacterService = serviceProvider.GetService<ICharacterService>();
             _charSlot = packet.ReadInt();
             _unk1 = packet.ReadShort();
             _unk2 = packet.ReadInt();
@@ -30,23 +30,19 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
+            //if (_client.CurrentPlayer == null)
             {
-                //if (_client.CurrentPlayer == null)
-                {
-                    L2Player player = _playerService.GetPlayerBySlotId(_client.AccountName, _charSlot);
+                L2Player player = await CharacterService.GetPlayerBySlotId(_client.AccountName, _charSlot);
 
-                    if (player == null)
-                        return;
+                if (player == null)
+                    return;
 
-                    player.Online = 1;
-                    player.Gameclient = _client;
-                    _client.CurrentPlayer = player;
+                player.Online = 1;
+                player.Gameclient = _client;
+                _client.CurrentPlayer = player;
 
-                    _client.SendPacketAsync(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
-                }
-            });
+                _client.SendPacketAsync(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
+            }
         }
-
     }
 }

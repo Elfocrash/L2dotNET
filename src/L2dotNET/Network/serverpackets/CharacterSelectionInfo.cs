@@ -29,10 +29,10 @@ namespace L2dotNET.Network.serverpackets
 
             if (_players.Count > 0)
             {
-                if (_players.Count(filter => filter.DeleteTime == 0) == 1)
-                    lastSelectedObjId = _players.FirstOrDefault().ObjId;
-                else
-                    lastSelectedObjId = _players.OrderByDescending(sort => sort.LastAccess).FirstOrDefault(filter => filter.DeleteTime == 0).ObjId;
+                var lastUsedChar = _players.OrderByDescending(sort => sort.LastAccess)
+                    .FirstOrDefault(filter => !filter.DeleteTime.HasValue);
+
+                lastSelectedObjId = lastUsedChar?.ObjId ?? 0;
             }
 
             foreach (L2Player player in _players)

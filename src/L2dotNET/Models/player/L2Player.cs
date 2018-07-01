@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Enums;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Inventory;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Npcs;
@@ -22,30 +21,31 @@ using L2dotNET.Templates;
 using L2dotNET.Tools;
 using L2dotNET.Utility;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET.Models.Player
 {
     
     public class L2Player : L2Character
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public L2Player(IPlayerService playerService, int objectId, PcTemplate template) : base(objectId, template)
+        public L2Player(ICharacterService characterService, int objectId, PcTemplate template) : base(objectId, template)
         {
             Template = template;
-            _playerService = playerService;
+            CharacterService = characterService;
             CharacterStat = new CharacterStat(this);
             InitializeCharacterStatus();
             Calculators = new Models.Stats.Calculator[Models.Stats.Stats.Values.Count()];
             AddFuncsToNewCharacter();
         }
 
-        public L2Player(IPlayerService playerService) :base(0, null)
+        public L2Player(ICharacterService characterService) :base(0, null)
         {
-            _playerService = playerService;
+            CharacterService = characterService;
         }
 
-        public readonly IPlayerService _playerService;
+        public readonly ICharacterService CharacterService;
 
         public new PlayerStatus CharStatus => (PlayerStatus)base.CharStatus;
 
@@ -70,7 +70,7 @@ namespace L2dotNET.Models.Player
         }
         public int Karma { get; set; }
         public int PvpKills { get; set; }
-        public long DeleteTime { get; set; }
+        public DateTime? DeleteTime { get; set; }
         public int CanCraft { get; set; }
         public int PkKills { get; set; }
         public int RecLeft { get; set; }
@@ -83,14 +83,14 @@ namespace L2dotNET.Models.Player
         public double CollRadius { get; set; }
         public double CollHeight { get; set; }
         public int CursedWeaponLevel { get; set; }
-        public long LastAccess { get; set; }
+        public DateTime? LastAccess { get; set; }
         public int IsIn7SDungeon { get; set; }
         public int PunishLevel { get; set; }
         public int PunishTimer { get; set; }
         public int PowerGrade { get; set; }
-        public int Nobless { get; set; }
-        public int Hero { get; set; }
-        public long LastRecomDate { get; set; }
+        public bool Nobless { get; set; }
+        public bool Hero { get; set; }
+        public DateTime? LastRecomDate { get; set; }
         public PcInventory Inventory { get; set; }
         public dynamic SessionData { get; set; }
         public new PcTemplate Template { get; set; }
@@ -528,7 +528,7 @@ namespace L2dotNET.Models.Player
             Party?.Leave(this);
 
             Online = 0;
-            _playerService.UpdatePlayer(this);
+            CharacterService.UpdatePlayer(this);
             L2World.Instance.RemovePlayer(this);
             DecayMe();
 
@@ -1452,13 +1452,13 @@ namespace L2dotNET.Models.Player
             await base.DoDieAsync(killer);
         }
 
-        public bool CharDeleteTimeExpired() => (DeleteTime > 0) && (DeleteTime <= Utilz.CurrentTimeMillis());
+        public bool CharDeleteTimeExpired() => DeleteTime.HasValue && DeleteTime.Value < DateTime.UtcNow;
 
-        public int RemainingDeleteTime() => AccessLevel > -100 ? (DeleteTime > 0 ? (int)((DeleteTime - Utilz.CurrentTimeMillis()) / 1000) : 0) : -1;
+        public int RemainingDeleteTime() => AccessLevel > -100 ? (DeleteTime.HasValue ? (int)(DeleteTime.Value - DateTime.UtcNow).TotalSeconds : 0) : -1;
 
-        public void SetCharDeleteTime() => DeleteTime = Utilz.CurrentTimeMillis() + (_playerService.GetDaysRequiredToDeletePlayer() * 86400000L);
+        public void SetCharDeleteTime() => DeleteTime = DateTime.UtcNow.AddDays(CharacterService.GetDaysRequiredToDeletePlayer());
 
-        public void SetCharLastAccess() => LastAccess = Utilz.CurrentTimeMillis();
+        public void SetCharLastAccess() => LastAccess = DateTime.UtcNow;
 
         internal void DropItem(int objectId, int count, int x, int y, int z)
         {

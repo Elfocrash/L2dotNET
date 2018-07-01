@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.Basic;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.World;
+using NLog;
 
 namespace L2dotNET.Managers
 {
@@ -15,23 +15,25 @@ namespace L2dotNET.Managers
     {
         private readonly IServerService _serverService;
 
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public bool Initialised { get; private set; }
 
-        public List<AnnouncementContract> Announcements { get; set; }
+        public IEnumerable<AnnouncementContract> Announcements { get; set; }
 
         public AnnouncementManager(IServerService serverService)
         {
             _serverService = serverService;
         }
 
-        public void Initialise()
+        public async Task Initialise()
         {
             if (Initialised)
+            {
                 return;
+            }
 
-            Announcements = _serverService.GetAnnouncementsList();
-            Log.Info($"Loaded {Announcements.Count} annoucements.");
+            Announcements = await _serverService.GetAnnouncementsList();
+            Log.Info($"Loaded {Announcements.Count()} annoucements.");
 
             Initialised = true;
         }
@@ -56,8 +58,10 @@ namespace L2dotNET.Managers
 
         public void OnEnter(L2Player player)
         {
-            if ((Announcements == null) || (Announcements.Count == 0))
+            if (Announcements == null || !Announcements.Any())
+            {
                 return;
+            }
 
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_ANNOUNCE);
 

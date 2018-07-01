@@ -8,13 +8,13 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using L2dotNET.Logging.Abstraction;
+using NLog;
 
 namespace L2dotNET.Utility
 {
     public static class Utilz
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public static string CurrentTime => DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
 
@@ -37,7 +37,7 @@ namespace L2dotNET.Utility
         
         public static IEnumerable<Type> GetTypesInNamespace(Assembly assembly, string nameSpace)
         {
-            return assembly.GetTypes().Where(t => string.Equals(t.Namespace, nameSpace, StringComparison.Ordinal)).ToArray();
+            return assembly.GetTypes().Where(t => string.Equals(t.Namespace, nameSpace, StringComparison.Ordinal) && t.BaseType != typeof(object)).ToArray();
         }
 
         private static readonly DateTime Year1970 = new DateTime(1970, 1, 1);

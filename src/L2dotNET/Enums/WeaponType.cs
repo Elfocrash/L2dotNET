@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using L2dotNET.DataContracts.Shared.Enums;
 
 namespace L2dotNET.Enums
 {
@@ -21,6 +22,24 @@ namespace L2dotNET.Enums
         public static readonly WeaponType Pet = new WeaponType(WeaponTypeId.Pet, "Pet");
         public static readonly WeaponType Rod = new WeaponType(WeaponTypeId.Fishingrod, "Rod");
         public static readonly WeaponType BigBlunt = new WeaponType(WeaponTypeId.Bigblunt, "BigBlunt");
+
+        private static readonly Dictionary<WeaponTypeId, int> masks = new Dictionary<WeaponTypeId, int>
+            {
+                {WeaponTypeId.None, 40},
+                {WeaponTypeId.Sword, 40},
+                {WeaponTypeId.Blunt, 40},
+                {WeaponTypeId.Dagger, 40},
+                {WeaponTypeId.Bow, 500},
+                {WeaponTypeId.Pole, 66},
+                {WeaponTypeId.Etc, 40},
+                {WeaponTypeId.Fist, 40},
+                {WeaponTypeId.Dual, 40},
+                {WeaponTypeId.Dualfist, 40},
+                {WeaponTypeId.Bigsword, 40},
+                {WeaponTypeId.Fishingrod, 40},
+                {WeaponTypeId.Bigblunt, 40},
+                {WeaponTypeId.Pet, 40}
+            };
 
         private WeaponType(WeaponTypeId id, string name)
         {
@@ -56,7 +75,7 @@ namespace L2dotNET.Enums
 
         public int GetMask()
         {
-            return 1 << (int)Id;
+            return 1 << masks[Id];
         }
 
     }

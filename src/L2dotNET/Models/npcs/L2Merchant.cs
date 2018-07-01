@@ -4,16 +4,16 @@ using L2dotNET.Network.serverpackets;
 
 using L2dotNET.World;
 using System.Timers;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
 using L2dotNET.Tables;
+using NLog;
 
 namespace L2dotNET.Models.Npcs
 {
     class L2Merchant : L2Npc
     {
-        private readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private Timer CorpseTimer;
         private readonly SpawnTable _spawnTable;

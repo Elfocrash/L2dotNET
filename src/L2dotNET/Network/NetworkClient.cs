@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.Utility;
-
-using static L2dotNet.Logging.Abstraction.LoggingExtensions;
+using NLog;
 
 namespace L2dotNET.Network
 {
@@ -24,7 +22,7 @@ namespace L2dotNET.Network
     /// </summary>
     public abstract class NetworkClient
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// Client <see cref="Socket"/>.
@@ -121,7 +119,7 @@ namespace L2dotNET.Network
             }
             catch (Exception ex)
             {
-                Log.ErrorException("Try set m_Socket", ex);
+                Log.Error("Try set m_Socket", ex);
             }
         }
 
@@ -136,7 +134,7 @@ namespace L2dotNET.Network
         /// <param name="packet">Received <see cref="Packet"/>.</param>
         protected virtual void Handle(Packet packet)
         {
-            Log.InfoFormat("Received (NC) :\r\n{0}", packet.ToString());
+            Log.Info(String.Format("Received (NC) :\r\n{0}", packet.ToString()));
         }
 
         /// <summary>
@@ -167,7 +165,7 @@ namespace L2dotNET.Network
             catch (Exception e)
             {
                 
-                Log.Exception(e);
+                Log.Error(e);
 
                 CloseConnection();
 
@@ -215,7 +213,7 @@ namespace L2dotNET.Network
             }
             catch (Exception e)
             {
-                Log.InfoException("", e);
+                Log.Error(e);
             }
 
             MSocket = null;

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Enums;
 using L2dotNET.Templates;
 using L2dotNET.Utility;
@@ -23,19 +24,25 @@ namespace L2dotNET.Models.Items
             MpBonus = set.GetInt("mp_bonus");
             HpBonus = set.GetInt("hp_bonus");
 
-            int bodyPart = BodyPart;
-            if ((bodyPart == SlotNeck) || (bodyPart == SlotFace) || (bodyPart == SlotHair) || (bodyPart == SlotHairall) || ((bodyPart & SlotREar) != 0) || ((bodyPart & SlotLFinger) != 0) || ((bodyPart & SlotBack) != 0))
+            //TODO: check this
+            if (BodyPart == BodyPartType.SlotNeck 
+                || BodyPart == BodyPartType.SlotFace 
+                || BodyPart == BodyPartType.SlotHair 
+                || BodyPart == BodyPartType.SlotHairall
+                || (BodyPart & BodyPartType.SlotREar) != 0 
+                || (BodyPart & BodyPartType.SlotLFinger) != 0 
+                || (BodyPart & BodyPartType.SlotBack) != 0)
             {
-                Type1 = Type1WeaponRingEarringNecklace;
-                Type2 = Type2Accessory;
+                Type1 = (int)BodyPartType.Type1WeaponRingEarringNecklace;
+                Type2 = (int) BodyPartType.Type2Accessory;
             }
             else
             {
-                if ((Type == ArmorType.None.Id) && (BodyPart == SlotLHand)) // retail define shield as NONE
+                if (Type == ArmorType.None.Id && BodyPart == BodyPartType.SlotLHand) // retail define shield as NONE
                     Type = ArmorType.Shield.Id;
 
-                Type1 = Type1ShieldArmor;
-                Type2 = Type2ShieldArmor;
+                Type1 = (int) BodyPartType.Type1ShieldArmor;
+                Type2 = (int) BodyPartType.Type2ShieldArmor;
             }
         }
 

@@ -33,7 +33,7 @@ namespace L2dotNET.Network.serverpackets
 
                 WriteShort(item.Template.Type2);
                 WriteShort(item.Template.Type1);
-                WriteInt(item.Template.BodyPart);
+                WriteInt((int) item.Template.BodyPart);
 
                 WriteShort(item.Enchant);
                 WriteShort(item.Template.Type2);

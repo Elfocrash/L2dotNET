@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using L2dotNET.Models.Player;
 using L2dotNET.Network.loginauth;
-using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,7 +10,7 @@ namespace L2dotNET.Network.clientpackets
     {
         private readonly IAccountService _accountService;
         private readonly AuthThread _authThread;
-        private readonly IPlayerService _playerService;
+        private readonly ICharacterService CharacterService;
 
         private readonly GameClient _client;
         private readonly string _loginName;
@@ -28,7 +24,7 @@ namespace L2dotNET.Network.clientpackets
             _client = client;
             _authThread = serviceProvider.GetService<AuthThread>();
             _accountService = serviceProvider.GetService<IAccountService>();
-            _playerService = serviceProvider.GetService<IPlayerService>();
+            CharacterService = serviceProvider.GetService<ICharacterService>();
             _loginName = packet.ReadString();
             _playKey2 = packet.ReadInt();
             _playKey1 = packet.ReadInt();
@@ -40,10 +36,13 @@ namespace L2dotNET.Network.clientpackets
         {
             if (_client.AccountName == null)
             {
-                _client.SessionKey = new SessionKey(_loginKey1,_loginKey2, _playKey1, _playKey2);
+                _client.SessionKey = new SessionKey(_loginKey1, _loginKey2, _playKey1, _playKey2);
 
                 _client.AccountName = _loginName;
 
+                // TODO: Update code below when playerService would be done
+                throw new NotImplementedException();
+                /*
                 var players = await _accountService.GetPlayerIdsListByAccountName(_loginName);
 
                 int slot = 0;
@@ -63,10 +62,12 @@ namespace L2dotNET.Network.clientpackets
                 }
 
                 _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
-                _authThread.SetInGameAccount(_client.AccountName, true);
+                _authThread.SetInGameAccount(_client.AccountName, true);*/
             }
             else
+            {
                 _client.Termination();
+            }
         }
     }
 }

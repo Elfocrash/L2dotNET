@@ -24,7 +24,7 @@ namespace L2dotNET.Network.serverpackets
                     Type2 = (short)item.Template.Type2,
                     CType1 = item.CustomType1,
                     Equip = item.IsEquipped,
-                    Bodypart = item.Template.BodyPart,
+                    Bodypart = (int) item.Template.BodyPart,
                     Enchant = item.Enchant,
                     CType2 = item.CustomType2,
                     Augment = item.AugmentationId,

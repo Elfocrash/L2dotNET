@@ -2,18 +2,17 @@
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
 using System.Threading.Tasks;
-using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Managers;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
 namespace L2dotNET.LoginService
 {
     class LoginServer
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public static IServiceProvider ServiceProvider;
         private TcpListener _listener;
 
@@ -22,16 +21,16 @@ namespace L2dotNET.LoginService
             ServiceProvider = serviceProvider;
         }
 
-        public void Start()
+        public async void Start()
         {
             // CheckRunningProcesses();
             var config = ServiceProvider.GetService<Config.Config>();
             var serverThreadPool = ServiceProvider.GetService<ServerThreadPool>();
 
-            config.Initialise();
-            ServiceProvider.GetService<PreReqValidation>().Initialise();
-            ServiceProvider.GetService<Managers.ClientManager>().Initialise();
-            serverThreadPool.Initialize();
+            await config.Initialise();
+            await ServiceProvider.GetService<PreReqValidation>().Initialise();
+            await ServiceProvider.GetService<Managers.ClientManager>().Initialise();
+            await serverThreadPool.Initialize();
             NetworkRedirect.Instance.Initialize();
 
             _listener = new TcpListener(IPAddress.Parse(config.ServerConfig.Host), config.ServerConfig.LoginPort);

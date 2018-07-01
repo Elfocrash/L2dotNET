@@ -27,9 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L2dotNET.Repositories", "L2
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "L2dotNET.Shared", "L2dotNET.Shared\L2dotNET.Shared.shproj", "{BEECAD83-2844-4636-AECD-761BC5EE7F9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Logging.Abstraction", "L2dotNet.Logging.Abstraction\L2dotNET.Logging.Abstraction.csproj", "{920EFC4C-499D-48DC-B38C-4BFFF360F1FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L2dotNET.Logging", "L2dotNet.Logging.Abstraction\L2dotNET.Logging.csproj", "{920EFC4C-499D-48DC-B38C-4BFFF360F1FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L2dotNET.Logging.Provider", "L2dotNET.Logging.Provider\L2dotNET.Logging.Provider.csproj", "{E6C858E2-B6F1-452F-A5A0-E9315C0D0FA0}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "L2dotNET.Database", "L2dotNET.Database\L2dotNET.Database.sqlproj", "{DC0798C9-CD17-464E-8805-AC67FB2132E7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L2dotNET.DataContracts.Shared", "L2dotNET.DataContracts.Shared\L2dotNET.DataContracts.Shared.csproj", "{E5FDC77E-DE36-44F3-B5B7-424E3D8ECB21}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -64,10 +66,16 @@ Global
 		{920EFC4C-499D-48DC-B38C-4BFFF360F1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{920EFC4C-499D-48DC-B38C-4BFFF360F1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{920EFC4C-499D-48DC-B38C-4BFFF360F1FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6C858E2-B6F1-452F-A5A0-E9315C0D0FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6C858E2-B6F1-452F-A5A0-E9315C0D0FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6C858E2-B6F1-452F-A5A0-E9315C0D0FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6C858E2-B6F1-452F-A5A0-E9315C0D0FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC0798C9-CD17-464E-8805-AC67FB2132E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC0798C9-CD17-464E-8805-AC67FB2132E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC0798C9-CD17-464E-8805-AC67FB2132E7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DC0798C9-CD17-464E-8805-AC67FB2132E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC0798C9-CD17-464E-8805-AC67FB2132E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC0798C9-CD17-464E-8805-AC67FB2132E7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E5FDC77E-DE36-44F3-B5B7-424E3D8ECB21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FDC77E-DE36-44F3-B5B7-424E3D8ECB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5FDC77E-DE36-44F3-B5B7-424E3D8ECB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FDC77E-DE36-44F3-B5B7-424E3D8ECB21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
