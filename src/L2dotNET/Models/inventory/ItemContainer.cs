@@ -65,7 +65,7 @@ namespace L2dotNET.Models.Inventory
 
             foreach (L2Item item in items)
             {
-                L2World.Instance.AddObject(item);
+                L2World.AddObject(item);
                 Owner = owner;
                 AddItem(item, (L2Player)Owner);
             }

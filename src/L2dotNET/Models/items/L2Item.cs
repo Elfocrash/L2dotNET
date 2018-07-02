@@ -105,7 +105,7 @@ namespace L2dotNET.Models.Items
 
             killer?.AddKnownObject(this, pk, true);
 
-            L2World.Instance.AddObject(this);
+            L2World.AddObject(this);
         }
 
         public void DropMe(int x, int y, int z)
@@ -127,7 +127,7 @@ namespace L2dotNET.Models.Items
 
                 player.OnPickUp(this);
 
-                L2World.Instance.RemoveObject(this);
+                L2World.RemoveObject(this);
             }
             else
                 await player.TryMoveToAsync(X, Y, Z);

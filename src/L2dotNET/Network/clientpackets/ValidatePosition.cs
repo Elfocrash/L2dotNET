@@ -71,7 +71,7 @@ namespace L2dotNET.Network.clientpackets
                     player.Z = _z;
                     player.Heading = _heading;
                 }
-                L2WorldRegion NewRegion = L2World.Instance.GetRegion(new Location(player.X, player.Y, player.Z));
+                L2WorldRegion NewRegion = L2World.GetRegion(new Location(player.X, player.Y, player.Z));
                 if (prevReg != NewRegion)
                 {
                     player.SetRegion(NewRegion);

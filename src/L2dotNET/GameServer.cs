@@ -44,7 +44,7 @@ namespace L2dotNET
 
             await ServiceProvider.GetService<IdFactory>().Initialise();
 
-            L2World.Instance.Initialize();
+            L2World.Initialize();
 
             MapRegionTable.Instance.Initialize();
             ZoneTable.Instance.Initialize();

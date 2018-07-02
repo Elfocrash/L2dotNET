@@ -31,7 +31,7 @@ namespace L2dotNET.Models.Npcs
 
         public override async Task SendPacketAsync(GameserverPacket pk)
         {
-            foreach (L2Player pl in L2World.Instance.GetPlayers())
+            foreach (L2Player pl in L2World.GetPlayers())
             {
                 // TODO: Sends to all players on the server. It is not right
                 await pl.Gameclient.SendPacketAsync(pk);
@@ -88,7 +88,7 @@ namespace L2dotNET.Models.Npcs
             CorpseTimer.Stop();
             CorpseTimer.Enabled = false;
             await BroadcastPacketAsync(new DeleteObject(ObjId));
-            L2World.Instance.RemoveObject(this);
+            L2World.RemoveObject(this);
         }
     }
 }

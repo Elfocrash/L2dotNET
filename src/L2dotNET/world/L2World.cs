@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using L2dotNET.Models;
@@ -8,25 +9,23 @@ using NLog;
 
 namespace L2dotNET.World
 {
-    public class L2World
+    public static class L2World
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private static volatile L2World _instance;
-        private static readonly object SyncRoot = new object();
-
         // Geodata min/max tiles
-        public static int TileXMin = 16;
-        public static int TileXMax = 26;
-        public static int TileYMin = 10;
-        public static int TileYMax = 25;
+        public const int TileXMin = 16;
+        public const int TileXMax = 26;
+        public const int TileYMin = 10;
+        public const int TileYMax = 25;
 
         // Map dimensions
-        public static int TileSize = 32768;
-        public static int WorldXMin = (TileXMin - 20) * TileSize;
-        public static int WorldXMax = (TileXMax - 19) * TileSize;
-        public static int WorldYMin = (TileYMin - 18) * TileSize;
-        public static int WorldYMax = (TileYMax - 17) * TileSize;
+        public const int TileSize = 32768;
+
+        public const int WorldXMin = (TileXMin - 20) * TileSize;
+        public const int WorldXMax = (TileXMax - 19) * TileSize;
+        public const int WorldYMin = (TileYMin - 18) * TileSize;
+        public const int WorldYMax = (TileYMax - 17) * TileSize;
 
         // Regions and offsets
         private const int RegionSize = 4096;
@@ -35,31 +34,12 @@ namespace L2dotNET.World
         private static readonly int RegionXOffset = Math.Abs(WorldXMin / RegionSize);
         private static readonly int RegionYOffset = Math.Abs(WorldYMin / RegionSize);
 
-        private readonly Dictionary<int, L2Object> _objects = new Dictionary<int, L2Object>();
-        private readonly Dictionary<int, L2Player> _players = new Dictionary<int, L2Player>();
+        private static readonly ConcurrentDictionary<int, L2Object> _objects = new ConcurrentDictionary<int, L2Object>();
+        private static readonly ConcurrentDictionary<int, L2Player> _players = new ConcurrentDictionary<int, L2Player>();
 
-        private readonly L2WorldRegion[,] _worldRegions = new L2WorldRegion[RegionsX + 1, RegionsY + 1];
+        private static readonly L2WorldRegion[,] _worldRegions = new L2WorldRegion[RegionsX + 1, RegionsY + 1];
 
-        private L2World() { }
-
-        public static L2World Instance
-        {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new L2World();
-                }
-
-                return _instance;
-            }
-        }
-
-        public void Initialize()
+        public static void Initialize()
         {
             for (int i = 0; i <= RegionsX; i++)
                 for (int j = 0; j <= RegionsY; j++)
@@ -70,59 +50,62 @@ namespace L2dotNET.World
                     for (int a = -1; a <= 1; a++)
                         for (int b = -1; b <= 1; b++)
                             if (ValidRegion(x + a, y + b))
+                            {
                                 _worldRegions[x + a, y + b].AddSurroundingRegion(_worldRegions[x, y]);
+                            }
 
             Log.Info($"WorldRegion grid ({RegionsX} by {RegionsY}) is now setted up.");
         }
 
-        public void AddObject(L2Object obj)
+        public static void AddObject(L2Object obj)
         {
             if (!_objects.ContainsKey(obj.ObjId))
-                _objects.Add(obj.ObjId, obj);
+            {
+                _objects.TryAdd(obj.ObjId, obj);
+            }
         }
 
-        public void RemoveObject(L2Object obj)
+        public static void RemoveObject(L2Object obj)
         {
-            _objects.Remove(obj.ObjId);
+            L2Object o;
+            _objects.TryRemove(obj.ObjId, out o);
         }
 
-        public List<L2Object> GetObjects()
+        public static List<L2Object> GetObjects()
         {
             return _objects.Values.ToList();
         }
 
-        public L2Object GetObject(int objectId)
+        public static L2Object GetObject(int objectId)
         {
             if (_objects.ContainsKey(objectId))
+            {
                 return _objects[objectId];
-            else
-                return null;
+            }
+
+            return null;
         }
 
-        public void AddPlayer(L2Player cha)
+        public static void AddPlayer(L2Player player)
         {
-            Console.WriteLine("??????? Add Player");
-            if (!_players.ContainsKey(cha.ObjId))
-                _players.Add(cha.ObjId, cha);
+            if (!_players.ContainsKey(player.ObjId))
+            {
+                _players.TryAdd(player.ObjId, player);
+            }
         }
 
-        public void RemovePlayer(L2Player cha)
+        public static void RemovePlayer(L2Player player)
         {
-            Console.WriteLine("??????? RemovePlayer");
-            _players.Remove(cha.ObjId);
+            L2Player o;
+            _players.TryRemove(player.ObjId, out o);
         }
 
-        public List<L2Player> GetPlayers()
+        public static List<L2Player> GetPlayers()
         {
             return _players.Values.ToList();
         }
 
-        //public L2Player GetPlayer(string name)
-        //{
-        //    return _players.get(CharNameTable.getInstance().getPlayerObjectId(name));
-        //}
-
-        public L2Player GetPlayer(int objectId)
+        public static L2Player GetPlayer(int objectId)
         {
             return _players[objectId];
         }
@@ -142,45 +125,19 @@ namespace L2dotNET.World
             return (x >= 0) && (x <= RegionsX) && (y >= 0) && (y <= RegionsY);
         }
 
-        public L2WorldRegion GetRegion(Location point)
+        public static L2WorldRegion GetRegion(Location point)
         {
             return GetRegion(point.X, point.Y);
         }
 
-        public L2WorldRegion GetRegion(int x, int y)
+        public static L2WorldRegion GetRegion(int x, int y)
         {
             return _worldRegions[(x - WorldXMin) / RegionSize, (y - WorldYMin) / RegionSize];
         }
 
-        public L2WorldRegion[,] GetWorldRegions()
+        public static L2WorldRegion[,] GetWorldRegions()
         {
             return _worldRegions;
-        }
-
-        public void DeleteVisibleNpcSpawns()
-        {
-            //Log.info("Deleting all visible NPCs.");
-            //       for (int i = 0; i <= REGIONS_X; i++)
-            //       {
-            //           for (int j = 0; j <= REGIONS_Y; j++)
-            //           {
-            //               foreach (L2Object obj in _worldRegions[i,j].GetObjects())
-            //               {
-            //               if (obj is L2Npc)
-            //{
-            //                   ((L2Npc)obj).deleteMe();
-
-            //                   L2Spawn spawn = ((L2Npc)obj).getSpawn();
-            //                   if (spawn != null)
-            //                   {
-            //                       //spawn.setRespawnState(false);
-            //                       //SpawnTable.getInstance().deleteSpawn(spawn, false);
-            //                   }
-            //               }
-            //           }
-            //       }
-            //   }
-            //   Log.info("All visibles NPCs are now deleted.");
         }
     }
 }

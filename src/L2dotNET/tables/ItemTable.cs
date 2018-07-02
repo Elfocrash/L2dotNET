@@ -82,7 +82,7 @@ namespace L2dotNET.Tables
         {
             L2Item item = new L2Item(_itemCrudService, _idFactory, GetItem(itemId), _idFactory.NextId());
 
-            L2World.Instance.AddObject(item);
+            L2World.AddObject(item);
 
             if (item.Template.Stackable && (count > 1))
             {

@@ -33,7 +33,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
                 //}
 
                 //if (target == null)
-                //    target = L2World.Instance.GetPlayer(name);
+                //    target = L2World.GetPlayer(name);
 
                 if (target == null)
                 {

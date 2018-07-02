@@ -123,7 +123,7 @@ namespace L2dotNET.Tables
 
             foreach (L2StaticObject o in Objects.Values)
             {
-                L2World.Instance.AddObject(o);
+                L2World.AddObject(o);
                 o.OnSpawnAsync();
             }
 

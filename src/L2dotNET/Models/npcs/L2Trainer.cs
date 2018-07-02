@@ -26,7 +26,7 @@ namespace L2dotNET.Models.Npcs
 
         public override async Task SendPacketAsync(GameserverPacket pk)
         {
-            foreach (L2Player pl in L2World.Instance.GetPlayers())
+            foreach (L2Player pl in L2World.GetPlayers())
             {
                 // TODO: Sends to all players on the server. It is not right
                 await pl.Gameclient.SendPacketAsync(pk);
