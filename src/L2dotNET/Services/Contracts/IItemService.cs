@@ -7,5 +7,6 @@ namespace L2dotNET.Services.Contracts
     public interface IItemService
     {
         Task<IEnumerable<ItemContract>> RestoreInventory(int characterId);
+        int GetMaxItemId();
     }
 }
