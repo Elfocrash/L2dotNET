@@ -8,11 +8,6 @@ namespace L2dotNET.Models.Items
     {
         public EtcItemTypeId Type { get; set; }
 
-        public EtcItem(StatsSet set) : base(set)
-        {
-            Type = Utilz.GetEnumFromString(set.GetString("item_type", "None"), EtcItemTypeId.None);
-        }
-
         public override int GetItemMask()
         {
             return 1 << ((int)Type + 21);

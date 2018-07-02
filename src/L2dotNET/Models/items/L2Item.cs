@@ -254,12 +254,12 @@ namespace L2dotNET.Models.Items
 
         public bool NotForTrade()
         {
-            return !Template.Tradable || (AugmentationId > 0) || (IsEquipped == 1);
+            return !Template.Tradeable || (AugmentationId > 0) || (IsEquipped == 1);
         }
 
         public bool NotForSale()
         {
-            return !Template.Tradable || (IsEquipped == 1);
+            return !Template.Tradeable || (IsEquipped == 1);
         }
     }
 }

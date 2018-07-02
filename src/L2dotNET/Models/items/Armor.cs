@@ -15,15 +15,8 @@ namespace L2dotNET.Models.Items
         private int MpBonus { get; set; }
         private int HpBonus { get; set; }
 
-        public Armor(StatsSet set) : base(set)
+        public Armor()
         {
-            Type = Utilz.GetEnumFromString(set.GetString("armor_type", "none"), ArmorTypeId.None);
-            AvoidModifier = set.GetInt("avoid_modify");
-            Pdef = set.GetInt("p_def");
-            Mdef = set.GetInt("m_def");
-            MpBonus = set.GetInt("mp_bonus");
-            HpBonus = set.GetInt("hp_bonus");
-
             //TODO: check this
             if (BodyPart == BodyPartType.SlotNeck 
                 || BodyPart == BodyPartType.SlotFace 
@@ -33,7 +26,7 @@ namespace L2dotNET.Models.Items
                 || (BodyPart & BodyPartType.SlotLFinger) != 0 
                 || (BodyPart & BodyPartType.SlotBack) != 0)
             {
-                Type1 = (int)BodyPartType.Type1WeaponRingEarringNecklace;
+                Type1 = (int) BodyPartType.Type1WeaponRingEarringNecklace;
                 Type2 = (int) BodyPartType.Type2Accessory;
             }
             else
