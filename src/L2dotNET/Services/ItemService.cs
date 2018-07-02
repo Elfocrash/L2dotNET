@@ -19,5 +19,10 @@ namespace L2dotNET.Services
         {
             return await _itemRepository.RestoreInventory(characterId);
         }
+
+        public int GetMaxItemId()
+        {
+            return _itemRepository.GetMaxItemId();
+        }
     }
 }

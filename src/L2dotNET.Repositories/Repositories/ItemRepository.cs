@@ -30,5 +30,22 @@ namespace L2dotNET.Repositories
             }
 
         }
+
+        public int GetMaxItemId()
+        {
+            try
+            {
+                using (IDatabase database = ConnectionFactory.Open())
+                {
+                    return database.ExecuteScalar<int>("SELECT max(ItemId) FROM Items;");
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Method: {nameof(GetMaxItemId)}. Message: '{ex.Message}'");
+                throw;
+            }
+
+        }
     }
 }
