@@ -6,6 +6,7 @@ namespace L2dotNET.Utility.Geometry
 {
     public static class Rnd
     {
+        //TODO: RandomThreadSafe.Instance
         private static readonly Random rnd = new Random();
 
         public static double Get()

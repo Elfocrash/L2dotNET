@@ -94,11 +94,11 @@ namespace L2dotNET.LoginService.GSCommunication
             Log.Warn($"ServerThread: #{id} shutted down");
         }
 
-        public bool LoggedAlready(string account)
+        public bool LoggedAlready(int accountId)
         {
-            foreach (L2Server srv in Servers.Where(srv => srv.Thread != null && srv.Thread.LoggedAlready(account)))
+            foreach (L2Server srv in Servers.Where(srv => srv.Thread != null && srv.Thread.LoggedAlready(accountId)))
             {
-                srv.Thread.KickAccount(account);
+                srv.Thread.KickAccount(accountId);
                 return true;
             }
 

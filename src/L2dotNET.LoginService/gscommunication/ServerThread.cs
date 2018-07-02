@@ -17,7 +17,7 @@ namespace L2dotNET.LoginService.GSCommunication
         private NetworkStream _nstream;
         private TcpClient _client;
         private readonly PacketHandler _packetHandler;
-        private readonly List<string> _activeInGame = new List<string>();
+        private readonly ICollection<int> _accountsInGame;
 
 
         public string Wan { get; set; }
@@ -28,11 +28,12 @@ namespace L2dotNET.LoginService.GSCommunication
         public bool Connected { get; set; }
         public bool TestMode { get; set; }
         public bool GmOnly { get; set; }
-        public byte Id { get; set; }
+        public byte ServerId { get; set; }
 
         public ServerThread(PacketHandler packetHandler)
         {
             _packetHandler = packetHandler;
+            _accountsInGame = new List<int>();
         }
 
         public async void ReadData(TcpClient tcpClient, ServerThreadPool cn)
@@ -74,7 +75,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
         private void Termination()
         {
-            LoginServer.ServiceProvider.GetService<ServerThreadPool>().Shutdown(Id);
+            LoginServer.ServiceProvider.GetService<ServerThreadPool>().Shutdown(ServerId);
         }
 
         public async void Send(Packet pk)
@@ -95,7 +96,7 @@ namespace L2dotNET.LoginService.GSCommunication
         public void Close(Packet packet)
         {
             Send(packet);
-            LoginServer.ServiceProvider.GetService<ServerThreadPool>().Shutdown(Id);
+            LoginServer.ServiceProvider.GetService<ServerThreadPool>().Shutdown(ServerId);
         }
 
         public void Stop()
@@ -110,32 +111,32 @@ namespace L2dotNET.LoginService.GSCommunication
                 Log.Error($"ServerThread: {e.Message}");
             }
 
-            _activeInGame.Clear();
+            _accountsInGame.Clear();
         }
 
-        public void AccountInGame(string account, byte status)
+        public void AccountInGame(int accountId, byte status)
         {
             if (status == 1)
             {
-                if (!_activeInGame.Contains(account))
-                    _activeInGame.Add(account);
+                if (!_accountsInGame.Contains(accountId))
+                    _accountsInGame.Add(accountId);
             }
             else
             {
-                if (_activeInGame.Contains(account))
-                    _activeInGame.Remove(account);
+                if (_accountsInGame.Contains(accountId))
+                    _accountsInGame.Remove(accountId);
             }
         }
 
-        public bool LoggedAlready(string account)
+        public bool LoggedAlready(int accountId)
         {
-            return _activeInGame.Contains(account);
+            return _accountsInGame.Contains(accountId);
         }
 
-        public void KickAccount(string account)
+        public void KickAccount(int accountId)
         {
-            _activeInGame.Remove(account);
-            Send(PleaseKickAccount.ToPacket(account));
+            _accountsInGame.Remove(accountId);
+            Send(PleaseKickAccount.ToPacket(accountId));
         }
 
         public void SendPlayer(LoginClient loginClient, string time)

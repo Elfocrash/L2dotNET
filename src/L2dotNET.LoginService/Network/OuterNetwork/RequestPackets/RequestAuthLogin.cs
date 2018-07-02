@@ -32,7 +32,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.RequestPackets
         {
             if (_client.State != LoginClientState.AuthedGG)
             {
-                _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
                 _client.Close();
                 return;
             }
@@ -66,7 +66,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.RequestPackets
                     return;
                 }
 
-                if (LoginServer.ServiceProvider.GetService<ServerThreadPool>().LoggedAlready(username.ToLower()))
+                if (LoginServer.ServiceProvider.GetService<ServerThreadPool>().LoggedAlready(account.AccountId))
                 {
                     await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccountInUse));
                     _client.Close();

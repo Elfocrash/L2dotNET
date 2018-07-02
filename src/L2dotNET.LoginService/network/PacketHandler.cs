@@ -13,7 +13,7 @@ namespace L2dotNET.LoginService.Network
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static readonly ConcurrentDictionary<byte, Type> ClientPackets = new ConcurrentDictionary<byte, Type>();
-        private static readonly ConcurrentDictionary<byte, Type> ClientPacketsServ = new ConcurrentDictionary<byte, Type>();
+        private static readonly ConcurrentDictionary<byte, Type> ServerPackets = new ConcurrentDictionary<byte, Type>();
         private readonly IServiceProvider _serviceProvider;
 
         public PacketHandler(IServiceProvider serviceProvider)
@@ -24,10 +24,10 @@ namespace L2dotNET.LoginService.Network
             ClientPackets.TryAdd(0x05, typeof(RequestServerList));
             ClientPackets.TryAdd(0x07, typeof(AuthGameGuard));
 
-            ClientPacketsServ.TryAdd(0xA0, typeof(RequestLoginServPing));
-            ClientPacketsServ.TryAdd(0xA1, typeof(RequestLoginAuth));
-            ClientPacketsServ.TryAdd(0xA2, typeof(RequestPlayerInGame));
-            ClientPacketsServ.TryAdd(0xA3, typeof(RequestPlayersOnline));
+            ServerPackets.TryAdd(0xA0, typeof(RequestLoginServPing));
+            ServerPackets.TryAdd(0xA1, typeof(RequestLoginAuth));
+            ServerPackets.TryAdd(0xA2, typeof(RequestPlayerInGame));
+            ServerPackets.TryAdd(0xA3, typeof(RequestPlayersOnline));
         }
 
         public void Handle(Packet packet, LoginClient client)
@@ -35,7 +35,10 @@ namespace L2dotNET.LoginService.Network
             Log.Debug($"Received packet with Opcode:{packet.FirstOpcode:X2} for State:{client.State}");
 
             if (!ClientPackets.ContainsKey(packet.FirstOpcode))
+            {
+                Log.Debug("Unknown packet opcode!");
                 return;
+            }
 
             PacketBase incPacket = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], _serviceProvider, packet, client);
             incPacket?.RunImpl();
@@ -45,10 +48,13 @@ namespace L2dotNET.LoginService.Network
         {
             Log.Debug($"Received packet with Opcode:{packet.FirstOpcode:X2}");
 
-            if (!ClientPacketsServ.ContainsKey(packet.FirstOpcode))
+            if (!ServerPackets.ContainsKey(packet.FirstOpcode))
+            {
+                Log.Debug("Unknown packet opcode!");
                 return;
+            }
 
-            PacketBase incPacket = (PacketBase)Activator.CreateInstance(ClientPacketsServ[packet.FirstOpcode], _serviceProvider, packet, client);
+            PacketBase incPacket = (PacketBase)Activator.CreateInstance(ServerPackets[packet.FirstOpcode], _serviceProvider, packet, client);
             incPacket?.RunImpl();
         }
     }

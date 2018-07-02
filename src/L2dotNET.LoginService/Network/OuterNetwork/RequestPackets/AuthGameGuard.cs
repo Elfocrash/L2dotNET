@@ -11,7 +11,8 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.RequestPackets
         private readonly LoginClient _client;
         private readonly int _sessionId;
 
-        public AuthGameGuard(IServiceProvider serviceProvider, Packet p, LoginClient client) : base(serviceProvider)
+        public AuthGameGuard(IServiceProvider serviceProvider, Packet p, LoginClient client)
+            : base(serviceProvider)
         {
             _client = client;
             _sessionId = p.ReadInt();
@@ -19,26 +20,23 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.RequestPackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
+            if (_client.State != LoginClientState.Connected)
             {
-                if (_client.State != LoginClientState.Connected)
-                {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
-                    _client.Close();
-                    return;
-                }
+                await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+                return;
+            }
 
-                if (_sessionId == _client.SessionId)
-                {
-                    _client.State = LoginClientState.AuthedGG;
-                    _client.SendAsync(GGAuth.ToPacket(_client));
-                }
-                else
-                {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
-                    _client.Close();
-                }
-            });
+            if (_sessionId == _client.SessionId)
+            {
+                _client.State = LoginClientState.AuthedGG;
+                _client.SendAsync(GGAuth.ToPacket(_client));
+            }
+            else
+            {
+                await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+            }
         }
     }
 }

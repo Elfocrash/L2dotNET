@@ -19,7 +19,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.RequestPackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() => _thread.Send(LoginServPing.ToPacket()));
+            _thread.Send(LoginServPing.ToPacket());
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using L2Crypt;
+using L2dotNET.Utility;
 
 namespace L2dotNET.LoginService.Network.Crypt
 {
@@ -8,7 +9,6 @@ namespace L2dotNET.LoginService.Network.Crypt
         private byte[] _key = { 0x6b, 0x60, 0xcb, 0x5b, 0x82, 0xce, 0x90, 0xb1, 0xcc, 0x2b, 0x6c, 0x55, 0x6c, 0x6c, 0x6c, 0x6c };
 
         private bool _updatedKey;
-        private readonly Random _rnd = new Random();
         private readonly BlowfishCipher _cipher;
 
         public LoginCrypt()
@@ -37,7 +37,7 @@ namespace L2dotNET.LoginService.Network.Crypt
                 size += 4;
                 size += 8 - (size % 8);
                 Array.Resize(ref data, size);
-                EncXorPass(data, offset, size, _rnd.Next());
+                EncXorPass(data, offset, size, RandomThreadSafe.Instance.Next());
                 _cipher.cipher(data, offset, size);
                 _cipher.updateKey(_key);
                 _updatedKey = true;
