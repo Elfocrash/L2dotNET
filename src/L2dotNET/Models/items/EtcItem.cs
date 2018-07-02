@@ -6,11 +6,11 @@ namespace L2dotNET.Models.Items
 {
     public class EtcItem : ItemTemplate
     {
-        public EtcItemTypeId Type { get; set; }
+        public EtcItemTypeId ItemType { get; set; }
 
         public override int GetItemMask()
         {
-            return 1 << ((int)Type + 21);
+            return 1 << ((int)ItemType + 21);
         }
     }
 }
