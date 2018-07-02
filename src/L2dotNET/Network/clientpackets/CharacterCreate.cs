@@ -66,7 +66,7 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            PcTemplate template = CharTemplateTable.Instance.GetTemplate(_classId);
+            PcTemplate template = CharTemplateTable.GetTemplate(_classId);
 
             L2Player player = new L2Player(CharacterService, _idFactory.NextId(), template);
 
@@ -96,7 +96,7 @@ namespace L2dotNET.Network.clientpackets
             player.Z = template.SpawnZ;
             player.CharSlot = player.Gameclient.AccountChars.Count;
 
-            if (template.Items != null)
+            if (template.DefaultInventory != null)
             {
                 player.Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, player);
 

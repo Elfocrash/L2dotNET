@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
-
+using System.Threading.Tasks;
 using L2dotNET.Controllers;
 using L2dotNET.Handlers;
 using L2dotNET.Managers;
@@ -31,15 +31,16 @@ namespace L2dotNET
 
         public async void Start()
         {
-            var config = ServiceProvider.GetService<Config.Config>();
+            Config.Config config = ServiceProvider.GetService<Config.Config>();
             await config.Initialise();
 
             await ServiceProvider.GetService<PreReqValidation>().Initialise();
 
-            CharTemplateTable.Instance.Initialize();
+            CharTemplateTable.Initialize();
 
+            // TODO: refactor NetworkBlock
             NetworkBlock.Instance.Initialize();
-            GameTime.Instance.Initialize();
+            GameTime.Initialize();
 
             await ServiceProvider.GetService<IdFactory>().Initialise();
 
@@ -88,25 +89,21 @@ namespace L2dotNET
             WaitForClients();
         }
 
-        private void WaitForClients()
+        private async void WaitForClients()
         {
-            _listener.BeginAcceptTcpClient(OnClientConnected, null);
+            while (true)
+            {
+                TcpClient client = await _listener.AcceptTcpClientAsync();
+#pragma warning disable 4014
+                Task.Factory.StartNew(() => AcceptClient(client));
+#pragma warning restore 4014
+            }
         }
 
-        private void OnClientConnected(IAsyncResult asyncResult)
-        {
-            TcpClient clientSocket = _listener.EndAcceptTcpClient(asyncResult);
-
-            Log.Info($"Received connection request from: {clientSocket.Client.RemoteEndPoint}");
-
-            AcceptClient(clientSocket);
-
-            WaitForClients();
-        }
-
-        /// <summary>Handle Client Request</summary>
         private void AcceptClient(TcpClient clientSocket)
         {
+            Log.Debug($"Received connection request from: {clientSocket.Client.RemoteEndPoint}");
+
             ServiceProvider.GetService<ClientManager>().AddClient(clientSocket);
         }
     }

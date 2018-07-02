@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using L2dotNET.Enums;
 using L2dotNET.Models.Items;
 
@@ -6,11 +7,11 @@ namespace L2dotNET.Templates
 {
     public class PcTemplate : CharTemplate
     {
-        public ClassId ClassId { get; set; }
+        public ClassId ClassId { get; }
 
         public int FallingHeight { get; }
 
-        public int BaseSwimSpd { get; }
+        public int BaseSwimSpeed { get; }
 
         public double CollisionRadiusFemale { get; }
         public double CollisionHeightFemale { get; }
@@ -19,34 +20,20 @@ namespace L2dotNET.Templates
         public int SpawnY { get; }
         public int SpawnZ { get; }
 
-        public int ClassBaseLevel { get; }
+        public int BaseLevel { get; }
 
-        public double[] HpTable { get; }
-        public double[] MpTable { get; }
-        public double[] CpTable { get; }
+        public List<int> DefaultInventory { get; }
 
-        public List<L2Item> Items { get; } = new List<L2Item>();
-
-        public override double BaseHpMax(int level)
-        {
-            return HpTable[level - 1];
-        }
-
-        public override double BaseMpMax(int level)
-        {
-            return MpTable[level - 1];
-        }
-
-        public double BaseCpMax(int level)
-        {
-            return CpTable[level - 1];
-        }
+        private double[] HpTable { get; }
+        private double[] MpTable { get; }
+        private double[] CpTable { get; }
 
         public PcTemplate(ClassId classId, StatsSet set) : base(set)
         {
+            DefaultInventory = set.GetString("items")?.Split(';').Select(int.Parse).ToList() ?? new List<int>();
             ClassId = classId;
 
-            BaseSwimSpd = set.GetInt("swimSpd", 1);
+            BaseSwimSpeed = set.GetInt("swimSpd", 1);
 
             FallingHeight = set.GetInt("falling_height", 333);
 
@@ -57,26 +44,26 @@ namespace L2dotNET.Templates
             SpawnY = set.GetInt("spawnY");
             SpawnZ = set.GetInt("spawnZ");
 
-            ClassBaseLevel = set.GetInt("baseLvl");
+            BaseLevel = set.GetInt("baseLvl");
 
-            string[] hpTable = set.GetString("hpTable").Split(';');
+            HpTable = set.GetString("hpTable").Split(';').Select(double.Parse).ToArray();
+            MpTable = set.GetString("mpTable").Split(';').Select(double.Parse).ToArray();
+            CpTable = set.GetString("cpTable").Split(';').Select(double.Parse).ToArray();
+        }
 
-            HpTable = new double[hpTable.Length];
+        public override double GetBaseMaxHp(int level)
+        {
+            return HpTable[level - 1];
+        }
 
-            for (int i = 0; i < hpTable.Length; i++)
-                HpTable[i] = double.Parse(hpTable[i]);
+        public override double GetBaseMaxMp(int level)
+        {
+            return MpTable[level - 1];
+        }
 
-            string[] mpTable = set.GetString("mpTable").Split(';');
-
-            MpTable = new double[mpTable.Length];
-            for (int i = 0; i < mpTable.Length; i++)
-                MpTable[i] = double.Parse(mpTable[i]);
-
-            string[] cpTable = set.GetString("cpTable").Split(';');
-
-            CpTable = new double[cpTable.Length];
-            for (int i = 0; i < cpTable.Length; i++)
-                CpTable[i] = double.Parse(cpTable[i]);
+        public double GetBaseMaxCp(int level)
+        {
+            return CpTable[level - 1];
         }
     }
 }

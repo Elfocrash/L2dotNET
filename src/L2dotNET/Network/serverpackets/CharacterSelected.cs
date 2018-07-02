@@ -56,7 +56,7 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(0x00); // c3 work
             WriteInt(0x00); // c3 work
 
-            WriteInt(GameTime.Instance.Time);
+            WriteInt(GameTime.IngameTime);
 
             WriteInt(0x00); // c3
 

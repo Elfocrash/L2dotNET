@@ -12,8 +12,8 @@
         private readonly double _baseHpMax;
         private readonly double _baseMpMax;
 
-        public virtual double BaseHpMax(int level) => _baseHpMax;
-        public virtual double BaseMpMax(int level) => _baseMpMax;
+        public virtual double GetBaseMaxHp(int level) => _baseHpMax;
+        public virtual double GetBaseMaxMp(int level) => _baseMpMax;
 
         public double BaseHpReg { get; }
         public double BaseMpReg { get; }
@@ -60,8 +60,8 @@
             BaseWalkSpd = set.GetInt("walkSpd");
             BaseRunSpd = set.GetInt("runSpd", 1);
 
-            CollisionRadius = set.GetInt("radius");
-            CollisionHeight = set.GetInt("height");
+            CollisionRadius = set.GetDouble("radius");
+            CollisionHeight = set.GetDouble("height");
         }
     }
 }

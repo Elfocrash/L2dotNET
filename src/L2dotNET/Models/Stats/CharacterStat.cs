@@ -25,11 +25,11 @@ namespace L2dotNET.Models.Stats
         public int Wit => (int)CalculateStat(Stats.StatWit, Character.Template.BaseWit, null);
         public int EvasionRate(L2Character target) => (int)CalculateStat(Stats.EvasionRate, 0, target);
         public int Accuracy => (int)CalculateStat(Stats.AccuracyCombat, 0, null);
-        public int MaxHp => (int)CalculateStat(Stats.MaxHp, Character.Template.BaseHpMax(Character.Level), null);
-        public int MaxMp => (int)CalculateStat(Stats.MaxMp, Character.Template.BaseMpMax(Character.Level), null);
+        public int MaxHp => (int)CalculateStat(Stats.MaxHp, Character.Template.GetBaseMaxHp(Character.Level), null);
+        public int MaxMp => (int)CalculateStat(Stats.MaxMp, Character.Template.GetBaseMaxMp(Character.Level), null);
 
         //I will create a new PlayerStat later. I know this is shit sorry
-        public int MaxCp => Character is L2Player player ? (int)CalculateStat(Stats.MaxCp, player.Template.BaseCpMax(player.Level), null) : 0;
+        public int MaxCp => Character is L2Player player ? (int)CalculateStat(Stats.MaxCp, player.Template.GetBaseMaxCp(player.Level), null) : 0;
 
         public int CriticalHit(L2Character target, object skill = null) =>
             Math.Min((int) CalculateStat(Stats.CriticalRate, Character.Template.BaseCritRate, target), 500);

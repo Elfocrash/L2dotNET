@@ -52,7 +52,7 @@ namespace L2dotNET.Network.clientpackets
                         player.SendMessageAsync("Dismount not implemented yet.");
                         break;
                     case 77: // [time]
-                        GameTime.Instance.ShowInfoAsync(player);
+                        GameTime.ShowInfoAsync(player);
                         break;
                     default:
                         player.SendMessageAsync($"cmd alias {_command}");
