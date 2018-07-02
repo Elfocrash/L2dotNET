@@ -55,7 +55,7 @@ namespace L2dotNET.Network.clientpackets
                 //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
                 player.SendActionFailedAsync();
 
-                GameTime.Instance.EnterWorld(player);
+                GameTime.UpdateTimeForPlayer(player);
 
                 player.Timer();
 

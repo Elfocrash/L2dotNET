@@ -6,6 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using L2dotNET.ConsoleCommand;
 using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Handlers;
@@ -47,7 +48,7 @@ namespace L2dotNET.GameService
 
                 IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 
-                serviceProvider.GetService<GameServer>().Start();
+                Task.Factory.StartNew(serviceProvider.GetService<GameServer>().Start);
             }
             catch(Exception ex)
             {

@@ -67,7 +67,7 @@ namespace L2dotNET.LoginService
 
         private void AcceptClient(TcpClient client)
         {
-            Log.Info($"Received connection request from: {client.Client.RemoteEndPoint}");
+            Log.Debug($"Received connection request from: {client.Client.RemoteEndPoint}");
 
             ServiceProvider.GetService<Managers.ClientManager>().AddClient(client);
         }

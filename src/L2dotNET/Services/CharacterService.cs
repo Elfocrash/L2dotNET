@@ -41,7 +41,7 @@ namespace L2dotNET.Services
         {
             var playerContract = await _characterCrudService.GetById(characterId);
             //TODO Use automapper to map this
-            var player = new L2Player(this, characterId, CharTemplateTable.Instance.GetTemplate(playerContract.ClassId))
+            var player = new L2Player(this, characterId, CharTemplateTable.GetTemplate(playerContract.ClassId))
             {
                 ObjId = characterId,
                 Name = playerContract.Name,
@@ -64,8 +64,8 @@ namespace L2dotNET.Services
                 Karma = playerContract.Karma,
                 PvpKills = playerContract.PvpKills,
                 PkKills = playerContract.PkKills,
-                BaseClass = CharTemplateTable.Instance.GetTemplate(playerContract.BaseClass),
-                ActiveClass = CharTemplateTable.Instance.GetTemplate(playerContract.ClassId),
+                BaseClass = CharTemplateTable.GetTemplate(playerContract.BaseClass),
+                ActiveClass = CharTemplateTable.GetTemplate(playerContract.ClassId),
                 //ClassId = playerContract.ClassId,
                 RecLeft = playerContract.RecLeft,
                 RecHave = playerContract.RecHave,

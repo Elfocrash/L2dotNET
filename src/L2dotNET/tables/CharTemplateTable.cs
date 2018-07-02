@@ -10,34 +10,16 @@ using NLog;
 
 namespace L2dotNET.Tables
 {
-    sealed class CharTemplateTable
+    public static class CharTemplateTable
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private static volatile CharTemplateTable _instance;
-        private static readonly object SyncRoot = new object();
+        private static Dictionary<int, PcTemplate> _templates;
 
-        public Dictionary<int, PcTemplate> Templates { get; } = new Dictionary<int, PcTemplate>();
-
-        public static CharTemplateTable Instance
+        public static void Initialize()
         {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
+            _templates = new Dictionary<int, PcTemplate>();
 
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new CharTemplateTable();
-                }
-
-                return _instance;
-            }
-        }
-
-        public void Initialize()
-        {
             XmlDocument doc = new XmlDocument();
             string[] xmlFilesArray = Directory.GetFiles(@"data\xml\classes\");
             foreach (string i in xmlFilesArray)
@@ -47,48 +29,74 @@ namespace L2dotNET.Tables
                 XmlNodeList nodes = doc.DocumentElement?.SelectNodes("/list/class");
 
                 if (nodes == null)
+                {
                     continue;
+                }
 
                 foreach (XmlNode node in nodes)
                 {
                     XmlElement ownerElement = node.Attributes?[0].OwnerElement;
-                    if ((ownerElement == null) || (node.Attributes == null) || !"class".Equals(ownerElement.Name))
+                    if (ownerElement == null || node.Attributes == null || ownerElement.Name != "class")
+                    {
                         continue;
+                    }
 
                     XmlNamedNodeMap attrs = node.Attributes;
-                    ClassId classId = ClassId.Values.FirstOrDefault(x => ((int)x.Id).Equals(Convert.ToInt32(attrs.Item(0).Value)));
+                    ClassId classId = ClassId.Values.FirstOrDefault(x => (int)x.Id == Convert.ToInt32(attrs.Item(0).Value));
                     StatsSet set = new StatsSet();
 
-                    for (XmlNode cd = node.FirstChild; cd != null; cd = cd.NextSibling)
-                        if ((cd.NextSibling != null) && "set".Equals(cd.NextSibling.Name) && (cd.NextSibling != null))
+                    for (XmlNode cd = node.FirstChild; cd?.NextSibling != null; cd = cd.NextSibling)
+                    {
+                        if (cd.NextSibling.Name == "set")
                         {
                             attrs = cd.NextSibling.Attributes;
+
                             if (attrs == null)
+                            {
                                 continue;
+                            }
 
                             string name = attrs.GetNamedItem("name").Value;
                             string value = attrs.GetNamedItem("val").Value;
+
                             set.Set(name, value);
                         }
-                        else
-                            break;
+                        else if (cd.NextSibling.Name == "items")
+                        {
+                            attrs = cd.NextSibling.Attributes;
+
+                            if (attrs == null)
+                            {
+                                continue;
+                            }
+
+                            string value = attrs.GetNamedItem("val").Value;
+
+                            set.Set("items", value);
+                        }
+                    }
 
                     PcTemplate pcTempl = new PcTemplate(classId, set);
-                    Templates.Add((int)pcTempl.ClassId.Id, pcTempl);
+                    _templates.Add((int)pcTempl.ClassId.Id, pcTempl);
                 }
             }
 
-            Log.Info($"Loaded {Templates.Count} character templates.");
+            Log.Info($"Loaded {_templates.Count} character templates.");
         }
 
-        public PcTemplate GetTemplate(ClassIds classId)
+        public static PcTemplate GetTemplate(ClassIds classId)
         {
-            return Templates[(int)classId];
+            return _templates[(int)classId];
         }
 
-        public PcTemplate GetTemplate(int classId)
+        public static PcTemplate GetTemplate(int classId)
         {
-            return Templates[classId];
+            return _templates[classId];
+        }
+
+        public static List<PcTemplate> GetTemplates()
+        {
+            return _templates.Values.ToList();
         }
     }
 }
