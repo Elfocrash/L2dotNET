@@ -44,7 +44,7 @@ namespace L2dotNET.Network.serverpackets
                 WriteShort(item.AttrAttackType);
                 WriteShort(item.AttrAttackValue);
 
-                WriteLong(item.Template.ReferencePrice / 2);
+                WriteLong(item.Template.Price / 2);
             }
 
             WriteShort(_refund.Count);
@@ -70,7 +70,7 @@ namespace L2dotNET.Network.serverpackets
                 WriteShort(item.AttrAttackValue);
 
                 WriteInt(idx++);
-                WriteLong((item.Template.ReferencePrice / 2) * item.Count);
+                WriteLong((item.Template.Price / 2) * item.Count);
             }
 
             WriteByte(0);
