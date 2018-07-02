@@ -5,6 +5,7 @@ using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Tables;
 using L2dotNET.Templates;
+using L2dotNET.Utility;
 
 namespace L2dotNET.Models.Npcs
 {
@@ -57,8 +58,6 @@ namespace L2dotNET.Models.Npcs
             
         }
 
-        private readonly Random _rnd = new Random();
-
         public override async Task OnSpawnAsync(bool notifyOthers = true)
         {
             await base.OnSpawnAsync(notifyOthers);
@@ -78,7 +77,7 @@ namespace L2dotNET.Models.Npcs
             if (CantMove() || IsAttacking())
                 return;
 
-            MoveToAsync(_rnd.Next(SpawnX - 90, SpawnX + 90), _rnd.Next(SpawnY - 90, SpawnY + 90), Z);
+            MoveToAsync(RandomThreadSafe.Instance.Next(SpawnX - 90, SpawnX + 90), RandomThreadSafe.Instance.Next(SpawnY - 90, SpawnY + 90), Z);
 
             // broadcastPacket(new SocialAction(ObjID, rnd.Next(8)));
         }

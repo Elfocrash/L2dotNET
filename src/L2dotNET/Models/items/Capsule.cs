@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using L2dotNET.Models.Player;
+using L2dotNET.Utility;
 using NLog;
 
 namespace L2dotNET.Models.Items
@@ -48,10 +49,10 @@ namespace L2dotNET.Models.Items
                 return;
 
             CapsuleItem caps = Items[item.Template.ItemId];
-            Random rn = new Random();
+
             ((L2Player)character).DestroyItem(item, 1);
-            foreach (CapsuleItemReward rew in caps.Rewards.Where(rew => rn.Next(100) <= rew.Rate))
-                ((L2Player)character).AddItem(rew.Id, rn.Next(rew.Min, rew.Max));
+            foreach (CapsuleItemReward rew in caps.Rewards.Where(rew => RandomThreadSafe.Instance.Next(100) <= rew.Rate))
+                ((L2Player)character).AddItem(rew.Id, RandomThreadSafe.Instance.Next(rew.Min, rew.Max));
         }
 
         public void LoadXml()

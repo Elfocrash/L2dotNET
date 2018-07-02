@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using L2Crypt;
 using L2dotNET.LoginService.Network;
+using L2dotNET.Utility;
 using NLog;
 
 namespace L2dotNET.LoginService.Managers
@@ -90,7 +91,7 @@ namespace L2dotNET.LoginService.Managers
 
         public byte[] GetBlowfishKey()
         {
-            return _blowfishKeys[new Random().Next(BlowfishCount - 1)];
+            return _blowfishKeys[RandomThreadSafe.Instance.Next(BlowfishCount - 1)];
         }
 
         public void RemoveClient(LoginClient loginClient)
@@ -126,7 +127,7 @@ namespace L2dotNET.LoginService.Managers
             for (int i = 0; i < BlowfishCount; i++)
             {
                 _blowfishKeys[i] = new byte[16];
-                new Random().NextBytes(_blowfishKeys[i]);
+                RandomThreadSafe.Instance.NextBytes(_blowfishKeys[i]);
             }
 
             Log.Info($"Randomized {_blowfishKeys.Length} blowfish keys.");

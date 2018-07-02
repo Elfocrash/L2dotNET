@@ -8,20 +8,17 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.RequestPackets
     class RequestPlayersOnline : PacketBase
     {
         private readonly ServerThread _thread;
-        private readonly short _cnt;
+        private readonly short _currentPlayers;
 
         public RequestPlayersOnline(IServiceProvider serviceProvider, Packet p, ServerThread server) : base(serviceProvider)
         {
             _thread = server;
-            _cnt = p.ReadShort();
+            _currentPlayers = p.ReadShort();
         }
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
-            {
-                _thread.CurrentPlayers = _cnt;
-            });
+            _thread.CurrentPlayers = _currentPlayers;
         }
     }
 }

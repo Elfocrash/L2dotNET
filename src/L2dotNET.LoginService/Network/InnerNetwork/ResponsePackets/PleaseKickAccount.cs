@@ -9,10 +9,10 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ResponsePackets
         /// </summary>
         private const byte Opcode = 0xA8;
 
-        internal static Packet ToPacket(string account)
+        internal static Packet ToPacket(int accountId)
         {
             Packet p = new Packet(Opcode);
-            p.WriteString(account.ToLower());
+            p.WriteInt(accountId);
             return p;
         }
     }

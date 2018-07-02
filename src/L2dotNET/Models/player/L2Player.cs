@@ -1385,7 +1385,7 @@ namespace L2dotNET.Models.Player
 
         public void RequestPing()
         {
-            _lastPingId = new Random().Next();
+            _lastPingId = RandomThreadSafe.Instance.Next();
             NetPing ping = new NetPing(_lastPingId);
             _pingTimeout = DateTime.Now;
             SendPacketAsync(ping);

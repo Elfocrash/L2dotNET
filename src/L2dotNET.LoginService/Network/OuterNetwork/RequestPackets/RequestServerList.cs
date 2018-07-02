@@ -21,24 +21,21 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.RequestPackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
+            if (_client.State != LoginClientState.AuthedLogin)
             {
-                if (_client.State != LoginClientState.AuthedLogin)
-                {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
-                    _client.Close();
-                    return;
-                }
+                await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+                return;
+            }
 
-                if (_client.Key.LoginOkId1 != _loginOkID1 || _client.Key.LoginOkId2 != _loginOkID2)
-                {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
-                    _client.Close();
-                    return;
-                }
+            if (_client.Key.LoginOkId1 != _loginOkID1 || _client.Key.LoginOkId2 != _loginOkID2)
+            {
+                await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                _client.Close();
+                return;
+            }
 
-                _client.SendAsync(ServerList.ToPacket(_client));
-            });
+            _client.SendAsync(ServerList.ToPacket(_client));
         }
     }
 }

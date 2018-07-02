@@ -7,6 +7,7 @@ using L2dotNET.DataContracts;
 using L2dotNET.LoginService.Network.Crypt;
 using L2dotNET.LoginService.Network.OuterNetwork.ResponsePackets;
 using L2dotNET.Network;
+using L2dotNET.Utility;
 using NLog;
 
 namespace L2dotNET.LoginService.Network
@@ -14,10 +15,9 @@ namespace L2dotNET.LoginService.Network
     public class LoginClient
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+
         public LoginClientState State { get; set; }
         public EndPoint Address { get; }
-        public TcpClient Client { get; }
-        public NetworkStream NetStream { get; }
         public SessionKey Key { get; }
         public int SessionId { get; }
         public AccountContract ActiveAccount { get; set; }
@@ -26,19 +26,22 @@ namespace L2dotNET.LoginService.Network
         private LoginCrypt _loginCrypt;
         public ScrambledKeyPair RsaPair;
         public byte[] BlowfishKey;
+
         private readonly PacketHandler _packetHandler;
         private readonly Managers.ClientManager _clientManager;
+        private readonly TcpClient _tcpClient;
+        private readonly NetworkStream _networkStream;
 
         public LoginClient(TcpClient tcpClient, Managers.ClientManager clientManager, PacketHandler packetHandler)
         {
-            Client = tcpClient;
+            _tcpClient = tcpClient;
             _clientManager = clientManager;
             _packetHandler = packetHandler;
-            NetStream = tcpClient.GetStream();
+            _networkStream = tcpClient.GetStream();
             Address = tcpClient.Client.RemoteEndPoint;
-            Random rnd = new Random();
-            SessionId = rnd.Next();
-            Key = new SessionKey(rnd.Next(), rnd.Next(), rnd.Next(), rnd.Next());
+            SessionId = RandomThreadSafe.Instance.Next();
+            Key = new SessionKey(RandomThreadSafe.Instance.Next(), RandomThreadSafe.Instance.Next(), RandomThreadSafe.Instance.Next(),
+                RandomThreadSafe.Instance.Next());
             State = LoginClientState.Connected;
             InitializeNetwork();
         }
@@ -71,8 +74,8 @@ namespace L2dotNET.LoginService.Network
             lengthBytes.CopyTo(message, 0);
             data.CopyTo(message, 2);
 
-            await NetStream.WriteAsync(message, 0, message.Length);
-            await NetStream.FlushAsync();
+            await _networkStream.WriteAsync(message, 0, message.Length);
+            await _networkStream.FlushAsync();
         }
 
         public async Task ReadAsync()
@@ -82,7 +85,7 @@ namespace L2dotNET.LoginService.Network
                 while (true)
                 {
                     byte[] buffer = new byte[2];
-                    int bytesRead = await NetStream.ReadAsync(buffer, 0, 2);
+                    int bytesRead = await _networkStream.ReadAsync(buffer, 0, 2);
 
                     if (bytesRead != 2)
                     {
@@ -92,7 +95,7 @@ namespace L2dotNET.LoginService.Network
                     short length = BitConverter.ToInt16(buffer, 0);
 
                     buffer = new byte[length - 2];
-                    bytesRead = await NetStream.ReadAsync(buffer, 0, length - 2);
+                    bytesRead = await _networkStream.ReadAsync(buffer, 0, length - 2);
 
                     if (bytesRead != length - 2)
                     {
