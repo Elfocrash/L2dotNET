@@ -10,11 +10,9 @@ using NLog;
 
 namespace L2dotNET.Tables
 {
-    class MapRegionTable
+    static class MapRegionTable
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        private static volatile MapRegionTable _instance;
-        private static readonly object SyncRoot = new object();
 
         private const int RegionsX = 11;
         private const int RegionsY = 16;
@@ -23,29 +21,14 @@ namespace L2dotNET.Tables
 
         private static int[] _castleIdArray = { 0, 0, 0, 0, 0, 1, 0, 2, 3, 4, 5, 0, 0, 6, 8, 7, 9, 0, 0 };
 
-        public static MapRegionTable Instance
-        {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new MapRegionTable();
-                }
-
-                return _instance;
-            }
-        }
-
-        public void Initialize()
+        public static void Initialize()
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(@"data\xml\map_region.xml");
             if (doc.DocumentElement == null)
+            {
                 return;
+            }
 
             XmlNodeList nodes = doc.DocumentElement.SelectNodes("/list/map");
             int count = 0;
@@ -54,8 +37,10 @@ namespace L2dotNET.Tables
                 foreach (XmlNode node in nodes)
                 {
                     XmlElement ownerElement = node.Attributes?[0].OwnerElement;
-                    if ((ownerElement == null) || (node.Attributes == null) || !ownerElement.Name.EqualsIgnoreCase("map"))
+                    if (ownerElement == null || node.Attributes == null || !ownerElement.Name.EqualsIgnoreCase("map"))
+                    {
                         continue;
+                    }
 
                     XmlNamedNodeMap attrs = node.Attributes;
                     int rY = Convert.ToInt32(attrs.GetNamedItem("geoY").Value) - 10;
@@ -139,12 +124,12 @@ namespace L2dotNET.Tables
             }
         }
 
-        public string GetClosestTownName(int x, int y)
+        public static string GetClosestTownName(int x, int y)
         {
             return GetClosestTownName(GetMapRegion(x, y));
         }
 
-        public string GetClosestTownName(int townId)
+        public static string GetClosestTownName(int townId)
         {
             switch (townId)
             {
@@ -210,10 +195,12 @@ namespace L2dotNET.Tables
             }
         }
 
-        public Location GetTeleToLocation(L2Character _player, TeleportWhereType teleportWhere)
+        public static Location GetTeleToLocation(L2Character _player, TeleportWhereType teleportWhere)
         {
             if (!(_player is L2Player))
+            {
                 return GetClosestTown(_player.X, _player.Y).GetSpawnLoc();
+            }
 
             L2Player player = (L2Player)_player;
             return GetClosestTown(player.ClassId.ClassRace, player.X, player.Y).GetSpawnLoc();
