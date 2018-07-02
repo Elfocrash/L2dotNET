@@ -69,7 +69,7 @@ namespace L2dotNET.Controllers
 
         private static void UpdateTimeForAll()
         {
-            L2World.Instance.GetPlayers().ForEach(UpdateTimeForPlayer);
+            L2World.GetPlayers().ForEach(UpdateTimeForPlayer);
         }
 
         public static void UpdateTimeForPlayer(L2Player p)

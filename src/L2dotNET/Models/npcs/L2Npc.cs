@@ -221,7 +221,7 @@ namespace L2dotNET.Models.Npcs
         public override async Task BroadcastUserInfoAsync()
         {
             // TODO: Sends to all players on the server. It is not right
-            foreach (L2Player pl in L2World.Instance.GetPlayers())
+            foreach (L2Player pl in L2World.GetPlayers())
             {
                 await pl.SendPacketAsync(new NpcInfo(this));
             }
@@ -260,7 +260,7 @@ namespace L2dotNET.Models.Npcs
             _corpseTimer.Enabled = false;
             _corpseTimer.Stop();
             await BroadcastPacketAsync(new DeleteObject(ObjId));
-            L2World.Instance.RemoveObject(this);
+            L2World.RemoveObject(this);
         }
 
         public override async Task DeleteByForceAsync()

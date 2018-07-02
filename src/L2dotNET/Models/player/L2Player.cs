@@ -475,7 +475,7 @@ namespace L2dotNET.Models.Player
 
         public async Task BroadcastCharInfoAsync()
         {
-            foreach (L2Player player in L2World.Instance.GetPlayers().Where(player => player != this))
+            foreach (L2Player player in L2World.GetPlayers().Where(player => player != this))
                 await player.SendPacketAsync(new CharInfo(this));
         }
 
@@ -529,7 +529,7 @@ namespace L2dotNET.Models.Player
 
             Online = 0;
             CharacterService.UpdatePlayer(this);
-            L2World.Instance.RemovePlayer(this);
+            L2World.RemovePlayer(this);
             DecayMe();
 
         }
@@ -1472,7 +1472,7 @@ namespace L2dotNET.Models.Player
 
         public async Task SetupKnowsAsync()
         {
-            foreach (var obj in L2World.Instance.GetObjects().Where(x=>x.Region == Region))
+            foreach (var obj in L2World.GetObjects().Where(x=>x.Region == Region))
             {
                 await obj.BroadcastUserInfoToObjectAsync(this);
             }
@@ -1482,7 +1482,7 @@ namespace L2dotNET.Models.Player
             var regions = region.GetSurroundingRegions();
             foreach (var reg in regions)
             {
-                foreach (var obj in L2World.Instance.GetObjects().Where(x => x.Region == reg))
+                foreach (var obj in L2World.GetObjects().Where(x => x.Region == reg))
                 {
                     await obj.BroadcastUserInfoToObjectAsync(this);
                 }

@@ -132,7 +132,7 @@ namespace L2dotNET
         public async Task<L2Player> GetPlayer(string accName, int charSlot)
         {
             L2Player playerContract = await LoadPlayerInSlot(accName, charSlot);
-            L2Player player = L2World.Instance.GetPlayer(playerContract.ObjId);
+            L2Player player = L2World.GetPlayer(playerContract.ObjId);
             return player;
         }
 

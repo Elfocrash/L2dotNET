@@ -41,7 +41,7 @@ namespace L2dotNET.Network.clientpackets
                         break;
                     case 52: // /unstuck
 
-                        L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
+                        L2WorldRegion worldRegion = L2World.GetRegion(player.X, player.Y);
                         player.SetRegion(worldRegion);
                         List<L2Player> knowns = player.GetKnownPlayers();
                         //player.SpawnMeAsync();

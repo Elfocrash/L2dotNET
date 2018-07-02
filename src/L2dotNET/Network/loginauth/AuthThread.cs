@@ -171,7 +171,7 @@ namespace L2dotNET.Network.loginauth
 
         public void UpdatePlayersOnline()
         {
-            short cnt = (short)L2World.Instance.GetPlayers().Count;
+            short cnt = (short)L2World.GetPlayers().Count;
             SendPacket(new PlayerCount(cnt));
         }
 

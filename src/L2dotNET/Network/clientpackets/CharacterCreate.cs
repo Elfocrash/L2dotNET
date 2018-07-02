@@ -130,7 +130,7 @@ namespace L2dotNET.Network.clientpackets
             //player = PlayerService.RestorePlayer(player.ObjId, _client);
             player.Gameclient.AccountChars.Add(player);
             _client.SendPacketAsync(new CharCreateOk());
-            L2World.Instance.AddPlayer(player);
+            L2World.AddPlayer(player);
             _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1)
                 {
                     CharId = player.ObjId

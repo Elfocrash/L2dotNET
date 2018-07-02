@@ -1,4 +1,5 @@
 ﻿using System;
+using L2dotNET.World;
 
 namespace L2dotNET.ConsoleCommand.Commands
 {
@@ -12,7 +13,7 @@ namespace L2dotNET.ConsoleCommand.Commands
 
         public override void Execute(string param)
         {
-            Console.WriteLine("Count - " + World.L2World.Instance.GetObjects().Count);
+            Console.WriteLine("Count - " + L2World.GetObjects().Count);
         }
     }
 }

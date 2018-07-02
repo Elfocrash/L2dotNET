@@ -99,7 +99,7 @@ namespace L2dotNET.Models.Npcs
             CorpseTimer.Stop();
             CorpseTimer.Enabled = false;
             await BroadcastPacketAsync(new DeleteObject(ObjId));
-            L2World.Instance.RemoveObject(this);
+            L2World.RemoveObject(this);
         }
     }
 }

@@ -484,7 +484,7 @@ namespace L2dotNET.Models
         public virtual async Task DeleteByForceAsync()
         {
             await BroadcastPacketAsync(new DeleteObject(ObjId));
-            L2World.Instance.RemoveObject(this);
+            L2World.RemoveObject(this);
         }
 
         public virtual L2Item ActiveWeapon => null;

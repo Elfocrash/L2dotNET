@@ -41,13 +41,13 @@ namespace L2dotNET.Network.clientpackets
                 switch (_type)
                 {
                     case SayIDList.CHAT_NORMAL:
-                        foreach (L2Player target in L2World.Instance.GetPlayers().Where(target => player.IsInsideRadius(target, 1250, true, false) && (player != target)))
+                        foreach (L2Player target in L2World.GetPlayers().Where(target => player.IsInsideRadius(target, 1250, true, false) && (player != target)))
                             target.SendPacketAsync(cs);
 
                         player.SendPacketAsync(cs);
                         break;
                     case SayIDList.CHAT_SHOUT:
-                        //L2World.Instance.BroadcastToRegion(player.X, player.Y, cs);
+                        //L2World.BroadcastToRegion(player.X, player.Y, cs);
                         break;
                     case SayIDList.CHAT_TELL:
                         {
@@ -55,7 +55,7 @@ namespace L2dotNET.Network.clientpackets
                             if (player.Name.Equals(_target))
                                 target = player;
                             //else
-                            //    target = L2World.Instance.GetPlayer(_target);
+                            //    target = L2World.GetPlayer(_target);
 
                             //if (target == null)
                             //{
@@ -86,12 +86,12 @@ namespace L2dotNET.Network.clientpackets
                         player.Party?.BroadcastToMembers(cs);
                         break;
                     case SayIDList.CHAT_MARKET:
-                        L2World.Instance.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
+                        L2World.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
                         break;
                     case SayIDList.CHAT_HERO:
                         {
                             if (player.Heroic == 1)
-                                L2World.Instance.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
+                                L2World.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
                             else
                                 player.SendActionFailedAsync();
                         }

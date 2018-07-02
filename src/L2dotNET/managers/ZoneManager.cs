@@ -13,7 +13,7 @@ namespace L2dotNET.Managers
 
         public void Initialize()
         {
-            L2WorldRegion[,] worldRegions = L2World.Instance.GetWorldRegions();
+            L2WorldRegion[,] worldRegions = L2World.GetWorldRegions();
 
             try
             {
