@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using L2dotNET.LoginService.GSCommunication;
-using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
+using L2dotNET.LoginService.Network.InnerNetwork.ResponsePackets;
 using L2dotNET.Network;
 
-namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
+namespace L2dotNET.LoginService.Network.InnerNetwork.RequestPackets
 {
     class RequestLoginServPing : PacketBase
     {
@@ -19,7 +19,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() => _thread.Send(LoginServPing.ToPacket()));
+            _thread.Send(LoginServPing.ToPacket());
         }
     }
 }

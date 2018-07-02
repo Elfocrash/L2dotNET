@@ -23,14 +23,14 @@ namespace L2dotNET.LoginService
 
         public async void Start()
         {
-            // CheckRunningProcesses();
-            var config = ServiceProvider.GetService<Config.Config>();
-            var serverThreadPool = ServiceProvider.GetService<ServerThreadPool>();
+            Config.Config config = ServiceProvider.GetService<Config.Config>();
+            ServerThreadPool serverThreadPool = ServiceProvider.GetService<ServerThreadPool>();
 
             await config.Initialise();
             await ServiceProvider.GetService<PreReqValidation>().Initialise();
             await ServiceProvider.GetService<Managers.ClientManager>().Initialise();
             await serverThreadPool.Initialize();
+
             NetworkRedirect.Instance.Initialize();
 
             _listener = new TcpListener(IPAddress.Parse(config.ServerConfig.Host), config.ServerConfig.LoginPort);
@@ -48,7 +48,9 @@ namespace L2dotNET.LoginService
             }
 
             Log.Info($"Auth server listening clients at {config.ServerConfig.Host}:{config.ServerConfig.LoginPort}");
+
             Task.Factory.StartNew(serverThreadPool.Start);
+
             WaitForClients();
         }
 
@@ -63,33 +65,11 @@ namespace L2dotNET.LoginService
             }
         }
 
-        private void OnClientConnected(IAsyncResult asyncResult)
-        {
-            TcpClient clientSocket = _listener.EndAcceptTcpClient(asyncResult);
-
-            Log.Info($"Received connection request from: {clientSocket.Client.RemoteEndPoint}");
-
-            AcceptClient(clientSocket);
-
-            WaitForClients();
-        }
-
         private void AcceptClient(TcpClient client)
         {
             Log.Info($"Received connection request from: {client.Client.RemoteEndPoint}");
 
             ServiceProvider.GetService<Managers.ClientManager>().AddClient(client);
-        }
-
-        private void CheckRunningProcesses()
-        {
-            if (Process.GetProcessesByName("L2dotNET.LoginService").Length == 1)
-                return;
-
-            Log.Fatal("A L2dotNET.LoginService process is already running!");
-            Log.Info("Press ENTER to exit...");
-            Console.Read();
-            Environment.Exit(0);
         }
     }
 }

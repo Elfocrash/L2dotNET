@@ -16,9 +16,12 @@ namespace L2dotNET.LoginService.GSCommunication
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
+        public IEnumerable<L2Server> Servers { get; private set; }
+
         private readonly IServerService _serverService;
         private readonly Config.Config _config;
         private readonly PacketHandler _packetHandler;
+        private TcpListener _listener;
 
         public ServerThreadPool(IServerService serverService, Config.Config config, PacketHandler packetHandler)
         {
@@ -27,29 +30,23 @@ namespace L2dotNET.LoginService.GSCommunication
             _packetHandler = packetHandler;
         }
 
-        private TcpListener _listener;
-
-        public List<L2Server> Servers = new List<L2Server>();
-
         public async Task Initialize()
         {
             IEnumerable<ServerContract> servers = await _serverService.GetServerList();
 
-            Servers.AddRange(servers.Select(curServ => new L2Server
+            Servers = servers.Select(server => new L2Server
                 {
-                    Id = (byte) curServ.ServerId,
-                    Info = curServ.Name
-                }));
+                    ServerId = (byte) server.ServerId,
+                    Name = server.Name
+                });
 
-            Log.Info($"GameServerThread: loaded {Servers.Count} servers");
+            Log.Info($"GameServerThread: loaded {Servers.Count()} servers");
         }
 
         public L2Server Get(short serverId)
         {
-            return Servers.FirstOrDefault(s => s.Id == serverId);
+            return Servers.FirstOrDefault(s => s.ServerId == serverId);
         }
-
-        protected TcpListener Listener;
 
         public void Start()
         {
@@ -78,15 +75,14 @@ namespace L2dotNET.LoginService.GSCommunication
                 TcpClient client = await _listener.AcceptTcpClientAsync();
                 Log.Info($"Received connection request from: {client.Client.RemoteEndPoint}");
 
-                ServerThread st = new ServerThread(_packetHandler);
-                st.ReadData(client, this);
-
+                ServerThread serverThread = new ServerThread(_packetHandler);
+                Task.Factory.StartNew(() => serverThread.ReadData(client, this));
             }
         }
 
         public void Shutdown(byte id)
         {
-            L2Server server = Servers.FirstOrDefault(s => s.Id == id);
+            L2Server server = Servers.FirstOrDefault(s => s.ServerId == id);
 
             if (server == null)
             {
@@ -98,11 +94,11 @@ namespace L2dotNET.LoginService.GSCommunication
             Log.Warn($"ServerThread: #{id} shutted down");
         }
 
-        public bool LoggedAlready(string account)
+        public bool LoggedAlready(int accountId)
         {
-            foreach (L2Server srv in Servers.Where(srv => (srv.Thread != null) && srv.Thread.LoggedAlready(account)))
+            foreach (L2Server srv in Servers.Where(srv => srv.Thread != null && srv.Thread.LoggedAlready(accountId)))
             {
-                srv.Thread.KickAccount(account);
+                srv.Thread.KickAccount(accountId);
                 return true;
             }
 
@@ -111,7 +107,7 @@ namespace L2dotNET.LoginService.GSCommunication
 
         public void SendPlayer(byte serverId, LoginClient client, string time)
         {
-            L2Server server = Servers.FirstOrDefault(srv => (srv.Id == serverId) && (srv.Thread != null));
+            L2Server server = Servers.FirstOrDefault(srv => (srv.ServerId == serverId) && (srv.Thread != null));
             server?.Thread.SendPlayer(client, time);
         }
     }

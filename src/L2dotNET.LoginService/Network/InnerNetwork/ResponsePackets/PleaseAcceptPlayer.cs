@@ -1,7 +1,7 @@
 ﻿using L2dotNET.DataContracts;
 using L2dotNET.Network;
 
-namespace L2dotNET.LoginService.Network.OuterNetwork.ServerPackets
+namespace L2dotNET.LoginService.Network.InnerNetwork.ResponsePackets
 {
     static class PleaseAcceptPlayer
     {

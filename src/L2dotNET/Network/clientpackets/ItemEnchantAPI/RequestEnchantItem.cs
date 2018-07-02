@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using L2dotNET.Managers;
 using L2dotNET.Network.serverpackets;
+using L2dotNET.Utility;
 
 namespace L2dotNET.Network.clientpackets.ItemEnchantAPI
 {
@@ -54,7 +55,7 @@ namespace L2dotNET.Network.clientpackets.ItemEnchantAPI
 
                 InventoryUpdate iu = null;
                 bool equip = false;
-                if ((rate == 100) || (new Random().Next(100) < rate))
+                if ((rate == 100) || (RandomThreadSafe.Instance.Next(100) < rate))
                 {
                     player.EnchantItem.Enchant += 1;
                     //player.EnchantItem.sql_update();

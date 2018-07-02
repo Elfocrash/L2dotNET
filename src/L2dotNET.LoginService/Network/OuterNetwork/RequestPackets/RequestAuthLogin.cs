@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts;
 using L2dotNET.LoginService.GSCommunication;
-using L2dotNET.LoginService.Network.OuterNetwork.ServerPackets;
+using L2dotNET.LoginService.Network.Enums;
+using L2dotNET.LoginService.Network.OuterNetwork.ResponsePackets;
 using L2dotNET.Network;
 using L2dotNET.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
+using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Engines;
 
-namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
+namespace L2dotNET.LoginService.Network.OuterNetwork.RequestPackets
 {
     class RequestAuthLogin : PacketBase
     {
@@ -29,17 +32,17 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
         {
             if (_client.State != LoginClientState.AuthedGG)
             {
-                _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
+                await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccessFailed));
                 _client.Close();
                 return;
             }
 
-            var decrypt = DecryptPacket();
+            byte[] decrypt = DecryptPacket();
 
-            var username = Encoding.ASCII.GetString(decrypt, 0x5e, 14).Replace("\0", string.Empty);
-            var password = Encoding.ASCII.GetString(decrypt, 0x6c, 16).Replace("\0", string.Empty);
+            string username = Encoding.ASCII.GetString(decrypt, 0x5e, 14).Replace("\0", string.Empty);
+            string password = Encoding.ASCII.GetString(decrypt, 0x6c, 16).Replace("\0", string.Empty);
 
-            var account = await _accountService.GetAccountByLogin(username);
+            AccountContract account = await _accountService.GetAccountByLogin(username);
 
             if (account == null)
             {
@@ -49,7 +52,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
                 }
                 else
                 {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonUserOrPassWrong));
+                    await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonUserOrPassWrong));
                     _client.Close();
                     return;
                 }
@@ -58,14 +61,14 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
             {
                 if (!await _accountService.CheckIfAccountIsCorrect(username, password))
                 {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonUserOrPassWrong));
+                    await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonUserOrPassWrong));
                     _client.Close();
                     return;
                 }
 
-                if (LoginServer.ServiceProvider.GetService<ServerThreadPool>().LoggedAlready(username.ToLower()))
+                if (LoginServer.ServiceProvider.GetService<ServerThreadPool>().LoggedAlready(account.AccountId))
                 {
-                    _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccountInUse));
+                    await _client.SendAsync(LoginFail.ToPacket(LoginFailReason.ReasonAccountInUse));
                     _client.Close();
                     return;
                 }
@@ -79,15 +82,15 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ClientPackets
 
         private byte[] DecryptPacket()
         {
-            var key = _client.RsaPair._privateKey;
-            var rsa = new RSAEngine();
+            AsymmetricKeyParameter key = _client.RsaPair._privateKey;
+            RSAEngine rsa = new RSAEngine();
             rsa.init(false, key);
 
-            var decrypt = rsa.processBlock(Raw, 0, 128);
+            byte[] decrypt = rsa.processBlock(Raw, 0, 128);
 
             if (decrypt.Length < 128)
             {
-                var temp = new byte[128];
+                byte[] temp = new byte[128];
                 Array.Copy(decrypt, 0, temp, 128 - decrypt.Length, decrypt.Length);
                 return temp;
             }

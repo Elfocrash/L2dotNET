@@ -1,4 +1,5 @@
 ﻿using System;
+using L2dotNET.Utility;
 
 namespace L2dotNET.Encryption
 {
@@ -6,7 +7,6 @@ namespace L2dotNET.Encryption
     {
         private const int _cryptKeysSize = 20;
         private static readonly byte[][] _cryptKeys = new byte[_cryptKeysSize][];
-        private static readonly Random _rnd = new Random();
 
         public static void Init()
         {
@@ -14,7 +14,7 @@ namespace L2dotNET.Encryption
             {
                 _cryptKeys[index1] = new byte[16];
                 for (int index2 = 0; index2 < _cryptKeys[index1].Length; ++index2)
-                    _cryptKeys[index1][index2] = (byte)_rnd.Next(byte.MaxValue);
+                    _cryptKeys[index1][index2] = (byte) RandomThreadSafe.Instance.Next(byte.MaxValue);
 
                 _cryptKeys[index1][8] = 200;
                 _cryptKeys[index1][9] = 39;
@@ -29,7 +29,7 @@ namespace L2dotNET.Encryption
 
         public static byte[] GetRandomKey()
         {
-            return _cryptKeys[_rnd.Next(_cryptKeysSize)];
+            return _cryptKeys[RandomThreadSafe.Instance.Next(_cryptKeysSize)];
         }
     }
 }
