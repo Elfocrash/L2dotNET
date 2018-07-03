@@ -50,7 +50,7 @@ namespace L2dotNET
             ZoneTable.Initialize();
 
             await ServiceProvider.GetService<ItemTable>().Initialise();
-            ItemHandler.Instance.Initialize();
+            ItemHandler.Initialize();
 
             NpcTable.Instance.Initialize();
             Capsule.Instance.Initialize();
