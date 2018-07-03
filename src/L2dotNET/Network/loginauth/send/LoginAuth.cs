@@ -15,7 +15,7 @@
             WriteShort(_config.ServerConfig.Port);
             WriteString(_config.ServerConfig.Host);
             WriteString(string.Empty);
-            WriteString(_config.ServerConfig.AuthCode);
+            WriteString(_config.ServerConfig.AuthKey);
             WriteInt(0);
             WriteShort(_config.ServerConfig.MaxPlayers);
             WriteByte(_config.ServerConfig.IsGmOnly ? 0x01 : 0x00);

@@ -9,10 +9,10 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.ResponsePackets
         /// </summary>
         private const byte Opcode = 0xA1;
 
-        internal static Packet ToPacket()
+        internal static Packet ToPacket(int key)
         {
             Packet p = new Packet(Opcode);
-            p.WriteString("LoginServPing: PING!");
+            p.WriteInt(key);
             return p;
         }
     }

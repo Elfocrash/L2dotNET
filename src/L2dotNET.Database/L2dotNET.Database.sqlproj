@@ -90,5 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="L2dotNET.Database.publish.xml" />
+    <None Include="Data\servers.sql" />
   </ItemGroup>
 </Project>

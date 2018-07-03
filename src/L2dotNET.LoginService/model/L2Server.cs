@@ -7,7 +7,11 @@ namespace L2dotNET.LoginService.Model
     public class L2Server
     {
         public byte ServerId { get; set; }
+
+        public string ServerKey { get; set; }
+
         public string Name { get; set; }
+
         public ServerThread Thread { get; set; }
 
         public bool Connected => Thread?.Connected ?? false;

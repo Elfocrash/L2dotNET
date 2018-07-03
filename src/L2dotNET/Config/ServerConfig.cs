@@ -17,8 +17,8 @@ namespace L2dotNET.Config
         [JsonProperty(PropertyName = "authPort")]
         public int AuthPort { get; set; }
 
-        [JsonProperty(PropertyName = "authCode")]
-        public string AuthCode { get; set; }
+        [JsonProperty(PropertyName = "authKey")]
+        public string AuthKey { get; set; }
 
         [JsonProperty(PropertyName = "isgmonly")]
         public bool IsGmOnly { get; set; }

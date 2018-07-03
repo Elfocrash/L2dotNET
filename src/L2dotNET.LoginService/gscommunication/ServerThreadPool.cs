@@ -8,6 +8,7 @@ using L2dotNET.DataContracts;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Services.Contracts;
+using Mapster;
 using NLog;
 
 namespace L2dotNET.LoginService.GSCommunication
@@ -34,11 +35,7 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             IEnumerable<ServerContract> servers = await _serverService.GetServerList();
 
-            Servers = servers.Select(server => new L2Server
-                {
-                    ServerId = (byte) server.ServerId,
-                    Name = server.Name
-                });
+            Servers = servers.AsQueryable().ProjectToType<L2Server>();
 
             Log.Info($"GameServerThread: loaded {Servers.Count()} servers");
         }
