@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using L2dotNET.DataContracts.Shared.Enums;
+using Mapster;
 
 namespace L2dotNET.DataContracts
 {
@@ -9,6 +10,7 @@ namespace L2dotNET.DataContracts
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [AdaptMember("ItemId")]
         public int ArmorId { get; set; }
 
         public string Name { get; set; }

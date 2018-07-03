@@ -16,7 +16,7 @@ namespace L2dotNET.Models.Items
         public int Weight { get; set; }
         public int Duration { get; set; }
         public int Price { get; set; }
-        public CrystalType CrystalType { get; set; }
+        public CrystalTypeId CrystalType { get; set; }
         public int CrystalCount { get; set; }
         public bool Crystallizable { get; set; }
         public bool Stackable { get; set; }
@@ -32,18 +32,25 @@ namespace L2dotNET.Models.Items
 
         public abstract int GetItemMask();
 
+        public CrystalType GetCrystalType()
+        {
+            return Enums.CrystalType.Values.First(x => x.Id == CrystalType);
+        }
+
         public int GetCrystalCount(int enchantLevel)
         {
+            CrystalType crystalType = GetCrystalType();
+
             if (enchantLevel > 3)
             {
                 switch (Type2)
                 {
                     case 1:
                     case 2:
-                        return CrystalCount + CrystalType.CrystalEnchantBonusArmor * (3 * enchantLevel - 6);
+                        return CrystalCount + crystalType.CrystalEnchantBonusArmor * (3 * enchantLevel - 6);
 
                     case 0:
-                        return CrystalCount + CrystalType.CrystalEnchantBonusWeapon * (2 * enchantLevel - 3);
+                        return CrystalCount + crystalType.CrystalEnchantBonusWeapon * (2 * enchantLevel - 3);
 
                     default:
                         return CrystalCount;
@@ -57,9 +64,9 @@ namespace L2dotNET.Models.Items
             {
                 case 1:
                 case 2:
-                    return CrystalCount + CrystalType.CrystalEnchantBonusArmor * enchantLevel;
+                    return CrystalCount + crystalType.CrystalEnchantBonusArmor * enchantLevel;
                 case 0:
-                    return CrystalCount + CrystalType.CrystalEnchantBonusWeapon * enchantLevel;
+                    return CrystalCount + crystalType.CrystalEnchantBonusWeapon * enchantLevel;
                 default:
                     return CrystalCount;
             }

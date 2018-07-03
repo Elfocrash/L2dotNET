@@ -72,7 +72,7 @@ namespace L2dotNET.Network.clientpackets
                 }
                 else
                 {
-                    ItemHandler.Instance.Process(player, item);
+                    ItemHandler.Process(player, item);
                 }
             });
         }
