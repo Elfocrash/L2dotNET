@@ -8,7 +8,7 @@ namespace L2dotNET.Models.Items
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private int Id { get; };
+        private int Id { get; }
 
         public bool Pet { get; set; }
         public bool Player { get; set; } = true;
