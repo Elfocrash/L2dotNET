@@ -39,7 +39,7 @@ namespace L2dotNET.Tables
             spawnsList.ForEach((spawn) =>
             {
                 L2Spawn l2Spawn =
-                new L2Spawn(NpcTable.Instance.GetTemplate(spawn.TemplateId), _idFactory, this)
+                new L2Spawn(NpcTable.GetTemplate(spawn.TemplateId), _idFactory, this)
                 {
                     Location = new SpawnLocation(spawn.LocX, spawn.LocY, spawn.LocZ, spawn.Heading, spawn.RespawnDelay)
                 };

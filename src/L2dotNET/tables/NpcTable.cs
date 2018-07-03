@@ -9,54 +9,19 @@ using NLog;
 
 namespace L2dotNET.Tables
 {
-    class NpcTable
+    static class NpcTable
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        private static volatile NpcTable _instance;
-        private static readonly object SyncRoot = new object();
 
-        private readonly Dictionary<int, NpcTemplate> _npcs = new Dictionary<int, NpcTemplate>();
+        private static readonly Dictionary<int, NpcTemplate> _npcs = new Dictionary<int, NpcTemplate>();
 
-        public static NpcTable Instance
-        {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new NpcTable();
-                }
-
-                return _instance;
-            }
-        }
-
-        public NpcTemplate GetTemplate(int id)
-        {
-            return _npcs[id];
-        }
-
-        public NpcTemplate GetTemplateByName(string name)
-        {
-            return _npcs.Values.FirstOrDefault(npcTemplate => npcTemplate.Name.EqualsIgnoreCase(name));
-        }
-
-        public List<NpcTemplate> GetAllNpcs()
-        {
-            return _npcs.Values.ToList();
-        }
-
-        public void Initialize()
+        public static void Initialize()
         {
             XmlDocument doc = new XmlDocument();
             string[] xmlFilesArray = Directory.GetFiles(@"data\xml\npcs\");
             try
             {
                 StatsSet set = new StatsSet();
-                //StatsSet petSet = new StatsSet();
 
                 foreach (string i in xmlFilesArray)
                 {
@@ -65,12 +30,14 @@ namespace L2dotNET.Tables
                     XmlNodeList nodes = doc.DocumentElement?.SelectNodes("/list/npc");
 
                     if (nodes == null)
+                    {
                         continue;
+                    }
 
                     foreach (XmlNode node in nodes)
                     {
                         XmlElement ownerElement = node.Attributes?[0].OwnerElement;
-                        if ((ownerElement != null) && (node.Attributes != null) && "npc".Equals(ownerElement.Name))
+                        if (ownerElement != null && node.Attributes != null && ownerElement.Name == "npc")
                         {
                             XmlNamedNodeMap attrs = node.Attributes;
                             
@@ -82,13 +49,14 @@ namespace L2dotNET.Tables
                             set.Set("name", attrs.GetNamedItem("name").Value);
                             set.Set("title", attrs.GetNamedItem("title").Value);
 
-                            //Set Extra Info
                             foreach(XmlNode innerData in node.ChildNodes)
                             {
                                 if(innerData.Attributes["name"] != null && innerData.Attributes["val"] != null)
                                 {
-                                    string DataValue = innerData.Attributes["val"].Value;
-                                    set.Set(innerData.Attributes["name"].Value, DataValue);
+                                    string value = innerData.Attributes["val"].Value;
+                                    string name = innerData.Attributes["name"].Value;
+
+                                    set.Set(name, value);
                                 }
                             }
 
@@ -102,8 +70,23 @@ namespace L2dotNET.Tables
             }
             catch (Exception e)
             {
-                Log.Error("Error parsing NPC templates: ", e);
+                Log.Error(e, "Error parsing NPC templates: ");
             }
+        }
+
+        public static NpcTemplate GetTemplate(int id)
+        {
+            return _npcs[id];
+        }
+
+        public static NpcTemplate GetTemplateByName(string name)
+        {
+            return _npcs.Values.FirstOrDefault(npcTemplate => npcTemplate.Name.EqualsIgnoreCase(name));
+        }
+
+        public static List<NpcTemplate> GetAllNpcs()
+        {
+            return _npcs.Values.ToList();
         }
     }
 }

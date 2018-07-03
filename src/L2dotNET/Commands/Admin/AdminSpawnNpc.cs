@@ -31,11 +31,11 @@ namespace L2dotNET.Commands.Admin
                 int potentialInt;
                 if (int.TryParse(processedVar, out potentialInt))
                 {
-                    npcTemp = NpcTable.Instance.GetTemplate(potentialInt);
+                    npcTemp = NpcTable.GetTemplate(potentialInt);
                 }
                 else
                 {
-                    npcTemp = NpcTable.Instance.GetTemplateByName(processedVar);
+                    npcTemp = NpcTable.GetTemplateByName(processedVar);
 
                 }
                 if (npcTemp == null)
