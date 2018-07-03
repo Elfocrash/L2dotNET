@@ -3,7 +3,7 @@
   "port": "7777",
   "authHost": "127.0.0.1",
   "authPort": "9014",
-  "authCode": "elfo",
+  "authKey": "E17BE73FF98FAF661DC8754EE3632624E62B87B6AFC883B8089C64045471E2DF",
   "isgmonly": "false",
   "istestserver": "false",
   "maxPlayers": "100",

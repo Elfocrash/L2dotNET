@@ -30,5 +30,19 @@ namespace L2dotNET.Logging.Abstraction
 
             LogManager.Configuration = configuration;
         }
+
+        public static void Halt(this Logger log, string msg, bool includeStackTrace = true)
+        {
+            log.Error(msg);
+
+            if (includeStackTrace)
+            {
+                log.Error(Environment.StackTrace);
+            }
+
+            log.Info("Press ENTER to exit...");
+            Console.Read();
+            Environment.Exit(0);
+        }
     }
 }

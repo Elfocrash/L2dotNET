@@ -9,17 +9,17 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.RequestPackets
     class RequestLoginServPing : PacketBase
     {
         private readonly ServerThread _thread;
-        private string _message;
+        private int _randomKey;
 
         public RequestLoginServPing(IServiceProvider serviceProvider, Packet p, ServerThread server) : base(serviceProvider)
         {
             _thread = server;
-            _message = p.ReadString();
+            _randomKey = p.ReadInt();
         }
 
         public override async Task RunImpl()
         {
-            _thread.Send(LoginServPing.ToPacket());
+            _thread.Send(LoginServPing.ToPacket(_randomKey));
         }
     }
 }

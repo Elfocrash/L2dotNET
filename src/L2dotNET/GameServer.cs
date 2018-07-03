@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using L2dotNET.Controllers;
 using L2dotNET.Handlers;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Managers;
 using L2dotNET.Models.Items;
 using L2dotNET.Network;
@@ -61,12 +62,13 @@ namespace L2dotNET
 
             await ServiceProvider.GetService<AnnouncementManager>().Initialise();
 
-            StaticObjTable.Instance.Initialize();
+            StaticObjTable.Initialize();
             await ServiceProvider.GetService<SpawnTable>().Initialise();
 
             await ServiceProvider.GetService<HtmCache>().Initialise();
 
-            // PluginManager.Instance.Initialize(this);
+            // TODO: review plugin system
+            //PluginManager.Instance.Initialize(this);
 
             ServiceProvider.GetService<AuthThread>().Initialise();
 
@@ -78,10 +80,7 @@ namespace L2dotNET
             }
             catch (SocketException ex)
             {
-                Log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
-                Log.Info("Press ENTER to exit...");
-                Console.Read();
-                Environment.Exit(0);
+                Log.Halt($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
             }
 
             Log.Info($"Listening Gameservers on port {config.ServerConfig.Port}");
