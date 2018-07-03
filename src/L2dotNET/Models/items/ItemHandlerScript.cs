@@ -7,38 +7,39 @@ namespace L2dotNET.Models.Items
     class ItemHandlerScript : ItemEffect
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        private readonly int _id;
 
-        public int EffectId = -1;
-        public int EffectLv;
+        private int Id { get; };
 
-        public bool Pet = false;
-        public bool Player = true;
-        public bool Destroy = true;
+        public bool Pet { get; set; }
+        public bool Player { get; set; } = true;
+        public bool Destroy { get; set; } = true;
 
-        public int PetId = -1;
-        public int SummonId = -1;
-        public int SummonStaticId = -1;
+        public int? PetId { get; set; }
+        public int? SummonId { get; set; }
+        public int? SummonStaticId { get; set; }
 
-        private SortedList<int, int> _exchangeItems;
-        public int SkillId;
-        public int SkillLv;
+        public int EffectId { get; set; }
+        public int EffectLvl { get; set; }
+        public int SkillId { get; set; }
+        public int SkillLvl { get; set; }
+
+        private readonly Dictionary<int, int> _exchangeItems;
+
 
         public ItemHandlerScript(int id)
         {
-            _id = id;
+            Id = id;
+            _exchangeItems = new Dictionary<int, int>();
         }
 
         public void AddExchangeItem(int itemId, int count)
         {
-            if (_exchangeItems == null)
-                _exchangeItems = new SortedList<int, int>();
-
             _exchangeItems.Add(itemId, count);
         }
 
         public override void UsePlayer(L2Player player, L2Item item)
         {
+            // TODO: Debug this code
             if (!Player)
             {
                 base.UsePlayer(player, item);
@@ -46,7 +47,9 @@ namespace L2dotNET.Models.Items
             }
 
             if (Destroy)
+            {
                 player.DestroyItem(item, 1);
+            }
 
             if (_exchangeItems != null)
             {
@@ -54,15 +57,19 @@ namespace L2dotNET.Models.Items
                     player.AddItem(val, _exchangeItems[val]);
             }
 
-            if (PetId != -1)
-                player.PetSummon(item, PetId);
-
-            if (SummonId != -1)
-                player.PetSummon(item, SummonId, false);
-
-            if (SummonStaticId != -1)
+            if (PetId.HasValue)
             {
-                //NpcTable.Instance.SpawnNpc(SummonStaticID, player.X, player.Y, player.Z, player.Heading);
+                player.PetSummon(item, PetId.Value);
+            }
+
+            if (SummonId.HasValue)
+            {
+                player.PetSummon(item, SummonId.Value, false);
+            }
+
+            if (SummonStaticId.HasValue)
+            {
+                //NpcTable.Instance.SpawnNpc(SummonStaticID.Value, player.X, player.Y, player.Z, player.Heading);
             }
         }
         
