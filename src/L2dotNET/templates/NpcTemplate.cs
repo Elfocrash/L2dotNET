@@ -48,12 +48,15 @@ namespace L2dotNET.Templates
 
         //private List<DropCategory> _categories;
         //private List<MinionData> _minions;
-        public List<ClassId> TeachInfo = new List<ClassId>();
+        public List<ClassId> TeachInfo { get; }
         //private Dictionary<int, L2Skill> _skills = new Dictionary<>();
         //private Dictionary<EventType, List<Quest>> _questEvents = new Dictionary<>();
 
         public NpcTemplate(StatsSet set) : base(set)
         {
+            //Refactor this
+            TeachInfo = new List<ClassId>();
+
             NpcId = set.GetInt("id");
             IdTemplate = set.GetInt("idTemplate", NpcId);
             Type = set.GetString("type");

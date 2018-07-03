@@ -52,7 +52,7 @@ namespace L2dotNET
             await ServiceProvider.GetService<ItemTable>().Initialise();
             ItemHandler.Initialize();
 
-            NpcTable.Instance.Initialize();
+            NpcTable.Initialize();
             Capsule.Instance.Initialize();
             
             BlowFishKeygen.GenerateKeys();
