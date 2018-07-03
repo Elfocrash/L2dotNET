@@ -53,7 +53,7 @@ namespace L2dotNET
             ItemHandler.Initialize();
 
             NpcTable.Initialize();
-            Capsule.Instance.Initialize();
+            Capsule.Initialize();
             
             BlowFishKeygen.GenerateKeys();
 
