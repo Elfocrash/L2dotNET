@@ -22,14 +22,13 @@ namespace L2dotNET.LoginService.Managers
         private byte[][] _blowfishKeys;
 
         private readonly PacketHandler _packetHandler;
-        private readonly ICollection<LoginClient> _loggedClients;
-
+        private readonly ConcurrentDictionary<int, LoginClient> _loggedClients;
         private readonly ConcurrentDictionary<string, DateTime> _flood = new ConcurrentDictionary<string, DateTime>();
 
         public ClientManager(PacketHandler packetHandler)
         {
             _packetHandler = packetHandler;
-            _loggedClients = new List<LoginClient>();
+            _loggedClients = new ConcurrentDictionary<int, LoginClient>();
         }
 
         public async Task Initialise()
@@ -43,7 +42,7 @@ namespace L2dotNET.LoginService.Managers
 
             GenerateScrambledKeys();
             GenerateBlowfishKeys();
-            
+
             Initialised = true;
         }
 
@@ -52,20 +51,20 @@ namespace L2dotNET.LoginService.Managers
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
             Log.Info($"Connected: {ip}");
 
-                if (_flood.ContainsKey(ip))
+            if (_flood.ContainsKey(ip))
+            {
+                if (_flood[ip].CompareTo(DateTime.UtcNow) == 1)
                 {
-                    if (_flood[ip].CompareTo(DateTime.Now) == 1)
-                    {
-                        Log.Warn($"Active flooder: {ip}");
-                        client.Close();
-                        return;
-                    }
-
-                    DateTime oldDate;
-                    _flood.TryRemove(ip, out oldDate);
+                    Log.Warn($"Active flooder: {ip}");
+                    client.Close();
+                    return;
                 }
 
-            _flood.AddOrUpdate(ip, DateTime.UtcNow.AddMilliseconds(3000), (a,b) => DateTime.UtcNow.AddMilliseconds(3000));
+                DateTime oldDate;
+                _flood.TryRemove(ip, out oldDate);
+            }
+
+            _flood.AddOrUpdate(ip, DateTime.UtcNow.AddMilliseconds(3000), (a, b) => DateTime.UtcNow.AddMilliseconds(3000));
 
             if (!NetworkBlock.Instance.Allowed(ip))
             {
@@ -76,12 +75,7 @@ namespace L2dotNET.LoginService.Managers
 
             LoginClient loginClient = new LoginClient(client, this, _packetHandler);
 
-            if (_loggedClients.Contains(loginClient))
-            {
-                return;
-            }
-
-            _loggedClients.Add(loginClient);
+            _loggedClients.TryAdd(loginClient.SessionId, loginClient);
         }
 
         public ScrambledKeyPair GetScrambledKeyPair()
@@ -96,12 +90,13 @@ namespace L2dotNET.LoginService.Managers
 
         public void RemoveClient(LoginClient loginClient)
         {
-            if (!_loggedClients.Contains(loginClient))
+            if (!_loggedClients.ContainsKey(loginClient.SessionId))
             {
                 return;
             }
 
-            _loggedClients.Remove(loginClient);
+            LoginClient o;
+            _loggedClients.TryRemove(loginClient.SessionId, out o);
         }
 
         private void GenerateScrambledKeys()
