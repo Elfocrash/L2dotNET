@@ -85,7 +85,7 @@ namespace L2dotNET
 
             Log.Info($"Listening Gameservers on port {config.ServerConfig.Port}");
 
-            WaitForClients();
+            Task.Factory.StartNew(WaitForClients);
         }
 
         private async void WaitForClients()

@@ -73,8 +73,6 @@ namespace L2dotNET.Tables
             await LoadWeaponModels();
             await LoadEtcItemModels();
 
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
             Log.Info($"Loaded #{Armors.Count} armors, #{Weapons.Count} weapons and #{EtcItems.Count} etc items.");
             Initialised = true;
         }

@@ -16,10 +16,7 @@ namespace L2dotNET.Network.loginauth.recv
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
-            {
-                _login.LoginOk(_code);
-            });
+            _login.LoginOk(_code);
         }
     }
 }

@@ -19,12 +19,14 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.RequestPackets
         private readonly Config.Config _config;
         protected byte[] Raw;
         private readonly LoginClient _client;
+        private readonly ServerThreadPool _serverThread;
 
         public RequestAuthLogin(IServiceProvider serviceProvider, Packet p, LoginClient client) : base(serviceProvider)
         {
             _accountService = serviceProvider.GetService<IAccountService>();
             _client = client;
             _config = serviceProvider.GetService<Config.Config>();
+            _serverThread = serviceProvider.GetService<ServerThreadPool>();
             Raw = p.ReadByteArrayAlt(128);
         }
 
