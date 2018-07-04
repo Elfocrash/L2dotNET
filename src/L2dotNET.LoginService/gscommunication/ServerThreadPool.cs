@@ -56,10 +56,7 @@ namespace L2dotNET.LoginService.GSCommunication
             }
             catch (SocketException ex)
             {
-                Log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
-                Log.Info("Press ENTER to exit...");
-                Console.Read();
-                Environment.Exit(0);
+                Log.Halt($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
             }
 
             Task.Factory.StartNew(WaitForClients);
@@ -102,10 +99,10 @@ namespace L2dotNET.LoginService.GSCommunication
             return false;
         }
 
-        public void SendPlayer(byte serverId, LoginClient client, string time)
+        public void SendPlayer(byte serverId, LoginClient client)
         {
-            L2Server server = Servers.FirstOrDefault(srv => (srv.ServerId == serverId) && (srv.Thread != null));
-            server?.Thread.SendPlayer(client, time);
+            L2Server server = Servers.FirstOrDefault(srv => srv.ServerId == serverId && srv.Thread != null);
+            server?.Thread.SendPlayer(client);
         }
     }
 }
