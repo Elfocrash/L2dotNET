@@ -37,13 +37,13 @@ namespace L2dotNET.Network.clientpackets
             {
                 ValidateAndDelete();
 
-                _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
+                _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
             });
         }
 
         private void ValidateAndDelete()
         {
-            L2Player player = _client.AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
+            L2Player player = _client.AccountCharacters.FirstOrDefault(filter => filter.CharSlot == _charSlot);
 
             if (player == null)
             {
@@ -72,7 +72,7 @@ namespace L2dotNET.Network.clientpackets
                     return;
                 }
 
-                _client.RemoveAccountCharAndResetSlotIndex(_charSlot);
+                _client.DeleteCharacter(_charSlot);
             }
             else
             {

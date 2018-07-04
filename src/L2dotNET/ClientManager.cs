@@ -60,7 +60,7 @@ namespace L2dotNET
             Log.Info($"{_loggedClients.Count} active connections");
         }
 
-        public void Terminate(string sock)
+        public void Disconnect(string sock)
         {
             GameClient o;
             _loggedClients.TryRemove(sock, out o);

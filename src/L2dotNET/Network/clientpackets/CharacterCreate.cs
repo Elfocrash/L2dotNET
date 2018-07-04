@@ -94,7 +94,7 @@ namespace L2dotNET.Network.clientpackets
             player.X = template.SpawnX;
             player.Y = template.SpawnY;
             player.Z = template.SpawnZ;
-            player.CharSlot = player.Gameclient.AccountChars.Count;
+            player.CharSlot = player.Gameclient.AccountCharacters.Count;
 
             if (template.DefaultInventory != null)
             {
@@ -128,10 +128,10 @@ namespace L2dotNET.Network.clientpackets
 
             CharacterService.CreatePlayer(player);
             //player = PlayerService.RestorePlayer(player.ObjId, _client);
-            player.Gameclient.AccountChars.Add(player);
+            player.Gameclient.AccountCharacters.Add(player);
             _client.SendPacketAsync(new CharCreateOk());
             L2World.AddPlayer(player);
-            _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1)
+            _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountCharacters, _client.SessionKey.PlayOkId1)
                 {
                     CharId = player.ObjId
                 });
@@ -145,7 +145,7 @@ namespace L2dotNET.Network.clientpackets
                 return false;
             }
 
-            if (_client.AccountChars.Count >= _config.GameplayConfig.OtherConfig.MaxCharactersByAccount)
+            if (_client.AccountCharacters.Count >= _config.GameplayConfig.OtherConfig.MaxCharactersByAccount)
             {
                 _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.TooManyCharsOnAccount));
                 return false;

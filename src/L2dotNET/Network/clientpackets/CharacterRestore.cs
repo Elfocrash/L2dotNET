@@ -34,13 +34,13 @@ namespace L2dotNET.Network.clientpackets
             {
                 ValidateAndRestore();
 
-                _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
+                _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
             });
         }
 
         private void ValidateAndRestore()
         {
-            L2Player player = _client.AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
+            L2Player player = _client.AccountCharacters.FirstOrDefault(filter => filter.CharSlot == _charSlot);
             
             if (player == null)
             {
