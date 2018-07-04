@@ -272,7 +272,7 @@ namespace L2dotNET.Network
                     packetBase = (PacketBase)Activator.CreateInstance(ClientPacketsD0[(short)packet.SecondOpcode], _serviceProvider, packet, client);
             }
 
-            if (client.IsTerminated)
+            if (client.IsDisconnected)
                 return;
 
             if (packetBase == null)
