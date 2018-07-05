@@ -28,7 +28,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
                     return;
                 }
 
-                if (player.Party.Leader.ObjId != player.ObjId)
+                if (player.Party.Leader.CharacterId != player.CharacterId)
                 {
                     player.SendSystemMessage(SystemMessage.SystemMessageId.FailedToExpelThePartyMember);
                     player.SendActionFailedAsync();

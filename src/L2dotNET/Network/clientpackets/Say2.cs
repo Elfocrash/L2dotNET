@@ -36,7 +36,7 @@ namespace L2dotNET.Network.clientpackets
             {
                 L2Player player = _client.CurrentPlayer;
 
-                CreatureSay cs = new CreatureSay(player.ObjId, _type, player.Name, _text);
+                CreatureSay cs = new CreatureSay(player.CharacterId, _type, player.Name, _text);
 
                 switch (_type)
                 {

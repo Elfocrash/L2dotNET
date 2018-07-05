@@ -39,7 +39,7 @@ namespace L2dotNET.Models.Npcs
             }
             else
             {
-                if (player.Target.ObjId != ObjId)
+                if (player.Target.CharacterId != CharacterId)
                 {
                     player.Target = this;
                     newtarget = true;
@@ -48,7 +48,7 @@ namespace L2dotNET.Models.Npcs
 
             if (newtarget)
             {
-                await player.SendPacketAsync(new MyTargetSelected(ObjId, player.Level - Template.Level));
+                await player.SendPacketAsync(new MyTargetSelected(CharacterId, player.Level - Template.Level));
 
                 StatusUpdate su = new StatusUpdate(this);
                 su.Add(StatusUpdate.CurHp, (int)CharStatus.CurrentHp);
@@ -90,7 +90,7 @@ namespace L2dotNET.Models.Npcs
         {
             await Task.Run(() =>
             {
-                player.AttackingId = ObjId;
+                player.AttackingId = CharacterId;
             });
         }
 

@@ -8,7 +8,7 @@ namespace L2dotNET.Network.clientpackets
 {
     class CharacterSelected : PacketBase
     {
-        private readonly ICharacterService CharacterService;
+        private readonly ICharacterService _characterService;
 
         private readonly GameClient _client;
         private readonly int _charSlot;
@@ -20,7 +20,7 @@ namespace L2dotNET.Network.clientpackets
         public CharacterSelected(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
-            CharacterService = serviceProvider.GetService<ICharacterService>();
+            _characterService = serviceProvider.GetService<ICharacterService>();
             _charSlot = packet.ReadInt();
             _unk1 = packet.ReadShort();
             _unk2 = packet.ReadInt();
@@ -30,19 +30,23 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            //if (_client.CurrentPlayer == null)
+            if (_client.CurrentPlayer != null)
             {
-                L2Player player = await CharacterService.GetPlayerBySlotId(_client.AccountName, _charSlot);
-
-                if (player == null)
-                    return;
-
-                player.Online = 1;
-                player.Gameclient = _client;
-                _client.CurrentPlayer = player;
-
-                _client.SendPacketAsync(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
+                return;
             }
+
+            L2Player player = await _characterService.GetPlayerBySlotId(_client.Account.AccountId, _charSlot);
+
+            if (player == null)
+            {
+                return;
+            }
+
+            player.Online = 1;
+            player.Gameclient = _client;
+            _client.CurrentPlayer = player;
+
+            _client.SendPacketAsync(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
         }
     }
 }

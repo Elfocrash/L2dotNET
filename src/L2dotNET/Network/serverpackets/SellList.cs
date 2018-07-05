@@ -27,7 +27,7 @@ namespace L2dotNET.Network.serverpackets
 
             foreach (L2Item item in _sells)
             {
-                WriteInt(item.ObjId);
+                WriteInt(item.CharacterId);
                 WriteInt(item.Template.ItemId);
                 WriteLong(item.Count);
 

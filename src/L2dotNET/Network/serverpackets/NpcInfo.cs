@@ -14,7 +14,7 @@ namespace L2dotNET.Network.serverpackets
         public override void Write()
         {
             WriteByte(0x16);
-            WriteInt(_npc.ObjId);
+            WriteInt(_npc.CharacterId);
             WriteInt(_npc.NpcHashId);
             WriteInt(_npc.Attackable);
             WriteInt(_npc.X);

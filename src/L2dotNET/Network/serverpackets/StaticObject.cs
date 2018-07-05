@@ -15,7 +15,7 @@ namespace L2dotNET.Network.serverpackets
         {
             WriteByte(0x99);
             WriteInt(_obj.StaticId);
-            WriteInt(_obj.ObjId);
+            WriteInt(_obj.CharacterId);
         }
     }
 }

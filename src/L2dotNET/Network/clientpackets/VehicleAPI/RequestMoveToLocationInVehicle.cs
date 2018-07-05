@@ -43,7 +43,7 @@ namespace L2dotNET.Network.clientpackets.VehicleAPI
                 L2Boat boat = null;
                 if (player.Boat != null)
                 {
-                    if (player.Boat.ObjId == _boatId)
+                    if (player.Boat.CharacterId == _boatId)
                         boat = player.Boat;
                     else
                     {

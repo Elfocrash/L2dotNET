@@ -18,7 +18,7 @@ namespace L2dotNET.Network.serverpackets
         public override void Write()
         {
             WriteByte(0x5A);
-            WriteInt(_boat.ObjId);
+            WriteInt(_boat.CharacterId);
             WriteInt(_speed);
             WriteInt(_rotationSpd);
             WriteInt(_boat.DestX);

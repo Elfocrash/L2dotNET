@@ -20,8 +20,8 @@ namespace L2dotNET.Network.serverpackets
         public override void Write()
         {
             WriteByte(0x72);
-            WriteInt(_player.ObjId);
-            WriteInt(_player.Boat.ObjId);
+            WriteInt(_player.CharacterId);
+            WriteInt(_player.Boat.CharacterId);
             WriteInt(_x);
             WriteInt(_y);
             WriteInt(_z);

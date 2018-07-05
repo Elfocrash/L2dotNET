@@ -19,7 +19,7 @@ namespace L2dotNET.Network.serverpackets
             WriteShort(0x20);
 
             WriteShort(_item.Template.Type1);
-            WriteInt(_item.ObjId); //item.ObjID
+            WriteInt(_item.CharacterId); //item.ObjID
             WriteInt(_item.Template.ItemId);
             WriteInt(_num);
 

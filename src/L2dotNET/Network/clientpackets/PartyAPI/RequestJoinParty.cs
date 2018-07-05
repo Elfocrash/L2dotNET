@@ -79,7 +79,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
                     return;
                 }
 
-                if ((player.Party != null) && (player.Party.Leader.ObjId != player.ObjId))
+                if ((player.Party != null) && (player.Party.Leader.CharacterId != player.CharacterId))
                 {
                     player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLeaderCanInvite);
                     player.SendActionFailedAsync();

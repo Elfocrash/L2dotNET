@@ -21,8 +21,8 @@ namespace L2dotNET.Network.serverpackets
         {
             WriteByte(0x71);
 
-            WriteInt(_player.ObjId);
-            WriteInt(_player.Boat.ObjId);
+            WriteInt(_player.CharacterId);
+            WriteInt(_player.Boat.CharacterId);
             WriteInt(_player.BoatX);
             WriteInt(_player.BoatY);
             WriteInt(_player.BoatZ);

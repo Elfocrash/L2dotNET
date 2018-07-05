@@ -5,14 +5,13 @@ using L2dotNET.Models.Player;
 
 namespace L2dotNET.Network.serverpackets
 {
-    class CharacterSelectionInfo : GameserverPacket
+    class CharList : GameserverPacket
     {
         private readonly List<L2Player> _players;
-        public int CharId = -1;
         private readonly string _account;
         private readonly int _sessionId;
 
-        public CharacterSelectionInfo(string account, List<L2Player> players, int sessionId)
+        public CharList(string account, List<L2Player> players, int sessionId)
         {
             _players = players;
             _account = account;
@@ -24,33 +23,36 @@ namespace L2dotNET.Network.serverpackets
             WriteByte(0x13);
             WriteInt(_players.Count);
 
-            //TODO: Make config for that and check valid filters (like char banned, etc) + better checks
-            int lastSelectedObjId = 0;
+            int lastUsedCharId = 0;
 
             if (_players.Count > 0)
             {
-                var lastUsedChar = _players.OrderByDescending(sort => sort.LastAccess)
+                L2Player lastUsedChar = _players.OrderByDescending(sort => sort.LastAccess)
                     .FirstOrDefault(filter => !filter.DeleteTime.HasValue);
 
-                lastSelectedObjId = lastUsedChar?.ObjId ?? 0;
+                lastUsedCharId = lastUsedChar?.CharacterId ?? 0;
             }
 
             foreach (L2Player player in _players)
             {
                 WriteString(player.Name);
-                WriteInt(player.ObjId);
+                WriteInt(player.CharacterId);
                 WriteString(_account);
                 WriteInt(_sessionId);
                 WriteInt(0);//player.ClanId
-                WriteInt(0x00); // ??
+                WriteInt(0x00); // ??   
 
                 WriteInt((int)player.Sex);
                 WriteInt((int)player.BaseClass.ClassId.ClassRace);
 
                 if (player.ActiveClass.ClassId.Id == player.BaseClass.ClassId.Id)
+                {
                     WriteInt((int)player.ActiveClass.ClassId.Id);
+                }
                 else
+                {
                     WriteInt((int)player.BaseClass.ClassId.Id);
+                }
 
                 WriteInt(0x01); // active ??
 
@@ -62,7 +64,7 @@ namespace L2dotNET.Network.serverpackets
                 WriteDouble(player.CharStatus.CurrentMp);
 
                 WriteInt(player.Sp);
-                WriteLong(player.Exp);
+                WriteLong(player.Experience);
 
                 WriteInt(player.Level);
                 WriteInt(player.Karma);
@@ -95,11 +97,10 @@ namespace L2dotNET.Network.serverpackets
 
                 int selection = 0;
 
-                if (CharId != -1)
-                    selection = CharId == player.ObjId ? 1 : 0;
-
-                if ((lastSelectedObjId > 0) && (lastSelectedObjId == player.ObjId))
+                if (lastUsedCharId > 0 && lastUsedCharId == player.CharacterId)
+                {
                     selection = 1;
+                }
 
                 WriteInt(selection); // auto-select char
                 WriteByte(player.GetEnchantValue());

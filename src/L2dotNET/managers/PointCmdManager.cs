@@ -18,8 +18,8 @@ namespace L2dotNET.Managers
             switch (text)
             {
                 case "traffic":
-                    player.SendMessageAsync($"Down: {player.Gameclient.TrafficDown / 1024} kb");
-                    player.SendMessageAsync($"Up: {player.Gameclient.TrafficUp / 1024} kb");
+                   // player.SendMessageAsync($"Down: {player.Gameclient.TrafficDown / 1024} kb");
+                   // player.SendMessageAsync($"Up: {player.Gameclient.TrafficUp / 1024} kb");
                     break;
 
                 default:

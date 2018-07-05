@@ -22,7 +22,7 @@ namespace L2dotNET.Network.serverpackets
             WriteShort(_action);
 
             WriteShort(_item.Template.Type1);
-            WriteInt(_item.ObjId);
+            WriteInt(_item.CharacterId);
             WriteInt(_item.Template.ItemId);
             WriteInt(_num);
 

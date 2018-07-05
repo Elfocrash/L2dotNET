@@ -17,7 +17,7 @@ namespace L2dotNET.Network.serverpackets
 
         public Attack(L2Character player, L2Object target, bool ss, int grade)
         {
-            AttackerObjId = player.ObjId;
+            AttackerObjId = player.CharacterId;
             Soulshot = ss;
             Grade = grade;
             _x = player.X;

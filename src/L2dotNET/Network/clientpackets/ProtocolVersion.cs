@@ -20,7 +20,7 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            if ((_protocol != 746) && (_protocol != 251))
+            if (_protocol != 746 && _protocol != 251)
             {
                 Log.Error($"Protocol fail {_protocol}");
                 await _client.SendPacketAsync(new KeyPacket(_client, 0));
@@ -39,7 +39,6 @@ namespace L2dotNET.Network.clientpackets
             Log.Info($"Accepted {_protocol} client");
 
             await _client.SendPacketAsync(new KeyPacket(_client, 1));
-            _client.Protocol = _protocol;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Items;
@@ -32,7 +33,7 @@ namespace L2dotNET.Models.Inventory
 
         protected abstract ItemLocation BaseLocation { get; }
 
-        public int OwnerId => Owner?.ObjId ?? 0;
+        public int OwnerId => Owner?.CharacterId ?? 0;
 
         public int Count =>Items.Count;
 
@@ -55,12 +56,12 @@ namespace L2dotNET.Models.Inventory
 
         public L2Item GetItemByObjectId(int objectId)
         {
-            return Items.FirstOrDefault(item => item.ObjId == objectId);
+            return Items.FirstOrDefault(item => item.CharacterId == objectId);
         }
 
-        public virtual async void Restore(L2Character owner)
+        public virtual async Task Restore(L2Character owner)
         {
-            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.ObjId);
+            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.CharacterId);
             List<L2Item> items = RestoreFromDb(models.ToList());
 
             foreach (L2Item item in items)
@@ -79,7 +80,7 @@ namespace L2dotNET.Models.Inventory
         {
             L2Item item = new L2Item(_itemCrudService, _idFactory, _itemTable.GetItem(contract.ItemId), _idFactory.NextId())
             {
-                ObjId = contract.ObjectId,
+                CharacterId = contract.ObjectId,
                 Count = contract.Count,
                 CustomType1 = contract.CustomType1,
                 CustomType2 = contract.CustomType2,
@@ -95,7 +96,7 @@ namespace L2dotNET.Models.Inventory
         {
             if (item != null)
             {
-                item.OwnerId = player.ObjId;
+                item.OwnerId = player.CharacterId;
                 //item.SlotLocation = 0;
                 Items.Add(item);
 
@@ -121,7 +122,7 @@ namespace L2dotNET.Models.Inventory
                         return null;
 
                     item = _itemTable.CreateItem(itemId, count, player);
-                    item.OwnerId = player.ObjId;
+                    item.OwnerId = player.CharacterId;
                     item.SlotLocation = 0;
                     item.ExistsInDb = ExistsInDb;
                     item.Location = ItemLocation.Inventory;

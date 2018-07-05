@@ -59,16 +59,16 @@ namespace L2dotNET.World
 
         public static void AddObject(L2Object obj)
         {
-            if (!_objects.ContainsKey(obj.ObjId))
+            if (!_objects.ContainsKey(obj.CharacterId))
             {
-                _objects.TryAdd(obj.ObjId, obj);
+                _objects.TryAdd(obj.CharacterId, obj);
             }
         }
 
         public static void RemoveObject(L2Object obj)
         {
             L2Object o;
-            _objects.TryRemove(obj.ObjId, out o);
+            _objects.TryRemove(obj.CharacterId, out o);
         }
 
         public static List<L2Object> GetObjects()
@@ -88,16 +88,16 @@ namespace L2dotNET.World
 
         public static void AddPlayer(L2Player player)
         {
-            if (!_players.ContainsKey(player.ObjId))
+            if (!_players.ContainsKey(player.CharacterId))
             {
-                _players.TryAdd(player.ObjId, player);
+                _players.TryAdd(player.CharacterId, player);
             }
         }
 
         public static void RemovePlayer(L2Player player)
         {
             L2Player o;
-            _players.TryRemove(player.ObjId, out o);
+            _players.TryRemove(player.CharacterId, out o);
         }
 
         public static List<L2Player> GetPlayers()

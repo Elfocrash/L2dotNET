@@ -21,7 +21,7 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.Y);
             WriteInt(_player.Z);
             WriteInt(_player.Heading);
-            WriteInt(_player.ObjId);
+            WriteInt(_player.CharacterId);
             WriteString(_player.Name);
 
             WriteInt((int)_player.BaseClass.ClassId.ClassRace);
@@ -118,11 +118,11 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.AbnormalBitMask);
 
             WriteByte(0); //_activeChar.isFlyingMounted() ? 2 : 0);
-            WriteShort(_player.RecHave);
+            WriteShort(_player.RecomandationsHave);
             WriteInt((int)_player.ActiveClass.ClassId.Id);
 
             WriteInt(_player.MaxCp); //max cp here
-            WriteInt((int)_player.CurCp);
+            WriteInt((int)_player.CurrentCp);
             WriteByte(_player.GetEnchantValue());
             WriteByte(_player.TeamId);
             WriteInt(0);//_player.GetClanCrestLargeId()
