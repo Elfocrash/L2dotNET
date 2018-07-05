@@ -22,6 +22,7 @@ using L2dotNET.Templates;
 using L2dotNET.Tools;
 using L2dotNET.Utility;
 using L2dotNET.World;
+using Microsoft.Extensions.DependencyInjection;
 using NLog;
 
 namespace L2dotNET.Models.Player
@@ -37,7 +38,6 @@ namespace L2dotNET.Models.Player
 
         public AccountContract Account { get; set; }
         public GameClient Gameclient { get; set; }
-
 
         public ClassId ClassId { get; set; }
         public L2PartyRoom PartyRoom { get; set; }
@@ -183,13 +183,12 @@ namespace L2dotNET.Models.Player
 
         public int VehicleId => Boat?.ObjectId ?? 0;
 
-        public L2Player(ICharacterService characterService, int objectId, PcTemplate template) : base(objectId, template)
+        public L2Player(PcTemplate template, int objectId) : base(objectId, template)
         {
             Template = template;
-            _characterService = characterService;
+            _characterService = GameServer.ServiceProvider.GetService<ICharacterService>();
             CharacterStat = new CharacterStat(this);
             InitializeCharacterStatus();
-            Calculators = new Stats.Calculator[Stats.Stats.Values.Count()];
             AddFuncsToNewCharacter();
         }
 
@@ -277,7 +276,7 @@ namespace L2dotNET.Models.Player
         {
             base.AddFuncsToNewCharacter();
 
-            AddStatFunc(new FuncMaxCpMul());
+            CharacterStat.AddStatFunction(FuncMaxCpMul.Instance);
 
             //Henna stuff go here
         }

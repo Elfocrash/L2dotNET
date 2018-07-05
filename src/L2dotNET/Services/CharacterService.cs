@@ -117,7 +117,7 @@ namespace L2dotNET.Services
 
         private L2Player MapContractToPlayer(CharacterContract characterContract)
         {
-            var player = new L2Player(this, characterContract.CharacterId, CharTemplateTable.GetTemplate(characterContract.ClassId))
+            var player = new L2Player(CharTemplateTable.GetTemplate(characterContract.ClassId), characterContract.CharacterId)
                 {
                     ObjectId = characterContract.CharacterId,
                     Name = characterContract.Name,

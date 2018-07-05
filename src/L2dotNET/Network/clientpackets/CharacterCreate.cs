@@ -69,7 +69,7 @@ namespace L2dotNET.Network.clientpackets
 
             PcTemplate template = CharTemplateTable.GetTemplate(_classId);
 
-            L2Player player = new L2Player(_characterService, _idFactory.NextId(), template);
+            L2Player player = new L2Player(template, _idFactory.NextId());
 
             player.Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, player);
             player.Name = _name;
