@@ -56,6 +56,8 @@ namespace L2dotNET.GameService
             }
 
             Process.GetCurrentProcess().WaitForExit();
+            Log.Info("Press ENTER to exit...");
+            Console.Read();
         }
 
         private static void ConfigureServices(IServiceCollection serviceCollection)
