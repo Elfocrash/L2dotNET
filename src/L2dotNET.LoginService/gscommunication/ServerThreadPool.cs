@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Services.Contracts;
@@ -17,7 +18,7 @@ namespace L2dotNET.LoginService.GSCommunication
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public IEnumerable<L2Server> Servers { get; private set; }
+        public ICollection<L2Server> Servers { get; private set; }
 
         private readonly IServerService _serverService;
         private readonly Config.Config _config;
@@ -35,7 +36,7 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             IEnumerable<ServerContract> servers = await _serverService.GetServerList();
 
-            Servers = servers.AsQueryable().ProjectToType<L2Server>();
+            Servers = servers.AsQueryable().ProjectToType<L2Server>().ToList();
 
             Log.Info($"GameServerThread: loaded {Servers.Count()} servers");
         }
@@ -70,6 +71,7 @@ namespace L2dotNET.LoginService.GSCommunication
                 Log.Info($"Received connection request from: {client.Client.RemoteEndPoint}");
 
                 ServerThread serverThread = new ServerThread(_packetHandler);
+
                 Task.Factory.StartNew(() => serverThread.ReadData(client, this));
             }
         }

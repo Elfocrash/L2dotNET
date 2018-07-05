@@ -41,6 +41,7 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             _nstream = tcpClient.GetStream();
             _client = tcpClient;
+            Connected = true;
 
             try
             {
@@ -77,9 +78,10 @@ namespace L2dotNET.LoginService.GSCommunication
         private void Termination()
         {
             LoginServer.ServiceProvider.GetService<ServerThreadPool>().Shutdown(ServerId);
+            Connected = false;
         }
 
-        public async void Send(Packet pk)
+        public async Task Send(Packet pk)
         {
             byte[] buffer = pk.GetBuffer();
 
@@ -140,9 +142,9 @@ namespace L2dotNET.LoginService.GSCommunication
             Send(PleaseKickAccount.ToPacket(accountId));
         }
 
-        public void SendPlayer(LoginClient loginClient)
+        public async Task SendPlayer(LoginClient loginClient)
         {
-            Send(PleaseAcceptPlayer.ToPacket(loginClient.ActiveAccount, loginClient.Key));
+            await Send(PleaseAcceptPlayer.ToPacket(loginClient.ActiveAccount, loginClient.Key));
         }
     }
 }
