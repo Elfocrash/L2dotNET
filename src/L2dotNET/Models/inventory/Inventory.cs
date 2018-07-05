@@ -13,15 +13,10 @@ namespace L2dotNET.Models.Inventory
 {
     public class Inventory : ItemContainer
     {
-        public Inventory(ICrudService<ItemContract> itemCrudService, IItemService itemService, IdFactory idFactory, ItemTable itemTable, L2Character owner) 
-            : base(itemCrudService, itemService, idFactory, itemTable)
+        public Inventory(L2Character owner) : base(owner)
         {
-            Owner = owner;
             Paperdoll = new L2Item[PaperdollTotalslots];
         }
-
-        protected override L2Character Owner { get; set; }
-        protected override ItemLocation BaseLocation { get; }
 
         public static readonly int PaperdollUnder = 0;
         public static readonly int PaperdollLear = 1;
@@ -56,7 +51,7 @@ namespace L2dotNET.Models.Inventory
 
         public override async Task Restore(L2Character owner)
         {
-            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.ObjectId);
+            IEnumerable<ItemContract> models = await _itemService.RestoreInventory(owner.ObjectId);
             List<L2Item> items = RestoreFromDb(models.ToList());
 
             foreach (L2Item item in items)

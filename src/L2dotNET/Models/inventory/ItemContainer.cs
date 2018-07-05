@@ -8,30 +8,34 @@ using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Tables;
 using L2dotNET.World;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Models.Inventory
 {
     public abstract class ItemContainer
     {
-        private readonly ICrudService<ItemContract> _itemCrudService;
-        protected readonly IItemService ItemService;
-        private readonly IdFactory _idFactory;
-        private readonly ItemTable _itemTable;
+        protected readonly ICrudService<ItemContract> _itemCrudService;
+        protected readonly IItemService _itemService;
+        protected readonly IdFactory _idFactory;
+        protected readonly ItemTable _itemTable;
 
-        public List<L2Item> Items;
+        public List<L2Item> Items { get; }
 
-        protected ItemContainer(ICrudService<ItemContract> itemCrudService, IItemService itemService, IdFactory idFactory, ItemTable itemTable)
+        protected ItemContainer(L2Character owner)
         {
-            _itemCrudService = itemCrudService;
-            ItemService = itemService;
-            _idFactory = idFactory;
-            _itemTable = itemTable;
+            Owner = owner;
+
+            _itemService = GameServer.ServiceProvider.GetService<IItemService>();
+            _itemTable = GameServer.ServiceProvider.GetService<ItemTable>();
+            _idFactory = GameServer.ServiceProvider.GetService<IdFactory>();
+            _itemCrudService = GameServer.ServiceProvider.GetService<ICrudService<ItemContract>>();
+
             Items = new List<L2Item>();
         }
 
-        protected abstract L2Character Owner { get; set; }
+        protected L2Character Owner { get; set; }
 
-        protected abstract ItemLocation BaseLocation { get; }
+        protected ItemLocation BaseLocation { get; }
 
         public int OwnerId => Owner?.ObjectId ?? 0;
 
@@ -61,7 +65,7 @@ namespace L2dotNET.Models.Inventory
 
         public virtual async Task Restore(L2Character owner)
         {
-            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.ObjectId);
+            IEnumerable<ItemContract> models = await _itemService.RestoreInventory(owner.ObjectId);
             List<L2Item> items = RestoreFromDb(models.ToList());
 
             foreach (L2Item item in items)

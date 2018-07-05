@@ -142,7 +142,6 @@ namespace L2dotNET.Services
                     RecomendationsLeft = characterContract.RecLeft,
                     RecomandationsHave = characterContract.RecHave,
                     CharacterSlot = characterContract.CharSlot,
-                    Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, null),
                     DeleteTime = characterContract.DeleteTime,
                     LastAccess = characterContract.LastAccess,
                     CanCraft = characterContract.CanCraft,
