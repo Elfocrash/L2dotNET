@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 
 namespace L2dotNET.Repositories.Contracts
@@ -7,6 +8,8 @@ namespace L2dotNET.Repositories.Contracts
     {
         Task<bool> CheckIfPlayerNameExists(string name);
 
-        Task<CharacterContract> GetPlayerModelBySlotId(string accountName, int slotId);
+        Task<CharacterContract> GetCharacterBySlot(int accountId, int slotId);
+
+        Task<IEnumerable<CharacterContract>> GetCharactersOnAccount(int accountId);
     }
 }

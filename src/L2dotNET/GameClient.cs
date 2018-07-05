@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts;
 using L2dotNET.Encryption;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
@@ -25,7 +26,7 @@ namespace L2dotNET
         public byte[] BlowfishKey { get; set; }
         public ScrambledKeyPair ScrambledPair { get; set; }
         public L2Player CurrentPlayer { get; set; }
-        public string AccountName { get; set; }
+        public AccountContract Account { get; set; }
         public SessionKey SessionKey { get; set; }
         public string AccountType { get; set; }
         public string AccountTimeEnd { get; set; }
@@ -84,7 +85,7 @@ namespace L2dotNET
             }
             catch
             {
-                Log.Info($"Client {AccountName} terminated.");
+                Log.Info($"Client {Account?.AccountId} terminated.");
                 Disconnect();
             }
         }
@@ -147,20 +148,20 @@ namespace L2dotNET
             }
         }
 
-        public async Task<L2Player> GetPlayer(string accName, int charSlot)
+        public async Task<L2Player> GetPlayer(int accountId, int charSlot)
         {
-            L2Player playerContract = await _characterService.GetPlayerBySlotId(accName, charSlot);
-            L2Player player = L2World.GetPlayer(playerContract.ObjId);
+            L2Player playerContract = await _characterService.GetPlayerBySlotId(accountId, charSlot);
+            L2Player player = L2World.GetPlayer(playerContract.CharacterId);
             return player;
         }
 
         public void DeleteCharacter(int charSlot)
         {
-            AccountCharacters.RemoveAll(x => x.CharSlot == charSlot);
+            AccountCharacters.RemoveAll(x => x.CharacterSlot == charSlot);
             
             for (int i = 0; i < AccountCharacters.Count; i++)
             {
-                AccountCharacters[i].CharSlot = i;
+                AccountCharacters[i].CharacterSlot = i;
             }
         }
     }

@@ -14,6 +14,7 @@
     [HairStyle] TINYINT NOT NULL, 
     [HairColor] TINYINT NOT NULL, 
     [Sex] BIT NOT NULL, 
+	[Heading] INT NOT NULL,
     [X] INT NOT NULL, 
     [Y] INT NOT NULL, 
     [Z] INT NOT NULL, 
