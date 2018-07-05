@@ -69,63 +69,20 @@ namespace L2dotNET.Network.clientpackets
 
             PcTemplate template = CharTemplateTable.GetTemplate(_classId);
 
-            L2Player player = new L2Player(template, _idFactory.NextId());
+            L2Player player = new L2Player(template, _idFactory.NextId())
+                {
+                    Name = _name,
+                    Account = _client.Account,
+                    Sex = (Gender) _sex,
+                    HairStyleId = (HairStyleId) _hairStyle,
+                    HairColor = (HairColor) _hairColor,
+                    Face = (Face) _face,
+                    Gameclient = _client,
+                    CharacterSlot = _client.AccountCharacters.Count
+                };
 
-            player.Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, player);
-            player.Name = _name;
-            //player.AccountName = _client.Account.Login;
-            player.Title = string.Empty;
-            player.Sex = (Gender) _sex;
-            player.HairStyleId = (HairStyleId) _hairStyle;
-            player.HairColor = (HairColor) _hairColor;
-            player.Face = (Face) _face;
-            player.Experience = 0;
-            player.Level = 1;
-            player.Gameclient = _client;
-            //player.Stats = new CharacterStat(player);
-            player.ClassId = template.ClassId;
-            player.BaseClass = template;
-            player.ActiveClass = template;
-            player.CharStatus.CurrentCp = player.MaxCp;
-            player.CharStatus.SetCurrentHp(player.MaxHp);
-            player.CharStatus.SetCurrentHp(player.MaxMp);
-            //player.MaxMp = player.Stats.MaxMp;//;(int)player.CharacterStat.GetStat(EffectType.BMaxMp);
-            //player.MaxCp = player.Stats.MaxCp;
-            //player.MaxHp = player.Stats.MaxHp;
-            player.X = template.SpawnX;
-            player.Y = template.SpawnY;
-            player.Z = template.SpawnZ;
-            player.CharacterSlot = player.Gameclient.AccountCharacters.Count;
 
-            if (template.DefaultInventory != null)
-            {
-                player.Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, player);
-
-                //foreach (PC_item i in template._items)
-                //{
-                //    if (!i.item.isStackable())
-                //    {
-                //        for (long s = 0; s < i.count; s++)
-                //        {
-                //            L2Item item = new L2Item(i.item);
-                //            item.Enchant = i.enchant;
-                //            if (i.lifetime != -1)
-                //                item.AddLimitedHour(i.lifetime);
-
-                //            item.Location = L2Item.L2ItemLocation.inventory;
-                //            player.Inventory.addItem(item, false, false);
-
-                //            if (i.equip)
-                //            {
-                //                int pdollId = player.Inventory.getPaperdollId(item.Template);
-                //                player.setPaperdoll(pdollId, item, false);
-                //            }
-                //        }
-                //    }
-                //    else
-                //        player.addItem(i.item.ItemID, i.count);
-                //}
-            }
+            
 
             _characterService.CreatePlayer(player);
             //player = PlayerService.RestorePlayer(player.ObjId, _client);
