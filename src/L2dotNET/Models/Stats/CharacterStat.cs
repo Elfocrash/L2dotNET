@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 
@@ -12,7 +13,7 @@ namespace L2dotNET.Models.Stats
 
         public CharacterStat(L2Character character)
         {
-            _calculators = Calculator.GetCalculatorsForStats();
+            _calculators = character is L2Player ? Calculator.GetCalculatorsForStats() : null;
             _character = character;
         }
 
@@ -162,13 +163,13 @@ namespace L2dotNET.Models.Stats
 
         public double CalculateStat(CharacterStatId stat, double initial, L2Character target)
         {
-            if (_character == null)
+            if (_calculators == null)
             {
                 return initial;
             }
 
             Calculator calculator = _calculators[(int) stat];
-            if (calculator.Size == 0)
+            if (calculator == null || calculator.Size == 0)
             {
                 return initial;
             }
@@ -197,12 +198,16 @@ namespace L2dotNET.Models.Stats
 
         public void AddStatFunction(StatFunction func)
         {
-            if (func == null)
+            if (func == null || _calculators == null)
             {
                 return;
             }
 
-            _calculators[(int) func.Stat].AddFunc(func);
+            int statId = (int) func.Stat;
+
+            Interlocked.CompareExchange(ref _calculators[statId], new Calculator(), null);
+
+            _calculators[statId].AddFunc(func);
         }
     }
 }

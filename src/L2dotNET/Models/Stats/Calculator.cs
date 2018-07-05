@@ -10,32 +10,23 @@ namespace L2dotNET.Models.Stats
 {
     public class Calculator
     {
-        public int Size => _size;
+        public static Calculator[] GetCalculatorsForStats() => new Calculator[Enum.GetNames(typeof(CharacterStatId)).Length];
 
-        private int _size;
-        private readonly ConcurrentBag<StatFunction> _functions;
+        public int Size { get; private set; }
+
+        private readonly List<StatFunction> _functions;
 
         public Calculator()
         {
-            _functions = new ConcurrentBag<StatFunction>();
-            _size = 0;
+            _functions = new List<StatFunction>();
+            Size = 0;
         }
 
-        public static Calculator[] GetCalculatorsForStats()
-        {
-            Calculator[] calculators = new Calculator[Enum.GetNames(typeof(CharacterStatId)).Length];
 
-            for (int i = 0; i < calculators.Length; i++)
-            {
-                calculators[i] = new Calculator();
-            }
-
-            return calculators;
-        }
-
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public void AddFunc(StatFunction func)
         {
-            Interlocked.Increment(ref _size);
+            Size++;
             _functions.Add(func);
         }
 
