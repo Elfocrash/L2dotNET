@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Items;
@@ -53,9 +54,9 @@ namespace L2dotNET.Models.Inventory
             return Paperdoll.Where(item => item != null).ToList();
         }
 
-        public override async void Restore(L2Character owner)
+        public override async Task Restore(L2Character owner)
         {
-            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.ObjId);
+            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.CharacterId);
             List<L2Item> items = RestoreFromDb(models.ToList());
 
             foreach (L2Item item in items)

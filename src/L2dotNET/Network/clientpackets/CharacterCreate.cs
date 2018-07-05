@@ -72,13 +72,13 @@ namespace L2dotNET.Network.clientpackets
 
             player.Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, player);
             player.Name = _name;
-            player.AccountName = _client.AccountName;
+            //player.AccountName = _client.Account.Login;
             player.Title = string.Empty;
             player.Sex = (Gender) _sex;
             player.HairStyleId = (HairStyleId) _hairStyle;
             player.HairColor = (HairColor) _hairColor;
             player.Face = (Face) _face;
-            player.Exp = 0;
+            player.Experience = 0;
             player.Level = 1;
             player.Gameclient = _client;
             //player.Stats = new CharacterStat(player);
@@ -94,7 +94,7 @@ namespace L2dotNET.Network.clientpackets
             player.X = template.SpawnX;
             player.Y = template.SpawnY;
             player.Z = template.SpawnZ;
-            player.CharSlot = player.Gameclient.AccountCharacters.Count;
+            player.CharacterSlot = player.Gameclient.AccountCharacters.Count;
 
             if (template.DefaultInventory != null)
             {
@@ -131,10 +131,7 @@ namespace L2dotNET.Network.clientpackets
             player.Gameclient.AccountCharacters.Add(player);
             _client.SendPacketAsync(new CharCreateOk());
             L2World.AddPlayer(player);
-            _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountCharacters, _client.SessionKey.PlayOkId1)
-                {
-                    CharId = player.ObjId
-                });
+            _client.SendPacketAsync(new CharList(_client.Account.Login, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
         }
 
         private async Task<bool> IsValidChar()

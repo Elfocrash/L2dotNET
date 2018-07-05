@@ -34,7 +34,7 @@ namespace L2dotNET.Network.clientpackets
                 else
                     file = _link;
 
-                int idx = player.Target?.ObjId ?? player.ObjId;
+                int idx = player.Target?.CharacterId ?? player.CharacterId;
 
                 player.SendPacketAsync(new NpcHtmlMessage(player, file, idx, id));
             });

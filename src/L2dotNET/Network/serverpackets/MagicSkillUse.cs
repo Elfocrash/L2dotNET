@@ -22,8 +22,8 @@ namespace L2dotNET.Network.serverpackets
             _id = skill.SkillId;
             _level = skill.Level;
             _hitTime = hitTime;
-            _targetId = target.ObjId;
-            _casterId = caster.ObjId;
+            _targetId = target.CharacterId;
+            _casterId = caster.CharacterId;
             _x = caster.X;
             _y = caster.Y;
             _z = caster.Z;
@@ -38,8 +38,8 @@ namespace L2dotNET.Network.serverpackets
             _id = id;
             _level = lvl;
             _hitTime = hitTime;
-            _targetId = target.ObjId;
-            _casterId = caster.ObjId;
+            _targetId = target.CharacterId;
+            _casterId = caster.CharacterId;
             _x = caster.X;
             _y = caster.Y;
             _z = caster.Z;

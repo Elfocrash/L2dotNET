@@ -259,7 +259,7 @@ namespace L2dotNET.Models.Npcs
         {
             _corpseTimer.Enabled = false;
             _corpseTimer.Stop();
-            await BroadcastPacketAsync(new DeleteObject(ObjId));
+            await BroadcastPacketAsync(new DeleteObject(CharacterId));
             L2World.RemoveObject(this);
         }
 
@@ -293,9 +293,9 @@ namespace L2dotNET.Models.Npcs
 
         public async Task ShowNPCInfoAsync(L2Player player)
         {
-            NpcHtmlMessage html = new NpcHtmlMessage(player, "./html/admin/npcinfo.htm", ObjId);
+            NpcHtmlMessage html = new NpcHtmlMessage(player, "./html/admin/npcinfo.htm", CharacterId);
 
-            html.Replace("%objid%", ObjId);
+            html.Replace("%objid%", CharacterId);
             html.Replace("%class%", "null");
             html.Replace("%id%", NpcId);
             html.Replace("%lvl%", Level);
@@ -383,7 +383,7 @@ namespace L2dotNET.Models.Npcs
 
         public override string AsString()
         {
-            return $"L2Npc:{Template.NpcId}; id {ObjId}";
+            return $"L2Npc:{Template.NpcId}; id {CharacterId}";
         }
 
         public void CreateOnePrivateEx(int npcId, string aiType, int x, int y, int z) { }

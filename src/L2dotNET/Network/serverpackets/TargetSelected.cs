@@ -13,7 +13,7 @@ namespace L2dotNET.Network.serverpackets
         public TargetSelected(int selecterId, L2Object target)
         {
             _objectId = selecterId;
-            _targetObjId = target.ObjId;
+            _targetObjId = target.CharacterId;
             _x = target.X;
             _y = target.Y;
             _z = target.Z;

@@ -44,7 +44,7 @@ namespace L2dotNET.Models.Items
         {
             _itemCrudService = itemCrudService;
             _idFactory = idFactory;
-            ObjId = objectId != 0 ? objectId : _idFactory.NextId();
+            CharacterId = objectId != 0 ? objectId : _idFactory.NextId();
             Template = template;
             Count = 1;
             Location = ItemLocation.Void;
@@ -52,7 +52,7 @@ namespace L2dotNET.Models.Items
 
         public void GenId()
         {
-            ObjId = _idFactory.NextId();
+            CharacterId = _idFactory.NextId();
         }
 
         public void ChangeCount(int count, L2Player creator)
@@ -99,7 +99,7 @@ namespace L2dotNET.Models.Items
             Z = z;
             DropItem pk = new DropItem(this);
             if (dropper != null)
-                Dropper = dropper.ObjId;
+                Dropper = dropper.CharacterId;
 
             Location = ItemLocation.Void;
 
@@ -121,8 +121,8 @@ namespace L2dotNET.Models.Items
             {
                 foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
                 {
-                    await o.SendPacketAsync(new GetItem(player.ObjId, ObjId, X, Y, Z));
-                    await o.SendPacketAsync(new DeleteObject(ObjId));
+                    await o.SendPacketAsync(new GetItem(player.CharacterId, CharacterId, X, Y, Z));
+                    await o.SendPacketAsync(new DeleteObject(CharacterId));
                 }
 
                 player.OnPickUp(this);
@@ -176,7 +176,7 @@ namespace L2dotNET.Models.Items
         {
             ItemContract contract = new ItemContract
             {
-                ObjectId = ObjId,
+                ObjectId = CharacterId,
                 ItemId = Template.ItemId,
                 Count = Count,
                 CustomType1 = CustomType1,
@@ -249,7 +249,7 @@ namespace L2dotNET.Models.Items
 
         public override string AsString()
         {
-            return $"L2Item:{Template.ItemId}; count {Count}; enchant {Enchant}; id {ObjId}";
+            return $"L2Item:{Template.ItemId}; count {Count}; enchant {Enchant}; id {CharacterId}";
         }
 
         public bool NotForTrade()

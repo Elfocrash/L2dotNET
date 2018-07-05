@@ -18,7 +18,7 @@ namespace L2dotNET.Network.serverpackets
                 return;
 
             foreach (L2Item item in _items.Where(item => item.Blocked))
-                _block.Add(item.ObjId);
+                _block.Add(item.CharacterId);
         }
 
         public override void Write()

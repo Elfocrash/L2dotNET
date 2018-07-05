@@ -37,13 +37,13 @@ namespace L2dotNET.Network.clientpackets
             {
                 ValidateAndDelete();
 
-                _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
+                _client.SendPacketAsync(new CharList(_client.Account.Login, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
             });
         }
 
         private void ValidateAndDelete()
         {
-            L2Player player = _client.AccountCharacters.FirstOrDefault(filter => filter.CharSlot == _charSlot);
+            L2Player player = _client.AccountCharacters.FirstOrDefault(filter => filter.CharacterSlot == _charSlot);
 
             if (player == null)
             {
@@ -66,7 +66,7 @@ namespace L2dotNET.Network.clientpackets
 
             if (CharacterService.GetDaysRequiredToDeletePlayer() == 0)
             {
-                if (!CharacterService.DeleteCharByObjId(player.ObjId))
+                if (!CharacterService.DeleteCharById(player.CharacterId))
                 {
                     _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                     return;

@@ -17,7 +17,7 @@ namespace L2dotNET.Network.serverpackets
             {
                 _items.Add(new ItemListItem
                 {
-                    ObjectId = item.ObjId,
+                    ObjectId = item.CharacterId,
                     ItemId = item.Template.ItemId,
                     Slot = item.SlotLocation,
                     Count = item.Count,
@@ -33,7 +33,7 @@ namespace L2dotNET.Network.serverpackets
                 });
 
                 if (item.Blocked)
-                    _blocked.Add(item.ObjId);
+                    _blocked.Add(item.CharacterId);
             }
         }
 

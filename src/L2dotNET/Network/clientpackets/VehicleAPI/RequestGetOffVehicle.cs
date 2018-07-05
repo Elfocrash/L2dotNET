@@ -28,7 +28,7 @@ namespace L2dotNET.Network.clientpackets.VehicleAPI
             {
                 L2Player player = _client.CurrentPlayer;
 
-                if ((player.Boat == null) || (player.Boat.ObjId != _boatId))
+                if ((player.Boat == null) || (player.Boat.CharacterId != _boatId))
                 {
                     player.SendActionFailedAsync();
                     return;
