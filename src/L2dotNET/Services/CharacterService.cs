@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Services.Contracts;
 using L2dotNET.DataContracts;
@@ -37,58 +39,11 @@ namespace L2dotNET.Services
             _characterRepository = characterRepository;
         }
 
-        public async Task<L2Player> GetPlayerByLogin(int characterId)
+        public async Task<L2Player> GetById(int characterId)
         {
-            var playerContract = await _characterCrudService.GetById(characterId);
-            //TODO Use automapper to map this
-            var player = new L2Player(this, characterId, CharTemplateTable.GetTemplate(playerContract.ClassId))
-            {
-                ObjId = characterId,
-                Name = playerContract.Name,
-                Title = playerContract.Title,
-                Level = (byte)playerContract.Level,
-                //MaxHp = playerContract.MaxHp,
-                //MaxCp = playerContract.MaxCp,
-                //MaxMp = playerContract.MaxMp,
-                Face = (Face)playerContract.Face,
-                HairStyleId = (HairStyleId)playerContract.HairStyle,
-                HairColor = (HairColor)playerContract.HairColor,
-                Sex = (Gender)playerContract.Sex,
-                X = playerContract.X,
-                Y = playerContract.Y,
-                Z = playerContract.Z,
-                Heading = playerContract.Heading,
-                Exp = playerContract.Exp,
-                ExpOnDeath = playerContract.ExpBeforeDeath,
-                Sp = playerContract.Sp,
-                Karma = playerContract.Karma,
-                PvpKills = playerContract.PvpKills,
-                PkKills = playerContract.PkKills,
-                BaseClass = CharTemplateTable.GetTemplate(playerContract.BaseClass),
-                ActiveClass = CharTemplateTable.GetTemplate(playerContract.ClassId),
-                //ClassId = playerContract.ClassId,
-                RecLeft = playerContract.RecLeft,
-                RecHave = playerContract.RecHave,
-                CharSlot = playerContract.CharSlot,
-                Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, null),
-                DeleteTime = playerContract.DeleteTime,
-                LastAccess = playerContract.LastAccess,
-                CanCraft = playerContract.CanCraft,
-                AccessLevel = playerContract.AccessLevel,
-                Online = playerContract.Online,
-                OnlineTime = playerContract.OnlineTime,
-                PunishLevel = playerContract.PunishLevel,
-                PunishTimer = playerContract.PunishTimer,
-                PowerGrade = playerContract.PowerGrade,
-                Nobless = playerContract.Nobless,
-                Hero = playerContract.Hero,
-                LastRecomDate = playerContract.LastRecomDate
-            };
-            player.CharStatus.SetCurrentCp(playerContract.CurCp,false); //player.CharStatus.CurrentCp = playerContract.CurCp; //???after repairing the broadcast, return it back???
-            player.CharStatus.SetCurrentHp(playerContract.CurHp, false); //player.CharStatus.CurrentHp = playerContract.CurHp;
-            player.CharStatus.SetCurrentMp(playerContract.CurMp, false); //player.CharStatus.CurrentMp = playerContract.CurMp;
+            var characterContract = await _characterCrudService.GetById(characterId);
 
-            return player;
+            return MapContractToPlayer(characterContract);
         }
 
         public async Task<bool> CheckIfPlayerNameExists(string name)
@@ -98,109 +53,131 @@ namespace L2dotNET.Services
 
         public void CreatePlayer(L2Player player)
         {
-            // TODO Use automapper to map this
-            var playerContract = new CharacterContract
-            {
-                AccountName = player.AccountName,
-                CharacterId = player.ObjId,
-                Name = player.Name,
-                Level = player.Level,
-                MaxHp = player.MaxHp,
-                CurHp = (int)player.CharStatus.CurrentHp,
-                MaxCp = player.MaxCp,
-                CurCp = (int)player.CurCp,
-                MaxMp = player.MaxMp,
-                CurMp = (int)player.CharStatus.CurrentMp,
-                Face = (byte)player.Face,
-                HairStyle = (byte)player.HairStyleId,
-                HairColor = (byte)player.HairColor,
-                Sex = (byte)player.Sex,
-                Heading = player.Heading,
-                X = player.X,
-                Y = player.Y,
-                Z = player.Z,
-                Exp = player.Exp,
-                ExpBeforeDeath = player.ExpOnDeath,
-                Sp = player.Sp,
-                Karma = player.Karma,
-                PvpKills = player.PvpKills,
-                PkKills = player.PkKills,
-                Race = (int)player.BaseClass.ClassId.ClassRace,
-                ClassId = (int)player.ActiveClass.ClassId.Id,
-                BaseClass = (int)player.BaseClass.ClassId.Id,
-                DeleteTime = player.DeleteTime,
-                CanCraft = player.CanCraft,
-                Title = player.Title,
-                RecHave = player.RecHave,
-                RecLeft = player.RecLeft,
-                AccessLevel = player.AccessLevel,
-                Online = player.Online,
-                OnlineTime = player.OnlineTime,
-                CharSlot = player.CharSlot,
-                LastAccess = player.LastAccess,
-                PunishLevel = player.PunishLevel,
-                PunishTimer = player.PunishTimer,
-                PowerGrade = player.PowerGrade,
-                Nobless = player.Nobless,
-                Hero = player.Hero,
-                LastRecomDate = player.LastRecomDate
-            };
+            CharacterContract playerContract = MapPlayerToContract(player);
+
             _characterCrudService.Add(playerContract);
         }
 
         public void UpdatePlayer(L2Player player)
         {
-            //TODO Use automapper to map this
-            CharacterContract characterContract = new CharacterContract
-            {
-                CharacterId = player.ObjId,
-                Level = player.Level,
-                MaxHp = player.MaxHp,
-                CurHp = (int)player.CharStatus.CurrentHp,
-                MaxCp = player.MaxCp,
-                CurCp = (int)player.CurCp,
-                MaxMp = player.MaxMp,
-                CurMp = (int)player.CharStatus.CurrentMp,
-                Face = (byte)player.Face,
-                HairStyle = (byte)player.HairStyleId,
-                HairColor = (byte)player.HairColor,
-                Sex = (byte)player.Sex,
-                Heading = player.Heading,
-                X = player.X,
-                Y = player.Y,
-                Z = player.Z,
-                Exp = player.Exp,
-                ExpBeforeDeath = player.ExpOnDeath,
-                Sp = player.Sp,
-                Karma = player.Karma,
-                PvpKills = player.PvpKills,
-                PkKills = player.PkKills,
-                Race = (int)player.BaseClass.ClassId.ClassRace,
-                ClassId = (int)player.ActiveClass.ClassId.Id,
-                BaseClass = (int)player.BaseClass.ClassId.Id,
-                DeleteTime = player.DeleteTime,
-                CanCraft = player.CanCraft,
-                Title = player.Title,
-                RecHave = player.RecHave,
-                RecLeft = player.RecLeft,
-                AccessLevel = player.AccessLevel,
-                PunishLevel = player.PunishLevel,
-                PunishTimer = player.PunishTimer,
-                PowerGrade = player.PowerGrade,
-                Nobless = player.Nobless,
-                LastAccess = player.LastAccess
-            };
+            CharacterContract characterContract = MapPlayerToContract(player);
+
             _characterCrudService.Update(characterContract);
         }
 
-        public async Task<L2Player> GetPlayerBySlotId(string accountName, int slotId)
+        private CharacterContract MapPlayerToContract(L2Player player)
         {
-            var playerContract = await _characterRepository.GetPlayerModelBySlotId(accountName, slotId);
-            var player = await RestorePlayer(playerContract.CharacterId, null);
+            return new CharacterContract
+                {
+                    AccountId = player.Account.AccountId,
+                    CharacterId = player.CharacterId,
+                    Name = player.Name,
+                    Level = player.Level,
+                    MaxHp = player.MaxHp,
+                    CurHp = (int) player.CharStatus.CurrentHp,
+                    MaxCp = player.MaxCp,
+                    CurCp = (int) player.CurrentCp,
+                    MaxMp = player.MaxMp,
+                    CurMp = (int) player.CharStatus.CurrentMp,
+                    Face = (byte) player.Face,
+                    HairStyle = (byte) player.HairStyleId,
+                    HairColor = (byte) player.HairColor,
+                    Sex = (byte) player.Sex,
+                    Heading = player.Heading,
+                    X = player.X,
+                    Y = player.Y,
+                    Z = player.Z,
+                    Exp = player.Experience,
+                    ExpBeforeDeath = player.ExpOnDeath,
+                    Sp = player.Sp,
+                    Karma = player.Karma,
+                    PvpKills = player.PvpKills,
+                    PkKills = player.PkKills,
+                    Race = (int) player.BaseClass.ClassId.ClassRace,
+                    ClassId = (int) player.ActiveClass.ClassId.Id,
+                    BaseClass = (int) player.BaseClass.ClassId.Id,
+                    DeleteTime = player.DeleteTime,
+                    CanCraft = player.CanCraft,
+                    Title = player.Title,
+                    RecHave = player.RecomandationsHave,
+                    RecLeft = player.RecomendationsLeft,
+                    AccessLevel = player.AccessLevel,
+                    Online = player.Online,
+                    OnlineTime = player.OnlineTime,
+                    CharSlot = player.CharacterSlot,
+                    LastAccess = player.LastAccess,
+                    PunishLevel = player.PunishLevel,
+                    PunishTimer = player.PunishTimer,
+                    PowerGrade = player.PowerGrade,
+                    Nobless = player.Nobless,
+                    Hero = player.Hero,
+                    LastRecomDate = player.LastRecomendationDate
+                };
+        }
+
+        private L2Player MapContractToPlayer(CharacterContract characterContract)
+        {
+            var player = new L2Player(this, characterContract.CharacterId, CharTemplateTable.GetTemplate(characterContract.ClassId))
+                {
+                    CharacterId = characterContract.CharacterId,
+                    Name = characterContract.Name,
+                    Title = characterContract.Title,
+                    Level = (byte) characterContract.Level,
+                    Face = (Face) characterContract.Face,
+                    HairStyleId = (HairStyleId) characterContract.HairStyle,
+                    HairColor = (HairColor) characterContract.HairColor,
+                    Sex = (Gender) characterContract.Sex,
+                    X = characterContract.X,
+                    Y = characterContract.Y,
+                    Z = characterContract.Z,
+                    Heading = characterContract.Heading,
+                    Experience = characterContract.Exp,
+                    ExpOnDeath = characterContract.ExpBeforeDeath,
+                    Sp = characterContract.Sp,
+                    Karma = characterContract.Karma,
+                    PvpKills = characterContract.PvpKills,
+                    PkKills = characterContract.PkKills,
+                    BaseClass = CharTemplateTable.GetTemplate(characterContract.BaseClass),
+                    ActiveClass = CharTemplateTable.GetTemplate(characterContract.ClassId),
+                    RecomendationsLeft = characterContract.RecLeft,
+                    RecomandationsHave = characterContract.RecHave,
+                    CharacterSlot = characterContract.CharSlot,
+                    Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, null),
+                    DeleteTime = characterContract.DeleteTime,
+                    LastAccess = characterContract.LastAccess,
+                    CanCraft = characterContract.CanCraft,
+                    AccessLevel = characterContract.AccessLevel,
+                    Online = characterContract.Online,
+                    OnlineTime = characterContract.OnlineTime,
+                    PunishLevel = characterContract.PunishLevel,
+                    PunishTimer = characterContract.PunishTimer,
+                    PowerGrade = characterContract.PowerGrade,
+                    Nobless = characterContract.Nobless,
+                    Hero = characterContract.Hero,
+                    LastRecomendationDate = characterContract.LastRecomDate
+                };
+            player.CharStatus.SetCurrentCp(characterContract.CurCp,false); //player.CharStatus.CurrentCp = playerContract.CurCp; //???after repairing the broadcast, return it back???
+            player.CharStatus.SetCurrentHp(characterContract.CurHp, false); //player.CharStatus.CurrentHp = playerContract.CurHp;
+            player.CharStatus.SetCurrentMp(characterContract.CurMp, false); //player.CharStatus.CurrentMp = playerContract.CurMp;
+
             return player;
         }
 
-        public bool DeleteCharByObjId(int characterId)
+        public async Task<L2Player> GetPlayerBySlotId(int accountId, int slotId)
+        {
+            CharacterContract playerContract = await _characterRepository.GetCharacterBySlot(accountId, slotId);
+
+            return await RestorePlayer(playerContract);
+        }
+
+        public async Task<IEnumerable<L2Player>> GetPlayersOnAccount(int accountId)
+        {
+            IEnumerable<CharacterContract> playersOnAccount = await _characterRepository.GetCharactersOnAccount(accountId);
+
+            return await Task.WhenAll(playersOnAccount.Select(playerContract => RestorePlayer(playerContract)));
+        }
+
+        public bool DeleteCharById(int characterId)
         {
             _characterCrudService.Delete(new CharacterContract
                 {
@@ -210,17 +187,19 @@ namespace L2dotNET.Services
             return true;
         }
 
-        public async Task<L2Player> RestorePlayer(int id, GameClient client)
+        public async Task<L2Player> RestorePlayer(CharacterContract characterContract, GameClient client = null)
         {
-            var player = await GetPlayerByLogin(id);
+            L2Player player = MapContractToPlayer(characterContract);
 
             player.Gameclient = client;
             //player.CStatsInit();
-            player.Inventory.Restore(player);
+            await player.Inventory.Restore(player);
             player.SessionData = new PlayerBag();
 
             return player;
         }
+
+
 
         public int GetDaysRequiredToDeletePlayer()
         {
