@@ -28,4 +28,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ShieldId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="7bca7e0c-18ce-44c6-8ea2-0323c9f455ba" ChangeDateTime="07/05/2018 14:34:22">
+    <Property Name="ElementName" Value="[dbo].[Characters].[PunishLevel]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PunishTimer" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ceff1efc-f79d-4ab1-9876-cf6c40b050d0" ChangeDateTime="07/05/2018 14:40:30">
+    <Property Name="ElementName" Value="[dbo].[Characters].[PunishTimer]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Characters]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PunishLevel" />
+  </Operation>
 </Operations>

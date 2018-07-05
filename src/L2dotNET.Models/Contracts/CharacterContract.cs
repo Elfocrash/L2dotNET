@@ -83,9 +83,9 @@ namespace L2dotNET.DataContracts
 
         public DateTime? LastAccess { get; set; }
 
-        public int PunishLevel { get; set; }
+        public int? PunishLevel { get; set; }
 
-        public int PunishTimer { get; set; }
+        public DateTime? PunishTime { get; set; }
 
         public int PowerGrade { get; set; }
 
