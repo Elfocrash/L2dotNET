@@ -73,8 +73,8 @@ namespace L2dotNET.Models.Player
         public int CursedWeaponLevel { get; set; }
         public DateTime? LastAccess { get; set; }
         public int IsIn7SDungeon { get; set; }
-        public int PunishLevel { get; set; }
-        public int PunishTimer { get; set; }
+        public int? PunishLevel { get; set; }
+        public DateTime? PunishTime { get; set; }
         public int PowerGrade { get; set; }
         public bool Nobless { get; set; }
         public bool Hero { get; set; }
