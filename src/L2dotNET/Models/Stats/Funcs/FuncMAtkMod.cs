@@ -1,18 +1,21 @@
-﻿using L2dotNET.Models.Player.Basic;
+﻿using L2dotNET.DataContracts.Shared.Enums;
+using L2dotNET.Models.Player.Basic;
 
 namespace L2dotNET.Models.Stats.Funcs
 {
-    public class FuncMAtkMod : Func
+    public class FuncMAtkMod : StatFunction
     {
-        public FuncMAtkMod() : base(Stats.MagicAttack, 0x20, null)
+        public static FuncMAtkMod Instance = new FuncMAtkMod();
+
+        private FuncMAtkMod() : base(CharacterStatId.MagicAttack, 0x20)
         {
         }
 
-        public override void Calculate(Env env)
+        public override void Calculate(StatFunctionEnvironment statFuncEnv)
         {
-            double intb = Formulas.IntBonus[env.Character.CharacterStat.Int];
-            double lvlb = env.Character.GetLevelMod();
-            env.MulValue((lvlb * lvlb) * (intb * intb));
+            double intb = Formulas.IntBonus[statFuncEnv.Character.CharacterStat.Int];
+            double lvlb = statFuncEnv.Character.GetLevelMod();
+            statFuncEnv.MulValue((lvlb * lvlb) * (intb * intb));
         }
     }
 }
