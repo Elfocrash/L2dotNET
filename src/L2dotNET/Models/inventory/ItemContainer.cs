@@ -33,7 +33,7 @@ namespace L2dotNET.Models.Inventory
 
         protected abstract ItemLocation BaseLocation { get; }
 
-        public int OwnerId => Owner?.CharacterId ?? 0;
+        public int OwnerId => Owner?.ObjectId ?? 0;
 
         public int Count =>Items.Count;
 
@@ -56,12 +56,12 @@ namespace L2dotNET.Models.Inventory
 
         public L2Item GetItemByObjectId(int objectId)
         {
-            return Items.FirstOrDefault(item => item.CharacterId == objectId);
+            return Items.FirstOrDefault(item => item.ObjectId == objectId);
         }
 
         public virtual async Task Restore(L2Character owner)
         {
-            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.CharacterId);
+            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.ObjectId);
             List<L2Item> items = RestoreFromDb(models.ToList());
 
             foreach (L2Item item in items)
@@ -80,7 +80,7 @@ namespace L2dotNET.Models.Inventory
         {
             L2Item item = new L2Item(_itemCrudService, _idFactory, _itemTable.GetItem(contract.ItemId), _idFactory.NextId())
             {
-                CharacterId = contract.ObjectId,
+                ObjectId = contract.ObjectId,
                 Count = contract.Count,
                 CustomType1 = contract.CustomType1,
                 CustomType2 = contract.CustomType2,
@@ -96,7 +96,7 @@ namespace L2dotNET.Models.Inventory
         {
             if (item != null)
             {
-                item.OwnerId = player.CharacterId;
+                item.OwnerId = player.ObjectId;
                 //item.SlotLocation = 0;
                 Items.Add(item);
 
@@ -122,7 +122,7 @@ namespace L2dotNET.Models.Inventory
                         return null;
 
                     item = _itemTable.CreateItem(itemId, count, player);
-                    item.OwnerId = player.CharacterId;
+                    item.OwnerId = player.ObjectId;
                     item.SlotLocation = 0;
                     item.ExistsInDb = ExistsInDb;
                     item.Location = ItemLocation.Inventory;

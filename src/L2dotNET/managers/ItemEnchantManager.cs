@@ -114,7 +114,7 @@ namespace L2dotNET.Managers
             {
                 player.EnchantState = StateEnchantStart;
                 player.EnchantItem = item;
-                player.SendPacketAsync(new ExPutEnchantTargetItemResult(item.CharacterId));
+                player.SendPacketAsync(new ExPutEnchantTargetItemResult(item.ObjectId));
             }
         }
 
@@ -158,7 +158,7 @@ namespace L2dotNET.Managers
             else
             {
                 player.EnchantStone = stone;
-                player.SendPacketAsync(new ExPutEnchantSupportItemResult(stone.CharacterId));
+                player.SendPacketAsync(new ExPutEnchantSupportItemResult(stone.ObjectId));
             }
         }
     }

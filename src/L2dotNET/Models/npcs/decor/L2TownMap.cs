@@ -17,7 +17,7 @@ namespace L2dotNET.Models.Npcs.Decor
 
         public override string AsString()
         {
-            return $"L2TownMap:{CharacterId} {StaticId}";
+            return $"L2TownMap:{ObjectId} {StaticId}";
         }
     }
 }

@@ -151,7 +151,7 @@ namespace L2dotNET
         public async Task<L2Player> GetPlayer(int accountId, int charSlot)
         {
             L2Player playerContract = await _characterService.GetPlayerBySlotId(accountId, charSlot);
-            L2Player player = L2World.GetPlayer(playerContract.CharacterId);
+            L2Player player = L2World.GetPlayer(playerContract.ObjectId);
             return player;
         }
 

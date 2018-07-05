@@ -22,7 +22,7 @@ namespace L2dotNET.Network.clientpackets
                 L2Player player = _client.CurrentPlayer;
 
                 player.SendPacketAsync(new UserInfo(player));
-                player.SendPacketAsync(new ExBrExtraUserInfo(player.CharacterId, player.AbnormalBitMaskEvent));
+                player.SendPacketAsync(new ExBrExtraUserInfo(player.ObjectId, player.AbnormalBitMaskEvent));
 
                 foreach (L2Object obj in player.KnownObjects.Values)
                     player.OnAddObject(obj, null, $"Player {player.Name} recording replay with your character.");

@@ -39,7 +39,7 @@ namespace L2dotNET.Network.clientpackets
                         int objId = _items[i * 2];
                         int loc = _items[(i * 2) + 1];
 
-                        if (item.CharacterId == objId)
+                        if (item.ObjectId == objId)
                             item.SlotLocation = loc;
                     }
                 }

@@ -197,8 +197,8 @@ namespace L2dotNET.World
             if (obj == null)
                 return;
 
-            if (!_objects.ContainsKey(obj.CharacterId))
-                _objects.Add(obj.CharacterId, obj);
+            if (!_objects.ContainsKey(obj.ObjectId))
+                _objects.Add(obj.ObjectId, obj);
 
             if (obj is L2Player)
                 _playersCount += 1;
@@ -209,7 +209,7 @@ namespace L2dotNET.World
             if (obj == null)
                 return;
 
-            _objects.Remove(obj.CharacterId);
+            _objects.Remove(obj.ObjectId);
 
             if (obj is L2Player)
                 _playersCount -= 1;

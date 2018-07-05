@@ -15,7 +15,7 @@ namespace L2dotNET.Models
     public abstract class L2Object
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        public int CharacterId;
+        public int ObjectId;
         public SortedList<int, L2Object> KnownObjects = new SortedList<int, L2Object>();
         public virtual byte Level { get; set; } = 1;
         public virtual bool Dead { get; set; } = false;
@@ -72,7 +72,7 @@ namespace L2dotNET.Models
 
         protected L2Object(int objectId)
         {
-            CharacterId = objectId;
+            ObjectId = objectId;
         }
 
         public virtual async Task OnSpawnAsync(bool notifyOthers = true)
@@ -109,7 +109,7 @@ namespace L2dotNET.Models
                 await o.OnClearingAsync(this, deleteMe);
 
                 if (deleteMe && this is L2Player)
-                    await SendPacketAsync(new DeleteObject(o.CharacterId));
+                    await SendPacketAsync(new DeleteObject(o.ObjectId));
             }
 
             KnownObjects.Clear();
@@ -190,10 +190,10 @@ namespace L2dotNET.Models
         private async Task OnClearingAsync(L2Object target, bool deleteMe)
         {
             lock (KnownObjects)
-                KnownObjects.Remove(target.CharacterId);
+                KnownObjects.Remove(target.ObjectId);
 
             if (deleteMe && target is L2Player)
-                await target.SendPacketAsync(new DeleteObject(CharacterId));
+                await target.SendPacketAsync(new DeleteObject(ObjectId));
         }
 
         public async Task SetVisible(bool val)
@@ -211,10 +211,10 @@ namespace L2dotNET.Models
 
         public void AddKnownObject(L2Object obj, GameserverPacket pk, bool pkuse)
         {
-            if (KnownObjects.ContainsKey(obj.CharacterId))
+            if (KnownObjects.ContainsKey(obj.ObjectId))
                 return;
 
-            KnownObjects.Add(obj.CharacterId, obj);
+            KnownObjects.Add(obj.ObjectId, obj);
 
             if (!obj.Visible)
                 return;
@@ -231,21 +231,21 @@ namespace L2dotNET.Models
 
         public void RemoveKnownObject(L2Object obj, bool update)
         {
-            if (!KnownObjects.ContainsKey(obj.CharacterId))
+            if (!KnownObjects.ContainsKey(obj.ObjectId))
                 return;
 
             OnRemObject(obj);
 
             lock (KnownObjects)
-                KnownObjects.Remove(obj.CharacterId);
+                KnownObjects.Remove(obj.ObjectId);
         }
 
         public void Revalidate(L2Object obj)
         {
-            if (KnownObjects.ContainsKey(obj.CharacterId))
+            if (KnownObjects.ContainsKey(obj.ObjectId))
                 return;
 
-            KnownObjects.Add(obj.CharacterId, obj);
+            KnownObjects.Add(obj.ObjectId, obj);
 
             if (obj.Visible)
                 OnAddObject(obj, null);
@@ -565,7 +565,7 @@ namespace L2dotNET.Models
 
         public virtual string AsString()
         {
-            return $"L2Object: {CharacterId}";
+            return $"L2Object: {ObjectId}";
         }
 
         public virtual async Task BroadcastUserInfoToObjectAsync(L2Object l2Object)

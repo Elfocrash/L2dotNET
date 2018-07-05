@@ -314,7 +314,7 @@ namespace L2dotNET.Models
             if (!(this is L2Player))
                 return;
 
-            await BroadcastPacketAsync(new TeleportToLocation(CharacterId, x, y, z, Heading));
+            await BroadcastPacketAsync(new TeleportToLocation(ObjectId, x, y, z, Heading));
         }
 
         private Timer _waterTimer;
@@ -341,7 +341,7 @@ namespace L2dotNET.Models
                 _waterTimer.Enabled = true;
 
                 if (this is L2Player)
-                    await SendPacketAsync(new SetupGauge(CharacterId, SetupGauge.SgColor.Cyan, breath * 1000));
+                    await SendPacketAsync(new SetupGauge(ObjectId, SetupGauge.SgColor.Cyan, breath * 1000));
             }
             else
             {
@@ -351,7 +351,7 @@ namespace L2dotNET.Models
                 _waterTimer.Enabled = false;
 
                 if (this is L2Player)
-                    await SendPacketAsync(new SetupGauge(CharacterId, SetupGauge.SgColor.Cyan, 1));
+                    await SendPacketAsync(new SetupGauge(ObjectId, SetupGauge.SgColor.Cyan, 1));
             }
 
             //if (!isInWater())
@@ -483,7 +483,7 @@ namespace L2dotNET.Models
 
         public virtual async Task DeleteByForceAsync()
         {
-            await BroadcastPacketAsync(new DeleteObject(CharacterId));
+            await BroadcastPacketAsync(new DeleteObject(ObjectId));
             L2World.RemoveObject(this);
         }
 
@@ -544,15 +544,15 @@ namespace L2dotNET.Models
             if (dual)
             {
                 Hit1 = GenHitSimple(true, ss);
-                atk.AddHit(target.CharacterId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
+                atk.AddHit(target.ObjectId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
 
                 Hit2 = GenHitSimple(true, ss);
-                atk.AddHit(target.CharacterId, (int)Hit2.Damage, Hit2.Miss, Hit2.Crit, Hit2.ShieldDef > 0);
+                atk.AddHit(target.ObjectId, (int)Hit2.Damage, Hit2.Miss, Hit2.Crit, Hit2.ShieldDef > 0);
             }
             else
             {
                 Hit1 = GenHitSimple(false, ss);
-                atk.AddHit(target.CharacterId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
+                atk.AddHit(target.ObjectId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
             }
 
             Target = target;
@@ -850,7 +850,7 @@ namespace L2dotNET.Models
 
             foreach (var temp in CharStatus.StatusListener)
             {
-                if(temp.CharacterId != CharacterId)
+                if(temp.ObjectId != ObjectId)
                     await temp.SendPacketAsync(su);
             }
         }
@@ -1026,7 +1026,7 @@ namespace L2dotNET.Models
 
         public override string AsString()
         {
-            return $"L2Character: {CharacterId}";
+            return $"L2Character: {ObjectId}";
         }
 
         public virtual L2Item GetWeaponItem()

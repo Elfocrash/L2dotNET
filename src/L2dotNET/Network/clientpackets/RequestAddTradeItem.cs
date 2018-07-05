@@ -70,7 +70,7 @@ namespace L2dotNET.Network.clientpackets
                 if (!item.Template.Stackable && (_num > 1))
                     _num = 1;
 
-                int numInList = player.AddItemToTrade(item.CharacterId, _num);
+                int numInList = player.AddItemToTrade(item.ObjectId, _num);
                 int numCurrent = item.Count - numInList;
                 player.SendPacketAsync(new TradeOwnAdd(item, numInList));
                 player.Requester.SendPacketAsync(new TradeOtherAdd(item, numInList));

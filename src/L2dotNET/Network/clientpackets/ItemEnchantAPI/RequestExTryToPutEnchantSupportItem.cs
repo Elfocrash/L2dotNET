@@ -28,7 +28,7 @@ namespace L2dotNET.Network.clientpackets.ItemEnchantAPI
                 L2Player player = _client.CurrentPlayer;
 
                 if ((player.EnchantState != ItemEnchantManager.StateEnchantStart) ||
-                    (player.EnchantItem.CharacterId != _aSTargetId))
+                    (player.EnchantItem.ObjectId != _aSTargetId))
                 {
                     player.SendSystemMessage(SystemMessage.SystemMessageId.RegistrationOfEnhancementSpellbookHasFailed);
                     player.SendActionFailedAsync();
