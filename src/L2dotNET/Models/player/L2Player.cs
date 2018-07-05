@@ -188,8 +188,50 @@ namespace L2dotNET.Models.Player
             Template = template;
             _characterService = GameServer.ServiceProvider.GetService<ICharacterService>();
             CharacterStat = new CharacterStat(this);
-            InitializeCharacterStatus();
             AddFuncsToNewCharacter();
+            InitializeCharacterStatus();
+
+            Inventory = new PcInventory(this);
+            Title = string.Empty;
+            Experience = 0;
+            Level = 1;
+            ClassId = template.ClassId;
+            BaseClass = template;
+            ActiveClass = template;
+            CharStatus.CurrentCp = MaxCp;
+            CharStatus.SetCurrentHp(MaxHp);
+            CharStatus.SetCurrentMp(MaxMp);
+            X = template.SpawnX;
+            Y = template.SpawnY;
+            Z = template.SpawnZ;
+
+            if (template.DefaultInventory != null)
+            {
+                //foreach (PC_item i in template._items)
+                //{
+                //    if (!i.item.isStackable())
+                //    {
+                //        for (long s = 0; s < i.count; s++)
+                //        {
+                //            L2Item item = new L2Item(i.item);
+                //            item.Enchant = i.enchant;
+                //            if (i.lifetime != -1)
+                //                item.AddLimitedHour(i.lifetime);
+
+                //            item.Location = L2Item.L2ItemLocation.inventory;
+                //            player.Inventory.addItem(item, false, false);
+
+                //            if (i.equip)
+                //            {
+                //                int pdollId = player.Inventory.getPaperdollId(item.Template);
+                //                player.setPaperdoll(pdollId, item, false);
+                //            }
+                //        }
+                //    }
+                //    else
+                //        player.addItem(i.item.ItemID, i.count);
+                //}
+            }
         }
 
         public L2Player(ICharacterService characterService) :base(0, null)
