@@ -31,7 +31,7 @@ namespace L2dotNET.Network.serverpackets
             foreach (L2Item item in _items)
             {
                 WriteShort(item.Template.Type1);
-                WriteInt(item.CharacterId);
+                WriteInt(item.ObjectId);
                 WriteInt(item.Template.ItemId);
                 WriteInt(item.Count);
                 WriteShort(item.Template.Type2);
@@ -41,7 +41,7 @@ namespace L2dotNET.Network.serverpackets
                 WriteShort(0); //custom type 2
                 WriteShort(0);
                 //writeD(item.AugmentationID);
-                WriteInt(item.CharacterId);
+                WriteInt(item.ObjectId);
                 WriteLong(0x00);                
             }
             _items.Clear();

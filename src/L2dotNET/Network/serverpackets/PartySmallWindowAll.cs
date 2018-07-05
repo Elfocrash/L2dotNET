@@ -14,13 +14,13 @@ namespace L2dotNET.Network.serverpackets
         public override void Write()
         {
             WriteByte(0x4e);
-            WriteInt(_party.Leader.CharacterId);
+            WriteInt(_party.Leader.ObjectId);
             WriteInt(_party.ItemDistribution);
             WriteInt(_party.Members.Count);
 
             foreach (L2Player member in _party.Members)
             {
-                WriteInt(member.CharacterId);
+                WriteInt(member.ObjectId);
                 WriteString(member.Name);
 
                 WriteInt(member.CurrentCp);

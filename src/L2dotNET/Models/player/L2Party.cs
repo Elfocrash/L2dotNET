@@ -51,7 +51,7 @@ namespace L2dotNET.Models.Player
 
             sm = new SystemMessage(SystemMessage.SystemMessageId.S1JoinedParty);
             sm.AddPlayerName(Leader.Name);
-            BroadcastToMembers(sm, playerMember.CharacterId);
+            BroadcastToMembers(sm, playerMember.ObjectId);
         }
 
         public void BroadcastToMembers(GameserverPacket pk)
@@ -62,7 +62,7 @@ namespace L2dotNET.Models.Player
 
         public void BroadcastToMembers(GameserverPacket pk, int except)
         {
-            foreach (L2Player pl in Members.Where(pl => pl.CharacterId != except))
+            foreach (L2Player pl in Members.Where(pl => pl.ObjectId != except))
                 pl.SendPacketAsync(pk);
         }
 
@@ -99,8 +99,8 @@ namespace L2dotNET.Models.Player
         {
             _votesVoted++;
 
-            if (!_votes.ContainsKey(playerMember.CharacterId))
-                _votes.Add(playerMember.CharacterId, answer);
+            if (!_votes.ContainsKey(playerMember.ObjectId))
+                _votes.Add(playerMember.ObjectId, answer);
 
             if (_votes.Count == _votesOnStart)
                 FinishVoting();
@@ -134,7 +134,7 @@ namespace L2dotNET.Models.Player
 
         public void Leave(L2Player playerMember)
         {
-            if (Leader.CharacterId == playerMember.CharacterId)
+            if (Leader.ObjectId == playerMember.ObjectId)
             {
                 if (Members.Count > 2)
                 {
@@ -185,7 +185,7 @@ namespace L2dotNET.Models.Player
                 SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1LeftParty);
                 sm.AddPlayerName(playerMember.Name);
                 BroadcastToMembers(sm);
-                BroadcastToMembers(new PartySmallWindowDelete(playerMember.CharacterId, playerMember.Name));
+                BroadcastToMembers(new PartySmallWindowDelete(playerMember.ObjectId, playerMember.Name));
 
                 
             }

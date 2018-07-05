@@ -28,7 +28,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
                     return;
                 }
 
-                if ((_mode < player.Party.ItemLooter) || (_mode > player.Party.ItemOrderSpoil) || (_mode == player.Party.ItemDistribution) || (player.Party.Leader.CharacterId != player.CharacterId))
+                if ((_mode < player.Party.ItemLooter) || (_mode > player.Party.ItemOrderSpoil) || (_mode == player.Party.ItemDistribution) || (player.Party.Leader.ObjectId != player.ObjectId))
                 {
                     player.SendActionFailedAsync();
                     return;

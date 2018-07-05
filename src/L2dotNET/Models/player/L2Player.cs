@@ -181,7 +181,7 @@ namespace L2dotNET.Models.Player
         public L2Player Requester;
         public int ItemDistribution;
 
-        public int VehicleId => Boat?.CharacterId ?? 0;
+        public int VehicleId => Boat?.ObjectId ?? 0;
 
         public L2Player(ICharacterService characterService, int objectId, PcTemplate template) : base(objectId, template)
         {
@@ -189,7 +189,7 @@ namespace L2dotNET.Models.Player
             _characterService = characterService;
             CharacterStat = new CharacterStat(this);
             InitializeCharacterStatus();
-            Calculators = new Models.Stats.Calculator[Models.Stats.Stats.Values.Count()];
+            Calculators = new Stats.Calculator[Stats.Stats.Values.Count()];
             AddFuncsToNewCharacter();
         }
 
@@ -293,7 +293,7 @@ namespace L2dotNET.Models.Player
         {
             if (file.EndsWithIgnoreCase(".htm"))
             {
-                SendPacketAsync(new NpcHtmlMessage(this, $"./html/{file}", o.CharacterId, 0));
+                SendPacketAsync(new NpcHtmlMessage(this, $"./html/{file}", o.ObjectId, 0));
                 if (o is L2Npc npc)
                     FolkNpc = npc;
             }
@@ -305,7 +305,7 @@ namespace L2dotNET.Models.Player
         {
             if (file.EndsWithIgnoreCase(".htm"))
             {
-                NpcHtmlMessage htm = new NpcHtmlMessage(this, file, npc.CharacterId, 0);
+                NpcHtmlMessage htm = new NpcHtmlMessage(this, file, npc.ObjectId, 0);
                 htm.Replace("<?quest_id?>", questId);
                 SendPacketAsync(htm);
                 FolkNpc = npc;
@@ -326,7 +326,7 @@ namespace L2dotNET.Models.Player
 
         public void ShowHtmPlain(string plain, L2Object o)
         {
-            SendPacketAsync(new NpcHtmlMessage(this, plain, o?.CharacterId ?? -1, true));
+            SendPacketAsync(new NpcHtmlMessage(this, plain, o?.ObjectId ?? -1, true));
             if (o is L2Npc)
                 FolkNpc = (L2Npc)o;
         }
@@ -349,7 +349,7 @@ namespace L2dotNET.Models.Player
             if(Level != Player.Experience.GetLevel(Experience))
             {
                 Level = Player.Experience.GetLevel(Experience);
-                this.BroadcastPacketAsync(new SocialAction(CharacterId, 15));
+                this.BroadcastPacketAsync(new SocialAction(ObjectId, 15));
                 this.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.YouIncreasedYourLevel));
             }
 
@@ -482,7 +482,7 @@ namespace L2dotNET.Models.Player
 
         public override void OnRemObject(L2Object obj)
         {
-            SendPacketAsync(new DeleteObject(obj.CharacterId));
+            SendPacketAsync(new DeleteObject(obj.ObjectId));
         }
 
         public override void OnAddObject(L2Object obj, GameserverPacket pk, string msg = null)
@@ -673,17 +673,17 @@ namespace L2dotNET.Models.Player
 
             if (newTarget is L2StaticObject)
             {
-                await SendPacketAsync(new MyTargetSelected(newTarget.CharacterId, 0));
+                await SendPacketAsync(new MyTargetSelected(newTarget.ObjectId, 0));
                 await SendPacketAsync(new StaticObject((L2StaticObject) newTarget));
             }
             else
             {
                 if (newTarget != null)
                 {
-                    if (newTarget.CharacterId != CharacterId)
+                    if (newTarget.ObjectId != ObjectId)
                         await SendPacketAsync(new ValidateLocation(newTarget));
 
-                    await SendPacketAsync(new MyTargetSelected(newTarget.CharacterId, Level - newTarget.Level));
+                    await SendPacketAsync(new MyTargetSelected(newTarget.ObjectId, Level - newTarget.Level));
 
                     newTarget.CharStatus.AddStatusListener(this);
 
@@ -719,7 +719,7 @@ namespace L2dotNET.Models.Player
 
         public async Task ShowHtmAdminAsync(string val, bool plain)
         {
-            await SendPacketAsync(new NpcHtmlMessage(this, val, this.CharacterId));
+            await SendPacketAsync(new NpcHtmlMessage(this, val, this.ObjectId));
 
             ViewingAdminPage = 1;
         }
@@ -811,7 +811,7 @@ namespace L2dotNET.Models.Player
 
         public override void UpdateAbnormalEventEffect()
         {
-            BroadcastPacketAsync(new ExBrExtraUserInfo(CharacterId, AbnormalBitMaskEvent));
+            BroadcastPacketAsync(new ExBrExtraUserInfo(ObjectId, AbnormalBitMaskEvent));
         }
 
         public override void UpdateAbnormalExEffect()
@@ -909,7 +909,7 @@ namespace L2dotNET.Models.Player
         {
             int color = 0;
 
-            SendPacketAsync(new MyTargetSelected(target.CharacterId, color));
+            SendPacketAsync(new MyTargetSelected(target.ObjectId, color));
         }
 
         public override void OnOldTargetSelection(L2Object target)
@@ -958,7 +958,7 @@ namespace L2dotNET.Models.Player
             _petControlItem = item;
 
             BroadcastPacketAsync(new MagicSkillUse(this, this, 1111, 1, 5000));
-            SendPacketAsync(new SetupGauge(CharacterId, SetupGauge.SgColor.Blue, 4900));
+            SendPacketAsync(new SetupGauge(ObjectId, SetupGauge.SgColor.Blue, 4900));
         }
 
         private void PetSummonEnd(object sender, ElapsedEventArgs e)
@@ -1004,7 +1004,7 @@ namespace L2dotNET.Models.Player
             if (Party == null)
                 return chars.ToArray();
 
-            foreach (L2Player pl in Party.Members.Where(pl => pl.CharacterId != CharacterId))
+            foreach (L2Player pl in Party.Members.Where(pl => pl.ObjectId != ObjectId))
             {
                 chars.Add(pl);
             }
@@ -1060,7 +1060,7 @@ namespace L2dotNET.Models.Player
         {
             _chair = chairObj;
             _chair.IsUsedAlready = true;
-            BroadcastPacketAsync(new ChairSit(CharacterId, chairObj.StaticId));
+            BroadcastPacketAsync(new ChairSit(ObjectId, chairObj.StaticId));
         }
 
         public bool IsOnShip()
@@ -1138,7 +1138,7 @@ namespace L2dotNET.Models.Player
 
             if (ranged)
             {
-                await SendPacketAsync(new SetupGauge(CharacterId, SetupGauge.SgColor.Red, (int)timeAtk));
+                await SendPacketAsync(new SetupGauge(ObjectId, SetupGauge.SgColor.Red, (int)timeAtk));
                 //Inventory.destroyItem(SecondaryWeaponSupport, 1, false, true);
             }
 
@@ -1147,15 +1147,15 @@ namespace L2dotNET.Models.Player
             if (dual)
             {
                 Hit1 = GenHitSimple(true, ss);
-                atk.AddHit(target.CharacterId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
+                atk.AddHit(target.ObjectId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
 
                 Hit2 = GenHitSimple(true, ss);
-                atk.AddHit(target.CharacterId, (int)Hit2.Damage, Hit2.Miss, Hit2.Crit, Hit2.ShieldDef > 0);
+                atk.AddHit(target.ObjectId, (int)Hit2.Damage, Hit2.Miss, Hit2.Crit, Hit2.ShieldDef > 0);
             }
             else
             {
                 Hit1 = GenHitSimple(false, ss);
-                atk.AddHit(target.CharacterId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
+                atk.AddHit(target.ObjectId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
             }
 
             Target = target;
@@ -1377,7 +1377,7 @@ namespace L2dotNET.Models.Player
 
         public void Revive(double percent)
         {
-            BroadcastPacketAsync(new Revive(CharacterId));
+            BroadcastPacketAsync(new Revive(ObjectId));
             Dead = false;
             CharStatus.StartHpMpRegeneration();
         }
@@ -1426,7 +1426,7 @@ namespace L2dotNET.Models.Player
             if (lvlChanged)
             {
                 Level = newLvl;
-                BroadcastPacketAsync(new SocialAction(CharacterId, 2122));
+                BroadcastPacketAsync(new SocialAction(ObjectId, 2122));
             }
 
             if (!lvlChanged)

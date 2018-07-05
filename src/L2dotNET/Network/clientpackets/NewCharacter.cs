@@ -19,7 +19,7 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            _client.SendPacketAsync(new CharTemplates(CharTemplateTable.GetTemplates()));
+            await _client.SendPacketAsync(new CharTemplates(CharTemplateTable.GetTemplates()));
         }
     }
 }

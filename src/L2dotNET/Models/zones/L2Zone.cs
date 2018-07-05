@@ -24,8 +24,8 @@ namespace L2dotNET.Models.Zones
 
         public virtual void OnEnter(L2Object obj)
         {
-            if (!ObjectsInside.ContainsKey(obj.CharacterId))
-                ObjectsInside.Add(obj.CharacterId, obj);
+            if (!ObjectsInside.ContainsKey(obj.ObjectId))
+                ObjectsInside.Add(obj.ObjectId, obj);
         }
 
         public void BroadcastPacket(GameserverPacket pk)
@@ -48,8 +48,8 @@ namespace L2dotNET.Models.Zones
 
             lock (ObjectsInside)
             {
-                if (ObjectsInside.ContainsKey(obj.CharacterId))
-                    ObjectsInside.Remove(obj.CharacterId);
+                if (ObjectsInside.ContainsKey(obj.ObjectId))
+                    ObjectsInside.Remove(obj.ObjectId);
             }
         }
 

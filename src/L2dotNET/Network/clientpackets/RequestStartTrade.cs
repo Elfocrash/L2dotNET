@@ -30,7 +30,7 @@ namespace L2dotNET.Network.clientpackets
                     return;
                 }
 
-                if (player.CharacterId == _targetId)
+                if (player.ObjectId == _targetId)
                 {
                     player.SendSystemMessage(SystemMessage.SystemMessageId.CannotUseOnYourself);
                     player.SendActionFailedAsync();
@@ -74,7 +74,7 @@ namespace L2dotNET.Network.clientpackets
                 player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.RequestS1ForTrade).AddPlayerName(target.Name));
                 target.Requester = player;
                 player.Requester = target;
-                target.SendPacketAsync(new SendTradeRequest(player.CharacterId));
+                target.SendPacketAsync(new SendTradeRequest(player.ObjectId));
                 target.TradeState = 2; // жмакает ответ
                 player.TradeState = 1; // запросил
             });

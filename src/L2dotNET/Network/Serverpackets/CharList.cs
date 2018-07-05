@@ -30,13 +30,13 @@ namespace L2dotNET.Network.serverpackets
                 L2Player lastUsedChar = _players.OrderByDescending(sort => sort.LastAccess)
                     .FirstOrDefault(filter => !filter.DeleteTime.HasValue);
 
-                lastUsedCharId = lastUsedChar?.CharacterId ?? 0;
+                lastUsedCharId = lastUsedChar?.ObjectId ?? 0;
             }
 
             foreach (L2Player player in _players)
             {
                 WriteString(player.Name);
-                WriteInt(player.CharacterId);
+                WriteInt(player.ObjectId);
                 WriteString(_account);
                 WriteInt(_sessionId);
                 WriteInt(0);//player.ClanId
@@ -97,7 +97,7 @@ namespace L2dotNET.Network.serverpackets
 
                 int selection = 0;
 
-                if (lastUsedCharId > 0 && lastUsedCharId == player.CharacterId)
+                if (lastUsedCharId > 0 && lastUsedCharId == player.ObjectId)
                 {
                     selection = 1;
                 }

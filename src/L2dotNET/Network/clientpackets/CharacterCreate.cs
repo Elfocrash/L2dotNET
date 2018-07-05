@@ -18,7 +18,7 @@ namespace L2dotNET.Network.clientpackets
 {
     class CharacterCreate : PacketBase
     {
-        private readonly ICharacterService CharacterService;
+        private readonly ICharacterService _characterService;
         private readonly IItemService _itemService;
         private readonly Config.Config _config;
 
@@ -41,8 +41,9 @@ namespace L2dotNET.Network.clientpackets
             _itemService = serviceProvider.GetService<IItemService>();
             _itemTable = serviceProvider.GetService<ItemTable>();
             _idFactory = serviceProvider.GetService<IdFactory>();
-            CharacterService = serviceProvider.GetService<ICharacterService>();
+            _characterService = serviceProvider.GetService<ICharacterService>();
             _itemCrudService = serviceProvider.GetService<ICrudService<ItemContract>>();
+
             _name = packet.ReadString();
             _race = packet.ReadInt();
             _sex = packet.ReadInt();
@@ -68,7 +69,7 @@ namespace L2dotNET.Network.clientpackets
 
             PcTemplate template = CharTemplateTable.GetTemplate(_classId);
 
-            L2Player player = new L2Player(CharacterService, _idFactory.NextId(), template);
+            L2Player player = new L2Player(_characterService, _idFactory.NextId(), template);
 
             player.Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, player);
             player.Name = _name;
@@ -126,7 +127,7 @@ namespace L2dotNET.Network.clientpackets
                 //}
             }
 
-            CharacterService.CreatePlayer(player);
+            _characterService.CreatePlayer(player);
             //player = PlayerService.RestorePlayer(player.ObjId, _client);
             player.Gameclient.AccountCharacters.Add(player);
             _client.SendPacketAsync(new CharCreateOk());
@@ -160,7 +161,7 @@ namespace L2dotNET.Network.clientpackets
                 return false;
             }
 
-            if (await CharacterService.CheckIfPlayerNameExists(_name))
+            if (await _characterService.CheckIfPlayerNameExists(_name))
             {
                 _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.NameAlreadyExists));
                 return false;

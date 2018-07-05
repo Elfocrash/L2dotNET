@@ -70,7 +70,7 @@ namespace L2dotNET.Services
             return new CharacterContract
                 {
                     AccountId = player.Account.AccountId,
-                    CharacterId = player.CharacterId,
+                    CharacterId = player.ObjectId,
                     Name = player.Name,
                     Level = player.Level,
                     MaxHp = player.MaxHp,
@@ -119,7 +119,7 @@ namespace L2dotNET.Services
         {
             var player = new L2Player(this, characterContract.CharacterId, CharTemplateTable.GetTemplate(characterContract.ClassId))
                 {
-                    CharacterId = characterContract.CharacterId,
+                    ObjectId = characterContract.CharacterId,
                     Name = characterContract.Name,
                     Title = characterContract.Title,
                     Level = (byte) characterContract.Level,

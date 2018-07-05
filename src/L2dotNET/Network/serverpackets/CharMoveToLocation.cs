@@ -15,7 +15,7 @@ namespace L2dotNET.Network.serverpackets
         {
             WriteByte(0x01);
 
-            WriteInt(_obj.CharacterId);
+            WriteInt(_obj.ObjectId);
 
             WriteInt(_obj.DestX);
             WriteInt(_obj.DestY);

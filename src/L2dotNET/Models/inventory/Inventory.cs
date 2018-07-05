@@ -56,7 +56,7 @@ namespace L2dotNET.Models.Inventory
 
         public override async Task Restore(L2Character owner)
         {
-            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.CharacterId);
+            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.ObjectId);
             List<L2Item> items = RestoreFromDb(models.ToList());
 
             foreach (L2Item item in items)

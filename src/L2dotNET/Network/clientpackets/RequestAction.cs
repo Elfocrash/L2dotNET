@@ -36,7 +36,7 @@ namespace L2dotNET.Network.clientpackets
                 L2Player player = _client.CurrentPlayer;
                 L2Object obj = null;
 
-                if (_objectId == player.CharacterId)
+                if (_objectId == player.ObjectId)
                     obj = player;
                 else
                 {

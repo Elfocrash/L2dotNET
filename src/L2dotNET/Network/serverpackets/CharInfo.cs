@@ -21,7 +21,7 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.Y);
             WriteInt(_player.Z);
             WriteInt(_player.Heading);
-            WriteInt(_player.CharacterId);
+            WriteInt(_player.ObjectId);
             WriteString(_player.Name);
 
             WriteInt((int)_player.BaseClass.ClassId.ClassRace);

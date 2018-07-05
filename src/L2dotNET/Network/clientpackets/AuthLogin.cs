@@ -82,7 +82,7 @@ namespace L2dotNET.Network.clientpackets
             {
                 if (player.CharDeleteTimeExpired())
                 {
-                    _characterService.DeleteCharById(player.CharacterId);
+                    _characterService.DeleteCharById(player.ObjectId);
                     continue;
                 }
 

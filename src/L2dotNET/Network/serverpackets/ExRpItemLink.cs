@@ -16,7 +16,7 @@ namespace L2dotNET.Network.serverpackets
             WriteByte(0xfe);
             WriteShort(0x6c);
 
-            WriteInt(_item.CharacterId);
+            WriteInt(_item.ObjectId);
             WriteInt(_item.Template.ItemId);
             WriteInt(0);
             WriteLong(_item.Count);

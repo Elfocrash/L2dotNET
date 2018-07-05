@@ -27,7 +27,7 @@ namespace L2dotNET.Network.clientpackets
                 if ((_actionId < 2) || (_actionId > 13))
                     return;
 
-                player.BroadcastPacketAsync(new SocialAction(player.CharacterId, _actionId));
+                player.BroadcastPacketAsync(new SocialAction(player.ObjectId, _actionId));
             });
         }
     }

@@ -66,7 +66,7 @@ namespace L2dotNET.Network.clientpackets
 
             if (CharacterService.GetDaysRequiredToDeletePlayer() == 0)
             {
-                if (!CharacterService.DeleteCharById(player.CharacterId))
+                if (!CharacterService.DeleteCharById(player.ObjectId))
                 {
                     _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                     return;

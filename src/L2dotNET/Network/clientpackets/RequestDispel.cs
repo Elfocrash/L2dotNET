@@ -26,7 +26,7 @@ namespace L2dotNET.Network.clientpackets
             {
                 L2Player player = _client.CurrentPlayer;
 
-                if (_ownerId != player.CharacterId)
+                if (_ownerId != player.ObjectId)
                 {
                     player.SendActionFailedAsync();
                     return;

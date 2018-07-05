@@ -14,7 +14,7 @@ namespace L2dotNET.Network.serverpackets
         public override void Write()
         {
             WriteByte(0x52);
-            WriteInt(_member.CharacterId);
+            WriteInt(_member.ObjectId);
             WriteString(_member.Name);
             WriteInt(_member.CurrentCp);
             WriteInt(_member.MaxCp);

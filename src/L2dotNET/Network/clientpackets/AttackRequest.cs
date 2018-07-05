@@ -41,7 +41,7 @@ namespace L2dotNET.Network.clientpackets
                     return;
                 }
 
-                if (_objectId == player.CharacterId)
+                if (_objectId == player.ObjectId)
                     obj = player;
                 else
                 {

@@ -33,7 +33,7 @@ namespace L2dotNET.Network.serverpackets
 
                 L2Item item = (L2Item)obj[0];
 
-                WriteInt(item.CharacterId);
+                WriteInt(item.ObjectId);
                 WriteInt(item.Template.ItemId);
                 WriteInt(item.SlotLocation); //loc
                 WriteLong(item.Count);

@@ -27,7 +27,7 @@ namespace L2dotNET.Network.serverpackets
 
             foreach (L2Item item in _sells)
             {
-                WriteInt(item.CharacterId);
+                WriteInt(item.ObjectId);
                 WriteInt(item.Template.ItemId);
                 WriteInt(0);
                 WriteLong(item.Count);
@@ -52,7 +52,7 @@ namespace L2dotNET.Network.serverpackets
             int idx = 0;
             foreach (L2Item item in _refund)
             {
-                WriteInt(item.CharacterId);
+                WriteInt(item.ObjectId);
                 WriteInt(item.Template.ItemId);
                 WriteInt(0);
                 WriteLong(item.Count);

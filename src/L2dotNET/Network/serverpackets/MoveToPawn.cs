@@ -14,7 +14,7 @@ namespace L2dotNET.Network.serverpackets
         public MoveToPawn(int id, L2Object target, int dist, int x, int y, int z)
         {
             _id = id;
-            _target = target.CharacterId;
+            _target = target.ObjectId;
             _dist = dist;
             _x = x;
             _y = y;
@@ -23,8 +23,8 @@ namespace L2dotNET.Network.serverpackets
 
         public MoveToPawn(L2Character character, L2Object target, int dist)
         {
-            _id = character.CharacterId;
-            _target = target.CharacterId;
+            _id = character.ObjectId;
+            _target = target.ObjectId;
             _dist = dist;
             _x = character.X;
             _y = character.Y;

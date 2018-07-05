@@ -19,7 +19,7 @@ namespace L2dotNET.Network.serverpackets
             WriteByte(0x15);
 
             WriteString(_player.Name);
-            WriteInt(_player.CharacterId);
+            WriteInt(_player.ObjectId);
             WriteString(_player.Title);
             WriteInt(_session);
 
