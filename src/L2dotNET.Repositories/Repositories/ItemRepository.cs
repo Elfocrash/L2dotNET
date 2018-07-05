@@ -38,7 +38,9 @@ namespace L2dotNET.Repositories
             {
                 using (IDatabase database = ConnectionFactory.Open())
                 {
-                    return database.ExecuteScalar<int>("SELECT max(ItemId) FROM Items;");
+                    int maxItemId = database.ExecuteScalar<int>("SELECT max(ItemId) FROM Items;");
+                    int maxCharacterId = database.ExecuteScalar<int>("SELECT max(CharacterId) FROM Characters;");
+                    return Math.Max(maxCharacterId, maxItemId);
                 }
             }
             catch (Exception ex)
