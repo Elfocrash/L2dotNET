@@ -22,10 +22,8 @@ namespace L2dotNET.Network.loginauth
         private readonly GamePacketHandlerAuth _gamePacketHandlerAuth;
         private TcpClient _authServerConnection;
         private NetworkStream _networkStream;
-        private byte[] _buffer;
 
         private readonly Dictionary<string, Tuple<AccountContract, SessionKey, DateTime>> _awaitingAccounts;
-        private bool _paused;
 
         public AuthThread(GamePacketHandlerAuth gamePacketHandlerAuth, Config.Config config)
         {
@@ -96,12 +94,8 @@ namespace L2dotNET.Network.loginauth
         
         private void Reconnect()
         {
-            if (_paused)
-            {
-                return;
-            }
-
             Log.Error("Reconnecting...");
+
             Initialise();
         }
 
