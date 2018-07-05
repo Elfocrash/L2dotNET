@@ -1,16 +1,19 @@
-﻿using L2dotNET.Models.Player.Basic;
+﻿using L2dotNET.DataContracts.Shared.Enums;
+using L2dotNET.Models.Player.Basic;
 
 namespace L2dotNET.Models.Stats.Funcs
 {
-    public class FuncMoveSpeed : Func
+    public class FuncMoveSpeed : StatFunction
     {
-        public FuncMoveSpeed() : base(Stats.RunSpeed, 0x30, null)
+        public static FuncMoveSpeed Instance = new FuncMoveSpeed();
+
+        private FuncMoveSpeed() : base(CharacterStatId.RunSpeed, 0x30)
         {
         }
 
-        public override void Calculate(Env env)
+        public override void Calculate(StatFunctionEnvironment statFuncEnv)
         {
-            env.MulValue(Formulas.DexBonus[env.Character.CharacterStat.Dex]);
+            statFuncEnv.MulValue(Formulas.DexBonus[statFuncEnv.Character.CharacterStat.Dex]);
         }
     }
 }

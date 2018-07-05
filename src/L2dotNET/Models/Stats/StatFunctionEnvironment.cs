@@ -2,7 +2,7 @@
 
 namespace L2dotNET.Models.Stats
 {
-    public class Env
+    public class StatFunctionEnvironment
     {
         public L2Character Character { get; set; }
         public L2Character Target { get; set; }
