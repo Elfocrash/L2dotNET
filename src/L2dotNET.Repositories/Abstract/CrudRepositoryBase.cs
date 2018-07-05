@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Repositories.Utils;
 using NLog;
 using PeregrineDb;
@@ -22,7 +23,7 @@ namespace L2dotNET.Repositories.Abstract
             }
             catch (Exception ex)
             {
-                Log.Error($"Method: {nameof(GetAll)}. Message: '{ex.Message}'");
+                Log.Halt($"Method: {nameof(GetAll)}. Message: '{ex.Message}'");
                 throw;
             }
         }
@@ -38,7 +39,7 @@ namespace L2dotNET.Repositories.Abstract
             }
             catch (Exception ex)
             {
-                Log.Error($"Method: {nameof(GetById)}. Message: '{ex.Message}'");
+                Log.Halt($"Method: {nameof(GetById)}. Message: '{ex.Message}'");
                 throw;
             }
         }
@@ -54,7 +55,7 @@ namespace L2dotNET.Repositories.Abstract
             }
             catch (Exception ex)
             {
-                Log.Error($"Method: {nameof(Add)}. Message: '{ex.Message}'");
+                Log.Halt($"Method: {nameof(Add)}. Message: '{ex.Message}'");
                 throw;
             }
         }
@@ -70,7 +71,7 @@ namespace L2dotNET.Repositories.Abstract
             }
             catch (Exception ex)
             {
-                Log.Error($"Method: {nameof(Update)}. Message: '{ex.Message}'");
+                Log.Halt($"Method: {nameof(Update)}. Message: '{ex.Message}'");
                 throw;
             }
         }
@@ -86,7 +87,7 @@ namespace L2dotNET.Repositories.Abstract
             }
             catch (Exception ex)
             {
-                Log.Error($"Method: {nameof(Delete)}. Message: '{ex.Message}'");
+                Log.Halt($"Method: {nameof(Delete)}. Message: '{ex.Message}'");
                 throw;
             }
         }

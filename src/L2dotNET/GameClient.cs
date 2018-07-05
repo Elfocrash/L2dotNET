@@ -121,6 +121,13 @@ namespace L2dotNET
                     byte[] _buffer = new byte[2];
                     int bytesRead = await Stream.ReadAsync(_buffer, 0, 2);
 
+                    if (bytesRead == 0)
+                    {
+                        Log.Debug("Client closed connection");
+                        Disconnect();
+                        return;
+                    }
+
                     if (bytesRead != 2)
                     {
                         throw new Exception("Wrong packet");

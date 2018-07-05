@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Repositories.Utils;
 using NLog;
@@ -23,7 +24,7 @@ namespace L2dotNET.Repositories
             }
             catch (Exception ex)
             {
-                Log.Error($"Method: {nameof(GetAccountByLogin)}. Message: '{ex.Message}'");
+                Log.Halt($"Method: {nameof(GetAccountByLogin)}. Message: '{ex.Message}'");
                 throw;
             }
         }
