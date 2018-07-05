@@ -18,7 +18,7 @@ namespace L2dotNET.Repositories
             {
                 using (IDatabase database = ConnectionFactory.Open())
                 {
-                    return await database.GetSingleOrDefaultAsync<AccountContract>($"WHERE Login = {login}");
+                    return await database.GetSingleOrDefaultAsync<AccountContract>($"WHERE Login = '{login}'");
                 }
             }
             catch (Exception ex)
