@@ -1,8 +1,10 @@
 ﻿using System;
+using System.CodeDom;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.GSCommunication;
 using L2dotNET.LoginService.Network;
@@ -22,6 +24,11 @@ namespace L2dotNET.LoginService
         private static void Main()
         {
             ClassLoggerConfigurator.ConfigureClassLogger($"{Assembly.GetExecutingAssembly().Location}.log");
+
+            TaskScheduler.UnobservedTaskException += (sender, e) =>
+                {
+                    Log.ErrorTrace(e.Exception, "UnobservedTaskException");
+                };
 
             Log.Info("Starting LoginService...");
 
