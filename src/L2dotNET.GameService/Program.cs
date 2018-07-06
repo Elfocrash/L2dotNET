@@ -33,6 +33,11 @@ namespace L2dotNET.GameService
         {
             ClassLoggerConfigurator.ConfigureClassLogger($"{Assembly.GetExecutingAssembly().Location}.log");
 
+            TaskScheduler.UnobservedTaskException += (sender, e) =>
+                {
+                    Log.ErrorTrace(e.Exception, "UnobservedTaskException");
+                };
+
             consoleCommandController = new ConsoleCommandController();
             consoleCommandController.Start();
 

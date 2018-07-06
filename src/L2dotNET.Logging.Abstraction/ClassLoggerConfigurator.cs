@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
@@ -43,6 +44,28 @@ namespace L2dotNET.Logging.Abstraction
             log.Info("Press ENTER to exit...");
             Console.Read();
             Environment.Exit(0);
+        }
+
+        public static void ErrorTrace(this Logger log, Exception ex, string msg = null, bool includeStackTrace = true)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(msg ?? "ErrorTrace: ");
+            sb.AppendLine($"Message: {ex.Message}");
+
+            Exception innerEx = ex.InnerException;
+            while (innerEx != null)
+            {
+                sb.AppendLine($"Inner Message: {innerEx.Message}");
+                innerEx = innerEx.InnerException;
+            }
+
+            if (includeStackTrace)
+            {
+                sb.AppendLine(ex.StackTrace ?? ex.InnerException?.StackTrace ?? "Stack trace is empty");
+            }
+
+            log.Error(sb.ToString());
         }
     }
 }
