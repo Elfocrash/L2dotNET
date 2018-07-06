@@ -1,21 +1,21 @@
-﻿namespace L2dotNET.Network.loginauth.send
+﻿using L2dotNET.Utility;
+
+namespace L2dotNET.Network.loginauth.send
 {
     class LoginServPing : GameserverPacket
     {
-        public string Version;
-        private readonly int _build;
+        private readonly AuthThread _authThread;
 
-        public LoginServPing(AuthThread th)
+        public LoginServPing(AuthThread authThread)
         {
-            Version = th.Version;
-            _build = th.Build;
+            _authThread = authThread;
+            _authThread.RandomPingKey = RandomThreadSafe.Instance.Next();
         }
 
         public override void Write()
         {
             WriteByte(0xA0);
-            WriteString(Version);
-            WriteInt(_build);
+            WriteInt(_authThread.RandomPingKey);
         }
     }
 }

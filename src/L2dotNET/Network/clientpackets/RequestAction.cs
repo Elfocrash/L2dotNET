@@ -36,12 +36,12 @@ namespace L2dotNET.Network.clientpackets
                 L2Player player = _client.CurrentPlayer;
                 L2Object obj = null;
 
-                if (_objectId == player.ObjId)
+                if (_objectId == player.ObjectId)
                     obj = player;
                 else
                 {
-                    if (L2World.Instance.GetObject(_objectId) != null)
-                        obj = L2World.Instance.GetObject(_objectId);
+                    if (L2World.GetObject(_objectId) != null)
+                        obj = L2World.GetObject(_objectId);
                 }
                 //fixed nullreference exception when obj is null
                 Log.Debug($"Action Requested with { Utilz.GetTypeLower(obj).ToString() }  of ID : { _objectId.ToString()}");

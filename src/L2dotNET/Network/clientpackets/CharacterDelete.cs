@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
+using L2dotNET.Utility;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 
@@ -11,39 +13,32 @@ namespace L2dotNET.Network.clientpackets
 {
     class CharacterDelete : PacketBase
     {
-        private readonly ICharacterService CharacterService;
-
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
+        private readonly ICharacterService _characterService;
+        private readonly ICrudService<CharacterContract> _characterCrudService;
         private readonly GameClient _client;
         private readonly int _charSlot;
 
         public CharacterDelete(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
-            CharacterService = serviceProvider.GetService<ICharacterService>();
+            _characterService = serviceProvider.GetService<ICharacterService>();
+            _characterCrudService = serviceProvider.GetService<ICrudService<CharacterContract>>();
             _charSlot = packet.ReadInt();
         }
 
         public override async Task RunImpl()
         {
-            //if (!FloodProtectors.performAction(getClient(), Action.CHARACTER_SELECT))
-            //{
-            //  _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
-            //	return;
-            //}
+            ValidateAndDelete();
 
-            await Task.Run(() =>
-            {
-                ValidateAndDelete();
+            _client.SendPacketAsync(new CharList(_client.Account.Login, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
 
-                _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1));
-            });
         }
 
         private void ValidateAndDelete()
         {
-            L2Player player = _client.AccountChars.FirstOrDefault(filter => filter.CharSlot == _charSlot);
+            L2Player player = _client.AccountCharacters.FirstOrDefault(filter => filter.CharacterSlot == _charSlot);
 
             if (player == null)
             {
@@ -52,37 +47,32 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            //if ((player.ClanId != 0) && (player.Clan != null))
-            //{
-            //    if (player.Clan.LeaderId == player.ObjId)
-            //    {
-            //        _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.ClanLeadersMayNotBeDeleted));
-            //        return;
-            //    }
-
-            //    _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.YouMayNotDeleteClanMember));
-            //    return;
-            //}
-
-            if (CharacterService.GetDaysRequiredToDeletePlayer() == 0)
+            // TODO: rework that when clan system would be done
+            /*if ((player.ClanId != 0) && (player.Clan != null))
             {
-                if (!CharacterService.DeleteCharByObjId(player.ObjId))
+                if (player.Clan.LeaderId == player.ObjId)
+                {
+                    _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.ClanLeadersMayNotBeDeleted));
+                    return;
+                }
+                _client.SendPacket(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.YouMayNotDeleteClanMember));
+                return;
+            }*/
+
+            if (_characterService.GetDaysRequiredToDeletePlayer() == 0)
+            {
+                if (!_characterService.DeleteCharById(player.ObjectId))
                 {
                     _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
                     return;
                 }
 
-                _client.RemoveAccountCharAndResetSlotIndex(_charSlot);
+                _client.DeleteCharacter(_charSlot);
             }
             else
             {
                 player.SetCharDeleteTime();
-                // TODO: Fix that
-                //if (!_playerService.MarkToDeleteChar(player.ObjId, player.DeleteTime))
-                //{
-                //    _client.SendPacketAsync(new CharDeleteFail(CharDeleteFail.CharDeleteFailReason.DeletionFailed));
-              //      return;
-            //    }
+                _characterCrudService.Update(player.ToContract());
             }
 
             _client.SendPacketAsync(new CharDeleteOk());

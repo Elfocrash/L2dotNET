@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Items;
@@ -12,15 +13,10 @@ namespace L2dotNET.Models.Inventory
 {
     public class Inventory : ItemContainer
     {
-        public Inventory(ICrudService<ItemContract> itemCrudService, IItemService itemService, IdFactory idFactory, ItemTable itemTable, L2Character owner) 
-            : base(itemCrudService, itemService, idFactory, itemTable)
+        public Inventory(L2Character owner) : base(owner)
         {
-            Owner = owner;
             Paperdoll = new L2Item[PaperdollTotalslots];
         }
-
-        protected override L2Character Owner { get; set; }
-        protected override ItemLocation BaseLocation { get; }
 
         public static readonly int PaperdollUnder = 0;
         public static readonly int PaperdollLear = 1;
@@ -53,14 +49,14 @@ namespace L2dotNET.Models.Inventory
             return Paperdoll.Where(item => item != null).ToList();
         }
 
-        public override async void Restore(L2Character owner)
+        public override async Task Restore(L2Character owner)
         {
-            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.ObjId);
+            IEnumerable<ItemContract> models = await _itemService.RestoreInventory(owner.ObjectId);
             List<L2Item> items = RestoreFromDb(models.ToList());
 
             foreach (L2Item item in items)
             {
-                L2World.Instance.AddObject(item);
+                L2World.AddObject(item);
                 Owner = owner;
                 AddItem(item, (L2Player)Owner);
             }

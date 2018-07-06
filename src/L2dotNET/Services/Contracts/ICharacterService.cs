@@ -1,11 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using L2dotNET.DataContracts;
 using L2dotNET.Models.Player;
 
 namespace L2dotNET.Services.Contracts
 {
     public interface ICharacterService
     {
-        Task<L2Player> GetPlayerByLogin(int characterId);
+        Task<L2Player> GetById(int characterId);
 
         Task<bool> CheckIfPlayerNameExists(string name);
 
@@ -13,11 +15,13 @@ namespace L2dotNET.Services.Contracts
 
         void UpdatePlayer(L2Player player);
 
-        Task<L2Player> GetPlayerBySlotId(string accountName, int slotId);
+        Task<L2Player> GetPlayerBySlotId(int accountId, int slotId);
 
-        bool DeleteCharByObjId(int characterId);
+        bool DeleteCharById(int characterId);
 
-        Task<L2Player> RestorePlayer(int id, GameClient client);
+        Task<L2Player> RestorePlayer(CharacterContract characterContract, GameClient client);
+
+        Task<IEnumerable<L2Player>> GetPlayersOnAccount(int accountId);
 
         int GetDaysRequiredToDeletePlayer();
     }

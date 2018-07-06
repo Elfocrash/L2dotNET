@@ -41,12 +41,12 @@ namespace L2dotNET.Network.clientpackets
                     return;
                 }
 
-                if (_objectId == player.ObjId)
+                if (_objectId == player.ObjectId)
                     obj = player;
                 else
                 {
-                    if (L2World.Instance.GetObject(_objectId) != null)
-                        obj = L2World.Instance.GetObject(_objectId);
+                    if (L2World.GetObject(_objectId) != null)
+                        obj = L2World.GetObject(_objectId);
                 }
 
                 if (obj == null)

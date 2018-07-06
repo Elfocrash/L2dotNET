@@ -19,5 +19,19 @@
         {
             return $"PlayOk: {PlayOkId1} {PlayOkId2} LoginOk: {LoginOkId1} {LoginOkId2}";
         }
+
+        public static bool operator ==(SessionKey key1, SessionKey key2)
+        {
+            return !ReferenceEquals(key1, null) && !ReferenceEquals(key2, null)
+                   && key1.LoginOkId1 == key2.LoginOkId1
+                   && key1.LoginOkId2 == key2.LoginOkId2
+                   && key1.PlayOkId1 == key2.PlayOkId1
+                   && key1.PlayOkId2 == key2.PlayOkId2;
+        }
+
+        public static bool operator !=(SessionKey key1, SessionKey key2)
+        {
+            return !(key1 == key2);
+        }
     }
 }

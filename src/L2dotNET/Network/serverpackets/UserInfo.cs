@@ -21,7 +21,7 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.Y);
             WriteInt(_player.Z);
             WriteInt(_player.Heading);
-            WriteInt(_player.ObjId);
+            WriteInt(_player.ObjectId);
 
             WriteString(_player.Name);
 
@@ -29,7 +29,7 @@ namespace L2dotNET.Network.serverpackets
             WriteInt((int)_player.Sex);
             WriteInt((int)_player.BaseClass.ClassId.Id);
             WriteInt(_player.Level);
-            WriteLong(_player.Exp);
+            WriteLong(_player.Experience);
 
             WriteInt(_player.Str);
             WriteInt(_player.Dex);
@@ -49,7 +49,7 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.Inventory.GetPaperdollItem(Inventory.PaperdollRhand) != null ? 40 : 20); // 20 no weapon, 40 weapon equipped
 
             for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
-                WriteInt(_player.Inventory.Paperdoll[id]?.ObjId ?? 0);
+                WriteInt(_player.Inventory.Paperdoll[id]?.ObjectId ?? 0);
 
             for (byte id = 0; id < Inventory.PaperdollTotalslots; id++)
                 WriteInt(_player.Inventory.Paperdoll[id]?.Template?.ItemId ?? 0);
@@ -152,15 +152,15 @@ namespace L2dotNET.Network.serverpackets
 
             WriteInt(0);//_player.ClanPrivs
 
-            WriteShort(_player.RecHave); //c2  recommendations remaining
-            WriteShort(_player.RecLeft); //c2  recommendations received
+            WriteShort(_player.RecomandationsHave); //c2  recommendations remaining
+            WriteShort(_player.RecomendationsLeft); //c2  recommendations received
             WriteInt(_player.MountType > 0 ? _player.MountedTemplate.NpcId + 1000000 : 0); //moun t npcid
             WriteShort(_player.ItemLimitInventory);
 
             WriteInt((int)_player.ActiveClass.ClassId.Id);
             WriteInt(0); // special effects? circles around player...
             WriteInt(_player.MaxCp); //max cp
-            WriteInt(_player.CurCp);
+            WriteInt(_player.CurrentCp);
             WriteByte(_player.GetEnchantValue());
             WriteByte(_player.TeamId);
             WriteInt(0);//_player.GetClanCrestLargeId()

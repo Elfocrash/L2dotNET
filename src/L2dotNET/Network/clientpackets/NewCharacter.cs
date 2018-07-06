@@ -19,13 +19,7 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
-            {
-                Dictionary<int, PcTemplate> dict = CharTemplateTable.Instance.Templates;
-                List<PcTemplate> pcTemp = dict.Select((t, i) => dict.SingleOrDefault(x => x.Key == i).Value).ToList();
-
-                _client.SendPacketAsync(new CharTemplates(pcTemp));
-            });
+            await _client.SendPacketAsync(new CharTemplates(CharTemplateTable.GetTemplates()));
         }
     }
 }

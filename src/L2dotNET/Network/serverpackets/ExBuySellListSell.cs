@@ -27,7 +27,7 @@ namespace L2dotNET.Network.serverpackets
 
             foreach (L2Item item in _sells)
             {
-                WriteInt(item.ObjId);
+                WriteInt(item.ObjectId);
                 WriteInt(item.Template.ItemId);
                 WriteInt(0);
                 WriteLong(item.Count);
@@ -44,7 +44,7 @@ namespace L2dotNET.Network.serverpackets
                 WriteShort(item.AttrAttackType);
                 WriteShort(item.AttrAttackValue);
 
-                WriteLong(item.Template.ReferencePrice / 2);
+                WriteLong(item.Template.Price / 2);
             }
 
             WriteShort(_refund.Count);
@@ -52,7 +52,7 @@ namespace L2dotNET.Network.serverpackets
             int idx = 0;
             foreach (L2Item item in _refund)
             {
-                WriteInt(item.ObjId);
+                WriteInt(item.ObjectId);
                 WriteInt(item.Template.ItemId);
                 WriteInt(0);
                 WriteLong(item.Count);
@@ -70,7 +70,7 @@ namespace L2dotNET.Network.serverpackets
                 WriteShort(item.AttrAttackValue);
 
                 WriteInt(idx++);
-                WriteLong((item.Template.ReferencePrice / 2) * item.Count);
+                WriteLong((item.Template.Price / 2) * item.Count);
             }
 
             WriteByte(0);

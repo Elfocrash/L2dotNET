@@ -21,7 +21,7 @@ namespace L2dotNET.Network.serverpackets
 
         public ValidateLocation(L2Character character)
         {
-            _id = character.ObjId;
+            _id = character.ObjectId;
             _x = character.X;
             _y = character.Y;
             _z = character.Z;

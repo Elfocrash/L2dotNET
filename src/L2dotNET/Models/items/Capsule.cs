@@ -5,73 +5,57 @@ using System.Linq;
 using System.Xml.Linq;
 using L2dotNET.Models.Player;
 using L2dotNET.Utility;
+using Mapster;
 using NLog;
 
 namespace L2dotNET.Models.Items
 {
-    public class Capsule
+    public static class Capsule
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        private static volatile Capsule _instance;
-        private static readonly object SyncRoot = new object();
 
-        public static Capsule Instance
+        public static Dictionary<int, CapsuleItem> Items { get; private set; }
+
+        public static void Initialize()
         {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new Capsule();
-                }
-
-                return _instance;
-            }
-        }
-
-        public void Initialize()
-        {
+            Items = new Dictionary<int, CapsuleItem>();
             LoadXml();
-            Log.Info($"Loaded {Items.Count} items.");
+            Log.Info($"Loaded {Items.Count} capsule items.");
         }
 
-        public SortedList<int, CapsuleItem> Items = new SortedList<int, CapsuleItem>();
-
-        public void Process(L2Character character, L2Item item)
+        public static void Process(L2Character character, L2Item item)
         {
-            if (!(character is L2Player))
+            if (!(character is L2Player) || !Items.ContainsKey(item.Template.ItemId))
+            {
                 return;
-
-            if (!Items.ContainsKey(item.Template.ItemId))
-                return;
+            }
 
             CapsuleItem caps = Items[item.Template.ItemId];
+            L2Player player = (L2Player) character;
 
-            ((L2Player)character).DestroyItem(item, 1);
+            player.DestroyItem(item, 1);
             foreach (CapsuleItemReward rew in caps.Rewards.Where(rew => RandomThreadSafe.Instance.Next(100) <= rew.Rate))
-                ((L2Player)character).AddItem(rew.Id, RandomThreadSafe.Instance.Next(rew.Min, rew.Max));
+                player.AddItem(rew.Id, RandomThreadSafe.Instance.Next(rew.Min, rew.Max));
         }
 
-        public void LoadXml()
+        public static void LoadXml()
         {
             XElement xml = XElement.Parse(File.ReadAllText(@"scripts\extractable.xml"));
             XElement ex = xml.Element("list");
 
             if (ex == null)
+            {
                 return;
+            }
 
             foreach (XElement m in ex.Elements())
             {
                 if (m.Name != "capsule")
-                    continue;
-
-                CapsuleItem caps = new CapsuleItem
                 {
-                    Id = Convert.ToInt32(m.Attribute("id").Value)
-                };
+                    continue;
+                }
+
+                CapsuleItem caps = new CapsuleItem(Convert.ToInt32(m.Attribute("id").Value));
 
                 foreach (XElement stp in m.Elements())
                 {

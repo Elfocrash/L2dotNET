@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using L2dotNET.LoginService.Network;
 using L2dotNET.LoginService.Network.InnerNetwork.ResponsePackets;
 using L2dotNET.Network;
+using L2dotNET.Utility;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 
@@ -40,6 +41,7 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             _nstream = tcpClient.GetStream();
             _client = tcpClient;
+            Connected = true;
 
             try
             {
@@ -63,7 +65,7 @@ namespace L2dotNET.LoginService.GSCommunication
                         throw new Exception("Wrong packet");
                     }
 
-                    Task.Factory.StartNew(() => _packetHandler.Handle(new Packet(1, buffer), this));
+                    Task.Factory.StartNew(() => _packetHandler.Handle(buffer.ToPacket(), this));
                 }
             }
             catch (Exception e)
@@ -76,9 +78,10 @@ namespace L2dotNET.LoginService.GSCommunication
         private void Termination()
         {
             LoginServer.ServiceProvider.GetService<ServerThreadPool>().Shutdown(ServerId);
+            Connected = false;
         }
 
-        public async void Send(Packet pk)
+        public async Task Send(Packet pk)
         {
             byte[] buffer = pk.GetBuffer();
 
@@ -139,9 +142,9 @@ namespace L2dotNET.LoginService.GSCommunication
             Send(PleaseKickAccount.ToPacket(accountId));
         }
 
-        public void SendPlayer(LoginClient loginClient, string time)
+        public async Task SendPlayer(LoginClient loginClient)
         {
-            Send(PleaseAcceptPlayer.ToPacket(loginClient.ActiveAccount, time));
+            await Send(PleaseAcceptPlayer.ToPacket(loginClient.ActiveAccount, loginClient.Key));
         }
     }
 }

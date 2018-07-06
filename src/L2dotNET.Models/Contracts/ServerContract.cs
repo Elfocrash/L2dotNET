@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Mapster;
 
 namespace L2dotNET.DataContracts
 {
@@ -14,5 +15,8 @@ namespace L2dotNET.DataContracts
         public string Wan { get; set; }
 
         public int Port { get; set; }
+
+        [AdaptMember("ServerKey")]
+        public string Key { get; set; }
     }
 }

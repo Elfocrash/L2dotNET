@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.DataContracts.Shared.Enums;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.Repositories.Contracts;
 using L2dotNET.Repositories.Utils;
 using NLog;
@@ -20,12 +21,31 @@ namespace L2dotNET.Repositories
             {
                 using (IDatabase database = ConnectionFactory.Open())
                 {
-                    return await database.GetRangeAsync<ItemContract>($"WHERE CharacterId = {characterId} AND Location = {ItemLocation.Inventory}");
+                    return await database.GetRangeAsync<ItemContract>($"WHERE CharacterId = {characterId} AND Location = {(int)ItemLocation.Inventory}");
                 }
             }
             catch (Exception ex)
             {
-                Log.Error($"Method: {nameof(RestoreInventory)}. Message: '{ex.Message}'");
+                Log.Halt($"Method: {nameof(RestoreInventory)}. Message: '{ex.Message}'");
+                throw;
+            }
+
+        }
+
+        public int GetMaxItemId()
+        {
+            try
+            {
+                using (IDatabase database = ConnectionFactory.Open())
+                {
+                    int maxItemId = database.ExecuteScalar<int>("SELECT max(ItemId) FROM Items;");
+                    int maxCharacterId = database.ExecuteScalar<int>("SELECT max(CharacterId) FROM Characters;");
+                    return Math.Max(maxCharacterId, maxItemId);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Halt($"Method: {nameof(GetMaxItemId)}. Message: '{ex.Message}'");
                 throw;
             }
 

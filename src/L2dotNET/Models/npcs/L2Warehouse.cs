@@ -146,7 +146,7 @@ namespace L2dotNET.Models.Npcs
             }
             else
             {
-                if (player.Target.ObjId != ObjId)
+                if (player.Target.ObjectId != ObjectId)
                 {
                     player.Target = this;
                     newtarget = true;
@@ -154,7 +154,7 @@ namespace L2dotNET.Models.Npcs
             }
 
             if (newtarget)
-                await player.SendPacketAsync(new MyTargetSelected(ObjId, 0));
+                await player.SendPacketAsync(new MyTargetSelected(ObjectId, 0));
             else
                 await player.SendActionFailedAsync();
         }

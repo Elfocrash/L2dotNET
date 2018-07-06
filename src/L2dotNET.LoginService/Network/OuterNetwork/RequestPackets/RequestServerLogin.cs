@@ -55,6 +55,7 @@ namespace L2dotNET.LoginService.Network.OuterNetwork.RequestPackets
                 return;
             }
 
+            await server.Thread.SendPlayer(_client);
             _client.SendAsync(PlayOk.ToPacket(_client));
         }
     }

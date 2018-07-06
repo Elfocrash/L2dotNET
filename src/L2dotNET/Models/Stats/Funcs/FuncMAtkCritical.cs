@@ -1,23 +1,30 @@
-﻿using L2dotNET.Models.Player;
+﻿using L2dotNET.DataContracts.Shared.Enums;
+using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.Basic;
 
 namespace L2dotNET.Models.Stats.Funcs
 {
-    public class FuncMAtkCritical : Func
+    public class FuncMAtkCritical : StatFunction
     {
-        public FuncMAtkCritical() : base(Stats.McriticalRate, 0x30, null)
+        public static FuncMAtkCritical Instance = new FuncMAtkCritical();
+
+        private FuncMAtkCritical() : base(CharacterStatId.McriticalRate, 0x30)
         {
         }
 
-        public override void Calculate(Env env)
+        public override void Calculate(StatFunctionEnvironment statFuncEnv)
         {
-            if (env.Character is L2Player player)
+            if (statFuncEnv.Character is L2Player player)
             {
                 if(player.ActiveWeapon != null)
-                    env.MulValue(Formulas.WitBonus[player.CharacterStat.Wit]);
+                {
+                    statFuncEnv.MulValue(Formulas.WitBonus[player.CharacterStat.Wit]);
+                }
             }
             else
-                env.MulValue(Formulas.WitBonus[env.Character.CharacterStat.Wit]);
+            {
+                statFuncEnv.MulValue(Formulas.WitBonus[statFuncEnv.Character.CharacterStat.Wit]);
+            }
         }
     }
 }

@@ -221,7 +221,7 @@ namespace L2dotNET.Models.Npcs
         public override async Task BroadcastUserInfoAsync()
         {
             // TODO: Sends to all players on the server. It is not right
-            foreach (L2Player pl in L2World.Instance.GetPlayers())
+            foreach (L2Player pl in L2World.GetPlayers())
             {
                 await pl.SendPacketAsync(new NpcInfo(this));
             }
@@ -259,8 +259,8 @@ namespace L2dotNET.Models.Npcs
         {
             _corpseTimer.Enabled = false;
             _corpseTimer.Stop();
-            await BroadcastPacketAsync(new DeleteObject(ObjId));
-            L2World.Instance.RemoveObject(this);
+            await BroadcastPacketAsync(new DeleteObject(ObjectId));
+            L2World.RemoveObject(this);
         }
 
         public override async Task DeleteByForceAsync()
@@ -293,9 +293,9 @@ namespace L2dotNET.Models.Npcs
 
         public async Task ShowNPCInfoAsync(L2Player player)
         {
-            NpcHtmlMessage html = new NpcHtmlMessage(player, "./html/admin/npcinfo.htm", ObjId);
+            NpcHtmlMessage html = new NpcHtmlMessage(player, "./html/admin/npcinfo.htm", ObjectId);
 
-            html.Replace("%objid%", ObjId);
+            html.Replace("%objid%", ObjectId);
             html.Replace("%class%", "null");
             html.Replace("%id%", NpcId);
             html.Replace("%lvl%", Level);
@@ -383,7 +383,7 @@ namespace L2dotNET.Models.Npcs
 
         public override string AsString()
         {
-            return $"L2Npc:{Template.NpcId}; id {ObjId}";
+            return $"L2Npc:{Template.NpcId}; id {ObjectId}";
         }
 
         public void CreateOnePrivateEx(int npcId, string aiType, int x, int y, int z) { }

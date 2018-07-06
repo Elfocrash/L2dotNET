@@ -21,7 +21,7 @@ namespace L2dotNET.Network.clientpackets
         {
             await Task.Run(() =>
             {
-                _authThread.SetInGameAccount(_client.AccountName);
+                //_authThread.SetInGameAccount(_client.Account);
 
                 L2Player player = _client.CurrentPlayer;
 

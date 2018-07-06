@@ -11,7 +11,7 @@ namespace L2dotNET.DataContracts
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CharacterId { get; set; }
 
-        public string AccountName { get; set; }
+        public int AccountId { get; set; }
 
         public string Name { get; set; }
 
@@ -83,9 +83,9 @@ namespace L2dotNET.DataContracts
 
         public DateTime? LastAccess { get; set; }
 
-        public int PunishLevel { get; set; }
+        public int? PunishLevel { get; set; }
 
-        public int PunishTimer { get; set; }
+        public DateTime? PunishTime { get; set; }
 
         public int PowerGrade { get; set; }
 

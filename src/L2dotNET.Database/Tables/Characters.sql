@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Characters]
 (
-	[CharacterId] INT NOT NULL IDENTITY(1, 1) PRIMARY KEY, 
+	[CharacterId] INT NOT NULL PRIMARY KEY, 
     [AccountId] INT NOT NULL, 
     [Name] VARCHAR(30) NOT NULL, 
     [Level] INT NOT NULL, 
@@ -14,6 +14,7 @@
     [HairStyle] TINYINT NOT NULL, 
     [HairColor] TINYINT NOT NULL, 
     [Sex] BIT NOT NULL, 
+	[Heading] INT NOT NULL,
     [X] INT NOT NULL, 
     [Y] INT NOT NULL, 
     [Z] INT NOT NULL, 
@@ -36,7 +37,8 @@
     [OnlineTime] INT NOT NULL, 
     [CharSlot] INT NOT NULL, 
     [LastAccess] DATETIME2 NULL, 
-    [PunishLevel] INT NOT NULL, 
+    [PunishLevel] INT NULL, 
+    [PunishTime] DATETIME2 NULL, 
     [PowerGrade] INT NOT NULL, 
     [Nobless] BIT NOT NULL, 
     [Hero] BIT NOT NULL, 

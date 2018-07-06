@@ -87,19 +87,19 @@ namespace L2dotNET.Managers
             switch (dat.Crystall)
             {
                 case (CrystalTypeId)1:
-                    next = player.EnchantItem.Template.CrystalType == CrystalType.D;
+                    next = player.EnchantItem.Template.CrystalType == CrystalType.D.Id;
                     break;
                 case (CrystalTypeId)2:
-                    next = player.EnchantItem.Template.CrystalType == CrystalType.C;
+                    next = player.EnchantItem.Template.CrystalType == CrystalType.C.Id;
                     break;
                 case (CrystalTypeId)3:
-                    next = player.EnchantItem.Template.CrystalType == CrystalType.B;
+                    next = player.EnchantItem.Template.CrystalType == CrystalType.B.Id;
                     break;
                 case (CrystalTypeId)4:
-                    next = player.EnchantItem.Template.CrystalType == CrystalType.A;
+                    next = player.EnchantItem.Template.CrystalType == CrystalType.A.Id;
                     break;
                 case (CrystalTypeId)5:
-                    next = player.EnchantItem.Template.CrystalType == CrystalType.S;
+                    next = player.EnchantItem.Template.CrystalType == CrystalType.S.Id;
                     break;
             }
 
@@ -114,7 +114,7 @@ namespace L2dotNET.Managers
             {
                 player.EnchantState = StateEnchantStart;
                 player.EnchantItem = item;
-                player.SendPacketAsync(new ExPutEnchantTargetItemResult(item.ObjId));
+                player.SendPacketAsync(new ExPutEnchantTargetItemResult(item.ObjectId));
             }
         }
 
@@ -133,19 +133,19 @@ namespace L2dotNET.Managers
             switch (dat.Crystall)
             {
                 case (CrystalTypeId)1:
-                    next = player.EnchantItem.Template.CrystalType == CrystalType.D;
+                    next = player.EnchantItem.Template.CrystalType == CrystalType.D.Id;
                     break;
                 case (CrystalTypeId)2:
-                    next = player.EnchantItem.Template.CrystalType == CrystalType.C;
+                    next = player.EnchantItem.Template.CrystalType == CrystalType.C.Id;
                     break;
                 case (CrystalTypeId)3:
-                    next = player.EnchantItem.Template.CrystalType == CrystalType.B;
+                    next = player.EnchantItem.Template.CrystalType == CrystalType.B.Id;
                     break;
                 case (CrystalTypeId)4:
-                    next = player.EnchantItem.Template.CrystalType == CrystalType.A;
+                    next = player.EnchantItem.Template.CrystalType == CrystalType.A.Id;
                     break;
                 case (CrystalTypeId)5:
-                    next = player.EnchantItem.Template.CrystalType == CrystalType.S;
+                    next = player.EnchantItem.Template.CrystalType == CrystalType.S.Id;
                     break;
             }
 
@@ -158,7 +158,7 @@ namespace L2dotNET.Managers
             else
             {
                 player.EnchantStone = stone;
-                player.SendPacketAsync(new ExPutEnchantSupportItemResult(stone.ObjId));
+                player.SendPacketAsync(new ExPutEnchantSupportItemResult(stone.ObjectId));
             }
         }
     }

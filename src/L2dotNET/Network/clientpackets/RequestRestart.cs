@@ -40,10 +40,7 @@ namespace L2dotNET.Network.clientpackets
                 player.DeleteMe();
                 player.SendPacketAsync(new RestartResponse());
 
-                CharacterSelectionInfo csl = new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1)
-                {
-                    CharId = player.ObjId
-                };
+                CharList csl = new CharList(_client.Account.Login, _client.AccountCharacters, _client.SessionKey.PlayOkId1);
                 player.SendPacketAsync(csl);
             });
         }

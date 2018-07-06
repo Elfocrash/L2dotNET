@@ -48,7 +48,7 @@ namespace L2dotNET.Network.serverpackets
 
         public StatusUpdate(L2Object obj)
         {
-            _objectId = obj.ObjId;
+            _objectId = obj.ObjectId;
         }
 
         public override void Write()

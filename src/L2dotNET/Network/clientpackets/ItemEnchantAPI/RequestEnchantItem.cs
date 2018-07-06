@@ -32,7 +32,7 @@ namespace L2dotNET.Network.clientpackets.ItemEnchantAPI
                     return;
                 }
 
-                if (_aSTargetId != player.EnchantItem.ObjId)
+                if (_aSTargetId != player.EnchantItem.ObjectId)
                 {
                     player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
                     player.SendActionFailedAsync();

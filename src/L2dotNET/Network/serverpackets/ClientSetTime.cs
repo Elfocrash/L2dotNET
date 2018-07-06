@@ -7,7 +7,7 @@ namespace L2dotNET.Network.serverpackets
         public override void Write()
         {
             WriteByte(0xEC);
-            WriteInt(GameTime.Instance.Time);
+            WriteInt(GameTime.IngameTime);
             WriteInt(6);
         }
     }

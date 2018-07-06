@@ -13,12 +13,12 @@ namespace L2dotNET.Models.Npcs.Decor
 
         public override async Task NotifyActionAsync(L2Player player)
         {
-            await player.SendPacketAsync(new NpcHtmlMessage(player, Htm, ObjId, 0));
+            await player.SendPacketAsync(new NpcHtmlMessage(player, Htm, ObjectId, 0));
         }
 
         public override string AsString()
         {
-            return $"L2PvP Sign:{ObjId} {StaticId}";
+            return $"L2PvP Sign:{ObjectId} {StaticId}";
         }
     }
 }

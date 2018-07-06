@@ -8,6 +8,7 @@ using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Templates;
 using L2dotNET.World;
+using Mapster;
 using NLog;
 
 namespace L2dotNET.Tables
@@ -72,8 +73,6 @@ namespace L2dotNET.Tables
             await LoadWeaponModels();
             await LoadEtcItemModels();
 
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
             Log.Info($"Loaded #{Armors.Count} armors, #{Weapons.Count} weapons and #{EtcItems.Count} etc items.");
             Initialised = true;
         }
@@ -82,9 +81,9 @@ namespace L2dotNET.Tables
         {
             L2Item item = new L2Item(_itemCrudService, _idFactory, GetItem(itemId), _idFactory.NextId());
 
-            L2World.Instance.AddObject(item);
+            L2World.AddObject(item);
 
-            if (item.Template.Stackable && (count > 1))
+            if (item.Template.Stackable && count > 1)
             {
                 item.Count = count;
             }
@@ -96,19 +95,8 @@ namespace L2dotNET.Tables
         {
             IEnumerable<ArmorContract> armorContracts = await _armorCrudService.GetAll();
 
-            Armors = armorContracts.Select(x => new Armor(new StatsSet())
-                    {
-                        Type = x.ArmorType,
-                        ItemId = x.ArmorId,
-                        Name = x.Name,
-                        BodyPart = x.BodyPart,
-                        Sellable = x.Sellable,
-                        Dropable = x.Dropable,
-                        Destroyable = x.Destroyable,
-                        Tradable = x.Tradeable,
-                        Weight = x.Weight,
-                        Duration = x.Duration
-                    })
+            Armors = armorContracts.AsQueryable()
+                .ProjectToType<Armor>()
                 .ToDictionary(x => x.ItemId);
         }
 
@@ -116,51 +104,17 @@ namespace L2dotNET.Tables
         {
             IEnumerable<EtcItemContract> etcItemContracts = await _etcItemCrudService.GetAll();
 
-            EtcItems = etcItemContracts.Select(x => new EtcItem(new StatsSet())
-                    {
-                        Type = x.ItemType,
-                        ItemId = x.EtcItemId,
-                        Name = x.Name,
-                        Sellable = x.Sellable,
-                        Dropable = x.Dropable,
-                        Destroyable = x.Destroyable,
-                        Tradable = x.Tradeable,
-                        Weight = x.Weight,
-                        Duration = x.Duration
-                    })
+            EtcItems = etcItemContracts.AsQueryable()
+                .ProjectToType<EtcItem>()
                 .ToDictionary(x => x.ItemId);
         }
 
         private async Task LoadWeaponModels()
         {
             IEnumerable<WeaponContract> weaponContracts = await _weaponCrudService.GetAll();
-
-            Weapons = weaponContracts.Select(x => new Weapon(new StatsSet())
-                    {
-                        Type = x.WeaponType,
-                        ItemId = x.WeaponId,
-                        Name = x.Name,
-                        BodyPart = x.BodyPart,
-                        Sellable = x.Sellable,
-                        Dropable = x.Dropable,
-                        Destroyable = x.Destroyable,
-                        Tradable = x.Tradeable,
-                        Weight = x.Weight,
-                        Duration = x.Duration,
-                        ReferencePrice = x.Price,
-                        SpiritshotCount = x.Spiritshots,
-                        SoulshotCount = x.Soulshots,
-                        PDam = x.Pdam,
-                        RndDam = x.RndDam,
-                        Critical = x.Critical,
-                        HitModifier = x.HitModify,
-                        AvoidModifier = x.AvoidModify,
-                        ShieldDef = x.ShieldDef,
-                        ShieldDefRate = x.ShieldDefRate,
-                        AtkSpeed = x.AtkSpeed,
-                        MpConsume = x.MpConsume,
-                        MDam = x.Mdam
-                    })
+            
+            Weapons = weaponContracts.AsQueryable()
+                .ProjectToType<Weapon>()
                 .ToDictionary(x => x.ItemId);
         }
     }

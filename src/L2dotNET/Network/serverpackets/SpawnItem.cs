@@ -14,7 +14,7 @@ namespace L2dotNET.Network.serverpackets
         public override void Write()
         {
             WriteByte(0x0b);
-            WriteInt(_item.ObjId);
+            WriteInt(_item.ObjectId);
             WriteInt(_item.Template.ItemId);
             WriteInt(_item.X);
             WriteInt(_item.Y);

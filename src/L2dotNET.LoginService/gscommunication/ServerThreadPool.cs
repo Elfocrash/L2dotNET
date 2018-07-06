@@ -5,9 +5,11 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using L2dotNET.DataContracts;
+using L2dotNET.Logging.Abstraction;
 using L2dotNET.LoginService.Model;
 using L2dotNET.LoginService.Network;
 using L2dotNET.Services.Contracts;
+using Mapster;
 using NLog;
 
 namespace L2dotNET.LoginService.GSCommunication
@@ -16,7 +18,7 @@ namespace L2dotNET.LoginService.GSCommunication
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public IEnumerable<L2Server> Servers { get; private set; }
+        public ICollection<L2Server> Servers { get; private set; }
 
         private readonly IServerService _serverService;
         private readonly Config.Config _config;
@@ -34,11 +36,7 @@ namespace L2dotNET.LoginService.GSCommunication
         {
             IEnumerable<ServerContract> servers = await _serverService.GetServerList();
 
-            Servers = servers.Select(server => new L2Server
-                {
-                    ServerId = (byte) server.ServerId,
-                    Name = server.Name
-                });
+            Servers = servers.AsQueryable().ProjectToType<L2Server>().ToList();
 
             Log.Info($"GameServerThread: loaded {Servers.Count()} servers");
         }
@@ -59,10 +57,7 @@ namespace L2dotNET.LoginService.GSCommunication
             }
             catch (SocketException ex)
             {
-                Log.Error($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
-                Log.Info("Press ENTER to exit...");
-                Console.Read();
-                Environment.Exit(0);
+                Log.Halt($"Socket Error: '{ex.SocketErrorCode}'. Message: '{ex.Message}' (Error Code: '{ex.NativeErrorCode}')");
             }
 
             Task.Factory.StartNew(WaitForClients);
@@ -76,6 +71,7 @@ namespace L2dotNET.LoginService.GSCommunication
                 Log.Info($"Received connection request from: {client.Client.RemoteEndPoint}");
 
                 ServerThread serverThread = new ServerThread(_packetHandler);
+
                 Task.Factory.StartNew(() => serverThread.ReadData(client, this));
             }
         }
@@ -105,10 +101,10 @@ namespace L2dotNET.LoginService.GSCommunication
             return false;
         }
 
-        public void SendPlayer(byte serverId, LoginClient client, string time)
+        public void SendPlayer(byte serverId, LoginClient client)
         {
-            L2Server server = Servers.FirstOrDefault(srv => (srv.ServerId == serverId) && (srv.Thread != null));
-            server?.Thread.SendPlayer(client, time);
+            L2Server server = Servers.FirstOrDefault(srv => srv.ServerId == serverId && srv.Thread != null);
+            server?.Thread.SendPlayer(client);
         }
     }
 }

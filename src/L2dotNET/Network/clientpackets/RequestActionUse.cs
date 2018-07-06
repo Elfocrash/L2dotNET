@@ -161,7 +161,7 @@ namespace L2dotNET.Network.clientpackets
                 }
 
                 if (socialId != -1)
-                    player.BroadcastPacketAsync(new SocialAction(player.ObjId, socialId));
+                    player.BroadcastPacketAsync(new SocialAction(player.ObjectId, socialId));
             });
         }
 

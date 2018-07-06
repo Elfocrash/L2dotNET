@@ -8,22 +8,16 @@ namespace L2dotNET.Models.Items
 {
     public class Armor : ItemTemplate
     {
-        public ArmorTypeId Type { get; set; }
-        private int AvoidModifier { get; set; }
-        private int Pdef { get; set; }
-        private int Mdef { get; set; }
-        private int MpBonus { get; set; }
-        private int HpBonus { get; set; }
+        public ArmorTypeId ArmorType { get; set; }
+        public bool AvoidModify { get; set; }
+        public int Pdef { get; set; }
+        public int Mdef { get; set; }
+        public int MpBonus { get; set; }
+        public int ItemSkillId { get; set; }
+        public byte ItemSkillLvl { get; set; }
 
-        public Armor(StatsSet set) : base(set)
+        public Armor()
         {
-            Type = Utilz.GetEnumFromString(set.GetString("armor_type", "none"), ArmorTypeId.None);
-            AvoidModifier = set.GetInt("avoid_modify");
-            Pdef = set.GetInt("p_def");
-            Mdef = set.GetInt("m_def");
-            MpBonus = set.GetInt("mp_bonus");
-            HpBonus = set.GetInt("hp_bonus");
-
             //TODO: check this
             if (BodyPart == BodyPartType.SlotNeck 
                 || BodyPart == BodyPartType.SlotFace 
@@ -33,27 +27,26 @@ namespace L2dotNET.Models.Items
                 || (BodyPart & BodyPartType.SlotLFinger) != 0 
                 || (BodyPart & BodyPartType.SlotBack) != 0)
             {
-                Type1 = (int)BodyPartType.Type1WeaponRingEarringNecklace;
-                Type2 = (int) BodyPartType.Type2Accessory;
+                Type1 = (int) ItemType1.WeaponRingEarringNecklace;
+                Type2 = (int) ItemType2.Accessory;
             }
             else
             {
-                if (Type == ArmorType.None.Id && BodyPart == BodyPartType.SlotLHand) // retail define shield as NONE
-                    Type = ArmorType.Shield.Id;
+                if (ArmorType == Enums.ArmorType.None.Id && BodyPart == BodyPartType.SlotLHand) // retail define shield as NONE
+                {
+                    ArmorType = Enums.ArmorType.Shield.Id;
+                }
 
-                Type1 = (int) BodyPartType.Type1ShieldArmor;
-                Type2 = (int) BodyPartType.Type2ShieldArmor;
+                Type1 = (int) ItemType1.ShieldArmor;
+                Type2 = (int) ItemType2.ShieldArmor;
             }
         }
 
         public override int GetItemMask()
         {
-            ArmorType orDefault = ArmorType.Values.FirstOrDefault(x => x.Id == Type);
-            if (orDefault == null)
-                return 0;
+            ArmorType orDefault = Enums.ArmorType.Values.FirstOrDefault(x => x.Id == ArmorType);
 
-            int firstOrDefault = orDefault.GetMask();
-            return firstOrDefault;
+            return orDefault?.GetMask() ?? 0;
         }
     }
 }

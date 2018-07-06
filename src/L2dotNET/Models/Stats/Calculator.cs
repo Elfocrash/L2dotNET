@@ -1,84 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using L2dotNET.DataContracts.Shared.Enums;
 
 namespace L2dotNET.Models.Stats
 {
     public class Calculator
     {
-        private static readonly Func[] EmptyFuncs = new Func[0];
+        public static Calculator[] GetCalculatorsForStats() => new Calculator[Enum.GetNames(typeof(CharacterStatId)).Length];
 
-        private Func[] _functions;
+        public int Size { get; private set; }
+
+        private readonly List<StatFunction> _functions;
 
         public Calculator()
         {
-            _functions = EmptyFuncs;
+            _functions = new List<StatFunction>();
+            Size = 0;
         }
 
-        public Calculator(Calculator calculator)
-        {
-            _functions = calculator._functions;
-        }
-
-        public int Size => _functions.Length;
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void AddFunc(Func func)
+        public void AddFunc(StatFunction func)
         {
-            var funcs = _functions;
-            var tmp = new Func[funcs.Length + 1];
-
-            var order = func.Order;
-            int i;
-            for (i = 0; i < funcs.Length && order >= funcs[i].Order; i++)
-                tmp[i] = funcs[i];
-
-            tmp[i] = func;
-
-            for (; i < funcs.Length; i++)
-                tmp[i + 1] = funcs[i];
-
-            _functions = tmp;
+            Size++;
+            _functions.Add(func);
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
-        public void RemoveFunc(Func func)
+        public void Calculate(StatFunctionEnvironment statFuncEnv)
         {
-            var funcs = _functions;
-            var tmp = new Func[funcs.Length - 1];
-            
-            int i;
-            for (i = 0; i < funcs.Length && func != funcs[i]; i++)
-                tmp[i] = funcs[i];
-
-            if (i == funcs.Length)
-                return;
-
-            for (; i < funcs.Length; i++)
-                tmp[i - 1] = funcs[i];
-
-            _functions = tmp.Length == 0 ? EmptyFuncs : tmp;
-        }
-
-        [MethodImpl(MethodImplOptions.Synchronized)]
-        public List<Stat> RemoveOwner(object owner)
-        {
-            List<Stat> modifiedStats = new List<Stat>();
-            foreach (var function in _functions)
+            foreach (StatFunction function in _functions.OrderBy(x => x.Order))
             {
-                if (function.FuncOwner == owner)
-                {
-                    modifiedStats.Add(function.Stat);
-                    RemoveFunc(function);
-                }
-            }
-            return modifiedStats;
-        }
-
-        public void Calculate(Env env)
-        {
-            foreach (var function in _functions)
-            {
-                function.Calculate(env);
+                function.Calculate(statFuncEnv);
             }
         }
     }

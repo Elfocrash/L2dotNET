@@ -18,7 +18,7 @@ namespace L2dotNET.Network.clientpackets
 {
     class CharacterCreate : PacketBase
     {
-        private readonly ICharacterService CharacterService;
+        private readonly ICharacterService _characterService;
         private readonly IItemService _itemService;
         private readonly Config.Config _config;
 
@@ -41,8 +41,9 @@ namespace L2dotNET.Network.clientpackets
             _itemService = serviceProvider.GetService<IItemService>();
             _itemTable = serviceProvider.GetService<ItemTable>();
             _idFactory = serviceProvider.GetService<IdFactory>();
-            CharacterService = serviceProvider.GetService<ICharacterService>();
+            _characterService = serviceProvider.GetService<ICharacterService>();
             _itemCrudService = serviceProvider.GetService<ICrudService<ItemContract>>();
+
             _name = packet.ReadString();
             _race = packet.ReadInt();
             _sex = packet.ReadInt();
@@ -66,75 +67,25 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            PcTemplate template = CharTemplateTable.Instance.GetTemplate(_classId);
+            PcTemplate template = CharTemplateTable.GetTemplate(_classId);
 
-            L2Player player = new L2Player(CharacterService, _idFactory.NextId(), template);
-
-            player.Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, player);
-            player.Name = _name;
-            player.AccountName = _client.AccountName;
-            player.Title = string.Empty;
-            player.Sex = (Gender) _sex;
-            player.HairStyleId = (HairStyleId) _hairStyle;
-            player.HairColor = (HairColor) _hairColor;
-            player.Face = (Face) _face;
-            player.Exp = 0;
-            player.Level = 1;
-            player.Gameclient = _client;
-            //player.Stats = new CharacterStat(player);
-            player.ClassId = template.ClassId;
-            player.BaseClass = template;
-            player.ActiveClass = template;
-            player.CharStatus.CurrentCp = player.MaxCp;
-            player.CharStatus.SetCurrentHp(player.MaxHp);
-            player.CharStatus.SetCurrentHp(player.MaxMp);
-            //player.MaxMp = player.Stats.MaxMp;//;(int)player.CharacterStat.GetStat(EffectType.BMaxMp);
-            //player.MaxCp = player.Stats.MaxCp;
-            //player.MaxHp = player.Stats.MaxHp;
-            player.X = template.SpawnX;
-            player.Y = template.SpawnY;
-            player.Z = template.SpawnZ;
-            player.CharSlot = player.Gameclient.AccountChars.Count;
-
-            if (template.Items != null)
-            {
-                player.Inventory = new PcInventory(_itemCrudService, _itemService, _idFactory, _itemTable, player);
-
-                //foreach (PC_item i in template._items)
-                //{
-                //    if (!i.item.isStackable())
-                //    {
-                //        for (long s = 0; s < i.count; s++)
-                //        {
-                //            L2Item item = new L2Item(i.item);
-                //            item.Enchant = i.enchant;
-                //            if (i.lifetime != -1)
-                //                item.AddLimitedHour(i.lifetime);
-
-                //            item.Location = L2Item.L2ItemLocation.inventory;
-                //            player.Inventory.addItem(item, false, false);
-
-                //            if (i.equip)
-                //            {
-                //                int pdollId = player.Inventory.getPaperdollId(item.Template);
-                //                player.setPaperdoll(pdollId, item, false);
-                //            }
-                //        }
-                //    }
-                //    else
-                //        player.addItem(i.item.ItemID, i.count);
-                //}
-            }
-
-            CharacterService.CreatePlayer(player);
-            //player = PlayerService.RestorePlayer(player.ObjId, _client);
-            player.Gameclient.AccountChars.Add(player);
-            _client.SendPacketAsync(new CharCreateOk());
-            L2World.Instance.AddPlayer(player);
-            _client.SendPacketAsync(new CharacterSelectionInfo(_client.AccountName, _client.AccountChars, _client.SessionKey.PlayOkId1)
+            L2Player player = new L2Player(template, _idFactory.NextId())
                 {
-                    CharId = player.ObjId
-                });
+                    Name = _name,
+                    Account = _client.Account,
+                    Sex = (Gender) _sex,
+                    HairStyleId = (HairStyleId) _hairStyle,
+                    HairColor = (HairColor) _hairColor,
+                    Face = (Face) _face,
+                    Gameclient = _client,
+                    CharacterSlot = _client.AccountCharacters.Count
+                };
+
+            _characterService.CreatePlayer(player);
+            player.Gameclient.AccountCharacters.Add(player);
+            _client.SendPacketAsync(new CharCreateOk());
+            L2World.AddPlayer(player);
+            _client.SendPacketAsync(new CharList(_client.Account.Login, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
         }
 
         private async Task<bool> IsValidChar()
@@ -145,7 +96,7 @@ namespace L2dotNET.Network.clientpackets
                 return false;
             }
 
-            if (_client.AccountChars.Count >= _config.GameplayConfig.OtherConfig.MaxCharactersByAccount)
+            if (_client.AccountCharacters.Count >= _config.GameplayConfig.OtherConfig.MaxCharactersByAccount)
             {
                 _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.TooManyCharsOnAccount));
                 return false;
@@ -163,7 +114,7 @@ namespace L2dotNET.Network.clientpackets
                 return false;
             }
 
-            if (await CharacterService.CheckIfPlayerNameExists(_name))
+            if (await _characterService.CheckIfPlayerNameExists(_name))
             {
                 _client.SendPacketAsync(new CharCreateFail(CharCreateFailReason.NameAlreadyExists));
                 return false;

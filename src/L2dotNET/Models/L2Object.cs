@@ -15,7 +15,7 @@ namespace L2dotNET.Models
     public abstract class L2Object
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        public int ObjId;
+        public int ObjectId;
         public SortedList<int, L2Object> KnownObjects = new SortedList<int, L2Object>();
         public virtual byte Level { get; set; } = 1;
         public virtual bool Dead { get; set; } = false;
@@ -72,7 +72,7 @@ namespace L2dotNET.Models
 
         protected L2Object(int objectId)
         {
-            ObjId = objectId;
+            ObjectId = objectId;
         }
 
         public virtual async Task OnSpawnAsync(bool notifyOthers = true)
@@ -99,7 +99,7 @@ namespace L2dotNET.Models
         {
             Region = null;
 
-            L2World.Instance.RemoveObject(this);
+            L2World.RemoveObject(this);
         }
 
         public async Task ClearKnownsAsync(bool deleteMe, params int[] exclude)
@@ -109,7 +109,7 @@ namespace L2dotNET.Models
                 await o.OnClearingAsync(this, deleteMe);
 
                 if (deleteMe && this is L2Player)
-                    await SendPacketAsync(new DeleteObject(o.ObjId));
+                    await SendPacketAsync(new DeleteObject(o.ObjectId));
             }
 
             KnownObjects.Clear();
@@ -117,7 +117,7 @@ namespace L2dotNET.Models
 
         public void GetKnowns(int range, int height, bool zones)
         {
-            L2World.Instance.GetObjects(); // GetKnowns(this, range, height, zones);
+            L2World.GetObjects(); // GetKnowns(this, range, height, zones);
         }
 
         public virtual List<L2Player> GetKnownPlayers(bool excludeSelf = true)
@@ -129,11 +129,11 @@ namespace L2dotNET.Models
             List<L2Player> result = new List<L2Player>();
             if(excludeSelf)
             { 
-                region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.Instance.GetPlayers().Where(obj => obj != this)));
+                region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.GetPlayers().Where(obj => obj != this)));
             }
             else
             {
-                region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.Instance.GetPlayers()));
+                region.GetSurroundingRegions().ForEach(reg => result.AddRange(L2World.GetPlayers()));
             }
             return result;
         }
@@ -190,10 +190,10 @@ namespace L2dotNET.Models
         private async Task OnClearingAsync(L2Object target, bool deleteMe)
         {
             lock (KnownObjects)
-                KnownObjects.Remove(target.ObjId);
+                KnownObjects.Remove(target.ObjectId);
 
             if (deleteMe && target is L2Player)
-                await target.SendPacketAsync(new DeleteObject(ObjId));
+                await target.SendPacketAsync(new DeleteObject(ObjectId));
         }
 
         public async Task SetVisible(bool val)
@@ -211,10 +211,10 @@ namespace L2dotNET.Models
 
         public void AddKnownObject(L2Object obj, GameserverPacket pk, bool pkuse)
         {
-            if (KnownObjects.ContainsKey(obj.ObjId))
+            if (KnownObjects.ContainsKey(obj.ObjectId))
                 return;
 
-            KnownObjects.Add(obj.ObjId, obj);
+            KnownObjects.Add(obj.ObjectId, obj);
 
             if (!obj.Visible)
                 return;
@@ -231,21 +231,21 @@ namespace L2dotNET.Models
 
         public void RemoveKnownObject(L2Object obj, bool update)
         {
-            if (!KnownObjects.ContainsKey(obj.ObjId))
+            if (!KnownObjects.ContainsKey(obj.ObjectId))
                 return;
 
             OnRemObject(obj);
 
             lock (KnownObjects)
-                KnownObjects.Remove(obj.ObjId);
+                KnownObjects.Remove(obj.ObjectId);
         }
 
         public void Revalidate(L2Object obj)
         {
-            if (KnownObjects.ContainsKey(obj.ObjId))
+            if (KnownObjects.ContainsKey(obj.ObjectId))
                 return;
 
-            KnownObjects.Add(obj.ObjId, obj);
+            KnownObjects.Add(obj.ObjectId, obj);
 
             if (obj.Visible)
                 OnAddObject(obj, null);
@@ -477,9 +477,9 @@ namespace L2dotNET.Models
 
         public virtual async Task SpawnMeAsync(bool notifyOthers = true)
         {
-            Region = L2World.Instance.GetRegion(new Location(X, Y, Z));
+            Region = L2World.GetRegion(new Location(X, Y, Z));
 
-            L2World.Instance.AddObject(this);
+            L2World.AddObject(this);
             await OnSpawnAsync(notifyOthers);
         }
 
@@ -515,7 +515,7 @@ namespace L2dotNET.Models
                 //height = 1000;
             }
 
-            //L2World.Instance.CheckToUpdate(this, x, y, range, height, true, zones);
+            //L2World.CheckToUpdate(this, x, y, range, height, true, zones);
         }
 
         public Timer RegenerationMethod_1S,
@@ -565,7 +565,7 @@ namespace L2dotNET.Models
 
         public virtual string AsString()
         {
-            return $"L2Object: {ObjId}";
+            return $"L2Object: {ObjectId}";
         }
 
         public virtual async Task BroadcastUserInfoToObjectAsync(L2Object l2Object)

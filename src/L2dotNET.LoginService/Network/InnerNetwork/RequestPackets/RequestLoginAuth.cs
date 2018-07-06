@@ -18,7 +18,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.RequestPackets
         private readonly short _port;
         private readonly string _host;
         private readonly string _info;
-        private readonly int _serverId;
+        private readonly string _serverKey;
         private readonly int _currentPlayers;
         private readonly short _maxPlayers;
         private readonly byte _gmonly;
@@ -30,7 +30,7 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.RequestPackets
             _port = p.ReadShort();
             _host = p.ReadString().ToLower();
             _info = p.ReadString().ToLower();
-            _serverId = p.ReadInt();
+            _serverKey = p.ReadString();
             _currentPlayers = p.ReadInt();
             _maxPlayers = p.ReadShort();
             _gmonly = p.ReadByte();
@@ -40,11 +40,11 @@ namespace L2dotNET.LoginService.Network.InnerNetwork.RequestPackets
         public override async Task RunImpl()
         {
             L2Server server = LoginServer.ServiceProvider.GetService<ServerThreadPool>()
-                .Servers.FirstOrDefault(x => x.ServerId == _serverId);
+                .Servers.FirstOrDefault(x => x.ServerKey == _serverKey);
 
             if (server == null)
             {
-                Log.Error($"Server with id '{_serverId}' was not found. Closing");
+                Log.Error($"Server with id '{_serverKey}' was not found. Closing");
                 _thread.Close(ServerLoginFail.ToPacket("ServerId Error"));
                 return;
             }

@@ -7,7 +7,7 @@ namespace L2dotNET.Network.serverpackets
     {
         public PartySpelled(L2Character character)
         {
-            _id = character.ObjId;
+            _id = character.ObjectId;
             _summonType = character.ObjectSummonType;
             _character = character;
         }

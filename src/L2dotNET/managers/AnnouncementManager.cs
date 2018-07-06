@@ -41,19 +41,19 @@ namespace L2dotNET.Managers
         public void Announce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_ANNOUNCE, text);
-            L2World.Instance.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
+            L2World.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
         }
 
         public void CriticalAnnounce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_CRITICAL_ANNOUNCE, text);
-            L2World.Instance.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
+            L2World.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
         }
 
         public void ScreenAnnounce(string text)
         {
             CreatureSay cs = new CreatureSay(SayIDList.CHAT_SCREEN_ANNOUNCE, text);
-            L2World.Instance.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
+            L2World.GetPlayers().ForEach(p => p.SendPacketAsync(cs));
         }
 
         public void OnEnter(L2Player player)

@@ -98,8 +98,8 @@ namespace L2dotNET.Models.Npcs
         {
             CorpseTimer.Stop();
             CorpseTimer.Enabled = false;
-            await BroadcastPacketAsync(new DeleteObject(ObjId));
-            L2World.Instance.RemoveObject(this);
+            await BroadcastPacketAsync(new DeleteObject(ObjectId));
+            L2World.RemoveObject(this);
         }
     }
 }

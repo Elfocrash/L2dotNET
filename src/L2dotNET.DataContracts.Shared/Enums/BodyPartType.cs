@@ -5,17 +5,6 @@ namespace L2dotNET.DataContracts.Shared.Enums
     [Flags]
     public enum BodyPartType : int
     {
-        Type1WeaponRingEarringNecklace = 0,
-        Type1ShieldArmor = 1,
-        Type1ItemQuestitemAdena = 4,
-
-        Type2Weapon = 0,
-        Type2ShieldArmor = 1,
-        Type2Accessory = 2,
-        Type2Quest = 3,
-        Type2Money = 4,
-        Type2Other = 5,
-
         SlotNone = 0x0000,
         SlotUnderwear = 0x0001,
         SlotREar = 0x0002,

@@ -1,18 +1,21 @@
-﻿using L2dotNET.Models.Player.Basic;
+﻿using L2dotNET.DataContracts.Shared.Enums;
+using L2dotNET.Models.Player.Basic;
 
 namespace L2dotNET.Models.Stats.Funcs
 {
-    public class FuncAtkCritical : Func
+    public class FuncAtkCritical : StatFunction
     {
-        public FuncAtkCritical() : base(Stats.CriticalRate, 0x09, null)
+        public static FuncAtkCritical Instance = new FuncAtkCritical();
+
+        private FuncAtkCritical() : base(CharacterStatId.CriticalRate, 0x09)
         {
         }
 
-        public override void Calculate(Env env)
+        public override void Calculate(StatFunctionEnvironment statFuncEnv)
         {
-            env.MulValue(Formulas.DexBonus[env.Character.CharacterStat.Dex]);
-            env.MulValue(10);
-            env.BaseValue = env.Value;
+            statFuncEnv.MulValue(Formulas.DexBonus[statFuncEnv.Character.CharacterStat.Dex]);
+            statFuncEnv.MulValue(10);
+            statFuncEnv.BaseValue = statFuncEnv.Value;
         }
     }
 }

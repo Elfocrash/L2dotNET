@@ -86,8 +86,6 @@ namespace L2dotNET.Models
 
         private Timer _updatePositionTime = new Timer(90);
 
-        public Calculator[] Calculators { get; set; }
-
         public CharacterStat CharacterStat { get; set; }
 
         public L2Character(int objectId, CharTemplate template) : base(objectId)
@@ -95,7 +93,6 @@ namespace L2dotNET.Models
             Template = template;
             CharacterStat = new CharacterStat(this);
             InitializeCharacterStatus();
-            Calculators = new Calculator[Models.Stats.Stats.Values.Count()];
             AddFuncsToNewCharacter();
             _updatePositionTime.Elapsed += UpdatePositionTask;
         }
@@ -120,24 +117,8 @@ namespace L2dotNET.Models
                 Target = obj;
             });
         }
-
-        public void AddStatFunc(Func func)
-        {
-            if (func == null)
-                return;
-
-            var statId = Array.IndexOf(Models.Stats.Stats.Values.ToArray(), func.Stat);
-
-            lock (Calculators)
-            {
-                if (Calculators[statId] == null)
-                    Calculators[statId] = new Calculator();
-
-                Calculators[statId].AddFunc(func);
-            }
-        }
-
-        public async Task AddStatFuncsAsync(IEnumerable<Func> funcs)
+        /*
+        public async Task AddStatFuncsAsync(IEnumerable<StatFunction> funcs)
         {
             List<Stat> modifiedStats = new List<Stat>();
             foreach (var func in funcs)
@@ -146,7 +127,7 @@ namespace L2dotNET.Models
                 AddStatFunc(func);
             }
             await BroadcastModifiedStatsAsync(modifiedStats);
-        }
+        }*/
 
         public void RemoveStatsByOwner(object owner)
         {
@@ -155,31 +136,31 @@ namespace L2dotNET.Models
 
         public virtual void AddFuncsToNewCharacter()
         {
-            AddStatFunc(new FuncPAtkMod());
-            AddStatFunc(new FuncMAtkMod());
-            AddStatFunc(new FuncPDefMod());
-            AddStatFunc(new FuncMDefMod());
+            CharacterStat.AddStatFunction(FuncPAtkMod.Instance);
+            CharacterStat.AddStatFunction(FuncMAtkMod.Instance);
+            CharacterStat.AddStatFunction(FuncPDefMod.Instance);
+            CharacterStat.AddStatFunction(FuncMDefMod.Instance);
 
-            AddStatFunc(new FuncMaxHpMul());
-            AddStatFunc(new FuncMaxMpMul());
+            CharacterStat.AddStatFunction(FuncMaxHpMul.Instance);
+            CharacterStat.AddStatFunction(FuncMaxMpMul.Instance);
 
-            AddStatFunc(new FuncAtkAccuracy());
-            AddStatFunc(new FuncAtkEvasion());
+            CharacterStat.AddStatFunction(FuncAtkAccuracy.Instance);
+            CharacterStat.AddStatFunction(FuncAtkEvasion.Instance);
 
-            AddStatFunc(new FuncPAtkSpeed());
-            AddStatFunc(new FuncMAtkSpeed());
+            CharacterStat.AddStatFunction(FuncPAtkSpeed.Instance);
+            CharacterStat.AddStatFunction(FuncMAtkSpeed.Instance);
 
-            AddStatFunc(new FuncMoveSpeed());
+            CharacterStat.AddStatFunction(FuncMoveSpeed.Instance);
 
-            AddStatFunc(new FuncAtkCritical());
-            AddStatFunc(new FuncMAtkCritical());
+            CharacterStat.AddStatFunction(FuncAtkCritical.Instance);
+            CharacterStat.AddStatFunction(FuncMAtkCritical.Instance);
         }
 
         public double GetLevelMod()
         {
             return (100.0 - 11 + Level) / 100.0;
         }
-
+        /*
         public async Task BroadcastModifiedStatsAsync(List<Stat> stats)
         {
             if (stats == null || !stats.Any())
@@ -228,7 +209,7 @@ namespace L2dotNET.Models
             else if(statusUpdate != null)
                 await BroadcastPacketAsync(statusUpdate);
         }
-
+        */
         public override async Task OnForcedAttackAsync(L2Player player)
         {
             await player.SendActionFailedAsync();
@@ -314,7 +295,7 @@ namespace L2dotNET.Models
             if (!(this is L2Player))
                 return;
 
-            await BroadcastPacketAsync(new TeleportToLocation(ObjId, x, y, z, Heading));
+            await BroadcastPacketAsync(new TeleportToLocation(ObjectId, x, y, z, Heading));
         }
 
         private Timer _waterTimer;
@@ -341,7 +322,7 @@ namespace L2dotNET.Models
                 _waterTimer.Enabled = true;
 
                 if (this is L2Player)
-                    await SendPacketAsync(new SetupGauge(ObjId, SetupGauge.SgColor.Cyan, breath * 1000));
+                    await SendPacketAsync(new SetupGauge(ObjectId, SetupGauge.SgColor.Cyan, breath * 1000));
             }
             else
             {
@@ -351,7 +332,7 @@ namespace L2dotNET.Models
                 _waterTimer.Enabled = false;
 
                 if (this is L2Player)
-                    await SendPacketAsync(new SetupGauge(ObjId, SetupGauge.SgColor.Cyan, 1));
+                    await SendPacketAsync(new SetupGauge(ObjectId, SetupGauge.SgColor.Cyan, 1));
             }
 
             //if (!isInWater())
@@ -483,8 +464,8 @@ namespace L2dotNET.Models
 
         public virtual async Task DeleteByForceAsync()
         {
-            await BroadcastPacketAsync(new DeleteObject(ObjId));
-            L2World.Instance.RemoveObject(this);
+            await BroadcastPacketAsync(new DeleteObject(ObjectId));
+            L2World.RemoveObject(this);
         }
 
         public virtual L2Item ActiveWeapon => null;
@@ -544,15 +525,15 @@ namespace L2dotNET.Models
             if (dual)
             {
                 Hit1 = GenHitSimple(true, ss);
-                atk.AddHit(target.ObjId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
+                atk.AddHit(target.ObjectId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
 
                 Hit2 = GenHitSimple(true, ss);
-                atk.AddHit(target.ObjId, (int)Hit2.Damage, Hit2.Miss, Hit2.Crit, Hit2.ShieldDef > 0);
+                atk.AddHit(target.ObjectId, (int)Hit2.Damage, Hit2.Miss, Hit2.Crit, Hit2.ShieldDef > 0);
             }
             else
             {
                 Hit1 = GenHitSimple(false, ss);
-                atk.AddHit(target.ObjId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
+                atk.AddHit(target.ObjectId, (int)Hit1.Damage, Hit1.Miss, Hit1.Crit, Hit1.ShieldDef > 0);
             }
 
             Target = target;
@@ -850,7 +831,7 @@ namespace L2dotNET.Models
 
             foreach (var temp in CharStatus.StatusListener)
             {
-                if(temp.ObjId != ObjId)
+                if(temp.ObjectId != ObjectId)
                     await temp.SendPacketAsync(su);
             }
         }
@@ -1026,7 +1007,7 @@ namespace L2dotNET.Models
 
         public override string AsString()
         {
-            return $"L2Character: {ObjId}";
+            return $"L2Character: {ObjectId}";
         }
 
         public virtual L2Item GetWeaponItem()

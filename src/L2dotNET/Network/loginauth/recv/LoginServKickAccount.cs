@@ -17,7 +17,7 @@ namespace L2dotNET.Network.loginauth.recv
         public override async Task RunImpl()
         {
             await Task.FromResult(1);
-            //L2World.Instance.KickAccount(account);
+            //L2World.KickAccount(account);
         }
     }
 }

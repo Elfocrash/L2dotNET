@@ -24,7 +24,7 @@ namespace L2dotNET.Network.clientpackets
             {
                 L2Player player = _client.CurrentPlayer;
 
-                player.BroadcastPacketAsync(new StartRotation(player.ObjId, _degree, _side, 0));
+                player.BroadcastPacketAsync(new StartRotation(player.ObjectId, _degree, _side, 0));
             });
         }
     }

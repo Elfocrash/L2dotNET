@@ -24,8 +24,8 @@ namespace L2dotNET.Models.Zones
 
         public virtual void OnEnter(L2Object obj)
         {
-            if (!ObjectsInside.ContainsKey(obj.ObjId))
-                ObjectsInside.Add(obj.ObjId, obj);
+            if (!ObjectsInside.ContainsKey(obj.ObjectId))
+                ObjectsInside.Add(obj.ObjectId, obj);
         }
 
         public void BroadcastPacket(GameserverPacket pk)
@@ -48,8 +48,8 @@ namespace L2dotNET.Models.Zones
 
             lock (ObjectsInside)
             {
-                if (ObjectsInside.ContainsKey(obj.ObjId))
-                    ObjectsInside.Remove(obj.ObjId);
+                if (ObjectsInside.ContainsKey(obj.ObjectId))
+                    ObjectsInside.Remove(obj.ObjectId);
             }
         }
 
@@ -100,7 +100,7 @@ namespace L2dotNET.Models.Zones
 
             ObjectsInside.Clear();
 
-            L2WorldRegion region = L2World.Instance.GetRegion(CylinderCenter[0], CylinderCenter[1]);
+            L2WorldRegion region = L2World.GetRegion(CylinderCenter[0], CylinderCenter[1]);
             if (region != null)
             {
                 // region._zoneManager.remZone(this);

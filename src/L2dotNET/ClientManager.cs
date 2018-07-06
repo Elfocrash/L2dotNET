@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using L2dotNET.Network;
@@ -11,65 +12,57 @@ namespace L2dotNET
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private readonly ICharacterService CharacterService;
-       
-        protected SortedList<string, DateTime> Flood = new SortedList<string, DateTime>();
-        protected NetworkBlock Banned;
-
-        public SortedList<string, GameClient> Clients = new SortedList<string, GameClient>();
+        private readonly ConcurrentDictionary<string, DateTime> _flood;
+        private readonly ConcurrentDictionary<string, GameClient> _loggedClients;
         private readonly GamePacketHandler _gamePacketHandler;
 
-        public ClientManager(ICharacterService characterService, GamePacketHandler gamePacketHandler)
+        public ClientManager(GamePacketHandler gamePacketHandler)
         {
-            CharacterService = characterService;
             _gamePacketHandler = gamePacketHandler;
+
+            _flood = new ConcurrentDictionary<string, DateTime>();
+            _loggedClients = new ConcurrentDictionary<string, GameClient>();
         }
 
         public void AddClient(TcpClient client)
         {
-            if (Banned == null)
-                Banned = NetworkBlock.Instance;
-
             string ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
 
-            lock (Flood)
+            if (_flood.ContainsKey(ip))
             {
-                if (Flood.ContainsKey(ip))
+                if (_flood[ip].CompareTo(DateTime.UtcNow) == 1)
                 {
-                    if (Flood[ip].CompareTo(DateTime.Now) == 1)
-                    {
-                        Log.Warn($"Active flooder: {ip}");
-                        client.Close();
-                        return;
-                    }
-
-                    lock (Flood)
-                        Flood.Remove(ip);
+                    Log.Warn($"Active flooder: {ip}");
+                    client.Close();
+                    return;
                 }
+
+                DateTime oldDate;
+                _flood.TryRemove(ip, out oldDate);
             }
 
-            Flood.Add(ip, DateTime.Now.AddMilliseconds(3000));
+            _flood.AddOrUpdate(ip, DateTime.UtcNow.AddMilliseconds(3000), (a, b) => DateTime.UtcNow.AddMilliseconds(3000));
 
-            if (!Banned.Allowed(ip))
+            if (!NetworkBlock.Instance.Allowed(ip))
             {
                 client.Close();
-                Log.Error($"Connection attempt failed. {ip} banned.");
+                Log.Error($"NetworkBlock: connection attemp failed. IP: {ip} banned.");
                 return;
             }
 
-            GameClient gc = new GameClient(CharacterService, this, client, _gamePacketHandler);
+            GameClient gameClient = new GameClient(this, client, _gamePacketHandler);
 
-            lock (Clients)
-                Clients.Add(gc.Address.ToString(), gc);
-            Log.Info($"{Clients.Count} active connections");
+            _loggedClients.TryAdd(gameClient.Address.ToString(), gameClient);
+
+            Log.Info($"{_loggedClients.Count} active connections");
         }
 
-        public void Terminate(string sock)
+        public void Disconnect(string sock)
         {
-            lock (Clients)
-                Clients.Remove(sock);
+            GameClient o;
+            _loggedClients.TryRemove(sock, out o);
 
-            Log.Info($"{Clients.Count} active connections");
+            Log.Info($"{_loggedClients.Count} active connections");
         }
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using Dapper;
+using L2dotNET.DataContracts;
 using L2dotNET.Encryption;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
@@ -11,45 +13,50 @@ using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;
 using L2dotNET.World;
+using Microsoft.Extensions.DependencyInjection;
 using NLog;
 
 namespace L2dotNET
 {
     public class GameClient
     {
-        private readonly ICharacterService CharacterService;
-        private readonly ClientManager _clientManager;
-        private readonly GamePacketHandler _gamePacketHandler;
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public EndPoint Address;
-        public TcpClient Client;
-        public NetworkStream Stream;
-        private byte[] _buffer;
+        public EndPoint Address { get; }
+        public TcpClient Client { get; }
+        public NetworkStream Stream { get; }
+        public byte[] BlowfishKey { get; set; }
+        public ScrambledKeyPair ScrambledPair { get; set; }
+        public L2Player CurrentPlayer { get; set; }
+        public AccountContract Account { get; set; }
+        public SessionKey SessionKey { get; set; }
+        public string AccountType { get; set; }
+        public string AccountTimeEnd { get; set; }
+        public DateTime AccountTimeLogIn { get; set; }
+        public bool IsDisconnected { get; set; }
+
+        public List<L2Player> AccountCharacters { get; }
+
+        private readonly ICrudService<CharacterContract> _characterCrudService;
+        private readonly ClientManager _clientManager;
+        private readonly GamePacketHandler _gamePacketHandler;
         private readonly GameCrypt _crypt;
-        public byte[] BlowfishKey;
-        public ScrambledKeyPair ScrambledPair;
 
-        public L2Player CurrentPlayer;
-
-        private List<L2Player> _accountChars = new List<L2Player>();
-        public int Protocol;
-        public bool IsTerminated;
-
-        public long TrafficUp,
-                    TrafficDown;
-
-        public GameClient(ICharacterService characterService, ClientManager clientManager, TcpClient tcpClient, GamePacketHandler gamePacketHandler)
+        public GameClient(ClientManager clientManager, TcpClient tcpClient, GamePacketHandler gamePacketHandler)
         {
-            CharacterService = characterService;
             Log.Info($"Connection from {tcpClient.Client.RemoteEndPoint}");
+
+            Address = tcpClient.Client.RemoteEndPoint;
             Client = tcpClient;
+            Stream = tcpClient.GetStream();
+            AccountCharacters = new List<L2Player>();
+
+            _crypt = new GameCrypt();
+            _characterCrudService = GameServer.ServiceProvider.GetService<ICrudService<CharacterContract>>();
             _gamePacketHandler = gamePacketHandler;
             _clientManager = clientManager;
-            Stream = tcpClient.GetStream();
-            Address = tcpClient.Client.RemoteEndPoint;
-            _crypt = new GameCrypt();
-            new System.Threading.Thread(Read).Start();
+
+            Task.Factory.StartNew(Read);
         }
 
         public byte[] EnableCrypt()
@@ -61,8 +68,10 @@ namespace L2dotNET
 
         public async Task SendPacketAsync(GameserverPacket sbp)
         {
-            if (IsTerminated)
+            if (IsDisconnected)
+            {
                 return;
+            }
 
             sbp.Write();
             byte[] data = sbp.ToByteArray();
@@ -70,15 +79,7 @@ namespace L2dotNET
             List<byte> bytes = new List<byte>();
             bytes.AddRange(BitConverter.GetBytes((short)(data.Length + 2)));
             bytes.AddRange(data);
-            TrafficDown += bytes.Count;
-
-            if (sbp is CharacterSelectionInfo)
-            {
-                // byte[] st = ToByteArray();
-                //foreach (byte s in data)
-                //    Log.Info($"{ s:X2 } ");
-            }
-
+            
             try
             {
                 await Stream.WriteAsync(bytes.ToArray(), 0, bytes.Count);
@@ -86,113 +87,88 @@ namespace L2dotNET
             }
             catch
             {
-                Log.Info($"Client {AccountName} terminated.");
-                Termination();
+                Log.Info($"Client {Account?.AccountId} terminated.");
+                Disconnect();
             }
         }
 
-        public void Termination()
+        public void Disconnect()
         {
             Log.Info("termination");
-            IsTerminated = true;
+
+            IsDisconnected = true;
+
             Stream.Close();
             Client.Close();
 
             if(CurrentPlayer?.Online == 1)
+            {
                 CurrentPlayer?.DeleteMe();
-
-            //_accountChars.ForEach(p => p?.DeleteMe());
-            //_accountChars.Clear();
-
-            _clientManager.Terminate(Address.ToString());
-        }
-
-        public void Read()
-        {
-            if (IsTerminated)
-                return;
-
-            try
-            {
-                _buffer = new byte[2];
-                Stream.BeginRead(_buffer, 0, 2, OnReceiveCallbackStatic, null);
             }
-            catch
-            {
-                Termination();
-            }
+
+            _clientManager.Disconnect(Address.ToString());
         }
 
-        public async Task<L2Player> LoadPlayerInSlot(string accName, int charSlot)
-        {
-            L2Player player = await CharacterService.GetPlayerBySlotId(accName, charSlot);
-            return player;
-        }
-
-        public async Task<L2Player> GetPlayer(string accName, int charSlot)
-        {
-            L2Player playerContract = await LoadPlayerInSlot(accName, charSlot);
-            L2Player player = L2World.Instance.GetPlayer(playerContract.ObjId);
-            return player;
-        }
-
-        private void OnReceiveCallbackStatic(IAsyncResult result)
+        public async void Read()
         {
             try
             {
-                int rs = Stream.EndRead(result);
-                if (rs <= 0)
-                    return;
+                while (true)
+                {
+                    if (IsDisconnected)
+                    {
+                        return;
+                    }
 
-                short length = BitConverter.ToInt16(_buffer, 0);
-                _buffer = new byte[length - 2];
-                Stream.BeginRead(_buffer, 0, length - 2, OnReceiveCallback, result.AsyncState);
+                    byte[] _buffer = new byte[2];
+                    int bytesRead = await Stream.ReadAsync(_buffer, 0, 2);
+
+                    if (bytesRead == 0)
+                    {
+                        Log.Debug("Client closed connection");
+                        Disconnect();
+                        return;
+                    }
+
+                    if (bytesRead != 2)
+                    {
+                        throw new Exception("Wrong packet");
+                    }
+
+                    short length = BitConverter.ToInt16(_buffer, 0);
+                    _buffer = new byte[length - 2];
+
+                    bytesRead = await Stream.ReadAsync(_buffer, 0, length - 2);
+
+                    if (bytesRead != length - 2)
+                    {
+                        throw new Exception("Wrong packet");
+                    }
+
+                    _crypt.Decrypt(_buffer);
+
+                    Task.Factory.StartNew(() => _gamePacketHandler.HandlePacket(_buffer.ToPacket(), this));
+                }
             }
-            catch
+            catch(Exception e)
             {
-                Termination();
+                Log.Error(e);
+                Disconnect();
             }
         }
 
-        private void OnReceiveCallback(IAsyncResult result)
+        public void DeleteCharacter(int charSlot)
         {
-            if (IsTerminated)
-                return;
-
-            Stream.EndRead(result);
-
-            byte[] buff = new byte[_buffer.Length];
-            _buffer.CopyTo(buff, 0);
-            _crypt.Decrypt(buff);
-            TrafficUp += _buffer.Length;
-
-            _gamePacketHandler.HandlePacket(new Packet(1, buff), this);
-
-            new System.Threading.Thread(Read).Start();
-        }
-
-        public void RemoveAccountCharAndResetSlotIndex(int charSlot)
-        {
-            AccountChars = AccountChars.Where(filter => filter.CharSlot != charSlot).OrderBy(orderby => orderby.CharSlot).ToList();
-
-            int slot = 0;
-            AccountChars.ForEach(p =>
+            AccountCharacters.RemoveAll(x => x.CharacterSlot == charSlot);
+            
+            for (int i = 0; i < AccountCharacters.Count; i++)
             {
-                p.CharSlot = slot;
-                slot++;
-            });
-        }
+                AccountCharacters[i].CharacterSlot = i;
+            }
 
-        public string AccountName { get; set; }
-        public SessionKey SessionKey { get; set; }
-        public string AccountType { get; set; }
-        public string AccountTimeEnd { get; set; }
-        public DateTime AccountTimeLogIn { get; set; }
-
-        public List<L2Player> AccountChars
-        {
-            get { return _accountChars ?? new List<L2Player>(); }
-            set { _accountChars = value; }
+            AccountCharacters.Select(x => x.ToContract())
+                .AsList()
+                .ForEach(_characterCrudService.Update);
         }
     }
 }

@@ -12,31 +12,12 @@ namespace L2dotNET.Tables
     class StaticObjTable
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        private static volatile StaticObjTable _instance;
-        private static readonly object SyncRoot = new object();
 
-        public static StaticObjTable Instance
+        public static Dictionary<int, L2StaticObject> Objects { get; private set; }
+        
+        public static void Initialize()
         {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
-
-                lock (SyncRoot)
-                {
-                    if (_instance == null)
-                        _instance = new StaticObjTable();
-                }
-
-                return _instance;
-            }
-        }
-
-        public SortedList<int, L2StaticObject> Objects;
-
-        public void Initialize()
-        {
-            Objects = new SortedList<int, L2StaticObject>();
+            Objects = new Dictionary<int, L2StaticObject>();
             using (StreamReader reader = new StreamReader(new FileInfo(@"scripts\staticobjects.txt").FullName))
             {
                 while (!reader.EndOfStream)
@@ -48,7 +29,7 @@ namespace L2dotNET.Tables
                     string[] pt = line.Split('\t');
 
                     L2StaticObject obj = null;
-
+                    //TODO: Implement this
                     switch (pt[1])
                     {
                         case "map":
@@ -123,7 +104,7 @@ namespace L2dotNET.Tables
 
             foreach (L2StaticObject o in Objects.Values)
             {
-                L2World.Instance.AddObject(o);
+                L2World.AddObject(o);
                 o.OnSpawnAsync();
             }
 

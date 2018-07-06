@@ -12,93 +12,78 @@ namespace L2dotNET.Controllers
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private static volatile GameTime _instance;
-        private static readonly object SyncRoot = new object();
+        public static bool Night { get; private set; }
 
-        public static GameTime Instance
+        public static int IngameTime => (int)localTime.TotalSeconds / 6;
+
+        private static readonly GameserverPacket _dayPk = new SunRise();
+        private static readonly GameserverPacket _nightPk = new SunSet();
+
+        private static TimeSpan localTime;
+
+        // TODO: move to config
+        private static readonly int TimeSpeed = 1;
+        private static readonly int DayStart = 6;
+        private static readonly int DayEnd = 22;
+        
+
+        public static void Initialize()
         {
-            get
-            {
-                if (_instance != null)
-                    return _instance;
+            UpdateIngameTime();
 
-                lock (SyncRoot)
+            Task.Factory.StartNew(UpdateTime);
+
+            Log.Info($"[GameTime] Time is set to {localTime.Hours}:{localTime.Minutes}");
+        }
+
+        private static async void UpdateTime()
+        {
+            while (true)
+            {
+                if (UpdateIngameTime())
                 {
-                    if (_instance == null)
-                        _instance = new GameTime();
+                    UpdateTimeForAll();
                 }
 
-                return _instance;
+                await Task.Delay(60 * 1000 / TimeSpeed);
             }
         }
 
-        public int Time;
-        private readonly GameserverPacket _dayPk = new SunRise();
-        private readonly GameserverPacket _nightPk = new SunSet();
-        private System.Timers.Timer _timeController;
-        public DateTime ServerStartUp;
-        public static bool Night;
-
-        private const int SecDay = 10800,
-                          SecNight = 3600,
-                          SecHour = 600,
-                          SecDn = 14400;
-        private const int SecScale = 1800;
-
-        public void Initialize()
+        private static bool UpdateIngameTime()
         {
-            ServerStartUp = DateTime.Now;
-            Time = 5800 + 0; // 10800 18:00 вечер
-            _timeController = new System.Timers.Timer
+            int dayLength = 60 * 24 / TimeSpeed;
+            int localTimeInMinutes = (int)DateTime.Now.TimeOfDay.TotalMinutes % dayLength * TimeSpeed;
+
+            localTime = TimeSpan.FromMinutes(localTimeInMinutes);
+
+            bool night = localTimeInMinutes < DayStart && localTimeInMinutes >= DayEnd;
+
+            if (night != Night)
             {
-                Interval = 1000,
-                Enabled = true
-            };
-            _timeController.Elapsed += ActionTime;
-
-            Log.Info("Started 18:00 PM.");
-        }
-
-        private void ActionTime(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            Time++;
-
-            switch (Time)
-            {
-                case SecDay + SecScale: // 21:00
-                    NotifyStartNight();
-                    break;
-                case SecScale: // 03:00
-                    NotifyStartDay();
-                    break;
+                Night = night;
+                return true;
             }
 
-            if (Time == SecDn)
-                Time = 0;
+            return false;
         }
 
-        private void NotifyStartDay()
+        private static void UpdateTimeForAll()
         {
-            Night = false;
-            L2World.Instance.GetPlayers().ForEach(p => p.NotifyDayChange(_dayPk));
+            L2World.GetPlayers().ForEach(UpdateTimeForPlayer);
         }
 
-        private void NotifyStartNight()
+        public static void UpdateTimeForPlayer(L2Player p)
         {
-            Night = true;
-            L2World.Instance.GetPlayers().ForEach(p => p.NotifyDayChange(_nightPk));
+            p.SendPacketAsync(Night ? _nightPk : _dayPk);
         }
 
-        public void EnterWorld(L2Player p)
+        public static async Task ShowInfoAsync(L2Player player)
         {
-            p.NotifyDayChange(Night ? _nightPk : _dayPk);
-        }
+            DateTime dt = new DateTime(2000, 1, 1, 0, 0, 0).AddSeconds(IngameTime * 6);
 
-        public async Task ShowInfoAsync(L2Player player)
-        {
-            DateTime dt = new DateTime(2000, 1, 1, 0, 0, 0).AddSeconds(Time * 6);
-
-            SystemMessage sm = new SystemMessage(Night ? SystemMessage.SystemMessageId.TimeS1S2InTheNight : SystemMessage.SystemMessageId.TimeS1S2InTheDay);
+            SystemMessage sm = new SystemMessage(Night
+                ? SystemMessage.SystemMessageId.TimeS1S2InTheNight
+                : SystemMessage.SystemMessageId.TimeS1S2InTheDay);
             sm.AddString(dt.ToString("hh"));
             sm.AddString(dt.ToString("mm:ss"));
             await player.SendPacketAsync(sm);

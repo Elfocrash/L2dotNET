@@ -25,7 +25,7 @@ namespace L2dotNET.Managers
                 MaxLevel = maxLevel,
                 LootDist = lootDist,
                 Title = roomTitle,
-                LeaderId = player.ObjId
+                LeaderId = player.ObjectId
             };
             IdFactory++;
             Rooms.Add(roomId, room);

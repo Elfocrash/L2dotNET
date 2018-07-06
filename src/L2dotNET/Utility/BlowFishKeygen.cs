@@ -6,7 +6,6 @@ namespace L2dotNET.Utility
     {
         private const int CryptKeysSize = 20;
         private static readonly byte[][] CryptKeys = new byte[CryptKeysSize][];
-        private static readonly Random Random = new Random();
 
         public static void GenerateKeys()
         {
@@ -15,7 +14,7 @@ namespace L2dotNET.Utility
                 CryptKeys[i] = new byte[16];
 
                 for (int j = 0; j < CryptKeys[i].Length; j++)
-                    CryptKeys[i][j] = (byte)Random.Next(255);
+                    CryptKeys[i][j] = (byte)RandomThreadSafe.Instance.Next(255);
 
                 CryptKeys[i][8] = 0xc8;
                 CryptKeys[i][9] = 0x27;
@@ -30,7 +29,7 @@ namespace L2dotNET.Utility
 
         public static byte[] GetRandomKey()
         {
-            return CryptKeys[Random.Next(CryptKeysSize)];
+            return CryptKeys[RandomThreadSafe.Instance.Next(CryptKeysSize)];
         }
     }
 }

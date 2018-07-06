@@ -55,12 +55,12 @@ namespace L2dotNET.Network.clientpackets
                 //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
                 player.SendActionFailedAsync();
 
-                GameTime.Instance.EnterWorld(player);
+                GameTime.UpdateTimeForPlayer(player);
 
                 player.Timer();
 
                 player.SpawnMeAsync();
-                //L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
+                //L2WorldRegion worldRegion = L2World.GetRegion(player.X, player.Y);
                 //player.SetRegion(worldRegion);
                 //player.getKnowns(500, 500, false);
 
@@ -76,7 +76,7 @@ namespace L2dotNET.Network.clientpackets
                 player.CharStatus.StartHpMpRegeneration();
                 player.ShowHtm("servnews.htm",player);
                 player.BroadcastUserInfoAsync();
-                L2World.Instance.AddPlayer(player);
+                L2World.AddPlayer(player);
             });
         }
 

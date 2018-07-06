@@ -61,9 +61,9 @@ namespace L2dotNET.Network.clientpackets
                     L2Item item = player.Inventory.Items[objectId];
 
                     if (item.Template.Stackable)
-                        totalCost += (int)(item.Count * (item.Template.ReferencePrice * .5));
+                        totalCost += (int)(item.Count * (item.Template.Price * .5));
                     else
-                        totalCost += (int)(item.Template.ReferencePrice * .5);
+                        totalCost += (int)(item.Template.Price * .5);
 
                     weight += item.Template.Weight;
                 }

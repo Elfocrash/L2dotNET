@@ -41,7 +41,7 @@ namespace L2dotNET.Network.clientpackets
                         break;
                     case 52: // /unstuck
 
-                        L2WorldRegion worldRegion = L2World.Instance.GetRegion(player.X, player.Y);
+                        L2WorldRegion worldRegion = L2World.GetRegion(player.X, player.Y);
                         player.SetRegion(worldRegion);
                         List<L2Player> knowns = player.GetKnownPlayers();
                         //player.SpawnMeAsync();
@@ -52,7 +52,7 @@ namespace L2dotNET.Network.clientpackets
                         player.SendMessageAsync("Dismount not implemented yet.");
                         break;
                     case 77: // [time]
-                        GameTime.Instance.ShowInfoAsync(player);
+                        GameTime.ShowInfoAsync(player);
                         break;
                     default:
                         player.SendMessageAsync($"cmd alias {_command}");

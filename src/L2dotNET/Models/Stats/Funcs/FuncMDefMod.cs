@@ -1,33 +1,36 @@
-﻿using L2dotNET.Models.Player;
+﻿using L2dotNET.DataContracts.Shared.Enums;
+using L2dotNET.Models.Player;
 using L2dotNET.Models.Player.Basic;
 using static L2dotNET.Models.Inventory.Inventory;
 
 namespace L2dotNET.Models.Stats.Funcs
 {
-    public class FuncMDefMod : Func
+    public class FuncMDefMod : StatFunction
     {
-        public FuncMDefMod() : base(Stats.MagicDefence, 0x20, null)
+        public static FuncMDefMod Instance = new FuncMDefMod();
+
+        private FuncMDefMod() : base(CharacterStatId.MagicDefence, 0x20)
         {
         }
 
 
-        public override void Calculate(Env env)
+        public override void Calculate(StatFunctionEnvironment statFuncEnv)
         {
-            if (env.Character is L2Player player)
+            if (statFuncEnv.Character is L2Player player)
             {
                 if (player.Inventory.GetPaperdollItem(PaperdollLfinger) != null)
-                    env.SubValue(5);
+                    statFuncEnv.SubValue(5);
                 if (player.Inventory.GetPaperdollItem(PaperdollRfinger) != null)
-                    env.SubValue(5);
+                    statFuncEnv.SubValue(5);
                 if (player.Inventory.GetPaperdollItem(PaperdollLear) != null)
-                    env.SubValue(9);
+                    statFuncEnv.SubValue(9);
                 if (player.Inventory.GetPaperdollItem(PaperdollRear) != null)
-                    env.SubValue(9);
+                    statFuncEnv.SubValue(9);
                 if (player.Inventory.GetPaperdollItem(PaperdollNeck) != null)
-                    env.SubValue(13);
+                    statFuncEnv.SubValue(13);
             }
 
-            env.MulValue(Formulas.MenBonus[env.Character.CharacterStat.Men] * env.Character.GetLevelMod());
+            statFuncEnv.MulValue(Formulas.MenBonus[statFuncEnv.Character.CharacterStat.Men] * statFuncEnv.Character.GetLevelMod());
         }
     }
 }

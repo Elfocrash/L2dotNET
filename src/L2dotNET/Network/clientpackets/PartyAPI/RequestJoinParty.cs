@@ -33,7 +33,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
                 //}
 
                 //if (target == null)
-                //    target = L2World.Instance.GetPlayer(name);
+                //    target = L2World.GetPlayer(name);
 
                 if (target == null)
                 {
@@ -79,7 +79,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
                     return;
                 }
 
-                if ((player.Party != null) && (player.Party.Leader.ObjId != player.ObjId))
+                if ((player.Party != null) && (player.Party.Leader.ObjectId != player.ObjectId))
                 {
                     player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLeaderCanInvite);
                     player.SendActionFailedAsync();

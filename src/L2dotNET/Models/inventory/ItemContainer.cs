@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using L2dotNET.DataContracts;
 using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Items;
@@ -7,32 +8,36 @@ using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Tables;
 using L2dotNET.World;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace L2dotNET.Models.Inventory
 {
     public abstract class ItemContainer
     {
-        private readonly ICrudService<ItemContract> _itemCrudService;
-        protected readonly IItemService ItemService;
-        private readonly IdFactory _idFactory;
-        private readonly ItemTable _itemTable;
+        protected readonly ICrudService<ItemContract> _itemCrudService;
+        protected readonly IItemService _itemService;
+        protected readonly IdFactory _idFactory;
+        protected readonly ItemTable _itemTable;
 
-        public List<L2Item> Items;
+        public List<L2Item> Items { get; }
 
-        protected ItemContainer(ICrudService<ItemContract> itemCrudService, IItemService itemService, IdFactory idFactory, ItemTable itemTable)
+        protected ItemContainer(L2Character owner)
         {
-            _itemCrudService = itemCrudService;
-            ItemService = itemService;
-            _idFactory = idFactory;
-            _itemTable = itemTable;
+            Owner = owner;
+
+            _itemService = GameServer.ServiceProvider.GetService<IItemService>();
+            _itemTable = GameServer.ServiceProvider.GetService<ItemTable>();
+            _idFactory = GameServer.ServiceProvider.GetService<IdFactory>();
+            _itemCrudService = GameServer.ServiceProvider.GetService<ICrudService<ItemContract>>();
+
             Items = new List<L2Item>();
         }
 
-        protected abstract L2Character Owner { get; set; }
+        protected L2Character Owner { get; set; }
 
-        protected abstract ItemLocation BaseLocation { get; }
+        protected ItemLocation BaseLocation { get; }
 
-        public int OwnerId => Owner?.ObjId ?? 0;
+        public int OwnerId => Owner?.ObjectId ?? 0;
 
         public int Count =>Items.Count;
 
@@ -55,17 +60,17 @@ namespace L2dotNET.Models.Inventory
 
         public L2Item GetItemByObjectId(int objectId)
         {
-            return Items.FirstOrDefault(item => item.ObjId == objectId);
+            return Items.FirstOrDefault(item => item.ObjectId == objectId);
         }
 
-        public virtual async void Restore(L2Character owner)
+        public virtual async Task Restore(L2Character owner)
         {
-            IEnumerable<ItemContract> models = await ItemService.RestoreInventory(owner.ObjId);
+            IEnumerable<ItemContract> models = await _itemService.RestoreInventory(owner.ObjectId);
             List<L2Item> items = RestoreFromDb(models.ToList());
 
             foreach (L2Item item in items)
             {
-                L2World.Instance.AddObject(item);
+                L2World.AddObject(item);
                 Owner = owner;
                 AddItem(item, (L2Player)Owner);
             }
@@ -79,7 +84,7 @@ namespace L2dotNET.Models.Inventory
         {
             L2Item item = new L2Item(_itemCrudService, _idFactory, _itemTable.GetItem(contract.ItemId), _idFactory.NextId())
             {
-                ObjId = contract.ObjectId,
+                ObjectId = contract.ObjectId,
                 Count = contract.Count,
                 CustomType1 = contract.CustomType1,
                 CustomType2 = contract.CustomType2,
@@ -95,7 +100,7 @@ namespace L2dotNET.Models.Inventory
         {
             if (item != null)
             {
-                item.OwnerId = player.ObjId;
+                item.OwnerId = player.ObjectId;
                 //item.SlotLocation = 0;
                 Items.Add(item);
 
@@ -121,7 +126,7 @@ namespace L2dotNET.Models.Inventory
                         return null;
 
                     item = _itemTable.CreateItem(itemId, count, player);
-                    item.OwnerId = player.ObjId;
+                    item.OwnerId = player.ObjectId;
                     item.SlotLocation = 0;
                     item.ExistsInDb = ExistsInDb;
                     item.Location = ItemLocation.Inventory;

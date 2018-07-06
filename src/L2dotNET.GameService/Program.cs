@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using L2dotNET.ConsoleCommand;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Handlers;
 using L2dotNET.Logging.Abstraction;
 using L2dotNET.Managers;
@@ -21,55 +25,44 @@ namespace L2dotNET.GameService
 {
     class Program
     {
-        
-        [DllImport("Kernel32")]
-        public static extern bool SetConsoleCtrlHandler(HandlerRoutine Handler, bool Add);
-
-        // A delegate type to be used as the handler routine 
-        // for SetConsoleCtrlHandler.
-        public delegate bool HandlerRoutine(CtrlTypes CtrlType);
-
-        // An enumerated type for the control messages
-        // sent to the handler routine.
-        public enum CtrlTypes
-        {
-            CTRL_C_EVENT = 0,
-            CTRL_BREAK_EVENT,
-            CTRL_CLOSE_EVENT,
-            CTRL_LOGOFF_EVENT = 5,
-            CTRL_SHUTDOWN_EVENT
-        }
-
-        static ConsoleCommandController consoleCommandController;
-
-        private static bool ConsoleCtrlCheck(CtrlTypes ctrlType)
-        {
-            if(consoleCommandController != null)
-            consoleCommandController.isWorkConsoleEnter = false;
-            return true;
-        }
-
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+
+        private static ConsoleCommandController consoleCommandController;
 
         private static void Main()
         {
             ClassLoggerConfigurator.ConfigureClassLogger($"{Assembly.GetExecutingAssembly().Location}.log");
+
+            TaskScheduler.UnobservedTaskException += (sender, e) =>
+                {
+                    Log.ErrorTrace(e.Exception, "UnobservedTaskException");
+                };
+
             consoleCommandController = new ConsoleCommandController();
-            consoleCommandController.Launch();
-            try { 
+            consoleCommandController.Start();
+
+            try
+            { 
                 Log.Info("Starting GameService...");
+
                 SetConsoleConfigurations();
                 SetNumberDecimalSeparator();
-                var serviceCollection = new ServiceCollection();
+
+                ServiceCollection serviceCollection = new ServiceCollection();
                 ConfigureServices(serviceCollection);
-                var serviceProvider = serviceCollection.BuildServiceProvider();
-                serviceProvider.GetService<GameServer>().Start();
-                Process.GetCurrentProcess().WaitForExit();
+
+                IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
+
+                Task.Factory.StartNew(serviceProvider.GetService<GameServer>().Start);
             }
             catch(Exception ex)
             {
                 Console.WriteLine("EXCEPTION : " + ex.Message + " " + ex.Data + " " + ex.Source + ex.StackTrace);
             }
+
+            Process.GetCurrentProcess().WaitForExit();
+            Log.Info("Press ENTER to exit...");
+            Console.Read();
         }
 
         private static void ConfigureServices(IServiceCollection serviceCollection)

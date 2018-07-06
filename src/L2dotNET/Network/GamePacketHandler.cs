@@ -259,24 +259,26 @@ namespace L2dotNET.Network
             Log.Info($"Received packet: {packet.FirstOpcode:X2}:{packet.SecondOpcode:X2}");
             PacketBase packetBase = null;
 
-            if (packet.FirstOpcode != 0xD0)
+            if (packet.FirstOpcode != 0xD0 && ClientPackets.ContainsKey(packet.FirstOpcode))
             {
-                Log.Info($"Received packet with Opcode:{packet.FirstOpcode:X2}");
-                if (ClientPackets.ContainsKey(packet.FirstOpcode))
-                    packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], _serviceProvider, packet, client);
+                Log.Info($"Received packet of type: {ClientPackets[packet.FirstOpcode].Name}");
+                packetBase = (PacketBase)Activator.CreateInstance(ClientPackets[packet.FirstOpcode], _serviceProvider, packet, client);
             }
-            else
+            else if (ClientPacketsD0.ContainsKey((short) packet.SecondOpcode))
             {
-                Log.Info($"Received packet with Opcode 0xD0 and seccond Opcode:{packet.SecondOpcode:X2}");
-                if (ClientPacketsD0.ContainsKey((short)packet.SecondOpcode))
-                    packetBase = (PacketBase)Activator.CreateInstance(ClientPacketsD0[(short)packet.SecondOpcode], _serviceProvider, packet, client);
+                Log.Info($"Received packet with Opcode 0xD0 of type: {ClientPacketsD0[(short) packet.SecondOpcode].Name}");
+                packetBase = (PacketBase)Activator.CreateInstance(ClientPacketsD0[(short)packet.SecondOpcode], _serviceProvider, packet, client);
             }
 
-            if (client.IsTerminated)
+            if (client.IsDisconnected)
+            {
                 return;
+            }
 
             if (packetBase == null)
+            {
                 throw new ArgumentNullException(nameof(packetBase), $"Packet with opcode: {packet.FirstOpcode:X2} doesn't exist in the dictionary.");
+            }
 
             packetBase.RunImpl();
         }

@@ -87,6 +87,13 @@ namespace L2dotNET.LoginService.Network
                     byte[] buffer = new byte[2];
                     int bytesRead = await _networkStream.ReadAsync(buffer, 0, 2);
 
+                    if (bytesRead == 0)
+                    {
+                        Log.Debug("Client closed connection");
+                        Close();
+                        return;
+                    }
+
                     if (bytesRead != 2)
                     {
                         throw new Exception("Wrong package structure");

@@ -5,7 +5,6 @@ namespace L2dotNET.Shared
 {
     public static class Utilities
     {
-
         /// <summary>
         /// String extension method in order
         /// to check if two strings match no matter the case
