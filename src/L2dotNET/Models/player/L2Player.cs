@@ -199,8 +199,8 @@ namespace L2dotNET.Models.Player
             BaseClass = template;
             ActiveClass = template;
             CharStatus.CurrentCp = MaxCp;
-            CharStatus.SetCurrentHp(MaxHp);
-            CharStatus.SetCurrentMp(MaxMp);
+            CharStatus.SetCurrentHp(MaxHp, false);
+            CharStatus.SetCurrentMp(MaxMp, false);
             X = template.SpawnX;
             Y = template.SpawnY;
             Z = template.SpawnZ;

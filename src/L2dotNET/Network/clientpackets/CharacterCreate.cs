@@ -81,11 +81,7 @@ namespace L2dotNET.Network.clientpackets
                     CharacterSlot = _client.AccountCharacters.Count
                 };
 
-
-            
-
             _characterService.CreatePlayer(player);
-            //player = PlayerService.RestorePlayer(player.ObjId, _client);
             player.Gameclient.AccountCharacters.Add(player);
             _client.SendPacketAsync(new CharCreateOk());
             L2World.AddPlayer(player);

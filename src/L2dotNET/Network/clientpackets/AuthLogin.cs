@@ -88,6 +88,7 @@ namespace L2dotNET.Network.clientpackets
 
                 player.CharacterSlot = slot++;
                 player.Gameclient = _client;
+                player.Account = account;
                 _client.AccountCharacters.Add(player);
             }
 
