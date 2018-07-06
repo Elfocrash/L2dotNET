@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using L2dotNET.Models.Player;
 using L2dotNET.Services.Contracts;
@@ -8,8 +9,6 @@ namespace L2dotNET.Network.clientpackets
 {
     class CharacterSelected : PacketBase
     {
-        private readonly ICharacterService _characterService;
-
         private readonly GameClient _client;
         private readonly int _charSlot;
         private readonly int _unk1; // new in C4
@@ -20,7 +19,6 @@ namespace L2dotNET.Network.clientpackets
         public CharacterSelected(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
-            _characterService = serviceProvider.GetService<ICharacterService>();
             _charSlot = packet.ReadInt();
             _unk1 = packet.ReadShort();
             _unk2 = packet.ReadInt();
@@ -35,10 +33,11 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            L2Player player = await _characterService.GetPlayerBySlotId(_client.Account.AccountId, _charSlot);
+            L2Player player = _client.AccountCharacters.FirstOrDefault(x => x.CharacterSlot == _charSlot);
 
             if (player == null)
             {
+                Log.Error("Selected character slot is invalid");
                 return;
             }
 

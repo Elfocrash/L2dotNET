@@ -12,15 +12,12 @@ namespace L2dotNET
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private readonly ICharacterService CharacterService;
-
         private readonly ConcurrentDictionary<string, DateTime> _flood;
         private readonly ConcurrentDictionary<string, GameClient> _loggedClients;
         private readonly GamePacketHandler _gamePacketHandler;
 
-        public ClientManager(ICharacterService characterService, GamePacketHandler gamePacketHandler)
+        public ClientManager(GamePacketHandler gamePacketHandler)
         {
-            CharacterService = characterService;
             _gamePacketHandler = gamePacketHandler;
 
             _flood = new ConcurrentDictionary<string, DateTime>();
@@ -53,7 +50,7 @@ namespace L2dotNET
                 return;
             }
 
-            GameClient gameClient = new GameClient(CharacterService, this, client, _gamePacketHandler);
+            GameClient gameClient = new GameClient(this, client, _gamePacketHandler);
 
             _loggedClients.TryAdd(gameClient.Address.ToString(), gameClient);
 

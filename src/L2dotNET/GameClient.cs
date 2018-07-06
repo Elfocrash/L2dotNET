@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using Dapper;
 using L2dotNET.DataContracts;
 using L2dotNET.Encryption;
 using L2dotNET.Models.Player;
@@ -12,6 +13,7 @@ using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
 using L2dotNET.Utility;
 using L2dotNET.World;
+using Microsoft.Extensions.DependencyInjection;
 using NLog;
 
 namespace L2dotNET
@@ -35,12 +37,12 @@ namespace L2dotNET
 
         public List<L2Player> AccountCharacters { get; }
 
-        private readonly ICharacterService _characterService;
+        private readonly ICrudService<CharacterContract> _characterCrudService;
         private readonly ClientManager _clientManager;
         private readonly GamePacketHandler _gamePacketHandler;
         private readonly GameCrypt _crypt;
 
-        public GameClient(ICharacterService characterService, ClientManager clientManager, TcpClient tcpClient, GamePacketHandler gamePacketHandler)
+        public GameClient(ClientManager clientManager, TcpClient tcpClient, GamePacketHandler gamePacketHandler)
         {
             Log.Info($"Connection from {tcpClient.Client.RemoteEndPoint}");
 
@@ -50,7 +52,7 @@ namespace L2dotNET
             AccountCharacters = new List<L2Player>();
 
             _crypt = new GameCrypt();
-            _characterService = characterService;
+            _characterCrudService = GameServer.ServiceProvider.GetService<ICrudService<CharacterContract>>();
             _gamePacketHandler = gamePacketHandler;
             _clientManager = clientManager;
 
@@ -155,13 +157,6 @@ namespace L2dotNET
             }
         }
 
-        public async Task<L2Player> GetPlayer(int accountId, int charSlot)
-        {
-            L2Player playerContract = await _characterService.GetPlayerBySlotId(accountId, charSlot);
-            L2Player player = L2World.GetPlayer(playerContract.ObjectId);
-            return player;
-        }
-
         public void DeleteCharacter(int charSlot)
         {
             AccountCharacters.RemoveAll(x => x.CharacterSlot == charSlot);
@@ -170,6 +165,10 @@ namespace L2dotNET
             {
                 AccountCharacters[i].CharacterSlot = i;
             }
+
+            AccountCharacters.Select(x => x.ToContract())
+                .AsList()
+                .ForEach(_characterCrudService.Update);
         }
     }
 }
