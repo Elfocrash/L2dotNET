@@ -204,6 +204,7 @@ namespace L2dotNET.Models.Player
             X = template.SpawnX;
             Y = template.SpawnY;
             Z = template.SpawnZ;
+            LastAccess =  DateTime.UtcNow;
 
             if (template.DefaultInventory != null)
             {

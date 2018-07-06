@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Services.Contracts;
+using L2dotNET.Utility;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 
@@ -11,31 +13,24 @@ namespace L2dotNET.Network.clientpackets
 {
     class CharacterRestore : PacketBase
     {
-        public readonly ICharacterService CharacterService;
-
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
+        private readonly ICrudService<CharacterContract> _characterCrudService;
         private readonly GameClient _client;
         private readonly int _charSlot;
 
         public CharacterRestore(IServiceProvider serviceProvider, Packet packet, GameClient client) : base(serviceProvider)
         {
             _client = client;
-            CharacterService = serviceProvider.GetService<ICharacterService>();
+            _characterCrudService = serviceProvider.GetService<ICrudService<CharacterContract>>();
             _charSlot = packet.ReadInt();
         }
 
         public override async Task RunImpl()
         {
-            //if (!FloodProtectors.performAction(getClient(), Action.CHARACTER_SELECT))
-            //    return;
+            ValidateAndRestore();
 
-            await Task.Run(() =>
-            {
-                ValidateAndRestore();
-
-                _client.SendPacketAsync(new CharList(_client.Account.Login, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
-            });
+            _client.SendPacketAsync(new CharList(_client.Account.Login, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
         }
 
         private void ValidateAndRestore()
@@ -48,8 +43,8 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            //_playerService.MarkToRestoreChar(player.ObjId);
             player.DeleteTime = null;
+            _characterCrudService.Update(player.ToContract());
         }
     }
 }
