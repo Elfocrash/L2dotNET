@@ -30,7 +30,7 @@ namespace L2dotNET.Network.clientpackets
         {
             ValidateAndRestore();
 
-            _client.SendPacketAsync(new CharList(_client.Account.Login, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
+            _client.SendPacketAsync(new CharList(_client, _client.SessionKey.PlayOkId1));
         }
 
         private void ValidateAndRestore()

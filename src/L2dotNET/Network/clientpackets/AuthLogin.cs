@@ -39,7 +39,7 @@ namespace L2dotNET.Network.clientpackets
         {
             if (_client.Account != null)
             {
-                _client.Disconnect();
+                _client.CloseConnection();
                 return;
             }
 
@@ -48,7 +48,7 @@ namespace L2dotNET.Network.clientpackets
             if (accountTuple == null)
             {
                 Log.Error($"Account is not awaited. Disconnecting. Login: {_loginName}");
-                _client.Disconnect();
+                _client.CloseConnection();
                 return;
             }
 
@@ -60,14 +60,14 @@ namespace L2dotNET.Network.clientpackets
             if ((DateTime.UtcNow - waitStarTime).TotalMilliseconds > 5000)
             {
                 Log.Error($"Account login timeout. AccountId: {account.AccountId}");
-                _client.Disconnect();
+                _client.CloseConnection();
                 return;
             }
 
             if (accountKey != _key)
             {
                 Log.Error($"Invalid SessionKey. AccountId: {account.AccountId}");
-                _client.Disconnect();
+                _client.CloseConnection();
                 return;
             }
 
@@ -75,26 +75,9 @@ namespace L2dotNET.Network.clientpackets
 
             _client.Account = account;
 
-            IEnumerable<L2Player> players = await _characterService.GetPlayersOnAccount(account.AccountId);
+            await _client.FetchAccountCharacters();
 
-            int slot = 0;
-            foreach (L2Player player in players)
-            {
-                if (player.CharDeleteTimeExpired())
-                {
-                    _characterService.DeleteCharById(player.ObjectId);
-                    continue;
-                }
-
-                player.CharacterSlot = slot++;
-                player.Gameclient = _client;
-                player.Account = account;
-                _client.AccountCharacters.Add(player);
-            }
-
-            _client.SendPacketAsync(new CharList(_client.Account.Login,
-                _client.AccountCharacters,
-                _client.SessionKey.PlayOkId1));
+            _client.SendPacketAsync(new CharList(_client, _client.SessionKey.PlayOkId1));
             _authThread.SetInGameAccount(_client.Account.Login, true);
 
         }

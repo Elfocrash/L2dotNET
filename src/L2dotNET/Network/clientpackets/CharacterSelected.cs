@@ -41,10 +41,8 @@ namespace L2dotNET.Network.clientpackets
                 return;
             }
 
-            player.Online = 1;
-            player.Gameclient = _client;
-            _client.CurrentPlayer = player;
-
+            player.SetOnline(_client);
+            _client.AccountCharacters = null;
             _client.SendPacketAsync(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
         }
     }

@@ -37,7 +37,7 @@ namespace L2dotNET.Models.Player
         public new PlayerStatus CharStatus => (PlayerStatus) base.CharStatus;
 
         public AccountContract Account { get; set; }
-        public GameClient Gameclient { get; set; }
+        public GameClient Gameclient { get; private set; }
 
         public ClassId ClassId { get; set; }
         public L2PartyRoom PartyRoom { get; set; }
@@ -64,7 +64,7 @@ namespace L2dotNET.Models.Player
         public int RecomendationsLeft { get; set; }
         public int RecomandationsHave { get; set; }
         public int AccessLevel { get; set; }
-        public int Online { get; set; }
+        public int Online { get; private set; }
         public int OnlineTime { get; set; }
         public int CharacterSlot { get; set; }
         public int CurrentWeight { get; set; }
@@ -616,25 +616,29 @@ namespace L2dotNET.Models.Player
             //     }
         }
 
-        public override void DeleteMe()
+        public void SetOnline(GameClient client)
         {
-            CleanUp();
-            //Store();
-            base.DeleteMe();
+            Online = 1;
+            client.CurrentPlayer = this;
+            Gameclient = client;
+            L2World.AddPlayer(this);
         }
 
-        public void CleanUp()
+        public async Task SetOffline()
         {
-            if (!IsRestored)
-                return;
+            Online = 0;
 
             Party?.Leave(this);
 
-            Online = 0;
-            _characterService.UpdatePlayer(this);
+            if (CharMovement.IsMoving)
+            {
+                CharMovement.UpdatePosition();
+                CharMovement.NotifyStopMove();
+            }
+
+            await _characterService.UpdatePlayer(this);
             L2World.RemovePlayer(this);
             DecayMe();
-
         }
 
         public bool HasItem(int itemId, int count)

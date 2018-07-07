@@ -88,7 +88,6 @@ namespace L2dotNET.Utility
                     LastAccess = characterContract.LastAccess,
                     CanCraft = characterContract.CanCraft,
                     AccessLevel = characterContract.AccessLevel,
-                    Online = characterContract.Online,
                     OnlineTime = characterContract.OnlineTime,
                     PunishLevel = characterContract.PunishLevel,
                     PunishTime = characterContract.PunishTime,

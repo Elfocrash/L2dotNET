@@ -35,12 +35,13 @@ namespace L2dotNET
         public DateTime AccountTimeLogIn { get; set; }
         public bool IsDisconnected { get; set; }
 
-        public List<L2Player> AccountCharacters { get; }
+        public List<L2Player> AccountCharacters { get; private set; }
 
         private readonly ICrudService<CharacterContract> _characterCrudService;
         private readonly ClientManager _clientManager;
         private readonly GamePacketHandler _gamePacketHandler;
         private readonly GameCrypt _crypt;
+        private readonly ICharacterService _characterService;
 
         public GameClient(ClientManager clientManager, TcpClient tcpClient, GamePacketHandler gamePacketHandler)
         {
@@ -53,6 +54,7 @@ namespace L2dotNET
 
             _crypt = new GameCrypt();
             _characterCrudService = GameServer.ServiceProvider.GetService<ICrudService<CharacterContract>>();
+            _characterService = GameServer.ServiceProvider.GetService<ICharacterService>();
             _gamePacketHandler = gamePacketHandler;
             _clientManager = clientManager;
 
@@ -88,11 +90,11 @@ namespace L2dotNET
             catch
             {
                 Log.Info($"Client {Account?.AccountId} terminated.");
-                Disconnect();
+                CloseConnection();
             }
         }
 
-        public void Disconnect()
+        public void CloseConnection()
         {
             Log.Info("termination");
 
@@ -103,7 +105,7 @@ namespace L2dotNET
 
             if(CurrentPlayer?.Online == 1)
             {
-                CurrentPlayer?.DeleteMe();
+                CurrentPlayer?.SetOffline();
             }
 
             _clientManager.Disconnect(Address.ToString());
@@ -126,7 +128,7 @@ namespace L2dotNET
                     if (bytesRead == 0)
                     {
                         Log.Debug("Client closed connection");
-                        Disconnect();
+                        CloseConnection();
                         return;
                     }
 
@@ -153,7 +155,7 @@ namespace L2dotNET
             catch(Exception e)
             {
                 Log.Error(e);
-                Disconnect();
+                CloseConnection();
             }
         }
 
@@ -168,7 +170,33 @@ namespace L2dotNET
 
             AccountCharacters.Select(x => x.ToContract())
                 .AsList()
-                .ForEach(_characterCrudService.Update);
+                .ForEach(x => _characterCrudService.Update(x));
+        }
+
+        public async Task Disconnect()
+        {
+            await CurrentPlayer?.SetOffline();
+            CurrentPlayer = null;
+        }
+
+        public async Task FetchAccountCharacters()
+        {
+            IEnumerable<L2Player> players = await _characterService.GetPlayersOnAccount(Account.AccountId);
+            AccountCharacters = new List<L2Player>();
+
+            int slot = 0;
+            foreach (L2Player player in players)
+            {
+                if (player.CharDeleteTimeExpired())
+                {
+                    _characterService.DeleteCharById(player.ObjectId);
+                    continue;
+                }
+
+                player.CharacterSlot = slot++;
+                player.Account = Account;
+                AccountCharacters.Add(player);
+            }
         }
     }
 }
