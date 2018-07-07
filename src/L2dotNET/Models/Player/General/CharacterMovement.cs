@@ -59,18 +59,21 @@ namespace L2dotNET.Models.Player.General
         private readonly L2Character _character;
         private long _movementLastTime;
         private long _movementUpdateTime;
-
+        private L2Character _attackTarget;
         private int _x;
         private int _y;
 
         public CharacterMovement(L2Character character)
         {
             _character = character;
+            _attackTarget = null;
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
         private void PerformMove(bool forceUpdate = false)
         {
+            //await ValidateWaterZones();
+
             if (!IsMoving)
             {
                 return;
@@ -228,75 +231,9 @@ namespace L2dotNET.Models.Player.General
 
         public async Task MoveToAndHit(int x, int y, int z, L2Character target)
         {
-           /* if (CantMove())
-            {
-                await SendActionFailedAsync();
-                return;
-            }
-
-            if (IsAttacking())
-            {
-                AbortAttack();
-            }
-
-            if (_updatePositionTime.Enabled) // новый маршрут, но старый не закончен
-            {
-                await NotifyStopMoveAsync(false);
-            }
-
-            DestX = x;
-            DestY = y;
-            DestZ = z;
-
-            double dx = x - X,
-                   dy = y - Y;
-            //dz = (z - Z);
-            double distance = GetPlanDistanceSq(x, y);
-
-            double spy = dy / distance,
-                   spx = dx / distance;
-
-            double speed = 130; //TODO: Human Figher Speed Based, need get characters run speed
-
-            //TODO: check possible divisions by zero
-            _ticksToMove =
-                (int) Math.Ceiling((10 * distance) /
-                                   speed); //Client Response time = 1000ms, XYZ server check = 100ms (distance * 10 to get better precision)
-            _ticksToMoveCompleted = 0;
-            _xSpeedTicks = (DestX - X) / (float) _ticksToMove;
-            _ySpeedTicks = (DestY - Y) / (float) _ticksToMove;
-
-            Heading = (int) ((Math.Atan2(-spx, -spy) * 10430.378) + short.MaxValue);
-
-            await BroadcastPacketAsync(new CharMoveToLocation(this));
-
-            _updatePositionTime.Enabled = true;*/
+            _attackTarget = target;
+            MoveTo(x, y, z);
         }
-
-        /*private async void UpdatePositionTask(object sender, ElapsedEventArgs e)
-        {
-            await ValidateWaterZones();
-
-            if ((DestX == X) && (DestY == Y) && (DestZ == Z))
-            {
-                await NotifyArrivedAsync();
-                return;
-            }
-
-            if (_ticksToMove > _ticksToMoveCompleted)
-            {
-                _ticksToMoveCompleted++;
-                X += (int) _xSpeedTicks;
-                Y += (int) _ySpeedTicks;
-            }
-            else
-            {
-                X = DestX;
-                Y = DestY;
-                Z = DestZ;
-                await NotifyArrivedAsync();
-            }
-        }*/
 
         public async Task NotifyStopMove(bool broadcast = true)
         {
@@ -312,9 +249,11 @@ namespace L2dotNET.Models.Player.General
         {
             IsMoving = false;
 
-            //if (TargetToHit != null)
-            // await DoAttackAsync(TargetToHit);
-
+            if (_attackTarget != null)
+            {
+               await _character.DoAttackAsync(_attackTarget);
+                _attackTarget = null;
+            }
         }
     }
 }
