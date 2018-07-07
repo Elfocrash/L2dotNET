@@ -139,7 +139,7 @@ namespace L2dotNET.Models.Player.General
             return true;
         }
 
-        private void UpdatePosition()
+        public void UpdatePosition()
         {
             PerformMove(true);
         }

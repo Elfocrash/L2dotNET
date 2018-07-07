@@ -240,12 +240,6 @@ namespace L2dotNET.Models
             RevalidateZone(true);
         }
 
-        public virtual void DeleteMe()
-        {
-            //foreach (L2Player o in KnownObjects.Values.OfType<L2Player>())
-            //    o.SendPacket(new DeleteObject(ObjId));
-        }
-
         public void RevalidateZone(bool force)
         {
             if (Region == null)

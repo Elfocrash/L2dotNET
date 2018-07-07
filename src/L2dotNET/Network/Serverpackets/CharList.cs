@@ -7,37 +7,35 @@ namespace L2dotNET.Network.serverpackets
 {
     class CharList : GameserverPacket
     {
-        private readonly List<L2Player> _players;
-        private readonly string _account;
+        private readonly GameClient _client;
         private readonly int _sessionId;
 
-        public CharList(string account, List<L2Player> players, int sessionId)
+        public CharList(GameClient client, int sessionId)
         {
-            _players = players;
-            _account = account;
+            _client = client;
             _sessionId = sessionId;
         }
 
         public override void Write()
         {
             WriteByte(0x13);
-            WriteInt(_players.Count);
+            WriteInt(_client.AccountCharacters.Count);
 
             int lastUsedCharId = 0;
 
-            if (_players.Count > 0)
+            if (_client.AccountCharacters.Count > 0)
             {
-                L2Player lastUsedChar = _players.OrderByDescending(sort => sort.LastAccess)
+                L2Player lastUsedChar = _client.AccountCharacters.OrderByDescending(sort => sort.LastAccess)
                     .FirstOrDefault(filter => !filter.DeleteTime.HasValue);
 
                 lastUsedCharId = lastUsedChar?.ObjectId ?? 0;
             }
 
-            foreach (L2Player player in _players)
+            foreach (L2Player player in _client.AccountCharacters)
             {
                 WriteString(player.Name);
                 WriteInt(player.ObjectId);
-                WriteString(_account);
+                WriteString(_client.Account.Login);
                 WriteInt(_sessionId);
                 WriteInt(0);//player.ClanId
                 WriteInt(0x00); // ??   

@@ -16,33 +16,33 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
+            L2Player player = _client.CurrentPlayer;
+
+            if (player == null)
             {
-                L2Player player = _client.CurrentPlayer;
+                return;
+            }
 
-                if (player == null)
-                    return;
+            if (player.PBlockAct == 1)
+            {
+                player.SendActionFailedAsync();
+                return;
+            }
 
-                if (player.PBlockAct == 1)
-                {
-                    player.SendActionFailedAsync();
-                    return;
-                }
+            if (player.isInCombat())
+            {
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CantRestartWhileFighting);
+                player.SendActionFailedAsync();
+                return;
+            }
 
-                if (player.isInCombat())
-                {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.CantRestartWhileFighting);
-                    player.SendActionFailedAsync();
-                    return;
-                }
+            await _client.Disconnect();
+            player.SendPacketAsync(new RestartResponse());
 
-                player.Online = 0;
-                player.DeleteMe();
-                player.SendPacketAsync(new RestartResponse());
+            await _client.FetchAccountCharacters();
 
-                CharList csl = new CharList(_client.Account.Login, _client.AccountCharacters, _client.SessionKey.PlayOkId1);
-                player.SendPacketAsync(csl);
-            });
+            CharList csl = new CharList(_client, _client.SessionKey.PlayOkId1);
+            player.SendPacketAsync(csl);
         }
     }
 }

@@ -77,15 +77,13 @@ namespace L2dotNET.Network.clientpackets
                     HairStyleId = (HairStyleId) _hairStyle,
                     HairColor = (HairColor) _hairColor,
                     Face = (Face) _face,
-                    Gameclient = _client,
                     CharacterSlot = _client.AccountCharacters.Count
                 };
 
             _characterService.CreatePlayer(player);
-            player.Gameclient.AccountCharacters.Add(player);
+            _client.AccountCharacters.Add(player);
             _client.SendPacketAsync(new CharCreateOk());
-            L2World.AddPlayer(player);
-            _client.SendPacketAsync(new CharList(_client.Account.Login, _client.AccountCharacters, _client.SessionKey.PlayOkId1));
+            _client.SendPacketAsync(new CharList(_client, _client.SessionKey.PlayOkId1));
         }
 
         private async Task<bool> IsValidChar()

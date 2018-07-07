@@ -19,35 +19,28 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
+            L2Player player = _client.CurrentPlayer;
+
+            if (player == null)
             {
-                //_authThread.SetInGameAccount(_client.Account);
+                return;
+            }
 
-                L2Player player = _client.CurrentPlayer;
+            if (player.PBlockAct == 1)
+            {
+                player.SendActionFailedAsync();
+                return;
+            }
 
-                if (player == null)
-                    return;
+            if (player.isInCombat())
+            {
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CantLogoutWhileFighting);
+                player.SendActionFailedAsync();
+                return;
+            }
 
-                if (player.PBlockAct == 1)
-                {
-                    player.SendActionFailedAsync();
-                    return;
-                }
-
-                if (player.isInCombat())
-                {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.CantLogoutWhileFighting);
-                    player.SendActionFailedAsync();
-                    return;
-                }
-
-                if (player.Online == 1)
-                {
-                    player.Online = 0;
-                    player.DeleteMe();
-                }
-                player.SendPacketAsync(new LeaveWorld());
-            });
+            _client.Disconnect();
+            player.SendPacketAsync(new LeaveWorld());
         }
     }
 }
