@@ -29,74 +29,52 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
-            {
-                L2Player player = _client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
-                player.SetCharLastAccess();
-                CharacterService.UpdatePlayer(player);
+            player.SetCharLastAccess();
+            CharacterService.UpdatePlayer(player);
 
-                player.TotalRestore();
+            player.TotalRestore();
 
-                player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.WelcomeToLineage));
+            player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.WelcomeToLineage));
 
-                _announcementManager.OnEnter(player);
+            _announcementManager.OnEnter(player);
 
-                foreach (L2Item item in player.Inventory.Items.Where(item => item.IsEquipped != 0))
-                    item.NotifyStats(player);
-            
-                // player.sendItemList(false);
-                player.SendPacketAsync(new FriendList());
-                player.SendQuestList();
-                player.UpdateReuse();
+            foreach (L2Item item in player.Inventory.Items.Where(item => item.IsEquipped != 0))
+                item.NotifyStats(player);
 
-                player.SendPacketAsync(new ExStorageMaxCount(player));
-                // player.sendPacket(new ExBasicActionList());
-                //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
-                player.SendActionFailedAsync();
+            // player.sendItemList(false);
+            player.SendPacketAsync(new FriendList());
+            player.SendQuestList();
+            player.UpdateReuse();
 
-                GameTime.UpdateTimeForPlayer(player);
+            player.SendPacketAsync(new ExStorageMaxCount(player));
+            // player.sendPacket(new ExBasicActionList());
+            //  NpcTable.getInstance().spawnNpc("grandmaster_ramos", player.X, player.Y, player.Z, player.Heading);
+            player.SendActionFailedAsync();
 
-                player.Timer();
+            GameTime.UpdateTimeForPlayer(player);
 
-                player.SpawnMeAsync();
-                //L2WorldRegion worldRegion = L2World.GetRegion(player.X, player.Y);
-                //player.SetRegion(worldRegion);
-                //player.getKnowns(500, 500, false);
+            player.Timer();
+
+            player.SpawnMeAsync();
+            //L2WorldRegion worldRegion = L2World.GetRegion(player.X, player.Y);
+            //player.SetRegion(worldRegion);
+            //player.getKnowns(500, 500, false);
 
 
-                player.SetupKnowsAsync();
-                player.SendPacketAsync(new UserInfo(player));
+            player.SetupKnowsAsync();
+            player.SendPacketAsync(new UserInfo(player));
 
-                foreach (Plugin plugin in PluginManager.Instance.Plugins)
-                    plugin.OnLogin(player);
+            foreach (Plugin plugin in PluginManager.Instance.Plugins)
+                plugin.OnLogin(player);
 
-                //player.sendPacket(new ShortCutInit(player));
-                player.StartAi();
-                player.CharStatus.StartHpMpRegeneration();
-                player.ShowHtm("servnews.htm",player);
-                player.BroadcastUserInfoAsync();
-                L2World.AddPlayer(player);
-            });
+            //player.sendPacket(new ShortCutInit(player));
+            player.StartAi();
+            player.CharStatus.StartHpMpRegeneration();
+            player.ShowHtm("servnews.htm", player);
+            player.BroadcastUserInfoAsync();
+            L2World.AddPlayer(player);
         }
-
-        //private int[][] _tracert = new int[5][];
-        //public override void Read()
-        //{
-        //    //readB(32);
-        //    //readD();
-        //    //readD();
-        //    //readD();
-        //    //readD();
-        //    //readB(32);
-        //    //readD();
-
-        //    //for (int i = 0; i < 5; i++)
-        //    //{
-        //    //    tracert[i] = new int[4];
-        //    //    for (int o = 0; o < 4; o++)
-        //    //        tracert[i][o] = packet.ReadByte();
-        //    //}
-        //}
     }
 }

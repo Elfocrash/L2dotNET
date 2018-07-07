@@ -21,9 +21,10 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_boat.ObjectId);
             WriteInt(_speed);
             WriteInt(_rotationSpd);
-            WriteInt(_boat.DestX);
-            WriteInt(_boat.DestY);
-            WriteInt(_boat.DestZ);
+            // TODO: Fix that
+            //WriteInt(_boat.DestX);
+            //WriteInt(_boat.DestY);
+            //WriteInt(_boat.DestZ);
         }
     }
 }

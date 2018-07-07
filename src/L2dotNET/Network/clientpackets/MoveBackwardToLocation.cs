@@ -37,46 +37,35 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
+            L2Player player = _client.CurrentPlayer;
+
+            if (player.IsSittingInProgress() || player.IsSitting())
             {
-                L2Player player = _client.CurrentPlayer;
+                player.SendSystemMessage(SystemMessage.SystemMessageId.CantMoveSitting);
+                player.SendActionFailedAsync();
+                return;
+            }
 
-                if (player.IsSittingInProgress() || player.IsSitting())
-                {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.CantMoveSitting);
-                    player.SendActionFailedAsync();
-                    return;
-                }
+            if (player.Boat != null)
+            {
+                player.SendMessageAsync("cant leave boat.");
+                player.SendActionFailedAsync();
+                return;
+            }
 
-                if (player.Boat != null)
-                {
-                    player.SendMessageAsync("cant leave boat.");
-                    player.SendActionFailedAsync();
-                    return;
-                }
+            if (!player.CharMovement.CanMove())
+            {
+                player.SendActionFailedAsync();
+                return;
+            }
 
-                if (player.CantMove())
-                {
-                    player.SendActionFailedAsync();
-                    return;
-                }
+            // player.sendMessage($"can see: {GeoData.getInstance().canSeeCoord(player, _targetX, _targetY, _targetZ, true)}");
 
-                // player.sendMessage($"can see: {GeoData.getInstance().canSeeCoord(player, _targetX, _targetY, _targetZ, true)}");
+            player.Obsx = -1;
 
-                player.Obsx = -1;
-
-                double dx = _targetX - _originX;
-                double dy = _targetY - _originY;
-
-                if (((dx * dx) + (dy * dy)) > 98010000) // 9900*9900
-                {
-                    player.SendActionFailedAsync();
-                    return;
-                }
-
-                //player.AiCharacter.StopAutoAttack();
-                player.MoveToAsync(_targetX, _targetY, _targetZ);
-            });
+            //player.SendMessageAsync($"distance {Math.Floor(Math.Sqrt(dx * dx + dy * dy))}");
+            //player.AiCharacter.StopAutoAttack();
+            player.CharMovement.MoveTo(_targetX, _targetY, _targetZ);
         }
     }
 }

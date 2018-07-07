@@ -157,6 +157,10 @@ namespace L2dotNET.Models.Stats
 
         public float MoveSpeed => (float) CalculateStat(CharacterStatId.RunSpeed, BaseMoveSpeed, null);
 
+        public int RunSpeed => (int) CalculateStat(CharacterStatId.RunSpeed, BaseRunSpeed, null);
+
+        public int WalkSpeed => (int) CalculateStat(CharacterStatId.RunSpeed, BaseWalkSpeed, null);
+
         public float MovementSpeedMultiplayer => MoveSpeed / BaseMoveSpeed;
 
         public float AttackSpeedMultiplier => (float) ((1.1) * PAttackSpeed / _character.Template.BasePAtkSpd);

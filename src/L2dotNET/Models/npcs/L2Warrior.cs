@@ -74,10 +74,10 @@ namespace L2dotNET.Models.Npcs
 
         private void SocialTask(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (CantMove() || IsAttacking())
+            if (!CharMovement.CanMove() || IsAttacking())
                 return;
 
-            MoveToAsync(RandomThreadSafe.Instance.Next(SpawnX - 90, SpawnX + 90), RandomThreadSafe.Instance.Next(SpawnY - 90, SpawnY + 90), Z);
+            CharMovement.MoveTo(RandomThreadSafe.Instance.Next(SpawnX - 90, SpawnX + 90), RandomThreadSafe.Instance.Next(SpawnY - 90, SpawnY + 90), Z);
 
             // broadcastPacket(new SocialAction(ObjID, rnd.Next(8)));
         }

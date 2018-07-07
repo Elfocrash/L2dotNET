@@ -23,12 +23,9 @@ namespace L2dotNET.Network.clientpackets
 
         public override async Task RunImpl()
         {
-            await Task.Run(() =>
-            {
-                L2Player player = _client.CurrentPlayer;
+            L2Player player = _client.CurrentPlayer;
 
-                player.NotifyStopMoveAsync(true, true);
-            });
+            player.CharMovement.NotifyStopMove(true);
         }
     }
 }

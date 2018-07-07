@@ -30,7 +30,7 @@ namespace L2dotNET.Network.clientpackets
                 }
 
                 //Do nothing if already attempting to sit or moving
-                if (!player.IsSittingInProgress() || !player.IsMoving())
+                if (!player.IsSittingInProgress() || !player.CharMovement.IsMoving)
                 {
                     switch (_standType)
                     {

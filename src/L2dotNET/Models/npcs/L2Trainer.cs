@@ -40,7 +40,7 @@ namespace L2dotNET.Models.Npcs
                 player.SetTargetAsync(this);
                 return;
             }
-            player.MoveToAsync(X, Y, Z);
+            player.CharMovement.MoveTo(X, Y, Z);
             await player.SendPacketAsync(new MoveToPawn(player, this, 150));
 
             player.ShowHtm($"trainer/{NpcId}.htm",this);
