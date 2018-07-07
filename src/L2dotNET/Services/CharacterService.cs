@@ -58,10 +58,10 @@ namespace L2dotNET.Services
             _characterCrudService.Add(player.ToContract());
         }
 
-        public void UpdatePlayer(L2Player player)
+        public async Task UpdatePlayer(L2Player player)
         {
             player.LastAccess = DateTime.UtcNow;
-            _characterCrudService.Update(player.ToContract());
+            await _characterCrudService.Update(player.ToContract());
         }
 
         public async Task<L2Player> GetPlayerBySlotId(int accountId, int slotId)
@@ -88,14 +88,9 @@ namespace L2dotNET.Services
             return true;
         }
 
-        public async Task<L2Player> RestorePlayer(CharacterContract characterContract, GameClient client = null)
+        public async Task<L2Player> RestorePlayer(CharacterContract characterContract)
         {
             L2Player player = characterContract.ToPlayer();
-
-            if (client != null)
-            {
-                player.Gameclient = client;
-            }
 
             await player.Inventory.Restore(player);
             player.SessionData = new PlayerBag();

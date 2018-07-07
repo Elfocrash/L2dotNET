@@ -11,8 +11,8 @@ namespace L2dotNET.Repositories.Abstract
 
         Task<int?> Add(T model);
 
-        void Update(T model);
+        Task Update(T model);
 
-        void Delete(T model);
+        Task Delete(T model);
     }
 }
