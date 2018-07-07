@@ -37,7 +37,7 @@ namespace L2dotNET.Models.Npcs
                 return;
             }
 
-            await player.TryMoveToAsync(X, Y, Z);
+            await player.CharMovement.MoveTo(X, Y, Z);
             await player.SendPacketAsync(new MoveToPawn(player, this, 150));
 
             await player.DoAttackAsync(this);
@@ -51,9 +51,9 @@ namespace L2dotNET.Models.Npcs
                 return;
             }
 
-            await player.TryMoveToAsync(X, Y, Z);
+            await player.CharMovement.MoveTo(X, Y, Z);
             
-            await player.SendPacketAsync(new MoveToPawn(player, this, (int)player.GetPlanDistanceSq(X,Y)));
+            await player.SendPacketAsync(new MoveToPawn(player, this, (int)player.CharMovement.GetPlanDistanceSq(X,Y)));
 
             await player.DoAttackAsync(this);
         }
@@ -76,7 +76,7 @@ namespace L2dotNET.Models.Npcs
             }
 
             Target = null;
-            await NotifyStopMoveAsync(true, true);
+            await CharMovement.NotifyStopMove(true);
 
             if (IsAttacking())
                 AbortAttack();

@@ -960,7 +960,7 @@ namespace L2dotNET.Models.Player
             if (dis < 151)
                 target.NotifyActionAsync(this);
             else
-                TryMoveToAsync(target.X, target.Y, target.Z);
+                CharMovement.MoveTo(target.X, target.Y, target.Z);
 
             SendActionFailedAsync();
         }
@@ -1025,7 +1025,7 @@ namespace L2dotNET.Models.Player
 
             //_nonpetSummonTime.Enabled = false;
         }
-
+        /*
         public override bool CantMove()
         {
             if ((_petSummonTime != null) && _petSummonTime.Enabled)
@@ -1034,7 +1034,7 @@ namespace L2dotNET.Models.Player
                 return true;
 
             return base.CantMove();
-        }
+        }*/
 
         public override L2Character[] GetPartyCharacters()
         {
@@ -1167,7 +1167,7 @@ namespace L2dotNET.Models.Player
             if (!Calcs.CheckIfInRange((int)dist, this, target, true))
             {
                 await SendMessageAsync($"too far {dist}");
-                TryMoveToAndHitAsync(target.X, target.Y, target.Z,target);
+                CharMovement.MoveToAndHit(target.X, target.Y, target.Z,target);
                 return;
             }
 

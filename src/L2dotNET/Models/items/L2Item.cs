@@ -130,7 +130,7 @@ namespace L2dotNET.Models.Items
                 L2World.RemoveObject(this);
             }
             else
-                await player.TryMoveToAsync(X, Y, Z);
+                await player.CharMovement.MoveTo(X, Y, Z);
         }
 
         public override async Task OnForcedAttackAsync(L2Player player)

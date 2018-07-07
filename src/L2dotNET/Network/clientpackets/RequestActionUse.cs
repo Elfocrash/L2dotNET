@@ -167,7 +167,7 @@ namespace L2dotNET.Network.clientpackets
 
         private void CheckSit(L2Player player)
         {
-            if (player.CantMove() || player.IsSittingInProgress())
+            if (!player.CharMovement.CanMove() || player.IsSittingInProgress())
             {
                 player.SendActionFailedAsync();
                 return;

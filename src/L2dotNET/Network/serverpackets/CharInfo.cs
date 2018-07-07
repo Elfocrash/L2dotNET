@@ -73,14 +73,14 @@ namespace L2dotNET.Network.serverpackets
             WriteInt(_player.PvPStatus);
             WriteInt(_player.Karma);
 
-            WriteInt(_player.CharacterStat.BaseRunSpeed);
-            WriteInt(_player.CharacterStat.BaseWalkSpeed);
+            WriteInt(_player.CharacterStat.RunSpeed);
+            WriteInt(_player.CharacterStat.WalkSpeed);
             WriteInt(50); // swimspeed
             WriteInt(50); // swimspeed
-            WriteInt(_player.CharacterStat.BaseRunSpeed);
-            WriteInt(_player.CharacterStat.BaseWalkSpeed);
-            WriteInt(_player.CharacterStat.BaseRunSpeed);
-            WriteInt(_player.CharacterStat.BaseWalkSpeed);
+            WriteInt(_player.CharacterStat.RunSpeed);
+            WriteInt(_player.CharacterStat.WalkSpeed);
+            WriteInt(_player.CharacterStat.RunSpeed);
+            WriteInt(_player.CharacterStat.WalkSpeed);
             WriteDouble(1);
             WriteDouble(1);
 

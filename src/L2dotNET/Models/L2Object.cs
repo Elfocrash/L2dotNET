@@ -22,9 +22,6 @@ namespace L2dotNET.Models
         public virtual int X { get; set; }
         public virtual int Y { get; set; }
         public virtual int Z { get; set; }
-        public virtual int DestX { get; set; }
-        public virtual int DestY { get; set; }
-        public virtual int DestZ { get; set; }
         public virtual int Heading { get; set; }
         public virtual int TeamId { get; set; }
         public virtual bool Visible { get; set; } = true;

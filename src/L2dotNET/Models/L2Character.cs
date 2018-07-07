@@ -6,6 +6,7 @@ using System.Timers;
 using L2dotNET.Enums;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
+using L2dotNET.Models.Player.General;
 using L2dotNET.Models.Stats;
 using L2dotNET.Models.Stats.Funcs;
 using L2dotNET.Models.Status;
@@ -84,17 +85,35 @@ namespace L2dotNET.Models
 
         public virtual void UpdateAbnormalEventEffect() { }
 
-        private Timer _updatePositionTime = new Timer(90);
+        public CharacterMovement CharMovement { get; }
 
         public CharacterStat CharacterStat { get; set; }
+
+        public override int X
+        {
+            get => CharMovement.X;
+            set => CharMovement.X = value;
+        }
+
+        public override int Y
+        {
+            get => CharMovement.Y;
+            set => CharMovement.Y = value;
+        }
+
+        public override int Z
+        {
+            get => CharMovement.Z;
+            set => CharMovement.Z = value;
+        }
 
         public L2Character(int objectId, CharTemplate template) : base(objectId)
         {
             Template = template;
             CharacterStat = new CharacterStat(this);
+            CharMovement = new CharacterMovement(this);
             InitializeCharacterStatus();
             AddFuncsToNewCharacter();
-            _updatePositionTime.Elapsed += UpdatePositionTask;
         }
 
         public virtual CharStatus GetStatus()
@@ -450,7 +469,7 @@ namespace L2dotNET.Models
             }
 
             Target = null;
-            await NotifyStopMoveAsync(true,true);
+            await CharMovement.NotifyStopMove(true);
 
             if (IsAttacking())
                 AbortAttack();
@@ -510,7 +529,7 @@ namespace L2dotNET.Models
 
             if (!Calcs.CheckIfInRange((int)dist, this, target, true))
             {
-                await TryMoveToAsync(target.X, target.Y, target.Z);
+                await CharMovement.MoveTo(target.X, target.Y, target.Z);
                 return;
             }
 
@@ -759,48 +778,9 @@ namespace L2dotNET.Models
                    PBlockSkill = 0;
         public int PBlockAct = 0;
 
-        public virtual bool CantMove()
-        {
-            if (PBlockAct == 1)
-                return true;
+        
 
-            if ((AbnormalBitMaskEx & AbnormalMaskExFreezing) == AbnormalMaskExFreezing)
-                return true;
-
-            return false;
-        }
-
-        public async Task TryMoveToAsync(int x, int y, int z)
-        {
-            TargetToHit = null;
-            if (CantMove())
-            {
-                await SendActionFailedAsync();
-                return;
-            }
-
-            DestX = x;
-            DestY = y;
-            DestZ = z;
-
-            await MoveToAsync(x, y, z);
-        }
-
-        public async Task TryMoveToAndHitAsync(int x, int y, int z,L2Character target)
-        {
-            TargetToHit = target;
-            if (CantMove())
-            {
-                await SendActionFailedAsync();
-                return;
-            }
-
-            DestX = x;
-            DestY = y;
-            DestZ = z;
-
-            await MoveToAndHitAsync(x, y, z);
-        }
+        
 
         public void Status_FreezeMe(bool status, bool update)
         {
@@ -841,149 +821,12 @@ namespace L2dotNET.Models
             return new[] { this };
         }
 
-        public bool IsMoving()
-        {
-            return (_updatePositionTime != null) && _updatePositionTime.Enabled;
-        }
+        
 
-        public async Task MoveToAsync(int x, int y, int z)
-        {
-            TargetToHit = null;
-
-            if (IsAttacking())
-                AbortAttack();
-
-            if (_updatePositionTime.Enabled) // новый маршрут, но старый не закончен
-                await NotifyStopMoveAsync(false);
+        
 
 
-            DestX = x;
-            DestY = y;
-            DestZ = z;
-
-            double dx = x - X,
-                   dy = y - Y;
-            //dz = (z - Z);
-            double distance = GetPlanDistanceSq(x, y);
-
-            double spy = dy / distance,
-                   spx = dx / distance;
-
-            double speed = 130; //TODO: Human Figher Speed Based, need get characters run speed
-
-            //TODO: check possible divisions by zero
-            _ticksToMove = (int)Math.Ceiling((10 * distance) / speed); //Client Response time = 1000ms, XYZ server check = 100ms (distance * 10 to get better precision)
-            _ticksToMoveCompleted = 0;
-            _xSpeedTicks = (DestX - X) / (float)_ticksToMove;
-            _ySpeedTicks = (DestY - Y) / (float)_ticksToMove;
-
-            Heading = (int)((Math.Atan2(-spx, -spy) * 10430.378) + short.MaxValue);
-
-            await BroadcastPacketAsync(new CharMoveToLocation(this));
-
-            _updatePositionTime.Enabled = true;
-        }
-
-
-        public async Task MoveToAndHitAsync(int x, int y, int z)
-        {
-            if (IsAttacking())
-                AbortAttack();
-
-            if (_updatePositionTime.Enabled) // новый маршрут, но старый не закончен
-                await NotifyStopMoveAsync(false);            
-
-            DestX = x;
-            DestY = y;
-            DestZ = z;
-
-            double dx = x - X,
-                   dy = y - Y;
-            //dz = (z - Z);
-            double distance = GetPlanDistanceSq(x, y);
-
-            double spy = dy / distance,
-                   spx = dx / distance;
-
-            double speed = 130; //TODO: Human Figher Speed Based, need get characters run speed
-
-            //TODO: check possible divisions by zero
-            _ticksToMove = (int)Math.Ceiling((10 * distance) / speed); //Client Response time = 1000ms, XYZ server check = 100ms (distance * 10 to get better precision)
-            _ticksToMoveCompleted = 0;
-            _xSpeedTicks = (DestX - X) / (float)_ticksToMove;
-            _ySpeedTicks = (DestY - Y) / (float)_ticksToMove;
-
-            Heading = (int)((Math.Atan2(-spx, -spy) * 10430.378) + short.MaxValue);
-
-            await BroadcastPacketAsync(new CharMoveToLocation(this));
-
-            _updatePositionTime.Enabled = true;
-        }
-
-
-        private async void UpdatePositionTask(object sender, ElapsedEventArgs e)
-        {
-            await ValidateWaterZones();
-
-            if ((DestX == X) && (DestY == Y) && (DestZ == Z))
-            {
-                await NotifyArrivedAsync();
-                return;
-            }
-
-            if (_ticksToMove > _ticksToMoveCompleted)
-            {
-                _ticksToMoveCompleted++;
-                X += (int)_xSpeedTicks;
-                Y += (int)_ySpeedTicks;
-            }
-            else
-            {
-                X = DestX;
-                Y = DestY;
-                Z = DestZ;
-                await NotifyArrivedAsync();
-            }
-        }
-
-        public virtual async Task NotifyStopMoveAsync(bool broadcast, bool update = false)
-        {
-            if (_updatePositionTime.Enabled)
-                _updatePositionTime.Enabled = false;
-
-            if (update)
-                await BroadcastPacketAsync(new StopMove(this));
-
-            DestX = 0;
-            DestY = 0;
-            DestZ = 0;
-            _xSpeedTicks = 0;
-            _ySpeedTicks = 0;
-            _ticksToMove = 0;
-            _ticksToMoveCompleted = 0;
-        }
-
-        public virtual async Task NotifyArrivedAsync()
-        {
-            if (TargetToHit != null)
-                await DoAttackAsync(TargetToHit);
-
-            if (_updatePositionTime.Enabled)
-                _updatePositionTime.Enabled = false;
-
-            DestX = 0;
-            DestY = 0;
-            DestZ = 0;
-            _xSpeedTicks = 0;
-            _ySpeedTicks = 0;
-            _ticksToMove = 0;      
-        }
-
-
-        private int _ticksToMove,
-                    _ticksToMoveCompleted;
-        private float _xSpeedTicks;
-        private float _ySpeedTicks;
+        
 
         public bool IsInFrontOfTarget()
         {
@@ -1057,18 +900,6 @@ namespace L2dotNET.Models
 
         public bool MutedMagically => (_muted1 != null) && (_muted1.Count > 0);
 
-        public bool MutedSpecial => (_muted2 != null) && (_muted2.Count > 0);
-
-        /// <summary>
-        /// Return the squared plan distance between the current position of the L2Character and the given x, y, z.
-        /// (check only x and y, not z)
-        /// </summary>
-        /// <param name="x">X position of the target</param>
-        /// <param name="y">Y position of the target</param>
-        /// <returns>return the squared plan distance</returns>
-        public double GetPlanDistanceSq(int x, int y)
-        {
-            return Math.Sqrt(Math.Pow(x - X, 2) + Math.Pow(y - Y, 2));
-        }
+        public bool MutedSpecial => (_muted2 != null) && (_muted2.Count > 0);       
     }
 }
