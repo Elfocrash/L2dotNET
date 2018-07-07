@@ -13,13 +13,13 @@ namespace L2dotNET.Services.Contracts
 
         void CreatePlayer(L2Player player);
 
-        void UpdatePlayer(L2Player player);
+        Task UpdatePlayer(L2Player player);
 
         Task<L2Player> GetPlayerBySlotId(int accountId, int slotId);
 
         bool DeleteCharById(int characterId);
 
-        Task<L2Player> RestorePlayer(CharacterContract characterContract, GameClient client);
+        Task<L2Player> RestorePlayer(CharacterContract characterContract);
 
         Task<IEnumerable<L2Player>> GetPlayersOnAccount(int accountId);
 

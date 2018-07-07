@@ -60,7 +60,7 @@ namespace L2dotNET.Repositories.Abstract
             }
         }
 
-        public async void Update(T model)
+        public async Task Update(T model)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace L2dotNET.Repositories.Abstract
             }
         }
 
-        public async void Delete(T model)
+        public async Task Delete(T model)
         {
             try
             {

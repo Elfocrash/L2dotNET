@@ -29,14 +29,14 @@ namespace L2dotNET.Services
             return await _crudRepository.Add(model);
         }
 
-        public void Update(T model)
+        public async Task Update(T model)
         {
-            _crudRepository.Update(model);
+            await _crudRepository.Update(model);
         }
 
-        public void Delete(T model)
+        public async Task Delete(T model)
         {
-            _crudRepository.Delete(model);
+            await _crudRepository.Delete(model);
         }
     }
 }
