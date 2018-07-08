@@ -42,7 +42,7 @@ namespace L2dotNET.Network.clientpackets
             }
 
             player.SetOnline(_client);
-            _client.AccountCharacters = null;
+            _client.AccountCharacters.Clear();
             _client.SendPacketAsync(new serverpackets.CharacterSelected(player, _client.SessionKey.PlayOkId1));
         }
     }

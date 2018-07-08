@@ -576,12 +576,6 @@ namespace L2dotNET.Models.Player
             await SendPacketAsync(statusUpdate);
         }
 
-        public async Task BroadcastCharInfoAsync()
-        {
-            foreach (L2Player player in L2World.GetPlayers().Where(player => player != this))
-                await player.SendPacketAsync(new CharInfo(this));
-        }
-
         public override async Task BroadcastUserInfoAsync()
         {
             await SendPacketAsync(new UserInfo(this));
@@ -589,7 +583,8 @@ namespace L2dotNET.Models.Player
             //if (getPolyType() == PolyType.NPC)
             //    Broadcast.toKnownPlayers(this, new AbstractNpcInfo.PcMorphInfo(this, getPolyTemplate()));
             //else
-            await BroadcastCharInfoAsync();
+            await Task.WhenAll(L2World.GetPlayers().Where(player => player != this)
+                .Select(player => player.SendPacketAsync(new CharInfo(this))));
         }
 
         public override void AddKnownObject(L2Object obj)
