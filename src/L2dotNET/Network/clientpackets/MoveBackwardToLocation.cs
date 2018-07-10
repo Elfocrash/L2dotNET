@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -41,7 +42,7 @@ namespace L2dotNET.Network.clientpackets
 
             if (player.IsSittingInProgress() || player.IsSitting())
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CantMoveSitting);
+                player.SendSystemMessage(SystemMessageId.CantMoveSitting);
                 player.SendActionFailedAsync();
                 return;
             }

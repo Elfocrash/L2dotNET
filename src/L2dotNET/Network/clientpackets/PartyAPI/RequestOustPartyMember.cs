@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -30,7 +31,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
 
                 if (player.Party.Leader.ObjectId != player.ObjectId)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.FailedToExpelThePartyMember);
+                    player.SendSystemMessage(SystemMessageId.FailedToExpelThePartyMember);
                     player.SendActionFailedAsync();
                     return;
                 }

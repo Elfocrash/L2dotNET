@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Managers;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Utility;
@@ -27,14 +28,14 @@ namespace L2dotNET.Network.clientpackets.ItemEnchantAPI
 
                 if (player.EnchantState != ItemEnchantManager.StateEnchantStart)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
+                    player.SendSystemMessage(SystemMessageId.InappropriateEnchantCondition);
                     player.SendActionFailedAsync();
                     return;
                 }
 
                 if (_aSTargetId != player.EnchantItem.ObjectId)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.InappropriateEnchantCondition);
+                    player.SendSystemMessage(SystemMessageId.InappropriateEnchantCondition);
                     player.SendActionFailedAsync();
                     return;
                 }

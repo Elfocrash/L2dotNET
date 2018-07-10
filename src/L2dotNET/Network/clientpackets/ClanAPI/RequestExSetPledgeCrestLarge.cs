@@ -41,14 +41,14 @@ namespace L2dotNET.Network.clientpackets.ClanAPI
 
             //if ((_size < 0) || (_size > 2176))
             //{
-            //    player.SendSystemMessage(SystemMessage.SystemMessageId.LengthCrestDoesNotMeetStandardRequirements);
+            //    player.SendSystemMessage(SystemMessageId.LengthCrestDoesNotMeetStandardRequirements);
             //    player.SendActionFailed();
             //    return;
             //}
 
             //if ((player.ClanPrivs & L2Clan.CpClRegisterCrest) != L2Clan.CpClRegisterCrest)
             //{
-            //    player.SendSystemMessage(SystemMessage.SystemMessageId.NotAuthorizedToBestowRights);
+            //    player.SendSystemMessage(SystemMessageId.NotAuthorizedToBestowRights);
             //    player.SendActionFailed();
             //    return;
             //}

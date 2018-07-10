@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -18,7 +19,7 @@ namespace L2dotNET.Managers.bbs
             if (_config.GameplayConfig.Server.CommunityBoard.EnableCommunityBoard)
                 player.ShowHtmBbs("<html><body><br><br><center>Welcome to the community board</center><br><br></body></html>");
             else
-                await player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.CbOffline));
+                await player.SendPacketAsync(new SystemMessage(SystemMessageId.CbOffline));
         }
     }
 }

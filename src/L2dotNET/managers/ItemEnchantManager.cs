@@ -108,7 +108,7 @@ namespace L2dotNET.Managers
                 player.SendPacketAsync(new ExPutEnchantTargetItemResult());
                 player.EnchantScroll = null;
                 player.EnchantState = 0;
-                player.SendSystemMessage(SystemMessage.SystemMessageId.DoesNotFitScrollConditions);
+                player.SendSystemMessage(SystemMessageId.DoesNotFitScrollConditions);
             }
             else
             {
@@ -122,7 +122,7 @@ namespace L2dotNET.Managers
         {
             if (!_supports.ContainsKey(stone.Template.ItemId))
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.IncorrectSupportEnhancementSpellbook);
+                player.SendSystemMessage(SystemMessageId.IncorrectSupportEnhancementSpellbook);
                 player.SendActionFailedAsync();
                 return;
             }
@@ -153,7 +153,7 @@ namespace L2dotNET.Managers
             {
                 player.SendPacketAsync(new ExPutEnchantSupportItemResult());
                 player.EnchantStone = null;
-                player.SendSystemMessage(SystemMessage.SystemMessageId.ItemDoesNotMeetRequirementsForSupportEnhancementSpellbook);
+                player.SendSystemMessage(SystemMessageId.ItemDoesNotMeetRequirementsForSupportEnhancementSpellbook);
             }
             else
             {

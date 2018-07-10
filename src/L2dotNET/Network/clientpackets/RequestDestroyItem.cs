@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -51,7 +52,7 @@ namespace L2dotNET.Network.clientpackets
 
                 if (!item.Template.Destroyable)
                 {
-                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1S2);
+                    SystemMessage sm = new SystemMessage(SystemMessageId.S1S2);
                     sm.AddItemName(item.Template.ItemId);
                     sm.AddString("cannot be destroyed.");
                     player.SendPacketAsync(sm);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
@@ -82,8 +83,8 @@ namespace L2dotNET.Controllers
             DateTime dt = new DateTime(2000, 1, 1, 0, 0, 0).AddSeconds(IngameTime * 6);
 
             SystemMessage sm = new SystemMessage(Night
-                ? SystemMessage.SystemMessageId.TimeS1S2InTheNight
-                : SystemMessage.SystemMessageId.TimeS1S2InTheDay);
+                ? SystemMessageId.TimeS1S2InTheNight
+                : SystemMessageId.TimeS1S2InTheDay);
             sm.AddString(dt.ToString("hh"));
             sm.AddString(dt.ToString("mm:ss"));
             await player.SendPacketAsync(sm);

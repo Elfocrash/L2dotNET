@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Inventory;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
@@ -35,13 +36,13 @@ namespace L2dotNET.Network.clientpackets
 
                 if (item == null)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.IncorrectItem);
+                    player.SendSystemMessage(SystemMessageId.IncorrectItem);
                     return;
                 }
 
                 if (player.TradeState != 0)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.CannotPickupOrUseItemWhileTrading);
+                    player.SendSystemMessage(SystemMessageId.CannotPickupOrUseItemWhileTrading);
                     player.SendActionFailedAsync();
                     return;
                 }

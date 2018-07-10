@@ -1,4 +1,5 @@
-﻿using L2dotNET.Managers;
+﻿using L2dotNET.DataContracts.Shared.Enums;
+using L2dotNET.Managers;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -15,7 +16,7 @@ namespace L2dotNET.Models.Items.Effects
         {
             if (player.EnchantState != 0)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.AnotherEnchantmentIsInProgress);
+                player.SendSystemMessage(SystemMessageId.AnotherEnchantmentIsInProgress);
                 player.SendActionFailedAsync();
                 return;
             }
@@ -23,7 +24,7 @@ namespace L2dotNET.Models.Items.Effects
             player.SendPacketAsync(new ChooseInventoryItem(item.Template.ItemId));
             player.EnchantScroll = item;
             player.EnchantState = ItemEnchantManager.StatePutItem;
-            player.SendSystemMessage(SystemMessage.SystemMessageId.SelectItemToEnchant);
+            player.SendSystemMessage(SystemMessageId.SelectItemToEnchant);
         }
     }
 }

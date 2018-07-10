@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using L2dotNET.Attributes;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -29,12 +30,12 @@ namespace L2dotNET.Commands.Admin
             su.Add(StatusUpdate.CurMp, (int)target.CharStatus.CurrentMp);
             await target.SendPacketAsync(su);
 
-            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S2HpRestoredByS1);
+            SystemMessage sm = new SystemMessage(SystemMessageId.S2HpRestoredByS1);
             sm.AddPlayerName(admin.Name);
             sm.AddNumber((int)hpval);
             await target.SendPacketAsync(sm);
 
-            sm = new SystemMessage(SystemMessage.SystemMessageId.S2MpRestoredByS1);
+            sm = new SystemMessage(SystemMessageId.S2MpRestoredByS1);
             sm.AddPlayerName(admin.Name);
             sm.AddNumber((int)mpval);
             await target.SendPacketAsync(sm);

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Network;
 using L2dotNET.Network.serverpackets;
 
@@ -45,11 +46,11 @@ namespace L2dotNET.Models.Player
 
             playerMember.Party = this;
 
-            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YouJoinedS1Party);
+            SystemMessage sm = new SystemMessage(SystemMessageId.YouJoinedS1Party);
             sm.AddPlayerName(Leader.Name);
             playerMember.SendPacketAsync(sm);
 
-            sm = new SystemMessage(SystemMessage.SystemMessageId.S1JoinedParty);
+            sm = new SystemMessage(SystemMessageId.S1JoinedParty);
             sm.AddPlayerName(Leader.Name);
             BroadcastToMembers(sm, playerMember.ObjectId);
         }
@@ -75,7 +76,7 @@ namespace L2dotNET.Models.Player
         {
             VoteId = mode;
             BroadcastToMembers(new ExAskModifyPartyLooting(Leader.Name, mode));
-            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.RequestingApprovalForChangingPartyLootToS1);
+            SystemMessage sm = new SystemMessage(SystemMessageId.RequestingApprovalForChangingPartyLootToS1);
             sm.AddSysStr(LootSysstrings[mode]);
             Leader.SendPacketAsync(sm);
 
@@ -117,13 +118,13 @@ namespace L2dotNET.Models.Player
             SystemMessage sm;
             if (agreed > half)
             {
-                sm = new SystemMessage(SystemMessage.SystemMessageId.PartyLootWasChangedToS1);
+                sm = new SystemMessage(SystemMessageId.PartyLootWasChangedToS1);
                 sm.AddSysStr(LootSysstrings[VoteId]);
                 ItemDistribution = VoteId;
             }
             else
             {
-                sm = new SystemMessage(SystemMessage.SystemMessageId.PartyLootChangeWasCancelled);
+                sm = new SystemMessage(SystemMessageId.PartyLootChangeWasCancelled);
                 VoteId = -1;
             }
 
@@ -141,7 +142,7 @@ namespace L2dotNET.Models.Player
                     Kick(playerMember);
 
                     Leader = Members.First.Value;
-                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1HasBecomeAPartyLeader);
+                    SystemMessage sm = new SystemMessage(SystemMessageId.S1HasBecomeAPartyLeader);
                     sm.AddPlayerName(Leader.Name);
                     BroadcastToMembers(sm);
 
@@ -152,7 +153,7 @@ namespace L2dotNET.Models.Player
                 {
                     foreach (L2Player pl in Members)
                     {
-                        pl.SendSystemMessage(SystemMessage.SystemMessageId.PartyDispersed);
+                        pl.SendSystemMessage(SystemMessageId.PartyDispersed);
                         pl.SendPacketAsync(new PartySmallWindowDeleteAll());
                         pl.Party = null;
                     }
@@ -170,19 +171,19 @@ namespace L2dotNET.Models.Player
         private void Kick(L2Player playerMember)
         {
             //TODO: missing messages packets?
-            //(int)SystemMessage.SystemMessageId.HAVE_BEEN_EXPELLED_FROM_PARTY
-            //(int)SystemMessage.SystemMessageId.S1_WAS_EXPELLED_FROM_PARTY
+            //(int)SystemMessageId.HAVE_BEEN_EXPELLED_FROM_PARTY
+            //(int)SystemMessageId.S1_WAS_EXPELLED_FROM_PARTY
 
             lock (Members)
                 Members.Remove(playerMember);
 
             if (Members.Count > 2)
             {
-                playerMember.SendSystemMessage(SystemMessage.SystemMessageId.YouLeftParty);
+                playerMember.SendSystemMessage(SystemMessageId.YouLeftParty);
                 playerMember.SendPacketAsync(new PartySmallWindowDeleteAll());
                 playerMember.Party = null;
 
-                SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1LeftParty);
+                SystemMessage sm = new SystemMessage(SystemMessageId.S1LeftParty);
                 sm.AddPlayerName(playerMember.Name);
                 BroadcastToMembers(sm);
                 BroadcastToMembers(new PartySmallWindowDelete(playerMember.ObjectId, playerMember.Name));
@@ -193,7 +194,7 @@ namespace L2dotNET.Models.Player
             {
                 foreach (L2Player pl in Members)
                 {
-                    pl.SendSystemMessage(SystemMessage.SystemMessageId.PartyDispersed);
+                    pl.SendSystemMessage(SystemMessageId.PartyDispersed);
                     pl.SendPacketAsync(new PartySmallWindowDeleteAll());
                     pl.Party = null;
                 }
@@ -208,7 +209,7 @@ namespace L2dotNET.Models.Player
 
             if (playerToExpel == null)
             {
-                _player.SendSystemMessage(SystemMessage.SystemMessageId.FailedToExpelThePartyMember);
+                _player.SendSystemMessage(SystemMessageId.FailedToExpelThePartyMember);
                 _player.SendActionFailedAsync();
                 return;
             }

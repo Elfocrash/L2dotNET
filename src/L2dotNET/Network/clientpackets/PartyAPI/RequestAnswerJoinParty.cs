@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -31,7 +32,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
 
                 if (player.Requester.IsInOlympiad)
                 {
-                    player.Requester.SendSystemMessage(SystemMessage.SystemMessageId.UserCurrentlyParticipatingInOlympiadCannotSendPartyAndFriendInvitations);
+                    player.Requester.SendSystemMessage(SystemMessageId.UserCurrentlyParticipatingInOlympiadCannotSendPartyAndFriendInvitations);
                     return;
                 }
 
@@ -41,7 +42,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
                 {
                     case -1:
                     {
-                        SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.C1IsSetToRefusePartyRequests);
+                        SystemMessage sm = new SystemMessage(SystemMessageId.C1IsSetToRefusePartyRequests);
                         sm.AddPlayerName(player.Name);
                         player.Requester.SendPacketAsync(sm);
                     }
@@ -60,7 +61,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
 
             if (leader.Party.Members.Count == 9)
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CannotEnterDuePartyHavingExceedLimit);
+                player.SendSystemMessage(SystemMessageId.CannotEnterDuePartyHavingExceedLimit);
                 return;
             }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.loginauth;
 using L2dotNET.Network.serverpackets;
@@ -34,7 +35,7 @@ namespace L2dotNET.Network.clientpackets
 
             if (player.isInCombat())
             {
-                player.SendSystemMessage(SystemMessage.SystemMessageId.CantLogoutWhileFighting);
+                player.SendSystemMessage(SystemMessageId.CantLogoutWhileFighting);
                 player.SendActionFailedAsync();
                 return;
             }

@@ -27,7 +27,7 @@ namespace L2dotNET.Models.Zones.Classes
                 return;
 
             L2Player p = (L2Player)obj;
-            p.SendSystemMessage((SystemMessage.SystemMessageId)Template.EnteringMessageNo);
+            p.SendSystemMessage((SystemMessageId)Template.EnteringMessageNo);
             if (Template.AffectRace.EqualsIgnoreCase("all"))
                 return;
 
@@ -54,7 +54,7 @@ namespace L2dotNET.Models.Zones.Classes
                 return;
 
             L2Player p = (L2Player)obj;
-            p.SendSystemMessage((SystemMessage.SystemMessageId)Template.LeavingMessageNo);
+            p.SendSystemMessage((SystemMessageId)Template.LeavingMessageNo);
             if (Template.AffectRace.EqualsIgnoreCase("all"))
                 return;
 

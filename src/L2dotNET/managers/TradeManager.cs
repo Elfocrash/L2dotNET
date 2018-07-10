@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -17,7 +18,7 @@ namespace L2dotNET.Managers
 
         public TradeDone TradeSuccess = new TradeDone();
         public TradeDone TradeFail = new TradeDone(false);
-        public SystemMessage TradeOk = new SystemMessage(SystemMessage.SystemMessageId.TradeSuccessful);
+        public SystemMessage TradeOk = new SystemMessage(SystemMessageId.TradeSuccessful);
 
         private bool ValidateList(L2Player player)
         {
@@ -103,13 +104,13 @@ namespace L2dotNET.Managers
             pl1.TradeState = 0;
             pl1.CurrentTrade.Clear();
             pl1.SendPacketAsync(TradeFail);
-            pl1.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.S1CanceledTrade).AddPlayerName(name));
+            pl1.SendPacketAsync(new SystemMessage(SystemMessageId.S1CanceledTrade).AddPlayerName(name));
             pl1.Requester = null;
 
             pl2.TradeState = 0;
             pl2.CurrentTrade.Clear();
             pl2.SendPacketAsync(TradeFail);
-            pl2.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.S1CanceledTrade).AddPlayerName(name));
+            pl2.SendPacketAsync(new SystemMessage(SystemMessageId.S1CanceledTrade).AddPlayerName(name));
             pl2.Requester = null;
         }
     }

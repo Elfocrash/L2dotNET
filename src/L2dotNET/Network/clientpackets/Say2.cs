@@ -59,7 +59,7 @@ namespace L2dotNET.Network.clientpackets
 
                             //if (target == null)
                             //{
-                            //    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1_IS_NOT_ONLINE);
+                            //    SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_NOT_ONLINE);
                             //    sm.AddString(_target);
                             //    player.sendPacket(sm);
 
@@ -70,7 +70,7 @@ namespace L2dotNET.Network.clientpackets
                             //{
                             //    if (target.WhieperBlock)
                             //    {
-                            //        player.sendSystemMessage(SystemMessage.SystemMessageId.THE_PERSON_IS_IN_MESSAGE_REFUSAL_MODE);
+                            //        player.sendSystemMessage(SystemMessageId.THE_PERSON_IS_IN_MESSAGE_REFUSAL_MODE);
                             //        player.sendActionFailed();
                             //        return;
                             //    }

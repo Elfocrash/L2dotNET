@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using L2dotNET.Controllers;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.World;
@@ -30,9 +31,9 @@ namespace L2dotNET.Network.clientpackets
                     case 0: // [loc]
                         int regId = 0; //MapRegionTable.getInstance().getRegionSysId(player.X, player.Y);
                         if (regId > 0)
-                            player.SendPacketAsync(new SystemMessage((SystemMessage.SystemMessageId)regId).AddNumber(player.X).AddNumber(player.Y).AddNumber(player.Z));
+                            player.SendPacketAsync(new SystemMessage((SystemMessageId)regId).AddNumber(player.X).AddNumber(player.Y).AddNumber(player.Z));
                         else
-                            player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.NotImplementedYet2361).AddString("Nowhere"));
+                            player.SendPacketAsync(new SystemMessage(SystemMessageId.NotImplementedYet2361).AddString("Nowhere"));
 
                         int x = (player.X >> 15) + 9 + 8;
                         int y = (player.Y >> 15) + 10 + 11;

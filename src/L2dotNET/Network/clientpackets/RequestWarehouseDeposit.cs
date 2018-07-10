@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Models.Player;
@@ -75,7 +76,7 @@ namespace L2dotNET.Network.clientpackets
 
                 if ((player.GetAdena() - adenatransfer) < fee)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.YouNotEnoughAdenaPayFee);
+                    player.SendSystemMessage(SystemMessageId.YouNotEnoughAdenaPayFee);
                     player.SendActionFailedAsync();
                     return;
                 }
@@ -89,7 +90,7 @@ namespace L2dotNET.Network.clientpackets
 
                 //if (player.ItemLimit_Warehouse < (itsize + slots))
                 //{
-                //    player.sendSystemMessage(SystemMessage.SystemMessageId.WAREHOUSE_FULL);
+                //    player.sendSystemMessage(SystemMessageId.WAREHOUSE_FULL);
                 //    player.sendActionFailed();
                 //    return;
                 //}

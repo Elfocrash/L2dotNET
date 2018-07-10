@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Tools;
@@ -25,14 +26,14 @@ namespace L2dotNET.Network.clientpackets
 
                 if (player.TradeState != 0)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.AlreadyTrading);
+                    player.SendSystemMessage(SystemMessageId.AlreadyTrading);
                     player.SendActionFailedAsync();
                     return;
                 }
 
                 if (player.ObjectId == _targetId)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.CannotUseOnYourself);
+                    player.SendSystemMessage(SystemMessageId.CannotUseOnYourself);
                     player.SendActionFailedAsync();
                     return;
                 }
@@ -45,7 +46,7 @@ namespace L2dotNET.Network.clientpackets
 
                 if (!(player.Target is L2Player))
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.TargetIsIncorrect);
+                    player.SendSystemMessage(SystemMessageId.TargetIsIncorrect);
                     player.SendActionFailedAsync();
                     return;
                 }
@@ -53,14 +54,14 @@ namespace L2dotNET.Network.clientpackets
                 L2Player target = (L2Player)player.Target;
                 if (target.TradeState != 0)
                 {
-                    player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.S1AlreadyTrading).AddPlayerName(target.Name));
+                    player.SendPacketAsync(new SystemMessage(SystemMessageId.S1AlreadyTrading).AddPlayerName(target.Name));
                     player.SendActionFailedAsync();
                     return;
                 }
 
                 if (target.PartyState == 1)
                 {
-                    player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.S1IsBusyTryLater).AddPlayerName(target.Name));
+                    player.SendPacketAsync(new SystemMessage(SystemMessageId.S1IsBusyTryLater).AddPlayerName(target.Name));
                     player.SendActionFailedAsync();
                     return;
                 }
@@ -71,7 +72,7 @@ namespace L2dotNET.Network.clientpackets
                     return;
                 }
 
-                player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.RequestS1ForTrade).AddPlayerName(target.Name));
+                player.SendPacketAsync(new SystemMessage(SystemMessageId.RequestS1ForTrade).AddPlayerName(target.Name));
                 target.Requester = player;
                 player.Requester = target;
                 target.SendPacketAsync(new SendTradeRequest(player.ObjectId));
