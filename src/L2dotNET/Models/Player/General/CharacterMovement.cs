@@ -89,13 +89,21 @@ namespace L2dotNET.Models.Player.General
             float elapsedSeconds = (currentTime - _movementLastTime) / (float) TimeSpan.TicksPerSecond;
 
             // TODO: move to config
-            if (!forceUpdate && elapsedSeconds < 0.05f) // 50 ms
+            if (!forceUpdate && elapsedSeconds < 0.05f) // 50 ms, skip run if last run was less then 50ms ago
             {
                 return;
             }
 
+            if (_attackTarget != null) // if we have target then update destination coordinates
+            {
+                DestinationX = _attackTarget.X;
+                DestinationY = _attackTarget.Y;
+                DestinationZ = _attackTarget.Z;
+            }
+
             float distance = (float) Utilz.Length(DestinationX - _x, DestinationY - _y);
 
+            // vector to destination with length = 1
             float vectorX = (DestinationX - _x) / distance;
             float vectorY = (DestinationY - _y) / distance;
 
@@ -119,9 +127,24 @@ namespace L2dotNET.Models.Player.General
             _y += (int) (vectorY * _character.CharacterStat.MoveSpeed * elapsedSeconds);
         }
 
-        public double GetPlanDistanceSq(int x, int y)
+        public double DistanceTo(int x, int y)
         {
             return Math.Sqrt(Math.Pow(x - X, 2) + Math.Pow(y - Y, 2));
+        }
+
+        public double DistanceToSquared(int x, int y)
+        {
+            return Math.Pow(x - X, 2) + Math.Pow(y - Y, 2);
+        }
+
+        public double DistanceTo(L2Object obj)
+        {
+            return DistanceTo(obj.X, obj.Y);
+        }
+
+        public double DistanceToSquared(L2Object obj)
+        {
+            return DistanceToSquared(obj.X, obj.Y);
         }
 
         public bool CanMove()
@@ -223,16 +246,42 @@ namespace L2dotNET.Models.Player.General
             Heading = (int) (Math.Atan2(-targetVector.X, -targetVector.Y) * 10430.378 + short.MaxValue);
 
             _movementUpdateTime = _movementLastTime = DateTime.UtcNow.Ticks;
-            
+            _attackTarget = null;
             IsMoving = true;
 
             await _character.BroadcastPacketAsync(new CharMoveToLocation(_character));
         }
 
-        public async Task MoveToAndHit(int x, int y, int z, L2Character target)
+        public async Task MoveToAndHit(L2Character target)
         {
             _attackTarget = target;
-            MoveTo(x, y, z);
+            await MoveTo(target.X, target.Y, target.Z);
+            Task.Factory.StartNew(BroadcastDestinationChanged);
+        }
+
+        private async void BroadcastDestinationChanged()
+        {
+            int oldDestinationX = DestinationX;
+            int oldDestinationY = DestinationY;
+            int oldDestinationZ = DestinationZ;
+
+            await Task.Delay(1000); // TODO: move to config
+
+            while (IsMoving && _attackTarget != null)
+            {
+                if (oldDestinationX != DestinationX || oldDestinationY != DestinationY || oldDestinationZ != DestinationZ)
+                {
+                    // Send broadcast every 1s if destination is changed
+                    _character.BroadcastPacketAsync(new CharMoveToLocation(_character));
+                }
+
+                oldDestinationX = DestinationX;
+                oldDestinationY = DestinationY;
+                oldDestinationZ = DestinationZ;
+
+                // TODO: move to config
+                await Task.Delay(1000);
+            }
         }
 
         public async Task NotifyStopMove(bool broadcast = true)

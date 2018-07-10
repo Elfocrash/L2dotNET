@@ -325,7 +325,7 @@ namespace L2dotNET.Models.Npcs
             html.Replace("%wit%", Wit);
             html.Replace("%men%", Men);
             html.Replace("%loc%", $"{X} {Y} {Z}");
-            html.Replace("%dist%", player.CharMovement.GetPlanDistanceSq(X,Y));
+            html.Replace("%dist%", player.CharMovement.DistanceToSquared(X,Y));
             //         // byte attackAttribute = ((L2Character)this).getAttackElement();
             //         html.replace("%ele_atk_value%", "%todo%" /* String.valueOf(((L2Character)this).getAttackElementValue(attackAttribute)) */);
             //         html.replace("%ele_dfire%", String.valueOf(((L2Character)this).getDefenseElementValue((byte)2)));
@@ -338,7 +338,7 @@ namespace L2dotNET.Models.Npcs
             if (spawn != null)
             {
                 html.Replace("%spawn%", $"{spawn.Location.X} {spawn.Location.Y} {spawn.Location.Z}");
-                html.Replace("%loc2d%", player.CharMovement.GetPlanDistanceSq(spawn.Location.Y,spawn.Location.X));
+                html.Replace("%loc2d%", player.CharMovement.DistanceToSquared(spawn.Location.Y,spawn.Location.X));
                 html.Replace("%loc3d%", "<font color=FF0000>--</font>");
                 //html.Replace("%loc3d%", player.getDistanceSq(spawn.Location.X,spawn.Location.Y,spawn.Location.Z); -Not implemented
                 html.Replace("%resp%", spawn.Location.RespawnDelay / 1000);

@@ -53,7 +53,7 @@ namespace L2dotNET.Models.Npcs
 
             await player.CharMovement.MoveTo(X, Y, Z);
             
-            await player.SendPacketAsync(new MoveToPawn(player, this, (int)player.CharMovement.GetPlanDistanceSq(X,Y)));
+            await player.SendPacketAsync(new MoveToPawn(player, this, (int)player.CharMovement.DistanceToSquared(X,Y)));
 
             await player.DoAttackAsync(this);
         }
