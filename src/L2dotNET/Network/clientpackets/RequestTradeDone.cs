@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Managers;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
@@ -42,7 +43,7 @@ namespace L2dotNET.Network.clientpackets
                 if (_bDone)
                 {
                     player.TradeState = 4;
-                    player.Requester.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.S1ConfirmedTrade).AddPlayerName(player.Name));
+                    player.Requester.SendPacketAsync(new SystemMessage(SystemMessageId.S1ConfirmedTrade).AddPlayerName(player.Name));
 
                     if (player.Requester.TradeState == 4)
                         TradeManager.GetInstance().PersonalTrade(player, player.Requester);
@@ -53,7 +54,7 @@ namespace L2dotNET.Network.clientpackets
                     player.TradeState = 0;
                     player.CurrentTrade.Clear();
                     player.SendPacketAsync(end);
-                    player.Requester.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.S1CanceledTrade).AddPlayerName(player.Name));
+                    player.Requester.SendPacketAsync(new SystemMessage(SystemMessageId.S1CanceledTrade).AddPlayerName(player.Name));
 
                     player.Requester.TradeState = 0;
                     player.Requester.CurrentTrade.Clear();

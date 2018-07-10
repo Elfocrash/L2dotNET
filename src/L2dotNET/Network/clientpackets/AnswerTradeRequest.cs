@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Tools;
@@ -51,13 +52,13 @@ namespace L2dotNET.Network.clientpackets
                     case 0:
                         player.TradeState = 0;
                         player.Requester.TradeState = 0;
-                        player.Requester.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.S1DeniedTradeRequest).AddPlayerName(player.Name));
+                        player.Requester.SendPacketAsync(new SystemMessage(SystemMessageId.S1DeniedTradeRequest).AddPlayerName(player.Name));
                         player.Requester.Requester = null;
                         player.Requester = null;
                         break;
                     case 1:
-                        player.Requester.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.BeginTradeWithS1).AddPlayerName(player.Name));
-                        player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.BeginTradeWithS1).AddPlayerName(player.Requester.Name));
+                        player.Requester.SendPacketAsync(new SystemMessage(SystemMessageId.BeginTradeWithS1).AddPlayerName(player.Name));
+                        player.SendPacketAsync(new SystemMessage(SystemMessageId.BeginTradeWithS1).AddPlayerName(player.Requester.Name));
                         player.TradeState = 3;
                         player.Requester.TradeState = 3;
                         player.SendPacketAsync(new TradeStart(player));

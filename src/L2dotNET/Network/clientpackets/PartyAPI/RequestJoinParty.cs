@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 
@@ -37,7 +38,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
 
                 if (target == null)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.FirstSelectUserToInviteToParty);
+                    player.SendSystemMessage(SystemMessageId.FirstSelectUserToInviteToParty);
                     player.SendActionFailedAsync();
                     return;
                 }
@@ -51,7 +52,7 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
 
                 if (target.Party != null)
                 {
-                    SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.S1IsAlreadyInParty);
+                    SystemMessage sm = new SystemMessage(SystemMessageId.S1IsAlreadyInParty);
                     sm.AddPlayerName(target.Name);
                     player.SendPacketAsync(sm);
                     player.SendActionFailedAsync();
@@ -60,47 +61,47 @@ namespace L2dotNET.Network.clientpackets.PartyAPI
 
                 if (player.IsCursed || target.IsCursed)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.YouHaveInvitedTheWrongTarget);
+                    player.SendSystemMessage(SystemMessageId.YouHaveInvitedTheWrongTarget);
                     player.SendActionFailedAsync();
                     return;
                 }
 
                 if (target.PartyState == 1)
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.WaitingForAnotherReply);
+                    player.SendSystemMessage(SystemMessageId.WaitingForAnotherReply);
                     player.SendActionFailedAsync();
                     return;
                 }
 
                 if ((target.TradeState == 1) || (target.TradeState == 2))
                 {
-                    player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.S1IsBusyTryLater).AddPlayerName(target.Name));
+                    player.SendPacketAsync(new SystemMessage(SystemMessageId.S1IsBusyTryLater).AddPlayerName(target.Name));
                     player.SendActionFailedAsync();
                     return;
                 }
 
                 if ((player.Party != null) && (player.Party.Leader.ObjectId != player.ObjectId))
                 {
-                    player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLeaderCanInvite);
+                    player.SendSystemMessage(SystemMessageId.OnlyLeaderCanInvite);
                     player.SendActionFailedAsync();
                     return;
                 }
 
                 if (player.IsInOlympiad)
                 {
-                    player.Requester.SendSystemMessage(SystemMessage.SystemMessageId.UserCurrentlyParticipatingInOlympiadCannotSendPartyAndFriendInvitations);
+                    player.Requester.SendSystemMessage(SystemMessageId.UserCurrentlyParticipatingInOlympiadCannotSendPartyAndFriendInvitations);
                     player.SendActionFailedAsync();
                     return;
                 }
 
                 if ((player.Party != null) && (player.Party.Members.Count == 9))
                 {
-                    player.Requester.SendSystemMessage(SystemMessage.SystemMessageId.PartyFull);
+                    player.Requester.SendSystemMessage(SystemMessageId.PartyFull);
                     player.SendActionFailedAsync();
                     return;
                 }
 
-                player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.YouInvitedS1ToParty).AddPlayerName(target.Name));
+                player.SendPacketAsync(new SystemMessage(SystemMessageId.YouInvitedS1ToParty).AddPlayerName(target.Name));
                 target.PendToJoinParty(player, _itemDistribution);
             });
         }

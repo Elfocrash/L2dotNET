@@ -1,4 +1,5 @@
-﻿using L2dotNET.Models.Player;
+﻿using L2dotNET.DataContracts.Shared.Enums;
+using L2dotNET.Models.Player;
 using L2dotNET.Network.serverpackets;
 using L2dotNET.Tables;
 
@@ -25,7 +26,7 @@ namespace L2dotNET.Models.Zones.Classes
                 return;
 
             L2Player p = (L2Player)obj;
-            p.SendSystemMessage((SystemMessage.SystemMessageId)Template.EnteringMessageNo);
+            p.SendSystemMessage((SystemMessageId)Template.EnteringMessageNo);
         }
 
         public override void OnExit(L2Object obj, bool cls)
@@ -41,7 +42,7 @@ namespace L2dotNET.Models.Zones.Classes
                 return;
 
             L2Player p = (L2Player)obj;
-            p.SendSystemMessage((SystemMessage.SystemMessageId)Template.LeavingMessageNo);
+            p.SendSystemMessage((SystemMessageId)Template.LeavingMessageNo);
         }
     }
 }

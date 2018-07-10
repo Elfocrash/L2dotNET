@@ -171,14 +171,14 @@ namespace L2dotNET.Models.Npcs
         {
             //if (player.Clan == null)
             //{
-            //    player.SendSystemMessage(SystemMessage.SystemMessageId.YouDoNotHaveTheRightToUseClanWarehouse);
+            //    player.SendSystemMessage(SystemMessageId.YouDoNotHaveTheRightToUseClanWarehouse);
             //    player.SendActionFailed();
             //    return;
             //}
 
             //if (player.Clan.Level == 0)
             //{
-            //    player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
+            //    player.SendSystemMessage(SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
             //    player.SendActionFailed();
             //    return;
             //}
@@ -193,7 +193,7 @@ namespace L2dotNET.Models.Npcs
         {
             //if (player._warehouse == null)
             //{
-            //    player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
+            //    player.sendSystemMessage(SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
             //    player.sendActionFailed();
             //    return;
             //}
@@ -202,7 +202,7 @@ namespace L2dotNET.Models.Npcs
 
             //if (items.Count == 0) // на случай если вх был создан и убраны вещи до времени выхода с сервера
             //{
-            //    player.sendSystemMessage(SystemMessage.SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
+            //    player.sendSystemMessage(SystemMessageId.NO_ITEM_DEPOSITED_IN_WH);
             //    player.sendActionFailed();
             //    return;
             //}
@@ -215,7 +215,7 @@ namespace L2dotNET.Models.Npcs
         {
             //if (player.Clan == null)
             //{
-            //    player.SendSystemMessage(SystemMessage.SystemMessageId.YouDoNotHaveTheRightToUseClanWarehouse);
+            //    player.SendSystemMessage(SystemMessageId.YouDoNotHaveTheRightToUseClanWarehouse);
             //    player.SendActionFailed();
             //}
             //else
@@ -223,7 +223,7 @@ namespace L2dotNET.Models.Npcs
             //    if (player.Clan.Level != 0)
             //        return;
 
-            //    player.SendSystemMessage(SystemMessage.SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
+            //    player.SendSystemMessage(SystemMessageId.OnlyLevel1ClanOrHigherCanUseWarehouse);
             //    player.SendActionFailed();
             //}
         }

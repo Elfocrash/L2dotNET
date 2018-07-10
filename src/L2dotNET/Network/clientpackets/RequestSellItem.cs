@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Npcs;
 using L2dotNET.Models.Player;
@@ -53,7 +54,7 @@ namespace L2dotNET.Network.clientpackets
                     //if ((count < 0) || (count > int.MaxValue))
                     if (count < 0)
                     {
-                        player.SendSystemMessage(SystemMessage.SystemMessageId.SellAttemptFailed);
+                        player.SendSystemMessage(SystemMessageId.SellAttemptFailed);
                         player.SendActionFailedAsync();
                         return;
                     }
@@ -70,7 +71,7 @@ namespace L2dotNET.Network.clientpackets
 
                 //if (totalCost > long.MaxValue)
                 //{
-                //    player.sendSystemMessage(SystemMessage.SystemMessageId.SELL_ATTEMPT_FAILED);
+                //    player.sendSystemMessage(SystemMessageId.SELL_ATTEMPT_FAILED);
                 //    player.sendActionFailed();
                 //    return;
                 //}

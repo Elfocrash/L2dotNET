@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Models.Player;
 using L2dotNET.Models.Zones;
 using L2dotNET.Models.Zones.Classes;
@@ -423,7 +424,7 @@ namespace L2dotNET.Models
             if (!old && _isInsidePeaceZone)
             {
                 if (this is L2Player)
-                    await ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.EnterPeacefulZone);
+                    await ((L2Player)this).SendSystemMessage(SystemMessageId.EnterPeacefulZone);
             }
             else
             {
@@ -431,7 +432,7 @@ namespace L2dotNET.Models
                     return;
 
                 if (this is L2Player)
-                    await ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.ExitPeacefulZone);
+                    await ((L2Player)this).SendSystemMessage(SystemMessageId.ExitPeacefulZone);
             }
         }
 
@@ -460,7 +461,7 @@ namespace L2dotNET.Models
             if (!old && _isInsidePvpZone)
             {
                 if (this is L2Player)
-                    await ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.EnteredCombatZone);
+                    await ((L2Player)this).SendSystemMessage(SystemMessageId.EnteredCombatZone);
             }
             else
             {
@@ -468,7 +469,7 @@ namespace L2dotNET.Models
                     return;
 
                 if (this is L2Player)
-                    await ((L2Player)this).SendSystemMessage(SystemMessage.SystemMessageId.LeftCombatZone);
+                    await ((L2Player)this).SendSystemMessage(SystemMessageId.LeftCombatZone);
             }
         }
 

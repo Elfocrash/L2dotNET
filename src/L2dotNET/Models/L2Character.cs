@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Enums;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
@@ -288,7 +289,7 @@ namespace L2dotNET.Models
             await Task.FromResult(1);
         }
 
-        public virtual async Task SendSystemMessage(SystemMessage.SystemMessageId msgId) { await Task.FromResult(1); }
+        public virtual async Task SendSystemMessage(SystemMessageId msgId) { await Task.FromResult(1); }
 
         public virtual void OnPickUp(L2Item item) { }
         
@@ -414,7 +415,7 @@ namespace L2dotNET.Models
             //}
 
             //if (this is L2Player)
-            //    SendPacket(new SystemMessage((SystemMessage.SystemMessageId)msgId).AddNumber(damage));
+            //    SendPacket(new SystemMessage((SystemMessageId)msgId).AddNumber(damage));
         }
 
         //public override void ReduceHp(L2Character attacker, double damage)
@@ -627,13 +628,13 @@ namespace L2dotNET.Models
                     Target.CharStatus.ReduceHp(Hit1.Damage, this);
 
                     if (Target is L2Player)
-                        await Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
+                        await Target.SendPacketAsync(new SystemMessage(SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
                 }
                 else
                 {
                     if (Target is L2Player)
                     {
-                        await Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
+                        await Target.SendPacketAsync(new SystemMessage(SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
                     }
                 }
             }
@@ -649,13 +650,13 @@ namespace L2dotNET.Models
                 {
                     Target.CharStatus.ReduceHp(Hit2.Damage, this);
                     if (Target is L2Player)
-                        await Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
+                        await Target.SendPacketAsync(new SystemMessage(SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
                 }
                 else
                 {
                     if (Target is L2Player)
                     {
-                        await Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
+                        await Target.SendPacketAsync(new SystemMessage(SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
                     }
                 }
             }
@@ -746,7 +747,7 @@ namespace L2dotNET.Models
                 return;
 
             await BroadcastPacketAsync(new MagicSkillUse(this, this, skillId, 1, 0));
-            await SendSystemMessage(SystemMessage.SystemMessageId.EnabledSoulshot);
+            await SendSystemMessage(SystemMessageId.EnabledSoulshot);
         }
 
         public virtual void AbortAttack()

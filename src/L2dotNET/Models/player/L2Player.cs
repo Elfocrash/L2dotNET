@@ -295,14 +295,14 @@ namespace L2dotNET.Models.Player
             await SendPacketAsync(_af);
         }
 
-        public override async Task SendSystemMessage(SystemMessage.SystemMessageId msgId)
+        public override async Task SendSystemMessage(SystemMessageId msgId)
         {
             await SendPacketAsync(new SystemMessage(msgId));
         }
 
         public override async Task SendMessageAsync(string p)
         {
-            await SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.S1).AddString(p));
+            await SendPacketAsync(new SystemMessage(SystemMessageId.S1).AddString(p));
         }
 
         public int GetForceIncreased()
@@ -380,7 +380,7 @@ namespace L2dotNET.Models.Player
 
         public void AddExpSp(int exp, int sp, bool msg)
         {
-            SystemMessage sm = new SystemMessage(SystemMessage.SystemMessageId.YouEarnedS1ExpAndS2Sp);
+            SystemMessage sm = new SystemMessage(SystemMessageId.YouEarnedS1ExpAndS2Sp);
             sm.AddNumber(exp);
             sm.AddNumber(sp);
             SendPacketAsync(sm);
@@ -392,7 +392,7 @@ namespace L2dotNET.Models.Player
             {
                 Level = Player.Experience.GetLevel(Experience);
                 this.BroadcastPacketAsync(new SocialAction(ObjectId, 15));
-                this.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.YouIncreasedYourLevel));
+                this.SendPacketAsync(new SystemMessage(SystemMessageId.YouIncreasedYourLevel));
             }
 
             StatusUpdate su = new StatusUpdate(this);
@@ -507,7 +507,7 @@ namespace L2dotNET.Models.Player
         public void AddAdena(int count, bool sendMessage)
         {
             if (sendMessage)
-                SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.EarnedS1Adena).AddNumber(count));
+                SendPacketAsync(new SystemMessage(SystemMessageId.EarnedS1Adena).AddNumber(count));
 
             if (count <= 0)
                 return;
@@ -860,20 +860,6 @@ namespace L2dotNET.Models.Player
             BroadcastUserInfoAsync();
         }
 
-        public void SetPenalty_ClanCreate(DateTime time, bool sql)
-        {
-            PenaltyClanCreate = DateTime.Now < time ? time.ToString("yyyy-MM-dd HH-mm-ss") : "0";
-
-            if (sql) { }
-        }
-
-        public void SetPenalty_ClanJoin(DateTime time, bool sql)
-        {
-            PenaltyClanJoin = DateTime.Now < time ? time.ToString("yyyy-MM-dd HH-mm-ss") : "0";
-
-            if (sql) { }
-        }
-
         public bool IsRestored;
 
         public void TotalRestore()
@@ -979,7 +965,7 @@ namespace L2dotNET.Models.Player
                 }
 
                 _petSummonTime.Enabled = true;
-                SendSystemMessage(SystemMessage.SystemMessageId.SummonAPet);
+                SendSystemMessage(SystemMessageId.SummonAPet);
             }
             else
             {
@@ -1121,7 +1107,7 @@ namespace L2dotNET.Models.Player
 
         public override async Task DoAttackAsync(L2Character target)
         {
-            if (target == null)
+           /* if (target == null)
             {
                 await SendMessageAsync("null");
                 await SendActionFailedAsync();
@@ -1166,7 +1152,7 @@ namespace L2dotNET.Models.Player
             if (!Calcs.CheckIfInRange((int)dist, this, target, true))
             {
                 await SendMessageAsync($"too far {dist}");
-                CharMovement.MoveToAndHit(target.X, target.Y, target.Z,target);
+                CharMovement.MoveToAndHit(target);
                 return;
             }
 
@@ -1232,71 +1218,7 @@ namespace L2dotNET.Models.Player
             AttackToEnd.Interval = timeAtk;
             AttackToEnd.Enabled = true;
 
-            BroadcastPacketAsync(atk);
-        }
-
-        public override async void AttackDoHitAsync(object sender, ElapsedEventArgs e)
-        {
-            if ((Target != null) && !Target.Dead)
-            {
-                if (!Hit1.Miss)
-                {
-                    if (Hit1.Crit)
-                    {
-                        await SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.YouDidS1Dmg).AddNumber(Hit1.Damage));
-                        await SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.CriticalHit));
-                    }
-
-                    await SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.YouDidS1Dmg).AddNumber(Hit1.Damage));
-                    Target.CharStatus.ReduceHp(Hit1.Damage, this);
-
-                    if (Target is L2Player)
-                        await Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit1.Damage));
-                }
-                else
-                {
-                    await SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.MissedTarget));
-
-                    if (Target is L2Player)
-                    {
-                        await Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
-                    }
-                }
-            }
-
-            AttackToHit.Enabled = false;
-        }
-
-        public override void AttackDoHit2Nd(object sender, ElapsedEventArgs e)
-        {
-            if ((Target != null) && !Target.Dead)
-            {
-                if (!Hit2.Miss)
-                {
-                    if (Hit2.Crit)
-                    {
-                        SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.YouDidS1Dmg).AddNumber(Hit2.Damage));
-                        SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.CriticalHit));
-                    }
-
-                    SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.YouDidS1Dmg).AddNumber(Hit2.Damage));
-                    Target.CharStatus.ReduceHp(Hit2.Damage, this);
-
-                    if (Target is L2Player)
-                        Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasReceivedS3DamageFromC2).AddName(Target).AddName(this).AddNumber(Hit2.Damage));
-                }
-                else
-                {
-                    SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.MissedTarget));
-
-                    if (Target is L2Player)
-                    {
-                        Target.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.C1HasEvadedC2Attack).AddName(Target).AddName(this));
-                    }
-                }
-            }
-
-            AttackToHitBonus.Enabled = false;
+            BroadcastPacketAsync(atk);*/
         }
 
         public override void AttackDoEnd(object sender, ElapsedEventArgs e)
@@ -1331,7 +1253,7 @@ namespace L2dotNET.Models.Player
             //    {
             //        if (Inventory.getItemCount(sid) < weapon.Template.SoulshotCount)
             //        {
-            //            sendPacket(new SystemMessage(SystemMessage.SystemMessageId.AUTO_USE_CANCELLED_LACK_OF_S1).AddItemName(sid));
+            //            sendPacket(new SystemMessage(SystemMessageId.AUTO_USE_CANCELLED_LACK_OF_S1).AddItemName(sid));
 
             //            lock (autoSoulshots)
             //            {

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using L2dotNET.Controllers;
+using L2dotNET.DataContracts.Shared.Enums;
 using L2dotNET.Managers;
 using L2dotNET.Models.Items;
 using L2dotNET.Models.Player;
@@ -36,7 +37,7 @@ namespace L2dotNET.Network.clientpackets
 
             player.TotalRestore();
 
-            player.SendPacketAsync(new SystemMessage(SystemMessage.SystemMessageId.WelcomeToLineage));
+            player.SendPacketAsync(new SystemMessage(SystemMessageId.WelcomeToLineage));
 
             _announcementManager.OnEnter(player);
 
