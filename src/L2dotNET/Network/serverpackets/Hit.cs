@@ -15,9 +15,9 @@ namespace L2dotNET.Network.serverpackets
         public bool IsCritical { get; }
         public bool IsSoulshotUsed { get; }
         public int SoulshotGrade { get; }
-        public int Shield { get; }
+        public bool Shield { get; }
 
-        public Hit(int targetId, int damage, bool isMiss, bool isCritical, int shield, bool isSoulshotUsed, int soulshotGrade)
+        public Hit(int targetId, int damage, bool isMiss, bool isCritical, bool shield, bool isSoulshotUsed, int soulshotGrade)
         {
             TargetId = targetId;
             Damage = damage;
@@ -43,7 +43,7 @@ namespace L2dotNET.Network.serverpackets
                 Flags |= HITFLAG_CRITICAL;
             }
 
-            if (shield > 0)
+            if (shield)
             {
                 Flags |= HITFLAG_SHIELD;
             }

@@ -3,6 +3,7 @@ using L2dotNET.Models;
 
 namespace L2dotNET.Network.serverpackets
 {
+    
     class Attack : GameserverPacket
     {
         public List<Hit> Hits { get; set; }
@@ -11,6 +12,8 @@ namespace L2dotNET.Network.serverpackets
         private readonly int _x;
         private readonly int _y;
         private readonly int _z;
+        private readonly bool Soulshot;
+        private readonly int Grade;
 
         public Attack(L2Character player, params Hit[] hits)
         {
@@ -19,6 +22,31 @@ namespace L2dotNET.Network.serverpackets
             _y = player.Y;
             _z = player.Z;
             Hits = new List<Hit>(hits);
+        }
+
+
+        public Attack(L2Character player, L2Object target, bool ss, int grade)
+        {
+            _attackerId = player.ObjectId;
+            Soulshot = ss;
+            Grade = grade;
+            _x = player.X;
+            _y = player.Y;
+            _z = player.Z;
+            Hits = new List<Hit>(0);
+        }
+
+
+        public void AddHit(int targetId, int damage, bool miss, bool crit, bool shld)
+        {
+            int pos = Hits.Count;
+            Hit[] tmp = new Hit[pos + 1];
+
+            for (int i = 0; i < Hits.Count; i++)
+                tmp[i] = Hits[i];
+
+            tmp[pos] = new Hit(targetId, damage, miss, crit, shld, Soulshot, Grade);
+            //  Hits = tmp;
         }
 
         public bool HasHits()
